@@ -17,6 +17,7 @@
 #include "usbh_diskio.h" /* defines USBH_Driver as external */
 #include "usb_host.h"
 #include "test.h"
+#include "gpio.h"
 
 /* Private variables ---------------------------------------------------------*/
 uint8_t USBH_DriverNum;      /* FatFS USBH part */
@@ -24,12 +25,7 @@ char USBH_Path[4];           /* USBH logical drive path */
 
 /* Private function prototypes -----------------------------------------------*/
 static void systemClockConfig(void);
-static void mxGpioInit(void);
 static void mainThread(const void *argument);
-
-/* Private function prototypes -----------------------------------------------*/
-static void systemClockConfig(void);
-static void mxGpioInit(void);
 
 int main(void)
 {
@@ -42,7 +38,7 @@ int main(void)
   systemClockConfig();
 
   /* Initialize all configured peripherals */
-  mxGpioInit();
+  initGpio();
 
   /* Code generated for FreeRTOS */
   /* Create Start thread */
@@ -84,22 +80,6 @@ static void systemClockConfig(void)
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV4;
   HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5);
-}
-
-/** Configure pins as 
-        * Analog
-        * Input
-        * Output
-        * EVENT_OUT
-        * EXTI
-*/
-void mxGpioInit(void)
-{
-  /* GPIO Ports Clock Enable */
-  __GPIOC_CLK_ENABLE();
-  __GPIOH_CLK_ENABLE();
-  __GPIOA_CLK_ENABLE();
-  __GPIOB_CLK_ENABLE();
 }
 
 static void mainThread(void const * argument)

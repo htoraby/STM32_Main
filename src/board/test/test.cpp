@@ -11,7 +11,7 @@ FIL file;
 FIL fileR;
 DIR dir;
 FILINFO fno;
-static uint8_t RAM_Buf[512] = { 0x00 };
+static uint8_t ramBuf[512] = { 0x00 };
 static uint8_t startTestUsb = 1;
 
 void testInit()
@@ -36,17 +36,17 @@ static void testThread(void const * argument)
         UINT bytesWritten = 0;
         UINT BytesRead;
 
-        RAM_Buf[0] = 0x55;
-        RAM_Buf[511] = 0xAA;
+        ramBuf[0] = 0x55;
+        ramBuf[511] = 0xAA;
         f_unlink(UPLOAD_FILENAME);
         if (f_open(&file, UPLOAD_FILENAME, FA_CREATE_ALWAYS | FA_WRITE) == FR_OK) {
-          f_write(&file, RAM_Buf, 512, &bytesWritten);
+          f_write(&file, ramBuf, 512, &bytesWritten);
           f_close(&file);
         }
-        RAM_Buf[0] = 0x00;
-        RAM_Buf[511] = 0x00;
+        ramBuf[0] = 0x00;
+        ramBuf[511] = 0x00;
         if (f_open(&fileR, UPLOAD_FILENAME, FA_READ) == FR_OK) {
-          f_read(&fileR, RAM_Buf, 512, &BytesRead);
+          f_read(&fileR, ramBuf, 512, &BytesRead);
           f_close(&fileR);
         }
         startTestUsb = 0;
