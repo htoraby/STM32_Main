@@ -14,6 +14,7 @@ Product {
         "-ffunction-sections",
         "-Wno-unused-parameter",
         "-fno-exceptions",
+        "-fexceptions",
         (qbs.debugInformation ? "-O0" : "-Os"),
     ]
     cpp.linkerFlags: [
@@ -25,7 +26,7 @@ Product {
         "-Wl,--gc-sections",
         "-Wl,--start-group",
 //        "-nostartfiles",
-//        "-fexceptions",
+        "-fexceptions",
         "-Xlinker",
         "-Map=" + product.buildDirectory + "/" + product.name + ".map",
     ]
@@ -51,6 +52,9 @@ Product {
         "src/board/conf/",
         "src/board/usb/",
         "src/board/test/",
+        "src/user/",
+        "src/user/device/",
+        "src/user/device/vsd",
     ]
     cpp.defines: [
         (qbs.debugInformation ? "DEBUG" : "RELEASE"),
