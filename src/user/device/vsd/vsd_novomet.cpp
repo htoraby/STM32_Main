@@ -1635,10 +1635,12 @@ int VsdNovomet::startVSD(void)
   try
   {
     // Записываем во внутренний массив команду запуска ЧРП
+    /*
     if(setValueParameter(VSD_INVERTOR_CONTROL, INV_CONTROL_START))
     {
 
     }
+    */
   }
   catch(...)
   {

@@ -546,7 +546,8 @@ float DeviceModbus::convModbusToParameters(int Address, unTypeData ModbusValue)
     //! Применяем коэффициент
     Result = applyModbusCoefficientAtIndex(Index, Result);
     //! Применяем перевод единиц измерения
-    Result = convModbusPhysicUnitAtIndex(Index, Result);
+    // ВНИМАНИЕ
+    // Result = convModbusPhysicUnitAtIndex(Index, Result);
   }
   catch(...) {
     /// Message: Упали в функции conversionToParameters
@@ -558,7 +559,9 @@ float DeviceModbus::convModbusTypeToFloatAtIndex(int Index, unTypeData ModbusVal
 {
   float Result = RETURN_ERROR;
   try {
-    int TypeData = getModbusTypeDataAtIndex(Index, TypeData);
+    // ВНИМАНИЕ
+    int TypeData = 0;
+    // int TypeData = getModbusTypeDataAtIndex(Index, TypeData);
     if (TypeData) {
       switch (TypeData) {
       case TYPE_DATA_CHAR:
@@ -620,7 +623,8 @@ float DeviceModbus::applyModbusCoefficientAtIndex(int Index, float Value)
 
 /// МЕТОД ПРЕОБРАЗОВАНИЯ ЗНАЧЕНИЯ ИЗ БАНКА ПАРАМЕТРОВ В MODBUS ЗНАЧЕНИЕ
 /// Сначала переводим в единицы измерения
-int classDeviceModbus::convParamToModbus(int Address, float Value, unTypeData &ModbusValue)
+/*
+int DeviceModbus::convParamToModbus(int Address, float Value, unTypeData &ModbusValue)
 {
   int Result = RETURN_ERROR;
   try
@@ -655,7 +659,7 @@ int classDeviceModbus::convParamToModbus(int Address, float Value, unTypeData &M
 /// Value - переменная ссылка на перемнную в которую сохраняем значение
 /// Возвращает:
 /// RETURN_ERROR - Неизвестная ошибка
-int classDeviceModbus::convParamToModbusPhysicUnit(int Address, float &Value)
+int DeviceModbus::convParamToModbusPhysicUnit(int Address, float &Value)
 {
   int Result = RETURN_ERROR;
   int Physic;
@@ -682,7 +686,7 @@ int classDeviceModbus::convParamToModbusPhysicUnit(int Address, float &Value)
   return Result;
 };
 
-int classDeviceModbus::convParamToModbusType(int Address, float &Value, unTypeData &ModbusValue)
+int DeviceModbus::convParamToModbusType(int Address, float &Value, unTypeData &ModbusValue)
 {
   int Result = RETURN_ERROR;
   int TypeData;
@@ -720,5 +724,6 @@ int classDeviceModbus::convParamToModbusType(int Address, float &Value, unTypeDa
   }
   return Result;
 };
+*/
 
 

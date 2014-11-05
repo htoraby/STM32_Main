@@ -10,12 +10,13 @@
 
 union DataType
 {
-	unsigned char      DtChar[4];
-	signed short int   DtInt16[2];
-	signed long int    DtInt32;
-	unsigned short int DtUint16[2];
-	unsigned long int  DtUint32;
-	float              DtFloat;
+  unsigned char      DtChar[8];
+  signed short int   DtInt16[4];
+  signed long int    DtInt32[2];
+  unsigned short int DtUint16[4];
+  unsigned long int  DtUint32[2];
+  float              DtFloat[2];
+  double             DtDouble;
 };
 
 enum enTypeData {
@@ -26,6 +27,7 @@ enum enTypeData {
   TYPE_DATA_UINT16 = 4,
   TYPE_DATA_UINT32 = 5,
   TYPE_DATA_FLOAT  = 6,
+  TYPE_DATA_DOUBLE = 7,
   TYPE_DATA_LAST
 };
 
@@ -140,43 +142,46 @@ union unTypeData {
 
 enum enReturns
 {
-	RETURN_ERROR 				= 0,
-	RETURN_OK					= 1,
-	RETURN_ERROR_ID_VALUE		= 2,
-	RETURN_ERROR_ID				= 3,
-	RETURN_ERROR_ACCESS_VALUE	= 4,
-	RETURN_ERROR_ACCESS 		= 5,
-	RETURN_ERROR_OPERATION_VALUE= 6,
-	RETURN_ERROR_OPERATION		= 7,
-	RETURN_ERROR_PHYSIC_VALUE	= 8,
-	RETURN_ERROR_PHYSIC			= 9,
-	RETURN_ERROR_VALIDITY_VALUE	= 10,
-	RETURN_ERROR_VALIDITY		= 11,
-	RETURN_ERROR_MAXIMUM		= 12,
-	RETURN_ERROR_MINIMUM		= 13,
-	RETURN_ERROR_TYPE_DATA_VALUE= 14,
-	RETURN_ERROR_UNIT_VALUE		= 15,
-	RETURN_MODBUS_TIMEOUT		= 16,
-	RETURN_MODBUS_ERROR_CRC		= 17,
-	RETURN_MODBUS_ERROR			= 18,
-	RETURN_MODBUS_OK			= 19,
+  RETURN_ERROR                  = 0,
+  RETURN_OK                     = 1,
+  RETURN_ERROR_ID_VALUE         = 2,
+  RETURN_ERROR_ID               = 3,
+  RETURN_ERROR_ACCESS_VALUE     = 4,
+  RETURN_ERROR_ACCESS           = 5,
+  RETURN_ERROR_OPERATION_VALUE  = 6,
+  RETURN_ERROR_OPERATION        = 7,
+  RETURN_ERROR_PHYSIC_VALUE     = 8,
+  RETURN_ERROR_PHYSIC           = 9,
+  RETURN_ERROR_VALIDITY_VALUE   = 10,
+  RETURN_ERROR_VALIDITY         = 11,
+  RETURN_ERROR_MAXIMUM          = 12,
+  RETURN_ERROR_MINIMUM          = 13,
+  RETURN_ERROR_TYPE_DATA_VALUE  = 14,
+  RETURN_ERROR_UNIT_VALUE       = 15,
+  RETURN_MODBUS_TIMEOUT         = 16,
+  RETURN_MODBUS_ERROR_CRC       = 17,
+  RETURN_MODBUS_ERROR           = 18,
+  RETURN_MODBUS_OK              = 19,
+  RETURN_ERROR_UPDATE_VALUE     = 20,
 	RETURN_LAST
 };
 
 enum enAccess
 {
-	ACCESS_OPERATOR				= 0,
-	ACCESS_TECHNOLOG			= 1,
-	ACCESS_SERVICE				= 2,
-	ACCESS_GOD					= 3,
+  ACCESS_ERROR          = 0,
+  ACCESS_OPERATOR				= 1,
+  ACCESS_TECHNOLOG			= 2,
+  ACCESS_SERVICE				= 3,
+  ACCESS_GOD            = 4,
 	ACCESS_LAST
 };
 
-enum enOperations
+enum enOperation
 {
-	OPERATION_READ				= 0,
-	OPERATION_WRITE				= 1,
-	OPERATION_LIMITED			= 2,
+  OPERATION_ERROR			  = 0,
+  OPERATION_READ				= 1,
+  OPERATION_WRITE				= 2,
+  OPERATION_LIMITED			= 3,
 	OPERATION_LAST
 };
 
@@ -217,9 +222,17 @@ enum enPhysic
 
 enum enValidity
 {
-	VALIDITY_ERROR				= 0,
-  VALIDITY_GOOD         = 1,
+  VALIDITY_ERROR      = 0,
+  VALIDITY_GOOD       = 1,
+  VALIDITY_MIN        = 2,
+  VALIDITY_MAX        = 3,
 	VALIDITY_LAST
+};
+
+enum enUpdate
+{
+  UPDATE_ERROR				= 0,
+  UPDATE_LAST
 };
 
 enum enCondition
