@@ -11,9 +11,13 @@ void initGpio()
 {
   /* GPIO Ports Clock Enable */
   __GPIOC_CLK_ENABLE();
+  __GPIOF_CLK_ENABLE();
   __GPIOH_CLK_ENABLE();
   __GPIOA_CLK_ENABLE();
+  __GPIOG_CLK_ENABLE();
+  __GPIOE_CLK_ENABLE();
   __GPIOB_CLK_ENABLE();
+  __GPIOD_CLK_ENABLE();
   __GPIOI_CLK_ENABLE();
 
   initLed(StopLed);
