@@ -39,7 +39,7 @@ int main(void)
   systemClockConfig();
 
   /* Initialize all configured peripherals */
-  initGpio();
+  gpioInit();
   rtcInit();
 
   /* Code generated for FreeRTOS */

@@ -80,6 +80,182 @@ HAL_StatusTypeDef uart_close(uartNum num)
   return HAL_UART_DeInit(uartX);
 }
 
+void HAL_UART_MspInit(UART_HandleTypeDef* huart)
+{
+  GPIO_InitTypeDef GPIO_InitStruct;
+
+  if(huart->Instance == UART4) {
+    /* Peripheral clock enable */
+    __UART4_CLK_ENABLE();
+
+    /**UART4 GPIO Configuration
+    PA0/WKUP     ------> UART4_TX
+    PA1          ------> UART4_RX
+    PH2          ------> USART4_RTS (user pin)
+    */
+    GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+    GPIO_InitStruct.Alternate = GPIO_AF8_UART4;
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+    GPIO_InitStruct.Pin = GPIO_PIN_2;
+    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+    HAL_GPIO_Init(GPIOH, &GPIO_InitStruct);
+    HAL_GPIO_WritePin(GPIOH, GPIO_PIN_2, GPIO_PIN_RESET);
+
+    HAL_NVIC_SetPriority(UART4_IRQn, 0, 1);
+    HAL_NVIC_EnableIRQ(UART4_IRQn);
+  }
+  else if(huart->Instance == UART7) {
+    /* Peripheral clock enable */
+    __UART7_CLK_ENABLE();
+
+    /**UART7 GPIO Configuration
+    PF6     ------> UART7_RX
+    PF7     ------> UART7_TX
+    PI11    ------> USART7_RTS (user pin)
+    */
+    GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_7;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+    GPIO_InitStruct.Alternate = GPIO_AF8_UART7;
+    HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
+
+    GPIO_InitStruct.Pin = GPIO_PIN_11;
+    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+    HAL_GPIO_Init(GPIOI, &GPIO_InitStruct);
+    HAL_GPIO_WritePin(GPIOI, GPIO_PIN_11, GPIO_PIN_RESET);
+
+    HAL_NVIC_SetPriority(UART7_IRQn, 0, 1);
+    HAL_NVIC_EnableIRQ(UART7_IRQn);
+  }
+  else if(huart->Instance == USART1) {
+    /* Peripheral clock enable */
+    __USART1_CLK_ENABLE();
+
+    /**USART1 GPIO Configuration
+    PA9     ------> USART1_TX
+    PA10     ------> USART1_RX
+    */
+    GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_10;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+    GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  }
+  else if(huart->Instance == USART2) {
+    /* Peripheral clock enable */
+    __USART2_CLK_ENABLE();
+
+    /**USART2 GPIO Configuration
+    PA2     ------> USART2_TX
+    PA3     ------> USART2_RX
+    PH5     ------> USART2_RTS (user pin)
+    */
+    GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_3;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+    GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+    GPIO_InitStruct.Pin = GPIO_PIN_5;
+    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+    HAL_GPIO_Init(GPIOH, &GPIO_InitStruct);
+    HAL_GPIO_WritePin(GPIOH, GPIO_PIN_5, GPIO_PIN_RESET);
+
+    HAL_NVIC_SetPriority(USART2_IRQn, 0, 1);
+    HAL_NVIC_EnableIRQ(USART2_IRQn);
+  }
+  else if(huart->Instance == USART3) {
+    /* Peripheral clock enable */
+    __USART3_CLK_ENABLE();
+
+    /**USART3 GPIO Configuration
+    PB10     ------> USART3_TX
+    PB11     ------> USART3_RX
+    PB14     ------> USART3_RTS
+    */
+    GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_11/*|GPIO_PIN_14*/;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+    GPIO_InitStruct.Alternate = GPIO_AF7_USART3;
+    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+    // PB14   ------> USART3_RTS
+    GPIO_InitStruct.Pin = GPIO_PIN_14;
+    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
+
+    HAL_NVIC_SetPriority(USART3_IRQn, 0, 1);
+    HAL_NVIC_EnableIRQ(USART3_IRQn);
+  }
+  else if(huart->Instance == USART6) {
+    /* Peripheral clock enable */
+    __USART6_CLK_ENABLE();
+
+    /**USART6 GPIO Configuration
+    PC6     ------> USART6_TX
+    PC7     ------> USART6_RX
+    */
+    GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_7;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+    GPIO_InitStruct.Alternate = GPIO_AF8_USART6;
+    HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+    HAL_NVIC_SetPriority(USART6_IRQn, 0, 1);
+    HAL_NVIC_EnableIRQ(USART6_IRQn);
+  }
+}
+
+void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
+{
+  if(huart->Instance == UART4) {
+    __UART4_CLK_DISABLE();
+    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_0|GPIO_PIN_1);
+    HAL_GPIO_DeInit(GPIOH, GPIO_PIN_2);
+  }
+  else if(huart->Instance == UART7) {
+    __UART7_CLK_DISABLE();
+    HAL_GPIO_DeInit(GPIOF, GPIO_PIN_6|GPIO_PIN_7);
+    HAL_GPIO_DeInit(GPIOI, GPIO_PIN_11);
+  }
+  else if(huart->Instance == USART1) {
+    __USART1_CLK_DISABLE();
+    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_9|GPIO_PIN_10);
+  }
+  else if(huart->Instance == USART2) {
+    __USART2_CLK_DISABLE();
+    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_2|GPIO_PIN_3);
+    HAL_GPIO_DeInit(GPIOH, GPIO_PIN_5);
+  }
+  else if(huart->Instance == USART3) {
+    __USART3_CLK_DISABLE();
+    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_14);
+  }
+  else if(huart->Instance == USART6) {
+    __USART6_CLK_DISABLE();
+    HAL_GPIO_DeInit(GPIOC, GPIO_PIN_6|GPIO_PIN_7);
+  }
+}
+
 void uart_setSemaphoreId(uartNum num, osSemaphoreId semaphoreId)
 {
   uarts[num].semaphoreId = semaphoreId;
@@ -167,7 +343,7 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 /*!
  \brief Управление выводом RTS порта UART
 
- \param num - номер порта (тип uartNum)
+ \param num - номер порта (@ref uartNum)
  \param value - значение на выходе 0 или 1
 */
 static void uart_setRts(uartNum num, GPIO_PinState value)

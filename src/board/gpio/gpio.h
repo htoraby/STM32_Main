@@ -33,7 +33,7 @@ enum LedType
  \brief Настройка выводов
 
 */
-void initGpio();
+void gpioInit();
 
 /*!
  \brief Configures LED GPIO

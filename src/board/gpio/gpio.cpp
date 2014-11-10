@@ -7,7 +7,7 @@ const uint16_t pinLeds[LED_N] = {
   STOP_LED_PIN, WAIT_LED_PIN, WORK_LED_PIN, FAN_LED_PIN
 };
 
-void initGpio()
+void gpioInit()
 {
   /* GPIO Ports Clock Enable */
   __GPIOC_CLK_ENABLE();
