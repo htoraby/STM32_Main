@@ -53,6 +53,7 @@ Product {
         "src/board/test/",
         "src/board/gpio/",
         "src/board/uart/",
+        "src/board/rtc/",
     ]
     cpp.defines: [
         (qbs.debugInformation ? "DEBUG" : "RELEASE"),

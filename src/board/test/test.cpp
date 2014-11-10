@@ -3,21 +3,12 @@
 #include "ff_gen_drv.h"
 #include "uart.h"
 #include "gpio.h"
+#include "rtc.h"
 
 static void testThread(void const * argument);
 static void testUartThread(void const * argument);
 
 #define UPLOAD_FILENAME "0:test.tmp"
-
-FATFS fatfs;
-FIL file;
-FIL fileR;
-DIR dir;
-FILINFO fno;
-#if (TEST_USB_FAT == 1)
-static uint8_t ramBuf[512] = { 0x00 };
-static uint8_t startTestUsb = 1;
-#endif
 
 void testInit()
 {
@@ -32,18 +23,46 @@ void testInit()
 static void testThread(void const * argument)
 {
   (void)argument;
-  int sizePkt;
-  uint8_t buffer[UART_BUF_SIZE];
-  bool turn = false;
+#if (TEST_USB_FAT == 1)
+  FATFS fatfs;
+  FIL file;
+  FIL fileR;
+  uint8_t ramBuf[512] = { 0x00 };
+  uint8_t startTestUsb = 1;
+#endif
 
   BlinkLed blinkLed;
   blinkLed.prvSetupHardware();
 
 #if (TEST_UART == 1)
+  int sizePkt;
+  uint8_t buffer[UART_BUF_SIZE];
+  bool turn = false;
+
   uart_init(uart2, 9600);
   osSemaphoreId semaphoreUart = osSemaphoreCreate(NULL, 1);
   osSemaphoreWait(semaphoreUart, 0);
   uart_setSemaphoreId(uart2, semaphoreUart);
+#endif
+
+#if (TEST_RTC == 1)
+  DateTimeTypeDef dateTime;
+  //! Установка даты и времени
+  dateTime.month = 11;
+  dateTime.date = 6;
+  dateTime.year = 14;
+  dateTime.hours = 17;
+  dateTime.minutes = 21;
+  dateTime.seconds = 10;
+  dateTime.mseconds = 0;
+  setDateTime(dateTime);
+  osDelay(1000);
+  getDateTime(&dateTime);
+  if ((dateTime.month != 11) || (dateTime.date != 6) || (dateTime.year != 14) ||
+      (dateTime.hours != 17) || (dateTime.minutes != 21) ||
+      (dateTime.seconds != 11)) {
+    asm("nop");
+  }
 #endif
 
   while(1) {

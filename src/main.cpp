@@ -18,6 +18,7 @@
 #include "usb_host.h"
 #include "test.h"
 #include "gpio.h"
+#include "rtc.h"
 
 /* Private variables ---------------------------------------------------------*/
 uint8_t USBH_DriverNum;      /* FatFS USBH part */
@@ -39,10 +40,11 @@ int main(void)
 
   /* Initialize all configured peripherals */
   initGpio();
+  rtcInit();
 
   /* Code generated for FreeRTOS */
   /* Create Start thread */
-  osThreadDef(Main_Thread, mainThread, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
+  osThreadDef(Main_Thread, mainThread, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(Main_Thread), NULL);
 
   /* Start scheduler */
@@ -63,8 +65,9 @@ static void systemClockConfig(void)
 
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE|RCC_OSCILLATORTYPE_LSI;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+  RCC_OscInitStruct.LSIState = RCC_LSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = 12;
