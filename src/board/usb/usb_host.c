@@ -42,24 +42,13 @@
 USBH_HandleTypeDef hUsbHostFS;
 ApplicationTypeDef Appli_state = APPLICATION_IDLE;
 
-/**
-* -- Insert your variables declaration here --
-*/ 
-/* USER CODE BEGIN 0 */
-
-/* USER CODE END 0 */
+uint8_t USBH_DriverNum;      /* FatFS USBH part */
+char USBH_Path[4];           /* USBH logical drive path */
 
 /*
 * user callbak declaration
 */ 
 static void USBH_UserProcess  (USBH_HandleTypeDef *phost, uint8_t id);
-
-/**
-* -- Insert your external function declaration here --
-*/ 
-/* USER CODE BEGIN 1 */
-
-/* USER CODE END 1 */
 
 /* init function */				        
 void MX_USB_HOST_Init(void)
@@ -87,7 +76,6 @@ void MX_USB_HOST_Process()
 static void USBH_UserProcess  (USBH_HandleTypeDef *phost, uint8_t id)
 {
 
-  /* USER CODE BEGIN 2 */
   switch(id)
   { 
   case HOST_USER_SELECT_CONFIGURATION:
@@ -108,7 +96,6 @@ static void USBH_UserProcess  (USBH_HandleTypeDef *phost, uint8_t id)
   default:
   break; 
   }
-  /* USER CODE END 2 */
 }
 
 /**

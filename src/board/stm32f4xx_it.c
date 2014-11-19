@@ -42,6 +42,7 @@
 extern void xPortSysTickHandler(void);
 
 extern HCD_HandleTypeDef hhcd_USB_OTG_FS;
+extern uint8_t flagMcuInit;
 
 /******************************************************************************/
 /*            Cortex-M4 Processor Interruption and Exception Handlers         */ 
@@ -91,7 +92,9 @@ void UART7_IRQHandler(void)
 */
 void SysTick_Handler(void)
 {
-  xPortSysTickHandler();
+  if (flagMcuInit) {
+    xPortSysTickHandler();
+  }
   HAL_IncTick();
 }
 

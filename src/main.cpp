@@ -14,21 +14,20 @@
 #include "cmsis_os.h"
 #include "ff.h"
 #include "ff_gen_drv.h"
-#include "usbh_diskio.h" /* defines USBH_Driver as external */
+#include "usbh_diskio.h"
 #include "usb_host.h"
 #include "test.h"
 #include "gpio.h"
 #include "rtc.h"
-
-/* Private variables ---------------------------------------------------------*/
-uint8_t USBH_DriverNum;      /* FatFS USBH part */
-char USBH_Path[4];           /* USBH logical drive path */
+#include "sram.h"
 
 /* Private function prototypes -----------------------------------------------*/
-static void systemClockConfig(void);
+static void systemClockConfig();
 static void mainThread(const void *argument);
 
-int main(void)
+uint8_t flagMcuInit = false;
+
+int main()
 {
   /* MCU Configuration----------------------------------------------------------*/
 
@@ -40,7 +39,10 @@ int main(void)
 
   /* Initialize all configured peripherals */
   gpioInit();
+  sramInit();
   rtcInit();
+
+  flagMcuInit = true;
 
   /* Code generated for FreeRTOS */
   /* Create Start thread */
@@ -56,7 +58,7 @@ int main(void)
 
 /** System Clock Configuration
 */
-static void systemClockConfig(void)
+static void systemClockConfig()
 {
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
   RCC_OscInitTypeDef RCC_OscInitStruct;
@@ -88,6 +90,7 @@ static void systemClockConfig(void)
 static void mainThread(void const * argument)
 {
   (void)argument;
+
   /* FatFS: Link the USBH disk I/O driver */
   USBH_DriverNum = FATFS_LinkDriver(&USBH_Driver, USBH_Path);
 

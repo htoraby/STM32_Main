@@ -54,6 +54,7 @@ Product {
         "src/board/gpio/",
         "src/board/uart/",
         "src/board/rtc/",
+        "src/board/sram/",
     ]
     cpp.defines: [
         (qbs.debugInformation ? "DEBUG" : "RELEASE"),

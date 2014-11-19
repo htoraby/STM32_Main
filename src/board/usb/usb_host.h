@@ -48,7 +48,10 @@ typedef enum {
   APPLICATION_START,   
   APPLICATION_READY,
   APPLICATION_DISCONNECT,
-}ApplicationTypeDef;
+} ApplicationTypeDef;
+
+extern uint8_t USBH_DriverNum;
+extern char USBH_Path[];
 		
 void MX_USB_HOST_Init(void);
 void MX_USB_HOST_Process(void);
