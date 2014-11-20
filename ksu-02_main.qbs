@@ -14,6 +14,7 @@ Product {
         "-ffunction-sections",
         "-Wno-unused-parameter",
         "-fno-exceptions",
+        "-fexceptions",
         (qbs.debugInformation ? "-O0" : "-Os"),
     ]
     cpp.linkerFlags: [
@@ -55,6 +56,9 @@ Product {
         "src/board/uart/",
         "src/board/rtc/",
         "src/board/sram/",
+        "src/user/",
+        "src/user/device/",
+        "src/user/device/vsd",
     ]
     cpp.defines: [
         (qbs.debugInformation ? "DEBUG" : "RELEASE"),
