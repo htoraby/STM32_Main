@@ -15,10 +15,12 @@
 VsdNovomet::VsdNovomet()
 {
 
+  /*
   DeviceModbus *VsdModbus = new DeviceModbus(1,93);
 
   VsdModbus->ModbusParameters[94] =
   {
+  */
     /*
     {
        VSD_BEGIN,                 // Уникальный идентификатор параметра
@@ -1602,7 +1604,9 @@ VsdNovomet::VsdNovomet()
         0                        // Считываемое значение
     }
       */
+  /*
   };
+  */
 
 }
 

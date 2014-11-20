@@ -14,196 +14,218 @@
 // Наследник класса Device использующий его структуру и методы хранения банка параметров
 // имеющий свою карту параметров класс не имеющий объектов, а использующийся как базовый для
 // классов конкретных ЧРП
+/*!
+ * \brief The Vsd class
+ * Наследник класса Device использующий его структуру и методы хранения банка
+ * параметров имеющий свою карту параметров класс не имеющий объектов,
+ * а использующийся как базовый для классов конкретных ЧРП
+ */
 class Vsd: public Device
 {
-	public:
-    Vsd();
-    virtual ~Vsd();
+  // ОТКРЫТЫЕ ЧЛЕНЫ КЛАССА
+public:
+  /// Конструктор класса
+  Vsd();
+  /// Деструктор класса
+  virtual ~Vsd();
 
-		// ФУНКЦИИ ДЛЯ РАБОТЫ С ЧРП
-		// МЕТОД ЗАДАНИЯ ТИПА ДВИГАТЕЛЯ
-		// Записывает в Modbus устройства значение типа двигателя из банка параметров ЧРП
-		int setTypeMotor();
+  void initParameters();
 
-		// МЕТОД ЗАДАНИЯ ТИПА ДВИГАТЕЛЯ
-		// Записывает в Modbus устройства значение указанное в параметре
-		int setTypeMotor(float TypeMotor);
+  // ФУНКЦИИ ДЛЯ РАБОТЫ С ЧРП
+  /*!
+   * \brief setTypeMotor
+   * Метод задания типа двигателя
+   * \param TypeMotor - Тип двигателя
+   * \return Код результата операции
+   */
+  int setTypeMotor(double TypeMotor);
 
-		// МЕТОД ЗАДАНИЯ ТИПА УПРАВЛЕНИЯ ДВИГАТЕЛЕМ
-		// Записывает в Modbus устройства значение из банка параметров ЧРП
-		int setTypeControlMotor();
+  /*!
+   * \brief setTypeControlMotor
+   * Метод задания типа управления двигателя
+   * \param ControlMotor - Тип управления двигателя
+   * \return Код результата операции
+   */
+  int setTypeControlMotor(double ControlMotor);
 
-		// МЕТОД ЗАДАНИЯ ТИПА УПРАВЛЕНИЯ ДВИГАТЕЛЕМ
-		// Записывает в Modbus устройства значение указанное в параметре
-		int setTypeControlMotor(float ControlMotor);
+  /*!
+   * \brief setCurrentMotor
+   * Метод задания номинального тока двигателя
+   * \param CurrentMotor - номинальный ток двигателя
+   * \return Код результата операции
+   */
+  int setCurrentMotor(double CurrentMotor);
 
-		// МЕТОД ЗАДАНИЯ ТОКА ДВИГАТЕЛЯ
-		// Записывает в Modbus устройства значение из банка параметров ЧРП
-		int setCurrentMotor();
+  /*!
+   * \brief setVoltageMotor
+   * Метод записи номинального напряжения двигателя
+   * \param VoltageMotor - номинальное напряжение двигателя
+   * \return Код результата операции
+   */
+  int setVoltageMotor(double VoltageMotor);
 
-		// МЕТОД ЗАДАНИЯ ТОКА ДВИГАТЕЛЯ
-		// Записывает в Modbus устройства значение указанное в параметре
-		int setCurrentMotor(float CurrentMotor);
+  /*!
+   * \brief setFrequencyMotor
+   * Метод задания номинальной частоты двигателя
+   * \param FrequencyMotor
+   * \return Код результата операции
+   */
+  int setFrequencyMotor(double FrequencyMotor);
 
-		// МЕТОД ЗАДАНИЯ НАПРЯЖЕНИЯ ДВИГАТЕЛЯ
-		// Записывает в Modbus устройства значение из банка параметров ЧРП
-		int setVoltageMotor();
+  /*!
+   * \brief startVSD
+   * Метод запуска ЧРП
+   * \return Код результата операции
+   */
+  int startVSD(void);
 
-		// МЕТОД ЗАДАНИЯ НАПРЯЖЕНИЯ ДВИГАТЕЛЯ
-		// Записывает в Modbus устройства значение указанное в параметре
-		int setVoltageMotor(float VoltageMotor);
+  /*!
+   * \brief stopVSD
+   * Метод останова ЧРП
+   * \return Код результата операции
+   */
+  int stopVSD();
 
-		// МЕТОД ЗАДАНИЯ ЧАСТОТЫ ДВИГАТЕЛЯ
-		// Записывает в Modbus устройства значение из банка параметров ЧРП
-		int setFrequencyMotor();
+  /*!
+   * \brief setFrequency
+   * Метод задания частоты
+   * \param Frequency
+   * \return Код результата операции
+   */
+  int setFrequency(double Frequency);
 
-		// МЕТОД ЗАДАНИЯ ЧАСТОТЫ ДВИГАТЕЛЯ
-		// Записывает в Modbus устройства значение указанное в параметре
-		int setFrequencyMotor(float FrequencyMotor);
+  /*!
+   * \brief setMinFrequency
+   * Метод задания минимальной частоты
+   * \param MinFrequency
+   * \return Код результата операции
+   */
+  int setMinFrequency(double Frequency);
 
-		// МЕТОД ЗАПУСКА ЧРП
-		int startVSD(void);
+  /*!
+   * \brief setMaxFrequency
+   * Метод задания максимальной частоты
+   * \return Код результата операции
+   */
+  int setMaxFrequency(double Frequency);
 
-		// МЕТОД ОСТАНОВА ЧРП
-		int stopVSD();
+  /*!
+   * \brief setDirectRotation
+   * Метод задания прямого направления вращения
+   * \return Код результата операции
+   */
+  int setDirectRotation();
 
-		// МЕТОД ЗАДАНИЯ ЧАСТОТЫ
-		// Записывает в Modbus устройства значение из банка параметров ЧРП
-		int setFrequency();
+  /*!
+   * \brief setReverseRotation
+   * Метод задания обратного направления вращения
+   * \return Код результата операции
+   */
+  int setReverseRotation();
 
-		// МЕТОД ЗАДАНИЯ ЧАСТОТЫ
-		// Записывает в Modbus устройства значение указанное в параметре
-		int setFrequency(float Frequency);
+  /*!
+   * \brief setSpeedUp
+   * Метод задания темпа набора частоты
+   * \return Код результата операции
+   */
+  int setSpeedUp(double SpeedUp);
 
-		// МЕТОД ЗАДАНИЯ МИНИМАЛЬНОГО ЗНАЧЕНИЯ ЧАСТОТЫ
-		// Записывает в Modbus устройства значение из банка параметров ЧРП
-		int setMinFrequency();
+  /*!
+   * \brief setSpeedDown
+   * Метод задания снижения частоты
+   * \param SpeedDown
+   * \return Код результата операции
+   */
+  int setSpeedDown(double SpeedDown);
 
-		// МЕТОД ЗАДАНИЯ МИНИМАЛЬНОГО ЗНАЧЕНИЯ ЧАСТОТЫ
-		// Записывает в Modbus устройства значение указанное в параметре
-		int setMinFrequency(float MinFrequency);
+  /*!
+   * \brief setBackEmf
+   * Метод задания противоЭДС
+   * \param BackEmf
+   * \return Код результата операции
+   */
+  int setBackEmf(double BackEmf);
 
-		// МЕТОД ЗАДАНИЯ МАКСИМАЛЬНОГО ЗНАЧЕНИЯ ЧАСТОТЫ
-		// Записывает в Modbus устройства значение из банка параметров ЧРП
-		int setMaxFrequency();
+  /*!
+   * \brief setCurrentLim
+   * Метод задания предела тока
+   * \return Код результата операции
+   */
+  int setCurrentLim(double CurrentLim);
 
-		// МЕТОД ЗАДАНИЯ МАКСИМАЛЬНОГО ЗНАЧЕНИЯ ЧАСТОТЫ
-		// Записывает в Modbus устройства значение указанное в параметре
-		int setMaxFrequency(float MaxFrequency);
+  /*!
+   * \brief setDAxisIndunstance
+   * Метод задания индуктивности
+   * \param Indunstance
+   * \return Код результата операции
+   */
+  int setDAxisIndunstance(double Indunstance);
 
-		// МЕТОД ЗАДАНИЯ ПРЯМОГО НАПРАВЛЕНИЯ ВРАЩЕНИЯ
-		int setDirectRotation();
+  /*!
+   * \brief setFilterTimeCurrentLim
+   * Метод задания времени фильтрации
+   * \param FilterTimeCurrentLim
+   * \return Код результата операции
+   */
+  int setFilterTimeCurrentLim(double FilterTimeCurrentLim);
 
-		// МЕТОД ЗАДАНИЯ ОБРАТНОГО НАПРАВЛЕНИЯ ВРАЩЕНИЯ
-		int setReverseRotation();
+  /*!
+   * \brief setHighSpeedFilterTimeCurrentLim
+   * Метод задания времени фильтрации на высокой скорости
+   * \param HighSpeedFilterTimeCurrentLim
+   * \return Код результата операции
+   */
+  int setHighSpeedFilterTimeCurrentLim(double HighSpeedFilterTimeCurrentLim);
 
-		// МЕТОД ЗАДАНИЯ ТЕМПА РАЗГОНА
-		// Записывает в Modbus устройства значение из банка параметров ЧРП
-		int setSpeedUp();
+  /*!
+   * \brief setPolesMotor
+   * Метод задания количества полюсов
+   * \param PolesMotor
+   * \return Код результата операции
+   */
+  int setPolesMotor(double PolesMotor);
 
-		// МЕТОД ЗАДАНИЯ ТЕМПА РАЗГОНА
-		// Записывает в Modbus устройства значение указанное в параметр
-		int setSpeedUp(float SpeedUp);
+  /*!
+   * \brief setRateTorqueMotor
+   * Метод задания номинального момента двигателя
+   * \param RateTorqueMotor
+   * \return Код результата операции
+   */
+  int setRateTorqueMotor(double RateTorqueMotor);
 
-		// МЕТОД ЗАДАНИЯ ТЕМПА ЗАМЕДЛЕНИЯ
-		// Записывает в Modbus устройства значение из банка параметров ЧРП
-		int setSpeedDown();
+  /*!
+   * \brief setResistanceStator
+   * Метод задания сопротивления статора
+   * \param ResistanceStator
+   * \return Код результата операции
+   */
+  int setResistanceStator(double ResistanceStator);
 
-		// МЕТОД ЗАДАНИЯ ТЕМПА ЗАМЕДЛЕНИЯ
-		// Записывает в Modbus устройства значение указанное в параметрe
-		int setSpeedDown(float SpeedDown);
+  /*!
+   * \brief setSpeedMotor
+   * Метод записи скорости вращения двигателя
+   * \param SpeedMotor
+   * \return Код результата операции
+   */
+  int setSpeedMotor(double SpeedMotor);
 
-		// МЕТОД ЗАДАНИЯ ПРОТИВОЭДС
-		// Записывает в Modbus устройства значение из банка параметров ЧРП
-		int setBackEmf();
+  /*!
+   * \brief setSwitchingFrequency
+   * Метод задания частоты коммутации ШИМ
+   * \param SwitchingFrequency
+   * \return Код результата операции
+   */
+  int setSwitchingFrequency(double SwitchingFrequency);
 
-		// МЕТОД ЗАДАНИЯ ПРОТИВОЭДС
-		// Записывает в Modbus устройства значение указанное в параметре
-		int setBackEmf(float BackEmf);
+  /*!
+   * \brief setTorqueLimit
+   * Метод задания момента
+   * \param TorqueLimit
+   * \return Код результата операции
+   */
+  int setTorqueLimit(double TorqueLimit);
 
-		// МЕТОД ЗАДАНИЯ ПРЕДЕЛА ТОКА
-		// Записывает в Modbus устройства значение из банка параметров ЧРП
-		int setCurrentLim();
-
-		// МЕТОД ЗАДАНИЯ ПРЕДЕЛА ТОКА
-		// Записывает в Modbus устройства значение указанное в параметре
-		int setCurrentLim(float CurrentLim);
-
-		// МЕТОД ЗАДАНИЯ ИНДУКТИВНОСТИ
-		// Записывает в Modbus устройства значение из банка параметров ЧРП
-		int setDAxisIndunstance();
-
-		// МЕТОД ЗАДАНИЯ ИНДУКТИВНОСТИ
-		// Записывает в Modbus устройства значение указанное в параметре
-		int setDAxisIndunstance(float Indunstance);
-
-		// МЕТОД ЗАДАНИЯ ВРЕМЕНИ ФИЛЬТРАЦИИ
-		// Записывает в Modbus устройства значение из банка параметров ЧРП
-		int setFilterTimeCurrentLim();
-
-		// МЕТОД ЗАДАНИЯ ВРЕМЕНИ ФИЛЬТРАЦИИ
-		// Записывает в Modbus устройства значение указанное в параметре
-		int setFilterTimeCurrentLim(float FilterTimeCurrentLim);
-
-		// МЕТОД ЗАДАНИЯ ВРЕМЕНИ ФИЛЬТРАЦИИ НА ВЫСОКОЙ СКОРОСТИ
-		// Записывает в Modbus устройства значение из банка параметров ЧРП
-		int seHighSpeedtFilterTimeCurrentLim();
-
-		// МЕТОД ЗАДАНИЯ ВРЕМЕНИ ФИЛЬТРАЦИИ НА ВЫСОКОЙ СКОРОСТИ
-		// Записывает в Modbus устройства значение указанное в параметре
-		int setHighSpeedFilterTimeCurrentLim(float HighSpeedFilterTimeCurrentLim);
-
-		// МЕТОД ЗАДАНИЯ КОЛИЧЕСТВА ПОЛЮСОВ
-		// Записывает в Modbus устройства значение из банка параметров ЧРП
-		int setPolesMotor();
-
-		// МЕТОД ЗАДАНИЯ КОЛИЧЕСТВА ПОЛЮСОВ
-		// Записывает в Modbus устройства значение указанное в параметр
-		int setPolesMotor(float PolesMotor);
-
-		// МЕТОД ЗАДАНИЯ ДЛИТЕЛЬНОГО НОМИНАЛЬНОГО МОМЕНТА ДВИГАТЕЛЯ
-		// Записывает в Modbus устройства значение из банка параметров ЧРП
-		int setRateTorqueMotor();
-
-		// МЕТОД ЗАДАНИЯ ДЛИТЕЛЬНОГО НОМИНАЛЬНОГО МОМЕНТА ДВИГАТЕЛЯ
-		// Записывает в Modbus устройства значение указанное в параметр
-		int setRateTorqueMotor(float RateTorqueMotor);
-
-		// МЕТОД ЗАДАНИЯ СОПРОТИВЛЕНИЯ СТАТОРА
-		// Записывает в Modbus устройства значение из банка параметров ЧРП
-		int setResistanceStator();
-
-		// МЕТОД ЗАДАНИЯ СОПРОТИВЛЕНИЯ СТАТОРА
-		// Записывает в Modbus устройства значение указанное в параметр
-		int setResistanceStator(float ResistanceStator);
-
-		// МЕТОД ЗАДАНИЯ СКОРОСТИ ВРАЩЕНИЯ ДВИГАТЕЛЯ
-		// Записывает в Modbus устройства значение из банка параметров ЧРП
-		int setSpeedMotor();
-
-		// МЕТОД ЗАДАНИЯ СКОРОСТИ ВРАЩЕНИЯ ДВИГАТЕЛЯ
-		// Записывает в Modbus устройства значение указанное в параметр
-		int setSpeedMotor(float SpeedMotor);
-
-		// МЕТОД ЗАДАНИЯ ЧАСТОТЫ КОММУТАЦИИ
-		// Записывает в Modbus устройства значение из банка параметров ЧРП
-		int setSwitchingFrequency();
-
-		/// МЕТОД ЗАДАНИЯ ЧАСТОТЫ КОММУТАЦИИ
-		// Записывает в Modbus устройства значение указанное в параметр
-		int setSwitchingFrequency(float SwitchingFrequency);
-
-		// МЕТОД ЗАДАНИЯ МОМЕНТА
-		// Записывает в Modbus устройства значение из банка параметров ЧРП
-		int setTorqueLimit();
-
-		/// МЕТОД ЗАДАНИЯ МОМЕНТА
-		// Записывает в Modbus устройства значение указанное в параметр
-		int setTorqueLimit(float TorqueLimit);
-
-		// ФУНКЦИИ УПРАВЛЕНИЯ РЕЖИМАМИ?
-
-	protected:
+protected:
 
 };
 

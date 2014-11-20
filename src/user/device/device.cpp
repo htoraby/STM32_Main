@@ -8,13 +8,13 @@
 #include "device.h"
 #include "service.h"
 
-/* Конструктор класса */
+// Конструктор класса
 Device::Device()
 {
   // TODO Auto-generated constructor stub
 }
 
-/* Деструктор класса */
+// Деструктор класса
 Device::~Device()
 {
   // TODO Auto-generated destructor stub
@@ -125,30 +125,59 @@ int Device::setCheckValue(int ID, double Value)
   return RETURN_OK;
 }
 
+// Функция присвоения уровня доступа с проверкой уровня
 int Device::setCheckAccess(int ID, int Access)
 {
-
-  return RETURN_OK;
+  if (checkRange(Access, ACCESS_ERROR, ACCESS_LAST, 0)) {
+    setAccess(ID, Access);
+    return RETURN_OK;
+  }
+  else
+    return RETURN_ERROR_ACCESS_VALUE;
 }
 
+// Функция присвоения операции с проверкой
 int Device::setCheckOperation(int ID, int Operation)
 {
-  return RETURN_OK;
+  if (checkRange(Operation, OPERATION_ERROR, OPERATION_LAST, 0)) {
+    setOperation(ID, Operation);
+    return RETURN_OK;
+  }
+  else
+    return RETURN_ERROR_OPERATION_VALUE;
 }
 
+// Функция присвоения физической величиный с проверкой
 int Device::setCheckPhysic(int ID, int Physic)
 {
-  return RETURN_OK;
+  if (checkRange(Physic, PHYSIC_ERROR, PHYSIC_LAST, 0)) {
+    setPhysic(ID, Physic);
+    return RETURN_OK;
+  }
+  else
+    return RETURN_ERROR_PHYSIC_VALUE;
 }
 
+// Функция присвоения валидности с проверкой
 int Device::setCheckValidity(int ID, int Validity)
 {
-  return RETURN_OK;
+  if (checkRange(Validity, VALIDITY_ERROR, VALIDITY_LAST, 0)) {
+    setValidity(ID, Validity);
+    return RETURN_OK;
+  }
+  else
+    return RETURN_ERROR_VALIDITY_VALUE;
 }
 
+// Функция присвоения новизны с проверкой
 int Device::setCheckUpdate(int ID, int Update)
 {
-  return RETURN_OK;
+  if (checkRange(Update, UPDATE_ERROR, UPDATE_LAST, 0)) {
+    setUpdate(ID, Update);
+    return RETURN_OK;
+  }
+  else
+    return RETURN_ERROR_UPDATE_VALUE;
 }
 
 // PROTECTED МЕТОДЫ КЛАССА
@@ -401,42 +430,7 @@ void Device::setDefaultIndex(int Index, double Default)
   Parameters[Index].Default = Default;
 }
 
-
-
-// Функция получения значения поля ShiftID класса Device
-int Device::getShiftID()
-{
-  return ShiftID;
-}
-
-// Функция присвоения значения поля поля ShiftID класса Device
-void Device::setShiftID(int Shift)
-{
-  ShiftID = Shift;
-}
-
-// Функция получения значения поля класса Quantity
-int Device::getNumberElementArray()
-{
-  return NumberElementArray;
-}
-
-// Функция присвоения значения поля Device NumberElementArray
-
-void Device::setNumberElementArray(int Number)
-{
-  NumberElementArray = Number;
-}
-
-// Базовые методы работы со с массивом параметров Parameters эти методы
-// работают с индексом параметра в массиве параметров
-
-
-
-
-
-
-
+// МЕТОДЫ ДЛЯ ПОИСКА ИНДЕКСА ЭЛЕМЕНТА МАССИВА С НУЖНЫМ ID
 // Функция поиска в массиве Parameters[] индекса записи с полем ID
 int Device::searchIndex(int ID)
 {
@@ -480,4 +474,34 @@ int Device::getIndex(int ID)
     Index = searchIndex(ID);
   // Возвращаем
   return Index;
+}
+
+// МЕТОДЫ ДЛЯ РАБОТЫ С ЗАКРЫТЫМИ ЧЛЕНАМИ КЛАССА
+// Функция получения значения поля ShiftID класса Device
+int Device::getShiftID()
+{
+  return ShiftID;
+}
+
+// Функция присвоения значения поля поля ShiftID класса Device
+void Device::setShiftID(int Shift)
+{
+  ShiftID = Shift;
+}
+
+// Функция получения значения поля класса Quantity
+int Device::getNumberElementArray()
+{
+  return NumberElementArray;
+}
+
+// Функция присвоения значения поля Device NumberElementArray
+void Device::setNumberElementArray(int Number)
+{
+  NumberElementArray = Number;
+}
+
+void Device::initParameters()
+{
+  return;
 }

@@ -10,13 +10,12 @@
 
 union DataType
 {
-  unsigned char      DtChar[8];
-  signed short int   DtInt16[4];
-  signed long int    DtInt32[2];
-  unsigned short int DtUint16[4];
-  unsigned long int  DtUint32[2];
-  float              DtFloat[2];
-  double             DtDouble;
+  unsigned char      DtChar[4];
+  signed short int   DtInt16[2];
+  signed long int    DtInt32;
+  unsigned short int DtUint16[2];
+  unsigned long int  DtUint32;
+  float              DtFloat;
 };
 
 enum enTypeData {
@@ -27,7 +26,6 @@ enum enTypeData {
   TYPE_DATA_UINT16 = 4,
   TYPE_DATA_UINT32 = 5,
   TYPE_DATA_FLOAT  = 6,
-  TYPE_DATA_DOUBLE = 7,
   TYPE_DATA_LAST
 };
 

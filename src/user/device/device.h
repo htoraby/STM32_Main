@@ -12,9 +12,9 @@
 #include "define.h"
 
 /*!
-\struct Parameter
-Структура для обработки и хранения параметров в станции управления
-*/
+ * \brief The Parameter struct
+ * Структура для обработки и хранения параметров в станции управления
+ */
 struct Parameter
 {
   /// Уникальный идентификатор параметра заменяет название параметра равен
@@ -37,22 +37,22 @@ struct Parameter
   int Update;
   /// Значение параметра, для единообразия значения всех параметров будем
   /// хранить в типе double
-  double Value;
+  float Value;
   /// Минимально допустимое значение для этого параметра. Используется для
   /// вывода диапазона значений на экран и проверке вводимых значений
-  double Minimum;
+  float Minimum;
   /// Максимально допустимое значение для этого параметра. Используется для
   /// вывода диапазона значений на экран и проверке вводимых значений
-  double Maximum;
+  float Maximum;
   /// Значение по умолчанию
-  double Default;
+  float Default;
 };
 
 /*!
-\class Device
-Базовый класс для всех устройств в системе содержит банк параметров
-устройства во внутреннем представлении и набором методов для работы с ними
-*/
+ * \brief The Device class
+ * Базовый класс для всех устройств в системе содержит банк параметров
+ * устройства во внутреннем представлении и набором методов для работы с ними
+ */
 class Device
 {
 // ОТКРЫТЫЕ ЧЛЕНЫ КЛАССА
@@ -61,6 +61,8 @@ public:
   Device();
   /// Деструктор класса
   virtual ~Device();
+
+  virtual void initParameters();
 
   // ОСНОВНЫЕ PUBLIC МЕТОДЫ КЛАССА
   // ЧТЕНИЕ ПАРАМЕТРА, ЗНАЧЕНИЯ И ДРУГИХ ПОЛЕЙ С ПРОВЕРКАМИ
@@ -147,41 +149,46 @@ public:
 
   /*!
    * \brief setCheckAccess
-   * \param ID
-   * \param Access
-   * \return
+   * Функция присвоения уровня доступа с проверкой
+   * \param ID - уникальный идентификатор параметра
+   * \param Access - код уровня доступа
+   * \return 0 - операция выполнена или # код ошибки
    */
   int setCheckAccess(int ID, int Access);
 
   /*!
    * \brief setCheckOperation
-   * \param ID
-   * \param Operation
-   * \return
+   * Функция присвоения операций с проверкой
+   * \param ID - уникальный идентификатор параметра
+   * \param Operation код операций
+   * \return 0 - операция выполнена или # код ошибки
    */
   int setCheckOperation(int ID, int Operation);
 
   /*!
    * \brief setCheckPhysic
-   * \param ID
-   * \param Physic
-   * \return
+   * Функция присвоения физической величиный с проверкой
+   * \param ID - уникальный идентификатор параметра
+   * \param Physic код физической величины
+   * \return 0 - операция выполнена или # код ошибки
    */
   int setCheckPhysic(int ID, int Physic);
 
   /*!
    * \brief setCheckValidity
-   * \param ID
-   * \param Validity
-   * \return
+   * Функция присвоения валидности с проверкой
+   * \param ID - уникальный идентификатор параметра
+   * \param Validity - код валидности
+   * \return 0 - операция выполнена или # код ошибки
    */
   int setCheckValidity(int ID, int Validity);
 
   /*!
    * \brief setCheckUpdate
-   * \param ID
-   * \param Update
-   * \return
+   * Функция присвоения новизны с проверкой
+   * \param ID - уникальный идентификатор параметра
+   * \param Update - код обновления
+   * \return 0 - операция выполнена или # код ошибки
    */
   int setCheckUpdate(int ID, int Update);
 
@@ -526,73 +533,63 @@ protected:
    */
   void setDefaultIndex(int Index, double Default);
 
-
-
-
-
-  // Базовые методы работы c параметрами использующие ID и внутри вызывающие
-  // методы для работы с Index в массиве параметров
-
+  // МЕТОДЫ ДЛЯ ПОИСКА ИНДЕКСА ЭЛЕМЕНТА МАССИВА С НУЖНЫМ ID
   /*!
-  \function searchIndex
-  Функция поиска в массиве Parameters[] индекса записи с полем ID
-  раным указанному в параметре
-  \param int ID - уникальный идентификатор параметра
-  \return 0 - не найден индекс записи
-  */
+   * \brief searchIndex
+   * Функция поиска в массиве Parameters[] индекса записи с полем ID
+   * \param ID - уникальный идентификатор параметра
+   * \return 0 - не найден индекс записи
+   */
   int searchIndex(int ID);
 
   /*!
-  \function checkIndex
-  Функция проверки содержится ли в элементе массива с ID - Shift
-  запись с указанным ID
-  \param int ID - уникальный идентификатор параметра
-  */
+   * \brief checkIndex
+   * Функция проверки содержится ли в элементе массива с ID - Shift запись с указанным ID
+   * \param ID - уникальный идентификатор параметра
+   * \return 0 - не найден индекс записи
+   */
   int checkIndex(int ID);
 
   /*!
-  \function getIndex
-  Функция получения индекса параметра с указанным ID
-  \param int ID - уникальный идентификатор параметра
-  */
+   * \brief getIndex
+   * Функция получения индекса параметра с указанным ID
+   * \param ID - уникальный идентификатор параметра
+   * \return 0 - не найден индекс записи
+   */
   int getIndex(int ID);
 
+  // МЕТОДЫ ДЛЯ РАБОТЫ С ЗАКРЫТЫМИ ЧЛЕНАМИ КЛАССА
   /*!
-    \function getShiftID
-    Функция получения значения поля ShiftID класса Device
-    \return Значение ShiftID класса Device
-  */
+   * \brief getShiftID
+   * Функция получения значения поля ShiftID класса Device
+   * \return Значение ShiftID класса Device
+   */
   int getShiftID();
 
   /*!
-    \function setShiftID
-    Функция присвоения значения поля поля ShiftID класса Device
-    \param int Shift - присваиваемое значение полю ShiftID класса Device
-  */
+   * \brief setShiftID
+   * Функция присвоения значения поля поля ShiftID класса Device
+   * \param Shift - присваиваемое значение полю ShiftID класса Device
+   */
   void setShiftID(int Shift);
 
   /*!
-  \function getNumberElementArray
-  Функция получения значения поля Device NumberElementArray
-  \return Значение поля Device NumberElementArray
-  */
+   * \brief getNumberElementArray
+   * Функция получения значения поля Device NumberElementArray
+   * \return Значение поля Device NumberElementArray
+   */
   int getNumberElementArray();
 
   /*!
-  \function setNumberElementArray
-  Функция присвоения значения поля Device NumberElementArray
-  \param int Number - присваиваемое значение полю Device NumberElementArray
-  */
+   * \brief setNumberElementArray
+   * Функция присвоения значения поля Device NumberElementArray
+   * \param Number - присваиваемое значение полю Device NumberElementArray
+   */
   void setNumberElementArray(int Number);
 
-  // Базовые методы работы со с массивом параметров Parameters эти методы
-  // работают с индексом параметра в массиве параметров
-
-
-
-
-
+// ЗАКРЫТЫЕ ЧЛЕНЫ КЛАССА
 private:
+
 };
 
 #endif /* DEVICE_H_ */
