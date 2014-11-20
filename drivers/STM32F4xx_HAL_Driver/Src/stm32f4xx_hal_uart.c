@@ -827,7 +827,7 @@ HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData,
     
     huart->pRxBuffPtr = pData;
     huart->RxXferSize = Size;
-    huart->RxXferCount = Size;
+    huart->RxXferCount = 0;
     
     huart->ErrorCode = HAL_UART_ERROR_NONE;
     /* Check if a transmit process is ongoing or not */
@@ -1157,7 +1157,7 @@ void HAL_UART_IRQHandler(UART_HandleTypeDef *huart)
     UART_Receive_IT(huart);
     __HAL_UART_CLEAR_FLAG(huart, UART_FLAG_RXNE);
   }
-  
+
   tmp1 = __HAL_UART_GET_FLAG(huart, UART_FLAG_TC);
   tmp2 = __HAL_UART_GET_IT_SOURCE(huart, UART_IT_TC);
   /* UART in mode Transmitter ------------------------------------------------*/
@@ -1173,7 +1173,7 @@ void HAL_UART_IRQHandler(UART_HandleTypeDef *huart)
     huart->State = HAL_UART_STATE_READY;
     
     HAL_UART_ErrorCallback(huart);
-  }  
+  }
 }
 
 /**
@@ -1578,10 +1578,10 @@ static HAL_StatusTypeDef UART_WaitOnFlagUntilTimeout(UART_HandleTypeDef *huart, 
         if(HAL_GetTick() >= timeout)
         {
           /* Disable TXE, RXNE, PE and ERR (Frame error, noise error, overrun error) interrupts for the interrupt process */
-          __HAL_UART_DISABLE_IT(huart, UART_IT_TXE);
-          __HAL_UART_DISABLE_IT(huart, UART_IT_RXNE);
-          __HAL_UART_DISABLE_IT(huart, UART_IT_PE);
-          __HAL_UART_DISABLE_IT(huart, UART_IT_ERR);
+//          __HAL_UART_DISABLE_IT(huart, UART_IT_TXE);
+//          __HAL_UART_DISABLE_IT(huart, UART_IT_RXNE);
+//          __HAL_UART_DISABLE_IT(huart, UART_IT_PE);
+//          __HAL_UART_DISABLE_IT(huart, UART_IT_ERR);
 
           huart->State= HAL_UART_STATE_READY;
 
@@ -1603,10 +1603,10 @@ static HAL_StatusTypeDef UART_WaitOnFlagUntilTimeout(UART_HandleTypeDef *huart, 
         if(HAL_GetTick() >= timeout)
         {
           /* Disable TXE, RXNE, PE and ERR (Frame error, noise error, overrun error) interrupts for the interrupt process */
-          __HAL_UART_DISABLE_IT(huart, UART_IT_TXE);
-          __HAL_UART_DISABLE_IT(huart, UART_IT_RXNE);
-          __HAL_UART_DISABLE_IT(huart, UART_IT_PE);
-          __HAL_UART_DISABLE_IT(huart, UART_IT_ERR);
+//          __HAL_UART_DISABLE_IT(huart, UART_IT_TXE);
+//          __HAL_UART_DISABLE_IT(huart, UART_IT_RXNE);
+//          __HAL_UART_DISABLE_IT(huart, UART_IT_PE);
+//          __HAL_UART_DISABLE_IT(huart, UART_IT_ERR);
 
           huart->State= HAL_UART_STATE_READY;
 
@@ -1705,7 +1705,8 @@ static HAL_StatusTypeDef UART_Receive_IT(UART_HandleTypeDef *huart)
   uint32_t tmp1 = 0;
   
   tmp1 = huart->State; 
-  if((tmp1 == HAL_UART_STATE_BUSY_RX) || (tmp1 == HAL_UART_STATE_BUSY_TX_RX))
+  if((tmp1 == HAL_UART_STATE_BUSY_RX) || (tmp1 == HAL_UART_STATE_BUSY_TX_RX) ||
+     (tmp1 == HAL_UART_STATE_READY))
   {
     /* Process Locked */
     __HAL_LOCK(huart);
@@ -1735,39 +1736,43 @@ static HAL_StatusTypeDef UART_Receive_IT(UART_HandleTypeDef *huart)
         *huart->pRxBuffPtr++ = (uint8_t)(huart->Instance->DR & (uint8_t)0x007F);
       }
     }
+
+    huart->RxXferCount++;
     
-    if(--huart->RxXferCount == 0)
-    {
-      while(HAL_IS_BIT_SET(huart->Instance->SR, UART_FLAG_RXNE))
-      {
-      }
-      __HAL_UART_DISABLE_IT(huart, UART_IT_RXNE);
+//    if(--huart->RxXferCount == 0)
+//    {
+//      while(HAL_IS_BIT_SET(huart->Instance->SR, UART_FLAG_RXNE))
+//      {
+//      }
+//      __HAL_UART_DISABLE_IT(huart, UART_IT_RXNE);
       
-      /* Check if a transmit process is ongoing or not */
-      if(huart->State == HAL_UART_STATE_BUSY_TX_RX) 
-      {
-        huart->State = HAL_UART_STATE_BUSY_TX;
-      }
-      else
-      {
-        /* Disable the UART Parity Error Interrupt */
-        __HAL_UART_DISABLE_IT(huart, UART_IT_PE);
+//      /* Check if a transmit process is ongoing or not */
+//      if(huart->State == HAL_UART_STATE_BUSY_TX_RX)
+//      {
+//        huart->State = HAL_UART_STATE_BUSY_TX;
+//      }
+//      else
+//      {
+//        /* Disable the UART Parity Error Interrupt */
+//        __HAL_UART_DISABLE_IT(huart, UART_IT_PE);
         
-        /* Disable the UART Error Interrupt: (Frame error, noise error, overrun error) */
-        __HAL_UART_DISABLE_IT(huart, UART_IT_ERR);
+//        /* Disable the UART Error Interrupt: (Frame error, noise error, overrun error) */
+//        __HAL_UART_DISABLE_IT(huart, UART_IT_ERR);
         
-        huart->State = HAL_UART_STATE_READY;
-      }
-      /* Call the Process Unlocked before calling the Rx callback API to give the possibility to
-         start again the reception under the Rx callback API */
-      __HAL_UNLOCK(huart);
+//        huart->State = HAL_UART_STATE_READY;
+//      }
+//      /* Call the Process Unlocked before calling the Rx callback API to give the possibility to
+//         start again the reception under the Rx callback API */
+//      __HAL_UNLOCK(huart);
       
-      HAL_UART_RxCpltCallback(huart);
+//      HAL_UART_RxCpltCallback(huart);
       
-      return HAL_OK;
-    }
+//      return HAL_OK;
+//    }
     /* Process Unlocked */
     __HAL_UNLOCK(huart);
+
+    HAL_UART_RxCpltCallback(huart);
     
     return HAL_OK;
   }

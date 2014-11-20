@@ -35,6 +35,7 @@
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx.h"
 #include "stm32f4xx_it.h"
+#include "uart.h"
 
 /* External variables --------------------------------------------------------*/
  
@@ -53,6 +54,36 @@ void OTG_FS_IRQHandler(void)
 {
   HAL_NVIC_ClearPendingIRQ(OTG_FS_IRQn);
   HAL_HCD_IRQHandler(&hhcd_USB_OTG_FS);
+}
+
+void USART1_IRQHandler(void)
+{
+  HAL_UART_IRQHandler(&uarts[uart1].uart);
+}
+
+void USART2_IRQHandler(void)
+{
+  HAL_UART_IRQHandler(&uarts[uart2].uart);
+}
+
+void USART3_IRQHandler(void)
+{
+  HAL_UART_IRQHandler(&uarts[uart3].uart);
+}
+
+void USART6_IRQHandler(void)
+{
+  HAL_UART_IRQHandler(&uarts[uart6].uart);
+}
+
+void UART4_IRQHandler(void)
+{
+  HAL_UART_IRQHandler(&uarts[uart4].uart);
+}
+
+void UART7_IRQHandler(void)
+{
+  HAL_UART_IRQHandler(&uarts[uart7].uart);
 }
 
 /**

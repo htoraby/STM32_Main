@@ -661,7 +661,7 @@ osSemaphoreId osSemaphoreCreate (osSemaphoreDef_t *semaphore_def, int32_t count)
   * @retval  number of available tokens, or -1 in case of incorrect parameters.
   * @note   MUST REMAIN UNCHANGED: \b osSemaphoreWait shall be consistent in every CMSIS-RTOS.
   */
-int32_t osSemaphoreWait (osSemaphoreId semaphore_id, uint32_t millisec);
+osStatus osSemaphoreWait(osSemaphoreId semaphore_id, uint32_t millisec);
 
 /**
   * @brief Release a Semaphore token
