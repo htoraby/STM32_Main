@@ -589,6 +589,7 @@ HAL_StatusTypeDef HAL_SPI_Receive(SPI_HandleTypeDef *hspi, uint8_t *pData, uint1
 
       /* Read CRC to Flush RXNE flag */
       tmpreg = hspi->Instance->DR;
+      if (tmpreg) asm("nop");
     }
     
     if((hspi->Init.Mode == SPI_MODE_MASTER)&&((hspi->Init.Direction == SPI_DIRECTION_1LINE)||(hspi->Init.Direction == SPI_DIRECTION_2LINES_RXONLY)))
@@ -758,28 +759,28 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive(SPI_HandleTypeDef *hspi, uint8_t *pTxD
     else
     {
 
-      hspi->Instance->DR = (*hspi->pTxBuffPtr++);
-      hspi->TxXferCount--;
+//      hspi->Instance->DR = (*hspi->pTxBuffPtr++);
+//      hspi->TxXferCount--;
 
-      if(hspi->TxXferCount == 0)
-      {
-        /* Enable CRC Transmission */
-        if(hspi->Init.CRCCalculation == SPI_CRCCALCULATION_ENABLED)
-        {
-          hspi->Instance->CR1 |= SPI_CR1_CRCNEXT;
-        }
+//      if(hspi->TxXferCount == 0)
+//      {
+//        /* Enable CRC Transmission */
+//        if(hspi->Init.CRCCalculation == SPI_CRCCALCULATION_ENABLED)
+//        {
+//          hspi->Instance->CR1 |= SPI_CR1_CRCNEXT;
+//        }
 
-        /* Wait until RXNE flag is set */
-        if(SPI_WaitOnFlagUntilTimeout(hspi, SPI_FLAG_RXNE, RESET, Timeout) != HAL_OK)
-        {
-          return HAL_TIMEOUT;
-        }
+//        /* Wait until RXNE flag is set */
+//        if(SPI_WaitOnFlagUntilTimeout(hspi, SPI_FLAG_RXNE, RESET, Timeout) != HAL_OK)
+//        {
+//          return HAL_TIMEOUT;
+//        }
 
-        (*hspi->pRxBuffPtr) = hspi->Instance->DR;
-        hspi->RxXferCount--;
-      }
-      else
-      {
+//        (*hspi->pRxBuffPtr) = hspi->Instance->DR;
+//        hspi->RxXferCount--;
+//      }
+//      else
+//      {
         while(hspi->TxXferCount > 0)
         {
           /* Wait until TXE flag is set to send data */
@@ -807,15 +808,15 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive(SPI_HandleTypeDef *hspi, uint8_t *pTxD
           hspi->RxXferCount--;
         }
 
-        /* Wait until RXNE flag is set */
-        if(SPI_WaitOnFlagUntilTimeout(hspi, SPI_FLAG_RXNE, RESET, Timeout) != HAL_OK)
-        {
-          return HAL_TIMEOUT;
-        }
+//        /* Wait until RXNE flag is set */
+//        if(SPI_WaitOnFlagUntilTimeout(hspi, SPI_FLAG_RXNE, RESET, Timeout) != HAL_OK)
+//        {
+//          return HAL_TIMEOUT;
+//        }
 
-        (*hspi->pRxBuffPtr++) = hspi->Instance->DR;
-        hspi->RxXferCount--;
-      }
+//        (*hspi->pRxBuffPtr++) = hspi->Instance->DR;
+//        hspi->RxXferCount--;
+//      }
     }
 
     /* Read CRC from DR to close CRC calculation process */
@@ -829,6 +830,7 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive(SPI_HandleTypeDef *hspi, uint8_t *pTxD
       }
       /* Read CRC */
       tmpreg = hspi->Instance->DR;
+      if (tmpreg) asm("nop");
     }
 
     /* Wait until Busy flag is reset before disabling SPI */
@@ -1630,6 +1632,7 @@ static void SPI_RxCloseIRQHandler(SPI_HandleTypeDef *hspi)
 
     /* Read CRC to reset RXNE flag */
     tmpreg = hspi->Instance->DR;
+    if (tmpreg) asm("nop");
 
     /* Wait until RXNE flag is set to send data */
     if(SPI_WaitOnFlagUntilTimeout(hspi, SPI_FLAG_RXNE, SET, SPI_TIMEOUT_VALUE) != HAL_OK)
@@ -1823,6 +1826,7 @@ static void SPI_DMAReceiveCplt(DMA_HandleTypeDef *hdma)
 
     /* Read CRC */
     tmpreg = hspi->Instance->DR;
+    if (tmpreg) asm("nop");
 
     /* Wait until RXNE flag is set to send data */
     if(SPI_WaitOnFlagUntilTimeout(hspi, SPI_FLAG_RXNE, SET, SPI_TIMEOUT_VALUE) != HAL_OK)
@@ -1877,6 +1881,7 @@ static void SPI_DMATransmitReceiveCplt(DMA_HandleTypeDef *hdma)
     }
     /* Read CRC */
     tmpreg = hspi->Instance->DR;
+    if (tmpreg) asm("nop");
   }
 
   /* Wait until TXE flag is set to send data */

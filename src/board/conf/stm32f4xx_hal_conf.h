@@ -70,7 +70,7 @@
 #define HAL_RTC_MODULE_ENABLED
 //#define HAL_SAI_MODULE_ENABLED   
 //#define HAL_SD_MODULE_ENABLED   
-//#define HAL_SPI_MODULE_ENABLED   
+#define HAL_SPI_MODULE_ENABLED
 //#define HAL_TIM_MODULE_ENABLED   
 #define HAL_UART_MODULE_ENABLED
 //#define HAL_USART_MODULE_ENABLED
@@ -127,7 +127,7 @@
   */     
   
 #define  VDD_VALUE					  ((uint32_t)3300) /*!< Value of VDD in mv */           
-#define  USE_RTOS                     0     
+#define  USE_RTOS                     0
 #define  PREFETCH_ENABLE              1
 #define  INSTRUCTION_CACHE_ENABLE     1
 #define  DATA_CACHE_ENABLE            1
