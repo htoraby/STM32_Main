@@ -20,6 +20,7 @@
 #include "gpio.h"
 #include "rtc.h"
 #include "sram.h"
+#include "fram.h"
 
 /* Private function prototypes -----------------------------------------------*/
 static void systemClockConfig();
@@ -41,6 +42,7 @@ int main()
   gpioInit();
   sramInit();
   rtcInit();
+  framInit();
 
   flagMcuInit = true;
 

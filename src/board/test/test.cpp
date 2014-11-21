@@ -4,9 +4,12 @@
 #include "uart.h"
 #include "gpio.h"
 #include "rtc.h"
+#include "fram.h"
 
 static void testThread(void const * argument);
 static void testUartThread(void const * argument);
+static void testRtc();
+static void testFram();
 
 #define UPLOAD_FILENAME "0:test.tmp"
 
@@ -45,25 +48,8 @@ static void testThread(void const * argument)
   uart_setSemaphoreId(uart2, semaphoreUart);
 #endif
 
-#if (TEST_RTC == 1)
-  DateTimeTypeDef dateTime;
-  //! Установка даты и времени
-  dateTime.month = 11;
-  dateTime.date = 6;
-  dateTime.year = 14;
-  dateTime.hours = 17;
-  dateTime.minutes = 21;
-  dateTime.seconds = 10;
-  dateTime.mseconds = 0;
-  setDateTime(dateTime);
-  osDelay(1000);
-  getDateTime(&dateTime);
-  if ((dateTime.month != 11) || (dateTime.date != 6) || (dateTime.year != 14) ||
-      (dateTime.hours != 17) || (dateTime.minutes != 21) ||
-      (dateTime.seconds != 11)) {
-    asm("nop");
-  }
-#endif
+  testRtc();
+  testFram();
 
   while(1) {
 #if (TEST_USB_FAT == 1)
@@ -155,4 +141,52 @@ static void testUartThread(void const * argument)
       }
     }
   }
+}
+
+static void testRtc()
+{
+#if (TEST_RTC == 1)
+  DateTimeTypeDef dateTime;
+  //! Установка даты и времени
+  dateTime.month = 11;
+  dateTime.date = 6;
+  dateTime.year = 14;
+  dateTime.hours = 17;
+  dateTime.minutes = 21;
+  dateTime.seconds = 10;
+  dateTime.mseconds = 0;
+  setDateTime(dateTime);
+  osDelay(1000);
+  getDateTime(&dateTime);
+  if ((dateTime.month != 11) || (dateTime.date != 6) || (dateTime.year != 14) ||
+      (dateTime.hours != 17) || (dateTime.minutes != 21) ||
+      (dateTime.seconds != 11)) {
+    asm("nop");
+  }
+#endif
+}
+
+static void testFram()
+{
+#if (TEST_FRAM == 1)
+  uint8_t bufferTx[10];
+  uint8_t bufferRx[10];
+
+  bufferTx[0] = 0x21;
+  bufferTx[1] = 0xAA;
+  bufferTx[2] = 0x00;
+  bufferTx[3] = 0x00;
+  bufferTx[4] = 0x00;
+  bufferTx[5] = 0x33;
+  bufferTx[6] = 0x00;
+  bufferTx[7] = 0x00;
+  bufferTx[8] = 0x55;
+  bufferTx[9] = 0x12;
+  framWriteData(10, bufferTx, 10);
+  framReadData(10, bufferRx, 10);
+
+  if (memcmp(bufferTx, bufferRx, 10)) {
+    asm("nop"); // Ошибка
+  }
+#endif
 }

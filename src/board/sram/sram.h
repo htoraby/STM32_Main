@@ -18,7 +18,7 @@ typedef enum {
 } StatusSram;
 
 /*!
- \brief Инициализация внешней SRAM
+ \brief Инициализация внешней SRAM CY62157EV30
   Пример объявления переменной: uint8_t tmp __attribute__((section(".extmem")));
 */
 void sramInit();
@@ -26,25 +26,25 @@ void sramInit();
 /*!
  \brief Запись данных во внешнею SRAM
 
- \param startAddress - начальный адрес в памяти начиная от @ref SRAM_ADDR_START
+ \param address - начальный адрес в памяти начиная от @ref SRAM_ADDR_START
  \param data - указатель на данные
- \param dataSize - размер данных
+ \param size - размер данных
  \param numberBits - количество битов в слове данных (@ref NumberBits)
  \return StatusSram - ошибка или ок
 */
-StatusSram sramWriteData(uint32_t startAddress, uint32_t *data,
-                         uint32_t dataSize, NumberBits numberBits = bit32);
+StatusSram sramWriteData(uint32_t address, uint32_t *data,
+                         uint32_t size, NumberBits bits = bit32);
 
 /*!
  \brief Чтение данных из внешней SRAM
 
- \param startAddress - начальный адрес в памяти начиная от @ref SRAM_ADDR_START
+ \param address - начальный адрес в памяти начиная от @ref SRAM_ADDR_START
  \param data - указатель на данные
- \param dataSize - размер данных
- \param numberBits - количество битов в слове данных (@ref NumberBits)
+ \param size - размер данных
+ \param bits - количество битов в слове данных (@ref NumberBits)
  \return StatusSram - ошибка или ок
 */
-StatusSram sramReadData(uint32_t startAddress, uint32_t *data,
-                        uint32_t dataSize, NumberBits numberBits = bit32);
+StatusSram sramReadData(uint32_t address, uint32_t *data,
+                        uint32_t size, NumberBits bits = bit32);
 
 #endif // SRAM_H

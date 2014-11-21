@@ -8,6 +8,7 @@
 #define TEST_LED     1
 #define TEST_UART    0
 #define TEST_RTC     0
+#define TEST_FRAM    0
 
 void testInit();
 
