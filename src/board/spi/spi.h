@@ -1,6 +1,6 @@
 #ifndef SPI_H
 #define SPI_H
 
-#include "stm32f4xx_hal.h"
+#include "board.h"
 
 #endif // SPI_H

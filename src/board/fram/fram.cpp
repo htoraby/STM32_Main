@@ -4,6 +4,10 @@
 #define FRAM_NSS_PIN   GPIO_PIN_15
 #define FRAM_NSS_PORT  GPIOA
 
+/*!
+ \brief Команды для FRAM FM25V10
+
+*/
 enum {
   CMD_WREN = 0x06,
   CMD_WRDI = 0x04,
@@ -19,10 +23,9 @@ enum {
 
 SPI_HandleTypeDef hspi3;
 
-static StatusFram spiTransmitReceive(uint8_t *txData, uint8_t *rxData,
+static StatusType spiTransmitReceive(uint8_t *txData, uint8_t *rxData,
                                     uint16_t txSize, uint16_t rxSize);
-static StatusFram spiTransmit(uint8_t *data, uint16_t size);
-//static StatusFram spiReceive(uint8_t *data, uint16_t size);
+static StatusType spiTransmit(uint8_t *data, uint16_t size);
 
 void framInit()
 {
@@ -61,9 +64,9 @@ void framInit()
     asm("nop"); // Ошибка
 }
 
-StatusFram framWriteData(uint32_t address, uint8_t *data, uint32_t size)
+StatusType framWriteData(uint32_t address, uint8_t *data, uint32_t size)
 {  
-  StatusFram status = framError;
+  StatusType status = StatusError;
   uint8_t buffer[4];
 
   if (address > FRAM_END)
@@ -77,20 +80,20 @@ StatusFram framWriteData(uint32_t address, uint8_t *data, uint32_t size)
   buffer[2] = address>>8;
   buffer[3] = address&0xFF;
 
-  clrPinOut(GPIOA, GPIO_PIN_15);
+  clrPinOut(FRAM_NSS_PORT, FRAM_NSS_PIN);
   if (HAL_SPI_Transmit(&hspi3, &buffer[0], 4, 1000) == HAL_OK)
-    status = framOk;
-  if (status == framOk) {
+    status = StatusOk;
+  if (status == StatusOk) {
     if (HAL_SPI_Transmit(&hspi3, data, size, 1000) == HAL_OK)
-      status = framOk;
+      status = StatusOk;
   }
-  setPinOut(GPIOA, GPIO_PIN_15);
+  setPinOut(FRAM_NSS_PORT, FRAM_NSS_PIN);
   return status;
 }
 
-StatusFram framReadData(uint32_t address, uint8_t *data, uint32_t size)
+StatusType framReadData(uint32_t address, uint8_t *data, uint32_t size)
 {
-  StatusFram status = framError;
+  StatusType status = StatusError;
   uint8_t buffer[5];
 
   if (address > FRAM_END)
@@ -102,48 +105,38 @@ StatusFram framReadData(uint32_t address, uint8_t *data, uint32_t size)
   buffer[3] = address&0xFF;
   buffer[4] = 0xFF;
 
-  clrPinOut(GPIOA, GPIO_PIN_15);
-  if (HAL_SPI_Transmit(&hspi3, &buffer[0], 5, 1000) == HAL_OK)
-    status = framOk;
-  if (status == framOk) {
-    if (HAL_SPI_TransmitReceive(&hspi3, data, data, size, 1000) == HAL_OK)
-      status = framOk;
-  }
-  setPinOut(GPIOA, GPIO_PIN_15);
-  return status;
-}
-
-StatusFram spiTransmitReceive(uint8_t *txData, uint8_t *rxData,
-                             uint16_t txSize, uint16_t rxSize)
-{
-  StatusFram status = framError;
   clrPinOut(FRAM_NSS_PORT, FRAM_NSS_PIN);
-  if (HAL_SPI_Transmit(&hspi3, txData, txSize, 1000) == HAL_OK)
-    status = framOk;
-  if (status == framOk) {
-    if (HAL_SPI_TransmitReceive(&hspi3, rxData, rxData, rxSize, 1000) == HAL_OK)
-      status = framOk;
+  if (HAL_SPI_Transmit(&hspi3, &buffer[0], 5, 1000) == HAL_OK)
+    status = StatusOk;
+  if (status == StatusOk) {
+    if (HAL_SPI_TransmitReceive(&hspi3, data, data, size, 1000) == HAL_OK)
+      status = StatusOk;
   }
   setPinOut(FRAM_NSS_PORT, FRAM_NSS_PIN);
   return status;
 }
 
-StatusFram spiTransmit(uint8_t *data, uint16_t size)
+StatusType spiTransmitReceive(uint8_t *txData, uint8_t *rxData,
+                             uint16_t txSize, uint16_t rxSize)
 {
-  StatusFram status = framError;
-  clrPinOut(GPIOA, GPIO_PIN_15);
-  if (HAL_SPI_Transmit(&hspi3, data, size, 1000) == HAL_OK)
-    status = framOk;
-  setPinOut(GPIOA, GPIO_PIN_15);
+  StatusType status = StatusError;
+  clrPinOut(FRAM_NSS_PORT, FRAM_NSS_PIN);
+  if (HAL_SPI_Transmit(&hspi3, txData, txSize, 1000) == HAL_OK)
+    status = StatusOk;
+  if (status == StatusOk) {
+    if (HAL_SPI_TransmitReceive(&hspi3, rxData, rxData, rxSize, 1000) == HAL_OK)
+      status = StatusOk;
+  }
+  setPinOut(FRAM_NSS_PORT, FRAM_NSS_PIN);
   return status;
 }
 
-//StatusFram spiReceive(uint8_t *data, uint16_t size)
-//{
-//  StatusFram status = framError;
-//  clrPinOut(GPIOA, GPIO_PIN_15);
-//  if (HAL_SPI_TransmitReceive(&hspi3, data, data, size, 1000) == HAL_OK)
-//    status = framOk;
-//  setPinOut(GPIOA, GPIO_PIN_15);
-//  return status;
-//}
+StatusType spiTransmit(uint8_t *data, uint16_t size)
+{
+  StatusType status = StatusError;
+  clrPinOut(FRAM_NSS_PORT, FRAM_NSS_PIN);
+  if (HAL_SPI_Transmit(&hspi3, data, size, 1000) == HAL_OK)
+    status = StatusOk;
+  setPinOut(FRAM_NSS_PORT, FRAM_NSS_PIN);
+  return status;
+}

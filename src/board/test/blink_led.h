@@ -1,8 +1,7 @@
 #ifndef BLINKLED_H_
 #define BLINKLED_H_
 
-#include "stm32f4xx.h"
-#include "stm32f4xx_hal.h"
+#include "board.h"
 
 // ----- LED definitions ------------------------------------------------------
 // Port numbers: 0=A, 1=B, 2=C, 3=D, 4=E, 5=F, 6=G, ...

@@ -10,8 +10,7 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f4xx_hal.h"
-#include "cmsis_os.h"
+#include "board.h"
 #include "ff.h"
 #include "ff_gen_drv.h"
 #include "usbh_diskio.h"

@@ -188,42 +188,42 @@ void HAL_SRAM_MspDeInit(SRAM_HandleTypeDef* hsram)
   HAL_FMC_MspDeInit();
 }
 
-StatusSram sramWriteData(uint32_t address, uint32_t *data,
+StatusType sramWriteData(uint32_t address, uint32_t *data,
                          uint32_t size, NumberBits bits)
 {
   switch (bits) {
     case bit8:
       if(HAL_SRAM_Write_8b(&hsram, (uint32_t *)address, (uint8_t *)data, size) == HAL_OK)
-        return sramOk;
+        return StatusOk;
       break;
     case bit16:
       if(HAL_SRAM_Write_16b(&hsram, (uint32_t *)address, (uint16_t *)data, size) == HAL_OK)
-        return sramOk;
+        return StatusOk;
       break;
     case bit32:
       if(HAL_SRAM_Write_32b(&hsram, (uint32_t *)address, data, size) == HAL_OK)
-        return sramOk;
+        return StatusOk;
       break;
   }
-  return sramError;
+  return StatusError;
 }
 
-StatusSram sramReadData(uint32_t address, uint32_t *data,
+StatusType sramReadData(uint32_t address, uint32_t *data,
                         uint32_t size, NumberBits bits)
 {
   switch (bits) {
     case bit8:
       if(HAL_SRAM_Read_8b(&hsram, (uint32_t *)address, (uint8_t *)data, size) == HAL_OK)
-        return sramOk;
+        return StatusOk;
       break;
     case bit16:
       if(HAL_SRAM_Read_16b(&hsram, (uint32_t *)address, (uint16_t *)data, size) == HAL_OK)
-        return sramOk;
+        return StatusOk;
       break;
     case bit32:
       if(HAL_SRAM_Read_32b(&hsram, (uint32_t *)address, data, size) == HAL_OK)
-        return sramOk;
+        return StatusOk;
       break;
   }
-  return sramError;
+  return StatusError;
 }
