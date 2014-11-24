@@ -5,11 +5,14 @@
 #include "gpio.h"
 #include "rtc.h"
 #include "fram.h"
+#include "flash_ext.h"
 
 static void testThread(void const * argument);
 static void testUartThread(void const * argument);
 static void testRtc();
 static void testFram();
+static void testFlash1();
+static void testFlash2();
 
 #define UPLOAD_FILENAME "0:test.tmp"
 
@@ -50,6 +53,8 @@ static void testThread(void const * argument)
 
   testRtc();
   testFram();
+  testFlash1();
+  testFlash2();
 
   while(1) {
 #if (TEST_USB_FAT == 1)
@@ -188,5 +193,58 @@ static void testFram()
   if (memcmp(bufferTx, bufferRx, 10)) {
     asm("nop"); // Ошибка
   }
+  asm("nop");
+#endif
+}
+
+static void testFlash1()
+{
+#if (TEST_FLASH1 == 1)
+  uint8_t bufferTx[10];
+  uint8_t bufferRx[10];
+
+  bufferTx[0] = 0x21;
+  bufferTx[1] = 0xAA;
+  bufferTx[2] = 0x01;
+  bufferTx[3] = 0x12;
+  bufferTx[4] = 0x03;
+  bufferTx[5] = 0x33;
+  bufferTx[6] = 0x01;
+  bufferTx[7] = 0x20;
+  bufferTx[8] = 0x55;
+  bufferTx[9] = 0x12;
+  flashExtWrite(FlashSpi1, 0, &bufferTx[0], 10);
+  flashExtRead(FlashSpi1, 0, &bufferRx[0], 10);
+
+  if (memcmp(bufferTx, bufferRx, 10)) {
+    asm("nop"); // Ошибка
+  }
+  asm("nop");
+#endif
+}
+
+static void testFlash2()
+{
+#if (TEST_FLASH2 == 1)
+  uint8_t bufferTx[10];
+  uint8_t bufferRx[10];
+
+  bufferTx[0] = 0x21;
+  bufferTx[1] = 0xAA;
+  bufferTx[2] = 0x01;
+  bufferTx[3] = 0x12;
+  bufferTx[4] = 0x03;
+  bufferTx[5] = 0x33;
+  bufferTx[6] = 0x01;
+  bufferTx[7] = 0x20;
+  bufferTx[8] = 0x55;
+  bufferTx[9] = 0x12;
+  flashExtWrite(FlashSpi5, 0, &bufferTx[0], 10);
+  flashExtRead(FlashSpi5, 0, &bufferRx[0], 10);
+
+  if (memcmp(bufferTx, bufferRx, 10)) {
+    asm("nop"); // Ошибка
+  }
+  asm("nop");
 #endif
 }

@@ -20,6 +20,7 @@
 #include "rtc.h"
 #include "sram.h"
 #include "fram.h"
+#include "flash_ext.h"
 
 /* Private function prototypes -----------------------------------------------*/
 static void systemClockConfig();
@@ -42,6 +43,8 @@ int main()
   sramInit();
   rtcInit();
   framInit();
+  flashExtInit(FlashSpi1);
+  flashExtInit(FlashSpi5);
 
   flagMcuInit = true;
 
@@ -120,6 +123,6 @@ void assert_failed(uint8_t* file, uint32_t line)
 {
   /* User can add his own implementation to report the file name and line number,
     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-
+  printf("Wrong parameters value: file %s on line %d\r\n", file, (int)line);
 }
 #endif
