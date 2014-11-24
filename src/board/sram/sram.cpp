@@ -30,19 +30,19 @@ void sramInit()
   hsram.Init.ContinuousClock = FMC_CONTINUOUS_CLOCK_SYNC_ONLY;
   /* Timing */
   Timing.AddressSetupTime = 3;
-  Timing.AddressHoldTime = 0;
+  Timing.AddressHoldTime = 1;
   Timing.DataSetupTime = 15;
   Timing.BusTurnAroundDuration = 0;
-  Timing.CLKDivision = 1;
-  Timing.DataLatency = 0;
+  Timing.CLKDivision = 2;
+  Timing.DataLatency = 2;
   Timing.AccessMode = FMC_ACCESS_MODE_A;
   /* ExtTiming */
   ExtTiming.AddressSetupTime = 3;
-  ExtTiming.AddressHoldTime = 0;
+  ExtTiming.AddressHoldTime = 1;
   ExtTiming.DataSetupTime = 6;
   ExtTiming.BusTurnAroundDuration = 0;
-  ExtTiming.CLKDivision = 1;
-  ExtTiming.DataLatency = 0;
+  ExtTiming.CLKDivision = 2;
+  ExtTiming.DataLatency = 2;
   ExtTiming.AccessMode = FMC_ACCESS_MODE_A;
 
   HAL_SRAM_Init(&hsram, &Timing, &ExtTiming);
