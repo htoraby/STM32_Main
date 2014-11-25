@@ -1,8 +1,6 @@
 #ifndef SERVICE_H
 #define SERVICE_H
 
-#endif // SERVICE_H
-
 /*!
 \function checkRangeNoInclude
 Функция проверки вхождения значения в диапазон не включая границы
@@ -33,3 +31,5 @@ int checkRangeInclude(double Value, double Minimum, double Maximum);
 \return true - входит в диапазон false - не входит
 */
 int checkRange(double Value, double Minimum, double Maximum, int Include);
+
+#endif SERVICE_H
