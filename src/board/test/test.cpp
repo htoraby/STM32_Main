@@ -6,10 +6,12 @@
 #include "rtc.h"
 #include "fram.h"
 #include "flash_ext.h"
+#include "adc.h"
 
 static void testThread(void const * argument);
 static void testUartThread(void const * argument);
 static void testRtc();
+static void testAdc();
 static void testFram();
 static void testFlash1();
 static void testFlash2();
@@ -29,6 +31,7 @@ void testInit()
 static void testThread(void const * argument)
 {
   (void)argument;
+
 #if (TEST_USB_FAT == 1)
   FATFS fatfs;
   FIL file;
@@ -52,6 +55,7 @@ static void testThread(void const * argument)
 #endif
 
   testRtc();
+  testAdc();
   testFram();
   testFlash1();
   testFlash2();
@@ -168,6 +172,26 @@ static void testRtc()
       (dateTime.seconds != 11)) {
     asm("nop");
   }
+#endif
+}
+
+static void testAdc()
+{
+#if (TEST_ADC == 1)
+  StatusType status;
+  static float coreTemperature;
+  static float coreVbattery;
+  static float coreVref;
+
+  status = getCoreVref(&coreVref);
+  if (status == StatusOk)
+    status = getCoreTemperature(&coreTemperature);
+  if (status == StatusOk)
+    status = getCoreVbattery(&coreVbattery);
+
+  if (status != StatusOk)
+    asm("nop");
+  asm("nop");
 #endif
 }
 

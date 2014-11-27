@@ -21,6 +21,7 @@
 #include "sram.h"
 #include "fram.h"
 #include "flash_ext.h"
+#include "adc.h"
 
 /* Private function prototypes -----------------------------------------------*/
 static void systemClockConfig();
@@ -42,6 +43,7 @@ int main()
   gpioInit();
   sramInit();
   rtcInit();
+  adcInit(adc1);
   framInit();
   flashExtInit(FlashSpi1);
   flashExtInit(FlashSpi5);
@@ -87,7 +89,7 @@ static void systemClockConfig()
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV4;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
   HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5);
 }
 

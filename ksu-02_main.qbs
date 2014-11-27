@@ -60,6 +60,7 @@ Product {
         "src/board/sram/",
         "src/board/fram/",
         "src/board/flash/",
+        "src/board/adc/",
         "src/common/",
         "src/user/",
         "src/user/device/",

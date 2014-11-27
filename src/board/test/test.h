@@ -7,6 +7,7 @@
 #define TEST_LED     1
 #define TEST_UART    0
 #define TEST_RTC     0
+#define TEST_ADC     1
 #define TEST_FRAM    0
 #define TEST_FLASH1  0
 #define TEST_FLASH2  0
