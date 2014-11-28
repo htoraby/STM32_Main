@@ -165,7 +165,7 @@ static void testRtc()
   dateTime.seconds = 10;
   dateTime.mseconds = 0;
   setDateTime(dateTime);
-  osDelay(1000);
+  osDelay(1005);
   getDateTime(&dateTime);
   if ((dateTime.month != 11) || (dateTime.date != 6) || (dateTime.year != 14) ||
       (dateTime.hours != 17) || (dateTime.minutes != 21) ||
