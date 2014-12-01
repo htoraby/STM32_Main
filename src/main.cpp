@@ -22,6 +22,7 @@
 #include "fram.h"
 #include "flash_ext.h"
 #include "adc.h"
+#include "iwdg.h"
 
 /* Private function prototypes -----------------------------------------------*/
 static void systemClockConfig();
@@ -42,11 +43,13 @@ int main()
   /* Initialize all configured peripherals */
   gpioInit();
   sramInit();
-  rtcInit();
+//  rtcInit();
   adcInit(adc1);
   framInit();
   flashExtInit(FlashSpi1);
   flashExtInit(FlashSpi5);
+
+  iwdgInit();
 
   flagMcuInit = true;
 
@@ -69,9 +72,12 @@ static void systemClockConfig()
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
   RCC_OscInitTypeDef RCC_OscInitStruct;
 
+  __PWR_CLK_ENABLE();
+
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSI|RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.LSIState = RCC_LSI_ON;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;

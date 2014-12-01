@@ -61,6 +61,7 @@ Product {
         "src/board/fram/",
         "src/board/flash/",
         "src/board/adc/",
+        "src/board/iwdg/",
         "src/common/",
         "src/user/",
         "src/user/device/",

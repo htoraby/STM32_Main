@@ -60,6 +60,7 @@ void adcInit(adcNum num)
   */
   multiMode.Mode = ADC_MODE_INDEPENDENT;
   multiMode.TwoSamplingDelay = ADC_TWOSAMPLINGDELAY_5CYCLES;
+  multiMode.DMAAccessMode = DISABLE;
   HAL_ADCEx_MultiModeConfigChannel(adcX, &multiMode);
 }
 
