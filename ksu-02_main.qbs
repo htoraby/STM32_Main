@@ -62,6 +62,7 @@ Product {
         "src/board/flash/",
         "src/board/adc/",
         "src/board/iwdg/",
+        "src/board/rcause/",
         "src/common/",
         "src/user/",
         "src/user/device/",

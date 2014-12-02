@@ -18,9 +18,6 @@ void iwdgInit()
 {
 #if USE_WATCHDOG
 
-  if(__HAL_RCC_GET_FLAG(RCC_FLAG_IWDGRST) != RESET)
-    __HAL_RCC_CLEAR_RESET_FLAGS();
-
   //! Counter Reload Value = ms * LsiFreq / 1000 / Prescaler
   hiwdg.Instance = IWDG;
   hiwdg.Init.Prescaler = IWDG_PRESCALER_128;

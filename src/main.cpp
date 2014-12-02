@@ -23,6 +23,7 @@
 #include "flash_ext.h"
 #include "adc.h"
 #include "iwdg.h"
+#include "rcause.h"
 
 /* Private function prototypes -----------------------------------------------*/
 static void systemClockConfig();
@@ -99,6 +100,8 @@ static void systemClockConfig()
 static void mainThread(void const * argument)
 {
   (void)argument;
+
+  resetCauseCheck();
 
   /* FatFS: Link the USBH disk I/O driver */
   USBH_DriverNum = FATFS_LinkDriver(&USBH_Driver, USBH_Path);
