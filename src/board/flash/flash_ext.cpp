@@ -103,7 +103,7 @@ void flashExtInit(FlashSpiNum num)
   spiX->Init.CLKPolarity = SPI_POLARITY_LOW;
   spiX->Init.CLKPhase = SPI_PHASE_1EDGE;
   spiX->Init.NSS = SPI_NSS_SOFT;
-  spiX->Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  spiX->Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
   spiX->Init.FirstBit = SPI_FIRSTBIT_MSB;
   spiX->Init.TIMode = SPI_TIMODE_DISABLED;
   spiX->Init.CRCCalculation = SPI_CRCCALCULATION_DISABLED;
