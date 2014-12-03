@@ -176,12 +176,9 @@ SECTIONS
   } >RAM
 
   /* EXTMEM Bank1 */
-  .extmem :
+  .extmem (NOLOAD):
   {
-      *(.extmem)                   /* remaining code */
-      *(.extmem*)                  /* remaining code */
-      *(.eb1rodata)                /* read-only data (constants) */
-      *(.eb1rodata.*)
+    KEEP(*(.extmem))
   } >EXTMEMB1
 
   /* Remove information from the standard libraries */
