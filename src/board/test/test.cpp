@@ -16,6 +16,14 @@ static void testFram();
 static void testFlash1();
 static void testFlash2();
 
+#if USE_EXT_MEM
+  uint8_t bufferTx[4096] __attribute__((section(".extmem")));
+  uint8_t bufferRx[4096] __attribute__((section(".extmem")));
+#else
+  uint8_t bufferTx[4096];
+  uint8_t bufferRx[4096];
+#endif
+
 #define UPLOAD_FILENAME "0:test.tmp"
 
 void testInit()
@@ -198,9 +206,7 @@ static void testAdc()
 static void testFram()
 {
 #if (TEST_FRAM == 1)
-  uint8_t bufferTx[10];
-  uint8_t bufferRx[10];
-
+  uint32_t time = HAL_GetTick();
   bufferTx[0] = 0x21;
   bufferTx[1] = 0xAA;
   bufferTx[2] = 0x00;
@@ -211,12 +217,14 @@ static void testFram()
   bufferTx[7] = 0x00;
   bufferTx[8] = 0x55;
   bufferTx[9] = 0x12;
-  framWriteData(10, bufferTx, 10);
-  framReadData(10, bufferRx, 10);
+  bufferTx[sizeof(bufferTx)-1] = 0x55;
+  framWriteData(0, bufferTx, sizeof(bufferTx));
+  framReadData(0, bufferRx, sizeof(bufferTx));
 
-  if (memcmp(bufferTx, bufferRx, 10)) {
+  if (memcmp(bufferTx, bufferRx, sizeof(bufferTx))) {
     asm("nop"); // Ошибка
   }
+  time = HAL_GetTick() - time;
   asm("nop");
 #endif
 }
@@ -224,9 +232,7 @@ static void testFram()
 static void testFlash1()
 {
 #if (TEST_FLASH1 == 1)
-  uint8_t bufferTx[10];
-  uint8_t bufferRx[10];
-
+  uint32_t time = HAL_GetTick();
   bufferTx[0] = 0x21;
   bufferTx[1] = 0xAA;
   bufferTx[2] = 0x01;
@@ -237,12 +243,14 @@ static void testFlash1()
   bufferTx[7] = 0x20;
   bufferTx[8] = 0x55;
   bufferTx[9] = 0x12;
-  flashExtWrite(FlashSpi1, 0, &bufferTx[0], 10);
-  flashExtRead(FlashSpi1, 0, &bufferRx[0], 10);
+  bufferTx[sizeof(bufferTx)-1] = 0x55;
+  flashExtWrite(FlashSpi1, 0, &bufferTx[0], sizeof(bufferTx));
+  flashExtRead(FlashSpi1, 0, &bufferRx[0], sizeof(bufferTx));
 
-  if (memcmp(bufferTx, bufferRx, 10)) {
+  if (memcmp(bufferTx, bufferRx, sizeof(bufferTx))) {
     asm("nop"); // Ошибка
   }
+  time = HAL_GetTick() - time;
   asm("nop");
 #endif
 }
@@ -250,9 +258,7 @@ static void testFlash1()
 static void testFlash2()
 {
 #if (TEST_FLASH2 == 1)
-  uint8_t bufferTx[10];
-  uint8_t bufferRx[10];
-
+  uint32_t time = HAL_GetTick();
   bufferTx[0] = 0x21;
   bufferTx[1] = 0xAA;
   bufferTx[2] = 0x01;
@@ -263,12 +269,14 @@ static void testFlash2()
   bufferTx[7] = 0x20;
   bufferTx[8] = 0x55;
   bufferTx[9] = 0x12;
-  flashExtWrite(FlashSpi5, 0, &bufferTx[0], 10);
-  flashExtRead(FlashSpi5, 0, &bufferRx[0], 10);
+  bufferTx[sizeof(bufferTx)-1] = 0x55;
+  flashExtWrite(FlashSpi5, 0, &bufferTx[0], sizeof(bufferTx));
+  flashExtRead(FlashSpi5, 0, &bufferRx[0], sizeof(bufferTx));
 
-  if (memcmp(bufferTx, bufferRx, 10)) {
+  if (memcmp(bufferTx, bufferRx, sizeof(bufferTx))) {
     asm("nop"); // Ошибка
   }
+  time = HAL_GetTick() - time;
   asm("nop");
 #endif
 }

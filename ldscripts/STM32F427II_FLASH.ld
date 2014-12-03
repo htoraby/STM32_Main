@@ -43,7 +43,7 @@ MEMORY
 FLASH (rx)      : ORIGIN = 0x08008000, LENGTH = 2048K - 0x8000
 RAM (xrw)       : ORIGIN = 0x20000000, LENGTH = 192K
 CCMRAM (rw)     : ORIGIN = 0x10000000, LENGTH = 64K
-EXTMEMB1 (rx)   : ORIGIN = 0x60000000, LENGTH = 1024K
+EXTMEMB1 (rw)   : ORIGIN = 0x60000000, LENGTH = 1024K
 }
 
 PROVIDE(__HEAP_START = _end );
@@ -179,6 +179,7 @@ SECTIONS
   .extmem :
   {
       *(.extmem)                   /* remaining code */
+      *(.extmem*)                  /* remaining code */
       *(.eb1rodata)                /* read-only data (constants) */
       *(.eb1rodata.*)
   } >EXTMEMB1

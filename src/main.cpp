@@ -29,7 +29,7 @@
 static void systemClockConfig();
 static void mainThread(const void *argument);
 
-uint8_t flagMcuInit = false;
+bool flagMcuInit = false;
 
 int main()
 {
@@ -110,7 +110,6 @@ static void mainThread(void const * argument)
   MX_USB_HOST_Init();
 
 #if (USE_TEST == 1)
-  // Init tests
   testInit();
 #endif
 
