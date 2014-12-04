@@ -1,7 +1,7 @@
 #ifndef RTC_H
 #define RTC_H
 
-#include "stm32f4xx_hal.h"
+#include "board.h"
 
 /*!
  \brief Структура даты и времени

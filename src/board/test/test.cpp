@@ -4,9 +4,25 @@
 #include "uart.h"
 #include "gpio.h"
 #include "rtc.h"
+#include "fram.h"
+#include "flash_ext.h"
+#include "adc.h"
 
 static void testThread(void const * argument);
 static void testUartThread(void const * argument);
+static void testRtc();
+static void testAdc();
+static void testFram();
+static void testFlash1();
+static void testFlash2();
+
+#if USE_EXT_MEM
+  uint8_t bufferTx[4096] __attribute__((section(".extmem")));
+  uint8_t bufferRx[4096] __attribute__((section(".extmem")));
+#else
+  uint8_t bufferTx[4096];
+  uint8_t bufferRx[4096];
+#endif
 
 #define UPLOAD_FILENAME "0:test.tmp"
 
@@ -23,6 +39,7 @@ void testInit()
 static void testThread(void const * argument)
 {
   (void)argument;
+
 #if (TEST_USB_FAT == 1)
   FATFS fatfs;
   FIL file;
@@ -45,25 +62,11 @@ static void testThread(void const * argument)
   uart_setSemaphoreId(uart2, semaphoreUart);
 #endif
 
-#if (TEST_RTC == 1)
-  DateTimeTypeDef dateTime;
-  //! Установка даты и времени
-  dateTime.month = 11;
-  dateTime.date = 6;
-  dateTime.year = 14;
-  dateTime.hours = 17;
-  dateTime.minutes = 21;
-  dateTime.seconds = 10;
-  dateTime.mseconds = 0;
-  setDateTime(dateTime);
-  osDelay(1000);
-  getDateTime(&dateTime);
-  if ((dateTime.month != 11) || (dateTime.date != 6) || (dateTime.year != 14) ||
-      (dateTime.hours != 17) || (dateTime.minutes != 21) ||
-      (dateTime.seconds != 11)) {
-    asm("nop");
-  }
-#endif
+  testRtc();
+  testAdc();
+  testFram();
+  testFlash1();
+  testFlash2();
 
   while(1) {
 #if (TEST_USB_FAT == 1)
@@ -155,4 +158,125 @@ static void testUartThread(void const * argument)
       }
     }
   }
+}
+
+static void testRtc()
+{
+#if (TEST_RTC == 1)
+  DateTimeTypeDef dateTime;
+  //! Установка даты и времени
+  dateTime.month = 11;
+  dateTime.date = 6;
+  dateTime.year = 14;
+  dateTime.hours = 17;
+  dateTime.minutes = 21;
+  dateTime.seconds = 10;
+  dateTime.mseconds = 0;
+  setDateTime(dateTime);
+  osDelay(1005);
+  getDateTime(&dateTime);
+  if ((dateTime.month != 11) || (dateTime.date != 6) || (dateTime.year != 14) ||
+      (dateTime.hours != 17) || (dateTime.minutes != 21) ||
+      (dateTime.seconds != 11)) {
+    asm("nop");
+  }
+#endif
+}
+
+static void testAdc()
+{
+#if (TEST_ADC == 1)
+  StatusType status;
+  static float coreTemperature;
+  static float coreVbattery;
+  static float coreVref;
+
+  status = getCoreVref(&coreVref);
+  if (status == StatusOk)
+    status = getCoreTemperature(&coreTemperature);
+  if (status == StatusOk)
+    status = getCoreVbattery(&coreVbattery);
+
+  if (status != StatusOk)
+    asm("nop");
+  asm("nop");
+#endif
+}
+
+static void testFram()
+{
+#if (TEST_FRAM == 1)
+  uint32_t time = HAL_GetTick();
+  bufferTx[0] = 0x21;
+  bufferTx[1] = 0xAA;
+  bufferTx[2] = 0x00;
+  bufferTx[3] = 0x00;
+  bufferTx[4] = 0x00;
+  bufferTx[5] = 0x33;
+  bufferTx[6] = 0x00;
+  bufferTx[7] = 0x00;
+  bufferTx[8] = 0x55;
+  bufferTx[9] = 0x12;
+  bufferTx[sizeof(bufferTx)-1] = 0x55;
+  framWriteData(0, bufferTx, sizeof(bufferTx));
+  framReadData(0, bufferRx, sizeof(bufferTx));
+
+  if (memcmp(bufferTx, bufferRx, sizeof(bufferTx))) {
+    asm("nop"); // Ошибка
+  }
+  time = HAL_GetTick() - time;
+  asm("nop");
+#endif
+}
+
+static void testFlash1()
+{
+#if (TEST_FLASH1 == 1)
+  uint32_t time = HAL_GetTick();
+  bufferTx[0] = 0x21;
+  bufferTx[1] = 0xAA;
+  bufferTx[2] = 0x01;
+  bufferTx[3] = 0x12;
+  bufferTx[4] = 0x03;
+  bufferTx[5] = 0x33;
+  bufferTx[6] = 0x01;
+  bufferTx[7] = 0x20;
+  bufferTx[8] = 0x55;
+  bufferTx[9] = 0x12;
+  bufferTx[sizeof(bufferTx)-1] = 0x55;
+  flashExtWrite(FlashSpi1, 0, &bufferTx[0], sizeof(bufferTx));
+  flashExtRead(FlashSpi1, 0, &bufferRx[0], sizeof(bufferTx));
+
+  if (memcmp(bufferTx, bufferRx, sizeof(bufferTx))) {
+    asm("nop"); // Ошибка
+  }
+  time = HAL_GetTick() - time;
+  asm("nop");
+#endif
+}
+
+static void testFlash2()
+{
+#if (TEST_FLASH2 == 1)
+  uint32_t time = HAL_GetTick();
+  bufferTx[0] = 0x21;
+  bufferTx[1] = 0xAA;
+  bufferTx[2] = 0x01;
+  bufferTx[3] = 0x12;
+  bufferTx[4] = 0x03;
+  bufferTx[5] = 0x33;
+  bufferTx[6] = 0x01;
+  bufferTx[7] = 0x20;
+  bufferTx[8] = 0x55;
+  bufferTx[9] = 0x12;
+  bufferTx[sizeof(bufferTx)-1] = 0x55;
+  flashExtWrite(FlashSpi5, 0, &bufferTx[0], sizeof(bufferTx));
+  flashExtRead(FlashSpi5, 0, &bufferRx[0], sizeof(bufferTx));
+
+  if (memcmp(bufferTx, bufferRx, sizeof(bufferTx))) {
+    asm("nop"); // Ошибка
+  }
+  time = HAL_GetTick() - time;
+  asm("nop");
+#endif
 }

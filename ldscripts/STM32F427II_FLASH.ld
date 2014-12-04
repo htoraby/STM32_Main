@@ -34,8 +34,8 @@ ENTRY(Reset_Handler)
 _estack = 0x2002FFFF;    /* end of RAM */
 
 /* Generate a link error if heap and stack don't fit into RAM */
-_Min_Heap_Size = 0;      /* required amount of heap  */
-_Min_Stack_Size = 0x400; /* required amount of stack */
+_Min_Heap_Size = 0x400;   /* required amount of heap  */
+_Min_Stack_Size = 0x1000; /* required amount of stack */
 
 /* Specify the memory areas */
 MEMORY
@@ -43,6 +43,7 @@ MEMORY
 FLASH (rx)      : ORIGIN = 0x08008000, LENGTH = 2048K - 0x8000
 RAM (xrw)       : ORIGIN = 0x20000000, LENGTH = 192K
 CCMRAM (rw)     : ORIGIN = 0x10000000, LENGTH = 64K
+EXTMEMB1 (rw)   : ORIGIN = 0x60000000, LENGTH = 1024K
 }
 
 PROVIDE(__HEAP_START = _end );
@@ -172,9 +173,13 @@ SECTIONS
     . = . + _Min_Heap_Size;
     . = . + _Min_Stack_Size;
     . = ALIGN(4);
-  } >RAM
+  } >CCMRAM
 
-
+  /* EXTMEM Bank1 */
+  .extmem (NOLOAD):
+  {
+    KEEP(*(.extmem))
+  } >EXTMEMB1
 
   /* Remove information from the standard libraries */
   /DISCARD/ :

@@ -10,25 +10,28 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f4xx_hal.h"
-#include "cmsis_os.h"
+#include "board.h"
 #include "ff.h"
 #include "ff_gen_drv.h"
-#include "usbh_diskio.h" /* defines USBH_Driver as external */
+#include "usbh_diskio.h"
 #include "usb_host.h"
 #include "test.h"
 #include "gpio.h"
 #include "rtc.h"
-
-/* Private variables ---------------------------------------------------------*/
-uint8_t USBH_DriverNum;      /* FatFS USBH part */
-char USBH_Path[4];           /* USBH logical drive path */
+#include "sram.h"
+#include "fram.h"
+#include "flash_ext.h"
+#include "adc.h"
+#include "iwdg.h"
+#include "rcause.h"
 
 /* Private function prototypes -----------------------------------------------*/
-static void systemClockConfig(void);
+static void systemClockConfig();
 static void mainThread(const void *argument);
 
-int main(void)
+bool flagMcuInit = false;
+
+int main()
 {
   /* MCU Configuration----------------------------------------------------------*/
 
@@ -40,7 +43,16 @@ int main(void)
 
   /* Initialize all configured peripherals */
   gpioInit();
-  rtcInit();
+  sramInit();
+//  rtcInit();
+  adcInit(adc1);
+  framInit();
+  flashExtInit(FlashSpi1);
+  flashExtInit(FlashSpi5);
+
+  iwdgInit();
+
+  flagMcuInit = true;
 
   /* Code generated for FreeRTOS */
   /* Create Start thread */
@@ -56,7 +68,7 @@ int main(void)
 
 /** System Clock Configuration
 */
-static void systemClockConfig(void)
+static void systemClockConfig()
 {
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
   RCC_OscInitTypeDef RCC_OscInitStruct;
@@ -65,9 +77,9 @@ static void systemClockConfig(void)
 
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE|RCC_OSCILLATORTYPE_LSI;
-  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSI|RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.LSIState = RCC_LSI_ON;
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = 12;
@@ -81,13 +93,16 @@ static void systemClockConfig(void)
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV4;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
   HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5);
 }
 
 static void mainThread(void const * argument)
 {
   (void)argument;
+
+  resetCauseCheck();
+
   /* FatFS: Link the USBH disk I/O driver */
   USBH_DriverNum = FATFS_LinkDriver(&USBH_Driver, USBH_Path);
 
@@ -95,7 +110,6 @@ static void mainThread(void const * argument)
   MX_USB_HOST_Init();
 
 #if (USE_TEST == 1)
-  // Init tests
   testInit();
 #endif
 
@@ -116,6 +130,6 @@ void assert_failed(uint8_t* file, uint32_t line)
 {
   /* User can add his own implementation to report the file name and line number,
     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-
+  printf("Wrong parameters value: file %s on line %d\r\n", file, (int)line);
 }
 #endif

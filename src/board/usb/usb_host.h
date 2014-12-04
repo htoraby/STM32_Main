@@ -40,15 +40,17 @@
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f4xx.h"
-#include "stm32f4xx_hal.h"
+#include "cmsis_os.h"
 
 typedef enum {
   APPLICATION_IDLE = 0,  
   APPLICATION_START,   
   APPLICATION_READY,
   APPLICATION_DISCONNECT,
-}ApplicationTypeDef;
+} ApplicationTypeDef;
+
+extern uint8_t USBH_DriverNum;
+extern char USBH_Path[];
 		
 void MX_USB_HOST_Init(void);
 void MX_USB_HOST_Process(void);

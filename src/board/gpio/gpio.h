@@ -1,7 +1,7 @@
 #ifndef GPIO_H
 #define GPIO_H
 
-#include "stm32f4xx_hal.h"
+#include "board.h"
 
 /* Exported types ------------------------------------------------------------*/
 enum LedType

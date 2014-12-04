@@ -1,8 +1,7 @@
 #ifndef UART_H
 #define UART_H
 
-#include "stm32f4xx_hal.h"
-#include "cmsis_os.h"
+#include "board.h"
 
 #define UART_BUF_SIZE	256
 

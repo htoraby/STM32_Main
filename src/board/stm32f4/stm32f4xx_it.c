@@ -36,16 +36,28 @@
 #include "stm32f4xx.h"
 #include "stm32f4xx_it.h"
 #include "uart.h"
+#include "adc.h"
 
 /* External variables --------------------------------------------------------*/
  
 extern void xPortSysTickHandler(void);
 
 extern HCD_HandleTypeDef hhcd_USB_OTG_FS;
+extern uint8_t flagMcuInit;
 
 /******************************************************************************/
 /*            Cortex-M4 Processor Interruption and Exception Handlers         */ 
 /******************************************************************************/
+
+void ADC_IRQHandler(void)
+{
+  HAL_ADC_IRQHandler(&hadc[adc1]);
+}
+
+void DMA2_Stream0_IRQHandler(void)
+{
+  HAL_DMA_IRQHandler(hadc[adc2].DMA_Handle);
+}
 
 /**
 * @brief This function handles USB On The Go FS global interrupt.
@@ -91,7 +103,9 @@ void UART7_IRQHandler(void)
 */
 void SysTick_Handler(void)
 {
-  xPortSysTickHandler();
+  if (flagMcuInit) {
+    xPortSysTickHandler();
+  }
   HAL_IncTick();
 }
 
