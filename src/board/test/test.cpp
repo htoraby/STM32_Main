@@ -29,7 +29,7 @@ static void testFlash2();
 void testInit()
 {
   /* Create Test thread */
-  osThreadDef(Test_Thread, testThread, osPriorityNormal, 0, 8 * configMINIMAL_STACK_SIZE);
+  osThreadDef(Test_Thread, testThread, osPriorityNormal, 0, 10 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(Test_Thread), NULL);
 
   osThreadDef(Test_Uart_Thread, testUartThread, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
