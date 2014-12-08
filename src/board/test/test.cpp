@@ -17,6 +17,8 @@ static void testFram();
 static void testFlash1();
 static void testFlash2();
 static void testTempSensor();
+static void testDI();
+static void testDO();
 
 #if USE_EXT_MEM
   uint8_t bufferTx[4096] __attribute__((section(".extmem")));
@@ -70,6 +72,8 @@ static void testThread(void const * argument)
   testFlash1();
   testFlash2();
   testTempSensor();
+  testDI();
+  testDO();
 
   while(1) {
 #if (TEST_USB_FAT == 1)
@@ -295,5 +299,31 @@ static void testTempSensor()
   float temp = tempSensorReadData();
   if (temp == 999)
     asm("nop");
+#endif
+}
+
+static void testDI()
+{
+#if TEST_DI
+  PinState value;
+  for (int i = 0; i < DigitalInputMax; ++i) {
+    value = getDigitalInput(i);
+    if (value)
+      asm("nop");
+  }
+#endif
+}
+
+static void testDO()
+{
+#if TEST_DO
+  for (int i = 0; i < DigitalOutputMax; ++i) {
+    setDigitalOutput(i, PinSet);
+    asm("nop");
+  }
+  for (int i = 0; i < DigitalOutputMax; ++i) {
+    setDigitalOutput(i, PinReset);
+    asm("nop");
+  }
 #endif
 }

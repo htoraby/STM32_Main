@@ -95,7 +95,7 @@ void flashExtInit(FlashSpiNum num)
       break;
   }
 
-  initPinOut(flashExts[num].nss_port, flashExts[num].nss_pin, GPIO_PIN_SET);
+  initPinOut(flashExts[num].nss_port, flashExts[num].nss_pin, PinSet);
 
   spiX->Init.Mode = SPI_MODE_MASTER;
   spiX->Init.Direction = SPI_DIRECTION_2LINES;
