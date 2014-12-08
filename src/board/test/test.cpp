@@ -7,6 +7,7 @@
 #include "fram.h"
 #include "flash_ext.h"
 #include "adc.h"
+#include "temp_sensor.h"
 
 static void testThread(void const * argument);
 static void testUartThread(void const * argument);
@@ -15,6 +16,7 @@ static void testAdc();
 static void testFram();
 static void testFlash1();
 static void testFlash2();
+static void testTempSensor();
 
 #if USE_EXT_MEM
   uint8_t bufferTx[4096] __attribute__((section(".extmem")));
@@ -67,6 +69,7 @@ static void testThread(void const * argument)
   testFram();
   testFlash1();
   testFlash2();
+  testTempSensor();
 
   while(1) {
 #if (TEST_USB_FAT == 1)
@@ -283,5 +286,14 @@ static void testFlash2()
   }
   time = HAL_GetTick() - time;
   asm("nop");
+#endif
+}
+
+static void testTempSensor()
+{
+#if TEST_T_SENSOR
+  float temp = tempSensorReadData();
+  if (temp == 999)
+    asm("nop");
 #endif
 }

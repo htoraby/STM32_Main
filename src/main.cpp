@@ -24,6 +24,7 @@
 #include "adc.h"
 #include "iwdg.h"
 #include "rcause.h"
+#include "temp_sensor.h"
 
 /* Private function prototypes -----------------------------------------------*/
 static void systemClockConfig();
@@ -49,6 +50,7 @@ int main()
   framInit();
   flashExtInit(FlashSpi1);
   flashExtInit(FlashSpi5);
+  tempSensorInit();
 
   iwdgInit();
 
