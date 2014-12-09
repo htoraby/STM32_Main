@@ -140,8 +140,8 @@ union unTypeData {
 
 enum enReturns
 {
-  RETURN_ERROR                  = 0,
-  RETURN_OK                     = 1,
+  RETURN_OK                     = 0,
+  RETURN_ERROR                  = 1,
   RETURN_ERROR_ID_VALUE         = 2,
   RETURN_ERROR_ID               = 3,
   RETURN_ERROR_ACCESS_VALUE     = 4,

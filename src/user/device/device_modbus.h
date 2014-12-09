@@ -8,325 +8,297 @@
 #ifndef DEVICE_MODBUS_H_
 #define DEVICE_MODBUS_H_
 
+#include "device.h"
 #include "define.h"
+#include "modbus_master_serial.h"
+
+/// Структура для хранения полей параметра из карты устройства
+struct ModbusParameter
+{
+  // Уникальный идентификатор параметра
+  int ID;
+  // Адрес регистра в устройстве
+  int Address;
+  // Операции с параметром
+  int Operation;
+  // Физическая величина параметра
+  int Physic;
+  // Единицы измерения параметра
+  int Unit;
+  // Поле состояния параметра
+  int Validity;
+  // Тип данных
+  int TypeData;
+  // Масштаб (коэффициент для приведения к физической единице измерения)
+  float Scale;
+  // Коэффициент преобразования параметра
+  float Coefficient;
+  // Минимальное значение параметра
+  float Minimum;
+  // Максимально значение параметра
+  float Maximum;
+  // Частота опроса параметра
+  int FreqExchange;
+  // Количество запросов к параметру
+  int CntExchange;
+  // Приоритет
+  int Priority;
+  // Флаг
+  int Flag;
+  // Считываемое значение
+  unTypeData Value;
+};
 
 /*!
  \class DeviceModbus
- \brief Класс для устройств работающих по протоколу Modbus.
-  Содержит структуру для составления и хранения Modbus карты устройства и
-  набор методов для работы с её полями.
+ \brief Класс для устройств работающих по протоколу Modbus. 
   Содержит функции организации цикла чтения и записи параметров устройства
 */ 
 class DeviceModbus
 {
 public:
-  /// Конструктор по умолчанию
-  DeviceModbus(int Address, int Quantity);
+  /*!
+   * \brief DeviceModbus
+   * Конструктор класса
+   * \param MapRegisters - указатель на карту регистров
+   * \param Quantity Длина массива карты регистров
+   * \param PortName - номер имя порта uart
+   * \param BaudRate - скорость обмена
+   * \param DataBits - количество бит данных
+   * \param StopBits - количество стоп бит
+   * \param Parity - чётность
+   * \param DeviceAddress - адресс устройства
+   * \return Код результата операции
+   */
+  DeviceModbus( ModbusParameter *MapRegisters,
+                int Quantity,
+                int PortName,
+                long BaudRate,
+                int DataBits,
+                int StopBits,
+                int Parity,
+                int Address);
   /// Деструктор по умолчанию
   virtual ~DeviceModbus();
 
-protected:
-  /// Структура для хранения полей параметра из карты устройства
-  struct ModbusParameter
-  {
-    /// Уникальный идентификатор параметра
-    int ID;
-    /// Адрес регистра в устройстве
-    int Address;
-    /// Операции с параметром
-    int Operation;
-    /// Физическая величина параметра
-    int Physic;
-    /// Единицы измерения параметра
-    int Unit;
-    /// Поле состояния параметра
-    int Validity;
-    /// Тип данных
-    int TypeData;
-    /// Масштаб (коэффициент для приведения к физической единице измерения)
-    float Scale;
-    /// Коэффициент преобразования параметра
-    float Coefficient;
-    /// Минимальное значение параметра
-    float Minimum;
-    /// Максимально значение параметра
-    float Maximum;
-    /// Частота опроса параметра
-    int FreqExchange;
-    /// Количество запросов к параметру
-    int CntExchange;
-    /// Приоритет
-    int Priority;
-    /// Флаг
-    int Flag;
-    /// Считываемое значение
-    unTypeData Value;
-  };
-
-  //! --------------------------------------------------------------------------
-  //! Методы для работы с полями массива структур Modbus параметров (картой)
-  //! через индекс параметра в массиве
-  //! --------------------------------------------------------------------------
+  // Базовые методы работы со структурой ModbusParameter
+  /*!
+   * \brief Метод получения ID параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле ID
+   */
+  int getFieldID(int Index);
 
   /*!
-   \brief Метод получения ID параметра по индексу в массиве параметров
-   \param Index индекс параметра в массиве
-   \return int ID параметра
-  */
-  int getModbusIDAtIndex(int Index);
+   * \brief Метод получения Address параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Address
+   */
+  int getFieldAddress(int Index);
 
   /*!
-   \brief Метод получения адреса параметра по индексу в массиве параметров
-   \param Index индекс параметра в массиве
-   \return int Адрес параметра
-  */
-  int getModbusAddressAtIndex(int Index);
+   * \brief Метод получения Operation параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Operation
+   */
+  int getFieldOperation(int Index);
 
   /*!
-   \brief Метод получения операций над параметром по индексу в массиве параметров
-   \param Index индекс параметра в массиве
-   \return int код операций над параметром
-  */
-  int getModbusOperationAtIndex(int Index);
+   * \brief Метод получения Physic параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Physic
+   */
+  int getFieldPhysic(int Index);
 
   /*!
-   \brief Метод получения физического смысла параметра
-   \param Index Индекс параметра
-   \return int Код физической величины параметра или 0 если ошибка
-  */
-  int getModbusPhysicAtIndex(int Index);
+   * \brief Метод получения Unit параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Unit
+   */
+  int getFieldUnit(int Index);
 
   /*!
-   \brief Метод получения единиц измерения параметра
-   \param Index Индекс параметра
-   \return int Код единиц измерения параметра или 0 если ошибка
-  */
-  int getModbusUnitAtIndex(int Index);
+   * \brief Метод получения Validity параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Validity
+   */
+  int getFieldValidity(int Index);
 
   /*!
-   \brief Метод получения флага валидности параметра
-   \param Index Индекс параметра
-   \return int Код валидности параметра
-  */
-  int getModbusValidityAtIndex(int Index);
+   * \brief Метод получения TypeData параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле TypeData
+   */
+  int getFieldTypeData(int Index);
 
   /*!
-   \brief Метод получения типа данных параметра по индексу в карте регистров
-   \param Index Индекс параметра
-   \return int Тип данных параметра или 0 если ошибка
-  */
-  int getModbusTypeDataAtIndex(int Index);
+   * \brief Метод получения FreqExchange параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле FreqExchange
+   */
+  int getFieldFreqExchange(int Index);
 
   /*!
-   \brief Метод получения коэффциента масштабирования по индексу в карте регистров
-   \param Index Индекс параметра
-   \return float Коэффициент масштабирования параметра
-  */
-  float getModbusScaleAtIndex(int Index);
+   * \brief Метод получения CntExchange параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле CntExchange
+   */
+  int getFieldCntExchange(int Index);
 
   /*!
-   \brief Метод получения коэффициента преобразования параметра
-   \param Index Индекс параметра
-   \return float Коэффициент преобразования или 0 если ошибка
-  */
-  float getModbusCoefficientAtIndex(int Index);
+   * \brief Метод получения Priority параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Priority
+   */
+  int getFieldPriority(int Index);
 
   /*!
-   \brief Метод получения минимального значения параметра
-   \param Index Индекс параметра
-   \return float минимальное значение
-  */
-  float getModbusMinAtIndex(int Index);
+   * \brief Метод присвоения Priority параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \param Priority Присваиваемый приоритет
+   */
+  void setFieldPriority(int Index, int Priority);
 
   /*!
-   \brief Метод получения максимального значения параметра
-   \param Index Индекс параметра
-   \return float максимальное значение
-  */
-  float getModbusMaxAtIndex(int Index);
+   * \brief Метод получения Flag параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Flag
+   */
+  int getFieldFlag(int Index);
 
   /*!
-   \brief Метод получения задержки опроса параметра
-   \param Index Индекс параметра
-   \return int задержка опроса параметра
-  */
-  int getModbusFreqExchangeAtIndex(int Index);
+   * \brief Метод присвоения Flag параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \param Flag Присваиваемый флаг
+   */
+  void setFieldFlag(int Index, int Flag);
 
   /*!
-   \brief Метод получения текущей задержки обработки параметра
-   \param Index Индекс параметра
-   \return int Текущая задержка обработки параметра
-  */
-  int getModbusCntExchangeAtIndex(int Index);
+   * \brief Метод получения Scale параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Scale
+   */
+  float getFieldScale(int Index);
 
   /*!
-   \brief Метод получения приоритета обработки параметра
-   \param Index Индекс параметра
-   \return int Приоритет обработки параметра
-  */
-  int getModbusPriorityAtIndex(int Index);
+   * \brief Метод получения Coefficient параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Coefficient
+   */
+  float getFieldCoefficient(int Index);
 
   /*!
-   \brief Метод получения флага обработки параметра
-   \param Index Индекс параметра
-   \return int Флаг обработки параметра
-  */
-  int getModbusFlagAtIndex(int Index);
-
-  //! --------------------------------------------------------------------------
-  //! Методы для работы с полями массива структур Modbus параметров (картой)
-  //! через адрес параметра в массиве
-  //! --------------------------------------------------------------------------
+   * \brief Метод получения Minimum параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Minimum
+   */
+  float getFieldMinimum(int Index);
 
   /*!
-   \brief Метод получения ID параметра по адресу в карте регистров
-   \param Address Адрес параметра
-   \return int ID параметра или 0 если ошибка
-  */
-  int getModbusIDAtAddress(int Address);
+   * \brief Метод получения Maximum параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Maximum
+   */
+  float getFieldMaximum(int Index);
 
   /*!
-   \brief Метод получения типа данных параметра по адресу в карте регистров
-   \param Address Адрес параметра
-   \return int Тип данных параметра или 0 если ошибка
-  */
-  int getModbusTypeDataAtAddress(int Address);
+   * \brief Метод получения Value параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Value
+   */
+  unTypeData getFieldValue(int Index);
 
   /*!
-   \brief Метод получения коэффициента масштабирования параметра по адресу
-   \param Address Адрес параметра
-   \return float Коэффициент масштабирования параметра или 0 если ошибка
-  */
-  float getModbusScaleAtAddress(int Address);
+   * \brief Метод получения параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return все поля
+   */
+  ModbusParameter getFieldAll(int Index);
 
   /*!
-   \brief Метод получения коэффициента преобразования параметра
-   \param Address Адрес параметра
-   \return float Коэффициент преобразования или 0 если ошибка
+   * \brief Метод поиска и получения индекса по ID параметра
+   * \param ID идентификатор параметра
+   * \return Index
   */
-  float getModbusCoefficientAtAddress(int Address);
+  int getIndexAtID(int ID);
 
   /*!
-   \brief Метод получения физического смысла параметра
-   \param Address Адрес параметра
-   \return int Код физической величины параметра или 0 если ошибка
+   * \brief Метод поиска и получения индекса по Address параметра
+   * \param Address идентификатор параметра
+   * \return Index
   */
-  int getModbusPhysicAtAddress(int Address);
+  int getIndexAtAddress(int Address);
 
   /*!
-   \brief Метод получения единиц измерения параметра
-   \param Address Адрес параметра
-   \return int Код единиц измерения параметра или 0 если ошибка
+   * \brief Метод записи параметра в устройство
+   * \param ID идентификатор параметра
+   * \param Value значение
   */
-  int getModbusUnitAtAddress(int Address);
+  void writeModbusParameter(int ID, float Value);
 
-  /*!
-   \brief Метод получения индекса параметра в карте регистров по адресу
-   \param Address Адрес параметра
-   \return int Индекс в массиве или 0 если ошибка
-  */
-  int getIndexInArrayAtAddress(int Address);
-
-  //! --------------------------------------------------------------------------
-  //! Методы для организации и работы цикла опроса устройства
-  //! --------------------------------------------------------------------------
-
-  /*!
-   \brief Метод поиска среди параметров устройства параметра с наибольшим приоритетом
-   \return int Если найден параметр с повышенным приоритетом возвращает индекс
-    параметра или 0 если нет таких параметров
-  */
-  int searchPriorityModbusParameters(void);
-
-  /*!
-   \brief Метод проверки предназначен ли параметр для работы в цикле и если он
-    читается/записывается периодически истёк ли период
-   \param indexParam - индекс параметра в карте регистров
-   \return int 0 - не нужно, 1 - нужно
-  */
-  int checkExchangModbusParameters(int indexParam);
-
-  /*!
-   \brief Метод поиска параметра обычного приоритета для обработки в цикле
-   \return int Индекс параметра для работы
-  */
-  int searchNextModbusParameters(void);
-
-  /*!
-   \brief Метод поиска и выбора параметра для обработки в цикле опроса
-    в методе вызываются методы searchPriorityModbusParameters и
-    searchNextModbusParameters
-   \return int Индекс параметра для обработки
-  */
-  int searchExchangModbusParameters(void);
-
+  // Методы для работы цикла опроса и записи параметров
   /*!
    \brief Метод циклического опроса устройства по Modbus и/или внеочередной
     записи и/или чтения параметра
   */
-  void excangeCycle(void);
-
-  //! --------------------------------------------------------------------------
-  //! Методы для преобразования значения полученного по modbus в значение
-  //! для банка параметров
-  //! --------------------------------------------------------------------------
+  void exchangeCycle(void);
 
   /*!
-   \brief Метод преобразует значение полученное по Modbus в тип данных float
-   \param Index Индекс параметра
-   \param ModbusValue Значение полученное по Modbus
-   \return float Значение в формате float
-  */
-  float convModbusTypeToFloatAtIndex(int Index, unTypeData ModbusValue);
+   * \brief putTurn метод добавления элемента в очередь
+   * \param Index Индекс параметра
+   * \return добавили элемент в очередь или нет
+   */
+   int getTurn();
 
-  /*!
-   \brief Метод применяет к значению полученному по Modbus коэффициент
-    масштабирования параметра
-   \param Index Индекс параметра
-   \param Value Значение полученное по Modbus
-   \return float Значение после применения коэффициента масштабирования
-  */
-  float applyModbusScaleAtIndex(int Index, float Value);
+   /*!
+    * \brief putTurn метод добавления элемента в очередь
+    * \param Index Индекс параметра
+    * \return добавили элемент в очередь или нет
+    */
+   int putTurn(int Index);
 
-  /*!
-   \brief Метод применяет к значению полученному по Modbus коэффициент
-    преобразования параметра
-   \param Index Индекс параметра
-   \param Value Значение полученное по Modbus
-   \return float Значение после применения коэффициента
-  */
-  float applyModbusCoefficientAtIndex(int Index, float Value);
+   int searchExchangeParameters();
 
-  /*!
-   \brief Метод преобразует значение полученное по Modbus в единицы измерения
-    системы СИ
-   \param Index Индекс параметра
-   \param Value Значение полученное по Modbus
-   \return float Значение после преобразования
-  */
-  float convModbusPhysicUnit(int Index, float Value);
-
-  /*!
-   \brief Метод преобразования значения полученного по Modbus в значение для
-    банка параметров устройства
-   \param Index Индекс в массиве параметров
-   \param ModbusValue Значение по Modbus
-   \return float Преобразованное значение
-  */
-  float convModbusToParameters(int Index, unTypeData ModbusValue);
-
-  /// МЕТОД ПОЛУЧЕНИЯ АДРЕСА УСТРОЙСТВА
-  int getDeviceAddress();
-
-public:
-  ModbusParameter ModbusParameters[];
+   short int regArr_[125];
+   int int32Arr_[62];
+   float float32Arr_[62];
 
 private:
-  /// Адрес устройства
-  int  DeviceAddress;
+  int quantityParam_;
+  int deviceAddress_;
 
-  /// Количество параметров в устройстве
-  int QuantityParam;
+
+  osMessageQId turn_;
+
+  ModbusParameter modbusParameters_[];
+
+
+
+  /*!
+   * \brief Метод получения количества регистров в карте регистров
+   * \return Количество врегистров
+  */
+  int getQuantityParam();
+
+  /*!
+   * \brief Метод записи количества регистров в карте регистров
+   * \param Quantity количество регистров
+  */
+  void setQuantityParam(int Quantity);
+
+  /*!
+   * \brief Метод получения адреса устройства
+   * \return Адрес устройства
+  */
+  int getDeviceAddress();
+
+  /*!
+   * \brief Метод записи адреса устройства
+   * \param Адрес устройства
+  */
+  void setDeviceAddress(int Address);
+
+  ModbusMasterSerial *MMS;
 
 };
 

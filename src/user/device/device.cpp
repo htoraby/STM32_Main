@@ -35,7 +35,7 @@ int Device::getCheckParameter(int ID, Parameter &Param)
 }
 
 // Функция получения текущего значения параметра с проверками
-int Device::getCheckValue(int ID, double &Value)
+int Device::getCheckValue(int ID, float &Value)
 {
   // ВНИМАНИЕ
   // Сюда надо добавить проверки и условия
@@ -47,10 +47,10 @@ int Device::getCheckValue(int ID, double &Value)
 
 // Функция получения уровня доступа к параметру с проверкой валидности
 // полученного значения
-int Device::getCheckAccess(int ID)
+int Device::getCheckAccess(int ID, int &Access)
 {
   // Получаем уровень доступа параметра по ID
-  int Access = getAccess(ID);
+  Access = getAccess(ID);
   // Проверяем на валидность
   if (checkRange(Access, ACCESS_ERROR, ACCESS_LAST, 0))
     return 0;
@@ -114,13 +114,13 @@ int Device::setCheckParameter(int ID, Parameter Param)
   return RETURN_OK;
 }
 
-// Функция получения текущего значения параметра с проверками
-int Device::setCheckValue(int ID, double Value)
+// Функция записи текущего значения параметра с проверками
+int Device::setCheckValue(int ID, float Value)
 {
   // ВНИМАНИЕ
   // Сюда надо добавить проверки и условия
 
-  // Вызываем функцию чтения значения по ID
+  // Вызываем функцию записи значения по ID
   setValue(ID, Value);
   return RETURN_OK;
 }
