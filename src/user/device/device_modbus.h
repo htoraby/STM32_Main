@@ -70,7 +70,7 @@ public:
    * \param DeviceAddress - адресс устройства
    * \return Код результата операции
    */
-  DeviceModbus( ModbusParameter *MapRegisters,
+  DeviceModbus(ModbusParameter *MapRegisters,
                 int Quantity,
                 int PortName,
                 long BaudRate,

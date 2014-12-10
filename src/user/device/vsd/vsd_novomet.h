@@ -41,6 +41,8 @@ class VsdNovomet: public Vsd
 
         void initModbusParameters();
 
+        static DeviceModbus *DM;
+
         /*!
          * \brief startVSD
          * МЕТОД ЗАПУСКА ЧРП Новомет
@@ -96,7 +98,6 @@ class VsdNovomet: public Vsd
 
     private:
         ModbusParameter ModbusParameters[94];
-        DeviceModbus *DM;
 
 };
 

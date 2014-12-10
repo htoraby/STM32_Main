@@ -273,7 +273,8 @@ DeviceModbus::DeviceModbus(ModbusParameter *MapRegisters,
                            int DataBits,
                            int StopBits,
                            int Parity,
-                           int Address)
+                           int Address
+                          )
   : quantityParam_(Quantity),
     deviceAddress_(Address)
 
@@ -282,6 +283,28 @@ DeviceModbus::DeviceModbus(ModbusParameter *MapRegisters,
   // Создаём экземпляр класса ModbusMasterSerial
   MMS = new ModbusMasterSerial(PortName);
   MMS->openProtocol(PortName, BaudRate, DataBits, StopBits, Parity);
+
+  // Создаём задачу цикла опроса
+  // !!!ВНИМАНИЕ!!! пока сделаем так, т.к. не знаем как передать osThreadDef name
+  /*
+  switch(PortName) {
+  case uart1:
+    osThreadDef(uart1_exchange, testTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
+    osThreadCreate(osThread(uart1_exchange), NULL);
+    break;
+  case  uart2:
+    osThreadDef(uart2_exchange, testTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
+    osThreadCreate(osThread(uart2_exchange), NULL);
+    break;
+  case  uart3:
+    osThreadDef(uart3_exchange, testTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
+    osThreadCreate(osThread(uart3_exchange), NULL);
+    break;
+  default:
+    // !!!ВНИМАНИЕ!!! Сообщение о несуществующем порте
+    break;
+  }
+  */
 
   osMessageQDef(Device_Queue, 100, uint32_t);
   osMessageQId turn_ = osMessageCreate (osMessageQ(Device_Queue), NULL);

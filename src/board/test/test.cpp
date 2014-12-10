@@ -34,6 +34,7 @@ void testInit()
 
   osThreadDef(Test_Uart_Thread, testUartThread, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(Test_Uart_Thread), NULL);
+
 }
 
 static void testThread(void const * argument)
