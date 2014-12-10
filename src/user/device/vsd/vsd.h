@@ -92,7 +92,7 @@ public:
    * \param Frequency
    * \return Код результата операции
    */
-  int setFrequency(double Frequency);
+  int setFrequency(float Frequency);
 
   /*!
    * \brief setMinFrequency

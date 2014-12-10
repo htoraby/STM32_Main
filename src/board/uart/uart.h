@@ -31,7 +31,7 @@ extern UART_Def uarts[];
 
  \param num      - номер порта (@ref uartNum)
  \param baudRate - скорость (115200)
- \param parity   - чётность (UART_PARITY_NONE)
+ \param parity   - чётность ()
  \param stopBits - стоп бит (UART_STOPBITS_1)
  \return int : -1 - неверный порт, 0 - ok, >0 - ошибки
 */

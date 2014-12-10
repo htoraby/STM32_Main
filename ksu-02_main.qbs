@@ -67,7 +67,9 @@ Product {
         "src/common/",
         "src/user/",
         "src/user/device/",
-        "src/user/device/vsd",
+        "src/user/device/vsd/",
+        "src/user/protocol/",
+        "src/user/protocol/modbus/",
     ]
     cpp.defines: [
         (qbs.debugInformation ? "DEBUG" : "RELEASE"),

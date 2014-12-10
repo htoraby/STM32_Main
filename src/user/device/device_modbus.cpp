@@ -6,6 +6,7 @@
  */
 
 #include "device_modbus.h"
+#include "cmsis_os.h"
 
 float Units[28][6][2] =
 {
@@ -264,10 +265,50 @@ float Units[28][6][2] =
   }
 };
 
-DeviceModbus::DeviceModbus(int Address, int Quantity)
+// Конструктор класса DeviceModbus
+DeviceModbus::DeviceModbus(ModbusParameter *MapRegisters,
+                           int Quantity,
+                           int PortName,
+                           long BaudRate,
+                           int DataBits,
+                           int StopBits,
+                           int Parity,
+                           int Address
+                          )
+  : quantityParam_(Quantity),
+    deviceAddress_(Address)
+
 {
-  DeviceAddress = Address;
-  QuantityParam = Quantity;
+
+  // Создаём экземпляр класса ModbusMasterSerial
+  MMS = new ModbusMasterSerial(PortName);
+  MMS->openProtocol(PortName, BaudRate, DataBits, StopBits, Parity);
+
+  // Создаём задачу цикла опроса
+  // !!!ВНИМАНИЕ!!! пока сделаем так, т.к. не знаем как передать osThreadDef name
+  /*
+  switch(PortName) {
+  case uart1:
+    osThreadDef(uart1_exchange, testTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
+    osThreadCreate(osThread(uart1_exchange), NULL);
+    break;
+  case  uart2:
+    osThreadDef(uart2_exchange, testTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
+    osThreadCreate(osThread(uart2_exchange), NULL);
+    break;
+  case  uart3:
+    osThreadDef(uart3_exchange, testTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
+    osThreadCreate(osThread(uart3_exchange), NULL);
+    break;
+  default:
+    // !!!ВНИМАНИЕ!!! Сообщение о несуществующем порте
+    break;
+  }
+  */
+
+  osMessageQDef(Device_Queue, 100, uint32_t);
+  osMessageQId turn_ = osMessageCreate (osMessageQ(Device_Queue), NULL);
+  osMessagePut(turn_, 25, 0);
 }
 
 DeviceModbus::~DeviceModbus()
@@ -275,455 +316,361 @@ DeviceModbus::~DeviceModbus()
   /// TODO Auto-generated destructor stub
 }
 
-/** 
-@function getDeviceAddress
-Функция возвращает адрес устройства (1..254)
-@return Адрес устройства
-*/
+// ----------------------------------------------------------------------------
+// Методы для работы с полями массива структур Modbus параметров (картой)
+// через индекс параметра в массиве
+// ----------------------------------------------------------------------------
+
+// Получить ID из структуры ModbusParameter из массива по индексу
+int DeviceModbus::getFieldID(int Index)
+{
+  return modbusParameters_[Index].ID;
+}
+
+// Получить Address из структуры ModbusParameter из массива по индексу
+int DeviceModbus::getFieldAddress(int Index)
+{
+  return modbusParameters_[Index].Address;
+}
+
+// Получить Operation из структуры ModbusParameter из массива по индексу
+int DeviceModbus::getFieldOperation(int Index)
+{
+  return modbusParameters_[Index].Operation;
+}
+
+// Получить Physic из структуры ModbusParameter из массива по индексу
+int DeviceModbus::getFieldPhysic(int Index)
+{
+  return modbusParameters_[Index].Physic;
+}
+
+// Получить Unit из структуры ModbusParameter из массива по индексу
+int DeviceModbus::getFieldUnit(int Index)
+{
+  return modbusParameters_[Index].Unit;
+}
+
+// Получить Validity из структуры ModbusParameter из массива по индексу
+int DeviceModbus::getFieldValidity(int Index)
+{
+  return modbusParameters_[Index].Validity;
+}
+
+// Получить TypeData из структуры ModbusParameter из массива по индексу
+int DeviceModbus::getFieldTypeData(int Index)
+{
+  return modbusParameters_[Index].TypeData;
+}
+
+// Получить FreqExchange из структуры ModbusParameter из массива по индексу
+int DeviceModbus::getFieldFreqExchange(int Index)
+{
+  return modbusParameters_[Index].FreqExchange;
+}
+
+// Получить CntExchange из структуры ModbusParameter из массива по индексу
+int DeviceModbus::getFieldCntExchange(int Index)
+{
+  return modbusParameters_[Index].CntExchange;
+}
+
+// Получить Priority из структуры ModbusParameter из массива по индексу
+int DeviceModbus::getFieldPriority(int Index)
+{
+  return modbusParameters_[Index].Priority;
+}
+
+// Метод присвоения Priority параметра по индексу в массиве параметров
+void DeviceModbus::setFieldPriority(int Index, int Priority)
+{
+  modbusParameters_[Index].Priority = Priority;
+}
+
+// Получить Flag из структуры ModbusParameter из массива по индексу
+int DeviceModbus::getFieldFlag(int Index)
+{
+  return modbusParameters_[Index].Flag;
+}
+
+// Метод присвоения Flag параметра по индексу в массиве параметров
+void DeviceModbus::setFieldFlag(int Index, int Flag)
+{
+  modbusParameters_[Index].Flag = Flag;
+}
+
+// Получить Scale из структуры ModbusParameter из массива по индексу
+float DeviceModbus::getFieldScale(int Index)
+{
+  return modbusParameters_[Index].Scale;
+}
+
+// Получить Coefficient из структуры ModbusParameter из массива по индексу
+float DeviceModbus::getFieldCoefficient(int Index)
+{
+  return modbusParameters_[Index].Coefficient;
+}
+
+// Получить Minimum из структуры ModbusParameter из массива по индексу
+float DeviceModbus::getFieldMinimum(int Index)
+{
+  return modbusParameters_[Index].Minimum;
+}
+
+// Получить Maximum из структуры ModbusParameter из массива по индексу
+float DeviceModbus::getFieldMaximum(int Index)
+{
+  return modbusParameters_[Index].Maximum;
+}
+
+// Получить Value из структуры ModbusParameter из массива по индексу
+unTypeData DeviceModbus::getFieldValue(int Index)
+{
+  return modbusParameters_[Index].Value;
+}
+
+// Получить всю структуру параметра
+ModbusParameter DeviceModbus::getFieldAll(int Index)
+{
+  return modbusParameters_[Index];
+}
+
+// Метод поиска и получения индекса параметра с указанным ID
+int DeviceModbus::getIndexAtID(int ID)
+{
+  int Quantity = getQuantityParam();
+  for (int I = 0; I < Quantity; I++) {
+    if (getFieldID(I) == ID) {
+      return I;
+    }
+  }
+  return 0;
+}
+
+// Метод поиска и получения индекса параметра с указанным Адресу
+int DeviceModbus::getIndexAtAddress(int Address)
+{
+  int Quantity = getQuantityParam();
+  for (int I = 0; I < Quantity; I++) {
+    if (getFieldAddress(I) == Address) {
+      return I;
+    }
+  }
+  return 0;
+}
+
+// Получить элемент очереди внеочередной
+int DeviceModbus::getTurn()
+{
+  osEvent Event;
+  Event = osMessageGet(turn_, 0);
+  if (Event.status == osEventMessage)
+    return Event.value.v;
+  return 0;
+}
+
+// Добавить элемент в очередь
+int DeviceModbus::putTurn(int Index)
+{
+  osStatus Status;
+  Status = osMessagePut(turn_, Index, 0);
+  if (Status)
+    return 1;
+  else
+    return 0;
+}
+
+
+// Метод записи параметра
+void DeviceModbus::writeModbusParameter(int ID, float Value)
+{
+  int Index = getIndexAtID(ID);
+  // Получаем всю структуру параметра
+  ModbusParameter Param = getFieldAll(Index);
+  // Применяем преобразование единиц измерения
+  Value = (Value - (Units[Param.Physic][Param.Unit][1])) / (Units[Param.Physic][Param.Unit][0]);
+  // Применяем преобразование коэффициента
+  Value = Value * Param.Coefficient;
+  // Применяем преобразование масштаба
+  Value = Value / Param.Scale;
+  // Применяем тип данных
+  switch (Param.TypeData) {
+  case  TYPE_DATA_CHAR:
+    Param.Value.Chars[0] = (char)(Value + 0.5);
+    break;
+  case  TYPE_DATA_INT16:
+    Param.Value.Int16[0] = (short int)(Value + 0.5);
+    break;
+  case  TYPE_DATA_INT32:
+    Param.Value.Int32 = (int)(Value + 0.5);
+    break;
+  case TYPE_DATA_UINT16:
+    Param.Value.Uint16[0] = (unsigned short int)(Value + 0.5);
+    break;
+  case  TYPE_DATA_UINT32:
+    Param.Value.Uint32 = (unsigned int)(Value + 0.5);
+    break;
+  case TYPE_DATA_FLOAT:
+    Param.Value.Float = Value;
+    break;
+  default:
+    break;
+  }
+  Param.Flag = 1;
+  Param.Priority = 1;
+  putTurn(Index);
+}
+
+int DeviceModbus::searchExchangeParameters()
+{
+  static int Index = 1;
+  for (int i = Index; i < quantityParam_; i++) {
+    // Если счётчик циклов опроса параметра не достиг уставки частоты опроса
+    if (modbusParameters_[i].CntExchange < modbusParameters_[i].FreqExchange) {
+      modbusParameters_[i].CntExchange++;
+    }
+    else {
+      modbusParameters_[i].CntExchange = 0;
+      Index = i+1;
+      return Index;
+    }
+  }
+  for (int i = 1; i < Index; i++) {
+    // Если счётчик циклов опроса параметра не достиг уставки частоты опроса
+    if (modbusParameters_[i].CntExchange < modbusParameters_[i].FreqExchange) {
+      modbusParameters_[i].CntExchange++;
+    }
+    else {
+      modbusParameters_[i].CntExchange = 0;
+      Index = i+1;
+      return i;
+    }
+  }
+  return 0;
+}
+
+// Метод цикл по карте регистров для чтения и записи параметров
+void DeviceModbus::exchangeCycle(void)
+{
+  // Проверяем очередь параметров для обработки вне очереди
+  int outOfTurn = getTurn();
+  // Если есть параметры для обработки вне очереди
+  if (outOfTurn) {
+    // Если записать
+    if (modbusParameters_[outOfTurn].Flag) {
+      int address = modbusParameters_[outOfTurn].Address;
+      switch (modbusParameters_[outOfTurn].TypeData) {
+      case TYPE_DATA_INT16:
+        MMS->writeSingleRegister(deviceAddress_,
+                                 address,
+                                 modbusParameters_[outOfTurn].Value.Int16[0]);
+        break;
+      case TYPE_DATA_UINT16:
+        MMS->writeSingleRegister(deviceAddress_,
+                                 address,
+                                 modbusParameters_[outOfTurn].Value.Uint16[0]);
+        break;
+      case  TYPE_DATA_INT32:
+        int32Arr_[0] = modbusParameters_[outOfTurn].Value.Int32;
+        MMS->writeMultipleLongInts(deviceAddress_,
+                                   address,
+                                   int32Arr_,
+                                   1);
+        break;
+      case  TYPE_DATA_UINT32:
+        int32Arr_[0] =  modbusParameters_[outOfTurn].Value.Uint32;
+        MMS->writeMultipleLongInts(deviceAddress_,
+                                   modbusParameters_[outOfTurn].Address,
+                                   int32Arr_,
+                                   1);
+        break;
+      case  TYPE_DATA_FLOAT:
+        float32Arr_[0] = modbusParameters_[outOfTurn].Value.Float;
+        MMS->writeMultipleFloats(deviceAddress_,
+                                 modbusParameters_[outOfTurn].Address,
+                                 float32Arr_,
+                                 1);
+        break;
+      default:
+        break;
+      }
+    }
+  }
+  else {
+    outOfTurn = searchExchangeParameters();
+    if (outOfTurn) {
+      int address = modbusParameters_[outOfTurn].Address;
+      switch (modbusParameters_[outOfTurn].TypeData) {
+      case TYPE_DATA_INT16:
+        MMS->readMultipleRegisters(deviceAddress_,
+                                   address,
+                                   regArr_,
+                                   1);
+        break;
+      case TYPE_DATA_UINT16:
+        MMS->readMultipleRegisters(deviceAddress_,
+                                   address,
+                                   regArr_,
+                                   1);
+        break;
+      case  TYPE_DATA_INT32:
+        MMS->readMultipleLongInts(deviceAddress_,
+                                  address,
+                                  int32Arr_,
+                                  1);
+        break;
+      case  TYPE_DATA_UINT32:
+        MMS->readMultipleLongInts(deviceAddress_,
+                                  address,
+                                  int32Arr_,
+                                  1);
+        break;
+      case  TYPE_DATA_FLOAT:
+        MMS->readMultipleFloats(deviceAddress_,
+                                address,
+                                float32Arr_,
+                                1);
+        break;
+      default:
+        break;
+      }
+    }
+    //else
+      // ВНИМАНИЕ!!! Сломался exchangeCycle
+  }
+}
+
+
+
+// Метод чтения количества регистров в карте регистров
+int DeviceModbus::getQuantityParam()
+{
+  return quantityParam_;
+}
+
+// Метод записи количества регистров в карте регистров
+void DeviceModbus::setQuantityParam(int Quantity)
+{
+  quantityParam_ = Quantity;
+}
+
+// Метод чтения адреса устройства
 int DeviceModbus::getDeviceAddress()
 {
-  return DeviceAddress;
+  return deviceAddress_;
+}
+
+// Метод записи количества регистров в карте регистров
+void DeviceModbus::setDeviceAddress(int Address)
+{
+  deviceAddress_ = Address;
 }
 
 
 
-/*!
-@function checkExchangModbusParameters
-Проверяется предназначен ли параметр для работы в цикле и если он читается
-записывается периодически истёк ли период
-@param out_sParameter2 - параметр, отвечающий за что-то еще
-@return Адрес устройства
-*/
-int DeviceModbus::checkExchangModbusParameters(int Index)
-{
-  int Result = RETURN_ERROR;
-  try
-  {
-    /// Если параметр вообще читается
-    if(ModbusParameters[Index].FreqExchange)
-    {
-      /// Если счётчик задержки больше или равен частоте опроса
-      if(ModbusParameters[Index].CntExchange >= ModbusParameters[Index].FreqExchange)
-      {
-        /// Сбрасываем счётчик
-        ModbusParameters[Index].CntExchange = 0;
-        /// Возвращаем что параметр надо считать
-        Result = RETURN_OK;
-      }
-      /// Иначе, счётчик задержки не истёк
-      else
-      {
-        /// Увеличиваем счётчик задержки
-        ModbusParameters[Index].CntExchange++;
-      }
-    }
-  }
-  catch(...)
-  {
-
-  }
-  return Result;
-}
-
-/// МЕТОД ПОИСКА СЛЕДУЮЩЕГО ПАРАМЕТРА ДЛЯ РАБОТЫ
-/// В методе перебираются всё параметры пока не будет
-/// найден параметр для обработки
-/// Функция возвращает индекс параметра
-int DeviceModbus::searchNextModbusParameters()
-{
-  int Result = RETURN_ERROR;
-  static int Index = 1;
-  try
-  {
-    /// Пока не найдём параметр который надо читать
-    while(!checkExchangModbusParameters(Index))
-    {
-      Result = Index;
-      /// Увеличиваем счётчик параметров
-      Index++;
-      if(Index >= QuantityParam)
-      {
-        Index = 1;
-      }
-    }
-  }
-  catch(...)
-  {
-
-  }
-  return Result;
-}
-
-/// МЕТОД ПОИСКА ПАРАМЕТРА С ПОВЫШЕННЫМ ПРИОРИТЕТ ОПЕРАЦИЙ
-/// Функция один раз пробегает по массиву параметров
-/// Ищет параметр с максимальным приоритетом операции
-/// Приоритет по умолчанию 0 чем больше цифра тем выше приоритет
-/// Функция возвращает 0 если нет параметров с высоким приоритетом
-/// или индекс параметра в массиве
-int DeviceModbus::searchPriorityModbusParameters()
-{
-  /// Инициализация результата
-  int Result = RETURN_ERROR;
-  /// Инициализация максимального приоритета
-  int Priority = 0;
-  /// Счетчик
-  int Index = 1;
-  try
-  {
-    /// Цикл по массиву параметров
-    while(Index < QuantityParam)
-    {
-      /// Если приоритет текущего параметра больше предыдущего
-      /// максимального приоритета
-      if(ModbusParameters[Index].Priority > Priority)
-      {
-        /// Запоминаем индекс параметра
-        Result = Index;
-        /// Запоминаем приоритет
-        Priority = ModbusParameters[Index].Priority;
-      }
-      Index++;
-    }
-  }
-  catch(...)
-  {
-
-  }
-  return Result;
-}
-
-/// МЕТОД ПОИСКА ПАРАМЕТРА ДЛЯ ОБРАБОТКИ
-/// В методе вызываются функции поиска параметра с высоким приоритетом
-/// и поиска следующего параметра для обработки
-/// Функция возвращает индекс параметра с которым нужно работать сейчас
-int DeviceModbus::searchExchangModbusParameters(void)
-{
-  int Result = RETURN_ERROR;
-  static int I = 0;
-  try
-  {
-    /// Cначала ищем параметр с максимальным приоритетом
-    Result = searchPriorityModbusParameters();
-    /// Если такого параметра нет
-    if (!Result)
-    {
-      /// Ищем следующий параметр для цикла
-      Result = searchNextModbusParameters();
-    }
-  }
-  catch(...)
-  {
-
-  }
-  return Result;
-}
-
-void DeviceModbus::excangeCycle()
-{
-  int Index = 0;
-  try
-  {
-    /// Находим ID параметра для цикла опроса
-    Index = searchExchangModbusParameters();
-  }
-  catch(...)
-  {
-
-  }
-}
-
-int DeviceModbus::getIndexInArrayAtAddress(int Address)
-{
-  int Result = RETURN_ERROR;
-  int Index = 1;
-  try {
-    //! Цикл по карте регистров
-    while (Index < QuantityParam) {
-      //! Если нашли совпадение адреса
-      if (ModbusParameters[Index].Address == Address) {
-        //! Возвращаем индекс параметра в массиве с данным адресом
-        Result = Index;
-        break;
-      }
-      Index++;
-    }
-  }
-  catch(...) {
-    //! Message: Упали в функции getIndexInArrayAtAddress | Address
-  }
-  return Result;
-};
-
-int DeviceModbus::getModbusIDAtIndex(int Index)
-{
-  int Result = RETURN_ERROR;
-  try {
-    Result = ModbusParameters[Index].ID;
-  }
-  catch(...) {
-    //! Message: Упали в функции getModbusIDAtIndex | Index
-  }
-  return Result;
-};
-
-int DeviceModbus::getModbusTypeDataAtIndex(int Index)
-{
-  int Result = RETURN_ERROR;
-  try {
-    if((ModbusParameters[Index].TypeData > TYPE_DATA_ERROR)
-       && (ModbusParameters[Index].TypeData < TYPE_DATA_LAST)) {
-       Result = ModbusParameters[Index].TypeData;
-    }
-  }
-  catch(...) {
-    //! Message: Упали в функции getModbusTypeDataAtIndex | Index
-  }
-  return Result;
-}
-
-float DeviceModbus::getModbusScaleAtIndex(int Index)
-{
-  float Result = RETURN_ERROR;
-  try {
-    Result = ModbusParameters[Index].Scale;
-  }
-  catch(...) {
-    //! Message: Упали в функции getModbusScaleAtIndex | Index
-  }
-  return Result;
-};
-
-float DeviceModbus::getModbusCoefficientAtIndex(int Index)
-{
-  float Result = RETURN_ERROR;
-  try {
-    Result = ModbusParameters[Index].Coefficient;
-  }
-  catch(...) {
-    //! Message: Упали в функции getModbusCoefficientAtIndex | Index
-  }
-  return Result;
-};
-
-int DeviceModbus::getModbusPhysicAtIndex(int Index)
-{
-  int Result = RETURN_ERROR;
-  try {
-    if((ModbusParameters[Index].Physic > PHYSIC_ERROR)
-       && (ModbusParameters[Index].Physic < PHYSIC_LAST)) {
-       Result = ModbusParameters[Index].Physic;
-    }
-  }
-  catch(...) {
-    //! Message: Упали в функции getModbusPhysicAtIndex | Index
-  }
-  return Result;
-}
-
-int DeviceModbus::getModbusUnitAtIndex(int Index)
-{
-  int Result = RETURN_ERROR;
-  try {
-    Result = ModbusParameters[Index].Unit;
-  }
-  catch(...) {
-    //! Message: Упали в функции getModbusUnitAtIndex | Index
-  }
-  return Result;
-}
-
-float DeviceModbus::convModbusToParameters(int Address, unTypeData ModbusValue)
-{
-  float Result = RETURN_ERROR;
-  int Index = 0;
-  try {
-    //! Получаем индекс параметра в карте регистров
-    Index = getIndexInArrayAtAddress(Address);
-    //! Преобразуем полученное число в float
-    Result = convModbusTypeToFloatAtIndex(Index, ModbusValue);
-    //! Применяем масштабируемость
-    Result = applyModbusScaleAtIndex(Index, Result);
-    //! Применяем коэффициент
-    Result = applyModbusCoefficientAtIndex(Index, Result);
-    //! Применяем перевод единиц измерения
-    // ВНИМАНИЕ
-    // Result = convModbusPhysicUnitAtIndex(Index, Result);
-  }
-  catch(...) {
-    /// Message: Упали в функции conversionToParameters
-  }
-  return Result;
-};
-
-float DeviceModbus::convModbusTypeToFloatAtIndex(int Index, unTypeData ModbusValue)
-{
-  float Result = RETURN_ERROR;
-  try {
-    // ВНИМАНИЕ
-    int TypeData = 0;
-    // int TypeData = getModbusTypeDataAtIndex(Index, TypeData);
-    if (TypeData) {
-      switch (TypeData) {
-      case TYPE_DATA_CHAR:
-           Result = (float)ModbusValue.Chars[0];
-           break;
-      case TYPE_DATA_INT16:
-           Result = (float)ModbusValue.Int16[0];
-           break;
-      case TYPE_DATA_INT32:
-           Result = (float)ModbusValue.Int32;
-           break;
-      case TYPE_DATA_UINT16:
-           Result = (float)ModbusValue.Uint16[0];
-           break;
-      case TYPE_DATA_UINT32:
-           Result = (float)ModbusValue.Uint32;
-           break;
-      case TYPE_DATA_FLOAT:
-           Result = (float)ModbusValue.Float;
-           break;
-      }
-    }
-  }
-  catch (...) {
-    //! Message: Упали в функции convModbusTypeToFloatAtIndex | Index
-  }
-  return Result;
-};
-
-float DeviceModbus::applyModbusScaleAtIndex(int Index, float Value)
-{
-  float Result = RETURN_ERROR;
-  try {
-    Result = getModbusScaleAtIndex(Index);
-    if (Result)
-      Result = Value * Result;
-  }
-  catch (...) {
-    //! Message: Упали в функции convModbusScaleAtIndex | Index
-  }
-}
-
-float DeviceModbus::applyModbusCoefficientAtIndex(int Index, float Value)
-{
-  float Result = RETURN_ERROR;
-  try {
-    float Value = getModbusCoefficientAtIndex(Index);
-    if (Value)
-      Result = Value / getModbusScaleAtIndex(Index);
-  }
-  catch (...) {
-    //! Message: Упали в функции convModbusScaleAtIndex | Index
-  }
-}
 
 
-/// МЕТОДЫ ПРЕОБРАЗОВАНИЯ
-/// ЗНАЧЕНИЯ ИЗ БАНКА ПАРАМЕТРОВ УСТРОЙСТВА ДЛЯ MODBUS
-
-/// МЕТОД ПРЕОБРАЗОВАНИЯ ЗНАЧЕНИЯ ИЗ БАНКА ПАРАМЕТРОВ В MODBUS ЗНАЧЕНИЕ
-/// Сначала переводим в единицы измерения
-/*
-int DeviceModbus::convParamToModbus(int Address, float Value, unTypeData &ModbusValue)
-{
-  int Result = RETURN_ERROR;
-  try
-  {
-    /// Применяем перевод единиц измерения
-    Result = convParamToModbusPhysicUnit(Address, Value);
-    if(Result == RETURN_OK)
-    {
-      Result = convParamToModbusCoefficient(Address, Value);
-      if(Result == RETURN_OK)
-      {
-        Result = convParamToModbusScale(Address, Value);
-        if(Result == RETURN_OK)
-        {
-          Result = convParamToModbusType(Address, Value, ModbusValue);
-        }
-      }
-    }
-  }
-  catch(...)
-  {
-    /// Message: Упали в функции conversionToParameters
-  }
-  return Result;
-};
 
 
-/// МЕТОД ПРИВЕДЕНИЯ ЗНАЧЕНИЯ ИЗ ВНУТРЕННЕМУ ПРЕДСТАВЛЕНИЯ К ЕДИНИЦАМ ПАРАМЕТРА
-/// В методе к значению полученному из банка параметров преобразование единиц измерения
-/// Параметры:
-/// Address - адресс параметра в modbus карте,
-/// Value - переменная ссылка на перемнную в которую сохраняем значение
-/// Возвращает:
-/// RETURN_ERROR - Неизвестная ошибка
-int DeviceModbus::convParamToModbusPhysicUnit(int Address, float &Value)
-{
-  int Result = RETURN_ERROR;
-  int Physic;
-  int Unit;
-  try
-  {
-    /// Получаем физическую величину параметра
-    Result = getModbusPhysic(Address, Physic);
-    if(Result == RETURN_OK)
-    {
-      /// Получаем единицы измерения параметра
-      Result = getModbusUnit(Address, Unit);
-      if(Result == RETURN_OK)
-      {
-        /// Вычисляем значение с пропорциональным и линейным коэффициентом
-        Value = (Value - (Units[Physic][Unit][1])) / (Units[Physic][Unit][0]);
-      }
-    }
-  }
-  catch(...)
-  {
-    /// Message: Упали в функции conversionModbusValuePhysicUnit
-  }
-  return Result;
-};
-
-int DeviceModbus::convParamToModbusType(int Address, float &Value, unTypeData &ModbusValue)
-{
-  int Result = RETURN_ERROR;
-  int TypeData;
-  try
-  {
-    Result = getModbusTypeData(Address, TypeData);
-    if(Result == RETURN_OK)
-    {
-      switch(TypeData)
-      {
-      case    TYPE_DATA_CHAR:
-        ModbusValue.Chars[0] = (char)(Value + 0.5);
-        break;
-      case    TYPE_DATA_INT16:
-        ModbusValue.Int16[0] = (short int)(Value + 0.5);
-        break;
-      case    TYPE_DATA_INT32:
-        ModbusValue.Int32 = (int)(Value + 0.5);
-        break;
-      case    TYPE_DATA_UINT16:
-        ModbusValue.Uint16[0] = (unsigned short int)(Value + 0.5);
-        break;
-      case    TYPE_DATA_UINT32:
-        ModbusValue.Uint32 = (unsigned int)(Value + 0.5);
-        break;
-      case    TYPE_DATA_FLOAT:
-        ModbusValue.Float = Value;
-        break;
-      }
-    }
-  }
-  catch(...)
-  {
-
-  }
-  return Result;
-};
-*/
 
 
