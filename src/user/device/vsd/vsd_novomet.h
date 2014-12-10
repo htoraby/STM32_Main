@@ -33,6 +33,9 @@ enum enInvertorControl
 	INV_CONTROL_CLEAR_OPT       = 128
 };
 
+class VsdNovomet;
+extern VsdNovomet *vsdNovomet;
+
 class VsdNovomet: public Vsd
 {
     public:
@@ -41,7 +44,8 @@ class VsdNovomet: public Vsd
 
         void initModbusParameters();
 
-        static DeviceModbus *DM;
+        DeviceModbus *DM;
+        osThreadId thread_id;
 
         /*!
          * \brief startVSD

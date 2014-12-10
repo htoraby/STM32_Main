@@ -198,6 +198,7 @@ static void testRtc()
 
 static void testAdc()
 {
+  adcStartDma();
 #if (TEST_ADC == 1)
   StatusType status;
   static float coreTemperature;
