@@ -24,6 +24,7 @@
 #include "adc.h"
 #include "iwdg.h"
 #include "rcause.h"
+#include "temp_sensor.h"
 
 /* Private function prototypes -----------------------------------------------*/
 static void systemClockConfig();
@@ -49,6 +50,7 @@ int main()
   framInit();
   flashExtInit(FlashSpi1);
   flashExtInit(FlashSpi5);
+  tempSensorInit();
 
   iwdgInit();
 
@@ -56,7 +58,7 @@ int main()
 
   /* Code generated for FreeRTOS */
   /* Create Start thread */
-  osThreadDef(Main_Thread, mainThread, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
+  osThreadDef(Main_Thread, mainThread, osPriorityNormal, 0, 4*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(Main_Thread), NULL);
 
   /* Start scheduler */

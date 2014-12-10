@@ -7,6 +7,7 @@
 #include "fram.h"
 #include "flash_ext.h"
 #include "adc.h"
+#include "temp_sensor.h"
 
 static void testThread(void const * argument);
 static void testUartThread(void const * argument);
@@ -15,6 +16,9 @@ static void testAdc();
 static void testFram();
 static void testFlash1();
 static void testFlash2();
+static void testTempSensor();
+static void testDI();
+static void testDO();
 
 #if USE_EXT_MEM
   uint8_t bufferTx[4096] __attribute__((section(".extmem")));
@@ -29,7 +33,7 @@ static void testFlash2();
 void testInit()
 {
   /* Create Test thread */
-  osThreadDef(Test_Thread, testThread, osPriorityNormal, 0, 8 * configMINIMAL_STACK_SIZE);
+  osThreadDef(Test_Thread, testThread, osPriorityNormal, 0, 10 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(Test_Thread), NULL);
 
   osThreadDef(Test_Uart_Thread, testUartThread, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
@@ -54,7 +58,7 @@ static void testThread(void const * argument)
 
 #if (TEST_UART == 1)
   int sizePkt;
-  uint8_t buffer[UART_BUF_SIZE];
+  static uint8_t buffer[UART_BUF_SIZE];
   bool turn = false;
 
   uart_init(uart2, 9600);
@@ -68,6 +72,9 @@ static void testThread(void const * argument)
   testFram();
   testFlash1();
   testFlash2();
+  testTempSensor();
+  testDI();
+  testDO();
 
   while(1) {
 #if (TEST_USB_FAT == 1)
@@ -103,15 +110,15 @@ static void testThread(void const * argument)
 #if (TEST_UART == 1)
     buffer[0] = 0x55;
     buffer[1] = 0xAA;
-    buffer[2] = 0x00;
-    uart_writeData(uart2, buffer, 3);
+    buffer[2] = 0x02;
+    uart_writeData(uart2, buffer, UART_BUF_SIZE);
 
     osSemaphoreWait(semaphoreUart, osWaitForever);
     while (1) {
       if (osSemaphoreWait(semaphoreUart, 5) == osEventTimeout) {
         sizePkt = uart_readData(uart2, buffer);
         if ((buffer[0] != 0xFE) || (buffer[1] != 0x55) ||
-            (buffer[2] != 0x01) || (sizePkt != 3))
+            (buffer[2] != 0x01) || (sizePkt != UART_BUF_SIZE))
           asm("nop");
 
         if (turn)
@@ -131,7 +138,7 @@ static void testUartThread(void const * argument)
   (void)argument;
   int countByte = 0;
   int sizePkt;
-  uint8_t buffer[UART_BUF_SIZE];
+  static uint8_t buffer[UART_BUF_SIZE];
 
   uart_init(uart4, 9600);
 
@@ -146,12 +153,17 @@ static void testUartThread(void const * argument)
         buffer[0] = 0xFE;
         buffer[1] = 0x55;
         buffer[2] = 0x01;
-        uart_writeData(uart4, buffer, 3);
 
         sizePkt = uart_readData(uart4, buffer);
         if ((buffer[0] != 0x55) || (buffer[1] != 0xAA) ||
-            (buffer[2] != 0x00) || (sizePkt != 3))
+            (buffer[2] != 0x02) || (sizePkt != UART_BUF_SIZE))
           asm("nop");
+
+        buffer[0] = 0xFE;
+        buffer[1] = 0x55;
+        buffer[2] = 0x01;
+        uart_writeData(uart4, buffer, UART_BUF_SIZE);
+
         countByte = 0;
         break;
       } else {
@@ -279,5 +291,40 @@ static void testFlash2()
   }
   time = HAL_GetTick() - time;
   asm("nop");
+#endif
+}
+
+static void testTempSensor()
+{
+#if TEST_T_SENSOR
+  float temp = tempSensorReadData();
+  if (temp == 999)
+    asm("nop");
+#endif
+}
+
+static void testDI()
+{
+#if TEST_DI
+  PinState value;
+  for (int i = 0; i < DigitalInputMax; ++i) {
+    value = getDigitalInput(i);
+    if (value)
+      asm("nop");
+  }
+#endif
+}
+
+static void testDO()
+{
+#if TEST_DO
+  for (int i = 0; i < DigitalOutputMax; ++i) {
+    setDigitalOutput(i, PinSet);
+    asm("nop");
+  }
+  for (int i = 0; i < DigitalOutputMax; ++i) {
+    setDigitalOutput(i, PinReset);
+    asm("nop");
+  }
 #endif
 }

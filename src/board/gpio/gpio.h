@@ -3,17 +3,55 @@
 
 #include "board.h"
 
-/* Exported types ------------------------------------------------------------*/
-enum LedType
-{
+/*!
+ \brief Значения вывода
+
+*/
+enum PinState {
+  PinReset,
+  PinSet,
+};
+
+/*!
+ \brief Список LED
+
+*/
+enum LedType {
   StopLed,
   WaitLed,
   WorkLed,
-  FanLed
+  FanLed,
+  LedMax,
 };
 
-/* Exported constants --------------------------------------------------------*/
-#define LED_N 4
+/*!
+ \brief Список кнопок
+
+*/
+enum ButtonType {
+  PowerButton,
+  SysResetButton,
+  ButtonMax,
+};
+
+/*!
+ \brief Список цифровых входов
+
+*/
+enum DiNum {
+  DI1, DI2, DI3, DI4, DI5, DI6, DI7, DI8, DI9, DI10, DI11, DI12, DI13, DI14,
+  DigitalInputMax
+};
+
+/*!
+ \brief Список цифровых выходов
+
+*/
+enum DoNum {
+  DO1, DO2, DO3, DO4,
+  DigitalOutputMax
+};
+
 #define STOP_LED_PIN                    GPIO_PIN_6
 #define STOP_LED_PORT                   GPIOB
 #define WAIT_LED_PIN                    GPIO_PIN_7
@@ -28,20 +66,11 @@ enum LedType
 #define SYS_RESET_BUTTON_PIN            GPIO_PIN_13
 #define SYS_RESET_BUTTON_PORT           GPIOC
 
-/* Exported functions ------------------------------------------------------- */
 /*!
- \brief Настройка выводов
+ \brief Инициализация выводов, кнопок, LED, DI, DO
 
 */
 void gpioInit();
-
-/*!
- \brief Configures LED GPIO
-
- \param led: Specifies the Led to be configured
- \param value: 0 - off; 1- on
-*/
-void initLed(LedType led, GPIO_PinState value = GPIO_PIN_RESET);
 
 /*!
  \brief Turns selected LED On
@@ -80,43 +109,60 @@ void toggleLed(LedType led);
 /*!
  \brief Настройка вывода на вход
 
- \param port
- \param pin
+ \param port @ref GPIO_TypeDef
+ \param pin @ref GPIO_pins_define
 */
 void initPinInput(GPIO_TypeDef* port, const uint16_t pin);
+
 
 /*!
  \brief Получение значения на входе
 
- \param port
- \param pin
+ \param port @ref GPIO_TypeDef
+ \param pin @ref GPIO_pins_define
+ \return PinState - значение на входе
 */
-GPIO_PinState getPinInput(GPIO_TypeDef* port, const uint16_t pin);
+PinState getPinInput(GPIO_TypeDef* port, const uint16_t pin);
 
 /*!
  \brief Настройка вывода на выход
 
- \param port
- \param pin
+ \param port @ref GPIO_TypeDef
+ \param pin @ref GPIO_pins_define
  \param value: значение на выходе 0 или 1. По умолчанию 0
 */
-void initPinOut(GPIO_TypeDef* port, const uint16_t pin, GPIO_PinState value = GPIO_PIN_RESET);
+void initPinOut(GPIO_TypeDef* port, const uint16_t pin, PinState value = PinReset);
 
 /*!
  \brief Установка значения на выходе в 1
 
- \param port
- \param pin
+ \param port @ref GPIO_TypeDef
+ \param pin @ref GPIO_pins_define
 */
 void setPinOut(GPIO_TypeDef* port, const uint16_t pin);
 
 /*!
  \brief Установка значения на выходе в 0
 
- \param port
- \param pin
+ \param port @ref GPIO_TypeDef
+ \param pin @ref GPIO_pins_define
 */
 void clrPinOut(GPIO_TypeDef* port, const uint16_t pin);
 
+/*!
+ \brief Получение значения на цифровом входе
+
+ \param num: номер входа
+ \return PinState - значение на входе
+*/
+PinState getDigitalInput(const uint16_t num);
+
+/*!
+ \brief Установка значения на цифровом выходе
+
+ \param num: номер выхода
+ \param value: значение на выходе 0 или 1. По умолчанию 0
+*/
+void setDigitalOutput(const uint16_t num, PinState value = PinReset);
 
 #endif // GPIO_H

@@ -32,7 +32,7 @@ void framInit()
   uint8_t buffer[10];
 
   // PA15     ------> SPI3_NSS
-  initPinOut(FRAM_NSS_PORT, FRAM_NSS_PIN, GPIO_PIN_SET);
+  initPinOut(FRAM_NSS_PORT, FRAM_NSS_PIN, PinSet);
 
   hspi3.Instance = SPI3;
   hspi3.Init.Mode = SPI_MODE_MASTER;

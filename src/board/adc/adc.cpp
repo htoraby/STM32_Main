@@ -135,15 +135,27 @@ StatusType getAnalogIn(uint32_t channel, uint32_t numSamples, uint32_t *value)
 StatusType getCoreTemperature(float *value)
 {
   uint32_t data = 0;
-  StatusType status = StatusError;
+  int count = 0;
+  int result = 0;
+  int resultLast = 0;
 
   //! ADC_SAMPLETIME_480CYCLES - (480+12)/42 = 11 мксек
-  if(getValueADC(adc1, ADC_CHANNEL_TEMPSENSOR, &data, ADC_SAMPLETIME_480CYCLES) == StatusOk) {
-    *value = ((((int)data * VREF)/0xFFF - CORE_TEMP_V25) / CORE_TEMP_AVG_SLOPE) + 25;
-    status = StatusOk;
+  for(uint32_t i = 0; i < 3; i++) {
+    if(getValueADC(adc1, ADC_CHANNEL_TEMPSENSOR, &data, ADC_SAMPLETIME_480CYCLES) == StatusOk) {
+      result = resultLast + (((int)data - resultLast)/(count + 1));
+      resultLast = result;
+      count++;
+    }
+    HAL_Delay(1);
   }
   ADC->CCR &= ~ADC_CCR_TSVREFE;
-  return status;
+  if(count > 0) {
+    *value = (((result * VREF)/0xFFF - CORE_TEMP_V25) / CORE_TEMP_AVG_SLOPE) + 25;
+    return StatusOk;
+  }
+  else {
+    return StatusError;
+  }
 }
 
 StatusType getCoreVbattery(float *value)
