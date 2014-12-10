@@ -7,6 +7,8 @@
 
 #include "vsd_novomet.h"
 
+VsdNovomet *vsdNovomet;
+
 void VsdNovomet::initModbusParameters()
 {
   ModbusParameters[0] = {// Пустой регистр
@@ -1686,11 +1688,12 @@ void VsdNovomet::initModbusParameters()
   };
 };
 
-//DeviceModbus *DM;
-
 void testTask(const void*)
 {
-  VsdNovomet::DM->exchangeCycle();
+  while(1) {
+    osDelay(1);
+    vsdNovomet->DM->exchangeCycle();
+  }
 }
 
 /*!
@@ -1710,11 +1713,12 @@ VsdNovomet::VsdNovomet()
                         1                // Address
                         );
   osThreadDef(uart1_exchange, testTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
-  osThreadCreate(osThread(uart1_exchange), NULL);
+  thread_id = osThreadCreate(osThread(uart1_exchange), NULL);
 }
 
 VsdNovomet::~VsdNovomet()
 {
+  osThreadTerminate(thread_id);
   // TODO Auto-generated destructor stub
 }
 
