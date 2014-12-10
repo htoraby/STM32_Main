@@ -32,4 +32,4 @@ int checkRangeInclude(double Value, double Minimum, double Maximum);
 */
 int checkRange(double Value, double Minimum, double Maximum, int Include);
 
-#endif //SERVICE_H
+#endif /* SERVICE_H */
