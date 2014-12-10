@@ -265,6 +265,11 @@ float Units[28][6][2] =
   }
 };
 
+static void deviceModbusTask(void *p)
+{
+  (static_cast<DeviceModbus*>(p))->exchangeCycle();
+}
+
 // Конструктор класса DeviceModbus
 DeviceModbus::DeviceModbus(ModbusParameter *MapRegisters,
                            int Quantity,
@@ -273,7 +278,8 @@ DeviceModbus::DeviceModbus(ModbusParameter *MapRegisters,
                            int DataBits,
                            int StopBits,
                            int Parity,
-                           int Address
+                           int Address,
+                           const char *threadName
                           )
   : quantityParam_(Quantity),
     deviceAddress_(Address)
@@ -283,28 +289,9 @@ DeviceModbus::DeviceModbus(ModbusParameter *MapRegisters,
   // Создаём экземпляр класса ModbusMasterSerial
   MMS = new ModbusMasterSerial(PortName);
   MMS->openProtocol(PortName, BaudRate, DataBits, StopBits, Parity);
-
   // Создаём задачу цикла опроса
-  // !!!ВНИМАНИЕ!!! пока сделаем так, т.к. не знаем как передать osThreadDef name
-  /*
-  switch(PortName) {
-  case uart1:
-    osThreadDef(uart1_exchange, testTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
-    osThreadCreate(osThread(uart1_exchange), NULL);
-    break;
-  case  uart2:
-    osThreadDef(uart2_exchange, testTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
-    osThreadCreate(osThread(uart2_exchange), NULL);
-    break;
-  case  uart3:
-    osThreadDef(uart3_exchange, testTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
-    osThreadCreate(osThread(uart3_exchange), NULL);
-    break;
-  default:
-    // !!!ВНИМАНИЕ!!! Сообщение о несуществующем порте
-    break;
-  }
-  */
+  osThreadDef_t t = {threadName, deviceModbusTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
+  osThreadCreate(&t, this);
 
   osMessageQDef(Device_Queue, 100, uint32_t);
   osMessageQId turn_ = osMessageCreate (osMessageQ(Device_Queue), NULL);
@@ -552,6 +539,7 @@ int DeviceModbus::searchExchangeParameters()
 // Метод цикл по карте регистров для чтения и записи параметров
 void DeviceModbus::exchangeCycle(void)
 {
+
   // Проверяем очередь параметров для обработки вне очереди
   int outOfTurn = getTurn();
   // Если есть параметры для обработки вне очереди

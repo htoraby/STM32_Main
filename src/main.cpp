@@ -28,7 +28,7 @@
 
 /* Private function prototypes -----------------------------------------------*/
 static void systemClockConfig();
-static void mainThread(const void *argument);
+static void mainThread(void *argument);
 
 bool flagMcuInit = false;
 
@@ -58,12 +58,9 @@ int main()
   flagMcuInit = true;
 
   /* Code generated for FreeRTOS */
-  /* Create Start thread */
-  osThreadDef(Main_Thread, mainThread, osPriorityNormal, 0, 4*configMINIMAL_STACK_SIZE);
-  osThreadCreate(osThread(Main_Thread), NULL);
-
   /* Start scheduler */
-  osKernelStart(NULL, NULL);
+  osThreadDef(Main_Thread, mainThread, osPriorityNormal, 0, 4*configMINIMAL_STACK_SIZE);
+  osKernelStart(osThread(Main_Thread), NULL);
 
   /* We should never get here as control is now taken by the scheduler */
   while (1) { }
@@ -100,7 +97,7 @@ static void systemClockConfig()
   HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5);
 }
 
-static void mainThread(void const * argument)
+static void mainThread(void *argument)
 {
   (void)argument;
 

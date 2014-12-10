@@ -92,7 +92,7 @@ that is used troughtout a project as shown below:
 #include <cmsis_os.h>                                         // CMSIS RTOS header file
 
 // Thread definition
-extern void thread_sample (void const *argument);             // function prototype
+extern void thread_sample (void *argument);             // function prototype
 osThreadDef (thread_sample, osPriorityBelowNormal, 1, 100);
 
 // Pool definition
@@ -210,7 +210,7 @@ typedef enum   {
   * @brief Entry point of a thread.
   * @note  MUST REMAIN UNCHANGED: \b os_pthread shall be consistent in every CMSIS-RTOS.
   */
-typedef void (*os_pthread) (void const *argument);
+typedef void (*os_pthread) (void *argument);
 
 /**
   * @brief Entry point of a timer call back function.
@@ -267,7 +267,7 @@ typedef struct os_mailQ_cb *osMailQId;
   * @note  CAN BE CHANGED: \b os_thread_def is implementation specific in every CMSIS-RTOS.
   */
 typedef const struct os_thread_def  {
-  char                   *name;        /* Thread name                                               */
+  const char             *name;        /* Thread name                                               */
   os_pthread             pthread;      /* start address of thread function                          */
   osPriority             tpriority;    /* initial thread priority                                   */
   uint32_t               instances;    /* maximum number of instances of that thread function       */

@@ -9,8 +9,8 @@
 #include "adc.h"
 #include "temp_sensor.h"
 
-static void testThread(void const * argument);
-static void testUartThread(void const * argument);
+static void testThread(void *argument);
+static void testUartThread(void *argument);
 static void testRtc();
 static void testAdc();
 static void testFram();
@@ -41,7 +41,7 @@ void testInit()
 
 }
 
-static void testThread(void const * argument)
+static void testThread(void * argument)
 {
   (void)argument;
 
@@ -133,7 +133,7 @@ static void testThread(void const * argument)
   }
 }
 
-static void testUartThread(void const * argument)
+static void testUartThread(void * argument)
 {
   (void)argument;
   int countByte = 0;

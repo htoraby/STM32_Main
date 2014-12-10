@@ -77,7 +77,7 @@ public:
                 int DataBits,
                 int StopBits,
                 int Parity,
-                int Address);
+                int Address, const char *threadName);
   /// Деструктор по умолчанию
   virtual ~DeviceModbus();
 

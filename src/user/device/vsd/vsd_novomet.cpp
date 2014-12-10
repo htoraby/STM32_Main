@@ -1688,14 +1688,6 @@ void VsdNovomet::initModbusParameters()
   };
 };
 
-void testTask(const void*)
-{
-  while(1) {
-    osDelay(1);
-    vsdNovomet->DM->exchangeCycle();
-  }
-}
-
 /*!
  \brief Конструктор класса VsdNovomet
   Создаёт экземпляр класса DeviceModbus
@@ -1710,10 +1702,9 @@ VsdNovomet::VsdNovomet()
                         8,                // DataBits
                         1,                // StopBits
                         0,                // Parity
-                        1                // Address
-                        );
-  osThreadDef(uart1_exchange, testTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
-  thread_id = osThreadCreate(osThread(uart1_exchange), NULL);
+                        1,                // Address
+                        "DeviceModbus3");
+
 }
 
 VsdNovomet::~VsdNovomet()

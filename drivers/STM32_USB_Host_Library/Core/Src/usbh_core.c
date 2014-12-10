@@ -79,7 +79,7 @@ static void                USBH_HandleSof     (USBH_HandleTypeDef *phost);
 static USBH_StatusTypeDef  DeInitStateMachine(USBH_HandleTypeDef *phost);
 
 #if (USBH_USE_OS == 1)  
-static void USBH_Process_OS(void const * argument);
+static void USBH_Process_OS(void *argument);
 #endif
 
 /**
@@ -889,7 +889,7 @@ USBH_StatusTypeDef  USBH_LL_Disconnect  (USBH_HandleTypeDef *phost)
   * @param  pvParameters not used
   * @retval None
   */
-static void USBH_Process_OS(void const * argument)
+static void USBH_Process_OS(void * argument)
 {
   osEvent event;
   
