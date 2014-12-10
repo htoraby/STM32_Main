@@ -47,6 +47,7 @@ int main()
   sramInit();
 //  rtcInit();
   adcInit(adc1);
+  adcInit(adc2);
   framInit();
   flashExtInit(FlashSpi1);
   flashExtInit(FlashSpi5);

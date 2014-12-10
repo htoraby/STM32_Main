@@ -1,5 +1,9 @@
 #include "adc.h"
 
+#define ADC_CNANNELS_NUM 3
+#define ADC_POINTS_NUM 100*50
+#define ADC_TIM_PERIOD 100/5 // 20 - 200 мкс, 100 - 1мс
+
 //! Значения констант из документации на CPU
 #define VREF     (2.5f)
 #define VBAT_DIV (4)
@@ -8,6 +12,9 @@
 
 ADC_HandleTypeDef hadc[adcMax];
 DMA_HandleTypeDef hdma_adc2;
+TIM_HandleTypeDef htim3;
+
+__IO uint16_t uhADCxConvertedValue[ADC_CNANNELS_NUM*ADC_POINTS_NUM] = { 0 };
 
 /*!
  \brief Метод получения значения ADC
@@ -23,6 +30,7 @@ static StatusType getValueADC(adcNum num, uint32_t channel, uint32_t *value,
 void adcInit(adcNum num)
 {
   ADC_MultiModeTypeDef multiMode;
+  ADC_ChannelConfTypeDef sConfig;
 
   /**Configure the global features of the ADC (Clock, Resolution,
    * Data Alignment and number of conversion)
@@ -31,9 +39,36 @@ void adcInit(adcNum num)
   switch (num) {
     case adc1:
       adcX->Instance = ADC1;
+      //! 82/2 = 42 МГц
+      adcX->Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
+      //! 2^12-1 = 0xFFF
+      adcX->Init.Resolution = ADC_RESOLUTION12b;
+      adcX->Init.ScanConvMode = DISABLE;
+      adcX->Init.ContinuousConvMode = DISABLE;
+      adcX->Init.DiscontinuousConvMode = DISABLE;
+      adcX->Init.NbrOfDiscConversion = 0;
+      adcX->Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+      adcX->Init.DataAlign = ADC_DATAALIGN_RIGHT;
+      adcX->Init.NbrOfConversion = 1;
+      adcX->Init.DMAContinuousRequests = DISABLE;
+      adcX->Init.EOCSelection = EOC_SEQ_CONV;
       break;
     case adc2:
       adcX->Instance = ADC2;
+      //! 82/2 = 42 МГц
+      adcX->Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
+      //! 2^12-1 = 0xFFF
+      adcX->Init.Resolution = ADC_RESOLUTION12b;
+      adcX->Init.ScanConvMode = ENABLE;
+      adcX->Init.ContinuousConvMode = DISABLE;
+      adcX->Init.DiscontinuousConvMode = DISABLE;
+      adcX->Init.NbrOfDiscConversion = 0;
+      adcX->Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
+      adcX->Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T3_TRGO;
+      adcX->Init.DataAlign = ADC_DATAALIGN_RIGHT;
+      adcX->Init.NbrOfConversion = ADC_CNANNELS_NUM;
+      adcX->Init.DMAContinuousRequests = ENABLE;
+      adcX->Init.EOCSelection = EOC_SEQ_CONV;
       break;
     case adc3:
       adcX->Instance = ADC3;
@@ -41,20 +76,39 @@ void adcInit(adcNum num)
     default:
       break;
   }
-  //! 82/2 = 42 МГц
-  adcX->Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
-  //! 2^12-1 = 0xFFF
-  adcX->Init.Resolution = ADC_RESOLUTION12b;
-  adcX->Init.ScanConvMode = DISABLE;
-  adcX->Init.ContinuousConvMode = DISABLE;
-  adcX->Init.DiscontinuousConvMode = DISABLE;
-  adcX->Init.NbrOfDiscConversion = 0;
-  adcX->Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-  adcX->Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  adcX->Init.NbrOfConversion = 1;
-  adcX->Init.DMAContinuousRequests = DISABLE;
-  adcX->Init.EOCSelection = EOC_SEQ_CONV;
   HAL_ADC_Init(adcX);
+
+  if (num == adc2) {
+    //! Настройка каналов
+    sConfig.Channel = ADC_CHANNEL_13;
+    sConfig.Rank = 1;
+    //! ADC_SAMPLETIME_112CYCLES - (112+12)/42 = 3 мксек
+    sConfig.SamplingTime = ADC_SAMPLETIME_112CYCLES;
+    HAL_ADC_ConfigChannel(adcX, &sConfig);
+
+    sConfig.Channel = ADC_CHANNEL_11;
+    sConfig.Rank = 2;
+    HAL_ADC_ConfigChannel(adcX, &sConfig);
+
+    sConfig.Channel = ADC_CHANNEL_12;
+    sConfig.Rank = 3;
+    HAL_ADC_ConfigChannel(adcX, &sConfig);
+
+
+    //! Настройка таймера
+    htim3.Instance = TIM3;
+    htim3.Init.Prescaler = ((SystemCoreClock /2) / 100000) - 1;
+    htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
+    htim3.Init.Period = ADC_TIM_PERIOD;
+    htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+    htim3.Init.RepetitionCounter = 0;
+    HAL_TIM_Base_Init(&htim3);
+
+    TIM_MasterConfigTypeDef sMasterConfig;
+    sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
+    sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+    HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig);
+  }
 
   /**Configure the ADC multi-mode
   */
@@ -63,38 +117,57 @@ void adcInit(adcNum num)
   multiMode.DMAAccessMode = DISABLE;
   HAL_ADCEx_MultiModeConfigChannel(adcX, &multiMode);
 }
-
+static uint32_t time = 0;
 void adcStartDma()
 {
-//  HAL_ADC_Start_DMA(&hadc[adc2], (uint32_t*)&uhADCxConvertedValue, 2);
+  time = HAL_GetTick();
+  HAL_ADC_Start_DMA(&hadc[adc2], (uint32_t*)&uhADCxConvertedValue, ADC_CNANNELS_NUM*ADC_POINTS_NUM);
+  HAL_TIM_Base_Start(&htim3);
 }
 
 void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
 {
+  GPIO_InitTypeDef GPIO_InitStruct;
+
   if(hadc->Instance == ADC1) {
     /* Peripheral clock enable */
     __ADC1_CLK_ENABLE();
   } else if(hadc->Instance == ADC2) {
     /* Peripheral clock enable */
     __ADC2_CLK_ENABLE();
-//    __DMA2_CLK_ENABLE();
+    __DMA2_CLK_ENABLE();
+    __TIM3_CLK_ENABLE();
 
-//    hdma_adc2.Instance = DMA2_Stream0;
-//    hdma_adc2.Init.Channel = DMA_CHANNEL_0;
-//    hdma_adc2.Init.Direction = DMA_PERIPH_TO_MEMORY;
-//    hdma_adc2.Init.PeriphInc = DMA_PINC_DISABLE;
-//    hdma_adc2.Init.MemInc = DMA_MINC_ENABLE;
-//    hdma_adc2.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
-//    hdma_adc2.Init.MemDataAlignment = DMA_PDATAALIGN_HALFWORD;
-//    hdma_adc2.Init.Mode = DMA_CIRCULAR;
-//    hdma_adc2.Init.Priority = DMA_PRIORITY_MEDIUM;
-//    hdma_adc2.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
-//    HAL_DMA_Init(&hdma_adc2);
+    /**ADC2 GPIO Configuration
+    PC1     ------> ADC2_IN11
+    PC2     ------> ADC2_IN12
+    PC3     ------> ADC2_IN13
+    */
+    GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3;
+    GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-//    __HAL_LINKDMA(hadc,DMA_Handle,hdma_adc2);
+    /* Peripheral DMA init*/
+    hdma_adc2.Instance = DMA2_Stream2;
+    hdma_adc2.Init.Channel = DMA_CHANNEL_1;
+    hdma_adc2.Init.Direction = DMA_PERIPH_TO_MEMORY;
+    hdma_adc2.Init.PeriphInc = DMA_PINC_DISABLE;
+    hdma_adc2.Init.MemInc = DMA_MINC_ENABLE;
+    hdma_adc2.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
+    hdma_adc2.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
+    hdma_adc2.Init.Mode = DMA_CIRCULAR;
+    hdma_adc2.Init.Priority = DMA_PRIORITY_HIGH;
+    hdma_adc2.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+    HAL_DMA_Init(&hdma_adc2);
 
-//    HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 0, 0);
-//    HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
+    __HAL_LINKDMA(hadc, DMA_Handle, hdma_adc2);
+
+    HAL_NVIC_SetPriority(DMA2_Stream2_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(DMA2_Stream2_IRQn);
+
+    HAL_NVIC_SetPriority(TIM3_IRQn, 4, 0);
+    HAL_NVIC_EnableIRQ(TIM3_IRQn);
   }
 }
 
@@ -104,7 +177,9 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc)
     __ADC1_CLK_DISABLE();
   } else if (hadc->Instance == ADC2) {
     __ADC2_CLK_DISABLE();
-//    HAL_DMA_DeInit(hadc->DMA_Handle);
+    __TIM3_CLK_DISABLE();
+    HAL_DMA_DeInit(&hdma_adc2);
+    HAL_NVIC_DisableIRQ(DMA2_Stream2_IRQn);
   }
 }
 
@@ -205,4 +280,15 @@ static StatusType getValueADC(adcNum num, uint32_t channel, uint32_t *value,
   HAL_ADC_Stop(&hadc[num]);
 
   return status;
+}
+
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* adcHandle)
+{
+  (void)adcHandle;
+
+  static int t = 0;
+  time = HAL_GetTick() - time;
+  if (++t != 1)
+    asm("nop");
+  time = HAL_GetTick();
 }

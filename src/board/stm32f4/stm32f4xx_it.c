@@ -54,7 +54,7 @@ void ADC_IRQHandler(void)
   HAL_ADC_IRQHandler(&hadc[adc1]);
 }
 
-void DMA2_Stream0_IRQHandler(void)
+void DMA2_Stream2_IRQHandler(void)
 {
   HAL_DMA_IRQHandler(hadc[adc2].DMA_Handle);
 }
