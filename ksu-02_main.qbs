@@ -64,6 +64,7 @@ Product {
         "src/board/iwdg/",
         "src/board/rcause/",
         "src/board/temp_sensor/",
+        "src/board/ai_ext/",
         "src/common/",
         "src/user/",
         "src/user/device/",
