@@ -9,7 +9,6 @@
   ******************************************************************************
   */
 
-/* Includes ------------------------------------------------------------------*/
 #include "board.h"
 #include "ff.h"
 #include "ff_gen_drv.h"
@@ -26,7 +25,6 @@
 #include "rcause.h"
 #include "temp_sensor.h"
 
-/* Private function prototypes -----------------------------------------------*/
 static void systemClockConfig();
 static void mainThread(void *argument);
 
@@ -34,15 +32,13 @@ bool flagMcuInit = false;
 
 int main()
 {
-  /* MCU Configuration----------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  //! Сброс всей переферии, инициализация интерфейса Flash и системного таймера (1мс)
   HAL_Init();
 
-  /* Configure the system clock */
+  //! Инициализация системы тактирования
   systemClockConfig();
 
-  /* Initialize all configured peripherals */
+  //! Инициализация переферии
   gpioInit();
   sramInit();
 //  rtcInit();
@@ -57,16 +53,17 @@ int main()
 
   flagMcuInit = true;
 
-  /* Code generated for FreeRTOS */
-  /* Start scheduler */
+  //! Создание основной задачи и запуск диспетчера
   osThreadDef(Main_Thread, mainThread, osPriorityNormal, 0, 4*configMINIMAL_STACK_SIZE);
   osKernelStart(osThread(Main_Thread), NULL);
 
-  /* We should never get here as control is now taken by the scheduler */
+  //! Сюда не должны попасть, т.к. мы запустили диспетчер задач
   while (1) { }
 }
 
-/** System Clock Configuration
+/*!
+ \brief Инициализация системы тактирования
+
 */
 static void systemClockConfig()
 {
@@ -97,16 +94,21 @@ static void systemClockConfig()
   HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5);
 }
 
+/*!
+ \brief Основная задача
+
+*/
 static void mainThread(void *argument)
 {
   (void)argument;
 
+  //! Подсчет счетчиков перезапуска СPU
   resetCauseCheck();
 
   /* FatFS: Link the USBH disk I/O driver */
   USBH_DriverNum = FATFS_LinkDriver(&USBH_Driver, USBH_Path);
 
-  /* Init code for USB_HOST */
+  //! Инициализация USB HOST
   MX_USB_HOST_Init();
 
 #if (USE_TEST == 1)

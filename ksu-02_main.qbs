@@ -90,6 +90,14 @@ Product {
     ]
 
     Group {
+        name: "ldscripts"
+        prefix: "Ldscripts/"
+        files: [
+            "*.ld",
+        ]
+    }
+
+    Group {
         name: "sources"
         prefix: "**/"
         files: [
@@ -111,11 +119,6 @@ Product {
         cpp.cxxFlags: [ "-std=c++11" ]
         cpp.cFlags: [ "-std=gnu11" ]
         cpp.warningLevel: "all"
-    }
-    Group {
-        name: "ldscripts"
-        prefix: "Ldscripts/"
-        files: "*.ld"
     }
 
     consoleApplication: true

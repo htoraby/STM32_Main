@@ -14,7 +14,7 @@ ADC_HandleTypeDef hadc[adcMax];
 DMA_HandleTypeDef hdma_adc2;
 TIM_HandleTypeDef htim3;
 
-__IO uint16_t uhADCxConvertedValue[ADC_CNANNELS_NUM*ADC_POINTS_NUM] = { 0 };
+__IO uint16_t adcData[ADC_CNANNELS_NUM*ADC_POINTS_NUM] = { 0 };
 
 /*!
  \brief Метод получения значения ADC
@@ -121,7 +121,7 @@ static uint32_t time = 0;
 void adcStartDma()
 {
   time = HAL_GetTick();
-  HAL_ADC_Start_DMA(&hadc[adc2], (uint32_t*)&uhADCxConvertedValue, ADC_CNANNELS_NUM*ADC_POINTS_NUM);
+  HAL_ADC_Start_DMA(&hadc[adc2], (uint32_t*)&adcData, ADC_CNANNELS_NUM*ADC_POINTS_NUM);
   HAL_TIM_Base_Start(&htim3);
 }
 
