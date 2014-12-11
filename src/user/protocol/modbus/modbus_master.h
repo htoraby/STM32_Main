@@ -11,8 +11,44 @@
 #include "define.h"
 #include "stdlib.h"
 
-#define MODBUS_TIME_END_PACKAGE 	50
-#define MODBUS_MIN_LENGHT_PACKAGE	4
+#define MODBUS_OK                             0
+#define MODBUS_ERROR_TIMEOUT                  1
+#define MODBUS_ERROR_CRC                      2
+#define MODBUS_ERROR_TRASH                    3
+// Максимальное время ожидания ответа от устройства в мс
+#define MODBUS_ANSWER_TIMEOUT                 500
+// Максимальное время между байтами в ответе в мс
+#define MODBUS_TIME_END_PACKAGE               5
+// Минимальная возможная длина "корректного" ответа по Modbus
+#define MODBUS_MIN_LENGHT_PACKAGE             5
+// Длина modbus запроса по спецификации
+#define MODBUS_PDU_SIZE                       253
+#define MODBUS_MAX_DATA_SIZE                  MODBUS_PDU_SIZE - 1
+#define MODBUS_MAX_FC03_WORDS                 (MODBUS_MAX_DATA_SIZE - 1) / 2
+#define MODBUS_MAX_FC01_COILS                 MODBUS_MAX_FC03_WORDS * 16
+#define MODBUS_MAX_FC16_WORDS                 (MODBUS_MAX_DATA_SIZE - 5) / 2
+#define MODBUS_MAX_FC15_COILS                 MODBUS_MAX_FC16_WORDS * 16
+#define MODBUS_READ_COILS_0x01                1
+#define MODBUS_READ_DISCRETE_INPUTS_0x02      2
+#define MODBUS_READ_HOLDING_REGISTERS_0x03    3
+#define MODBUS_READ_INPUT_REGISTERS_0x04      4
+#define MODBUS_WRITE_SINGLE_COIL_0x05         5
+#define MODBUS_WRITE_SINGLE_REGISTER_0x06     6
+#define MODBUS_READ_EXCEPTION_STATUS_0x07     7
+#define MODBUS_DIAGNOSTICS_0x08               8
+#define MODBUS_WRITE_MULTIPLE_COILS_0x0F      15
+#define MODBUS_WRITE_MULTIPLE_REGISTERS_0x10  16
+#define MODBUS_ERROR_0x80                     128
+#define MODBUS_ILLEGAL_FUNCTION_0x01          1
+#define MODBUS_ILLEGAL_DATA_ADDRESS_0x02      2
+#define MODBUS_ILLEGAL_DATA_VALUE_0x03        3
+#define MODBUS_SLAVE_DEVICE_FAILURE_0x04      4
+#define MODBUS_ACKNOWLEDGE_0x05               5
+#define MODBUS_SLAVE_DEVICE_BUSY_0x06         6
+#define MODBUS_MEMORY_PARITY_ERROR_0x08       8
+#define MODBUS_GATEWAY_PATH_UNAVAILABLE_0x0A  10
+#define MODBUS_GATEWAY_TARGET_DEVICE_0x0B     11
+
 
 // БАЗОВЫЙ КЛАСС MODBUS MASTER
 // Релизует функции Modbus и некоторые другие функции
@@ -97,10 +133,10 @@ class ModbusMaster
 		// RefCnt Количество считываемых регистров
 		// Возвращает:
 		// RETURN_OK в случае успешного завершения или код ошибки
-		int readMultipleRegisters(	int SlaveAddr,
-		                            int StartRef,
+    int readMultipleRegisters(int slaveAddr,
+                                int startRef,
                                 short *regArr,
-		                            int RefCnt);
+                                int refCnt);
 
 		// МЕТОД ЧТЕНИЯ ВНУТРЕННИХ РЕГИСТРОВ УСТРОЙСТВА
 		// Modbus функция 4, Чтение входных регистров.
@@ -319,12 +355,6 @@ class ModbusMaster
 		// Возвращает количество автоматических запросов
 		int getRetryCnt();
 
-		// МЕТОД ЗАПИСИ ОЖИДАЕМОГО КОЛИЧЕСТВА БАЙТ В ОТВЕТЕ
-		int setCountExpectedBytes(int Count);
-
-		// МЕТОД ПОЛУЧЕНИЯ ОЖИДАЕМОГО КОЛИЧЕСТВА БАЙТ В ОТВЕТЕ
-		int getCountExpectedBytes();
-
 		///////////////////////////////////////////////////////////////////////
 		// МЕТОДЫ СТАТИСТИЧЕСКОЙ ИНФОРМАЦИИ ОБ ОБМЕНЕ
 		///////////////////////////////////////////////////////////////////////
@@ -371,52 +401,13 @@ class ModbusMaster
 
 		// МЕТОД ЧТЕНИЕ ДАННЫХ
 		// Buf - массив байт считываемый из порта
-		// Count - ожидаемое количество байт для считывания
-		int reseiveAnswer(	unsigned char *Buf,
-							unsigned char Count);
+    // Byte - ожидаемое количество байт для считывания
+    int reseiveAnswer(unsigned char *Buf);
 
 	///////////////////////////////////////////////////////////////////////////
 	// ЗАЩИЩЕННЫЕ ЧЛЕНЫ КЛАССА
 	///////////////////////////////////////////////////////////////////////////
 	protected:
-		enum
-		{
-			PDU_SIZE		= 253, 							// Длина modbus запроса по спецификации
-		    MAX_DATA_SIZE 	= PDU_SIZE - 1, 				// = 252
-		    MAX_FC03_WORDS	= (MAX_DATA_SIZE - 1) / 2, 		// = 125 максимальное количество регистров в одном запросе чтения
-		    MAX_FC01_COILS	= MAX_FC03_WORDS * 16,    		// = 2000 максимальное количество катушек в одном запросе чтения
-		    MAX_FC16_WORDS	= (MAX_DATA_SIZE - 5) / 2, 		// = 123 максимальное количество регистров в одном запросе записи
-		    MAX_FC15_COILS	= MAX_FC16_WORDS * 16,    		// = 1968 максимальное количество катушек в одном запросе записи
-		};
-
-		enum
-		{
-			MODBUS_READ_COILS_0x01				= 1,
-			MODBUS_READ_DISCRETE_INPUTS_0x02 	= 2,
-			MODBUS_READ_HOLDING_REGISTERS_0x03 	= 3,
-			MODBUS_READ_INPUT_REGISTERS_0x04 	= 4,
-			MODBUS_WRITE_SINGLE_COIL_0x05		= 5,
-			MODBUS_WRITE_SINGLE_REGISTER_0x06	= 6,
-			MODBUS_READ_EXCEPTION_STATUS_0x07	= 7,
-			MODBUS_DIAGNOSTICS_0x08				= 8,
-			MODBUS_WRITE_MULTIPLE_COILS_0x0F	= 15,
-			MODBUS_WRITE_MULTIPLE_REGISTERS_0x10= 16
-		};
-
-		enum
-		{
-			MODBUS_ILLEGAL_FUNCTION_0x01		= 1,
-			MODBUS_ILLEGAL_DATA_ADDRESS_0x02	= 2,
-			MODBUS_ILLEGAL_DATA_VALUE_0x03		= 3,
-			MODBUS_SLAVE_DEVICE_FAILURE_0x04	= 4,
-			MODBUS_ACKNOWLEDGE_0x05				= 5,
-			MODBUS_SLAVE_DEVICE_BUSY_0x06		= 6,
-			MODBUS_MEMORY_PARITY_ERROR_0x08		= 8,
-			MODBUS_GATEWAY_PATH_UNAVAILABLE_0x0A= 10,
-			MODBUS_GATEWAY_TARGET_DEVICE_0x0B	= 11
-		};
-
-
 
 		// Общий счётчик запросов
 		unsigned long TotalCounter;
@@ -432,8 +423,8 @@ class ModbusMaster
 		int Endian;
 		// Текущий таймер ожидания ответа
 		int Timer;
-		// Количество ожидаемых байт в ответе
-		int CountExpectedBytes;
+    // Количество байт в ответе
+    int countBytesAnswer_;
 
 
 		// МЕТОД ПРОВЕРКИ КОРРЕКТНОСТИ АДРЕСА УСТРОЙТВА
@@ -448,7 +439,8 @@ class ModbusMaster
 		// МЕТОД ВЫЧИСЛЕНИЯ КОНТРОЛЬНОЙ СУММЫ
 		unsigned short calcCRC16(char Size, unsigned char* Buf);
 
-		unsigned char Buffer[MAX_DATA_SIZE];
+    unsigned char bufferTx_[MODBUS_MAX_DATA_SIZE];
+    unsigned char bufferRx_[MODBUS_MAX_DATA_SIZE];
 
 	///////////////////////////////////////////////////////////////////////////
 	// ЗАКРЫТЫЕ ЧЛЕНЫ КЛАССА

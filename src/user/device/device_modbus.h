@@ -77,7 +77,8 @@ public:
                 int DataBits,
                 int StopBits,
                 int Parity,
-                int Address, const char *threadName);
+                int Address,
+                const char *threadName);
   /// Деструктор по умолчанию
   virtual ~DeviceModbus();
 
@@ -248,14 +249,14 @@ public:
    * \param Index Индекс параметра
    * \return добавили элемент в очередь или нет
    */
-   int getTurn();
+   int getMessageOutOfTurn();
 
    /*!
     * \brief putTurn метод добавления элемента в очередь
     * \param Index Индекс параметра
     * \return добавили элемент в очередь или нет
     */
-   int putTurn(int Index);
+   int putMessageOutOfTurn(int Index);
 
    int searchExchangeParameters();
 
@@ -264,15 +265,17 @@ public:
    float float32Arr_[62];
 
 private:
-  int quantityParam_;
-  int deviceAddress_;
+   int quantityParam_;
+   int deviceAddress_;
 
-
-  osMessageQId turn_;
+   // Идентификатор задачи
+   osThreadId threadId_;
+   // Идентификатор очереди параметров опроса вне основного цикла
+   osMessageQId messageOutOfTurn_;
+   // Идентификатор готовых параметров
+   osMessageQId messageReadyParam_;
 
   ModbusParameter modbusParameters_[];
-
-
 
   /*!
    * \brief Метод получения количества регистров в карте регистров

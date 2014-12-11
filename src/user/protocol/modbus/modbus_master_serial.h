@@ -51,17 +51,28 @@ class ModbusMasterSerial: public ModbusMaster
 		// МЕТОД ЗАПИСИ ДАННЫХ В ПОРТ
 		// Buf - массив байт записываемый в порт
 		// Count - количество записываемых байт
-		int transmitQuery(	unsigned char *Buf,
-              int Count);
+    int transmitQuery(unsigned char *Buf, int Count);
 
-		// МЕТОД ЧТЕНИЕ ДАННЫХ ИЗ ПОРТА
-		// Buf - массив байт считываемый из порта
-		// Count - ожидаемое количество байт для считывания
-		int reseiveAnswer(	unsigned char *Buf,
-							unsigned char Count);
+
+    /*!
+     * \brief reseiveAnswer Метод получения данных из uart порта
+     * \param Buf Массив принятых данных байт
+     * \return Количество принятых байт
+     */
+    int reseiveAnswer(unsigned char *Buf);
+
+    /*!
+     * \brief transmissionSemaphore Метод передачи семафора задачи циклического
+     * опроса параметров
+     * \param semaphoreId - идентификатор семафора
+     */
+    void transmissionSemaphore(osSemaphoreId semaphoreId);
 
 	private:
-		int NumberComPort;
+    int numberComPort_;
+
+    // Семафор
+    osSemaphoreId semaphoreAnswer_;
 };
 
 #endif /* MODBUS_MASTER_SERIAL_H_ */

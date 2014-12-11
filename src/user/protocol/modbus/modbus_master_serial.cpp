@@ -10,7 +10,7 @@
 ModbusMasterSerial::ModbusMasterSerial(int Com)
 {
 	// TODO Auto-generated constructor stub
-	NumberComPort = Com;
+  numberComPort_ = Com;
 }
 
 ModbusMasterSerial::~ModbusMasterSerial()
@@ -40,6 +40,11 @@ int ModbusMasterSerial::openProtocol( int PortName,
     uart_init((uartNum)PortName, BaudRate, Parity, StopBits);
 		// Возвращаем что операция выполнена
 		Result = RETURN_OK;
+    // Семафор для ожидания ответов по Modbus
+    osSemaphoreId semaphoreAnswer_ = osSemaphoreCreate(NULL, 1);
+    // Передаём имя семафора
+    transmissionSemaphore(semaphoreAnswer_);
+    osSemaphoreWait(semaphoreAnswer_, 0);
 	}
 	catch(...)
 	{
@@ -68,108 +73,34 @@ int ModbusMasterSerial::closeProtocol(int PortName)
 }
 
 // МЕТОД ПОСЫЛКИ ДАННЫХ ИЗ БУФЕРА В COM ПОРТ
-int ModbusMasterSerial::transmitQuery(	unsigned char *Buf, int Count)
+int ModbusMasterSerial::transmitQuery(unsigned char *Buf, int Count)
 {
-	int Result = RETURN_ERROR;
-	try
-	{
-    uart_writeData((uartNum)NumberComPort, Buffer, Count);
-		Result = RETURN_OK;
-	}
-	catch(...)
-	{
-
-	}
-	return Result;
+  uart_writeData((uartNum)numberComPort_, bufferTx_, Count);
+  return 1;
 }
 
-// МЕТОД ЧТЕНИЕ ДАННЫХ ИЗ ПОРТА
-// Buf - массив байт считываемый из порта
-// Count - ожидаемое количество байт для считывания
-int ModbusMasterSerial::reseiveAnswer(	unsigned char *Buf,
-											unsigned char Count)
+// Метод получения данных из uart порта
+int ModbusMasterSerial::reseiveAnswer(unsigned char *Buf)
 {
-	int Result = RETURN_ERROR;
-	//
-	int CurrentCountByte = 0;
-	static int PrevCountByte = 0;
-	static int TimerByte = 0;
-	static int TimerAnswer = 0;
-	try
-	{
-
-		// Бесконечный цикл
-		while(1)
-		{
-			// Узнаём количество байт в буфере приёма
-      //CurrentCountByte = Com_GetReadCount(NumberComPort);
-			// 1-e условие выхода из цикла, получена предполагаемая длина пакета
-			if(CurrentCountByte == Count)
-			{
-				break;
-			}
-			// 2-e условие выхода из цикла, пауза между байтами в ответе
-			if(CurrentCountByte != 0)
-			{
-				// Если текущее количество байт не равно предыдущему
-				if(CurrentCountByte != PrevCountByte)
-				{
-					TimerByte = 0;
-				}
-				else
-				{
-					TimerByte++;
-					if(TimerByte >= MODBUS_TIME_END_PACKAGE)
-					{
-						break;
-					}
-				}
-				PrevCountByte = CurrentCountByte;
-			}
-			// 3-е условие выхода из цикла
-			if( TimerAnswer > getTimeout())
-			{
-				Result = RETURN_MODBUS_TIMEOUT;
-				break;
-			}
-		}
-		// Выпали из цикла, считываем данные из буфера
-		// Если получен пакет минимальной длины
-		// Вероятно пакет с ошибкой
-		if(CurrentCountByte == MODBUS_MIN_LENGHT_PACKAGE)
-		{
-      //Com_ReadData(NumberComPort, Buffer, CurrentCountByte);
-			// Проверяем контрольную сумму
-			if(((Buffer[CurrentCountByte - 1] << 8) + Buffer[CurrentCountByte - 2]) == calcCRC16((CurrentCountByte-2), Buffer))
-			{
-				Result = RETURN_MODBUS_ERROR;
-			}
-			else
-			{
-				Result = RETURN_MODBUS_ERROR_CRC;
-			}
-		}
-		else
-		{
-			if(CurrentCountByte == Count)
-			{
-        //Com_ReadData(NumberComPort, Buffer, CurrentCountByte);
-				// Проверяем контрольную сумму
-				if(((Buffer[CurrentCountByte - 1] << 8) + Buffer[CurrentCountByte - 2]) == calcCRC16((CurrentCountByte-2), Buffer))
-				{
-					Result = RETURN_MODBUS_OK;
-				}
-				else
-				{
-					Result = RETURN_MODBUS_ERROR_CRC;
-				}
-			}
-		}
-	}
-	catch(...)
-	{
-
-	}
-	return Result;
+  // Если истек таймаут ожидания ответа
+  if (osSemaphoreWait(semaphoreAnswer_, MODBUS_ANSWER_TIMEOUT) == osEventTimeout) {
+    // Возвращаем ошибку что нет ответа от устройства
+    return 0;
+  }
+  // Получили первый байт
+  else {
+    // Крутимся пока время между байтами не станет больше MODBUS_TIME_END_PACKAGE
+    while (1) {
+      if (osSemaphoreWait(semaphoreAnswer_, MODBUS_TIME_END_PACKAGE) == osEventTimeout) {
+        // Получаем количество полученных байт и массив байт
+        return uart_readData((uartNum)numberComPort_, Buf);
+      }
+    }
+  }
 }
+
+void ModbusMasterSerial::transmissionSemaphore(osSemaphoreId semaphoreId)
+{
+  uart_setSemaphoreId((uartNum)numberComPort_, semaphoreId);
+};
 

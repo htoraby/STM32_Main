@@ -7,8 +7,6 @@
 
 #include "vsd_novomet.h"
 
-VsdNovomet *vsdNovomet;
-
 void VsdNovomet::initModbusParameters()
 {
   ModbusParameters[0] = {// Пустой регистр
@@ -1709,7 +1707,6 @@ VsdNovomet::VsdNovomet()
 
 VsdNovomet::~VsdNovomet()
 {
-  osThreadTerminate(thread_id);
   // TODO Auto-generated destructor stub
 }
 

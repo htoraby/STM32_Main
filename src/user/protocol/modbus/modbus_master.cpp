@@ -49,23 +49,23 @@ int ModbusMaster::readCoils(   int SlaveAddr,
             if(checkCntCoils(RefCnt))
             {
             	// Адрес устройства
-                Buffer[0] = SlaveAddr;
+                bufferTx_[0] = SlaveAddr;
                 // Команды
-                Buffer[1] = MODBUS_READ_COILS_0x01;
+                bufferTx_[1] = MODBUS_READ_COILS_0x01;
                 // Старший байт адреса первой катушки
-                Buffer[2] = ((StartRef >> 8) & 0x00ff);
+                bufferTx_[2] = ((StartRef >> 8) & 0x00ff);
                 // Младший байт адреса первой катушки
-                Buffer[3] = StartRef & 0x00ff;
+                bufferTx_[3] = StartRef & 0x00ff;
                 // Старший байт количества катушек
-                Buffer[4] = ((RefCnt >> 8) & 0x00ff);
+                bufferTx_[4] = ((RefCnt >> 8) & 0x00ff);
                 // Младший байт количества катушек
-                Buffer[5] = RefCnt & 0x00ff;
+                bufferTx_[5] = RefCnt & 0x00ff;
                 // Вычисляем контрольную сумму
-                Crc = calcCRC16(6, Buffer);
+                Crc = calcCRC16(6, bufferTx_);
                 // Старший байт контрольной суммы
-                Buffer[6] = ((Crc >> 8) & 0x00ff);
+                bufferTx_[6] = ((Crc >> 8) & 0x00ff);
                 // Младший байт контрольной суммы
-                Buffer[7] = Crc & 0x00ff;
+                bufferTx_[7] = Crc & 0x00ff;
                 // Вычисляем сколько байт мы ожидаем в ответе
                 // Количество катушек / 8, если остаток != 0 то целое увеличиваем на 1
                 // Получаем Целое и остаток от деления
@@ -76,14 +76,11 @@ int ModbusMaster::readCoils(   int SlaveAddr,
                 	// Увеличиваем целую часть
                 	Div.quot++;
                 }
-                // Устанавливаем ожидаемое количество байт в ответе
-                // Количество байт с данными + адрес + функция + счётчик байт + CRC16
-                setCountExpectedBytes((Div.quot + 5));
                 // ПЕРЕДАЧА И ПРИЁМ ДАННЫХ
-                if(transmitQuery(Buffer, 8))
+                if(transmitQuery(bufferTx_, 8))
                 {
                     // Функция приёма данных
-                    Result = reseiveAnswer(Buffer, getCountExpectedBytes());
+                    Result = reseiveAnswer(bufferTx_);
                     // Анализируем ответ
                     switch(Result)
                     {
@@ -96,7 +93,7 @@ int ModbusMaster::readCoils(   int SlaveAddr,
                                     for(J = 0; J <= 7; J++)
                                     {
                                         // Сохраняем данные в выходной буфер
-                                        BitArr[I * 8 + J] = ((Buffer[3 + I] >> J) & 0x01);
+                                        BitArr[I * 8 + J] = ((bufferTx_[3 + I] >> J) & 0x01);
                                     }
                                 }
                         break;
@@ -160,23 +157,23 @@ int ModbusMaster::readInputDiscretes( int SlaveAddr,
             if(checkCntCoils(RefCnt))
             {
                 // Адрес устройства
-                Buffer[0] = SlaveAddr;
+                bufferTx_[0] = SlaveAddr;
                 // Команды
-                Buffer[1] = MODBUS_READ_DISCRETE_INPUTS_0x02;
+                bufferTx_[1] = MODBUS_READ_DISCRETE_INPUTS_0x02;
                 // Старший байт адреса первого входа
-                Buffer[2] = ((StartRef >> 8) & 0x00ff);
+                bufferTx_[2] = ((StartRef >> 8) & 0x00ff);
                 // Младший байт адреса первого входа
-                Buffer[3] = StartRef & 0x00ff;
+                bufferTx_[3] = StartRef & 0x00ff;
                 // Старший байт количества входов
-                Buffer[4] = ((RefCnt >> 8) & 0x00ff);
+                bufferTx_[4] = ((RefCnt >> 8) & 0x00ff);
                 // Младший байт количества входов
-                Buffer[5] = RefCnt & 0x00ff;
+                bufferTx_[5] = RefCnt & 0x00ff;
                 // Вычисляем контрольную сумму
-                Crc = calcCRC16(6, Buffer);
+                Crc = calcCRC16(6, bufferTx_);
                 // Старший байт контрольной суммы
-                Buffer[6] = ((Crc >> 8) & 0x00ff);
+                bufferTx_[6] = ((Crc >> 8) & 0x00ff);
                 // Младший байт контрольной суммы
-                Buffer[7] = Crc & 0x00ff;
+                bufferTx_[7] = Crc & 0x00ff;
                 // Вычисляем сколько байт мы ожидаем в ответе
                 // Количество катушек / 8, если остаток != 0 то целое увеличиваем на 1
                 // Получаем Целое и остаток от деления
@@ -187,12 +184,11 @@ int ModbusMaster::readInputDiscretes( int SlaveAddr,
                 	// Увеличиваем целую часть
                 	Div.quot++;
                 }
-                setCountExpectedBytes((Div.quot + 5));
                 // ПЕРЕДАЧА И ПРИЁМ ДАННЫХ
-                if(transmitQuery(Buffer, 8))
+                if(transmitQuery(bufferTx_, 8))
                 {
                 	// Функция приёма данных
-                    Result = reseiveAnswer(Buffer, getCountExpectedBytes());
+                    Result = reseiveAnswer(bufferTx_);
                     // Анализируем ответ
                     switch(Result)
                     {
@@ -205,7 +201,7 @@ int ModbusMaster::readInputDiscretes( int SlaveAddr,
                                     for(J = 0; J <= 7; J++)
                                     {
                                         // Сохраняем данные в выходной буфер
-                                        BitArr[I * 8 + J] = ((Buffer[3 + I] >> J) & 0x01);
+                                        BitArr[I * 8 + J] = ((bufferTx_[3 + I] >> J) & 0x01);
                                     }
                                 }
                         break;
@@ -236,86 +232,80 @@ int ModbusMaster::readInputDiscretes( int SlaveAddr,
     return Result;
 }
 
-// МЕТОД ЧТЕНИЯ РЕГИСТРОВ УСТРОЙСТВА
-// Modbus функция 3,  Читать нескольких регистров.
-// Читает содержимое регистров
-// Параметры:
-// SlaveAddr Modbus Адрес ведомого устройства (диапазон: 1 - 255)
-// StartRef Начните регистр (диапазон: 1 - 0x10000)
-// RegArr буфера, который будет наполнен прочитанныйми данными
-// RefCnt Количество считываемых регистров
-// Возвращает:
-// RETURN_OK в случае успешного завершения или код ошибки
-int ModbusMaster::readMultipleRegisters(   int SlaveAddr,
-                                                int StartRef,
-                                                short RegArr[],
-                                                int RefCnt)
+// Метод чтения регистров устройства функций 0х03
+int ModbusMaster::readMultipleRegisters( int slaveAddr,
+                                         int startRef,
+                                         short *regArr,
+                                         int refCnt)
 {
-    int Result = RETURN_ERROR;
-    int I = 0;
-    unsigned short Crc = 0;
-    DataType Value;
-    try
-    {
-        // ФОРМИРУЕМ ПОСЫЛКУ
-        // Проверяем корректность адреса
-        if(checkDeviceAddress(SlaveAddr))
-        {
-            // Проверяем корректность количества регистров
-            if(checkCntReg(RefCnt))
-            {
-                Buffer[0] = SlaveAddr;                                // Адрес устройства
-                Buffer[1] = MODBUS_READ_HOLDING_REGISTERS_0x03;       // Команды
-                Buffer[2] = ((StartRef >> 8) & 0x00ff);               // Старший байт адреса первого регистра
-                Buffer[3] = StartRef & 0x00ff;                        // Младший байт адреса первого регистра
-                Buffer[4] = 0;                                        // Старший байт количества регистров
-                Buffer[5] = RefCnt & 0x00ff;                          // Младший байт количества регистров
-                Crc = calcCRC16(6, Buffer);                           // Вычисляем контрольную сумму
-                Buffer[6] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
-                Buffer[7] = Crc & 0x00ff;                             // Младший байт контрольной суммы
-                setCountExpectedBytes((RefCnt*2 + 5));                // Устанавливаем ожидаемое количество байт в ответе
-
-                // ПЕРЕДАЧА И ПРИЁМ ДАННЫХ
-                if(transmitQuery(Buffer, 8))
-                {
-                    Result = reseiveAnswer(Buffer, getCountExpectedBytes());
-                    // Анализируем ответ
-                    switch(Result)
-                    {
-                        // Получен корректный ответ
-                        case    RETURN_MODBUS_OK:
-                                for(I = 0; I <= RefCnt; I++)
-                                {
-                                    Value.DtChar[0] = Buffer[4 + 2*I];
-                                    Value.DtChar[1] = Buffer[3 + 2*I];
-                                    RegArr[I] = Value.DtUint16[0];
-                                }
-                        break;
-                        // Получен ответ с ошибкой
-                        case    RETURN_MODBUS_ERROR:
-
-                        break;
-                        // Ответ с ошибкой CRC
-                        case    RETURN_MODBUS_ERROR_CRC:
-
-                        break;
-                        // Ответ не получен
-                        case    RETURN_MODBUS_TIMEOUT:
-
-                        break;
-                        default:
-
-                        break;
-                    }
-                }// Не смог отправить запрос
-            }// Некорректное количество регистров
-        }// Некорректный адрес
+  DataType Value;
+  unsigned short Crc;
+  int Count;
+  int Result = MODBUS_ERROR_TRASH;
+  // Формирование посылки из данных в формат Modbus запроса
+  // Проверка адреса устройства
+  bufferTx_[0] = slaveAddr;                                // Адрес устройства
+  bufferTx_[1] = MODBUS_READ_HOLDING_REGISTERS_0x03;       // Команды
+  bufferTx_[2] = ((startRef >> 8) & 0x00ff);               // Старший байт адреса первого регистра
+  bufferTx_[3] = startRef & 0x00ff;                        // Младший байт адреса первого регистра
+  bufferTx_[4] = 0;                                        // Старший байт количества регистров
+  bufferTx_[5] = refCnt & 0x00ff;                          // Младший байт количества регистров
+  Crc = calcCRC16(6, bufferTx_);                           // Вычисляем контрольную сумму
+  bufferTx_[6] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
+  bufferTx_[7] = Crc & 0x00ff;                             // Младший байт контрольной суммы
+  // Если отправили данные
+  if (transmitQuery(bufferTx_, 8)){
+    // Принимаем данные получаем количество принятых байт
+    Count = reseiveAnswer(bufferRx_);
+    // Если хоть что-то получили
+    if (Count) {
+      // Корректная длина пакета
+      if ((Count == refCnt*2 + MODBUS_MIN_LENGHT_PACKAGE)
+          // Совпадает адрес устройства
+          &&(bufferRx_[0] == slaveAddr)
+          // Совпадает функция на которую отвечаем
+          &&(bufferRx_[1] == MODBUS_READ_HOLDING_REGISTERS_0x03)
+          // Совпадает количество байт данных
+          &&(bufferRx_[2] == refCnt*2)) {
+        // Совпадает контрольная сумма
+        if (((bufferRx_[Count - 1] << 8) + bufferRx_[Count - 2])
+            == calcCRC16((Count - 2), bufferRx_)) {
+          for(int I = 0; I <= refCnt; I++)
+          {
+            Value.DtChar[0] = bufferRx_[4 + 2*I];
+            Value.DtChar[1] = bufferRx_[3 + 2*I];
+            regArr[I] = Value.DtUint16[0];
+          }
+          Result = MODBUS_OK;
+        }
+        else
+          Result = MODBUS_ERROR_CRC;
+      }
+      else {
+        // Длина пакета равна длине с ошибкой
+        if ((Count == MODBUS_MIN_LENGHT_PACKAGE)
+            // Адрес совпадает
+            &&(bufferRx_[0] == slaveAddr)
+            // Код функции совпадает
+            &&(bufferRx_[1] == MODBUS_READ_HOLDING_REGISTERS_0x03 + MODBUS_ERROR_0x80)
+            &&((bufferRx_[2] >= MODBUS_ILLEGAL_FUNCTION_0x01)
+               &&(bufferRx_[2] <= MODBUS_GATEWAY_TARGET_DEVICE_0x0B))) {
+          if (((bufferRx_[Count - 1] << 8) + bufferRx_[Count - 2])
+              == calcCRC16((Count - 2), bufferRx_)) {
+            Result = bufferRx_[2];
+          }
+          else
+            Result = MODBUS_ERROR_CRC;
+        }
+        else
+          Result = MODBUS_ERROR_TRASH;
+      }
     }
-    catch(...)
-    {
-        // Формируем сообщение упали в функции readMultipleRegisters
+    else {
+      Result = MODBUS_ERROR_TIMEOUT;
     }
-    return Result;
+  }
+  return Result;
 }
 
 // МЕТОД ЧТЕНИЯ РЕГИСТРОВ УСТРОЙТВА
@@ -346,22 +336,19 @@ int ModbusMaster::readMultipleLongInts(    int SlaveAddr,
             // Проверяем корректность количества регистров
             if(checkCntReg(RefCnt))
             {
-                Buffer[0] = SlaveAddr;                                // Адрес устройства
-                Buffer[1] = MODBUS_READ_HOLDING_REGISTERS_0x03;       // Команды
-                Buffer[2] = ((StartRef >> 8) & 0x00ff);               // Старший байт адреса первого регистра
-                Buffer[3] = StartRef & 0x00ff;                        // Младший байт адреса первого регистра
-                Buffer[4] = 0;                                        // Старший байт количества регистров
-                Buffer[5] = (RefCnt * 2) & 0x00ff;                    // Младший байт количества регистров
-                Crc = calcCRC16(6, Buffer);                           // Вычисляем контрольную сумму
-                Buffer[6] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
-                Buffer[7] = Crc & 0x00ff;                             // Младший байт контрольной суммы
-                // Устанавливаем ожидаемое количество байт в ответе
-                // Количество регистров для чтения * 4(байта) + 5 байт (Устройство, команда, счётчик байт плюс контрольная сумма)
-                setCountExpectedBytes((RefCnt * 4 + 5));
+                bufferTx_[0] = SlaveAddr;                                // Адрес устройства
+                bufferTx_[1] = MODBUS_READ_HOLDING_REGISTERS_0x03;       // Команды
+                bufferTx_[2] = ((StartRef >> 8) & 0x00ff);               // Старший байт адреса первого регистра
+                bufferTx_[3] = StartRef & 0x00ff;                        // Младший байт адреса первого регистра
+                bufferTx_[4] = 0;                                        // Старший байт количества регистров
+                bufferTx_[5] = (RefCnt * 2) & 0x00ff;                    // Младший байт количества регистров
+                Crc = calcCRC16(6, bufferTx_);                           // Вычисляем контрольную сумму
+                bufferTx_[6] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
+                bufferTx_[7] = Crc & 0x00ff;                             // Младший байт контрольной суммы
                 // ПЕРЕДАЧА И ПРИЁМ ДАННЫХ
-                if(transmitQuery(Buffer, 8))
+                if(transmitQuery(bufferTx_, 8))
                 {
-                    Result = reseiveAnswer(Buffer, getCountExpectedBytes());
+                    Result = reseiveAnswer(bufferTx_);
                     // Анализируем ответ
                     switch(Result)
                     {
@@ -369,10 +356,10 @@ int ModbusMaster::readMultipleLongInts(    int SlaveAddr,
                         case    RETURN_MODBUS_OK:
                                 for(I = 0; I <= RefCnt; I++)
                                 {
-                                    Value.DtChar[0] = Buffer[6 + 4*I];
-                                    Value.DtChar[1] = Buffer[5 + 4*I];
-                                    Value.DtChar[2] = Buffer[4 + 4*I];
-                                    Value.DtChar[3] = Buffer[3 + 4*I];
+                                    Value.DtChar[0] = bufferTx_[6 + 4*I];
+                                    Value.DtChar[1] = bufferTx_[5 + 4*I];
+                                    Value.DtChar[2] = bufferTx_[4 + 4*I];
+                                    Value.DtChar[3] = bufferTx_[3 + 4*I];
                                     int32Arr[I] = Value.DtUint32;
                                 }
                         break;
@@ -430,21 +417,18 @@ int ModbusMaster::readMultipleFloats(        int SlaveAddr,
             // Проверяем корректность количества регистров
             if(checkCntReg(RefCnt))
             {
-                Buffer[0] = SlaveAddr;                                // Адрес устройства
-                Buffer[1] = MODBUS_READ_HOLDING_REGISTERS_0x03;       // Команды
-                Buffer[2] = ((StartRef >> 8) & 0x00ff);               // Старший байт адреса первого регистра
-                Buffer[3] = StartRef & 0x00ff;                        // Младший байт адреса первого регистра
-                Buffer[4] = 0;                                        // Старший байт количества регистров
-                Buffer[5] = (RefCnt * 2) & 0x00ff;                    // Младший байт количества регистров
-                Crc = calcCRC16(6, Buffer);                           // Вычисляем контрольную сумму
-                Buffer[6] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
-                Buffer[7] = Crc & 0x00ff;                             // Младший байт контрольной суммы
-                // Устанавливаем ожидаемое количество байт в ответе
-                // Количество регистров для чтения * 4(байта) + 5 байт (Устройство, команда, счётчик байт плюс контрольная сумма)
-                setCountExpectedBytes((RefCnt * 4 + 5));
-                if(transmitQuery(Buffer, 8))
+                bufferTx_[0] = SlaveAddr;                                // Адрес устройства
+                bufferTx_[1] = MODBUS_READ_HOLDING_REGISTERS_0x03;       // Команды
+                bufferTx_[2] = ((StartRef >> 8) & 0x00ff);               // Старший байт адреса первого регистра
+                bufferTx_[3] = StartRef & 0x00ff;                        // Младший байт адреса первого регистра
+                bufferTx_[4] = 0;                                        // Старший байт количества регистров
+                bufferTx_[5] = (RefCnt * 2) & 0x00ff;                    // Младший байт количества регистров
+                Crc = calcCRC16(6, bufferTx_);                           // Вычисляем контрольную сумму
+                bufferTx_[6] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
+                bufferTx_[7] = Crc & 0x00ff;                             // Младший байт контрольной суммы
+                if(transmitQuery(bufferTx_, 8))
                 {
-                    Result = reseiveAnswer(Buffer, getCountExpectedBytes());
+                    Result = reseiveAnswer(bufferTx_);
                     // Анализируем ответ
                     switch(Result)
                     {
@@ -452,10 +436,10 @@ int ModbusMaster::readMultipleFloats(        int SlaveAddr,
                         case    RETURN_MODBUS_OK:
                                 for(I = 0; I <= RefCnt; I++)
                                 {
-                                    Value.DtChar[0] = Buffer[6 + 4*I];
-                                    Value.DtChar[1] = Buffer[5 + 4*I];
-                                    Value.DtChar[2] = Buffer[4 + 4*I];
-                                    Value.DtChar[3] = Buffer[3 + 4*I];
+                                    Value.DtChar[0] = bufferTx_[6 + 4*I];
+                                    Value.DtChar[1] = bufferTx_[5 + 4*I];
+                                    Value.DtChar[2] = bufferTx_[4 + 4*I];
+                                    Value.DtChar[3] = bufferTx_[3 + 4*I];
                                     Float32Arr[I] = Value.DtFloat;
                                 }
                         break;
@@ -513,20 +497,19 @@ int ModbusMaster::readInputRegisters(      int SlaveAddr,
             // Проверяем корректность количества регистров
             if(checkCntReg(RefCnt))
             {
-                Buffer[0] = SlaveAddr;                                // Адрес устройства
-                Buffer[1] = MODBUS_READ_INPUT_REGISTERS_0x04;         // Команды
-                Buffer[2] = ((StartRef >> 8) & 0x00ff);               // Старший байт адреса первого регистра
-                Buffer[3] = StartRef & 0x00ff;                        // Младший байт адреса первого регистра
-                Buffer[4] = 0;                                        // Старший байт количества регистров
-                Buffer[5] = RefCnt & 0x00ff;                          // Младший байт количества регистров
-                Crc = calcCRC16(6, Buffer);                           // Вычисляем контрольную сумму
-                Buffer[6] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
-                Buffer[7] = Crc & 0x00ff;                             // Младший байт контрольной суммы
-                setCountExpectedBytes((RefCnt*2 + 5));                // Устанавливаем ожидаемое количество байт в ответе
+                bufferTx_[0] = SlaveAddr;                                // Адрес устройства
+                bufferTx_[1] = MODBUS_READ_INPUT_REGISTERS_0x04;         // Команды
+                bufferTx_[2] = ((StartRef >> 8) & 0x00ff);               // Старший байт адреса первого регистра
+                bufferTx_[3] = StartRef & 0x00ff;                        // Младший байт адреса первого регистра
+                bufferTx_[4] = 0;                                        // Старший байт количества регистров
+                bufferTx_[5] = RefCnt & 0x00ff;                          // Младший байт количества регистров
+                Crc = calcCRC16(6, bufferTx_);                           // Вычисляем контрольную сумму
+                bufferTx_[6] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
+                bufferTx_[7] = Crc & 0x00ff;                             // Младший байт контрольной суммы
                 // ПЕРЕДАЧА И ПРИЁМ ДАННЫХ
-                if(transmitQuery(Buffer, 8))
+                if(transmitQuery(bufferTx_, 8))
                 {
-                    Result = reseiveAnswer(Buffer, getCountExpectedBytes());
+                    Result = reseiveAnswer(bufferTx_);
                     // Анализируем ответ
                     switch(Result)
                     {
@@ -534,8 +517,8 @@ int ModbusMaster::readInputRegisters(      int SlaveAddr,
                         case    RETURN_MODBUS_OK:
                                 for(I = 0; I <= RefCnt; I++)
                                 {
-                                    Value.DtChar[0] = Buffer[4 + 2*I];
-                                    Value.DtChar[1] = Buffer[3 + 2*I];
+                                    Value.DtChar[0] = bufferTx_[4 + 2*I];
+                                    Value.DtChar[1] = bufferTx_[3 + 2*I];
                                     RegArr[I] = Value.DtUint16[0];
                                 }
                                 break;
@@ -594,22 +577,19 @@ int ModbusMaster::readInputLongInts(    int SlaveAddr,
             // Проверяем корректность количества регистров
             if(checkCntReg(RefCnt))
             {
-                Buffer[0] = SlaveAddr;                                // Адрес устройства
-                Buffer[1] = MODBUS_READ_INPUT_REGISTERS_0x04;        // Команды
-                Buffer[2] = ((StartRef >> 8) & 0x00ff);                // Старший байт адреса первого регистра
-                Buffer[3] = StartRef & 0x00ff;                        // Младший байт адреса первого регистра
-                Buffer[4] = 0;                                        // Старший байт количества регистров
-                Buffer[5] = (RefCnt * 2) & 0x00ff;                    // Младший байт количества регистров
-                Crc = calcCRC16(6, Buffer);                            // Вычисляем контрольную сумму
-                Buffer[6] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
-                Buffer[7] = Crc & 0x00ff;                            // Младший байт контрольной суммы
-                // Устанавливаем ожидаемое количество байт в ответе
-                // Количество регистров для чтения * 4(байта) + 5 байт (Устройство, команда, счётчик байт плюс контрольная сумма)
-                setCountExpectedBytes((RefCnt * 4 + 5));
+                bufferTx_[0] = SlaveAddr;                                // Адрес устройства
+                bufferTx_[1] = MODBUS_READ_INPUT_REGISTERS_0x04;        // Команды
+                bufferTx_[2] = ((StartRef >> 8) & 0x00ff);                // Старший байт адреса первого регистра
+                bufferTx_[3] = StartRef & 0x00ff;                        // Младший байт адреса первого регистра
+                bufferTx_[4] = 0;                                        // Старший байт количества регистров
+                bufferTx_[5] = (RefCnt * 2) & 0x00ff;                    // Младший байт количества регистров
+                Crc = calcCRC16(6, bufferTx_);                            // Вычисляем контрольную сумму
+                bufferTx_[6] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
+                bufferTx_[7] = Crc & 0x00ff;                            // Младший байт контрольной суммы
                 // ПЕРЕДАЧА И ПРИЁМ ДАННЫХ
-                if(transmitQuery(Buffer, 8))
+                if(transmitQuery(bufferTx_, 8))
                 {
-                    Result = reseiveAnswer(Buffer, getCountExpectedBytes());
+                    Result = reseiveAnswer(bufferTx_);
                     // Анализируем ответ
                     switch(Result)
                     {
@@ -617,10 +597,10 @@ int ModbusMaster::readInputLongInts(    int SlaveAddr,
                         case    RETURN_MODBUS_OK:
                                 for(I = 0; I <= RefCnt; I++)
                                 {
-                                    Value.DtChar[0] = Buffer[6 + 4*I];
-                                    Value.DtChar[1] = Buffer[5 + 4*I];
-                                    Value.DtChar[2] = Buffer[4 + 4*I];
-                                    Value.DtChar[3] = Buffer[3 + 4*I];
+                                    Value.DtChar[0] = bufferTx_[6 + 4*I];
+                                    Value.DtChar[1] = bufferTx_[5 + 4*I];
+                                    Value.DtChar[2] = bufferTx_[4 + 4*I];
+                                    Value.DtChar[3] = bufferTx_[3 + 4*I];
                                     Int32Arr[I] = Value.DtUint32;
                                 }
                         break;
@@ -679,21 +659,18 @@ int ModbusMaster::readInputFloats(    int SlaveAddr,
             // Проверяем корректность количества регистров
             if(checkCntReg(RefCnt))
             {
-                Buffer[0] = SlaveAddr;                                // Адрес устройства
-                Buffer[1] = MODBUS_READ_INPUT_REGISTERS_0x04;        // Команды
-                Buffer[2] = ((StartRef >> 8) & 0x00ff);                // Старший байт адреса первого регистра
-                Buffer[3] = StartRef & 0x00ff;                        // Младший байт адреса первого регистра
-                Buffer[4] = 0;                                        // Старший байт количества регистров
-                Buffer[5] = (RefCnt * 2) & 0x00ff;                    // Младший байт количества регистров
-                Crc = calcCRC16(6, Buffer);                            // Вычисляем контрольную сумму
-                Buffer[6] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
-                Buffer[7] = Crc & 0x00ff;                            // Младший байт контрольной суммы
-                // Устанавливаем ожидаемое количество байт в ответе
-                // Количество регистров для чтения * 4(байта) + 5 байт (Устройство, команда, счётчик байт плюс контрольная сумма)
-                setCountExpectedBytes((RefCnt * 4 + 5));
-                if(transmitQuery(Buffer, 8))
+                bufferTx_[0] = SlaveAddr;                                // Адрес устройства
+                bufferTx_[1] = MODBUS_READ_INPUT_REGISTERS_0x04;        // Команды
+                bufferTx_[2] = ((StartRef >> 8) & 0x00ff);                // Старший байт адреса первого регистра
+                bufferTx_[3] = StartRef & 0x00ff;                        // Младший байт адреса первого регистра
+                bufferTx_[4] = 0;                                        // Старший байт количества регистров
+                bufferTx_[5] = (RefCnt * 2) & 0x00ff;                    // Младший байт количества регистров
+                Crc = calcCRC16(6, bufferTx_);                            // Вычисляем контрольную сумму
+                bufferTx_[6] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
+                bufferTx_[7] = Crc & 0x00ff;                            // Младший байт контрольной суммы
+                if(transmitQuery(bufferTx_, 8))
                 {
-                    Result = reseiveAnswer(Buffer, getCountExpectedBytes());
+                    Result = reseiveAnswer(bufferTx_);
                     // Анализируем ответ
                     switch(Result)
                     {
@@ -701,10 +678,10 @@ int ModbusMaster::readInputFloats(    int SlaveAddr,
                         case    RETURN_MODBUS_OK:
                                 for(I = 0; I <= RefCnt; I++)
                                 {
-                                    Value.DtChar[0] = Buffer[6 + 4*I];
-                                    Value.DtChar[1] = Buffer[5 + 4*I];
-                                    Value.DtChar[2] = Buffer[4 + 4*I];
-                                    Value.DtChar[3] = Buffer[3 + 4*I];
+                                    Value.DtChar[0] = bufferTx_[6 + 4*I];
+                                    Value.DtChar[1] = bufferTx_[5 + 4*I];
+                                    Value.DtChar[2] = bufferTx_[4 + 4*I];
+                                    Value.DtChar[3] = bufferTx_[3 + 4*I];
                                     Float32Arr[I] = Value.DtFloat;
                                 }
                         break;
@@ -755,23 +732,23 @@ int ModbusMaster::writeCoil(    int SlaveAddr,
         // Проверяем корректность адреса
         if(checkDeviceAddress(SlaveAddr))
         {
-            Buffer[0] = SlaveAddr;                                // Адрес устройства
-            Buffer[1] = MODBUS_WRITE_SINGLE_COIL_0x05;            // Команды
-            Buffer[2] = ((BitAddr >> 8) & 0x00ff);                // Старший байт адреса катушки
-            Buffer[3] = BitAddr & 0x00ff;                        // Младший байт адреса катушки
+            bufferTx_[0] = SlaveAddr;                                // Адрес устройства
+            bufferTx_[1] = MODBUS_WRITE_SINGLE_COIL_0x05;            // Команды
+            bufferTx_[2] = ((BitAddr >> 8) & 0x00ff);                // Старший байт адреса катушки
+            bufferTx_[3] = BitAddr & 0x00ff;                        // Младший байт адреса катушки
             if(BitVal)
             {
-                Buffer[4] = 0xff;                                // Старший байт значения
-                Buffer[5] = 0x00;                                // Младший байт значения
+                bufferTx_[4] = 0xff;                                // Старший байт значения
+                bufferTx_[5] = 0x00;                                // Младший байт значения
             }
             else
             {
-                Buffer[4] = 0x00;                                // Старший байт значения
-                Buffer[5] = 0x00;                                // Младший байт значения
+                bufferTx_[4] = 0x00;                                // Старший байт значения
+                bufferTx_[5] = 0x00;                                // Младший байт значения
             }
-            Crc = calcCRC16(6, Buffer);                            // Вычисляем контрольную сумму
-            Buffer[6] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
-            Buffer[7] = Crc & 0x00ff;                            // Младший байт контрольной суммы
+            Crc = calcCRC16(6, bufferTx_);                            // Вычисляем контрольную сумму
+            bufferTx_[6] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
+            bufferTx_[7] = Crc & 0x00ff;                            // Младший байт контрольной суммы
         }
     }
     catch(...)
@@ -802,15 +779,15 @@ int ModbusMaster::writeSingleRegister(    int SlaveAddr,
         // Проверяем корректность адреса
         if(checkDeviceAddress(SlaveAddr))
         {
-            Buffer[0] = SlaveAddr;                                // Адрес устройства
-            Buffer[1] = MODBUS_WRITE_SINGLE_REGISTER_0x06;        // Команды
-            Buffer[2] = ((RegAddr >> 8) & 0x00ff);                // Старший байт адреса катушки
-            Buffer[3] = RegAddr & 0x00ff;                        // Младший байт адреса катушки
-            Buffer[4] = ((RegVal >> 8) & 0x00ff);                // Старший байт значения
-            Buffer[5] = RegVal & 0x00ff;                            // Младший байт значения
-            Crc = calcCRC16(6, Buffer);                            // Вычисляем контрольную сумму
-            Buffer[6] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
-            Buffer[7] = Crc & 0x00ff;                            // Младший байт контрольной суммы
+            bufferTx_[0] = SlaveAddr;                                // Адрес устройства
+            bufferTx_[1] = MODBUS_WRITE_SINGLE_REGISTER_0x06;        // Команды
+            bufferTx_[2] = ((RegAddr >> 8) & 0x00ff);                // Старший байт адреса катушки
+            bufferTx_[3] = RegAddr & 0x00ff;                        // Младший байт адреса катушки
+            bufferTx_[4] = ((RegVal >> 8) & 0x00ff);                // Старший байт значения
+            bufferTx_[5] = RegVal & 0x00ff;                            // Младший байт значения
+            Crc = calcCRC16(6, bufferTx_);                            // Вычисляем контрольную сумму
+            bufferTx_[6] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
+            bufferTx_[7] = Crc & 0x00ff;                            // Младший байт контрольной суммы
         }
     }
     catch(...)
@@ -838,11 +815,11 @@ int ModbusMaster::readExceptionStatus(    int SlaveAddr,
         // Проверяем корректность адреса
         if(checkDeviceAddress(SlaveAddr))
         {
-            Buffer[0] = SlaveAddr;                                // Адрес устройства
-            Buffer[1] = MODBUS_READ_EXCEPTION_STATUS_0x07;        // Команды
-            Crc = calcCRC16(2, Buffer);                            // Вычисляем контрольную сумму
-            Buffer[2] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
-            Buffer[3] = Crc & 0x00ff;                            // Младший байт контрольной суммы
+            bufferTx_[0] = SlaveAddr;                                // Адрес устройства
+            bufferTx_[1] = MODBUS_READ_EXCEPTION_STATUS_0x07;        // Команды
+            Crc = calcCRC16(2, bufferTx_);                            // Вычисляем контрольную сумму
+            bufferTx_[2] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
+            bufferTx_[3] = Crc & 0x00ff;                            // Младший байт контрольной суммы
         }
     }
     catch(...)
@@ -876,17 +853,17 @@ int ModbusMaster::returnQueryData(        int SlaveAddr,
         // Проверяем корректность адреса
         if(checkDeviceAddress(SlaveAddr))
         {
-            Buffer[0] = SlaveAddr;                                    // Адрес устройства
-            Buffer[1] = MODBUS_DIAGNOSTICS_0x08;                        // Команды
-            Buffer[2] = 0x00;                                        // Запрос эхо
-            Buffer[3] = 0x00;                                        // Запрос эхо
+            bufferTx_[0] = SlaveAddr;                                    // Адрес устройства
+            bufferTx_[1] = MODBUS_DIAGNOSTICS_0x08;                        // Команды
+            bufferTx_[2] = 0x00;                                        // Запрос эхо
+            bufferTx_[3] = 0x00;                                        // Запрос эхо
             for(I = 0; I <= Len; I++)
             {
-                Buffer[I + 4] = QueryArr[I];
+                bufferTx_[I + 4] = QueryArr[I];
             }
-            Crc = calcCRC16(Len + 4, Buffer);
-            Buffer[Len + 5] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
-            Buffer[Len + 6] = Crc & 0x00ff;                            // Младший байт контрольной суммы
+            Crc = calcCRC16(Len + 4, bufferTx_);
+            bufferTx_[Len + 5] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
+            bufferTx_[Len + 6] = Crc & 0x00ff;                            // Младший байт контрольной суммы
         }
     }
     catch(...)
@@ -948,14 +925,14 @@ int ModbusMaster::forceMultipleCoils( int SlaveAddr,
             // Проверяем корректность количества записываемых катушек
             if(checkCntReg(RefCnt))
             {
-            	// Адрес устройства
-                Buffer[0] = SlaveAddr;
+              // Адрес устройства
+                bufferTx_[0] = SlaveAddr;
                 // Команды
-                Buffer[1] = MODBUS_WRITE_MULTIPLE_COILS_0x0F;
+                bufferTx_[1] = MODBUS_WRITE_MULTIPLE_COILS_0x0F;
                 // Старший байт адреса первой катушки
-                Buffer[2] = ((StartRef >> 8) & 0x00ff);
+                bufferTx_[2] = ((StartRef >> 8) & 0x00ff);
                 // Младший байт адреса катушки
-                Buffer[3] = StartRef & 0x00ff;
+                bufferTx_[3] = StartRef & 0x00ff;
                 // Заполнение данных
                 // Вычисляем сколько у нас байт данных
                 // Получаем Целое и остаток от деления
@@ -971,21 +948,21 @@ int ModbusMaster::forceMultipleCoils( int SlaveAddr,
                 // Проверяем количество байт данных
                 if(checkDeviceAddress(CntByte))
                 {
-                	// Количество байт с данными
-                    Buffer[4] = CntByte;
+                  // Количество байт с данными
+                    bufferTx_[4] = CntByte;
                     for(I = 0; I <= CntByte; I++)
                     {
                     	// Старший байт данных
-                        Buffer[I + 5] = ((BitArr[I] >> 8) & 0x00ff);
+                        bufferTx_[I + 5] = ((BitArr[I] >> 8) & 0x00ff);
                         // Младший байт данных
-                        Buffer[I + 6] = BitArr[I] & 0x00ff;
+                        bufferTx_[I + 6] = BitArr[I] & 0x00ff;
                     }
                     // Вычисляем контрольную сумму
-                    Crc = calcCRC16(CntByte + 5, Buffer);
+                    Crc = calcCRC16(CntByte + 5, bufferTx_);
                     // Старший байт контрольной суммы
-                    Buffer[CntByte + 6] = ((Crc >> 8) & 0x00ff);
+                    bufferTx_[CntByte + 6] = ((Crc >> 8) & 0x00ff);
                     // Младший байт контрольной суммы
-                    Buffer[CntByte + 7] = Crc & 0x00ff;
+                    bufferTx_[CntByte + 7] = Crc & 0x00ff;
                 }
             }
         }
@@ -1024,21 +1001,21 @@ int ModbusMaster::writeMultipleRegisters(    int SlaveAddr,
             // Проверяем корректность количества регистров
             if(checkCntReg(RefCnt))
             {
-                Buffer[0] = SlaveAddr;                                // Адрес устройства
-                Buffer[1] = MODBUS_WRITE_MULTIPLE_REGISTERS_0x10;    // Команды
-                Buffer[2] = ((StartRef >> 8) & 0x00ff);                // Старший байт адреса первого регистра
-                Buffer[3] = StartRef & 0x00ff;                        // Младший байт адреса первого регистра
-                Buffer[4] = ((RefCnt >> 8) & 0x00ff);                // Старший байт адреса первого регистра
-                Buffer[5] = RefCnt & 0x00ff;                            // Младший байт адреса первого регистра
-                Buffer[6] = RefCnt*2;                                // Количество
+                bufferTx_[0] = SlaveAddr;                                // Адрес устройства
+                bufferTx_[1] = MODBUS_WRITE_MULTIPLE_REGISTERS_0x10;    // Команды
+                bufferTx_[2] = ((StartRef >> 8) & 0x00ff);                // Старший байт адреса первого регистра
+                bufferTx_[3] = StartRef & 0x00ff;                        // Младший байт адреса первого регистра
+                bufferTx_[4] = ((RefCnt >> 8) & 0x00ff);                // Старший байт адреса первого регистра
+                bufferTx_[5] = RefCnt & 0x00ff;                            // Младший байт адреса первого регистра
+                bufferTx_[6] = RefCnt*2;                                // Количество
                 for(I = 0; I <= RefCnt; I++)
                 {
-                    Buffer[I * 2 + 7] = ((RegArr[I] >> 8) & 0x00ff);    // Старший байт данных
-                    Buffer[I * 2 + 8] = RegArr[I] & 0x00ff;            // Младший байт данных
+                    bufferTx_[I * 2 + 7] = ((RegArr[I] >> 8) & 0x00ff);    // Старший байт данных
+                    bufferTx_[I * 2 + 8] = RegArr[I] & 0x00ff;            // Младший байт данных
                 }
-                Crc = calcCRC16(RefCnt*2 + 7, Buffer);                // Вычисляем контрольную сумму
-                Buffer[RefCnt*2 + 8] = ((Crc >> 8) & 0x00ff);        // Старший байт контрольной суммы
-                Buffer[RefCnt*2 + 9] = Crc & 0x00ff;                    // Младший байт контрольной суммы
+                Crc = calcCRC16(RefCnt*2 + 7, bufferTx_);                // Вычисляем контрольную сумму
+                bufferTx_[RefCnt*2 + 8] = ((Crc >> 8) & 0x00ff);        // Старший байт контрольной суммы
+                bufferTx_[RefCnt*2 + 9] = Crc & 0x00ff;                    // Младший байт контрольной суммы
             }
         }
     }
@@ -1154,7 +1131,7 @@ bool ModbusMaster::checkCntCoils(int Cnt)
     bool Result = RETURN_ERROR;
     try
     {
-        if(Cnt <=MAX_FC01_COILS)
+        if(Cnt <=MODBUS_MAX_FC01_COILS)
         {
             Result = RETURN_OK;
         }
@@ -1172,7 +1149,7 @@ bool ModbusMaster::checkCntReg(int Cnt)
     bool Result = RETURN_ERROR;
     try
     {
-        if(Cnt <= MAX_FC03_WORDS)
+        if(Cnt <= MODBUS_MAX_FC03_WORDS)
         {
             Result = RETURN_OK;
         }
@@ -1283,30 +1260,6 @@ int ModbusMaster::setRetryCnt(int Retry)
     return Result;
 }
 
-// МЕТОД ЗАПИСИ ОЖИДАЕМОГО КОЛИЧЕСТВА БАЙТ В ОТВЕТЕ
-int ModbusMaster::setCountExpectedBytes(int Count)
-{
-    int Result = RETURN_ERROR;
-    try
-    {
-        // Проверяем если у нас уже открыт порт
-        if(isOpen())
-        {
-            // Проверяем корректность введенного значения
-            if((Count >=0 )&&(Count <= 255))
-            {
-                CountExpectedBytes = Count;
-                Result = RETURN_OK;
-            }
-        }
-    }
-    catch(...)
-    {
-
-    }
-    return Result;
-};
-
 // МЕТОД ЗАДАНИЯ ЗАДЕРЖКИ МЕЖДУ ЗАПРОСАМИ
 // Настраивает задержку между запросами,
 // Протокол должен быть закрыт
@@ -1360,12 +1313,6 @@ long ModbusMaster::getTotalCounter()
     return (TotalCounter);
 };
 
-// МЕТОД ПОЛУЧЕНИЯ ОЖИДАЕМОГО КОЛИЧЕСТВА БАЙТ В ОТВЕТЕ
-int ModbusMaster::getCountExpectedBytes()
-{
-    return (CountExpectedBytes);
-}
-
 // МЕТОД ПОЛУЧЕНИЯ ЗНАЧЕНИЯ ТАЙМАУТА ОТВЕТА
 // Возвращает значение таймаута
 int ModbusMaster::getTimeout()
@@ -1412,17 +1359,14 @@ void ModbusMaster::configureLittleEndianInts()
 };
 
 // МЕТОД ПОСЫЛКИ ДАННЫХ ИЗ БУФЕРА
-int ModbusMaster::transmitQuery(    unsigned char *Buf,
-                                         unsigned char Count)
+int ModbusMaster::transmitQuery(unsigned char *Buf, unsigned char Count)
 {
     return RETURN_ERROR;
 }
 
 // МЕТОД ЧТЕНИЕ ДАННЫХ ИЗ ПОРТА
 // Buf - массив байт считываемый из порта
-// Count - ожидаемое количество байт для считывания
-int ModbusMaster::reseiveAnswer(    unsigned char *Buf,
-                                         unsigned char Count)
+int ModbusMaster::reseiveAnswer(unsigned char *Buf)
 {
     return RETURN_ERROR;
 }

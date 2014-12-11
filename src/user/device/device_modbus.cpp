@@ -283,24 +283,32 @@ DeviceModbus::DeviceModbus(ModbusParameter *MapRegisters,
                           )
   : quantityParam_(Quantity),
     deviceAddress_(Address)
-
 {
+
+  // Создаём задачу цикла опроса
+  // Заполняем структуру с параметрами задачи
+  osThreadDef_t t = {threadName, deviceModbusTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
+  // Создаём задачу
+  threadId_ = osThreadCreate(&t, this);
+
+  // Создаём очередь сообщений
+  osMessageQDef(OutOfTurn, 100, uint32_t);
+  messageOutOfTurn_ = osMessageCreate (osMessageQ(OutOfTurn), NULL);
+
+  // Создаём очередь сообщений для формирвания списка готовых параметров
+  osMessageQDef(ReadyParam, 100, uint32_t);
+  messageReadyParam_ = osMessageCreate (osMessageQ(ReadyParam), NULL);
 
   // Создаём экземпляр класса ModbusMasterSerial
   MMS = new ModbusMasterSerial(PortName);
+  // Открываем порт
   MMS->openProtocol(PortName, BaudRate, DataBits, StopBits, Parity);
-  // Создаём задачу цикла опроса
-  osThreadDef_t t = {threadName, deviceModbusTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
-  osThreadCreate(&t, this);
-
-  osMessageQDef(Device_Queue, 100, uint32_t);
-  osMessageQId turn_ = osMessageCreate (osMessageQ(Device_Queue), NULL);
-  osMessagePut(turn_, 25, 0);
 }
 
 DeviceModbus::~DeviceModbus()
 {
-  /// TODO Auto-generated destructor stub
+  osThreadTerminate(threadId_);
+
 }
 
 // ----------------------------------------------------------------------------
@@ -447,20 +455,20 @@ int DeviceModbus::getIndexAtAddress(int Address)
 }
 
 // Получить элемент очереди внеочередной
-int DeviceModbus::getTurn()
+int DeviceModbus::getMessageOutOfTurn()
 {
   osEvent Event;
-  Event = osMessageGet(turn_, 0);
+  Event = osMessageGet(messageOutOfTurn_, 0);
   if (Event.status == osEventMessage)
     return Event.value.v;
   return 0;
 }
 
 // Добавить элемент в очередь
-int DeviceModbus::putTurn(int Index)
+int DeviceModbus::putMessageOutOfTurn(int Index)
 {
   osStatus Status;
-  Status = osMessagePut(turn_, Index, 0);
+  Status = osMessagePut(messageOutOfTurn_, Index, 0);
   if (Status)
     return 1;
   else
@@ -505,7 +513,7 @@ void DeviceModbus::writeModbusParameter(int ID, float Value)
   }
   Param.Flag = 1;
   Param.Priority = 1;
-  putTurn(Index);
+  putMessageOutOfTurn(Index);
 }
 
 int DeviceModbus::searchExchangeParameters()
@@ -539,92 +547,101 @@ int DeviceModbus::searchExchangeParameters()
 // Метод цикл по карте регистров для чтения и записи параметров
 void DeviceModbus::exchangeCycle(void)
 {
-
-  // Проверяем очередь параметров для обработки вне очереди
-  int outOfTurn = getTurn();
-  // Если есть параметры для обработки вне очереди
-  if (outOfTurn) {
-    // Если записать
-    if (modbusParameters_[outOfTurn].Flag) {
-      int address = modbusParameters_[outOfTurn].Address;
-      switch (modbusParameters_[outOfTurn].TypeData) {
-      case TYPE_DATA_INT16:
-        MMS->writeSingleRegister(deviceAddress_,
-                                 address,
-                                 modbusParameters_[outOfTurn].Value.Int16[0]);
-        break;
-      case TYPE_DATA_UINT16:
-        MMS->writeSingleRegister(deviceAddress_,
-                                 address,
-                                 modbusParameters_[outOfTurn].Value.Uint16[0]);
-        break;
-      case  TYPE_DATA_INT32:
-        int32Arr_[0] = modbusParameters_[outOfTurn].Value.Int32;
-        MMS->writeMultipleLongInts(deviceAddress_,
-                                   address,
-                                   int32Arr_,
-                                   1);
-        break;
-      case  TYPE_DATA_UINT32:
-        int32Arr_[0] =  modbusParameters_[outOfTurn].Value.Uint32;
-        MMS->writeMultipleLongInts(deviceAddress_,
-                                   modbusParameters_[outOfTurn].Address,
-                                   int32Arr_,
-                                   1);
-        break;
-      case  TYPE_DATA_FLOAT:
-        float32Arr_[0] = modbusParameters_[outOfTurn].Value.Float;
-        MMS->writeMultipleFloats(deviceAddress_,
-                                 modbusParameters_[outOfTurn].Address,
-                                 float32Arr_,
-                                 1);
-        break;
-      default:
-        break;
-      }
-    }
-  }
-  else {
-    outOfTurn = searchExchangeParameters();
+  int Count = 0;
+  ModbusParameter Param;
+  while (1) {
+    osDelay(100);
+    // Проверяем очередь параметров для обработки вне очереди
+    int outOfTurn = getMessageOutOfTurn();
+    // Если есть параметры для обработки вне очереди
     if (outOfTurn) {
-      int address = modbusParameters_[outOfTurn].Address;
-      switch (modbusParameters_[outOfTurn].TypeData) {
-      case TYPE_DATA_INT16:
-        MMS->readMultipleRegisters(deviceAddress_,
+      // Если записать
+      if (modbusParameters_[outOfTurn].Flag) {
+        int address = modbusParameters_[outOfTurn].Address;
+        switch (modbusParameters_[outOfTurn].TypeData) {
+        case TYPE_DATA_INT16:
+          MMS->writeSingleRegister(deviceAddress_,
                                    address,
-                                   regArr_,
-                                   1);
-        break;
-      case TYPE_DATA_UINT16:
-        MMS->readMultipleRegisters(deviceAddress_,
+                                   modbusParameters_[outOfTurn].Value.Int16[0]);
+          break;
+        case TYPE_DATA_UINT16:
+          MMS->writeSingleRegister(deviceAddress_,
                                    address,
-                                   regArr_,
+                                   modbusParameters_[outOfTurn].Value.Uint16[0]);
+          break;
+        case  TYPE_DATA_INT32:
+          int32Arr_[0] = modbusParameters_[outOfTurn].Value.Int32;
+          MMS->writeMultipleLongInts(deviceAddress_,
+                                     address,
+                                     int32Arr_,
+                                     1);
+          break;
+        case  TYPE_DATA_UINT32:
+          int32Arr_[0] =  modbusParameters_[outOfTurn].Value.Uint32;
+          MMS->writeMultipleLongInts(deviceAddress_,
+                                     modbusParameters_[outOfTurn].Address,
+                                     int32Arr_,
+                                     1);
+          break;
+        case  TYPE_DATA_FLOAT:
+          float32Arr_[0] = modbusParameters_[outOfTurn].Value.Float;
+          MMS->writeMultipleFloats(deviceAddress_,
+                                   modbusParameters_[outOfTurn].Address,
+                                   float32Arr_,
                                    1);
-        break;
-      case  TYPE_DATA_INT32:
-        MMS->readMultipleLongInts(deviceAddress_,
-                                  address,
-                                  int32Arr_,
-                                  1);
-        break;
-      case  TYPE_DATA_UINT32:
-        MMS->readMultipleLongInts(deviceAddress_,
-                                  address,
-                                  int32Arr_,
-                                  1);
-        break;
-      case  TYPE_DATA_FLOAT:
-        MMS->readMultipleFloats(deviceAddress_,
-                                address,
-                                float32Arr_,
-                                1);
-        break;
-      default:
-        break;
+          break;
+        default:
+          break;
+        }
       }
     }
-    //else
+    else {
+      outOfTurn = searchExchangeParameters();
+      if (outOfTurn) {
+        int address = modbusParameters_[outOfTurn].Address;
+        switch (modbusParameters_[outOfTurn].TypeData) {
+        case TYPE_DATA_INT16:
+          Count = 1;
+          if (!(MMS->readMultipleRegisters(deviceAddress_,address,regArr_,Count))) {
+            // TODO: Сделать проверки на минимум максиму и т.п
+            Param = getFieldAll(getIndexAtAddress(address));
+
+          }
+          else {
+            modbusParameters_[getIndexAtAddress(address)].Validity = 1;
+          }
+          break;
+        case TYPE_DATA_UINT16:
+          MMS->readMultipleRegisters(deviceAddress_,
+                                     address,
+                                     regArr_,
+                                     1);
+          break;
+        case  TYPE_DATA_INT32:
+          MMS->readMultipleLongInts(deviceAddress_,
+                                    address,
+                                    int32Arr_,
+                                    1);
+          break;
+        case  TYPE_DATA_UINT32:
+          MMS->readMultipleLongInts(deviceAddress_,
+                                    address,
+                                    int32Arr_,
+                                    1);
+          break;
+        case  TYPE_DATA_FLOAT:
+          MMS->readMultipleFloats(deviceAddress_,
+                                  address,
+                                  float32Arr_,
+                                  1);
+          break;
+        default:
+          break;
+        }
+      }
+      //else
       // ВНИМАНИЕ!!! Сломался exchangeCycle
+    }
   }
 }
 
