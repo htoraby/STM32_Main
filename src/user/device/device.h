@@ -10,6 +10,7 @@
 #define DEVICE_H_
 
 #include "define.h"
+#include "board.h"
 
 /*!
  * \brief The Parameter struct
@@ -66,6 +67,37 @@ public:
   virtual ~Device();
 
   virtual void initParameters();
+
+  // Функция создания задач для FreeRTOS
+  /*!
+   * \brief createThread Метод создания задач для FreeRTOS
+   * \param threadName Название задачи
+   */
+  void createThread(const char *threadName);
+
+  /*!
+   * \brief threadUpdateParameters Метод проверки и обновления
+   * значений параметров устройства
+   */
+  void threadUpdateParameters(void);
+
+  /*!
+   * \brief threadUpdateParametersId_
+   * Идентификатор задачи обновления значений параметра устройства
+   */
+  osThreadId threadUpdateParametersId_;
+
+  /*!
+   * \brief createMessageUpdateParameters
+   * Метод создания очереди обновленных параметров
+   */
+  void createMessageUpdateParameters(void);
+
+  /*!
+   * \brief messageUpdateParameters_
+   * Идентификатор очереди обновленных параметров
+   */
+  osMessageQId messageUpdateParameters_;
 
   // ОСНОВНЫЕ PUBLIC МЕТОДЫ КЛАССА
   // ЧТЕНИЕ ПАРАМЕТРА, ЗНАЧЕНИЯ И ДРУГИХ ПОЛЕЙ С ПРОВЕРКАМИ
@@ -590,6 +622,7 @@ protected:
    * \param Number - присваиваемое значение полю Device NumberElementArray
    */
   void setNumberElementArray(int Number);
+
 
 // ЗАКРЫТЫЕ ЧЛЕНЫ КЛАССА
 private:

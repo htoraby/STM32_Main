@@ -89,7 +89,6 @@ class VsdNovomet: public Vsd
          */
         int setFrequency(float Frequency);
 
-
         // Цикл обмена данными с устройством
         int excahgeCycle(void);
 

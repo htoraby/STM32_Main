@@ -78,7 +78,8 @@ public:
                 int StopBits,
                 int Parity,
                 int Address,
-                const char *threadName);
+                const char *threadName,
+                osMessageQId *messageUpdateID);
   /// Деструктор по умолчанию
   virtual ~DeviceModbus();
 
@@ -256,7 +257,23 @@ public:
     * \param Index Индекс параметра
     * \return добавили элемент в очередь или нет
     */
-   int putMessageOutOfTurn(int Index);
+   int putMessageOutOfTurn(int Element);
+
+
+   /*!
+     * \brief getMessageReadyParam получить элемент
+     * из очереди готовых параметров
+     * \return 0 - нет элементов или элемент
+     */
+    int getMessageReadyParam();
+
+    /*!
+     * \brief putMessagereadyParam положить элемент
+     * в очередь готовых параметров
+     * \param Element - элемент
+     * \return
+     */
+    int putMessageReadyParam(int Element);
 
    int searchExchangeParameters();
 
@@ -270,12 +287,13 @@ private:
 
    // Идентификатор задачи
    osThreadId threadId_;
+
    // Идентификатор очереди параметров опроса вне основного цикла
    osMessageQId messageOutOfTurn_;
-   // Идентификатор готовых параметров
-   osMessageQId messageReadyParam_;
 
-  ModbusParameter modbusParameters_[];
+   osMessageQId messageUpdateID_;
+
+   ModbusParameter modbusParameters_[];
 
   /*!
    * \brief Метод получения количества регистров в карте регистров

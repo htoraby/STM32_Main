@@ -6,7 +6,6 @@
  */
 
 #include "device_modbus.h"
-#include "cmsis_os.h"
 
 float Units[28][6][2] =
 {
@@ -279,10 +278,12 @@ DeviceModbus::DeviceModbus(ModbusParameter *MapRegisters,
                            int StopBits,
                            int Parity,
                            int Address,
-                           const char *threadName
+                           const char *threadName,
+                           osMessageQId *messageUpdateID
                           )
   : quantityParam_(Quantity),
-    deviceAddress_(Address)
+    deviceAddress_(Address),
+    messageUpdateID_(messageUpdateID)
 {
 
   // Создаём задачу цикла опроса
@@ -295,9 +296,7 @@ DeviceModbus::DeviceModbus(ModbusParameter *MapRegisters,
   osMessageQDef(OutOfTurn, 100, uint32_t);
   messageOutOfTurn_ = osMessageCreate (osMessageQ(OutOfTurn), NULL);
 
-  // Создаём очередь сообщений для формирвания списка готовых параметров
-  osMessageQDef(ReadyParam, 100, uint32_t);
-  messageReadyParam_ = osMessageCreate (osMessageQ(ReadyParam), NULL);
+
 
   // Создаём экземпляр класса ModbusMasterSerial
   MMS = new ModbusMasterSerial(PortName);
@@ -465,16 +464,38 @@ int DeviceModbus::getMessageOutOfTurn()
 }
 
 // Добавить элемент в очередь
-int DeviceModbus::putMessageOutOfTurn(int Index)
+int DeviceModbus::putMessageOutOfTurn(int Element)
 {
   osStatus Status;
-  Status = osMessagePut(messageOutOfTurn_, Index, 0);
+  Status = osMessagePut(messageOutOfTurn_, Element, 0);
   if (Status)
     return 1;
   else
     return 0;
 }
 
+/*
+// Получить элемент очереди готовых параметров
+int DeviceModbus::getMessageReadyParam()
+{
+  osEvent Event;
+  Event = osMessageGet(messageReadyParam_, 0);
+  if (Event.status == osEventMessage)
+    return Event.value.v;
+  return 0;
+}
+
+// Добавить элемент в очередь готовых параметров
+int DeviceModbus::putMessageReadyParam(int Element)
+{
+  osStatus Status;
+  Status = osMessagePut(messageReadyParam_, Element, 0);
+  if (Status)
+    return 1;
+  else
+    return 0;
+}
+*/
 
 // Метод записи параметра
 void DeviceModbus::writeModbusParameter(int ID, float Value)
@@ -548,7 +569,6 @@ int DeviceModbus::searchExchangeParameters()
 void DeviceModbus::exchangeCycle(void)
 {
   int Count = 0;
-  ModbusParameter Param;
   while (1) {
     osDelay(100);
     // Проверяем очередь параметров для обработки вне очереди
@@ -604,11 +624,23 @@ void DeviceModbus::exchangeCycle(void)
           Count = 1;
           if (!(MMS->readMultipleRegisters(deviceAddress_,address,regArr_,Count))) {
             // TODO: Сделать проверки на минимум максиму и т.п
-            Param = getFieldAll(getIndexAtAddress(address));
-
+            // Получаем индекс элемента в массиве с которого начинаем сохранение
+            int Index = getIndexAtAddress(address);
+            // Цикл по количеству полученных регистров
+            for (int i = 0; i < Count; i++) {
+              modbusParameters_[Index].Value.Int16[0] = regArr_[i];
+              modbusParameters_[Index].Validity = VALIDITY_GOOD;
+              putMessageReadyParam(modbusParameters_[Index].ID);
+              Index++;
+            }
           }
           else {
-            modbusParameters_[getIndexAtAddress(address)].Validity = 1;
+            int Index = getIndexAtAddress(address);
+            // Цикл по количеству полученных регистров
+            for (int i = 0; i < Count; i++) {
+              modbusParameters_[Index].Validity = VALIDITY_ERROR;
+              Index++;
+            }
           }
           break;
         case TYPE_DATA_UINT16:

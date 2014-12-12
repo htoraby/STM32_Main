@@ -8,10 +8,15 @@
 #include "device.h"
 #include "service.h"
 
+static void pThreadUpdateParameters(void *p)
+{
+  (static_cast<Device*>(p))->threadUpdateParameters();
+}
+
 // Конструктор класса
 Device::Device()
 {
-  // TODO Auto-generated constructor stub
+
 }
 
 // Деструктор класса
@@ -20,6 +25,26 @@ Device::~Device()
   // TODO Auto-generated destructor stub
 }
 
+// Метод создания задач для FreeRTOS
+void Device::createThread(const char *threadName)
+{
+  // Заполняем структуру для создания задачи
+  osThreadDef_t t = {threadName,                  // Название задачи
+                     pThreadUpdateParameters,     // Указатель на функцию задачи
+                     osPriorityNormal,            // Приоритет задачи
+                     0,                           //
+                     2 * configMINIMAL_STACK_SIZE // Размер стека задачи
+                    };
+  // Создаём задачу
+  threadUpdateParametersId_ = osThreadCreate(&t, this);
+}
+
+// Метод создания очереди обновленных параметров
+void Device::createMessageUpdateParameters()
+{
+  osMessageQDef(MessageUpdateParameters, 100, uint32_t);
+  messageUpdateParameters_ = osMessageCreate(osMessageQ(MessageUpdateParameters), NULL);
+}
 // PUBLIC МЕТОДЫ КЛАССА
 
 // ЧТЕНИЕ И ЗАПИСЬ ПАРАМЕТРОВ ЦЕЛИКОМ И ИХ ЗНАЧЕНИЙ C ПРОВЕРКАМИ
@@ -505,3 +530,10 @@ void Device::initParameters()
 {
   return;
 }
+
+void Device::threadUpdateParameters()
+{
+
+}
+
+
