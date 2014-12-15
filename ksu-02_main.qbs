@@ -64,6 +64,7 @@ Product {
         "src/board/iwdg/",
         "src/board/rcause/",
         "src/board/temp_sensor/",
+        "src/board/ai_ext/",
         "src/common/",
         "src/user/",
         "src/user/device/",
@@ -90,6 +91,14 @@ Product {
     ]
 
     Group {
+        name: "ldscripts"
+        prefix: "Ldscripts/"
+        files: [
+            "*.ld",
+        ]
+    }
+
+    Group {
         name: "sources"
         prefix: "**/"
         files: [
@@ -111,11 +120,6 @@ Product {
         cpp.cxxFlags: [ "-std=c++11" ]
         cpp.cFlags: [ "-std=gnu11" ]
         cpp.warningLevel: "all"
-    }
-    Group {
-        name: "ldscripts"
-        prefix: "Ldscripts/"
-        files: "*.ld"
     }
 
     consoleApplication: true
