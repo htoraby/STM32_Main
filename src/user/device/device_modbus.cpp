@@ -7,262 +7,7 @@
 
 #include "device_modbus.h"
 
-float Units[28][6][2] =
-{
-  /// PHYSIC_ERROR Ошибка типа 0
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_NUMERIC Перечислимый тип 1
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_TIME Время 2
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_PERCENT Проценты 3
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_LENGHT Длина 4
-  {
-    {LENGTH_LAST, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_DENSITY Плотность 5
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_SPACE     Площадь 6
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_FREQUENCY Частота 7
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_VOLTAGE /// Напряжение 8
-  {
-    {VOLTAGE_LAST, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_CURRENT Ток 9
-  {
-    {CURRENT_LAST, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_ACTIVE_POWER Активная мощность 10
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_FULL_POWER Полная мощность 11
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_REACTIVE_POWER Реактивная мощность 12
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_ANGLE Угол 13
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_RPM Скорость вращения 14
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_TEMP Темп (разгона или замедления) 15
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_RESIST_ISOLATION Сопротивление изоляции 16
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_RESIST_CABLE_LINE Сопротивление кабельной линии 17
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_PRESSURE Давление 18
-  {
-    {PRESSURE_LAST, 0.0},
-    {1.0, 0.0},                            /// PRESSURE_MPA
-    {0.1013250, 0.0},                    /// PRESSURE_ATM
-    {0.0980665, 0.0},                    /// PRESSURE_AT
-    {0.1000000, 0.0},                    /// PRESSURE_BAR
-    {0.0068948, 0.0}                    /// PRESSURE_PSI
 
-  },
-  /// PHYSIC_TEMPERATURE Температура 19
-  {
-    {TEMPERATURE_LAST, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_ACCELERATION Ускорение 20
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_SPEED Cкорость 21
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_VISCOSITY Вязкость 22
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_FLOW /// Расход 23
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_POWER Мощность 24
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_ACTIVE_ENERGY Активная энергия 25
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_REACTIVE_ENERGY Реактивная энергия 26
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_FULL_ENERGY Полная энергия 27
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  }
-};
 
 static void deviceModbusTask(void *p)
 {
@@ -296,8 +41,6 @@ DeviceModbus::DeviceModbus(ModbusParameter *MapRegisters,
   osMessageQDef(OutOfTurn, 100, uint32_t);
   messageOutOfTurn_ = osMessageCreate (osMessageQ(OutOfTurn), NULL);
 
-
-
   // Создаём экземпляр класса ModbusMasterSerial
   MMS = new ModbusMasterSerial(PortName);
   // Открываем порт
@@ -307,7 +50,6 @@ DeviceModbus::DeviceModbus(ModbusParameter *MapRegisters,
 DeviceModbus::~DeviceModbus()
 {
   osThreadTerminate(threadId_);
-
 }
 
 // ----------------------------------------------------------------------------
@@ -484,18 +226,19 @@ int DeviceModbus::getMessageReadyParam()
     return Event.value.v;
   return 0;
 }
+*/
 
-// Добавить элемент в очередь готовых параметров
-int DeviceModbus::putMessageReadyParam(int Element)
+// Добавить параметр в очередь готовых параметров
+int DeviceModbus::putMessageUpdateID(int Element)
 {
   osStatus Status;
-  Status = osMessagePut(messageReadyParam_, Element, 0);
+  Status = osMessagePut(messageUpdateID_, Element, 0);
   if (Status)
     return 1;
   else
     return 0;
 }
-*/
+
 
 // Метод записи параметра
 void DeviceModbus::writeModbusParameter(int ID, float Value)
@@ -504,7 +247,7 @@ void DeviceModbus::writeModbusParameter(int ID, float Value)
   // Получаем всю структуру параметра
   ModbusParameter Param = getFieldAll(Index);
   // Применяем преобразование единиц измерения
-  Value = (Value - (Units[Param.Physic][Param.Unit][1])) / (Units[Param.Physic][Param.Unit][0]);
+  Value = (Value * (Units[Param.Physic][Param.Unit][0])) + (Units[Param.Physic][Param.Unit][1]);
   // Применяем преобразование коэффициента
   Value = Value * Param.Coefficient;
   // Применяем преобразование масштаба
@@ -630,7 +373,7 @@ void DeviceModbus::exchangeCycle(void)
             for (int i = 0; i < Count; i++) {
               modbusParameters_[Index].Value.Int16[0] = regArr_[i];
               modbusParameters_[Index].Validity = VALIDITY_GOOD;
-              putMessageReadyParam(modbusParameters_[Index].ID);
+              putMessageUpdateID(modbusParameters_[Index].ID);
               Index++;
             }
           }

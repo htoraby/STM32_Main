@@ -1715,6 +1715,45 @@ VsdNovomet::~VsdNovomet()
   // TODO Auto-generated destructor stub
 }
 
+// Метод проверки и обновления параметров устройства
+void VsdNovomet::updateParameters(void)
+{
+  float Value;
+  // Проверяем есть ли новые значения параметров от устройства
+  int UpdateParamID = getMessageUpdateParameters();
+  // По ID параметра находим параметр и обновляем значение
+  if (UpdateParamID) {
+    // Получаем все поля параметра по ID
+    ModbusParameter Param = DM->getFieldAll(DM->getIndexAtID(UpdateParamID));
+    switch (Param.TypeData) {
+    case TYPE_DATA_INT16:
+      Value = (float)Param.Value.Int16[0];
+      break;
+    case TYPE_DATA_UINT16:
+      Value = (float)Param.Value.Uint16[0];
+      break;
+    case  TYPE_DATA_INT32:
+      Value = (float)Param.Value.Int32;
+      break;
+    case  TYPE_DATA_UINT32:
+      Value = (float)Param.Value.Uint32;
+      break;
+    case  TYPE_DATA_FLOAT:
+      Value = (float)Param.Value.Float;
+      break;
+    default:
+      break;
+    }
+    Value = Value * Param.Scale;
+    Value = Value / Param.Coefficient;
+    Value = (Value  - (Units[Param.Physic][Param.Unit][1]))/(Units[Param.Physic][Param.Unit][0]);
+    setValue(UpdateParamID, Value);
+  }
+  else {
+    return;
+  }
+}
+
 // Метод запуска ЧРП Новомет
 int VsdNovomet::startVSD(void)
 {

@@ -273,7 +273,7 @@ public:
      * \param Element - элемент
      * \return
      */
-    int putMessageReadyParam(int Element);
+    int putMessageUpdateID(int Element);
 
    int searchExchangeParameters();
 

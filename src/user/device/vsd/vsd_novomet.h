@@ -43,6 +43,8 @@ class VsdNovomet: public Vsd
 
         DeviceModbus *DM;
 
+        void updateParameters(void);
+
         /*!
          * \brief startVSD
          * МЕТОД ЗАПУСКА ЧРП Новомет
@@ -88,9 +90,6 @@ class VsdNovomet: public Vsd
          * \return
          */
         int setFrequency(float Frequency);
-
-        // Цикл обмена данными с устройством
-        int excahgeCycle(void);
 
         // Проверка на "необходимости" работы с параметром
         int checkExchangModbusParameters(int indexParam);

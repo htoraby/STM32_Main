@@ -12,6 +12,8 @@
 #include "define.h"
 #include "board.h"
 
+extern float Units[28][6][2];
+
 /*!
  * \brief The Parameter struct
  * Структура для обработки и хранения параметров в станции управления
@@ -76,12 +78,6 @@ public:
   void createThread(const char *threadName);
 
   /*!
-   * \brief threadUpdateParameters Метод проверки и обновления
-   * значений параметров устройства
-   */
-  void threadUpdateParameters(void);
-
-  /*!
    * \brief threadUpdateParametersId_
    * Идентификатор задачи обновления значений параметра устройства
    */
@@ -98,6 +94,10 @@ public:
    * Идентификатор очереди обновленных параметров
    */
   osMessageQId messageUpdateParameters_;
+
+  int getMessageUpdateParameters(void);
+
+  void updateParameters(void);
 
   // ОСНОВНЫЕ PUBLIC МЕТОДЫ КЛАССА
   // ЧТЕНИЕ ПАРАМЕТРА, ЗНАЧЕНИЯ И ДРУГИХ ПОЛЕЙ С ПРОВЕРКАМИ
