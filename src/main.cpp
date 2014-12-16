@@ -94,6 +94,9 @@ static void systemClockConfig()
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
   HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5);
+
+  __DMA1_CLK_ENABLE();
+  __DMA2_CLK_ENABLE();
 }
 
 /*!

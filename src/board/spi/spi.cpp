@@ -22,7 +22,6 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
   else if(hspi->Instance == SPI2) {
     /* Peripheral clock enable */
     __SPI2_CLK_ENABLE();
-    __DMA1_CLK_ENABLE();
 
     /**SPI2 GPIO Configuration
     PI1     ------> SPI2_SCK
