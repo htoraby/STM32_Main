@@ -33,9 +33,6 @@ enum enInvertorControl
 	INV_CONTROL_CLEAR_OPT       = 128
 };
 
-class VsdNovomet;
-extern VsdNovomet *vsdNovomet;
-
 class VsdNovomet: public Vsd
 {
     public:
@@ -45,7 +42,8 @@ class VsdNovomet: public Vsd
         void initModbusParameters();
 
         DeviceModbus *DM;
-        osThreadId thread_id;
+
+        void updateParameters(void);
 
         /*!
          * \brief startVSD
@@ -92,10 +90,6 @@ class VsdNovomet: public Vsd
          * \return
          */
         int setFrequency(float Frequency);
-
-
-        // Цикл обмена данными с устройством
-        int excahgeCycle(void);
 
         // Проверка на "необходимости" работы с параметром
         int checkExchangModbusParameters(int indexParam);

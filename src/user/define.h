@@ -219,9 +219,9 @@ enum enPhysic
 };
 
 enum enValidity
-{
-  VALIDITY_ERROR      = 0,
-  VALIDITY_GOOD       = 1,
+{  
+  VALIDITY_GOOD       = 0,
+  VALIDITY_ERROR      = 1,
   VALIDITY_MIN        = 2,
   VALIDITY_MAX        = 3,
 	VALIDITY_LAST

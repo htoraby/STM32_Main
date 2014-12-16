@@ -6,264 +6,8 @@
  */
 
 #include "device_modbus.h"
-#include "cmsis_os.h"
 
-float Units[28][6][2] =
-{
-  /// PHYSIC_ERROR Ошибка типа 0
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_NUMERIC Перечислимый тип 1
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_TIME Время 2
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_PERCENT Проценты 3
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_LENGHT Длина 4
-  {
-    {LENGTH_LAST, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_DENSITY Плотность 5
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_SPACE     Площадь 6
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_FREQUENCY Частота 7
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_VOLTAGE /// Напряжение 8
-  {
-    {VOLTAGE_LAST, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_CURRENT Ток 9
-  {
-    {CURRENT_LAST, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_ACTIVE_POWER Активная мощность 10
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_FULL_POWER Полная мощность 11
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_REACTIVE_POWER Реактивная мощность 12
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_ANGLE Угол 13
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_RPM Скорость вращения 14
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_TEMP Темп (разгона или замедления) 15
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_RESIST_ISOLATION Сопротивление изоляции 16
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_RESIST_CABLE_LINE Сопротивление кабельной линии 17
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_PRESSURE Давление 18
-  {
-    {PRESSURE_LAST, 0.0},
-    {1.0, 0.0},                            /// PRESSURE_MPA
-    {0.1013250, 0.0},                    /// PRESSURE_ATM
-    {0.0980665, 0.0},                    /// PRESSURE_AT
-    {0.1000000, 0.0},                    /// PRESSURE_BAR
-    {0.0068948, 0.0}                    /// PRESSURE_PSI
 
-  },
-  /// PHYSIC_TEMPERATURE Температура 19
-  {
-    {TEMPERATURE_LAST, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_ACCELERATION Ускорение 20
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_SPEED Cкорость 21
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_VISCOSITY Вязкость 22
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_FLOW /// Расход 23
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_POWER Мощность 24
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_ACTIVE_ENERGY Активная энергия 25
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_REACTIVE_ENERGY Реактивная энергия 26
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  },
-  /// PHYSIC_FULL_ENERGY Полная энергия 27
-  {
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0},
-    {1.0, 0.0}
-  }
-};
 
 static void deviceModbusTask(void *p)
 {
@@ -279,28 +23,33 @@ DeviceModbus::DeviceModbus(ModbusParameter *MapRegisters,
                            int StopBits,
                            int Parity,
                            int Address,
-                           const char *threadName
+                           const char *threadName,
+                           osMessageQId *messageUpdateID
                           )
   : quantityParam_(Quantity),
-    deviceAddress_(Address)
-
+    deviceAddress_(Address),
+    messageUpdateID_(messageUpdateID)
 {
+
+  // Создаём задачу цикла опроса
+  // Заполняем структуру с параметрами задачи
+  osThreadDef_t t = {threadName, deviceModbusTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
+  // Создаём задачу
+  threadId_ = osThreadCreate(&t, this);
+
+  // Создаём очередь сообщений
+  osMessageQDef(OutOfTurn, 100, uint32_t);
+  messageOutOfTurn_ = osMessageCreate (osMessageQ(OutOfTurn), NULL);
 
   // Создаём экземпляр класса ModbusMasterSerial
   MMS = new ModbusMasterSerial(PortName);
+  // Открываем порт
   MMS->openProtocol(PortName, BaudRate, DataBits, StopBits, Parity);
-  // Создаём задачу цикла опроса
-  osThreadDef_t t = {threadName, deviceModbusTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
-  osThreadCreate(&t, this);
-
-  osMessageQDef(Device_Queue, 100, uint32_t);
-  osMessageQId turn_ = osMessageCreate (osMessageQ(Device_Queue), NULL);
-  osMessagePut(turn_, 25, 0);
 }
 
 DeviceModbus::~DeviceModbus()
 {
-  /// TODO Auto-generated destructor stub
+  osThreadTerminate(threadId_);
 }
 
 // ----------------------------------------------------------------------------
@@ -447,20 +196,43 @@ int DeviceModbus::getIndexAtAddress(int Address)
 }
 
 // Получить элемент очереди внеочередной
-int DeviceModbus::getTurn()
+int DeviceModbus::getMessageOutOfTurn()
 {
   osEvent Event;
-  Event = osMessageGet(turn_, 0);
+  Event = osMessageGet(messageOutOfTurn_, 0);
   if (Event.status == osEventMessage)
     return Event.value.v;
   return 0;
 }
 
 // Добавить элемент в очередь
-int DeviceModbus::putTurn(int Index)
+int DeviceModbus::putMessageOutOfTurn(int Element)
 {
   osStatus Status;
-  Status = osMessagePut(turn_, Index, 0);
+  Status = osMessagePut(messageOutOfTurn_, Element, 0);
+  if (Status)
+    return 1;
+  else
+    return 0;
+}
+
+/*
+// Получить элемент очереди готовых параметров
+int DeviceModbus::getMessageReadyParam()
+{
+  osEvent Event;
+  Event = osMessageGet(messageReadyParam_, 0);
+  if (Event.status == osEventMessage)
+    return Event.value.v;
+  return 0;
+}
+*/
+
+// Добавить параметр в очередь готовых параметров
+int DeviceModbus::putMessageUpdateID(int Element)
+{
+  osStatus Status;
+  Status = osMessagePut(messageUpdateID_, Element, 0);
   if (Status)
     return 1;
   else
@@ -475,7 +247,7 @@ void DeviceModbus::writeModbusParameter(int ID, float Value)
   // Получаем всю структуру параметра
   ModbusParameter Param = getFieldAll(Index);
   // Применяем преобразование единиц измерения
-  Value = (Value - (Units[Param.Physic][Param.Unit][1])) / (Units[Param.Physic][Param.Unit][0]);
+  Value = (Value * (Units[Param.Physic][Param.Unit][0])) + (Units[Param.Physic][Param.Unit][1]);
   // Применяем преобразование коэффициента
   Value = Value * Param.Coefficient;
   // Применяем преобразование масштаба
@@ -505,7 +277,7 @@ void DeviceModbus::writeModbusParameter(int ID, float Value)
   }
   Param.Flag = 1;
   Param.Priority = 1;
-  putTurn(Index);
+  putMessageOutOfTurn(Index);
 }
 
 int DeviceModbus::searchExchangeParameters()
@@ -539,92 +311,112 @@ int DeviceModbus::searchExchangeParameters()
 // Метод цикл по карте регистров для чтения и записи параметров
 void DeviceModbus::exchangeCycle(void)
 {
-
-  // Проверяем очередь параметров для обработки вне очереди
-  int outOfTurn = getTurn();
-  // Если есть параметры для обработки вне очереди
-  if (outOfTurn) {
-    // Если записать
-    if (modbusParameters_[outOfTurn].Flag) {
-      int address = modbusParameters_[outOfTurn].Address;
-      switch (modbusParameters_[outOfTurn].TypeData) {
-      case TYPE_DATA_INT16:
-        MMS->writeSingleRegister(deviceAddress_,
-                                 address,
-                                 modbusParameters_[outOfTurn].Value.Int16[0]);
-        break;
-      case TYPE_DATA_UINT16:
-        MMS->writeSingleRegister(deviceAddress_,
-                                 address,
-                                 modbusParameters_[outOfTurn].Value.Uint16[0]);
-        break;
-      case  TYPE_DATA_INT32:
-        int32Arr_[0] = modbusParameters_[outOfTurn].Value.Int32;
-        MMS->writeMultipleLongInts(deviceAddress_,
-                                   address,
-                                   int32Arr_,
-                                   1);
-        break;
-      case  TYPE_DATA_UINT32:
-        int32Arr_[0] =  modbusParameters_[outOfTurn].Value.Uint32;
-        MMS->writeMultipleLongInts(deviceAddress_,
-                                   modbusParameters_[outOfTurn].Address,
-                                   int32Arr_,
-                                   1);
-        break;
-      case  TYPE_DATA_FLOAT:
-        float32Arr_[0] = modbusParameters_[outOfTurn].Value.Float;
-        MMS->writeMultipleFloats(deviceAddress_,
-                                 modbusParameters_[outOfTurn].Address,
-                                 float32Arr_,
-                                 1);
-        break;
-      default:
-        break;
-      }
-    }
-  }
-  else {
-    outOfTurn = searchExchangeParameters();
+  int Count = 0;
+  while (1) {
+    osDelay(100);
+    // Проверяем очередь параметров для обработки вне очереди
+    int outOfTurn = getMessageOutOfTurn();
+    // Если есть параметры для обработки вне очереди
     if (outOfTurn) {
-      int address = modbusParameters_[outOfTurn].Address;
-      switch (modbusParameters_[outOfTurn].TypeData) {
-      case TYPE_DATA_INT16:
-        MMS->readMultipleRegisters(deviceAddress_,
+      // Если записать
+      if (modbusParameters_[outOfTurn].Flag) {
+        int address = modbusParameters_[outOfTurn].Address;
+        switch (modbusParameters_[outOfTurn].TypeData) {
+        case TYPE_DATA_INT16:
+          MMS->writeSingleRegister(deviceAddress_,
                                    address,
-                                   regArr_,
-                                   1);
-        break;
-      case TYPE_DATA_UINT16:
-        MMS->readMultipleRegisters(deviceAddress_,
+                                   modbusParameters_[outOfTurn].Value.Int16[0]);
+          break;
+        case TYPE_DATA_UINT16:
+          MMS->writeSingleRegister(deviceAddress_,
                                    address,
-                                   regArr_,
+                                   modbusParameters_[outOfTurn].Value.Uint16[0]);
+          break;
+        case  TYPE_DATA_INT32:
+          int32Arr_[0] = modbusParameters_[outOfTurn].Value.Int32;
+          MMS->writeMultipleLongInts(deviceAddress_,
+                                     address,
+                                     int32Arr_,
+                                     1);
+          break;
+        case  TYPE_DATA_UINT32:
+          int32Arr_[0] =  modbusParameters_[outOfTurn].Value.Uint32;
+          MMS->writeMultipleLongInts(deviceAddress_,
+                                     modbusParameters_[outOfTurn].Address,
+                                     int32Arr_,
+                                     1);
+          break;
+        case  TYPE_DATA_FLOAT:
+          float32Arr_[0] = modbusParameters_[outOfTurn].Value.Float;
+          MMS->writeMultipleFloats(deviceAddress_,
+                                   modbusParameters_[outOfTurn].Address,
+                                   float32Arr_,
                                    1);
-        break;
-      case  TYPE_DATA_INT32:
-        MMS->readMultipleLongInts(deviceAddress_,
-                                  address,
-                                  int32Arr_,
-                                  1);
-        break;
-      case  TYPE_DATA_UINT32:
-        MMS->readMultipleLongInts(deviceAddress_,
-                                  address,
-                                  int32Arr_,
-                                  1);
-        break;
-      case  TYPE_DATA_FLOAT:
-        MMS->readMultipleFloats(deviceAddress_,
-                                address,
-                                float32Arr_,
-                                1);
-        break;
-      default:
-        break;
+          break;
+        default:
+          break;
+        }
       }
     }
-    //else
+    else {
+      outOfTurn = searchExchangeParameters();
+      if (outOfTurn) {
+        int address = modbusParameters_[outOfTurn].Address;
+        switch (modbusParameters_[outOfTurn].TypeData) {
+        case TYPE_DATA_INT16:
+          Count = 1;
+          if (!(MMS->readMultipleRegisters(deviceAddress_,address,regArr_,Count))) {
+            // TODO: Сделать проверки на минимум максиму и т.п
+            // Получаем индекс элемента в массиве с которого начинаем сохранение
+            int Index = getIndexAtAddress(address);
+            // Цикл по количеству полученных регистров
+            for (int i = 0; i < Count; i++) {
+              modbusParameters_[Index].Value.Int16[0] = regArr_[i];
+              modbusParameters_[Index].Validity = VALIDITY_GOOD;
+              putMessageUpdateID(modbusParameters_[Index].ID);
+              Index++;
+            }
+          }
+          else {
+            int Index = getIndexAtAddress(address);
+            // Цикл по количеству полученных регистров
+            for (int i = 0; i < Count; i++) {
+              modbusParameters_[Index].Validity = VALIDITY_ERROR;
+              Index++;
+            }
+          }
+          break;
+        case TYPE_DATA_UINT16:
+          MMS->readMultipleRegisters(deviceAddress_,
+                                     address,
+                                     regArr_,
+                                     1);
+          break;
+        case  TYPE_DATA_INT32:
+          MMS->readMultipleLongInts(deviceAddress_,
+                                    address,
+                                    int32Arr_,
+                                    1);
+          break;
+        case  TYPE_DATA_UINT32:
+          MMS->readMultipleLongInts(deviceAddress_,
+                                    address,
+                                    int32Arr_,
+                                    1);
+          break;
+        case  TYPE_DATA_FLOAT:
+          MMS->readMultipleFloats(deviceAddress_,
+                                  address,
+                                  float32Arr_,
+                                  1);
+          break;
+        default:
+          break;
+        }
+      }
+      //else
       // ВНИМАНИЕ!!! Сломался exchangeCycle
+    }
   }
 }
 
