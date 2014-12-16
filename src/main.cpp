@@ -21,6 +21,7 @@
 #include "fram.h"
 #include "flash_ext.h"
 #include "adc.h"
+#include "adc_ext.h"
 #include "iwdg.h"
 #include "rcause.h"
 #include "temp_sensor.h"
@@ -44,6 +45,7 @@ int main()
 //  rtcInit();
   adcInit(adc1);
   adcInit(adc2);
+  adcExtInit();
   framInit();
   flashExtInit(FlashSpi1);
   flashExtInit(FlashSpi5);

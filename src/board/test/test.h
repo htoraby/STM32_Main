@@ -14,6 +14,7 @@
 #define TEST_T_SENSOR 1
 #define TEST_DI       0
 #define TEST_DO       0
+#define TEST_ADC_EXT  0
 
 void testInit();
 

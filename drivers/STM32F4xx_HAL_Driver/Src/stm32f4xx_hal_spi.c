@@ -885,12 +885,14 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive(SPI_HandleTypeDef *hspi, uint8_t *pTxD
         __HAL_SPI_RESET_CRC(hspi);
       }
 
+      __HAL_SPI_DISABLE(hspi);
       /* Process Unlocked */
       __HAL_UNLOCK(hspi);
       
       return HAL_ERROR; 
     }
 
+    __HAL_SPI_DISABLE(hspi);
     /* Process Unlocked */
     __HAL_UNLOCK(hspi);
 
@@ -2109,7 +2111,7 @@ static void SPI_DMATransmitReceiveCplt(DMA_HandleTypeDef *hdma)
     
     hspi->State = HAL_SPI_STATE_READY;
     
-    
+
     /* Check if Errors has been detected during transfer */
     if(hspi->ErrorCode != HAL_SPI_ERROR_NONE)
     {
