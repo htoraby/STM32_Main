@@ -8,6 +8,7 @@
 #include "flash_ext.h"
 #include "adc.h"
 #include "temp_sensor.h"
+#include "adc_ext.h"
 
 static void testThread(void *argument);
 static void testUartThread(void *argument);
@@ -19,6 +20,7 @@ static void testFlash2();
 static void testTempSensor();
 static void testDI();
 static void testDO();
+static void testAdcExt();
 
 #if USE_EXT_MEM
   uint8_t bufferTx[4096] __attribute__((section(".extmem")));
@@ -75,6 +77,7 @@ static void testThread(void * argument)
   testTempSensor();
   testDI();
   testDO();
+  testAdcExt();
 
   while(1) {
 #if (TEST_USB_FAT == 1)
@@ -326,6 +329,18 @@ static void testDO()
   for (int i = 0; i < DigitalOutputMax; ++i) {
     setDigitalOutput(i, PinReset);
     asm("nop");
+  }
+#endif
+}
+
+static void testAdcExt()
+{
+#if TEST_ADC_EXT
+  osDelay(500);
+  for (int i = 0; i < ANALOG_IN_NUM; ++i) {
+    float value = getValueAnalogInExt(i);
+    if (value)
+      asm("nop");
   }
 #endif
 }

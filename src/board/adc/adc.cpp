@@ -135,7 +135,6 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
   } else if(hadc->Instance == ADC2) {
     /* Peripheral clock enable */
     __ADC2_CLK_ENABLE();
-    __DMA2_CLK_ENABLE();
     __TIM3_CLK_ENABLE();
 
     /**ADC2 GPIO Configuration

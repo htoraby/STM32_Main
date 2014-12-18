@@ -44,6 +44,8 @@ extern void xPortSysTickHandler(void);
 
 extern HCD_HandleTypeDef hhcd_USB_OTG_FS;
 extern uint8_t flagMcuInit;
+extern DMA_HandleTypeDef hdma_spi2_tx;
+extern DMA_HandleTypeDef hdma_spi2_rx;
 
 /******************************************************************************/
 /*            Cortex-M4 Processor Interruption and Exception Handlers         */ 
@@ -57,6 +59,16 @@ void ADC_IRQHandler(void)
 void DMA2_Stream2_IRQHandler(void)
 {
   HAL_DMA_IRQHandler(hadc[adc2].DMA_Handle);
+}
+
+void DMA1_Stream4_IRQHandler(void)
+{
+  HAL_DMA_IRQHandler(&hdma_spi2_tx);
+}
+
+void DMA1_Stream3_IRQHandler(void)
+{
+  HAL_DMA_IRQHandler(&hdma_spi2_rx);
 }
 
 /**

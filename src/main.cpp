@@ -21,6 +21,7 @@
 #include "fram.h"
 #include "flash_ext.h"
 #include "adc.h"
+#include "adc_ext.h"
 #include "iwdg.h"
 #include "rcause.h"
 #include "temp_sensor.h"
@@ -44,6 +45,7 @@ int main()
 //  rtcInit();
   adcInit(adc1);
   adcInit(adc2);
+  adcExtInit();
   framInit();
   flashExtInit(FlashSpi1);
   flashExtInit(FlashSpi5);
@@ -92,6 +94,9 @@ static void systemClockConfig()
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
   HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5);
+
+  __DMA1_CLK_ENABLE();
+  __DMA2_CLK_ENABLE();
 }
 
 /*!
