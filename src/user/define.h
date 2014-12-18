@@ -161,7 +161,7 @@ enum enReturns
   RETURN_MODBUS_ERROR           = 18,
   RETURN_MODBUS_OK              = 19,
   RETURN_ERROR_UPDATE_VALUE     = 20,
-	RETURN_LAST
+  RETURN_LAST
 };
 
 enum enAccess

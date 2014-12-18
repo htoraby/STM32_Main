@@ -71,6 +71,7 @@ Product {
         "src/user/device/vsd/",
         "src/user/protocol/",
         "src/user/protocol/modbus/",
+        "src/user/protocol/novobus",
     ]
     cpp.defines: [
         (qbs.debugInformation ? "DEBUG" : "RELEASE"),

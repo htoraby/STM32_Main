@@ -8,30 +8,52 @@
 #include "service.h"
 
 // Функция проверки вхождения значения в диапазон не включая границы
-int checkRangeNoInclude(double Value, double Minimum, double Maximum)
+unsigned char checkRangeNoInclude(double value, double min, double max)
 {
-  if ((Value > Minimum) && (Value < Maximum))
-    return 1;
+  // Если значение больше минимума
+  if (value > min) {
+    // Если значение меньше максимума
+    if (value < max) {
+      // Возвращаем что прошли проверку
+      return 0;
+    }
+    else
+      // Иначе возвращаем что больше максимума
+      return 2;
+  }
   else
-    return 0;
+    // Возвращаем что меньше минимума
+    return 1;
 }
 
 // Функция проверки вхождения значения в диапазон включая границы
-int checkRangeInclude(double Value, double Minimum, double Maximum)
+unsigned char checkRangeInclude(double value, double min, double max)
 {
-  if ((Value >= Minimum) && (Value <= Maximum))
-    return 1;
+  // Если значение больше минимума
+  if (value >= min) {
+    // Если значение меньше максимума
+    if (value <= max) {
+      // Возвращаем что прошли проверку
+      return 0;
+    }
+    else
+      // Иначе возвращаем что больше максимума
+      return 2;
+  }
   else
-    return 0;
+    // Возвращаем что меньше минимума
+    return 1;
 }
 
 // Функция проверки вхождения значения в диапазон
-int checkRange(double Value, double Minimum, double Maximum, int Include)
+unsigned char checkRange(double value, double min, double max, unsigned char inc)
 {
-  if (Include)
-    return checkRangeInclude(Value, Minimum, Maximum);
+  // Если включая диапазон
+  if (inc)
+    return checkRangeInclude(value, min, max);
+  // Иначе не включая диапазон
   else
-    return checkRangeNoInclude(Value, Minimum, Maximum);
+    return checkRangeNoInclude(value, min, max);
 }
 
 
