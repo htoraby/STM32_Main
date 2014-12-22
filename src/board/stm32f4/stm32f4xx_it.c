@@ -45,9 +45,9 @@ extern void hostRxIRQHandler(void);
 
 extern HCD_HandleTypeDef hhcd_USB_OTG_FS;
 extern uint8_t flagMcuInit;
-extern DMA_HandleTypeDef hdma_spi2_tx;
-extern DMA_HandleTypeDef hdma_spi2_rx;
 extern DMA_HandleTypeDef hdma_spi4_tx;
+extern SPI_HandleTypeDef hspi2;
+extern SPI_HandleTypeDef hspi3;
 
 /******************************************************************************/
 /*            Cortex-M4 Processor Interruption and Exception Handlers         */ 
@@ -65,12 +65,22 @@ void DMA2_Stream2_IRQHandler(void)
 
 void DMA1_Stream4_IRQHandler(void)
 {
-  HAL_DMA_IRQHandler(&hdma_spi2_tx);
+  HAL_DMA_IRQHandler(hspi2.hdmatx);
 }
 
 void DMA1_Stream3_IRQHandler(void)
 {
-  HAL_DMA_IRQHandler(&hdma_spi2_rx);
+  HAL_DMA_IRQHandler(hspi2.hdmarx);
+}
+
+void DMA1_Stream5_IRQHandler(void)
+{
+  HAL_DMA_IRQHandler(hspi3.hdmatx);
+}
+
+void DMA1_Stream0_IRQHandler(void)
+{
+  HAL_DMA_IRQHandler(hspi3.hdmarx);
 }
 
 void DMA2_Stream1_IRQHandler(void)

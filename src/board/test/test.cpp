@@ -236,6 +236,7 @@ static void testFram()
   bufferTx[8] = 0x55;
   bufferTx[9] = 0x12;
   bufferTx[sizeof(bufferTx)-1] = 0x55;
+  memset(bufferRx, 0, sizeof(bufferRx));
   framWriteData(0, bufferTx, sizeof(bufferTx));
   framReadData(0, bufferRx, sizeof(bufferTx));
 

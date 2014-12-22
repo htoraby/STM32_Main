@@ -1,5 +1,8 @@
 #include "spi.h"
 
+extern void framTxRxCpltCallback();
+extern void adcExtTxRxCpltCallback();
+
 void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
 {
   GPIO_InitTypeDef GPIO_InitStruct;
@@ -120,5 +123,40 @@ void HAL_SPI_MspDeInit(SPI_HandleTypeDef* hspi)
 
     HAL_GPIO_DeInit(GPIOF, GPIO_PIN_8|GPIO_PIN_9);
     HAL_GPIO_DeInit(GPIOH, GPIO_PIN_6);
+  }
+}
+
+void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
+{
+  if (hspi->Instance == SPI3) {
+    framTxRxCpltCallback();
+  }
+}
+
+void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef *hspi)
+{
+  if (hspi->Instance == SPI3) {
+    framTxRxCpltCallback();
+  }
+}
+
+void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
+{
+  if (hspi->Instance == SPI2) {
+    adcExtTxRxCpltCallback();
+  }
+}
+
+void HAL_SPI_ErrorCallback(SPI_HandleTypeDef* hspi)
+{
+  if (hspi->Instance == SPI3) {
+    framTxRxCpltCallback();
+  }
+}
+
+void spiWait(SPI_HandleTypeDef* hspi)
+{
+  while (HAL_SPI_GetState(hspi) != HAL_SPI_STATE_READY) {
+    osDelay(1);
   }
 }
