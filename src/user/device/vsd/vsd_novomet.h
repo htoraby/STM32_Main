@@ -12,26 +12,89 @@
 #include "device.h"
 #include "device_modbus.h"
 
-// ФЛАГИ РЕГИСТРА VSD_INVERTOR_CONTROL
+/*!
+ * \brief The enInvertorControl enum
+ * Флаги регистра управления ПЧ
+ */
 enum enInvertorControl
 {
-	// Запустить инвертор ("Старт")
-	INV_CONTROL_START           = 1,
-	// Остановить инвертор ("Стоп")
-	INV_CONTROL_STOP            = 2,
-	// Задать левое вращение
-	INV_CONTROL_LEFT_DIRECTION  = 4,
-	// Задать правое вращение
-	INV_CONTROL_RIGHT_DIRECTION = 8,
-	// Аварийный останов
-	INV_CONTROL_ALARM           = 16,
-	// Задание оптимизации по току
-	INV_CONTROL_CURRENT_OPT     = 32,
-	// задание оптимизации по мощности
-	INV_CONTROL_POWER_OPT       = 64,
-	// Отключить оптимизацию
-	INV_CONTROL_CLEAR_OPT       = 128
+  /// Запустить инвертор ("Старт")
+  INV_CONTROL_START           = 1,
+  /// Остановить инвертор ("Стоп")
+  INV_CONTROL_STOP            = 2,
+  /// Задать левое вращение
+  INV_CONTROL_LEFT_DIRECTION  = 4,
+  /// Задать правое вращение
+  INV_CONTROL_RIGHT_DIRECTION = 8,
+  /// Аварийный останов
+  INV_CONTROL_ALARM           = 16,
+  /// Задание оптимизации по току
+  INV_CONTROL_CURRENT_OPT     = 32,
+  /// задание оптимизации по мощности
+  INV_CONTROL_POWER_OPT       = 64,
+  /// Отключить оптимизацию
+  INV_CONTROL_CLEAR_OPT       = 128
 };
+
+/*!
+ * \brief The enInvertorStatus enum
+ * Флаги регистра статуса инвертора
+ */
+enum enInvertorStatus
+{
+  /// Запуск ПЧ
+  INV_STATUS_STARTED          = 1,
+  /// Ожидаем запуска выпрямителя
+  INV_STATUS_WAIT_RECT_START  = 2,
+  /// Инвертор остановлен по изменению важного параметра
+  INV_STATUS_STOPPED_REGISTER = 4,
+  /// Инвертор остановлен по команде извне
+  INV_STATUS_STOPPED_EXTERNAL = 8,
+  /// Ожидание остнова выпрямителя
+  INV_STATUS_WAIT_RECT_STOP   = 16,
+  /// Остановлен по причине FAULT
+  INV_STATUS_FAULT_STOPPED    = 32,
+  /// Правое направление вращения
+  INV_STATUS_RIGHT_DIRECTION  = 64,
+  /// Токоограничение
+  INV_STATUS_I_LIMIT          = 128,
+  /// Недостаточно напряжения
+  INV_STATUS_ULOW             = 256,
+  /// Остановлен аварийно
+  INV_STATUS_STOPPED_ALARM    = 512,
+  /// Остановлен по снижению напряжения на шине
+  INV_STATUS_UD_LOW_FAULT     = 1024,
+  /// Остановлен по превышению напряжения на шине
+  INV_STATUS_UD_HIGH_FAULT    = 2048,
+  /// Режим плавной остановки двигателя
+  INV_STATUS_TO_STOP_MODE     = 4096,
+  /// Остановлен по несимметрии входного напряжения
+  INV_STATUS_UIN_ASYM         = 8192,
+  /// Остановлен по КЗ от выпрямителя
+  INV_STATUS_URECT_SHORTCIRCUIT = 16384,
+  /// Резерв
+  INV_STATUS_RESERVED         = 32768
+};
+
+/*!
+ * \brief The enInvertorExtStatus enum
+ * Флаги расширенного регистра статуса инвертора
+ */
+enum enInvertorExtStatus
+{
+  /// Сработала тепловая защита
+  INV_EXT_STATUS_I_RMS        = 1,
+  /// Система автонастройки не смогла определить параметры линии
+  INV_EXT_STATUS_AST_ERR      = 2,
+  /// Превышение порога мгновенного токоограничения
+  INV_EXT_STATUS_I_LIMIT_FAST = 4,
+  /// Включена оптимизация по току
+  INV_EXT_STATUS_CURRENT_OPT  = 8,
+  /// Включена оптимизация по выходной мощности
+  INV_EXT_STATUS_POWER_OPT    = 16
+};
+
+
 
 class VsdNovomet: public Vsd
 {
@@ -67,7 +130,7 @@ class VsdNovomet: public Vsd
          * режим пуска - с раскачкой или толчковый, основной режим управления).
          * \return Код выполнения операции
          */
-        int startVSD(void);
+        unsigned char startVSD(void);
 
         /*!
          * \brief startVSD
@@ -86,10 +149,21 @@ class VsdNovomet: public Vsd
 
         /*!
          * \brief setFrequency
+         * Метод задания уставки частоты двигателя, при установке текущей частоты
+         * проверяется диапазон уставок минимальной и максимальной частоты
          * \param Frequency - частота
          * \return
          */
-        int setFrequency(float Frequency);
+        unsigned char setFrequency(float frequency);
+
+        /*!
+         * \brief writeParameter
+         * Метод записи параметра в устройство
+         * \param id
+         * \param value
+         * \return
+         */
+        unsigned char writeParameter(unsigned short id, float value);
 
         // Проверка на "необходимости" работы с параметром
         int checkExchangModbusParameters(int indexParam);

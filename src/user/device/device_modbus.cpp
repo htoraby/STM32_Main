@@ -239,7 +239,6 @@ int DeviceModbus::putMessageUpdateID(int Element)
     return 0;
 }
 
-
 // Метод записи параметра
 void DeviceModbus::writeModbusParameter(int ID, float Value)
 {

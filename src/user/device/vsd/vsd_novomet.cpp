@@ -1747,7 +1747,7 @@ void VsdNovomet::updateParameters(void)
     Value = Value * Param.Scale;
     Value = Value / Param.Coefficient;
     Value = (Value  - (Units[Param.Physic][Param.Unit][1]))/(Units[Param.Physic][Param.Unit][0]);
-    setValue(UpdateParamID, Value);
+    setFieldValue(UpdateParamID, Value);
   }
   else {
     return;
@@ -1755,32 +1755,18 @@ void VsdNovomet::updateParameters(void)
 }
 
 // Метод запуска ЧРП Новомет
-int VsdNovomet::startVSD(void)
+unsigned char VsdNovomet::startVSD(void)
 {
-  int Result = RETURN_ERROR;
-  try
-  {
-    // Записываем в банк параметров IREG_INVERTOR_CONTROL
-    // сигнал на Пуск в "1" бита 0 ("старт")
-    Result = setCheckValue(VSD_INVERTOR_CONTROL, INV_CONTROL_START);
-    // Если смогли записать в наш банк параметров
-    if (Result) {
-      DM->writeModbusParameter(VSD_INVERTOR_CONTROL, INV_CONTROL_START);
-    }
-  }
-  catch(...)
-  {
-
-  }
-  return Result;
+  return writeParameter(VSD_INVERTOR_CONTROL, (float)INV_CONTROL_START);
 }
 
 // Метод останова ЧРП Новомет
 int VsdNovomet::stopVSD(void)
 {
+
   int Result = RETURN_ERROR;
   try {
-    Result = setCheckValue(VSD_INVERTOR_CONTROL, INV_CONTROL_STOP);
+    Result = setValue(VSD_INVERTOR_CONTROL, INV_CONTROL_STOP);
     // Если смогли записать в наш банк параметров
     if (Result) {
       // Устанавливаем высокий приоритет
@@ -1794,9 +1780,28 @@ int VsdNovomet::stopVSD(void)
 }
 
 // Метод установки текущей частоты ЧРП Новомет
-int VsdNovomet::setFrequency(float Frequency)
+unsigned char VsdNovomet::setFrequency(float frequency)
 {
-  return 0;
+  float highLimitFreq = getFieldValue(VSD_HIGH_LIM_SPEED_MOTOR);
+  float lowLimitFreq = getFieldValue(VSD_LOW_LIM_SPEED_MOTOR);
+  unsigned char result = checkRange(frequency, lowLimitFreq, highLimitFreq, 1);
+  // Если вернули ошибку
+  if (result)
+    return result;
+  else
+    return writeParameter(VSD_FREQUENCY, frequency);
 }
 
-
+// Метод записи нового значения в массив регистров устройства
+// и передачи нового значения по используемуму протоколу в само устройство
+unsigned char VsdNovomet::writeParameter(unsigned short id, float value)
+{
+  // Если выполнили запись в банк параметров устройства
+  if(!setValue(id, value)) {
+    // Выполняем запись в устройство
+    DM->writeModbusParameter(id, value);
+    return 0;
+  }
+  else
+    return 1;
+}

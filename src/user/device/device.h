@@ -10,6 +10,7 @@
 #define DEVICE_H_
 
 #include "define.h"
+#include "service.h"
 #include "board.h"
 
 extern float Units[28][6][2];
@@ -18,41 +19,38 @@ extern float Units[28][6][2];
  * \brief The Parameter struct
  * Структура для обработки и хранения параметров в станции управления
  */
-struct Parameter
+struct parameter
 {
   // Уникальный идентификатор параметра заменяет название параметра равен
   // одному из кодов из enum enID
-  int ID;
+  unsigned short id;
   // Уровень доступа к параметру каждый параметр имеет уровень доступа равен
   // одному из кодов из enAccess
-  int Access;
+  unsigned char access;
   // Операции с параметром: чтение, запись, запись во время останова равен
   // одному из кодов из enOperations
-  int Operation;
+  unsigned char operation;
   // Физическая величина параметра: длина, время и т.д. равен
   // одному из кодов из enPhysic
-  int Physic;
+  unsigned char physic;
   // Поле состояния параметра: true если значение параметра валидно и false
   // если значение параметра не валидно, равен одному из кодов enValidity
-  int Validity;
+  unsigned char validity;
   // Поле обновления параметра: false когда изменили и ещё не получили
   // подтверждения от устройства
-  int Update;
+  unsigned char update;
   // Значение параметра, для единообразия значения всех параметров будем
   // хранить в типе double
-  float Value;
+  float value;
   // Минимально допустимое значение для этого параметра. Используется для
   // вывода диапазона значений на экран и проверке вводимых значений
-  float Minimum;
+  float min;
   // Максимально допустимое значение для этого параметра. Используется для
   // вывода диапазона значений на экран и проверке вводимых значений
-  float Maximum;
+  float max;
   // Значение по умолчанию
-  float Default;
+  float def;
 };
-
-
-
 
 /*!
  * \brief The Device class
@@ -97,534 +95,213 @@ public:
 
   int getMessageUpdateParameters(void);
 
+  unsigned short countParameter_;
+
   void updateParameters(void);
 
-  // ОСНОВНЫЕ PUBLIC МЕТОДЫ КЛАССА
-  // ЧТЕНИЕ ПАРАМЕТРА, ЗНАЧЕНИЯ И ДРУГИХ ПОЛЕЙ С ПРОВЕРКАМИ
+  // Базовые методы работы со структурой Parameter
+  // Работают с индексом в массиве параметров
   /*!
-   * \brief getCheckParameter
-   * Функция получения всей структуры параметра с проверками
-   * \param ID - уникальный идентификатор параметра
-   * \param Param - ссылка на структуру которой присваиваются значения полей
-   * \return 0 - операция выполнена или # код ошибки
+   * \brief getFieldID
+   * Метод получения ID параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле ID
    */
-  int getCheckParameter(int ID, Parameter &Param);
+  unsigned short getFieldId(unsigned short index);
 
   /*!
-   * \brief getCheckValue
-   * Функция получения текущего значения параметра с проверками
-   * \param ID - уникальный идентификатор параметра
-   * \param Value - параметр ссылка на переменную в которую возвращается значение
-   * \return 0 - операция выполнена или # код ошибки
+   * \brief getFieldAccess
+   * Метод получения Access параметра по индексу в массиве параметров
+   * \param Index
+   * \return поле Access
    */
-  int getCheckValue(int ID, float &Value);
+  unsigned char getFieldAccess(unsigned short index);
 
   /*!
-   * \brief getCheckAccess
-   * Функция получения уровня доступа к параметру с проверкой валидности
-   * полученного значения
-   * \param ID - уникальный идентификатор параметра
-   * \param &Access - параметр ссылка на уровень доступа
-   * \return 0 - операция выполнена или # код ошибки
+   * \brief getFieldOperation
+   * Метод получения Operation параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Operation
    */
-  int getCheckAccess(int ID, int &Access);
+  unsigned char getFieldOperation(unsigned short index);
 
   /*!
-   * \brief getCheckOperation
-   * Функция получения операций над параметром с проверкой валидности
-   * полученного значения
-   * \param ID - уникальный идентификатор параметра
-   * \return 0 - не валидный уровень доступа или # код операции
+   * \brief getFieldPhysic
+   * Метод получения Physic параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Physic
    */
-  int getCheckOperation(int ID);
+  unsigned char getFieldPhysic(unsigned short index);
 
   /*!
-   * \brief getCheckPhysic
-   * Функция получения физической величины с проверкой валидности
-   * полученного значения
-   * \param ID - уникальный идентификатор параметра
-   * \return 0 - не валидное значение, или операции
+   * \brief getFieldValidity
+   * Метод получения Validity параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Validity
    */
-  int getCheckPhysic(int ID);
+  unsigned char getFieldValidity(unsigned short index);
 
   /*!
-   * \brief getCheckValidity
-   * Функция получения валидности параметра с проверкой валидности
-   * полученного значения
-   * \param ID - уникальный идентификатор параметра
-   * \return 0 не валидно или # код валидности
+   * \brief getFieldUpdate
+   * Метод получения Update параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Update
    */
-  int getCheckValidity(int ID);
+  unsigned char getFieldUpdate(unsigned short index);
 
   /*!
-   * \brief getCheckUpdate
-   * Функция получения нового значения параметра с проверкой валидности
-   * полученного значения
-   * \param ID - уникальный идентификатор параметра
-   * \return 0 не обновлено или # код обновления
+   * \brief getFieldValue
+   * Метод получения Value параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Value
    */
-  int getCheckUpdate(int ID);
-
-  // ЗАПИСЬ ПАРАМЕТРА, ЗНАЧЕНИЯ И ДРУГИХ ПОЛЕЙ С ПРОВЕРКАМИ
-  /*!
-   * \brief setCheckParameter
-   * Функция записи полей параметра с проверками
-   * \param Param Структура параметра
-   * \return 0 - операция выполнена или # код ошибки
-   */
-  int setCheckParameter(int ID, Parameter Param);
+  float getFieldValue(unsigned short index);
 
   /*!
-   * \brief setCheckValue
-   * Функция присвоения значения параметру с проверками
-   * \param ID - уникальный идентификатор параметра
-   * \param Value - присваиваемое значение
-   * \return 0 - операция выполнена или # код ошибки
+   * \brief getFieldMinimum
+   * Метод получения Minimum параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Minimum
    */
-  int setCheckValue(int ID, float Value);
+  float getFieldMinimum(unsigned short index);
 
   /*!
-   * \brief setCheckAccess
-   * Функция присвоения уровня доступа с проверкой
-   * \param ID - уникальный идентификатор параметра
-   * \param Access - код уровня доступа
-   * \return 0 - операция выполнена или # код ошибки
+   * \brief getFieldMaximum
+   * Метод получения Maximum параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Maximum
    */
-  int setCheckAccess(int ID, int Access);
+  float getFieldMaximum(unsigned short index);
 
   /*!
-   * \brief setCheckOperation
-   * Функция присвоения операций с проверкой
-   * \param ID - уникальный идентификатор параметра
-   * \param Operation код операций
-   * \return 0 - операция выполнена или # код ошибки
+   * \brief getFieldDefault
+   * Метод получения Default параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Default
    */
-  int setCheckOperation(int ID, int Operation);
+  float getFieldDefault(unsigned short index);
 
   /*!
-   * \brief setCheckPhysic
-   * Функция присвоения физической величиный с проверкой
-   * \param ID - уникальный идентификатор параметра
-   * \param Physic код физической величины
-   * \return 0 - операция выполнена или # код ошибки
+   * \brief getFieldAll
+   * Метод получения All полей параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return All поля
    */
-  int setCheckPhysic(int ID, int Physic);
+  parameter getFieldAll(unsigned short index);
 
   /*!
-   * \brief setCheckValidity
-   * Функция присвоения валидности с проверкой
-   * \param ID - уникальный идентификатор параметра
-   * \param Validity - код валидности
-   * \return 0 - операция выполнена или # код ошибки
+   * \brief setFieldID
+   * Метод присвоения поля ID в массиве параметров по индексу
+   * \param Index индекс параметра в массиве
+   * \param ID присваемое значение
    */
-  int setCheckValidity(int ID, int Validity);
+  void setFieldID(unsigned short index, unsigned short id);
 
   /*!
-   * \brief setCheckUpdate
-   * Функция присвоения новизны с проверкой
-   * \param ID - уникальный идентификатор параметра
-   * \param Update - код обновления
-   * \return 0 - операция выполнена или # код ошибки
+   * \brief setFieldAccess
+   * Метод присвоения поля Access в массиве параметров по индексу
+   * \param Index индекс параметра в массиве
+   * \param Access присваемое значение
    */
-  int setCheckUpdate(int ID, int Update);
-
-// НАСЛЕДУЕМЫЕ ЧЛЕНЫ КЛАССА
-protected:
-  /// Массив параметров устройства
-  Parameter Parameters[];
-  /// Смещение между элементами массива и ID для устройства
-  int ShiftID;
-  /// Количество элементов массива устройства
-  int NumberElementArray;
-
-  // ЧТЕНИЕ ПАРАМЕТРА, ЗНАЧЕНИЯ И ДРУГИХ ПОЛЕЙ БЕЗ ПРОВЕРОК
-  /*!
-   * \brief getFieldParameter
-   * Функция получения полей параметра
-   * \param ID - уникальный идентификатор параметра
-   * \return значения полей параметра
-   */
-  Parameter getParameter(int ID);
+  void setFieldAccess(unsigned short index, unsigned char access);
 
   /*!
-   * \brief getValue
-   * Функция получения значения параметра из массива параметров
-   * \param ID - уникальный идентификатор параметра
-   * \return значение параметра
+   * \brief setFieldOperation
+   * Метод присвоения поля Operation в массиве параметров по индексу
+   * \param Index индекс параметра в массиве
+   * \param Operation присваемое значение
    */
-  double getValue(int ID);
+  void setFieldOperation(unsigned short index, unsigned char operation);
 
   /*!
-   * \brief getAccess
-   * Функция получения уровня доступа к параметру
-   * \param ID - уникальный идентификатор параметра
-   * \return Уровень доступа
+   * \brief setFieldPhysic
+   * Метод присвоения поля Physic в массиве параметров по индексу
+   * \param Index индекс параметра в массиве
+   * \param Physic присваемое значение
    */
-  int getAccess(int ID);
+  void setFieldPhysic(unsigned short index, unsigned char physic);
 
   /*!
-   * \brief getOperation
-   * Функция получения операций над параметром
-   * \param ID - уникальный идентификатор параметра
-   * \return Код операции над параметром
+   * \brief setFieldValidity
+   * Метод присвоения поля Validity в массиве параметров по индексу
+   * \param Index индекс параметра в массиве
+   * \param Validity присваемое значение
    */
-  int getOperation(int ID);
+  void setFieldValidity(unsigned short index, unsigned char validity);
 
   /*!
-   * \brief getPhysic
-   *  Функция получения физической величины параметра
-   * \param ID - уникальный идентификатор параметра
-   * \return Код физическая величина параметра
+   * \brief setFieldUpdate
+   * Метод присвоения поля Update в массиве параметров по индексу
+   * \param Index индекс параметра в массиве
+   * \param Update присваемое значение
    */
-  int getPhysic(int ID);
+  void setFieldUpdate(unsigned short index, unsigned char update);
 
   /*!
-   * \brief getValidity
-   * Функция получения валидности параметра
-   * \param ID - уникальный идентификатор параметра
-   * \return Код валидность параметра
+   * \brief setFieldValue
+   * Метод присвоения поля value в массиве параметров по индексу
+   * \param index индекс параметра в массиве
+   * \param value присваемое значение
    */
-  int getValidity(int ID);
+  void setFieldValue(unsigned short index, float value);
 
   /*!
-   * \brief getUpdate
-   * Функция получения обновления параметра
-   * \param ID - уникальный идентификатор параметра
-   * \return Код обновленность параметра
+   * \brief setFieldMin
+   * Метод присвоения поля Min в массиве параметров по индексу
+   * \param index индекс параметра в массиве
+   * \param min присваемое значение
    */
-  int getUpdate(int ID);
+  void setFieldMin(unsigned short index, float min);
 
   /*!
-   * \brief getMinimum
-   * Функция получения минимального значения для параметра
-   * \param ID - уникальный идентификатор параметра
-   * \return мининальное значение параметра
+   * \brief setFieldMax
+   * Метод присвоения поля Max в массиве параметров по индексу
+   * \param index индекс параметра в массиве
+   * \param max присваемое значение
    */
-  double getMinimum(int ID);
+  void setFieldMax(unsigned short index, float max);
 
   /*!
-   * \brief getMaximum
-   * Функция получения максимального значения для параметра
-   * \param ID - уникальный идентификатор параметра
-   * \return максимальное значение параметра
+   * \brief setFieldDef
+   * Метод присвоения поля def в массиве параметров по индексу
+   * \param index индекс параметра в массиве
+   * \param def присваемое значение
    */
-  double getMaximum(int ID);
+  void setFieldDef(unsigned short index, float def);
 
   /*!
-   * \brief getDefault
-   * Функция получения значения по умолчанию
-   * \param ID - уникальный идентификатор параметра
-   * \return значение параметра по умолчанию
+   * \brief setFieldAll
+   * Метод присвоения поля All в массиве параметров по индексу
+   * \param index индекс параметра в массиве
+   * \param param присваемое значение
    */
-  double getDefault(int ID);
+  void setFieldAll(unsigned short index, parameter param);
 
-  // ЗАПИСЬ ПАРАМЕТРА, ЗНАЧЕНИЯ И ДРУГИХ ПОЛЕЙ БЕЗ ПРОВЕРОК
   /*!
-   * \brief setParameter
-   * Функция записи полей параметра
-   * \param ID - уникальный идентификатор параметра
-   * \param Param значения полей параметра
-   */
-  void setParameter(int ID, Parameter Param);
+   * \brief Метод поиска и получения индекса по ID параметра
+   * \param ID идентификатор параметра
+   * \return Index
+  */
+  unsigned short getIndexAtID(unsigned short ID);
 
   /*!
    * \brief setValue
-   * Функция присвоения значению параметра
-   * \param ID - уникальный идентификатор параметра
-   * \param Value - присваимое значение
+   * Метод присвоения значения параметру
+   * Когда пытаемся записать значение, нам нужно проверить
+   * 1. Уровень доступа к параметру
+   * 2. Операции над параметром
+   * 3. Минимальное и максимальное значение
+   * \param id уникальный идентификатор параметра
+   * \param value присваемое значение
+   * \return 0 - значение присвоено или ошибка
    */
-  void setValue(int ID, double Value);
+  unsigned char setValue(unsigned short id, float value);
 
-  /*!
-   * \brief setAccess
-   * Функция присвоения уровня доступа к параметру
-   * \param ID - уникальный идентификатор параметра
-   * \param Access
-   */
-  void setAccess(int ID, int Access);
+// Наследуемые члены класс
+protected:
+  /// Массив параметров устройства
+  parameter parameters_[];
 
-  /*!
-   * \brief setOperation
-   * Функция присвоения операций над параметром
-   * \param ID - уникальный идентификатор параметра
-   * \param Operation
-   */
-  void setOperation(int ID, int Operation);
-
-  /*!
-   * \brief setPhysic
-   * Функция присвоения операций над параметром
-   * \param ID - уникальный идентификатор параметра
-   * \param Physic
-   */
-  void setPhysic(int ID, int Physic);
-
-  /*!
-   * \brief setValidity
-   * Функция присвоения валидности параметра
-   * \param ID - уникальный идентификатор параметра
-   * \param Validity
-   */
-  void setValidity(int ID, int Validity);
-
-  /*!
-   * \brief setUpdate
-   * Функция присвоения свежести параметра
-   * \param ID - уникальный идентификатор параметра
-   * \param Update
-   */
-  void setUpdate(int ID, int Update);
-
-  /*!
-   * \brief setMinimum
-   * Функция присвоения минимального значения параметра
-   * \param ID - уникальный идентификатор параметра
-   * \param Minimum
-   */
-  void setMinimum(int ID, double Minimum);
-
-  /*!
-   * \brief setMaximum
-   * Функция присвоения максимального значения параметра
-   * \param ID - уникальный идентификатор параметра
-   * \param Maximum
-   */
-  void setMaximum(int ID, double Maximum);
-
-  /*!
-   * \brief setDefault
-   * Функция присвоения значения по умолчанию
-   * \param ID - уникальный идентификатор параметра
-   * \param Default
-   */
-  void setDefault(int ID, double Default);
-
-  // ЧТЕНИЕ ЭЛЕМЕНТА МАССИВА, ЗНАЧЕНИЯ И ДРУГИХ ПОЛЕЙ
-  /*!
-   * \brief getParameterIndex
-   * Функция получения значений полей из структуры Parameter
-   * \param Index индекс элемента массива Parameters[]
-   * \return Значения полей Parameter
-   */
-  Parameter getParameterIndex(int Index);
-
-  /*!
-   * \brief getValueIndex
-   * Функция получения значения поля Value из структуры Parameter
-   * \param Index - индекс элемента массива Parameters[]
-   * \return Значение поля Value
-   */
-  double getValueIndex(int Index);
-
-  /*!
-   * \brief getIDIndex
-   * Функция получения значения поля ID из структуры Parameter
-   * \param Index - индекс элемента массива Parameters[]
-   * \return Значение поля ID
-   */
-  int getIDIndex(int Index);
-
-  /*!
-   * \brief getAccessIndex
-   * Функция получения значения поля Access из структуры Parameter
-   * \param Index - индекс элемента массива Parameters[]
-   * \return Значение поля Access
-   */
-  int getAccessIndex(int Index);
-
-  /*!
-   * \brief getOperationIndex
-   * Функция получения значения поля Operation из структуры Parameter
-   * \param Index - индекс элемента массива Parameters[]
-   * \return Значение поля Operation
-   */
-  int getOperationIndex(int Index);
-
-  /*!
-   * \brief getPhysicIndex
-   * Функция получения значения поля Physic из структуры Parameter
-   * \param Index - индекс элемента массива Parameters[]
-   * \return Значение поля Physic
-   */
-  int getPhysicIndex(int Index);
-
-  /*!
-   * \brief getValidityIndex
-   * Функция получения значения поля Validity из структуры Parameter
-   * \param Index - индекс элемента массива Parameters[]
-   * \return Значение поля Validity
-   */
-  int getValidityIndex(int Index);
-
-  /*!
-   * \brief getUpdateIndex
-   * Функция получения значения поля Update из структуры Parameter
-   * \param Index - индекс элемента массива Parameters[]
-   * \return Значение поля Update
-   */
-  int getUpdateIndex(int Index);
-
-  /*!
-   * \brief getMinimumIndex
-   * Функция получения значения поля Minimum из структуры Parameter
-   * \param Index - индекс элемента массива Parameters[]
-   * \return Значение поля Minimum
-   */
-  double getMinimumIndex(int Index);
-
-  /*!
-   * \brief getMaximumIndex
-   * Функция получения значения поля Maximum из структуры Parameter
-   * \param Index - индекс элемента массива Parameters[]
-   * \return Значение поля Maximum
-   */
-  double getMaximumIndex(int Index);
-
-  /*!
-   * \brief getDefaultIndex
-   * Функция получения значения поля Default из структуры Parameter
-   * \param Index - индекс элемента массива Parameters[]
-   * \return Значение поля Default
-   */
-  double getDefaultIndex(int Index);
-
-  // ЗАПИСЬ ЭЛЕМЕНТА МАССИВА, ЗНАЧЕНИЯ И ДРУГИХ ПОЛЕЙ
-  /*!
-   * \brief setParameterIndex
-   * Функция присвоения значений полей
-   * \param Index - индекс элемента массива Parameters[]
-   * \param Param присваиваемое значение
-   */
-  void setParameterIndex(int Index, Parameter Param);
-
-  /*!
-   * \brief setValueIndex
-   * Функция присвоения значения поля Value значению из параметра
-   * \param Index - индекс элемента массива Parameters[]
-   * \param Value - присваиваемое значение
-   */
-  void setValueIndex(int Index, double Value);
-
-  /*!
-   * \brief setAccessIndex
-   * Функция присвоения значения поля Access значению из параметра
-   * \param Index - индекс элемента массива Parameters[]
-   * \param Access - присваиваемый уровень доступа
-   */
-  void setAccessIndex(int Index, int Access);
-
-  /*!
-   * \brief setOperationIndex
-   * Функция присвоения значения поля Operation значению из параметра
-   * \param Index - индекс элемента массива Parameters[]
-   * \param Operation - присваиваемые операции
-   */
-  void setOperationIndex(int Index, int Operation);
-
-  /*!
-   * \brief setPhysicIndex
-   * Функция присвоения значения поля Physic значению из параметра
-   * \param Index - индекс элемента массива Parameters[]
-   * \param Physic - присваиваемая физическая величина
-   */
-  void setPhysicIndex(int Index, int Physic);
-
-  /*!
-   * \brief setValidityIndex
-   * Функция присвоения значения поля Validity значению из параметра
-   * \param Index - индекс элемента массива Parameters[]
-   * \param Validity - присваиваемая валидность
-   */
-  void setValidityIndex(int Index, int Validity);
-
-  /*!
-   * \brief setUpdateIndex
-   * Функция присвоения значения поля Update значению из параметра
-   * \param Index - индекс элемента массива Parameters[]
-   * \param Update - присваиваемое обновление
-   */
-  void setUpdateIndex(int Index, int Update);
-
-  /*!
-   * \brief setMimimumIndex
-   * Функция присвоения значения поля Mimimum значению из параметра
-   * \param Index - индекс элемента массива Parameters[]
-   * \param Mimimum - присваиваемое минимальное значение
-   */
-  void setMinimumIndex(int Index, double Minimum);
-
-  /*!
-   * \brief setMaximumIndex
-   * Функция присвоения значения поля Maximum значению из параметра
-   * \param Index - индекс элемента массива Parameters[]
-   * \param Maximum - присваиваемое максимальное значение
-   */
-  void setMaximumIndex(int Index, double Maximum);
-
-  /*!
-   * \brief setDefaultIndex
-   * Функция присвоения значения поля Default значению из параметра
-   * \param Index - индекс элемента массива Parameters[]
-   * \param Default - присваиваемое значение по умолчанию
-   */
-  void setDefaultIndex(int Index, double Default);
-
-  // МЕТОДЫ ДЛЯ ПОИСКА ИНДЕКСА ЭЛЕМЕНТА МАССИВА С НУЖНЫМ ID
-  /*!
-   * \brief searchIndex
-   * Функция поиска в массиве Parameters[] индекса записи с полем ID
-   * \param ID - уникальный идентификатор параметра
-   * \return 0 - не найден индекс записи
-   */
-  int searchIndex(int ID);
-
-  /*!
-   * \brief checkIndex
-   * Функция проверки содержится ли в элементе массива с ID - Shift запись с указанным ID
-   * \param ID - уникальный идентификатор параметра
-   * \return 0 - не найден индекс записи
-   */
-  int checkIndex(int ID);
-
-  /*!
-   * \brief getIndex
-   * Функция получения индекса параметра с указанным ID
-   * \param ID - уникальный идентификатор параметра
-   * \return 0 - не найден индекс записи
-   */
-  int getIndex(int ID);
-
-  // МЕТОДЫ ДЛЯ РАБОТЫ С ЗАКРЫТЫМИ ЧЛЕНАМИ КЛАССА
-  /*!
-   * \brief getShiftID
-   * Функция получения значения поля ShiftID класса Device
-   * \return Значение ShiftID класса Device
-   */
-  int getShiftID();
-
-  /*!
-   * \brief setShiftID
-   * Функция присвоения значения поля поля ShiftID класса Device
-   * \param Shift - присваиваемое значение полю ShiftID класса Device
-   */
-  void setShiftID(int Shift);
-
-  /*!
-   * \brief getNumberElementArray
-   * Функция получения значения поля Device NumberElementArray
-   * \return Значение поля Device NumberElementArray
-   */
-  int getNumberElementArray();
-
-  /*!
-   * \brief setNumberElementArray
-   * Функция присвоения значения поля Device NumberElementArray
-   * \param Number - присваиваемое значение полю Device NumberElementArray
-   */
-  void setNumberElementArray(int Number);
-
-
-// ЗАКРЫТЫЕ ЧЛЕНЫ КЛАССА
 private:
 
 };
