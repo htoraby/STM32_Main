@@ -51,6 +51,23 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
     GPIO_InitStruct.Alternate = GPIO_AF6_SPI3;
     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
   }
+  else if(hspi->Instance == SPI4) {
+    /* Peripheral clock enable */
+    __SPI4_CLK_ENABLE();
+
+    /**SPI4 GPIO Configuration
+    PE2     ------> SPI4_SCK
+    PE4     ------> SPI4_NSS
+    PE5     ------> SPI4_MISO
+    PE6     ------> SPI4_MOSI
+    */
+    GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull = GPIO_PULLUP;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+    GPIO_InitStruct.Alternate = GPIO_AF5_SPI4;
+    HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
+  }
   else if(hspi->Instance == SPI5) {
     /* Peripheral clock enable */
     __SPI5_CLK_ENABLE();
@@ -92,6 +109,11 @@ void HAL_SPI_MspDeInit(SPI_HandleTypeDef* hspi)
     __SPI3_CLK_DISABLE();
 
     HAL_GPIO_DeInit(GPIOC, GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12);
+  }
+  else if(hspi->Instance == SPI4) {
+    __SPI4_CLK_DISABLE();
+
+    HAL_GPIO_DeInit(GPIOE, GPIO_PIN_2|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6);
   }
   else if(hspi->Instance == SPI5) {
     __SPI5_CLK_DISABLE();
