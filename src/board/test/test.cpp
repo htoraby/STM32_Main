@@ -263,6 +263,7 @@ static void testFlash1()
   bufferTx[8] = 0x55;
   bufferTx[9] = 0x12;
   bufferTx[sizeof(bufferTx)-1] = 0x55;
+  memset(bufferRx, 0, sizeof(bufferRx));
   flashExtWrite(FlashSpi1, 0, &bufferTx[0], sizeof(bufferTx));
   flashExtRead(FlashSpi1, 0, &bufferRx[0], sizeof(bufferTx));
 
@@ -289,6 +290,7 @@ static void testFlash2()
   bufferTx[8] = 0x55;
   bufferTx[9] = 0x12;
   bufferTx[sizeof(bufferTx)-1] = 0x55;
+  memset(bufferRx, 0, sizeof(bufferRx));
   flashExtWrite(FlashSpi5, 0, &bufferTx[0], sizeof(bufferTx));
   flashExtRead(FlashSpi5, 0, &bufferRx[0], sizeof(bufferTx));
 

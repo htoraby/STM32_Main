@@ -5,7 +5,7 @@
 #define FRAM_NSS_PIN   GPIO_PIN_15
 #define FRAM_NSS_PORT  GPIOA
 
-#define TIMEOUT_SEM 1000
+#define TIMEOUT 1000
 
 /*!
  \brief Команды для FRAM FM25V10
@@ -128,7 +128,7 @@ StatusType framWriteData(uint32_t address, uint8_t *data, uint32_t size)
   if (address > FRAM_END)
     return status;
 
-  if (osSemaphoreWait(framTxSemaphoreId, TIMEOUT_SEM) == osEventTimeout)
+  if (osSemaphoreWait(framTxSemaphoreId, TIMEOUT) == osEventTimeout)
     return status;
 
   buffer[0] = CMD_WREN;
@@ -140,7 +140,7 @@ StatusType framWriteData(uint32_t address, uint8_t *data, uint32_t size)
   buffer[3] = address&0xFF;
 
   clrPinOut(FRAM_NSS_PORT, FRAM_NSS_PIN);
-  if (HAL_SPI_Transmit(&hspi3, &buffer[0], 4, TIMEOUT_SEM) == HAL_OK)
+  if (HAL_SPI_Transmit(&hspi3, &buffer[0], 4, TIMEOUT) == HAL_OK)
     status = StatusOk;
   if (status == StatusOk) {
     if (HAL_SPI_Transmit_DMA(&hspi3, data, size) == HAL_OK)
@@ -158,7 +158,7 @@ StatusType framReadData(uint32_t address, uint8_t *data, uint32_t size)
   if (address > FRAM_END)
     return status;
 
-  if (osSemaphoreWait(framTxSemaphoreId, TIMEOUT_SEM) == osEventTimeout)
+  if (osSemaphoreWait(framTxSemaphoreId, TIMEOUT) == osEventTimeout)
     return status;
 
   buffer[0] = CMD_FSTRD;
@@ -167,17 +167,19 @@ StatusType framReadData(uint32_t address, uint8_t *data, uint32_t size)
   buffer[3] = address&0xFF;
   buffer[4] = 0xFF;
 
-  osSemaphoreWait(framRxSemaphoreId, 0);
   clrPinOut(FRAM_NSS_PORT, FRAM_NSS_PIN);
-  if (HAL_SPI_Transmit(&hspi3, &buffer[0], 5, TIMEOUT_SEM) == HAL_OK)
+  if (HAL_SPI_Transmit(&hspi3, &buffer[0], 5, TIMEOUT) == HAL_OK)
     status = StatusOk;
   if (status == StatusOk) {
+    osSemaphoreWait(framRxSemaphoreId, 0);
+
     if (HAL_SPI_Receive_DMA(&hspi3, data, size) == HAL_OK)
       status = StatusOk;
-  }
-  if (osSemaphoreWait(framRxSemaphoreId, TIMEOUT_SEM) == osEventTimeout) {
-    framTxRxCpltCallback();
-    status = StatusError;
+
+    if (osSemaphoreWait(framRxSemaphoreId, TIMEOUT) == osEventTimeout) {
+      framTxRxCpltCallback();
+      status = StatusError;
+    }
   }
 
   return status;
@@ -188,10 +190,10 @@ StatusType spiTransmitReceive(uint8_t *txData, uint8_t *rxData,
 {
   StatusType status = StatusError;
   clrPinOut(FRAM_NSS_PORT, FRAM_NSS_PIN);
-  if (HAL_SPI_Transmit(&hspi3, txData, txSize, TIMEOUT_SEM) == HAL_OK)
+  if (HAL_SPI_Transmit(&hspi3, txData, txSize, TIMEOUT) == HAL_OK)
     status = StatusOk;
   if (status == StatusOk) {
-    if (HAL_SPI_TransmitReceive(&hspi3, rxData, rxData, rxSize, TIMEOUT_SEM) == HAL_OK)
+    if (HAL_SPI_TransmitReceive(&hspi3, rxData, rxData, rxSize, TIMEOUT) == HAL_OK)
       status = StatusOk;
   }
   setPinOut(FRAM_NSS_PORT, FRAM_NSS_PIN);
@@ -202,7 +204,7 @@ StatusType spiTransmit(uint8_t *data, uint16_t size)
 {
   StatusType status = StatusError;
   clrPinOut(FRAM_NSS_PORT, FRAM_NSS_PIN);
-  if (HAL_SPI_Transmit(&hspi3, data, size, TIMEOUT_SEM) == HAL_OK)
+  if (HAL_SPI_Transmit(&hspi3, data, size, TIMEOUT) == HAL_OK)
     status = StatusOk;
   setPinOut(FRAM_NSS_PORT, FRAM_NSS_PIN);
   return status;

@@ -13,12 +13,16 @@ typedef enum {
   FlashSpiMax,
 } FlashSpiNum;
 
+#ifdef __cplusplus
+
 /*!
  \brief Инициализация внешней Flash:
  SPI1 - W25Q64BV, SPI5 - MX25L128
  \param num - номер spi @ref FlashSpiNum
 */
 void flashExtInit(FlashSpiNum num);
+
+void flashTxRxCpltCallback(FlashSpiNum num);
 
 /*!
  \brief Запись данных во Flash
@@ -49,5 +53,7 @@ StatusType flashExtRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32
  \return StatusType - ошибка или ок
 */
 StatusType flashExtChipErase(FlashSpiNum num);
+
+#endif
 
 #endif // FLASH_H

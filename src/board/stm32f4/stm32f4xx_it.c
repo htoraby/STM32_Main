@@ -45,7 +45,11 @@ extern void hostRxIRQHandler(void);
 
 extern HCD_HandleTypeDef hhcd_USB_OTG_FS;
 extern uint8_t flagMcuInit;
+extern DMA_HandleTypeDef hdma_spi1_tx;
+extern DMA_HandleTypeDef hdma_spi1_rx;
 extern DMA_HandleTypeDef hdma_spi4_tx;
+extern DMA_HandleTypeDef hdma_spi5_tx;
+extern DMA_HandleTypeDef hdma_spi5_rx;
 extern SPI_HandleTypeDef hspi2;
 extern SPI_HandleTypeDef hspi3;
 
@@ -91,6 +95,28 @@ void DMA2_Stream1_IRQHandler(void)
 void SPI4_IRQHandler(void)
 {
   hostRxIRQHandler();
+}
+
+//!
+void DMA2_Stream5_IRQHandler(void)
+{
+  HAL_DMA_IRQHandler(&hdma_spi1_tx);
+}
+
+void DMA2_Stream0_IRQHandler(void)
+{
+  HAL_DMA_IRQHandler(&hdma_spi1_rx);
+}
+
+//!
+void DMA2_Stream4_IRQHandler(void)
+{
+  HAL_DMA_IRQHandler(&hdma_spi5_tx);
+}
+
+void DMA2_Stream3_IRQHandler(void)
+{
+  HAL_DMA_IRQHandler(&hdma_spi5_rx);
 }
 
 /**

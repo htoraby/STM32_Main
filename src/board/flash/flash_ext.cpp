@@ -12,6 +12,8 @@
   static uint8_t buffer[4096];
 #endif
 
+#define TIMEOUT 1000
+
 /*!
  \brief Спискок возможных производителей
 */
@@ -55,6 +57,8 @@ enum {
 
 typedef struct {
   SPI_HandleTypeDef spi;  //! Структура SPI
+  osSemaphoreId cmdSemaphoreId;
+  osSemaphoreId operSemaphoreId;
   GPIO_TypeDef* nss_port; //! Порт вывода NSS
   uint16_t nss_pin;       //! Номер вывода NSS
   uint8_t manufacturer;   //! Производитель
@@ -64,6 +68,10 @@ typedef struct {
   uint32_t blockSize;     //! Размер блока
 } FlashTypeDef;
 
+DMA_HandleTypeDef hdma_spi1_tx;
+DMA_HandleTypeDef hdma_spi1_rx;
+DMA_HandleTypeDef hdma_spi5_tx;
+DMA_HandleTypeDef hdma_spi5_rx;
 FlashTypeDef flashExts[FlashSpiMax];
 
 static StatusType spiTransmitReceive(FlashSpiNum num, uint8_t *txData,
@@ -110,6 +118,81 @@ void flashExtInit(FlashSpiNum num)
   spiX->Init.CRCPolynomial = 7;
   HAL_SPI_Init(spiX);
 
+
+  /* Peripheral DMA init*/
+  if (num == FlashSpi1) {
+    hdma_spi1_tx.Instance = DMA2_Stream5;
+    hdma_spi1_tx.Init.Channel = DMA_CHANNEL_3;
+    hdma_spi1_tx.Init.Direction = DMA_MEMORY_TO_PERIPH;
+    hdma_spi1_tx.Init.PeriphInc = DMA_PINC_DISABLE;
+    hdma_spi1_tx.Init.MemInc = DMA_MINC_ENABLE;
+    hdma_spi1_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+    hdma_spi1_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+    hdma_spi1_tx.Init.Mode = DMA_NORMAL;
+    hdma_spi1_tx.Init.Priority = DMA_PRIORITY_LOW;
+    hdma_spi1_tx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+    HAL_DMA_Init(&hdma_spi1_tx);
+
+    __HAL_LINKDMA(spiX, hdmatx, hdma_spi1_tx);
+
+    hdma_spi1_rx.Instance = DMA2_Stream0;
+    hdma_spi1_rx.Init.Channel = DMA_CHANNEL_3;
+    hdma_spi1_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+    hdma_spi1_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+    hdma_spi1_rx.Init.MemInc = DMA_MINC_ENABLE;
+    hdma_spi1_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+    hdma_spi1_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+    hdma_spi1_rx.Init.Mode = DMA_NORMAL;
+    hdma_spi1_rx.Init.Priority = DMA_PRIORITY_HIGH;
+    hdma_spi1_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+    HAL_DMA_Init(&hdma_spi1_rx);
+
+    __HAL_LINKDMA(spiX, hdmarx, hdma_spi1_rx);
+
+    HAL_NVIC_SetPriority(DMA2_Stream5_IRQn, 0, 1);
+    HAL_NVIC_EnableIRQ(DMA2_Stream5_IRQn);
+    HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
+  }
+  else if (num == FlashSpi5) {
+    hdma_spi5_tx.Instance = DMA2_Stream4;
+    hdma_spi5_tx.Init.Channel = DMA_CHANNEL_2;
+    hdma_spi5_tx.Init.Direction = DMA_MEMORY_TO_PERIPH;
+    hdma_spi5_tx.Init.PeriphInc = DMA_PINC_DISABLE;
+    hdma_spi5_tx.Init.MemInc = DMA_MINC_ENABLE;
+    hdma_spi5_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+    hdma_spi5_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+    hdma_spi5_tx.Init.Mode = DMA_NORMAL;
+    hdma_spi5_tx.Init.Priority = DMA_PRIORITY_LOW;
+    hdma_spi5_tx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+    HAL_DMA_Init(&hdma_spi5_tx);
+
+    __HAL_LINKDMA(spiX, hdmatx, hdma_spi5_tx);
+
+    hdma_spi5_rx.Instance = DMA2_Stream3;
+    hdma_spi5_rx.Init.Channel = DMA_CHANNEL_2;
+    hdma_spi5_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+    hdma_spi5_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+    hdma_spi5_rx.Init.MemInc = DMA_MINC_ENABLE;
+    hdma_spi5_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+    hdma_spi5_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+    hdma_spi5_rx.Init.Mode = DMA_NORMAL;
+    hdma_spi5_rx.Init.Priority = DMA_PRIORITY_HIGH;
+    hdma_spi5_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+    HAL_DMA_Init(&hdma_spi5_rx);
+
+    __HAL_LINKDMA(spiX, hdmarx, hdma_spi5_rx);
+
+    HAL_NVIC_SetPriority(DMA2_Stream4_IRQn, 0, 1);
+    HAL_NVIC_EnableIRQ(DMA2_Stream4_IRQn);
+    HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
+  }
+
+  flashExts[num].cmdSemaphoreId = osSemaphoreCreate(NULL, 1);
+  flashExts[num].operSemaphoreId = osSemaphoreCreate(NULL, 1);
+
+
   //! Чтение данных из JEDEC ID регистров для определения производителя
   buf[0] = CMD_JEDEC_ID;
   spiTransmitReceive(num, &buf[0], &buf[0], 1, 4);
@@ -142,15 +225,22 @@ void flashExtInit(FlashSpiNum num)
   asm("nop");
 }
 
+void flashTxRxCpltCallback(FlashSpiNum num)
+{
+  setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+  osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
+  osSemaphoreRelease(flashExts[num].operSemaphoreId);
+}
+
 StatusType spiTransmitReceive(FlashSpiNum num, uint8_t *txData, uint8_t *rxData,
                              uint16_t txSize, uint16_t rxSize)
 {
   StatusType status = StatusError;
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  if (HAL_SPI_Transmit(&flashExts[num].spi, txData, txSize, 1000) == HAL_OK)
+  if (HAL_SPI_Transmit(&flashExts[num].spi, txData, txSize, TIMEOUT) == HAL_OK)
     status = StatusOk;
   if (status == StatusOk) {
-    if (HAL_SPI_TransmitReceive(&flashExts[num].spi, rxData, rxData, rxSize, 1000) == HAL_OK)
+    if (HAL_SPI_TransmitReceive(&flashExts[num].spi, rxData, rxData, rxSize, TIMEOUT) == HAL_OK)
       status = StatusOk;
   }
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
@@ -161,8 +251,8 @@ uint8_t flashReady(FlashSpiNum num)
 {
   uint8_t statusReg = CMD_W_READ_SR;
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  HAL_SPI_Transmit(&flashExts[num].spi, &statusReg, 1, 1000);
-  HAL_SPI_TransmitReceive(&flashExts[num].spi, &statusReg, &statusReg, 1, 1000);
+  HAL_SPI_Transmit(&flashExts[num].spi, &statusReg, 1, TIMEOUT);
+  HAL_SPI_TransmitReceive(&flashExts[num].spi, &statusReg, &statusReg, 1, TIMEOUT);
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
   if(!(statusReg & 0x01))
     return 1;
@@ -173,7 +263,7 @@ void flashWriteEnable(FlashSpiNum num)
 {
   uint8_t cmd = CMD_W_WRITE_ENABLE;
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  HAL_SPI_Transmit(&flashExts[num].spi, &cmd, 1, 1000);
+  HAL_SPI_Transmit(&flashExts[num].spi, &cmd, 1, TIMEOUT);
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 }
 
@@ -181,7 +271,7 @@ void flashWriteDisable(FlashSpiNum num)
 {
   uint8_t cmd = CMD_W_WRITE_DISABLE;
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  HAL_SPI_Transmit(&flashExts[num].spi, &cmd, 1, 1000);
+  HAL_SPI_Transmit(&flashExts[num].spi, &cmd, 1, TIMEOUT);
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 }
 
@@ -199,7 +289,7 @@ StatusType flashEraseSector4k(FlashSpiNum num, uint32_t address)
   buf[3] = address&0xFF;
 
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  if (HAL_SPI_Transmit(&flashExts[num].spi, &buf[0], 4, 1000) == HAL_OK)
+  if (HAL_SPI_Transmit(&flashExts[num].spi, &buf[0], 4, TIMEOUT) == HAL_OK)
     status = StatusOk;
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 
@@ -218,6 +308,9 @@ StatusType flashExtRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32
   if (address > flashExts[num].size)
     return status;
 
+  if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, TIMEOUT) == osEventTimeout)
+    return status;
+
   buf[0] = CMD_W_FAST_READ;
   buf[1] = address>>16;
   buf[2] = address>>8;
@@ -225,13 +318,20 @@ StatusType flashExtRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32
   buf[4] = 0xFF;
 
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  if (HAL_SPI_Transmit(&flashExts[num].spi, &buf[0], 5, 1000) == HAL_OK)
+  if (HAL_SPI_Transmit(&flashExts[num].spi, &buf[0], 5, TIMEOUT) == HAL_OK)
     status = StatusOk;
   if (status == StatusOk) {
-    if (HAL_SPI_TransmitReceive(&flashExts[num].spi, data, data, size, 1000) == HAL_OK)
+    osSemaphoreWait(flashExts[num].operSemaphoreId, 0);
+
+    if (HAL_SPI_Receive_DMA(&flashExts[num].spi, data, size) == HAL_OK)
       status = StatusOk;
+
+    if (osSemaphoreWait(flashExts[num].operSemaphoreId, TIMEOUT) == osEventTimeout) {
+      flashTxRxCpltCallback(num);
+      status = StatusError;
+    }
   }
-  setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+
   return status;
 }
 
@@ -243,6 +343,9 @@ StatusType flashWritePage(FlashSpiNum num, uint32_t address, uint8_t *data, uint
   if (address > flashExts[num].size)
     return status;
 
+  if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, TIMEOUT) == osEventTimeout)
+    return status;
+
   flashWriteEnable(num);
 
   buf[0] = CMD_W_PAGE_PROGRAM;
@@ -251,13 +354,19 @@ StatusType flashWritePage(FlashSpiNum num, uint32_t address, uint8_t *data, uint
   buf[3] = address&0xFF;
 
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  if (HAL_SPI_Transmit(&flashExts[num].spi, &buf[0], 4, 1000) == HAL_OK)
+  if (HAL_SPI_Transmit(&flashExts[num].spi, &buf[0], 4, TIMEOUT) == HAL_OK)
     status = StatusOk;
   if (status == StatusOk) {
-    if (HAL_SPI_Transmit(&flashExts[num].spi, data, size, 1000) == HAL_OK)
+    osSemaphoreWait(flashExts[num].operSemaphoreId, 0);
+
+    if (HAL_SPI_Transmit_DMA(&flashExts[num].spi, data, size) == HAL_OK)
       status = StatusOk;
+
+    if (osSemaphoreWait(flashExts[num].operSemaphoreId, TIMEOUT) == osEventTimeout) {
+      flashTxRxCpltCallback(num);
+      status = StatusError;
+    }
   }
-  setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 
   //! Ожидание завершения операции
   while(!flashReady(num));
@@ -336,7 +445,7 @@ StatusType flashExtChipErase(FlashSpiNum num)
 
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
   uint8_t cmd = CMD_W_CHIP_ERASE;
-  if (HAL_SPI_Transmit(&flashExts[num].spi, &cmd, 1, 1000) == HAL_OK)
+  if (HAL_SPI_Transmit(&flashExts[num].spi, &cmd, 1, TIMEOUT) == HAL_OK)
     status = StatusOk;
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 
