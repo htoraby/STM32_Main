@@ -1,6 +1,7 @@
 #ifndef LOGEVENT_H
 #define LOGEVENT_H
 
+#include "log.h"
 
 class LogEvent : public Log
 {

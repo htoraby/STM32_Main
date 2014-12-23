@@ -74,9 +74,18 @@ Product {
         "src/user/device/vsd/",
         "src/user/log/",
         "src/user/protection/",
+        "src/user/protection/analog/",
+        "src/user/protection/digital/",
+        "src/user/protection/motor/",
+        "src/user/protection/other/",
+        "src/user/protection/supply/",
+        "src/user/protection/tms/",
         "src/user/protocol/",
         "src/user/protocol/modbus/",
         "src/user/protocol/novobus",
+        "src/user/regime/",
+        "src/user/regime/run",
+        "src/user/regime/technolog",
     ]
     cpp.defines: [
         (qbs.debugInformation ? "DEBUG" : "RELEASE"),
@@ -95,14 +104,6 @@ Product {
     cpp.linkerScripts: [
         "Ldscripts/STM32F427II_FLASH.ld",
     ]
-
-    Group {
-        name: "ldscripts"
-        prefix: "Ldscripts/"
-        files: [
-            "*.ld",
-        ]
-    }
 
     Group {
         name: "sources"
@@ -126,6 +127,14 @@ Product {
         cpp.cxxFlags: [ "-std=c++11" ]
         cpp.cFlags: [ "-std=gnu11" ]
         cpp.warningLevel: "all"
+    }
+
+    Group {
+        name: "ldscripts"
+        prefix: "Ldscripts/"
+        files: [
+            "*.ld",
+        ]
     }
 
     consoleApplication: true

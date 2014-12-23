@@ -202,6 +202,7 @@ class VsdNovomet: public Vsd
          */
         unsigned char setReverseRotation();
 
+
         /*!
          * \brief writeParameter
          * Метод записи параметра в устройство

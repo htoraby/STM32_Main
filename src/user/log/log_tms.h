@@ -1,6 +1,7 @@
 #ifndef LOGTMS_H
 #define LOGTMS_H
 
+#include "log.h"
 
 class LogTms : public Log
 {
