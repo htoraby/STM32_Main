@@ -10,10 +10,6 @@
 
 #include "device.h"
 
-// КЛАСС ЧРП
-// Наследник класса Device использующий его структуру и методы хранения банка параметров
-// имеющий свою карту параметров класс не имеющий объектов, а использующийся как базовый для
-// классов конкретных ЧРП
 /*!
  * \brief The Vsd class
  * Наследник класса Device использующий его структуру и методы хранения банка
@@ -30,6 +26,13 @@ public:
   virtual ~Vsd();
 
   void initParameters();
+
+  /*!
+   * \brief getCurrentFreq
+   * Метод получения текущего значения частоты
+   * \return
+   */
+  float getCurrentFreq();
 
   // ФУНКЦИИ ДЛЯ РАБОТЫ С ЧРП
   /*!
@@ -97,31 +100,39 @@ public:
   /*!
    * \brief setMinFrequency
    * Метод задания минимальной частоты
-   * \param MinFrequency
+   * \param lowLimitFrequency
    * \return Код результата операции
    */
-  int setMinFrequency(double Frequency);
+  unsigned char setMinFrequency(float lowLimitFrequency);
 
   /*!
    * \brief setMaxFrequency
    * Метод задания максимальной частоты
    * \return Код результата операции
    */
-  int setMaxFrequency(double Frequency);
+  unsigned char setMaxFrequency(float highLimitFrequency);
+
+  /*!
+   * \brief setRotation
+   * Метод задания направления вращения
+   * \param rotation направление вращения
+   * \return задали направление вращения
+   */
+  unsigned char setRotation(unsigned char rotation);
 
   /*!
    * \brief setDirectRotation
    * Метод задания прямого направления вращения
    * \return Код результата операции
    */
-  int setDirectRotation();
+  unsigned char setDirectRotation();
 
   /*!
    * \brief setReverseRotation
    * Метод задания обратного направления вращения
    * \return Код результата операции
    */
-  int setReverseRotation();
+  unsigned char setReverseRotation();
 
   /*!
    * \brief setSpeedUp

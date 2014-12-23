@@ -449,6 +449,12 @@ unsigned short Device::getIndexAtID(unsigned short ID)
   return 0;
 }
 
+// Метод получения значения параметра
+float Device::getValue(unsigned short id)
+{
+  return getFieldValue(getIndexAtID(id));
+}
+
 // Метод присвоения значения параметру
 unsigned char Device::setValue(unsigned short id, float value)
 {

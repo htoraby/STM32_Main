@@ -109,6 +109,14 @@ class VsdNovomet: public Vsd
         void updateParameters(void);
 
         /*!
+         * \brief checkInvertorStatus
+         * Метод проверки флага в регистре статуса инвертора
+         * \param flag проверяемый флаг
+         * \return 0 - флаг установлен 1 - не установлен
+         */
+        unsigned char checkInvertorStatus(unsigned short flag);
+
+        /*!
          * \brief startVSD
          * МЕТОД ЗАПУСКА ЧРП Новомет
          * Для управления запусками и остановами, и для контроля состояния ПЧ
@@ -155,6 +163,44 @@ class VsdNovomet: public Vsd
          * \return
          */
         unsigned char setFrequency(float frequency);
+
+        /*!
+         * \brief setMinFreq
+         * Метод задания минимальной частоты
+         * \param lowLimitFrequency частота
+         * \return 0 - задали 1 - не задали
+         */
+        unsigned char setMinFrequency(float lowLimitFrequency);
+
+        /*!
+         * \brief setMaxFrequency
+         * Метод задания максимальной частоты
+         * \param highLimitFrequency максимальная частоты
+         * \return 0 - задали 1- не задали
+         */
+        unsigned char setMaxFrequency(float highLimitFrequency);
+
+        /*!
+         * \brief setRotation
+         * Метод задания направления вращения
+         * \param rotation направление вращения 0 прямое(левое), 1 обратное (правое)
+         * \return
+         */
+        unsigned char setRotation(unsigned char rotation);
+
+        /*!
+         * \brief setDirectRotation
+         * Метод задания прямого направления вращения
+         * \return
+         */
+        unsigned char setDirectRotation();
+
+        /*!
+         * \brief setReverseRotation
+         * Метод задания обратного направления вращения
+         * \return
+         */
+        unsigned char setReverseRotation();
 
         /*!
          * \brief writeParameter

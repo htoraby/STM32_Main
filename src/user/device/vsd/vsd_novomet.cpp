@@ -1754,42 +1754,147 @@ void VsdNovomet::updateParameters(void)
   }
 }
 
+unsigned char VsdNovomet::checkInvertorStatus(unsigned short flag)
+{
+  if (((int)getValue(VSD_INVERTOR_STATUS) && flag) == flag)
+    return 0;
+  else
+    return 1;
+}
+
 // Метод запуска ЧРП Новомет
 unsigned char VsdNovomet::startVSD(void)
 {
-  return writeParameter(VSD_INVERTOR_CONTROL, (float)INV_CONTROL_START);
+  // Если не стоит бит запуска двигателя
+  if (checkInvertorStatus(INV_STATUS_STARTED)) {
+    // Если записали данные в устройство
+    if (!writeParameter(VSD_INVERTOR_CONTROL, (float)INV_CONTROL_START)) {
+      // Устанавливаем более высокие приоритеты чтения регистров состояния инвертора
+      DM->setFieldPriority(DM->getIndexAtID(VSD_INVERTOR_STATUS), 1);
+      DM->setFieldPriority(DM->getIndexAtID(VSD_INVERTOR_EXT_STATUS), 1);
+      // TODO: Надо продумать условие выхода из цикла если не запустились
+      while (1) {
+        // Если стоит  бит запуска двигателя
+        if (!checkInvertorStatus(INV_STATUS_STARTED)) {
+          // Если стоит бит ожидания зарядки банок
+          if (!checkInvertorStatus(INV_STATUS_WAIT_RECT_START)) {
+            // TODO: Здесь должны крутиться пока не запустимся
+          }
+          else
+            return RETURN_OK;
+        }
+      }
+    }
+    else
+      return RETURN_ERROR;
+  }
+  else
+    return RETURN_OK;
 }
 
 // Метод останова ЧРП Новомет
 int VsdNovomet::stopVSD(void)
 {
-
-  int Result = RETURN_ERROR;
-  try {
-    Result = setValue(VSD_INVERTOR_CONTROL, INV_CONTROL_STOP);
-    // Если смогли записать в наш банк параметров
-    if (Result) {
-      // Устанавливаем высокий приоритет
-      DM->writeModbusParameter(VSD_INVERTOR_CONTROL, INV_CONTROL_STOP);
+  // Если не стоит бит остановки по внешней команде
+  if (checkInvertorStatus(INV_STATUS_STOPPED_EXTERNAL)) {
+    // Если записали данные в устройство
+    if (!writeParameter(VSD_INVERTOR_CONTROL, (float)INV_CONTROL_STOP)) {
+      // Устанавливаем более высокие приоритеты чтения регистров состояния инвертора
+      DM->setFieldPriority(DM->getIndexAtID(VSD_INVERTOR_STATUS), 1);
+      DM->setFieldPriority(DM->getIndexAtID(VSD_INVERTOR_EXT_STATUS), 1);
+      // TODO: Надо продумать условие выхода из цикла если не запустились
+      while (1) {
+        // Если не стоит бит работы двигателя двигателя
+        if (checkInvertorStatus(INV_STATUS_STARTED)) {
+          // Если не стоит бит ожидания выключения плат выпрямителя
+          if ((checkInvertorStatus(INV_STATUS_WAIT_RECT_STOP))){
+            return RETURN_OK;
+          }
+        }
+      }
     }
+    else
+      RETURN_ERROR;
   }
-  catch (...) {
-
-  }
-  return Result;
+  else
+    return RETURN_OK;
 }
 
 // Метод установки текущей частоты ЧРП Новомет
 unsigned char VsdNovomet::setFrequency(float frequency)
 {
-  float highLimitFreq = getFieldValue(VSD_HIGH_LIM_SPEED_MOTOR);
-  float lowLimitFreq = getFieldValue(VSD_LOW_LIM_SPEED_MOTOR);
+  float highLimitFreq = getValue(VSD_HIGH_LIM_SPEED_MOTOR);
+  float lowLimitFreq = getValue(VSD_LOW_LIM_SPEED_MOTOR);
   unsigned char result = checkRange(frequency, lowLimitFreq, highLimitFreq, 1);
   // Если вернули ошибку
   if (result)
     return result;
   else
     return writeParameter(VSD_FREQUENCY, frequency);
+}
+
+// Метод задания минимальной частоты
+unsigned char VsdNovomet::setMinFrequency(float lowLimitfrequency)
+{
+  if (Vsd::setMinFrequency(lowLimitfrequency)) {
+    return RETURN_ERROR;
+  }
+  else {
+    DM->writeModbusParameter(VSD_LOW_LIM_SPEED_MOTOR, getValue(VSD_LOW_LIM_SPEED_MOTOR));
+    DM->writeModbusParameter(VSD_FREQUENCY,getValue(VSD_FREQUENCY));
+    return RETURN_OK;
+  }
+}
+
+// Метод задания максимальной частоты
+unsigned char VsdNovomet::setMaxFrequency(float highLimitFrequency)
+{
+  if (Vsd::setMaxFrequency(highLimitFrequency)) {
+    return RETURN_ERROR;
+  }
+  else {
+    DM->writeModbusParameter(VSD_HIGH_LIM_SPEED_MOTOR, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+    DM->writeModbusParameter(VSD_FREQUENCY,getValue(VSD_FREQUENCY));
+    return RETURN_OK;
+  }
+}
+
+unsigned char VsdNovomet::setRotation(unsigned char rotation)
+{
+  unsigned char result = RETURN_ERROR;
+  if (Vsd::setRotation(rotation)) {
+    return result;
+  }
+  else {
+    if (rotation) {
+      result = setReverseRotation();
+    }
+    else
+      result = setDirectRotation();
+  }
+  return result;
+}
+
+// Метод задания прямого направления вращения
+unsigned char VsdNovomet::setDirectRotation()
+{
+  unsigned char result = RETURN_ERROR;
+  result = Vsd::setDirectRotation();
+  if (!result) {
+    DM->writeModbusParameter(VSD_INVERTOR_CONTROL, INV_CONTROL_LEFT_DIRECTION);
+  }
+  return result;
+}
+
+// Метод задания обратного направления вращения
+unsigned char VsdNovomet::setReverseRotation()
+{
+  unsigned char result = RETURN_ERROR;
+  result = Vsd::setReverseRotation();
+  if (!result) {
+    DM->writeModbusParameter(VSD_INVERTOR_CONTROL, INV_CONTROL_RIGHT_DIRECTION);
+  }
+  return result;
 }
 
 // Метод записи нового значения в массив регистров устройства

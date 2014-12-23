@@ -233,13 +233,33 @@ enum enUpdate
   UPDATE_LAST
 };
 
-enum enCondition
+enum enCcsCondition
 {
-	CS_CONDITION_STOP			= 0,
-	CS_CONDITION_WAIT,
-	CS_CONDITION_DELAY,
-	CS_CONDITION_BLOCK,
-	CS_CONDITION_WORK
+  /// Горит красный светодиод
+  CCS_CONDITION_STOP = 0,
+  /// Горит желтый светодиод
+  CCS_CONDITION_WAIT,
+  /// Горит желтый и зеленый светодиоды
+  CCS_CONDITION_DELAY,
+  /// Горит красный светодиод
+  CCS_CONDITION_BLOCK,
+  /// Горит зеленый светодиод
+  CCS_CONDITION_RUN
+};
+
+enum enVsdCondition{
+  /// Состояние останов
+  VSD_CONDITION_STOP,
+  /// Состояние торможение
+  VSD_CONDITION_STOPPED,
+  /// Состояние ожидание начала торможения
+  VSD_CONDITION_WAIT_STOP,
+  /// Состояние работа
+  VSD_CONDITION_RUN,
+  /// Состояние запуск
+  VSD_CONDITION_RUNNING,
+  /// Состояние ожидание запуска
+  VSD_CONDITION_WAIT_RUN
 };
 
 enum enID
@@ -249,7 +269,9 @@ enum enID
   /// ИЗМЕРЯЕМЫЕ, РАСЧЁТНЫЕ И КОНТРОЛИРУЕМЫЕ ПАРАМЕТРЫ
   CCS_RESISTANCE_ISOLATION,									/// Сопротивление изоляции, берем с ТМС или УКИ
 
+
   CCS_ACCESS_LEVEL,											/// Уровень доступа к контроллеру
+  //
 	CCS_CONDITION,
   CCS_DEVICE_STOP,											/// Устройство остановлено
   CCS_LOAD_MOTOR,												/// Текущая загрузка двигателя
@@ -357,30 +379,38 @@ enum enID
 	CCS_PROT_RESISTANCE_ISOLATION_COUNTER,
   CCS_PROT_RESISTANCE_ISOLATION_GENERAL_COUNTER_RESTART,		/// Общий счётчик
   CCS_PROT_RESISTANCE_ISOLATION_GENERAL_COUNTER_STOP,			/// Общий счётчик срабатывания защиты
-  /// ЗАЩИТА ПРЕВЫШЕНИЯ ПИТАНИЯ СЕТИ
-	CCS_PROT_HIGH_VOLTAGE_MODE,
-	CCS_PROT_HIGH_VOLTAGE_ACTION,
-	CCS_PROT_HIGH_VOLTAGE_ACTIVATION,
-	CCS_PROT_HIGH_VOLTAGE_TIMER_DELAY,
-	CCS_PROT_HIGH_VOLTAGE_TIMER_RESTART,
-	CCS_PROT_HIGH_VOLTAGE_CONTROL_PARAM,
-	CCS_PROT_HIGH_VOLTAGE_SETPOINT,
-	CCS_PROT_HIGH_VOLTAGE_COUNTER_RESTART,
-	CCS_PROT_HIGH_VOLTAGE_TIMER_COUNTER_RESTART,
-	CCS_PROT_HIGH_VOLTAGE_BAN,
-	CCS_PROT_HIGH_VOLTAGE_BAN_SETPOINT,
-	CCS_PROT_HIGH_VOLTAGE_STATE,
-	CCS_PROT_HIGH_VOLTAGE_TIMER,
-	CCS_PROT_HIGH_VOLTAGE_COUNTER,
-  CCS_PROT_HIGH_VOLTAGE_GENERAL_COUNTER_RESTART,				/// Общий счётчик
-  CCS_PROT_HIGH_VOLTAGE_GENERAL_COUNTER_STOP,					/// Общий счётчик срабатывания защиты
+  /// Защита первышения питания сети
+  /// Состояние защиты
+  CCS_PROT_OVERVOLTAGE_IN_MODE,
+  /// Действие защиты
+  CCS_PROT_OVERVOLTAGE_IN_ACTION,
+  /// Задержка активации
+  CCS_PROT_OVERVOLTAGE_IN_DELAY_ACTIV,
+  /// Задержка срабатывания
+  CCS_PROT_OVERVOLTAGE_IN_DELAY_REACTION,
+  /// Задержка АПВ
+  CCS_PROT_OVERVOLTAGE_IN_DELAY_RESTART,
+  /// Значение границы срабатывания
+  CCS_PROT_OVERVOLTAGE_IN_LIMIT_REACTION,
+  /// Значение границы АПВ
+  CCS_PROT_OVERVOLTAGE_IN_LIMIT_RESTART,
+  /// Состояние автомата защиты
+  CCS_PROT_OVERVOLTAGE_IN_STATE,
+  /// Значение контролируемого параметра
+  CCS_PROT_OVERVOLTAGE_IN_VALUE_PARAMETER,
+  CCS_PROT_OVERVOLTAGE_IN_COUNTER_RESTART,
+  CCS_PROT_OVERVOLTAGE_IN_TIMER_COUNTER_RESTART,
+  CCS_PROT_OVERVOLTAGE_IN_BAN,
+  CCS_PROT_OVERVOLTAGE_IN_BAN_SETPOINT,
+  CCS_PROT_OVERVOLTAGE_IN_TIMER,
+  CCS_PROT_OVERVOLTAGE_IN_COUNTER,
   /// ЗАЩИТА ПРЕВЫШЕНИЯ ЧИСЛА ПУСКОВ
 	CCS_PROT_COUNTER_RESTART_MODE,
 	CCS_PROT_COUNTER_RESTART_ACTION,
 	CCS_PROT_COUNTER_RESTART_ACTIVATION,
 	CCS_PROT_COUNTER_RESTART_TIMER_DELAY,
 	CCS_PROT_COUNTER_RESTART_TIMER_RESTART,
-	CCS_PROT_COUNTER_RESTARTE_CONTROL_PARAM,
+  CCS_PROT_COUNTER_RESTART_CONTROL_PARAM,
 	CCS_PROT_COUNTER_RESTART_SETPOINT,
 	CCS_PROT_COUNTER_RESTART_COUNTER_RESTART,
 	CCS_PROT_COUNTER_RESTART_TIMER_COUNTER_RESTART,
@@ -1660,6 +1690,45 @@ enum enID
 	VSD_PHOUT,
   //// Усредненная фаза выходного тока ПЧ
   //// Novomet 0х0089 IREG_PHOUT
+
+  // Первая точка напряжения U/f характеристики
+  VSD_UF_CHARACTERISTIC_U_1,
+
+  // Первая точка частоты U/f характеристики
+  VSD_UF_CHARACTERISTIC_F_1,
+
+  // Вторая точка напряжения U/f характеристики
+  VSD_UF_CHARACTERISTIC_U_2,
+
+  // Вторая точка частоты U/f характеристики
+  VSD_UF_CHARACTERISTIC_F_2,
+
+  // Третья точка напряжения U/f характеристики
+  VSD_UF_CHARACTERISTIC_U_3,
+
+  // Третья точка частоты U/f характеристики
+  VSD_UF_CHARACTERISTIC_F_3,
+
+  // Четвертая точка напряжения U/f характеристики
+  VSD_UF_CHARACTERISTIC_U_4,
+
+  // Четвертая точка частоты U/f характеристики
+  VSD_UF_CHARACTERISTIC_F_4,
+
+  // Пятая точка напряжения U/f характеристики
+  VSD_UF_CHARACTERISTIC_U_5,
+
+  // Пятая точка частоты U/f характеристики
+  VSD_UF_CHARACTERISTIC_F_5,
+
+  // Шестая точка напряжения U/f характеристики
+  VSD_UF_CHARACTERISTIC_U_6,
+
+  // Шестая точка частоты U/f характеристики
+  VSD_UF_CHARACTERISTIC_F_6,
+
+  /// Состояние ЧРП
+  VSD_CONDITION,
 
 	VSD_END,
 

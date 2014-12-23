@@ -285,6 +285,14 @@ public:
   unsigned short getIndexAtID(unsigned short ID);
 
   /*!
+   * \brief getValue
+   * Метод получения значения параметра по id
+   * \param id уникальный идентификатор параметра
+   * \return значение параметра
+   */
+  float getValue(unsigned short id);
+
+  /*!
    * \brief setValue
    * Метод присвоения значения параметру
    * Когда пытаемся записать значение, нам нужно проверить

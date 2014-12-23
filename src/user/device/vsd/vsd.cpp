@@ -23,6 +23,97 @@ int Vsd::setFrequency(float Frequency)
   return Result;
 }
 
+// Метод задания минимальной частоты двигателя
+unsigned char Vsd::setMinFrequency(float lowLimitFrequency)
+{
+  unsigned char result = RETURN_ERROR;
+  // Читаем уставку максимальная частота
+  float highLimitFreq = getValue(VSD_HIGH_LIM_SPEED_MOTOR);
+  // Если задаваемая минимальная частоты больше или равна максимальноу
+  if (lowLimitFrequency >= highLimitFreq) {
+    result = RETURN_ERROR;
+  }
+  else {
+    // Записывае минимум частоты
+    result = setValue(VSD_LOW_LIM_SPEED_MOTOR, lowLimitFrequency);
+    // Если записали минимум частоты
+    if (!result) {
+      // Читаем уставку частоты
+      float frequency = getValue(VSD_FREQUENCY);
+      // Если частота меньше вновь заданной уставки
+      if (frequency < lowLimitFrequency) {
+        result = setValue(VSD_FREQUENCY, lowLimitFrequency);
+      }
+    }
+  }
+  return result;
+}
+
+// Метод задания максимальной частоты
+unsigned char Vsd::setMaxFrequency(float highLimitFrequency)
+{
+  unsigned char result = RETURN_ERROR;
+  // Читаем уставку минимальной частоты
+  float lowLimitFreq = getValue(VSD_LOW_LIM_SPEED_MOTOR);
+  // Если задаваемая максимальная частота меньше или равна минимальной
+  if ((highLimitFrequency <= lowLimitFreq)||(lowLimitFreq <= 0)) {
+    result = RETURN_ERROR;
+  }
+  else {
+    // Записываем значение частоты
+    result = setValue(VSD_HIGH_LIM_SPEED_MOTOR, highLimitFrequency);
+    if (!result) {
+      // Читаем уставку частоты
+      float frequency = getValue(VSD_FREQUENCY);
+      // Если частота больше вновь заданной уставки
+      if (frequency > highLimitFrequency) {
+        result = setValue(VSD_FREQUENCY, highLimitFrequency);
+      }
+    }
+  }
+  return result;
+}
+
+// Метод задания направления вращения
+unsigned char Vsd::setRotation(unsigned char rotation)
+{
+  unsigned char result = RETURN_ERROR;
+  if (rotation) {
+    result = setReverseRotation();
+  }
+  else {
+    result = setDirectRotation();
+  }
+  return result;
+}
+
+// Метод задания прямого направления вращения
+unsigned char Vsd::setDirectRotation()
+{
+  unsigned char result = RETURN_ERROR;
+  result = setValue(VSD_ROTATION, 0);
+  if (!result)
+    result = RETURN_OK;
+  return result;
+}
+
+
+// Метод задания обратного направления вращения
+unsigned char Vsd::setReverseRotation()
+{
+  unsigned char result = RETURN_ERROR;
+  result = setValue(VSD_ROTATION, 1);
+  if (!result)
+    result = RETURN_OK;
+  return result;
+}
+
+// Метод получения текущей частоты
+float Vsd::getCurrentFreq()
+{
+  return getValue(VSD_CURRENT_FREQUENCY);
+}
+
 void Vsd::initParameters()
 {
   // Пустой элемент массива
