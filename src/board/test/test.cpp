@@ -9,6 +9,7 @@
 #include "adc.h"
 #include "temp_sensor.h"
 #include "adc_ext.h"
+#include "host.h"
 
 static void testThread(void *argument);
 static void testUartThread(void *argument);
@@ -21,6 +22,7 @@ static void testTempSensor();
 static void testDI();
 static void testDO();
 static void testAdcExt();
+static void testHost();
 
 #if USE_EXT_MEM
   uint8_t bufferTx[4096] __attribute__((section(".extmem")));
@@ -35,12 +37,11 @@ static void testAdcExt();
 void testInit()
 {
   /* Create Test thread */
-  osThreadDef(Test_Thread, testThread, osPriorityNormal, 0, 10 * configMINIMAL_STACK_SIZE);
+  osThreadDef(Test_Thread, testThread, osPriorityNormal, 0, 12 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(Test_Thread), NULL);
 
   osThreadDef(Test_Uart_Thread, testUartThread, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(Test_Uart_Thread), NULL);
-
 }
 
 static void testThread(void * argument)
@@ -78,6 +79,7 @@ static void testThread(void * argument)
   testDI();
   testDO();
   testAdcExt();
+  testHost();
 
   while(1) {
 #if (TEST_USB_FAT == 1)
@@ -201,7 +203,6 @@ static void testRtc()
 
 static void testAdc()
 {
-  adcStartDma();
 #if (TEST_ADC == 1)
   StatusType status;
   static float coreTemperature;
@@ -235,6 +236,7 @@ static void testFram()
   bufferTx[8] = 0x55;
   bufferTx[9] = 0x12;
   bufferTx[sizeof(bufferTx)-1] = 0x55;
+  memset(bufferRx, 0, sizeof(bufferRx));
   framWriteData(0, bufferTx, sizeof(bufferTx));
   framReadData(0, bufferRx, sizeof(bufferTx));
 
@@ -342,5 +344,28 @@ static void testAdcExt()
     if (value)
       asm("nop");
   }
+#endif
+}
+
+static void testHost()
+{
+#if TEST_HOST
+  osSemaphoreId semaphoreId = hostSemaphoreCreate();
+
+  bufferTx[0] = 0x55;
+  bufferTx[1] = 0x7E;
+  bufferTx[9] = 0xAA;
+  bufferTx[HOST_BUF_SIZE-1] = 0x55;
+  hostWriteData(bufferTx, HOST_BUF_SIZE);
+
+  osSemaphoreWait(semaphoreId, osWaitForever);
+
+  int sizePkt = hostReadData(bufferRx);
+
+  if (memcmp(bufferTx, bufferRx, HOST_BUF_SIZE) ||
+      (sizePkt != HOST_BUF_SIZE)) {
+    asm("nop"); // Ошибка
+  }
+  asm("nop");
 #endif
 }

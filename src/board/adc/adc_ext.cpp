@@ -122,10 +122,8 @@ void setModeAnalogInExt(uint8_t num, uint8_t mode)
   updateModeAnalogIn();
 }
 
-void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
+void adcExtTxRxCpltCallback()
 {
-  (void)hspi;
-
   setPinOut(SPI2_NSS_PIN);
   uint16_t data = bufferRx[2];
   data += (bufferRx[1] & 0x0F) << 8;

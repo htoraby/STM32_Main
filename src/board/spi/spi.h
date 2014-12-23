@@ -3,4 +3,6 @@
 
 #include "board.h"
 
+void spiWait(SPI_HandleTypeDef* hspi);
+
 #endif // SPI_H

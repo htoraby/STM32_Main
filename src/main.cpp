@@ -25,6 +25,7 @@
 #include "iwdg.h"
 #include "rcause.h"
 #include "temp_sensor.h"
+#include "host.h"
 
 static void systemClockConfig();
 static void mainThread(void *argument);
@@ -50,6 +51,7 @@ int main()
   flashExtInit(FlashSpi1);
   flashExtInit(FlashSpi5);
   tempSensorInit();
+  hostInit();
 
   iwdgInit();
 

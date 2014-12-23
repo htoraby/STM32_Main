@@ -108,6 +108,8 @@ void adcInit(adcNum num)
     sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
     sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
     HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig);
+
+    adcStartDma();
   }
 
   /**Configure the ADC multi-mode
