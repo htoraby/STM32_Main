@@ -1,4 +1,5 @@
 #include "spi.h"
+#include "flash_ext.h"
 
 extern void framTxRxCpltCallback();
 extern void adcExtTxRxCpltCallback();
@@ -128,15 +129,23 @@ void HAL_SPI_MspDeInit(SPI_HandleTypeDef* hspi)
 
 void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
 {
-  if (hspi->Instance == SPI3) {
+  if (hspi->Instance == SPI1) {
+    flashTxRxCpltCallback(FlashSpi1);
+  } else if (hspi->Instance == SPI3) {
     framTxRxCpltCallback();
+  } else if (hspi->Instance == SPI5) {
+    flashTxRxCpltCallback(FlashSpi5);
   }
 }
 
 void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef *hspi)
 {
-  if (hspi->Instance == SPI3) {
+  if (hspi->Instance == SPI1) {
+    flashTxRxCpltCallback(FlashSpi1);
+  } else if (hspi->Instance == SPI3) {
     framTxRxCpltCallback();
+  } else if (hspi->Instance == SPI5) {
+    flashTxRxCpltCallback(FlashSpi5);
   }
 }
 
@@ -149,8 +158,12 @@ void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
 
 void HAL_SPI_ErrorCallback(SPI_HandleTypeDef* hspi)
 {
-  if (hspi->Instance == SPI3) {
+  if (hspi->Instance == SPI1) {
+    flashTxRxCpltCallback(FlashSpi1);
+  } else if (hspi->Instance == SPI3) {
     framTxRxCpltCallback();
+  } else if (hspi->Instance == SPI5) {
+    flashTxRxCpltCallback(FlashSpi5);
   }
 }
 
