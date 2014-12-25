@@ -10,6 +10,7 @@
 
 #include "define.h"
 #include "stdlib.h"
+#include "board.h"
 
 #define MODBUS_OK                             0
 #define MODBUS_ERROR_TIMEOUT                  1
@@ -436,10 +437,7 @@ class ModbusMaster
 		// МЕТОД ПРОВЕРКИ КОЛИЧЕСТВА РЕГИСТРОВ
 		bool checkCntReg(int Cnt);
 
-		// МЕТОД ВЫЧИСЛЕНИЯ КОНТРОЛЬНОЙ СУММЫ
-		unsigned short calcCRC16(char Size, unsigned char* Buf);
-
-    unsigned char bufferTx_[MODBUS_MAX_DATA_SIZE];
+    unsigned char txBuffer_[MODBUS_MAX_DATA_SIZE];
     unsigned char bufferRx_[MODBUS_MAX_DATA_SIZE];
 
 	///////////////////////////////////////////////////////////////////////////

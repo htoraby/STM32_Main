@@ -109,4 +109,5 @@ unsigned char ProtectionOvervoltageInput::protection()
   default:
     break;
   }
+  return 1;
 }

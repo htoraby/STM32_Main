@@ -75,7 +75,7 @@ int ModbusMasterSerial::closeProtocol(int PortName)
 // МЕТОД ПОСЫЛКИ ДАННЫХ ИЗ БУФЕРА В COM ПОРТ
 int ModbusMasterSerial::transmitQuery(unsigned char *Buf, int Count)
 {
-  uart_writeData((uartNum)numberComPort_, bufferTx_, Count);
+  uart_writeData((uartNum)numberComPort_, txBuffer_, Count);
   return 1;
 }
 

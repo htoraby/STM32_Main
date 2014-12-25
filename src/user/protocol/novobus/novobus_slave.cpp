@@ -1,7 +1,19 @@
 #include "novobus_slave.h"
+#include "host.h"
+
+static void novobusSlaveTask(void *p)
+{
+  (static_cast<NovobusSlave*>(p))->exchangeCycle();
+}
 
 NovobusSlave::NovobusSlave()
 {
+  // Создаём задачу Novobus slave
+  // Заполняем структуру с параметрами задачи
+  osThreadDef_t t = {"novobusSlave", novobusSlaveTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
+  // Создаём задачу
+  threadId_ = osThreadCreate(&t, this);
+
   // Создаём очередь сообщений событий (надписей на дисплее)
   osMessageQDef(MessageEventSPI, 100, uint32_t);
   messageEventSPI_ = osMessageCreate (osMessageQ(MessageEventSPI), NULL);
@@ -13,6 +25,22 @@ NovobusSlave::NovobusSlave()
 
 NovobusSlave::~NovobusSlave()
 {
+
+}
+
+void NovobusSlave::exchangeCycle(void)
+{
+  osSemaphoreId semaphoreId = hostSemaphoreCreate();
+  // Бесконечный цикл
+  while(1) {
+    // Проверить семафор, если он свободен
+    if (osSemaphoreWait(semaphoreId, osWaitForever) != osEventTimeout) {
+      if (hostReadData(rxBuffer_)) {
+        reseivePackage();
+        hostWriteData(txBuffer_, txBuffer_[1]);
+      }
+    }
+  }
 
 }
 
@@ -42,7 +70,7 @@ void NovobusSlave::reseivePackage()
   // Команда
   char command = rxBuffer_[0];
   // Количество байт в запросе 2 байт и 1 элемент массива
-  char count = rxBuffer_[1];
+  uint8_t count = rxBuffer_[1];
   // Количество параметров считываемых в запросе
   char countParam;
   // Временная переменная преобразования типов
@@ -50,9 +78,9 @@ void NovobusSlave::reseivePackage()
   DataType Value;
   int i = 0;
   // Получаем контрольную сумму
-  unsigned short rxCrc = (rxBuffer_[count - 2] << 8) + rxBuffer_[count - 1];
+  uint16_t rxCrc = (rxBuffer_[count - 2] << 8) + rxBuffer_[count - 1];
   // Вычисляем контрольную сумму
-  unsigned short calcCrc = calcCRC16(0, rxBuffer_[1] - 2, rxBuffer_);
+  uint16_t calcCrc = crc16_ibm(rxBuffer_, rxBuffer_[1] - 2);
   // Если контрольная сумма сошлась
   if (rxCrc == calcCrc) {
     // Анализ команды
@@ -79,7 +107,8 @@ void NovobusSlave::reseivePackage()
         //  Количество байт в пакете
         txBuffer_[1] = count;
         // Вычисляем и добавляем контрольную сумму
-        calcCrc = calcCRC16(0, (txBuffer_[count] - 2), txBuffer_);
+        calcCrc = crc16_ibm(txBuffer_, (txBuffer_[count] - 2));
+//        calcCrc = crc16_ibm(0, (txBuffer_[count] - 2), txBuffer_);
         txBuffer_[count-1] = calcCrc >> 8;
         txBuffer_[count] = calcCrc;
       }
@@ -108,7 +137,7 @@ void NovobusSlave::reseivePackage()
           //  Количество байт в пакете
           txBuffer_[1] = count;
           // Вычисляем и добавляем контрольную сумму
-          calcCrc = calcCRC16(0, txBuffer_[count] - 2, txBuffer_);
+          calcCrc = crc16_ibm(txBuffer_, txBuffer_[count] - 2);
           txBuffer_[count-1] = calcCrc >> 8;
           txBuffer_[count] = calcCrc;
         }
@@ -148,7 +177,7 @@ void NovobusSlave::reseivePackage()
       //  Количество байт в пакете
       txBuffer_[1] = count;
       // Вычисляем и добавляем контрольную сумму
-      calcCrc = calcCRC16(0, (txBuffer_[count] - 2), txBuffer_);
+      calcCrc = crc16_ibm(txBuffer_, txBuffer_[count] - 2);
       txBuffer_[count-1] = (char)(calcCrc >> 8);
       txBuffer_[count] = (char)calcCrc;
       break;
@@ -184,7 +213,7 @@ void NovobusSlave::reseivePackage()
       //  Количество байт в пакете
       txBuffer_[1] = count;
       // Вычисляем и добавляем контрольную сумму
-      calcCrc = calcCRC16(0, txBuffer_[count] - 2, txBuffer_);
+      calcCrc = crc16_ibm(txBuffer_, txBuffer_[count] - 2);
       txBuffer_[count-1] = calcCrc >> 8;
       txBuffer_[count] = calcCrc;
       break;
@@ -197,25 +226,4 @@ void NovobusSlave::reseivePackage()
       break;
     }
   }
-}
-
-// МЕТОД ВЫЧИСЛЕНИЯ КОНТРОЛЬНОЙ СУММЫ
-unsigned short NovobusSlave::calcCRC16(unsigned char begin, unsigned char Size, unsigned char* Buf)
-{
-    unsigned short Crc = 0xffff;
-    unsigned char Byte = 0;
-    unsigned char Bit = 0;
-    unsigned char Flag;
-    for(Byte = 0; Byte < Size; Byte++)
-    {
-        Crc = Crc ^ Buf[Byte + begin];
-        for(Bit = 0; Bit < 8; Bit++)
-        {
-            Flag = Crc & 0x0001;
-            Crc = Crc >> 1;
-            if (Flag)
-                Crc = Crc ^ 0xA001;
-        }
-    }
-    return Crc;
 }

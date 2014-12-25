@@ -211,5 +211,6 @@ unsigned char Protection::protection()
 
     break;
   }
+  return 1;
 }
 

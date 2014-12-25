@@ -1814,7 +1814,7 @@ int VsdNovomet::stopVSD(void)
       }
     }
     else
-      RETURN_ERROR;
+      return RETURN_ERROR;
   }
   else
     return RETURN_OK;

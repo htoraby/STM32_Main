@@ -291,6 +291,7 @@ private:
    // Идентификатор очереди параметров опроса вне основного цикла
    osMessageQId messageOutOfTurn_;
 
+   // Очередь обновленных параметров
    osMessageQId messageUpdateID_;
 
    ModbusParameter modbusParameters_[];
