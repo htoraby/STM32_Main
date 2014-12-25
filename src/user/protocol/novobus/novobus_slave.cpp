@@ -93,8 +93,8 @@ void NovobusSlave::reseivePackage()
             txBuffer_[6*i + 3] = ID.DtChar[1];
             txBuffer_[6*i + 4] = Value.DtChar[0];
             txBuffer_[6*i + 5] = Value.DtChar[1];
-            txBuffer_[6*i + 6] = Value.DtChar[1];
-            txBuffer_[6*i + 7] = Value.DtChar[1];
+            txBuffer_[6*i + 6] = Value.DtChar[2];
+            txBuffer_[6*i + 7] = Value.DtChar[3];
             i++;
           }
           else

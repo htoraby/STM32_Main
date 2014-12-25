@@ -9,16 +9,22 @@
 
 
 #define PROTECTION_STATE_OFF            0
-#define PROTECTION_STATE_ACTIV_WAIT     10
-#define PROTECTION_STATE_ACTIV          20
-#define PROTECTION_STATE_WORK_WAIT      30
+#define PROTECTION_STATE_ACTIV_BEGIN    10
+#define PROTECTION_STATE_ACTIV_WAIT     20
+#define PROTECTION_STATE_ACTIV          30
 #define PROTECTION_STATE_WORK           40
-#define PROTECTION_STATE_REACTION_WAIT  50
-#define PROTECTION_STATE_REACTION       60
-#define PROTECTION_STATE_RESTART_WAIT   70
-#define PROTECTION_STATE_RESTART        80
-#define PROTECTION_STATE_STOP           90
-#define PROTECTION_STATE_BLOCK          100
+#define PROTECTION_STATE_WORK_WAIT      50
+#define PROTECTION_STATE_REACTION_BEGIN 60
+#define PROTECTION_STATE_REACTION_WAIT  70
+#define PROTECTION_STATE_REACTION       80
+#define PROTECTION_STATE_FAILURE_BEGIN  90
+#define PROTECTION_STATE_FAILURE_WAIT   100
+#define PROTECTION_STATE_FAILURE        110
+#define PROTECTION_STATE_RESTART_BEGIN  120
+#define PROTECTION_STATE_RESTART_WAIT   130
+#define PROTECTION_STATE_RESTART        140
+#define PROTECTION_STATE_STOP           150
+#define PROTECTION_STATE_BLOCK          160
 
 class Protection
 {
@@ -42,16 +48,31 @@ public:
   float limitReaction_;
   /// Уставка: граница АПВ
   float limitRestart_;
+  /// Уставка: количество АПВ
+  float numberRestart_;
   /// Текущее значение контролируемого параметра
   float valueParameter_;
   /// Текущее значение таймера
   float timer_;
-  /// Флаг выполнения условия срабатывания защиты
-  unsigned char flagReaction;
-  /// Флаг запрещающего параметра
-  unsigned char flagBlocking;
+  /// Текущее количество АПВ по защите
+  float countRestart_;
+  float delayFailure_;
 
-  unsigned char checkWorkKSU();
+
+  /// Флаг выполнения условия срабатывания защиты
+  unsigned char flagReaction_;
+  /// Флаг запрещающего параметра
+  unsigned char flagBlocking_;
+
+  bool checkWorkKSU();
+
+  /*!
+   * \brief getCurrentParam
+   * Метод получения текущих значений параметров защиты
+   * \param первый параметр
+   */
+  void getCurrentParam(int count);
+
 
   /*!
    * \brief calcControlParameter

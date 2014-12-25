@@ -4,10 +4,10 @@
 #include "device.h"
 #include "board.h"
 
-#define NOVOBUS_COMMAND_DIAGNOSTIC  10
-#define NOVOBUS_COMMAND_READ        20
-#define NOVOBUS_COMMAND_WRITE       30
-#define NOVOBUS_COMMAND_MESSAGE     40
+#define NOVOBUS_COMMAND_DIAGNOSTIC  1
+#define NOVOBUS_COMMAND_READ        2
+#define NOVOBUS_COMMAND_WRITE       3
+#define NOVOBUS_COMMAND_MESSAGE     4
 
 
 /*!

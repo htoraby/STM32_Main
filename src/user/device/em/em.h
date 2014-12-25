@@ -31,4 +31,6 @@ class Em: public Device
 
 };
 
+extern Em em;
+
 #endif /* EM_H_ */
