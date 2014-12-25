@@ -3,6 +3,9 @@
 
 #include "board.h"
 
+//! Вывод детектора питания
+#define WATCH_PIN  GPIOI, GPIO_PIN_5
+
 /*!
  \brief Значения вывода
 
@@ -164,5 +167,12 @@ PinState getDigitalInput(const uint16_t num);
  \param value: значение на выходе 0 или 1. По умолчанию 0
 */
 void setDigitalOutput(const uint16_t num, PinState value = PinReset);
+
+/*!
+ \brief Получение состояния питания платы с внешнего детектора
+
+ \return bool: true - норма, false - падение напряжения ниже 21,8В
+*/
+bool isPowerGood();
 
 #endif // GPIO_H
