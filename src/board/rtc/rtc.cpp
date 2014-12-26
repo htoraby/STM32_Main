@@ -72,22 +72,24 @@ void HAL_RTC_MspDeInit(RTC_HandleTypeDef *hrtc)
   __HAL_RCC_RTC_DISABLE();
 }
 
-void setDateTime(const DateTimeTypeDef &dateTime)
+void setDateTime(const tm &time)
 {
+  if (time.tm_year < 2000)
+    return;
+
   RTC_TimeTypeDef timeRtc;
-  timeRtc.Hours = dateTime.hours;
-  timeRtc.Minutes = dateTime.minutes;
-  timeRtc.Seconds = dateTime.seconds;
-  timeRtc.SubSeconds = dateTime.mseconds;
+  timeRtc.Hours = time.tm_hour;
+  timeRtc.Minutes = time.tm_min;
+  timeRtc.Seconds = time.tm_sec;
   timeRtc.TimeFormat = RTC_HOURFORMAT12_AM;
   timeRtc.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
   timeRtc.StoreOperation = RTC_STOREOPERATION_RESET;
   HAL_RTC_SetTime(&hrtc, &timeRtc, FORMAT_BIN);
 
   RTC_DateTypeDef dateRtc;
-  dateRtc.Date = dateTime.date;
-  dateRtc.Month = dateTime.month;
-  dateRtc.Year = dateTime.year;
+  dateRtc.Date = time.tm_mday;
+  dateRtc.Month = time.tm_mon;
+  dateRtc.Year = time.tm_year - 2000;
   dateRtc.WeekDay = RTC_WEEKDAY_MONDAY;
   HAL_RTC_SetDate(&hrtc, &dateRtc, FORMAT_BIN);
 }
@@ -115,22 +117,21 @@ void setDate(const DateTypeDef &date)
   HAL_RTC_SetDate(&hrtc, &dateRtc, FORMAT_BIN);
 }
 
-void getDateTime(DateTimeTypeDef *dateTime)
+void getDateTime(tm *time)
 {
   RTC_TimeTypeDef timeRtc;
   HAL_RTC_GetTime(&hrtc, &timeRtc, FORMAT_BIN);
-  dateTime->hours = timeRtc.Hours;
-  dateTime->minutes = timeRtc.Minutes;
-  dateTime->seconds = timeRtc.Seconds;
-  dateTime->mseconds = (255 - timeRtc.SubSeconds)*1000/255;
+  time->tm_hour = timeRtc.Hours;
+  time->tm_min = timeRtc.Minutes;
+  time->tm_sec = timeRtc.Seconds;
 
   RTC_DateTypeDef dateRtc;
   HAL_RTC_GetDate(&hrtc, &dateRtc, FORMAT_BIN);
-  dateTime->date = dateRtc.Date;
-  dateTime->month = dateRtc.Month;
-  dateTime->year = dateRtc.Year;
-  if((dateTime->date == 0) || (dateTime->month == 0)) {
-    dateTime->date = dateTime->month = 1;
+  time->tm_mday = dateRtc.Date;
+  time->tm_mon = dateRtc.Month;
+  time->tm_year = dateRtc.Year + 2000;
+  if((time->tm_mday == 0) || (time->tm_mon == 0)) {
+    time->tm_mday = time->tm_mon = 1;
   }
 }
 

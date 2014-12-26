@@ -2,20 +2,7 @@
 #define RTC_H
 
 #include "board.h"
-
-/*!
- \brief Структура даты и времени
-
-*/
-typedef struct {
-  uint8_t year;      //! Год: 0-99
-  uint8_t date;      //! Дата: 1-31
-  uint8_t month;     //! Месяц: 1-12 (@ref RTC_Month_Date_Definitions)
-  uint8_t hours;     //! Часы: 0-23
-  uint8_t minutes;   //! Минуты: 0-59
-  uint8_t seconds;   //! Секунды: 0-59
-  uint32_t mseconds; //! Миллисекунды: 0
-} DateTimeTypeDef;
+#include <time.h>
 
 /*!
  \brief Структура времени
@@ -47,9 +34,9 @@ void rtcInit();
 /*!
  \brief Установка даты и времени
 
- \param dateTime - структура даты и времени @ref DateTimeTypeDef
+ \param dateTime - структура даты и времени @ref tm
 */
-void setDateTime(const DateTimeTypeDef &dateTime);
+void setDateTime(const tm &time);
 
 /*!
  \brief Установка времени
@@ -68,9 +55,9 @@ void setDate(const DateTypeDef &date);
 /*!
  \brief Получение даты и времени
 
- \param dateTime - структура даты и времени @ref DateTimeTypeDef
+ \param dateTime - структура даты и времени @ref tm
 */
-void getDateTime(DateTimeTypeDef *dateTime);
+void getDateTime(tm *time);
 
 /*!
  \brief Получение времени

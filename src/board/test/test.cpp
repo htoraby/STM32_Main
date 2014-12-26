@@ -10,6 +10,7 @@
 #include "temp_sensor.h"
 #include "adc_ext.h"
 #include "host.h"
+#include "log.h"
 
 static void testThread(void *argument);
 static void testUartThread(void *argument);
@@ -181,23 +182,23 @@ static void testUartThread(void * argument)
 static void testRtc()
 {
 #if (TEST_RTC == 1)
-  DateTimeTypeDef dateTime;
+  tm dateTime;
   //! Установка даты и времени
-  dateTime.month = 11;
-  dateTime.date = 6;
-  dateTime.year = 14;
-  dateTime.hours = 17;
-  dateTime.minutes = 21;
-  dateTime.seconds = 10;
-  dateTime.mseconds = 0;
+  dateTime.tm_mon = 11;
+  dateTime.tm_mday = 6;
+  dateTime.tm_year = 2014;
+  dateTime.tm_hour = 17;
+  dateTime.tm_min = 21;
+  dateTime.tm_sec = 10;
   setDateTime(dateTime);
   osDelay(1005);
   getDateTime(&dateTime);
-  if ((dateTime.month != 11) || (dateTime.date != 6) || (dateTime.year != 14) ||
-      (dateTime.hours != 17) || (dateTime.minutes != 21) ||
-      (dateTime.seconds != 11)) {
+  if ((dateTime.tm_mon != 11) || (dateTime.tm_mday != 6) ||
+      (dateTime.tm_year != 2014) || (dateTime.tm_hour != 17) ||
+      (dateTime.tm_min != 21) || (dateTime.tm_sec != 11)) {
     asm("nop");
   }
+  asm("nop");
 #endif
 }
 
