@@ -56,4 +56,24 @@ unsigned char checkRange(double value, double min, double max, unsigned char inc
     return checkRangeNoInclude(value, min, max);
 }
 
+//// Функция формирования структуры
+//tm time(float y, float m, float d, float h, float mm, float s)
+//{
+//  tm now;
+//  now.tm_year = (int)y - 1900;
+//  now.tm_mon =  (int)m;
+//  now.tm_mday = (int)d;
+//  now.tm_hour = (int)h;
+//  now.tm_min = (int)mm;
+//  now.tm_sec = (int)s;
+//}
+
+//// Функция вычисления времени в секундах между датами
+//float calcDiffentSecond(tm *time1, tm* time2)
+//{
+//  time_t now = mktime(time1);
+//  time_t fix = mktime(time2);
+//  time_t dif = difftime(now,fix);
+//  return (float)dif;
+//}
 

@@ -398,6 +398,19 @@ enum enID
   CCS_PROT_OVERVOLTAGE_IN_STATE,
   /// Значение контролируемого параметра
   CCS_PROT_OVERVOLTAGE_IN_VALUE_PARAMETER,
+  /// Значение таймера год
+  CCS_PROT_OVERVOLTAGE_IN_TIMER_YAER,
+  /// Значение таймера месяц
+  CCS_PROT_OVERVOLTAGE_IN_TIMER_MONTH,
+  /// Значение таймера день
+  CCS_PROT_OVERVOLTAGE_IN_TIMER_DAY,
+  /// Значение таймера час
+  CCS_PROT_OVERVOLTAGE_IN_TIMER_HOUR,
+  /// Значение таймера минуты
+  CCS_PROT_OVERVOLTAGE_IN_TIMER_MIN,
+  /// Значение таймера секунды
+  CCS_PROT_OVERVOLTAGE_IN_TIMER_SEC,
+
   CCS_PROT_OVERVOLTAGE_IN_COUNTER_RESTART,
   CCS_PROT_OVERVOLTAGE_IN_TIMER_COUNTER_RESTART,
   CCS_PROT_OVERVOLTAGE_IN_BAN,

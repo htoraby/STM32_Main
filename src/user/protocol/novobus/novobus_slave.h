@@ -4,10 +4,10 @@
 #include "device.h"
 #include "board.h"
 
-#define NOVOBUS_COMMAND_DIAGNOSTIC  10
-#define NOVOBUS_COMMAND_READ        20
-#define NOVOBUS_COMMAND_WRITE       30
-#define NOVOBUS_COMMAND_MESSAGE     40
+#define NOVOBUS_COMMAND_DIAGNOSTIC  1
+#define NOVOBUS_COMMAND_READ        2
+#define NOVOBUS_COMMAND_WRITE       3
+#define NOVOBUS_COMMAND_MESSAGE     4
 
 
 /*!
@@ -28,14 +28,10 @@ public:
   int initNovobus();
 
   /*!
-   * \brief calcCRC16
-   * Метод вычисления контрольной суммы
-   * \param begin С какого элемента массива начинать считать контрольную сумму
-   * \param Size Количество элементов
-   * \param Buf Массива с данными
-   * \return Контрольную сумму
+   * \brief exchangeCycle
+   * Метод вызываемая как задача FreeRTOS
    */
-  unsigned short calcCRC16(unsigned char begin, unsigned char Size, unsigned char *Buf);
+  void exchangeCycle(void);
 
   /*!
    * \brief reseivePackage
@@ -56,6 +52,12 @@ public:
    * \brief messageParamSPI_ очередь на запись данных по SPI
    */
   osMessageQId messageParamSPI_;
+
+  /*!
+   * \brief threadId_
+   * Идентификатор задачи Novobus
+   */
+  osThreadId threadId_;
 
   unsigned char txBuffer_[];
   unsigned char rxBuffer_[];
