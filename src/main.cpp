@@ -26,6 +26,7 @@
 #include "rcause.h"
 #include "temp_sensor.h"
 #include "host.h"
+#include "log_main.h"
 
 static void systemClockConfig();
 static void mainThread(void *argument);
@@ -58,7 +59,7 @@ int main()
   flagMcuInit = true;
 
   //! Создание основной задачи и запуск диспетчера
-  osThreadDef(Main_Thread, mainThread, osPriorityNormal, 0, 4*configMINIMAL_STACK_SIZE);
+  osThreadDef(Main_Thread, mainThread, osPriorityNormal, 0, 6*configMINIMAL_STACK_SIZE);
   osKernelStart(osThread(Main_Thread), NULL);
 
   //! Сюда не должны попасть, т.к. мы запустили диспетчер задач
@@ -111,6 +112,9 @@ static void mainThread(void *argument)
 
   //! Подсчет счетчиков перезапуска СPU
   resetCauseCheck();
+
+  //! Инициализация пользовательских данных
+  logInit();
 
   /* FatFS: Link the USBH disk I/O driver */
   USBH_DriverNum = FATFS_LinkDriver(&USBH_Driver, USBH_Path);
