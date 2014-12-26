@@ -4,7 +4,7 @@
 #include "board.h"
 
 #define SRAM_ADDR_START ((uint32_t)0x60000000)
-#define SRAM_SIZE       1024*1024
+#define SRAM_SIZE       1024*1024      //! 1MB
 
 typedef enum {
   bit8,

@@ -7,10 +7,11 @@
 #define CMD_JEDEC_ID 0x9F
 
 #if USE_EXT_MEM
-  static uint8_t buffer[4096] __attribute__((section(".extmem")));
+  static uint8_t bufData[4096] __attribute__((section(".extmem")));
 #else
-  static uint8_t buffer[4096];
+  static uint8_t bufData[4096];
 #endif
+  static uint8_t buf[10];
 
 #define TIMEOUT 1000
 
@@ -55,19 +56,6 @@ enum {
   CMD_W_FAST_READ_DUAL_OUT = 0x3B,
 };
 
-typedef struct {
-  SPI_HandleTypeDef spi;  //! Структура SPI
-  osSemaphoreId cmdSemaphoreId;
-  osSemaphoreId operSemaphoreId;
-  GPIO_TypeDef* nss_port; //! Порт вывода NSS
-  uint16_t nss_pin;       //! Номер вывода NSS
-  uint8_t manufacturer;   //! Производитель
-  uint32_t size;          //! Размер общей памяти
-  uint32_t pageSize;      //! Размер страницы
-  uint32_t sectorSize;    //! Размер сектора
-  uint32_t blockSize;     //! Размер блока
-} FlashTypeDef;
-
 DMA_HandleTypeDef hdma_spi1_tx;
 DMA_HandleTypeDef hdma_spi1_rx;
 DMA_HandleTypeDef hdma_spi5_tx;
@@ -79,12 +67,9 @@ static StatusType spiTransmitReceive(FlashSpiNum num, uint8_t *txData,
                                      uint16_t rxSize);
 static void flashWriteEnable(FlashSpiNum num);
 static void flashWriteDisable(FlashSpiNum num);
-static StatusType flashEraseSector4k(FlashSpiNum num, uint32_t address);
 
 void flashExtInit(FlashSpiNum num)
 {
-  uint8_t buf[10];
-
   SPI_HandleTypeDef *spiX = &flashExts[num].spi;
   switch (num) {
     case FlashSpi1:
@@ -259,7 +244,7 @@ uint8_t flashReady(FlashSpiNum num)
   return 0;
 }
 
-void flashWriteEnable(FlashSpiNum num)
+static void flashWriteEnable(FlashSpiNum num)
 {
   uint8_t cmd = CMD_W_WRITE_ENABLE;
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
@@ -267,7 +252,7 @@ void flashWriteEnable(FlashSpiNum num)
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 }
 
-void flashWriteDisable(FlashSpiNum num)
+static void flashWriteDisable(FlashSpiNum num)
 {
   uint8_t cmd = CMD_W_WRITE_DISABLE;
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
@@ -278,7 +263,6 @@ void flashWriteDisable(FlashSpiNum num)
 StatusType flashEraseSector4k(FlashSpiNum num, uint32_t address)
 {
   StatusType status = StatusError;
-  uint8_t buf[4];
   address &= ~(flashExts[num].sectorSize - 1);
 
   flashWriteEnable(num);
@@ -303,7 +287,6 @@ StatusType flashEraseSector4k(FlashSpiNum num, uint32_t address)
 StatusType flashExtRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size)
 {
   StatusType status = StatusError;
-  uint8_t buf[5];
 
   if (address > flashExts[num].size)
     return status;
@@ -338,7 +321,6 @@ StatusType flashExtRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32
 StatusType flashWritePage(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size)
 {
   StatusType status = StatusError;
-  uint8_t buf[4];
 
   if (address > flashExts[num].size)
     return status;
@@ -418,15 +400,15 @@ StatusType flashExtWrite(FlashSpiNum num, uint32_t address, uint8_t *data, uint3
     len = flashExts[num].sectorSize - offSetPage;
     if(size < len)
       len = size;
-    memset(buffer, 0, sizeof(buffer));
+    memset(bufData, 0, sizeof(bufData));
 
-    if (flashExtRead(num, addrSector, buffer, flashExts[num].sectorSize) != StatusOk)
+    if (flashExtRead(num, addrSector, bufData, flashExts[num].sectorSize) != StatusOk)
       return StatusError;
     for(uint32_t i = 0; i < len; i++) {
-      buffer[offSetPage + i] = data[i];
+      bufData[offSetPage + i] = data[i];
     }
 
-    if (flashWriteSector(num, addrSector, buffer, flashExts[num].sectorSize) != StatusOk)
+    if (flashWriteSector(num, addrSector, bufData, flashExts[num].sectorSize) != StatusOk)
       return StatusError;
 
     address += len;

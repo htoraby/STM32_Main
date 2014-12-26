@@ -3,8 +3,23 @@
 
 #include "board.h"
 
-#define FRAM_SIZE  131072 // 128KB
+#define FRAM_SIZE  0x20000 // 128KB
 #define FRAM_END   0x0001FFFF
+
+/*!
+ \brief Список занятых адресов FRAM
+
+*/
+typedef enum {
+  IdLogAddrFram    = 0x01FFC8,
+  EventLogAddrFram = 0x01FFCC,
+  DataLogAddrFram  = 0x01FFD0,
+  RunLogAddrFram   = 0x01FFD4,
+  AlarmLogAddrFram = 0x01FFD8,
+  TmsLogAddrFram   = 0x01FFDC,
+  DebugLogAddrFram = 0x01FFE0,
+  RcauseAddrFram   = 0x01FFE4,
+} AddrFram;
 
 /*!
  \brief Инициализация FRAM FM25V10 128KB (SPI3)

@@ -6,7 +6,7 @@ static RCAUSE_COUNTS rcauseCounts;
 
 void resetCauseCheck()
 {
-  framReadData(FRAM_SIZE-sizeof(RCAUSE_COUNTS), (uint8_t*)&rcauseCounts, sizeof(RCAUSE_COUNTS));
+  framReadData(RcauseAddrFram, (uint8_t*)&rcauseCounts, sizeof(RCAUSE_COUNTS));
 
   if (__HAL_RCC_GET_FLAG(RCC_FLAG_BORRST) == SET) {
     rcauseCounts.bor++;
@@ -33,7 +33,7 @@ void resetCauseCheck()
 
   __HAL_RCC_CLEAR_RESET_FLAGS();
 
-  framWriteData(FRAM_SIZE-sizeof(RCAUSE_COUNTS), (uint8_t*)&rcauseCounts, sizeof(RCAUSE_COUNTS));
+  framWriteData(RcauseAddrFram, (uint8_t*)&rcauseCounts, sizeof(RCAUSE_COUNTS));
 }
 
 RCAUSE_COUNTS rcauseCountersGet()
