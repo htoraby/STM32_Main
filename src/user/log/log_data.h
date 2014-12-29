@@ -3,6 +3,10 @@
 
 #include "log.h"
 
+/*!
+ * \brief Класс архива данных
+ *
+ */
 class LogData : public Log
 {
 public:

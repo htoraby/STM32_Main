@@ -1,9 +1,20 @@
 #include "log.h"
+#include "gpio.h"
 
 uint32_t Log::id_ = 0;
 
 Log::Log(TypeLog type)
   : type_(type)
+{
+
+}
+
+Log::~Log()
+{
+
+}
+
+void Log::init()
 {
   if (type_ != DebugTypeLog)
     flashSpiNum_ = FlashSpi5;
@@ -14,77 +25,74 @@ Log::Log(TypeLog type)
   switch (type_) {
     case EventTypeLog:
       startAddr_ = StartAddrEventLog;
+      endAddr_ = EndAddrEventLog;
       addrFram_ = EventLogAddrFram;
       break;
     case DataTypeLog:
       startAddr_ = StartAddrDataLog;
+      endAddr_ = EndAddrDataLog;
       addrFram_ = DataLogAddrFram;
       break;
     case RunTypeLog:
       startAddr_ = StartAddrRunLog;
+      endAddr_ = EndAddrRunLog;
       addrFram_ = RunLogAddrFram;
       break;
     case AlarmTypeLog:
       startAddr_ = StartAddrAlarmLog;
+      endAddr_ = EndAddrAlarmLog;
       addrFram_ = AlarmLogAddrFram;
       break;
     case TmsTypeLog:
       startAddr_ = StartAddrTmsLog;
+      endAddr_ = EndAddrTmsLog;
       addrFram_ = TmsLogAddrFram;
       break;
     case DebugTypeLog:
       startAddr_ = StartAddrDebugLog;
+      endAddr_ = EndAddrDebugLog;
       addrFram_ = DebugLogAddrFram;
       break;
   }
 
+  //! Получение адреса с которого начнётся следующая запись
   framReadData(addrFram_, (uint8_t*)&address_, 4);
   if (address_ == 0)
     address_ = startAddr_;
-
 }
 
-Log::~Log()
+void Log::deInit()
 {
-
+  address_ = 0;
+  framWriteData(addrFram_, (uint8_t*)&address_, 4);
 }
 
 void Log::write(uint8_t *data, uint32_t size)
 {
-  static uint32_t addrSectorOld = 0;
+  static uint32_t addrSectorOld = (address_ + size) / sectorSize_ * sectorSize_;
+
+  //! Проверка питания платы
+  if (!isPowerGood())
+    return;
 
   flashExtWrite(flashSpiNum_, address_, data, size);
 
   //! Вычисление адреса для следующей записи
   address_ = address_ + size;
-  if (address_ >= endAddr_) {
+  if ((address_ + size) > endAddr_) {
     address_ = startAddr_;
   }
 
   //! Проверка на начало нового сектора
-  uint32_t addrSector = address_ / sectorSize_ * sectorSize_;
+  uint32_t addrSector = (address_ + size) / sectorSize_ * sectorSize_;
   if (addrSector != addrSectorOld) {
+    address_ = addrSector;
     flashEraseSector4k(flashSpiNum_, address_);
     addrSectorOld = addrSector;
   }
 
+  //! Сохранение глабального индекса записей
+  framWriteData(IdLogAddrFram, (uint8_t*)&id_, 4);
+  //! Сохранение адреса с которого начнётся следующая запись
   framWriteData(addrFram_, (uint8_t*)&address_, 4);
-}
-
-void Log::read(uint32_t idxRec, uint8_t *data, uint32_t count)
-{
-//  // address_ = 5
-//  uint32_t address;
-//  uint32_t size;
-//  if ((address_ - incAddr_) < StartAddrEventLog) {
-//    address = address_;
-//    size = (address_ - StartAddrEventLog)
-//    flashExtRead(flashSpiNum_, address, data, incAddr_*count);
-//    address = EndAddrEventLog;
-//    flashExtRead(flashSpiNum_, address, data, incAddr_*count);
-//    asm("nop");
-//  } else {
-
-//  }
-//  asm("nop");
 }

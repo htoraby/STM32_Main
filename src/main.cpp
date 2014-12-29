@@ -52,7 +52,6 @@ int main()
   flashExtInit(FlashSpi1);
   flashExtInit(FlashSpi5);
   tempSensorInit();
-  hostInit();
 
   iwdgInit();
 
@@ -115,6 +114,7 @@ static void mainThread(void *argument)
 
   //! Инициализация пользовательских данных
   logInit();
+  hostInit();
 
   /* FatFS: Link the USBH disk I/O driver */
   USBH_DriverNum = FATFS_LinkDriver(&USBH_Driver, USBH_Path);

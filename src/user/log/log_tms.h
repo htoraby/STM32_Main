@@ -3,6 +3,10 @@
 
 #include "log.h"
 
+/*!
+ * \brief Класс архива ТМС
+ *
+ */
 class LogTms : public Log
 {
 public:

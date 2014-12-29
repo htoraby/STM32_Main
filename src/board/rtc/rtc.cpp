@@ -16,20 +16,17 @@ void rtcInit()
   HAL_RTC_Init(&hrtc);
 
   if(HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR0) != 0x32F2) {
-    TimeTypeDef time;
+    tm dateTime;
     //! Установка времени по умолчанию
-    time.hours = 0;
-    time.minutes = 0;
-    time.seconds = 0;
-    time.mseconds = 0;
-    setTime(time);
+    dateTime.tm_year = 2000 - 1900;
+    dateTime.tm_mon = 0;
+    dateTime.tm_mday = 1;
+    dateTime.tm_hour = 0;
+    dateTime.tm_min = 0;
+    dateTime.tm_sec = 0;
 
-    //! Установка даты по умолчанию
-    DateTypeDef date;
-    date.month = 1;
-    date.date = 1;
-    date.year = 0;
-    setDate(date);
+    time_t time = mktime(&dateTime);
+    setTime(&time);
 
     HAL_RTCEx_BKUPWrite(&hrtc, RTC_BKP_DR0, 0x32F2);
   }
@@ -72,89 +69,46 @@ void HAL_RTC_MspDeInit(RTC_HandleTypeDef *hrtc)
   __HAL_RCC_RTC_DISABLE();
 }
 
-void setDateTime(const tm &time)
+void setTime(const time_t *time)
 {
-  if (time.tm_year < 2000)
-    return;
+  tm *dateTime = localtime(time);
 
   RTC_TimeTypeDef timeRtc;
-  timeRtc.Hours = time.tm_hour;
-  timeRtc.Minutes = time.tm_min;
-  timeRtc.Seconds = time.tm_sec;
+  timeRtc.Hours = dateTime->tm_hour;
+  timeRtc.Minutes = dateTime->tm_min;
+  timeRtc.Seconds = dateTime->tm_sec;
   timeRtc.TimeFormat = RTC_HOURFORMAT12_AM;
   timeRtc.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
   timeRtc.StoreOperation = RTC_STOREOPERATION_RESET;
   HAL_RTC_SetTime(&hrtc, &timeRtc, FORMAT_BIN);
 
   RTC_DateTypeDef dateRtc;
-  dateRtc.Date = time.tm_mday;
-  dateRtc.Month = time.tm_mon;
-  dateRtc.Year = time.tm_year - 2000;
+  dateRtc.Date = dateTime->tm_mday;
+  dateRtc.Month = dateTime->tm_mon;
+  dateRtc.Year = dateTime->tm_year - 100;
   dateRtc.WeekDay = RTC_WEEKDAY_MONDAY;
   HAL_RTC_SetDate(&hrtc, &dateRtc, FORMAT_BIN);
 }
 
-void setTime(const TimeTypeDef &time)
+time_t getTime()
 {
-  RTC_TimeTypeDef timeRtc;
-  timeRtc.Hours = time.hours;
-  timeRtc.Minutes = time.minutes;
-  timeRtc.Seconds = time.seconds;
-  timeRtc.SubSeconds = time.mseconds;
-  timeRtc.TimeFormat = RTC_HOURFORMAT12_AM;
-  timeRtc.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
-  timeRtc.StoreOperation = RTC_STOREOPERATION_RESET;
-  HAL_RTC_SetTime(&hrtc, &timeRtc, FORMAT_BIN);
-}
-
-void setDate(const DateTypeDef &date)
-{
-  RTC_DateTypeDef dateRtc;
-  dateRtc.Date = date.date;
-  dateRtc.Month = date.month;
-  dateRtc.Year = date.year;
-  dateRtc.WeekDay = RTC_WEEKDAY_MONDAY;
-  HAL_RTC_SetDate(&hrtc, &dateRtc, FORMAT_BIN);
-}
-
-void getDateTime(tm *time)
-{
+  tm dateTime;
   RTC_TimeTypeDef timeRtc;
   HAL_RTC_GetTime(&hrtc, &timeRtc, FORMAT_BIN);
-  time->tm_hour = timeRtc.Hours;
-  time->tm_min = timeRtc.Minutes;
-  time->tm_sec = timeRtc.Seconds;
+  dateTime.tm_hour = timeRtc.Hours;
+  dateTime.tm_min = timeRtc.Minutes;
+  dateTime.tm_sec = timeRtc.Seconds;
 
   RTC_DateTypeDef dateRtc;
   HAL_RTC_GetDate(&hrtc, &dateRtc, FORMAT_BIN);
-  time->tm_mday = dateRtc.Date;
-  time->tm_mon = dateRtc.Month;
-  time->tm_year = dateRtc.Year + 2000;
-  if((time->tm_mday == 0) || (time->tm_mon == 0)) {
-    time->tm_mday = time->tm_mon = 1;
+  dateTime.tm_mday = dateRtc.Date;
+  dateTime.tm_mon = dateRtc.Month;
+  dateTime.tm_year = dateRtc.Year + 100;
+  if((dateTime.tm_mday == 0) || (dateTime.tm_mon == 0)) {
+    dateTime.tm_mday = dateTime.tm_mon = 1;
   }
-}
 
-void getTime(TimeTypeDef *time)
-{
-  RTC_TimeTypeDef timeRtc;
-  HAL_RTC_GetTime(&hrtc, &timeRtc, FORMAT_BIN);
-  time->hours = timeRtc.Hours;
-  time->minutes = timeRtc.Minutes;
-  time->seconds = timeRtc.Seconds;
-  time->mseconds = timeRtc.SubSeconds;
-}
-
-void getDate(DateTypeDef *date)
-{
-  RTC_DateTypeDef dateRtc;
-  HAL_RTC_GetDate(&hrtc, &dateRtc, FORMAT_BIN);
-  date->date = dateRtc.Date;
-  date->month = dateRtc.Month;
-  date->year = dateRtc.Year;
-  if((date->date == 0) || (date->month == 0)) {
-    date->date = date->month = 1;
-  }
+  return mktime(&dateTime);
 }
 
 void backupSaveParameter(uint32_t address, uint32_t data)

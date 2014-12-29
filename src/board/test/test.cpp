@@ -10,7 +10,7 @@
 #include "temp_sensor.h"
 #include "adc_ext.h"
 #include "host.h"
-#include "log.h"
+#include "log_main.h"
 
 static void testThread(void *argument);
 static void testUartThread(void *argument);
@@ -24,6 +24,7 @@ static void testDI();
 static void testDO();
 static void testAdcExt();
 static void testHost();
+static void testLog();
 
 #if USE_EXT_MEM
   uint8_t bufferTx[4096] __attribute__((section(".extmem")));
@@ -81,6 +82,7 @@ static void testThread(void * argument)
   testDO();
   testAdcExt();
   testHost();
+  testLog();
 
   while(1) {
 #if (TEST_USB_FAT == 1)
@@ -186,15 +188,19 @@ static void testRtc()
   //! Установка даты и времени
   dateTime.tm_mon = 11;
   dateTime.tm_mday = 6;
-  dateTime.tm_year = 2014;
+  dateTime.tm_year = 2014 - 1900;
   dateTime.tm_hour = 17;
   dateTime.tm_min = 21;
   dateTime.tm_sec = 10;
-  setDateTime(dateTime);
+  time_t time = mktime(&dateTime);
+  setTime(&time);
+
   osDelay(1005);
-  getDateTime(&dateTime);
+
+  time = getTime();
+  dateTime = *localtime(&time);
   if ((dateTime.tm_mon != 11) || (dateTime.tm_mday != 6) ||
-      (dateTime.tm_year != 2014) || (dateTime.tm_hour != 17) ||
+      (dateTime.tm_year != (2014 - 1900)) || (dateTime.tm_hour != 17) ||
       (dateTime.tm_min != 21) || (dateTime.tm_sec != 11)) {
     asm("nop");
   }
@@ -252,6 +258,8 @@ static void testFram()
 static void testFlash1()
 {
 #if (TEST_FLASH1 == 1)
+  flashEraseSector4k(FlashSpi1, 0);
+
   uint32_t time = HAL_GetTick();
   bufferTx[0] = 0x21;
   bufferTx[1] = 0xAA;
@@ -279,6 +287,8 @@ static void testFlash1()
 static void testFlash2()
 {
 #if (TEST_FLASH2 == 1)
+  flashEraseSector4k(FlashSpi5, 0);
+
   uint32_t time = HAL_GetTick();
   bufferTx[0] = 0x21;
   bufferTx[1] = 0xAA;
@@ -369,6 +379,20 @@ static void testHost()
       (sizePkt != HOST_BUF_SIZE)) {
     asm("nop"); // Ошибка
   }
+  asm("nop");
+#endif
+}
+
+static void testLog()
+{
+#if TEST_LOG
+  logErase();
+
+  for (int i = 0; i < 205; ++i) {
+    logEvent.add(0x01, 13, 1, 0, 1);
+  }
+
+  logRead(StartAddrEventLog, bufferRx, 20*100);
   asm("nop");
 #endif
 }
