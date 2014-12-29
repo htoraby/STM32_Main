@@ -151,6 +151,8 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
     GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+    HAL_NVIC_SetPriority(USART1_IRQn, 0, 1);
+    HAL_NVIC_EnableIRQ(USART1_IRQn);
   }
   else if(huart->Instance == USART2) {
     /* Peripheral clock enable */
