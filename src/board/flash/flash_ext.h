@@ -37,11 +37,16 @@ extern FlashTypeDef flashExts[];
 */
 void flashExtInit(FlashSpiNum num);
 
+/*!
+ \brief Метод обработки прерывания Flash
+
+ \param num - номер spi @ref FlashSpiNum
+*/
 void flashTxRxCpltCallback(FlashSpiNum num);
 
 /*!
- \brief Запись данных во Flash
- Желательно писать данные размером с сектор 4096
+ \brief Запись данных во Flash для архивов
+ Запись без стирания сектора и с учётом перехода на новый сектор
  \param num - номер spi @ref FlashSpiNum
  \param address - адрес данных
  \param data - указатель на данные
@@ -49,6 +54,17 @@ void flashTxRxCpltCallback(FlashSpiNum num);
  \return StatusType - ошибка или ок
 */
 StatusType flashExtWrite(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size);
+
+/*!
+ \brief Запись данных во Flash (универсальная)
+ Желательно писать данные размером с сектор 4096
+ \param num - номер spi @ref FlashSpiNum
+ \param address - адрес данных
+ \param data - указатель на данные
+ \param size - размер данных
+ \return StatusType - ошибка или ок
+*/
+StatusType flashExtWriteEx(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size);
 
 /*!
  \brief Чтение данных из Flash
@@ -61,11 +77,18 @@ StatusType flashExtWrite(FlashSpiNum num, uint32_t address, uint8_t *data, uint3
 */
 StatusType flashExtRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size);
 
+/*!
+ \brief Стирание сектора Flash
+ Операция занимает около 17 мс
+ \param num - номер spi @ref FlashSpiNum
+ \param address - адрес сектора
+ \return StatusType - ошибка или ок
+*/
 StatusType flashEraseSector4k(FlashSpiNum num, uint32_t address);
 
 /*!
  \brief Стирание всей Flash памяти
- Длительная операция! Занимает около 3 секунд
+ Длительная операция! Занимает около 3-60 секунд
  \param num - номер spi @ref FlashSpiNum
  \return StatusType - ошибка или ок
 */

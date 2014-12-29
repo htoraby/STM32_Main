@@ -232,31 +232,41 @@ StatusType spiTransmitReceive(FlashSpiNum num, uint8_t *txData, uint8_t *rxData,
   return status;
 }
 
-uint8_t flashReady(FlashSpiNum num)
+static void flashReady(FlashSpiNum num)
 {
-  uint8_t statusReg = CMD_W_READ_SR;
-  clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  HAL_SPI_Transmit(&flashExts[num].spi, &statusReg, 1, TIMEOUT);
-  HAL_SPI_TransmitReceive(&flashExts[num].spi, &statusReg, &statusReg, 1, TIMEOUT);
-  setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  if(!(statusReg & 0x01))
-    return 1;
-  return 0;
+  StatusType status = StatusError;
+
+  while (1) {
+    buf[0] = CMD_W_READ_SR;
+    clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+    if (HAL_SPI_Transmit(&flashExts[num].spi, buf, 1, TIMEOUT) == HAL_OK) {
+      if (HAL_SPI_TransmitReceive(&flashExts[num].spi, buf, buf, 1, TIMEOUT) == HAL_OK)
+        status = StatusOk;
+    }
+    setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+
+    if (status == StatusError)
+      return;
+    if(!(buf[0] & 0x01)) {
+      asm("nop");
+      return;
+    }
+  }
 }
 
 static void flashWriteEnable(FlashSpiNum num)
 {
-  uint8_t cmd = CMD_W_WRITE_ENABLE;
+  buf[0] = CMD_W_WRITE_ENABLE;
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  HAL_SPI_Transmit(&flashExts[num].spi, &cmd, 1, TIMEOUT);
+  HAL_SPI_Transmit(&flashExts[num].spi, buf, 1, TIMEOUT);
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 }
 
 static void flashWriteDisable(FlashSpiNum num)
 {
-  uint8_t cmd = CMD_W_WRITE_DISABLE;
+  buf[0] = CMD_W_WRITE_DISABLE;
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  HAL_SPI_Transmit(&flashExts[num].spi, &cmd, 1, TIMEOUT);
+  HAL_SPI_Transmit(&flashExts[num].spi, buf, 1, TIMEOUT);
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 }
 
@@ -273,12 +283,12 @@ StatusType flashEraseSector4k(FlashSpiNum num, uint32_t address)
   buf[3] = address&0xFF;
 
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  if (HAL_SPI_Transmit(&flashExts[num].spi, &buf[0], 4, TIMEOUT) == HAL_OK)
+  if (HAL_SPI_Transmit(&flashExts[num].spi, buf, 4, TIMEOUT) == HAL_OK)
     status = StatusOk;
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 
   //! Ожидание завершения операции
-  while(!flashReady(num));
+  flashReady(num);
   flashWriteDisable(num);
 
   return status;
@@ -301,7 +311,7 @@ StatusType flashExtRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32
   buf[4] = 0xFF;
 
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  if (HAL_SPI_Transmit(&flashExts[num].spi, &buf[0], 5, TIMEOUT) == HAL_OK)
+  if (HAL_SPI_Transmit(&flashExts[num].spi, buf, 5, TIMEOUT) == HAL_OK)
     status = StatusOk;
   if (status == StatusOk) {
     osSemaphoreWait(flashExts[num].operSemaphoreId, 0);
@@ -336,7 +346,7 @@ StatusType flashWritePage(FlashSpiNum num, uint32_t address, uint8_t *data, uint
   buf[3] = address&0xFF;
 
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  if (HAL_SPI_Transmit(&flashExts[num].spi, &buf[0], 4, TIMEOUT) == HAL_OK)
+  if (HAL_SPI_Transmit(&flashExts[num].spi, buf, 4, TIMEOUT) == HAL_OK)
     status = StatusOk;
   if (status == StatusOk) {
     osSemaphoreWait(flashExts[num].operSemaphoreId, 0);
@@ -351,14 +361,13 @@ StatusType flashWritePage(FlashSpiNum num, uint32_t address, uint8_t *data, uint
   }
 
   //! Ожидание завершения операции
-  while(!flashReady(num));
+  flashReady(num);
   flashWriteDisable(num);
 
   return status;
 }
 
-StatusType flashWriteSector(FlashSpiNum num, uint32_t address,
-                            uint8_t *data, uint32_t size)
+StatusType flashWriteSector(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size)
 {
   uint32_t offSetPage = 0;
   uint32_t len = 0;
@@ -386,6 +395,31 @@ StatusType flashWriteSector(FlashSpiNum num, uint32_t address,
 }
 
 StatusType flashExtWrite(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size)
+{
+  uint32_t offSetPage = 0;
+  uint32_t len = 0;
+
+  while(size) {
+    if(address > flashExts[num].size)
+      break;
+
+    offSetPage = address % flashExts[num].pageSize;
+    len = flashExts[num].pageSize - offSetPage;
+    if(size < len)
+      len = size;
+
+    if (flashWritePage(num, address, data, len) != StatusOk)
+      return StatusError;
+
+    address += len;
+    data += len;
+    size -= len;
+  }
+
+  return StatusOk;
+}
+
+StatusType flashExtWriteEx(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size)
 {
   uint32_t offSetPage = 0;
   uint32_t len = 0;
@@ -426,13 +460,13 @@ StatusType flashExtChipErase(FlashSpiNum num)
   flashWriteEnable(num);
 
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  uint8_t cmd = CMD_W_CHIP_ERASE;
-  if (HAL_SPI_Transmit(&flashExts[num].spi, &cmd, 1, TIMEOUT) == HAL_OK)
+  buf[0] = CMD_W_CHIP_ERASE;
+  if (HAL_SPI_Transmit(&flashExts[num].spi, buf, 1, TIMEOUT) == HAL_OK)
     status = StatusOk;
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 
   //! Ожидание завершения операции
-  while(!flashReady(num));
+  flashReady(num);
   flashWriteDisable(num);
 
   return status;
