@@ -186,8 +186,8 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc)
 
 StatusType getAnalogIn(uint32_t channel, uint32_t numSamples, uint32_t *value)
 {
+  static uint32_t data = 0;
   int count = 0;
-  uint32_t data = 0;
   int result = 0;
   int result_last = 0;
 
@@ -210,7 +210,7 @@ StatusType getAnalogIn(uint32_t channel, uint32_t numSamples, uint32_t *value)
 
 StatusType getCoreTemperature(float *value)
 {
-  uint32_t data = 0;
+  static uint32_t data = 0;
   int count = 0;
   int result = 0;
   int resultLast = 0;
@@ -236,7 +236,7 @@ StatusType getCoreTemperature(float *value)
 
 StatusType getCoreVbattery(float *value)
 {
-  uint32_t data = 0;
+  static uint32_t data = 0;
   StatusType status = StatusError;
 
   if(getValueADC(adc1, ADC_CHANNEL_VBAT, &data, ADC_SAMPLETIME_480CYCLES) == StatusOk) {
@@ -249,7 +249,7 @@ StatusType getCoreVbattery(float *value)
 
 StatusType getCoreVref(float *value)
 {
-  uint32_t data = 0;
+  static uint32_t data = 0;
   StatusType status = StatusError;
 
   if(getValueADC(adc1, ADC_CHANNEL_VREFINT, &data, ADC_SAMPLETIME_480CYCLES) == StatusOk) {

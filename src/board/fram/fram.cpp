@@ -24,6 +24,8 @@ enum {
   CMD_SNR = 0xc3,
 };
 
+static uint8_t buffer[10];
+
 SPI_HandleTypeDef hspi3;
 DMA_HandleTypeDef hdma_spi3_tx;
 DMA_HandleTypeDef hdma_spi3_rx;
@@ -37,8 +39,6 @@ static StatusType spiTransmit(uint8_t *data, uint16_t size);
 
 void framInit()
 {
-  uint8_t buffer[10];
-
   // PA15     ------> SPI3_NSS
   initPinOut(FRAM_NSS_PORT, FRAM_NSS_PIN, PinSet);
 
@@ -123,7 +123,6 @@ void framTxRxCpltCallback()
 StatusType framWriteData(uint32_t address, uint8_t *data, uint32_t size)
 {  
   StatusType status = StatusError;
-  uint8_t buffer[4];
 
   if (address > FRAM_END)
     return status;
@@ -153,7 +152,6 @@ StatusType framWriteData(uint32_t address, uint8_t *data, uint32_t size)
 StatusType framReadData(uint32_t address, uint8_t *data, uint32_t size)
 {
   StatusType status = StatusError;
-  uint8_t buffer[5];
 
   if (address > FRAM_END)
     return status;

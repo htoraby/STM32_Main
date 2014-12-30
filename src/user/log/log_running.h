@@ -3,6 +3,10 @@
 
 #include "log.h"
 
+/*!
+ * \brief Класс архива пусковых характеристик
+ *
+ */
 class LogRunning : public Log
 {
 public:

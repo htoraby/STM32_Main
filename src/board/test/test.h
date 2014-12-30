@@ -16,6 +16,7 @@
 #define TEST_DO       0
 #define TEST_ADC_EXT  0
 #define TEST_HOST     0
+#define TEST_LOG      0
 
 void testInit();
 

@@ -3,6 +3,10 @@
 
 #include "log.h"
 
+/*!
+ * \brief Класс программистких архивов
+ *
+ */
 class LogDebug : public Log
 {
 public:

@@ -2,41 +2,7 @@
 #define RTC_H
 
 #include "board.h"
-
-/*!
- \brief Структура даты и времени
-
-*/
-typedef struct {
-  uint8_t year;      //! Год: 0-99
-  uint8_t date;      //! Дата: 1-31
-  uint8_t month;     //! Месяц: 1-12 (@ref RTC_Month_Date_Definitions)
-  uint8_t hours;     //! Часы: 0-23
-  uint8_t minutes;   //! Минуты: 0-59
-  uint8_t seconds;   //! Секунды: 0-59
-  uint32_t mseconds; //! Миллисекунды: 0
-} DateTimeTypeDef;
-
-/*!
- \brief Структура времени
-
-*/
-typedef struct {
-  uint8_t hours;   //! Часы: 0-23
-  uint8_t minutes; //! Минуты: 0-59
-  uint8_t seconds; //! Секунды: 0-59
-  uint32_t mseconds; //! Миллисекунды: 0
-} TimeTypeDef;
-
-/*!
- \brief Структура даты
-
-*/
-typedef struct {
-  uint8_t month; //! Месяц: 1-12 (@ref RTC_Month_Date_Definitions)
-  uint8_t date;  //! Дата: 1-31
-  uint8_t year;  //! Год: 0-99
-} DateTypeDef;
+#include <time.h>
 
 /*!
  \brief Инициализация RTC
@@ -47,44 +13,16 @@ void rtcInit();
 /*!
  \brief Установка даты и времени
 
- \param dateTime - структура даты и времени @ref DateTimeTypeDef
+ \param dateTime - структура даты и времени @ref tm
 */
-void setDateTime(const DateTimeTypeDef &dateTime);
+void setTime(const time_t *time);
 
 /*!
- \brief Установка времени
+ \brief Получение даты и времени в секундах
 
- \param time - структура времени @ref TimeTypeDef
+ \return time_t - возвращаемое значение
 */
-void setTime(const TimeTypeDef &time);
-
-/*!
- \brief Установка даты
-
- \param date - структура даты @ref DateTypeDef
-*/
-void setDate(const DateTypeDef &date);
-
-/*!
- \brief Получение даты и времени
-
- \param dateTime - структура даты и времени @ref DateTimeTypeDef
-*/
-void getDateTime(DateTimeTypeDef *dateTime);
-
-/*!
- \brief Получение времени
-  К осжалению, функция работает некорректно из-за проблем с процессором.
- \param time - структура времени @ref TimeTypeDef
-*/
-void getTime(TimeTypeDef *time);
-
-/*!
- \brief Получение даты
-
- \param date - структура даты @ref DateTypeDef
-*/
-void getDate(DateTypeDef *date);
+time_t getTime();
 
 /*!
  \brief Запись в энергонезависимую статическую память

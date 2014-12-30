@@ -125,6 +125,10 @@ void hostRxIRQHandler(void)
           rxBuffer[rxCount++] = data;
       }
     }
+  } else {
+    if(__HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_OVR) != RESET) {
+      __HAL_SPI_CLEAR_OVRFLAG(&hspi4);
+    }
   }
 }
 
