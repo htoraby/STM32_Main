@@ -74,8 +74,8 @@ void NovobusSlave::reseivePackage()
   // Количество параметров считываемых в запросе
   char countParam;
   // Временная переменная преобразования типов
-  DataType ID;
-  DataType Value;
+  unTypeData ID;
+  unTypeData Value;
   int i = 0;
   // Получаем контрольную сумму
   uint16_t rxCrc = (rxBuffer_[count - 2] << 8) + rxBuffer_[count - 1];
@@ -90,10 +90,10 @@ void NovobusSlave::reseivePackage()
       // Сначала проверяем очередь событий, если есть события сначала отправляем
       // максимум событий которые можем отправить
       while (1) {
-        ID.DtInt16[0] = getMessageEventSPI();
-        if (ID.DtInt16[0]) {
-          txBuffer_[2*i + 2] = ID.DtChar[0];
-          txBuffer_[2*i + 3] = ID.DtChar[1];
+        ID.tdInt16[0] = getMessageEventSPI();
+        if (ID.tdInt16[0]) {
+          txBuffer_[2*i + 2] = ID.tdChar[0];
+          txBuffer_[2*i + 3] = ID.tdChar[1];
           i++;
         }
         else
@@ -115,15 +115,15 @@ void NovobusSlave::reseivePackage()
       // Если не было событий, проверим очередь данных и положим из неё
       else {
         while (1) {
-          ID.DtInt16[0] = getMessageParamSPI();
-          if (ID.DtInt16[0]) {
+          ID.tdInt16[0] = getMessageParamSPI();
+          if (ID.tdInt16[0]) {
             // TODO: Value.DtFloat = Device.getValue(ID.DtUint16);
-            txBuffer_[6*i + 2] = ID.DtChar[0];
-            txBuffer_[6*i + 3] = ID.DtChar[1];
-            txBuffer_[6*i + 4] = Value.DtChar[0];
-            txBuffer_[6*i + 5] = Value.DtChar[1];
-            txBuffer_[6*i + 6] = Value.DtChar[2];
-            txBuffer_[6*i + 7] = Value.DtChar[3];
+            txBuffer_[6*i + 2] = ID.tdChar[0];
+            txBuffer_[6*i + 3] = ID.tdChar[1];
+            txBuffer_[6*i + 4] = Value.tdChar[0];
+            txBuffer_[6*i + 5] = Value.tdChar[1];
+            txBuffer_[6*i + 6] = Value.tdChar[2];
+            txBuffer_[6*i + 7] = Value.tdChar[3];
             i++;
           }
           else
@@ -159,18 +159,18 @@ void NovobusSlave::reseivePackage()
       // Цикл по количеству считываемых параметров
       for (int i = 0; i < countParam; i++) {
         // Получаем ID параметра
-        ID.DtChar[0] = rxBuffer_[2*i + 2];
-        ID.DtChar[1] = rxBuffer_[2*i + 3];
+        ID.tdChar[0] = rxBuffer_[2*i + 2];
+        ID.tdChar[1] = rxBuffer_[2*i + 3];
         // Получить значение параметра
         // TODO: Value.DtFloat = Device.getValue(ID.DtUint16[0]);
         // Переписать в выходной буфер ID
-        txBuffer_[6*i + 2] = ID.DtChar[0];
-        txBuffer_[6*i + 3] = ID.DtChar[1];
+        txBuffer_[6*i + 2] = ID.tdChar[0];
+        txBuffer_[6*i + 3] = ID.tdChar[1];
         // Переписать в выходной буфер Value
-        txBuffer_[6*i + 4] = Value.DtChar[0];
-        txBuffer_[6*i + 5] = Value.DtChar[1];
-        txBuffer_[6*i + 6] = Value.DtChar[1];
-        txBuffer_[6*i + 7] = Value.DtChar[1];
+        txBuffer_[6*i + 4] = Value.tdChar[0];
+        txBuffer_[6*i + 5] = Value.tdChar[1];
+        txBuffer_[6*i + 6] = Value.tdChar[1];
+        txBuffer_[6*i + 7] = Value.tdChar[1];
       }
       // Добавить команду
       txBuffer_[0] = command;
@@ -189,18 +189,18 @@ void NovobusSlave::reseivePackage()
       countParam = (count - 4)/6;
       for (int i = 0; i < countParam; i++) {
         // Получаем ID параметра
-        ID.DtChar[0] = rxBuffer_[6*i + 2];
-        ID.DtChar[1] = rxBuffer_[6*i + 3];
+        ID.tdChar[0] = rxBuffer_[6*i + 2];
+        ID.tdChar[1] = rxBuffer_[6*i + 3];
         // Получаем значение параметра
-        Value.DtChar[0] = rxBuffer_[6*i + 4];
-        Value.DtChar[1] = rxBuffer_[6*i + 5];
-        Value.DtChar[2] = rxBuffer_[6*i + 6];
-        Value.DtChar[3] = rxBuffer_[6*i + 7];
+        Value.tdChar[0] = rxBuffer_[6*i + 4];
+        Value.tdChar[1] = rxBuffer_[6*i + 5];
+        Value.tdChar[2] = rxBuffer_[6*i + 6];
+        Value.tdChar[3] = rxBuffer_[6*i + 7];
         // Вызываем функцию записи значения параметра
         // TODO: Device.setValue(ID.DtUint16, Value.DtFloat);
         // Указываем ID в ответном пакете
-        txBuffer_[6*i + 2] = ID.DtChar[0];
-        txBuffer_[6*i + 3] = ID.DtChar[1];
+        txBuffer_[6*i + 2] = ID.tdChar[0];
+        txBuffer_[6*i + 3] = ID.tdChar[1];
         // Код пока всегда указываем что всё хорошо
         // TODO: Добавить обработку если не записали параметр
         txBuffer_[6*i + 4] = 0;

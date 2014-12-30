@@ -238,7 +238,7 @@ int ModbusMaster::readMultipleRegisters( int slaveAddr,
                                          short *regArr,
                                          int refCnt)
 {
-  DataType Value;
+  unTypeData Value;
   uint16_t Crc;
   int Count;
   int Result = MODBUS_ERROR_TRASH;
@@ -272,9 +272,9 @@ int ModbusMaster::readMultipleRegisters( int slaveAddr,
             == crc16_ibm(bufferRx_, (Count - 2))) {
           for(int I = 0; I <= refCnt; I++)
           {
-            Value.DtChar[0] = bufferRx_[4 + 2*I];
-            Value.DtChar[1] = bufferRx_[3 + 2*I];
-            regArr[I] = Value.DtUint16[0];
+            Value.tdChar[0] = bufferRx_[4 + 2*I];
+            Value.tdChar[1] = bufferRx_[3 + 2*I];
+            regArr[I] = Value.tdUint16[0];
           }
           Result = MODBUS_OK;
         }
@@ -325,7 +325,7 @@ int ModbusMaster::readMultipleLongInts(    int SlaveAddr,
 {
     int Result = RETURN_ERROR;
     int I = 0;                                                        // Счётчик, используется при формировании массива прочитанных данных
-    DataType Value;                                                    // Переменна для формирования массива прочитанных данных
+    unTypeData Value;                                                    // Переменна для формирования массива прочитанных данных
     unsigned short Crc = 0;                                            // Переменная для проверки CRC
     try
     {
@@ -356,11 +356,11 @@ int ModbusMaster::readMultipleLongInts(    int SlaveAddr,
                         case    RETURN_MODBUS_OK:
                                 for(I = 0; I <= RefCnt; I++)
                                 {
-                                    Value.DtChar[0] = txBuffer_[6 + 4*I];
-                                    Value.DtChar[1] = txBuffer_[5 + 4*I];
-                                    Value.DtChar[2] = txBuffer_[4 + 4*I];
-                                    Value.DtChar[3] = txBuffer_[3 + 4*I];
-                                    int32Arr[I] = Value.DtUint32;
+                                    Value.tdChar[0] = txBuffer_[6 + 4*I];
+                                    Value.tdChar[1] = txBuffer_[5 + 4*I];
+                                    Value.tdChar[2] = txBuffer_[4 + 4*I];
+                                    Value.tdChar[3] = txBuffer_[3 + 4*I];
+                                    int32Arr[I] = Value.tdUint32;
                                 }
                         break;
                         // Получен ответ с ошибкой
@@ -406,7 +406,7 @@ int ModbusMaster::readMultipleFloats(        int SlaveAddr,
 {
     int Result = RETURN_ERROR;
     int I = 0;                                                        // Счётчик, используется при формировании массива прочитанных данных
-    DataType Value;                                                   // Переменна для формирования массива прочитанных данных
+    unTypeData Value;                                                   // Переменна для формирования массива прочитанных данных
     unsigned short Crc = 0;
     try
     {
@@ -436,11 +436,11 @@ int ModbusMaster::readMultipleFloats(        int SlaveAddr,
                         case    RETURN_MODBUS_OK:
                                 for(I = 0; I <= RefCnt; I++)
                                 {
-                                    Value.DtChar[0] = txBuffer_[6 + 4*I];
-                                    Value.DtChar[1] = txBuffer_[5 + 4*I];
-                                    Value.DtChar[2] = txBuffer_[4 + 4*I];
-                                    Value.DtChar[3] = txBuffer_[3 + 4*I];
-                                    Float32Arr[I] = Value.DtFloat;
+                                    Value.tdChar[0] = txBuffer_[6 + 4*I];
+                                    Value.tdChar[1] = txBuffer_[5 + 4*I];
+                                    Value.tdChar[2] = txBuffer_[4 + 4*I];
+                                    Value.tdChar[3] = txBuffer_[3 + 4*I];
+                                    Float32Arr[I] = Value.tdFloat;
                                 }
                         break;
                         // Получен ответ с ошибкой
@@ -486,7 +486,7 @@ int ModbusMaster::readInputRegisters(      int SlaveAddr,
 {
     int Result = RETURN_ERROR;
     int I = 0;                                                        // Счётчик, используется при формировании массива прочитанных данных
-    DataType Value;                                                   // Переменна для формирования массива прочитанных данных
+    unTypeData Value;                                                   // Переменна для формирования массива прочитанных данных
     unsigned short Crc = 0;
     try
     {
@@ -517,9 +517,9 @@ int ModbusMaster::readInputRegisters(      int SlaveAddr,
                         case    RETURN_MODBUS_OK:
                                 for(I = 0; I <= RefCnt; I++)
                                 {
-                                    Value.DtChar[0] = txBuffer_[4 + 2*I];
-                                    Value.DtChar[1] = txBuffer_[3 + 2*I];
-                                    RegArr[I] = Value.DtUint16[0];
+                                    Value.tdChar[0] = txBuffer_[4 + 2*I];
+                                    Value.tdChar[1] = txBuffer_[3 + 2*I];
+                                    RegArr[I] = Value.tdUint16[0];
                                 }
                                 break;
                                 // Получен ответ с ошибкой
@@ -567,7 +567,7 @@ int ModbusMaster::readInputLongInts(    int SlaveAddr,
     int Result = RETURN_ERROR;
     unsigned short Crc = 0;
     int I = 0;                                                        // Счётчик, используется при формировании массива прочитанных данных
-    DataType Value;                                                   // Переменна для формирования массива прочитанных данных
+    unTypeData Value;                                                   // Переменна для формирования массива прочитанных данных
     try
     {
         // ФОРМИРУЕМ ПОСЫЛКУ
@@ -597,11 +597,11 @@ int ModbusMaster::readInputLongInts(    int SlaveAddr,
                         case    RETURN_MODBUS_OK:
                                 for(I = 0; I <= RefCnt; I++)
                                 {
-                                    Value.DtChar[0] = txBuffer_[6 + 4*I];
-                                    Value.DtChar[1] = txBuffer_[5 + 4*I];
-                                    Value.DtChar[2] = txBuffer_[4 + 4*I];
-                                    Value.DtChar[3] = txBuffer_[3 + 4*I];
-                                    Int32Arr[I] = Value.DtUint32;
+                                    Value.tdChar[0] = txBuffer_[6 + 4*I];
+                                    Value.tdChar[1] = txBuffer_[5 + 4*I];
+                                    Value.tdChar[2] = txBuffer_[4 + 4*I];
+                                    Value.tdChar[3] = txBuffer_[3 + 4*I];
+                                    Int32Arr[I] = Value.tdUint32;
                                 }
                         break;
                         // Получен ответ с ошибкой
@@ -648,7 +648,7 @@ int ModbusMaster::readInputFloats(    int SlaveAddr,
 {
     int Result = RETURN_ERROR;
     int I = 0;                                                        // Счётчик, используется при формировании массива прочитанных данных
-    DataType Value;                                                   // Переменна для формирования массива прочитанных данных
+    unTypeData Value;                                                   // Переменна для формирования массива прочитанных данных
     unsigned short Crc = 0;
     try
     {
@@ -678,11 +678,11 @@ int ModbusMaster::readInputFloats(    int SlaveAddr,
                         case    RETURN_MODBUS_OK:
                                 for(I = 0; I <= RefCnt; I++)
                                 {
-                                    Value.DtChar[0] = txBuffer_[6 + 4*I];
-                                    Value.DtChar[1] = txBuffer_[5 + 4*I];
-                                    Value.DtChar[2] = txBuffer_[4 + 4*I];
-                                    Value.DtChar[3] = txBuffer_[3 + 4*I];
-                                    Float32Arr[I] = Value.DtFloat;
+                                    Value.tdChar[0] = txBuffer_[6 + 4*I];
+                                    Value.tdChar[1] = txBuffer_[5 + 4*I];
+                                    Value.tdChar[2] = txBuffer_[4 + 4*I];
+                                    Value.tdChar[3] = txBuffer_[3 + 4*I];
+                                    Float32Arr[I] = Value.tdFloat;
                                 }
                         break;
                         // Получен ответ с ошибкой
@@ -1084,17 +1084,17 @@ int ModbusMaster::writeMultipleFloats(    int SlaveAddr,
     unsigned char I = 0;                                                // Временный счётчик
     //unsigned short Crc = 0;                                                // Переменная для контрольной суммы
     short RegArr[RefCnt*2 + 9];
-    DataType Arr;
+    unTypeData Arr;
     try
     {
         // Переводим в формат 16-ти битовых регистров
         for(I = 0; I<= RefCnt; I++)
         {
-            Arr.DtFloat = Float32Arr[I];
-            RegArr[I * 4] = Arr.DtChar[0];
-            RegArr[I * 4 + 1] = Arr.DtChar[1];
-            RegArr[I * 4 + 2] = Arr.DtChar[2];
-            RegArr[I * 4 + 3] = Arr.DtChar[3];
+            Arr.tdFloat = Float32Arr[I];
+            RegArr[I * 4] = Arr.tdChar[0];
+            RegArr[I * 4 + 1] = Arr.tdChar[1];
+            RegArr[I * 4 + 2] = Arr.tdChar[2];
+            RegArr[I * 4 + 3] = Arr.tdChar[3];
         }
         // Вызываем запись данных
         writeMultipleRegisters(SlaveAddr, StartRef, RegArr, RefCnt*2);

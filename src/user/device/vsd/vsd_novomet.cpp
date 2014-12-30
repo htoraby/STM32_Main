@@ -1727,19 +1727,19 @@ void VsdNovomet::updateParameters(void)
     ModbusParameter Param = DM->getFieldAll(DM->getIndexAtID(UpdateParamID));
     switch (Param.TypeData) {
     case TYPE_DATA_INT16:
-      Value = (float)Param.Value.Int16[0];
+      Value = (float)Param.Value.tdInt16[0];
       break;
     case TYPE_DATA_UINT16:
-      Value = (float)Param.Value.Uint16[0];
+      Value = (float)Param.Value.tdUint16[0];
       break;
     case  TYPE_DATA_INT32:
-      Value = (float)Param.Value.Int32;
+      Value = (float)Param.Value.tdInt32;
       break;
     case  TYPE_DATA_UINT32:
-      Value = (float)Param.Value.Uint32;
+      Value = (float)Param.Value.tdUint32;
       break;
     case  TYPE_DATA_FLOAT:
-      Value = (float)Param.Value.Float;
+      Value = (float)Param.Value.tdFloat;
       break;
     default:
       break;

@@ -8,16 +8,24 @@
 #ifndef DEFINE_H_
 #define DEFINE_H_
 
-union DataType
+/*!
+ * \brief The unDataType union
+ * Объединение для преобразования типов данных
+ */
+union unTypeData
 {
-  unsigned char      DtChar[4];
-  signed short int   DtInt16[2];
-  signed long int    DtInt32;
-  unsigned short int DtUint16[2];
-  unsigned long int  DtUint32;
-  float              DtFloat;
+  unsigned char      tdChar[4];
+  signed short int   tdInt16[2];
+  signed long int    tdInt32;
+  unsigned short int tdUint16[2];
+  unsigned long int  tdUint32;
+  float              tdFloat;
 };
 
+/*!
+ * \brief The enTypeData enum
+ * Перечисление типов данных
+ */
 enum enTypeData {
   TYPE_DATA_ERROR  = 0,
   TYPE_DATA_CHAR   = 1,
@@ -27,6 +35,119 @@ enum enTypeData {
   TYPE_DATA_UINT32 = 5,
   TYPE_DATA_FLOAT  = 6,
   TYPE_DATA_LAST
+};
+
+enum enReturns
+{
+  RETURN_OK                     = 0,
+  RETURN_ERROR                  = 1,
+  RETURN_ERROR_ID_VALUE         = 2,
+  RETURN_ERROR_ID               = 3,
+  RETURN_ERROR_ACCESS_VALUE     = 4,
+  RETURN_ERROR_ACCESS           = 5,
+  RETURN_ERROR_OPERATION_VALUE  = 6,
+  RETURN_ERROR_OPERATION        = 7,
+  RETURN_ERROR_PHYSIC_VALUE     = 8,
+  RETURN_ERROR_PHYSIC           = 9,
+  RETURN_ERROR_VALIDITY_VALUE   = 10,
+  RETURN_ERROR_VALIDITY         = 11,
+  RETURN_ERROR_MAXIMUM          = 12,
+  RETURN_ERROR_MINIMUM          = 13,
+  RETURN_ERROR_TYPE_DATA_VALUE  = 14,
+  RETURN_ERROR_UNIT_VALUE       = 15,
+  RETURN_MODBUS_TIMEOUT         = 16,
+  RETURN_MODBUS_ERROR_CRC       = 17,
+  RETURN_MODBUS_ERROR           = 18,
+  RETURN_MODBUS_OK              = 19,
+  RETURN_ERROR_UPDATE_VALUE     = 20,
+  RETURN_LAST
+};
+
+enum enAccess
+{
+  ACCESS_ERROR          = 0,
+  ACCESS_OPERATOR				= 1,
+  ACCESS_TECHNOLOG			= 2,
+  ACCESS_SERVICE				= 3,
+  ACCESS_GOD            = 4,
+	ACCESS_LAST
+};
+
+enum enOperation
+{
+  OPERATION_ERROR			  = 0,
+  OPERATION_READ				= 1,
+  OPERATION_WRITE				= 2,
+  OPERATION_LIMITED			= 3,
+	OPERATION_LAST
+};
+
+/*!
+ * \brief The enPhysic enum
+ * Типы физических величин
+ */
+enum enPhysic
+{
+  PHYSIC_ERROR              = 0,
+  /// Просто число
+  PHYSIC_NUMERIC            = 1,
+  /// Время
+  PHYSIC_TIME               = 2,
+  /// Проценты
+  PHYSIC_PERCENT            = 3,
+  /// Длина
+  PHYSIC_LENGHT             = 4,
+  /// Плотность
+  PHYSIC_DENSITY            = 5,
+  /// Площадь
+  PHYSIC_SPACE              = 6,
+  /// Частота
+  PHYSIC_FREQUENCY          = 7,
+  /// Напряжение
+  PHYSIC_VOLTAGE            = 8,
+  /// Ток
+  PHYSIC_CURRENT            = 9,
+  /// Активная мощность
+  PHYSIC_ACTIVE_POWER       = 10,
+  /// Полная мощность
+  PHYSIC_FULL_POWER         = 11,
+  /// Реактивная мощность
+  PHYSIC_REACTIVE_POWER     = 12,
+  /// Угол
+  PHYSIC_ANGLE              = 13,
+  /// Скорость вращения
+  PHYSIC_RPM                = 14,
+  /// Темп (разгона или замедления)
+  PHYSIC_TEMP               = 15,
+  /// Сопротивление изоляции
+  PHYSIC_RESISTANCE         = 16,
+  /// Сопротивление кабельной линии
+  PHYSIC_RESIST_CABLE_LINE  = 16,
+  /// Давление
+  PHYSIC_PRESSURE           = 17,
+  /// Температура
+  PHYSIC_TEMPERATURE        = 18,
+  /// Ускорение
+  PHYSIC_ACCELERATION       = 19,
+  /// Cкорость
+  PHYSIC_SPEED             	= 20,
+  /// Вязкость
+  PHYSIC_VISCOSITY	        = 21,
+  /// Расход
+  PHYSIC_FLOW            		= 22,
+  /// Мощность
+  PHYSIC_POWER              = 23,
+  /// Активная энергия
+  PHYSIC_ACTIVE_ENERGY      = 24,
+  /// Реактивная энергия
+  PHYSIC_REACTIVE_ENERGY    = 25,
+  /// Полная энергия
+  PHYSIC_FULL_ENERGY        = 26,
+  /// Номинальный момент
+  PHYSIC_RATE               = 27,
+  /// Индуктивность Гн
+  PHYSIC_INDUNCTANCE        = 28,
+  PHYSIC_LAST
 };
 
 enum enPhysicTime {
@@ -123,99 +244,183 @@ enum enPhysicAngle {
   ANGLE_LAST
 };
 
-union unTypeData {
-  //// Символ
-  unsigned char Chars[4];
-  //// Знаковый INT16
-  signed short int Int16[2];
-  //// Знаковый INT32
-  signed long int Int32;
-  //// Беззнаковый INT16
-  unsigned short int Uint16[2];
-  //// Беззнаковый INT32
-  unsigned long int Uint32;
-  //// С плавающей точкой
-  float Float;
+/*!
+ * \brief The enTypeMotor enum
+ * Перечисление типов двигателя
+ */
+enum enTypeMotor {
+  /// Ассинхронный
+  VSD_TYPE_MOTOR_ASYNC = 1,
+  /// Вентильный 1000 оборотов
+  VSD_TYPE_MOTOR_VENT_1000,
+  /// Вентильный 3000 оборотов
+  VSD_TYPE_MOTOR_VENT_3000,
+  /// Вентильный 6000 оборотов
+  VSD_TYPE_MOTOR_VENT_6000
 };
 
-enum enReturns
-{
-  RETURN_OK                     = 0,
-  RETURN_ERROR                  = 1,
-  RETURN_ERROR_ID_VALUE         = 2,
-  RETURN_ERROR_ID               = 3,
-  RETURN_ERROR_ACCESS_VALUE     = 4,
-  RETURN_ERROR_ACCESS           = 5,
-  RETURN_ERROR_OPERATION_VALUE  = 6,
-  RETURN_ERROR_OPERATION        = 7,
-  RETURN_ERROR_PHYSIC_VALUE     = 8,
-  RETURN_ERROR_PHYSIC           = 9,
-  RETURN_ERROR_VALIDITY_VALUE   = 10,
-  RETURN_ERROR_VALIDITY         = 11,
-  RETURN_ERROR_MAXIMUM          = 12,
-  RETURN_ERROR_MINIMUM          = 13,
-  RETURN_ERROR_TYPE_DATA_VALUE  = 14,
-  RETURN_ERROR_UNIT_VALUE       = 15,
-  RETURN_MODBUS_TIMEOUT         = 16,
-  RETURN_MODBUS_ERROR_CRC       = 17,
-  RETURN_MODBUS_ERROR           = 18,
-  RETURN_MODBUS_OK              = 19,
-  RETURN_ERROR_UPDATE_VALUE     = 20,
-  RETURN_LAST
+/*!
+ * \brief The enControlMotor enum
+ * Перечисление типов управления двигателем
+ */
+enum enControlMotor {
+  /// Метод управления U/f
+  VSD_CONTROL_MOTOR_UF = 1,
+  /// Векторное управление
+  VSD_CONTROL_MOTOR_VECT
 };
 
-enum enAccess
-{
-  ACCESS_ERROR          = 0,
-  ACCESS_OPERATOR				= 1,
-  ACCESS_TECHNOLOG			= 2,
-  ACCESS_SERVICE				= 3,
-  ACCESS_GOD            = 4,
-	ACCESS_LAST
+/*!
+ * \brief The enRotation enum
+ * Перечисление направлений вращений двигателя
+ */
+enum enRotation {
+  /// Правое направление вращения
+  VSD_ROTATION_RIGHT = 1,
+  /// Левое направление вращения
+  VSD_ROTATION_LEFT
 };
 
-enum enOperation
-{
-  OPERATION_ERROR			  = 0,
-  OPERATION_READ				= 1,
-  OPERATION_WRITE				= 2,
-  OPERATION_LIMITED			= 3,
-	OPERATION_LAST
+/*!
+ * \brief The enOnOff enum
+ * Перечисление включено / отключено
+ */
+enum enOnOff {
+  /// Выключено
+  OFF = 1,
+  /// Включено
+  ON
 };
 
-enum enPhysic
-{
-  PHYSIC_ERROR              = 0,
-  PHYSIC_NUMERIC            = 1,        /// Перечислимый тип
-  PHYSIC_TIME               = 2,        /// Время
-  PHYSIC_PERCENT            = 3,        /// Проценты
-  PHYSIC_LENGHT             = 4,        /// Длина
-  PHYSIC_DENSITY            = 5,        /// Плотность
-  PHYSIC_SPACE              = 6,        /// Площадь
-  PHYSIC_FREQUENCY          = 7,        /// Частота
-  PHYSIC_VOLTAGE            = 8,        /// Напряжение
-  PHYSIC_CURRENT            = 9,        /// Ток
-  PHYSIC_ACTIVE_POWER       = 10,       /// Активная мощность
-  PHYSIC_FULL_POWER         = 11,       /// Полная мощность
-  PHYSIC_REACTIVE_POWER     = 12,       /// Реактивная мощность
-  PHYSIC_ANGLE              = 13,       /// Угол
-  PHYSIC_RPM                = 14,       /// Скорость вращения
-  PHYSIC_TEMP               = 15,       /// Темп (разгона или замедления)
-  PHYSIC_RESISTANCE         = 16,       /// Сопротивление изоляции
-  PHYSIC_RESIST_CABLE_LINE  = 16,       /// Сопротивление кабельной линии
-  PHYSIC_PRESSURE           = 17,       /// Давление
-  PHYSIC_TEMPERATURE        = 18,       /// Температура
-  PHYSIC_ACCELERATION       = 19,       /// Ускорение
-  PHYSIC_SPEED             	= 20,       /// Cкорость
-  PHYSIC_VISCOSITY	        = 21,       /// Вязкость
-  PHYSIC_FLOW            		= 22,       /// Расход
-  PHYSIC_POWER              = 23,       /// Мощность
-  PHYSIC_ACTIVE_ENERGY      = 24,       /// Активная энергия
-  PHYSIC_REACTIVE_ENERGY    = 25,       /// Реактивная энергия
-  PHYSIC_FULL_ENERGY        = 26,       /// Полная энергия
-  PHYSIC_RATE               = 27,       /// Номинальный момент
-  PHYSIC_INDUNCTANCE        = 28,       /// Индуктивность Гн
-	PHYSIC_LAST
+/*!
+ * \brief The enProt enum
+ * Перечисление действия защиты
+ */
+enum enProt {
+  /// Выключено
+  PROT_OFF = 1,
+  /// АПВ
+  PROT_RESTART,
+  /// Блокировка
+  PROT_BLOCK
+};
+
+/*!
+ * \brief The enUfType enum
+ * Перечисление типов зависимости U/f
+ */
+enum enUfType {
+  /// По точкам
+  VSD_UF_TYPE_POINT = 1,
+  /// Линейное
+  VSD_UF_TYPE_LINE,
+  /// Квадратичное
+  VSD_UF_TYPE_SQR,
+  /// Обратно квадратичное
+  VSD_UF_TYPE_SQRT
+};
+
+/*!
+ * \brief The enNominalVoltage enum
+ * Перечисление типов номинального напряжения
+ */
+enum enNominalVoltage {
+  /// 380 вольт
+  NOMINAL_VOLTAGE_380 = 1,
+  /// 480 вольт
+  NOMINAL_VOLTAGE_480,
+  /// 500 вольт
+  NOVINAL_VOLTAGE_500
+};
+
+/*!
+ * \brief The enNominalFrequency enum
+ * Перечисление номинальная частота
+ */
+enum enNominalFrequency {
+  /// 50Гц
+  NOMINAL_FREQUENCY_50 = 1,
+  /// 60Гц
+  NOMINAL_FREQUENCY_60
+};
+
+/*!
+ * \brief The enCableCross enum
+ * Перечисление сечений кабеля
+ */
+enum enCableCross {
+  /// 16
+  CABLE_CROSS_16 = 1,
+  /// 21
+  CABLE_CROSS_21,
+  /// 25
+  CABLE_CROSS_25,
+  /// 33
+  CABLE_CROSS_33,
+  /// 42
+  CABLE_CROSS_42
+};
+
+/*!
+ * \brief The enTypeDHS enum
+ * Перечисление типов ТМС
+ */
+enum enTypeDHS {
+  /// Новомет
+  TYPE_DHS_NOVOMET,
+  /// Алмаз
+  TYPE_DHS_ALMAZ,
+  /// Борец
+  TYPE_DHS_BORETS,
+  /// Электон
+  TYPE_DHS_ELEKTON,
+  /// Эталон
+  TYPE_DHS_ETALON,
+  /// Ирз
+  TYPE_DHS_IRZ,
+  /// Орион
+  TYPE_DHS_ORION,
+  /// Шлюмберже
+  TYPE_DHS_PIC_V2,
+  /// Скад
+  TYPE_DHS_SCAD,
+  /// Скан
+  TYPE_DHS_SCAN,
+  /// Триол
+  TYPE_DHS_TRIOL,
+  /// Зенит
+  TYPE_DHS_ZENIT
+};
+
+/*!
+ * \brief The enByteRate enum
+ * Скорость устройства по RS
+ */
+enum enByteRate {
+  BYTE_RATE_9600,
+  BYTE_RATE_14400,
+  BYTE_RATE_19200,
+  BYTE_RATE_38400,
+  BYTE_RATE_57600,
+  BYTE_RATE_115200
+};
+
+/*!
+ * \brief The enSequencePhase enum
+ * Порядок чередования фаз
+ */
+enum enSequencePhase {
+  PHASE_ABC = 1,
+  PHASE_CBA
+};
+
+/*!
+ * \brief The enParamProt enum
+ * Кретерий защиты
+ */
+enum enParamProt {
+  PARAM_PROT_POWER = 1,
+  PARAM_PROT_CURRENT
 };
 
 enum enValidity
@@ -236,7 +441,7 @@ enum enUpdate
 enum enCcsCondition
 {
   /// Горит красный светодиод
-  CCS_CONDITION_STOP = 0,
+  CCS_CONDITION_STOP = 1,
   /// Горит желтый светодиод
   CCS_CONDITION_WAIT,
   /// Горит желтый и зеленый светодиоды
@@ -245,6 +450,13 @@ enum enCcsCondition
   CCS_CONDITION_BLOCK,
   /// Горит зеленый светодиод
   CCS_CONDITION_RUN
+};
+
+enum enCcsControlMode
+{
+  CCS_CONTROL_MODE_STOP = 1,
+  CCS_CONTROL_MODE_MANUAL,
+  CCS_CONTROL_MODE_AUTO
 };
 
 enum enVsdCondition{
@@ -266,570 +478,716 @@ enum enID
 {
 	CCS_BEGIN        = 0,
 
-  /// ИЗМЕРЯЕМЫЕ, РАСЧЁТНЫЕ И КОНТРОЛИРУЕМЫЕ ПАРАМЕТРЫ
-  CCS_RESISTANCE_ISOLATION,									/// Сопротивление изоляции, берем с ТМС или УКИ
-
-
   CCS_ACCESS_LEVEL,											/// Уровень доступа к контроллеру
-  //
-	CCS_CONDITION,
+  CCS_CONDITION,                        /// Обобщенное состояние защит КСУ
+  CCS_CONTROL_MODE,                     /// Состояние переключателя режимов
   CCS_DEVICE_STOP,											/// Устройство остановлено
   CCS_LOAD_MOTOR,												/// Текущая загрузка двигателя
-  /// ЗАЩИТА ОТ СНИЖЕНИЯ ДАВЛЕНИЯ НА ПРИЁМЕ НАСОСА
-  CCS_PROT_PRESSURE_INTAKE_MODE,								/// Защита Вкл/Выкл
-  CCS_PROT_PRESSURE_INTAKE_ACTION,							/// Защита Откл/АПВ/Блок
-  CCS_PROT_PRESSURE_INTAKE_TIMER_ACTIVATION,					/// Задержка активации
-  CCS_PROT_PRESSURE_INTAKE_TIMER_DELAY,						/// Задержка срабатывания
-  CCS_PROT_PRESSURE_INTAKE_TIMER_RESTART,						/// Задержка АПВ
-  CCS_PROT_PRESSURE_INTAKE_CONTROL_PARAM,						/// Контролируемый параметр
-  CCS_PROT_PRESSURE_INTAKE_SETPOINT,							/// Значение уставки защиты
-  CCS_PROT_PRESSURE_INTAKE_COUNTER_RESTART,					/// Счётчик запусков
-  CCS_PROT_PRESSURE_INTAKE_TIMER_COUNTER_RESTART,				/// Период сброса запусков
-  CCS_PROT_PRESSURE_INTAKE_BAN,								/// Наличие запрещающего параметра
-  CCS_PROT_PRESSURE_INTAKE_BAN_SETPOINT,						/// Уставка запрещающего параметра
-  CCS_PROT_PRESSURE_INTAKE_STATE,								/// Текущее состояние автомата защит
-  CCS_PROT_PRESSURE_INTAKE_TIMER,								/// Текущее состояние таймера
-  CCS_PROT_PRESSURE_INTAKE_COUNTER,							/// Текущее состояние счётчиков срабатывания
-  CCS_PROT_PRESSURE_INTAKE_GENERAL_COUNTER_RESTART,			/// Общий счётчик
-  CCS_PROT_PRESSURE_INTAKE_GENERAL_COUNTER_STOP,				/// Общий счётчик срабатывания защиты
-  /// ЗАЩИТА ОТ ПЕРЕГРЕВА ДВИГАТЕЛЯ
-	CCS_PROT_MOTOR_OVERHEAD_MODE,
-	CCS_PROT_MOTOR_OVERHEAD_ACTION,
-	CCS_PROT_MOTOR_OVERHEAD_TIMER_ACTIVATION,
-	CCS_PROT_MOTOR_OVERHEAD_TIMER_DELAY,
-	CCS_PROT_MOTOR_OVERHEAD_TIMER_RESTART,
-	CCS_PROT_MOTOR_OVERHEAD_CONTROL_PARAM,
-	CCS_PROT_MOTOR_OVERHEAD_SETPOINT,
-	CCS_PROT_MOTOR_OVERHEAD_COUNTER_RESTART,
-	CCS_PROT_MOTOR_OVERHEAD_TIMER_COUNTER_RESTART,
-	CCS_PROT_MOTOR_OVERHEAD_BAN,
-	CCS_PROT_MOTOR_OVERHEAD_BAN_SETPOINT,
-	CCS_PROT_MOTOR_OVERHEAD_STATE,
-	CCS_PROT_MOTOR_OVERHEAD_TIMER,
-	CCS_PROT_MOTOR_OVERHEAD_COUNTER,
-  CCS_PROT_MOTOR_OVERHEAD_GENERAL_COUNTER_RESTART,			/// Общий счётчик
-  CCS_PROT_MOTOR_OVERHEAD_GENERAL_COUNTER_STOP,				/// Общий счётчик срабатывания защиты
-  /// ЗАЩИТА ОТ ВИБРАЦИИ ДВИГАТЕЛЯ
-	CCS_PROT_MOTOR_VIBRATION_MODE,
-	CCS_PROT_MOTOR_VIBRATION_ACTION,
-	CCS_PROT_MOTOR_VIBRATION_TIMER_ACTIVATION,
-	CCS_PROT_MOTOR_VIBRATION_TIMER_DELAY,
-	CCS_PROT_MOTOR_VIBRATION_TIMER_RESTART,
-	CCS_PROT_MOTOR_VIBRATION_CONTROL_PARAM,
-	CCS_PROT_MOTOR_VIBRATION_SETPOINT,
-	CCS_PROT_MOTOR_VIBRATION_COUNTER_RESTART,
-	CCS_PROT_MOTOR_VIBRATION_TIMER_COUNTER_RESTART,
-	CCS_PROT_MOTOR_VIBRATION_BAN,
-	CCS_PROT_MOTOR_VIBRATION_BAN_SETPOINT,
-	CCS_PROT_MOTOR_VIBRATION_STATE,
-	CCS_PROT_MOTOR_VIBRATION_TIMER,
-	CCS_PROT_MOTOR_VIBRATION_COUNTER,
-  CCS_PROT_MOTOR_VIBRATION_GENERAL_COUNTER_RESTART,			/// Общий счётчик
-  CCS_PROT_MOTOR_VIBRATION_GENERAL_COUNTER_STOP,				/// Общий счётчик срабатывания защиты_MODE,
-	CCS_PROT_MOTOR_VIBRATION_VALUE,
-  /// ЗАЩИТА ОТ ТУРБИННОГО ВРАЩЕНИЯ
-	CCS_PROT_TURBO_ROTATION_MODE,
-	CCS_PROT_TURBO_ROTATION_ACTION,
-	CCS_PROT_TURBO_ROTATION_TIMER_ACTIVATION,
-	CCS_PROT_TURBO_ROTATION_TIMER_DELAY,
-	CCS_PROT_TURBO_ROTATION_TIMER_RESTART,
-	CCS_PROT_TURBO_ROTATION_CONTROL_PARAM,
-	CCS_PROT_TURBO_ROTATION_SETPOINT,
-	CCS_PROT_TURBO_ROTATION_COUNTER_RESTART,
-	CCS_PROT_TURBO_ROTATION_TIMER_COUNTER_RESTART,
-	CCS_PROT_TURBO_ROTATION_BAN,
-	CCS_PROT_TURBO_ROTATION_BAN_SETPOINT,
-	CCS_PROT_TURBO_ROTATION_STATE,
-	CCS_PROT_TURBO_ROTATION_TIMER,
-	CCS_PROT_TURBO_ROTATION_COUNTER,
-  CCS_PROT_TURBO_ROTATION_GENERAL_COUNTER_RESTART,			/// Общий счётчик
-  CCS_PROT_TURBO_ROTATION_GENERAL_COUNTER_STOP,				/// Общий счётчик срабатывания защиты
-	CCS_PROT_TIRBO_ROTATION_VALUE,
-  /// ЗАЩИТА СНИЖЕНИЯ ПИТАНИЯ СЕТИ
-	CCS_PROT_LOW_VOLTAGE_MODE,
-	CCS_PROT_LOW_VOLTAGE_ACTION,
-	CCS_PROT_LOW_VOLTAGE_ACTIVATION,
-	CCS_PROT_LOW_VOLTAGE_TIMER_DELAY,
-	CCS_PROT_LOW_VOLTAGEN_TIMER_RESTART,
-	CCS_PROT_LOW_VOLTAGE_CONTROL_PARAM,
-	CCS_PROT_LOW_VOLTAGE_SETPOINT,
-	CCS_PROT_LOW_VOLTAGE_COUNTER_RESTART,
-	CCS_PROT_LOW_VOLTAGE_TIMER_COUNTER_RESTART,
-	CCS_PROT_LOW_VOLTAGE_BAN,
-	CCS_PROT_LOW_VOLTAGE_BAN_SETPOINT,
-	CCS_PROT_LOW_VOLTAGE_STATE,
-	CCS_PROT_LOW_VOLTAGE_TIMER,
-	CCS_PROT_LOW_VOLTAGE_COUNTER,
-  CCS_PROT_LOW_VOLTAGE_GENERAL_COUNTER_RESTART,				/// Общий счётчик
-  CCS_PROT_LOW_VOLTAGE_GENERAL_COUNTER_STOP,					/// Общий счётчик срабатывания защиты
-  /// ЗАЩИТА СНИЖЕНИЯ СОПРОТИВЛЕНИЯ ИЗОЛЯЦИИ
-	CCS_PROT_RESISTANCE_ISOLATION_MODE,
-	CCS_PROT_RESISTANCE_ISOLATION_ACTION,
-	CCS_PROT_RESISTANCE_ISOLATION_ACTIVATION,
-	CCS_PROT_RESISTANCE_ISOLATION_TIMER_DELAY,
-	CCS_PROT_RESISTANCE_ISOLATION_TIMER_RESTART,
-	CCS_PROT_RESISTANCE_ISOLATION_CONTROL_PARAM,
-	CCS_PROT_RESISTANCE_ISOLATION_SETPOINT,
-	CCS_PROT_RESISTANCE_ISOLATION_COUNTER_RESTART,
-	CCS_PROT_RESISTANCE_ISOLATION_TIMER_COUNTER_RESTART,
-	CCS_PROT_RESISTANCE_ISOLATION_BAN,
-	CCS_PROT_RESISTANCE_ISOLATION_BAN_SETPOINT,
-	CCS_PROT_RESISTANCE_ISOLATION_STATE,
-	CCS_PROT_RESISTANCE_ISOLATION_TIMER,
-	CCS_PROT_RESISTANCE_ISOLATION_COUNTER,
-  CCS_PROT_RESISTANCE_ISOLATION_GENERAL_COUNTER_RESTART,		/// Общий счётчик
-  CCS_PROT_RESISTANCE_ISOLATION_GENERAL_COUNTER_STOP,			/// Общий счётчик срабатывания защиты
-  /// Защита первышения питания сети
-  /// Состояние защиты
-  CCS_PROT_OVERVOLTAGE_IN_MODE,
-  /// Действие защиты
-  CCS_PROT_OVERVOLTAGE_IN_ACTION,
-  /// Задержка активации
-  CCS_PROT_OVERVOLTAGE_IN_DELAY_ACTIV,
-  /// Задержка срабатывания
-  CCS_PROT_OVERVOLTAGE_IN_DELAY_REACTION,
-  /// Задержка АПВ
-  CCS_PROT_OVERVOLTAGE_IN_DELAY_RESTART,
-  /// Значение границы срабатывания
-  CCS_PROT_OVERVOLTAGE_IN_LIMIT_REACTION,
-  /// Значение границы АПВ
-  CCS_PROT_OVERVOLTAGE_IN_LIMIT_RESTART,
-  /// Состояние автомата защиты
-  CCS_PROT_OVERVOLTAGE_IN_STATE,
-  /// Значение контролируемого параметра
-  CCS_PROT_OVERVOLTAGE_IN_VALUE_PARAMETER,
-  /// Значение таймера год
-  CCS_PROT_OVERVOLTAGE_IN_TIMER_YAER,
-  /// Значение таймера месяц
-  CCS_PROT_OVERVOLTAGE_IN_TIMER_MONTH,
-  /// Значение таймера день
-  CCS_PROT_OVERVOLTAGE_IN_TIMER_DAY,
-  /// Значение таймера час
-  CCS_PROT_OVERVOLTAGE_IN_TIMER_HOUR,
-  /// Значение таймера минуты
-  CCS_PROT_OVERVOLTAGE_IN_TIMER_MIN,
-  /// Значение таймера секунды
-  CCS_PROT_OVERVOLTAGE_IN_TIMER_SEC,
 
-  CCS_PROT_OVERVOLTAGE_IN_COUNTER_RESTART,
-  CCS_PROT_OVERVOLTAGE_IN_TIMER_COUNTER_RESTART,
-  CCS_PROT_OVERVOLTAGE_IN_BAN,
-  CCS_PROT_OVERVOLTAGE_IN_BAN_SETPOINT,
-  CCS_PROT_OVERVOLTAGE_IN_TIMER,
-  CCS_PROT_OVERVOLTAGE_IN_COUNTER,
-  /// ЗАЩИТА ПРЕВЫШЕНИЯ ЧИСЛА ПУСКОВ
-	CCS_PROT_COUNTER_RESTART_MODE,
-	CCS_PROT_COUNTER_RESTART_ACTION,
-	CCS_PROT_COUNTER_RESTART_ACTIVATION,
-	CCS_PROT_COUNTER_RESTART_TIMER_DELAY,
-	CCS_PROT_COUNTER_RESTART_TIMER_RESTART,
-  CCS_PROT_COUNTER_RESTART_CONTROL_PARAM,
-	CCS_PROT_COUNTER_RESTART_SETPOINT,
-	CCS_PROT_COUNTER_RESTART_COUNTER_RESTART,
-	CCS_PROT_COUNTER_RESTART_TIMER_COUNTER_RESTART,
-	CCS_PROT_COUNTER_RESTART_BAN,
-	CCS_PROT_COUNTER_RESTART_BAN_SETPOINT,
-	CCS_PROT_COUNTER_RESTART_STATE,
-	CCS_PROT_COUNTER_RESTART_TIMER,
-	CCS_PROT_COUNTER_RESTART_COUNTER,
-  CCS_PROT_COUNTER_RESTART_GENERAL_COUNTER_RESTART,			/// Общий счётчик
-  CCS_PROT_COUNTER_RESTART_GENERAL_COUNTER_STOP,				/// Общий счётчик срабатывания защиты
-  /// ЗАЩИТА ОТ ПЕРЕГРУЗА
-	CCS_PROT_OVERLOAD_MODE,
-	CCS_PROT_OVERLOAD_ACTION,
-	CCS_PROT_OVERLOAD_ACTIVATION,
-	CCS_PROT_OVERLOAD_TIMER_DELAY,
-	CCS_PROT_OVERLOAD_TIMER_RESTART,
-	CCS_PROT_OVERLOAD_CONTROL_PARAM,
-	CCS_PROT_OVERLOAD_SETPOINT,
-	CCS_PROT_OVERLOAD_COUNTER_RESTART,
-	CCS_PROT_OVERLOAD_TIMER_COUNTER_RESTART,
-	CCS_PROT_OVERLOAD_BAN,
-	CCS_PROT_OVERLOAD_BAN_SETPOINT,
-	CCS_PROT_OVERLOAD_STATE,
-	CCS_PROT_OVERLOAD_TIMER,
-	CCS_PROT_OVERLOAD_COUNTER,
-  CCS_PROT_OVERLOAD_GENERAL_COUNTER_RESTART,					/// Общий счётчик
-  CCS_PROT_OVERLOAD_GENERAL_COUNTER_STOP,						/// Общий счётчик срабатывания защиты
-  /// ЗАЩИТА ОТ НЕДОГРУЗА
-	CCS_PROT_UNDERLOAD_MODE,
-	CCS_PROT_UNDERLOAD_ACTION,
-	CCS_PROT_UNDERLOAD_ACTIVATION,
-	CCS_PROT_UNDERLOAD_TIMER_DELAY,
-	CCS_PROT_UNDERLOAD_TIMER_RESTART,
-	CCS_PROT_UNDERLOAD_CONTROL_PARAM,
-	CCS_PROT_UNDERLOAD_SETPOINT,
-	CCS_PROT_UNDERLOAD_COUNTER_RESTART,
-	CCS_PROT_UNDERLOAD_TIMER_COUNTER_RESTART,
-	CCS_PROT_UNDERLOAD_BAN,
-	CCS_PROT_UNDERLOAD_BAN_SETPOINT,
-	CCS_PROT_UNDERLOAD_STATE,
-	CCS_PROT_UNDERLOAD_TIMER,
-	CCS_PROT_UNDERLOAD_COUNTER,
-  CCS_PROT_UNDERLOAD_GENERAL_COUNTER_RESTART,					/// Общий счётчик
-  CCS_PROT_UNDERLOAD_GENERAL_COUNTER_STOP,					/// Общий счётчик срабатывания защиты
-  /// ЗАЩИТА ОТ НЕДОГРУЗА
-	CCS_PROT_MAX_CURRENT_MODE,
-	CCS_PROT_MAX_CURRENT_ACTION,
-	CCS_PROT_MAX_CURRENT_ACTIVATION,
-	CCS_PROT_MAX_CURRENT_TIMER_DELAY,
-	CCS_PROT_MAX_CURRENT_TIMER_RESTART,
-	CCS_PROT_MAX_CURRENT_CONTROL_PARAM,
-	CCS_PROT_MAX_CURRENT_SETPOINT,
-	CCS_PROT_MAX_CURRENT_COUNTER_RESTART,
-	CCS_PROT_MAX_CURRENT_TIMER_COUNTER_RESTART,
-	CCS_PROT_MAX_CURRENT_BAN,
-	CCS_PROT_MAX_CURRENT_BAN_SETPOINT,
-	CCS_PROT_MAX_CURRENT_STATE,
-	CCS_PROT_MAX_CURRENT_TIMER,
-	CCS_PROT_MAX_CURRENT_COUNTER,
-  CCS_PROT_MAX_CURRENT_GENERAL_COUNTER_RESTART,				/// Общий счётчик
-  CCS_PROT_MAX_CURRENT_GENERAL_COUNTER_STOP,					/// Общий счётчик срабатывания защиты
-  /// ЗАЩИТА ДИСБАЛАНС ПИТАНИЯ СЕТИ
-	CCS_PROT_DISBALANCE_VOLTAGE_MODE,
-	CCS_PROT_DISBALANCE_VOLTAGE_ACTION,
-	CCS_PROT_DISBALANCE_VOLTAGE_ACTIVATION,
-	CCS_PROT_DISBALANCE_VOLTAGE_TIMER_DELAY,
-	CCS_PROT_DISBALANCE_VOLTAGE_TIMER_RESTART,
-	CCS_PROT_DISBALANCE_VOLTAGE_CONTROL_PARAM,
-	CCS_PROT_DISBALANCE_VOLTAGE_SETPOINT,
-	CCS_PROT_DISBALANCE_VOLTAGE_COUNTER_RESTART,
-	CCS_PROT_DISBALANCE_VOLTAGE_TIMER_COUNTER_RESTART,
-	CCS_PROT_DISBALANCE_VOLTAGE_BAN,
-	CCS_PROT_DISBALANCE_VOLTAGE_BAN_SETPOINT,
-	CCS_PROT_DISBALANCE_VOLTAGE_STATE,
-	CCS_PROT_DISBALANCE_VOLTAGE_TIMER,
-	CCS_PROT_DISBALANCE_VOLTAGE_COUNTER,
-  CCS_PROT_DISBALANCE_VOLTAGE_GENERAL_COUNTER_RESTART,		/// Общий счётчик
-  CCS_PROT_DISBALANCE_VOLTAGE_GENERAL_COUNTER_STOP,			/// Общий счётчик срабатывания защиты
-  CCS_PROT_DISBALANCE_VOLTAGE_VALUE,							/// Значение дисбаланса
-  /// ЗАЩИТА ДИСБАЛАНС ТОКА СЕТИ СЕТИ
-	CCS_PROT_DISBALANCE_CURRENT_MODE,
-	CCS_PROT_DISBALANCE_CURRENT_ACTION,
-	CCS_PROT_DISBALANCE_CURRENT_ACTIVATION,
-	CCS_PROT_DISBALANCE_CURRENT_TIMER_DELAY,
-	CCS_PROT_DISBALANCE_CURRENT_TIMER_RESTART,
-	CCS_PROT_DISBALANCE_CURRENT_CONTROL_PARAM,
-	CCS_PROT_DISBALANCE_CURRENT_SETPOINT,
-	CCS_PROT_DISBALANCE_CURRENT_COUNTER_RESTART,
-	CCS_PROT_DISBALANCE_CURRENT_TIMER_COUNTER_RESTART,
-	CCS_PROT_DISBALANCE_CURRENT_BAN,
-	CCS_PROT_DISBALANCE_CURRENT_BAN_SETPOINT,
-	CCS_PROT_DISBALANCE_CURRENT_STATE,
-	CCS_PROT_DISBALANCE_CURRENT_TIMER,
-	CCS_PROT_DISBALANCE_CURRENT_COUNTER,
-  CCS_PROT_DISBALANCE_CURRENT_GENERAL_COUNTER_RESTART,		/// Общий счётчик
-  CCS_PROT_DISBALANCE_CURRENT_GENERAL_COUNTER_STOP,			/// Общий счётчик срабатывания защиты
-  CCS_PROT_DISBALANCE_CURRENT_VALUE,							/// Текущее значение дисбаланса
-  /// ЗАЩИТА ДИСБАЛАНС ТОКА СЕТИ СЕТИ
-	CCS_PROT_DISBALANCE_CURRENT_MOTOR_MODE,
-	CCS_PROT_DISBALANCE_CURRENT_MOTOR_ACTION,
-	CCS_PROT_DISBALANCE_CURRENT_MOTOR_ACTIVATION,
-	CCS_PROT_DISBALANCE_CURRENT_MOTOR_TIMER_DELAY,
-	CCS_PROT_DISBALANCE_CURRENT_MOTOR_TIMER_RESTART,
-	CCS_PROT_DISBALANCE_CURRENT_MOTOR_CONTROL_PARAM,
-	CCS_PROT_DISBALANCE_CURRENT_MOTOR_SETPOINT,
-	CCS_PROT_DISBALANCE_CURRENT_MOTOR_COUNTER_RESTART,
-	CCS_PROT_DISBALANCE_CURRENT_MOTOR_TIMER_COUNTER_RESTART,
-	CCS_PROT_DISBALANCE_CURRENT_MOTOR_BAN,
-	CCS_PROT_DISBALANCE_CURRENT_MOTOR_BAN_SETPOINT,
-	CCS_PROT_DISBALANCE_CURRENT_MOTOR_STATE,
-	CCS_PROT_DISBALANCE_CURRENT_MOTOR_COUNTER,
-  CCS_PROT_DISBALANCE_CURRENT_MOTOR_GENERAL_COUNTER_RESTART,	/// Общий счётчик
-  CCS_PROT_DISBALANCE_CURRENT_MOTOR_GENERAL_COUNTER_STOP,		/// Общий счётчик срабатывания защиты
-  /// ЗАЩИТА ПО МИНИМАЛЬНОЙ ЧАСТОТЕ
-	CCS_PROT_MINIMUM_FREQUENCY_MODE,
-	CCS_PROT_MINIMUM_FREQUENCY_ACTION,
-	CCS_PROT_MINIMUM_FREQUENCY_ACTIVATION,
-	CCS_PROT_MINIMUM_FREQUENCY_TIMER_DELAY,
-	CCS_PROT_MINIMUM_FREQUENCY_TIMER_RESTART,
-	CCS_PROT_MINIMUM_FREQUENCY_CONTROL_PARAM,
-	CCS_PROT_MINIMUM_FREQUENCY_MOTOR_SETPOINT,
-	CCS_PROT_MINIMUM_FREQUENCY_COUNTER_RESTART,
-	CCS_PROT_MINIMUM_FREQUENCY_TIMER_COUNTER_RESTART,
-	CCS_PROT_MINIMUM_FREQUENCY_BAN,
-	CCS_PROT_MINIMUM_FREQUENCY_BAN_SETPOINT,
-	CCS_PROT_MINIMUM_FREQUENCY_STATE,
-	CCS_PROT_MINIMUM_FREQUENCY_TIMER,
-	CCS_PROT_MINIMUM_FREQUENCY_COUNTER,
-  CCS_PROT_MINIMUM_FREQUENCY_GENERAL_COUNTER_RESTART,			/// Общий счётчик
-  CCS_PROT_MINIMUM_FREQUENCY_GENERAL_COUNTER_STOP,			/// Общий счётчик срабатывания защиты
-  /// ЗАЩИТА ПО МАКСИМАЛЬНОЙ ЧАСТОТЕ
-	CCS_PROT_MAXIMUM_FREQUENCY_MODE,
-	CCS_PROT_MAXIMUM_FREQUENCY_ACTION,
-	CCS_PROT_MAXIMUM_FREQUENCY_ACTIVATION,
-	CCS_PROT_MAXIMUM_FREQUENCY_TIMER_DELAY,
-	CCS_PROT_MAXIMUM_FREQUENCY_TIMER_RESTART,
-	CCS_PROT_MAXIMUM_FREQUENCY_CONTROL_PARAM,
-	CCS_PROT_MAXIMUM_FREQUENCY_MOTOR_SETPOINT,
-	CCS_PROT_MAXIMUM_FREQUENCY_COUNTER_RESTART,
-	CCS_PROT_MAXIMUM_FREQUENCY_TIMER_COUNTER_RESTART,
-	CCS_PROT_MAXIMUM_FREQUENCY_BAN,
-	CCS_PROT_MAXIMUM_FREQUENCY_BAN_SETPOINT,
-	CCS_PROT_MAXIMUM_FREQUENCY_STATE,
-	CCS_PROT_MAXIMUM_FREQUENCY_TIMER,
-	CCS_PROT_MAXIMUM_FREQUENCY_COUNTER,
-  CCS_PROT_MAXIMUM_FREQUENCY_GENERAL_COUNTER_RESTART,			/// Общий счётчик
-  CCS_PROT_MAXIMUM_FREQUENCY_GENERAL_COUNTER_STOP,			/// Общий счётчик срабатывания защиты
-  /// ЗАЩИТА ОТ ЧЕРЕДОВАНИЯ ФАЗ
-	CCS_PROT_ROTATION_PHASE_MODE,
-	CCS_PROT_ROTATION_PHASE_ACTION,
-	CCS_PROT_ROTATION_PHASE_ACTIVATION,
-	CCS_PROT_ROTATION_PHASE_TIMER_DELAY,
-	CCS_PROT_ROTATION_PHASE_TIMER_RESTART,
-	CCS_PROT_ROTATION_PHASE_CONTROL_PARAM,
-	CCS_PROT_ROTATION_PHASE_MOTOR_SETPOINT,
-	CCS_PROT_ROTATION_PHASE_COUNTER_RESTART,
-	CCS_PROT_ROTATION_PHASE_TIMER_COUNTER_RESTART,
-	CCS_PROT_ROTATION_PHASE_BAN,
-	CCS_PROT_ROTATION_PHASE_BAN_SETPOINT,
-	CCS_PROT_ROTATION_PHASE_STATE,
-	CCS_PROT_ROTATION_PHASE_TIMER,
-	CCS_PROT_ROTATION_PHASE_COUNTER,
-  CCS_PROT_ROTATION_PHASE_GENERAL_COUNTER_RESTART,			/// Общий счётчик
-  CCS_PROT_ROTATION_PHASE_GENERAL_COUNTER_STOP,			/// Общий счётчик срабатывания защиты
-	CCS_PROT_ROTATION_PHASE_VALUE,
-  /// ЗАЩИТА ПО КОНТАКТНОМУ МОНОМЕТРУ (ДУМАЕТСЯ ЧТО ЗАЩИТА ПО ДИСКРЕТНОМУ ВХОДУ)
-	CCS_PROT_CONTACT_MONOMETR_MODE,
-	CCS_PROT_CONTACT_MONOMETR_ACTION,
-	CCS_PROT_CONTACT_MONOMETR_ACTIVATION,
-	CCS_PROT_CONTACT_MONOMETR_TIMER_DELAY,
-	CCS_PROT_CONTACT_MONOMETR_TIMER_RESTART,
-	CCS_PROT_CONTACT_MONOMETR_CONTROL_PARAM,
-	CCS_PROT_CONTACT_MONOMETR_SETPOINT,
-	CCS_PROT_CONTACT_MONOMETR_COUNTER_RESTART,
-	CCS_PROT_CONTACT_MONOMETR_TIMER_COUNTER_RESTART,
-	CCS_PROT_CONTACT_MONOMETR_BAN,
-	CCS_PROT_CONTACT_MONOMETR_BAN_SETPOINT,
-	CCS_PROT_CONTACT_MONOMETR_STATE,
-	CCS_PROT_CONTACT_MONOMETR_TIMER,
-	CCS_PROT_CONTACT_MONOMETR_COUNTER,
-  CCS_PROT_CONTACT_MONOMETR_GENERAL_COUNTER_RESTART,			/// Общий счётчик
-  CCS_PROT_CONTACT_MONOMETR_GENERAL_COUNTER_STOP,				/// Общий счётчик срабатывания защиты
-	CCS_PROT_CONTACT_MONOMETR_VALUE,
-  /// ЗАЩИТА ПО ДОПОЛНИТЕЛЬНОМУ АНАЛОГОВОМУ ВХОДУ 1
-	CCS_PROT_ADD_AI_1_MODE,
-	CCS_PROT_ADD_AI_1_ACTION,
-	CCS_PROT_ADD_AI_1_ACTIVATION,
-	CCS_PROT_ADD_AI_1_TIMER_DELAY,
-	CCS_PROT_ADD_AI_1_TIMER_RESTART,
-	CCS_PROT_ADD_AI_1_CONTROL_PARAM,
-	CCS_PROT_ADD_AI_1_SETPOINT,
-	CCS_PROT_ADD_AI_1_COUNTER_RESTART,
-	CCS_PROT_ADD_AI_1_TIMER_COUNTER_RESTART,
-	CCS_PROT_ADD_AI_1_BAN,
-	CCS_PROT_ADD_AI_1_BAN_SETPOINT,
-	CCS_PROT_ADD_AI_1_STATE,
-	CCS_PROT_ADD_AI_1_TIMER,
-	CCS_PROT_ADD_AI_1_COUNTER,
-  CCS_PROT_ADD_AI_1_GENERAL_COUNTER_RESTART,			/// Общий счётчик
-  CCS_PROT_ADD_AI_1_GENERAL_COUNTER_STOP,				/// Общий счётчик срабатывания защиты
-	CCS_PROT_ADD_AI_1_VALUE,
-  /// ЗАЩИТА ПО ДОПОЛНИТЕЛЬНОМУ АНАЛОГОВОМУ ВХОДУ 2
-	CCS_PROT_ADD_AI_2_MODE,
-	CCS_PROT_ADD_AI_2_ACTION,
-	CCS_PROT_ADD_AI_2_ACTIVATION,
-	CCS_PROT_ADD_AI_2_TIMER_DELAY,
-	CCS_PROT_ADD_AI_2_TIMER_RESTART,
-	CCS_PROT_ADD_AI_2_CONTROL_PARAM,
-	CCS_PROT_ADD_AI_2_SETPOINT,
-	CCS_PROT_ADD_AI_2_COUNTER_RESTART,
-	CCS_PROT_ADD_AI_2_TIMER_COUNTER_RESTART,
-	CCS_PROT_ADD_AI_2_BAN,
-	CCS_PROT_ADD_AI_2_BAN_SETPOINT,
-	CCS_PROT_ADD_AI_2_STATE,
-	CCS_PROT_ADD_AI_2_TIMER,
-	CCS_PROT_ADD_AI_2_COUNTER,
-  CCS_PROT_ADD_AI_2_GENERAL_COUNTER_RESTART,			/// Общий счётчик
-  CCS_PROT_ADD_AI_2_GENERAL_COUNTER_STOP,				/// Общий счётчик срабатывания защиты
-	CCS_PROT_ADD_AI_2_VALUE,
-
-  /// РЕЖИМ ПРОГРАММНОГО ИЗМЕНЕНИЯ ЧАСТОТЫ
-  /// Уставка включения режима
-	CCS_RGM_PROGRAM_CHANGE_FREQ_MODE,
-
-  /// Уставка режима, выключен, однократно или каждый запуск
-	CCS_RGM_PROGRAM_CHANGE_FREQ_ACTION,
-
-  /// Уставка начальная частота
-	CCS_RGM_PROGRAM_CHANGE_FREQ_BEGIN_FREQ,
-
-  /// Уставка конечная частота
-	CCS_RGM_PROGRAM_CHANGE_FREQ_END_FREQ,
-
-  /// Уставка темп изменения частоты
-	CCS_RGM_PROGRAM_CHANGE_FREQ_RATE,
-
-  /// Уставка время изменения частоты
-	CCS_RGM_PROGRAM_CHANGE_FREQ_TIME,
-
-  /// Уставка нижняя граница ЗСП
-	CCS_RGM_PROGRAM_CHANGE_FREQ_ZSP,
-
-  /// Вычисленное значение уставки ЗСП от текущей частоты
-	CCS_RGM_PROGRAM_CHANGE_FREQ_CALC_ZSP,
-
-  /// Вычисленное время изменения частоты на один шаг
-	CCS_RGM_PROGRAM_CHANGE_FREQ_PERIOD,
-
-  /// Текущее значение таймера между повышениями частоты
-	CCS_RGM_PROGRAM_CHANGE_FREQ_TIMER,
-
-  /// Время до конца выхода на конечную частоту
-	CCS_RGM_PROGRAM_CHANGE_FREQ_TIMER_END,
-
-  /// РЕЖИМ ПЕРИОДИЧЕСКОЙ РАБОТЫ
-  /// Уставка включение режима
-	CCS_RGM_PERIODIC_MODE,
-
-  /// Уставка режима, выключен, однократно или каждый запуск
-	CCS_RGM_PERIODIC_ACTION,
-
-  /// Уставка времени работы в периодическом режиме
-	CCS_RGM_PERIODIC_TIME_WORK,
-
-  /// Уставка времени паузы в периодическом режиме
-	CCS_RGM_PERIODIC_TIME_STOP,
-
-  /// Текущее значение таймера цикла работы или паузы
-	CCS_RGM_PERIODIC_TIME,
-
-  /// Время до пуска / или время до останова по таймеру
-	CCS_RGM_PERIODIC_TIME_END,
-
-  /// Текущее состояние режима
-	CCS_RGM_PERIODIC_STATE,
-
-  /// РЕЖИМ ЧЕРЕДОВАНИЯ ЧАСТОТ
-  /// Уставка включения режима
-	CCS_RGM_SWITCH_FREQ_MODE,
-
-  /// Уставка режим выключен, однократно или каждый запуск
-	CCS_RGM_SWITCH_FREQ_ACTION,
-
-  /// Уставка низкая частота
-	CCS_RGM_SWITCH_FREQ_LOW,
-
-  /// Уставка высокая частота
-	CCS_RGM_SWITCH_FREQ_HI,
-
-  /// Уставка время работы на низкой частоте
-	CCS_RGM_SWITCH_FREQ_LOW_TIME,
-
-  /// Уставка время работы на высокой частоте
-	CCS_RGM_SWITCH_FREQ_HI_TIME,
-
-  /// Текущее значение таймера цикла
-	CCS_RGM_SWITCH_FREQ_TIME,
-
-  /// Время до конца работы на текущей частоте
-	CCS_RGM_SWITCH_FREQ_TIME_END,
-
-  /// РЕЖИМ ВСТРЯХИВАНИЯ
-    /// Период встряхивания, то есть интервал времени между сериями
-    /// изменений частоты.
-	CCS_RGM_SHAKE_PERIOD,
-
-  /// Количество встряхиваний
-	CCS_RGM_SHAKE_QUANTITY,
-
-    /// Счётчик встряхиваний
-    CCS_RGM_SHAKE_COUNT,
-
-    /// Частота встряхиваний низкая
-    CCS_RGM_LOW_FREQ,
-
-    /// Частота встряхиваний высокая
-    CCS_RGM_HI_FREQ,
-
-    /// Темп набора частоты низкой частоты
-    CCS_RGM_LOW_RATE,
-
-    /// Темп набора высокой частоты
-    CCS_RGM_HI_RATE,
-
-    /// Время до следующего встряхивания
-    CCS_RGM_TIME,
-
-  /// Номер ЦДНГ
-	CCS_NUMBER_CDNG,
-
-  /// Номер куста
-	CCS_NUMBER_BUSH,
-
-  /// Номер скважины
-	CCS_NUMBER_WELL,
-
-  /// Производительность насоса
-	CCS_PUMP_CAPACITY,
-
-  /// Напор ЭЦН
-	CCS_PUMP_HEAD,
-
-  /// Напряжение отпайки
-	CCS_VOLTAGE_TAP_OFF,
-
-  /// Дата последнего запуска
-	CCS_DATA_LAST_START,
-
-  /// Время последнего запуска
-	CCS_TIME_LAST_START,
-
-  /// Дата последнего останова
-	CCS_DATA_LAST_STOP,
-
-  /// Время последнего останова
-	CCS_TIME_LAST_STOP,
-
-  /// Причина последнего пуска
-	CCS_CODE_START,
-
-  /// Причина останова
-	CCS_CODE_STOP,
-
-  /// Ток холостого хода
-	CCS_CURRENT_HH_MOTOR,
-
-  /// Глубина спуска
-	CCS_DEPTH,
-
-  /// Тип Scada системы
-	CCS_PROTOCOL_SCADA,
-
-  /// Адрес во внешний телемеханики
-	CCS_ADDRESS_SCADA,
-
-  /// Скорость работы со Scada
-	CCS_BITRATE_SCADA,
-
-  /// Версия протокола Scada
-	CCS_CODE_SCADA,
 
   CCS_PHYSIC_MIN_ADD_AI_1,									/// Физический минимнимум дополнительного аналогового входа 1
   CCS_PHYSIC_MAX_ADD_AI_1,									/// Физический максимум дополнительного аналогового входа 1
   CCS_PHYSIC_MIN_ADD_AI_2,									/// Физический минимнимум дополнительного аналогового входа 2
   CCS_PHYSIC_MAX_ADD_AI_2,									/// Физический максимум дополнительного аналогового входа 2
-  CCS_GENERAL_WORK_TIME,										/// Общее время работы СУ
-  CCS_GENERAL_STOP_TIME,										/// Общее время простоя СУ
-  CCS_CURRENT_WORK_TIME,										/// Текущее время работы СУ
-  CCS_PASSWORD_OPERATOR,										/// Пароль оператора
-  CCS_PASSWORD_TECHNOLOG,										/// Пароль технолога
-  CCS_PASSWORD_SERVICE,										/// Пароль сервисного инженера
-  CCS_PASSWORD_GOD,											/// Пароль режима "бога"
+
   CCS_PERIOD_LOG_NOLMAL_MODE,	  								/// Период записи в нормальном режиме
   CCS_PERIOD_LOG_FAST_MODE,									/// Период записи в ускоренном режиме
   CCS_PERIOD_LOG_SHORT_TMS,									/// Период записи температуры обмоток двиагтеля и давления на приёме
-  CCS_BREAK_RTC,												/// СНГ сбой часов реального времени
-  CCS_OPEN_DOOR,												/// СНГ открыта дверь
-  CCS_REMOTE_BLOCK,											/// СНГ Блокировка дистанционно
-  CCS_BREAK_CONTACTOR,										/// СНГ Поломка контактора
-  CCS_WORKING_OPERATOR,										/// СНГ Местный режим, должен устанавливаться в 1 и держать 1 минуту
-  CCS_WORKING_MODE,											/// СНГ Режим работы
-  CCS_REMOTE_PROGRAM_CCS,										/// СНГ Удаленное перепрограммирование СУ, команда
-  CSS_REMOTE_PROGRAM_TMS,										/// СНГ Удаленное перепрограммирование ТМС, команда
-  CCS_REMOTE_PROGRAM_MS,										/// СНГ Удаленное перепрограммирование МС, команда
-	CCS_WORK_PROGRAM_MODE,
 
+
+  /// Период записи параметров
+  CCS_LOG_PERIOD_NORMAL,
+  /// Период ускоренной записи
+  CCS_LOG_PERIOD_FAST,
+  /// Период архивов ТМС
+  CCS_LOG_PERIOD_DHS,
+  /// Индуктивность
+  CCS_MOTOR_INDUNCTANCE,
+  /// Удельная ЭДС
+  CCS_MOTOR_EDS,
+  /// Ток холостого хода
+  CCS_MOTOR_CURRENT_HH,
+  /// Число пар полюсов
+  CCS_MOTOR_POLUS,
+  /// Мощность ТМПН
+  CCS_TRANS_NOMINAL_POWER,
+  /// Номинальный ток ТМПН
+  CCS_TRANS_NOMINAL_CURRENT,
+  /// Номинальное напряжение ТМПН
+  CCS_TRANS_NOMINAL_VOLTAGE,
+  /// Длина кабеля
+  CCS_TRANS_CABLE_LENGHT,
+  /// Сечение кабеля
+  CCS_TRANS_CABLE_CROSS,
+  /// Необходимое напряжение отпайки
+  CCS_TRANS_NEED_VOLTAGE_TAP_OFF,
+  /// Напряжение отпайки
+  CCS_TRANS_VOLTAGE_TAP_OFF,
+  /// Тип ТМС
+  CCS_TYPE_DHS,
+  /// Производительность насоса
+  CCS_PUMP_CAPACITY,
+  /// Напор ЭЦН
+  CCS_PUMP_HEAD,
+  /// Глубина спуска
+  CCS_DEPTH,
+  /// Защиты
+  /// Защиты по сети
+  /// Защита "Превышение питания сети"
+  /// Защита "Превышение питания сети", Включение/выключение уставка
+  CCS_PROT_SUPPLY_OVERVOLTAGE_MODE,
+  /// Защита "Превышение питания сети", Реакция защиты уставка
+  CCS_PROT_SUPPLY_OVERVOLTAGE_REACTION,
+  /// Защита "Превышение питания сети", Задержка активации уставка
+  CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY,
+  /// Защита "Превышение питания сети", Задержка срабатывания уставка
+  CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY,
+  /// Защита "Превышение питания сети", Задержка АПВ уставка
+  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY,
+  /// Защита "Превышение питания сети", Количество АПВ уставка
+  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_LIMIT,
+  /// Защита "Превышение питания сети", Автосброс счетчика АПВ
+  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET,
+  /// Защита "Превышение питания сети", Уставка срабатывания защиты
+  CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_SETPOINT,
+  /// Защита "Превышение питания сети" Уставка срабатывания АПВ
+  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_SETPOINT,
+  /// Защита "Превышение питания сети" Уставка параметр защиты
+  CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER,
+  /// Защита "Превышение питания сети" Уставка параметр защиты
+  CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER_2,
+  /// Защита "Превышение питания сети" Текущий параметр состояние автомата
+  CCS_PROT_SUPPLY_OVERVOLTAGE_STATE,
+  /// Защита "Превышение питания сети" Текущий параметр Фиксированное время
+  CCS_PROT_SUPPLY_OVERVOLTAGE_TIME,
+  /// Защита "Превышение питания сети" Текущий параметр Количество АПВ
+  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT,
+  /// Защита "Превышение питания сети" Текущий параметр Время первого срабатывания АПВ
+  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET_COUNT,
+  /// Защиты "Снижение питания сети"
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE,
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_REACTION,
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY,
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY,
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY,
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_LIMIT,
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET,
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_SETPOINT,
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_SETPOINT,
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER,
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER_2,
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_STATE,
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME,
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_COUNT,
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET_COUNT,
+  /// Защита "Дисбаланс входных токов"
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_MODE,
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_REACTION,
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY,
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY,
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY,
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_LIMIT,
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_RESET,
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT,
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_SETPOINT,
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER,
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER_2,
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_STATE,
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME,
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_COUNT,
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_RESET_COUNT,
+  /// Защиты "Дисбаланс входных токов"
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_MODE,
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_REACTION,
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_ACTIV_DELAY,
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY,
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY,
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_LIMIT,
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_RESET,
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_SETPOINT,
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_SETPOINT,
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER,
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER_2,
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_STATE,
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME,
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_COUNT,
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_RESET_COUNT,
+  /// Защиты двигателя
+  /// Защита "Перегруз" (ЗП)
+  CCS_PROT_MOTOR_OVERLOAD_MODE,
+  CCS_PROT_MOTOR_OVERLOAD_REACTION,
+  CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY,
+  CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY,
+  CCS_PROT_MOTOR_OVERLOAD_RESTART_DELAY,
+  CCS_PROT_MOTOR_OVERLOAD_RESTART_LIMIT,
+  CCS_PROT_MOTOR_OVERLOAD_RESTART_RESET,
+  CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT,
+  CCS_PROT_MOTOR_OVERLOAD_RESTART_SETPOINT,
+  CCS_PROT_MOTOR_OVERLOAD_PARAMETER,
+  CCS_PROT_MOTOR_OVERLOAD_PARAMETER_2,
+  CCS_PROT_MOTOR_OVERLOAD_STATE,
+  CCS_PROT_MOTOR_OVERLOAD_TIME,
+  CCS_PROT_MOTOR_OVERLOAD_RESTART_COUNT,
+  CCS_PROT_MOTOR_OVERLOAD_RESTART_RESET_COUNT,
+  /// Защита "Недогруз" (ЗП)
+  CCS_PROT_MOTOR_UNDERLOAD_MODE,
+  CCS_PROT_MOTOR_UNDERLOAD_REACTION,
+  CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY,
+  CCS_PROT_MOTOR_UNDERLOAD_TRIP_DELAY,
+  CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY,
+  CCS_PROT_MOTOR_UNDERLOAD_RESTART_LIMIT,
+  CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET,
+  CCS_PROT_MOTOR_UNDERLOAD_TRIP_SETPOINT,
+  CCS_PROT_MOTOR_UNDERLOAD_RESTART_SETPOINT,
+  CCS_PROT_MOTOR_UNDERLOAD_PARAMETER,
+  CCS_PROT_MOTOR_UNDERLOAD_PARAMETER_2,
+  CCS_PROT_MOTOR_UNDERLOAD_STATE,
+  CCS_PROT_MOTOR_UNDERLOAD_TIME,
+  CCS_PROT_MOTOR_UNDERLOAD_RESTART_COUNT,
+  CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET_COUNT,
+  /// Защита "Дисбаланс токов двигателя"
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE,
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_REACTION,
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY,
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY,
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY,
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_LIMIT,
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_RESET,
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_SETPOINT,
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_SETPOINT,
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_PARAMETER,
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_PARAMETER_2,
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_STATE,
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_TIME,
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_COUNT,
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_RESET_COUNT,
+  /// Защита "Турбинное вращение"
+  CCS_PROT_MOTOR_ASYNC_MODE,
+  CCS_PROT_MOTOR_ASYNC_REACTION,
+  CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY,
+  CCS_PROT_MOTOR_ASYNC_TRIP_DELAY,
+  CCS_PROT_MOTOR_ASYNC_RESTART_DELAY,
+  CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT,
+  CCS_PROT_MOTOR_ASYNC_RESTART_RESET,
+  CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT,
+  CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT,
+  CCS_PROT_MOTOR_ASYNC_PARAMETER,
+  CCS_PROT_MOTOR_ASYNC_PARAMETER_2,
+  CCS_PROT_MOTOR_ASYNC_STATE,
+  CCS_PROT_MOTOR_ASYNC_TIME,
+  CCS_PROT_MOTOR_ASYNC_RESTART_COUNT,
+  CCS_PROT_MOTOR_ASYNC_RESTART_RESET_COUNT,
+  /// Защиты ТМС
+  /// Защита "Давление на приёме насоса"
+  CCS_PROT_DHS_PRESSURE_INTAKE_MODE,
+  CCS_PROT_DHS_PRESSURE_INTAKE_REACTION,
+  CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY,
+  CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY,
+  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY,
+  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT,
+  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET,
+  CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT,
+  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT,
+  CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER,
+  CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER_2,
+  CCS_PROT_DHS_PRESSURE_INTAKE_STATE,
+  CCS_PROT_DHS_PRESSURE_INTAKE_TIME,
+  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_COUNT,
+  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET_COUNT,
+  /// Защита "Температура двигателя"
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE,
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_REACTION,
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY,
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY,
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY,
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_LIMIT,
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_RESET,
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_SETPOINT,
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_SETPOINT,
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_PARAMETER,
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_PARAMETER_2,
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_STATE,
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_TIME,
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_COUNT,
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_RESET_COUNT,
+  /// Защита "Сопротивление изоляции"
+  CCS_PROT_DHS_RESISTANCE_MODE,
+  CCS_PROT_DHS_RESISTANCE_REACTION,
+  CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY,
+  CCS_PROT_DHS_RESISTANCE_TRIP_DELAY,
+  CCS_PROT_DHS_RESISTANCE_RESTART_DELAY,
+  CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT,
+  CCS_PROT_DHS_RESISTANCE_RESTART_RESET,
+  CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT,
+  CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT,
+  CCS_PROT_DHS_RESISTANCE_PARAMETER,
+  CCS_PROT_DHS_RESISTANCE_PARAMETER_2,
+  CCS_PROT_DHS_RESISTANCE_STATE,
+  CCS_PROT_DHS_RESISTANCE_TIME,
+  CCS_PROT_DHS_RESISTANCE_RESTART_COUNT,
+  CCS_PROT_DHS_RESISTANCE_RESTART_RESET_COUNT,
+  /// Защита "Вибрация двигателя"
+  CCS_PROT_DHS_VIBRATION_MODE,
+  CCS_PROT_DHS_VIBRATION_REACTION,
+  CCS_PROT_DHS_VIBRATION_ACTIV_DELAY,
+  CCS_PROT_DHS_VIBRATION_TRIP_DELAY,
+  CCS_PROT_DHS_VIBRATION_RESTART_DELAY,
+  CCS_PROT_DHS_VIBRATION_RESTART_LIMIT,
+  CCS_PROT_DHS_VIBRATION_RESTART_RESET,
+  CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT,
+  CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT,
+  CCS_PROT_DHS_VIBRATION_PARAMETER,
+  CCS_PROT_DHS_VIBRATION_PARAMETER_2,
+  CCS_PROT_DHS_VIBRATION_STATE,
+  CCS_PROT_DHS_VIBRATION_TIME,
+  CCS_PROT_DHS_VIBRATION_RESTART_COUNT,
+  CCS_PROT_DHS_VIBRATION_RESTART_RESET_COUNT,
+  /// Защиты по аналоговым входам
+  /// Защиты Аналоговый вход 1
+  CCS_PROT_AI_1_MODE,
+  CCS_PROT_AI_1_REACTION,
+  CCS_PROT_AI_1_ACTIV_DELAY,
+  CCS_PROT_AI_1_TRIP_DELAY,
+  CCS_PROT_AI_1_RESTART_DELAY,
+  CCS_PROT_AI_1_RESTART_LIMIT,
+  CCS_PROT_AI_1_RESTART_RESET,
+  CCS_PROT_AI_1_TRIP_SETPOINT,
+  CCS_PROT_AI_1_RESTART_SETPOINT,
+  CCS_PROT_AI_1_PARAMETER,
+  CCS_PROT_AI_1_PARAMETER_2,
+  CCS_PROT_AI_1_STATE,
+  CCS_PROT_AI_1_TIME,
+  CCS_PROT_AI_1_RESTART_COUNT,
+  CCS_PROT_AI_1_RESTART_RESET_COUNT,
+  /// Защиты Аналоговый вход 2
+  CCS_PROT_AI_2_MODE,
+  CCS_PROT_AI_2_REACTION,
+  CCS_PROT_AI_2_ACTIV_DELAY,
+  CCS_PROT_AI_2_TRIP_DELAY,
+  CCS_PROT_AI_2_RESTART_DELAY,
+  CCS_PROT_AI_2_RESTART_LIMIT,
+  CCS_PROT_AI_2_RESTART_RESET,
+  CCS_PROT_AI_2_TRIP_SETPOINT,
+  CCS_PROT_AI_2_RESTART_SETPOINT,
+  CCS_PROT_AI_2_PARAMETER,
+  CCS_PROT_AI_2_PARAMETER_2,
+  CCS_PROT_AI_2_STATE,
+  CCS_PROT_AI_2_TIME,
+  CCS_PROT_AI_2_RESTART_COUNT,
+  CCS_PROT_AI_2_RESTART_RESET_COUNT,
+  /// Защиты Аналоговый вход 3
+  CCS_PROT_AI_3_MODE,
+  CCS_PROT_AI_3_REACTION,
+  CCS_PROT_AI_3_ACTIV_DELAY,
+  CCS_PROT_AI_3_TRIP_DELAY,
+  CCS_PROT_AI_3_RESTART_DELAY,
+  CCS_PROT_AI_3_RESTART_LIMIT,
+  CCS_PROT_AI_3_RESTART_RESET,
+  CCS_PROT_AI_3_TRIP_SETPOINT,
+  CCS_PROT_AI_3_RESTART_SETPOINT,
+  CCS_PROT_AI_3_PARAMETER,
+  CCS_PROT_AI_3_PARAMETER_2,
+  CCS_PROT_AI_3_STATE,
+  CCS_PROT_AI_3_TIME,
+  CCS_PROT_AI_3_RESTART_COUNT,
+  CCS_PROT_AI_3_RESTART_RESET_COUNT,
+  /// Защиты Аналоговый вход 4
+  CCS_PROT_AI_4_MODE,
+  CCS_PROT_AI_4_REACTION,
+  CCS_PROT_AI_4_ACTIV_DELAY,
+  CCS_PROT_AI_4_TRIP_DELAY,
+  CCS_PROT_AI_4_RESTART_DELAY,
+  CCS_PROT_AI_4_RESTART_LIMIT,
+  CCS_PROT_AI_4_RESTART_RESET,
+  CCS_PROT_AI_4_TRIP_SETPOINT,
+  CCS_PROT_AI_4_RESTART_SETPOINT,
+  CCS_PROT_AI_4_PARAMETER,
+  CCS_PROT_AI_4_PARAMETER_2,
+  CCS_PROT_AI_4_STATE,
+  CCS_PROT_AI_4_TIME,
+  CCS_PROT_AI_4_RESTART_COUNT,
+  CCS_PROT_AI_4_RESTART_RESET_COUNT,
+  /// Защиты по дискретным входам
+  /// Защита дискретный вход 1
+  CCS_PROT_DI_1_MODE,
+  CCS_PROT_DI_1_REACTION,
+  CCS_PROT_DI_1_ACTIV_DELAY,
+  CCS_PROT_DI_1_TRIP_DELAY,
+  CCS_PROT_DI_1_RESTART_DELAY,
+  CCS_PROT_DI_1_RESTART_LIMIT,
+  CCS_PROT_DI_1_RESTART_RESET,
+  CCS_PROT_DI_1_TRIP_SETPOINT,
+  CCS_PROT_DI_1_RESTART_SETPOINT,
+  CCS_PROT_DI_1_PARAMETER,
+  CCS_PROT_DI_1_PARAMETER_2,
+  CCS_PROT_DI_1_STATE,
+  CCS_PROT_DI_1_TIME,
+  CCS_PROT_DI_1_RESTART_COUNT,
+  CCS_PROT_DI_1_RESTART_RESET_COUNT,
+  /// Защита дискретный вход 2
+  CCS_PROT_DI_2_MODE,
+  CCS_PROT_DI_2_REACTION,
+  CCS_PROT_DI_2_ACTIV_DELAY,
+  CCS_PROT_DI_2_TRIP_DELAY,
+  CCS_PROT_DI_2_RESTART_DELAY,
+  CCS_PROT_DI_2_RESTART_LIMIT,
+  CCS_PROT_DI_2_RESTART_RESET,
+  CCS_PROT_DI_2_TRIP_SETPOINT,
+  CCS_PROT_DI_2_RESTART_SETPOINT,
+  CCS_PROT_DI_2_PARAMETER,
+  CCS_PROT_DI_2_PARAMETER_2,
+  CCS_PROT_DI_2_STATE,
+  CCS_PROT_DI_2_TIME,
+  CCS_PROT_DI_2_RESTART_COUNT,
+  CCS_PROT_DI_2_RESTART_RESET_COUNT,
+  /// Защита дискретный вход 3
+  CCS_PROT_DI_3_MODE,
+  CCS_PROT_DI_3_REACTION,
+  CCS_PROT_DI_3_ACTIV_DELAY,
+  CCS_PROT_DI_3_TRIP_DELAY,
+  CCS_PROT_DI_3_RESTART_DELAY,
+  CCS_PROT_DI_3_RESTART_LIMIT,
+  CCS_PROT_DI_3_RESTART_RESET,
+  CCS_PROT_DI_3_TRIP_SETPOINT,
+  CCS_PROT_DI_3_RESTART_SETPOINT,
+  CCS_PROT_DI_3_PARAMETER,
+  CCS_PROT_DI_3_PARAMETER_2,
+  CCS_PROT_DI_3_STATE,
+  CCS_PROT_DI_3_TIME,
+  CCS_PROT_DI_3_RESTART_COUNT,
+  CCS_PROT_DI_3_RESTART_RESET_COUNT,
+  /// Защита дискретный вход 4
+  CCS_PROT_DI_4_MODE,
+  CCS_PROT_DI_4_REACTION,
+  CCS_PROT_DI_4_ACTIV_DELAY,
+  CCS_PROT_DI_4_TRIP_DELAY,
+  CCS_PROT_DI_4_RESTART_DELAY,
+  CCS_PROT_DI_4_RESTART_LIMIT,
+  CCS_PROT_DI_4_RESTART_RESET,
+  CCS_PROT_DI_4_TRIP_SETPOINT,
+  CCS_PROT_DI_4_RESTART_SETPOINT,
+  CCS_PROT_DI_4_PARAMETER,
+  CCS_PROT_DI_4_PARAMETER_2,
+  CCS_PROT_DI_4_STATE,
+  CCS_PROT_DI_4_TIME,
+  CCS_PROT_DI_4_RESTART_COUNT,
+  CCS_PROT_DI_4_RESTART_RESET_COUNT,
+  /// Защиты прочие
+  /// Защита "Превышения числа пусков"
+  CCS_PROT_OTHER_LIMIT_RESTART_MODE,
+  CCS_PROT_OTHER_LIMIT_RESTART_REACTION,
+  CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY,
+  CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY,
+  CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY,
+  CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT,
+  CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET,
+  CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT,
+  CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT,
+  CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER,
+  CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER_2,
+  CCS_PROT_OTHER_LIMIT_RESTART_STATE,
+  CCS_PROT_OTHER_LIMIT_RESTART_TIME,
+  CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT,
+  /// Защита "Блокировка силового отсека"
+  CCS_PROT_OTHER_LOCK_DOOR_MODE,
+  CCS_PROT_OTHER_LOCK_DOOR_REACTION,
+  CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY,
+  CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY,
+  CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY,
+  CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT,
+  CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET,
+  CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT,
+  CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT,
+  CCS_PROT_OTHER_LOCK_DOOR_PARAMETER,
+  CCS_PROT_OTHER_LOCK_DOOR_PARAMETER_2,
+  CCS_PROT_OTHER_LOCK_DOOR_STATE,
+  CCS_PROT_OTHER_LOCK_DOOR_TIME,
+  CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT,
+  CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET_COUNT,
+  /// Защита "Аппаратные защиты ЧРП"
+  CCS_PROT_OTHER_VSD_MODE,
+  CCS_PROT_OTHER_VSD_REACTION,
+  CCS_PROT_OTHER_VSD_ACTIV_DELAY,
+  CCS_PROT_OTHER_VSD_TRIP_DELAY,
+  CCS_PROT_OTHER_VSD_RESTART_DELAY,
+  CCS_PROT_OTHER_VSD_RESTART_LIMIT,
+  CCS_PROT_OTHER_VSD_RESTART_RESET,
+  CCS_PROT_OTHER_VSD_TRIP_SETPOINT,
+  CCS_PROT_OTHER_VSD_RESTART_SETPOINT,
+  CCS_PROT_OTHER_VSD_PARAMETER,
+  CCS_PROT_OTHER_VSD_PARAMETER_2,
+  CCS_PROT_OTHER_VSD_STATE,
+  CCS_PROT_OTHER_VSD_TIME,
+  CCS_PROT_OTHER_VSD_RESTART_COUNT,
+  CCS_PROT_OTHER_VSD_RESTART_RESET_COUNT,
+  /// Защита "Контроль УКИ"
+  CCS_PROT_OTHER_IMB_MODE,
+  CCS_PROT_OTHER_IMB_REACTION,
+  CCS_PROT_OTHER_IMB_ACTIV_DELAY,
+  CCS_PROT_OTHER_IMB_TRIP_DELAY,
+  CCS_PROT_OTHER_IMB_RESTART_DELAY,
+  CCS_PROT_OTHER_IMB_RESTART_LIMIT,
+  CCS_PROT_OTHER_IMB_RESTART_RESET,
+  CCS_PROT_OTHER_IMB_TRIP_SETPOINT,
+  CCS_PROT_OTHER_IMB_RESTART_SETPOINT,
+  CCS_PROT_OTHER_IMB_PARAMETER,
+  CCS_PROT_OTHER_IMB_PARAMETER_2,
+  CCS_PROT_OTHER_IMB_STATE,
+  CCS_PROT_OTHER_IMB_TIME,
+  CCS_PROT_OTHER_IMB_RESTART_COUNT,
+  CCS_PROT_OTHER_IMB_RESTART_RESET_COUNT,
+  /// Режим периодический
+  CCS_RGM_PERIODIC_MODE,
+  /// Режим периодический
+  CCS_RGM_PERIODIC_RUN_TIMER,
+  /// Режим периодический
+  CCS_RGM_PERIODIC_STOP_TIMER,
+  /// Режим чередования частот
+  CCS_RGM_ALTERNATION_FREQ_MODE,
+  /// Режим чередования частот частота 1
+  CCS_RGM_ALTERNATION_FREQ_FREQ_1,
+  /// Режим чередования частот время работы на частоте 1
+  CCS_RGM_ALTERNATION_FREQ_TIMER_1,
+  /// Режим чередования частот уставка ЗСП
+  CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1,
+  /// Режим чередования частот частота 2
+  CCS_RGM_ALTERNATION_FREQ_FREQ_2,
+  /// Режим чередования частот время работы на частоте 2
+  CCS_RGM_ALTERNATION_FREQ_TIMER_2,
+  /// Режим чередования частот уставка ЗСП 2
+  CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2,
+  /// Режим программного изменения частоты
+  CCS_RGM_CHANGE_FREQ_MODE,
+  /// Режим программного изменения частоты
+  CCS_RGM_CHANGE_FREQ_BEGIN_FREQ,
+  /// Режим программного изменения частоты
+  CCS_RGM_CHANGE_FREQ_END_FREQ,
+  /// Режим программного изменения частоты
+  CCS_RGM_CHANGE_FREQ_TIMER_FREQ,
+  /// Параметры ВНР
+  CCS_RGM_MODE_DATE_TIME,
+  /// Параметры ВНР
+  CCS_RGM_MODE_CURRENT,
+  /// Параметры ВНР
+  CCS_RGM_MODE_VOLTAGE,
+  /// Параметры ВНР
+  CCS_RGM_MODE_LOAD,
+  /// Режим поддержания параметра включение
+  CCS_RGM_MAINTENANCE_PARAM_MODE,
+  /// Режим поддержания параметра параметра
+  CCS_RGM_MAINTENANCE_PARAM,
+  /// Режим поддержания параметра зависимость
+  CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE,
+  /// Режим поддержания параметра поддержка значения
+  CCS_RGM_MAINTENANCE_PARAM_SETPOINT,
+  /// Режим поддержания параметра период регулирования
+  CCS_RGM_MAINTENANCE_PARAM_PERIOD,
+  /// Режим поддержания параметра пропорциональный коэффициент
+  CCS_RGM_MAINTENANCE_PARAM_PROP,
+  /// Режим поддержания параметра интегральный коэффициент
+  CCS_RGM_MAINTENANCE_PARAM_INT,
+  /// Режим поддержания параметра мин рабочая частота
+  CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ,
+  /// Режим поддержания параметра макс рабочая частота
+  CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ,
+  /// Режим Учёт нагрева кабеля вкл/откл
+  CCS_RGM_HEAT_CABLE_MODE,
+  /// Режим Учёт нагрева кабеля сопротивление при 20с
+  CCS_RGM_HEAT_CABLE_RESISTANCE_20,
+  /// Режим Учёт нагрева кабеля сопротивление при 80с
+  CCS_RGM_HEAT_CABLE_RESISTANCE_80,
+  /// Режим Учёт нагрева кабеля номинальный ток кабеля
+  CCS_RGM_HEAT_CABLE_MODE_CURRENT,
+  /// Режим Учёт нагрева кабеля время нагрева
+  CCS_RGM_HEAT_CABLE_MODE_DELAY_REATION,
+  /// Режим оптимизации напряжения вкл/откл
+  CCS_RGM_OPTIM_VOLTAGE_MODE,
+  /// Режим оптимизации напряжения диапазон
+  CCS_RGM_OPTIM_VOLTAGE_SCALE,
+  /// Режим оптимизации напряжения шаг
+  CCS_RGM_OPTIM_VOLTAGE_STEP,
+  /// Режим оптимизации напряжения первый цикл после запуска
+  CCS_RGM_OPTIM_VOLTAGE_DELAY_REACTION,
+  /// Режим оптимизации напряжения периодичность оптимизации
+  CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART,
+  /// Режим прокачки газа вкл/откл
+  CCS_RGM_PUMP_GAS_MODE,
+  /// Режим прокачки газа
+  CCS_RGM_PUMP_GAS_SETPOINT,
+  /// Режим прокачки газа
+  CCS_RGM_PUMP_GAS_DELAY_REACTION,
+  /// Режим прокачки газа
+  CCS_RGM_PUMP_GAS_LIMIT_RESTART,
+  /// Режим ограничения тока вкл/откл
+  CCS_RGM_CURRENT_LIMIT_MODE,
+  /// Режим ограничения тока уставка
+  CCS_RGM_CURRENT_LIMIT_SETPOINT,
+  /// Режим ограничения тока шаг снижения частоты
+  CCS_RGM_CURRENT_LIMIT_STEPDOWN,
+  /// Режим ограничения тока задержка срабатывания
+  CCS_RGM_CURRENT_LIMIT_DELAY_REACTION,
+  /// Режим ограничения тока задержка АПВ
+  CCS_RGM_CURRENT_LIMIT_DELAY_RESTART,
+  /// Коэффициент корректировки выходного тока фаза U
+  CCS_COEF_OUT_CURRENT_U,
+  /// Коэффициент корректировки выходного тока фаза V
+  CCS_COEF_OUT_CURRENT_V,
+  /// Коэффициент корректировки выходного тока фаза W
+  CCS_COEF_OUT_CURRENT_W,
+  /// Коэффициент корректировки сопротивления изоляции
+  CCS_COEF_RESISTANCE_ISOLATION,
+  /// Номер ЦДНГ
+  CCS_NUMBER_CDNG,
+  /// Номер куста
+  CCS_NUMBER_BUSH,
+  /// Номер скважины
+  CCS_NUMBER_WELL,
+  /// Количество пусков
+  CCS_COUNT_START,
+  /// Количество отключений по перезрузу
+  CCS_PROT_OVERLOAD_COUNT_STOP,
+  /// Количество отключений по недогрузу
+  CCS_PROT_UNDERLOAD_COUNT_STOP,
+  /// Количество отключений по другим защитам
+  CCS_PROT_OTHER_COUNT_STOP,
+  /// Количество АПВ после остановов по напряжению
+  CCS_PROT_VOLTAGE_COUNT_RESTART,
+  /// Количество АПВ после остановов по перегрузу
+  CCS_PROT_OVERLOAD_COUNT_RESTART,
+  /// Количество АПВ после остановов по недогрузу
+  CCS_PROT_UNDERLOAD_COUNT_RESTART,
+  /// Количествог АПВ после остановов по дисбалансу токов
+  CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART,
+  CCS_GENERAL_RUN_DATE_TIME,
+  /// Общее время простоя СУ
+  CCS_GENERAL_STOP_DATE_TIME,
+  /// Текущая наработка
+  CCS_RUN_DATE_TIME,
+  /// Текущий простой
+  CCS_STOP_DATE_TIME,
+  /// Время до изменения режима
+  CCS_RGM_TIMER,
+  /// Время до запуска
+  CCS_RESTART_TIMER,
+  /// Дата время последнего включения
+  CCS_LAST_RUN_DATE_TIME,
+  /// Причина последнего пуска
+  CCS_LAST_RUN_REASON,
+  /// Дата время последнего отключения
+  CCS_LAST_STOP_DATE_TIME,
+  /// Причина носледнего отключения
+  CCS_LAST_STOP_REASON,
+  /// Дата время изменения частоты
+  CCS_PREVIEW_FREQUENCY_DATE_TIME,
+  /// Предпоследняя частота
+  CCS_PREVIEW_FREQUENCY,
+  /// Тип КСУ
+  CCS_TYPE_CCS,
+  /// Код производителя КСУ
+  CCS_CODE_PRODUCTION_CCS,
+  /// Заводской номер КСУ
+  CCS_NUM_PRODUCTION_CCS,
+  /// Версия ПО КСУ
+  CCS_VERSION_SW_CCS,
+  /// Версия ПО МС
+  CCS_VERSION_SW_MS,
+  /// Версия ПО ПЧ
+  CCS_VERSION_SW_VSD,
+  /// Дата изготовления КСУ
+  CCS_DATE_PRODUCTION_CCS,
+  /// Дата установки ПО КСУ
+  CCS_DATE_INSTALL_SW_CCS,
+  /// ДАта генерации ПО КСУ
+  CCS_DATE_CREATE_SW_CCS,
+  /// Дата установки ПО ПЧ
+  CCS_DATE_INSTALL_SW_VSD,
+  /// Тип СУ
+  CCS_TYPE_SU,
+  /// Код завода изготовителя СУ
+  CCS_CODE_PRODUCTION_SU,
+  /// Заводской номер СУ
+  CCS_NUM_PRODUCTION_SU,
+  /// Дата изготовления СУ
+  CCS_DATE_PRODUCTION_SU,
+  /// Примечание 1
+  CCS_NOTE_1,
+  /// Примечание 2
+  CCS_NOTE_2,
+  /// Примечание 3
+  CCS_NOTE_3,
+  /// Примечание 4
+  CCS_NOTE_4,
+  /// Примечание 5
+  CCS_NOTE_5,
+  /// Примечание 6
+  CCS_NOTE_6,
+  /// Примечание 7
+  CCS_NOTE_7,
+  /// Примечание 8
+  CCS_NOTE_8,
+  /// Примечание 9
+  CCS_NOTE_9,
+  /// Примечание 10
+  CCS_NOTE_10,
+  /// Дата время в формате POSIX
+  CCS_DATE_TIME,
+  /// Дата время год
+  CCS_DATE_TIME_YEAR,
+  /// Дата время месяц
+  CCS_DATE_TIME_MONTH,
+  /// Дата время дни
+  CCS_DATE_TIME_DAY,
+  /// Дата время часы
+  CCS_DATE_TIME_HOUR,
+  /// Дата время минуты
+  CCS_DATE_TIME_MIN,
+  /// Дата время секунды
+  CCS_DATE_TIME_SEC,
+  /// Дата время мс
+  CCS_DATE_TIME_MS,
+  /// Язык интерфейса
+  CCS_LANGUAGE,
+  /// Включение системы паролей
+  CCS_PASSWORD_ENEBLE,
+  /// Текущий уровень доступа
+  CCS_PASSWORD_LEVEL,
+  /// Пароль 1 уровня
+  CCS_PASSWORD_LEVEL_1,
+  /// Пароль 2 уровня
+  CCS_PASSWORD_LEVEL_2,
+  /// Пароль 3 уровня
+  CCS_PASSWORD_LEVEL_3,
+  /// Пароль 4 уровня
+  CCS_PASSWORD_LEVEL_4,
+  /// Пароль 5 уровня
+  CCS_PASSWORD_LEVEL_5,
+  /// Протокол телемеханики
+  CCS_SCADA_TYPE,
+  /// Версия протокола телемеханики
+  CCS_SCADA_CODE,
+  /// Адресу СУ в телемеханике
+  CCS_SCADA_ADDRESS,
+  /// Скорость опроса в телемеханике
+  CCS_SCADA_BYTERATE,
+  /// Чётность в телемеханике
+  CCS_SCADA_PARITY,
+  /// Количество стоп-бит в телемеханике
+  CCS_SCADA_STOPBIT,
+  /// Задержка ответа в телемеханкие
+  CCS_SCADA_DELAY,
+  /// Единицы измерения давления
+  CCS_UNIT_PRESSURE,
+  /// Единицы измерения давления
+  CCS_UNIT_TEMPERATURE,
+  /// Единицы измерения вибрации
+  CCS_UNIT_VIBRATION,
+  /// Единицы измерения длины
+  CCS_UNIT_LENGHT,
+  /// Единицы измерения расхода
+  CCS_UNIT_FLOW,
+  /// Единицы измерения площади
+  CCS_UNIT_PLACE,
+  /// Последний параметр
 	CCS_END,
 
 	VSD_BEGIN        = 10000,
