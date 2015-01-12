@@ -59,6 +59,7 @@ void Log::init()
   framReadData(addrFram_, (uint8_t*)&address_, 4);
   if (address_ == 0)
     address_ = startAddr_;
+  addrSectorOld_ = address_ / sectorSize_ * sectorSize_;
 }
 
 void Log::deInit()
@@ -69,8 +70,6 @@ void Log::deInit()
 
 void Log::write(uint8_t *data, uint32_t size)
 {
-  static uint32_t addrSectorOld = (address_ + size) / sectorSize_ * sectorSize_;
-
   //! Проверка питания платы
   if (!isPowerGood())
     return;
@@ -85,10 +84,10 @@ void Log::write(uint8_t *data, uint32_t size)
 
   //! Проверка на начало нового сектора
   uint32_t addrSector = (address_ + size) / sectorSize_ * sectorSize_;
-  if (addrSector != addrSectorOld) {
+  if (addrSector != addrSectorOld_) {
     address_ = addrSector;
     flashEraseSector4k(flashSpiNum_, address_);
-    addrSectorOld = addrSector;
+    addrSectorOld_ = addrSector;
   }
 
   //! Сохранение глабального индекса записей

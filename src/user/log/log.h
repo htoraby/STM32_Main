@@ -26,9 +26,9 @@ typedef enum {
   //! FlashSpi5
   StartAddrEventLog = 0x00000000,  //! 4+1 сектора
   StartAddrDataLog  = 0x00005000,  //! 2357+1 сектора
-  StartAddrRunLog   = 0x009AC000,  //! 640+1 секторов
-  StartAddrAlarmLog = 0x00C2C000,  //! 640+1 секторов
-  StartAddrTmsLog   = 0x00EAC000,  //! 450+1 секторов
+  StartAddrRunLog   = 0x0093B000,  //! 640+1 секторов
+  StartAddrAlarmLog = 0x00BBC000,  //! 640+1 секторов
+  StartAddrTmsLog   = 0x00E3D000,  //! 450+1 секторов
   //! FlashSpi1
   StartAddrDebugLog = 0x00000000,  //! все сектора
 } StartAddrLog;
@@ -38,12 +38,12 @@ typedef enum {
  *
 */
 typedef enum {
-  EndAddrEventLog = 0x005000,
-  EndAddrDataLog  = 0x9ABFFF,
-  EndAddrRunLog   = 0xC2BFFF,
-  EndAddrAlarmLog = 0xEABFFF,
-  EndAddrTmsLog   = 0xEAC000,
-  EndAddrDebugLog = 0x000000,
+  EndAddrEventLog = 0x00005000,
+  EndAddrDataLog  = 0x0093B000,
+  EndAddrRunLog   = 0x00BBC000,
+  EndAddrAlarmLog = 0x00E3D000,
+  EndAddrTmsLog   = 0x01000000,
+  EndAddrDebugLog = 0x00000000,
 } EndAddrLog;
 
 /*!
@@ -96,6 +96,7 @@ private:
   uint32_t startAddr_;
   uint32_t endAddr_;
   uint32_t sectorSize_;
+  uint32_t addrSectorOld_;
 
 };
 

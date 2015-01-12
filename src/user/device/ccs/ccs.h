@@ -8,7 +8,7 @@
 #ifndef CCS_H_
 #define CCS_H_
 
-#include "Device.h"
+#include "device.h"
 
 class Ccs: public Device
 {
@@ -16,7 +16,5 @@ public:
   Ccs();
   virtual ~Ccs();
 };
-
-extern Ccs KSU;
 
 #endif /* CCS_H_ */
