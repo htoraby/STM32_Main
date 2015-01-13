@@ -34,7 +34,7 @@ void LogData::task()
   while (1) {
     osDelay(1000);
 
-    int condition = KSU.getValue(CCS_PERIOD_LOG_NOLMAL_MODE);
+    int condition = KSU.getValue(CCS_CONDITION);
 #if DEBUG
 //    condition = CCS_CONDITION_DELAY;
 #endif
@@ -71,7 +71,7 @@ void LogData::task()
 
 void LogData::add(uint8_t code)
 {
-  memset(buffer, 0, 253);
+  memset(buffer, 0, sizeof(buffer));
 
   time_t time = getTime();
 

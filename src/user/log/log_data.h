@@ -3,11 +3,6 @@
 
 #include "log.h"
 
-enum {
-  NormModeCode = 28,
-  FastModeCode = 29,
-};
-
 /*!
  * \brief Класс архива данных
  *

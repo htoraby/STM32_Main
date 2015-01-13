@@ -53,6 +53,13 @@ typedef enum {
 class Log
 {
 public:
+  enum {
+    NormModeCode = 28,
+    FastModeCode = 29,
+    RunCode      = 30,
+    TmsCode      = 32,
+  };
+
   Log(TypeLog type);
   ~Log();
 

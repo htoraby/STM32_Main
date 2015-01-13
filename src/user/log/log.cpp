@@ -91,6 +91,8 @@ void Log::write(uint8_t *data, uint32_t size)
   }
 
   //! Сохранение глабального индекса записей
+  if (id_ == 0xFFFFFFFF)
+    id_ = 0;
   framWriteData(IdLogAddrFram, (uint8_t*)&id_, 4);
   //! Сохранение адреса с которого начнётся следующая запись
   framWriteData(addrFram_, (uint8_t*)&address_, 4);
