@@ -1,8 +1,5 @@
 #include "adc.h"
-
-#define ADC_CNANNELS_NUM 3
-#define ADC_POINTS_NUM 100*50
-#define ADC_TIM_PERIOD 100/5 // 20 - 200 мкс, 100 - 1мс
+#include <string.h>
 
 //! Значения констант из документации на CPU
 #define VREF     (2.5f)
@@ -14,7 +11,11 @@ ADC_HandleTypeDef hadc[adcMax];
 DMA_HandleTypeDef hdma_adc2;
 TIM_HandleTypeDef htim3;
 
-__IO uint16_t adcData[ADC_CNANNELS_NUM*ADC_POINTS_NUM] = { 0 };
+#if USE_EXT_MEM
+uint16_t adcData[ADC_CNANNELS_NUM*ADC_POINTS_NUM] __attribute__((section(".extmem")));
+#else
+uint16_t adcData[ADC_CNANNELS_NUM*ADC_POINTS_NUM];
+#endif
 
 /*!
  \brief Метод получения значения ADC
@@ -122,9 +123,11 @@ void adcInit(adcNum num)
 static uint32_t time = 0;
 void adcStartDma()
 {
-  time = HAL_GetTick();
+  memset(&adcData, 0, sizeof(adcData));
   HAL_ADC_Start_DMA(&hadc[adc2], (uint32_t*)&adcData, ADC_CNANNELS_NUM*ADC_POINTS_NUM);
   HAL_TIM_Base_Start(&htim3);
+
+  time = HAL_GetTick();
 }
 
 void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)

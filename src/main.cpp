@@ -43,7 +43,7 @@ int main()
   //! Инициализация переферии
   gpioInit();
   sramInit();
-//  rtcInit();
+  rtcInit();
   adcInit(adc1);
   adcInit(adc2);
   adcExtInit();

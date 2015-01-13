@@ -17,7 +17,7 @@ public:
    * \brief Метод добавления нового события в архив
    *
    */
-  void add(uint8_t code, uint8_t type, uint16_t id, uint32_t oldValue, uint32_t newValue);
+  void add(uint8_t code, uint8_t type, uint16_t id, float oldValue, float newValue);
 };
 
 #endif // LOGEVENT_H
