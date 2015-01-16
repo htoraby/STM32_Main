@@ -1,37 +1,59 @@
 #include "protection.h"
 
+static void protectionTask(void *p)
+{
+  (static_cast<Protection*>(p))->taskProtection();
+}
+
+// Конструктор класса защит
 Protection::Protection()
 {
 
 }
 
-Protection::~Protection()
+void Protection::init(const char *threadName)
 {
-
+  // Создаём задачу цикла опроса
+  // Заполняем структуру с параметрами задачи
+  osThreadDef_t t = {threadName, protectionTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
+  // Создаём задачу
+  threadId_ = osThreadCreate(&t, this);
 }
 
-// Метод получения уникальных идентификаторов параметров защиты
-// Вызывается один раз при инициализации защиты
-void Protection::getIdSetpoints(unsigned short mode,
-                                unsigned short reaction,
-                                unsigned short activDelay,
-                                unsigned short tripDelay,
-                                unsigned short restartDelay,
-                                unsigned short restartLimit,
-                                unsigned short restartReset,
-                                unsigned short tripSetpoint,
-                                unsigned short restartSetpoint,
-                                unsigned short param,
-                                unsigned short param2)
+Protection::~Protection()
+{
+  osThreadTerminate(threadId_);
+}
+
+// Функция получения Id параметров защиты
+void Protection::getIdProtection(unsigned short mode,
+                            unsigned short reaction,
+                            unsigned short activDelay,
+                            unsigned short tripDelay,
+                            unsigned short restartDelay,
+                            unsigned short restartLimit,
+                            unsigned short restartReset,
+                            unsigned short tripSetpoint,
+                            unsigned short restartSetpoint,
+                            unsigned short param,
+                            unsigned short param2,
+                            unsigned short state,
+                            unsigned short time,
+                            unsigned short restartCount,
+                            unsigned short restartResetCount)
 {
   idMode_ = mode;
-  idReaction_ = reaction;
+  idReaction_= reaction;
   idTripDelay_ = tripDelay;
   idRestartDelay_ = restartDelay;
   idRestartLimit_ = restartLimit;
   idRestartReset_ = restartReset;
   idTripSetpoint_ = tripSetpoint;
   idRestartSetpoint_ = restartSetpoint;
+  idState_ = state;
+  idTimer_ = time;
+  idRestartCount_ = restartCount;
+  idRestartResetCount_ = restartResetCount;
 }
 
 // Метод получения уставок защиты
@@ -51,17 +73,13 @@ void Protection::getSetpointProt()
   param2_         = KSU.getValue(idParam2_);
 }
 
-
 // Метод получения текущих параметров защиты
-void Protection::getIdCurrentProt(unsigned short state,
-                                  unsigned short time,
-                                  unsigned short restartCount,
-                                  unsigned short restartResetCount)
+void Protection::getCurrentParamProt()
 {
-  idState_              = state;
-  idTimer_              = time;
-  idRestartCount_       = restartCount;
-  idRestartResetCount_  = restartResetCount;
+  state_                = KSU.getValue(idState_);
+  timer_                = KSU.getValue(idTimer_);
+  restartCount_         = KSU.getValue(idRestartCount_);
+  restartResetCount_    = KSU.getValue(idRestartResetCount_);
 }
 
 // Метод текущего значения отсительно уставки
@@ -121,6 +139,7 @@ void Protection::checkRestartResetCount()
   }
 }
 
+// Метод задача защиты
 void Protection::taskProtection()
 {
   while(1) {

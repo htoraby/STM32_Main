@@ -28,6 +28,7 @@ DeviceModbus::DeviceModbus(ModbusParameter *MapRegisters,
                           )
   : quantityParam_(Quantity),
     deviceAddress_(Address),
+    indexExchange_(1),
     messageUpdateID_(messageUpdateID)
 {
 
@@ -281,26 +282,25 @@ void DeviceModbus::writeModbusParameter(int ID, float Value)
 
 int DeviceModbus::searchExchangeParameters()
 {
-  static int Index = 1;
-  for (int i = Index; i < quantityParam_; i++) {
+  for (int i = indexExchange_; i < quantityParam_; i++) {
     // Если счётчик циклов опроса параметра не достиг уставки частоты опроса
     if (modbusParameters_[i].CntExchange < modbusParameters_[i].FreqExchange) {
       modbusParameters_[i].CntExchange++;
     }
     else {
       modbusParameters_[i].CntExchange = 0;
-      Index = i+1;
-      return Index;
+      indexExchange_ = i+1;
+      return indexExchange_;
     }
   }
-  for (int i = 1; i < Index; i++) {
+  for (int i = 1; i < indexExchange_; i++) {
     // Если счётчик циклов опроса параметра не достиг уставки частоты опроса
     if (modbusParameters_[i].CntExchange < modbusParameters_[i].FreqExchange) {
       modbusParameters_[i].CntExchange++;
     }
     else {
       modbusParameters_[i].CntExchange = 0;
-      Index = i+1;
+      indexExchange_ = i+1;
       return i;
     }
   }

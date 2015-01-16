@@ -284,6 +284,7 @@ public:
 private:
    int quantityParam_;
    int deviceAddress_;
+   int indexExchange_;
 
    // Идентификатор задачи
    osThreadId threadId_;

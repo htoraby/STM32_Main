@@ -10,6 +10,12 @@ ProtectionOvervoltageInput::~ProtectionOvervoltageInput()
 
 }
 
+void ProtectionOvervoltageInput::init()
+{
+  //getIdProtection();
+  Protection::init("ProtectionOvervoltageInput");
+}
+
 // Метод вычисления контролируемого параметра
 float ProtectionOvervoltageInput::calcControlParameter()
 {
@@ -18,8 +24,3 @@ float ProtectionOvervoltageInput::calcControlParameter()
           + em.getValue(EM_VOLTAGE_PHASE_3_1))/3;
 }
 
-
-unsigned char ProtectionOvervoltageInput::protection()
-{
-
-}

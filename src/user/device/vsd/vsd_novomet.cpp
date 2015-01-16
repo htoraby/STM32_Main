@@ -1910,3 +1910,13 @@ unsigned char VsdNovomet::writeParameter(unsigned short id, float value)
   else
     return 1;
 }
+
+// Метод записи основного режима работы ЧРП, основных методов 2:
+// U/f регулирование АД и ВД код: 1
+// Векторное управление ВД код: 3
+// Поскольку у ЧРП только один основной алгоритм и он обязан быть,
+// записываем его последним
+unsigned char VsdNovomet::setMainRegimeVSD()
+{
+
+}

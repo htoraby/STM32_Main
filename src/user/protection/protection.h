@@ -27,11 +27,33 @@
 #define PROTECTION_STATE_BLOCK              180
 
 
-
+/*!
+ * \brief The Protection class
+ * Класс защит КСУ, реализует общие базовые функции для всех защит
+ */
 class Protection
 {
 public:
+  /*!
+   * \brief Protection
+   * \param mode
+   * \param reaction
+   * \param activDelay
+   * \param tripDelay
+   * \param restartDelay
+   * \param restartLimit
+   * \param restartReset
+   * \param tripSetpoint
+   * \param restartSetpoint
+   * \param param
+   * \param param2
+   * \param state
+   * \param time
+   * \param restartCount
+   * \param restartResetCount
+   */
   Protection();
+
   ~Protection();
 
   /// id параметров защиты
@@ -65,7 +87,6 @@ public:
   unsigned short idRestartCount_;
   /// id Время от первого АПВ
   unsigned short idRestartResetCount_;
-
 
   /// Локальные переменные для обработки
   /// Состояние защиты
@@ -107,9 +128,14 @@ public:
   /// Флаг запрещающего параметра
   bool block_;
 
+  /// Идентификатор задачи
+  osThreadId threadId_;
+
+  void init(const char *threadName);
+
   /*!
-   * \brief getIdSetpoints
-   * Метод получения уникальных идентификаторов уставок защиты
+   * \brief getIdProtection
+   * Функция получения id параметров защиты
    * \param mode
    * \param reaction
    * \param activDelay
@@ -121,48 +147,46 @@ public:
    * \param restartSetpoint
    * \param param
    * \param param2
-   */
-  void getIdSetpoints(unsigned short mode,
-                      unsigned short reaction,
-                      unsigned short activDelay,
-                      unsigned short tripDelay,
-                      unsigned short restartDelay,
-                      unsigned short restartLimit,
-                      unsigned short restartReset,
-                      unsigned short tripSetpoint,
-                      unsigned short restartSetpoint,
-                      unsigned short param,
-                      unsigned short param2);
-
-  /*!
-   * \brief getIdCurrentProt
-   * Метод получения уникальных идентификаторов параметров защиты
    * \param state
    * \param time
    * \param restartCount
    * \param restartResetCount
    */
-  void getIdCurrentProt(unsigned short state,
-                        unsigned short time,
-                        unsigned short restartCount,
-                        unsigned short restartResetCount);
-
+  void getIdProtection(unsigned short mode,
+                       unsigned short reaction,
+                       unsigned short activDelay,
+                       unsigned short tripDelay,
+                       unsigned short restartDelay,
+                       unsigned short restartLimit,
+                       unsigned short restartReset,
+                       unsigned short tripSetpoint,
+                       unsigned short restartSetpoint,
+                       unsigned short param,
+                       unsigned short param2,
+                       unsigned short state,
+                       unsigned short time,
+                       unsigned short restartCount,
+                       unsigned short restartResetCount);
 
   /*!
    * \brief getSetpointProt
+   * Метод получения уставок защиты, метод должен вызываться с периодом работы
+   * работы автомата защиты, таким образом получаем актуальные значения уставок
    */
   void getSetpointProt();
 
 
   /*!
    * \brief getCurrentParamProt
+   * Метод получения текущих параметров защиты, эти данные меняются в процессе
+   * работы автомата защиты
    */
   void getCurrentParamProt();
 
   /*!
    * \brief calcControlParameter
-   * Метод вычисления контролируемого параметра
-   * Для каждой защиты метод свой
+   * Виртуальны метод вычисления контролируемого параметра
+   * Для каждой защиты должен быть переопределён свой метод
    * \return значение контролируемого параметра
    */
   virtual float calcControlParameter(void);
@@ -200,6 +224,28 @@ public:
    * Задача защиты
    */
   void taskProtection();
+
+  /*!
+   * \brief calcTimeFromStart
+   * Функция вычисления сколько времени прошло от момента фиксации времени
+   * и текущим временем
+   * \return
+   */
+  float calcTimeFromStart();
+
+  /*!
+   * \brief calcaTimeUntilend
+   * Функция вычисления сколько времени осталось до окончания события
+   * \return
+   */
+  float calcTimeUntilEnd();
+
+  /*!
+   * \brief calcRestartResetCount
+   * Функция проверки истекло ли время сброса счётчика АПВ
+   * \return
+   */
+  bool calcRestartResetCount();
 
 };
 

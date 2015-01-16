@@ -3,6 +3,7 @@
 
 #include "protection.h"
 #include "em.h"
+#include "ccs.h"
 
 class ProtectionOvervoltageInput : public Protection
 {
@@ -17,6 +18,8 @@ public:
    * \return
    */
   float calcControlParameter();
+
+  void init();
 
   unsigned char protection();
 };
