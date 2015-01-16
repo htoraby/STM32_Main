@@ -483,7 +483,7 @@ enum enID
   CCS_CONTROL_MODE,                     /// Состояние переключателя режимов
   CCS_DEVICE_STOP,											/// Устройство остановлено
   CCS_LOAD_MOTOR,												/// Текущая загрузка двигателя
-
+  CCS_WORKING_MODE,
 
   CCS_PHYSIC_MIN_ADD_AI_1,									/// Физический минимнимум дополнительного аналогового входа 1
   CCS_PHYSIC_MAX_ADD_AI_1,									/// Физический максимум дополнительного аналогового входа 1
@@ -531,6 +531,18 @@ enum enID
   CCS_PUMP_HEAD,
   /// Глубина спуска
   CCS_DEPTH,
+  /// Дисбаланс токов двигателя
+  CCS_MOTOR_IMBALANCE_CURRENT,
+  /// Среднее входное напряжение
+  CCS_SUPPLY_INPUT_VOLTAGE_AVERAGE,
+  /// Дисбаланс входного напряжения
+  CCS_SYPPLY_IMBALANCE_VOLTAGE,
+  /// Сопротивление изоляции в системе
+  CCS_RESISTANCE_ISOLATION,
+  /// Время работы в периодическом режиме,
+  CCS_RGM_PERIODIC_TIME,
+  /// Время до окончания работы в периодическом режиме
+  CCS_RGM_PERIODIC_TIME_END,
   /// Защиты
   /// Защиты по сети
   /// Защита "Превышение питания сети"

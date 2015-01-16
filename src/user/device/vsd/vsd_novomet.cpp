@@ -1918,5 +1918,5 @@ unsigned char VsdNovomet::writeParameter(unsigned short id, float value)
 // записываем его последним
 unsigned char VsdNovomet::setMainRegimeVSD()
 {
-
+  return 1;
 }

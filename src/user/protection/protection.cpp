@@ -11,6 +11,11 @@ Protection::Protection()
 
 }
 
+Protection::~Protection()
+{
+  osThreadTerminate(threadId_);
+}
+
 void Protection::init(const char *threadName)
 {
   // Создаём задачу цикла опроса
@@ -18,11 +23,6 @@ void Protection::init(const char *threadName)
   osThreadDef_t t = {threadName, protectionTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
   // Создаём задачу
   threadId_ = osThreadCreate(&t, this);
-}
-
-Protection::~Protection()
-{
-  osThreadTerminate(threadId_);
 }
 
 // Функция получения Id параметров защиты
@@ -40,7 +40,8 @@ void Protection::getIdProtection(unsigned short mode,
                             unsigned short state,
                             unsigned short time,
                             unsigned short restartCount,
-                            unsigned short restartResetCount)
+                            unsigned short restartResetCount,
+                            unsigned short valueParam)
 {
   idMode_ = mode;
   idReaction_= reaction;
@@ -80,6 +81,7 @@ void Protection::getCurrentParamProt()
   timer_                = KSU.getValue(idTimer_);
   restartCount_         = KSU.getValue(idRestartCount_);
   restartResetCount_    = KSU.getValue(idRestartResetCount_);
+  valueParameter_       = KSU.getValue(idValueParam_);
 }
 
 // Метод текущего значения отсительно уставки

@@ -26,7 +26,6 @@
 #define PROTECTION_STATE_STOP               170
 #define PROTECTION_STATE_BLOCK              180
 
-
 /*!
  * \brief The Protection class
  * Класс защит КСУ, реализует общие базовые функции для всех защит
@@ -34,24 +33,6 @@
 class Protection
 {
 public:
-  /*!
-   * \brief Protection
-   * \param mode
-   * \param reaction
-   * \param activDelay
-   * \param tripDelay
-   * \param restartDelay
-   * \param restartLimit
-   * \param restartReset
-   * \param tripSetpoint
-   * \param restartSetpoint
-   * \param param
-   * \param param2
-   * \param state
-   * \param time
-   * \param restartCount
-   * \param restartResetCount
-   */
   Protection();
 
   ~Protection();
@@ -87,6 +68,8 @@ public:
   unsigned short idRestartCount_;
   /// id Время от первого АПВ
   unsigned short idRestartResetCount_;
+  /// id контролируемого параметра
+  unsigned short idValueParam_;
 
   /// Локальные переменные для обработки
   /// Состояние защиты
@@ -133,25 +116,25 @@ public:
 
   void init(const char *threadName);
 
-  /*!
-   * \brief getIdProtection
-   * Функция получения id параметров защиты
-   * \param mode
-   * \param reaction
-   * \param activDelay
-   * \param tripDelay
-   * \param restartDelay
-   * \param restartLimit
-   * \param restartReset
-   * \param tripSetpoint
-   * \param restartSetpoint
-   * \param param
-   * \param param2
-   * \param state
-   * \param time
-   * \param restartCount
-   * \param restartResetCount
-   */
+//  /*!
+//   * \brief getIdProtection
+//   * Функция получения id параметров защиты
+//   * \param mode
+//   * \param reaction
+//   * \param activDelay
+//   * \param tripDelay
+//   * \param restartDelay
+//   * \param restartLimit
+//   * \param restartReset
+//   * \param tripSetpoint
+//   * \param restartSetpoint
+//   * \param param
+//   * \param param2
+//   * \param state
+//   * \param time
+//   * \param restartCount
+//   * \param restartResetCount
+//   */
   void getIdProtection(unsigned short mode,
                        unsigned short reaction,
                        unsigned short activDelay,
@@ -166,7 +149,8 @@ public:
                        unsigned short state,
                        unsigned short time,
                        unsigned short restartCount,
-                       unsigned short restartResetCount);
+                       unsigned short restartResetCount,
+                       unsigned short valueParam);
 
   /*!
    * \brief getSetpointProt
@@ -182,14 +166,6 @@ public:
    * работы автомата защиты
    */
   void getCurrentParamProt();
-
-  /*!
-   * \brief calcControlParameter
-   * Виртуальны метод вычисления контролируемого параметра
-   * Для каждой защиты должен быть переопределён свой метод
-   * \return значение контролируемого параметра
-   */
-  virtual float calcControlParameter(void);
 
   /*!
    * \brief checkTripSetPoint

@@ -12,15 +12,22 @@ ProtectionOvervoltageInput::~ProtectionOvervoltageInput()
 
 void ProtectionOvervoltageInput::init()
 {
-  //getIdProtection();
+  getIdProtection(CCS_PROT_SUPPLY_OVERVOLTAGE_MODE,
+                  CCS_PROT_SUPPLY_OVERVOLTAGE_REACTION,
+                  CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY,
+                  CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY,
+                  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY,
+                  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_LIMIT,
+                  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET,
+                  CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_SETPOINT,
+                  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_SETPOINT,
+                  CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER,
+                  CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER_2,
+                  CCS_PROT_SUPPLY_OVERVOLTAGE_MODE,
+                  CCS_PROT_SUPPLY_OVERVOLTAGE_TIME,
+                  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT,
+                  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET_COUNT,
+                  CCS_SUPPLY_INPUT_VOLTAGE_AVERAGE);
   Protection::init("ProtectionOvervoltageInput");
-}
-
-// Метод вычисления контролируемого параметра
-float ProtectionOvervoltageInput::calcControlParameter()
-{
-  return (em.getValue(EM_VOLTAGE_PHASE_1_2)
-          + em.getValue(EM_VOLTAGE_PHASE_2_3)
-          + em.getValue(EM_VOLTAGE_PHASE_3_1))/3;
 }
 
