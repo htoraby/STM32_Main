@@ -3,6 +3,13 @@
 
 #include "board.h"
 
+//! Количество каналов: Ua, Ub, Uc
+#define ADC_CNANNELS_NUM 3
+//! 20*200 точек с каждого канала за 4 сек, 20 точек на полупериод (20мс)
+#define ADC_POINTS_NUM 4000
+//! Период измерения - получение по одной точки для каждого канала: 100 - 1мс
+#define ADC_TIM_PERIOD 100
+
 /*!
  \brief Список ADC каналов
 
@@ -15,6 +22,7 @@ typedef enum {
 } adcNum;
 
 extern ADC_HandleTypeDef hadc[];
+extern uint16_t adcData[];
 
 #ifdef __cplusplus
 

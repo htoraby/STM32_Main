@@ -477,4 +477,9 @@ void Device::updateParameters(void)
   }
 }
 
+void Device::initParameters()
+{
+
+}
+
 

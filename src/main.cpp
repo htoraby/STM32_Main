@@ -25,8 +25,7 @@
 #include "iwdg.h"
 #include "rcause.h"
 #include "temp_sensor.h"
-#include "host.h"
-#include "log_main.h"
+#include "user_main.h"
 
 static void systemClockConfig();
 static void mainThread(void *argument);
@@ -44,7 +43,7 @@ int main()
   //! Инициализация переферии
   gpioInit();
   sramInit();
-//  rtcInit();
+  rtcInit();
   adcInit(adc1);
   adcInit(adc2);
   adcExtInit();
@@ -112,10 +111,6 @@ static void mainThread(void *argument)
   //! Подсчет счетчиков перезапуска СPU
   resetCauseCheck();
 
-  //! Инициализация пользовательских данных
-  logInit();
-  hostInit();
-
   /* FatFS: Link the USBH disk I/O driver */
   USBH_DriverNum = FATFS_LinkDriver(&USBH_Driver, USBH_Path);
 
@@ -125,6 +120,9 @@ static void mainThread(void *argument)
 #if (USE_TEST == 1)
   testInit();
 #endif
+
+  //! Инициализация пользовательских задач и объектов
+  userInit();
 
   while(1) {
     osDelay(100);

@@ -1,7 +1,7 @@
 #ifndef PROTECTION_H
 #define PROTECTION_H
 
-#include "ccs.h"
+#include "user_main.h"
 
 #define PROTECTION_ACTION_OFF         0
 #define PROTECTION_ACTION_RESTART     1

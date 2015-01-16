@@ -38,6 +38,4 @@ public:
 
 };
 
-extern Ccs KSU;
-
 #endif /* CCS_H_ */
