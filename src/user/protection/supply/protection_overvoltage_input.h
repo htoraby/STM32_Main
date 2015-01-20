@@ -3,14 +3,16 @@
 
 #include "protection.h"
 #include "em.h"
+#include "ccs.h"
 
 class ProtectionOvervoltageInput : public Protection
 {
 public:
   ProtectionOvervoltageInput();
   ~ProtectionOvervoltageInput();
-  float calcControlParameter();
-  unsigned char protection();
+
+  void init();
+
 };
 
 #endif // PROTECTIONOVERVOLTAGEINPUT_H

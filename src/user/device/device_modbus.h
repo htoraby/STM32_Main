@@ -284,6 +284,7 @@ public:
 private:
    int quantityParam_;
    int deviceAddress_;
+   int indexExchange_;
 
    // Идентификатор задачи
    osThreadId threadId_;
@@ -291,7 +292,6 @@ private:
    // Идентификатор очереди параметров опроса вне основного цикла
    osMessageQId messageOutOfTurn_;
 
-   // Очередь обновленных параметров
    osMessageQId messageUpdateID_;
 
    ModbusParameter modbusParameters_[];

@@ -94,8 +94,6 @@ enum enInvertorExtStatus
   INV_EXT_STATUS_POWER_OPT    = 16
 };
 
-
-
 class VsdNovomet: public Vsd
 {
     public:
@@ -154,6 +152,14 @@ class VsdNovomet: public Vsd
          * \return Код выполнения операции
          */
         int stopVSD(void);
+
+
+        /*!
+         * \brief setMainRegimeVSD
+         * Функция задания основного режима работы ЧРП
+         * \return
+         */
+        unsigned char setMainRegimeVSD();
 
         /*!
          * \brief setFrequency

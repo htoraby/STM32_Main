@@ -28,6 +28,7 @@ DeviceModbus::DeviceModbus(ModbusParameter *MapRegisters,
                           )
   : quantityParam_(Quantity),
     deviceAddress_(Address),
+    indexExchange_(1),
     messageUpdateID_(messageUpdateID)
 {
 
@@ -254,22 +255,22 @@ void DeviceModbus::writeModbusParameter(int ID, float Value)
   // Применяем тип данных
   switch (Param.TypeData) {
   case  TYPE_DATA_CHAR:
-    Param.Value.Chars[0] = (char)(Value + 0.5);
+    Param.Value.tdChar[0] = (char)(Value + 0.5);
     break;
   case  TYPE_DATA_INT16:
-    Param.Value.Int16[0] = (short int)(Value + 0.5);
+    Param.Value.tdInt16[0] = (short int)(Value + 0.5);
     break;
   case  TYPE_DATA_INT32:
-    Param.Value.Int32 = (int)(Value + 0.5);
+    Param.Value.tdInt32 = (int)(Value + 0.5);
     break;
   case TYPE_DATA_UINT16:
-    Param.Value.Uint16[0] = (unsigned short int)(Value + 0.5);
+    Param.Value.tdUint16[0] = (unsigned short int)(Value + 0.5);
     break;
   case  TYPE_DATA_UINT32:
-    Param.Value.Uint32 = (unsigned int)(Value + 0.5);
+    Param.Value.tdUint32 = (unsigned int)(Value + 0.5);
     break;
   case TYPE_DATA_FLOAT:
-    Param.Value.Float = Value;
+    Param.Value.tdFloat = Value;
     break;
   default:
     break;
@@ -281,26 +282,25 @@ void DeviceModbus::writeModbusParameter(int ID, float Value)
 
 int DeviceModbus::searchExchangeParameters()
 {
-  static int Index = 1;
-  for (int i = Index; i < quantityParam_; i++) {
+  for (int i = indexExchange_; i < quantityParam_; i++) {
     // Если счётчик циклов опроса параметра не достиг уставки частоты опроса
     if (modbusParameters_[i].CntExchange < modbusParameters_[i].FreqExchange) {
       modbusParameters_[i].CntExchange++;
     }
     else {
       modbusParameters_[i].CntExchange = 0;
-      Index = i+1;
-      return Index;
+      indexExchange_ = i+1;
+      return indexExchange_;
     }
   }
-  for (int i = 1; i < Index; i++) {
+  for (int i = 1; i < indexExchange_; i++) {
     // Если счётчик циклов опроса параметра не достиг уставки частоты опроса
     if (modbusParameters_[i].CntExchange < modbusParameters_[i].FreqExchange) {
       modbusParameters_[i].CntExchange++;
     }
     else {
       modbusParameters_[i].CntExchange = 0;
-      Index = i+1;
+      indexExchange_ = i+1;
       return i;
     }
   }
@@ -324,29 +324,29 @@ void DeviceModbus::exchangeCycle(void)
         case TYPE_DATA_INT16:
           MMS->writeSingleRegister(deviceAddress_,
                                    address,
-                                   modbusParameters_[outOfTurn].Value.Int16[0]);
+                                   modbusParameters_[outOfTurn].Value.tdInt16[0]);
           break;
         case TYPE_DATA_UINT16:
           MMS->writeSingleRegister(deviceAddress_,
                                    address,
-                                   modbusParameters_[outOfTurn].Value.Uint16[0]);
+                                   modbusParameters_[outOfTurn].Value.tdUint16[0]);
           break;
         case  TYPE_DATA_INT32:
-          int32Arr_[0] = modbusParameters_[outOfTurn].Value.Int32;
+          int32Arr_[0] = modbusParameters_[outOfTurn].Value.tdInt32;
           MMS->writeMultipleLongInts(deviceAddress_,
                                      address,
                                      int32Arr_,
                                      1);
           break;
         case  TYPE_DATA_UINT32:
-          int32Arr_[0] =  modbusParameters_[outOfTurn].Value.Uint32;
+          int32Arr_[0] =  modbusParameters_[outOfTurn].Value.tdUint32;
           MMS->writeMultipleLongInts(deviceAddress_,
                                      modbusParameters_[outOfTurn].Address,
                                      int32Arr_,
                                      1);
           break;
         case  TYPE_DATA_FLOAT:
-          float32Arr_[0] = modbusParameters_[outOfTurn].Value.Float;
+          float32Arr_[0] = modbusParameters_[outOfTurn].Value.tdFloat;
           MMS->writeMultipleFloats(deviceAddress_,
                                    modbusParameters_[outOfTurn].Address,
                                    float32Arr_,
@@ -370,7 +370,7 @@ void DeviceModbus::exchangeCycle(void)
             int Index = getIndexAtAddress(address);
             // Цикл по количеству полученных регистров
             for (int i = 0; i < Count; i++) {
-              modbusParameters_[Index].Value.Int16[0] = regArr_[i];
+              modbusParameters_[Index].Value.tdInt16[0] = regArr_[i];
               modbusParameters_[Index].Validity = VALIDITY_GOOD;
               putMessageUpdateID(modbusParameters_[Index].ID);
               Index++;

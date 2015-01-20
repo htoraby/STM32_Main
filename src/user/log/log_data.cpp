@@ -84,7 +84,7 @@ void LogData::add(uint8_t code)
   *(float*)(buffer+21) = KSU.getValue(VSD_OUT_CURRENT_PHASE_2);
   *(float*)(buffer+25) = KSU.getValue(VSD_OUT_CURRENT_PHASE_3);
   *(float*)(buffer+29) = KSU.getValue(VSD_VOLTAGE_MOTOR);
-  *(float*)(buffer+33) = KSU.getValue(CCS_PROT_DISBALANCE_CURRENT_VALUE);
+  *(float*)(buffer+33) = KSU.getValue(CCS_MOTOR_IMBALANCE_CURRENT);
   *(float*)(buffer+37) = KSU.getValue(VSD_COS_PHI_MOTOR);
   *(float*)(buffer+41) = KSU.getValue(CCS_LOAD_MOTOR);
   *(float*)(buffer+45) = KSU.getValue(VSD_ACTIVE_POWER);
@@ -93,7 +93,7 @@ void LogData::add(uint8_t code)
   *(float*)(buffer+53) = KSU.getValue(EM_VOLTAGE_PHASE_1_2);
   *(float*)(buffer+57) = KSU.getValue(EM_VOLTAGE_PHASE_2_3);
   *(float*)(buffer+61) = KSU.getValue(EM_VOLTAGE_PHASE_3_1);
-  *(float*)(buffer+65) = KSU.getValue(CCS_PROT_DISBALANCE_VOLTAGE_VALUE);
+  *(float*)(buffer+65) = KSU.getValue(CCS_SYPPLY_IMBALANCE_VOLTAGE);
   *(float*)(buffer+69) = KSU.getValue(EM_CURRENT_PHASE_1);
   *(float*)(buffer+73) = KSU.getValue(EM_CURRENT_PHASE_2);
   *(float*)(buffer+77) = KSU.getValue(EM_CURRENT_PHASE_3);
