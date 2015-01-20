@@ -68,7 +68,7 @@ void Log::deInit()
   framWriteData(addrFram_, (uint8_t*)&address_, 4);
 }
 
-void Log::write(uint8_t *data, uint32_t size)
+void Log::write(uint8_t *data, uint32_t size, bool saveId, bool endLog)
 {
   //! Проверка питания платы
   if (!isPowerGood())
@@ -83,7 +83,13 @@ void Log::write(uint8_t *data, uint32_t size)
   }
 
   //! Проверка на начало нового сектора
-  uint32_t addrSector = (address_ + size) / sectorSize_ * sectorSize_;
+  uint32_t addrSector = (address_ + size - 1) / sectorSize_ * sectorSize_;
+  if (endLog) {
+    addrSector = addrSector + sectorSize_;
+    if ((addrSector + sectorSize_*64) >= endAddr_)
+      addrSector = startAddr_;
+  }
+
   if (addrSector != addrSectorOld_) {
     address_ = addrSector;
     flashEraseSector4k(flashSpiNum_, address_);
@@ -91,9 +97,11 @@ void Log::write(uint8_t *data, uint32_t size)
   }
 
   //! Сохранение глабального индекса записей
-  if (id_ == 0xFFFFFFFF)
-    id_ = 0;
-  framWriteData(IdLogAddrFram, (uint8_t*)&id_, 4);
+  if (saveId) {
+    if (id_ == 0xFFFFFFFF)
+      id_ = 0;
+    framWriteData(IdLogAddrFram, (uint8_t*)&id_, 4);
+  }
   //! Сохранение адреса с которого начнётся следующая запись
   framWriteData(addrFram_, (uint8_t*)&address_, 4);
 }

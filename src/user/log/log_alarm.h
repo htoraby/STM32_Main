@@ -1,17 +1,30 @@
 #ifndef LOGALARM_H
 #define LOGALARM_H
 
-#include "log.h"
+#include "log_running.h"
 
 /*!
  * \brief Класс архива аварийных ситуаций
  *
  */
-class logAlarm : public Log
+class LogAlarm : public LogRunning
 {
 public:
-  logAlarm();
-  ~logAlarm();
+  LogAlarm();
+  ~LogAlarm();
+
+  /*!
+   * \brief Инициализация архива
+   *
+   */
+  void init();
+  /*!
+   * \brief Запуск формирования и записи архива
+   *
+   */
+  void start(EventType type, uint32_t eventId);
+  void task();
+
 };
 
 #endif // LOGALARM_H

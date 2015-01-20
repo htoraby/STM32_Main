@@ -5,10 +5,14 @@
 
 //! Количество каналов: Ua, Ub, Uc
 #define ADC_CNANNELS_NUM 3
-//! 20*200 точек с каждого канала за 4 сек, 20 точек на полупериод (20мс)
-#define ADC_POINTS_NUM 4000
+//! Время записи одного архива (мс)
+#define ARCHIVE_TIME 2000
+//! Количество точек на период (20мс)
+#define HC_POINTS_NUM 80
+//! Количество точек с каждого канала за время ARCHIVE_TIME
+#define ADC_POINTS_NUM ARCHIVE_TIME/20*HC_POINTS_NUM
 //! Период измерения - получение по одной точки для каждого канала: 100 - 1мс
-#define ADC_TIM_PERIOD 100
+#define ADC_TIM_PERIOD 100*20/HC_POINTS_NUM
 
 /*!
  \brief Список ADC каналов
@@ -22,7 +26,7 @@ typedef enum {
 } adcNum;
 
 extern ADC_HandleTypeDef hadc[];
-extern uint16_t adcData[];
+extern uint16_t adcData[ADC_CNANNELS_NUM*ADC_POINTS_NUM];
 
 #ifdef __cplusplus
 
@@ -36,9 +40,19 @@ extern uint16_t adcData[];
 */
 void adcInit(adcNum num);
 
+/*!
+ \brief Запуск измерений каналов: Ua, Ub, Uc
+
+*/
 void adcStartDma();
 
 StatusType getAnalogIn(uint32_t channel, uint32_t numSamples, uint32_t *value);
+
+/*!
+ \brief Копирование значений из временного буффера (DMA) в основной
+
+*/
+void copyAdcData();
 
 /*!
  \brief Получение температуры CPU с внутреннего датчика

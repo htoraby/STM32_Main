@@ -4,12 +4,14 @@
 #include "log_event.h"
 #include "log_data.h"
 #include "log_running.h"
+#include "log_alarm.h"
 #include "log_tms.h"
 #include "log_debug.h"
 
 extern LogEvent logEvent;
 extern LogData logData;
 extern LogRunning logRunning;
+extern LogAlarm logAlarm;
 extern LogTms logTms;
 
 /*!

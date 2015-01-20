@@ -13,8 +13,10 @@ TIM_HandleTypeDef htim3;
 
 #if USE_EXT_MEM
 uint16_t adcData[ADC_CNANNELS_NUM*ADC_POINTS_NUM] __attribute__((section(".extmem")));
+uint16_t adcDataTmp[ADC_CNANNELS_NUM*ADC_POINTS_NUM] __attribute__((section(".extmem")));
 #else
 uint16_t adcData[ADC_CNANNELS_NUM*ADC_POINTS_NUM];
+uint16_t adcDataTmp[ADC_CNANNELS_NUM*ADC_POINTS_NUM];
 #endif
 
 /*!
@@ -81,17 +83,20 @@ void adcInit(adcNum num)
 
   if (num == adc2) {
     //! Настройка каналов
+    //! Ua
     sConfig.Channel = ADC_CHANNEL_13;
     sConfig.Rank = 1;
     //! ADC_SAMPLETIME_112CYCLES - (112+12)/42 = 3 мксек
     sConfig.SamplingTime = ADC_SAMPLETIME_112CYCLES;
     HAL_ADC_ConfigChannel(adcX, &sConfig);
 
-    sConfig.Channel = ADC_CHANNEL_11;
+    //! Ub
+    sConfig.Channel = ADC_CHANNEL_12;
     sConfig.Rank = 2;
     HAL_ADC_ConfigChannel(adcX, &sConfig);
 
-    sConfig.Channel = ADC_CHANNEL_12;
+    //! Uc
+    sConfig.Channel = ADC_CHANNEL_11;
     sConfig.Rank = 3;
     HAL_ADC_ConfigChannel(adcX, &sConfig);
 
@@ -100,7 +105,7 @@ void adcInit(adcNum num)
     htim3.Instance = TIM3;
     htim3.Init.Prescaler = ((SystemCoreClock /2) / 100000) - 1;
     htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-    htim3.Init.Period = ADC_TIM_PERIOD;
+    htim3.Init.Period = ADC_TIM_PERIOD - 1;
     htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
     htim3.Init.RepetitionCounter = 0;
     HAL_TIM_Base_Init(&htim3);
@@ -124,7 +129,8 @@ static uint32_t time = 0;
 void adcStartDma()
 {
   memset(&adcData, 0, sizeof(adcData));
-  HAL_ADC_Start_DMA(&hadc[adc2], (uint32_t*)&adcData, ADC_CNANNELS_NUM*ADC_POINTS_NUM);
+  memset(&adcDataTmp, 0, sizeof(adcDataTmp));
+  HAL_ADC_Start_DMA(&hadc[adc2], (uint32_t*)&adcDataTmp, ADC_CNANNELS_NUM*ADC_POINTS_NUM);
   HAL_TIM_Base_Start(&htim3);
 
   time = HAL_GetTick();
@@ -143,9 +149,9 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
     __TIM3_CLK_ENABLE();
 
     /**ADC2 GPIO Configuration
-    PC1     ------> ADC2_IN11
-    PC2     ------> ADC2_IN12
-    PC3     ------> ADC2_IN13
+    PC1     ------> ADC2_IN11 (Uc)
+    PC2     ------> ADC2_IN12 (Ub)
+    PC3     ------> ADC2_IN13 (Ua)
     */
     GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
@@ -286,13 +292,27 @@ static StatusType getValueADC(adcNum num, uint32_t channel, uint32_t *value,
   return status;
 }
 
+/*!
+ \brief Завершение измерения через время ARCHIVE_TIME
+
+ \param ADC_HandleTypeDef - указатель на ADC
+*/
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* adcHandle)
 {
   (void)adcHandle;
 
+  //! Для тестирования времени измерения
   static int t = 0;
   time = HAL_GetTick() - time;
   if (++t != 1)
     asm("nop");
   time = HAL_GetTick();
+}
+
+void copyAdcData()
+{
+  int allPoints = ADC_CNANNELS_NUM*ADC_POINTS_NUM;
+  int numDataTr = hadc[adc2].DMA_Handle->Instance->NDTR;
+  memcpy(&adcData[numDataTr], &adcDataTmp[0], (allPoints - numDataTr)*2);
+  memcpy(&adcData[0], &adcDataTmp[allPoints - numDataTr], (numDataTr)*2);
 }

@@ -6,7 +6,7 @@
 #include "fram.h"
 
 /*!
- * \brief Список типов журналов
+ * \brief Тип журнала
  *
 */
 typedef enum {
@@ -17,6 +17,38 @@ typedef enum {
   TmsTypeLog,
   DebugTypeLog,
 } TypeLog;
+
+/*!
+ * \brief Код события
+ *
+*/
+typedef enum {
+  NormModeCode = 28,
+  FastModeCode = 29,
+  RunCode      = 30,
+  TmsCode      = 32,
+} EventCode;
+
+/*!
+ * \brief Вид события
+ *
+*/
+typedef enum {
+  NoneType,
+  OperatorType,
+  AutoType,
+  RemoteType,
+  ProtType,
+  LatchType,
+} EventType;
+
+/*!
+ * \brief Id события
+ *
+*/
+typedef enum {
+  RunId,
+} EventId;
 
 /*!
  * \brief Начальные адреса журналов на FLASH
@@ -53,13 +85,6 @@ typedef enum {
 class Log
 {
 public:
-  enum {
-    NormModeCode = 28,
-    FastModeCode = 29,
-    RunCode      = 30,
-    TmsCode      = 32,
-  };
-
   Log(TypeLog type);
   ~Log();
 
@@ -85,8 +110,12 @@ protected:
   /*!
    * \brief Метод записи данных в журнал
    *
+   * \param data - указатель на записываемые данные
+   * \param size - размер данных
+   * \param saveId - флаг сохранения Id события, по умолчанию true
+   * \param endLog - флаг завершения архива (необходим для архива пусковых характеристик)
    */
-  void write(uint8_t *data, uint32_t size);
+  void write(uint8_t *data, uint32_t size, bool saveId = true, bool endLog = false);
 
   /*!
    * \brief Буфер для формирования записи журнала
@@ -94,8 +123,9 @@ protected:
    */
   uint8_t buffer[256];
 
-private:
   TypeLog type_;
+
+private:
   FlashSpiNum flashSpiNum_;
   uint32_t addrFram_;
 

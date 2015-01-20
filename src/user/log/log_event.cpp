@@ -11,8 +11,8 @@ LogEvent::~LogEvent()
 
 }
 
-void LogEvent::add(uint8_t code, uint8_t type, uint16_t id,
-                   float oldValue, float newValue)
+uint32_t LogEvent::add(uint8_t code, uint8_t type, uint16_t id,
+                       float oldValue, float newValue)
 {
   time_t time = getTime();
 
@@ -24,5 +24,7 @@ void LogEvent::add(uint8_t code, uint8_t type, uint16_t id,
   *(float*)(buffer+12) = oldValue;
   *(float*)(buffer+16) = newValue;
   write(buffer, 20);
+
+  return id_;
 }
 
