@@ -13,7 +13,16 @@
 #include "log_main.h"
 
 static void testThread(void *argument);
+
+#if (TEST_UART == 1)
 static void testUartThread(void *argument);
+#endif
+
+#if (TEST_HOST_UART == 1)
+static void testHostUartRxThread(void *argument);
+static void testHostUartTxThread(void *argument);
+#endif
+
 static void testRtc();
 static void testAdc();
 static void testFram();
@@ -23,15 +32,15 @@ static void testTempSensor();
 static void testDI();
 static void testDO();
 static void testAdcExt();
-static void testHost();
+static void testHostSpi();
 static void testLog();
 
 #if USE_EXT_MEM
-  uint8_t bufferTx[4096] __attribute__((section(".extmem")));
-  uint8_t bufferRx[4096] __attribute__((section(".extmem")));
+uint8_t bufferTx[4096] __attribute__((section(".extmem")));
+uint8_t bufferRx[4096] __attribute__((section(".extmem")));
 #else
-  uint8_t bufferTx[4096];
-  uint8_t bufferRx[4096];
+uint8_t bufferTx[4096];
+uint8_t bufferRx[4096];
 #endif
 
 #define UPLOAD_FILENAME "0:test.tmp"
@@ -42,8 +51,17 @@ void testInit()
   osThreadDef(Test_Thread, testThread, osPriorityNormal, 0, 12 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(Test_Thread), NULL);
 
+#if (TEST_UART == 1)
   osThreadDef(Test_Uart_Thread, testUartThread, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(Test_Uart_Thread), NULL);
+#endif
+
+#if (TEST_HOST_UART == 1)
+  osThreadDef(Test_HostUartRxThread, testHostUartRxThread, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(Test_HostUartRxThread), NULL);
+  osThreadDef(Test_HostUartTxThread, testHostUartTxThread, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(Test_HostUartTxThread), NULL);
+#endif
 }
 
 static void testThread(void * argument)
@@ -81,7 +99,7 @@ static void testThread(void * argument)
   testDI();
   testDO();
   testAdcExt();
-  testHost();
+  testHostSpi();
   testLog();
 
   while(1) {
@@ -113,6 +131,8 @@ static void testThread(void * argument)
 #if (TEST_LED == 1)
     blinkLed.toggle();
     osDelay(500);
+    //    logRunning.start(AutoType);
+    //    logAlarm.start(AutoType, 0);
 #endif
 
 #if (TEST_UART == 1)
@@ -141,6 +161,7 @@ static void testThread(void * argument)
   }
 }
 
+#if (TEST_UART == 1)
 static void testUartThread(void * argument)
 {
   (void)argument;
@@ -180,6 +201,65 @@ static void testUartThread(void * argument)
     }
   }
 }
+#endif
+
+#if (TEST_HOST_UART == 1)
+static void testHostUartRxThread(void * argument)
+{
+  (void)argument;
+  int countByte = 0;
+  int sizePkt;
+  static uint8_t buffer[UART_BUF_SIZE];
+
+  osSemaphoreId semaphoreUart = osSemaphoreCreate(NULL, 1);
+  osSemaphoreWait(semaphoreUart, 0);
+  uart_setSemaphoreId(uart1, semaphoreUart);
+  uart_init(uart1, 115200);
+
+  while(1) {
+    osSemaphoreWait(semaphoreUart, osWaitForever);
+    while (1) {
+      if (osSemaphoreWait(semaphoreUart, 5) == osEventTimeout) {
+        sizePkt = uart_readData(uart1, buffer);
+        uart_writeData(HOST_UART_TEST, buffer, sizePkt);
+
+        countByte = 0;
+        break;
+      } else {
+        countByte++;
+      }
+    }
+  }
+}
+
+static void testHostUartTxThread(void * argument)
+{
+  (void)argument;
+  int countByte = 0;
+  int sizePkt;
+  static uint8_t buffer[UART_BUF_SIZE];
+
+  osSemaphoreId semaphoreUart = osSemaphoreCreate(NULL, 1);
+  osSemaphoreWait(semaphoreUart, 0);
+  uart_setSemaphoreId(HOST_UART_TEST, semaphoreUart);
+  uart_init(HOST_UART_TEST, 115200);
+
+  while(1) {
+    osSemaphoreWait(semaphoreUart, osWaitForever);
+    while (1) {
+      if (osSemaphoreWait(semaphoreUart, 5) == osEventTimeout) {
+        sizePkt = uart_readData(HOST_UART_TEST, buffer);
+        uart_writeData(uart1, buffer, sizePkt);
+
+        countByte = 0;
+        break;
+      } else {
+        countByte++;
+      }
+    }
+  }
+}
+#endif
 
 static void testRtc()
 {
@@ -360,10 +440,10 @@ static void testAdcExt()
 #endif
 }
 
-static void testHost()
+static void testHostSpi()
 {
 #if TEST_HOST
-  osSemaphoreId semaphoreId = hostSemaphoreCreate();
+  osSemaphoreId semaphoreId = getHostSemaphore();
 
   bufferTx[0] = 0x55;
   bufferTx[1] = 0x7E;

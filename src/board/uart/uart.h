@@ -15,6 +15,8 @@ typedef enum {
   uartMax,
 } uartNum;
 
+#define HOST_UART_TEST uart3
+
 typedef struct {
   UART_HandleTypeDef uart;
   osSemaphoreId semaphoreId;

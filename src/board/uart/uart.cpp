@@ -289,19 +289,11 @@ int uart_readData(uartNum num, uint8_t *data)
 {
   UART_HandleTypeDef *uartX = &uarts[num].uart;
 
-  while (HAL_IS_BIT_SET(uartX->Instance->SR, UART_FLAG_RXNE)) {
-  }
-  while (uartX->Lock == HAL_LOCKED) {
-  }
-  uartX->Lock = HAL_LOCKED;
-
   const int count = uartX->RxXferCount;
   memcpy(data, uarts[num].rxBuffer, count);
 
   uartX->pRxBuffPtr = uarts[num].rxBuffer;
   uartX->RxXferCount = 0;
-
-  uartX->Lock = HAL_UNLOCKED;
 
   return count;
 }
