@@ -1738,8 +1738,11 @@ static HAL_StatusTypeDef UART_Receive_IT(UART_HandleTypeDef *huart)
   uint16_t* tmp;
   uint32_t tmp1 = 0;
   
-  if (huart->RxXferCount >= huart->RxXferSize)
+  if (huart->RxXferCount >= huart->RxXferSize) {
+    tmp1 = huart->Instance->DR;
+    HAL_UART_RxCpltCallback(huart);
     return HAL_OK;
+  }
 
   tmp1 = huart->State; 
   if((tmp1 == HAL_UART_STATE_BUSY_RX) || (tmp1 == HAL_UART_STATE_BUSY_TX_RX) ||
