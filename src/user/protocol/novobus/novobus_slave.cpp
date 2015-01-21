@@ -30,7 +30,7 @@ NovobusSlave::~NovobusSlave()
 
 void NovobusSlave::exchangeCycle(void)
 {
-  osSemaphoreId semaphoreId = hostSemaphoreCreate();
+  osSemaphoreId semaphoreId = getHostSemaphore();
   // Бесконечный цикл
   while(1) {
     // Проверить семафор, если он свободен

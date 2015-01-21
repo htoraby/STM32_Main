@@ -30,7 +30,7 @@ void hostInit();
  Семафор необходим для сообщения задачи о получении пакета данных
  \return osSemaphoreId - id созданного семафора
 */
-osSemaphoreId hostSemaphoreCreate();
+osSemaphoreId getHostSemaphore();
 
 /*!
  \brief Чтение данных из буфера приёма от контроллера визуализации

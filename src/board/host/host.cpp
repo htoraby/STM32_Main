@@ -2,7 +2,7 @@
 #include "gpio.h"
 #include "string.h"
 
-#define TIMEOUT_RX 100
+#define TIMEOUT_RX 20
 
 SPI_HandleTypeDef hspi4;
 DMA_HandleTypeDef hdma_spi4_tx;
@@ -24,9 +24,9 @@ void hostInit()
   hspi4.Init.Mode = SPI_MODE_SLAVE;
   hspi4.Init.Direction = SPI_DIRECTION_2LINES;
   hspi4.Init.DataSize = SPI_DATASIZE_8BIT;
-  hspi4.Init.CLKPolarity = SPI_POLARITY_HIGH;
-  hspi4.Init.CLKPhase = SPI_PHASE_2EDGE;
-  hspi4.Init.NSS = SPI_NSS_HARD_INPUT;
+  hspi4.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi4.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi4.Init.NSS = SPI_NSS_SOFT;
   hspi4.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
   hspi4.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi4.Init.TIMode = SPI_TIMODE_DISABLED;
@@ -55,18 +55,19 @@ void hostInit()
   HAL_NVIC_SetPriority(SPI4_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(SPI4_IRQn);
 
-  __HAL_SPI_ENABLE_IT(&hspi4, SPI_IT_RXNE);
+  __HAL_SPI_ENABLE_IT(&hspi4, (SPI_IT_RXNE | SPI_IT_ERR));
   __HAL_SPI_ENABLE(&hspi4);
+
+  hostSemaphoreId = osSemaphoreCreate(NULL, 1);
+  osSemaphoreWait(hostSemaphoreId, 0);
 
   osTimerDef_t timerDef = {hostTimer};
   osTimerId timerId = osTimerCreate(&timerDef, osTimerPeriodic, 0);
   osTimerStart(timerId, 1);
 }
 
-osSemaphoreId hostSemaphoreCreate()
+osSemaphoreId getHostSemaphore()
 {
-  hostSemaphoreId = osSemaphoreCreate(NULL, 1);
-  osSemaphoreWait(hostSemaphoreId, 0);
   return hostSemaphoreId;
 }
 
@@ -89,23 +90,27 @@ static void hostTimer(const void * argument)
 
 void hostRxIRQHandler(void)
 {
-  if ((__HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_RXNE) != RESET) &&
-      (__HAL_SPI_GET_IT_SOURCE(&hspi4, SPI_IT_RXNE) != RESET) &&
-      (__HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_OVR) == RESET)) {
+  uint32_t tmp1 = 0, tmp2 = 0, tmp3 = 0;
+
+  tmp1 = __HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_RXNE);
+  tmp2 = __HAL_SPI_GET_IT_SOURCE(&hspi4, SPI_IT_RXNE);
+  tmp3 = __HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_OVR);
+
+  if((tmp1 != RESET) && (tmp2 != RESET) && (tmp3 == RESET)) {
     uint8_t data = hspi4.Instance->DR;
     if (data == 0x7E) {
       //! Конец пакета
       if (rxActive) {
-        rxTimeout = 0;
         rxActive = 0;
+        rxTimeout = 0;
 
         osSemaphoreRelease(hostSemaphoreId);
       }
       //! Начало пакета
       else {
-        rxActive = 1;
-        rxCount = 0;
         rxTimeout = TIMEOUT_RX;
+        rxCount = 0;
+        rxActive = 1;
       }
     }
     //! Прием данных пакета
@@ -123,12 +128,25 @@ void hostRxIRQHandler(void)
         }
         if (rxCount < HOST_BUF_SIZE)
           rxBuffer[rxCount++] = data;
+        else {
+          asm("nop");
+        }
       }
     }
-  } else {
-    if(__HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_OVR) != RESET) {
+  }
+
+  if(__HAL_SPI_GET_IT_SOURCE(&hspi4, SPI_IT_ERR) != RESET) {
+    if(__HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_CRCERR) != RESET)
+      __HAL_SPI_CLEAR_CRCERRFLAG(&hspi4);
+
+    if(__HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_MODF) != RESET)
+      __HAL_SPI_CLEAR_MODFFLAG(&hspi4);
+
+    if(__HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_OVR) != RESET)
       __HAL_SPI_CLEAR_OVRFLAG(&hspi4);
-    }
+
+    if(__HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_FRE) != RESET)
+      __HAL_SPI_CLEAR_FREFLAG(&hspi4);
   }
 }
 
