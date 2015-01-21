@@ -126,8 +126,9 @@ void hostRxIRQHandler(void)
           data |= (1 << 5);
           unstuff = 0;
         }
-        if (rxCount < HOST_BUF_SIZE)
+        if (rxCount < HOST_BUF_SIZE) {
           rxBuffer[rxCount++] = data;
+        }
         else {
           asm("nop");
         }

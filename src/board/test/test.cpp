@@ -442,7 +442,7 @@ static void testAdcExt()
 
 static void testHostSpi()
 {
-#if TEST_HOST
+#if TEST_HOST_SPI
   osSemaphoreId semaphoreId = getHostSemaphore();
 
   bufferTx[0] = 0x55;
