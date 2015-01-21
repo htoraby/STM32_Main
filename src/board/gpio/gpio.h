@@ -3,9 +3,6 @@
 
 #include "board.h"
 
-//! Вывод детектора питания
-#define WATCH_PIN  GPIOI, GPIO_PIN_5
-
 /*!
  \brief Значения вывода
 
@@ -68,6 +65,11 @@ enum DoNum {
 #define POWER_BUTTON_PORT               GPIOI
 #define SYS_RESET_BUTTON_PIN            GPIO_PIN_13
 #define SYS_RESET_BUTTON_PORT           GPIOC
+
+//! Вывод детектора питания
+#define WATCH_PIN  GPIOI, GPIO_PIN_5
+//! Вывод включения подсветки LCD
+#define LCD_ON_PIN  GPIOD, GPIO_PIN_3
 
 /*!
  \brief Инициализация выводов, кнопок, LED, DI, DO
@@ -174,5 +176,17 @@ void setDigitalOutput(const uint16_t num, PinState value = PinReset);
  \return bool: true - норма, false - падение напряжения ниже 21,8В
 */
 bool isPowerGood();
+
+/*!
+ * \brief Включение LCD
+ *
+*/
+void onLcd();
+
+/*!
+ * \brief Выключение LCD
+ *
+*/
+void offLcd();
 
 #endif // GPIO_H

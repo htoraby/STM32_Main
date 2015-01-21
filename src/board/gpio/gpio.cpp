@@ -57,6 +57,7 @@ void gpioInit()
   initButton(SysResetButton);
 
   initPinInput(WATCH_PIN);
+  initPinOut(LCD_ON_PIN, PinSet);
 
   for (int i = 0; i < DigitalInputMax; ++i) {
     initPinInput(portDI[i], pinDI[i]);
@@ -156,4 +157,14 @@ void setDigitalOutput(const uint16_t num, PinState value)
 bool isPowerGood()
 {
   return getPinInput(WATCH_PIN);
+}
+
+void onLcd()
+{
+  HAL_GPIO_WritePin(LCD_ON_PIN, GPIO_PIN_SET);
+}
+
+void offLcd()
+{
+  HAL_GPIO_WritePin(LCD_ON_PIN, GPIO_PIN_RESET);
 }

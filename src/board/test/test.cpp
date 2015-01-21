@@ -131,8 +131,8 @@ static void testThread(void * argument)
 #if (TEST_LED == 1)
     blinkLed.toggle();
     osDelay(500);
-    //    logRunning.start(AutoType);
-    //    logAlarm.start(AutoType, 0);
+//    logRunning.start(AutoType);
+//    logAlarm.start(AutoType, 0);
 #endif
 
 #if (TEST_UART == 1)
