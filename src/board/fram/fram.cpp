@@ -97,15 +97,15 @@ void framInit()
   HAL_NVIC_SetPriority(DMA1_Stream0_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream0_IRQn);
 
-  //! Разрешение записи
+  // Разрешение записи
   buffer[0] = CMD_WREN;
   spiTransmit(buffer, 1);
-  //! Установка статусного регистра - разрешить запись в любую область
+  // Установка статусного регистра - разрешить запись в любую область
   buffer[0] = CMD_WRSR;
   buffer[1] = 0x00;
   spiTransmit(buffer, 2);
 
-  //! Проверка на чтение данных из Device ID регистра
+  // Проверка на чтение данных из Device ID регистра
   buffer[0] = CMD_RDID;
   spiTransmitReceive(&buffer[0], &buffer[0], 1, 9);
   if ((buffer[0] != 0x7F) || (buffer[1] != 0x7F) || (buffer[5] != 0x7F) ||

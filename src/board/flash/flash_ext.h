@@ -14,16 +14,16 @@ typedef enum {
 } FlashSpiNum;
 
 typedef struct {
-  SPI_HandleTypeDef spi;  //! Структура SPI
+  SPI_HandleTypeDef spi;  //!< Структура SPI
   osSemaphoreId cmdSemaphoreId;
   osSemaphoreId operSemaphoreId;
-  GPIO_TypeDef* nss_port; //! Порт вывода NSS
-  uint16_t nss_pin;       //! Номер вывода NSS
-  uint8_t manufacturer;   //! Производитель
-  uint32_t size;          //! Размер общей памяти
-  uint32_t pageSize;      //! Размер страницы
-  uint32_t sectorSize;    //! Размер сектора
-  uint32_t blockSize;     //! Размер блока
+  GPIO_TypeDef* nss_port; //!< Порт вывода NSS
+  uint16_t nss_pin;       //!< Номер вывода NSS
+  uint8_t manufacturer;   //!< Производитель
+  uint32_t size;          //!< Размер общей памяти
+  uint32_t pageSize;      //!< Размер страницы
+  uint32_t sectorSize;    //!< Размер сектора
+  uint32_t blockSize;     //!< Размер блока
 } FlashTypeDef;
 
 extern FlashTypeDef flashExts[];

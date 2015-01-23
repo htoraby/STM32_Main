@@ -18,7 +18,7 @@ void iwdgInit()
 {
 #if USE_WATCHDOG
 
-  //! Counter Reload Value = ms * LsiFreq / 1000 / Prescaler
+  // Counter Reload Value = ms * LsiFreq / 1000 / Prescaler
   hiwdg.Instance = IWDG;
   hiwdg.Init.Prescaler = IWDG_PRESCALER_128;
   hiwdg.Init.Reload = WATCHDOG_TIMEOUT*32000/128;

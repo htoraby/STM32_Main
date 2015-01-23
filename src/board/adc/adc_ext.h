@@ -10,13 +10,13 @@
 
 */
 enum AnalogInModeType {
-  AnalogInModeVoltage,  //! В
-  AnalogInModeCurrent,  //! мА
+  AnalogInModeVoltage,  //!< В
+  AnalogInModeCurrent,  //!< мА
 };
 
 typedef struct {
-  uint32_t value;    //! Измеренное значение
-  uint32_t valueTmp; //! Промежуточное накопленное значение измерений
+  uint32_t value;    //!< Измеренное значение
+  uint32_t valueTmp; //!< Промежуточное накопленное значение измерений
   uint8_t mode;
 } AnalogInputDef;
 

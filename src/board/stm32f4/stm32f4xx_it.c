@@ -97,7 +97,9 @@ void SPI4_IRQHandler(void)
   hostRxIRQHandler();
 }
 
-//!
+/*!
+ * \brief Прерывания от SPI1
+ */
 void DMA2_Stream5_IRQHandler(void)
 {
   HAL_DMA_IRQHandler(&hdma_spi1_tx);
@@ -108,7 +110,9 @@ void DMA2_Stream0_IRQHandler(void)
   HAL_DMA_IRQHandler(&hdma_spi1_rx);
 }
 
-//!
+/*!
+ * \brief Прерывания от SPI5
+ */
 void DMA2_Stream4_IRQHandler(void)
 {
   HAL_DMA_IRQHandler(&hdma_spi5_tx);

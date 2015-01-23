@@ -42,9 +42,9 @@ void adcInit(adcNum num)
   switch (num) {
     case adc1:
       adcX->Instance = ADC1;
-      //! 82/2 = 42 МГц
+      // 82/2 = 42 МГц
       adcX->Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
-      //! 2^12-1 = 0xFFF
+      // 2^12-1 = 0xFFF
       adcX->Init.Resolution = ADC_RESOLUTION12b;
       adcX->Init.ScanConvMode = DISABLE;
       adcX->Init.ContinuousConvMode = DISABLE;
@@ -58,9 +58,9 @@ void adcInit(adcNum num)
       break;
     case adc2:
       adcX->Instance = ADC2;
-      //! 82/2 = 42 МГц
+      // 82/2 = 42 МГц
       adcX->Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
-      //! 2^12-1 = 0xFFF
+      // 2^12-1 = 0xFFF
       adcX->Init.Resolution = ADC_RESOLUTION12b;
       adcX->Init.ScanConvMode = ENABLE;
       adcX->Init.ContinuousConvMode = DISABLE;
@@ -82,26 +82,26 @@ void adcInit(adcNum num)
   HAL_ADC_Init(adcX);
 
   if (num == adc2) {
-    //! Настройка каналов
-    //! Ua
+    // Настройка каналов
+    // Ua
     sConfig.Channel = ADC_CHANNEL_13;
     sConfig.Rank = 1;
-    //! ADC_SAMPLETIME_112CYCLES - (112+12)/42 = 3 мксек
+    // ADC_SAMPLETIME_112CYCLES - (112+12)/42 = 3 мксек
     sConfig.SamplingTime = ADC_SAMPLETIME_112CYCLES;
     HAL_ADC_ConfigChannel(adcX, &sConfig);
 
-    //! Ub
+    // Ub
     sConfig.Channel = ADC_CHANNEL_12;
     sConfig.Rank = 2;
     HAL_ADC_ConfigChannel(adcX, &sConfig);
 
-    //! Uc
+    // Uc
     sConfig.Channel = ADC_CHANNEL_11;
     sConfig.Rank = 3;
     HAL_ADC_ConfigChannel(adcX, &sConfig);
 
 
-    //! Настройка таймера
+    // Настройка таймера
     htim3.Instance = TIM3;
     htim3.Init.Prescaler = ((SystemCoreClock /2) / 100000) - 1;
     htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
@@ -224,7 +224,7 @@ StatusType getCoreTemperature(float *value)
   int result = 0;
   int resultLast = 0;
 
-  //! ADC_SAMPLETIME_480CYCLES - (480+12)/42 = 11 мксек
+  // ADC_SAMPLETIME_480CYCLES - (480+12)/42 = 11 мксек
   for(uint32_t i = 0; i < 3; i++) {
     if(getValueADC(adc1, ADC_CHANNEL_TEMPSENSOR, &data, ADC_SAMPLETIME_480CYCLES) == StatusOk) {
       result = resultLast + (((int)data - resultLast)/(count + 1));
@@ -301,7 +301,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* adcHandle)
 {
   (void)adcHandle;
 
-  //! Для тестирования времени измерения
+  // Для тестирования времени измерения
   static int t = 0;
   time = HAL_GetTick() - time;
   if (++t != 1)

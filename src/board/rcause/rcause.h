@@ -8,13 +8,13 @@
 
 */
 typedef struct {
-    int bor;  //! POR reset
-    int pin;  //! Pin reset
-    int por;  //! POR reset
-    int sft;  //! Software reset
-    int iwdg; //! Independent Watchdog reset
-    int wwdg; //! Window Watchdog reset
-    int lpwr; //! Low Power reset
+    int bor;  //!< POR reset
+    int pin;  //!< Pin reset
+    int por;  //!< POR reset
+    int sft;  //!< Software reset
+    int iwdg; //!< Independent Watchdog reset
+    int wwdg; //!< Window Watchdog reset
+    int lpwr; //!< Low Power reset
 } RCAUSE_COUNTS;
 
 /*!

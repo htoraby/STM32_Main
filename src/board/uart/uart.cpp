@@ -43,7 +43,7 @@ int uart_init(uartNum num, uint32_t baudRate, uint32_t parity, uint32_t stopBits
 
   status = HAL_UART_Init(uartX);
   if (status == HAL_OK) {
-    //! Разрешение прерываний
+    // Разрешение прерываний
     status = HAL_UART_Receive_IT(uartX, uarts[num].rxBuffer, UART_BUF_SIZE);
   }
 

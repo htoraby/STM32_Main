@@ -99,21 +99,21 @@ void hostRxIRQHandler(void)
   if((tmp1 != RESET) && (tmp2 != RESET) && (tmp3 == RESET)) {
     uint8_t data = hspi4.Instance->DR;
     if (data == 0x7E) {
-      //! Конец пакета
+      // Конец пакета
       if (rxActive) {
         rxActive = 0;
         rxTimeout = 0;
 
         osSemaphoreRelease(hostSemaphoreId);
       }
-      //! Начало пакета
+      // Начало пакета
       else {
         rxTimeout = TIMEOUT_RX;
         rxCount = 0;
         rxActive = 1;
       }
     }
-    //! Прием данных пакета
+    // Прием данных пакета
     else {
       if (rxActive) {
         rxTimeout = TIMEOUT_RX;
@@ -121,7 +121,7 @@ void hostRxIRQHandler(void)
           unstuff = 1;
           return;
         }
-        //! Выкидываем байтстаффинг
+        // Выкидываем байтстаффинг
         if (unstuff) {
           data |= (1 << 5);
           unstuff = 0;

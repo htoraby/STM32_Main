@@ -178,11 +178,11 @@ void flashExtInit(FlashSpiNum num)
   flashExts[num].operSemaphoreId = osSemaphoreCreate(NULL, 1);
 
 
-  //! Чтение данных из JEDEC ID регистров для определения производителя
+  // Чтение данных из JEDEC ID регистров для определения производителя
   buf[0] = CMD_JEDEC_ID;
   spiTransmitReceive(num, &buf[0], &buf[0], 1, 4);
 
-  //! Определение производителя
+  // Определение производителя
   flashExts[num].manufacturer = buf[0];
   switch (flashExts[num].manufacturer) {
     case VENDOR_ATMEL:
@@ -287,7 +287,7 @@ StatusType flashEraseSector4k(FlashSpiNum num, uint32_t address)
     status = StatusOk;
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 
-  //! Ожидание завершения операции
+  // Ожидание завершения операции
   flashReady(num);
   flashWriteDisable(num);
 
@@ -360,7 +360,7 @@ StatusType flashWritePage(FlashSpiNum num, uint32_t address, uint8_t *data, uint
     }
   }
 
-  //! Ожидание завершения операции
+  // Ожидание завершения операции
   flashReady(num);
   flashWriteDisable(num);
 
@@ -465,7 +465,7 @@ StatusType flashExtChipErase(FlashSpiNum num)
     status = StatusOk;
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 
-  //! Ожидание завершения операции
+  // Ожидание завершения операции
   flashReady(num);
   flashWriteDisable(num);
 

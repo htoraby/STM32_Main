@@ -56,13 +56,13 @@ typedef enum {
 */
 typedef enum {
   //! FlashSpi5
-  StartAddrEventLog = 0x00000000,  //! 4+1 сектора
-  StartAddrDataLog  = 0x00005000,  //! 2357+1 сектора
-  StartAddrRunLog   = 0x0093B000,  //! 640+1 секторов
-  StartAddrAlarmLog = 0x00BBC000,  //! 640+1 секторов
-  StartAddrTmsLog   = 0x00E3D000,  //! 450+1 секторов
+  StartAddrEventLog = 0x00000000,  //!< 4+1 сектора
+  StartAddrDataLog  = 0x00005000,  //!< 2357+1 сектора
+  StartAddrRunLog   = 0x0093B000,  //!< 640+1 секторов
+  StartAddrAlarmLog = 0x00BBC000,  //!< 640+1 секторов
+  StartAddrTmsLog   = 0x00E3D000,  //!< 450+1 секторов
   //! FlashSpi1
-  StartAddrDebugLog = 0x00000000,  //! все сектора
+  StartAddrDebugLog = 0x00000000,  //!< все сектора
 } StartAddrLog;
 
 /*!

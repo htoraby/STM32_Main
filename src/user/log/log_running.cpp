@@ -57,7 +57,7 @@ void LogRunning::task()
 
 void LogRunning::add()
 {
-  //! Получения занчений Ua, Ub, Uc
+  // Получения занчений Ua, Ub, Uc
   copyAdcData();
   for (int i = 0; i < ADC_CNANNELS_NUM*ADC_POINTS_NUM; ++i) {
     // V = (value - 2048) * 627.747 * 2.5 / 0xFFF

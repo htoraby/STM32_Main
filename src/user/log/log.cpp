@@ -55,7 +55,7 @@ void Log::init()
       break;
   }
 
-  //! Получение адреса с которого начнётся следующая запись
+  // Получение адреса с которого начнётся следующая запись
   framReadData(addrFram_, (uint8_t*)&address_, 4);
   if (address_ == 0)
     address_ = startAddr_;
@@ -70,19 +70,19 @@ void Log::deInit()
 
 void Log::write(uint8_t *data, uint32_t size, bool saveId, bool endLog)
 {
-  //! Проверка питания платы
+  // Проверка питания платы
   if (!isPowerGood())
     return;
 
   flashExtWrite(flashSpiNum_, address_, data, size);
 
-  //! Вычисление адреса для следующей записи
+  // Вычисление адреса для следующей записи
   address_ = address_ + size;
   if ((address_ + size) > endAddr_) {
     address_ = startAddr_;
   }
 
-  //! Проверка на начало нового сектора
+  // Проверка на начало нового сектора
   uint32_t addrSector = (address_ + size - 1) / sectorSize_ * sectorSize_;
   if (endLog) {
     addrSector = addrSector + sectorSize_;
@@ -96,12 +96,12 @@ void Log::write(uint8_t *data, uint32_t size, bool saveId, bool endLog)
     addrSectorOld_ = addrSector;
   }
 
-  //! Сохранение глабального индекса записей
+  // Сохранение глабального индекса записей
   if (saveId) {
     if (id_ == 0xFFFFFFFF)
       id_ = 0;
     framWriteData(IdLogAddrFram, (uint8_t*)&id_, 4);
   }
-  //! Сохранение адреса с которого начнётся следующая запись
+  // Сохранение адреса с которого начнётся следующая запись
   framWriteData(addrFram_, (uint8_t*)&address_, 4);
 }

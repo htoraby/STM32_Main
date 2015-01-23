@@ -51,12 +51,14 @@ void HAL_RTC_MspInit(RTC_HandleTypeDef *hrtc)
     RCC_OscInitStruct.LSEState = RCC_LSE_OFF;
     RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
     if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
-      asm("nop"); //! error
+      // Error
+      asm("nop");
     }
   }
 
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK) {
-    asm("nop"); //! error
+    // Error
+    asm("nop");
   }
 
   /* Enable RTC Clock */

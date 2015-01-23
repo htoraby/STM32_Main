@@ -34,13 +34,13 @@ bool flagMcuInit = false;
 
 int main()
 {
-  //! Сброс всей переферии, инициализация интерфейса Flash и системного таймера (1мс)
+  // Сброс всей переферии, инициализация интерфейса Flash и системного таймера (1мс)
   HAL_Init();
 
-  //! Инициализация системы тактирования
+  // Инициализация системы тактирования
   systemClockConfig();
 
-  //! Инициализация переферии
+  // Инициализация переферии
   gpioInit();
   sramInit();
   rtcInit();
@@ -56,11 +56,11 @@ int main()
 
   flagMcuInit = true;
 
-  //! Создание основной задачи и запуск диспетчера
+  // Создание основной задачи и запуск диспетчера
   osThreadDef(Main_Thread, mainThread, osPriorityNormal, 0, 6*configMINIMAL_STACK_SIZE);
   osKernelStart(osThread(Main_Thread), NULL);
 
-  //! Сюда не должны попасть, т.к. мы запустили диспетчер задач
+  // Сюда не должны попасть, т.к. мы запустили диспетчер задач
   while (1) { }
 }
 
@@ -108,20 +108,20 @@ static void mainThread(void *argument)
 {
   (void)argument;
 
-  //! Подсчет счетчиков перезапуска СPU
+  // Подсчет счетчиков перезапуска СPU
   resetCauseCheck();
 
   /* FatFS: Link the USBH disk I/O driver */
   USBH_DriverNum = FATFS_LinkDriver(&USBH_Driver, USBH_Path);
 
-  //! Инициализация USB HOST
+  // Инициализация USB HOST
   MX_USB_HOST_Init();
 
 #if (USE_TEST == 1)
   testInit();
 #endif
 
-  //! Инициализация пользовательских задач и объектов
+  // Инициализация пользовательских задач и объектов
   userInit();
 
   while(1) {

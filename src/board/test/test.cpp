@@ -265,7 +265,7 @@ static void testRtc()
 {
 #if (TEST_RTC == 1)
   tm dateTime;
-  //! Установка даты и времени
+  // Установка даты и времени
   dateTime.tm_mon = 11;
   dateTime.tm_mday = 6;
   dateTime.tm_year = 2014 - 1900;

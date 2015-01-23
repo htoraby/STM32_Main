@@ -166,7 +166,7 @@ void adcExtThread(void *argument)
 
 float getValueAnalogInExt(uint8_t num)
 {
-  //! Преобразование измеренного значения
+  // Преобразование измеренного значения
   float value = analogInExt[num].value;
   if (analogInExt[num].mode == AnalogInModeVoltage) {
     // V = value * 4.0 * 2.5 / 0xFFF
