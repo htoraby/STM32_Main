@@ -7,7 +7,7 @@
 
 #include "vsd.h"
 
-Vsd::Vsd()
+Vsd::Vsd() : Device(VSD_BEGIN)
 {
 
 }
@@ -116,6 +116,9 @@ float Vsd::getCurrentFreq()
 
 void Vsd::initParameters()
 {
+  parameters_ = parametersArray_;
+  countParameter_ = sizeof(parametersArray_)/sizeof(parameter);
+
   // Пустой элемент массива
   parameters_[VSD_BEGIN - VSD_BEGIN].id                = VSD_BEGIN;
   parameters_[VSD_BEGIN - VSD_BEGIN].access            = ACCESS_ERROR;
@@ -2482,6 +2485,3 @@ void Vsd::initParameters()
   parameters_[VSD_PHOUT - VSD_BEGIN].max    = 180.0;
   parameters_[VSD_PHOUT - VSD_BEGIN].def    = 0.0;
 }
-
-
-

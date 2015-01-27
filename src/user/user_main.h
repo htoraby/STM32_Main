@@ -5,8 +5,12 @@
 #include "host.h"
 #include "log_main.h"
 #include "ccs.h"
+#include "vsd_novomet.h"
+#include "parameters.h"
 
+extern Parameters parameters;
 extern Ccs KSU;
+extern VsdNovomet vsd;
 
 /*!
  * \brief Инициализация пользовательских задач и объектов

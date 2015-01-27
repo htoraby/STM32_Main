@@ -12,6 +12,7 @@
 #include "define.h"
 #include "service.h"
 #include "board.h"
+#include "fram.h"
 
 extern float Units[28][6][2];
 
@@ -62,7 +63,7 @@ class Device
 // ОТКРЫТЫЕ ЧЛЕНЫ КЛАССА
 public:
   /// Констуртор класса
-  Device();
+  Device(uint32_t startAddrParams);
   /// Деструктор класса
   virtual ~Device();
 
@@ -305,10 +306,22 @@ public:
    */
   unsigned char setValue(unsigned short id, float value);
 
+  /*!
+   * \brief Сохранение массива параметров на Flash
+   */
+  StatusType saveParameters();
+
+  /*!
+   * \brief Чтение массива параметров с Flash
+   */
+  StatusType readParameters();
+
 // Наследуемые члены класс
 protected:
   /// Массив параметров устройства
-  parameter parameters_[];
+  parameter *parameters_;
+
+  uint32_t startAddrParams_;
 
 private:
 

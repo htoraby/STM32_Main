@@ -236,7 +236,9 @@ public:
    */
   int setTorqueLimit(double TorqueLimit);
 
-protected:
+private:
+  /// Массив параметров устройства
+  parameter parametersArray_[215];
 
 };
 

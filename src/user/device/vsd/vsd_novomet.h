@@ -100,6 +100,8 @@ class VsdNovomet: public Vsd
         VsdNovomet();
         virtual ~VsdNovomet();
 
+        void init();
+
         void initModbusParameters();
 
         DeviceModbus *DM;

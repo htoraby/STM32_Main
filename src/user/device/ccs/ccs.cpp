@@ -8,7 +8,7 @@
 #include "ccs.h"
 
 
-Ccs::Ccs()
+Ccs::Ccs() : Device(CCS_BEGIN)
 {
 // TODO Auto-generated destructor stub
 }

@@ -8,7 +8,7 @@
 #include "Tms.h"
 
 
-Tms::Tms()
+Tms::Tms() : Device(TMS_BEGIN)
 {
 
 }

@@ -7,7 +7,7 @@
 
 #include "em.h"
 
-Em::Em()
+Em::Em() : Device(EM_BEGIN)
 {
  /*
 	Parameter Parameters[EM_END - EM_BEGIN]=

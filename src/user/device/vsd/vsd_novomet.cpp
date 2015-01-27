@@ -1693,26 +1693,35 @@ void VsdNovomet::initModbusParameters()
 */
 VsdNovomet::VsdNovomet()
 {
-  // Создание задачи обновления параметров
-  createThread("UpdateParametersVsdNovomet");
-  // Создание очереди обновления параметров
-  createMessageUpdateParameters();
-  // Создание объекта протокола связи с утройством
-  DM = new DeviceModbus(ModbusParameters,         // *MapRegisters
-                        94,                       // Quantity
-                        3,                        // PortName
-                        115200,                   // BaudRate
-                        8,                        // DataBits
-                        1,                        // StopBits
-                        0,                        // Parity
-                        1,                        // Address
-                        "ProtocolVsdNovomet",     // Название задачи
-                        &messageUpdateParameters_);// Название очереди
+
 }
 
 VsdNovomet::~VsdNovomet()
 {
   // TODO Auto-generated destructor stub
+}
+
+void VsdNovomet::init()
+{
+  initParameters();
+  initModbusParameters();
+
+  // TODO: Необходимо превевсти в порядок!
+//  // Создание задачи обновления параметров
+//  createThread("UpdateParametersVsdNovomet");
+//  // Создание очереди обновления параметров
+//  createMessageUpdateParameters();
+//  // Создание объекта протокола связи с утройством
+//  DM = new DeviceModbus(ModbusParameters,         // *MapRegisters
+//                        94,                       // Quantity
+//                        3,                        // PortName
+//                        115200,                   // BaudRate
+//                        8,                        // DataBits
+//                        1,                        // StopBits
+//                        0,                        // Parity
+//                        1,                        // Address
+//                        "ProtocolVsdNovomet",     // Название задачи
+//                        &messageUpdateParameters_);// Название очереди
 }
 
 // Метод проверки и обновления параметров устройства

@@ -272,7 +272,8 @@ static void ThreadUpdateParameters(void *p)
 }
 
 // Конструктор класса
-Device::Device()
+Device::Device(uint32_t startAddrParams)
+  : startAddrParams_(startAddrParams)
 {
 
 }
@@ -475,6 +476,22 @@ void Device::updateParameters(void)
   else {
     return;
   }
+}
+
+StatusType Device::saveParameters()
+{
+  StatusType status = framWriteData(startAddrParams_*sizeof(parameter),
+                                    (uint8_t *)parameters_,
+                                    countParameter_*sizeof(parameter));
+  return status;
+}
+
+StatusType Device::readParameters()
+{
+  StatusType status = framReadData(startAddrParams_*sizeof(parameter),
+                                   (uint8_t *)parameters_,
+                                   countParameter_*sizeof(parameter));
+  return status;
 }
 
 void Device::initParameters()
