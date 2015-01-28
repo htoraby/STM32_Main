@@ -1,7 +1,7 @@
 #include "user_main.h"
 
 Parameters parameters;
-Ccs KSU;
+Ccs ksu;
 VsdNovomet vsd;
 
 void userInit()

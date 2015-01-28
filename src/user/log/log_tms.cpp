@@ -43,8 +43,8 @@ void LogTms::add()
   *(uint32_t*)(buffer) = ++id_;
   *(uint32_t*)(buffer+4) = time;
   *(uint8_t*)(buffer+8) = code;
-  *(float*)(buffer+9) = KSU.getValue(TMS_PRESSURE_INTAKE);
-  *(float*)(buffer+13) = KSU.getValue(TMS_TEMPERATURE_WINDING);
+  *(float*)(buffer+9) = ksu.getValue(TMS_PRESSURE_INTAKE);
+  *(float*)(buffer+13) = ksu.getValue(TMS_TEMPERATURE_WINDING);
 
   write(buffer, 17);
 }

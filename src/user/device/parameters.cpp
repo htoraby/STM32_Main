@@ -43,12 +43,12 @@ void Parameters::startSave()
 
 void Parameters::save()
 {
-  KSU.saveParameters();
+  ksu.saveParameters();
   vsd.saveParameters();
 }
 
 void Parameters::read()
 {
-  KSU.readParameters();
+  ksu.readParameters();
   vsd.readParameters();
 }

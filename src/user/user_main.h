@@ -9,7 +9,7 @@
 #include "parameters.h"
 
 extern Parameters parameters;
-extern Ccs KSU;
+extern Ccs ksu;
 extern VsdNovomet vsd;
 
 /*!
