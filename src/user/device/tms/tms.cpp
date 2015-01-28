@@ -5,7 +5,7 @@
  *      Author: trofimenko
  */
 
-#include "Tms.h"
+#include "tms.h"
 
 
 Tms::Tms() : Device(TMS_BEGIN)

@@ -3,6 +3,8 @@
 Parameters parameters;
 Ccs ksu;
 VsdNovomet vsd;
+Tms tms;
+Em em;
 
 void userInit()
 {
