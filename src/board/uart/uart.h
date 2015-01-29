@@ -3,7 +3,7 @@
 
 #include "board.h"
 
-#define UART_BUF_SIZE	256
+#define UART_BUF_SIZE	1024
 
 typedef enum {
   uart1,

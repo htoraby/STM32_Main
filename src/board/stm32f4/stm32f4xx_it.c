@@ -44,7 +44,7 @@ extern void xPortSysTickHandler(void);
 extern void hostRxIRQHandler(void);
 
 extern HCD_HandleTypeDef hhcd_USB_OTG_FS;
-extern uint8_t flagMcuInit;
+extern uint8_t isBoardInit;
 extern DMA_HandleTypeDef hdma_spi1_tx;
 extern DMA_HandleTypeDef hdma_spi1_rx;
 extern DMA_HandleTypeDef hdma_spi4_tx;
@@ -167,7 +167,7 @@ void UART7_IRQHandler(void)
 */
 void SysTick_Handler(void)
 {
-  if (flagMcuInit) {
+  if (isBoardInit) {
     xPortSysTickHandler();
   }
   HAL_IncTick();

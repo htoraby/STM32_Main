@@ -30,7 +30,7 @@
 static void systemClockConfig();
 static void mainThread(void *argument);
 
-bool flagMcuInit = false;
+bool isBoardInit = false;
 
 int main()
 {
@@ -54,7 +54,7 @@ int main()
 
   iwdgInit();
 
-  flagMcuInit = true;
+  isBoardInit = true;
 
   // Создание основной задачи и запуск диспетчера
   osThreadDef(Main_Thread, mainThread, osPriorityNormal, 0, 6*configMINIMAL_STACK_SIZE);

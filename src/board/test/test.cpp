@@ -64,6 +64,29 @@ void testInit()
 #endif
 }
 
+static int testCmd(int argc, char *argv[])
+{
+  for(int i = 0; i < argc; i++) {
+    if (!strcmp(argv[i], "stm32")) {
+      if (++i >= argc) {
+        return 1;
+      }
+      if (!strcmp(argv[i], "tasklist")) {
+        osDelay(1000);
+        osThreadList((int8_t*)bufferTx);
+
+        static uint8_t buffer = '\n';
+        uart_writeData(HOST_UART_TEST, &buffer, 1);
+        uart_writeData(HOST_UART_TEST, bufferTx, strlen((char*)bufferTx));
+
+        return 0;
+      }
+    }
+  }
+
+  return 1;
+}
+
 static void testThread(void * argument)
 {
   (void)argument;
@@ -248,8 +271,19 @@ static void testHostUartTxThread(void * argument)
     osSemaphoreWait(semaphoreUart, osWaitForever);
     while (1) {
       if (osSemaphoreWait(semaphoreUart, 5) == osEventTimeout) {
+        memset(buffer, 0, UART_BUF_SIZE);
         sizePkt = uart_readData(HOST_UART_TEST, buffer);
-        uart_writeData(uart1, buffer, sizePkt);
+        int argc = 0;
+        char *argv[20];
+        char *str;
+        str = strtok((char*)buffer, " ");
+        while (str != NULL) {
+          argv[argc++] = str;
+          str = strtok (NULL, " ");
+        }
+
+        if (testCmd(argc, argv))
+          uart_writeData(uart1, buffer, sizePkt);
 
         countByte = 0;
         break;
