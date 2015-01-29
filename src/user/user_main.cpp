@@ -1,4 +1,5 @@
 #include "user_main.h"
+#include "protection_main.h"
 
 Parameters parameters;
 Ccs ksu;
@@ -14,7 +15,7 @@ void userInit()
   vsd.init();
 
   parameters.init();
-
+  protectionInit();
 
 }
 

@@ -96,7 +96,7 @@ public:
   float param2_;
 
   /// Состояние автомата защиты
-  float state_;
+  int state_;
   /// Текущее значение контролируемого параметра
   float valueParameter_;
   /// Текущее значение таймера
@@ -116,25 +116,25 @@ public:
 
   void init(const char *threadName);
 
-//  /*!
-//   * \brief getIdProtection
-//   * Функция получения id параметров защиты
-//   * \param mode
-//   * \param reaction
-//   * \param activDelay
-//   * \param tripDelay
-//   * \param restartDelay
-//   * \param restartLimit
-//   * \param restartReset
-//   * \param tripSetpoint
-//   * \param restartSetpoint
-//   * \param param
-//   * \param param2
-//   * \param state
-//   * \param time
-//   * \param restartCount
-//   * \param restartResetCount
-//   */
+  /*!
+   * \brief getIdProtection
+   * Функция получения id параметров защиты
+   * \param mode
+   * \param reaction
+   * \param activDelay
+   * \param tripDelay
+   * \param restartDelay
+   * \param restartLimit
+   * \param restartReset
+   * \param tripSetpoint
+   * \param restartSetpoint
+   * \param param
+   * \param param2
+   * \param state
+   * \param time
+   * \param restartCount
+   * \param restartResetCount
+   */
   void getIdProtection(unsigned short mode,
                        unsigned short reaction,
                        unsigned short activDelay,
@@ -157,7 +157,7 @@ public:
    * Метод получения уставок защиты, метод должен вызываться с периодом работы
    * работы автомата защиты, таким образом получаем актуальные значения уставок
    */
-  void getSetpointProt();
+  virtual void getSetpointProt();
 
 
   /*!
@@ -165,23 +165,36 @@ public:
    * Метод получения текущих параметров защиты, эти данные меняются в процессе
    * работы автомата защиты
    */
-  void getCurrentParamProt();
+  virtual void getCurrentParamProt();
+
+  /*!
+   * \brief Метод сохранения текущих параметров защиты
+   *
+   */
+  virtual void setCurrentParamProt();
+
+  /*!
+   * \brief Метод проверки условия срабатывания защиты
+   *
+   * \return 0 - параметр в норме, 1 - параметр не в норме
+   */
+  virtual bool checkTripSetPoint();
 
   /*!
    * \brief checkTripSetPoint
    * Метод текущего значения отсительно уставки
-   * \param limit если текущий параметр должен быть ниже уставки 0
-   * и 1 если текущий параметр должен быть выше уставки
+   * \param isHigher: true - если текущий параметр должен быть выше уставки,
+   * false - если текущий параметр должен быть ниже уставки
    * \return 0 параметр в норме, 1 параметр не в норме
    */
-  bool checkTripSetPoint(bool limit);
+  bool checkTripSetPoint(bool isHigher);
 
   /*!
    * \brief checkRestartSetPoint
-   * Функция проверки выполнено ли условие АПВ по значению параметра
+   * Метод проверки выполнения условия АПВ по значению параметра
    * \return
    */
-  bool checkRestartSetPoint(bool limit);
+  virtual bool checkRestartSetPoint(bool limit);
 
   /*!
    * \brief checkRestartResetCount
@@ -193,7 +206,7 @@ public:
    * Автомат работы защиты
    * \return состояние защиты
    */
-  void automatProtection();
+  virtual void automatProtection();
 
   /*!
    * \brief taskProtection

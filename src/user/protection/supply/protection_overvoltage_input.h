@@ -5,13 +5,20 @@
 #include "em.h"
 #include "ccs.h"
 
-class ProtectionOvervoltageInput : public Protection
+class ProtectionOverVoltageInput : public Protection
 {
 public:
-  ProtectionOvervoltageInput();
-  ~ProtectionOvervoltageInput();
+  ProtectionOverVoltageInput();
+  ~ProtectionOverVoltageInput();
 
   void init();
+
+  /*!
+   * \brief Метод проверки условия срабатывания защиты
+   *
+   * \return 0 параметр в норме, 1 параметр не в норме
+   */
+  bool checkTripSetPoint();
 
 };
 

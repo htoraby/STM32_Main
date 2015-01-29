@@ -1,16 +1,16 @@
 #include "protection_overvoltage_input.h"
 
-ProtectionOvervoltageInput::ProtectionOvervoltageInput()
+ProtectionOverVoltageInput::ProtectionOverVoltageInput()
 {
 
 }
 
-ProtectionOvervoltageInput::~ProtectionOvervoltageInput()
+ProtectionOverVoltageInput::~ProtectionOverVoltageInput()
 {
 
 }
 
-void ProtectionOvervoltageInput::init()
+void ProtectionOverVoltageInput::init()
 {
   getIdProtection(CCS_PROT_SUPPLY_OVERVOLTAGE_MODE,
                   CCS_PROT_SUPPLY_OVERVOLTAGE_REACTION,
@@ -31,3 +31,7 @@ void ProtectionOvervoltageInput::init()
   Protection::init("ProtectionOvervoltageInput");
 }
 
+bool ProtectionOverVoltageInput::checkTripSetPoint()
+{
+  return Protection::checkTripSetPoint(true);
+}

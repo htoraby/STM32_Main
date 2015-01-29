@@ -1,8 +1,10 @@
 #include "protection_main.h"
 
-ProtectionOvervoltageInput protOverVoltIn;
+ProtectionOverVoltageInput protOverVoltIn;
+ProtectionUnderVoltageInput protUnderVoltIn;
 
 void protectionInit()
 {
   protOverVoltIn.init();
+  protUnderVoltIn.init();
 }
