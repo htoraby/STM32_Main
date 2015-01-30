@@ -122,7 +122,7 @@ Product {
             "3rdParty/FatFs/option/cc*",
             "heap_1.c",
             "heap_2.c",
-            "heap_4.c",
+            "heap_3.c",
         ]
         cpp.cxxFlags: [ "-std=c++11" ]
         cpp.cFlags: [ "-std=gnu11" ]
