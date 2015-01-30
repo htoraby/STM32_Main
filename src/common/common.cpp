@@ -1,4 +1,20 @@
 #include "common.h"
+#include "cmsis_os.h"
+
+void *operator new(size_t size)
+{
+  void *p = pvPortMalloc(size);
+  if (p == NULL) {
+    // Ошибка: память не выделена
+    asm("nop");
+  }
+  return p;
+}
+
+void operator delete(void *p)
+{
+  vPortFree(p);
+}
 
 uint16_t crc16_ibm(uint8_t *buf, uint8_t size, uint16_t crc)
 {

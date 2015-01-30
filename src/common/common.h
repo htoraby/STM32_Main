@@ -2,6 +2,7 @@
 #define COMMON_H
 
 #include <stdint.h>
+#include <stddef.h>
 
 enum StatusType {
   StatusOk,
@@ -9,6 +10,21 @@ enum StatusType {
 };
 
 #ifdef __cplusplus
+
+/*!
+ * \brief Переопределение оператора new
+ *
+ * \param size - размер необходимой памяти
+ * \return void * - указатель на выделенную область памяти
+ */
+void *operator new(size_t size);
+
+/*!
+ * \brief Переопределение оператора delete
+ *
+ * \param p - указатель на объект
+ */
+void operator delete(void *p);
 
 /*!
  \brief Метод подсчёта контрольной суммы
