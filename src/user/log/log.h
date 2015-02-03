@@ -23,6 +23,7 @@ typedef enum {
  *
 */
 typedef enum {
+  ProtectCode  = 5,
   NormModeCode = 28,
   FastModeCode = 29,
   RunCode      = 30,
@@ -48,6 +49,9 @@ typedef enum {
 */
 typedef enum {
   RunId,
+  ProtActivatedId, //!< "Сработала защита: Превышение питания сети"
+
+
 } EventId;
 
 /*!

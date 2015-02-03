@@ -31,7 +31,12 @@ void ProtectionOverVoltageInput::init()
   Protection::init("ProtectionOvervoltageInput");
 }
 
-bool ProtectionOverVoltageInput::checkTripSetPoint()
+bool ProtectionOverVoltageInput::checkAlarm()
 {
-  return Protection::checkTripSetPoint(true);
+  return Protection::isHigherLimit(tripSetpoint_);
+}
+
+bool ProtectionOverVoltageInput::checkBlock()
+{
+  return Protection::isHigherLimit(restartSetpoint_);
 }

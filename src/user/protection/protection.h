@@ -107,7 +107,7 @@ public:
   float restartResetCount_;
 
   /// Флаг выполнения условия срабатывания защиты
-  bool trip_;
+  bool alarm_;
   /// Флаг запрещающего параметра
   bool block_;
 
@@ -176,25 +176,30 @@ public:
   /*!
    * \brief Метод проверки условия срабатывания защиты
    *
-   * \return 0 - параметр в норме, 1 - параметр не в норме
+   * \return false - параметр в норме, true - параметр не в норме
    */
-  virtual bool checkTripSetPoint();
+  virtual bool checkAlarm();
 
   /*!
-   * \brief checkTripSetPoint
-   * Метод текущего значения отсительно уставки
-   * \param isHigher: true - если текущий параметр должен быть выше уставки,
-   * false - если текущий параметр должен быть ниже уставки
-   * \return 0 параметр в норме, 1 параметр не в норме
+   * \brief Метод проверки превышения текущего значения отсительно уставки
+   *
+   * \return false параметр в норме, true параметр не в норме
    */
-  bool checkTripSetPoint(bool isHigher);
+  bool isHigherLimit(float setpoint);
 
   /*!
-   * \brief checkRestartSetPoint
-   * Метод проверки выполнения условия АПВ по значению параметра
-   * \return
+   * \brief Метод проверки уменьшения текущего значения отсительно уставки
+   *
+   * \return false параметр в норме, true параметр не в норме
    */
-  virtual bool checkRestartSetPoint(bool limit);
+  bool isLowerLimit(float setpoint);
+
+  /*!
+   * \brief Метод проверки выполнения условия АПВ по значению параметра
+   *
+   * \return false параметр в норме, true параметр не в норме
+   */
+  virtual bool checkBlock();
 
   /*!
    * \brief checkRestartResetCount

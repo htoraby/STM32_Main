@@ -97,53 +97,34 @@ void Protection::setCurrentParamProt()
   ksu.setValue(idValueParam_, valueParameter_);
 }
 
-bool Protection::checkTripSetPoint()
+// Заглушка виртуальной функции
+bool Protection::checkAlarm()
 {
   return false;
 }
 
-// Метод текущего значения отсительно уставки
-bool Protection::checkTripSetPoint(bool isHigher)
+bool Protection::isHigherLimit(float setpoint)
 {
-  // Если текущий параметр должен быть выше уставки
-  if (isHigher) {
-    // Если уставка больше текущего параметра
-    if (ksu.getValue(idTripSetpoint_) >= valueParameter_)
-      return 1;
-    else
-      return 0;
-  }
-  // Если текущий параметр должен быть ниже уставки
+  // Если текущий параметр больше уставки
+  if (valueParameter_ > setpoint)
+    return true;
   else
-  {
-    // Если уставка больше текущего параметра
-    if (ksu.getValue(idTripSetpoint_) >= valueParameter_)
-      return 0;
-    else
-      return 1;
-  }
+    return false;
 }
 
-// Метод проверки текущего значения отсительно уставки
-bool Protection::checkRestartSetPoint(bool limit)
+bool Protection::isLowerLimit(float setpoint)
 {
-  // Если текущий параметр должен быть выше уставки
-  if (limit) {
-    // Если уставка больше текущего параметра
-    if (restartSetpoint_ >= valueParameter_)
-      return 1;
-    else
-      return 0;
-  }
-  // Если текущий параметр должен быть ниже уставки
+  // Если текущий параметр меньше уставки
+  if (valueParameter_ < setpoint)
+    return true;
   else
-  {
-    // Если уставка больше текущего параметра
-    if (restartSetpoint_ >= valueParameter_)
-      return 0;
-    else
-      return 1;
-  }
+    return false;
+}
+
+// Заглушка виртуальной функции
+bool Protection::checkBlock()
+{
+  return false;
 }
 
 // Метод проверки истёк ли таймер сброса счётчиков АПВ защиты
@@ -163,16 +144,16 @@ void Protection::checkRestartResetCount()
 void Protection::taskProtection()
 {
   while(1) {
-    osDelay(10);
+    osDelay(5000);
 
     // Получаем уставки защиты
     getSetpointProt();
     // Получаем текущие параметры защиты
     getCurrentParamProt();
     // Определяем выполняется ли условие срабатывания защиты
-    trip_ = checkTripSetPoint();
+    alarm_ = checkAlarm();
     // Определяем есть ли блокирующий параметр
-    //block_ = checkRestartSetPoint(limit);
+    block_ = checkBlock();
     // Выполняем шаг автомата защиты
     automatProtection();
     // Сохраняем текущие параметры защиты
@@ -203,34 +184,34 @@ void Protection::automatProtection()
       }
       break;
 
-      // Состояние начала ожидания активации
+    // Состояние начала ожидания активации
     case PROTECTION_STATE_ACTIV_BEGIN:
       // Если станция остановлена
       if (!ksu.checkStopCCS()) {
-        // Переходим на состояние "ничегонеделанья"
+        // Переходим в состояние "ничегонеделанья"
         state_ = PROTECTION_STATE_OFF;
       }
       // Станция в работе
       else {
         // Фиксируем текущее время
         timer_ = ksu.getTime();
-        // Переходим на состояние ожидания активации защиты
+        // Переходим в состояние ожидания активации защиты
         state_ = PROTECTION_STATE_ACTIV_WAIT;
       }
       break;
 
-      // Состояние ожидания активации
+    // Состояние ожидания активации
     case PROTECTION_STATE_ACTIV_WAIT:
       // Если станция остановлена
       if (!ksu.checkStopCCS()) {
-        // Переходим на состояние "ничегонеделанья"
+        // Переходим в состояние "ничегонеделанья"
         state_ = PROTECTION_STATE_OFF;
       }
       // Станция в работе
       else {
         // Если задано время активации и время активации истекло
         if ((activDelay_) && (activDelay_ >= (ksu.getTime() - timer_))) {
-          // Переходим на состояние активированно
+          // Переходим в состояние активированно
           state_ =  PROTECTION_STATE_ACTIV;
         }
         else {
@@ -240,11 +221,11 @@ void Protection::automatProtection()
       }
       break;
 
-      // Состояние активации
+    // Состояние активации
     case PROTECTION_STATE_ACTIV:
       // Если станция остановлена
       if (!ksu.checkStopCCS()) {
-        // Переходим на состояние "ничегонеделанья"
+        // Переходим в состояние "ничегонеделанья"
         state_ = PROTECTION_STATE_OFF;
       }
       else {
@@ -253,16 +234,16 @@ void Protection::automatProtection()
       }
       break;
 
-      // Состояние работы защиты
+    // Состояние работы защиты
     case PROTECTION_STATE_WORK:
       // Если станция остановлена
       if (!ksu.checkStopCCS()) {
-        // Переходим на состояние "ничегонеделанья"
+        // Переходим в состояние "ничегонеделанья"
         state_ = PROTECTION_STATE_OFF;
       }
       else {
         // Если контролируемый параметр не в норме
-        if (trip_) {
+        if (alarm_) {
           // Переходим в задержку срабатывания
           state_ = PROTECTION_STATE_REACTION_BEGIN;
         }
@@ -273,19 +254,19 @@ void Protection::automatProtection()
       }
       break;
 
-      // Состояние начала задержки срабатывания
+    // Состояние начала задержки срабатывания
     case  PROTECTION_STATE_REACTION_BEGIN:
       // Если станция остановлена
       if (!ksu.checkStopCCS()) {
-        // Переходим на состояние "ничегонеделанья"
+        // Переходим в состояние "ничегонеделанья"
         state_ = PROTECTION_STATE_OFF;
       }
       else {
         // Если контролируемый параметр не в норме
-        if (trip_) {
+        if (alarm_) {
           // Фиксируем текущее время
           timer_ = ksu.getTime();
-          // Переходим на состояние ожидания срабатывания
+          // Переходим в состояние ожидания срабатывания
           state_ = PROTECTION_STATE_REACTION_WAIT;
         }
         else {
@@ -294,20 +275,20 @@ void Protection::automatProtection()
         }
       }
 
-      // Состояние ожидания задержки срабатывания
+    // Состояние ожидания задержки срабатывания
     case  PROTECTION_STATE_REACTION_WAIT:
       // Если станция остановлена
       if (!ksu.checkStopCCS()) {
-        // Переходим на состояние "ничегонеделанья"
+        // Переходим в состояние "ничегонеделанья"
         state_ = PROTECTION_STATE_OFF;
       }
       // Станция в работе
       else {
         // Если контролируемый параметр не в норме
-        if (trip_) {
+        if (alarm_) {
           // Если задано время срабатывания и время срабатывания истекло
           if ((tripDelay_) && (tripDelay_ >= (ksu.getTime() - timer_))) {
-            // Переходим на состояние сработало
+            // Переходим в состояние сработало
             state_ =  PROTECTION_STATE_REACTION;
           }
           else {
@@ -322,17 +303,18 @@ void Protection::automatProtection()
       }
       break;
 
-      // Состояние срабатывания
+    // Состояние срабатывания
     case  PROTECTION_STATE_REACTION:
       // Если станция остановлена
       if (!ksu.checkStopCCS()) {
-        // Переходим на состояние "ничегонеделанья"
+        // Переходим в состояние "ничегонеделанья"
         state_ = PROTECTION_STATE_OFF;
       }
       else {
         // Если контролируемый параметр не в норме
-        if (trip_) {
+        if (alarm_) {
           // TODO: Message Срабатывания защиты
+          logEvent.add(ProtectCode, AutoType, ProtActivatedId, tripSetpoint_, valueParameter_);
           state_ = PROTECTION_STATE_FAILURE;
         }
         else {
@@ -341,7 +323,7 @@ void Protection::automatProtection()
       }
       break;
 
-      // Состояние формирования команды останова
+    // Состояние формирования команды останова
     case PROTECTION_STATE_FAILURE_BEGIN:
       // TODO: Message Команда останов
       state_ = PROTECTION_STATE_FAILURE_WAIT;
@@ -349,12 +331,12 @@ void Protection::automatProtection()
 
       // Состояние ожидания останова
     case  PROTECTION_STATE_FAILURE_WAIT:
-      // Переходим на состояние остановились, принимаем дальнейшие решения
+      // Переходим в состояние остановились, принимаем дальнейшие решения
       state_ = PROTECTION_STATE_FAILURE;
       break;
 
 
-      // Состояние принятия решения дальнейших действий
+    // Состояние принятия решения дальнейших действий
     case  PROTECTION_STATE_FAILURE:
       // Если СУ в блокировке или не автоматическом режиме
       if (!ksu.checkBlockCCS() || ksu.checkAutoControlMode()) {
@@ -372,8 +354,8 @@ void Protection::automatProtection()
       break;
 
 
-      // Состояние начала отсчёта АПВ
-      // В это состояние попадаем если разрешены АПВ по защите
+    // Состояние начала отсчёта АПВ
+    // В это состояние попадаем если разрешены АПВ по защите
     case  PROTECTION_STATE_RESTART_BEGIN:
       // Если СУ в блокировке или не автоматическом режиме
       if (!ksu.checkBlockCCS() || ksu.checkAutoControlMode()) {
@@ -384,7 +366,7 @@ void Protection::automatProtection()
         // Если СУ в работе и автоматическом режиме
         if ((!ksu.checkWorkCCS()) && (!ksu.checkAutoControlMode())) {
           // TODO: Message Пуск
-          // Переходим на состояние активации защиты
+          // Переходим в состояние активации защиты
           state_ = PROTECTION_STATE_ACTIV_BEGIN;
         }
         else {
@@ -395,8 +377,8 @@ void Protection::automatProtection()
       }
       break;
 
-      // Состояние ожидания АПВ
-      // Здесь происходит отсчёт времени таймера АПВ
+    // Состояние ожидания АПВ
+    // Здесь происходит отсчёт времени таймера АПВ
     case  PROTECTION_STATE_RESTART_WAIT:
       // Если СУ в блокировке или не автоматическом режиме
       if (!ksu.checkBlockCCS() || ksu.checkAutoControlMode()) {
@@ -407,13 +389,13 @@ void Protection::automatProtection()
         // Если СУ в работе и автоматическом режиме
         if ((!ksu.checkWorkCCS()) && (!ksu.checkAutoControlMode())) {
           // TODO: Message Пуск
-          // Переходим на состояние активации защиты
+          // Переходим в состояние активации защиты
           state_ = PROTECTION_STATE_ACTIV_BEGIN;
         }
         else {
           // Если задано время АПВ и время АПВ истекло
           if ((restartDelay_) && (restartReset_ >= (ksu.getTime() - timer_))) {
-            // Переходим на состояние проверки блокирующего параметра
+            // Переходим в состояние проверки блокирующего параметра
             state_ =  PROTECTION_STATE_RESTART_BLOCK;
           }
           // Время АПВ не истекло, остаёмся в этом состоянии
@@ -424,7 +406,7 @@ void Protection::automatProtection()
       }
       break;
 
-      // Состояние проверки блокирующего параметра
+    // Состояние проверки блокирующего параметра
     case PROTECTION_STATE_RESTART_BLOCK:
       // Если СУ в блокировке или не автоматическом режиме
       if (!ksu.checkBlockCCS() || ksu.checkAutoControlMode()) {
@@ -435,7 +417,7 @@ void Protection::automatProtection()
         // Если СУ в работе и автоматическом режиме
         if ((!ksu.checkWorkCCS()) && (!ksu.checkAutoControlMode())) {
           // TODO: Message Пуск
-          // Переходим на состояние активации защиты
+          // Переходим в состояние активации защиты
           state_ = PROTECTION_STATE_ACTIV_BEGIN;
         }
         else {
@@ -451,7 +433,7 @@ void Protection::automatProtection()
       }
       break;
 
-      // Состояние ожидания пока исчезнет блокирующий параметр
+    // Состояние ожидания пока исчезнет блокирующий параметр
     case  PROTECTION_STATE_RESTART_BLOCK_WAIT:
       // Если СУ в блокировке или не автоматическом режиме
       if (!ksu.checkBlockCCS() || ksu.checkAutoControlMode()) {
@@ -462,7 +444,7 @@ void Protection::automatProtection()
         // Если СУ в работе и автоматическом режиме
         if ((!ksu.checkWorkCCS()) && (!ksu.checkAutoControlMode())) {
           // TODO: Message Пуск
-          // Переходим на состояние активации защиты
+          // Переходим в состояние активации защиты
           state_ = PROTECTION_STATE_ACTIV_BEGIN;
         }
         else {
@@ -478,7 +460,7 @@ void Protection::automatProtection()
       }
       break;
 
-      // Состояние АПВ
+    // Состояние АПВ
     case  PROTECTION_STATE_RESTART:
       // Если СУ в блокировке или не автоматическом режиме
       if (!ksu.checkBlockCCS() || ksu.checkAutoControlMode()) {
@@ -490,30 +472,30 @@ void Protection::automatProtection()
         // Если СУ в работе и автоматическом режиме
         if ((!ksu.checkWorkCCS()) && (!ksu.checkAutoControlMode())) {
           // TODO: Message Пуск
-          // Переходим на состояние активации защиты
+          // Переходим в состояние активации защиты
           state_ = PROTECTION_STATE_ACTIV_BEGIN;
         }
         else {
           // TODO: Message Пуск по АПВ
-          // Переходим на состояние активации защиты
+          // Переходим в состояние активации защиты
           state_ = PROTECTION_STATE_ACTIV_BEGIN;
         }
       }
       break;
 
-      // Состояние стоп
+    // Состояние стоп
     case  PROTECTION_STATE_STOP:
 
       break;
 
-      // Состояние блокировка
+    // Состояние блокировка
     case  PROTECTION_STATE_BLOCK:
       // TODO: Message Блокировка защита
-      // Переходим на состояние "ничегонеделанья"
+      // Переходим в состояние "ничегонеделанья"
       state_ = PROTECTION_STATE_OFF;
       break;
 
-      // Неизвестное состояние
+    // Неизвестное состояние
     default:
 
       break;

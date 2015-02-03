@@ -11,14 +11,24 @@ public:
   ProtectionOverVoltageInput();
   ~ProtectionOverVoltageInput();
 
+  /*!
+   * \brief Инициализация автомата защиты
+   */
   void init();
 
   /*!
    * \brief Метод проверки условия срабатывания защиты
    *
-   * \return 0 параметр в норме, 1 параметр не в норме
+   * \return false параметр в норме, true параметр не в норме
    */
-  bool checkTripSetPoint();
+  bool checkAlarm();
+
+  /*!
+   * \brief Метод проверки выполнения условия АПВ
+   *
+   * \return false параметр в норме, true параметр не в норме
+   */
+  virtual bool checkBlock();
 
 };
 

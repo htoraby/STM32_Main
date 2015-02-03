@@ -10,7 +10,7 @@
 #include "temp_sensor.h"
 #include "adc_ext.h"
 #include "host.h"
-#include "log_main.h"
+#include "user_main.h"
 
 static void testThread(void *argument);
 
@@ -48,7 +48,7 @@ uint8_t bufferRx[4096];
 void testInit()
 {
   /* Create Test thread */
-  osThreadDef(Test_Thread, testThread, osPriorityNormal, 0, 12 * configMINIMAL_STACK_SIZE);
+  osThreadDef(Test_Thread, testThread, osPriorityNormal, 0, 6 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(Test_Thread), NULL);
 
 #if (TEST_UART == 1)
@@ -59,7 +59,7 @@ void testInit()
 #if (TEST_HOST_UART == 1)
   osThreadDef(Test_HostUartRxThread, testHostUartRxThread, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(Test_HostUartRxThread), NULL);
-  osThreadDef(Test_HostUartTxThread, testHostUartTxThread, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
+  osThreadDef(Test_HostUartTxThread, testHostUartTxThread, osPriorityNormal, 0, 3 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(Test_HostUartTxThread), NULL);
 #endif
 }
@@ -72,11 +72,13 @@ static int testCmd(int argc, char *argv[])
         return 1;
       }
       if (!strcmp(argv[i], "tasklist")) {
-        osDelay(1000);
         osThreadList((int8_t*)bufferTx);
 
-        static uint8_t buffer = '\n';
-        uart_writeData(HOST_UART_TEST, &buffer, 1);
+        static uint8_t buffer[UART_BUF_SIZE*2];
+        int size = xPortGetFreeHeapSize();
+        sprintf((char*)buffer, "\n%d\n", size);
+        uart_writeData(HOST_UART_TEST, buffer, strlen((char*)buffer));
+
         uart_writeData(HOST_UART_TEST, bufferTx, strlen((char*)bufferTx));
 
         return 0;
@@ -273,15 +275,17 @@ static void testHostUartTxThread(void * argument)
       if (osSemaphoreWait(semaphoreUart, 5) == osEventTimeout) {
         memset(buffer, 0, UART_BUF_SIZE);
         sizePkt = uart_readData(HOST_UART_TEST, buffer);
+
+        memcpy(bufferRx, buffer, UART_BUF_SIZE);
+
         int argc = 0;
         char *argv[20];
         char *str;
-        str = strtok((char*)buffer, " ");
+        str = strtok((char*)bufferRx, " ");
         while (str != NULL) {
           argv[argc++] = str;
           str = strtok (NULL, " ");
         }
-
         if (testCmd(argc, argv))
           uart_writeData(uart1, buffer, sizePkt);
 
