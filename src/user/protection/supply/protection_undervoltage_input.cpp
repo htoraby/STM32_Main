@@ -2,7 +2,10 @@
 
 ProtectionUnderVoltageInput::ProtectionUnderVoltageInput()
 {
-
+  protActivatedEventId_ = UnderVoltInProtActivId;
+  apvEventId_ = UnderVoltInApvId;
+  apvDisabledEventId_ = UnderVoltInApvDisabledId;
+  protBlockedEventId_ = UnderVoltInProtBlockedId;
 }
 
 ProtectionUnderVoltageInput::~ProtectionUnderVoltageInput()

@@ -2,7 +2,10 @@
 
 ProtectionOverVoltageInput::ProtectionOverVoltageInput()
 {
-
+  protActivatedEventId_ = OverVoltInProtActivId;
+  apvEventId_ = OverVoltInApvId;
+  apvDisabledEventId_ = OverVoltInApvDisabledId;
+  protBlockedEventId_ = OverVoltInProtBlockedId;
 }
 
 ProtectionOverVoltageInput::~ProtectionOverVoltageInput()

@@ -111,6 +111,12 @@ public:
   /// Флаг запрещающего параметра
   bool block_;
 
+  /// Индексы событий для записи в журнал
+  uint16_t protActivatedEventId_;
+  uint16_t apvEventId_;
+  uint16_t apvDisabledEventId_;
+  uint16_t protBlockedEventId_;
+
   /// Идентификатор задачи
   osThreadId threadId_;
 

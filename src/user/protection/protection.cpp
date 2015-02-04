@@ -314,7 +314,7 @@ void Protection::automatProtection()
         // Если контролируемый параметр не в норме
         if (alarm_) {
           // TODO: Message Срабатывания защиты
-          logEvent.add(ProtectCode, AutoType, ProtActivatedId, tripSetpoint_, valueParameter_);
+          logEvent.add(ProtectCode, AutoType, protActivatedEventId_, tripSetpoint_, valueParameter_);
           state_ = PROTECTION_STATE_FAILURE;
         }
         else {
@@ -424,6 +424,7 @@ void Protection::automatProtection()
           // Если есть блокирующий параметр
           if (block_) {
             // TODO: Message АПВ запрещен
+            logEvent.add(ProtectCode, AutoType, apvDisabledEventId_);
             state_ = PROTECTION_STATE_RESTART_BLOCK_WAIT;
           }
           else {
@@ -477,6 +478,7 @@ void Protection::automatProtection()
         }
         else {
           // TODO: Message Пуск по АПВ
+          logEvent.add(ProtectCode, AutoType, apvEventId_);
           // Переходим в состояние активации защиты
           state_ = PROTECTION_STATE_ACTIV_BEGIN;
         }
@@ -490,7 +492,8 @@ void Protection::automatProtection()
 
     // Состояние блокировка
     case  PROTECTION_STATE_BLOCK:
-      // TODO: Message Блокировка защита
+      // TODO: Message Блокировка по защите
+      logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
       // Переходим в состояние "ничегонеделанья"
       state_ = PROTECTION_STATE_OFF;
       break;

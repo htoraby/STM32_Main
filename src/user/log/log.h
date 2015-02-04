@@ -48,9 +48,15 @@ typedef enum {
  *
 */
 typedef enum {
-  RunId,
-  ProtActivatedId, //!< "Сработала защита: Превышение питания сети"
-
+  RunId = 300,
+  OverVoltInProtActivId,     //!< "Сработала защита: Превышение питания сети"
+  UnderVoltInProtActivId,    //!< "Сработала защита: Снижение питания сети"
+  OverVoltInApvId,           //!< "АПВ по защите: Превышение питания сети"
+  UnderVoltInApvId,          //!< "АПВ по защите: Снижение питания сети"
+  OverVoltInApvDisabledId,   //!< "АПВ запрещен: Превышение питания сети"
+  UnderVoltInApvDisabledId,  //!< "АПВ запрещен: Снижение питания сети"
+  OverVoltInProtBlockedId,   //!< "Блокировка по защите: Превышение питания сети"
+  UnderVoltInProtBlockedId,  //!< "Блокировка по защите: Снижение питания сети"
 
 } EventId;
 
