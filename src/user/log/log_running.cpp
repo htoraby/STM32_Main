@@ -77,7 +77,7 @@ void LogRunning::add()
       //  *(float*)(buffer+4+j*32) = ;
       //  *(float*)(buffer+8+j*32) = ;
       //  *(float*)(buffer+12+j*32) = ;
-      *(float*)(buffer+16+j*32) = vsd.getValue(VSD_COS_PHI_MOTOR);
+      *(float*)(buffer+16+j*32) = vsd->getValue(VSD_COS_PHI_MOTOR);
       *(float*)(buffer+20+j*32) = uValue[0 + j*3 + i*24];
       *(float*)(buffer+24+j*32) = uValue[1 + j*3 + i*24];
       *(float*)(buffer+28+j*32) = uValue[2 + j*3 + i*24];

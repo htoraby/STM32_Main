@@ -1684,7 +1684,7 @@ void VsdNovomet::initModbusParameters()
       0,						// Флаг
       0                        // Считываемое значение
   };
-};
+}
 
 /*!
  \brief Конструктор класса VsdNovomet
@@ -1693,7 +1693,19 @@ void VsdNovomet::initModbusParameters()
 */
 VsdNovomet::VsdNovomet()
 {
+  initParameters();
+  initModbusParameters();
 
+  // Создание объекта протокола связи с утройством
+  DM = new DeviceModbus(ModbusParameters, 94,
+                        uart4, 115200, 8, 1, 0, 1,
+                        "ProtocolVsdNovomet",
+                        &messageUpdateParameters_);
+
+  // Создание очереди обновления параметров
+  createMessageUpdateParameters();
+  // Создание задачи обновления параметров
+  createThread("UpdateParametersVsdNovomet");
 }
 
 VsdNovomet::~VsdNovomet()
@@ -1701,65 +1713,47 @@ VsdNovomet::~VsdNovomet()
   // TODO Auto-generated destructor stub
 }
 
-void VsdNovomet::init()
-{
-  initParameters();
-  initModbusParameters();
-
-  // TODO: Необходимо превевсти в порядок!
-//  // Создание задачи обновления параметров
-//  createThread("UpdateParametersVsdNovomet");
-//  // Создание очереди обновления параметров
-//  createMessageUpdateParameters();
-//  // Создание объекта протокола связи с утройством
-//  DM = new DeviceModbus(ModbusParameters,         // *MapRegisters
-//                        94,                       // Quantity
-//                        3,                        // PortName
-//                        115200,                   // BaudRate
-//                        8,                        // DataBits
-//                        1,                        // StopBits
-//                        0,                        // Parity
-//                        1,                        // Address
-//                        "ProtocolVsdNovomet",     // Название задачи
-//                        &messageUpdateParameters_);// Название очереди
-}
-
 // Метод проверки и обновления параметров устройства
-void VsdNovomet::updateParameters(void)
+void VsdNovomet::updateParameters()
 {
   float Value;
-  // Проверяем есть ли новые значения параметров от устройства
-  int UpdateParamID = getMessageUpdateParameters();
-  // По ID параметра находим параметр и обновляем значение
-  if (UpdateParamID) {
-    // Получаем все поля параметра по ID
-    ModbusParameter Param = DM->getFieldAll(DM->getIndexAtID(UpdateParamID));
-    switch (Param.TypeData) {
-    case TYPE_DATA_INT16:
-      Value = (float)Param.Value.tdInt16[0];
-      break;
-    case TYPE_DATA_UINT16:
-      Value = (float)Param.Value.tdUint16[0];
-      break;
-    case  TYPE_DATA_INT32:
-      Value = (float)Param.Value.tdInt32;
-      break;
-    case  TYPE_DATA_UINT32:
-      Value = (float)Param.Value.tdUint32;
-      break;
-    case  TYPE_DATA_FLOAT:
-      Value = (float)Param.Value.tdFloat;
-      break;
-    default:
-      break;
+
+  while (1) {
+    osDelay(1);
+
+    // Проверяем есть ли новые значения параметров от устройства
+    int UpdateParamID = getMessageUpdateParameters();
+    // По ID параметра находим параметр и обновляем значение
+    if (UpdateParamID) {
+      // Получаем все поля параметра по ID
+      ModbusParameter Param = DM->getFieldAll(DM->getIndexAtID(UpdateParamID));
+      switch (Param.TypeData) {
+      case TYPE_DATA_INT16:
+        Value = (float)Param.Value.tdInt16[0];
+        break;
+      case TYPE_DATA_UINT16:
+        Value = (float)Param.Value.tdUint16[0];
+        break;
+      case  TYPE_DATA_INT32:
+        Value = (float)Param.Value.tdInt32;
+        break;
+      case  TYPE_DATA_UINT32:
+        Value = (float)Param.Value.tdUint32;
+        break;
+      case  TYPE_DATA_FLOAT:
+        Value = (float)Param.Value.tdFloat;
+        break;
+      default:
+        break;
+      }
+      Value = Value * Param.Scale;
+      Value = Value / Param.Coefficient;
+      Value = (Value  - (Units[Param.Physic][Param.Unit][1]))/(Units[Param.Physic][Param.Unit][0]);
+      setFieldValue(UpdateParamID, Value);
     }
-    Value = Value * Param.Scale;
-    Value = Value / Param.Coefficient;
-    Value = (Value  - (Units[Param.Physic][Param.Unit][1]))/(Units[Param.Physic][Param.Unit][0]);
-    setFieldValue(UpdateParamID, Value);
-  }
-  else {
-    return;
+    else {
+
+    }
   }
 }
 

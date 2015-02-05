@@ -11,8 +11,10 @@
 #include "modbus_master.h"
 #include "uart.h"
 
-// КЛАСС MODBUS MASTER ДЛЯ ПОСЛЕДОВАТЕЛЬНЫХ ПОРТОВ
-// Реализует некоторые настройки последовательного протокола
+/*!
+ * \brief Класс modbus master для последовательных портов
+ *  Реализует некоторые настройки последовательного протокола
+ */
 class ModbusMasterSerial: public ModbusMaster
 {
 	public:
@@ -35,11 +37,8 @@ class ModbusMasterSerial: public ModbusMaster
 		// Parity - контроль четности
 		// Возвращает:
 		// RETURN_OK в случае успешного завершения или код ошибки
-		int openProtocol(	int PortName,
-		                    long BaudRate,
-		                    int DataBits,
-		                    int StopBits,
-		                    int Parity);
+    int openProtocol(int portName, long baudRate, int dataBits,
+                     int stopBits, int parity);
 
 		// МЕТОД ПРОВЕРКИ ОТКРЫТ ЛИ ПРОТОКОЛ
 		// Наследуется из classModbusMaster
@@ -60,13 +59,6 @@ class ModbusMasterSerial: public ModbusMaster
      * \return Количество принятых байт
      */
     int reseiveAnswer(unsigned char *Buf);
-
-    /*!
-     * \brief transmissionSemaphore Метод передачи семафора задачи циклического
-     * опроса параметров
-     * \param semaphoreId - идентификатор семафора
-     */
-    void transmissionSemaphore(osSemaphoreId semaphoreId);
 
 	private:
     int numberComPort_;

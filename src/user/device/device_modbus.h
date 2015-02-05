@@ -243,7 +243,7 @@ public:
    \brief Метод циклического опроса устройства по Modbus и/или внеочередной
     записи и/или чтения параметра
   */
-  void exchangeCycle(void);
+  void exchangeTask(void);
 
   /*!
    * \brief putTurn метод добавления элемента в очередь
@@ -294,7 +294,7 @@ private:
 
    osMessageQId messageUpdateID_;
 
-   ModbusParameter modbusParameters_[];
+   ModbusParameter *modbusParameters_;
 
   /*!
    * \brief Метод получения количества регистров в карте регистров
@@ -320,7 +320,7 @@ private:
   */
   void setDeviceAddress(int Address);
 
-  ModbusMasterSerial *MMS;
+  ModbusMasterSerial *mms_;
 
 };
 

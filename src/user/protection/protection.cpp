@@ -2,7 +2,7 @@
 
 static void protectionTask(void *p)
 {
-  (static_cast<Protection*>(p))->taskProtection();
+  (static_cast<Protection*>(p))->task();
 }
 
 // Конструктор класса защит
@@ -141,7 +141,7 @@ void Protection::checkRestartResetCount()
 }
 
 // Метод задача защиты
-void Protection::taskProtection()
+void Protection::task()
 {
   while(1) {
     osDelay(5000);

@@ -12,9 +12,9 @@
 
 extern Parameters parameters;
 extern Ccs ksu;
-extern VsdNovomet vsd;
-extern Tms tms;
-extern Em em;
+extern VsdNovomet *vsd;
+extern Tms *tms;
+extern Em *em;
 
 /*!
  * \brief Инициализация пользовательских задач и объектов

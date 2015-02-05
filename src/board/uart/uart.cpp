@@ -4,11 +4,12 @@
 #include "string.h"
 
 UART_Def uarts[uartMax];
-static void uart_setRts(uartNum num, GPIO_PinState value);
+static void uartSetRts(uartNum num, GPIO_PinState value);
 
-int uart_init(uartNum num, uint32_t baudRate, uint32_t parity, uint32_t stopBits)
+StatusType uartInit(uartNum num, uint32_t baudRate, uint32_t parity, uint32_t stopBits)
 {
-  HAL_StatusTypeDef status = HAL_OK;
+  StatusType status = StatusError;
+
   UART_HandleTypeDef *uartX = &uarts[num].uart;
   switch (num) {
     case uart1:
@@ -30,7 +31,7 @@ int uart_init(uartNum num, uint32_t baudRate, uint32_t parity, uint32_t stopBits
       uartX->Instance = UART7;
       break;
     default:
-      return -1;
+      return status;
   }
 
   uartX->Init.BaudRate = baudRate;
@@ -41,16 +42,19 @@ int uart_init(uartNum num, uint32_t baudRate, uint32_t parity, uint32_t stopBits
   uartX->Init.HwFlowCtl = UART_HWCONTROL_NONE;
   uartX->Init.OverSampling = UART_OVERSAMPLING_16;
 
-  status = HAL_UART_Init(uartX);
-  if (status == HAL_OK) {
+  if (HAL_UART_Init(uartX) == HAL_OK) {
     // Разрешение прерываний
-    status = HAL_UART_Receive_IT(uartX, uarts[num].rxBuffer, UART_BUF_SIZE);
+    if (HAL_UART_Receive_IT(uartX, uarts[num].rxBuffer, UART_BUF_SIZE) == HAL_OK) {
+      uarts[num].semaphoreId = osSemaphoreCreate(NULL, 1);
+      osSemaphoreWait(uarts[num].semaphoreId, 0);
+      status = StatusOk;
+    }
   }
 
   return status;
 }
 
-HAL_StatusTypeDef uart_close(uartNum num)
+HAL_StatusTypeDef uartClose(uartNum num)
 {
   UART_HandleTypeDef *uartX = &uarts[num].uart;
   /* Process Locked */
@@ -258,12 +262,12 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
   }
 }
 
-void uart_setSemaphoreId(uartNum num, osSemaphoreId semaphoreId)
+osSemaphoreId uartGetSemaphoreId(uartNum num)
 {
-  uarts[num].semaphoreId = semaphoreId;
+  return uarts[num].semaphoreId;
 }
 
-inline uartNum uart_getNum(UART_HandleTypeDef *huart)
+inline uartNum uartGetNum(UART_HandleTypeDef *huart)
 {
   if (huart->Instance == USART2) {
     return uart2;
@@ -280,12 +284,12 @@ inline uartNum uart_getNum(UART_HandleTypeDef *huart)
   }
 }
 
-int uart_getRxCount(uartNum num)
+int uartGetRxCount(uartNum num)
 {
   return uarts[num].uart.RxXferCount;
 }
 
-int uart_readData(uartNum num, uint8_t *data)
+int uartReadData(uartNum num, uint8_t *data)
 {
   UART_HandleTypeDef *uartX = &uarts[num].uart;
 
@@ -298,16 +302,17 @@ int uart_readData(uartNum num, uint8_t *data)
   return count;
 }
 
-HAL_StatusTypeDef uart_writeData(uartNum num, uint8_t *data, int count,
-                                 uint32_t timeout)
+StatusType uartWriteData(uartNum num, uint8_t *data, int count,
+                         uint32_t timeout)
 {
+  StatusType status = StatusError;
   memcpy(uarts[num].txBuffer, data, count);
 
-  uart_setRts(num, GPIO_PIN_SET);
-  HAL_StatusTypeDef status = HAL_UART_Transmit(&uarts[num].uart,
-                                               uarts[num].txBuffer,
-                                               count, timeout);
-  uart_setRts(num, GPIO_PIN_RESET);
+  uartSetRts(num, GPIO_PIN_SET);
+  if (HAL_UART_Transmit(&uarts[num].uart, uarts[num].txBuffer, count, timeout) == HAL_OK)
+    status = StatusOk;
+  uartSetRts(num, GPIO_PIN_RESET);
+
   return status;
 }
 
@@ -318,7 +323,7 @@ HAL_StatusTypeDef uart_writeData(uartNum num, uint8_t *data, int count,
 */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-  osSemaphoreId semaphoreId = uarts[uart_getNum(huart)].semaphoreId;
+  osSemaphoreId semaphoreId = uarts[uartGetNum(huart)].semaphoreId;
   if (semaphoreId == NULL)
     return;
   osSemaphoreRelease(semaphoreId);
@@ -340,7 +345,7 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
  \param num - номер порта (@ref uartNum)
  \param value - значение на выходе 0 или 1
 */
-static void uart_setRts(uartNum num, GPIO_PinState value)
+static void uartSetRts(uartNum num, GPIO_PinState value)
 {
   if (num == uart2) {
     HAL_GPIO_WritePin(GPIOH, GPIO_PIN_5, value);

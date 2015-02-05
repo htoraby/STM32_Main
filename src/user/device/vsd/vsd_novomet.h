@@ -100,13 +100,11 @@ class VsdNovomet: public Vsd
         VsdNovomet();
         virtual ~VsdNovomet();
 
-        void init();
-
         void initModbusParameters();
 
         DeviceModbus *DM;
 
-        void updateParameters(void);
+        void updateParameters();
 
         /*!
          * \brief checkInvertorStatus
@@ -118,7 +116,7 @@ class VsdNovomet: public Vsd
 
         /*!
          * \brief startVSD
-         * МЕТОД ЗАПУСКА ЧРП Новомет
+         * Метод запуска ЧРП Новомет
          * Для управления запусками и остановами, и для контроля состояния ПЧ
          * используется регистр управления IREG_INVERTOR_CONTROL и два регистра
          * состояния IREG_INVERTOR_STATUS и IREG_INVERTOR_EXT_STATUS.

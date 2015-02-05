@@ -44,15 +44,15 @@ void Parameters::startSave()
 void Parameters::save()
 {
   ksu.saveParameters();
-  vsd.saveParameters();
-  tms.saveParameters();
-  em.readParameters();
+  vsd->saveParameters();
+  tms->saveParameters();
+  em->saveParameters();
 }
 
 void Parameters::read()
 {
   ksu.readParameters();
-  vsd.readParameters();
-  tms.readParameters();
-  em.readParameters();
+  vsd->readParameters();
+  tms->readParameters();
+  em->readParameters();
 }

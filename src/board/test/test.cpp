@@ -52,15 +52,15 @@ void testInit()
   osThreadCreate(osThread(Test_Thread), NULL);
 
 #if (TEST_UART == 1)
-  osThreadDef(Test_Uart_Thread, testUartThread, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
-  osThreadCreate(osThread(Test_Uart_Thread), NULL);
+  osThreadDef(Test_Uart, testUartThread, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(Test_Uart), NULL);
 #endif
 
 #if (TEST_HOST_UART == 1)
-  osThreadDef(Test_HostUartRxThread, testHostUartRxThread, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
-  osThreadCreate(osThread(Test_HostUartRxThread), NULL);
-  osThreadDef(Test_HostUartTxThread, testHostUartTxThread, osPriorityNormal, 0, 3 * configMINIMAL_STACK_SIZE);
-  osThreadCreate(osThread(Test_HostUartTxThread), NULL);
+  osThreadDef(Test_HostUartRx, testHostUartRxThread, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(Test_HostUartRx), NULL);
+  osThreadDef(Test_HostUartTx, testHostUartTxThread, osPriorityNormal, 0, 3 * configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(Test_HostUartTx), NULL);
 #endif
 }
 
@@ -77,9 +77,9 @@ static int testCmd(int argc, char *argv[])
         static uint8_t buffer[UART_BUF_SIZE*2];
         int size = xPortGetFreeHeapSize();
         sprintf((char*)buffer, "\n%d\n", size);
-        uart_writeData(HOST_UART_TEST, buffer, strlen((char*)buffer));
+        uartWriteData(HOST_UART_TEST, buffer, strlen((char*)buffer));
 
-        uart_writeData(HOST_UART_TEST, bufferTx, strlen((char*)bufferTx));
+        uartWriteData(HOST_UART_TEST, bufferTx, strlen((char*)bufferTx));
 
         return 0;
       }
@@ -236,17 +236,15 @@ static void testHostUartRxThread(void * argument)
   int sizePkt;
   static uint8_t buffer[UART_BUF_SIZE];
 
-  osSemaphoreId semaphoreUart = osSemaphoreCreate(NULL, 1);
-  osSemaphoreWait(semaphoreUart, 0);
-  uart_setSemaphoreId(uart1, semaphoreUart);
-  uart_init(uart1, 115200);
+  uartInit(uart1, 115200);
+  osSemaphoreId semaphoreUart = uartGetSemaphoreId(uart1);
 
   while(1) {
     osSemaphoreWait(semaphoreUart, osWaitForever);
     while (1) {
       if (osSemaphoreWait(semaphoreUart, 5) == osEventTimeout) {
-        sizePkt = uart_readData(uart1, buffer);
-        uart_writeData(HOST_UART_TEST, buffer, sizePkt);
+        sizePkt = uartReadData(uart1, buffer);
+        uartWriteData(HOST_UART_TEST, buffer, sizePkt);
 
         countByte = 0;
         break;
@@ -264,17 +262,15 @@ static void testHostUartTxThread(void * argument)
   int sizePkt;
   static uint8_t buffer[UART_BUF_SIZE];
 
-  osSemaphoreId semaphoreUart = osSemaphoreCreate(NULL, 1);
-  osSemaphoreWait(semaphoreUart, 0);
-  uart_setSemaphoreId(HOST_UART_TEST, semaphoreUart);
-  uart_init(HOST_UART_TEST, 115200);
+  uartInit(HOST_UART_TEST, 115200);
+  osSemaphoreId semaphoreUart = uartGetSemaphoreId(HOST_UART_TEST);
 
   while(1) {
     osSemaphoreWait(semaphoreUart, osWaitForever);
     while (1) {
       if (osSemaphoreWait(semaphoreUart, 5) == osEventTimeout) {
         memset(buffer, 0, UART_BUF_SIZE);
-        sizePkt = uart_readData(HOST_UART_TEST, buffer);
+        sizePkt = uartReadData(HOST_UART_TEST, buffer);
 
         memcpy(bufferRx, buffer, UART_BUF_SIZE);
 
@@ -287,7 +283,7 @@ static void testHostUartTxThread(void * argument)
           str = strtok (NULL, " ");
         }
         if (testCmd(argc, argv))
-          uart_writeData(uart1, buffer, sizePkt);
+          uartWriteData(uart1, buffer, sizePkt);
 
         countByte = 0;
         break;

@@ -3,19 +3,21 @@
 
 Parameters parameters;
 Ccs ksu;
-VsdNovomet vsd;
-Tms tms;
-Em em;
+VsdNovomet *vsd;
+Tms *tms;
+Em *em;
 
 void userInit()
 {
   logInit();
   hostInit();
 
-  vsd.init();
+  vsd = new VsdNovomet();
+  tms = new Tms();
+  em = new Em();
 
   parameters.init();
-  protectionInit();
 
+  protectionInit();
 }
 

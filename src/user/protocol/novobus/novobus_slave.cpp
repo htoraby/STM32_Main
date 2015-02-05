@@ -3,17 +3,11 @@
 
 static void novobusSlaveTask(void *p)
 {
-  (static_cast<NovobusSlave*>(p))->exchangeCycle();
+  (static_cast<NovobusSlave*>(p))->exchangeTask();
 }
 
 NovobusSlave::NovobusSlave()
 {
-  // Создаём задачу Novobus slave
-  // Заполняем структуру с параметрами задачи
-  osThreadDef_t t = {"novobusSlave", novobusSlaveTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
-  // Создаём задачу
-  threadId_ = osThreadCreate(&t, this);
-
   // Создаём очередь сообщений событий (надписей на дисплее)
   osMessageQDef(MessageEventSPI, 100, uint32_t);
   messageEventSPI_ = osMessageCreate (osMessageQ(MessageEventSPI), NULL);
@@ -21,6 +15,12 @@ NovobusSlave::NovobusSlave()
   // Создаём очередь сообщений параметров для записи
   osMessageQDef(MessageParamSPI, 100, uint32_t);
   messageParamSPI_ = osMessageCreate (osMessageQ(MessageParamSPI), NULL);
+
+  // Создаём задачу Novobus slave
+  // Заполняем структуру с параметрами задачи
+  osThreadDef_t t = {"novobusSlave", novobusSlaveTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
+  // Создаём задачу
+  threadId_ = osThreadCreate(&t, this);
 }
 
 NovobusSlave::~NovobusSlave()
@@ -28,7 +28,7 @@ NovobusSlave::~NovobusSlave()
 
 }
 
-void NovobusSlave::exchangeCycle(void)
+void NovobusSlave::exchangeTask(void)
 {
   osSemaphoreId semaphoreId = getHostSemaphore();
   // Бесконечный цикл
@@ -92,12 +92,13 @@ void NovobusSlave::reseivePackage()
       while (1) {
         ID.tdInt16[0] = getMessageEventSPI();
         if (ID.tdInt16[0]) {
-          txBuffer_[2*i + 2] = ID.tdChar[0];
-          txBuffer_[2*i + 3] = ID.tdChar[1];
+          txBuffer_[2 + 2*i] = ID.tdChar[0];
+          txBuffer_[3 + 2*i] = ID.tdChar[1];
           i++;
         }
-        else
+        else {
           break;
+        }
       }
       // Если положили хоть одно событие
       if (i) {
@@ -126,8 +127,9 @@ void NovobusSlave::reseivePackage()
             txBuffer_[6*i + 7] = Value.tdChar[3];
             i++;
           }
-          else
+          else {
             break;
+          }
         }
         // Если есть данные для записи
         if (i) {
@@ -145,9 +147,9 @@ void NovobusSlave::reseivePackage()
         else {
           txBuffer_[0] = rxBuffer_[0];
           txBuffer_[1] = rxBuffer_[1];
-          txBuffer_[1] = rxBuffer_[2];
-          txBuffer_[1] = rxBuffer_[3];
-          txBuffer_[1] = rxBuffer_[4];
+          txBuffer_[2] = rxBuffer_[2];
+          txBuffer_[3] = rxBuffer_[3];
+          txBuffer_[4] = rxBuffer_[4];
         }
       }
       break;

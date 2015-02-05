@@ -80,7 +80,7 @@ public:
    * \brief threadUpdateParametersId_
    * Идентификатор задачи обновления значений параметра устройства
    */
-  osThreadId threadUpdateParametersId_;
+  osThreadId updateParametersThreadId_;
 
   /*!
    * \brief createMessageUpdateParameters
@@ -98,7 +98,7 @@ public:
 
   unsigned short countParameter_;
 
-  void updateParameters(void);
+  virtual void updateParameters();
 
   // Базовые методы работы со структурой Parameter
   // Работают с индексом в массиве параметров

@@ -31,7 +31,7 @@ void ProtectionUnderVoltageInput::init()
                   CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_COUNT,
                   CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET_COUNT,
                   CCS_SUPPLY_INPUT_VOLTAGE_AVERAGE);
-  Protection::init("ProtectionUndervoltageInput");
+  Protection::init("ProtUnderVoltInput");
 }
 
 bool ProtectionUnderVoltageInput::checkAlarm()

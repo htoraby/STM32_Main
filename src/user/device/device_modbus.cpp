@@ -11,7 +11,7 @@
 
 static void deviceModbusTask(void *p)
 {
-  (static_cast<DeviceModbus*>(p))->exchangeCycle();
+  (static_cast<DeviceModbus*>(p))->exchangeTask();
 }
 
 // Конструктор класса DeviceModbus
@@ -26,26 +26,26 @@ DeviceModbus::DeviceModbus(ModbusParameter *MapRegisters,
                            const char *threadName,
                            osMessageQId *messageUpdateID
                           )
-  : quantityParam_(Quantity),
-    deviceAddress_(Address),
-    indexExchange_(1),
-    messageUpdateID_(messageUpdateID)
+  : quantityParam_(Quantity)
+  , deviceAddress_(Address)
+  , indexExchange_(1)
+  , messageUpdateID_(messageUpdateID)
+  , modbusParameters_(MapRegisters)
 {
+  // Создаём очередь сообщений
+  osMessageQDef(OutOfTurn, 100, uint32_t);
+  messageOutOfTurn_ = osMessageCreate (osMessageQ(OutOfTurn), NULL);
+
+  // Создаём экземпляр класса ModbusMasterSerial
+  mms_ = new ModbusMasterSerial(PortName);
+  // Открываем порт
+  mms_->openProtocol(PortName, BaudRate, DataBits, StopBits, Parity);
 
   // Создаём задачу цикла опроса
   // Заполняем структуру с параметрами задачи
   osThreadDef_t t = {threadName, deviceModbusTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
   // Создаём задачу
   threadId_ = osThreadCreate(&t, this);
-
-  // Создаём очередь сообщений
-  osMessageQDef(OutOfTurn, 100, uint32_t);
-  messageOutOfTurn_ = osMessageCreate (osMessageQ(OutOfTurn), NULL);
-
-  // Создаём экземпляр класса ModbusMasterSerial
-  MMS = new ModbusMasterSerial(PortName);
-  // Открываем порт
-  MMS->openProtocol(PortName, BaudRate, DataBits, StopBits, Parity);
 }
 
 DeviceModbus::~DeviceModbus()
@@ -308,7 +308,7 @@ int DeviceModbus::searchExchangeParameters()
 }
 
 // Метод цикл по карте регистров для чтения и записи параметров
-void DeviceModbus::exchangeCycle(void)
+void DeviceModbus::exchangeTask(void)
 {
   int Count = 0;
   while (1) {
@@ -322,32 +322,32 @@ void DeviceModbus::exchangeCycle(void)
         int address = modbusParameters_[outOfTurn].Address;
         switch (modbusParameters_[outOfTurn].TypeData) {
         case TYPE_DATA_INT16:
-          MMS->writeSingleRegister(deviceAddress_,
+          mms_->writeSingleRegister(deviceAddress_,
                                    address,
                                    modbusParameters_[outOfTurn].Value.tdInt16[0]);
           break;
         case TYPE_DATA_UINT16:
-          MMS->writeSingleRegister(deviceAddress_,
+          mms_->writeSingleRegister(deviceAddress_,
                                    address,
                                    modbusParameters_[outOfTurn].Value.tdUint16[0]);
           break;
         case  TYPE_DATA_INT32:
           int32Arr_[0] = modbusParameters_[outOfTurn].Value.tdInt32;
-          MMS->writeMultipleLongInts(deviceAddress_,
+          mms_->writeMultipleLongInts(deviceAddress_,
                                      address,
                                      int32Arr_,
                                      1);
           break;
         case  TYPE_DATA_UINT32:
           int32Arr_[0] =  modbusParameters_[outOfTurn].Value.tdUint32;
-          MMS->writeMultipleLongInts(deviceAddress_,
+          mms_->writeMultipleLongInts(deviceAddress_,
                                      modbusParameters_[outOfTurn].Address,
                                      int32Arr_,
                                      1);
           break;
         case  TYPE_DATA_FLOAT:
           float32Arr_[0] = modbusParameters_[outOfTurn].Value.tdFloat;
-          MMS->writeMultipleFloats(deviceAddress_,
+          mms_->writeMultipleFloats(deviceAddress_,
                                    modbusParameters_[outOfTurn].Address,
                                    float32Arr_,
                                    1);
@@ -364,7 +364,7 @@ void DeviceModbus::exchangeCycle(void)
         switch (modbusParameters_[outOfTurn].TypeData) {
         case TYPE_DATA_INT16:
           Count = 1;
-          if (!(MMS->readMultipleRegisters(deviceAddress_,address,regArr_,Count))) {
+          if (!(mms_->readMultipleRegisters(deviceAddress_,address,regArr_,Count))) {
             // TODO: Сделать проверки на минимум максиму и т.п
             // Получаем индекс элемента в массиве с которого начинаем сохранение
             int Index = getIndexAtAddress(address);
@@ -386,25 +386,25 @@ void DeviceModbus::exchangeCycle(void)
           }
           break;
         case TYPE_DATA_UINT16:
-          MMS->readMultipleRegisters(deviceAddress_,
+          mms_->readMultipleRegisters(deviceAddress_,
                                      address,
                                      regArr_,
                                      1);
           break;
         case  TYPE_DATA_INT32:
-          MMS->readMultipleLongInts(deviceAddress_,
+          mms_->readMultipleLongInts(deviceAddress_,
                                     address,
                                     int32Arr_,
                                     1);
           break;
         case  TYPE_DATA_UINT32:
-          MMS->readMultipleLongInts(deviceAddress_,
+          mms_->readMultipleLongInts(deviceAddress_,
                                     address,
                                     int32Arr_,
                                     1);
           break;
         case  TYPE_DATA_FLOAT:
-          MMS->readMultipleFloats(deviceAddress_,
+          mms_->readMultipleFloats(deviceAddress_,
                                   address,
                                   float32Arr_,
                                   1);

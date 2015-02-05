@@ -266,7 +266,7 @@ float Units[28][6][2] =
 };
 
 
-static void ThreadUpdateParameters(void *p)
+static void updateParametersTask(void *p)
 {
   (static_cast<Device*>(p))->updateParameters();
 }
@@ -289,13 +289,13 @@ void Device::createThread(const char *threadName)
 {
   // Заполняем структуру для создания задачи
   osThreadDef_t t = {threadName,                  // Название задачи
-                     ThreadUpdateParameters,     // Указатель на функцию задачи
+                     updateParametersTask,     // Указатель на функцию задачи
                      osPriorityNormal,            // Приоритет задачи
                      0,                           //
                      2 * configMINIMAL_STACK_SIZE // Размер стека задачи
                     };
   // Создаём задачу
-  threadUpdateParametersId_ = osThreadCreate(&t, this);
+  updateParametersThreadId_ = osThreadCreate(&t, this);
 }
 
 // Метод создания очереди обновленных параметров
@@ -465,16 +465,19 @@ unsigned char Device::setValue(unsigned short id, float value)
 }
 
 // Метод проверки и обновления параметров устройства
-void Device::updateParameters(void)
+void Device::updateParameters()
 {
-  // Проверяем есть ли новые значения параметров от устройства
-  int UpdateParamID = getMessageUpdateParameters();
-  // По ID параметра находим параметр и обновляем значение
-  if (UpdateParamID) {
+  while (1) {
+    osDelay(1);
+    // Проверяем есть ли новые значения параметров от устройства
+    int UpdateParamID = getMessageUpdateParameters();
+    // По ID параметра находим параметр и обновляем значение
+    if (UpdateParamID) {
 
-  }
-  else {
-    return;
+    }
+    else {
+
+    }
   }
 }
 

@@ -223,7 +223,7 @@ public:
    * \brief taskProtection
    * Задача защиты
    */
-  void taskProtection();
+  void task();
 
   /*!
    * \brief calcTimeFromStart

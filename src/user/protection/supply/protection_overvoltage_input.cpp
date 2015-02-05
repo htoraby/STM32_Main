@@ -31,7 +31,7 @@ void ProtectionOverVoltageInput::init()
                   CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT,
                   CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET_COUNT,
                   CCS_SUPPLY_INPUT_VOLTAGE_AVERAGE);
-  Protection::init("ProtectionOvervoltageInput");
+  Protection::init("ProtOverVoltInput");
 }
 
 bool ProtectionOverVoltageInput::checkAlarm()

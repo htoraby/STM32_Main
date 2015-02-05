@@ -31,7 +31,7 @@ public:
    * \brief exchangeCycle
    * Метод вызываемая как задача FreeRTOS
    */
-  void exchangeCycle(void);
+  void exchangeTask(void);
 
   /*!
    * \brief reseivePackage
