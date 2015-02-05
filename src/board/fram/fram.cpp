@@ -124,7 +124,7 @@ StatusType framWriteData(uint32_t address, uint8_t *data, uint32_t size)
 {  
   StatusType status = StatusError;
 
-  if (address > FRAM_END)
+  if ((address > FRAM_END) || !size)
     return status;
 
   if (osSemaphoreWait(framTxSemaphoreId, TIMEOUT) == osEventTimeout)
@@ -153,7 +153,7 @@ StatusType framReadData(uint32_t address, uint8_t *data, uint32_t size)
 {
   StatusType status = StatusError;
 
-  if (address > FRAM_END)
+  if ((address > FRAM_END) || !size)
     return status;
 
   if (osSemaphoreWait(framTxSemaphoreId, TIMEOUT) == osEventTimeout)
