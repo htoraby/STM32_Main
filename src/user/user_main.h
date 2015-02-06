@@ -9,6 +9,7 @@
 #include "tms.h"
 #include "em.h"
 #include "parameters.h"
+#include "novobus_slave.h"
 
 extern Parameters parameters;
 extern Ccs ksu;

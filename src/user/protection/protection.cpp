@@ -144,7 +144,7 @@ void Protection::checkRestartResetCount()
 void Protection::task()
 {
   while(1) {
-    osDelay(5000);
+    osDelay(100);
 
     // Получаем уставки защиты
     getSetpointProt();

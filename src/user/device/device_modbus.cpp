@@ -24,8 +24,7 @@ DeviceModbus::DeviceModbus(ModbusParameter *MapRegisters,
                            int Parity,
                            int Address,
                            const char *threadName,
-                           osMessageQId *messageUpdateID
-                          )
+                           osMessageQId *messageUpdateID)
   : quantityParam_(Quantity)
   , deviceAddress_(Address)
   , indexExchange_(1)

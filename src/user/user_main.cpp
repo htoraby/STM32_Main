@@ -2,6 +2,7 @@
 #include "protection_main.h"
 
 Parameters parameters;
+NovobusSlave novobusSlave;
 Ccs ksu;
 VsdNovomet *vsd;
 Tms *tms;
@@ -11,6 +12,7 @@ void userInit()
 {
   logInit();
   hostInit();
+  novobusSlave.init();
 
   vsd = new VsdNovomet();
   tms = new Tms();

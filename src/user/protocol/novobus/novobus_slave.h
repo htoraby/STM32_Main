@@ -3,64 +3,84 @@
 
 #include "device.h"
 #include "board.h"
+#include "host.h"
 
-#define NOVOBUS_COMMAND_DIAGNOSTIC  1
-#define NOVOBUS_COMMAND_READ        2
-#define NOVOBUS_COMMAND_WRITE       3
-#define NOVOBUS_COMMAND_MESSAGE     4
-
+#define MAX_IDS_BUFFER 40
 
 /*!
- * \brief The novobus_master class
+ * \brief Класс протокола обмена между stm32 и контроллером визуализации
  *
  */
 class NovobusSlave
 {
 
 public:
+
+  /*!
+   * \brief Комманды протокола "Novobus"
+  */
+  typedef enum {
+    NoneCommand,
+    StatusCommand,
+    ReadParamsCommand,
+    WriteParamsCommand,
+    UpdateParamsCommand,
+    MessageCommand,
+  } NovobusCommand;
+
   NovobusSlave();
   ~NovobusSlave();
 
   /*!
-   * \brief initNovobus
-   * \return 0 Результат инициализации
+   * \brief Инициализация протокола
    */
-  int initNovobus();
+  void init();
 
   /*!
-   * \brief exchangeCycle
-   * Метод вызываемая как задача FreeRTOS
+   * \brief Основная задача протокола
    */
-  void exchangeTask(void);
+  void task();
 
   /*!
-   * \brief reseivePackage
-   * Функция обработки запросов по Novobus
+   * \brief Функция обработки запросов по Novobus
    */
   void reseivePackage();
 
-  int getMessageEventSPI();
-
-  int getMessageParamSPI();
-
   /*!
-   * \brief Очередь на посылку сообщений по SPI
+   * \brief Метод получения события из очереди
    */
-  osMessageQId messageEventSPI_;
+  int getMessageEvents();
 
   /*!
-   * \brief messageParamSPI_ очередь на запись данных по SPI
+   * \brief Метод получения параметра из очереди
    */
-  osMessageQId messageParamSPI_;
+  int getMessageParams();
 
   /*!
-   * \brief threadId_
-   * Идентификатор задачи Novobus
+   * \brief Очередь на посылку сообытий
+   */
+  osMessageQId messageEvents_;
+
+  /*!
+   * \brief Очередь на запись данных
+   */
+  osMessageQId messageParams_;
+
+private:
+  /*!
+   * \brief Метод проверки очередей и заполнения необходимых полей заголовка
+   */
+  void checkMessage();
+
+  /*!
+   * \brief Идентификатор задачи Novobus
    */
   osThreadId threadId_;
 
-  unsigned char txBuffer_[];
-  unsigned char rxBuffer_[];
+  uint8_t txBuffer_[HOST_BUF_SIZE];
+  uint8_t rxBuffer_[HOST_BUF_SIZE];
+  uint16_t idsBuffer_[MAX_IDS_BUFFER];
+  uint8_t idsCount_;
 };
 
 #endif // NOVOBUS_SLAVE_H

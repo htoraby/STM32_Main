@@ -1,26 +1,15 @@
 #include "novobus_slave.h"
-#include "host.h"
+#include "string.h"
 
 static void novobusSlaveTask(void *p)
 {
-  (static_cast<NovobusSlave*>(p))->exchangeTask();
+  (static_cast<NovobusSlave*>(p))->task();
 }
 
 NovobusSlave::NovobusSlave()
+  : idsCount_(0)
 {
-  // Создаём очередь сообщений событий (надписей на дисплее)
-  osMessageQDef(MessageEventSPI, 100, uint32_t);
-  messageEventSPI_ = osMessageCreate (osMessageQ(MessageEventSPI), NULL);
 
-  // Создаём очередь сообщений параметров для записи
-  osMessageQDef(MessageParamSPI, 100, uint32_t);
-  messageParamSPI_ = osMessageCreate (osMessageQ(MessageParamSPI), NULL);
-
-  // Создаём задачу Novobus slave
-  // Заполняем структуру с параметрами задачи
-  osThreadDef_t t = {"novobusSlave", novobusSlaveTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
-  // Создаём задачу
-  threadId_ = osThreadCreate(&t, this);
 }
 
 NovobusSlave::~NovobusSlave()
@@ -28,12 +17,28 @@ NovobusSlave::~NovobusSlave()
 
 }
 
-void NovobusSlave::exchangeTask(void)
+void NovobusSlave::init()
+{
+  // Создаём очередь сообщений событий (надписей на дисплее)
+  osMessageQDef(MessageEventsNovobus, 100, uint32_t);
+  messageEvents_ = osMessageCreate(osMessageQ(MessageEventsNovobus), NULL);
+
+  // Создаём очередь сообщений параметров для записи
+  osMessageQDef(MessageParamsNovobus, 100, uint32_t);
+  messageParams_ = osMessageCreate(osMessageQ(MessageParamsNovobus), NULL);
+
+  // Создаём задачу Novobus slave
+  // Заполняем структуру с параметрами задачи
+  osThreadDef_t t = {"NovobusSlave", novobusSlaveTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
+  threadId_ = osThreadCreate(&t, this);
+}
+
+void NovobusSlave::task()
 {
   osSemaphoreId semaphoreId = getHostSemaphore();
-  // Бесконечный цикл
+
   while(1) {
-    // Проверить семафор, если он свободен
+    // Проверка семафора - если он свободен, то получен покет от хоста
     if (osSemaphoreWait(semaphoreId, osWaitForever) != osEventTimeout) {
       if (hostReadData(rxBuffer_)) {
         reseivePackage();
@@ -41,24 +46,23 @@ void NovobusSlave::exchangeTask(void)
       }
     }
   }
-
 }
 
 // Получить элемент очереди внеочередной
-int NovobusSlave::getMessageEventSPI()
+int NovobusSlave::getMessageEvents()
 {
   osEvent Event;
-  Event = osMessageGet(messageEventSPI_, 0);
+  Event = osMessageGet(messageEvents_, 0);
   if (Event.status == osEventMessage)
     return Event.value.v;
   return 0;
 }
 
 // Получить элемент очереди внеочередной
-int NovobusSlave::getMessageParamSPI()
+int NovobusSlave::getMessageParams()
 {
   osEvent Event;
-  Event = osMessageGet(messageParamSPI_, 0);
+  Event = osMessageGet(messageParams_, 0);
   if (Event.status == osEventMessage)
     return Event.value.v;
   return 0;
@@ -67,165 +71,153 @@ int NovobusSlave::getMessageParamSPI()
 // Команда анализа полученного запроса
 void NovobusSlave::reseivePackage()
 {
+  // Заполняем заголовок пакета
+  txBuffer_[0] = rxBuffer_[0];
+  txBuffer_[2] = 0;
+
   // Команда
-  char command = rxBuffer_[0];
-  // Количество байт в запросе 2 байт и 1 элемент массива
-  uint8_t count = rxBuffer_[1];
-  // Количество параметров считываемых в запросе
-  char countParam;
+  uint8_t command = rxBuffer_[0];
+  // Количество байт в запросе
+  uint8_t sizePkt = rxBuffer_[1];
+  // Количество данных
+  uint8_t dataNumber;
   // Временная переменная преобразования типов
-  unTypeData ID;
-  unTypeData Value;
-  int i = 0;
+  unTypeData id;
+  unTypeData value;
+
   // Получаем контрольную сумму
-  uint16_t rxCrc = (rxBuffer_[count - 2] << 8) + rxBuffer_[count - 1];
+  uint16_t rxCrc = (rxBuffer_[sizePkt - 2] << 8) + rxBuffer_[sizePkt - 1];
   // Вычисляем контрольную сумму
-  uint16_t calcCrc = crc16_ibm(rxBuffer_, rxBuffer_[1] - 2);
-  // Если контрольная сумма сошлась
+  uint16_t calcCrc = crc16_ibm(rxBuffer_, sizePkt - 2);
+  // Проверка контрольной суммы
   if (rxCrc == calcCrc) {
     // Анализ команды
-    switch (rxBuffer_[0]) {
-    // Команда запроса данных от Master к Slave есть ли у него готовые данные
-    case NOVOBUS_COMMAND_DIAGNOSTIC:
-      // Сначала проверяем очередь событий, если есть события сначала отправляем
-      // максимум событий которые можем отправить
-      while (1) {
-        ID.tdInt16[0] = getMessageEventSPI();
-        if (ID.tdInt16[0]) {
-          txBuffer_[2 + 2*i] = ID.tdChar[0];
-          txBuffer_[3 + 2*i] = ID.tdChar[1];
-          i++;
-        }
-        else {
-          break;
-        }
-      }
-      // Если положили хоть одно событие
-      if (i) {
-        // Добавить команду
-        txBuffer_[0] = command;
-        count = 2*i + 4;
-        //  Количество байт в пакете
-        txBuffer_[1] = count;
-        // Вычисляем и добавляем контрольную сумму
-        calcCrc = crc16_ibm(txBuffer_, (txBuffer_[count] - 2));
-//        calcCrc = crc16_ibm(0, (txBuffer_[count] - 2), txBuffer_);
-        txBuffer_[count-1] = calcCrc >> 8;
-        txBuffer_[count] = calcCrc;
-      }
-      // Если не было событий, проверим очередь данных и положим из неё
-      else {
-        while (1) {
-          ID.tdInt16[0] = getMessageParamSPI();
-          if (ID.tdInt16[0]) {
-            // TODO: Value.DtFloat = Device.getValue(ID.DtUint16);
-            txBuffer_[6*i + 2] = ID.tdChar[0];
-            txBuffer_[6*i + 3] = ID.tdChar[1];
-            txBuffer_[6*i + 4] = Value.tdChar[0];
-            txBuffer_[6*i + 5] = Value.tdChar[1];
-            txBuffer_[6*i + 6] = Value.tdChar[2];
-            txBuffer_[6*i + 7] = Value.tdChar[3];
-            i++;
-          }
-          else {
-            break;
+    switch (command) {
+      // Команда запроса данных от Master к Slave есть ли у него готовые данные
+      case StatusCommand:
+        checkMessage();
+
+        sizePkt = 7;
+        break;
+
+        // Команда чтения ID обновлённых параметров
+      case UpdateParamsCommand:
+        if (!idsCount_) {
+          if (osMessageNumber(messageParams_)) {
+            while (1) {
+              id.tdUint16[0] = getMessageParams();
+              if (id.tdUint16[0]) {
+                idsBuffer_[idsCount_++] = id.tdUint16[0];
+                if (idsCount_ >= MAX_IDS_BUFFER)
+                  break;
+              }
+              else {
+                break;
+              }
+            }
           }
         }
-        // Если есть данные для записи
-        if (i) {
-          // Добавить команду
-          txBuffer_[0] = NOVOBUS_COMMAND_WRITE;
-          count = 6*i + 4;
-          //  Количество байт в пакете
-          txBuffer_[1] = count;
-          // Вычисляем и добавляем контрольную сумму
-          calcCrc = crc16_ibm(txBuffer_, txBuffer_[count] - 2);
-          txBuffer_[count-1] = calcCrc >> 8;
-          txBuffer_[count] = calcCrc;
+
+        if (idsCount_) {
+          for (int i = 0; i < idsCount_; ++i) {
+            txBuffer_[5 + i*2] = idsBuffer_[i] >> 8;
+            txBuffer_[6 + i*2] = idsBuffer_[i];
+          }
         }
-        // Нет новых параметов, возвращаем эхо
-        else {
-          txBuffer_[0] = rxBuffer_[0];
-          txBuffer_[1] = rxBuffer_[1];
-          txBuffer_[2] = rxBuffer_[2];
-          txBuffer_[3] = rxBuffer_[3];
-          txBuffer_[4] = rxBuffer_[4];
+
+        checkMessage();
+
+        sizePkt = 7 + idsCount_*2;
+        break;
+
+        // Команда посылки сообщения
+      case MessageCommand:
+
+        break;
+
+        // Команда чтения параметров
+      case ReadParamsCommand:
+        // После получения мастером списка ID параметров обнуляем счётчик
+        idsCount_ = 0;
+
+        // Количество параметров = (размер пакета - заголовок - crc) /
+        // (размер id)
+        dataNumber = (sizePkt - 4)/2;
+        // Цикл по количеству считываемых параметров
+        for (int i = 0; i < dataNumber; i++) {
+          // Получаем ID параметра
+          id.tdChar[0] = rxBuffer_[2 + i*2];
+          id.tdChar[1] = rxBuffer_[3 + i*2];
+          // Получить значение параметра
+          // TODO: Value.DtFloat = Device.getValue(id.tdUint16[0]);
+          txBuffer_[5 + i*6]  = id.tdChar[0];
+          txBuffer_[6 + i*6]  = id.tdChar[1];
+          txBuffer_[7 + i*6]  = value.tdChar[0];
+          txBuffer_[8 + i*6]  = value.tdChar[1];
+          txBuffer_[9 + i*6]  = value.tdChar[2];
+          txBuffer_[10 + i*6] = value.tdChar[3];
         }
-      }
-      break;
 
-    // Команда чтения данных
-    case  NOVOBUS_COMMAND_READ:
-      // Количество байт - команда, счётчик, контрольная сумма / 2 байта на параметр
-      countParam = (count - 4)/2;
-      // Цикл по количеству считываемых параметров
-      for (int i = 0; i < countParam; i++) {
-        // Получаем ID параметра
-        ID.tdChar[0] = rxBuffer_[2*i + 2];
-        ID.tdChar[1] = rxBuffer_[2*i + 3];
-        // Получить значение параметра
-        // TODO: Value.DtFloat = Device.getValue(ID.DtUint16[0]);
-        // Переписать в выходной буфер ID
-        txBuffer_[6*i + 2] = ID.tdChar[0];
-        txBuffer_[6*i + 3] = ID.tdChar[1];
-        // Переписать в выходной буфер Value
-        txBuffer_[6*i + 4] = Value.tdChar[0];
-        txBuffer_[6*i + 5] = Value.tdChar[1];
-        txBuffer_[6*i + 6] = Value.tdChar[1];
-        txBuffer_[6*i + 7] = Value.tdChar[1];
-      }
-      // Добавить команду
-      txBuffer_[0] = command;
-      //  Количество байт в пакете
-      txBuffer_[1] = count;
-      // Вычисляем и добавляем контрольную сумму
-      calcCrc = crc16_ibm(txBuffer_, txBuffer_[count] - 2);
-      txBuffer_[count-1] = (char)(calcCrc >> 8);
-      txBuffer_[count] = (char)calcCrc;
-      break;
+        checkMessage();
 
-    // Команда записи данных
-    case  NOVOBUS_COMMAND_WRITE:
-      // Количество байт - команда, счётчик, контрольная сумма / 8 байт
-      // на параметр 4 на ID и 4 на значение
-      countParam = (count - 4)/6;
-      for (int i = 0; i < countParam; i++) {
-        // Получаем ID параметра
-        ID.tdChar[0] = rxBuffer_[6*i + 2];
-        ID.tdChar[1] = rxBuffer_[6*i + 3];
-        // Получаем значение параметра
-        Value.tdChar[0] = rxBuffer_[6*i + 4];
-        Value.tdChar[1] = rxBuffer_[6*i + 5];
-        Value.tdChar[2] = rxBuffer_[6*i + 6];
-        Value.tdChar[3] = rxBuffer_[6*i + 7];
-        // Вызываем функцию записи значения параметра
-        // TODO: Device.setValue(ID.DtUint16, Value.DtFloat);
-        // Указываем ID в ответном пакете
-        txBuffer_[6*i + 2] = ID.tdChar[0];
-        txBuffer_[6*i + 3] = ID.tdChar[1];
-        // Код пока всегда указываем что всё хорошо
-        // TODO: Добавить обработку если не записали параметр
-        txBuffer_[6*i + 4] = 0;
-        txBuffer_[6*i + 5] = 0;
-        txBuffer_[6*i + 6] = 0;
-        txBuffer_[6*i + 7] = 0;
-      }
-      // Добавить команду
-      txBuffer_[0] = command;
-      //  Количество байт в пакете
-      txBuffer_[1] = count;
-      // Вычисляем и добавляем контрольную сумму
-      calcCrc = crc16_ibm(txBuffer_, txBuffer_[count] - 2);
-      txBuffer_[count-1] = calcCrc >> 8;
-      txBuffer_[count] = calcCrc;
-      break;
-    // Команда посылки сообщения
-    case  NOVOBUS_COMMAND_MESSAGE:
+        sizePkt = 7 + dataNumber*6;
 
-      break;
-    default:
+        break;
 
-      break;
+        // Команда записи параметров
+      case WriteParamsCommand:
+        // Количество параметров = (размер пакета - заголовок - crc) /
+        // (размер id и значения параметра)
+        dataNumber = (sizePkt - 4)/6;
+        for (int i = 0; i < dataNumber; i++) {
+          // Получаем ID параметра
+          id.tdChar[0] = rxBuffer_[2 + i*6];
+          id.tdChar[1] = rxBuffer_[3 + i*6];
+          // Получаем значение параметра
+          value.tdChar[0] = rxBuffer_[4 + i*6];
+          value.tdChar[1] = rxBuffer_[5 + i*6];
+          value.tdChar[2] = rxBuffer_[6 + i*6];
+          value.tdChar[3] = rxBuffer_[7 + i*6];
+          // Вызываем функцию записи значения параметра
+          // TODO: Device.setValue(ID.DtUint16, Value.DtFloat);
+        }
+
+        checkMessage();
+
+        sizePkt = 7;
+        break;
+
+      default:
+
+        break;
     }
   }
+  else {
+    // Ошибка CRC
+    txBuffer_[2] = 1;
+    txBuffer_[3] = NoneCommand;
+    txBuffer_[4] = 0;
+    sizePkt = 7;
+  }
+
+  txBuffer_[1] = sizePkt;
+  // Вычисляем и добавляем контрольную сумму
+  calcCrc = crc16_ibm(txBuffer_, txBuffer_[1] - 2);
+  txBuffer_[sizePkt-2] = calcCrc >> 8;
+  txBuffer_[sizePkt-1] = calcCrc;
+}
+
+void NovobusSlave::checkMessage()
+{
+  // Проверка очереди событий
+  uint8_t dataNumber = osMessageNumber(messageEvents_);
+  if (dataNumber) {
+    txBuffer_[3] = MessageCommand;
+  }
+  // Проверка очереди параметров
+  else {
+    dataNumber = osMessageNumber(messageParams_);
+    txBuffer_[3] = UpdateParamsCommand;
+  }
+  txBuffer_[4] = dataNumber;
 }
