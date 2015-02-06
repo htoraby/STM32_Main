@@ -823,6 +823,14 @@ osEvent osMessageGet (osMessageQId queue_id, uint32_t millisec)
   return event;
 }
 
+uint32_t osMessageNumber (osMessageQId queue_id)
+{
+  if (inHandlerMode())
+    return uxQueueMessagesWaitingFromISR(queue_id);
+  else
+    return uxQueueMessagesWaiting(queue_id);
+}
+
 #endif     /* Use Message Queues */
 
 /********************   Mail Queue Management Functions  ***********************/

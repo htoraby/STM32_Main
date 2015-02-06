@@ -804,6 +804,13 @@ osStatus osMessagePut (osMessageQId queue_id, uint32_t info, uint32_t millisec);
   */
 osEvent osMessageGet (osMessageQId queue_id, uint32_t millisec);
 
+/**
+  * @brief Получение количества сообщений в очереди
+  * @param  queue_id  message queue ID obtained with \ref osMessageCreate.
+  * @retval количество сообщений
+  */
+uint32_t osMessageNumber (osMessageQId queue_id);
+
 #endif    /* Use Message Queues */
 
 /********************   Mail Queue Management Functions  ***********************/
