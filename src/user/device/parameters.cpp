@@ -56,3 +56,31 @@ void Parameters::read()
   tms->readParameters();
   em->readParameters();
 }
+
+float Parameters::getValue(unsigned short id)
+{
+  if ((id > CCS_BEGIN) && (id < CCS_END))
+    return ksu.getValue(id);
+  if ((id > VSD_BEGIN) && (id < VSD_END))
+    return vsd->getValue(id);
+  if ((id > TMS_BEGIN) && (id < TMS_BEGIN))
+    return tms->getValue(id);
+  if ((id > EM_BEGIN) && (id < EM_BEGIN))
+    return em->getValue(id);
+
+  return 0;
+}
+
+int Parameters::setValue(unsigned short id, float value)
+{
+  if ((id > CCS_BEGIN) && (id < CCS_END))
+    return ksu.setValue(id, value);
+  if ((id > VSD_BEGIN) && (id < VSD_END))
+    return vsd->setValue(id, value);
+  if ((id > TMS_BEGIN) && (id < TMS_BEGIN))
+    return tms->setValue(id, value);
+  if ((id > EM_BEGIN) && (id < EM_BEGIN))
+    return em->setValue(id, value);
+
+  return 0;
+}

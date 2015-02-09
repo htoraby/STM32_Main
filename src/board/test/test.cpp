@@ -156,6 +156,12 @@ static void testThread(void * argument)
 #if (TEST_LED == 1)
     blinkLed.toggle();
     osDelay(500);
+
+    parameters.setValue(CCS_LOG_PERIOD_NORMAL, 10);
+    parameters.setValue(CCS_LOG_PERIOD_FAST, 20);
+    novobusSlave.putMessageParams(CCS_LOG_PERIOD_NORMAL);
+    novobusSlave.putMessageParams(CCS_LOG_PERIOD_FAST);
+
 //    logRunning.start(AutoType);
 //    logAlarm.start(AutoType, 0);
 #endif

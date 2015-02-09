@@ -1,4 +1,5 @@
 #include "novobus_slave.h"
+#include "user_main.h"
 #include "string.h"
 
 static void novobusSlaveTask(void *p)
@@ -66,6 +67,16 @@ int NovobusSlave::getMessageParams()
   if (Event.status == osEventMessage)
     return Event.value.v;
   return 0;
+}
+
+void NovobusSlave::putMessageEvents(uint32_t id)
+{
+  osMessagePut(messageEvents_, id, 0);
+}
+
+void NovobusSlave::putMessageParams(uint32_t id)
+{
+  osMessagePut(messageParams_, id, 0);
 }
 
 // Команда анализа полученного запроса
@@ -179,7 +190,7 @@ void NovobusSlave::reseivePackage()
           id.tdChar[0] = rxBuffer_[2 + i*2];
           id.tdChar[1] = rxBuffer_[3 + i*2];
           // Получить значение параметра
-          // TODO: Value.DtFloat = Device.getValue(id.tdUint16[0]);
+          value.tdFloat = parameters.getValue(id.tdUint16[0]);
           txBuffer_[5 + i*6]  = id.tdChar[0];
           txBuffer_[6 + i*6]  = id.tdChar[1];
           txBuffer_[7 + i*6]  = value.tdChar[0];
@@ -209,7 +220,7 @@ void NovobusSlave::reseivePackage()
           value.tdChar[2] = rxBuffer_[6 + i*6];
           value.tdChar[3] = rxBuffer_[7 + i*6];
           // Вызываем функцию записи значения параметра
-          // TODO: Device.setValue(ID.DtUint16, Value.DtFloat);
+          parameters.setValue(id.tdUint16[0], value.tdFloat);
         }
 
         checkMessage();

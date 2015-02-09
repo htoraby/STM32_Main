@@ -1,7 +1,7 @@
 #ifndef NOVOBUS_SLAVE_H
 #define NOVOBUS_SLAVE_H
 
-#include "device.h"
+#include "define.h"
 #include "board.h"
 #include "host.h"
 
@@ -58,14 +58,14 @@ public:
   int getMessageParams();
 
   /*!
-   * \brief Очередь на посылку сообытий
+   * \brief Метод добавления ID события в очередь
    */
-  osMessageQId messageEvents_;
+  void putMessageEvents(uint32_t id);
 
   /*!
-   * \brief Очередь на запись данных
+   * \brief Метод добавления ID параметра в очередь
    */
-  osMessageQId messageParams_;
+  void putMessageParams(uint32_t id);
 
 private:
   /*!
@@ -77,6 +77,16 @@ private:
    * \brief Идентификатор задачи Novobus
    */
   osThreadId threadId_;
+
+  /*!
+   * \brief Очередь на посылку сообытий
+   */
+  osMessageQId messageEvents_;
+
+  /*!
+   * \brief Очередь на запись данных
+   */
+  osMessageQId messageParams_;
 
   uint8_t txBuffer_[HOST_BUF_SIZE];
   uint8_t rxBuffer_[HOST_BUF_SIZE];

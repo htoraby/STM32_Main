@@ -12,6 +12,7 @@
 #include "novobus_slave.h"
 
 extern Parameters parameters;
+extern NovobusSlave novobusSlave;
 extern Ccs ksu;
 extern VsdNovomet *vsd;
 extern Tms *tms;

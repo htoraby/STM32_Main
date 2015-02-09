@@ -21,18 +21,33 @@ public:
   void task();
 
   /*!
-   * \brief Запуск сохранения парамметров из ОЗУ в Flash
+   * \brief Запуск сохранения параметров из ОЗУ в Flash
    */
   void startSave();
 
   /*!
-   * \brief Чтение парамметров из Flash в ОЗУ
+   * \brief Чтение параметров из Flash в ОЗУ
    */
   void read();
 
+  /*!
+   * \brief Метод чтения параметра по ID с определением необходимого массива
+   * \param id - уникальный идентификатор параметра
+   * \return значение параметра
+   */
+  float getValue(unsigned short id);
+
+  /*!
+   * \brief Метод записи параметра по ID с определением необходимого массива
+   * \param id - уникальный идентификатор параметра
+   * \param value присваемое значение
+   * \return 0 - значение присвоено или ошибка
+   */
+  int setValue(unsigned short id, float value);
+
 private:
   /*!
-   * \brief Сохранение парамметров из ОЗУ в Flash
+   * \brief Сохранение параметров из ОЗУ в Flash
    */
   void save();
 
