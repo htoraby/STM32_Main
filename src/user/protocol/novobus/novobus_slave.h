@@ -25,7 +25,8 @@ public:
     ReadParamsCommand,
     WriteParamsCommand,
     UpdateParamsCommand,
-    MessageCommand,
+    UpdateEventsCommand,
+    ReadEventsCommand,
   } NovobusCommand;
 
   NovobusSlave();

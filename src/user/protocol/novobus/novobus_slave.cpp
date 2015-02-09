@@ -100,6 +100,41 @@ void NovobusSlave::reseivePackage()
         sizePkt = 7;
         break;
 
+        // Команда чтения ID новых событий
+      case UpdateEventsCommand:
+        if (!idsCount_) {
+          if (osMessageNumber(messageEvents_)) {
+            while (1) {
+              id.tdUint16[0] = getMessageEvents();
+              if (id.tdUint16[0]) {
+                idsBuffer_[idsCount_++] = id.tdUint16[0];
+                if (idsCount_ >= MAX_IDS_BUFFER)
+                  break;
+              }
+              else {
+                break;
+              }
+            }
+          }
+        }
+
+        if (idsCount_) {
+          for (int i = 0; i < idsCount_; ++i) {
+            txBuffer_[5 + i*2] = idsBuffer_[i] >> 8;
+            txBuffer_[6 + i*2] = idsBuffer_[i];
+          }
+        }
+
+        checkMessage();
+
+        sizePkt = 7 + idsCount_*2;
+        break;
+
+        // Команда чтения событий
+      case ReadEventsCommand:
+
+        break;
+
         // Команда чтения ID обновлённых параметров
       case UpdateParamsCommand:
         if (!idsCount_) {
@@ -128,11 +163,6 @@ void NovobusSlave::reseivePackage()
         checkMessage();
 
         sizePkt = 7 + idsCount_*2;
-        break;
-
-        // Команда посылки сообщения
-      case MessageCommand:
-
         break;
 
         // Команда чтения параметров
@@ -209,15 +239,18 @@ void NovobusSlave::reseivePackage()
 
 void NovobusSlave::checkMessage()
 {
+  txBuffer_[3] = NoneCommand;
+
   // Проверка очереди событий
   uint8_t dataNumber = osMessageNumber(messageEvents_);
   if (dataNumber) {
-    txBuffer_[3] = MessageCommand;
+    txBuffer_[3] = UpdateEventsCommand;
   }
   // Проверка очереди параметров
   else {
     dataNumber = osMessageNumber(messageParams_);
-    txBuffer_[3] = UpdateParamsCommand;
+    if (dataNumber)
+      txBuffer_[3] = UpdateParamsCommand;
   }
   txBuffer_[4] = dataNumber;
 }
