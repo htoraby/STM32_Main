@@ -4,8 +4,7 @@
 #include "protection.h"
 
 /*!
- * \brief Класс автомата защиты от снижения входного питания
- *
+ * \brief Класс автомата защиты "Снижение питания сети"
  */
 class ProtectionUnderVoltageInput : public Protection
 {

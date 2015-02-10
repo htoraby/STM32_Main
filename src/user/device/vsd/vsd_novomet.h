@@ -102,7 +102,7 @@ class VsdNovomet: public Vsd
 
         void initModbusParameters();
 
-        DeviceModbus *DM;
+        DeviceModbus *dm_;
 
         void updateParameters();
 
@@ -218,7 +218,11 @@ class VsdNovomet: public Vsd
          */
         unsigned char writeParameter(unsigned short id, float value);
 
-        // Проверка на "необходимости" работы с параметром
+        /*!
+         * \brief Проверка на "необходимость" работы с параметром
+         * \param indexParam
+         * \return
+         */
         int checkExchangModbusParameters(int indexParam);
 
     private:

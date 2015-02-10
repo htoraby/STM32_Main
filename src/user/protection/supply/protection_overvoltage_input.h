@@ -5,6 +5,10 @@
 #include "em.h"
 #include "ccs.h"
 
+/*!
+ * \brief Класс автомата защиты "Превышение питания сети"
+ *
+ */
 class ProtectionOverVoltageInput : public Protection
 {
 public:

@@ -49,14 +49,22 @@ typedef enum {
 */
 typedef enum {
   RunId = 300,
-  OverVoltInProtActivId,     //!< "Сработала защита: Превышение питания сети"
-  UnderVoltInProtActivId,    //!< "Сработала защита: Снижение питания сети"
-  OverVoltInApvId,           //!< "АПВ по защите: Превышение питания сети"
-  UnderVoltInApvId,          //!< "АПВ по защите: Снижение питания сети"
-  OverVoltInApvDisabledId,   //!< "АПВ запрещен: Превышение питания сети"
-  UnderVoltInApvDisabledId,  //!< "АПВ запрещен: Снижение питания сети"
-  OverVoltInProtBlockedId,   //!< "Блокировка по защите: Превышение питания сети"
-  UnderVoltInProtBlockedId,  //!< "Блокировка по защите: Снижение питания сети"
+  OverVoltInProtActivId,       //!< "Сработала защита: Превышение питания сети"
+  UnderVoltInProtActivId,      //!< "Сработала защита: Снижение питания сети"
+  OverloadMotorProtActivId,    //!< "Сработала защита: Перегруз двигателя"
+  UnderloadMotorProtActivId,   //!< "Сработала защита: Недогруз двигателя"
+  OverVoltInApvId,             //!< "АПВ по защите: Превышение питания сети"
+  UnderVoltInApvId,            //!< "АПВ по защите: Снижение питания сети"
+  OverloadMotorApvId,          //!< "АПВ по защите: Перегруз двигателя"
+  UnderloadMotorApvId,         //!< "АПВ по защите: Недогруз двигателя"
+  OverVoltInApvDisabledId,     //!< "АПВ запрещен: Превышение питания сети"
+  UnderVoltInApvDisabledId,    //!< "АПВ запрещен: Снижение питания сети"
+  OverloadMotorApvDisabledId,  //!< "АПВ запрещен: Перегруз двигателя"
+  UnderloadMotorApvDisabledId, //!< "АПВ запрещен: Недогруз двигателя"
+  OverVoltInProtBlockedId,     //!< "Блокировка по защите: Превышение питания сети"
+  UnderVoltInProtBlockedId,    //!< "Блокировка по защите: Снижение питания сети"
+  OverloadMotorProtBlockedId,  //!< "Блокировка по защите: Перегруз двигателя"
+  UnderloadMotorProtBlockedId, //!< "Блокировка по защите: Недогруз двигателя"
 
 } EventId;
 

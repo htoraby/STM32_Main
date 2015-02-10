@@ -3,9 +3,13 @@
 
 #include "protection_overvoltage_input.h"
 #include "protection_undervoltage_input.h"
+#include "protection_overload_motor.h"
+#include "protection_underload_motor.h"
 
 extern ProtectionOverVoltageInput protOverVoltIn;
 extern ProtectionUnderVoltageInput protUnderVoltIn;
+extern ProtectionOverloadMotor protOverloadMotor;
+extern ProtectionUnderloadMotor protUnderloadMotor;
 
 /*!
  * \brief protectionInit

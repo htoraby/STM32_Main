@@ -2,11 +2,48 @@
 
 ProtectionUnderloadMotor::ProtectionUnderloadMotor()
 {
+  idMode_ = CCS_PROT_MOTOR_UNDERLOAD_MODE;
+  idReaction_= CCS_PROT_MOTOR_UNDERLOAD_REACTION;
+  idActivDelay_ = CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY;
+  idTripDelay_ = CCS_PROT_MOTOR_UNDERLOAD_TRIP_DELAY;
+  idRestartDelay_ = CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY;
+  idRestartLimit_ = CCS_PROT_MOTOR_UNDERLOAD_RESTART_LIMIT;
+  idRestartReset_ = CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET;
+  idTripSetpoint_ = CCS_PROT_MOTOR_UNDERLOAD_TRIP_SETPOINT;
+  idRestartSetpoint_ = CCS_PROT_MOTOR_UNDERLOAD_RESTART_SETPOINT;
+  idParam_ = CCS_PROT_MOTOR_UNDERLOAD_PARAMETER;
+  idParam2_ = CCS_PROT_MOTOR_UNDERLOAD_PARAMETER_2;
+  idState_ = CCS_PROT_MOTOR_UNDERLOAD_MODE;
+  idTimer_ = CCS_PROT_MOTOR_UNDERLOAD_TIME;
+  idRestartCount_ = CCS_PROT_MOTOR_UNDERLOAD_RESTART_COUNT;
+  idRestartResetCount_ = CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET_COUNT;
+  idValueParam_ = VSD_CURRENT_MOTOR;
 
+  protActivatedEventId_ = UnderloadMotorApvId;
+  apvEventId_ = UnderloadMotorApvId;
+  apvDisabledEventId_ = UnderloadMotorApvDisabledId;
+  protBlockedEventId_ = UnderloadMotorProtBlockedId;
 }
 
 ProtectionUnderloadMotor::~ProtectionUnderloadMotor()
 {
 
+}
+
+void ProtectionUnderloadMotor::init()
+{
+  Protection::init("ProtUnderloadMotor");
+}
+
+bool ProtectionUnderloadMotor::checkAlarm()
+{
+  float nominal = 50;
+  return Protection::isLowerLimit(nominal * tripSetpoint_ / 100.0);
+}
+
+bool ProtectionUnderloadMotor::checkBlock()
+{
+  float nominal = 50;
+  return Protection::isLowerLimit(nominal * restartSetpoint_ / 100.0);
 }
 
