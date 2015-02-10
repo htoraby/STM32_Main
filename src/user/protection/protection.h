@@ -3,29 +3,6 @@
 
 #include "user_main.h"
 
-#define PROTECTION_ACTION_OFF         0
-#define PROTECTION_ACTION_RESTART     1
-#define PROTECTION_ACTION_BLOCK       2
-#define PROTECTION_STATE_OFF                0
-#define PROTECTION_STATE_ACTIV_BEGIN        10
-#define PROTECTION_STATE_ACTIV_WAIT         20
-#define PROTECTION_STATE_ACTIV              30
-#define PROTECTION_STATE_WORK               40
-#define PROTECTION_STATE_WORK_WAIT          50
-#define PROTECTION_STATE_REACTION_BEGIN     60
-#define PROTECTION_STATE_REACTION_WAIT      70
-#define PROTECTION_STATE_REACTION           80
-#define PROTECTION_STATE_FAILURE_BEGIN      90
-#define PROTECTION_STATE_FAILURE_WAIT       100
-#define PROTECTION_STATE_FAILURE            110
-#define PROTECTION_STATE_RESTART_BEGIN      120
-#define PROTECTION_STATE_RESTART_WAIT       130
-#define PROTECTION_STATE_RESTART_BLOCK      140
-#define PROTECTION_STATE_RESTART_BLOCK_WAIT 150
-#define PROTECTION_STATE_RESTART            160
-#define PROTECTION_STATE_STOP               170
-#define PROTECTION_STATE_BLOCK              180
-
 /*!
  * \brief The Protection class
  * Класс защит КСУ, реализует общие базовые функции для всех защит
@@ -33,6 +10,40 @@
 class Protection
 {
 public:
+  /*!
+   * \brief Список действий защиты
+  */
+  typedef enum {
+    ProtectionActionOff,
+    ProtectionActionRestart,
+    ProtectionActionBlock,
+  } ProtectionAction;
+
+  /*!
+   * \brief Список состояний защиты
+  */
+  typedef enum {
+    ProtectionStateOff               = 0,
+    ProtectionStateActivBegin        = 10,
+    ProtectionStateActivWait         = 20,
+    ProtectionStateActiv             = 30,
+    ProtectionStateWork              = 40,
+    ProtectionStateWorkWait          = 50,
+    ProtectionStateReactionBegin     = 60,
+    ProtectionStateReactionWait      = 70,
+    ProtectionStateReaction          = 80,
+    ProtectionStateFailureBegin      = 90,
+    ProtectionStateFailureWait       = 100,
+    ProtectionStateFailure           = 110,
+    ProtectionStateRestartBegin      = 120,
+    ProtectionStateRestartWait       = 130,
+    ProtectionStateRestartBlock      = 140,
+    ProtectionStateRestartBlockWait  = 150,
+    ProtectionStateRestart           = 160,
+    ProtectionStateStop              = 170,
+    ProtectionStateBlock             = 180,
+  } ProtectionState;
+
   Protection();
   ~Protection();
 
