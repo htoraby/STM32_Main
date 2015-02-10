@@ -289,7 +289,7 @@ void Device::createThread(const char *threadName)
 {
   // Заполняем структуру для создания задачи
   osThreadDef_t t = {threadName,                  // Название задачи
-                     updateParametersTask,     // Указатель на функцию задачи
+                     updateParametersTask,        // Указатель на функцию задачи
                      osPriorityNormal,            // Приоритет задачи
                      0,                           //
                      2 * configMINIMAL_STACK_SIZE // Размер стека задачи

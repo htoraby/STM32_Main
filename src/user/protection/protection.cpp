@@ -25,42 +25,6 @@ void Protection::init(const char *threadName)
   threadId_ = osThreadCreate(&t, this);
 }
 
-// Функция получения Id параметров защиты
-void Protection::getIdProtection(unsigned short mode,
-                                 unsigned short reaction,
-                                 unsigned short activDelay,
-                                 unsigned short tripDelay,
-                                 unsigned short restartDelay,
-                                 unsigned short restartLimit,
-                                 unsigned short restartReset,
-                                 unsigned short tripSetpoint,
-                                 unsigned short restartSetpoint,
-                                 unsigned short param,
-                                 unsigned short param2,
-                                 unsigned short state,
-                                 unsigned short time,
-                                 unsigned short restartCount,
-                                 unsigned short restartResetCount,
-                                 unsigned short valueParam)
-{
-  idMode_ = mode;
-  idReaction_= reaction;
-  idActivDelay_ = activDelay;
-  idTripDelay_ = tripDelay;
-  idRestartDelay_ = restartDelay;
-  idRestartLimit_ = restartLimit;
-  idRestartReset_ = restartReset;
-  idTripSetpoint_ = tripSetpoint;
-  idRestartSetpoint_ = restartSetpoint;
-  idParam_ = param;
-  idParam2_ = param2;
-  idState_ = state;
-  idTimer_ = time;
-  idRestartCount_ = restartCount;
-  idRestartResetCount_ = restartResetCount;
-  idValueParam_ = valueParam;
-}
-
 // Метод получения уставок защиты
 // Вызывается в бесконечном цикле для получения
 void Protection::getSetpointProt()

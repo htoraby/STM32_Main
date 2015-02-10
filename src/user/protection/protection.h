@@ -34,129 +34,9 @@ class Protection
 {
 public:
   Protection();
-
   ~Protection();
 
-  /// id параметров защиты
-  /// id Состояние защиты
-  unsigned short idMode_;
-  /// id Действие защиты
-  unsigned short idReaction_;
-  /// id задержка активации защиты
-  unsigned short idActivDelay_;
-  /// id задержка срабатывания защиты
-  unsigned short idTripDelay_;
-  /// id задержка АПВ защиты
-  unsigned short idRestartDelay_;
-  /// id количество АПВ
-  unsigned short idRestartLimit_;
-  /// id Время сброса количества АПВ
-  unsigned short idRestartReset_;
-  /// id граница срабатывания защиты
-  unsigned short idTripSetpoint_;
-  /// id граница АПВ
-  unsigned short idRestartSetpoint_;
-  /// id Параметр 1
-  unsigned short idParam_;
-  /// id Параметр 2
-  unsigned short idParam2_;
-  /// id Состояние автомата
-  unsigned short idState_;
-  /// id Таймера
-  unsigned short idTimer_;
-  /// id Счётчика АПВ
-  unsigned short idRestartCount_;
-  /// id Время от первого АПВ
-  unsigned short idRestartResetCount_;
-  /// id контролируемого параметра
-  unsigned short idValueParam_;
-
-  /// Локальные переменные для обработки
-  /// Состояние защиты
-  float mode_;
-  /// Действие защиты
-  float reaction_;
-  /// Уставка: задержка активации защиты
-  float activDelay_;
-  /// Уставка: задержка срабатывания защиты
-  float tripDelay_;
-  /// Уставка: задержка АПВ защиты
-  float restartDelay_;
-  /// Уставка: количество АПВ
-  float restartLimit_;
-  /// Уставка: Время сброса количества АПВ
-  float restartReset_;
-  /// Уставка: граница срабатывания защиты
-  float tripSetpoint_;
-  /// Уставка: граница АПВ
-  float restartSetpoint_;
-  /// Уставка: Параметр 1
-  float param_;
-  /// Уставка: Параметр 2
-  float param2_;
-
-  /// Состояние автомата защиты
-  int state_;
-  /// Текущее значение контролируемого параметра
-  float valueParameter_;
-  /// Текущее значение таймера
-  float timer_;
-  /// Текущее количество АПВ по защите
-  float restartCount_;
-  /// Время первого срабатывания АПВ
-  float restartResetCount_;
-
-  /// Флаг выполнения условия срабатывания защиты
-  bool alarm_;
-  /// Флаг запрещающего параметра
-  bool block_;
-
-  /// Индексы событий для записи в журнал
-  uint16_t protActivatedEventId_;
-  uint16_t apvEventId_;
-  uint16_t apvDisabledEventId_;
-  uint16_t protBlockedEventId_;
-
-  /// Идентификатор задачи
-  osThreadId threadId_;
-
   void init(const char *threadName);
-
-  /*!
-   * \brief getIdProtection
-   * Функция получения id параметров защиты
-   * \param mode
-   * \param reaction
-   * \param activDelay
-   * \param tripDelay
-   * \param restartDelay
-   * \param restartLimit
-   * \param restartReset
-   * \param tripSetpoint
-   * \param restartSetpoint
-   * \param param
-   * \param param2
-   * \param state
-   * \param time
-   * \param restartCount
-   * \param restartResetCount
-   */
-  void getIdProtection(unsigned short mode,
-                       unsigned short reaction,
-                       unsigned short activDelay,
-                       unsigned short tripDelay,
-                       unsigned short restartDelay,
-                       unsigned short restartLimit,
-                       unsigned short restartReset,
-                       unsigned short tripSetpoint,
-                       unsigned short restartSetpoint,
-                       unsigned short param,
-                       unsigned short param2,
-                       unsigned short state,
-                       unsigned short time,
-                       unsigned short restartCount,
-                       unsigned short restartResetCount,
-                       unsigned short valueParam);
 
   /*!
    * \brief getSetpointProt
@@ -164,7 +44,6 @@ public:
    * работы автомата защиты, таким образом получаем актуальные значения уставок
    */
   virtual void getSetpointProt();
-
 
   /*!
    * \brief getCurrentParamProt
@@ -246,6 +125,90 @@ public:
    * \return
    */
   bool calcRestartResetCount();
+
+protected:
+  /// id параметров защиты
+  /// id Состояние защиты
+  unsigned short idMode_;
+  /// id Действие защиты
+  unsigned short idReaction_;
+  /// id задержка активации защиты
+  unsigned short idActivDelay_;
+  /// id задержка срабатывания защиты
+  unsigned short idTripDelay_;
+  /// id задержка АПВ защиты
+  unsigned short idRestartDelay_;
+  /// id количество АПВ
+  unsigned short idRestartLimit_;
+  /// id Время сброса количества АПВ
+  unsigned short idRestartReset_;
+  /// id граница срабатывания защиты
+  unsigned short idTripSetpoint_;
+  /// id граница АПВ
+  unsigned short idRestartSetpoint_;
+  /// id Параметр 1
+  unsigned short idParam_;
+  /// id Параметр 2
+  unsigned short idParam2_;
+  /// id Состояние автомата
+  unsigned short idState_;
+  /// id Таймера
+  unsigned short idTimer_;
+  /// id Счётчика АПВ
+  unsigned short idRestartCount_;
+  /// id Время от первого АПВ
+  unsigned short idRestartResetCount_;
+  /// id контролируемого параметра
+  unsigned short idValueParam_;
+
+  /// Локальные переменные для обработки
+  /// Состояние защиты
+  float mode_;
+  /// Действие защиты
+  float reaction_;
+  /// Уставка: задержка активации защиты
+  float activDelay_;
+  /// Уставка: задержка срабатывания защиты
+  float tripDelay_;
+  /// Уставка: задержка АПВ защиты
+  float restartDelay_;
+  /// Уставка: количество АПВ
+  float restartLimit_;
+  /// Уставка: Время сброса количества АПВ
+  float restartReset_;
+  /// Уставка: граница срабатывания защиты
+  float tripSetpoint_;
+  /// Уставка: граница АПВ
+  float restartSetpoint_;
+  /// Уставка: Параметр 1
+  float param_;
+  /// Уставка: Параметр 2
+  float param2_;
+
+  /// Состояние автомата защиты
+  int state_;
+  /// Текущее значение контролируемого параметра
+  float valueParameter_;
+  /// Текущее значение таймера
+  float timer_;
+  /// Текущее количество АПВ по защите
+  float restartCount_;
+  /// Время первого срабатывания АПВ
+  float restartResetCount_;
+
+  /// Индексы событий для записи в журнал
+  uint16_t protActivatedEventId_;
+  uint16_t apvEventId_;
+  uint16_t apvDisabledEventId_;
+  uint16_t protBlockedEventId_;
+
+  /// Флаг выполнения условия срабатывания защиты
+  bool alarm_;
+  /// Флаг запрещающего параметра
+  bool block_;
+
+  /// Идентификатор задачи
+  osThreadId threadId_;
 
 };
 

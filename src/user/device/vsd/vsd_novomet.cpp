@@ -1697,7 +1697,7 @@ VsdNovomet::VsdNovomet()
   initModbusParameters();
 
   // Создание объекта протокола связи с утройством
-  DM = new DeviceModbus(ModbusParameters, 94,
+  dm_ = new DeviceModbus(ModbusParameters, 94,
                         uart4, 115200, 8, 1, 0, 1,
                         "ProtocolVsdNovomet",
                         &messageUpdateParameters_);
@@ -1716,40 +1716,40 @@ VsdNovomet::~VsdNovomet()
 // Метод проверки и обновления параметров устройства
 void VsdNovomet::updateParameters()
 {
-  float Value;
+  float value;
 
   while (1) {
     osDelay(1);
 
     // Проверяем есть ли новые значения параметров от устройства
-    int UpdateParamID = getMessageUpdateParameters();
+    int updateParamID = getMessageUpdateParameters();
     // По ID параметра находим параметр и обновляем значение
-    if (UpdateParamID) {
+    if (updateParamID) {
       // Получаем все поля параметра по ID
-      ModbusParameter Param = DM->getFieldAll(DM->getIndexAtID(UpdateParamID));
+      ModbusParameter Param = dm_->getFieldAll(dm_->getIndexAtID(updateParamID));
       switch (Param.TypeData) {
       case TYPE_DATA_INT16:
-        Value = (float)Param.Value.tdInt16[0];
+        value = (float)Param.Value.tdInt16[0];
         break;
       case TYPE_DATA_UINT16:
-        Value = (float)Param.Value.tdUint16[0];
+        value = (float)Param.Value.tdUint16[0];
         break;
       case  TYPE_DATA_INT32:
-        Value = (float)Param.Value.tdInt32;
+        value = (float)Param.Value.tdInt32;
         break;
       case  TYPE_DATA_UINT32:
-        Value = (float)Param.Value.tdUint32;
+        value = (float)Param.Value.tdUint32;
         break;
       case  TYPE_DATA_FLOAT:
-        Value = (float)Param.Value.tdFloat;
+        value = (float)Param.Value.tdFloat;
         break;
       default:
         break;
       }
-      Value = Value * Param.Scale;
-      Value = Value / Param.Coefficient;
-      Value = (Value  - (Units[Param.Physic][Param.Unit][1]))/(Units[Param.Physic][Param.Unit][0]);
-      setFieldValue(UpdateParamID, Value);
+      value = value * Param.Scale;
+      value = value / Param.Coefficient;
+      value = (value  - (Units[Param.Physic][Param.Unit][1]))/(Units[Param.Physic][Param.Unit][0]);
+      setFieldValue(updateParamID, value);
     }
     else {
 
@@ -1773,8 +1773,8 @@ unsigned char VsdNovomet::startVSD(void)
     // Если записали данные в устройство
     if (!writeParameter(VSD_INVERTOR_CONTROL, (float)INV_CONTROL_START)) {
       // Устанавливаем более высокие приоритеты чтения регистров состояния инвертора
-      DM->setFieldPriority(DM->getIndexAtID(VSD_INVERTOR_STATUS), 1);
-      DM->setFieldPriority(DM->getIndexAtID(VSD_INVERTOR_EXT_STATUS), 1);
+      dm_->setFieldPriority(dm_->getIndexAtID(VSD_INVERTOR_STATUS), 1);
+      dm_->setFieldPriority(dm_->getIndexAtID(VSD_INVERTOR_EXT_STATUS), 1);
       // TODO: Надо продумать условие выхода из цикла если не запустились
       while (1) {
         // Если стоит  бит запуска двигателя
@@ -1803,8 +1803,8 @@ int VsdNovomet::stopVSD(void)
     // Если записали данные в устройство
     if (!writeParameter(VSD_INVERTOR_CONTROL, (float)INV_CONTROL_STOP)) {
       // Устанавливаем более высокие приоритеты чтения регистров состояния инвертора
-      DM->setFieldPriority(DM->getIndexAtID(VSD_INVERTOR_STATUS), 1);
-      DM->setFieldPriority(DM->getIndexAtID(VSD_INVERTOR_EXT_STATUS), 1);
+      dm_->setFieldPriority(dm_->getIndexAtID(VSD_INVERTOR_STATUS), 1);
+      dm_->setFieldPriority(dm_->getIndexAtID(VSD_INVERTOR_EXT_STATUS), 1);
       // TODO: Надо продумать условие выхода из цикла если не запустились
       while (1) {
         // Если не стоит бит работы двигателя двигателя
@@ -1843,8 +1843,8 @@ unsigned char VsdNovomet::setMinFrequency(float lowLimitfrequency)
     return RETURN_ERROR;
   }
   else {
-    DM->writeModbusParameter(VSD_LOW_LIM_SPEED_MOTOR, getValue(VSD_LOW_LIM_SPEED_MOTOR));
-    DM->writeModbusParameter(VSD_FREQUENCY,getValue(VSD_FREQUENCY));
+    dm_->writeModbusParameter(VSD_LOW_LIM_SPEED_MOTOR, getValue(VSD_LOW_LIM_SPEED_MOTOR));
+    dm_->writeModbusParameter(VSD_FREQUENCY,getValue(VSD_FREQUENCY));
     return RETURN_OK;
   }
 }
@@ -1856,8 +1856,8 @@ unsigned char VsdNovomet::setMaxFrequency(float highLimitFrequency)
     return RETURN_ERROR;
   }
   else {
-    DM->writeModbusParameter(VSD_HIGH_LIM_SPEED_MOTOR, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
-    DM->writeModbusParameter(VSD_FREQUENCY,getValue(VSD_FREQUENCY));
+    dm_->writeModbusParameter(VSD_HIGH_LIM_SPEED_MOTOR, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+    dm_->writeModbusParameter(VSD_FREQUENCY,getValue(VSD_FREQUENCY));
     return RETURN_OK;
   }
 }
@@ -1884,7 +1884,7 @@ unsigned char VsdNovomet::setDirectRotation()
   unsigned char result = RETURN_ERROR;
   result = Vsd::setDirectRotation();
   if (!result) {
-    DM->writeModbusParameter(VSD_INVERTOR_CONTROL, INV_CONTROL_LEFT_DIRECTION);
+    dm_->writeModbusParameter(VSD_INVERTOR_CONTROL, INV_CONTROL_LEFT_DIRECTION);
   }
   return result;
 }
@@ -1895,7 +1895,7 @@ unsigned char VsdNovomet::setReverseRotation()
   unsigned char result = RETURN_ERROR;
   result = Vsd::setReverseRotation();
   if (!result) {
-    DM->writeModbusParameter(VSD_INVERTOR_CONTROL, INV_CONTROL_RIGHT_DIRECTION);
+    dm_->writeModbusParameter(VSD_INVERTOR_CONTROL, INV_CONTROL_RIGHT_DIRECTION);
   }
   return result;
 }
@@ -1907,7 +1907,7 @@ unsigned char VsdNovomet::writeParameter(unsigned short id, float value)
   // Если выполнили запись в банк параметров устройства
   if(!setValue(id, value)) {
     // Выполняем запись в устройство
-    DM->writeModbusParameter(id, value);
+    dm_->writeModbusParameter(id, value);
     return 0;
   }
   else
