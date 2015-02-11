@@ -10,7 +10,7 @@
 
 Ccs::Ccs() : Device(CCS_BEGIN)
 {
-// TODO Auto-generated destructor stub
+  initParameters();
 }
 
 Ccs::~Ccs()
@@ -18,8 +18,6 @@ Ccs::~Ccs()
 	// TODO Auto-generated destructor stub
 }
 
-
-// Проверка находится ли станция в стопе
 bool Ccs::checkStopCCS()
 {
   unsigned int state = (unsigned int)getValue(CCS_CONDITION);
@@ -32,7 +30,6 @@ bool Ccs::checkStopCCS()
     return 1;
 }
 
-// Проверка находится ли станция в работе
 bool Ccs::checkWorkCCS()
 {
   unsigned int state = (unsigned int)getValue(CCS_CONDITION);
@@ -42,7 +39,6 @@ bool Ccs::checkWorkCCS()
     return 1;
 }
 
-// Проверка находится ли станция в блокировке
 bool Ccs::checkBlockCCS()
 {
   unsigned int state = (unsigned int)getValue(CCS_CONDITION);
@@ -52,7 +48,6 @@ bool Ccs::checkBlockCCS()
     return 1;
 }
 
-// Проверка что КСУ в режиме АUTO
 bool Ccs::checkAutoControlMode()
 {
   unsigned int controlMode = (unsigned int)getValue(CCS_CONTROL_MODE);
@@ -72,4 +67,55 @@ bool Ccs::checkAutoControlMode()
 float Ccs::getTime()
 {
   return getValue(CCS_DATE_TIME);
+}
+
+void Ccs::initParameters()
+{
+  parameters_ = parametersArray_;
+  countParameter_ = sizeof(parametersArray_)/sizeof(parameter);
+
+  // Пустой элемент массива
+  parameters_[CCS_BEGIN - CCS_BEGIN].id                = CCS_BEGIN;
+  parameters_[CCS_BEGIN - CCS_BEGIN].access            = ACCESS_ERROR;
+  parameters_[CCS_BEGIN - CCS_BEGIN].operation         = OPERATION_ERROR;
+  parameters_[CCS_BEGIN - CCS_BEGIN].physic            = PHYSIC_ERROR;
+  parameters_[CCS_BEGIN - CCS_BEGIN].validity          = VALIDITY_ERROR;
+  parameters_[CCS_BEGIN - CCS_BEGIN].update            = UPDATE_ERROR;
+  parameters_[CCS_BEGIN - CCS_BEGIN].value         = 0.0;
+  parameters_[CCS_BEGIN - CCS_BEGIN].min           = 0.0;
+  parameters_[CCS_BEGIN - CCS_BEGIN].max           = 0.0;
+  parameters_[CCS_BEGIN - CCS_BEGIN].def           = 0.0;
+
+  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].id          = CCS_ACCESS_LEVEL;
+  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].access      = ACCESS_OPERATOR;
+  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
+  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].validity    = VALIDITY_ERROR;
+  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].update      = UPDATE_ERROR;
+  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].value   = 0.0;
+  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].min     = 0.0;
+  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].max     = 0.0;
+  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].def     = 0.0;
+
+  parameters_[CCS_CONDITION - CCS_BEGIN].id          = CCS_CONDITION;
+  parameters_[CCS_CONDITION - CCS_BEGIN].access      = ACCESS_OPERATOR;
+  parameters_[CCS_CONDITION - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_CONDITION - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
+  parameters_[CCS_CONDITION - CCS_BEGIN].validity    = VALIDITY_ERROR;
+  parameters_[CCS_CONDITION - CCS_BEGIN].update      = UPDATE_ERROR;
+  parameters_[CCS_CONDITION - CCS_BEGIN].value   = CCS_CONDITION_STOP;
+  parameters_[CCS_CONDITION - CCS_BEGIN].min     = CCS_CONDITION_STOP;
+  parameters_[CCS_CONDITION - CCS_BEGIN].max     = CCS_CONDITION_RUN;
+  parameters_[CCS_CONDITION - CCS_BEGIN].def     = CCS_CONDITION_STOP;
+
+  parameters_[CCS_CONTROL_MODE - CCS_BEGIN].id          = CCS_CONTROL_MODE;
+  parameters_[CCS_CONTROL_MODE - CCS_BEGIN].access      = ACCESS_OPERATOR;
+  parameters_[CCS_CONTROL_MODE - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_CONTROL_MODE - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
+  parameters_[CCS_CONTROL_MODE - CCS_BEGIN].validity    = VALIDITY_ERROR;
+  parameters_[CCS_CONTROL_MODE - CCS_BEGIN].update      = UPDATE_ERROR;
+  parameters_[CCS_CONTROL_MODE - CCS_BEGIN].value   = CCS_CONTROL_MODE_STOP;
+  parameters_[CCS_CONTROL_MODE - CCS_BEGIN].min     = CCS_CONTROL_MODE_STOP;
+  parameters_[CCS_CONTROL_MODE - CCS_BEGIN].max     = CCS_CONTROL_MODE_AUTO;
+  parameters_[CCS_CONTROL_MODE - CCS_BEGIN].def     = CCS_CONTROL_MODE_STOP;
 }

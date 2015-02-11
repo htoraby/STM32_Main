@@ -85,7 +85,7 @@ void NovobusSlave::reseivePackage()
 {
   // Заполняем заголовок пакета
   txBuffer_[0] = rxBuffer_[0];
-  txBuffer_[2] = 0;
+  txBuffer_[2] = NoneError;
 
   // Команда
   uint8_t command = rxBuffer_[0];
@@ -228,13 +228,16 @@ void NovobusSlave::reseivePackage()
         break;
 
       default:
-
+        txBuffer_[2] = InvalidCmdError;
+        txBuffer_[3] = NoneCommand;
+        txBuffer_[4] = 0;
+        sizePkt = 7;
         break;
     }
   }
   else {
     // Ошибка CRC
-    txBuffer_[2] = 1;
+    txBuffer_[2] = CrcError;
     txBuffer_[3] = NoneCommand;
     txBuffer_[4] = 0;
     sizePkt = 7;

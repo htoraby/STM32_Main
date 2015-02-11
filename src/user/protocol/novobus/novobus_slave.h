@@ -5,7 +5,7 @@
 #include "board.h"
 #include "host.h"
 
-#define MAX_IDS_BUFFER 40
+#define MAX_IDS_BUFFER 40 //!< Максимальное количество ID во временом буффере
 
 /*!
  * \brief Класс протокола обмена между stm32 и контроллером визуализации
@@ -15,7 +15,6 @@ class NovobusSlave
 {
 
 public:
-
   /*!
    * \brief Комманды протокола "Novobus"
   */
@@ -28,6 +27,15 @@ public:
     UpdateEventsCommand,
     ReadEventsCommand,
   } NovobusCommand;
+
+  /*!
+   * \brief Ошибки
+  */
+  typedef enum {
+    NoneError,
+    CrcError,
+    InvalidCmdError,
+  } NovobusError;
 
   NovobusSlave();
   ~NovobusSlave();
@@ -49,21 +57,25 @@ public:
 
   /*!
    * \brief Метод получения события из очереди
+   * \return ID события
    */
   int getMessageEvents();
 
   /*!
    * \brief Метод получения параметра из очереди
+   * \return ID параметра
    */
   int getMessageParams();
 
   /*!
    * \brief Метод добавления ID события в очередь
+   * \param id - ID события
    */
   void putMessageEvents(uint32_t id);
 
   /*!
    * \brief Метод добавления ID параметра в очередь
+   * \param id - ID параметра
    */
   void putMessageParams(uint32_t id);
 
@@ -73,19 +85,11 @@ private:
    */
   void checkMessage();
 
-  /*!
-   * \brief Идентификатор задачи Novobus
-   */
+  //! Идентификатор задачи Novobus
   osThreadId threadId_;
-
-  /*!
-   * \brief Очередь на посылку сообытий
-   */
+  //! Очередь на посылку сообытий
   osMessageQId messageEvents_;
-
-  /*!
-   * \brief Очередь на запись данных
-   */
+  //! Очередь на запись данных
   osMessageQId messageParams_;
 
   uint8_t txBuffer_[HOST_BUF_SIZE];
