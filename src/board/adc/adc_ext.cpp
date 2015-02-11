@@ -104,9 +104,9 @@ void adcExtInit()
 
   __HAL_LINKDMA(&hspi2,hdmarx,hdma_spi2_rx);
 
-  HAL_NVIC_SetPriority(DMA1_Stream4_IRQn, 0, 1);
+  HAL_NVIC_SetPriority(DMA1_Stream4_IRQn, 3, 1);
   HAL_NVIC_EnableIRQ(DMA1_Stream4_IRQn);
-  HAL_NVIC_SetPriority(DMA1_Stream3_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA1_Stream3_IRQn, 3, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream3_IRQn);
 
   updateModeAnalogIn();
