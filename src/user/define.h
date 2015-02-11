@@ -63,6 +63,9 @@ enum enReturns
   RETURN_LAST
 };
 
+/*!
+ * \brief Список уровеней доступа
+ */
 enum enAccess
 {
   ACCESS_ERROR          = 0,

@@ -18,11 +18,10 @@
  */
 class Vsd: public Device
 {
-  // ОТКРЫТЫЕ ЧЛЕНЫ КЛАССА
+
 public:
-  /// Конструктор класса
+
   Vsd();
-  /// Деструктор класса
   virtual ~Vsd();
 
   void initParameters();
@@ -237,8 +236,8 @@ public:
   int setTorqueLimit(double TorqueLimit);
 
 private:
-  /// Массив параметров устройства
-  parameter parametersArray_[215];
+  //! Массив параметров устройства
+  parameter parametersArray_[VSD_END - VSD_BEGIN];
 
 };
 
