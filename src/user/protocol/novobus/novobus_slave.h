@@ -92,6 +92,8 @@ private:
   uint8_t rxBuffer_[HOST_BUF_SIZE];
   uint16_t idsBuffer_[MAX_IDS_BUFFER];
   uint8_t idsCount_;
+
+  uint16_t rxSize;
 };
 
 #endif // NOVOBUS_SLAVE_H

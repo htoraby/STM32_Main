@@ -41,7 +41,8 @@ void NovobusSlave::task()
   while(1) {
     // Проверка семафора - если он свободен, то получен покет от хоста
     if (osSemaphoreWait(semaphoreId, osWaitForever) != osEventTimeout) {
-      if (hostReadData(rxBuffer_)) {
+      rxSize = hostReadData(rxBuffer_);
+      if (rxSize) {
         reseivePackage();
         hostWriteData(txBuffer_, txBuffer_[1]);
       }
@@ -187,16 +188,15 @@ void NovobusSlave::reseivePackage()
         // Цикл по количеству считываемых параметров
         for (int i = 0; i < dataNumber; i++) {
           // Получаем ID параметра
-          id.tdChar[0] = rxBuffer_[2 + i*2];
-          id.tdChar[1] = rxBuffer_[3 + i*2];
+          id.tdUint16[0] = (rxBuffer_[2 + i*2] << 8) + rxBuffer_[3 + i*2];
           // Получить значение параметра
           value.tdFloat = parameters.getValue(id.tdUint16[0]);
-          txBuffer_[5 + i*6]  = id.tdChar[0];
-          txBuffer_[6 + i*6]  = id.tdChar[1];
-          txBuffer_[7 + i*6]  = value.tdChar[0];
-          txBuffer_[8 + i*6]  = value.tdChar[1];
-          txBuffer_[9 + i*6]  = value.tdChar[2];
-          txBuffer_[10 + i*6] = value.tdChar[3];
+          txBuffer_[5 + i*6]  = id.tdChar[1];
+          txBuffer_[6 + i*6]  = id.tdChar[0];
+          txBuffer_[7 + i*6]  = value.tdChar[3];
+          txBuffer_[8 + i*6]  = value.tdChar[2];
+          txBuffer_[9 + i*6]  = value.tdChar[1];
+          txBuffer_[10 + i*6] = value.tdChar[0];
         }
 
         checkMessage();
@@ -212,13 +212,12 @@ void NovobusSlave::reseivePackage()
         dataNumber = (sizePkt - 4)/6;
         for (int i = 0; i < dataNumber; i++) {
           // Получаем ID параметра
-          id.tdChar[0] = rxBuffer_[2 + i*6];
-          id.tdChar[1] = rxBuffer_[3 + i*6];
+          id.tdUint16[0] = (rxBuffer_[2 + i*6] << 8) + rxBuffer_[3 + i*6];
           // Получаем значение параметра
-          value.tdChar[0] = rxBuffer_[4 + i*6];
-          value.tdChar[1] = rxBuffer_[5 + i*6];
-          value.tdChar[2] = rxBuffer_[6 + i*6];
-          value.tdChar[3] = rxBuffer_[7 + i*6];
+          value.tdChar[3] = rxBuffer_[4 + i*6];
+          value.tdChar[2] = rxBuffer_[5 + i*6];
+          value.tdChar[1] = rxBuffer_[6 + i*6];
+          value.tdChar[0] = rxBuffer_[7 + i*6];
           // Вызываем функцию записи значения параметра
           parameters.setValue(id.tdUint16[0], value.tdFloat);
         }

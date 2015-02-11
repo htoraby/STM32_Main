@@ -11,6 +11,7 @@ static osSemaphoreId hostSemaphoreId;
 static uint8_t txBuffer[2*HOST_BUF_SIZE];
 static uint8_t rxBuffer[HOST_BUF_SIZE];
 
+int spiFlagOvr = 0;
 static int rxCount = 0;
 static int rxTimeout = 0;
 static int rxActive = 0;
@@ -111,6 +112,7 @@ void hostRxIRQHandler(void)
         rxTimeout = TIMEOUT_RX;
         rxCount = 0;
         rxActive = 1;
+        spiFlagOvr = 0;
       }
     }
     // Прием данных пакета
@@ -143,8 +145,10 @@ void hostRxIRQHandler(void)
     if(__HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_MODF) != RESET)
       __HAL_SPI_CLEAR_MODFFLAG(&hspi4);
 
-    if(__HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_OVR) != RESET)
+    if(__HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_OVR) != RESET) {
       __HAL_SPI_CLEAR_OVRFLAG(&hspi4);
+      spiFlagOvr = 1;
+    }
 
     if(__HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_FRE) != RESET)
       __HAL_SPI_CLEAR_FREFLAG(&hspi4);
@@ -190,11 +194,11 @@ static HAL_StatusTypeDef spiWaitOnFlagUntilTimeout(uint32_t flag, FlagStatus sta
 //  SPI_HandleTypeDef* hspi = ( SPI_HandleTypeDef* )((DMA_HandleTypeDef* )hdma)->Parent;
 
 //  if((hdma->Instance->CR & DMA_SxCR_CIRC) == 0) {
-//    if(spiWaitOnFlagUntilTimeout(hspi, SPI_FLAG_TXE, RESET, 10) != HAL_OK)
+//    if(spiWaitOnFlagUntilTimeout(hspi, SPI_FLAG_TXE, RESET, 1000) != HAL_OK)
 //      status = StatusError;
 //    hspi->Instance->CR2 &= (uint32_t)(~SPI_CR2_TXDMAEN);
 
-//    if(spiWaitOnFlagUntilTimeout(hspi, SPI_FLAG_BSY, SET, 10) != HAL_OK)
+//    if(spiWaitOnFlagUntilTimeout(hspi, SPI_FLAG_BSY, SET, 1000) != HAL_OK)
 //      status = StatusError;
 //  }
 
@@ -210,6 +214,7 @@ static HAL_StatusTypeDef spiWaitOnFlagUntilTimeout(uint32_t flag, FlagStatus sta
 StatusType hostWriteData(uint8_t *data, int size, uint32_t timeout)
 {
   int idx = 0;
+  txBuffer[idx++] = 0x00;
   txBuffer[idx++] = 0x7E;
 
   for (int i = 0; i < size; i++) {
@@ -222,6 +227,7 @@ StatusType hostWriteData(uint8_t *data, int size, uint32_t timeout)
   }
 
   txBuffer[idx++] = 0x7E;
+  txBuffer[idx++] = 0x00;
 
 //  hspi4.hdmatx->XferCpltCallback = spiDmaTransmitCplt;
 //  hspi4.Instance->CR2 |= SPI_CR2_TXDMAEN;
@@ -236,10 +242,10 @@ StatusType hostWriteData(uint8_t *data, int size, uint32_t timeout)
     hspi4.Instance->DR = (*pTxBuffPtr++);
     xferCount--;
   }
-  if (spiWaitOnFlagUntilTimeout(SPI_FLAG_TXE, RESET, 10) != HAL_OK)
+  if (spiWaitOnFlagUntilTimeout(SPI_FLAG_TXE, RESET, timeout) != HAL_OK)
     return StatusError;
 
-  if (spiWaitOnFlagUntilTimeout(SPI_FLAG_BSY, SET, 10) != HAL_OK)
+  if (spiWaitOnFlagUntilTimeout(SPI_FLAG_BSY, SET, timeout) != HAL_OK)
     return StatusError;
 
   if (hspi4.Init.Direction == SPI_DIRECTION_2LINES)

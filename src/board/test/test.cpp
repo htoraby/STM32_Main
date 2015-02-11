@@ -101,8 +101,8 @@ static void testThread(void * argument)
   uint8_t startTestUsb = 1;
 #endif
 
-  BlinkLed blinkLed;
-  blinkLed.prvSetupHardware();
+//  BlinkLed blinkLed;
+//  blinkLed.prvSetupHardware();
 
 #if (TEST_UART == 1)
   int sizePkt;
@@ -154,13 +154,14 @@ static void testThread(void * argument)
 #endif
 
 #if (TEST_LED == 1)
-    blinkLed.toggle();
-    osDelay(500);
+//    blinkLed.toggle();
+    toggleLed(FanLed);
 
-    parameters.setValue(CCS_LOG_PERIOD_NORMAL, 10);
-    parameters.setValue(CCS_LOG_PERIOD_FAST, 20);
-    novobusSlave.putMessageParams(CCS_LOG_PERIOD_NORMAL);
-    novobusSlave.putMessageParams(CCS_LOG_PERIOD_FAST);
+    parameters.setValue(VSD_UNIT_SPEED, 10);
+    parameters.setValue(VSD_TYPE_MOTOR, 20);
+    novobusSlave.putMessageParams(VSD_UNIT_SPEED);
+    novobusSlave.putMessageParams(VSD_TYPE_MOTOR);
+    osDelay(5000);
 
 //    logRunning.start(AutoType);
 //    logAlarm.start(AutoType, 0);

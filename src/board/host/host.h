@@ -5,6 +5,8 @@
 
 #define HOST_BUF_SIZE	256
 
+extern int spiFlagOvr;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
