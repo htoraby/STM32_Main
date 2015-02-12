@@ -9,28 +9,14 @@
   ******************************************************************************
   */
 
-#include "board.h"
 #include "ff.h"
-#include "ff_gen_drv.h"
-#include "usbh_diskio.h"
-#include "usb_host.h"
-#include "test.h"
-#include "gpio.h"
-#include "rtc.h"
-#include "sram.h"
-#include "fram.h"
-#include "flash_ext.h"
-#include "adc.h"
-#include "adc_ext.h"
-#include "iwdg.h"
+#include "board.h"
 #include "rcause.h"
-#include "temp_sensor.h"
 #include "user_main.h"
+#include "test.h"
 
 static void systemClockConfig();
 static void mainThread(void *argument);
-
-bool isBoardInit = false;
 
 int main()
 {
@@ -40,33 +26,18 @@ int main()
   // Инициализация системы тактирования
   systemClockConfig();
 
-  // Инициализация переферии
-  gpioInit();
-  sramInit();
-  rtcInit();
-  adcInit(adc1);
-  adcInit(adc2);
-  adcExtInit();
-  framInit();
-  flashExtInit(FlashSpi1);
-  flashExtInit(FlashSpi5);
-  tempSensorInit();
-
-  iwdgInit();
-
-  isBoardInit = true;
+  boardInit();
 
   // Создание основной задачи и запуск диспетчера
-  osThreadDef(Main_Thread, mainThread, osPriorityNormal, 0, 6*configMINIMAL_STACK_SIZE);
-  osKernelStart(osThread(Main_Thread), NULL);
+  osThreadDef(MainThread, mainThread, osPriorityNormal, 0, 6*configMINIMAL_STACK_SIZE);
+  osKernelStart(osThread(MainThread), NULL);
 
   // Сюда не должны попасть, т.к. мы запустили диспетчер задач
   while (1) { }
 }
 
 /*!
- \brief Инициализация системы тактирования
-
+ * \brief Инициализация системы тактирования
 */
 static void systemClockConfig()
 {
@@ -101,8 +72,7 @@ static void systemClockConfig()
 }
 
 /*!
- \brief Основная задача
-
+ * \brief Основная задача
 */
 static void mainThread(void *argument)
 {
@@ -111,17 +81,12 @@ static void mainThread(void *argument)
   // Подсчет счетчиков перезапуска СPU
   resetCauseCheck();
 
-  /* FatFS: Link the USBH disk I/O driver */
-  USBH_DriverNum = FATFS_LinkDriver(&USBH_Driver, USBH_Path);
-
-  // Инициализация USB HOST
-  MX_USB_HOST_Init();
+  usbInit();
 
 #if (USE_TEST == 1)
   testInit();
 #endif
 
-  // Инициализация пользовательских задач и объектов
   userInit();
 
   while(1) {

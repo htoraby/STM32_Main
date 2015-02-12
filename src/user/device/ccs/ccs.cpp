@@ -6,9 +6,12 @@
  */
 
 #include "ccs.h"
+#include "gpio.h"
 
-
-Ccs::Ccs() : Device(CCS_BEGIN)
+Ccs::Ccs()
+  : Device(CCS_BEGIN)
+  , controlModeOld(0)
+  , conditionOld(0)
 {
   initParameters();
 }
@@ -22,8 +25,8 @@ bool Ccs::checkStopCCS()
 {
   unsigned int state = (unsigned int)getValue(CCS_CONDITION);
   if ((state == CCS_CONDITION_STOP)
-      ||(state == CCS_CONDITION_WAIT)
-      ||(state == CCS_CONDITION_BLOCK)) {
+      || (state == CCS_CONDITION_WAIT)
+      || (state == CCS_CONDITION_BLOCK)) {
     return 0;
   }
   else
@@ -57,16 +60,56 @@ bool Ccs::checkAutoControlMode()
     return 1;
 }
 
-
-/*!
- * \brief getTime
- * Функция получения текущего времени в сек от
- * 00:00:00 01.01.1970 года
- * \return Возвращает значение секунд
- */
 float Ccs::getTime()
 {
   return getValue(CCS_DATE_TIME);
+}
+
+void Ccs::conditionChanged()
+{
+  int condition = getValue(CCS_CONDITION);
+  if (condition != conditionOld) {
+    conditionOld = condition;
+    offAllLeds();
+    switch (condition) {
+      case CCS_CONDITION_WAIT:
+        onLed(WaitLed);
+        break;
+      case CCS_CONDITION_DELAY:
+        onLed(WaitLed);
+        onLed(WorkLed);
+        break;
+      case CCS_CONDITION_BLOCK:
+        onLed(StopLed);
+        break;
+      case CCS_CONDITION_RUN:
+        onLed(WorkLed);
+        break;
+      default:
+        onLed(StopLed);
+        break;
+    }
+  }
+}
+
+void Ccs::controlModeChanged()
+{
+  int controlMode = getValue(CCS_CONTROL_MODE);
+  if (controlMode != controlModeOld) {
+    switch (controlMode) {
+      case CCS_CONTROL_MODE_MANUAL:
+        // TODO: времено для проверки старта
+        setValue(CCS_CONDITION, CCS_CONDITION_RUN);
+        break;
+      case CCS_CONTROL_MODE_AUTO:
+
+        break;
+      default:
+        // TODO: времено для проверки стопа
+        setValue(CCS_CONDITION, CCS_CONDITION_STOP);
+        break;
+    }
+  }
 }
 
 void Ccs::initParameters()
@@ -92,10 +135,10 @@ void Ccs::initParameters()
   parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].validity    = VALIDITY_ERROR;
   parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].update      = UPDATE_ERROR;
-  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].value   = 0.0;
-  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].min     = 0.0;
-  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].max     = 0.0;
-  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].def     = 0.0;
+  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].value   = ACCESS_OPERATOR;
+  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].min     = ACCESS_ERROR;
+  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].max     = ACCESS_LAST;
+  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].def     = ACCESS_OPERATOR;
 
   parameters_[CCS_CONDITION - CCS_BEGIN].id          = CCS_CONDITION;
   parameters_[CCS_CONDITION - CCS_BEGIN].access      = ACCESS_OPERATOR;

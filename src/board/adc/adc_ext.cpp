@@ -112,8 +112,8 @@ void adcExtInit()
   updateModeAnalogIn();
 
   semaphoreAdcExt = osSemaphoreCreate(NULL, 1);
-  osThreadDef(AdcExt_Thread, adcExtThread, osPriorityLow, 0, configMINIMAL_STACK_SIZE);
-  osThreadCreate(osThread(AdcExt_Thread), NULL);
+  osThreadDef(AdcExt, adcExtThread, osPriorityLow, 0, configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(AdcExt), NULL);
 }
 
 void setModeAnalogInExt(uint8_t num, uint8_t mode)

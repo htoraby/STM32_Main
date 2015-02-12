@@ -48,19 +48,19 @@ uint8_t bufferRx[4096];
 void testInit()
 {
   /* Create Test thread */
-  osThreadDef(Test_Thread, testThread, osPriorityNormal, 0, 6 * configMINIMAL_STACK_SIZE);
-  osThreadCreate(osThread(Test_Thread), NULL);
+  osThreadDef(Test, testThread, osPriorityNormal, 0, 6 * configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(Test), NULL);
 
 #if (TEST_UART == 1)
-  osThreadDef(Test_Uart, testUartThread, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
-  osThreadCreate(osThread(Test_Uart), NULL);
+  osThreadDef(TestUart, testUartThread, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(TestUart), NULL);
 #endif
 
 #if (TEST_HOST_UART == 1)
-  osThreadDef(Test_HostUartRx, testHostUartRxThread, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
-  osThreadCreate(osThread(Test_HostUartRx), NULL);
-  osThreadDef(Test_HostUartTx, testHostUartTxThread, osPriorityNormal, 0, 3 * configMINIMAL_STACK_SIZE);
-  osThreadCreate(osThread(Test_HostUartTx), NULL);
+  osThreadDef(TestHostUartRx, testHostUartRxThread, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(TestHostUartRx), NULL);
+  osThreadDef(TestHostUartTx, testHostUartTxThread, osPriorityNormal, 0, 3 * configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(TestHostUartTx), NULL);
 #endif
 }
 
@@ -101,8 +101,10 @@ static void testThread(void * argument)
   uint8_t startTestUsb = 1;
 #endif
 
-//  BlinkLed blinkLed;
-//  blinkLed.prvSetupHardware();
+#if (TEST_LED == 1)
+  BlinkLed blinkLed;
+  blinkLed.prvSetupHardware();
+#endif
 
 #if (TEST_UART == 1)
   int sizePkt;
@@ -128,6 +130,19 @@ static void testThread(void * argument)
   testLog();
 
   while(1) {
+    toggleLed(FanLed);
+
+
+    parameters.setValue(VSD_UNIT_SPEED, 10);
+    parameters.setValue(VSD_TYPE_MOTOR, 20);
+    novobusSlave.putMessageParams(VSD_UNIT_SPEED);
+    novobusSlave.putMessageParams(VSD_TYPE_MOTOR);
+    osDelay(50);
+
+//    logRunning.start(AutoType);
+//    logAlarm.start(AutoType, 0);
+
+
 #if (TEST_USB_FAT == 1)
     if ((disk_status(0) == RES_OK) && (startTestUsb == 1)) {
       FRESULT result = f_mount(&fatfs, "0", 1);
@@ -154,17 +169,8 @@ static void testThread(void * argument)
 #endif
 
 #if (TEST_LED == 1)
-//    blinkLed.toggle();
-    toggleLed(FanLed);
-
-    parameters.setValue(VSD_UNIT_SPEED, 10);
-    parameters.setValue(VSD_TYPE_MOTOR, 20);
-    novobusSlave.putMessageParams(VSD_UNIT_SPEED);
-    novobusSlave.putMessageParams(VSD_TYPE_MOTOR);
-    osDelay(5000);
-
-//    logRunning.start(AutoType);
-//    logAlarm.start(AutoType, 0);
+    blinkLed.toggle();
+    osDelay(500);
 #endif
 
 #if (TEST_UART == 1)

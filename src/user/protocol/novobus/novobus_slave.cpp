@@ -20,6 +20,8 @@ NovobusSlave::~NovobusSlave()
 
 void NovobusSlave::init()
 {
+  hostInit();
+
   // Создаём очередь сообщений событий (надписей на дисплее)
   osMessageQDef(MessageEventsNovobus, 100, uint32_t);
   messageEvents_ = osMessageCreate(osMessageQ(MessageEventsNovobus), NULL);
@@ -39,6 +41,7 @@ void NovobusSlave::task()
   osSemaphoreId semaphoreId = getHostSemaphore();
 
   while(1) {
+    osDelay(1);
     // Проверка семафора - если он свободен, то получен покет от хоста
     if (osSemaphoreWait(semaphoreId, osWaitForever) != osEventTimeout) {
       rxSize = hostReadData(rxBuffer_);

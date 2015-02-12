@@ -134,9 +134,9 @@ void flashExtInit(FlashSpiNum num)
 
     __HAL_LINKDMA(spiX, hdmarx, hdma_spi1_rx);
 
-    HAL_NVIC_SetPriority(DMA2_Stream5_IRQn, 0, 1);
+    HAL_NVIC_SetPriority(DMA2_Stream5_IRQn, 1, 1);
     HAL_NVIC_EnableIRQ(DMA2_Stream5_IRQn);
-    HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 0, 0);
+    HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 1, 0);
     HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
   }
   else if (num == FlashSpi5) {
@@ -168,9 +168,9 @@ void flashExtInit(FlashSpiNum num)
 
     __HAL_LINKDMA(spiX, hdmarx, hdma_spi5_rx);
 
-    HAL_NVIC_SetPriority(DMA2_Stream4_IRQn, 0, 1);
+    HAL_NVIC_SetPriority(DMA2_Stream4_IRQn, 1, 1);
     HAL_NVIC_EnableIRQ(DMA2_Stream4_IRQn);
-    HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 0, 0);
+    HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 1, 0);
     HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
   }
 

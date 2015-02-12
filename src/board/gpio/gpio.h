@@ -112,6 +112,11 @@ void offLed(LedType led);
 void toggleLed(LedType led);
 
 /*!
+ * \brief Отключение всех LED
+ */
+void offAllLeds();
+
+/*!
  \brief Настройка вывода на вход
 
  \param port @ref GPIO_TypeDef

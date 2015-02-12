@@ -131,9 +131,6 @@ void hostRxIRQHandler(void)
         if (rxCount < HOST_BUF_SIZE) {
           rxBuffer[rxCount++] = data;
         }
-        else {
-          asm("nop");
-        }
       }
     }
   }
@@ -187,31 +184,29 @@ static HAL_StatusTypeDef spiWaitOnFlagUntilTimeout(uint32_t flag, FlagStatus sta
   return HAL_OK;
 }
 
-//static int txCount = 0;
-//static void spiDmaTransmitCplt(DMA_HandleTypeDef *hdma)
-//{
-//  StatusType status = StatusOk;
-//  SPI_HandleTypeDef* hspi = ( SPI_HandleTypeDef* )((DMA_HandleTypeDef* )hdma)->Parent;
+static int errorCountTx = 0;
+static void spiDmaTransmitCplt(DMA_HandleTypeDef *hdma)
+{
+  StatusType status = StatusOk;
+  SPI_HandleTypeDef* hspi = ( SPI_HandleTypeDef* )((DMA_HandleTypeDef* )hdma)->Parent;
 
-//  if((hdma->Instance->CR & DMA_SxCR_CIRC) == 0) {
-//    if(spiWaitOnFlagUntilTimeout(hspi, SPI_FLAG_TXE, RESET, 1000) != HAL_OK)
-//      status = StatusError;
-//    hspi->Instance->CR2 &= (uint32_t)(~SPI_CR2_TXDMAEN);
+  if((hdma->Instance->CR & DMA_SxCR_CIRC) == 0) {
+    if(spiWaitOnFlagUntilTimeout(SPI_FLAG_TXE, RESET, 1000) != HAL_OK)
+      status = StatusError;
+    hspi->Instance->CR2 &= (uint32_t)(~SPI_CR2_TXDMAEN);
 
-//    if(spiWaitOnFlagUntilTimeout(hspi, SPI_FLAG_BSY, SET, 1000) != HAL_OK)
-//      status = StatusError;
-//  }
+    if(spiWaitOnFlagUntilTimeout(SPI_FLAG_BSY, SET, 1000) != HAL_OK)
+      status = StatusError;
+  }
 
-//  if(hspi->Init.Direction == SPI_DIRECTION_2LINES)
-//    __HAL_SPI_CLEAR_OVRFLAG(hspi);
+  if(hspi->Init.Direction == SPI_DIRECTION_2LINES)
+    __HAL_SPI_CLEAR_OVRFLAG(hspi);
 
-//  if(status == StatusOk) {
-//    txCount++;
-//    asm("nop");
-//  }
-//}
+  if(status != StatusOk)
+    errorCountTx++;
+}
 
-StatusType hostWriteData(uint8_t *data, int size, uint32_t timeout)
+StatusType hostWriteData(uint8_t *data, int size, uint32_t)
 {
   int idx = 0;
   txBuffer[idx++] = 0x00;
@@ -229,27 +224,9 @@ StatusType hostWriteData(uint8_t *data, int size, uint32_t timeout)
   txBuffer[idx++] = 0x7E;
   txBuffer[idx++] = 0x00;
 
-//  hspi4.hdmatx->XferCpltCallback = spiDmaTransmitCplt;
-//  hspi4.Instance->CR2 |= SPI_CR2_TXDMAEN;
-//  HAL_DMA_Start_IT(hspi4.hdmatx, (uint32_t)txBuffer, (uint32_t)&hspi4.Instance->DR, count);
-
-  uint16_t xferCount = idx;
-  uint8_t *pTxBuffPtr = txBuffer;
-  while (xferCount > 0) {
-    if(spiWaitOnFlagUntilTimeout(SPI_FLAG_TXE, RESET, timeout) != HAL_OK)
-      return StatusError;
-
-    hspi4.Instance->DR = (*pTxBuffPtr++);
-    xferCount--;
-  }
-  if (spiWaitOnFlagUntilTimeout(SPI_FLAG_TXE, RESET, timeout) != HAL_OK)
-    return StatusError;
-
-  if (spiWaitOnFlagUntilTimeout(SPI_FLAG_BSY, SET, timeout) != HAL_OK)
-    return StatusError;
-
-  if (hspi4.Init.Direction == SPI_DIRECTION_2LINES)
-    __HAL_SPI_CLEAR_OVRFLAG(&hspi4);
+  hspi4.hdmatx->XferCpltCallback = spiDmaTransmitCplt;
+  hspi4.Instance->CR2 |= SPI_CR2_TXDMAEN;
+  HAL_DMA_Start_IT(hspi4.hdmatx, (uint32_t)txBuffer, (uint32_t)&hspi4.Instance->DR, idx);
 
   return StatusOk;
 }

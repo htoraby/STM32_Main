@@ -16,4 +16,14 @@
 #define FIRMWARE_DATE __DATE__
 #define FIRMWARE_TIME __TIME__
 
+/*!
+ * \brief Инициализация переферии
+ */
+void boardInit();
+
+/*!
+ * \brief Инициализация USB и подключение файловой системы
+ */
+void usbInit();
+
 #endif // BOARD_H

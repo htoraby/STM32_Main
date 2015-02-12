@@ -93,6 +93,14 @@ void toggleLed(LedType led)
   HAL_GPIO_TogglePin(portLeds[led], pinLeds[led]);
 }
 
+void offAllLeds()
+{
+  offLed(StopLed);
+  offLed(WaitLed);
+  offLed(WorkLed);
+  offLed(FanLed);
+}
+
 /*!
  \brief Инициализация кнопки
 

@@ -52,9 +52,24 @@ public:
    */
   bool checkBlockCCS();
 
+  /*!
+   * \brief Метод обработки изменения состояния
+   */
+  void conditionChanged();
+
+  /*!
+   * \brief Метод обработки изменения режима переключателя
+   */
+  void controlModeChanged();
+
 private:
   //! Массив параметров устройства
   parameter parametersArray_[CCS_END - CCS_BEGIN];
+
+  //! Предыдущий режим переключателя
+  int controlModeOld;
+  //! Предыдущие состояние
+  int conditionOld;
 
 };
 

@@ -2,7 +2,6 @@
 #define USER_MAIN_H
 
 #include "board.h"
-#include "host.h"
 #include "log_main.h"
 #include "ccs.h"
 #include "vsd_novomet.h"
@@ -20,7 +19,6 @@ extern Em *em;
 
 /*!
  * \brief Инициализация пользовательских задач и объектов
- *
  */
 void userInit();
 
