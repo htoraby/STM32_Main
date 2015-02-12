@@ -92,9 +92,9 @@ void framInit()
   framTxSemaphoreId = osSemaphoreCreate(NULL, 1);
   framRxSemaphoreId = osSemaphoreCreate(NULL, 1);
 
-  HAL_NVIC_SetPriority(DMA1_Stream5_IRQn, 0, 1);
+  HAL_NVIC_SetPriority(DMA1_Stream5_IRQn, 1, 1);
   HAL_NVIC_EnableIRQ(DMA1_Stream5_IRQn);
-  HAL_NVIC_SetPriority(DMA1_Stream0_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA1_Stream0_IRQn, 1, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream0_IRQn);
 
   // Разрешение записи
