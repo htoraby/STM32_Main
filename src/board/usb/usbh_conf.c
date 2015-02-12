@@ -62,9 +62,7 @@ void HAL_HCD_MspInit(HCD_HandleTypeDef* hhcd)
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
     /* Peripheral interrupt init*/
-    /* Sets the priority grouping field */
-    HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_0);
-    HAL_NVIC_SetPriority(OTG_FS_IRQn, 0, 0);
+    HAL_NVIC_SetPriority(OTG_FS_IRQn, 2, 0);
     HAL_NVIC_EnableIRQ(OTG_FS_IRQn);
   }
 }
