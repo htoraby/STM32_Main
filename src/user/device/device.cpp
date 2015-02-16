@@ -7,6 +7,7 @@
 
 #include "device.h"
 #include "service.h"
+#include "user_main.h"
 
 float Units[28][6][2] =
 {
@@ -461,6 +462,10 @@ unsigned char Device::setValue(unsigned short id, float value)
 {
   //TODO: Добавить проверки на корректность записываемых данных
   setFieldValue(getIndexAtID(id), value);
+
+  // Сообщить контроллеру визуализации об обновлении параметра
+  novobusSlave.putMessageParams(id);
+
   return 0;
 }
 
