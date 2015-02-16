@@ -482,7 +482,6 @@ osStatus osSemaphoreWait (osSemaphoreId semaphore_id, uint32_t millisec)
 {
   portTickType ticks;
   
-  
   if (semaphore_id == NULL) {
     return osErrorParameter;
   }
@@ -520,6 +519,9 @@ osStatus osSemaphoreRelease (osSemaphoreId semaphore_id)
   osStatus result = osOK;
   portBASE_TYPE taskWoken = pdFALSE;
   
+  if (semaphore_id == NULL) {
+    return osErrorParameter;
+  }
   
   if (inHandlerMode()) {
     if (xSemaphoreGiveFromISR(semaphore_id, &taskWoken) != pdTRUE) {
@@ -746,6 +748,10 @@ osStatus osMessagePut (osMessageQId queue_id, uint32_t info, uint32_t millisec)
 {
   portBASE_TYPE taskWoken = pdFALSE;
   portTickType ticks;
+
+  if (queue_id == NULL) {
+    return osErrorParameter;
+  }
   
   ticks = millisec / portTICK_RATE_MS;
   if (ticks == 0) {
@@ -825,6 +831,10 @@ osEvent osMessageGet (osMessageQId queue_id, uint32_t millisec)
 
 uint32_t osMessageNumber (osMessageQId queue_id)
 {
+  if (queue_id == NULL) {
+    return osErrorParameter;
+  }
+
   if (inHandlerMode())
     return uxQueueMessagesWaitingFromISR(queue_id);
   else
