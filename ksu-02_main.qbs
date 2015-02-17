@@ -123,6 +123,7 @@ Product {
             "heap_1.c",
             "heap_2.c",
             "heap_3.c",
+            "heap_5.c",
         ]
         cpp.cxxFlags: [ "-std=c++11" ]
         cpp.cFlags: [ "-std=gnu11" ]
