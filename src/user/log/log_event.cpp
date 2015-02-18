@@ -1,4 +1,5 @@
 #include "log_event.h"
+#include "user_main.h"
 #include <string.h>
 
 LogEvent::LogEvent() : Log(EventTypeLog)
@@ -24,6 +25,9 @@ uint32_t LogEvent::add(uint8_t code, uint8_t type, uint16_t id,
   *(float*)(buffer+12) = oldValue;
   *(float*)(buffer+16) = newValue;
   write(buffer, 20);
+
+  // Сообщить контроллеру визуализации о новом событии
+  novobusSlave.putMessageEvents(id);
 
   return id_;
 }

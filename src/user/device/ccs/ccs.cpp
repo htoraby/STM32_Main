@@ -7,6 +7,7 @@
 
 #include "ccs.h"
 #include "gpio.h"
+#include "user_main.h"
 
 Ccs::Ccs()
   : Device(CCS_BEGIN)
@@ -18,7 +19,7 @@ Ccs::Ccs()
 
 Ccs::~Ccs()
 {
-	// TODO Auto-generated destructor stub
+  // TODO Auto-generated destructor stub
 }
 
 bool Ccs::checkStopCCS()
@@ -96,10 +97,12 @@ void Ccs::controlModeChanged()
 {
   int controlMode = getValue(CCS_WORKING_MODE);
   if (controlMode != controlModeOld) {
+    controlModeOld = controlMode;
     switch (controlMode) {
       case CCS_WORKING_MODE_MANUAL:
         // TODO: времено для проверки старта
         setValue(CCS_CONDITION, CCS_CONDITION_RUN);
+//        vsd->startVSD();
         break;
       case CCS_WORKING_MODE_AUTO:
 
@@ -107,6 +110,7 @@ void Ccs::controlModeChanged()
       default:
         // TODO: времено для проверки стопа
         setValue(CCS_CONDITION, CCS_CONDITION_STOP);
+//        vsd->stopVSD();
         break;
     }
   }

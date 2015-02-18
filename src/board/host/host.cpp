@@ -50,10 +50,10 @@ void hostInit()
 
   __HAL_LINKDMA(&hspi4, hdmatx, hdma_spi4_tx);
 
-  HAL_NVIC_SetPriority(DMA2_Stream1_IRQn, 0, 1);
+  HAL_NVIC_SetPriority(DMA2_Stream1_IRQn, HOST_IRQ_PREPRIO, 1);
   HAL_NVIC_EnableIRQ(DMA2_Stream1_IRQn);
 
-  HAL_NVIC_SetPriority(SPI4_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(SPI4_IRQn, HOST_IRQ_PREPRIO, 0);
   HAL_NVIC_EnableIRQ(SPI4_IRQn);
 
   __HAL_SPI_ENABLE_IT(&hspi4, (SPI_IT_RXNE | SPI_IT_ERR));

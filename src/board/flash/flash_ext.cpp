@@ -134,9 +134,9 @@ void flashExtInit(FlashSpiNum num)
 
     __HAL_LINKDMA(spiX, hdmarx, hdma_spi1_rx);
 
-    HAL_NVIC_SetPriority(DMA2_Stream5_IRQn, 1, 1);
+    HAL_NVIC_SetPriority(DMA2_Stream5_IRQn, FLASH_IRQ_PREPRIO, 1);
     HAL_NVIC_EnableIRQ(DMA2_Stream5_IRQn);
-    HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 1, 0);
+    HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, FLASH_IRQ_PREPRIO, 0);
     HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
   }
   else if (num == FlashSpi5) {
@@ -168,15 +168,14 @@ void flashExtInit(FlashSpiNum num)
 
     __HAL_LINKDMA(spiX, hdmarx, hdma_spi5_rx);
 
-    HAL_NVIC_SetPriority(DMA2_Stream4_IRQn, 1, 1);
+    HAL_NVIC_SetPriority(DMA2_Stream4_IRQn, FLASH_IRQ_PREPRIO, 1);
     HAL_NVIC_EnableIRQ(DMA2_Stream4_IRQn);
-    HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 1, 0);
+    HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, FLASH_IRQ_PREPRIO, 0);
     HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
   }
 
   flashExts[num].cmdSemaphoreId = osSemaphoreCreate(NULL, 1);
   flashExts[num].operSemaphoreId = osSemaphoreCreate(NULL, 1);
-
 
   // Чтение данных из JEDEC ID регистров для определения производителя
   buf[0] = CMD_JEDEC_ID;

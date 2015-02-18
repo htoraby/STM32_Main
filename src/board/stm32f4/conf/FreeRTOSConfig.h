@@ -1,4 +1,7 @@
 /*
+    FreeRTOS V8.1.2 - Copyright (C) 2014 Real Time Engineers Ltd.
+    All rights reserved
+
     VISIT http://www.FreeRTOS.org TO ENSURE YOU ARE USING THE LATEST VERSION.
 
     ***************************************************************************
@@ -21,10 +24,10 @@
     the terms of the GNU General Public License (version 2) as published by the
     Free Software Foundation >>!AND MODIFIED BY!<< the FreeRTOS exception.
 
-    >>! NOTE: The modification to the GPL is included to allow you to distribute
-    >>! a combined work that includes FreeRTOS without being obliged to provide
-    >>! the source code for proprietary components outside of the FreeRTOS
-    >>! kernel.
+    >>!   NOTE: The modification to the GPL is included to allow you to     !<<
+    >>!   distribute a combined work that includes FreeRTOS without being   !<<
+    >>!   obliged to provide the source code for proprietary components     !<<
+    >>!   outside of the FreeRTOS kernel.                                   !<<
 
     FreeRTOS is distributed in the hope that it will be useful, but WITHOUT ANY
     WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
@@ -59,12 +62,7 @@
 
     1 tab == 4 spaces!
 */
-/**
-  ******************************************************************************
-  * File Name          : FreeRTOSConfig.h
-  * Date               : 11/09/2014 11:08:12
-  ******************************************************************************
-  */
+
 
 #ifndef FREERTOS_CONFIG_H
 #define FREERTOS_CONFIG_H
@@ -91,9 +89,9 @@
 #define configUSE_IDLE_HOOK               0
 #define configUSE_TICK_HOOK               0
 #define configCPU_CLOCK_HZ                (SystemCoreClock)
-#define configTICK_RATE_HZ                ((portTickType)1000)
-#define configMAX_PRIORITIES              ((unsigned portBASE_TYPE)7)
-#define configMINIMAL_STACK_SIZE          ((unsigned short)128)
+#define configTICK_RATE_HZ                ((TickType_t)1000)
+#define configMAX_PRIORITIES              (7)
+#define configMINIMAL_STACK_SIZE          ((uint16_t)128)
 #define configTOTAL_HEAP_SIZE             ((size_t)102400)
 #define configMAX_TASK_NAME_LEN           (20)
 #define configUSE_TRACE_FACILITY          1
@@ -127,18 +125,19 @@ to exclude the API function. */
 #define INCLUDE_vTaskSuspend          1
 #define INCLUDE_vTaskDelayUntil       0
 #define INCLUDE_vTaskDelay            1
+#define INCLUDE_xTaskGetSchedulerState 1
 
 /* Cortex-M specific definitions. */
 #ifdef __NVIC_PRIO_BITS
  /* __BVIC_PRIO_BITS will be specified when CMSIS is being used. */
  #define configPRIO_BITS         __NVIC_PRIO_BITS
 #else
- #define configPRIO_BITS         4
+ #define configPRIO_BITS         4        /* 15 priority levels */
 #endif
 
 /* The lowest interrupt priority that can be used in a call to a "set priority"
 function. */
-#define configLIBRARY_LOWEST_INTERRUPT_PRIORITY   15
+#define configLIBRARY_LOWEST_INTERRUPT_PRIORITY   0xf
 
 /* The highest interrupt priority that can be used by any interrupt service
 routine that makes calls to interrupt safe FreeRTOS API functions.  DO NOT CALL
@@ -155,9 +154,7 @@ See http://www.FreeRTOS.org/RTOS-Cortex-M3-M4.html. */
 
 /* Normal assert() semantics without relying on the provision of an assert.h
 header file. */
-/* USER CODE BEGIN 1 */   
-//#define configASSERT( x ) if( ( x ) == 0 ) { taskDISABLE_INTERRUPTS(); for( ;; ); }
-/* USER CODE END 1 */
+#define configASSERT( x ) if( ( x ) == 0 ) { taskDISABLE_INTERRUPTS(); for( ;; ); }
 
 /* Definitions that map the FreeRTOS port interrupt handlers to their CMSIS
 standard names. */

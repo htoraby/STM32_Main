@@ -72,7 +72,7 @@ static int testCmd(int argc, char *argv[])
         return 1;
       }
       if (!strcmp(argv[i], "tasklist")) {
-        osThreadList((int8_t*)bufferTx);
+        osThreadList((uint8_t*)bufferTx);
 
         static uint8_t buffer[UART_BUF_SIZE*2];
         int size = xPortGetFreeHeapSize();
@@ -129,15 +129,16 @@ static void testThread(void * argument)
   testHostSpi();
   testLog();
 
+  int t = 0;
+
   while(1) {
-    toggleLed(FanLed);
+//    toggleLed(FanLed);
 
-
-    parameters.setValue(VSD_UNIT_SPEED, 10);
-    parameters.setValue(VSD_MOTOR_TYPE, 20);
-    novobusSlave.putMessageParams(VSD_UNIT_SPEED);
-    novobusSlave.putMessageParams(VSD_MOTOR_TYPE);
-    osDelay(50);
+//    parameters.setValue(CCS_PHYSIC_MIN_ADD_AI_1 + t, 10);
+//    parameters.setValue(CCS_PHYSIC_MAX_ADD_AI_1 + t, 20);
+//    t = t + 2;
+//    if (t > 30) t = 0;
+    osDelay(5);
 
 //    logRunning.start(AutoType);
 //    logAlarm.start(AutoType, 0);
