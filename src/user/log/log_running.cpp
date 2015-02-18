@@ -30,11 +30,11 @@ void LogRunning::init(const char *threadName)
 
   Log::init();
 
-  osThreadDef_t t = {threadName, logRunningTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
-  threadId_ = osThreadCreate(&t, this);
-
   semaphoreId_ = osSemaphoreCreate(NULL, 1);
   osSemaphoreWait(semaphoreId_, 0);
+
+  osThreadDef_t t = {threadName, logRunningTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
+  threadId_ = osThreadCreate(&t, this);
 }
 
 void LogRunning::start(EventType type)

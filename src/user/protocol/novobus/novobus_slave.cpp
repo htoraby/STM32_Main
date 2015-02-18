@@ -31,7 +31,6 @@ void NovobusSlave::init()
   messageParams_ = osMessageCreate(osMessageQ(MessageParamsNovobus), NULL);
 
   // Создаём задачу Novobus slave
-  // Заполняем структуру с параметрами задачи
   osThreadDef_t t = {"NovobusSlave", novobusSlaveTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
   threadId_ = osThreadCreate(&t, this);
 }
@@ -41,12 +40,13 @@ void NovobusSlave::task()
   osSemaphoreId semaphoreId = getHostSemaphore();
 
   while(1) {
-    osDelay(1);
     // Проверка семафора - если он свободен, то получен покет от хоста
     if (osSemaphoreWait(semaphoreId, osWaitForever) != osEventTimeout) {
       rxSize = hostReadData(rxBuffer_);
       if (rxSize) {
         reseivePackage();
+
+        osDelay(1);
         hostWriteData(txBuffer_, txBuffer_[1]);
       }
     }
@@ -104,6 +104,7 @@ void NovobusSlave::reseivePackage()
   uint16_t rxCrc = (rxBuffer_[sizePkt - 2] << 8) + rxBuffer_[sizePkt - 1];
   // Вычисляем контрольную сумму
   uint16_t calcCrc = crc16_ibm(rxBuffer_, sizePkt - 2);
+
   // Проверка контрольной суммы
   if (rxCrc == calcCrc) {
     // Анализ команды
@@ -205,7 +206,6 @@ void NovobusSlave::reseivePackage()
         checkMessage();
 
         sizePkt = 7 + dataNumber*6;
-
         break;
 
         // Команда записи параметров
