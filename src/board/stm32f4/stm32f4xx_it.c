@@ -168,7 +168,7 @@ void UART7_IRQHandler(void)
 void SysTick_Handler(void)
 {
   if (isBoardInit) {
-    xPortSysTickHandler();
+    osSystickHandler();
   }
   HAL_IncTick();
 }

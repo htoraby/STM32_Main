@@ -173,10 +173,10 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
 
     __HAL_LINKDMA(hadc, DMA_Handle, hdma_adc2);
 
-    HAL_NVIC_SetPriority(DMA2_Stream2_IRQn, 3, 0);
+    HAL_NVIC_SetPriority(DMA2_Stream2_IRQn, ADC_IRQ_PREPRIO, 0);
     HAL_NVIC_EnableIRQ(DMA2_Stream2_IRQn);
 
-    HAL_NVIC_SetPriority(TIM3_IRQn, 4, 0);
+    HAL_NVIC_SetPriority(TIM3_IRQn, ADC_IRQ_PREPRIO, 1);
     HAL_NVIC_EnableIRQ(TIM3_IRQn);
   }
 }

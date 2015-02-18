@@ -89,13 +89,13 @@ void framInit()
 
   __HAL_LINKDMA(&hspi3, hdmarx, hdma_spi3_rx);
 
+  HAL_NVIC_SetPriority(DMA1_Stream5_IRQn, FLASH_IRQ_PREPRIO, 1);
+  HAL_NVIC_EnableIRQ(DMA1_Stream5_IRQn);
+  HAL_NVIC_SetPriority(DMA1_Stream0_IRQn, FLASH_IRQ_PREPRIO, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream0_IRQn);
+
   framTxSemaphoreId = osSemaphoreCreate(NULL, 1);
   framRxSemaphoreId = osSemaphoreCreate(NULL, 1);
-
-  HAL_NVIC_SetPriority(DMA1_Stream5_IRQn, 1, 1);
-  HAL_NVIC_EnableIRQ(DMA1_Stream5_IRQn);
-  HAL_NVIC_SetPriority(DMA1_Stream0_IRQn, 1, 0);
-  HAL_NVIC_EnableIRQ(DMA1_Stream0_IRQn);
 
   // Разрешение записи
   buffer[0] = CMD_WREN;
