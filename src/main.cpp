@@ -28,9 +28,12 @@ int main()
 
   boardInit();
 
-  // Создание основной задачи и запуск диспетчера
+  // Создание основной задачи
   osThreadDef(MainThread, mainThread, osPriorityNormal, 0, 6*configMINIMAL_STACK_SIZE);
-  osKernelStart(osThread(MainThread), NULL);
+  osThreadCreate(osThread(MainThread), NULL);
+
+  // Запуск диспетчера задач
+  osKernelStart();
 
   // Сюда не должны попасть, т.к. мы запустили диспетчер задач
   while (1) { }

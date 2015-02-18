@@ -62,7 +62,7 @@ void HAL_HCD_MspInit(HCD_HandleTypeDef* hhcd)
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
     /* Peripheral interrupt init*/
-    HAL_NVIC_SetPriority(OTG_FS_IRQn, 2, 0);
+    HAL_NVIC_SetPriority(OTG_FS_IRQn, USB_IRQ_PREPRIO, 0);
     HAL_NVIC_EnableIRQ(OTG_FS_IRQn);
   }
 }
