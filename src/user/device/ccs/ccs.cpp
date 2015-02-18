@@ -53,8 +53,8 @@ bool Ccs::checkBlockCCS()
 
 bool Ccs::checkAutoControlMode()
 {
-  unsigned int controlMode = (unsigned int)getValue(CCS_CONTROL_MODE);
-  if (controlMode == CCS_CONTROL_MODE_AUTO)
+  unsigned int controlMode = (unsigned int)getValue(CCS_WORKING_MODE);
+  if (controlMode == CCS_WORKING_MODE_AUTO)
     return 0;
   else
     return 1;
@@ -94,14 +94,14 @@ void Ccs::conditionChanged()
 
 void Ccs::controlModeChanged()
 {
-  int controlMode = getValue(CCS_CONTROL_MODE);
+  int controlMode = getValue(CCS_WORKING_MODE);
   if (controlMode != controlModeOld) {
     switch (controlMode) {
-      case CCS_CONTROL_MODE_MANUAL:
+      case CCS_WORKING_MODE_MANUAL:
         // TODO: времено для проверки старта
         setValue(CCS_CONDITION, CCS_CONDITION_RUN);
         break;
-      case CCS_CONTROL_MODE_AUTO:
+      case CCS_WORKING_MODE_AUTO:
 
         break;
       default:
@@ -151,14 +151,14 @@ void Ccs::initParameters()
   parameters_[CCS_CONDITION - CCS_BEGIN].max     = CCS_CONDITION_RUN;
   parameters_[CCS_CONDITION - CCS_BEGIN].def     = CCS_CONDITION_STOP;
 
-  parameters_[CCS_CONTROL_MODE - CCS_BEGIN].id          = CCS_CONTROL_MODE;
-  parameters_[CCS_CONTROL_MODE - CCS_BEGIN].access      = ACCESS_OPERATOR;
-  parameters_[CCS_CONTROL_MODE - CCS_BEGIN].operation   = OPERATION_WRITE;
-  parameters_[CCS_CONTROL_MODE - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
-  parameters_[CCS_CONTROL_MODE - CCS_BEGIN].validity    = VALIDITY_ERROR;
-  parameters_[CCS_CONTROL_MODE - CCS_BEGIN].update      = UPDATE_ERROR;
-  parameters_[CCS_CONTROL_MODE - CCS_BEGIN].value   = CCS_CONTROL_MODE_STOP;
-  parameters_[CCS_CONTROL_MODE - CCS_BEGIN].min     = CCS_CONTROL_MODE_STOP;
-  parameters_[CCS_CONTROL_MODE - CCS_BEGIN].max     = CCS_CONTROL_MODE_AUTO;
-  parameters_[CCS_CONTROL_MODE - CCS_BEGIN].def     = CCS_CONTROL_MODE_STOP;
+  parameters_[CCS_WORKING_MODE - CCS_BEGIN].id          = CCS_WORKING_MODE;
+  parameters_[CCS_WORKING_MODE - CCS_BEGIN].access      = ACCESS_OPERATOR;
+  parameters_[CCS_WORKING_MODE - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_WORKING_MODE - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
+  parameters_[CCS_WORKING_MODE - CCS_BEGIN].validity    = VALIDITY_ERROR;
+  parameters_[CCS_WORKING_MODE - CCS_BEGIN].update      = UPDATE_ERROR;
+  parameters_[CCS_WORKING_MODE - CCS_BEGIN].value   = CCS_WORKING_MODE_STOP;
+  parameters_[CCS_WORKING_MODE - CCS_BEGIN].min     = CCS_WORKING_MODE_STOP;
+  parameters_[CCS_WORKING_MODE - CCS_BEGIN].max     = CCS_WORKING_MODE_PROGRAM;
+  parameters_[CCS_WORKING_MODE - CCS_BEGIN].def     = CCS_WORKING_MODE_STOP;
 }

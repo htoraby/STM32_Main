@@ -455,11 +455,12 @@ enum enCcsCondition
   CCS_CONDITION_RUN
 };
 
-enum enCcsControlMode
+enum enCcsWorkingMode
 {
-  CCS_CONTROL_MODE_STOP = 1,
-  CCS_CONTROL_MODE_MANUAL,
-  CCS_CONTROL_MODE_AUTO
+  CCS_WORKING_MODE_STOP = 0,
+  CCS_WORKING_MODE_MANUAL = 1,
+  CCS_WORKING_MODE_AUTO = 2,
+  CCS_WORKING_MODE_PROGRAM = 3
 };
 
 enum enVsdCondition{
@@ -478,56 +479,34 @@ enum enVsdCondition{
 };
 
 enum enID
-{
-	CCS_BEGIN        = 0,
-
-  CCS_ACCESS_LEVEL,											/// Уровень доступа к контроллеру
-  CCS_CONDITION,                        /// Обобщенное состояние защит КСУ
-  CCS_CONTROL_MODE,                     /// Состояние переключателя режимов
-  CCS_DEVICE_STOP,											/// Устройство остановлено
-  CCS_LOAD_MOTOR,												/// Текущая загрузка двигателя
-  CCS_WORKING_MODE,
-
-  CCS_PHYSIC_MIN_ADD_AI_1,									/// Физический минимнимум дополнительного аналогового входа 1
-  CCS_PHYSIC_MAX_ADD_AI_1,									/// Физический максимум дополнительного аналогового входа 1
-  CCS_PHYSIC_MIN_ADD_AI_2,									/// Физический минимнимум дополнительного аналогового входа 2
-  CCS_PHYSIC_MAX_ADD_AI_2,									/// Физический максимум дополнительного аналогового входа 2
-
-  CCS_PERIOD_LOG_NOLMAL_MODE,	  								/// Период записи в нормальном режиме
-  CCS_PERIOD_LOG_FAST_MODE,									/// Период записи в ускоренном режиме
-  CCS_PERIOD_LOG_SHORT_TMS,									/// Период записи температуры обмоток двиагтеля и давления на приёме
-
-
-  /// Период записи параметров
-  CCS_LOG_PERIOD_NORMAL,
-  /// Период ускоренной записи
-  CCS_LOG_PERIOD_FAST,
-  /// Период архивов ТМС
-  CCS_LOG_PERIOD_DHS,
-  /// Индуктивность
-  CCS_MOTOR_INDUNCTANCE,
-  /// Удельная ЭДС
-  CCS_MOTOR_EDS,
-  /// Ток холостого хода
-  CCS_MOTOR_CURRENT_HH,
-  /// Число пар полюсов
-  CCS_MOTOR_POLUS,
-  /// Мощность ТМПН
-  CCS_TRANS_NOMINAL_POWER,
-  /// Номинальный ток ТМПН
-  CCS_TRANS_NOMINAL_CURRENT,
-  /// Номинальное напряжение ТМПН
-  CCS_TRANS_NOMINAL_VOLTAGE,
-  /// Длина кабеля
-  CCS_TRANS_CABLE_LENGHT,
-  /// Сечение кабеля
-  CCS_TRANS_CABLE_CROSS,
-  /// Необходимое напряжение отпайки
-  CCS_TRANS_NEED_VOLTAGE_TAP_OFF,
-  /// Напряжение отпайки
-  CCS_TRANS_VOLTAGE_TAP_OFF,
-  /// Тип ТМС
-  CCS_TYPE_DHS,
+{ 
+  CCS_BEGIN,                                /// 0.
+  CCS_MOTOR_SPEED_NOW,                      /// 1.Текущие обороты двигателя
+  CCS_MOTOR_CURRENT_PHASE_1_NOW,            /// 2.Ток двигателя фаза 1
+  CCS_MOTOR_CURRENT_PHASE_2_NOW,            /// 3.Ток двигателя фаза 2
+  CCS_MOTOR_CURRENT_PHASE_3_NOW,            /// 4.Ток двигателя фаза 3
+  CCS_MOTOR_CURRENT_AVARAGE_NOW,            /// 6.Ток двигателя средний
+  CCS_MOTOR_LOAD_NOW,                       /// 7.Текущая загрузка двигателя
+  CCS_TURBO_ROTATION,                       /// 8.Текущее турбинное вращение
+  CCS_RESISTANCE_ISOLATION,                 /// 9.Сопротивление изоляции в системе
+  CCS_PHASE_ROTATION,                       /// 10.Порядок чередования фаз
+  CCS_CONDITION,                            /// 11.Обобщенное состояние защит КСУ
+  CCS_RUNNING_TYPE,                         /// 12.Режим пуска двигателя
+  CCS_WORKING_MODE,                         /// 13.Режим работы
+  CCS_LOG_PERIOD_NORMAL,                    /// Период записи
+  CCS_LOG_PERIOD_FAST,                      /// Период экстренной записи
+  CCS_LOG_PERIOD_DHS,                       /// Период записи ТМС
+  CCS_MOTOR_CURRENT_HH,                     /// Ток холостого хода
+  CCS_TRANS_NOMINAL_POWER,                  /// Мощность ТМПН
+  CCS_TRANS_NOMINAL_CURRENT,                /// Номинальный ток ТМПН
+  CCS_TRANS_NOMINAL_VOLTAGE,                /// Номинальное напряжение ТМПН
+  CCS_TRANS_CABLE_LENGHT,                   /// Длина кабеля
+  CCS_TRANS_CABLE_CROSS,                    /// Сечение кабеля
+  CCS_TRANS_NEED_VOLTAGE_TAP_OFF,           /// Необходимое напряжение отпайки
+  CCS_TRANS_VOLTAGE_TAP_OFF,                /// Напряжение отпайки
+  CCS_DHS_TYPE,                             /// Тип ТМС
+  CCS_ACCESS_LEVEL,                         /// Уровень доступа к контроллеру
+  CCS_DEVICE_STOP,                          /// Устройство остановлено
   /// Производительность насоса
   CCS_PUMP_CAPACITY,
   /// Напор ЭЦН
@@ -540,8 +519,7 @@ enum enID
   CCS_SUPPLY_INPUT_VOLTAGE_AVERAGE,
   /// Дисбаланс входного напряжения
   CCS_SYPPLY_IMBALANCE_VOLTAGE,
-  /// Сопротивление изоляции в системе
-  CCS_RESISTANCE_ISOLATION,
+
   /// Время работы в периодическом режиме,
   CCS_RGM_PERIODIC_TIME,
   /// Время до окончания работы в периодическом режиме
@@ -1202,27 +1180,48 @@ enum enID
   CCS_UNIT_FLOW,
   /// Единицы измерения площади
   CCS_UNIT_PLACE,
+  CCS_PHYSIC_MIN_ADD_AI_1,									/// Физический минимнимум дополнительного аналогового входа 1
+  CCS_PHYSIC_MAX_ADD_AI_1,									/// Физический максимум дополнительного аналогового входа 1
+  CCS_PHYSIC_MIN_ADD_AI_2,									/// Физический минимнимум дополнительного аналогового входа 2
+  CCS_PHYSIC_MAX_ADD_AI_2,									/// Физический максимум дополнительного аналогового входа 2
+
   /// Последний параметр
 	CCS_END,
 
   VSD_BEGIN        = 2000,
   //// Первый параметр ЧРП
+  VSD_MOTOR_TYPE,                           /// 2001.Конструкция двигателя Danfoss 1-10 Используется в интерфейсе
+  VSD_MOTOR_SPEED,                          /// 2002.Скорость двигателя Danfoss 1-25 Используется в проекте, интерфейс
+  VSD_MOTOR_POWER,                          /// 2003.Мощность двигателя Danfoss 1-20 Используется в проекте, интерфейс
+  VSD_MOTOR_VOLTAGE,                        /// 2004.Напряжение двигателя Danfoss 1-22 Используется в проекте, интерфейс Novomet 0х0045 IREG_MOTOR_U_MAX
+  VSD_MOTOR_CURRENT,                        /// 2005.Ток двигателя Danfoss 1-24 Используется в проекте, интерфейс Novomet 0х0044 IREG_MOTOR_I_MAX
+  VSD_MOTOR_FREQUENCY,                      /// 2006.Частота двигателя Danfoss 1-23 Используется в проекте, интерфейс Novomet 0х0043 IREG_MOTOR_F_MAX
+  VSD_MOTOR_COS_PHI,                        /// 2007.Косинус Фи Danfoss 14-43 Используется в проекте
+  VSD_D_AXIS_INDUNSTANCE,                   /// 2008.Индуктивности по оси D Danfoss 1-37 Используется в проекте
+  VSD_BACK_EMF,                             /// 2009.Противо эдс Danfoss 1-40 Используется в проекте
+  VSD_MOTOR_POLES,                          /// 2010.Число полюсов двигателя Danfoss 1-39 Используется в проекте
+  VSD_CONTROL_MOTOR,                        /// 2011.Принцип управления двигателем Danfoss 1-01 Не используется в проекте, только при конфигурировании
+  VSD_CONFIG_MODE,                          /// 2012.Режим конфигурирования Danfoss 1-00 Не используется в проекте, только при конфигурировании
+  VSD_ROTATION,                             /// 2013.Направления вращения Danfoss 4-10 Не используется в проекте, только при конфигурировании
+  VSD_LOW_LIM_SPEED_MOTOR,                  /// 2014.Нижний предел скорости Danfoss 4-12 Гц Используется в проекте
+  VSD_HIGH_LIM_SPEED_MOTOR,                 /// 2015.Верхний передел скорости Danfoss 4-14 Используется в проекте Novomet 0х0037 IREG_FREQ_REF_MAX
+  VSD_FREQUENCY,                            /// 2016.Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
+  VSD_TIMER_DISPERSAL,                      /// 2017.Время разгона Danfoss 3-41 % Активно используется в проекте
+  VSD_TIMER_DELAY,                          /// 2018.Время замедления Danfoss 3-42 % Активно используется в проекте
+  VSD_FREQUENCY_NOW,                        /// 2019.Выходная частота ПЧ
+  VSD_SPEED_RPM_NOW,                        /// 2020.Обороты двигателя
+  VSD_OUT_VOLTAGE_MOTOR,                    /// 2021.Напряжение на выходе ПЧ
+  VSD_OUT_CURRENT_PHASE_1,                  /// 2022.Выходной ток ПЧ фаза U
+  VSD_OUT_CURRENT_PHASE_2,                  /// 2023.Выходной ток ПЧ фаза V
+  VSD_OUT_CURRENT_PHASE_3,                  /// 2024.Выходной ток ПЧ фаза W
 
-	VSD_INDEX,
+  VSD_INDEX,
   //// Указатель индекса для массивных параметров
   //// Danfoss 0x0008 используется для массивов параметров
 
 	VSD_UNIT_SPEED,
   //// Единицы измерения скорости
   //// Danfoss 0-02 Не используется в проекте, только при конфигурировании
-
-	VSD_CONFIG_MODE,
-  //// Режим конфигурирования
-  //// Danfoss 1-00 Не используется в проекте, только при конфигурировании
-
-	VSD_CONTROL_MOTOR,
-  //// Принцип управления двигателем
-  //// Danfoss 1-01 Не используется в проекте, только при конфигурировании
 
 	VSD_TORQUE_CHARACTERISTIC,
   //// Характеристика момента нагрузки
@@ -1231,10 +1230,6 @@ enum enID
 	VSD_OVERLOAD_MODE,
   //// Режим перегрузки
   //// Danfoss 1-04 Не используется в проекте, только при конфигурировании
-
-	VSD_TYPE_MOTOR,
-  //// Конструкция двигателя
-  //// Danfoss 1-10 Используется в интерфейсе
 
 	VSD_DAMPING_GANE,
   //// Усиление демпфирования
@@ -1248,29 +1243,6 @@ enum enID
   //// Время фильтрации при высокой скорости
   //// Danfoss 1-16 Используется в режиме автоадаптации
 
-	VSD_POWER_MOTOR,
-  //// Мощность двигателя
-  //// Danfoss 1-20 Используется в проекте, интерфейс
-
-	VSD_VOLTAGE_MOTOR,
-  //// Напряжение двигателя
-  //// Danfoss 1-22 Используется в проекте, интерфейс
-  //// Novomet 0х0045 IREG_MOTOR_U_MAX
-
-	VSD_FREQUENCY_MOTOR,
-  //// Частота двигателя
-  //// Danfoss 1-23 Используется в проекте, интерфейс
-  //// Novomet 0х0043 IREG_MOTOR_F_MAX
-
-	VSD_CURRENT_MOTOR,
-  //// Ток двигателя
-  //// Danfoss 1-24 Используется в проекте, интерфейс
-  //// Novomet 0х0044 IREG_MOTOR_I_MAX
-
-	VSD_SPEED_MOTOR,
-  //// Скорость двигателя
-  //// Danfoss 1-25 Используется в проекте, интерфейс
-
 	VSD_RATE_TORQUE_MOTOR,
   //// Длительный номинальный момент двигателя
   //// Danfoss 1-26 Записывается в проекте один раз
@@ -1278,18 +1250,6 @@ enum enID
 	VSD_RESISTANCE_STATOR,
   //// Сопротивление статора
   //// Danfoss 1-30 Используется в режиме автоадаптации
-
-	VSD_D_AXIS_INDUNSTANCE,
-  //// Индуктивности по оси D
-  //// Danfoss 1-37 Используется в проекте
-
-	VSD_POLES_MOTOR,
-  //// Число полюсов двигателя
-  //// Danfoss 1-39 Используется в проекте
-
-	VSD_BACK_EMF,
-  //// Противо эдс
-  //// Danfoss 1-40 Используется в проекте
 
 	VSD_UF_CHARACTERISTIC_U,
   //// Характеристика Uf - U
@@ -1360,11 +1320,6 @@ enum enID
   //// Максимальное задание
   //// Danfoss 3-03 Не используется в проекте, только при конфигурировании
 
-	VSD_FREQUENCY,
-  //// Фиксированная скорость
-  //// Danfoss 3-11 Уставка частоты, основной задаваемый параметр
-  //// Novomet 0х0034 IREG_FREQ_REF
-
 	VSD_RESOURCE_TASK_1,
   //// Ресурс задания 1
   //// Danfoss 3-15 Не используется в проекте, только при конфигурировании
@@ -1381,14 +1336,6 @@ enum enID
   //// Тип изменения скорости
   //// Danfoss 3-40 Не используется в проекте, только при конфигурировании
 
-	VSD_TIMER_DISPERSAL,
-  //// Время разгона
-  //// Danfoss 3-41 % Активно используется в проекте
-
-	VSD_TIMER_DELAY,
-  //// Время замедления
-  //// Danfoss 3-42 % Активно используется в проекте
-
 	VSD_TIMER_DISP_FIX_SPEED,
   //// Время разгона фиксированной скорости
   //// Danfoss 3-80 Используется в проекте один раз
@@ -1397,18 +1344,6 @@ enum enID
   //// Время замедления фиксированной скорости
   //// Danfoss 3-81 Используется в проекте один раз
 
-	VSD_ROTATION,
-  //// Направления вращения
-  //// Danfoss 4-10 Не используется в проекте, только при конфигурировании
-
-	VSD_LOW_LIM_SPEED_MOTOR,
-  //// Нижний предел скорости
-  //// Danfoss 4-12 Гц Используется в проекте
-
-	VSD_HIGH_LIM_SPEED_MOTOR,
-  //// Верхний передел скорости
-  //// Danfoss 4-14 Используется в проекте
-  //// Novomet 0х0037 IREG_FREQ_REF_MAX
 
 	VSD_TORQUE_LIMIT,
   //// Ограничение момента
@@ -1621,10 +1556,6 @@ enum enID
   //// Время фильтра регулятора тока
   //// Danfoss 14-32 Используется в проекте, CalcParam()
 
-	VSD_COS_PHI_MOTOR,
-  //// Косинус Фи
-  //// Danfoss 14-43 Используется в проекте
-
 	VSD_DC_COMPENSATION,
   //// Компенсация напряжения постоянного тока
   //// Danfoss 14-51 Не используется в проекте, только при конфигурировании
@@ -1658,23 +1589,10 @@ enum enID
   //// Danfoss 16-10 Используется в проекте
   //// Novomet 0х0071 IREG_POUT
 
-	VSD_OUT_VOLTAGE_MOTOR,
-  //// Напряжение двигателя
-  //// Danfoss 16-12 Используется в проекте
-
-	VSD_CURRENT_FREQUENCY,
-  //// Текущая частота двигателя
-  //// Danfoss 16-13 Используется в проекте
-  //// Novomet 0х0035 IREG_FREQ
-
 	VSD_OUT_CURRENT_MOTOR,
   //// Выходной ток средний
   //// Danfoss 16-14 Используется в проекте
   //// Novomet 0х0072 IREG_IOUT
-
-	VSD_CURRENT_SPEED_RPM,
-  //// Текущая скорость вращения двигателя
-  //// Danfoss 16-17 Используется в проекте
 
 	VSD_DC_VOLTAGE,
   //// Напряжение цепи пост.тока
@@ -1688,18 +1606,6 @@ enum enID
 	VSD_CONTROL_TEMPERATURE,
   //// Температура платы управления
   //// Danfoss 16-39 Используется в проекте
-
-	VSD_OUT_CURRENT_PHASE_1,
-  //// Ток двигателя 1
-  //// Danfoss 16-45 Используется в проекте
-
-	VSD_OUT_CURRENT_PHASE_2,
-  //// Ток двигателя 2
-  //// Danfoss 16-46 Используется в проекте
-
-	VSD_OUT_CURRENT_PHASE_3,
-  //// Ток двигателя 3
-  //// Danfoss 16-47 Используется в проекте
 
 	VSD_DI_VSD,
   //// Цифровоый вход ПЧ

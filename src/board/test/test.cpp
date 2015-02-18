@@ -134,9 +134,9 @@ static void testThread(void * argument)
 
 
     parameters.setValue(VSD_UNIT_SPEED, 10);
-    parameters.setValue(VSD_TYPE_MOTOR, 20);
+    parameters.setValue(VSD_MOTOR_TYPE, 20);
     novobusSlave.putMessageParams(VSD_UNIT_SPEED);
-    novobusSlave.putMessageParams(VSD_TYPE_MOTOR);
+    novobusSlave.putMessageParams(VSD_MOTOR_TYPE);
     osDelay(50);
 
 //    logRunning.start(AutoType);

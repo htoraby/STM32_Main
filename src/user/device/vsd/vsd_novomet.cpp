@@ -317,7 +317,7 @@ void VsdNovomet::initModbusParameters()
       0                           // Считываемое значение
   };
   ModbusParameters[17] = {   // Текущее значение частоты
-      VSD_CURRENT_FREQUENCY,      // Уникальный идентификатор параметра
+      VSD_FREQUENCY_NOW,          // Уникальный идентификатор параметра
       53,                         // Адрес регистра в устройстве
       OPERATION_READ,             // Операции с параметром
       PHYSIC_FREQUENCY,           // Физическая величина параметра
@@ -569,7 +569,7 @@ void VsdNovomet::initModbusParameters()
       9                           // Считываемое значение
   };
   ModbusParameters[31] = {   // Номинальная(максимальная) частота двигателя
-      VSD_FREQUENCY_MOTOR,        // Уникальный идентификатор параметра
+      VSD_MOTOR_FREQUENCY,        // Уникальный идентификатор параметра
       67,                         // Адрес регистра в устройстве
       OPERATION_WRITE,            // Операции с параметром
       PHYSIC_FREQUENCY,           // Физическая величина параметра
@@ -587,7 +587,7 @@ void VsdNovomet::initModbusParameters()
       150                         // Считываемое значение
   };
   ModbusParameters[32] = {   // Номинальный(максимальный) ток двигателя
-      VSD_CURRENT_MOTOR,          // Уникальный идентификатор параметра
+      VSD_MOTOR_CURRENT,          // Уникальный идентификатор параметра
       68,                         // Адрес регистра в устройстве
       OPERATION_WRITE,            // Операции с параметром
       PHYSIC_CURRENT,             // Физическая величина параметра
@@ -605,7 +605,7 @@ void VsdNovomet::initModbusParameters()
       0                         // Считываемое значение
   };
   ModbusParameters[33] = {   // Номинальный(максимальный) ток двигателя
-      VSD_VOLTAGE_MOTOR,          // Уникальный идентификатор параметра
+      VSD_MOTOR_VOLTAGE,          // Уникальный идентификатор параметра
       69,                         // Адрес регистра в устройстве
       OPERATION_WRITE,            // Операции с параметром
       PHYSIC_VOLTAGE,             // Физическая величина параметра

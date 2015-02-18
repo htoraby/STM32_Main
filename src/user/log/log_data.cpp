@@ -43,7 +43,7 @@ void LogData::task()
         startFastMode = true;
         add(FastModeCode);
       } else {
-        int period = ksu.getValue(CCS_PERIOD_LOG_FAST_MODE);
+        int period = ksu.getValue(CCS_LOG_PERIOD_FAST);
 #if DEBUG
         period = 5;
 #endif
@@ -57,7 +57,7 @@ void LogData::task()
       fastTimeCnt = 0;
     }
 
-    int period = ksu.getValue(CCS_PERIOD_LOG_NOLMAL_MODE);
+    int period = ksu.getValue(CCS_LOG_PERIOD_NORMAL);
 #if DEBUG
     period = 60;
 #endif
@@ -79,14 +79,14 @@ void LogData::add(uint8_t code)
   *(uint32_t*)(buffer+4) = time;
   *(uint8_t*)(buffer+8) = code;
   *(float*)(buffer+9) = ksu.getValue(CCS_NUMBER_WELL);
-  *(float*)(buffer+13) = vsd->getValue(VSD_CURRENT_FREQUENCY);
+  *(float*)(buffer+13) = vsd->getValue(VSD_FREQUENCY_NOW);
   *(float*)(buffer+17) = vsd->getValue(VSD_OUT_CURRENT_PHASE_1);
   *(float*)(buffer+21) = vsd->getValue(VSD_OUT_CURRENT_PHASE_2);
   *(float*)(buffer+25) = vsd->getValue(VSD_OUT_CURRENT_PHASE_3);
-  *(float*)(buffer+29) = vsd->getValue(VSD_VOLTAGE_MOTOR);
+  *(float*)(buffer+29) = vsd->getValue(VSD_MOTOR_VOLTAGE);
   *(float*)(buffer+33) = ksu.getValue(CCS_MOTOR_IMBALANCE_CURRENT);
-  *(float*)(buffer+37) = vsd->getValue(VSD_COS_PHI_MOTOR);
-  *(float*)(buffer+41) = ksu.getValue(CCS_LOAD_MOTOR);
+  *(float*)(buffer+37) = vsd->getValue(VSD_MOTOR_COS_PHI);
+  *(float*)(buffer+41) = ksu.getValue(CCS_MOTOR_LOAD_NOW);
   *(float*)(buffer+45) = vsd->getValue(VSD_ACTIVE_POWER);
 
 //  *(float*)(buffer+49) = KSU.getValue();

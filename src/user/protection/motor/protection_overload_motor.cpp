@@ -17,7 +17,7 @@ ProtectionOverloadMotor::ProtectionOverloadMotor()
   idTimer_ = CCS_PROT_MOTOR_OVERLOAD_TIME;
   idRestartCount_ = CCS_PROT_MOTOR_OVERLOAD_RESTART_COUNT;
   idRestartResetCount_ = CCS_PROT_MOTOR_OVERLOAD_RESTART_RESET_COUNT;
-  idValueParam_ = VSD_CURRENT_MOTOR;
+  idValueParam_ = VSD_MOTOR_CURRENT;
 
   protActivatedEventId_ = OverloadMotorProtActivId;
   apvEventId_ = OverloadMotorApvId;

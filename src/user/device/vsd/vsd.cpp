@@ -111,7 +111,7 @@ unsigned char Vsd::setReverseRotation()
 // Метод получения текущей частоты
 float Vsd::getCurrentFreq()
 {
-  return getValue(VSD_CURRENT_FREQUENCY);
+  return getValue(VSD_FREQUENCY_NOW);
 }
 
 void Vsd::initParameters()
@@ -197,16 +197,16 @@ void Vsd::initParameters()
   parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].max   = 1.0;
   parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].def   = 0.0;
   // Конструкция двигателя
-  parameters_[VSD_TYPE_MOTOR - VSD_BEGIN].id           = VSD_TYPE_MOTOR;
-  parameters_[VSD_TYPE_MOTOR - VSD_BEGIN].access       = ACCESS_OPERATOR;
-  parameters_[VSD_TYPE_MOTOR - VSD_BEGIN].operation    = OPERATION_LIMITED;
-  parameters_[VSD_TYPE_MOTOR - VSD_BEGIN].physic       = PHYSIC_NUMERIC;
-  parameters_[VSD_TYPE_MOTOR - VSD_BEGIN].validity     = VALIDITY_ERROR;
-  parameters_[VSD_TYPE_MOTOR - VSD_BEGIN].update       = UPDATE_ERROR;
-  parameters_[VSD_TYPE_MOTOR - VSD_BEGIN].value    = 0.0;
-  parameters_[VSD_TYPE_MOTOR - VSD_BEGIN].min      = 0.0;
-  parameters_[VSD_TYPE_MOTOR - VSD_BEGIN].max      = 1.0;
-  parameters_[VSD_TYPE_MOTOR - VSD_BEGIN].def      = 0.0;
+  parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].id           = VSD_MOTOR_TYPE;
+  parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].access       = ACCESS_OPERATOR;
+  parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].operation    = OPERATION_LIMITED;
+  parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].physic       = PHYSIC_NUMERIC;
+  parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].validity     = VALIDITY_ERROR;
+  parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].update       = UPDATE_ERROR;
+  parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].value    = 0.0;
+  parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].min      = 0.0;
+  parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].max      = 1.0;
+  parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].def      = 0.0;
   // Усиление демпфирования
   parameters_[VSD_DAMPING_GANE - VSD_BEGIN].id         = VSD_DAMPING_GANE;
   parameters_[VSD_DAMPING_GANE - VSD_BEGIN].access     = ACCESS_OPERATOR;
@@ -241,60 +241,60 @@ void Vsd::initParameters()
   parameters_[VSD_HIGH_SPEED_FILTER_TIME - VSD_BEGIN].max  = 20.0;
   parameters_[VSD_HIGH_SPEED_FILTER_TIME - VSD_BEGIN].def  = 0.0;
   // Мощность двигателя
-  parameters_[VSD_POWER_MOTOR - VSD_BEGIN].id          = VSD_POWER_MOTOR;
-  parameters_[VSD_POWER_MOTOR - VSD_BEGIN].access      = ACCESS_OPERATOR;
-  parameters_[VSD_POWER_MOTOR - VSD_BEGIN].operation   = OPERATION_LIMITED;
-  parameters_[VSD_POWER_MOTOR - VSD_BEGIN].physic      = PHYSIC_POWER;
-  parameters_[VSD_POWER_MOTOR - VSD_BEGIN].validity    = VALIDITY_ERROR;
-  parameters_[VSD_POWER_MOTOR - VSD_BEGIN].update      = UPDATE_ERROR;
-  parameters_[VSD_POWER_MOTOR - VSD_BEGIN].value   = 0.0;
-  parameters_[VSD_POWER_MOTOR - VSD_BEGIN].min     = 0.0;
-  parameters_[VSD_POWER_MOTOR - VSD_BEGIN].max     = 1200.0;
-  parameters_[VSD_POWER_MOTOR - VSD_BEGIN].def     = 0.0;
+  parameters_[VSD_MOTOR_POWER - VSD_BEGIN].id          = VSD_MOTOR_POWER;
+  parameters_[VSD_MOTOR_POWER - VSD_BEGIN].access      = ACCESS_OPERATOR;
+  parameters_[VSD_MOTOR_POWER - VSD_BEGIN].operation   = OPERATION_LIMITED;
+  parameters_[VSD_MOTOR_POWER - VSD_BEGIN].physic      = PHYSIC_POWER;
+  parameters_[VSD_MOTOR_POWER - VSD_BEGIN].validity    = VALIDITY_ERROR;
+  parameters_[VSD_MOTOR_POWER - VSD_BEGIN].update      = UPDATE_ERROR;
+  parameters_[VSD_MOTOR_POWER - VSD_BEGIN].value   = 0.0;
+  parameters_[VSD_MOTOR_POWER - VSD_BEGIN].min     = 0.0;
+  parameters_[VSD_MOTOR_POWER - VSD_BEGIN].max     = 1200.0;
+  parameters_[VSD_MOTOR_POWER - VSD_BEGIN].def     = 0.0;
   // Напряжение двигателя
-  parameters_[VSD_VOLTAGE_MOTOR - VSD_BEGIN].id        = VSD_VOLTAGE_MOTOR;
-  parameters_[VSD_VOLTAGE_MOTOR - VSD_BEGIN].access    = ACCESS_OPERATOR;
-  parameters_[VSD_VOLTAGE_MOTOR - VSD_BEGIN].operation = OPERATION_LIMITED;
-  parameters_[VSD_VOLTAGE_MOTOR - VSD_BEGIN].physic    = PHYSIC_VOLTAGE;
-  parameters_[VSD_VOLTAGE_MOTOR - VSD_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[VSD_VOLTAGE_MOTOR - VSD_BEGIN].update    = UPDATE_ERROR;
-  parameters_[VSD_VOLTAGE_MOTOR - VSD_BEGIN].value     = 0.0;
-  parameters_[VSD_VOLTAGE_MOTOR - VSD_BEGIN].min   = 0.0;
-  parameters_[VSD_VOLTAGE_MOTOR - VSD_BEGIN].max   = 1000.0;
-  parameters_[VSD_VOLTAGE_MOTOR - VSD_BEGIN].def   = 0.0;
+  parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].id        = VSD_MOTOR_VOLTAGE;
+  parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].access    = ACCESS_OPERATOR;
+  parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].operation = OPERATION_LIMITED;
+  parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].physic    = PHYSIC_VOLTAGE;
+  parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].validity  = VALIDITY_ERROR;
+  parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].update    = UPDATE_ERROR;
+  parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].value     = 0.0;
+  parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].min   = 0.0;
+  parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].max   = 1000.0;
+  parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].def   = 0.0;
   // Частота двигателя
-  parameters_[VSD_FREQUENCY_MOTOR - VSD_BEGIN].id        = VSD_FREQUENCY_MOTOR;
-  parameters_[VSD_FREQUENCY_MOTOR - VSD_BEGIN].access    = ACCESS_OPERATOR;
-  parameters_[VSD_FREQUENCY_MOTOR - VSD_BEGIN].operation = OPERATION_LIMITED;
-  parameters_[VSD_FREQUENCY_MOTOR - VSD_BEGIN].physic    = PHYSIC_FREQUENCY;
-  parameters_[VSD_FREQUENCY_MOTOR - VSD_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[VSD_FREQUENCY_MOTOR - VSD_BEGIN].update    = UPDATE_ERROR;
-  parameters_[VSD_FREQUENCY_MOTOR - VSD_BEGIN].value     = 0.0;
-  parameters_[VSD_FREQUENCY_MOTOR - VSD_BEGIN].min   = 20.0;
-  parameters_[VSD_FREQUENCY_MOTOR - VSD_BEGIN].max   = 1000.0;
-  parameters_[VSD_FREQUENCY_MOTOR - VSD_BEGIN].def   = 0.0;
+  parameters_[VSD_MOTOR_FREQUENCY - VSD_BEGIN].id        = VSD_MOTOR_FREQUENCY;
+  parameters_[VSD_MOTOR_FREQUENCY - VSD_BEGIN].access    = ACCESS_OPERATOR;
+  parameters_[VSD_MOTOR_FREQUENCY - VSD_BEGIN].operation = OPERATION_LIMITED;
+  parameters_[VSD_MOTOR_FREQUENCY - VSD_BEGIN].physic    = PHYSIC_FREQUENCY;
+  parameters_[VSD_MOTOR_FREQUENCY - VSD_BEGIN].validity  = VALIDITY_ERROR;
+  parameters_[VSD_MOTOR_FREQUENCY - VSD_BEGIN].update    = UPDATE_ERROR;
+  parameters_[VSD_MOTOR_FREQUENCY - VSD_BEGIN].value     = 0.0;
+  parameters_[VSD_MOTOR_FREQUENCY - VSD_BEGIN].min   = 20.0;
+  parameters_[VSD_MOTOR_FREQUENCY - VSD_BEGIN].max   = 1000.0;
+  parameters_[VSD_MOTOR_FREQUENCY - VSD_BEGIN].def   = 0.0;
   // Ток двигателя
-  parameters_[VSD_CURRENT_MOTOR - VSD_BEGIN].id        = VSD_CURRENT_MOTOR;
-  parameters_[VSD_CURRENT_MOTOR - VSD_BEGIN].access    = ACCESS_OPERATOR;
-  parameters_[VSD_CURRENT_MOTOR - VSD_BEGIN].operation = OPERATION_LIMITED;
-  parameters_[VSD_CURRENT_MOTOR - VSD_BEGIN].physic    = PHYSIC_CURRENT;
-  parameters_[VSD_CURRENT_MOTOR - VSD_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[VSD_CURRENT_MOTOR - VSD_BEGIN].update    = UPDATE_ERROR;
-  parameters_[VSD_CURRENT_MOTOR - VSD_BEGIN].value     = 0.0;
-  parameters_[VSD_CURRENT_MOTOR - VSD_BEGIN].min   = 0.0;
-  parameters_[VSD_CURRENT_MOTOR - VSD_BEGIN].max   = 2000.0;
-  parameters_[VSD_CURRENT_MOTOR - VSD_BEGIN].def   = 0.0;
+  parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].id        = VSD_MOTOR_CURRENT;
+  parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].access    = ACCESS_OPERATOR;
+  parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].operation = OPERATION_LIMITED;
+  parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].physic    = PHYSIC_CURRENT;
+  parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].validity  = VALIDITY_ERROR;
+  parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].update    = UPDATE_ERROR;
+  parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].value     = 0.0;
+  parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].min   = 0.0;
+  parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].max   = 2000.0;
+  parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].def   = 0.0;
   // Скорость двигателя
-  parameters_[VSD_SPEED_MOTOR - VSD_BEGIN].id        = VSD_SPEED_MOTOR;
-  parameters_[VSD_SPEED_MOTOR - VSD_BEGIN].access    = ACCESS_OPERATOR;
-  parameters_[VSD_SPEED_MOTOR - VSD_BEGIN].operation = OPERATION_LIMITED;
-  parameters_[VSD_SPEED_MOTOR - VSD_BEGIN].physic    = PHYSIC_RPM;
-  parameters_[VSD_SPEED_MOTOR - VSD_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[VSD_SPEED_MOTOR - VSD_BEGIN].update    = UPDATE_ERROR;
-  parameters_[VSD_SPEED_MOTOR - VSD_BEGIN].value     = 10.0;
-  parameters_[VSD_SPEED_MOTOR - VSD_BEGIN].min   = 10.0;
-  parameters_[VSD_SPEED_MOTOR - VSD_BEGIN].max   = 6000.0;
-  parameters_[VSD_SPEED_MOTOR - VSD_BEGIN].def   = 10.0;
+  parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].id        = VSD_MOTOR_SPEED;
+  parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].access    = ACCESS_OPERATOR;
+  parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].operation = OPERATION_LIMITED;
+  parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].physic    = PHYSIC_RPM;
+  parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].validity  = VALIDITY_ERROR;
+  parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].update    = UPDATE_ERROR;
+  parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].value     = 10.0;
+  parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].min   = 10.0;
+  parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].max   = 6000.0;
+  parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].def   = 10.0;
   // Длительный номинальный момент двигателя
   parameters_[VSD_RATE_TORQUE_MOTOR - VSD_BEGIN].id        = VSD_RATE_TORQUE_MOTOR;
   parameters_[VSD_RATE_TORQUE_MOTOR - VSD_BEGIN].access    = ACCESS_OPERATOR;
@@ -329,16 +329,16 @@ void Vsd::initParameters()
   parameters_[VSD_D_AXIS_INDUNSTANCE - VSD_BEGIN].max  = 1000.0;
   parameters_[VSD_D_AXIS_INDUNSTANCE - VSD_BEGIN].def  = 0.0;
   // Число полюсов двигателя
-  parameters_[VSD_POLES_MOTOR - VSD_BEGIN].id        = VSD_POLES_MOTOR;
-  parameters_[VSD_POLES_MOTOR - VSD_BEGIN].access    = ACCESS_OPERATOR;
-  parameters_[VSD_POLES_MOTOR - VSD_BEGIN].operation = OPERATION_LIMITED;
-  parameters_[VSD_POLES_MOTOR - VSD_BEGIN].physic    = PHYSIC_NUMERIC;
-  parameters_[VSD_POLES_MOTOR - VSD_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[VSD_POLES_MOTOR - VSD_BEGIN].update    = UPDATE_ERROR;
-  parameters_[VSD_POLES_MOTOR - VSD_BEGIN].value     = 2.0;
-  parameters_[VSD_POLES_MOTOR - VSD_BEGIN].min   = 2.0;
-  parameters_[VSD_POLES_MOTOR - VSD_BEGIN].max   = 10.0;
-  parameters_[VSD_POLES_MOTOR - VSD_BEGIN].def   = 2.0;
+  parameters_[VSD_MOTOR_POLES - VSD_BEGIN].id        = VSD_MOTOR_POLES;
+  parameters_[VSD_MOTOR_POLES - VSD_BEGIN].access    = ACCESS_OPERATOR;
+  parameters_[VSD_MOTOR_POLES - VSD_BEGIN].operation = OPERATION_LIMITED;
+  parameters_[VSD_MOTOR_POLES - VSD_BEGIN].physic    = PHYSIC_NUMERIC;
+  parameters_[VSD_MOTOR_POLES - VSD_BEGIN].validity  = VALIDITY_ERROR;
+  parameters_[VSD_MOTOR_POLES - VSD_BEGIN].update    = UPDATE_ERROR;
+  parameters_[VSD_MOTOR_POLES - VSD_BEGIN].value     = 2.0;
+  parameters_[VSD_MOTOR_POLES - VSD_BEGIN].min   = 2.0;
+  parameters_[VSD_MOTOR_POLES - VSD_BEGIN].max   = 10.0;
+  parameters_[VSD_MOTOR_POLES - VSD_BEGIN].def   = 2.0;
   // Danfoss 1-40 Используется в проекте
   parameters_[VSD_BACK_EMF - VSD_BEGIN].id         = VSD_BACK_EMF;
   parameters_[VSD_BACK_EMF - VSD_BEGIN].access     = ACCESS_OPERATOR;
@@ -1253,16 +1253,16 @@ void Vsd::initParameters()
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].max    = 2.0;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].def    = 1.0;
   // Косинус Фи
-  parameters_[VSD_COS_PHI_MOTOR - VSD_BEGIN].id        = VSD_COS_PHI_MOTOR;
-  parameters_[VSD_COS_PHI_MOTOR - VSD_BEGIN].access    = ACCESS_OPERATOR;
-  parameters_[VSD_COS_PHI_MOTOR - VSD_BEGIN].operation = OPERATION_WRITE;
-  parameters_[VSD_COS_PHI_MOTOR - VSD_BEGIN].physic    = PHYSIC_NUMERIC;
-  parameters_[VSD_COS_PHI_MOTOR - VSD_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[VSD_COS_PHI_MOTOR - VSD_BEGIN].update    = UPDATE_ERROR;
-  parameters_[VSD_COS_PHI_MOTOR - VSD_BEGIN].value     = 0.95;
-  parameters_[VSD_COS_PHI_MOTOR - VSD_BEGIN].min   = 0.4;
-  parameters_[VSD_COS_PHI_MOTOR - VSD_BEGIN].max   = 0.95;
-  parameters_[VSD_COS_PHI_MOTOR - VSD_BEGIN].def   = 0.95;
+  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].id        = VSD_MOTOR_COS_PHI;
+  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].access    = ACCESS_OPERATOR;
+  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].operation = OPERATION_WRITE;
+  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].physic    = PHYSIC_NUMERIC;
+  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].validity  = VALIDITY_ERROR;
+  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].update    = UPDATE_ERROR;
+  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].value     = 0.95;
+  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].min   = 0.4;
+  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].max   = 0.95;
+  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].def   = 0.95;
   // Компенсация напряжения постоянного тока
   parameters_[VSD_DC_COMPENSATION - VSD_BEGIN].id        = VSD_DC_COMPENSATION;
   parameters_[VSD_DC_COMPENSATION - VSD_BEGIN].access    = ACCESS_OPERATOR;
@@ -1363,16 +1363,16 @@ void Vsd::initParameters()
   parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].max   = 6000.0;
   parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].def   = 0.0;
   // Текущая частота двигателя
-  parameters_[VSD_CURRENT_FREQUENCY - VSD_BEGIN].id        = VSD_CURRENT_FREQUENCY;
-  parameters_[VSD_CURRENT_FREQUENCY - VSD_BEGIN].access    = ACCESS_OPERATOR;
-  parameters_[VSD_CURRENT_FREQUENCY - VSD_BEGIN].operation = OPERATION_READ;
-  parameters_[VSD_CURRENT_FREQUENCY - VSD_BEGIN].physic    = PHYSIC_FREQUENCY;
-  parameters_[VSD_CURRENT_FREQUENCY - VSD_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[VSD_CURRENT_FREQUENCY - VSD_BEGIN].update    = UPDATE_ERROR;
-  parameters_[VSD_CURRENT_FREQUENCY - VSD_BEGIN].value     = 0.0;
-  parameters_[VSD_CURRENT_FREQUENCY - VSD_BEGIN].min   = 0.0;
-  parameters_[VSD_CURRENT_FREQUENCY - VSD_BEGIN].max   = 6500.0;
-  parameters_[VSD_CURRENT_FREQUENCY - VSD_BEGIN].def   = 0.0;
+  parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].id        = VSD_FREQUENCY_NOW;
+  parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].access    = ACCESS_OPERATOR;
+  parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].operation = OPERATION_READ;
+  parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].physic    = PHYSIC_FREQUENCY;
+  parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].validity  = VALIDITY_ERROR;
+  parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].update    = UPDATE_ERROR;
+  parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].value     = 0.0;
+  parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].min   = 0.0;
+  parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].max   = 6500.0;
+  parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].def   = 0.0;
   // Выходной ток средний
   parameters_[VSD_OUT_CURRENT_MOTOR - VSD_BEGIN].id        = VSD_OUT_CURRENT_MOTOR;
   parameters_[VSD_OUT_CURRENT_MOTOR - VSD_BEGIN].access    = ACCESS_OPERATOR;
@@ -1385,16 +1385,16 @@ void Vsd::initParameters()
   parameters_[VSD_OUT_CURRENT_MOTOR - VSD_BEGIN].max   = 10000.0;
   parameters_[VSD_OUT_CURRENT_MOTOR - VSD_BEGIN].def   = 0.0;
   // Текущая скорость вращения двигателя
-  parameters_[VSD_CURRENT_SPEED_RPM - VSD_BEGIN].id        = VSD_CURRENT_SPEED_RPM;
-  parameters_[VSD_CURRENT_SPEED_RPM - VSD_BEGIN].access    = ACCESS_OPERATOR;
-  parameters_[VSD_CURRENT_SPEED_RPM - VSD_BEGIN].operation = OPERATION_READ;
-  parameters_[VSD_CURRENT_SPEED_RPM - VSD_BEGIN].physic    = PHYSIC_RPM;
-  parameters_[VSD_CURRENT_SPEED_RPM - VSD_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[VSD_CURRENT_SPEED_RPM - VSD_BEGIN].update    = UPDATE_ERROR;
-  parameters_[VSD_CURRENT_SPEED_RPM - VSD_BEGIN].value     = 0.0;
-  parameters_[VSD_CURRENT_SPEED_RPM - VSD_BEGIN].min   = -30000.0;
-  parameters_[VSD_CURRENT_SPEED_RPM - VSD_BEGIN].max   = 30000.0;
-  parameters_[VSD_CURRENT_SPEED_RPM - VSD_BEGIN].def   = 0.0;
+  parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].id        = VSD_SPEED_RPM_NOW;
+  parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].access    = ACCESS_OPERATOR;
+  parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].operation = OPERATION_READ;
+  parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].physic    = PHYSIC_RPM;
+  parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].validity  = VALIDITY_ERROR;
+  parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].update    = UPDATE_ERROR;
+  parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].value     = 0.0;
+  parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].min   = -30000.0;
+  parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].max   = 30000.0;
+  parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].def   = 0.0;
   // Напряжение цепи пост.тока
   parameters_[VSD_DC_VOLTAGE - VSD_BEGIN].id       = VSD_DC_VOLTAGE;
   parameters_[VSD_DC_VOLTAGE - VSD_BEGIN].access   = ACCESS_OPERATOR;
