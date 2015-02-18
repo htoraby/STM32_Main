@@ -66,8 +66,6 @@ private:
   //! Массив параметров устройства
   parameter parametersArray_[CCS_END - CCS_BEGIN];
 
-  //! Предыдущий режим переключателя
-  int controlModeOld;
   //! Предыдущие состояние
   int conditionOld;
 

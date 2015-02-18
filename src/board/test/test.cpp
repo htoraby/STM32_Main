@@ -129,7 +129,7 @@ static void testThread(void * argument)
   testHostSpi();
   testLog();
 
-  int t = 0;
+//  int t = 0;
 
   while(1) {
 //    toggleLed(FanLed);

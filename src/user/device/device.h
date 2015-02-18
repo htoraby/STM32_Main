@@ -10,6 +10,7 @@
 #define DEVICE_H_
 
 #include "define.h"
+#include "idslist.h"
 #include "service.h"
 #include "board.h"
 #include "fram.h"

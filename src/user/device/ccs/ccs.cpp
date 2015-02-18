@@ -11,7 +11,6 @@
 
 Ccs::Ccs()
   : Device(CCS_BEGIN)
-  , controlModeOld(0)
   , conditionOld(0)
 {
   initParameters();
@@ -95,23 +94,27 @@ void Ccs::conditionChanged()
 
 void Ccs::controlModeChanged()
 {
+  int start = getValue(CCS_START);
+  int stop = getValue(CCS_STOP);
   int controlMode = getValue(CCS_WORKING_MODE);
-  if (controlMode != controlModeOld) {
-    controlModeOld = controlMode;
-    switch (controlMode) {
-      case CCS_WORKING_MODE_MANUAL:
-        // TODO: времено для проверки старта
-        setValue(CCS_CONDITION, CCS_CONDITION_RUN);
-//        vsd->startVSD();
-        break;
-      case CCS_WORKING_MODE_AUTO:
 
-        break;
-      default:
-        // TODO: времено для проверки стопа
-        setValue(CCS_CONDITION, CCS_CONDITION_STOP);
-//        vsd->stopVSD();
-        break;
+  if (start) {
+    setValue(CCS_START, 0);
+
+    if (controlMode == CCS_WORKING_MODE_STOP) {
+      // TODO: времено для проверки старта
+      setValue(CCS_WORKING_MODE, CCS_WORKING_MODE_STOP);
+      setValue(CCS_CONDITION, CCS_CONDITION_RUN);
+//      vsd->startVSD();
+    }
+  } else if (stop) {
+    setValue(CCS_STOP, 0);
+
+    if (controlMode != CCS_WORKING_MODE_STOP) {
+      // TODO: времено для проверки стопа
+      setValue(CCS_WORKING_MODE, CCS_WORKING_MODE_STOP);
+      setValue(CCS_CONDITION, CCS_CONDITION_STOP);
+//      vsd->stopVSD();
     }
   }
 }
