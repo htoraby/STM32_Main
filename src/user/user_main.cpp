@@ -20,6 +20,7 @@ void userInit()
   em = new Em();
 
   parameters.init();
+  ksu.init();
 
   protectionInit();
 
@@ -38,7 +39,7 @@ void userMainTask(void *argument)
   while (1) {
     osDelay(1);
 
-    ksu.controlModeChanged();
+    ksu.cmdCheck();
     ksu.conditionChanged();
   }
 }

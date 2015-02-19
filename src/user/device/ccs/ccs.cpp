@@ -12,6 +12,7 @@
 Ccs::Ccs()
   : Device(CCS_BEGIN)
   , conditionOld(0)
+  , vsdConditionOld(0)
 {
   initParameters();
 }
@@ -21,7 +22,152 @@ Ccs::~Ccs()
   // TODO Auto-generated destructor stub
 }
 
-bool Ccs::checkStopCCS()
+static void ccsLedConditionTask(void *p)
+{
+  (static_cast<Ccs*>(p))->ledConditionTask();
+}
+
+static void ccsVsdConditionTask(void *p)
+{
+  (static_cast<Ccs*>(p))->vsdConditionTask();
+}
+
+void Ccs::init()
+{
+  osMessageQDef(LedMessageQ, 5, uint8_t);
+  ledMessage_ = osMessageCreate(osMessageQ(LedMessageQ), NULL);
+  osThreadDef(LedCondition, ccsLedConditionTask, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(LedCondition), this);
+
+  osThreadDef(VsdConditionTask, ccsVsdConditionTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(VsdConditionTask), this);
+}
+
+void Ccs::setLedCondition(LedCondition condition)
+{
+  osMessagePut(ledMessage_, condition, 0);
+}
+
+void Ccs::ledConditionTask()
+{
+  int condition = LedConditionStop;
+  while (1) {
+    osEvent event = osMessageGet(ledMessage_, 300);
+    if (event.status == osEventMessage) {
+      offAllLeds();
+      condition = event.value.v;
+      switch (condition) {
+        case LedConditionStop:
+          onLed(StopLed);
+          break;
+        case LedConditionWait:
+          onLed(WaitLed);
+          break;
+        case LedConditionDelay:
+          onLed(WaitLed);
+          onLed(WorkLed);
+          break;
+        case LedConditionBlock:
+          onLed(StopLed);
+          break;
+        case LedConditionRun:
+          onLed(WorkLed);
+          break;
+      }
+    }
+
+    switch (condition) {
+      case LedConditionRunning: case LedConditionStopping:
+        toggleLed(WorkLed);
+        break;
+    }
+  }
+}
+
+void Ccs::vsdConditionTask()
+{
+  while (1) {
+    osDelay(1);
+
+    int vsdCondition = getValue(CCS_VSD_CONDITION);
+    if (vsdCondition != vsdConditionOld) {
+      vsdConditionOld = vsdCondition;
+      switch (vsdCondition) {
+        case VSD_CONDITION_STOP:
+          setValue(CCS_CONDITION, CCS_CONDITION_STOP);
+          break;
+        case VSD_CONDITION_STOPPING:
+          setLedCondition(LedConditionStopping);
+          // TODO: Проверка ЧРП на переход в режим стопа
+          osDelay(2000);
+          setValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
+          break;
+        case VSD_CONDITION_WAIT_STOP:
+#ifndef DEBUG
+          if (vsd->stopVSD() == RETURN_OK)
+#endif
+            setValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
+          break;
+        case VSD_CONDITION_RUN:
+          setValue(CCS_CONDITION, CCS_CONDITION_RUN);
+          break;
+        case VSD_CONDITION_RUNNING:
+          setLedCondition(LedConditionRunning);
+          // TODO: Проверка ЧРП на переход в режим работы
+          osDelay(2000);
+          setValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
+          break;
+        case VSD_CONDITION_WAIT_RUN:
+#ifndef DEBUG
+          if (vsd->startVSD() == RETURN_OK)
+#endif
+            setValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
+          break;
+      }
+    }
+  }
+}
+
+void Ccs::conditionChanged()
+{
+  int condition = getValue(CCS_CONDITION);
+  if (condition != conditionOld) {
+    conditionOld = condition;
+    switch (condition) {
+      case CCS_CONDITION_WAIT:
+        setLedCondition(LedConditionWait);
+        break;
+      case CCS_CONDITION_DELAY:
+        setLedCondition(LedConditionDelay);
+        break;
+      case CCS_CONDITION_BLOCK:
+        setLedCondition(LedConditionBlock);
+        break;
+      case CCS_CONDITION_RUN:
+        setLedCondition(LedConditionRun);
+        break;
+      default:
+        setLedCondition(LedConditionStop);
+        break;
+    }
+  }
+}
+
+void Ccs::cmdCheck()
+{
+  int start = getValue(CCS_CMD_START);
+  int stop = getValue(CCS_CMD_STOP);
+
+  if (start) {
+    setValue(CCS_CMD_START, 0);
+    setValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
+  } else if (stop) {
+    setValue(CCS_CMD_STOP, 0);
+    setValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
+  }
+}
+
+bool Ccs::isStopCCS()
 {
   unsigned int state = (unsigned int)getValue(CCS_CONDITION);
   if ((state == CCS_CONDITION_STOP)
@@ -29,20 +175,21 @@ bool Ccs::checkStopCCS()
       || (state == CCS_CONDITION_BLOCK)) {
     return 0;
   }
-  else
+  else {
     return 1;
+  }
 }
 
-bool Ccs::checkWorkCCS()
+bool Ccs::isWorkCCS()
 {
   unsigned int state = (unsigned int)getValue(CCS_CONDITION);
-  if ((state == CCS_CONDITION_RUN)||(state == CCS_CONDITION_DELAY))
+  if ((state == CCS_CONDITION_RUN) || (state == CCS_CONDITION_DELAY))
     return 0;
   else
     return 1;
 }
 
-bool Ccs::checkBlockCCS()
+bool Ccs::isBlockCCS()
 {
   unsigned int state = (unsigned int)getValue(CCS_CONDITION);
   if (state == CCS_CONDITION_BLOCK)
@@ -51,7 +198,7 @@ bool Ccs::checkBlockCCS()
     return 1;
 }
 
-bool Ccs::checkAutoControlMode()
+bool Ccs::isAutoControlMode()
 {
   unsigned int controlMode = (unsigned int)getValue(CCS_WORKING_MODE);
   if (controlMode == CCS_WORKING_MODE_AUTO)
@@ -63,60 +210,6 @@ bool Ccs::checkAutoControlMode()
 float Ccs::getTime()
 {
   return getValue(CCS_DATE_TIME);
-}
-
-void Ccs::conditionChanged()
-{
-  int condition = getValue(CCS_CONDITION);
-  if (condition != conditionOld) {
-    conditionOld = condition;
-    offAllLeds();
-    switch (condition) {
-      case CCS_CONDITION_WAIT:
-        onLed(WaitLed);
-        break;
-      case CCS_CONDITION_DELAY:
-        onLed(WaitLed);
-        onLed(WorkLed);
-        break;
-      case CCS_CONDITION_BLOCK:
-        onLed(StopLed);
-        break;
-      case CCS_CONDITION_RUN:
-        onLed(WorkLed);
-        break;
-      default:
-        onLed(StopLed);
-        break;
-    }
-  }
-}
-
-void Ccs::controlModeChanged()
-{
-  int start = getValue(CCS_START);
-  int stop = getValue(CCS_STOP);
-  int controlMode = getValue(CCS_WORKING_MODE);
-
-  if (start) {
-    setValue(CCS_START, 0);
-
-    if (controlMode == CCS_WORKING_MODE_STOP) {
-      // TODO: времено для проверки старта
-      setValue(CCS_WORKING_MODE, CCS_WORKING_MODE_STOP);
-      setValue(CCS_CONDITION, CCS_CONDITION_RUN);
-//      vsd->startVSD();
-    }
-  } else if (stop) {
-    setValue(CCS_STOP, 0);
-
-    if (controlMode != CCS_WORKING_MODE_STOP) {
-      // TODO: времено для проверки стопа
-      setValue(CCS_WORKING_MODE, CCS_WORKING_MODE_STOP);
-      setValue(CCS_CONDITION, CCS_CONDITION_STOP);
-//      vsd->stopVSD();
-    }
-  }
 }
 
 void Ccs::initParameters()
@@ -168,4 +261,37 @@ void Ccs::initParameters()
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].min     = CCS_WORKING_MODE_STOP;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].max     = CCS_WORKING_MODE_PROGRAM;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].def     = CCS_WORKING_MODE_STOP;
+
+  parameters_[CCS_CMD_STOP - CCS_BEGIN].id          = CCS_CMD_STOP;
+  parameters_[CCS_CMD_STOP - CCS_BEGIN].access      = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_STOP - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_CMD_STOP - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
+  parameters_[CCS_CMD_STOP - CCS_BEGIN].validity    = VALIDITY_ERROR;
+  parameters_[CCS_CMD_STOP - CCS_BEGIN].update      = UPDATE_ERROR;
+  parameters_[CCS_CMD_STOP - CCS_BEGIN].value   = 0;
+  parameters_[CCS_CMD_STOP - CCS_BEGIN].min     = 0;
+  parameters_[CCS_CMD_STOP - CCS_BEGIN].max     = 1;
+  parameters_[CCS_CMD_STOP - CCS_BEGIN].def     = 0;
+
+  parameters_[CCS_CMD_START - CCS_BEGIN].id          = CCS_CMD_START;
+  parameters_[CCS_CMD_START - CCS_BEGIN].access      = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_START - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_CMD_START - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
+  parameters_[CCS_CMD_START - CCS_BEGIN].validity    = VALIDITY_ERROR;
+  parameters_[CCS_CMD_START - CCS_BEGIN].update      = UPDATE_ERROR;
+  parameters_[CCS_CMD_START - CCS_BEGIN].value   = 0;
+  parameters_[CCS_CMD_START - CCS_BEGIN].min     = 0;
+  parameters_[CCS_CMD_START - CCS_BEGIN].max     = 1;
+  parameters_[CCS_CMD_START - CCS_BEGIN].def     = 0;
+
+  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].id          = CCS_VSD_CONDITION;
+  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].access      = ACCESS_OPERATOR;
+  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
+  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].validity    = VALIDITY_ERROR;
+  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].update      = UPDATE_ERROR;
+  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].value   = VSD_CONDITION_STOP;
+  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].min     = VSD_CONDITION_STOP;
+  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].max     = VSD_CONDITION_WAIT_RUN;
+  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].def     = VSD_CONDITION_STOP;
 }

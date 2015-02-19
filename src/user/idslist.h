@@ -8,6 +8,7 @@ enum enID
   CCS_MOTOR_CURRENT_PHASE_1_NOW,            /// 2.Ток двигателя фаза 1
   CCS_MOTOR_CURRENT_PHASE_2_NOW,            /// 3.Ток двигателя фаза 2
   CCS_MOTOR_CURRENT_PHASE_3_NOW,            /// 4.Ток двигателя фаза 3
+  CCS_RESERVE_1,
   CCS_MOTOR_CURRENT_AVARAGE_NOW,            /// 6.Ток двигателя средний
   CCS_MOTOR_LOAD_NOW,                       /// 7.Текущая загрузка двигателя
   CCS_TURBO_ROTATION,                       /// 8.Текущее турбинное вращение
@@ -29,8 +30,10 @@ enum enID
   CCS_TRANS_VOLTAGE_TAP_OFF,                /// Напряжение отпайки
   CCS_DHS_TYPE,                             /// Тип ТМС
   CCS_ACCESS_LEVEL,                         /// Уровень доступа к контроллеру
-  CCS_STOP,                                 /// Команда остановки
-  CCS_START,                                /// Команда запуска
+  CCS_CMD_STOP,                                 /// Команда остановки
+  CCS_CMD_START,                                /// Команда запуска
+  /// Состояние ЧРП
+  CCS_VSD_CONDITION,
   /// Производительность насоса
   CCS_PUMP_CAPACITY,
   /// Напор ЭЦН
@@ -1542,9 +1545,6 @@ enum enID
 
   // Шестая точка частоты U/f характеристики
   VSD_UF_CHARACTERISTIC_F_6,
-
-  /// Состояние ЧРП
-  VSD_CONDITION,
 
   VSD_END,
 

@@ -77,7 +77,8 @@ int NovobusSlave::getMessageParams()
 
 void NovobusSlave::putMessageEvents(uint32_t id)
 {
-  osMessagePut(messageEvents_, id, 0);
+//  TODO: Необходима реализация чтения событий
+//  osMessagePut(messageEvents_, id, 0);
 }
 
 void NovobusSlave::putMessageParams(uint32_t id)

@@ -426,8 +426,7 @@ enum enParamProt {
   PARAM_PROT_CURRENT
 };
 
-enum enValidity
-{  
+enum enValidity {
   VALIDITY_GOOD       = 0,
   VALIDITY_ERROR      = 1,
   VALIDITY_MIN        = 2,
@@ -435,14 +434,12 @@ enum enValidity
 	VALIDITY_LAST
 };
 
-enum enUpdate
-{
+enum enUpdate {
   UPDATE_ERROR				= 0,
   UPDATE_LAST
 };
 
-enum enCcsCondition
-{
+enum enCcsCondition {
   /// Горит красный светодиод
   CCS_CONDITION_STOP = 1,
   /// Горит желтый светодиод
@@ -455,19 +452,18 @@ enum enCcsCondition
   CCS_CONDITION_RUN
 };
 
-enum enCcsWorkingMode
-{
+enum enCcsWorkingMode {
   CCS_WORKING_MODE_STOP = 0,
   CCS_WORKING_MODE_MANUAL,
   CCS_WORKING_MODE_AUTO,
   CCS_WORKING_MODE_PROGRAM
 };
 
-enum enVsdCondition{
+enum enVsdCondition {
   /// Состояние останов
   VSD_CONDITION_STOP,
   /// Состояние торможение
-  VSD_CONDITION_STOPPED,
+  VSD_CONDITION_STOPPING,
   /// Состояние ожидание начала торможения
   VSD_CONDITION_WAIT_STOP,
   /// Состояние работа
