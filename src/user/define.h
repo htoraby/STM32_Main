@@ -440,16 +440,11 @@ enum enUpdate {
 };
 
 enum enCcsCondition {
-  /// Горит красный светодиод
-  CCS_CONDITION_STOP = 1,
-  /// Горит желтый светодиод
-  CCS_CONDITION_WAIT,
-  /// Горит желтый и зеленый светодиоды
-  CCS_CONDITION_DELAY,
-  /// Горит красный светодиод
-  CCS_CONDITION_BLOCK,
-  /// Горит зеленый светодиод
-  CCS_CONDITION_RUN
+  CCS_CONDITION_STOP,     //!< Останов
+  CCS_CONDITION_BLOCK,    //!< Блок
+  CCS_CONDITION_WAIT_APV, //!< АПВ
+  CCS_CONDITION_DELAY,    //!< Ожидание
+  CCS_CONDITION_RUN       //!< Работа
 };
 
 enum enCcsWorkingMode {

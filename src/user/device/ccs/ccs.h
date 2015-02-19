@@ -17,7 +17,7 @@ public:
     /// Горит красный светодиод
     LedConditionStop,
     /// Горит желтый светодиод
-    LedConditionWait,
+    LedConditionWaitApv,
     /// Горит желтый и зеленый светодиоды
     LedConditionDelay,
     /// Горит красный светодиод

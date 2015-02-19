@@ -11,8 +11,8 @@
 
 Ccs::Ccs()
   : Device(CCS_BEGIN)
-  , conditionOld(0)
-  , vsdConditionOld(0)
+  , conditionOld(-1)
+  , vsdConditionOld(-1)
 {
   initParameters();
 }
@@ -60,7 +60,7 @@ void Ccs::ledConditionTask()
         case LedConditionStop:
           onLed(StopLed);
           break;
-        case LedConditionWait:
+        case LedConditionWaitApv:
           onLed(WaitLed);
           break;
         case LedConditionDelay:
@@ -99,10 +99,12 @@ void Ccs::vsdConditionTask()
         case VSD_CONDITION_STOPPING:
           setLedCondition(LedConditionStopping);
           // TODO: Проверка ЧРП на переход в режим стопа
-          osDelay(2000);
+          osDelay(10000);
           setValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
           break;
         case VSD_CONDITION_WAIT_STOP:
+          if (getValue(CCS_CONDITION) == CCS_CONDITION_STOP)
+            break;
 #ifndef DEBUG
           if (vsd->stopVSD() == RETURN_OK)
 #endif
@@ -114,10 +116,12 @@ void Ccs::vsdConditionTask()
         case VSD_CONDITION_RUNNING:
           setLedCondition(LedConditionRunning);
           // TODO: Проверка ЧРП на переход в режим работы
-          osDelay(2000);
+          osDelay(10000);
           setValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
           break;
         case VSD_CONDITION_WAIT_RUN:
+          if (getValue(CCS_CONDITION) == CCS_CONDITION_RUN)
+            break;
 #ifndef DEBUG
           if (vsd->startVSD() == RETURN_OK)
 #endif
@@ -134,8 +138,8 @@ void Ccs::conditionChanged()
   if (condition != conditionOld) {
     conditionOld = condition;
     switch (condition) {
-      case CCS_CONDITION_WAIT:
-        setLedCondition(LedConditionWait);
+      case CCS_CONDITION_WAIT_APV:
+        setLedCondition(LedConditionWaitApv);
         break;
       case CCS_CONDITION_DELAY:
         setLedCondition(LedConditionDelay);
@@ -171,7 +175,7 @@ bool Ccs::isStopCCS()
 {
   unsigned int state = (unsigned int)getValue(CCS_CONDITION);
   if ((state == CCS_CONDITION_STOP)
-      || (state == CCS_CONDITION_WAIT)
+      || (state == CCS_CONDITION_WAIT_APV)
       || (state == CCS_CONDITION_BLOCK)) {
     return 0;
   }
