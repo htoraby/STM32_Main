@@ -17,7 +17,6 @@ ProtectionUnderloadMotor::ProtectionUnderloadMotor()
   idTimer_ = CCS_PROT_MOTOR_UNDERLOAD_TIME;
   idRestartCount_ = CCS_PROT_MOTOR_UNDERLOAD_RESTART_COUNT;
   idRestartResetCount_ = CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET_COUNT;
-  idValueParam_ = VSD_MOTOR_CURRENT;
 
   protActivatedEventId_ = UnderloadMotorApvId;
   apvEventId_ = UnderloadMotorApvId;
@@ -37,13 +36,24 @@ void ProtectionUnderloadMotor::init()
 
 bool ProtectionUnderloadMotor::checkAlarm()
 {
-  float nominal = 50;
-  return Protection::isLowerLimit(nominal * tripSetpoint_ / 100.0);
+  calcValue();
+  return Protection::isLowerLimit(tripSetpoint_);
 }
 
 bool ProtectionUnderloadMotor::checkBlock()
 {
-  float nominal = 50;
-  return Protection::isLowerLimit(nominal * restartSetpoint_ / 100.0);
+  calcValue();
+  return Protection::isLowerLimit(restartSetpoint_);
 }
 
+void ProtectionUnderloadMotor::calcValue()
+{
+  float value = 0;
+  for (int i = 0; i < 3; ++i) {
+    float value2 = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1_NOW+i);
+    if (value2 < value)
+      value = value2;
+  }
+  float nominal = parameters.getValue(VSD_MOTOR_CURRENT);
+  valueParameter_ =  value / (nominal / 100.0);
+}

@@ -31,6 +31,13 @@ public:
    */
   bool checkBlock();
 
+private:
+
+  /*!
+   * \brief Пересчёт текущего значения для сравнения с уставкой
+   */
+  void calcValue();
+
 };
 
 #endif // PROTECTIONUNDERVOLTAGEINPUT_H

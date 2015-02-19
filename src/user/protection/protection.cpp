@@ -49,7 +49,6 @@ void Protection::getCurrentParamProt()
   timer_                = ksu.getValue(idTimer_);
   restartCount_         = ksu.getValue(idRestartCount_);
   restartResetCount_    = ksu.getValue(idRestartResetCount_);
-  valueParameter_       = parameters.getValue(idValueParam_);
 }
 
 void Protection::setCurrentParamProt()

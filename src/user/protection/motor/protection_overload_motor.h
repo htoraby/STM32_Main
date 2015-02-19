@@ -31,6 +31,14 @@ public:
    * \return false параметр в норме, true параметр не в норме
    */
   virtual bool checkBlock();
+
+private:
+
+  /*!
+   * \brief Пересчёт текущего значения для сравнения с уставкой
+   */
+  void calcValue();
+
 };
 
 #endif // PROTECTIONOVERLOADMOTOR_H

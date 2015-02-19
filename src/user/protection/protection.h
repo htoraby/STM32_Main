@@ -47,6 +47,9 @@ public:
   Protection();
   ~Protection();
 
+  /*!
+   * \brief Инициализация базовой задачи обработки защиты
+   */
   void init(const char *threadName);
 
   /*!
@@ -169,8 +172,6 @@ protected:
   unsigned short idRestartCount_;
   /// id Время от первого АПВ
   unsigned short idRestartResetCount_;
-  /// id контролируемого параметра
-  unsigned short idValueParam_;
 
   /// Локальные переменные для обработки
   /// Состояние защиты

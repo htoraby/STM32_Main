@@ -17,7 +17,6 @@ ProtectionOverloadMotor::ProtectionOverloadMotor()
   idTimer_ = CCS_PROT_MOTOR_OVERLOAD_TIME;
   idRestartCount_ = CCS_PROT_MOTOR_OVERLOAD_RESTART_COUNT;
   idRestartResetCount_ = CCS_PROT_MOTOR_OVERLOAD_RESTART_RESET_COUNT;
-  idValueParam_ = VSD_MOTOR_CURRENT;
 
   protActivatedEventId_ = OverloadMotorProtActivId;
   apvEventId_ = OverloadMotorApvId;
@@ -37,13 +36,24 @@ void ProtectionOverloadMotor::init()
 
 bool ProtectionOverloadMotor::checkAlarm()
 {
-  float nominal = 50;
-  return Protection::isHigherLimit(nominal * tripSetpoint_ / 100.0);
+  calcValue();
+  return Protection::isHigherLimit(tripSetpoint_);
 }
 
 bool ProtectionOverloadMotor::checkBlock()
 {
-  float nominal = 50;
-  return Protection::isHigherLimit(nominal * restartSetpoint_ / 100.0);
+  calcValue();
+  return Protection::isHigherLimit(restartSetpoint_);
 }
 
+void ProtectionOverloadMotor::calcValue()
+{
+  float value = 0;
+  for (int i = 0; i < 3; ++i) {
+    float value2 = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1_NOW+i);
+    if (value2 > value)
+      value = value2;
+  }
+  float nominal = parameters.getValue(VSD_MOTOR_CURRENT);
+  valueParameter_ =  value / (nominal / 100.0);
+}
