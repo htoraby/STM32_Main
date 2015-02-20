@@ -111,10 +111,8 @@ static void testThread(void * argument)
   static uint8_t buffer[UART_BUF_SIZE];
   bool turn = false;
 
-  uart_init(uart2, 9600);
-  osSemaphoreId semaphoreUart = osSemaphoreCreate(NULL, 1);
-  osSemaphoreWait(semaphoreUart, 0);
-  uart_setSemaphoreId(uart2, semaphoreUart);
+  uartInit(uart4, 115200);
+  osSemaphoreId semaphoreUart = uartGetSemaphoreId(uart4);
 #endif
 
   testRtc();
@@ -138,7 +136,7 @@ static void testThread(void * argument)
 //    parameters.setValue(CCS_PHYSIC_MAX_ADD_AI_1 + t, 20);
 //    t = t + 2;
 //    if (t > 30) t = 0;
-    osDelay(5);
+    osDelay(500);
 
 //    logRunning.start(AutoType);
 //    logAlarm.start(AutoType, 0);
@@ -178,12 +176,12 @@ static void testThread(void * argument)
     buffer[0] = 0x55;
     buffer[1] = 0xAA;
     buffer[2] = 0x02;
-    uart_writeData(uart2, buffer, UART_BUF_SIZE);
+    uartWriteData(uart4, buffer, UART_BUF_SIZE);
 
     osSemaphoreWait(semaphoreUart, osWaitForever);
     while (1) {
       if (osSemaphoreWait(semaphoreUart, 5) == osEventTimeout) {
-        sizePkt = uart_readData(uart2, buffer);
+        sizePkt = uartReadData(uart4, buffer);
         if ((buffer[0] != 0xFE) || (buffer[1] != 0x55) ||
             (buffer[2] != 0x01) || (sizePkt != UART_BUF_SIZE))
           asm("nop");
@@ -208,11 +206,8 @@ static void testUartThread(void * argument)
   int sizePkt;
   static uint8_t buffer[UART_BUF_SIZE];
 
-  uart_init(uart4, 9600);
-
-  osSemaphoreId semaphoreUart = osSemaphoreCreate(NULL, 1);
-  osSemaphoreWait(semaphoreUart, 0);
-  uart_setSemaphoreId(uart4, semaphoreUart);
+  uartInit(uart2, 115200);
+  osSemaphoreId semaphoreUart = uartGetSemaphoreId(uart2);
 
   while(1) {
     osSemaphoreWait(semaphoreUart, osWaitForever);
@@ -222,7 +217,7 @@ static void testUartThread(void * argument)
         buffer[1] = 0x55;
         buffer[2] = 0x01;
 
-        sizePkt = uart_readData(uart4, buffer);
+        sizePkt = uartReadData(uart2, buffer);
         if ((buffer[0] != 0x55) || (buffer[1] != 0xAA) ||
             (buffer[2] != 0x02) || (sizePkt != UART_BUF_SIZE))
           asm("nop");
@@ -230,7 +225,7 @@ static void testUartThread(void * argument)
         buffer[0] = 0xFE;
         buffer[1] = 0x55;
         buffer[2] = 0x01;
-        uart_writeData(uart4, buffer, UART_BUF_SIZE);
+        uartWriteData(uart2, buffer, UART_BUF_SIZE);
 
         countByte = 0;
         break;

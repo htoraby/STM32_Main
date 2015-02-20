@@ -22,7 +22,7 @@ void userInit()
   parameters.init();
   ksu.init();
 
-  protectionInit();
+//  protectionInit();
 
   osThreadDef(UserMain, userMainTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(UserMain), NULL);

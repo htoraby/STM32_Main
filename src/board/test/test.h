@@ -17,7 +17,7 @@
 #define TEST_ADC_EXT   0
 #define TEST_HOST_SPI  0
 #define TEST_LOG       0
-#define TEST_HOST_UART 1
+#define TEST_HOST_UART 0
 
 void testInit();
 
