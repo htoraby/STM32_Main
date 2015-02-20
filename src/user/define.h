@@ -1214,6 +1214,8 @@ enum enID
   VSD_OUT_CURRENT_PHASE_1,                  /// 2022.Выходной ток ПЧ фаза U
   VSD_OUT_CURRENT_PHASE_2,                  /// 2023.Выходной ток ПЧ фаза V
   VSD_OUT_CURRENT_PHASE_3,                  /// 2024.Выходной ток ПЧ фаза W
+  VSD_CURRENT_DC,                           /// 2025.Ток в звене постоянного тока
+  VSD_VOLTAGE_DC,                           /// 2026.Напряжение цепи пост.тока Danfoss 16-30 Используется в проекте Novomet 0х008B IREG_UD
 
   VSD_INDEX,
   //// Указатель индекса для массивных параметров
@@ -1593,11 +1595,6 @@ enum enID
   //// Выходной ток средний
   //// Danfoss 16-14 Используется в проекте
   //// Novomet 0х0072 IREG_IOUT
-
-	VSD_DC_VOLTAGE,
-  //// Напряжение цепи пост.тока
-  //// Danfoss 16-30 Используется в проекте
-  //// Novomet 0х008B IREG_UD
 
 	VSD_RADIATOR_TEMPERATURE,
   //// Температура радиатора

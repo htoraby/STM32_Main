@@ -1396,16 +1396,16 @@ void Vsd::initParameters()
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].max   = 30000.0;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].def   = 0.0;
   // Напряжение цепи пост.тока
-  parameters_[VSD_DC_VOLTAGE - VSD_BEGIN].id       = VSD_DC_VOLTAGE;
-  parameters_[VSD_DC_VOLTAGE - VSD_BEGIN].access   = ACCESS_OPERATOR;
-  parameters_[VSD_DC_VOLTAGE - VSD_BEGIN].operation= OPERATION_READ;
-  parameters_[VSD_DC_VOLTAGE - VSD_BEGIN].physic   = PHYSIC_VOLTAGE;
-  parameters_[VSD_DC_VOLTAGE - VSD_BEGIN].validity = VALIDITY_ERROR;
-  parameters_[VSD_DC_VOLTAGE - VSD_BEGIN].update   = UPDATE_ERROR;
-  parameters_[VSD_DC_VOLTAGE - VSD_BEGIN].value    = 0.0;
-  parameters_[VSD_DC_VOLTAGE - VSD_BEGIN].min  = 0.0;
-  parameters_[VSD_DC_VOLTAGE - VSD_BEGIN].max  = 10000.0;
-  parameters_[VSD_DC_VOLTAGE - VSD_BEGIN].def  = 0.0;
+  parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].id       = VSD_VOLTAGE_DC;
+  parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].access   = ACCESS_OPERATOR;
+  parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].operation= OPERATION_READ;
+  parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].physic   = PHYSIC_VOLTAGE;
+  parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].validity = VALIDITY_ERROR;
+  parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].update   = UPDATE_ERROR;
+  parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].value    = 0.0;
+  parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].min  = 0.0;
+  parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].max  = 10000.0;
+  parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].def  = 0.0;
   // Температура радиатора
   parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].id       = VSD_RADIATOR_TEMPERATURE;
   parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].access   = ACCESS_OPERATOR;

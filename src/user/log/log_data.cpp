@@ -127,7 +127,7 @@ void LogData::add(uint8_t code)
 //  *(float*)(buffer+177) = KSU.getValue();
   *(float*)(buffer+181) = tms->getValue(TMS_PSW_TMS);
   *(float*)(buffer+185) = tms->getValue(TMS_PSW_TMSN);
-  *(float*)(buffer+189) = vsd->getValue(VSD_DC_VOLTAGE);
+  *(float*)(buffer+189) = vsd->getValue(VSD_VOLTAGE_DC);
   *(float*)(buffer+193) = vsd->getValue(VSD_STATUS_WORD);
   *(float*)(buffer+197) = vsd->getValue(VSD_ALARM_WORD_1);
   *(float*)(buffer+201) = vsd->getValue(VSD_ALARM_WORD_2);
