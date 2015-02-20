@@ -72,3 +72,21 @@ Em::~Em()
 	// TODO Auto-generated destructor stub
 }
 
+void Em::initParameters()
+{
+  parameters_ = parametersArray_;
+  countParameter_ = sizeof(parametersArray_)/sizeof(parameter);
+
+  // Пустой элемент массива
+  parameters_[EM_BEGIN - EM_BEGIN].id            = EM_BEGIN;
+  parameters_[EM_BEGIN - EM_BEGIN].access        = ACCESS_ERROR;
+  parameters_[EM_BEGIN - EM_BEGIN].operation     = OPERATION_ERROR;
+  parameters_[EM_BEGIN - EM_BEGIN].physic        = PHYSIC_ERROR;
+  parameters_[EM_BEGIN - EM_BEGIN].validity      = VALIDITY_ERROR;
+  parameters_[EM_BEGIN - EM_BEGIN].update        = UPDATE_ERROR;
+  parameters_[EM_BEGIN - EM_BEGIN].value         = 0.0;
+  parameters_[EM_BEGIN - EM_BEGIN].min           = 0.0;
+  parameters_[EM_BEGIN - EM_BEGIN].max           = 0.0;
+  parameters_[EM_BEGIN - EM_BEGIN].def           = 0.0;
+}
+

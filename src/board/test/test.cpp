@@ -64,6 +64,7 @@ void testInit()
 #endif
 }
 
+#if (TEST_HOST_UART == 1)
 static int testCmd(int argc, char *argv[])
 {
   for(int i = 0; i < argc; i++) {
@@ -88,6 +89,7 @@ static int testCmd(int argc, char *argv[])
 
   return 1;
 }
+#endif
 
 static void testThread(void * argument)
 {

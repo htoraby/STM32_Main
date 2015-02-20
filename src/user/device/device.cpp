@@ -276,7 +276,7 @@ static void updateParametersTask(void *p)
 Device::Device(uint32_t startAddrParams)
   : startAddrParams_(startAddrParams)
 {
-
+  initParameters();
 }
 
 // Деструктор класса

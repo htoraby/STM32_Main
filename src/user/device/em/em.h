@@ -16,18 +16,24 @@
 // классов конкретных электросчётчиков
 class Em: public Device
 {
-	public:
-    Em();
-    virtual ~Em();
+public:
+  Em();
+  virtual ~Em();
 
-	// МЕТОД ЗАДАНИЯ КОЭФФИЦИЕНТОВ ТРАНСФОРМАЦИИ
-	int setCoefficientTransformation();
+  void initParameters();
 
-	// МЕТОД ЗАДАНИЯ КОЭФФИЦИЕНТА ТРАНСФОРМАЦИИ ТОКА
-	int setCoefficientTransforamationCurrent();
+  // МЕТОД ЗАДАНИЯ КОЭФФИЦИЕНТОВ ТРАНСФОРМАЦИИ
+  int setCoefficientTransformation();
 
-	// МЕТОД ЗАДАНИЯ КОЭФФИЦИЕНТА ТРАНСФОРМАЦИИ НАПРЯЖЕНИЯ
-	int setCoefficientTransforamationVoltage();
+  // МЕТОД ЗАДАНИЯ КОЭФФИЦИЕНТА ТРАНСФОРМАЦИИ ТОКА
+  int setCoefficientTransforamationCurrent();
+
+  // МЕТОД ЗАДАНИЯ КОЭФФИЦИЕНТА ТРАНСФОРМАЦИИ НАПРЯЖЕНИЯ
+  int setCoefficientTransforamationVoltage();
+
+private:
+  //! Массив параметров устройства
+  parameter parametersArray_[EM_END - EM_BEGIN];
 
 };
 

@@ -1693,7 +1693,6 @@ void VsdNovomet::initModbusParameters()
 */
 VsdNovomet::VsdNovomet()
 {
-  initParameters();
   initModbusParameters();
 
   // Создание объекта протокола связи с утройством
