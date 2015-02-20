@@ -47,6 +47,9 @@ public:
   Protection();
   ~Protection();
 
+  /*!
+   * \brief Инициализация базовой задачи обработки защиты
+   */
   void init(const char *threadName);
 
   /*!
@@ -74,7 +77,7 @@ public:
    *
    * \return false - параметр в норме, true - параметр не в норме
    */
-  virtual bool checkAlarm();
+  virtual bool checkAlarm() = 0;
 
   /*!
    * \brief Метод проверки превышения текущего значения отсительно уставки
@@ -95,7 +98,12 @@ public:
    *
    * \return false параметр в норме, true параметр не в норме
    */
-  virtual bool checkBlock();
+  virtual bool checkBlock() = 0;
+
+  /*!
+   * \brief Пересчёт текущего значения для сравнения с уставкой
+   */
+  virtual float calcValue() = 0;
 
   /*!
    * \brief checkRestartResetCount
@@ -169,8 +177,6 @@ protected:
   unsigned short idRestartCount_;
   /// id Время от первого АПВ
   unsigned short idRestartResetCount_;
-  /// id контролируемого параметра
-  unsigned short idValueParam_;
 
   /// Локальные переменные для обработки
   /// Состояние защиты

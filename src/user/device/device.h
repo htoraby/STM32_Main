@@ -10,6 +10,7 @@
 #define DEVICE_H_
 
 #include "define.h"
+#include "idslist.h"
 #include "service.h"
 #include "board.h"
 #include "fram.h"
@@ -284,7 +285,7 @@ public:
    * \param ID идентификатор параметра
    * \return Index
   */
-  unsigned short getIndexAtID(unsigned short ID);
+  unsigned short getIndexAtID(unsigned short id);
 
   /*!
    * \brief getValue

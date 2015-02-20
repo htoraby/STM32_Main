@@ -2,6 +2,8 @@
 #include "user_main.h"
 #include "string.h"
 
+#define MAX_QUEUE_SIZE 500
+
 static void novobusSlaveTask(void *p)
 {
   (static_cast<NovobusSlave*>(p))->task();
@@ -23,11 +25,11 @@ void NovobusSlave::init()
   hostInit();
 
   // Создаём очередь сообщений событий (надписей на дисплее)
-  osMessageQDef(MessageEventsNovobus, 100, uint32_t);
+  osMessageQDef(MessageEventsNovobus, MAX_QUEUE_SIZE, uint32_t);
   messageEvents_ = osMessageCreate(osMessageQ(MessageEventsNovobus), NULL);
 
   // Создаём очередь сообщений параметров для записи
-  osMessageQDef(MessageParamsNovobus, 100, uint32_t);
+  osMessageQDef(MessageParamsNovobus, MAX_QUEUE_SIZE, uint32_t);
   messageParams_ = osMessageCreate(osMessageQ(MessageParamsNovobus), NULL);
 
   // Создаём задачу Novobus slave
@@ -75,7 +77,8 @@ int NovobusSlave::getMessageParams()
 
 void NovobusSlave::putMessageEvents(uint32_t id)
 {
-  osMessagePut(messageEvents_, id, 0);
+//  TODO: Необходима реализация чтения событий
+//  osMessagePut(messageEvents_, id, 0);
 }
 
 void NovobusSlave::putMessageParams(uint32_t id)

@@ -17,7 +17,6 @@ ProtectionOverVoltageInput::ProtectionOverVoltageInput()
   idTimer_ = CCS_PROT_SUPPLY_OVERVOLTAGE_TIME;
   idRestartCount_ = CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT;
   idRestartResetCount_ = CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET_COUNT;
-  idValueParam_ = CCS_SUPPLY_INPUT_VOLTAGE_AVERAGE;
 
   protActivatedEventId_ = OverVoltInProtActivId;
   apvEventId_ = OverVoltInApvId;
@@ -43,4 +42,16 @@ bool ProtectionOverVoltageInput::checkAlarm()
 bool ProtectionOverVoltageInput::checkBlock()
 {
   return Protection::isHigherLimit(restartSetpoint_);
+}
+
+float ProtectionOverVoltageInput::calcValue()
+{
+  float value = parameters.getValue(EM_VOLTAGE_PHASE_1);
+  float value2 = parameters.getValue(EM_VOLTAGE_PHASE_2);
+  float value3 = parameters.getValue(EM_VOLTAGE_PHASE_3);
+
+  value = max(max(value, value2), value3);
+
+  float nominal = parameters.getValue(CCS_TRANS_NOMINAL_VOLTAGE);
+  return (value / (nominal / 100.0));
 }

@@ -34,6 +34,13 @@ public:
    */
   virtual bool checkBlock();
 
+private:
+
+  /*!
+   * \brief Пересчёт текущего значения для сравнения с уставкой
+   */
+  float calcValue();
+
 };
 
 #endif // PROTECTIONOVERVOLTAGEINPUT_H

@@ -17,7 +17,6 @@ ProtectionUnderVoltageInput::ProtectionUnderVoltageInput()
   idTimer_ = CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME;
   idRestartCount_ = CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_COUNT;
   idRestartResetCount_ = CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET_COUNT;
-  idValueParam_ = CCS_SUPPLY_INPUT_VOLTAGE_AVERAGE;
 
   protActivatedEventId_ = UnderVoltInProtActivId;
   apvEventId_ = UnderVoltInApvId;
@@ -43,4 +42,16 @@ bool ProtectionUnderVoltageInput::checkAlarm()
 bool ProtectionUnderVoltageInput::checkBlock()
 {
   return Protection::isLowerLimit(restartSetpoint_);
+}
+
+float ProtectionUnderVoltageInput::calcValue()
+{
+  float value = parameters.getValue(EM_VOLTAGE_PHASE_1);
+  float value2 = parameters.getValue(EM_VOLTAGE_PHASE_2);
+  float value3 = parameters.getValue(EM_VOLTAGE_PHASE_3);
+
+  value = min(min(value, value2), value3);
+
+  float nominal = parameters.getValue(CCS_TRANS_NOMINAL_VOLTAGE);
+  return (value / (nominal / 100.0));
 }

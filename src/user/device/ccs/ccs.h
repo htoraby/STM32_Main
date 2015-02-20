@@ -13,8 +13,40 @@
 class Ccs: public Device
 {
 public:
+  enum LedCondition {
+    /// Горит красный светодиод
+    LedConditionStop,
+    /// Горит желтый светодиод
+    LedConditionWaitApv,
+    /// Горит желтый и зеленый светодиоды
+    LedConditionDelay,
+    /// Горит красный светодиод
+    LedConditionBlock,
+    /// Горит зеленый светодиод
+    LedConditionRun,
+    /// Мигает зеленый светодиод
+    LedConditionRunning,
+    /// Мигает зеленый светодиод
+    LedConditionStopping
+  };
+
   Ccs();
   virtual ~Ccs();
+
+  /*!
+   * \brief Инициализация
+   */
+  void init();
+
+  /*!
+   * \brief Задача обработки очереди событий включения/мигания LED
+   */
+  void ledConditionTask();
+
+  /*!
+   * \brief Задача обработки переключения состояния ЧРП
+   */
+  void vsdConditionTask();
 
   /*!
    * \brief Инициализация массива параметров
@@ -25,19 +57,19 @@ public:
    * \brief Проверка находится ли станция в стопе
    * \return
    */
-  bool checkStopCCS();
+  bool isStopCCS();
 
   /*!
    * \brief Проверка находится ли станция в работе
    * \return
    */
-  bool checkWorkCCS();
+  bool isWorkCCS();
 
   /*!
    * \brief Проверка что КСУ в режиме АUTO
    * \return
    */
-  bool checkAutoControlMode();
+  bool isAutoControlMode();
 
   /*!
    * \brief getTime
@@ -50,7 +82,7 @@ public:
    * \brief Проверка находится ли станция в блокировке
    * \return
    */
-  bool checkBlockCCS();
+  bool isBlockCCS();
 
   /*!
    * \brief Метод обработки изменения состояния
@@ -58,18 +90,25 @@ public:
   void conditionChanged();
 
   /*!
-   * \brief Метод обработки изменения режима переключателя
+   * \brief Метод проверки команды на запуск/останов
    */
-  void controlModeChanged();
+  void cmdCheck();
 
 private:
+  /*!
+   * \brief Метод добавления в очередь событий включения/мигания LED
+   */
+  void setLedCondition(LedCondition condition);
+
   //! Массив параметров устройства
   parameter parametersArray_[CCS_END - CCS_BEGIN];
 
-  //! Предыдущий режим переключателя
-  int controlModeOld;
-  //! Предыдущие состояние
+  //! Очередь событий включения/мигания LED
+  osMessageQId ledMessage_;
+  //! Предыдущие состояние станции
   int conditionOld;
+  //! Предыдущие состояние VSD
+  int vsdConditionOld;
 
 };
 

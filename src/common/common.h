@@ -9,6 +9,8 @@ enum StatusType {
   StatusError,
 };
 
+
+
 #ifdef __cplusplus
 
 /*!
@@ -35,6 +37,32 @@ void operator delete(void *p);
  \return uint16_t - контрольная сумма
 */
 uint16_t crc16_ibm(uint8_t *buf, uint8_t size, uint16_t crc = 0xFFFF);
+
+/*!
+ * \brief Шаблон определения максимального числа
+ *
+ * \param a
+ * \param b
+ * \return T
+ */
+template<class T> inline const T& max(const T& a, const T& b)
+{
+  if (a > b) return(a);
+  else return(b);
+}
+
+/*!
+ * \brief Шаблон определения минимального числа
+ *
+ * \param a
+ * \param b
+ * \return T
+ */
+template<class T> inline const T& min(const T& a, const T& b)
+{
+  if (a < b) return(a);
+  else return(b);
+}
 
 #endif
 

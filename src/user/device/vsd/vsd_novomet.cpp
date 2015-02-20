@@ -1786,6 +1786,7 @@ unsigned char VsdNovomet::startVSD(void)
           else
             return RETURN_OK;
         }
+        osDelay(1);
       }
     }
     else
