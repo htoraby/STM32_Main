@@ -36,24 +36,22 @@ void ProtectionOverloadMotor::init()
 
 bool ProtectionOverloadMotor::checkAlarm()
 {
-  calcValue();
   return Protection::isHigherLimit(tripSetpoint_);
 }
 
 bool ProtectionOverloadMotor::checkBlock()
 {
-  calcValue();
   return Protection::isHigherLimit(restartSetpoint_);
 }
 
-void ProtectionOverloadMotor::calcValue()
+float ProtectionOverloadMotor::calcValue()
 {
-  float value = 0;
-  for (int i = 0; i < 3; ++i) {
-    float value2 = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1_NOW+i);
-    if (value2 > value)
-      value = value2;
-  }
+  float value = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1_NOW);
+  float value2 = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_2_NOW);
+  float value3 = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_3_NOW);
+
+  value = max(max(value, value2), value3);
+
   float nominal = parameters.getValue(VSD_MOTOR_CURRENT);
-  valueParameter_ =  value / (nominal / 100.0);
+  return (value / (nominal / 100.0));
 }

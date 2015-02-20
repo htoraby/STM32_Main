@@ -39,7 +39,7 @@ private:
   /*!
    * \brief Пересчёт текущего значения для сравнения с уставкой
    */
-  void calcValue();
+  float calcValue();
 
 };
 

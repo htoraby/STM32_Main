@@ -36,24 +36,22 @@ void ProtectionOverVoltageInput::init()
 
 bool ProtectionOverVoltageInput::checkAlarm()
 {
-  calcValue();
   return Protection::isHigherLimit(tripSetpoint_);
 }
 
 bool ProtectionOverVoltageInput::checkBlock()
 {
-  calcValue();
   return Protection::isHigherLimit(restartSetpoint_);
 }
 
-void ProtectionOverVoltageInput::calcValue()
+float ProtectionOverVoltageInput::calcValue()
 {
-  float value = 0;
-  for (int i = 0; i < 3; ++i) {
-    float value2 = parameters.getValue(EM_VOLTAGE_PHASE_1+i);
-    if (value2 > value)
-      value = value2;
-  }
+  float value = parameters.getValue(EM_VOLTAGE_PHASE_1);
+  float value2 = parameters.getValue(EM_VOLTAGE_PHASE_2);
+  float value3 = parameters.getValue(EM_VOLTAGE_PHASE_3);
+
+  value = max(max(value, value2), value3);
+
   float nominal = parameters.getValue(CCS_TRANS_NOMINAL_VOLTAGE);
-  valueParameter_ =  value / (nominal / 100.0);
+  return (value / (nominal / 100.0));
 }

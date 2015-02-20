@@ -77,7 +77,7 @@ public:
    *
    * \return false - параметр в норме, true - параметр не в норме
    */
-  virtual bool checkAlarm();
+  virtual bool checkAlarm() = 0;
 
   /*!
    * \brief Метод проверки превышения текущего значения отсительно уставки
@@ -98,7 +98,12 @@ public:
    *
    * \return false параметр в норме, true параметр не в норме
    */
-  virtual bool checkBlock();
+  virtual bool checkBlock() = 0;
+
+  /*!
+   * \brief Пересчёт текущего значения для сравнения с уставкой
+   */
+  virtual float calcValue() = 0;
 
   /*!
    * \brief checkRestartResetCount

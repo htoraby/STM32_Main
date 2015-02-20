@@ -59,14 +59,9 @@ void Protection::setCurrentParamProt()
   ksu.setValue(idRestartResetCount_, restartResetCount_);
 }
 
-// Заглушка виртуальной функции
-bool Protection::checkAlarm()
-{
-  return false;
-}
-
 bool Protection::isHigherLimit(float setpoint)
 {
+  valueParameter_ = calcValue();
   // Если текущий параметр больше уставки
   if (valueParameter_ > setpoint)
     return true;
@@ -76,17 +71,12 @@ bool Protection::isHigherLimit(float setpoint)
 
 bool Protection::isLowerLimit(float setpoint)
 {
+  valueParameter_ = calcValue();
   // Если текущий параметр меньше уставки
   if (valueParameter_ < setpoint)
     return true;
   else
     return false;
-}
-
-// Заглушка виртуальной функции
-bool Protection::checkBlock()
-{
-  return false;
 }
 
 // Метод проверки истёк ли таймер сброса счётчиков АПВ защиты

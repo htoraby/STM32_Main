@@ -36,24 +36,22 @@ void ProtectionUnderloadMotor::init()
 
 bool ProtectionUnderloadMotor::checkAlarm()
 {
-  calcValue();
   return Protection::isLowerLimit(tripSetpoint_);
 }
 
 bool ProtectionUnderloadMotor::checkBlock()
 {
-  calcValue();
   return Protection::isLowerLimit(restartSetpoint_);
 }
 
-void ProtectionUnderloadMotor::calcValue()
+float ProtectionUnderloadMotor::calcValue()
 {
-  float value = 0;
-  for (int i = 0; i < 3; ++i) {
-    float value2 = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1_NOW+i);
-    if (value2 < value)
-      value = value2;
-  }
+  float value = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1_NOW);
+  float value2 = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_2_NOW);
+  float value3 = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_3_NOW);
+
+  value = min(min(value, value2), value3);
+
   float nominal = parameters.getValue(VSD_MOTOR_CURRENT);
-  valueParameter_ =  value / (nominal / 100.0);
+  return (value / (nominal / 100.0));
 }
