@@ -285,7 +285,7 @@ public:
    * \param ID идентификатор параметра
    * \return Index
   */
-  unsigned short getIndexAtID(unsigned short ID);
+  unsigned short getIndexAtID(unsigned short id);
 
   /*!
    * \brief getValue
