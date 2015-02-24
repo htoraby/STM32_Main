@@ -1697,7 +1697,7 @@ VsdNovomet::VsdNovomet()
 
   // Создание объекта протокола связи с утройством
   dm_ = new DeviceModbus(ModbusParameters, 94,
-                        uart3, 115200, 8, 1, 0, 1,
+                        VSD_UART, 115200, 8, 1, 0, 1,
                         "ProtocolVsdNovomet",
                         &messageUpdateParameters_);
 

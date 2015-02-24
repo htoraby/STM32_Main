@@ -78,9 +78,9 @@ static int testCmd(int argc, char *argv[])
         static uint8_t buffer[UART_BUF_SIZE*2];
         int size = xPortGetFreeHeapSize();
         sprintf((char*)buffer, "\n%d\n", size);
-        uartWriteData(HOST_UART_TEST, buffer, strlen((char*)buffer));
+        uartWriteData(HOST_TEST_UART, buffer, strlen((char*)buffer));
 
-        uartWriteData(HOST_UART_TEST, bufferTx, strlen((char*)bufferTx));
+        uartWriteData(HOST_TEST_UART, bufferTx, strlen((char*)bufferTx));
 
         return 0;
       }
@@ -247,15 +247,15 @@ static void testHostUartRxThread(void * argument)
   int sizePkt;
   static uint8_t buffer[UART_BUF_SIZE];
 
-  uartInit(uart1, 115200);
-  osSemaphoreId semaphoreUart = uartGetSemaphoreId(uart1);
+  uartInit(HOST_UART, 115200);
+  osSemaphoreId semaphoreUart = uartGetSemaphoreId(HOST_UART);
 
   while(1) {
     osSemaphoreWait(semaphoreUart, osWaitForever);
     while (1) {
       if (osSemaphoreWait(semaphoreUart, 5) == osEventTimeout) {
-        sizePkt = uartReadData(uart1, buffer);
-        uartWriteData(HOST_UART_TEST, buffer, sizePkt);
+        sizePkt = uartReadData(HOST_UART, buffer);
+        uartWriteData(HOST_TEST_UART, buffer, sizePkt);
 
         countByte = 0;
         break;
@@ -273,15 +273,15 @@ static void testHostUartTxThread(void * argument)
   int sizePkt;
   static uint8_t buffer[UART_BUF_SIZE];
 
-  uartInit(HOST_UART_TEST, 115200);
-  osSemaphoreId semaphoreUart = uartGetSemaphoreId(HOST_UART_TEST);
+  uartInit(HOST_TEST_UART, 115200);
+  osSemaphoreId semaphoreUart = uartGetSemaphoreId(HOST_TEST_UART);
 
   while(1) {
     osSemaphoreWait(semaphoreUart, osWaitForever);
     while (1) {
       if (osSemaphoreWait(semaphoreUart, 5) == osEventTimeout) {
         memset(buffer, 0, UART_BUF_SIZE);
-        sizePkt = uartReadData(HOST_UART_TEST, buffer);
+        sizePkt = uartReadData(HOST_TEST_UART, buffer);
 
         memcpy(bufferRx, buffer, UART_BUF_SIZE);
 
@@ -294,7 +294,7 @@ static void testHostUartTxThread(void * argument)
           str = strtok (NULL, " ");
         }
         if (testCmd(argc, argv))
-          uartWriteData(uart1, buffer, sizePkt);
+          uartWriteData(HOST_UART, buffer, sizePkt);
 
         countByte = 0;
         break;
