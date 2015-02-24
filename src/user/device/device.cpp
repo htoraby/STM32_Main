@@ -452,7 +452,7 @@ void Device::setFieldAll(unsigned short index, parameter param)
 // Метод поиска и получения индекса параметра с указанным ID
 unsigned short Device::getIndexAtID(unsigned short id)
 {
-  if (getFieldId(id - startAddrParams_) == (id - startAddrParams_))
+  if (getFieldId(id - startAddrParams_) == id)
     return (id - startAddrParams_);
 
   // TODO: Предупреждение о не найденом параметре

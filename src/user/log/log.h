@@ -48,7 +48,7 @@ typedef enum {
  *
 */
 typedef enum {
-  RunId = 300,
+  RunId = 10000,
   OverVoltInProtActivId,       //!< "Сработала защита: Превышение питания сети"
   UnderVoltInProtActivId,      //!< "Сработала защита: Снижение питания сети"
   OverloadMotorProtActivId,    //!< "Сработала защита: Перегруз двигателя"
