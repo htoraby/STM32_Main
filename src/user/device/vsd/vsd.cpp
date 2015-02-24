@@ -7,7 +7,7 @@
 
 #include "vsd.h"
 
-Vsd::Vsd() : Device(VSD_BEGIN)
+Vsd::Vsd() : Device(VSD_BEGIN, parametersArray_, VSD_END - VSD_BEGIN)
 {
   initParameters();
 }
@@ -116,9 +116,6 @@ float Vsd::getCurrentFreq()
 
 void Vsd::initParameters()
 {
-  parameters_ = parametersArray_;
-  countParameter_ = sizeof(parametersArray_)/sizeof(parameter);
-
   // Пустой элемент массива
   parameters_[VSD_BEGIN - VSD_BEGIN].id                = VSD_BEGIN;
   parameters_[VSD_BEGIN - VSD_BEGIN].access            = ACCESS_ERROR;

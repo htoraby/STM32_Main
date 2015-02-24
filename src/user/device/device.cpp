@@ -279,8 +279,10 @@ static void updateParametersTask(void *p)
 }
 
 // Конструктор класса
-Device::Device(uint32_t startAddrParams)
+Device::Device(uint32_t startAddrParams, parameter *parameters, uint16_t countParameter)
   : startAddrParams_(startAddrParams)
+  , parameters_(parameters)
+  , countParameter_(countParameter)
 {
 
 }

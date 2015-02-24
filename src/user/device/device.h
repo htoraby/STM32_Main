@@ -64,7 +64,7 @@ class Device
 
 public:
 
-  Device(uint32_t startAddrParams);
+  Device(uint32_t startAddrParams, parameter *parameters, uint16_t countParameter);
   virtual ~Device();
 
   /*!
@@ -97,8 +97,6 @@ public:
   osMessageQId messageUpdateParameters_;
 
   int getMessageUpdateParameters(void);
-
-  unsigned short countParameter_;
 
   virtual void updateParameters();
 
@@ -320,11 +318,13 @@ public:
 
 // Наследуемые члены класс
 protected:
+  //! Начальный адрес массива параметров из списка enID
+  uint32_t startAddrParams_;
+
   //! Указатель на массив параметров устройства
   parameter *parameters_;
 
-  //! Начальный адрес массива параметров из списка enID
-  uint32_t startAddrParams_;
+  uint16_t countParameter_;
 
 private:
 

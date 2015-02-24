@@ -1,11 +1,4 @@
-﻿/*
- * classElectroMeter.h
- *
- *  Created on: 03.07.2014
- *      Author: trofimenko
- */
-
-#ifndef EM_H_
+﻿#ifndef EM_H_
 #define EM_H_
 
 #include "device.h"

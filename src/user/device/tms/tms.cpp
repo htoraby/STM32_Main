@@ -8,7 +8,7 @@
 #include "tms.h"
 
 
-Tms::Tms() : Device(TMS_BEGIN)
+Tms::Tms() : Device(TMS_BEGIN, parametersArray_, TMS_END - TMS_BEGIN)
 {
   initParameters();
 }
@@ -20,8 +20,7 @@ Tms::~Tms()
 
 void Tms::initParameters()
 {
-  parameters_ = parametersArray_;
-  countParameter_ = sizeof(parametersArray_)/sizeof(parameter);
+
 
   // Пустой элемент массива
   parameters_[TMS_BEGIN - TMS_BEGIN].id            = TMS_BEGIN;

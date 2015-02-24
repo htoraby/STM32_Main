@@ -10,7 +10,7 @@
 #include "user_main.h"
 
 Ccs::Ccs()
-  : Device(CCS_BEGIN)
+  : Device(CCS_BEGIN, parametersArray_, CCS_END - CCS_BEGIN)
   , conditionOld(-1)
   , vsdConditionOld(-1)
 {
@@ -218,9 +218,6 @@ float Ccs::getTime()
 
 void Ccs::initParameters()
 {
-  parameters_ = parametersArray_;
-  countParameter_ = sizeof(parametersArray_)/sizeof(parameter);
-
   // Пустой элемент массива
   parameters_[CCS_BEGIN - CCS_BEGIN].id                = CCS_BEGIN;
   parameters_[CCS_BEGIN - CCS_BEGIN].access            = ACCESS_ERROR;

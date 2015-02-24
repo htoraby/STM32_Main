@@ -1,17 +1,10 @@
-﻿/*
- * classElectroMeter.cpp
- *
- *  Created on: 03.07.2014
- *      Author: trofimenko
- */
+﻿#include "em.h"
 
-#include "em.h"
-
-Em::Em() : Device(EM_BEGIN)
+Em::Em() : Device(EM_BEGIN, parametersArray_, EM_END - EM_BEGIN)
 {
   initParameters();
- /*
-	Parameter Parameters[EM_END - EM_BEGIN]=
+/*
+  Parameter Parameters[EM_END - EM_BEGIN]=
 	{
 		// Идентификатор          		Доступ    			Операция   		 	Физический				Исп       			Знач 		Мин  	Макс
 		{EM_FREQUENCY,					ACCESS_OPERATOR,	OPERATION_READ,		PHYSIC_FREQUENCY,		VALIDITY_ERROR,		0.0,		0.0,	100000.0},
@@ -65,7 +58,7 @@ Em::Em() : Device(EM_BEGIN)
 		{EM_COEFFICIENT_TRANS_CURRENT,	ACCESS_OPERATOR,	OPERATION_WRITE,	PHYSIC_NUMERIC,			VALIDITY_ERROR,		0.0,		0.0,	100000.0},
 		{EM_COEFFICIENT_TRANS_VOLTAGE,	ACCESS_OPERATOR,	OPERATION_WRITE,	PHYSIC_NUMERIC,			VALIDITY_ERROR,		0.0,		0.0,	100000.0},
 	};
-  */
+*/
 }
 
 Em::~Em()
@@ -75,9 +68,6 @@ Em::~Em()
 
 void Em::initParameters()
 {
-  parameters_ = parametersArray_;
-  countParameter_ = sizeof(parametersArray_)/sizeof(parameter);
-
   // Пустой элемент массива
   parameters_[EM_BEGIN - EM_BEGIN].id            = EM_BEGIN;
   parameters_[EM_BEGIN - EM_BEGIN].access        = ACCESS_ERROR;
@@ -89,5 +79,115 @@ void Em::initParameters()
   parameters_[EM_BEGIN - EM_BEGIN].min           = 0.0;
   parameters_[EM_BEGIN - EM_BEGIN].max           = 0.0;
   parameters_[EM_BEGIN - EM_BEGIN].def           = 0.0;
+
+  parameters_[EM_FREQUENCY - EM_BEGIN].id            = EM_FREQUENCY;
+  parameters_[EM_FREQUENCY - EM_BEGIN].access        = ACCESS_OPERATOR;
+  parameters_[EM_FREQUENCY - EM_BEGIN].operation     = OPERATION_READ;
+  parameters_[EM_FREQUENCY - EM_BEGIN].physic        = PHYSIC_FREQUENCY;
+  parameters_[EM_FREQUENCY - EM_BEGIN].validity      = VALIDITY_ERROR;
+  parameters_[EM_FREQUENCY - EM_BEGIN].update        = UPDATE_ERROR;
+  parameters_[EM_FREQUENCY - EM_BEGIN].value         = 0.0;
+  parameters_[EM_FREQUENCY - EM_BEGIN].min           = 0.0;
+  parameters_[EM_FREQUENCY - EM_BEGIN].max           = 0.0;
+  parameters_[EM_FREQUENCY - EM_BEGIN].def           = 0.0;
+
+  parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].id            = EM_CURRENT_PHASE_1;
+  parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].access        = ACCESS_OPERATOR;
+  parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].operation     = OPERATION_READ;
+  parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].physic        = PHYSIC_CURRENT;
+  parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].validity      = VALIDITY_ERROR;
+  parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].update        = UPDATE_ERROR;
+  parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].value         = 0.0;
+  parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].min           = 0.0;
+  parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].max           = 0.0;
+  parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].def           = 0.0;
+
+  parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].id            = EM_CURRENT_PHASE_2;
+  parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].access        = ACCESS_OPERATOR;
+  parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].operation     = OPERATION_READ;
+  parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].physic        = PHYSIC_CURRENT;
+  parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].validity      = VALIDITY_ERROR;
+  parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].update        = UPDATE_ERROR;
+  parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].value         = 0.0;
+  parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].min           = 0.0;
+  parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].max           = 0.0;
+  parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].def           = 0.0;
+
+  parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].id            = EM_CURRENT_PHASE_3;
+  parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].access        = ACCESS_OPERATOR;
+  parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].operation     = OPERATION_READ;
+  parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].physic        = PHYSIC_CURRENT;
+  parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].validity      = VALIDITY_ERROR;
+  parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].update        = UPDATE_ERROR;
+  parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].value         = 0.0;
+  parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].min           = 0.0;
+  parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].max           = 0.0;
+  parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].def           = 0.0;
+
+  parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].id            = EM_VOLTAGE_PHASE_1;
+  parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].access        = ACCESS_OPERATOR;
+  parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].operation     = OPERATION_READ;
+  parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].physic        = PHYSIC_VOLTAGE;
+  parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].validity      = VALIDITY_ERROR;
+  parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].update        = UPDATE_ERROR;
+  parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].value         = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].min           = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].max           = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].def           = 0.0;
+
+  parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].id            = EM_VOLTAGE_PHASE_2;
+  parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].access        = ACCESS_OPERATOR;
+  parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].operation     = OPERATION_READ;
+  parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].physic        = PHYSIC_VOLTAGE;
+  parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].validity      = VALIDITY_ERROR;
+  parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].update        = UPDATE_ERROR;
+  parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].value         = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].min           = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].max           = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].def           = 0.0;
+
+  parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].id            = EM_VOLTAGE_PHASE_3;
+  parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].access        = ACCESS_OPERATOR;
+  parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].operation     = OPERATION_READ;
+  parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].physic        = PHYSIC_VOLTAGE;
+  parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].validity      = VALIDITY_ERROR;
+  parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].update        = UPDATE_ERROR;
+  parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].value         = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].min           = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].max           = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].def           = 0.0;
+
+  parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].id            = EM_VOLTAGE_PHASE_1_2;
+  parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].access        = ACCESS_OPERATOR;
+  parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].operation     = OPERATION_READ;
+  parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].physic        = PHYSIC_VOLTAGE;
+  parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].validity      = VALIDITY_ERROR;
+  parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].update        = UPDATE_ERROR;
+  parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].value         = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].min           = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].max           = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].def           = 0.0;
+
+  parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].id            = EM_VOLTAGE_PHASE_2_3;
+  parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].access        = ACCESS_OPERATOR;
+  parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].operation     = OPERATION_READ;
+  parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].physic        = PHYSIC_VOLTAGE;
+  parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].validity      = VALIDITY_ERROR;
+  parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].update        = UPDATE_ERROR;
+  parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].value         = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].min           = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].max           = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].def           = 0.0;
+
+  parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].id            = EM_VOLTAGE_PHASE_3_1;
+  parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].access        = ACCESS_OPERATOR;
+  parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].operation     = OPERATION_READ;
+  parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].physic        = PHYSIC_VOLTAGE;
+  parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].validity      = VALIDITY_ERROR;
+  parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].update        = UPDATE_ERROR;
+  parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].value         = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].min           = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].max           = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].def           = 0.0;
 }
 
