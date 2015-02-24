@@ -10,7 +10,7 @@
 
 Tms::Tms() : Device(TMS_BEGIN)
 {
-
+  initParameters();
 }
 
 Tms::~Tms()

@@ -9,6 +9,12 @@
 #include "service.h"
 #include "user_main.h"
 
+#if USE_EXT_MEM
+static float buffer[VSD_BEGIN] __attribute__((section(".extmem")));
+#else
+static float buffer[VSD_BEGIN];
+#endif
+
 float Units[28][6][2] =
 {
   /// PHYSIC_ERROR Ошибка типа 0
@@ -276,7 +282,7 @@ static void updateParametersTask(void *p)
 Device::Device(uint32_t startAddrParams)
   : startAddrParams_(startAddrParams)
 {
-  initParameters();
+
 }
 
 // Деструктор класса
@@ -447,10 +453,8 @@ unsigned short Device::getIndexAtID(unsigned short id)
   if (getFieldId(id - startAddrParams_) == (id - startAddrParams_))
     return (id - startAddrParams_);
 
-  for (int i = 0; i < countParameter_; i++) {
-    if (id == getFieldId(i))
-      return i;
-  }
+  // TODO: Предупреждение о не найденом параметре
+
   return 0;
 }
 
@@ -496,17 +500,33 @@ void Device::updateParameters()
 
 StatusType Device::saveParameters()
 {
-  StatusType status = framWriteData(startAddrParams_*sizeof(parameter),
-                                    (uint8_t *)parameters_,
-                                    countParameter_*sizeof(parameter));
+  // Проверка на завершение работы DMA
+  framReadData(startAddrParams_*4, (uint8_t *)buffer, 1*4);
+
+  for (int i = 0; i < countParameter_; ++i) {
+    buffer[i] = parameters_[i].value;
+  }
+
+  StatusType status = framWriteData(startAddrParams_*4,
+                                    (uint8_t *)buffer,
+                                    countParameter_*4);
+  if (status == StatusError)
+    asm("nop");
   return status;
 }
 
 StatusType Device::readParameters()
 {
-  StatusType status = framReadData(startAddrParams_*sizeof(parameter),
-                                   (uint8_t *)parameters_,
-                                   countParameter_*sizeof(parameter));
+  StatusType status = framReadData(startAddrParams_*4,
+                                   (uint8_t *)buffer,
+                                   countParameter_*4);
+  if (status == StatusError)
+    asm("nop");
+
+  for (int i = 0; i < countParameter_; ++i) {
+    parameters_[i].value = buffer[i];
+  }
+
   return status;
 }
 
@@ -514,5 +534,3 @@ void Device::initParameters()
 {
 
 }
-
-

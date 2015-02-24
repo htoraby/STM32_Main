@@ -9,6 +9,7 @@
 
 Em::Em() : Device(EM_BEGIN)
 {
+  initParameters();
  /*
 	Parameter Parameters[EM_END - EM_BEGIN]=
 	{

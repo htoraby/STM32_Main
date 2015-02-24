@@ -14,7 +14,7 @@ Ccs::Ccs()
   , conditionOld(-1)
   , vsdConditionOld(-1)
 {
-
+  initParameters();
 }
 
 Ccs::~Ccs()
