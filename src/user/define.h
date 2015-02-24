@@ -91,65 +91,65 @@ enum enOperation
  */
 enum enPhysic
 {
-  PHYSIC_ERROR              = 0,
+  PHYSIC_ERROR,
   /// Просто число
-  PHYSIC_NUMERIC            = 1,
+  PHYSIC_NUMERIC,
   /// Время
-  PHYSIC_TIME               = 2,
+  PHYSIC_TIME,
   /// Проценты
-  PHYSIC_PERCENT            = 3,
+  PHYSIC_PERCENT,
   /// Длина
-  PHYSIC_LENGHT             = 4,
+  PHYSIC_LENGHT,
   /// Плотность
-  PHYSIC_DENSITY            = 5,
+  PHYSIC_DENSITY,
   /// Площадь
-  PHYSIC_SPACE              = 6,
+  PHYSIC_SPACE,
   /// Частота
-  PHYSIC_FREQUENCY          = 7,
+  PHYSIC_FREQUENCY,
   /// Напряжение
-  PHYSIC_VOLTAGE            = 8,
+  PHYSIC_VOLTAGE,
   /// Ток
-  PHYSIC_CURRENT            = 9,
+  PHYSIC_CURRENT,
   /// Активная мощность
-  PHYSIC_ACTIVE_POWER       = 10,
+  PHYSIC_ACTIVE_POWER,
   /// Полная мощность
-  PHYSIC_FULL_POWER         = 11,
+  PHYSIC_FULL_POWER,
   /// Реактивная мощность
-  PHYSIC_REACTIVE_POWER     = 12,
+  PHYSIC_REACTIVE_POWER,
   /// Угол
-  PHYSIC_ANGLE              = 13,
+  PHYSIC_ANGLE,
   /// Скорость вращения
-  PHYSIC_RPM                = 14,
+  PHYSIC_RPM,
   /// Темп (разгона или замедления)
-  PHYSIC_TEMP               = 15,
+  PHYSIC_TEMP,
   /// Сопротивление изоляции
-  PHYSIC_RESISTANCE         = 16,
+  PHYSIC_RESISTANCE,
   /// Сопротивление кабельной линии
-  PHYSIC_RESIST_CABLE_LINE  = 16,
+  PHYSIC_RESIST_CABLE_LINE,
   /// Давление
-  PHYSIC_PRESSURE           = 17,
+  PHYSIC_PRESSURE,
   /// Температура
-  PHYSIC_TEMPERATURE        = 18,
+  PHYSIC_TEMPERATURE,
   /// Ускорение
-  PHYSIC_ACCELERATION       = 19,
+  PHYSIC_ACCELERATION,
   /// Cкорость
-  PHYSIC_SPEED             	= 20,
+  PHYSIC_SPEED,
   /// Вязкость
-  PHYSIC_VISCOSITY	        = 21,
+  PHYSIC_VISCOSITY,
   /// Расход
-  PHYSIC_FLOW            		= 22,
+  PHYSIC_FLOW,
   /// Мощность
-  PHYSIC_POWER              = 23,
+  PHYSIC_POWER,
   /// Активная энергия
-  PHYSIC_ACTIVE_ENERGY      = 24,
+  PHYSIC_ACTIVE_ENERGY,
   /// Реактивная энергия
-  PHYSIC_REACTIVE_ENERGY    = 25,
+  PHYSIC_REACTIVE_ENERGY,
   /// Полная энергия
-  PHYSIC_FULL_ENERGY        = 26,
+  PHYSIC_FULL_ENERGY,
   /// Номинальный момент
-  PHYSIC_RATE               = 27,
+  PHYSIC_RATE,
   /// Индуктивность Гн
-  PHYSIC_INDUNCTANCE        = 28,
+  PHYSIC_INDUNCTANCE,
   PHYSIC_LAST
 };
 
