@@ -24,13 +24,17 @@ DeviceModbus::DeviceModbus(ModbusParameter *MapRegisters,
                            int Parity,
                            int Address,
                            const char *threadName,
-                           osMessageQId *messageUpdateID)
+                           osMessageQId messageUpdateID)
   : quantityParam_(Quantity)
   , deviceAddress_(Address)
   , indexExchange_(1)
   , messageUpdateID_(messageUpdateID)
   , modbusParameters_(MapRegisters)
 {
+//  messageUpdateID_ = messageUpdateID;
+//  osMessageQDef(OutOfTurn2, 100, uint32_t);
+//  messageUpdateID_ = osMessageCreate (osMessageQ(OutOfTurn2), NULL);
+
   // Создаём очередь сообщений
   osMessageQDef(OutOfTurn, 100, uint32_t);
   messageOutOfTurn_ = osMessageCreate (osMessageQ(OutOfTurn), NULL);
@@ -166,9 +170,9 @@ unTypeData DeviceModbus::getFieldValue(int Index)
 }
 
 // Получить всю структуру параметра
-ModbusParameter DeviceModbus::getFieldAll(int Index)
+ModbusParameter* DeviceModbus::getFieldAll(int Index)
 {
-  return modbusParameters_[Index];
+  return &modbusParameters_[Index];
 }
 
 // Метод поиска и получения индекса параметра с указанным ID
@@ -233,7 +237,7 @@ int DeviceModbus::putMessageUpdateID(int Element)
 {
   osStatus Status;
   Status = osMessagePut(messageUpdateID_, Element, 0);
-  if (Status)
+  if (Status == osOK)
     return 1;
   else
     return 0;
@@ -244,38 +248,38 @@ void DeviceModbus::writeModbusParameter(int ID, float Value)
 {
   int Index = getIndexAtID(ID);
   // Получаем всю структуру параметра
-  ModbusParameter Param = getFieldAll(Index);
+  ModbusParameter *Param = getFieldAll(Index);
   // Применяем преобразование единиц измерения
-  Value = (Value * (Units[Param.Physic][Param.Unit][0])) + (Units[Param.Physic][Param.Unit][1]);
+  Value = (Value * (Units[Param->Physic][Param->Unit][0])) + (Units[Param->Physic][Param->Unit][1]);
   // Применяем преобразование коэффициента
-  Value = Value * Param.Coefficient;
+  Value = Value * Param->Coefficient;
   // Применяем преобразование масштаба
-  Value = Value / Param.Scale;
+  Value = Value / Param->Scale;
   // Применяем тип данных
-  switch (Param.TypeData) {
+  switch (Param->TypeData) {
   case  TYPE_DATA_CHAR:
-    Param.Value.tdChar[0] = (char)(Value + 0.5);
+    Param->Value.tdChar[0] = (char)(Value + 0.5);
     break;
   case  TYPE_DATA_INT16:
-    Param.Value.tdInt16[0] = (short int)(Value + 0.5);
+    Param->Value.tdInt16[0] = (short int)(Value + 0.5);
     break;
   case  TYPE_DATA_INT32:
-    Param.Value.tdInt32 = (int)(Value + 0.5);
+    Param->Value.tdInt32 = (int)(Value + 0.5);
     break;
   case TYPE_DATA_UINT16:
-    Param.Value.tdUint16[0] = (unsigned short int)(Value + 0.5);
+    Param->Value.tdUint16[0] = (unsigned short int)(Value + 0.5);
     break;
   case  TYPE_DATA_UINT32:
-    Param.Value.tdUint32 = (unsigned int)(Value + 0.5);
+    Param->Value.tdUint32 = (unsigned int)(Value + 0.5);
     break;
   case TYPE_DATA_FLOAT:
-    Param.Value.tdFloat = Value;
+    Param->Value.tdFloat = Value;
     break;
   default:
     break;
   }
-  Param.Flag = 1;
-  Param.Priority = 1;
+  Param->Flag = 1;
+  Param->Priority = 1;
   putMessageOutOfTurn(Index);
 }
 
@@ -310,6 +314,7 @@ int DeviceModbus::searchExchangeParameters()
 void DeviceModbus::exchangeTask(void)
 {
   int Count = 0;
+  static int test = 0;
   while (1) {
     osDelay(100);
     // Проверяем очередь параметров для обработки вне очереди
@@ -415,6 +420,7 @@ void DeviceModbus::exchangeTask(void)
       //else
       // ВНИМАНИЕ!!! Сломался exchangeCycle
     }
+    test++;
   }
 }
 

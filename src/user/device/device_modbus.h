@@ -79,7 +79,7 @@ public:
                 int Parity,
                 int Address,
                 const char *threadName,
-                osMessageQId *messageUpdateID);
+                osMessageQId messageUpdateID);
   /// Деструктор по умолчанию
   virtual ~DeviceModbus();
 
@@ -211,11 +211,11 @@ public:
   unTypeData getFieldValue(int Index);
 
   /*!
-   * \brief Метод получения параметра по индексу в массиве параметров
+   * \brief Метод получения указателя на параметр по индексу
    * \param Index индекс параметра в массиве
-   * \return все поля
+   * \return Указатель
    */
-  ModbusParameter getFieldAll(int Index);
+  ModbusParameter *getFieldAll(int Index);
 
   /*!
    * \brief Метод поиска и получения индекса по ID параметра

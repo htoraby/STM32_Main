@@ -105,7 +105,7 @@ void Ccs::vsdConditionTask()
         case VSD_CONDITION_WAIT_STOP:
           if (getValue(CCS_CONDITION) == CCS_CONDITION_STOP)
             break;
-#ifndef DEBUG
+#ifdef DEBUG
           if (vsd->stopVSD() == RETURN_OK)
 #endif
             setValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
@@ -122,7 +122,7 @@ void Ccs::vsdConditionTask()
         case VSD_CONDITION_WAIT_RUN:
           if (getValue(CCS_CONDITION) == CCS_CONDITION_RUN)
             break;
-#ifndef DEBUG
+#ifdef DEBUG
           if (vsd->startVSD() == RETURN_OK)
 #endif
             setValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);

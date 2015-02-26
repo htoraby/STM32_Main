@@ -1693,16 +1693,14 @@ void VsdNovomet::initModbusParameters()
 */
 VsdNovomet::VsdNovomet()
 {
-  initModbusParameters();
-
-  // Создание объекта протокола связи с утройством
-  dm_ = new DeviceModbus(ModbusParameters, 94,
-                        VSD_UART, 115200, 8, 1, 0, 1,
-                        "ProtocolVsdNovomet",
-                        &messageUpdateParameters_);
-
+  initModbusParameters(); 
   // Создание очереди обновления параметров
   createMessageUpdateParameters();
+  // Создание объекта протокола связи с утройством
+  dm_ = new DeviceModbus(ModbusParameters, 94,
+                        VSD_UART, 115200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1,
+                        "ProtocolVsdNovomet",
+                        messageUpdateParameters_);
   // Создание задачи обновления параметров
   createThread("UpdateParametersVsdNovomet");
 }
@@ -1725,29 +1723,29 @@ void VsdNovomet::updateParameters()
     // По ID параметра находим параметр и обновляем значение
     if (updateParamID) {
       // Получаем все поля параметра по ID
-      ModbusParameter Param = dm_->getFieldAll(dm_->getIndexAtID(updateParamID));
-      switch (Param.TypeData) {
+      ModbusParameter *Param = dm_->getFieldAll(dm_->getIndexAtID(updateParamID));
+      switch (Param->TypeData) {
       case TYPE_DATA_INT16:
-        value = (float)Param.Value.tdInt16[0];
+        value = (float)Param->Value.tdInt16[0];
         break;
       case TYPE_DATA_UINT16:
-        value = (float)Param.Value.tdUint16[0];
+        value = (float)Param->Value.tdUint16[0];
         break;
       case  TYPE_DATA_INT32:
-        value = (float)Param.Value.tdInt32;
+        value = (float)Param->Value.tdInt32;
         break;
       case  TYPE_DATA_UINT32:
-        value = (float)Param.Value.tdUint32;
+        value = (float)Param->Value.tdUint32;
         break;
       case  TYPE_DATA_FLOAT:
-        value = (float)Param.Value.tdFloat;
+        value = (float)Param->Value.tdFloat;
         break;
       default:
         break;
       }
-      value = value * Param.Scale;
-      value = value / Param.Coefficient;
-      value = (value  - (Units[Param.Physic][Param.Unit][1]))/(Units[Param.Physic][Param.Unit][0]);
+      value = value * Param->Scale;
+      value = value / Param->Coefficient;
+      value = (value  - (Units[Param->Physic][Param->Unit][1]))/(Units[Param->Physic][Param->Unit][0]);
       setFieldValue(updateParamID, value);
     }
     else {
