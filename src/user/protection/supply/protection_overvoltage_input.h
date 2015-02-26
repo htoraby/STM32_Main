@@ -2,8 +2,6 @@
 #define PROTECTIONOVERVOLTAGEINPUT_H
 
 #include "protection.h"
-#include "em.h"
-#include "ccs.h"
 
 /*!
  * \brief Класс автомата защиты "Превышение питания сети"

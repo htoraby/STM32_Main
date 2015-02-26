@@ -17,7 +17,7 @@ void userInit()
 
   vsd = new VsdNovomet();
   tms = new Tms();
-  em = new Em();
+  em = new EmSet();
 
   parameters.init();
   ksu.init();
