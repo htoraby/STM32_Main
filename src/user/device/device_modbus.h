@@ -51,7 +51,7 @@ struct ModbusParameter
 
 /*!
  \class DeviceModbus
- \brief Класс для устройств работающих по протоколу Modbus. 
+ \brief Класс для устройств работающих по протоколу Modbus.
   Содержит функции организации цикла чтения и записи параметров устройства
 */ 
 class DeviceModbus
@@ -71,15 +71,15 @@ public:
    * \return Код результата операции
    */
   DeviceModbus(ModbusParameter *MapRegisters,
-                int Quantity,
-                int PortName,
-                long BaudRate,
-                int DataBits,
-                int StopBits,
-                int Parity,
-                int Address,
-                const char *threadName,
-                osMessageQId messageUpdateID);
+               int Quantity,
+               int PortName,
+               long BaudRate,
+               int DataBits,
+               int StopBits,
+               int Parity,
+               int Address,
+               const char *threadName,
+               osMessageQId messageUpdateID);
   /// Деструктор по умолчанию
   virtual ~DeviceModbus();
 
@@ -250,51 +250,51 @@ public:
    * \param Index Индекс параметра
    * \return добавили элемент в очередь или нет
    */
-   int getMessageOutOfTurn();
+  int getMessageOutOfTurn();
 
-   /*!
+  /*!
     * \brief putTurn метод добавления элемента в очередь
     * \param Index Индекс параметра
     * \return добавили элемент в очередь или нет
     */
-   int putMessageOutOfTurn(int Element);
+  int putMessageOutOfTurn(int Element);
 
 
-   /*!
+  /*!
      * \brief getMessageReadyParam получить элемент
      * из очереди готовых параметров
      * \return 0 - нет элементов или элемент
      */
-    int getMessageReadyParam();
+  int getMessageReadyParam();
 
-    /*!
+  /*!
      * \brief putMessagereadyParam положить элемент
      * в очередь готовых параметров
      * \param Element - элемент
      * \return
      */
-    int putMessageUpdateID(int Element);
+  int putMessageUpdateID(int id);
 
-   int searchExchangeParameters();
+  int searchExchangeParameters();
 
-   short int regArr_[125];
-   int int32Arr_[62];
-   float float32Arr_[62];
+  short int regArr_[125];
+  int int32Arr_[62];
+  float float32Arr_[62];
 
 private:
-   int quantityParam_;
-   int deviceAddress_;
-   int indexExchange_;
+  int quantityParam_;
+  int deviceAddress_;
+  int indexExchange_;
 
-   // Идентификатор задачи
-   osThreadId threadId_;
+  // Идентификатор задачи
+  osThreadId threadId_;
 
-   // Идентификатор очереди параметров опроса вне основного цикла
-   osMessageQId messageOutOfTurn_;
+  // Идентификатор очереди параметров опроса вне основного цикла
+  osMessageQId messageOutOfTurn_;
 
-   osMessageQId messageUpdateID_;
+  osMessageQId messageUpdateID_;
 
-   ModbusParameter *modbusParameters_;
+  ModbusParameter *modbusParameters_;
 
   /*!
    * \brief Метод получения количества регистров в карте регистров

@@ -100,8 +100,55 @@ public:
 
   virtual void updateParameters();
 
-  // Базовые методы работы со структурой Parameter
-  // Работают с индексом в массиве параметров
+  /*!
+   * \brief Метод поиска и получения индекса по ID параметра
+   * \param ID идентификатор параметра
+   * \return Index
+  */
+  unsigned short getIndexAtID(unsigned short id);
+
+  /*!
+   * \brief getValue
+   * Метод получения значения параметра по id
+   * \param id уникальный идентификатор параметра
+   * \return значение параметра
+   */
+  float getValue(unsigned short id);
+
+  /*!
+   * \brief setValue
+   * Метод присвоения значения параметру
+   * Когда пытаемся записать значение, нам нужно проверить
+   * 1. Уровень доступа к параметру
+   * 2. Операции над параметром
+   * 3. Минимальное и максимальное значение
+   * \param id уникальный идентификатор параметра
+   * \param value присваемое значение
+   * \return 0 - значение присвоено или ошибка
+   */
+  unsigned char setValue(unsigned short id, float value);
+
+  /*!
+   * \brief Сохранение массива параметров на Flash
+   */
+  StatusType saveParameters();
+
+  /*!
+   * \brief Чтение массива параметров с Flash
+   */
+  StatusType readParameters();
+
+// Наследуемые члены класс
+protected:
+  //! Начальный адрес массива параметров из списка enID
+  uint32_t startAddrParams_;
+
+  //! Указатель на массив параметров устройства
+  parameter *parameters_;
+
+  uint16_t countParameter_;
+
+private:
   /*!
    * \brief getFieldID
    * Метод получения ID параметра по индексу в массиве параметров
@@ -277,56 +324,6 @@ public:
    * \param param присваемое значение
    */
   void setFieldAll(unsigned short index, parameter param);
-
-  /*!
-   * \brief Метод поиска и получения индекса по ID параметра
-   * \param ID идентификатор параметра
-   * \return Index
-  */
-  unsigned short getIndexAtID(unsigned short id);
-
-  /*!
-   * \brief getValue
-   * Метод получения значения параметра по id
-   * \param id уникальный идентификатор параметра
-   * \return значение параметра
-   */
-  float getValue(unsigned short id);
-
-  /*!
-   * \brief setValue
-   * Метод присвоения значения параметру
-   * Когда пытаемся записать значение, нам нужно проверить
-   * 1. Уровень доступа к параметру
-   * 2. Операции над параметром
-   * 3. Минимальное и максимальное значение
-   * \param id уникальный идентификатор параметра
-   * \param value присваемое значение
-   * \return 0 - значение присвоено или ошибка
-   */
-  unsigned char setValue(unsigned short id, float value);
-
-  /*!
-   * \brief Сохранение массива параметров на Flash
-   */
-  StatusType saveParameters();
-
-  /*!
-   * \brief Чтение массива параметров с Flash
-   */
-  StatusType readParameters();
-
-// Наследуемые члены класс
-protected:
-  //! Начальный адрес массива параметров из списка enID
-  uint32_t startAddrParams_;
-
-  //! Указатель на массив параметров устройства
-  parameter *parameters_;
-
-  uint16_t countParameter_;
-
-private:
 
 };
 

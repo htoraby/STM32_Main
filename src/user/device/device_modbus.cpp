@@ -31,10 +31,6 @@ DeviceModbus::DeviceModbus(ModbusParameter *MapRegisters,
   , messageUpdateID_(messageUpdateID)
   , modbusParameters_(MapRegisters)
 {
-//  messageUpdateID_ = messageUpdateID;
-//  osMessageQDef(OutOfTurn2, 100, uint32_t);
-//  messageUpdateID_ = osMessageCreate (osMessageQ(OutOfTurn2), NULL);
-
   // Создаём очередь сообщений
   osMessageQDef(OutOfTurn, 100, uint32_t);
   messageOutOfTurn_ = osMessageCreate (osMessageQ(OutOfTurn), NULL);
@@ -233,11 +229,10 @@ int DeviceModbus::getMessageReadyParam()
 */
 
 // Добавить параметр в очередь готовых параметров
-int DeviceModbus::putMessageUpdateID(int Element)
+int DeviceModbus::putMessageUpdateID(int id)
 {
-  osStatus Status;
-  Status = osMessagePut(messageUpdateID_, Element, 0);
-  if (Status == osOK)
+  osStatus status = osMessagePut(messageUpdateID_, id, 0);
+  if (status == osOK)
     return 1;
   else
     return 0;
@@ -257,26 +252,26 @@ void DeviceModbus::writeModbusParameter(int ID, float Value)
   Value = Value / Param->Scale;
   // Применяем тип данных
   switch (Param->TypeData) {
-  case  TYPE_DATA_CHAR:
-    Param->Value.tdChar[0] = (char)(Value + 0.5);
-    break;
-  case  TYPE_DATA_INT16:
-    Param->Value.tdInt16[0] = (short int)(Value + 0.5);
-    break;
-  case  TYPE_DATA_INT32:
-    Param->Value.tdInt32 = (int)(Value + 0.5);
-    break;
-  case TYPE_DATA_UINT16:
-    Param->Value.tdUint16[0] = (unsigned short int)(Value + 0.5);
-    break;
-  case  TYPE_DATA_UINT32:
-    Param->Value.tdUint32 = (unsigned int)(Value + 0.5);
-    break;
-  case TYPE_DATA_FLOAT:
-    Param->Value.tdFloat = Value;
-    break;
-  default:
-    break;
+    case  TYPE_DATA_CHAR:
+      Param->Value.tdChar[0] = (char)(Value + 0.5);
+      break;
+    case  TYPE_DATA_INT16:
+      Param->Value.tdInt16[0] = (short int)(Value + 0.5);
+      break;
+    case  TYPE_DATA_INT32:
+      Param->Value.tdInt32 = (int)(Value + 0.5);
+      break;
+    case TYPE_DATA_UINT16:
+      Param->Value.tdUint16[0] = (unsigned short int)(Value + 0.5);
+      break;
+    case  TYPE_DATA_UINT32:
+      Param->Value.tdUint32 = (unsigned int)(Value + 0.5);
+      break;
+    case TYPE_DATA_FLOAT:
+      Param->Value.tdFloat = Value;
+      break;
+    default:
+      break;
   }
   Param->Flag = 1;
   Param->Priority = 1;
@@ -314,9 +309,12 @@ int DeviceModbus::searchExchangeParameters()
 void DeviceModbus::exchangeTask(void)
 {
   int Count = 0;
-  static int test = 0;
+
   while (1) {
     osDelay(100);
+    putMessageUpdateID(VSD_INVERTOR_CONTROL);
+    continue;
+
     // Проверяем очередь параметров для обработки вне очереди
     int outOfTurn = getMessageOutOfTurn();
     // Если есть параметры для обработки вне очереди
@@ -325,39 +323,39 @@ void DeviceModbus::exchangeTask(void)
       if (modbusParameters_[outOfTurn].Flag) {
         int address = modbusParameters_[outOfTurn].Address;
         switch (modbusParameters_[outOfTurn].TypeData) {
-        case TYPE_DATA_INT16:
-          mms_->writeSingleRegister(deviceAddress_,
-                                   address,
-                                   modbusParameters_[outOfTurn].Value.tdInt16[0]);
-          break;
-        case TYPE_DATA_UINT16:
-          mms_->writeSingleRegister(deviceAddress_,
-                                   address,
-                                   modbusParameters_[outOfTurn].Value.tdUint16[0]);
-          break;
-        case  TYPE_DATA_INT32:
-          int32Arr_[0] = modbusParameters_[outOfTurn].Value.tdInt32;
-          mms_->writeMultipleLongInts(deviceAddress_,
-                                     address,
-                                     int32Arr_,
-                                     1);
-          break;
-        case  TYPE_DATA_UINT32:
-          int32Arr_[0] =  modbusParameters_[outOfTurn].Value.tdUint32;
-          mms_->writeMultipleLongInts(deviceAddress_,
-                                     modbusParameters_[outOfTurn].Address,
-                                     int32Arr_,
-                                     1);
-          break;
-        case  TYPE_DATA_FLOAT:
-          float32Arr_[0] = modbusParameters_[outOfTurn].Value.tdFloat;
-          mms_->writeMultipleFloats(deviceAddress_,
-                                   modbusParameters_[outOfTurn].Address,
-                                   float32Arr_,
-                                   1);
-          break;
-        default:
-          break;
+          case TYPE_DATA_INT16:
+            mms_->writeSingleRegister(deviceAddress_,
+                                      address,
+                                      modbusParameters_[outOfTurn].Value.tdInt16[0]);
+            break;
+          case TYPE_DATA_UINT16:
+            mms_->writeSingleRegister(deviceAddress_,
+                                      address,
+                                      modbusParameters_[outOfTurn].Value.tdUint16[0]);
+            break;
+          case  TYPE_DATA_INT32:
+            int32Arr_[0] = modbusParameters_[outOfTurn].Value.tdInt32;
+            mms_->writeMultipleLongInts(deviceAddress_,
+                                        address,
+                                        int32Arr_,
+                                        1);
+            break;
+          case  TYPE_DATA_UINT32:
+            int32Arr_[0] =  modbusParameters_[outOfTurn].Value.tdUint32;
+            mms_->writeMultipleLongInts(deviceAddress_,
+                                        modbusParameters_[outOfTurn].Address,
+                                        int32Arr_,
+                                        1);
+            break;
+          case  TYPE_DATA_FLOAT:
+            float32Arr_[0] = modbusParameters_[outOfTurn].Value.tdFloat;
+            mms_->writeMultipleFloats(deviceAddress_,
+                                      modbusParameters_[outOfTurn].Address,
+                                      float32Arr_,
+                                      1);
+            break;
+          default:
+            break;
         }
       }
     }
@@ -366,61 +364,60 @@ void DeviceModbus::exchangeTask(void)
       if (outOfTurn) {
         int address = modbusParameters_[outOfTurn].Address;
         switch (modbusParameters_[outOfTurn].TypeData) {
-        case TYPE_DATA_INT16:
-          Count = 1;
-          if (!(mms_->readMultipleRegisters(deviceAddress_,address,regArr_,Count))) {
-            // TODO: Сделать проверки на минимум максиму и т.п
-            // Получаем индекс элемента в массиве с которого начинаем сохранение
-            int Index = getIndexAtAddress(address);
-            // Цикл по количеству полученных регистров
-            for (int i = 0; i < Count; i++) {
-              modbusParameters_[Index].Value.tdInt16[0] = regArr_[i];
-              modbusParameters_[Index].Validity = VALIDITY_GOOD;
-              putMessageUpdateID(modbusParameters_[Index].ID);
-              Index++;
+          case TYPE_DATA_INT16:
+            Count = 1;
+            if (!(mms_->readMultipleRegisters(deviceAddress_,address,regArr_,Count))) {
+              // TODO: Сделать проверки на минимум максиму и т.п
+              // Получаем индекс элемента в массиве с которого начинаем сохранение
+              int Index = getIndexAtAddress(address);
+              // Цикл по количеству полученных регистров
+              for (int i = 0; i < Count; i++) {
+                modbusParameters_[Index].Value.tdInt16[0] = regArr_[i];
+                modbusParameters_[Index].Validity = VALIDITY_GOOD;
+                putMessageUpdateID(modbusParameters_[Index].ID);
+                Index++;
+              }
             }
-          }
-          else {
-            int Index = getIndexAtAddress(address);
-            // Цикл по количеству полученных регистров
-            for (int i = 0; i < Count; i++) {
-              modbusParameters_[Index].Validity = VALIDITY_ERROR;
-              Index++;
+            else {
+              int Index = getIndexAtAddress(address);
+              // Цикл по количеству полученных регистров
+              for (int i = 0; i < Count; i++) {
+                modbusParameters_[Index].Validity = VALIDITY_ERROR;
+                Index++;
+              }
             }
-          }
-          break;
-        case TYPE_DATA_UINT16:
-          mms_->readMultipleRegisters(deviceAddress_,
+            break;
+          case TYPE_DATA_UINT16:
+            mms_->readMultipleRegisters(deviceAddress_,
+                                        address,
+                                        regArr_,
+                                        1);
+            break;
+          case  TYPE_DATA_INT32:
+            mms_->readMultipleLongInts(deviceAddress_,
+                                       address,
+                                       int32Arr_,
+                                       1);
+            break;
+          case  TYPE_DATA_UINT32:
+            mms_->readMultipleLongInts(deviceAddress_,
+                                       address,
+                                       int32Arr_,
+                                       1);
+            break;
+          case  TYPE_DATA_FLOAT:
+            mms_->readMultipleFloats(deviceAddress_,
                                      address,
-                                     regArr_,
+                                     float32Arr_,
                                      1);
-          break;
-        case  TYPE_DATA_INT32:
-          mms_->readMultipleLongInts(deviceAddress_,
-                                    address,
-                                    int32Arr_,
-                                    1);
-          break;
-        case  TYPE_DATA_UINT32:
-          mms_->readMultipleLongInts(deviceAddress_,
-                                    address,
-                                    int32Arr_,
-                                    1);
-          break;
-        case  TYPE_DATA_FLOAT:
-          mms_->readMultipleFloats(deviceAddress_,
-                                  address,
-                                  float32Arr_,
-                                  1);
-          break;
-        default:
-          break;
+            break;
+          default:
+            break;
         }
       }
       //else
       // ВНИМАНИЕ!!! Сломался exchangeCycle
     }
-    test++;
   }
 }
 

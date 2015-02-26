@@ -1713,7 +1713,7 @@ VsdNovomet::~VsdNovomet()
 // Метод проверки и обновления параметров устройства
 void VsdNovomet::updateParameters()
 {
-  float value;
+  float value = 0;
 
   while (1) {
     osDelay(1);
@@ -1723,30 +1723,30 @@ void VsdNovomet::updateParameters()
     // По ID параметра находим параметр и обновляем значение
     if (updateParamID) {
       // Получаем все поля параметра по ID
-      ModbusParameter *Param = dm_->getFieldAll(dm_->getIndexAtID(updateParamID));
-      switch (Param->TypeData) {
+      ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtID(updateParamID));
+      switch (param->TypeData) {
       case TYPE_DATA_INT16:
-        value = (float)Param->Value.tdInt16[0];
+        value = (float)param->Value.tdInt16[0];
         break;
       case TYPE_DATA_UINT16:
-        value = (float)Param->Value.tdUint16[0];
+        value = (float)param->Value.tdUint16[0];
         break;
       case  TYPE_DATA_INT32:
-        value = (float)Param->Value.tdInt32;
+        value = (float)param->Value.tdInt32;
         break;
       case  TYPE_DATA_UINT32:
-        value = (float)Param->Value.tdUint32;
+        value = (float)param->Value.tdUint32;
         break;
       case  TYPE_DATA_FLOAT:
-        value = (float)Param->Value.tdFloat;
+        value = (float)param->Value.tdFloat;
         break;
       default:
         break;
       }
-      value = value * Param->Scale;
-      value = value / Param->Coefficient;
-      value = (value  - (Units[Param->Physic][Param->Unit][1]))/(Units[Param->Physic][Param->Unit][0]);
-      setFieldValue(updateParamID, value);
+      value = value * param->Scale;
+      value = value / param->Coefficient;
+      value = (value - (Units[param->Physic][param->Unit][1]))/(Units[param->Physic][param->Unit][0]);
+      setValue(updateParamID, value);
     }
     else {
 
