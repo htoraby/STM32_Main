@@ -5,7 +5,6 @@
 
 /*!
  * \brief Класс архива аварийных ситуаций
- *
  */
 class LogAlarm : public LogRunning
 {
@@ -13,14 +12,10 @@ public:
   LogAlarm();
   ~LogAlarm();
 
-  /*!
-   * \brief Инициализация архива
-   *
-   */
   void init();
+
   /*!
    * \brief Запуск формирования и записи архива
-   *
    */
   void start(EventType type, uint32_t eventId);
   void task();

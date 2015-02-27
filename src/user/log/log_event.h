@@ -16,6 +16,12 @@ public:
   /*!
    * \brief Метод добавления нового события в архив
    *
+   * \param
+   * \param
+   * \param
+   * \param
+   * \param
+   * \return
    */
   uint32_t add(uint8_t code, uint8_t type, uint16_t id,
                float oldValue = 0, float newValue = 0);

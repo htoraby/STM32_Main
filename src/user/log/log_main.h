@@ -15,24 +15,21 @@ extern LogAlarm logAlarm;
 extern LogTms logTms;
 
 /*!
- \brief Инициализация архивов
-
+ * \brief Инициализация архивов
 */
 void logInit();
 
 /*!
- \brief Стирание архивов (в т.ч. стирание всей Flash)
-
+ * \brief Стирание архивов (в т.ч. стирание всей Flash)
 */
 void logErase();
 
 /*!
- \brief Чтение архивов
-
- \param address - адрес данных
- \param data - указатель на данные
- \param size - размер данных
- \return StatusType - ошибка или ок
+ * \brief Чтение архивов
+ * \param address - адрес данных
+ * \param data - указатель на данные
+ * \param size - размер данных
+ * \return StatusType - ошибка или ок
 */
 StatusType logRead(uint32_t address, uint8_t *data, uint32_t size);
 

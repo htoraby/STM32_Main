@@ -16,17 +16,20 @@ public:
 
   /*!
    * \brief Инициализация архива
-   *
+   * \param
    */
   void init(const char *threadName = "LogRunning");
+
   /*!
    * \brief Запуск формирования и записи архива
-   *
    */
   void start(EventType type);
   void task();
 
 protected:
+  /*!
+   * \brief Метод добавления записи в архив
+   */
   void add();
 
   //! Идентификатор семафора начала записи архива

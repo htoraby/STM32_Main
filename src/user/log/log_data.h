@@ -17,6 +17,11 @@ public:
   void task();
 
 private:
+  /*!
+   * \brief Метод добавления записи в архив
+   *
+   * \param
+   */
   void add(uint8_t code);
 
   //! Идентификатор задачи

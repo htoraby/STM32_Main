@@ -28,42 +28,42 @@ public:
 
   /*!
    * \brief Открытие порта Uart
-   * \param
-   * \param
-   * \param
+   * \param baudRate - скорость
+   * \param parity - чётность
+   * \param stopBits - стоп бит
    */
   void openPort(uint32_t baudRate, uint32_t parity = UART_PARITY_NONE, uint32_t stopBits = UART_STOPBITS_1);
 
   /*!
    * \brief Отправка данных в порт Uart
-   * \param
-   * \param
+   * \param data - указатель на данные
+   * \param count - количество отправляемых байт
    * \return StatusType - ошибка или ок
    */
   StatusType sendUart(uint8_t *data, int count);
 
   /*!
    * \brief Приём данных из порта Uart
-   * \param
+   * \param data - указатель на данные
    * \return Количество принятых данных
    */
   int reseiveUart(uint8_t *data);
 
   /*!
    * \brief Метод задания коэффициентов трансформации
-   * \return
+   * \return Код результата операции
    */
   int setCoefficientTransformation();
 
   /*!
    * \brief Метод задания коэффициента трансформации тока
-   * \return
+   * \return Код результата операции
    */
   int setCoefficientTransforamationCurrent();
 
   /*!
    * \brief Метод задания коэффициента трансформации напряжения
-   * \return
+   * \return Код результата операции
    */
   int setCoefficientTransforamationVoltage();
 
