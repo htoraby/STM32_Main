@@ -4,16 +4,11 @@
 Em::Em() : Device(EM_BEGIN, parametersArray_, EM_END - EM_BEGIN)
 {
   initParameters();
-
-//  // Создание очереди обновления параметров
-//  createMessageUpdateParameters();
-//  // Создание задачи обновления параметров
-//  createThread("UpdateParametersEm");
 }
 
 Em::~Em()
 {
-  // TODO Auto-generated destructor stub
+
 }
 
 void Em::openPort(uint32_t baudRate, uint32_t parity, uint32_t stopBits)
@@ -24,6 +19,11 @@ void Em::openPort(uint32_t baudRate, uint32_t parity, uint32_t stopBits)
   } else {
     semaphoreAnswer_ = uartGetSemaphoreId(EM_UART);
   }
+}
+
+void Em::closePort()
+{
+  uartClose(EM_UART);
 }
 
 StatusType Em::sendUart(uint8_t *data, int count)

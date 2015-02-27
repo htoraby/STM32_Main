@@ -56,6 +56,8 @@ StatusType uartInit(uartNum num, uint32_t baudRate, uint32_t parity, uint32_t st
 
 HAL_StatusTypeDef uartClose(uartNum num)
 {
+  osSemaphoreDelete(uarts[num].semaphoreId);
+
   UART_HandleTypeDef *uartX = &uarts[num].uart;
   /* Process Locked */
   __HAL_LOCK(uartX);

@@ -35,6 +35,11 @@ public:
   void openPort(uint32_t baudRate, uint32_t parity = UART_PARITY_NONE, uint32_t stopBits = UART_STOPBITS_1);
 
   /*!
+   * \brief Закрытие порта Uart
+   */
+  void closePort();
+
+  /*!
    * \brief Отправка данных в порт Uart
    * \param data - указатель на данные
    * \param count - количество отправляемых байт
