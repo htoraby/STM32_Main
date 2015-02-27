@@ -22,6 +22,11 @@ Ccs::~Ccs()
   // TODO Auto-generated destructor stub
 }
 
+static void ccsMainTask(void *p)
+{
+  (static_cast<Ccs*>(p))->mainTask();
+}
+
 static void ccsLedConditionTask(void *p)
 {
   (static_cast<Ccs*>(p))->ledConditionTask();
@@ -33,7 +38,7 @@ static void ccsVsdConditionTask(void *p)
 }
 
 void Ccs::init()
-{
+{  
   osMessageQDef(LedMessageQ, 5, uint8_t);
   ledMessage_ = osMessageCreate(osMessageQ(LedMessageQ), NULL);
   osThreadDef(LedCondition, ccsLedConditionTask, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
@@ -41,6 +46,19 @@ void Ccs::init()
 
   osThreadDef(VsdConditionTask, ccsVsdConditionTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(VsdConditionTask), this);
+
+  osThreadDef(CcsMain, ccsMainTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(CcsMain), NULL);
+}
+
+void Ccs::mainTask()
+{
+  while (1) {
+    osDelay(1);
+
+    cmdCheck();
+    conditionChanged();
+  }
 }
 
 void Ccs::setLedCondition(LedCondition condition)
