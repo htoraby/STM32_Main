@@ -114,6 +114,16 @@ float Vsd::getCurrentFreq()
   return getValue(VSD_FREQUENCY_NOW);
 }
 
+int Vsd::startVSD()
+{
+  return 0;
+}
+
+int Vsd::stopVSD()
+{
+  return 0;
+}
+
 void Vsd::initParameters()
 {
   // Пустой элемент массива

@@ -6,7 +6,7 @@ static void userMainTask(void *argument);
 Parameters parameters;
 NovobusSlave novobusSlave;
 Ccs ksu;
-VsdNovomet *vsd;
+Vsd *vsd;
 Tms *tms;
 Em *em;
 

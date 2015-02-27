@@ -75,18 +75,16 @@ public:
   int setFrequencyMotor(double FrequencyMotor);
 
   /*!
-   * \brief startVSD
-   * Метод запуска ЧРП
+   * \brief Метод запуска ЧРП
    * \return Код результата операции
    */
-  int startVSD(void);
+  virtual int startVSD();
 
   /*!
-   * \brief stopVSD
-   * Метод останова ЧРП
+   * \brief Метод останова ЧРП
    * \return Код результата операции
    */
-  int stopVSD();
+  virtual int stopVSD();
 
   /*!
    * \brief setFrequency

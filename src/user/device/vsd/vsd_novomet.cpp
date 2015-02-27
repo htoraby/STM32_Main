@@ -1762,8 +1762,7 @@ unsigned char VsdNovomet::checkInvertorStatus(unsigned short flag)
     return 1;
 }
 
-// Метод запуска ЧРП Новомет
-unsigned char VsdNovomet::startVSD(void)
+int VsdNovomet::startVSD()
 {
   // Если не стоит бит запуска двигателя
   if (checkInvertorStatus(INV_STATUS_STARTED)) {
@@ -1793,8 +1792,7 @@ unsigned char VsdNovomet::startVSD(void)
     return RETURN_OK;
 }
 
-// Метод останова ЧРП Новомет
-int VsdNovomet::stopVSD(void)
+int VsdNovomet::stopVSD()
 {
   // Если не стоит бит остановки по внешней команде
   if (checkInvertorStatus(INV_STATUS_STOPPED_EXTERNAL)) {

@@ -115,8 +115,7 @@ class VsdNovomet: public Vsd
         unsigned char checkInvertorStatus(unsigned short flag);
 
         /*!
-         * \brief startVSD
-         * Метод запуска ЧРП Новомет
+         * \brief Метод запуска ЧРП Новомет
          * Для управления запусками и остановами, и для контроля состояния ПЧ
          * используется регистр управления IREG_INVERTOR_CONTROL и два регистра
          * состояния IREG_INVERTOR_STATUS и IREG_INVERTOR_EXT_STATUS.
@@ -136,11 +135,10 @@ class VsdNovomet: public Vsd
          * режим пуска - с раскачкой или толчковый, основной режим управления).
          * \return Код выполнения операции
          */
-        unsigned char startVSD(void);
+        int startVSD();
 
         /*!
-         * \brief startVSD
-         * Метод останова ЧРП Новомет
+         * \brief Метод останова ЧРП Новомет
          * При установке бита 1 ("Стоп") в регистре управления ПЧ контроллер ПЧ
          * устанавливает биты INV_STATUS_STOPPED_EXTERNAL и INV_STATUS_TO_STOP_MODE,
          * и ожидает окончания процедуры плавного останова двигателя.
@@ -151,7 +149,7 @@ class VsdNovomet: public Vsd
          * снимается, система готова для очередного запуска.
          * \return Код выполнения операции
          */
-        int stopVSD(void);
+        int stopVSD();
 
 
         /*!

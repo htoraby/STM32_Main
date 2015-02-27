@@ -13,7 +13,7 @@
 extern Parameters parameters;
 extern NovobusSlave novobusSlave;
 extern Ccs ksu;
-extern VsdNovomet *vsd;
+extern Vsd *vsd;
 extern Tms *tms;
 extern Em *em;
 
