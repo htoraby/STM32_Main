@@ -9,7 +9,6 @@
 #define VSD_NOVOMET_H_
 
 #include "vsd.h"
-#include "device.h"
 #include "device_modbus.h"
 
 /*!
@@ -96,135 +95,133 @@ enum enInvertorExtStatus
 
 class VsdNovomet: public Vsd
 {
-    public:
-        VsdNovomet();
-        virtual ~VsdNovomet();
+public:
+  VsdNovomet();
+  virtual ~VsdNovomet();
 
-        void initModbusParameters();
+  void initModbusParameters();
 
-        DeviceModbus *dm_;
+  void updateParameters();
 
-        void updateParameters();
+  /*!
+   * \brief Метод проверки флага в регистре статуса инвертора
+   * \param flag проверяемый флаг
+   * \return 0 - флаг установлен 1 - не установлен
+   */
+  int checkInvertorStatus(uint16_t flag);
 
-        /*!
-         * \brief checkInvertorStatus
-         * Метод проверки флага в регистре статуса инвертора
-         * \param flag проверяемый флаг
-         * \return 0 - флаг установлен 1 - не установлен
-         */
-        unsigned char checkInvertorStatus(unsigned short flag);
+  /*!
+   * \brief Метод запуска ЧРП Новомет
+   * Для управления запусками и остановами, и для контроля состояния ПЧ
+   * используется регистр управления IREG_INVERTOR_CONTROL и два регистра
+   * состояния IREG_INVERTOR_STATUS и IREG_INVERTOR_EXT_STATUS.
+   * Пуск осуществляется установкой в "1" бита 0 ("старт") в регистре управления
+   * ПЧ IREG_INVERTOR_CONTROL через внешний интерфейс MODBUS, либо по
+   * внутренней CAN шине с помощью пульта управления ПЧ.
+   * После получения команды "старт" в случае, если включен режим остановки
+   * турбинного вращения для ВД, перед процедурой запуска двигателя
+   * производится разряд шины инвертора.
+   * Далее контроллер ПЧ устанавливает биты INV_STATUS_STARTED и
+   * INV_STATUS_WAIT_RECT_START регистра управления и ждет подтверждения
+   * заряда конденсаторов DC фильтра от платы управления выпрямителем
+   * (выделенный сигнал оптоволоконной линии).
+   * После получения подтверждения бит INV_STATUS_WAIT_RECT_START
+   * снимается, контроллер ПЧ включает инвертор и запускает очередь
+   * отработки регуляторов двигателя (торможение турбинного вращения,
+   * режим пуска - с раскачкой или толчковый, основной режим управления).
+   * \return Код выполнения операции
+   */
+  int startVSD();
 
-        /*!
-         * \brief Метод запуска ЧРП Новомет
-         * Для управления запусками и остановами, и для контроля состояния ПЧ
-         * используется регистр управления IREG_INVERTOR_CONTROL и два регистра
-         * состояния IREG_INVERTOR_STATUS и IREG_INVERTOR_EXT_STATUS.
-         * Пуск осуществляется установкой в "1" бита 0 ("старт") в регистре управления
-         * ПЧ IREG_INVERTOR_CONTROL через внешний интерфейс MODBUS, либо по
-         * внутренней CAN шине с помощью пульта управления ПЧ.
-         * После получения команды "старт" в случае, если включен режим остановки
-         * турбинного вращения для ВД, перед процедурой запуска двигателя
-         * производится разряд шины инвертора.
-         * Далее контроллер ПЧ устанавливает биты INV_STATUS_STARTED и
-         * INV_STATUS_WAIT_RECT_START регистра управления и ждет подтверждения
-         * заряда конденсаторов DC фильтра от платы управления выпрямителем
-         * (выделенный сигнал оптоволоконной линии).
-         * После получения подтверждения бит INV_STATUS_WAIT_RECT_START
-         * снимается, контроллер ПЧ включает инвертор и запускает очередь
-         * отработки регуляторов двигателя (торможение турбинного вращения,
-         * режим пуска - с раскачкой или толчковый, основной режим управления).
-         * \return Код выполнения операции
-         */
-        int startVSD();
-
-        /*!
-         * \brief Метод останова ЧРП Новомет
-         * При установке бита 1 ("Стоп") в регистре управления ПЧ контроллер ПЧ
-         * устанавливает биты INV_STATUS_STOPPED_EXTERNAL и INV_STATUS_TO_STOP_MODE,
-         * и ожидает окончания процедуры плавного останова двигателя.
-         * После останова двигателя контроллер выключает инвертор, снимает флаг
-         * INV_STATUS_STARTED, устанавливает флаг INV_STATUS_WAIT_RECT_STOP и
-         * ждет сигнала подтверждения выключения от платы управления выпрямителем.
-         * После получения подтверждения выключения флаг INV_STATUS_WAIT_RECT_STOP
-         * снимается, система готова для очередного запуска.
-         * \return Код выполнения операции
-         */
-        int stopVSD();
+  /*!
+   * \brief Метод останова ЧРП Новомет
+   * При установке бита 1 ("Стоп") в регистре управления ПЧ контроллер ПЧ
+   * устанавливает биты INV_STATUS_STOPPED_EXTERNAL и INV_STATUS_TO_STOP_MODE,
+   * и ожидает окончания процедуры плавного останова двигателя.
+   * После останова двигателя контроллер выключает инвертор, снимает флаг
+   * INV_STATUS_STARTED, устанавливает флаг INV_STATUS_WAIT_RECT_STOP и
+   * ждет сигнала подтверждения выключения от платы управления выпрямителем.
+   * После получения подтверждения выключения флаг INV_STATUS_WAIT_RECT_STOP
+   * снимается, система готова для очередного запуска.
+   * \return Код выполнения операции
+   */
+  int stopVSD();
 
 
-        /*!
-         * \brief setMainRegimeVSD
-         * Функция задания основного режима работы ЧРП
-         * \return
-         */
-        unsigned char setMainRegimeVSD();
+  /*!
+   * \brief Метод записи основного режима работы ЧРП
+   * Основных методов 2:
+   * U/f регулирование АД и ВД код: 1
+   * Векторное управление ВД код: 3
+   * Поскольку у ЧРП только один основной алгоритм и он обязан быть,
+   * записываем его последним
+   * \return
+   */
+  int setMainRegimeVSD();
 
-        /*!
-         * \brief setFrequency
-         * Метод задания уставки частоты двигателя, при установке текущей частоты
-         * проверяется диапазон уставок минимальной и максимальной частоты
-         * \param Frequency - частота
-         * \return
-         */
-        unsigned char setFrequency(float frequency);
+  /*!
+   * \brief Метод задания уставки частоты двигателя
+   * При установке текущей частоты проверяется диапазон уставок
+   * минимальной и максимальной частоты
+   * \param value - частота
+   * \return
+   */
+  int setFrequency(float value);
 
-        /*!
-         * \brief setMinFreq
-         * Метод задания минимальной частоты
-         * \param lowLimitFrequency частота
-         * \return 0 - задали 1 - не задали
-         */
-        unsigned char setMinFrequency(float lowLimitFrequency);
+  /*!
+   * \brief Метод задания минимальной частоты
+   * \param value частота
+   * \return 0 - задали 1 - не задали
+   */
+  int setMinFrequency(float value);
 
-        /*!
-         * \brief setMaxFrequency
-         * Метод задания максимальной частоты
-         * \param highLimitFrequency максимальная частоты
-         * \return 0 - задали 1- не задали
-         */
-        unsigned char setMaxFrequency(float highLimitFrequency);
+  /*!
+   * \brief Метод задания максимальной частоты
+   * \param value - значение максимальной частоты
+   * \return 0 - задали 1 - не задали
+   */
+  int setMaxFrequency(float value);
 
-        /*!
-         * \brief setRotation
-         * Метод задания направления вращения
-         * \param rotation направление вращения 0 прямое(левое), 1 обратное (правое)
-         * \return
-         */
-        unsigned char setRotation(unsigned char rotation);
+  /*!
+   * \brief Метод задания направления вращения
+   * \param value - направление вращения 0 прямое (левое),
+   * 1 обратное (правое)
+   * \return
+   */
+  int setRotation(uint8_t value);
 
-        /*!
-         * \brief setDirectRotation
-         * Метод задания прямого направления вращения
-         * \return
-         */
-        unsigned char setDirectRotation();
+  /*!
+   * \brief Метод задания прямого направления вращения
+   * \return
+   */
+  int setDirectRotation();
 
-        /*!
-         * \brief setReverseRotation
-         * Метод задания обратного направления вращения
-         * \return
-         */
-        unsigned char setReverseRotation();
+  /*!
+   * \brief Метод задания обратного направления вращения
+   * \return
+   */
+  int setReverseRotation();
 
 
-        /*!
-         * \brief writeParameter
-         * Метод записи параметра в устройство
-         * \param id
-         * \param value
-         * \return
-         */
-        unsigned char writeParameter(unsigned short id, float value);
+  /*!
+   * \brief Метод записи параметра в устройство
+   * \param id
+   * \param value
+   * \return
+   */
+  int writeParameter(uint16_t id, float value);
 
-        /*!
-         * \brief Проверка на "необходимость" работы с параметром
-         * \param indexParam
-         * \return
-         */
-        int checkExchangModbusParameters(int indexParam);
+  /*!
+   * \brief Проверка на "необходимость" работы с параметром
+   * \param indexParam
+   * \return
+   */
+  int checkExchangModbusParameters(int indexParam);
 
-    private:
-        ModbusParameter ModbusParameters[94];
+private:
+  ModbusParameter ModbusParameters[94];
+
+  DeviceModbus *dm_;
 
 };
 

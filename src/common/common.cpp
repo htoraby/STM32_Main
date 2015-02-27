@@ -29,3 +29,53 @@ uint16_t crc16_ibm(uint8_t *buf, uint8_t size, uint16_t crc)
   }
   return crc;
 }
+
+int checkRangeNoInclude(double value, double min, double max)
+{
+  // Если значение больше минимума
+  if (value > min) {
+    // Если значение меньше максимума
+    if (value < max) {
+      // Возвращаем что прошли проверку
+      return 0;
+    }
+    else {
+      // Иначе возвращаем что больше максимума
+      return 2;
+    }
+  }
+  else {
+    // Возвращаем что меньше минимума
+    return 1;
+  }
+}
+
+int checkRangeInclude(double value, double min, double max)
+{
+  // Если значение больше минимума
+  if (value >= min) {
+    // Если значение меньше максимума
+    if (value <= max) {
+      // Возвращаем что прошли проверку
+      return 0;
+    }
+    else {
+      // Иначе возвращаем что больше максимума
+      return 2;
+    }
+  }
+  else {
+    // Возвращаем что меньше минимума
+    return 1;
+  }
+}
+
+int checkRange(double value, double min, double max, uint8_t inc)
+{
+  // Если включая диапазон
+  if (inc)
+    return checkRangeInclude(value, min, max);
+  // Иначе не включая диапазон
+  else
+    return checkRangeNoInclude(value, min, max);
+}

@@ -64,6 +64,36 @@ template<class T> inline const T& min(const T& a, const T& b)
   else return(b);
 }
 
+/*!
+ * \brief Функция проверки вхождения значения в диапазон не включая границы
+ *
+ * \param a
+ * \param min
+ * \param max
+ * \return
+ */
+int checkRangeNoInclude(double value, double min, double max);
+
+/*!
+ * \brief Функция проверки вхождения значения в диапазон включая границы
+ *
+ * \param value
+ * \param min
+ * \param max
+ * \return
+ */
+int checkRangeInclude(double value, double min, double max);
+
+/*!
+ * \brief Функция проверки вхождения значения в диапазон
+ *
+ * \param value
+ * \param min
+ * \param max
+ * \return
+ */
+int checkRange(double value, double min, double max, uint8_t inc);
+
 #endif
 
 #endif // COMMON_H

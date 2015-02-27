@@ -17,32 +17,26 @@ Vsd::~Vsd()
   // TODO Auto-generated destructor stub
 }
 
-int Vsd::setFrequency(float Frequency)
-{
-  int Result = RETURN_ERROR;
-  return Result;
-}
-
 // Метод задания минимальной частоты двигателя
-unsigned char Vsd::setMinFrequency(float lowLimitFrequency)
+int Vsd::setMinFrequency(float value)
 {
-  unsigned char result = RETURN_ERROR;
+  int result = RETURN_ERROR;
   // Читаем уставку максимальная частота
   float highLimitFreq = getValue(VSD_HIGH_LIM_SPEED_MOTOR);
   // Если задаваемая минимальная частоты больше или равна максимальноу
-  if (lowLimitFrequency >= highLimitFreq) {
+  if (value >= highLimitFreq) {
     result = RETURN_ERROR;
   }
   else {
     // Записывае минимум частоты
-    result = setValue(VSD_LOW_LIM_SPEED_MOTOR, lowLimitFrequency);
+    result = setValue(VSD_LOW_LIM_SPEED_MOTOR, value);
     // Если записали минимум частоты
     if (!result) {
       // Читаем уставку частоты
       float frequency = getValue(VSD_FREQUENCY);
       // Если частота меньше вновь заданной уставки
-      if (frequency < lowLimitFrequency) {
-        result = setValue(VSD_FREQUENCY, lowLimitFrequency);
+      if (frequency < value) {
+        result = setValue(VSD_FREQUENCY, value);
       }
     }
   }
@@ -50,24 +44,24 @@ unsigned char Vsd::setMinFrequency(float lowLimitFrequency)
 }
 
 // Метод задания максимальной частоты
-unsigned char Vsd::setMaxFrequency(float highLimitFrequency)
+int Vsd::setMaxFrequency(float value)
 {
-  unsigned char result = RETURN_ERROR;
+  int result = RETURN_ERROR;
   // Читаем уставку минимальной частоты
   float lowLimitFreq = getValue(VSD_LOW_LIM_SPEED_MOTOR);
   // Если задаваемая максимальная частота меньше или равна минимальной
-  if ((highLimitFrequency <= lowLimitFreq)||(lowLimitFreq <= 0)) {
+  if ((value <= lowLimitFreq)||(lowLimitFreq <= 0)) {
     result = RETURN_ERROR;
   }
   else {
     // Записываем значение частоты
-    result = setValue(VSD_HIGH_LIM_SPEED_MOTOR, highLimitFrequency);
+    result = setValue(VSD_HIGH_LIM_SPEED_MOTOR, value);
     if (!result) {
       // Читаем уставку частоты
       float frequency = getValue(VSD_FREQUENCY);
       // Если частота больше вновь заданной уставки
-      if (frequency > highLimitFrequency) {
-        result = setValue(VSD_FREQUENCY, highLimitFrequency);
+      if (frequency > value) {
+        result = setValue(VSD_FREQUENCY, value);
       }
     }
   }
@@ -75,10 +69,10 @@ unsigned char Vsd::setMaxFrequency(float highLimitFrequency)
 }
 
 // Метод задания направления вращения
-unsigned char Vsd::setRotation(unsigned char rotation)
+int Vsd::setRotation(uint8_t value)
 {
-  unsigned char result = RETURN_ERROR;
-  if (rotation) {
+  int result = RETURN_ERROR;
+  if (value) {
     result = setReverseRotation();
   }
   else {
@@ -88,9 +82,9 @@ unsigned char Vsd::setRotation(unsigned char rotation)
 }
 
 // Метод задания прямого направления вращения
-unsigned char Vsd::setDirectRotation()
+int Vsd::setDirectRotation()
 {
-  unsigned char result = RETURN_ERROR;
+  int result = RETURN_ERROR;
   result = setValue(VSD_ROTATION, 0);
   if (!result)
     result = RETURN_OK;
@@ -99,9 +93,9 @@ unsigned char Vsd::setDirectRotation()
 
 
 // Метод задания обратного направления вращения
-unsigned char Vsd::setReverseRotation()
+int Vsd::setReverseRotation()
 {
-  unsigned char result = RETURN_ERROR;
+  int result = RETURN_ERROR;
   result = setValue(VSD_ROTATION, 1);
   if (!result)
     result = RETURN_OK;
@@ -112,16 +106,6 @@ unsigned char Vsd::setReverseRotation()
 float Vsd::getCurrentFreq()
 {
   return getValue(VSD_FREQUENCY_NOW);
-}
-
-int Vsd::startVSD()
-{
-  return 0;
-}
-
-int Vsd::stopVSD()
-{
-  return 0;
 }
 
 void Vsd::initParameters()

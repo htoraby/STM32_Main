@@ -48,9 +48,6 @@ public:
    */
   void vsdConditionTask();
 
-  /*!
-   * \brief Инициализация массива параметров
-   */
   void initParameters();
 
   /*!
