@@ -52,7 +52,7 @@ public:
    * \param data - указатель на данные
    * \return Количество принятых данных
    */
-  int reseiveUart(uint8_t *data);
+  int receiveUart(uint8_t *data);
 
   /*!
    * \brief Метод задания коэффициентов трансформации

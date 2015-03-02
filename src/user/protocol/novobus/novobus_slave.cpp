@@ -46,7 +46,7 @@ void NovobusSlave::task()
     if (osSemaphoreWait(semaphoreId, osWaitForever) != osEventTimeout) {
       rxSize = hostReadData(rxBuffer_);
       if (rxSize) {
-        reseivePackage();
+        receivePackage();
 
         osDelay(1);
         hostWriteData(txBuffer_, txBuffer_[1]);
@@ -87,7 +87,7 @@ void NovobusSlave::putMessageParams(uint32_t id)
 }
 
 // Команда анализа полученного запроса
-void NovobusSlave::reseivePackage()
+void NovobusSlave::receivePackage()
 {
   // Заполняем заголовок пакета
   txBuffer_[0] = rxBuffer_[0];

@@ -54,11 +54,11 @@ class ModbusMasterSerial: public ModbusMaster
 
 
     /*!
-     * \brief reseiveAnswer Метод получения данных из uart порта
+     * \brief receiveAnswer Метод получения данных из uart порта
      * \param Buf Массив принятых данных байт
      * \return Количество принятых байт
      */
-    int reseiveAnswer(unsigned char *Buf);
+    int receiveAnswer(unsigned char *Buf);
 
 	private:
     int numberComPort_;

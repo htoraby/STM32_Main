@@ -62,7 +62,7 @@ int ModbusMasterSerial::transmitQuery(unsigned char *Buf, int Count)
   return 1;
 }
 
-int ModbusMasterSerial::reseiveAnswer(unsigned char *Buf)
+int ModbusMasterSerial::receiveAnswer(unsigned char *Buf)
 {
   // Если истек таймаут ожидания ответа
   if (osSemaphoreWait(semaphoreAnswer_, MODBUS_ANSWER_TIMEOUT) == osEventTimeout) {

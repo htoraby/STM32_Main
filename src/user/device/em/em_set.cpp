@@ -165,7 +165,7 @@ void EmSet::sendRequest()
 
 void EmSet::receiveAnswer()
 {
-  sizePkt_ = reseiveUart(rxBuffer_);
+  sizePkt_ = receiveUart(rxBuffer_);
   if (!sizePkt_) {
     // TODO: Предупреждение: пустой пакет
     return;

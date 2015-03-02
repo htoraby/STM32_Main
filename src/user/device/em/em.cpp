@@ -37,7 +37,7 @@ StatusType Em::sendUart(uint8_t *data, int count)
   return status;
 }
 
-int Em::reseiveUart(uint8_t *data)
+int Em::receiveUart(uint8_t *data)
 {
   // Начало приёма пакета с таймаутом ожидания ответа
   if (osSemaphoreWait(semaphoreAnswer_, EM_ANSWER_TIMEOUT) == osEventTimeout) {

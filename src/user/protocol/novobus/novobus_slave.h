@@ -53,7 +53,7 @@ public:
   /*!
    * \brief Функция обработки запросов по Novobus
    */
-  void reseivePackage();
+  void receivePackage();
 
   /*!
    * \brief Метод получения события из очереди
