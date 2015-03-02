@@ -14,6 +14,8 @@ extern LogRunning logRunning;
 extern LogAlarm logAlarm;
 extern LogTms logTms;
 
+extern LogDebug logDebug;
+
 /*!
  * \brief Инициализация архивов
 */
@@ -26,11 +28,12 @@ void logErase();
 
 /*!
  * \brief Чтение архивов
+ * \param num - номер spi Flash
  * \param address - адрес данных
  * \param data - указатель на данные
  * \param size - размер данных
  * \return StatusType - ошибка или ок
 */
-StatusType logRead(uint32_t address, uint8_t *data, uint32_t size);
+StatusType logRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size);
 
 #endif // LOG_MAIN_H

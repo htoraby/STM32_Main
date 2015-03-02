@@ -93,7 +93,7 @@ typedef enum {
   EndAddrRunLog   = 0x00BBC000,
   EndAddrAlarmLog = 0x00E3D000,
   EndAddrTmsLog   = 0x01000000,
-  EndAddrDebugLog = 0x00000000,
+  EndAddrDebugLog = 0x00800000,
 } EndAddrLog;
 
 /*!
@@ -117,10 +117,15 @@ public:
   void deInit();
 
   /*!
-   * \brief Глобальный индекс записей всех журналов
-   * Установка адреса в начало @ref StartAddrLog
+   * \brief Глобальный индекс записей всех журналов,
+   * кроме отладочного
    */
   static uint32_t id_;
+
+  /*!
+   * \brief Глобальный индекс записей отладочного архива
+   */
+  static uint32_t idDebug_;
 
 protected:
   /*!

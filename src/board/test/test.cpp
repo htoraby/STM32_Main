@@ -513,11 +513,15 @@ static void testLog()
 #if TEST_LOG
   logErase();
 
-  for (int i = 0; i < 205; ++i) {
-    logEvent.add(0x01, 13, 1, 0, 1);
+  for (int i = 0; i < 4; ++i) {
+    logEvent.add(0x01, 13, i, 0, 1);
+  }
+  for (int i = 0; i < 4; ++i) {
+    logDebug.add(CriticalMsg, "Test Test Привет!");
   }
 
-  logRead(StartAddrEventLog, bufferRx, 20*100);
+  logRead(FlashSpi5, StartAddrEventLog, bufferRx, 20*4);
+  logRead(FlashSpi1, StartAddrDebugLog, bufferRx, 256*4);
   asm("nop");
 #endif
 }
