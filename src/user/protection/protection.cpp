@@ -5,7 +5,6 @@ static void protectionTask(void *p)
   (static_cast<Protection*>(p))->task();
 }
 
-// Конструктор класса защит
 Protection::Protection()
 {
 
@@ -18,15 +17,11 @@ Protection::~Protection()
 
 void Protection::init(const char *threadName)
 {
-  // Создаём задачу цикла опроса
-  // Заполняем структуру с параметрами задачи
+  // Создаём задачу обработки защиты
   osThreadDef_t t = {threadName, protectionTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
-  // Создаём задачу
   threadId_ = osThreadCreate(&t, this);
 }
 
-// Метод получения уставок защиты
-// Вызывается в бесконечном цикле для получения
 void Protection::getSetpointProt()
 {
   mode_           = ksu.getValue(idMode_);
@@ -42,7 +37,6 @@ void Protection::getSetpointProt()
   param2_         = ksu.getValue(idParam2_);
 }
 
-// Метод получения текущих параметров защиты
 void Protection::getCurrentParamProt()
 {
   state_                = ksu.getValue(idState_);
@@ -79,7 +73,6 @@ bool Protection::isLowerLimit(float setpoint)
     return false;
 }
 
-// Метод проверки истёк ли таймер сброса счётчиков АПВ защиты
 void Protection::checkRestartResetCount()
 {
   // Проверяем если уставка времени сброса больше чем разница между текущим
@@ -92,7 +85,6 @@ void Protection::checkRestartResetCount()
   }
 }
 
-// Метод задача защиты
 void Protection::task()
 {
   while(1) {
@@ -113,10 +105,8 @@ void Protection::task()
   }
 }
 
-// Универсальный автомат работы защиты
 void Protection::automatProtection()
 {
-  // Автомат работы защиты
   switch (state_) {
 
     // Состояние "ничегонеделанья"
