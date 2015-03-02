@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/usb/usb_host.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  <td id="projectlogo"><img alt="Logo" src="logo.ico"/></td>
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/usb/usb_host.h</div>  </div>
+</div>
+<div class="contents">
+<a href="usb__host_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00035"></a>00035 <span class="comment">/* Define to prevent recursive inclusion -------------------------------------*/</span>
+<a name="l00036"></a>00036 <span class="preprocessor">#ifndef __usb_host_H</span>
+<a name="l00037"></a>00037 <span class="preprocessor"></span><span class="preprocessor">#define __usb_host_H</span>
+<a name="l00038"></a>00038 <span class="preprocessor"></span><span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00039"></a>00039 <span class="preprocessor"></span> <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {
+<a name="l00040"></a>00040 <span class="preprocessor">#endif</span>
+<a name="l00041"></a>00041 <span class="preprocessor"></span>
+<a name="l00042"></a>00042 <span class="comment">/* Includes ------------------------------------------------------------------*/</span>
+<a name="l00043"></a>00043 <span class="preprocessor">#include &quot;cmsis_os.h&quot;</span>
+<a name="l00044"></a>00044 
+<a name="l00045"></a><a class="code" href="usb__host_8h.html#af9938846bd2b8b20906b069c56a9519f">00045</a> <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00046"></a><a class="code" href="usb__host_8h.html#af9938846bd2b8b20906b069c56a9519fa88576d1c7dddffd503ebc290eb1401e6">00046</a>   <a class="code" href="usb__host_8h.html#af9938846bd2b8b20906b069c56a9519fa88576d1c7dddffd503ebc290eb1401e6">APPLICATION_IDLE</a> = 0,  
+<a name="l00047"></a><a class="code" href="usb__host_8h.html#af9938846bd2b8b20906b069c56a9519fa2488ace5cda3780b8eaed8956067e355">00047</a>   <a class="code" href="usb__host_8h.html#af9938846bd2b8b20906b069c56a9519fa2488ace5cda3780b8eaed8956067e355">APPLICATION_START</a>,   
+<a name="l00048"></a><a class="code" href="usb__host_8h.html#af9938846bd2b8b20906b069c56a9519faffd7a74a4612e4ddcb27b8f44cb55cbf">00048</a>   <a class="code" href="usb__host_8h.html#af9938846bd2b8b20906b069c56a9519faffd7a74a4612e4ddcb27b8f44cb55cbf">APPLICATION_READY</a>,
+<a name="l00049"></a><a class="code" href="usb__host_8h.html#af9938846bd2b8b20906b069c56a9519fa34efa9449b4a4c62641c87e15ec574e9">00049</a>   <a class="code" href="usb__host_8h.html#af9938846bd2b8b20906b069c56a9519fa34efa9449b4a4c62641c87e15ec574e9">APPLICATION_DISCONNECT</a>,
+<a name="l00050"></a>00050 } <a class="code" href="usb__host_8h.html#af9938846bd2b8b20906b069c56a9519f">ApplicationTypeDef</a>;
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052 <span class="keyword">extern</span> uint8_t <a class="code" href="usb__host_8c.html#a5c875b3fc94e46354131bd11aa8baec2">USBH_DriverNum</a>;
+<a name="l00053"></a>00053 <span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code" href="usb__host_8c.html#a84477844d29a9fd95dc565d6a50d6cdd">USBH_Path</a>[];
+<a name="l00054"></a>00054                 
+<a name="l00055"></a>00055 <span class="keywordtype">void</span> <a class="code" href="usb__host_8c.html#ace60dba8c3a9f3522128ff6b56970eb6">MX_USB_HOST_Init</a>(<span class="keywordtype">void</span>);
+<a name="l00056"></a>00056 <span class="keywordtype">void</span> <a class="code" href="usb__host_8c.html#a5c2b29ff3a8f7c0ea224371a3c4f0624">MX_USB_HOST_Process</a>(<span class="keywordtype">void</span>);
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00059"></a>00059 <span class="preprocessor"></span>}
+<a name="l00060"></a>00060 <span class="preprocessor">#endif</span>
+<a name="l00061"></a>00061 <span class="preprocessor"></span><span class="preprocessor">#endif </span><span class="comment">/*__usb_host_H */</span>
+<a name="l00062"></a>00062 
+<a name="l00071"></a>00071 <span class="comment">/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Пн 2 Мар 2015 15:35:47. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

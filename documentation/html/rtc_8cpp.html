@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Файл C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/rtc/rtc.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  <td id="projectlogo"><img alt="Logo" src="logo.ico"/></td>
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Функции</a> &#124;
+<a href="#var-members">Переменные</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/rtc/rtc.cpp</div>  </div>
+</div>
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="rtc_8h_source.html">rtc.h</a>&quot;</code><br/>
+</div>
+<p><a href="rtc_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtc_8cpp.html#ad26859b669bd243e9131ca995b8e5695">rtcInit</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализация RTC.  <a href="#ad26859b669bd243e9131ca995b8e5695"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtc_8cpp.html#aee6eddaa309c8c9829f1ca794d8f99c5">HAL_RTC_MspInit</a> (RTC_HandleTypeDef *<a class="el" href="rtc_8cpp.html#aa0c7fca836406ade332e1e3f1039d8ab">hrtc</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtc_8cpp.html#a8767bc3a4d472d39a688090ab10ba6ce">HAL_RTC_MspDeInit</a> (RTC_HandleTypeDef *<a class="el" href="rtc_8cpp.html#aa0c7fca836406ade332e1e3f1039d8ab">hrtc</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtc_8cpp.html#ad2868100d231cc548404c3d56587d56f">setTime</a> (const time_t *<a class="el" href="adc_8cpp.html#ae73654f333e4363463ad8c594eca1905">time</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Установка даты и времени  <a href="#ad2868100d231cc548404c3d56587d56f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">time_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtc_8cpp.html#a32315808bd93c14f43ad88f6129f4f35">getTime</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Получение даты и времени в секундах  <a href="#a32315808bd93c14f43ad88f6129f4f35"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtc_8cpp.html#a3d6f056c1fd67ecc35247b0803f33ad5">backupSaveParameter</a> (uint32_t address, uint32_t data)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Запись в энергонезависимую статическую память  <a href="#a3d6f056c1fd67ecc35247b0803f33ad5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtc_8cpp.html#a0b7b9f86cae4712f1ad266339e5f8733">backupRestoreParameter</a> (uint32_t address)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Чтение из энергонезависимой статическую память  <a href="#a0b7b9f86cae4712f1ad266339e5f8733"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Переменные</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">RTC_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtc_8cpp.html#aa0c7fca836406ade332e1e3f1039d8ab">hrtc</a></td></tr>
+</table>
+<hr/><h2>Функции</h2>
+<a class="anchor" id="a0b7b9f86cae4712f1ad266339e5f8733"></a><!-- doxytag: member="rtc.cpp::backupRestoreParameter" ref="a0b7b9f86cae4712f1ad266339e5f8733" args="(uint32_t address)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t backupRestoreParameter </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>address</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Чтение из энергонезависимой статическую память </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address,:</td><td>RTC_BKP_DRx 1-19 RTCEx_Backup_Registers_Definitions </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>uint32_t - считанные данные </dd></dl>
+
+<p>См. определение в файле <a class="el" href="rtc_8cpp_source.html">rtc.cpp</a> строка <a class="el" href="rtc_8cpp_source.html#l00123">123</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a3d6f056c1fd67ecc35247b0803f33ad5"></a><!-- doxytag: member="rtc.cpp::backupSaveParameter" ref="a3d6f056c1fd67ecc35247b0803f33ad5" args="(uint32_t address, uint32_t data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void backupSaveParameter </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Запись в энергонезависимую статическую память </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address,:</td><td>RTC_BKP_DRx 1-19 RTCEx_Backup_Registers_Definitions </td></tr>
+    <tr><td class="paramname">data,:</td><td>данные для записи </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="rtc_8cpp_source.html">rtc.cpp</a> строка <a class="el" href="rtc_8cpp_source.html#l00116">116</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a32315808bd93c14f43ad88f6129f4f35"></a><!-- doxytag: member="rtc.cpp::getTime" ref="a32315808bd93c14f43ad88f6129f4f35" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">time_t getTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Получение даты и времени в секундах </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>time_t - возвращаемое значение </dd></dl>
+
+<p>См. определение в файле <a class="el" href="rtc_8cpp_source.html">rtc.cpp</a> строка <a class="el" href="rtc_8cpp_source.html#l00095">95</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a8767bc3a4d472d39a688090ab10ba6ce"></a><!-- doxytag: member="rtc.cpp::HAL_RTC_MspDeInit" ref="a8767bc3a4d472d39a688090ab10ba6ce" args="(RTC_HandleTypeDef *hrtc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_RTC_MspDeInit </td>
+          <td>(</td>
+          <td class="paramtype">RTC_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>hrtc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="rtc_8cpp_source.html">rtc.cpp</a> строка <a class="el" href="rtc_8cpp_source.html#l00068">68</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aee6eddaa309c8c9829f1ca794d8f99c5"></a><!-- doxytag: member="rtc.cpp::HAL_RTC_MspInit" ref="aee6eddaa309c8c9829f1ca794d8f99c5" args="(RTC_HandleTypeDef *hrtc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_RTC_MspInit </td>
+          <td>(</td>
+          <td class="paramtype">RTC_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>hrtc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="rtc_8cpp_source.html">rtc.cpp</a> строка <a class="el" href="rtc_8cpp_source.html#l00035">35</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ad26859b669bd243e9131ca995b8e5695"></a><!-- doxytag: member="rtc.cpp::rtcInit" ref="ad26859b669bd243e9131ca995b8e5695" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtcInit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Инициализация RTC. </p>
+<p>Установка времени по умолчанию </p>
+
+<p>См. определение в файле <a class="el" href="rtc_8cpp_source.html">rtc.cpp</a> строка <a class="el" href="rtc_8cpp_source.html#l00005">5</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ad2868100d231cc548404c3d56587d56f"></a><!-- doxytag: member="rtc.cpp::setTime" ref="ad2868100d231cc548404c3d56587d56f" args="(const time_t *time)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setTime </td>
+          <td>(</td>
+          <td class="paramtype">const time_t *&#160;</td>
+          <td class="paramname"><em>time</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Установка даты и времени </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dateTime</td><td>- структура даты и времени tm </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="rtc_8cpp_source.html">rtc.cpp</a> строка <a class="el" href="rtc_8cpp_source.html#l00074">74</a></p>
+
+</div>
+</div>
+<hr/><h2>Переменные</h2>
+<a class="anchor" id="aa0c7fca836406ade332e1e3f1039d8ab"></a><!-- doxytag: member="rtc.cpp::hrtc" ref="aa0c7fca836406ade332e1e3f1039d8ab" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">RTC_HandleTypeDef <a class="el" href="rtc_8cpp.html#aa0c7fca836406ade332e1e3f1039d8ab">hrtc</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="rtc_8cpp_source.html">rtc.cpp</a> строка <a class="el" href="rtc_8cpp_source.html#l00003">3</a></p>
+
+</div>
+</div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Пн 2 Мар 2015 15:35:48. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

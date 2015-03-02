@@ -1,0 +1,571 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/flash/flash_ext.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  <td id="projectlogo"><img alt="Logo" src="logo.ico"/></td>
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/flash/flash_ext.cpp</div>  </div>
+</div>
+<div class="contents">
+<a href="flash__ext_8cpp.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="flash__ext_8h.html">flash_ext.h</a>&quot;</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#include &quot;<a class="code" href="gpio_8h.html">gpio.h</a>&quot;</span>
+<a name="l00003"></a>00003 <span class="preprocessor">#include &quot;<a class="code" href="common_8h.html">common.h</a>&quot;</span>
+<a name="l00004"></a>00004 
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;string.h&gt;</span>
+<a name="l00006"></a>00006 
+<a name="l00007"></a><a class="code" href="flash__ext_8cpp.html#ad841e718b465b9e763aafb9eecdf99ae">00007</a> <span class="preprocessor">#define CMD_JEDEC_ID 0x9F</span>
+<a name="l00008"></a>00008 <span class="preprocessor"></span>
+<a name="l00009"></a>00009 <span class="preprocessor">#if USE_EXT_MEM</span>
+<a name="l00010"></a>00010 <span class="preprocessor"></span>  <span class="keyword">static</span> uint8_t <a class="code" href="flash__ext_8cpp.html#a4cee47997e2d68da053a60ffadb4c2a6">bufData</a>[4096] <a class="code" href="__reset__hardware_8c.html#a93b9cf91f7623d6d8b100a3693d6d5e4">__attribute__</a>((section(<span class="stringliteral">&quot;.extmem&quot;</span>)));
+<a name="l00011"></a>00011 <span class="preprocessor">#else</span>
+<a name="l00012"></a><a class="code" href="flash__ext_8cpp.html#a4cee47997e2d68da053a60ffadb4c2a6">00012</a> <span class="preprocessor"></span>  <span class="keyword">static</span> uint8_t <a class="code" href="flash__ext_8cpp.html#a4cee47997e2d68da053a60ffadb4c2a6">bufData</a>[4096];
+<a name="l00013"></a>00013 <span class="preprocessor">#endif</span>
+<a name="l00014"></a><a class="code" href="flash__ext_8cpp.html#a05c8b1c963772dc6bb9416afb1a991b1">00014</a> <span class="preprocessor"></span>  <span class="keyword">static</span> uint8_t <a class="code" href="flash__ext_8cpp.html#a05c8b1c963772dc6bb9416afb1a991b1">buf</a>[10];
+<a name="l00015"></a>00015 
+<a name="l00016"></a><a class="code" href="flash__ext_8cpp.html#a45ba202b05caf39795aeca91b0ae547e">00016</a> <span class="preprocessor">#define TIMEOUT 1000</span>
+<a name="l00017"></a>00017 <span class="preprocessor"></span>
+<a name="l00021"></a>00021 <span class="keyword">enum</span> {
+<a name="l00022"></a><a class="code" href="flash__ext_8cpp.html#a06fc87d81c62e9abb8790b6e5713c55ba5fea10292db5100d81f0a5d4e4f67f3b">00022</a>   <a class="code" href="flash__ext_8cpp.html#a06fc87d81c62e9abb8790b6e5713c55ba5fea10292db5100d81f0a5d4e4f67f3b">VENDOR_ATMEL</a>    =     0x1F,
+<a name="l00023"></a><a class="code" href="flash__ext_8cpp.html#a06fc87d81c62e9abb8790b6e5713c55bab6c27e070de48e02813337b4141a26b0">00023</a>   <a class="code" href="flash__ext_8cpp.html#a06fc87d81c62e9abb8790b6e5713c55bab6c27e070de48e02813337b4141a26b0">VENDOR_WINBOND</a>        =       0xEF,
+<a name="l00024"></a><a class="code" href="flash__ext_8cpp.html#a06fc87d81c62e9abb8790b6e5713c55ba7c95abf7053f60e78499f6505b124067">00024</a>   <a class="code" href="flash__ext_8cpp.html#a06fc87d81c62e9abb8790b6e5713c55ba7c95abf7053f60e78499f6505b124067">VENDOR_MACRONIX</a>       =       0xC2,
+<a name="l00025"></a>00025 };
+<a name="l00026"></a>00026 
+<a name="l00030"></a>00030 <span class="keyword">enum</span> {
+<a name="l00031"></a><a class="code" href="flash__ext_8cpp.html#adf764cbdea00d65edcd07bb9953ad2b7ab98e502c5f11c1b6a18a56c8e3ea62a6">00031</a>   <a class="code" href="flash__ext_8cpp.html#adf764cbdea00d65edcd07bb9953ad2b7ab98e502c5f11c1b6a18a56c8e3ea62a6">CMD_CONT_ARRAY_READ</a> = 0x03,
+<a name="l00032"></a><a class="code" href="flash__ext_8cpp.html#adf764cbdea00d65edcd07bb9953ad2b7a495f2dea97e3a6644a8b901a90d4f19b">00032</a>   <a class="code" href="flash__ext_8cpp.html#adf764cbdea00d65edcd07bb9953ad2b7a495f2dea97e3a6644a8b901a90d4f19b">CMD_STATUS_REGISTER_READ</a> = 0xD7,
+<a name="l00033"></a><a class="code" href="flash__ext_8cpp.html#adf764cbdea00d65edcd07bb9953ad2b7ac6fef0a8c0602ddcb8336ac1cfbad18b">00033</a>   <a class="code" href="flash__ext_8cpp.html#adf764cbdea00d65edcd07bb9953ad2b7ac6fef0a8c0602ddcb8336ac1cfbad18b">CMD_MAIN_MEM_PAGE_TO_BUF_TRANSFER</a> = 0x53,
+<a name="l00034"></a><a class="code" href="flash__ext_8cpp.html#adf764cbdea00d65edcd07bb9953ad2b7a424f32cfa1c1653cfae440623d68e58b">00034</a>   <a class="code" href="flash__ext_8cpp.html#adf764cbdea00d65edcd07bb9953ad2b7a424f32cfa1c1653cfae440623d68e58b">CMD_MAIN_MEM_PAGE_PROGRAM_THROUGH_BUF</a> = 0x85,
+<a name="l00035"></a><a class="code" href="flash__ext_8cpp.html#adf764cbdea00d65edcd07bb9953ad2b7a8f639abb3ff454abe77a9d4b7f8e84c0">00035</a>   <a class="code" href="flash__ext_8cpp.html#adf764cbdea00d65edcd07bb9953ad2b7a8f639abb3ff454abe77a9d4b7f8e84c0">CMD_AUTO_PAGE_REWRITE</a> = 0x58,
+<a name="l00036"></a>00036 };
+<a name="l00037"></a>00037 
+<a name="l00041"></a>00041 <span class="keyword">enum</span> {
+<a name="l00042"></a><a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5aa56b7838ba3c2335ab75f619ceaaa596">00042</a>   <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5aa56b7838ba3c2335ab75f619ceaaa596">CMD_W_FAST_READ</a>          = 0x0B,
+<a name="l00043"></a><a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a4ffebc6eb030fd8d782a7561d0679686">00043</a>   <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a4ffebc6eb030fd8d782a7561d0679686">CMD_W_GET_ID</a>             = 0x90,
+<a name="l00044"></a><a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a0f7a09393a8fa01c8e7efc94133fc730">00044</a>   <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a0f7a09393a8fa01c8e7efc94133fc730">CMD_W_WRITE_ENABLE</a>       = 0x06,
+<a name="l00045"></a><a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a1de7dc176b4a24988a9053827c11a1c9">00045</a>   <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a1de7dc176b4a24988a9053827c11a1c9">CMD_W_WRITE_DISABLE</a>      = 0x04,
+<a name="l00046"></a><a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a95ac076e882881629b682243c946c472">00046</a>   <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a95ac076e882881629b682243c946c472">CMD_W_PAGE_PROGRAM</a>       = 0x02,
+<a name="l00047"></a><a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5ab927bb41cf4f30d50dca990c299d2aa7">00047</a>   <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5ab927bb41cf4f30d50dca990c299d2aa7">CMD_W_READ_SR</a>            = 0x05,
+<a name="l00048"></a><a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a1da7d64d1346eee5c42b270df86a90c7">00048</a>   <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a1da7d64d1346eee5c42b270df86a90c7">CMD_W_READ_DATA</a>          = 0x03,
+<a name="l00049"></a><a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a5cd32800e69b8529b00d2f4d9170b953">00049</a>   <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a5cd32800e69b8529b00d2f4d9170b953">CMD_W_CHIP_ERASE</a>         = 0xC7,
+<a name="l00050"></a><a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5afe97753d803607c59607d4eeeca3356e">00050</a>   <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5afe97753d803607c59607d4eeeca3356e">CMD_W_SECTOR_ERASE</a>       = 0x20,
+<a name="l00051"></a><a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5aedf380eee0166eb1878c56a35bef53c3">00051</a>   <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5aedf380eee0166eb1878c56a35bef53c3">CMD_W_BLOCK64k_ERASE</a>     = 0xD8,
+<a name="l00052"></a><a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5aebaafdfcdc97f57b21e4567a4bf2ddfa">00052</a>   <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5aebaafdfcdc97f57b21e4567a4bf2ddfa">CMD_W_BLOCK32k_ERASE</a>     = 0x52,
+<a name="l00053"></a><a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a78a58300f8d5e2cac1ef9f09c927605a">00053</a>   <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a78a58300f8d5e2cac1ef9f09c927605a">CMD_W_POWER_DOWN</a>         = 0xB9,
+<a name="l00054"></a><a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a09edc395ef673f4cad3fd74a3d211b4b">00054</a>   <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a09edc395ef673f4cad3fd74a3d211b4b">CMD_W_WAKE_UP</a>            = 0xAB,
+<a name="l00055"></a><a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a0b665813d80ba3a368eeccf7044e41c1">00055</a>   <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a0b665813d80ba3a368eeccf7044e41c1">CMD_W_WRITE_SR</a>           = 0x01,
+<a name="l00056"></a><a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5ae9e5ac26a5c24b35e3b59e50cadfbfc1">00056</a>   <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5ae9e5ac26a5c24b35e3b59e50cadfbfc1">CMD_W_FAST_READ_DUAL_OUT</a> = 0x3B,
+<a name="l00057"></a>00057 };
+<a name="l00058"></a>00058 
+<a name="l00059"></a><a class="code" href="stm32f4xx__it_8c.html#ac8cdcfbb7adfcccc5717da58e1e10ae4">00059</a> DMA_HandleTypeDef <a class="code" href="flash__ext_8cpp.html#ac8cdcfbb7adfcccc5717da58e1e10ae4">hdma_spi1_tx</a>;
+<a name="l00060"></a><a class="code" href="stm32f4xx__it_8c.html#ad70fe79aa3139fc9184d8ffb5dfba323">00060</a> DMA_HandleTypeDef <a class="code" href="flash__ext_8cpp.html#ad70fe79aa3139fc9184d8ffb5dfba323">hdma_spi1_rx</a>;
+<a name="l00061"></a><a class="code" href="stm32f4xx__it_8c.html#a308228355946ade7ef964f6618ec90e0">00061</a> DMA_HandleTypeDef <a class="code" href="flash__ext_8cpp.html#a308228355946ade7ef964f6618ec90e0">hdma_spi5_tx</a>;
+<a name="l00062"></a><a class="code" href="stm32f4xx__it_8c.html#a31a824e0b3bb398ad9ff255175ad4620">00062</a> DMA_HandleTypeDef <a class="code" href="flash__ext_8cpp.html#a31a824e0b3bb398ad9ff255175ad4620">hdma_spi5_rx</a>;
+<a name="l00063"></a><a class="code" href="flash__ext_8h.html#a7acb1f4946263e7fb15c645e7f161e95">00063</a> <a class="code" href="struct_flash_type_def.html">FlashTypeDef</a> <a class="code" href="flash__ext_8cpp.html#a15b0678b8d2782237ef0a03ef625dcca">flashExts</a>[<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fba7a5d8baf6974f8aeab37876c66d5509e">FlashSpiMax</a>];
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065 <span class="keyword">static</span> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="flash__ext_8cpp.html#a0099339d179f72bbb0de8455336df7a8">spiTransmitReceive</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fb" title="Список SPI каналов задействованых для Flash памяти">FlashSpiNum</a> num, uint8_t *txData,
+<a name="l00066"></a>00066                                      uint8_t *rxData, uint16_t txSize,
+<a name="l00067"></a>00067                                      uint16_t rxSize);
+<a name="l00068"></a>00068 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="flash__ext_8cpp.html#a95a978d4759209e57eb0f2b09a56f92d">flashWriteEnable</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fb" title="Список SPI каналов задействованых для Flash памяти">FlashSpiNum</a> num);
+<a name="l00069"></a>00069 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="flash__ext_8cpp.html#a9d50296c3ba01b7b0d4b51d85ecda3f4">flashWriteDisable</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fb" title="Список SPI каналов задействованых для Flash памяти">FlashSpiNum</a> num);
+<a name="l00070"></a>00070 
+<a name="l00071"></a><a class="code" href="flash__ext_8cpp.html#ac58e413470bc0aac3a0ecc09ea3ad06f">00071</a> <span class="keywordtype">void</span> <a class="code" href="flash__ext_8cpp.html#ac58e413470bc0aac3a0ecc09ea3ad06f">flashExtInit</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fb" title="Список SPI каналов задействованых для Flash памяти">FlashSpiNum</a> num)
+<a name="l00072"></a>00072 {
+<a name="l00073"></a>00073   SPI_HandleTypeDef *spiX = &amp;flashExts[num].<a class="code" href="struct_flash_type_def.html#a7506a79b9eb479b2cc23ad5ae9bcbbf6" title="Структура SPI.">spi</a>;
+<a name="l00074"></a>00074   <span class="keywordflow">switch</span> (num) {
+<a name="l00075"></a>00075     <span class="keywordflow">case</span> <a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fbafc1cc925ab1ca7ede64e84265b2960db">FlashSpi1</a>:
+<a name="l00076"></a>00076       spiX-&gt;Instance = SPI1;
+<a name="l00077"></a>00077       <span class="comment">// PA4 ------&gt; SPI1_NSS</span>
+<a name="l00078"></a>00078       flashExts[num].<a class="code" href="struct_flash_type_def.html#aec28ec4b1b868fbaa863e7811c2eb8f1" title="Порт вывода NSS.">nss_port</a> = GPIOA;
+<a name="l00079"></a>00079       flashExts[num].<a class="code" href="struct_flash_type_def.html#ae255b0e17723c178d52c0822bc9e048a" title="Номер вывода NSS.">nss_pin</a>  = GPIO_PIN_4;
+<a name="l00080"></a>00080       <span class="keywordflow">break</span>;
+<a name="l00081"></a>00081     <span class="keywordflow">case</span> <a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fba688049fe14f78480f4b22161b6f9fad5">FlashSpi5</a>:
+<a name="l00082"></a>00082       spiX-&gt;Instance = SPI5;
+<a name="l00083"></a>00083       <span class="comment">// PC9 ------&gt; SPI5_NSS</span>
+<a name="l00084"></a>00084       flashExts[num].<a class="code" href="struct_flash_type_def.html#aec28ec4b1b868fbaa863e7811c2eb8f1" title="Порт вывода NSS.">nss_port</a> = GPIOC;
+<a name="l00085"></a>00085       flashExts[num].<a class="code" href="struct_flash_type_def.html#ae255b0e17723c178d52c0822bc9e048a" title="Номер вывода NSS.">nss_pin</a>  = GPIO_PIN_9;
+<a name="l00086"></a>00086       <span class="keywordflow">break</span>;
+<a name="l00087"></a>00087     <span class="keywordflow">default</span>:
+<a name="l00088"></a>00088       <span class="keywordflow">break</span>;
+<a name="l00089"></a>00089   }
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091   <a class="code" href="gpio_8cpp.html#aaf3eb02cdf380b681e99344f0e13cd9c" title="Настройка вывода на выход">initPinOut</a>(flashExts[num].nss_port, flashExts[num].nss_pin, <a class="code" href="gpio_8h.html#a481bba4ee500a381c7ae5b767e641bdca6f8cb1132be097709feddb4c4139c028">PinSet</a>);
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093   spiX-&gt;Init.Mode = SPI_MODE_MASTER;
+<a name="l00094"></a>00094   spiX-&gt;Init.Direction = SPI_DIRECTION_2LINES;
+<a name="l00095"></a>00095   spiX-&gt;Init.DataSize = SPI_DATASIZE_8BIT;
+<a name="l00096"></a>00096   spiX-&gt;Init.CLKPolarity = SPI_POLARITY_LOW;
+<a name="l00097"></a>00097   spiX-&gt;Init.CLKPhase = SPI_PHASE_1EDGE;
+<a name="l00098"></a>00098   spiX-&gt;Init.NSS = SPI_NSS_SOFT;
+<a name="l00099"></a>00099   spiX-&gt;Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
+<a name="l00100"></a>00100   spiX-&gt;Init.FirstBit = SPI_FIRSTBIT_MSB;
+<a name="l00101"></a>00101   spiX-&gt;Init.TIMode = SPI_TIMODE_DISABLED;
+<a name="l00102"></a>00102   spiX-&gt;Init.CRCCalculation = SPI_CRCCALCULATION_DISABLED;
+<a name="l00103"></a>00103   spiX-&gt;Init.CRCPolynomial = 7;
+<a name="l00104"></a>00104   HAL_SPI_Init(spiX);
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107   <span class="comment">/* Peripheral DMA init*/</span>
+<a name="l00108"></a>00108   <span class="keywordflow">if</span> (num == <a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fbafc1cc925ab1ca7ede64e84265b2960db">FlashSpi1</a>) {
+<a name="l00109"></a>00109     hdma_spi1_tx.Instance = DMA2_Stream5;
+<a name="l00110"></a>00110     hdma_spi1_tx.Init.Channel = DMA_CHANNEL_3;
+<a name="l00111"></a>00111     hdma_spi1_tx.Init.Direction = DMA_MEMORY_TO_PERIPH;
+<a name="l00112"></a>00112     hdma_spi1_tx.Init.PeriphInc = DMA_PINC_DISABLE;
+<a name="l00113"></a>00113     hdma_spi1_tx.Init.MemInc = DMA_MINC_ENABLE;
+<a name="l00114"></a>00114     hdma_spi1_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+<a name="l00115"></a>00115     hdma_spi1_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+<a name="l00116"></a>00116     hdma_spi1_tx.Init.Mode = DMA_NORMAL;
+<a name="l00117"></a>00117     hdma_spi1_tx.Init.Priority = DMA_PRIORITY_LOW;
+<a name="l00118"></a>00118     hdma_spi1_tx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+<a name="l00119"></a>00119     HAL_DMA_Init(&amp;hdma_spi1_tx);
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121     __HAL_LINKDMA(spiX, hdmatx, hdma_spi1_tx);
+<a name="l00122"></a>00122 
+<a name="l00123"></a>00123     hdma_spi1_rx.Instance = DMA2_Stream0;
+<a name="l00124"></a>00124     hdma_spi1_rx.Init.Channel = DMA_CHANNEL_3;
+<a name="l00125"></a>00125     hdma_spi1_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+<a name="l00126"></a>00126     hdma_spi1_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+<a name="l00127"></a>00127     hdma_spi1_rx.Init.MemInc = DMA_MINC_ENABLE;
+<a name="l00128"></a>00128     hdma_spi1_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+<a name="l00129"></a>00129     hdma_spi1_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+<a name="l00130"></a>00130     hdma_spi1_rx.Init.Mode = DMA_NORMAL;
+<a name="l00131"></a>00131     hdma_spi1_rx.Init.Priority = DMA_PRIORITY_HIGH;
+<a name="l00132"></a>00132     hdma_spi1_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+<a name="l00133"></a>00133     HAL_DMA_Init(&amp;hdma_spi1_rx);
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135     __HAL_LINKDMA(spiX, hdmarx, hdma_spi1_rx);
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137     HAL_NVIC_SetPriority(DMA2_Stream5_IRQn, <a class="code" href="board_8h.html#ac240cab7fbfacefc65f255161d7df6ad">FLASH_IRQ_PREPRIO</a>, 1);
+<a name="l00138"></a>00138     HAL_NVIC_EnableIRQ(DMA2_Stream5_IRQn);
+<a name="l00139"></a>00139     HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, <a class="code" href="board_8h.html#ac240cab7fbfacefc65f255161d7df6ad">FLASH_IRQ_PREPRIO</a>, 0);
+<a name="l00140"></a>00140     HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
+<a name="l00141"></a>00141   }
+<a name="l00142"></a>00142   <span class="keywordflow">else</span> <span class="keywordflow">if</span> (num == <a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fba688049fe14f78480f4b22161b6f9fad5">FlashSpi5</a>) {
+<a name="l00143"></a>00143     hdma_spi5_tx.Instance = DMA2_Stream4;
+<a name="l00144"></a>00144     hdma_spi5_tx.Init.Channel = DMA_CHANNEL_2;
+<a name="l00145"></a>00145     hdma_spi5_tx.Init.Direction = DMA_MEMORY_TO_PERIPH;
+<a name="l00146"></a>00146     hdma_spi5_tx.Init.PeriphInc = DMA_PINC_DISABLE;
+<a name="l00147"></a>00147     hdma_spi5_tx.Init.MemInc = DMA_MINC_ENABLE;
+<a name="l00148"></a>00148     hdma_spi5_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+<a name="l00149"></a>00149     hdma_spi5_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+<a name="l00150"></a>00150     hdma_spi5_tx.Init.Mode = DMA_NORMAL;
+<a name="l00151"></a>00151     hdma_spi5_tx.Init.Priority = DMA_PRIORITY_LOW;
+<a name="l00152"></a>00152     hdma_spi5_tx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+<a name="l00153"></a>00153     HAL_DMA_Init(&amp;hdma_spi5_tx);
+<a name="l00154"></a>00154 
+<a name="l00155"></a>00155     __HAL_LINKDMA(spiX, hdmatx, hdma_spi5_tx);
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157     hdma_spi5_rx.Instance = DMA2_Stream3;
+<a name="l00158"></a>00158     hdma_spi5_rx.Init.Channel = DMA_CHANNEL_2;
+<a name="l00159"></a>00159     hdma_spi5_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+<a name="l00160"></a>00160     hdma_spi5_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+<a name="l00161"></a>00161     hdma_spi5_rx.Init.MemInc = DMA_MINC_ENABLE;
+<a name="l00162"></a>00162     hdma_spi5_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+<a name="l00163"></a>00163     hdma_spi5_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+<a name="l00164"></a>00164     hdma_spi5_rx.Init.Mode = DMA_NORMAL;
+<a name="l00165"></a>00165     hdma_spi5_rx.Init.Priority = DMA_PRIORITY_HIGH;
+<a name="l00166"></a>00166     hdma_spi5_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+<a name="l00167"></a>00167     HAL_DMA_Init(&amp;hdma_spi5_rx);
+<a name="l00168"></a>00168 
+<a name="l00169"></a>00169     __HAL_LINKDMA(spiX, hdmarx, hdma_spi5_rx);
+<a name="l00170"></a>00170 
+<a name="l00171"></a>00171     HAL_NVIC_SetPriority(DMA2_Stream4_IRQn, <a class="code" href="board_8h.html#ac240cab7fbfacefc65f255161d7df6ad">FLASH_IRQ_PREPRIO</a>, 1);
+<a name="l00172"></a>00172     HAL_NVIC_EnableIRQ(DMA2_Stream4_IRQn);
+<a name="l00173"></a>00173     HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, <a class="code" href="board_8h.html#ac240cab7fbfacefc65f255161d7df6ad">FLASH_IRQ_PREPRIO</a>, 0);
+<a name="l00174"></a>00174     HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
+<a name="l00175"></a>00175   }
+<a name="l00176"></a>00176 
+<a name="l00177"></a>00177   flashExts[num].<a class="code" href="struct_flash_type_def.html#a934e16d6a69d38bac666757d13e76b7d">cmdSemaphoreId</a> = osSemaphoreCreate(NULL, 1);
+<a name="l00178"></a>00178   flashExts[num].<a class="code" href="struct_flash_type_def.html#a28f53185123ea45e7005a15e8c399f5d">operSemaphoreId</a> = osSemaphoreCreate(NULL, 1);
+<a name="l00179"></a>00179 
+<a name="l00180"></a>00180   <span class="comment">// Чтение данных из JEDEC ID регистров для определения производителя</span>
+<a name="l00181"></a>00181   buf[0] = <a class="code" href="flash__ext_8cpp.html#ad841e718b465b9e763aafb9eecdf99ae">CMD_JEDEC_ID</a>;
+<a name="l00182"></a>00182   <a class="code" href="flash__ext_8cpp.html#a0099339d179f72bbb0de8455336df7a8">spiTransmitReceive</a>(num, &amp;buf[0], &amp;buf[0], 1, 4);
+<a name="l00183"></a>00183 
+<a name="l00184"></a>00184   <span class="comment">// Определение производителя</span>
+<a name="l00185"></a>00185   flashExts[num].<a class="code" href="struct_flash_type_def.html#a74dadbd4f0eaaa953bf057addc8d09a9" title="Производитель">manufacturer</a> = buf[0];
+<a name="l00186"></a>00186   <span class="keywordflow">switch</span> (flashExts[num].manufacturer) {
+<a name="l00187"></a>00187     <span class="keywordflow">case</span> <a class="code" href="flash__ext_8cpp.html#a06fc87d81c62e9abb8790b6e5713c55ba5fea10292db5100d81f0a5d4e4f67f3b">VENDOR_ATMEL</a>:
+<a name="l00188"></a>00188       flashExts[num].<a class="code" href="struct_flash_type_def.html#a59d45f1a5759dfb5eb8b67bf94c662ba" title="Размер общей памяти">size</a> = 0;
+<a name="l00189"></a>00189       flashExts[num].<a class="code" href="struct_flash_type_def.html#a00389803fec6a5c0a953aed8738c7bee" title="Размер страницы">pageSize</a> = 256;
+<a name="l00190"></a>00190       flashExts[num].<a class="code" href="struct_flash_type_def.html#a9c27a1389c29ad58ff50ae3ff3231209" title="Размер сектора">sectorSize</a> = 4096;
+<a name="l00191"></a>00191       flashExts[num].<a class="code" href="struct_flash_type_def.html#a531ecce1d913f17dc5936b2711fa3a4d" title="Размер блока">blockSize</a> = 65536;
+<a name="l00192"></a>00192       <span class="keywordflow">break</span>;
+<a name="l00193"></a>00193     <span class="keywordflow">case</span> <a class="code" href="flash__ext_8cpp.html#a06fc87d81c62e9abb8790b6e5713c55bab6c27e070de48e02813337b4141a26b0">VENDOR_WINBOND</a>:
+<a name="l00194"></a>00194       flashExts[num].<a class="code" href="struct_flash_type_def.html#a59d45f1a5759dfb5eb8b67bf94c662ba" title="Размер общей памяти">size</a> = 0x00800000;
+<a name="l00195"></a>00195       flashExts[num].<a class="code" href="struct_flash_type_def.html#a00389803fec6a5c0a953aed8738c7bee" title="Размер страницы">pageSize</a> = 256;
+<a name="l00196"></a>00196       flashExts[num].<a class="code" href="struct_flash_type_def.html#a9c27a1389c29ad58ff50ae3ff3231209" title="Размер сектора">sectorSize</a> = 4096;
+<a name="l00197"></a>00197       flashExts[num].<a class="code" href="struct_flash_type_def.html#a531ecce1d913f17dc5936b2711fa3a4d" title="Размер блока">blockSize</a> = 65536;
+<a name="l00198"></a>00198       <span class="keywordflow">break</span>;
+<a name="l00199"></a>00199     <span class="keywordflow">case</span> <a class="code" href="flash__ext_8cpp.html#a06fc87d81c62e9abb8790b6e5713c55ba7c95abf7053f60e78499f6505b124067">VENDOR_MACRONIX</a>:
+<a name="l00200"></a>00200       flashExts[num].<a class="code" href="struct_flash_type_def.html#a59d45f1a5759dfb5eb8b67bf94c662ba" title="Размер общей памяти">size</a> = 0x01000000;
+<a name="l00201"></a>00201       flashExts[num].<a class="code" href="struct_flash_type_def.html#a00389803fec6a5c0a953aed8738c7bee" title="Размер страницы">pageSize</a> = 256;
+<a name="l00202"></a>00202       flashExts[num].<a class="code" href="struct_flash_type_def.html#a9c27a1389c29ad58ff50ae3ff3231209" title="Размер сектора">sectorSize</a> = 4096;
+<a name="l00203"></a>00203       flashExts[num].<a class="code" href="struct_flash_type_def.html#a531ecce1d913f17dc5936b2711fa3a4d" title="Размер блока">blockSize</a> = 65536;
+<a name="l00204"></a>00204       <span class="keywordflow">break</span>;
+<a name="l00205"></a>00205     <span class="keywordflow">default</span>:
+<a name="l00206"></a>00206       <span class="keywordflow">break</span>;
+<a name="l00207"></a>00207   }
+<a name="l00208"></a>00208 
+<a name="l00209"></a>00209   <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>);
+<a name="l00210"></a>00210 }
+<a name="l00211"></a>00211 
+<a name="l00212"></a><a class="code" href="flash__ext_8cpp.html#a8856a5c553c588c0c35b6beb09f155d7">00212</a> <span class="keywordtype">void</span> <a class="code" href="flash__ext_8cpp.html#a8856a5c553c588c0c35b6beb09f155d7">flashTxRxCpltCallback</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fb" title="Список SPI каналов задействованых для Flash памяти">FlashSpiNum</a> num)
+<a name="l00213"></a>00213 {
+<a name="l00214"></a>00214   <a class="code" href="gpio_8cpp.html#aba699330765a5e803af52bf01f87083f" title="Установка значения на выходе в 1.">setPinOut</a>(flashExts[num].nss_port, flashExts[num].nss_pin);
+<a name="l00215"></a>00215   osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
+<a name="l00216"></a>00216   osSemaphoreRelease(flashExts[num].operSemaphoreId);
+<a name="l00217"></a>00217 }
+<a name="l00218"></a>00218 
+<a name="l00219"></a><a class="code" href="flash__ext_8cpp.html#a0099339d179f72bbb0de8455336df7a8">00219</a> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="flash__ext_8cpp.html#a0099339d179f72bbb0de8455336df7a8">spiTransmitReceive</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fb" title="Список SPI каналов задействованых для Flash памяти">FlashSpiNum</a> num, uint8_t *txData, uint8_t *rxData,
+<a name="l00220"></a>00220                              uint16_t txSize, uint16_t rxSize)
+<a name="l00221"></a>00221 {
+<a name="l00222"></a>00222   <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea70864d0b86bb684b33a58b6c02a012c1">StatusError</a>;
+<a name="l00223"></a>00223   <a class="code" href="gpio_8cpp.html#ac32a975524168003f471ffb6d188cc4c" title="Установка значения на выходе в 0.">clrPinOut</a>(flashExts[num].nss_port, flashExts[num].nss_pin);
+<a name="l00224"></a>00224   <span class="keywordflow">if</span> (HAL_SPI_Transmit(&amp;flashExts[num].spi, txData, txSize, <a class="code" href="flash__ext_8cpp.html#a45ba202b05caf39795aeca91b0ae547e">TIMEOUT</a>) == HAL_OK)
+<a name="l00225"></a>00225     status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>;
+<a name="l00226"></a>00226   <span class="keywordflow">if</span> (status == <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>) {
+<a name="l00227"></a>00227     <span class="keywordflow">if</span> (HAL_SPI_TransmitReceive(&amp;flashExts[num].spi, rxData, rxData, rxSize, <a class="code" href="flash__ext_8cpp.html#a45ba202b05caf39795aeca91b0ae547e">TIMEOUT</a>) == HAL_OK)
+<a name="l00228"></a>00228       status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>;
+<a name="l00229"></a>00229   }
+<a name="l00230"></a>00230   <a class="code" href="gpio_8cpp.html#aba699330765a5e803af52bf01f87083f" title="Установка значения на выходе в 1.">setPinOut</a>(flashExts[num].nss_port, flashExts[num].nss_pin);
+<a name="l00231"></a>00231   <span class="keywordflow">return</span> status;
+<a name="l00232"></a>00232 }
+<a name="l00233"></a>00233 
+<a name="l00234"></a><a class="code" href="flash__ext_8cpp.html#ace676da25e5e40ea18f88c0502c183aa">00234</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="flash__ext_8cpp.html#ace676da25e5e40ea18f88c0502c183aa">flashReady</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fb" title="Список SPI каналов задействованых для Flash памяти">FlashSpiNum</a> num)
+<a name="l00235"></a>00235 {
+<a name="l00236"></a>00236   <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea70864d0b86bb684b33a58b6c02a012c1">StatusError</a>;
+<a name="l00237"></a>00237 
+<a name="l00238"></a>00238   <span class="keywordflow">while</span> (1) {
+<a name="l00239"></a>00239     buf[0] = <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5ab927bb41cf4f30d50dca990c299d2aa7">CMD_W_READ_SR</a>;
+<a name="l00240"></a>00240     <a class="code" href="gpio_8cpp.html#ac32a975524168003f471ffb6d188cc4c" title="Установка значения на выходе в 0.">clrPinOut</a>(flashExts[num].nss_port, flashExts[num].nss_pin);
+<a name="l00241"></a>00241     <span class="keywordflow">if</span> (HAL_SPI_Transmit(&amp;flashExts[num].spi, buf, 1, <a class="code" href="flash__ext_8cpp.html#a45ba202b05caf39795aeca91b0ae547e">TIMEOUT</a>) == HAL_OK) {
+<a name="l00242"></a>00242       <span class="keywordflow">if</span> (HAL_SPI_TransmitReceive(&amp;flashExts[num].spi, buf, buf, 1, <a class="code" href="flash__ext_8cpp.html#a45ba202b05caf39795aeca91b0ae547e">TIMEOUT</a>) == HAL_OK)
+<a name="l00243"></a>00243         status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>;
+<a name="l00244"></a>00244     }
+<a name="l00245"></a>00245     <a class="code" href="gpio_8cpp.html#aba699330765a5e803af52bf01f87083f" title="Установка значения на выходе в 1.">setPinOut</a>(flashExts[num].nss_port, flashExts[num].nss_pin);
+<a name="l00246"></a>00246 
+<a name="l00247"></a>00247     <span class="keywordflow">if</span> (status == <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea70864d0b86bb684b33a58b6c02a012c1">StatusError</a>)
+<a name="l00248"></a>00248       <span class="keywordflow">return</span>;
+<a name="l00249"></a>00249     <span class="keywordflow">if</span>(!(buf[0] &amp; 0x01)) {
+<a name="l00250"></a>00250       <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>);
+<a name="l00251"></a>00251       <span class="keywordflow">return</span>;
+<a name="l00252"></a>00252     }
+<a name="l00253"></a>00253   }
+<a name="l00254"></a>00254 }
+<a name="l00255"></a>00255 
+<a name="l00256"></a><a class="code" href="flash__ext_8cpp.html#a95a978d4759209e57eb0f2b09a56f92d">00256</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="flash__ext_8cpp.html#a95a978d4759209e57eb0f2b09a56f92d">flashWriteEnable</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fb" title="Список SPI каналов задействованых для Flash памяти">FlashSpiNum</a> num)
+<a name="l00257"></a>00257 {
+<a name="l00258"></a>00258   buf[0] = <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a0f7a09393a8fa01c8e7efc94133fc730">CMD_W_WRITE_ENABLE</a>;
+<a name="l00259"></a>00259   <a class="code" href="gpio_8cpp.html#ac32a975524168003f471ffb6d188cc4c" title="Установка значения на выходе в 0.">clrPinOut</a>(flashExts[num].nss_port, flashExts[num].nss_pin);
+<a name="l00260"></a>00260   HAL_SPI_Transmit(&amp;flashExts[num].spi, buf, 1, <a class="code" href="flash__ext_8cpp.html#a45ba202b05caf39795aeca91b0ae547e">TIMEOUT</a>);
+<a name="l00261"></a>00261   <a class="code" href="gpio_8cpp.html#aba699330765a5e803af52bf01f87083f" title="Установка значения на выходе в 1.">setPinOut</a>(flashExts[num].nss_port, flashExts[num].nss_pin);
+<a name="l00262"></a>00262 }
+<a name="l00263"></a>00263 
+<a name="l00264"></a><a class="code" href="flash__ext_8cpp.html#a9d50296c3ba01b7b0d4b51d85ecda3f4">00264</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="flash__ext_8cpp.html#a9d50296c3ba01b7b0d4b51d85ecda3f4">flashWriteDisable</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fb" title="Список SPI каналов задействованых для Flash памяти">FlashSpiNum</a> num)
+<a name="l00265"></a>00265 {
+<a name="l00266"></a>00266   buf[0] = <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a1de7dc176b4a24988a9053827c11a1c9">CMD_W_WRITE_DISABLE</a>;
+<a name="l00267"></a>00267   <a class="code" href="gpio_8cpp.html#ac32a975524168003f471ffb6d188cc4c" title="Установка значения на выходе в 0.">clrPinOut</a>(flashExts[num].nss_port, flashExts[num].nss_pin);
+<a name="l00268"></a>00268   HAL_SPI_Transmit(&amp;flashExts[num].spi, buf, 1, <a class="code" href="flash__ext_8cpp.html#a45ba202b05caf39795aeca91b0ae547e">TIMEOUT</a>);
+<a name="l00269"></a>00269   <a class="code" href="gpio_8cpp.html#aba699330765a5e803af52bf01f87083f" title="Установка значения на выходе в 1.">setPinOut</a>(flashExts[num].nss_port, flashExts[num].nss_pin);
+<a name="l00270"></a>00270 }
+<a name="l00271"></a>00271 
+<a name="l00272"></a><a class="code" href="flash__ext_8cpp.html#ae378c199942c30b27a5061c69523e88b">00272</a> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="flash__ext_8cpp.html#ae378c199942c30b27a5061c69523e88b">flashEraseSector4k</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fb" title="Список SPI каналов задействованых для Flash памяти">FlashSpiNum</a> num, uint32_t address)
+<a name="l00273"></a>00273 {
+<a name="l00274"></a>00274   <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea70864d0b86bb684b33a58b6c02a012c1">StatusError</a>;
+<a name="l00275"></a>00275   address &amp;= ~(flashExts[num].<a class="code" href="struct_flash_type_def.html#a9c27a1389c29ad58ff50ae3ff3231209" title="Размер сектора">sectorSize</a> - 1);
+<a name="l00276"></a>00276 
+<a name="l00277"></a>00277   <a class="code" href="flash__ext_8cpp.html#a95a978d4759209e57eb0f2b09a56f92d">flashWriteEnable</a>(num);
+<a name="l00278"></a>00278 
+<a name="l00279"></a>00279   buf[0] = <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5afe97753d803607c59607d4eeeca3356e">CMD_W_SECTOR_ERASE</a>;
+<a name="l00280"></a>00280   buf[1] = address&gt;&gt;16;
+<a name="l00281"></a>00281   buf[2] = address&gt;&gt;8;
+<a name="l00282"></a>00282   buf[3] = address&amp;0xFF;
+<a name="l00283"></a>00283 
+<a name="l00284"></a>00284   <a class="code" href="gpio_8cpp.html#ac32a975524168003f471ffb6d188cc4c" title="Установка значения на выходе в 0.">clrPinOut</a>(flashExts[num].nss_port, flashExts[num].nss_pin);
+<a name="l00285"></a>00285   <span class="keywordflow">if</span> (HAL_SPI_Transmit(&amp;flashExts[num].spi, buf, 4, <a class="code" href="flash__ext_8cpp.html#a45ba202b05caf39795aeca91b0ae547e">TIMEOUT</a>) == HAL_OK)
+<a name="l00286"></a>00286     status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>;
+<a name="l00287"></a>00287   <a class="code" href="gpio_8cpp.html#aba699330765a5e803af52bf01f87083f" title="Установка значения на выходе в 1.">setPinOut</a>(flashExts[num].nss_port, flashExts[num].nss_pin);
+<a name="l00288"></a>00288 
+<a name="l00289"></a>00289   <span class="comment">// Ожидание завершения операции</span>
+<a name="l00290"></a>00290   <a class="code" href="flash__ext_8cpp.html#ace676da25e5e40ea18f88c0502c183aa">flashReady</a>(num);
+<a name="l00291"></a>00291   <a class="code" href="flash__ext_8cpp.html#a9d50296c3ba01b7b0d4b51d85ecda3f4">flashWriteDisable</a>(num);
+<a name="l00292"></a>00292 
+<a name="l00293"></a>00293   <span class="keywordflow">return</span> status;
+<a name="l00294"></a>00294 }
+<a name="l00295"></a>00295 
+<a name="l00296"></a><a class="code" href="flash__ext_8cpp.html#af3eee9b1987480bd00e3eb1d2ce681ab">00296</a> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="flash__ext_8cpp.html#af3eee9b1987480bd00e3eb1d2ce681ab">flashExtRead</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fb" title="Список SPI каналов задействованых для Flash памяти">FlashSpiNum</a> num, uint32_t address, uint8_t *data, uint32_t size)
+<a name="l00297"></a>00297 {
+<a name="l00298"></a>00298   <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea70864d0b86bb684b33a58b6c02a012c1">StatusError</a>;
+<a name="l00299"></a>00299 
+<a name="l00300"></a>00300   <span class="keywordflow">if</span> (address &gt; flashExts[num].size)
+<a name="l00301"></a>00301     <span class="keywordflow">return</span> status;
+<a name="l00302"></a>00302 
+<a name="l00303"></a>00303   <span class="keywordflow">if</span> (osSemaphoreWait(flashExts[num].cmdSemaphoreId, <a class="code" href="flash__ext_8cpp.html#a45ba202b05caf39795aeca91b0ae547e">TIMEOUT</a>) == osEventTimeout)
+<a name="l00304"></a>00304     <span class="keywordflow">return</span> status;
+<a name="l00305"></a>00305 
+<a name="l00306"></a>00306   buf[0] = <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5aa56b7838ba3c2335ab75f619ceaaa596">CMD_W_FAST_READ</a>;
+<a name="l00307"></a>00307   buf[1] = address&gt;&gt;16;
+<a name="l00308"></a>00308   buf[2] = address&gt;&gt;8;
+<a name="l00309"></a>00309   buf[3] = address&amp;0xFF;
+<a name="l00310"></a>00310   buf[4] = 0xFF;
+<a name="l00311"></a>00311 
+<a name="l00312"></a>00312   <a class="code" href="gpio_8cpp.html#ac32a975524168003f471ffb6d188cc4c" title="Установка значения на выходе в 0.">clrPinOut</a>(flashExts[num].nss_port, flashExts[num].nss_pin);
+<a name="l00313"></a>00313   <span class="keywordflow">if</span> (HAL_SPI_Transmit(&amp;flashExts[num].spi, buf, 5, <a class="code" href="flash__ext_8cpp.html#a45ba202b05caf39795aeca91b0ae547e">TIMEOUT</a>) == HAL_OK)
+<a name="l00314"></a>00314     status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>;
+<a name="l00315"></a>00315   <span class="keywordflow">if</span> (status == <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>) {
+<a name="l00316"></a>00316     osSemaphoreWait(flashExts[num].operSemaphoreId, 0);
+<a name="l00317"></a>00317 
+<a name="l00318"></a>00318     <span class="keywordflow">if</span> (HAL_SPI_Receive_DMA(&amp;flashExts[num].spi, data, size) == HAL_OK)
+<a name="l00319"></a>00319       status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>;
+<a name="l00320"></a>00320 
+<a name="l00321"></a>00321     <span class="keywordflow">if</span> (osSemaphoreWait(flashExts[num].operSemaphoreId, <a class="code" href="flash__ext_8cpp.html#a45ba202b05caf39795aeca91b0ae547e">TIMEOUT</a>) == osEventTimeout) {
+<a name="l00322"></a>00322       <a class="code" href="flash__ext_8cpp.html#a8856a5c553c588c0c35b6beb09f155d7">flashTxRxCpltCallback</a>(num);
+<a name="l00323"></a>00323       status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea70864d0b86bb684b33a58b6c02a012c1">StatusError</a>;
+<a name="l00324"></a>00324     }
+<a name="l00325"></a>00325   }
+<a name="l00326"></a>00326 
+<a name="l00327"></a>00327   <span class="keywordflow">return</span> status;
+<a name="l00328"></a>00328 }
+<a name="l00329"></a>00329 
+<a name="l00330"></a><a class="code" href="flash__ext_8cpp.html#ac9229615f3d5a2857bca5c676f640f9e">00330</a> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="flash__ext_8cpp.html#ac9229615f3d5a2857bca5c676f640f9e">flashWritePage</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fb" title="Список SPI каналов задействованых для Flash памяти">FlashSpiNum</a> num, uint32_t address, uint8_t *data, uint32_t size)
+<a name="l00331"></a>00331 {
+<a name="l00332"></a>00332   <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea70864d0b86bb684b33a58b6c02a012c1">StatusError</a>;
+<a name="l00333"></a>00333 
+<a name="l00334"></a>00334   <span class="keywordflow">if</span> (address &gt; flashExts[num].size)
+<a name="l00335"></a>00335     <span class="keywordflow">return</span> status;
+<a name="l00336"></a>00336 
+<a name="l00337"></a>00337   <span class="keywordflow">if</span> (osSemaphoreWait(flashExts[num].cmdSemaphoreId, <a class="code" href="flash__ext_8cpp.html#a45ba202b05caf39795aeca91b0ae547e">TIMEOUT</a>) == osEventTimeout)
+<a name="l00338"></a>00338     <span class="keywordflow">return</span> status;
+<a name="l00339"></a>00339 
+<a name="l00340"></a>00340   <a class="code" href="flash__ext_8cpp.html#a95a978d4759209e57eb0f2b09a56f92d">flashWriteEnable</a>(num);
+<a name="l00341"></a>00341 
+<a name="l00342"></a>00342   buf[0] = <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a95ac076e882881629b682243c946c472">CMD_W_PAGE_PROGRAM</a>;
+<a name="l00343"></a>00343   buf[1] = address&gt;&gt;16;
+<a name="l00344"></a>00344   buf[2] = address&gt;&gt;8;
+<a name="l00345"></a>00345   buf[3] = address&amp;0xFF;
+<a name="l00346"></a>00346 
+<a name="l00347"></a>00347   <a class="code" href="gpio_8cpp.html#ac32a975524168003f471ffb6d188cc4c" title="Установка значения на выходе в 0.">clrPinOut</a>(flashExts[num].nss_port, flashExts[num].nss_pin);
+<a name="l00348"></a>00348   <span class="keywordflow">if</span> (HAL_SPI_Transmit(&amp;flashExts[num].spi, buf, 4, <a class="code" href="flash__ext_8cpp.html#a45ba202b05caf39795aeca91b0ae547e">TIMEOUT</a>) == HAL_OK)
+<a name="l00349"></a>00349     status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>;
+<a name="l00350"></a>00350   <span class="keywordflow">if</span> (status == <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>) {
+<a name="l00351"></a>00351     osSemaphoreWait(flashExts[num].operSemaphoreId, 0);
+<a name="l00352"></a>00352 
+<a name="l00353"></a>00353     <span class="keywordflow">if</span> (HAL_SPI_Transmit_DMA(&amp;flashExts[num].spi, data, size) == HAL_OK)
+<a name="l00354"></a>00354       status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>;
+<a name="l00355"></a>00355 
+<a name="l00356"></a>00356     <span class="keywordflow">if</span> (osSemaphoreWait(flashExts[num].operSemaphoreId, <a class="code" href="flash__ext_8cpp.html#a45ba202b05caf39795aeca91b0ae547e">TIMEOUT</a>) == osEventTimeout) {
+<a name="l00357"></a>00357       <a class="code" href="flash__ext_8cpp.html#a8856a5c553c588c0c35b6beb09f155d7">flashTxRxCpltCallback</a>(num);
+<a name="l00358"></a>00358       status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea70864d0b86bb684b33a58b6c02a012c1">StatusError</a>;
+<a name="l00359"></a>00359     }
+<a name="l00360"></a>00360   }
+<a name="l00361"></a>00361 
+<a name="l00362"></a>00362   <span class="comment">// Ожидание завершения операции</span>
+<a name="l00363"></a>00363   <a class="code" href="flash__ext_8cpp.html#ace676da25e5e40ea18f88c0502c183aa">flashReady</a>(num);
+<a name="l00364"></a>00364   <a class="code" href="flash__ext_8cpp.html#a9d50296c3ba01b7b0d4b51d85ecda3f4">flashWriteDisable</a>(num);
+<a name="l00365"></a>00365 
+<a name="l00366"></a>00366   <span class="keywordflow">return</span> status;
+<a name="l00367"></a>00367 }
+<a name="l00368"></a>00368 
+<a name="l00369"></a><a class="code" href="flash__ext_8cpp.html#a354ca2e21a3d6817ee386efe5e88ff69">00369</a> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="flash__ext_8cpp.html#a354ca2e21a3d6817ee386efe5e88ff69">flashWriteSector</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fb" title="Список SPI каналов задействованых для Flash памяти">FlashSpiNum</a> num, uint32_t address, uint8_t *data, uint32_t size)
+<a name="l00370"></a>00370 {
+<a name="l00371"></a>00371   uint32_t offSetPage = 0;
+<a name="l00372"></a>00372   uint32_t len = 0;
+<a name="l00373"></a>00373 
+<a name="l00374"></a>00374   <a class="code" href="flash__ext_8cpp.html#ae378c199942c30b27a5061c69523e88b">flashEraseSector4k</a>(num, address);
+<a name="l00375"></a>00375 
+<a name="l00376"></a>00376   <span class="keywordflow">while</span>(size) {
+<a name="l00377"></a>00377     <span class="keywordflow">if</span>(address &gt; flashExts[num].size)
+<a name="l00378"></a>00378       <span class="keywordflow">break</span>;
+<a name="l00379"></a>00379 
+<a name="l00380"></a>00380     offSetPage = address % flashExts[num].<a class="code" href="struct_flash_type_def.html#a00389803fec6a5c0a953aed8738c7bee" title="Размер страницы">pageSize</a>;
+<a name="l00381"></a>00381     len = flashExts[num].<a class="code" href="struct_flash_type_def.html#a00389803fec6a5c0a953aed8738c7bee" title="Размер страницы">pageSize</a> - offSetPage;
+<a name="l00382"></a>00382     <span class="keywordflow">if</span>(size &lt; len)
+<a name="l00383"></a>00383       len = size;
+<a name="l00384"></a>00384 
+<a name="l00385"></a>00385     <span class="keywordflow">if</span> (<a class="code" href="flash__ext_8cpp.html#ac9229615f3d5a2857bca5c676f640f9e">flashWritePage</a>(num, address, data, len) != <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>)
+<a name="l00386"></a>00386       <span class="keywordflow">return</span> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea70864d0b86bb684b33a58b6c02a012c1">StatusError</a>;
+<a name="l00387"></a>00387 
+<a name="l00388"></a>00388     address += len;
+<a name="l00389"></a>00389     data += len;
+<a name="l00390"></a>00390     size -= len;
+<a name="l00391"></a>00391   }
+<a name="l00392"></a>00392 
+<a name="l00393"></a>00393   <span class="keywordflow">return</span> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>;
+<a name="l00394"></a>00394 }
+<a name="l00395"></a>00395 
+<a name="l00396"></a><a class="code" href="flash__ext_8cpp.html#a40dcae27f453564a01040154586aaaaa">00396</a> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="flash__ext_8cpp.html#a40dcae27f453564a01040154586aaaaa">flashExtWrite</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fb" title="Список SPI каналов задействованых для Flash памяти">FlashSpiNum</a> num, uint32_t address, uint8_t *data, uint32_t size)
+<a name="l00397"></a>00397 {
+<a name="l00398"></a>00398   uint32_t offSetPage = 0;
+<a name="l00399"></a>00399   uint32_t len = 0;
+<a name="l00400"></a>00400 
+<a name="l00401"></a>00401   <span class="keywordflow">while</span>(size) {
+<a name="l00402"></a>00402     <span class="keywordflow">if</span>(address &gt; flashExts[num].size)
+<a name="l00403"></a>00403       <span class="keywordflow">break</span>;
+<a name="l00404"></a>00404 
+<a name="l00405"></a>00405     offSetPage = address % flashExts[num].<a class="code" href="struct_flash_type_def.html#a00389803fec6a5c0a953aed8738c7bee" title="Размер страницы">pageSize</a>;
+<a name="l00406"></a>00406     len = flashExts[num].<a class="code" href="struct_flash_type_def.html#a00389803fec6a5c0a953aed8738c7bee" title="Размер страницы">pageSize</a> - offSetPage;
+<a name="l00407"></a>00407     <span class="keywordflow">if</span>(size &lt; len)
+<a name="l00408"></a>00408       len = size;
+<a name="l00409"></a>00409 
+<a name="l00410"></a>00410     <span class="keywordflow">if</span> (<a class="code" href="flash__ext_8cpp.html#ac9229615f3d5a2857bca5c676f640f9e">flashWritePage</a>(num, address, data, len) != <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>)
+<a name="l00411"></a>00411       <span class="keywordflow">return</span> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea70864d0b86bb684b33a58b6c02a012c1">StatusError</a>;
+<a name="l00412"></a>00412 
+<a name="l00413"></a>00413     address += len;
+<a name="l00414"></a>00414     data += len;
+<a name="l00415"></a>00415     size -= len;
+<a name="l00416"></a>00416   }
+<a name="l00417"></a>00417 
+<a name="l00418"></a>00418   <span class="keywordflow">return</span> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>;
+<a name="l00419"></a>00419 }
+<a name="l00420"></a>00420 
+<a name="l00421"></a><a class="code" href="flash__ext_8cpp.html#a8a7887493b3533fade152300ccede4d6">00421</a> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="flash__ext_8cpp.html#a8a7887493b3533fade152300ccede4d6">flashExtWriteEx</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fb" title="Список SPI каналов задействованых для Flash памяти">FlashSpiNum</a> num, uint32_t address, uint8_t *data, uint32_t size)
+<a name="l00422"></a>00422 {
+<a name="l00423"></a>00423   uint32_t offSetPage = 0;
+<a name="l00424"></a>00424   uint32_t len = 0;
+<a name="l00425"></a>00425   uint32_t addrSector;
+<a name="l00426"></a>00426 
+<a name="l00427"></a>00427   <span class="keywordflow">while</span>(size) {
+<a name="l00428"></a>00428     <span class="keywordflow">if</span>(address &gt; flashExts[num].size)
+<a name="l00429"></a>00429       <span class="keywordflow">break</span>;
+<a name="l00430"></a>00430 
+<a name="l00431"></a>00431     addrSector = address/flashExts[num].<a class="code" href="struct_flash_type_def.html#a9c27a1389c29ad58ff50ae3ff3231209" title="Размер сектора">sectorSize</a>*flashExts[num].<a class="code" href="struct_flash_type_def.html#a9c27a1389c29ad58ff50ae3ff3231209" title="Размер сектора">sectorSize</a>;
+<a name="l00432"></a>00432     offSetPage = address % flashExts[num].<a class="code" href="struct_flash_type_def.html#a9c27a1389c29ad58ff50ae3ff3231209" title="Размер сектора">sectorSize</a>;
+<a name="l00433"></a>00433     len = flashExts[num].<a class="code" href="struct_flash_type_def.html#a9c27a1389c29ad58ff50ae3ff3231209" title="Размер сектора">sectorSize</a> - offSetPage;
+<a name="l00434"></a>00434     <span class="keywordflow">if</span>(size &lt; len)
+<a name="l00435"></a>00435       len = size;
+<a name="l00436"></a>00436     memset(bufData, 0, <span class="keyword">sizeof</span>(bufData));
+<a name="l00437"></a>00437 
+<a name="l00438"></a>00438     <span class="keywordflow">if</span> (<a class="code" href="flash__ext_8cpp.html#af3eee9b1987480bd00e3eb1d2ce681ab">flashExtRead</a>(num, addrSector, bufData, flashExts[num].sectorSize) != <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>)
+<a name="l00439"></a>00439       <span class="keywordflow">return</span> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea70864d0b86bb684b33a58b6c02a012c1">StatusError</a>;
+<a name="l00440"></a>00440     <span class="keywordflow">for</span>(uint32_t i = 0; i &lt; len; i++) {
+<a name="l00441"></a>00441       bufData[offSetPage + i] = data[i];
+<a name="l00442"></a>00442     }
+<a name="l00443"></a>00443 
+<a name="l00444"></a>00444     <span class="keywordflow">if</span> (<a class="code" href="flash__ext_8cpp.html#a354ca2e21a3d6817ee386efe5e88ff69">flashWriteSector</a>(num, addrSector, bufData, flashExts[num].sectorSize) != <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>)
+<a name="l00445"></a>00445       <span class="keywordflow">return</span> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea70864d0b86bb684b33a58b6c02a012c1">StatusError</a>;
+<a name="l00446"></a>00446 
+<a name="l00447"></a>00447     address += len;
+<a name="l00448"></a>00448     data += len;
+<a name="l00449"></a>00449     size -= len;
+<a name="l00450"></a>00450   }
+<a name="l00451"></a>00451 
+<a name="l00452"></a>00452   <span class="keywordflow">return</span> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>;
+<a name="l00453"></a>00453 }
+<a name="l00454"></a>00454 
+<a name="l00455"></a><a class="code" href="flash__ext_8cpp.html#ade2592f87a1c09873f4e5a5a7c6f9f9b">00455</a> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="flash__ext_8cpp.html#ade2592f87a1c09873f4e5a5a7c6f9f9b">flashExtChipErase</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fb" title="Список SPI каналов задействованых для Flash памяти">FlashSpiNum</a> num)
+<a name="l00456"></a>00456 {
+<a name="l00457"></a>00457   <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea70864d0b86bb684b33a58b6c02a012c1">StatusError</a>;
+<a name="l00458"></a>00458 
+<a name="l00459"></a>00459   <a class="code" href="flash__ext_8cpp.html#a95a978d4759209e57eb0f2b09a56f92d">flashWriteEnable</a>(num);
+<a name="l00460"></a>00460 
+<a name="l00461"></a>00461   <a class="code" href="gpio_8cpp.html#ac32a975524168003f471ffb6d188cc4c" title="Установка значения на выходе в 0.">clrPinOut</a>(flashExts[num].nss_port, flashExts[num].nss_pin);
+<a name="l00462"></a>00462   buf[0] = <a class="code" href="flash__ext_8cpp.html#a99fb83031ce9923c84392b4e92f956b5a5cd32800e69b8529b00d2f4d9170b953">CMD_W_CHIP_ERASE</a>;
+<a name="l00463"></a>00463   <span class="keywordflow">if</span> (HAL_SPI_Transmit(&amp;flashExts[num].spi, buf, 1, <a class="code" href="flash__ext_8cpp.html#a45ba202b05caf39795aeca91b0ae547e">TIMEOUT</a>) == HAL_OK)
+<a name="l00464"></a>00464     status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>;
+<a name="l00465"></a>00465   <a class="code" href="gpio_8cpp.html#aba699330765a5e803af52bf01f87083f" title="Установка значения на выходе в 1.">setPinOut</a>(flashExts[num].nss_port, flashExts[num].nss_pin);
+<a name="l00466"></a>00466 
+<a name="l00467"></a>00467   <span class="comment">// Ожидание завершения операции</span>
+<a name="l00468"></a>00468   <a class="code" href="flash__ext_8cpp.html#ace676da25e5e40ea18f88c0502c183aa">flashReady</a>(num);
+<a name="l00469"></a>00469   <a class="code" href="flash__ext_8cpp.html#a9d50296c3ba01b7b0d4b51d85ecda3f4">flashWriteDisable</a>(num);
+<a name="l00470"></a>00470 
+<a name="l00471"></a>00471   <span class="keywordflow">return</span> status;
+<a name="l00472"></a>00472 }
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Пн 2 Мар 2015 15:35:46. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

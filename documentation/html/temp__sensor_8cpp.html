@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Файл C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/temp_sensor/temp_sensor.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  <td id="projectlogo"><img alt="Logo" src="logo.ico"/></td>
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Макросы</a> &#124;
+<a href="#enum-members">Перечисления</a> &#124;
+<a href="#func-members">Функции</a> &#124;
+<a href="#var-members">Переменные</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/temp_sensor/temp_sensor.cpp</div>  </div>
+</div>
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="temp__sensor_8h_source.html">temp_sensor.h</a>&quot;</code><br/>
+</div>
+<p><a href="temp__sensor_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Макросы</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="temp__sensor_8cpp.html#a770f0c15acd838afca500d56b792c6b5">I2C_ADDRESS</a>&#160;&#160;&#160;0x90</td></tr>
+<tr><td colspan="2"><h2><a name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="temp__sensor_8cpp.html#adc29c2ff13d900c2f185ee95427fb06ca9f214d990208c7f6c0457c5effa185e5">CMD_TEMP</a> =  0x00, 
+<a class="el" href="temp__sensor_8cpp.html#adc29c2ff13d900c2f185ee95427fb06ca121e7767928eb07feb6b785b37740264">CMD_CONF</a> =  0x01, 
+<a class="el" href="temp__sensor_8cpp.html#adc29c2ff13d900c2f185ee95427fb06ca8cdc41583a3472fdc9acaf7ad2c81375">CMD_T_HYS</a> =  0x02, 
+<a class="el" href="temp__sensor_8cpp.html#adc29c2ff13d900c2f185ee95427fb06ca9c8165c12b93c5ec2bb082ae26ec0ce6">CMD_T_OS</a> =  0x03
+ }</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="temp__sensor_8cpp.html#ae54b824c05b0d2a8b93c95c6a4d1ae34">tempSensorInit</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализация внешнего датчика температуры  <a href="#ae54b824c05b0d2a8b93c95c6a4d1ae34"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="temp__sensor_8cpp.html#abe01a202c27b23fc150aa66af3130073">HAL_I2C_MspInit</a> (I2C_HandleTypeDef *hi2c)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="temp__sensor_8cpp.html#a2ec8d9b09854c732e2feed549278f048">HAL_I2C_MspDeInit</a> (I2C_HandleTypeDef *hi2c)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="temp__sensor_8cpp.html#aecd98822d4e2c406a84cf9e931e06db5">tempSensorReadData</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция получения значения температуры с внешнего датчика  <a href="#aecd98822d4e2c406a84cf9e931e06db5"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Переменные</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">I2C_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="temp__sensor_8cpp.html#a5ccf4a01a8d7f08d3190181f843f7515">hi2c3</a></td></tr>
+</table>
+<hr/><h2>Макросы</h2>
+<a class="anchor" id="a770f0c15acd838afca500d56b792c6b5"></a><!-- doxytag: member="temp_sensor.cpp::I2C_ADDRESS" ref="a770f0c15acd838afca500d56b792c6b5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define I2C_ADDRESS&#160;&#160;&#160;0x90</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="temp__sensor_8cpp_source.html">temp_sensor.cpp</a> строка <a class="el" href="temp__sensor_8cpp_source.html#l00010">10</a></p>
+
+</div>
+</div>
+<hr/><h2>Перечисления</h2>
+<a class="anchor" id="adc29c2ff13d900c2f185ee95427fb06c"></a><!-- doxytag: member="temp_sensor.cpp::@4" ref="adc29c2ff13d900c2f185ee95427fb06c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>Элементы перечислений: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="adc29c2ff13d900c2f185ee95427fb06ca9f214d990208c7f6c0457c5effa185e5"></a><!-- doxytag: member="CMD_TEMP" ref="adc29c2ff13d900c2f185ee95427fb06ca9f214d990208c7f6c0457c5effa185e5" args="" -->CMD_TEMP</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adc29c2ff13d900c2f185ee95427fb06ca121e7767928eb07feb6b785b37740264"></a><!-- doxytag: member="CMD_CONF" ref="adc29c2ff13d900c2f185ee95427fb06ca121e7767928eb07feb6b785b37740264" args="" -->CMD_CONF</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adc29c2ff13d900c2f185ee95427fb06ca8cdc41583a3472fdc9acaf7ad2c81375"></a><!-- doxytag: member="CMD_T_HYS" ref="adc29c2ff13d900c2f185ee95427fb06ca8cdc41583a3472fdc9acaf7ad2c81375" args="" -->CMD_T_HYS</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adc29c2ff13d900c2f185ee95427fb06ca9c8165c12b93c5ec2bb082ae26ec0ce6"></a><!-- doxytag: member="CMD_T_OS" ref="adc29c2ff13d900c2f185ee95427fb06ca9c8165c12b93c5ec2bb082ae26ec0ce6" args="" -->CMD_T_OS</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="temp__sensor_8cpp_source.html">temp_sensor.cpp</a> строка <a class="el" href="temp__sensor_8cpp_source.html#l00003">3</a></p>
+
+</div>
+</div>
+<hr/><h2>Функции</h2>
+<a class="anchor" id="a2ec8d9b09854c732e2feed549278f048"></a><!-- doxytag: member="temp_sensor.cpp::HAL_I2C_MspDeInit" ref="a2ec8d9b09854c732e2feed549278f048" args="(I2C_HandleTypeDef *hi2c)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_I2C_MspDeInit </td>
+          <td>(</td>
+          <td class="paramtype">I2C_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>hi2c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="temp__sensor_8cpp_source.html">temp_sensor.cpp</a> строка <a class="el" href="temp__sensor_8cpp_source.html#l00057">57</a></p>
+
+</div>
+</div>
+<a class="anchor" id="abe01a202c27b23fc150aa66af3130073"></a><!-- doxytag: member="temp_sensor.cpp::HAL_I2C_MspInit" ref="abe01a202c27b23fc150aa66af3130073" args="(I2C_HandleTypeDef *hi2c)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_I2C_MspInit </td>
+          <td>(</td>
+          <td class="paramtype">I2C_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>hi2c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>I2C3 GPIO Configuration PH7 ------&gt; I2C3_SCL PH8 ------&gt; I2C3_SDA</p>
+
+<p>См. определение в файле <a class="el" href="temp__sensor_8cpp_source.html">temp_sensor.cpp</a> строка <a class="el" href="temp__sensor_8cpp_source.html#l00037">37</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae54b824c05b0d2a8b93c95c6a4d1ae34"></a><!-- doxytag: member="temp_sensor.cpp::tempSensorInit" ref="ae54b824c05b0d2a8b93c95c6a4d1ae34" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> tempSensorInit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Инициализация внешнего датчика температуры </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>StatusType - ошибка или ок </dd></dl>
+
+<p>См. определение в файле <a class="el" href="temp__sensor_8cpp_source.html">temp_sensor.cpp</a> строка <a class="el" href="temp__sensor_8cpp_source.html#l00015">15</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aecd98822d4e2c406a84cf9e931e06db5"></a><!-- doxytag: member="temp_sensor.cpp::tempSensorReadData" ref="aecd98822d4e2c406a84cf9e931e06db5" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float tempSensorReadData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Функция получения значения температуры с внешнего датчика </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>float - значение температуры (точность 0,5 С) </dd></dl>
+
+<p>См. определение в файле <a class="el" href="temp__sensor_8cpp_source.html">temp_sensor.cpp</a> строка <a class="el" href="temp__sensor_8cpp_source.html#l00067">67</a></p>
+
+</div>
+</div>
+<hr/><h2>Переменные</h2>
+<a class="anchor" id="a5ccf4a01a8d7f08d3190181f843f7515"></a><!-- doxytag: member="temp_sensor.cpp::hi2c3" ref="a5ccf4a01a8d7f08d3190181f843f7515" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">I2C_HandleTypeDef <a class="el" href="temp__sensor_8cpp.html#a5ccf4a01a8d7f08d3190181f843f7515">hi2c3</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="temp__sensor_8cpp_source.html">temp_sensor.cpp</a> строка <a class="el" href="temp__sensor_8cpp_source.html#l00012">12</a></p>
+
+</div>
+</div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Пн 2 Мар 2015 15:35:48. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

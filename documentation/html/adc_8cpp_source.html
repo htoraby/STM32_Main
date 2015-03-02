@@ -1,0 +1,402 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/adc/adc.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  <td id="projectlogo"><img alt="Logo" src="logo.ico"/></td>
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/adc/adc.cpp</div>  </div>
+</div>
+<div class="contents">
+<a href="adc_8cpp.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="adc_8h.html">adc.h</a>&quot;</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#include &lt;string.h&gt;</span>
+<a name="l00003"></a>00003 
+<a name="l00005"></a><a class="code" href="adc_8cpp.html#a2c9e85d22a9ba37ea589b1747af46307">00005</a> <span class="preprocessor">#define VREF     (2.5f)</span>
+<a name="l00006"></a><a class="code" href="adc_8cpp.html#a7aa08cf910108f15d69071f29da294d9">00006</a> <span class="preprocessor"></span><span class="preprocessor">#define VBAT_DIV (4)</span>
+<a name="l00007"></a><a class="code" href="adc_8cpp.html#ae103e7d3414177fbe7f001c8ab0c7965">00007</a> <span class="preprocessor"></span><span class="preprocessor">#define CORE_TEMP_V25       (0.76f)</span>
+<a name="l00008"></a><a class="code" href="adc_8cpp.html#adc445ef75cfb8ac354467c330eb6d591">00008</a> <span class="preprocessor"></span><span class="preprocessor">#define CORE_TEMP_AVG_SLOPE (0.0025)</span>
+<a name="l00009"></a>00009 <span class="preprocessor"></span>
+<a name="l00010"></a><a class="code" href="adc_8h.html#a3fd8d9dda7425ad8de80c272a9c00b00">00010</a> ADC_HandleTypeDef <a class="code" href="adc_8cpp.html#ac2dee730dd92aeec790ee8ea1c31f7ac">hadc</a>[<a class="code" href="adc_8h.html#ab3cdab912cd27274cbb3c7798a6ce537afb362b3e6a85719eee2760b0def3fc4b">adcMax</a>];
+<a name="l00011"></a><a class="code" href="adc_8cpp.html#ad99dd74cc50b61cf07680c1adaf80337">00011</a> DMA_HandleTypeDef <a class="code" href="adc_8cpp.html#ad99dd74cc50b61cf07680c1adaf80337">hdma_adc2</a>;
+<a name="l00012"></a><a class="code" href="adc_8cpp.html#aac3d2c59ee0e3bbae1b99529a154eb62">00012</a> TIM_HandleTypeDef <a class="code" href="adc_8cpp.html#aac3d2c59ee0e3bbae1b99529a154eb62">htim3</a>;
+<a name="l00013"></a>00013 
+<a name="l00014"></a>00014 <span class="preprocessor">#if USE_EXT_MEM</span>
+<a name="l00015"></a>00015 <span class="preprocessor"></span>uint16_t <a class="code" href="adc_8cpp.html#a0fbfb15f414cef444bc36de60494b92f">adcData</a>[<a class="code" href="adc_8h.html#a6e1c0d406ce9598de3cbf558a89a3072" title="Количество каналов: Ua, Ub, Uc.">ADC_CNANNELS_NUM</a>*<a class="code" href="adc_8h.html#a39526e7bbb4208a57027ea22fdf989e4" title="Количество точек с каждого канала за время ARCHIVE_TIME.">ADC_POINTS_NUM</a>] <a class="code" href="__reset__hardware_8c.html#a93b9cf91f7623d6d8b100a3693d6d5e4">__attribute__</a>((section(<span class="stringliteral">&quot;.extmem&quot;</span>)));
+<a name="l00016"></a>00016 uint16_t <a class="code" href="adc_8cpp.html#a85d774e849b99c1a38305d3e3a790041">adcDataTmp</a>[<a class="code" href="adc_8h.html#a6e1c0d406ce9598de3cbf558a89a3072" title="Количество каналов: Ua, Ub, Uc.">ADC_CNANNELS_NUM</a>*<a class="code" href="adc_8h.html#a39526e7bbb4208a57027ea22fdf989e4" title="Количество точек с каждого канала за время ARCHIVE_TIME.">ADC_POINTS_NUM</a>] <a class="code" href="__reset__hardware_8c.html#a93b9cf91f7623d6d8b100a3693d6d5e4">__attribute__</a>((section(<span class="stringliteral">&quot;.extmem&quot;</span>)));
+<a name="l00017"></a>00017 <span class="preprocessor">#else</span>
+<a name="l00018"></a><a class="code" href="adc_8h.html#a0fbfb15f414cef444bc36de60494b92f">00018</a> <span class="preprocessor"></span>uint16_t <a class="code" href="adc_8cpp.html#a0fbfb15f414cef444bc36de60494b92f">adcData</a>[<a class="code" href="adc_8h.html#a6e1c0d406ce9598de3cbf558a89a3072" title="Количество каналов: Ua, Ub, Uc.">ADC_CNANNELS_NUM</a>*<a class="code" href="adc_8h.html#a39526e7bbb4208a57027ea22fdf989e4" title="Количество точек с каждого канала за время ARCHIVE_TIME.">ADC_POINTS_NUM</a>];
+<a name="l00019"></a><a class="code" href="adc_8cpp.html#a85d774e849b99c1a38305d3e3a790041">00019</a> uint16_t <a class="code" href="adc_8cpp.html#a85d774e849b99c1a38305d3e3a790041">adcDataTmp</a>[<a class="code" href="adc_8h.html#a6e1c0d406ce9598de3cbf558a89a3072" title="Количество каналов: Ua, Ub, Uc.">ADC_CNANNELS_NUM</a>*<a class="code" href="adc_8h.html#a39526e7bbb4208a57027ea22fdf989e4" title="Количество точек с каждого канала за время ARCHIVE_TIME.">ADC_POINTS_NUM</a>];
+<a name="l00020"></a>00020 <span class="preprocessor">#endif</span>
+<a name="l00021"></a>00021 <span class="preprocessor"></span>
+<a name="l00030"></a>00030 <span class="keyword">static</span> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="adc_8cpp.html#a531b29adecd938da18fc2257f8e5f386" title="Метод получения значения ADC.">getValueADC</a>(<a class="code" href="adc_8h.html#ab3cdab912cd27274cbb3c7798a6ce537" title="Список ADC каналов">adcNum</a> num, uint32_t <a class="code" href="adc__ext_8cpp.html#adf7dff2c57c0da9a4a2b70e3e815be31">channel</a>, uint32_t *value,
+<a name="l00031"></a>00031                               uint32_t samplTime = ADC_SAMPLETIME_15CYCLES);
+<a name="l00032"></a>00032 
+<a name="l00033"></a><a class="code" href="adc_8cpp.html#a56d3b7d6e6f3643d486dd79a8ac189c0">00033</a> <span class="keywordtype">void</span> <a class="code" href="adc_8cpp.html#a56d3b7d6e6f3643d486dd79a8ac189c0">adcInit</a>(<a class="code" href="adc_8h.html#ab3cdab912cd27274cbb3c7798a6ce537" title="Список ADC каналов">adcNum</a> num)
+<a name="l00034"></a>00034 {
+<a name="l00035"></a>00035   ADC_MultiModeTypeDef multiMode;
+<a name="l00036"></a>00036   ADC_ChannelConfTypeDef sConfig;
+<a name="l00037"></a>00037 
+<a name="l00041"></a>00041   ADC_HandleTypeDef *adcX = &amp;<a class="code" href="adc_8cpp.html#ac2dee730dd92aeec790ee8ea1c31f7ac">hadc</a>[num];
+<a name="l00042"></a>00042   <span class="keywordflow">switch</span> (num) {
+<a name="l00043"></a>00043     <span class="keywordflow">case</span> <a class="code" href="adc_8h.html#ab3cdab912cd27274cbb3c7798a6ce537a481a181b0f9913108d647e217b62e253">adc1</a>:
+<a name="l00044"></a>00044       adcX-&gt;Instance = ADC1;
+<a name="l00045"></a>00045       <span class="comment">// 82/2 = 42 МГц</span>
+<a name="l00046"></a>00046       adcX-&gt;Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
+<a name="l00047"></a>00047       <span class="comment">// 2^12-1 = 0xFFF</span>
+<a name="l00048"></a>00048       adcX-&gt;Init.Resolution = ADC_RESOLUTION12b;
+<a name="l00049"></a>00049       adcX-&gt;Init.ScanConvMode = DISABLE;
+<a name="l00050"></a>00050       adcX-&gt;Init.ContinuousConvMode = DISABLE;
+<a name="l00051"></a>00051       adcX-&gt;Init.DiscontinuousConvMode = DISABLE;
+<a name="l00052"></a>00052       adcX-&gt;Init.NbrOfDiscConversion = 0;
+<a name="l00053"></a>00053       adcX-&gt;Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+<a name="l00054"></a>00054       adcX-&gt;Init.DataAlign = ADC_DATAALIGN_RIGHT;
+<a name="l00055"></a>00055       adcX-&gt;Init.NbrOfConversion = 1;
+<a name="l00056"></a>00056       adcX-&gt;Init.DMAContinuousRequests = DISABLE;
+<a name="l00057"></a>00057       adcX-&gt;Init.EOCSelection = EOC_SEQ_CONV;
+<a name="l00058"></a>00058       <span class="keywordflow">break</span>;
+<a name="l00059"></a>00059     <span class="keywordflow">case</span> <a class="code" href="adc_8h.html#ab3cdab912cd27274cbb3c7798a6ce537aa12b02630986fe27ba4a5e81385d2470">adc2</a>:
+<a name="l00060"></a>00060       adcX-&gt;Instance = ADC2;
+<a name="l00061"></a>00061       <span class="comment">// 82/2 = 42 МГц</span>
+<a name="l00062"></a>00062       adcX-&gt;Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
+<a name="l00063"></a>00063       <span class="comment">// 2^12-1 = 0xFFF</span>
+<a name="l00064"></a>00064       adcX-&gt;Init.Resolution = ADC_RESOLUTION12b;
+<a name="l00065"></a>00065       adcX-&gt;Init.ScanConvMode = ENABLE;
+<a name="l00066"></a>00066       adcX-&gt;Init.ContinuousConvMode = DISABLE;
+<a name="l00067"></a>00067       adcX-&gt;Init.DiscontinuousConvMode = DISABLE;
+<a name="l00068"></a>00068       adcX-&gt;Init.NbrOfDiscConversion = 0;
+<a name="l00069"></a>00069       adcX-&gt;Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
+<a name="l00070"></a>00070       adcX-&gt;Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T3_TRGO;
+<a name="l00071"></a>00071       adcX-&gt;Init.DataAlign = ADC_DATAALIGN_RIGHT;
+<a name="l00072"></a>00072       adcX-&gt;Init.NbrOfConversion = <a class="code" href="adc_8h.html#a6e1c0d406ce9598de3cbf558a89a3072" title="Количество каналов: Ua, Ub, Uc.">ADC_CNANNELS_NUM</a>;
+<a name="l00073"></a>00073       adcX-&gt;Init.DMAContinuousRequests = ENABLE;
+<a name="l00074"></a>00074       adcX-&gt;Init.EOCSelection = EOC_SEQ_CONV;
+<a name="l00075"></a>00075       <span class="keywordflow">break</span>;
+<a name="l00076"></a>00076     <span class="keywordflow">case</span> <a class="code" href="adc_8h.html#ab3cdab912cd27274cbb3c7798a6ce537a7be000f38a94e8d7d602fe0bfa67715d">adc3</a>:
+<a name="l00077"></a>00077       adcX-&gt;Instance = ADC3;
+<a name="l00078"></a>00078       <span class="keywordflow">break</span>;
+<a name="l00079"></a>00079     <span class="keywordflow">default</span>:
+<a name="l00080"></a>00080       <span class="keywordflow">break</span>;
+<a name="l00081"></a>00081   }
+<a name="l00082"></a>00082   HAL_ADC_Init(adcX);
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084   <span class="keywordflow">if</span> (num == <a class="code" href="adc_8h.html#ab3cdab912cd27274cbb3c7798a6ce537aa12b02630986fe27ba4a5e81385d2470">adc2</a>) {
+<a name="l00085"></a>00085     <span class="comment">// Настройка каналов</span>
+<a name="l00086"></a>00086     <span class="comment">// Ua</span>
+<a name="l00087"></a>00087     sConfig.Channel = ADC_CHANNEL_13;
+<a name="l00088"></a>00088     sConfig.Rank = 1;
+<a name="l00089"></a>00089     <span class="comment">// ADC_SAMPLETIME_112CYCLES - (112+12)/42 = 3 мксек</span>
+<a name="l00090"></a>00090     sConfig.SamplingTime = ADC_SAMPLETIME_112CYCLES;
+<a name="l00091"></a>00091     HAL_ADC_ConfigChannel(adcX, &amp;sConfig);
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093     <span class="comment">// Ub</span>
+<a name="l00094"></a>00094     sConfig.Channel = ADC_CHANNEL_12;
+<a name="l00095"></a>00095     sConfig.Rank = 2;
+<a name="l00096"></a>00096     HAL_ADC_ConfigChannel(adcX, &amp;sConfig);
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098     <span class="comment">// Uc</span>
+<a name="l00099"></a>00099     sConfig.Channel = ADC_CHANNEL_11;
+<a name="l00100"></a>00100     sConfig.Rank = 3;
+<a name="l00101"></a>00101     HAL_ADC_ConfigChannel(adcX, &amp;sConfig);
+<a name="l00102"></a>00102 
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104     <span class="comment">// Настройка таймера</span>
+<a name="l00105"></a>00105     <a class="code" href="adc_8cpp.html#aac3d2c59ee0e3bbae1b99529a154eb62">htim3</a>.Instance = TIM3;
+<a name="l00106"></a>00106     <a class="code" href="adc_8cpp.html#aac3d2c59ee0e3bbae1b99529a154eb62">htim3</a>.Init.Prescaler = ((<a class="code" href="group___s_t_m32_f4xx___system___private___variables.html#gaa3cd3e43291e81e795d642b79b6088e6">SystemCoreClock</a> /2) / 100000) - 1;
+<a name="l00107"></a>00107     <a class="code" href="adc_8cpp.html#aac3d2c59ee0e3bbae1b99529a154eb62">htim3</a>.Init.CounterMode = TIM_COUNTERMODE_UP;
+<a name="l00108"></a>00108     <a class="code" href="adc_8cpp.html#aac3d2c59ee0e3bbae1b99529a154eb62">htim3</a>.Init.Period = <a class="code" href="adc_8h.html#a17d6143fe545fced0dc58d8d85a6da8b" title="Период измерения - получение по одной точки для каждого канала: 100 - 1мс">ADC_TIM_PERIOD</a> - 1;
+<a name="l00109"></a>00109     <a class="code" href="adc_8cpp.html#aac3d2c59ee0e3bbae1b99529a154eb62">htim3</a>.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+<a name="l00110"></a>00110     <a class="code" href="adc_8cpp.html#aac3d2c59ee0e3bbae1b99529a154eb62">htim3</a>.Init.RepetitionCounter = 0;
+<a name="l00111"></a>00111     HAL_TIM_Base_Init(&amp;<a class="code" href="adc_8cpp.html#aac3d2c59ee0e3bbae1b99529a154eb62">htim3</a>);
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113     TIM_MasterConfigTypeDef sMasterConfig;
+<a name="l00114"></a>00114     sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
+<a name="l00115"></a>00115     sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+<a name="l00116"></a>00116     HAL_TIMEx_MasterConfigSynchronization(&amp;<a class="code" href="adc_8cpp.html#aac3d2c59ee0e3bbae1b99529a154eb62">htim3</a>, &amp;sMasterConfig);
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118     <a class="code" href="adc_8cpp.html#a6c564e8a11c3f0e42e58797bd7b64f93">adcStartDma</a>();
+<a name="l00119"></a>00119   }
+<a name="l00120"></a>00120 
+<a name="l00123"></a>00123   multiMode.Mode = ADC_MODE_INDEPENDENT;
+<a name="l00124"></a>00124   multiMode.TwoSamplingDelay = ADC_TWOSAMPLINGDELAY_5CYCLES;
+<a name="l00125"></a>00125   multiMode.DMAAccessMode = DISABLE;
+<a name="l00126"></a>00126   HAL_ADCEx_MultiModeConfigChannel(adcX, &amp;multiMode);
+<a name="l00127"></a>00127 }
+<a name="l00128"></a><a class="code" href="adc_8cpp.html#ae73654f333e4363463ad8c594eca1905">00128</a> <span class="keyword">static</span> uint32_t <a class="code" href="adc_8cpp.html#ae73654f333e4363463ad8c594eca1905">time</a> = 0;
+<a name="l00129"></a><a class="code" href="adc_8cpp.html#a6c564e8a11c3f0e42e58797bd7b64f93">00129</a> <span class="keywordtype">void</span> <a class="code" href="adc_8cpp.html#a6c564e8a11c3f0e42e58797bd7b64f93">adcStartDma</a>()
+<a name="l00130"></a>00130 {
+<a name="l00131"></a>00131   memset(&amp;adcData, 0, <span class="keyword">sizeof</span>(adcData));
+<a name="l00132"></a>00132   memset(&amp;adcDataTmp, 0, <span class="keyword">sizeof</span>(adcDataTmp));
+<a name="l00133"></a>00133   HAL_ADC_Start_DMA(&amp;<a class="code" href="adc_8cpp.html#ac2dee730dd92aeec790ee8ea1c31f7ac">hadc</a>[<a class="code" href="adc_8h.html#ab3cdab912cd27274cbb3c7798a6ce537aa12b02630986fe27ba4a5e81385d2470">adc2</a>], (uint32_t*)&amp;adcDataTmp, <a class="code" href="adc_8h.html#a6e1c0d406ce9598de3cbf558a89a3072" title="Количество каналов: Ua, Ub, Uc.">ADC_CNANNELS_NUM</a>*<a class="code" href="adc_8h.html#a39526e7bbb4208a57027ea22fdf989e4" title="Количество точек с каждого канала за время ARCHIVE_TIME.">ADC_POINTS_NUM</a>);
+<a name="l00134"></a>00134   HAL_TIM_Base_Start(&amp;<a class="code" href="adc_8cpp.html#aac3d2c59ee0e3bbae1b99529a154eb62">htim3</a>);
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136   time = HAL_GetTick();
+<a name="l00137"></a>00137 }
+<a name="l00138"></a>00138 
+<a name="l00139"></a><a class="code" href="adc_8cpp.html#aa30863492d5c3103e3e8ce8a63dadd07">00139</a> <span class="keywordtype">void</span> <a class="code" href="adc_8cpp.html#aa30863492d5c3103e3e8ce8a63dadd07">HAL_ADC_MspInit</a>(ADC_HandleTypeDef* <a class="code" href="adc_8cpp.html#ac2dee730dd92aeec790ee8ea1c31f7ac">hadc</a>)
+<a name="l00140"></a>00140 {
+<a name="l00141"></a>00141   GPIO_InitTypeDef GPIO_InitStruct;
+<a name="l00142"></a>00142 
+<a name="l00143"></a>00143   <span class="keywordflow">if</span>(hadc-&gt;Instance == ADC1) {
+<a name="l00144"></a>00144     <span class="comment">/* Peripheral clock enable */</span>
+<a name="l00145"></a>00145     __ADC1_CLK_ENABLE();
+<a name="l00146"></a>00146   } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(hadc-&gt;Instance == ADC2) {
+<a name="l00147"></a>00147     <span class="comment">/* Peripheral clock enable */</span>
+<a name="l00148"></a>00148     __ADC2_CLK_ENABLE();
+<a name="l00149"></a>00149     __TIM3_CLK_ENABLE();
+<a name="l00150"></a>00150 
+<a name="l00156"></a>00156     GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3;
+<a name="l00157"></a>00157     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+<a name="l00158"></a>00158     GPIO_InitStruct.Pull = GPIO_NOPULL;
+<a name="l00159"></a>00159     HAL_GPIO_Init(GPIOC, &amp;GPIO_InitStruct);
+<a name="l00160"></a>00160 
+<a name="l00161"></a>00161     <span class="comment">/* Peripheral DMA init*/</span>
+<a name="l00162"></a>00162     <a class="code" href="adc_8cpp.html#ad99dd74cc50b61cf07680c1adaf80337">hdma_adc2</a>.Instance = DMA2_Stream2;
+<a name="l00163"></a>00163     <a class="code" href="adc_8cpp.html#ad99dd74cc50b61cf07680c1adaf80337">hdma_adc2</a>.Init.Channel = DMA_CHANNEL_1;
+<a name="l00164"></a>00164     <a class="code" href="adc_8cpp.html#ad99dd74cc50b61cf07680c1adaf80337">hdma_adc2</a>.Init.Direction = DMA_PERIPH_TO_MEMORY;
+<a name="l00165"></a>00165     <a class="code" href="adc_8cpp.html#ad99dd74cc50b61cf07680c1adaf80337">hdma_adc2</a>.Init.PeriphInc = DMA_PINC_DISABLE;
+<a name="l00166"></a>00166     <a class="code" href="adc_8cpp.html#ad99dd74cc50b61cf07680c1adaf80337">hdma_adc2</a>.Init.MemInc = DMA_MINC_ENABLE;
+<a name="l00167"></a>00167     <a class="code" href="adc_8cpp.html#ad99dd74cc50b61cf07680c1adaf80337">hdma_adc2</a>.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
+<a name="l00168"></a>00168     <a class="code" href="adc_8cpp.html#ad99dd74cc50b61cf07680c1adaf80337">hdma_adc2</a>.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
+<a name="l00169"></a>00169     <a class="code" href="adc_8cpp.html#ad99dd74cc50b61cf07680c1adaf80337">hdma_adc2</a>.Init.Mode = DMA_CIRCULAR;
+<a name="l00170"></a>00170     <a class="code" href="adc_8cpp.html#ad99dd74cc50b61cf07680c1adaf80337">hdma_adc2</a>.Init.Priority = DMA_PRIORITY_HIGH;
+<a name="l00171"></a>00171     <a class="code" href="adc_8cpp.html#ad99dd74cc50b61cf07680c1adaf80337">hdma_adc2</a>.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+<a name="l00172"></a>00172     HAL_DMA_Init(&amp;<a class="code" href="adc_8cpp.html#ad99dd74cc50b61cf07680c1adaf80337">hdma_adc2</a>);
+<a name="l00173"></a>00173 
+<a name="l00174"></a>00174     __HAL_LINKDMA(hadc, DMA_Handle, <a class="code" href="adc_8cpp.html#ad99dd74cc50b61cf07680c1adaf80337">hdma_adc2</a>);
+<a name="l00175"></a>00175 
+<a name="l00176"></a>00176     HAL_NVIC_SetPriority(DMA2_Stream2_IRQn, <a class="code" href="board_8h.html#ae459d288f26195975a294b03978f59d6">ADC_IRQ_PREPRIO</a>, 0);
+<a name="l00177"></a>00177     HAL_NVIC_EnableIRQ(DMA2_Stream2_IRQn);
+<a name="l00178"></a>00178 
+<a name="l00179"></a>00179     HAL_NVIC_SetPriority(TIM3_IRQn, <a class="code" href="board_8h.html#ae459d288f26195975a294b03978f59d6">ADC_IRQ_PREPRIO</a>, 1);
+<a name="l00180"></a>00180     HAL_NVIC_EnableIRQ(TIM3_IRQn);
+<a name="l00181"></a>00181   }
+<a name="l00182"></a>00182 }
+<a name="l00183"></a>00183 
+<a name="l00184"></a><a class="code" href="adc_8cpp.html#a39b0f8e80268ab3e660ead921ad4b22f">00184</a> <span class="keywordtype">void</span> <a class="code" href="adc_8cpp.html#a39b0f8e80268ab3e660ead921ad4b22f">HAL_ADC_MspDeInit</a>(ADC_HandleTypeDef* <a class="code" href="adc_8cpp.html#ac2dee730dd92aeec790ee8ea1c31f7ac">hadc</a>)
+<a name="l00185"></a>00185 {
+<a name="l00186"></a>00186   <span class="keywordflow">if</span>(hadc-&gt;Instance == ADC1) {
+<a name="l00187"></a>00187     __ADC1_CLK_DISABLE();
+<a name="l00188"></a>00188   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (hadc-&gt;Instance == ADC2) {
+<a name="l00189"></a>00189     __ADC2_CLK_DISABLE();
+<a name="l00190"></a>00190     __TIM3_CLK_DISABLE();
+<a name="l00191"></a>00191     HAL_DMA_DeInit(&amp;<a class="code" href="adc_8cpp.html#ad99dd74cc50b61cf07680c1adaf80337">hdma_adc2</a>);
+<a name="l00192"></a>00192     HAL_NVIC_DisableIRQ(DMA2_Stream2_IRQn);
+<a name="l00193"></a>00193   }
+<a name="l00194"></a>00194 }
+<a name="l00195"></a>00195 
+<a name="l00196"></a><a class="code" href="adc_8cpp.html#a889c453a1d6bf8a7199f0028b7119bde">00196</a> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="adc_8cpp.html#a889c453a1d6bf8a7199f0028b7119bde">getAnalogIn</a>(uint32_t <a class="code" href="adc__ext_8cpp.html#adf7dff2c57c0da9a4a2b70e3e815be31">channel</a>, uint32_t numSamples, uint32_t *value)
+<a name="l00197"></a>00197 {
+<a name="l00198"></a>00198   <span class="keyword">static</span> uint32_t data = 0;
+<a name="l00199"></a>00199   <span class="keywordtype">int</span> count = 0;
+<a name="l00200"></a>00200   <span class="keywordtype">int</span> result = 0;
+<a name="l00201"></a>00201   <span class="keywordtype">int</span> result_last = 0;
+<a name="l00202"></a>00202 
+<a name="l00203"></a>00203   <span class="keywordflow">for</span>(uint32_t i = 0; i &lt; numSamples; i++) {
+<a name="l00204"></a>00204     <span class="keywordflow">if</span>(<a class="code" href="adc_8cpp.html#a531b29adecd938da18fc2257f8e5f386" title="Метод получения значения ADC.">getValueADC</a>(<a class="code" href="adc_8h.html#ab3cdab912cd27274cbb3c7798a6ce537a481a181b0f9913108d647e217b62e253">adc1</a>, channel, &amp;data) == <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>) {
+<a name="l00205"></a>00205       result = result_last + (((int)data - result_last)/(count + 1));
+<a name="l00206"></a>00206       result_last = result;
+<a name="l00207"></a>00207       count++;
+<a name="l00208"></a>00208     }
+<a name="l00209"></a>00209   }
+<a name="l00210"></a>00210 
+<a name="l00211"></a>00211   <span class="keywordflow">if</span>(count &gt; 0) {
+<a name="l00212"></a>00212     *value = result;
+<a name="l00213"></a>00213     <span class="keywordflow">return</span> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>;
+<a name="l00214"></a>00214   }
+<a name="l00215"></a>00215   <span class="keywordflow">else</span> {
+<a name="l00216"></a>00216     <span class="keywordflow">return</span> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea70864d0b86bb684b33a58b6c02a012c1">StatusError</a>;
+<a name="l00217"></a>00217   }
+<a name="l00218"></a>00218 }
+<a name="l00219"></a>00219 
+<a name="l00220"></a><a class="code" href="adc_8cpp.html#a97e8e79194c02210d104a8156c367c4b">00220</a> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="adc_8cpp.html#a97e8e79194c02210d104a8156c367c4b">getCoreTemperature</a>(<span class="keywordtype">float</span> *value)
+<a name="l00221"></a>00221 {
+<a name="l00222"></a>00222   <span class="keyword">static</span> uint32_t data = 0;
+<a name="l00223"></a>00223   <span class="keywordtype">int</span> count = 0;
+<a name="l00224"></a>00224   <span class="keywordtype">int</span> result = 0;
+<a name="l00225"></a>00225   <span class="keywordtype">int</span> resultLast = 0;
+<a name="l00226"></a>00226 
+<a name="l00227"></a>00227   <span class="comment">// ADC_SAMPLETIME_480CYCLES - (480+12)/42 = 11 мксек</span>
+<a name="l00228"></a>00228   <span class="keywordflow">for</span>(uint32_t i = 0; i &lt; 3; i++) {
+<a name="l00229"></a>00229     <span class="keywordflow">if</span>(<a class="code" href="adc_8cpp.html#a531b29adecd938da18fc2257f8e5f386" title="Метод получения значения ADC.">getValueADC</a>(<a class="code" href="adc_8h.html#ab3cdab912cd27274cbb3c7798a6ce537a481a181b0f9913108d647e217b62e253">adc1</a>, ADC_CHANNEL_TEMPSENSOR, &amp;data, ADC_SAMPLETIME_480CYCLES) == <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>) {
+<a name="l00230"></a>00230       result = resultLast + (((int)data - resultLast)/(count + 1));
+<a name="l00231"></a>00231       resultLast = result;
+<a name="l00232"></a>00232       count++;
+<a name="l00233"></a>00233     }
+<a name="l00234"></a>00234     HAL_Delay(1);
+<a name="l00235"></a>00235   }
+<a name="l00236"></a>00236   ADC-&gt;CCR &amp;= ~ADC_CCR_TSVREFE;
+<a name="l00237"></a>00237   <span class="keywordflow">if</span>(count &gt; 0) {
+<a name="l00238"></a>00238     *value = (((result * <a class="code" href="adc_8cpp.html#a2c9e85d22a9ba37ea589b1747af46307" title="Значения констант из документации на CPU.">VREF</a>)/0xFFF - <a class="code" href="adc_8cpp.html#ae103e7d3414177fbe7f001c8ab0c7965">CORE_TEMP_V25</a>) / <a class="code" href="adc_8cpp.html#adc445ef75cfb8ac354467c330eb6d591">CORE_TEMP_AVG_SLOPE</a>) + 25;
+<a name="l00239"></a>00239     <span class="keywordflow">return</span> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>;
+<a name="l00240"></a>00240   }
+<a name="l00241"></a>00241   <span class="keywordflow">else</span> {
+<a name="l00242"></a>00242     <span class="keywordflow">return</span> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea70864d0b86bb684b33a58b6c02a012c1">StatusError</a>;
+<a name="l00243"></a>00243   }
+<a name="l00244"></a>00244 }
+<a name="l00245"></a>00245 
+<a name="l00246"></a><a class="code" href="adc_8cpp.html#a54745404c69b7774e0fdb660259bd6c2">00246</a> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="adc_8cpp.html#a54745404c69b7774e0fdb660259bd6c2">getCoreVbattery</a>(<span class="keywordtype">float</span> *value)
+<a name="l00247"></a>00247 {
+<a name="l00248"></a>00248   <span class="keyword">static</span> uint32_t data = 0;
+<a name="l00249"></a>00249   <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea70864d0b86bb684b33a58b6c02a012c1">StatusError</a>;
+<a name="l00250"></a>00250 
+<a name="l00251"></a>00251   <span class="keywordflow">if</span>(<a class="code" href="adc_8cpp.html#a531b29adecd938da18fc2257f8e5f386" title="Метод получения значения ADC.">getValueADC</a>(<a class="code" href="adc_8h.html#ab3cdab912cd27274cbb3c7798a6ce537a481a181b0f9913108d647e217b62e253">adc1</a>, ADC_CHANNEL_VBAT, &amp;data, ADC_SAMPLETIME_480CYCLES) == <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>) {
+<a name="l00252"></a>00252     *value =  (((int)data * <a class="code" href="adc_8cpp.html#a7aa08cf910108f15d69071f29da294d9">VBAT_DIV</a> * <a class="code" href="adc_8cpp.html#a2c9e85d22a9ba37ea589b1747af46307" title="Значения констант из документации на CPU.">VREF</a>)/0xFFF);
+<a name="l00253"></a>00253     status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>;
+<a name="l00254"></a>00254   }
+<a name="l00255"></a>00255   ADC-&gt;CCR &amp;= ~ADC_CCR_VBATE;
+<a name="l00256"></a>00256   <span class="keywordflow">return</span> status;
+<a name="l00257"></a>00257 }
+<a name="l00258"></a>00258 
+<a name="l00259"></a><a class="code" href="adc_8cpp.html#ac35a617a85fe8c95790415ca39be570e">00259</a> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="adc_8cpp.html#ac35a617a85fe8c95790415ca39be570e">getCoreVref</a>(<span class="keywordtype">float</span> *value)
+<a name="l00260"></a>00260 {
+<a name="l00261"></a>00261   <span class="keyword">static</span> uint32_t data = 0;
+<a name="l00262"></a>00262   <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea70864d0b86bb684b33a58b6c02a012c1">StatusError</a>;
+<a name="l00263"></a>00263 
+<a name="l00264"></a>00264   <span class="keywordflow">if</span>(<a class="code" href="adc_8cpp.html#a531b29adecd938da18fc2257f8e5f386" title="Метод получения значения ADC.">getValueADC</a>(<a class="code" href="adc_8h.html#ab3cdab912cd27274cbb3c7798a6ce537a481a181b0f9913108d647e217b62e253">adc1</a>, ADC_CHANNEL_VREFINT, &amp;data, ADC_SAMPLETIME_480CYCLES) == <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>) {
+<a name="l00265"></a>00265     *value = (((int)data * <a class="code" href="adc_8cpp.html#a2c9e85d22a9ba37ea589b1747af46307" title="Значения констант из документации на CPU.">VREF</a>)/0xFFF);
+<a name="l00266"></a>00266     status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>;
+<a name="l00267"></a>00267   }
+<a name="l00268"></a>00268   ADC-&gt;CCR &amp;= ~ADC_CCR_TSVREFE;
+<a name="l00269"></a>00269   <span class="keywordflow">return</span> status;
+<a name="l00270"></a>00270 }
+<a name="l00271"></a>00271 
+<a name="l00272"></a><a class="code" href="adc_8cpp.html#a531b29adecd938da18fc2257f8e5f386">00272</a> <span class="keyword">static</span> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="adc_8cpp.html#a531b29adecd938da18fc2257f8e5f386" title="Метод получения значения ADC.">getValueADC</a>(<a class="code" href="adc_8h.html#ab3cdab912cd27274cbb3c7798a6ce537" title="Список ADC каналов">adcNum</a> num, uint32_t <a class="code" href="adc__ext_8cpp.html#adf7dff2c57c0da9a4a2b70e3e815be31">channel</a>, uint32_t *value,
+<a name="l00273"></a>00273                               uint32_t samplTime)
+<a name="l00274"></a>00274 {
+<a name="l00275"></a>00275   ADC_ChannelConfTypeDef sConfig;
+<a name="l00276"></a>00276   <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea70864d0b86bb684b33a58b6c02a012c1">StatusError</a>;
+<a name="l00277"></a>00277 
+<a name="l00278"></a>00278   sConfig.Channel = <a class="code" href="adc__ext_8cpp.html#adf7dff2c57c0da9a4a2b70e3e815be31">channel</a>;
+<a name="l00279"></a>00279   sConfig.Rank = 1;
+<a name="l00280"></a>00280   sConfig.SamplingTime = samplTime;
+<a name="l00281"></a>00281   sConfig.Offset = 0;
+<a name="l00282"></a>00282   HAL_ADC_ConfigChannel(&amp;<a class="code" href="adc_8cpp.html#ac2dee730dd92aeec790ee8ea1c31f7ac">hadc</a>[num], &amp;sConfig);
+<a name="l00283"></a>00283 
+<a name="l00284"></a>00284   HAL_ADC_Start(&amp;<a class="code" href="adc_8cpp.html#ac2dee730dd92aeec790ee8ea1c31f7ac">hadc</a>[num]);
+<a name="l00285"></a>00285   <span class="keywordflow">if</span> ((HAL_ADC_PollForConversion(&amp;<a class="code" href="adc_8cpp.html#ac2dee730dd92aeec790ee8ea1c31f7ac">hadc</a>[num], 20) == HAL_OK) &amp;&amp;
+<a name="l00286"></a>00286       (HAL_ADC_GetState(&amp;<a class="code" href="adc_8cpp.html#ac2dee730dd92aeec790ee8ea1c31f7ac">hadc</a>[num]) == HAL_ADC_STATE_EOC_REG)) {
+<a name="l00287"></a>00287     *value = HAL_ADC_GetValue(&amp;<a class="code" href="adc_8cpp.html#ac2dee730dd92aeec790ee8ea1c31f7ac">hadc</a>[num]);
+<a name="l00288"></a>00288     status = <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>;
+<a name="l00289"></a>00289   }
+<a name="l00290"></a>00290   HAL_ADC_Stop(&amp;<a class="code" href="adc_8cpp.html#ac2dee730dd92aeec790ee8ea1c31f7ac">hadc</a>[num]);
+<a name="l00291"></a>00291 
+<a name="l00292"></a>00292   <span class="keywordflow">return</span> status;
+<a name="l00293"></a>00293 }
+<a name="l00294"></a>00294 
+<a name="l00300"></a><a class="code" href="adc_8cpp.html#a92543dc3098e92d14f9aa08c9dd6fe6f">00300</a> <span class="keywordtype">void</span> <a class="code" href="adc_8cpp.html#a92543dc3098e92d14f9aa08c9dd6fe6f" title="Завершение измерения через время ARCHIVE_TIME.">HAL_ADC_ConvCpltCallback</a>(ADC_HandleTypeDef* adcHandle)
+<a name="l00301"></a>00301 {
+<a name="l00302"></a>00302   (void)adcHandle;
+<a name="l00303"></a>00303 
+<a name="l00304"></a>00304   <span class="comment">// Для тестирования времени измерения</span>
+<a name="l00305"></a>00305   <span class="keyword">static</span> <span class="keywordtype">int</span> t = 0;
+<a name="l00306"></a>00306   time = HAL_GetTick() - <a class="code" href="adc_8cpp.html#ae73654f333e4363463ad8c594eca1905">time</a>;
+<a name="l00307"></a>00307   <span class="keywordflow">if</span> (++t != 1)
+<a name="l00308"></a>00308     <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>);
+<a name="l00309"></a>00309   time = HAL_GetTick();
+<a name="l00310"></a>00310 }
+<a name="l00311"></a>00311 
+<a name="l00312"></a><a class="code" href="adc_8cpp.html#a39267cdba97d99b244e2bd88a4795716">00312</a> <span class="keywordtype">void</span> <a class="code" href="adc_8cpp.html#a39267cdba97d99b244e2bd88a4795716">copyAdcData</a>()
+<a name="l00313"></a>00313 {
+<a name="l00314"></a>00314   <span class="keywordtype">int</span> allPoints = <a class="code" href="adc_8h.html#a6e1c0d406ce9598de3cbf558a89a3072" title="Количество каналов: Ua, Ub, Uc.">ADC_CNANNELS_NUM</a>*<a class="code" href="adc_8h.html#a39526e7bbb4208a57027ea22fdf989e4" title="Количество точек с каждого канала за время ARCHIVE_TIME.">ADC_POINTS_NUM</a>;
+<a name="l00315"></a>00315   <span class="keywordtype">int</span> numDataTr = <a class="code" href="adc_8cpp.html#ac2dee730dd92aeec790ee8ea1c31f7ac">hadc</a>[<a class="code" href="adc_8h.html#ab3cdab912cd27274cbb3c7798a6ce537aa12b02630986fe27ba4a5e81385d2470">adc2</a>].DMA_Handle-&gt;Instance-&gt;NDTR;
+<a name="l00316"></a>00316   memcpy(&amp;adcData[numDataTr], &amp;adcDataTmp[0], (allPoints - numDataTr)*2);
+<a name="l00317"></a>00317   memcpy(&amp;adcData[0], &amp;adcDataTmp[allPoints - numDataTr], (numDataTr)*2);
+<a name="l00318"></a>00318 }
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Пн 2 Мар 2015 15:35:46. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

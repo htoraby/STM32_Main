@@ -1,0 +1,369 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/usb/usbh_conf.c</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  <td id="projectlogo"><img alt="Logo" src="logo.ico"/></td>
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/usb/usbh_conf.c</div>  </div>
+</div>
+<div class="contents">
+<a href="usbh__conf_8c.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00034"></a>00034 <span class="comment">/* Includes ------------------------------------------------------------------*/</span>
+<a name="l00035"></a>00035 <span class="preprocessor">#include &quot;<a class="code" href="board_8h.html">board.h</a>&quot;</span>
+<a name="l00036"></a>00036 <span class="preprocessor">#include &quot;usbh_core.h&quot;</span>
+<a name="l00037"></a>00037 
+<a name="l00038"></a><a class="code" href="usbh__conf_8c.html#a135943d3578f7906d4be1d774650ecd0">00038</a> HCD_HandleTypeDef <a class="code" href="stm32f4xx__it_8c.html#a135943d3578f7906d4be1d774650ecd0">hhcd_USB_OTG_FS</a>;
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 <span class="comment">/*******************************************************************************</span>
+<a name="l00041"></a>00041 <span class="comment">                       LL Driver Callbacks (HCD -&gt; USB Host Library)</span>
+<a name="l00042"></a>00042 <span class="comment">*******************************************************************************/</span>
+<a name="l00043"></a>00043 <span class="comment">/* MSP Init */</span>
+<a name="l00044"></a>00044 
+<a name="l00045"></a><a class="code" href="usbh__conf_8c.html#ae0bbb4527b7b68699a7c17d30500842d">00045</a> <span class="keywordtype">void</span> <a class="code" href="usbh__conf_8c.html#ae0bbb4527b7b68699a7c17d30500842d">HAL_HCD_MspInit</a>(HCD_HandleTypeDef* hhcd)
+<a name="l00046"></a>00046 {
+<a name="l00047"></a>00047   GPIO_InitTypeDef GPIO_InitStruct;
+<a name="l00048"></a>00048   <span class="keywordflow">if</span>(hhcd-&gt;Instance==USB_OTG_FS)
+<a name="l00049"></a>00049   {
+<a name="l00050"></a>00050     <span class="comment">/* Peripheral clock enable */</span>
+<a name="l00051"></a>00051     __USB_OTG_FS_CLK_ENABLE();
+<a name="l00052"></a>00052   
+<a name="l00057"></a>00057     GPIO_InitStruct.Pin = GPIO_PIN_11|GPIO_PIN_12;
+<a name="l00058"></a>00058     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+<a name="l00059"></a>00059     GPIO_InitStruct.Pull = GPIO_NOPULL;
+<a name="l00060"></a>00060     GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
+<a name="l00061"></a>00061     GPIO_InitStruct.Alternate = GPIO_AF10_OTG_FS;
+<a name="l00062"></a>00062     HAL_GPIO_Init(GPIOA, &amp;GPIO_InitStruct);
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064     <span class="comment">/* Peripheral interrupt init*/</span>
+<a name="l00065"></a>00065     HAL_NVIC_SetPriority(OTG_FS_IRQn, <a class="code" href="board_8h.html#ac55571172d00b8e05cddd0e3a974f258">USB_IRQ_PREPRIO</a>, 0);
+<a name="l00066"></a>00066     HAL_NVIC_EnableIRQ(OTG_FS_IRQn);
+<a name="l00067"></a>00067   }
+<a name="l00068"></a>00068 }
+<a name="l00069"></a>00069 
+<a name="l00070"></a><a class="code" href="usbh__conf_8c.html#aecb264553245a0de4e234d51f4a0d207">00070</a> <span class="keywordtype">void</span> <a class="code" href="usbh__conf_8c.html#aecb264553245a0de4e234d51f4a0d207">HAL_HCD_MspDeInit</a>(HCD_HandleTypeDef* hhcd)
+<a name="l00071"></a>00071 {
+<a name="l00072"></a>00072   <span class="keywordflow">if</span>(hhcd-&gt;Instance==USB_OTG_FS)
+<a name="l00073"></a>00073   {
+<a name="l00074"></a>00074     <span class="comment">/* Peripheral clock disable */</span>
+<a name="l00075"></a>00075     __USB_OTG_FS_CLK_DISABLE();
+<a name="l00076"></a>00076   
+<a name="l00081"></a>00081     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_11|GPIO_PIN_12);
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083     <span class="comment">/* Peripheral interrupt Deinit*/</span>
+<a name="l00084"></a>00084     HAL_NVIC_DisableIRQ(OTG_FS_IRQn);
+<a name="l00085"></a>00085   }
+<a name="l00086"></a>00086 }
+<a name="l00087"></a>00087 
+<a name="l00093"></a><a class="code" href="usbh__conf_8c.html#a4db2ea557e081600238759cb55353628">00093</a> <span class="keywordtype">void</span> <a class="code" href="usbh__conf_8c.html#a4db2ea557e081600238759cb55353628" title="SOF callback.">HAL_HCD_SOF_Callback</a>(HCD_HandleTypeDef *hhcd)
+<a name="l00094"></a>00094 {
+<a name="l00095"></a>00095   USBH_LL_IncTimer (hhcd-&gt;pData);
+<a name="l00096"></a>00096 }
+<a name="l00097"></a>00097 
+<a name="l00103"></a><a class="code" href="usbh__conf_8c.html#a95cbb5d1910e3cbf9bd462e057b3df33">00103</a> <span class="keywordtype">void</span> <a class="code" href="usbh__conf_8c.html#a95cbb5d1910e3cbf9bd462e057b3df33" title="SOF callback.">HAL_HCD_Connect_Callback</a>(HCD_HandleTypeDef *hhcd)
+<a name="l00104"></a>00104 {
+<a name="l00105"></a>00105   USBH_LL_Connect(hhcd-&gt;pData);
+<a name="l00106"></a>00106 }
+<a name="l00107"></a>00107 
+<a name="l00113"></a><a class="code" href="usbh__conf_8c.html#ad59d0d3fdd9ef512faa0b0e56d83bfdc">00113</a> <span class="keywordtype">void</span> <a class="code" href="usbh__conf_8c.html#ad59d0d3fdd9ef512faa0b0e56d83bfdc" title="SOF callback.">HAL_HCD_Disconnect_Callback</a>(HCD_HandleTypeDef *hhcd)
+<a name="l00114"></a>00114 {
+<a name="l00115"></a>00115   USBH_LL_Disconnect(hhcd-&gt;pData);
+<a name="l00116"></a>00116 } 
+<a name="l00117"></a>00117 
+<a name="l00123"></a><a class="code" href="usbh__conf_8c.html#a668704f16414d9ec2fa8023506b28e76">00123</a> <span class="keywordtype">void</span> <a class="code" href="usbh__conf_8c.html#a668704f16414d9ec2fa8023506b28e76" title="Notify URB state change callback.">HAL_HCD_HC_NotifyURBChange_Callback</a>(HCD_HandleTypeDef *hhcd, uint8_t chnum, HCD_URBStateTypeDef urb_state)
+<a name="l00124"></a>00124 {
+<a name="l00125"></a>00125   <span class="comment">/* To be used with OS to sync URB state with the global state machine */</span>
+<a name="l00126"></a>00126 <span class="preprocessor">#if (USBH_USE_OS == 1)   </span>
+<a name="l00127"></a>00127 <span class="preprocessor"></span>  USBH_LL_NotifyURBChange(hhcd-&gt;pData);
+<a name="l00128"></a>00128 <span class="preprocessor">#endif </span>
+<a name="l00129"></a>00129 <span class="preprocessor"></span>}
+<a name="l00130"></a>00130 <span class="comment">/*******************************************************************************</span>
+<a name="l00131"></a>00131 <span class="comment">                       LL Driver Interface (USB Host Library --&gt; HCD)</span>
+<a name="l00132"></a>00132 <span class="comment">*******************************************************************************/</span>
+<a name="l00140"></a><a class="code" href="usbh__conf_8c.html#a5b46d8afbd254c9172b84d791d438306">00140</a> USBH_StatusTypeDef  <a class="code" href="usbh__conf_8c.html#a5b46d8afbd254c9172b84d791d438306" title="USBH_LL_Init Initialize the HOST portion of the driver.">USBH_LL_Init</a> (USBH_HandleTypeDef *phost)
+<a name="l00141"></a>00141 {
+<a name="l00142"></a>00142   <span class="comment">/* Init USB_IP */</span>
+<a name="l00143"></a>00143   <span class="keywordflow">if</span> (phost-&gt;id == <a class="code" href="usbh__conf_8h.html#a02b6b5d01f4828b2b4b65d9d9913f670">HOST_FS</a>) {
+<a name="l00144"></a>00144 
+<a name="l00145"></a>00145   <a class="code" href="stm32f4xx__it_8c.html#a135943d3578f7906d4be1d774650ecd0">hhcd_USB_OTG_FS</a>.Instance = USB_OTG_FS;
+<a name="l00146"></a>00146   <a class="code" href="stm32f4xx__it_8c.html#a135943d3578f7906d4be1d774650ecd0">hhcd_USB_OTG_FS</a>.Init.Host_channels = 8;
+<a name="l00147"></a>00147   <a class="code" href="stm32f4xx__it_8c.html#a135943d3578f7906d4be1d774650ecd0">hhcd_USB_OTG_FS</a>.Init.speed = HCD_SPEED_FULL;
+<a name="l00148"></a>00148   <a class="code" href="stm32f4xx__it_8c.html#a135943d3578f7906d4be1d774650ecd0">hhcd_USB_OTG_FS</a>.Init.dma_enable = DISABLE;
+<a name="l00149"></a>00149   <a class="code" href="stm32f4xx__it_8c.html#a135943d3578f7906d4be1d774650ecd0">hhcd_USB_OTG_FS</a>.Init.phy_itface = HCD_PHY_EMBEDDED;
+<a name="l00150"></a>00150   <a class="code" href="stm32f4xx__it_8c.html#a135943d3578f7906d4be1d774650ecd0">hhcd_USB_OTG_FS</a>.Init.Sof_enable = DISABLE;
+<a name="l00151"></a>00151   <a class="code" href="stm32f4xx__it_8c.html#a135943d3578f7906d4be1d774650ecd0">hhcd_USB_OTG_FS</a>.Init.low_power_enable = ENABLE;
+<a name="l00152"></a>00152   <a class="code" href="stm32f4xx__it_8c.html#a135943d3578f7906d4be1d774650ecd0">hhcd_USB_OTG_FS</a>.Init.vbus_sensing_enable = DISABLE;
+<a name="l00153"></a>00153   <a class="code" href="stm32f4xx__it_8c.html#a135943d3578f7906d4be1d774650ecd0">hhcd_USB_OTG_FS</a>.Init.use_external_vbus = DISABLE;
+<a name="l00154"></a>00154   HAL_HCD_Init(&amp;<a class="code" href="stm32f4xx__it_8c.html#a135943d3578f7906d4be1d774650ecd0">hhcd_USB_OTG_FS</a>);
+<a name="l00155"></a>00155 
+<a name="l00156"></a>00156   <span class="comment">/* Link The driver to the stack */</span>
+<a name="l00157"></a>00157   <a class="code" href="stm32f4xx__it_8c.html#a135943d3578f7906d4be1d774650ecd0">hhcd_USB_OTG_FS</a>.pData = phost;
+<a name="l00158"></a>00158   phost-&gt;pData = &amp;<a class="code" href="stm32f4xx__it_8c.html#a135943d3578f7906d4be1d774650ecd0">hhcd_USB_OTG_FS</a>;
+<a name="l00159"></a>00159   USBH_LL_SetTimer (phost, HAL_HCD_GetCurrentFrame(&amp;<a class="code" href="stm32f4xx__it_8c.html#a135943d3578f7906d4be1d774650ecd0">hhcd_USB_OTG_FS</a>));
+<a name="l00160"></a>00160   }
+<a name="l00161"></a>00161   <span class="keywordflow">return</span> USBH_OK;
+<a name="l00162"></a>00162 }
+<a name="l00163"></a>00163 
+<a name="l00170"></a><a class="code" href="usbh__conf_8c.html#a69ba6969d548a428bc4a5aa6eb2e135a">00170</a> USBH_StatusTypeDef  <a class="code" href="usbh__conf_8c.html#a69ba6969d548a428bc4a5aa6eb2e135a">USBH_LL_DeInit</a> (USBH_HandleTypeDef *phost)
+<a name="l00171"></a>00171 {
+<a name="l00172"></a>00172   HAL_HCD_DeInit(phost-&gt;pData);
+<a name="l00173"></a>00173   <span class="keywordflow">return</span> USBH_OK; 
+<a name="l00174"></a>00174 }
+<a name="l00175"></a>00175 
+<a name="l00182"></a><a class="code" href="usbh__conf_8c.html#ae895412b62103a712cfd2f1841d1420a">00182</a> USBH_StatusTypeDef  <a class="code" href="usbh__conf_8c.html#ae895412b62103a712cfd2f1841d1420a">USBH_LL_Start</a>(USBH_HandleTypeDef *phost)
+<a name="l00183"></a>00183 {
+<a name="l00184"></a>00184   HAL_HCD_Start(phost-&gt;pData);
+<a name="l00185"></a>00185   <span class="keywordflow">return</span> USBH_OK; 
+<a name="l00186"></a>00186 }
+<a name="l00187"></a>00187 
+<a name="l00194"></a><a class="code" href="usbh__conf_8c.html#a874eb40ed9b76406ffa64c20e47258cd">00194</a> USBH_StatusTypeDef  <a class="code" href="usbh__conf_8c.html#a874eb40ed9b76406ffa64c20e47258cd">USBH_LL_Stop</a> (USBH_HandleTypeDef *phost)
+<a name="l00195"></a>00195 {
+<a name="l00196"></a>00196   HAL_HCD_Stop(phost-&gt;pData);
+<a name="l00197"></a>00197   <span class="keywordflow">return</span> USBH_OK; 
+<a name="l00198"></a>00198 }
+<a name="l00199"></a>00199 
+<a name="l00206"></a><a class="code" href="usbh__conf_8c.html#af3c4ca2987ab678661d8d293adb02095">00206</a> USBH_SpeedTypeDef <a class="code" href="usbh__conf_8c.html#af3c4ca2987ab678661d8d293adb02095">USBH_LL_GetSpeed</a>  (USBH_HandleTypeDef *phost)
+<a name="l00207"></a>00207 {
+<a name="l00208"></a>00208   USBH_SpeedTypeDef speed = USBH_SPEED_FULL;
+<a name="l00209"></a>00209     
+<a name="l00210"></a>00210   <span class="keywordflow">switch</span> (HAL_HCD_GetCurrentSpeed(phost-&gt;pData))
+<a name="l00211"></a>00211   {
+<a name="l00212"></a>00212   <span class="keywordflow">case</span> 0 : 
+<a name="l00213"></a>00213     speed = USBH_SPEED_HIGH;
+<a name="l00214"></a>00214     <span class="keywordflow">break</span>;
+<a name="l00215"></a>00215     
+<a name="l00216"></a>00216   <span class="keywordflow">case</span> 1 : 
+<a name="l00217"></a>00217     speed = USBH_SPEED_FULL;    
+<a name="l00218"></a>00218     <span class="keywordflow">break</span>;
+<a name="l00219"></a>00219     
+<a name="l00220"></a>00220   <span class="keywordflow">case</span> 2 : 
+<a name="l00221"></a>00221     speed = USBH_SPEED_LOW;    
+<a name="l00222"></a>00222     <span class="keywordflow">break</span>;
+<a name="l00223"></a>00223         
+<a name="l00224"></a>00224   <span class="keywordflow">default</span>:  
+<a name="l00225"></a>00225    speed = USBH_SPEED_FULL;    
+<a name="l00226"></a>00226     <span class="keywordflow">break</span>;  
+<a name="l00227"></a>00227   }
+<a name="l00228"></a>00228   <span class="keywordflow">return</span>  speed;
+<a name="l00229"></a>00229 }
+<a name="l00230"></a>00230 
+<a name="l00237"></a><a class="code" href="usbh__conf_8c.html#a1844d882f66ca6a49f3c8eba7c88c24a">00237</a> USBH_StatusTypeDef <a class="code" href="usbh__conf_8c.html#a1844d882f66ca6a49f3c8eba7c88c24a">USBH_LL_ResetPort</a> (USBH_HandleTypeDef *phost) 
+<a name="l00238"></a>00238 {
+<a name="l00239"></a>00239   HAL_HCD_ResetPort(phost-&gt;pData);
+<a name="l00240"></a>00240   <span class="keywordflow">return</span> USBH_OK; 
+<a name="l00241"></a>00241 }
+<a name="l00242"></a>00242 
+<a name="l00249"></a><a class="code" href="usbh__conf_8c.html#a46e36c65b21fa6bb30cc618588ed590c">00249</a> uint32_t <a class="code" href="usbh__conf_8c.html#a46e36c65b21fa6bb30cc618588ed590c">USBH_LL_GetLastXferSize</a>  (USBH_HandleTypeDef *phost, uint8_t pipe)  
+<a name="l00250"></a>00250 {
+<a name="l00251"></a>00251   <span class="keywordflow">return</span> HAL_HCD_HC_GetXferCount(phost-&gt;pData, pipe);
+<a name="l00252"></a>00252 }
+<a name="l00253"></a>00253 
+<a name="l00260"></a><a class="code" href="usbh__conf_8c.html#a66ab8f32ce26048def4714c734ac84ab">00260</a> USBH_StatusTypeDef   <a class="code" href="usbh__conf_8c.html#a66ab8f32ce26048def4714c734ac84ab">USBH_LL_OpenPipe</a>    (USBH_HandleTypeDef *phost, 
+<a name="l00261"></a>00261                                       uint8_t pipe_num,
+<a name="l00262"></a>00262                                       uint8_t epnum,                                      
+<a name="l00263"></a>00263                                       uint8_t dev_address,
+<a name="l00264"></a>00264                                       uint8_t speed,
+<a name="l00265"></a>00265                                       uint8_t ep_type,
+<a name="l00266"></a>00266                                       uint16_t mps)
+<a name="l00267"></a>00267 {
+<a name="l00268"></a>00268   HAL_HCD_HC_Init(phost-&gt;pData,
+<a name="l00269"></a>00269                   pipe_num,
+<a name="l00270"></a>00270                   epnum,
+<a name="l00271"></a>00271                   dev_address,
+<a name="l00272"></a>00272                   speed,
+<a name="l00273"></a>00273                   ep_type,
+<a name="l00274"></a>00274                   mps);
+<a name="l00275"></a>00275   <span class="keywordflow">return</span> USBH_OK; 
+<a name="l00276"></a>00276 }
+<a name="l00277"></a>00277 
+<a name="l00284"></a><a class="code" href="usbh__conf_8c.html#aefb43a461debda9e4b1a5e4023e799ee">00284</a> USBH_StatusTypeDef   <a class="code" href="usbh__conf_8c.html#aefb43a461debda9e4b1a5e4023e799ee">USBH_LL_ClosePipe</a>   (USBH_HandleTypeDef *phost, uint8_t pipe)   
+<a name="l00285"></a>00285 {
+<a name="l00286"></a>00286   HAL_HCD_HC_Halt(phost-&gt;pData, pipe);
+<a name="l00287"></a>00287   <span class="keywordflow">return</span> USBH_OK; 
+<a name="l00288"></a>00288 }
+<a name="l00289"></a>00289 
+<a name="l00297"></a><a class="code" href="usbh__conf_8c.html#a6d5456368ad4cb95eecae935e54f49cb">00297</a> USBH_StatusTypeDef   <a class="code" href="usbh__conf_8c.html#a6d5456368ad4cb95eecae935e54f49cb">USBH_LL_SubmitURB</a>  (USBH_HandleTypeDef *phost, 
+<a name="l00298"></a>00298                                             uint8_t pipe, 
+<a name="l00299"></a>00299                                             uint8_t direction ,
+<a name="l00300"></a>00300                                             uint8_t ep_type,  
+<a name="l00301"></a>00301                                             uint8_t token, 
+<a name="l00302"></a>00302                                             uint8_t* pbuff, 
+<a name="l00303"></a>00303                                             uint16_t length,
+<a name="l00304"></a>00304                                             uint8_t do_ping ) 
+<a name="l00305"></a>00305 {
+<a name="l00306"></a>00306   HAL_HCD_HC_SubmitRequest (phost-&gt;pData,
+<a name="l00307"></a>00307                             pipe, 
+<a name="l00308"></a>00308                             direction ,
+<a name="l00309"></a>00309                             ep_type,  
+<a name="l00310"></a>00310                             token, 
+<a name="l00311"></a>00311                             pbuff, 
+<a name="l00312"></a>00312                             length,
+<a name="l00313"></a>00313                             do_ping);
+<a name="l00314"></a>00314   <span class="keywordflow">return</span> USBH_OK;   
+<a name="l00315"></a>00315 }
+<a name="l00316"></a>00316 
+<a name="l00323"></a><a class="code" href="usbh__conf_8c.html#a78cc4409546dfc6ddcb9477f94cc2659">00323</a> USBH_URBStateTypeDef  <a class="code" href="usbh__conf_8c.html#a78cc4409546dfc6ddcb9477f94cc2659">USBH_LL_GetURBState</a> (USBH_HandleTypeDef *phost, uint8_t pipe) 
+<a name="l00324"></a>00324 {
+<a name="l00325"></a>00325   <span class="keywordflow">return</span> (USBH_URBStateTypeDef)HAL_HCD_HC_GetURBState (phost-&gt;pData, pipe);
+<a name="l00326"></a>00326 }
+<a name="l00327"></a>00327 
+<a name="l00334"></a><a class="code" href="usbh__conf_8c.html#acb4111af58651c28ebe4a557ca568b24">00334</a> USBH_StatusTypeDef  <a class="code" href="usbh__conf_8c.html#acb4111af58651c28ebe4a557ca568b24">USBH_LL_DriverVBUS</a> (USBH_HandleTypeDef *phost, uint8_t state)
+<a name="l00335"></a>00335 { 
+<a name="l00336"></a>00336  <span class="comment">/* USER CODE BEGIN 0 */</span> 
+<a name="l00337"></a>00337  <span class="comment">/* USER CODE END 0 */</span>
+<a name="l00338"></a>00338   <span class="keywordflow">if</span>(state == 0)
+<a name="l00339"></a>00339   {
+<a name="l00340"></a>00340     <span class="comment">/* Drive high Charge pump */</span>
+<a name="l00341"></a>00341     <span class="comment">/* USER CODE BEGIN 1 */</span> 
+<a name="l00342"></a>00342     <span class="comment">/* ToDo: Add IOE driver control */</span>
+<a name="l00343"></a>00343     <span class="comment">/* USER CODE END 1 */</span> 
+<a name="l00344"></a>00344   }
+<a name="l00345"></a>00345   <span class="keywordflow">else</span>
+<a name="l00346"></a>00346   {
+<a name="l00347"></a>00347     <span class="comment">/* Drive low Charge pump */</span>
+<a name="l00348"></a>00348     <span class="comment">/* USER CODE BEGIN 2 */</span>
+<a name="l00349"></a>00349     <span class="comment">/* ToDo: Add IOE driver control */</span>
+<a name="l00350"></a>00350     <span class="comment">/* USER CODE END 2 */</span>
+<a name="l00351"></a>00351   }
+<a name="l00352"></a>00352 
+<a name="l00353"></a>00353   HAL_Delay(200);
+<a name="l00354"></a>00354   <span class="keywordflow">return</span> USBH_OK;  
+<a name="l00355"></a>00355 }
+<a name="l00356"></a>00356 
+<a name="l00364"></a><a class="code" href="usbh__conf_8c.html#ab272f515d41419156ec959281d5716e0">00364</a> USBH_StatusTypeDef   <a class="code" href="usbh__conf_8c.html#ab272f515d41419156ec959281d5716e0" title="USBH_LL_SetToggle Initialize the HOST portion of the driver.">USBH_LL_SetToggle</a>   (USBH_HandleTypeDef *phost, uint8_t pipe, uint8_t toggle)   
+<a name="l00365"></a>00365 {
+<a name="l00366"></a>00366   HCD_HandleTypeDef *pHandle;
+<a name="l00367"></a>00367   pHandle = phost-&gt;pData;
+<a name="l00368"></a>00368   
+<a name="l00369"></a>00369   <span class="keywordflow">if</span>(pHandle-&gt;hc[pipe].ep_is_in)
+<a name="l00370"></a>00370   {
+<a name="l00371"></a>00371     pHandle-&gt;hc[pipe].toggle_in = toggle;
+<a name="l00372"></a>00372   }
+<a name="l00373"></a>00373   <span class="keywordflow">else</span>
+<a name="l00374"></a>00374   {
+<a name="l00375"></a>00375     pHandle-&gt;hc[pipe].toggle_out = toggle;
+<a name="l00376"></a>00376   }
+<a name="l00377"></a>00377   
+<a name="l00378"></a>00378   <span class="keywordflow">return</span> USBH_OK; 
+<a name="l00379"></a>00379 }
+<a name="l00380"></a>00380 
+<a name="l00388"></a><a class="code" href="usbh__conf_8c.html#a6271b251ae9bd23740e91276cdb7d3ba">00388</a> uint8_t  <a class="code" href="usbh__conf_8c.html#a6271b251ae9bd23740e91276cdb7d3ba" title="USBH_LL_GetToggle Initialize the HOST portion of the driver.">USBH_LL_GetToggle</a>   (USBH_HandleTypeDef *phost, uint8_t pipe)   
+<a name="l00389"></a>00389 {
+<a name="l00390"></a>00390   uint8_t toggle = 0;
+<a name="l00391"></a>00391   HCD_HandleTypeDef *pHandle;
+<a name="l00392"></a>00392   pHandle = phost-&gt;pData; 
+<a name="l00393"></a>00393   
+<a name="l00394"></a>00394   <span class="keywordflow">if</span>(pHandle-&gt;hc[pipe].ep_is_in)
+<a name="l00395"></a>00395   {
+<a name="l00396"></a>00396     toggle = pHandle-&gt;hc[pipe].toggle_in;
+<a name="l00397"></a>00397   }
+<a name="l00398"></a>00398   <span class="keywordflow">else</span>
+<a name="l00399"></a>00399   {
+<a name="l00400"></a>00400     toggle = pHandle-&gt;hc[pipe].toggle_out;
+<a name="l00401"></a>00401   }
+<a name="l00402"></a>00402   <span class="keywordflow">return</span> toggle; 
+<a name="l00403"></a>00403 }
+<a name="l00404"></a>00404 
+<a name="l00411"></a><a class="code" href="usbh__conf_8c.html#a641108182e7e56c085e2d539ae060deb">00411</a> <span class="keywordtype">void</span>  <a class="code" href="usbh__conf_8c.html#a641108182e7e56c085e2d539ae060deb">USBH_Delay</a> (uint32_t Delay)
+<a name="l00412"></a>00412 {
+<a name="l00413"></a>00413   HAL_Delay(Delay);  
+<a name="l00414"></a>00414 }
+<a name="l00415"></a>00415 <span class="comment">/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Пн 2 Мар 2015 15:35:47. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

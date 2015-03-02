@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/user/protection/protection_main.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  <td id="projectlogo"><img alt="Logo" src="logo.ico"/></td>
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/user/protection/protection_main.cpp</div>  </div>
+</div>
+<div class="contents">
+<a href="protection__main_8cpp.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="protection__main_8h.html">protection_main.h</a>&quot;</span>
+<a name="l00002"></a>00002 
+<a name="l00003"></a><a class="code" href="protection__main_8h.html#a0263827e5a501056c3a06547aa003134">00003</a> <a class="code" href="class_protection_over_voltage_input.html" title="Класс автомата защиты &quot;Превышение питания сети&quot;.">ProtectionOverVoltageInput</a> <a class="code" href="protection__main_8cpp.html#a0263827e5a501056c3a06547aa003134">protOverVoltIn</a>;
+<a name="l00004"></a><a class="code" href="protection__main_8h.html#aa72b576034021bcdf3bbb2fb7f6f7829">00004</a> <a class="code" href="class_protection_under_voltage_input.html" title="Класс автомата защиты &quot;Снижение питания сети&quot;.">ProtectionUnderVoltageInput</a> <a class="code" href="protection__main_8cpp.html#aa72b576034021bcdf3bbb2fb7f6f7829">protUnderVoltIn</a>;
+<a name="l00005"></a><a class="code" href="protection__main_8h.html#ac4b8a91a9932859fbafeb3bca69d4b58">00005</a> <a class="code" href="class_protection_overload_motor.html" title="Класс автомата защиты &quot;Перегруз двигателя&quot;.">ProtectionOverloadMotor</a> <a class="code" href="protection__main_8cpp.html#ac4b8a91a9932859fbafeb3bca69d4b58">protOverloadMotor</a>;
+<a name="l00006"></a><a class="code" href="protection__main_8h.html#ae177743d94cc3266255d7112651fee48">00006</a> <a class="code" href="class_protection_underload_motor.html" title="Класс автомата защиты &quot;Недогруз двигателя&quot;.">ProtectionUnderloadMotor</a> <a class="code" href="protection__main_8cpp.html#ae177743d94cc3266255d7112651fee48">protUnderloadMotor</a>;
+<a name="l00007"></a>00007 
+<a name="l00008"></a><a class="code" href="protection__main_8h.html#a89db53325abbc01e5ad68068b251eb03">00008</a> <span class="keywordtype">void</span> <a class="code" href="protection__main_8cpp.html#a89db53325abbc01e5ad68068b251eb03" title="protectionInit Функция инициализации автоматов защит">protectionInit</a>()
+<a name="l00009"></a>00009 {
+<a name="l00010"></a>00010   protOverVoltIn.<a class="code" href="class_protection_over_voltage_input.html#ae426f1e043f4d5a87952473fe13d5c5e" title="Инициализация автомата защиты">init</a>();
+<a name="l00011"></a>00011   protUnderVoltIn.<a class="code" href="class_protection_under_voltage_input.html#aaa8b8d01f53cfe1cd83c795ec618bd97" title="Инициализация автомата защиты">init</a>();
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013   protOverloadMotor.<a class="code" href="class_protection_overload_motor.html#a41db2fb3103ce44400ebf9f514e794b1" title="Инициализация автомата защиты">init</a>();
+<a name="l00014"></a>00014   protUnderloadMotor.<a class="code" href="class_protection_underload_motor.html#af0228cf212fc74f3e235d1c5184e858d" title="Инициализация автомата защиты">init</a>();
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016 }
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Пн 2 Мар 2015 15:35:47. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>
