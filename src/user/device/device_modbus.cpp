@@ -111,36 +111,6 @@ int DeviceModbus::getFieldCntExchange(int Index)
   return modbusParameters_[Index].CntExchange;
 }
 
-// Получить Priority из структуры ModbusParameter из массива по индексу
-int DeviceModbus::getFieldPriority(int Index)
-{
-  return modbusParameters_[Index].Priority;
-}
-
-// Метод присвоения Priority параметра по индексу в массиве параметров
-void DeviceModbus::setFieldPriority(int Index, int Priority)
-{
-  modbusParameters_[Index].Priority = Priority;
-}
-
-// Получить Flag из структуры ModbusParameter из массива по индексу
-int DeviceModbus::getFieldFlag(int Index)
-{
-  return modbusParameters_[Index].Flag;
-}
-
-// Метод присвоения Flag параметра по индексу в массиве параметров
-void DeviceModbus::setFieldFlag(int Index, int Flag)
-{
-  modbusParameters_[Index].Flag = Flag;
-}
-
-// Получить Scale из структуры ModbusParameter из массива по индексу
-float DeviceModbus::getFieldScale(int Index)
-{
-  return modbusParameters_[Index].Scale;
-}
-
 // Получить Coefficient из структуры ModbusParameter из массива по индексу
 float DeviceModbus::getFieldCoefficient(int Index)
 {
@@ -157,6 +127,22 @@ float DeviceModbus::getFieldMinimum(int Index)
 float DeviceModbus::getFieldMaximum(int Index)
 {
   return modbusParameters_[Index].Maximum;
+}
+
+float DeviceModbus::getFieldDefault(int Index)
+{
+  return modbusParameters_[Index].Default;
+}
+
+int DeviceModbus::getFieldCommand(int Index)
+{
+  return modbusParameters_[Index].Command;
+}
+
+int DeviceModbus::setFieldCommand(int Index, int Command)
+{
+  modbusParameters_[Index].Command = Command;
+  return modbusParameters_[Index].Command;
 }
 
 // Получить Value из структуры ModbusParameter из массива по индексу
@@ -248,8 +234,6 @@ void DeviceModbus::writeModbusParameter(int ID, float Value)
   Value = (Value * (Units[Param->Physic][Param->Unit][0])) + (Units[Param->Physic][Param->Unit][1]);
   // Применяем преобразование коэффициента
   Value = Value * Param->Coefficient;
-  // Применяем преобразование масштаба
-  Value = Value / Param->Scale;
   // Применяем тип данных
   switch (Param->TypeData) {
     case  TYPE_DATA_CHAR:
@@ -273,8 +257,7 @@ void DeviceModbus::writeModbusParameter(int ID, float Value)
     default:
       break;
   }
-  Param->Flag = 1;
-  Param->Priority = 1;
+  Param->Command = OPERATION_WRITE;
   putMessageOutOfTurn(Index);
 }
 
@@ -320,7 +303,7 @@ void DeviceModbus::exchangeTask(void)
     // Если есть параметры для обработки вне очереди
     if (outOfTurn) {
       // Если записать
-      if (modbusParameters_[outOfTurn].Flag) {
+      if (modbusParameters_[outOfTurn].Command == OPERATION_WRITE) {
         int address = modbusParameters_[outOfTurn].Address;
         switch (modbusParameters_[outOfTurn].TypeData) {
           case TYPE_DATA_INT16:
@@ -357,6 +340,9 @@ void DeviceModbus::exchangeTask(void)
           default:
             break;
         }
+      }
+      else {
+        // TODO: Чтение вне очереди
       }
     }
     else {

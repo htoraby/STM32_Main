@@ -150,6 +150,7 @@ enum enPhysic
   PHYSIC_RATE,
   /// Индуктивность Гн
   PHYSIC_INDUNCTANCE,
+
   PHYSIC_LAST
 };
 
@@ -167,7 +168,7 @@ enum enPhysicLength {
 };
 
 enum enPhysicPressure {
-  PRESSURE_MPA = 1,
+  PRESSURE_PA  = 1,
   PRESSURE_ATM = 2,
   PRESSURE_AT  = 3,
   PRESSURE_BAR = 4,

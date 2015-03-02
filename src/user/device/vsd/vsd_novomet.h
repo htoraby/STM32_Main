@@ -106,6 +106,8 @@ class VsdNovomet: public Vsd
 
         void updateParameters();
 
+        void initParameters();
+
         /*!
          * \brief checkInvertorStatus
          * Метод проверки флага в регистре статуса инвертора
