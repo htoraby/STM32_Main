@@ -110,24 +110,35 @@ float Vsd::getCurrentFreq()
 
 void Vsd::initParameters()
 {
-  // Пустой элемент массива
-  parameters_[VSD_BEGIN - VSD_BEGIN].id                = VSD_BEGIN;
-  parameters_[VSD_BEGIN - VSD_BEGIN].access            = ACCESS_ERROR;
-  parameters_[VSD_BEGIN - VSD_BEGIN].operation         = OPERATION_ERROR;
-  parameters_[VSD_BEGIN - VSD_BEGIN].physic            = PHYSIC_ERROR;
-  parameters_[VSD_BEGIN - VSD_BEGIN].validity          = VALIDITY_ERROR;
-  parameters_[VSD_BEGIN - VSD_BEGIN].update            = UPDATE_ERROR;
-  parameters_[VSD_BEGIN - VSD_BEGIN].value         = 0.0;
-  parameters_[VSD_BEGIN - VSD_BEGIN].min           = 0.0;
-  parameters_[VSD_BEGIN - VSD_BEGIN].max           = 0.0;
-  parameters_[VSD_BEGIN - VSD_BEGIN].def           = 0.0;
+  for (unsigned short index = 0; index++; index < (VSD_END - VSD_BEGIN)) {
+    setFieldID(index, index + VSD_BEGIN);
+    setFieldAccess(index, ACCESS_ERROR);
+    setFieldOperation(index, OPERATION_ERROR);
+    setFieldPhysic(index, PHYSIC_ERROR);
+    setFieldMin(index, 0.0);
+    setFieldMax(index, 0.0);
+    setFieldDef(index, 0.0);
+    setFieldValidity(index, VALIDITY_ERROR);
+    setFieldValue(index, 0.0);
+  }
+}
+  /*
+  parameters_[index].id         = VSD_BEGIN;
+  parameters_[index].access     = ACCESS_ERROR;
+  parameters_[index].operation  = OPERATION_ERROR;
+  parameters_[index].physic     = PHYSIC_ERROR;
+  parameters_[index].visual     = VISUAL_ERROR;
+  parameters_[index].min        = 0.0;
+  parameters_[index].max        = 0.0;
+  parameters_[index].def        = 0.0;
+  parameters_[index].validity   = VALIDITY_ERROR;
+  parameters_[index].value      = 0.0;
   // Индекс "массивного параметра"
   parameters_[VSD_INDEX - VSD_BEGIN].id                = VSD_INDEX;
   parameters_[VSD_INDEX - VSD_BEGIN].access            = ACCESS_OPERATOR;
   parameters_[VSD_INDEX - VSD_BEGIN].operation         = OPERATION_LIMITED;
   parameters_[VSD_INDEX - VSD_BEGIN].physic            = PHYSIC_NUMERIC;
   parameters_[VSD_INDEX - VSD_BEGIN].validity          = VALIDITY_ERROR;
-  parameters_[VSD_INDEX - VSD_BEGIN].update            = UPDATE_ERROR;
   parameters_[VSD_INDEX - VSD_BEGIN].value         = 0.0;
   parameters_[VSD_INDEX - VSD_BEGIN].min           = 0.0;
   parameters_[VSD_INDEX - VSD_BEGIN].max           = 5.0;
@@ -138,7 +149,6 @@ void Vsd::initParameters()
   parameters_[VSD_UNIT_SPEED - VSD_BEGIN].operation    = OPERATION_LIMITED;
   parameters_[VSD_UNIT_SPEED - VSD_BEGIN].physic       = PHYSIC_NUMERIC;
   parameters_[VSD_UNIT_SPEED - VSD_BEGIN].validity     = VALIDITY_ERROR;
-  parameters_[VSD_UNIT_SPEED - VSD_BEGIN].update       = UPDATE_ERROR;
   parameters_[VSD_UNIT_SPEED - VSD_BEGIN].value    = 0.0;
   parameters_[VSD_UNIT_SPEED - VSD_BEGIN].min      = 0.0;
   parameters_[VSD_UNIT_SPEED - VSD_BEGIN].max      = 2.0;
@@ -149,7 +159,6 @@ void Vsd::initParameters()
   parameters_[VSD_CONFIG_MODE - VSD_BEGIN].operation   = OPERATION_WRITE;
   parameters_[VSD_CONFIG_MODE - VSD_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[VSD_CONFIG_MODE - VSD_BEGIN].validity    = VALIDITY_ERROR;
-  parameters_[VSD_CONFIG_MODE - VSD_BEGIN].update      = UPDATE_ERROR;
   parameters_[VSD_CONFIG_MODE - VSD_BEGIN].value   = 0.0;
   parameters_[VSD_CONFIG_MODE - VSD_BEGIN].min     = 0.0;
   parameters_[VSD_CONFIG_MODE - VSD_BEGIN].max     = 3.0;
@@ -160,7 +169,6 @@ void Vsd::initParameters()
   parameters_[VSD_CONTROL_MOTOR - VSD_BEGIN].operation = OPERATION_LIMITED;
   parameters_[VSD_CONTROL_MOTOR - VSD_BEGIN].physic    = PHYSIC_NUMERIC;
   parameters_[VSD_CONTROL_MOTOR - VSD_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[VSD_CONTROL_MOTOR - VSD_BEGIN].update    = UPDATE_ERROR;
   parameters_[VSD_CONTROL_MOTOR - VSD_BEGIN].value     = 0.0;
   parameters_[VSD_CONTROL_MOTOR - VSD_BEGIN].min   = 0.0;
   parameters_[VSD_CONTROL_MOTOR - VSD_BEGIN].max   = 3.0;
@@ -171,7 +179,6 @@ void Vsd::initParameters()
   parameters_[VSD_TORQUE_CHARACTERISTIC - VSD_BEGIN].operation = OPERATION_WRITE;
   parameters_[VSD_TORQUE_CHARACTERISTIC - VSD_BEGIN].physic    = PHYSIC_NUMERIC;
   parameters_[VSD_TORQUE_CHARACTERISTIC - VSD_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[VSD_TORQUE_CHARACTERISTIC - VSD_BEGIN].update    = UPDATE_ERROR;
   parameters_[VSD_TORQUE_CHARACTERISTIC - VSD_BEGIN].value     = 0.0;
   parameters_[VSD_TORQUE_CHARACTERISTIC - VSD_BEGIN].min   = 0.0;
   parameters_[VSD_TORQUE_CHARACTERISTIC - VSD_BEGIN].max   = 2.0;
@@ -1244,16 +1251,16 @@ void Vsd::initParameters()
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].max    = 2.0;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].def    = 1.0;
   // Косинус Фи
-  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].id        = VSD_MOTOR_COS_PHI;
-  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].access    = ACCESS_OPERATOR;
-  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].operation = OPERATION_WRITE;
-  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].physic    = PHYSIC_NUMERIC;
-  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].update    = UPDATE_ERROR;
-  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].value     = 0.95;
-  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].min   = 0.4;
-  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].max   = 0.95;
-  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].def   = 0.95;
+  parameters_[VSD_MOTOR_CCS_COS_PHI_PHI - VSD_BEGIN].id        = VSD_MOTOR_CCS_COS_PHI_PHI;
+  parameters_[VSD_MOTOR_CCS_COS_PHI_PHI - VSD_BEGIN].access    = ACCESS_OPERATOR;
+  parameters_[VSD_MOTOR_CCS_COS_PHI_PHI - VSD_BEGIN].operation = OPERATION_WRITE;
+  parameters_[VSD_MOTOR_CCS_COS_PHI_PHI - VSD_BEGIN].physic    = PHYSIC_NUMERIC;
+  parameters_[VSD_MOTOR_CCS_COS_PHI_PHI - VSD_BEGIN].validity  = VALIDITY_ERROR;
+  parameters_[VSD_MOTOR_CCS_COS_PHI_PHI - VSD_BEGIN].update    = UPDATE_ERROR;
+  parameters_[VSD_MOTOR_CCS_COS_PHI_PHI - VSD_BEGIN].value     = 0.95;
+  parameters_[VSD_MOTOR_CCS_COS_PHI_PHI - VSD_BEGIN].min   = 0.4;
+  parameters_[VSD_MOTOR_CCS_COS_PHI_PHI - VSD_BEGIN].max   = 0.95;
+  parameters_[VSD_MOTOR_CCS_COS_PHI_PHI - VSD_BEGIN].def   = 0.95;
   // Компенсация напряжения постоянного тока
   parameters_[VSD_DC_COMPENSATION - VSD_BEGIN].id        = VSD_DC_COMPENSATION;
   parameters_[VSD_DC_COMPENSATION - VSD_BEGIN].access    = ACCESS_OPERATOR;
@@ -2476,3 +2483,4 @@ void Vsd::initParameters()
   parameters_[VSD_PHOUT - VSD_BEGIN].max    = 180.0;
   parameters_[VSD_PHOUT - VSD_BEGIN].def    = 0.0;
 }
+*/

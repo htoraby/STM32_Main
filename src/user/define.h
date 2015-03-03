@@ -135,7 +135,7 @@ enum enPhysic
   /// Cкорость
   PHYSIC_SPEED,
   /// Вязкость
-  PHYSIC_VISCOSITY,
+  PHYSIC_VISCCS_COS_PHIITY,
   /// Расход
   PHYSIC_FLOW,
   /// Мощность
@@ -150,6 +150,7 @@ enum enPhysic
   PHYSIC_RATE,
   /// Индуктивность Гн
   PHYSIC_INDUNCTANCE,
+
   PHYSIC_LAST
 };
 
@@ -167,7 +168,7 @@ enum enPhysicLength {
 };
 
 enum enPhysicPressure {
-  PRESSURE_MPA = 1,
+  PRESSURE_PA  = 1,
   PRESSURE_ATM = 2,
   PRESSURE_AT  = 3,
   PRESSURE_BAR = 4,
@@ -197,14 +198,18 @@ enum enPhysicSpeed {
   SPEED_LAST
 };
 
-enum enPhysicPower {
-  POWER_VATT = 1,
-  POWER_KVATT,
+enum enPhysicActivPower {
+  ACTIV_POWER_VATT = 1,
+  ACTIV_POWER_LAST
+};
+
+enum enPhysicFullPower {
+  FULL_POWER_VA = 1,
+  FULL_POWER_LAST
 };
 
 enum enPhysicFrequency {
   FREQUENCY_HZ  = 1,
-  FREQUENCY_KHZ = 2,
   FREQUENCY_LAST
 };
 

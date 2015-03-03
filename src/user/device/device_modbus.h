@@ -14,39 +14,22 @@
 
 /// Структура для хранения полей параметра из карты устройства
 struct ModbusParameter
-{
-  // Уникальный идентификатор параметра
-  int ID;
-  // Адрес регистра в устройстве
-  int Address;
-  // Операции с параметром
-  int Operation;
-  // Физическая величина параметра
-  int Physic;
-  // Единицы измерения параметра
-  int Unit;
-  // Поле состояния параметра
-  int Validity;
-  // Тип данных
-  int TypeData;
-  // Масштаб (коэффициент для приведения к физической единице измерения)
-  float Scale;
-  // Коэффициент преобразования параметра
-  float Coefficient;
-  // Минимальное значение параметра
-  float Minimum;
-  // Максимально значение параметра
-  float Maximum;
-  // Частота опроса параметра
-  int FreqExchange;
-  // Количество запросов к параметру
-  int CntExchange;
-  // Приоритет
-  int Priority;
-  // Флаг
-  int Flag;
-  // Считываемое значение
-  unTypeData Value;
+{  
+  int ID;                       /// Уникальный идентификатор параметра
+  int Address;                  /// Адрес регистра в устройстве
+  int Operation;                /// Операции с параметром
+  int Physic;                   /// Физическая величина параметра
+  int Unit;                     /// Единицы измерения параметра
+  int TypeData;                 /// Тип данных
+  float Coefficient;            /// Коэффициент преобразования параметра
+  float Minimum;                /// Минимальное значение параметра
+  float Maximum;                /// Максимально значение параметра
+  float Default;                /// Значение по умолчанию
+  int FreqExchange;             /// Количество раз во сколько циклов нужно опрашивать параметр
+  int CntExchange;              /// Количество циклов когда проверяли нужно ли опрашивать параметр
+  int Command;                  /// Команда читать или писать
+  int Validity;                 /// Флаг получено ли значение параметра
+  unTypeData Value;             /// Значение, записываемое или считанное
 };
 
 /*!
@@ -120,67 +103,11 @@ public:
   int getFieldUnit(int Index);
 
   /*!
-   * \brief Метод получения Validity параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
-   * \return поле Validity
-   */
-  int getFieldValidity(int Index);
-
-  /*!
    * \brief Метод получения TypeData параметра по индексу в массиве параметров
    * \param Index индекс параметра в массиве
    * \return поле TypeData
    */
   int getFieldTypeData(int Index);
-
-  /*!
-   * \brief Метод получения FreqExchange параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
-   * \return поле FreqExchange
-   */
-  int getFieldFreqExchange(int Index);
-
-  /*!
-   * \brief Метод получения CntExchange параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
-   * \return поле CntExchange
-   */
-  int getFieldCntExchange(int Index);
-
-  /*!
-   * \brief Метод получения Priority параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
-   * \return поле Priority
-   */
-  int getFieldPriority(int Index);
-
-  /*!
-   * \brief Метод присвоения Priority параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
-   * \param Priority Присваиваемый приоритет
-   */
-  void setFieldPriority(int Index, int Priority);
-
-  /*!
-   * \brief Метод получения Flag параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
-   * \return поле Flag
-   */
-  int getFieldFlag(int Index);
-
-  /*!
-   * \brief Метод присвоения Flag параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
-   * \param Flag Присваиваемый флаг
-   */
-  void setFieldFlag(int Index, int Flag);
-
-  /*!
-   * \brief Метод получения Scale параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
-   * \return поле Scale
-   */
-  float getFieldScale(int Index);
 
   /*!
    * \brief Метод получения Coefficient параметра по индексу в массиве параметров
@@ -203,12 +130,65 @@ public:
    */
   float getFieldMaximum(int Index);
 
+  float getFieldDefault(int Index);
+
+  /*!
+   * \brief Метод получения FreqExchange параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле FreqExchange
+   */
+  int getFieldFreqExchange(int Index);
+
+  /*!
+   * \brief Метод получения CntExchange параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле CntExchange
+   */
+  int getFieldCntExchange(int Index);
+
+  /*!
+   * \brief Метод задания CntExchange параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле CntExchange
+   */
+  int setFieldCntExchange(int Index, int CntExchange);
+
+  /*!
+   * \brief Метод получения Command параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Command
+   */
+  int getFieldCommand(int Index);
+
+  /*!
+   * \brief Метод присвоения Command параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \param Command Присваиваемая команда
+   */
+  int setFieldCommand(int Index, int Command);
+
+    /*!
+   * \brief Метод получения Validity параметра по индексу в массиве параметров
+   * \param Index индекс параметра в массиве
+   * \return поле Validity
+   */
+  int getFieldValidity(int Index);
+
+  /*!
+   * \brief Метод задания Validity параметра по индексу в массиве
+   * \param Index индекс параметра в массиве
+   * \param значение Validity
+   * \return
+   */
+  int setFieldValidity(int Index, int Validity);
+
   /*!
    * \brief Метод получения Value параметра по индексу в массиве параметров
    * \param Index индекс параметра в массиве
    * \return поле Value
    */
   unTypeData getFieldValue(int Index);
+
 
   /*!
    * \brief Метод получения указателя на параметр по индексу

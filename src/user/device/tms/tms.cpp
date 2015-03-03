@@ -20,15 +20,12 @@ Tms::~Tms()
 
 void Tms::initParameters()
 {
-
-
   // Пустой элемент массива
   parameters_[TMS_BEGIN - TMS_BEGIN].id            = TMS_BEGIN;
   parameters_[TMS_BEGIN - TMS_BEGIN].access        = ACCESS_ERROR;
   parameters_[TMS_BEGIN - TMS_BEGIN].operation     = OPERATION_ERROR;
   parameters_[TMS_BEGIN - TMS_BEGIN].physic        = PHYSIC_ERROR;
   parameters_[TMS_BEGIN - TMS_BEGIN].validity      = VALIDITY_ERROR;
-  parameters_[TMS_BEGIN - TMS_BEGIN].update        = UPDATE_ERROR;
   parameters_[TMS_BEGIN - TMS_BEGIN].value         = 0.0;
   parameters_[TMS_BEGIN - TMS_BEGIN].min           = 0.0;
   parameters_[TMS_BEGIN - TMS_BEGIN].max           = 0.0;

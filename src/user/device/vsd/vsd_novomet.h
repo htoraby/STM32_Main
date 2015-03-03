@@ -100,7 +100,7 @@ public:
   virtual ~VsdNovomet();
 
   void initModbusParameters();
-
+  void initParameters();
   void updateParameters();
 
   /*!
@@ -220,7 +220,6 @@ public:
 
 private:
   ModbusParameter ModbusParameters[94];
-
   DeviceModbus *dm_;
 
 };

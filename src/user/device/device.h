@@ -21,35 +21,15 @@ extern float Units[28][6][2];
  */
 struct parameter
 {
-  //! Уникальный идентификатор параметра заменяет название параметра равен
-  //! одному из кодов из enum enID
-  unsigned short id;
-  //! Уровень доступа к параметру каждый параметр имеет уровень доступа равен
-  //! одному из кодов из enAccess
-  unsigned char access;
-  //! Операции с параметром: чтение, запись, запись во время останова равен
-  //! одному из кодов из enOperations
-  unsigned char operation;
-  //! Физическая величина параметра: длина, время и т.д. равен
-  //! одному из кодов из enPhysic
-  unsigned char physic;
-  //! Поле состояния параметра: true если значение параметра валидно и false
-  //! если значение параметра не валидно, равен одному из кодов enValidity
-  unsigned char validity;
-  //! Поле обновления параметра: false когда изменили и ещё не получили
-  //! подтверждения от устройства
-  unsigned char update;
-  //! Значение параметра, для единообразия значения всех параметров будем
-  //! хранить в типе double
-  float value;
-  //! Минимально допустимое значение для этого параметра. Используется для
-  //! вывода диапазона значений на экран и проверке вводимых значений
-  float min;
-  //! Максимально допустимое значение для этого параметра. Используется для
-  //! вывода диапазона значений на экран и проверке вводимых значений
-  float max;
-  //! Значение по умолчанию
-  float def;
+  unsigned short id;        /// Уникальный идентификатор параметра заменяет название параметра равен
+  unsigned char access;     /// Уровень доступа к параметру
+  unsigned char operation;  /// Операции с параметром: чтение, запись, запись во время останова
+  unsigned char physic;     /// Физический смысл
+  float min;                /// Минимально допустимое значение для этого параметра.
+  float max;                /// Максимально допустимое значение для этого параметра.
+  float def;                /// Значение по умолчанию
+  unsigned char validity;   /// Валидность параметра
+  float value;              /// Значение параметра, для единообразия значения всех параметров будем
 };
 
 /*!
@@ -73,7 +53,7 @@ public:
   /*!
    * \brief Инициализация массива параметров
    */
-  virtual void initParameters() = 0;
+  void initParameters();
 
   /*!
    * \brief Метод создания задач для FreeRTOS
@@ -133,15 +113,7 @@ public:
   StatusType readParameters();
 
 protected:
-  //! Начальный адрес массива параметров из списка enID
-  uint32_t startAddrParams_;
 
-  //! Указатель на массив параметров устройства
-  parameter *parameters_;
-
-  uint16_t countParameter_;
-
-private:
   /*!
    * \brief Метод получения ID параметра по индексу в массиве параметров
    * \param Index индекс параметра в массиве
@@ -255,14 +227,8 @@ private:
   void setFieldValidity(unsigned short index, unsigned char validity);
 
   /*!
-   * \brief Метод присвоения поля Update в массиве параметров по индексу
-   * \param Index индекс параметра в массиве
-   * \param Update присваемое значение
-   */
-  void setFieldUpdate(unsigned short index, unsigned char update);
-
-  /*!
-   * \brief Метод присвоения поля value в массиве параметров по индексу
+   * \brief setFieldValue
+   * Метод присвоения поля value в массиве параметров по индексу
    * \param index индекс параметра в массиве
    * \param value присваемое значение
    */
@@ -295,6 +261,21 @@ private:
    * \param param присваемое значение
    */
   void setFieldAll(unsigned short index, parameter param);
+
+  float applyCoef(float value, float coef);
+
+  float applyUnit(float value, int physic, int units);
+
+  //! Начальный адрес массива параметров из списка enID
+  uint32_t startAddrParams_;
+
+  //! Указатель на массив параметров устройства
+  parameter *parameters_;
+
+  uint16_t countParameter_;
+
+private:
+
 
 };
 
