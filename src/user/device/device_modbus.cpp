@@ -295,8 +295,6 @@ void DeviceModbus::exchangeTask(void)
 
   while (1) {
     osDelay(100);
-    putMessageUpdateID(VSD_INVERTOR_CONTROL);
-    continue;
 
     // Проверяем очередь параметров для обработки вне очереди
     int outOfTurn = getMessageOutOfTurn();

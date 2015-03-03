@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/stm32f4/conf/FreeRTOSConfig.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  <td id="projectlogo"><img alt="Logo" src="logo.ico"/></td>
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/stm32f4/conf/FreeRTOSConfig.h</div>  </div>
+</div>
+<div class="contents">
+<a href="_free_r_t_o_s_config_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
+<a name="l00002"></a>00002 <span class="comment">    FreeRTOS V8.1.2 - Copyright (C) 2014 Real Time Engineers Ltd.</span>
+<a name="l00003"></a>00003 <span class="comment">    All rights reserved</span>
+<a name="l00004"></a>00004 <span class="comment"></span>
+<a name="l00005"></a>00005 <span class="comment">    VISIT http://www.FreeRTOS.org TO ENSURE YOU ARE USING THE LATEST VERSION.</span>
+<a name="l00006"></a>00006 <span class="comment"></span>
+<a name="l00007"></a>00007 <span class="comment">    ***************************************************************************</span>
+<a name="l00008"></a>00008 <span class="comment">     *                                                                       *</span>
+<a name="l00009"></a>00009 <span class="comment">     *    FreeRTOS provides completely free yet professionally developed,    *</span>
+<a name="l00010"></a>00010 <span class="comment">     *    robust, strictly quality controlled, supported, and cross          *</span>
+<a name="l00011"></a>00011 <span class="comment">     *    platform software that has become a de facto standard.             *</span>
+<a name="l00012"></a>00012 <span class="comment">     *                                                                       *</span>
+<a name="l00013"></a>00013 <span class="comment">     *    Help yourself get started quickly and support the FreeRTOS         *</span>
+<a name="l00014"></a>00014 <span class="comment">     *    project by purchasing a FreeRTOS tutorial book, reference          *</span>
+<a name="l00015"></a>00015 <span class="comment">     *    manual, or both from: http://www.FreeRTOS.org/Documentation        *</span>
+<a name="l00016"></a>00016 <span class="comment">     *                                                                       *</span>
+<a name="l00017"></a>00017 <span class="comment">     *    Thank you!                                                         *</span>
+<a name="l00018"></a>00018 <span class="comment">     *                                                                       *</span>
+<a name="l00019"></a>00019 <span class="comment">    ***************************************************************************</span>
+<a name="l00020"></a>00020 <span class="comment"></span>
+<a name="l00021"></a>00021 <span class="comment">    This file is part of the FreeRTOS distribution.</span>
+<a name="l00022"></a>00022 <span class="comment"></span>
+<a name="l00023"></a>00023 <span class="comment">    FreeRTOS is free software; you can redistribute it and/or modify it under</span>
+<a name="l00024"></a>00024 <span class="comment">    the terms of the GNU General Public License (version 2) as published by the</span>
+<a name="l00025"></a>00025 <span class="comment">    Free Software Foundation &gt;&gt;!AND MODIFIED BY!&lt;&lt; the FreeRTOS exception.</span>
+<a name="l00026"></a>00026 <span class="comment"></span>
+<a name="l00027"></a>00027 <span class="comment">    &gt;&gt;!   NOTE: The modification to the GPL is included to allow you to     !&lt;&lt;</span>
+<a name="l00028"></a>00028 <span class="comment">    &gt;&gt;!   distribute a combined work that includes FreeRTOS without being   !&lt;&lt;</span>
+<a name="l00029"></a>00029 <span class="comment">    &gt;&gt;!   obliged to provide the source code for proprietary components     !&lt;&lt;</span>
+<a name="l00030"></a>00030 <span class="comment">    &gt;&gt;!   outside of the FreeRTOS kernel.                                   !&lt;&lt;</span>
+<a name="l00031"></a>00031 <span class="comment"></span>
+<a name="l00032"></a>00032 <span class="comment">    FreeRTOS is distributed in the hope that it will be useful, but WITHOUT ANY</span>
+<a name="l00033"></a>00033 <span class="comment">    WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS</span>
+<a name="l00034"></a>00034 <span class="comment">    FOR A PARTICULAR PURPOSE.  Full license text is available from the following</span>
+<a name="l00035"></a>00035 <span class="comment">    link: http://www.freertos.org/a00114.html</span>
+<a name="l00036"></a>00036 <span class="comment"></span>
+<a name="l00037"></a>00037 <span class="comment">    1 tab == 4 spaces!</span>
+<a name="l00038"></a>00038 <span class="comment"></span>
+<a name="l00039"></a>00039 <span class="comment">    ***************************************************************************</span>
+<a name="l00040"></a>00040 <span class="comment">     *                                                                       *</span>
+<a name="l00041"></a>00041 <span class="comment">     *    Having a problem?  Start by reading the FAQ &quot;My application does   *</span>
+<a name="l00042"></a>00042 <span class="comment">     *    not run, what could be wrong?&quot;                                     *</span>
+<a name="l00043"></a>00043 <span class="comment">     *                                                                       *</span>
+<a name="l00044"></a>00044 <span class="comment">     *    http://www.FreeRTOS.org/FAQHelp.html                               *</span>
+<a name="l00045"></a>00045 <span class="comment">     *                                                                       *</span>
+<a name="l00046"></a>00046 <span class="comment">    ***************************************************************************</span>
+<a name="l00047"></a>00047 <span class="comment"></span>
+<a name="l00048"></a>00048 <span class="comment">    http://www.FreeRTOS.org - Documentation, books, training, latest versions,</span>
+<a name="l00049"></a>00049 <span class="comment">    license and Real Time Engineers Ltd. contact details.</span>
+<a name="l00050"></a>00050 <span class="comment"></span>
+<a name="l00051"></a>00051 <span class="comment">    http://www.FreeRTOS.org/plus - A selection of FreeRTOS ecosystem products,</span>
+<a name="l00052"></a>00052 <span class="comment">    including FreeRTOS+Trace - an indispensable productivity tool, a DOS</span>
+<a name="l00053"></a>00053 <span class="comment">    compatible FAT file system, and our tiny thread aware UDP/IP stack.</span>
+<a name="l00054"></a>00054 <span class="comment"></span>
+<a name="l00055"></a>00055 <span class="comment">    http://www.OpenRTOS.com - Real Time Engineers ltd license FreeRTOS to High</span>
+<a name="l00056"></a>00056 <span class="comment">    Integrity Systems to sell under the OpenRTOS brand.  Low cost OpenRTOS</span>
+<a name="l00057"></a>00057 <span class="comment">    licenses offer ticketed support, indemnification and middleware.</span>
+<a name="l00058"></a>00058 <span class="comment"></span>
+<a name="l00059"></a>00059 <span class="comment">    http://www.SafeRTOS.com - High Integrity Systems also provide a safety</span>
+<a name="l00060"></a>00060 <span class="comment">    engineered and independently SIL3 certified version for use in safety and</span>
+<a name="l00061"></a>00061 <span class="comment">    mission critical applications that require provable dependability.</span>
+<a name="l00062"></a>00062 <span class="comment"></span>
+<a name="l00063"></a>00063 <span class="comment">    1 tab == 4 spaces!</span>
+<a name="l00064"></a>00064 <span class="comment">*/</span>
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 <span class="preprocessor">#ifndef FREERTOS_CONFIG_H</span>
+<a name="l00068"></a>00068 <span class="preprocessor"></span><span class="preprocessor">#define FREERTOS_CONFIG_H</span>
+<a name="l00069"></a>00069 <span class="preprocessor"></span>
+<a name="l00070"></a>00070 <span class="comment">/*-----------------------------------------------------------</span>
+<a name="l00071"></a>00071 <span class="comment"> * Application specific definitions.</span>
+<a name="l00072"></a>00072 <span class="comment"> *</span>
+<a name="l00073"></a>00073 <span class="comment"> * These definitions should be adjusted for your particular hardware and</span>
+<a name="l00074"></a>00074 <span class="comment"> * application requirements.</span>
+<a name="l00075"></a>00075 <span class="comment"> *</span>
+<a name="l00076"></a>00076 <span class="comment"> * THESE PARAMETERS ARE DESCRIBED WITHIN THE &#39;CONFIGURATION&#39; SECTION OF THE</span>
+<a name="l00077"></a>00077 <span class="comment"> * FreeRTOS API DOCUMENTATION AVAILABLE ON THE FreeRTOS.org WEB SITE.</span>
+<a name="l00078"></a>00078 <span class="comment"> *</span>
+<a name="l00079"></a>00079 <span class="comment"> * See http://www.freertos.org/a00110.html.</span>
+<a name="l00080"></a>00080 <span class="comment"> *----------------------------------------------------------*/</span>
+<a name="l00081"></a>00081  
+<a name="l00082"></a>00082 <span class="comment">/* Ensure stdint is only used by the compiler, and not the assembler. */</span>
+<a name="l00083"></a>00083 <span class="preprocessor">#if defined(__ICCARM__) || defined(__CC_ARM) || defined(__GNUC__)</span>
+<a name="l00084"></a>00084 <span class="preprocessor"></span><span class="preprocessor">    #include &lt;stdint.h&gt;</span>
+<a name="l00085"></a>00085     <span class="keyword">extern</span> uint32_t <a class="code" href="group___s_t_m32_f4xx___system___private___variables.html#gaa3cd3e43291e81e795d642b79b6088e6">SystemCoreClock</a>;
+<a name="l00086"></a>00086 <span class="preprocessor">#endif</span>
+<a name="l00087"></a>00087 <span class="preprocessor"></span>
+<a name="l00088"></a><a class="code" href="_free_r_t_o_s_config_8h.html#adde83486022745409c40605922b0bdd6">00088</a> <span class="preprocessor">#define configUSE_PREEMPTION              1</span>
+<a name="l00089"></a><a class="code" href="_free_r_t_o_s_config_8h.html#ac637ae45863c19fa2e919db0ed49301f">00089</a> <span class="preprocessor"></span><span class="preprocessor">#define configUSE_IDLE_HOOK               0</span>
+<a name="l00090"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a23c5922c077106fad3f70b54d9071466">00090</a> <span class="preprocessor"></span><span class="preprocessor">#define configUSE_TICK_HOOK               0</span>
+<a name="l00091"></a><a class="code" href="_free_r_t_o_s_config_8h.html#aa68082df879e6fc96bcb9b26513639e7">00091</a> <span class="preprocessor"></span><span class="preprocessor">#define configCPU_CLOCK_HZ                (SystemCoreClock)</span>
+<a name="l00092"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a2f0258dd1e3b877e5bc013be54c2db6a">00092</a> <span class="preprocessor"></span><span class="preprocessor">#define configTICK_RATE_HZ                ((TickType_t)1000)</span>
+<a name="l00093"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a9a78f5ac61e6cb172dadf2a51f11db38">00093</a> <span class="preprocessor"></span><span class="preprocessor">#define configMAX_PRIORITIES              (7)</span>
+<a name="l00094"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a6c534a6cf8a00528fe0be42083484f9a">00094</a> <span class="preprocessor"></span><span class="preprocessor">#define configMINIMAL_STACK_SIZE          ((uint16_t)128)</span>
+<a name="l00095"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a9f213227674effff0122a75d94d87938">00095</a> <span class="preprocessor"></span><span class="preprocessor">#define configTOTAL_HEAP_SIZE             ((size_t)102400)</span>
+<a name="l00096"></a><a class="code" href="_free_r_t_o_s_config_8h.html#ac388dc4041aab6997348828eb27fc1a8">00096</a> <span class="preprocessor"></span><span class="preprocessor">#define configMAX_TASK_NAME_LEN           (20)</span>
+<a name="l00097"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a27f5ee137dc9f125681a31f0b0a4b3be">00097</a> <span class="preprocessor"></span><span class="preprocessor">#define configUSE_TRACE_FACILITY          1</span>
+<a name="l00098"></a><a class="code" href="_free_r_t_o_s_config_8h.html#aac311ed9b9e5ae4d2d9648b33a24acce">00098</a> <span class="preprocessor"></span><span class="preprocessor">#define configUSE_16_BIT_TICKS            0</span>
+<a name="l00099"></a><a class="code" href="_free_r_t_o_s_config_8h.html#ad6a5061a742fee450ac455e4ad0f4b6c">00099</a> <span class="preprocessor"></span><span class="preprocessor">#define configIDLE_SHOULD_YIELD           1</span>
+<a name="l00100"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a543bf3c79008974cc1d36bab51d94fbf">00100</a> <span class="preprocessor"></span><span class="preprocessor">#define configUSE_MUTEXES                 1</span>
+<a name="l00101"></a><a class="code" href="_free_r_t_o_s_config_8h.html#aa4b5138c4e42a180f0abd4f2455f90fb">00101</a> <span class="preprocessor"></span><span class="preprocessor">#define configQUEUE_REGISTRY_SIZE         8</span>
+<a name="l00102"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a847511ee433494b1e32c90602c967ae7">00102</a> <span class="preprocessor"></span><span class="preprocessor">#define configCHECK_FOR_STACK_OVERFLOW    0</span>
+<a name="l00103"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a9fe02d866cb1c4fbaa0c3de79f53d42d">00103</a> <span class="preprocessor"></span><span class="preprocessor">#define configUSE_RECURSIVE_MUTEXES       1</span>
+<a name="l00104"></a><a class="code" href="_free_r_t_o_s_config_8h.html#abdf48e7c9cf513f083aa9cbed0dd7cd7">00104</a> <span class="preprocessor"></span><span class="preprocessor">#define configUSE_MALLOC_FAILED_HOOK      0</span>
+<a name="l00105"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a2eb2a0baf886a7adab15b5735029434b">00105</a> <span class="preprocessor"></span><span class="preprocessor">#define configUSE_APPLICATION_TASK_TAG    0</span>
+<a name="l00106"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a55778995203c57369d2fbfb10224943d">00106</a> <span class="preprocessor"></span><span class="preprocessor">#define configUSE_COUNTING_SEMAPHORES     1</span>
+<a name="l00107"></a><a class="code" href="_free_r_t_o_s_config_8h.html#ad8081822f3ebc7c917b63bd7bdd7bc58">00107</a> <span class="preprocessor"></span><span class="preprocessor">#define configGENERATE_RUN_TIME_STATS     0</span>
+<a name="l00108"></a>00108 <span class="preprocessor"></span>
+<a name="l00109"></a>00109 <span class="comment">/* Co-routine definitions. */</span>
+<a name="l00110"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a57990715eb06402474b8b47e1d562616">00110</a> <span class="preprocessor">#define configUSE_CO_ROUTINES           0</span>
+<a name="l00111"></a><a class="code" href="_free_r_t_o_s_config_8h.html#ae8f3fd645e6e78dfeb8a6e874af6195a">00111</a> <span class="preprocessor"></span><span class="preprocessor">#define configMAX_CO_ROUTINE_PRIORITIES (2)</span>
+<a name="l00112"></a>00112 <span class="preprocessor"></span>
+<a name="l00113"></a>00113 <span class="comment">/* Software timer definitions. */</span>
+<a name="l00114"></a><a class="code" href="_free_r_t_o_s_config_8h.html#ac342ae309b0c53828d2ecad3e6de355b">00114</a> <span class="preprocessor">#define configUSE_TIMERS             1</span>
+<a name="l00115"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a05c75ff9029ba3f0ab5bde9196f1e873">00115</a> <span class="preprocessor"></span><span class="preprocessor">#define configTIMER_TASK_PRIORITY    (2)</span>
+<a name="l00116"></a><a class="code" href="_free_r_t_o_s_config_8h.html#abb9aa0f31c1f3b14a15083a3c6120918">00116</a> <span class="preprocessor"></span><span class="preprocessor">#define configTIMER_QUEUE_LENGTH     10</span>
+<a name="l00117"></a><a class="code" href="_free_r_t_o_s_config_8h.html#aed7c7ebcdee603583a55e8ce04e55841">00117</a> <span class="preprocessor"></span><span class="preprocessor">#define configTIMER_TASK_STACK_DEPTH ( configMINIMAL_STACK_SIZE * 2 )</span>
+<a name="l00118"></a>00118 <span class="preprocessor"></span>
+<a name="l00119"></a>00119 <span class="comment">/* Set the following definitions to 1 to include the API function, or zero</span>
+<a name="l00120"></a>00120 <span class="comment">to exclude the API function. */</span>
+<a name="l00121"></a><a class="code" href="_free_r_t_o_s_config_8h.html#ad6858ac8aaf726007fd19752956ef1bd">00121</a> <span class="preprocessor">#define INCLUDE_vTaskPrioritySet      1</span>
+<a name="l00122"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a1279eb797355460aeeec06aa524e91df">00122</a> <span class="preprocessor"></span><span class="preprocessor">#define INCLUDE_uxTaskPriorityGet     1</span>
+<a name="l00123"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a5ae1434fdf995108dc749ff9329f53bd">00123</a> <span class="preprocessor"></span><span class="preprocessor">#define INCLUDE_vTaskDelete           1</span>
+<a name="l00124"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a7ee138825e57f243c8ee5fd4207b9e26">00124</a> <span class="preprocessor"></span><span class="preprocessor">#define INCLUDE_vTaskCleanUpResources 0</span>
+<a name="l00125"></a><a class="code" href="_free_r_t_o_s_config_8h.html#aef8fbb97819ad3d962f334ac298206d1">00125</a> <span class="preprocessor"></span><span class="preprocessor">#define INCLUDE_vTaskSuspend          1</span>
+<a name="l00126"></a><a class="code" href="_free_r_t_o_s_config_8h.html#ae8459bfd5b428319bb10de9f504a53aa">00126</a> <span class="preprocessor"></span><span class="preprocessor">#define INCLUDE_vTaskDelayUntil       0</span>
+<a name="l00127"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a24361a6eb816a965f1ee4e2e08e364f8">00127</a> <span class="preprocessor"></span><span class="preprocessor">#define INCLUDE_vTaskDelay            1</span>
+<a name="l00128"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a9ed60ede556830584e6bfd4a3ab4f9de">00128</a> <span class="preprocessor"></span><span class="preprocessor">#define INCLUDE_xTaskGetSchedulerState 1</span>
+<a name="l00129"></a>00129 <span class="preprocessor"></span>
+<a name="l00130"></a>00130 <span class="comment">/* Cortex-M specific definitions. */</span>
+<a name="l00131"></a>00131 <span class="preprocessor">#ifdef __NVIC_PRIO_BITS</span>
+<a name="l00132"></a>00132 <span class="preprocessor"></span> <span class="comment">/* __BVIC_PRIO_BITS will be specified when CMSIS is being used. */</span>
+<a name="l00133"></a>00133 <span class="preprocessor"> #define configPRIO_BITS         __NVIC_PRIO_BITS</span>
+<a name="l00134"></a>00134 <span class="preprocessor"></span><span class="preprocessor">#else</span>
+<a name="l00135"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a5796db11ec6f9aa38d017d2ac393c5ba">00135</a> <span class="preprocessor"></span><span class="preprocessor"> #define configPRIO_BITS         4        </span><span class="comment">/* 15 priority levels */</span>
+<a name="l00136"></a>00136 <span class="preprocessor">#endif</span>
+<a name="l00137"></a>00137 <span class="preprocessor"></span>
+<a name="l00138"></a>00138 <span class="comment">/* The lowest interrupt priority that can be used in a call to a &quot;set priority&quot;</span>
+<a name="l00139"></a>00139 <span class="comment">function. */</span>
+<a name="l00140"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a10da20f180ec9bd131b0052a802dbc39">00140</a> <span class="preprocessor">#define configLIBRARY_LOWEST_INTERRUPT_PRIORITY   0xf</span>
+<a name="l00141"></a>00141 <span class="preprocessor"></span>
+<a name="l00142"></a>00142 <span class="comment">/* The highest interrupt priority that can be used by any interrupt service</span>
+<a name="l00143"></a>00143 <span class="comment">routine that makes calls to interrupt safe FreeRTOS API functions.  DO NOT CALL</span>
+<a name="l00144"></a>00144 <span class="comment">INTERRUPT SAFE FREERTOS API FUNCTIONS FROM ANY INTERRUPT THAT HAS A HIGHER</span>
+<a name="l00145"></a>00145 <span class="comment">PRIORITY THAN THIS! (higher priorities are lower numeric values. */</span>
+<a name="l00146"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a2254bd235d882be3061bcad0b1e8be98">00146</a> <span class="preprocessor">#define configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY 5</span>
+<a name="l00147"></a>00147 <span class="preprocessor"></span>
+<a name="l00148"></a>00148 <span class="comment">/* Interrupt priorities used by the kernel port layer itself.  These are generic</span>
+<a name="l00149"></a>00149 <span class="comment">to all Cortex-M ports, and do not rely on any particular library functions. */</span>
+<a name="l00150"></a><a class="code" href="_free_r_t_o_s_config_8h.html#ac42cff506ad61d4174fa23e952e3225e">00150</a> <span class="preprocessor">#define configKERNEL_INTERRUPT_PRIORITY                 ( configLIBRARY_LOWEST_INTERRUPT_PRIORITY &lt;&lt; (8 - configPRIO_BITS) )</span>
+<a name="l00151"></a>00151 <span class="preprocessor"></span><span class="comment">/* !!!! configMAX_SYSCALL_INTERRUPT_PRIORITY must not be set to zero !!!!</span>
+<a name="l00152"></a>00152 <span class="comment">See http://www.FreeRTOS.org/RTOS-Cortex-M3-M4.html. */</span>
+<a name="l00153"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a54bfc31c410ee452577a25a4552c3704">00153</a> <span class="preprocessor">#define configMAX_SYSCALL_INTERRUPT_PRIORITY    ( configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY &lt;&lt; (8 - configPRIO_BITS) )</span>
+<a name="l00154"></a>00154 <span class="preprocessor"></span>
+<a name="l00155"></a>00155 <span class="comment">/* Normal assert() semantics without relying on the provision of an assert.h</span>
+<a name="l00156"></a>00156 <span class="comment">header file. */</span>
+<a name="l00157"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a228c70cd48927d6ab730ed1a6dfbe35f">00157</a> <span class="preprocessor">#define configASSERT( x ) if( ( x ) == 0 ) { taskDISABLE_INTERRUPTS(); for( ;; ); }</span>
+<a name="l00158"></a>00158 <span class="preprocessor"></span>
+<a name="l00159"></a>00159 <span class="comment">/* Definitions that map the FreeRTOS port interrupt handlers to their CMSIS</span>
+<a name="l00160"></a>00160 <span class="comment">standard names. */</span>
+<a name="l00161"></a><a class="code" href="_free_r_t_o_s_config_8h.html#ad43047b3ea0a146673e30637488bf754">00161</a> <span class="preprocessor">#define vPortSVCHandler    SVC_Handler</span>
+<a name="l00162"></a><a class="code" href="_free_r_t_o_s_config_8h.html#a6f30022da7d797dd31f1b8a11cae9a35">00162</a> <span class="preprocessor"></span><span class="preprocessor">#define xPortPendSVHandler PendSV_Handler</span>
+<a name="l00163"></a>00163 <span class="preprocessor"></span>
+<a name="l00164"></a>00164 <span class="comment">/* IMPORTANT: This define MUST be commented when used with STM32Cube firmware, </span>
+<a name="l00165"></a>00165 <span class="comment">              to prevent overwriting SysTick_Handler defined within STM32Cube HAL */</span>
+<a name="l00166"></a>00166 <span class="comment">/* #define xPortSysTickHandler SysTick_Handler */</span>
+<a name="l00167"></a>00167 
+<a name="l00168"></a>00168 <span class="preprocessor">#endif </span><span class="comment">/* FREERTOS_CONFIG_H */</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Пн 2 Мар 2015 15:35:47. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

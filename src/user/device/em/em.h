@@ -3,13 +3,13 @@
 
 #include "device.h"
 
-// Максимальное время ожидания ответа от устройства в мс
+//! Максимальное время ожидания ответа от устройства в мс
 #define EM_ANSWER_TIMEOUT                 500
-// Максимальное время между байтами в ответе в мс
+//! Максимальное время между байтами в ответе в мс
 #define EM_TIME_END_PACKAGE               5
-// Минимальная возможная длина "корректного" ответа
+//! Минимальная возможная длина "корректного" ответа
 #define EM_MIN_LENGHT_PACKAGE             5
-// Длина пакета
+//! Длина пакета
 #define EM_MAX_DATA_SIZE                  256
 
 /*!
@@ -28,42 +28,47 @@ public:
 
   /*!
    * \brief Открытие порта Uart
-   * \param
-   * \param
-   * \param
+   * \param baudRate - скорость
+   * \param parity - чётность
+   * \param stopBits - стоп бит
    */
   void openPort(uint32_t baudRate, uint32_t parity = UART_PARITY_NONE, uint32_t stopBits = UART_STOPBITS_1);
 
   /*!
+   * \brief Закрытие порта Uart
+   */
+  void closePort();
+
+  /*!
    * \brief Отправка данных в порт Uart
-   * \param
-   * \param
+   * \param data - указатель на данные
+   * \param count - количество отправляемых байт
    * \return StatusType - ошибка или ок
    */
   StatusType sendUart(uint8_t *data, int count);
 
   /*!
    * \brief Приём данных из порта Uart
-   * \param
+   * \param data - указатель на данные
    * \return Количество принятых данных
    */
-  int reseiveUart(uint8_t *data);
+  int receiveUart(uint8_t *data);
 
   /*!
    * \brief Метод задания коэффициентов трансформации
-   * \return
+   * \return Код результата операции
    */
   int setCoefficientTransformation();
 
   /*!
    * \brief Метод задания коэффициента трансформации тока
-   * \return
+   * \return Код результата операции
    */
   int setCoefficientTransforamationCurrent();
 
   /*!
    * \brief Метод задания коэффициента трансформации напряжения
-   * \return
+   * \return Код результата операции
    */
   int setCoefficientTransforamationVoltage();
 

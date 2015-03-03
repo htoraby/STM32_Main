@@ -39,6 +39,11 @@ public:
   void init();
 
   /*!
+   * \brief Основная задача обработки СУ
+   */
+  void mainTask();
+
+  /*!
    * \brief Задача обработки очереди событий включения/мигания LED
    */
   void ledConditionTask();
@@ -48,9 +53,6 @@ public:
    */
   void vsdConditionTask();
 
-  /*!
-   * \brief Инициализация массива параметров
-   */
   void initParameters();
 
   /*!

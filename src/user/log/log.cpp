@@ -2,6 +2,7 @@
 #include "gpio.h"
 
 uint32_t Log::id_ = 0;
+uint32_t Log::idDebug_ = 0;
 
 Log::Log(TypeLog type)
   : type_(type)
@@ -97,10 +98,17 @@ void Log::write(uint8_t *data, uint32_t size, bool saveId, bool endLog)
   }
 
   // Сохранение глабального индекса записей
-  if (saveId) {
-    if (id_ == 0xFFFFFFFF)
-      id_ = 0;
-    framWriteData(IdLogAddrFram, (uint8_t*)&id_, 4);
+  if (saveId) {   
+    if (type_ != DebugTypeLog) {
+      if (id_ == 0xFFFFFFFF)
+        id_ = 0;
+      framWriteData(IdLogAddrFram, (uint8_t*)&id_, 4);
+    }
+    else {
+      if (idDebug_ == 0xFFFFFFFF)
+        idDebug_ = 0;
+      framWriteData(IdDebugLogAddrFram, (uint8_t*)&idDebug_, 4);
+    }
   }
   // Сохранение адреса с которого начнётся следующая запись
   framWriteData(addrFram_, (uint8_t*)&address_, 4);

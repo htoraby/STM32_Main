@@ -1,0 +1,635 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/test/test.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  <td id="projectlogo"><img alt="Logo" src="logo.ico"/></td>
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/test/test.cpp</div>  </div>
+</div>
+<div class="contents">
+<a href="test_8cpp.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="test_8h.html">test.h</a>&quot;</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#include &quot;ff.h&quot;</span>
+<a name="l00003"></a>00003 <span class="preprocessor">#include &quot;ff_gen_drv.h&quot;</span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &quot;<a class="code" href="uart_8h.html">uart.h</a>&quot;</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="gpio_8h.html">gpio.h</a>&quot;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="rtc_8h.html">rtc.h</a>&quot;</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include &quot;<a class="code" href="fram_8h.html">fram.h</a>&quot;</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include &quot;<a class="code" href="flash__ext_8h.html">flash_ext.h</a>&quot;</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include &quot;<a class="code" href="adc_8h.html">adc.h</a>&quot;</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include &quot;<a class="code" href="temp__sensor_8h.html">temp_sensor.h</a>&quot;</span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include &quot;<a class="code" href="adc__ext_8h.html">adc_ext.h</a>&quot;</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &quot;<a class="code" href="host_8h.html">host.h</a>&quot;</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include &quot;<a class="code" href="user__main_8h.html">user_main.h</a>&quot;</span>
+<a name="l00014"></a>00014 
+<a name="l00015"></a>00015 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#ade922990f46dffde66f2a2536206d52a">testThread</a>(<span class="keywordtype">void</span> *argument);
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 <span class="preprocessor">#if (TEST_UART == 1)</span>
+<a name="l00018"></a>00018 <span class="preprocessor"></span><span class="keyword">static</span> <span class="keywordtype">void</span> testUartThread(<span class="keywordtype">void</span> *argument);
+<a name="l00019"></a>00019 <span class="preprocessor">#endif</span>
+<a name="l00020"></a>00020 <span class="preprocessor"></span>
+<a name="l00021"></a>00021 <span class="preprocessor">#if (TEST_HOST_UART == 1)</span>
+<a name="l00022"></a>00022 <span class="preprocessor"></span><span class="keyword">static</span> <span class="keywordtype">void</span> testHostUartRxThread(<span class="keywordtype">void</span> *argument);
+<a name="l00023"></a>00023 <span class="keyword">static</span> <span class="keywordtype">void</span> testHostUartTxThread(<span class="keywordtype">void</span> *argument);
+<a name="l00024"></a>00024 <span class="preprocessor">#endif</span>
+<a name="l00025"></a>00025 <span class="preprocessor"></span>
+<a name="l00026"></a>00026 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#a929bcf90d95a842cbdb1afcc8e2b76d6">testRtc</a>();
+<a name="l00027"></a>00027 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#a1159adff273caf08eb40173147d08a78">testAdc</a>();
+<a name="l00028"></a>00028 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#ab0b3e33f6b99976fa3a7e682ad28bc13">testFram</a>();
+<a name="l00029"></a>00029 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#af8ceec7669e3bea98604fd2a8c1e8269">testFlash1</a>();
+<a name="l00030"></a>00030 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#aa7ecfd7bc3cff8875aa7029e342a54a6">testFlash2</a>();
+<a name="l00031"></a>00031 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#a205f96ca5ab2e62a33c73665074745bf">testTempSensor</a>();
+<a name="l00032"></a>00032 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#a39b315bcdf2eed2f7111f7ec6f901797">testDI</a>();
+<a name="l00033"></a>00033 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#a9cdda90c37882e72b52051f5524c5251">testDO</a>();
+<a name="l00034"></a>00034 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#ac9b2063397d6f3e5790d1d038968d548">testAdcExt</a>();
+<a name="l00035"></a>00035 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#a4a946866e4c5ee2a3407f5ce00e2d8dc">testHostSpi</a>();
+<a name="l00036"></a>00036 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#a60e473ecab3fd9b0d0260a4792f75e4e">testLog</a>();
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 <span class="preprocessor">#if USE_EXT_MEM</span>
+<a name="l00039"></a>00039 <span class="preprocessor"></span>uint8_t <a class="code" href="test_8cpp.html#a8b3e3611b56f5134c3ba3a78202aafde">bufferTx</a>[4096] <a class="code" href="__reset__hardware_8c.html#a93b9cf91f7623d6d8b100a3693d6d5e4">__attribute__</a>((section(<span class="stringliteral">&quot;.extmem&quot;</span>)));
+<a name="l00040"></a>00040 uint8_t <a class="code" href="test_8cpp.html#afb605983118a761c231fe3b690d91a93">bufferRx</a>[4096] <a class="code" href="__reset__hardware_8c.html#a93b9cf91f7623d6d8b100a3693d6d5e4">__attribute__</a>((section(<span class="stringliteral">&quot;.extmem&quot;</span>)));
+<a name="l00041"></a>00041 <span class="preprocessor">#else</span>
+<a name="l00042"></a><a class="code" href="test_8cpp.html#a8b3e3611b56f5134c3ba3a78202aafde">00042</a> <span class="preprocessor"></span>uint8_t <a class="code" href="test_8cpp.html#a8b3e3611b56f5134c3ba3a78202aafde">bufferTx</a>[4096];
+<a name="l00043"></a><a class="code" href="test_8cpp.html#afb605983118a761c231fe3b690d91a93">00043</a> uint8_t <a class="code" href="test_8cpp.html#afb605983118a761c231fe3b690d91a93">bufferRx</a>[4096];
+<a name="l00044"></a>00044 <span class="preprocessor">#endif</span>
+<a name="l00045"></a>00045 <span class="preprocessor"></span>
+<a name="l00046"></a><a class="code" href="test_8cpp.html#a05715f7947a85502b469877794ecaf55">00046</a> <span class="preprocessor">#define UPLOAD_FILENAME &quot;0:test.tmp&quot;</span>
+<a name="l00047"></a>00047 <span class="preprocessor"></span>
+<a name="l00048"></a><a class="code" href="test_8h.html#a0ceb3b63cded7e4acbf6ca99fc337235">00048</a> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#a0ceb3b63cded7e4acbf6ca99fc337235">testInit</a>()
+<a name="l00049"></a>00049 {
+<a name="l00050"></a>00050   <span class="comment">/* Create Test thread */</span>
+<a name="l00051"></a>00051   osThreadDef(Test, <a class="code" href="test_8cpp.html#ade922990f46dffde66f2a2536206d52a">testThread</a>, osPriorityNormal, 0, 6 * <a class="code" href="_free_r_t_o_s_config_8h.html#a6c534a6cf8a00528fe0be42083484f9a">configMINIMAL_STACK_SIZE</a>);
+<a name="l00052"></a>00052   osThreadCreate(osThread(Test), NULL);
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054 <span class="preprocessor">#if (TEST_UART == 1)</span>
+<a name="l00055"></a>00055 <span class="preprocessor"></span>  osThreadDef(TestUart, testUartThread, osPriorityNormal, 0, 2 * <a class="code" href="_free_r_t_o_s_config_8h.html#a6c534a6cf8a00528fe0be42083484f9a">configMINIMAL_STACK_SIZE</a>);
+<a name="l00056"></a>00056   osThreadCreate(osThread(TestUart), NULL);
+<a name="l00057"></a>00057 <span class="preprocessor">#endif</span>
+<a name="l00058"></a>00058 <span class="preprocessor"></span>
+<a name="l00059"></a>00059 <span class="preprocessor">#if (TEST_HOST_UART == 1)</span>
+<a name="l00060"></a>00060 <span class="preprocessor"></span>  osThreadDef(TestHostUartRx, testHostUartRxThread, osPriorityNormal, 0, 2 * <a class="code" href="_free_r_t_o_s_config_8h.html#a6c534a6cf8a00528fe0be42083484f9a">configMINIMAL_STACK_SIZE</a>);
+<a name="l00061"></a>00061   osThreadCreate(osThread(TestHostUartRx), NULL);
+<a name="l00062"></a>00062   osThreadDef(TestHostUartTx, testHostUartTxThread, osPriorityNormal, 0, 3 * <a class="code" href="_free_r_t_o_s_config_8h.html#a6c534a6cf8a00528fe0be42083484f9a">configMINIMAL_STACK_SIZE</a>);
+<a name="l00063"></a>00063   osThreadCreate(osThread(TestHostUartTx), NULL);
+<a name="l00064"></a>00064 <span class="preprocessor">#endif</span>
+<a name="l00065"></a>00065 <span class="preprocessor"></span>}
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 <span class="preprocessor">#if (TEST_HOST_UART == 1)</span>
+<a name="l00068"></a>00068 <span class="preprocessor"></span><span class="keyword">static</span> <span class="keywordtype">int</span> testCmd(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[])
+<a name="l00069"></a>00069 {
+<a name="l00070"></a>00070   <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; argc; i++) {
+<a name="l00071"></a>00071     <span class="keywordflow">if</span> (!strcmp(argv[i], <span class="stringliteral">&quot;stm32&quot;</span>)) {
+<a name="l00072"></a>00072       <span class="keywordflow">if</span> (++i &gt;= argc) {
+<a name="l00073"></a>00073         <span class="keywordflow">return</span> 1;
+<a name="l00074"></a>00074       }
+<a name="l00075"></a>00075       <span class="keywordflow">if</span> (!strcmp(argv[i], <span class="stringliteral">&quot;tasklist&quot;</span>)) {
+<a name="l00076"></a>00076         osThreadList((uint8_t*)bufferTx);
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078         <span class="keyword">static</span> uint8_t <a class="code" href="fram_8cpp.html#ae57928401228c52b1cc742544f5f6125">buffer</a>[<a class="code" href="uart_8h.html#ab0249d81dd53336b7810ebcf29511210">UART_BUF_SIZE</a>*2];
+<a name="l00079"></a>00079         <span class="keywordtype">int</span> size = xPortGetFreeHeapSize();
+<a name="l00080"></a>00080         sprintf((<span class="keywordtype">char</span>*)buffer, <span class="stringliteral">&quot;\n%d\n&quot;</span>, size);
+<a name="l00081"></a>00081         <a class="code" href="uart_8cpp.html#a910097a9fae2c4b2296020aa4ab05b0f">uartWriteData</a>(<a class="code" href="board_8h.html#abd5cfc1c0f72b6826952e552c14f0642">HOST_TEST_UART</a>, buffer, strlen((<span class="keywordtype">char</span>*)buffer));
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083         <a class="code" href="uart_8cpp.html#a910097a9fae2c4b2296020aa4ab05b0f">uartWriteData</a>(<a class="code" href="board_8h.html#abd5cfc1c0f72b6826952e552c14f0642">HOST_TEST_UART</a>, bufferTx, strlen((<span class="keywordtype">char</span>*)bufferTx));
+<a name="l00084"></a>00084 
+<a name="l00085"></a>00085         <span class="keywordflow">return</span> 0;
+<a name="l00086"></a>00086       }
+<a name="l00087"></a>00087     }
+<a name="l00088"></a>00088   }
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090   <span class="keywordflow">return</span> 1;
+<a name="l00091"></a>00091 }
+<a name="l00092"></a>00092 <span class="preprocessor">#endif</span>
+<a name="l00093"></a>00093 <span class="preprocessor"></span>
+<a name="l00094"></a><a class="code" href="test_8cpp.html#ade922990f46dffde66f2a2536206d52a">00094</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#ade922990f46dffde66f2a2536206d52a">testThread</a>(<span class="keywordtype">void</span> * argument)
+<a name="l00095"></a>00095 {
+<a name="l00096"></a>00096   (void)argument;
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 <span class="preprocessor">#if (TEST_USB_FAT == 1)</span>
+<a name="l00099"></a>00099 <span class="preprocessor"></span>  FATFS fatfs;
+<a name="l00100"></a>00100   FIL file;
+<a name="l00101"></a>00101   FIL fileR;
+<a name="l00102"></a>00102   uint8_t ramBuf[512] = { 0x00 };
+<a name="l00103"></a>00103   uint8_t startTestUsb = 1;
+<a name="l00104"></a>00104 <span class="preprocessor">#endif</span>
+<a name="l00105"></a>00105 <span class="preprocessor"></span>
+<a name="l00106"></a>00106 <span class="preprocessor">#if (TEST_LED == 1)</span>
+<a name="l00107"></a>00107 <span class="preprocessor"></span>  <a class="code" href="class_blink_led.html">BlinkLed</a> blinkLed;
+<a name="l00108"></a>00108   blinkLed.<a class="code" href="class_blink_led.html#afde7408ac765e72cd78939d51f1c8efc">prvSetupHardware</a>();
+<a name="l00109"></a>00109 <span class="preprocessor">#endif</span>
+<a name="l00110"></a>00110 <span class="preprocessor"></span>
+<a name="l00111"></a>00111 <span class="preprocessor">#if (TEST_UART == 1)</span>
+<a name="l00112"></a>00112 <span class="preprocessor"></span>  <span class="keywordtype">int</span> sizePkt;
+<a name="l00113"></a>00113   <span class="keyword">static</span> uint8_t buffer[<a class="code" href="uart_8h.html#ab0249d81dd53336b7810ebcf29511210">UART_BUF_SIZE</a>];
+<a name="l00114"></a>00114   <span class="keywordtype">bool</span> turn = <span class="keyword">false</span>;
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116   <a class="code" href="uart_8cpp.html#ac727db9abe134166c5779d05cafe42dd">uartInit</a>(<a class="code" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313da9671876e3a1bb6a53f978e2627fbd99d">uart4</a>, 115200);
+<a name="l00117"></a>00117   osSemaphoreId semaphoreUart = <a class="code" href="uart_8cpp.html#adda4cb12643850a703b9172edfd21a09">uartGetSemaphoreId</a>(<a class="code" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313da9671876e3a1bb6a53f978e2627fbd99d">uart4</a>);
+<a name="l00118"></a>00118 <span class="preprocessor">#endif</span>
+<a name="l00119"></a>00119 <span class="preprocessor"></span>
+<a name="l00120"></a>00120   <a class="code" href="test_8cpp.html#a929bcf90d95a842cbdb1afcc8e2b76d6">testRtc</a>();
+<a name="l00121"></a>00121   <a class="code" href="test_8cpp.html#a1159adff273caf08eb40173147d08a78">testAdc</a>();
+<a name="l00122"></a>00122   <a class="code" href="test_8cpp.html#ab0b3e33f6b99976fa3a7e682ad28bc13">testFram</a>();
+<a name="l00123"></a>00123   <a class="code" href="test_8cpp.html#af8ceec7669e3bea98604fd2a8c1e8269">testFlash1</a>();
+<a name="l00124"></a>00124   <a class="code" href="test_8cpp.html#aa7ecfd7bc3cff8875aa7029e342a54a6">testFlash2</a>();
+<a name="l00125"></a>00125   <a class="code" href="test_8cpp.html#a205f96ca5ab2e62a33c73665074745bf">testTempSensor</a>();
+<a name="l00126"></a>00126   <a class="code" href="test_8cpp.html#a39b315bcdf2eed2f7111f7ec6f901797">testDI</a>();
+<a name="l00127"></a>00127   <a class="code" href="test_8cpp.html#a9cdda90c37882e72b52051f5524c5251">testDO</a>();
+<a name="l00128"></a>00128   <a class="code" href="test_8cpp.html#ac9b2063397d6f3e5790d1d038968d548">testAdcExt</a>();
+<a name="l00129"></a>00129   <a class="code" href="test_8cpp.html#a4a946866e4c5ee2a3407f5ce00e2d8dc">testHostSpi</a>();
+<a name="l00130"></a>00130   <a class="code" href="test_8cpp.html#a60e473ecab3fd9b0d0260a4792f75e4e">testLog</a>();
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132 <span class="comment">//  int t = 0;</span>
+<a name="l00133"></a>00133 
+<a name="l00134"></a>00134   <span class="keywordflow">while</span>(1) {
+<a name="l00135"></a>00135 <span class="comment">//    toggleLed(FanLed);</span>
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137 <span class="comment">//    parameters.setValue(CCS_PHYSIC_MIN_ADD_AI_1 + t, 10);</span>
+<a name="l00138"></a>00138 <span class="comment">//    parameters.setValue(CCS_PHYSIC_MAX_ADD_AI_1 + t, 20);</span>
+<a name="l00139"></a>00139 <span class="comment">//    t = t + 2;</span>
+<a name="l00140"></a>00140 <span class="comment">//    if (t &gt; 30) t = 0;</span>
+<a name="l00141"></a>00141     osDelay(500);
+<a name="l00142"></a>00142 
+<a name="l00143"></a>00143 <span class="comment">//    logRunning.start(AutoType);</span>
+<a name="l00144"></a>00144 <span class="comment">//    logAlarm.start(AutoType, 0);</span>
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146 
+<a name="l00147"></a>00147 <span class="preprocessor">#if (TEST_USB_FAT == 1)</span>
+<a name="l00148"></a>00148 <span class="preprocessor"></span>    <span class="keywordflow">if</span> ((disk_status(0) == RES_OK) &amp;&amp; (startTestUsb == 1)) {
+<a name="l00149"></a>00149       FRESULT result = f_mount(&amp;fatfs, <span class="stringliteral">&quot;0&quot;</span>, 1);
+<a name="l00150"></a>00150       <span class="keywordflow">if</span> (result == FR_OK) {
+<a name="l00151"></a>00151         UINT bytesWritten = 0;
+<a name="l00152"></a>00152         UINT BytesRead;
+<a name="l00153"></a>00153 
+<a name="l00154"></a>00154         ramBuf[0] = 0x55;
+<a name="l00155"></a>00155         ramBuf[511] = 0xAA;
+<a name="l00156"></a>00156         f_unlink(<a class="code" href="test_8cpp.html#a05715f7947a85502b469877794ecaf55">UPLOAD_FILENAME</a>);
+<a name="l00157"></a>00157         <span class="keywordflow">if</span> (f_open(&amp;file, <a class="code" href="test_8cpp.html#a05715f7947a85502b469877794ecaf55">UPLOAD_FILENAME</a>, FA_CREATE_ALWAYS | FA_WRITE) == FR_OK) {
+<a name="l00158"></a>00158           f_write(&amp;file, ramBuf, 512, &amp;bytesWritten);
+<a name="l00159"></a>00159           f_close(&amp;file);
+<a name="l00160"></a>00160         }
+<a name="l00161"></a>00161         ramBuf[0] = 0x00;
+<a name="l00162"></a>00162         ramBuf[511] = 0x00;
+<a name="l00163"></a>00163         <span class="keywordflow">if</span> (f_open(&amp;fileR, <a class="code" href="test_8cpp.html#a05715f7947a85502b469877794ecaf55">UPLOAD_FILENAME</a>, FA_READ) == FR_OK) {
+<a name="l00164"></a>00164           f_read(&amp;fileR, ramBuf, 512, &amp;BytesRead);
+<a name="l00165"></a>00165           f_close(&amp;fileR);
+<a name="l00166"></a>00166         }
+<a name="l00167"></a>00167         startTestUsb = 0;
+<a name="l00168"></a>00168       }
+<a name="l00169"></a>00169     }
+<a name="l00170"></a>00170 <span class="preprocessor">#endif</span>
+<a name="l00171"></a>00171 <span class="preprocessor"></span>
+<a name="l00172"></a>00172 <span class="preprocessor">#if (TEST_LED == 1)</span>
+<a name="l00173"></a>00173 <span class="preprocessor"></span>    blinkLed.toggle();
+<a name="l00174"></a>00174     osDelay(500);
+<a name="l00175"></a>00175 <span class="preprocessor">#endif</span>
+<a name="l00176"></a>00176 <span class="preprocessor"></span>
+<a name="l00177"></a>00177 <span class="preprocessor">#if (TEST_UART == 1)</span>
+<a name="l00178"></a>00178 <span class="preprocessor"></span>    buffer[0] = 0x55;
+<a name="l00179"></a>00179     buffer[1] = 0xAA;
+<a name="l00180"></a>00180     buffer[2] = 0x02;
+<a name="l00181"></a>00181     <a class="code" href="uart_8cpp.html#a910097a9fae2c4b2296020aa4ab05b0f">uartWriteData</a>(<a class="code" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313da9671876e3a1bb6a53f978e2627fbd99d">uart4</a>, buffer, <a class="code" href="uart_8h.html#ab0249d81dd53336b7810ebcf29511210">UART_BUF_SIZE</a>);
+<a name="l00182"></a>00182 
+<a name="l00183"></a>00183     osSemaphoreWait(semaphoreUart, osWaitForever);
+<a name="l00184"></a>00184     <span class="keywordflow">while</span> (1) {
+<a name="l00185"></a>00185       <span class="keywordflow">if</span> (osSemaphoreWait(semaphoreUart, 5) == osEventTimeout) {
+<a name="l00186"></a>00186         sizePkt = <a class="code" href="uart_8cpp.html#a73e5e7c73d2e2f54386f9d59ebd77fd1">uartReadData</a>(<a class="code" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313da9671876e3a1bb6a53f978e2627fbd99d">uart4</a>, buffer);
+<a name="l00187"></a>00187         <span class="keywordflow">if</span> ((buffer[0] != 0xFE) || (buffer[1] != 0x55) ||
+<a name="l00188"></a>00188             (buffer[2] != 0x01) || (sizePkt != <a class="code" href="uart_8h.html#ab0249d81dd53336b7810ebcf29511210">UART_BUF_SIZE</a>))
+<a name="l00189"></a>00189           <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>);
+<a name="l00190"></a>00190 
+<a name="l00191"></a>00191         <span class="keywordflow">if</span> (turn)
+<a name="l00192"></a>00192           <a class="code" href="gpio_8cpp.html#a989b8355d153ae1a535518ff2ff4e69e" title="Turns selected LED On.">onLed</a>(<a class="code" href="gpio_8h.html#af78bf8225e8e9ba72fda2f5f2e800412a3fad4c1eae660a203478cfe41d0f8381">FanLed</a>);
+<a name="l00193"></a>00193         <span class="keywordflow">else</span>
+<a name="l00194"></a>00194           <a class="code" href="gpio_8cpp.html#ab0e400fa8cfddfaa208938646f4f5c3e" title="Turns selected LED Off.">offLed</a>(<a class="code" href="gpio_8h.html#af78bf8225e8e9ba72fda2f5f2e800412a3fad4c1eae660a203478cfe41d0f8381">FanLed</a>);
+<a name="l00195"></a>00195         turn = !turn;
+<a name="l00196"></a>00196         <span class="keywordflow">break</span>;
+<a name="l00197"></a>00197       }
+<a name="l00198"></a>00198     }
+<a name="l00199"></a>00199 <span class="preprocessor">#endif</span>
+<a name="l00200"></a>00200 <span class="preprocessor"></span>  }
+<a name="l00201"></a>00201 }
+<a name="l00202"></a>00202 
+<a name="l00203"></a>00203 <span class="preprocessor">#if (TEST_UART == 1)</span>
+<a name="l00204"></a>00204 <span class="preprocessor"></span><span class="keyword">static</span> <span class="keywordtype">void</span> testUartThread(<span class="keywordtype">void</span> * argument)
+<a name="l00205"></a>00205 {
+<a name="l00206"></a>00206   (void)argument;
+<a name="l00207"></a>00207   <span class="keywordtype">int</span> countByte = 0;
+<a name="l00208"></a>00208   <span class="keywordtype">int</span> sizePkt;
+<a name="l00209"></a>00209   <span class="keyword">static</span> uint8_t buffer[<a class="code" href="uart_8h.html#ab0249d81dd53336b7810ebcf29511210">UART_BUF_SIZE</a>];
+<a name="l00210"></a>00210 
+<a name="l00211"></a>00211   <a class="code" href="uart_8cpp.html#ac727db9abe134166c5779d05cafe42dd">uartInit</a>(<a class="code" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313dab451d4e63ecd522a24f90c790c15ee48">uart2</a>, 115200);
+<a name="l00212"></a>00212   osSemaphoreId semaphoreUart = <a class="code" href="uart_8cpp.html#adda4cb12643850a703b9172edfd21a09">uartGetSemaphoreId</a>(<a class="code" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313dab451d4e63ecd522a24f90c790c15ee48">uart2</a>);
+<a name="l00213"></a>00213 
+<a name="l00214"></a>00214   <span class="keywordflow">while</span>(1) {
+<a name="l00215"></a>00215     osSemaphoreWait(semaphoreUart, osWaitForever);
+<a name="l00216"></a>00216     <span class="keywordflow">while</span> (1) {
+<a name="l00217"></a>00217       <span class="keywordflow">if</span> (osSemaphoreWait(semaphoreUart, 5) == osEventTimeout) {
+<a name="l00218"></a>00218         buffer[0] = 0xFE;
+<a name="l00219"></a>00219         buffer[1] = 0x55;
+<a name="l00220"></a>00220         buffer[2] = 0x01;
+<a name="l00221"></a>00221 
+<a name="l00222"></a>00222         sizePkt = <a class="code" href="uart_8cpp.html#a73e5e7c73d2e2f54386f9d59ebd77fd1">uartReadData</a>(<a class="code" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313dab451d4e63ecd522a24f90c790c15ee48">uart2</a>, buffer);
+<a name="l00223"></a>00223         <span class="keywordflow">if</span> ((buffer[0] != 0x55) || (buffer[1] != 0xAA) ||
+<a name="l00224"></a>00224             (buffer[2] != 0x02) || (sizePkt != <a class="code" href="uart_8h.html#ab0249d81dd53336b7810ebcf29511210">UART_BUF_SIZE</a>))
+<a name="l00225"></a>00225           <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>);
+<a name="l00226"></a>00226 
+<a name="l00227"></a>00227         buffer[0] = 0xFE;
+<a name="l00228"></a>00228         buffer[1] = 0x55;
+<a name="l00229"></a>00229         buffer[2] = 0x01;
+<a name="l00230"></a>00230         <a class="code" href="uart_8cpp.html#a910097a9fae2c4b2296020aa4ab05b0f">uartWriteData</a>(<a class="code" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313dab451d4e63ecd522a24f90c790c15ee48">uart2</a>, buffer, <a class="code" href="uart_8h.html#ab0249d81dd53336b7810ebcf29511210">UART_BUF_SIZE</a>);
+<a name="l00231"></a>00231 
+<a name="l00232"></a>00232         countByte = 0;
+<a name="l00233"></a>00233         <span class="keywordflow">break</span>;
+<a name="l00234"></a>00234       } <span class="keywordflow">else</span> {
+<a name="l00235"></a>00235         countByte++;
+<a name="l00236"></a>00236       }
+<a name="l00237"></a>00237     }
+<a name="l00238"></a>00238   }
+<a name="l00239"></a>00239 }
+<a name="l00240"></a>00240 <span class="preprocessor">#endif</span>
+<a name="l00241"></a>00241 <span class="preprocessor"></span>
+<a name="l00242"></a>00242 <span class="preprocessor">#if (TEST_HOST_UART == 1)</span>
+<a name="l00243"></a>00243 <span class="preprocessor"></span><span class="keyword">static</span> <span class="keywordtype">void</span> testHostUartRxThread(<span class="keywordtype">void</span> * argument)
+<a name="l00244"></a>00244 {
+<a name="l00245"></a>00245   (void)argument;
+<a name="l00246"></a>00246   <span class="keywordtype">int</span> countByte = 0;
+<a name="l00247"></a>00247   <span class="keywordtype">int</span> sizePkt;
+<a name="l00248"></a>00248   <span class="keyword">static</span> uint8_t buffer[<a class="code" href="uart_8h.html#ab0249d81dd53336b7810ebcf29511210">UART_BUF_SIZE</a>];
+<a name="l00249"></a>00249 
+<a name="l00250"></a>00250   <a class="code" href="uart_8cpp.html#ac727db9abe134166c5779d05cafe42dd">uartInit</a>(<a class="code" href="board_8h.html#a7afc5871455b573b8d1c0c207a01d0cd">HOST_UART</a>, 115200);
+<a name="l00251"></a>00251   osSemaphoreId semaphoreUart = <a class="code" href="uart_8cpp.html#adda4cb12643850a703b9172edfd21a09">uartGetSemaphoreId</a>(<a class="code" href="board_8h.html#a7afc5871455b573b8d1c0c207a01d0cd">HOST_UART</a>);
+<a name="l00252"></a>00252 
+<a name="l00253"></a>00253   <span class="keywordflow">while</span>(1) {
+<a name="l00254"></a>00254     osSemaphoreWait(semaphoreUart, osWaitForever);
+<a name="l00255"></a>00255     <span class="keywordflow">while</span> (1) {
+<a name="l00256"></a>00256       <span class="keywordflow">if</span> (osSemaphoreWait(semaphoreUart, 5) == osEventTimeout) {
+<a name="l00257"></a>00257         sizePkt = <a class="code" href="uart_8cpp.html#a73e5e7c73d2e2f54386f9d59ebd77fd1">uartReadData</a>(<a class="code" href="board_8h.html#a7afc5871455b573b8d1c0c207a01d0cd">HOST_UART</a>, buffer);
+<a name="l00258"></a>00258         <a class="code" href="uart_8cpp.html#a910097a9fae2c4b2296020aa4ab05b0f">uartWriteData</a>(<a class="code" href="board_8h.html#abd5cfc1c0f72b6826952e552c14f0642">HOST_TEST_UART</a>, buffer, sizePkt);
+<a name="l00259"></a>00259 
+<a name="l00260"></a>00260         countByte = 0;
+<a name="l00261"></a>00261         <span class="keywordflow">break</span>;
+<a name="l00262"></a>00262       } <span class="keywordflow">else</span> {
+<a name="l00263"></a>00263         countByte++;
+<a name="l00264"></a>00264       }
+<a name="l00265"></a>00265     }
+<a name="l00266"></a>00266   }
+<a name="l00267"></a>00267 }
+<a name="l00268"></a>00268 
+<a name="l00269"></a>00269 <span class="keyword">static</span> <span class="keywordtype">void</span> testHostUartTxThread(<span class="keywordtype">void</span> * argument)
+<a name="l00270"></a>00270 {
+<a name="l00271"></a>00271   (void)argument;
+<a name="l00272"></a>00272   <span class="keywordtype">int</span> countByte = 0;
+<a name="l00273"></a>00273   <span class="keywordtype">int</span> sizePkt;
+<a name="l00274"></a>00274   <span class="keyword">static</span> uint8_t buffer[<a class="code" href="uart_8h.html#ab0249d81dd53336b7810ebcf29511210">UART_BUF_SIZE</a>];
+<a name="l00275"></a>00275 
+<a name="l00276"></a>00276   <a class="code" href="uart_8cpp.html#ac727db9abe134166c5779d05cafe42dd">uartInit</a>(<a class="code" href="board_8h.html#abd5cfc1c0f72b6826952e552c14f0642">HOST_TEST_UART</a>, 115200);
+<a name="l00277"></a>00277   osSemaphoreId semaphoreUart = <a class="code" href="uart_8cpp.html#adda4cb12643850a703b9172edfd21a09">uartGetSemaphoreId</a>(<a class="code" href="board_8h.html#abd5cfc1c0f72b6826952e552c14f0642">HOST_TEST_UART</a>);
+<a name="l00278"></a>00278 
+<a name="l00279"></a>00279   <span class="keywordflow">while</span>(1) {
+<a name="l00280"></a>00280     osSemaphoreWait(semaphoreUart, osWaitForever);
+<a name="l00281"></a>00281     <span class="keywordflow">while</span> (1) {
+<a name="l00282"></a>00282       <span class="keywordflow">if</span> (osSemaphoreWait(semaphoreUart, 5) == osEventTimeout) {
+<a name="l00283"></a>00283         memset(buffer, 0, <a class="code" href="uart_8h.html#ab0249d81dd53336b7810ebcf29511210">UART_BUF_SIZE</a>);
+<a name="l00284"></a>00284         sizePkt = <a class="code" href="uart_8cpp.html#a73e5e7c73d2e2f54386f9d59ebd77fd1">uartReadData</a>(<a class="code" href="board_8h.html#abd5cfc1c0f72b6826952e552c14f0642">HOST_TEST_UART</a>, buffer);
+<a name="l00285"></a>00285 
+<a name="l00286"></a>00286         memcpy(bufferRx, buffer, <a class="code" href="uart_8h.html#ab0249d81dd53336b7810ebcf29511210">UART_BUF_SIZE</a>);
+<a name="l00287"></a>00287 
+<a name="l00288"></a>00288         <span class="keywordtype">int</span> argc = 0;
+<a name="l00289"></a>00289         <span class="keywordtype">char</span> *argv[20];
+<a name="l00290"></a>00290         <span class="keywordtype">char</span> *str;
+<a name="l00291"></a>00291         str = strtok((<span class="keywordtype">char</span>*)bufferRx, <span class="stringliteral">&quot; &quot;</span>);
+<a name="l00292"></a>00292         <span class="keywordflow">while</span> (str != NULL) {
+<a name="l00293"></a>00293           argv[argc++] = str;
+<a name="l00294"></a>00294           str = strtok (NULL, <span class="stringliteral">&quot; &quot;</span>);
+<a name="l00295"></a>00295         }
+<a name="l00296"></a>00296         <span class="keywordflow">if</span> (testCmd(argc, argv))
+<a name="l00297"></a>00297           <a class="code" href="uart_8cpp.html#a910097a9fae2c4b2296020aa4ab05b0f">uartWriteData</a>(<a class="code" href="board_8h.html#a7afc5871455b573b8d1c0c207a01d0cd">HOST_UART</a>, buffer, sizePkt);
+<a name="l00298"></a>00298 
+<a name="l00299"></a>00299         countByte = 0;
+<a name="l00300"></a>00300         <span class="keywordflow">break</span>;
+<a name="l00301"></a>00301       } <span class="keywordflow">else</span> {
+<a name="l00302"></a>00302         countByte++;
+<a name="l00303"></a>00303       }
+<a name="l00304"></a>00304     }
+<a name="l00305"></a>00305   }
+<a name="l00306"></a>00306 }
+<a name="l00307"></a>00307 <span class="preprocessor">#endif</span>
+<a name="l00308"></a>00308 <span class="preprocessor"></span>
+<a name="l00309"></a><a class="code" href="test_8cpp.html#a929bcf90d95a842cbdb1afcc8e2b76d6">00309</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#a929bcf90d95a842cbdb1afcc8e2b76d6">testRtc</a>()
+<a name="l00310"></a>00310 {
+<a name="l00311"></a>00311 <span class="preprocessor">#if (TEST_RTC == 1)</span>
+<a name="l00312"></a>00312 <span class="preprocessor"></span>  tm dateTime;
+<a name="l00313"></a>00313   <span class="comment">// Установка даты и времени</span>
+<a name="l00314"></a>00314   dateTime.tm_mon = 11;
+<a name="l00315"></a>00315   dateTime.tm_mday = 6;
+<a name="l00316"></a>00316   dateTime.tm_year = 2014 - 1900;
+<a name="l00317"></a>00317   dateTime.tm_hour = 17;
+<a name="l00318"></a>00318   dateTime.tm_min = 21;
+<a name="l00319"></a>00319   dateTime.tm_sec = 10;
+<a name="l00320"></a>00320   time_t <a class="code" href="adc_8cpp.html#ae73654f333e4363463ad8c594eca1905">time</a> = mktime(&amp;dateTime);
+<a name="l00321"></a>00321   <a class="code" href="rtc_8cpp.html#ad2868100d231cc548404c3d56587d56f" title="Установка даты и времени">setTime</a>(&amp;time);
+<a name="l00322"></a>00322 
+<a name="l00323"></a>00323   osDelay(1005);
+<a name="l00324"></a>00324 
+<a name="l00325"></a>00325   time = <a class="code" href="rtc_8cpp.html#a32315808bd93c14f43ad88f6129f4f35" title="Получение даты и времени в секундах">getTime</a>();
+<a name="l00326"></a>00326   dateTime = *localtime(&amp;time);
+<a name="l00327"></a>00327   <span class="keywordflow">if</span> ((dateTime.tm_mon != 11) || (dateTime.tm_mday != 6) ||
+<a name="l00328"></a>00328       (dateTime.tm_year != (2014 - 1900)) || (dateTime.tm_hour != 17) ||
+<a name="l00329"></a>00329       (dateTime.tm_min != 21) || (dateTime.tm_sec != 11)) {
+<a name="l00330"></a>00330     <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>);
+<a name="l00331"></a>00331   }
+<a name="l00332"></a>00332   <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>);
+<a name="l00333"></a>00333 <span class="preprocessor">#endif</span>
+<a name="l00334"></a>00334 <span class="preprocessor"></span>}
+<a name="l00335"></a>00335 
+<a name="l00336"></a><a class="code" href="test_8cpp.html#a1159adff273caf08eb40173147d08a78">00336</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#a1159adff273caf08eb40173147d08a78">testAdc</a>()
+<a name="l00337"></a>00337 {
+<a name="l00338"></a>00338 <span class="preprocessor">#if (TEST_ADC == 1)</span>
+<a name="l00339"></a>00339 <span class="preprocessor"></span>  <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> status;
+<a name="l00340"></a>00340   <span class="keyword">static</span> <span class="keywordtype">float</span> coreTemperature;
+<a name="l00341"></a>00341   <span class="keyword">static</span> <span class="keywordtype">float</span> coreVbattery;
+<a name="l00342"></a>00342   <span class="keyword">static</span> <span class="keywordtype">float</span> coreVref;
+<a name="l00343"></a>00343 
+<a name="l00344"></a>00344   status = <a class="code" href="adc_8cpp.html#ac35a617a85fe8c95790415ca39be570e">getCoreVref</a>(&amp;coreVref);
+<a name="l00345"></a>00345   <span class="keywordflow">if</span> (status == <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>)
+<a name="l00346"></a>00346     status = <a class="code" href="adc_8cpp.html#a97e8e79194c02210d104a8156c367c4b">getCoreTemperature</a>(&amp;coreTemperature);
+<a name="l00347"></a>00347   <span class="keywordflow">if</span> (status == <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>)
+<a name="l00348"></a>00348     status = <a class="code" href="adc_8cpp.html#a54745404c69b7774e0fdb660259bd6c2">getCoreVbattery</a>(&amp;coreVbattery);
+<a name="l00349"></a>00349 
+<a name="l00350"></a>00350   <span class="keywordflow">if</span> (status != <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>)
+<a name="l00351"></a>00351     <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>);
+<a name="l00352"></a>00352   <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>);
+<a name="l00353"></a>00353 <span class="preprocessor">#endif</span>
+<a name="l00354"></a>00354 <span class="preprocessor"></span>}
+<a name="l00355"></a>00355 
+<a name="l00356"></a><a class="code" href="test_8cpp.html#ab0b3e33f6b99976fa3a7e682ad28bc13">00356</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#ab0b3e33f6b99976fa3a7e682ad28bc13">testFram</a>()
+<a name="l00357"></a>00357 {
+<a name="l00358"></a>00358 <span class="preprocessor">#if (TEST_FRAM == 1)</span>
+<a name="l00359"></a>00359 <span class="preprocessor"></span>  uint32_t <a class="code" href="adc_8cpp.html#ae73654f333e4363463ad8c594eca1905">time</a> = HAL_GetTick();
+<a name="l00360"></a>00360   bufferTx[0] = 0x21;
+<a name="l00361"></a>00361   bufferTx[1] = 0xAA;
+<a name="l00362"></a>00362   bufferTx[2] = 0x00;
+<a name="l00363"></a>00363   bufferTx[3] = 0x00;
+<a name="l00364"></a>00364   bufferTx[4] = 0x00;
+<a name="l00365"></a>00365   bufferTx[5] = 0x33;
+<a name="l00366"></a>00366   bufferTx[6] = 0x00;
+<a name="l00367"></a>00367   bufferTx[7] = 0x00;
+<a name="l00368"></a>00368   bufferTx[8] = 0x55;
+<a name="l00369"></a>00369   bufferTx[9] = 0x12;
+<a name="l00370"></a>00370   bufferTx[<span class="keyword">sizeof</span>(<a class="code" href="test_8cpp.html#a8b3e3611b56f5134c3ba3a78202aafde">bufferTx</a>)-1] = 0x55;
+<a name="l00371"></a>00371   memset(bufferRx, 0, <span class="keyword">sizeof</span>(bufferRx));
+<a name="l00372"></a>00372   <a class="code" href="fram_8cpp.html#a19b5a25431b76df6ee29173e0d81fb4b" title="Запись данных во FRAM.">framWriteData</a>(0, bufferTx, <span class="keyword">sizeof</span>(bufferTx));
+<a name="l00373"></a>00373   <a class="code" href="fram_8cpp.html#a52ab99f48fd3b905f3a5ae04be4355c6" title="Чтение данных из FRAM.">framReadData</a>(0, bufferRx, <span class="keyword">sizeof</span>(bufferTx));
+<a name="l00374"></a>00374 
+<a name="l00375"></a>00375   <span class="keywordflow">if</span> (memcmp(bufferTx, bufferRx, <span class="keyword">sizeof</span>(bufferTx))) {
+<a name="l00376"></a>00376     <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>); <span class="comment">// Ошибка</span>
+<a name="l00377"></a>00377   }
+<a name="l00378"></a>00378   time = HAL_GetTick() - <a class="code" href="adc_8cpp.html#ae73654f333e4363463ad8c594eca1905">time</a>;
+<a name="l00379"></a>00379   <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>);
+<a name="l00380"></a>00380 <span class="preprocessor">#endif</span>
+<a name="l00381"></a>00381 <span class="preprocessor"></span>}
+<a name="l00382"></a>00382 
+<a name="l00383"></a><a class="code" href="test_8cpp.html#af8ceec7669e3bea98604fd2a8c1e8269">00383</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#af8ceec7669e3bea98604fd2a8c1e8269">testFlash1</a>()
+<a name="l00384"></a>00384 {
+<a name="l00385"></a>00385 <span class="preprocessor">#if (TEST_FLASH1 == 1)</span>
+<a name="l00386"></a>00386 <span class="preprocessor"></span>  <a class="code" href="flash__ext_8cpp.html#ae378c199942c30b27a5061c69523e88b">flashEraseSector4k</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fbafc1cc925ab1ca7ede64e84265b2960db">FlashSpi1</a>, 0);
+<a name="l00387"></a>00387 
+<a name="l00388"></a>00388   uint32_t <a class="code" href="adc_8cpp.html#ae73654f333e4363463ad8c594eca1905">time</a> = HAL_GetTick();
+<a name="l00389"></a>00389   bufferTx[0] = 0x21;
+<a name="l00390"></a>00390   bufferTx[1] = 0xAA;
+<a name="l00391"></a>00391   bufferTx[2] = 0x01;
+<a name="l00392"></a>00392   bufferTx[3] = 0x12;
+<a name="l00393"></a>00393   bufferTx[4] = 0x03;
+<a name="l00394"></a>00394   bufferTx[5] = 0x33;
+<a name="l00395"></a>00395   bufferTx[6] = 0x01;
+<a name="l00396"></a>00396   bufferTx[7] = 0x20;
+<a name="l00397"></a>00397   bufferTx[8] = 0x55;
+<a name="l00398"></a>00398   bufferTx[9] = 0x12;
+<a name="l00399"></a>00399   bufferTx[<span class="keyword">sizeof</span>(<a class="code" href="test_8cpp.html#a8b3e3611b56f5134c3ba3a78202aafde">bufferTx</a>)-1] = 0x55;
+<a name="l00400"></a>00400   memset(bufferRx, 0, <span class="keyword">sizeof</span>(bufferRx));
+<a name="l00401"></a>00401   <a class="code" href="flash__ext_8cpp.html#a40dcae27f453564a01040154586aaaaa">flashExtWrite</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fbafc1cc925ab1ca7ede64e84265b2960db">FlashSpi1</a>, 0, &amp;bufferTx[0], <span class="keyword">sizeof</span>(bufferTx));
+<a name="l00402"></a>00402   <a class="code" href="flash__ext_8cpp.html#af3eee9b1987480bd00e3eb1d2ce681ab">flashExtRead</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fbafc1cc925ab1ca7ede64e84265b2960db">FlashSpi1</a>, 0, &amp;bufferRx[0], <span class="keyword">sizeof</span>(bufferTx));
+<a name="l00403"></a>00403 
+<a name="l00404"></a>00404   <span class="keywordflow">if</span> (memcmp(bufferTx, bufferRx, <span class="keyword">sizeof</span>(bufferTx))) {
+<a name="l00405"></a>00405     <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>); <span class="comment">// Ошибка</span>
+<a name="l00406"></a>00406   }
+<a name="l00407"></a>00407   time = HAL_GetTick() - <a class="code" href="adc_8cpp.html#ae73654f333e4363463ad8c594eca1905">time</a>;
+<a name="l00408"></a>00408   <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>);
+<a name="l00409"></a>00409 <span class="preprocessor">#endif</span>
+<a name="l00410"></a>00410 <span class="preprocessor"></span>}
+<a name="l00411"></a>00411 
+<a name="l00412"></a><a class="code" href="test_8cpp.html#aa7ecfd7bc3cff8875aa7029e342a54a6">00412</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#aa7ecfd7bc3cff8875aa7029e342a54a6">testFlash2</a>()
+<a name="l00413"></a>00413 {
+<a name="l00414"></a>00414 <span class="preprocessor">#if (TEST_FLASH2 == 1)</span>
+<a name="l00415"></a>00415 <span class="preprocessor"></span>  <a class="code" href="flash__ext_8cpp.html#ae378c199942c30b27a5061c69523e88b">flashEraseSector4k</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fba688049fe14f78480f4b22161b6f9fad5">FlashSpi5</a>, 0);
+<a name="l00416"></a>00416 
+<a name="l00417"></a>00417   uint32_t <a class="code" href="adc_8cpp.html#ae73654f333e4363463ad8c594eca1905">time</a> = HAL_GetTick();
+<a name="l00418"></a>00418   bufferTx[0] = 0x21;
+<a name="l00419"></a>00419   bufferTx[1] = 0xAA;
+<a name="l00420"></a>00420   bufferTx[2] = 0x01;
+<a name="l00421"></a>00421   bufferTx[3] = 0x12;
+<a name="l00422"></a>00422   bufferTx[4] = 0x03;
+<a name="l00423"></a>00423   bufferTx[5] = 0x33;
+<a name="l00424"></a>00424   bufferTx[6] = 0x01;
+<a name="l00425"></a>00425   bufferTx[7] = 0x20;
+<a name="l00426"></a>00426   bufferTx[8] = 0x55;
+<a name="l00427"></a>00427   bufferTx[9] = 0x12;
+<a name="l00428"></a>00428   bufferTx[<span class="keyword">sizeof</span>(<a class="code" href="test_8cpp.html#a8b3e3611b56f5134c3ba3a78202aafde">bufferTx</a>)-1] = 0x55;
+<a name="l00429"></a>00429   memset(bufferRx, 0, <span class="keyword">sizeof</span>(bufferRx));
+<a name="l00430"></a>00430   <a class="code" href="flash__ext_8cpp.html#a40dcae27f453564a01040154586aaaaa">flashExtWrite</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fba688049fe14f78480f4b22161b6f9fad5">FlashSpi5</a>, 0, &amp;bufferTx[0], <span class="keyword">sizeof</span>(bufferTx));
+<a name="l00431"></a>00431   <a class="code" href="flash__ext_8cpp.html#af3eee9b1987480bd00e3eb1d2ce681ab">flashExtRead</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fba688049fe14f78480f4b22161b6f9fad5">FlashSpi5</a>, 0, &amp;bufferRx[0], <span class="keyword">sizeof</span>(bufferTx));
+<a name="l00432"></a>00432 
+<a name="l00433"></a>00433   <span class="keywordflow">if</span> (memcmp(bufferTx, bufferRx, <span class="keyword">sizeof</span>(bufferTx))) {
+<a name="l00434"></a>00434     <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>); <span class="comment">// Ошибка</span>
+<a name="l00435"></a>00435   }
+<a name="l00436"></a>00436   time = HAL_GetTick() - <a class="code" href="adc_8cpp.html#ae73654f333e4363463ad8c594eca1905">time</a>;
+<a name="l00437"></a>00437   <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>);
+<a name="l00438"></a>00438 <span class="preprocessor">#endif</span>
+<a name="l00439"></a>00439 <span class="preprocessor"></span>}
+<a name="l00440"></a>00440 
+<a name="l00441"></a><a class="code" href="test_8cpp.html#a205f96ca5ab2e62a33c73665074745bf">00441</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#a205f96ca5ab2e62a33c73665074745bf">testTempSensor</a>()
+<a name="l00442"></a>00442 {
+<a name="l00443"></a>00443 <span class="preprocessor">#if TEST_T_SENSOR</span>
+<a name="l00444"></a>00444 <span class="preprocessor"></span>  <span class="keywordtype">float</span> temp = <a class="code" href="temp__sensor_8cpp.html#aecd98822d4e2c406a84cf9e931e06db5" title="Функция получения значения температуры с внешнего датчика">tempSensorReadData</a>();
+<a name="l00445"></a>00445   <span class="keywordflow">if</span> (temp == 999)
+<a name="l00446"></a>00446     <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>);
+<a name="l00447"></a>00447 <span class="preprocessor">#endif</span>
+<a name="l00448"></a>00448 <span class="preprocessor"></span>}
+<a name="l00449"></a>00449 
+<a name="l00450"></a><a class="code" href="test_8cpp.html#a39b315bcdf2eed2f7111f7ec6f901797">00450</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#a39b315bcdf2eed2f7111f7ec6f901797">testDI</a>()
+<a name="l00451"></a>00451 {
+<a name="l00452"></a>00452 <span class="preprocessor">#if TEST_DI</span>
+<a name="l00453"></a>00453 <span class="preprocessor"></span>  <a class="code" href="gpio_8h.html#a481bba4ee500a381c7ae5b767e641bdc" title="Значения вывода">PinState</a> value;
+<a name="l00454"></a>00454   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="gpio_8h.html#aaac85a8f48f5ae1267497cc30820ec6aa0e3514e38e5698c917289b6ae75f2e75">DigitalInputMax</a>; ++i) {
+<a name="l00455"></a>00455     value = <a class="code" href="gpio_8cpp.html#af33c98865be35b1377fa4c33b101c744" title="Получение значения на цифровом входе">getDigitalInput</a>(i);
+<a name="l00456"></a>00456     <span class="keywordflow">if</span> (value)
+<a name="l00457"></a>00457       <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>);
+<a name="l00458"></a>00458   }
+<a name="l00459"></a>00459 <span class="preprocessor">#endif</span>
+<a name="l00460"></a>00460 <span class="preprocessor"></span>}
+<a name="l00461"></a>00461 
+<a name="l00462"></a><a class="code" href="test_8cpp.html#a9cdda90c37882e72b52051f5524c5251">00462</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#a9cdda90c37882e72b52051f5524c5251">testDO</a>()
+<a name="l00463"></a>00463 {
+<a name="l00464"></a>00464 <span class="preprocessor">#if TEST_DO</span>
+<a name="l00465"></a>00465 <span class="preprocessor"></span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="gpio_8h.html#a4a3be473787cd416f778c87c4d471334a97f9b978d2bb49816445a9ba24a700a1">DigitalOutputMax</a>; ++i) {
+<a name="l00466"></a>00466     <a class="code" href="gpio_8cpp.html#a4b605b2c3d7afda0f0f139ffb82233f4" title="Установка значения на цифровом выходе">setDigitalOutput</a>(i, <a class="code" href="gpio_8h.html#a481bba4ee500a381c7ae5b767e641bdca6f8cb1132be097709feddb4c4139c028">PinSet</a>);
+<a name="l00467"></a>00467     <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>);
+<a name="l00468"></a>00468   }
+<a name="l00469"></a>00469   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="gpio_8h.html#a4a3be473787cd416f778c87c4d471334a97f9b978d2bb49816445a9ba24a700a1">DigitalOutputMax</a>; ++i) {
+<a name="l00470"></a>00470     <a class="code" href="gpio_8cpp.html#a4b605b2c3d7afda0f0f139ffb82233f4" title="Установка значения на цифровом выходе">setDigitalOutput</a>(i, <a class="code" href="gpio_8h.html#a481bba4ee500a381c7ae5b767e641bdca22210032c374250cca65519ba979ecfb">PinReset</a>);
+<a name="l00471"></a>00471     <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>);
+<a name="l00472"></a>00472   }
+<a name="l00473"></a>00473 <span class="preprocessor">#endif</span>
+<a name="l00474"></a>00474 <span class="preprocessor"></span>}
+<a name="l00475"></a>00475 
+<a name="l00476"></a><a class="code" href="test_8cpp.html#ac9b2063397d6f3e5790d1d038968d548">00476</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#ac9b2063397d6f3e5790d1d038968d548">testAdcExt</a>()
+<a name="l00477"></a>00477 {
+<a name="l00478"></a>00478 <span class="preprocessor">#if TEST_ADC_EXT</span>
+<a name="l00479"></a>00479 <span class="preprocessor"></span>  osDelay(500);
+<a name="l00480"></a>00480   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="adc__ext_8h.html#a4e9257509535b9b40d5cc1cfc57d2b11">ANALOG_IN_NUM</a>; ++i) {
+<a name="l00481"></a>00481     <span class="keywordtype">float</span> value = <a class="code" href="adc__ext_8cpp.html#a4036b60c65173dd7ee795ebe6ff0c3ae" title="Получение значения с аналогового входа внешнего АЦП">getValueAnalogInExt</a>(i);
+<a name="l00482"></a>00482     <span class="keywordflow">if</span> (value)
+<a name="l00483"></a>00483       <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>);
+<a name="l00484"></a>00484   }
+<a name="l00485"></a>00485 <span class="preprocessor">#endif</span>
+<a name="l00486"></a>00486 <span class="preprocessor"></span>}
+<a name="l00487"></a>00487 
+<a name="l00488"></a><a class="code" href="test_8cpp.html#a4a946866e4c5ee2a3407f5ce00e2d8dc">00488</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#a4a946866e4c5ee2a3407f5ce00e2d8dc">testHostSpi</a>()
+<a name="l00489"></a>00489 {
+<a name="l00490"></a>00490 <span class="preprocessor">#if TEST_HOST_SPI</span>
+<a name="l00491"></a>00491 <span class="preprocessor"></span>  osSemaphoreId semaphoreId = <a class="code" href="host_8cpp.html#af5e10e18de58109f9ab14e6ef9f0d833" title="Создание семафора драйвера работы с контроллером визуализации Семафор необходим для сообщения задачи ...">getHostSemaphore</a>();
+<a name="l00492"></a>00492 
+<a name="l00493"></a>00493   bufferTx[0] = 0x55;
+<a name="l00494"></a>00494   bufferTx[1] = 0x7E;
+<a name="l00495"></a>00495   bufferTx[9] = 0xAA;
+<a name="l00496"></a>00496   bufferTx[<a class="code" href="host_8h.html#af61d1a4314492f819fd09103d112bdd9">HOST_BUF_SIZE</a>-1] = 0x55;
+<a name="l00497"></a>00497   <a class="code" href="host_8cpp.html#a4430dce308818bdf8bb25917a33d59c8" title="Отправка данных контроллеру визуализации">hostWriteData</a>(bufferTx, <a class="code" href="host_8h.html#af61d1a4314492f819fd09103d112bdd9">HOST_BUF_SIZE</a>);
+<a name="l00498"></a>00498 
+<a name="l00499"></a>00499   osSemaphoreWait(semaphoreId, osWaitForever);
+<a name="l00500"></a>00500 
+<a name="l00501"></a>00501   <span class="keywordtype">int</span> sizePkt = <a class="code" href="host_8cpp.html#a3538db2e7e2e52121a1ee284f52cb3bb" title="Чтение данных из буфера приёма от контроллера визуализации">hostReadData</a>(bufferRx);
+<a name="l00502"></a>00502 
+<a name="l00503"></a>00503   <span class="keywordflow">if</span> (memcmp(bufferTx, bufferRx, <a class="code" href="host_8h.html#af61d1a4314492f819fd09103d112bdd9">HOST_BUF_SIZE</a>) ||
+<a name="l00504"></a>00504       (sizePkt != <a class="code" href="host_8h.html#af61d1a4314492f819fd09103d112bdd9">HOST_BUF_SIZE</a>)) {
+<a name="l00505"></a>00505     <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>); <span class="comment">// Ошибка</span>
+<a name="l00506"></a>00506   }
+<a name="l00507"></a>00507   <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>);
+<a name="l00508"></a>00508 <span class="preprocessor">#endif</span>
+<a name="l00509"></a>00509 <span class="preprocessor"></span>}
+<a name="l00510"></a>00510 
+<a name="l00511"></a><a class="code" href="test_8cpp.html#a60e473ecab3fd9b0d0260a4792f75e4e">00511</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="test_8cpp.html#a60e473ecab3fd9b0d0260a4792f75e4e">testLog</a>()
+<a name="l00512"></a>00512 {
+<a name="l00513"></a>00513 <span class="preprocessor">#if TEST_LOG</span>
+<a name="l00514"></a>00514 <span class="preprocessor"></span>  <a class="code" href="log__main_8cpp.html#acfb464e1241ad43563b00d42d8e6a7c0" title="Стирание архивов (в т.ч. стирание всей Flash)">logErase</a>();
+<a name="l00515"></a>00515 
+<a name="l00516"></a>00516   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 4; ++i) {
+<a name="l00517"></a>00517     <a class="code" href="log__main_8cpp.html#ac59bf01556b65dd1d2dbfcf7931b0759">logEvent</a>.<a class="code" href="class_log_event.html#a02f2e80c5113dc523a38b25b556fecdd" title="Метод добавления нового события в архив">add</a>(0x01, 13, i, 0, 1);
+<a name="l00518"></a>00518   }
+<a name="l00519"></a>00519   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 4; ++i) {
+<a name="l00520"></a>00520     <a class="code" href="log__main_8cpp.html#aeefb30a6fce637c5b58be762cc117a66">logDebug</a>.<a class="code" href="class_log_debug.html#a38f5318c5e8fab51597c55050314a7ea" title="Метод добавления отладочного сообщения в архив">add</a>(<a class="code" href="log__debug_8h.html#a2ea0bb09adcce7f655e8f8ee8d30561ba023d614605b4ba372214f6ec56388c7e">CriticalMsg</a>, <span class="stringliteral">&quot;Test Test Привет!&quot;</span>);
+<a name="l00521"></a>00521   }
+<a name="l00522"></a>00522 
+<a name="l00523"></a>00523   <a class="code" href="log__main_8cpp.html#a241cdf353a9042e6018e0a654008dce5" title="Чтение архивов">logRead</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fba688049fe14f78480f4b22161b6f9fad5">FlashSpi5</a>, <a class="code" href="log_8h.html#a776283aa5adad955016611bf995a5859ae289323471366123698fb0071f17c793" title="FlashSpi5.">StartAddrEventLog</a>, bufferRx, 20*4);
+<a name="l00524"></a>00524   <a class="code" href="log__main_8cpp.html#a241cdf353a9042e6018e0a654008dce5" title="Чтение архивов">logRead</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fbafc1cc925ab1ca7ede64e84265b2960db">FlashSpi1</a>, <a class="code" href="log_8h.html#a776283aa5adad955016611bf995a5859acecc0f768d1db5781d3fd8fb606d02f8" title="FlashSpi1.">StartAddrDebugLog</a>, bufferRx, 256*4);
+<a name="l00525"></a>00525   <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>);
+<a name="l00526"></a>00526 <span class="preprocessor">#endif</span>
+<a name="l00527"></a>00527 <span class="preprocessor"></span>}
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Пн 2 Мар 2015 15:35:47. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

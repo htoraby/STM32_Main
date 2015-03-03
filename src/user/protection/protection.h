@@ -4,8 +4,7 @@
 #include "user_main.h"
 
 /*!
- * \brief The Protection class
- * Класс защит КСУ, реализует общие базовые функции для всех защит
+ * \brief Базовый класс защит КСУ
  */
 class Protection
 {
@@ -23,7 +22,7 @@ public:
    * \brief Список состояний защиты
   */
   typedef enum {
-    ProtectionStateOff               = 0,
+    ProtectionStateIdle               = 0,
     ProtectionStateActivBegin        = 10,
     ProtectionStateActivWait         = 20,
     ProtectionStateActiv             = 30,
@@ -48,99 +47,93 @@ public:
   ~Protection();
 
   /*!
-   * \brief Инициализация базовой задачи обработки защиты
+   * \brief Инициализация обработки защиты
+   * \param threadName - Имя задачи
    */
   void init(const char *threadName);
 
   /*!
-   * \brief getSetpointProt
-   * Метод получения уставок защиты, метод должен вызываться с периодом работы
-   * работы автомата защиты, таким образом получаем актуальные значения уставок
+   * \brief Метод получения уставок защиты.
+   * Метод должен вызываться с периодом работы автомата защиты,
+   * таким образом получаем актуальные значения уставок
    */
   virtual void getSetpointProt();
 
   /*!
-   * \brief getCurrentParamProt
-   * Метод получения текущих параметров защиты, эти данные меняются в процессе
-   * работы автомата защиты
+   * \brief Метод получения текущих параметров защиты.
+   * Эти данные меняются в процессе работы автомата защиты
    */
   virtual void getCurrentParamProt();
 
   /*!
    * \brief Метод сохранения текущих параметров защиты
-   *
    */
   virtual void setCurrentParamProt();
 
   /*!
    * \brief Метод проверки условия срабатывания защиты
-   *
    * \return false - параметр в норме, true - параметр не в норме
    */
   virtual bool checkAlarm() = 0;
 
   /*!
    * \brief Метод проверки превышения текущего значения отсительно уставки
-   *
    * \return false параметр в норме, true параметр не в норме
    */
   bool isHigherLimit(float setpoint);
 
   /*!
    * \brief Метод проверки уменьшения текущего значения отсительно уставки
-   *
    * \return false параметр в норме, true параметр не в норме
    */
   bool isLowerLimit(float setpoint);
 
   /*!
    * \brief Метод проверки выполнения условия АПВ по значению параметра
-   *
    * \return false параметр в норме, true параметр не в норме
    */
   virtual bool checkBlock() = 0;
 
   /*!
    * \brief Пересчёт текущего значения для сравнения с уставкой
+   * \return Пересчитанное значение
    */
   virtual float calcValue() = 0;
 
   /*!
-   * \brief checkRestartResetCount
+   * \brief Метод проверки таймера сброса счётчиков АПВ защиты
    */
   void checkRestartResetCount();
 
   /*!
-   * \brief protection
-   * Автомат работы защиты
-   * \return состояние защиты
+   * \brief Метод добавления события "Сработала защита" в журнал
+   */
+  virtual void addEventActivationProt();
+
+  /*!
+   * \brief Универсальный автомат работы защиты
    */
   virtual void automatProtection();
 
   /*!
-   * \brief taskProtection
-   * Задача защиты
+   * \brief Задача защиты
    */
   void task();
 
   /*!
-   * \brief calcTimeFromStart
-   * Функция вычисления сколько времени прошло от момента фиксации времени
-   * и текущим временем
+   * \brief Функция вычисления времени от начала события
    * \return
    */
   float calcTimeFromStart();
 
   /*!
-   * \brief calcaTimeUntilend
-   * Функция вычисления сколько времени осталось до окончания события
+   * \brief Функция вычисления времени оставшегося до окончания события
    * \return
    */
   float calcTimeUntilEnd();
 
   /*!
-   * \brief calcRestartResetCount
-   * Функция проверки истекло ли время сброса счётчика АПВ
+   * \brief Функция проверки времени сброса счётчика АПВ
    * \return
    */
   bool calcRestartResetCount();
@@ -224,7 +217,7 @@ protected:
   /// Флаг запрещающего параметра
   bool block_;
 
-  /// Идентификатор задачи
+  /// Идентификатор задачи защиты
   osThreadId threadId_;
 
 };

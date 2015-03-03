@@ -11,14 +11,15 @@
 
 */
 typedef enum {
-  IdLogAddrFram    = 0x01FFC8,
-  EventLogAddrFram = 0x01FFCC,
-  DataLogAddrFram  = 0x01FFD0,
-  RunLogAddrFram   = 0x01FFD4,
-  AlarmLogAddrFram = 0x01FFD8,
-  TmsLogAddrFram   = 0x01FFDC,
-  DebugLogAddrFram = 0x01FFE0,
-  RcauseAddrFram   = 0x01FFE4,
+  IdDebugLogAddrFram = 0x01FFC4,
+  IdLogAddrFram      = 0x01FFC8,
+  EventLogAddrFram   = 0x01FFCC,
+  DataLogAddrFram    = 0x01FFD0,
+  RunLogAddrFram     = 0x01FFD4,
+  AlarmLogAddrFram   = 0x01FFD8,
+  TmsLogAddrFram     = 0x01FFDC,
+  DebugLogAddrFram   = 0x01FFE0,
+  RcauseAddrFram     = 0x01FFE4,
 } AddrFram;
 
 /*!

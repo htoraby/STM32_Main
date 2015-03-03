@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/stm32f4/stm32f4xx_it.c</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  <td id="projectlogo"><img alt="Logo" src="logo.ico"/></td>
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/stm32f4/stm32f4xx_it.c</div>  </div>
+</div>
+<div class="contents">
+<a href="stm32f4xx__it_8c.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00034"></a>00034 <span class="comment">/* Includes ------------------------------------------------------------------*/</span>
+<a name="l00035"></a>00035 <span class="preprocessor">#include &quot;stm32f4xx_hal.h&quot;</span>
+<a name="l00036"></a>00036 <span class="preprocessor">#include &quot;stm32f4xx.h&quot;</span>
+<a name="l00037"></a>00037 <span class="preprocessor">#include &quot;<a class="code" href="stm32f4xx__it_8h.html" title="This file contains the headers of the interrupt handlers.">stm32f4xx_it.h</a>&quot;</span>
+<a name="l00038"></a>00038 <span class="preprocessor">#include &quot;<a class="code" href="uart_8h.html">uart.h</a>&quot;</span>
+<a name="l00039"></a>00039 <span class="preprocessor">#include &quot;<a class="code" href="adc_8h.html">adc.h</a>&quot;</span>
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 <span class="comment">/* External variables --------------------------------------------------------*/</span>
+<a name="l00042"></a>00042  
+<a name="l00043"></a>00043 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="stm32f4xx__it_8c.html#a78100b2d36913d0b45565be8975e5de8">xPortSysTickHandler</a>(<span class="keywordtype">void</span>);
+<a name="l00044"></a>00044 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="host_8cpp.html#ae7e5d2042286ee472575bf72b7de9111" title="Функция обработки прерывания по приёму SPI4.">hostRxIRQHandler</a>(<span class="keywordtype">void</span>);
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 <span class="keyword">extern</span> HCD_HandleTypeDef <a class="code" href="stm32f4xx__it_8c.html#a135943d3578f7906d4be1d774650ecd0">hhcd_USB_OTG_FS</a>;
+<a name="l00047"></a>00047 <span class="keyword">extern</span> uint8_t <a class="code" href="board_8cpp.html#a4ccd3250c1c557408c16f05697817e16">isBoardInit</a>;
+<a name="l00048"></a>00048 <span class="keyword">extern</span> DMA_HandleTypeDef <a class="code" href="flash__ext_8cpp.html#ac8cdcfbb7adfcccc5717da58e1e10ae4">hdma_spi1_tx</a>;
+<a name="l00049"></a>00049 <span class="keyword">extern</span> DMA_HandleTypeDef <a class="code" href="flash__ext_8cpp.html#ad70fe79aa3139fc9184d8ffb5dfba323">hdma_spi1_rx</a>;
+<a name="l00050"></a>00050 <span class="keyword">extern</span> DMA_HandleTypeDef <a class="code" href="host_8cpp.html#ad790392d1f26fe2990cd755d5497fbdb">hdma_spi4_tx</a>;
+<a name="l00051"></a>00051 <span class="keyword">extern</span> DMA_HandleTypeDef <a class="code" href="flash__ext_8cpp.html#a308228355946ade7ef964f6618ec90e0">hdma_spi5_tx</a>;
+<a name="l00052"></a>00052 <span class="keyword">extern</span> DMA_HandleTypeDef <a class="code" href="flash__ext_8cpp.html#a31a824e0b3bb398ad9ff255175ad4620">hdma_spi5_rx</a>;
+<a name="l00053"></a>00053 <span class="keyword">extern</span> SPI_HandleTypeDef <a class="code" href="adc__ext_8cpp.html#ab9da65f935e805137e2eb4e18c5ab224">hspi2</a>;
+<a name="l00054"></a>00054 <span class="keyword">extern</span> SPI_HandleTypeDef <a class="code" href="fram_8cpp.html#aec51920045aad7f70cbfd1f58228d866">hspi3</a>;
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056 <span class="comment">/******************************************************************************/</span>
+<a name="l00057"></a>00057 <span class="comment">/*            Cortex-M4 Processor Interruption and Exception Handlers         */</span> 
+<a name="l00058"></a>00058 <span class="comment">/******************************************************************************/</span>
+<a name="l00059"></a>00059 
+<a name="l00060"></a><a class="code" href="stm32f4xx__it_8c.html#a06406eadf297fa89a6eaf9586b227a69">00060</a> <span class="keywordtype">void</span> <a class="code" href="stm32f4xx__it_8c.html#a06406eadf297fa89a6eaf9586b227a69">ADC_IRQHandler</a>(<span class="keywordtype">void</span>)
+<a name="l00061"></a>00061 {
+<a name="l00062"></a>00062   HAL_ADC_IRQHandler(&amp;<a class="code" href="adc_8cpp.html#ac2dee730dd92aeec790ee8ea1c31f7ac">hadc</a>[<a class="code" href="adc_8h.html#ab3cdab912cd27274cbb3c7798a6ce537a481a181b0f9913108d647e217b62e253">adc1</a>]);
+<a name="l00063"></a>00063 }
+<a name="l00064"></a>00064 
+<a name="l00065"></a><a class="code" href="stm32f4xx__it_8c.html#a7e367d7c7b74485c4c75cdef30ad01e1">00065</a> <span class="keywordtype">void</span> <a class="code" href="stm32f4xx__it_8c.html#a7e367d7c7b74485c4c75cdef30ad01e1">DMA2_Stream2_IRQHandler</a>(<span class="keywordtype">void</span>)
+<a name="l00066"></a>00066 {
+<a name="l00067"></a>00067   HAL_DMA_IRQHandler(<a class="code" href="adc_8cpp.html#ac2dee730dd92aeec790ee8ea1c31f7ac">hadc</a>[<a class="code" href="adc_8h.html#ab3cdab912cd27274cbb3c7798a6ce537aa12b02630986fe27ba4a5e81385d2470">adc2</a>].DMA_Handle);
+<a name="l00068"></a>00068 }
+<a name="l00069"></a>00069 
+<a name="l00070"></a><a class="code" href="stm32f4xx__it_8c.html#a30841f7aec070752b7b989ea8a271039">00070</a> <span class="keywordtype">void</span> <a class="code" href="stm32f4xx__it_8c.html#a30841f7aec070752b7b989ea8a271039">DMA1_Stream4_IRQHandler</a>(<span class="keywordtype">void</span>)
+<a name="l00071"></a>00071 {
+<a name="l00072"></a>00072   HAL_DMA_IRQHandler(<a class="code" href="adc__ext_8cpp.html#ab9da65f935e805137e2eb4e18c5ab224">hspi2</a>.hdmatx);
+<a name="l00073"></a>00073 }
+<a name="l00074"></a>00074 
+<a name="l00075"></a><a class="code" href="stm32f4xx__it_8c.html#a51d485393cf37043623c8bd0abae12a1">00075</a> <span class="keywordtype">void</span> <a class="code" href="stm32f4xx__it_8c.html#a51d485393cf37043623c8bd0abae12a1">DMA1_Stream3_IRQHandler</a>(<span class="keywordtype">void</span>)
+<a name="l00076"></a>00076 {
+<a name="l00077"></a>00077   HAL_DMA_IRQHandler(<a class="code" href="adc__ext_8cpp.html#ab9da65f935e805137e2eb4e18c5ab224">hspi2</a>.hdmarx);
+<a name="l00078"></a>00078 }
+<a name="l00079"></a>00079 
+<a name="l00080"></a><a class="code" href="stm32f4xx__it_8c.html#ac201b60d58b0eba2ce0b55710eb3c4d0">00080</a> <span class="keywordtype">void</span> <a class="code" href="stm32f4xx__it_8c.html#ac201b60d58b0eba2ce0b55710eb3c4d0">DMA1_Stream5_IRQHandler</a>(<span class="keywordtype">void</span>)
+<a name="l00081"></a>00081 {
+<a name="l00082"></a>00082   HAL_DMA_IRQHandler(<a class="code" href="fram_8cpp.html#aec51920045aad7f70cbfd1f58228d866">hspi3</a>.hdmatx);
+<a name="l00083"></a>00083 }
+<a name="l00084"></a>00084 
+<a name="l00085"></a><a class="code" href="stm32f4xx__it_8c.html#a1b70a4441662b1d6548e803499da414f">00085</a> <span class="keywordtype">void</span> <a class="code" href="stm32f4xx__it_8c.html#a1b70a4441662b1d6548e803499da414f">DMA1_Stream0_IRQHandler</a>(<span class="keywordtype">void</span>)
+<a name="l00086"></a>00086 {
+<a name="l00087"></a>00087   HAL_DMA_IRQHandler(<a class="code" href="fram_8cpp.html#aec51920045aad7f70cbfd1f58228d866">hspi3</a>.hdmarx);
+<a name="l00088"></a>00088 }
+<a name="l00089"></a>00089 
+<a name="l00090"></a><a class="code" href="stm32f4xx__it_8c.html#adab6f3e22e90bd5b1ceebb98022abdf2">00090</a> <span class="keywordtype">void</span> <a class="code" href="stm32f4xx__it_8c.html#adab6f3e22e90bd5b1ceebb98022abdf2">DMA2_Stream1_IRQHandler</a>(<span class="keywordtype">void</span>)
+<a name="l00091"></a>00091 {
+<a name="l00092"></a>00092   HAL_DMA_IRQHandler(&amp;<a class="code" href="host_8cpp.html#ad790392d1f26fe2990cd755d5497fbdb">hdma_spi4_tx</a>);
+<a name="l00093"></a>00093 }
+<a name="l00094"></a>00094 
+<a name="l00095"></a><a class="code" href="stm32f4xx__it_8c.html#ae5dcb5c1516cad8503ba1c778107c580">00095</a> <span class="keywordtype">void</span> <a class="code" href="stm32f4xx__it_8c.html#ae5dcb5c1516cad8503ba1c778107c580">SPI4_IRQHandler</a>(<span class="keywordtype">void</span>)
+<a name="l00096"></a>00096 {
+<a name="l00097"></a>00097   <a class="code" href="host_8cpp.html#ae7e5d2042286ee472575bf72b7de9111" title="Функция обработки прерывания по приёму SPI4.">hostRxIRQHandler</a>();
+<a name="l00098"></a>00098 }
+<a name="l00099"></a>00099 
+<a name="l00103"></a><a class="code" href="stm32f4xx__it_8c.html#aef190d87febc0414eb7a39bd4c2d2169">00103</a> <span class="keywordtype">void</span> <a class="code" href="stm32f4xx__it_8c.html#aef190d87febc0414eb7a39bd4c2d2169" title="Прерывания от SPI1.">DMA2_Stream5_IRQHandler</a>(<span class="keywordtype">void</span>)
+<a name="l00104"></a>00104 {
+<a name="l00105"></a>00105   HAL_DMA_IRQHandler(&amp;<a class="code" href="flash__ext_8cpp.html#ac8cdcfbb7adfcccc5717da58e1e10ae4">hdma_spi1_tx</a>);
+<a name="l00106"></a>00106 }
+<a name="l00107"></a>00107 
+<a name="l00108"></a><a class="code" href="stm32f4xx__it_8c.html#aaf6ce196dde98712e1223b99766e06c0">00108</a> <span class="keywordtype">void</span> <a class="code" href="stm32f4xx__it_8c.html#aaf6ce196dde98712e1223b99766e06c0">DMA2_Stream0_IRQHandler</a>(<span class="keywordtype">void</span>)
+<a name="l00109"></a>00109 {
+<a name="l00110"></a>00110   HAL_DMA_IRQHandler(&amp;<a class="code" href="flash__ext_8cpp.html#ad70fe79aa3139fc9184d8ffb5dfba323">hdma_spi1_rx</a>);
+<a name="l00111"></a>00111 }
+<a name="l00112"></a>00112 
+<a name="l00116"></a><a class="code" href="stm32f4xx__it_8c.html#a295198ed574625d416158a5fc54205ea">00116</a> <span class="keywordtype">void</span> <a class="code" href="stm32f4xx__it_8c.html#a295198ed574625d416158a5fc54205ea" title="Прерывания от SPI5.">DMA2_Stream4_IRQHandler</a>(<span class="keywordtype">void</span>)
+<a name="l00117"></a>00117 {
+<a name="l00118"></a>00118   HAL_DMA_IRQHandler(&amp;<a class="code" href="flash__ext_8cpp.html#a308228355946ade7ef964f6618ec90e0">hdma_spi5_tx</a>);
+<a name="l00119"></a>00119 }
+<a name="l00120"></a>00120 
+<a name="l00121"></a><a class="code" href="stm32f4xx__it_8c.html#a877135f6494d6923d6f6ec32d75d9eeb">00121</a> <span class="keywordtype">void</span> <a class="code" href="stm32f4xx__it_8c.html#a877135f6494d6923d6f6ec32d75d9eeb">DMA2_Stream3_IRQHandler</a>(<span class="keywordtype">void</span>)
+<a name="l00122"></a>00122 {
+<a name="l00123"></a>00123   HAL_DMA_IRQHandler(&amp;<a class="code" href="flash__ext_8cpp.html#a31a824e0b3bb398ad9ff255175ad4620">hdma_spi5_rx</a>);
+<a name="l00124"></a>00124 }
+<a name="l00125"></a>00125 
+<a name="l00129"></a><a class="code" href="stm32f4xx__it_8h.html#a75135d7a041e2932e9903e8a345b3fc4">00129</a> <span class="keywordtype">void</span> <a class="code" href="stm32f4xx__it_8c.html#a75135d7a041e2932e9903e8a345b3fc4" title="This function handles USB On The Go FS global interrupt.">OTG_FS_IRQHandler</a>(<span class="keywordtype">void</span>)
+<a name="l00130"></a>00130 {
+<a name="l00131"></a>00131   HAL_NVIC_ClearPendingIRQ(OTG_FS_IRQn);
+<a name="l00132"></a>00132   HAL_HCD_IRQHandler(&amp;<a class="code" href="stm32f4xx__it_8c.html#a135943d3578f7906d4be1d774650ecd0">hhcd_USB_OTG_FS</a>);
+<a name="l00133"></a>00133 }
+<a name="l00134"></a>00134 
+<a name="l00135"></a><a class="code" href="stm32f4xx__it_8c.html#a7139cd4baabbbcbab0c1fe6d7d4ae1cc">00135</a> <span class="keywordtype">void</span> <a class="code" href="stm32f4xx__it_8c.html#a7139cd4baabbbcbab0c1fe6d7d4ae1cc">USART1_IRQHandler</a>(<span class="keywordtype">void</span>)
+<a name="l00136"></a>00136 {
+<a name="l00137"></a>00137   HAL_UART_IRQHandler(&amp;<a class="code" href="uart_8cpp.html#adbacd4179305028793861b8237edec6f">uarts</a>[<a class="code" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313dac5d4a49921ae3945e4956c68ef82ef7e">uart1</a>].uart);
+<a name="l00138"></a>00138 }
+<a name="l00139"></a>00139 
+<a name="l00140"></a><a class="code" href="stm32f4xx__it_8c.html#a0ca6fd0e6f77921dd1123539857ba0a8">00140</a> <span class="keywordtype">void</span> <a class="code" href="stm32f4xx__it_8c.html#a0ca6fd0e6f77921dd1123539857ba0a8">USART2_IRQHandler</a>(<span class="keywordtype">void</span>)
+<a name="l00141"></a>00141 {
+<a name="l00142"></a>00142   HAL_UART_IRQHandler(&amp;<a class="code" href="uart_8cpp.html#adbacd4179305028793861b8237edec6f">uarts</a>[<a class="code" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313dab451d4e63ecd522a24f90c790c15ee48">uart2</a>].uart);
+<a name="l00143"></a>00143 }
+<a name="l00144"></a>00144 
+<a name="l00145"></a><a class="code" href="stm32f4xx__it_8c.html#a0d108a3468b2051548183ee5ca2158a0">00145</a> <span class="keywordtype">void</span> <a class="code" href="stm32f4xx__it_8c.html#a0d108a3468b2051548183ee5ca2158a0">USART3_IRQHandler</a>(<span class="keywordtype">void</span>)
+<a name="l00146"></a>00146 {
+<a name="l00147"></a>00147   HAL_UART_IRQHandler(&amp;<a class="code" href="uart_8cpp.html#adbacd4179305028793861b8237edec6f">uarts</a>[<a class="code" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313da8b1a074a85d32e284593e29bc1fd457b">uart3</a>].uart);
+<a name="l00148"></a>00148 }
+<a name="l00149"></a>00149 
+<a name="l00150"></a><a class="code" href="stm32f4xx__it_8c.html#a12c827857d907ad0cccd586fd934d446">00150</a> <span class="keywordtype">void</span> <a class="code" href="stm32f4xx__it_8c.html#a12c827857d907ad0cccd586fd934d446">USART6_IRQHandler</a>(<span class="keywordtype">void</span>)
+<a name="l00151"></a>00151 {
+<a name="l00152"></a>00152   HAL_UART_IRQHandler(&amp;<a class="code" href="uart_8cpp.html#adbacd4179305028793861b8237edec6f">uarts</a>[<a class="code" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313daafbd43c1f73a63a2b3fe8842a8219b47">uart6</a>].uart);
+<a name="l00153"></a>00153 }
+<a name="l00154"></a>00154 
+<a name="l00155"></a><a class="code" href="stm32f4xx__it_8c.html#a88774889b903ae43403cd7e7a11a8f4f">00155</a> <span class="keywordtype">void</span> <a class="code" href="stm32f4xx__it_8c.html#a88774889b903ae43403cd7e7a11a8f4f">UART4_IRQHandler</a>(<span class="keywordtype">void</span>)
+<a name="l00156"></a>00156 {
+<a name="l00157"></a>00157   HAL_UART_IRQHandler(&amp;<a class="code" href="uart_8cpp.html#adbacd4179305028793861b8237edec6f">uarts</a>[<a class="code" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313da9671876e3a1bb6a53f978e2627fbd99d">uart4</a>].uart);
+<a name="l00158"></a>00158 }
+<a name="l00159"></a>00159 
+<a name="l00160"></a><a class="code" href="stm32f4xx__it_8c.html#adc5cfee8568973874a1fc936db33ec7c">00160</a> <span class="keywordtype">void</span> <a class="code" href="stm32f4xx__it_8c.html#adc5cfee8568973874a1fc936db33ec7c">UART7_IRQHandler</a>(<span class="keywordtype">void</span>)
+<a name="l00161"></a>00161 {
+<a name="l00162"></a>00162   HAL_UART_IRQHandler(&amp;<a class="code" href="uart_8cpp.html#adbacd4179305028793861b8237edec6f">uarts</a>[<a class="code" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313da06531c0d580cbbe76e8d49772802152b">uart7</a>].uart);
+<a name="l00163"></a>00163 }
+<a name="l00164"></a>00164 
+<a name="l00168"></a><a class="code" href="stm32f4xx__it_8h.html#ab5e09814056d617c521549e542639b7e">00168</a> <span class="keywordtype">void</span> <a class="code" href="stm32f4xx__it_8c.html#ab5e09814056d617c521549e542639b7e" title="This function handles System tick timer.">SysTick_Handler</a>(<span class="keywordtype">void</span>)
+<a name="l00169"></a>00169 {
+<a name="l00170"></a>00170   <span class="keywordflow">if</span> (<a class="code" href="board_8cpp.html#a4ccd3250c1c557408c16f05697817e16">isBoardInit</a>) {
+<a name="l00171"></a>00171     osSystickHandler();
+<a name="l00172"></a>00172   }
+<a name="l00173"></a>00173   HAL_IncTick();
+<a name="l00174"></a>00174 }
+<a name="l00175"></a>00175 
+<a name="l00176"></a>00176 <span class="comment">/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Пн 2 Мар 2015 15:35:47. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

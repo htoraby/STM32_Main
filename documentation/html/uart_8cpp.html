@@ -1,0 +1,478 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Файл C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/uart/uart.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  <td id="projectlogo"><img alt="Logo" src="logo.ico"/></td>
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Функции</a> &#124;
+<a href="#var-members">Переменные</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/uart/uart.cpp</div>  </div>
+</div>
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="uart_8h_source.html">uart.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="gpio_8h_source.html">gpio.h</a>&quot;</code><br/>
+<code>#include &quot;string.h&quot;</code><br/>
+</div>
+<p><a href="uart_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8cpp.html#aa594cd74e2dac298dc3384d1829a0646">uartSetRts</a> (<a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313d">uartNum</a> num, GPIO_PinState value)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Управление выводом RTS порта UART.  <a href="#aa594cd74e2dac298dc3384d1829a0646"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8cpp.html#ac727db9abe134166c5779d05cafe42dd">uartInit</a> (<a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313d">uartNum</a> num, uint32_t baudRate, uint32_t parity, uint32_t stopBits)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8cpp.html#ab61c689cb3e3728a521a57c1e80ebd91">uartClose</a> (<a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313d">uartNum</a> num)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8cpp.html#a0e553b32211877322f949b14801bbfa7">HAL_UART_MspInit</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8cpp.html#a718f39804e3b910d738a0e1e46151188">HAL_UART_MspDeInit</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">osSemaphoreId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8cpp.html#adda4cb12643850a703b9172edfd21a09">uartGetSemaphoreId</a> (<a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313d">uartNum</a> num)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313d">uartNum</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8cpp.html#aea6f6c27fbba5153008786ba78501209">uartGetNum</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8cpp.html#afdd047b841a68d2e99c393370625c3d6">uartGetRxCount</a> (<a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313d">uartNum</a> num)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8cpp.html#a73e5e7c73d2e2f54386f9d59ebd77fd1">uartReadData</a> (<a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313d">uartNum</a> num, uint8_t *data)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8cpp.html#a910097a9fae2c4b2296020aa4ab05b0f">uartWriteData</a> (<a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313d">uartNum</a> num, uint8_t *data, int count, uint32_t timeout)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8cpp.html#ae494a9643f29b87d6d81e5264e60e57b">HAL_UART_RxCpltCallback</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Получение байта данных из прерывания и освобождение семафора  <a href="#ae494a9643f29b87d6d81e5264e60e57b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8cpp.html#abcdf9b59049eccbc87d54042f9235b1a">HAL_UART_TxCpltCallback</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Отправка пакета с данными из прерывания  <a href="#abcdf9b59049eccbc87d54042f9235b1a"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Переменные</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_u_a_r_t___def.html">UART_Def</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8cpp.html#adbacd4179305028793861b8237edec6f">uarts</a> [uartMax]</td></tr>
+</table>
+<hr/><h2>Функции</h2>
+<a class="anchor" id="a718f39804e3b910d738a0e1e46151188"></a><!-- doxytag: member="uart.cpp::HAL_UART_MspDeInit" ref="a718f39804e3b910d738a0e1e46151188" args="(UART_HandleTypeDef *huart)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_UART_MspDeInit </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="uart_8cpp_source.html">uart.cpp</a> строка <a class="el" href="uart_8cpp_source.html#l00236">236</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a0e553b32211877322f949b14801bbfa7"></a><!-- doxytag: member="uart.cpp::HAL_UART_MspInit" ref="a0e553b32211877322f949b14801bbfa7" args="(UART_HandleTypeDef *huart)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_UART_MspInit </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>UART4 GPIO Configuration PA0/WKUP ------&gt; UART4_TX PA1 ------&gt; UART4_RX PH2 ------&gt; USART4_RTS (user pin)</p>
+<p>UART7 GPIO Configuration PF6 ------&gt; UART7_RX PF7 ------&gt; UART7_TX PI11 ------&gt; USART7_RTS (user pin)</p>
+<p>USART1 GPIO Configuration PA9 ------&gt; USART1_TX PA10 ------&gt; USART1_RX</p>
+<p>USART2 GPIO Configuration PA2 ------&gt; USART2_TX PA3 ------&gt; USART2_RX PH5 ------&gt; USART2_RTS (user pin)</p>
+<p>USART3 GPIO Configuration PB10 ------&gt; USART3_TX PB11 ------&gt; USART3_RX PB14 ------&gt; USART3_RTS</p>
+<p>USART6 GPIO Configuration PC6 ------&gt; USART6_TX PC7 ------&gt; USART6_RX</p>
+
+<p>См. определение в файле <a class="el" href="uart_8cpp_source.html">uart.cpp</a> строка <a class="el" href="uart_8cpp_source.html#l00089">89</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae494a9643f29b87d6d81e5264e60e57b"></a><!-- doxytag: member="uart.cpp::HAL_UART_RxCpltCallback" ref="ae494a9643f29b87d6d81e5264e60e57b" args="(UART_HandleTypeDef *huart)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_UART_RxCpltCallback </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Получение байта данных из прерывания и освобождение семафора </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">huart</td><td>- Указатель на порт UART </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="uart_8cpp_source.html">uart.cpp</a> строка <a class="el" href="uart_8cpp_source.html#l00326">326</a></p>
+
+</div>
+</div>
+<a class="anchor" id="abcdf9b59049eccbc87d54042f9235b1a"></a><!-- doxytag: member="uart.cpp::HAL_UART_TxCpltCallback" ref="abcdf9b59049eccbc87d54042f9235b1a" args="(UART_HandleTypeDef *huart)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_UART_TxCpltCallback </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Отправка пакета с данными из прерывания </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">huart</td><td>- Указатель на порт UART </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="uart_8cpp_source.html">uart.cpp</a> строка <a class="el" href="uart_8cpp_source.html#l00336">336</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ab61c689cb3e3728a521a57c1e80ebd91"></a><!-- doxytag: member="uart.cpp::uartClose" ref="ab61c689cb3e3728a521a57c1e80ebd91" args="(uartNum num)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef uartClose </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313d">uartNum</a>&#160;</td>
+          <td class="paramname"><em>num</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="uart_8cpp_source.html">uart.cpp</a> строка <a class="el" href="uart_8cpp_source.html#l00057">57</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aea6f6c27fbba5153008786ba78501209"></a><!-- doxytag: member="uart.cpp::uartGetNum" ref="aea6f6c27fbba5153008786ba78501209" args="(UART_HandleTypeDef *huart)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313d">uartNum</a> uartGetNum </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart</em></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="uart_8cpp_source.html">uart.cpp</a> строка <a class="el" href="uart_8cpp_source.html#l00272">272</a></p>
+
+</div>
+</div>
+<a class="anchor" id="afdd047b841a68d2e99c393370625c3d6"></a><!-- doxytag: member="uart.cpp::uartGetRxCount" ref="afdd047b841a68d2e99c393370625c3d6" args="(uartNum num)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int uartGetRxCount </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313d">uartNum</a>&#160;</td>
+          <td class="paramname"><em>num</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="uart_8cpp_source.html">uart.cpp</a> строка <a class="el" href="uart_8cpp_source.html#l00289">289</a></p>
+
+</div>
+</div>
+<a class="anchor" id="adda4cb12643850a703b9172edfd21a09"></a><!-- doxytag: member="uart.cpp::uartGetSemaphoreId" ref="adda4cb12643850a703b9172edfd21a09" args="(uartNum num)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">osSemaphoreId uartGetSemaphoreId </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313d">uartNum</a>&#160;</td>
+          <td class="paramname"><em>num</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="uart_8cpp_source.html">uart.cpp</a> строка <a class="el" href="uart_8cpp_source.html#l00267">267</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ac727db9abe134166c5779d05cafe42dd"></a><!-- doxytag: member="uart.cpp::uartInit" ref="ac727db9abe134166c5779d05cafe42dd" args="(uartNum num, uint32_t baudRate, uint32_t parity, uint32_t stopBits)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> uartInit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313d">uartNum</a>&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>baudRate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>parity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>stopBits</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="uart_8cpp_source.html">uart.cpp</a> строка <a class="el" href="uart_8cpp_source.html#l00009">9</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a73e5e7c73d2e2f54386f9d59ebd77fd1"></a><!-- doxytag: member="uart.cpp::uartReadData" ref="a73e5e7c73d2e2f54386f9d59ebd77fd1" args="(uartNum num, uint8_t *data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int uartReadData </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313d">uartNum</a>&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="uart_8cpp_source.html">uart.cpp</a> строка <a class="el" href="uart_8cpp_source.html#l00294">294</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa594cd74e2dac298dc3384d1829a0646"></a><!-- doxytag: member="uart.cpp::uartSetRts" ref="aa594cd74e2dac298dc3384d1829a0646" args="(uartNum num, GPIO_PinState value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void uartSetRts </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313d">uartNum</a>&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GPIO_PinState&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Управление выводом RTS порта UART. </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">num</td><td>- номер порта (<a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313d">uartNum</a>) </td></tr>
+    <tr><td class="paramname">value</td><td>- значение на выходе 0 или 1 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="uart_8cpp_source.html">uart.cpp</a> строка <a class="el" href="uart_8cpp_source.html#l00347">347</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a910097a9fae2c4b2296020aa4ab05b0f"></a><!-- doxytag: member="uart.cpp::uartWriteData" ref="a910097a9fae2c4b2296020aa4ab05b0f" args="(uartNum num, uint8_t *data, int count, uint32_t timeout)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> uartWriteData </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313d">uartNum</a>&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="uart_8cpp_source.html">uart.cpp</a> строка <a class="el" href="uart_8cpp_source.html#l00307">307</a></p>
+
+</div>
+</div>
+<hr/><h2>Переменные</h2>
+<a class="anchor" id="adbacd4179305028793861b8237edec6f"></a><!-- doxytag: member="uart.cpp::uarts" ref="adbacd4179305028793861b8237edec6f" args="[uartMax]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_u_a_r_t___def.html">UART_Def</a> <a class="el" href="uart_8h.html#a44d0ed7a167430dbcd5fea43d98932bb">uarts</a>[uartMax]</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="uart_8cpp_source.html">uart.cpp</a> строка <a class="el" href="uart_8cpp_source.html#l00006">6</a></p>
+
+</div>
+</div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Пн 2 Мар 2015 15:35:48. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

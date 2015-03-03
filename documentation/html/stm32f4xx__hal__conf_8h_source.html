@@ -1,0 +1,418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/stm32f4/conf/stm32f4xx_hal_conf.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  <td id="projectlogo"><img alt="Logo" src="logo.ico"/></td>
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/stm32f4/conf/stm32f4xx_hal_conf.h</div>  </div>
+</div>
+<div class="contents">
+<a href="stm32f4xx__hal__conf_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00035"></a>00035 <span class="comment">/* Define to prevent recursive inclusion -------------------------------------*/</span>
+<a name="l00036"></a>00036 <span class="preprocessor">#ifndef __STM32F4xx_HAL_CONF_H</span>
+<a name="l00037"></a>00037 <span class="preprocessor"></span><span class="preprocessor">#define __STM32F4xx_HAL_CONF_H</span>
+<a name="l00038"></a>00038 <span class="preprocessor"></span>
+<a name="l00039"></a>00039 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00040"></a>00040 <span class="preprocessor"></span> <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {
+<a name="l00041"></a>00041 <span class="preprocessor">#endif</span>
+<a name="l00042"></a>00042 <span class="preprocessor"></span>
+<a name="l00043"></a>00043 <span class="comment">/* Exported types ------------------------------------------------------------*/</span>
+<a name="l00044"></a>00044 <span class="comment">/* Exported constants --------------------------------------------------------*/</span>
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 <span class="comment">/* ########################## Module Selection ############################## */</span>
+<a name="l00050"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a877ae99e8c47a609ea97c888912bf75f">00050</a> <span class="preprocessor">#define HAL_MODULE_ENABLED  </span>
+<a name="l00051"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a476f1655c969ae57e89a74d98c75f43f">00051</a> <span class="preprocessor"></span><span class="preprocessor">#define HAL_ADC_MODULE_ENABLED</span>
+<a name="l00052"></a>00052 <span class="preprocessor"></span><span class="comment">//#define HAL_CAN_MODULE_ENABLED   </span>
+<a name="l00053"></a>00053 <span class="comment">//#define HAL_CRC_MODULE_ENABLED   </span>
+<a name="l00054"></a>00054 <span class="comment">//#define HAL_CRYP_MODULE_ENABLED   </span>
+<a name="l00055"></a>00055 <span class="comment">//#define HAL_DAC_MODULE_ENABLED   </span>
+<a name="l00056"></a>00056 <span class="comment">//#define HAL_DCMI_MODULE_ENABLED   </span>
+<a name="l00057"></a>00057 <span class="comment">//#define HAL_DMA2D_MODULE_ENABLED   </span>
+<a name="l00058"></a>00058 <span class="comment">//#define HAL_ETH_MODULE_ENABLED   </span>
+<a name="l00059"></a>00059 <span class="comment">//#define HAL_NAND_MODULE_ENABLED   </span>
+<a name="l00060"></a>00060 <span class="comment">//#define HAL_NOR_MODULE_ENABLED   </span>
+<a name="l00061"></a>00061 <span class="comment">//#define HAL_PCCARD_MODULE_ENABLED   </span>
+<a name="l00062"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#aad50606af6b514a16c643400572159b5">00062</a> <span class="preprocessor">#define HAL_SRAM_MODULE_ENABLED</span>
+<a name="l00063"></a>00063 <span class="preprocessor"></span><span class="comment">//#define HAL_SDRAM_MODULE_ENABLED   </span>
+<a name="l00064"></a>00064 <span class="comment">//#define HAL_HASH_MODULE_ENABLED   </span>
+<a name="l00065"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a19999766418b0224871f732d800841c6">00065</a> <span class="preprocessor">#define HAL_I2C_MODULE_ENABLED</span>
+<a name="l00066"></a>00066 <span class="preprocessor"></span><span class="comment">//#define HAL_I2S_MODULE_ENABLED   </span>
+<a name="l00067"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a7c8601480b3c54ae1398a58d416fd202">00067</a> <span class="preprocessor">#define HAL_IWDG_MODULE_ENABLED</span>
+<a name="l00068"></a>00068 <span class="preprocessor"></span><span class="comment">//#define HAL_LTDC_MODULE_ENABLED   </span>
+<a name="l00069"></a>00069 <span class="comment">//#define HAL_RNG_MODULE_ENABLED   </span>
+<a name="l00070"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a5b1d544516151cd8a18af91e3e1f336b">00070</a> <span class="preprocessor">#define HAL_RTC_MODULE_ENABLED</span>
+<a name="l00071"></a>00071 <span class="preprocessor"></span><span class="comment">//#define HAL_SAI_MODULE_ENABLED   </span>
+<a name="l00072"></a>00072 <span class="comment">//#define HAL_SD_MODULE_ENABLED   </span>
+<a name="l00073"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a8ad4712bf4add56892d057778e826e0c">00073</a> <span class="preprocessor">#define HAL_SPI_MODULE_ENABLED</span>
+<a name="l00074"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a23382b8f04b3e6db2c59dfa1ef5ea4a2">00074</a> <span class="preprocessor"></span><span class="preprocessor">#define HAL_TIM_MODULE_ENABLED</span>
+<a name="l00075"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a167269406e73327b95c3bb7b9cfe6d89">00075</a> <span class="preprocessor"></span><span class="preprocessor">#define HAL_UART_MODULE_ENABLED</span>
+<a name="l00076"></a>00076 <span class="preprocessor"></span><span class="comment">//#define HAL_USART_MODULE_ENABLED</span>
+<a name="l00077"></a>00077 <span class="comment">//#define HAL_IRDA_MODULE_ENABLED   </span>
+<a name="l00078"></a>00078 <span class="comment">//#define HAL_SMARTCARD_MODULE_ENABLED   </span>
+<a name="l00079"></a>00079 <span class="comment">//#define HAL_WWDG_MODULE_ENABLED</span>
+<a name="l00080"></a>00080 <span class="comment">//#define HAL_PCD_MODULE_ENABLED   </span>
+<a name="l00081"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a994ca8ef40f9fce2d816317e38a4e616">00081</a> <span class="preprocessor">#define HAL_HCD_MODULE_ENABLED</span>
+<a name="l00082"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a86165f80d6078719ee0715afe13febf5">00082</a> <span class="preprocessor"></span><span class="preprocessor">#define HAL_GPIO_MODULE_ENABLED</span>
+<a name="l00083"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a6552186102a1131b2849ac55a582945d">00083</a> <span class="preprocessor"></span><span class="preprocessor">#define HAL_DMA_MODULE_ENABLED</span>
+<a name="l00084"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#ac3dd74314ed62ac8575e2f9f48b3ac48">00084</a> <span class="preprocessor"></span><span class="preprocessor">#define HAL_RCC_MODULE_ENABLED</span>
+<a name="l00085"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a7112575efe3740911f19a13e6b170fee">00085</a> <span class="preprocessor"></span><span class="preprocessor">#define HAL_FLASH_MODULE_ENABLED</span>
+<a name="l00086"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#ab51923c3716977d7923f49cc9d081aa8">00086</a> <span class="preprocessor"></span><span class="preprocessor">#define HAL_PWR_MODULE_ENABLED</span>
+<a name="l00087"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#aa9b5a3a425901e097de70092dbe31e0f">00087</a> <span class="preprocessor"></span><span class="preprocessor">#define HAL_CORTEX_MODULE_ENABLED</span>
+<a name="l00088"></a>00088 <span class="preprocessor"></span>
+<a name="l00089"></a>00089 <span class="comment">/* ########################## HSE/HSI Values adaptation ##################### */</span>
+<a name="l00095"></a>00095 <span class="preprocessor">#if !defined  (HSE_VALUE) </span>
+<a name="l00096"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#aeafcff4f57440c60e64812dddd13e7cb">00096</a> <span class="preprocessor"></span><span class="preprocessor">  #define HSE_VALUE    ((uint32_t)12000000) </span>
+<a name="l00097"></a>00097 <span class="preprocessor">#endif </span><span class="comment">/* HSE_VALUE */</span>
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099 <span class="preprocessor">#if !defined  (HSE_STARTUP_TIMEOUT)</span>
+<a name="l00100"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a68ecbc9b0a1a40a1ec9d18d5e9747c4f">00100</a> <span class="preprocessor"></span><span class="preprocessor">  #define HSE_STARTUP_TIMEOUT    ((uint32_t)5000)   </span>
+<a name="l00101"></a>00101 <span class="preprocessor">#endif </span><span class="comment">/* HSE_STARTUP_TIMEOUT */</span>
+<a name="l00102"></a>00102 
+<a name="l00108"></a>00108 <span class="preprocessor">#if !defined  (HSI_VALUE)</span>
+<a name="l00109"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#aaa8c76e274d0f6dd2cefb5d0b17fbc37">00109</a> <span class="preprocessor"></span><span class="preprocessor">  #define HSI_VALUE    ((uint32_t)16000000) </span>
+<a name="l00110"></a>00110 <span class="preprocessor">#endif </span><span class="comment">/* HSI_VALUE */</span>
+<a name="l00111"></a>00111 
+<a name="l00117"></a>00117 <span class="preprocessor">#if !defined  (EXTERNAL_CLOCK_VALUE)</span>
+<a name="l00118"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a8c47c935e91e70569098b41718558648">00118</a> <span class="preprocessor"></span><span class="preprocessor">  #define EXTERNAL_CLOCK_VALUE    ((uint32_t)12288000) </span>
+<a name="l00119"></a>00119 <span class="preprocessor">#endif </span><span class="comment">/* EXTERNAL_CLOCK_VALUE */</span>
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121 <span class="comment">/* Tip: To avoid modifying this file each time you need to use different HSE,</span>
+<a name="l00122"></a>00122 <span class="comment">   ===  you can define the HSE value in your toolchain compiler preprocessor. */</span>
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124 <span class="comment">/* ########################### System Configuration ######################### */</span>
+<a name="l00129"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#aae550dad9f96d52cfce5e539adadbbb4">00129</a> <span class="preprocessor">#define  VDD_VALUE                                                ((uint32_t)3300) </span>
+<a name="l00130"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#ae27809d4959b9fd5b5d974e3e1c77d2e">00130</a> <span class="preprocessor">#define  TICK_INT_PRIORITY            ((uint32_t)0x0F) </span>
+<a name="l00131"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#ad048ac737242c2c2cb9f4a72953d10ce">00131</a> <span class="preprocessor">#define  USE_RTOS                     0</span>
+<a name="l00132"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a13fc0d5e7bb925385c0cc0772ba6a391">00132</a> <span class="preprocessor"></span><span class="preprocessor">#define  PREFETCH_ENABLE              1</span>
+<a name="l00133"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a3379989d46599c7e19a43f42e9145a4a">00133</a> <span class="preprocessor"></span><span class="preprocessor">#define  INSTRUCTION_CACHE_ENABLE     1</span>
+<a name="l00134"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a5b4c32a40cf49b06c0d761e385949a6b">00134</a> <span class="preprocessor"></span><span class="preprocessor">#define  DATA_CACHE_ENABLE            1</span>
+<a name="l00135"></a>00135 <span class="preprocessor"></span>
+<a name="l00136"></a>00136 <span class="comment">/* ########################## Assert Selection ############################## */</span>
+<a name="l00141"></a>00141 <span class="comment">/* #define USE_FULL_ASSERT    1 */</span>
+<a name="l00142"></a>00142 
+<a name="l00143"></a>00143 <span class="comment">/* ################## Ethernet peripheral configuration ##################### */</span>
+<a name="l00144"></a>00144 
+<a name="l00145"></a>00145 <span class="comment">/* Section 1 : Ethernet peripheral configuration */</span>
+<a name="l00146"></a>00146 
+<a name="l00147"></a>00147 <span class="comment">/* MAC ADDRESS: MAC_ADDR0:MAC_ADDR1:MAC_ADDR2:MAC_ADDR3:MAC_ADDR4:MAC_ADDR5 */</span>
+<a name="l00148"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#ab84a2e15d360e2644ada09641513a941">00148</a> <span class="preprocessor">#define MAC_ADDR0   2</span>
+<a name="l00149"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a8d14266d76690c530bee01e7e5bb4099">00149</a> <span class="preprocessor"></span><span class="preprocessor">#define MAC_ADDR1   0</span>
+<a name="l00150"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a6c5df15bec1d305ed033ad9a85ec803d">00150</a> <span class="preprocessor"></span><span class="preprocessor">#define MAC_ADDR2   0</span>
+<a name="l00151"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a08a36ede83ae67498aecf54676be8fc8">00151</a> <span class="preprocessor"></span><span class="preprocessor">#define MAC_ADDR3   0</span>
+<a name="l00152"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a41e5cb0b39ad74f0aafb83dbcecf9006">00152</a> <span class="preprocessor"></span><span class="preprocessor">#define MAC_ADDR4   0</span>
+<a name="l00153"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a3bcc92663c42ec434f527847bbc4abc1">00153</a> <span class="preprocessor"></span><span class="preprocessor">#define MAC_ADDR5   0</span>
+<a name="l00154"></a>00154 <span class="preprocessor"></span>
+<a name="l00155"></a>00155 <span class="comment">/* Definition of the Ethernet driver buffers size and count */</span>   
+<a name="l00156"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a0cdaf687f7a7f2dba570d5a722990786">00156</a> <span class="preprocessor">#define ETH_RX_BUF_SIZE                ETH_MAX_PACKET_SIZE </span><span class="comment">/* buffer size for receive               */</span>
+<a name="l00157"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#af83956dfc1b135c3c92ac409758b6cf4">00157</a> <span class="preprocessor">#define ETH_TX_BUF_SIZE                ETH_MAX_PACKET_SIZE </span><span class="comment">/* buffer size for transmit              */</span>
+<a name="l00158"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a62b0f224fa9c4f2e5574c9e52526f751">00158</a> <span class="preprocessor">#define ETH_RXBUFNB                    ((uint32_t)4)       </span><span class="comment">/* 4 Rx buffers of size ETH_RX_BUF_SIZE  */</span>
+<a name="l00159"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a4ad07ad8fa6f8639ab8ef362390d86c7">00159</a> <span class="preprocessor">#define ETH_TXBUFNB                    ((uint32_t)4)       </span><span class="comment">/* 4 Tx buffers of size ETH_TX_BUF_SIZE  */</span>
+<a name="l00160"></a>00160 
+<a name="l00161"></a>00161 <span class="comment">/* Section 2: PHY configuration section */</span>
+<a name="l00162"></a>00162 
+<a name="l00163"></a>00163 <span class="comment">/* DP83848 PHY Address*/</span> 
+<a name="l00164"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a25f014091aaba92bdd9d95d0b2f00503">00164</a> <span class="preprocessor">#define DP83848_PHY_ADDRESS             0x01</span>
+<a name="l00165"></a>00165 <span class="preprocessor"></span><span class="comment">/* PHY Reset delay these values are based on a 1 ms Systick interrupt*/</span> 
+<a name="l00166"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a0ede6087f7b71403bcddb5d3a8f47ff4">00166</a> <span class="preprocessor">#define PHY_RESET_DELAY                 ((uint32_t)0x000000FF)</span>
+<a name="l00167"></a>00167 <span class="preprocessor"></span><span class="comment">/* PHY Configuration delay */</span>
+<a name="l00168"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#abba7114255a2a41b81fdcb2a3702c270">00168</a> <span class="preprocessor">#define PHY_CONFIG_DELAY                ((uint32_t)0x00000FFF)</span>
+<a name="l00169"></a>00169 <span class="preprocessor"></span>
+<a name="l00170"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a9d356ada86535630c403690bef0fb887">00170</a> <span class="preprocessor">#define PHY_READ_TO                     ((uint32_t)0x0000FFFF)</span>
+<a name="l00171"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a474bf13e28d09b667e41b151140ee39d">00171</a> <span class="preprocessor"></span><span class="preprocessor">#define PHY_WRITE_TO                    ((uint32_t)0x0000FFFF)</span>
+<a name="l00172"></a>00172 <span class="preprocessor"></span>
+<a name="l00173"></a>00173 <span class="comment">/* Section 3: Common PHY Registers */</span>
+<a name="l00174"></a>00174 
+<a name="l00175"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a8abe1a40c71e68881ec669d59f513fdb">00175</a> <span class="preprocessor">#define PHY_BCR                         ((uint16_t)0x00)    </span>
+<a name="l00176"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a4b8f2c29a9e74412395e1b1809666838">00176</a> <span class="preprocessor">#define PHY_BSR                         ((uint16_t)0x01)    </span>
+<a name="l00178"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a6f5048620b3dde8583f7f1118e9de187">00178</a> <span class="preprocessor">#define PHY_RESET                       ((uint16_t)0x8000)  </span>
+<a name="l00179"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a7833d885caa7e29abbebfb90a4b96f86">00179</a> <span class="preprocessor">#define PHY_LOOPBACK                    ((uint16_t)0x4000)  </span>
+<a name="l00180"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a5729771244f68779fc694ba819cd60a5">00180</a> <span class="preprocessor">#define PHY_FULLDUPLEX_100M             ((uint16_t)0x2100)  </span>
+<a name="l00181"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a1ac901a4ad405241d90a5c10104b8986">00181</a> <span class="preprocessor">#define PHY_HALFDUPLEX_100M             ((uint16_t)0x2000)  </span>
+<a name="l00182"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a6b6254fd3dacbf1578a9d8058cd86373">00182</a> <span class="preprocessor">#define PHY_FULLDUPLEX_10M              ((uint16_t)0x0100)  </span>
+<a name="l00183"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a4fa7ca6faf60ee074576ebb6103f8dd4">00183</a> <span class="preprocessor">#define PHY_HALFDUPLEX_10M              ((uint16_t)0x0000)  </span>
+<a name="l00184"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a9b7f5c8f71047ee449f21562d26b1b43">00184</a> <span class="preprocessor">#define PHY_AUTONEGOTIATION             ((uint16_t)0x1000)  </span>
+<a name="l00185"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a66c4b69bd08dc25b6730365d3ff740c9">00185</a> <span class="preprocessor">#define PHY_RESTART_AUTONEGOTIATION     ((uint16_t)0x0200)  </span>
+<a name="l00186"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#aa0b1e6d4a23470fc1ac4f9222b51f8a0">00186</a> <span class="preprocessor">#define PHY_POWERDOWN                   ((uint16_t)0x0800)  </span>
+<a name="l00187"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a7d5233295134a385866eb5bdafe2162b">00187</a> <span class="preprocessor">#define PHY_ISOLATE                     ((uint16_t)0x0400)  </span>
+<a name="l00189"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a36c4dbd5f6df1f5eaefa010929ef9773">00189</a> <span class="preprocessor">#define PHY_AUTONEGO_COMPLETE           ((uint16_t)0x0020)  </span>
+<a name="l00190"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#ace209074499dbef0b97300da5bd7c707">00190</a> <span class="preprocessor">#define PHY_LINKED_STATUS               ((uint16_t)0x0004)  </span>
+<a name="l00191"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a057b4d3fb66548d65c291a5b41611be2">00191</a> <span class="preprocessor">#define PHY_JABBER_DETECTION            ((uint16_t)0x0002)  </span>
+<a name="l00193"></a>00193 <span class="preprocessor"></span><span class="comment">/* Section 4: Extended PHY Registers */</span>
+<a name="l00194"></a>00194 
+<a name="l00195"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a32b55e84d27cf298a77f54b133cd1acc">00195</a> <span class="preprocessor">#define PHY_SR                          ((uint16_t)0x10)    </span>
+<a name="l00196"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#ac4d8c2e6c2509a9bdaf214b24deafea7">00196</a> <span class="preprocessor">#define PHY_MICR                        ((uint16_t)0x11)    </span>
+<a name="l00197"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a81d36e97e4a9da33f2a7e142b01964f6">00197</a> <span class="preprocessor">#define PHY_MISR                        ((uint16_t)0x12)    </span>
+<a name="l00199"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a4a6cbf61f5e1a134d8983ef29fd2d386">00199</a> <span class="preprocessor">#define PHY_LINK_STATUS                 ((uint16_t)0x0001)  </span>
+<a name="l00200"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a74c081bc55e9ff96bf229f44e96c6155">00200</a> <span class="preprocessor">#define PHY_SPEED_STATUS                ((uint16_t)0x0002)  </span>
+<a name="l00201"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#ab928f45585242fde1a8d81a2d9ed22d0">00201</a> <span class="preprocessor">#define PHY_DUPLEX_STATUS               ((uint16_t)0x0004)  </span>
+<a name="l00203"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#ab0314b8559d5895194b435ae93aee9c9">00203</a> <span class="preprocessor">#define PHY_MICR_INT_EN                 ((uint16_t)0x0002)  </span>
+<a name="l00204"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#aca1bf9e00caba70caa1f1a9e56cbee5c">00204</a> <span class="preprocessor">#define PHY_MICR_INT_OE                 ((uint16_t)0x0001)  </span>
+<a name="l00206"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#aaf06885683edcd946ad960f59e8a6f9a">00206</a> <span class="preprocessor">#define PHY_MISR_LINK_INT_EN            ((uint16_t)0x0020)  </span>
+<a name="l00207"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a7c378eb26673981df0834658f4fec4c1">00207</a> <span class="preprocessor">#define PHY_LINK_INTERRUPT              ((uint16_t)0x2000)  </span>
+<a name="l00209"></a>00209 <span class="preprocessor"></span><span class="comment">/* Includes ------------------------------------------------------------------*/</span>
+<a name="l00210"></a>00210 
+<a name="l00214"></a>00214 <span class="preprocessor">#ifdef HAL_RCC_MODULE_ENABLED</span>
+<a name="l00215"></a>00215 <span class="preprocessor"></span><span class="preprocessor">  #include &quot;stm32f4xx_hal_rcc.h&quot;</span>
+<a name="l00216"></a>00216 <span class="preprocessor">#endif </span><span class="comment">/* HAL_RCC_MODULE_ENABLED */</span>
+<a name="l00217"></a>00217 
+<a name="l00218"></a>00218 <span class="preprocessor">#ifdef HAL_GPIO_MODULE_ENABLED</span>
+<a name="l00219"></a>00219 <span class="preprocessor"></span><span class="preprocessor">  #include &quot;stm32f4xx_hal_gpio.h&quot;</span>
+<a name="l00220"></a>00220 <span class="preprocessor">#endif </span><span class="comment">/* HAL_GPIO_MODULE_ENABLED */</span>
+<a name="l00221"></a>00221 
+<a name="l00222"></a>00222 <span class="preprocessor">#ifdef HAL_DMA_MODULE_ENABLED</span>
+<a name="l00223"></a>00223 <span class="preprocessor"></span><span class="preprocessor">  #include &quot;stm32f4xx_hal_dma.h&quot;</span>
+<a name="l00224"></a>00224 <span class="preprocessor">#endif </span><span class="comment">/* HAL_DMA_MODULE_ENABLED */</span>
+<a name="l00225"></a>00225    
+<a name="l00226"></a>00226 <span class="preprocessor">#ifdef HAL_CORTEX_MODULE_ENABLED</span>
+<a name="l00227"></a>00227 <span class="preprocessor"></span><span class="preprocessor">  #include &quot;stm32f4xx_hal_cortex.h&quot;</span>
+<a name="l00228"></a>00228 <span class="preprocessor">#endif </span><span class="comment">/* HAL_CORTEX_MODULE_ENABLED */</span>
+<a name="l00229"></a>00229 
+<a name="l00230"></a>00230 <span class="preprocessor">#ifdef HAL_ADC_MODULE_ENABLED</span>
+<a name="l00231"></a>00231 <span class="preprocessor"></span><span class="preprocessor">  #include &quot;stm32f4xx_hal_adc.h&quot;</span>
+<a name="l00232"></a>00232 <span class="preprocessor">#endif </span><span class="comment">/* HAL_ADC_MODULE_ENABLED */</span>
+<a name="l00233"></a>00233 
+<a name="l00234"></a>00234 <span class="preprocessor">#ifdef HAL_CAN_MODULE_ENABLED</span>
+<a name="l00235"></a>00235 <span class="preprocessor"></span><span class="preprocessor">  #include &quot;stm32f4xx_hal_can.h&quot;</span>
+<a name="l00236"></a>00236 <span class="preprocessor">#endif </span><span class="comment">/* HAL_CAN_MODULE_ENABLED */</span>
+<a name="l00237"></a>00237 
+<a name="l00238"></a>00238 <span class="preprocessor">#ifdef HAL_CRC_MODULE_ENABLED</span>
+<a name="l00239"></a>00239 <span class="preprocessor"></span><span class="preprocessor">  #include &quot;stm32f4xx_hal_crc.h&quot;</span>
+<a name="l00240"></a>00240 <span class="preprocessor">#endif </span><span class="comment">/* HAL_CRC_MODULE_ENABLED */</span>
+<a name="l00241"></a>00241 
+<a name="l00242"></a>00242 <span class="preprocessor">#ifdef HAL_CRYP_MODULE_ENABLED</span>
+<a name="l00243"></a>00243 <span class="preprocessor"></span><span class="preprocessor">  #include &quot;stm32f4xx_hal_cryp.h&quot;</span> 
+<a name="l00244"></a>00244 <span class="preprocessor">#endif </span><span class="comment">/* HAL_CRYP_MODULE_ENABLED */</span>
+<a name="l00245"></a>00245 
+<a name="l00246"></a>00246 <span class="preprocessor">#ifdef HAL_DMA2D_MODULE_ENABLED</span>
+<a name="l00247"></a>00247 <span class="preprocessor"></span><span class="preprocessor">  #include &quot;stm32f4xx_hal_dma2d.h&quot;</span>
+<a name="l00248"></a>00248 <span class="preprocessor">#endif </span><span class="comment">/* HAL_DMA2D_MODULE_ENABLED */</span>
+<a name="l00249"></a>00249 
+<a name="l00250"></a>00250 <span class="preprocessor">#ifdef HAL_DAC_MODULE_ENABLED</span>
+<a name="l00251"></a>00251 <span class="preprocessor"></span><span class="preprocessor">  #include &quot;stm32f4xx_hal_dac.h&quot;</span>
+<a name="l00252"></a>00252 <span class="preprocessor">#endif </span><span class="comment">/* HAL_DAC_MODULE_ENABLED */</span>
+<a name="l00253"></a>00253 
+<a name="l00254"></a>00254 <span class="preprocessor">#ifdef HAL_DCMI_MODULE_ENABLED</span>
+<a name="l00255"></a>00255 <span class="preprocessor"></span><span class="preprocessor">  #include &quot;stm32f4xx_hal_dcmi.h&quot;</span>
+<a name="l00256"></a>00256 <span class="preprocessor">#endif </span><span class="comment">/* HAL_DCMI_MODULE_ENABLED */</span>
+<a name="l00257"></a>00257 
+<a name="l00258"></a>00258 <span class="preprocessor">#ifdef HAL_ETH_MODULE_ENABLED</span>
+<a name="l00259"></a>00259 <span class="preprocessor"></span><span class="preprocessor">  #include &quot;stm32f4xx_hal_eth.h&quot;</span>
+<a name="l00260"></a>00260 <span class="preprocessor">#endif </span><span class="comment">/* HAL_ETH_MODULE_ENABLED */</span>
+<a name="l00261"></a>00261 
+<a name="l00262"></a>00262 <span class="preprocessor">#ifdef HAL_FLASH_MODULE_ENABLED</span>
+<a name="l00263"></a>00263 <span class="preprocessor"></span><span class="preprocessor">  #include &quot;stm32f4xx_hal_flash.h&quot;</span>
+<a name="l00264"></a>00264 <span class="preprocessor">#endif </span><span class="comment">/* HAL_FLASH_MODULE_ENABLED */</span>
+<a name="l00265"></a>00265  
+<a name="l00266"></a>00266 <span class="preprocessor">#ifdef HAL_SRAM_MODULE_ENABLED</span>
+<a name="l00267"></a>00267 <span class="preprocessor"></span><span class="preprocessor">  #include &quot;stm32f4xx_hal_sram.h&quot;</span>
+<a name="l00268"></a>00268 <span class="preprocessor">#endif </span><span class="comment">/* HAL_SRAM_MODULE_ENABLED */</span>
+<a name="l00269"></a>00269 
+<a name="l00270"></a>00270 <span class="preprocessor">#ifdef HAL_NOR_MODULE_ENABLED</span>
+<a name="l00271"></a>00271 <span class="preprocessor"></span><span class="preprocessor">  #include &quot;stm32f4xx_hal_nor.h&quot;</span>
+<a name="l00272"></a>00272 <span class="preprocessor">#endif </span><span class="comment">/* HAL_NOR_MODULE_ENABLED */</span>
+<a name="l00273"></a>00273 
+<a name="l00274"></a>00274 <span class="preprocessor">#ifdef HAL_NAND_MODULE_ENABLED</span>
+<a name="l00275"></a>00275 <span class="preprocessor"></span><span class="preprocessor">  #include &quot;stm32f4xx_hal_nand.h&quot;</span>
+<a name="l00276"></a>00276 <span class="preprocessor">#endif </span><span class="comment">/* HAL_NAND_MODULE_ENABLED */</span>
+<a name="l00277"></a>00277 
+<a name="l00278"></a>00278 <span class="preprocessor">#ifdef HAL_PCCARD_MODULE_ENABLED</span>
+<a name="l00279"></a>00279 <span class="preprocessor"></span><span class="preprocessor">  #include &quot;stm32f4xx_hal_pccard.h&quot;</span>
+<a name="l00280"></a>00280 <span class="preprocessor">#endif </span><span class="comment">/* HAL_PCCARD_MODULE_ENABLED */</span> 
+<a name="l00281"></a>00281   
+<a name="l00282"></a>00282 <span class="preprocessor">#ifdef HAL_SDRAM_MODULE_ENABLED</span>
+<a name="l00283"></a>00283 <span class="preprocessor"></span><span class="preprocessor">  #include &quot;stm32f4xx_hal_sdram.h&quot;</span>
+<a name="l00284"></a>00284 <span class="preprocessor">#endif </span><span class="comment">/* HAL_SDRAM_MODULE_ENABLED */</span>      
+<a name="l00285"></a>00285 
+<a name="l00286"></a>00286 <span class="preprocessor">#ifdef HAL_HASH_MODULE_ENABLED</span>
+<a name="l00287"></a>00287 <span class="preprocessor"></span><span class="preprocessor"> #include &quot;stm32f4xx_hal_hash.h&quot;</span>
+<a name="l00288"></a>00288 <span class="preprocessor">#endif </span><span class="comment">/* HAL_HASH_MODULE_ENABLED */</span>
+<a name="l00289"></a>00289 
+<a name="l00290"></a>00290 <span class="preprocessor">#ifdef HAL_I2C_MODULE_ENABLED</span>
+<a name="l00291"></a>00291 <span class="preprocessor"></span><span class="preprocessor"> #include &quot;stm32f4xx_hal_i2c.h&quot;</span>
+<a name="l00292"></a>00292 <span class="preprocessor">#endif </span><span class="comment">/* HAL_I2C_MODULE_ENABLED */</span>
+<a name="l00293"></a>00293 
+<a name="l00294"></a>00294 <span class="preprocessor">#ifdef HAL_I2S_MODULE_ENABLED</span>
+<a name="l00295"></a>00295 <span class="preprocessor"></span><span class="preprocessor"> #include &quot;stm32f4xx_hal_i2s.h&quot;</span>
+<a name="l00296"></a>00296 <span class="preprocessor">#endif </span><span class="comment">/* HAL_I2S_MODULE_ENABLED */</span>
+<a name="l00297"></a>00297 
+<a name="l00298"></a>00298 <span class="preprocessor">#ifdef HAL_IWDG_MODULE_ENABLED</span>
+<a name="l00299"></a>00299 <span class="preprocessor"></span><span class="preprocessor"> #include &quot;stm32f4xx_hal_iwdg.h&quot;</span>
+<a name="l00300"></a>00300 <span class="preprocessor">#endif </span><span class="comment">/* HAL_IWDG_MODULE_ENABLED */</span>
+<a name="l00301"></a>00301 
+<a name="l00302"></a>00302 <span class="preprocessor">#ifdef HAL_LTDC_MODULE_ENABLED</span>
+<a name="l00303"></a>00303 <span class="preprocessor"></span><span class="preprocessor"> #include &quot;stm32f4xx_hal_ltdc.h&quot;</span>
+<a name="l00304"></a>00304 <span class="preprocessor">#endif </span><span class="comment">/* HAL_LTDC_MODULE_ENABLED */</span>
+<a name="l00305"></a>00305 
+<a name="l00306"></a>00306 <span class="preprocessor">#ifdef HAL_PWR_MODULE_ENABLED</span>
+<a name="l00307"></a>00307 <span class="preprocessor"></span><span class="preprocessor"> #include &quot;stm32f4xx_hal_pwr.h&quot;</span>
+<a name="l00308"></a>00308 <span class="preprocessor">#endif </span><span class="comment">/* HAL_PWR_MODULE_ENABLED */</span>
+<a name="l00309"></a>00309 
+<a name="l00310"></a>00310 <span class="preprocessor">#ifdef HAL_RNG_MODULE_ENABLED</span>
+<a name="l00311"></a>00311 <span class="preprocessor"></span><span class="preprocessor"> #include &quot;stm32f4xx_hal_rng.h&quot;</span>
+<a name="l00312"></a>00312 <span class="preprocessor">#endif </span><span class="comment">/* HAL_RNG_MODULE_ENABLED */</span>
+<a name="l00313"></a>00313 
+<a name="l00314"></a>00314 <span class="preprocessor">#ifdef HAL_RTC_MODULE_ENABLED</span>
+<a name="l00315"></a>00315 <span class="preprocessor"></span><span class="preprocessor"> #include &quot;stm32f4xx_hal_rtc.h&quot;</span>
+<a name="l00316"></a>00316 <span class="preprocessor">#endif </span><span class="comment">/* HAL_RTC_MODULE_ENABLED */</span>
+<a name="l00317"></a>00317 
+<a name="l00318"></a>00318 <span class="preprocessor">#ifdef HAL_SAI_MODULE_ENABLED</span>
+<a name="l00319"></a>00319 <span class="preprocessor"></span><span class="preprocessor"> #include &quot;stm32f4xx_hal_sai.h&quot;</span>
+<a name="l00320"></a>00320 <span class="preprocessor">#endif </span><span class="comment">/* HAL_SAI_MODULE_ENABLED */</span>
+<a name="l00321"></a>00321 
+<a name="l00322"></a>00322 <span class="preprocessor">#ifdef HAL_SD_MODULE_ENABLED</span>
+<a name="l00323"></a>00323 <span class="preprocessor"></span><span class="preprocessor"> #include &quot;stm32f4xx_hal_sd.h&quot;</span>
+<a name="l00324"></a>00324 <span class="preprocessor">#endif </span><span class="comment">/* HAL_SD_MODULE_ENABLED */</span>
+<a name="l00325"></a>00325 
+<a name="l00326"></a>00326 <span class="preprocessor">#ifdef HAL_SPI_MODULE_ENABLED</span>
+<a name="l00327"></a>00327 <span class="preprocessor"></span><span class="preprocessor"> #include &quot;stm32f4xx_hal_spi.h&quot;</span>
+<a name="l00328"></a>00328 <span class="preprocessor">#endif </span><span class="comment">/* HAL_SPI_MODULE_ENABLED */</span>
+<a name="l00329"></a>00329 
+<a name="l00330"></a>00330 <span class="preprocessor">#ifdef HAL_TIM_MODULE_ENABLED</span>
+<a name="l00331"></a>00331 <span class="preprocessor"></span><span class="preprocessor"> #include &quot;stm32f4xx_hal_tim.h&quot;</span>
+<a name="l00332"></a>00332 <span class="preprocessor">#endif </span><span class="comment">/* HAL_TIM_MODULE_ENABLED */</span>
+<a name="l00333"></a>00333 
+<a name="l00334"></a>00334 <span class="preprocessor">#ifdef HAL_UART_MODULE_ENABLED</span>
+<a name="l00335"></a>00335 <span class="preprocessor"></span><span class="preprocessor"> #include &quot;stm32f4xx_hal_uart.h&quot;</span>
+<a name="l00336"></a>00336 <span class="preprocessor">#endif </span><span class="comment">/* HAL_UART_MODULE_ENABLED */</span>
+<a name="l00337"></a>00337 
+<a name="l00338"></a>00338 <span class="preprocessor">#ifdef HAL_USART_MODULE_ENABLED</span>
+<a name="l00339"></a>00339 <span class="preprocessor"></span><span class="preprocessor"> #include &quot;stm32f4xx_hal_usart.h&quot;</span>
+<a name="l00340"></a>00340 <span class="preprocessor">#endif </span><span class="comment">/* HAL_USART_MODULE_ENABLED */</span>
+<a name="l00341"></a>00341 
+<a name="l00342"></a>00342 <span class="preprocessor">#ifdef HAL_IRDA_MODULE_ENABLED</span>
+<a name="l00343"></a>00343 <span class="preprocessor"></span><span class="preprocessor"> #include &quot;stm32f4xx_hal_irda.h&quot;</span>
+<a name="l00344"></a>00344 <span class="preprocessor">#endif </span><span class="comment">/* HAL_IRDA_MODULE_ENABLED */</span>
+<a name="l00345"></a>00345 
+<a name="l00346"></a>00346 <span class="preprocessor">#ifdef HAL_SMARTCARD_MODULE_ENABLED</span>
+<a name="l00347"></a>00347 <span class="preprocessor"></span><span class="preprocessor"> #include &quot;stm32f4xx_hal_smartcard.h&quot;</span>
+<a name="l00348"></a>00348 <span class="preprocessor">#endif </span><span class="comment">/* HAL_SMARTCARD_MODULE_ENABLED */</span>
+<a name="l00349"></a>00349 
+<a name="l00350"></a>00350 <span class="preprocessor">#ifdef HAL_WWDG_MODULE_ENABLED</span>
+<a name="l00351"></a>00351 <span class="preprocessor"></span><span class="preprocessor"> #include &quot;stm32f4xx_hal_wwdg.h&quot;</span>
+<a name="l00352"></a>00352 <span class="preprocessor">#endif </span><span class="comment">/* HAL_WWDG_MODULE_ENABLED */</span>
+<a name="l00353"></a>00353 
+<a name="l00354"></a>00354 <span class="preprocessor">#ifdef HAL_PCD_MODULE_ENABLED</span>
+<a name="l00355"></a>00355 <span class="preprocessor"></span><span class="preprocessor"> #include &quot;stm32f4xx_hal_pcd.h&quot;</span>
+<a name="l00356"></a>00356 <span class="preprocessor">#endif </span><span class="comment">/* HAL_PCD_MODULE_ENABLED */</span>
+<a name="l00357"></a>00357 
+<a name="l00358"></a>00358 <span class="preprocessor">#ifdef HAL_HCD_MODULE_ENABLED</span>
+<a name="l00359"></a>00359 <span class="preprocessor"></span><span class="preprocessor"> #include &quot;stm32f4xx_hal_hcd.h&quot;</span>
+<a name="l00360"></a>00360 <span class="preprocessor">#endif </span><span class="comment">/* HAL_HCD_MODULE_ENABLED */</span>
+<a name="l00361"></a>00361    
+<a name="l00362"></a>00362 <span class="comment">/* Exported macro ------------------------------------------------------------*/</span>
+<a name="l00363"></a>00363 <span class="preprocessor">#ifdef  USE_FULL_ASSERT</span>
+<a name="l00364"></a>00364 <span class="preprocessor"></span>
+<a name="l00372"></a>00372 <span class="preprocessor">  #define assert_param(expr) ((expr) ? (void)0 : assert_failed((uint8_t *)__FILE__, __LINE__))</span>
+<a name="l00373"></a>00373 <span class="preprocessor"></span><span class="comment">/* Exported functions ------------------------------------------------------- */</span>
+<a name="l00374"></a>00374   <span class="keywordtype">void</span> assert_failed(uint8_t* file, uint32_t line);
+<a name="l00375"></a>00375 <span class="preprocessor">#else</span>
+<a name="l00376"></a><a class="code" href="stm32f4xx__hal__conf_8h.html#a631dea7b230e600555f979c62af1de21">00376</a> <span class="preprocessor"></span><span class="preprocessor">  #define assert_param(expr) ((void)0)</span>
+<a name="l00377"></a>00377 <span class="preprocessor"></span><span class="preprocessor">#endif </span><span class="comment">/* USE_FULL_ASSERT */</span>    
+<a name="l00378"></a>00378 
+<a name="l00379"></a>00379 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00380"></a>00380 <span class="preprocessor"></span>}
+<a name="l00381"></a>00381 <span class="preprocessor">#endif</span>
+<a name="l00382"></a>00382 <span class="preprocessor"></span>
+<a name="l00383"></a>00383 <span class="preprocessor">#endif </span><span class="comment">/* __STM32F4xx_HAL_CONF_H */</span>
+<a name="l00384"></a>00384  
+<a name="l00385"></a>00385 
+<a name="l00386"></a>00386 <span class="comment">/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Пн 2 Мар 2015 15:35:47. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

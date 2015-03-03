@@ -49,23 +49,30 @@ typedef enum {
 */
 typedef enum {
   RunId = 10000,
-  OverVoltInProtActivId,       //!< "Сработала защита: Превышение питания сети"
-  UnderVoltInProtActivId,      //!< "Сработала защита: Снижение питания сети"
-  OverloadMotorProtActivId,    //!< "Сработала защита: Перегруз двигателя"
-  UnderloadMotorProtActivId,   //!< "Сработала защита: Недогруз двигателя"
-  OverVoltInApvId,             //!< "АПВ по защите: Превышение питания сети"
-  UnderVoltInApvId,            //!< "АПВ по защите: Снижение питания сети"
-  OverloadMotorApvId,          //!< "АПВ по защите: Перегруз двигателя"
-  UnderloadMotorApvId,         //!< "АПВ по защите: Недогруз двигателя"
-  OverVoltInApvDisabledId,     //!< "АПВ запрещен: Превышение питания сети"
-  UnderVoltInApvDisabledId,    //!< "АПВ запрещен: Снижение питания сети"
-  OverloadMotorApvDisabledId,  //!< "АПВ запрещен: Перегруз двигателя"
-  UnderloadMotorApvDisabledId, //!< "АПВ запрещен: Недогруз двигателя"
-  OverVoltInProtBlockedId,     //!< "Блокировка по защите: Превышение питания сети"
-  UnderVoltInProtBlockedId,    //!< "Блокировка по защите: Снижение питания сети"
-  OverloadMotorProtBlockedId,  //!< "Блокировка по защите: Перегруз двигателя"
-  UnderloadMotorProtBlockedId, //!< "Блокировка по защите: Недогруз двигателя"
-
+  OverVoltInProtActivId,          //!< "Сработала защита: Превышение питания сети"
+  UnderVoltInProtActivId,         //!< "Сработала защита: Снижение питания сети"
+  OverloadMotorProtActivId,       //!< "Сработала защита: Перегруз двигателя"
+  UnderloadMotorProtActivId,      //!< "Сработала защита: Недогруз двигателя"
+  ImbalanceCurMotorProtActivId,   //!< "Сработала защита: Дисбаланс токов ПЭД"
+  OutOfSyncMotorProtActivId,      //!< "Сработала защита: Рассинхронизация ПВЭД"
+  OverVoltInApvId,                //!< "АПВ по защите: Превышение питания сети"
+  UnderVoltInApvId,               //!< "АПВ по защите: Снижение питания сети"
+  OverloadMotorApvId,             //!< "АПВ по защите: Перегруз двигателя"
+  UnderloadMotorApvId,            //!< "АПВ по защите: Недогруз двигателя"
+  ImbalanceCurMotorApvId,         //!< "АПВ по защите: Дисбаланс токов ПЭД"
+  OutOfSyncMotorApvId,            //!< "АПВ по защите: Рассинхронизация ПВЭД"
+  OverVoltInApvDisabledId,        //!< "АПВ запрещен: Превышение питания сети"
+  UnderVoltInApvDisabledId,       //!< "АПВ запрещен: Снижение питания сети"
+  OverloadMotorApvDisabledId,     //!< "АПВ запрещен: Перегруз двигателя"
+  UnderloadMotorApvDisabledId,    //!< "АПВ запрещен: Недогруз двигателя"
+  ImbalanceCurMotorApvDisabledId, //!< "АПВ запрещен: Дисбаланс токов ПЭД"
+  OutOfSyncMotorApvDisabledId,    //!< "АПВ запрещен: Рассинхронизация ПВЭД"
+  OverVoltInProtBlockedId,        //!< "Блокировка по защите: Превышение питания сети"
+  UnderVoltInProtBlockedId,       //!< "Блокировка по защите: Снижение питания сети"
+  OverloadMotorProtBlockedId,     //!< "Блокировка по защите: Перегруз двигателя"
+  UnderloadMotorProtBlockedId,    //!< "Блокировка по защите: Недогруз двигателя"
+  ImbalanceCurMotorProtBlockedId, //!< "Блокировка по защите: Дисбаланс токов ПЭД"
+  OutOfSyncMotorProtBlockedId,    //!< "Блокировка по защите: Рассинхронизация ПВЭД"
 } EventId;
 
 /*!
@@ -93,12 +100,11 @@ typedef enum {
   EndAddrRunLog   = 0x00BBC000,
   EndAddrAlarmLog = 0x00E3D000,
   EndAddrTmsLog   = 0x01000000,
-  EndAddrDebugLog = 0x00000000,
+  EndAddrDebugLog = 0x00800000,
 } EndAddrLog;
 
 /*!
  * \brief Базовый класс журналов
- *
  */
 class Log
 {
@@ -108,7 +114,6 @@ public:
 
   /*!
    * \brief Инициализация журнала
-   *
    */
   void init();
 
@@ -119,10 +124,15 @@ public:
   void deInit();
 
   /*!
-   * \brief Глобальный индекс записей всех журналов
-   * Установка адреса в начало @ref StartAddrLog
+   * \brief Глобальный индекс записей всех журналов,
+   * кроме отладочного
    */
   static uint32_t id_;
+
+  /*!
+   * \brief Глобальный индекс записей отладочного архива
+   */
+  static uint32_t idDebug_;
 
 protected:
   /*!
@@ -137,7 +147,6 @@ protected:
 
   /*!
    * \brief Буфер для формирования записи журнала
-   *
    */
   uint8_t buffer[256];
 

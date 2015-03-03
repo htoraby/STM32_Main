@@ -30,10 +30,11 @@ enum enID
   CCS_TRANS_VOLTAGE_TAP_OFF,                /// Напряжение отпайки
   CCS_DHS_TYPE,                             /// Тип ТМС
   CCS_ACCESS_LEVEL,                         /// Уровень доступа к контроллеру
-  CCS_CMD_STOP,                                 /// Команда остановки
-  CCS_CMD_START,                                /// Команда запуска
+  CCS_CMD_STOP,                             /// Команда остановки
+  CCS_CMD_START,                            /// Команда запуска
   /// Состояние ЧРП
   CCS_VSD_CONDITION,
+  CCS_MOTOR_COS_PHI_NOW,                    /// Текущий Косинус Фи
   /// Производительность насоса
   CCS_PUMP_CAPACITY,
   /// Напор ЭЦН
@@ -100,7 +101,7 @@ enum enID
   CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME,
   CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_COUNT,
   CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET_COUNT,
-  /// Защита "Дисбаланс входных токов"
+  /// Защита "Дисбаланс напряжения"
   CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_MODE,
   CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_REACTION,
   CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY,
@@ -197,6 +198,22 @@ enum enID
   CCS_PROT_MOTOR_ASYNC_TIME,
   CCS_PROT_MOTOR_ASYNC_RESTART_COUNT,
   CCS_PROT_MOTOR_ASYNC_RESTART_RESET_COUNT,
+  /// Защита "Рассинхронизация ПВЭД"
+  CCS_PROT_MOTOR_OUT_OF_SYNC_MODE,
+  CCS_PROT_MOTOR_OUT_OF_SYNC_REACTION,
+  CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY,
+  CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY,
+  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY,
+  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT,
+  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET,
+  CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT,
+  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT,
+  CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER,
+  CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER_2,
+  CCS_PROT_MOTOR_OUT_OF_SYNC_STATE,
+  CCS_PROT_MOTOR_OUT_OF_SYNC_TIME,
+  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT,
+  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET_COUNT,
   /// Защиты ТМС
   /// Защита "Давление на приёме насоса"
   CCS_PROT_DHS_PRESSURE_INTAKE_MODE,
@@ -576,7 +593,7 @@ enum enID
   CCS_PROT_OVERLOAD_COUNT_RESTART,
   /// Количество АПВ после остановов по недогрузу
   CCS_PROT_UNDERLOAD_COUNT_RESTART,
-  /// Количествог АПВ после остановов по дисбалансу токов
+  /// Количество АПВ после остановов по дисбалансу токов
   CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART,
   CCS_GENERAL_RUN_DATE_TIME,
   /// Общее время простоя СУ
@@ -721,7 +738,7 @@ enum enID
   VSD_MOTOR_SPEED,                          /// Скорость двигателя Danfoss 1-25 Используется в проекте, интерфейс
   VSD_MOTOR_POWER,                          /// Мощность двигателя Danfoss 1-20 Используется в проекте, интерфейс
   VSD_MOTOR_VOLTAGE,                        /// Напряжение двигателя Danfoss 1-22 Используется в проекте, интерфейс Novomet 0х0045 IREG_MOTOR_U_MAX
-  VSD_MOTOR_CURRENT,                        /// Ток двигателя Danfoss 1-24 Используется в проекте, интерфейс Novomet 0х0044 IREG_MOTOR_I_MAX
+  VSD_MOTOR_CURRENT,                        /// Номинальный ток двигателя Danfoss 1-24 Используется в проекте, интерфейс Novomet 0х0044 IREG_MOTOR_I_MAX
   VSD_MOTOR_FREQUENCY,                      /// Частота двигателя Danfoss 1-23 Используется в проекте, интерфейс Novomet 0х0043 IREG_MOTOR_F_MAX
   VSD_MOTOR_COS_PHI,                        /// Косинус Фи Danfoss 14-43 Используется в проекте
   VSD_D_AXIS_INDUNSTANCE,                   /// Индуктивности по оси D Danfoss 1-37 Используется в проекте

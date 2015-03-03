@@ -20,6 +20,7 @@ EmSet::EmSet()
 
 EmSet::~EmSet()
 {
+  closePort();
   osThreadTerminate(threadId_);
 }
 
@@ -164,7 +165,7 @@ void EmSet::sendRequest()
 
 void EmSet::receiveAnswer()
 {
-  sizePkt_ = reseiveUart(rxBuffer_);
+  sizePkt_ = receiveUart(rxBuffer_);
   if (!sizePkt_) {
     // TODO: Предупреждение: пустой пакет
     return;
@@ -321,6 +322,7 @@ void EmSet::setParameter()
       value.tdChar[2] = rxBuffer_[sizePkt_ - 32];
       value.tdChar[3] = rxBuffer_[sizePkt_ - 31];
 //      setValue(EM_, value.tdFloat);
+
       // 8. THD между фазами 3 и 1
       value.tdChar[0] = rxBuffer_[sizePkt_ - 38];
       value.tdChar[1] = rxBuffer_[sizePkt_ - 37];
@@ -355,8 +357,7 @@ void EmSet::setParameter()
       value.tdChar[2] = rxBuffer_[sizePkt_ - 52];
       value.tdChar[3] = rxBuffer_[sizePkt_ - 51];
       value.tdFloat = value.tdFloat*1000.0;
-//      setValue(EM_VOLTAGE_PHASE_3, value.tdFloat);
-//      HWSP.WriteParam("IM1","PHASE_3_VOLT_THD",buf1);
+//      setValue(EM_, value.tdFloat);
 
       // 3. THD Напряжения на фазе 2
       value.tdChar[0] = rxBuffer_[sizePkt_ - 58];
@@ -364,8 +365,7 @@ void EmSet::setParameter()
       value.tdChar[2] = rxBuffer_[sizePkt_ - 56];
       value.tdChar[3] = rxBuffer_[sizePkt_ - 55];
       value.tdFloat = value.tdFloat*1000.0;
-//      setValue(EM_VOLTAGE_PHASE_2, value.tdFloat);
-//      HWSP.WriteParam("IM1","PHASE_2_VOLT_THD",buf1);
+//      setValue(EM_, value.tdFloat);
 
       // 2. THD Напряжения на фазе 1
       value.tdChar[0] = rxBuffer_[sizePkt_ - 62];
@@ -373,8 +373,7 @@ void EmSet::setParameter()
       value.tdChar[2] = rxBuffer_[sizePkt_ - 60];
       value.tdChar[3] = rxBuffer_[sizePkt_ - 59];
       value.tdFloat = value.tdFloat*1000.0;
-//      setValue(EM_VOLTAGE_PHASE_1, value.tdFloat);
-//      HWSP.WriteParam("IM1","PHASE_1_VOLT_THD",buf1);
+//      setValue(EM_, value.tdFloat);
 
       // 1. Коэффициент несимметрии напряжённости
       value.tdChar[0] = rxBuffer_[sizePkt_ - 66];
@@ -390,8 +389,7 @@ void EmSet::setParameter()
       value.tdChar[2] = rxBuffer_[sizePkt_ - 4];
       value.tdChar[3] = rxBuffer_[sizePkt_ - 3];
       value.tdFloat = value.tdFloat*1000.0;
-//      setValue(EM_CURRENT_PHASE_3, value.tdFloat);
-//      HWSP.WriteParam("IM1","PHASE_3_CUR_THD",buf1);
+//      setValue(EM_, value.tdFloat);
 
       // 15. THD тока по фазе 2
       value.tdChar[0] = rxBuffer_[sizePkt_ - 10];
@@ -399,8 +397,7 @@ void EmSet::setParameter()
       value.tdChar[2] = rxBuffer_[sizePkt_ - 8];
       value.tdChar[3] = rxBuffer_[sizePkt_ - 7];
       value.tdFloat = value.tdFloat*1000.0;
-//      setValue(EM_CURRENT_PHASE_2, value.tdFloat);
-//      HWSP.WriteParam("IM1","PHASE_2_CUR_THD",buf1);
+//      setValue(EM_, value.tdFloat);
 
       // 14. THD тока по фазе 1
       value.tdChar[0] = rxBuffer_[sizePkt_ - 14];
@@ -408,8 +405,7 @@ void EmSet::setParameter()
       value.tdChar[2] = rxBuffer_[sizePkt_ - 12];
       value.tdChar[3] = rxBuffer_[sizePkt_ - 11];
       value.tdFloat = value.tdFloat*1000.0;
-//      setValue(EM_CURRENT_PHASE_1, value.tdFloat);
-//      HWSP.WriteParam("IM1","PHASE_1_CUR_THD",buf1);
+//      setValue(EM_, value.tdFloat);
 
       // 13. Коэффициент несиметрии тока в обратной последовательности
       value.tdChar[0] = rxBuffer_[sizePkt_ - 18];

@@ -2420,7 +2420,7 @@ void VsdNovomet::updateParameters()
   }
 }
 
-unsigned char VsdNovomet::checkInvertorStatus(unsigned short flag)
+int VsdNovomet::checkInvertorStatus(uint16_t flag)
 {
   if (((int)getValue(VSD_INVERTOR_STATUS) && flag) == flag)
     return 0;
@@ -2428,8 +2428,7 @@ unsigned char VsdNovomet::checkInvertorStatus(unsigned short flag)
     return 1;
 }
 
-// Метод запуска ЧРП Новомет
-unsigned char VsdNovomet::startVSD(void)
+int VsdNovomet::startVSD()
 {
   // Если не стоит бит запуска двигателя
   if (checkInvertorStatus(INV_STATUS_STARTED)) {
@@ -2459,8 +2458,7 @@ unsigned char VsdNovomet::startVSD(void)
     return RETURN_OK;
 }
 
-// Метод останова ЧРП Новомет
-int VsdNovomet::stopVSD(void)
+int VsdNovomet::stopVSD()
 {
   // Если не стоит бит остановки по внешней команде
   if (checkInvertorStatus(INV_STATUS_STOPPED_EXTERNAL)) {
@@ -2487,23 +2485,21 @@ int VsdNovomet::stopVSD(void)
     return RETURN_OK;
 }
 
-// Метод установки текущей частоты ЧРП Новомет
-unsigned char VsdNovomet::setFrequency(float frequency)
+int VsdNovomet::setFrequency(float value)
 {
   float highLimitFreq = getValue(VSD_HIGH_LIM_SPEED_MOTOR);
   float lowLimitFreq = getValue(VSD_LOW_LIM_SPEED_MOTOR);
-  unsigned char result = checkRange(frequency, lowLimitFreq, highLimitFreq, 1);
+  int result = checkRange(value, lowLimitFreq, highLimitFreq, 1);
   // Если вернули ошибку
   if (result)
     return result;
   else
-    return writeParameter(VSD_FREQUENCY, frequency);
+    return writeParameter(VSD_FREQUENCY, value);
 }
 
-// Метод задания минимальной частоты
-unsigned char VsdNovomet::setMinFrequency(float lowLimitfrequency)
+int VsdNovomet::setMinFrequency(float value)
 {
-  if (Vsd::setMinFrequency(lowLimitfrequency)) {
+  if (Vsd::setMinFrequency(value)) {
     return RETURN_ERROR;
   }
   else {
@@ -2514,9 +2510,9 @@ unsigned char VsdNovomet::setMinFrequency(float lowLimitfrequency)
 }
 
 // Метод задания максимальной частоты
-unsigned char VsdNovomet::setMaxFrequency(float highLimitFrequency)
+int VsdNovomet::setMaxFrequency(float value)
 {
-  if (Vsd::setMaxFrequency(highLimitFrequency)) {
+  if (Vsd::setMaxFrequency(value)) {
     return RETURN_ERROR;
   }
   else {
@@ -2526,26 +2522,24 @@ unsigned char VsdNovomet::setMaxFrequency(float highLimitFrequency)
   }
 }
 
-unsigned char VsdNovomet::setRotation(unsigned char rotation)
+int VsdNovomet::setRotation(uint8_t value)
 {
-  unsigned char result = RETURN_ERROR;
-  if (Vsd::setRotation(rotation)) {
+  uint8_t result = RETURN_ERROR;
+  if (Vsd::setRotation(value)) {
     return result;
   }
   else {
-    if (rotation) {
+    if (value)
       result = setReverseRotation();
-    }
     else
       result = setDirectRotation();
   }
   return result;
 }
 
-// Метод задания прямого направления вращения
-unsigned char VsdNovomet::setDirectRotation()
+int VsdNovomet::setDirectRotation()
 {
-  unsigned char result = RETURN_ERROR;
+  uint8_t result = RETURN_ERROR;
   result = Vsd::setDirectRotation();
   if (!result) {
     dm_->writeModbusParameter(VSD_INVERTOR_CONTROL, INV_CONTROL_LEFT_DIRECTION);
@@ -2553,10 +2547,9 @@ unsigned char VsdNovomet::setDirectRotation()
   return result;
 }
 
-// Метод задания обратного направления вращения
-unsigned char VsdNovomet::setReverseRotation()
+int VsdNovomet::setReverseRotation()
 {
-  unsigned char result = RETURN_ERROR;
+  uint8_t result = RETURN_ERROR;
   result = Vsd::setReverseRotation();
   if (!result) {
     dm_->writeModbusParameter(VSD_INVERTOR_CONTROL, INV_CONTROL_RIGHT_DIRECTION);
@@ -2564,9 +2557,7 @@ unsigned char VsdNovomet::setReverseRotation()
   return result;
 }
 
-// Метод записи нового значения в массив регистров устройства
-// и передачи нового значения по используемуму протоколу в само устройство
-unsigned char VsdNovomet::writeParameter(unsigned short id, float value)
+int VsdNovomet::writeParameter(uint16_t id, float value)
 {
   // Если выполнили запись в банк параметров устройства
   if(!setValue(id, value)) {
@@ -2578,12 +2569,7 @@ unsigned char VsdNovomet::writeParameter(unsigned short id, float value)
     return 1;
 }
 
-// Метод записи основного режима работы ЧРП, основных методов 2:
-// U/f регулирование АД и ВД код: 1
-// Векторное управление ВД код: 3
-// Поскольку у ЧРП только один основной алгоритм и он обязан быть,
-// записываем его последним
-unsigned char VsdNovomet::setMainRegimeVSD()
+int VsdNovomet::setMainRegimeVSD()
 {
   return 1;
 }

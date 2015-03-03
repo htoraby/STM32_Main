@@ -1,0 +1,1345 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Класс Device</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  <td id="projectlogo"><img alt="Logo" src="logo.ico"/></td>
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li><a href="classes.html"><span>Алфавитный&#160;указатель&#160;структур&#160;данных</span></a></li>
+      <li><a href="hierarchy.html"><span>Иерархия&#160;классов</span></a></li>
+      <li><a href="functions.html"><span>Поля&#160;структур</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pub-attribs">Поля данных</a> &#124;
+<a href="#pro-attribs">Защищенные данные</a> &#124;
+<a href="#pri-methods">Закрытые члены</a>  </div>
+  <div class="headertitle">
+<div class="title">Класс Device</div>  </div>
+</div>
+<div class="contents">
+<!-- doxytag: class="Device" -->
+<p>Базовый класс для всех устройств Класс содержит банк параметров устройства во внутреннем представлении и наборы методов для работы с ними  
+ <a href="class_device.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="device_8h_source.html">device.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф наследования:Device:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_device.png" usemap="#Device_map" alt=""/>
+  <map id="Device_map" name="Device_map">
+<area href="class_ccs.html" alt="Ccs" shape="rect" coords="0,56,83,80"/>
+<area href="class_em.html" title="Базовый класс счётчика электроэнергии Наследник класса Device использующий его структуру и методы хра..." alt="Em" shape="rect" coords="93,56,176,80"/>
+<area href="class_tms.html" alt="Tms" shape="rect" coords="325,56,408,80"/>
+<area href="class_vsd.html" title="Базовый класс ЧРП Наследник класса Device использующий его структуру и методы хранения банка параметр..." alt="Vsd" shape="rect" coords="465,56,548,80"/>
+<area href="class_em_abb.html" alt="EmAbb" shape="rect" coords="0,112,83,136"/>
+<area href="class_em_mercury.html" alt="EmMercury" shape="rect" coords="93,112,176,136"/>
+<area href="class_em_set.html" title="Класс счётчика электроэнергии СЕТ" alt="EmSet" shape="rect" coords="186,112,269,136"/>
+<area href="class_tms_elekton.html" alt="TmsElekton" shape="rect" coords="279,112,362,136"/>
+<area href="class_tms_etalon.html" alt="TmsEtalon" shape="rect" coords="372,112,455,136"/>
+<area href="class_vsd_novomet.html" alt="VsdNovomet" shape="rect" coords="465,112,548,136"/>
+</map>
+ </div></div>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a18549d70005f1ff106860f5388d261f9">Device</a> (uint32_t startAddrParams, <a class="el" href="structparameter.html">parameter</a> *<a class="el" href="user__main_8h.html#aecf58615a3442a354517debbf8adeb59">parameters</a>, uint16_t countParameter)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Конструктор класса  <a href="#a18549d70005f1ff106860f5388d261f9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a9dabc419c8d8df3a686c33ce042bc99a">~Device</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#ae16b97ab98f4f47f89251c49fc1ccb17">initParameters</a> ()=0</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализация массива параметров  <a href="#ae16b97ab98f4f47f89251c49fc1ccb17"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#aeb25cb7e8d3b20cb0cde9f1ff173c012">createThread</a> (const char *threadName)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод создания задач для FreeRTOS.  <a href="#aeb25cb7e8d3b20cb0cde9f1ff173c012"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#ad6c31feec6bf3c290861e448d4c5e18c">createMessageUpdateParameters</a> (void)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод создания очереди обновленных параметров  <a href="#ad6c31feec6bf3c290861e448d4c5e18c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#abcadc44d78d614640ccce3a7976c2dc1">getMessageUpdateParameters</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a39feb45c91e976ce8f5b82e3aed0db7b">updateParameters</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#aeff81bda8c3d396421a51e7b33548a5f">getIndexAtID</a> (unsigned short id)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод поиска и получения индекса по ID параметра  <a href="#aeff81bda8c3d396421a51e7b33548a5f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a9c31f526d2266b1c35e82f949ad18358">getValue</a> (unsigned short id)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения значения параметра по id.  <a href="#a9c31f526d2266b1c35e82f949ad18358"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a783badfe103510b2e201340bbda11452">setValue</a> (unsigned short id, float value)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод присвоения значения параметру Когда пытаемся записать значение, нам нужно проверить 1. Уровень доступа к параметру 2. Операции над параметром 3. Минимальное и максимальное значение  <a href="#a783badfe103510b2e201340bbda11452"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a429b58f966472c9d10f96f25a26ba1cd">saveParameters</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Сохранение массива параметров на Flash.  <a href="#a429b58f966472c9d10f96f25a26ba1cd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a84a0ac6bd7e4cf1d9d103753fd9843d2">readParameters</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Чтение массива параметров с Flash.  <a href="#a84a0ac6bd7e4cf1d9d103753fd9843d2"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pub-attribs"></a>
+Поля данных</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">osThreadId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a5289ad9da1517b20fcdb02972c5c1541">updateParametersThreadId_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Идентификатор задачи обновления значений параметра устройства  <a href="#a5289ad9da1517b20fcdb02972c5c1541"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">osMessageQId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a09a3c50334e2bfc5cc1989424f691788">messageUpdateParameters_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Идентификатор очереди обновленных параметров  <a href="#a09a3c50334e2bfc5cc1989424f691788"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pro-attribs"></a>
+Защищенные данные</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#aa0a6503d4e81a9bc83ae714b4f1d53fd">startAddrParams_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Начальный адрес массива параметров из списка enID.  <a href="#aa0a6503d4e81a9bc83ae714b4f1d53fd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structparameter.html">parameter</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#ad11411bd18bc89ab1c568d07752cb55a">parameters_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Указатель на массив параметров устройства  <a href="#ad11411bd18bc89ab1c568d07752cb55a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#ad741cb24b89e894f1de9dc87cf91e70f">countParameter_</a></td></tr>
+<tr><td colspan="2"><h2><a name="pri-methods"></a>
+Закрытые члены</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a28601907258f92f593f5fdf420eca4ba">getFieldId</a> (unsigned short index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения ID параметра по индексу в массиве параметров  <a href="#a28601907258f92f593f5fdf420eca4ba"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a1200c8de37952e0759ad3a0347d24cd3">getFieldAccess</a> (unsigned short index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения Access параметра по индексу в массиве параметров  <a href="#a1200c8de37952e0759ad3a0347d24cd3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a78467bfdd717de10e58fc3ab24a1ec39">getFieldOperation</a> (unsigned short index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения Operation параметра по индексу в массиве параметров  <a href="#a78467bfdd717de10e58fc3ab24a1ec39"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a7f93f725fc65d79dcb2334866dc4c277">getFieldPhysic</a> (unsigned short index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения Physic параметра по индексу в массиве параметров  <a href="#a7f93f725fc65d79dcb2334866dc4c277"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#aec3b3ec2d2b8d637d16bc15ba614d535">getFieldValidity</a> (unsigned short index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения Validity параметра по индексу в массиве параметров  <a href="#aec3b3ec2d2b8d637d16bc15ba614d535"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a9ac6edbc3782fac9f8a0ceeb1c7eb2ce">getFieldUpdate</a> (unsigned short index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения Update параметра по индексу в массиве параметров  <a href="#a9ac6edbc3782fac9f8a0ceeb1c7eb2ce"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#aad0c7dff264d6c5ea3bcb5b32cee02cd">getFieldValue</a> (unsigned short index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения Value параметра по индексу в массиве параметров  <a href="#aad0c7dff264d6c5ea3bcb5b32cee02cd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a5b7beaad8f02596b959601b29eebbfd9">getFieldMinimum</a> (unsigned short index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения Minimum параметра по индексу в массиве параметров  <a href="#a5b7beaad8f02596b959601b29eebbfd9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a5c76616763c4d4f1f98026aa08e06292">getFieldMaximum</a> (unsigned short index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения Maximum параметра по индексу в массиве параметров  <a href="#a5c76616763c4d4f1f98026aa08e06292"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a61d6904e7437d059d27f0edad1b560d0">getFieldDefault</a> (unsigned short index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения Default параметра по индексу в массиве параметров  <a href="#a61d6904e7437d059d27f0edad1b560d0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structparameter.html">parameter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a4b4b697d9fe0fdf57d45b358b92cf93b">getFieldAll</a> (unsigned short index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения All полей параметра по индексу в массиве параметров  <a href="#a4b4b697d9fe0fdf57d45b358b92cf93b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a5e6fe641056462221b59111b619744be">setFieldID</a> (unsigned short index, unsigned short id)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод присвоения поля ID в массиве параметров по индексу  <a href="#a5e6fe641056462221b59111b619744be"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#aee900b55f1d0716b291eed85fade0324">setFieldAccess</a> (unsigned short index, unsigned char access)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод присвоения поля Access в массиве параметров по индексу  <a href="#aee900b55f1d0716b291eed85fade0324"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#ab6d15a138710ab75155234462be1fda6">setFieldOperation</a> (unsigned short index, unsigned char operation)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод присвоения поля Operation в массиве параметров по индексу  <a href="#ab6d15a138710ab75155234462be1fda6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#aee1e1cec569568cbd9efae45db602025">setFieldPhysic</a> (unsigned short index, unsigned char physic)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод присвоения поля Physic в массиве параметров по индексу  <a href="#aee1e1cec569568cbd9efae45db602025"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a57f4d87e6dbee3a7029bef87c2976632">setFieldValidity</a> (unsigned short index, unsigned char validity)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод присвоения поля Validity в массиве параметров по индексу  <a href="#a57f4d87e6dbee3a7029bef87c2976632"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a1759ae02bdb011a1dd4b131b0572e9db">setFieldUpdate</a> (unsigned short index, unsigned char update)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод присвоения поля Update в массиве параметров по индексу  <a href="#a1759ae02bdb011a1dd4b131b0572e9db"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#ae283663eb1b011d59c00007593e0a49e">setFieldValue</a> (unsigned short index, float value)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод присвоения поля value в массиве параметров по индексу  <a href="#ae283663eb1b011d59c00007593e0a49e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a6b0629a552d093f0bc664320ad1735c8">setFieldMin</a> (unsigned short index, float min)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод присвоения поля Min в массиве параметров по индексу  <a href="#a6b0629a552d093f0bc664320ad1735c8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a5811ff731fbed9ba050fa67860e91d63">setFieldMax</a> (unsigned short index, float max)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод присвоения поля Max в массиве параметров по индексу  <a href="#a5811ff731fbed9ba050fa67860e91d63"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a6de8161b52b7bb7d255fb4820f1a959f">setFieldDef</a> (unsigned short index, float def)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод присвоения поля def в массиве параметров по индексу  <a href="#a6de8161b52b7bb7d255fb4820f1a959f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device.html#a873c4585fd2b32eefcc41101ca60707e">setFieldAll</a> (unsigned short index, <a class="el" href="structparameter.html">parameter</a> param)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод присвоения поля All в массиве параметров по индексу  <a href="#a873c4585fd2b32eefcc41101ca60707e"></a><br/></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Подробное описание</h2>
+<div class="textblock"><p>Базовый класс для всех устройств Класс содержит банк параметров устройства во внутреннем представлении и наборы методов для работы с ними </p>
+
+<p>См. определение в файле <a class="el" href="device_8h_source.html">device.h</a> строка <a class="el" href="device_8h_source.html#l00060">60</a></p>
+</div><hr/><h2>Конструктор(ы)</h2>
+<a class="anchor" id="a18549d70005f1ff106860f5388d261f9"></a><!-- doxytag: member="Device::Device" ref="a18549d70005f1ff106860f5388d261f9" args="(uint32_t startAddrParams, parameter *parameters, uint16_t countParameter)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Device::Device </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>startAddrParams</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structparameter.html">parameter</a> *&#160;</td>
+          <td class="paramname"><em>parameters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>countParameter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Конструктор класса </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">startAddrParams</td><td>- базовый адрес параметров (ID_BEGIN) </td></tr>
+    <tr><td class="paramname">parameters</td><td>- указатель на массив параметров </td></tr>
+    <tr><td class="paramname">countParameter</td><td>- количество параметров </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00280">280</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a9dabc419c8d8df3a686c33ce042bc99a"></a><!-- doxytag: member="Device::~Device" ref="a9dabc419c8d8df3a686c33ce042bc99a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Device::~Device </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00288">288</a></p>
+
+</div>
+</div>
+<hr/><h2>Методы</h2>
+<a class="anchor" id="ad6c31feec6bf3c290861e448d4c5e18c"></a><!-- doxytag: member="Device::createMessageUpdateParameters" ref="ad6c31feec6bf3c290861e448d4c5e18c" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Device::createMessageUpdateParameters </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод создания очереди обновленных параметров </p>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00306">306</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aeb25cb7e8d3b20cb0cde9f1ff173c012"></a><!-- doxytag: member="Device::createThread" ref="aeb25cb7e8d3b20cb0cde9f1ff173c012" args="(const char *threadName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Device::createThread </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>threadName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод создания задач для FreeRTOS. </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">threadName</td><td>Название задачи </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00293">293</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a1200c8de37952e0759ad3a0347d24cd3"></a><!-- doxytag: member="Device::getFieldAccess" ref="a1200c8de37952e0759ad3a0347d24cd3" args="(unsigned short index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char Device::getFieldAccess </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения Access параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Index</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле Access </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00326">326</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a4b4b697d9fe0fdf57d45b358b92cf93b"></a><!-- doxytag: member="Device::getFieldAll" ref="a4b4b697d9fe0fdf57d45b358b92cf93b" args="(unsigned short index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structparameter.html">parameter</a> Device::getFieldAll </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения All полей параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Index</td><td>индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>All поля </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00371">371</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a61d6904e7437d059d27f0edad1b560d0"></a><!-- doxytag: member="Device::getFieldDefault" ref="a61d6904e7437d059d27f0edad1b560d0" args="(unsigned short index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Device::getFieldDefault </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения Default параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Index</td><td>индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле Default </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00366">366</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a28601907258f92f593f5fdf420eca4ba"></a><!-- doxytag: member="Device::getFieldId" ref="a28601907258f92f593f5fdf420eca4ba" args="(unsigned short index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short Device::getFieldId </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения ID параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Index</td><td>индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле ID </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00321">321</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a5c76616763c4d4f1f98026aa08e06292"></a><!-- doxytag: member="Device::getFieldMaximum" ref="a5c76616763c4d4f1f98026aa08e06292" args="(unsigned short index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Device::getFieldMaximum </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения Maximum параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Index</td><td>индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле Maximum </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00361">361</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a5b7beaad8f02596b959601b29eebbfd9"></a><!-- doxytag: member="Device::getFieldMinimum" ref="a5b7beaad8f02596b959601b29eebbfd9" args="(unsigned short index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Device::getFieldMinimum </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения Minimum параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Index</td><td>индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле Minimum </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00356">356</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a78467bfdd717de10e58fc3ab24a1ec39"></a><!-- doxytag: member="Device::getFieldOperation" ref="a78467bfdd717de10e58fc3ab24a1ec39" args="(unsigned short index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char Device::getFieldOperation </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения Operation параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Index</td><td>индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле Operation </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00331">331</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a7f93f725fc65d79dcb2334866dc4c277"></a><!-- doxytag: member="Device::getFieldPhysic" ref="a7f93f725fc65d79dcb2334866dc4c277" args="(unsigned short index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char Device::getFieldPhysic </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения Physic параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Index</td><td>индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле Physic </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00336">336</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a9ac6edbc3782fac9f8a0ceeb1c7eb2ce"></a><!-- doxytag: member="Device::getFieldUpdate" ref="a9ac6edbc3782fac9f8a0ceeb1c7eb2ce" args="(unsigned short index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char Device::getFieldUpdate </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения Update параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Index</td><td>индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле Update </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00346">346</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aec3b3ec2d2b8d637d16bc15ba614d535"></a><!-- doxytag: member="Device::getFieldValidity" ref="aec3b3ec2d2b8d637d16bc15ba614d535" args="(unsigned short index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char Device::getFieldValidity </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения Validity параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Index</td><td>индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле Validity </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00341">341</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aad0c7dff264d6c5ea3bcb5b32cee02cd"></a><!-- doxytag: member="Device::getFieldValue" ref="aad0c7dff264d6c5ea3bcb5b32cee02cd" args="(unsigned short index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Device::getFieldValue </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения Value параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Index</td><td>индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле Value </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00351">351</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aeff81bda8c3d396421a51e7b33548a5f"></a><!-- doxytag: member="Device::getIndexAtID" ref="aeff81bda8c3d396421a51e7b33548a5f" args="(unsigned short id)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short Device::getIndexAtID </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод поиска и получения индекса по ID параметра </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ID</td><td>идентификатор параметра </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>Index </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00426">426</a></p>
+
+</div>
+</div>
+<a class="anchor" id="abcadc44d78d614640ccce3a7976c2dc1"></a><!-- doxytag: member="Device::getMessageUpdateParameters" ref="abcadc44d78d614640ccce3a7976c2dc1" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Device::getMessageUpdateParameters </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00312">312</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a9c31f526d2266b1c35e82f949ad18358"></a><!-- doxytag: member="Device::getValue" ref="a9c31f526d2266b1c35e82f949ad18358" args="(unsigned short id)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Device::getValue </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения значения параметра по id. </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>уникальный идентификатор параметра </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>значение параметра </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00436">436</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae16b97ab98f4f47f89251c49fc1ccb17"></a><!-- doxytag: member="Device::initParameters" ref="ae16b97ab98f4f47f89251c49fc1ccb17" args="()=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Device::initParameters </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Инициализация массива параметров </p>
+
+<p>Замещается в <a class="el" href="class_ccs.html#a2561d891726d388b80e781789656dcae">Ccs</a>, <a class="el" href="class_em.html#ab1fb2f23579c79d1852b38659e740f58">Em</a>, <a class="el" href="class_vsd.html#a36f8f37fa1fd291a7b6dc770488584ba">Vsd</a> и <a class="el" href="class_tms.html#ad32fdb41f6ce5375c0d1670749224348">Tms</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a84a0ac6bd7e4cf1d9d103753fd9843d2"></a><!-- doxytag: member="Device::readParameters" ref="a84a0ac6bd7e4cf1d9d103753fd9843d2" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> Device::readParameters </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Чтение массива параметров с Flash. </p>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00490">490</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a429b58f966472c9d10f96f25a26ba1cd"></a><!-- doxytag: member="Device::saveParameters" ref="a429b58f966472c9d10f96f25a26ba1cd" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> Device::saveParameters </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Сохранение массива параметров на Flash. </p>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00473">473</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aee900b55f1d0716b291eed85fade0324"></a><!-- doxytag: member="Device::setFieldAccess" ref="aee900b55f1d0716b291eed85fade0324" args="(unsigned short index, unsigned char access)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Device::setFieldAccess </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>access</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод присвоения поля Access в массиве параметров по индексу </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Index</td><td>индекс параметра в массиве </td></tr>
+    <tr><td class="paramname">Access</td><td>присваемое значение </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00381">381</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a873c4585fd2b32eefcc41101ca60707e"></a><!-- doxytag: member="Device::setFieldAll" ref="a873c4585fd2b32eefcc41101ca60707e" args="(unsigned short index, parameter param)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Device::setFieldAll </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structparameter.html">parameter</a>&#160;</td>
+          <td class="paramname"><em>param</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод присвоения поля All в массиве параметров по индексу </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>индекс параметра в массиве </td></tr>
+    <tr><td class="paramname">param</td><td>присваемое значение </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00421">421</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a6de8161b52b7bb7d255fb4820f1a959f"></a><!-- doxytag: member="Device::setFieldDef" ref="a6de8161b52b7bb7d255fb4820f1a959f" args="(unsigned short index, float def)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Device::setFieldDef </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>def</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод присвоения поля def в массиве параметров по индексу </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>индекс параметра в массиве </td></tr>
+    <tr><td class="paramname">def</td><td>присваемое значение </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00416">416</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a5e6fe641056462221b59111b619744be"></a><!-- doxytag: member="Device::setFieldID" ref="a5e6fe641056462221b59111b619744be" args="(unsigned short index, unsigned short id)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Device::setFieldID </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод присвоения поля ID в массиве параметров по индексу </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Index</td><td>индекс параметра в массиве </td></tr>
+    <tr><td class="paramname">ID</td><td>присваемое значение </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00376">376</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a5811ff731fbed9ba050fa67860e91d63"></a><!-- doxytag: member="Device::setFieldMax" ref="a5811ff731fbed9ba050fa67860e91d63" args="(unsigned short index, float max)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Device::setFieldMax </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод присвоения поля Max в массиве параметров по индексу </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>индекс параметра в массиве </td></tr>
+    <tr><td class="paramname">max</td><td>присваемое значение </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a6b0629a552d093f0bc664320ad1735c8"></a><!-- doxytag: member="Device::setFieldMin" ref="a6b0629a552d093f0bc664320ad1735c8" args="(unsigned short index, float min)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Device::setFieldMin </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>min</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод присвоения поля Min в массиве параметров по индексу </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>индекс параметра в массиве </td></tr>
+    <tr><td class="paramname">min</td><td>присваемое значение </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00411">411</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ab6d15a138710ab75155234462be1fda6"></a><!-- doxytag: member="Device::setFieldOperation" ref="ab6d15a138710ab75155234462be1fda6" args="(unsigned short index, unsigned char operation)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Device::setFieldOperation </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>operation</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод присвоения поля Operation в массиве параметров по индексу </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Index</td><td>индекс параметра в массиве </td></tr>
+    <tr><td class="paramname">Operation</td><td>присваемое значение </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00386">386</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aee1e1cec569568cbd9efae45db602025"></a><!-- doxytag: member="Device::setFieldPhysic" ref="aee1e1cec569568cbd9efae45db602025" args="(unsigned short index, unsigned char physic)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Device::setFieldPhysic </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>physic</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод присвоения поля Physic в массиве параметров по индексу </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Index</td><td>индекс параметра в массиве </td></tr>
+    <tr><td class="paramname">Physic</td><td>присваемое значение </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00391">391</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a1759ae02bdb011a1dd4b131b0572e9db"></a><!-- doxytag: member="Device::setFieldUpdate" ref="a1759ae02bdb011a1dd4b131b0572e9db" args="(unsigned short index, unsigned char update)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Device::setFieldUpdate </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>update</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод присвоения поля Update в массиве параметров по индексу </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Index</td><td>индекс параметра в массиве </td></tr>
+    <tr><td class="paramname">Update</td><td>присваемое значение </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00401">401</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a57f4d87e6dbee3a7029bef87c2976632"></a><!-- doxytag: member="Device::setFieldValidity" ref="a57f4d87e6dbee3a7029bef87c2976632" args="(unsigned short index, unsigned char validity)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Device::setFieldValidity </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>validity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод присвоения поля Validity в массиве параметров по индексу </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Index</td><td>индекс параметра в массиве </td></tr>
+    <tr><td class="paramname">Validity</td><td>присваемое значение </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00396">396</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae283663eb1b011d59c00007593e0a49e"></a><!-- doxytag: member="Device::setFieldValue" ref="ae283663eb1b011d59c00007593e0a49e" args="(unsigned short index, float value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Device::setFieldValue </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод присвоения поля value в массиве параметров по индексу </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>индекс параметра в массиве </td></tr>
+    <tr><td class="paramname">value</td><td>присваемое значение </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00406">406</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a783badfe103510b2e201340bbda11452"></a><!-- doxytag: member="Device::setValue" ref="a783badfe103510b2e201340bbda11452" args="(unsigned short id, float value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char Device::setValue </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод присвоения значения параметру Когда пытаемся записать значение, нам нужно проверить 1. Уровень доступа к параметру 2. Операции над параметром 3. Минимальное и максимальное значение </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>уникальный идентификатор параметра </td></tr>
+    <tr><td class="paramname">value</td><td>присваемое значение </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>0 - значение присвоено или ошибка </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00441">441</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a39feb45c91e976ce8f5b82e3aed0db7b"></a><!-- doxytag: member="Device::updateParameters" ref="a39feb45c91e976ce8f5b82e3aed0db7b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Device::updateParameters </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Переопределяется в <a class="el" href="class_vsd_novomet.html#a71d726fa879aaa07ed2b16d4d410712d">VsdNovomet</a>.</p>
+
+<p>См. определение в файле <a class="el" href="device_8cpp_source.html">device.cpp</a> строка <a class="el" href="device_8cpp_source.html#l00457">457</a></p>
+
+</div>
+</div>
+<hr/><h2>Поля</h2>
+<a class="anchor" id="ad741cb24b89e894f1de9dc87cf91e70f"></a><!-- doxytag: member="Device::countParameter_" ref="ad741cb24b89e894f1de9dc87cf91e70f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t <a class="el" href="class_device.html#ad741cb24b89e894f1de9dc87cf91e70f">Device::countParameter_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="device_8h_source.html">device.h</a> строка <a class="el" href="device_8h_source.html#l00142">142</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a09a3c50334e2bfc5cc1989424f691788"></a><!-- doxytag: member="Device::messageUpdateParameters_" ref="a09a3c50334e2bfc5cc1989424f691788" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">osMessageQId <a class="el" href="class_device.html#a09a3c50334e2bfc5cc1989424f691788">Device::messageUpdateParameters_</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Идентификатор очереди обновленных параметров </p>
+
+<p>См. определение в файле <a class="el" href="device_8h_source.html">device.h</a> строка <a class="el" href="device_8h_source.html#l00093">93</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ad11411bd18bc89ab1c568d07752cb55a"></a><!-- doxytag: member="Device::parameters_" ref="ad11411bd18bc89ab1c568d07752cb55a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structparameter.html">parameter</a>* <a class="el" href="class_device.html#ad11411bd18bc89ab1c568d07752cb55a">Device::parameters_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Указатель на массив параметров устройства </p>
+
+<p>См. определение в файле <a class="el" href="device_8h_source.html">device.h</a> строка <a class="el" href="device_8h_source.html#l00140">140</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa0a6503d4e81a9bc83ae714b4f1d53fd"></a><!-- doxytag: member="Device::startAddrParams_" ref="aa0a6503d4e81a9bc83ae714b4f1d53fd" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t <a class="el" href="class_device.html#aa0a6503d4e81a9bc83ae714b4f1d53fd">Device::startAddrParams_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Начальный адрес массива параметров из списка enID. </p>
+
+<p>См. определение в файле <a class="el" href="device_8h_source.html">device.h</a> строка <a class="el" href="device_8h_source.html#l00137">137</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a5289ad9da1517b20fcdb02972c5c1541"></a><!-- doxytag: member="Device::updateParametersThreadId_" ref="a5289ad9da1517b20fcdb02972c5c1541" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">osThreadId <a class="el" href="class_device.html#a5289ad9da1517b20fcdb02972c5c1541">Device::updateParametersThreadId_</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Идентификатор задачи обновления значений параметра устройства </p>
+
+<p>См. определение в файле <a class="el" href="device_8h_source.html">device.h</a> строка <a class="el" href="device_8h_source.html#l00090">90</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/user/device/<a class="el" href="device_8h_source.html">device.h</a></li>
+<li>C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/user/device/<a class="el" href="device_8cpp_source.html">device.cpp</a></li>
+</ul>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Пн 2 Мар 2015 15:35:49. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

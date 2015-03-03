@@ -5,7 +5,6 @@ static void protectionTask(void *p)
   (static_cast<Protection*>(p))->task();
 }
 
-// Конструктор класса защит
 Protection::Protection()
 {
 
@@ -18,15 +17,11 @@ Protection::~Protection()
 
 void Protection::init(const char *threadName)
 {
-  // Создаём задачу цикла опроса
-  // Заполняем структуру с параметрами задачи
+  // Создаём задачу обработки защиты
   osThreadDef_t t = {threadName, protectionTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
-  // Создаём задачу
   threadId_ = osThreadCreate(&t, this);
 }
 
-// Метод получения уставок защиты
-// Вызывается в бесконечном цикле для получения
 void Protection::getSetpointProt()
 {
   mode_           = ksu.getValue(idMode_);
@@ -42,7 +37,6 @@ void Protection::getSetpointProt()
   param2_         = ksu.getValue(idParam2_);
 }
 
-// Метод получения текущих параметров защиты
 void Protection::getCurrentParamProt()
 {
   state_                = ksu.getValue(idState_);
@@ -79,7 +73,6 @@ bool Protection::isLowerLimit(float setpoint)
     return false;
 }
 
-// Метод проверки истёк ли таймер сброса счётчиков АПВ защиты
 void Protection::checkRestartResetCount()
 {
   // Проверяем если уставка времени сброса больше чем разница между текущим
@@ -92,7 +85,11 @@ void Protection::checkRestartResetCount()
   }
 }
 
-// Метод задача защиты
+void Protection::addEventActivationProt()
+{
+  logEvent.add(ProtectCode, AutoType, protActivatedEventId_, valueParameter_, tripSetpoint_);
+}
+
 void Protection::task()
 {
   while(1) {
@@ -113,18 +110,16 @@ void Protection::task()
   }
 }
 
-// Универсальный автомат работы защиты
 void Protection::automatProtection()
 {
-  // Автомат работы защиты
   switch (state_) {
 
     // Состояние "ничегонеделанья"
-    case ProtectionStateOff:
+    case ProtectionStateIdle:
       // Если станция остановлена
       if (!ksu.isStopCCS()) {
         // Остаёмся в этом же состоянии
-        state_ = ProtectionStateOff;
+        state_ = ProtectionStateIdle;
       }
       // Станция в работе
       else {
@@ -141,7 +136,7 @@ void Protection::automatProtection()
       // Если станция остановлена
       if (!ksu.isStopCCS()) {
         // Переходим в состояние "ничегонеделанья"
-        state_ = ProtectionStateOff;
+        state_ = ProtectionStateIdle;
       }
       // Станция в работе
       else {
@@ -157,7 +152,7 @@ void Protection::automatProtection()
       // Если станция остановлена
       if (!ksu.isStopCCS()) {
         // Переходим в состояние "ничегонеделанья"
-        state_ = ProtectionStateOff;
+        state_ = ProtectionStateIdle;
       }
       // Станция в работе
       else {
@@ -178,7 +173,7 @@ void Protection::automatProtection()
       // Если станция остановлена
       if (!ksu.isStopCCS()) {
         // Переходим в состояние "ничегонеделанья"
-        state_ = ProtectionStateOff;
+        state_ = ProtectionStateIdle;
       }
       else {
         // TODO: Message Активирована защита
@@ -191,7 +186,7 @@ void Protection::automatProtection()
       // Если станция остановлена
       if (!ksu.isStopCCS()) {
         // Переходим в состояние "ничегонеделанья"
-        state_ = ProtectionStateOff;
+        state_ = ProtectionStateIdle;
       }
       else {
         // Если контролируемый параметр не в норме
@@ -211,7 +206,7 @@ void Protection::automatProtection()
       // Если станция остановлена
       if (!ksu.isStopCCS()) {
         // Переходим в состояние "ничегонеделанья"
-        state_ = ProtectionStateOff;
+        state_ = ProtectionStateIdle;
       }
       else {
         // Если контролируемый параметр не в норме
@@ -232,7 +227,7 @@ void Protection::automatProtection()
       // Если станция остановлена
       if (!ksu.isStopCCS()) {
         // Переходим в состояние "ничегонеделанья"
-        state_ = ProtectionStateOff;
+        state_ = ProtectionStateIdle;
       }
       // Станция в работе
       else {
@@ -260,13 +255,13 @@ void Protection::automatProtection()
       // Если станция остановлена
       if (!ksu.isStopCCS()) {
         // Переходим в состояние "ничегонеделанья"
-        state_ = ProtectionStateOff;
+        state_ = ProtectionStateIdle;
       }
       else {
         // Если контролируемый параметр не в норме
         if (alarm_) {
           // TODO: Message Срабатывания защиты
-          logEvent.add(ProtectCode, AutoType, protActivatedEventId_, tripSetpoint_, valueParameter_);
+          addEventActivationProt();
           state_ = ProtectionStateFailure;
         }
         else {
@@ -447,7 +442,7 @@ void Protection::automatProtection()
       // TODO: Message Блокировка по защите
       logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
       // Переходим в состояние "ничегонеделанья"
-      state_ = ProtectionStateOff;
+      state_ = ProtectionStateIdle;
       break;
 
     // Неизвестное состояние

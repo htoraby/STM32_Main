@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/adc/adc_ext.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  <td id="projectlogo"><img alt="Logo" src="logo.ico"/></td>
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/board/adc/adc_ext.h</div>  </div>
+</div>
+<div class="contents">
+<a href="adc__ext_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef ADC_EXT_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define ADC_EXT_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &quot;<a class="code" href="board_8h.html">board.h</a>&quot;</span>
+<a name="l00005"></a>00005 
+<a name="l00006"></a><a class="code" href="adc__ext_8h.html#a4e9257509535b9b40d5cc1cfc57d2b11">00006</a> <span class="preprocessor">#define ANALOG_IN_NUM 8</span>
+<a name="l00007"></a>00007 <span class="preprocessor"></span>
+<a name="l00012"></a><a class="code" href="adc__ext_8h.html#a09ab9f4016ce3ebc73428c625645e357">00012</a> <span class="keyword">enum</span> <a class="code" href="adc__ext_8h.html#a09ab9f4016ce3ebc73428c625645e357" title="Список режимов аналогового входа: напряжение (мВ), ток (мкА)">AnalogInModeType</a> {
+<a name="l00013"></a><a class="code" href="adc__ext_8h.html#a09ab9f4016ce3ebc73428c625645e357aa792d28ffca35e5e70d4825f07df362f">00013</a>   <a class="code" href="adc__ext_8h.html#a09ab9f4016ce3ebc73428c625645e357aa792d28ffca35e5e70d4825f07df362f" title="В.">AnalogInModeVoltage</a>,  
+<a name="l00014"></a><a class="code" href="adc__ext_8h.html#a09ab9f4016ce3ebc73428c625645e357ac0a4bd67518b656dd02a1e89c6038c5e">00014</a>   <a class="code" href="adc__ext_8h.html#a09ab9f4016ce3ebc73428c625645e357ac0a4bd67518b656dd02a1e89c6038c5e" title="мА">AnalogInModeCurrent</a>,  
+<a name="l00015"></a>00015 };
+<a name="l00016"></a>00016 
+<a name="l00017"></a><a class="code" href="struct_analog_input_def.html">00017</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+<a name="l00018"></a><a class="code" href="struct_analog_input_def.html#aa3f0aa07172206a6d8998cf791f601e8">00018</a>   uint32_t <a class="code" href="struct_analog_input_def.html#aa3f0aa07172206a6d8998cf791f601e8" title="Измеренное значение">value</a>;    
+<a name="l00019"></a><a class="code" href="struct_analog_input_def.html#a15ad73cd9aff5611fc8f2f5b68aa6b37">00019</a>   uint32_t <a class="code" href="struct_analog_input_def.html#a15ad73cd9aff5611fc8f2f5b68aa6b37" title="Промежуточное накопленное значение измерений">valueTmp</a>; 
+<a name="l00020"></a><a class="code" href="struct_analog_input_def.html#abe2004f1d0213f27df2a15ed607e9f6f">00020</a>   uint8_t <a class="code" href="struct_analog_input_def.html#abe2004f1d0213f27df2a15ed607e9f6f">mode</a>;
+<a name="l00021"></a>00021 } <a class="code" href="struct_analog_input_def.html">AnalogInputDef</a>;
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023 <span class="keyword">extern</span> <a class="code" href="struct_analog_input_def.html">AnalogInputDef</a> <a class="code" href="adc__ext_8cpp.html#a9d5dbb6fb394f82b1a452e46cd265710">analogInExt</a>[];
+<a name="l00024"></a>00024 
+<a name="l00029"></a>00029 <span class="keywordtype">void</span> <a class="code" href="adc__ext_8cpp.html#af9cbff131e0de5d021440a585d6c88d1" title="Инициализация модуля работы с внешним АЦП">adcExtInit</a>();
+<a name="l00030"></a>00030 
+<a name="l00037"></a>00037 <span class="keywordtype">void</span> <a class="code" href="adc__ext_8cpp.html#a4ea4c37a250af4cc3b467e1993b7851a" title="Установка режима аналогового входа внешнего АЦП">setModeAnalogInExt</a>(uint8_t num, uint8_t mode);
+<a name="l00038"></a>00038 
+<a name="l00044"></a>00044 <span class="keywordtype">float</span> <a class="code" href="adc__ext_8cpp.html#a4036b60c65173dd7ee795ebe6ff0c3ae" title="Получение значения с аналогового входа внешнего АЦП">getValueAnalogInExt</a>(uint8_t num);
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 <span class="preprocessor">#endif // ADC_EXT_H</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Пн 2 Мар 2015 15:35:46. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

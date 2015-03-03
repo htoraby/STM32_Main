@@ -80,7 +80,7 @@ int ModbusMaster::readCoils(   int SlaveAddr,
                 if(transmitQuery(txBuffer_, 8))
                 {
                     // Функция приёма данных
-                    Result = reseiveAnswer(txBuffer_);
+                    Result = receiveAnswer(txBuffer_);
                     // Анализируем ответ
                     switch(Result)
                     {
@@ -188,7 +188,7 @@ int ModbusMaster::readInputDiscretes( int SlaveAddr,
                 if(transmitQuery(txBuffer_, 8))
                 {
                 	// Функция приёма данных
-                    Result = reseiveAnswer(txBuffer_);
+                    Result = receiveAnswer(txBuffer_);
                     // Анализируем ответ
                     switch(Result)
                     {
@@ -256,7 +256,7 @@ int ModbusMaster::readMultipleRegisters( int slaveAddr,
   // Если отправили данные
   if (transmitQuery(txBuffer_, 8)){
     // Принимаем данные получаем количество принятых байт
-    Count = reseiveAnswer(rxBuffer_);
+    Count = receiveAnswer(rxBuffer_);
     // Если хоть что-то получили
     if (Count) {
       // Корректная длина пакета
@@ -348,7 +348,7 @@ int ModbusMaster::readMultipleLongInts(    int SlaveAddr,
                 // ПЕРЕДАЧА И ПРИЁМ ДАННЫХ
                 if(transmitQuery(txBuffer_, 8))
                 {
-                    Result = reseiveAnswer(txBuffer_);
+                    Result = receiveAnswer(txBuffer_);
                     // Анализируем ответ
                     switch(Result)
                     {
@@ -429,7 +429,7 @@ int ModbusMaster::readMultipleFloats(        int SlaveAddr,
 
                 if(transmitQuery(txBuffer_, 8))
                 {
-                    Result = reseiveAnswer(txBuffer_);
+                    Result = receiveAnswer(txBuffer_);
                     // Анализируем ответ
                     switch(Result)
                     {
@@ -510,7 +510,7 @@ int ModbusMaster::readInputRegisters(      int SlaveAddr,
                 // ПЕРЕДАЧА И ПРИЁМ ДАННЫХ
                 if(transmitQuery(txBuffer_, 8))
                 {
-                    Result = reseiveAnswer(txBuffer_);
+                    Result = receiveAnswer(txBuffer_);
                     // Анализируем ответ
                     switch(Result)
                     {
@@ -590,7 +590,7 @@ int ModbusMaster::readInputLongInts(    int SlaveAddr,
                 // ПЕРЕДАЧА И ПРИЁМ ДАННЫХ
                 if(transmitQuery(txBuffer_, 8))
                 {
-                    Result = reseiveAnswer(txBuffer_);
+                    Result = receiveAnswer(txBuffer_);
                     // Анализируем ответ
                     switch(Result)
                     {
@@ -671,7 +671,7 @@ int ModbusMaster::readInputFloats(    int SlaveAddr,
                 txBuffer_[7] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
                 if(transmitQuery(txBuffer_, 8))
                 {
-                    Result = reseiveAnswer(rxBuffer_);
+                    Result = receiveAnswer(rxBuffer_);
                     // Анализируем ответ
                     switch(Result)
                     {
@@ -789,7 +789,7 @@ int ModbusMaster::writeSingleRegister( int SlaveAddr, int RegAddr, short RegVal)
       //txBuffer_[6] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
       //txBuffer_[7] = Crc & 0x00ff;                            // Младший байт контрольной суммы
       if (transmitQuery(txBuffer_, 8)) {
-        Result = reseiveAnswer(rxBuffer_);
+        Result = receiveAnswer(rxBuffer_);
         // Анализируем ответ
         switch (Result) {
         // Получен корректный ответ
@@ -1371,7 +1371,7 @@ int ModbusMaster::transmitQuery(unsigned char *Buf, int Count)
 
 // МЕТОД ЧТЕНИЕ ДАННЫХ ИЗ ПОРТА
 // Buf - массив байт считываемый из порта
-int ModbusMaster::reseiveAnswer(unsigned char *Buf)
+int ModbusMaster::receiveAnswer(unsigned char *Buf)
 {
     return RETURN_ERROR;
 }

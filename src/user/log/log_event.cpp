@@ -15,6 +15,8 @@ LogEvent::~LogEvent()
 uint32_t LogEvent::add(uint8_t code, uint8_t type, uint16_t id,
                        float oldValue, float newValue)
 {
+  memset(buffer, 0, sizeof(buffer));
+
   time_t time = getTime();
 
   *(uint32_t*)(buffer) = ++id_;

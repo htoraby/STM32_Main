@@ -1,0 +1,563 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/user/device/device_modbus.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  <td id="projectlogo"><img alt="Logo" src="logo.ico"/></td>
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">C:/Repositories/su/505.013.1000_KSU-02/STM32_Main/src/user/device/device_modbus.cpp</div>  </div>
+</div>
+<div class="contents">
+<a href="device__modbus_8cpp.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 ﻿<span class="comment">/*</span>
+<a name="l00002"></a>00002 <span class="comment"> * device_modbus.cpp</span>
+<a name="l00003"></a>00003 <span class="comment"> *</span>
+<a name="l00004"></a>00004 <span class="comment"> *  Created on: 23.06.2014</span>
+<a name="l00005"></a>00005 <span class="comment"> *      Author: trofimenko</span>
+<a name="l00006"></a>00006 <span class="comment"> */</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="preprocessor">#include &quot;<a class="code" href="device__modbus_8h.html">device_modbus.h</a>&quot;</span>
+<a name="l00009"></a>00009 
+<a name="l00010"></a>00010 
+<a name="l00011"></a>00011 
+<a name="l00012"></a><a class="code" href="device__modbus_8cpp.html#a6c8714974a7c082c616e8d9a17251871">00012</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="device__modbus_8cpp.html#a6c8714974a7c082c616e8d9a17251871">deviceModbusTask</a>(<span class="keywordtype">void</span> *p)
+<a name="l00013"></a>00013 {
+<a name="l00014"></a>00014   (<span class="keyword">static_cast&lt;</span><a class="code" href="class_device_modbus.html" title="Класс для устройств работающих по протоколу Modbus. Содержит функции организации цикла чтения и запис...">DeviceModbus</a>*<span class="keyword">&gt;</span>(p))-&gt;exchangeTask();
+<a name="l00015"></a>00015 }
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 <span class="comment">// Конструктор класса DeviceModbus</span>
+<a name="l00018"></a><a class="code" href="class_device_modbus.html#abd7edca5443b00ed50e5baeac7c656bd">00018</a> <a class="code" href="class_device_modbus.html#abd7edca5443b00ed50e5baeac7c656bd" title="DeviceModbus Конструктор класса">DeviceModbus::DeviceModbus</a>(<a class="code" href="struct_modbus_parameter.html" title="Структура для хранения полей параметра из карты устройства">ModbusParameter</a> *MapRegisters,
+<a name="l00019"></a>00019                            <span class="keywordtype">int</span> Quantity,
+<a name="l00020"></a>00020                            <span class="keywordtype">int</span> PortName,
+<a name="l00021"></a>00021                            <span class="keywordtype">long</span> BaudRate,
+<a name="l00022"></a>00022                            <span class="keywordtype">int</span> DataBits,
+<a name="l00023"></a>00023                            <span class="keywordtype">int</span> StopBits,
+<a name="l00024"></a>00024                            <span class="keywordtype">int</span> Parity,
+<a name="l00025"></a>00025                            <span class="keywordtype">int</span> Address,
+<a name="l00026"></a>00026                            <span class="keyword">const</span> <span class="keywordtype">char</span> *threadName,
+<a name="l00027"></a>00027                            osMessageQId messageUpdateID)
+<a name="l00028"></a>00028   : quantityParam_(Quantity)
+<a name="l00029"></a>00029   , deviceAddress_(Address)
+<a name="l00030"></a>00030   , indexExchange_(1)
+<a name="l00031"></a>00031   , messageUpdateID_(messageUpdateID)
+<a name="l00032"></a>00032   , modbusParameters_(MapRegisters)
+<a name="l00033"></a>00033 {
+<a name="l00034"></a>00034   <span class="comment">// Создаём очередь сообщений</span>
+<a name="l00035"></a>00035   osMessageQDef(OutOfTurn, 100, uint32_t);
+<a name="l00036"></a>00036   <a class="code" href="class_device_modbus.html#a5a91fd11214a2af977098c0a573db8e8">messageOutOfTurn_</a> = osMessageCreate (osMessageQ(OutOfTurn), NULL);
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038   <span class="comment">// Создаём экземпляр класса ModbusMasterSerial</span>
+<a name="l00039"></a>00039   <a class="code" href="class_device_modbus.html#add08bf58427c3f48c1caf26280807708">mms_</a> = <span class="keyword">new</span> <a class="code" href="class_modbus_master_serial.html" title="Класс modbus master для последовательных портов Реализует некоторые настройки последовательного прото...">ModbusMasterSerial</a>(PortName);
+<a name="l00040"></a>00040   <span class="comment">// Открываем порт</span>
+<a name="l00041"></a>00041   <a class="code" href="class_device_modbus.html#add08bf58427c3f48c1caf26280807708">mms_</a>-&gt;<a class="code" href="class_modbus_master_serial.html#a4c22ebac5c1e7a14740ffbeea02f352b">openProtocol</a>(PortName, BaudRate, DataBits, StopBits, Parity);
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043   <span class="comment">// Создаём задачу цикла опроса</span>
+<a name="l00044"></a>00044   <span class="comment">// Заполняем структуру с параметрами задачи</span>
+<a name="l00045"></a>00045   osThreadDef_t t = {threadName, <a class="code" href="device__modbus_8cpp.html#a6c8714974a7c082c616e8d9a17251871">deviceModbusTask</a>, osPriorityNormal, 0, 2 * <a class="code" href="_free_r_t_o_s_config_8h.html#a6c534a6cf8a00528fe0be42083484f9a">configMINIMAL_STACK_SIZE</a>};
+<a name="l00046"></a>00046   <span class="comment">// Создаём задачу</span>
+<a name="l00047"></a>00047   <a class="code" href="class_device_modbus.html#a120e1bebb4463c8683efe5bba4a4e3ca">threadId_</a> = osThreadCreate(&amp;t, <span class="keyword">this</span>);
+<a name="l00048"></a>00048 }
+<a name="l00049"></a>00049 
+<a name="l00050"></a><a class="code" href="class_device_modbus.html#a9817b9b1c696332d51ea3e935fb84d87">00050</a> <a class="code" href="class_device_modbus.html#a9817b9b1c696332d51ea3e935fb84d87" title="Деструктор по умолчанию">DeviceModbus::~DeviceModbus</a>()
+<a name="l00051"></a>00051 {
+<a name="l00052"></a>00052   osThreadTerminate(<a class="code" href="class_device_modbus.html#a120e1bebb4463c8683efe5bba4a4e3ca">threadId_</a>);
+<a name="l00053"></a>00053 }
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055 <span class="comment">// ----------------------------------------------------------------------------</span>
+<a name="l00056"></a>00056 <span class="comment">// Методы для работы с полями массива структур Modbus параметров (картой)</span>
+<a name="l00057"></a>00057 <span class="comment">// через индекс параметра в массиве</span>
+<a name="l00058"></a>00058 <span class="comment">// ----------------------------------------------------------------------------</span>
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060 <span class="comment">// Получить ID из структуры ModbusParameter из массива по индексу</span>
+<a name="l00061"></a><a class="code" href="class_device_modbus.html#ae1087cd6a9bec32d119d218a9a37f5b8">00061</a> <span class="keywordtype">int</span> <a class="code" href="class_device_modbus.html#ae1087cd6a9bec32d119d218a9a37f5b8" title="Метод получения ID параметра по индексу в массиве параметров">DeviceModbus::getFieldID</a>(<span class="keywordtype">int</span> Index)
+<a name="l00062"></a>00062 {
+<a name="l00063"></a>00063   <span class="keywordflow">return</span> <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].<a class="code" href="struct_modbus_parameter.html#ab2467b93191f0737338cbd2a859d5a03">ID</a>;
+<a name="l00064"></a>00064 }
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066 <span class="comment">// Получить Address из структуры ModbusParameter из массива по индексу</span>
+<a name="l00067"></a><a class="code" href="class_device_modbus.html#a02f2a6823cb2f1d4bb78c2fd80100e2f">00067</a> <span class="keywordtype">int</span> <a class="code" href="class_device_modbus.html#a02f2a6823cb2f1d4bb78c2fd80100e2f" title="Метод получения Address параметра по индексу в массиве параметров">DeviceModbus::getFieldAddress</a>(<span class="keywordtype">int</span> Index)
+<a name="l00068"></a>00068 {
+<a name="l00069"></a>00069   <span class="keywordflow">return</span> <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].<a class="code" href="struct_modbus_parameter.html#a1281b344f8803502a8816889201049a8">Address</a>;
+<a name="l00070"></a>00070 }
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072 <span class="comment">// Получить Operation из структуры ModbusParameter из массива по индексу</span>
+<a name="l00073"></a><a class="code" href="class_device_modbus.html#a46d6aa4b9f4785e2e090f75d6ea588a5">00073</a> <span class="keywordtype">int</span> <a class="code" href="class_device_modbus.html#a46d6aa4b9f4785e2e090f75d6ea588a5" title="Метод получения Operation параметра по индексу в массиве параметров">DeviceModbus::getFieldOperation</a>(<span class="keywordtype">int</span> Index)
+<a name="l00074"></a>00074 {
+<a name="l00075"></a>00075   <span class="keywordflow">return</span> <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].<a class="code" href="struct_modbus_parameter.html#a0a828a5dc60f0523fb29586555704139">Operation</a>;
+<a name="l00076"></a>00076 }
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078 <span class="comment">// Получить Physic из структуры ModbusParameter из массива по индексу</span>
+<a name="l00079"></a><a class="code" href="class_device_modbus.html#a73497bc0a477cfce173874275cb090fc">00079</a> <span class="keywordtype">int</span> <a class="code" href="class_device_modbus.html#a73497bc0a477cfce173874275cb090fc" title="Метод получения Physic параметра по индексу в массиве параметров">DeviceModbus::getFieldPhysic</a>(<span class="keywordtype">int</span> Index)
+<a name="l00080"></a>00080 {
+<a name="l00081"></a>00081   <span class="keywordflow">return</span> <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].<a class="code" href="struct_modbus_parameter.html#a8888b9ef4d3689c911cba3faddb7a3dd">Physic</a>;
+<a name="l00082"></a>00082 }
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084 <span class="comment">// Получить Unit из структуры ModbusParameter из массива по индексу</span>
+<a name="l00085"></a><a class="code" href="class_device_modbus.html#af0c8d5c9b7385a5a117a45e5d3b20a11">00085</a> <span class="keywordtype">int</span> <a class="code" href="class_device_modbus.html#af0c8d5c9b7385a5a117a45e5d3b20a11" title="Метод получения Unit параметра по индексу в массиве параметров">DeviceModbus::getFieldUnit</a>(<span class="keywordtype">int</span> Index)
+<a name="l00086"></a>00086 {
+<a name="l00087"></a>00087   <span class="keywordflow">return</span> <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].<a class="code" href="struct_modbus_parameter.html#a19d55f681a96957b5de99843b782a586">Unit</a>;
+<a name="l00088"></a>00088 }
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090 <span class="comment">// Получить Validity из структуры ModbusParameter из массива по индексу</span>
+<a name="l00091"></a><a class="code" href="class_device_modbus.html#ad968db9792acce3446d26540c8113b77">00091</a> <span class="keywordtype">int</span> <a class="code" href="class_device_modbus.html#ad968db9792acce3446d26540c8113b77" title="Метод получения Validity параметра по индексу в массиве параметров">DeviceModbus::getFieldValidity</a>(<span class="keywordtype">int</span> Index)
+<a name="l00092"></a>00092 {
+<a name="l00093"></a>00093   <span class="keywordflow">return</span> <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].<a class="code" href="struct_modbus_parameter.html#a9937c49868ce753ff6a81854c132dfab">Validity</a>;
+<a name="l00094"></a>00094 }
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096 <span class="comment">// Получить TypeData из структуры ModbusParameter из массива по индексу</span>
+<a name="l00097"></a><a class="code" href="class_device_modbus.html#a4be70d86eefb99c02105a846b1c0c471">00097</a> <span class="keywordtype">int</span> <a class="code" href="class_device_modbus.html#a4be70d86eefb99c02105a846b1c0c471" title="Метод получения TypeData параметра по индексу в массиве параметров">DeviceModbus::getFieldTypeData</a>(<span class="keywordtype">int</span> Index)
+<a name="l00098"></a>00098 {
+<a name="l00099"></a>00099   <span class="keywordflow">return</span> <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].<a class="code" href="struct_modbus_parameter.html#a04987610f09946ccdb7e4d1ba477dec6">TypeData</a>;
+<a name="l00100"></a>00100 }
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102 <span class="comment">// Получить FreqExchange из структуры ModbusParameter из массива по индексу</span>
+<a name="l00103"></a><a class="code" href="class_device_modbus.html#ac464f4942eb21ca9a22581f5937c033f">00103</a> <span class="keywordtype">int</span> <a class="code" href="class_device_modbus.html#ac464f4942eb21ca9a22581f5937c033f" title="Метод получения FreqExchange параметра по индексу в массиве параметров">DeviceModbus::getFieldFreqExchange</a>(<span class="keywordtype">int</span> Index)
+<a name="l00104"></a>00104 {
+<a name="l00105"></a>00105   <span class="keywordflow">return</span> <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].<a class="code" href="struct_modbus_parameter.html#a67494f1b1635a7f602961b05f9e29e66">FreqExchange</a>;
+<a name="l00106"></a>00106 }
+<a name="l00107"></a>00107 
+<a name="l00108"></a>00108 <span class="comment">// Получить CntExchange из структуры ModbusParameter из массива по индексу</span>
+<a name="l00109"></a><a class="code" href="class_device_modbus.html#a460d4ad2487183f7ba10899fdb68136d">00109</a> <span class="keywordtype">int</span> <a class="code" href="class_device_modbus.html#a460d4ad2487183f7ba10899fdb68136d" title="Метод получения CntExchange параметра по индексу в массиве параметров">DeviceModbus::getFieldCntExchange</a>(<span class="keywordtype">int</span> Index)
+<a name="l00110"></a>00110 {
+<a name="l00111"></a>00111   <span class="keywordflow">return</span> <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].<a class="code" href="struct_modbus_parameter.html#a8fcd6da5b56631382f069946bdea90b8">CntExchange</a>;
+<a name="l00112"></a>00112 }
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114 <span class="comment">// Получить Priority из структуры ModbusParameter из массива по индексу</span>
+<a name="l00115"></a><a class="code" href="class_device_modbus.html#acc56706b39acd9653a8ab6e6ba2ee77e">00115</a> <span class="keywordtype">int</span> <a class="code" href="class_device_modbus.html#acc56706b39acd9653a8ab6e6ba2ee77e" title="Метод получения Priority параметра по индексу в массиве параметров">DeviceModbus::getFieldPriority</a>(<span class="keywordtype">int</span> Index)
+<a name="l00116"></a>00116 {
+<a name="l00117"></a>00117   <span class="keywordflow">return</span> <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].<a class="code" href="struct_modbus_parameter.html#a249894e207eb36699221aaae953c730e">Priority</a>;
+<a name="l00118"></a>00118 }
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120 <span class="comment">// Метод присвоения Priority параметра по индексу в массиве параметров</span>
+<a name="l00121"></a><a class="code" href="class_device_modbus.html#a4953ac070ce1b96c508b94b366f33783">00121</a> <span class="keywordtype">void</span> <a class="code" href="class_device_modbus.html#a4953ac070ce1b96c508b94b366f33783" title="Метод присвоения Priority параметра по индексу в массиве параметров">DeviceModbus::setFieldPriority</a>(<span class="keywordtype">int</span> Index, <span class="keywordtype">int</span> Priority)
+<a name="l00122"></a>00122 {
+<a name="l00123"></a>00123   <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].<a class="code" href="struct_modbus_parameter.html#a249894e207eb36699221aaae953c730e">Priority</a> = Priority;
+<a name="l00124"></a>00124 }
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126 <span class="comment">// Получить Flag из структуры ModbusParameter из массива по индексу</span>
+<a name="l00127"></a><a class="code" href="class_device_modbus.html#a935c60345128559388cc3fb578b21b36">00127</a> <span class="keywordtype">int</span> <a class="code" href="class_device_modbus.html#a935c60345128559388cc3fb578b21b36" title="Метод получения Flag параметра по индексу в массиве параметров">DeviceModbus::getFieldFlag</a>(<span class="keywordtype">int</span> Index)
+<a name="l00128"></a>00128 {
+<a name="l00129"></a>00129   <span class="keywordflow">return</span> <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].<a class="code" href="struct_modbus_parameter.html#a4447c1fe43d591e096f89a880d31f09e">Flag</a>;
+<a name="l00130"></a>00130 }
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132 <span class="comment">// Метод присвоения Flag параметра по индексу в массиве параметров</span>
+<a name="l00133"></a><a class="code" href="class_device_modbus.html#af5b8c6e26514d88da964f14cffdf88ac">00133</a> <span class="keywordtype">void</span> <a class="code" href="class_device_modbus.html#af5b8c6e26514d88da964f14cffdf88ac" title="Метод присвоения Flag параметра по индексу в массиве параметров">DeviceModbus::setFieldFlag</a>(<span class="keywordtype">int</span> Index, <span class="keywordtype">int</span> Flag)
+<a name="l00134"></a>00134 {
+<a name="l00135"></a>00135   <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].<a class="code" href="struct_modbus_parameter.html#a4447c1fe43d591e096f89a880d31f09e">Flag</a> = Flag;
+<a name="l00136"></a>00136 }
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138 <span class="comment">// Получить Scale из структуры ModbusParameter из массива по индексу</span>
+<a name="l00139"></a><a class="code" href="class_device_modbus.html#a78bd0dccc9bbc6e6d2c8bf7610f36a32">00139</a> <span class="keywordtype">float</span> <a class="code" href="class_device_modbus.html#a78bd0dccc9bbc6e6d2c8bf7610f36a32" title="Метод получения Scale параметра по индексу в массиве параметров">DeviceModbus::getFieldScale</a>(<span class="keywordtype">int</span> Index)
+<a name="l00140"></a>00140 {
+<a name="l00141"></a>00141   <span class="keywordflow">return</span> <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].<a class="code" href="struct_modbus_parameter.html#a50a13925f43470d5d08cbc6de30e5931">Scale</a>;
+<a name="l00142"></a>00142 }
+<a name="l00143"></a>00143 
+<a name="l00144"></a>00144 <span class="comment">// Получить Coefficient из структуры ModbusParameter из массива по индексу</span>
+<a name="l00145"></a><a class="code" href="class_device_modbus.html#a254b2129ec6e569c395afb7ab9e3a686">00145</a> <span class="keywordtype">float</span> <a class="code" href="class_device_modbus.html#a254b2129ec6e569c395afb7ab9e3a686" title="Метод получения Coefficient параметра по индексу в массиве параметров">DeviceModbus::getFieldCoefficient</a>(<span class="keywordtype">int</span> Index)
+<a name="l00146"></a>00146 {
+<a name="l00147"></a>00147   <span class="keywordflow">return</span> <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].<a class="code" href="struct_modbus_parameter.html#a06f59c9201421b30330b6e0e56fc1e3e">Coefficient</a>;
+<a name="l00148"></a>00148 }
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150 <span class="comment">// Получить Minimum из структуры ModbusParameter из массива по индексу</span>
+<a name="l00151"></a><a class="code" href="class_device_modbus.html#ad3075f94368e45fdd51dde4c668f2a6b">00151</a> <span class="keywordtype">float</span> <a class="code" href="class_device_modbus.html#ad3075f94368e45fdd51dde4c668f2a6b" title="Метод получения Minimum параметра по индексу в массиве параметров">DeviceModbus::getFieldMinimum</a>(<span class="keywordtype">int</span> Index)
+<a name="l00152"></a>00152 {
+<a name="l00153"></a>00153   <span class="keywordflow">return</span> <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].<a class="code" href="struct_modbus_parameter.html#afc4711d68dfcee04efdd29710d909191">Minimum</a>;
+<a name="l00154"></a>00154 }
+<a name="l00155"></a>00155 
+<a name="l00156"></a>00156 <span class="comment">// Получить Maximum из структуры ModbusParameter из массива по индексу</span>
+<a name="l00157"></a><a class="code" href="class_device_modbus.html#aac0c4f076e8f59fe5d2af127f87c60cd">00157</a> <span class="keywordtype">float</span> <a class="code" href="class_device_modbus.html#aac0c4f076e8f59fe5d2af127f87c60cd" title="Метод получения Maximum параметра по индексу в массиве параметров">DeviceModbus::getFieldMaximum</a>(<span class="keywordtype">int</span> Index)
+<a name="l00158"></a>00158 {
+<a name="l00159"></a>00159   <span class="keywordflow">return</span> <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].<a class="code" href="struct_modbus_parameter.html#a21b0e0a9662b55b7cf9715aa6eaf8698">Maximum</a>;
+<a name="l00160"></a>00160 }
+<a name="l00161"></a>00161 
+<a name="l00162"></a>00162 <span class="comment">// Получить Value из структуры ModbusParameter из массива по индексу</span>
+<a name="l00163"></a><a class="code" href="class_device_modbus.html#aa5073abb87020d2a8151f5f378691775">00163</a> <a class="code" href="unionun_type_data.html" title="The unDataType union Объединение для преобразования типов данных">unTypeData</a> <a class="code" href="class_device_modbus.html#aa5073abb87020d2a8151f5f378691775" title="Метод получения Value параметра по индексу в массиве параметров">DeviceModbus::getFieldValue</a>(<span class="keywordtype">int</span> Index)
+<a name="l00164"></a>00164 {
+<a name="l00165"></a>00165   <span class="keywordflow">return</span> <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].<a class="code" href="struct_modbus_parameter.html#a572f724ab305bac3bc208821bb4cce35">Value</a>;
+<a name="l00166"></a>00166 }
+<a name="l00167"></a>00167 
+<a name="l00168"></a>00168 <span class="comment">// Получить всю структуру параметра</span>
+<a name="l00169"></a><a class="code" href="class_device_modbus.html#a74e8d0aefac171a44e1c12b22c86ac4f">00169</a> <a class="code" href="struct_modbus_parameter.html" title="Структура для хранения полей параметра из карты устройства">ModbusParameter</a>* <a class="code" href="class_device_modbus.html#a74e8d0aefac171a44e1c12b22c86ac4f" title="Метод получения указателя на параметр по индексу">DeviceModbus::getFieldAll</a>(<span class="keywordtype">int</span> Index)
+<a name="l00170"></a>00170 {
+<a name="l00171"></a>00171   <span class="keywordflow">return</span> &amp;<a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index];
+<a name="l00172"></a>00172 }
+<a name="l00173"></a>00173 
+<a name="l00174"></a>00174 <span class="comment">// Метод поиска и получения индекса параметра с указанным ID</span>
+<a name="l00175"></a><a class="code" href="class_device_modbus.html#a368772350a16269ed5a1a54e757831ef">00175</a> <span class="keywordtype">int</span> <a class="code" href="class_device_modbus.html#a368772350a16269ed5a1a54e757831ef" title="Метод поиска и получения индекса по ID параметра">DeviceModbus::getIndexAtID</a>(<span class="keywordtype">int</span> ID)
+<a name="l00176"></a>00176 {
+<a name="l00177"></a>00177   <span class="keywordtype">int</span> Quantity = <a class="code" href="class_device_modbus.html#a0b710c2b7e47d5a2af5bd6e66ddeb1c7" title="Метод получения количества регистров в карте регистров">getQuantityParam</a>();
+<a name="l00178"></a>00178   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> I = 0; I &lt; Quantity; I++) {
+<a name="l00179"></a>00179     <span class="keywordflow">if</span> (<a class="code" href="class_device_modbus.html#ae1087cd6a9bec32d119d218a9a37f5b8" title="Метод получения ID параметра по индексу в массиве параметров">getFieldID</a>(I) == ID) {
+<a name="l00180"></a>00180       <span class="keywordflow">return</span> I;
+<a name="l00181"></a>00181     }
+<a name="l00182"></a>00182   }
+<a name="l00183"></a>00183   <span class="keywordflow">return</span> 0;
+<a name="l00184"></a>00184 }
+<a name="l00185"></a>00185 
+<a name="l00186"></a>00186 <span class="comment">// Метод поиска и получения индекса параметра с указанным Адресу</span>
+<a name="l00187"></a><a class="code" href="class_device_modbus.html#ad15ce67d7e59900319bebd598cda8a0e">00187</a> <span class="keywordtype">int</span> <a class="code" href="class_device_modbus.html#ad15ce67d7e59900319bebd598cda8a0e" title="Метод поиска и получения индекса по Address параметра">DeviceModbus::getIndexAtAddress</a>(<span class="keywordtype">int</span> Address)
+<a name="l00188"></a>00188 {
+<a name="l00189"></a>00189   <span class="keywordtype">int</span> Quantity = <a class="code" href="class_device_modbus.html#a0b710c2b7e47d5a2af5bd6e66ddeb1c7" title="Метод получения количества регистров в карте регистров">getQuantityParam</a>();
+<a name="l00190"></a>00190   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> I = 0; I &lt; Quantity; I++) {
+<a name="l00191"></a>00191     <span class="keywordflow">if</span> (<a class="code" href="class_device_modbus.html#a02f2a6823cb2f1d4bb78c2fd80100e2f" title="Метод получения Address параметра по индексу в массиве параметров">getFieldAddress</a>(I) == Address) {
+<a name="l00192"></a>00192       <span class="keywordflow">return</span> I;
+<a name="l00193"></a>00193     }
+<a name="l00194"></a>00194   }
+<a name="l00195"></a>00195   <span class="keywordflow">return</span> 0;
+<a name="l00196"></a>00196 }
+<a name="l00197"></a>00197 
+<a name="l00198"></a>00198 <span class="comment">// Получить элемент очереди внеочередной</span>
+<a name="l00199"></a><a class="code" href="class_device_modbus.html#af5fa616470a3fb4e0552577ec8b750d7">00199</a> <span class="keywordtype">int</span> <a class="code" href="class_device_modbus.html#af5fa616470a3fb4e0552577ec8b750d7" title="putTurn метод добавления элемента в очередь">DeviceModbus::getMessageOutOfTurn</a>()
+<a name="l00200"></a>00200 {
+<a name="l00201"></a>00201   osEvent Event;
+<a name="l00202"></a>00202   Event = osMessageGet(<a class="code" href="class_device_modbus.html#a5a91fd11214a2af977098c0a573db8e8">messageOutOfTurn_</a>, 0);
+<a name="l00203"></a>00203   <span class="keywordflow">if</span> (Event.status == osEventMessage)
+<a name="l00204"></a>00204     <span class="keywordflow">return</span> Event.value.v;
+<a name="l00205"></a>00205   <span class="keywordflow">return</span> 0;
+<a name="l00206"></a>00206 }
+<a name="l00207"></a>00207 
+<a name="l00208"></a>00208 <span class="comment">// Добавить элемент в очередь</span>
+<a name="l00209"></a><a class="code" href="class_device_modbus.html#a6f35084a7f0c1c70d62fe11274966229">00209</a> <span class="keywordtype">int</span> <a class="code" href="class_device_modbus.html#a6f35084a7f0c1c70d62fe11274966229" title="putTurn метод добавления элемента в очередь">DeviceModbus::putMessageOutOfTurn</a>(<span class="keywordtype">int</span> Element)
+<a name="l00210"></a>00210 {
+<a name="l00211"></a>00211   osStatus Status;
+<a name="l00212"></a>00212   Status = osMessagePut(<a class="code" href="class_device_modbus.html#a5a91fd11214a2af977098c0a573db8e8">messageOutOfTurn_</a>, Element, 0);
+<a name="l00213"></a>00213   <span class="keywordflow">if</span> (Status)
+<a name="l00214"></a>00214     <span class="keywordflow">return</span> 1;
+<a name="l00215"></a>00215   <span class="keywordflow">else</span>
+<a name="l00216"></a>00216     <span class="keywordflow">return</span> 0;
+<a name="l00217"></a>00217 }
+<a name="l00218"></a>00218 
+<a name="l00219"></a>00219 <span class="comment">/*</span>
+<a name="l00220"></a>00220 <span class="comment">// Получить элемент очереди готовых параметров</span>
+<a name="l00221"></a>00221 <span class="comment">int DeviceModbus::getMessageReadyParam()</span>
+<a name="l00222"></a>00222 <span class="comment">{</span>
+<a name="l00223"></a>00223 <span class="comment">  osEvent Event;</span>
+<a name="l00224"></a>00224 <span class="comment">  Event = osMessageGet(messageReadyParam_, 0);</span>
+<a name="l00225"></a>00225 <span class="comment">  if (Event.status == osEventMessage)</span>
+<a name="l00226"></a>00226 <span class="comment">    return Event.value.v;</span>
+<a name="l00227"></a>00227 <span class="comment">  return 0;</span>
+<a name="l00228"></a>00228 <span class="comment">}</span>
+<a name="l00229"></a>00229 <span class="comment">*/</span>
+<a name="l00230"></a>00230 
+<a name="l00231"></a>00231 <span class="comment">// Добавить параметр в очередь готовых параметров</span>
+<a name="l00232"></a><a class="code" href="class_device_modbus.html#a4c0d060534cfa98e0383dc090a2e1f63">00232</a> <span class="keywordtype">int</span> <a class="code" href="class_device_modbus.html#a4c0d060534cfa98e0383dc090a2e1f63" title="putMessagereadyParam положить элемент в очередь готовых параметров">DeviceModbus::putMessageUpdateID</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>)
+<a name="l00233"></a>00233 {
+<a name="l00234"></a>00234   osStatus status = osMessagePut(<a class="code" href="class_device_modbus.html#a2907a3907ad8ecf70c9bdb7196fa9999">messageUpdateID_</a>, <span class="keywordtype">id</span>, 0);
+<a name="l00235"></a>00235   <span class="keywordflow">if</span> (status == osOK)
+<a name="l00236"></a>00236     <span class="keywordflow">return</span> 1;
+<a name="l00237"></a>00237   <span class="keywordflow">else</span>
+<a name="l00238"></a>00238     <span class="keywordflow">return</span> 0;
+<a name="l00239"></a>00239 }
+<a name="l00240"></a>00240 
+<a name="l00241"></a>00241 <span class="comment">// Метод записи параметра</span>
+<a name="l00242"></a><a class="code" href="class_device_modbus.html#a4bc121923238357686b65b2fe0ef54f6">00242</a> <span class="keywordtype">void</span> <a class="code" href="class_device_modbus.html#a4bc121923238357686b65b2fe0ef54f6" title="Метод записи параметра в устройство">DeviceModbus::writeModbusParameter</a>(<span class="keywordtype">int</span> ID, <span class="keywordtype">float</span> Value)
+<a name="l00243"></a>00243 {
+<a name="l00244"></a>00244   <span class="keywordtype">int</span> Index = <a class="code" href="class_device_modbus.html#a368772350a16269ed5a1a54e757831ef" title="Метод поиска и получения индекса по ID параметра">getIndexAtID</a>(ID);
+<a name="l00245"></a>00245   <span class="comment">// Получаем всю структуру параметра</span>
+<a name="l00246"></a>00246   <a class="code" href="struct_modbus_parameter.html" title="Структура для хранения полей параметра из карты устройства">ModbusParameter</a> *Param = <a class="code" href="class_device_modbus.html#a74e8d0aefac171a44e1c12b22c86ac4f" title="Метод получения указателя на параметр по индексу">getFieldAll</a>(Index);
+<a name="l00247"></a>00247   <span class="comment">// Применяем преобразование единиц измерения</span>
+<a name="l00248"></a>00248   Value = (Value * (<a class="code" href="device_8cpp.html#a7d0710797d3e0c5fb36ac3f498a13c34">Units</a>[Param-&gt;<a class="code" href="struct_modbus_parameter.html#a8888b9ef4d3689c911cba3faddb7a3dd">Physic</a>][Param-&gt;<a class="code" href="struct_modbus_parameter.html#a19d55f681a96957b5de99843b782a586">Unit</a>][0])) + (<a class="code" href="device_8cpp.html#a7d0710797d3e0c5fb36ac3f498a13c34">Units</a>[Param-&gt;<a class="code" href="struct_modbus_parameter.html#a8888b9ef4d3689c911cba3faddb7a3dd">Physic</a>][Param-&gt;<a class="code" href="struct_modbus_parameter.html#a19d55f681a96957b5de99843b782a586">Unit</a>][1]);
+<a name="l00249"></a>00249   <span class="comment">// Применяем преобразование коэффициента</span>
+<a name="l00250"></a>00250   Value = Value * Param-&gt;<a class="code" href="struct_modbus_parameter.html#a06f59c9201421b30330b6e0e56fc1e3e">Coefficient</a>;
+<a name="l00251"></a>00251   <span class="comment">// Применяем преобразование масштаба</span>
+<a name="l00252"></a>00252   Value = Value / Param-&gt;<a class="code" href="struct_modbus_parameter.html#a50a13925f43470d5d08cbc6de30e5931">Scale</a>;
+<a name="l00253"></a>00253   <span class="comment">// Применяем тип данных</span>
+<a name="l00254"></a>00254   <span class="keywordflow">switch</span> (Param-&gt;<a class="code" href="struct_modbus_parameter.html#a04987610f09946ccdb7e4d1ba477dec6">TypeData</a>) {
+<a name="l00255"></a>00255     <span class="keywordflow">case</span>  <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42adaada1531f29cde78a34d7b357aff54dc8">TYPE_DATA_CHAR</a>:
+<a name="l00256"></a>00256       Param-&gt;<a class="code" href="struct_modbus_parameter.html#a572f724ab305bac3bc208821bb4cce35">Value</a>.<a class="code" href="unionun_type_data.html#a3923e9008876b977c4a7587fc60f9cde">tdChar</a>[0] = (char)(Value + 0.5);
+<a name="l00257"></a>00257       <span class="keywordflow">break</span>;
+<a name="l00258"></a>00258     <span class="keywordflow">case</span>  <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada808c7cf8151eeae19a829cee83918742">TYPE_DATA_INT16</a>:
+<a name="l00259"></a>00259       Param-&gt;<a class="code" href="struct_modbus_parameter.html#a572f724ab305bac3bc208821bb4cce35">Value</a>.<a class="code" href="unionun_type_data.html#a382ba73ca571f7f658b76678fa1c1d7e">tdInt16</a>[0] = (<span class="keywordtype">short</span> int)(Value + 0.5);
+<a name="l00260"></a>00260       <span class="keywordflow">break</span>;
+<a name="l00261"></a>00261     <span class="keywordflow">case</span>  <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada7b25a9f95142f61a41004c0fba9a113d">TYPE_DATA_INT32</a>:
+<a name="l00262"></a>00262       Param-&gt;<a class="code" href="struct_modbus_parameter.html#a572f724ab305bac3bc208821bb4cce35">Value</a>.<a class="code" href="unionun_type_data.html#a32f0b384b473621f623f913fc51e6be5">tdInt32</a> = (int)(Value + 0.5);
+<a name="l00263"></a>00263       <span class="keywordflow">break</span>;
+<a name="l00264"></a>00264     <span class="keywordflow">case</span> <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada3cd32afbb91a273532aa9106ac133ac3">TYPE_DATA_UINT16</a>:
+<a name="l00265"></a>00265       Param-&gt;<a class="code" href="struct_modbus_parameter.html#a572f724ab305bac3bc208821bb4cce35">Value</a>.<a class="code" href="unionun_type_data.html#a4118e1208e52bf40eccf400527b22c44">tdUint16</a>[0] = (<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> int)(Value + 0.5);
+<a name="l00266"></a>00266       <span class="keywordflow">break</span>;
+<a name="l00267"></a>00267     <span class="keywordflow">case</span>  <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42adac73d4e8aa8c8d4d64e3b0f8222f8ad8d">TYPE_DATA_UINT32</a>:
+<a name="l00268"></a>00268       Param-&gt;<a class="code" href="struct_modbus_parameter.html#a572f724ab305bac3bc208821bb4cce35">Value</a>.<a class="code" href="unionun_type_data.html#acf3789bd75dde76e5bae76a469c92f6c">tdUint32</a> = (<span class="keywordtype">unsigned</span> int)(Value + 0.5);
+<a name="l00269"></a>00269       <span class="keywordflow">break</span>;
+<a name="l00270"></a>00270     <span class="keywordflow">case</span> <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada05f2e0d1222c1ecb7423e6c2a323da73">TYPE_DATA_FLOAT</a>:
+<a name="l00271"></a>00271       Param-&gt;<a class="code" href="struct_modbus_parameter.html#a572f724ab305bac3bc208821bb4cce35">Value</a>.<a class="code" href="unionun_type_data.html#a6af9c08d79240088b8b0acd4fafe00fe">tdFloat</a> = Value;
+<a name="l00272"></a>00272       <span class="keywordflow">break</span>;
+<a name="l00273"></a>00273     <span class="keywordflow">default</span>:
+<a name="l00274"></a>00274       <span class="keywordflow">break</span>;
+<a name="l00275"></a>00275   }
+<a name="l00276"></a>00276   Param-&gt;<a class="code" href="struct_modbus_parameter.html#a4447c1fe43d591e096f89a880d31f09e">Flag</a> = 1;
+<a name="l00277"></a>00277   Param-&gt;<a class="code" href="struct_modbus_parameter.html#a249894e207eb36699221aaae953c730e">Priority</a> = 1;
+<a name="l00278"></a>00278   <a class="code" href="class_device_modbus.html#a6f35084a7f0c1c70d62fe11274966229" title="putTurn метод добавления элемента в очередь">putMessageOutOfTurn</a>(Index);
+<a name="l00279"></a>00279 }
+<a name="l00280"></a>00280 
+<a name="l00281"></a><a class="code" href="class_device_modbus.html#af232f1903c5fa073c046c5db6f1454d5">00281</a> <span class="keywordtype">int</span> <a class="code" href="class_device_modbus.html#af232f1903c5fa073c046c5db6f1454d5">DeviceModbus::searchExchangeParameters</a>()
+<a name="l00282"></a>00282 {
+<a name="l00283"></a>00283   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = <a class="code" href="class_device_modbus.html#a74f426012c2d39a2c31ba4a0218ec441">indexExchange_</a>; i &lt; <a class="code" href="class_device_modbus.html#a230653193c6911c5d8a00b3d9a91f31c">quantityParam_</a>; i++) {
+<a name="l00284"></a>00284     <span class="comment">// Если счётчик циклов опроса параметра не достиг уставки частоты опроса</span>
+<a name="l00285"></a>00285     <span class="keywordflow">if</span> (<a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[i].CntExchange &lt; <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[i].FreqExchange) {
+<a name="l00286"></a>00286       <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[i].<a class="code" href="struct_modbus_parameter.html#a8fcd6da5b56631382f069946bdea90b8">CntExchange</a>++;
+<a name="l00287"></a>00287     }
+<a name="l00288"></a>00288     <span class="keywordflow">else</span> {
+<a name="l00289"></a>00289       <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[i].<a class="code" href="struct_modbus_parameter.html#a8fcd6da5b56631382f069946bdea90b8">CntExchange</a> = 0;
+<a name="l00290"></a>00290       <a class="code" href="class_device_modbus.html#a74f426012c2d39a2c31ba4a0218ec441">indexExchange_</a> = i+1;
+<a name="l00291"></a>00291       <span class="keywordflow">return</span> <a class="code" href="class_device_modbus.html#a74f426012c2d39a2c31ba4a0218ec441">indexExchange_</a>;
+<a name="l00292"></a>00292     }
+<a name="l00293"></a>00293   }
+<a name="l00294"></a>00294   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; <a class="code" href="class_device_modbus.html#a74f426012c2d39a2c31ba4a0218ec441">indexExchange_</a>; i++) {
+<a name="l00295"></a>00295     <span class="comment">// Если счётчик циклов опроса параметра не достиг уставки частоты опроса</span>
+<a name="l00296"></a>00296     <span class="keywordflow">if</span> (<a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[i].CntExchange &lt; <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[i].FreqExchange) {
+<a name="l00297"></a>00297       <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[i].<a class="code" href="struct_modbus_parameter.html#a8fcd6da5b56631382f069946bdea90b8">CntExchange</a>++;
+<a name="l00298"></a>00298     }
+<a name="l00299"></a>00299     <span class="keywordflow">else</span> {
+<a name="l00300"></a>00300       <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[i].<a class="code" href="struct_modbus_parameter.html#a8fcd6da5b56631382f069946bdea90b8">CntExchange</a> = 0;
+<a name="l00301"></a>00301       indexExchange_ = i+1;
+<a name="l00302"></a>00302       <span class="keywordflow">return</span> i;
+<a name="l00303"></a>00303     }
+<a name="l00304"></a>00304   }
+<a name="l00305"></a>00305   <span class="keywordflow">return</span> 0;
+<a name="l00306"></a>00306 }
+<a name="l00307"></a>00307 
+<a name="l00308"></a>00308 <span class="comment">// Метод цикл по карте регистров для чтения и записи параметров</span>
+<a name="l00309"></a><a class="code" href="class_device_modbus.html#a1f1c09ff2c528c1f69e639294acc5418">00309</a> <span class="keywordtype">void</span> <a class="code" href="class_device_modbus.html#a1f1c09ff2c528c1f69e639294acc5418" title="Метод циклического опроса устройства по Modbus и/или внеочередной записи и/или чтения параметра...">DeviceModbus::exchangeTask</a>(<span class="keywordtype">void</span>)
+<a name="l00310"></a>00310 {
+<a name="l00311"></a>00311   <span class="keywordtype">int</span> Count = 0;
+<a name="l00312"></a>00312 
+<a name="l00313"></a>00313   <span class="keywordflow">while</span> (1) {
+<a name="l00314"></a>00314     osDelay(100);
+<a name="l00315"></a>00315 
+<a name="l00316"></a>00316     <span class="comment">// Проверяем очередь параметров для обработки вне очереди</span>
+<a name="l00317"></a>00317     <span class="keywordtype">int</span> outOfTurn = <a class="code" href="class_device_modbus.html#af5fa616470a3fb4e0552577ec8b750d7" title="putTurn метод добавления элемента в очередь">getMessageOutOfTurn</a>();
+<a name="l00318"></a>00318     <span class="comment">// Если есть параметры для обработки вне очереди</span>
+<a name="l00319"></a>00319     <span class="keywordflow">if</span> (outOfTurn) {
+<a name="l00320"></a>00320       <span class="comment">// Если записать</span>
+<a name="l00321"></a>00321       <span class="keywordflow">if</span> (<a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[outOfTurn].Flag) {
+<a name="l00322"></a>00322         <span class="keywordtype">int</span> address = <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[outOfTurn].<a class="code" href="struct_modbus_parameter.html#a1281b344f8803502a8816889201049a8">Address</a>;
+<a name="l00323"></a>00323         <span class="keywordflow">switch</span> (<a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[outOfTurn].TypeData) {
+<a name="l00324"></a>00324           <span class="keywordflow">case</span> <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada808c7cf8151eeae19a829cee83918742">TYPE_DATA_INT16</a>:
+<a name="l00325"></a>00325             <a class="code" href="class_device_modbus.html#add08bf58427c3f48c1caf26280807708">mms_</a>-&gt;<a class="code" href="class_modbus_master.html#a1af5f7f1a7a22eeb4c15c45b3d9b4ae4">writeSingleRegister</a>(<a class="code" href="class_device_modbus.html#a8065df787064b4712367af27c9c55cbb">deviceAddress_</a>,
+<a name="l00326"></a>00326                                       address,
+<a name="l00327"></a>00327                                       <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[outOfTurn].Value.tdInt16[0]);
+<a name="l00328"></a>00328             <span class="keywordflow">break</span>;
+<a name="l00329"></a>00329           <span class="keywordflow">case</span> <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada3cd32afbb91a273532aa9106ac133ac3">TYPE_DATA_UINT16</a>:
+<a name="l00330"></a>00330             <a class="code" href="class_device_modbus.html#add08bf58427c3f48c1caf26280807708">mms_</a>-&gt;<a class="code" href="class_modbus_master.html#a1af5f7f1a7a22eeb4c15c45b3d9b4ae4">writeSingleRegister</a>(<a class="code" href="class_device_modbus.html#a8065df787064b4712367af27c9c55cbb">deviceAddress_</a>,
+<a name="l00331"></a>00331                                       address,
+<a name="l00332"></a>00332                                       <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[outOfTurn].Value.tdUint16[0]);
+<a name="l00333"></a>00333             <span class="keywordflow">break</span>;
+<a name="l00334"></a>00334           <span class="keywordflow">case</span>  <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada7b25a9f95142f61a41004c0fba9a113d">TYPE_DATA_INT32</a>:
+<a name="l00335"></a>00335             <a class="code" href="class_device_modbus.html#a6683bd491def232c9acad6f870f3c0e7">int32Arr_</a>[0] = <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[outOfTurn].<a class="code" href="struct_modbus_parameter.html#a572f724ab305bac3bc208821bb4cce35">Value</a>.<a class="code" href="unionun_type_data.html#a32f0b384b473621f623f913fc51e6be5">tdInt32</a>;
+<a name="l00336"></a>00336             <a class="code" href="class_device_modbus.html#add08bf58427c3f48c1caf26280807708">mms_</a>-&gt;<a class="code" href="class_modbus_master.html#a0e3746e4bfb52748668241332501ed46">writeMultipleLongInts</a>(<a class="code" href="class_device_modbus.html#a8065df787064b4712367af27c9c55cbb">deviceAddress_</a>,
+<a name="l00337"></a>00337                                         address,
+<a name="l00338"></a>00338                                         <a class="code" href="class_device_modbus.html#a6683bd491def232c9acad6f870f3c0e7">int32Arr_</a>,
+<a name="l00339"></a>00339                                         1);
+<a name="l00340"></a>00340             <span class="keywordflow">break</span>;
+<a name="l00341"></a>00341           <span class="keywordflow">case</span>  <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42adac73d4e8aa8c8d4d64e3b0f8222f8ad8d">TYPE_DATA_UINT32</a>:
+<a name="l00342"></a>00342             <a class="code" href="class_device_modbus.html#a6683bd491def232c9acad6f870f3c0e7">int32Arr_</a>[0] =  <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[outOfTurn].<a class="code" href="struct_modbus_parameter.html#a572f724ab305bac3bc208821bb4cce35">Value</a>.<a class="code" href="unionun_type_data.html#acf3789bd75dde76e5bae76a469c92f6c">tdUint32</a>;
+<a name="l00343"></a>00343             <a class="code" href="class_device_modbus.html#add08bf58427c3f48c1caf26280807708">mms_</a>-&gt;<a class="code" href="class_modbus_master.html#a0e3746e4bfb52748668241332501ed46">writeMultipleLongInts</a>(<a class="code" href="class_device_modbus.html#a8065df787064b4712367af27c9c55cbb">deviceAddress_</a>,
+<a name="l00344"></a>00344                                         <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[outOfTurn].Address,
+<a name="l00345"></a>00345                                         <a class="code" href="class_device_modbus.html#a6683bd491def232c9acad6f870f3c0e7">int32Arr_</a>,
+<a name="l00346"></a>00346                                         1);
+<a name="l00347"></a>00347             <span class="keywordflow">break</span>;
+<a name="l00348"></a>00348           <span class="keywordflow">case</span>  <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada05f2e0d1222c1ecb7423e6c2a323da73">TYPE_DATA_FLOAT</a>:
+<a name="l00349"></a>00349             <a class="code" href="class_device_modbus.html#aaa7ebed7c82274d2384c7480aef62d69">float32Arr_</a>[0] = <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[outOfTurn].<a class="code" href="struct_modbus_parameter.html#a572f724ab305bac3bc208821bb4cce35">Value</a>.<a class="code" href="unionun_type_data.html#a6af9c08d79240088b8b0acd4fafe00fe">tdFloat</a>;
+<a name="l00350"></a>00350             <a class="code" href="class_device_modbus.html#add08bf58427c3f48c1caf26280807708">mms_</a>-&gt;<a class="code" href="class_modbus_master.html#a60c506ccf4e433eb168fc509ac80020a">writeMultipleFloats</a>(<a class="code" href="class_device_modbus.html#a8065df787064b4712367af27c9c55cbb">deviceAddress_</a>,
+<a name="l00351"></a>00351                                       <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[outOfTurn].Address,
+<a name="l00352"></a>00352                                       <a class="code" href="class_device_modbus.html#aaa7ebed7c82274d2384c7480aef62d69">float32Arr_</a>,
+<a name="l00353"></a>00353                                       1);
+<a name="l00354"></a>00354             <span class="keywordflow">break</span>;
+<a name="l00355"></a>00355           <span class="keywordflow">default</span>:
+<a name="l00356"></a>00356             <span class="keywordflow">break</span>;
+<a name="l00357"></a>00357         }
+<a name="l00358"></a>00358       }
+<a name="l00359"></a>00359     }
+<a name="l00360"></a>00360     <span class="keywordflow">else</span> {
+<a name="l00361"></a>00361       outOfTurn = <a class="code" href="class_device_modbus.html#af232f1903c5fa073c046c5db6f1454d5">searchExchangeParameters</a>();
+<a name="l00362"></a>00362       <span class="keywordflow">if</span> (outOfTurn) {
+<a name="l00363"></a>00363         <span class="keywordtype">int</span> address = <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[outOfTurn].<a class="code" href="struct_modbus_parameter.html#a1281b344f8803502a8816889201049a8">Address</a>;
+<a name="l00364"></a>00364         <span class="keywordflow">switch</span> (<a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[outOfTurn].TypeData) {
+<a name="l00365"></a>00365           <span class="keywordflow">case</span> <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada808c7cf8151eeae19a829cee83918742">TYPE_DATA_INT16</a>:
+<a name="l00366"></a>00366             Count = 1;
+<a name="l00367"></a>00367             <span class="keywordflow">if</span> (!(<a class="code" href="class_device_modbus.html#add08bf58427c3f48c1caf26280807708">mms_</a>-&gt;<a class="code" href="class_modbus_master.html#a3b3b9efb2a40626a840513f16203238a">readMultipleRegisters</a>(<a class="code" href="class_device_modbus.html#a8065df787064b4712367af27c9c55cbb">deviceAddress_</a>,address,<a class="code" href="class_device_modbus.html#a310e4550394c3b1dcb2a9ffd00357006">regArr_</a>,Count))) {
+<a name="l00368"></a>00368               <span class="comment">// TODO: Сделать проверки на минимум максиму и т.п</span>
+<a name="l00369"></a>00369               <span class="comment">// Получаем индекс элемента в массиве с которого начинаем сохранение</span>
+<a name="l00370"></a>00370               <span class="keywordtype">int</span> Index = <a class="code" href="class_device_modbus.html#ad15ce67d7e59900319bebd598cda8a0e" title="Метод поиска и получения индекса по Address параметра">getIndexAtAddress</a>(address);
+<a name="l00371"></a>00371               <span class="comment">// Цикл по количеству полученных регистров</span>
+<a name="l00372"></a>00372               <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; Count; i++) {
+<a name="l00373"></a>00373                 <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].<a class="code" href="struct_modbus_parameter.html#a572f724ab305bac3bc208821bb4cce35">Value</a>.<a class="code" href="unionun_type_data.html#a382ba73ca571f7f658b76678fa1c1d7e">tdInt16</a>[0] = <a class="code" href="class_device_modbus.html#a310e4550394c3b1dcb2a9ffd00357006">regArr_</a>[i];
+<a name="l00374"></a>00374                 <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].<a class="code" href="struct_modbus_parameter.html#a9937c49868ce753ff6a81854c132dfab">Validity</a> = <a class="code" href="define_8h.html#a759461643b649d1797f732ff4727a61aa3384a0ef09b55d49ebf0c3facf572162">VALIDITY_GOOD</a>;
+<a name="l00375"></a>00375                 <a class="code" href="class_device_modbus.html#a4c0d060534cfa98e0383dc090a2e1f63" title="putMessagereadyParam положить элемент в очередь готовых параметров">putMessageUpdateID</a>(<a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].ID);
+<a name="l00376"></a>00376                 Index++;
+<a name="l00377"></a>00377               }
+<a name="l00378"></a>00378             }
+<a name="l00379"></a>00379             <span class="keywordflow">else</span> {
+<a name="l00380"></a>00380               <span class="keywordtype">int</span> Index = <a class="code" href="class_device_modbus.html#ad15ce67d7e59900319bebd598cda8a0e" title="Метод поиска и получения индекса по Address параметра">getIndexAtAddress</a>(address);
+<a name="l00381"></a>00381               <span class="comment">// Цикл по количеству полученных регистров</span>
+<a name="l00382"></a>00382               <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; Count; i++) {
+<a name="l00383"></a>00383                 <a class="code" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a>[Index].<a class="code" href="struct_modbus_parameter.html#a9937c49868ce753ff6a81854c132dfab">Validity</a> = <a class="code" href="define_8h.html#a759461643b649d1797f732ff4727a61aa451436902bed9700a1e973b7c1e30b4d">VALIDITY_ERROR</a>;
+<a name="l00384"></a>00384                 Index++;
+<a name="l00385"></a>00385               }
+<a name="l00386"></a>00386             }
+<a name="l00387"></a>00387             <span class="keywordflow">break</span>;
+<a name="l00388"></a>00388           <span class="keywordflow">case</span> <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada3cd32afbb91a273532aa9106ac133ac3">TYPE_DATA_UINT16</a>:
+<a name="l00389"></a>00389             <a class="code" href="class_device_modbus.html#add08bf58427c3f48c1caf26280807708">mms_</a>-&gt;<a class="code" href="class_modbus_master.html#a3b3b9efb2a40626a840513f16203238a">readMultipleRegisters</a>(<a class="code" href="class_device_modbus.html#a8065df787064b4712367af27c9c55cbb">deviceAddress_</a>,
+<a name="l00390"></a>00390                                         address,
+<a name="l00391"></a>00391                                         <a class="code" href="class_device_modbus.html#a310e4550394c3b1dcb2a9ffd00357006">regArr_</a>,
+<a name="l00392"></a>00392                                         1);
+<a name="l00393"></a>00393             <span class="keywordflow">break</span>;
+<a name="l00394"></a>00394           <span class="keywordflow">case</span>  <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada7b25a9f95142f61a41004c0fba9a113d">TYPE_DATA_INT32</a>:
+<a name="l00395"></a>00395             <a class="code" href="class_device_modbus.html#add08bf58427c3f48c1caf26280807708">mms_</a>-&gt;<a class="code" href="class_modbus_master.html#a115f735a110af444a3fb0e142b895dc8">readMultipleLongInts</a>(<a class="code" href="class_device_modbus.html#a8065df787064b4712367af27c9c55cbb">deviceAddress_</a>,
+<a name="l00396"></a>00396                                        address,
+<a name="l00397"></a>00397                                        <a class="code" href="class_device_modbus.html#a6683bd491def232c9acad6f870f3c0e7">int32Arr_</a>,
+<a name="l00398"></a>00398                                        1);
+<a name="l00399"></a>00399             <span class="keywordflow">break</span>;
+<a name="l00400"></a>00400           <span class="keywordflow">case</span>  <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42adac73d4e8aa8c8d4d64e3b0f8222f8ad8d">TYPE_DATA_UINT32</a>:
+<a name="l00401"></a>00401             <a class="code" href="class_device_modbus.html#add08bf58427c3f48c1caf26280807708">mms_</a>-&gt;<a class="code" href="class_modbus_master.html#a115f735a110af444a3fb0e142b895dc8">readMultipleLongInts</a>(<a class="code" href="class_device_modbus.html#a8065df787064b4712367af27c9c55cbb">deviceAddress_</a>,
+<a name="l00402"></a>00402                                        address,
+<a name="l00403"></a>00403                                        <a class="code" href="class_device_modbus.html#a6683bd491def232c9acad6f870f3c0e7">int32Arr_</a>,
+<a name="l00404"></a>00404                                        1);
+<a name="l00405"></a>00405             <span class="keywordflow">break</span>;
+<a name="l00406"></a>00406           <span class="keywordflow">case</span>  <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada05f2e0d1222c1ecb7423e6c2a323da73">TYPE_DATA_FLOAT</a>:
+<a name="l00407"></a>00407             <a class="code" href="class_device_modbus.html#add08bf58427c3f48c1caf26280807708">mms_</a>-&gt;<a class="code" href="class_modbus_master.html#a46dc1a2f7642dde9c9b89bbc06ac8150">readMultipleFloats</a>(<a class="code" href="class_device_modbus.html#a8065df787064b4712367af27c9c55cbb">deviceAddress_</a>,
+<a name="l00408"></a>00408                                      address,
+<a name="l00409"></a>00409                                      <a class="code" href="class_device_modbus.html#aaa7ebed7c82274d2384c7480aef62d69">float32Arr_</a>,
+<a name="l00410"></a>00410                                      1);
+<a name="l00411"></a>00411             <span class="keywordflow">break</span>;
+<a name="l00412"></a>00412           <span class="keywordflow">default</span>:
+<a name="l00413"></a>00413             <span class="keywordflow">break</span>;
+<a name="l00414"></a>00414         }
+<a name="l00415"></a>00415       }
+<a name="l00416"></a>00416       <span class="comment">//else</span>
+<a name="l00417"></a>00417       <span class="comment">// ВНИМАНИЕ!!! Сломался exchangeCycle</span>
+<a name="l00418"></a>00418     }
+<a name="l00419"></a>00419   }
+<a name="l00420"></a>00420 }
+<a name="l00421"></a>00421 
+<a name="l00422"></a>00422 
+<a name="l00423"></a>00423 
+<a name="l00424"></a>00424 <span class="comment">// Метод чтения количества регистров в карте регистров</span>
+<a name="l00425"></a><a class="code" href="class_device_modbus.html#a0b710c2b7e47d5a2af5bd6e66ddeb1c7">00425</a> <span class="keywordtype">int</span> <a class="code" href="class_device_modbus.html#a0b710c2b7e47d5a2af5bd6e66ddeb1c7" title="Метод получения количества регистров в карте регистров">DeviceModbus::getQuantityParam</a>()
+<a name="l00426"></a>00426 {
+<a name="l00427"></a>00427   <span class="keywordflow">return</span> <a class="code" href="class_device_modbus.html#a230653193c6911c5d8a00b3d9a91f31c">quantityParam_</a>;
+<a name="l00428"></a>00428 }
+<a name="l00429"></a>00429 
+<a name="l00430"></a>00430 <span class="comment">// Метод записи количества регистров в карте регистров</span>
+<a name="l00431"></a><a class="code" href="class_device_modbus.html#af1b7362aa260e40b30c68eec1c18a647">00431</a> <span class="keywordtype">void</span> <a class="code" href="class_device_modbus.html#af1b7362aa260e40b30c68eec1c18a647" title="Метод записи количества регистров в карте регистров">DeviceModbus::setQuantityParam</a>(<span class="keywordtype">int</span> Quantity)
+<a name="l00432"></a>00432 {
+<a name="l00433"></a>00433   <a class="code" href="class_device_modbus.html#a230653193c6911c5d8a00b3d9a91f31c">quantityParam_</a> = Quantity;
+<a name="l00434"></a>00434 }
+<a name="l00435"></a>00435 
+<a name="l00436"></a>00436 <span class="comment">// Метод чтения адреса устройства</span>
+<a name="l00437"></a><a class="code" href="class_device_modbus.html#aa28412841ef46a2f205012b074023b15">00437</a> <span class="keywordtype">int</span> <a class="code" href="class_device_modbus.html#aa28412841ef46a2f205012b074023b15" title="Метод получения адреса устройства">DeviceModbus::getDeviceAddress</a>()
+<a name="l00438"></a>00438 {
+<a name="l00439"></a>00439   <span class="keywordflow">return</span> <a class="code" href="class_device_modbus.html#a8065df787064b4712367af27c9c55cbb">deviceAddress_</a>;
+<a name="l00440"></a>00440 }
+<a name="l00441"></a>00441 
+<a name="l00442"></a>00442 <span class="comment">// Метод записи количества регистров в карте регистров</span>
+<a name="l00443"></a><a class="code" href="class_device_modbus.html#a08435387b310db89e9139712efd14b67">00443</a> <span class="keywordtype">void</span> <a class="code" href="class_device_modbus.html#a08435387b310db89e9139712efd14b67" title="Метод записи адреса устройства">DeviceModbus::setDeviceAddress</a>(<span class="keywordtype">int</span> Address)
+<a name="l00444"></a>00444 {
+<a name="l00445"></a>00445   <a class="code" href="class_device_modbus.html#a8065df787064b4712367af27c9c55cbb">deviceAddress_</a> = Address;
+<a name="l00446"></a>00446 }
+<a name="l00447"></a>00447 
+<a name="l00448"></a>00448 
+<a name="l00449"></a>00449 
+<a name="l00450"></a>00450 
+<a name="l00451"></a>00451 
+<a name="l00452"></a>00452 
+<a name="l00453"></a>00453 
+<a name="l00454"></a>00454 
+<a name="l00455"></a>00455 
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Пн 2 Мар 2015 15:35:47. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>
