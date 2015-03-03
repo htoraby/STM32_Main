@@ -740,7 +740,7 @@ enum enID
   VSD_MOTOR_VOLTAGE,                        /// Напряжение двигателя Danfoss 1-22 Используется в проекте, интерфейс Novomet 0х0045 IREG_MOTOR_U_MAX
   VSD_MOTOR_CURRENT,                        /// Номинальный ток двигателя Danfoss 1-24 Используется в проекте, интерфейс Novomet 0х0044 IREG_MOTOR_I_MAX
   VSD_MOTOR_FREQUENCY,                      /// Частота двигателя Danfoss 1-23 Используется в проекте, интерфейс Novomet 0х0043 IREG_MOTOR_F_MAX
-  VSD_MOTOR_COS_PHI,                        /// Косинус Фи Danfoss 14-43 Используется в проекте
+  VSD_MOTOR_COS_PHI,                        /// Номинальный косинус Фи Danfoss 14-43 Используется в проекте
   VSD_D_AXIS_INDUNSTANCE,                   /// Индуктивности по оси D Danfoss 1-37 Используется в проекте
   VSD_BACK_EMF,                             /// Противо эдс Danfoss 1-40 Используется в проекте
   VSD_MOTOR_POLES,                          /// Число полюсов двигателя Danfoss 1-39 Используется в проекте

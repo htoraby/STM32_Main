@@ -49,9 +49,12 @@ float ProtectionUnderloadMotor::calcValue()
   float value = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1_NOW);
   float value2 = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_2_NOW);
   float value3 = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_3_NOW);
+  float nominal = parameters.getValue(VSD_MOTOR_CURRENT);
 
   value = min(min(value, value2), value3);
 
-  float nominal = parameters.getValue(VSD_MOTOR_CURRENT);
-  return (value / (nominal / 100.0));
+  float cos = parameters.getValue(CCS_MOTOR_COS_PHI_NOW);
+  float nominalCos = parameters.getValue(VSD_MOTOR_COS_PHI);
+
+  return (value * cos) / (nominal * nominalCos) * 100.0;
 }
