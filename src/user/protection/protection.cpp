@@ -87,7 +87,7 @@ void Protection::checkRestartResetCount()
 
 void Protection::addEventActivationProt()
 {
-  logEvent.add(ProtectCode, AutoType, protActivatedEventId_, tripSetpoint_, valueParameter_);
+  logEvent.add(ProtectCode, AutoType, protActivatedEventId_, valueParameter_, tripSetpoint_);
 }
 
 void Protection::task()

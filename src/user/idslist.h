@@ -34,6 +34,7 @@ enum enID
   CCS_CMD_START,                            /// Команда запуска
   /// Состояние ЧРП
   CCS_VSD_CONDITION,
+  CCS_MOTOR_COS_PHI_NOW,                    /// Текущий Косинус Фи
   /// Производительность насоса
   CCS_PUMP_CAPACITY,
   /// Напор ЭЦН
@@ -733,30 +734,30 @@ enum enID
 
   VSD_BEGIN        = 10000,
   //// Первый параметр ЧРП
-  VSD_MOTOR_TYPE,                           /// 2001.Конструкция двигателя Danfoss 1-10 Используется в интерфейсе
-  VSD_MOTOR_SPEED,                          /// 2002.Скорость двигателя Danfoss 1-25 Используется в проекте, интерфейс
-  VSD_MOTOR_POWER,                          /// 2003.Мощность двигателя Danfoss 1-20 Используется в проекте, интерфейс
-  VSD_MOTOR_VOLTAGE,                        /// 2004.Напряжение двигателя Danfoss 1-22 Используется в проекте, интерфейс Novomet 0х0045 IREG_MOTOR_U_MAX
-  VSD_MOTOR_CURRENT,                        /// 2005.Ток двигателя Danfoss 1-24 Используется в проекте, интерфейс Novomet 0х0044 IREG_MOTOR_I_MAX
-  VSD_MOTOR_FREQUENCY,                      /// 2006.Частота двигателя Danfoss 1-23 Используется в проекте, интерфейс Novomet 0х0043 IREG_MOTOR_F_MAX
-  VSD_MOTOR_COS_PHI,                        /// 2007.Косинус Фи Danfoss 14-43 Используется в проекте
-  VSD_D_AXIS_INDUNSTANCE,                   /// 2008.Индуктивности по оси D Danfoss 1-37 Используется в проекте
-  VSD_BACK_EMF,                             /// 2009.Противо эдс Danfoss 1-40 Используется в проекте
-  VSD_MOTOR_POLES,                          /// 2010.Число полюсов двигателя Danfoss 1-39 Используется в проекте
-  VSD_CONTROL_MOTOR,                        /// 2011.Принцип управления двигателем Danfoss 1-01 Не используется в проекте, только при конфигурировании
-  VSD_CONFIG_MODE,                          /// 2012.Режим конфигурирования Danfoss 1-00 Не используется в проекте, только при конфигурировании
-  VSD_ROTATION,                             /// 2013.Направления вращения Danfoss 4-10 Не используется в проекте, только при конфигурировании
-  VSD_LOW_LIM_SPEED_MOTOR,                  /// 2014.Нижний предел скорости Danfoss 4-12 Гц Используется в проекте
-  VSD_HIGH_LIM_SPEED_MOTOR,                 /// 2015.Верхний передел скорости Danfoss 4-14 Используется в проекте Novomet 0х0037 IREG_FREQ_REF_MAX
-  VSD_FREQUENCY,                            /// 2016.Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
-  VSD_TIMER_DISPERSAL,                      /// 2017.Время разгона Danfoss 3-41 % Активно используется в проекте
-  VSD_TIMER_DELAY,                          /// 2018.Время замедления Danfoss 3-42 % Активно используется в проекте
-  VSD_FREQUENCY_NOW,                        /// 2019.Выходная частота ПЧ
-  VSD_SPEED_RPM_NOW,                        /// 2020.Обороты двигателя
-  VSD_OUT_VOLTAGE_MOTOR,                    /// 2021.Напряжение на выходе ПЧ
-  VSD_OUT_CURRENT_PHASE_1,                  /// 2022.Выходной ток ПЧ фаза U
-  VSD_OUT_CURRENT_PHASE_2,                  /// 2023.Выходной ток ПЧ фаза V
-  VSD_OUT_CURRENT_PHASE_3,                  /// 2024.Выходной ток ПЧ фаза W
+  VSD_MOTOR_TYPE,                           /// Конструкция двигателя Danfoss 1-10 Используется в интерфейсе
+  VSD_MOTOR_SPEED,                          /// Скорость двигателя Danfoss 1-25 Используется в проекте, интерфейс
+  VSD_MOTOR_POWER,                          /// Мощность двигателя Danfoss 1-20 Используется в проекте, интерфейс
+  VSD_MOTOR_VOLTAGE,                        /// Напряжение двигателя Danfoss 1-22 Используется в проекте, интерфейс Novomet 0х0045 IREG_MOTOR_U_MAX
+  VSD_MOTOR_CURRENT,                        /// Номинальный ток двигателя Danfoss 1-24 Используется в проекте, интерфейс Novomet 0х0044 IREG_MOTOR_I_MAX
+  VSD_MOTOR_FREQUENCY,                      /// Частота двигателя Danfoss 1-23 Используется в проекте, интерфейс Novomet 0х0043 IREG_MOTOR_F_MAX
+  VSD_MOTOR_COS_PHI,                        /// Косинус Фи Danfoss 14-43 Используется в проекте
+  VSD_D_AXIS_INDUNSTANCE,                   /// Индуктивности по оси D Danfoss 1-37 Используется в проекте
+  VSD_BACK_EMF,                             /// Противо эдс Danfoss 1-40 Используется в проекте
+  VSD_MOTOR_POLES,                          /// Число полюсов двигателя Danfoss 1-39 Используется в проекте
+  VSD_CONTROL_MOTOR,                        /// Принцип управления двигателем Danfoss 1-01 Не используется в проекте, только при конфигурировании
+  VSD_CONFIG_MODE,                          /// Режим конфигурирования Danfoss 1-00 Не используется в проекте, только при конфигурировании
+  VSD_ROTATION,                             /// Направления вращения Danfoss 4-10 Не используется в проекте, только при конфигурировании
+  VSD_LOW_LIM_SPEED_MOTOR,                  /// Нижний предел скорости Danfoss 4-12 Гц Используется в проекте
+  VSD_HIGH_LIM_SPEED_MOTOR,                 /// Верхний передел скорости Danfoss 4-14 Используется в проекте Novomet 0х0037 IREG_FREQ_REF_MAX
+  VSD_FREQUENCY,                            /// Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
+  VSD_TIMER_DISPERSAL,                      /// Время разгона Danfoss 3-41 % Активно используется в проекте
+  VSD_TIMER_DELAY,                          /// Время замедления Danfoss 3-42 % Активно используется в проекте
+  VSD_FREQUENCY_NOW,                        /// Выходная частота ПЧ
+  VSD_SPEED_RPM_NOW,                        /// Обороты двигателя
+  VSD_OUT_VOLTAGE_MOTOR,                    /// Напряжение на выходе ПЧ
+  VSD_OUT_CURRENT_PHASE_1,                  /// Выходной ток ПЧ фаза U
+  VSD_OUT_CURRENT_PHASE_2,                  /// Выходной ток ПЧ фаза V
+  VSD_OUT_CURRENT_PHASE_3,                  /// Выходной ток ПЧ фаза W
 
   VSD_INDEX,
   //// Указатель индекса для массивных параметров
