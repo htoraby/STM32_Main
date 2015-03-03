@@ -216,7 +216,7 @@ float Units[28][6][2] =
     {1.0, 0.0},
     {1.0, 0.0}
   },
-  /// PHYSIC_VISCOSITY Вязкость 22
+  /// PHYSIC_VISCCS_COS_PHIITY Вязкость 22
   {
     {1.0, 0.0},
     {1.0, 0.0},

@@ -135,7 +135,7 @@ enum enPhysic
   /// Cкорость
   PHYSIC_SPEED,
   /// Вязкость
-  PHYSIC_VISCOSITY,
+  PHYSIC_VISCCS_COS_PHIITY,
   /// Расход
   PHYSIC_FLOW,
   /// Мощность
@@ -198,14 +198,18 @@ enum enPhysicSpeed {
   SPEED_LAST
 };
 
-enum enPhysicPower {
-  POWER_VATT = 1,
-  POWER_KVATT,
+enum enPhysicActivPower {
+  ACTIV_POWER_VATT = 1,
+  ACTIV_POWER_LAST
+};
+
+enum enPhysicFullPower {
+  FULL_POWER_VA = 1,
+  FULL_POWER_LAST
 };
 
 enum enPhysicFrequency {
   FREQUENCY_HZ  = 1,
-  FREQUENCY_KHZ = 2,
   FREQUENCY_LAST
 };
 

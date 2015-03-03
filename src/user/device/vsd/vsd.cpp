@@ -1257,16 +1257,16 @@ void Vsd::initParameters()
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].max    = 2.0;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].def    = 1.0;
   // Косинус Фи
-  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].id        = VSD_MOTOR_COS_PHI;
-  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].access    = ACCESS_OPERATOR;
-  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].operation = OPERATION_WRITE;
-  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].physic    = PHYSIC_NUMERIC;
-  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].update    = UPDATE_ERROR;
-  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].value     = 0.95;
-  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].min   = 0.4;
-  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].max   = 0.95;
-  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].def   = 0.95;
+  parameters_[VSD_MOTOR_CCS_COS_PHI_PHI - VSD_BEGIN].id        = VSD_MOTOR_CCS_COS_PHI_PHI;
+  parameters_[VSD_MOTOR_CCS_COS_PHI_PHI - VSD_BEGIN].access    = ACCESS_OPERATOR;
+  parameters_[VSD_MOTOR_CCS_COS_PHI_PHI - VSD_BEGIN].operation = OPERATION_WRITE;
+  parameters_[VSD_MOTOR_CCS_COS_PHI_PHI - VSD_BEGIN].physic    = PHYSIC_NUMERIC;
+  parameters_[VSD_MOTOR_CCS_COS_PHI_PHI - VSD_BEGIN].validity  = VALIDITY_ERROR;
+  parameters_[VSD_MOTOR_CCS_COS_PHI_PHI - VSD_BEGIN].update    = UPDATE_ERROR;
+  parameters_[VSD_MOTOR_CCS_COS_PHI_PHI - VSD_BEGIN].value     = 0.95;
+  parameters_[VSD_MOTOR_CCS_COS_PHI_PHI - VSD_BEGIN].min   = 0.4;
+  parameters_[VSD_MOTOR_CCS_COS_PHI_PHI - VSD_BEGIN].max   = 0.95;
+  parameters_[VSD_MOTOR_CCS_COS_PHI_PHI - VSD_BEGIN].def   = 0.95;
   // Компенсация напряжения постоянного тока
   parameters_[VSD_DC_COMPENSATION - VSD_BEGIN].id        = VSD_DC_COMPENSATION;
   parameters_[VSD_DC_COMPENSATION - VSD_BEGIN].access    = ACCESS_OPERATOR;
