@@ -85,6 +85,11 @@ void Protection::checkRestartResetCount()
   }
 }
 
+void Protection::addEventActivationProt()
+{
+  logEvent.add(ProtectCode, AutoType, protActivatedEventId_, tripSetpoint_, valueParameter_);
+}
+
 void Protection::task()
 {
   while(1) {
@@ -110,11 +115,11 @@ void Protection::automatProtection()
   switch (state_) {
 
     // Состояние "ничегонеделанья"
-    case ProtectionStateOff:
+    case ProtectionStateIdle:
       // Если станция остановлена
       if (!ksu.isStopCCS()) {
         // Остаёмся в этом же состоянии
-        state_ = ProtectionStateOff;
+        state_ = ProtectionStateIdle;
       }
       // Станция в работе
       else {
@@ -131,7 +136,7 @@ void Protection::automatProtection()
       // Если станция остановлена
       if (!ksu.isStopCCS()) {
         // Переходим в состояние "ничегонеделанья"
-        state_ = ProtectionStateOff;
+        state_ = ProtectionStateIdle;
       }
       // Станция в работе
       else {
@@ -147,7 +152,7 @@ void Protection::automatProtection()
       // Если станция остановлена
       if (!ksu.isStopCCS()) {
         // Переходим в состояние "ничегонеделанья"
-        state_ = ProtectionStateOff;
+        state_ = ProtectionStateIdle;
       }
       // Станция в работе
       else {
@@ -168,7 +173,7 @@ void Protection::automatProtection()
       // Если станция остановлена
       if (!ksu.isStopCCS()) {
         // Переходим в состояние "ничегонеделанья"
-        state_ = ProtectionStateOff;
+        state_ = ProtectionStateIdle;
       }
       else {
         // TODO: Message Активирована защита
@@ -181,7 +186,7 @@ void Protection::automatProtection()
       // Если станция остановлена
       if (!ksu.isStopCCS()) {
         // Переходим в состояние "ничегонеделанья"
-        state_ = ProtectionStateOff;
+        state_ = ProtectionStateIdle;
       }
       else {
         // Если контролируемый параметр не в норме
@@ -201,7 +206,7 @@ void Protection::automatProtection()
       // Если станция остановлена
       if (!ksu.isStopCCS()) {
         // Переходим в состояние "ничегонеделанья"
-        state_ = ProtectionStateOff;
+        state_ = ProtectionStateIdle;
       }
       else {
         // Если контролируемый параметр не в норме
@@ -222,7 +227,7 @@ void Protection::automatProtection()
       // Если станция остановлена
       if (!ksu.isStopCCS()) {
         // Переходим в состояние "ничегонеделанья"
-        state_ = ProtectionStateOff;
+        state_ = ProtectionStateIdle;
       }
       // Станция в работе
       else {
@@ -250,13 +255,13 @@ void Protection::automatProtection()
       // Если станция остановлена
       if (!ksu.isStopCCS()) {
         // Переходим в состояние "ничегонеделанья"
-        state_ = ProtectionStateOff;
+        state_ = ProtectionStateIdle;
       }
       else {
         // Если контролируемый параметр не в норме
         if (alarm_) {
           // TODO: Message Срабатывания защиты
-          logEvent.add(ProtectCode, AutoType, protActivatedEventId_, tripSetpoint_, valueParameter_);
+          addEventActivationProt();
           state_ = ProtectionStateFailure;
         }
         else {
@@ -437,7 +442,7 @@ void Protection::automatProtection()
       // TODO: Message Блокировка по защите
       logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
       // Переходим в состояние "ничегонеделанья"
-      state_ = ProtectionStateOff;
+      state_ = ProtectionStateIdle;
       break;
 
     // Неизвестное состояние

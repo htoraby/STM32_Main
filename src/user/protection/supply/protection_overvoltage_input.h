@@ -5,7 +5,6 @@
 
 /*!
  * \brief Класс автомата защиты "Превышение питания сети"
- *
  */
 class ProtectionOverVoltageInput : public Protection
 {

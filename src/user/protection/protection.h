@@ -22,7 +22,7 @@ public:
    * \brief Список состояний защиты
   */
   typedef enum {
-    ProtectionStateOff               = 0,
+    ProtectionStateIdle               = 0,
     ProtectionStateActivBegin        = 10,
     ProtectionStateActivWait         = 20,
     ProtectionStateActiv             = 30,
@@ -104,6 +104,11 @@ public:
    * \brief Метод проверки таймера сброса счётчиков АПВ защиты
    */
   void checkRestartResetCount();
+
+  /*!
+   * \brief Метод добавления события "Сработала защита" в журнал
+   */
+  virtual void addEventActivationProt();
 
   /*!
    * \brief Универсальный автомат работы защиты
