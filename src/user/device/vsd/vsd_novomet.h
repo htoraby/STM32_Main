@@ -219,7 +219,7 @@ public:
   int checkExchangModbusParameters(int indexParam);
 
 private:
-  ModbusParameter ModbusParameters[94];
+  ModbusParameter ModbusParameters[135];
   DeviceModbus *dm_;
 
 };
