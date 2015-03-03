@@ -85,6 +85,16 @@ void Protection::checkRestartResetCount()
   }
 }
 
+bool Protection::checkBlock()
+{
+  return false;
+}
+
+float Protection::calcValue()
+{
+  return valueParameter_;
+}
+
 void Protection::addEventActivationProt()
 {
   logEvent.add(ProtectCode, AutoType, protActivatedEventId_, valueParameter_, tripSetpoint_);
@@ -112,6 +122,11 @@ void Protection::task()
 
 void Protection::automatProtection()
 {
+  if (mode_ == 0) {
+    state_ = ProtectionStateIdle;
+    return;
+  }
+
   switch (state_) {
 
     // Состояние "ничегонеделанья"

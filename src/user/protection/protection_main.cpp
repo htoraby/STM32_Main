@@ -6,6 +6,7 @@ ProtectionUnderVoltageInput protUnderVoltIn;
 ProtectionOverloadMotor protOverloadMotor;
 ProtectionUnderloadMotor protUnderloadMotor;
 ProtectionImbalanceCurrentMotor protImbalanceCurrentMotor;
+ProtectionOutOfSyncMotor protOutOfSyncMotor;
 
 void protectionInit()
 {
@@ -15,4 +16,5 @@ void protectionInit()
   protOverloadMotor.init();
   protUnderloadMotor.init();
   protImbalanceCurrentMotor.init();
+  protOutOfSyncMotor.init();
 }

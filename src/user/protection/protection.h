@@ -92,13 +92,13 @@ public:
    * \brief Метод проверки выполнения условия АПВ по значению параметра
    * \return false параметр в норме, true параметр не в норме
    */
-  virtual bool checkBlock() = 0;
+  virtual bool checkBlock();
 
   /*!
    * \brief Пересчёт текущего значения для сравнения с уставкой
    * \return Пересчитанное значение
    */
-  virtual float calcValue() = 0;
+  virtual float calcValue();
 
   /*!
    * \brief Метод проверки таймера сброса счётчиков АПВ защиты
