@@ -45,6 +45,14 @@ public:
    */
   int setValue(unsigned short id, float value);
 
+  /*!
+   * \brief Метод получения типа физической величины по ID
+   * с определением необходимого массива
+   * \param id уникальный идентификатор параметра
+   * \return типа физической величины
+   */
+  uint8_t getPhysic(unsigned short id);
+
 private:
   /*!
    * \brief Сохранение параметров из ОЗУ в Flash

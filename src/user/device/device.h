@@ -103,6 +103,13 @@ public:
   unsigned char setValue(unsigned short id, float value);
 
   /*!
+   * \brief Метод получения типа физической величины по id
+   * \param id уникальный идентификатор параметра
+   * \return типа физической величины
+   */
+  uint8_t getPhysic(unsigned short id);
+
+  /*!
    * \brief Сохранение массива параметров на Flash
    */
   StatusType saveParameters();
