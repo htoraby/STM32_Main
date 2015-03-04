@@ -80,20 +80,20 @@ void LogData::add(uint8_t code)
   *(uint8_t*)(buffer+8) = code;
   *(float*)(buffer+9) = ksu.getValue(CCS_NUMBER_WELL);
   *(float*)(buffer+13) = vsd->getValue(VSD_FREQUENCY_NOW);
-  *(float*)(buffer+17) = vsd->getValue(VSD_OUT_CURRENT_PHASE_1);
-  *(float*)(buffer+21) = vsd->getValue(VSD_OUT_CURRENT_PHASE_2);
-  *(float*)(buffer+25) = vsd->getValue(VSD_OUT_CURRENT_PHASE_3);
+  *(float*)(buffer+17) = vsd->getValue(VSD_CURRENT_OUT_PHASE_1);
+  *(float*)(buffer+21) = vsd->getValue(VSD_CURRENT_OUT_PHASE_2);
+  *(float*)(buffer+25) = vsd->getValue(VSD_CURRENT_OUT_PHASE_3);
   *(float*)(buffer+29) = vsd->getValue(VSD_MOTOR_VOLTAGE);
-  *(float*)(buffer+33) = ksu.getValue(CCS_MOTOR_IMBALANCE_CURRENT);
+  *(float*)(buffer+33) = ksu.getValue(CCS_MOTOR_CURRENT_IMBALANCE);
   *(float*)(buffer+37) = vsd->getValue(VSD_MOTOR_COS_PHI);
   *(float*)(buffer+41) = ksu.getValue(CCS_MOTOR_LOAD_NOW);
-  *(float*)(buffer+45) = vsd->getValue(VSD_ACTIVE_POWER);
+  *(float*)(buffer+45) = vsd->getValue(VSD_POWER_ACTIVE);
 
 //  *(float*)(buffer+49) = KSU.getValue();
-  *(float*)(buffer+53) = em->getValue(EM_VOLTAGE_PHASE_1_2);
-  *(float*)(buffer+57) = em->getValue(EM_VOLTAGE_PHASE_2_3);
-  *(float*)(buffer+61) = em->getValue(EM_VOLTAGE_PHASE_3_1);
-  *(float*)(buffer+65) = em->getValue(CCS_SYPPLY_IMBALANCE_VOLTAGE);
+  *(float*)(buffer+53) = em->getValue(EM_VOLTAGE_PHASE_1);
+  *(float*)(buffer+57) = em->getValue(EM_VOLTAGE_PHASE_2);
+  *(float*)(buffer+61) = em->getValue(EM_VOLTAGE_PHASE_3);
+  *(float*)(buffer+65) = em->getValue(CCS_VOLTAGE_IMBALANCE_IN);
   *(float*)(buffer+69) = em->getValue(EM_CURRENT_PHASE_1);
   *(float*)(buffer+73) = em->getValue(EM_CURRENT_PHASE_2);
   *(float*)(buffer+77) = em->getValue(EM_CURRENT_PHASE_3);
@@ -127,7 +127,7 @@ void LogData::add(uint8_t code)
 //  *(float*)(buffer+177) = KSU.getValue();
   *(float*)(buffer+181) = tms->getValue(TMS_PSW_TMS);
   *(float*)(buffer+185) = tms->getValue(TMS_PSW_TMSN);
-  *(float*)(buffer+189) = vsd->getValue(VSD_DC_VOLTAGE);
+  *(float*)(buffer+189) = vsd->getValue(VSD_VOLTAGE_DC);
   *(float*)(buffer+193) = vsd->getValue(VSD_STATUS_WORD);
   *(float*)(buffer+197) = vsd->getValue(VSD_ALARM_WORD_1);
   *(float*)(buffer+201) = vsd->getValue(VSD_ALARM_WORD_2);
@@ -138,10 +138,10 @@ void LogData::add(uint8_t code)
   *(float*)(buffer+217) = vsd->getValue(VSD_LAST_ALARM);
 //  *(float*)(buffer+221) = KSU.getValue();
   *(float*)(buffer+225) = ksu.getValue(CCS_RGM_PERIODIC_MODE);
-  *(float*)(buffer+229) = ksu.getValue(CCS_RGM_PERIODIC_TIME);
-  *(float*)(buffer+233) = ksu.getValue(CCS_RGM_PERIODIC_TIME);
-  *(float*)(buffer+237) = ksu.getValue(CCS_RGM_PERIODIC_TIME_END);
-  *(float*)(buffer+241) = ksu.getValue(CCS_RGM_PERIODIC_TIME_END);
+  *(float*)(buffer+229) = ksu.getValue(CCS_RGM_PERIODIC_RUN_TIME);
+  *(float*)(buffer+233) = ksu.getValue(CCS_RGM_PERIODIC_RUN_TIME);
+  *(float*)(buffer+237) = ksu.getValue(CCS_RGM_PERIODIC_RUN_TIME_END);
+  *(float*)(buffer+241) = ksu.getValue(CCS_RGM_PERIODIC_RUN_TIME_END);
 
 //  *(float*)(buffer+245) = KSU.getValue();
 

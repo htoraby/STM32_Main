@@ -775,7 +775,7 @@ void VsdNovomet::initModbusParameters()
                           0                 // Значение
   };
   ModbusParameters[45] = {// Текущее выходное напряжение ПЧ
-                          VSD_UOUT_RATED,   // Уникальный идентификатор параметра
+                          VSD_OUT_VOLTAGE_MOTOR,
                           121,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
                           PHYSIC_VOLTAGE,   // Физическая величина параметра
@@ -1319,7 +1319,7 @@ void VsdNovomet::initModbusParameters()
                           0                 // Значение
   };
   ModbusParameters[77] = {// Текущая выходная активная мощность ПЧ
-                          VSD_ACTIVE_POWER, // Уникальный идентификатор параметра
+                          VSD_POWER_ACTIVE, // Уникальный идентификатор параметра
                           153,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
                           PHYSIC_ACTIVE_POWER,
@@ -1761,7 +1761,7 @@ void VsdNovomet::initModbusParameters()
                           0                 // Значение
   };
   ModbusParameters[103] = {// Напряжение шины инвертора Ud
-                          VSD_DC_VOLTAGE,   // Уникальный идентификатор параметра
+                          VSD_VOLTAGE_DC,   // Уникальный идентификатор параметра
                           179,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
                           PHYSIC_VOLTAGE,   // Физическая величина параметра
