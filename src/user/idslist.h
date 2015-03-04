@@ -11,7 +11,7 @@ enum enID
   CCS_RESERVE_1,
   CCS_MOTOR_CURRENT_AVARAGE_NOW,            /// 6.Ток двигателя средний
   CCS_MOTOR_LOAD_NOW,                       /// 7.Текущая загрузка двигателя
-  CCS_TURBO_ROTATION,                       /// 8.Текущее турбинное вращение
+  CCS_TURBO_ROTATION_NOW,                   /// 8.Текущее турбинное вращение
   CCS_RESISTANCE_ISOLATION,                 /// 9.Сопротивление изоляции в системе
   CCS_PHASE_ROTATION,                       /// 10.Порядок чередования фаз
   CCS_CONDITION,                            /// 11.Обобщенное состояние защит КСУ

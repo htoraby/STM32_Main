@@ -68,6 +68,18 @@ public:
   bool isWorkCCS();
 
   /*!
+   * \brief Проверка находится ли станция в ожидании
+   * \return
+   */
+  bool isWaitCCS();
+
+  /*!
+   * \brief Проверка находится ли станция в блокировке
+   * \return
+   */
+  bool isBlockCCS();
+
+  /*!
    * \brief Проверка что КСУ в режиме АUTO
    * \return
    */
@@ -79,12 +91,6 @@ public:
    * \return Возвращает значение секунд
    */
   float getTime();
-
-  /*!
-   * \brief Проверка находится ли станция в блокировке
-   * \return
-   */
-  bool isBlockCCS();
 
   /*!
    * \brief Метод обработки изменения состояния

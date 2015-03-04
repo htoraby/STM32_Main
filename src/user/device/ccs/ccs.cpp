@@ -211,6 +211,16 @@ bool Ccs::isWorkCCS()
     return 1;
 }
 
+
+bool Ccs::isWaitCCS()
+{
+  unsigned int state = (unsigned int)getValue(CCS_CONDITION);
+  if (state == CCS_CONDITION_DELAY)
+    return 0;
+  else
+    return 1;
+}
+
 bool Ccs::isBlockCCS()
 {
   unsigned int state = (unsigned int)getValue(CCS_CONDITION);

@@ -8,6 +8,7 @@
 #include "protection_underload_motor.h"
 #include "protection_imbalance_current_motor.h"
 #include "protection_out_of_sync_motor.h"
+#include "protection_turbine_rotation.h"
 
 extern ProtectionOverVoltageInput protOverVoltIn;
 extern ProtectionUnderVoltageInput protUnderVoltIn;
@@ -16,6 +17,7 @@ extern ProtectionOverloadMotor protOverloadMotor;
 extern ProtectionUnderloadMotor protUnderloadMotor;
 extern ProtectionImbalanceCurrentMotor protImbalanceCurrentMotor;
 extern ProtectionOutOfSyncMotor protOutOfSyncMotor;
+extern ProtectionTurbineRotation protTurbineRotation;
 
 /*!
  * \brief protectionInit

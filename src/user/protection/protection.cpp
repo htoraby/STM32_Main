@@ -53,6 +53,11 @@ void Protection::setCurrentParamProt()
   ksu.setValue(idRestartResetCount_, restartResetCount_);
 }
 
+bool Protection::checkAlarm()
+{
+  return false;
+}
+
 bool Protection::isHigherLimit(float setpoint)
 {
   valueParameter_ = calcValue();
@@ -122,7 +127,7 @@ void Protection::task()
 
 void Protection::automatProtection()
 {
-  if (mode_ == 0) {
+  if ((mode_ == 0) && (state_ != ProtectionStateRestartWait)) {
     state_ = ProtectionStateIdle;
     return;
   }

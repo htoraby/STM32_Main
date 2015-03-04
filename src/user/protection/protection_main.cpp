@@ -7,6 +7,7 @@ ProtectionOverloadMotor protOverloadMotor;
 ProtectionUnderloadMotor protUnderloadMotor;
 ProtectionImbalanceCurrentMotor protImbalanceCurrentMotor;
 ProtectionOutOfSyncMotor protOutOfSyncMotor;
+ProtectionTurbineRotation protTurbineRotation;
 
 void protectionInit()
 {
@@ -17,4 +18,5 @@ void protectionInit()
   protUnderloadMotor.init();
   protImbalanceCurrentMotor.init();
   protOutOfSyncMotor.init();
+  protTurbineRotation.init();
 }

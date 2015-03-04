@@ -74,7 +74,7 @@ public:
    * \brief Метод проверки условия срабатывания защиты
    * \return false - параметр в норме, true - параметр не в норме
    */
-  virtual bool checkAlarm() = 0;
+  virtual bool checkAlarm();
 
   /*!
    * \brief Метод проверки превышения текущего значения отсительно уставки

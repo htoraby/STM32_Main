@@ -7,6 +7,7 @@
 #include "log_alarm.h"
 #include "log_tms.h"
 #include "log_debug.h"
+#include "log_idlist.h"
 
 extern LogEvent logEvent;
 extern LogData logData;
