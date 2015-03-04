@@ -4,6 +4,8 @@
 #include "device.h"
 #include "fram.h"
 
+#define PARAMS_SAVE_TIME 60000 //!< Период сохранения параметров (60 секунд)
+
 /*!
  * \brief Класс сохранения/чтения параметров в/из Flash
  *
@@ -44,6 +46,14 @@ public:
    * \return 0 - значение присвоено или ошибка
    */
   int setValue(unsigned short id, float value);
+
+  /*!
+   * \brief Метод получения типа физической величины по ID
+   * с определением необходимого массива
+   * \param id уникальный идентификатор параметра
+   * \return типа физической величины
+   */
+  uint8_t getPhysic(unsigned short id);
 
 private:
   /*!

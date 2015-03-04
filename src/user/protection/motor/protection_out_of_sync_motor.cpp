@@ -54,6 +54,8 @@ bool ProtectionOutOfSyncMotor::checkBlock()
 void ProtectionOutOfSyncMotor::addEventActivationProt()
 {
   float nominal = parameters.getValue(VSD_MOTOR_CURRENT);
-  logEvent.add(ProtectCode, AutoType, protActivatedEventId_, valueParameter2_, nominal);
-  logEvent.add(ProtectCode, AutoType, protActivatedEventId_, valueParameter_, tripSetpoint_);
+  logEvent.add(ProtectCode, AutoType, protActivatedEventId_, valueParameter2_, nominal,
+               parameters.getPhysic(VSD_MOTOR_CURRENT));
+  logEvent.add(ProtectCode, AutoType, protActivatedEventId_, valueParameter_, tripSetpoint_,
+               parameters.getPhysic(idTripSetpoint_));
 }

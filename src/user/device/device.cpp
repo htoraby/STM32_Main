@@ -459,6 +459,11 @@ unsigned char Device::setValue(unsigned short id, float value)
   return 0;
 }
 
+uint8_t Device::getPhysic(unsigned short id)
+{
+  return getFieldPhysic(getIndexAtID(id));
+}
+
 void Device::updateParameters()
 {
   while (1) {

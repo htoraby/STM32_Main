@@ -30,7 +30,7 @@ void Parameters::init()
 void Parameters::task()
 {
   while (1) {
-    osSemaphoreWait(semaphoreId_, osWaitForever);
+    osSemaphoreWait(semaphoreId_, PARAMS_SAVE_TIME);
 
     save();
   }
@@ -81,6 +81,20 @@ int Parameters::setValue(unsigned short id, float value)
     return tms->setValue(id, value);
   if ((id > EM_BEGIN) && (id < EM_BEGIN))
     return em->setValue(id, value);
+
+  return 0;
+}
+
+uint8_t Parameters::getPhysic(unsigned short id)
+{
+  if ((id > CCS_BEGIN) && (id < CCS_END))
+    return ksu.getPhysic(id);
+  if ((id > VSD_BEGIN) && (id < VSD_END))
+    return vsd->getPhysic(id);
+  if ((id > TMS_BEGIN) && (id < TMS_BEGIN))
+    return tms->getPhysic(id);
+  if ((id > EM_BEGIN) && (id < EM_BEGIN))
+    return em->getPhysic(id);
 
   return 0;
 }
