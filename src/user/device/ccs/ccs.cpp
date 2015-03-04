@@ -123,7 +123,7 @@ void Ccs::vsdConditionTask()
         case VSD_CONDITION_WAIT_STOP:
           if (getValue(CCS_CONDITION) == CCS_CONDITION_STOP)
             break;
-#ifdef DEBUG
+#ifndef DEBUG
           if (vsd->stopVSD() == RETURN_OK)
 #endif
             setValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
@@ -140,7 +140,7 @@ void Ccs::vsdConditionTask()
         case VSD_CONDITION_WAIT_RUN:
           if (getValue(CCS_CONDITION) == CCS_CONDITION_RUN)
             break;
-#ifdef DEBUG
+#ifndef DEBUG
           if (vsd->startVSD() == RETURN_OK)
 #endif
             setValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
@@ -241,7 +241,7 @@ void Ccs::initParameters()
   parameters_[CCS_BEGIN - CCS_BEGIN].access            = ACCESS_ERROR;
   parameters_[CCS_BEGIN - CCS_BEGIN].operation         = OPERATION_ERROR;
   parameters_[CCS_BEGIN - CCS_BEGIN].physic            = PHYSIC_ERROR;
-  parameters_[CCS_BEGIN - CCS_BEGIN].validity          = VALIDITY_ERROR;
+  parameters_[CCS_BEGIN - CCS_BEGIN].validity          = VALIDITY_GOOD;
   parameters_[CCS_BEGIN - CCS_BEGIN].value         = 0.0;
   parameters_[CCS_BEGIN - CCS_BEGIN].min           = 0.0;
   parameters_[CCS_BEGIN - CCS_BEGIN].max           = 0.0;
@@ -261,7 +261,7 @@ void Ccs::initParameters()
   parameters_[CCS_CONDITION - CCS_BEGIN].access      = ACCESS_OPERATOR;
   parameters_[CCS_CONDITION - CCS_BEGIN].operation   = OPERATION_WRITE;
   parameters_[CCS_CONDITION - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
-  parameters_[CCS_CONDITION - CCS_BEGIN].validity    = VALIDITY_ERROR;
+  parameters_[CCS_CONDITION - CCS_BEGIN].validity    = VALIDITY_GOOD;
   parameters_[CCS_CONDITION - CCS_BEGIN].value   = CCS_CONDITION_STOP;
   parameters_[CCS_CONDITION - CCS_BEGIN].min     = CCS_CONDITION_STOP;
   parameters_[CCS_CONDITION - CCS_BEGIN].max     = CCS_CONDITION_RUN;
@@ -271,7 +271,7 @@ void Ccs::initParameters()
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].access      = ACCESS_OPERATOR;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].operation   = OPERATION_WRITE;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
-  parameters_[CCS_WORKING_MODE - CCS_BEGIN].validity    = VALIDITY_ERROR;
+  parameters_[CCS_WORKING_MODE - CCS_BEGIN].validity    = VALIDITY_GOOD;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].value   = CCS_WORKING_MODE_STOP;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].min     = CCS_WORKING_MODE_STOP;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].max     = CCS_WORKING_MODE_PROGRAM;
@@ -281,7 +281,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_STOP - CCS_BEGIN].access      = ACCESS_OPERATOR;
   parameters_[CCS_CMD_STOP - CCS_BEGIN].operation   = OPERATION_WRITE;
   parameters_[CCS_CMD_STOP - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
-  parameters_[CCS_CMD_STOP - CCS_BEGIN].validity    = VALIDITY_ERROR;
+  parameters_[CCS_CMD_STOP - CCS_BEGIN].validity    = VALIDITY_GOOD;
   parameters_[CCS_CMD_STOP - CCS_BEGIN].value   = 0;
   parameters_[CCS_CMD_STOP - CCS_BEGIN].min     = 0;
   parameters_[CCS_CMD_STOP - CCS_BEGIN].max     = 1;
@@ -291,7 +291,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_START - CCS_BEGIN].access      = ACCESS_OPERATOR;
   parameters_[CCS_CMD_START - CCS_BEGIN].operation   = OPERATION_WRITE;
   parameters_[CCS_CMD_START - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
-  parameters_[CCS_CMD_START - CCS_BEGIN].validity    = VALIDITY_ERROR;
+  parameters_[CCS_CMD_START - CCS_BEGIN].validity    = VALIDITY_GOOD;
   parameters_[CCS_CMD_START - CCS_BEGIN].value   = 0;
   parameters_[CCS_CMD_START - CCS_BEGIN].min     = 0;
   parameters_[CCS_CMD_START - CCS_BEGIN].max     = 1;
@@ -301,7 +301,7 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].access      = ACCESS_OPERATOR;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].operation   = OPERATION_WRITE;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
-  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].validity    = VALIDITY_ERROR;
+  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].validity    = VALIDITY_GOOD;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].value   = VSD_CONDITION_STOP;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].min     = VSD_CONDITION_STOP;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].max     = VSD_CONDITION_WAIT_RUN;

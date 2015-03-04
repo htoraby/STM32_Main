@@ -215,7 +215,7 @@ float Units[28][6][2] =
     {1.0, 0.0},
     {1.0, 0.0}
   },
-  /// PHYSIC_VISCCS_COS_PHIITY Вязкость 22
+  /// PHYSIC_VISCOSITY Вязкость 22
   {
     {1.0, 0.0},
     {1.0, 0.0},
@@ -343,7 +343,6 @@ unsigned char Device::getFieldValidity(unsigned short index)
   return parameters_[index].validity;
 }
 
-// Метод получения Value параметра по индексу в массиве параметров
 float Device::getFieldValue(unsigned short index)
 {
   return parameters_[index].value;
@@ -394,7 +393,6 @@ void Device::setFieldValidity(unsigned short index, unsigned char validity)
   parameters_[index].validity = validity;
 }
 
-// Метод присвоения поля value в массиве параметров по индексу
 void Device::setFieldValue(unsigned short index, float value)
 {
   parameters_[index].value = value;
@@ -405,7 +403,6 @@ void Device::setFieldMin(unsigned short index, float min)
   parameters_[index].min = min;
 }
 
-// Метод присвоения поля Max в массиве параметров по индексу
 void Device::setFieldMax(unsigned short index, float max)
 {
   parameters_[index].max = max;
@@ -431,7 +428,6 @@ float Device::applyUnit(float value, int physic, int units)
   return (value * Units[physic][units][0] + Units[physic][units][1]);
 }
 
-// Метод поиска и получения индекса параметра с указанным ID
 unsigned short Device::getIndexAtID(unsigned short id)
 {
   if (getFieldId(id - startAddrParams_) == id)

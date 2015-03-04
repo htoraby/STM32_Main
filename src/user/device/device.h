@@ -227,8 +227,7 @@ protected:
   void setFieldValidity(unsigned short index, unsigned char validity);
 
   /*!
-   * \brief setFieldValue
-   * Метод присвоения поля value в массиве параметров по индексу
+   * \brief Метод присвоения поля value в массиве параметров по индексу
    * \param index индекс параметра в массиве
    * \param value присваемое значение
    */
@@ -268,14 +267,12 @@ protected:
 
   //! Начальный адрес массива параметров из списка enID
   uint32_t startAddrParams_;
-
   //! Указатель на массив параметров устройства
   parameter *parameters_;
-
+  //! Количество параметров в массиве
   uint16_t countParameter_;
 
 private:
-
 
 };
 

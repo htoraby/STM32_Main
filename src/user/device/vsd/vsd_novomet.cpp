@@ -2334,7 +2334,7 @@ VsdNovomet::VsdNovomet()
   // Создание очереди обновления параметров
   createMessageUpdateParameters();
   // Создание объекта протокола связи с утройством
-  dm_ = new DeviceModbus(ModbusParameters, 94,
+  dm_ = new DeviceModbus(ModbusParameters, 135,
                         VSD_UART, 115200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1,
                         "ProtocolVsdNovomet",
                         messageUpdateParameters_);
@@ -2351,10 +2351,8 @@ VsdNovomet::~VsdNovomet()
 void VsdNovomet::initParameters()
 {
   Vsd::initParameters();
-  unsigned short indexDevice = 0;
-  unsigned short indexModbus = 0;
-  for (indexModbus = 0; indexModbus <= 94; indexModbus++) {               // Цикл по карте регистров
-    indexDevice = getIndexAtID(dm_->getFieldID(indexModbus));             // Получаем индекс параметра в банке параметров
+  for (int indexModbus = 0; indexModbus <= 94; indexModbus++) {           // Цикл по карте регистров
+    int indexDevice = getIndexAtID(dm_->getFieldID(indexModbus));         // Получаем индекс параметра в банке параметров
     if (indexDevice) {                                                    // Если нашли параметр
       setFieldAccess(indexDevice, ACCESS_OPERATOR);                       // Уровень доступа оператор
       setFieldOperation(indexDevice, dm_->getFieldOperation(indexModbus));// Операции над параметром

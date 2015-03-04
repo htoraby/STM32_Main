@@ -135,7 +135,7 @@ enum enPhysic
   /// Cкорость
   PHYSIC_SPEED,
   /// Вязкость
-  PHYSIC_VISCCS_COS_PHIITY,
+  PHYSIC_VISCOSITY,
   /// Расход
   PHYSIC_FLOW,
   /// Мощность
