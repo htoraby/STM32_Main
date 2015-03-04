@@ -46,5 +46,5 @@ bool ProtectionImbalanceCurrentMotor::checkBlock()
 
 float ProtectionImbalanceCurrentMotor::calcValue()
 {
-  return parameters.getValue(CCS_MOTOR_IMBALANCE_CURRENT);
+  return parameters.getValue(CCS_MOTOR_CURRENT_IMBALANCE);
 }

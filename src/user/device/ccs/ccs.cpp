@@ -247,15 +247,15 @@ void Ccs::initParameters()
   parameters_[CCS_BEGIN - CCS_BEGIN].max           = 0.0;
   parameters_[CCS_BEGIN - CCS_BEGIN].def           = 0.0;
 
-  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].id          = CCS_ACCESS_LEVEL;
-  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].access      = ACCESS_OPERATOR;
-  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].operation   = OPERATION_WRITE;
-  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
-  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].validity    = VALIDITY_ERROR;
-  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].value   = ACCESS_OPERATOR;
-  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].min     = ACCESS_ERROR;
-  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].max     = ACCESS_LAST;
-  parameters_[CCS_ACCESS_LEVEL - CCS_BEGIN].def     = ACCESS_OPERATOR;
+  parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].id          = CCS_PASSWORD_LEVEL;
+  parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].access      = ACCESS_OPERATOR;
+  parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
+  parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].validity    = VALIDITY_ERROR;
+  parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].value   = ACCESS_OPERATOR;
+  parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].min     = ACCESS_ERROR;
+  parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].max     = ACCESS_LAST;
+  parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].def     = ACCESS_OPERATOR;
 
   parameters_[CCS_CONDITION - CCS_BEGIN].id          = CCS_CONDITION;
   parameters_[CCS_CONDITION - CCS_BEGIN].access      = ACCESS_OPERATOR;
