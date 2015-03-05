@@ -294,7 +294,7 @@ void DeviceModbus::exchangeTask(void)
   int Count = 0;
 
   while (1) {
-    osDelay(100);
+    osDelay(1);
 
     // Проверяем очередь параметров для обработки вне очереди
     int outOfTurn = getMessageOutOfTurn();
@@ -339,9 +339,22 @@ void DeviceModbus::exchangeTask(void)
             break;
         }
       }
-      else {
-        // TODO: Чтение вне очереди
+      else {// TODO: Чтение вне очереди
+        if (modbusParameters_[outOfTurn].Command == OPERATION_READ) {
+          int address = modbusParameters_[outOfTurn].Address;
+          if(!(mms_->readMultipleRegisters(deviceAddress_,address,regArr_,1))) {
+            int Index = getIndexAtAddress(address);
+            modbusParameters_[Index].Value.tdInt16[0] = regArr_[0];
+            modbusParameters_[Index].Validity = VALIDITY_GOOD;
+            putMessageUpdateID(modbusParameters_[Index].ID);
+          }
+          else {
+            int Index = getIndexAtAddress(address);
+            modbusParameters_[Index].Validity = VALIDITY_ERROR;
+          }
+        }
       }
+      modbusParameters_[outOfTurn].Command = OPERATION_ERROR;
     }
     else {
       outOfTurn = searchExchangeParameters();

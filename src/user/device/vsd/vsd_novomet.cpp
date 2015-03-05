@@ -2335,7 +2335,7 @@ VsdNovomet::VsdNovomet()
   createMessageUpdateParameters();
   // Создание объекта протокола связи с утройством
   dm_ = new DeviceModbus(ModbusParameters, 135,
-                        VSD_UART, 115200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1,
+                        VSD_UART, 19200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1,
                         "ProtocolVsdNovomet",
                         messageUpdateParameters_);
   // Создание задачи обновления параметров
@@ -2420,7 +2420,11 @@ void VsdNovomet::updateParameters()
 
 int VsdNovomet::checkInvertorStatus(uint16_t flag)
 {
-  if (((int)getValue(VSD_INVERTOR_STATUS) && flag) == flag)
+  dm_->setFieldCommand(dm_->getIndexAtID(VSD_INVERTOR_STATUS), OPERATION_READ);
+  dm_->putMessageOutOfTurn(dm_->getIndexAtID(VSD_INVERTOR_STATUS));
+  dm_->setFieldCommand(dm_->getIndexAtID(VSD_INVERTOR_EXT_STATUS), OPERATION_READ);
+  dm_->putMessageOutOfTurn(dm_->getIndexAtID(VSD_INVERTOR_EXT_STATUS));
+  if (((int)getValue(VSD_INVERTOR_STATUS) & flag) == flag)
     return 0;
   else
     return 1;
@@ -2432,9 +2436,6 @@ int VsdNovomet::startVSD()
   if (checkInvertorStatus(INV_STATUS_STARTED)) {
     // Если записали данные в устройство
     if (!writeParameter(VSD_INVERTOR_CONTROL, (float)INV_CONTROL_START)) {
-      // Устанавливаем более высокие приоритеты чтения регистров состояния инвертора
-      dm_->setFieldCommand(dm_->getIndexAtID(VSD_INVERTOR_STATUS), OPERATION_READ);
-      dm_->setFieldCommand(dm_->getIndexAtID(VSD_INVERTOR_EXT_STATUS), OPERATION_READ);
       // TODO: Надо продумать условие выхода из цикла если не запустились
       while (1) {
         // Если стоит  бит запуска двигателя
@@ -2442,6 +2443,7 @@ int VsdNovomet::startVSD()
           // Если стоит бит ожидания зарядки банок
           if (!checkInvertorStatus(INV_STATUS_WAIT_RECT_START)) {
             // TODO: Здесь должны крутиться пока не запустимся
+            osDelay(1);
           }
           else
             return RETURN_OK;
@@ -2463,8 +2465,6 @@ int VsdNovomet::stopVSD()
     // Если записали данные в устройство
     if (!writeParameter(VSD_INVERTOR_CONTROL, (float)INV_CONTROL_STOP)) {
       // Устанавливаем более высокие приоритеты чтения регистров состояния инвертора
-      dm_->setFieldCommand(dm_->getIndexAtID(VSD_INVERTOR_STATUS), OPERATION_READ);
-      dm_->setFieldCommand(dm_->getIndexAtID(VSD_INVERTOR_EXT_STATUS), OPERATION_READ);
       // TODO: Надо продумать условие выхода из цикла если не запустились
       while (1) {
         // Если не стоит бит работы двигателя двигателя
@@ -2473,7 +2473,9 @@ int VsdNovomet::stopVSD()
           if ((checkInvertorStatus(INV_STATUS_WAIT_RECT_STOP))){
             return RETURN_OK;
           }
+          osDelay(1);
         }
+        osDelay(1);
       }
     }
     else

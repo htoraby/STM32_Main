@@ -117,7 +117,7 @@ void Ccs::vsdConditionTask()
         case VSD_CONDITION_STOPPING:
           setLedCondition(LedConditionStopping);
           // TODO: Проверка ЧРП на переход в режим стопа
-          osDelay(10000);
+          //osDelay(10000);
           setValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
           break;
         case VSD_CONDITION_WAIT_STOP:
@@ -134,7 +134,7 @@ void Ccs::vsdConditionTask()
         case VSD_CONDITION_RUNNING:
           setLedCondition(LedConditionRunning);
           // TODO: Проверка ЧРП на переход в режим работы
-          osDelay(10000);
+          //osDelay(10000);
           setValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
           break;
         case VSD_CONDITION_WAIT_RUN:
