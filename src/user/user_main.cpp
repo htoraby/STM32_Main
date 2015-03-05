@@ -20,5 +20,5 @@ void userInit()
   parameters.init();
   ksu.init();
 
-  protectionInit();
+//  protectionInit();
 }

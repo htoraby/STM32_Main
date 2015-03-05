@@ -48,7 +48,7 @@ void Ccs::init()
   osThreadCreate(osThread(VsdConditionTask), this);
 
   osThreadDef(CcsMain, ccsMainTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
-  osThreadCreate(osThread(CcsMain), NULL);
+  osThreadCreate(osThread(CcsMain), this);
 }
 
 void Ccs::mainTask()
@@ -123,7 +123,7 @@ void Ccs::vsdConditionTask()
         case VSD_CONDITION_WAIT_STOP:
           if (getValue(CCS_CONDITION) == CCS_CONDITION_STOP)
             break;
-#ifndef DEBUG
+#ifdef DEBUG
           if (vsd->stopVSD() == RETURN_OK)
 #endif
             setValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
@@ -140,7 +140,7 @@ void Ccs::vsdConditionTask()
         case VSD_CONDITION_WAIT_RUN:
           if (getValue(CCS_CONDITION) == CCS_CONDITION_RUN)
             break;
-#ifndef DEBUG
+#ifdef DEBUG
           if (vsd->startVSD() == RETURN_OK)
 #endif
             setValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
