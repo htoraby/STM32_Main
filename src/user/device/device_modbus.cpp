@@ -233,7 +233,7 @@ void DeviceModbus::writeModbusParameter(int ID, float Value)
   // Применяем преобразование единиц измерения
   Value = (Value * (Units[Param->Physic][Param->Unit][0])) + (Units[Param->Physic][Param->Unit][1]);
   // Применяем преобразование коэффициента
-  Value = Value * Param->Coefficient;
+  Value = Value / Param->Coefficient;
   // Применяем тип данных
   switch (Param->TypeData) {
     case  TYPE_DATA_CHAR:
@@ -264,25 +264,29 @@ void DeviceModbus::writeModbusParameter(int ID, float Value)
 int DeviceModbus::searchExchangeParameters()
 {
   for (int i = indexExchange_; i < quantityParam_; i++) {
-    // Если счётчик циклов опроса параметра не достиг уставки частоты опроса
-    if (modbusParameters_[i].CntExchange < modbusParameters_[i].FreqExchange) {
-      modbusParameters_[i].CntExchange++;
-    }
-    else {
-      modbusParameters_[i].CntExchange = 0;
-      indexExchange_ = i+1;
-      return indexExchange_;
+    if (modbusParameters_[i].FreqExchange > 0) {
+      // Если счётчик циклов опроса параметра не достиг уставки частоты опроса
+      if (modbusParameters_[i].CntExchange < modbusParameters_[i].FreqExchange) {
+        modbusParameters_[i].CntExchange++;
+      }
+      else {
+        modbusParameters_[i].CntExchange = 0;
+        indexExchange_ = i+1;
+        return indexExchange_;
+      }
     }
   }
   for (int i = 1; i < indexExchange_; i++) {
-    // Если счётчик циклов опроса параметра не достиг уставки частоты опроса
-    if (modbusParameters_[i].CntExchange < modbusParameters_[i].FreqExchange) {
-      modbusParameters_[i].CntExchange++;
-    }
-    else {
-      modbusParameters_[i].CntExchange = 0;
-      indexExchange_ = i+1;
-      return i;
+    if (modbusParameters_[i].FreqExchange > 0) {
+      // Если счётчик циклов опроса параметра не достиг уставки частоты опроса
+      if (modbusParameters_[i].CntExchange < modbusParameters_[i].FreqExchange) {
+        modbusParameters_[i].CntExchange++;
+      }
+      else {
+        modbusParameters_[i].CntExchange = 0;
+        indexExchange_ = i+1;
+        return i;
+      }
     }
   }
   return 0;

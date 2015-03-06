@@ -101,7 +101,9 @@ public:
 
   void initModbusParameters();
   void initParameters();
-  void updateParameters();
+  void getNewValue(uint16_t id);
+
+  uint8_t setNewValue(uint16_t id, float value);
 
   /*!
    * \brief Метод проверки флага в регистре статуса инвертора
@@ -183,6 +185,90 @@ public:
   int setMaxFrequency(float value);
 
   /*!
+   * \brief Метод задания точки характеристики U/f F1
+   * \param value
+   * \return
+   */
+  int setUfF1(float value);
+
+  /*!
+   * \brief Метод задания точки характеристики U/f F2
+   * \param value
+   * \return
+   */
+
+  int setUfF2(float value);
+  /*!
+   * \brief Метод задания точки характеристики U/f F3
+   * \param value
+   * \return
+   */
+  int setUfF3(float value);
+
+  /*!
+   * \brief Метод задания точки характеристики U/f F4
+   * \param value
+   * \return
+   */
+  int setUfF4(float value);
+
+  /*!
+   * \brief Метод задания точки характеристики U/f F5
+   * \param value
+   * \return
+   */
+  int setUfF5(float value);
+
+  /*!
+   * \brief Метод задания точки характеристики U/f F6
+   * \param value
+   * \return
+   */
+  int setUfF6(float value);
+
+  /*!
+   * \brief Метод задания точки характиристики U/f U1
+   * \param value
+   * \return
+   */
+  int setUfU1(float value);
+
+  /*!
+   * \brief Метод задания точки характиристики U/f U2
+   * \param value
+   * \return
+   */
+  int setUfU2(float value);
+
+  /*!
+   * \brief Метод задания точки характиристики U/f U3
+   * \param value
+   * \return
+   */
+  int setUfU3(float value);
+
+  /*!
+   * \brief Метод задания точки характиристики U/f U4
+   * \param value
+   * \return
+   */
+  int setUfU4(float value);
+
+  /*!
+   * \brief Метод задания точки характиристики U/f U5
+   * \param value
+   * \return
+   */
+  int setUfU5(float value);
+
+  /*!
+   * \brief Метод задания точки характиристики U/f U6
+   * \param value
+   * \return
+   */
+  int setUfU6(float value);
+
+  /*!
    * \brief Метод задания направления вращения
    * \param value - направление вращения 0 прямое (левое),
    * 1 обратное (правое)
@@ -201,7 +287,6 @@ public:
    * \return
    */
   int setReverseRotation();
-
 
   /*!
    * \brief Метод записи параметра в устройство

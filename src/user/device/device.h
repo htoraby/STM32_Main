@@ -61,20 +61,21 @@ public:
    */
   void createThread(const char *threadName);
 
-  /*!
-   * \brief Метод создания очереди обновленных параметров
-   */
-  void createMessageUpdateParameters(void);
-
   //! Идентификатор задачи обновления значений параметра устройства
-  osThreadId updateParametersThreadId_;
+  osThreadId updateValueThreadId_;
+  //! Идентификатор очереди параметров с новыми значениями от устройства
+  osMessageQId getValueDeviceQueue_;
 
-  //! Идентификатор очереди обновленных параметров
-  osMessageQId messageUpdateParameters_;
+  //!
+  void updateValueTask();
+  virtual void getNewValue(uint16_t id);
 
-  int getMessageUpdateParameters(void);
-
-  virtual void updateParameters();
+  /*!
+   * \brief writeValue
+   * \param id
+   * \param value
+   */
+  virtual uint8_t setNewValue(uint16_t id, float value);
 
   /*!
    * \brief Метод поиска и получения индекса по ID параметра
@@ -109,6 +110,8 @@ public:
    */
   uint8_t getPhysic(unsigned short id);
 
+
+
   /*!
    * \brief Сохранение массива параметров на Flash
    */
@@ -118,6 +121,7 @@ public:
    * \brief Чтение массива параметров с Flash
    */
   StatusType readParameters();
+
 
 protected:
 

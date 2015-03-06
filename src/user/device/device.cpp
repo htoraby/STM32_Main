@@ -272,9 +272,9 @@ float Units[28][6][2] =
 };
 
 
-static void updateParametersTask(void *p)
+static void deviceUpdateValueTask(void *p)
 {
-  (static_cast<Device*>(p))->updateParameters();
+  (static_cast<Device*>(p))->updateValueTask();
 }
 
 Device::Device(uint32_t startAddrParams, parameter *parameters, uint16_t countParameter)
@@ -292,30 +292,17 @@ Device::~Device()
 
 void Device::createThread(const char *threadName)
 {
+  osMessageQDef(GetValueDeviceQueue, 100, uint32_t);
+  getValueDeviceQueue_ = osMessageCreate(osMessageQ(GetValueDeviceQueue), NULL);
+
   // Заполняем структуру для создания задачи
   osThreadDef_t t = {threadName,                  // Название задачи
-                     updateParametersTask,        // Указатель на функцию задачи
+                     deviceUpdateValueTask,       // Указатель на функцию задачи
                      osPriorityNormal,            // Приоритет задачи
                      0,                           //
                      2 * configMINIMAL_STACK_SIZE // Размер стека задачи
                     };
-  // Создаём задачу
-  updateParametersThreadId_ = osThreadCreate(&t, this);
-}
-
-void Device::createMessageUpdateParameters()
-{
-  osMessageQDef(MessageUpdateParameters, 100, uint32_t);
-  messageUpdateParameters_ = osMessageCreate(osMessageQ(MessageUpdateParameters), NULL);
-}
-
-int Device::getMessageUpdateParameters()
-{
-  osEvent Event;
-  Event = osMessageGet(messageUpdateParameters_, 0);
-  if (Event.status == osEventMessage)
-    return Event.value.v;
-  return 0;
+  updateValueThreadId_ = osThreadCreate(&t, this);// Создаём задачу
 }
 
 unsigned short Device::getFieldId(unsigned short index)
@@ -464,21 +451,28 @@ uint8_t Device::getPhysic(unsigned short id)
   return getFieldPhysic(getIndexAtID(id));
 }
 
-void Device::updateParameters()
+void Device::updateValueTask()
 {
+  osEvent event;
   while (1) {
     osDelay(1);
-    // Проверяем есть ли новые значения параметров от устройства
-    int UpdateParamID = getMessageUpdateParameters();
-    // По ID параметра находим параметр и обновляем значение
-    if (UpdateParamID) {
 
-    }
-    else {
-
-    }
+    event = osMessageGet(getValueDeviceQueue_, 0);
+    if (event.status == osEventMessage)
+      getNewValue(event.value.v);
   }
 }
+
+void Device::getNewValue(uint16_t)
+{
+
+}
+
+uint8_t Device::setNewValue(uint16_t id, float value)
+{
+  return 0;
+}
+
 
 StatusType Device::saveParameters()
 {
