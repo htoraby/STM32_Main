@@ -2436,7 +2436,7 @@ int VsdNovomet::checkInvertorStatus(uint16_t flag)
 int VsdNovomet::start()
 {
   // Если стоит бит запуска двигателя
-  if (checkInvertorStatus(INV_STATUS_STARTED))
+  if (!checkInvertorStatus(INV_STATUS_STARTED))
     return RETURN_OK;
 
   int timeMs = VSD_CMD_TIMEOUT;
@@ -2445,11 +2445,12 @@ int VsdNovomet::start()
   while (1) {
     if (timeMs >= VSD_CMD_TIMEOUT) {
       timeMs = 0;
+      countRepeats++;
 
-      if (++countRepeats > VSD_CMD_NUMBER_REPEATS)
+      if (countRepeats > VSD_CMD_NUMBER_REPEATS)
         return RETURN_ERROR;
 
-      if (!setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_START))
+      if (setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_START))
         return RETURN_ERROR;
     } else {
       timeMs++;
@@ -2474,7 +2475,7 @@ bool VsdNovomet::checkStart()
 
 int VsdNovomet::stop()
 {
-  // Если не стоит бит остановки по внешней команде
+  // Если стоит бит остановки по внешней команде
   if (!checkInvertorStatus(INV_STATUS_STOPPED_EXTERNAL))
     return RETURN_OK;
 
@@ -2484,11 +2485,12 @@ int VsdNovomet::stop()
   while (1) {
     if (timeMs >= VSD_CMD_TIMEOUT) {
       timeMs = 0;
+      countRepeats++;
 
-      if (++countRepeats > VSD_CMD_NUMBER_REPEATS)
+      if (countRepeats > VSD_CMD_NUMBER_REPEATS)
         return RETURN_ERROR;
 
-      if (!setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_STOP))
+      if (setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_STOP))
         return RETURN_ERROR;
     } else {
       timeMs++;
