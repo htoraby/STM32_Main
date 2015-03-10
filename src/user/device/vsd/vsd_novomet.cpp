@@ -2435,20 +2435,31 @@ int VsdNovomet::checkInvertorStatus(uint16_t flag)
 
 int VsdNovomet::start()
 {
-  // Если не стоит бит запуска двигателя
-  if (checkInvertorStatus(INV_STATUS_STARTED)) {
-    if (!setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_START)) {
-      // TODO: Надо продумать условие выхода из цикла если не запустились
-      while (1) {
-        if (!checkInvertorStatus(INV_STATUS_STARTED))
-          return RETURN_OK;
-        osDelay(1);
-      }
+  // Если стоит бит запуска двигателя
+  if (checkInvertorStatus(INV_STATUS_STARTED))
+    return RETURN_OK;
+
+  int timeMs = VSD_CMD_TIMEOUT;
+  int countRepeats = 0;
+
+  while (1) {
+    if (timeMs >= VSD_CMD_TIMEOUT) {
+      timeMs = 0;
+
+      if (++countRepeats > VSD_CMD_NUMBER_REPEATS)
+        return RETURN_ERROR;
+
+      if (!setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_START))
+        return RETURN_ERROR;
     } else {
-      return RETURN_ERROR;
+      timeMs++;
     }
+
+    if (!checkInvertorStatus(INV_STATUS_STARTED))
+      return RETURN_OK;
+
+    osDelay(1);
   }
-  return RETURN_OK;
 }
 
 bool VsdNovomet::checkStart()
@@ -2464,20 +2475,30 @@ bool VsdNovomet::checkStart()
 int VsdNovomet::stop()
 {
   // Если не стоит бит остановки по внешней команде
-  if (checkInvertorStatus(INV_STATUS_STOPPED_EXTERNAL)) {
-    if (!setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_STOP)) {
-      // TODO: Надо продумать условие выхода из цикла если не запустились
-      while (1) {
-        if (!checkInvertorStatus(INV_STATUS_STOPPED_EXTERNAL))
-          return RETURN_OK;
-        osDelay(1);
-      }
+  if (!checkInvertorStatus(INV_STATUS_STOPPED_EXTERNAL))
+    return RETURN_OK;
+
+  int timeMs = VSD_CMD_TIMEOUT;
+  int countRepeats = 0;
+
+  while (1) {
+    if (timeMs >= VSD_CMD_TIMEOUT) {
+      timeMs = 0;
+
+      if (++countRepeats > VSD_CMD_NUMBER_REPEATS)
+        return RETURN_ERROR;
+
+      if (!setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_STOP))
+        return RETURN_ERROR;
+    } else {
+      timeMs++;
     }
-    else {
-      return RETURN_ERROR;
-    }
+
+    if (!checkInvertorStatus(INV_STATUS_STOPPED_EXTERNAL))
+      return RETURN_OK;
+
+    osDelay(1);
   }
-  return RETURN_OK;
 }
 
 bool VsdNovomet::checkStop()

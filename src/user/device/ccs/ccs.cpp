@@ -125,6 +125,8 @@ void Ccs::vsdConditionTask()
           if (vsd->stop() == RETURN_OK) {
             setLedCondition(LedConditionStopping);
             setValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
+          } else {
+            // TODO: Ошибка останова
           }
         }
         break;
@@ -145,6 +147,8 @@ void Ccs::vsdConditionTask()
           if (vsd->start() == RETURN_OK) {
             setLedCondition(LedConditionWaitRun);
             setValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
+          } else {
+            // TODO: Ошибка запуска
           }
         }
         break;
