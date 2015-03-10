@@ -442,7 +442,6 @@ unsigned char Device::setValue(unsigned short id, float value)
   // Сообщить контроллеру визуализации об обновлении параметра
   if (value != valueOld)
     novobusSlave.putMessageParams(id);
-
   return 0;
 }
 

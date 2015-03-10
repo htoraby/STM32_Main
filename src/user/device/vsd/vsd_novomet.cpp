@@ -6,6 +6,7 @@
  */
 
 #include "vsd_novomet.h"
+#include "user_main.h"
 
 void VsdNovomet::initModbusParameters()
 {
@@ -2377,8 +2378,6 @@ void VsdNovomet::initParameters()
 void VsdNovomet::getNewValue(uint16_t id)
 {
   float value = 0;
-
-  // Получаем все поля параметра по ID
   ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtID(id));
   switch (param->TypeData) {
   case TYPE_DATA_INT16:
@@ -2409,15 +2408,35 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
   switch (id) {
   case VSD_FREQUENCY:
     return setFrequency(value);
-    break;
+  case VSD_MOTOR_TYPE:
+    return setMotorType(value);
+  case VSD_ROTATION:
+    return setRotation(value);
+  case VSD_LOW_LIM_SPEED_MOTOR:
+    if (value > getValue(VSD_FREQUENCY))
+      setFrequency(value);
+    return setMinFrequency(value);
+  case VSD_HIGH_LIM_SPEED_MOTOR:
+    if (value < getValue(VSD_FREQUENCY))
+      setFrequency(value);
+    return setMaxFrequency(value);
+  case  VSD_T_SPEEDUP:
+    return setSpeedUp(value);
+  case  VSD_T_SPEEDDOWN:
+    return setSpeedDown(value);
+  case  VSD_MOTOR_CONTROL:
+    return setMotorControl(value);
   default:
-    break;
+    int result = setValue(id, value);
+    if (!result)
+      writeToDevice(id, value);
+    return result;
   }
+}
 
-  int result = setValue(id, value);
-  if (!result)
-    dm_->writeModbusParameter(id, value);
-  return result;
+void VsdNovomet::writeToDevice(int id, float value)
+{
+  dm_->writeModbusParameter(id, value);
 }
 
 int VsdNovomet::checkInvertorStatus(uint16_t flag)
@@ -2434,10 +2453,8 @@ int VsdNovomet::checkInvertorStatus(uint16_t flag)
 
 int VsdNovomet::startVSD()
 {
-  // Если не стоит бит запуска двигателя
-  if (checkInvertorStatus(INV_STATUS_STARTED)) {
-    // Если записали данные в устройство
-    if (!setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_START)) {
+  if (checkInvertorStatus(INV_STATUS_STARTED)) {                  // Если не стоит бит запуска двигателя
+    if (!setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_START)) {  // Если послали команду в устройство
       // TODO: Надо продумать условие выхода из цикла если не запустились
       while (1) {
         // Если стоит  бит запуска двигателя
@@ -2489,18 +2506,12 @@ int VsdNovomet::stopVSD()
 
 int VsdNovomet::setFrequency(float value)
 {
-  /*
-  float highLimitFreq = getValue(VSD_HIGH_LIM_SPEED_MOTOR);
-  float lowLimitFreq = getValue(VSD_LOW_LIM_SPEED_MOTOR);
-  int result = checkRange(value, lowLimitFreq, highLimitFreq, 1);
-  if (!result) {*/
-    int result = setValue(VSD_FREQUENCY, value);
-    if (!result)
-      dm_->writeModbusParameter(VSD_FREQUENCY, value);
-  /*
+  if (Vsd::setFrequency(value))
+    return RETURN_ERROR;
+  else {
+    writeToDevice(VSD_FREQUENCY, value);
+    return RETURN_OK;
   }
-  */
-  return result;
 }
 
 int VsdNovomet::setMinFrequency(float value)
@@ -2509,66 +2520,99 @@ int VsdNovomet::setMinFrequency(float value)
     return RETURN_ERROR;
   }
   else {
-    dm_->writeModbusParameter(VSD_LOW_LIM_SPEED_MOTOR, getValue(VSD_LOW_LIM_SPEED_MOTOR));
-    dm_->writeModbusParameter(VSD_FREQUENCY,getValue(VSD_FREQUENCY));
+    writeToDevice(VSD_LOW_LIM_SPEED_MOTOR, getValue(VSD_LOW_LIM_SPEED_MOTOR));
     return RETURN_OK;
   }
 }
 
-// Метод задания максимальной частоты
 int VsdNovomet::setMaxFrequency(float value)
 {
   if (Vsd::setMaxFrequency(value)) {
     return RETURN_ERROR;
   }
   else {
-    dm_->writeModbusParameter(VSD_HIGH_LIM_SPEED_MOTOR, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
-    dm_->writeModbusParameter(VSD_FREQUENCY,getValue(VSD_FREQUENCY));
+    writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+    return RETURN_OK;
+  }
+}
+
+int VsdNovomet::setMotorType(float value)
+{
+  if (Vsd::setMotorType(value)) {           // Записываем тип двигателя в массив
+    logDebug.add(WarningMsg, "setTypeMotor");
+    return RETURN_ERROR;                    // Если не записали возвращаем ошибку
+  }
+  else {                                    // Если записали
+    if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) {
+      writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_ASYN_MOTOR);
+    }
+    else {
+      writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_VENT_MOTOR);
+    }
+    return RETURN_OK;
+  }
+}
+
+int VsdNovomet::setSpeedUp(float value)
+{
+  if (Vsd::setSpeedUp(value)) {
+    return RETURN_ERROR;
+  }
+  else {
+    writeToDevice(VSD_T_SPEEDUP, getValue(VSD_T_SPEEDUP));
+    return RETURN_OK;
+  }
+}
+
+int VsdNovomet::setSpeedDown(float value)
+{
+  if (Vsd::setSpeedDown(value)) {
+    return RETURN_ERROR;
+  }
+  else {
+    writeToDevice(VSD_T_SPEEDDOWN, getValue(VSD_T_SPEEDDOWN));
+    return RETURN_OK;
+  }
+}
+
+int VsdNovomet::setMotorControl(float value)
+{
+  if (!Vsd::setMotorControl(value)) {
+    if (getValue(VSD_MOTOR_CONTROL) == VSD_MOTOR_CONTROL_UF) {
+      writeToDevice(VSD_REGULATOR_QUEUE_5, VSD_REQULATOR_QUEUE_UF);
+      return RETURN_OK;
+    }
+    else {
+      if (getValue(VSD_MOTOR_CONTROL) == VSD_MOTOR_CONTROL_VECT) {
+        writeToDevice(VSD_REGULATOR_QUEUE_5, VSD_REQULATOR_QUEUE_VECT);
+        return RETURN_OK;
+      }
+    }
+  }
+  return RETURN_ERROR;
+}
+
+int VsdNovomet::setRotation(float value)
+{
+  if(Vsd::setRotation(value)){
+    return RETURN_ERROR;
+  }
+  else {
+    if (getValue(VSD_ROTATION) == VSD_ROTATION_DIRECT) {
+      writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_RIGHT_DIRECTION);
+    }
+    else {
+      writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_LEFT_DIRECTION);
+    }
     return RETURN_OK;
   }
 }
 
 
-int VsdNovomet::setRotation(uint8_t value)
-{
-  uint8_t result = RETURN_ERROR;
-  if (Vsd::setRotation(value)) {
-    return result;
-  }
-  else {
-    if (value)
-      result = setReverseRotation();
-    else
-      result = setDirectRotation();
-  }
-  return result;
-}
 
-int VsdNovomet::setDirectRotation()
-{
-  uint8_t result = RETURN_ERROR;
-  result = Vsd::setDirectRotation();
-  if (!result) {
-    dm_->writeModbusParameter(VSD_INVERTOR_CONTROL, INV_CONTROL_LEFT_DIRECTION);
-  }
-  return result;
-}
 
-int VsdNovomet::setReverseRotation()
-{
-  uint8_t result = RETURN_ERROR;
-  result = Vsd::setReverseRotation();
-  if (!result) {
-    dm_->writeModbusParameter(VSD_INVERTOR_CONTROL, INV_CONTROL_RIGHT_DIRECTION);
-  }
-  return result;
-}
 
-int VsdNovomet::writeParameter(uint16_t id, float value)
-{
-  dm_->writeModbusParameter(id, value);
-  return 0;
-}
+
 
 int VsdNovomet::setMainRegimeVSD()
 {

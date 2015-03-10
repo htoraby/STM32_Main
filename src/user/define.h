@@ -253,41 +253,30 @@ enum enPhysicAngle {
 };
 
 /*!
- * \brief The enTypeMotor enum
- * Перечисление типов двигателя
+ * \brief Перечисление типов двигателя
  */
-enum enTypeMotor {
-  /// Ассинхронный
-  VSD_TYPE_MOTOR_ASYNC = 1,
-  /// Вентильный 1000 оборотов
-  VSD_TYPE_MOTOR_VENT_1000,
-  /// Вентильный 3000 оборотов
-  VSD_TYPE_MOTOR_VENT_3000,
-  /// Вентильный 6000 оборотов
-  VSD_TYPE_MOTOR_VENT_6000
+enum enMotorType {
+  VSD_MOTOR_TYPE_ASYNC = 1,                 /// Асинхронный двигатель
+  VSD_MOTOR_TYPE_VENT                       /// Вентильный двигатель
 };
 
 /*!
- * \brief The enControlMotor enum
- * Перечисление типов управления двигателем
- */
-enum enControlMotor {
-  /// Метод управления U/f
-  VSD_CONTROL_MOTOR_UF = 1,
-  /// Векторное управление
-  VSD_CONTROL_MOTOR_VECT
-};
-
-/*!
- * \brief The enRotation enum
- * Перечисление направлений вращений двигателя
+ * \brief Перечисление направлений вращений двигателя
  */
 enum enRotation {
-  /// Правое направление вращения
-  VSD_ROTATION_RIGHT = 1,
-  /// Левое направление вращения
-  VSD_ROTATION_LEFT
+  VSD_ROTATION_DIRECT = 1,                   /// Прямое(правое) направление вращения
+  VSD_ROTATION_REVERSE                       /// Обратное(левое) направление вращения
 };
+
+/*!
+ * \brief Перечисление типов управления двигателем
+ */
+enum enMotorControl {
+  VSD_MOTOR_CONTROL_UF = 1,                 /// Метод управления U/f
+  VSD_MOTOR_CONTROL_VECT                    /// Векторное управление
+};
+
+
 
 /*!
  * \brief The enOnOff enum

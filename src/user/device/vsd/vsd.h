@@ -37,35 +37,14 @@ public:
    * \param TypeMotor - Тип двигателя
    * \return Код результата операции
    */
-  int setTypeMotor(double TypeMotor);
+  int setMotorType(float TypeMotor);
 
   /*!
-   * \brief Метод задания типа управления двигателя
-   * \param ControlMotor - Тип управления двигателя
+   * \brief Метод задания направления вращения
+   * \param value - направление вращения
    * \return Код результата операции
    */
-  int setTypeControlMotor(double ControlMotor);
-
-  /*!
-   * \brief Метод задания номинального тока двигателя
-   * \param CurrentMotor - номинальный ток двигателя
-   * \return Код результата операции
-   */
-  int setCurrentMotor(double CurrentMotor);
-
-  /*!
-   * \brief Метод записи номинального напряжения двигателя
-   * \param VoltageMotor - номинальное напряжение двигателя
-   * \return Код результата операции
-   */
-  int setVoltageMotor(double VoltageMotor);
-
-  /*!
-   * \brief Метод задания номинальной частоты двигателя
-   * \param FrequencyMotor
-   * \return Код результата операции
-   */
-  int setFrequencyMotor(double FrequencyMotor);
+  int setRotation(float value);
 
   /*!
    * \brief Метод запуска ЧРП
@@ -84,7 +63,7 @@ public:
    * \param value
    * \return Код результата операции
    */
-  virtual int setFrequency(float value) = 0;
+  int setFrequency(float value);
 
   /*!
    * \brief Метод задания минимальной частоты
@@ -101,36 +80,17 @@ public:
   int setMaxFrequency(float value);
 
   /*!
-   * \brief Метод задания направления вращения
-   * \param value - направление вращения
+   * \brief Метод задания времени набора частоты
    * \return Код результата операции
    */
-  int setRotation(uint8_t value);
+  int setSpeedUp(float value);
 
   /*!
-   * \brief Метод задания прямого направления вращения
-   * \return Код результата операции
-   */
-  int setDirectRotation();
-
-  /*!
-   * \brief Метод задания обратного направления вращения
-   * \return Код результата операции
-   */
-  int setReverseRotation();
-
-  /*!
-   * \brief Метод задания темпа набора частоты
-   * \return Код результата операции
-   */
-  int setSpeedUp(double SpeedUp);
-
-  /*!
-   * \brief Метод задания снижения частоты
+   * \brief Метод задания времени снижения частоты
    * \param SpeedDown
    * \return Код результата операции
    */
-  int setSpeedDown(double SpeedDown);
+  int setSpeedDown(float SpeedDown);
 
   /*!
    * \brief Метод задания противоЭДС
@@ -138,6 +98,13 @@ public:
    * \return Код результата операции
    */
   int setBackEmf(double BackEmf);
+
+  /*!
+   * \brief Метод задания типа управления двигателем
+   * \param value
+   * \return Код результата операции
+   */
+  int setMotorControl(float value);
 
   /*!
    * \brief Метод задания предела тока
