@@ -6,6 +6,7 @@
  */
 
 #include "vsd_novomet.h"
+#include "user_main.h"
 
 void VsdNovomet::initModbusParameters()
 {
@@ -2432,59 +2433,65 @@ int VsdNovomet::checkInvertorStatus(uint16_t flag)
     return 1;
 }
 
-int VsdNovomet::startVSD()
+int VsdNovomet::start()
 {
   // Если не стоит бит запуска двигателя
   if (checkInvertorStatus(INV_STATUS_STARTED)) {
-    // Если записали данные в устройство
     if (!setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_START)) {
       // TODO: Надо продумать условие выхода из цикла если не запустились
       while (1) {
-        // Если стоит  бит запуска двигателя
-        if (!checkInvertorStatus(INV_STATUS_STARTED)) {
-          // Если стоит бит ожидания зарядки банок
-          if (!checkInvertorStatus(INV_STATUS_WAIT_RECT_START)) {
-            // TODO: Здесь должны крутиться пока не запустимся
-            osDelay(1);
-          }
-          else
-            return RETURN_OK;
-        }
+        if (!checkInvertorStatus(INV_STATUS_STARTED))
+          return RETURN_OK;
         osDelay(1);
       }
-    }
-    else
+    } else {
       return RETURN_ERROR;
+    }
   }
-  else
-    return RETURN_OK;
+  return RETURN_OK;
 }
 
-int VsdNovomet::stopVSD()
+bool VsdNovomet::checkStart()
+{
+  if (!checkInvertorStatus(INV_STATUS_STARTED)) {
+    if (checkInvertorStatus(INV_STATUS_WAIT_RECT_START)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+int VsdNovomet::stop()
 {
   // Если не стоит бит остановки по внешней команде
   if (checkInvertorStatus(INV_STATUS_STOPPED_EXTERNAL)) {
-    // Если записали данные в устройство
     if (!setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_STOP)) {
-      // Устанавливаем более высокие приоритеты чтения регистров состояния инвертора
       // TODO: Надо продумать условие выхода из цикла если не запустились
       while (1) {
-        // Если не стоит бит работы двигателя двигателя
-        if (checkInvertorStatus(INV_STATUS_STARTED)) {
-          // Если не стоит бит ожидания выключения плат выпрямителя
-          if ((checkInvertorStatus(INV_STATUS_WAIT_RECT_STOP))){
-            return RETURN_OK;
-          }
-          osDelay(1);
-        }
+        if (!checkInvertorStatus(INV_STATUS_STOPPED_EXTERNAL))
+          return RETURN_OK;
         osDelay(1);
       }
     }
-    else
+    else {
       return RETURN_ERROR;
+    }
   }
-  else
-    return RETURN_OK;
+  return RETURN_OK;
+}
+
+bool VsdNovomet::checkStop()
+{
+  if (!checkInvertorStatus(INV_STATUS_STOPPED_EXTERNAL)) {
+    // Если не стоит бит работы двигателя двигателя
+    if (checkInvertorStatus(INV_STATUS_STARTED)) {
+      // Если не стоит бит ожидания выключения плат выпрямителя
+      if (checkInvertorStatus(INV_STATUS_WAIT_RECT_STOP)) {
+        return true;
+      }
+    }
+  }
+  return false;
 }
 
 int VsdNovomet::setFrequency(float value)

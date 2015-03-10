@@ -71,13 +71,25 @@ public:
    * \brief Метод запуска ЧРП
    * \return Код результата операции
    */
-  virtual int startVSD() = 0;
+  virtual int start() = 0;
 
   /*!
    * \brief Метод останова ЧРП
    * \return Код результата операции
    */
-  virtual int stopVSD() = 0;
+  virtual int stop() = 0;
+
+  /*!
+   * \brief Метод проверки запуска ЧРП
+   * \return true - запуск, false - нет
+   */
+  virtual bool checkStart() = 0;
+
+  /*!
+   * \brief Метод проверки останова ЧРП
+   * \return true - останов, false - нет
+   */
+  virtual bool checkStop() = 0;
 
   /*!
    * \brief Метод задания частоты
