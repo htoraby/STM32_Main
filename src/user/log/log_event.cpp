@@ -17,6 +17,7 @@ uint32_t LogEvent::add(uint8_t code, uint8_t type, uint16_t id,
 {
   memset(buffer, 0, sizeof(buffer));
 
+  const uint32_t addr = address();
   time_t time = getTime();
 
   *(uint32_t*)(buffer) = ++id_;
@@ -27,10 +28,11 @@ uint32_t LogEvent::add(uint8_t code, uint8_t type, uint16_t id,
   *(float*)(buffer+12) = oldValue;
   *(float*)(buffer+16) = newValue;
   *(uint8_t*)(buffer+20) = units;
-  write(buffer, 21);
+  StatusType status = write(buffer, 21);
 
   // Сообщить контроллеру визуализации о новом событии
-  novobusSlave.putMessageEvents(id);
+  if (status == StatusOk)
+    novobusSlave.putMessageEvents(addr);
 
   return id_;
 }

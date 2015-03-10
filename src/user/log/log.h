@@ -102,6 +102,10 @@ public:
    */
   static uint32_t idDebug_;
 
+  uint32_t address() const {
+    return address_;
+  }
+
 protected:
   /*!
    * \brief Метод записи данных в журнал
@@ -111,7 +115,7 @@ protected:
    * \param saveId - флаг сохранения Id события, по умолчанию true
    * \param endLog - флаг завершения архива (необходим для архива пусковых характеристик)
    */
-  void write(uint8_t *data, uint32_t size, bool saveId = true, bool endLog = false);
+  StatusType write(uint8_t *data, uint32_t size, bool saveId = true, bool endLog = false);
 
   /*!
    * \brief Буфер для формирования записи журнала
