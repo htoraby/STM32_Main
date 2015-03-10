@@ -24,6 +24,8 @@ public:
     LedConditionBlock,
     /// Горит зеленый светодиод
     LedConditionRun,
+    /// Мигает желтый светодиод
+    LedConditionWaitRun,
     /// Мигает зеленый светодиод
     LedConditionRunning,
     /// Мигает зеленый светодиод
@@ -115,8 +117,6 @@ private:
   osMessageQId ledMessage_;
   //! Предыдущие состояние станции
   int conditionOld;
-  //! Предыдущие состояние VSD
-  int vsdConditionOld;
 
 };
 

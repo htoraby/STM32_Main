@@ -11,6 +11,7 @@ static void novobusSlaveTask(void *p)
 
 NovobusSlave::NovobusSlave()
   : idsCount_(0)
+  , addrsCount_(0)
 {
 
 }
@@ -55,17 +56,15 @@ void NovobusSlave::task()
   }
 }
 
-// Получить элемент очереди внеочередной
 int NovobusSlave::getMessageEvents()
 {
   osEvent Event;
   Event = osMessageGet(messageEvents_, 0);
   if (Event.status == osEventMessage)
     return Event.value.v;
-  return 0;
+  return -1;
 }
 
-// Получить элемент очереди внеочередной
 int NovobusSlave::getMessageParams()
 {
   osEvent Event;
@@ -121,13 +120,13 @@ void NovobusSlave::receivePackage()
 
         // Команда чтения ID новых событий
       case UpdateEventsCommand:
-        if (!idsCount_) {
+        if (!addrsCount_) {
           if (osMessageNumber(messageEvents_)) {
             while (1) {
-              id.tdUint16[0] = getMessageEvents();
-              if (id.tdUint16[0]) {
-                idsBuffer_[idsCount_++] = id.tdUint16[0];
-                if (idsCount_ >= MAX_IDS_BUFFER)
+              int addr = getMessageEvents();
+              if (addr >= 0) {
+                addrsBuffer_[addrsCount_++] = addr;
+                if (addrsCount_ >= MAX_ADDRS_BUFFER)
                   break;
               }
               else {
@@ -137,21 +136,43 @@ void NovobusSlave::receivePackage()
           }
         }
 
-        if (idsCount_) {
-          for (int i = 0; i < idsCount_; ++i) {
-            txBuffer_[5 + i*2] = idsBuffer_[i] >> 8;
-            txBuffer_[6 + i*2] = idsBuffer_[i];
+        if (addrsCount_) {
+          for (int i = 0; i < addrsCount_; ++i) {
+            id.tdUint32 = addrsBuffer_[i];
+            txBuffer_[5 + i*4] = id.tdChar[3];
+            txBuffer_[6 + i*4] = id.tdChar[2];
+            txBuffer_[7 + i*4] = id.tdChar[1];
+            txBuffer_[8 + i*4] = id.tdChar[0];
           }
         }
 
         checkMessage();
 
-        sizePkt = 7 + idsCount_*2;
+        sizePkt = 7 + addrsCount_*4;
         break;
 
         // Команда чтения событий
       case ReadEventsCommand:
+        // После получения мастером списка адресов событий - обнуляем счётчик
+        addrsCount_ = 0;
 
+        // Количество событий = (размер пакета - заголовок - crc) / (размер адреса)
+        dataNumber = (sizePkt - 4)/4;
+        // Цикл по количеству считываемых событий
+        for (int i = 0; i < dataNumber; i++) {
+          // Получаем адрес события
+          id.tdChar[3] = rxBuffer_[2 + i*4];
+          id.tdChar[2] = rxBuffer_[3 + i*4];
+          id.tdChar[1] = rxBuffer_[4 + i*4];
+          id.tdChar[0] = rxBuffer_[5 + i*4];
+          int addr = id.tdUint32;
+          // Считываем событие
+          logRead(FlashSpi5, addr, &txBuffer_[5 + i*21], 21);
+        }
+
+        checkMessage();
+
+        sizePkt = 7 + dataNumber*21;
         break;
 
         // Команда чтения ID обновлённых параметров
@@ -186,7 +207,7 @@ void NovobusSlave::receivePackage()
 
         // Команда чтения параметров
       case ReadParamsCommand:
-        // После получения мастером списка ID параметров обнуляем счётчик
+        // После получения мастером списка ID параметров - обнуляем счётчик
         idsCount_ = 0;
 
         // Количество параметров = (размер пакета - заголовок - crc) /

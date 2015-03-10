@@ -6,6 +6,7 @@
 #include "host.h"
 
 #define MAX_IDS_BUFFER 40 //!< Максимальное количество ID во временом буффере
+#define MAX_ADDRS_BUFFER 10 //!< Максимальное количество адресов во временом буффере
 
 /*!
  * \brief Класс протокола обмена между stm32 и контроллером визуализации
@@ -56,13 +57,13 @@ public:
   void receivePackage();
 
   /*!
-   * \brief Метод получения события из очереди
-   * \return ID события
+   * \brief Метод получения адреса события из очереди
+   * \return адрес события
    */
   int getMessageEvents();
 
   /*!
-   * \brief Метод получения параметра из очереди
+   * \brief Метод получения ID параметра из очереди
    * \return ID параметра
    */
   int getMessageParams();
@@ -95,7 +96,9 @@ private:
   uint8_t txBuffer_[HOST_BUF_SIZE];
   uint8_t rxBuffer_[HOST_BUF_SIZE];
   uint16_t idsBuffer_[MAX_IDS_BUFFER];
+  uint32_t addrsBuffer_[MAX_ADDRS_BUFFER];
   uint8_t idsCount_;
+  uint8_t addrsCount_;
 
   uint16_t rxSize;
 };

@@ -69,11 +69,11 @@ void Log::deInit()
   framWriteData(addrFram_, (uint8_t*)&address_, 4);
 }
 
-void Log::write(uint8_t *data, uint32_t size, bool saveId, bool endLog)
+StatusType Log::write(uint8_t *data, uint32_t size, bool saveId, bool endLog)
 {
   // Проверка питания платы
   if (!isPowerGood())
-    return;
+    return StatusError;
 
   flashExtWrite(flashSpiNum_, address_, data, size);
 
@@ -112,4 +112,6 @@ void Log::write(uint8_t *data, uint32_t size, bool saveId, bool endLog)
   }
   // Сохранение адреса с которого начнётся следующая запись
   framWriteData(addrFram_, (uint8_t*)&address_, 4);
+
+  return StatusOk;
 }

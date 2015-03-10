@@ -12,7 +12,6 @@
 Ccs::Ccs()
   : Device(CCS_BEGIN, parametersArray_, CCS_END - CCS_BEGIN)
   , conditionOld(-1)
-  , vsdConditionOld(-1)
 {
   initParameters();
 }
@@ -98,6 +97,9 @@ void Ccs::ledConditionTask()
       case LedConditionRunning: case LedConditionStopping:
         toggleLed(WorkLed);
         break;
+      case LedConditionWaitRun:
+        toggleLed(WaitLed);
+        break;
     }
   }
 }
@@ -108,44 +110,48 @@ void Ccs::vsdConditionTask()
     osDelay(1);
 
     int vsdCondition = getValue(CCS_VSD_CONDITION);
-    if (vsdCondition != vsdConditionOld) {
-      vsdConditionOld = vsdCondition;
-      switch (vsdCondition) {
-        case VSD_CONDITION_STOP:
+    switch (vsdCondition) {
+      case VSD_CONDITION_STOP:
+        if (getValue(CCS_CONDITION) != CCS_CONDITION_STOP)
           setValue(CCS_CONDITION, CCS_CONDITION_STOP);
-          break;
-        case VSD_CONDITION_STOPPING:
-          setLedCondition(LedConditionStopping);
-          // TODO: Проверка ЧРП на переход в режим стопа
-          //osDelay(10000);
+        break;
+      case VSD_CONDITION_STOPPING:
+        if (vsd->checkStop()) {
           setValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
-          break;
-        case VSD_CONDITION_WAIT_STOP:
-          if (getValue(CCS_CONDITION) == CCS_CONDITION_STOP)
-            break;
-#ifdef DEBUG
-          if (vsd->stopVSD() == RETURN_OK)
-#endif
+        }
+        break;
+      case VSD_CONDITION_WAIT_STOP:
+        if (getValue(CCS_CONDITION) != CCS_CONDITION_STOP) {
+          if (vsd->stop() == RETURN_OK) {
+            setLedCondition(LedConditionStopping);
             setValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
-          break;
-        case VSD_CONDITION_RUN:
-          setValue(CCS_CONDITION, CCS_CONDITION_RUN);
-          break;
-        case VSD_CONDITION_RUNNING:
+          } else {
+            // TODO: Ошибка останова
+          }
+        }
+        break;
+      case VSD_CONDITION_RUN:
+        if (getValue(CCS_CONDITION) != CCS_CONDITION_RUN) {
+          if (vsd->getValue(VSD_FREQUENCY) == vsd->getValue(VSD_FREQUENCY_NOW))
+            setValue(CCS_CONDITION, CCS_CONDITION_RUN);
+        }
+        break;
+      case VSD_CONDITION_RUNNING:
+        if (vsd->checkStart()) {
           setLedCondition(LedConditionRunning);
-          // TODO: Проверка ЧРП на переход в режим работы
-          //osDelay(10000);
           setValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
-          break;
-        case VSD_CONDITION_WAIT_RUN:
-          if (getValue(CCS_CONDITION) == CCS_CONDITION_RUN)
-            break;
-#ifdef DEBUG
-          if (vsd->startVSD() == RETURN_OK)
-#endif
+        }
+        break;
+      case VSD_CONDITION_WAIT_RUN:
+        if (getValue(CCS_CONDITION) != CCS_CONDITION_RUN) {
+          if (vsd->start() == RETURN_OK) {
+            setLedCondition(LedConditionWaitRun);
             setValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
-          break;
-      }
+          } else {
+            // TODO: Ошибка запуска
+          }
+        }
+        break;
     }
   }
 }
