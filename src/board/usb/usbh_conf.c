@@ -57,7 +57,7 @@ void HAL_HCD_MspInit(HCD_HandleTypeDef* hhcd)
     GPIO_InitStruct.Pin = GPIO_PIN_11|GPIO_PIN_12;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
+    GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
     GPIO_InitStruct.Alternate = GPIO_AF10_OTG_FS;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
@@ -143,7 +143,7 @@ USBH_StatusTypeDef  USBH_LL_Init (USBH_HandleTypeDef *phost)
   if (phost->id == HOST_FS) {
 
   hhcd_USB_OTG_FS.Instance = USB_OTG_FS;
-  hhcd_USB_OTG_FS.Init.Host_channels = 8;
+  hhcd_USB_OTG_FS.Init.Host_channels = 11;
   hhcd_USB_OTG_FS.Init.speed = HCD_SPEED_FULL;
   hhcd_USB_OTG_FS.Init.dma_enable = DISABLE;
   hhcd_USB_OTG_FS.Init.phy_itface = HCD_PHY_EMBEDDED;

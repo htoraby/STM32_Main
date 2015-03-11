@@ -63,11 +63,13 @@ typedef enum {
  *
 */
 typedef enum {
+  //! FlashSpi5
   EndAddrEventLog = 0x00005000,
   EndAddrDataLog  = 0x0093B000,
   EndAddrRunLog   = 0x00BBC000,
   EndAddrAlarmLog = 0x00E3D000,
   EndAddrTmsLog   = 0x01000000,
+  //! FlashSpi1
   EndAddrDebugLog = 0x00800000,
 } EndAddrLog;
 

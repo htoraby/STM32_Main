@@ -167,7 +167,7 @@ void NovobusSlave::receivePackage()
           id.tdChar[0] = rxBuffer_[5 + i*4];
           int addr = id.tdUint32;
           // Считываем событие
-          logRead(FlashSpi5, addr, &txBuffer_[5 + i*21], 21);
+          logRead(addr, &txBuffer_[5 + i*21], 21);
         }
 
         checkMessage();
