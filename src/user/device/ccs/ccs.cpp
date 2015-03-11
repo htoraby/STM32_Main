@@ -90,6 +90,9 @@ void Ccs::ledConditionTask()
         case LedConditionRun:
           onLed(WorkLed);
           break;
+        case LedConditionWaitRun:
+          onLed(StopLed);
+          break;
       }
     }
 
@@ -144,8 +147,8 @@ void Ccs::vsdConditionTask()
         break;
       case VSD_CONDITION_WAIT_RUN:
         if (getValue(CCS_CONDITION) != CCS_CONDITION_RUN) {
+          setLedCondition(LedConditionWaitRun);
           if (vsd->start() == RETURN_OK) {
-            setLedCondition(LedConditionWaitRun);
             setValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
           } else {
             // TODO: Ошибка запуска
