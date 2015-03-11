@@ -53,7 +53,7 @@ void Ccs::init()
 void Ccs::mainTask()
 {
   while (1) {
-    osDelay(1);
+    osDelay(10);
 
     cmdCheck();
     conditionChanged();
@@ -107,7 +107,7 @@ void Ccs::ledConditionTask()
 void Ccs::vsdConditionTask()
 {
   while (1) {
-    osDelay(1);
+    osDelay(10);
 
     int vsdCondition = getValue(CCS_VSD_CONDITION);
     switch (vsdCondition) {
