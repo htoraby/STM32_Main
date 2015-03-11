@@ -95,6 +95,20 @@ public:
   int setMaxFrequency(float value);
 
   /*!
+   * \brief Метод задания темпа набора частоты Гц/с
+   * \param value
+   * \return
+   */
+  int setTempSpeedUp(float value);
+
+  /*!
+   * \brief Метод задания темпа снижения частоты Гц/с
+   * \param value
+   * \return
+   */
+  int setTempSpeedDown(float value);
+
+  /*!
    * \brief Метод задания времени набора частоты
    * \return Код результата операции
    */

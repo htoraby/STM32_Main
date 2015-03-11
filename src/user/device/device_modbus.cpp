@@ -299,7 +299,6 @@ void DeviceModbus::exchangeTask(void)
 
   while (1) {
     osDelay(1);
-
     // Проверяем очередь параметров для обработки вне очереди
     int outOfTurn = getMessageOutOfTurn();
     // Если есть параметры для обработки вне очереди

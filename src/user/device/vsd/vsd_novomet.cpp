@@ -2421,9 +2421,9 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
       setFrequency(value);
     return setMaxFrequency(value);
   case  VSD_T_SPEEDUP:
-    return setSpeedUp(value);
+    return setTempSpeedUp(value);
   case  VSD_T_SPEEDDOWN:
-    return setSpeedDown(value);
+    return setTempSpeedDown(value);
   case  VSD_MOTOR_CONTROL:
     return setMotorControl(value);
   default:
@@ -2580,9 +2580,9 @@ int VsdNovomet::setMotorType(float value)
   }
 }
 
-int VsdNovomet::setSpeedUp(float value)
+int VsdNovomet::setTempSpeedUp(float value)
 {
-  if (Vsd::setSpeedUp(value)) {
+  if (Vsd::setTempSpeedUp(value)) {
     return RETURN_ERROR;
   }
   else {
@@ -2591,9 +2591,9 @@ int VsdNovomet::setSpeedUp(float value)
   }
 }
 
-int VsdNovomet::setSpeedDown(float value)
+int VsdNovomet::setTempSpeedDown(float value)
 {
-  if (Vsd::setSpeedDown(value)) {
+  if (Vsd::setTempSpeedDown(value)) {
     return RETURN_ERROR;
   }
   else {

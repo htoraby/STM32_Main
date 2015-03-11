@@ -194,14 +194,14 @@ public:
    * \brief Метод задания времени набора частоты
    * \return Код результата операции
    */
-  int setSpeedUp(float value);
+  int setTempSpeedUp(float value);
 
   /*!
    * \brief Метод задания времени снижения частоты
    * \param SpeedDown
    * \return Код результата операции
    */
-  int setSpeedDown(float value);
+  int setTempSpeedDown(float value);
 
   /*!
    * \brief Метод задания типа управления двигателем, в ЧРП Новомет задание типа
