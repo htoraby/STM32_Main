@@ -300,6 +300,8 @@ StatusType flashExtRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32
   if (address > flashExts[num].size)
     return status;
 
+  osDelay(1);
+
   if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, TIMEOUT) == osEventTimeout)
     return status;
 
