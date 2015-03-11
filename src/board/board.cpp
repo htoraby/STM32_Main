@@ -1,4 +1,3 @@
-#include "ff.h"
 #include "ff_gen_drv.h"
 #include "usbh_diskio.h"
 #include "usb_host.h"

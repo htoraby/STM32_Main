@@ -520,8 +520,8 @@ static void testLog()
     logDebug.add(CriticalMsg, "Test Test Привет!");
   }
 
-  logRead(FlashSpi5, StartAddrEventLog, bufferRx, 20*4);
-  logRead(FlashSpi1, StartAddrDebugLog, bufferRx, 256*4);
+  logRead(StartAddrEventLog, bufferRx, 20*4);
+  logDebugRead(StartAddrDebugLog, bufferRx, 256*4);
   asm("nop");
 #endif
 }

@@ -29,12 +29,25 @@ void logErase();
 
 /*!
  * \brief Чтение архивов
- * \param num - номер spi Flash
  * \param address - адрес данных
  * \param data - указатель на данные
  * \param size - размер данных
  * \return StatusType - ошибка или ок
 */
-StatusType logRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size);
+StatusType logRead(uint32_t address, uint8_t *data, uint32_t size);
+
+/*!
+ * \brief Чтение программистких архивов
+ * \param address - адрес данных
+ * \param data - указатель на данные
+ * \param size - размер данных
+ * \return StatusType - ошибка или ок
+*/
+StatusType logDebugRead(uint32_t address, uint8_t *data, uint32_t size);
+
+/*!
+ * \brief Запуск сохранения архивов на USB flash
+*/
+void logStartSave();
 
 #endif // LOG_MAIN_H
