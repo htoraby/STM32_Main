@@ -81,7 +81,6 @@ int Parameters::setValue(unsigned short id, float value)
     return tms->setNewValue(id, value);
   if ((id > EM_BEGIN) && (id < EM_BEGIN))
     return em->setNewValue(id, value);
-
   return 0;
 }
 
