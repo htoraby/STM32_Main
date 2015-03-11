@@ -2441,10 +2441,6 @@ void VsdNovomet::writeToDevice(int id, float value)
 
 int VsdNovomet::checkInvertorStatus(uint16_t flag)
 {
-  dm_->setFieldCommand(dm_->getIndexAtID(VSD_INVERTOR_STATUS), OPERATION_READ);
-  dm_->putMessageOutOfTurn(dm_->getIndexAtID(VSD_INVERTOR_STATUS));
-  dm_->setFieldCommand(dm_->getIndexAtID(VSD_INVERTOR_EXT_STATUS), OPERATION_READ);
-  dm_->putMessageOutOfTurn(dm_->getIndexAtID(VSD_INVERTOR_EXT_STATUS));
   if (((int)getValue(VSD_INVERTOR_STATUS) & flag) == flag)
     return 0;
   else
@@ -2471,13 +2467,13 @@ int VsdNovomet::start()
       if (setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_START))
         return RETURN_ERROR;
     } else {
-      timeMs++;
+      timeMs = timeMs + 100;
     }
+
+    osDelay(100);
 
     if (!checkInvertorStatus(INV_STATUS_STARTED))
       return RETURN_OK;
-
-    osDelay(1);
   }
 }
 
@@ -2511,13 +2507,13 @@ int VsdNovomet::stop()
       if (setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_STOP))
         return RETURN_ERROR;
     } else {
-      timeMs++;
+      timeMs = timeMs + 100;
     }
+
+    osDelay(100);
 
     if (!checkInvertorStatus(INV_STATUS_STOPPED_EXTERNAL))
       return RETURN_OK;
-
-    osDelay(1);
   }
 }
 
