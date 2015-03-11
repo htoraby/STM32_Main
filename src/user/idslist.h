@@ -619,6 +619,7 @@ enum enID
   CCS_CMD_PROT_DI_4_SETPOINT_RESET,
   CCS_CMD_RGM_MODE_SAVE,
   CCS_CMD_COUNTER_ALL_RESET,
+  CCS_VOLTAGE_TRANS_OUT,
   CCS_END,                                  /// Последний параметр
   VSD_BEGIN        = 10000,                 /// Первый параметр ЧРП
   VSD_FREQUENCY_NOW,                        /// Выходная частота ПЧ
