@@ -293,7 +293,7 @@ Device::~Device()
 void Device::createThread(const char *threadName)
 {
   osMessageQDef(GetValueDeviceQueue, 100, uint32_t);
-  getValueDeviceQueue_ = osMessageCreate(osMessageQ(GetValueDeviceQueue), NULL);
+  getValueDeviceQId_ = osMessageCreate(osMessageQ(GetValueDeviceQueue), NULL);
 
   // Заполняем структуру для создания задачи
   osThreadDef_t t = {threadName,                  // Название задачи
@@ -415,7 +415,7 @@ float Device::applyUnit(float value, int physic, int units)
   return (value * Units[physic][units][0] + Units[physic][units][1]);
 }
 
-unsigned short Device::getIndexAtID(unsigned short id)
+unsigned short Device::getIndexAtId(unsigned short id)
 {
   if (getFieldId(id - startAddrParams_) == id)
     return (id - startAddrParams_);
@@ -427,14 +427,14 @@ unsigned short Device::getIndexAtID(unsigned short id)
 
 float Device::getValue(unsigned short id)
 {
-  return getFieldValue(getIndexAtID(id));
+  return getFieldValue(getIndexAtId(id));
 }
 
 unsigned char Device::setValue(unsigned short id, float value)
 {
   //TODO: Добавить проверки на корректность записываемых данных
 
-  uint16_t index = getIndexAtID(id);
+  uint16_t index = getIndexAtId(id);
   float valueOld = getFieldValue(index);
 
   setFieldValue(index, value);
@@ -447,7 +447,7 @@ unsigned char Device::setValue(unsigned short id, float value)
 
 uint8_t Device::getPhysic(unsigned short id)
 {
-  return getFieldPhysic(getIndexAtID(id));
+  return getFieldPhysic(getIndexAtId(id));
 }
 
 void Device::updateValueTask()
@@ -456,7 +456,7 @@ void Device::updateValueTask()
   while (1) {
     osDelay(1);
 
-    event = osMessageGet(getValueDeviceQueue_, 0);
+    event = osMessageGet(getValueDeviceQId_, 0);
     if (event.status == osEventMessage)
       getNewValue(event.value.v);
   }

@@ -64,7 +64,7 @@ public:
   //! Идентификатор задачи обновления значений параметра устройства
   osThreadId updateValueThreadId_;
   //! Идентификатор очереди параметров с новыми значениями от устройства
-  osMessageQId getValueDeviceQueue_;
+  osMessageQId getValueDeviceQId_;
 
   //!
   void updateValueTask();
@@ -82,7 +82,7 @@ public:
    * \param ID идентификатор параметра
    * \return Index
   */
-  unsigned short getIndexAtID(unsigned short id);
+  unsigned short getIndexAtId(unsigned short id);
 
   /*!
    * \brief Метод получения значения параметра по id

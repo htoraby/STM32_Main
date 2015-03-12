@@ -5,7 +5,7 @@
 #include "log_main.h"
 #include "ccs.h"
 #include "vsd_novomet.h"
-#include "tms.h"
+#include "tms_novomet.h"
 #include "em_set.h"
 #include "parameters.h"
 #include "novobus_slave.h"

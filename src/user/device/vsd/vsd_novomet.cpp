@@ -2328,12 +2328,12 @@ VsdNovomet::VsdNovomet()
 {
   initModbusParameters(); 
   // Создание задачи обновления параметров
-  createThread("UpdateParametersVsdNovomet");
+  createThread("UpdateParametersVsd");
   // Создание объекта протокола связи с утройством
-  dm_ = new DeviceModbus(modbusParameters_, 135,
-                        VSD_UART, 19200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1,
-                        "ProtocolVsdNovomet",
-                        getValueDeviceQueue_);
+  int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
+  dm_ = new DeviceModbus(modbusParameters_, count,
+                         VSD_UART, 19200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1);
+  dm_->createThread("ProtocolVsd", getValueDeviceQId_);
 }
 
 VsdNovomet::~VsdNovomet()
@@ -2345,8 +2345,9 @@ VsdNovomet::~VsdNovomet()
 void VsdNovomet::initParameters()
 {
   Vsd::initParameters();
-  for (int indexModbus = 0; indexModbus <= (sizeof(modbusParameters_) / sizeof(ModbusParameter)); indexModbus++) {           // Цикл по карте регистров
-    int indexDevice = getIndexAtID(dm_->getFieldID(indexModbus));         // Получаем индекс параметра в банке параметров
+  int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
+  for (int indexModbus = 0; indexModbus < count; indexModbus++) {         // Цикл по карте регистров
+    int indexDevice = getIndexAtId(dm_->getFieldID(indexModbus));         // Получаем индекс параметра в банке параметров
     if (indexDevice) {                                                    // Если нашли параметр
       setFieldAccess(indexDevice, ACCESS_OPERATOR);                       // Уровень доступа оператор
       setFieldOperation(indexDevice, dm_->getFieldOperation(indexModbus));// Операции над параметром
@@ -2373,28 +2374,28 @@ void VsdNovomet::initParameters()
 void VsdNovomet::getNewValue(uint16_t id)
 {
   float value = 0;
-  ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtID(id));
-  switch (param->TypeData) {
+  ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtId(id));
+  switch (param->typeData) {
   case TYPE_DATA_INT16:
-    value = (float)param->Value.tdInt16[0];
+    value = (float)param->value.tdInt16[0];
     break;
   case TYPE_DATA_UINT16:
-    value = (float)param->Value.tdUint16[0];
+    value = (float)param->value.tdUint16[0];
     break;
   case  TYPE_DATA_INT32:
-    value = (float)param->Value.tdInt32;
+    value = (float)param->value.tdInt32;
     break;
   case  TYPE_DATA_UINT32:
-    value = (float)param->Value.tdUint32;
+    value = (float)param->value.tdUint32;
     break;
   case  TYPE_DATA_FLOAT:
-    value = (float)param->Value.tdFloat;
+    value = (float)param->value.tdFloat;
     break;
   default:
     break;
   }
-  value = value * param->Coefficient;
-  value = (value - (Units[param->Physic][param->Unit][1]))/(Units[param->Physic][param->Unit][0]);
+  value = value * param->coefficient;
+  value = (value - (Units[param->physic][param->unit][1]))/(Units[param->physic][param->unit][0]);
   setValue(id, value);
 }
 

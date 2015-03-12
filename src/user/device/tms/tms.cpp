@@ -15,20 +15,20 @@ Tms::Tms() : Device(TMS_BEGIN, parametersArray_, TMS_END - TMS_BEGIN)
 
 Tms::~Tms()
 {
-	// TODO Auto-generated destructor stub
+
 }
 
 void Tms::initParameters()
-{
-  // Пустой элемент массива
-  parameters_[TMS_BEGIN - TMS_BEGIN].id            = TMS_BEGIN;
-  parameters_[TMS_BEGIN - TMS_BEGIN].access        = ACCESS_ERROR;
-  parameters_[TMS_BEGIN - TMS_BEGIN].operation     = OPERATION_ERROR;
-  parameters_[TMS_BEGIN - TMS_BEGIN].physic        = PHYSIC_ERROR;
-  parameters_[TMS_BEGIN - TMS_BEGIN].validity      = VALIDITY_ERROR;
-  parameters_[TMS_BEGIN - TMS_BEGIN].value         = 0.0;
-  parameters_[TMS_BEGIN - TMS_BEGIN].min           = 0.0;
-  parameters_[TMS_BEGIN - TMS_BEGIN].max           = 0.0;
-  parameters_[TMS_BEGIN - TMS_BEGIN].def           = 0.0;
+{ 
+  for (int index = 0; index < (TMS_END - TMS_BEGIN); index++) {
+    setFieldID(index, index + TMS_BEGIN);
+    setFieldAccess(index, ACCESS_ERROR);
+    setFieldOperation(index, OPERATION_ERROR);
+    setFieldPhysic(index, PHYSIC_ERROR);
+    setFieldMin(index, 0.0);
+    setFieldMax(index, 0.0);
+    setFieldDef(index, 0.0);
+    setFieldValidity(index, VALIDITY_ERROR);
+    setFieldValue(index, 0.0);
+  }
 }
-
