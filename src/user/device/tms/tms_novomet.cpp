@@ -35,7 +35,7 @@ void TmsNovomet::initParameters()
   // Заполняем карту регистров ТМС
   int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
   for (int indexModbus = 0; indexModbus <= count; indexModbus++) {
-    int indexDevice = getIndexAtID(dm_->getFieldID(indexModbus));
+    int indexDevice = getIndexAtId(dm_->getFieldID(indexModbus));
     if (indexDevice) {
       setFieldAccess(indexDevice, ACCESS_OPERATOR);
       setFieldOperation(indexDevice, dm_->getFieldOperation(indexModbus));

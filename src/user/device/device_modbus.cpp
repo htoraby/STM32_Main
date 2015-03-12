@@ -137,7 +137,7 @@ ModbusParameter* DeviceModbus::getFieldAll(int index)
   return &modbusParameters_[index];
 }
 
-int DeviceModbus::getIndexAtID(int id)
+int DeviceModbus::getIndexAtId(int id)
 {
   for (int i = 0; i < countParameter_; i++) {
     if (getFieldID(i) == id) {
@@ -174,7 +174,7 @@ int DeviceModbus::putMessageOutOfTurn(int element)
     return 0;
 }
 
-int DeviceModbus::putMessageUpdateID(int id)
+int DeviceModbus::putMessageUpdateId(int id)
 {
   osStatus status = osMessagePut(getValueDeviceQId_, id, 0);
   if (status == osOK)
@@ -185,9 +185,9 @@ int DeviceModbus::putMessageUpdateID(int id)
 
 void DeviceModbus::writeModbusParameter(int id, float value)
 {
-  int Index = getIndexAtID(id);
+  int index = getIndexAtId(id);
   // Получаем всю структуру параметра
-  ModbusParameter *param = getFieldAll(Index);
+  ModbusParameter *param = getFieldAll(index);
   // Применяем преобразование единиц измерения
   value = (value * (Units[param->physic][param->unit][0])) + (Units[param->physic][param->unit][1]);
   // Применяем преобразование коэффициента
@@ -216,7 +216,7 @@ void DeviceModbus::writeModbusParameter(int id, float value)
       break;
   }
   param->command = OPERATION_WRITE;
-  putMessageOutOfTurn(Index);
+  putMessageOutOfTurn(index);
 }
 
 int DeviceModbus::searchExchangeParameters()
@@ -306,7 +306,7 @@ void DeviceModbus::exchangeTask()
             int Index = getIndexAtAddress(address);
             modbusParameters_[Index].value.tdInt16[0] = regArr_[0];
             modbusParameters_[Index].validity = VALIDITY_GOOD;
-            putMessageUpdateID(modbusParameters_[Index].id);
+            putMessageUpdateId(modbusParameters_[Index].id);
           }
           else {
             int Index = getIndexAtAddress(address);
@@ -331,7 +331,7 @@ void DeviceModbus::exchangeTask()
               for (int i = 0; i < count; i++) {
                 modbusParameters_[Index].value.tdInt16[0] = regArr_[i];
                 modbusParameters_[Index].validity = VALIDITY_GOOD;
-                putMessageUpdateID(modbusParameters_[Index].id);
+                putMessageUpdateId(modbusParameters_[Index].id);
                 Index++;
               }
             }

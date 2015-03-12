@@ -82,7 +82,7 @@ public:
    * \param ID идентификатор параметра
    * \return Index
   */
-  unsigned short getIndexAtID(unsigned short id);
+  unsigned short getIndexAtId(unsigned short id);
 
   /*!
    * \brief Метод получения значения параметра по id

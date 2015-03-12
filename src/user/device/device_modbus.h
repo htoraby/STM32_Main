@@ -205,7 +205,7 @@ public:
    * \param ID идентификатор параметра
    * \return Index
   */
-  int getIndexAtID(int id);
+  int getIndexAtId(int id);
 
   /*!
    * \brief Метод поиска и получения индекса по Address параметра
@@ -255,7 +255,7 @@ public:
      * \param Element - элемент
      * \return
      */
-  int putMessageUpdateID(int id);
+  int putMessageUpdateId(int id);
 
   int searchExchangeParameters();
 
