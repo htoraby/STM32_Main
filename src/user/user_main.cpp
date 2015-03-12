@@ -14,7 +14,7 @@ void userInit()
   novobusSlave.init();
 
   vsd = new VsdNovomet();
-  tms = new Tms();
+  tms = new TmsNovomet();
   em = new EmSet();
 
   parameters.init();

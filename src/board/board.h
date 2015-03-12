@@ -25,6 +25,7 @@
 
 
 #define VSD_UART uart3
+#define TMS_UART uart2
 #define EM_UART uart7
 #define HOST_UART uart1
 #define HOST_TEST_UART uart6
