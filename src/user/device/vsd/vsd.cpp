@@ -92,6 +92,26 @@ int Vsd::setMaxFrequency(float value)
   }
 }
 
+int Vsd::setTempSpeedUp(float value)
+{
+  if (!setValue(VSD_TEMP_SPEEDUP, value)) {
+    if (!setValue(VSD_TIMER_DISPERSAL, getValue(VSD_FREQUENCY)/getValue(VSD_TEMP_SPEEDUP))) {
+      return setValue(VSD_T_SPEEDUP, 1/getValue(VSD_TEMP_SPEEDUP));
+    }
+  }
+  return RETURN_ERROR;
+}
+
+int Vsd::setTempSpeedDown(float value)
+{
+  if (!setValue(VSD_TEMP_SPEEDDOWN, value)) {
+    if (!setValue(VSD_TIMER_DELAY, getValue(VSD_FREQUENCY)/getValue(VSD_TEMP_SPEEDDOWN))) {
+      return setValue(VSD_T_SPEEDDOWN, 1/getValue(VSD_TEMP_SPEEDDOWN));
+    }
+  }
+  return RETURN_ERROR;
+}
+
 int Vsd::setSpeedUp(float value)
 {
   return setValue(VSD_T_SPEEDUP, value);

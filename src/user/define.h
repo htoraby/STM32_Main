@@ -244,12 +244,17 @@ enum enPhysicAcceleration {
 
 enum enPhysicFlow {
   FLOW_M3DAY = 1,
-  FLOW_LAST,
+  FLOW_LAST
 };
 
 enum enPhysicAngle {
   ANGLE_DEGREES = 1,
   ANGLE_LAST
+};
+
+enum enPhysicTemp {
+  TEMP_HZ_SECOND = 1,
+  TEMP_LAST
 };
 
 /*!
@@ -434,11 +439,13 @@ enum enUpdate {
 };
 
 enum enCcsCondition {
-  CCS_CONDITION_STOP,     //!< Останов
-  CCS_CONDITION_BLOCK,    //!< Блок
-  CCS_CONDITION_WAIT_APV, //!< АПВ
-  CCS_CONDITION_DELAY,    //!< Ожидание
-  CCS_CONDITION_RUN       //!< Работа
+  CCS_CONDITION_BLOCK,                      /// Блок
+  CCS_CONDITION_STOP,                       /// Останов
+  CCS_CONDITION_STOPPING,                   /// Торможение
+  CCS_CONDITION_WAIT_APV,                   /// Ожидание АПВ
+  CCS_CONDITION_DELAY,                      /// Ожидание срабатывания
+  CCS_CONDITION_RUNNING,                    /// Запуск
+  CCS_CONDITION_RUN                         /// Работа
 };
 
 enum enCcsWorkingMode {

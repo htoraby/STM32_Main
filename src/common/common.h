@@ -94,6 +94,14 @@ int checkRangeInclude(double value, double min, double max);
  */
 int checkRange(double value, double min, double max, uint8_t inc);
 
+/*!
+ * \brief Функция проверки бита
+ * \param value значение в котором проверяется бит
+ * \param bit номер бита слева направо от 0
+ * \return
+ */
+bool checkBit(uint32_t value, uint8_t bit);
+
 #endif
 
 #endif // COMMON_H
