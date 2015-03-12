@@ -202,18 +202,6 @@ int DeviceModbus::putMessageOutOfTurn(int Element)
     return 0;
 }
 
-/*
-// Получить элемент очереди готовых параметров
-int DeviceModbus::getMessageReadyParam()
-{
-  osEvent Event;
-  Event = osMessageGet(messageReadyParam_, 0);
-  if (Event.status == osEventMessage)
-    return Event.value.v;
-  return 0;
-}
-*/
-
 // Добавить параметр в очередь готовых параметров
 int DeviceModbus::putMessageUpdateID(int id)
 {
@@ -415,8 +403,6 @@ void DeviceModbus::exchangeTask(void)
             break;
         }
       }
-      //else
-      // ВНИМАНИЕ!!! Сломался exchangeCycle
     }
   }
 }
