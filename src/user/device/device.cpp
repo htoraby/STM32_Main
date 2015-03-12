@@ -293,7 +293,7 @@ Device::~Device()
 void Device::createThread(const char *threadName)
 {
   osMessageQDef(GetValueDeviceQueue, 100, uint32_t);
-  getValueDeviceQueue_ = osMessageCreate(osMessageQ(GetValueDeviceQueue), NULL);
+  getValueDeviceQId_ = osMessageCreate(osMessageQ(GetValueDeviceQueue), NULL);
 
   // Заполняем структуру для создания задачи
   osThreadDef_t t = {threadName,                  // Название задачи
@@ -456,7 +456,7 @@ void Device::updateValueTask()
   while (1) {
     osDelay(1);
 
-    event = osMessageGet(getValueDeviceQueue_, 0);
+    event = osMessageGet(getValueDeviceQId_, 0);
     if (event.status == osEventMessage)
       getNewValue(event.value.v);
   }

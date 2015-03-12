@@ -12,171 +12,174 @@
 #include "define.h"
 #include "modbus_master_serial.h"
 
-/// Структура для хранения полей параметра из карты устройства
+//! Структура для хранения полей параметра из карты устройства
 struct ModbusParameter
 {  
-  int ID;                       /// Уникальный идентификатор параметра
-  int Address;                  /// Адрес регистра в устройстве
-  int Operation;                /// Операции с параметром
-  int Physic;                   /// Физическая величина параметра
-  int Unit;                     /// Единицы измерения параметра
-  int TypeData;                 /// Тип данных
-  float Coefficient;            /// Коэффициент преобразования параметра
-  float Minimum;                /// Минимальное значение параметра
-  float Maximum;                /// Максимально значение параметра
-  float Default;                /// Значение по умолчанию
-  int FreqExchange;             /// Количество раз во сколько циклов нужно опрашивать параметр
-  int CntExchange;              /// Количество циклов когда проверяли нужно ли опрашивать параметр
-  int Command;                  /// Команда читать или писать
-  int Validity;                 /// Флаг получено ли значение параметра
-  unTypeData Value;             /// Значение, записываемое или считанное
+  int id;              //!< Уникальный идентификатор параметра
+  int address;         //!< Адрес регистра в устройстве
+  int operation;       //!< Операции с параметром
+  int physic;          //!< Физическая величина параметра
+  int unit;            //!< Единицы измерения параметра
+  int typeData;        //!< Тип данных
+  float coefficient;   //!< Коэффициент преобразования параметра
+  float min;           //!< Минимальное значение параметра
+  float max;           //!< Максимально значение параметра
+  float def;           //!< Значение по умолчанию
+  int freqExchange;    //!< Количество раз во сколько циклов нужно опрашивать параметр
+  int cntExchange;     //!< Количество циклов когда проверяли нужно ли опрашивать параметр
+  int command;         //!< Команда читать или писать
+  int validity;        //!< Флаг получено ли значение параметра
+  unTypeData value;    //!< Значение, записываемое или считанное
 };
 
 /*!
- \class DeviceModbus
- \brief Класс для устройств работающих по протоколу Modbus.
-  Содержит функции организации цикла чтения и записи параметров устройства
+ * \class DeviceModbus
+ * \brief Класс для устройств работающих по протоколу Modbus.
+ * Содержит функции организации цикла чтения и записи параметров устройства
 */ 
 class DeviceModbus
 {
 public:
   /*!
-   * \brief DeviceModbus
-   * Конструктор класса
-   * \param MapRegisters - указатель на карту регистров
-   * \param Quantity Длина массива карты регистров
-   * \param PortName - номер имя порта uart
-   * \param BaudRate - скорость обмена
-   * \param DataBits - количество бит данных
-   * \param StopBits - количество стоп бит
-   * \param Parity - чётность
-   * \param DeviceAddress - адресс устройства
-   * \return Код результата операции
+   * \brief Конструктор класса
+   *
+   * \param modbusParameters - указатель на карту регистров
+   * \param countParameter Количество регистров в массиве
+   * \param portName - номер имя порта uart
+   * \param baudRate - скорость обмена
+   * \param dataBits - количество бит данных
+   * \param stopBits - количество стоп бит
+   * \param parity - чётность
+   * \param address - адресс устройства
    */
-  DeviceModbus(ModbusParameter *MapRegisters,
-               int Quantity,
-               int PortName,
-               long BaudRate,
-               int DataBits,
-               int StopBits,
-               int Parity,
-               int Address,
-               const char *threadName,
-               osMessageQId messageUpdateID);
-  /// Деструктор по умолчанию
+  DeviceModbus(ModbusParameter *modbusParameters,
+               int countParameter,
+               int portName,
+               long baudRate,
+               int dataBits,
+               int stopBits,
+               int parity,
+               int address);
   virtual ~DeviceModbus();
+
+  /*!
+   * \brief Метод создания задачи
+   * \param threadName - имя задачи
+   * \param getValueDeviceQId - Очередь параметров со значениями от устройства
+   */
+  void createThread(const char *threadName, osMessageQId getValueDeviceQId);
 
   // Базовые методы работы со структурой ModbusParameter
   /*!
    * \brief Метод получения ID параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
+   * \param index - индекс параметра в массиве
    * \return поле ID
    */
-  int getFieldID(int Index);
+  int getFieldID(int index);
 
   /*!
    * \brief Метод получения Address параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
+   * \param index - индекс параметра в массиве
    * \return поле Address
    */
-  int getFieldAddress(int Index);
+  int getFieldAddress(int index);
 
   /*!
    * \brief Метод получения Operation параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
+   * \param index - индекс параметра в массиве
    * \return поле Operation
    */
-  int getFieldOperation(int Index);
+  int getFieldOperation(int index);
 
   /*!
    * \brief Метод получения Physic параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
+   * \param index - индекс параметра в массиве
    * \return поле Physic
    */
-  int getFieldPhysic(int Index);
+  int getFieldPhysic(int index);
 
   /*!
    * \brief Метод получения Unit параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
+   * \param index - индекс параметра в массиве
    * \return поле Unit
    */
-  int getFieldUnit(int Index);
+  int getFieldUnit(int index);
 
   /*!
    * \brief Метод получения TypeData параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
+   * \param index - индекс параметра в массиве
    * \return поле TypeData
    */
-  int getFieldTypeData(int Index);
+  int getFieldTypeData(int index);
 
   /*!
    * \brief Метод получения Coefficient параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
+   * \param index - индекс параметра в массиве
    * \return поле Coefficient
    */
-  float getFieldCoefficient(int Index);
+  float getFieldCoefficient(int index);
 
   /*!
    * \brief Метод получения Minimum параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
+   * \param index - индекс параметра в массиве
    * \return поле Minimum
    */
-  float getFieldMinimum(int Index);
+  float getFieldMinimum(int index);
 
   /*!
    * \brief Метод получения Maximum параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
+   * \param index - индекс параметра в массиве
    * \return поле Maximum
    */
-  float getFieldMaximum(int Index);
+  float getFieldMaximum(int index);
 
-  float getFieldDefault(int Index);
+  float getFieldDefault(int index);
 
   /*!
    * \brief Метод получения FreqExchange параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
+   * \param index - индекс параметра в массиве
    * \return поле FreqExchange
    */
-  int getFieldFreqExchange(int Index);
+  int getFieldFreqExchange(int index);
 
   /*!
    * \brief Метод получения CntExchange параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
+   * \param index - индекс параметра в массиве
    * \return поле CntExchange
    */
-  int getFieldCntExchange(int Index);
+  int getFieldCntExchange(int index);
 
   /*!
    * \brief Метод задания CntExchange параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
+   * \param index - индекс параметра в массиве
    * \return поле CntExchange
    */
-  int setFieldCntExchange(int Index, int CntExchange);
+  int setFieldCntExchange(int index, int cntExchange);
 
   /*!
    * \brief Метод получения Command параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
+   * \param index - индекс параметра в массиве
    * \return поле Command
    */
-  int getFieldCommand(int Index);
+  int getFieldCommand(int index);
 
   /*!
    * \brief Метод присвоения Command параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
+   * \param index - индекс параметра в массиве
    * \param Command Присваиваемая команда
    */
-  int setFieldCommand(int Index, int Command);
+  int setFieldCommand(int index, int command);
 
     /*!
    * \brief Метод получения Validity параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
+   * \param index - индекс параметра в массиве
    * \return поле Validity
    */
-  int getFieldValidity(int Index);
+  int getFieldValidity(int index);
 
   /*!
    * \brief Метод задания Validity параметра по индексу в массиве
-   * \param Index индекс параметра в массиве
+   * \param index - индекс параметра в массиве
    * \param значение Validity
    * \return
    */
@@ -184,46 +187,46 @@ public:
 
   /*!
    * \brief Метод получения Value параметра по индексу в массиве параметров
-   * \param Index индекс параметра в массиве
+   * \param index - индекс параметра в массиве
    * \return поле Value
    */
-  unTypeData getFieldValue(int Index);
+  unTypeData getFieldValue(int index);
 
 
   /*!
    * \brief Метод получения указателя на параметр по индексу
-   * \param Index индекс параметра в массиве
+   * \param index - индекс параметра в массиве
    * \return Указатель
    */
-  ModbusParameter *getFieldAll(int Index);
+  ModbusParameter *getFieldAll(int index);
 
   /*!
    * \brief Метод поиска и получения индекса по ID параметра
    * \param ID идентификатор параметра
    * \return Index
   */
-  int getIndexAtID(int ID);
+  int getIndexAtID(int id);
 
   /*!
    * \brief Метод поиска и получения индекса по Address параметра
-   * \param Address идентификатор параметра
+   * \param address - идентификатор параметра
    * \return Index
   */
-  int getIndexAtAddress(int Address);
+  int getIndexAtAddress(int address);
 
   /*!
    * \brief Метод записи параметра в устройство
    * \param ID идентификатор параметра
    * \param Value значение
   */
-  void writeModbusParameter(int ID, float Value);
+  void writeModbusParameter(int id, float value);
 
   // Методы для работы цикла опроса и записи параметров
   /*!
    \brief Метод циклического опроса устройства по Modbus и/или внеочередной
     записи и/или чтения параметра
   */
-  void exchangeTask(void);
+  void exchangeTask();
 
   /*!
    * \brief putTurn метод добавления элемента в очередь
@@ -237,8 +240,7 @@ public:
     * \param Index Индекс параметра
     * \return добавили элемент в очередь или нет
     */
-  int putMessageOutOfTurn(int Element);
-
+  int putMessageOutOfTurn(int element);
 
   /*!
      * \brief getMessageReadyParam получить элемент
@@ -262,32 +264,6 @@ public:
   float float32Arr_[62];
 
 private:
-  int quantityParam_;
-  int deviceAddress_;
-  int indexExchange_;
-
-  // Идентификатор задачи
-  osThreadId threadId_;
-
-  // Идентификатор очереди параметров опроса вне основного цикла
-  osMessageQId messageOutOfTurn_;
-
-  osMessageQId messageUpdateID_;
-
-  ModbusParameter *modbusParameters_;
-
-  /*!
-   * \brief Метод получения количества регистров в карте регистров
-   * \return Количество врегистров
-  */
-  int getQuantityParam();
-
-  /*!
-   * \brief Метод записи количества регистров в карте регистров
-   * \param Quantity количество регистров
-  */
-  void setQuantityParam(int Quantity);
-
   /*!
    * \brief Метод получения адреса устройства
    * \return Адрес устройства
@@ -298,7 +274,22 @@ private:
    * \brief Метод записи адреса устройства
    * \param Адрес устройства
   */
-  void setDeviceAddress(int Address);
+  void setDeviceAddress(int address);
+
+  //! Указатель на массив параметров устройства
+  ModbusParameter *modbusParameters_;
+  //! Количество параметров в массиве
+  uint16_t countParameter_;
+
+  int deviceAddress_;
+  int indexExchange_;
+
+  //! Идентификатор задачи
+  osThreadId threadId_;
+  //! Идентификатор очереди параметров опроса вне основного цикла
+  osMessageQId messageOutOfTurn_;
+  //! Идентификатор очереди параметров с новыми значениями от устройства
+  osMessageQId getValueDeviceQId_;
 
   ModbusMasterSerial *mms_;
 

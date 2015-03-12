@@ -64,7 +64,7 @@ public:
   //! Идентификатор задачи обновления значений параметра устройства
   osThreadId updateValueThreadId_;
   //! Идентификатор очереди параметров с новыми значениями от устройства
-  osMessageQId getValueDeviceQueue_;
+  osMessageQId getValueDeviceQId_;
 
   //!
   void updateValueTask();

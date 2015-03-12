@@ -10,7 +10,7 @@
 
 void VsdNovomet::initModbusParameters()
 {
-  ModbusParameters[0] = {// Пустой регистр
+  modbusParameters_[0] = {// Пустой регистр
                          VSD_BEGIN,
                          0,
                          0,
@@ -27,7 +27,7 @@ void VsdNovomet::initModbusParameters()
                          0,
                          0
   };
-  ModbusParameters[1] = {// Уставка рабочего угла
+  modbusParameters_[1] = {// Уставка рабочего угла
                          VSD_THYR_ANGLE_REFERENCE,
                          10,                // Адрес регистра в устройстве
                          OPERATION_WRITE,   // Операции с параметром
@@ -44,7 +44,7 @@ void VsdNovomet::initModbusParameters()
                          VALIDITY_ERROR,    // Поле состояния параметра
                          0                  // Значение
   };
-  ModbusParameters[2] = {// Статус платы выпрямителя. Регистр для внутреннего использования в ПЧ
+  modbusParameters_[2] = {// Статус платы выпрямителя. Регистр для внутреннего использования в ПЧ
                          VSD_THYR_STATUS,   // Уникальный идентификатор
                          11,                // Адрес регистра в устройстве
                          OPERATION_READ,    // Операции с параметром
@@ -61,7 +61,7 @@ void VsdNovomet::initModbusParameters()
                          VALIDITY_ERROR,    // Поле состояния параметра
                          0                  // Значение
   };
-  ModbusParameters[3] = {// Регистр управления тиристорами; используется только контроллером ПЧ
+  modbusParameters_[3] = {// Регистр управления тиристорами; используется только контроллером ПЧ
                          VSD_THYR_CONTROL,  // Уникальный идентификатор параметра
                          12,                // Адрес регистра в устройстве
                          OPERATION_WRITE,   // Операции с параметром
@@ -78,7 +78,7 @@ void VsdNovomet::initModbusParameters()
                          VALIDITY_ERROR,    // Поле состояния параметра
                          0                  // Значение
   };
-  ModbusParameters[4] = {// Напряжение защиты от КЗ инвертора
+  modbusParameters_[4] = {// Напряжение защиты от КЗ инвертора
                          VSD_THYR_VOLT_SHORT_CUILT,
                          13,                // Адрес регистра в устройстве
                          OPERATION_WRITE,   // Операции с параметром
@@ -95,7 +95,7 @@ void VsdNovomet::initModbusParameters()
                          VALIDITY_ERROR,    // Поле состояния параметра
                          0                  // Значение
   };
-  ModbusParameters[5] = {// Статус индикатора
+  modbusParameters_[5] = {// Статус индикатора
                          VSD_INDICATOR_STATUS,
                          20,                // Адрес регистра в устройстве
                          OPERATION_READ,    // Операции с параметром
@@ -112,7 +112,7 @@ void VsdNovomet::initModbusParameters()
                          VALIDITY_ERROR,    // Поле состояния параметра
                          0                  // Значение
   };
-  ModbusParameters[6] = {// Состояние дискретных выходов
+  modbusParameters_[6] = {// Состояние дискретных выходов
                          VSD_DOUTPUTS,      // Уникальный идентификатор параметра
                          30,                // Адрес регистра в устройстве
                          OPERATION_READ,    // Операции с параметром
@@ -129,7 +129,7 @@ void VsdNovomet::initModbusParameters()
                          VALIDITY_ERROR,    // Поле состояния параметра
                          0                  // Значение
   };
-  ModbusParameters[7] = {// Состояние дискретных входов
+  modbusParameters_[7] = {// Состояние дискретных входов
                          VSD_DINPUTS,       // Уникальный идентификатор параметра
                          31,                // Адрес регистра в устройстве
                          OPERATION_READ,    // Операции с параметром
@@ -146,7 +146,7 @@ void VsdNovomet::initModbusParameters()
                          VALIDITY_ERROR,    // Поле состояния параметра
                          0                  // Значение
   };
-  ModbusParameters[8] = {// Установить выход в 1
+  modbusParameters_[8] = {// Установить выход в 1
                          VSD_DOUTPUTS_ENABLE,
                          32,                // Адрес регистра в устройстве
                          OPERATION_WRITE,   // Операции с параметром
@@ -163,7 +163,7 @@ void VsdNovomet::initModbusParameters()
                          VALIDITY_ERROR,    // Поле состояния параметра
                          0                  // Значение
   }; 
-  ModbusParameters[9] = {// Установить выход в 0
+  modbusParameters_[9] = {// Установить выход в 0
                          VSD_DOUTPUTS_DISABLE,
                          33,                // Адрес регистра в устройстве
                          OPERATION_WRITE,   // Операции с параметром
@@ -180,7 +180,7 @@ void VsdNovomet::initModbusParameters()
                          VALIDITY_ERROR,    // Поле состояния параметра
                          0                  // Значение
   };
-  ModbusParameters[10] = {// Температура включения вентилятора
+  modbusParameters_[10] = {// Температура включения вентилятора
                           VSD_VENT_ON_TEMPERATURE,
                           34,               // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -197,7 +197,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[11] = {// Температура выключения вентилятора
+  modbusParameters_[11] = {// Температура выключения вентилятора
                           VSD_VENT_OFF_TEMPERATURE,
                           35,               // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -214,7 +214,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[12] = {// Период проверки температуры вентилятора
+  modbusParameters_[12] = {// Период проверки температуры вентилятора
                           VSD_VENT_PERIOD,  // Уникальный идентификатор параметра
                           36,               // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -231,7 +231,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[13] = {// Период проверки температуры вентилятора
+  modbusParameters_[13] = {// Период проверки температуры вентилятора
                           VSD_VENT_TEMPERATURE_FAULT,
                           37,               // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -248,7 +248,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[14] = {// Регистр управляющий запуском
+  modbusParameters_[14] = {// Регистр управляющий запуском
                           VSD_INVERTOR_CONTROL,
                           90,               // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -265,7 +265,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[15] = {// Регистр статуса инвертора
+  modbusParameters_[15] = {// Регистр статуса инвертора
                           VSD_INVERTOR_STATUS,
                           91,               // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -282,7 +282,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[16] = {// Уставка частоты
+  modbusParameters_[16] = {// Уставка частоты
                           VSD_FREQUENCY,    // Уникальный идентификатор параметра
                           92,               // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -299,7 +299,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[17] = {// Текущее значение частоты
+  modbusParameters_[17] = {// Текущее значение частоты
                           VSD_FREQUENCY_NOW,// Уникальный идентификатор параметра
                           93,               // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -316,7 +316,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[18] = {// Аварийная частота
+  modbusParameters_[18] = {// Аварийная частота
                           VSD_FREQUENCY_ERROR,
                           94,               // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -333,7 +333,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[19] = {// Максимум частоты уставки
+  modbusParameters_[19] = {// Максимум частоты уставки
                           VSD_HIGH_LIM_SPEED_MOTOR,
                           95,               // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -350,7 +350,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[20] = {// Период нарастания частоты
+  modbusParameters_[20] = {// Период нарастания частоты
                           VSD_T_SPEEDUP,    // Уникальный идентификатор параметра
                           96,               // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -367,7 +367,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[21] = {// Период снижения частоты
+  modbusParameters_[21] = {// Период снижения частоты
                           VSD_T_SPEEDDOWN,  // Уникальный идентификатор параметра
                           97,               // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -384,7 +384,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[22] = {// Период снижения частоты при токоограничении
+  modbusParameters_[22] = {// Период снижения частоты при токоограничении
                           VSD_T_ILIMIT_SPEEDDOWN,
                           98,               // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -401,7 +401,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[23] = {// Период снижения частоты при недостатке напряжения
+  modbusParameters_[23] = {// Период снижения частоты при недостатке напряжения
                           VSD_T_ULOW_SPEEDDOWN,
                           99,               // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -418,7 +418,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[24] = {// Частота ШИМ
+  modbusParameters_[24] = {// Частота ШИМ
                           VSD_SWITCHING_FREQUENCY,
                           100,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -435,7 +435,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[25] = {// Тип текущего регулятора
+  modbusParameters_[25] = {// Тип текущего регулятора
                           VSD_CURRENT_REGULATOR,
                           101,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -452,7 +452,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[26] = {// Напряжение форсировки
+  modbusParameters_[26] = {// Напряжение форсировки
                           VSD_UF_U_FORCE,   // Уникальный идентификатор параметра
                           102,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -469,7 +469,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[27] = {// Частота форсировки
+  modbusParameters_[27] = {// Частота форсировки
                           VSD_UF_F_FORCE,   // Уникальный идентификатор параметра
                           103,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -486,7 +486,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[28] = {// Напряжение холостого хода
+  modbusParameters_[28] = {// Напряжение холостого хода
                           VSD_UF_UHH,       // Уникальный идентификатор параметра
                           104,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -503,7 +503,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[29] = {// Постоянная времени компенсации индуктивности
+  modbusParameters_[29] = {// Постоянная времени компенсации индуктивности
                           VSD_IFB_COMP,     // Уникальный идентификатор параметра
                           105,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -520,7 +520,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[30] = {// Пропорциональный коэффициент ОС частотного контура регулирования
+  modbusParameters_[30] = {// Пропорциональный коэффициент ОС частотного контура регулирования
                           VSD_VUOUT_PROP,   // Уникальный идентификатор параметра
                           106,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -537,7 +537,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[31] = {// Номинальная(максимальная) частота двигателя
+  modbusParameters_[31] = {// Номинальная(максимальная) частота двигателя
                           VSD_MOTOR_FREQUENCY,
                           107,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -554,7 +554,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[32] = {// Номинальный(максимальный) ток двигателя
+  modbusParameters_[32] = {// Номинальный(максимальный) ток двигателя
                           VSD_MOTOR_CURRENT,// Уникальный идентификатор параметра
                           108,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -571,7 +571,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[33] = {// Номинальный(максимальный) напряжение двигателя
+  modbusParameters_[33] = {// Номинальный(максимальный) напряжение двигателя
                           VSD_MOTOR_VOLTAGE,// Уникальный идентификатор параметра
                           109,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -588,7 +588,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[34] = {// Тестовый регистр 0
+  modbusParameters_[34] = {// Тестовый регистр 0
                           VSD_TEST0,        // Уникальный идентификатор параметра
                           110,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -605,7 +605,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[35] = {// Тестовый регистр 1
+  modbusParameters_[35] = {// Тестовый регистр 1
                           VSD_TEST1,        // Уникальный идентификатор параметра
                           111,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -622,7 +622,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[36] = {// Тестовый регистр 2
+  modbusParameters_[36] = {// Тестовый регистр 2
                           VSD_TEST2,        // Уникальный идентификатор параметра
                           112,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -639,7 +639,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[37] = {// Тестовый регистр 3
+  modbusParameters_[37] = {// Тестовый регистр 3
                           VSD_TEST3,        // Уникальный идентификатор параметра
                           113,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -656,7 +656,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[38] = {// Тестовый регистр 4
+  modbusParameters_[38] = {// Тестовый регистр 4
                           VSD_TEST4,        // Уникальный идентификатор параметра
                           114,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -673,7 +673,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[39] = {// Тестовый регистр 5
+  modbusParameters_[39] = {// Тестовый регистр 5
                           VSD_TEST5,        // Уникальный идентификатор параметра
                           115,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -690,7 +690,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[40] = {// Тестовый регистр 6
+  modbusParameters_[40] = {// Тестовый регистр 6
                           VSD_TEST6,        // Уникальный идентификатор параметра
                           116,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -707,7 +707,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[41] = {// Тестовый регистр 7
+  modbusParameters_[41] = {// Тестовый регистр 7
                           VSD_TEST7,        // Уникальный идентификатор параметра
                           117,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -724,7 +724,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[42] = {// Максимальный ток токоограничителя
+  modbusParameters_[42] = {// Максимальный ток токоограничителя
                           VSD_ILIMIT,       // Уникальный идентификатор параметра
                           118,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -741,7 +741,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[43] = {// Пропорциональный коэффициент ОС частотного контура регулирования
+  modbusParameters_[43] = {// Пропорциональный коэффициент ОС частотного контура регулирования
                           VSD_VUOUT_INTEG,  // Уникальный идентификатор параметра
                           119,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -758,7 +758,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[44] = {// Коэффициент постоянной времени обратного перехода с вектора на U/f
+  modbusParameters_[44] = {// Коэффициент постоянной времени обратного перехода с вектора на U/f
                           VSD_VTOUF_INTEG,  // Уникальный идентификатор параметра
                           120,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -775,7 +775,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[45] = {// Текущее выходное напряжение ПЧ
+  modbusParameters_[45] = {// Текущее выходное напряжение ПЧ
                           VSD_OUT_VOLTAGE_MOTOR,
                           121,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -792,7 +792,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[46] = {// Суммарная индуктивность на выходе ПЧ
+  modbusParameters_[46] = {// Суммарная индуктивность на выходе ПЧ
                           VSD_LOUT,         // Уникальный идентификатор параметра
                           122,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -809,7 +809,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[47] = {// Режим раскачки: частота
+  modbusParameters_[47] = {// Режим раскачки: частота
                           VSD_SW_STARTUP_FREQUENCY,
                           123,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -826,7 +826,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[48] = {// Режим раскачки: угол качания
+  modbusParameters_[48] = {// Режим раскачки: угол качания
                           VSD_SW_STARTUP_ANGLE_OSC,
                           124,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -843,7 +843,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[49] = {// Режим раскачки: угол сдвига
+  modbusParameters_[49] = {// Режим раскачки: угол сдвига
                           VSD_SW_STARTUP_ANGLE_SHIFT,
                           125,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -860,7 +860,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[50] = {// Режим раскачки: количество качаний на угол
+  modbusParameters_[50] = {// Режим раскачки: количество качаний на угол
                           VSD_SW_STARTUP_OSC_COUNT,
                           126,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -877,7 +877,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[51] = {// Режим раскачки: количество оборотов двигателя
+  modbusParameters_[51] = {// Режим раскачки: количество оборотов двигателя
                           VSD_SW_STARTUP_ROTATIONS,
                           127,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -894,7 +894,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[52] = {// Режим раскачки: кратность напряжения импульса расклинки
+  modbusParameters_[52] = {// Режим раскачки: кратность напряжения импульса расклинки
                           VSD_SW_STARTUP_U_PULSE,
                           128,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -911,7 +911,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[53] = {// Режим раскачки: токоограничение в режиме
+  modbusParameters_[53] = {// Режим раскачки: токоограничение в режиме
                           VSD_SW_STARTUP_I_LIM,
                           129,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -928,7 +928,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[54] = {// Интегральный коэффициент ОС фазового контура регулирования
+  modbusParameters_[54] = {// Интегральный коэффициент ОС фазового контура регулирования
                           VSD_VFREQ_INTEG,  // Уникальный идентификатор параметра
                           130,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -945,7 +945,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[55] = {// Регистры рабочей очереди алгоритмов управления
+  modbusParameters_[55] = {// Регистры рабочей очереди алгоритмов управления
                           VSD_REGULATOR_QUEUE_1,
                           131,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -962,7 +962,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[56] = {// Регистры рабочей очереди алгоритмов управления
+  modbusParameters_[56] = {// Регистры рабочей очереди алгоритмов управления
                           VSD_REGULATOR_QUEUE_2,
                           132,               // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -979,7 +979,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[57] = {// Регистры рабочей очереди алгоритмов управления
+  modbusParameters_[57] = {// Регистры рабочей очереди алгоритмов управления
                           VSD_REGULATOR_QUEUE_3,
                           133,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -996,7 +996,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[58] = {// Регистры рабочей очереди алгоритмов управления
+  modbusParameters_[58] = {// Регистры рабочей очереди алгоритмов управления
                           VSD_REGULATOR_QUEUE_4,
                           134,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1013,7 +1013,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[59] = {// Регистры рабочей очереди алгоритмов управления
+  modbusParameters_[59] = {// Регистры рабочей очереди алгоритмов управления
                           VSD_REGULATOR_QUEUE_5,
                           135,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1030,7 +1030,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[60] = {// Порог защиты ПЧ по снижению напряжения на инверторе
+  modbusParameters_[60] = {// Порог защиты ПЧ по снижению напряжения на инверторе
                           VSD_UD_LOW_FAULT, // Уникальный идентификатор параметра
                           136,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1047,7 +1047,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[61] = {// Порог защиты ПЧ по превыщению напряжения на инверторе
+  modbusParameters_[61] = {// Порог защиты ПЧ по превыщению напряжения на инверторе
                           VSD_UD_HIGH_FAULT,// Уникальный идентификатор параметра
                           137,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1064,7 +1064,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[62] = {// Порог защиты ПЧ по несимметрии входного напряжения на инверторе
+  modbusParameters_[62] = {// Порог защиты ПЧ по несимметрии входного напряжения на инверторе
                           VSD_UIN_ASYM_LEVEL,
                           138,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1081,7 +1081,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[63] = {// Время срабатывания защиты ПЧ по несимметрии входного напряжения на инверторе
+  modbusParameters_[63] = {// Время срабатывания защиты ПЧ по несимметрии входного напряжения на инверторе
                           VSD_UIN_ASYM_DELAY,
                           139,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1098,7 +1098,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[64] = {// Частота перехода на векторный алгоритм
+  modbusParameters_[64] = {// Частота перехода на векторный алгоритм
                           VSD_F_VECT,       // Уникальный идентификатор параметра
                           140,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1115,7 +1115,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[65] = {// Пропорциональный коэффициент ОС фазового контура регулирования
+  modbusParameters_[65] = {// Пропорциональный коэффициент ОС фазового контура регулирования
                           VSD_VFREQ_GAIN,   // Уникальный идентификатор параметра
                           141,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1132,7 +1132,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[66] = {// Фазовый коэффициент усиления системы подавления резонанса
+  modbusParameters_[66] = {// Фазовый коэффициент усиления системы подавления резонанса
                           VSD_VANGLE_GAIN,  // Уникальный идентификатор параметра
                           142,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1149,7 +1149,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[67] = {// Постоянная времени системы подавления резонанса
+  modbusParameters_[67] = {// Постоянная времени системы подавления резонанса
                           VSD_RES_TIMECONST,// Уникальный идентификатор параметра
                           143,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1166,7 +1166,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[68] = {// Служебный регистр для отладки алгоритмов управления
+  modbusParameters_[68] = {// Служебный регистр для отладки алгоритмов управления
                           VSD_RES_IAMP_VALID,
                           144,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1183,7 +1183,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[69] = {// Выходной ток ПЧ по фазе В. (амплитудное значение)
+  modbusParameters_[69] = {// Выходной ток ПЧ по фазе В. (амплитудное значение)
                           VSD_IB,           // Уникальный идентификатор параметра
                           145,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -1200,7 +1200,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[70] = {// Фаза выходного тока В
+  modbusParameters_[70] = {// Фаза выходного тока В
                           VSD_PHB,          // Уникальный идентификатор параметра
                           146,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -1217,7 +1217,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[71] = {// Выходной ток ПЧ по фазе C. (амплитудное значение)
+  modbusParameters_[71] = {// Выходной ток ПЧ по фазе C. (амплитудное значение)
                           VSD_IC,           // Уникальный идентификатор параметра
                           147,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -1234,7 +1234,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[72] = {// Фаза выходного тока C
+  modbusParameters_[72] = {// Фаза выходного тока C
                           VSD_PHC,           // Уникальный идентификатор параметра
                           148,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -1251,7 +1251,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[73] = {// Порог токоограничения импульса расклинки в режиме с раскачкой
+  modbusParameters_[73] = {// Порог токоограничения импульса расклинки в режиме с раскачкой
                           VSD_SW_STARTUP_I_LIM_PULSE,
                           149,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1268,7 +1268,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[74] = {// Время снижения уставки в режиме остановки турбинного вращения
+  modbusParameters_[74] = {// Время снижения уставки в режиме остановки турбинного вращения
                           VSD_DECEL_SPEEDDOWN,
                           150,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1285,7 +1285,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[75] = {// Напряжение остаточного напряжения на шине (окончания разряда) в режиме остановки турбинного вращения (для ВД)
+  modbusParameters_[75] = {// Напряжение остаточного напряжения на шине (окончания разряда) в режиме остановки турбинного вращения (для ВД)
                           VSD_DECEL_VOLTAGE, // Уникальный идентификатор параметра
                           151,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1302,7 +1302,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[76] = {// Начальная частота режима остановки турбинного вращения (для АД)
+  modbusParameters_[76] = {// Начальная частота режима остановки турбинного вращения (для АД)
                           VSD_DECEL_F_MAX,  // Уникальный идентификатор параметра
                           152,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1319,7 +1319,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[77] = {// Текущая выходная активная мощность ПЧ
+  modbusParameters_[77] = {// Текущая выходная активная мощность ПЧ
                           VSD_POWER_ACTIVE, // Уникальный идентификатор параметра
                           153,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -1336,7 +1336,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[78] = {// Выходной ток ПЧ
+  modbusParameters_[78] = {// Выходной ток ПЧ
                           VSD_IOUT,         // Уникальный идентификатор параметра
                           154,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -1353,7 +1353,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[79] = {// Время секунды
+  modbusParameters_[79] = {// Время секунды
                           VSD_TIME_SECOND,  // Уникальный идентификатор параметра
                           155,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1370,7 +1370,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[80] = {// Время минуты
+  modbusParameters_[80] = {// Время минуты
                           VSD_TIME_MINUTE,  // Уникальный идентификатор параметра
                           156,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1387,7 +1387,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[81] = {// Время часы
+  modbusParameters_[81] = {// Время часы
                           VSD_TIME_HOUR,    // Уникальный идентификатор параметра
                           157,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1404,7 +1404,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[82] = {// Время дни
+  modbusParameters_[82] = {// Время дни
                           VSD_TIME_DAY,     // Уникальный идентификатор параметра
                           158,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1421,7 +1421,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[83] = {// Время месяцы
+  modbusParameters_[83] = {// Время месяцы
                           VSD_TIME_MONTH,   // Уникальный идентификатор параметра
                           159,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1438,7 +1438,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[84] = {// Время годы
+  modbusParameters_[84] = {// Время годы
                           VSD_TIME_YEAR,    // Уникальный идентификатор параметра
                           160,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1455,7 +1455,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[85] = {// Величина измерительного тока автонастройки
+  modbusParameters_[85] = {// Величина измерительного тока автонастройки
                           VSD_AST_IMEAS,    // Уникальный идентификатор параметра
                           161,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1472,7 +1472,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[86] = {// Величина измерительного напряжения автонастройки
+  modbusParameters_[86] = {// Величина измерительного напряжения автонастройки
                           VSD_AST_UMEAS,    // Уникальный идентификатор параметра
                           162,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1489,7 +1489,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[87] = {// Измеренная величина выходной индуктивности автонастройки
+  modbusParameters_[87] = {// Измеренная величина выходной индуктивности автонастройки
                           VSD_AST_LOUT_1_0, // Уникальный идентификатор параметра
                           163,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -1506,7 +1506,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[88] = {// Регистр ошибок инвертора
+  modbusParameters_[88] = {// Регистр ошибок инвертора
                           VSD_INV_FAULT,    // Уникальный идентификатор параметра
                           164,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -1523,7 +1523,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[89] = {// Расширенный регистр состояния инвертора
+  modbusParameters_[89] = {// Расширенный регистр состояния инвертора
                           VSD_INVERTOR_EXT_STATUS,
                           165,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -1540,7 +1540,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[90] = {// Период экскурсий частоты режима встряхивания
+  modbusParameters_[90] = {// Период экскурсий частоты режима встряхивания
                           VSD_JARRING_PERIOD,
                           166,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1557,7 +1557,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[91] = {// Величина прибавки частоты вращения выше уставки в режиме встряхивания
+  modbusParameters_[91] = {// Величина прибавки частоты вращения выше уставки в режиме встряхивания
                           VSD_JARRING_UPDFREQ,
                           167,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1574,7 +1574,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[92] = {// Время прибавки частоты вращения выше уставки в режиме встряхивания
+  modbusParameters_[92] = {// Время прибавки частоты вращения выше уставки в режиме встряхивания
                           VSD_JARRING_UPTIME,
                           168,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1591,7 +1591,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[93] = {// Величина уменьшения частоты вращения ниже уставки в режиме встряхивания
+  modbusParameters_[93] = {// Величина уменьшения частоты вращения ниже уставки в режиме встряхивания
                           VSD_JARRING_DOWNDFREQ,
                           169,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1608,7 +1608,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[94] = {// Время уменьшения частоты вращения ниже уставки в режиме встряхивания
+  modbusParameters_[94] = {// Время уменьшения частоты вращения ниже уставки в режиме встряхивания
                           VSD_JARRING_DOWNTIME,
                           170,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1625,7 +1625,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[95] = {// Регистры обслуживания внутренних нужд режима встряхивания
+  modbusParameters_[95] = {// Регистры обслуживания внутренних нужд режима встряхивания
                           VSD_JARRING_MODE, // Уникальный идентификатор параметра
                           171,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -1642,7 +1642,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[96] = {// Регистры обслуживания внутренних нужд режима встряхивания
+  modbusParameters_[96] = {// Регистры обслуживания внутренних нужд режима встряхивания
                           VSD_JARRING_TICK_CNT,
                           172,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -1659,7 +1659,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[97] = {// Регистры обслуживания внутренних нужд режима встряхивания
+  modbusParameters_[97] = {// Регистры обслуживания внутренних нужд режима встряхивания
                           VSD_JARRING_SECOND_CNT,
                           173,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -1676,7 +1676,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[98] = {// Стартовая частота вращения двигателя в основном режиме регулирования
+  modbusParameters_[98] = {// Стартовая частота вращения двигателя в основном режиме регулирования
                           VSD_START_FREQ,   // Уникальный идентификатор параметра
                           174,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1693,7 +1693,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[99] = {// Стартовая частота вращения двигателя в основном режиме регулирования
+  modbusParameters_[99] = {// Стартовая частота вращения двигателя в основном режиме регулирования
                           VSD_IA,           // Уникальный идентификатор параметра
                           175,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -1710,7 +1710,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[100] = {// Фаза выходного тока A
+  modbusParameters_[100] = {// Фаза выходного тока A
                           VSD_PHA,          // Уникальный идентификатор параметра
                           176,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -1727,7 +1727,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[101] = {// Фаза выходного тока A
+  modbusParameters_[101] = {// Фаза выходного тока A
                           VSD_PHOUT,          // Уникальный идентификатор параметра
                           177,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -1744,7 +1744,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[102] = {// Текущая выходная полная мощность ПЧ
+  modbusParameters_[102] = {// Текущая выходная полная мощность ПЧ
                           VSD_SOUT,         // Уникальный идентификатор параметра
                           178,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -1761,7 +1761,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[103] = {// Напряжение шины инвертора Ud
+  modbusParameters_[103] = {// Напряжение шины инвертора Ud
                           VSD_VOLTAGE_DC,   // Уникальный идентификатор параметра
                           179,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -1778,7 +1778,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[104] = {// Уровень защиты i2t двигателя
+  modbusParameters_[104] = {// Уровень защиты i2t двигателя
                           VSD_M_IRMS,       // Уникальный идентификатор параметра
                           180,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1795,7 +1795,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[105] = {// Постоянная времени защиты i2t двигателя
+  modbusParameters_[105] = {// Постоянная времени защиты i2t двигателя
                           VSD_M_TRMS,       // Уникальный идентификатор параметра
                           181,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1812,7 +1812,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[106] = {// Максимальный угол остановки вектора в режиме
+  modbusParameters_[106] = {// Максимальный угол остановки вектора в режиме
                           VSD_OVERPWM2_ANGLE,
                           182,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1829,7 +1829,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[107] = {// Степень постоянной времени отработки
+  modbusParameters_[107] = {// Степень постоянной времени отработки
                           VSD_OVERPWM_GAIN,
                           183,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1846,7 +1846,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[108] = {// Стартовое напряжение торможения авторотации
+  modbusParameters_[108] = {// Стартовое напряжение торможения авторотации
                           VSD_DECEL_U_MAX,
                           184,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1863,7 +1863,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[109] = {// Напряжение U/f двигателя, 0Гц
+  modbusParameters_[109] = {// Напряжение U/f двигателя, 0Гц
                           VSD_UF_CHARACTERISTIC_U,
                           185,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1880,7 +1880,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[110] = {// Частота U/f двигателя, точка 1
+  modbusParameters_[110] = {// Частота U/f двигателя, точка 1
                           VSD_UF_CHARACTERISTIC_F_1,
                           186,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1897,7 +1897,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[111] = {// Напряжение U/f двигателя, точка 1
+  modbusParameters_[111] = {// Напряжение U/f двигателя, точка 1
                           VSD_UF_CHARACTERISTIC_U_1,
                           187,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1914,7 +1914,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[112] = {// Частота U/f двигателя, точка 2
+  modbusParameters_[112] = {// Частота U/f двигателя, точка 2
                           VSD_UF_CHARACTERISTIC_F_2,
                           188,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1931,7 +1931,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[113] = {// Напряжение U/f двигателя, точка 2
+  modbusParameters_[113] = {// Напряжение U/f двигателя, точка 2
                           VSD_UF_CHARACTERISTIC_U_2,
                           189,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1948,7 +1948,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[114] = {// Частота U/f двигателя, точка 3
+  modbusParameters_[114] = {// Частота U/f двигателя, точка 3
                           VSD_UF_CHARACTERISTIC_F_3,
                           190,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1965,7 +1965,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[115] = {// Напряжение U/f двигателя, точка 3
+  modbusParameters_[115] = {// Напряжение U/f двигателя, точка 3
                           VSD_UF_CHARACTERISTIC_U_3,
                           191,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1982,7 +1982,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[116] = {// Частота U/f двигателя, точка 4
+  modbusParameters_[116] = {// Частота U/f двигателя, точка 4
                           VSD_UF_CHARACTERISTIC_F_4,
                           192,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -1999,7 +1999,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[117] = {// Напряжение U/f двигателя, точка 4
+  modbusParameters_[117] = {// Напряжение U/f двигателя, точка 4
                           VSD_UF_CHARACTERISTIC_U_4,
                           193,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -2016,7 +2016,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[118] = {// Частота U/f двигателя, точка 5
+  modbusParameters_[118] = {// Частота U/f двигателя, точка 5
                           VSD_UF_CHARACTERISTIC_F_5,
                           194,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -2033,7 +2033,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[119] = {// Напряжение U/f двигателя, точка 5
+  modbusParameters_[119] = {// Напряжение U/f двигателя, точка 5
                           VSD_UF_CHARACTERISTIC_U_5,
                           195,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -2050,7 +2050,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[120] = {// Частота U/f двигателя, точка 6
+  modbusParameters_[120] = {// Частота U/f двигателя, точка 6
                           VSD_UF_CHARACTERISTIC_F_6,
                           196,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -2067,7 +2067,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[121] = {// Напряжение U/f двигателя, точка 6
+  modbusParameters_[121] = {// Напряжение U/f двигателя, точка 6
                           VSD_UF_CHARACTERISTIC_U_6,
                           197,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -2084,7 +2084,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[122] = {// Ток тепловой защиты ПЧ длительный
+  modbusParameters_[122] = {// Ток тепловой защиты ПЧ длительный
                           VSD_FC_IRMS,
                           198,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -2101,7 +2101,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[122] = {// Макс. величина перегрузки для ПЧ
+  modbusParameters_[122] = {// Макс. величина перегрузки для ПЧ
                           VSD_CURRENT_LIMIT,
                           199,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -2118,7 +2118,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[123] = {// Постоянная времени перегрузки ПЧ
+  modbusParameters_[123] = {// Постоянная времени перегрузки ПЧ
                           VSD_DELAY_CURRENT_LIMIT,
                           200,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -2135,7 +2135,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[124] = {// Постоянная времени перегрузки ПЧ
+  modbusParameters_[124] = {// Постоянная времени перегрузки ПЧ
                           VSD_DELAY_CURRENT_LIMIT,
                           200,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -2152,7 +2152,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[125] = {// Ограничение тока для импульсов
+  modbusParameters_[125] = {// Ограничение тока для импульсов
                           VSD_FC_ILIM_LONG,
                           201,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -2169,7 +2169,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[126] = {// Время импульса с общим (максимальным) токоограничением
+  modbusParameters_[126] = {// Время импульса с общим (максимальным) токоограничением
                           VSD_FC_TLIM,
                           202,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -2186,7 +2186,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[127] = {// Масштаб измеряемого напряжения ПЧ отн. базового 250А
+  modbusParameters_[127] = {// Масштаб измеряемого напряжения ПЧ отн. базового 250А
                           VSD_U_SCALE,
                           203,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -2203,7 +2203,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[128] = {// Масштаб измеряемого тока ПЧ отн. базового 250А
+  modbusParameters_[128] = {// Масштаб измеряемого тока ПЧ отн. базового 250А
                           VSD_I_SCALE,
                           204,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -2220,7 +2220,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[129] = {// Уровень быстрой токовой защиты двигателя
+  modbusParameters_[129] = {// Уровень быстрой токовой защиты двигателя
                           VSD_M_I_FAST,
                           205,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -2237,7 +2237,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[130] = {// Время отключения защиты двигателя после старта
+  modbusParameters_[130] = {// Время отключения защиты двигателя после старта
                           VSD_T_BLANK,
                           206,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -2254,7 +2254,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[131] = {// Уровень уставки тока для ПИД-регулятора
+  modbusParameters_[131] = {// Уровень уставки тока для ПИД-регулятора
                           VSD_PID_I_REF,
                           207,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -2271,7 +2271,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[132] = {// Постоянная времени для ПИД-регулятора
+  modbusParameters_[132] = {// Постоянная времени для ПИД-регулятора
                           VSD_PID_T_REG,
                           208,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -2288,7 +2288,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[133] = {// Постоянная времени для ПИД-регулятора
+  modbusParameters_[133] = {// Постоянная времени для ПИД-регулятора
                           VSD_PID_T_REG_1,
                           209,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -2305,7 +2305,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  ModbusParameters[134] = {// Расширенные слово состояния 3
+  modbusParameters_[134] = {// Расширенные слово состояния 3
                           VSD_INV_STATUS3,
                           210,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
@@ -2324,21 +2324,16 @@ void VsdNovomet::initModbusParameters()
   };
 }
 
-/*!
- \brief Конструктор класса VsdNovomet
-  Создаёт экземпляр класса DeviceModbus
- \return
-*/
 VsdNovomet::VsdNovomet()
 {
   initModbusParameters(); 
   // Создание задачи обновления параметров
-  createThread("UpdateParametersVsdNovomet");
+  createThread("UpdateParametersVsd");
   // Создание объекта протокола связи с утройством
-  dm_ = new DeviceModbus(ModbusParameters, 135,
-                        VSD_UART, 19200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1,
-                        "ProtocolVsdNovomet",
-                        getValueDeviceQueue_);
+  int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
+  dm_ = new DeviceModbus(modbusParameters_, count,
+                         VSD_UART, 19200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1);
+  dm_->createThread("ProtocolVsd", getValueDeviceQId_);
 }
 
 VsdNovomet::~VsdNovomet()
@@ -2379,27 +2374,27 @@ void VsdNovomet::getNewValue(uint16_t id)
 {
   float value = 0;
   ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtID(id));
-  switch (param->TypeData) {
+  switch (param->typeData) {
   case TYPE_DATA_INT16:
-    value = (float)param->Value.tdInt16[0];
+    value = (float)param->value.tdInt16[0];
     break;
   case TYPE_DATA_UINT16:
-    value = (float)param->Value.tdUint16[0];
+    value = (float)param->value.tdUint16[0];
     break;
   case  TYPE_DATA_INT32:
-    value = (float)param->Value.tdInt32;
+    value = (float)param->value.tdInt32;
     break;
   case  TYPE_DATA_UINT32:
-    value = (float)param->Value.tdUint32;
+    value = (float)param->value.tdUint32;
     break;
   case  TYPE_DATA_FLOAT:
-    value = (float)param->Value.tdFloat;
+    value = (float)param->value.tdFloat;
     break;
   default:
     break;
   }
-  value = value * param->Coefficient;
-  value = (value - (Units[param->Physic][param->Unit][1]))/(Units[param->Physic][param->Unit][0]);
+  value = value * param->coefficient;
+  value = (value - (Units[param->physic][param->unit][1]))/(Units[param->physic][param->unit][0]);
   setValue(id, value);
 }
 
