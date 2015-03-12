@@ -230,7 +230,7 @@ int DeviceModbus::searchExchangeParameters()
       else {
         modbusParameters_[i].cntExchange = 0;
         indexExchange_ = i+1;
-        return indexExchange_;
+        return i;
       }
     }
   }
@@ -334,6 +334,8 @@ void DeviceModbus::exchangeTask()
                 putMessageUpdateId(modbusParameters_[Index].id);
                 Index++;
               }
+              if (outOfTurn == 15)
+                asm("nop");
             }
             else {
               int index = getIndexAtAddress(address);
