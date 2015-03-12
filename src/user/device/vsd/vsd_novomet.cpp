@@ -2345,7 +2345,8 @@ VsdNovomet::~VsdNovomet()
 void VsdNovomet::initParameters()
 {
   Vsd::initParameters();
-  for (int indexModbus = 0; indexModbus <= (sizeof(modbusParameters_) / sizeof(ModbusParameter)); indexModbus++) {           // Цикл по карте регистров
+  int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
+  for (int indexModbus = 0; indexModbus < count; indexModbus++) {         // Цикл по карте регистров
     int indexDevice = getIndexAtID(dm_->getFieldID(indexModbus));         // Получаем индекс параметра в банке параметров
     if (indexDevice) {                                                    // Если нашли параметр
       setFieldAccess(indexDevice, ACCESS_OPERATOR);                       // Уровень доступа оператор
