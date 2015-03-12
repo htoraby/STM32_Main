@@ -90,9 +90,9 @@ void logSaveTask(void *argument)
     osSemaphoreWait(semaphoreId_, osWaitForever);
 
     while(disk_status(0) != RES_OK)
-      osDelay(1);
+      osDelay(10);
     while (f_mount(&fatfs, "0", 1) != FR_OK)
-      osDelay(1);
+      osDelay(10);
 
     bytesWritten = 0;
     f_unlink(LOG_FILENAME);

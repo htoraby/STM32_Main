@@ -53,7 +53,7 @@ void Ccs::init()
 void Ccs::mainTask()
 {
   while (1) {
-    osDelay(1);
+    osDelay(10);
 
     cmdCheck();
     conditionChanged();
@@ -90,6 +90,9 @@ void Ccs::ledConditionTask()
         case LedConditionRun:
           onLed(WorkLed);
           break;
+        case LedConditionWaitRun:
+          onLed(StopLed);
+          break;
       }
     }
 
@@ -107,7 +110,7 @@ void Ccs::ledConditionTask()
 void Ccs::vsdConditionTask()
 {
   while (1) {
-    osDelay(1);
+    osDelay(10);
 
     int vsdCondition = getValue(CCS_VSD_CONDITION);
     switch (vsdCondition) {
@@ -144,8 +147,8 @@ void Ccs::vsdConditionTask()
         break;
       case VSD_CONDITION_WAIT_RUN:
         if (getValue(CCS_CONDITION) != CCS_CONDITION_RUN) {
+          setLedCondition(LedConditionWaitRun);
           if (vsd->start() == RETURN_OK) {
-            setLedCondition(LedConditionWaitRun);
             setValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
           } else {
             // TODO: Ошибка запуска
