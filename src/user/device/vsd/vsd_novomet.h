@@ -35,40 +35,32 @@ enum enInvertorControl
 };
 
 /*!
- * \brief The enInvertorStatus enum
- * Флаги регистра статуса инвертора
+ * \brief Флаги статусных регистров инвертора
  */
 enum enInvertorStatus
 { 
-  INV_STATUS_STARTED          = 1,          /// Запуск ПЧ
-  INV_STATUS_WAIT_RECT_START  = 2,          /// Ожидаем запуска выпрямителя
-  INV_STATUS_STOPPED_REGISTER = 4,          /// Инвертор остановлен по изменению важного параметра
-  INV_STATUS_STOPPED_EXTERNAL = 8,          /// Инвертор остановлен по команде извне
-  INV_STATUS_WAIT_RECT_STOP   = 16,         /// Ожидание остнова выпрямителя
-  INV_STATUS_FAULT_STOPPED    = 32,         /// Остановлен по причине FAULT
-  INV_STATUS_RIGHT_DIRECTION  = 64,         /// Правое направление вращения
-  INV_STATUS_I_LIMIT          = 128,        /// Токоограничение
-  INV_STATUS_ULOW             = 256,        /// Недостаточно напряжения
-  INV_STATUS_STOPPED_ALARM    = 512,        /// Остановлен аварийно
-  INV_STATUS_UD_LOW_FAULT     = 1024,       /// Остановлен по снижению напряжения на шин
-  INV_STATUS_UD_HIGH_FAULT    = 2048,       /// Остановлен по превышению напряжения на шине
-  INV_STATUS_TO_STOP_MODE     = 4096,       /// Режим плавной остановки двигателя
-  INV_STATUS_UIN_ASYM         = 8192,       /// Остановлен по несимметрии входного напряжения
-  INV_STATUS_URECT_SHORTCIRCUIT = 16384,    /// Остановлен по КЗ от выпрямителя
-  INV_STATUS_RESERVED         = 32768       /// Резерв
-};
-
-/*!
- * \brief The enInvertorExtStatus enum
- * Флаги расширенного регистра статуса инвертора
- */
-enum enInvertorExtStatus
-{
-  INV_EXT_STATUS_I_RMS        = 1,          /// Сработала тепловая защита
-  INV_EXT_STATUS_AST_ERR      = 2,          /// Система автонастройки не смогла определить параметры линии
-  INV_EXT_STATUS_I_LIMIT_FAST = 4,          /// Превышение порога мгновенного токоограничения
-  INV_EXT_STATUS_CURRENT_OPT  = 8,          /// Включена оптимизация по току
-  INV_EXT_STATUS_POWER_OPT    = 16          /// Включена оптимизация по выходной мощности
+  INV_STATUS_STARTED          = 0,          /// Запуск ПЧ
+  INV_STATUS_WAIT_RECT_START,               /// Ожидаем запуска выпрямителя
+  INV_STATUS_STOPPED_REGISTER,              /// Инвертор остановлен по изменению важного параметра
+  INV_STATUS_STOPPED_EXTERNAL,              /// Инвертор остановлен по команде извне
+  INV_STATUS_WAIT_RECT_STOP,                /// Ожидание остнова выпрямителя
+  INV_STATUS_FAULT_STOPPED,                 /// Остановлен по причине FAULT
+  INV_STATUS_RIGHT_DIRECTION,               /// Правое направление вращения
+  INV_STATUS_I_LIMIT,                       /// Токоограничение
+  INV_STATUS_ULOW,                          /// Недостаточно напряжения
+  INV_STATUS_STOPPED_ALARM,                 /// Остановлен аварийно
+  INV_STATUS_UD_LOW_FAULT,                  /// Остановлен по снижению напряжения на шин
+  INV_STATUS_UD_HIGH_FAULT,                 /// Остановлен по превышению напряжения на шине
+  INV_STATUS_TO_STOP_MODE,                  /// Режим плавной остановки двигателя
+  INV_STATUS_UIN_ASYM,                      /// Остановлен по несимметрии входного напряжения
+  INV_STATUS_URECT_SHORTCIRCUIT,            /// Остановлен по КЗ от выпрямителя
+  INV_STATUS_RESERVED,                      /// Резерв
+  INV_EXT_STATUS_I_RMS       = 16,          /// Сработала тепловая защита
+  INV_EXT_STATUS_AST_ERR,                   /// Система автонастройки не смогла определить параметры линии
+  INV_EXT_STATUS_I_LIMIT_FAST,              /// Превышение порога мгновенного токоограничения
+  INV_EXT_STATUS_CURRENT_OPT,               /// Включена оптимизация по току
+  INV_EXT_STATUS_POWER_OPT,                 /// Включена оптимизация по выходной мощности
+  INV_STATUS_3               = 32
 };
 
 enum enRegulatorQueue
@@ -104,10 +96,10 @@ public:
 
   /*!
    * \brief Метод проверки флага в регистре статуса инвертора
-   * \param flag проверяемый флаг
-   * \return 0 - флаг установлен 1 - не установлен
+   * \param bit проверяемый бит
+   * \return 0 - бит не установлен 1 - бит установлен
    */
-  int checkInvertorStatus(uint16_t flag);
+  bool checkVsdStatus(uint8_t bit);
 
   /*!
    * \brief Метод запуска ЧРП Новомет

@@ -2439,18 +2439,20 @@ void VsdNovomet::writeToDevice(int id, float value)
   dm_->writeModbusParameter(id, value);
 }
 
-int VsdNovomet::checkInvertorStatus(uint16_t flag)
+bool VsdNovomet::checkVsdStatus(uint8_t bit)
 {
-  if (((int)getValue(VSD_INVERTOR_STATUS) & flag) == flag)
-    return 0;
+  if (bit < INV_EXT_STATUS_I_RMS)
+    return checkBit(VSD_INVERTOR_STATUS, bit);
+  if ((bit >= INV_EXT_STATUS_I_RMS) && (bit < INV_STATUS_3))
+    return checkBit(VSD_INVERTOR_EXT_STATUS, bit - 16);
   else
-    return 1;
+    return false;
 }
 
 int VsdNovomet::start()
 {
   // Если стоит бит запуска двигателя
-  if (!checkInvertorStatus(INV_STATUS_STARTED))
+  if (checkVsdStatus(INV_STATUS_STARTED))
     return RETURN_OK;
 
   int timeMs = VSD_CMD_TIMEOUT;
@@ -2472,15 +2474,15 @@ int VsdNovomet::start()
 
     osDelay(100);
 
-    if (!checkInvertorStatus(INV_STATUS_STARTED))
+    if (checkVsdStatus(INV_STATUS_STARTED))
       return RETURN_OK;
   }
 }
 
 bool VsdNovomet::checkStart()
 {
-  if (!checkInvertorStatus(INV_STATUS_STARTED)) {
-    if (checkInvertorStatus(INV_STATUS_WAIT_RECT_START)) {
+  if (checkVsdStatus(INV_STATUS_STARTED)) {
+    if (!checkVsdStatus(INV_STATUS_WAIT_RECT_START)) {
       return true;
     }
   }
@@ -2490,7 +2492,7 @@ bool VsdNovomet::checkStart()
 int VsdNovomet::stop()
 {
   // Если стоит бит остановки по внешней команде
-  if (!checkInvertorStatus(INV_STATUS_STOPPED_EXTERNAL))
+  if (checkVsdStatus(INV_STATUS_STOPPED_EXTERNAL))
     return RETURN_OK;
 
   int timeMs = VSD_CMD_TIMEOUT;
@@ -2512,18 +2514,18 @@ int VsdNovomet::stop()
 
     osDelay(100);
 
-    if (!checkInvertorStatus(INV_STATUS_STOPPED_EXTERNAL))
+    if (checkVsdStatus(INV_STATUS_STOPPED_EXTERNAL))
       return RETURN_OK;
   }
 }
 
 bool VsdNovomet::checkStop()
 {
-  if (!checkInvertorStatus(INV_STATUS_STOPPED_EXTERNAL)) {
+  if (checkVsdStatus(INV_STATUS_STOPPED_EXTERNAL)) {
     // Если не стоит бит работы двигателя двигателя
-    if (checkInvertorStatus(INV_STATUS_STARTED)) {
+    if (!checkVsdStatus(INV_STATUS_STARTED)) {
       // Если не стоит бит ожидания выключения плат выпрямителя
-      if (checkInvertorStatus(INV_STATUS_WAIT_RECT_STOP)) {
+      if (!checkVsdStatus(INV_STATUS_WAIT_RECT_STOP)) {
         return true;
       }
     }

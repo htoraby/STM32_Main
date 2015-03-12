@@ -79,3 +79,12 @@ int checkRange(double value, double min, double max, uint8_t inc)
   else
     return checkRangeNoInclude(value, min, max);
 }
+
+
+bool checkBit(uint32_t value, uint8_t bit)
+{
+  if (value & (0x00000001 << bit))
+    return true;
+  else
+    return false;
+}
