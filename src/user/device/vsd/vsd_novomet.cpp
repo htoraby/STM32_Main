@@ -2438,9 +2438,9 @@ void VsdNovomet::writeToDevice(int id, float value)
 bool VsdNovomet::checkVsdStatus(uint8_t bit)
 {
   if (bit < INV_EXT_STATUS_I_RMS)
-    return checkBit(VSD_INVERTOR_STATUS, bit);
+    return checkBit(getValue(VSD_INVERTOR_STATUS), bit);
   if ((bit >= INV_EXT_STATUS_I_RMS) && (bit < INV_STATUS_3))
-    return checkBit(VSD_INVERTOR_EXT_STATUS, bit - 16);
+    return checkBit(getValue(VSD_INVERTOR_EXT_STATUS), bit - 16);
   else
     return false;
 }
