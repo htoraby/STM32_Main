@@ -74,6 +74,16 @@ enum enRegulatorQueue
   VSD_REQULATOR_QUEUE_TURBO                 /// Турбинное вращение
 };
 
+enum enPeriodExchange
+{
+  NOT_READ                        = 0,      /// Не читать
+  EVERY_TIME                      = 1,      /// Каждый раз
+  VERY_OFTEN                      = 10,     /// Очень часто
+  OFTEN                           = 100,    /// Часто
+  RARELY                          = 1000,   /// Редко
+  HARDLY_EVER                     = 10000   /// Очень редко
+};
+
 class VsdNovomet: public Vsd
 {
 public:
