@@ -97,6 +97,7 @@ public:
   VsdNovomet();
   virtual ~VsdNovomet();
 
+  void init();
   void initModbusParameters();
   void initParameters();
   void getNewValue(uint16_t id);

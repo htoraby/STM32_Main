@@ -13,6 +13,8 @@ public:
   EmSet();
   virtual ~EmSet();
 
+  void init();
+
   /*!
    * \brief Задача отправки/приёма данных в/от СЭ
   */

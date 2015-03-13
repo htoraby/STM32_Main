@@ -17,6 +17,7 @@ public:
   TmsNovomet();
   virtual ~TmsNovomet();
 
+  void init();
   void initModbusParameters();
   void initParameters();
   void getNewValue(uint16_t id);

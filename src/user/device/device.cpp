@@ -287,7 +287,7 @@ Device::Device(uint32_t startAddrParams, parameter *parameters, uint16_t countPa
 
 Device::~Device()
 {
-  // TODO Auto-generated destructor stub
+  osThreadTerminate(updateValueThreadId_);
 }
 
 void Device::createThread(const char *threadName)

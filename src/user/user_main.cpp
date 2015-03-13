@@ -10,15 +10,21 @@ Em *em;
 
 void userInit()
 {
-  logInit();
-  novobusSlave.init();
+  ksu.init();
 
   vsd = new VsdNovomet();
   tms = new TmsNovomet();
   em = new EmSet();
 
+  logInit();
   parameters.init();
-  ksu.init();
+  novobusSlave.init();
 
-//  protectionInit();
+  vsd->init();
+  tms->init();
+  em->init();
+
+  ksu.initTask();
+
+  protectionInit();
 }

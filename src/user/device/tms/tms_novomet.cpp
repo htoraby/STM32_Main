@@ -15,6 +15,16 @@ void TmsNovomet::initModbusParameters()
 TmsNovomet::TmsNovomet()
 {
   initModbusParameters();
+  readParameters();
+}
+
+TmsNovomet::~TmsNovomet()
+{
+
+}
+
+void TmsNovomet::init()
+{
   // Создание задачи обновления параметров
   createThread("UpdateParametersTms");
   // Создание объекта протокола связи с утройством
@@ -22,11 +32,6 @@ TmsNovomet::TmsNovomet()
   dm_ = new DeviceModbus(modbusParameters_, count,
                         TMS_UART, 115200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1);
   dm_->createThread("ProtocolTms", getValueDeviceQId_);
-}
-
-TmsNovomet::~TmsNovomet()
-{
-
 }
 
 void TmsNovomet::initParameters()

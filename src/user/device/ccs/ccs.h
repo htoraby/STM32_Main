@@ -35,10 +35,8 @@ public:
   Ccs();
   virtual ~Ccs();
 
-  /*!
-   * \brief Инициализация
-   */
   void init();
+  void initTask();
 
   /*!
    * \brief Основная задача обработки СУ
