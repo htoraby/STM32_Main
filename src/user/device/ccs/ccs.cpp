@@ -13,7 +13,7 @@ Ccs::Ccs()
   : Device(CCS_BEGIN, parametersArray_, CCS_END - CCS_BEGIN)
   , conditionOld(-1)
 {
-  initParameters();
+
 }
 
 Ccs::~Ccs()
@@ -38,6 +38,12 @@ static void ccsVsdConditionTask(void *p)
 
 void Ccs::init()
 {  
+  initParameters();
+  readParameters();
+}
+
+void Ccs::initTask()
+{
   osMessageQDef(LedMessageQ, 5, uint8_t);
   ledMessage_ = osMessageCreate(osMessageQ(LedMessageQ), NULL);
   osThreadDef(LedCondition, ccsLedConditionTask, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);

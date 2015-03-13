@@ -22,6 +22,26 @@ void Protection::init(const char *threadName)
   threadId_ = osThreadCreate(&t, this);
 }
 
+void Protection::task()
+{
+  while(1) {
+    osDelay(100);
+
+    // Получаем уставки защиты
+    getSetpointProt();
+    // Получаем текущие параметры защиты
+    getCurrentParamProt();
+    // Определяем выполняется ли условие срабатывания защиты
+    alarm_ = checkAlarm();
+    // Определяем есть ли блокирующий параметр
+    block_ = checkBlock();
+    // Выполняем шаг автомата защиты
+    automatProtection();
+    // Сохраняем текущие параметры защиты
+    setCurrentParamProt();
+  }
+}
+
 void Protection::getSetpointProt()
 {
   mode_           = ksu.getValue(idMode_);
@@ -104,26 +124,6 @@ void Protection::addEventActivationProt()
 {
   logEvent.add(ProtectCode, AutoType, protActivatedEventId_, valueParameter_, tripSetpoint_,
                parameters.getPhysic(idTripSetpoint_));
-}
-
-void Protection::task()
-{
-  while(1) {
-    osDelay(100);
-
-    // Получаем уставки защиты
-    getSetpointProt();
-    // Получаем текущие параметры защиты
-    getCurrentParamProt();
-    // Определяем выполняется ли условие срабатывания защиты
-    alarm_ = checkAlarm();
-    // Определяем есть ли блокирующий параметр
-    block_ = checkBlock();
-    // Выполняем шаг автомата защиты
-    automatProtection();
-    // Сохраняем текущие параметры защиты
-    setCurrentParamProt();
-  }
 }
 
 void Protection::automatProtection()

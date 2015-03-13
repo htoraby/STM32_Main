@@ -25,7 +25,7 @@ void NovobusSlave::init()
 {
   hostInit();
 
-  // Создаём очередь сообщений событий (надписей на дисплее)
+  // Создаём очередь сообщений событий
   osMessageQDef(MessageEventsNovobus, MAX_QUEUE_SIZE, uint32_t);
   messageEvents_ = osMessageCreate(osMessageQ(MessageEventsNovobus), NULL);
 
@@ -33,7 +33,7 @@ void NovobusSlave::init()
   osMessageQDef(MessageParamsNovobus, MAX_QUEUE_SIZE, uint32_t);
   messageParams_ = osMessageCreate(osMessageQ(MessageParamsNovobus), NULL);
 
-  // Создаём задачу Novobus slave
+  // Создаём задачу обработки принятых пакетов
   osThreadDef_t t = {"NovobusSlave", novobusSlaveTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
   threadId_ = osThreadCreate(&t, this);
 }

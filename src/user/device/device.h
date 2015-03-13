@@ -51,6 +51,11 @@ public:
   virtual ~Device();
 
   /*!
+   * \brief Инициализация устройства
+   */
+  virtual void init() = 0;
+
+  /*!
    * \brief Инициализация массива параметров
    */
   void initParameters();

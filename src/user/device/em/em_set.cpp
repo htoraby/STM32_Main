@@ -12,16 +12,21 @@ EmSet::EmSet()
   , constEm_(1250)
   , constCoefTrans_(1.0)
 {
-  openPort(9600);
-
-  osThreadDef_t t = {"EmSet", emSetTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
-  threadId_ = osThreadCreate(&t, this);
+  readParameters();
 }
 
 EmSet::~EmSet()
 {
   closePort();
   osThreadTerminate(threadId_);
+}
+
+void EmSet::init()
+{
+  openPort(9600);
+
+  osThreadDef_t t = {"EmSet", emSetTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
+  threadId_ = osThreadCreate(&t, this);
 }
 
 void EmSet::task()

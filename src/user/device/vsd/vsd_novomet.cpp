@@ -2327,6 +2327,16 @@ void VsdNovomet::initModbusParameters()
 VsdNovomet::VsdNovomet()
 {
   initModbusParameters(); 
+  readParameters();
+}
+
+VsdNovomet::~VsdNovomet()
+{
+  // TODO Auto-generated destructor stub
+}
+
+void VsdNovomet::init()
+{
   // Создание задачи обновления параметров
   createThread("UpdateParametersVsd");
   // Создание объекта протокола связи с утройством
@@ -2334,11 +2344,6 @@ VsdNovomet::VsdNovomet()
   dm_ = new DeviceModbus(modbusParameters_, count,
                          VSD_UART, 19200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1);
   dm_->createThread("ProtocolVsd", getValueDeviceQId_);
-}
-
-VsdNovomet::~VsdNovomet()
-{
-  // TODO Auto-generated destructor stub
 }
 
 // Метод заполнения внутреннего банка параметров по карте устройства

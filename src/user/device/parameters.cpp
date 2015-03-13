@@ -23,8 +23,6 @@ void Parameters::init()
 
   osThreadDef_t t = {"SaveParameters", parametersTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
   osThreadCreate(&t, this);
-
-  read();
 }
 
 void Parameters::task()
