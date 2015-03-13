@@ -459,10 +459,17 @@ void Device::updateValueTask()
     event = osMessageGet(getValueDeviceQId_, 0);
     if (event.status == osEventMessage)
       getNewValue(event.value.v);
+
+
   }
 }
 
 void Device::getNewValue(uint16_t)
+{
+
+}
+
+void Device::calcParameters(uint16_t id)
 {
 
 }
