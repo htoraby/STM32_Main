@@ -30,7 +30,7 @@ void Parameters::task()
   while (1) {
     osSemaphoreWait(semaphoreId_, PARAMS_SAVE_TIME);
 
-//    save();
+    save();
   }
 }
 
