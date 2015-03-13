@@ -459,8 +459,6 @@ void Device::updateValueTask()
     event = osMessageGet(getValueDeviceQId_, 0);
     if (event.status == osEventMessage)
       getNewValue(event.value.v);
-
-
   }
 }
 
