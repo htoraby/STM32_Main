@@ -74,6 +74,7 @@ public:
   //!
   void updateValueTask();
   virtual void getNewValue(uint16_t id);
+  virtual void calcParameters(uint16_t id);
 
   /*!
    * \brief writeValue
