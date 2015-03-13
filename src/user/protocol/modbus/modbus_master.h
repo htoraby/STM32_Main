@@ -50,6 +50,8 @@
 #define MODBUS_GATEWAY_PATH_UNAVAILABLE_0x0A  10
 #define MODBUS_GATEWAY_TARGET_DEVICE_0x0B     11
 
+#define MODBUS_COUNTER_LOST_CONNECT           10
+
 
 // БАЗОВЫЙ КЛАСС MODBUS MASTER
 // Релизует функции Modbus и некоторые другие функции
@@ -368,13 +370,39 @@ public:
   // Сбрасывает значение счётчика общего количества запросов в 0
   void resetTotalCounter();
 
+  /*!
+   * \brief Метод увеличения счётчика запросов
+   */
+  void incTotalCounter();
+
   // МЕТОД ПОЛУЧЕНИЯ ОБЩЕГО КОЛИЧЕСТВ ОТВЕТОВ НА ЗАПРОСЫ
   // Вовзращает значение счётчика корректных ответов на запросы
   long getSuccessCounter();
 
+  /*!
+   * \brief Метод увеличения счётчика принятых ответов
+   */
+  void incSuccessCounter();
+
   // МЕТОД СБРОСА СЧЁТЧИКА ОТВЕТОВ НА ЗАПРОСЫ
   //Сбрасывает значение счётчика корректных ответов в 0
   void resetSuccessCounter();
+
+  /*!
+   * \brief Метод увеличения счётчика принятых пакетов
+   */
+  void incLostCounter();
+
+  /*!
+   * \brief Метод сброса счётчика потерянных пакетов
+   */
+  void resetLostCounter();
+
+  /*!
+   * \brief getLostCounter
+   * \return
+   */
+  int getLostCounter();
 
   ///////////////////////////////////////////////////////////////////////
   // МЕТОДЫ НАСТРОЙКИ ПОД SLAVE
@@ -408,11 +436,10 @@ public:
   // ЗАЩИЩЕННЫЕ ЧЛЕНЫ КЛАССА
   ///////////////////////////////////////////////////////////////////////////
 protected:
+  unsigned long totalCounter_;              /// Общий счётчик запросов
+  unsigned long successCounter_;            /// Общий счётчик корректных ответов
+  unsigned long lostCounter_;               /// Счётчик потерянных пакетов
 
-  // Общий счётчик запросов
-  unsigned long TotalCounter;
-  // Общий счётчик корректных ответов
-  unsigned long SuccessCounter;
   // Число автоматических повторений запроса
   int RetryCnt;
   // Время ожидания ответа

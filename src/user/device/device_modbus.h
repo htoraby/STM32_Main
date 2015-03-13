@@ -259,6 +259,12 @@ public:
 
   int searchExchangeParameters();
 
+  /*!
+   * \brief Метод проверяющий наличие связи с устройством
+   * \return
+   */
+  bool isConnect();
+
   short int regArr_[125];
   int int32Arr_[62];
   float float32Arr_[62];
