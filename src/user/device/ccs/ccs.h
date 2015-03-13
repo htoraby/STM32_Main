@@ -92,6 +92,12 @@ public:
    */
   float getTime();
 
+private:
+  /*!
+   * \brief Метод добавления в очередь событий включения/мигания LED
+   */
+  void setLedCondition(LedCondition condition);
+
   /*!
    * \brief Метод обработки изменения состояния
    */
@@ -100,13 +106,19 @@ public:
   /*!
    * \brief Метод проверки команды на запуск/останов
    */
-  void cmdCheck();
+  void checkCmd();
 
-private:
   /*!
-   * \brief Метод добавления в очередь событий включения/мигания LED
+   * \brief Метод проверки возможности пуска
+   * \return
    */
-  void setLedCondition(LedCondition condition);
+  bool checkCanStart();
+
+  /*!
+   * \brief Метод проверки возможности останова
+   * \return
+   */
+  bool checkCanStop();
 
   //! Массив параметров устройства
   parameter parametersArray_[CCS_END - CCS_BEGIN];

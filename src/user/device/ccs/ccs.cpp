@@ -61,7 +61,7 @@ void Ccs::mainTask()
   while (1) {
     osDelay(10);
 
-    cmdCheck();
+    checkCmd();
     conditionChanged();
   }
 }
@@ -121,7 +121,7 @@ void Ccs::vsdConditionTask()
     int vsdCondition = getValue(CCS_VSD_CONDITION);
     switch (vsdCondition) {
       case VSD_CONDITION_STOP:
-        if (getValue(CCS_CONDITION) != CCS_CONDITION_STOP)
+        if (!isBlockCCS())
           setValue(CCS_CONDITION, CCS_CONDITION_STOP);
         break;
       case VSD_CONDITION_STOPPING:
@@ -130,14 +130,12 @@ void Ccs::vsdConditionTask()
         }
         break;
       case VSD_CONDITION_WAIT_STOP:
-        if (getValue(CCS_CONDITION) != CCS_CONDITION_STOP) {
           if (vsd->stop() == RETURN_OK) {
             setLedCondition(LedConditionStopping);
             setValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
           } else {
             // TODO: Ошибка останова
           }
-        }
         break;
       case VSD_CONDITION_RUN:
         if (getValue(CCS_CONDITION) != CCS_CONDITION_RUN) {
@@ -152,14 +150,11 @@ void Ccs::vsdConditionTask()
         }
         break;
       case VSD_CONDITION_WAIT_RUN:
-        if (getValue(CCS_CONDITION) != CCS_CONDITION_RUN) {
-          setLedCondition(LedConditionWaitRun);
           if (vsd->start() == RETURN_OK) {
             setValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
           } else {
             // TODO: Ошибка запуска
           }
-        }
         break;
     }
   }
@@ -171,37 +166,65 @@ void Ccs::conditionChanged()
   if (condition != conditionOld) {
     conditionOld = condition;
     switch (condition) {
-      case CCS_CONDITION_WAIT_APV:
-        setLedCondition(LedConditionWaitApv);
-        break;
-      case CCS_CONDITION_DELAY:
-        setLedCondition(LedConditionDelay);
-        break;
-      case CCS_CONDITION_BLOCK:
-        setLedCondition(LedConditionBlock);
-        break;
-      case CCS_CONDITION_RUN:
-        setLedCondition(LedConditionRun);
-        break;
-      default:
-        setLedCondition(LedConditionStop);
-        break;
+    case CCS_CONDITION_WAIT_APV:
+      setLedCondition(LedConditionWaitApv);
+      break;
+    case CCS_CONDITION_DELAY:
+      setLedCondition(LedConditionDelay);
+      break;
+    case CCS_CONDITION_BLOCK:
+      setLedCondition(LedConditionBlock);
+      break;
+    case CCS_CONDITION_RUNNING:
+      setLedCondition(LedConditionWaitRun);
+      break;
+    case CCS_CONDITION_RUN:
+      setLedCondition(LedConditionRun);
+      break;
+    case CCS_CONDITION_STOPPING:
+
+      break;
+    default:
+      setLedCondition(LedConditionStop);
+      break;
     }
   }
 }
 
-void Ccs::cmdCheck()
+void Ccs::checkCmd()
 {
   int start = getValue(CCS_CMD_START);
   int stop = getValue(CCS_CMD_STOP);
 
   if (start) {
     setValue(CCS_CMD_START, 0);
-    setValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
+    if (checkCanStart()) {
+      setValue(CCS_CONDITION, CCS_CONDITION_RUNNING);
+      setValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
+    }
   } else if (stop) {
     setValue(CCS_CMD_STOP, 0);
-    setValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
+    if (checkCanStop()) {
+      setValue(CCS_CONDITION, CCS_CONDITION_STOPPING);
+      setValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
+    }
   }
+}
+
+bool Ccs::checkCanStart()
+{
+  if (getValue(CCS_VSD_CONDITION) != VSD_CONDITION_STOP)
+    return false;
+  if (isBlockCCS())
+    return false;
+  return true;
+}
+
+bool Ccs::checkCanStop()
+{
+  if (getValue(CCS_VSD_CONDITION) == VSD_CONDITION_STOP)
+    return false;
+  return true;
 }
 
 bool Ccs::isStopCCS()
@@ -210,10 +233,10 @@ bool Ccs::isStopCCS()
   if ((state == CCS_CONDITION_STOP)
       || (state == CCS_CONDITION_WAIT_APV)
       || (state == CCS_CONDITION_BLOCK)) {
-    return 0;
+    return true;
   }
   else {
-    return 1;
+    return false;
   }
 }
 
@@ -221,9 +244,9 @@ bool Ccs::isWorkCCS()
 {
   unsigned int state = (unsigned int)getValue(CCS_CONDITION);
   if ((state == CCS_CONDITION_RUN) || (state == CCS_CONDITION_DELAY))
-    return 0;
+    return true;
   else
-    return 1;
+    return false;
 }
 
 
@@ -231,27 +254,27 @@ bool Ccs::isWaitCCS()
 {
   unsigned int state = (unsigned int)getValue(CCS_CONDITION);
   if (state == CCS_CONDITION_DELAY)
-    return 0;
+    return true;
   else
-    return 1;
+    return false;
 }
 
 bool Ccs::isBlockCCS()
 {
   unsigned int state = (unsigned int)getValue(CCS_CONDITION);
   if (state == CCS_CONDITION_BLOCK)
-    return 0;
+    return true;
   else
-    return 1;
+    return false;
 }
 
 bool Ccs::isAutoControlMode()
 {
   unsigned int controlMode = (unsigned int)getValue(CCS_WORKING_MODE);
   if (controlMode == CCS_WORKING_MODE_AUTO)
-    return 0;
+    return true;
   else
-    return 1;
+    return false;
 }
 
 float Ccs::getTime()
