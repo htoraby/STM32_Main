@@ -2397,6 +2397,7 @@ void VsdNovomet::getNewValue(uint16_t id)
   value = value * param->coefficient;
   value = (value - (Units[param->physic][param->unit][1]))/(Units[param->physic][param->unit][0]);
   setValue(id, value);
+  calcParameters(id);
 }
 
 uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
@@ -2437,9 +2438,9 @@ void VsdNovomet::writeToDevice(int id, float value)
 
 bool VsdNovomet::checkVsdStatus(uint8_t bit)
 {
-  if (bit < INV_EXT_STATUS_I_RMS)
+  if (bit < VSD_STATUS_I_RMS)
     return checkBit(getValue(VSD_INVERTOR_STATUS), bit);
-  if ((bit >= INV_EXT_STATUS_I_RMS) && (bit < INV_STATUS_3))
+  if ((bit >= VSD_STATUS_I_RMS) && (bit < VSD_STATUS_3))
     return checkBit(getValue(VSD_INVERTOR_EXT_STATUS), bit - 16);
   else
     return false;
@@ -2448,7 +2449,7 @@ bool VsdNovomet::checkVsdStatus(uint8_t bit)
 int VsdNovomet::start()
 {
   // Если стоит бит запуска двигателя
-  if (checkVsdStatus(INV_STATUS_STARTED))
+  if (checkVsdStatus(VSD_STATUS_STARTED))
     return RETURN_OK;
 
   int timeMs = VSD_CMD_TIMEOUT;
@@ -2470,15 +2471,15 @@ int VsdNovomet::start()
 
     osDelay(100);
 
-    if (checkVsdStatus(INV_STATUS_STARTED))
+    if (checkVsdStatus(VSD_STATUS_STARTED))
       return RETURN_OK;
   }
 }
 
 bool VsdNovomet::checkStart()
 {
-  if (checkVsdStatus(INV_STATUS_STARTED)) {
-    if (!checkVsdStatus(INV_STATUS_WAIT_RECT_START)) {
+  if (checkVsdStatus(VSD_STATUS_STARTED)) {
+    if (!checkVsdStatus(VSD_STATUS_WAIT_RECT_START)) {
       return true;
     }
   }
@@ -2488,7 +2489,7 @@ bool VsdNovomet::checkStart()
 int VsdNovomet::stop()
 {
   // Если стоит бит остановки по внешней команде
-  if (checkVsdStatus(INV_STATUS_STOPPED_EXTERNAL))
+  if (checkVsdStatus(VSD_STATUS_STOPPED_EXTERNAL))
     return RETURN_OK;
 
   int timeMs = VSD_CMD_TIMEOUT;
@@ -2510,18 +2511,18 @@ int VsdNovomet::stop()
 
     osDelay(100);
 
-    if (checkVsdStatus(INV_STATUS_STOPPED_EXTERNAL))
+    if (checkVsdStatus(VSD_STATUS_STOPPED_EXTERNAL))
       return RETURN_OK;
   }
 }
 
 bool VsdNovomet::checkStop()
 {
-  if (checkVsdStatus(INV_STATUS_STOPPED_EXTERNAL)) {
+  if (checkVsdStatus(VSD_STATUS_STOPPED_EXTERNAL)) {
     // Если не стоит бит работы двигателя двигателя
-    if (!checkVsdStatus(INV_STATUS_STARTED)) {
+    if (!checkVsdStatus(VSD_STATUS_STARTED)) {
       // Если не стоит бит ожидания выключения плат выпрямителя
-      if (!checkVsdStatus(INV_STATUS_WAIT_RECT_STOP)) {
+      if (!checkVsdStatus(VSD_STATUS_WAIT_RECT_STOP)) {
         return true;
       }
     }
@@ -2576,6 +2577,11 @@ int VsdNovomet::setMotorType(float value)
     }
     return RETURN_OK;
   }
+}
+
+int VsdNovomet::getMotorType()
+{
+  return checkVsdStatus(VSD_STATUS_M_TYPE1);
 }
 
 int VsdNovomet::setTempSpeedUp(float value)
@@ -2633,11 +2639,16 @@ int VsdNovomet::setRotation(float value)
   }
 }
 
-
-
-
-
-
+void VsdNovomet::calcParameters(uint16_t id)
+{
+  switch (id) {
+  case VSD_INVERTOR_EXT_STATUS:
+    setValue(VSD_MOTOR_TYPE, getMotorType());
+    break;
+  default:
+    break;
+  }
+}
 
 int VsdNovomet::setMainRegimeVSD()
 {

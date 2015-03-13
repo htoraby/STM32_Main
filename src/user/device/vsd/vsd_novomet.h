@@ -39,28 +39,35 @@ enum enInvertorControl
  */
 enum enInvertorStatus
 { 
-  INV_STATUS_STARTED          = 0,          /// Запуск ПЧ
-  INV_STATUS_WAIT_RECT_START,               /// Ожидаем запуска выпрямителя
-  INV_STATUS_STOPPED_REGISTER,              /// Инвертор остановлен по изменению важного параметра
-  INV_STATUS_STOPPED_EXTERNAL,              /// Инвертор остановлен по команде извне
-  INV_STATUS_WAIT_RECT_STOP,                /// Ожидание остнова выпрямителя
-  INV_STATUS_FAULT_STOPPED,                 /// Остановлен по причине FAULT
-  INV_STATUS_RIGHT_DIRECTION,               /// Правое направление вращения
-  INV_STATUS_I_LIMIT,                       /// Токоограничение
-  INV_STATUS_ULOW,                          /// Недостаточно напряжения
-  INV_STATUS_STOPPED_ALARM,                 /// Остановлен аварийно
-  INV_STATUS_UD_LOW_FAULT,                  /// Остановлен по снижению напряжения на шин
-  INV_STATUS_UD_HIGH_FAULT,                 /// Остановлен по превышению напряжения на шине
-  INV_STATUS_TO_STOP_MODE,                  /// Режим плавной остановки двигателя
-  INV_STATUS_UIN_ASYM,                      /// Остановлен по несимметрии входного напряжения
-  INV_STATUS_URECT_SHORTCIRCUIT,            /// Остановлен по КЗ от выпрямителя
-  INV_STATUS_RESERVED,                      /// Резерв
-  INV_EXT_STATUS_I_RMS       = 16,          /// Сработала тепловая защита
-  INV_EXT_STATUS_AST_ERR,                   /// Система автонастройки не смогла определить параметры линии
-  INV_EXT_STATUS_I_LIMIT_FAST,              /// Превышение порога мгновенного токоограничения
-  INV_EXT_STATUS_CURRENT_OPT,               /// Включена оптимизация по току
-  INV_EXT_STATUS_POWER_OPT,                 /// Включена оптимизация по выходной мощности
-  INV_STATUS_3               = 32
+  VSD_STATUS_STARTED          = 0,          /// Запуск ПЧ
+  VSD_STATUS_WAIT_RECT_START,               /// Ожидаем запуска выпрямителя
+  VSD_STATUS_STOPPED_REGISTER,              /// Инвертор остановлен по изменению важного параметра
+  VSD_STATUS_STOPPED_EXTERNAL,              /// Инвертор остановлен по команде извне
+  VSD_STATUS_WAIT_RECT_STOP,                /// Ожидание остнова выпрямителя
+  VSD_STATUS_FAULT_STOPPED,                 /// Остановлен по причине FAULT
+  VSD_STATUS_RIGHT_DIRECTION,               /// Правое направление вращения
+  VSD_STATUS_I_LIMIT,                       /// Токоограничение
+  VSD_STATUS_ULOW,                          /// Недостаточно напряжения
+  VSD_STATUS_STOPPED_ALARM,                 /// Остановлен аварийно
+  VSD_STATUS_UD_LOW_FAULT,                  /// Остановлен по снижению напряжения на шин
+  VSD_STATUS_UD_HIGH_FAULT,                 /// Остановлен по превышению напряжения на шине
+  VSD_STATUS_TO_STOP_MODE,                  /// Режим плавной остановки двигателя
+  VSD_STATUS_UIN_ASYM,                      /// Остановлен по несимметрии входного напряжения
+  VSD_STATUS_URECT_SHORTCIRCUIT,            /// Остановлен по КЗ от выпрямителя
+  VSD_STATUS_RESERVED,                      /// Резерв
+  VSD_STATUS_I_RMS       = 16,              /// Сработала тепловая защита
+  VSD_STATUS_AST_ERR,                       /// Система автонастройки не смогла определить параметры линии
+  VSD_STATUS_I_LIMIT_FAST,                  /// Превышение порога мгновенного токоограничения
+  VSD_STATUS_CURRENT_OPT,                   /// Включена оптимизация по току
+  VSD_STATUS_POWER_OPT,                     /// Включена оптимизация по выходной мощности
+  VSD_STATUS_OPT_DONE,
+  VSD_STATUS_M_TYPE0,
+  VSD_STATUS_M_TYPE1,
+  VSD_STATUS_DISCHARGE_ON,
+  VSD_STATUS_DISCAHRGE,
+  VSD_STATUS_DISCHARGE_ERR,
+  VSD_STATUS_VC_ERR,
+  VSD_STATUS_3               = 32
 };
 
 enum enRegulatorQueue
@@ -191,6 +198,12 @@ public:
    * \return Код результата операции
    */
   int setMotorType(float value);
+
+  /*!
+   * \brief getMotorType
+   * \return 0 - асинхронный; 1 - вентильный
+   */
+  int getMotorType();
 
   /*!
    * \brief Метод задания времени набора частоты
@@ -329,6 +342,11 @@ public:
    * \return
    */
   int checkExchangModbusParameters(int indexParam);
+
+  /*!
+   * \brief Функция вычисления значений,
+   */
+  void calcParameters(uint16_t id);
 
 private:
   ModbusParameter modbusParameters_[135];
