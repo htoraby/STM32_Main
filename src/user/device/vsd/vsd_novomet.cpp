@@ -2416,9 +2416,9 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
     if (value < getValue(VSD_FREQUENCY))
       setFrequency(value);
     return setMaxFrequency(value);
-  case  VSD_T_SPEEDUP:
+  case  VSD_TEMP_SPEEDUP:
     return setTempSpeedUp(value);
-  case  VSD_T_SPEEDDOWN:
+  case  VSD_TEMP_SPEEDDOWN:
     return setTempSpeedDown(value);
   case  VSD_MOTOR_CONTROL:
     return setMotorControl(value);
