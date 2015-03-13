@@ -18,7 +18,7 @@ Ccs::Ccs()
 
 Ccs::~Ccs()
 {
-  // TODO Auto-generated destructor stub
+
 }
 
 static void ccsMainTask(void *p)

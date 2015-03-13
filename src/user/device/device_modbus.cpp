@@ -264,9 +264,9 @@ void DeviceModbus::exchangeTask()
 
   while (1) {
     osDelay(1);
+
     // Проверяем очередь параметров для обработки вне очереди
     int outOfTurn = getMessageOutOfTurn();
-    // Если есть параметры для обработки вне очереди
     if (outOfTurn) {
       // Если записать
       if (modbusParameters_[outOfTurn].command == OPERATION_WRITE) {
@@ -307,18 +307,18 @@ void DeviceModbus::exchangeTask()
             break;
         }
       }
-      else {// TODO: Чтение вне очереди
+      else { // Чтение вне очереди
         if (modbusParameters_[outOfTurn].command == OPERATION_READ) {
           int address = modbusParameters_[outOfTurn].address;
           if(!(mms_->readMultipleRegisters(deviceAddress_,address,regArr_,1))) {
-            int Index = getIndexAtAddress(address);
-            modbusParameters_[Index].value.tdInt16[0] = regArr_[0];
-            modbusParameters_[Index].validity = VALIDITY_GOOD;
-            putMessageUpdateId(modbusParameters_[Index].id);
+            int index = getIndexAtAddress(address);
+            modbusParameters_[index].value.tdInt16[0] = regArr_[0];
+            modbusParameters_[index].validity = VALIDITY_GOOD;
+            putMessageUpdateId(modbusParameters_[index].id);
           }
           else {
-            int Index = getIndexAtAddress(address);
-            modbusParameters_[Index].validity = VALIDITY_ERROR;
+            int index = getIndexAtAddress(address);
+            modbusParameters_[index].validity = VALIDITY_ERROR;
           }
         }
       }
@@ -334,20 +334,16 @@ void DeviceModbus::exchangeTask()
             if (!(mms_->readMultipleRegisters(deviceAddress_,address,regArr_,count))) {
               // TODO: Сделать проверки на минимум максиму и т.п
               // Получаем индекс элемента в массиве с которого начинаем сохранение
-              int Index = getIndexAtAddress(address);
-              // Цикл по количеству полученных регистров
+              int index = getIndexAtAddress(address);
               for (int i = 0; i < count; i++) {
-                modbusParameters_[Index].value.tdInt16[0] = regArr_[i];
-                modbusParameters_[Index].validity = VALIDITY_GOOD;
-                putMessageUpdateId(modbusParameters_[Index].id);
-                Index++;
+                modbusParameters_[index].value.tdInt16[0] = regArr_[i];
+                modbusParameters_[index].validity = VALIDITY_GOOD;
+                putMessageUpdateId(modbusParameters_[index].id);
+                index++;
               }
-              if (outOfTurn == 15)
-                asm("nop");
             }
             else {
               int index = getIndexAtAddress(address);
-              // Цикл по количеству полученных регистров
               for (int i = 0; i < count; i++) {
                 modbusParameters_[index].validity = VALIDITY_ERROR;
                 index++;
