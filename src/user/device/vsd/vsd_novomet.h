@@ -201,9 +201,28 @@ public:
 
   /*!
    * \brief getMotorType
-   * \return 0 - асинхронный; 1 - вентильный
    */
-  int getMotorType();
+  void calcMotorType();
+
+  /*!
+   * \brief calcSpeedUp
+   */
+  void calcTempSpeedUp();
+
+  /*!
+   * \brief calcTimeSpeedUp
+   */
+  void calcTimeSpeedUp();
+
+  /*!
+   * \brief calcMotorControl
+   */
+  void calcMotorControl();
+
+  /*!
+   * \brief calcRotation
+   */
+  void calcRotation();
 
   /*!
    * \brief Метод задания времени набора частоты

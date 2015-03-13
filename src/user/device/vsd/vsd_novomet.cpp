@@ -2579,10 +2579,46 @@ int VsdNovomet::setMotorType(float value)
   }
 }
 
-int VsdNovomet::getMotorType()
+void VsdNovomet::calcMotorType()
 {
-  return checkVsdStatus(VSD_STATUS_M_TYPE1);
+  if (checkVsdStatus(VSD_STATUS_M_TYPE1)) {
+    setValue(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_VENT);
+  }
+  else {
+    setValue(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_ASYNC);
+  }
 }
+
+void VsdNovomet::calcTempSpeedUp()
+{
+  setValue(VSD_TEMP_SPEEDUP, 1/getValue(VSD_T_SPEEDUP));
+}
+
+void VsdNovomet::calcTimeSpeedUp()
+{
+  setValue(VSD_TIMER_DISPERSAL, getValue(VSD_FREQUENCY)/getValue(VSD_TEMP_SPEEDUP));
+}
+
+void VsdNovomet::calcMotorControl()
+{
+  if(getValue(VSD_REGULATOR_QUEUE_5) == VSD_MOTOR_CONTROL_UF) {
+    setValue(VSD_MOTOR_CONTROL, VSD_MOTOR_CONTROL_UF);
+  }
+  else {
+    setValue(VSD_MOTOR_CONTROL, VSD_MOTOR_CONTROL_VECT);
+  }
+}
+
+void VsdNovomet::calcRotation()
+{
+  if (checkVsdStatus(VSD_STATUS_RIGHT_DIRECTION)) {
+    setValue(VSD_ROTATION, VSD_ROTATION_DIRECT);
+  }
+  else {
+    setValue(VSD_ROTATION, VSD_ROTATION_REVERSE);
+  }
+}
+
 
 int VsdNovomet::setTempSpeedUp(float value)
 {
@@ -2643,7 +2679,17 @@ void VsdNovomet::calcParameters(uint16_t id)
 {
   switch (id) {
   case VSD_INVERTOR_EXT_STATUS:
-    setValue(VSD_MOTOR_TYPE, getMotorType());
+    calcMotorType();
+    break;
+  case VSD_T_SPEEDUP:
+    calcTempSpeedUp();
+    calcTimeSpeedUp();
+    break;
+  case VSD_REGULATOR_QUEUE_5:
+    calcMotorControl();
+    break;
+  case VSD_INVERTOR_STATUS:
+    calcRotation();
     break;
   default:
     break;
