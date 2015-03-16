@@ -12,11 +12,6 @@ public:
   ProtectionTemperatureMotor();
   ~ProtectionTemperatureMotor();
 
-  /*!
-   * \brief Инициализация автомата защиты
-   */
-  void init();
-
 private:
 
   bool checkAlarm();

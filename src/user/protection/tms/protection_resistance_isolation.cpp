@@ -29,11 +29,6 @@ ProtectionResistanceIsolation::~ProtectionResistanceIsolation()
 
 }
 
-void ProtectionResistanceIsolation::init()
-{
-  Protection::init("ProtResistanceIsolation");
-}
-
 bool ProtectionResistanceIsolation::checkAlarm()
 {
   return Protection::isLowerLimit(tripSetpoint_);

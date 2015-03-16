@@ -29,11 +29,6 @@ ProtectionOverVoltageInput::~ProtectionOverVoltageInput()
 
 }
 
-void ProtectionOverVoltageInput::init()
-{
-  Protection::init("ProtOverVoltInput");
-}
-
 bool ProtectionOverVoltageInput::checkAlarm()
 {
   return Protection::isHigherLimit(tripSetpoint_);

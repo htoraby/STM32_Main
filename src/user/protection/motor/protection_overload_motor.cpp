@@ -29,11 +29,6 @@ ProtectionOverloadMotor::~ProtectionOverloadMotor()
 
 }
 
-void ProtectionOverloadMotor::init()
-{
-  Protection::init("ProtOverloadMotor");
-}
-
 bool ProtectionOverloadMotor::checkAlarm()
 {
   return Protection::isHigherLimit(tripSetpoint_);

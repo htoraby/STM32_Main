@@ -29,11 +29,6 @@ ProtectionOutOfSyncMotor::~ProtectionOutOfSyncMotor()
 
 }
 
-void ProtectionOutOfSyncMotor::init()
-{
-  Protection::init("ProtOutOfSyncMotor");
-}
-
 bool ProtectionOutOfSyncMotor::checkAlarm()
 {
   float nominal = parameters.getValue(VSD_MOTOR_CURRENT);

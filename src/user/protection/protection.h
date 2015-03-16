@@ -47,15 +47,9 @@ public:
   ~Protection();
 
   /*!
-   * \brief Инициализация обработки защиты
-   * \param threadName - Имя задачи
+   * \brief Метод обработки защиты
    */
-  void init(const char *threadName);
-
-  /*!
-   * \brief Задача защиты
-   */
-  void task();
+  void processing();
 
   /*!
    * \brief Метод получения уставок защиты.
@@ -216,9 +210,6 @@ protected:
   bool alarm_;
   /// Флаг запрещающего параметра
   bool block_;
-
-  /// Идентификатор задачи защиты
-  osThreadId threadId_;
 
 };
 

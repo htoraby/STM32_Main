@@ -12,11 +12,6 @@ public:
   ProtectionResistanceIsolation();
   ~ProtectionResistanceIsolation();
 
-  /*!
-   * \brief Инициализация автомата защиты
-   */
-  void init();
-
 private:
 
   bool checkAlarm();

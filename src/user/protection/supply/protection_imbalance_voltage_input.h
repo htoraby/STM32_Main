@@ -12,11 +12,6 @@ public:
   ProtectionImbalanceVoltageInput();
   ~ProtectionImbalanceVoltageInput();
 
-  /*!
-   * \brief Инициализация автомата защиты
-   */
-  void init();
-
 private:
 
   bool checkAlarm();

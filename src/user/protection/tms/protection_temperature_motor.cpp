@@ -29,11 +29,6 @@ ProtectionTemperatureMotor::~ProtectionTemperatureMotor()
 
 }
 
-void ProtectionTemperatureMotor::init()
-{
-  Protection::init("ProtTemperatureMotor");
-}
-
 bool ProtectionTemperatureMotor::checkAlarm()
 {
   return Protection::isHigherLimit(tripSetpoint_);

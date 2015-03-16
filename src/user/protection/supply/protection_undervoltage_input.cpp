@@ -29,11 +29,6 @@ ProtectionUnderVoltageInput::~ProtectionUnderVoltageInput()
 
 }
 
-void ProtectionUnderVoltageInput::init()
-{
-  Protection::init("ProtUnderVoltInput");
-}
-
 bool ProtectionUnderVoltageInput::checkAlarm()
 {
   return Protection::isLowerLimit(tripSetpoint_);

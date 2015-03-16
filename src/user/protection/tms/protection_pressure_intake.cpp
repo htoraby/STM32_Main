@@ -29,11 +29,6 @@ ProtectionPressureIntake::~ProtectionPressureIntake()
 
 }
 
-void ProtectionPressureIntake::init()
-{
-  Protection::init("ProtPressureIntake");
-}
-
 bool ProtectionPressureIntake::checkAlarm()
 {
   return Protection::isLowerLimit(tripSetpoint_);

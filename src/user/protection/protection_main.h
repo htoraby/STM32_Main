@@ -30,8 +30,7 @@ extern ProtectionPressureIntake protPressureIntake;
 extern ProtectionResistanceIsolation protResistanceIsolation;
 
 /*!
- * \brief protectionInit
- * Функция инициализации автоматов защит
+ * \brief Функция инициализации задачи обработки всех защит
  */
 void protectionInit();
 

@@ -29,11 +29,6 @@ ProtectionUnderloadMotor::~ProtectionUnderloadMotor()
 
 }
 
-void ProtectionUnderloadMotor::init()
-{
-  Protection::init("ProtUnderloadMotor");
-}
-
 bool ProtectionUnderloadMotor::checkAlarm()
 {
   return Protection::isLowerLimit(tripSetpoint_);

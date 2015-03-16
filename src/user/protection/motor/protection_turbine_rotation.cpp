@@ -25,11 +25,6 @@ ProtectionTurbineRotation::~ProtectionTurbineRotation()
 
 }
 
-void ProtectionTurbineRotation::init()
-{
-  Protection::init("ProtTurbineRotation");
-}
-
 bool ProtectionTurbineRotation::checkBlock()
 {
   bool block = false;

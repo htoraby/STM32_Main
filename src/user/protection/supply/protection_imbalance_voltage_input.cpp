@@ -29,11 +29,6 @@ ProtectionImbalanceVoltageInput::~ProtectionImbalanceVoltageInput()
 
 }
 
-void ProtectionImbalanceVoltageInput::init()
-{
-  Protection::init("ProtImbalanceVoltInput");
-}
-
 bool ProtectionImbalanceVoltageInput::checkAlarm()
 {
   return Protection::isHigherLimit(tripSetpoint_);

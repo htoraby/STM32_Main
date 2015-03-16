@@ -12,11 +12,6 @@ public:
   ProtectionOverVoltageInput();
   ~ProtectionOverVoltageInput();
 
-  /*!
-   * \brief Инициализация автомата защиты
-   */
-  void init();
-
 private:
 
   bool checkAlarm();

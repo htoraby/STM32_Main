@@ -14,22 +14,36 @@ ProtectionTemperatureMotor protTemperatureMotor;
 ProtectionPressureIntake protPressureIntake;
 ProtectionResistanceIsolation protResistanceIsolation;
 
+static void protectionTask(void *argument);
+
 void protectionInit()
 {
-  // Supply
-  protOverVoltIn.init();
-  protUnderVoltIn.init();
-  protImbalanceVoltIn.init();
+  osThreadDef(ProtectionTask, protectionTask, osPriorityNormal, 0, 4 * configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(ProtectionTask), NULL);
+}
 
-  // Motor
-  protOverloadMotor.init();
-  protUnderloadMotor.init();
-  protImbalanceCurrentMotor.init();
-  protOutOfSyncMotor.init();
-  protTurbineRotation.init();
+void protectionTask(void *argument)
+{
+  (void)argument;
 
-  // Tms
-  protTemperatureMotor.init();
-  protPressureIntake.init();
-  protResistanceIsolation.init();
+  while (1) {
+    osDelay(10);
+
+    // Supply
+    protOverVoltIn.processing();
+    protUnderVoltIn.processing();
+    protImbalanceVoltIn.processing();
+
+    // Motor
+    protOverloadMotor.processing();
+    protUnderloadMotor.processing();
+    protImbalanceCurrentMotor.processing();
+    protOutOfSyncMotor.processing();
+    protTurbineRotation.processing();
+
+    // Tms
+    protTemperatureMotor.processing();
+    protPressureIntake.processing();
+    protResistanceIsolation.processing();
+  }
 }
