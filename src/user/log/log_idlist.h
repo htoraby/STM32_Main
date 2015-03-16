@@ -49,6 +49,11 @@ typedef enum {
   TemperatureMotorApvId,             //!< "АПВ по защите: Перегрев двигателя"
   TemperatureMotorApvDisabledId,     //!< "АПВ запрещен: Перегрев двигателя"
   TemperatureMotorProtBlockedId,     //!< "Блокировка по защите: Перегрев двигателя"
+
+  PressureIntakeProtActivId,       //!< "Сработала защита: Давление на приёме насоса"
+  PressureIntakeApvId,             //!< "АПВ по защите: Давление на приёме насоса"
+  PressureIntakeApvDisabledId,     //!< "АПВ запрещен: Давление на приёме насоса"
+  PressureIntakeProtBlockedId,     //!< "Блокировка по защите: Давление на приёме насоса"
 } EventId;
 
 #endif // LOG_IDLIST
