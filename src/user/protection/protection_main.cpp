@@ -27,7 +27,7 @@ void protectionTask(void *argument)
   (void)argument;
 
   while (1) {
-    osDelay(10);
+    osDelay(100);
 
     // Supply
     protOverVoltIn.processing();
