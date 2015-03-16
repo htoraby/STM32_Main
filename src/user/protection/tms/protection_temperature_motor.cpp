@@ -41,7 +41,7 @@ bool ProtectionTemperatureMotor::checkAlarm()
 
 bool ProtectionTemperatureMotor::checkBlock()
 {
-  return Protection::isHigherLimit(restartSetpoint_);
+  return Protection::isHigherLimit(tripSetpoint_);
 }
 
 float ProtectionTemperatureMotor::calcValue()

@@ -35,7 +35,7 @@ bool ProtectionTurbineRotation::checkBlock()
   bool block = false;
   float value = parameters.getValue(CCS_TURBO_ROTATION_NOW);
   if ((ksu.isStopCCS() || ksu.isWaitCCS() || ksu.isBlockCCS())
-      && (value > restartSetpoint_)) {
+      && (value > tripSetpoint_)) {
     block = true;
   }
   return block;

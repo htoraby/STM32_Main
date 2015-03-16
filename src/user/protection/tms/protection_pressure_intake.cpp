@@ -50,3 +50,8 @@ bool ProtectionPressureIntake::checkBlock()
 
   return false;
 }
+
+float ProtectionPressureIntake::calcValue()
+{
+  return parameters.getValue(TMS_PRESSURE_INTAKE);
+}

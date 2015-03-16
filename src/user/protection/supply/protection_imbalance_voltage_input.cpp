@@ -41,7 +41,7 @@ bool ProtectionImbalanceVoltageInput::checkAlarm()
 
 bool ProtectionImbalanceVoltageInput::checkBlock()
 {
-  return Protection::isHigherLimit(restartSetpoint_);
+  return Protection::isHigherLimit(tripSetpoint_);
 }
 
 float ProtectionImbalanceVoltageInput::calcValue()

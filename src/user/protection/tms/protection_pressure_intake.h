@@ -21,6 +21,7 @@ private:
 
   bool checkAlarm();
   bool checkBlock();
+  float calcValue();
 
 };
 
