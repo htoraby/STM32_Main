@@ -39,6 +39,11 @@ typedef enum {
 
   TurbineRotationBeginId,         //!< "Турбинное вращение. Начало"
   TurbineRotationEndId,           //!< "Турбинное вращение. Окончание"
+
+  TemperatureMotorProtActivId,       //!< "Сработала защита: Перегрев двигателя"
+  TemperatureMotorApvId,             //!< "АПВ по защите: Перегрев двигателя"
+  TemperatureMotorApvDisabledId,     //!< "АПВ запрещен: Перегрев двигателя"
+  TemperatureMotorProtBlockedId,     //!< "Блокировка по защите: Перегрев двигателя"
 } EventId;
 
 #endif // LOG_IDLIST

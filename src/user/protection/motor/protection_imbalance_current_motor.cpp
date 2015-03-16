@@ -39,11 +39,6 @@ bool ProtectionImbalanceCurrentMotor::checkAlarm()
   return Protection::isHigherLimit(tripSetpoint_);
 }
 
-bool ProtectionImbalanceCurrentMotor::checkBlock()
-{
-  return Protection::isHigherLimit(restartSetpoint_);
-}
-
 float ProtectionImbalanceCurrentMotor::calcValue()
 {
   return parameters.getValue(CCS_MOTOR_CURRENT_IMBALANCE);

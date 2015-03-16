@@ -46,11 +46,6 @@ bool ProtectionOutOfSyncMotor::checkAlarm()
     return false;
 }
 
-bool ProtectionOutOfSyncMotor::checkBlock()
-{
-  return false;
-}
-
 void ProtectionOutOfSyncMotor::addEventActivationProt()
 {
   float nominal = parameters.getValue(VSD_MOTOR_CURRENT);
