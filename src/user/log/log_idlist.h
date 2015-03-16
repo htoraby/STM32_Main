@@ -17,6 +17,11 @@ typedef enum {
   UnderVoltInApvDisabledId,       //!< "АПВ запрещен: Снижение питания сети"
   UnderVoltInProtBlockedId,       //!< "Блокировка по защите: Снижение питания сети"
 
+  ImbalanceVoltInProtActivId,     //!< "Сработала защита: Дисбаланс напряжения"
+  ImbalanceVoltInApvId,           //!< "АПВ по защите: Дисбаланс напряжения"
+  ImbalanceVoltInApvDisabledId,   //!< "АПВ запрещен: Дисбаланс напряжения"
+  ImbalanceVoltInProtBlockedId,   //!< "Блокировка по защите: Дисбаланс напряжения"
+
   OverloadMotorProtActivId,       //!< "Сработала защита: Перегруз двигателя"
   OverloadMotorApvId,             //!< "АПВ по защите: Перегруз двигателя"
   OverloadMotorApvDisabledId,     //!< "АПВ запрещен: Перегруз двигателя"
