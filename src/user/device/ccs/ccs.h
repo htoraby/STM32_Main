@@ -9,6 +9,7 @@
 #define CCS_H_
 
 #include "device.h"
+#include "log.h"
 
 class Ccs: public Device
 {
@@ -54,6 +55,18 @@ public:
   void vsdConditionTask();
 
   void initParameters();
+
+  /*!
+   * \brief Метод запуска двигателя
+   * \param type - Вид события
+   */
+  void start(EventType type = AutoType);
+
+  /*!
+   * \brief Метод останова двигателя
+   * \param type - Вид события
+   */
+  void stop(EventType type = AutoType);
 
   /*!
    * \brief Проверка находится ли станция в стопе

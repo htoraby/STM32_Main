@@ -1,4 +1,5 @@
 #include "log_alarm.h"
+#include "user_main.h"
 
 #if USE_EXT_MEM
 static float uValue[ADC_CNANNELS_NUM*ADC_POINTS_NUM] __attribute__((section(".extmem")));
@@ -23,10 +24,10 @@ void LogAlarm::init()
   LogRunning::init("LogAlarm");
 }
 
-void LogAlarm::start(EventType type, uint32_t eventId)
+void LogAlarm::start(uint32_t eventId)
 {
   eventId_ = eventId;
-  LogRunning::start(type);
+  LogRunning::start();
 }
 
 void LogAlarm::task()

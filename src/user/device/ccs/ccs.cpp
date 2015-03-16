@@ -146,6 +146,8 @@ void Ccs::vsdConditionTask()
       case VSD_CONDITION_RUNNING:
         if (vsd->checkStart()) {
           setLedCondition(LedConditionRunning);
+          // Запуск сохранения пускового архива
+          logRunning.start();
           setValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
         }
         break;
@@ -189,6 +191,18 @@ void Ccs::conditionChanged()
       break;
     }
   }
+}
+
+void Ccs::start(EventType type)
+{
+  setValue(CCS_LAST_EVENT_TYPE, type);
+  setValue(CCS_CMD_START, 1);
+}
+
+void Ccs::stop(EventType type)
+{
+  setValue(CCS_LAST_EVENT_TYPE, type);
+  setValue(CCS_CMD_STOP, 1);
 }
 
 void Ccs::checkCmd()
