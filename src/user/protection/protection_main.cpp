@@ -12,6 +12,7 @@ ProtectionTurbineRotation protTurbineRotation;
 
 ProtectionTemperatureMotor protTemperatureMotor;
 ProtectionPressureIntake protPressureIntake;
+ProtectionResistanceIsolation protResistanceIsolation;
 
 void protectionInit()
 {
@@ -30,4 +31,5 @@ void protectionInit()
   // Tms
   protTemperatureMotor.init();
   protPressureIntake.init();
+  protResistanceIsolation.init();
 }

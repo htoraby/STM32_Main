@@ -45,15 +45,20 @@ typedef enum {
   TurbineRotationBeginId,         //!< "Турбинное вращение. Начало"
   TurbineRotationEndId,           //!< "Турбинное вращение. Окончание"
 
-  TemperatureMotorProtActivId,       //!< "Сработала защита: Перегрев двигателя"
-  TemperatureMotorApvId,             //!< "АПВ по защите: Перегрев двигателя"
-  TemperatureMotorApvDisabledId,     //!< "АПВ запрещен: Перегрев двигателя"
-  TemperatureMotorProtBlockedId,     //!< "Блокировка по защите: Перегрев двигателя"
+  TemperatureMotorProtActivId,    //!< "Сработала защита: Перегрев двигателя"
+  TemperatureMotorApvId,          //!< "АПВ по защите: Перегрев двигателя"
+  TemperatureMotorApvDisabledId,  //!< "АПВ запрещен: Перегрев двигателя"
+  TemperatureMotorProtBlockedId,  //!< "Блокировка по защите: Перегрев двигателя"
 
-  PressureIntakeProtActivId,       //!< "Сработала защита: Давление на приёме насоса"
-  PressureIntakeApvId,             //!< "АПВ по защите: Давление на приёме насоса"
-  PressureIntakeApvDisabledId,     //!< "АПВ запрещен: Давление на приёме насоса"
-  PressureIntakeProtBlockedId,     //!< "Блокировка по защите: Давление на приёме насоса"
+  PressureIntakeProtActivId,      //!< "Сработала защита: Давление на приёме насоса"
+  PressureIntakeApvId,            //!< "АПВ по защите: Давление на приёме насоса"
+  PressureIntakeApvDisabledId,    //!< "АПВ запрещен: Давление на приёме насоса"
+  PressureIntakeProtBlockedId,    //!< "Блокировка по защите: Давление на приёме насоса"
+
+  ResistIsolationProtActivId,     //!< "Сработала защита: Сопротивление изоляции"
+  ResistIsolationApvId,           //!< "АПВ по защите: Сопротивление изоляции"
+  ResistIsolationApvDisabledId,   //!< "АПВ запрещен: Сопротивление изоляции"
+  ResistIsolationProtBlockedId,   //!< "Блокировка по защите: Сопротивление изоляции"
 } EventId;
 
 #endif // LOG_IDLIST

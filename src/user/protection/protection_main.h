@@ -13,6 +13,7 @@
 
 #include "protection_temperature_motor.h"
 #include "protection_pressure_intake.h"
+#include "protection_resistance_isolation.h"
 
 extern ProtectionOverVoltageInput protOverVoltIn;
 extern ProtectionUnderVoltageInput protUnderVoltIn;
@@ -26,6 +27,7 @@ extern ProtectionTurbineRotation protTurbineRotation;
 
 extern ProtectionTemperatureMotor protTemperatureMotor;
 extern ProtectionPressureIntake protPressureIntake;
+extern ProtectionResistanceIsolation protResistanceIsolation;
 
 /*!
  * \brief protectionInit
