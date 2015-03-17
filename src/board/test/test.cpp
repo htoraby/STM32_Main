@@ -146,7 +146,7 @@ static void testThread(void * argument)
 
 #if (TEST_USB_FAT == 1)
     if ((disk_status(0) == RES_OK) && (startTestUsb == 1)) {
-      FRESULT result = f_mount(&fatfs, "0", 1);
+      FRESULT result = f_mount(&fatfs, USB_DISK, 1);
       if (result == FR_OK) {
         UINT bytesWritten = 0;
         UINT BytesRead;

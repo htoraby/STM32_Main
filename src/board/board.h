@@ -31,6 +31,9 @@
 #define HOST_TEST_UART uart6
 
 
+#define USB_DISK "0"
+
+
 /*!
  * \brief Инициализация переферии
  */

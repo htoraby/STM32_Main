@@ -3,7 +3,9 @@
 #include "usbh_diskio.h"
 #include "usb_host.h"
 
-#define LOG_FILENAME "0:1.log"
+#define LOG_DIR USB_DISK ":ksu_log"
+#define DEBUG_LOG_FILE LOG_DIR "\\debug.log"
+#define MAIN_LOG_FILE LOG_DIR "\\main.log"
 
 #if USE_EXT_MEM
 static uint8_t bufData[4096] __attribute__((section(".extmem")));
@@ -91,26 +93,46 @@ void logSaveTask(void *argument)
 
     while(disk_status(0) != RES_OK)
       osDelay(10);
-    while (f_mount(&fatfs, "0", 1) != FR_OK)
+    while (f_mount(&fatfs, USB_DISK, 1) != FR_OK)
       osDelay(10);
 
-    bytesWritten = 0;
-    f_unlink(LOG_FILENAME);
-    uint32_t time = HAL_GetTick();
-    if (f_open(&file, LOG_FILENAME, FA_CREATE_ALWAYS | FA_WRITE) == FR_OK) {
-      int addr = StartAddrDebugLog;
-      int size = 4096;
-      while (1) {
-        logDebugRead(addr, bufData, size);
-        f_write(&file, bufData, size, &bytesWritten);
+    f_unlink(DEBUG_LOG_FILE);
+    f_unlink(MAIN_LOG_FILE);
 
-        addr = addr + size;
-        if (addr >= EndAddrDebugLog)
-          break;
+    FRESULT result = f_mkdir(LOG_DIR);
+    if ((result == FR_OK) || (result == FR_EXIST)) {
+      uint32_t time = HAL_GetTick();
+      if (f_open(&file, DEBUG_LOG_FILE, FA_CREATE_ALWAYS | FA_WRITE) == FR_OK) {
+        uint32_t addr = 0;
+        uint32_t size = 4096;
+        bytesWritten = 0;
+        while (1) {
+          logDebugRead(addr, bufData, size);
+          f_write(&file, bufData, size, &bytesWritten);
+
+          addr = addr + size;
+          if (addr >= flashExts[FlashSpi1].size)
+            break;
+        }
+        f_close(&file);
       }
-      f_close(&file);
+
+      if (f_open(&file, MAIN_LOG_FILE, FA_CREATE_ALWAYS | FA_WRITE) == FR_OK) {
+        uint32_t addr = 0;
+        uint32_t size = 4096;
+        bytesWritten = 0;
+        while (1) {
+          logRead(addr, bufData, size);
+          f_write(&file, bufData, size, &bytesWritten);
+
+          addr = addr + size;
+          if (addr >= flashExts[FlashSpi5].size)
+            break;
+        }
+        f_close(&file);
+      }
+      time = HAL_GetTick() - time;
+      asm("nop");
     }
-    time = HAL_GetTick() - time;
-    asm("nop");
   }
 }
