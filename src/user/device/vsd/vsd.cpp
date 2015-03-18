@@ -32,6 +32,16 @@ void Vsd::initParameters()
   }
 }
 
+bool Vsd::checkVsdStatus(uint8_t bit)
+{
+  if (bit < VSD_STATUS_I_RMS)
+    return checkBit(getValue(VSD_INVERTOR_STATUS), bit);
+  if ((bit >= VSD_STATUS_I_RMS) && (bit < VSD_STATUS_3))
+    return checkBit(getValue(VSD_INVERTOR_STATUS2), bit - 16);
+  else
+    return false;
+}
+
 float Vsd::getCurrentFreq()
 {
   return getValue(VSD_FREQUENCY_NOW);

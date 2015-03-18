@@ -1524,7 +1524,7 @@ void VsdNovomet::initModbusParameters()
                           0                 // Значение
   };
   modbusParameters_[89] = {// Расширенный регистр состояния инвертора
-                          VSD_INVERTOR_EXT_STATUS,
+                          VSD_INVERTOR_STATUS2,
                           165,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
                           PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -2306,7 +2306,7 @@ void VsdNovomet::initModbusParameters()
                           0                 // Значение
   };
   modbusParameters_[134] = {// Расширенные слово состояния 3
-                          VSD_INV_STATUS3,
+                          VSD_INVERTOR_STATUS3,
                           210,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
                           PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -2439,16 +2439,6 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
 void VsdNovomet::writeToDevice(int id, float value)
 {
   dm_->writeModbusParameter(id, value);
-}
-
-bool VsdNovomet::checkVsdStatus(uint8_t bit)
-{
-  if (bit < VSD_STATUS_I_RMS)
-    return checkBit(getValue(VSD_INVERTOR_STATUS), bit);
-  if ((bit >= VSD_STATUS_I_RMS) && (bit < VSD_STATUS_3))
-    return checkBit(getValue(VSD_INVERTOR_EXT_STATUS), bit - 16);
-  else
-    return false;
 }
 
 int VsdNovomet::start()
@@ -2683,7 +2673,7 @@ int VsdNovomet::setRotation(float value)
 void VsdNovomet::calcParameters(uint16_t id)
 {
   switch (id) {
-  case VSD_INVERTOR_EXT_STATUS:
+  case VSD_INVERTOR_STATUS2:
     calcMotorType();
     break;
   case VSD_T_SPEEDUP:

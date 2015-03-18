@@ -32,6 +32,11 @@ typedef enum {
   UnderloadMotorApvDisabledId,    //!< "АПВ запрещен: Недогруз двигателя"
   UnderloadMotorProtBlockedId,    //!< "Блокировка по защите: Недогруз двигателя"
 
+  CurrentMotorProtActivId,        //!< "Сработала защита: Предел тока двигателя"
+  CurrentMotorApvId,              //!< "АПВ по защите: Предел тока двигателя"
+  CurrentMotorApvDisabledId,      //!< "АПВ запрещен: Предел тока двигателя"
+  CurrentMotorProtBlockedId,      //!< "Блокировка по защите: Предел тока двигателя"
+
   ImbalanceCurMotorProtActivId,   //!< "Сработала защита: Дисбаланс токов ПЭД"
   ImbalanceCurMotorApvId,         //!< "АПВ по защите: Дисбаланс токов ПЭД"
   ImbalanceCurMotorApvDisabledId, //!< "АПВ запрещен: Дисбаланс токов ПЭД"
