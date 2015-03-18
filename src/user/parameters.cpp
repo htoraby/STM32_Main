@@ -61,9 +61,9 @@ float Parameters::getValue(unsigned short id)
     return ksu.getValue(id);
   if ((id > VSD_BEGIN) && (id < VSD_END))
     return vsd->getValue(id);
-  if ((id > TMS_BEGIN) && (id < TMS_BEGIN))
+  if ((id > TMS_BEGIN) && (id < TMS_END))
     return tms->getValue(id);
-  if ((id > EM_BEGIN) && (id < EM_BEGIN))
+  if ((id > EM_BEGIN) && (id < EM_END))
     return em->getValue(id);
 
   return 0;
@@ -75,9 +75,9 @@ int Parameters::setValue(unsigned short id, float value)
     return ksu.setValue(id, value);
   if ((id > VSD_BEGIN) && (id < VSD_END))
     return vsd->setNewValue(id, value);
-  if ((id > TMS_BEGIN) && (id < TMS_BEGIN))
+  if ((id > TMS_BEGIN) && (id < TMS_END))
     return tms->setNewValue(id, value);
-  if ((id > EM_BEGIN) && (id < EM_BEGIN))
+  if ((id > EM_BEGIN) && (id < EM_END))
     return em->setNewValue(id, value);
   return 0;
 }
@@ -88,9 +88,9 @@ uint8_t Parameters::getPhysic(unsigned short id)
     return ksu.getPhysic(id);
   if ((id > VSD_BEGIN) && (id < VSD_END))
     return vsd->getPhysic(id);
-  if ((id > TMS_BEGIN) && (id < TMS_BEGIN))
+  if ((id > TMS_BEGIN) && (id < TMS_END))
     return tms->getPhysic(id);
-  if ((id > EM_BEGIN) && (id < EM_BEGIN))
+  if ((id > EM_BEGIN) && (id < EM_END))
     return em->getPhysic(id);
 
   return 0;
