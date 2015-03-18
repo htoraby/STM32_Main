@@ -134,11 +134,12 @@ static void testThread(void * argument)
   while(1) {
 //    toggleLed(FanLed);
 
-//    parameters.setValue(CCS_PHYSIC_MIN_ADD_AI_1 + t, 10);
-//    parameters.setValue(CCS_PHYSIC_MAX_ADD_AI_1 + t, 20);
-//    t = t + 2;
-//    if (t > 30) t = 0;
     osDelay(500);
+//    parameters.setValue(CCS_NOTE_1 + t, 10);
+//    parameters.setValue(CCS_NOTE_1 + t + 1, 20);
+//    t = t + 2;
+//    if (t > 10) t = 0;
+
 
 //    logRunning.start(AutoType);
 //    logAlarm.start(AutoType, 0);
