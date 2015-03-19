@@ -12,11 +12,6 @@ public:
   ProtectionTurbineRotation();
   ~ProtectionTurbineRotation();
 
-  /*!
-   * \brief Инициализация автомата защиты
-   */
-  void init();
-
 private:
   bool checkBlock();
   void automatProtection();

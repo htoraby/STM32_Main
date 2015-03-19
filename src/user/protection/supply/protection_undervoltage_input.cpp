@@ -28,11 +28,6 @@ ProtectionUnderVoltageInput::~ProtectionUnderVoltageInput()
 
 }
 
-void ProtectionUnderVoltageInput::init()
-{
-  Protection::init("ProtUnderVoltInput");
-}
-
 bool ProtectionUnderVoltageInput::checkAlarm()
 {
   return Protection::isLowerLimit(tripSetpoint_);
@@ -40,7 +35,7 @@ bool ProtectionUnderVoltageInput::checkAlarm()
 
 bool ProtectionUnderVoltageInput::checkBlock()
 {
-  return Protection::isLowerLimit(restartSetpoint_);
+  return Protection::isLowerLimit(tripSetpoint_);
 }
 
 float ProtectionUnderVoltageInput::calcValue()

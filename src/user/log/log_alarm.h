@@ -17,7 +17,7 @@ public:
   /*!
    * \brief Запуск формирования и записи архива
    */
-  void start(EventType type, uint32_t eventId);
+  void start(uint32_t eventId);
   void task();
 
 };

@@ -28,19 +28,9 @@ ProtectionImbalanceCurrentMotor::~ProtectionImbalanceCurrentMotor()
 
 }
 
-void ProtectionImbalanceCurrentMotor::init()
-{
-  Protection::init("ProtImbalanceCurrentMotor");
-}
-
 bool ProtectionImbalanceCurrentMotor::checkAlarm()
 {
   return Protection::isHigherLimit(tripSetpoint_);
-}
-
-bool ProtectionImbalanceCurrentMotor::checkBlock()
-{
-  return Protection::isHigherLimit(restartSetpoint_);
 }
 
 float ProtectionImbalanceCurrentMotor::calcValue()

@@ -5,7 +5,17 @@
 
 #define HOST_BUF_SIZE	256
 
-extern int spiFlagOvr;
+typedef struct {
+  uint32_t txGood;
+  uint32_t rxGood;
+  uint32_t ovrFlagError;
+  uint32_t crcError;
+  uint32_t sizeError;
+  uint32_t timeoutError;
+  uint32_t txError;
+} StatHostDef;
+
+extern StatHostDef statHost;
 
 #ifdef __cplusplus
 extern "C" {

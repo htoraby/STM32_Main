@@ -28,11 +28,6 @@ ProtectionOverloadMotor::~ProtectionOverloadMotor()
 
 }
 
-void ProtectionOverloadMotor::init()
-{
-  Protection::init("ProtOverloadMotor");
-}
-
 bool ProtectionOverloadMotor::checkAlarm()
 {
   return Protection::isHigherLimit(tripSetpoint_);
@@ -40,7 +35,7 @@ bool ProtectionOverloadMotor::checkAlarm()
 
 bool ProtectionOverloadMotor::checkBlock()
 {
-  return Protection::isHigherLimit(restartSetpoint_);
+  return Protection::isHigherLimit(tripSetpoint_);
 }
 
 float ProtectionOverloadMotor::calcValue()

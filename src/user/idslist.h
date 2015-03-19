@@ -151,6 +151,21 @@ enum enID
   CCS_PROT_MOTOR_UNDERLOAD_TIME,
   CCS_PROT_MOTOR_UNDERLOAD_RESTART_COUNT,
   CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET_COUNT,
+  CCS_PROT_MOTOR_CURRENT_MODE,            /// Защита ЧРП "Предел тока двигателя"
+  CCS_PROT_MOTOR_CURRENT_REACTION,
+  CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY,
+  CCS_PROT_MOTOR_CURRENT_TRIP_DELAY,
+  CCS_PROT_MOTOR_CURRENT_RESTART_DELAY,
+  CCS_PROT_MOTOR_CURRENT_RESTART_LIMIT,
+  CCS_PROT_MOTOR_CURRENT_RESTART_RESET,
+  CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT,
+  CCS_PROT_MOTOR_CURRENT_RESTART_SETPOINT,
+  CCS_PROT_MOTOR_CURRENT_PARAMETER,
+  CCS_PROT_MOTOR_CURRENT_PARAMETER_2,
+  CCS_PROT_MOTOR_CURRENT_STATE,
+  CCS_PROT_MOTOR_CURRENT_TIME,
+  CCS_PROT_MOTOR_CURRENT_RESTART_COUNT,
+  CCS_PROT_MOTOR_CURRENT_RESTART_RESET_COUNT,
   CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE,    /// Защита "Дисбаланс токов двигателя"
   CCS_PROT_MOTOR_IMBALANCE_CURRENT_REACTION,
   CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY,
@@ -621,6 +636,7 @@ enum enID
   CCS_CMD_COUNTER_ALL_RESET,
   CCS_VOLTAGE_TRANS_OUT,
   CCS_CONDITION_FLAG,
+  CCS_LAST_EVENT_TYPE,                      //!< Тип последнего события
   CCS_END,                                  /// Последний параметр
   VSD_BEGIN        = 10000,                 /// Первый параметр ЧРП
   VSD_FREQUENCY_NOW,                        /// Выходная частота ПЧ
@@ -731,7 +747,7 @@ enum enID
   VSD_AST_UMEAS,                            /// Величина измерительного напряжения автонастройки
   VSD_AST_LOUT_1_0,                         /// Измеренная величина выходной индуктивности автонастройки
   VSD_AST_STANDING,                         /// Дополнительный регистр автонастройки, зарезервирован
-  VSD_INVERTOR_EXT_STATUS,                  /// Расширенный регистр состояния инвертора
+  VSD_INVERTOR_STATUS2,                     /// Расширенный регистр состояния инвертора 2
   VSD_JARRING_PERIOD,                       /// Период экскурсий частоты режима встряхивания.
   VSD_JARRING_UPDFREQ,                      /// Величина прибавки частоты вращения выше уставки в режиме встряхивания
   VSD_JARRING_UPTIME,                       /// Время прибавки частоты вращения выше уставки в режиме встряхивания
@@ -770,7 +786,7 @@ enum enID
   VSD_PID_I_REF,                            /// Уровень уставки тока для ПИД-регулятора
   VSD_PID_T_REG,                            /// Постоянная времени для ПИД-регулятора
   VSD_PID_T_REG_1,                          /// Постоянная времени для ПИД-регулятора
-  VSD_INV_STATUS3,                          /// Расширенные слово состояния 3
+  VSD_INVERTOR_STATUS3,                     /// Расширенный регистр состояния инвертора 3
   VSD_CONFIG_MODE,                          /// Режим конфигурирования Danfoss 1-00 Не используется в проекте, только при конфигурировании
   VSD_TIMER_DISPERSAL,                      /// Время разгона Danfoss 3-41 % Активно используется в проекте
   VSD_TIMER_DELAY,                          /// Время замедления Danfoss 3-42 % Активно используется в проекте

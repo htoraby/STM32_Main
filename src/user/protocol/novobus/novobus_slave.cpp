@@ -34,7 +34,7 @@ void NovobusSlave::init()
   messageParams_ = osMessageCreate(osMessageQ(MessageParamsNovobus), NULL);
 
   // Создаём задачу обработки принятых пакетов
-  osThreadDef_t t = {"NovobusSlave", novobusSlaveTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
+  osThreadDef_t t = {"NovobusSlave", novobusSlaveTask, osPriorityNormal, 0, 4 * configMINIMAL_STACK_SIZE};
   threadId_ = osThreadCreate(&t, this);
 }
 
@@ -46,12 +46,10 @@ void NovobusSlave::task()
     // Проверка семафора - если он свободен, то получен покет от хоста
     if (osSemaphoreWait(semaphoreId, osWaitForever) != osEventTimeout) {
       rxSize = hostReadData(rxBuffer_);
-      if (rxSize) {
-        receivePackage();
+      receivePackage(rxSize);
 
-        osDelay(1);
-        hostWriteData(txBuffer_, txBuffer_[1]);
-      }
+      osDelay(1);
+      hostWriteData(txBuffer_, txBuffer_[1]);
     }
   }
 }
@@ -85,8 +83,7 @@ void NovobusSlave::putMessageParams(uint32_t id)
   osMessagePut(messageParams_, id, 0);
 }
 
-// Команда анализа полученного запроса
-void NovobusSlave::receivePackage()
+void NovobusSlave::receivePackage(uint8_t sizePkt)
 {
   // Заполняем заголовок пакета
   txBuffer_[0] = rxBuffer_[0];
@@ -94,8 +91,7 @@ void NovobusSlave::receivePackage()
 
   // Команда
   uint8_t command = rxBuffer_[0];
-  // Количество байт в запросе
-  uint8_t sizePkt = rxBuffer_[1];
+  uint8_t sizePktT = rxBuffer_[1];
   // Количество данных
   uint8_t dataNumber;
   // Временная переменная преобразования типов
@@ -103,12 +99,13 @@ void NovobusSlave::receivePackage()
   unTypeData value;
 
   // Получаем контрольную сумму
-  uint16_t rxCrc = (rxBuffer_[sizePkt - 2] << 8) + rxBuffer_[sizePkt - 1];
+  uint16_t rxCrc = (rxBuffer_[sizePktT - 2] << 8) + rxBuffer_[sizePktT - 1];
   // Вычисляем контрольную сумму
-  uint16_t calcCrc = crc16_ibm(rxBuffer_, sizePkt - 2);
+  uint16_t calcCrc = crc16_ibm(rxBuffer_, sizePktT - 2);
 
   // Проверка контрольной суммы
-  if (rxCrc == calcCrc) {
+  if ((rxCrc == calcCrc) && sizePkt && (sizePkt == sizePktT)) {
+    statHost.rxGood++;
     // Анализ команды
     switch (command) {
       // Команда запроса данных от Master к Slave есть ли у него готовые данные
@@ -263,6 +260,11 @@ void NovobusSlave::receivePackage()
     }
   }
   else {
+    if (rxCrc == calcCrc)
+      statHost.crcError++;
+    else
+      statHost.sizeError++;
+
     // Ошибка CRC
     txBuffer_[2] = CrcError;
     txBuffer_[3] = NoneCommand;

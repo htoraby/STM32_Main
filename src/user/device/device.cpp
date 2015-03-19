@@ -425,9 +425,11 @@ unsigned short Device::getIndexAtId(unsigned short id)
   return 0;
 }
 
-float Device::getValue(unsigned short id)
+float Device::getValue(unsigned short id, bool *ok)
 {
-  return getFieldValue(getIndexAtId(id));
+  uint16_t index = getIndexAtId(id);
+  *ok = (getFieldValidity(index) == VALIDITY_GOOD) ? true : false;
+  return getFieldValue(index);
 }
 
 unsigned char Device::setValue(unsigned short id, float value)
@@ -459,8 +461,6 @@ void Device::updateValueTask()
     event = osMessageGet(getValueDeviceQId_, 0);
     if (event.status == osEventMessage)
       getNewValue(event.value.v);
-
-
   }
 }
 

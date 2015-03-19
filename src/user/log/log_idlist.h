@@ -17,6 +17,11 @@ typedef enum {
   UnderVoltInApvDisabledId,       //!< "АПВ запрещен: Снижение питания сети"
   UnderVoltInProtBlockedId,       //!< "Блокировка по защите: Снижение питания сети"
 
+  ImbalanceVoltInProtActivId,     //!< "Сработала защита: Дисбаланс напряжения"
+  ImbalanceVoltInApvId,           //!< "АПВ по защите: Дисбаланс напряжения"
+  ImbalanceVoltInApvDisabledId,   //!< "АПВ запрещен: Дисбаланс напряжения"
+  ImbalanceVoltInProtBlockedId,   //!< "Блокировка по защите: Дисбаланс напряжения"
+
   OverloadMotorProtActivId,       //!< "Сработала защита: Перегруз двигателя"
   OverloadMotorApvId,             //!< "АПВ по защите: Перегруз двигателя"
   OverloadMotorApvDisabledId,     //!< "АПВ запрещен: Перегруз двигателя"
@@ -26,6 +31,11 @@ typedef enum {
   UnderloadMotorApvId,            //!< "АПВ по защите: Недогруз двигателя"
   UnderloadMotorApvDisabledId,    //!< "АПВ запрещен: Недогруз двигателя"
   UnderloadMotorProtBlockedId,    //!< "Блокировка по защите: Недогруз двигателя"
+
+  CurrentMotorProtActivId,        //!< "Сработала защита: Предел тока двигателя"
+  CurrentMotorApvId,              //!< "АПВ по защите: Предел тока двигателя"
+  CurrentMotorApvDisabledId,      //!< "АПВ запрещен: Предел тока двигателя"
+  CurrentMotorProtBlockedId,      //!< "Блокировка по защите: Предел тока двигателя"
 
   ImbalanceCurMotorProtActivId,   //!< "Сработала защита: Дисбаланс токов ПЭД"
   ImbalanceCurMotorApvId,         //!< "АПВ по защите: Дисбаланс токов ПЭД"
@@ -39,6 +49,21 @@ typedef enum {
 
   TurbineRotationBeginId,         //!< "Турбинное вращение. Начало"
   TurbineRotationEndId,           //!< "Турбинное вращение. Окончание"
+
+  TemperatureMotorProtActivId,    //!< "Сработала защита: Перегрев двигателя"
+  TemperatureMotorApvId,          //!< "АПВ по защите: Перегрев двигателя"
+  TemperatureMotorApvDisabledId,  //!< "АПВ запрещен: Перегрев двигателя"
+  TemperatureMotorProtBlockedId,  //!< "Блокировка по защите: Перегрев двигателя"
+
+  PressureIntakeProtActivId,      //!< "Сработала защита: Давление на приёме насоса"
+  PressureIntakeApvId,            //!< "АПВ по защите: Давление на приёме насоса"
+  PressureIntakeApvDisabledId,    //!< "АПВ запрещен: Давление на приёме насоса"
+  PressureIntakeProtBlockedId,    //!< "Блокировка по защите: Давление на приёме насоса"
+
+  ResistIsolationProtActivId,     //!< "Сработала защита: Сопротивление изоляции"
+  ResistIsolationApvId,           //!< "АПВ по защите: Сопротивление изоляции"
+  ResistIsolationApvDisabledId,   //!< "АПВ запрещен: Сопротивление изоляции"
+  ResistIsolationProtBlockedId,   //!< "Блокировка по защите: Сопротивление изоляции"
 } EventId;
 
 #endif // LOG_IDLIST

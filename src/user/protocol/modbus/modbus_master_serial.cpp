@@ -47,6 +47,8 @@ int ModbusMasterSerial::closeProtocol(int PortName)
 	{
 		// Вызываем функцию UART
     uartClose((uartNum)PortName);
+    resetTotalCounter();
+    resetSuccessCounter();
 		Result = RETURN_OK;
 	}
 	catch(...)
@@ -59,6 +61,7 @@ int ModbusMasterSerial::closeProtocol(int PortName)
 int ModbusMasterSerial::transmitQuery(unsigned char *Buf, int Count)
 {
   uartWriteData((uartNum)numberComPort_, txBuffer_, Count);
+  incTotalCounter();
   return 1;
 }
 
@@ -66,6 +69,7 @@ int ModbusMasterSerial::receiveAnswer(unsigned char *Buf)
 {
   // Если истек таймаут ожидания ответа
   if (osSemaphoreWait(semaphoreAnswer_, MODBUS_ANSWER_TIMEOUT) == osEventTimeout) {
+    incLostCounter();
     // Возвращаем ошибку что нет ответа от устройства
     return 0;
   }
@@ -75,6 +79,8 @@ int ModbusMasterSerial::receiveAnswer(unsigned char *Buf)
     while (1) {
       if (osSemaphoreWait(semaphoreAnswer_, MODBUS_TIME_END_PACKAGE) == osEventTimeout) {
         // Получаем количество полученных байт и массив байт
+        incSuccessCounter();
+        resetLostCounter();
         return uartReadData((uartNum)numberComPort_, Buf);
       }
     }

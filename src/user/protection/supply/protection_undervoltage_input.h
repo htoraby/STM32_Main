@@ -12,11 +12,6 @@ public:
   ProtectionUnderVoltageInput();
   ~ProtectionUnderVoltageInput();
 
-  /*!
-   * \brief Инициализация автомата защиты
-   */
-  void init();
-
 private:
 
   bool checkAlarm();

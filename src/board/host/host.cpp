@@ -2,7 +2,7 @@
 #include "gpio.h"
 #include "string.h"
 
-#define TIMEOUT_RX 20
+#define TIMEOUT_RX 10
 
 SPI_HandleTypeDef hspi4;
 DMA_HandleTypeDef hdma_spi4_tx;
@@ -11,16 +11,19 @@ static osSemaphoreId hostSemaphoreId;
 static uint8_t txBuffer[2*HOST_BUF_SIZE];
 static uint8_t rxBuffer[HOST_BUF_SIZE];
 
-int spiFlagOvr = 0;
+StatHostDef statHost;
 static int rxCount = 0;
 static int rxTimeout = 0;
 static int rxActive = 0;
 static int unstuff = 0;
 
 static void hostTimer(const void *argument);
+static void spiDmaTransmitCplt(DMA_HandleTypeDef *hdma);
 
 void hostInit()
 {
+  memset(&statHost, 0, sizeof(statHost));
+
   hspi4.Instance = SPI4;
   hspi4.Init.Mode = SPI_MODE_SLAVE;
   hspi4.Init.Direction = SPI_DIRECTION_2LINES;
@@ -47,6 +50,8 @@ void hostInit()
   hdma_spi4_tx.Init.Priority = DMA_PRIORITY_MEDIUM;
   hdma_spi4_tx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
   HAL_DMA_Init(&hdma_spi4_tx);
+
+  hdma_spi4_tx.XferCpltCallback = spiDmaTransmitCplt;
 
   __HAL_LINKDMA(&hspi4, hdmatx, hdma_spi4_tx);
 
@@ -81,30 +86,27 @@ static void hostTimer(const void * argument)
       rxTimeout--;
     }
     else {
-      memset(rxBuffer, 0, sizeof(rxBuffer));
-      rxCount = 0;
+      statHost.timeoutError++;
       rxActive = 0;
-      osSemaphoreRelease(hostSemaphoreId);
     }
   }
 }
 
 void hostRxIRQHandler(void)
 {
-  uint32_t tmp1 = 0, tmp2 = 0, tmp3 = 0;
+  static uint32_t tmp1 = 0, tmp2 = 0/*, tmp3 = 0*/;
+  static uint8_t data = 0;
 
   tmp1 = __HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_RXNE);
   tmp2 = __HAL_SPI_GET_IT_SOURCE(&hspi4, SPI_IT_RXNE);
-  tmp3 = __HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_OVR);
+//  tmp3 = __HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_OVR);
 
-  if((tmp1 != RESET) && (tmp2 != RESET) && (tmp3 == RESET)) {
-    uint8_t data = hspi4.Instance->DR;
+  if((tmp1 != RESET) && (tmp2 != RESET)/* && (tmp3 == RESET)*/) {
+    data = hspi4.Instance->DR;
     if (data == 0x7E) {
       // Конец пакета
       if (rxActive) {
         rxActive = 0;
-        rxTimeout = 0;
-
         osSemaphoreRelease(hostSemaphoreId);
       }
       // Начало пакета
@@ -112,7 +114,6 @@ void hostRxIRQHandler(void)
         rxTimeout = TIMEOUT_RX;
         rxCount = 0;
         rxActive = 1;
-        spiFlagOvr = 0;
       }
     }
     // Прием данных пакета
@@ -130,9 +131,13 @@ void hostRxIRQHandler(void)
         }
         if (rxCount < HOST_BUF_SIZE) {
           rxBuffer[rxCount++] = data;
+        } else {
+          rxActive = 0;
+          osSemaphoreRelease(hostSemaphoreId);
         }
       }
     }
+    return;
   }
 
   if(__HAL_SPI_GET_IT_SOURCE(&hspi4, SPI_IT_ERR) != RESET) {
@@ -144,7 +149,7 @@ void hostRxIRQHandler(void)
 
     if(__HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_OVR) != RESET) {
       __HAL_SPI_CLEAR_OVRFLAG(&hspi4);
-      spiFlagOvr = 1;
+      statHost.ovrFlagError++;
     }
 
     if(__HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_FRE) != RESET)
@@ -156,7 +161,6 @@ int hostReadData(uint8_t *data)
 {
   const int count = rxCount;
   memcpy(data, rxBuffer, count);
-  rxCount = 0;
 
   return count;
 }
@@ -184,11 +188,10 @@ static HAL_StatusTypeDef spiWaitOnFlagUntilTimeout(uint32_t flag, FlagStatus sta
   return HAL_OK;
 }
 
-static int errorCountTx = 0;
 static void spiDmaTransmitCplt(DMA_HandleTypeDef *hdma)
 {
   StatusType status = StatusOk;
-  SPI_HandleTypeDef* hspi = ( SPI_HandleTypeDef* )((DMA_HandleTypeDef* )hdma)->Parent;
+  SPI_HandleTypeDef* hspi = (SPI_HandleTypeDef*)((DMA_HandleTypeDef*)hdma)->Parent;
 
   if((hdma->Instance->CR & DMA_SxCR_CIRC) == 0) {
     if(spiWaitOnFlagUntilTimeout(SPI_FLAG_TXE, RESET, 1000) != HAL_OK)
@@ -197,13 +200,17 @@ static void spiDmaTransmitCplt(DMA_HandleTypeDef *hdma)
 
     if(spiWaitOnFlagUntilTimeout(SPI_FLAG_BSY, SET, 1000) != HAL_OK)
       status = StatusError;
+  } else {
+    asm("nop");
   }
 
   if(hspi->Init.Direction == SPI_DIRECTION_2LINES)
     __HAL_SPI_CLEAR_OVRFLAG(hspi);
 
   if(status != StatusOk)
-    errorCountTx++;
+    statHost.txError++;
+  else
+    statHost.txGood++;
 }
 
 StatusType hostWriteData(uint8_t *data, int size, uint32_t)
@@ -224,7 +231,6 @@ StatusType hostWriteData(uint8_t *data, int size, uint32_t)
   txBuffer[idx++] = 0x7E;
   txBuffer[idx++] = 0x00;
 
-  hspi4.hdmatx->XferCpltCallback = spiDmaTransmitCplt;
   hspi4.Instance->CR2 |= SPI_CR2_TXDMAEN;
   HAL_DMA_Start_IT(hspi4.hdmatx, (uint32_t)txBuffer, (uint32_t)&hspi4.Instance->DR, idx);
 

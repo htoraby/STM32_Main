@@ -12,11 +12,6 @@ public:
   ProtectionUnderloadMotor();
   ~ProtectionUnderloadMotor();
 
-  /*!
-   * \brief Инициализация автомата защиты
-   */
-  void init();
-
 private:
 
   bool checkAlarm();

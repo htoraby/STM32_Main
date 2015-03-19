@@ -54,7 +54,7 @@ public:
   /*!
    * \brief Функция обработки запросов по Novobus
    */
-  void receivePackage();
+  void receivePackage(uint8_t sizePkt);
 
   /*!
    * \brief Метод получения адреса события из очереди

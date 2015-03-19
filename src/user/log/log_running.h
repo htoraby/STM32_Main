@@ -23,7 +23,7 @@ public:
   /*!
    * \brief Запуск формирования и записи архива
    */
-  void start(EventType type);
+  void start();
   void task();
 
 protected:
@@ -42,7 +42,6 @@ protected:
 private:
   //! Идентификатор задачи
   osThreadId threadId_;
-  EventType eventType_;
 
 };
 

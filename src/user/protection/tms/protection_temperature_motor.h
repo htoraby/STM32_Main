@@ -3,11 +3,21 @@
 
 #include "protection.h"
 
+/*!
+ * \brief Класс автомата защиты "Перегрев двигателя"
+ */
 class ProtectionTemperatureMotor : public Protection
 {
 public:
   ProtectionTemperatureMotor();
   ~ProtectionTemperatureMotor();
+
+private:
+
+  bool checkAlarm();
+  bool checkBlock();
+  float calcValue();
+
 };
 
 #endif // PROTECTIONTEMPERATUREMOTOR_H

@@ -28,11 +28,6 @@ ProtectionOverVoltageInput::~ProtectionOverVoltageInput()
 
 }
 
-void ProtectionOverVoltageInput::init()
-{
-  Protection::init("ProtOverVoltInput");
-}
-
 bool ProtectionOverVoltageInput::checkAlarm()
 {
   return Protection::isHigherLimit(tripSetpoint_);
@@ -40,7 +35,7 @@ bool ProtectionOverVoltageInput::checkAlarm()
 
 bool ProtectionOverVoltageInput::checkBlock()
 {
-  return Protection::isHigherLimit(restartSetpoint_);
+  return Protection::isHigherLimit(tripSetpoint_);
 }
 
 float ProtectionOverVoltageInput::calcValue()

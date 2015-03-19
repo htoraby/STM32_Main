@@ -1300,21 +1300,46 @@ int ModbusMaster::setPollDelay(int Delay)
 // Сбрасывает значение счётчика общего количества запросов в 0
 void ModbusMaster::resetTotalCounter()
 {
-    TotalCounter = 0;
+  totalCounter_ = 0;
+};
+
+void ModbusMaster::incTotalCounter()
+{
+  totalCounter_++;
 };
 
 // МЕТОД СБРОСА СЧЁТЧИКА ОТВЕТОВ НА ЗАПРОСЫ
 //Сбрасывает значение счётчика корректных ответов в 0
 void ModbusMaster::resetSuccessCounter()
 {
-    SuccessCounter = 0;
+  successCounter_ = 0;
+}
+
+void ModbusMaster::incSuccessCounter()
+{
+  successCounter_++;
 };
 
 // МЕТОД ПОЛУЧЕНИЯ ОБЩЕГО КОЛИЧЕСТВА ЗАПРОСОВ
 // Вовзращает значение счётчика общего количества запросов
 long ModbusMaster::getTotalCounter()
 {
-    return (TotalCounter);
+    return (totalCounter_);
+};
+
+void ModbusMaster::incLostCounter()
+{
+  lostCounter_++;
+}
+
+void ModbusMaster::resetLostCounter()
+{
+  lostCounter_ = 0;
+}
+
+int ModbusMaster::getLostCounter()
+{
+  return (lostCounter_);
 };
 
 // МЕТОД ПОЛУЧЕНИЯ ЗНАЧЕНИЯ ТАЙМАУТА ОТВЕТА
@@ -1335,8 +1360,9 @@ int ModbusMaster::getPollDelay()
 // Вовзращает значение счётчика корректных ответов на запросы
 long ModbusMaster::getSuccessCounter()
 {
-    return (SuccessCounter);
-};
+  return (successCounter_);
+}
+
 
 // МЕТОД ПОЛУЧЕНИЯ ЗНАЧЕНИЯ АВТОМАТИЧЕСКИХ ПОВТОРОВ ЗАПРОСОВ
 // Возвращает количество автоматических запросов

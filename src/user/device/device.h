@@ -93,9 +93,10 @@ public:
   /*!
    * \brief Метод получения значения параметра по id
    * \param id уникальный идентификатор параметра
+   * \param ok - действительное значение или нет
    * \return значение параметра
    */
-  float getValue(unsigned short id);
+  float getValue(unsigned short id, bool *ok = 0);
 
   /*!
    * \brief Метод присвоения значения параметру

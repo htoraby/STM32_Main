@@ -37,9 +37,8 @@ void LogRunning::init(const char *threadName)
   threadId_ = osThreadCreate(&t, this);
 }
 
-void LogRunning::start(EventType type)
+void LogRunning::start()
 {
-  eventType_ = type;
   osSemaphoreRelease(semaphoreId_);
 }
 
@@ -48,7 +47,10 @@ void LogRunning::task()
   while (1) {
     osSemaphoreWait(semaphoreId_, osWaitForever);
 
-    eventId_ = logEvent.add(RunCode, eventType_, RunId);
+    if (type_ == RunTypeLog) {
+      EventType eventType = (EventType)ksu.getValue(CCS_LAST_EVENT_TYPE);
+      eventId_ = logEvent.add(RunCode, eventType, RunId);
+    }
 
     osDelay(ARCHIVE_TIME);
     add();
