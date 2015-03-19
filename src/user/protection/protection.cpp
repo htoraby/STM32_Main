@@ -105,7 +105,7 @@ float Protection::calcValue()
 
 void Protection::addEventReactionProt()
 {
-  logEvent.add(ProtectCode, AutoType, protModeEventId_, valueParameter_, tripSetpoint_,
+  logEvent.add(ProtectCode, AutoType, protReactEventId_, valueParameter_, tripSetpoint_,
                parameters.getPhysic(idTripSetpoint_));
 }
 

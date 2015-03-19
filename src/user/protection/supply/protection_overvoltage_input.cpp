@@ -17,7 +17,7 @@ ProtectionOverVoltageInput::ProtectionOverVoltageInput()
   idRestartCount_ = CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT;
   idRestartResetCount_ = CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET_COUNT;
 
-  protModeEventId_ = OverVoltInProtReactId;
+  protReactEventId_ = OverVoltInProtReactId;
   apvEventId_ = OverVoltInApvId;
   apvDisabledEventId_ = OverVoltInApvDisabledId;
   protBlockedEventId_ = OverVoltInProtBlockedId;

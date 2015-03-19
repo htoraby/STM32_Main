@@ -17,7 +17,7 @@ ProtectionOutOfSyncMotor::ProtectionOutOfSyncMotor()
   idRestartCount_ = CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT;
   idRestartResetCount_ = CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET_COUNT;
 
-  protModeEventId_ = OutOfSyncMotorProtReactId;
+  protReactEventId_ = OutOfSyncMotorProtReactId;
   apvEventId_ = OutOfSyncMotorApvId;
   apvDisabledEventId_ = OutOfSyncMotorApvDisabledId;
   protBlockedEventId_ = OutOfSyncMotorProtBlockedId;
@@ -48,8 +48,8 @@ bool ProtectionOutOfSyncMotor::checkBlock()
 void ProtectionOutOfSyncMotor::addEventReactionProt()
 {
   float nominal = parameters.getValue(VSD_MOTOR_CURRENT);
-  logEvent.add(ProtectCode, AutoType, protModeEventId_, valueParameter2_, nominal,
+  logEvent.add(ProtectCode, AutoType, protReactEventId_, valueParameter2_, nominal,
                parameters.getPhysic(VSD_MOTOR_CURRENT));
-  logEvent.add(ProtectCode, AutoType, protModeEventId_, valueParameter_, tripSetpoint_,
+  logEvent.add(ProtectCode, AutoType, protReactEventId_, valueParameter_, tripSetpoint_,
                parameters.getPhysic(idTripSetpoint_));
 }

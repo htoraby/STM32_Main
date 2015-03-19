@@ -208,7 +208,7 @@ protected:
   float restartResetCount_;                 /// Время первого срабатывания АПВ
 
   /// Индексы событий для записи в журнал
-  uint16_t protModeEventId_;
+  uint16_t protReactEventId_;
   uint16_t apvEventId_;
   uint16_t apvDisabledEventId_;
   uint16_t protBlockedEventId_;
