@@ -18,7 +18,7 @@ ProtectionPressureIntake::ProtectionPressureIntake()
   idRestartCount_ = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_COUNT;
   idRestartResetCount_ = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET_COUNT;
 
-  protActivatedEventId_ = PressureIntakeProtActivId;
+  protReactionEventId_ = PressureIntakeProtReactId;
   apvEventId_ = PressureIntakeApvId;
   apvDisabledEventId_ = PressureIntakeApvDisabledId;
   protBlockedEventId_ = PressureIntakeProtBlockedId;
