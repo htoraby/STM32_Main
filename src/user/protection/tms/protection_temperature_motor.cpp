@@ -17,7 +17,7 @@ ProtectionTemperatureMotor::ProtectionTemperatureMotor()
   idRestartCount_ = CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_COUNT;
   idRestartResetCount_ = CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_RESET_COUNT;
 
-  protModeEventId_ = TemperatureMotorProtActivId;
+  protModeEventId_ = TemperatureMotorProtReactId;
   apvEventId_ = TemperatureMotorApvId;
   apvDisabledEventId_ = TemperatureMotorApvDisabledId;
   protBlockedEventId_ = TemperatureMotorProtBlockedId;

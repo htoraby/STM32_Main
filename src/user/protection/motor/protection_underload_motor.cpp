@@ -17,7 +17,7 @@ ProtectionUnderloadMotor::ProtectionUnderloadMotor()
   idRestartCount_ = CCS_PROT_MOTOR_UNDERLOAD_RESTART_COUNT;
   idRestartResetCount_ = CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET_COUNT;
 
-  protModeEventId_ = UnderloadMotorProtActivId;
+  protModeEventId_ = UnderloadMotorProtReactId;
   apvEventId_ = UnderloadMotorApvId;
   apvDisabledEventId_ = UnderloadMotorApvDisabledId;
   protBlockedEventId_ = UnderloadMotorProtBlockedId;
