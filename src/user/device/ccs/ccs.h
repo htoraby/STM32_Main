@@ -85,49 +85,49 @@ public:
    * \brief Проверка находится ли станция в ожидании
    * \return
    */
-  bool isDelayCCS();
+  bool isDelay();
 
   /*!
    * \brief setDelayCCS
    */
-  void setDelayCCS();
+  void setDelay();
 
   /*!
    * \brief resetDelayCCS
    */
-  void resetDelayCCS();
+  void resetDelay();
 
   /*!
    * \brief isRestartCCS
    * \return
    */
-  bool isRestartCCS();
+  bool isRestart();
 
   /*!
    * \brief setRestartCCS
    */
-  void setRestartCCS();
+  void setRestart();
 
   /*!
    * \brief resetRestartCCS
    */
-  void resetRestartCCS();
+  void resetRestart();
 
   /*!
    * \brief Проверка находится ли станция в блокировке
    * \return 0 - Не находится; 1 - находится
    */
-  bool isBlockCCS();
+  bool isBlock();
 
   /*!
    * \brief Установка флага блокировки
    */
-  void setBlockCCS();
+  void setBlock();
 
   /*!
    * \brief Сброс флага блокировки
    */
-  void resetBlockCCS();
+  void resetBlock();
 
   /*!
    * \brief Проверка что КСУ в режиме АUTO

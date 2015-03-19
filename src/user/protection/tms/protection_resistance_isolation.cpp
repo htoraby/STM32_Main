@@ -2,7 +2,7 @@
 
 ProtectionResistanceIsolation::ProtectionResistanceIsolation()
 {
-  idReaction_= CCS_PROT_DHS_RESISTANCE_REACTION;
+  idMode_= CCS_PROT_DHS_RESISTANCE_REACTION;
   idActivDelay_ = CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_DHS_RESISTANCE_TRIP_DELAY;
   idRestartDelay_ = CCS_PROT_DHS_RESISTANCE_RESTART_DELAY;
@@ -17,7 +17,7 @@ ProtectionResistanceIsolation::ProtectionResistanceIsolation()
   idRestartCount_ = CCS_PROT_DHS_RESISTANCE_RESTART_COUNT;
   idRestartResetCount_ = CCS_PROT_DHS_RESISTANCE_RESTART_RESET_COUNT;
 
-  protActivatedEventId_ = ResistIsolationProtActivId;
+  protModeEventId_ = ResistIsolationProtActivId;
   apvEventId_ = ResistIsolationApvId;
   apvDisabledEventId_ = ResistIsolationApvDisabledId;
   protBlockedEventId_ = ResistIsolationProtBlockedId;

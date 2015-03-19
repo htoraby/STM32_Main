@@ -3,7 +3,7 @@
 
 ProtectionCurrentMotor::ProtectionCurrentMotor()
 {
-  idReaction_= CCS_PROT_MOTOR_CURRENT_REACTION;
+  idMode_= CCS_PROT_MOTOR_CURRENT_REACTION;
   idActivDelay_ = CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_MOTOR_CURRENT_TRIP_DELAY;
   idRestartDelay_ = CCS_PROT_MOTOR_CURRENT_RESTART_DELAY;
@@ -18,7 +18,7 @@ ProtectionCurrentMotor::ProtectionCurrentMotor()
   idRestartCount_ = CCS_PROT_MOTOR_CURRENT_RESTART_COUNT;
   idRestartResetCount_ = CCS_PROT_MOTOR_CURRENT_RESTART_RESET_COUNT;
 
-  protActivatedEventId_ = CurrentMotorProtActivId;
+  protModeEventId_ = CurrentMotorProtActivId;
   apvEventId_ = CurrentMotorApvId;
   apvDisabledEventId_ = CurrentMotorApvDisabledId;
   protBlockedEventId_ = CurrentMotorProtBlockedId;

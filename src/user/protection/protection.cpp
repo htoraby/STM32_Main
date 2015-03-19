@@ -28,7 +28,7 @@ void Protection::processing()
 
 void Protection::getSetpointProt()
 {
-  reaction_       = ksu.getValue(idReaction_);
+  mode_       = ksu.getValue(idMode_);
   activDelay_     = ksu.getValue(idActivDelay_);
   tripDelay_      = ksu.getValue(idTripDelay_);
   restartDelay_   = ksu.getValue(idRestartDelay_);
@@ -105,60 +105,72 @@ float Protection::calcValue()
 
 void Protection::addEventReactionProt()
 {
-  logEvent.add(ProtectCode, AutoType, protActivatedEventId_, valueParameter_, tripSetpoint_,
+  logEvent.add(ProtectCode, AutoType, protModeEventId_, valueParameter_, tripSetpoint_,
                parameters.getPhysic(idTripSetpoint_));
 }
 
-bool Protection::isReactionOff()
+bool Protection::isModeOff()
 {
-  if (parameters.getValue(idReaction_) == ProtReactionOff)
+  if (parameters.getValue(idMode_) == ModeOff)
     return true;
   else
     return false;
 }
 
-bool Protection::isReactionBlock()
+bool Protection::isModeBlock()
 {
-  if (parameters.getValue(idReaction_) == ProtReactionBlock)
+  if (parameters.getValue(idMode_) == ModeBlock)
     return true;
   else
     return false;
 }
 
-bool Protection::isReactionRestart()
+bool Protection::isModeRestart()
 {
-  if (parameters.getValue(idReaction_) == ProtReactionRestart)
+  if (parameters.getValue(idMode_) == ModeRestart)
     return true;
   else
     return false;
 }
 
-bool Protection::isReactionOn()
+bool Protection::isModeOn()
 {
-  if (parameters.getValue(idReaction_) == ProtReactionOn)
+  if (parameters.getValue(idMode_) == ModeOn)
     return true;
   else
     return false;
 }
 
-
-void Protection::processingStateIdle()
+void Protection::setStateStop()
 {
+  timer_ = 0;
+  state_ = StateStop;
+}
+
+void Protection::setStateRun()
+{
+  timer_ = 0;
+  state_ = StateRun;
+}
+
+void Protection::processingStateRunning()
+{  
   if (ksu.isWorkMotor()) {
-
+    if (ksu.isAutoMode() || ksu.isManualMode()) {
+      if (isModeOff()) {
+        state_ = StateStop;
+      }
+      else if (ksu.getValue(CCS_RUN_DATE_TIME) >= activDelay_) {
+        logDebug.add(DebugMsg, "ProtActiv");
+        setStateRun();
+      }
+    }
+    else {
+      state_ = StateStop;
+    }
   }
   else {
-    state_ = ProtStateIdle;
-  }
-}
-
-void Protection::processingStateRunning()   // Задержка активации
-{
-  if (ksu.isWorkMotor()) {
-
-  }
-  else {
-    state_ = ProtStateIdle;
+    state_ = StateStop;
   }
 }
 
@@ -166,129 +178,98 @@ void Protection::processingStateRun()       // Состояние работа
 {
   if (ksu.isWorkMotor()) {                  // Двигатель - работа;
     if (ksu.isAutoMode()) {                 // Двигатель - работа; Режим - авто;
-      if (isReactionOff()) {                // Двигатель - работа; Режим - авто; Защита - выкл;
-        state_ = ProtStateIdle;
+      if (isModeOff()) {                    // Двигатель - работа; Режим - авто; Защита - выкл;
+        state_ = StateStop;
       }
-      else {
-        if (isReactionBlock()) {            // Двигатель - работа; Режим - авто; Защита - блок;
-          if (alarm_) {                     // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме
-            if (timer_ == 0) {              // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - начало;
-              ksu.setDelayCCS();
-              logDebug.add(DebugMsg, "Reaction - Begin");
-              state_ = ProtStateRun;
-            }
-            else {
-              if (timer_ >= tripDelay_) {   // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - конец;
-                timer_ = 0;
-                ksu.setBlockCCS();
-                vsd->stop();
-                logDebug.add(DebugMsg, "Reaction - Block");
-                state_ = ProtStateStop;
-              }
-              else {                        // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - процесс;
-                state_ = ProtStateRun;
-              }
-            }
+      else if (isModeBlock()) {             // Двигатель - работа; Режим - авто; Защита - блок;
+        if (alarm_) {                       // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме
+          if (timer_ == 0) {                // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - начало;
+            timer_ = getTime();             // Зафиксировали время начала задержки срабатывания
+            logDebug.add(DebugMsg, "Reaction - Begin");
+            ksu.setDelay();
           }
-          else {                            // Двигатель - работа; Режим - авто; Защита - блок; Параметр - в норме
-            timer_ = 0;
-            state_ = ProtStateRun;
+          else if ((getTime() - timer_) >= tripDelay_) {   // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - конец;
+            logDebug.add(DebugMsg, "Reaction - Block");
+            addEventReactionProt();
+            logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
+            ksu.setBlock();
+            ksu.stop();
+            state_ = StateStop;
           }
         }
-        else {
-          if (isReactionRestart()) {        // Двигатель - работа; Режим - авто; Защита - АПВ;
-            if (alarm_) {                   // Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме
-              if (timer_ == 0) {            // Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме; Срабатывание - начало;
-                ksu.setDelayCCS();
-                logDebug.add(DebugMsg, "Reaction - Begin");
-                state_ = ProtStateRun;
-              }
-              else {
-                if (timer_ >= tripDelay_) { // Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме; Срабатывание - конец;
-                  timer_ = 0;
-                  vsd->stop();
-                  logDebug.add(DebugMsg, "Reaction - Block");
-                  state_ = ProtStateStopping;
-                }
-                else {                      // Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме; Срабатывание - процесс;
-                  state_ = ProtStateRun;
-                }
-              }
-            }
-            else {                          // Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - в норме
-              timer_ = 0;
-              state_ = ProtStateRun;
-            }
+        else {                              // Двигатель - работа; Режим - авто; Защита - блок; Параметр - в норме
+          setStateRun();
+        }
+      }
+      else if (isModeRestart()) {           // Двигатель - работа; Режим - авто; Защита - АПВ;
+        if (alarm_) {                       // Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме
+          if (timer_ == 0) {                // Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме; Срабатывание - начало;
+            timer_ = getTime();             // Зафиксировали время начала задержки срабатывания
+            logDebug.add(DebugMsg, "Reaction - Begin");
+            ksu.setDelay();
           }
-          else {
-            if (isReactionOn()) {           // Двигатель - работа; Режим - авто; Защита - Вкл;
-              if (alarm_) {                 // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме
-                if (timer_ == 0) {          // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме; Срабатывание - начало;
-                  ksu.setDelayCCS();
-                  logDebug.add(DebugMsg, "Reaction - Begin");
-                  state_ = ProtStateRun;
-                }
-                else {
-                  if (timer_ >= tripDelay_) {// Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме; Срабатывание - конец;
-                    timer_ = 0;
-                    vsd->stop();
-                    logDebug.add(DebugMsg, "Reaction - Block");
-                    state_ = ProtStateStopping;
-                  }
-                  else {                    // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме; Срабатывание - процесс;
-                    state_ = ProtStateRun;
-                  }
-                }
-              }
-              else {                        // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - в норме
-                timer_ = 0;
-                state_ = ProtStateRun;
-              }
-            }
+          else if ((getTime() - timer_) >= tripDelay_) { // Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме; Срабатывание - конец;
+            logDebug.add(DebugMsg, "Reaction - Restart");
+            addEventReactionProt();
+            ksu.stop();
+            restart_ = true;
+            state_ = StateStopping;
           }
+        }
+        else {                              // Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - в норме
+          setStateRun();
+        }
+      }
+      else if (isModeOn()) {                // Двигатель - работа; Режим - авто; Защита - Вкл;
+        if (alarm_) {                       // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме
+          if (timer_ == 0) {                // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме; Срабатывание - начало;
+            timer_ = getTime();             // Зафиксировали время начала задержки срабатывания
+            logDebug.add(DebugMsg, "Reaction - Begin");
+            ksu.setDelay();
+          }
+          else if (timer_ >= tripDelay_) {  // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме; Срабатывание - конец;
+            logDebug.add(DebugMsg, "Reaction - Stop");
+            addEventReactionProt();
+            ksu.stop();
+            state_ = StateStop;
+          }
+        }
+        else {                              // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - в норме
+          setStateRun();
+        }
+      }
+    }
+    else if (ksu.isManualMode()) {          // Двигатель - работа; Режим - ручной;
+      if (isModeOff()) {                    // Двигатель - работа; Режим - авто; Защита - выкл;
+        state_ = StateStop;
+      }
+      else {                                // Двигатель - работа; Режим - авто; Защита - вкл;
+        if (alarm_) {                       // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме
+          if (timer_ == 0) {                // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - начало;
+            timer_ = getTime();             // Зафиксировали время начала задержки срабатывания
+            logDebug.add(DebugMsg, "Reaction - Begin");
+            ksu.setDelay();
+          }
+          else if ((getTime() - timer_) >= tripDelay_) {   // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - конец;
+            logDebug.add(DebugMsg, "Reaction - Block");
+            addEventReactionProt();
+            logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
+            ksu.setBlock();
+            ksu.stop();
+            state_ = StateStop;
+          }
+        }
+        else {                              // Двигатель - работа; Режим - авто; Защита - блок; Параметр - в норме
+          setStateRun();
         }
       }
     }
     else {
-      if (ksu.isManualMode()) {             // Двигатель - работа; Режим - ручной;
-        if (isReactionOff()) {              // Двигатель - работа; Режим - авто; Защита - выкл;
-          state_ = ProtStateIdle;
-        }
-        else {                              // Двигатель - работа; Режим - авто; Защита - вкл;
-          if (alarm_) {                     // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме
-            if (timer_ == 0) {              // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - начало;
-              ksu.setDelayCCS();
-              logDebug.add(DebugMsg, "Reaction - Begin");
-              state_ = ProtStateRun;
-            }
-            else {
-              if (timer_ >= tripDelay_) {   // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - конец;
-                timer_ = 0;
-                ksu.setBlockCCS();
-                vsd->stop();
-                logDebug.add(DebugMsg, "Reaction - Block");
-                state_ = ProtStateStop;
-              }
-              else {                        // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - процесс;
-                state_ = ProtStateRun;
-              }
-            }
-          }
-          else {                            // Двигатель - работа; Режим - авто; Защита - блок; Параметр - в норме
-            timer_ = 0;
-            state_ = ProtStateRun;
-          }
-        }
-      }
-      else {
-        timer_ = 0;
-        state_ = ProtStateIdle;
-      }
+      state_ = StateStop;
     }
   }
   else {
-    timer_ = 0;
-    state_ = ProtStateIdle;
+    state_ = StateStop;
   }
 }
 
@@ -416,19 +397,16 @@ void Protection::proccessingStateStop()
 void Protection::automatProtection()
 {
   switch (state_) {
-  case ProtStateIdle:
-    processingStateIdle();
-    break;
-  case ProtStateRunning:
+  case StateRunning:
     processingStateRunning();
     break;
-  case ProtStateRun:
+  case StateRun:
     processingStateRun();
     break;
-  case ProtStateStopping:
+  case StateStopping:
     proccessingStateStopping();
     break;
-  case ProtStateStop:
+  case StateStop:
     proccessingStateStop();
     break;
   default:

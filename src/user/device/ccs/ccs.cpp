@@ -121,7 +121,7 @@ void Ccs::vsdConditionTask()
     int vsdCondition = getValue(CCS_VSD_CONDITION);
     switch (vsdCondition) {
       case VSD_CONDITION_STOP:
-        if (!isBlockCCS())
+        if (!isBlock())
           setValue(CCS_CONDITION, CCS_CONDITION_STOP);
         break;
       case VSD_CONDITION_STOPPING:
@@ -165,6 +165,7 @@ void Ccs::vsdConditionTask()
 void Ccs::conditionChanged()
 {
   calcCondition();
+
   int condition = getValue(CCS_CONDITION);
   if (condition != conditionOld) {
     conditionOld = condition;
@@ -213,12 +214,14 @@ void Ccs::start(EventType type)
 {
   setValue(CCS_LAST_EVENT_TYPE, type);
   setValue(CCS_CMD_START, 1);
+  checkCmd();
 }
 
 void Ccs::stop(EventType type)
 {
   setValue(CCS_LAST_EVENT_TYPE, type);
   setValue(CCS_CMD_STOP, 1);
+  checkCmd();
 }
 
 void Ccs::checkCmd()
@@ -245,7 +248,7 @@ bool Ccs::checkCanStart()
 {
   if (getValue(CCS_VSD_CONDITION) != VSD_CONDITION_STOP)
     return false;
-  if (isBlockCCS())
+  if (isBlock())
     return false;
   return true;
 }
@@ -281,7 +284,7 @@ bool Ccs::isWorkMotor()
   }
 }
 
-bool Ccs::isDelayCCS()
+bool Ccs::isDelay()
 {
   unsigned int flag = getValue(CCS_CONDITION_FLAG);
   if (flag == CCS_CONDITION_FLAG_DELAY) {
@@ -292,7 +295,7 @@ bool Ccs::isDelayCCS()
   }
 }
 
-bool Ccs::isRestartCCS()
+bool Ccs::isRestart()
 {
   unsigned int flag = getValue(CCS_CONDITION_FLAG);
   if (flag == CCS_CONDITION_FLAG_RESTART) {
@@ -303,7 +306,7 @@ bool Ccs::isRestartCCS()
   }
 }
 
-bool Ccs::isBlockCCS()
+bool Ccs::isBlock()
 {
   unsigned int flag = getValue(CCS_CONDITION_FLAG);
   if (flag == CCS_CONDITION_FLAG_BLOCK) {
@@ -314,37 +317,37 @@ bool Ccs::isBlockCCS()
   }
 }
 
-void Ccs::setDelayCCS()
+void Ccs::setDelay()
 {
   if (getValue(CCS_CONDITION_FLAG) < CCS_CONDITION_FLAG_DELAY)
     setValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_DELAY);
 }
 
-void Ccs::setRestartCCS()
+void Ccs::setRestart()
 {
   if (getValue(CCS_CONDITION_FLAG) < CCS_CONDITION_FLAG_RESTART)
     setValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_RESTART);
 }
 
-void Ccs::setBlockCCS()
+void Ccs::setBlock()
 {
   if (getValue(CCS_CONDITION_FLAG) < CCS_CONDITION_FLAG_BLOCK)
     setValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_BLOCK);
 }
 
-void Ccs::resetDelayCCS()
+void Ccs::resetDelay()
 {
   if (getValue(CCS_CONDITION_FLAG) == CCS_CONDITION_FLAG_DELAY)
     setValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_NULL);
 }
 
-void Ccs::resetRestartCCS()
+void Ccs::resetRestart()
 {
   if (getValue(CCS_CONDITION_FLAG) == CCS_CONDITION_FLAG_RESTART)
     setValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_NULL);
 }
 
-void Ccs::resetBlockCCS()
+void Ccs::resetBlock()
 {
   if (getValue(CCS_CONDITION_FLAG) == CCS_CONDITION_FLAG_BLOCK)
     setValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_NULL);

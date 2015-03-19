@@ -2,7 +2,7 @@
 
 ProtectionTemperatureMotor::ProtectionTemperatureMotor()
 {
-  idReaction_= CCS_PROT_MOTOR_IMBALANCE_CURRENT_REACTION;
+  idMode_= CCS_PROT_MOTOR_IMBALANCE_CURRENT_REACTION;
   idActivDelay_ = CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY;
   idRestartDelay_ = CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY;
@@ -17,7 +17,7 @@ ProtectionTemperatureMotor::ProtectionTemperatureMotor()
   idRestartCount_ = CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_COUNT;
   idRestartResetCount_ = CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_RESET_COUNT;
 
-  protActivatedEventId_ = TemperatureMotorProtActivId;
+  protModeEventId_ = TemperatureMotorProtActivId;
   apvEventId_ = TemperatureMotorApvId;
   apvDisabledEventId_ = TemperatureMotorApvDisabledId;
   protBlockedEventId_ = TemperatureMotorProtBlockedId;

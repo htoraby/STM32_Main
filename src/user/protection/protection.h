@@ -13,21 +13,20 @@ public:
    * \brief Список действий защиты
   */
   typedef enum {
-    ProtReactionOff         = 0,      /// Защиты выключена
-    ProtReactionRestart,               /// Реакция защиты АПВ
-    ProtReactionBlock,                /// Реакция защиты блокировка
-    ProtReactionOn,                   /// Защита включена
-  } ProtectionReaction;
+    ModeOff         = 0,      /// Защиты выключена
+    ModeRestart,               /// Реакция защиты АПВ
+    ModeBlock,                /// Реакция защиты блокировка
+    ModeOn,                   /// Защита включена
+  } ProtMode;
 
   /*!
    * \brief Список состояний защиты
   */
   typedef enum {
-    ProtStateIdle           = 0,
-    ProtStateRunning,
-    ProtStateRun,
-    ProtStateStopping,
-    ProtStateStop,
+    StateRunning,
+    StateRun,
+    StateStopping,
+    StateStop,
   } ProtState;
 
   Protection();
@@ -100,35 +99,40 @@ public:
    * \brief isReactionOff
    * \return
    */
-  bool isReactionOff();
+  bool isModeOff();
 
   /*!
    * \brief isReactionBlock
    * \return
    */
-  bool isReactionBlock();
+  bool isModeBlock();
 
   /*!
    * \brief isReactionRestart
    * \return
    */
-  bool isReactionRestart();
+  bool isModeRestart();
 
   /*!
    * \brief isReactionOn
    * \return
    */
-  bool isReactionOn();
+  bool isModeOn();
+
+  /*!
+   * \brief Функция перевода автомата защиты в состояние стоп
+   */
+  void setStateStop();
+
+  /*!
+   * \brief Функция перевода автомата защиты в состояние работа
+   */
+  void setStateRun();
 
   /*!
    * \brief Универсальный автомат работы защиты
    */
   virtual void automatProtection();
-
-  /*!
-   * \brief Пустое состояние защиты
-   */
-  virtual void processingStateIdle();
 
   /*!
    * \brief Состояние защиты задержка активации
@@ -171,7 +175,7 @@ public:
 
 protected:
   /// id параметров защиты
-  unsigned short idReaction_;               /// id Действие защиты
+  unsigned short idMode_;                   //!< id Режим защиты
   unsigned short idActivDelay_;             /// id задержка активации защиты
   unsigned short idTripDelay_;              /// id задержка срабатывания защиты
   unsigned short idRestartDelay_;           /// id задержка АПВ защиты
@@ -187,7 +191,7 @@ protected:
   unsigned short idRestartResetCount_;      /// id Время от первого АПВ
 
   /// Локальные переменные для обработки 
-  float reaction_;                          /// Действие защиты
+  float mode_;                              //!< Режим защиты
   float activDelay_;                        /// Уставка: задержка активации защиты
   float tripDelay_;                         /// Уставка: задержка срабатывания защиты
   float restartDelay_;                      /// Уставка: задержка АПВ защиты
@@ -199,18 +203,19 @@ protected:
   float param2_;                            /// Уставка: Параметр 2
   int state_;                               /// Состояние автомата защиты
   float valueParameter_;                    /// Текущее значение контролируемого параметра
-  float timer_;                             /// Текущее значение таймера
+  uint32_t timer_;                          /// Текущее значение таймера
   float restartCount_;                      /// Текущее количество АПВ по защите
   float restartResetCount_;                 /// Время первого срабатывания АПВ
 
   /// Индексы событий для записи в журнал
-  uint16_t protActivatedEventId_;
+  uint16_t protModeEventId_;
   uint16_t apvEventId_;
   uint16_t apvDisabledEventId_;
   uint16_t protBlockedEventId_;
 
   bool alarm_;                              /// Флаг выполнения условия срабатывания защиты
   bool block_;                              /// Флаг запрещающего параметра
+  bool restart_;                            /// Флаг что защита в состоянии АПВ
 
 
 };

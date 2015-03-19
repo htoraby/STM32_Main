@@ -3,7 +3,7 @@
 ProtectionPressureIntake::ProtectionPressureIntake()
 {
 
-  idReaction_= CCS_PROT_DHS_PRESSURE_INTAKE_REACTION;
+  idMode_= CCS_PROT_DHS_PRESSURE_INTAKE_REACTION;
   idActivDelay_ = CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY;
   idRestartDelay_ = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY;
@@ -18,7 +18,7 @@ ProtectionPressureIntake::ProtectionPressureIntake()
   idRestartCount_ = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_COUNT;
   idRestartResetCount_ = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET_COUNT;
 
-  protActivatedEventId_ = PressureIntakeProtActivId;
+  protModeEventId_ = PressureIntakeProtActivId;
   apvEventId_ = PressureIntakeApvId;
   apvDisabledEventId_ = PressureIntakeApvDisabledId;
   protBlockedEventId_ = PressureIntakeProtBlockedId;
