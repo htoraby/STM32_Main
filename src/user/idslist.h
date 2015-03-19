@@ -620,6 +620,7 @@ enum enID
   CCS_CMD_RGM_MODE_SAVE,
   CCS_CMD_COUNTER_ALL_RESET,
   CCS_VOLTAGE_TRANS_OUT,
+  CCS_CONDITION_FLAG,
   CCS_END,                                  /// Последний параметр
   VSD_BEGIN        = 10000,                 /// Первый параметр ЧРП
   VSD_FREQUENCY_NOW,                        /// Выходная частота ПЧ
@@ -990,7 +991,7 @@ enum enID
   EM_REACTIVE_MINUS_PREV_MONTH,             /// Минус реактивная энергия за предыдущий месяц
   EM_COEFFICIENT_TRANS_CURRENT,             /// Коэффицинт трансформации тока
   EM_COEFFICIENT_TRANS_VOLTAGE,             /// Коэффициент трансформации напряжения
-  EM_END
+  EM_END,
 };
 
 #endif // IDSLIST

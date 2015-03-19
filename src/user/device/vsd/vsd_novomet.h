@@ -226,6 +226,11 @@ public:
   void calcRotation();
 
   /*!
+   * \brief Функция вычисления тока звена постоянного тока
+   */
+  void calcCurrentDC();
+
+  /*!
    * \brief Метод задания времени набора частоты
    * \return Код результата операции
    */
@@ -367,6 +372,7 @@ public:
    * \brief Функция вычисления значений,
    */
   void calcParameters(uint16_t id);
+
 
 private:
   ModbusParameter modbusParameters_[135];

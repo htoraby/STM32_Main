@@ -2,7 +2,6 @@
 
 ProtectionOverVoltageInput::ProtectionOverVoltageInput()
 {
-  idMode_ = CCS_PROT_SUPPLY_OVERVOLTAGE_MODE;
   idReaction_= CCS_PROT_SUPPLY_OVERVOLTAGE_REACTION;
   idActivDelay_ = CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY;

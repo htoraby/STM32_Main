@@ -162,6 +162,7 @@ void Ccs::vsdConditionTask()
 
 void Ccs::conditionChanged()
 {
+  calcCondition();
   int condition = getValue(CCS_CONDITION);
   if (condition != conditionOld) {
     conditionOld = condition;
@@ -171,9 +172,6 @@ void Ccs::conditionChanged()
       break;
     case CCS_CONDITION_DELAY:
       setLedCondition(LedConditionDelay);
-      break;
-    case CCS_CONDITION_BLOCK:
-      setLedCondition(LedConditionBlock);
       break;
     case CCS_CONDITION_RUNNING:
       setLedCondition(LedConditionWaitRun);
@@ -188,6 +186,24 @@ void Ccs::conditionChanged()
       setLedCondition(LedConditionStop);
       break;
     }
+  }
+}
+
+void Ccs::calcCondition()
+{
+  int flag = getValue(CCS_CONDITION_FLAG);
+  switch (flag) {
+  case CCS_CONDITION_FLAG_BLOCK:
+    setValue(CCS_CONDITION, CCS_CONDITION_BLOCK);
+    break;
+  case CCS_CONDITION_FLAG_DELAY:
+    setValue(CCS_CONDITION, CCS_CONDITION_DELAY);
+    break;
+  case CCS_CONDITION_FLAG_RESTART:
+    setValue(CCS_CONDITION, CCS_CONDITION_WAIT_APV);
+    break;
+  default:
+    break;
   }
 }
 
@@ -227,12 +243,11 @@ bool Ccs::checkCanStop()
   return true;
 }
 
-bool Ccs::isStopCCS()
+bool Ccs::isStopMotor()
 {
-  unsigned int state = (unsigned int)getValue(CCS_CONDITION);
-  if ((state == CCS_CONDITION_STOP)
-      || (state == CCS_CONDITION_WAIT_APV)
-      || (state == CCS_CONDITION_BLOCK)) {
+  unsigned int state = getValue(CCS_CONDITION);
+  if ((state == CCS_CONDITION_STOPPING) ||
+      (state == CCS_CONDITION_STOP)) {
     return true;
   }
   else {
@@ -240,41 +255,119 @@ bool Ccs::isStopCCS()
   }
 }
 
-bool Ccs::isWorkCCS()
+bool Ccs::isWorkMotor()
 {
-  unsigned int state = (unsigned int)getValue(CCS_CONDITION);
-  if ((state == CCS_CONDITION_RUN) || (state == CCS_CONDITION_DELAY))
+  unsigned int state = getValue(CCS_CONDITION);
+  if ((state == CCS_CONDITION_RUNNING) ||
+      (state == CCS_CONDITION_RUN)) {
     return true;
-  else
+  }
+  else {
     return false;
+  }
 }
 
-
-bool Ccs::isWaitCCS()
+bool Ccs::isDelayCCS()
 {
-  unsigned int state = (unsigned int)getValue(CCS_CONDITION);
-  if (state == CCS_CONDITION_DELAY)
+  unsigned int flag = getValue(CCS_CONDITION_FLAG);
+  if (flag == CCS_CONDITION_FLAG_DELAY) {
     return true;
-  else
+  }
+  else {
     return false;
+  }
+}
+
+bool Ccs::isRestartCCS()
+{
+  unsigned int flag = getValue(CCS_CONDITION_FLAG);
+  if (flag == CCS_CONDITION_FLAG_RESTART) {
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 bool Ccs::isBlockCCS()
 {
-  unsigned int state = (unsigned int)getValue(CCS_CONDITION);
-  if (state == CCS_CONDITION_BLOCK)
+  unsigned int flag = getValue(CCS_CONDITION_FLAG);
+  if (flag == CCS_CONDITION_FLAG_BLOCK) {
     return true;
-  else
+  }
+  else {
     return false;
+  }
 }
 
-bool Ccs::isAutoControlMode()
+void Ccs::setDelayCCS()
+{
+  if (getValue(CCS_CONDITION_FLAG) < CCS_CONDITION_FLAG_DELAY)
+    setValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_DELAY);
+}
+
+void Ccs::setRestartCCS()
+{
+  if (getValue(CCS_CONDITION_FLAG) < CCS_CONDITION_FLAG_RESTART)
+    setValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_RESTART);
+}
+
+void Ccs::setBlockCCS()
+{
+  if (getValue(CCS_CONDITION_FLAG) < CCS_CONDITION_FLAG_BLOCK)
+    setValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_BLOCK);
+}
+
+void Ccs::resetDelayCCS()
+{
+  if (getValue(CCS_CONDITION_FLAG) == CCS_CONDITION_FLAG_DELAY)
+    setValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_NULL);
+}
+
+void Ccs::resetRestartCCS()
+{
+  if (getValue(CCS_CONDITION_FLAG) == CCS_CONDITION_FLAG_RESTART)
+    setValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_NULL);
+}
+
+void Ccs::resetBlockCCS()
+{
+  if (getValue(CCS_CONDITION_FLAG) == CCS_CONDITION_FLAG_BLOCK)
+    setValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_NULL);
+}
+
+bool Ccs::isAutoMode()
 {
   unsigned int controlMode = (unsigned int)getValue(CCS_WORKING_MODE);
-  if (controlMode == CCS_WORKING_MODE_AUTO)
+  if ((controlMode == CCS_WORKING_MODE_AUTO) ||
+      (controlMode == CCS_WORKING_MODE_PROGRAM)) {
     return true;
-  else
+  }
+  else {
     return false;
+  }
+}
+
+bool Ccs::isManualMode()
+{
+  unsigned int controlMode = (unsigned int)getValue(CCS_WORKING_MODE);
+  if (controlMode == CCS_WORKING_MODE_MANUAL) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+bool Ccs::isStopMode ()
+{
+  unsigned int controlMode = (unsigned int)getValue(CCS_WORKING_MODE);
+  if (controlMode == CCS_WORKING_MODE_STOP) {
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 float Ccs::getTime()

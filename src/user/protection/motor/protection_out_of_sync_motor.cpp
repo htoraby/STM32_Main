@@ -2,7 +2,6 @@
 
 ProtectionOutOfSyncMotor::ProtectionOutOfSyncMotor()
 {
-  idMode_ = CCS_PROT_MOTOR_OUT_OF_SYNC_MODE;
   idReaction_= CCS_PROT_MOTOR_OUT_OF_SYNC_REACTION;
   idActivDelay_ = CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY;
@@ -51,7 +50,7 @@ bool ProtectionOutOfSyncMotor::checkBlock()
   return false;
 }
 
-void ProtectionOutOfSyncMotor::addEventActivationProt()
+void ProtectionOutOfSyncMotor::addEventReactionProt()
 {
   float nominal = parameters.getValue(VSD_MOTOR_CURRENT);
   logEvent.add(ProtectCode, AutoType, protActivatedEventId_, valueParameter2_, nominal,

@@ -2,7 +2,6 @@
 
 ProtectionOverloadMotor::ProtectionOverloadMotor()
 {
-  idMode_ = CCS_PROT_MOTOR_OVERLOAD_MODE;
   idReaction_= CCS_PROT_MOTOR_OVERLOAD_REACTION;
   idActivDelay_ = CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY;

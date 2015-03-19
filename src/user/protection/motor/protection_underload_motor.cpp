@@ -2,7 +2,6 @@
 
 ProtectionUnderloadMotor::ProtectionUnderloadMotor()
 {
-  idMode_ = CCS_PROT_MOTOR_UNDERLOAD_MODE;
   idReaction_= CCS_PROT_MOTOR_UNDERLOAD_REACTION;
   idActivDelay_ = CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_MOTOR_UNDERLOAD_TRIP_DELAY;

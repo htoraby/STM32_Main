@@ -2524,9 +2524,7 @@ int VsdNovomet::stop()
 bool VsdNovomet::checkStop()
 {
   if (checkVsdStatus(VSD_STATUS_STOPPED_EXTERNAL)) {
-    // Если не стоит бит работы двигателя двигателя
     if (!checkVsdStatus(VSD_STATUS_STARTED)) {
-      // Если не стоит бит ожидания выключения плат выпрямителя
       if (!checkVsdStatus(VSD_STATUS_WAIT_RECT_STOP)) {
         return true;
       }
@@ -2624,6 +2622,15 @@ void VsdNovomet::calcRotation()
   }
 }
 
+void VsdNovomet::calcCurrentDC()
+{
+  float pwr = getValue(VSD_POWER_ACTIVE);
+  float volt = getValue(VSD_VOLTAGE_DC);
+  if (volt > 0) {
+    setValue(VSD_CURRENT_DC, pwr/volt);
+  }
+}
+
 
 int VsdNovomet::setTempSpeedUp(float value)
 {
@@ -2696,6 +2703,13 @@ void VsdNovomet::calcParameters(uint16_t id)
   case VSD_INVERTOR_STATUS:
     calcRotation();
     break;
+  case  VSD_VOLTAGE_DC:
+    calcCurrentDC();
+    break;
+  case  VSD_POWER_ACTIVE:
+    calcCurrentDC();
+    break;
+
   default:
     break;
   }

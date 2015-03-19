@@ -439,11 +439,11 @@ enum enUpdate {
 };
 
 enum enCcsCondition {
-  CCS_CONDITION_BLOCK,                      /// Блок
+  CCS_CONDITION_BLOCK,
   CCS_CONDITION_STOP,                       /// Останов
   CCS_CONDITION_STOPPING,                   /// Торможение
-  CCS_CONDITION_WAIT_APV,                   /// Ожидание АПВ
-  CCS_CONDITION_DELAY,                      /// Ожидание срабатывания
+  CCS_CONDITION_WAIT_APV,
+  CCS_CONDITION_DELAY,
   CCS_CONDITION_RUNNING,                    /// Запуск
   CCS_CONDITION_RUN                         /// Работа
 };
@@ -468,5 +468,12 @@ enum enVsdCondition {
   VSD_CONDITION_RUNNING,
   /// Состояние ожидание запуска
   VSD_CONDITION_WAIT_RUN
+};
+
+enum enCcsConditionFlag {
+  CCS_CONDITION_FLAG_NULL    = 0,
+  CCS_CONDITION_FLAG_DELAY,                      /// Ожидание срабатывания
+  CCS_CONDITION_FLAG_RESTART,                    /// Ожидание АПВ
+  CCS_CONDITION_FLAG_BLOCK                       /// Блокировка
 };
 #endif /* DEFINE_H_ */

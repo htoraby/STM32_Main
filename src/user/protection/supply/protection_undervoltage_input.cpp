@@ -2,7 +2,6 @@
 
 ProtectionUnderVoltageInput::ProtectionUnderVoltageInput()
 {
-  idMode_ = CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE;
   idReaction_= CCS_PROT_SUPPLY_UNDERVOLTAGE_REACTION;
   idActivDelay_ = CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY;

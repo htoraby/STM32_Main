@@ -21,7 +21,7 @@ private:
 
   bool checkAlarm();
   bool checkBlock();
-  void addEventActivationProt();
+  void addEventReactionProt();
 
   float valueParameter2_;
 

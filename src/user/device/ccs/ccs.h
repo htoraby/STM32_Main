@@ -59,31 +59,80 @@ public:
    * \brief Проверка находится ли станция в стопе
    * \return
    */
-  bool isStopCCS();
+  bool isStopMotor();
 
   /*!
-   * \brief Проверка находится ли станция в работе
+   * \brief Проверка находится ли станция в работе состояние работа, это
+   * все состояния кроме состояний "Стоп" и "Ожидания АПВ"
    * \return
    */
-  bool isWorkCCS();
+  bool isWorkMotor();
 
   /*!
    * \brief Проверка находится ли станция в ожидании
    * \return
    */
-  bool isWaitCCS();
+  bool isDelayCCS();
+
+  /*!
+   * \brief setDelayCCS
+   */
+  void setDelayCCS();
+
+  /*!
+   * \brief resetDelayCCS
+   */
+  void resetDelayCCS();
+
+  /*!
+   * \brief isRestartCCS
+   * \return
+   */
+  bool isRestartCCS();
+
+  /*!
+   * \brief setRestartCCS
+   */
+  void setRestartCCS();
+
+  /*!
+   * \brief resetRestartCCS
+   */
+  void resetRestartCCS();
 
   /*!
    * \brief Проверка находится ли станция в блокировке
-   * \return
+   * \return 0 - Не находится; 1 - находится
    */
   bool isBlockCCS();
+
+  /*!
+   * \brief Установка флага блокировки
+   */
+  void setBlockCCS();
+
+  /*!
+   * \brief Сброс флага блокировки
+   */
+  void resetBlockCCS();
 
   /*!
    * \brief Проверка что КСУ в режиме АUTO
    * \return
    */
-  bool isAutoControlMode();
+  bool isAutoMode();
+
+  /*!
+   * \brief isManualMode
+   * \return
+   */
+  bool isManualMode();
+
+  /*!
+   * \brief isStopMode
+   * \return
+   */
+  bool isStopMode();
 
   /*!
    * \brief getTime
@@ -91,6 +140,8 @@ public:
    * \return Возвращает значение секунд
    */
   float getTime();
+
+
 
 private:
   /*!
@@ -102,6 +153,11 @@ private:
    * \brief Метод обработки изменения состояния
    */
   void conditionChanged();
+
+  /*!
+   * \brief calcCondition
+   */
+  void calcCondition();
 
   /*!
    * \brief Метод проверки команды на запуск/останов
@@ -127,6 +183,7 @@ private:
   osMessageQId ledMessage_;
   //! Предыдущие состояние станции
   int conditionOld;
+  int flagOld_;
 
 };
 
