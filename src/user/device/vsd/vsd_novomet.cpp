@@ -2382,19 +2382,19 @@ void VsdNovomet::getNewValue(uint16_t id)
   ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtId(id));
   switch (param->typeData) {
   case TYPE_DATA_INT16:
-    value = (float)param->value.tdInt16[0];
+    value = (float)param->value.int16_t[0];
     break;
   case TYPE_DATA_UINT16:
-    value = (float)param->value.tdUint16[0];
+    value = (float)param->value.uint16_t[0];
     break;
   case  TYPE_DATA_INT32:
-    value = (float)param->value.tdInt32;
+    value = (float)param->value.int32_t;
     break;
   case  TYPE_DATA_UINT32:
-    value = (float)param->value.tdUint32;
+    value = (float)param->value.uint32_t;
     break;
   case  TYPE_DATA_FLOAT:
-    value = (float)param->value.tdFloat;
+    value = (float)param->value.float_t;
     break;
   default:
     break;

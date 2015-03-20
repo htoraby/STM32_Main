@@ -34,5 +34,11 @@ extern ProtectionResistanceIsolation protResistanceIsolation;
  */
 void protectionInit();
 
+/*!
+ * \brief Метод проверки запрещающего параметра во всех защитах
+ * \return
+ */
+bool isProtectionPrevent();
+
 #endif // PROTECTION_MAIN_H
 

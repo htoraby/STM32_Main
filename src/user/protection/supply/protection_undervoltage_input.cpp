@@ -2,7 +2,7 @@
 
 ProtectionUnderVoltageInput::ProtectionUnderVoltageInput()
 {
-  idMode_= CCS_PROT_SUPPLY_UNDERVOLTAGE_REACTION;
+  idMode_= CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE;
   idActivDelay_ = CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY;
   idRestartDelay_ = CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY;
@@ -33,7 +33,7 @@ bool ProtectionUnderVoltageInput::checkAlarm()
   return Protection::isLowerLimit(tripSetpoint_);
 }
 
-bool ProtectionUnderVoltageInput::checkBlock()
+bool ProtectionUnderVoltageInput::checkPrevent()
 {
   return Protection::isLowerLimit(tripSetpoint_);
 }

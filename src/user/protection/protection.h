@@ -77,7 +77,7 @@ public:
    * \brief Метод проверки выполнения условия АПВ по значению параметра
    * \return false параметр в норме, true параметр не в норме
    */
-  virtual bool checkBlock();
+  virtual bool checkPrevent();
 
   /*!
    * \brief Пересчёт текущего значения для сравнения с уставкой
@@ -172,6 +172,14 @@ public:
    */
   bool calcRestartResetCount();
 
+  /*!
+   * \brief isPrevent
+   * \return
+   */
+  bool isPrevent() {
+    return prevent_;
+  }
+
 
 protected:
   /// id параметров защиты
@@ -201,11 +209,11 @@ protected:
   float restartSetpoint_;                   /// Уставка: граница АПВ
   float param_;                             /// Уставка: Параметр 1
   float param2_;                            /// Уставка: Параметр 2
-  int state_;                               /// Состояние автомата защиты
+  uint32_t state_;                          /// Состояние автомата защиты
   float valueParameter_;                    /// Текущее значение контролируемого параметра
   uint32_t timer_;                          /// Текущее значение таймера
   float restartCount_;                      /// Текущее количество АПВ по защите
-  float restartResetCount_;                 /// Время первого срабатывания АПВ
+  uint32_t restartResetCount_;              /// Время первого срабатывания АПВ
 
   /// Индексы событий для записи в журнал
   uint16_t protReactEventId_;
@@ -214,7 +222,8 @@ protected:
   uint16_t protBlockedEventId_;
 
   bool alarm_;                              /// Флаг выполнения условия срабатывания защиты
-  bool block_;                              /// Флаг запрещающего параметра
+  bool prevent_;                            /// Флаг запрещающего параметра
+  bool block_;                              /// Флаг что защита в блокировке
   bool restart_;                            /// Флаг что защита в состоянии АПВ
 
 

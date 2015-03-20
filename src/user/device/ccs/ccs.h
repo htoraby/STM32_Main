@@ -130,6 +130,12 @@ public:
   void resetBlock();
 
   /*!
+   * \brief isPrevent
+   * \return
+   */
+  bool isPrevent();
+
+  /*!
    * \brief Проверка что КСУ в режиме АUTO
    * \return
    */

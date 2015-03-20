@@ -82,7 +82,7 @@ void Em::initParameters()
   parameters_[EM_BEGIN - EM_BEGIN].operation     = OPERATION_ERROR;
   parameters_[EM_BEGIN - EM_BEGIN].physic        = PHYSIC_ERROR;
   parameters_[EM_BEGIN - EM_BEGIN].validity      = VALIDITY_ERROR;
-  parameters_[EM_BEGIN - EM_BEGIN].value         = 0.0;
+  parameters_[EM_BEGIN - EM_BEGIN].value.float_t         = 0.0;
   parameters_[EM_BEGIN - EM_BEGIN].min           = 0.0;
   parameters_[EM_BEGIN - EM_BEGIN].max           = 0.0;
   parameters_[EM_BEGIN - EM_BEGIN].def           = 0.0;
@@ -92,7 +92,7 @@ void Em::initParameters()
   parameters_[EM_FREQUENCY - EM_BEGIN].operation     = OPERATION_READ;
   parameters_[EM_FREQUENCY - EM_BEGIN].physic        = PHYSIC_FREQUENCY;
   parameters_[EM_FREQUENCY - EM_BEGIN].validity      = VALIDITY_ERROR;
-  parameters_[EM_FREQUENCY - EM_BEGIN].value         = 0.0;
+  parameters_[EM_FREQUENCY - EM_BEGIN].value.float_t         = 0.0;
   parameters_[EM_FREQUENCY - EM_BEGIN].min           = 0.0;
   parameters_[EM_FREQUENCY - EM_BEGIN].max           = 100000.0;
   parameters_[EM_FREQUENCY - EM_BEGIN].def           = 0.0;
@@ -102,7 +102,7 @@ void Em::initParameters()
   parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].operation     = OPERATION_READ;
   parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].physic        = PHYSIC_CURRENT;
   parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].validity      = VALIDITY_ERROR;
-  parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].value         = 0.0;
+  parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].value.float_t         = 0.0;
   parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].min           = 0.0;
   parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].max           = 100000.0;
   parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].def           = 0.0;
@@ -112,7 +112,7 @@ void Em::initParameters()
   parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].operation     = OPERATION_READ;
   parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].physic        = PHYSIC_CURRENT;
   parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].validity      = VALIDITY_ERROR;
-  parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].value         = 0.0;
+  parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].value.float_t         = 0.0;
   parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].min           = 0.0;
   parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].max           = 100000.0;
   parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].def           = 0.0;
@@ -122,7 +122,7 @@ void Em::initParameters()
   parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].operation     = OPERATION_READ;
   parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].physic        = PHYSIC_CURRENT;
   parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].validity      = VALIDITY_ERROR;
-  parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].value         = 0.0;
+  parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].value.float_t         = 0.0;
   parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].min           = 0.0;
   parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].max           = 100000.0;
   parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].def           = 0.0;
@@ -132,7 +132,7 @@ void Em::initParameters()
   parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].operation     = OPERATION_READ;
   parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].physic        = PHYSIC_VOLTAGE;
   parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].validity      = VALIDITY_ERROR;
-  parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].value         = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].value.float_t         = 0.0;
   parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].min           = 0.0;
   parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].max           = 100000.0;
   parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].def           = 0.0;
@@ -142,7 +142,7 @@ void Em::initParameters()
   parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].operation     = OPERATION_READ;
   parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].physic        = PHYSIC_VOLTAGE;
   parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].validity      = VALIDITY_ERROR;
-  parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].value         = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].value.float_t         = 0.0;
   parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].min           = 0.0;
   parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].max           = 100000.0;
   parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].def           = 0.0;
@@ -152,7 +152,7 @@ void Em::initParameters()
   parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].operation     = OPERATION_READ;
   parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].physic        = PHYSIC_VOLTAGE;
   parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].validity      = VALIDITY_ERROR;
-  parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].value         = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].value.float_t         = 0.0;
   parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].min           = 0.0;
   parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].max           = 100000.0;
   parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].def           = 0.0;
@@ -162,7 +162,7 @@ void Em::initParameters()
   parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].operation     = OPERATION_READ;
   parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].physic        = PHYSIC_VOLTAGE;
   parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].validity      = VALIDITY_ERROR;
-  parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].value         = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].value.float_t         = 0.0;
   parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].min           = 0.0;
   parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].max           = 100000.0;
   parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].def           = 0.0;
@@ -172,7 +172,7 @@ void Em::initParameters()
   parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].operation     = OPERATION_READ;
   parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].physic        = PHYSIC_VOLTAGE;
   parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].validity      = VALIDITY_ERROR;
-  parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].value         = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].value.float_t         = 0.0;
   parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].min           = 0.0;
   parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].max           = 100000.0;
   parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].def           = 0.0;
@@ -180,7 +180,7 @@ void Em::initParameters()
   parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].id            = EM_VOLTAGE_PHASE_3_1;
   parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].access        = ACCESS_OPERATOR;
   parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].operation     = OPERATION_READ;
-  parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].value         = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].value.float_t         = 0.0;
   parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].min           = 0.0;
   parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].max           = 100000.0;
   parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].def           = 0.0;
@@ -190,7 +190,7 @@ void Em::initParameters()
   parameters_[EM_COS_PHI - EM_BEGIN].operation     = OPERATION_READ;
   parameters_[EM_COS_PHI - EM_BEGIN].physic        = PHYSIC_NUMERIC;
   parameters_[EM_COS_PHI - EM_BEGIN].validity      = VALIDITY_ERROR;
-  parameters_[EM_COS_PHI - EM_BEGIN].value         = 0.0;
+  parameters_[EM_COS_PHI - EM_BEGIN].value.float_t         = 0.0;
   parameters_[EM_COS_PHI - EM_BEGIN].min           = 0.0;
   parameters_[EM_COS_PHI - EM_BEGIN].max           = 100000.0;
   parameters_[EM_COS_PHI - EM_BEGIN].def           = 0.0;
@@ -200,7 +200,7 @@ void Em::initParameters()
   parameters_[EM_COS_PHI_PHASE_1 - EM_BEGIN].operation     = OPERATION_READ;
   parameters_[EM_COS_PHI_PHASE_1 - EM_BEGIN].physic        = PHYSIC_NUMERIC;
   parameters_[EM_COS_PHI_PHASE_1 - EM_BEGIN].validity      = VALIDITY_ERROR;
-  parameters_[EM_COS_PHI_PHASE_1 - EM_BEGIN].value         = 0.0;
+  parameters_[EM_COS_PHI_PHASE_1 - EM_BEGIN].value.float_t         = 0.0;
   parameters_[EM_COS_PHI_PHASE_1 - EM_BEGIN].min           = 0.0;
   parameters_[EM_COS_PHI_PHASE_1 - EM_BEGIN].max           = 100000.0;
   parameters_[EM_COS_PHI_PHASE_1 - EM_BEGIN].def           = 0.0;
@@ -210,7 +210,7 @@ void Em::initParameters()
   parameters_[EM_COS_PHI_PHASE_2 - EM_BEGIN].operation     = OPERATION_READ;
   parameters_[EM_COS_PHI_PHASE_2 - EM_BEGIN].physic        = PHYSIC_NUMERIC;
   parameters_[EM_COS_PHI_PHASE_2 - EM_BEGIN].validity      = VALIDITY_ERROR;
-  parameters_[EM_COS_PHI_PHASE_2 - EM_BEGIN].value         = 0.0;
+  parameters_[EM_COS_PHI_PHASE_2 - EM_BEGIN].value.float_t         = 0.0;
   parameters_[EM_COS_PHI_PHASE_2 - EM_BEGIN].min           = 0.0;
   parameters_[EM_COS_PHI_PHASE_2 - EM_BEGIN].max           = 100000.0;
   parameters_[EM_COS_PHI_PHASE_2 - EM_BEGIN].def           = 0.0;
@@ -220,7 +220,7 @@ void Em::initParameters()
   parameters_[EM_COS_PHI_PHASE_3 - EM_BEGIN].operation     = OPERATION_READ;
   parameters_[EM_COS_PHI_PHASE_3 - EM_BEGIN].physic        = PHYSIC_NUMERIC;
   parameters_[EM_COS_PHI_PHASE_3 - EM_BEGIN].validity      = VALIDITY_ERROR;
-  parameters_[EM_COS_PHI_PHASE_3 - EM_BEGIN].value         = 0.0;
+  parameters_[EM_COS_PHI_PHASE_3 - EM_BEGIN].value.float_t         = 0.0;
   parameters_[EM_COS_PHI_PHASE_3 - EM_BEGIN].min           = 0.0;
   parameters_[EM_COS_PHI_PHASE_3 - EM_BEGIN].max           = 100000.0;
   parameters_[EM_COS_PHI_PHASE_3 - EM_BEGIN].def           = 0.0;
@@ -230,7 +230,7 @@ void Em::initParameters()
   parameters_[EM_FULL_POWER - EM_BEGIN].operation     = OPERATION_READ;
   parameters_[EM_FULL_POWER - EM_BEGIN].physic        = PHYSIC_FULL_POWER;
   parameters_[EM_FULL_POWER - EM_BEGIN].validity      = VALIDITY_ERROR;
-  parameters_[EM_FULL_POWER - EM_BEGIN].value         = 0.0;
+  parameters_[EM_FULL_POWER - EM_BEGIN].value.float_t         = 0.0;
   parameters_[EM_FULL_POWER - EM_BEGIN].min           = 0.0;
   parameters_[EM_FULL_POWER - EM_BEGIN].max           = 100000.0;
   parameters_[EM_FULL_POWER - EM_BEGIN].def           = 0.0;
@@ -240,7 +240,7 @@ void Em::initParameters()
   parameters_[EM_FULL_POWER_PHASE_1 - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_FULL_POWER_PHASE_1 - EM_BEGIN].physic    = PHYSIC_FULL_POWER;
   parameters_[EM_FULL_POWER_PHASE_1 - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_FULL_POWER_PHASE_1 - EM_BEGIN].value     = 0.0;
+  parameters_[EM_FULL_POWER_PHASE_1 - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_FULL_POWER_PHASE_1 - EM_BEGIN].min       = 0.0;
   parameters_[EM_FULL_POWER_PHASE_1 - EM_BEGIN].max       = 100000.0;
   parameters_[EM_FULL_POWER_PHASE_1 - EM_BEGIN].def       = 0.0;
@@ -250,7 +250,7 @@ void Em::initParameters()
   parameters_[EM_FULL_POWER_PHASE_2 - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_FULL_POWER_PHASE_2 - EM_BEGIN].physic    = PHYSIC_FULL_POWER;
   parameters_[EM_FULL_POWER_PHASE_2 - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_FULL_POWER_PHASE_2 - EM_BEGIN].value     = 0.0;
+  parameters_[EM_FULL_POWER_PHASE_2 - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_FULL_POWER_PHASE_2 - EM_BEGIN].min       = 0.0;
   parameters_[EM_FULL_POWER_PHASE_2 - EM_BEGIN].max       = 100000.0;
   parameters_[EM_FULL_POWER_PHASE_2 - EM_BEGIN].def       = 0.0;
@@ -260,7 +260,7 @@ void Em::initParameters()
   parameters_[EM_FULL_POWER_PHASE_3 - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_FULL_POWER_PHASE_3 - EM_BEGIN].physic    = PHYSIC_FULL_POWER;
   parameters_[EM_FULL_POWER_PHASE_3 - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_FULL_POWER_PHASE_3 - EM_BEGIN].value     = 0.0;
+  parameters_[EM_FULL_POWER_PHASE_3 - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_FULL_POWER_PHASE_3 - EM_BEGIN].min       = 0.0;
   parameters_[EM_FULL_POWER_PHASE_3 - EM_BEGIN].max       = 100000.0;
   parameters_[EM_FULL_POWER_PHASE_3 - EM_BEGIN].def       = 0.0;
@@ -270,7 +270,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_POWER - EM_BEGIN].operation     = OPERATION_READ;
   parameters_[EM_ACTIVE_POWER - EM_BEGIN].physic        = PHYSIC_ACTIVE_POWER;
   parameters_[EM_ACTIVE_POWER - EM_BEGIN].validity      = VALIDITY_ERROR;
-  parameters_[EM_ACTIVE_POWER - EM_BEGIN].value         = 0.0;
+  parameters_[EM_ACTIVE_POWER - EM_BEGIN].value.float_t         = 0.0;
   parameters_[EM_ACTIVE_POWER - EM_BEGIN].min           = 0.0;
   parameters_[EM_ACTIVE_POWER - EM_BEGIN].max           = 100000.0;
   parameters_[EM_ACTIVE_POWER - EM_BEGIN].def           = 0.0;
@@ -280,7 +280,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_POWER_PHASE_1 - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_ACTIVE_POWER_PHASE_1 - EM_BEGIN].physic    = PHYSIC_ACTIVE_POWER;
   parameters_[EM_ACTIVE_POWER_PHASE_1 - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_ACTIVE_POWER_PHASE_1 - EM_BEGIN].value     = 0.0;
+  parameters_[EM_ACTIVE_POWER_PHASE_1 - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_ACTIVE_POWER_PHASE_1 - EM_BEGIN].min       = 0.0;
   parameters_[EM_ACTIVE_POWER_PHASE_1 - EM_BEGIN].max       = 100000.0;
   parameters_[EM_ACTIVE_POWER_PHASE_1 - EM_BEGIN].def       = 0.0;
@@ -290,7 +290,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_POWER_PHASE_2 - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_ACTIVE_POWER_PHASE_2 - EM_BEGIN].physic    = PHYSIC_ACTIVE_POWER;
   parameters_[EM_ACTIVE_POWER_PHASE_2 - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_ACTIVE_POWER_PHASE_2 - EM_BEGIN].value     = 0.0;
+  parameters_[EM_ACTIVE_POWER_PHASE_2 - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_ACTIVE_POWER_PHASE_2 - EM_BEGIN].min       = 0.0;
   parameters_[EM_ACTIVE_POWER_PHASE_2 - EM_BEGIN].max       = 100000.0;
   parameters_[EM_ACTIVE_POWER_PHASE_2 - EM_BEGIN].def       = 0.0;
@@ -300,7 +300,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_POWER_PHASE_3 - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_ACTIVE_POWER_PHASE_3 - EM_BEGIN].physic    = PHYSIC_ACTIVE_POWER;
   parameters_[EM_ACTIVE_POWER_PHASE_3 - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_ACTIVE_POWER_PHASE_3 - EM_BEGIN].value     = 0.0;
+  parameters_[EM_ACTIVE_POWER_PHASE_3 - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_ACTIVE_POWER_PHASE_3 - EM_BEGIN].min       = 0.0;
   parameters_[EM_ACTIVE_POWER_PHASE_3 - EM_BEGIN].max       = 100000.0;
   parameters_[EM_ACTIVE_POWER_PHASE_3 - EM_BEGIN].def       = 0.0;
@@ -310,7 +310,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_POWER - EM_BEGIN].operation     = OPERATION_READ;
   parameters_[EM_REACTIVE_POWER - EM_BEGIN].physic        = PHYSIC_REACTIVE_POWER;
   parameters_[EM_REACTIVE_POWER - EM_BEGIN].validity      = VALIDITY_ERROR;
-  parameters_[EM_REACTIVE_POWER - EM_BEGIN].value         = 0.0;
+  parameters_[EM_REACTIVE_POWER - EM_BEGIN].value.float_t         = 0.0;
   parameters_[EM_REACTIVE_POWER - EM_BEGIN].min           = 0.0;
   parameters_[EM_REACTIVE_POWER - EM_BEGIN].max           = 100000.0;
   parameters_[EM_REACTIVE_POWER - EM_BEGIN].def           = 0.0;
@@ -320,7 +320,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_POWER_PHASE_1 - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_REACTIVE_POWER_PHASE_1 - EM_BEGIN].physic    = PHYSIC_REACTIVE_POWER;
   parameters_[EM_REACTIVE_POWER_PHASE_1 - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_REACTIVE_POWER_PHASE_1 - EM_BEGIN].value     = 0.0;
+  parameters_[EM_REACTIVE_POWER_PHASE_1 - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_REACTIVE_POWER_PHASE_1 - EM_BEGIN].min       = 0.0;
   parameters_[EM_REACTIVE_POWER_PHASE_1 - EM_BEGIN].max       = 100000.0;
   parameters_[EM_REACTIVE_POWER_PHASE_1 - EM_BEGIN].def       = 0.0;
@@ -330,7 +330,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_POWER_PHASE_2 - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_REACTIVE_POWER_PHASE_2 - EM_BEGIN].physic    = PHYSIC_REACTIVE_POWER;
   parameters_[EM_REACTIVE_POWER_PHASE_2 - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_REACTIVE_POWER_PHASE_2 - EM_BEGIN].value     = 0.0;
+  parameters_[EM_REACTIVE_POWER_PHASE_2 - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_REACTIVE_POWER_PHASE_2 - EM_BEGIN].min       = 0.0;
   parameters_[EM_REACTIVE_POWER_PHASE_2 - EM_BEGIN].max       = 100000.0;
   parameters_[EM_REACTIVE_POWER_PHASE_2 - EM_BEGIN].def       = 0.0;
@@ -340,7 +340,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_POWER_PHASE_3 - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_REACTIVE_POWER_PHASE_3 - EM_BEGIN].physic    = PHYSIC_REACTIVE_POWER;
   parameters_[EM_REACTIVE_POWER_PHASE_3 - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_REACTIVE_POWER_PHASE_3 - EM_BEGIN].value     = 0.0;
+  parameters_[EM_REACTIVE_POWER_PHASE_3 - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_REACTIVE_POWER_PHASE_3 - EM_BEGIN].min       = 0.0;
   parameters_[EM_REACTIVE_POWER_PHASE_3 - EM_BEGIN].max       = 100000.0;
   parameters_[EM_REACTIVE_POWER_PHASE_3 - EM_BEGIN].def       = 0.0;
@@ -350,7 +350,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_ENERGY - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_ACTIVE_ENERGY - EM_BEGIN].physic    = PHYSIC_ACTIVE_ENERGY;
   parameters_[EM_ACTIVE_ENERGY - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_ACTIVE_ENERGY - EM_BEGIN].value     = 0.0;
+  parameters_[EM_ACTIVE_ENERGY - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_ACTIVE_ENERGY - EM_BEGIN].min       = 0.0;
   parameters_[EM_ACTIVE_ENERGY - EM_BEGIN].max       = 100000.0;
   parameters_[EM_ACTIVE_ENERGY - EM_BEGIN].def       = 0.0;
@@ -360,7 +360,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_PLUS_ALL - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_ACTIVE_PLUS_ALL - EM_BEGIN].physic    = PHYSIC_ACTIVE_POWER;
   parameters_[EM_ACTIVE_PLUS_ALL - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_ACTIVE_PLUS_ALL - EM_BEGIN].value     = 0.0;
+  parameters_[EM_ACTIVE_PLUS_ALL - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_ACTIVE_PLUS_ALL - EM_BEGIN].min       = 0.0;
   parameters_[EM_ACTIVE_PLUS_ALL - EM_BEGIN].max       = 100000.0;
   parameters_[EM_ACTIVE_PLUS_ALL - EM_BEGIN].def       = 0.0;
@@ -370,7 +370,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_PLUS_CUR_DAY - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_ACTIVE_PLUS_CUR_DAY - EM_BEGIN].physic    = PHYSIC_ACTIVE_POWER;
   parameters_[EM_ACTIVE_PLUS_CUR_DAY - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_ACTIVE_PLUS_CUR_DAY - EM_BEGIN].value     = 0.0;
+  parameters_[EM_ACTIVE_PLUS_CUR_DAY - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_ACTIVE_PLUS_CUR_DAY - EM_BEGIN].min       = 0.0;
   parameters_[EM_ACTIVE_PLUS_CUR_DAY - EM_BEGIN].max       = 100000.0;
   parameters_[EM_ACTIVE_PLUS_CUR_DAY - EM_BEGIN].def       = 0.0;
@@ -380,7 +380,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_MINUS_CUR_DAY - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_ACTIVE_MINUS_CUR_DAY - EM_BEGIN].physic    = PHYSIC_ACTIVE_POWER;
   parameters_[EM_ACTIVE_MINUS_CUR_DAY - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_ACTIVE_MINUS_CUR_DAY - EM_BEGIN].value     = 0.0;
+  parameters_[EM_ACTIVE_MINUS_CUR_DAY - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_ACTIVE_MINUS_CUR_DAY - EM_BEGIN].min       = 0.0;
   parameters_[EM_ACTIVE_MINUS_CUR_DAY - EM_BEGIN].max       = 100000.0;
   parameters_[EM_ACTIVE_MINUS_CUR_DAY - EM_BEGIN].def       = 0.0;
@@ -390,7 +390,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_PLUS_PREV_DAY - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_ACTIVE_PLUS_PREV_DAY - EM_BEGIN].physic    = PHYSIC_ACTIVE_POWER;
   parameters_[EM_ACTIVE_PLUS_PREV_DAY - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_ACTIVE_PLUS_PREV_DAY - EM_BEGIN].value     = 0.0;
+  parameters_[EM_ACTIVE_PLUS_PREV_DAY - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_ACTIVE_PLUS_PREV_DAY - EM_BEGIN].min       = 0.0;
   parameters_[EM_ACTIVE_PLUS_PREV_DAY - EM_BEGIN].max       = 100000.0;
   parameters_[EM_ACTIVE_PLUS_PREV_DAY - EM_BEGIN].def       = 0.0;
@@ -400,7 +400,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_MINUS_PREV_DAY - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_ACTIVE_MINUS_PREV_DAY - EM_BEGIN].physic    = PHYSIC_ACTIVE_POWER;
   parameters_[EM_ACTIVE_MINUS_PREV_DAY - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_ACTIVE_MINUS_PREV_DAY - EM_BEGIN].value     = 0.0;
+  parameters_[EM_ACTIVE_MINUS_PREV_DAY - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_ACTIVE_MINUS_PREV_DAY - EM_BEGIN].min       = 0.0;
   parameters_[EM_ACTIVE_MINUS_PREV_DAY - EM_BEGIN].max       = 100000.0;
   parameters_[EM_ACTIVE_MINUS_PREV_DAY - EM_BEGIN].def       = 0.0;
@@ -410,7 +410,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_PLUS_CUR_MONTH - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_ACTIVE_PLUS_CUR_MONTH - EM_BEGIN].physic    = PHYSIC_ACTIVE_POWER;
   parameters_[EM_ACTIVE_PLUS_CUR_MONTH - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_ACTIVE_PLUS_CUR_MONTH - EM_BEGIN].value     = 0.0;
+  parameters_[EM_ACTIVE_PLUS_CUR_MONTH - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_ACTIVE_PLUS_CUR_MONTH - EM_BEGIN].min       = 0.0;
   parameters_[EM_ACTIVE_PLUS_CUR_MONTH - EM_BEGIN].max       = 100000.0;
   parameters_[EM_ACTIVE_PLUS_CUR_MONTH - EM_BEGIN].def       = 0.0;
@@ -420,7 +420,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_MINUS_CUR_MONTH - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_ACTIVE_MINUS_CUR_MONTH - EM_BEGIN].physic    = PHYSIC_ACTIVE_POWER;
   parameters_[EM_ACTIVE_MINUS_CUR_MONTH - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_ACTIVE_MINUS_CUR_MONTH - EM_BEGIN].value     = 0.0;
+  parameters_[EM_ACTIVE_MINUS_CUR_MONTH - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_ACTIVE_MINUS_CUR_MONTH - EM_BEGIN].min       = 0.0;
   parameters_[EM_ACTIVE_MINUS_CUR_MONTH - EM_BEGIN].max       = 100000.0;
   parameters_[EM_ACTIVE_MINUS_CUR_MONTH - EM_BEGIN].def       = 0.0;
@@ -430,7 +430,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_PLUS_PREV_MONTH - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_ACTIVE_PLUS_PREV_MONTH - EM_BEGIN].physic    = PHYSIC_ACTIVE_POWER;
   parameters_[EM_ACTIVE_PLUS_PREV_MONTH - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_ACTIVE_PLUS_PREV_MONTH - EM_BEGIN].value     = 0.0;
+  parameters_[EM_ACTIVE_PLUS_PREV_MONTH - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_ACTIVE_PLUS_PREV_MONTH - EM_BEGIN].min       = 0.0;
   parameters_[EM_ACTIVE_PLUS_PREV_MONTH - EM_BEGIN].max       = 100000.0;
   parameters_[EM_ACTIVE_PLUS_PREV_MONTH - EM_BEGIN].def       = 0.0;
@@ -440,7 +440,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_MINUS_PREV_MONTH - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_ACTIVE_MINUS_PREV_MONTH - EM_BEGIN].physic    = PHYSIC_ACTIVE_POWER;
   parameters_[EM_ACTIVE_MINUS_PREV_MONTH - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_ACTIVE_MINUS_PREV_MONTH - EM_BEGIN].value     = 0.0;
+  parameters_[EM_ACTIVE_MINUS_PREV_MONTH - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_ACTIVE_MINUS_PREV_MONTH - EM_BEGIN].min       = 0.0;
   parameters_[EM_ACTIVE_MINUS_PREV_MONTH - EM_BEGIN].max       = 100000.0;
   parameters_[EM_ACTIVE_MINUS_PREV_MONTH - EM_BEGIN].def       = 0.0;
@@ -450,7 +450,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_ENERGY - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_REACTIVE_ENERGY - EM_BEGIN].physic    = PHYSIC_REACTIVE_ENERGY;
   parameters_[EM_REACTIVE_ENERGY - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_REACTIVE_ENERGY - EM_BEGIN].value     = 0.0;
+  parameters_[EM_REACTIVE_ENERGY - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_REACTIVE_ENERGY - EM_BEGIN].min       = 0.0;
   parameters_[EM_REACTIVE_ENERGY - EM_BEGIN].max       = 100000.0;
   parameters_[EM_REACTIVE_ENERGY - EM_BEGIN].def       = 0.0;
@@ -460,7 +460,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_PLUS_ALL - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_REACTIVE_PLUS_ALL - EM_BEGIN].physic    = PHYSIC_REACTIVE_POWER;
   parameters_[EM_REACTIVE_PLUS_ALL - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_REACTIVE_PLUS_ALL - EM_BEGIN].value     = 0.0;
+  parameters_[EM_REACTIVE_PLUS_ALL - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_REACTIVE_PLUS_ALL - EM_BEGIN].min       = 0.0;
   parameters_[EM_REACTIVE_PLUS_ALL - EM_BEGIN].max       = 100000.0;
   parameters_[EM_REACTIVE_PLUS_ALL - EM_BEGIN].def       = 0.0;
@@ -470,7 +470,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_PLUS_CUR_DAY - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_REACTIVE_PLUS_CUR_DAY - EM_BEGIN].physic    = PHYSIC_REACTIVE_POWER;
   parameters_[EM_REACTIVE_PLUS_CUR_DAY - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_REACTIVE_PLUS_CUR_DAY - EM_BEGIN].value     = 0.0;
+  parameters_[EM_REACTIVE_PLUS_CUR_DAY - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_REACTIVE_PLUS_CUR_DAY - EM_BEGIN].min       = 0.0;
   parameters_[EM_REACTIVE_PLUS_CUR_DAY - EM_BEGIN].max       = 100000.0;
   parameters_[EM_REACTIVE_PLUS_CUR_DAY - EM_BEGIN].def       = 0.0;
@@ -480,7 +480,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_MINUS_CUR_DAY - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_REACTIVE_MINUS_CUR_DAY - EM_BEGIN].physic    = PHYSIC_REACTIVE_POWER;
   parameters_[EM_REACTIVE_MINUS_CUR_DAY - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_REACTIVE_MINUS_CUR_DAY - EM_BEGIN].value     = 0.0;
+  parameters_[EM_REACTIVE_MINUS_CUR_DAY - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_REACTIVE_MINUS_CUR_DAY - EM_BEGIN].min       = 0.0;
   parameters_[EM_REACTIVE_MINUS_CUR_DAY - EM_BEGIN].max       = 100000.0;
   parameters_[EM_REACTIVE_MINUS_CUR_DAY - EM_BEGIN].def       = 0.0;
@@ -490,7 +490,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_PLUS_PREV_DAY - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_REACTIVE_PLUS_PREV_DAY - EM_BEGIN].physic    = PHYSIC_REACTIVE_POWER;
   parameters_[EM_REACTIVE_PLUS_PREV_DAY - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_REACTIVE_PLUS_PREV_DAY - EM_BEGIN].value     = 0.0;
+  parameters_[EM_REACTIVE_PLUS_PREV_DAY - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_REACTIVE_PLUS_PREV_DAY - EM_BEGIN].min       = 0.0;
   parameters_[EM_REACTIVE_PLUS_PREV_DAY - EM_BEGIN].max       = 100000.0;
   parameters_[EM_REACTIVE_PLUS_PREV_DAY - EM_BEGIN].def       = 0.0;
@@ -500,7 +500,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_MINUS_PREV_DAY - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_REACTIVE_MINUS_PREV_DAY - EM_BEGIN].physic    = PHYSIC_REACTIVE_POWER;
   parameters_[EM_REACTIVE_MINUS_PREV_DAY - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_REACTIVE_MINUS_PREV_DAY - EM_BEGIN].value     = 0.0;
+  parameters_[EM_REACTIVE_MINUS_PREV_DAY - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_REACTIVE_MINUS_PREV_DAY - EM_BEGIN].min       = 0.0;
   parameters_[EM_REACTIVE_MINUS_PREV_DAY - EM_BEGIN].max       = 100000.0;
   parameters_[EM_REACTIVE_MINUS_PREV_DAY - EM_BEGIN].def       = 0.0;
@@ -510,7 +510,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_PLUS_CUR_MONTH - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_REACTIVE_PLUS_CUR_MONTH - EM_BEGIN].physic    = PHYSIC_REACTIVE_POWER;
   parameters_[EM_REACTIVE_PLUS_CUR_MONTH - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_REACTIVE_PLUS_CUR_MONTH - EM_BEGIN].value     = 0.0;
+  parameters_[EM_REACTIVE_PLUS_CUR_MONTH - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_REACTIVE_PLUS_CUR_MONTH - EM_BEGIN].min       = 0.0;
   parameters_[EM_REACTIVE_PLUS_CUR_MONTH - EM_BEGIN].max       = 100000.0;
   parameters_[EM_REACTIVE_PLUS_CUR_MONTH - EM_BEGIN].def       = 0.0;
@@ -520,7 +520,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_MINUS_CUR_MONTH - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_REACTIVE_MINUS_CUR_MONTH - EM_BEGIN].physic    = PHYSIC_REACTIVE_POWER;
   parameters_[EM_REACTIVE_MINUS_CUR_MONTH - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_REACTIVE_MINUS_CUR_MONTH - EM_BEGIN].value     = 0.0;
+  parameters_[EM_REACTIVE_MINUS_CUR_MONTH - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_REACTIVE_MINUS_CUR_MONTH - EM_BEGIN].min       = 0.0;
   parameters_[EM_REACTIVE_MINUS_CUR_MONTH - EM_BEGIN].max       = 100000.0;
   parameters_[EM_REACTIVE_MINUS_CUR_MONTH - EM_BEGIN].def       = 0.0;
@@ -530,7 +530,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_PLUS_PREV_MONTH - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_REACTIVE_PLUS_PREV_MONTH - EM_BEGIN].physic    = PHYSIC_REACTIVE_POWER;
   parameters_[EM_REACTIVE_PLUS_PREV_MONTH - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_REACTIVE_PLUS_PREV_MONTH - EM_BEGIN].value     = 0.0;
+  parameters_[EM_REACTIVE_PLUS_PREV_MONTH - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_REACTIVE_PLUS_PREV_MONTH - EM_BEGIN].min       = 0.0;
   parameters_[EM_REACTIVE_PLUS_PREV_MONTH - EM_BEGIN].max       = 100000.0;
   parameters_[EM_REACTIVE_PLUS_PREV_MONTH - EM_BEGIN].def       = 0.0;
@@ -540,7 +540,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_MINUS_PREV_MONTH - EM_BEGIN].operation = OPERATION_READ;
   parameters_[EM_REACTIVE_MINUS_PREV_MONTH - EM_BEGIN].physic    = PHYSIC_REACTIVE_POWER;
   parameters_[EM_REACTIVE_MINUS_PREV_MONTH - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_REACTIVE_MINUS_PREV_MONTH - EM_BEGIN].value     = 0.0;
+  parameters_[EM_REACTIVE_MINUS_PREV_MONTH - EM_BEGIN].value.float_t     = 0.0;
   parameters_[EM_REACTIVE_MINUS_PREV_MONTH - EM_BEGIN].min       = 0.0;
   parameters_[EM_REACTIVE_MINUS_PREV_MONTH - EM_BEGIN].max       = 100000.0;
   parameters_[EM_REACTIVE_MINUS_PREV_MONTH - EM_BEGIN].def       = 0.0;
@@ -550,7 +550,7 @@ void Em::initParameters()
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].operation = OPERATION_WRITE;
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].physic    = PHYSIC_NUMERIC;
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].value     = 1.0;
+  parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].value.float_t     = 1.0;
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].min       = 0.0;
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].max       = 100000.0;
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].def       = 1.0;
@@ -560,7 +560,7 @@ void Em::initParameters()
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].operation = OPERATION_WRITE;
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].physic    = PHYSIC_NUMERIC;
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].validity  = VALIDITY_ERROR;
-  parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].value     = 1.0;
+  parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].value.float_t     = 1.0;
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].min       = 0.0;
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].max       = 100000.0;
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].def       = 1.0;

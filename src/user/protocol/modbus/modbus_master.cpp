@@ -272,9 +272,9 @@ int ModbusMaster::readMultipleRegisters( int slaveAddr,
             == crc16_ibm(rxBuffer_, (Count - 2))) {
           for(int I = 0; I <= refCnt; I++)
           {
-            Value.tdChar[0] = rxBuffer_[4 + 2*I];
-            Value.tdChar[1] = rxBuffer_[3 + 2*I];
-            regArr[I] = Value.tdUint16[0];
+            Value.char_t[0] = rxBuffer_[4 + 2*I];
+            Value.char_t[1] = rxBuffer_[3 + 2*I];
+            regArr[I] = Value.uint16_t[0];
           }
           Result = MODBUS_OK;
         }
@@ -356,11 +356,11 @@ int ModbusMaster::readMultipleLongInts(    int SlaveAddr,
                         case    RETURN_MODBUS_OK:
                                 for(I = 0; I <= RefCnt; I++)
                                 {
-                                    Value.tdChar[0] = txBuffer_[6 + 4*I];
-                                    Value.tdChar[1] = txBuffer_[5 + 4*I];
-                                    Value.tdChar[2] = txBuffer_[4 + 4*I];
-                                    Value.tdChar[3] = txBuffer_[3 + 4*I];
-                                    int32Arr[I] = Value.tdUint32;
+                                    Value.char_t[0] = txBuffer_[6 + 4*I];
+                                    Value.char_t[1] = txBuffer_[5 + 4*I];
+                                    Value.char_t[2] = txBuffer_[4 + 4*I];
+                                    Value.char_t[3] = txBuffer_[3 + 4*I];
+                                    int32Arr[I] = Value.uint32_t;
                                 }
                         break;
                         // Получен ответ с ошибкой
@@ -437,11 +437,11 @@ int ModbusMaster::readMultipleFloats(        int SlaveAddr,
                         case    RETURN_MODBUS_OK:
                                 for(I = 0; I <= RefCnt; I++)
                                 {
-                                    Value.tdChar[0] = txBuffer_[6 + 4*I];
-                                    Value.tdChar[1] = txBuffer_[5 + 4*I];
-                                    Value.tdChar[2] = txBuffer_[4 + 4*I];
-                                    Value.tdChar[3] = txBuffer_[3 + 4*I];
-                                    Float32Arr[I] = Value.tdFloat;
+                                    Value.char_t[0] = txBuffer_[6 + 4*I];
+                                    Value.char_t[1] = txBuffer_[5 + 4*I];
+                                    Value.char_t[2] = txBuffer_[4 + 4*I];
+                                    Value.char_t[3] = txBuffer_[3 + 4*I];
+                                    Float32Arr[I] = Value.float_t;
                                 }
                         break;
                         // Получен ответ с ошибкой
@@ -518,9 +518,9 @@ int ModbusMaster::readInputRegisters(      int SlaveAddr,
                         case    RETURN_MODBUS_OK:
                                 for(I = 0; I <= RefCnt; I++)
                                 {
-                                    Value.tdChar[0] = txBuffer_[4 + 2*I];
-                                    Value.tdChar[1] = txBuffer_[3 + 2*I];
-                                    RegArr[I] = Value.tdUint16[0];
+                                    Value.char_t[0] = txBuffer_[4 + 2*I];
+                                    Value.char_t[1] = txBuffer_[3 + 2*I];
+                                    RegArr[I] = Value.uint16_t[0];
                                 }
                                 break;
                                 // Получен ответ с ошибкой
@@ -598,11 +598,11 @@ int ModbusMaster::readInputLongInts(    int SlaveAddr,
                         case    RETURN_MODBUS_OK:
                                 for(I = 0; I <= RefCnt; I++)
                                 {
-                                    Value.tdChar[0] = txBuffer_[6 + 4*I];
-                                    Value.tdChar[1] = txBuffer_[5 + 4*I];
-                                    Value.tdChar[2] = txBuffer_[4 + 4*I];
-                                    Value.tdChar[3] = txBuffer_[3 + 4*I];
-                                    Int32Arr[I] = Value.tdUint32;
+                                    Value.char_t[0] = txBuffer_[6 + 4*I];
+                                    Value.char_t[1] = txBuffer_[5 + 4*I];
+                                    Value.char_t[2] = txBuffer_[4 + 4*I];
+                                    Value.char_t[3] = txBuffer_[3 + 4*I];
+                                    Int32Arr[I] = Value.uint32_t;
                                 }
                         break;
                         // Получен ответ с ошибкой
@@ -679,11 +679,11 @@ int ModbusMaster::readInputFloats(    int SlaveAddr,
                         case    RETURN_MODBUS_OK:
                                 for(I = 0; I <= RefCnt; I++)
                                 {
-                                    Value.tdChar[0] = rxBuffer_[6 + 4*I];
-                                    Value.tdChar[1] = rxBuffer_[5 + 4*I];
-                                    Value.tdChar[2] = rxBuffer_[4 + 4*I];
-                                    Value.tdChar[3] = rxBuffer_[3 + 4*I];
-                                    Float32Arr[I] = Value.tdFloat;
+                                    Value.char_t[0] = rxBuffer_[6 + 4*I];
+                                    Value.char_t[1] = rxBuffer_[5 + 4*I];
+                                    Value.char_t[2] = rxBuffer_[4 + 4*I];
+                                    Value.char_t[3] = rxBuffer_[3 + 4*I];
+                                    Float32Arr[I] = Value.float_t;
                                 }
                         break;
                         // Получен ответ с ошибкой
@@ -1116,11 +1116,11 @@ int ModbusMaster::writeMultipleFloats(    int SlaveAddr,
         // Переводим в формат 16-ти битовых регистров
         for(I = 0; I<= RefCnt; I++)
         {
-            Arr.tdFloat = Float32Arr[I];
-            RegArr[I * 4] = Arr.tdChar[0];
-            RegArr[I * 4 + 1] = Arr.tdChar[1];
-            RegArr[I * 4 + 2] = Arr.tdChar[2];
-            RegArr[I * 4 + 3] = Arr.tdChar[3];
+            Arr.float_t = Float32Arr[I];
+            RegArr[I * 4] = Arr.char_t[0];
+            RegArr[I * 4 + 1] = Arr.char_t[1];
+            RegArr[I * 4 + 2] = Arr.char_t[2];
+            RegArr[I * 4 + 3] = Arr.char_t[3];
         }
         // Вызываем запись данных
         writeMultipleRegisters(SlaveAddr, StartRef, RegArr, RefCnt*2);

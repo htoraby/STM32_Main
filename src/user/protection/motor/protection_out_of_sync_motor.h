@@ -15,7 +15,7 @@ public:
 private:
 
   bool checkAlarm();
-  bool checkBlock();
+  bool checkPrevent();
   void addEventReactionProt();
 
   float valueParameter2_;

@@ -3,7 +3,7 @@
 ProtectionTurbineRotation::ProtectionTurbineRotation()
   : isStartProtect_(false)
 {
-  idMode_= CCS_PROT_MOTOR_ASYNC_REACTION;
+  idMode_= CCS_PROT_MOTOR_ASYNC_MODE;
   idActivDelay_ = CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_MOTOR_ASYNC_TRIP_DELAY;
   idRestartDelay_ = CCS_PROT_MOTOR_ASYNC_RESTART_DELAY;
@@ -24,7 +24,7 @@ ProtectionTurbineRotation::~ProtectionTurbineRotation()
 
 }
 
-bool ProtectionTurbineRotation::checkBlock()
+bool ProtectionTurbineRotation::checkPrevent()
 {
   bool block = false;
   float value = parameters.getValue(CCS_TURBO_ROTATION_NOW);
@@ -37,7 +37,7 @@ bool ProtectionTurbineRotation::checkBlock()
 
 void ProtectionTurbineRotation::automatProtection()
 {
-  if (block_) {
+  if (prevent_) {
     if (!isStartProtect_) {
       isStartProtect_ = true;
       logEvent.add(ProtectCode, AutoType, TurbineRotationBeginId);

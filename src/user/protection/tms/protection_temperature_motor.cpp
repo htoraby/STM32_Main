@@ -2,7 +2,7 @@
 
 ProtectionTemperatureMotor::ProtectionTemperatureMotor()
 {
-  idMode_= CCS_PROT_MOTOR_IMBALANCE_CURRENT_REACTION;
+  idMode_= CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE;
   idActivDelay_ = CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY;
   idRestartDelay_ = CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY;
@@ -33,7 +33,7 @@ bool ProtectionTemperatureMotor::checkAlarm()
   return Protection::isHigherLimit(tripSetpoint_);
 }
 
-bool ProtectionTemperatureMotor::checkBlock()
+bool ProtectionTemperatureMotor::checkPrevent()
 {
   return Protection::isHigherLimit(tripSetpoint_);
 }
