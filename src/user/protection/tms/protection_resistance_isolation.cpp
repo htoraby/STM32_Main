@@ -2,7 +2,7 @@
 
 ProtectionResistanceIsolation::ProtectionResistanceIsolation()
 {
-  idMode_= CCS_PROT_DHS_RESISTANCE_REACTION;
+  idMode_= CCS_PROT_DHS_RESISTANCE_MODE;
   idActivDelay_ = CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_DHS_RESISTANCE_TRIP_DELAY;
   idRestartDelay_ = CCS_PROT_DHS_RESISTANCE_RESTART_DELAY;
@@ -17,7 +17,7 @@ ProtectionResistanceIsolation::ProtectionResistanceIsolation()
   idRestartCount_ = CCS_PROT_DHS_RESISTANCE_RESTART_COUNT;
   idRestartResetCount_ = CCS_PROT_DHS_RESISTANCE_RESTART_RESET_COUNT;
 
-  protModeEventId_ = ResistIsolationProtReactId;
+  protReactEventId_ = ResistIsolationProtReactId;
   apvEventId_ = ResistIsolationApvId;
   apvDisabledEventId_ = ResistIsolationApvDisabledId;
   protBlockedEventId_ = ResistIsolationProtBlockedId;
@@ -33,7 +33,7 @@ bool ProtectionResistanceIsolation::checkAlarm()
   return Protection::isLowerLimit(tripSetpoint_);
 }
 
-bool ProtectionResistanceIsolation::checkBlock()
+bool ProtectionResistanceIsolation::checkPrevent()
 {
   return Protection::isLowerLimit(tripSetpoint_);
 }

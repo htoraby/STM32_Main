@@ -15,6 +15,7 @@ ProtectionPressureIntake protPressureIntake;
 ProtectionResistanceIsolation protResistanceIsolation;
 
 static void protectionTask(void *argument);
+static void setProtectionPrevent();
 
 void protectionInit()
 {
@@ -45,5 +46,24 @@ void protectionTask(void *argument)
     protTemperatureMotor.processing();
     protPressureIntake.processing();
     protResistanceIsolation.processing();
+
+    setProtectionPrevent();
   }
+}
+
+void setProtectionPrevent()
+{
+  bool prevent = false;
+  prevent = prevent ? true : protOverVoltIn.isPrevent();
+  prevent = prevent ? true : protUnderVoltIn.isPrevent();
+  prevent = prevent ? true : protImbalanceVoltIn.isPrevent();
+  prevent = prevent ? true : protOverloadMotor.isPrevent();
+  prevent = prevent ? true : protUnderloadMotor.isPrevent();
+  prevent = prevent ? true : protImbalanceCurrentMotor.isPrevent();
+  prevent = prevent ? true : protOutOfSyncMotor.isPrevent();
+  prevent = prevent ? true : protTurbineRotation.isPrevent();
+  prevent = prevent ? true : protTemperatureMotor.isPrevent();
+  prevent = prevent ? true : protPressureIntake.isPrevent();
+  prevent = prevent ? true : protResistanceIsolation.isPrevent();
+  parameters.setValue(CCS_PROT_PREVENT, prevent);
 }

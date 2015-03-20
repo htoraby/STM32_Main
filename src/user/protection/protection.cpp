@@ -18,8 +18,8 @@ void Protection::processing()
   getCurrentParamProt();
   // Определяем выполняется ли условие срабатывания защиты
   alarm_ = checkAlarm();
-  // Определяем есть ли блокирующий параметр
-  block_ = checkBlock();
+  // Определяем есть ли запрещаюший параметр
+  prevent_ = checkPrevent();
   // Выполняем шаг автомата защиты
   automatProtection();
   // Сохраняем текущие параметры защиты
@@ -93,7 +93,7 @@ void Protection::checkRestartResetCount()
   }
 }
 
-bool Protection::checkBlock()
+bool Protection::checkPrevent()
 {
   return false;
 }
@@ -105,7 +105,7 @@ float Protection::calcValue()
 
 void Protection::addEventReactionProt()
 {
-  logEvent.add(ProtectCode, AutoType, protModeEventId_, valueParameter_, tripSetpoint_,
+  logEvent.add(ProtectCode, AutoType, protReactEventId_, valueParameter_, tripSetpoint_,
                parameters.getPhysic(idTripSetpoint_));
 }
 
@@ -194,6 +194,7 @@ void Protection::processingStateRun()       // Состояние работа
             logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
             ksu.setBlock();
             ksu.stop();
+            block_ = true;
             state_ = StateStop;
           }
         }
@@ -209,11 +210,22 @@ void Protection::processingStateRun()       // Состояние работа
             ksu.setDelay();
           }
           else if ((getTime() - timer_) >= tripDelay_) { // Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме; Срабатывание - конец;
-            logDebug.add(DebugMsg, "Reaction - Restart");
-            addEventReactionProt();
-            ksu.stop();
-            restart_ = true;
-            state_ = StateStopping;
+            if (restartCount_ >= restartLimit_) {
+              logDebug.add(DebugMsg, "Reaction - Block");
+              addEventReactionProt();
+              logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
+              ksu.setBlock();
+              ksu.stop();
+              block_ = true;
+              state_ = StateStop;
+            }
+            else {
+              logDebug.add(DebugMsg, "Reaction - Restart");
+              addEventReactionProt();
+              ksu.stop();
+              restart_ = true;
+              state_ = StateStopping;
+            }
           }
         }
         else {                              // Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - в норме
@@ -256,6 +268,7 @@ void Protection::processingStateRun()       // Состояние работа
             logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
             ksu.setBlock();
             ksu.stop();
+            block_ = true;
             state_ = StateStop;
           }
         }
@@ -277,59 +290,35 @@ void Protection::proccessingStateStopping()
 {
   if (ksu.isWorkMotor()) {                  // Двигатель - работа;
     if (ksu.isAutoMode()) {                 // Двигатель - работа; Режим - авто;
-
+      if (restart_) {                       // Двигатель - работа; Режим - авто; Защита - Апв
+        restartCount_++;                    // Увеличиваем счётчик АПВ
+        if (restartCount_ == 1) {           // Первое АПВ
+          restartResetCount_ = getTime();   // Запоминаем время первого АПВ по защите
+        }
+        restart_ = false;
+        state_ = StateRunning;
+      }
+      state_ = StateRunning;                // TODO: А точно?
     }
-    else {
-      if (ksu.isManualMode()) {             // Двигатель - работа; Режим - ручной;
-
-      }
-      else {
-        if (ksu.isStopMode()) {             // Двигатель - работа; Режим - стоп;
-
+    else if (ksu.isManualMode()) {          // Двигатель - работа; Режим - ручной;
+      if (restart_) {                       // Двигатель - работа; Режим - авто; Защита - Апв
+        restartCount_++;                    // Увеличиваем счётчик АПВ
+        if (restartCount_ == 1) {           // Первое АПВ
+          restartResetCount_ = getTime();   // Запоминаем время первого АПВ по защите
         }
-        else {                              // Двигатель - работа; Режим - неизвестный
-
-        }
+        restart_ = false;
+        state_ = StateRunning;
       }
+      state_ = StateRunning;                // TODO: А точно?
+    }
+  }
+  else if (ksu.isStopMotor()) {             // Двигатель - стоп;
+    if (ksu.getValue(CCS_CONDITION) == CCS_CONDITION_STOP) {
+      state_ = StateStop;
     }
   }
   else {
-    if (ksu.isStopMotor()) {                // Двигатель - стоп;
-      if (ksu.isAutoMode()) {               // Двигатель - стоп; Режим - авто;
-
-      }
-      else {
-        if (ksu.isManualMode()) {           // Двигатель - стоп; Режим - ручной;
-
-        }
-        else {
-          if (ksu.isStopMode()) {           // Двигатель - стоп; Режим - стоп;
-
-          }
-          else {
-
-          }
-        }
-      }
-    }
-    else {                                  // Двигатель - неизвестно;
-      if (ksu.isAutoMode()) {               // Двигатель - неизвестно; Режим - авто;
-
-      }
-      else {
-        if (ksu.isManualMode()) {           // Двигатель - неизвестно; Режим - ручной;
-
-        }
-        else {
-          if (ksu.isStopMode()) {           // Двигатель - неизвестно; Режим - стоп;
-
-          }
-          else {                            // Двигатель - неизвестно; Режим - неизвестный
-
-          }
-        }
-      }
-    }
+    logDebug.add(CriticalMsg, "Prot: StateMotor - Unknown!");
   }
 }
 
@@ -337,33 +326,56 @@ void Protection::proccessingStateStop()
 {
   if (ksu.isWorkMotor()) {                  // Двигатель - работа;
     if (ksu.isAutoMode()) {                 // Двигатель - работа; Режим - авто;
-
-    }
-    else {
-      if (ksu.isManualMode()) {             // Двигатель - работа; Режим - ручной;
-
+      if (isModeOff()) {
+        restart_ = false;
+        restartCount_ = 0;
+        block_ = false;
       }
       else {
-        if (ksu.isStopMode()) {             // Двигатель - работа; Режим - стоп;
-
+        if (restart_) {                     // Двигатель - работа; Режим - авто; Защита - Апв
+          restartCount_++;                  // Увеличиваем счётчик АПВ
+          if (restartCount_ == 1) {         // Первое АПВ
+            restartResetCount_ = getTime(); // Запоминаем время первого АПВ по защите
+          }
+          restart_ = false;
         }
-        else {                              // Двигатель - работа; Режим - неизвестный
-
+        else if (block_) {
+          block_ = false;
+          restartCount_ = 0;
+        }
+        state_ = StateRunning;
+      }
+    }
+    else if (ksu.isManualMode()) {          // Двигатель - работа; Режим - ручной;
+      if (isModeOff()) {
+        restart_ = false;
+        restartCount_ = 0;
+        block_ = false;
+      }
+      else {
+        if (restart_) {                       // Двигатель - работа; Режим - авто; Защита - Апв
+          restartCount_++;                    // Увеличиваем счётчик АПВ
+          if (restartCount_ == 1) {           // Первое АПВ
+            restartResetCount_ = getTime();   // Запоминаем время первого АПВ по защите
+          }
+          restart_ = false;
+          state_ = StateRunning;
+        }
+        else if (block_) {
+          block_ = false;
+          state_ = StateRunning;
         }
       }
+    }
+    else {                                  // Двигатель - работа; Режим - неизвестный
+      logDebug.add(CriticalMsg, "Prot: ControlMode - Unknown!");
     }
   }
-  else {
-    if (ksu.isStopMotor()) {                // Двигатель - стоп;
-      if (ksu.isAutoMode()) {               // Двигатель - стоп; Режим - авто;
-
-      }
-      else {
-        if (ksu.isManualMode()) {           // Двигатель - стоп; Режим - ручной;
-
-        }
-        else {
-          if (ksu.isStopMode()) {           // Двигатель - стоп; Режим - стоп;
+  else if (ksu.isStopMotor()) {             // Двигатель - стоп;
+    if (ksu.isAutoMode()) {                 // Двигатель - стоп; Режим - авто;
+      if (restart_) {                       // Двигатель - стоп; Режим - авто; Флаг - АПВ;
+        if (ksu.getValueUint32(CCS_STOP_DATE_TIME) >= restartDelay_) {
+          if (ksu.isPrevent() || prevent_) {
 
           }
           else {
@@ -371,25 +383,25 @@ void Protection::proccessingStateStop()
           }
         }
       }
-    }
-    else {                                  // Двигатель - неизвестно;
-      if (ksu.isAutoMode()) {               // Двигатель - неизвестно; Режим - авто;
+      else if (block_) {
 
       }
       else {
-        if (ksu.isManualMode()) {           // Двигатель - неизвестно; Режим - ручной;
 
-        }
-        else {
-          if (ksu.isStopMode()) {           // Двигатель - неизвестно; Режим - стоп;
-
-          }
-          else {                            // Двигатель - неизвестно; Режим - неизвестный
-
-          }
-        }
       }
     }
+    else if (ksu.isManualMode()) {          // Двигатель - стоп; Режим - ручной;
+
+    }
+    else if (ksu.isStopMode()) {            // Двигатель - стоп; Режим - стоп;
+
+    }
+    else {                                  //  Режим - неизвестный
+
+    }
+  }
+  else {
+    logDebug.add(CriticalMsg, "Prot: StateMotor - Unknown!");
   }
 }
 

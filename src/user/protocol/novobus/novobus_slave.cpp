@@ -135,11 +135,11 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
 
         if (addrsCount_) {
           for (int i = 0; i < addrsCount_; ++i) {
-            id.tdUint32 = addrsBuffer_[i];
-            txBuffer_[5 + i*4] = id.tdChar[3];
-            txBuffer_[6 + i*4] = id.tdChar[2];
-            txBuffer_[7 + i*4] = id.tdChar[1];
-            txBuffer_[8 + i*4] = id.tdChar[0];
+            id.uint32_t = addrsBuffer_[i];
+            txBuffer_[5 + i*4] = id.char_t[3];
+            txBuffer_[6 + i*4] = id.char_t[2];
+            txBuffer_[7 + i*4] = id.char_t[1];
+            txBuffer_[8 + i*4] = id.char_t[0];
           }
         }
 
@@ -158,11 +158,11 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
         // Цикл по количеству считываемых событий
         for (int i = 0; i < dataNumber; i++) {
           // Получаем адрес события
-          id.tdChar[3] = rxBuffer_[2 + i*4];
-          id.tdChar[2] = rxBuffer_[3 + i*4];
-          id.tdChar[1] = rxBuffer_[4 + i*4];
-          id.tdChar[0] = rxBuffer_[5 + i*4];
-          int addr = id.tdUint32;
+          id.char_t[3] = rxBuffer_[2 + i*4];
+          id.char_t[2] = rxBuffer_[3 + i*4];
+          id.char_t[1] = rxBuffer_[4 + i*4];
+          id.char_t[0] = rxBuffer_[5 + i*4];
+          int addr = id.uint32_t;
           // Считываем событие
           logRead(addr, &txBuffer_[5 + i*21], 21);
         }
@@ -177,9 +177,9 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
         if (!idsCount_) {
           if (osMessageNumber(messageParams_)) {
             while (1) {
-              id.tdUint16[0] = getMessageParams();
-              if (id.tdUint16[0]) {
-                idsBuffer_[idsCount_++] = id.tdUint16[0];
+              id.uint16_t[0] = getMessageParams();
+              if (id.uint16_t[0]) {
+                idsBuffer_[idsCount_++] = id.uint16_t[0];
                 if (idsCount_ >= MAX_IDS_BUFFER)
                   break;
               }
@@ -213,15 +213,15 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
         // Цикл по количеству считываемых параметров
         for (int i = 0; i < dataNumber; i++) {
           // Получаем ID параметра
-          id.tdUint16[0] = (rxBuffer_[2 + i*2] << 8) + rxBuffer_[3 + i*2];
+          id.uint16_t[0] = (rxBuffer_[2 + i*2] << 8) + rxBuffer_[3 + i*2];
           // Получить значение параметра
-          value.tdFloat = parameters.getValue(id.tdUint16[0]);
-          txBuffer_[5 + i*6]  = id.tdChar[1];
-          txBuffer_[6 + i*6]  = id.tdChar[0];
-          txBuffer_[7 + i*6]  = value.tdChar[3];
-          txBuffer_[8 + i*6]  = value.tdChar[2];
-          txBuffer_[9 + i*6]  = value.tdChar[1];
-          txBuffer_[10 + i*6] = value.tdChar[0];
+          value.float_t = parameters.getValue(id.uint16_t[0]);
+          txBuffer_[5 + i*6]  = id.char_t[1];
+          txBuffer_[6 + i*6]  = id.char_t[0];
+          txBuffer_[7 + i*6]  = value.char_t[3];
+          txBuffer_[8 + i*6]  = value.char_t[2];
+          txBuffer_[9 + i*6]  = value.char_t[1];
+          txBuffer_[10 + i*6] = value.char_t[0];
         }
 
         checkMessage();
@@ -236,14 +236,14 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
         dataNumber = (sizePkt - 4)/6;
         for (int i = 0; i < dataNumber; i++) {
           // Получаем ID параметра
-          id.tdUint16[0] = (rxBuffer_[2 + i*6] << 8) + rxBuffer_[3 + i*6];
+          id.uint16_t[0] = (rxBuffer_[2 + i*6] << 8) + rxBuffer_[3 + i*6];
           // Получаем значение параметра
-          value.tdChar[3] = rxBuffer_[4 + i*6];
-          value.tdChar[2] = rxBuffer_[5 + i*6];
-          value.tdChar[1] = rxBuffer_[6 + i*6];
-          value.tdChar[0] = rxBuffer_[7 + i*6];
+          value.char_t[3] = rxBuffer_[4 + i*6];
+          value.char_t[2] = rxBuffer_[5 + i*6];
+          value.char_t[1] = rxBuffer_[6 + i*6];
+          value.char_t[0] = rxBuffer_[7 + i*6];
           // Вызываем функцию записи значения параметра
-          parameters.setValue(id.tdUint16[0], value.tdFloat);
+          parameters.setValue(id.uint16_t[0], value.float_t);
         }
 
         checkMessage();

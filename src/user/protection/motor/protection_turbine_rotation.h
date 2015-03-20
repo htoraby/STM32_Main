@@ -13,7 +13,7 @@ public:
   ~ProtectionTurbineRotation();
 
 private:
-  bool checkBlock();
+  bool checkPrevent();
   void automatProtection();
 
   bool isStartProtect_;

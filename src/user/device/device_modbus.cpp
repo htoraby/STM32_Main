@@ -195,22 +195,22 @@ void DeviceModbus::writeModbusParameter(int id, float value)
   // Применяем тип данных
   switch (param->typeData) {
     case  TYPE_DATA_CHAR:
-      param->value.tdChar[0] = (char)(value + 0.5);
+      param->value.char_t[0] = (char)(value + 0.5);
       break;
     case  TYPE_DATA_INT16:
-      param->value.tdInt16[0] = (short int)(value + 0.5);
+      param->value.int16_t[0] = (short int)(value + 0.5);
       break;
     case  TYPE_DATA_INT32:
-      param->value.tdInt32 = (int)(value + 0.5);
+      param->value.int32_t = (int)(value + 0.5);
       break;
     case TYPE_DATA_UINT16:
-      param->value.tdUint16[0] = (unsigned short int)(value + 0.5);
+      param->value.uint16_t[0] = (unsigned short int)(value + 0.5);
       break;
     case  TYPE_DATA_UINT32:
-      param->value.tdUint32 = (unsigned int)(value + 0.5);
+      param->value.uint32_t = (unsigned int)(value + 0.5);
       break;
     case TYPE_DATA_FLOAT:
-      param->value.tdFloat = value;
+      param->value.float_t = value;
       break;
     default:
       break;
@@ -275,29 +275,29 @@ void DeviceModbus::exchangeTask()
           case TYPE_DATA_INT16:
             mms_->writeSingleRegister(deviceAddress_,
                                       address,
-                                      modbusParameters_[outOfTurn].value.tdInt16[0]);
+                                      modbusParameters_[outOfTurn].value.int16_t[0]);
             break;
           case TYPE_DATA_UINT16:
             mms_->writeSingleRegister(deviceAddress_,
                                       address,
-                                      modbusParameters_[outOfTurn].value.tdUint16[0]);
+                                      modbusParameters_[outOfTurn].value.uint16_t[0]);
             break;
           case  TYPE_DATA_INT32:
-            int32Arr_[0] = modbusParameters_[outOfTurn].value.tdInt32;
+            int32Arr_[0] = modbusParameters_[outOfTurn].value.int32_t;
             mms_->writeMultipleLongInts(deviceAddress_,
                                         address,
                                         int32Arr_,
                                         1);
             break;
           case  TYPE_DATA_UINT32:
-            int32Arr_[0] =  modbusParameters_[outOfTurn].value.tdUint32;
+            int32Arr_[0] =  modbusParameters_[outOfTurn].value.uint32_t;
             mms_->writeMultipleLongInts(deviceAddress_,
                                         modbusParameters_[outOfTurn].address,
                                         int32Arr_,
                                         1);
             break;
           case  TYPE_DATA_FLOAT:
-            float32Arr_[0] = modbusParameters_[outOfTurn].value.tdFloat;
+            float32Arr_[0] = modbusParameters_[outOfTurn].value.float_t;
             mms_->writeMultipleFloats(deviceAddress_,
                                       modbusParameters_[outOfTurn].address,
                                       float32Arr_,
@@ -312,7 +312,7 @@ void DeviceModbus::exchangeTask()
           int address = modbusParameters_[outOfTurn].address;
           if(!(mms_->readMultipleRegisters(deviceAddress_,address,regArr_,1))) {
             int index = getIndexAtAddress(address);
-            modbusParameters_[index].value.tdInt16[0] = regArr_[0];
+            modbusParameters_[index].value.int16_t[0] = regArr_[0];
             modbusParameters_[index].validity = VALIDITY_GOOD;
             putMessageUpdateId(modbusParameters_[index].id);
           }
@@ -336,7 +336,7 @@ void DeviceModbus::exchangeTask()
               // Получаем индекс элемента в массиве с которого начинаем сохранение
               int index = getIndexAtAddress(address);
               for (int i = 0; i < count; i++) {
-                modbusParameters_[index].value.tdInt16[0] = regArr_[i];
+                modbusParameters_[index].value.int16_t[0] = regArr_[i];
                 modbusParameters_[index].validity = VALIDITY_GOOD;
                 putMessageUpdateId(modbusParameters_[index].id);
                 index++;

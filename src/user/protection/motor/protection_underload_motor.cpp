@@ -2,7 +2,7 @@
 
 ProtectionUnderloadMotor::ProtectionUnderloadMotor()
 {
-  idMode_= CCS_PROT_MOTOR_UNDERLOAD_REACTION;
+  idMode_= CCS_PROT_MOTOR_UNDERLOAD_MODE;
   idActivDelay_ = CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_MOTOR_UNDERLOAD_TRIP_DELAY;
   idRestartDelay_ = CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY;
@@ -17,7 +17,7 @@ ProtectionUnderloadMotor::ProtectionUnderloadMotor()
   idRestartCount_ = CCS_PROT_MOTOR_UNDERLOAD_RESTART_COUNT;
   idRestartResetCount_ = CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET_COUNT;
 
-  protModeEventId_ = UnderloadMotorProtReactId;
+  protReactEventId_ = UnderloadMotorProtReactId;
   apvEventId_ = UnderloadMotorApvId;
   apvDisabledEventId_ = UnderloadMotorApvDisabledId;
   protBlockedEventId_ = UnderloadMotorProtBlockedId;
@@ -33,7 +33,7 @@ bool ProtectionUnderloadMotor::checkAlarm()
   return Protection::isLowerLimit(tripSetpoint_);
 }
 
-bool ProtectionUnderloadMotor::checkBlock()
+bool ProtectionUnderloadMotor::checkPrevent()
 {
   return Protection::isLowerLimit(tripSetpoint_);
 }

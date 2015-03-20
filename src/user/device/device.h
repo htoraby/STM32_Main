@@ -29,7 +29,7 @@ struct parameter
   float max;                /// Максимально допустимое значение для этого параметра.
   float def;                /// Значение по умолчанию
   unsigned char validity;   /// Валидность параметра
-  float value;              /// Значение параметра, для единообразия значения всех параметров будем
+  unTypeData value;         /// Значение параметра, для единообразия значения всех параметров будем
 };
 
 /*!
@@ -99,6 +99,14 @@ public:
   float getValue(unsigned short id, bool *ok = 0);
 
   /*!
+   * \brief Метод получения значения параметра типа uint32_t по id
+   * \param id уникальный идентификатор параметра
+   * \param ok - действительное значение или нет
+   * \return значение параметра
+   */
+  uint32_t getValueUint32(unsigned short id, bool *ok = 0);
+
+  /*!
    * \brief Метод присвоения значения параметру
    * Когда пытаемся записать значение, нам нужно проверить
    * 1. Уровень доступа к параметру
@@ -106,9 +114,25 @@ public:
    * 3. Минимальное и максимальное значение
    * \param id уникальный идентификатор параметра
    * \param value присваемое значение
-   * \return 0 - значение присвоено или ошибка
+   * \return 0 - значение присвоено или код ошибки
    */
   unsigned char setValue(unsigned short id, float value);
+
+  /*!
+   * \brief Метод присвоения значения параметра типа uint32_t
+   * \param id - уникальный идентификатор параметра
+   * \param value - присваемое значение
+   * \return 0 - значение присвоено или код ошибки
+   */
+  unsigned char setValue(uint16_t id, uint32_t value);
+
+  /*!
+   * \brief Метод присвоения значения параметра типа float переменным типа int
+   * \param id - уникальный идентификатор параметра
+   * \param value - присваемое значение
+   * \return 0 - значение присвоено или код ошибки
+   */
+  unsigned char setValue(uint16_t id, int value);
 
   /*!
    * \brief Метод получения типа физической величины по id
@@ -182,6 +206,13 @@ protected:
   float getFieldValue(unsigned short index);
 
   /*!
+   * \brief  Метод получения value.uint32_t параметра по индексу в массиве параметров
+   * \param index - индекс параметра в массиве
+   * \return
+   */
+  uint32_t getFieldValueUint32(uint16_t index);
+
+  /*!
    * \brief Метод получения Minimum параметра по индексу в массиве параметров
    * \param Index индекс параметра в массиве
    * \return поле Minimum
@@ -250,6 +281,13 @@ protected:
    * \param value присваемое значение
    */
   void setFieldValue(unsigned short index, float value);
+
+  /*!
+   * \brief Метод присвоения поля value в массиве параметров по индексу
+   * \param index индекс параметра в массиве
+   * \param value присваемое значение
+   */
+  void setFieldValue(unsigned short index, uint32_t value);
 
   /*!
    * \brief Метод присвоения поля Min в массиве параметров по индексу

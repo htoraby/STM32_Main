@@ -16,7 +16,7 @@ public:
 private:
 
   bool checkAlarm();
-  bool checkBlock();
+  bool checkPrevent();
   float calcValue();
 
 };

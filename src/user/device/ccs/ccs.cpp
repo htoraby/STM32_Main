@@ -353,6 +353,11 @@ void Ccs::resetBlock()
     setValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_NULL);
 }
 
+bool Ccs::isPrevent()
+{
+  return getValue(CCS_PROT_PREVENT);
+}
+
 bool Ccs::isAutoMode()
 {
   unsigned int controlMode = (unsigned int)getValue(CCS_WORKING_MODE);
@@ -400,7 +405,7 @@ void Ccs::initParameters()
   parameters_[CCS_BEGIN - CCS_BEGIN].operation         = OPERATION_ERROR;
   parameters_[CCS_BEGIN - CCS_BEGIN].physic            = PHYSIC_ERROR;
   parameters_[CCS_BEGIN - CCS_BEGIN].validity          = VALIDITY_GOOD;
-  parameters_[CCS_BEGIN - CCS_BEGIN].value         = 0.0;
+  parameters_[CCS_BEGIN - CCS_BEGIN].value.float_t         = 0.0;
   parameters_[CCS_BEGIN - CCS_BEGIN].min           = 0.0;
   parameters_[CCS_BEGIN - CCS_BEGIN].max           = 0.0;
   parameters_[CCS_BEGIN - CCS_BEGIN].def           = 0.0;
@@ -410,7 +415,7 @@ void Ccs::initParameters()
   parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].operation   = OPERATION_WRITE;
   parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].validity    = VALIDITY_ERROR;
-  parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].value   = ACCESS_OPERATOR;
+  parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].value.float_t   = ACCESS_OPERATOR;
   parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].min     = ACCESS_ERROR;
   parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].max     = ACCESS_LAST;
   parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].def     = ACCESS_OPERATOR;
@@ -420,7 +425,7 @@ void Ccs::initParameters()
   parameters_[CCS_CONDITION - CCS_BEGIN].operation   = OPERATION_WRITE;
   parameters_[CCS_CONDITION - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[CCS_CONDITION - CCS_BEGIN].validity    = VALIDITY_GOOD;
-  parameters_[CCS_CONDITION - CCS_BEGIN].value   = CCS_CONDITION_STOP;
+  parameters_[CCS_CONDITION - CCS_BEGIN].value.float_t   = CCS_CONDITION_STOP;
   parameters_[CCS_CONDITION - CCS_BEGIN].min     = CCS_CONDITION_STOP;
   parameters_[CCS_CONDITION - CCS_BEGIN].max     = CCS_CONDITION_RUN;
   parameters_[CCS_CONDITION - CCS_BEGIN].def     = CCS_CONDITION_STOP;
@@ -430,7 +435,7 @@ void Ccs::initParameters()
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].operation   = OPERATION_WRITE;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].validity    = VALIDITY_GOOD;
-  parameters_[CCS_WORKING_MODE - CCS_BEGIN].value   = CCS_WORKING_MODE_STOP;
+  parameters_[CCS_WORKING_MODE - CCS_BEGIN].value.float_t   = CCS_WORKING_MODE_STOP;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].min     = CCS_WORKING_MODE_STOP;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].max     = CCS_WORKING_MODE_PROGRAM;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].def     = CCS_WORKING_MODE_STOP;
@@ -440,7 +445,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_STOP - CCS_BEGIN].operation   = OPERATION_WRITE;
   parameters_[CCS_CMD_STOP - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[CCS_CMD_STOP - CCS_BEGIN].validity    = VALIDITY_GOOD;
-  parameters_[CCS_CMD_STOP - CCS_BEGIN].value   = 0;
+  parameters_[CCS_CMD_STOP - CCS_BEGIN].value.float_t   = 0;
   parameters_[CCS_CMD_STOP - CCS_BEGIN].min     = 0;
   parameters_[CCS_CMD_STOP - CCS_BEGIN].max     = 1;
   parameters_[CCS_CMD_STOP - CCS_BEGIN].def     = 0;
@@ -450,7 +455,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_START - CCS_BEGIN].operation   = OPERATION_WRITE;
   parameters_[CCS_CMD_START - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[CCS_CMD_START - CCS_BEGIN].validity    = VALIDITY_GOOD;
-  parameters_[CCS_CMD_START - CCS_BEGIN].value   = 0;
+  parameters_[CCS_CMD_START - CCS_BEGIN].value.float_t   = 0;
   parameters_[CCS_CMD_START - CCS_BEGIN].min     = 0;
   parameters_[CCS_CMD_START - CCS_BEGIN].max     = 1;
   parameters_[CCS_CMD_START - CCS_BEGIN].def     = 0;
@@ -460,7 +465,7 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].operation   = OPERATION_WRITE;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].validity    = VALIDITY_GOOD;
-  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].value   = VSD_CONDITION_STOP;
+  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].value.float_t   = VSD_CONDITION_STOP;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].min     = VSD_CONDITION_STOP;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].max     = VSD_CONDITION_WAIT_RUN;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].def     = VSD_CONDITION_STOP;

@@ -2,7 +2,7 @@
 
 ProtectionImbalanceVoltageInput::ProtectionImbalanceVoltageInput()
 {
-  idMode_= CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_REACTION;
+  idMode_= CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_MODE;
   idActivDelay_ = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY;
   idRestartDelay_ = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY;
@@ -17,7 +17,7 @@ ProtectionImbalanceVoltageInput::ProtectionImbalanceVoltageInput()
   idRestartCount_ = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_COUNT;
   idRestartResetCount_ = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_RESET_COUNT;
 
-  protModeEventId_ = ImbalanceVoltInProtReactId;
+  protReactEventId_ = ImbalanceVoltInProtReactId;
   apvEventId_ = ImbalanceVoltInApvId;
   apvDisabledEventId_ = ImbalanceVoltInApvDisabledId;
   protBlockedEventId_ = ImbalanceVoltInProtBlockedId;
@@ -33,7 +33,7 @@ bool ProtectionImbalanceVoltageInput::checkAlarm()
   return Protection::isHigherLimit(tripSetpoint_);
 }
 
-bool ProtectionImbalanceVoltageInput::checkBlock()
+bool ProtectionImbalanceVoltageInput::checkPrevent()
 {
   return Protection::isHigherLimit(tripSetpoint_);
 }
