@@ -387,6 +387,18 @@ bool Ccs::isStopMode ()
   }
 }
 
+bool Ccs::isProgramMode()
+{
+  unsigned int controlMode = (unsigned int)getValue(CCS_WORKING_MODE);
+  if ((controlMode == CCS_WORKING_MODE_AUTO) ||
+      (controlMode == CCS_WORKING_MODE_PROGRAM)) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
 float Ccs::getTime()
 {
   return getValue(CCS_DATE_TIME);

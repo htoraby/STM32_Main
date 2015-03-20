@@ -148,13 +148,17 @@ public:
   bool isStopMode();
 
   /*!
+   * \brief Проверка что КСУ в режиме "Программа"
+   * \return true - да, false - нет
+   */
+  bool isProgramMode();
+
+  /*!
    * \brief getTime
    * Функция получения текущего времени в сек от 00:00:00 01.01.1970 года
    * \return Возвращает значение секунд
    */
   float getTime();
-
-
 
 private:
   /*!

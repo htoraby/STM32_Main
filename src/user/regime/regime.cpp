@@ -9,4 +9,3 @@ Regime::~Regime()
 {
 
 }
-
