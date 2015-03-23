@@ -639,6 +639,7 @@ enum enID
   CCS_CONDITION_FLAG,
   CCS_LAST_EVENT_TYPE,                      //!< Тип последнего события
   CCS_PROT_PREVENT,                         //!< Наличие хотя бы одного запрещающего параметра
+  CCS_TIMER_DIFFERENT_START,                //!< Уставка ВРП (время разновременного пуска)
   CCS_END,                                  /// Последний параметр
   VSD_BEGIN        = 10000,                 /// Первый параметр ЧРП
   VSD_FREQUENCY_NOW,                        /// Выходная частота ПЧ

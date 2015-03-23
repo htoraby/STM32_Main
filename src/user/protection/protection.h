@@ -172,6 +172,7 @@ public:
    */
   bool calcRestartResetCount();
 
+
   /*!
    * \brief isPrevent
    * \return
@@ -215,7 +216,7 @@ protected:
   float restartReset_;                      /// Уставка: Время сброса количества АПВ
   float tripSetpoint_;                      /// Уставка: граница срабатывания защиты
   float restartSetpoint_;                   /// Уставка: граница АПВ
-  float timerDifStart_;                             /// Уставка: Параметр 1
+  float timerDifStart_;                     /// Уставка: Параметр 1
   float param2_;                            /// Уставка: Параметр 2
   uint32_t state_;                          /// Состояние автомата защиты
   float valueParameter_;                    /// Текущее значение контролируемого параметра
@@ -235,6 +236,7 @@ protected:
   bool restart_;                            /// Флаг что защита в состоянии АПВ
   bool attempt_;                            /// Флаг первой попытки запуска
 
+  void incRestartCount();
 
 };
 

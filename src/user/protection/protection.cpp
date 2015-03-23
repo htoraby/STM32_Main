@@ -1,7 +1,8 @@
 #include "protection.h"
+#include "protection_main.h"
 
 Protection::Protection()
-  : attempt_(true)
+  : attempt_(false)
 {
 
 }
@@ -292,22 +293,14 @@ void Protection::proccessingStateStopping()
   if (ksu.isWorkMotor()) {                  // Двигатель - работа;
     if (ksu.isAutoMode()) {                 // Двигатель - работа; Режим - авто;
       if (restart_) {                       // Двигатель - работа; Режим - авто; Защита - Апв
-        restartCount_++;                    // Увеличиваем счётчик АПВ
-        if (restartCount_ == 1) {           // Первое АПВ
-          restartResetCount_ = getTime();   // Запоминаем время первого АПВ по защите
-        }
-        restart_ = false;
+        incRestartCount();
         state_ = StateRunning;
       }
       state_ = StateRunning;                // TODO: А точно?
     }
     else if (ksu.isManualMode()) {          // Двигатель - работа; Режим - ручной;
       if (restart_) {                       // Двигатель - работа; Режим - авто; Защита - Апв
-        restartCount_++;                    // Увеличиваем счётчик АПВ
-        if (restartCount_ == 1) {           // Первое АПВ
-          restartResetCount_ = getTime();   // Запоминаем время первого АПВ по защите
-        }
-        restart_ = false;
+        incRestartCount();
         state_ = StateRunning;
       }
       state_ = StateRunning;                // TODO: А точно?
@@ -334,11 +327,7 @@ void Protection::proccessingStateStop()
       }
       else {
         if (restart_) {                     // Двигатель - работа; Режим - авто; Защита - Апв
-          restartCount_++;                  // Увеличиваем счётчик АПВ
-          if (restartCount_ == 1) {         // Первое АПВ
-            restartResetCount_ = getTime(); // Запоминаем время первого АПВ по защите
-          }
-          restart_ = false;
+          incRestartCount();
         }
         else if (block_) {
           block_ = false;
@@ -355,11 +344,7 @@ void Protection::proccessingStateStop()
       }
       else {
         if (restart_) {                       // Двигатель - работа; Режим - авто; Защита - Апв
-          restartCount_++;                    // Увеличиваем счётчик АПВ
-          if (restartCount_ == 1) {           // Первое АПВ
-            restartResetCount_ = getTime();   // Запоминаем время первого АПВ по защите
-          }
-          restart_ = false;
+          incRestartCount();
           state_ = StateRunning;
         }
         else if (block_) {
@@ -376,40 +361,55 @@ void Protection::proccessingStateStop()
     if (ksu.isAutoMode()) {                 // Двигатель - стоп; Режим - авто;
       if (restart_) {                       // Двигатель - стоп; Режим - авто; Флаг - АПВ;
         if (ksu.getValueUint32(CCS_STOP_DATE_TIME) >= restartDelay_) {
-          if (ksu.isPrevent() || prevent_) {// Есть запрещающий параметр
-            if (attempt_) {
-              logEvent.add(ProtectCode, AutoType, apvDisabledEventId_);
-              attempt_ = false;
+          if (timerDifStart_) {             // Защита с отсчётом АПВ после нормализации параметра (ВРП)
+            if (!prevent_) {                // Параметр защиты в норме
+              if (timer_ == 0) {            //
+                timer_ = getTime();         // Зафиксировали время начала отсёта АПВ
+                logDebug.add(DebugMsg, "Time restart - begin");
+                ksu.setRestart();
+              }
+              else if ((getTime() - timer_) >= parameters.getValue(CCS_TIMER_DIFFERENT_START)) {
+                if (ksu.isPrevent()) {
+                  if (!attempt_) {                // Первая попытка АПВ
+                    attempt_ = true;
+                    addEventProtectionPrevent();  // Сообщение неудачной попытке пуска
+                  }
+                }
+                else {
+                  incRestartCount();
+                  logEvent.add(ProtectCode, AutoType, apvEventId_);
+                  ksu.start();
+                  state_ = StateRunning;
+                }
+              }
             }
             else {
-
+              timer_ = 0;
             }
           }
-          else {                            // Нет запрещающего параметра
-            if (timerDifStart_) {           // Для защиты есть ВРП
-
+          else {
+            if (ksu.isPrevent() || prevent_) {// Есть запрещающий параметр
+              if (!attempt_) {                // Первая попытка АПВ
+                attempt_ = true;
+                addEventProtectionPrevent();  // Сообщение неудачной попытке пуска
+              }
             }
             else {
-
+              incRestartCount();
+              logEvent.add(ProtectCode, AutoType, apvEventId_);
+              ksu.start();
+              state_ = StateRunning;
             }
           }
         }
       }
-      else if (block_) {
-
+    }
+    else {
+      if (isModeOff()) {
+        restartCount_ = 0;
       }
-      else {
-
-      }
-    }
-    else if (ksu.isManualMode()) {          // Двигатель - стоп; Режим - ручной;
-
-    }
-    else if (ksu.isStopMode()) {            // Двигатель - стоп; Режим - стоп;
-
-    }
-    else {                                  //  Режим - неизвестный
-
+      restart_ = false;
+      block_ = false;
     }
   }
   else {
@@ -417,6 +417,15 @@ void Protection::proccessingStateStop()
   }
 }
 
+void Protection::incRestartCount()
+{
+  restartCount_++;                    // Увеличиваем счётчик АПВ
+  if (restartCount_ == 1) {           // Первое АПВ
+    restartResetCount_ = getTime();   // Запоминаем время первого АПВ по защите
+  }
+  attempt_ = false;
+  restart_ = false;
+}
 
 void Protection::automatProtection()
 {
