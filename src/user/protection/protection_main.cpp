@@ -67,3 +67,29 @@ void setProtectionPrevent()
   prevent = prevent ? true : protResistanceIsolation.isPrevent();
   parameters.setValue(CCS_PROT_PREVENT, prevent);
 }
+
+void addEventProtectionPrevent()
+{
+  if (protOverVoltIn.isPrevent())
+    logEvent.add(ProtectCode, AutoType, protOverVoltIn.getApvDisabledEventId());
+  if (protUnderVoltIn.isPrevent())
+    logEvent.add(ProtectCode, AutoType, protUnderVoltIn.getApvDisabledEventId());
+  if (protImbalanceVoltIn.isPrevent())
+    logEvent.add(ProtectCode, AutoType, protImbalanceVoltIn.getApvDisabledEventId());
+  if (protOverloadMotor.isPrevent())
+    logEvent.add(ProtectCode, AutoType, protOverloadMotor.getApvDisabledEventId());
+  if (protUnderloadMotor.isPrevent())
+    logEvent.add(ProtectCode, AutoType, protUnderloadMotor.getApvDisabledEventId());
+  if (protImbalanceCurrentMotor.isPrevent())
+    logEvent.add(ProtectCode, AutoType, protImbalanceCurrentMotor.getApvDisabledEventId());
+  if (protOutOfSyncMotor.isPrevent())
+    logEvent.add(ProtectCode, AutoType, protOutOfSyncMotor.getApvDisabledEventId());
+  if (protTurbineRotation.isPrevent())
+    logEvent.add(ProtectCode, AutoType, protTurbineRotation.getApvDisabledEventId());
+  if (protTemperatureMotor.isPrevent())
+    logEvent.add(ProtectCode, AutoType, protTemperatureMotor.getApvDisabledEventId());
+  if (protPressureIntake.isPrevent())
+    logEvent.add(ProtectCode, AutoType, protPressureIntake.getApvDisabledEventId());
+  if (protResistanceIsolation.isPrevent())
+    logEvent.add(ProtectCode, AutoType, protResistanceIsolation.getApvDisabledEventId());
+}

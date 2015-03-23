@@ -1,6 +1,7 @@
 #include "protection.h"
 
 Protection::Protection()
+  : attempt_(true)
 {
 
 }
@@ -36,7 +37,7 @@ void Protection::getSetpointProt()
   restartReset_   = ksu.getValue(idRestartReset_);
   tripSetpoint_   = ksu.getValue(idTripSetpoint_);
   restartSetpoint_= ksu.getValue(idRestartSetpoint_);
-  param_          = ksu.getValue(idParam_);
+  timerDifStart_          = ksu.getValue(idParam_);
   param2_         = ksu.getValue(idParam2_);
 }
 
@@ -375,11 +376,22 @@ void Protection::proccessingStateStop()
     if (ksu.isAutoMode()) {                 // Двигатель - стоп; Режим - авто;
       if (restart_) {                       // Двигатель - стоп; Режим - авто; Флаг - АПВ;
         if (ksu.getValueUint32(CCS_STOP_DATE_TIME) >= restartDelay_) {
-          if (ksu.isPrevent() || prevent_) {
+          if (ksu.isPrevent() || prevent_) {// Есть запрещающий параметр
+            if (attempt_) {
+              logEvent.add(ProtectCode, AutoType, apvDisabledEventId_);
+              attempt_ = false;
+            }
+            else {
 
+            }
           }
-          else {
+          else {                            // Нет запрещающего параметра
+            if (timerDifStart_) {           // Для защиты есть ВРП
 
+            }
+            else {
+
+            }
           }
         }
       }
