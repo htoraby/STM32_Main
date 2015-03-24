@@ -14,7 +14,7 @@ void RegimeTechnologPeriodic::processing()
 {
   action_ = parameters.getValue(CCS_RGM_PERIODIC_MODE);
   state_ = parameters.getValue(CCS_RGM_PERIODIC_STATE);
-  workTimer_ = parameters.getValue(CCS_RGM_PERIODIC_RUN_TIMER);
+  workTimer_ = parameters.getValueUint32(CCS_RGM_PERIODIC_RUN_TIMER);
   stopTimer_ = parameters.getValue(CCS_RGM_PERIODIC_STOP_TIMER);
   workTime_ = parameters.getValue(CCS_RGM_PERIODIC_RUN_TIME);
   workTimeEnd_ = parameters.getValue(CCS_RGM_PERIODIC_RUN_TIME_END);
@@ -23,7 +23,7 @@ void RegimeTechnologPeriodic::processing()
 
   switch (state_) {
     case IdleState:
-      // TODO: workTimer_ = ;
+      workTimer_ = getTime();
       workTimeEnd_ = 0;
       if (action_ == onAction) {                        // Режим - включен
         if (ksu.isWorkMotor() && ksu.isProgramMode()) { // Двигатель - работа; Режим - программа;

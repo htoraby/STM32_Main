@@ -17,7 +17,7 @@ public:
 private:
   float workTime_;      //!< Уставка: Время работы
   float stopTime_;      //!< Уставка: Время останова
-  float workTimer_;     //!< Таймер работы
+  uint32_t workTimer_;  //!< Таймер работы
   float stopTimer_;     //!< Таймер останова
   float workTimeEnd_;   //!< Время до конца работы
   float stopTimeEnd_;   //!< Время до конца останова
