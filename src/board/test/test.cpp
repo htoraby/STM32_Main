@@ -11,6 +11,7 @@
 #include "adc_ext.h"
 #include "host.h"
 #include "user_main.h"
+#include "test_protection.h"
 
 static void testThread(void *argument);
 
@@ -61,6 +62,10 @@ void testInit()
   osThreadCreate(osThread(TestHostUartRx), NULL);
   osThreadDef(TestHostUartTx, testHostUartTxThread, osPriorityNormal, 0, 3 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(TestHostUartTx), NULL);
+#endif
+
+#if (TEST_PROTECTIONS == 1)
+  testProtectionInit();
 #endif
 }
 
