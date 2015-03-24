@@ -28,5 +28,12 @@ void userInit()
   ksu.initTask();
 
   protectionInit();
-  regimeInit();
+//  regimeInit();
+
+#if DEBUG
+  ksu.setValue(CCS_WORKING_MODE, CCS_WORKING_MODE_AUTO);
+  ksu.resetBlock();
+  ksu.resetDelay();
+#endif
+
 }

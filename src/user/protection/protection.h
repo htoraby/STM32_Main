@@ -218,7 +218,7 @@ protected:
   float restartSetpoint_;                   /// Уставка: граница АПВ
   float timerDifStart_;                     /// Уставка: Параметр 1
   float param2_;                            /// Уставка: Параметр 2
-  uint32_t state_;                          /// Состояние автомата защиты
+  int state_;                               /// Состояние автомата защиты
   float valueParameter_;                    /// Текущее значение контролируемого параметра
   uint32_t timer_;                          /// Текущее значение таймера
   float restartCount_;                      /// Текущее количество АПВ по защите

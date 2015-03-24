@@ -190,14 +190,18 @@ void Protection::processingStateRun()       // Состояние работа
             logDebug.add(DebugMsg, "Reaction - Begin");
             ksu.setDelay();
           }
-          else if ((getTime() - timer_) >= tripDelay_) {   // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - конец;
-            logDebug.add(DebugMsg, "Reaction - Block");
-            addEventReactionProt();
-            logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
-            ksu.setBlock();
-            ksu.stop();
-            block_ = true;
-            state_ = StateStop;
+          else {
+            uint32_t timer = getTime();
+            uint32_t timer1 = timer - timer_;
+            if ((getTime() - timer_) >= tripDelay_) {   // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - конец;
+              logDebug.add(DebugMsg, "Reaction - Block");
+              addEventReactionProt();
+              logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
+              ksu.setBlock();
+              ksu.stop();
+              block_ = true;
+              state_ = StateStop;
+            }
           }
         }
         else {                              // Двигатель - работа; Режим - авто; Защита - блок; Параметр - в норме

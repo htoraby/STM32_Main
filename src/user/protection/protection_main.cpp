@@ -1,6 +1,6 @@
 #include "protection_main.h"
 
-#define COUNT_PROTECTIONS 11
+#define COUNT_PROTECTIONS 1 // 11
 
 Protection *protections[COUNT_PROTECTIONS];
 
@@ -24,16 +24,16 @@ static void setProtectionPrevent();
 void protectionInit()
 {
   protections[0] = &protOverVoltIn;
-  protections[1] = &protUnderVoltIn;
-  protections[2] = &protImbalanceVoltIn;
-  protections[3] = &protOverloadMotor;
-  protections[4] = &protUnderloadMotor;
-  protections[5] = &protImbalanceCurrentMotor;
-  protections[6] = &protOutOfSyncMotor;
-  protections[7] = &protTurbineRotation;
-  protections[8] = &protTemperatureMotor;
-  protections[9] = &protPressureIntake;
-  protections[10] = &protResistanceIsolation;
+//  protections[1] = &protUnderVoltIn;
+//  protections[2] = &protImbalanceVoltIn;
+//  protections[3] = &protOverloadMotor;
+//  protections[4] = &protUnderloadMotor;
+//  protections[5] = &protImbalanceCurrentMotor;
+//  protections[6] = &protOutOfSyncMotor;
+//  protections[7] = &protTurbineRotation;
+//  protections[8] = &protTemperatureMotor;
+//  protections[9] = &protPressureIntake;
+//  protections[10] = &protResistanceIsolation;
 
   osThreadDef(ProtectionTask, protectionTask, osPriorityNormal, 0, 4 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(ProtectionTask), NULL);

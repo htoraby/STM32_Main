@@ -12,7 +12,7 @@ ProtectionOverVoltageInput::ProtectionOverVoltageInput()
   idRestartSetpoint_ = CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_SETPOINT;
   idParam_ = CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER;
   idParam2_ = CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER_2;
-  idState_ = CCS_PROT_SUPPLY_OVERVOLTAGE_MODE;
+  idState_ = CCS_PROT_SUPPLY_OVERVOLTAGE_STATE;
   idTimer_ = CCS_PROT_SUPPLY_OVERVOLTAGE_TIME;
   idRestartCount_ = CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT;
   idRestartResetCount_ = CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET_COUNT;
@@ -30,6 +30,14 @@ ProtectionOverVoltageInput::~ProtectionOverVoltageInput()
 
 bool ProtectionOverVoltageInput::checkAlarm()
 {
+#if DEBUG
+  static int time = 0;
+  time++;
+  if (time < 100)
+    return false;
+  else
+    return true;
+#endif
   return Protection::isHigherLimit(tripSetpoint_);
 }
 

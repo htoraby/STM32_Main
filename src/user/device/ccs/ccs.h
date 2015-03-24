@@ -19,8 +19,10 @@ public:
     LedConditionStop,
     /// Горит желтый светодиод
     LedConditionWaitApv,
-    /// Горит желтый и зеленый светодиоды
+    /// Мигает желтый и зеленый горит
     LedConditionDelay,
+    /// Мигает желтый и мигает зеленый горит
+    LedConditionDelay1,
     /// Горит красный светодиод
     LedConditionBlock,
     /// Горит зеленый светодиод
@@ -178,11 +180,6 @@ private:
   void conditionChanged();
 
   /*!
-   * \brief calcCondition
-   */
-  void calcCondition();
-
-  /*!
    * \brief Метод проверки команды на запуск/останов
    */
   void checkCmd();
@@ -205,7 +202,8 @@ private:
   //! Очередь событий включения/мигания LED
   osMessageQId ledMessage_;
   //! Предыдущие состояние станции
-  int conditionOld;
+  int conditionOld_;
+  //! Предыдущие значение флага (задержка, АПВ, блокировка)
   int flagOld_;
 
 };

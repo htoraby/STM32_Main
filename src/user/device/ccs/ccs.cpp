@@ -11,7 +11,8 @@
 
 Ccs::Ccs()
   : Device(CCS_BEGIN, parametersArray_, CCS_END - CCS_BEGIN)
-  , conditionOld(-1)
+  , conditionOld_(-1)
+  , flagOld_(-1)
 {
 
 }
@@ -80,35 +81,41 @@ void Ccs::ledConditionTask()
       offAllLeds();
       condition = event.value.v;
       switch (condition) {
-        case LedConditionStop:
-          onLed(StopLed);
-          break;
-        case LedConditionWaitApv:
-          onLed(WaitLed);
-          break;
-        case LedConditionDelay:
-          onLed(WaitLed);
-          onLed(WorkLed);
-          break;
-        case LedConditionBlock:
-          onLed(StopLed);
-          break;
-        case LedConditionRun:
-          onLed(WorkLed);
-          break;
-        case LedConditionWaitRun:
-          onLed(StopLed);
-          break;
+      case LedConditionStop:
+        onLed(StopLed);
+        break;
+      case LedConditionWaitApv:
+        onLed(WaitLed);
+        break;
+      case LedConditionDelay:
+        onLed(WorkLed);
+        break;
+      case LedConditionBlock:
+        onLed(StopLed);
+        break;
+      case LedConditionRun:
+        onLed(WorkLed);
+        break;
+      case LedConditionWaitRun:
+        onLed(StopLed);
+        break;
       }
     }
 
     switch (condition) {
-      case LedConditionRunning: case LedConditionStopping:
-        toggleLed(WorkLed);
-        break;
-      case LedConditionWaitRun:
-        toggleLed(WaitLed);
-        break;
+    case LedConditionRunning: case LedConditionStopping:
+      toggleLed(WorkLed);
+      break;
+    case LedConditionWaitRun:
+      toggleLed(WaitLed);
+      break;
+    case LedConditionDelay:
+      toggleLed(WaitLed);
+      break;
+    case LedConditionDelay1:
+      toggleLed(WorkLed);
+      toggleLed(WaitLed);
+      break;
     }
   }
 }
@@ -120,93 +127,82 @@ void Ccs::vsdConditionTask()
 
     int vsdCondition = getValue(CCS_VSD_CONDITION);
     switch (vsdCondition) {
-      case VSD_CONDITION_STOP:
-        if (!isBlock())
-          setValue(CCS_CONDITION, CCS_CONDITION_STOP);
-        break;
-      case VSD_CONDITION_STOPPING:
-        if (vsd->checkStop()) {
-          setValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
-        }
-        break;
-      case VSD_CONDITION_WAIT_STOP:
-          if (vsd->stop() == RETURN_OK) {
-            setLedCondition(LedConditionStopping);
-            setValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
-          } else {
-            // TODO: Ошибка останова
-          }
-        break;
-      case VSD_CONDITION_RUN:
-        if (getValue(CCS_CONDITION) != CCS_CONDITION_RUN) {
-          if (vsd->getValue(VSD_FREQUENCY) == vsd->getValue(VSD_FREQUENCY_NOW))
-            setValue(CCS_CONDITION, CCS_CONDITION_RUN);
-        }
-        break;
-      case VSD_CONDITION_RUNNING:
-        if (vsd->checkStart()) {
-          setLedCondition(LedConditionRunning);
-          // Запуск сохранения пускового архива
-          logRunning.start();
-          setValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
-        }
-        break;
-      case VSD_CONDITION_WAIT_RUN:
-          if (vsd->start() == RETURN_OK) {
-            setValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
-          } else {
-            // TODO: Ошибка запуска
-          }
-        break;
+    case VSD_CONDITION_STOP:
+      if (!isBlock())
+        setValue(CCS_CONDITION, CCS_CONDITION_STOP);
+      break;
+    case VSD_CONDITION_STOPPING:
+      if (vsd->checkStop()) {
+        setValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
+      }
+      break;
+    case VSD_CONDITION_WAIT_STOP:
+      if (vsd->stop() == RETURN_OK) {
+        setLedCondition(LedConditionStopping);
+        setValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
+      } else {
+        // TODO: Ошибка останова
+      }
+      break;
+    case VSD_CONDITION_RUN:
+      if (getValue(CCS_CONDITION) != CCS_CONDITION_RUN) {
+        if (vsd->getValue(VSD_FREQUENCY) == vsd->getValue(VSD_FREQUENCY_NOW))
+          setValue(CCS_CONDITION, CCS_CONDITION_RUN);
+#if DEBUG
+        setValue(CCS_CONDITION, CCS_CONDITION_RUN);
+#endif
+      }
+      break;
+    case VSD_CONDITION_RUNNING:
+      if (vsd->checkStart()) {
+        setLedCondition(LedConditionRunning);
+        // Запуск сохранения пускового архива
+        logRunning.start();
+        setValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
+      }
+      break;
+    case VSD_CONDITION_WAIT_RUN:
+      if (vsd->start() == RETURN_OK) {
+        setValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
+      } else {
+        // TODO: Ошибка запуска
+      }
+      break;
     }
   }
 }
 
 void Ccs::conditionChanged()
 {
-  calcCondition();
-
   int condition = getValue(CCS_CONDITION);
-  if (condition != conditionOld) {
-    conditionOld = condition;
+  int flag = getValue(CCS_CONDITION_FLAG);
+  if ((condition != conditionOld_) || (flag != flagOld_)) {
+    conditionOld_ = condition;
+    flagOld_ = flag;
     switch (condition) {
-    case CCS_CONDITION_WAIT_APV:
-      setLedCondition(LedConditionWaitApv);
-      break;
-    case CCS_CONDITION_DELAY:
-      setLedCondition(LedConditionDelay);
-      break;
     case CCS_CONDITION_RUNNING:
-      setLedCondition(LedConditionWaitRun);
+      if (flag == CCS_CONDITION_FLAG_DELAY)
+        setLedCondition(LedConditionDelay1);
+      else
+        setLedCondition(LedConditionWaitRun);
       break;
     case CCS_CONDITION_RUN:
-      setLedCondition(LedConditionRun);
+      if (flag == CCS_CONDITION_FLAG_DELAY)
+        setLedCondition(LedConditionDelay);
+      else
+        setLedCondition(LedConditionRun);
       break;
     case CCS_CONDITION_STOPPING:
 
       break;
     default:
+      if (flag == CCS_CONDITION_FLAG_BLOCK)
+        setLedCondition(LedConditionBlock);
+      else if (flag == CCS_CONDITION_FLAG_RESTART)
+        setLedCondition(LedConditionWaitApv);
       setLedCondition(LedConditionStop);
       break;
     }
-  }
-}
-
-void Ccs::calcCondition()
-{
-  int flag = getValue(CCS_CONDITION_FLAG);
-  switch (flag) {
-  case CCS_CONDITION_FLAG_BLOCK:
-    setValue(CCS_CONDITION, CCS_CONDITION_BLOCK);
-    break;
-  case CCS_CONDITION_FLAG_DELAY:
-    setValue(CCS_CONDITION, CCS_CONDITION_DELAY);
-    break;
-  case CCS_CONDITION_FLAG_RESTART:
-    setValue(CCS_CONDITION, CCS_CONDITION_WAIT_APV);
-    break;
-  default:
-    break;
   }
 }
 
@@ -246,7 +242,13 @@ void Ccs::checkCmd()
 
 bool Ccs::checkCanStart()
 {
+#if DEBUG
+  return true;
+#endif
+
   if (getValue(CCS_VSD_CONDITION) != VSD_CONDITION_STOP)
+    return false;
+  if (getValue(CCS_WORKING_MODE) == CCS_WORKING_MODE_STOP)
     return false;
   if (isBlock())
     return false;
@@ -255,6 +257,10 @@ bool Ccs::checkCanStart()
 
 bool Ccs::checkCanStop()
 {
+#if DEBUG
+  return true;
+#endif
+
   if (getValue(CCS_VSD_CONDITION) == VSD_CONDITION_STOP)
     return false;
   return true;
@@ -411,6 +417,14 @@ float Ccs::getTime()
 
 void Ccs::initParameters()
 {
+  for (int i = 0; i < (CCS_END - CCS_BEGIN); i++) {
+    setFieldID(i, i + CCS_BEGIN);
+    setFieldAccess(i, ACCESS_OPERATOR);
+    setFieldOperation(i, OPERATION_WRITE);
+    setFieldValidity(i, VALIDITY_GOOD);
+    setFieldValue(i, 0.0);
+  }
+
   // Пустой элемент массива
   parameters_[CCS_BEGIN - CCS_BEGIN].id                = CCS_BEGIN;
   parameters_[CCS_BEGIN - CCS_BEGIN].access            = ACCESS_ERROR;
@@ -481,4 +495,118 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].min     = VSD_CONDITION_STOP;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].max     = VSD_CONDITION_WAIT_RUN;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].def     = VSD_CONDITION_STOP;
+
+  setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_MODE, PHYSIC_NUMERIC);
+  setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_MODE, 0.0);
+  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_MODE, 2.0);
+  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_MODE, 2.0);
+  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_MODE, 2.0);
+
+  setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_PREVENT, PHYSIC_NUMERIC);
+  setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_PREVENT, 0.0);
+  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_PREVENT, 1.0);
+  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_PREVENT, 0.0);
+  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_PREVENT, 0.0);
+
+  setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY, PHYSIC_TIME);
+  setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY, 0.0);
+  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY, 59999.0);
+  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY, 0.0);
+  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY, 0.0);
+
+  setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY, PHYSIC_TIME);
+  setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY, 0.0);
+  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY, 600.0);
+  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY, 5.0);
+  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY, 5.0);
+
+  setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY, PHYSIC_TIME);
+  setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY, 60.0);
+  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY, 86400.0);
+  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY, 3600.0);
+  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY, 3600.0);
+
+  setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_LIMIT, PHYSIC_NUMERIC);
+  setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_LIMIT, 0.0);
+  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_LIMIT, 99.0);
+  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_LIMIT, 0.0);
+  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_LIMIT, 0.0);
+
+  setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET, PHYSIC_NUMERIC);
+  setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET, 60.0);
+  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET, 86400.0);
+  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET, 3600.0);
+  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET, 3600.0);
+
+  setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_SETPOINT, PHYSIC_PERCENT);
+  setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_SETPOINT, 0.0);
+  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_SETPOINT, 150.0);
+  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_SETPOINT, 120.0);
+  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_SETPOINT, 120.0);
+
+  setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_SETPOINT, PHYSIC_PERCENT);
+  setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_SETPOINT, 0.0);
+  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_SETPOINT, 100.0);
+  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_SETPOINT, 100.0);
+  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_SETPOINT, 100.0);
+
+  setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER, PHYSIC_NUMERIC);
+  setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER, 0.0);
+  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER, 1.0);
+  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER, 1.0);
+  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER, 1.0);
+
+  setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER_2, PHYSIC_NUMERIC);
+  setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER_2, 0.0);
+  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER_2, 1.0);
+  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER_2, 1.0);
+  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER_2, 1.0);
+
+  setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_STATE, PHYSIC_NUMERIC);
+  setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_STATE, 0.0);
+  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_STATE, 3.0);
+  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_STATE, 3.0);
+  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_STATE, 3.0);
+
+  setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_TIME, PHYSIC_TIME);
+  setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_TIME, 0);
+  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_TIME, 0xFFFFFFFF);
+  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_TIME, 0);
+  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_TIME, (uint32_t)0);
+
+  setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT, PHYSIC_NUMERIC);
+  setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT, 0.0);
+  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT, 99.0);
+  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT, 0.0);
+  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT, 0.0);
+
+  setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET_COUNT, PHYSIC_TIME);
+  setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET_COUNT, 60.0);
+  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET_COUNT, 3599940.0);
+  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET_COUNT, 86400.0);
+  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET_COUNT, 86400.0);
+
+  setFieldPhysic(CCS_CONDITION_FLAG, PHYSIC_NUMERIC);
+  setFieldMin(CCS_CONDITION_FLAG, 0.0);
+  setFieldMax(CCS_CONDITION_FLAG, 4.0);
+  setFieldDef(CCS_CONDITION_FLAG, 0.0);
+  setFieldValue(CCS_CONDITION_FLAG, 0.0);
+
+  setFieldPhysic(CCS_LAST_EVENT_TYPE, PHYSIC_NUMERIC);
+  setFieldMin(CCS_LAST_EVENT_TYPE, NoneType);
+  setFieldMax(CCS_LAST_EVENT_TYPE, LatchType);
+  setFieldDef(CCS_LAST_EVENT_TYPE, AutoType);
+  setFieldValue(CCS_LAST_EVENT_TYPE, (float)AutoType);
+
+  setFieldPhysic(CCS_PROT_PREVENT, PHYSIC_NUMERIC);
+  setFieldMin(CCS_PROT_PREVENT, 0.0);
+  setFieldMax(CCS_PROT_PREVENT, 1.0);
+  setFieldDef(CCS_PROT_PREVENT, 0.0);
+  setFieldValue(CCS_PROT_PREVENT, 0.0);
+
+  setFieldPhysic(CCS_TIMER_DIFFERENT_START, PHYSIC_TIME);
+  setFieldMin(CCS_TIMER_DIFFERENT_START, 0.0);
+  setFieldMax(CCS_TIMER_DIFFERENT_START, 0.0);
+  setFieldDef(CCS_TIMER_DIFFERENT_START, 0.0);
+  setFieldValue(CCS_TIMER_DIFFERENT_START, 0.0);
 }
