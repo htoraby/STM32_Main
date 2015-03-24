@@ -1,6 +1,8 @@
 #include "protection.h"
+#include "protection_main.h"
 
 Protection::Protection()
+  : attempt_(false)
 {
 
 }
@@ -28,22 +30,27 @@ void Protection::processing()
 
 void Protection::getSetpointProt()
 {
-  mode_       = ksu.getValue(idMode_);
-  activDelay_     = ksu.getValue(idActivDelay_);
-  tripDelay_      = ksu.getValue(idTripDelay_);
-  restartDelay_   = ksu.getValue(idRestartDelay_);
-  restartLimit_   = ksu.getValue(idRestartLimit_);
-  restartReset_   = ksu.getValue(idRestartReset_);
-  tripSetpoint_   = ksu.getValue(idTripSetpoint_);
-  restartSetpoint_= ksu.getValue(idRestartSetpoint_);
-  param_          = ksu.getValue(idParam_);
-  param2_         = ksu.getValue(idParam2_);
+//  mode_           = ksu.getValue(idMode_);
+//  activDelay_     = ksu.getValue(idActivDelay_);
+//  tripDelay_      = ksu.getValue(idTripDelay_);
+//  restartDelay_   = ksu.getValue(idRestartDelay_);
+//  restartLimit_   = ksu.getValue(idRestartLimit_);
+//  restartReset_   = ksu.getValue(idRestartReset_);
+//  tripSetpoint_   = ksu.getValue(idTripSetpoint_);
+//  restartSetpoint_= ksu.getValue(idRestartSetpoint_);
+//  timerDifStart_  = ksu.getValue(idParam_);
+//  param2_         = ksu.getValue(idParam2_);
+  mode_           = ksu.getValue(idMode_);
+  activDelay_     = 10;
+  tripDelay_      = 30;
+  restartDelay_   = 60;
+  restartLimit_   = 3;
+  restartReset_   = 3600;
 }
 
 void Protection::getCurrentParamProt()
 {
   state_                = ksu.getValue(idState_);
-  timer_                = ksu.getValue(idTimer_);
   restartCount_         = ksu.getValue(idRestartCount_);
   restartResetCount_    = ksu.getValue(idRestartResetCount_);
 }
@@ -51,7 +58,6 @@ void Protection::getCurrentParamProt()
 void Protection::setCurrentParamProt()
 {
   ksu.setValue(idState_, state_);
-  ksu.setValue(idTimer_, timer_);
   ksu.setValue(idRestartCount_, restartCount_);
   ksu.setValue(idRestartResetCount_, restartResetCount_);
 }
@@ -188,14 +194,18 @@ void Protection::processingStateRun()       // Состояние работа
             logDebug.add(DebugMsg, "Reaction - Begin");
             ksu.setDelay();
           }
-          else if ((getTime() - timer_) >= tripDelay_) {   // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - конец;
-            logDebug.add(DebugMsg, "Reaction - Block");
-            addEventReactionProt();
-            logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
-            ksu.setBlock();
-            ksu.stop();
-            block_ = true;
-            state_ = StateStop;
+          else {
+            uint32_t timer = getTime();
+            uint32_t timer1 = timer - timer_;
+            if ((getTime() - timer_) >= tripDelay_) {   // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - конец;
+              logDebug.add(DebugMsg, "Reaction - Block");
+              addEventReactionProt();
+              logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
+              ksu.setBlock();
+              ksu.stop();
+              block_ = true;
+              state_ = StateStop;
+            }
           }
         }
         else {                              // Двигатель - работа; Режим - авто; Защита - блок; Параметр - в норме
@@ -291,22 +301,14 @@ void Protection::proccessingStateStopping()
   if (ksu.isWorkMotor()) {                  // Двигатель - работа;
     if (ksu.isAutoMode()) {                 // Двигатель - работа; Режим - авто;
       if (restart_) {                       // Двигатель - работа; Режим - авто; Защита - Апв
-        restartCount_++;                    // Увеличиваем счётчик АПВ
-        if (restartCount_ == 1) {           // Первое АПВ
-          restartResetCount_ = getTime();   // Запоминаем время первого АПВ по защите
-        }
-        restart_ = false;
+        incRestartCount();
         state_ = StateRunning;
       }
       state_ = StateRunning;                // TODO: А точно?
     }
     else if (ksu.isManualMode()) {          // Двигатель - работа; Режим - ручной;
       if (restart_) {                       // Двигатель - работа; Режим - авто; Защита - Апв
-        restartCount_++;                    // Увеличиваем счётчик АПВ
-        if (restartCount_ == 1) {           // Первое АПВ
-          restartResetCount_ = getTime();   // Запоминаем время первого АПВ по защите
-        }
-        restart_ = false;
+        incRestartCount();
         state_ = StateRunning;
       }
       state_ = StateRunning;                // TODO: А точно?
@@ -333,11 +335,7 @@ void Protection::proccessingStateStop()
       }
       else {
         if (restart_) {                     // Двигатель - работа; Режим - авто; Защита - Апв
-          restartCount_++;                  // Увеличиваем счётчик АПВ
-          if (restartCount_ == 1) {         // Первое АПВ
-            restartResetCount_ = getTime(); // Запоминаем время первого АПВ по защите
-          }
-          restart_ = false;
+          incRestartCount();
         }
         else if (block_) {
           block_ = false;
@@ -354,11 +352,7 @@ void Protection::proccessingStateStop()
       }
       else {
         if (restart_) {                       // Двигатель - работа; Режим - авто; Защита - Апв
-          restartCount_++;                    // Увеличиваем счётчик АПВ
-          if (restartCount_ == 1) {           // Первое АПВ
-            restartResetCount_ = getTime();   // Запоминаем время первого АПВ по защите
-          }
-          restart_ = false;
+          incRestartCount();
           state_ = StateRunning;
         }
         else if (block_) {
@@ -375,29 +369,55 @@ void Protection::proccessingStateStop()
     if (ksu.isAutoMode()) {                 // Двигатель - стоп; Режим - авто;
       if (restart_) {                       // Двигатель - стоп; Режим - авто; Флаг - АПВ;
         if (ksu.getValueUint32(CCS_STOP_DATE_TIME) >= restartDelay_) {
-          if (ksu.isPrevent() || prevent_) {
-
+          if (timerDifStart_) {             // Защита с отсчётом АПВ после нормализации параметра (ВРП)
+            if (!prevent_) {                // Параметр защиты в норме
+              if (timer_ == 0) {            //
+                timer_ = getTime();         // Зафиксировали время начала отсёта АПВ
+                logDebug.add(DebugMsg, "Time restart - begin");
+                ksu.setRestart();
+              }
+              else if ((getTime() - timer_) >= parameters.getValue(CCS_TIMER_DIFFERENT_START)) {
+                if (ksu.isPrevent()) {
+                  if (!attempt_) {                // Первая попытка АПВ
+                    attempt_ = true;
+                    addEventProtectionPrevent();  // Сообщение неудачной попытке пуска
+                  }
+                }
+                else {
+                  incRestartCount();
+                  logEvent.add(ProtectCode, AutoType, apvEventId_);
+                  ksu.start();
+                  state_ = StateRunning;
+                }
+              }
+            }
+            else {
+              timer_ = 0;
+            }
           }
           else {
-
+            if (ksu.isPrevent() || prevent_) {// Есть запрещающий параметр
+              if (!attempt_) {                // Первая попытка АПВ
+                attempt_ = true;
+                addEventProtectionPrevent();  // Сообщение неудачной попытке пуска
+              }
+            }
+            else {
+              incRestartCount();
+              logEvent.add(ProtectCode, AutoType, apvEventId_);
+              ksu.start();
+              state_ = StateRunning;
+            }
           }
         }
       }
-      else if (block_) {
-
+    }
+    else {
+      if (isModeOff()) {
+        restartCount_ = 0;
       }
-      else {
-
-      }
-    }
-    else if (ksu.isManualMode()) {          // Двигатель - стоп; Режим - ручной;
-
-    }
-    else if (ksu.isStopMode()) {            // Двигатель - стоп; Режим - стоп;
-
-    }
-    else {                                  //  Режим - неизвестный
-
+      restart_ = false;
+      block_ = false;
     }
   }
   else {
@@ -405,6 +425,15 @@ void Protection::proccessingStateStop()
   }
 }
 
+void Protection::incRestartCount()
+{
+  restartCount_++;                    // Увеличиваем счётчик АПВ
+  if (restartCount_ == 1) {           // Первое АПВ
+    restartResetCount_ = getTime();   // Запоминаем время первого АПВ по защите
+  }
+  attempt_ = false;
+  restart_ = false;
+}
 
 void Protection::automatProtection()
 {

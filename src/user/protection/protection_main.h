@@ -40,5 +40,10 @@ void protectionInit();
  */
 bool isProtectionPrevent();
 
+/*!
+ * \brief Метод добавления события "АПВ запрещён"
+ */
+void addEventProtectionPrevent();
+
 #endif // PROTECTION_MAIN_H
 

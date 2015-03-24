@@ -496,20 +496,20 @@ enum enID
   CCS_RGM_HEAT_CABLE_RESISTANCE_20,         /// Режим Учёт нагрева кабеля сопротивление при 20с
   CCS_RGM_HEAT_CABLE_RESISTANCE_80,         /// Режим Учёт нагрева кабеля сопротивление при 80с
   CCS_RGM_HEAT_CABLE_MODE_CURRENT,          /// Режим Учёт нагрева кабеля номинальный ток кабеля
-  CCS_RGM_HEAT_CABLE_MODE_DELAY_REATION,    /// Режим Учёт нагрева кабеля время нагрева
+  CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION,   /// Режим Учёт нагрева кабеля время нагрева
   CCS_RGM_OPTIM_VOLTAGE_MODE,               /// Режим оптимизации напряжения вкл/откл
   CCS_RGM_OPTIM_VOLTAGE_SCALE,              /// Режим оптимизации напряжения диапазон
   CCS_RGM_OPTIM_VOLTAGE_STEP,               /// Режим оптимизации напряжения шаг
-  CCS_RGM_OPTIM_VOLTAGE_DELAY_PREVENT,     /// Режим оптимизации напряжения первый цикл после запуска
+  CCS_RGM_OPTIM_VOLTAGE_DELAY_REACTION,     /// Режим оптимизации напряжения первый цикл после запуска
   CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART,      /// Режим оптимизации напряжения периодичность оптимизации
   CCS_RGM_PUMP_GAS_MODE,                    /// Режим прокачки газа вкл/откл
   CCS_RGM_PUMP_GAS_SETPOINT,                /// Режим прокачки газа
-  CCS_RGM_PUMP_GAS_DELAY_PREVENT,          /// Режим прокачки газа
+  CCS_RGM_PUMP_GAS_DELAY_REACTION,          /// Режим прокачки газа
   CCS_RGM_PUMP_GAS_LIMIT_RESTART,           /// Режим прокачки газа
   CCS_RGM_CURRENT_LIMIT_MODE,               /// Режим ограничения тока вкл/откл
   CCS_RGM_CURRENT_LIMIT_SETPOINT,           /// Режим ограничения тока уставка
   CCS_RGM_CURRENT_LIMIT_STEPDOWN,           /// Режим ограничения тока шаг снижения частоты
-  CCS_RGM_CURRENT_LIMIT_DELAY_PREVENT,     /// Режим ограничения тока задержка срабатывания
+  CCS_RGM_CURRENT_LIMIT_DELAY_REACTION,     /// Режим ограничения тока задержка срабатывания
   CCS_RGM_CURRENT_LIMIT_DELAY_RESTART,      /// Режим ограничения тока задержка АПВ
   CCS_COEF_VOLTAGE_IN_A,                    /// Коэффициент корректировки входного напряжения
   CCS_COEF_VOLTAGE_IN_B,
@@ -639,6 +639,7 @@ enum enID
   CCS_CONDITION_FLAG,
   CCS_LAST_EVENT_TYPE,                      //!< Тип последнего события
   CCS_PROT_PREVENT,                         //!< Наличие хотя бы одного запрещающего параметра
+  CCS_TIMER_DIFFERENT_START,                //!< Уставка ВРП (время разновременного пуска)
   CCS_END,                                  /// Последний параметр
   VSD_BEGIN        = 10000,                 /// Первый параметр ЧРП
   VSD_FREQUENCY_NOW,                        /// Выходная частота ПЧ

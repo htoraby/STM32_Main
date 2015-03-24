@@ -2443,6 +2443,10 @@ void VsdNovomet::writeToDevice(int id, float value)
 
 int VsdNovomet::start()
 {
+#if DEBUG
+  return RETURN_OK;
+#endif
+
   // Если стоит бит запуска двигателя
   if (checkVsdStatus(VSD_STATUS_STARTED))
     return RETURN_OK;
@@ -2473,6 +2477,10 @@ int VsdNovomet::start()
 
 bool VsdNovomet::checkStart()
 {
+#if DEBUG
+  return true;
+#endif
+
   if (checkVsdStatus(VSD_STATUS_STARTED)) {
     if (!checkVsdStatus(VSD_STATUS_WAIT_RECT_START)) {
       return true;
@@ -2483,6 +2491,10 @@ bool VsdNovomet::checkStart()
 
 int VsdNovomet::stop()
 {
+#if DEBUG
+  return RETURN_OK;
+#endif
+
   // Если стоит бит остановки по внешней команде
   if (checkVsdStatus(VSD_STATUS_STOPPED_EXTERNAL))
     return RETURN_OK;
@@ -2513,6 +2525,10 @@ int VsdNovomet::stop()
 
 bool VsdNovomet::checkStop()
 {
+#if DEBUG
+  return true;
+#endif
+
   if (checkVsdStatus(VSD_STATUS_STOPPED_EXTERNAL)) {
     if (!checkVsdStatus(VSD_STATUS_STARTED)) {
       if (!checkVsdStatus(VSD_STATUS_WAIT_RECT_STOP)) {

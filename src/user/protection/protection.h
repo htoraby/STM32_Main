@@ -13,10 +13,10 @@ public:
    * \brief Список действий защиты
   */
   typedef enum {
-    ModeOff         = 0,      /// Защиты выключена
-    ModeRestart,               /// Реакция защиты АПВ
-    ModeBlock,                /// Реакция защиты блокировка
-    ModeOn,                   /// Защита включена
+    ModeOff         = 0,                    //!< Защиты выключена
+    ModeBlock,                              //!< Реакция защиты блокировка
+    ModeRestart,                            //!< Реакция защиты АПВ
+    ModeOn,                                 //!< Защита включена
   } ProtMode;
 
   /*!
@@ -172,12 +172,21 @@ public:
    */
   bool calcRestartResetCount();
 
+
   /*!
    * \brief isPrevent
    * \return
    */
   bool isPrevent() {
     return prevent_;
+  }
+
+  /*!
+   * \brief getApvDisabledEventId
+   * \return
+   */
+  uint16_t getApvDisabledEventId() {
+    return apvDisabledEventId_;
   }
 
 
@@ -207,9 +216,9 @@ protected:
   float restartReset_;                      /// Уставка: Время сброса количества АПВ
   float tripSetpoint_;                      /// Уставка: граница срабатывания защиты
   float restartSetpoint_;                   /// Уставка: граница АПВ
-  float param_;                             /// Уставка: Параметр 1
+  float timerDifStart_;                     /// Уставка: Параметр 1
   float param2_;                            /// Уставка: Параметр 2
-  uint32_t state_;                          /// Состояние автомата защиты
+  int state_;                               /// Состояние автомата защиты
   float valueParameter_;                    /// Текущее значение контролируемого параметра
   uint32_t timer_;                          /// Текущее значение таймера
   float restartCount_;                      /// Текущее количество АПВ по защите
@@ -225,7 +234,9 @@ protected:
   bool prevent_;                            /// Флаг запрещающего параметра
   bool block_;                              /// Флаг что защита в блокировке
   bool restart_;                            /// Флаг что защита в состоянии АПВ
+  bool attempt_;                            /// Флаг первой попытки запуска
 
+  void incRestartCount();
 
 };
 

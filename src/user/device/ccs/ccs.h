@@ -14,23 +14,19 @@
 class Ccs: public Device
 {
 public:
+  /*!
+   * \brief Список состояний светодиодов
+   */
   enum LedCondition {
-    /// Горит красный светодиод
-    LedConditionStop,
-    /// Горит желтый светодиод
-    LedConditionWaitApv,
-    /// Горит желтый и зеленый светодиоды
-    LedConditionDelay,
-    /// Горит красный светодиод
-    LedConditionBlock,
-    /// Горит зеленый светодиод
-    LedConditionRun,
-    /// Мигает желтый светодиод
-    LedConditionWaitRun,
-    /// Мигает зеленый светодиод
-    LedConditionRunning,
-    /// Мигает зеленый светодиод
-    LedConditionStopping
+    OnRedLed,                   //!< Горит красный
+    OnYellowLed,                //!< Горит желтый
+    OnGreenToogleYellowLed,     //!< Горит зеленый и мигает желтый
+    ToogleGreenToogleYellowLed, //!< Мигает зеленый и мигает желтый
+    ToogleRedLed,               //!< Мигает красный
+    ToogleGreenToogleRedLed,    //!< Мигают зеленый и красный
+    OnGreenLed,                 //!< Горит зеленый
+    ToogleYellowLed,            //!< Мигает желтый
+    ToogleGreenLed,             //!< Мигает зеленый
   };
 
   Ccs();
@@ -178,9 +174,9 @@ private:
   void conditionChanged();
 
   /*!
-   * \brief calcCondition
+   * \brief Метод подсчёта времени работы и останова
    */
-  void calcCondition();
+  void calcTimer();
 
   /*!
    * \brief Метод проверки команды на запуск/останов
@@ -205,7 +201,8 @@ private:
   //! Очередь событий включения/мигания LED
   osMessageQId ledMessage_;
   //! Предыдущие состояние станции
-  int conditionOld;
+  int conditionOld_;
+  //! Предыдущие значение флага (задержка, АПВ, блокировка)
   int flagOld_;
 
 };

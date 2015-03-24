@@ -13,7 +13,7 @@ ProtectionTurbineRotation::ProtectionTurbineRotation()
   idRestartSetpoint_ = CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT;
   idParam_ = CCS_PROT_MOTOR_ASYNC_PARAMETER;
   idParam2_ = CCS_PROT_MOTOR_ASYNC_PARAMETER_2;
-  idState_ = CCS_PROT_MOTOR_ASYNC_MODE;
+  idState_ = CCS_PROT_MOTOR_ASYNC_STATE;
   idTimer_ = CCS_PROT_MOTOR_ASYNC_TIME;
   idRestartCount_ = CCS_PROT_MOTOR_ASYNC_RESTART_COUNT;
   idRestartResetCount_ = CCS_PROT_MOTOR_ASYNC_RESTART_RESET_COUNT;
