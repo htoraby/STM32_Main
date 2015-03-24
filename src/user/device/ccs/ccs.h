@@ -14,25 +14,19 @@
 class Ccs: public Device
 {
 public:
+  /*!
+   * \brief Список состояний светодиодов
+   */
   enum LedCondition {
-    /// Горит красный светодиод
-    LedConditionStop,
-    /// Горит желтый светодиод
-    LedConditionWaitApv,
-    /// Мигает желтый и зеленый горит
-    LedConditionDelay,
-    /// Мигает желтый и мигает зеленый горит
-    LedConditionDelay1,
-    /// Горит красный светодиод
-    LedConditionBlock,
-    /// Горит зеленый светодиод
-    LedConditionRun,
-    /// Мигает желтый светодиод
-    LedConditionWaitRun,
-    /// Мигает зеленый светодиод
-    LedConditionRunning,
-    /// Мигает зеленый светодиод
-    LedConditionStopping
+    OnRedLed,                   //!< Горит красный
+    OnYellowLed,                //!< Горит желтый
+    OnGreenToogleYellowLed,     //!< Горит зеленый и мигает желтый
+    ToogleGreenToogleYellowLed, //!< Мигает зеленый и мигает желтый
+    ToogleRedLed,               //!< Мигает красный
+    ToogleGreenToogleRedLed,    //!< Мигают зеленый и красный
+    OnGreenLed,                 //!< Горит зеленый
+    ToogleYellowLed,            //!< Мигает желтый
+    ToogleGreenLed,             //!< Мигает зеленый
   };
 
   Ccs();
@@ -178,6 +172,11 @@ private:
    * \brief Метод обработки изменения состояния
    */
   void conditionChanged();
+
+  /*!
+   * \brief Метод подсчёта времени работы и останова
+   */
+  void calcTimer();
 
   /*!
    * \brief Метод проверки команды на запуск/останов

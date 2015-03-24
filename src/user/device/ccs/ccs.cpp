@@ -8,6 +8,7 @@
 #include "ccs.h"
 #include "gpio.h"
 #include "user_main.h"
+#include "protection.h"
 
 Ccs::Ccs()
   : Device(CCS_BEGIN, parametersArray_, CCS_END - CCS_BEGIN)
@@ -64,6 +65,7 @@ void Ccs::mainTask()
 
     checkCmd();
     conditionChanged();
+    calcTimer();
   }
 }
 
@@ -74,47 +76,51 @@ void Ccs::setLedCondition(LedCondition condition)
 
 void Ccs::ledConditionTask()
 {
-  int condition = LedConditionStop;
+  int condition = OnRedLed;
   while (1) {
     osEvent event = osMessageGet(ledMessage_, 300);
     if (event.status == osEventMessage) {
       offAllLeds();
       condition = event.value.v;
       switch (condition) {
-      case LedConditionStop:
+      case OnRedLed:
         onLed(StopLed);
         break;
-      case LedConditionWaitApv:
+      case OnYellowLed:
         onLed(WaitLed);
         break;
-      case LedConditionDelay:
+      case OnGreenToogleYellowLed:
         onLed(WorkLed);
         break;
-      case LedConditionBlock:
-        onLed(StopLed);
-        break;
-      case LedConditionRun:
+      case OnGreenLed:
         onLed(WorkLed);
         break;
-      case LedConditionWaitRun:
+      case ToogleYellowLed:
         onLed(StopLed);
         break;
       }
     }
 
     switch (condition) {
-    case LedConditionRunning: case LedConditionStopping:
+    case ToogleGreenLed:
       toggleLed(WorkLed);
       break;
-    case LedConditionWaitRun:
+    case ToogleYellowLed:
       toggleLed(WaitLed);
       break;
-    case LedConditionDelay:
+    case OnGreenToogleYellowLed:
       toggleLed(WaitLed);
       break;
-    case LedConditionDelay1:
+    case ToogleGreenToogleYellowLed:
       toggleLed(WorkLed);
       toggleLed(WaitLed);
+      break;
+    case ToogleRedLed:
+      toggleLed(StopLed);
+      break;
+    case ToogleGreenToogleRedLed:
+      toggleLed(WorkLed);
+      toggleLed(StopLed);
       break;
     }
   }
@@ -128,7 +134,7 @@ void Ccs::vsdConditionTask()
     int vsdCondition = getValue(CCS_VSD_CONDITION);
     switch (vsdCondition) {
     case VSD_CONDITION_STOP:
-      if (!isBlock())
+      if (getValue(CCS_CONDITION) != CCS_CONDITION_STOP)
         setValue(CCS_CONDITION, CCS_CONDITION_STOP);
       break;
     case VSD_CONDITION_STOPPING:
@@ -138,7 +144,7 @@ void Ccs::vsdConditionTask()
       break;
     case VSD_CONDITION_WAIT_STOP:
       if (vsd->stop() == RETURN_OK) {
-        setLedCondition(LedConditionStopping);
+        setLedCondition(ToogleGreenLed);
         setValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
       } else {
         // TODO: Ошибка останова
@@ -155,7 +161,7 @@ void Ccs::vsdConditionTask()
       break;
     case VSD_CONDITION_RUNNING:
       if (vsd->checkStart()) {
-        setLedCondition(LedConditionRunning);
+        setLedCondition(ToogleGreenLed);
         // Запуск сохранения пускового архива
         logRunning.start();
         setValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
@@ -182,26 +188,57 @@ void Ccs::conditionChanged()
     switch (condition) {
     case CCS_CONDITION_RUNNING:
       if (flag == CCS_CONDITION_FLAG_DELAY)
-        setLedCondition(LedConditionDelay1);
+        setLedCondition(ToogleGreenToogleYellowLed);
       else
-        setLedCondition(LedConditionWaitRun);
+        setLedCondition(ToogleYellowLed);
       break;
     case CCS_CONDITION_RUN:
       if (flag == CCS_CONDITION_FLAG_DELAY)
-        setLedCondition(LedConditionDelay);
+        setLedCondition(OnGreenToogleYellowLed);
       else
-        setLedCondition(LedConditionRun);
+        setLedCondition(OnGreenLed);
       break;
     case CCS_CONDITION_STOPPING:
-
+      if (flag == CCS_CONDITION_FLAG_BLOCK)
+        setLedCondition(ToogleGreenToogleRedLed);
       break;
     default:
       if (flag == CCS_CONDITION_FLAG_BLOCK)
-        setLedCondition(LedConditionBlock);
+        setLedCondition(ToogleRedLed);
       else if (flag == CCS_CONDITION_FLAG_RESTART)
-        setLedCondition(LedConditionWaitApv);
-      setLedCondition(LedConditionStop);
+        setLedCondition(OnYellowLed);
+      else
+        setLedCondition(OnRedLed);
       break;
+    }
+  }
+}
+
+void Ccs::calcTimer()
+{
+  static int conditionOld = -1;
+  static uint32_t timer = HAL_GetTick();
+
+  if ((HAL_GetTick() - timer) >= 1000) {
+    timer = HAL_GetTick();
+
+    int condition = getValue(CCS_CONDITION);
+    if (condition != CCS_CONDITION_STOP) {
+      float runTime = getValue(CCS_RUN_DATE_TIME) + 1;
+      setValue(CCS_RUN_DATE_TIME, runTime);
+    } else {
+      float stopTime = getValue(CCS_STOP_DATE_TIME) + 1;
+      setValue(CCS_STOP_DATE_TIME, stopTime);
+    }
+
+    if (conditionOld != condition) {
+      if (conditionOld == CCS_CONDITION_STOP)
+        setValue(CCS_RUN_DATE_TIME, 0.0);
+
+      if (condition == CCS_CONDITION_STOP)
+        setValue(CCS_STOP_DATE_TIME, 0.0);
+
+      conditionOld = condition;
     }
   }
 }
@@ -498,9 +535,9 @@ void Ccs::initParameters()
 
   setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_MODE, PHYSIC_NUMERIC);
   setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_MODE, 0.0);
-  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_MODE, 2.0);
-  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_MODE, 2.0);
-  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_MODE, 2.0);
+  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_MODE, Protection::ModeRestart);
+  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_MODE, Protection::ModeBlock);
+  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_MODE, (float)Protection::ModeBlock);
 
   setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_PREVENT, PHYSIC_NUMERIC);
   setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_PREVENT, 0.0);

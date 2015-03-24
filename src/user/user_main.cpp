@@ -1,6 +1,6 @@
 #include "user_main.h"
-#include "protection_main.h"
 #include "regime_main.h"
+#include "protection_main.h"
 
 Parameters parameters;
 NovobusSlave novobusSlave;

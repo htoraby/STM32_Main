@@ -30,22 +30,27 @@ void Protection::processing()
 
 void Protection::getSetpointProt()
 {
-  mode_       = ksu.getValue(idMode_);
-  activDelay_     = ksu.getValue(idActivDelay_);
-  tripDelay_      = ksu.getValue(idTripDelay_);
-  restartDelay_   = ksu.getValue(idRestartDelay_);
-  restartLimit_   = ksu.getValue(idRestartLimit_);
-  restartReset_   = ksu.getValue(idRestartReset_);
-  tripSetpoint_   = ksu.getValue(idTripSetpoint_);
-  restartSetpoint_= ksu.getValue(idRestartSetpoint_);
-  timerDifStart_          = ksu.getValue(idParam_);
-  param2_         = ksu.getValue(idParam2_);
+//  mode_           = ksu.getValue(idMode_);
+//  activDelay_     = ksu.getValue(idActivDelay_);
+//  tripDelay_      = ksu.getValue(idTripDelay_);
+//  restartDelay_   = ksu.getValue(idRestartDelay_);
+//  restartLimit_   = ksu.getValue(idRestartLimit_);
+//  restartReset_   = ksu.getValue(idRestartReset_);
+//  tripSetpoint_   = ksu.getValue(idTripSetpoint_);
+//  restartSetpoint_= ksu.getValue(idRestartSetpoint_);
+//  timerDifStart_  = ksu.getValue(idParam_);
+//  param2_         = ksu.getValue(idParam2_);
+  mode_           = ksu.getValue(idMode_);
+  activDelay_     = 10;
+  tripDelay_      = 30;
+  restartDelay_   = 60;
+  restartLimit_   = 3;
+  restartReset_   = 3600;
 }
 
 void Protection::getCurrentParamProt()
 {
   state_                = ksu.getValue(idState_);
-  timer_                = ksu.getValue(idTimer_);
   restartCount_         = ksu.getValue(idRestartCount_);
   restartResetCount_    = ksu.getValue(idRestartResetCount_);
 }
@@ -53,7 +58,6 @@ void Protection::getCurrentParamProt()
 void Protection::setCurrentParamProt()
 {
   ksu.setValue(idState_, state_);
-  ksu.setValue(idTimer_, timer_);
   ksu.setValue(idRestartCount_, restartCount_);
   ksu.setValue(idRestartResetCount_, restartResetCount_);
 }

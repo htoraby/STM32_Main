@@ -33,7 +33,9 @@ bool ProtectionOverVoltageInput::checkAlarm()
 #if DEBUG
   static int time = 0;
   time++;
-  if (time < 100)
+  if (time < 200)
+    return false;
+  else if (time > 700)
     return false;
   else
     return true;

@@ -281,32 +281,6 @@ enum enMotorControl {
   VSD_MOTOR_CONTROL_VECT                    /// Векторное управление
 };
 
-
-
-/*!
- * \brief The enOnOff enum
- * Перечисление включено / отключено
- */
-enum enOnOff {
-  /// Выключено
-  OFF = 1,
-  /// Включено
-  ON
-};
-
-/*!
- * \brief The enProt enum
- * Перечисление действия защиты
- */
-enum enProt {
-  /// Выключено
-  PROT_OFF = 1,
-  /// АПВ
-  PROT_RESTART,
-  /// Блокировка
-  PROT_BLOCK
-};
-
 /*!
  * \brief The enUfType enum
  * Перечисление типов зависимости U/f
