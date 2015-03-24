@@ -219,27 +219,28 @@ void Ccs::calcTimer()
   static int conditionOld = -1;
   static uint32_t timer = HAL_GetTick();
 
+  int condition = getValue(CCS_CONDITION);
+
   if ((HAL_GetTick() - timer) >= 1000) {
     timer = HAL_GetTick();
 
-    int condition = getValue(CCS_CONDITION);
     if (condition != CCS_CONDITION_STOP) {
-      float runTime = getValue(CCS_RUN_DATE_TIME) + 1;
+      uint32_t runTime = getValueUint32(CCS_RUN_DATE_TIME) + 1;
       setValue(CCS_RUN_DATE_TIME, runTime);
     } else {
-      float stopTime = getValue(CCS_STOP_DATE_TIME) + 1;
+      uint32_t stopTime = getValueUint32(CCS_STOP_DATE_TIME) + 1;
       setValue(CCS_STOP_DATE_TIME, stopTime);
     }
+  }
 
-    if (conditionOld != condition) {
-      if (conditionOld == CCS_CONDITION_STOP)
-        setValue(CCS_RUN_DATE_TIME, 0.0);
+  if (conditionOld != condition) {
+    if ((condition == CCS_CONDITION_STOP) || (conditionOld == -1))
+      setValue(CCS_RUN_DATE_TIME, (uint32_t)0);
 
-      if (condition == CCS_CONDITION_STOP)
-        setValue(CCS_STOP_DATE_TIME, 0.0);
+    if ((condition != CCS_CONDITION_STOP) && (conditionOld != -1))
+      setValue(CCS_STOP_DATE_TIME, (uint32_t)0);
 
-      conditionOld = condition;
-    }
+    conditionOld = condition;
   }
 }
 

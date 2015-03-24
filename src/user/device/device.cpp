@@ -521,7 +521,7 @@ void Device::calcParameters(uint16_t id)
 
 uint8_t Device::setNewValue(uint16_t id, float value)
 {
-  return 0;
+  return setValue(id, value);
 }
 
 
