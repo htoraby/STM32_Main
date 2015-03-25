@@ -23,7 +23,7 @@ void RegimeTechnologPeriodic::processing()
 
   switch (state_) {
     case IdleState:
-      workTimer_ = getTime();
+      workTimer_ = ksu.getTime();
       workTimeEnd_ = 0;
       if (action_ == onAction) {                        // Режим - включен
         if (ksu.isWorkMotor() && ksu.isProgramMode()) { // Двигатель - работа; Режим - программа;

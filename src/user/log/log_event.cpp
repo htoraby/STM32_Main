@@ -18,7 +18,7 @@ uint32_t LogEvent::add(uint8_t code, uint8_t type, uint16_t id,
   memset(buffer, 0, sizeof(buffer));
 
   const uint32_t addr = address();
-  time_t time = getTime();
+  time_t time = ksu.getTime();
 
   *(uint32_t*)(buffer) = ++id_;
   *(uint32_t*)(buffer+4) = time;

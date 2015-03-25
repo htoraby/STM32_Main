@@ -73,7 +73,7 @@ void LogData::add(uint8_t code)
 {
   memset(buffer, 0, sizeof(buffer));
 
-  time_t time = getTime();
+  time_t time = ksu.getTime();
 
   *(uint32_t*)(buffer) = ++id_;
   *(uint32_t*)(buffer+4) = time;

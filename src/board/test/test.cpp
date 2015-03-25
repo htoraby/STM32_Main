@@ -324,11 +324,11 @@ static void testRtc()
   dateTime.tm_min = 21;
   dateTime.tm_sec = 10;
   time_t time = mktime(&dateTime);
-  setTime(&time);
+  rtcSetTime(&time);
 
   osDelay(1005);
 
-  time = getTime();
+  time = rtcGetTime();
   dateTime = *localtime(&time);
   if ((dateTime.tm_mon != 11) || (dateTime.tm_mday != 6) ||
       (dateTime.tm_year != (2014 - 1900)) || (dateTime.tm_hour != 17) ||

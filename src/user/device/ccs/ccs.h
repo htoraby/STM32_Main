@@ -19,7 +19,7 @@ public:
    */
   enum LedCondition {
     OnRedLed,                   //!< Горит красный
-    OnYellowLed,                //!< Горит желтый
+    OnRedOnYellowLed,           //!< Горит красный и горит желтый
     OnGreenToogleYellowLed,     //!< Горит зеленый и мигает желтый
     ToogleGreenToogleYellowLed, //!< Мигает зеленый и мигает желтый
     ToogleRedLed,               //!< Мигает красный
@@ -162,6 +162,20 @@ public:
    */
   float getTime();
 
+  /*!
+   * \brief getSecBetweenCurTimeAndSaveTime
+   * \param time
+   * \return
+   */
+  int32_t getSecFromCurTime(uint32_t time);
+
+  /*!
+   * \brief getSecBetweenCurTimeAndSaveTime
+   * \param timer
+   * \return
+   */
+  int32_t getSecFromCurTime(enID timeId);
+
 private:
   /*!
    * \brief Метод добавления в очередь событий включения/мигания LED
@@ -176,7 +190,7 @@ private:
   /*!
    * \brief Метод подсчёта времени работы и останова
    */
-  void calcTimer();
+  void calcTime();
 
   /*!
    * \brief Метод проверки команды на запуск/останов

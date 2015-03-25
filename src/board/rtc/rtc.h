@@ -13,16 +13,16 @@ void rtcInit();
 /*!
  \brief Установка даты и времени
 
- \param dateTime - структура даты и времени @ref tm
+ \param time - время в секундах от 1970
 */
-void setTime(const time_t *time);
+void rtcSetTime(const time_t *time);
 
 /*!
  \brief Получение даты и времени в секундах
 
- \return time_t - возвращаемое значение
+ \return time_t - возвращаемое значение в секундах от 1970
 */
-time_t getTime();
+time_t rtcGetTime();
 
 /*!
  \brief Запись в энергонезависимую статическую память

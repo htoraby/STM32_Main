@@ -191,21 +191,24 @@ public:
 
 
 protected:
+
+  void incRestartCount();
+
   /// id параметров защиты
   unsigned short idMode_;                   //!< id Режим защиты
   unsigned short idActivDelay_;             /// id задержка активации защиты
   unsigned short idTripDelay_;              /// id задержка срабатывания защиты
   unsigned short idRestartDelay_;           /// id задержка АПВ защиты
   unsigned short idRestartLimit_;           /// id количество АПВ
-  unsigned short idRestartReset_;           /// id Время сброса количества АПВ
+  unsigned short idRestartResetTime_;       /// id Время сброса количества АПВ
   unsigned short idTripSetpoint_;           /// id граница срабатывания защиты
   unsigned short idRestartSetpoint_;        /// id граница АПВ
   unsigned short idParam_;                  /// id Параметр 1
-  unsigned short idParam2_;                 /// id Параметр 2
+  unsigned short idRestartFlag_;            /// id Флаг что защита в состоянии АПВ
   unsigned short idState_;                  /// id Состояние автомата
   unsigned short idTimer_;                  /// id Таймера
   unsigned short idRestartCount_;           /// id Счётчика АПВ
-  unsigned short idRestartResetCount_;      /// id Время от первого АПВ
+  unsigned short idRestartFirstTime_;       /// id Время первого срабатывания АПВ
 
   /// Локальные переменные для обработки 
   float mode_;                              //!< Режим защиты
@@ -213,30 +216,26 @@ protected:
   float tripDelay_;                         /// Уставка: задержка срабатывания защиты
   float restartDelay_;                      /// Уставка: задержка АПВ защиты
   float restartLimit_;                      /// Уставка: количество АПВ
-  float restartReset_;                      /// Уставка: Время сброса количества АПВ
+  float restartResetTime_;                  /// Уставка: Время сброса количества АПВ
   float tripSetpoint_;                      /// Уставка: граница срабатывания защиты
   float restartSetpoint_;                   /// Уставка: граница АПВ
   float timerDifStart_;                     /// Уставка: Параметр 1
-  float param2_;                            /// Уставка: Параметр 2
   int state_;                               /// Состояние автомата защиты
   float valueParameter_;                    /// Текущее значение контролируемого параметра
   uint32_t timer_;                          /// Текущее значение таймера
   float restartCount_;                      /// Текущее количество АПВ по защите
-  uint32_t restartResetCount_;              /// Время первого срабатывания АПВ
+  uint32_t restartFirstTime_;               /// Время первого срабатывания АПВ
+  bool alarm_;                              /// Флаг выполнения условия срабатывания защиты
+  bool prevent_;                            /// Флаг запрещающего параметра
+  bool block_;                              /// Флаг что защита в блокировке
+  float restart_;                           /// Флаг что защита в состоянии АПВ
+  bool attempt_;                            /// Флаг первой попытки запуска
 
   /// Индексы событий для записи в журнал
   uint16_t protReactEventId_;
   uint16_t apvEventId_;
   uint16_t apvDisabledEventId_;
   uint16_t protBlockedEventId_;
-
-  bool alarm_;                              /// Флаг выполнения условия срабатывания защиты
-  bool prevent_;                            /// Флаг запрещающего параметра
-  bool block_;                              /// Флаг что защита в блокировке
-  bool restart_;                            /// Флаг что защита в состоянии АПВ
-  bool attempt_;                            /// Флаг первой попытки запуска
-
-  void incRestartCount();
 
 };
 

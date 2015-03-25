@@ -37,7 +37,7 @@ void LogTms::add()
 {
   memset(buffer, 0, sizeof(buffer));
 
-  time_t time = getTime();
+  time_t time = ksu.getTime();
   uint8_t code = TmsCode;
 
   *(uint32_t*)(buffer) = ++id_;

@@ -26,7 +26,7 @@ void rtcInit()
     dateTime.tm_sec = 0;
 
     time_t time = mktime(&dateTime);
-    setTime(&time);
+    rtcSetTime(&time);
 
     HAL_RTCEx_BKUPWrite(&hrtc, RTC_BKP_DR0, 0x32F2);
   }
@@ -71,7 +71,7 @@ void HAL_RTC_MspDeInit(RTC_HandleTypeDef *hrtc)
   __HAL_RCC_RTC_DISABLE();
 }
 
-void setTime(const time_t *time)
+void rtcSetTime(const time_t *time)
 {
   tm *dateTime = localtime(time);
 
@@ -92,7 +92,7 @@ void setTime(const time_t *time)
   HAL_RTC_SetDate(&hrtc, &dateRtc, FORMAT_BIN);
 }
 
-time_t getTime()
+time_t rtcGetTime()
 {
   tm dateTime;
   RTC_TimeTypeDef timeRtc;

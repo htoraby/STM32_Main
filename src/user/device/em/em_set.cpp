@@ -134,7 +134,7 @@ void EmSet::sendRequest()
         uint8_t buf[] = {0x84,0x0A,0x03,0x00,0x00,0x0F,0x00,0x00,0x00};
         sizePktTx = sizeof(buf);
         memcpy(txBuffer_, buf, sizePktTx);
-        time_t time = getTime();
+        time_t time = ksu.getTime();
         tm dateTime = *localtime(&time);
         txBuffer_[3] = dateTime.tm_mon;
       }
@@ -145,7 +145,7 @@ void EmSet::sendRequest()
         uint8_t buf[] = {0x84,0x0A,0x03,0x00,0x00,0x0F,0x00,0x00,0x00};
         sizePktTx = sizeof(buf);
         memcpy(txBuffer_, buf, sizePktTx);
-        time_t time = getTime();
+        time_t time = ksu.getTime();
         tm dateTime = *localtime(&time);
         txBuffer_[3] = (dateTime.tm_mon == 1) ? 12 : (dateTime.tm_mon - 1);
       }

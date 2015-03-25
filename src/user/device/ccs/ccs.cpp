@@ -65,7 +65,7 @@ void Ccs::mainTask()
 
     checkCmd();
     conditionChanged();
-    calcTimer();
+    calcTime();
   }
 }
 
@@ -86,8 +86,9 @@ void Ccs::ledConditionTask()
       case OnRedLed:
         onLed(StopLed);
         break;
-      case OnYellowLed:
-        onLed(WaitLed);
+      case OnRedOnYellowLed:
+        onLed(StopLed);
+        onLed(WaitLed);   
         break;
       case OnGreenToogleYellowLed:
         onLed(WorkLed);
@@ -206,7 +207,7 @@ void Ccs::conditionChanged()
       if (flag == CCS_CONDITION_FLAG_BLOCK)
         setLedCondition(ToogleRedLed);
       else if (flag == CCS_CONDITION_FLAG_RESTART)
-        setLedCondition(OnYellowLed);
+        setLedCondition(OnRedOnYellowLed);
       else
         setLedCondition(OnRedLed);
       break;
@@ -214,8 +215,10 @@ void Ccs::conditionChanged()
   }
 }
 
-void Ccs::calcTimer()
+void Ccs::calcTime()
 {
+  setValue(CCS_DATE_TIME, (uint32_t)rtcGetTime());
+
   static int conditionOld = -1;
   static uint32_t timer = HAL_GetTick();
 
@@ -225,20 +228,20 @@ void Ccs::calcTimer()
     timer = HAL_GetTick();
 
     if (condition != CCS_CONDITION_STOP) {
-      uint32_t runTime = getValueUint32(CCS_RUN_DATE_TIME) + 1;
-      setValue(CCS_RUN_DATE_TIME, runTime);
+      uint32_t runTime = getValueUint32(CCS_RUN_TIME) + 1;
+      setValue(CCS_RUN_TIME, runTime);
     } else {
-      uint32_t stopTime = getValueUint32(CCS_STOP_DATE_TIME) + 1;
-      setValue(CCS_STOP_DATE_TIME, stopTime);
+      uint32_t stopTime = getValueUint32(CCS_STOP_TIME) + 1;
+      setValue(CCS_STOP_TIME, stopTime);
     }
   }
 
   if (conditionOld != condition) {
     if ((condition == CCS_CONDITION_STOP) || (conditionOld == -1))
-      setValue(CCS_RUN_DATE_TIME, (uint32_t)0);
+      setValue(CCS_RUN_TIME, (uint32_t)0);
 
     if ((condition != CCS_CONDITION_STOP) && (conditionOld != -1))
-      setValue(CCS_STOP_DATE_TIME, (uint32_t)0);
+      setValue(CCS_STOP_TIME, (uint32_t)0);
 
     conditionOld = condition;
   }
@@ -453,6 +456,24 @@ float Ccs::getTime()
   return getValue(CCS_DATE_TIME);
 }
 
+int32_t Ccs::getSecFromCurTime(uint32_t time)
+{
+  int32_t sec = getTime() - time;
+  if (sec > 0)
+    return sec;
+  else
+    return 0;
+}
+
+int32_t Ccs::getSecFromCurTime(enID timeId)
+{
+  int32_t sec = getTime() - ksu.getValue(timeId);
+  if (sec > 0)
+    return sec;
+  else
+    return 0;
+}
+
 void Ccs::initParameters()
 {
   for (int i = 0; i < (CCS_END - CCS_BEGIN); i++) {
@@ -594,11 +615,11 @@ void Ccs::initParameters()
   setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER, 1.0);
   setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER, 1.0);
 
-  setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER_2, PHYSIC_NUMERIC);
-  setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER_2, 0.0);
-  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER_2, 1.0);
-  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER_2, 1.0);
-  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER_2, 1.0);
+  setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FLAG, PHYSIC_NUMERIC);
+  setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FLAG, 0.0);
+  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FLAG, 1.0);
+  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FLAG, 1.0);
+  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FLAG, 1.0);
 
   setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_STATE, PHYSIC_NUMERIC);
   setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_STATE, 0.0);
@@ -644,7 +665,7 @@ void Ccs::initParameters()
 
   setFieldPhysic(CCS_TIMER_DIFFERENT_START, PHYSIC_TIME);
   setFieldMin(CCS_TIMER_DIFFERENT_START, 0.0);
-  setFieldMax(CCS_TIMER_DIFFERENT_START, 0.0);
-  setFieldDef(CCS_TIMER_DIFFERENT_START, 0.0);
-  setFieldValue(CCS_TIMER_DIFFERENT_START, 0.0);
+  setFieldMax(CCS_TIMER_DIFFERENT_START, 3600.0);
+  setFieldDef(CCS_TIMER_DIFFERENT_START, 60.0);
+  setFieldValue(CCS_TIMER_DIFFERENT_START, 60.0);
 }
