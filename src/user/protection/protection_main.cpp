@@ -20,6 +20,7 @@ ProtectionResistanceIsolation protResistanceIsolation;
 
 static void protectionTask(void *argument);
 static void setProtectionPrevent();
+static void setProtectionDelay();
 
 void protectionInit()
 {
@@ -49,8 +50,18 @@ void protectionTask(void *argument)
     for (int i = 0; i < COUNT_PROTECTIONS; ++i) {
       protections[i]->processing();
     }
-
+    setProtectionDelay();
     setProtectionPrevent();
+  }
+}
+
+void setProtectionDelay()
+{
+  for (int i = 0; i < COUNT_PROTECTIONS; ++i) {
+    if (protections[i]->isDelay()) {
+      ksu.setDelay();
+      return;
+    }
   }
 }
 

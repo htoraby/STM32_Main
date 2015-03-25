@@ -160,21 +160,21 @@ public:
    * Функция получения текущего времени в сек от 00:00:00 01.01.1970 года
    * \return Возвращает значение секунд
    */
-  float getTime();
+  uint32_t getTime();
 
   /*!
    * \brief getSecBetweenCurTimeAndSaveTime
    * \param time
    * \return
    */
-  int32_t getSecFromCurTime(uint32_t time);
+  uint32_t getSecFromCurTime(uint32_t time);
 
   /*!
    * \brief getSecBetweenCurTimeAndSaveTime
    * \param timer
    * \return
    */
-  int32_t getSecFromCurTime(enID timeId);
+  uint32_t getSecFromCurTime(enID timeId);
 
 private:
   /*!

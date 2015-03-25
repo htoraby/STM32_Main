@@ -531,8 +531,8 @@ enum enID
   CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART,/// Количество АПВ после остановов по дисбалансу токов
   CCS_GENERAL_RUN_DATE_TIME,                /// Общее время работы СУ
   CCS_GENERAL_STOP_DATE_TIME,               /// Общее время простоя СУ
-  CCS_RUN_TIME,                        /// Текущая наработка
-  CCS_STOP_TIME,                       /// Текущий простой
+  CCS_RUN_TIME,                             /// Текущая наработка
+  CCS_STOP_TIME,                            /// Текущий простой
   CCS_RGM_TIMER,                            /// Время до изменения режима
   CCS_RESTART_TIMER,                        /// Время до запуска
   CCS_LAST_RUN_DATE_TIME,                   /// Дата время последнего включения
@@ -640,6 +640,8 @@ enum enID
   CCS_LAST_EVENT_TYPE,                      //!< Тип последнего события
   CCS_PROT_PREVENT,                         //!< Наличие хотя бы одного запрещающего параметра
   CCS_TIMER_DIFFERENT_START,                //!< Уставка ВРП (время разновременного пуска)
+  CCS_RUN_BEGIN_TIME,                       /// Время начало текущей наработки
+  CCS_STOP_BEGIN_TIME,                      /// Время начало текущего простоя
   CCS_END,                                  /// Последний параметр
   VSD_BEGIN        = 10000,                 /// Первый параметр ЧРП
   VSD_FREQUENCY_NOW,                        /// Выходная частота ПЧ

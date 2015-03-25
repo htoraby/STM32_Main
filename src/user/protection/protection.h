@@ -172,6 +172,13 @@ public:
    */
   bool calcRestartResetCount();
 
+  /*!
+   * \brief isDelay
+   * \return
+   */
+  bool isDelay() {
+    return delay_;
+  }
 
   /*!
    * \brief isPrevent
@@ -230,6 +237,7 @@ protected:
   bool block_;                              /// Флаг что защита в блокировке
   float restart_;                           /// Флаг что защита в состоянии АПВ
   bool attempt_;                            /// Флаг первой попытки запуска
+  bool delay_;                              /// Флаг задержки срабатывания
 
   /// Индексы событий для записи в журнал
   uint16_t protReactEventId_;

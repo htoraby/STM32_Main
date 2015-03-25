@@ -3,6 +3,7 @@
 
 Protection::Protection()
   : attempt_(false)
+  , delay_(false)
 {
 
 }
@@ -20,6 +21,7 @@ void Protection::processing()
   getCurrentParamProt();
   // Определяем выполняется ли условие срабатывания защиты
   alarm_ = checkAlarm();
+  delay_ = alarm_ ? delay_ : false;
   // Определяем есть ли запрещаюший параметр
   prevent_ = checkPrevent();
   // Проверяем и сбрасываем количество АПВ если нужно
@@ -88,7 +90,7 @@ void Protection::checkRestartResetCount()
 {
   // Если разница между текущим временем и временем первого АПВ больше уставки
   // "Время сброса АПВ" и счётчик АПВ не равен 0
-  if (((ksu.getTime() - restartFirstTime_) >= restartResetTime_) && restartCount_) {
+  if ((ksu.getSecFromCurTime(restartFirstTime_) >= restartResetTime_) && restartCount_) {
     restartCount_ = 0;                      // Сбрасываем количество АПВ
     restartFirstTime_ = ksu.getTime();          // Фиксируем время сброса
   }
@@ -187,10 +189,10 @@ void Protection::processingStateRun()       // Состояние работа
           if (timer_ == 0) {                // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - начало;
             timer_ = ksu.getTime();             // Зафиксировали время начала задержки срабатывания
             logDebug.add(DebugMsg, "Reaction - Begin");
-            ksu.setDelay();
+            delay_ = true;
           }
           else {
-            if ((ksu.getTime() - timer_) >= tripDelay_) {   // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - конец;
+            if (ksu.getSecFromCurTime(timer_) >= tripDelay_) {   // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - конец;
               logDebug.add(DebugMsg, "Reaction - Block");
               addEventReactionProt();
               logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
@@ -210,9 +212,9 @@ void Protection::processingStateRun()       // Состояние работа
           if (timer_ == 0) {                // Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме; Срабатывание - начало;
             timer_ = ksu.getTime();             // Зафиксировали время начала задержки срабатывания
             logDebug.add(DebugMsg, "Reaction - Begin");
-            ksu.setDelay();
+            delay_ = true;
           }
-          else if ((ksu.getTime() - timer_) >= tripDelay_) { // Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме; Срабатывание - конец;
+          else if (ksu.getSecFromCurTime(timer_) >= tripDelay_) { // Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме; Срабатывание - конец;
             if (restartCount_ >= restartLimit_) {
               logDebug.add(DebugMsg, "Reaction - Block");
               addEventReactionProt();
@@ -241,7 +243,7 @@ void Protection::processingStateRun()       // Состояние работа
           if (timer_ == 0) {                // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме; Срабатывание - начало;
             timer_ = ksu.getTime();             // Зафиксировали время начала задержки срабатывания
             logDebug.add(DebugMsg, "Reaction - Begin");
-            ksu.setDelay();
+            delay_ = true;
           }
           else if (timer_ >= tripDelay_) {  // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме; Срабатывание - конец;
             logDebug.add(DebugMsg, "Reaction - Stop");
@@ -265,9 +267,9 @@ void Protection::processingStateRun()       // Состояние работа
           if (timer_ == 0) {                // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - начало;
             timer_ = ksu.getTime();             // Зафиксировали время начала задержки срабатывания
             logDebug.add(DebugMsg, "Reaction - Begin");
-            ksu.setDelay();
+            delay_ = true;
           }
-          else if ((ksu.getTime() - timer_) >= tripDelay_) {   // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - конец;
+          else if (ksu.getSecFromCurTime(timer_) >= tripDelay_) {   // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - конец;
             logDebug.add(DebugMsg, "Reaction - Block");
             addEventReactionProt();
             logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
@@ -371,7 +373,7 @@ void Protection::proccessingStateStop()
                 logDebug.add(DebugMsg, "Time restart - begin");
                 ksu.setRestart();
               }
-              else if ((ksu.getTime() - timer_) >= parameters.getValue(CCS_TIMER_DIFFERENT_START)) {
+              else if (ksu.getSecFromCurTime(timer_) >= parameters.getValue(CCS_TIMER_DIFFERENT_START)) {
                 if (ksu.isPrevent()) {
                   if (!attempt_) {                // Первая попытка запуска по АПВ
                     attempt_ = true;

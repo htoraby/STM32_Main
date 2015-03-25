@@ -188,6 +188,7 @@ void Ccs::conditionChanged()
     flagOld_ = flag;
     switch (condition) {
     case CCS_CONDITION_RUNNING:
+      resetRestart();
       if (flag == CCS_CONDITION_FLAG_DELAY)
         setLedCondition(ToogleGreenToogleYellowLed);
       else
@@ -217,34 +218,27 @@ void Ccs::conditionChanged()
 
 void Ccs::calcTime()
 {
-  setValue(CCS_DATE_TIME, (uint32_t)rtcGetTime());
-
-  static int conditionOld = -1;
+  static int conditionOld = CCS_CONDITION_STOP;
   static uint32_t timer = HAL_GetTick();
 
   int condition = getValue(CCS_CONDITION);
 
-  if ((HAL_GetTick() - timer) >= 1000) {
+  if ((HAL_GetTick() - timer) >= 100) {
     timer = HAL_GetTick();
-
-    if (condition != CCS_CONDITION_STOP) {
-      uint32_t runTime = getValueUint32(CCS_RUN_TIME) + 1;
-      setValue(CCS_RUN_TIME, runTime);
-    } else {
-      uint32_t stopTime = getValueUint32(CCS_STOP_TIME) + 1;
-      setValue(CCS_STOP_TIME, stopTime);
-    }
+    setValue(CCS_DATE_TIME, (uint32_t)rtcGetTime());
   }
 
   if (conditionOld != condition) {
-    if ((condition == CCS_CONDITION_STOP) || (conditionOld == -1))
-      setValue(CCS_RUN_TIME, (uint32_t)0);
-
-    if ((condition != CCS_CONDITION_STOP) && (conditionOld != -1))
-      setValue(CCS_STOP_TIME, (uint32_t)0);
+    if ((condition != CCS_CONDITION_STOP) && (conditionOld == CCS_CONDITION_STOP))
+      setValue(CCS_RUN_BEGIN_TIME, getTime());
+    if ((condition == CCS_CONDITION_STOP) && (conditionOld != CCS_CONDITION_STOP))
+      setValue(CCS_STOP_BEGIN_TIME, getTime());
 
     conditionOld = condition;
   }
+
+  setValue(CCS_RUN_TIME, getSecFromCurTime(CCS_RUN_BEGIN_TIME));
+  setValue(CCS_STOP_TIME, getSecFromCurTime(CCS_STOP_BEGIN_TIME));
 }
 
 void Ccs::start(EventType type)
@@ -451,12 +445,12 @@ bool Ccs::isProgramMode()
   }
 }
 
-float Ccs::getTime()
+uint32_t Ccs::getTime()
 {
-  return getValue(CCS_DATE_TIME);
+  return getValueUint32(CCS_DATE_TIME);
 }
 
-int32_t Ccs::getSecFromCurTime(uint32_t time)
+uint32_t Ccs::getSecFromCurTime(uint32_t time)
 {
   int32_t sec = getTime() - time;
   if (sec > 0)
@@ -465,9 +459,9 @@ int32_t Ccs::getSecFromCurTime(uint32_t time)
     return 0;
 }
 
-int32_t Ccs::getSecFromCurTime(enID timeId)
+uint32_t Ccs::getSecFromCurTime(enID timeId)
 {
-  int32_t sec = getTime() - ksu.getValue(timeId);
+  int32_t sec = getTime() - getValueUint32(timeId);
   if (sec > 0)
     return sec;
   else

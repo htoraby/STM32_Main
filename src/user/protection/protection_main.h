@@ -35,12 +35,6 @@ extern ProtectionResistanceIsolation protResistanceIsolation;
 void protectionInit();
 
 /*!
- * \brief Метод проверки запрещающего параметра во всех защитах
- * \return
- */
-bool isProtectionPrevent();
-
-/*!
  * \brief Метод добавления события "АПВ запрещён"
  */
 void addEventProtectionPrevent();
