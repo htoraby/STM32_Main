@@ -49,6 +49,7 @@ void Protection::getCurrentParamProt()
 {
   state_                = ksu.getValue(idState_);
   restart_              = ksu.getValue(idRestartFlag_);
+  block_                = ksu.getValue(idBlockFlag_);
   restartCount_         = ksu.getValue(idRestartCount_);
   restartFirstTime_     = ksu.getValueUint32(idRestartFirstTime_);
 }
@@ -57,6 +58,7 @@ void Protection::setCurrentParamProt()
 {
   ksu.setValue(idState_, state_);
   ksu.setValue(idRestartFlag_, restart_);
+  ksu.setValue(idBlockFlag_, block_);
   ksu.setValue(idRestartCount_, restartCount_);
   ksu.setValue(idRestartFirstTime_, restartFirstTime_);
 }
@@ -328,15 +330,10 @@ void Protection::proccessingStateStop()
       if (isModeOff()) {
         restart_ = false;
         restartCount_ = 0;
-        block_ = false;
       }
       else {
         if (restart_) {                     // Двигатель - работа; Режим - авто; Защита - Апв
           incRestartCount();
-        }
-        else if (block_) {
-          block_ = false;
-          restartCount_ = 0;
         }
         state_ = StateRunning;
       }
@@ -345,17 +342,12 @@ void Protection::proccessingStateStop()
       if (isModeOff()) {
         restart_ = false;
         restartCount_ = 0;
-        block_ = false;
       }
       else {
         if (restart_) {                       // Двигатель - работа; Режим - авто; Защита - Апв
           incRestartCount();
-          state_ = StateRunning;
         }
-        else if (block_) {
-          block_ = false;
-          state_ = StateRunning;
-        }
+        state_ = StateRunning;
       }
     }
     else {                                  // Двигатель - работа; Режим - неизвестный
@@ -414,12 +406,17 @@ void Protection::proccessingStateStop()
         restartCount_ = 0;
       }
       restart_ = false;
-      block_ = false;
     }
   }
   else {
     logDebug.add(CriticalMsg, "Prot: StateMotor - Unknown!");
   }
+
+  if (block_ && !ksu.isBlock()) {
+    block_ = false;
+    restartCount_ = 0;
+  }
+
   delay_ = false;
 }
 

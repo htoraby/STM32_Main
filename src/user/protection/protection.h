@@ -212,6 +212,7 @@ protected:
   unsigned short idRestartSetpoint_;        /// id граница АПВ
   unsigned short idParam_;                  /// id Параметр 1
   unsigned short idRestartFlag_;            /// id Флаг что защита в состоянии АПВ
+  unsigned short idBlockFlag_;              /// id Флаг что защита в состоянии БЛОК
   unsigned short idState_;                  /// id Состояние автомата
   unsigned short idTimer_;                  /// id Таймера
   unsigned short idRestartCount_;           /// id Счётчика АПВ
@@ -234,7 +235,7 @@ protected:
   uint32_t restartFirstTime_;               /// Время первого срабатывания АПВ
   bool alarm_;                              /// Флаг выполнения условия срабатывания защиты
   bool prevent_;                            /// Флаг запрещающего параметра
-  bool block_;                              /// Флаг что защита в блокировке
+  float block_;                             /// Флаг что защита в блокировке
   float restart_;                           /// Флаг что защита в состоянии АПВ
   bool attempt_;                            /// Флаг первой попытки запуска
   bool delay_;                              /// Флаг задержки срабатывания

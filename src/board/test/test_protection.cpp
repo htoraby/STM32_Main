@@ -41,16 +41,16 @@ void testProtectionOverVoltageInput()
   static int timeSec = 0;
 
   timeSec++;
-  if (timeSec < 20)
-    parameters.setValue(EM_VOLTAGE_PHASE_1, 220);
-  else if ((timeSec > 90) && (timeSec < 130))
-    parameters.setValue(EM_VOLTAGE_PHASE_1, 220);
-  else if ((timeSec > 190) && (timeSec < 200))
-    parameters.setValue(EM_VOLTAGE_PHASE_1, 220);
-  else if (timeSec > 200) {
-    parameters.setValue(EM_VOLTAGE_PHASE_1, 220);
-  }
-  else
-    parameters.setValue(EM_VOLTAGE_PHASE_1, 230);
+//  if (timeSec < 20)
+//    parameters.setValue(EM_VOLTAGE_PHASE_1, 220);
+//  else if ((timeSec > 90) && (timeSec < 130))
+//    parameters.setValue(EM_VOLTAGE_PHASE_1, 220);
+//  else if ((timeSec > 190) && (timeSec < 200))
+//    parameters.setValue(EM_VOLTAGE_PHASE_1, 220);
+//  else if (timeSec > 200) {
+//    parameters.setValue(EM_VOLTAGE_PHASE_1, 220);
+//  }
+//  else
+//    parameters.setValue(EM_VOLTAGE_PHASE_1, 230);
 #endif
 }
