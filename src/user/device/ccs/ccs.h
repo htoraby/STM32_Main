@@ -144,12 +144,6 @@ public:
   bool isManualMode();
 
   /*!
-   * \brief isStopMode
-   * \return
-   */
-  bool isStopMode();
-
-  /*!
    * \brief Проверка что КСУ в режиме "Программа"
    * \return true - да, false - нет
    */

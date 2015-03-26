@@ -310,18 +310,7 @@ void Ccs::checkCmd()
 
 bool Ccs::checkCanStart()
 {
-#if DEBUG
-  if (getValue(CCS_CONDITION) != CCS_CONDITION_STOP)
-    return false;
-  if (isBlock())
-    return false;
-  else
-    return true;
-#endif
-
   if (getValue(CCS_VSD_CONDITION) != VSD_CONDITION_STOP)
-    return false;
-  if (getValue(CCS_WORKING_MODE) == CCS_WORKING_MODE_STOP)
     return false;
   if (isBlock())
     return false;
@@ -460,17 +449,6 @@ bool Ccs::isManualMode()
   }
 }
 
-bool Ccs::isStopMode ()
-{
-  unsigned int controlMode = (unsigned int)getValue(CCS_WORKING_MODE);
-  if (controlMode == CCS_WORKING_MODE_STOP) {
-    return true;
-  }
-  else {
-    return false;
-  }
-}
-
 bool Ccs::isProgramMode()
 {
   unsigned int controlMode = (unsigned int)getValue(CCS_WORKING_MODE);
@@ -552,10 +530,10 @@ void Ccs::initParameters()
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].operation   = OPERATION_WRITE;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].validity    = VALIDITY_GOOD;
-  parameters_[CCS_WORKING_MODE - CCS_BEGIN].value.float_t   = CCS_WORKING_MODE_STOP;
-  parameters_[CCS_WORKING_MODE - CCS_BEGIN].min     = CCS_WORKING_MODE_STOP;
+  parameters_[CCS_WORKING_MODE - CCS_BEGIN].value.float_t   = CCS_WORKING_MODE_MANUAL;
+  parameters_[CCS_WORKING_MODE - CCS_BEGIN].min     = CCS_WORKING_MODE_MANUAL;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].max     = CCS_WORKING_MODE_PROGRAM;
-  parameters_[CCS_WORKING_MODE - CCS_BEGIN].def     = CCS_WORKING_MODE_STOP;
+  parameters_[CCS_WORKING_MODE - CCS_BEGIN].def     = CCS_WORKING_MODE_MANUAL;
 
   parameters_[CCS_CMD_STOP - CCS_BEGIN].id          = CCS_CMD_STOP;
   parameters_[CCS_CMD_STOP - CCS_BEGIN].access      = ACCESS_OPERATOR;
