@@ -420,6 +420,7 @@ void Protection::proccessingStateStop()
   else {
     logDebug.add(CriticalMsg, "Prot: StateMotor - Unknown!");
   }
+  delay_ = false;
 }
 
 void Protection::incRestartCount()

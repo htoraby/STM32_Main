@@ -278,7 +278,10 @@ void Ccs::checkCmd()
 bool Ccs::checkCanStart()
 {
 #if DEBUG
-  return true;
+  if (getValue(CCS_CONDITION) == CCS_CONDITION_STOP)
+    return true;
+  else
+    return false;
 #endif
 
   if (getValue(CCS_VSD_CONDITION) != VSD_CONDITION_STOP)

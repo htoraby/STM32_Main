@@ -23,12 +23,11 @@ void testProtectionThread(void *argument)
   parameters.setValue(CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_SETPOINT, 102);
   parameters.setValue(CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY, 5);
   parameters.setValue(CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY, 20);
-  parameters.setValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY, 30);
+  parameters.setValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY, 60);
   parameters.setValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_LIMIT, 14);
   parameters.setValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET, 60);
   parameters.setValue(CCS_TIMER_DIFFERENT_START, 30);
-
-  //parameters.setValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT, 0);
+  parameters.setValue(CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER, 0);
 
   while (1) {
     osDelay(1000);
