@@ -363,13 +363,13 @@ void Protection::proccessingStateStop()
     }
   }
   else if (ksu.isStopMotor()) {             // Двигатель - стоп;
-    if (ksu.isAutoMode()) {                 // Двигатель - стоп; Режим - авто;
-      if (restart_) {                       // Двигатель - стоп; Режим - авто; Флаг - АПВ;
+    if (ksu.isAutoMode() && !ksu.isBlock()) { // Двигатель - стоп; Режим - авто; Нет блокировки;
+      if (restart_) {                         // Двигатель - стоп; Режим - авто; Флаг - АПВ;
         if (ksu.getValueUint32(CCS_STOP_TIME) >= restartDelay_) {
-          if (timerDifStart_) {             // Защита с отсчётом АПВ после нормализации параметра (ВРП)
-            if (!prevent_) {                // Параметр защиты в норме
-              if (timer_ == 0) {            //
-                timer_ = ksu.getTime();         // Зафиксировали время начала отсёта АПВ
+          if (timerDifStart_) {               // Защита с отсчётом АПВ после нормализации параметра (ВРП)
+            if (!prevent_) {                  // Параметр защиты в норме
+              if (timer_ == 0) {              //
+                timer_ = ksu.getTime();       // Зафиксировали время начала отсёта АПВ
                 logDebug.add(DebugMsg, "Time restart - begin");
                 ksu.setRestart();
               }

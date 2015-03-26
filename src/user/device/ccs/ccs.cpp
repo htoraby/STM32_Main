@@ -251,8 +251,15 @@ void Ccs::start(EventType type)
 void Ccs::stop(EventType type)
 {
   setValue(CCS_LAST_EVENT_TYPE, type);
-  setValue(CCS_CMD_STOP, 1);
-  checkCmd();
+
+  if (type != RemoteType) {
+    if (checkCanStop()) {
+      setValue(CCS_CONDITION, CCS_CONDITION_STOPPING);
+      setValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
+    }
+  } else {
+    setValue(CCS_CMD_STOP, 1);
+  }
 }
 
 void Ccs::checkCmd()
@@ -269,6 +276,7 @@ void Ccs::checkCmd()
   } else if (stop) {
     setValue(CCS_CMD_STOP, 0);
     if (checkCanStop()) {
+      setBlock();
       setValue(CCS_CONDITION, CCS_CONDITION_STOPPING);
       setValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
     }
@@ -278,10 +286,12 @@ void Ccs::checkCmd()
 bool Ccs::checkCanStart()
 {
 #if DEBUG
-  if (getValue(CCS_CONDITION) == CCS_CONDITION_STOP)
-    return true;
-  else
+  if (getValue(CCS_CONDITION) != CCS_CONDITION_STOP)
     return false;
+  if (isBlock())
+    return false;
+  else
+    return true;
 #endif
 
   if (getValue(CCS_VSD_CONDITION) != VSD_CONDITION_STOP)
