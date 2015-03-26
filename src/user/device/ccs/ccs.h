@@ -185,7 +185,12 @@ private:
   /*!
    * \brief Метод обработки изменения состояния
    */
-  void conditionChanged();
+  void changedCondition();
+
+  /*!
+   * \brief Метод обработки изменения режима работы
+   */
+  void changedWorkMode();
 
   /*!
    * \brief Метод подсчёта времени работы и останова
@@ -218,6 +223,8 @@ private:
   int conditionOld_;
   //! Предыдущие значение флага (задержка, АПВ, блокировка)
   int flagOld_;
+  //! Предыдущий режим работы
+  int workModeOld_;
 
 };
 

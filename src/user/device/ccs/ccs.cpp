@@ -14,6 +14,7 @@ Ccs::Ccs()
   : Device(CCS_BEGIN, parametersArray_, CCS_END - CCS_BEGIN)
   , conditionOld_(-1)
   , flagOld_(-1)
+  , workModeOld_(-1)
 {
 
 }
@@ -64,7 +65,9 @@ void Ccs::mainTask()
     osDelay(10);
 
     checkCmd();
-    conditionChanged();
+    changedWorkMode();
+    changedCondition();
+
     calcTime();
   }
 }
@@ -179,7 +182,7 @@ void Ccs::vsdConditionTask()
   }
 }
 
-void Ccs::conditionChanged()
+void Ccs::changedCondition()
 {
   int condition = getValue(CCS_CONDITION);
   int flag = getValue(CCS_CONDITION_FLAG);
@@ -211,6 +214,28 @@ void Ccs::conditionChanged()
         setLedCondition(OnRedOnYellowLed);
       else
         setLedCondition(OnRedLed);
+      break;
+    }
+  }
+}
+
+void Ccs::changedWorkMode()
+{
+  int workMode = getValue(CCS_WORKING_MODE);
+  if (workMode != workModeOld_) {
+    workModeOld_ = workMode;
+    switch (workMode) {
+    case CCS_WORKING_MODE_MANUAL:
+      resetRestart();
+      break;
+    case CCS_WORKING_MODE_AUTO:
+
+      break;
+    case CCS_WORKING_MODE_PROGRAM:
+
+      break;
+    default:
+      resetRestart();
       break;
     }
   }
