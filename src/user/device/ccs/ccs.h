@@ -29,6 +29,19 @@ public:
     ToogleGreenLed,             //!< Мигает зеленый
   };
 
+  /*!
+   * \brief Список надписей о состоянии СУ
+   */
+  enum GeneralCondition {
+    GeneralConditionStop,       //!< Стоп
+    GeneralConditionStopping,   //!< Торможение
+    GeneralConditionRunning,    //!< Запуск
+    GeneralConditionRun,        //!< Работа
+    GeneralConditionDelay,      //!< Задержка срабатывания
+    GeneralConditionRestart,    //!< Ожидание АПВ
+    GeneralConditionBlock       //!< Блокировка
+  };
+
   Ccs();
   virtual ~Ccs();
 
@@ -144,12 +157,6 @@ public:
   bool isManualMode();
 
   /*!
-   * \brief isStopMode
-   * \return
-   */
-  bool isStopMode();
-
-  /*!
    * \brief Проверка что КСУ в режиме "Программа"
    * \return true - да, false - нет
    */
@@ -185,7 +192,12 @@ private:
   /*!
    * \brief Метод обработки изменения состояния
    */
-  void conditionChanged();
+  void changedCondition();
+
+  /*!
+   * \brief Метод обработки изменения режима работы
+   */
+  void changedWorkMode();
 
   /*!
    * \brief Метод подсчёта времени работы и останова
@@ -209,6 +221,11 @@ private:
    */
   bool checkCanStop();
 
+  /*!
+   * \brief calcParameters
+   */
+  void calcParameters();
+
   //! Массив параметров устройства
   parameter parametersArray_[CCS_END - CCS_BEGIN];
 
@@ -218,6 +235,8 @@ private:
   int conditionOld_;
   //! Предыдущие значение флага (задержка, АПВ, блокировка)
   int flagOld_;
+  //! Предыдущий режим работы
+  int workModeOld_;
 
 };
 

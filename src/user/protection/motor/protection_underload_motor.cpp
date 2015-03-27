@@ -12,10 +12,11 @@ ProtectionUnderloadMotor::ProtectionUnderloadMotor()
   idRestartSetpoint_ = CCS_PROT_MOTOR_UNDERLOAD_RESTART_SETPOINT;
   idParam_ = CCS_PROT_MOTOR_UNDERLOAD_PARAMETER;
   idRestartFlag_ = CCS_PROT_MOTOR_UNDERLOAD_RESTART_FLAG;
+  idBlockFlag_ = CCS_PROT_MOTOR_UNDERLOAD_BLOCK_FLAG;
   idState_ = CCS_PROT_MOTOR_UNDERLOAD_STATE;
   idTimer_ = CCS_PROT_MOTOR_UNDERLOAD_TIME;
   idRestartCount_ = CCS_PROT_MOTOR_UNDERLOAD_RESTART_COUNT;
-  idRestartFirstTime_ = CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET_COUNT;
+  idRestartFirstTime_ = CCS_PROT_MOTOR_UNDERLOAD_RESTART_FIRST_TIME;
 
   protReactEventId_ = UnderloadMotorProtReactId;
   apvEventId_ = UnderloadMotorApvId;

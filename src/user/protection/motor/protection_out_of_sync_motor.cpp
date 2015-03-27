@@ -12,10 +12,11 @@ ProtectionOutOfSyncMotor::ProtectionOutOfSyncMotor()
   idRestartSetpoint_ = CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT;
   idParam_ = CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER;
   idRestartFlag_ = CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG;
+  idBlockFlag_ = CCS_PROT_MOTOR_OUT_OF_SYNC_BLOCK_FLAG;
   idState_ = CCS_PROT_MOTOR_OUT_OF_SYNC_STATE;
   idTimer_ = CCS_PROT_MOTOR_OUT_OF_SYNC_TIME;
   idRestartCount_ = CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT;
-  idRestartFirstTime_ = CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET_COUNT;
+  idRestartFirstTime_ = CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME;
 
   protReactEventId_ = OutOfSyncMotorProtReactId;
   apvEventId_ = OutOfSyncMotorApvId;

@@ -12,10 +12,11 @@ ProtectionResistanceIsolation::ProtectionResistanceIsolation()
   idRestartSetpoint_ = CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT;
   idParam_ = CCS_PROT_DHS_RESISTANCE_PARAMETER;
   idRestartFlag_ = CCS_PROT_DHS_RESISTANCE_RESTART_FLAG;
+  idBlockFlag_ = CCS_PROT_DHS_RESISTANCE_BLOCK_FLAG;
   idState_ = CCS_PROT_DHS_RESISTANCE_STATE;
   idTimer_ = CCS_PROT_DHS_RESISTANCE_TIME;
   idRestartCount_ = CCS_PROT_DHS_RESISTANCE_RESTART_COUNT;
-  idRestartFirstTime_ = CCS_PROT_DHS_RESISTANCE_RESTART_RESET_COUNT;
+  idRestartFirstTime_ = CCS_PROT_DHS_RESISTANCE_RESTART_FIRST_TIME;
 
   protReactEventId_ = ResistIsolationProtReactId;
   apvEventId_ = ResistIsolationApvId;

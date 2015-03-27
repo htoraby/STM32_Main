@@ -413,18 +413,14 @@ enum enUpdate {
 };
 
 enum enCcsCondition {
-  CCS_CONDITION_BLOCK,
   CCS_CONDITION_STOP,                       /// Останов
   CCS_CONDITION_STOPPING,                   /// Торможение
-  CCS_CONDITION_WAIT_APV,
-  CCS_CONDITION_DELAY,
   CCS_CONDITION_RUNNING,                    /// Запуск
   CCS_CONDITION_RUN                         /// Работа
 };
 
 enum enCcsWorkingMode {
-  CCS_WORKING_MODE_STOP = 0,
-  CCS_WORKING_MODE_MANUAL,
+  CCS_WORKING_MODE_MANUAL = 1,
   CCS_WORKING_MODE_AUTO,
   CCS_WORKING_MODE_PROGRAM
 };

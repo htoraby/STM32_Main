@@ -34,19 +34,12 @@ void LogData::task()
   while (1) {
     osDelay(1000);
 
-    int condition = parameters.getValue(CCS_CONDITION);
-#if DEBUG
-//    condition = CCS_CONDITION_DELAY;
-#endif
-    if (condition == CCS_CONDITION_DELAY) {
+    if (ksu.isDelay()) {
       if (!startFastMode) {
         startFastMode = true;
         add(FastModeCode);
       } else {
         int period = parameters.getValue(CCS_LOG_PERIOD_FAST);
-#if DEBUG
-        period = 5;
-#endif
         if (++fastTimeCnt >= period) {
           fastTimeCnt = 0;
           add(FastModeCode);
@@ -58,12 +51,9 @@ void LogData::task()
     }
 
     int period = parameters.getValue(CCS_LOG_PERIOD_NORMAL);
-#if DEBUG
-    period = 60;
-#endif
     if (++normTimeCnt >= period) {
       normTimeCnt = 0;
-      if (condition != CCS_CONDITION_DELAY)
+      if (!ksu.isDelay())
         add(NormModeCode);
     }
   }

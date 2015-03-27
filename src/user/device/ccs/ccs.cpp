@@ -14,6 +14,7 @@ Ccs::Ccs()
   : Device(CCS_BEGIN, parametersArray_, CCS_END - CCS_BEGIN)
   , conditionOld_(-1)
   , flagOld_(-1)
+  , workModeOld_(-1)
 {
 
 }
@@ -64,8 +65,11 @@ void Ccs::mainTask()
     osDelay(10);
 
     checkCmd();
-    conditionChanged();
+    changedWorkMode();
+    changedCondition();
+
     calcTime();
+    calcParameters();
   }
 }
 
@@ -179,7 +183,7 @@ void Ccs::vsdConditionTask()
   }
 }
 
-void Ccs::conditionChanged()
+void Ccs::changedCondition()
 {
   int condition = getValue(CCS_CONDITION);
   int flag = getValue(CCS_CONDITION_FLAG);
@@ -189,28 +193,69 @@ void Ccs::conditionChanged()
     switch (condition) {
     case CCS_CONDITION_RUNNING:
       resetRestart();
-      if (flag == CCS_CONDITION_FLAG_DELAY)
+      if (flag == CCS_CONDITION_FLAG_DELAY) {
+        setValue(CCS_GENERAL_CONDITION, GeneralConditionDelay);
         setLedCondition(ToogleGreenToogleYellowLed);
-      else
+      }
+      else {
+        setValue(CCS_GENERAL_CONDITION, GeneralConditionRunning);
         setLedCondition(ToogleYellowLed);
+      }
       break;
     case CCS_CONDITION_RUN:
-      if (flag == CCS_CONDITION_FLAG_DELAY)
+      if (flag == CCS_CONDITION_FLAG_DELAY) {
+        setValue(CCS_GENERAL_CONDITION, GeneralConditionDelay);
         setLedCondition(OnGreenToogleYellowLed);
-      else
+      }
+      else {
+        setValue(CCS_GENERAL_CONDITION, GeneralConditionRun);
         setLedCondition(OnGreenLed);
+      }
       break;
     case CCS_CONDITION_STOPPING:
-      if (flag == CCS_CONDITION_FLAG_BLOCK)
+      if (flag == CCS_CONDITION_FLAG_BLOCK) {
+        setValue(CCS_GENERAL_CONDITION, GeneralConditionBlock);
         setLedCondition(ToogleGreenToogleRedLed);
+      }
+      else {
+        setValue(CCS_GENERAL_CONDITION, GeneralConditionStopping);
+      }
       break;
     default:
-      if (flag == CCS_CONDITION_FLAG_BLOCK)
+      if (flag == CCS_CONDITION_FLAG_BLOCK) {
+        setValue(CCS_GENERAL_CONDITION, GeneralConditionBlock);
         setLedCondition(ToogleRedLed);
-      else if (flag == CCS_CONDITION_FLAG_RESTART)
+      }
+      else if (flag == CCS_CONDITION_FLAG_RESTART) {
+        setValue(CCS_GENERAL_CONDITION, GeneralConditionRestart);
         setLedCondition(OnRedOnYellowLed);
-      else
+      }
+      else {
+        setValue(CCS_GENERAL_CONDITION, GeneralConditionStop);
         setLedCondition(OnRedLed);
+      }
+      break;
+    }
+  }
+}
+
+void Ccs::changedWorkMode()
+{
+  int workMode = getValue(CCS_WORKING_MODE);
+  if (workMode != workModeOld_) {
+    workModeOld_ = workMode;
+    switch (workMode) {
+    case CCS_WORKING_MODE_MANUAL:
+      resetRestart();
+      break;
+    case CCS_WORKING_MODE_AUTO:
+
+      break;
+    case CCS_WORKING_MODE_PROGRAM:
+
+      break;
+    default:
+      resetRestart();
       break;
     }
   }
@@ -251,8 +296,15 @@ void Ccs::start(EventType type)
 void Ccs::stop(EventType type)
 {
   setValue(CCS_LAST_EVENT_TYPE, type);
-  setValue(CCS_CMD_STOP, 1);
-  checkCmd();
+
+  if (type != RemoteType) {
+    if (checkCanStop()) {
+      setValue(CCS_CONDITION, CCS_CONDITION_STOPPING);
+      setValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
+    }
+  } else {
+    setValue(CCS_CMD_STOP, 1);
+  }
 }
 
 void Ccs::checkCmd()
@@ -269,6 +321,7 @@ void Ccs::checkCmd()
   } else if (stop) {
     setValue(CCS_CMD_STOP, 0);
     if (checkCanStop()) {
+      setBlock();
       setValue(CCS_CONDITION, CCS_CONDITION_STOPPING);
       setValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
     }
@@ -277,13 +330,7 @@ void Ccs::checkCmd()
 
 bool Ccs::checkCanStart()
 {
-#if DEBUG
-  return true;
-#endif
-
   if (getValue(CCS_VSD_CONDITION) != VSD_CONDITION_STOP)
-    return false;
-  if (getValue(CCS_WORKING_MODE) == CCS_WORKING_MODE_STOP)
     return false;
   if (isBlock())
     return false;
@@ -299,6 +346,15 @@ bool Ccs::checkCanStop()
   if (getValue(CCS_VSD_CONDITION) == VSD_CONDITION_STOP)
     return false;
   return true;
+}
+
+void Ccs::calcParameters()
+{
+  float temp = calcImbalance(parameters.getValue(EM_VOLTAGE_PHASE_1),
+                             parameters.getValue(EM_VOLTAGE_PHASE_2),
+                             parameters.getValue(EM_VOLTAGE_PHASE_3),
+                             0);
+  setValue(CCS_VOLTAGE_IMBALANCE_IN, temp);
 }
 
 bool Ccs::isStopMotor()
@@ -422,17 +478,6 @@ bool Ccs::isManualMode()
   }
 }
 
-bool Ccs::isStopMode ()
-{
-  unsigned int controlMode = (unsigned int)getValue(CCS_WORKING_MODE);
-  if (controlMode == CCS_WORKING_MODE_STOP) {
-    return true;
-  }
-  else {
-    return false;
-  }
-}
-
 bool Ccs::isProgramMode()
 {
   unsigned int controlMode = (unsigned int)getValue(CCS_WORKING_MODE);
@@ -514,10 +559,10 @@ void Ccs::initParameters()
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].operation   = OPERATION_WRITE;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].validity    = VALIDITY_GOOD;
-  parameters_[CCS_WORKING_MODE - CCS_BEGIN].value.float_t   = CCS_WORKING_MODE_STOP;
-  parameters_[CCS_WORKING_MODE - CCS_BEGIN].min     = CCS_WORKING_MODE_STOP;
+  parameters_[CCS_WORKING_MODE - CCS_BEGIN].value.float_t   = CCS_WORKING_MODE_MANUAL;
+  parameters_[CCS_WORKING_MODE - CCS_BEGIN].min     = CCS_WORKING_MODE_MANUAL;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].max     = CCS_WORKING_MODE_PROGRAM;
-  parameters_[CCS_WORKING_MODE - CCS_BEGIN].def     = CCS_WORKING_MODE_STOP;
+  parameters_[CCS_WORKING_MODE - CCS_BEGIN].def     = CCS_WORKING_MODE_MANUAL;
 
   parameters_[CCS_CMD_STOP - CCS_BEGIN].id          = CCS_CMD_STOP;
   parameters_[CCS_CMD_STOP - CCS_BEGIN].access      = ACCESS_OPERATOR;
@@ -633,11 +678,11 @@ void Ccs::initParameters()
   setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT, 0.0);
   setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT, 0.0);
 
-  setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET_COUNT, PHYSIC_TIME);
-  setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET_COUNT, 60.0);
-  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET_COUNT, 3599940.0);
-  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET_COUNT, 86400.0);
-  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET_COUNT, 86400.0);
+  setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME, PHYSIC_TIME);
+  setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME, 60.0);
+  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME, 3599940.0);
+  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME, 86400.0);
+  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME, 86400.0);
 
   setFieldPhysic(CCS_CONDITION_FLAG, PHYSIC_NUMERIC);
   setFieldMin(CCS_CONDITION_FLAG, 0.0);

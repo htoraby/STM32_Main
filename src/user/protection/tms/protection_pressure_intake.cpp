@@ -13,10 +13,11 @@ ProtectionPressureIntake::ProtectionPressureIntake()
   idRestartSetpoint_ = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT;
   idParam_ = CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER;
   idRestartFlag_ = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_FLAG;
+  idBlockFlag_ = CCS_PROT_DHS_PRESSURE_INTAKE_BLOCK_FLAG;
   idState_ = CCS_PROT_DHS_PRESSURE_INTAKE_STATE;
   idTimer_ = CCS_PROT_DHS_PRESSURE_INTAKE_TIME;
   idRestartCount_ = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_COUNT;
-  idRestartFirstTime_ = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET_COUNT;
+  idRestartFirstTime_ = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_FIRST_TIME;
 
   protReactEventId_ = PressureIntakeProtReactId;
   apvEventId_ = PressureIntakeApvId;

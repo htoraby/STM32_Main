@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <stddef.h>
+#include <math.h>
 
 enum StatusType {
   StatusOk,
@@ -101,6 +102,16 @@ int checkRange(double value, double min, double max, uint8_t inc);
  * \return
  */
 bool checkBit(uint32_t value, uint8_t bit);
+
+/*!
+ * \brief Функция вычисления дисбаланса между 3 значениями по формуле СНГ
+ * \param value1
+ * \param value2
+ * \param value3
+ * \param digit
+ * \return
+ */
+float calcImbalance(float value1, float value2, float value3, int digit);
 
 /*!
  * \brief Функция получения времени до конца периода

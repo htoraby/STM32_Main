@@ -64,6 +64,10 @@ typedef enum {
   ResistIsolationApvId,           //!< "АПВ по защите: Сопротивление изоляции"
   ResistIsolationApvDisabledId,   //!< "АПВ запрещен: Сопротивление изоляции"
   ResistIsolationProtBlockedId,   //!< "Блокировка по защите: Сопротивление изоляции"
+
+  LookDoorProtReactId,            //!< "Сработала защита: Блокировка двери силового отсека"
+  LookDoorProtBlockedId,          //!< "Блокировка по защите: Блокировка двери"
+
 } EventId;
 
 #endif // LOG_IDLIST

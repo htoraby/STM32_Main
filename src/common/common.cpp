@@ -89,6 +89,27 @@ bool checkBit(uint32_t value, uint8_t bit)
     return false;
 }
 
+float calcImbalance(float value1, float value2, float value3, int digit)
+{
+  float max_;
+  float min_;
+  float avarage;
+  float imbalance;
+
+  value1 = round(value1 * pow(10,digit));
+  value2 = round(value2 * pow(10,digit));
+  value3 = round(value3 * pow(10,digit));
+  max_ = max(value1, max(value2, value3));
+  min_ = min(value1, min(value2, value3));
+  avarage = (value1 + value2 + value3)/3;
+  if (avarage == 0)
+    avarage = 1;
+  imbalance = ((max_ - min_)/avarage)*100;
+  if (imbalance < 0)
+    imbalance = 0;
+  return imbalance;
+}
+
 
 uint32_t getTimeToEnd(uint32_t period, uint32_t time)
 {
@@ -97,3 +118,4 @@ uint32_t getTimeToEnd(uint32_t period, uint32_t time)
     return timeToEnd;
   return 0;
 }
+

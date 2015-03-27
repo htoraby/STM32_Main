@@ -1,6 +1,6 @@
 #include "protection_main.h"
 
-#define COUNT_PROTECTIONS 1 // 11
+#define COUNT_PROTECTIONS 3 // 11
 
 Protection *protections[COUNT_PROTECTIONS];
 
@@ -25,8 +25,8 @@ static void setProtectionDelay();
 void protectionInit()
 {
   protections[0] = &protOverVoltIn;
-//  protections[1] = &protUnderVoltIn;
-//  protections[2] = &protImbalanceVoltIn;
+  protections[1] = &protUnderVoltIn;
+  protections[2] = &protImbalanceVoltIn;
 //  protections[3] = &protOverloadMotor;
 //  protections[4] = &protUnderloadMotor;
 //  protections[5] = &protImbalanceCurrentMotor;
@@ -62,6 +62,7 @@ void setProtectionDelay()
       ksu.setDelay();
       return;
     }
+    ksu.resetDelay();
   }
 }
 
