@@ -427,8 +427,10 @@ float Device::applyUnit(float value, int physic, int units)
 
 unsigned short Device::getIndexAtId(unsigned short id)
 {
-  if (getFieldId(id - startAddrParams_) == id)
-    return (id - startAddrParams_);
+  if ((id >= startAddrParams_) && (id < (startAddrParams_ + countParameter_))) {
+    if (getFieldId(id - startAddrParams_) == id)
+      return (id - startAddrParams_);
+  }
 
   // TODO: Предупреждение о не найденом параметре
 

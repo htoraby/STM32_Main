@@ -17,7 +17,7 @@ ProtectionCurrentMotor::ProtectionCurrentMotor()
   idState_ = CCS_PROT_MOTOR_CURRENT_STATE;
   idTimer_ = CCS_PROT_MOTOR_CURRENT_TIME;
   idRestartCount_ = CCS_PROT_MOTOR_CURRENT_RESTART_COUNT;
-  idRestartFirstTime_ = CCS_PROT_MOTOR_CURRENT_RESTART_RESET_COUNT;
+  idRestartFirstTime_ = CCS_PROT_MOTOR_CURRENT_RESTART_FIRST_TIME;
 
   protReactEventId_ = CurrentMotorProtReactId;
   apvEventId_ = CurrentMotorApvId;

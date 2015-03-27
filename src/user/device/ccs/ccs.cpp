@@ -69,6 +69,7 @@ void Ccs::mainTask()
     changedCondition();
 
     calcTime();
+    calcParameters();
   }
 }
 
@@ -192,28 +193,47 @@ void Ccs::changedCondition()
     switch (condition) {
     case CCS_CONDITION_RUNNING:
       resetRestart();
-      if (flag == CCS_CONDITION_FLAG_DELAY)
+      if (flag == CCS_CONDITION_FLAG_DELAY) {
+        setValue(CCS_GENERAL_CONDITION, GeneralConditionDelay);
         setLedCondition(ToogleGreenToogleYellowLed);
-      else
+      }
+      else {
+        setValue(CCS_GENERAL_CONDITION, GeneralConditionRunning);
         setLedCondition(ToogleYellowLed);
+      }
       break;
     case CCS_CONDITION_RUN:
-      if (flag == CCS_CONDITION_FLAG_DELAY)
+      if (flag == CCS_CONDITION_FLAG_DELAY) {
+        setValue(CCS_GENERAL_CONDITION, GeneralConditionDelay);
         setLedCondition(OnGreenToogleYellowLed);
-      else
+      }
+      else {
+        setValue(CCS_GENERAL_CONDITION, GeneralConditionRun);
         setLedCondition(OnGreenLed);
+      }
       break;
     case CCS_CONDITION_STOPPING:
-      if (flag == CCS_CONDITION_FLAG_BLOCK)
+      if (flag == CCS_CONDITION_FLAG_BLOCK) {
+        setValue(CCS_GENERAL_CONDITION, GeneralConditionBlock);
         setLedCondition(ToogleGreenToogleRedLed);
+      }
+      else {
+        setValue(CCS_GENERAL_CONDITION, GeneralConditionStopping);
+      }
       break;
     default:
-      if (flag == CCS_CONDITION_FLAG_BLOCK)
+      if (flag == CCS_CONDITION_FLAG_BLOCK) {
+        setValue(CCS_GENERAL_CONDITION, GeneralConditionBlock);
         setLedCondition(ToogleRedLed);
-      else if (flag == CCS_CONDITION_FLAG_RESTART)
+      }
+      else if (flag == CCS_CONDITION_FLAG_RESTART) {
+        setValue(CCS_GENERAL_CONDITION, GeneralConditionRestart);
         setLedCondition(OnRedOnYellowLed);
-      else
+      }
+      else {
+        setValue(CCS_GENERAL_CONDITION, GeneralConditionStop);
         setLedCondition(OnRedLed);
+      }
       break;
     }
   }
@@ -326,6 +346,15 @@ bool Ccs::checkCanStop()
   if (getValue(CCS_VSD_CONDITION) == VSD_CONDITION_STOP)
     return false;
   return true;
+}
+
+void Ccs::calcParameters()
+{
+  float temp = calcImbalance(parameters.getValue(EM_VOLTAGE_PHASE_1),
+                             parameters.getValue(EM_VOLTAGE_PHASE_2),
+                             parameters.getValue(EM_VOLTAGE_PHASE_3),
+                             0);
+  setValue(CCS_VOLTAGE_IMBALANCE_IN, temp);
 }
 
 bool Ccs::isStopMotor()
@@ -649,11 +678,11 @@ void Ccs::initParameters()
   setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT, 0.0);
   setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT, 0.0);
 
-  setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET_COUNT, PHYSIC_TIME);
-  setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET_COUNT, 60.0);
-  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET_COUNT, 3599940.0);
-  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET_COUNT, 86400.0);
-  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET_COUNT, 86400.0);
+  setFieldPhysic(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME, PHYSIC_TIME);
+  setFieldMin(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME, 60.0);
+  setFieldMax(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME, 3599940.0);
+  setFieldDef(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME, 86400.0);
+  setFieldValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME, 86400.0);
 
   setFieldPhysic(CCS_CONDITION_FLAG, PHYSIC_NUMERIC);
   setFieldMin(CCS_CONDITION_FLAG, 0.0);

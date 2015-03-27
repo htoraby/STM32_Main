@@ -16,7 +16,7 @@ ProtectionResistanceIsolation::ProtectionResistanceIsolation()
   idState_ = CCS_PROT_DHS_RESISTANCE_STATE;
   idTimer_ = CCS_PROT_DHS_RESISTANCE_TIME;
   idRestartCount_ = CCS_PROT_DHS_RESISTANCE_RESTART_COUNT;
-  idRestartFirstTime_ = CCS_PROT_DHS_RESISTANCE_RESTART_RESET_COUNT;
+  idRestartFirstTime_ = CCS_PROT_DHS_RESISTANCE_RESTART_FIRST_TIME;
 
   protReactEventId_ = ResistIsolationProtReactId;
   apvEventId_ = ResistIsolationApvId;

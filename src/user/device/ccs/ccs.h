@@ -29,6 +29,19 @@ public:
     ToogleGreenLed,             //!< Мигает зеленый
   };
 
+  /*!
+   * \brief Список надписей о состоянии СУ
+   */
+  enum GeneralCondition {
+    GeneralConditionStop,       //!< Стоп
+    GeneralConditionStopping,   //!< Торможение
+    GeneralConditionRunning,    //!< Запуск
+    GeneralConditionRun,        //!< Работа
+    GeneralConditionDelay,      //!< Задержка срабатывания
+    GeneralConditionRestart,    //!< Ожидание АПВ
+    GeneralConditionBlock       //!< Блокировка
+  };
+
   Ccs();
   virtual ~Ccs();
 
@@ -207,6 +220,11 @@ private:
    * \return
    */
   bool checkCanStop();
+
+  /*!
+   * \brief calcParameters
+   */
+  void calcParameters();
 
   //! Массив параметров устройства
   parameter parametersArray_[CCS_END - CCS_BEGIN];
