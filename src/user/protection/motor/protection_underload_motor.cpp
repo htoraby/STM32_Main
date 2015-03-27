@@ -41,9 +41,9 @@ bool ProtectionUnderloadMotor::checkPrevent()
 
 float ProtectionUnderloadMotor::calcValue()
 {
-  float value = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1_NOW);
-  float value2 = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_2_NOW);
-  float value3 = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_3_NOW);
+  float value = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1);
+  float value2 = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_2);
+  float value3 = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_3);
   float nominal = parameters.getValue(VSD_MOTOR_CURRENT);
 
   value = min(min(value, value2), value3);

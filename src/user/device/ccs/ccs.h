@@ -183,6 +183,44 @@ public:
    */
   uint32_t getSecFromCurTime(enID timeId);
 
+  /*!
+   * \brief calcMotorCurrentPhase1
+   */
+  void calcMotorCurrentPhase1();
+
+  /*!
+   * \brief calcMotorCurrentPhase2
+   */
+  void calcMotorCurrentPhase2();
+
+  /*!
+   * \brief calcMotorCurrentPhase3
+   */
+  void calcMotorCurrentPhase3();
+
+  /*!
+   * \brief calcMotorCurrentAvarage
+   */
+  void calcMotorCurrentAvarage();
+
+  /*!
+   * \brief calcMotorCurrentPhase
+   * \param vsdOutCurrent
+   * \param coefCorrect
+   * \param motorCurrent
+   */
+  void calcMotorCurrentPhase(uint16_t vsdOutCurrent, uint16_t coefCorrect, uint16_t motorCurrent);
+
+  /*!
+   * \brief calcMotorCurrentImbalance
+   */
+  void calcMotorCurrentImbalance();
+
+  /*!
+   * \brief calcVoltageImbalanceIn
+   */
+  void calcVoltageImbalanceIn();
+
 private:
   /*!
    * \brief Метод добавления в очередь событий включения/мигания LED
@@ -225,6 +263,11 @@ private:
    * \brief calcParameters
    */
   void calcParameters();
+
+  /*!
+   * \brief calcCoefTransformation
+   */
+  void calcCoefTransformation();
 
   //! Массив параметров устройства
   parameter parametersArray_[CCS_END - CCS_BEGIN];
