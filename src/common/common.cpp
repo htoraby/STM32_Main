@@ -109,3 +109,13 @@ float calcImbalance(float value1, float value2, float value3, int digit)
     imbalance = 0;
   return imbalance;
 }
+
+
+uint32_t getTimeToEnd(uint32_t period, uint32_t time)
+{
+  int32_t timeToEnd = period - time;
+  if (timeToEnd >= 0)
+    return timeToEnd;
+  return 0;
+}
+

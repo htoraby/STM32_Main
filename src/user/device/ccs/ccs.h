@@ -163,23 +163,23 @@ public:
   bool isProgramMode();
 
   /*!
-   * \brief getTime
-   * Функция получения текущего времени в сек от 00:00:00 01.01.1970 года
-   * \return Возвращает значение секунд
+   * \brief Функция получения текущего времени
+   * в сек от 00:00:00 01.01.1970 года
+   * \return значение в секундах
    */
   uint32_t getTime();
 
   /*!
-   * \brief getSecBetweenCurTimeAndSaveTime
-   * \param time
-   * \return
+   * \brief Функция получения прошедщего времени относительно текущего времени
+   * \param time - фиксированное время
+   * \return значение в секундах
    */
   uint32_t getSecFromCurTime(uint32_t time);
 
   /*!
-   * \brief getSecBetweenCurTimeAndSaveTime
-   * \param timer
-   * \return
+   * \brief Функция получения прошедщего времени относительно текущего времени
+   * \param timeId - Id фиксированного времени
+   * \return значение в секундах
    */
   uint32_t getSecFromCurTime(enID timeId);
 
