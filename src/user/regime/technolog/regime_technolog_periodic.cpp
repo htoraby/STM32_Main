@@ -14,34 +14,77 @@ void RegimeTechnologPeriodic::processing()
 {
   action_ = parameters.getValue(CCS_RGM_PERIODIC_MODE);
   state_ = parameters.getValue(CCS_RGM_PERIODIC_STATE);
-  workTimer_ = parameters.getValueUint32(CCS_RGM_PERIODIC_RUN_TIMER);
-  stopTimer_ = parameters.getValue(CCS_RGM_PERIODIC_STOP_TIMER);
-  workTime_ = parameters.getValue(CCS_RGM_PERIODIC_RUN_TIME);
-  workTimeEnd_ = parameters.getValue(CCS_RGM_PERIODIC_RUN_TIME_END);
-  stopTime_ = parameters.getValue(CCS_RGM_PERIODIC_STOP_TIME);
-  stopTimeEnd_ = parameters.getValue(CCS_RGM_PERIODIC_STOP_TIME_END);
+
+  workPeriod_ = parameters.getValue(CCS_RGM_PERIODIC_RUN_PERIOD);
+  stopPeriod_ = parameters.getValue(CCS_RGM_PERIODIC_STOP_PERIOD);
+  workBeginTime_ = parameters.getValueUint32(CCS_RGM_PERIODIC_RUN_BEGIN_TIME);
+  stopBeginTime_ = parameters.getValueUint32(CCS_RGM_PERIODIC_STOP_BEGIN_TIME);
+  workTimeToEnd_ = parameters.getValue(CCS_RGM_PERIODIC_RUN_TIME_TO_END);
+  stopTimeToEnd_ = parameters.getValue(CCS_RGM_PERIODIC_STOP_TIME_TO_END);
+
+  if (action_ == offAction) { // Режим - выключен
+    state_ = IdleState;
+  }
 
   switch (state_) {
     case IdleState:
-      workTimer_ = ksu.getTime();
-      workTimeEnd_ = 0;
-      if (action_ == onAction) {                        // Режим - включен
+      workBeginTime_ = ksu.getTime();
+      stopBeginTime_ = ksu.getTime();
+      workTimeToEnd_ = 0;
+      stopTimeToEnd_ = 0;
+      if (action_ != offAction) {                       // Режим - включен
         if (ksu.isWorkMotor() && ksu.isProgramMode()) { // Двигатель - работа; Режим - программа;
           state_ = WorkState;
         }
       }
       break;
     case WorkState:
+      if (ksu.isWorkMotor()) {       // Двигатель - работа;
+        uint32_t time = ksu.getSecFromCurTime(workBeginTime_);
+        workTimeToEnd_ = getTimeToEnd(workPeriod_, time);
+        if (workTimeToEnd_ == 0) {
+          if (ksu.isProgramMode()) { // Режим - программа;
+            ksu.stop();
+            state_ = StartPauseState;
+          }
+        }
+      } else {
+        // TODO: Станция в останове
 
+      }
       break;
     case StartPauseState:
-
+      if (ksu.getValue(CCS_CONDITION) == CCS_CONDITION_STOP) { // Двигатель - останов;
+        stopBeginTime_ = ksu.getTime();
+        state_ = PauseState;
+      }
       break;
     case PauseState:
+      if (ksu.isStopMotor()) {     // Двигатель - останов;
+        uint32_t time = ksu.getSecFromCurTime(stopBeginTime_);
+        stopTimeToEnd_ = getTimeToEnd(stopPeriod_, time);
+        if (ksu.isProgramMode()) { // Режим - программа;
+          if (stopTimeToEnd_ == 0) {
+            ksu.start();
+            state_ = RestartState;
+          }
+        } else {
+          // TODO: Режим программы отключен
 
+        }
+      } else {
+        state_ = IdleState;
+      }
       break;
     case RestartState:
-
+      if (ksu.isProgramMode()) { // Режим - программа;
+        if (ksu.isWorkMotor()) { // Двигатель - работа;
+          workBeginTime_ = ksu.getTime();
+          state_ = WorkState;
+        }
+      } else {
+        state_ = PauseState;
+      }
       break;
     case StopState:
 
@@ -50,4 +93,12 @@ void RegimeTechnologPeriodic::processing()
       state_ = IdleState;
       break;
   }
+
+  parameters.setValue(CCS_RGM_PERIODIC_STATE, state_);
+  workBeginTime_ = parameters.getValueUint32(CCS_RGM_PERIODIC_RUN_BEGIN_TIME);
+  stopBeginTime_ = parameters.getValueUint32(CCS_RGM_PERIODIC_STOP_BEGIN_TIME);
+  workPeriod_ = parameters.getValueUint32(CCS_RGM_PERIODIC_RUN_PERIOD);
+  workTimeToEnd_ = parameters.getValueUint32(CCS_RGM_PERIODIC_RUN_TIME_TO_END);
+  stopPeriod_ = parameters.getValueUint32(CCS_RGM_PERIODIC_STOP_PERIOD);
+  stopTimeToEnd_ = parameters.getValueUint32(CCS_RGM_PERIODIC_STOP_TIME_TO_END);
 }

@@ -139,10 +139,10 @@ void LogData::add(uint8_t code)
   *(float*)(buffer+217) = parameters.getValue(VSD_LAST_ALARM);
   *(float*)(buffer+221) = parameters.getValue(CCS_TURBO_ROTATION_NOW);
   *(float*)(buffer+225) = parameters.getValue(CCS_RGM_PERIODIC_MODE);
-  *(float*)(buffer+229) = parameters.getValue(CCS_RGM_PERIODIC_RUN_TIME);
-  *(float*)(buffer+233) = parameters.getValue(CCS_RGM_PERIODIC_RUN_TIME);
-  *(float*)(buffer+237) = parameters.getValue(CCS_RGM_PERIODIC_RUN_TIME_END);
-  *(float*)(buffer+241) = parameters.getValue(CCS_RGM_PERIODIC_RUN_TIME_END);
+  *(float*)(buffer+229) = parameters.getValue(CCS_RGM_PERIODIC_RUN_PERIOD);
+  *(float*)(buffer+233) = parameters.getValue(CCS_RGM_PERIODIC_RUN_PERIOD);
+  *(float*)(buffer+237) = parameters.getValue(CCS_RGM_PERIODIC_RUN_TIME_TO_END);
+  *(float*)(buffer+241) = parameters.getValue(CCS_RGM_PERIODIC_RUN_TIME_TO_END);
 
 //  *(float*)(buffer+245) = parameters.getValue(RESERVE);
 //  *(float*)(buffer+249) = parameters.getValue(RESERVE);

@@ -88,3 +88,12 @@ bool checkBit(uint32_t value, uint8_t bit)
   else
     return false;
 }
+
+
+uint32_t getTimeToEnd(uint32_t period, uint32_t time)
+{
+  int32_t timeToEnd = period - time;
+  if (timeToEnd >= 0)
+    return timeToEnd;
+  return 0;
+}

@@ -102,6 +102,14 @@ int checkRange(double value, double min, double max, uint8_t inc);
  */
 bool checkBit(uint32_t value, uint8_t bit);
 
+/*!
+ * \brief Функция получения времени до конца периода
+ * \param period
+ * \param time
+ * \return значение в секундах
+ */
+uint32_t getTimeToEnd(uint32_t period, uint32_t time);
+
 #endif
 
 #endif // COMMON_H

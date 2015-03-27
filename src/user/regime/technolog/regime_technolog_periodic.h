@@ -15,12 +15,12 @@ public:
   void processing();
 
 private:
-  float workTime_;      //!< Уставка: Время работы
-  float stopTime_;      //!< Уставка: Время останова
-  uint32_t workTimer_;  //!< Таймер работы
-  float stopTimer_;     //!< Таймер останова
-  float workTimeEnd_;   //!< Время до конца работы
-  float stopTimeEnd_;   //!< Время до конца останова
+  float workPeriod_;       //!< Уставка: Время работы
+  float stopPeriod_;       //!< Уставка: Время останова
+  uint32_t workBeginTime_; //!< Время начала работы
+  uint32_t stopBeginTime_; //!< Время начала останова
+  float workTimeToEnd_;    //!< Время до конца работы
+  float stopTimeToEnd_;    //!< Время до конца останова
 
 };
 
