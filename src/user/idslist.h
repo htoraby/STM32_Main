@@ -5,11 +5,11 @@ enum enID
 {
   CCS_BEGIN,                                /// 0.
   CCS_MOTOR_SPEED_NOW,                      /// Текущие обороты двигателя
-  CCS_MOTOR_CURRENT_PHASE_1,            /// Ток двигателя фаза 1
-  CCS_MOTOR_CURRENT_PHASE_2,            /// Ток двигателя фаза 2
-  CCS_MOTOR_CURRENT_PHASE_3,            /// Ток двигателя фаза 3
+  CCS_MOTOR_CURRENT_PHASE_1,                /// Ток двигателя фаза 1
+  CCS_MOTOR_CURRENT_PHASE_2,                /// Ток двигателя фаза 2
+  CCS_MOTOR_CURRENT_PHASE_3,                /// Ток двигателя фаза 3
   CCS_MOTOR_CURRENT_IMBALANCE,              /// Дисбаланс токов двигателя
-  CCS_MOTOR_CURRENT_AVARAGE,            /// Ток двигателя средний
+  CCS_MOTOR_CURRENT_AVARAGE,                /// Ток двигателя средний
   CCS_MOTOR_LOAD_NOW,                       /// Текущая загрузка двигателя
   CCS_MOTOR_VOLTAGE_NOW,                    /// Текущее напряжение двигателя
   CCS_MOTOR_COS_PHI_NOW,                    /// Текущий Косинус Фи

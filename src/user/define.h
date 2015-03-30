@@ -92,72 +92,51 @@ enum enOperation
 enum enPhysic
 {
   PHYSIC_ERROR,
-  /// Просто число
-  PHYSIC_NUMERIC,
-  /// Время
-  PHYSIC_TIME,
-  /// Проценты
-  PHYSIC_PERCENT,
-  /// Длина
-  PHYSIC_LENGHT,
-  /// Плотность
-  PHYSIC_DENSITY,
-  /// Площадь
-  PHYSIC_SPACE,
-  /// Частота
-  PHYSIC_FREQUENCY,
-  /// Напряжение
-  PHYSIC_VOLTAGE,
-  /// Ток
-  PHYSIC_CURRENT,
-  /// Активная мощность
-  PHYSIC_ACTIVE_POWER,
-  /// Полная мощность
-  PHYSIC_FULL_POWER,
-  /// Реактивная мощность
-  PHYSIC_REACTIVE_POWER,
-  /// Угол
-  PHYSIC_ANGLE,
-  /// Скорость вращения
-  PHYSIC_RPM,
-  /// Темп (разгона или замедления)
-  PHYSIC_TEMP,
-  /// Сопротивление изоляции
-  PHYSIC_RESISTANCE,
-  /// Сопротивление кабельной линии
-  PHYSIC_RESIST_CABLE_LINE,
-  /// Давление
-  PHYSIC_PRESSURE,
-  /// Температура
-  PHYSIC_TEMPERATURE,
-  /// Ускорение
-  PHYSIC_ACCELERATION,
-  /// Cкорость
-  PHYSIC_SPEED,
-  /// Вязкость
-  PHYSIC_VISCOSITY,
-  /// Расход
-  PHYSIC_FLOW,
-  /// Мощность
-  PHYSIC_POWER,
-  /// Активная энергия
-  PHYSIC_ACTIVE_ENERGY,
-  /// Реактивная энергия
-  PHYSIC_REACTIVE_ENERGY,
-  /// Полная энергия
-  PHYSIC_FULL_ENERGY,
-  /// Номинальный момент
-  PHYSIC_RATE,
-  /// Индуктивность Гн
-  PHYSIC_INDUNCTANCE,
-
+  PHYSIC_NUMERIC,                           //!< Просто число
+  PHYSIC_TIME,                              //!< Время
+  PHYSIC_PERCENT,                           //!< Проценты
+  PHYSIC_LENGHT,                            //!< Длина
+  PHYSIC_DENSITY,                           //!< Плотность
+  PHYSIC_SPACE,                             //!< Площадь
+  PHYSIC_FREQUENCY,                         //!< Частота
+  PHYSIC_VOLTAGE,                           //!< Напряжение
+  PHYSIC_CURRENT,                           //!< Ток
+  PHYSIC_ACTIVE_POWER,                      //!< Активная мощность
+  PHYSIC_FULL_POWER,                        //!< Полная мощность
+  PHYSIC_REACTIVE_POWER,                    //!< Реактивная мощность
+  PHYSIC_ANGLE,                             //!< Угол
+  PHYSIC_RPM,                               //!< Скорость вращения
+  PHYSIC_TEMP,                              //!< Темп (разгона или замедления)
+  PHYSIC_RESISTANCE,                        //!< Сопротивление изоляции
+  PHYSIC_RESIST_CABLE,                      //!< Сопротивление кабельной линии
+  PHYSIC_PRESSURE,                          //!< Давление
+  PHYSIC_TEMPERATURE,                       //!< Температура
+  PHYSIC_ACCELERATION,                      //!< Ускорение
+  PHYSIC_SPEED,                             //!< Cкорость
+  PHYSIC_VISCOSITY,                         //!< Вязкость
+  PHYSIC_FLOW,                              //!< Расход
+  PHYSIC_POWER,                             //!< Мощность
+  PHYSIC_ACTIVE_ENERGY,                     //!< Активная энергия
+  PHYSIC_REACTIVE_ENERGY,                   //!< Реактивная энергия
+  PHYSIC_FULL_ENERGY,                       //!< Полная энергия
+  PHYSIC_RATE,                              //!< Номинальный момент
+  PHYSIC_INDUNCTANCE,                       //!< Индуктивность Гн
   PHYSIC_LAST
+};
+
+enum enPhysicNumeric {
+  NUMERIC_NUMBER  = 1,
+  NUMERIC_LAST
 };
 
 enum enPhysicTime {
   TIME_SECOND  = 1,
-  TIME_MINUTE  = 2,
-  TIME_MILISEC
+  TIME_LAST
+};
+
+enum enPhysicPercent {
+  PERCENT_PERCENT = 1,
+  PERCENT_LAST
 };
 
 enum enPhysicLength {
@@ -167,13 +146,19 @@ enum enPhysicLength {
   LENGTH_LAST
 };
 
-enum enPhysicPressure {
-  PRESSURE_PA  = 1,
-  PRESSURE_ATM = 2,
-  PRESSURE_AT  = 3,
-  PRESSURE_BAR = 4,
-  PRESSURE_PSI = 5,
-  PRESSURE_LAST
+enum enPhysicDensity {
+  DENSITY_KGM3  = 1,
+  DENSITY_LAST
+};
+
+enum enPhysicSpace {
+  SPACE_M2  = 1,
+  SPACE_LAST
+};
+
+enum enPhysicFrequency {
+  FREQUENCY_HZ  = 1,
+  FREQUENCY_LAST
 };
 
 enum enPhysicVoltage {
@@ -186,18 +171,6 @@ enum enPhysicCurrent {
   CURRENT_LAST
 };
 
-enum enPhysicTemperature {
-  TEMPERATURE_C = 1,
-  TEMPERATURE_F = 2,
-  TEMPERATURE_K = 3,
-  TEMPERATURE_LAST
-};
-
-enum enPhysicSpeed {
-  SPEED_M_S = 1,
-  SPEED_LAST
-};
-
 enum enPhysicActivPower {
   ACTIV_POWER_VATT = 1,
   ACTIV_POWER_LAST
@@ -208,9 +181,14 @@ enum enPhysicFullPower {
   FULL_POWER_LAST
 };
 
-enum enPhysicFrequency {
-  FREQUENCY_HZ  = 1,
-  FREQUENCY_LAST
+enum enPhysicReactivPower {
+  REACTIV_POWER_VAR = 1,
+  REACTIV_POWER_LAST,
+};
+
+enum enPhysicAngle {
+  ANGLE_DEGREES = 1,
+  ANGLE_LAST
 };
 
 enum enPhysicRpm {
@@ -218,22 +196,35 @@ enum enPhysicRpm {
   RPM_LAST
 };
 
-enum enPhysicRate {
-  RATE_NM   = 1,
-  RATE_LAST
+enum enPhysicTemp {
+  TEMP_HZ_SECOND = 1,
+  TEMP_LAST
 };
 
-enum enPhysicReesistence {
-  RESISTANCE_OM  = 1,
-  RESISTANCE_KOM,
-  RESISTANCE_MOM,
+enum enPhysicResistence {
+  RESISTANCE_KOM  = 1,
   RESISTANCE_LAST
 };
 
-enum enPhysicIndunctance {
-  INDUNCTANCE_H  = 1,
-  INDUNCTANCE_mH = 2,
-  INDUNCTANCE_LAST
+enum enPhysicResisCable {
+  RESIST_CABLE_KOM_M  = 1,
+  RESIST_CABLE_LAST
+};
+
+enum enPhysicPressure {
+  PRESSURE_MPA  = 1,
+  PRESSURE_ATM = 2,
+  PRESSURE_AT  = 3,
+  PRESSURE_BAR = 4,
+  PRESSURE_PSI = 5,
+  PRESSURE_LAST
+};
+
+enum enPhysicTemperature {
+  TEMPERATURE_C = 1,
+  TEMPERATURE_F = 2,
+  TEMPERATURE_K = 3,
+  TEMPERATURE_LAST
 };
 
 enum enPhysicAcceleration {
@@ -242,19 +233,49 @@ enum enPhysicAcceleration {
   ACCELERATION_LAST
 };
 
+enum enPhysicSpeed {
+  SPEED_M_S = 1,
+  SPEED_LAST
+};
+
+enum enPhysicViscosity {
+  VISCOSITY_MPA_S,
+  VISCOSITY_LAST
+};
+
 enum enPhysicFlow {
   FLOW_M3DAY = 1,
   FLOW_LAST
 };
 
-enum enPhysicAngle {
-  ANGLE_DEGREES = 1,
-  ANGLE_LAST
+enum emPhysicPower {
+  POWER_VATT  = 1,
+  POWER_LAST
 };
 
-enum enPhysicTemp {
-  TEMP_HZ_SECOND = 1,
-  TEMP_LAST
+enum enPhysicActivEnergy {
+  ACTIVE_ENERGY_VATT_H  = 1,
+  ACTIVE_ENERGY_LAST,
+};
+
+enum enPhysicReactivEnergy {
+  REACTIVE_ENERGY_VAR_H = 1,
+  REACTIVE_ENERGY_LAST,
+};
+
+enum enPhysicFullEnergy {
+  FULL_ENERGY_VAH = 1,
+  FULL_ENERGY_LAST
+};
+
+enum enPhysicRate {
+  RATE_NM   = 1,
+  RATE_LAST
+};
+
+enum enPhysicIndunctance {
+  INDUNCTANCE_mH = 1,
+  INDUNCTANCE_LAST
 };
 
 /*!
