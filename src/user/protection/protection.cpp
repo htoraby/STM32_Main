@@ -199,7 +199,7 @@ void Protection::processingStateRun()       // Состояние работа
               addEventReactionProt();
               logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
               ksu.setBlock();
-              ksu.stop();
+              ksu.stop(lastReasonStop_);
               block_ = true;
               state_ = StateStop;
             }
@@ -222,7 +222,7 @@ void Protection::processingStateRun()       // Состояние работа
               addEventReactionProt();
               logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
               ksu.setBlock();
-              ksu.stop();
+              ksu.stop(lastReasonStop_);
               block_ = true;
               state_ = StateStop;
             }
@@ -230,7 +230,7 @@ void Protection::processingStateRun()       // Состояние работа
               logDebug.add(DebugMsg, "Reaction - Restart");
               addEventReactionProt();
               ksu.setRestart();
-              ksu.stop();
+              ksu.stop(lastReasonStop_);
               restart_ = true;
               state_ = StateStopping;
             }
@@ -251,7 +251,7 @@ void Protection::processingStateRun()       // Состояние работа
             logDebug.add(DebugMsg, "Reaction - Stop");
             addEventReactionProt();
             ksu.resetDelay();
-            ksu.stop();
+            ksu.stop(lastReasonStop_);
             state_ = StateStop;
           }
         }
@@ -276,7 +276,7 @@ void Protection::processingStateRun()       // Состояние работа
             addEventReactionProt();
             logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
             ksu.setBlock();
-            ksu.stop();
+            ksu.stop(lastReasonStop_);
             block_ = true;
             state_ = StateStop;
           }
@@ -375,7 +375,7 @@ void Protection::proccessingStateStop()
                 else {
                   incRestartCount();
                   logEvent.add(ProtectCode, AutoType, apvEventId_);
-                  ksu.start();
+                  ksu.start(lastReasonRun_);
                   state_ = StateRunning;
                 }
               }
@@ -394,7 +394,7 @@ void Protection::proccessingStateStop()
             else {
               incRestartCount();
               logEvent.add(ProtectCode, AutoType, apvEventId_);
-              ksu.start();
+              ksu.start(lastReasonRun_);
               state_ = StateRunning;
             }
           }

@@ -44,7 +44,7 @@ void RegimeTechnologPeriodic::processing()
         workTimeToEnd_ = getTimeToEnd(workPeriod_, time);
         if (workTimeToEnd_ == 0) {
           if (ksu.isProgramMode()) { // Режим - программа;
-            ksu.stop();
+            ksu.stop(LastReasonStopProgram);
             state_ = StartPauseState;
           }
         }
@@ -65,7 +65,7 @@ void RegimeTechnologPeriodic::processing()
         stopTimeToEnd_ = getTimeToEnd(stopPeriod_, time);
         if (ksu.isProgramMode()) { // Режим - программа;
           if (stopTimeToEnd_ == 0) {
-            ksu.start();
+            ksu.start(LastReasonRunProgram);
             state_ = RestartState;
           }
         } else {
@@ -95,10 +95,10 @@ void RegimeTechnologPeriodic::processing()
   }
 
   parameters.setValue(CCS_RGM_PERIODIC_STATE, state_);
-  workBeginTime_ = parameters.getValueUint32(CCS_RGM_PERIODIC_RUN_BEGIN_TIME);
-  stopBeginTime_ = parameters.getValueUint32(CCS_RGM_PERIODIC_STOP_BEGIN_TIME);
-  workPeriod_ = parameters.getValueUint32(CCS_RGM_PERIODIC_RUN_PERIOD);
-  workTimeToEnd_ = parameters.getValueUint32(CCS_RGM_PERIODIC_RUN_TIME_TO_END);
-  stopPeriod_ = parameters.getValueUint32(CCS_RGM_PERIODIC_STOP_PERIOD);
-  stopTimeToEnd_ = parameters.getValueUint32(CCS_RGM_PERIODIC_STOP_TIME_TO_END);
+  parameters.setValue(CCS_RGM_PERIODIC_RUN_PERIOD, workPeriod_);
+  parameters.setValue(CCS_RGM_PERIODIC_STOP_PERIOD, stopPeriod_);
+  parameters.setValue(CCS_RGM_PERIODIC_RUN_BEGIN_TIME, workBeginTime_);
+  parameters.setValue(CCS_RGM_PERIODIC_STOP_BEGIN_TIME, stopBeginTime_);
+  parameters.setValue(CCS_RGM_PERIODIC_RUN_TIME_TO_END, workTimeToEnd_);
+  parameters.setValue(CCS_RGM_PERIODIC_STOP_TIME_TO_END, stopTimeToEnd_);
 }

@@ -67,15 +67,15 @@ public:
 
   /*!
    * \brief Метод запуска двигателя
-   * \param type - Вид события
+   * \param reason - Причина запуска
    */
-  void start(EventType type = AutoType);
+  void start(LastReasonRun reason);
 
   /*!
    * \brief Метод останова двигателя
-   * \param type - Вид события
+   * \param reason - Причина остановова
    */
-  void stop(EventType type = AutoType);
+  void stop(LastReasonStop reason);
 
   /*!
    * \brief Проверка находится ли станция в стопе

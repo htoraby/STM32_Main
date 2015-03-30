@@ -467,4 +467,85 @@ enum enCcsConditionFlag {
   CCS_CONDITION_FLAG_RESTART,                    /// Ожидание АПВ
   CCS_CONDITION_FLAG_BLOCK                       /// Блокировка
 };
+
+/*!
+ * \brief Список причин запуска
+ */
+enum LastReasonRun {
+  LastReasonRunNone                     = 0,
+  LastReasonRunOperator                 = 1,
+  LastReasonRunAuto                     = 2,
+  LastReasonRunRemote                   = 3,
+  LastReasonRunProgram                  = 4,
+  LastReasonRunApvUnderload             = 5,
+  LastReasonRunApvOverload              = 6,
+  LastReasonRunApvImbalanceCurrent      = 7,
+  LastReasonRunApvUndervoltage          = 8,
+  LastReasonRunApvOvervoltage           = 9,
+  LastReasonRunApvImbalanceVoltage      = 10,
+  LastReasonRunApvTurborotation         = 11,
+  LastReasonRunApvPhaseSequence         = 12,
+  LastReasonRunApvOpenDoor              = 13,
+  LastReasonRunApvUnderPressure         = 14,
+  LastReasonRunApvOverheat              = 15,
+  LastReasonRunApvMaxVibration          = 16,
+  LastReasonRunApvUnderPressure1        = 17,
+  LastReasonRunApvMinAnalog1            = 18,
+  LastReasonRunApvMaxAnalog1            = 19,
+  LastReasonRunApvMinAnalog2            = 20,
+  LastReasonRunApvMaxAnalog2            = 21,
+  LastReasonRunApvFreqPower             = 22,
+  LastReasonRunApvPower                 = 23,
+  // Дополнительные виды запуска
+  LastReasonRunMinAnalog3               = 100,
+  LastReasonRunMinAnalog4               = 101,
+  LastReasonRunMaxAnalog3               = 102,
+  LastReasonRunMaxAnalog4               = 103,
+};
+
+/*!
+ * \brief Список причин останова
+ */
+enum LastReasonStop {
+  LastReasonStopNone                    = 0,
+  LastReasonStopOperator                = 1,
+  LastReasonStopResistance              = 2,
+  LastReasonStopUnderload               = 3,
+  LastReasonStopOverload                = 4,
+  LastReasonStopUndervoltage            = 5,
+  LastReasonStopOvervoltage             = 6,
+  LastReasonStopOpenDoor                = 9,
+  LastReasonStopManometr                = 12,
+  LastReasonStopUnderPressure           = 13,
+  LastReasonStopOverheat                = 14,
+  LastReasonStopMaxVibration            = 16,
+  LastReasonStopImbalanceCurrent        = 20,
+  LastReasonStopImbalanceVoltage        = 21,
+  LastReasonStopProgram                 = 24,
+  LastReasonStopMaxAnalog1              = 26,
+  LastReasonStopMaxAnalog2              = 27,
+  LastReasonStopRemote                  = 28,
+  LastReasonStopNoVoltage               = 30,
+  LastReasonStopOverloadNoMinVolt       = 35,
+  LastReasonStopUnderloadNoMinVolt      = 36,
+  LastReasonStopOverloadNoMaxVolt       = 37,
+  LastReasonStopUnderloadNoMaxVolt      = 38,
+  LastReasonStopImbalanceVolt           = 39,
+  LastReasonStopMinAnalog1              = 41,
+  LastReasonStopMinAnalog2              = 42,
+  LastReasonStopOverloadBadVolt         = 50,
+  LastReasonStopUnderloadBadVolt        = 51,
+  LastReasonStopImbalanceCurrentBadVolt = 52,
+  LastReasonStopImbalanceVoltageBadVolt = 53,
+  LastReasonStopDigital1                = 59,
+  LastReasonStopDigital2                = 60,
+  LastReasonStopDigital3                = 61,
+  LastReasonStopDigital4                = 62,
+  // Дополнительные первопричины останова
+  LastReasonStopMinAnalog3              = 100,
+  LastReasonStopMinAnalog4              = 101,
+  LastReasonStopMaxAnalog3              = 102,
+  LastReasonStopMaxAnalog4              = 103,
+};
+
 #endif /* DEFINE_H_ */
