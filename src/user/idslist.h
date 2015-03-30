@@ -637,7 +637,7 @@ enum enID
   CCS_CMD_COUNTER_ALL_RESET,
   CCS_VOLTAGE_TRANS_OUT,
   CCS_CONDITION_FLAG,
-  CCS_LAST_EVENT_TYPE,                      //!< Тип последнего события
+  CCS_LAST_RUN_REASON_TMP,                  //!< Причина последнего пуска - регистр временного хранения значения
   CCS_PROT_PREVENT,                         //!< Наличие хотя бы одного запрещающего параметра
   CCS_TIMER_DIFFERENT_START,                //!< Уставка ВРП (время разновременного пуска)
   CCS_RUN_BEGIN_TIME,                       /// Время начало текущей наработки
@@ -670,6 +670,7 @@ enum enID
   CCS_PROT_OTHER_VSD_BLOCK_FLAG,
   CCS_PROT_OTHER_IMB_BLOCK_FLAG,
   CCS_GENERAL_CONDITION,                    //!< Общее состояние
+  CCS_LAST_STOP_REASON_TMP,                 //!< Причина последнего останова - регистр временного хранения значения
   CCS_END,                                  /// Последний параметр
   VSD_BEGIN        = 10000,                 /// Первый параметр ЧРП
   VSD_FREQUENCY_NOW,                        /// Выходная частота ПЧ

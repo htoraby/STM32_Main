@@ -192,7 +192,10 @@ void Ccs::changedCondition()
     flagOld_ = flag;
     switch (condition) {
     case CCS_CONDITION_RUNNING:
+      setValue(CCS_LAST_RUN_DATE_TIME, getTime());
+      setValue(CCS_LAST_RUN_REASON, getValue(CCS_LAST_RUN_REASON_TMP));
       resetRestart();
+
       if (flag == CCS_CONDITION_FLAG_DELAY) {
         setValue(CCS_GENERAL_CONDITION, GeneralConditionDelay);
         setLedCondition(ToogleGreenToogleYellowLed);
@@ -222,6 +225,9 @@ void Ccs::changedCondition()
       }
       break;
     default:
+      setValue(CCS_LAST_STOP_DATE_TIME, getTime());
+      setValue(CCS_LAST_STOP_REASON, getValue(CCS_LAST_STOP_REASON_TMP));
+
       if (flag == CCS_CONDITION_FLAG_BLOCK) {
         setValue(CCS_GENERAL_CONDITION, GeneralConditionBlock);
         setLedCondition(ToogleRedLed);
@@ -286,24 +292,24 @@ void Ccs::calcTime()
   setValue(CCS_STOP_TIME, getSecFromCurTime(CCS_STOP_BEGIN_TIME));
 }
 
-void Ccs::start(EventType type)
+void Ccs::start(LastReasonRun reason)
 {
-  setValue(CCS_LAST_EVENT_TYPE, type);
+  setValue(CCS_LAST_RUN_REASON_TMP, reason);
+
   setValue(CCS_CMD_START, 1);
   checkCmd();
 }
 
-void Ccs::stop(EventType type)
+void Ccs::stop(LastReasonStop reason)
 {
-  setValue(CCS_LAST_EVENT_TYPE, type);
+  setValue(CCS_LAST_STOP_REASON_TMP, reason);
 
-  if (type != RemoteType) {
-    if (checkCanStop()) {
-      setValue(CCS_CONDITION, CCS_CONDITION_STOPPING);
-      setValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
-    }
-  } else {
-    setValue(CCS_CMD_STOP, 1);
+  if (checkCanStop()) {
+    if (reason == LastReasonStopRemote)
+      setBlock();
+
+    setValue(CCS_CONDITION, CCS_CONDITION_STOPPING);
+    setValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
   }
 }
 
@@ -690,11 +696,17 @@ void Ccs::initParameters()
   setFieldDef(CCS_CONDITION_FLAG, 0.0);
   setFieldValue(CCS_CONDITION_FLAG, 0.0);
 
-  setFieldPhysic(CCS_LAST_EVENT_TYPE, PHYSIC_NUMERIC);
-  setFieldMin(CCS_LAST_EVENT_TYPE, NoneType);
-  setFieldMax(CCS_LAST_EVENT_TYPE, LatchType);
-  setFieldDef(CCS_LAST_EVENT_TYPE, AutoType);
-  setFieldValue(CCS_LAST_EVENT_TYPE, (float)AutoType);
+  setFieldPhysic(CCS_LAST_RUN_REASON_TMP, PHYSIC_NUMERIC);
+  setFieldMin(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
+  setFieldMax(CCS_LAST_RUN_REASON_TMP, LastReasonRunMaxAnalog4);
+  setFieldDef(CCS_LAST_RUN_REASON_TMP, LastReasonRunOperator);
+  setFieldValue(CCS_LAST_RUN_REASON_TMP, (float)LastReasonRunOperator);
+
+  setFieldPhysic(CCS_LAST_STOP_REASON_TMP, PHYSIC_NUMERIC);
+  setFieldMin(CCS_LAST_STOP_REASON_TMP, LastReasonStopNone);
+  setFieldMax(CCS_LAST_STOP_REASON_TMP, LastReasonStopMaxAnalog4);
+  setFieldDef(CCS_LAST_STOP_REASON_TMP, LastReasonStopOperator);
+  setFieldValue(CCS_LAST_STOP_REASON_TMP, (float)LastReasonStopOperator);
 
   setFieldPhysic(CCS_PROT_PREVENT, PHYSIC_NUMERIC);
   setFieldMin(CCS_PROT_PREVENT, 0.0);
