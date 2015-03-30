@@ -2715,8 +2715,22 @@ void VsdNovomet::calcParameters(uint16_t id)
   case  VSD_POWER_ACTIVE:
     calcCurrentDC();
     break;
-
+  case  VSD_CURRENT_OUT_PHASE_1:
+    ksu.calcMotorCurrentPhase1();
+    ksu.calcMotorCurrentAvarage();
+    ksu.calcMotorCurrentImbalance();
+    break;
+  case  VSD_CURRENT_OUT_PHASE_2:
+    ksu.calcMotorCurrentPhase2();
+    ksu.calcMotorCurrentAvarage();
+    ksu.calcMotorCurrentImbalance();
+    break;
+  case  VSD_CURRENT_OUT_PHASE_3:
+    ksu.calcMotorCurrentPhase3();
+    ksu.calcMotorCurrentAvarage();
+    ksu.calcMotorCurrentImbalance();
   default:
+
     break;
   }
 }

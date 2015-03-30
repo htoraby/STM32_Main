@@ -356,11 +356,85 @@ bool Ccs::checkCanStop()
 
 void Ccs::calcParameters()
 {
-  float temp = calcImbalance(parameters.getValue(EM_VOLTAGE_PHASE_1),
-                             parameters.getValue(EM_VOLTAGE_PHASE_2),
-                             parameters.getValue(EM_VOLTAGE_PHASE_3),
-                             0);
-  setValue(CCS_VOLTAGE_IMBALANCE_IN, temp);
+  calcVoltageImbalanceIn();
+}
+
+void Ccs::calcCoefTransformation()
+{
+  float transVoltageTapOff = parameters.getValue(CCS_TRANS_VOLTAGE_TAP_OFF);
+  float transNominalVoltage = parameters.getValue(CCS_TRANS_NOMINAL_VOLTAGE);
+  float coefTransformation;
+  if (transNominalVoltage) {
+    coefTransformation = transVoltageTapOff / transNominalVoltage;
+  }
+  else {
+    coefTransformation = transVoltageTapOff / 380;
+  }
+  setValue(CCS_COEF_TRANSFORMATION, coefTransformation);
+}
+
+void Ccs::calcVoltageImbalanceIn()
+{
+  float imbalance = calcImbalance(parameters.getValue(EM_VOLTAGE_PHASE_1),
+                                  parameters.getValue(EM_VOLTAGE_PHASE_2),
+                                  parameters.getValue(EM_VOLTAGE_PHASE_3),
+                                  0);
+  setValue(CCS_VOLTAGE_IMBALANCE_IN, imbalance);
+}
+
+void Ccs::calcMotorCurrentImbalance()
+{
+  float imbalance = calcImbalance(parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1),
+                                  parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1),
+                                  parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1),
+                                  1);
+  setValue(CCS_MOTOR_CURRENT_IMBALANCE, imbalance);
+}
+
+void Ccs::calcMotorCurrentPhase(uint16_t vsdOutCurrent, uint16_t coefCorrect, uint16_t motorCurrent)
+{
+  float current;
+  float vsdCurrent = parameters.getValue(vsdOutCurrent);
+  float coefTrans = parameters.getValue(CCS_COEF_TRANSFORMATION);
+  float coefCor = parameters.getValue(coefCorrect);
+  if (coefTrans) {
+    current = vsdCurrent / coefTrans;
+  }
+  else {
+    current = vsdCurrent;
+  }
+  current = current * coefCor;
+  parameters.setValue(motorCurrent, current);
+}
+
+void Ccs::calcMotorCurrentPhase1()
+{
+  calcMotorCurrentPhase(VSD_CURRENT_OUT_PHASE_1,
+                        CCS_COEF_OUT_CURRENT_1,
+                        CCS_MOTOR_CURRENT_PHASE_1);
+}
+
+void Ccs::calcMotorCurrentPhase2()
+{
+  calcMotorCurrentPhase(VSD_CURRENT_OUT_PHASE_2,
+                        CCS_COEF_OUT_CURRENT_2,
+                        CCS_MOTOR_CURRENT_PHASE_2);
+}
+
+void Ccs::calcMotorCurrentPhase3()
+{
+  calcMotorCurrentPhase(VSD_CURRENT_OUT_PHASE_3,
+                        CCS_COEF_OUT_CURRENT_3,
+                        CCS_MOTOR_CURRENT_PHASE_3);
+}
+
+void Ccs::calcMotorCurrentAvarage()
+{
+  float motorCurrent = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1);
+  motorCurrent = motorCurrent + parameters.getValue(CCS_MOTOR_CURRENT_PHASE_2);
+  motorCurrent = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_3);
+  motorCurrent = motorCurrent / 3;
+  parameters.setValue(CCS_MOTOR_CURRENT_AVARAGE, motorCurrent);
 }
 
 bool Ccs::isStopMotor()
@@ -719,4 +793,28 @@ void Ccs::initParameters()
   setFieldMax(CCS_TIMER_DIFFERENT_START, 3600.0);
   setFieldDef(CCS_TIMER_DIFFERENT_START, 60.0);
   setFieldValue(CCS_TIMER_DIFFERENT_START, 60.0);
+
+  setFieldPhysic(CCS_COEF_OUT_CURRENT_1, PHYSIC_NUMERIC);
+  setFieldMin(CCS_COEF_OUT_CURRENT_1, 0.001);
+  setFieldMax(CCS_COEF_OUT_CURRENT_1, 10.0);
+  setFieldDef(CCS_COEF_OUT_CURRENT_1, 1.0);
+  setFieldValue(CCS_COEF_OUT_CURRENT_1, 1.0);
+
+  setFieldPhysic(CCS_COEF_OUT_CURRENT_2, PHYSIC_NUMERIC);
+  setFieldMin(CCS_COEF_OUT_CURRENT_2, 0.001);
+  setFieldMax(CCS_COEF_OUT_CURRENT_2, 10.0);
+  setFieldDef(CCS_COEF_OUT_CURRENT_2, 1.0);
+  setFieldValue(CCS_COEF_OUT_CURRENT_2, 1.0);
+
+  setFieldPhysic(CCS_COEF_OUT_CURRENT_3, PHYSIC_NUMERIC);
+  setFieldMin(CCS_COEF_OUT_CURRENT_3, 0.001);
+  setFieldMax(CCS_COEF_OUT_CURRENT_3, 10.0);
+  setFieldDef(CCS_COEF_OUT_CURRENT_3, 1.0);
+  setFieldValue(CCS_COEF_OUT_CURRENT_3, 1.0);
+
+  setFieldPhysic(CCS_COEF_TRANSFORMATION, PHYSIC_NUMERIC);
+  setFieldMin(CCS_COEF_TRANSFORMATION, 0.001);
+  setFieldMax(CCS_COEF_TRANSFORMATION, 1000.0);
+  setFieldDef(CCS_COEF_TRANSFORMATION, 1.0);
+  setFieldValue(CCS_COEF_TRANSFORMATION, 1.0);
 }

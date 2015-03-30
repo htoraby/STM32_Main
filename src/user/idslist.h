@@ -5,11 +5,11 @@ enum enID
 {
   CCS_BEGIN,                                /// 0.
   CCS_MOTOR_SPEED_NOW,                      /// Текущие обороты двигателя
-  CCS_MOTOR_CURRENT_PHASE_1_NOW,            /// Ток двигателя фаза 1
-  CCS_MOTOR_CURRENT_PHASE_2_NOW,            /// Ток двигателя фаза 2
-  CCS_MOTOR_CURRENT_PHASE_3_NOW,            /// Ток двигателя фаза 3
+  CCS_MOTOR_CURRENT_PHASE_1,            /// Ток двигателя фаза 1
+  CCS_MOTOR_CURRENT_PHASE_2,            /// Ток двигателя фаза 2
+  CCS_MOTOR_CURRENT_PHASE_3,            /// Ток двигателя фаза 3
   CCS_MOTOR_CURRENT_IMBALANCE,              /// Дисбаланс токов двигателя
-  CCS_MOTOR_CURRENT_AVARAGE_NOW,            /// Ток двигателя средний
+  CCS_MOTOR_CURRENT_AVARAGE,            /// Ток двигателя средний
   CCS_MOTOR_LOAD_NOW,                       /// Текущая загрузка двигателя
   CCS_MOTOR_VOLTAGE_NOW,                    /// Текущее напряжение двигателя
   CCS_MOTOR_COS_PHI_NOW,                    /// Текущий Косинус Фи
@@ -452,11 +452,11 @@ enum enID
   CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME,
   CCS_RGM_PERIODIC_MODE,                    /// Режим периодический
   CCS_RGM_PERIODIC_STATE,
-  CCS_RGM_PERIODIC_RUN_BEGIN_TIME,
-  CCS_RGM_PERIODIC_STOP_BEGIN_TIME,
   CCS_RGM_PERIODIC_RUN_PERIOD,
-  CCS_RGM_PERIODIC_RUN_TIME_TO_END,
   CCS_RGM_PERIODIC_STOP_PERIOD,
+  CCS_RGM_PERIODIC_RUN_BEGIN_TIME,
+  CCS_RGM_PERIODIC_RUN_TIME_TO_END,
+  CCS_RGM_PERIODIC_STOP_BEGIN_TIME,
   CCS_RGM_PERIODIC_STOP_TIME_TO_END,
   CCS_RGM_ALTERNATION_FREQ_MODE,            /// Режим чередования частот
   CCS_RGM_ALTERNATION_FREQ_FREQ_1,          /// Режим чередования частот частота 1
@@ -514,9 +514,9 @@ enum enID
   CCS_COEF_VOLTAGE_IN_A,                    /// Коэффициент корректировки входного напряжения
   CCS_COEF_VOLTAGE_IN_B,
   CCS_COEF_VOLTAGE_IN_C,
-  CCS_COEF_OUT_CURRENT_U,                   /// Коэффициент корректировки выходного тока фаза U
-  CCS_COEF_OUT_CURRENT_V,                   /// Коэффициент корректировки выходного тока фаза V
-  CCS_COEF_OUT_CURRENT_W,                   /// Коэффициент корректировки выходного тока фаза W
+  CCS_COEF_OUT_CURRENT_1,                   /// Коэффициент корректировки выходного тока фаза U
+  CCS_COEF_OUT_CURRENT_2,                   /// Коэффициент корректировки выходного тока фаза V
+  CCS_COEF_OUT_CURRENT_3,                   /// Коэффициент корректировки выходного тока фаза W
   CCS_COEF_RESISTANCE_ISOLATION,            /// Коэффициент корректировки сопротивления изоляции
   CCS_NUMBER_CDNG,                          /// Номер ЦДНГ
   CCS_NUMBER_BUSH,                          /// Номер куста
@@ -670,6 +670,7 @@ enum enID
   CCS_PROT_OTHER_VSD_BLOCK_FLAG,
   CCS_PROT_OTHER_IMB_BLOCK_FLAG,
   CCS_GENERAL_CONDITION,                    //!< Общее состояние
+  CCS_COEF_TRANSFORMATION,                  //!< Коэффициент трансформации
   CCS_LAST_STOP_REASON_TMP,                 //!< Причина последнего останова - регистр временного хранения значения
   CCS_END,                                  /// Последний параметр
   VSD_BEGIN        = 10000,                 /// Первый параметр ЧРП

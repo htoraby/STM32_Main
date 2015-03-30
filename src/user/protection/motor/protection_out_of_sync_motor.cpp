@@ -32,7 +32,7 @@ ProtectionOutOfSyncMotor::~ProtectionOutOfSyncMotor()
 bool ProtectionOutOfSyncMotor::checkAlarm()
 {
   float nominal = parameters.getValue(VSD_MOTOR_CURRENT);
-  valueParameter2_ = parameters.getValue(CCS_MOTOR_CURRENT_AVARAGE_NOW);
+  valueParameter2_ = parameters.getValue(CCS_MOTOR_CURRENT_AVARAGE);
   valueParameter_ = parameters.getValue(CCS_MOTOR_COS_PHI_NOW);
 
   if ((valueParameter2_ > nominal) && (valueParameter_ < tripSetpoint_))
