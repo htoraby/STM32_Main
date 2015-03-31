@@ -440,14 +440,14 @@ unsigned short Device::getIndexAtId(unsigned short id)
 float Device::getValue(unsigned short id, bool *ok)
 {
   uint16_t index = getIndexAtId(id);
-  *ok = (getFieldValidity(index) == VALIDITY_GOOD) ? true : false;
+  *ok = (getFieldValidity(index) == VALIDITY_OK) ? true : false;
   return getFieldValue(index);
 }
 
 uint32_t Device::getValueUint32(unsigned short id, bool *ok)
 {
   uint16_t index = getIndexAtId(id);
-  *ok = (getFieldValidity(index) == VALIDITY_GOOD) ? true : false;
+  *ok = (getFieldValidity(index) == VALIDITY_OK) ? true : false;
   return getFieldValueUint32(index);
 }
 
