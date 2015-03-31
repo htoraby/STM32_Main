@@ -22,7 +22,10 @@ void RegimeTechnologPeriodic::processing()
   workTimeToEnd_ = parameters.getValue(CCS_RGM_PERIODIC_RUN_TIME_TO_END);
   stopTimeToEnd_ = parameters.getValue(CCS_RGM_PERIODIC_STOP_TIME_TO_END);
 
-  if (action_ == offAction) { // Режим - выключен
+  LastReasonRun runReason = (LastReasonRun)parameters.getValue(CCS_LAST_RUN_REASON_TMP);
+  float stopReason = parameters.getValue(CCS_LAST_STOP_REASON);
+
+  if (action_ == OffAction) { // Режим - выключен
     state_ = IdleState;
   }
 
@@ -32,14 +35,14 @@ void RegimeTechnologPeriodic::processing()
       stopBeginTime_ = ksu.getTime();
       workTimeToEnd_ = 0;
       stopTimeToEnd_ = 0;
-      if (action_ != offAction) {                       // Режим - включен
+      if (action_ != OffAction) {                       // Режим - включен
         if (ksu.isWorkMotor() && ksu.isProgramMode()) { // Двигатель - работа; Режим - программа;
           state_ = WorkState;
         }
       }
       break;
     case WorkState:
-      if (ksu.isWorkMotor()) {       // Двигатель - работа;
+      if (ksu.getValue(CCS_CONDITION) != CCS_CONDITION_STOP) { // Станция в работе;
         uint32_t time = ksu.getSecFromCurTime(workBeginTime_);
         workTimeToEnd_ = getTimeToEnd(workPeriod_, time);
         if (workTimeToEnd_ == 0) {
@@ -48,9 +51,37 @@ void RegimeTechnologPeriodic::processing()
             state_ = StartPauseState;
           }
         }
-      } else {
-        // TODO: Станция в останове
+      }
+      else { // Станция в останове
+        if (runReason != parameters.getValue(CCS_LAST_RUN_REASON)) { // Попытка пуска
+          // Если причина останова "Исключение"
+          if ((stopReason == LastReasonStopOperator) ||
+              (stopReason == LastReasonStopRemote) ||
+              (stopReason == LastReasonStopUndervoltage) ||
+              (stopReason == LastReasonStopOvervoltage) ||
+              (stopReason == LastReasonStopImbalanceVoltage) ||
+              (stopReason == LastReasonStopNoVoltage)) {
+            if (ksu.isProgramMode()) { // Режим - программа;
+              // TODO: Станция в останове
+              uint32_t time = ksu.getSecFromCurTime(workBeginTime_);
+              uint32_t workTimeToEnd = getTimeToEnd(workPeriod_, time);
+              if (workTimeToEnd < (30 * 60)) { // Если время доработки меньше 30 минут
+                stopBeginTime_ = parameters.getValueUint32(CCS_LAST_STOP_DATE_TIME); // Время перехода в паузу фиксируем как время остановки двигателя
+                state_ = PauseState;
+              }
+              else {
 
+              }
+            }
+            else {
+              state_ = IdleState;
+            }
+          }
+          else {
+            ksu.start(runReason);
+            state_ = IdleState;
+          }
+        }
       }
       break;
     case StartPauseState:
@@ -68,7 +99,8 @@ void RegimeTechnologPeriodic::processing()
             ksu.start(LastReasonRunProgram);
             state_ = RestartState;
           }
-        } else {
+        }
+        else {
           // TODO: Режим программы отключен
 
         }
@@ -82,7 +114,8 @@ void RegimeTechnologPeriodic::processing()
           workBeginTime_ = ksu.getTime();
           state_ = WorkState;
         }
-      } else {
+      }
+      else {
         state_ = PauseState;
       }
       break;

@@ -13,10 +13,10 @@ public:
    * \brief Список действий режима
   */
   typedef enum {
-    offAction,       //!< Режим отключен
+    OffAction,       //!< Режим отключен
     SingleAction,    //!< Однократный
     EachRunAction,   //!< При каждом запуске
-    onAction,        //!< Режим включен
+    OnAction,        //!< Режим включен
   } RegimeAction;
 
   /*!
