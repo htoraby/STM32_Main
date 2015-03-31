@@ -4,6 +4,7 @@ ProtectionTurbineRotation::ProtectionTurbineRotation()
   : isStartProtect_(false)
 {
   idMode_= CCS_PROT_MOTOR_ASYNC_MODE;
+  idPrevent_= CCS_PROT_MOTOR_ASYNC_PREVENT;
   idActivDelay_ = CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_MOTOR_ASYNC_TRIP_DELAY;
   idRestartDelay_ = CCS_PROT_MOTOR_ASYNC_RESTART_DELAY;
@@ -27,13 +28,13 @@ ProtectionTurbineRotation::~ProtectionTurbineRotation()
 
 bool ProtectionTurbineRotation::checkPrevent()
 {
-  bool block = false;
+  bool prevent = false;
   float value = parameters.getValue(CCS_TURBO_ROTATION_NOW);
   if ((ksu.isStopMotor() || ksu.isDelay() || ksu.isBlock())
       && (value > restartSetpoint_)) {
-    block = true;
+    prevent = true;
   }
-  return block;
+  return prevent;
 }
 
 void ProtectionTurbineRotation::automatProtection()

@@ -3,6 +3,7 @@
 ProtectionResistanceIsolation::ProtectionResistanceIsolation()
 {
   idMode_= CCS_PROT_DHS_RESISTANCE_MODE;
+  idPrevent_= CCS_PROT_DHS_RESISTANCE_PREVENT;
   idActivDelay_ = CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_DHS_RESISTANCE_TRIP_DELAY;
   idRestartDelay_ = CCS_PROT_DHS_RESISTANCE_RESTART_DELAY;

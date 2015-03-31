@@ -4,6 +4,7 @@
 ProtectionCurrentMotor::ProtectionCurrentMotor()
 {
   idMode_= CCS_PROT_MOTOR_CURRENT_MODE;
+  idPrevent_= CCS_PROT_MOTOR_CURRENT_PREVENT;
   idActivDelay_ = CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_MOTOR_CURRENT_TRIP_DELAY;
   idRestartDelay_ = CCS_PROT_MOTOR_CURRENT_RESTART_DELAY;

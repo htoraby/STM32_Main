@@ -432,7 +432,7 @@ enum enParamProt {
 };
 
 enum enValidity {
-  VALIDITY_GOOD       = 0,
+  VALIDITY_OK         = 0,
   VALIDITY_ERROR      = 1,
   VALIDITY_MIN        = 2,
   VALIDITY_MAX        = 3,

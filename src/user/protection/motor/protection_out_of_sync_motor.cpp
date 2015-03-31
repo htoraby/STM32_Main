@@ -3,6 +3,7 @@
 ProtectionOutOfSyncMotor::ProtectionOutOfSyncMotor()
 {
   idMode_= CCS_PROT_MOTOR_OUT_OF_SYNC_MODE;
+  idPrevent_= CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT;
   idActivDelay_ = CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY;
   idRestartDelay_ = CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY;
@@ -39,11 +40,6 @@ bool ProtectionOutOfSyncMotor::checkAlarm()
     return true;
   else
     return false;
-}
-
-bool ProtectionOutOfSyncMotor::checkPrevent()
-{
-  return false;
 }
 
 void ProtectionOutOfSyncMotor::addEventReactionProt()

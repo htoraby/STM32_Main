@@ -313,7 +313,7 @@ void DeviceModbus::exchangeTask()
           if(!(mms_->readMultipleRegisters(deviceAddress_,address,regArr_,1))) {
             int index = getIndexAtAddress(address);
             modbusParameters_[index].value.int16_t[0] = regArr_[0];
-            modbusParameters_[index].validity = VALIDITY_GOOD;
+            modbusParameters_[index].validity = VALIDITY_OK;
             putMessageUpdateId(modbusParameters_[index].id);
           }
           else {
@@ -337,7 +337,7 @@ void DeviceModbus::exchangeTask()
               int index = getIndexAtAddress(address);
               for (int i = 0; i < count; i++) {
                 modbusParameters_[index].value.int16_t[0] = regArr_[i];
-                modbusParameters_[index].validity = VALIDITY_GOOD;
+                modbusParameters_[index].validity = VALIDITY_OK;
                 putMessageUpdateId(modbusParameters_[index].id);
                 index++;
               }

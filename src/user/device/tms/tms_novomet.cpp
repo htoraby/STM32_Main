@@ -70,7 +70,7 @@ void TmsNovomet::getNewValue(uint16_t id)
 
 uint8_t TmsNovomet::setNewValue(uint16_t id, float value)
 {
-  return 0;
+  return setValue(id, value);
 }
 
 void TmsNovomet::writeToDevice(int id, float value)

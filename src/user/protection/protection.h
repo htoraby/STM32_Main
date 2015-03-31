@@ -203,6 +203,7 @@ protected:
 
   /// id параметров защиты
   unsigned short idMode_;                   //!< id Режим защиты
+  unsigned short idPrevent_;                //!< id Флаг запрещающего параметра
   unsigned short idActivDelay_;             //!< id задержка активации защиты
   unsigned short idTripDelay_;              //!< id задержка срабатывания защиты
   unsigned short idRestartDelay_;           //!< id задержка АПВ защиты

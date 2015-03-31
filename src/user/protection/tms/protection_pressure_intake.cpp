@@ -4,6 +4,7 @@ ProtectionPressureIntake::ProtectionPressureIntake()
 {
 
   idMode_= CCS_PROT_DHS_PRESSURE_INTAKE_MODE;
+  idPrevent_= CCS_PROT_DHS_PRESSURE_INTAKE_PREVENT;
   idActivDelay_ = CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY;
   idRestartDelay_ = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY;
@@ -36,15 +37,11 @@ bool ProtectionPressureIntake::checkAlarm()
 }
 
 bool ProtectionPressureIntake::checkPrevent()
-{
-  if (alarm_) {
-    return true;
-  } else {
-    if (Protection::isLowerLimit(restartSetpoint_)) /* && (state_ == ProtectionStateRestartWait))*/
-      return true;
-  }
-
-  return false;
+{  
+  if (restart_)
+    return Protection::isLowerLimit(restartSetpoint_);
+  else
+    return Protection::isLowerLimit(tripSetpoint_);
 }
 
 float ProtectionPressureIntake::calcValue()

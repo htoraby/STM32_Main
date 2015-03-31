@@ -3,6 +3,7 @@
 ProtectionOverloadMotor::ProtectionOverloadMotor()
 {
   idMode_= CCS_PROT_MOTOR_OVERLOAD_MODE;
+  idPrevent_= CCS_PROT_MOTOR_OVERLOAD_PREVENT;
   idActivDelay_ = CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY;
   idRestartDelay_ = CCS_PROT_MOTOR_OVERLOAD_RESTART_DELAY;
@@ -30,11 +31,6 @@ ProtectionOverloadMotor::~ProtectionOverloadMotor()
 }
 
 bool ProtectionOverloadMotor::checkAlarm()
-{
-  return Protection::isHigherLimit(tripSetpoint_);
-}
-
-bool ProtectionOverloadMotor::checkPrevent()
 {
   return Protection::isHigherLimit(tripSetpoint_);
 }
