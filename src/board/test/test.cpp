@@ -49,7 +49,7 @@ uint8_t bufferRx[4096];
 void testInit()
 {
   /* Create Test thread */
-  osThreadDef(Test, testThread, osPriorityNormal, 0, 6 * configMINIMAL_STACK_SIZE);
+  osThreadDef(Test, testThread, osPriorityNormal, 0, 10 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(Test), NULL);
 
 #if (TEST_UART == 1)

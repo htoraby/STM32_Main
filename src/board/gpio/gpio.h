@@ -70,6 +70,8 @@ enum DoNum {
 #define WATCH_PIN  GPIOI, GPIO_PIN_5
 //! Вывод включения подсветки LCD
 #define LCD_ON_PIN  GPIOD, GPIO_PIN_3
+//! Вывод переключения USB между контроллерами
+#define USB_ON_PIN  GPIOG, GPIO_PIN_9
 
 /*!
  \brief Инициализация выводов, кнопок, LED, DI, DO
