@@ -3,6 +3,7 @@
 ProtectionLockDoor::ProtectionLockDoor()
 {
   idMode_= CCS_PROT_OTHER_LOCK_DOOR_MODE;
+  idPrevent_= CCS_PROT_OTHER_LOCK_DOOR_PREVENT;
   idActivDelay_ = CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY;
   idRestartDelay_ = CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY;

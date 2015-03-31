@@ -3,6 +3,7 @@
 ProtectionTemperatureMotor::ProtectionTemperatureMotor()
 {
   idMode_= CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE;
+  idPrevent_= CCS_PROT_DHS_TEMPERATURE_MOTOR_PREVENT;
   idActivDelay_ = CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY;
   idRestartDelay_ = CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY;
@@ -36,7 +37,10 @@ bool ProtectionTemperatureMotor::checkAlarm()
 
 bool ProtectionTemperatureMotor::checkPrevent()
 {
-  return Protection::isHigherLimit(restartSetpoint_);
+  if (restart_)
+    return Protection::isHigherLimit(restartSetpoint_);
+  else
+    return Protection::isHigherLimit(tripSetpoint_);
 }
 
 float ProtectionTemperatureMotor::calcValue()

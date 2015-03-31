@@ -3,6 +3,7 @@
 ProtectionUnderloadMotor::ProtectionUnderloadMotor()
 {
   idMode_= CCS_PROT_MOTOR_UNDERLOAD_MODE;
+  idPrevent_= CCS_PROT_MOTOR_UNDERLOAD_PREVENT;
   idActivDelay_ = CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY;
   idTripDelay_ = CCS_PROT_MOTOR_UNDERLOAD_TRIP_DELAY;
   idRestartDelay_ = CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY;
@@ -30,11 +31,6 @@ ProtectionUnderloadMotor::~ProtectionUnderloadMotor()
 }
 
 bool ProtectionUnderloadMotor::checkAlarm()
-{
-  return Protection::isLowerLimit(tripSetpoint_);
-}
-
-bool ProtectionUnderloadMotor::checkPrevent()
 {
   return Protection::isLowerLimit(tripSetpoint_);
 }

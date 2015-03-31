@@ -61,6 +61,7 @@ void Protection::setCurrentParamProt()
   ksu.setValue(idBlockFlag_, block_);
   ksu.setValue(idRestartCount_, restartCount_);
   ksu.setValue(idRestartFirstTime_, restartFirstTime_);
+  ksu.setValue(idPrevent_, prevent_);
 }
 
 bool Protection::checkAlarm()

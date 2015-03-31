@@ -385,8 +385,8 @@ void Ccs::calcVoltageImbalanceIn()
 void Ccs::calcMotorCurrentImbalance()
 {
   float imbalance = calcImbalance(parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1),
-                                  parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1),
-                                  parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1),
+                                  parameters.getValue(CCS_MOTOR_CURRENT_PHASE_2),
+                                  parameters.getValue(CCS_MOTOR_CURRENT_PHASE_3),
                                   1);
   setValue(CCS_MOTOR_CURRENT_IMBALANCE, imbalance);
 }
