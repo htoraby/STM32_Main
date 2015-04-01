@@ -33,6 +33,11 @@ ProtectionUnderVoltageInput::~ProtectionUnderVoltageInput()
 
 }
 
+void ProtectionUnderVoltageInput::getOtherSetpointProt()
+{
+  timerDifStart_ = ksu.getValue(idParam_);
+}
+
 bool ProtectionUnderVoltageInput::checkAlarm()
 {
   return Protection::isLowerLimit(tripSetpoint_);

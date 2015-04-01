@@ -33,6 +33,11 @@ ProtectionImbalanceVoltageInput::~ProtectionImbalanceVoltageInput()
 
 }
 
+void ProtectionImbalanceVoltageInput::getOtherSetpointProt()
+{
+  timerDifStart_ = ksu.getValue(idParam_);
+}
+
 bool ProtectionImbalanceVoltageInput::checkAlarm()
 {
   return Protection::isHigherLimit(tripSetpoint_);

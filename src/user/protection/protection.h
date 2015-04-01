@@ -38,11 +38,16 @@ public:
   void processing();
 
   /*!
-   * \brief Метод получения уставок защиты.
+   * \brief Метод получения основных уставок защиты.
    * Метод должен вызываться с периодом работы автомата защиты,
    * таким образом получаем актуальные значения уставок
    */
-  virtual void getSetpointProt();
+  void getGeneralSetpointProt();
+
+  /*!
+   * \brief Метод получения других уставок защит
+   */
+  virtual void getOtherSetpointProt();
 
   /*!
    * \brief Метод получения текущих параметров защиты.
@@ -229,6 +234,7 @@ protected:
   float tripSetpoint_;                      //!< Уставка: граница срабатывания защиты
   float restartSetpoint_;                   //!< Уставка: граница АПВ
   float timerDifStart_;                     //!< Уставка: Параметр 1
+  float workWithAlarmFlag_;                 //!< Уставка: Флаг разрешения работы при аварии
   int state_;                               //!< Состояние автомата защиты
   float valueParameter_;                    //!< Текущее значение контролируемого параметра
   uint32_t timer_;                          //!< Текущее значение таймера

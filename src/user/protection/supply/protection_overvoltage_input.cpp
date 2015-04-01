@@ -33,6 +33,11 @@ ProtectionOverVoltageInput::~ProtectionOverVoltageInput()
 
 }
 
+void ProtectionOverVoltageInput::getOtherSetpointProt()
+{
+  timerDifStart_ = ksu.getValue(idParam_);
+}
+
 bool ProtectionOverVoltageInput::checkAlarm()
 {
   return Protection::isHigherLimit(tripSetpoint_);
