@@ -31,6 +31,11 @@ ProtectionResistanceIsolation::~ProtectionResistanceIsolation()
 
 }
 
+void ProtectionResistanceIsolation::getOtherSetpointProt()
+{
+  workWithAlarmFlag_ = ksu.getValue(idParam_);
+}
+
 bool ProtectionResistanceIsolation::checkAlarm()
 {
   return Protection::isLowerLimit(tripSetpoint_);

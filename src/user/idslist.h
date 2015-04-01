@@ -55,7 +55,7 @@ enum enID
   CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET,                //!< Автосброс счетчика АПВ
   CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_SETPOINT,                //!< Уставка срабатывания защиты
   CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_SETPOINT,             //!< 
-  CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER,                    //!< Уставка параметр защиты
+  CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER,                    //!< Уставка Параметр защиты, для этой защиты работать по ВРП
   CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FLAG,                 //!< Уставка параметр защиты
   CCS_PROT_SUPPLY_OVERVOLTAGE_STATE,                        //!< Текущий параметр состояние автомата
   CCS_PROT_SUPPLY_OVERVOLTAGE_TIME,                         //!< Текущий параметр Фиксированное время
@@ -70,7 +70,7 @@ enum enID
   CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET,               //!< Автосброс счетчика АПВ
   CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_SETPOINT,               //!< 
   CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_SETPOINT,            //!< 
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER,                   //!< 
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER,                   //!< Уставка Параметр защиты, для этой защиты работать по ВРП
   CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FLAG,                //!< 
   CCS_PROT_SUPPLY_UNDERVOLTAGE_STATE,                       //!< 
   CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME,                        //!< 
@@ -85,7 +85,7 @@ enum enID
   CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_RESET,          //!< Автосброс счетчика АПВ
   CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT,          //!< 
   CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_SETPOINT,       //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER,              //!< 
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER,              //!< Уставка Параметр защиты, для этой защиты работать по ВРП
   CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FLAG,           //!< 
   CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_STATE,                  //!< 
   CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME,                   //!< 
@@ -100,7 +100,7 @@ enum enID
   CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_RESET,          //!< 
   CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_SETPOINT,          //!< 
   CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_SETPOINT,       //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER,              //!< 
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER,              //!< Уставка Параметр защиты, для этой защиты работать по ВРП
   CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FLAG,           //!< 
   CCS_PROT_SUPPLY_IMBALANCE_CURRENT_STATE,                  //!< 
   CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME,                   //!< 
@@ -250,7 +250,7 @@ enum enID
   CCS_PROT_DHS_RESISTANCE_RESTART_RESET,                    //!< 
   CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT,                    //!< 
   CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT,                 //!< 
-  CCS_PROT_DHS_RESISTANCE_PARAMETER,                        //!< 
+  CCS_PROT_DHS_RESISTANCE_PARAMETER,                        //!< Уставка Параметр защиты, для этой защиты работать в режиме пониженной изоляции
   CCS_PROT_DHS_RESISTANCE_RESTART_FLAG,                     //!< 
   CCS_PROT_DHS_RESISTANCE_STATE,                            //!< 
   CCS_PROT_DHS_RESISTANCE_TIME,                             //!< 

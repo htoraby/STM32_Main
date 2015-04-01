@@ -1407,8 +1407,7 @@ void Ccs::initParameters()
   setFieldMin(CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME, 60.0);
   setFieldMax(CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME, 3599940.0);
   setFieldDef(CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME, 86400.0);
-  setFieldValue(CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME, 86400.0);
-
+  setFieldValue(CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME, 86400.0); 
   // Защита "Температура двигателя"
   // Защита "Температура двигателя" - уставка "Режим реакции защиты"
   setFieldPhysic(CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE, PHYSIC_NUMERIC);
@@ -1593,97 +1592,116 @@ void Ccs::initParameters()
   setFieldDef(CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_FIRST_TIME, 86400.0);
   setFieldValue(CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_FIRST_TIME, 86400.0);
 
-  //-
+  /*
+  // Защита "Температура двигателя"
+  // Защита "Температура двигателя" - уставка "Режим реакции защиты"
+  // Защита "Температура двигателя" - флаг запрещающего параметра
+  // Защита "Температура двигателя" - уставка "Задержка активации защиты"
+  // Защита "Температура двигателя" - уставка "Задержка срабатывания защиты"
+  // Защита "Температура двигателя" - уставка "Задержка АПВ защиты"
+  // Защита "Температура двигателя" - уставка "Количество разрешенных АПВ"
+  // Защита "Температура двигателя" - уставка "Период сброса счётчиков АПВ"
+  // Защита "Температура двигателя" - уставка "Граница срабатывания защиты"
+  // Защита "Температура двигателя" - уставка "Граница разрешения АПВ"
+  // Защита "Температура двигателя" - уставка "Флаг работы с ВРП"
+  // Защита "Температура двигателя" - Флаг что защита в АПВ
+  // Защита "Температура двигателя" - состояние автомата защиты
+  // Защита "Температура двигателя" - значение внутреннего таймера
+  // Защита "Температура двигателя" - значение счётчиков АПВ
+  // Защита "Температура двигателя" - время первого АПВ
+  */
 
+  // Защита "Сопротивление изоляции"
+  // Защита "Сопротивление изоляции" - уставка "Режим реакции защиты"
   setFieldPhysic(CCS_PROT_DHS_RESISTANCE_MODE, PHYSIC_NUMERIC);
   setFieldMin(CCS_PROT_DHS_RESISTANCE_MODE, 0.0);
-  setFieldMax(CCS_PROT_DHS_RESISTANCE_MODE, Protection::ModeRestart);
-  setFieldDef(CCS_PROT_DHS_RESISTANCE_MODE, Protection::ModeBlock);
-  setFieldValue(CCS_PROT_DHS_RESISTANCE_MODE, (float)Protection::ModeBlock);
-
+  setFieldMax(CCS_PROT_DHS_RESISTANCE_MODE, 1.0);
+  setFieldDef(CCS_PROT_DHS_RESISTANCE_MODE, 1.0);
+  setFieldValue(CCS_PROT_DHS_RESISTANCE_MODE, 1.0);
+  // Защита "Сопротивление изоляции" - флаг запрещающего параметра
   setFieldPhysic(CCS_PROT_DHS_RESISTANCE_PREVENT, PHYSIC_NUMERIC);
   setFieldMin(CCS_PROT_DHS_RESISTANCE_PREVENT, 0.0);
   setFieldMax(CCS_PROT_DHS_RESISTANCE_PREVENT, 1.0);
   setFieldDef(CCS_PROT_DHS_RESISTANCE_PREVENT, 0.0);
   setFieldValue(CCS_PROT_DHS_RESISTANCE_PREVENT, 0.0);
-
+  // Защита "Сопротивление изоляции" - уставка "Задержка активации защиты" всегда 0
   setFieldPhysic(CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY, PHYSIC_TIME);
   setFieldMin(CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY, 0.0);
-  setFieldMax(CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY, 59999.0);
+  setFieldMax(CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY, 0.0);
   setFieldDef(CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY, 0.0);
   setFieldValue(CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY, 0.0);
-
+  // Защита "Сопротивление изоляции" - уставка "Задержка срабатывания защиты" всегда 0
   setFieldPhysic(CCS_PROT_DHS_RESISTANCE_TRIP_DELAY, PHYSIC_TIME);
   setFieldMin(CCS_PROT_DHS_RESISTANCE_TRIP_DELAY, 0.0);
-  setFieldMax(CCS_PROT_DHS_RESISTANCE_TRIP_DELAY, 600.0);
-  setFieldDef(CCS_PROT_DHS_RESISTANCE_TRIP_DELAY, 5.0);
-  setFieldValue(CCS_PROT_DHS_RESISTANCE_TRIP_DELAY, 5.0);
-
+  setFieldMax(CCS_PROT_DHS_RESISTANCE_TRIP_DELAY, 0.0);
+  setFieldDef(CCS_PROT_DHS_RESISTANCE_TRIP_DELAY, 0.0);
+  setFieldValue(CCS_PROT_DHS_RESISTANCE_TRIP_DELAY, 0.0);
+  // Защита "Сопротивление изоляции" - уставка "Задержка АПВ защиты" всегда 0
   setFieldPhysic(CCS_PROT_DHS_RESISTANCE_RESTART_DELAY, PHYSIC_TIME);
-  setFieldMin(CCS_PROT_DHS_RESISTANCE_RESTART_DELAY, 60.0);
-  setFieldMax(CCS_PROT_DHS_RESISTANCE_RESTART_DELAY, 86400.0);
-  setFieldDef(CCS_PROT_DHS_RESISTANCE_RESTART_DELAY, 3600.0);
-  setFieldValue(CCS_PROT_DHS_RESISTANCE_RESTART_DELAY, 3600.0);
-
+  setFieldMin(CCS_PROT_DHS_RESISTANCE_RESTART_DELAY, 0.0);
+  setFieldMax(CCS_PROT_DHS_RESISTANCE_RESTART_DELAY, 0.0);
+  setFieldDef(CCS_PROT_DHS_RESISTANCE_RESTART_DELAY, 0.0);
+  setFieldValue(CCS_PROT_DHS_RESISTANCE_RESTART_DELAY, 0.0);
+  // Защита "Сопротивление изоляции" - уставка "Количество разрешенных АПВ" всегда 0
   setFieldPhysic(CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT, PHYSIC_NUMERIC);
   setFieldMin(CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT, 0.0);
-  setFieldMax(CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT, 99.0);
+  setFieldMax(CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT, 0.0);
   setFieldDef(CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT, 0.0);
   setFieldValue(CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT, 0.0);
-
+  // Защита "Сопротивление изоляции" - уставка "Период сброса счётчиков АПВ" всегда 0
   setFieldPhysic(CCS_PROT_DHS_RESISTANCE_RESTART_RESET, PHYSIC_NUMERIC);
-  setFieldMin(CCS_PROT_DHS_RESISTANCE_RESTART_RESET, 60.0);
-  setFieldMax(CCS_PROT_DHS_RESISTANCE_RESTART_RESET, 86400.0);
-  setFieldDef(CCS_PROT_DHS_RESISTANCE_RESTART_RESET, 3600.0);
-  setFieldValue(CCS_PROT_DHS_RESISTANCE_RESTART_RESET, 3600.0);
-
-  setFieldPhysic(CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT, PHYSIC_PERCENT);
-  setFieldMin(CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT, 0.0);
-  setFieldMax(CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT, 100.0);
-  setFieldDef(CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT, 80.0);
-  setFieldValue(CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT, 80.0);
-
+  setFieldMin(CCS_PROT_DHS_RESISTANCE_RESTART_RESET, 0.0);
+  setFieldMax(CCS_PROT_DHS_RESISTANCE_RESTART_RESET, 0.0);
+  setFieldDef(CCS_PROT_DHS_RESISTANCE_RESTART_RESET, 0.0);
+  setFieldValue(CCS_PROT_DHS_RESISTANCE_RESTART_RESET, 0.0);
+  // Защита "Сопротивление изоляции" - уставка "Граница срабатывания защиты"
+  setFieldPhysic(CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT, PHYSIC_RESISTANCE);
+  setFieldMin(CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT, 30.0);
+  setFieldMax(CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT, 500.0);
+  setFieldDef(CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT, 30.0);
+  setFieldValue(CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT, 30.0);
+  // Защита "Сопротивление изоляции" - уставка "Граница разрешения АПВ"
   setFieldPhysic(CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT, PHYSIC_PERCENT);
   setFieldMin(CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT, 0.0);
-  setFieldMax(CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT, 100.0);
-  setFieldDef(CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT, 100.0);
-  setFieldValue(CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT, 100.0);
-
+  setFieldMax(CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT, 0.0);
+  setFieldDef(CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT, 0.0);
+  setFieldValue(CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT, 0.0);
+  // Защита "Сопротивление изоляции" - уставка "Флаг работы в режиме пониженной изоляции"
   setFieldPhysic(CCS_PROT_DHS_RESISTANCE_PARAMETER, PHYSIC_NUMERIC);
   setFieldMin(CCS_PROT_DHS_RESISTANCE_PARAMETER, 0.0);
   setFieldMax(CCS_PROT_DHS_RESISTANCE_PARAMETER, 1.0);
-  setFieldDef(CCS_PROT_DHS_RESISTANCE_PARAMETER, 1.0);
-  setFieldValue(CCS_PROT_DHS_RESISTANCE_PARAMETER, 1.0);
-
+  setFieldDef(CCS_PROT_DHS_RESISTANCE_PARAMETER, 0.0);
+  setFieldValue(CCS_PROT_DHS_RESISTANCE_PARAMETER, 0.0);
+  // Защита "Сопротивление изоляции" - Флаг что защита в АПВ
   setFieldPhysic(CCS_PROT_DHS_RESISTANCE_RESTART_FLAG, PHYSIC_NUMERIC);
   setFieldMin(CCS_PROT_DHS_RESISTANCE_RESTART_FLAG, 0.0);
-  setFieldMax(CCS_PROT_DHS_RESISTANCE_RESTART_FLAG, 1.0);
-  setFieldDef(CCS_PROT_DHS_RESISTANCE_RESTART_FLAG, 1.0);
-  setFieldValue(CCS_PROT_DHS_RESISTANCE_RESTART_FLAG, 1.0);
-
+  setFieldMax(CCS_PROT_DHS_RESISTANCE_RESTART_FLAG, 0.0);
+  setFieldDef(CCS_PROT_DHS_RESISTANCE_RESTART_FLAG, 0.0);
+  setFieldValue(CCS_PROT_DHS_RESISTANCE_RESTART_FLAG, 0.0);
+  // Защита "Сопротивление изоляции" - состояние автомата защиты
   setFieldPhysic(CCS_PROT_DHS_RESISTANCE_STATE, PHYSIC_NUMERIC);
   setFieldMin(CCS_PROT_DHS_RESISTANCE_STATE, 0.0);
   setFieldMax(CCS_PROT_DHS_RESISTANCE_STATE, 3.0);
   setFieldDef(CCS_PROT_DHS_RESISTANCE_STATE, 3.0);
   setFieldValue(CCS_PROT_DHS_RESISTANCE_STATE, 3.0);
-
+  // Защита "Сопротивление изоляции" - значение внутреннего таймера
   setFieldPhysic(CCS_PROT_DHS_RESISTANCE_TIME, PHYSIC_TIME);
   setFieldMin(CCS_PROT_DHS_RESISTANCE_TIME, 0);
   setFieldMax(CCS_PROT_DHS_RESISTANCE_TIME, 0xFFFFFFFF);
   setFieldDef(CCS_PROT_DHS_RESISTANCE_TIME, 0);
   setFieldValue(CCS_PROT_DHS_RESISTANCE_TIME, (uint32_t)0);
-
+  // Защита "Сопротивление изоляции" - значение счётчиков АПВ
   setFieldPhysic(CCS_PROT_DHS_RESISTANCE_RESTART_COUNT, PHYSIC_NUMERIC);
   setFieldMin(CCS_PROT_DHS_RESISTANCE_RESTART_COUNT, 0.0);
-  setFieldMax(CCS_PROT_DHS_RESISTANCE_RESTART_COUNT, 99.0);
+  setFieldMax(CCS_PROT_DHS_RESISTANCE_RESTART_COUNT, 0.0);
   setFieldDef(CCS_PROT_DHS_RESISTANCE_RESTART_COUNT, 0.0);
   setFieldValue(CCS_PROT_DHS_RESISTANCE_RESTART_COUNT, 0.0);
-
+  // Защита "Сопротивление изоляции" - время первого АПВ
   setFieldPhysic(CCS_PROT_DHS_RESISTANCE_RESTART_FIRST_TIME, PHYSIC_TIME);
-  setFieldMin(CCS_PROT_DHS_RESISTANCE_RESTART_FIRST_TIME, 60.0);
-  setFieldMax(CCS_PROT_DHS_RESISTANCE_RESTART_FIRST_TIME, 3599940.0);
-  setFieldDef(CCS_PROT_DHS_RESISTANCE_RESTART_FIRST_TIME, 86400.0);
-  setFieldValue(CCS_PROT_DHS_RESISTANCE_RESTART_FIRST_TIME, 86400.0);
+  setFieldMin(CCS_PROT_DHS_RESISTANCE_RESTART_FIRST_TIME, 0.0);
+  setFieldMax(CCS_PROT_DHS_RESISTANCE_RESTART_FIRST_TIME, 0.0);
+  setFieldDef(CCS_PROT_DHS_RESISTANCE_RESTART_FIRST_TIME, 0.0);
+  setFieldValue(CCS_PROT_DHS_RESISTANCE_RESTART_FIRST_TIME, 0.0);
 
   //-
 

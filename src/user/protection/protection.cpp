@@ -2,7 +2,9 @@
 #include "protection_main.h"
 
 Protection::Protection()
-  : attempt_(false)
+  : timerDifStart_(false)
+  , workWithAlarmFlag_(false)
+  , attempt_(false)
   , delay_(false)
 {
 
@@ -15,7 +17,8 @@ Protection::~Protection()
 
 void Protection::processing()
 { 
-  getSetpointProt();                        // Получаем уставки защиты
+  getGeneralSetpointProt();                        // Получаем уставки защиты
+  getOtherSetpointProt();
   getCurrentParamProt();                    // Получаем текущие параметры защиты
   if (!isModeOff()) {
     alarm_ = checkAlarm();                    // Определяем выполняется ли условие срабатывания защиты
@@ -31,7 +34,7 @@ void Protection::processing()
   setCurrentParamProt();                    // Сохраняем текущие параметры защиты
 }
 
-void Protection::getSetpointProt()
+void Protection::getGeneralSetpointProt()
 {
   mode_           = ksu.getValue(idMode_);
   activDelay_     = ksu.getValue(idActivDelay_);
@@ -41,7 +44,11 @@ void Protection::getSetpointProt()
   restartResetTime_ = ksu.getValue(idRestartResetTime_);
   tripSetpoint_   = ksu.getValue(idTripSetpoint_);
   restartSetpoint_= ksu.getValue(idRestartSetpoint_);
-  timerDifStart_  = ksu.getValue(idParam_);
+}
+
+void Protection::getOtherSetpointProt()
+{
+
 }
 
 void Protection::getCurrentParamProt()
@@ -188,8 +195,8 @@ void Protection::processingStateRun()       // Состояние работа
       }
       else if (isModeBlock()) {             // Двигатель - работа; Режим - авто; Защита - блок;
         if (alarm_) {                       // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме
-          if (timer_ == 0) {                // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - начало;
-            timer_ = ksu.getTime();             // Зафиксировали время начала задержки срабатывания
+          if ((timer_ == 0) && tripDelay_) {// Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - начало;
+            timer_ = ksu.getTime();         // Зафиксировали время начала задержки срабатывания
             logDebug.add(DebugMsg, "Reaction - Begin");
             delay_ = true;
           }
@@ -211,8 +218,8 @@ void Protection::processingStateRun()       // Состояние работа
       }
       else if (isModeRestart()) {           // Двигатель - работа; Режим - авто; Защита - АПВ;
         if (alarm_) {                       // Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме
-          if (timer_ == 0) {                // Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме; Срабатывание - начало;
-            timer_ = ksu.getTime();             // Зафиксировали время начала задержки срабатывания
+          if ((timer_ == 0) && tripDelay_) {// Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме; Срабатывание - начало;
+            timer_ = ksu.getTime();         // Зафиксировали время начала задержки срабатывания
             logDebug.add(DebugMsg, "Reaction - Begin");
             delay_ = true;
           }
@@ -240,14 +247,14 @@ void Protection::processingStateRun()       // Состояние работа
           setStateRun();
         }
       }
-      else if (isModeOn()) {                // Двигатель - работа; Режим - авто; Защита - Вкл;
-        if (alarm_) {                       // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме
-          if (timer_ == 0) {                // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме; Срабатывание - начало;
-            timer_ = ksu.getTime();             // Зафиксировали время начала задержки срабатывания
+      else if (isModeOn()) {                 // Двигатель - работа; Режим - авто; Защита - Вкл;
+        if (alarm_ && !workWithAlarmFlag_) { // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме
+          if ((timer_ == 0) && tripDelay_) { // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме; Срабатывание - начало;
+            timer_ = ksu.getTime();          // Зафиксировали время начала задержки срабатывания
             logDebug.add(DebugMsg, "Reaction - Begin");
             delay_ = true;
           }
-          else if (timer_ >= tripDelay_) {  // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме; Срабатывание - конец;
+          else if (ksu.getSecFromCurTime(timer_) >= tripDelay_) {  // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме; Срабатывание - конец;
             logDebug.add(DebugMsg, "Reaction - Stop");
             addEventReactionProt();
             ksu.resetDelay();
@@ -265,8 +272,8 @@ void Protection::processingStateRun()       // Состояние работа
         state_ = StateStop;
       }
       else {                                // Двигатель - работа; Режим - авто; Защита - вкл;
-        if (alarm_) {                       // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме
-          if (timer_ == 0) {                // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - начало;
+        if (alarm_ && !workWithAlarmFlag_) {// Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме
+          if ((timer_ == 0) && tripDelay_) {// Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - начало;
             timer_ = ksu.getTime();             // Зафиксировали время начала задержки срабатывания
             logDebug.add(DebugMsg, "Reaction - Begin");
             delay_ = true;
