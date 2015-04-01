@@ -9,6 +9,7 @@
 #include "gpio.h"
 #include "user_main.h"
 #include "protection.h"
+#include "regime.h"
 
 Ccs::Ccs()
   : Device(CCS_BEGIN, parametersArray_, CCS_END - CCS_BEGIN)
@@ -341,6 +342,10 @@ bool Ccs::checkCanStart()
   if (isBlock())
     return false;
   if (isPrevent())
+    return false;
+  if (isProgramMode() &&
+      (getValue(CCS_RGM_PERIODIC_MODE) != Regime::OffAction) &&
+      (getValue(CCS_RGM_PERIODIC_STATE) == Regime::WorkState))
     return false;
   return true;
 }
