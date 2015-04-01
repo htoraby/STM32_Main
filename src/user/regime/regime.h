@@ -25,7 +25,8 @@ public:
   typedef enum {
     IdleState,
     WorkState,
-    StartPauseState,
+    RunningState,
+    WaitPauseState,
     PauseState,
     RestartState,
     StopState,

@@ -22,6 +22,9 @@ private:
   float workTimeToEnd_;    //!< Время до конца работы
   float stopTimeToEnd_;    //!< Время до конца останова
 
+  bool attempt_;
+  int addTime_;
+
 };
 
 #endif // REGIMETECHNOLOGPERIODIC_H
