@@ -2,8 +2,9 @@
 #include "protection_main.h"
 
 Protection::Protection()
-  : timerDifStart_(false)
+  : timerDifStartFlag_(false)
   , workWithAlarmFlag_(false)
+  , resetRestartDelayFlag_(false)
   , attempt_(false)
   , delay_(false)
 {
@@ -254,7 +255,7 @@ void Protection::processingStateRun()       // Состояние работа
             logDebug.add(DebugMsg, "Reaction - Begin");
             delay_ = true;
           }
-          else if (ksu.getSecFromCurTime(timer_) >= tripDelay_) {  // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме; Срабатывание - конец;
+          else if (timer_ >= tripDelay_) {  // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме; Срабатывание - конец;
             logDebug.add(DebugMsg, "Reaction - Stop");
             addEventReactionProt();
             ksu.resetDelay();
@@ -365,7 +366,7 @@ void Protection::proccessingStateStop()
     if (ksu.isAutoMode() && !ksu.isBlock()) { // Двигатель - стоп; Режим - авто; Нет блокировки;
       if (restart_) {                         // Двигатель - стоп; Режим - авто; Флаг - АПВ;
         if (ksu.getValueUint32(CCS_STOP_TIME) >= restartDelay_) {
-          if (timerDifStart_) {               // Защита с отсчётом АПВ после нормализации параметра (ВРП)
+          if (timerDifStartFlag_) {               // Защита с отсчётом АПВ после нормализации параметра (ВРП)
             if (!prevent_) {                  // Параметр защиты в норме
               if (timer_ == 0) {              //
                 timer_ = ksu.getTime();       // Зафиксировали время начала отсёта АПВ
@@ -393,7 +394,7 @@ void Protection::proccessingStateStop()
           }
           else {
             if (ksu.isPrevent() || prevent_) {// Есть запрещающий параметр
-              if (!attempt_) {                // Первая попытка АПВ
+              if (!attempt_ && !resetRestartDelayFlag_) {                // Первая попытка АПВ
                 attempt_ = true;
                 addEventProtectionPrevent();  // Сообщение неудачной попытке пуска
               }

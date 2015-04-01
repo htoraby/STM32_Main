@@ -31,6 +31,13 @@ ProtectionPressureIntake::~ProtectionPressureIntake()
 
 }
 
+void ProtectionPressureIntake::getOtherSetpointProt()
+{
+  resetRestartDelayFlag_ = ksu.getValue(idParam_);
+  if (resetRestartDelayFlag_)
+    restartDelay_ = 0;
+}
+
 bool ProtectionPressureIntake::checkAlarm()
 {
   return Protection::isLowerLimit(tripSetpoint_);

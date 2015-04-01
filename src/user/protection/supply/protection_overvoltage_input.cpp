@@ -35,7 +35,7 @@ ProtectionOverVoltageInput::~ProtectionOverVoltageInput()
 
 void ProtectionOverVoltageInput::getOtherSetpointProt()
 {
-  timerDifStart_ = ksu.getValue(idParam_);
+  timerDifStartFlag_ = ksu.getValue(idParam_);
 }
 
 bool ProtectionOverVoltageInput::checkAlarm()

@@ -341,8 +341,15 @@ bool Ccs::checkCanStart()
     return false;
   if (isBlock())
     return false;
-  if (isPrevent())
-    return false;
+  if (isPrevent()) {
+    if (getValue(CCS_PROT_DHS_PRESSURE_INTAKE_PREVENT)) {
+      if (parameters.getValue(TMS_PRESSURE_INTAKE) < getValue(CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT))
+        return false;
+    }
+    else {
+      return false;
+    }
+  }
   if (isProgramMode() &&
       (getValue(CCS_RGM_PERIODIC_MODE) != Regime::OffAction) &&
       (getValue(CCS_RGM_PERIODIC_STATE) == Regime::WorkState))

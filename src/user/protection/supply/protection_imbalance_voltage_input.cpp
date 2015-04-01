@@ -35,7 +35,7 @@ ProtectionImbalanceVoltageInput::~ProtectionImbalanceVoltageInput()
 
 void ProtectionImbalanceVoltageInput::getOtherSetpointProt()
 {
-  timerDifStart_ = ksu.getValue(idParam_);
+  timerDifStartFlag_ = ksu.getValue(idParam_);
 }
 
 bool ProtectionImbalanceVoltageInput::checkAlarm()

@@ -13,6 +13,7 @@ public:
   ~ProtectionPressureIntake();
 
 private:
+  void getOtherSetpointProt();
 
   bool checkAlarm();
   bool checkPrevent();

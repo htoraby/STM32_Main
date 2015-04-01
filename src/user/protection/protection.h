@@ -233,8 +233,9 @@ protected:
   float restartResetTime_;                  //!< Уставка: Время сброса количества АПВ
   float tripSetpoint_;                      //!< Уставка: граница срабатывания защиты
   float restartSetpoint_;                   //!< Уставка: граница АПВ
-  float timerDifStart_;                     //!< Уставка: Параметр 1
+  float timerDifStartFlag_;                 //!< Уставка: Параметр 1
   float workWithAlarmFlag_;                 //!< Уставка: Флаг разрешения работы при аварии
+  float resetRestartDelayFlag_;             //!< Уставка: Флаг критерий АПВ
   int state_;                               //!< Состояние автомата защиты
   float valueParameter_;                    //!< Текущее значение контролируемого параметра
   uint32_t timer_;                          //!< Текущее значение таймера
