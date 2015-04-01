@@ -28,17 +28,21 @@ ProtectionTurbineRotation::~ProtectionTurbineRotation()
 
 bool ProtectionTurbineRotation::checkPrevent()
 {
-  bool prevent = false;
   float value = parameters.getValue(CCS_TURBO_ROTATION_NOW);
-  if ((ksu.isStopMotor() || ksu.isDelay() || ksu.isBlock())
-      && (value > restartSetpoint_)) {
-    prevent = true;
+  if ((parameters.getValue(CCS_CONDITION) == CCS_CONDITION_STOP) &&
+      value > tripSetpoint_) {
+    return true;
   }
-  return prevent;
+  return false;
 }
 
 void ProtectionTurbineRotation::automatProtection()
 {
+  if (isModeOff()) {
+    isStartProtect_ = false;
+    return;
+  }
+
   if (prevent_) {
     if (!isStartProtect_) {
       isStartProtect_ = true;

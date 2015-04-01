@@ -340,6 +340,8 @@ bool Ccs::checkCanStart()
     return false;
   if (isBlock())
     return false;
+  if (isPrevent())
+    return false;
   return true;
 }
 

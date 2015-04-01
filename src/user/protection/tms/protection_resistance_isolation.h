@@ -18,6 +18,8 @@ private:
   bool checkPrevent();
   float calcValue();
 
+  bool workWithLowResistance_;              //!< Флаг работы в режиме пониженного сопротивления изоляции
+
 };
 
 #endif // PROTECTIONRESISTANCEISOLATION_H

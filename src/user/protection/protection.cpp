@@ -14,22 +14,21 @@ Protection::~Protection()
 }
 
 void Protection::processing()
-{
-  // Получаем уставки защиты
-  getSetpointProt();
-  // Получаем текущие параметры защиты
-  getCurrentParamProt();
-  // Определяем выполняется ли условие срабатывания защиты
-  alarm_ = checkAlarm();
-  delay_ = alarm_ ? delay_ : false;
-  // Определяем есть ли запрещаюший параметр
-  prevent_ = checkPrevent();
-  // Проверяем и сбрасываем количество АПВ если нужно
-  checkRestartResetCount();
-  // Выполняем шаг автомата защиты
-  automatProtection();
-  // Сохраняем текущие параметры защиты
-  setCurrentParamProt();
+{ 
+  getSetpointProt();                        // Получаем уставки защиты
+  getCurrentParamProt();                    // Получаем текущие параметры защиты
+  if (!isModeOff()) {
+    alarm_ = checkAlarm();                    // Определяем выполняется ли условие срабатывания защиты
+    prevent_ = checkPrevent();                // Определяем есть ли запрещаюший параметр
+  }
+  else {
+    alarm_ = false;
+    prevent_ = false;
+  }
+  delay_ = alarm_ ? delay_ : false; 
+  checkRestartResetCount();                 // Проверяем и сбрасываем количество АПВ если нужно
+  automatProtection();                      // Выполняем шаг автомата защиты
+  setCurrentParamProt();                    // Сохраняем текущие параметры защиты
 }
 
 void Protection::getSetpointProt()

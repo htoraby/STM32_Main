@@ -672,6 +672,7 @@ enum enID
   CCS_GENERAL_CONDITION,                                    //!< Общее состояние
   CCS_COEF_TRANSFORMATION,                                  //!< Коэффициент трансформации
   CCS_LAST_STOP_REASON_TMP,                                 //!< Причина последнего останова - регистр временного хранения значения
+  CCS_WORK_WITH_LOW_RESISTANCE,                             //!< Работа с пониженным сопротивлением изоляции
   CCS_END,                                                  //!< Последний параметр
   VSD_BEGIN=10000,                                          //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW,                                        //!< Выходная частота ПЧ
