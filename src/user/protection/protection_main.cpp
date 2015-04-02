@@ -1,6 +1,6 @@
 #include "protection_main.h"
 
-#define COUNT_PROTECTIONS 7 // 11
+#define COUNT_PROTECTIONS 8 // 11
 
 Protection *protections[COUNT_PROTECTIONS];
 
@@ -29,9 +29,11 @@ void protectionInit()
   protections[2] = &protImbalanceVoltIn;
 
   protections[3] = &protImbalanceCurrentMotor;
-  protections[4] = &protTemperatureMotor;
-  protections[5] = &protTurbineRotation;
-  protections[6] = &protResistanceIsolation;
+  protections[4] = &protTurbineRotation;
+
+  protections[5] = &protResistanceIsolation;
+  protections[6] = &protPressureIntake;
+  protections[7] = &protTemperatureMotor;
 
 //  protections[3] = &protOverloadMotor;
 //  protections[4] = &protUnderloadMotor;
