@@ -8,7 +8,7 @@
 #include "ccs.h"
 #include "gpio.h"
 #include "user_main.h"
-#include "protection.h"
+#include "protection_main.h"
 #include "regime.h"
 
 Ccs::Ccs()
@@ -194,7 +194,6 @@ void Ccs::changedCondition()
     switch (condition) {
     case CCS_CONDITION_RUNNING:
       setValue(CCS_LAST_RUN_DATE_TIME, getTime());
-      setValue(CCS_LAST_RUN_REASON, getValue(CCS_LAST_RUN_REASON_TMP));
       resetRestart();
 
       if (flag == CCS_CONDITION_FLAG_DELAY) {
@@ -297,8 +296,12 @@ void Ccs::start(LastReasonRun reason)
 {
   setValue(CCS_LAST_RUN_REASON_TMP, reason);
 
-  setValue(CCS_CMD_START, 1);
-  checkCmd();
+  if (checkCanStart()) {
+    setValue(CCS_LAST_RUN_REASON, reason);
+    setValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
+    setValue(CCS_CONDITION, CCS_CONDITION_RUNNING);
+    setValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
+  }
 }
 
 void Ccs::stop(LastReasonStop reason)
@@ -322,6 +325,8 @@ void Ccs::checkCmd()
   if (start) {
     setValue(CCS_CMD_START, 0);
     if (checkCanStart()) {
+      setValue(CCS_LAST_RUN_REASON, getValue(CCS_LAST_RUN_REASON_TMP));
+      setValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
       setValue(CCS_CONDITION, CCS_CONDITION_RUNNING);
       setValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
     }
@@ -339,22 +344,28 @@ bool Ccs::checkCanStart()
 {
   if (getValue(CCS_VSD_CONDITION) != VSD_CONDITION_STOP)
     return false;
+
   if (isBlock())
     return false;
+
   if (isPrevent()) {
     if (getValue(CCS_PROT_DHS_PRESSURE_INTAKE_PREVENT)) {
       if (parameters.getValue(TMS_PRESSURE_INTAKE) < getValue(CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT)) {
+        addEventProtectionPrevent();
         return false;
       }
     }
     else {
+      addEventProtectionPrevent();
       return false;
     }
   }
+
   if (isProgramMode() && (getValue(CCS_RGM_PERIODIC_MODE) != Regime::OffAction)) {
     if ((getValue(CCS_RGM_PERIODIC_STATE) == Regime::WorkState) ||
-        (getValue(CCS_RGM_PERIODIC_STATE) == Regime::PauseState))
+        (getValue(CCS_RGM_PERIODIC_STATE) == Regime::PauseState)) {
       return false;
+    }
   }
 
   return true;

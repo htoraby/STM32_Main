@@ -377,12 +377,11 @@ void Protection::proccessingStateStop()
                 if (ksu.isPrevent()) {
                   if (!attempt_) {                // Первая попытка запуска по АПВ
                     attempt_ = true;
-                    addEventProtectionPrevent();  // Сообщение неудачной попытке пуска
+                    ksu.start(lastReasonRun_);
                   }
                 }
                 else {
                   incRestartCount();
-                  logEvent.add(ProtectCode, AutoType, apvEventId_);
                   ksu.start(lastReasonRun_);
                   state_ = StateRunning;
                 }
@@ -396,12 +395,11 @@ void Protection::proccessingStateStop()
             if (ksu.isPrevent() || prevent_) {// Есть запрещающий параметр
               if (!attempt_ && !resetRestartDelayFlag_) {                // Первая попытка АПВ
                 attempt_ = true;
-                addEventProtectionPrevent();  // Сообщение неудачной попытке пуска
+                ksu.start(lastReasonRun_);
               }
             }
             else {
               incRestartCount();
-              logEvent.add(ProtectCode, AutoType, apvEventId_);
               ksu.start(lastReasonRun_);
               state_ = StateRunning;
             }
