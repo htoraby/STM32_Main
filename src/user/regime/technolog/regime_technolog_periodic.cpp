@@ -49,7 +49,7 @@ void RegimeTechnologPeriodic::processing()
       if (ksu.getValue(CCS_CONDITION) != CCS_CONDITION_STOP) { // Станция в работе;
         uint32_t time = ksu.getSecFromCurTime(workBeginTime_);
         workTimeToEnd_ = getTimeToEnd(workPeriod_, time);
-        if (workTimeToEnd_ == 0) {
+        if (workTimeToEnd_ == 0) {   // Время работы истекло
           if (ksu.isProgramMode()) { // Режим - программа;
             ksu.stop(LastReasonStopProgram);
             state_ = WaitPauseState;
@@ -120,21 +120,17 @@ void RegimeTechnologPeriodic::processing()
       break;
     case PauseState:
       if (ksu.isStopMotor()) {     // Двигатель - останов;
-        uint32_t time = ksu.getSecFromCurTime(stopBeginTime_);
-        stopTimeToEnd_ = getTimeToEnd(stopPeriod_, time);
-        if (ksu.isProgramMode()) { // Режим - программа;
-          if (time <= stopPeriod_ + addTime_) {
-            stopTimeToEnd_ = getTimeToEnd(stopPeriod_ + addTime_, time);
-          }
-          else {
-            stopTimeToEnd_ = 0;
-            addTime_ = 0;
+        uint32_t time = ksu.getSecFromCurTime(stopBeginTime_); // Прошедшее время с начала останова
+        stopTimeToEnd_ = getTimeToEnd(stopPeriod_ + addTime_, time);
+        if (ksu.isProgramMode()) {   // Режим - программа;
+          if (stopTimeToEnd_ == 0) { // Время паузы истекло
             if (ksu.isPrevent()) {
               if (!attempt_) {                // Первая попытка запуска
                 attempt_ = true;
                 addEventProtectionPrevent();  // Сообщение неудачной попытке пуска
               }
             } else {
+              addTime_ = 0;
               ksu.start(LastReasonRunProgram);
               attempt_ = false;
               state_ = RestartState;
