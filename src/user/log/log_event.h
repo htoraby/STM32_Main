@@ -23,7 +23,7 @@ public:
    * \param
    * \return
    */
-  uint32_t add(uint8_t code, uint8_t type, uint16_t id,
+  uint32_t add(EventCode code, EventType type, EventId id,
                float oldValue = 0, float newValue = 0, uint8_t units = 0);
 };
 

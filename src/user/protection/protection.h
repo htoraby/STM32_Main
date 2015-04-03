@@ -197,10 +197,9 @@ public:
    * \brief getApvDisabledEventId
    * \return
    */
-  uint16_t getApvDisabledEventId() {
+  EventId getApvDisabledEventId() {
     return apvDisabledEventId_;
   }
-
 
 protected:
 
@@ -252,10 +251,10 @@ protected:
   LastReasonStop lastReasonStop_;           //!< Причина останова
 
   /// Индексы событий для записи в журнал
-  uint16_t protReactEventId_;
-  uint16_t apvEventId_;
-  uint16_t apvDisabledEventId_;
-  uint16_t protBlockedEventId_;
+  EventId protReactEventId_;
+  EventId apvEventId_;
+  EventId apvDisabledEventId_;
+  EventId protBlockedEventId_;
 
 };
 

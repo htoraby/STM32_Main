@@ -4,10 +4,10 @@
 #include "flash_ext.h"
 #include "rtc.h"
 #include "fram.h"
+#include "log_idlist.h"
 
 /*!
  * \brief Тип журнала
- *
 */
 typedef enum {
   EventTypeLog,
@@ -20,20 +20,36 @@ typedef enum {
 
 /*!
  * \brief Код события
- *
 */
 typedef enum {
-  RunCode      = 1,
-  StopCode     = 2,
-  ProtectCode  = 5,
-  NormModeCode = 28,
-  FastModeCode = 29,
-  TmsCode      = 32,
+  RunCode              = 1,           //!< Пуск
+  StopCode             = 2,           //!< Стоп
+  ModeCode             = 3,           //!< Изменение режима работы СУ
+  BlockCode            = 4,           //!< Блокировка СУ
+  UnblockCode          = 5,           //!< Деблокировка СУ
+  TripDelayCode        = 8,           //!< Задержка срабатывания
+  RestartDelayCode     = 9,           //!< Задержка АПВ
+  OpenDoorOperatorCode = 12,          //!< ОткрытаДверь
+  SetpointCode         = 13,          //!< ИзмПарам
+  DelLogCode           = 14,          //!< Удаление хронологии
+  CopyLogCode          = 15,          //!< Считывание хронологии
+  ResetCountsCode      = 18,          //!< Сброс счётчиков наработки
+  FastModeCode         = 28,          //!< ЗаписьУскРеж
+  NormModeCode         = 29,          //!< ЗаписьНормРеж
+  TmsCode              = 32,          //!< ЗаписьТМС
+  ConnectTmsCode       = 33,          //!< Связь ТМС
+  ConnectVsdCode       = 37,          //!< Связь ЧРП
+  ConnectEmCode        = 38,          //!< Связь ИМ1
+  TurbineRotationCode  = 44,          //!< Турб.Вращ.
+  SequencePhaseCode    = 45,          //!< Чередования фаз
+  HackSuCode           = 49,          //!< Взлом СУ
+  OpenDoorAutoCode     = 66,          //!< Дверь открыт
+
+  ProtectCode          = 100,         //!< Событие защиты
 } EventCode;
 
 /*!
  * \brief Вид события
- *
 */
 typedef enum {
   NoneType,
@@ -46,7 +62,6 @@ typedef enum {
 
 /*!
  * \brief Начальные адреса журналов на FLASH
- *
 */
 typedef enum {
   //! FlashSpi5
@@ -61,7 +76,6 @@ typedef enum {
 
 /*!
  * \brief Конечные адреса журналов на FLASH
- *
 */
 typedef enum {
   //! FlashSpi5

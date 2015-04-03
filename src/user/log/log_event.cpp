@@ -12,7 +12,7 @@ LogEvent::~LogEvent()
 
 }
 
-uint32_t LogEvent::add(uint8_t code, uint8_t type, uint16_t id,
+uint32_t LogEvent::add(EventCode code, EventType type, EventId id,
                        float oldValue, float newValue, uint8_t units)
 {
   memset(buffer, 0, sizeof(buffer));
