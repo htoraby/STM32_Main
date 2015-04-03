@@ -20,6 +20,7 @@ ProtectionLockDoor::ProtectionLockDoor()
   idRestartFirstTime_ = CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME;
 
   lastReasonRun_ = LastReasonRunApvLockDoor;
+  lastReasonStop_ = LastReasonStopHackSu;
 
   protReactEventId_ = LookDoorProtReactId;
   protBlockedEventId_ = LookDoorProtBlockedId;
@@ -29,4 +30,3 @@ ProtectionLockDoor::~ProtectionLockDoor()
 {
 
 }
-

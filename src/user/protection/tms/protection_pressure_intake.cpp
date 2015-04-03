@@ -21,8 +21,10 @@ ProtectionPressureIntake::ProtectionPressureIntake()
   idRestartFirstTime_ = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_FIRST_TIME;
 
   lastReasonRun_ = LastReasonRunApvPressureIntake;
+  lastReasonStop_ = LastReasonStopPressureIntake;
 
   protReactEventId_ = PressureIntakeProtReactId;
+  apvEventId_ = PressureIntakeApvId;
   apvDisabledEventId_ = PressureIntakeApvDisabledId;
   protBlockedEventId_ = PressureIntakeProtBlockedId;
 }

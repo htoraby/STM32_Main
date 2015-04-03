@@ -61,9 +61,9 @@ void RegimeTechnologPeriodic::processing()
         // Если причина останова "Исключение"
         if ((stopReason == LastReasonStopOperator) ||
             (stopReason == LastReasonStopRemote) ||
-            (stopReason == LastReasonStopUndervoltage) ||
-            (stopReason == LastReasonStopOvervoltage) ||
-            (stopReason == LastReasonStopImbalanceVoltage) ||
+            (stopReason == LastReasonStopUnderVoltIn) ||
+            (stopReason == LastReasonStopOverVoltIn) ||
+            (stopReason == LastReasonStopImbalanceVoltIn) ||
             (stopReason == LastReasonStopNoVoltage)) {
           if (ksu.isProgramMode()) { // Режим - программа;
             uint32_t stopBeginTime = parameters.getValueUint32(CCS_LAST_STOP_DATE_TIME); // Время остановки двигателя

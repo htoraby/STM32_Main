@@ -20,8 +20,10 @@ ProtectionTemperatureMotor::ProtectionTemperatureMotor()
   idRestartFirstTime_ = CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_FIRST_TIME;
 
   lastReasonRun_ = LastReasonRunApvTemperatureMotor;
+  lastReasonStop_ = LastReasonStopTemperatureMotor;
 
   protReactEventId_ = TemperatureMotorProtReactId;
+  apvEventId_ = TemperatureMotorApvId;
   apvDisabledEventId_ = TemperatureMotorApvDisabledId;
   protBlockedEventId_ = TemperatureMotorProtBlockedId;
 }

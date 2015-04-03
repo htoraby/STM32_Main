@@ -21,8 +21,10 @@ ProtectionCurrentMotor::ProtectionCurrentMotor()
   idRestartFirstTime_ = CCS_PROT_MOTOR_CURRENT_RESTART_FIRST_TIME;
 
   lastReasonRun_ = LastReasonRunApvCurrentMotor;
+  lastReasonStop_ = LastReasonStopCurrentMotor;
 
   protReactEventId_ = CurrentMotorProtReactId;
+  apvEventId_ = CurrentMotorApvId;
   apvDisabledEventId_ = CurrentMotorApvDisabledId;
   protBlockedEventId_ = CurrentMotorProtBlockedId;
 }

@@ -23,8 +23,10 @@ ProtectionOverVoltageInput::ProtectionOverVoltageInput()
   idRestartFirstTime_ = CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME;
 
   lastReasonRun_ = LastReasonRunApvOverVoltIn;
+  lastReasonStop_ = LastReasonStopOverVoltIn;
 
   protReactEventId_ = OverVoltInProtReactId;
+  apvEventId_ = OverVoltInApvId;
   apvDisabledEventId_ = OverVoltInApvDisabledId;
   protBlockedEventId_ = OverVoltInProtBlockedId;
 }

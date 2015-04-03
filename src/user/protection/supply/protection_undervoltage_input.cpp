@@ -23,8 +23,10 @@ ProtectionUnderVoltageInput::ProtectionUnderVoltageInput()
   idRestartFirstTime_ = CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FIRST_TIME;
 
   lastReasonRun_ = LastReasonRunApvUnderVoltIn;
+  lastReasonStop_ = LastReasonStopUnderVoltIn;
 
   protReactEventId_ = UnderVoltInProtReactId;
+  apvEventId_ = UnderVoltInApvId;
   apvDisabledEventId_ = UnderVoltInApvDisabledId;
   protBlockedEventId_ = UnderVoltInProtBlockedId;
 }

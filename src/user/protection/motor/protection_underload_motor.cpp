@@ -20,8 +20,10 @@ ProtectionUnderloadMotor::ProtectionUnderloadMotor()
   idRestartFirstTime_ = CCS_PROT_MOTOR_UNDERLOAD_RESTART_FIRST_TIME;
 
   lastReasonRun_ = LastReasonRunApvUnderloadMotor;
+  lastReasonStop_ = LastReasonStopUnderloadMotor;
 
   protReactEventId_ = UnderloadMotorProtReactId;
+  apvEventId_ = UnderloadMotorApvId;
   apvDisabledEventId_ = UnderloadMotorApvDisabledId;
   protBlockedEventId_ = UnderloadMotorProtBlockedId;
 }

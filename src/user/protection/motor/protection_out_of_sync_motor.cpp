@@ -20,8 +20,10 @@ ProtectionOutOfSyncMotor::ProtectionOutOfSyncMotor()
   idRestartFirstTime_ = CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME;
 
   lastReasonRun_ = LastReasonRunApvOutOfSyncMotor;
+  lastReasonStop_ = LastReasonStopOutOfSyncMotor;
 
   protReactEventId_ = OutOfSyncMotorProtReactId;
+  apvEventId_ = OutOfSyncMotorApvId;
   apvDisabledEventId_ = OutOfSyncMotorApvDisabledId;
   protBlockedEventId_ = OutOfSyncMotorProtBlockedId;
 }
