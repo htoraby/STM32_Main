@@ -42,6 +42,16 @@ public:
     GeneralConditionBlock       //!< Блокировка
   };
 
+  /*!
+   * \brief Список команд запуска (от контроллера визуализации)
+   */
+  enum CmdStart {
+    CmdStartNone,       //!< Нет запуска
+    CmdStartOperator,   //!< Запуск - оператор
+    CmdStartAuto,       //!< Запуск - автоматический
+    CmdStartRemote,     //!< Запуск - дистанционный
+  };
+
   Ccs();
   virtual ~Ccs();
 
@@ -238,12 +248,8 @@ private:
   void changedWorkMode();
 
   /*!
-   * \brief Метод подсчёта времени работы и останова
-   */
-  void calcTime();
-
-  /*!
    * \brief Метод проверки команды на запуск/останов
+   * от контроллера визуализации
    */
   void checkCmd();
 
@@ -258,6 +264,11 @@ private:
    * \return
    */
   bool checkCanStop();
+
+  /*!
+   * \brief Метод подсчёта времени работы и останова
+   */
+  void calcTime();
 
   /*!
    * \brief calcParameters

@@ -267,31 +267,6 @@ void Ccs::changedWorkMode()
   }
 }
 
-void Ccs::calcTime()
-{
-  static int conditionOld = CCS_CONDITION_STOP;
-  static uint32_t timer = HAL_GetTick();
-
-  int condition = getValue(CCS_CONDITION);
-
-  if ((HAL_GetTick() - timer) >= 100) {
-    timer = HAL_GetTick();
-    setValue(CCS_DATE_TIME, (uint32_t)rtcGetTime());
-  }
-
-  if (conditionOld != condition) {
-    if ((condition != CCS_CONDITION_STOP) && (conditionOld == CCS_CONDITION_STOP))
-      setValue(CCS_RUN_BEGIN_TIME, getTime());
-    if ((condition == CCS_CONDITION_STOP) && (conditionOld != CCS_CONDITION_STOP))
-      setValue(CCS_STOP_BEGIN_TIME, getTime());
-
-    conditionOld = condition;
-  }
-
-  setValue(CCS_RUN_TIME, getSecFromCurTime(CCS_RUN_BEGIN_TIME));
-  setValue(CCS_STOP_TIME, getSecFromCurTime(CCS_STOP_BEGIN_TIME));
-}
-
 void Ccs::start(LastReasonRun reason)
 {
   setValue(CCS_LAST_RUN_REASON_TMP, reason);
@@ -323,6 +298,18 @@ void Ccs::checkCmd()
   int stop = getValue(CCS_CMD_STOP);
 
   if (start) {
+    switch (start) {
+    case CmdStartOperator:
+      setValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunOperator);
+      break;
+    case CmdStartRemote:
+      setValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunRemote);
+      break;
+    default:
+      setValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunAuto);
+      break;
+    }
+
     setValue(CCS_CMD_START, 0);
     if (checkCanStart()) {
       setValue(CCS_LAST_RUN_REASON, getValue(CCS_LAST_RUN_REASON_TMP));
@@ -380,89 +367,6 @@ bool Ccs::checkCanStop()
   if (getValue(CCS_VSD_CONDITION) == VSD_CONDITION_STOP)
     return false;
   return true;
-}
-
-void Ccs::calcParameters()
-{
-  calcVoltageImbalanceIn();
-}
-
-void Ccs::calcCoefTransformation()
-{
-  float transVoltageTapOff = parameters.getValue(CCS_TRANS_VOLTAGE_TAP_OFF);
-  float transNominalVoltage = parameters.getValue(CCS_TRANS_NOMINAL_VOLTAGE);
-  float coefTransformation;
-  if (transNominalVoltage) {
-    coefTransformation = transVoltageTapOff / transNominalVoltage;
-  }
-  else {
-    coefTransformation = transVoltageTapOff / 380;
-  }
-  setValue(CCS_COEF_TRANSFORMATION, coefTransformation);
-}
-
-void Ccs::calcVoltageImbalanceIn()
-{
-  float imbalance = calcImbalance(parameters.getValue(EM_VOLTAGE_PHASE_1),
-                                  parameters.getValue(EM_VOLTAGE_PHASE_2),
-                                  parameters.getValue(EM_VOLTAGE_PHASE_3),
-                                  0);
-  setValue(CCS_VOLTAGE_IMBALANCE_IN, imbalance);
-}
-
-void Ccs::calcMotorCurrentImbalance()
-{
-  float imbalance = calcImbalance(parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1),
-                                  parameters.getValue(CCS_MOTOR_CURRENT_PHASE_2),
-                                  parameters.getValue(CCS_MOTOR_CURRENT_PHASE_3),
-                                  1);
-  setValue(CCS_MOTOR_CURRENT_IMBALANCE, imbalance);
-}
-
-void Ccs::calcMotorCurrentPhase(uint16_t vsdOutCurrent, uint16_t coefCorrect, uint16_t motorCurrent)
-{
-  float current;
-  float vsdCurrent = parameters.getValue(vsdOutCurrent);
-  float coefTrans = parameters.getValue(CCS_COEF_TRANSFORMATION);
-  float coefCor = parameters.getValue(coefCorrect);
-  if (coefTrans) {
-    current = vsdCurrent / coefTrans;
-  }
-  else {
-    current = vsdCurrent;
-  }
-  current = current * coefCor;
-  parameters.setValue(motorCurrent, current);
-}
-
-void Ccs::calcMotorCurrentPhase1()
-{
-  calcMotorCurrentPhase(VSD_CURRENT_OUT_PHASE_1,
-                        CCS_COEF_OUT_CURRENT_1,
-                        CCS_MOTOR_CURRENT_PHASE_1);
-}
-
-void Ccs::calcMotorCurrentPhase2()
-{
-  calcMotorCurrentPhase(VSD_CURRENT_OUT_PHASE_2,
-                        CCS_COEF_OUT_CURRENT_2,
-                        CCS_MOTOR_CURRENT_PHASE_2);
-}
-
-void Ccs::calcMotorCurrentPhase3()
-{
-  calcMotorCurrentPhase(VSD_CURRENT_OUT_PHASE_3,
-                        CCS_COEF_OUT_CURRENT_3,
-                        CCS_MOTOR_CURRENT_PHASE_3);
-}
-
-void Ccs::calcMotorCurrentAvarage()
-{
-  float motorCurrent = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1);
-  motorCurrent = motorCurrent + parameters.getValue(CCS_MOTOR_CURRENT_PHASE_2);
-  motorCurrent = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_3);
-  motorCurrent = motorCurrent / 3;
-  parameters.setValue(CCS_MOTOR_CURRENT_AVARAGE, motorCurrent);
 }
 
 bool Ccs::isStopMotor()
@@ -621,6 +525,114 @@ uint32_t Ccs::getSecFromCurTime(enID timeId)
     return 0;
 }
 
+void Ccs::calcTime()
+{
+  static int conditionOld = CCS_CONDITION_STOP;
+  static uint32_t timer = HAL_GetTick();
+
+  int condition = getValue(CCS_CONDITION);
+
+  if ((HAL_GetTick() - timer) >= 100) {
+    timer = HAL_GetTick();
+    setValue(CCS_DATE_TIME, (uint32_t)rtcGetTime());
+  }
+
+  if (conditionOld != condition) {
+    if ((condition != CCS_CONDITION_STOP) && (conditionOld == CCS_CONDITION_STOP))
+      setValue(CCS_RUN_BEGIN_TIME, getTime());
+    if ((condition == CCS_CONDITION_STOP) && (conditionOld != CCS_CONDITION_STOP))
+      setValue(CCS_STOP_BEGIN_TIME, getTime());
+
+    conditionOld = condition;
+  }
+
+  setValue(CCS_RUN_TIME, getSecFromCurTime(CCS_RUN_BEGIN_TIME));
+  setValue(CCS_STOP_TIME, getSecFromCurTime(CCS_STOP_BEGIN_TIME));
+}
+
+void Ccs::calcParameters()
+{
+  calcVoltageImbalanceIn();
+}
+
+void Ccs::calcCoefTransformation()
+{
+  float transVoltageTapOff = parameters.getValue(CCS_TRANS_VOLTAGE_TAP_OFF);
+  float transNominalVoltage = parameters.getValue(CCS_TRANS_NOMINAL_VOLTAGE);
+  float coefTransformation;
+  if (transNominalVoltage) {
+    coefTransformation = transVoltageTapOff / transNominalVoltage;
+  }
+  else {
+    coefTransformation = transVoltageTapOff / 380;
+  }
+  setValue(CCS_COEF_TRANSFORMATION, coefTransformation);
+}
+
+void Ccs::calcVoltageImbalanceIn()
+{
+  float imbalance = calcImbalance(parameters.getValue(EM_VOLTAGE_PHASE_1),
+                                  parameters.getValue(EM_VOLTAGE_PHASE_2),
+                                  parameters.getValue(EM_VOLTAGE_PHASE_3),
+                                  0);
+  setValue(CCS_VOLTAGE_IMBALANCE_IN, imbalance);
+}
+
+void Ccs::calcMotorCurrentImbalance()
+{
+  float imbalance = calcImbalance(parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1),
+                                  parameters.getValue(CCS_MOTOR_CURRENT_PHASE_2),
+                                  parameters.getValue(CCS_MOTOR_CURRENT_PHASE_3),
+                                  1);
+  setValue(CCS_MOTOR_CURRENT_IMBALANCE, imbalance);
+}
+
+void Ccs::calcMotorCurrentPhase(uint16_t vsdOutCurrent, uint16_t coefCorrect, uint16_t motorCurrent)
+{
+  float current;
+  float vsdCurrent = parameters.getValue(vsdOutCurrent);
+  float coefTrans = parameters.getValue(CCS_COEF_TRANSFORMATION);
+  float coefCor = parameters.getValue(coefCorrect);
+  if (coefTrans) {
+    current = vsdCurrent / coefTrans;
+  }
+  else {
+    current = vsdCurrent;
+  }
+  current = current * coefCor;
+  parameters.setValue(motorCurrent, current);
+}
+
+void Ccs::calcMotorCurrentPhase1()
+{
+  calcMotorCurrentPhase(VSD_CURRENT_OUT_PHASE_1,
+                        CCS_COEF_OUT_CURRENT_1,
+                        CCS_MOTOR_CURRENT_PHASE_1);
+}
+
+void Ccs::calcMotorCurrentPhase2()
+{
+  calcMotorCurrentPhase(VSD_CURRENT_OUT_PHASE_2,
+                        CCS_COEF_OUT_CURRENT_2,
+                        CCS_MOTOR_CURRENT_PHASE_2);
+}
+
+void Ccs::calcMotorCurrentPhase3()
+{
+  calcMotorCurrentPhase(VSD_CURRENT_OUT_PHASE_3,
+                        CCS_COEF_OUT_CURRENT_3,
+                        CCS_MOTOR_CURRENT_PHASE_3);
+}
+
+void Ccs::calcMotorCurrentAvarage()
+{
+  float motorCurrent = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1);
+  motorCurrent = motorCurrent + parameters.getValue(CCS_MOTOR_CURRENT_PHASE_2);
+  motorCurrent = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_3);
+  motorCurrent = motorCurrent / 3;
+  parameters.setValue(CCS_MOTOR_CURRENT_AVARAGE, motorCurrent);
+}
+
 void Ccs::initParameters()
 {
   for (int i = 0; i < (CCS_END - CCS_BEGIN); i++) {
@@ -688,9 +700,9 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_START - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[CCS_CMD_START - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_CMD_START - CCS_BEGIN].value.float_t   = 0;
-  parameters_[CCS_CMD_START - CCS_BEGIN].min     = 0;
-  parameters_[CCS_CMD_START - CCS_BEGIN].max     = 1;
-  parameters_[CCS_CMD_START - CCS_BEGIN].def     = 0;
+  parameters_[CCS_CMD_START - CCS_BEGIN].min     = CmdStartNone;
+  parameters_[CCS_CMD_START - CCS_BEGIN].max     = CmdStartRemote;
+  parameters_[CCS_CMD_START - CCS_BEGIN].def     = CmdStartNone;
 
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].id          = CCS_VSD_CONDITION;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].access      = ACCESS_OPERATOR;
