@@ -480,14 +480,14 @@ enum enCcsConditionFlag {
 };
 
 /*!
- * \brief Список причин запуска
+ * \brief Список причин пуска
  */
 enum LastReasonRun {
-  LastReasonRunNone                     = 0,
-  LastReasonRunOperator                 = 1,
-  LastReasonRunAuto                     = 2,
-  LastReasonRunRemote                   = 3,
-  LastReasonRunProgram                  = 4,
+  LastReasonRunNone                     = 0,   //!< Нет пуска
+  LastReasonRunOperator                 = 1,   //!< "Оператор"
+  LastReasonRunAuto                     = 2,   //!< "Автоматический"
+  LastReasonRunRemote                   = 3,   //!< "Телеуправление"
+  LastReasonRunProgram                  = 4,   //!< "По программе"
   LastReasonRunApvUnderloadMotor        = 5,   //!< "АПВ по защите: Недогруз двигателя"
   LastReasonRunApvOverloadMotor         = 6,   //!< "АПВ по защите: Перегруз двигателя"
   LastReasonRunApvImbalanceCurMotor     = 7,   //!< "АПВ по защите: Дисбаланс токов ПЭД"
@@ -521,8 +521,8 @@ enum LastReasonRun {
  * \brief Список причин останова
  */
 enum LastReasonStop {
-  LastReasonStopNone                    = 0,
-  LastReasonStopOperator                = 1,
+  LastReasonStopNone                    = 0,    //!< Нет останова
+  LastReasonStopOperator                = 1,    //!< "Оператор"
   LastReasonStopResistance              = 2,
   LastReasonStopUnderload               = 3,
   LastReasonStopOverload                = 4,
@@ -535,10 +535,10 @@ enum LastReasonStop {
   LastReasonStopMaxVibration            = 16,
   LastReasonStopImbalanceCurrent        = 20,
   LastReasonStopImbalanceVoltage        = 21,
-  LastReasonStopProgram                 = 24,
+  LastReasonStopProgram                 = 24,   //!< "По программе"
   LastReasonStopMaxAnalog1              = 26,
   LastReasonStopMaxAnalog2              = 27,
-  LastReasonStopRemote                  = 28,
+  LastReasonStopRemote                  = 28,   //!< "Телеуправление"
   LastReasonStopNoVoltage               = 30,
   LastReasonStopOverloadNoMinVolt       = 35,
   LastReasonStopUnderloadNoMinVolt      = 36,

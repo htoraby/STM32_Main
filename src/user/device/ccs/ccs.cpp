@@ -299,14 +299,11 @@ void Ccs::checkCmd()
 
   if (start) {
     switch (start) {
-    case CmdStartOperator:
-      setValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunOperator);
-      break;
     case CmdStartRemote:
       setValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunRemote);
       break;
     default:
-      setValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunAuto);
+      setValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunOperator);
       break;
     }
 
@@ -318,6 +315,15 @@ void Ccs::checkCmd()
       setValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
     }
   } else if (stop) {
+    switch (stop) {
+    case CmdStopRemote:
+      setValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopRemote);
+      break;
+    default:
+      setValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopOperator);
+      break;
+    }
+
     setValue(CCS_CMD_STOP, 0);
     if (checkCanStop()) {
       setBlock();
