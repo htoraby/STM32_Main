@@ -2,7 +2,7 @@
 #include "gpio.h"
 #include "string.h"
 
-#define TIMEOUT_RX 10
+#define TIMEOUT_RX 100
 
 SPI_HandleTypeDef hspi4;
 DMA_HandleTypeDef hdma_spi4_tx;
@@ -13,7 +13,7 @@ static uint8_t rxBuffer[HOST_BUF_SIZE];
 
 StatHostDef statHost;
 static int rxCount = 0;
-static int rxTimeout = 0;
+static int rxTimeout = TIMEOUT_RX;
 static int rxActive = 0;
 static int unstuff = 0;
 
@@ -23,6 +23,8 @@ static void spiDmaTransmitCplt(DMA_HandleTypeDef *hdma);
 void hostInit()
 {
   memset(&statHost, 0, sizeof(statHost));
+
+  HAL_SPI_DeInit(&hspi4);
 
   hspi4.Instance = SPI4;
   hspi4.Init.Mode = SPI_MODE_SLAVE;
@@ -89,19 +91,27 @@ static void hostTimer(const void * argument)
       statHost.timeoutError++;
       rxActive = 0;
     }
+  } else {
+    if (rxTimeout) {
+      rxTimeout--;
+    } else {
+      rxTimeout = TIMEOUT_RX;
+      __HAL_SPI_DISABLE(&hspi4);
+      __HAL_SPI_ENABLE(&hspi4);
+    }
   }
 }
 
 void hostRxIRQHandler(void)
 {
-  static uint32_t tmp1 = 0, tmp2 = 0/*, tmp3 = 0*/;
+  static uint32_t tmp1 = 0, tmp2 = 0, tmp3 = 0;
   static uint8_t data = 0;
 
   tmp1 = __HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_RXNE);
   tmp2 = __HAL_SPI_GET_IT_SOURCE(&hspi4, SPI_IT_RXNE);
-//  tmp3 = __HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_OVR);
+  tmp3 = __HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_OVR);
 
-  if((tmp1 != RESET) && (tmp2 != RESET)/* && (tmp3 == RESET)*/) {
+  if((tmp1 != RESET) && (tmp2 != RESET) && (tmp3 == RESET)) {
     data = hspi4.Instance->DR;
     if (data == 0x7E) {
       // Конец пакета
