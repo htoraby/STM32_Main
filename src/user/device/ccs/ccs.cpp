@@ -189,11 +189,9 @@ void Ccs::changedCondition()
   int condition = getValue(CCS_CONDITION);
   int flag = getValue(CCS_CONDITION_FLAG);
   if ((condition != conditionOld_) || (flag != flagOld_)) {
-    conditionOld_ = condition;
-    flagOld_ = flag;
+
     switch (condition) {
     case CCS_CONDITION_RUNNING:
-      setValue(CCS_LAST_RUN_DATE_TIME, getTime());
       resetRestart();
 
       if (flag == CCS_CONDITION_FLAG_DELAY) {
@@ -225,8 +223,9 @@ void Ccs::changedCondition()
       }
       break;
     default:
-      setValue(CCS_LAST_STOP_DATE_TIME, getTime());
-      setValue(CCS_LAST_STOP_REASON, getValue(CCS_LAST_STOP_REASON_TMP));
+      if (condition != conditionOld_) {
+        setValue(CCS_LAST_STOP_REASON, getValue(CCS_LAST_STOP_REASON_TMP));
+      }
 
       if (flag == CCS_CONDITION_FLAG_BLOCK) {
         setValue(CCS_GENERAL_CONDITION, GeneralConditionBlock);
@@ -242,6 +241,9 @@ void Ccs::changedCondition()
       }
       break;
     }
+
+    conditionOld_ = condition;
+    flagOld_ = flag;
   }
 }
 
@@ -545,9 +547,9 @@ void Ccs::calcTime()
 
   if (conditionOld != condition) {
     if ((condition != CCS_CONDITION_STOP) && (conditionOld == CCS_CONDITION_STOP))
-      setValue(CCS_RUN_BEGIN_TIME, getTime());
+      setValue(CCS_LAST_RUN_DATE_TIME, getTime());
     if ((condition == CCS_CONDITION_STOP) && (conditionOld != CCS_CONDITION_STOP))
-      setValue(CCS_STOP_BEGIN_TIME, getTime());
+      setValue(CCS_LAST_STOP_DATE_TIME, getTime());
 
     conditionOld = condition;
   }

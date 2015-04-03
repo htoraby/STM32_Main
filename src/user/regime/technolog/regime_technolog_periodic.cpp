@@ -111,12 +111,17 @@ void RegimeTechnologPeriodic::processing()
     }
     break;
   case PauseState:
-    if (ksu.isStopMotor()) {     // Двигатель - останов;
+    if (ksu.isStopMotor()) {       // Двигатель - останов;
       uint32_t time = ksu.getSecFromCurTime(stopBeginTime_); // Прошедшее время с начала останова
       stopTimeToEnd_ = getTimeToEnd(stopPeriod_ + addTime_, time);
       if (ksu.isProgramMode()) {   // Режим - программа;
-        if (stopTimeToEnd_ == 0) { // Время паузы истекло
-          state_ = RestartState;
+        if (runReason == LastReasonRunOperator) { // Попытка пуска оператором
+          workBeginTime_ = ksu.getTime();
+          state_ = RunningState;
+        } else {
+          if (stopTimeToEnd_ == 0) { // Время паузы истекло
+            state_ = RestartState;
+          }
         }
       }
       else { // Режим программы отключен
@@ -174,8 +179,6 @@ void RegimeTechnologPeriodic::processing()
   }
 
   parameters.setValue(CCS_RGM_PERIODIC_STATE, state_);
-  parameters.setValue(CCS_RGM_PERIODIC_RUN_PERIOD, workPeriod_);
-  parameters.setValue(CCS_RGM_PERIODIC_STOP_PERIOD, stopPeriod_);
   parameters.setValue(CCS_RGM_PERIODIC_RUN_BEGIN_TIME, workBeginTime_);
   parameters.setValue(CCS_RGM_PERIODIC_STOP_BEGIN_TIME, stopBeginTime_);
   parameters.setValue(CCS_RGM_PERIODIC_RUN_TIME_TO_END, workTimeToEnd_);
