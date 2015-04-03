@@ -247,6 +247,7 @@ protected:
   float restart_;                           //!< Флаг что защита в состоянии АПВ
   bool attempt_;                            //!< Флаг первой попытки запуска
   bool delay_;                              //!< Флаг задержки срабатывания
+
   LastReasonRun lastReasonRun_;             //!< Причина запуска
   LastReasonStop lastReasonStop_;           //!< Причина останова
 

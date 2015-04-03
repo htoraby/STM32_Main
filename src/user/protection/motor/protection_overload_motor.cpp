@@ -19,8 +19,9 @@ ProtectionOverloadMotor::ProtectionOverloadMotor()
   idRestartCount_ = CCS_PROT_MOTOR_OVERLOAD_RESTART_COUNT;
   idRestartFirstTime_ = CCS_PROT_MOTOR_OVERLOAD_RESTART_FIRST_TIME;
 
+  lastReasonRun_ = LastReasonRunApvOverloadMotor;
+
   protReactEventId_ = OverloadMotorProtReactId;
-  apvEventId_ = OverloadMotorApvId;
   apvDisabledEventId_ = OverloadMotorApvDisabledId;
   protBlockedEventId_ = OverloadMotorProtBlockedId;
 }

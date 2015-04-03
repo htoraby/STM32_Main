@@ -488,17 +488,17 @@ enum LastReasonRun {
   LastReasonRunAuto                     = 2,
   LastReasonRunRemote                   = 3,
   LastReasonRunProgram                  = 4,
-  LastReasonRunApvUnderload             = 5,
-  LastReasonRunApvOverload              = 6,
-  LastReasonRunApvImbalanceCurrent      = 7,
-  LastReasonRunApvUndervoltage          = 8,
-  LastReasonRunApvOvervoltage           = 9,
-  LastReasonRunApvImbalanceVoltage      = 10,
+  LastReasonRunApvUnderloadMotor        = 5,   //!< "АПВ по защите: Недогруз двигателя"
+  LastReasonRunApvOverloadMotor         = 6,   //!< "АПВ по защите: Перегруз двигателя"
+  LastReasonRunApvImbalanceCurMotor     = 7,   //!< "АПВ по защите: Дисбаланс токов ПЭД"
+  LastReasonRunApvUnderVoltIn           = 8,   //!< "АПВ по защите: Снижение питания сети"
+  LastReasonRunApvOverVoltIn            = 9,   //!< "АПВ по защите: Превышение питания сети"
+  LastReasonRunApvImbalanceVoltIn       = 10,  //!< "АПВ по защите: Дисбаланс напряжения"
   LastReasonRunApvTurborotation         = 11,
   LastReasonRunApvPhaseSequence         = 12,
-  LastReasonRunApvOpenDoor              = 13,
-  LastReasonRunApvUnderPressure         = 14,
-  LastReasonRunApvOverheat              = 15,
+  LastReasonRunApvLockDoor              = 13,
+  LastReasonRunApvPressureIntake        = 14,  //!< "АПВ по защите: Давление на приёме насоса"
+  LastReasonRunApvTemperatureMotor      = 15,  //!< "АПВ по защите: Перегрев двигателя"
   LastReasonRunApvMaxVibration          = 16,
   LastReasonRunApvUnderPressure1        = 17,
   LastReasonRunApvMinAnalog1            = 18,
@@ -512,6 +512,9 @@ enum LastReasonRun {
   LastReasonRunMinAnalog4               = 101,
   LastReasonRunMaxAnalog3               = 102,
   LastReasonRunMaxAnalog4               = 103,
+  LastReasonRunApvCurrentMotor          = 104, //!< "АПВ по защите: Предел тока двигателя"
+  LastReasonRunApvOutOfSyncMotor        = 105, //!< "АПВ по защите: Рассинхронизация ПВЭД"
+  LastReasonRunApvResistIsolation       = 106, //!< "АПВ по защите: Сопротивление изоляции"
 };
 
 /*!

@@ -22,8 +22,9 @@ ProtectionImbalanceVoltageInput::ProtectionImbalanceVoltageInput()
   idRestartCount_ = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_COUNT;
   idRestartFirstTime_ = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FIRST_TIME;
 
+  lastReasonRun_ = LastReasonRunApvImbalanceVoltIn;
+
   protReactEventId_ = ImbalanceVoltInProtReactId;
-  apvEventId_ = ImbalanceVoltInApvId;
   apvDisabledEventId_ = ImbalanceVoltInApvDisabledId;
   protBlockedEventId_ = ImbalanceVoltInProtBlockedId;
 }

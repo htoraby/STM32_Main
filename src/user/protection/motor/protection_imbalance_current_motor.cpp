@@ -19,8 +19,9 @@ ProtectionImbalanceCurrentMotor::ProtectionImbalanceCurrentMotor()
   idRestartCount_ = CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_COUNT;
   idRestartFirstTime_ = CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FIRST_TIME;
 
+  lastReasonRun_ = LastReasonRunApvImbalanceCurMotor;
+
   protReactEventId_ = ImbalanceCurMotorProtReactId;
-  apvEventId_ = ImbalanceCurMotorApvId;
   apvDisabledEventId_ = ImbalanceCurMotorApvDisabledId;
   protBlockedEventId_ = ImbalanceCurMotorProtBlockedId;
 }

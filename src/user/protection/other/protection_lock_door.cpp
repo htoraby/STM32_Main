@@ -19,10 +19,10 @@ ProtectionLockDoor::ProtectionLockDoor()
   idRestartCount_ = CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT;
   idRestartFirstTime_ = CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME;
 
-  protReactEventId_ = OverVoltInProtReactId;
-  apvEventId_ = OverVoltInApvId;
-  apvDisabledEventId_ = OverVoltInApvDisabledId;
-  protBlockedEventId_ = OverVoltInProtBlockedId;
+  lastReasonRun_ = LastReasonRunApvLockDoor;
+
+  protReactEventId_ = LookDoorProtReactId;
+  protBlockedEventId_ = LookDoorProtBlockedId;
 }
 
 ProtectionLockDoor::~ProtectionLockDoor()

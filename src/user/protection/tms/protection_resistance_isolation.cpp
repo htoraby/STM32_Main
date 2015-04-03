@@ -19,9 +19,9 @@ ProtectionResistanceIsolation::ProtectionResistanceIsolation()
   idRestartCount_ = CCS_PROT_DHS_RESISTANCE_RESTART_COUNT;
   idRestartFirstTime_ = CCS_PROT_DHS_RESISTANCE_RESTART_FIRST_TIME;
 
+  lastReasonRun_ = LastReasonRunApvResistIsolation;
 
   protReactEventId_ = ResistIsolationProtReactId;
-  apvEventId_ = ResistIsolationApvId;
   apvDisabledEventId_ = ResistIsolationApvDisabledId;
   protBlockedEventId_ = ResistIsolationProtBlockedId;
 }
