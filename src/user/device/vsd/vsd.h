@@ -72,6 +72,12 @@ public:
   float getCurrentFreq();
 
   /*!
+   * \brief Метод получения номинальной частоты двигателя
+   * \return
+   */
+  float getNominalFreq();
+
+  /*!
    * \brief Метод задания типа двигателя
    * \param TypeMotor - Тип двигателя
    * \return Код результата операции
@@ -246,6 +252,7 @@ public:
    * \return Код результата операции
    */
   int setTorqueLimit(double TorqueLimit);
+
 
 private:
   //! Массив параметров устройства

@@ -241,6 +241,7 @@ protected:
   float workWithAlarmFlag_;                 //!< Уставка: Флаг разрешения работы при аварии
   float resetRestartDelayFlag_;             //!< Уставка: Флаг критерий АПВ
   float progressiveDelayFlag_;              //!< Уставка: Флаг включение прогрессивной задержки АПВ
+  float autoCalcTripSetpointFlag_;          //!< Уставка: Флаг автоматического пересчёта уставки ЗСП
   float progressiveRestartDelay_;           //!< Уставка: прогрессивная задержка АПВ
   float progressiveRestartCount_;           //!< Текущее количество АПВ без учёта сброса для вычисления прогрессивной задержки
   int state_;                               //!< Состояние автомата защиты

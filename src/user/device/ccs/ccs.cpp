@@ -554,8 +554,8 @@ void Ccs::calcTime()
     conditionOld = condition;
   }
 
-  setValue(CCS_RUN_TIME, getSecFromCurTime(CCS_RUN_BEGIN_TIME));
-  setValue(CCS_STOP_TIME, getSecFromCurTime(CCS_STOP_BEGIN_TIME));
+  setValue(CCS_RUN_TIME, getSecFromCurTime(CCS_LAST_RUN_DATE_TIME));
+  setValue(CCS_STOP_TIME, getSecFromCurTime(CCS_LAST_STOP_DATE_TIME));
 }
 
 void Ccs::calcParameters()

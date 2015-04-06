@@ -640,8 +640,8 @@ enum enID
   CCS_LAST_RUN_REASON_TMP,                                  //!< Причина последнего пуска - регистр временного хранения значения
   CCS_PROT_PREVENT,                                         //!< Наличие хотя бы одного запрещающего параметра
   CCS_TIMER_DIFFERENT_START,                                //!< Уставка ВРП (время разновременного пуска)
-  CCS_RUN_BEGIN_TIME,                                       //!< Время начало текущей наработки
-  CCS_STOP_BEGIN_TIME,                                      //!< Время начало текущего простоя
+  CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY,           //!< Защита ЗСП: Прогрессивная задержка АПВ
+  CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_COUNT,           //!< Защита ЗСП: Счётчик АПВ для вычисления прогрессивной задержки
   CCS_PROT_SUPPLY_OVERVOLTAGE_BLOCK_FLAG,                   //!< 
   CCS_PROT_SUPPLY_UNDERVOLTAGE_BLOCK_FLAG,                  //!< 
   CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_BLOCK_FLAG,             //!< 
@@ -672,9 +672,8 @@ enum enID
   CCS_GENERAL_CONDITION,                                    //!< Общее состояние
   CCS_COEF_TRANSFORMATION,                                  //!< Коэффициент трансформации
   CCS_LAST_STOP_REASON_TMP,                                 //!< Причина последнего останова - регистр временного хранения значения
-  CCS_WORK_WITH_LOW_RESISTANCE,                             //!< Работа с пониженным сопротивлением изоляции
-  CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY,           //!< Защита ЗСП: Прогрессивная задержка АПВ
-  CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_COUNT,           //!< Защита ЗСП: Счётчик АПВ для вычисления прогрессивной задержки
+  CCS_WORK_WITH_LOW_RESISTANCE,                             //!< Работа с пониженным сопротивлением изоляции  
+  CCS_PROT_MOTOR_UNDERLOAD_AUTOCALC_TRIP_SETPOINT,          //!< Защита ЗСП: Флаг автопересчёта уставки срабатывания
   CCS_END,                                                  //!< Последний параметр
   VSD_BEGIN=10000,                                          //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW,                                        //!< Выходная частота ПЧ
