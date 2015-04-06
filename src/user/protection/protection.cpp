@@ -5,6 +5,7 @@ Protection::Protection()
   : timerDifStartFlag_(false)
   , workWithAlarmFlag_(false)
   , resetRestartDelayFlag_(false)
+  , progressiveDelayFlag_(false)
   , attempt_(false)
   , delay_(false)
 {
@@ -33,6 +34,7 @@ void Protection::processing()
   checkRestartResetCount();                 // Проверяем и сбрасываем количество АПВ если нужно
   automatProtection();                      // Выполняем шаг автомата защиты
   setCurrentParamProt();                    // Сохраняем текущие параметры защиты
+  setOtherParamProt();                      // Сохраняем текущие индивидуальные параметры защиты
 }
 
 void Protection::getGeneralSetpointProt()
@@ -69,6 +71,11 @@ void Protection::setCurrentParamProt()
   ksu.setValue(idRestartCount_, restartCount_);
   ksu.setValue(idRestartFirstTime_, restartFirstTime_);
   ksu.setValue(idPrevent_, prevent_);
+}
+
+void Protection::setOtherParamProt()
+{
+
 }
 
 bool Protection::checkAlarm()
@@ -338,6 +345,7 @@ void Protection::proccessingStateStop()
       if (isModeOff()) {
         restart_ = false;
         restartCount_ = 0;
+        progressiveRestartCount_ = 0;
       }
       else {
         if (restart_) {                     // Двигатель - работа; Режим - авто; Защита - Апв
@@ -350,6 +358,7 @@ void Protection::proccessingStateStop()
       if (isModeOff()) {
         restart_ = false;
         restartCount_ = 0;
+        progressiveRestartCount_ = 0;
       }
       else {
         if (restart_) {                       // Двигатель - работа; Режим - авто; Защита - Апв
@@ -410,6 +419,7 @@ void Protection::proccessingStateStop()
     else {
       if (isModeOff()) {
         restartCount_ = 0;
+        progressiveRestartCount_ = 0;
       }
       restart_ = false;
     }
@@ -421,6 +431,7 @@ void Protection::proccessingStateStop()
   if (block_ && !ksu.isBlock()) {
     block_ = false;
     restartCount_ = 0;
+    progressiveRestartCount_ = 0;
   }
 
   delay_ = false;
@@ -429,6 +440,7 @@ void Protection::proccessingStateStop()
 void Protection::incRestartCount()
 {
   restartCount_++;                    // Увеличиваем счётчик АПВ
+  progressiveRestartCount_++;         // Увеличиваем счётчик АПВ для прогрессивной
   if (restartCount_ == 1) {           // Первое АПВ
     restartFirstTime_ = ksu.getTime();   // Запоминаем время первого АПВ по защите
   }

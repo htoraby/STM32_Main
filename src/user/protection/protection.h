@@ -45,7 +45,7 @@ public:
   void getGeneralSetpointProt();
 
   /*!
-   * \brief Метод получения других уставок защит
+   * \brief Метод получения индивидуальных уставок защит
    */
   virtual void getOtherSetpointProt();
 
@@ -59,6 +59,11 @@ public:
    * \brief Метод сохранения текущих параметров защиты
    */
   virtual void setCurrentParamProt();
+
+  /*!
+   * \brief Метод сохранения индивидуальных текущих параметров защиты
+   */
+  virtual void setOtherParamProt();
 
   /*!
    * \brief Метод проверки условия срабатывания защиты
@@ -235,6 +240,9 @@ protected:
   float timerDifStartFlag_;                 //!< Уставка: Параметр 1
   float workWithAlarmFlag_;                 //!< Уставка: Флаг разрешения работы при аварии
   float resetRestartDelayFlag_;             //!< Уставка: Флаг критерий АПВ
+  float progressiveDelayFlag_;              //!< Уставка: Флаг включение прогрессивной задержки АПВ
+  float progressiveRestartDelay_;           //!< Уставка: прогрессивная задержка АПВ
+  float progressiveRestartCount_;           //!< Текущее количество АПВ без учёта сброса для вычисления прогрессивной задержки
   int state_;                               //!< Состояние автомата защиты
   float valueParameter_;                    //!< Текущее значение контролируемого параметра
   uint32_t timer_;                          //!< Текущее значение таймера

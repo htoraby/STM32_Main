@@ -13,9 +13,12 @@ public:
   ~ProtectionUnderloadMotor();
 
 private:
+  void getOtherSetpointProt();
+  void setOtherParamProt();
 
   bool checkAlarm();
   float calcValue();
+
 
 };
 

@@ -33,6 +33,22 @@ ProtectionUnderloadMotor::~ProtectionUnderloadMotor()
 
 }
 
+void ProtectionUnderloadMotor::getOtherSetpointProt()
+{
+  progressiveDelayFlag_ = ksu.getValue(idParam_);
+  progressiveRestartDelay_ = ksu.getValue(CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY);
+  progressiveRestartCount_ = ksu.getValue(CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_COUNT);
+  if (progressiveDelayFlag_)
+    restartDelay_ = restartDelay_ + progressiveRestartDelay_ * progressiveRestartCount_;
+  else
+    progressiveRestartCount_ = 0;
+}
+
+void ProtectionUnderloadMotor::setOtherParamProt()
+{
+  ksu.setValue(CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_COUNT, progressiveRestartCount_);
+}
+
 bool ProtectionUnderloadMotor::checkAlarm()
 {
   return Protection::isLowerLimit(tripSetpoint_);
