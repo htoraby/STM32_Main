@@ -119,3 +119,11 @@ uint32_t getTimeToEnd(uint32_t period, uint32_t time)
   return 0;
 }
 
+float copySign(float value, float sign)
+{
+  float valueTmp;
+  valueTmp = fabs(value);
+  if (sign < 0)
+    valueTmp = -valueTmp;
+  return valueTmp;
+}

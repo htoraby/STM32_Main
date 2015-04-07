@@ -121,6 +121,14 @@ float calcImbalance(float value1, float value2, float value3, int digit);
  */
 uint32_t getTimeToEnd(uint32_t period, uint32_t time);
 
+/*!
+ * \brief Функция возвращает число value со знаком числа sign
+ * \param value
+ * \param sign
+ * \return
+ */
+float copySign(float value, float sign);
+
 #endif
 
 #endif // COMMON_H

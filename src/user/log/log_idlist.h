@@ -68,6 +68,8 @@ typedef enum {
   LookDoorProtReactId,            //!< "Сработала защита: Блокировка двери силового отсека"
   LookDoorProtBlockedId,          //!< "Блокировка по защите: Блокировка двери"
 
+  RegimeSoftChangeFreqOffId,      //!< "Режим программного изменения частоты отключен"
+
 } EventId;
 
 #endif // LOG_IDLIST
