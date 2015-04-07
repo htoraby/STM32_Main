@@ -86,7 +86,7 @@ uint32_t Parameters::getValueUint32(unsigned short id)
 int Parameters::setValue(unsigned short id, float value)
 {
   if ((id > CCS_BEGIN) && (id < CCS_END))
-    return ksu.setValue(id, value);
+    return ksu.setNewValue(id, value);
   if ((id > VSD_BEGIN) && (id < VSD_END))
     return vsd->setNewValue(id, value);
   if ((id > TMS_BEGIN) && (id < TMS_END))

@@ -35,12 +35,24 @@ ProtectionOverloadMotor::~ProtectionOverloadMotor()
 
 void ProtectionOverloadMotor::getOtherSetpointProt()
 {
+  // Пересчёт задержки срабатывания в зависимости от загрузки двигателя
+  tripDelay_ = tripDelay_ * pow((tripSetpoint_ / calcValue()), 2);
 
+  // Если включен режим работы с пониженным сопротивлением изоляции
+  // и изоляция ниже уставки, сбрасываем в 0 задержки активации и срабатывания
+  if (ksu.getValue(CCS_PROT_DHS_RESISTANCE_PREVENT) ||
+      ksu.getValue(CCS_PROT_DHS_RESISTANCE_PARAMETER)) {
+    activDelay_ = 0.0;
+    tripDelay_ = 0.0;
+  }
 }
 
 bool ProtectionOverloadMotor::checkAlarm()
 {
-  return Protection::isHigherLimit(tripSetpoint_);
+  // Возвращаем аварию если превышена уставка по перегрузу или установлен бит
+  // в слове состояния ЧРП
+  return ((Protection::isHigherLimit(tripSetpoint_)) ||
+          (vsd->checkVsdStatus(VSD_STATUS_M_I2T_ERR)));
 }
 
 float ProtectionOverloadMotor::calcValue()

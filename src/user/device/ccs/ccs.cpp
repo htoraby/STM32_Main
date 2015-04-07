@@ -586,6 +586,27 @@ void Ccs::calcVoltageImbalanceIn()
   setValue(CCS_VOLTAGE_IMBALANCE_IN, imbalance);
 }
 
+uint8_t Ccs::setNewValue(uint16_t id, float value)
+{
+  switch (id) {
+  case CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT:
+    parameters.setValue(VSD_M_IRMS, value);
+    break;
+  case CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY:
+    parameters.setValue(VSD_T_BLANK, value);
+    break;
+  case CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY:
+    parameters.setValue(VSD_M_TRMS, value);
+    break;
+  case CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT:
+    parameters.setValue(VSD_M_I_FAST, value);
+    break;
+  default:
+    break;
+  }
+  return setValue(id, value);
+}
+
 void Ccs::calcMotorCurrentImbalance()
 {
   float imbalance = calcImbalance(parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1),

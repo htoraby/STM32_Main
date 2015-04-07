@@ -5,7 +5,6 @@
 
 /*!
  * \brief Класс автомата защиты "Перегруз двигателя"
- *
  */
 class ProtectionOverloadMotor : public Protection
 {
