@@ -1,4 +1,5 @@
 #include "protection_underload_motor.h"
+#include "regime.h"
 
 ProtectionUnderloadMotor::ProtectionUnderloadMotor()
 {
@@ -44,8 +45,18 @@ void ProtectionUnderloadMotor::getOtherSetpointProt()
     progressiveRestartCount_ = 0;
   }
 
-  if (ksu.getValue(idParam_) && (vsd->getNominalFreq() > 0))
-    tripSetpoint_ = tripSetpoint_ * pow(vsd->getCurrentFreq(), 2) / pow(vsd->getNominalFreq(), 2);
+  if (parameters.getValue(CCS_RGM_CHANGE_FREQ_MODE) != Regime::OffAction) {
+    float beginFreq_ = parameters.getValue(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ);
+    float endFreq_ = parameters.getValue(CCS_RGM_CHANGE_FREQ_END_FREQ);
+    float beginUnderload_ = parameters.getValue(CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD);
+    if (endFreq_ - beginFreq_) {
+      tripSetpoint_ = beginUnderload_ + (tripSetpoint_ - beginUnderload_) *
+          (parameters.getValue(VSD_FREQUENCY) - beginFreq_) / (endFreq_ - beginFreq_);
+    }
+  } else {
+    if (ksu.getValue(idParam_) && (vsd->getNominalFreq() > 0))
+      tripSetpoint_ = tripSetpoint_ * pow(vsd->getCurrentFreq(), 2) / pow(vsd->getNominalFreq(), 2);
+  }
 }
 
 void ProtectionUnderloadMotor::setOtherParamProt()
