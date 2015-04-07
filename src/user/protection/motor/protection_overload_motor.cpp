@@ -33,6 +33,11 @@ ProtectionOverloadMotor::~ProtectionOverloadMotor()
 
 }
 
+void ProtectionOverloadMotor::getOtherSetpointProt()
+{
+
+}
+
 bool ProtectionOverloadMotor::checkAlarm()
 {
   return Protection::isHigherLimit(tripSetpoint_);

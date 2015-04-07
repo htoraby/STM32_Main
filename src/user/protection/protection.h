@@ -240,10 +240,6 @@ protected:
   float timerDifStartFlag_;                 //!< Уставка: Параметр 1
   float workWithAlarmFlag_;                 //!< Уставка: Флаг разрешения работы при аварии
   float resetRestartDelayFlag_;             //!< Уставка: Флаг критерий АПВ
-  float progressiveDelayFlag_;              //!< Уставка: Флаг включение прогрессивной задержки АПВ
-  float autoCalcTripSetpointFlag_;          //!< Уставка: Флаг автоматического пересчёта уставки ЗСП
-  float progressiveRestartDelay_;           //!< Уставка: прогрессивная задержка АПВ
-  float progressiveRestartCount_;           //!< Текущее количество АПВ без учёта сброса для вычисления прогрессивной задержки
   int state_;                               //!< Состояние автомата защиты
   float valueParameter_;                    //!< Текущее значение контролируемого параметра
   uint32_t timer_;                          //!< Текущее значение таймера
@@ -255,6 +251,8 @@ protected:
   float restart_;                           //!< Флаг что защита в состоянии АПВ
   bool attempt_;                            //!< Флаг первой попытки запуска
   bool delay_;                              //!< Флаг задержки срабатывания
+
+  float progressiveRestartCount_;           //!< Текущее количество АПВ без учёта сброса для вычисления прогрессивной задержки
 
   LastReasonRun lastReasonRun_;             //!< Причина запуска
   LastReasonStop lastReasonStop_;           //!< Причина останова

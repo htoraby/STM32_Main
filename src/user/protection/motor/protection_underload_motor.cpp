@@ -34,16 +34,17 @@ ProtectionUnderloadMotor::~ProtectionUnderloadMotor()
 }
 
 void ProtectionUnderloadMotor::getOtherSetpointProt()
-{
-  progressiveDelayFlag_ = ksu.getValue(idParam_);
-  progressiveRestartDelay_ = ksu.getValue(CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY);
-  progressiveRestartCount_ = ksu.getValue(CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_COUNT);
-  if (progressiveDelayFlag_)
-    restartDelay_ = restartDelay_ + progressiveRestartDelay_ * progressiveRestartCount_;
-  else
+{ 
+  if (ksu.getValue(CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_FLAG)) {
+    float progressiveRestartDelay = ksu.getValue(CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY);
+    progressiveRestartCount_ = ksu.getValue(CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_COUNT);
+    restartDelay_ = restartDelay_ + progressiveRestartDelay * progressiveRestartCount_;
+  }
+  else {
     progressiveRestartCount_ = 0;
-  autoCalcTripSetpointFlag_ = ksu.getValue(CCS_PROT_MOTOR_UNDERLOAD_AUTOCALC_TRIP_SETPOINT);
-  if (autoCalcTripSetpointFlag_ && (vsd->getNominalFreq() > 0))
+  }
+
+  if (ksu.getValue(idParam_) && (vsd->getNominalFreq() > 0))
     tripSetpoint_ = tripSetpoint_ * pow(vsd->getCurrentFreq(), 2) / pow(vsd->getNominalFreq(), 2);
 }
 

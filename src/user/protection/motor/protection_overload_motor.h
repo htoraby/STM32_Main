@@ -14,6 +14,7 @@ public:
   ~ProtectionOverloadMotor();
 
 private:
+  void getOtherSetpointProt();
 
   bool checkAlarm();
   float calcValue();

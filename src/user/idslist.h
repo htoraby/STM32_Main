@@ -673,7 +673,7 @@ enum enID
   CCS_COEF_TRANSFORMATION,                                  //!< Коэффициент трансформации
   CCS_LAST_STOP_REASON_TMP,                                 //!< Причина последнего останова - регистр временного хранения значения
   CCS_WORK_WITH_LOW_RESISTANCE,                             //!< Работа с пониженным сопротивлением изоляции  
-  CCS_PROT_MOTOR_UNDERLOAD_AUTOCALC_TRIP_SETPOINT,          //!< Защита ЗСП: Флаг автопересчёта уставки срабатывания
+  CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_FLAG,            //!< Защита ЗСП: Флаг использования прогрессивной задержки АПВ
   CCS_END,                                                  //!< Последний параметр
   VSD_BEGIN=10000,                                          //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW,                                        //!< Выходная частота ПЧ

@@ -253,7 +253,6 @@ public:
    */
   int setTorqueLimit(double TorqueLimit);
 
-
 private:
   //! Массив параметров устройства
   parameter parametersArray_[VSD_END - VSD_BEGIN];

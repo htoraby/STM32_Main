@@ -5,7 +5,6 @@ Protection::Protection()
   : timerDifStartFlag_(false)
   , workWithAlarmFlag_(false)
   , resetRestartDelayFlag_(false)
-  , progressiveDelayFlag_(false)
   , attempt_(false)
   , delay_(false)
 {
@@ -19,12 +18,12 @@ Protection::~Protection()
 
 void Protection::processing()
 { 
-  getGeneralSetpointProt();                        // Получаем уставки защиты
+  getGeneralSetpointProt();                 // Получаем уставки защиты
   getOtherSetpointProt();
   getCurrentParamProt();                    // Получаем текущие параметры защиты
   if (!isModeOff()) {
-    alarm_ = checkAlarm();                    // Определяем выполняется ли условие срабатывания защиты
-    prevent_ = checkPrevent();                // Определяем есть ли запрещаюший параметр
+    alarm_ = checkAlarm();                  // Определяем выполняется ли условие срабатывания защиты
+    prevent_ = checkPrevent();              // Определяем есть ли запрещаюший параметр
   }
   else {
     alarm_ = false;
