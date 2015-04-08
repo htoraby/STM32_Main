@@ -15,18 +15,18 @@ RegimeTechnologPeriodic::~RegimeTechnologPeriodic()
 
 void RegimeTechnologPeriodic::processing()
 {
-  action_ = parameters.getValue(CCS_RGM_PERIODIC_MODE);
-  state_ = parameters.getValue(CCS_RGM_PERIODIC_STATE);
+  action_ = parameters.get(CCS_RGM_PERIODIC_MODE);
+  state_ = parameters.get(CCS_RGM_PERIODIC_STATE);
 
-  workPeriod_ = parameters.getValue(CCS_RGM_PERIODIC_RUN_PERIOD);
-  stopPeriod_ = parameters.getValue(CCS_RGM_PERIODIC_STOP_PERIOD);
-  workBeginTime_ = parameters.getValueUint32(CCS_RGM_PERIODIC_RUN_BEGIN_TIME);
-  stopBeginTime_ = parameters.getValueUint32(CCS_RGM_PERIODIC_STOP_BEGIN_TIME);
-  workTimeToEnd_ = parameters.getValue(CCS_RGM_PERIODIC_RUN_TIME_TO_END);
-  stopTimeToEnd_ = parameters.getValue(CCS_RGM_PERIODIC_STOP_TIME_TO_END);
+  workPeriod_ = parameters.get(CCS_RGM_PERIODIC_RUN_PERIOD);
+  stopPeriod_ = parameters.get(CCS_RGM_PERIODIC_STOP_PERIOD);
+  workBeginTime_ = parameters.getU32(CCS_RGM_PERIODIC_RUN_BEGIN_TIME);
+  stopBeginTime_ = parameters.getU32(CCS_RGM_PERIODIC_STOP_BEGIN_TIME);
+  workTimeToEnd_ = parameters.get(CCS_RGM_PERIODIC_RUN_TIME_TO_END);
+  stopTimeToEnd_ = parameters.get(CCS_RGM_PERIODIC_STOP_TIME_TO_END);
 
-  LastReasonRun runReason = (LastReasonRun)parameters.getValue(CCS_LAST_RUN_REASON_TMP);
-  LastReasonStop stopReason = (LastReasonStop)parameters.getValue(CCS_LAST_STOP_REASON);
+  LastReasonRun runReason = (LastReasonRun)parameters.get(CCS_LAST_RUN_REASON_TMP);
+  LastReasonStop stopReason = (LastReasonStop)parameters.get(CCS_LAST_STOP_REASON);
 
   if (action_ == OffAction) { // Режим - выключен
     state_ = IdleState;
@@ -66,13 +66,13 @@ void RegimeTechnologPeriodic::processing()
             (stopReason == LastReasonStopImbalanceVoltIn) ||
             (stopReason == LastReasonStopNoVoltage)) {
           if (ksu.isProgramMode()) { // Режим - программа;
-            uint32_t stopBeginTime = parameters.getValueUint32(CCS_LAST_STOP_DATE_TIME); // Время остановки двигателя
+            uint32_t stopBeginTime = parameters.getU32(CCS_LAST_STOP_DATE_TIME); // Время остановки двигателя
             uint32_t workEndTime = workBeginTime_ + workPeriod_;                         // Предпологаемое время останова по программе
             uint32_t workTimeToEnd = workEndTime - stopBeginTime;                        // Время доработки по программе
             uint32_t stopTime = ksu.getSecFromCurTime(stopBeginTime);                    // Время от останова до пуска
             workTimeToEnd = workTimeToEnd + stopTime;                                    // Время доработки
             if (workTimeToEnd < (30 * 60)) { // Если время доработки меньше 30 минут
-              stopBeginTime_ = parameters.getValueUint32(CCS_LAST_STOP_DATE_TIME); // Время перехода в паузу фиксируем как время остановки двигателя
+              stopBeginTime_ = parameters.getU32(CCS_LAST_STOP_DATE_TIME); // Время перехода в паузу фиксируем как время остановки двигателя
               state_ = PauseState;
             }
             else {
@@ -159,7 +159,7 @@ void RegimeTechnologPeriodic::processing()
       uint32_t time = ksu.getSecFromCurTime(stopBeginTime_);
       stopTimeToEnd_ = getTimeToEnd(stopPeriod_, time);
       if (ksu.isProgramMode()) { // Режим - программа;
-        addTime_ = parameters.getValue(CCS_TIMER_DIFFERENT_START) - stopTimeToEnd_;
+        addTime_ = parameters.get(CCS_TIMER_DIFFERENT_START) - stopTimeToEnd_;
         if (addTime_ < 0) {
           addTime_ = 0;
         }
@@ -178,9 +178,9 @@ void RegimeTechnologPeriodic::processing()
     break;
   }
 
-  parameters.setValue(CCS_RGM_PERIODIC_STATE, state_);
-  parameters.setValue(CCS_RGM_PERIODIC_RUN_BEGIN_TIME, workBeginTime_);
-  parameters.setValue(CCS_RGM_PERIODIC_STOP_BEGIN_TIME, stopBeginTime_);
-  parameters.setValue(CCS_RGM_PERIODIC_RUN_TIME_TO_END, workTimeToEnd_);
-  parameters.setValue(CCS_RGM_PERIODIC_STOP_TIME_TO_END, stopTimeToEnd_);
+  parameters.set(CCS_RGM_PERIODIC_STATE, state_);
+  parameters.set(CCS_RGM_PERIODIC_RUN_BEGIN_TIME, workBeginTime_);
+  parameters.set(CCS_RGM_PERIODIC_STOP_BEGIN_TIME, stopBeginTime_);
+  parameters.set(CCS_RGM_PERIODIC_RUN_TIME_TO_END, workTimeToEnd_);
+  parameters.set(CCS_RGM_PERIODIC_STOP_TIME_TO_END, stopTimeToEnd_);
 }

@@ -50,5 +50,5 @@ bool ProtectionResistanceIsolation::checkPrevent()
 
 float ProtectionResistanceIsolation::calcValue()
 {
-  return parameters.getValue(CCS_RESISTANCE_ISOLATION);
+  return parameters.get(CCS_RESISTANCE_ISOLATION);
 }

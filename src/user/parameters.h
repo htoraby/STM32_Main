@@ -37,7 +37,7 @@ public:
    * \param id - уникальный идентификатор параметра
    * \return значение параметра
    */
-  float getValue(unsigned short id);
+  float get(unsigned short id);
 
   /*!
    * \brief Метод чтения параметра типа uint32_t по ID
@@ -45,7 +45,7 @@ public:
    * \param id - уникальный идентификатор параметра
    * \return значение параметра
    */
-  uint32_t getValueUint32(unsigned short id);
+  uint32_t getU32(unsigned short id);
 
   /*!
    * \brief Метод записи параметра по ID с определением необходимого массива
@@ -53,7 +53,7 @@ public:
    * \param value присваемое значение
    * \return 0 - значение присвоено или ошибка
    */
-  int setValue(unsigned short id, float value);
+  int set(unsigned short id, float value);
 
   /*!
    * \brief Метод записи параметра типа uint32_t по ID
@@ -62,7 +62,7 @@ public:
    * \param value присваемое значение
    * \return 0 - значение присвоено или ошибка
    */
-  int setValue(unsigned short id, uint32_t value);
+  int set(unsigned short id, uint32_t value);
 
   /*!
    * \brief Метод записи параметра типа int по ID
@@ -71,7 +71,7 @@ public:
    * \param value присваемое значение
    * \return 0 - значение присвоено или ошибка
    */
-  int setValue(unsigned short id, int value);
+  int set(unsigned short id, int value);
 
   /*!
    * \brief Метод получения типа физической величины по ID

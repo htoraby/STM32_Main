@@ -55,7 +55,7 @@ void Parameters::read()
   em->readParameters();
 }
 
-float Parameters::getValue(unsigned short id)
+float Parameters::get(unsigned short id)
 {
   if ((id > CCS_BEGIN) && (id < CCS_END))
     return ksu.getValue(id);
@@ -69,7 +69,7 @@ float Parameters::getValue(unsigned short id)
   return 0;
 }
 
-uint32_t Parameters::getValueUint32(unsigned short id)
+uint32_t Parameters::getU32(unsigned short id)
 {
   if ((id > CCS_BEGIN) && (id < CCS_END))
     return ksu.getValueUint32(id);
@@ -83,7 +83,7 @@ uint32_t Parameters::getValueUint32(unsigned short id)
   return 0;
 }
 
-int Parameters::setValue(unsigned short id, float value)
+int Parameters::set(unsigned short id, float value)
 {
   if ((id > CCS_BEGIN) && (id < CCS_END))
     return ksu.setNewValue(id, value);
@@ -96,7 +96,7 @@ int Parameters::setValue(unsigned short id, float value)
   return 0;
 }
 
-int Parameters::setValue(unsigned short id, uint32_t value)
+int Parameters::set(unsigned short id, uint32_t value)
 {
   if ((id > CCS_BEGIN) && (id < CCS_END))
     return ksu.setNewValue(id, value);
@@ -109,9 +109,9 @@ int Parameters::setValue(unsigned short id, uint32_t value)
   return 0;
 }
 
-int Parameters::setValue(unsigned short id, int value)
+int Parameters::set(unsigned short id, int value)
 {
-  return setValue(id, (float)value);
+  return set(id, (float)value);
 }
 
 uint8_t Parameters::getPhysic(unsigned short id)

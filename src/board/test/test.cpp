@@ -140,8 +140,8 @@ static void testThread(void * argument)
 //    toggleLed(FanLed);
 
     osDelay(500);
-//    parameters.setValue(CCS_NOTE_1 + t, 10);
-//    parameters.setValue(CCS_NOTE_1 + t + 1, 20);
+//    parameters.set(CCS_NOTE_1 + t, 10);
+//    parameters.set(CCS_NOTE_1 + t + 1, 20);
 //    t = t + 2;
 //    if (t > 10) t = 0;
 

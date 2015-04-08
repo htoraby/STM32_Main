@@ -28,8 +28,8 @@ ProtectionTurbineRotation::~ProtectionTurbineRotation()
 
 bool ProtectionTurbineRotation::checkPrevent()
 {
-  float value = parameters.getValue(CCS_TURBO_ROTATION_NOW);
-  if ((parameters.getValue(CCS_CONDITION) == CCS_CONDITION_STOP) &&
+  float value = parameters.get(CCS_TURBO_ROTATION_NOW);
+  if ((parameters.get(CCS_CONDITION) == CCS_CONDITION_STOP) &&
       value > tripSetpoint_) {
     return true;
   }

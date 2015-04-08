@@ -64,12 +64,12 @@ void Protection::getCurrentParamProt()
 
 void Protection::setCurrentParamProt()
 {
-  ksu.setValue(idState_, state_);
-  ksu.setValue(idRestartFlag_, restart_);
-  ksu.setValue(idBlockFlag_, block_);
-  ksu.setValue(idRestartCount_, restartCount_);
-  ksu.setValue(idRestartFirstTime_, restartFirstTime_);
-  ksu.setValue(idPrevent_, prevent_);
+  parameters.set(idState_, state_);
+  parameters.set(idRestartFlag_, restart_);
+  parameters.set(idBlockFlag_, block_);
+  parameters.set(idRestartCount_, restartCount_);
+  parameters.set(idRestartFirstTime_, restartFirstTime_);
+  parameters.set(idPrevent_, prevent_);
 }
 
 void Protection::setOtherParamProt()
@@ -130,7 +130,7 @@ void Protection::addEventReactionProt()
 
 bool Protection::isModeOff()
 {
-  if (parameters.getValue(idMode_) == ModeOff)
+  if (parameters.get(idMode_) == ModeOff)
     return true;
   else
     return false;
@@ -138,7 +138,7 @@ bool Protection::isModeOff()
 
 bool Protection::isModeBlock()
 {
-  if (parameters.getValue(idMode_) == ModeBlock)
+  if (parameters.get(idMode_) == ModeBlock)
     return true;
   else
     return false;
@@ -146,7 +146,7 @@ bool Protection::isModeBlock()
 
 bool Protection::isModeRestart()
 {
-  if (parameters.getValue(idMode_) == ModeRestart)
+  if (parameters.get(idMode_) == ModeRestart)
     return true;
   else
     return false;
@@ -154,7 +154,7 @@ bool Protection::isModeRestart()
 
 bool Protection::isModeOn()
 {
-  if (parameters.getValue(idMode_) == ModeOn)
+  if (parameters.get(idMode_) == ModeOn)
     return true;
   else
     return false;
@@ -381,7 +381,7 @@ void Protection::proccessingStateStop()
                 logDebug.add(DebugMsg, "Time restart - begin");
                 ksu.setRestart();
               }
-              else if (ksu.getSecFromCurTime(timer_) >= parameters.getValue(CCS_TIMER_DIFFERENT_START)) {
+              else if (ksu.getSecFromCurTime(timer_) >= parameters.get(CCS_TIMER_DIFFERENT_START)) {
                 if (ksu.isPrevent()) {
                   if (!attempt_) {                // Первая попытка запуска по АПВ
                     attempt_ = true;

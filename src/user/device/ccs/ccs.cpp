@@ -141,17 +141,17 @@ void Ccs::vsdConditionTask()
     switch (vsdCondition) {
     case VSD_CONDITION_STOP:
       if (getValue(CCS_CONDITION) != CCS_CONDITION_STOP)
-        setValue(CCS_CONDITION, CCS_CONDITION_STOP);
+        setNewValue(CCS_CONDITION, CCS_CONDITION_STOP);
       break;
     case VSD_CONDITION_STOPPING:
       if (vsd->checkStop()) {
-        setValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
+        setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
       }
       break;
     case VSD_CONDITION_WAIT_STOP:
       if (vsd->stop() == RETURN_OK) {
         setLedCondition(ToogleGreenLed);
-        setValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
+        setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
       } else {
         // TODO: Ошибка останова
       }
@@ -159,9 +159,9 @@ void Ccs::vsdConditionTask()
     case VSD_CONDITION_RUN:
       if (getValue(CCS_CONDITION) != CCS_CONDITION_RUN) {
         if (vsd->getValue(VSD_FREQUENCY) == vsd->getValue(VSD_FREQUENCY_NOW))
-          setValue(CCS_CONDITION, CCS_CONDITION_RUN);
+          setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
 #if DEBUG
-        setValue(CCS_CONDITION, CCS_CONDITION_RUN);
+        setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
 #endif
       }
       break;
@@ -170,12 +170,12 @@ void Ccs::vsdConditionTask()
         setLedCondition(ToogleGreenLed);
         // Запуск сохранения пускового архива
         logRunning.start();
-        setValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
+        setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
       }
       break;
     case VSD_CONDITION_WAIT_RUN:
       if (vsd->start() == RETURN_OK) {
-        setValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
+        setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
       } else {
         // TODO: Ошибка запуска
       }
@@ -195,48 +195,48 @@ void Ccs::changedCondition()
       resetRestart();
 
       if (flag == CCS_CONDITION_FLAG_DELAY) {
-        setValue(CCS_GENERAL_CONDITION, GeneralConditionDelay);
+        setNewValue(CCS_GENERAL_CONDITION, GeneralConditionDelay);
         setLedCondition(ToogleGreenToogleYellowLed);
       }
       else {
-        setValue(CCS_GENERAL_CONDITION, GeneralConditionRunning);
+        setNewValue(CCS_GENERAL_CONDITION, GeneralConditionRunning);
         setLedCondition(ToogleYellowLed);
       }
       break;
     case CCS_CONDITION_RUN:
       if (flag == CCS_CONDITION_FLAG_DELAY) {
-        setValue(CCS_GENERAL_CONDITION, GeneralConditionDelay);
+        setNewValue(CCS_GENERAL_CONDITION, GeneralConditionDelay);
         setLedCondition(OnGreenToogleYellowLed);
       }
       else {
-        setValue(CCS_GENERAL_CONDITION, GeneralConditionRun);
+        setNewValue(CCS_GENERAL_CONDITION, GeneralConditionRun);
         setLedCondition(OnGreenLed);
       }
       break;
     case CCS_CONDITION_STOPPING:
       if (flag == CCS_CONDITION_FLAG_BLOCK) {
-        setValue(CCS_GENERAL_CONDITION, GeneralConditionBlock);
+        setNewValue(CCS_GENERAL_CONDITION, GeneralConditionBlock);
         setLedCondition(ToogleGreenToogleRedLed);
       }
       else {
-        setValue(CCS_GENERAL_CONDITION, GeneralConditionStopping);
+        setNewValue(CCS_GENERAL_CONDITION, GeneralConditionStopping);
       }
       break;
     default:
       if (condition != conditionOld_) {
-        setValue(CCS_LAST_STOP_REASON, getValue(CCS_LAST_STOP_REASON_TMP));
+        setNewValue(CCS_LAST_STOP_REASON, getValue(CCS_LAST_STOP_REASON_TMP));
       }
 
       if (flag == CCS_CONDITION_FLAG_BLOCK) {
-        setValue(CCS_GENERAL_CONDITION, GeneralConditionBlock);
+        setNewValue(CCS_GENERAL_CONDITION, GeneralConditionBlock);
         setLedCondition(ToogleRedLed);
       }
       else if (flag == CCS_CONDITION_FLAG_RESTART) {
-        setValue(CCS_GENERAL_CONDITION, GeneralConditionRestart);
+        setNewValue(CCS_GENERAL_CONDITION, GeneralConditionRestart);
         setLedCondition(OnRedOnYellowLed);
       }
       else {
-        setValue(CCS_GENERAL_CONDITION, GeneralConditionStop);
+        setNewValue(CCS_GENERAL_CONDITION, GeneralConditionStop);
         setLedCondition(OnRedLed);
       }
       break;
@@ -271,26 +271,26 @@ void Ccs::changedWorkMode()
 
 void Ccs::start(LastReasonRun reason)
 {
-  setValue(CCS_LAST_RUN_REASON_TMP, reason);
+  setNewValue(CCS_LAST_RUN_REASON_TMP, reason);
 
   if (checkCanStart()) {
-    setValue(CCS_LAST_RUN_REASON, reason);
-    setValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
-    setValue(CCS_CONDITION, CCS_CONDITION_RUNNING);
-    setValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
+    setNewValue(CCS_LAST_RUN_REASON, reason);
+    setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
+    setNewValue(CCS_CONDITION, CCS_CONDITION_RUNNING);
+    setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
   }
 }
 
 void Ccs::stop(LastReasonStop reason)
 {
-  setValue(CCS_LAST_STOP_REASON_TMP, reason);
+  setNewValue(CCS_LAST_STOP_REASON_TMP, reason);
 
   if (checkCanStop()) {
     if (reason == LastReasonStopRemote)
       setBlock();
 
-    setValue(CCS_CONDITION, CCS_CONDITION_STOPPING);
-    setValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
+    setNewValue(CCS_CONDITION, CCS_CONDITION_STOPPING);
+    setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
   }
 }
 
@@ -302,35 +302,35 @@ void Ccs::checkCmd()
   if (start) {
     switch (start) {
     case CmdStartRemote:
-      setValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunRemote);
+      setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunRemote);
       break;
     default:
-      setValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunOperator);
+      setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunOperator);
       break;
     }
 
-    setValue(CCS_CMD_START, 0);
+    setNewValue(CCS_CMD_START, 0);
     if (checkCanStart()) {
-      setValue(CCS_LAST_RUN_REASON, getValue(CCS_LAST_RUN_REASON_TMP));
-      setValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
-      setValue(CCS_CONDITION, CCS_CONDITION_RUNNING);
-      setValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
+      setNewValue(CCS_LAST_RUN_REASON, getValue(CCS_LAST_RUN_REASON_TMP));
+      setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
+      setNewValue(CCS_CONDITION, CCS_CONDITION_RUNNING);
+      setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
     }
   } else if (stop) {
     switch (stop) {
     case CmdStopRemote:
-      setValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopRemote);
+      setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopRemote);
       break;
     default:
-      setValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopOperator);
+      setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopOperator);
       break;
     }
 
-    setValue(CCS_CMD_STOP, 0);
+    setNewValue(CCS_CMD_STOP, 0);
     if (checkCanStop()) {
       setBlock();
-      setValue(CCS_CONDITION, CCS_CONDITION_STOPPING);
-      setValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
+      setNewValue(CCS_CONDITION, CCS_CONDITION_STOPPING);
+      setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
     }
   }
 }
@@ -345,7 +345,7 @@ bool Ccs::checkCanStart()
 
   if (isPrevent()) {
     if (getValue(CCS_PROT_DHS_PRESSURE_INTAKE_PREVENT)) {
-      if (parameters.getValue(TMS_PRESSURE_INTAKE) < getValue(CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT)) {
+      if (parameters.get(TMS_PRESSURE_INTAKE) < getValue(CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT)) {
         addEventProtectionPrevent();
         return false;
       }
@@ -437,37 +437,37 @@ bool Ccs::isBlock()
 void Ccs::setDelay()
 {
   if (getValue(CCS_CONDITION_FLAG) < CCS_CONDITION_FLAG_DELAY)
-    setValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_DELAY);
+    setNewValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_DELAY);
 }
 
 void Ccs::setRestart()
 {
   if (getValue(CCS_CONDITION_FLAG) < CCS_CONDITION_FLAG_RESTART)
-    setValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_RESTART);
+    setNewValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_RESTART);
 }
 
 void Ccs::setBlock()
 {
   if (getValue(CCS_CONDITION_FLAG) < CCS_CONDITION_FLAG_BLOCK)
-    setValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_BLOCK);
+    setNewValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_BLOCK);
 }
 
 void Ccs::resetDelay()
 {
   if (getValue(CCS_CONDITION_FLAG) == CCS_CONDITION_FLAG_DELAY)
-    setValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_NULL);
+    setNewValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_NULL);
 }
 
 void Ccs::resetRestart()
 {
   if (getValue(CCS_CONDITION_FLAG) == CCS_CONDITION_FLAG_RESTART)
-    setValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_NULL);
+    setNewValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_NULL);
 }
 
 void Ccs::resetBlock()
 {
   if (getValue(CCS_CONDITION_FLAG) == CCS_CONDITION_FLAG_BLOCK)
-    setValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_NULL);
+    setNewValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_NULL);
 }
 
 bool Ccs::isPrevent()
@@ -542,20 +542,20 @@ void Ccs::calcTime()
 
   if ((HAL_GetTick() - timer) >= 100) {
     timer = HAL_GetTick();
-    setValue(CCS_DATE_TIME, (uint32_t)rtcGetTime());
+    setNewValue(CCS_DATE_TIME, (uint32_t)rtcGetTime());
   }
 
   if (conditionOld != condition) {
     if ((condition != CCS_CONDITION_STOP) && (conditionOld == CCS_CONDITION_STOP))
-      setValue(CCS_LAST_RUN_DATE_TIME, getTime());
+      setNewValue(CCS_LAST_RUN_DATE_TIME, getTime());
     if ((condition == CCS_CONDITION_STOP) && (conditionOld != CCS_CONDITION_STOP))
-      setValue(CCS_LAST_STOP_DATE_TIME, getTime());
+      setNewValue(CCS_LAST_STOP_DATE_TIME, getTime());
 
     conditionOld = condition;
   }
 
-  setValue(CCS_RUN_TIME, getSecFromCurTime(CCS_LAST_RUN_DATE_TIME));
-  setValue(CCS_STOP_TIME, getSecFromCurTime(CCS_LAST_STOP_DATE_TIME));
+  setNewValue(CCS_RUN_TIME, getSecFromCurTime(CCS_LAST_RUN_DATE_TIME));
+  setNewValue(CCS_STOP_TIME, getSecFromCurTime(CCS_LAST_STOP_DATE_TIME));
 }
 
 void Ccs::calcParameters()
@@ -565,8 +565,8 @@ void Ccs::calcParameters()
 
 void Ccs::calcCoefTransformation()
 {
-  float transVoltageTapOff = parameters.getValue(CCS_TRANS_VOLTAGE_TAP_OFF);
-  float transNominalVoltage = parameters.getValue(CCS_TRANS_NOMINAL_VOLTAGE);
+  float transVoltageTapOff = parameters.get(CCS_TRANS_VOLTAGE_TAP_OFF);
+  float transNominalVoltage = parameters.get(CCS_TRANS_NOMINAL_VOLTAGE);
   float coefTransformation;
   if (transNominalVoltage) {
     coefTransformation = transVoltageTapOff / transNominalVoltage;
@@ -574,32 +574,32 @@ void Ccs::calcCoefTransformation()
   else {
     coefTransformation = transVoltageTapOff / 380;
   }
-  setValue(CCS_COEF_TRANSFORMATION, coefTransformation);
+  setNewValue(CCS_COEF_TRANSFORMATION, coefTransformation);
 }
 
 void Ccs::calcVoltageImbalanceIn()
 {
-  float imbalance = calcImbalance(parameters.getValue(EM_VOLTAGE_PHASE_1),
-                                  parameters.getValue(EM_VOLTAGE_PHASE_2),
-                                  parameters.getValue(EM_VOLTAGE_PHASE_3),
+  float imbalance = calcImbalance(parameters.get(EM_VOLTAGE_PHASE_1),
+                                  parameters.get(EM_VOLTAGE_PHASE_2),
+                                  parameters.get(EM_VOLTAGE_PHASE_3),
                                   0);
-  setValue(CCS_VOLTAGE_IMBALANCE_IN, imbalance);
+  setNewValue(CCS_VOLTAGE_IMBALANCE_IN, imbalance);
 }
 
 uint8_t Ccs::setNewValue(uint16_t id, float value)
 {
   switch (id) {
   case CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT:
-    parameters.setValue(VSD_M_IRMS, value);
+    parameters.set(VSD_M_IRMS, value);
     break;
   case CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY:
-    parameters.setValue(VSD_T_BLANK, value);
+    parameters.set(VSD_T_BLANK, value);
     break;
   case CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY:
-    parameters.setValue(VSD_M_TRMS, value);
+    parameters.set(VSD_M_TRMS, value);
     break;
   case CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT:
-    parameters.setValue(VSD_M_I_FAST, value);
+    parameters.set(VSD_M_I_FAST, value);
     break;
   default:
     break;
@@ -609,19 +609,19 @@ uint8_t Ccs::setNewValue(uint16_t id, float value)
 
 void Ccs::calcMotorCurrentImbalance()
 {
-  float imbalance = calcImbalance(parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1),
-                                  parameters.getValue(CCS_MOTOR_CURRENT_PHASE_2),
-                                  parameters.getValue(CCS_MOTOR_CURRENT_PHASE_3),
+  float imbalance = calcImbalance(parameters.get(CCS_MOTOR_CURRENT_PHASE_1),
+                                  parameters.get(CCS_MOTOR_CURRENT_PHASE_2),
+                                  parameters.get(CCS_MOTOR_CURRENT_PHASE_3),
                                   1);
-  setValue(CCS_MOTOR_CURRENT_IMBALANCE, imbalance);
+  setNewValue(CCS_MOTOR_CURRENT_IMBALANCE, imbalance);
 }
 
 void Ccs::calcMotorCurrentPhase(uint16_t vsdOutCurrent, uint16_t coefCorrect, uint16_t motorCurrent)
 {
   float current;
-  float vsdCurrent = parameters.getValue(vsdOutCurrent);
-  float coefTrans = parameters.getValue(CCS_COEF_TRANSFORMATION);
-  float coefCor = parameters.getValue(coefCorrect);
+  float vsdCurrent = parameters.get(vsdOutCurrent);
+  float coefTrans = parameters.get(CCS_COEF_TRANSFORMATION);
+  float coefCor = parameters.get(coefCorrect);
   if (coefTrans) {
     current = vsdCurrent / coefTrans;
   }
@@ -629,7 +629,7 @@ void Ccs::calcMotorCurrentPhase(uint16_t vsdOutCurrent, uint16_t coefCorrect, ui
     current = vsdCurrent;
   }
   current = current * coefCor;
-  parameters.setValue(motorCurrent, current);
+  setNewValue(motorCurrent, current);
 }
 
 void Ccs::calcMotorCurrentPhase1()
@@ -655,11 +655,11 @@ void Ccs::calcMotorCurrentPhase3()
 
 void Ccs::calcMotorCurrentAvarage()
 {
-  float motorCurrent = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1);
-  motorCurrent = motorCurrent + parameters.getValue(CCS_MOTOR_CURRENT_PHASE_2);
-  motorCurrent = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_3);
+  float motorCurrent = parameters.get(CCS_MOTOR_CURRENT_PHASE_1);
+  motorCurrent = motorCurrent + parameters.get(CCS_MOTOR_CURRENT_PHASE_2);
+  motorCurrent = parameters.get(CCS_MOTOR_CURRENT_PHASE_3);
   motorCurrent = motorCurrent / 3;
-  parameters.setValue(CCS_MOTOR_CURRENT_AVARAGE, motorCurrent);
+  setNewValue(CCS_MOTOR_CURRENT_AVARAGE, motorCurrent);
 }
 
 void Ccs::initParameters()

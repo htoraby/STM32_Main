@@ -82,7 +82,7 @@ void setProtectionPrevent()
   for (int i = 0; i < COUNT_PROTECTIONS; ++i) {
     prevent = prevent ? true : protections[i]->isPrevent();
   }
-  parameters.setValue(CCS_PROT_PREVENT, prevent);
+  parameters.set(CCS_PROT_PREVENT, prevent);
 }
 
 void addEventProtectionPrevent()

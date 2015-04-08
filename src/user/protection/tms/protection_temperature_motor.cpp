@@ -48,5 +48,5 @@ bool ProtectionTemperatureMotor::checkPrevent()
 
 float ProtectionTemperatureMotor::calcValue()
 {
-  return parameters.getValue(TMS_TEMPERATURE_WINDING);
+  return parameters.get(TMS_TEMPERATURE_WINDING);
 }

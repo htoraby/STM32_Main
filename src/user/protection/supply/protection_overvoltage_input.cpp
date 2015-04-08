@@ -56,12 +56,12 @@ bool ProtectionOverVoltageInput::checkPrevent()
 
 float ProtectionOverVoltageInput::calcValue()
 {
-  float value = parameters.getValue(EM_VOLTAGE_PHASE_1);
-  float value2 = parameters.getValue(EM_VOLTAGE_PHASE_2);
-  float value3 = parameters.getValue(EM_VOLTAGE_PHASE_3);
+  float value = parameters.get(EM_VOLTAGE_PHASE_1);
+  float value2 = parameters.get(EM_VOLTAGE_PHASE_2);
+  float value3 = parameters.get(EM_VOLTAGE_PHASE_3);
 
   value = max(max(value, value2), value3);
 
-  float nominal = parameters.getValue(CCS_TRANS_NOMINAL_VOLTAGE);
+  float nominal = parameters.get(CCS_TRANS_NOMINAL_VOLTAGE);
   return (value / (nominal / 100.0));
 }

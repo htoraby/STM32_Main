@@ -56,5 +56,5 @@ bool ProtectionPressureIntake::checkPrevent()
 
 float ProtectionPressureIntake::calcValue()
 {
-  return parameters.getValue(TMS_PRESSURE_INTAKE);
+  return parameters.get(TMS_PRESSURE_INTAKE);
 }

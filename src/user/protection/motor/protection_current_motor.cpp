@@ -50,12 +50,12 @@ bool ProtectionCurrentMotor::checkAlarm()
 
 float ProtectionCurrentMotor::calcValue()
 {
-  float value = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1);
-  float value2 = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_2);
-  float value3 = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_3);
+  float value = parameters.get(CCS_MOTOR_CURRENT_PHASE_1);
+  float value2 = parameters.get(CCS_MOTOR_CURRENT_PHASE_2);
+  float value3 = parameters.get(CCS_MOTOR_CURRENT_PHASE_3);
 
   value = max(max(value, value2), value3);
 
-  float nominal = parameters.getValue(VSD_MOTOR_CURRENT);
+  float nominal = parameters.get(VSD_MOTOR_CURRENT);
   return (value / (nominal / 100.0));
 }

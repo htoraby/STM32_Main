@@ -45,13 +45,13 @@ void ProtectionUnderloadMotor::getOtherSetpointProt()
     progressiveRestartCount_ = 0;
   }
 
-  if (parameters.getValue(CCS_RGM_CHANGE_FREQ_MODE) != Regime::OffAction) {
-    float beginFreq_ = parameters.getValue(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ);
-    float endFreq_ = parameters.getValue(CCS_RGM_CHANGE_FREQ_END_FREQ);
-    float beginUnderload_ = parameters.getValue(CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD);
+  if (parameters.get(CCS_RGM_CHANGE_FREQ_MODE) != Regime::OffAction) {
+    float beginFreq_ = parameters.get(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ);
+    float endFreq_ = parameters.get(CCS_RGM_CHANGE_FREQ_END_FREQ);
+    float beginUnderload_ = parameters.get(CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD);
     if (endFreq_ - beginFreq_) {
       tripSetpoint_ = beginUnderload_ + (tripSetpoint_ - beginUnderload_) *
-          (parameters.getValue(VSD_FREQUENCY) - beginFreq_) / (endFreq_ - beginFreq_);
+          (parameters.get(VSD_FREQUENCY) - beginFreq_) / (endFreq_ - beginFreq_);
     }
   } else {
     if (ksu.getValue(idParam_) && (vsd->getNominalFreq() > 0))
@@ -61,7 +61,7 @@ void ProtectionUnderloadMotor::getOtherSetpointProt()
 
 void ProtectionUnderloadMotor::setOtherParamProt()
 {
-  ksu.setValue(CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_COUNT, progressiveRestartCount_);
+  parameters.set(CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_COUNT, progressiveRestartCount_);
 }
 
 bool ProtectionUnderloadMotor::checkAlarm()
@@ -71,15 +71,15 @@ bool ProtectionUnderloadMotor::checkAlarm()
 
 float ProtectionUnderloadMotor::calcValue()
 {
-  float value = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1);
-  float value2 = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_2);
-  float value3 = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_3);
-  float nominal = parameters.getValue(VSD_MOTOR_CURRENT);
+  float value = parameters.get(CCS_MOTOR_CURRENT_PHASE_1);
+  float value2 = parameters.get(CCS_MOTOR_CURRENT_PHASE_2);
+  float value3 = parameters.get(CCS_MOTOR_CURRENT_PHASE_3);
+  float nominal = parameters.get(VSD_MOTOR_CURRENT);
 
   value = min(min(value, value2), value3);
 
-  float cos = parameters.getValue(CCS_MOTOR_COS_PHI_NOW);
-  float nominalCos = parameters.getValue(VSD_MOTOR_COS_PHI);
+  float cos = parameters.get(CCS_MOTOR_COS_PHI_NOW);
+  float nominalCos = parameters.get(VSD_MOTOR_COS_PHI);
 
   return (value * cos) / (nominal * nominalCos) * 100.0;
 }

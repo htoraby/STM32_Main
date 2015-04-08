@@ -56,5 +56,5 @@ bool ProtectionImbalanceVoltageInput::checkPrevent()
 
 float ProtectionImbalanceVoltageInput::calcValue()
 {
-  return parameters.getValue(CCS_VOLTAGE_IMBALANCE_IN);
+  return parameters.get(CCS_VOLTAGE_IMBALANCE_IN);
 }
