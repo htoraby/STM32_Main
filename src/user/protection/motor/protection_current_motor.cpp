@@ -34,10 +34,28 @@ ProtectionCurrentMotor::~ProtectionCurrentMotor()
 
 }
 
+void ProtectionCurrentMotor::getOtherSetpointProt()
+{
+  activDelay_ = 0.0;
+  tripDelay_  = 0.0;
+}
+
 bool ProtectionCurrentMotor::checkAlarm()
 { 
   // Возвращаем аварию если превышена уставка по пределу тока
   // или установлен бит в слове состояния ЧРП
   return ((Protection::isHigherLimit(tripSetpoint_)) ||
           (vsd->checkVsdStatus(VSD_STATUS_I_FAST_ERR)));
+}
+
+float ProtectionCurrentMotor::calcValue()
+{
+  float value = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_1);
+  float value2 = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_2);
+  float value3 = parameters.getValue(CCS_MOTOR_CURRENT_PHASE_3);
+
+  value = max(max(value, value2), value3);
+
+  float nominal = parameters.getValue(VSD_MOTOR_CURRENT);
+  return (value / (nominal / 100.0));
 }

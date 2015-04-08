@@ -489,38 +489,39 @@ enum enCcsConditionFlag {
  * \brief Список причин пуска
  */
 enum LastReasonRun {
-  LastReasonRunNone                     = 0,   //!< Нет пуска
-  LastReasonRunOperator                 = 1,   //!< "Оператор"
-  LastReasonRunAuto                     = 2,   //!< "Автоматический"
-  LastReasonRunRemote                   = 3,   //!< "Телеуправление"
-  LastReasonRunProgram                  = 4,   //!< "По программе"
-  LastReasonRunApvUnderloadMotor        = 5,   //!< "АПВ по защите: Недогруз двигателя"
-  LastReasonRunApvOverloadMotor         = 6,   //!< "АПВ по защите: Перегруз двигателя"
-  LastReasonRunApvImbalanceCurMotor     = 7,   //!< "АПВ по защите: Дисбаланс токов ПЭД"
-  LastReasonRunApvUnderVoltIn           = 8,   //!< "АПВ по защите: Снижение питания сети"
-  LastReasonRunApvOverVoltIn            = 9,   //!< "АПВ по защите: Превышение питания сети"
-  LastReasonRunApvImbalanceVoltIn       = 10,  //!< "АПВ по защите: Дисбаланс напряжения"
-  LastReasonRunApvTurbineRotation       = 11,  //!< "АПВ по защите: Турбинное вращение"
-  LastReasonRunApvPhaseSequence         = 12,  //!< "АПВ по защите: Чередование фаз"
-  LastReasonRunApvLockDoor              = 13,  //!< "АПВ по защите: Блокировка двери"
-  LastReasonRunApvPressureIntake        = 14,  //!< "АПВ по защите: Pmin на приёме насоса"
-  LastReasonRunApvTemperatureMotor      = 15,  //!< "АПВ по защите: Перегрев двигателя"
-  LastReasonRunApvVibrationMotor        = 16,  //!< "АПВ по защите: Превышение вибрации"
-  LastReasonRunApvUnderPressure1        = 17,  //!< "АПВ по защите: "
-  LastReasonRunApvMinAnalog1            = 18,  //!< "АПВ по защите: "
-  LastReasonRunApvMaxAnalog1            = 19,  //!< "АПВ по защите: "
-  LastReasonRunApvMinAnalog2            = 20,  //!< "АПВ по защите: "
-  LastReasonRunApvMaxAnalog2            = 21,  //!< "АПВ по защите: "
-  LastReasonRunApvFreqPower             = 22,  //!< "АПВ по защите: "
-  LastReasonRunApvPower                 = 23,  //!< "АПВ по защите: "
+  LastReasonRunNone                     = 0,    //!< Нет пуска
+  LastReasonRunOperator                 = 1,    //!< "Оператор"
+  LastReasonRunAuto                     = 2,    //!< "Автоматический"
+  LastReasonRunRemote                   = 3,    //!< "Телеуправление"
+  LastReasonRunProgram                  = 4,    //!< "По программе"
+  LastReasonRunApvUnderloadMotor        = 5,    //!< "АПВ по защите: Недогруз двигателя"
+  LastReasonRunApvOverloadMotor         = 6,    //!< "АПВ по защите: Перегруз двигателя"
+  LastReasonRunApvImbalanceCurMotor     = 7,    //!< "АПВ по защите: Дисбаланс токов ПЭД"
+  LastReasonRunApvUnderVoltIn           = 8,    //!< "АПВ по защите: Снижение питания сети"
+  LastReasonRunApvOverVoltIn            = 9,    //!< "АПВ по защите: Превышение питания сети"
+  LastReasonRunApvImbalanceVoltIn       = 10,   //!< "АПВ по защите: Дисбаланс напряжения"
+  LastReasonRunApvTurbineRotation       = 11,   //!< "АПВ по защите: Турбинное вращение"
+  LastReasonRunApvPhaseSequence         = 12,   //!< "АПВ по защите: Чередование фаз"
+  LastReasonRunApvLockDoor              = 13,   //!< "АПВ по защите: Блокировка двери"
+  LastReasonRunApvPressureIntake        = 14,   //!< "АПВ по защите: Pmin на приёме насоса"
+  LastReasonRunApvTemperatureMotor      = 15,   //!< "АПВ по защите: Перегрев двигателя"
+  LastReasonRunApvVibrationMotor        = 16,   //!< "АПВ по защите: Превышение вибрации"
+  LastReasonRunApvUnderPressure1        = 17,   //!< "АПВ по защите: "
+  LastReasonRunApvMinAnalog1            = 18,   //!< "АПВ по защите: "
+  LastReasonRunApvMaxAnalog1            = 19,   //!< "АПВ по защите: "
+  LastReasonRunApvMinAnalog2            = 20,   //!< "АПВ по защите: "
+  LastReasonRunApvMaxAnalog2            = 21,   //!< "АПВ по защите: "
+  LastReasonRunApvFreqPower             = 22,   //!< "АПВ по защите: "
+  LastReasonRunApvPower                 = 23,   //!< "АПВ по защите: "
   // Дополнительные причины пуска
-  LastReasonRunMinAnalog3               = 100, //!<
-  LastReasonRunMinAnalog4               = 101, //!<
-  LastReasonRunMaxAnalog3               = 102, //!<
-  LastReasonRunMaxAnalog4               = 103, //!<
-  LastReasonRunApvCurrentMotor          = 104, //!< "АПВ по защите: Предел тока двигателя"
-  LastReasonRunApvOutOfSyncMotor        = 105, //!< "АПВ по защите: Рассинхронизация ПВЭД"
-  LastReasonRunApvResistIsolation       = 106, //!< "АПВ по защите: Сопротивление изоляции"
+  LastReasonRunMinAnalog3               = 100,  //!<
+  LastReasonRunMinAnalog4               = 101,  //!<
+  LastReasonRunMaxAnalog3               = 102,  //!<
+  LastReasonRunMaxAnalog4               = 103,  //!<
+  LastReasonRunApvCurrentMotor          = 104,  //!< "АПВ по защите: Предел тока двигателя"
+  LastReasonRunApvOutOfSyncMotor        = 105,  //!< "АПВ по защите: Рассинхронизация ПВЭД"
+  LastReasonRunApvResistIsolation       = 106,  //!< "АПВ по защите: Сопротивление изоляции"
+  LastReasonRunApvHardwareVsd           = 107,  //!< "АПВ по защите: Аппаратные защиты ЧРП"
 };
 
 /*!
@@ -568,6 +569,7 @@ enum LastReasonStop {
   LastReasonStopMaxAnalog4              = 103,  //!<
   LastReasonStopCurrentMotor            = 104,  //!< "Предел тока двигателя"
   LastReasonStopOutOfSyncMotor          = 105,  //!< "Рассинхронизация ПВЭД"
+  LastReasonStopHardwareVsd             = 106,  //!< "Аппаратные защиты ЧРП"
 };
 
 #endif /* DEFINE_H_ */

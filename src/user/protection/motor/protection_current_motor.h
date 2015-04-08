@@ -13,8 +13,10 @@ public:
   ~ProtectionCurrentMotor();
 
 private:
-  bool checkAlarm();
+  void getOtherSetpointProt();
 
+  bool checkAlarm();
+  float calcValue();
 };
 
 #endif // PROTECTIONCURRENTMOTOR_H
