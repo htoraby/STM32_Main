@@ -239,12 +239,6 @@ public:
    */
   void calcVoltageImbalanceIn();
 
-  /*!
-   * \brief setNewValue
-   * \param id
-   * \param value
-   * \return
-   */
   uint8_t setNewValue(uint16_t id, float value);
 
 private:

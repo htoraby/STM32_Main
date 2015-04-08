@@ -305,57 +305,57 @@ void Device::createThread(const char *threadName)
   updateValueThreadId_ = osThreadCreate(&t, this);// Создаём задачу
 }
 
-unsigned short Device::getFieldId(unsigned short index)
+inline unsigned short Device::getFieldId(unsigned short index)
 {
   return parameters_[index].id;
 }
 
-unsigned char Device::getFieldAccess(unsigned short index)
+inline unsigned char Device::getFieldAccess(unsigned short index)
 {
   return parameters_[index].access;
 }
 
-unsigned char Device::getFieldOperation(unsigned short index)
+inline unsigned char Device::getFieldOperation(unsigned short index)
 {
   return parameters_[index].operation;
 }
 
-unsigned char Device::getFieldPhysic(unsigned short index)
+inline unsigned char Device::getFieldPhysic(unsigned short index)
 {
   return parameters_[index].physic;
 }
 
-unsigned char Device::getFieldValidity(unsigned short index)
+inline unsigned char Device::getFieldValidity(unsigned short index)
 {
   return parameters_[index].validity;
 }
 
-float Device::getFieldValue(unsigned short index)
+inline float Device::getFieldValue(unsigned short index)
 {
   return parameters_[index].value.float_t;
 }
 
-uint32_t Device::getFieldValueUint32(uint16_t index)
+inline uint32_t Device::getFieldValueUint32(uint16_t index)
 {
   return parameters_[index].value.uint32_t;
 }
 
-float Device::getFieldMinimum(unsigned short index)
+inline float Device::getFieldMinimum(unsigned short index)
 {
   return parameters_[index].min;
 }
 
-float Device::getFieldMaximum(unsigned short index)
+inline float Device::getFieldMaximum(unsigned short index)
 {
   return parameters_[index].max;
 }
 
-float Device::getFieldDefault(unsigned short index)
+inline float Device::getFieldDefault(unsigned short index)
 {
   return parameters_[index].def;
 }
 
-parameter Device::getFieldAll(unsigned short index)
+inline parameter Device::getFieldAll(unsigned short index)
 {
   return parameters_[index];
 }
@@ -385,14 +385,9 @@ void Device::setFieldValidity(unsigned short index, unsigned char validity)
   parameters_[index].validity = validity;
 }
 
-void Device::setFieldValue(unsigned short index, float value)
+template<typename T> inline void Device::setFieldValue(const uint16_t &index, const T &value)
 {
-  parameters_[index].value.float_t = value;
-}
-
-void Device::setFieldValue(unsigned short index, uint32_t value)
-{
-  parameters_[index].value.uint32_t = value;
+  parameters_[index].value.uint32_t = *(uint32_t*)&value;
 }
 
 void Device::setFieldMin(unsigned short index, float min)
@@ -451,7 +446,7 @@ uint32_t Device::getValueUint32(unsigned short id, bool *ok)
   return getFieldValueUint32(index);
 }
 
-unsigned char Device::setValue(unsigned short id, float value)
+uint8_t Device::setValue(uint16_t id, float value)
 {
   //TODO: Добавить проверки на корректность записываемых данных
 
@@ -466,10 +461,10 @@ unsigned char Device::setValue(unsigned short id, float value)
   return 0;
 }
 
-unsigned char Device::setValue(uint16_t id, uint32_t value)
+uint8_t Device::setValue(uint16_t id, uint32_t value)
 {
   uint16_t index = getIndexAtId(id);
-  uint32_t valueOld = getFieldValue(index);
+  uint32_t valueOld = getFieldValueUint32(index);
 
   setFieldValue(index, value);
 
@@ -479,19 +474,9 @@ unsigned char Device::setValue(uint16_t id, uint32_t value)
   return 0;
 }
 
-unsigned char Device::setValue(uint16_t id, int value)
+uint8_t Device::setValue(uint16_t id, int value)
 {
-  //TODO: Добавить проверки на корректность записываемых данных
-
-  uint16_t index = getIndexAtId(id);
-  float valueOld = getFieldValue(index);
-
-  setFieldValue(index, (float)value);
-
-  // Сообщить контроллеру визуализации об обновлении параметра
-  if (value != valueOld)
-    novobusSlave.putMessageParams(id);
-  return 0;
+  return setValue(id, (float)value);
 }
 
 uint8_t Device::getPhysic(unsigned short id)
@@ -526,6 +511,15 @@ uint8_t Device::setNewValue(uint16_t id, float value)
   return setValue(id, value);
 }
 
+uint8_t Device::setNewValue(uint16_t id, uint32_t value)
+{
+  return setValue(id, value);
+}
+
+uint8_t Device::setNewValue(uint16_t id, int value)
+{
+  return setValue(id, value);
+}
 
 StatusType Device::saveParameters()
 {

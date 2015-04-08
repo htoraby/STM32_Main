@@ -215,7 +215,10 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
           // Получаем ID параметра
           id.uint16_t[0] = (rxBuffer_[2 + i*2] << 8) + rxBuffer_[3 + i*2];
           // Получить значение параметра
-          value.float_t = parameters.getValue(id.uint16_t[0]);
+          if (parameters.getPhysic(id.uint16_t[0]) == PHYSIC_DATE_TIME)
+            value.uint32_t = parameters.getValueUint32(id.uint16_t[0]);
+          else
+            value.float_t = parameters.getValue(id.uint16_t[0]);
           txBuffer_[5 + i*6]  = id.char_t[1];
           txBuffer_[6 + i*6]  = id.char_t[0];
           txBuffer_[7 + i*6]  = value.char_t[3];
@@ -243,7 +246,10 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
           value.char_t[1] = rxBuffer_[6 + i*6];
           value.char_t[0] = rxBuffer_[7 + i*6];
           // Вызываем функцию записи значения параметра
-          parameters.setValue(id.uint16_t[0], value.float_t);
+          if (parameters.getPhysic(id.uint16_t[0]) == PHYSIC_DATE_TIME)
+            parameters.setValue(id.uint16_t[0], value.uint32_t);
+          else
+            parameters.setValue(id.uint16_t[0], value.float_t);
         }
 
         checkMessage();
