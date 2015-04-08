@@ -93,6 +93,7 @@ enum enPhysic
 {
   PHYSIC_ERROR,
   PHYSIC_NUMERIC,                           //!< Просто число
+  PHYSIC_DATE_TIME,                         //!< Дата и время
   PHYSIC_TIME,                              //!< Время
   PHYSIC_PERCENT,                           //!< Проценты
   PHYSIC_LENGHT,                            //!< Длина
@@ -127,6 +128,11 @@ enum enPhysic
 enum enPhysicNumeric {
   NUMERIC_NUMBER  = 1,
   NUMERIC_LAST
+};
+
+enum enPhysicDateTime {
+  DATE_TIME_SS = 1,
+  DATE_TIME_LAST
 };
 
 enum enPhysicTime {
