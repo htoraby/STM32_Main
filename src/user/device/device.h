@@ -77,11 +77,25 @@ public:
   virtual void calcParameters(uint16_t id);
 
   /*!
-   * \brief writeValue
+   * \brief setNewValue
    * \param id
    * \param value
    */
   virtual uint8_t setNewValue(uint16_t id, float value);
+
+  /*!
+   * \brief setNewValue
+   * \param id
+   * \param value
+   */
+  virtual uint8_t setNewValue(uint16_t id, uint32_t value);
+
+  /*!
+   * \brief setNewValue
+   * \param id
+   * \param value
+   */
+  virtual uint8_t setNewValue(uint16_t id, int value);
 
   /*!
    * \brief Метод поиска и получения индекса по ID параметра
@@ -116,7 +130,7 @@ public:
    * \param value присваемое значение
    * \return 0 - значение присвоено или код ошибки
    */
-  unsigned char setValue(unsigned short id, float value);
+  uint8_t setValue(uint16_t id, float value);
 
   /*!
    * \brief Метод присвоения значения параметра типа uint32_t
@@ -124,7 +138,7 @@ public:
    * \param value - присваемое значение
    * \return 0 - значение присвоено или код ошибки
    */
-  unsigned char setValue(uint16_t id, uint32_t value);
+  uint8_t setValue(uint16_t id, uint32_t value);
 
   /*!
    * \brief Метод присвоения значения параметра типа float переменным типа int
@@ -132,7 +146,7 @@ public:
    * \param value - присваемое значение
    * \return 0 - значение присвоено или код ошибки
    */
-  unsigned char setValue(uint16_t id, int value);
+  uint8_t setValue(uint16_t id, int value);
 
   /*!
    * \brief Метод получения типа физической величины по id
@@ -140,8 +154,6 @@ public:
    * \return типа физической величины
    */
   uint8_t getPhysic(unsigned short id);
-
-
 
   /*!
    * \brief Сохранение массива параметров на Flash
@@ -152,7 +164,6 @@ public:
    * \brief Чтение массива параметров с Flash
    */
   StatusType readParameters();
-
 
 protected:
 
@@ -280,14 +291,7 @@ protected:
    * \param index индекс параметра в массиве
    * \param value присваемое значение
    */
-  void setFieldValue(unsigned short index, float value);
-
-  /*!
-   * \brief Метод присвоения поля value в массиве параметров по индексу
-   * \param index индекс параметра в массиве
-   * \param value присваемое значение
-   */
-  void setFieldValue(unsigned short index, uint32_t value);
+  template<typename T> void setFieldValue(const uint16_t &index, const T &value);
 
   /*!
    * \brief Метод присвоения поля Min в массиве параметров по индексу

@@ -99,7 +99,7 @@ int Parameters::setValue(unsigned short id, float value)
 int Parameters::setValue(unsigned short id, uint32_t value)
 {
   if ((id > CCS_BEGIN) && (id < CCS_END))
-    return ksu.setValue(id, value);
+    return ksu.setNewValue(id, value);
   if ((id > VSD_BEGIN) && (id < VSD_END))
     return vsd->setNewValue(id, value);
   if ((id > TMS_BEGIN) && (id < TMS_END))
@@ -111,15 +111,7 @@ int Parameters::setValue(unsigned short id, uint32_t value)
 
 int Parameters::setValue(unsigned short id, int value)
 {
-  if ((id > CCS_BEGIN) && (id < CCS_END))
-    return ksu.setValue(id, value);
-  if ((id > VSD_BEGIN) && (id < VSD_END))
-    return vsd->setNewValue(id, value);
-  if ((id > TMS_BEGIN) && (id < TMS_END))
-    return tms->setNewValue(id, value);
-  if ((id > EM_BEGIN) && (id < EM_END))
-    return em->setNewValue(id, value);
-  return 0;
+  return setValue(id, (float)value);
 }
 
 uint8_t Parameters::getPhysic(unsigned short id)
