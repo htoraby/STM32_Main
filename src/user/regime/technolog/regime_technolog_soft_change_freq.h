@@ -17,7 +17,7 @@ public:
 private:
   float beginFreq_;
   float endFreq_;
-  float period_;
+  float period_one_step_;
 
   uint32_t beginTime_;
 

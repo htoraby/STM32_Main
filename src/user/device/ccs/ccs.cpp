@@ -601,6 +601,11 @@ uint8_t Ccs::setNewValue(uint16_t id, float value)
   case CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT:
     parameters.set(VSD_M_I_FAST, value);
     break;
+  case CCS_RGM_CHANGE_FREQ_PERIOD:
+  case CCS_RGM_CHANGE_FREQ_BEGIN_FREQ:
+  case CCS_RGM_CHANGE_FREQ_END_FREQ:
+    calcRegimeChangeFreqPeriodOneStep();
+    break;
   default:
     break;
   }
@@ -660,6 +665,19 @@ void Ccs::calcMotorCurrentAvarage()
   motorCurrent = parameters.get(CCS_MOTOR_CURRENT_PHASE_3);
   motorCurrent = motorCurrent / 3;
   setNewValue(CCS_MOTOR_CURRENT_AVARAGE, motorCurrent);
+}
+
+void Ccs::calcRegimeChangeFreqPeriodOneStep()
+{
+  float beginFreq = parameters.get(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ);
+  float endFreq = parameters.get(CCS_RGM_CHANGE_FREQ_END_FREQ);
+  float period = parameters.get(CCS_RGM_CHANGE_FREQ_PERIOD);
+  float periodOneStep = 0;
+  if ((endFreq - beginFreq) != 0)
+    periodOneStep = period / (fabs(endFreq - beginFreq) * 1);
+  if (periodOneStep < 5)
+    periodOneStep = 5;
+  setValue(CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP, periodOneStep);
 }
 
 void Ccs::initParameters()

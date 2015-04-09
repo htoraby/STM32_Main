@@ -241,6 +241,12 @@ public:
 
   uint8_t setNewValue(uint16_t id, float value);
 
+  /*!
+   * \brief Функция пересчёта периода одного шага
+   * для режима "Программного изменения частоты"
+   */
+  void calcRegimeChangeFreqPeriodOneStep();
+
 private:
   /*!
    * \brief Метод добавления в очередь событий включения/мигания LED

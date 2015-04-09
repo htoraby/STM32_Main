@@ -470,9 +470,9 @@ enum enID
   CCS_RGM_CHANGE_FREQ_MODE,                                 //!< Режим программного изменения частоты
   CCS_RGM_CHANGE_FREQ_BEGIN_FREQ,                           //!< 
   CCS_RGM_CHANGE_FREQ_END_FREQ,                             //!< 
-  CCS_RGM_CHANGE_FREQ_TIMER_FREQ,                           //!< 
-  CCS_RGM_CHANGE_FREQ_RUN_TIMER_FREQ,                       //!< 
-  CCS_RGM_CHANGE_FREQ_END_TIMER_FREQ,                       //!< 
+  CCS_RGM_CHANGE_FREQ_PERIOD,                               //!<
+  CCS_RGM_CHANGE_FREQ_BEGIN_TIME,                           //!<
+  CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP,                      //!< Период одного шага режима "Программного изменения частоты"
   CCS_RGM_MODE_DATE_TIME,                                   //!< Параметры ВНР
   CCS_RGM_MODE_CURRENT,                                     //!< 
   CCS_RGM_MODE_VOLTAGE,                                     //!< 
