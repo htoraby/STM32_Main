@@ -113,6 +113,12 @@ public:
    */
   int stop();
 
+  /*!
+   * \brief alarmstop
+   * \return
+   */
+  int alarmstop();
+
   bool checkStart();
   bool checkStop();
 

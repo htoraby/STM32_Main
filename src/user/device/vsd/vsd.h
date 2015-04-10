@@ -270,6 +270,13 @@ public:
   virtual int offRegimePush() = 0;
 
 
+  /*!
+   * \brief Задание в массив параметров ЧРП номинальной частоты двигателя
+   * \param freq Задаваемая номинальная частота двигателя
+   * \return
+   */
+  int setNominalFreq(float freq);
+
 private:
   //! Массив параметров устройства
   parameter parametersArray_[VSD_END - VSD_BEGIN];
