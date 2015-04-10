@@ -9,7 +9,7 @@
 #include "gpio.h"
 #include "user_main.h"
 #include "protection_main.h"
-#include "regime.h"
+#include "regime_main.h"
 
 Ccs::Ccs()
   : Device(CCS_BEGIN, parametersArray_, CCS_END - CCS_BEGIN)
@@ -356,12 +356,8 @@ bool Ccs::checkCanStart()
     }
   }
 
-  if (isProgramMode() && (getValue(CCS_RGM_PERIODIC_MODE) != Regime::OffAction)) {
-    if ((getValue(CCS_RGM_PERIODIC_STATE) == Regime::WorkState) ||
-        (getValue(CCS_RGM_PERIODIC_STATE) == Regime::PauseState)) {
-      return false;
-    }
-  }
+  if (!interceptionStartRegime())
+    return false;
 
   return true;
 }
@@ -610,6 +606,16 @@ uint8_t Ccs::setNewValue(uint16_t id, float value)
     break;
   }
   return setValue(id, value);
+}
+
+uint8_t Ccs::setNewValue(uint16_t id, uint32_t value)
+{
+  return setValue(id, value);
+}
+
+uint8_t Ccs::setNewValue(uint16_t id, int value)
+{
+  return setNewValue(id, (float)value);
 }
 
 void Ccs::calcMotorCurrentImbalance()

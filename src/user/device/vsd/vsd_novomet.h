@@ -117,6 +117,18 @@ public:
   bool checkStop();
 
   /*!
+   * \brief Функция включения толчкового режима
+   * \return
+   */
+  int onRegimePush();
+
+  /*!
+   * \brief Функция выключения толчкового режима
+   * \return
+   */
+  int offRegimePush();
+
+  /*!
    * \brief Метод записи основного режима работы ЧРП
    * Основных методов 2:
    * U/f регулирование АД и ВД код: 1
@@ -329,7 +341,6 @@ public:
    * \brief Функция вычисления значений,
    */
   void calcParameters(uint16_t id);
-
 
 private:
   ModbusParameter modbusParameters_[135];

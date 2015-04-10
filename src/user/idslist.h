@@ -676,6 +676,8 @@ enum enID
   CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_FLAG,            //!< Защита ЗСП: Флаг использования прогрессивной задержки АПВ
   CCS_RGM_CHANGE_FREQ_STATE,                                //!< Состояние автомата режима "Программного изменения частоты"
   CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD,                      //!< Начальная уставка ЗСП режима "Программного изменения частоты"
+  CCS_RGM_RUN_PUSH_MODE,                                    //!< Действие режима пуска "Толчковый"
+  CCS_RGM_RUN_PUSH_STATE,                                   //!< Состояние автомата режима пуска "Толчковый"
   CCS_END,                                                  //!< Последний параметр
   VSD_BEGIN=10000,                                          //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW,                                        //!< Выходная частота ПЧ

@@ -47,7 +47,7 @@ void RegimeTechnologSoftChangeFreq::processing()
         else {
           if (action_ == SingleAction) {
             parameters.set(CCS_RGM_CHANGE_FREQ_MODE, OffAction);
-            logEvent.add(SetpointCode, AutoType, RegimeSoftChangeFreqOffId);
+           logEvent.add(SetpointCode, AutoType, RegimeSoftChangeFreqOffId);
           }
         }
       }

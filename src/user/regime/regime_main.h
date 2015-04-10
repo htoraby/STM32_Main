@@ -9,4 +9,10 @@
  */
 void regimeInit();
 
+/*!
+ * \brief Метод перехвата запуска режимом
+ * \return false - пуск запрещён, true - пуск разрещён
+ */
+bool interceptionStartRegime();
+
 #endif // REGIMEMAIN_H

@@ -2737,13 +2737,21 @@ void VsdNovomet::calcParameters(uint16_t id)
 
 int VsdNovomet::onRegimePush()
 {
-  return setNewValue(VSD_REGULATOR_QUEUE_2, 2);
+  setNewValue(VSD_SW_STARTUP_FREQUENCY, 1.0);
+  setNewValue(VSD_SW_STARTUP_ANGLE_OSC, 358.0);
+  setNewValue(VSD_SW_STARTUP_OSC_COUNT, 2.0);
+  setNewValue(VSD_SW_STARTUP_ROTATIONS, 2.0);
+  
+  return setNewValue(VSD_REGULATOR_QUEUE_2, 2.0);
+  
 }
 
 int VsdNovomet::offRegimePush()
 {
   return setNewValue(VSD_REGULATOR_QUEUE_2, 0);
 }
+
+
 
 int VsdNovomet::setMainRegimeVSD()
 {

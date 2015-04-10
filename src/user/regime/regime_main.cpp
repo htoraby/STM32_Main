@@ -31,3 +31,20 @@ void regimeTask(void *argument)
   }
 }
 
+bool interceptionStartRegime()
+{
+  if (ksu.isProgramMode() && (parameters.get(CCS_RGM_PERIODIC_MODE) != Regime::OffAction)) {
+    if ((parameters.get(CCS_RGM_PERIODIC_STATE) == Regime::WorkState) ||
+        (parameters.get(CCS_RGM_PERIODIC_STATE) == Regime::PauseState)) {
+      return false;
+    }
+  }
+
+  if (parameters.get(CCS_RGM_RUN_PUSH_MODE) != Regime::OffAction) {
+    if (parameters.get(CCS_RGM_RUN_PUSH_STATE) == Regime::IdleState) {
+      return false;
+    }
+  }
+
+  return true;
+}

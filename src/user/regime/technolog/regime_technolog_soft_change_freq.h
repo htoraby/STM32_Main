@@ -6,7 +6,7 @@
 /*!
  * \brief Класс режима "Программное изменение частоты"
  */
-class RegimeTechnologSoftChangeFreq : public RegimeTechnolog
+class RegimeTechnologSoftChangeFreq: public RegimeTechnolog
 {
 public:
   RegimeTechnologSoftChangeFreq();

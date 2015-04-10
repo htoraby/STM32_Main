@@ -241,6 +241,10 @@ public:
 
   uint8_t setNewValue(uint16_t id, float value);
 
+  uint8_t setNewValue(uint16_t id, uint32_t value);
+
+  uint8_t setNewValue(uint16_t id, int value);
+
   /*!
    * \brief Функция пересчёта периода одного шага
    * для режима "Программного изменения частоты"

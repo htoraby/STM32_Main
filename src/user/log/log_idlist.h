@@ -82,6 +82,7 @@ typedef enum {
   HardwareVsdVcProtReactId,       //!< "Сработала защита: Аппаратная защита ЧРП, ошибка рассогласования частоты векторного режима управления"
 
   RegimeSoftChangeFreqOffId,      //!< "Режим программного изменения частоты отключен"
+  RegimeRunPushOffId,             //!< "Режим пуска толчками отключен"
 
 } EventId;
 

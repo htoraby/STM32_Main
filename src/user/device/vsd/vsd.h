@@ -257,6 +257,19 @@ public:
    */
   int setTorqueLimit(double TorqueLimit);
 
+  /*!
+   * \brief Метод включения толчкового режима
+   * \return
+   */
+  virtual int onRegimePush() = 0;
+
+  /*!
+   * \brief Метод выключения толчкогового режима
+   * \return
+   */
+  virtual int offRegimePush() = 0;
+
+
 private:
   //! Массив параметров устройства
   parameter parametersArray_[VSD_END - VSD_BEGIN];
