@@ -4,7 +4,7 @@
 #include "device.h"
 #include "fram.h"
 
-#define PARAMS_SAVE_TIME 10000 //!< Период сохранения параметров (60 секунд)
+#define PARAMS_SAVE_TIME 10000 //!< Период сохранения параметров в миллисекундах
 
 /*!
  * \brief Класс сохранения/чтения параметров в/из Flash

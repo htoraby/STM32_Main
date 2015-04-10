@@ -1,5 +1,6 @@
 #include "parameters.h"
 #include "user_main.h"
+#include "gpio.h"
 
 Parameters::Parameters()
 {
@@ -27,10 +28,16 @@ void Parameters::init()
 
 void Parameters::task()
 {
-  while (1) {
-    osSemaphoreWait(semaphoreId_, PARAMS_SAVE_TIME);
-
-    save();
+  static int time = 0;
+  while (1) {  
+    if (osSemaphoreWait(semaphoreId_, 1) != osEventTimeout) {
+      save();
+    } else {
+      if ((++time >= PARAMS_SAVE_TIME) || !isPowerGood()) {
+        time = 0;
+        save();
+      }
+    }
   }
 }
 
