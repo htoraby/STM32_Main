@@ -2523,6 +2523,36 @@ int VsdNovomet::stop()
   }
 }
 
+int VsdNovomet::alarmstop()
+{
+  // Если стоит бит остановки по внешней команде
+  if (checkVsdStatus(VSD_STATUS_STOPPED_ALARM))
+    return RETURN_OK;
+
+  int timeMs = VSD_CMD_TIMEOUT;
+  int countRepeats = 0;
+
+  while (1) {
+    if (timeMs >= VSD_CMD_TIMEOUT) {
+      timeMs = 0;
+      countRepeats++;
+
+      if (countRepeats > VSD_CMD_NUMBER_REPEATS)
+        return RETURN_ERROR;
+
+      if (setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_ALARM))
+        return RETURN_ERROR;
+    } else {
+      timeMs = timeMs + 100;
+    }
+
+    osDelay(100);
+
+    if (checkVsdStatus(VSD_STATUS_STOPPED_EXTERNAL))
+      return RETURN_OK;
+  }
+}
+
 bool VsdNovomet::checkStop()
 {
 #if DEBUG
@@ -2637,7 +2667,6 @@ void VsdNovomet::calcCurrentDC()
   }
 }
 
-
 int VsdNovomet::setTempSpeedUp(float value)
 {
   if (Vsd::setTempSpeedUp(value)) {
@@ -2737,11 +2766,20 @@ void VsdNovomet::calcParameters(uint16_t id)
 
 int VsdNovomet::onRegimePush()
 {
-  return setNewValue(VSD_REGULATOR_QUEUE_2, 2);
+  // Задаём настройки
+  setNewValue(VSD_SW_STARTUP_FREQUENCY, 1.0);
+  setNewValue(VSD_SW_STARTUP_ANGLE_OSC, 90.0);
+  setNewValue(VSD_SW_STARTUP_OSC_COUNT, 2.0);
+  setNewValue(VSD_SW_STARTUP_ROTATIONS, 2.0);
+  setNewValue(VSD_SW_STARTUP_U_PULSE, 1);
+  setNewValue(VSD_SW_STARTUP_I_LIM_PULSE, 1500.0);
+  // Включаем режим в очередь алгоритмов
+  return setNewValue(VSD_REGULATOR_QUEUE_2, 2.0);
 }
 
 int VsdNovomet::offRegimePush()
 {
+  // Убираем режим из очереди алгоритмов
   return setNewValue(VSD_REGULATOR_QUEUE_2, 0);
 }
 
