@@ -3,21 +3,21 @@
 	<param>
 		<id>0</id>
 		<name>CCS_BEGIN</name>
-		<access>0</access>
-		<operation>0</operation>
-		<physic>0</physic>
-		<min>0</min>
-		<max>0</max>
-		<def>0</def>
+		<access>NULL</access>
+		<operation>NULL</operation>
+		<physic>NULL</physic>
+		<min>NULL</min>
+		<max>NULL</max>
+		<def>NULL</def>
 		<valid>VALIDITY_ERROR</valid>
-		<value>0</value>
-		<text>0</text>
-		<short_text>0</short_text>
-		<form>0</form>
-		<unit>0</unit>
-		<unit_lcd>0</unit_lcd>
-		<format>0</format>
-		<values>0</values>
+		<value>NULL</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<values>NULL</values>
 		<comment>Пустой регистр</comment>
 	</param>
 	<param>
