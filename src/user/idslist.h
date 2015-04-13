@@ -54,343 +54,343 @@ enum enID
   CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_LIMIT,                //!< Количество АПВ уставка
   CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET,                //!< Автосброс счетчика АПВ
   CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_SETPOINT,                //!< Уставка срабатывания защиты
-  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_SETPOINT,             //!< 
+  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_SETPOINT,             //!< Условие АПВ уставка
   CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER,                    //!< Уставка Параметр защиты, для этой защиты работать по ВРП
-  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FLAG,                 //!< Уставка параметр защиты
+  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FLAG,                 //!< Текущий параметр Флаг что защита в АПВ
   CCS_PROT_SUPPLY_OVERVOLTAGE_STATE,                        //!< Текущий параметр состояние автомата
   CCS_PROT_SUPPLY_OVERVOLTAGE_TIME,                         //!< Текущий параметр Фиксированное время
   CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT,                //!< Текущий параметр Количество АПВ
-  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME,           //!< 
+  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME,           //!< Текущий параметр Время первого АПВ
   CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE,                        //!< Защита "Превышение питания сети"
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_PREVENT,                     //!< 
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY,                 //!< 
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY,                  //!< 
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY,               //!< 
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_LIMIT,               //!< 
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_PREVENT,                     //!< Параметр запрещающий запуск
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY,                 //!< Задержка активации уставка
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY,                  //!< Задержка срабатывания уставка
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY,               //!< Задержка АПВ уставка
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_LIMIT,               //!< Количество АПВ уставка
   CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET,               //!< Автосброс счетчика АПВ
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_SETPOINT,               //!< 
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_SETPOINT,            //!< 
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_SETPOINT,               //!< Уставка срабатывания защиты
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_SETPOINT,            //!< Условие АПВ уставка
   CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER,                   //!< Уставка Параметр защиты, для этой защиты работать по ВРП
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FLAG,                //!< 
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_STATE,                       //!< 
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME,                        //!< 
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_COUNT,               //!< 
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FIRST_TIME,          //!< 
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FLAG,                //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_STATE,                       //!< Текущий параметр состояние автомата
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME,                        //!< Текущий параметр Фиксированное время
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_COUNT,               //!< Текущий параметр Количество АПВ
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FIRST_TIME,          //!< Текущий параметр Время первого АПВ
   CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_MODE,                   //!< Защита "Дисбаланс напряжения"
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PREVENT,                //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY,            //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY,             //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY,          //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_LIMIT,          //!< 
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PREVENT,                //!< Параметр запрещающий запуск
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY,            //!< Задержка активации уставка
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY,             //!< Задержка срабатывания уставка
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY,          //!< Задержка АПВ уставка
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_LIMIT,          //!< Количество АПВ уставка
   CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_RESET,          //!< Автосброс счетчика АПВ
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT,          //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_SETPOINT,       //!< 
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT,          //!< Уставка срабатывания защиты
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_SETPOINT,       //!< Условие АПВ уставка
   CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER,              //!< Уставка Параметр защиты, для этой защиты работать по ВРП
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FLAG,           //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_STATE,                  //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME,                   //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_COUNT,          //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FIRST_TIME,     //!< 
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FLAG,           //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_STATE,                  //!< Текущий параметр состояние автомата
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME,                   //!< Текущий параметр Фиксированное время
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_COUNT,          //!< Текущий параметр Количество АПВ
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FIRST_TIME,     //!< Текущий параметр Время первого АПВ
   CCS_PROT_SUPPLY_IMBALANCE_CURRENT_MODE,                   //!< Защиты "Дисбаланс входных токов"
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PREVENT,                //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_ACTIV_DELAY,            //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY,             //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY,          //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_LIMIT,          //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_RESET,          //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_SETPOINT,          //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_SETPOINT,       //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER,              //!< Уставка Параметр защиты, для этой защиты работать по ВРП
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FLAG,           //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_STATE,                  //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME,                   //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_COUNT,          //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FIRST_TIME,     //!< 
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PREVENT,                //!< Параметр запрещающий запуск
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_ACTIV_DELAY,            //!< Задержка активации уставка
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY,             //!< Задержка срабатывания уставка
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY,          //!< Задержка АПВ уставка
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_LIMIT,          //!< Количество АПВ уставка
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_RESET,          //!< Автосброс счетчика АПВ
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_SETPOINT,          //!< Уставка срабатывания защиты
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_SETPOINT,       //!< Условие АПВ уставка
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER,              //!< Уставка параметр защиты
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FLAG,           //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_STATE,                  //!< Текущий параметр состояние автомата
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME,                   //!< Текущий параметр Фиксированное время
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_COUNT,          //!< Текущий параметр Количество АПВ
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FIRST_TIME,     //!< Текущий параметр Время первого АПВ
   CCS_PROT_SUPPLY_PHASE_ROTATION_MODE,                      //!< Защиты "Чередование фаз"
-  CCS_PROT_SUPPLY_PHASE_ROTATION_PREVENT,                   //!< 
-  CCS_PROT_SUPPLY_PHASE_ROTATION_ACTIV_DELAY,               //!< 
-  CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY,                //!< 
-  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY,             //!< 
-  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_LIMIT,             //!< 
-  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_RESET,             //!< 
-  CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT,             //!< 
-  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT,          //!< 
-  CCS_PROT_SUPPLY_PHASE_ROTATION_PARAMETER,                 //!< 
-  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FLAG,              //!< 
-  CCS_PROT_SUPPLY_PHASE_ROTATION_STATE,                     //!< 
-  CCS_PROT_SUPPLY_PHASE_ROTATION_TIME,                      //!< 
-  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_COUNT,             //!< 
-  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FIRST_TIME,        //!< 
+  CCS_PROT_SUPPLY_PHASE_ROTATION_PREVENT,                   //!< Параметр запрещающий запуск
+  CCS_PROT_SUPPLY_PHASE_ROTATION_ACTIV_DELAY,               //!< Задержка активации уставка
+  CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY,                //!< Задержка срабатывания уставка
+  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY,             //!< Задержка АПВ уставка
+  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_LIMIT,             //!< Количество АПВ уставка
+  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_RESET,             //!< Автосброс счетчика АПВ
+  CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT,             //!< Уставка срабатывания защиты
+  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT,          //!< Условие АПВ уставка
+  CCS_PROT_SUPPLY_PHASE_ROTATION_PARAMETER,                 //!< Уставка параметр защиты
+  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FLAG,              //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_SUPPLY_PHASE_ROTATION_STATE,                     //!< Текущий параметр состояние автомата
+  CCS_PROT_SUPPLY_PHASE_ROTATION_TIME,                      //!< Текущий параметр Фиксированное время
+  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_COUNT,             //!< Текущий параметр Количество АПВ
+  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FIRST_TIME,        //!< Текущий параметр Время первого АПВ
   CCS_PROT_MOTOR_OVERLOAD_MODE,                             //!< Защита "Перегруз" (ЗП)
-  CCS_PROT_MOTOR_OVERLOAD_PREVENT,                          //!< 
-  CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY,                      //!< 
-  CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY,                       //!< 
-  CCS_PROT_MOTOR_OVERLOAD_RESTART_DELAY,                    //!< 
-  CCS_PROT_MOTOR_OVERLOAD_RESTART_LIMIT,                    //!< 
-  CCS_PROT_MOTOR_OVERLOAD_RESTART_RESET,                    //!< 
-  CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT,                    //!< 
-  CCS_PROT_MOTOR_OVERLOAD_RESTART_SETPOINT,                 //!< 
-  CCS_PROT_MOTOR_OVERLOAD_PARAMETER,                        //!< 
-  CCS_PROT_MOTOR_OVERLOAD_RESTART_FLAG,                     //!< 
-  CCS_PROT_MOTOR_OVERLOAD_STATE,                            //!< 
-  CCS_PROT_MOTOR_OVERLOAD_TIME,                             //!< 
-  CCS_PROT_MOTOR_OVERLOAD_RESTART_COUNT,                    //!< 
-  CCS_PROT_MOTOR_OVERLOAD_RESTART_FIRST_TIME,               //!< 
+  CCS_PROT_MOTOR_OVERLOAD_PREVENT,                          //!< Параметр запрещающий запуск
+  CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY,                      //!< Задержка активации уставка
+  CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY,                       //!< Задержка срабатывания уставка
+  CCS_PROT_MOTOR_OVERLOAD_RESTART_DELAY,                    //!< Задержка АПВ уставка
+  CCS_PROT_MOTOR_OVERLOAD_RESTART_LIMIT,                    //!< Количество АПВ уставка
+  CCS_PROT_MOTOR_OVERLOAD_RESTART_RESET,                    //!< Автосброс счетчика АПВ
+  CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT,                    //!< Уставка срабатывания защиты
+  CCS_PROT_MOTOR_OVERLOAD_RESTART_SETPOINT,                 //!< Условие АПВ уставка
+  CCS_PROT_MOTOR_OVERLOAD_PARAMETER,                        //!< Уставка параметр защиты
+  CCS_PROT_MOTOR_OVERLOAD_RESTART_FLAG,                     //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_MOTOR_OVERLOAD_STATE,                            //!< Текущий параметр состояние автомата
+  CCS_PROT_MOTOR_OVERLOAD_TIME,                             //!< Текущий параметр Фиксированное время
+  CCS_PROT_MOTOR_OVERLOAD_RESTART_COUNT,                    //!< Текущий параметр Количество АПВ
+  CCS_PROT_MOTOR_OVERLOAD_RESTART_FIRST_TIME,               //!< Текущий параметр Время первого АПВ
   CCS_PROT_MOTOR_UNDERLOAD_MODE,                            //!< Защита "Недогруз" (ЗП)
-  CCS_PROT_MOTOR_UNDERLOAD_PREVENT,                         //!< 
-  CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY,                     //!< 
-  CCS_PROT_MOTOR_UNDERLOAD_TRIP_DELAY,                      //!< 
-  CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY,                   //!< 
-  CCS_PROT_MOTOR_UNDERLOAD_RESTART_LIMIT,                   //!< 
-  CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET,                   //!< 
-  CCS_PROT_MOTOR_UNDERLOAD_TRIP_SETPOINT,                   //!< 
-  CCS_PROT_MOTOR_UNDERLOAD_RESTART_SETPOINT,                //!< 
-  CCS_PROT_MOTOR_UNDERLOAD_PARAMETER,                       //!< 
-  CCS_PROT_MOTOR_UNDERLOAD_RESTART_FLAG,                    //!< 
-  CCS_PROT_MOTOR_UNDERLOAD_STATE,                           //!< 
-  CCS_PROT_MOTOR_UNDERLOAD_TIME,                            //!< 
-  CCS_PROT_MOTOR_UNDERLOAD_RESTART_COUNT,                   //!< 
-  CCS_PROT_MOTOR_UNDERLOAD_RESTART_FIRST_TIME,              //!< 
-  CCS_PROT_MOTOR_CURRENT_MODE,                              //!< 
-  CCS_PROT_MOTOR_CURRENT_PREVENT,                           //!< Защита ЧРП "Предел тока двигателя"
-  CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY,                       //!< 
-  CCS_PROT_MOTOR_CURRENT_TRIP_DELAY,                        //!< 
-  CCS_PROT_MOTOR_CURRENT_RESTART_DELAY,                     //!< 
-  CCS_PROT_MOTOR_CURRENT_RESTART_LIMIT,                     //!< 
-  CCS_PROT_MOTOR_CURRENT_RESTART_RESET,                     //!< 
-  CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT,                     //!< 
-  CCS_PROT_MOTOR_CURRENT_RESTART_SETPOINT,                  //!< 
-  CCS_PROT_MOTOR_CURRENT_PARAMETER,                         //!< 
-  CCS_PROT_MOTOR_CURRENT_RESTART_FLAG,                      //!< 
-  CCS_PROT_MOTOR_CURRENT_STATE,                             //!< 
-  CCS_PROT_MOTOR_CURRENT_TIME,                              //!< 
-  CCS_PROT_MOTOR_CURRENT_RESTART_COUNT,                     //!< 
-  CCS_PROT_MOTOR_CURRENT_RESTART_FIRST_TIME,                //!< 
+  CCS_PROT_MOTOR_UNDERLOAD_PREVENT,                         //!< Параметр запрещающий запуск
+  CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY,                     //!< Задержка активации уставка
+  CCS_PROT_MOTOR_UNDERLOAD_TRIP_DELAY,                      //!< Задержка срабатывания уставка
+  CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY,                   //!< Задержка АПВ уставка
+  CCS_PROT_MOTOR_UNDERLOAD_RESTART_LIMIT,                   //!< Количество АПВ уставка
+  CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET,                   //!< Автосброс счетчика АПВ
+  CCS_PROT_MOTOR_UNDERLOAD_TRIP_SETPOINT,                   //!< Уставка срабатывания защиты
+  CCS_PROT_MOTOR_UNDERLOAD_RESTART_SETPOINT,                //!< Условие АПВ уставка
+  CCS_PROT_MOTOR_UNDERLOAD_PARAMETER,                       //!< Уставка параметр защиты
+  CCS_PROT_MOTOR_UNDERLOAD_RESTART_FLAG,                    //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_MOTOR_UNDERLOAD_STATE,                           //!< Текущий параметр состояние автомата
+  CCS_PROT_MOTOR_UNDERLOAD_TIME,                            //!< Текущий параметр Фиксированное время
+  CCS_PROT_MOTOR_UNDERLOAD_RESTART_COUNT,                   //!< Текущий параметр Количество АПВ
+  CCS_PROT_MOTOR_UNDERLOAD_RESTART_FIRST_TIME,              //!< Текущий параметр Время первого АПВ
+  CCS_PROT_MOTOR_CURRENT_MODE,                              //!< Защита "Предел тока двигателя"
+  CCS_PROT_MOTOR_CURRENT_PREVENT,                           //!< Параметр запрещающий запуск
+  CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY,                       //!< Задержка активации уставка
+  CCS_PROT_MOTOR_CURRENT_TRIP_DELAY,                        //!< Задержка срабатывания уставка
+  CCS_PROT_MOTOR_CURRENT_RESTART_DELAY,                     //!< Задержка АПВ уставка
+  CCS_PROT_MOTOR_CURRENT_RESTART_LIMIT,                     //!< Количество АПВ уставка
+  CCS_PROT_MOTOR_CURRENT_RESTART_RESET,                     //!< Автосброс счетчика АПВ
+  CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT,                     //!< Уставка срабатывания защиты
+  CCS_PROT_MOTOR_CURRENT_RESTART_SETPOINT,                  //!< Условие АПВ уставка
+  CCS_PROT_MOTOR_CURRENT_PARAMETER,                         //!< Уставка параметр защиты
+  CCS_PROT_MOTOR_CURRENT_RESTART_FLAG,                      //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_MOTOR_CURRENT_STATE,                             //!< Текущий параметр состояние автомата
+  CCS_PROT_MOTOR_CURRENT_TIME,                              //!< Текущий параметр Фиксированное время
+  CCS_PROT_MOTOR_CURRENT_RESTART_COUNT,                     //!< Текущий параметр Количество АПВ
+  CCS_PROT_MOTOR_CURRENT_RESTART_FIRST_TIME,                //!< Текущий параметр Время первого АПВ
   CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE,                    //!< Защита "Дисбаланс токов двигателя"
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_PREVENT,                 //!< 
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY,             //!< 
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY,              //!< 
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY,           //!< 
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_LIMIT,           //!< 
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_RESET,           //!< 
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_SETPOINT,           //!< 
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_SETPOINT,        //!< 
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_PARAMETER,               //!< 
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FLAG,            //!< 
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_STATE,                   //!< 
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_TIME,                    //!< 
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_COUNT,           //!< 
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FIRST_TIME,      //!< 
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_PREVENT,                 //!< Параметр запрещающий запуск
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY,             //!< Задержка активации уставка
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY,              //!< Задержка срабатывания уставка
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY,           //!< Задержка АПВ уставка
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_LIMIT,           //!< Количество АПВ уставка
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_RESET,           //!< Автосброс счетчика АПВ
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_SETPOINT,           //!< Уставка срабатывания защиты
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_SETPOINT,        //!< Условие АПВ уставка
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_PARAMETER,               //!< Уставка параметр защиты
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FLAG,            //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_STATE,                   //!< Текущий параметр состояние автомата
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_TIME,                    //!< Текущий параметр Фиксированное время
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_COUNT,           //!< Текущий параметр Количество АПВ
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FIRST_TIME,      //!< Текущий параметр Время первого АПВ
   CCS_PROT_MOTOR_ASYNC_MODE,                                //!< Защита "Турбинное вращение"
-  CCS_PROT_MOTOR_ASYNC_PREVENT,                             //!< 
-  CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY,                         //!< 
-  CCS_PROT_MOTOR_ASYNC_TRIP_DELAY,                          //!< 
-  CCS_PROT_MOTOR_ASYNC_RESTART_DELAY,                       //!< 
-  CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT,                       //!< 
-  CCS_PROT_MOTOR_ASYNC_RESTART_RESET,                       //!< 
-  CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT,                       //!< 
-  CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT,                    //!< 
-  CCS_PROT_MOTOR_ASYNC_PARAMETER,                           //!< 
-  CCS_PROT_MOTOR_ASYNC_RESTART_FLAG,                        //!< 
-  CCS_PROT_MOTOR_ASYNC_STATE,                               //!< 
-  CCS_PROT_MOTOR_ASYNC_TIME,                                //!< 
-  CCS_PROT_MOTOR_ASYNC_RESTART_COUNT,                       //!< 
-  CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME,                  //!< 
+  CCS_PROT_MOTOR_ASYNC_PREVENT,                             //!< Параметр запрещающий запуск
+  CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY,                         //!< Задержка активации уставка
+  CCS_PROT_MOTOR_ASYNC_TRIP_DELAY,                          //!< Задержка срабатывания уставка
+  CCS_PROT_MOTOR_ASYNC_RESTART_DELAY,                       //!< Задержка АПВ уставка
+  CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT,                       //!< Количество АПВ уставка
+  CCS_PROT_MOTOR_ASYNC_RESTART_RESET,                       //!< Автосброс счетчика АПВ
+  CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT,                       //!< Уставка срабатывания защиты
+  CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT,                    //!< Условие АПВ уставка
+  CCS_PROT_MOTOR_ASYNC_PARAMETER,                           //!< Уставка параметр защиты
+  CCS_PROT_MOTOR_ASYNC_RESTART_FLAG,                        //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_MOTOR_ASYNC_STATE,                               //!< Текущий параметр состояние автомата
+  CCS_PROT_MOTOR_ASYNC_TIME,                                //!< Текущий параметр Фиксированное время
+  CCS_PROT_MOTOR_ASYNC_RESTART_COUNT,                       //!< Текущий параметр Количество АПВ
+  CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME,                  //!< Текущий параметр Время первого АПВ
   CCS_PROT_MOTOR_OUT_OF_SYNC_MODE,                          //!< Защита "Рассинхронизация ПВЭД"
-  CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT,                       //!< 
-  CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY,                   //!< 
-  CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY,                    //!< 
-  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY,                 //!< 
-  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT,                 //!< 
-  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET,                 //!< 
-  CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT,                 //!< 
-  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT,              //!< 
-  CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER,                     //!< 
-  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG,                  //!< 
-  CCS_PROT_MOTOR_OUT_OF_SYNC_STATE,                         //!< 
-  CCS_PROT_MOTOR_OUT_OF_SYNC_TIME,                          //!< 
-  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT,                 //!< 
-  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME,            //!< 
+  CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT,                       //!< Параметр запрещающий запуск
+  CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY,                   //!< Задержка активации уставка
+  CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY,                    //!< Задержка срабатывания уставка
+  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY,                 //!< Задержка АПВ уставка
+  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT,                 //!< Количество АПВ уставка
+  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET,                 //!< Автосброс счетчика АПВ
+  CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT,                 //!< Уставка срабатывания защиты
+  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT,              //!< Условие АПВ уставка
+  CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER,                     //!< Уставка параметр защиты
+  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG,                  //!< Уставка параметр защиты
+  CCS_PROT_MOTOR_OUT_OF_SYNC_STATE,                         //!< Текущий параметр состояние автомата
+  CCS_PROT_MOTOR_OUT_OF_SYNC_TIME,                          //!< Текущий параметр Фиксированное время
+  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT,                 //!< Текущий параметр Количество АПВ
+  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME,            //!< Текущий параметр Время первого АПВ
   CCS_PROT_DHS_PRESSURE_INTAKE_MODE,                        //!< Защита "Давление на приёме насоса"
-  CCS_PROT_DHS_PRESSURE_INTAKE_PREVENT,                     //!< 
-  CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY,                 //!< 
-  CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY,                  //!< 
-  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY,               //!< 
-  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT,               //!< 
-  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET,               //!< 
-  CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT,               //!< 
-  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT,            //!< 
-  CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER,                   //!< 
-  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_FLAG,                //!< 
-  CCS_PROT_DHS_PRESSURE_INTAKE_STATE,                       //!< 
-  CCS_PROT_DHS_PRESSURE_INTAKE_TIME,                        //!< 
-  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_COUNT,               //!< 
-  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_FIRST_TIME,          //!< 
+  CCS_PROT_DHS_PRESSURE_INTAKE_PREVENT,                     //!< Параметр запрещающий запуск
+  CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY,                 //!< Задержка активации уставка
+  CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY,                  //!< Задержка срабатывания уставка
+  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY,               //!< Задержка АПВ уставка
+  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT,               //!< Количество АПВ уставка
+  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET,               //!< Автосброс счетчика АПВ
+  CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT,               //!< Уставка срабатывания защиты
+  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT,            //!< Условие АПВ уставка
+  CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER,                   //!< Уставка параметр защиты
+  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_FLAG,                //!< Уставка параметр защиты
+  CCS_PROT_DHS_PRESSURE_INTAKE_STATE,                       //!< Текущий параметр состояние автомата
+  CCS_PROT_DHS_PRESSURE_INTAKE_TIME,                        //!< Текущий параметр Фиксированное время
+  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_COUNT,               //!< Текущий параметр Количество АПВ
+  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_FIRST_TIME,          //!< Текущий параметр Время первого АПВ
   CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE,                      //!< Защита "Температура двигателя"
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_PREVENT,                   //!< 
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY,               //!< 
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY,                //!< 
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY,             //!< 
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_LIMIT,             //!< 
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_RESET,             //!< 
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_SETPOINT,             //!< 
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_SETPOINT,          //!< 
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_PARAMETER,                 //!< 
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_FLAG,              //!< 
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_STATE,                     //!< 
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_TIME,                      //!< 
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_COUNT,             //!< 
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_FIRST_TIME,        //!< 
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_PREVENT,                   //!< Параметр запрещающий запуск
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY,               //!< Задержка активации уставка
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY,                //!< Задержка срабатывания уставка
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY,             //!< Задержка АПВ уставка
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_LIMIT,             //!< Количество АПВ уставка
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_RESET,             //!< Автосброс счетчика АПВ
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_SETPOINT,             //!< Уставка срабатывания защиты
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_SETPOINT,          //!< Условие АПВ уставка
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_PARAMETER,                 //!< Уставка параметр защиты
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_FLAG,              //!< Уставка параметр защиты
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_STATE,                     //!< Текущий параметр состояние автомата
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_TIME,                      //!< Текущий параметр Фиксированное время
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_COUNT,             //!< Текущий параметр Количество АПВ
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_FIRST_TIME,        //!< Текущий параметр Время первого АПВ
   CCS_PROT_DHS_RESISTANCE_MODE,                             //!< Защита "Сопротивление изоляции"
-  CCS_PROT_DHS_RESISTANCE_PREVENT,                          //!< 
-  CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY,                      //!< 
-  CCS_PROT_DHS_RESISTANCE_TRIP_DELAY,                       //!< 
-  CCS_PROT_DHS_RESISTANCE_RESTART_DELAY,                    //!< 
-  CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT,                    //!< 
-  CCS_PROT_DHS_RESISTANCE_RESTART_RESET,                    //!< 
-  CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT,                    //!< 
-  CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT,                 //!< 
+  CCS_PROT_DHS_RESISTANCE_PREVENT,                          //!< Параметр запрещающий запуск
+  CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY,                      //!< Задержка активации уставка
+  CCS_PROT_DHS_RESISTANCE_TRIP_DELAY,                       //!< Задержка срабатывания уставка
+  CCS_PROT_DHS_RESISTANCE_RESTART_DELAY,                    //!< Задержка АПВ уставка
+  CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT,                    //!< Количество АПВ уставка
+  CCS_PROT_DHS_RESISTANCE_RESTART_RESET,                    //!< Автосброс счетчика АПВ
+  CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT,                    //!< Уставка срабатывания защиты
+  CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT,                 //!< Условие АПВ уставка
   CCS_PROT_DHS_RESISTANCE_PARAMETER,                        //!< Уставка Параметр защиты, для этой защиты работать в режиме пониженной изоляции
-  CCS_PROT_DHS_RESISTANCE_RESTART_FLAG,                     //!< 
-  CCS_PROT_DHS_RESISTANCE_STATE,                            //!< 
-  CCS_PROT_DHS_RESISTANCE_TIME,                             //!< 
-  CCS_PROT_DHS_RESISTANCE_RESTART_COUNT,                    //!< 
-  CCS_PROT_DHS_RESISTANCE_RESTART_FIRST_TIME,               //!< 
+  CCS_PROT_DHS_RESISTANCE_RESTART_FLAG,                     //!< Уставка параметр защиты
+  CCS_PROT_DHS_RESISTANCE_STATE,                            //!< Текущий параметр состояние автомата
+  CCS_PROT_DHS_RESISTANCE_TIME,                             //!< Текущий параметр Фиксированное время
+  CCS_PROT_DHS_RESISTANCE_RESTART_COUNT,                    //!< Текущий параметр Количество АПВ
+  CCS_PROT_DHS_RESISTANCE_RESTART_FIRST_TIME,               //!< Текущий параметр Время первого АПВ
   CCS_PROT_DHS_VIBRATION_MODE,                              //!< Защита "Вибрация двигателя"
-  CCS_PROT_DHS_VIBRATION_PREVENT,                           //!< 
-  CCS_PROT_DHS_VIBRATION_ACTIV_DELAY,                       //!< 
-  CCS_PROT_DHS_VIBRATION_TRIP_DELAY,                        //!< 
-  CCS_PROT_DHS_VIBRATION_RESTART_DELAY,                     //!< 
-  CCS_PROT_DHS_VIBRATION_RESTART_LIMIT,                     //!< 
-  CCS_PROT_DHS_VIBRATION_RESTART_RESET,                     //!< 
-  CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT,                     //!< 
-  CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT,                  //!< 
-  CCS_PROT_DHS_VIBRATION_PARAMETER,                         //!< 
-  CCS_PROT_DHS_VIBRATION_RESTART_FLAG,                      //!< 
-  CCS_PROT_DHS_VIBRATION_STATE,                             //!< 
-  CCS_PROT_DHS_VIBRATION_TIME,                              //!< 
-  CCS_PROT_DHS_VIBRATION_RESTART_COUNT,                     //!< 
-  CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME,                //!< 
+  CCS_PROT_DHS_VIBRATION_PREVENT,                           //!< Параметр запрещающий запуск
+  CCS_PROT_DHS_VIBRATION_ACTIV_DELAY,                       //!< Задержка активации уставка
+  CCS_PROT_DHS_VIBRATION_TRIP_DELAY,                        //!< Задержка срабатывания уставка
+  CCS_PROT_DHS_VIBRATION_RESTART_DELAY,                     //!< Задержка АПВ уставка
+  CCS_PROT_DHS_VIBRATION_RESTART_LIMIT,                     //!< Количество АПВ уставка
+  CCS_PROT_DHS_VIBRATION_RESTART_RESET,                     //!< Автосброс счетчика АПВ
+  CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT,                     //!< Уставка срабатывания защиты
+  CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT,                  //!< Условие АПВ уставка
+  CCS_PROT_DHS_VIBRATION_PARAMETER,                         //!< Уставка параметр защиты
+  CCS_PROT_DHS_VIBRATION_RESTART_FLAG,                      //!< Уставка параметр защиты
+  CCS_PROT_DHS_VIBRATION_STATE,                             //!< Текущий параметр состояние автомата
+  CCS_PROT_DHS_VIBRATION_TIME,                              //!< Текущий параметр Фиксированное время
+  CCS_PROT_DHS_VIBRATION_RESTART_COUNT,                     //!< Текущий параметр Количество АПВ
+  CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME,                //!< Текущий параметр Время первого АПВ
   CCS_PROT_AI_1_MODE,                                       //!< Защиты Аналоговый вход 1
-  CCS_PROT_AI_1_PREVENT,                                    //!< 
-  CCS_PROT_AI_1_ACTIV_DELAY,                                //!< 
-  CCS_PROT_AI_1_TRIP_DELAY,                                 //!< 
-  CCS_PROT_AI_1_RESTART_DELAY,                              //!< 
-  CCS_PROT_AI_1_RESTART_LIMIT,                              //!< 
-  CCS_PROT_AI_1_RESTART_RESET,                              //!< 
-  CCS_PROT_AI_1_TRIP_SETPOINT,                              //!< 
-  CCS_PROT_AI_1_RESTART_SETPOINT,                           //!< 
-  CCS_PROT_AI_1_PARAMETER,                                  //!< 
-  CCS_PROT_AI_1_RESTART_FLAG,                               //!< 
-  CCS_PROT_AI_1_STATE,                                      //!< 
-  CCS_PROT_AI_1_TIME,                                       //!< 
-  CCS_PROT_AI_1_RESTART_COUNT,                              //!< 
-  CCS_PROT_AI_1_RESTART_FIRST_TIME,                         //!< 
+  CCS_PROT_AI_1_PREVENT,                                    //!< Параметр запрещающий запуск
+  CCS_PROT_AI_1_ACTIV_DELAY,                                //!< Задержка активации уставка
+  CCS_PROT_AI_1_TRIP_DELAY,                                 //!< Задержка срабатывания уставка
+  CCS_PROT_AI_1_RESTART_DELAY,                              //!< Задержка АПВ уставка
+  CCS_PROT_AI_1_RESTART_LIMIT,                              //!< Количество АПВ уставка
+  CCS_PROT_AI_1_RESTART_RESET,                              //!< Автосброс счетчика АПВ
+  CCS_PROT_AI_1_TRIP_SETPOINT,                              //!< Уставка срабатывания защиты
+  CCS_PROT_AI_1_RESTART_SETPOINT,                           //!< Условие АПВ уставка
+  CCS_PROT_AI_1_PARAMETER,                                  //!< Уставка параметр защиты
+  CCS_PROT_AI_1_RESTART_FLAG,                               //!< Уставка параметр защиты
+  CCS_PROT_AI_1_STATE,                                      //!< Текущий параметр состояние автомата
+  CCS_PROT_AI_1_TIME,                                       //!< Текущий параметр Фиксированное время
+  CCS_PROT_AI_1_RESTART_COUNT,                              //!< Текущий параметр Количество АПВ
+  CCS_PROT_AI_1_RESTART_FIRST_TIME,                         //!< Текущий параметр Время первого АПВ
   CCS_PROT_AI_2_MODE,                                       //!< Защиты Аналоговый вход 2
-  CCS_PROT_AI_2_PREVENT,                                    //!< 
-  CCS_PROT_AI_2_ACTIV_DELAY,                                //!< 
-  CCS_PROT_AI_2_TRIP_DELAY,                                 //!< 
-  CCS_PROT_AI_2_RESTART_DELAY,                              //!< 
-  CCS_PROT_AI_2_RESTART_LIMIT,                              //!< 
-  CCS_PROT_AI_2_RESTART_RESET,                              //!< 
-  CCS_PROT_AI_2_TRIP_SETPOINT,                              //!< 
-  CCS_PROT_AI_2_RESTART_SETPOINT,                           //!< 
-  CCS_PROT_AI_2_PARAMETER,                                  //!< 
-  CCS_PROT_AI_2_RESTART_FLAG,                               //!< 
-  CCS_PROT_AI_2_STATE,                                      //!< 
-  CCS_PROT_AI_2_TIME,                                       //!< 
-  CCS_PROT_AI_2_RESTART_COUNT,                              //!< 
-  CCS_PROT_AI_2_RESTART_FIRST_TIME,                         //!< 
+  CCS_PROT_AI_2_PREVENT,                                    //!< Параметр запрещающий запуск
+  CCS_PROT_AI_2_ACTIV_DELAY,                                //!< Задержка активации уставка
+  CCS_PROT_AI_2_TRIP_DELAY,                                 //!< Задержка срабатывания уставка
+  CCS_PROT_AI_2_RESTART_DELAY,                              //!< Задержка АПВ уставка
+  CCS_PROT_AI_2_RESTART_LIMIT,                              //!< Количество АПВ уставка
+  CCS_PROT_AI_2_RESTART_RESET,                              //!< Автосброс счетчика АПВ
+  CCS_PROT_AI_2_TRIP_SETPOINT,                              //!< Уставка срабатывания защиты
+  CCS_PROT_AI_2_RESTART_SETPOINT,                           //!< Условие АПВ уставка
+  CCS_PROT_AI_2_PARAMETER,                                  //!< Уставка параметр защиты
+  CCS_PROT_AI_2_RESTART_FLAG,                               //!< Уставка параметр защиты
+  CCS_PROT_AI_2_STATE,                                      //!< Текущий параметр состояние автомата
+  CCS_PROT_AI_2_TIME,                                       //!< Текущий параметр Фиксированное время
+  CCS_PROT_AI_2_RESTART_COUNT,                              //!< Текущий параметр Количество АПВ
+  CCS_PROT_AI_2_RESTART_FIRST_TIME,                         //!< Текущий параметр Время первого АПВ
   CCS_PROT_AI_3_MODE,                                       //!< Защиты Аналоговый вход 3
-  CCS_PROT_AI_3_PREVENT,                                    //!< 
-  CCS_PROT_AI_3_ACTIV_DELAY,                                //!< 
-  CCS_PROT_AI_3_TRIP_DELAY,                                 //!< 
-  CCS_PROT_AI_3_RESTART_DELAY,                              //!< 
-  CCS_PROT_AI_3_RESTART_LIMIT,                              //!< 
-  CCS_PROT_AI_3_RESTART_RESET,                              //!< 
-  CCS_PROT_AI_3_TRIP_SETPOINT,                              //!< 
-  CCS_PROT_AI_3_RESTART_SETPOINT,                           //!< 
-  CCS_PROT_AI_3_PARAMETER,                                  //!< 
-  CCS_PROT_AI_3_RESTART_FLAG,                               //!< 
-  CCS_PROT_AI_3_STATE,                                      //!< 
-  CCS_PROT_AI_3_TIME,                                       //!< 
-  CCS_PROT_AI_3_RESTART_COUNT,                              //!< 
-  CCS_PROT_AI_3_RESTART_FIRST_TIME,                         //!< 
+  CCS_PROT_AI_3_PREVENT,                                    //!< Параметр запрещающий запуск
+  CCS_PROT_AI_3_ACTIV_DELAY,                                //!< Задержка активации уставка
+  CCS_PROT_AI_3_TRIP_DELAY,                                 //!< Задержка срабатывания уставка
+  CCS_PROT_AI_3_RESTART_DELAY,                              //!< Задержка АПВ уставка
+  CCS_PROT_AI_3_RESTART_LIMIT,                              //!< Количество АПВ уставка
+  CCS_PROT_AI_3_RESTART_RESET,                              //!< Автосброс счетчика АПВ
+  CCS_PROT_AI_3_TRIP_SETPOINT,                              //!< Уставка срабатывания защиты
+  CCS_PROT_AI_3_RESTART_SETPOINT,                           //!< Условие АПВ уставка
+  CCS_PROT_AI_3_PARAMETER,                                  //!< Уставка параметр защиты
+  CCS_PROT_AI_3_RESTART_FLAG,                               //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_AI_3_STATE,                                      //!< Текущий параметр состояние автомата
+  CCS_PROT_AI_3_TIME,                                       //!< Текущий параметр Фиксированное время
+  CCS_PROT_AI_3_RESTART_COUNT,                              //!< Текущий параметр Количество АПВ
+  CCS_PROT_AI_3_RESTART_FIRST_TIME,                         //!< Текущий параметр Время первого АПВ
   CCS_PROT_AI_4_MODE,                                       //!< Защиты Аналоговый вход 4
-  CCS_PROT_AI_4_PREVENT,                                    //!< 
-  CCS_PROT_AI_4_ACTIV_DELAY,                                //!< 
-  CCS_PROT_AI_4_TRIP_DELAY,                                 //!< 
-  CCS_PROT_AI_4_RESTART_DELAY,                              //!< 
-  CCS_PROT_AI_4_RESTART_LIMIT,                              //!< 
-  CCS_PROT_AI_4_RESTART_RESET,                              //!< 
-  CCS_PROT_AI_4_TRIP_SETPOINT,                              //!< 
-  CCS_PROT_AI_4_RESTART_SETPOINT,                           //!< 
-  CCS_PROT_AI_4_PARAMETER,                                  //!< 
-  CCS_PROT_AI_4_RESTART_FLAG,                               //!< 
-  CCS_PROT_AI_4_STATE,                                      //!< 
-  CCS_PROT_AI_4_TIME,                                       //!< 
-  CCS_PROT_AI_4_RESTART_COUNT,                              //!< 
-  CCS_PROT_AI_4_RESTART_FIRST_TIME,                         //!< 
+  CCS_PROT_AI_4_PREVENT,                                    //!< Параметр запрещающий запуск
+  CCS_PROT_AI_4_ACTIV_DELAY,                                //!< Задержка активации уставка
+  CCS_PROT_AI_4_TRIP_DELAY,                                 //!< Задержка срабатывания уставка
+  CCS_PROT_AI_4_RESTART_DELAY,                              //!< Задержка АПВ уставка
+  CCS_PROT_AI_4_RESTART_LIMIT,                              //!< Количество АПВ уставка
+  CCS_PROT_AI_4_RESTART_RESET,                              //!< Автосброс счетчика АПВ
+  CCS_PROT_AI_4_TRIP_SETPOINT,                              //!< Уставка срабатывания защиты
+  CCS_PROT_AI_4_RESTART_SETPOINT,                           //!< Условие АПВ уставка
+  CCS_PROT_AI_4_PARAMETER,                                  //!< Уставка параметр защиты
+  CCS_PROT_AI_4_RESTART_FLAG,                               //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_AI_4_STATE,                                      //!< Текущий параметр состояние автомата
+  CCS_PROT_AI_4_TIME,                                       //!< Текущий параметр Фиксированное время
+  CCS_PROT_AI_4_RESTART_COUNT,                              //!< Текущий параметр Количество АПВ
+  CCS_PROT_AI_4_RESTART_FIRST_TIME,                         //!< Текущий параметр Время первого АПВ
   CCS_PROT_DI_1_MODE,                                       //!< Защиты по дискретным входам
-  CCS_PROT_DI_1_PREVENT,                                    //!< 
-  CCS_PROT_DI_1_ACTIV_DELAY,                                //!< 
-  CCS_PROT_DI_1_TRIP_DELAY,                                 //!< 
-  CCS_PROT_DI_1_RESTART_DELAY,                              //!< 
-  CCS_PROT_DI_1_RESTART_LIMIT,                              //!< 
-  CCS_PROT_DI_1_RESTART_RESET,                              //!< 
-  CCS_PROT_DI_1_TRIP_SETPOINT,                              //!< 
-  CCS_PROT_DI_1_RESTART_SETPOINT,                           //!< 
-  CCS_PROT_DI_1_PARAMETER,                                  //!< 
-  CCS_PROT_DI_1_RESTART_FLAG,                               //!< 
-  CCS_PROT_DI_1_STATE,                                      //!< 
-  CCS_PROT_DI_1_TIME,                                       //!< 
-  CCS_PROT_DI_1_RESTART_COUNT,                              //!< 
-  CCS_PROT_DI_1_RESTART_FIRST_TIME,                         //!< 
+  CCS_PROT_DI_1_PREVENT,                                    //!< Параметр запрещающий запуск
+  CCS_PROT_DI_1_ACTIV_DELAY,                                //!< Задержка активации уставка
+  CCS_PROT_DI_1_TRIP_DELAY,                                 //!< Задержка срабатывания уставка
+  CCS_PROT_DI_1_RESTART_DELAY,                              //!< Задержка АПВ уставка
+  CCS_PROT_DI_1_RESTART_LIMIT,                              //!< Количество АПВ уставка
+  CCS_PROT_DI_1_RESTART_RESET,                              //!< Автосброс счетчика АПВ
+  CCS_PROT_DI_1_TRIP_SETPOINT,                              //!< Уставка срабатывания защиты
+  CCS_PROT_DI_1_RESTART_SETPOINT,                           //!< Условие АПВ уставка
+  CCS_PROT_DI_1_PARAMETER,                                  //!< Уставка параметр защиты
+  CCS_PROT_DI_1_RESTART_FLAG,                               //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_DI_1_STATE,                                      //!< Текущий параметр состояние автомата
+  CCS_PROT_DI_1_TIME,                                       //!< Текущий параметр Фиксированное время
+  CCS_PROT_DI_1_RESTART_COUNT,                              //!< Текущий параметр Количество АПВ
+  CCS_PROT_DI_1_RESTART_FIRST_TIME,                         //!< Текущий параметр Время первого АПВ
   CCS_PROT_DI_2_MODE,                                       //!< Защита дискретный вход 2
-  CCS_PROT_DI_2_PREVENT,                                    //!< 
-  CCS_PROT_DI_2_ACTIV_DELAY,                                //!< 
-  CCS_PROT_DI_2_TRIP_DELAY,                                 //!< 
-  CCS_PROT_DI_2_RESTART_DELAY,                              //!< 
-  CCS_PROT_DI_2_RESTART_LIMIT,                              //!< 
-  CCS_PROT_DI_2_RESTART_RESET,                              //!< 
-  CCS_PROT_DI_2_TRIP_SETPOINT,                              //!< 
-  CCS_PROT_DI_2_RESTART_SETPOINT,                           //!< 
-  CCS_PROT_DI_2_PARAMETER,                                  //!< 
-  CCS_PROT_DI_2_RESTART_FLAG,                               //!< 
-  CCS_PROT_DI_2_STATE,                                      //!< 
-  CCS_PROT_DI_2_TIME,                                       //!< 
-  CCS_PROT_DI_2_RESTART_COUNT,                              //!< 
-  CCS_PROT_DI_2_RESTART_FIRST_TIME,                         //!< 
+  CCS_PROT_DI_2_PREVENT,                                    //!< Параметр запрещающий запуск
+  CCS_PROT_DI_2_ACTIV_DELAY,                                //!< Задержка активации уставка
+  CCS_PROT_DI_2_TRIP_DELAY,                                 //!< Задержка срабатывания уставка
+  CCS_PROT_DI_2_RESTART_DELAY,                              //!< Задержка АПВ уставка
+  CCS_PROT_DI_2_RESTART_LIMIT,                              //!< Количество АПВ уставка
+  CCS_PROT_DI_2_RESTART_RESET,                              //!< Автосброс счетчика АПВ
+  CCS_PROT_DI_2_TRIP_SETPOINT,                              //!< Уставка срабатывания защиты
+  CCS_PROT_DI_2_RESTART_SETPOINT,                           //!< Условие АПВ уставка
+  CCS_PROT_DI_2_PARAMETER,                                  //!< Уставка параметр защиты
+  CCS_PROT_DI_2_RESTART_FLAG,                               //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_DI_2_STATE,                                      //!< Текущий параметр состояние автомата
+  CCS_PROT_DI_2_TIME,                                       //!< Текущий параметр Фиксированное время
+  CCS_PROT_DI_2_RESTART_COUNT,                              //!< Текущий параметр Количество АПВ
+  CCS_PROT_DI_2_RESTART_FIRST_TIME,                         //!< Текущий параметр Время первого АПВ
   CCS_PROT_DI_3_MODE,                                       //!< Защита дискретный вход 3
-  CCS_PROT_DI_3_PREVENT,                                    //!< 
-  CCS_PROT_DI_3_ACTIV_DELAY,                                //!< 
-  CCS_PROT_DI_3_TRIP_DELAY,                                 //!< 
-  CCS_PROT_DI_3_RESTART_DELAY,                              //!< 
-  CCS_PROT_DI_3_RESTART_LIMIT,                              //!< 
-  CCS_PROT_DI_3_RESTART_RESET,                              //!< 
-  CCS_PROT_DI_3_TRIP_SETPOINT,                              //!< 
-  CCS_PROT_DI_3_RESTART_SETPOINT,                           //!< 
-  CCS_PROT_DI_3_PARAMETER,                                  //!< 
-  CCS_PROT_DI_3_RESTART_FLAG,                               //!< 
-  CCS_PROT_DI_3_STATE,                                      //!< 
-  CCS_PROT_DI_3_TIME,                                       //!< 
-  CCS_PROT_DI_3_RESTART_COUNT,                              //!< 
-  CCS_PROT_DI_3_RESTART_FIRST_TIME,                         //!< 
+  CCS_PROT_DI_3_PREVENT,                                    //!< Параметр запрещающий запуск
+  CCS_PROT_DI_3_ACTIV_DELAY,                                //!< Задержка активации уставка
+  CCS_PROT_DI_3_TRIP_DELAY,                                 //!< Задержка срабатывания уставка
+  CCS_PROT_DI_3_RESTART_DELAY,                              //!< Задержка АПВ уставка
+  CCS_PROT_DI_3_RESTART_LIMIT,                              //!< Количество АПВ уставка
+  CCS_PROT_DI_3_RESTART_RESET,                              //!< Автосброс счетчика АПВ
+  CCS_PROT_DI_3_TRIP_SETPOINT,                              //!< Уставка срабатывания защиты
+  CCS_PROT_DI_3_RESTART_SETPOINT,                           //!< Условие АПВ уставка
+  CCS_PROT_DI_3_PARAMETER,                                  //!< Уставка параметр защиты
+  CCS_PROT_DI_3_RESTART_FLAG,                               //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_DI_3_STATE,                                      //!< Текущий параметр состояние автомата
+  CCS_PROT_DI_3_TIME,                                       //!< Текущий параметр Фиксированное время
+  CCS_PROT_DI_3_RESTART_COUNT,                              //!< Текущий параметр Количество АПВ
+  CCS_PROT_DI_3_RESTART_FIRST_TIME,                         //!< Текущий параметр Время первого АПВ
   CCS_PROT_DI_4_MODE,                                       //!< Защита дискретный вход 4
-  CCS_PROT_DI_4_PREVENT,                                    //!< 
-  CCS_PROT_DI_4_ACTIV_DELAY,                                //!< 
-  CCS_PROT_DI_4_TRIP_DELAY,                                 //!< 
-  CCS_PROT_DI_4_RESTART_DELAY,                              //!< 
-  CCS_PROT_DI_4_RESTART_LIMIT,                              //!< 
-  CCS_PROT_DI_4_RESTART_RESET,                              //!< 
-  CCS_PROT_DI_4_TRIP_SETPOINT,                              //!< 
-  CCS_PROT_DI_4_RESTART_SETPOINT,                           //!< 
-  CCS_PROT_DI_4_PARAMETER,                                  //!< 
-  CCS_PROT_DI_4_RESTART_FLAG,                               //!< 
-  CCS_PROT_DI_4_STATE,                                      //!< 
-  CCS_PROT_DI_4_TIME,                                       //!< 
-  CCS_PROT_DI_4_RESTART_COUNT,                              //!< 
-  CCS_PROT_DI_4_RESTART_FIRST_TIME,                         //!< 
+  CCS_PROT_DI_4_PREVENT,                                    //!< Параметр запрещающий запуск
+  CCS_PROT_DI_4_ACTIV_DELAY,                                //!< Задержка активации уставка
+  CCS_PROT_DI_4_TRIP_DELAY,                                 //!< Задержка срабатывания уставка
+  CCS_PROT_DI_4_RESTART_DELAY,                              //!< Задержка АПВ уставка
+  CCS_PROT_DI_4_RESTART_LIMIT,                              //!< Количество АПВ уставка
+  CCS_PROT_DI_4_RESTART_RESET,                              //!< Автосброс счетчика АПВ
+  CCS_PROT_DI_4_TRIP_SETPOINT,                              //!< Уставка срабатывания защиты
+  CCS_PROT_DI_4_RESTART_SETPOINT,                           //!< Условие АПВ уставка
+  CCS_PROT_DI_4_PARAMETER,                                  //!< Уставка параметр защиты
+  CCS_PROT_DI_4_RESTART_FLAG,                               //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_DI_4_STATE,                                      //!< Текущий параметр состояние автомата
+  CCS_PROT_DI_4_TIME,                                       //!< Текущий параметр Фиксированное время
+  CCS_PROT_DI_4_RESTART_COUNT,                              //!< Текущий параметр Количество АПВ
+  CCS_PROT_DI_4_RESTART_FIRST_TIME,                         //!< Текущий параметр Время первого АПВ
   CCS_PROT_OTHER_LIMIT_RESTART_MODE,                        //!< Защита "Превышения числа пусков"
   CCS_PROT_OTHER_LIMIT_RESTART_PREVENT,                     //!< 
   CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY,                 //!< 
@@ -404,52 +404,52 @@ enum enID
   CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG,                //!< 
   CCS_PROT_OTHER_LIMIT_RESTART_STATE,                       //!< 
   CCS_PROT_OTHER_LIMIT_RESTART_TIME,                        //!< 
-  CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT,               //!< 
+  CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT,               //!< Текущий параметр Время первого АПВ
   CCS_PROT_OTHER_LOCK_DOOR_MODE,                            //!< Защита "Блокировка силового отсека"
-  CCS_PROT_OTHER_LOCK_DOOR_PREVENT,                         //!< 
-  CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY,                     //!< 
-  CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY,                      //!< 
-  CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY,                   //!< 
-  CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT,                   //!< 
-  CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET,                   //!< 
-  CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT,                   //!< 
-  CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT,                //!< 
-  CCS_PROT_OTHER_LOCK_DOOR_PARAMETER,                       //!< 
-  CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG,                    //!< 
-  CCS_PROT_OTHER_LOCK_DOOR_STATE,                           //!< 
-  CCS_PROT_OTHER_LOCK_DOOR_TIME,                            //!< 
-  CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT,                   //!< 
-  CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME,              //!< 
+  CCS_PROT_OTHER_LOCK_DOOR_PREVENT,                         //!< Параметр запрещающий запуск
+  CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY,                     //!< Задержка активации уставка
+  CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY,                      //!< Задержка срабатывания уставка
+  CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY,                   //!< Задержка АПВ уставка
+  CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT,                   //!< Количество АПВ уставка
+  CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET,                   //!< Автосброс счетчика АПВ
+  CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT,                   //!< Уставка срабатывания защиты
+  CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT,                //!< Условие АПВ уставка
+  CCS_PROT_OTHER_LOCK_DOOR_PARAMETER,                       //!< Уставка параметр защиты
+  CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG,                    //!< Уставка параметр защиты
+  CCS_PROT_OTHER_LOCK_DOOR_STATE,                           //!< Текущий параметр состояние автомата
+  CCS_PROT_OTHER_LOCK_DOOR_TIME,                            //!< Текущий параметр Фиксированное время
+  CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT,                   //!< Текущий параметр Количество АПВ
+  CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME,              //!< Текущий параметр Время первого АПВ
   CCS_PROT_OTHER_VSD_MODE,                                  //!< Защита "Аппаратные защиты ЧРП"
-  CCS_PROT_OTHER_VSD_PREVENT,                               //!< 
-  CCS_PROT_OTHER_VSD_ACTIV_DELAY,                           //!< 
-  CCS_PROT_OTHER_VSD_TRIP_DELAY,                            //!< 
-  CCS_PROT_OTHER_VSD_RESTART_DELAY,                         //!< 
-  CCS_PROT_OTHER_VSD_RESTART_LIMIT,                         //!< 
-  CCS_PROT_OTHER_VSD_RESTART_RESET,                         //!< 
-  CCS_PROT_OTHER_VSD_TRIP_SETPOINT,                         //!< 
-  CCS_PROT_OTHER_VSD_RESTART_SETPOINT,                      //!< 
-  CCS_PROT_OTHER_VSD_PARAMETER,                             //!< 
-  CCS_PROT_OTHER_VSD_RESTART_FLAG,                          //!< 
-  CCS_PROT_OTHER_VSD_STATE,                                 //!< 
-  CCS_PROT_OTHER_VSD_TIME,                                  //!< 
-  CCS_PROT_OTHER_VSD_RESTART_COUNT,                         //!< 
-  CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME,                    //!< 
+  CCS_PROT_OTHER_VSD_PREVENT,                               //!< Параметр запрещающий запуск
+  CCS_PROT_OTHER_VSD_ACTIV_DELAY,                           //!< Задержка активации уставка
+  CCS_PROT_OTHER_VSD_TRIP_DELAY,                            //!< Задержка срабатывания уставка
+  CCS_PROT_OTHER_VSD_RESTART_DELAY,                         //!< Задержка АПВ уставка
+  CCS_PROT_OTHER_VSD_RESTART_LIMIT,                         //!< Количество АПВ уставка
+  CCS_PROT_OTHER_VSD_RESTART_RESET,                         //!< Автосброс счетчика АПВ
+  CCS_PROT_OTHER_VSD_TRIP_SETPOINT,                         //!< Уставка срабатывания защиты
+  CCS_PROT_OTHER_VSD_RESTART_SETPOINT,                      //!< Условие АПВ уставка
+  CCS_PROT_OTHER_VSD_PARAMETER,                             //!< Уставка параметр защиты
+  CCS_PROT_OTHER_VSD_RESTART_FLAG,                          //!< Уставка параметр защиты
+  CCS_PROT_OTHER_VSD_STATE,                                 //!< Текущий параметр состояние автомата
+  CCS_PROT_OTHER_VSD_TIME,                                  //!< Текущий параметр Фиксированное время
+  CCS_PROT_OTHER_VSD_RESTART_COUNT,                         //!< Текущий параметр Количество АПВ
+  CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME,                    //!< Текущий параметр Время первого АПВ
   CCS_PROT_OTHER_IMB_MODE,                                  //!< Защита "Контроль УКИ"
-  CCS_PROT_OTHER_IMB_PREVENT,                               //!< 
-  CCS_PROT_OTHER_IMB_ACTIV_DELAY,                           //!< 
-  CCS_PROT_OTHER_IMB_TRIP_DELAY,                            //!< 
-  CCS_PROT_OTHER_IMB_RESTART_DELAY,                         //!< 
-  CCS_PROT_OTHER_IMB_RESTART_LIMIT,                         //!< 
-  CCS_PROT_OTHER_IMB_RESTART_RESET,                         //!< 
-  CCS_PROT_OTHER_IMB_TRIP_SETPOINT,                         //!< 
-  CCS_PROT_OTHER_IMB_RESTART_SETPOINT,                      //!< 
-  CCS_PROT_OTHER_IMB_PARAMETER,                             //!< 
-  CCS_PROT_OTHER_IMB_RESTART_FLAG,                          //!< 
-  CCS_PROT_OTHER_IMB_STATE,                                 //!< 
-  CCS_PROT_OTHER_IMB_TIME,                                  //!< 
-  CCS_PROT_OTHER_IMB_RESTART_COUNT,                         //!< 
-  CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME,                    //!< 
+  CCS_PROT_OTHER_IMB_PREVENT,                               //!< Параметр запрещающий запуск
+  CCS_PROT_OTHER_IMB_ACTIV_DELAY,                           //!< Задержка активации уставка
+  CCS_PROT_OTHER_IMB_TRIP_DELAY,                            //!< Задержка срабатывания уставка
+  CCS_PROT_OTHER_IMB_RESTART_DELAY,                         //!< Задержка АПВ уставка
+  CCS_PROT_OTHER_IMB_RESTART_LIMIT,                         //!< Количество АПВ уставка
+  CCS_PROT_OTHER_IMB_RESTART_RESET,                         //!< Автосброс счетчика АПВ
+  CCS_PROT_OTHER_IMB_TRIP_SETPOINT,                         //!< Уставка срабатывания защиты
+  CCS_PROT_OTHER_IMB_RESTART_SETPOINT,                      //!< Условие АПВ уставка
+  CCS_PROT_OTHER_IMB_PARAMETER,                             //!< Уставка параметр защиты
+  CCS_PROT_OTHER_IMB_RESTART_FLAG,                          //!< Уставка параметр защиты
+  CCS_PROT_OTHER_IMB_STATE,                                 //!< Текущий параметр состояние автомата
+  CCS_PROT_OTHER_IMB_TIME,                                  //!< Текущий параметр Фиксированное время
+  CCS_PROT_OTHER_IMB_RESTART_COUNT,                         //!< Текущий параметр Количество АПВ
+  CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME,                    //!< Текущий параметр Время первого АПВ
   CCS_RGM_PERIODIC_MODE,                                    //!< Режим периодический
   CCS_RGM_PERIODIC_STATE,                                   //!< 
   CCS_RGM_PERIODIC_RUN_PERIOD,                              //!< 
@@ -468,11 +468,11 @@ enum enID
   CCS_RGM_ALTERNATION_FREQ_TIMER_2_END,                     //!< 
   CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2,                     //!< Режим чередования частот уставка ЗСП 2
   CCS_RGM_CHANGE_FREQ_MODE,                                 //!< Режим программного изменения частоты
-  CCS_RGM_CHANGE_FREQ_BEGIN_FREQ,                           //!< 
-  CCS_RGM_CHANGE_FREQ_END_FREQ,                             //!< 
-  CCS_RGM_CHANGE_FREQ_PERIOD,                               //!<
-  CCS_RGM_CHANGE_FREQ_BEGIN_TIME,                           //!<
-  CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP,                      //!< Период одного шага режима "Программного изменения частоты"
+  CCS_RGM_CHANGE_FREQ_BEGIN_FREQ,                           //!< Начальная частота
+  CCS_RGM_CHANGE_FREQ_END_FREQ,                             //!< Конечная частота
+  CCS_RGM_CHANGE_FREQ_PERIOD,                               //!< Время вывода на режим
+  CCS_RGM_CHANGE_FREQ_BEGIN_TIME,                           //!< Зафиксированное время начала отсчета текущего шага частоты
+  CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP,                      //!< Период шага частоты
   CCS_RGM_MODE_DATE_TIME,                                   //!< Параметры ВНР
   CCS_RGM_MODE_CURRENT,                                     //!< 
   CCS_RGM_MODE_VOLTAGE,                                     //!< 
@@ -672,12 +672,16 @@ enum enID
   CCS_GENERAL_CONDITION,                                    //!< Общее состояние
   CCS_COEF_TRANSFORMATION,                                  //!< Коэффициент трансформации
   CCS_LAST_STOP_REASON_TMP,                                 //!< Причина последнего останова - регистр временного хранения значения
-  CCS_WORK_WITH_LOW_RESISTANCE,                             //!< Работа с пониженным сопротивлением изоляции  
+  CCS_WORK_WITH_LOW_RESISTANCE,                             //!< Работа с пониженным сопротивлением изоляции
   CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_FLAG,            //!< Защита ЗСП: Флаг использования прогрессивной задержки АПВ
   CCS_RGM_CHANGE_FREQ_STATE,                                //!< Состояние автомата режима "Программного изменения частоты"
   CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD,                      //!< Начальная уставка ЗСП режима "Программного изменения частоты"
   CCS_RGM_RUN_PUSH_MODE,                                    //!< Действие режима пуска "Толчковый"
   CCS_RGM_RUN_PUSH_STATE,                                   //!< Состояние автомата режима пуска "Толчковый"
+  CCS_RGM_RUN_PUSH_FREQ,                                    //!< 
+  CCS_RGM_RUN_PUSH_TIME,                                    //!< 
+  CCS_RGM_RUN_PUSH_VOLTAGE,                                 //!< 
+  CCS_RGM_RUN_PUSH_QUANTITY,                                //!< 
   CCS_END,                                                  //!< Последний параметр
   VSD_BEGIN=10000,                                          //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW,                                        //!< Выходная частота ПЧ
@@ -812,7 +816,7 @@ enum enID
   VSD_IOUT,                                                 //!< Выходной ток ПЧ
   VSD_INV_FAULT,                                            //!< Регистр ошибок инвертора
   VSD_SOUT,                                                 //!< Текущая выходная полная мощность ПЧ
-  VSD_M_IRMS,                                               //!< Уровень защиты i2t двигателя
+  VSD_M_IRMS,                                               //!< Уставка срабатывания защиты (ЗП)
   VSD_M_TRMS,                                               //!< Постоянная времени защиты i2t двигателя
   VSD_OVERPWM2_ANGLE,                                       //!< Максимальный угол остановки вектора в режиме
   VSD_OVERPWM_GAIN,                                         //!< Степень постоянной времени отработки

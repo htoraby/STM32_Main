@@ -269,6 +269,17 @@ public:
    */
   virtual int offRegimePush() = 0;
 
+  /*!
+   * \brief onRegimeSwing
+   * \return
+   */
+  virtual int onRegimeSwing() = 0;
+
+  /*!
+   * \brief offRegimeSwing
+   * \return
+   */
+  virtual int offRegimeSwing() = 0;
 
   /*!
    * \brief Задание в массив параметров ЧРП номинальной частоты двигателя

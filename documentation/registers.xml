@@ -8486,7 +8486,31 @@
 		<format>XXXXXX</format>
 	</param>
 	<param>
+		<id>679</id>
+		<name>CCS_RGM_RUN_SWING_MODE</name>
+	</param>
+	<param>
 		<id>680</id>
+		<name>CCS_RGM_RUN_SWING_STATE</name>
+	</param>
+	<param>
+		<id>681</id>
+		<name>CCS_RGM_RUN_SWING_FREQ</name>
+	</param>
+	<param>
+		<id>682</id>
+		<name>CCS_RGM_RUN_SWING_TIME</name>
+	</param>
+	<param>
+		<id>683</id>
+		<name>CCS_RGM_RUN_SWING_VOLTAGE</name>
+	</param>
+	<param>
+		<id>684</id>
+		<name>CCS_RGM_RUN_SWING_QUANTITY</name>
+	</param>
+	<param>
+		<id>685</id>
 		<name>CCS_END</name>
 		<valid>VALIDITY_OK</valid>
 		<comment>Последний параметр</comment>

@@ -135,6 +135,18 @@ public:
   int offRegimePush();
 
   /*!
+   * \brief onRegimeSwing
+   * \return
+   */
+  int onRegimeSwing();
+
+  /*!
+   * \brief offRegimeSwing
+   * \return
+   */
+  int offRegimeSwing();
+
+  /*!
    * \brief Метод записи основного режима работы ЧРП
    * Основных методов 2:
    * U/f регулирование АД и ВД код: 1
