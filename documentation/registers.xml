@@ -8405,6 +8405,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
+		<max>10.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -8430,14 +8434,15 @@
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXX_XX</format>
+		<comment>Частота толчка в режиме пуска "Толчковый"</comment>
 	</param>
 	<param>
 		<id>676</id>
 		<name>CCS_RGM_RUN_PUSH_TIME</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.005</min>
+		<min>0.001</min>
 		<max>0.005</max>
 		<def>0.005</def>
 		<valid>VALIDITY_OK</valid>
@@ -8448,9 +8453,29 @@
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MS</unit_lcd>
 		<format>XXXXXX</format>
+		<comment>Время толчка в режиме пуска "Толчковый"</comment>
 	</param>
 	<param>
 		<id>677</id>
+		<name>CCS_RGM_RUN_PUSH_PERIOD</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.001</min>
+		<max>100.0</max>
+		<def>1.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Время между толчками</text>
+		<short_text>Время между толчками</short_text>
+		<form>3.2.1.2 Толчковый</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MS</unit_lcd>
+		<format>ХХХХХХ</format>
+		<comment>Время между толчками в режиме пуска "Толчковый"</comment>
+	</param>
+	<param>
+		<id>678</id>
 		<name>CCS_RGM_RUN_PUSH_VOLTAGE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -8466,9 +8491,10 @@
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXXX_X</format>
+		<comment>Напряжение толчка в режиме пуска "Толчковый"</comment>
 	</param>
 	<param>
-		<id>678</id>
+		<id>679</id>
 		<name>CCS_RGM_RUN_PUSH_QUANTITY</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -8484,30 +8510,103 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXX</format>
-	</param>
-	<param>
-		<id>679</id>
-		<name>CCS_RGM_RUN_SWING_MODE</name>
+		<comment>Количество толчков в режиме пуска "Толчковый"</comment>
 	</param>
 	<param>
 		<id>680</id>
-		<name>CCS_RGM_RUN_SWING_STATE</name>
+		<name>CCS_RGM_RUN_SWING_MODE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Реакция режима</text>
+		<short_text>Реакция режима</short_text>
+		<form>3.2.1.3 Раскачка</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<values>0-Откл;1-Вкл;2-Постоянно</values>
+		<comment>Действие режима пуска "Раскачка"</comment>
 	</param>
 	<param>
 		<id>681</id>
-		<name>CCS_RGM_RUN_SWING_FREQ</name>
+		<name>CCS_RGM_RUN_SWING_STATE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>10.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<comment>Состояние автомата режима пуска "Раскачка"</comment>
 	</param>
 	<param>
 		<id>682</id>
-		<name>CCS_RGM_RUN_SWING_TIME</name>
+		<name>CCS_RGM_RUN_SWING_FREQ</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>20.0</max>
+		<def>5.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>5.0</value>
+		<text>Частота толчка</text>
+		<short_text>Частота толчка</short_text>
+		<form>3.2.1.2 Толчковый</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXX_XX</format>
+		<comment>Частота толчка в режиме пуска "Раскачка"</comment>
 	</param>
 	<param>
 		<id>683</id>
 		<name>CCS_RGM_RUN_SWING_VOLTAGE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>100.0</min>
+		<max>150.0</max>
+		<def>100.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>100.0</value>
+		<text>Напряжение толчка</text>
+		<short_text>Напряжение толчка</short_text>
+		<form>3.2.1.2 Толчковый</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXX_X</format>
+		<comment>Напряжение толчка в режиме пуска "Раскачка"</comment>
 	</param>
 	<param>
 		<id>684</id>
 		<name>CCS_RGM_RUN_SWING_QUANTITY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>20.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Количество толчков</text>
+		<short_text>Количество толчков</short_text>
+		<form>3.2.1.2 Толчковый</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<comment>Количество толчков в режиме пуска "Раскачка"</comment>
 	</param>
 	<param>
 		<id>685</id>
