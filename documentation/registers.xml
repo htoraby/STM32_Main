@@ -3,21 +3,21 @@
 	<param>
 		<id>0</id>
 		<name>CCS_BEGIN</name>
-		<access>NULL</access>
-		<operation>NULL</operation>
-		<physic>NULL</physic>
-		<min>NULL</min>
-		<max>NULL</max>
-		<def>NULL</def>
+		<access>0</access>
+		<operation>0</operation>
+		<physic>0</physic>
+		<min>0</min>
+		<max>0</max>
+		<def>0</def>
 		<valid>VALIDITY_ERROR</valid>
-		<value>NULL</value>
-		<text>NULL</text>
-		<short_text>NULL</short_text>
-		<form>NULL</form>
-		<unit>NULL</unit>
-		<unit_lcd>NULL</unit_lcd>
-		<format>NULL</format>
-		<values>NULL</values>
+		<value>0</value>
+		<text>0</text>
+		<short_text>0</short_text>
+		<form>0</form>
+		<unit>0</unit>
+		<unit_lcd>0</unit_lcd>
+		<format>0</format>
+		<values>0</values>
 		<comment>Пустой регистр</comment>
 	</param>
 	<param>
@@ -1751,7 +1751,7 @@
 		<name>CCS_PROT_MOTOR_UNDERLOAD_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
 		<def>0.0</def>
@@ -1980,7 +1980,7 @@
 		<name>CCS_PROT_MOTOR_UNDERLOAD_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1000.0</max>
 		<def>0.0</def>
@@ -2038,7 +2038,7 @@
 		<name>CCS_PROT_MOTOR_CURRENT_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
 		<def>0.0</def>
@@ -2266,7 +2266,7 @@
 		<name>CCS_PROT_MOTOR_CURRENT_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1000.0</max>
 		<def>0.0</def>
@@ -2759,7 +2759,7 @@
 		<id>209</id>
 		<name>CCS_PROT_DHS_PRESSURE_INTAKE_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>ORERATION_READ</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
@@ -3044,7 +3044,7 @@
 		<id>224</id>
 		<name>CCS_PROT_DHS_TEMPERATURE_MOTOR_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>ORERATION_READ</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
@@ -8472,7 +8472,7 @@
 		<name>CCS_RGM_RUN_PUSH_QUANTITY</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>20.0</max>
 		<def>0.0</def>
@@ -8517,7 +8517,7 @@
 	</param>
 	<param>
 		<id>10000</id>
-		<name>VSD_BEGIN=10000</name>
+		<name>VSD_BEGIN</name>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Первый параметр ЧРП</comment>
 	</param>
@@ -10717,7 +10717,7 @@
 	</param>
 	<param>
 		<id>15000</id>
-		<name>TMS_BEGIN=15000</name>
+		<name>TMS_BEGIN</name>
 		<valid>VALIDITY_ERROR</valid>
 	</param>
 	<param>
@@ -10931,7 +10931,7 @@
 		<name>TMS_FAIL_LINK_TMSP</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Обрыв связи с ТМСП</comment>
 	</param>
@@ -10940,7 +10940,7 @@
 		<name>TMS_MANUFACTURE_TMSP</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Код изготовителя ТМСП</comment>
 	</param>
@@ -10949,7 +10949,7 @@
 		<name>TMS_NUMBER_TMSP</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Серийный номер ТМСП</comment>
 	</param>
@@ -10971,7 +10971,7 @@
 		<name>TMS_CONSTRUCTION_TMSP</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Код конструкции ТМСП</comment>
 	</param>
@@ -10980,7 +10980,7 @@
 		<name>TMS_PROTOCOL_TMSP</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Код протокола ТМСП</comment>
 	</param>
@@ -10989,7 +10989,7 @@
 		<name>TMS_SENSOR_TMSP</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Состав датчиков ТМСП</comment>
 	</param>
@@ -10998,7 +10998,7 @@
 		<name>TMS_SOFT_TMSP</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Версия По ТМСП</comment>
 	</param>
@@ -11007,7 +11007,7 @@
 		<name>TMS_TIME_BIT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Скорости передачи бита</comment>
 	</param>
@@ -11016,7 +11016,7 @@
 		<name>TMS_MANUFACTURE_TMSN</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Код завода изготовителя ТМСН</comment>
 	</param>
@@ -11025,7 +11025,7 @@
 		<name>TMS_NUMBER_TMSN</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Заводской номер ТМСН</comment>
 	</param>
@@ -11047,7 +11047,7 @@
 		<name>TMS_CONSTRUCTION_TMSN</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Код конструкции ТМСН</comment>
 	</param>
@@ -11056,7 +11056,7 @@
 		<name>TMS_SOFT_TMSN</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Версия ПО ТМСН</comment>
 	</param>
@@ -11065,7 +11065,7 @@
 		<name>TMS_PROTOCOL_TMSN</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Код протокола ТМСН</comment>
 	</param>
@@ -11114,7 +11114,7 @@
 		<name>TMS_RESISTANCE_ISOLATION_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Время измерения сопротивления изоляции</comment>
 	</param>
@@ -11123,7 +11123,7 @@
 		<name>TMS_MEASURE_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Время измерения данных и передачи</comment>
 	</param>
@@ -11132,7 +11132,7 @@
 		<name>TMS_RESISTANCE_TRANS_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Время перехода в режим измерения сопротивления изоляции</comment>
 	</param>
@@ -11141,7 +11141,7 @@
 		<name>TMS_NUMBER_WELL</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Номер скважины</comment>
 	</param>
@@ -11150,7 +11150,7 @@
 		<name>TMS_NUMBER_BUSH</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Номер куста</comment>
 	</param>
@@ -11159,7 +11159,7 @@
 		<name>TMS_NUMBER_CDNG</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Номер ЦДНГ</comment>
 	</param>
@@ -11168,7 +11168,7 @@
 		<name>TMS_MODBUS_ADDRESS</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Адрес Modbus</comment>
 	</param>
@@ -11177,7 +11177,7 @@
 		<name>TMS_MODBUS_SPEED</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Скорость Modbus</comment>
 	</param>
@@ -11186,7 +11186,7 @@
 		<name>TMS_MODBUS_STOP_BIT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Количество Стоп-бит</comment>
 	</param>
@@ -11208,7 +11208,7 @@
 		<name>TMS_READ_STATIC_PARAM</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Команда чтения статических параметров</comment>
 	</param>
@@ -11217,7 +11217,7 @@
 		<name>TMS_PACKAGE_ERROR_TMSP</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Количество ошибок от ТМСП</comment>
 	</param>
@@ -11236,7 +11236,7 @@
 		<name>TMS_TEMPERATURE_UNIT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Единицы измерения температуры</comment>
 	</param>
@@ -11245,7 +11245,7 @@
 		<name>TMS_PRESSURE_UNIT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Единицы измерения давления</comment>
 	</param>
@@ -11254,7 +11254,7 @@
 		<name>TMS_PSW_TMS</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Слово состояние системы</comment>
 	</param>
@@ -11263,7 +11263,7 @@
 		<name>TMS_PSW_TMSN</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Слово состояние наземного блока</comment>
 	</param>
@@ -11272,7 +11272,7 @@
 		<name>TMS_PSW_TMSP_1</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Cлово состояние погружного блока</comment>
 	</param>
@@ -11281,7 +11281,7 @@
 		<name>TMS_PSW_TMSP_2</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMBER</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Слово состояние погружного блока 2</comment>
 	</param>
@@ -11310,7 +11310,7 @@
 	</param>
 	<param>
 		<id>20000</id>
-		<name>EM_BEGIN=20000</name>
+		<name>EM_BEGIN</name>
 		<valid>VALIDITY_ERROR</valid>
 		<comment>Первый параметр группы счётчиков электроэнергии</comment>
 	</param>

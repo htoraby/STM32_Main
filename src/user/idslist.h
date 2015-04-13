@@ -3,1056 +3,1056 @@
 
 enum enID
 {
-  CCS_BEGIN,                                                //!< Пустой регистр
-  CCS_MOTOR_SPEED_NOW,                                      //!< Текущие обороты двигателя
-  CCS_MOTOR_CURRENT_PHASE_1,                                //!< Ток двигателя фаза 1
-  CCS_MOTOR_CURRENT_PHASE_2,                                //!< Ток двигателя фаза 2
-  CCS_MOTOR_CURRENT_PHASE_3,                                //!< Ток двигателя фаза 3
-  CCS_MOTOR_CURRENT_IMBALANCE,                              //!< Дисбаланс токов двигателя
-  CCS_MOTOR_CURRENT_AVARAGE,                                //!< Ток двигателя средний
-  CCS_MOTOR_LOAD_NOW,                                       //!< Текущая загрузка двигателя
-  CCS_MOTOR_VOLTAGE_NOW,                                    //!< Текущее напряжение двигателя
-  CCS_MOTOR_COS_PHI_NOW,                                    //!< Текущий Косинус Фи
-  CCS_TURBO_ROTATION_NOW,                                   //!< Текущее турбинное вращение
-  CCS_RESISTANCE_ISOLATION,                                 //!< Сопротивление изоляции в системе
-  CCS_PHASE_ROTATION,                                       //!< Порядок чередования фаз
-  CCS_CONDITION,                                            //!< 
-  CCS_RUNNING_TYPE,                                         //!< Режим пуска двигателя
-  CCS_WORKING_MODE,                                         //!< Режим работы
-  CCS_VOLTAGE_IMBALANCE_IN,                                 //!< Дисбаланс входного напряжения
-  CCS_CURRENT_IMBALANCE_IN,                                 //!< Дисбаланс входного тока
-  CCS_AI_1_VALUE,                                           //!< 
-  CCS_AI_2_VALUE,                                           //!< 
-  CCS_AI_3_VALUE,                                           //!< 
-  CCS_AI_4_VALUE,                                           //!< 
-  CCS_DOOR_VALUE,                                           //!< 
-  CCS_MONOMETR_CONTACT_VALUE,                               //!< 
-  CCS_DI_1_VALUE,                                           //!< 
-  CCS_DI_2_VALUE,                                           //!< 
-  CCS_DI_3_VALUE,                                           //!< 
-  CCS_DI_4_VALUE,                                           //!< 
-  CCS_LOG_PERIOD_NORMAL,                                    //!< Период записи
-  CCS_LOG_PERIOD_FAST,                                      //!< Период экстренной записи
-  CCS_LOG_PERIOD_DHS,                                       //!< Период записи ТМС
-  CCS_MOTOR_CURRENT_HH,                                     //!< Ток холостого хода
-  CCS_TRANS_NOMINAL_POWER,                                  //!< Мощность ТМПН
-  CCS_TRANS_NOMINAL_CURRENT,                                //!< Номинальный ток ТМПН
-  CCS_TRANS_NOMINAL_VOLTAGE,                                //!< Номинальное напряжение ТМПН
-  CCS_TRANS_CABLE_LENGHT,                                   //!< Длина кабеля
-  CCS_TRANS_CABLE_CROSS,                                    //!< Сечение кабеля
-  CCS_TRANS_NEED_VOLTAGE_TAP_OFF,                           //!< Необходимое напряжение отпайки
-  CCS_TRANS_VOLTAGE_TAP_OFF,                                //!< Напряжение отпайки
-  CCS_DHS_TYPE,                                             //!< Тип ТМС
-  CCS_PUMP_CAPACITY,                                        //!< Производительность насоса
-  CCS_PUMP_HEAD,                                            //!< Напор ЭЦН
-  CCS_DEPTH,                                                //!< Глубина спуска
-  CCS_PROT_SUPPLY_OVERVOLTAGE_MODE,                         //!< Режим работа защиты
-  CCS_PROT_SUPPLY_OVERVOLTAGE_PREVENT,                      //!< Параметр запрещающий запуск
-  CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY,                  //!< Задержка активации уставка
-  CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY,                   //!< Задержка срабатывания уставка
-  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY,                //!< Задержка АПВ уставка
-  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_LIMIT,                //!< Количество АПВ уставка
-  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET,                //!< Автосброс счетчика АПВ
-  CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_SETPOINT,                //!< Уставка срабатывания защиты
-  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_SETPOINT,             //!< Условие АПВ уставка
-  CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER,                    //!< Уставка Параметр защиты, для этой защиты работать по ВРП
-  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FLAG,                 //!< Текущий параметр Флаг что защита в АПВ
-  CCS_PROT_SUPPLY_OVERVOLTAGE_STATE,                        //!< Текущий параметр состояние автомата
-  CCS_PROT_SUPPLY_OVERVOLTAGE_TIME,                         //!< Текущий параметр Фиксированное время
-  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT,                //!< Текущий параметр Количество АПВ
-  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME,           //!< Текущий параметр Время первого АПВ
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE,                        //!< Защита "Превышение питания сети"
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_PREVENT,                     //!< Параметр запрещающий запуск
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY,                 //!< Задержка активации уставка
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY,                  //!< Задержка срабатывания уставка
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY,               //!< Задержка АПВ уставка
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_LIMIT,               //!< Количество АПВ уставка
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET,               //!< Автосброс счетчика АПВ
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_SETPOINT,               //!< Уставка срабатывания защиты
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_SETPOINT,            //!< Условие АПВ уставка
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER,                   //!< Уставка Параметр защиты, для этой защиты работать по ВРП
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FLAG,                //!< Текущий параметр Флаг что защита в АПВ
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_STATE,                       //!< Текущий параметр состояние автомата
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME,                        //!< Текущий параметр Фиксированное время
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_COUNT,               //!< Текущий параметр Количество АПВ
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FIRST_TIME,          //!< Текущий параметр Время первого АПВ
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_MODE,                   //!< Защита "Дисбаланс напряжения"
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PREVENT,                //!< Параметр запрещающий запуск
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY,            //!< Задержка активации уставка
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY,             //!< Задержка срабатывания уставка
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY,          //!< Задержка АПВ уставка
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_LIMIT,          //!< Количество АПВ уставка
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_RESET,          //!< Автосброс счетчика АПВ
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT,          //!< Уставка срабатывания защиты
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_SETPOINT,       //!< Условие АПВ уставка
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER,              //!< Уставка Параметр защиты, для этой защиты работать по ВРП
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FLAG,           //!< Текущий параметр Флаг что защита в АПВ
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_STATE,                  //!< Текущий параметр состояние автомата
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME,                   //!< Текущий параметр Фиксированное время
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_COUNT,          //!< Текущий параметр Количество АПВ
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FIRST_TIME,     //!< Текущий параметр Время первого АПВ
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_MODE,                   //!< Защиты "Дисбаланс входных токов"
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PREVENT,                //!< Параметр запрещающий запуск
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_ACTIV_DELAY,            //!< Задержка активации уставка
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY,             //!< Задержка срабатывания уставка
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY,          //!< Задержка АПВ уставка
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_LIMIT,          //!< Количество АПВ уставка
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_RESET,          //!< Автосброс счетчика АПВ
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_SETPOINT,          //!< Уставка срабатывания защиты
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_SETPOINT,       //!< Условие АПВ уставка
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER,              //!< Уставка параметр защиты
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FLAG,           //!< Текущий параметр Флаг что защита в АПВ
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_STATE,                  //!< Текущий параметр состояние автомата
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME,                   //!< Текущий параметр Фиксированное время
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_COUNT,          //!< Текущий параметр Количество АПВ
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FIRST_TIME,     //!< Текущий параметр Время первого АПВ
-  CCS_PROT_SUPPLY_PHASE_ROTATION_MODE,                      //!< Защиты "Чередование фаз"
-  CCS_PROT_SUPPLY_PHASE_ROTATION_PREVENT,                   //!< Параметр запрещающий запуск
-  CCS_PROT_SUPPLY_PHASE_ROTATION_ACTIV_DELAY,               //!< Задержка активации уставка
-  CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY,                //!< Задержка срабатывания уставка
-  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY,             //!< Задержка АПВ уставка
-  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_LIMIT,             //!< Количество АПВ уставка
-  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_RESET,             //!< Автосброс счетчика АПВ
-  CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT,             //!< Уставка срабатывания защиты
-  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT,          //!< Условие АПВ уставка
-  CCS_PROT_SUPPLY_PHASE_ROTATION_PARAMETER,                 //!< Уставка параметр защиты
-  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FLAG,              //!< Текущий параметр Флаг что защита в АПВ
-  CCS_PROT_SUPPLY_PHASE_ROTATION_STATE,                     //!< Текущий параметр состояние автомата
-  CCS_PROT_SUPPLY_PHASE_ROTATION_TIME,                      //!< Текущий параметр Фиксированное время
-  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_COUNT,             //!< Текущий параметр Количество АПВ
-  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FIRST_TIME,        //!< Текущий параметр Время первого АПВ
-  CCS_PROT_MOTOR_OVERLOAD_MODE,                             //!< Защита "Перегруз" (ЗП)
-  CCS_PROT_MOTOR_OVERLOAD_PREVENT,                          //!< Параметр запрещающий запуск
-  CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY,                      //!< Задержка активации уставка
-  CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY,                       //!< Задержка срабатывания уставка
-  CCS_PROT_MOTOR_OVERLOAD_RESTART_DELAY,                    //!< Задержка АПВ уставка
-  CCS_PROT_MOTOR_OVERLOAD_RESTART_LIMIT,                    //!< Количество АПВ уставка
-  CCS_PROT_MOTOR_OVERLOAD_RESTART_RESET,                    //!< Автосброс счетчика АПВ
-  CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT,                    //!< Уставка срабатывания защиты
-  CCS_PROT_MOTOR_OVERLOAD_RESTART_SETPOINT,                 //!< Условие АПВ уставка
-  CCS_PROT_MOTOR_OVERLOAD_PARAMETER,                        //!< Уставка параметр защиты
-  CCS_PROT_MOTOR_OVERLOAD_RESTART_FLAG,                     //!< Текущий параметр Флаг что защита в АПВ
-  CCS_PROT_MOTOR_OVERLOAD_STATE,                            //!< Текущий параметр состояние автомата
-  CCS_PROT_MOTOR_OVERLOAD_TIME,                             //!< Текущий параметр Фиксированное время
-  CCS_PROT_MOTOR_OVERLOAD_RESTART_COUNT,                    //!< Текущий параметр Количество АПВ
-  CCS_PROT_MOTOR_OVERLOAD_RESTART_FIRST_TIME,               //!< Текущий параметр Время первого АПВ
-  CCS_PROT_MOTOR_UNDERLOAD_MODE,                            //!< Защита "Недогруз" (ЗП)
-  CCS_PROT_MOTOR_UNDERLOAD_PREVENT,                         //!< Параметр запрещающий запуск
-  CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY,                     //!< Задержка активации уставка
-  CCS_PROT_MOTOR_UNDERLOAD_TRIP_DELAY,                      //!< Задержка срабатывания уставка
-  CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY,                   //!< Задержка АПВ уставка
-  CCS_PROT_MOTOR_UNDERLOAD_RESTART_LIMIT,                   //!< Количество АПВ уставка
-  CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET,                   //!< Автосброс счетчика АПВ
-  CCS_PROT_MOTOR_UNDERLOAD_TRIP_SETPOINT,                   //!< Уставка срабатывания защиты
-  CCS_PROT_MOTOR_UNDERLOAD_RESTART_SETPOINT,                //!< Условие АПВ уставка
-  CCS_PROT_MOTOR_UNDERLOAD_PARAMETER,                       //!< Уставка параметр защиты
-  CCS_PROT_MOTOR_UNDERLOAD_RESTART_FLAG,                    //!< Текущий параметр Флаг что защита в АПВ
-  CCS_PROT_MOTOR_UNDERLOAD_STATE,                           //!< Текущий параметр состояние автомата
-  CCS_PROT_MOTOR_UNDERLOAD_TIME,                            //!< Текущий параметр Фиксированное время
-  CCS_PROT_MOTOR_UNDERLOAD_RESTART_COUNT,                   //!< Текущий параметр Количество АПВ
-  CCS_PROT_MOTOR_UNDERLOAD_RESTART_FIRST_TIME,              //!< Текущий параметр Время первого АПВ
-  CCS_PROT_MOTOR_CURRENT_MODE,                              //!< Защита "Предел тока двигателя"
-  CCS_PROT_MOTOR_CURRENT_PREVENT,                           //!< Параметр запрещающий запуск
-  CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY,                       //!< Задержка активации уставка
-  CCS_PROT_MOTOR_CURRENT_TRIP_DELAY,                        //!< Задержка срабатывания уставка
-  CCS_PROT_MOTOR_CURRENT_RESTART_DELAY,                     //!< Задержка АПВ уставка
-  CCS_PROT_MOTOR_CURRENT_RESTART_LIMIT,                     //!< Количество АПВ уставка
-  CCS_PROT_MOTOR_CURRENT_RESTART_RESET,                     //!< Автосброс счетчика АПВ
-  CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT,                     //!< Уставка срабатывания защиты
-  CCS_PROT_MOTOR_CURRENT_RESTART_SETPOINT,                  //!< Условие АПВ уставка
-  CCS_PROT_MOTOR_CURRENT_PARAMETER,                         //!< Уставка параметр защиты
-  CCS_PROT_MOTOR_CURRENT_RESTART_FLAG,                      //!< Текущий параметр Флаг что защита в АПВ
-  CCS_PROT_MOTOR_CURRENT_STATE,                             //!< Текущий параметр состояние автомата
-  CCS_PROT_MOTOR_CURRENT_TIME,                              //!< Текущий параметр Фиксированное время
-  CCS_PROT_MOTOR_CURRENT_RESTART_COUNT,                     //!< Текущий параметр Количество АПВ
-  CCS_PROT_MOTOR_CURRENT_RESTART_FIRST_TIME,                //!< Текущий параметр Время первого АПВ
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE,                    //!< Защита "Дисбаланс токов двигателя"
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_PREVENT,                 //!< Параметр запрещающий запуск
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY,             //!< Задержка активации уставка
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY,              //!< Задержка срабатывания уставка
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY,           //!< Задержка АПВ уставка
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_LIMIT,           //!< Количество АПВ уставка
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_RESET,           //!< Автосброс счетчика АПВ
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_SETPOINT,           //!< Уставка срабатывания защиты
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_SETPOINT,        //!< Условие АПВ уставка
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_PARAMETER,               //!< Уставка параметр защиты
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FLAG,            //!< Текущий параметр Флаг что защита в АПВ
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_STATE,                   //!< Текущий параметр состояние автомата
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_TIME,                    //!< Текущий параметр Фиксированное время
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_COUNT,           //!< Текущий параметр Количество АПВ
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FIRST_TIME,      //!< Текущий параметр Время первого АПВ
-  CCS_PROT_MOTOR_ASYNC_MODE,                                //!< Защита "Турбинное вращение"
-  CCS_PROT_MOTOR_ASYNC_PREVENT,                             //!< Параметр запрещающий запуск
-  CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY,                         //!< Задержка активации уставка
-  CCS_PROT_MOTOR_ASYNC_TRIP_DELAY,                          //!< Задержка срабатывания уставка
-  CCS_PROT_MOTOR_ASYNC_RESTART_DELAY,                       //!< Задержка АПВ уставка
-  CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT,                       //!< Количество АПВ уставка
-  CCS_PROT_MOTOR_ASYNC_RESTART_RESET,                       //!< Автосброс счетчика АПВ
-  CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT,                       //!< Уставка срабатывания защиты
-  CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT,                    //!< Условие АПВ уставка
-  CCS_PROT_MOTOR_ASYNC_PARAMETER,                           //!< Уставка параметр защиты
-  CCS_PROT_MOTOR_ASYNC_RESTART_FLAG,                        //!< Текущий параметр Флаг что защита в АПВ
-  CCS_PROT_MOTOR_ASYNC_STATE,                               //!< Текущий параметр состояние автомата
-  CCS_PROT_MOTOR_ASYNC_TIME,                                //!< Текущий параметр Фиксированное время
-  CCS_PROT_MOTOR_ASYNC_RESTART_COUNT,                       //!< Текущий параметр Количество АПВ
-  CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME,                  //!< Текущий параметр Время первого АПВ
-  CCS_PROT_MOTOR_OUT_OF_SYNC_MODE,                          //!< Защита "Рассинхронизация ПВЭД"
-  CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT,                       //!< Параметр запрещающий запуск
-  CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY,                   //!< Задержка активации уставка
-  CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY,                    //!< Задержка срабатывания уставка
-  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY,                 //!< Задержка АПВ уставка
-  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT,                 //!< Количество АПВ уставка
-  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET,                 //!< Автосброс счетчика АПВ
-  CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT,                 //!< Уставка срабатывания защиты
-  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT,              //!< Условие АПВ уставка
-  CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER,                     //!< Уставка параметр защиты
-  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG,                  //!< Уставка параметр защиты
-  CCS_PROT_MOTOR_OUT_OF_SYNC_STATE,                         //!< Текущий параметр состояние автомата
-  CCS_PROT_MOTOR_OUT_OF_SYNC_TIME,                          //!< Текущий параметр Фиксированное время
-  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT,                 //!< Текущий параметр Количество АПВ
-  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME,            //!< Текущий параметр Время первого АПВ
-  CCS_PROT_DHS_PRESSURE_INTAKE_MODE,                        //!< Защита "Давление на приёме насоса"
-  CCS_PROT_DHS_PRESSURE_INTAKE_PREVENT,                     //!< Параметр запрещающий запуск
-  CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY,                 //!< Задержка активации уставка
-  CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY,                  //!< Задержка срабатывания уставка
-  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY,               //!< Задержка АПВ уставка
-  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT,               //!< Количество АПВ уставка
-  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET,               //!< Автосброс счетчика АПВ
-  CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT,               //!< Уставка срабатывания защиты
-  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT,            //!< Условие АПВ уставка
-  CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER,                   //!< Уставка параметр защиты
-  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_FLAG,                //!< Уставка параметр защиты
-  CCS_PROT_DHS_PRESSURE_INTAKE_STATE,                       //!< Текущий параметр состояние автомата
-  CCS_PROT_DHS_PRESSURE_INTAKE_TIME,                        //!< Текущий параметр Фиксированное время
-  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_COUNT,               //!< Текущий параметр Количество АПВ
-  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_FIRST_TIME,          //!< Текущий параметр Время первого АПВ
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE,                      //!< Защита "Температура двигателя"
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_PREVENT,                   //!< Параметр запрещающий запуск
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY,               //!< Задержка активации уставка
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY,                //!< Задержка срабатывания уставка
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY,             //!< Задержка АПВ уставка
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_LIMIT,             //!< Количество АПВ уставка
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_RESET,             //!< Автосброс счетчика АПВ
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_SETPOINT,             //!< Уставка срабатывания защиты
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_SETPOINT,          //!< Условие АПВ уставка
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_PARAMETER,                 //!< Уставка параметр защиты
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_FLAG,              //!< Уставка параметр защиты
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_STATE,                     //!< Текущий параметр состояние автомата
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_TIME,                      //!< Текущий параметр Фиксированное время
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_COUNT,             //!< Текущий параметр Количество АПВ
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_FIRST_TIME,        //!< Текущий параметр Время первого АПВ
-  CCS_PROT_DHS_RESISTANCE_MODE,                             //!< Защита "Сопротивление изоляции"
-  CCS_PROT_DHS_RESISTANCE_PREVENT,                          //!< Параметр запрещающий запуск
-  CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY,                      //!< Задержка активации уставка
-  CCS_PROT_DHS_RESISTANCE_TRIP_DELAY,                       //!< Задержка срабатывания уставка
-  CCS_PROT_DHS_RESISTANCE_RESTART_DELAY,                    //!< Задержка АПВ уставка
-  CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT,                    //!< Количество АПВ уставка
-  CCS_PROT_DHS_RESISTANCE_RESTART_RESET,                    //!< Автосброс счетчика АПВ
-  CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT,                    //!< Уставка срабатывания защиты
-  CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT,                 //!< Условие АПВ уставка
-  CCS_PROT_DHS_RESISTANCE_PARAMETER,                        //!< Уставка Параметр защиты, для этой защиты работать в режиме пониженной изоляции
-  CCS_PROT_DHS_RESISTANCE_RESTART_FLAG,                     //!< Уставка параметр защиты
-  CCS_PROT_DHS_RESISTANCE_STATE,                            //!< Текущий параметр состояние автомата
-  CCS_PROT_DHS_RESISTANCE_TIME,                             //!< Текущий параметр Фиксированное время
-  CCS_PROT_DHS_RESISTANCE_RESTART_COUNT,                    //!< Текущий параметр Количество АПВ
-  CCS_PROT_DHS_RESISTANCE_RESTART_FIRST_TIME,               //!< Текущий параметр Время первого АПВ
-  CCS_PROT_DHS_VIBRATION_MODE,                              //!< Защита "Вибрация двигателя"
-  CCS_PROT_DHS_VIBRATION_PREVENT,                           //!< Параметр запрещающий запуск
-  CCS_PROT_DHS_VIBRATION_ACTIV_DELAY,                       //!< Задержка активации уставка
-  CCS_PROT_DHS_VIBRATION_TRIP_DELAY,                        //!< Задержка срабатывания уставка
-  CCS_PROT_DHS_VIBRATION_RESTART_DELAY,                     //!< Задержка АПВ уставка
-  CCS_PROT_DHS_VIBRATION_RESTART_LIMIT,                     //!< Количество АПВ уставка
-  CCS_PROT_DHS_VIBRATION_RESTART_RESET,                     //!< Автосброс счетчика АПВ
-  CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT,                     //!< Уставка срабатывания защиты
-  CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT,                  //!< Условие АПВ уставка
-  CCS_PROT_DHS_VIBRATION_PARAMETER,                         //!< Уставка параметр защиты
-  CCS_PROT_DHS_VIBRATION_RESTART_FLAG,                      //!< Уставка параметр защиты
-  CCS_PROT_DHS_VIBRATION_STATE,                             //!< Текущий параметр состояние автомата
-  CCS_PROT_DHS_VIBRATION_TIME,                              //!< Текущий параметр Фиксированное время
-  CCS_PROT_DHS_VIBRATION_RESTART_COUNT,                     //!< Текущий параметр Количество АПВ
-  CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME,                //!< Текущий параметр Время первого АПВ
-  CCS_PROT_AI_1_MODE,                                       //!< Защиты Аналоговый вход 1
-  CCS_PROT_AI_1_PREVENT,                                    //!< Параметр запрещающий запуск
-  CCS_PROT_AI_1_ACTIV_DELAY,                                //!< Задержка активации уставка
-  CCS_PROT_AI_1_TRIP_DELAY,                                 //!< Задержка срабатывания уставка
-  CCS_PROT_AI_1_RESTART_DELAY,                              //!< Задержка АПВ уставка
-  CCS_PROT_AI_1_RESTART_LIMIT,                              //!< Количество АПВ уставка
-  CCS_PROT_AI_1_RESTART_RESET,                              //!< Автосброс счетчика АПВ
-  CCS_PROT_AI_1_TRIP_SETPOINT,                              //!< Уставка срабатывания защиты
-  CCS_PROT_AI_1_RESTART_SETPOINT,                           //!< Условие АПВ уставка
-  CCS_PROT_AI_1_PARAMETER,                                  //!< Уставка параметр защиты
-  CCS_PROT_AI_1_RESTART_FLAG,                               //!< Уставка параметр защиты
-  CCS_PROT_AI_1_STATE,                                      //!< Текущий параметр состояние автомата
-  CCS_PROT_AI_1_TIME,                                       //!< Текущий параметр Фиксированное время
-  CCS_PROT_AI_1_RESTART_COUNT,                              //!< Текущий параметр Количество АПВ
-  CCS_PROT_AI_1_RESTART_FIRST_TIME,                         //!< Текущий параметр Время первого АПВ
-  CCS_PROT_AI_2_MODE,                                       //!< Защиты Аналоговый вход 2
-  CCS_PROT_AI_2_PREVENT,                                    //!< Параметр запрещающий запуск
-  CCS_PROT_AI_2_ACTIV_DELAY,                                //!< Задержка активации уставка
-  CCS_PROT_AI_2_TRIP_DELAY,                                 //!< Задержка срабатывания уставка
-  CCS_PROT_AI_2_RESTART_DELAY,                              //!< Задержка АПВ уставка
-  CCS_PROT_AI_2_RESTART_LIMIT,                              //!< Количество АПВ уставка
-  CCS_PROT_AI_2_RESTART_RESET,                              //!< Автосброс счетчика АПВ
-  CCS_PROT_AI_2_TRIP_SETPOINT,                              //!< Уставка срабатывания защиты
-  CCS_PROT_AI_2_RESTART_SETPOINT,                           //!< Условие АПВ уставка
-  CCS_PROT_AI_2_PARAMETER,                                  //!< Уставка параметр защиты
-  CCS_PROT_AI_2_RESTART_FLAG,                               //!< Уставка параметр защиты
-  CCS_PROT_AI_2_STATE,                                      //!< Текущий параметр состояние автомата
-  CCS_PROT_AI_2_TIME,                                       //!< Текущий параметр Фиксированное время
-  CCS_PROT_AI_2_RESTART_COUNT,                              //!< Текущий параметр Количество АПВ
-  CCS_PROT_AI_2_RESTART_FIRST_TIME,                         //!< Текущий параметр Время первого АПВ
-  CCS_PROT_AI_3_MODE,                                       //!< Защиты Аналоговый вход 3
-  CCS_PROT_AI_3_PREVENT,                                    //!< Параметр запрещающий запуск
-  CCS_PROT_AI_3_ACTIV_DELAY,                                //!< Задержка активации уставка
-  CCS_PROT_AI_3_TRIP_DELAY,                                 //!< Задержка срабатывания уставка
-  CCS_PROT_AI_3_RESTART_DELAY,                              //!< Задержка АПВ уставка
-  CCS_PROT_AI_3_RESTART_LIMIT,                              //!< Количество АПВ уставка
-  CCS_PROT_AI_3_RESTART_RESET,                              //!< Автосброс счетчика АПВ
-  CCS_PROT_AI_3_TRIP_SETPOINT,                              //!< Уставка срабатывания защиты
-  CCS_PROT_AI_3_RESTART_SETPOINT,                           //!< Условие АПВ уставка
-  CCS_PROT_AI_3_PARAMETER,                                  //!< Уставка параметр защиты
-  CCS_PROT_AI_3_RESTART_FLAG,                               //!< Текущий параметр Флаг что защита в АПВ
-  CCS_PROT_AI_3_STATE,                                      //!< Текущий параметр состояние автомата
-  CCS_PROT_AI_3_TIME,                                       //!< Текущий параметр Фиксированное время
-  CCS_PROT_AI_3_RESTART_COUNT,                              //!< Текущий параметр Количество АПВ
-  CCS_PROT_AI_3_RESTART_FIRST_TIME,                         //!< Текущий параметр Время первого АПВ
-  CCS_PROT_AI_4_MODE,                                       //!< Защиты Аналоговый вход 4
-  CCS_PROT_AI_4_PREVENT,                                    //!< Параметр запрещающий запуск
-  CCS_PROT_AI_4_ACTIV_DELAY,                                //!< Задержка активации уставка
-  CCS_PROT_AI_4_TRIP_DELAY,                                 //!< Задержка срабатывания уставка
-  CCS_PROT_AI_4_RESTART_DELAY,                              //!< Задержка АПВ уставка
-  CCS_PROT_AI_4_RESTART_LIMIT,                              //!< Количество АПВ уставка
-  CCS_PROT_AI_4_RESTART_RESET,                              //!< Автосброс счетчика АПВ
-  CCS_PROT_AI_4_TRIP_SETPOINT,                              //!< Уставка срабатывания защиты
-  CCS_PROT_AI_4_RESTART_SETPOINT,                           //!< Условие АПВ уставка
-  CCS_PROT_AI_4_PARAMETER,                                  //!< Уставка параметр защиты
-  CCS_PROT_AI_4_RESTART_FLAG,                               //!< Текущий параметр Флаг что защита в АПВ
-  CCS_PROT_AI_4_STATE,                                      //!< Текущий параметр состояние автомата
-  CCS_PROT_AI_4_TIME,                                       //!< Текущий параметр Фиксированное время
-  CCS_PROT_AI_4_RESTART_COUNT,                              //!< Текущий параметр Количество АПВ
-  CCS_PROT_AI_4_RESTART_FIRST_TIME,                         //!< Текущий параметр Время первого АПВ
-  CCS_PROT_DI_1_MODE,                                       //!< Защиты по дискретным входам
-  CCS_PROT_DI_1_PREVENT,                                    //!< Параметр запрещающий запуск
-  CCS_PROT_DI_1_ACTIV_DELAY,                                //!< Задержка активации уставка
-  CCS_PROT_DI_1_TRIP_DELAY,                                 //!< Задержка срабатывания уставка
-  CCS_PROT_DI_1_RESTART_DELAY,                              //!< Задержка АПВ уставка
-  CCS_PROT_DI_1_RESTART_LIMIT,                              //!< Количество АПВ уставка
-  CCS_PROT_DI_1_RESTART_RESET,                              //!< Автосброс счетчика АПВ
-  CCS_PROT_DI_1_TRIP_SETPOINT,                              //!< Уставка срабатывания защиты
-  CCS_PROT_DI_1_RESTART_SETPOINT,                           //!< Условие АПВ уставка
-  CCS_PROT_DI_1_PARAMETER,                                  //!< Уставка параметр защиты
-  CCS_PROT_DI_1_RESTART_FLAG,                               //!< Текущий параметр Флаг что защита в АПВ
-  CCS_PROT_DI_1_STATE,                                      //!< Текущий параметр состояние автомата
-  CCS_PROT_DI_1_TIME,                                       //!< Текущий параметр Фиксированное время
-  CCS_PROT_DI_1_RESTART_COUNT,                              //!< Текущий параметр Количество АПВ
-  CCS_PROT_DI_1_RESTART_FIRST_TIME,                         //!< Текущий параметр Время первого АПВ
-  CCS_PROT_DI_2_MODE,                                       //!< Защита дискретный вход 2
-  CCS_PROT_DI_2_PREVENT,                                    //!< Параметр запрещающий запуск
-  CCS_PROT_DI_2_ACTIV_DELAY,                                //!< Задержка активации уставка
-  CCS_PROT_DI_2_TRIP_DELAY,                                 //!< Задержка срабатывания уставка
-  CCS_PROT_DI_2_RESTART_DELAY,                              //!< Задержка АПВ уставка
-  CCS_PROT_DI_2_RESTART_LIMIT,                              //!< Количество АПВ уставка
-  CCS_PROT_DI_2_RESTART_RESET,                              //!< Автосброс счетчика АПВ
-  CCS_PROT_DI_2_TRIP_SETPOINT,                              //!< Уставка срабатывания защиты
-  CCS_PROT_DI_2_RESTART_SETPOINT,                           //!< Условие АПВ уставка
-  CCS_PROT_DI_2_PARAMETER,                                  //!< Уставка параметр защиты
-  CCS_PROT_DI_2_RESTART_FLAG,                               //!< Текущий параметр Флаг что защита в АПВ
-  CCS_PROT_DI_2_STATE,                                      //!< Текущий параметр состояние автомата
-  CCS_PROT_DI_2_TIME,                                       //!< Текущий параметр Фиксированное время
-  CCS_PROT_DI_2_RESTART_COUNT,                              //!< Текущий параметр Количество АПВ
-  CCS_PROT_DI_2_RESTART_FIRST_TIME,                         //!< Текущий параметр Время первого АПВ
-  CCS_PROT_DI_3_MODE,                                       //!< Защита дискретный вход 3
-  CCS_PROT_DI_3_PREVENT,                                    //!< Параметр запрещающий запуск
-  CCS_PROT_DI_3_ACTIV_DELAY,                                //!< Задержка активации уставка
-  CCS_PROT_DI_3_TRIP_DELAY,                                 //!< Задержка срабатывания уставка
-  CCS_PROT_DI_3_RESTART_DELAY,                              //!< Задержка АПВ уставка
-  CCS_PROT_DI_3_RESTART_LIMIT,                              //!< Количество АПВ уставка
-  CCS_PROT_DI_3_RESTART_RESET,                              //!< Автосброс счетчика АПВ
-  CCS_PROT_DI_3_TRIP_SETPOINT,                              //!< Уставка срабатывания защиты
-  CCS_PROT_DI_3_RESTART_SETPOINT,                           //!< Условие АПВ уставка
-  CCS_PROT_DI_3_PARAMETER,                                  //!< Уставка параметр защиты
-  CCS_PROT_DI_3_RESTART_FLAG,                               //!< Текущий параметр Флаг что защита в АПВ
-  CCS_PROT_DI_3_STATE,                                      //!< Текущий параметр состояние автомата
-  CCS_PROT_DI_3_TIME,                                       //!< Текущий параметр Фиксированное время
-  CCS_PROT_DI_3_RESTART_COUNT,                              //!< Текущий параметр Количество АПВ
-  CCS_PROT_DI_3_RESTART_FIRST_TIME,                         //!< Текущий параметр Время первого АПВ
-  CCS_PROT_DI_4_MODE,                                       //!< Защита дискретный вход 4
-  CCS_PROT_DI_4_PREVENT,                                    //!< Параметр запрещающий запуск
-  CCS_PROT_DI_4_ACTIV_DELAY,                                //!< Задержка активации уставка
-  CCS_PROT_DI_4_TRIP_DELAY,                                 //!< Задержка срабатывания уставка
-  CCS_PROT_DI_4_RESTART_DELAY,                              //!< Задержка АПВ уставка
-  CCS_PROT_DI_4_RESTART_LIMIT,                              //!< Количество АПВ уставка
-  CCS_PROT_DI_4_RESTART_RESET,                              //!< Автосброс счетчика АПВ
-  CCS_PROT_DI_4_TRIP_SETPOINT,                              //!< Уставка срабатывания защиты
-  CCS_PROT_DI_4_RESTART_SETPOINT,                           //!< Условие АПВ уставка
-  CCS_PROT_DI_4_PARAMETER,                                  //!< Уставка параметр защиты
-  CCS_PROT_DI_4_RESTART_FLAG,                               //!< Текущий параметр Флаг что защита в АПВ
-  CCS_PROT_DI_4_STATE,                                      //!< Текущий параметр состояние автомата
-  CCS_PROT_DI_4_TIME,                                       //!< Текущий параметр Фиксированное время
-  CCS_PROT_DI_4_RESTART_COUNT,                              //!< Текущий параметр Количество АПВ
-  CCS_PROT_DI_4_RESTART_FIRST_TIME,                         //!< Текущий параметр Время первого АПВ
-  CCS_PROT_OTHER_LIMIT_RESTART_MODE,                        //!< Защита "Превышения числа пусков"
-  CCS_PROT_OTHER_LIMIT_RESTART_PREVENT,                     //!< 
-  CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY,                 //!< 
-  CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY,                  //!< 
-  CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY,               //!< 
-  CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT,               //!< 
-  CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET,               //!< 
-  CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT,               //!< 
-  CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT,            //!< 
-  CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER,                   //!< 
-  CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG,                //!< 
-  CCS_PROT_OTHER_LIMIT_RESTART_STATE,                       //!< 
-  CCS_PROT_OTHER_LIMIT_RESTART_TIME,                        //!< 
-  CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT,               //!< Текущий параметр Время первого АПВ
-  CCS_PROT_OTHER_LOCK_DOOR_MODE,                            //!< Защита "Блокировка силового отсека"
-  CCS_PROT_OTHER_LOCK_DOOR_PREVENT,                         //!< Параметр запрещающий запуск
-  CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY,                     //!< Задержка активации уставка
-  CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY,                      //!< Задержка срабатывания уставка
-  CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY,                   //!< Задержка АПВ уставка
-  CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT,                   //!< Количество АПВ уставка
-  CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET,                   //!< Автосброс счетчика АПВ
-  CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT,                   //!< Уставка срабатывания защиты
-  CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT,                //!< Условие АПВ уставка
-  CCS_PROT_OTHER_LOCK_DOOR_PARAMETER,                       //!< Уставка параметр защиты
-  CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG,                    //!< Уставка параметр защиты
-  CCS_PROT_OTHER_LOCK_DOOR_STATE,                           //!< Текущий параметр состояние автомата
-  CCS_PROT_OTHER_LOCK_DOOR_TIME,                            //!< Текущий параметр Фиксированное время
-  CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT,                   //!< Текущий параметр Количество АПВ
-  CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME,              //!< Текущий параметр Время первого АПВ
-  CCS_PROT_OTHER_VSD_MODE,                                  //!< Защита "Аппаратные защиты ЧРП"
-  CCS_PROT_OTHER_VSD_PREVENT,                               //!< Параметр запрещающий запуск
-  CCS_PROT_OTHER_VSD_ACTIV_DELAY,                           //!< Задержка активации уставка
-  CCS_PROT_OTHER_VSD_TRIP_DELAY,                            //!< Задержка срабатывания уставка
-  CCS_PROT_OTHER_VSD_RESTART_DELAY,                         //!< Задержка АПВ уставка
-  CCS_PROT_OTHER_VSD_RESTART_LIMIT,                         //!< Количество АПВ уставка
-  CCS_PROT_OTHER_VSD_RESTART_RESET,                         //!< Автосброс счетчика АПВ
-  CCS_PROT_OTHER_VSD_TRIP_SETPOINT,                         //!< Уставка срабатывания защиты
-  CCS_PROT_OTHER_VSD_RESTART_SETPOINT,                      //!< Условие АПВ уставка
-  CCS_PROT_OTHER_VSD_PARAMETER,                             //!< Уставка параметр защиты
-  CCS_PROT_OTHER_VSD_RESTART_FLAG,                          //!< Уставка параметр защиты
-  CCS_PROT_OTHER_VSD_STATE,                                 //!< Текущий параметр состояние автомата
-  CCS_PROT_OTHER_VSD_TIME,                                  //!< Текущий параметр Фиксированное время
-  CCS_PROT_OTHER_VSD_RESTART_COUNT,                         //!< Текущий параметр Количество АПВ
-  CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME,                    //!< Текущий параметр Время первого АПВ
-  CCS_PROT_OTHER_IMB_MODE,                                  //!< Защита "Контроль УКИ"
-  CCS_PROT_OTHER_IMB_PREVENT,                               //!< Параметр запрещающий запуск
-  CCS_PROT_OTHER_IMB_ACTIV_DELAY,                           //!< Задержка активации уставка
-  CCS_PROT_OTHER_IMB_TRIP_DELAY,                            //!< Задержка срабатывания уставка
-  CCS_PROT_OTHER_IMB_RESTART_DELAY,                         //!< Задержка АПВ уставка
-  CCS_PROT_OTHER_IMB_RESTART_LIMIT,                         //!< Количество АПВ уставка
-  CCS_PROT_OTHER_IMB_RESTART_RESET,                         //!< Автосброс счетчика АПВ
-  CCS_PROT_OTHER_IMB_TRIP_SETPOINT,                         //!< Уставка срабатывания защиты
-  CCS_PROT_OTHER_IMB_RESTART_SETPOINT,                      //!< Условие АПВ уставка
-  CCS_PROT_OTHER_IMB_PARAMETER,                             //!< Уставка параметр защиты
-  CCS_PROT_OTHER_IMB_RESTART_FLAG,                          //!< Уставка параметр защиты
-  CCS_PROT_OTHER_IMB_STATE,                                 //!< Текущий параметр состояние автомата
-  CCS_PROT_OTHER_IMB_TIME,                                  //!< Текущий параметр Фиксированное время
-  CCS_PROT_OTHER_IMB_RESTART_COUNT,                         //!< Текущий параметр Количество АПВ
-  CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME,                    //!< Текущий параметр Время первого АПВ
-  CCS_RGM_PERIODIC_MODE,                                    //!< Режим периодический
-  CCS_RGM_PERIODIC_STATE,                                   //!< 
-  CCS_RGM_PERIODIC_RUN_PERIOD,                              //!< 
-  CCS_RGM_PERIODIC_STOP_PERIOD,                             //!< 
-  CCS_RGM_PERIODIC_RUN_BEGIN_TIME,                          //!< 
-  CCS_RGM_PERIODIC_RUN_TIME_TO_END,                         //!< 
-  CCS_RGM_PERIODIC_STOP_BEGIN_TIME,                         //!< 
-  CCS_RGM_PERIODIC_STOP_TIME_TO_END,                        //!< 
-  CCS_RGM_ALTERNATION_FREQ_MODE,                            //!< Режим чередования частот
-  CCS_RGM_ALTERNATION_FREQ_FREQ_1,                          //!< Режим чередования частот частота 1
-  CCS_RGM_ALTERNATION_FREQ_TIMER_1,                         //!< Режим чередования частот время работы на частоте 1
-  CCS_RGM_ALTERNATION_FREQ_TIMER_1_END,                     //!< 
-  CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1,                     //!< Режим чередования частот уставка ЗСП
-  CCS_RGM_ALTERNATION_FREQ_FREQ_2,                          //!< Режим чередования частот частота 2
-  CCS_RGM_ALTERNATION_FREQ_TIMER_2,                         //!< Режим чередования частот время работы на частоте 2
-  CCS_RGM_ALTERNATION_FREQ_TIMER_2_END,                     //!< 
-  CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2,                     //!< Режим чередования частот уставка ЗСП 2
-  CCS_RGM_CHANGE_FREQ_MODE,                                 //!< Режим программного изменения частоты
-  CCS_RGM_CHANGE_FREQ_BEGIN_FREQ,                           //!< Начальная частота
-  CCS_RGM_CHANGE_FREQ_END_FREQ,                             //!< Конечная частота
-  CCS_RGM_CHANGE_FREQ_PERIOD,                               //!< Время вывода на режим
-  CCS_RGM_CHANGE_FREQ_BEGIN_TIME,                           //!< Зафиксированное время начала отсчета текущего шага частоты
-  CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP,                      //!< Период шага частоты
-  CCS_RGM_MODE_DATE_TIME,                                   //!< Параметры ВНР
-  CCS_RGM_MODE_CURRENT,                                     //!< 
-  CCS_RGM_MODE_VOLTAGE,                                     //!< 
-  CCS_RGM_MODE_LOAD,                                        //!< 
-  CCS_RGM_MAINTENANCE_PARAM_MODE,                           //!< Режим поддержания параметра включение
-  CCS_RGM_MAINTENANCE_PARAM,                                //!< Режим поддержания параметра параметра
-  CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE,                     //!< Режим поддержания параметра зависимость
-  CCS_RGM_MAINTENANCE_PARAM_SETPOINT,                       //!< Режим поддержания параметра поддержка значения
-  CCS_RGM_MAINTENANCE_PARAM_PERIOD,                         //!< Режим поддержания параметра период регулирования
-  CCS_RGM_MAINTENANCE_PARAM_PROP,                           //!< Режим поддержания параметра пропорциональный коэффициент
-  CCS_RGM_MAINTENANCE_PARAM_INT,                            //!< Режим поддержания параметра интегральный коэффициент
-  CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ,                       //!< Режим поддержания параметра мин рабочая частота
-  CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ,                       //!< Режим поддержания параметра макс рабочая частота
-  CCS_RGM_JARRING_MODE,                                     //!< Режим встряхивания
-  CCS_RGM_JARRING_PERIOD,                                   //!< Период экскурсий частоты режима встряхивания.
-  CCS_RGM_JARRING_UPDFREQ,                                  //!< Величина прибавки частоты вращения выше уставки в режиме встряхивания
-  CCS_RGM_JARRING_UPTIME,                                   //!< Время прибавки частоты вращения выше уставки в режиме встряхивания
-  CCS_RGM_JARRING_DOWNDFREQ,                                //!< Величина уменьшения частоты вращения ниже уставки в режиме встряхивания
-  CCS_RGM_JARRING_DOWNTIME,                                 //!< Время уменьшения частоты вращения ниже уставки в режиме встряхивания
-  CCS_RGM_HEAT_CABLE_MODE,                                  //!< Режим Учёт нагрева кабеля
-  CCS_RGM_HEAT_CABLE_RESISTANCE_20,                         //!< Режим Учёт нагрева кабеля сопротивление при 20с
-  CCS_RGM_HEAT_CABLE_RESISTANCE_80,                         //!< Режим Учёт нагрева кабеля сопротивление при 80с
-  CCS_RGM_HEAT_CABLE_MODE_CURRENT,                          //!< Режим Учёт нагрева кабеля номинальный ток кабеля
-  CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION,                   //!< Режим Учёт нагрева кабеля время нагрева
-  CCS_RGM_OPTIM_VOLTAGE_MODE,                               //!< Режим оптимизации напряжения вкл
-  CCS_RGM_OPTIM_VOLTAGE_SCALE,                              //!< Режим оптимизации напряжения диапазон
-  CCS_RGM_OPTIM_VOLTAGE_STEP,                               //!< Режим оптимизации напряжения шаг
-  CCS_RGM_OPTIM_VOLTAGE_DELAY_REACTION,                     //!< Режим оптимизации напряжения первый цикл после запуска
-  CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART,                      //!< Режим оптимизации напряжения периодичность оптимизации
-  CCS_RGM_PUMP_GAS_MODE,                                    //!< Режим прокачки газа
-  CCS_RGM_PUMP_GAS_SETPOINT,                                //!< Режим прокачки газа
-  CCS_RGM_PUMP_GAS_DELAY_REACTION,                          //!< Режим прокачки газа
-  CCS_RGM_PUMP_GAS_LIMIT_RESTART,                           //!< Режим прокачки газа
-  CCS_RGM_CURRENT_LIMIT_MODE,                               //!< Режим ограничения тока
-  CCS_RGM_CURRENT_LIMIT_SETPOINT,                           //!< Режим ограничения тока уставка
-  CCS_RGM_CURRENT_LIMIT_STEPDOWN,                           //!< Режим ограничения тока шаг снижения частоты
-  CCS_RGM_CURRENT_LIMIT_DELAY_REACTION,                     //!< Режим ограничения тока задержка срабатывания
-  CCS_RGM_CURRENT_LIMIT_DELAY_RESTART,                      //!< Режим ограничения тока задержка АПВ
-  CCS_COEF_VOLTAGE_IN_A,                                    //!< Коэффициент корректировки входного напряжения
-  CCS_COEF_VOLTAGE_IN_B,                                    //!< 
-  CCS_COEF_VOLTAGE_IN_C,                                    //!< 
-  CCS_COEF_OUT_CURRENT_1,                                   //!< Коэффициент корректировки выходного тока фаза U
-  CCS_COEF_OUT_CURRENT_2,                                   //!< Коэффициент корректировки выходного тока фаза V
-  CCS_COEF_OUT_CURRENT_3,                                   //!< Коэффициент корректировки выходного тока фаза W
-  CCS_COEF_RESISTANCE_ISOLATION,                            //!< Коэффициент корректировки сопротивления изоляции
-  CCS_NUMBER_CDNG,                                          //!< Номер ЦДНГ
-  CCS_NUMBER_BUSH,                                          //!< Номер куста
-  CCS_NUMBER_WELL,                                          //!< Номер скважины
-  CCS_COUNT_START,                                          //!< Количество пусков
-  CCS_PROT_OVERLOAD_COUNT_STOP,                             //!< Количество отключений по перезрузу
-  CCS_PROT_UNDERLOAD_COUNT_STOP,                            //!< Количество отключений по недогрузу
-  CCS_PROT_OTHER_COUNT_STOP,                                //!< Количество отключений по другим защитам
-  CCS_PROT_VOLTAGE_COUNT_RESTART,                           //!< Количество АПВ после остановов по напряжению
-  CCS_PROT_OVERLOAD_COUNT_RESTART,                          //!< Количество АПВ после остановов по перегрузу
-  CCS_PROT_UNDERLOAD_COUNT_RESTART,                         //!< Количество АПВ после остановов по недогрузу
-  CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART,           //!< Количество АПВ после остановов по дисбалансу токов
-  CCS_GENERAL_RUN_DATE_TIME,                                //!< Общее время работы СУ
-  CCS_GENERAL_STOP_DATE_TIME,                               //!< Общее время простоя СУ
-  CCS_RUN_TIME,                                             //!< Текущая наработка
-  CCS_STOP_TIME,                                            //!< Текущий простой
-  CCS_RGM_TIMER,                                            //!< Время до изменения режима
-  CCS_RESTART_TIMER,                                        //!< Время до запуска
-  CCS_LAST_RUN_DATE_TIME,                                   //!< Дата время последнего включения
-  CCS_LAST_RUN_REASON,                                      //!< Причина последнего пуска
-  CCS_LAST_STOP_DATE_TIME,                                  //!< Дата время последнего отключения
-  CCS_LAST_STOP_REASON,                                     //!< Причина носледнего отключения
-  CCS_PREVIEW_FREQUENCY_DATE_TIME,                          //!< Дата время изменения частоты
-  CCS_PREVIEW_FREQUENCY,                                    //!< Предпоследняя частота
-  CCS_TYPE_CCS,                                             //!< Тип КСУ
-  CCS_CODE_PRODUCTION_CCS,                                  //!< Код производителя КСУ
-  CCS_NUM_PRODUCTION_CCS,                                   //!< Заводской номер КСУ
-  CCS_VERSION_SW_CCS,                                       //!< Версия ПО КСУ
-  CCS_VERSION_SW_MS,                                        //!< Версия ПО МС
-  CCS_VERSION_SW_VSD,                                       //!< Версия ПО ПЧ
-  CCS_DATE_PRODUCTION_CCS,                                  //!< Дата изготовления КСУ
-  CCS_DATE_INSTALL_SW_CCS,                                  //!< Дата установки ПО КСУ
-  CCS_DATE_CREATE_SW_CCS,                                   //!< ДАта генерации ПО КСУ
-  CCS_DATE_INSTALL_SW_VSD,                                  //!< Дата установки ПО ПЧ
-  CCS_TYPE_SU,                                              //!< Тип СУ
-  CCS_CODE_PRODUCTION_SU,                                   //!< Код завода изготовителя СУ
-  CCS_NUM_PRODUCTION_SU,                                    //!< Заводской номер СУ
-  CCS_DATE_PRODUCTION_SU,                                   //!< Дата изготовления СУ
-  CCS_NOTE_1,                                               //!< Примечание 1
-  CCS_NOTE_2,                                               //!< Примечание 2
-  CCS_NOTE_3,                                               //!< Примечание 3
-  CCS_NOTE_4,                                               //!< Примечание 4
-  CCS_NOTE_5,                                               //!< Примечание 5
-  CCS_NOTE_6,                                               //!< Примечание 6
-  CCS_NOTE_7,                                               //!< Примечание 7
-  CCS_NOTE_8,                                               //!< Примечание 8
-  CCS_NOTE_9,                                               //!< Примечание 9
-  CCS_NOTE_10,                                              //!< Примечание 10
-  CCS_DATE_TIME,                                            //!< Дата время в формате POSIX
-  CCS_DATE_TIME_YEAR,                                       //!< Дата время год
-  CCS_DATE_TIME_MONTH,                                      //!< Дата время месяц
-  CCS_DATE_TIME_DAY,                                        //!< Дата время дни
-  CCS_DATE_TIME_HOUR,                                       //!< Дата время часы
-  CCS_DATE_TIME_MIN,                                        //!< Дата время минуты
-  CCS_DATE_TIME_SEC,                                        //!< Дата время секунды
-  CCS_DATE_TIME_MS,                                         //!< Дата время мс
-  CCS_LANGUAGE,                                             //!< Язык интерфейса
-  CCS_PASSWORD_ENEBLE,                                      //!< Включение системы паролей
-  CCS_PASSWORD_LEVEL,                                       //!< Текущий уровень доступа
-  CCS_PASSWORD_LEVEL_1,                                     //!< Пароль 1 уровня
-  CCS_PASSWORD_LEVEL_2,                                     //!< Пароль 2 уровня
-  CCS_PASSWORD_LEVEL_3,                                     //!< Пароль 3 уровня
-  CCS_PASSWORD_LEVEL_4,                                     //!< Пароль 4 уровня
-  CCS_PASSWORD_LEVEL_5,                                     //!< Пароль 5 уровня
-  CCS_SCADA_TYPE,                                           //!< Протокол телемеханики
-  CCS_SCADA_CODE,                                           //!< Версия протокола телемеханики
-  CCS_SCADA_ADDRESS,                                        //!< Адресу СУ в телемеханике
-  CCS_SCADA_BYTERATE,                                       //!< Скорость опроса в телемеханике
-  CCS_SCADA_PARITY,                                         //!< Чётность в телемеханике
-  CCS_SCADA_STOPBIT,                                        //!< Количество стоп-бит в телемеханике
-  CCS_SCADA_DELAY,                                          //!< Задержка ответа в телемеханкие
-  CCS_UNIT_PRESSURE,                                        //!< Единицы измерения давления
-  CCS_UNIT_TEMPERATURE,                                     //!< Единицы измерения давления
-  CCS_UNIT_VIBRATION,                                       //!< Единицы измерения вибрации
-  CCS_UNIT_LENGHT,                                          //!< Единицы измерения длины
-  CCS_UNIT_FLOW,                                            //!< Единицы измерения расхода
-  CCS_UNIT_PLACE,                                           //!< Единицы измерения площади
-  CCS_VSD_CONDITION,                                        //!< Состояние ЧРП
-  CCS_CMD_STOP,                                             //!< Команда остановки
-  CCS_CMD_START,                                            //!< Команда запуска
-  CCS_CMD_LOG_COPY,                                         //!< 
-  CCS_CMD_LOG_DELETE,                                       //!< 
-  CCS_CMD_SERVICE_LOG_DELETE,                               //!< 
-  CCS_CMD_DHS_TYPE_AUTO,                                    //!< 
-  CCS_CMD_PROT_ALL_UNBLOCKING,                              //!< 
-  CCS_CMD_PROT_ALL_SETPOINT_RESET,                          //!< 
-  CCS_CMD_PROT_SUPPLY_UNBLOCKING,                           //!< 
-  CCS_CMD_PROT_SUPPLY_SETPOINT_RESET,                       //!< 
-  CCS_CMD_PROT_SUPPLY_OVERVOLTAGE_SETPOINT_RESET,           //!< 
-  CCS_CMD_PROT_SUPPLY_UNDERVOLTAGE_SETPOINT_RESET,          //!< 
-  CCS_CMD_PROT_SUPPLY_IMBALANCE_VOLTAGE_SETPOINT_RESET,     //!< 
-  CCS_CMD_PROT_SUPPLY_IMBALANCE_CURRENT_SETPOINT_RESET,     //!< 
-  CCS_CMD_PROT_SUPPLY_PHASE_ROTATION_SETPOINT_RESET,        //!< 
-  CCS_CMD_PROT_MOTOR_UNBLOCKING,                            //!< 
-  CCS_CMD_PROT_MOTOR_SETPOINT_RESET,                        //!< 
-  CCS_CMD_PROT_MOTOR_OVERLOAD_SETPOINT_RESET,               //!< 
-  CCS_CMD_PROT_MOTOR_UNDERLOAD_SETPOINT_RESET,              //!< 
-  CCS_CMD_PROT_MOTOR_IMBALANCE_CURRENT_SETPOINT_RESET,      //!< 
-  CCS_CMD_PROT_MOTOR_ASYNC_SETPOINT_RESET,                  //!< 
-  CCS_CMD_PROT_MOTOR_OUT_OF_SYNC_SETPOINT_RESET,            //!< 
-  CCS_CMD_PROT_DHS_UNBLOCKING,                              //!< 
-  CCS_CMD_PROT_DHS_SETPOINT_RESET,                          //!< 
-  CCS_CMD_PROT_DHS_PRESSURE_INTAKE_SETPOINT_RESET,          //!< 
-  CCS_CMD_PROT_DHS_TEMPERATURE_MOTOR_SETPOINT_RESET,        //!< 
-  CCS_CMD_PROT_DHS_RESISTANCE_SETPOINT_RESET,               //!< 
-  CCS_CMD_PROT_DHS_VIBRATION_SETPOINT_RESET,                //!< 
-  CCS_CMD_PROT_AI_SETPOINT_RESET,                           //!< 
-  CCS_CMD_PROT_AI_1_SETPOINT_RESET,                         //!< 
-  CCS_CMD_PROT_AI_2_SETPOINT_RESET,                         //!< 
-  CCS_CMD_PROT_AI_3_SETPOINT_RESET,                         //!< 
-  CCS_CMD_PROT_AI_4_SETPOINT_RESET,                         //!< 
-  CCS_CMD_PROT_DI_SETPOINT_RESET,                           //!< 
-  CCS_CMD_PROT_DI_1_SETPOINT_RESET,                         //!< 
-  CCS_CMD_PROT_DI_2_SETPOINT_RESET,                         //!< 
-  CCS_CMD_PROT_DI_3_SETPOINT_RESET,                         //!< 
-  CCS_CMD_PROT_DI_4_SETPOINT_RESET,                         //!< 
-  CCS_CMD_RGM_MODE_SAVE,                                    //!< 
-  CCS_CMD_COUNTER_ALL_RESET,                                //!< 
-  CCS_VOLTAGE_TRANS_OUT,                                    //!< 
-  CCS_CONDITION_FLAG,                                       //!< 
-  CCS_LAST_RUN_REASON_TMP,                                  //!< Причина последнего пуска - регистр временного хранения значения
-  CCS_PROT_PREVENT,                                         //!< Наличие хотя бы одного запрещающего параметра
-  CCS_TIMER_DIFFERENT_START,                                //!< Уставка ВРП (время разновременного пуска)
-  CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY,           //!< Защита ЗСП: Прогрессивная задержка АПВ
-  CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_COUNT,           //!< Защита ЗСП: Счётчик АПВ для вычисления прогрессивной задержки
-  CCS_PROT_SUPPLY_OVERVOLTAGE_BLOCK_FLAG,                   //!< 
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_BLOCK_FLAG,                  //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_BLOCK_FLAG,             //!< 
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_BLOCK_FLAG,             //!< 
-  CCS_PROT_SUPPLY_PHASE_ROTATION_BLOCK_FLAG,                //!< 
-  CCS_PROT_MOTOR_OVERLOAD_BLOCK_FLAG,                       //!< 
-  CCS_PROT_MOTOR_UNDERLOAD_BLOCK_FLAG,                      //!< 
-  CCS_PROT_MOTOR_CURRENT_BLOCK_FLAG,                        //!< 
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_BLOCK_FLAG,              //!< 
-  CCS_PROT_MOTOR_ASYNC_BLOCK_FLAG,                          //!< 
-  CCS_PROT_MOTOR_OUT_OF_SYNC_BLOCK_FLAG,                    //!< 
-  CCS_PROT_DHS_PRESSURE_INTAKE_BLOCK_FLAG,                  //!< 
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_BLOCK_FLAG,                //!< 
-  CCS_PROT_DHS_RESISTANCE_BLOCK_FLAG,                       //!< 
-  CCS_PROT_DHS_VIBRATION_BLOCK_FLAG,                        //!< 
-  CCS_PROT_AI_1_BLOCK_FLAG,                                 //!< 
-  CCS_PROT_AI_2_BLOCK_FLAG,                                 //!< 
-  CCS_PROT_AI_3_BLOCK_FLAG,                                 //!< 
-  CCS_PROT_AI_4_BLOCK_FLAG,                                 //!< 
-  CCS_PROT_DI_1_BLOCK_FLAG,                                 //!< 
-  CCS_PROT_DI_2_BLOCK_FLAG,                                 //!< 
-  CCS_PROT_DI_3_BLOCK_FLAG,                                 //!< 
-  CCS_PROT_DI_4_BLOCK_FLAG,                                 //!< 
-  CCS_PROT_OTHER_LIMIT_RESTART_BLOCK_FLAG,                  //!< 
-  CCS_PROT_OTHER_LOCK_DOOR_BLOCK_FLAG,                      //!< 
-  CCS_PROT_OTHER_VSD_BLOCK_FLAG,                            //!< 
-  CCS_PROT_OTHER_IMB_BLOCK_FLAG,                            //!< 
-  CCS_GENERAL_CONDITION,                                    //!< Общее состояние
-  CCS_COEF_TRANSFORMATION,                                  //!< Коэффициент трансформации
-  CCS_LAST_STOP_REASON_TMP,                                 //!< Причина последнего останова - регистр временного хранения значения
-  CCS_WORK_WITH_LOW_RESISTANCE,                             //!< Работа с пониженным сопротивлением изоляции
-  CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_FLAG,            //!< Защита ЗСП: Флаг использования прогрессивной задержки АПВ
-  CCS_RGM_CHANGE_FREQ_STATE,                                //!< Состояние автомата режима "Программного изменения частоты"
-  CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD,                      //!< Начальная уставка ЗСП режима "Программного изменения частоты"
-  CCS_RGM_RUN_PUSH_MODE,                                    //!< Действие режима пуска "Толчковый"
-  CCS_RGM_RUN_PUSH_STATE,                                   //!< Состояние автомата режима пуска "Толчковый"
-  CCS_RGM_RUN_PUSH_FREQ,                                    //!< 
-  CCS_RGM_RUN_PUSH_TIME,                                    //!< 
-  CCS_RGM_RUN_PUSH_VOLTAGE,                                 //!< 
-  CCS_RGM_RUN_PUSH_QUANTITY,                                //!< 
-  CCS_END,                                                  //!< Последний параметр
-  VSD_BEGIN=10000,                                          //!< Первый параметр ЧРП
-  VSD_FREQUENCY_NOW,                                        //!< Выходная частота ПЧ
-  VSD_FREQUENCY,                                            //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
-  VSD_SPEED_RPM_NOW,                                        //!< Обороты двигателя
-  VSD_OUT_VOLTAGE_MOTOR,                                    //!< Напряжение на выходе ПЧ
-  VSD_MOTOR_TYPE,                                           //!< Конструкция двигателя Danfoss 1-10 Используется в интерфейсе
-  VSD_MOTOR_CONTROL,                                        //!< Принцип управления двигателем Danfoss 1-01 Не используется в проекте, только при конфигурировании
-  VSD_ROTATION,                                             //!< Направления вращения Danfoss 4-10 Не используется в проекте, только при конфигурировании
-  VSD_CURRENT_OUT_PHASE_1,                                  //!< Выходной ток ПЧ фаза U
-  VSD_CURRENT_OUT_PHASE_2,                                  //!< Выходной ток ПЧ фаза V
-  VSD_CURRENT_OUT_PHASE_3,                                  //!< Выходной ток ПЧ фаза W
-  VSD_CURRENT_DC,                                           //!< Ток звена постоянного тока
-  VSD_VOLTAGE_DC,                                           //!< Напряжение цепи пост.тока Danfoss 16-30 Используется в проекте Novomet 0х008B IREG_UD
-  VSD_POWER_ACTIVE,                                         //!< Активная мощность Danfoss 16-10 Используется в проекте Novomet 0х0071 IREG_POUT
-  VSD_POWER_FULL,                                           //!< Полная мощность
-  VSD_MOTOR_POWER,                                          //!< Мощность двигателя Danfoss 1-20 Используется в проекте, интерфейс
-  VSD_MOTOR_VOLTAGE,                                        //!< Напряжение двигателя Danfoss 1-22 Используется в проекте, интерфейс Novomet 0х0045 IREG_MOTOR_U_MAх
-  VSD_MOTOR_CURRENT,                                        //!< Номинальный ток двигателя Danfoss 1-24 Используется в проекте, интерфейс Novomet 0х0044 IREG_MOTOR_I_MAх
-  VSD_MOTOR_SPEED,                                          //!< Скорость двигателя Danfoss 1-25 Используется в проекте, интерфейс
-  VSD_MOTOR_FREQUENCY,                                      //!< Частота двигателя Danfoss 1-23 Используется в проекте, интерфейс Novomet 0х0043 IREG_MOTOR_F_MAх
-  VSD_MOTOR_COS_PHI,                                        //!< Номинальный косинус Фи Danfoss 14-43 Используется в проекте
-  VSD_D_AXIS_INDUNSTANCE,                                   //!< Индуктивности по оси D Danfoss 1-37 Используется в проекте
-  VSD_BACK_EMF,                                             //!< Противо эдс Danfoss 1-40 Используется в проекте
-  VSD_UF_UHH,                                               //!< Ток холостого хода
-  VSD_MOTOR_POLES,                                          //!< Число полюсов двигателя Danfoss 1-39 Используется в проекте
-  VSD_LOW_LIM_SPEED_MOTOR,                                  //!< Нижний предел скорости Danfoss 4-12 Гц Используется в проекте
-  VSD_HIGH_LIM_SPEED_MOTOR,                                 //!< Верхний передел скорости Danfoss 4-14 Используется в проекте Novomet 0х0037 IREG_FREQ_REF_MAх
-  VSD_T_SPEEDUP,                                            //!< Период нарастания частоты Novomet 0х0038 IREG_T_SPEEDUP
-  VSD_T_SPEEDDOWN,                                          //!< Период Период снижения частоты Novomet 0х0039 IREG_T_SPEEDDOWN
-  VSD_UF_TYPE,                                              //!< U/f характеристика
-  VSD_UF_CHARACTERISTIC_U_1,                                //!< Первая точка напряжения U/f характеристика
-  VSD_UF_CHARACTERISTIC_F_1,                                //!< Первая точка частоты U/f характеристика
-  VSD_UF_CHARACTERISTIC_U_2,                                //!< Вторая точка напряжения U/f характеристика
-  VSD_UF_CHARACTERISTIC_F_2,                                //!< Вторая точка частоты U/f характеристика
-  VSD_UF_CHARACTERISTIC_U_3,                                //!< Третья точка напряжения U/f характеристика
-  VSD_UF_CHARACTERISTIC_F_3,                                //!< Третья точка частоты U/f характеристика
-  VSD_UF_CHARACTERISTIC_U_4,                                //!< Четвертая точка напряжения U/f характеристика
-  VSD_UF_CHARACTERISTIC_F_4,                                //!< Четвертая точка частоты U/f характеристика
-  VSD_UF_CHARACTERISTIC_U_5,                                //!< Пятая точка напряжения U/f характеристика
-  VSD_UF_CHARACTERISTIC_F_5,                                //!< Пятая точка частоты U/f характеристика
-  VSD_UF_CHARACTERISTIC_U_6,                                //!< Шестая точка напряжения U/f характеристика
-  VSD_UF_CHARACTERISTIC_F_6,                                //!< Шестая точка частоты U/f характеристика
-  VSD_THYR_ANGLE_REFERENCE,                                 //!< Угол управления тиристорами;
-  VSD_THYR_STATUS,                                          //!< Статус платы выпрямителя.
-  VSD_THYR_CONTROL,                                         //!< Регистр управления тиристорами;
-  VSD_THYR_VOLT_SHORT_CUILT,                                //!< Напряжение защиты от КЗ инвертора.
-  VSD_INDICATOR_STATUS,                                     //!< Статус индикатора
-  VSD_DOUTPUTS,                                             //!< Маска состояния цифровых выходов.
-  VSD_DINPUTS,                                              //!< Маска состояния цифровых входов.
-  VSD_DOUTPUTS_ENABLE,                                      //!< Маска включения цифровых выходов.
-  VSD_DOUTPUTS_DISABLE,                                     //!< Маска выключения цифровых выходов.
-  VSD_VENT_ON_TEMPERATURE,                                  //!< Температура включения главного вентилятора.
-  VSD_VENT_OFF_TEMPERATURE,                                 //!< Температура выключения главного вентилятора.
-  VSD_VENT_PERIOD,                                          //!< Период проверки температуры радиаторов
-  VSD_VENT_TEMPERATURE_FAULT,                               //!< Температура срабатывания тепловой защиты радиаторов
-  VSD_INVERTOR_CONTROL,                                     //!< Флаговый регистр управления
-  VSD_INVERTOR_STATUS,                                      //!< Регистр состояния инвертора
-  VSD_FREQUENCY_ERROR,                                      //!< Уставка частоты "тревожного" режима
-  VSD_T_ILIMIT_SPEEDDOWN,                                   //!< Период снижения частоты при токоограничении.
-  VSD_T_ULOW_SPEEDDOWN,                                     //!< Период снижения частоты при нехватке напряжения на инверторе
-  VSD_CURRENT_REGULATOR,                                    //!< Тип текущего алгоритма управления (регулятора)
-  VSD_UF_U_FORCE,                                           //!< Напряжение форсировки
-  VSD_UF_F_FORCE,                                           //!< Частота форсировки
-  VSD_IFB_COMP,                                             //!< Постоянная времени компенсации индуктивности
-  VSD_VUOUT_PROP,                                           //!< Пропорциональный коэффициент ОС частотного контура регулирования
-  VSD_ILIMIT,                                               //!< Максимальный порог ограничения тока на выходе ПЧ, абс. вел
-  VSD_VUOUT_INTEG,                                          //!< Интегральный коэффициент ОС частотного контура регулирования
-  VSD_VTOUF_INTEG,                                          //!< Коэффициент постоянной времени обратного перехода с вектора на U/f
-  VSD_LOUT,                                                 //!< Суммарная индуктивность на выходе ПЧ, фазное значение
-  VSD_SW_STARTUP_FREQUENCY,                                 //!< Режим раскачки: частота
-  VSD_SW_STARTUP_ANGLE_OSC,                                 //!< Режим раскачки: угол качания
-  VSD_SW_STARTUP_ANGLE_SHIFT,                               //!< Режим раскачки: угол сдвига
-  VSD_SW_STARTUP_OSC_COUNT,                                 //!< Режим раскачки: количество качаний на угол
-  VSD_SW_STARTUP_ROTATIONS,                                 //!< Режим раскачки: количество оборотов двигателя
-  VSD_SW_STARTUP_U_PULSE,                                   //!< Режим раскачки: кратность напряжения импульса расклинки
-  VSD_SW_STARTUP_I_LIM,                                     //!< Режим раскачки: токоограничение
-  VSD_SW_STARTUP_I_LIM_PULSE,                               //!< Порог токоограничения импульса расклинки в режиме с раскачкой
-  VSD_VFREQ_INTEG,                                          //!< Интегральный коэффициент ОС фазового контура регулирования
-  VSD_REGULATOR_QUEUE_1,                                    //!< Регистры рабочей очереди алгоритмов управления
-  VSD_REGULATOR_QUEUE_2,                                    //!< Регистры рабочей очереди алгоритмов управления
-  VSD_REGULATOR_QUEUE_3,                                    //!< Регистры рабочей очереди алгоритмов управления
-  VSD_REGULATOR_QUEUE_4,                                    //!< Регистры рабочей очереди алгоритмов управления
-  VSD_REGULATOR_QUEUE_5,                                    //!< Регистры рабочей очереди алгоритмов управления
-  VSD_UD_LOW_FAULT,                                         //!< Порог защиты ПЧ по снижению напряжения на инверторе
-  VSD_UD_HIGH_FAULT,                                        //!< Порог защиты ПЧ по превыщению напряжения на инверторе
-  VSD_UIN_ASYM_LEVEL,                                       //!< Порог защиты ПЧ по несимметрии входного напряжения на инверторе
-  VSD_UIN_ASYM_DELAY,                                       //!< Время срабатывания защиты ПЧ по несимметрии входного напряжения на инверторе
-  VSD_F_VECT,                                               //!< Частота перехода на векторный алгоритм
-  VSD_VFREQ_GAIN,                                           //!< Пропорциональный коэффициент ОС фазового контура регулирования
-  VSD_VANGLE_GAIN,                                          //!< Фазовый коэффициент усиления системы подавления резонанса
-  VSD_RES_TIMECONST,                                        //!< Постоянная времени системы подавления резонанса
-  VSD_RES_IAMP_VALID,                                       //!< Служебный регистр для отладки алгоритмов управления
-  VSD_IB,                                                   //!< Выходной ток ПЧ по фазе В. (амплитудное значение)
-  VSD_PHB,                                                  //!< Фаза выходного тока В
-  VSD_IC,                                                   //!< Выходной ток ПЧ по фазе C. (амплитудное значение)
-  VSD_PHC,                                                  //!< Фаза выходного тока C
-  VSD_DECEL_SPEEDDOWN,                                      //!< Время снижения уставки в режиме остановки турбинного вращения
-  VSD_DECEL_VOLTAGE,                                        //!< Напряжение остаточного напряжения на шине (окончания разряда) в режиме остановки турбинного вращения (для ВД)
-  VSD_DECEL_F_MAX,                                          //!< Начальная частота режима остановки турбинного вращения (для АД)
-  VSD_TIME_SECOND,                                          //!< Время секунды
-  VSD_TIME_MINUTE,                                          //!< Время минуты
-  VSD_TIME_HOUR,                                            //!< Время часы
-  VSD_TIME_DAY,                                             //!< Время дни
-  VSD_TIME_MONTH,                                           //!< Время месяцы
-  VSD_TIME_YEAR,                                            //!< Время годы
-  VSD_AST_IMEAS,                                            //!< Величина измерительного тока автонастройки
-  VSD_AST_UMEAS,                                            //!< Величина измерительного напряжения автонастройки
-  VSD_AST_LOUT_1_0,                                         //!< Измеренная величина выходной индуктивности автонастройки
-  VSD_AST_STANDING,                                         //!< Дополнительный регистр автонастройки, зарезервирован
-  VSD_INVERTOR_STATUS2,                                     //!< Расширенный регистр состояния инвертора
-  VSD_JARRING_PERIOD,                                       //!< Период экскурсий частоты режима встряхивания.
-  VSD_JARRING_UPDFREQ,                                      //!< Величина прибавки частоты вращения выше уставки в режиме встряхивания
-  VSD_JARRING_UPTIME,                                       //!< Время прибавки частоты вращения выше уставки в режиме встряхивания
-  VSD_JARRING_DOWNDFREQ,                                    //!< Величина уменьшения частоты вращения ниже уставки в режиме встряхивания
-  VSD_JARRING_DOWNTIME,                                     //!< Время уменьшения частоты вращения ниже уставки в режиме встряхивания
-  VSD_JARRING_MODE,                                         //!< Регистры обслуживания внутренних нужд режима встряхивания
-  VSD_JARRING_TICK_CNT,                                     //!< Регистры обслуживания внутренних нужд режима встряхивания
-  VSD_JARRING_SECOND_CNT,                                   //!< Регистры обслуживания внутренних нужд режима встряхивания
-  VSD_START_FREQ,                                           //!< Стартовая частота вращения двигателя в основном режиме регулирования
-  VSD_IA,                                                   //!< Выходной ток ПЧ по фазе A. (амплитудное значение)
-  VSD_PHA,                                                  //!< Фаза выходного тока A
-  VSD_PHOUT,                                                //!< Усредненная фаза выходного тока ПЧ
-  VSD_TEST0,                                                //!< Тестовый регистр 0
-  VSD_TEST1,                                                //!< Тестовый регистр 1
-  VSD_TEST2,                                                //!< Тестовый регистр 2
-  VSD_TEST3,                                                //!< Тестовый регистр 3
-  VSD_TEST4,                                                //!< Тестовый регистр 4
-  VSD_TEST5,                                                //!< Тестовый регистр 5
-  VSD_TEST6,                                                //!< Тестовый регистр 6
-  VSD_TEST7,                                                //!< Тестовый регистр 7
-  VSD_IOUT,                                                 //!< Выходной ток ПЧ
-  VSD_INV_FAULT,                                            //!< Регистр ошибок инвертора
-  VSD_SOUT,                                                 //!< Текущая выходная полная мощность ПЧ
-  VSD_M_IRMS,                                               //!< Уставка срабатывания защиты (ЗП)
-  VSD_M_TRMS,                                               //!< Постоянная времени защиты i2t двигателя
-  VSD_OVERPWM2_ANGLE,                                       //!< Максимальный угол остановки вектора в режиме
-  VSD_OVERPWM_GAIN,                                         //!< Степень постоянной времени отработки
-  VSD_DECEL_U_MAX,                                          //!< Стартовое напряжение торможения авторотации
-  VSD_FC_IRMS,                                              //!< Ток тепловой защиты ПЧ длительный
-  VSD_FC_ILIM_LONG,                                         //!< Ограничение тока для импульсов
-  VSD_FC_TLIM,                                              //!< Время импульса с общим (максимальным) токоограничением
-  VSD_U_SCALE,                                              //!< Масштаб измеряемого напряжения ПЧ отн. базового 250А
-  VSD_I_SCALE,                                              //!< Масштаб измеряемого тока ПЧ отн. базового 250А
-  VSD_M_I_FAST,                                             //!< Уровень быстрой токовой защиты двигателя
-  VSD_T_BLANK,                                              //!< Время отключения защиты двигателя после старта
-  VSD_PID_I_REF,                                            //!< Уровень уставки тока для ПИД-регулятора
-  VSD_PID_T_REG,                                            //!< Постоянная времени для ПИД-регулятора
-  VSD_PID_T_REG_1,                                          //!< Постоянная времени для ПИД-регулятора
-  VSD_INVERTOR_STATUS3,                                     //!< Расширенный регистр состояния инвертора 3
-  VSD_CONFIG_MODE,                                          //!< Режим конфигурирования Danfoss 1-00 Не используется в проекте, только при конфигурировании
-  VSD_TIMER_DISPERSAL,                                      //!< Время разгона Danfoss 3-41 % Активно используется в проекте
-  VSD_TIMER_DELAY,                                          //!< Время замедления Danfoss 3-42 % Активно используется в проекте
-  VSD_INDEX,                                                //!< Указатель индекса для массивных параметров Danfoss 0х0008 используется для массивов параметров
-  VSD_UNIT_SPEED,                                           //!< Единицы измерения скорости Danfoss 0-02 Не используется в проекте, только при конфигурировании
-  VSD_TORQUE_CHARACTERISTIC,                                //!< Характеристика момента нагрузки Danfoss 1-03 Не используется в проекте, только при конфигурировании
-  VSD_OVERLOAD_MODE,                                        //!< Режим перегрузки Danfoss 1-04 Не используется в проекте, только при конфигурировании
-  VSD_DAMPING_GANE,                                         //!< Усиление демпфирования Danfoss 1-14 Не используется в проекте, только при конфигурировании
-  VSD_LOW_SPEED_FILTER_TIME,                                //!< Время фильтрации при низкой скорости Danfoss 1-15 Используется в режиме автоадаптации
-  VSD_HIGH_SPEED_FILTER_TIME,                               //!< Время фильтрации при высокой скорости Danfoss 1-16 Используется в режиме автоадаптации
-  VSD_RATE_TORQUE_MOTOR,                                    //!< Длительный номинальный момент двигателе Danfoss 1-26 Записывается в проекте один раз
-  VSD_RESISTANCE_STATOR,                                    //!< Сопротивление статора Danfoss 1-30 Используется в режиме автоадаптации
-  VSD_UF_CHARACTERISTIC_U,                                  //!< Характеристика Uf - U Danfoss 1-55
-  VSD_UF_CHARACTERISTIC_F,                                  //!< Характеристика Uf - f Danfoss 1-56
-  VSD_RESONANCE_REMOVE,                                     //!< Подавление резонанса % Danfoss 1-64 Не используется в проекте, только при конфигурировании
-  VSD_RESONANCE_TIME,                                       //!< Постаянная времени подавления Danfoss 1-65 Не используется в проекте, только при конфигурировании Novomet 0х0067
-  VSD_MIN_CURRENT_LOW_SPEED,                                //!< Минимальный ток при низкой скорости Danfoss 1-66 Не используется в проекте, только при конфигурировании
-  VSD_PM_START_MODE,                                        //!< Тип запуска вентиля Danfoss 1-70 Не используется в проекте, только при конфигурировании
-  VSD_START_DELAY,                                          //!< Задержка запуска Danfoss 1-71 Используется в защите от невыхода на заданную частоту
-  VSD_START_FUNCTION,                                       //!< Функция запуска Danfoss 1-72 Не используется в проекте, только при конфигурировании
-  VSD_STOP_FUNCTION,                                        //!< Функция при остановке Danfoss 1-80 Не используется в проекте, только при конфигурировании
-  VSD_STOP_SPEED,                                           //!< Минимальная скорость для функции при останове Danfoss 1-82 Не используется в проекте, только при конфигурировании
-  VSD_CONTROL_TERMISTOR_MTR,                                //!< Контроль термистора двигателя Danfoss 1-90 Не используется в проекте, только при конфигурировании
-  VSD_THERMISTOR_RESOURCE,                                  //!< Вход термистора Danfoss 1-93 Не используется в проекте, только при конфигурировании
-  VSD_PARKING_CURRENT,                                      //!< Начальный ток Danfoss 2-06 Не используется в проекте, только при конфигурировании
-  VSD_PARKING_TIME,                                         //!< Длительность действия начального ток Danfoss 2-07 В проекте есть, но отключено, используется при конфигурировании
-  VSD_OVERVOLTAGE_CONTROL,                                  //!< Контроль перенапряжения Danfoss 2-17 Не используется в проекте, только при конфигурировании
-  VSD_MIN_REFERENCE,                                        //!< Минимальное задание Danfoss 3-02 Не используется в проекте, только при конфигурировании
-  VSD_MAX_REFERENCE,                                        //!< Максимальное задани Danfoss 3-03 Не используется в проекте, только при конфигурировании
-  VSD_RESOURCE_TASK_1,                                      //!< Ресурс задания 1 Danfoss 3-15 Не используется в проекте, только при конфигурировании
-  VSD_RESOURCE_TASK_2,                                      //!< Ресурс задания 2 Danfoss 3-16 Не используется в проекте, только при конфигурировании
-  VSD_RESOURCE_TASK_3,                                      //!< Ресурс задания 3 Danfoss 3-17 Не используется в проекте, только при конфигурировании
-  VSD_TYPE_SPEED_CHANGE,                                    //!< Тип изменения скорости Danfoss 3-40 Не используется в проекте, только при конфигурировании
-  VSD_TIMER_DISP_FIX_SPEED,                                 //!< Время разгона фиксированной скорости Danfoss 3-80 Используется в проекте один раз
-  VSD_TIMER_DELAY_FIX_SPEED,                                //!< Время замедления фиксированной скорости Danfoss 3-81 Используется в проекте один раз
-  VSD_TORQUE_LIMIT,                                         //!< Ограничение момента Danfoss 4-16 % Используется в защитах ЧРП. Интерфейс
-  VSD_TORQUE_LIMIT_GEN,                                     //!< Ограничение момента в режиме генератора Danfoss 4-17 % Не используется в проекте, только при конфигурировании
-  VSD_CURRENT_LIMIT,                                        //!< Предел тока Danfoss 4-18 %
-  VSD_MAX_OUTPUT_FREQUENCY,                                 //!< Максимальная выходная частота Danfoss 4-19 Используется в проекте
-  VSD_MTR_FEEDBACK_LOSS_FUNC,                               //!< Реакция на ошибку обратной связи Danfoss 4-30 Не используется в проекте, только при конфигурировании
-  VSD_TRACK_ERROR_FUNCTION,                                 //!< Реакция на ошибку задания частоты Danfoss 4-34 Не используется в проекте, только при конфигурировании
-  VSD_TRACK_ERROR,                                          //!< Величина несоответствия частота Danfoss 4-35 Не используется в проекте, только при конфигурировании
-  VSD_TRACK_ERROR_TIMEOUT,                                  //!< Величина несоответствия частоты Danfoss 4-36 Не используется в проекте, только при конфигурировании
-  VSD_TRACK_ERROR_RAMPING,                                  //!< Величина несоответствия частоты при разгоне Danfoss 4-37 Не используется в проекте, только при конфигурировании
-  VSD_TRACK_ERROR_RAMP_TIME,                                //!< Задержка срабатывания при несоответствии частоты при разгоне Danfoss 4-38 Не используется в проекте, только при конфигурировании
-  VSD_TRACK_ERROR_AFTER_RAMP,                               //!< Tracking Error After Ramping Timeout Danfoss 4-39 Не используется в проекте, только при конфигурировании
-  VSD_WARNING_CURRENT_LOW,                                  //!< Danfoss 4-50 Не используется в проекте, только при конфигурировании
-  VSD_WARNING_CURRENT_HIGH,                                 //!< Danfoss 4-51 Не используется в проекте, только при конфигурировании
-  VSD_WARNING_SPEED_LOW,                                    //!< Минимальная скорость Danfoss 4-52 об/мин Не используется в проекте, только при конфигурировании
-  VSD_TERMINAL_27_MODE,                                     //!< Режим клеммы 27 Danfoss 5-01 Не используется в проекте, только при конфигурировании
-  VSD_TERMINAL_29_MODE,                                     //!< Режим клеммы 29 Danfoss 5-02 Не используется в проекте, только при конфигурировании
-  VSD_DI_18,                                                //!< Цифровой вход 18 Danfoss 5-10 Не используется в проекте, только при конфигурировании
-  VSD_DI_19,                                                //!< Цифровой вход 19 Danfoss 5-11 Не используется в проекте, только при конфигурировании
-  VSD_DI_27,                                                //!< Цифровой вход 27 Danfoss 5-12 Не используется в проекте, только при конфигурировании
-  VSD_DI_32,                                                //!< Цифровой вход 32 Danfoss 5-14 Не используется в проекте, только при конфигурировании
-  VSD_DI_33,                                                //!< Цифровой вход 33 Danfoss 5-15 Не используется в проекте, только при конфигурировании
-  VSD_TERMINAL_27_DI,                                       //!< Клемма 27 Цифровой вход Danfoss 5-30 Не используется в проекте, только при конфигурировании
-  VSD_TERMINAL_29_DI,                                       //!< Клемма 29 Цифровой вход Danfoss 5-31 Не используется в проекте, только при конфигурировании
-  VSD_FUNCTION_RELE,                                        //!< Реле функций Danfoss 5-40 Не используется в проекте, только при конфигурировании
-  VSD_ON_DELAY_RELAY,                                       //!< Нипонятно Danfoss 5-41 Не используется в проекте, только при конфигурировании
-  VSD_42_AO,                                                //!< Клемма 42 аналоговый вход Danfoss 6-50 Не используется в проекте, только при конфигурировании
-  VSD_SL_CONTROLLER_MODE,                                   //!< Режим контроллера SL Danfoss 13-00 Не используется в проекте, только при конфигурировании
-  VSD_SL_START_EVENT,                                       //!< Событие запуска Danfoss 13-01 Не используется в проекте, только при конфигурировании
-  VSD_SL_STOP_EVENT,                                        //!< Событие останова Danfoss 13-02 Не используется в проекте, только при конфигурировании
-  VSD_SL_RESET,                                             //!< Сброс настроек компараторов Danfoss 13-03 Не используется в проекте, только при конфигурировании
-  VSD_SL_10,                                                //!< Операнд сравнения компаратора Danfoss 13-10 Не используется в проекте, только при конфигурировании
-  VSD_SL_11,                                                //!< Оператор сравнения компаратора Danfoss 13-11 Не используется в проекте, только при конфигурировании
-  VSD_SL_12,                                                //!< Значение компаратора Danfoss 13-12 Не используется в проекте, только при конфигурировании
-  VSD_SL_15,                                                //!< RS-FF Operand S Danfoss 13-15 Не используется в проекте, только при конфигурировании
-  VSD_SL_16,                                                //!< RS-FF Operand R Danfoss 13-16 Не используется в проекте, только при конфигурировании
-  VSD_SL_20,                                                //!< Временная задержка Danfoss 13-20 Не используется в проекте, только при конфигурировании
-  VSD_SL_40,                                                //!< Булева переменная логического соотношения 1 Danfoss 13-40 Не используется в проекте, только при конфигурировании
-  VSD_SL_41,                                                //!< Оператор логического соотношения 1 Danfoss 13-41 Не используется в проекте, только при конфигурировании
-  VSD_SL_42,                                                //!< Булева переменная логического соотношения 2 Danfoss 13-42 Не используется в проекте, только при конфигурировании
-  VSD_SL_43,                                                //!< Logic Rule Operator 2 Danfoss 13-43 Не используется в проекте, только при конфигурировании
-  VSD_SL_44,                                                //!< Logic Rule Boolean 3 Danfoss 13-44 Не используется в проекте, только при конфигурировании
-  VSD_SL_51,                                                //!< Событие контроллера SL Danfoss 13-51 Не используется в проекте, только при конфигурировании
-  VSD_SL_52,                                                //!< Действие контроллера SL Danfoss 13-52 Не используется в проекте, только при конфигурировании
-  VSD_SWITCHING_FREQUENCY,                                  //!< Частота коммутации Danfoss 14-01 Используется в проекте Novomet 0х003C IREG_FREQ_PWM
-  VSD_OVERMODULATION,                                       //!< Сверхмодуляция Danfoss 14-03 Не используется в проекте, только при конфигурировании
-  VSD_DEAD_TIME_COMPENSATION,                               //!< Компенсация задержки Danfoss 14-06 Не используется в проекте, только при конфигурировании
-  VSD_MAINS_FAILURE,                                        //!< Отказ питания Danfoss 14-10 Не используется в проекте, только при конфигурировании
-  VSD_MAINS_VOLTAGE_FAILURE,                                //!< Напряжение сети при отказе питания Danfoss 14-11 Не используется в проекте, только при конфигурировании
-  VSD_RESET_MODE,                                           //!< Режим сброса Danfoss 14-20 Не используется в проекте, только при конфигурировании
-  VSD_AUTOSTART_TIME,                                       //!< Время автоматического перезапуск Danfoss 14-21 Не используется в проекте, только при конфигурировании
-  VSD_DELAY_CURRENT_LIMIT,                                  //!< Задержка перед выключение при пределе тока Danfoss 14-24 Не используется в проекте, только при конфигурировании
-  VSD_DELAY_TORQUE_LIMIT,                                   //!< Задержка перед выключение при пределе моменте Danfoss 14-25 Не используется в проекте, только при конфигурировании
-  VSD_FIL_TIME_CURRENT_LIMIT,                               //!< Время фильтра регулятора тока Danfoss 14-32 Используется в проекте, CalcParam()
-  VSD_DC_COMPENSATION,                                      //!< Компенсация напряжения постоянного тока Danfoss 14-51 Не используется в проекте, только при конфигурировании
-  VSD_FAN_CONTROL,                                          //!< Управление вентилятором Danfoss 14-52 Не используется в проекте, только при конфигурировании
-  VSD_OUT_FILTER,                                           //!< Выходной фильтр Danfoss 14-55 Используется в проекте, интерфейс
-  VSD_FAIL_RESET,                                           //!< Сброс аварий Danfoss 14-90 Не используется в проекте, только при конфигурировании
-  VSD_SOFT_VERSION,                                         //!< Версия ПО ЧРП Danfoss 15-43 Используется в проекте
-  VSD_COMMAND_WORD,                                         //!< Командное слово Danfoss 16-00 Используется в проекте
-  VSD_STATUS_WORD,                                          //!< Слово состояния Danfoss 16-03 Активно используется в проекте
-  VSD_OUT_CURRENT_MOTOR,                                    //!< Выходной ток средний
-  VSD_RADIATOR_TEMPERATURE,                                 //!< Температура радиатора Danfoss 16-34 Используется в проекте
-  VSD_CONTROL_TEMPERATURE,                                  //!< Температура платы управления Danfoss 16-39 Используется в проекте
-  VSD_DI_VSD,                                               //!< Цифровоый вход ПЧ Danfoss 16-60 Используется в проекте
-  VSD_LAST_ALARM,                                           //!< Номер последней аварии и предупреждения Danfoss 16-87 Используется в проекте
-  VSD_ALARM_WORD_1,                                         //!< Слово Аварии 1 Danfoss 16-90 Используется в проекте
-  VSD_ALARM_WORD_2,                                         //!< Слово Аварии 2 Danfoss 16-91 Используется в проекте
-  VSD_WARNING_WORD_1,                                       //!< Слово предупреждения 1 Danfoss 16-92 Используется в проекте
-  VSD_WARNING_WORD_2,                                       //!< Слово предупреждения 2 Danfoss 16-93 Используется в проекте
-  VSD_HIGH_START_TORQUE_TIME,                               //!< Время применения высокого пускового момента Danfoss 30-20 Не используется в проекте, только при конфигурировании
-  VSD_HIGH_START_TORQUE_CURRENT,                            //!< Пусковой ток в % от номинального Danfoss 30-21 Не используется в проекте, только при конфигурировании
-  VSD_LOCK_ROTOR_PROTECTION,                                //!< Защита блокировки ротора Danfoss 30-22 Не используется в проекте, только при конфигурировании
-  VSD_LOCK_ROTOR_TIME,                                      //!< Время задержки аварии блокировки ротора Danfoss 30-23 Не используется в проекте, только при конфигурировании
-  VSD_TEMP_SPEEDUP,                                         //!< 
-  VSD_TEMP_SPEEDDOWN,                                       //!< 
-  VSD_END,                                                  //!< 
-  TMS_BEGIN=15000,                                          //!< 
-  TMS_RESISTANCE_ISOLATION,                                 //!< Сопротивление изоляции
-  TMS_PRESSURE_INTAKE,                                      //!< Давление на приёме
-  TMS_TEMPERATURE_WINDING,                                  //!< Температура обмоток двигателя
-  TMS_TEMPERATURE_INTAKE,                                   //!< Температура на приёме
-  TMS_ACCELERATION_X_INTAKE,                                //!< Ускорение по оси X на приёме
-  TMS_ACCELERATION_Y_INTAKE,                                //!< Ускорение по оси Y на приёме
-  TMS_ACCELERATION_Z_INTAKE,                                //!< Ускорение по оси Z на приёме
-  TMS_PRESSURE_DISCHARGE,                                   //!< Давление на выкиде
-  TMS_TEMPERATURE_DISCHARGE,                                //!< Температура на выкиде
-  TMS_FLOW_DISCHARGE,                                       //!< Расход на выкиде
-  TMS_ACCELERATION_XY_INTAKE,                               //!< Ускорение по оси Y на приёме
-  TMS_ACCELERATIN_XYZ_INTAKE,                               //!< Ускорение по оси по трём осям
-  TMS_MAX_PRESSURE_INTAKE,                                  //!< Максимальное давление на приёме
-  TMS_MAX_TEMPERATUR_WINDING,                               //!< Максимальная температура обмоток
-  TMS_MAX_TEMPERATURE_INTAKE,                               //!< Максимальная температура на приёме
-  TMS_MAX_ACCELERATION_INTAKE,                              //!< Максимальное ускорение
-  TMS_FAIL_LINK_TMSP,                                       //!< Обрыв связи с ТМСП
-  TMS_MANUFACTURE_TMSP,                                     //!< Код изготовителя ТМСП
-  TMS_NUMBER_TMSP,                                          //!< Серийный номер ТМСП
-  TMS_DATE_TMSP,                                            //!< Дата изготовления ТМСП
-  TMS_CONSTRUCTION_TMSP,                                    //!< Код конструкции ТМСП
-  TMS_PROTOCOL_TMSP,                                        //!< Код протокола ТМСП
-  TMS_SENSOR_TMSP,                                          //!< Состав датчиков ТМСП
-  TMS_SOFT_TMSP,                                            //!< Версия По ТМСП
-  TMS_TIME_BIT,                                             //!< Скорости передачи бита
-  TMS_MANUFACTURE_TMSN,                                     //!< Код завода изготовителя ТМСН
-  TMS_NUMBER_TMSN,                                          //!< Заводской номер ТМСН
-  TMS_DATE_TMSN,                                            //!< Дата изготовления ТМСН
-  TMS_CONSTRUCTION_TMSN,                                    //!< Код конструкции ТМСН
-  TMS_SOFT_TMSN,                                            //!< Версия ПО ТМСН
-  TMS_PROTOCOL_TMSN,                                        //!< Код протокола ТМСН
-  TMS_MIN_FLOW_DISCHARGE,                                   //!< Минимальный расход на выкиде
-  TMS_MAX_FLOW_DISCHARGE,                                   //!< Максимальный расход на выкиде
-  TMS_MAX_PRESSURE_DISHARGE,                                //!< Максимальное давление на выкиде
-  TMS_MAX_TEMPERATURE_DISCHARGE,                            //!< Максимальная температура на выкиде
-  TMS_RESISTANCE_ISOLATION_TIME,                            //!< Время измерения сопротивления изоляции
-  TMS_MEASURE_TIME,                                         //!< Время измерения данных и передачи
-  TMS_RESISTANCE_TRANS_TIME,                                //!< Время перехода в режим измерения сопротивления изоляции
-  TMS_NUMBER_WELL,                                          //!< Номер скважины
-  TMS_NUMBER_BUSH,                                          //!< Номер куста
-  TMS_NUMBER_CDNG,                                          //!< Номер ЦДНГ
-  TMS_MODBUS_ADDRESS,                                       //!< Адрес Modbus
-  TMS_MODBUS_SPEED,                                         //!< Скорость Modbus
-  TMS_MODBUS_STOP_BIT,                                      //!< Количество Стоп-бит
-  TMS_DATA_TIME,                                            //!< Текущее дата время
-  TMS_READ_STATIC_PARAM,                                    //!< Команда чтения статических параметров
-  TMS_PACKAGE_ERROR_TMSP,                                   //!< Количество ошибок от ТМСП
-  TMS_TEMPERATURE_MOTOR,                                    //!< Температура масла двигателя
-  TMS_TEMPERATURE_UNIT,                                     //!< Единицы измерения температуры
-  TMS_PRESSURE_UNIT,                                        //!< Единицы измерения давления
-  TMS_PSW_TMS,                                              //!< Слово состояние системы
-  TMS_PSW_TMSN,                                             //!< Слово состояние наземного блока
-  TMS_PSW_TMSP_1,                                           //!< Cлово состояние погружного блока
-  TMS_PSW_TMSP_2,                                           //!< Слово состояние погружного блока 2
-  TMS_ANGLE_INTAKE,                                         //!< Зенитный угол
-  TMS_HOWMIDITY,                                            //!< Обводненность
-  TMS_END,                                                  //!< 
-  EM_BEGIN=20000,                                           //!< Первый параметр группы счётчиков электроэнергии
-  EM_VOLTAGE_PHASE_1,                                       //!< Напряжение первой фазы
-  EM_VOLTAGE_PHASE_2,                                       //!< Напряжение второй фазы
-  EM_VOLTAGE_PHASE_3,                                       //!< Напряжение третей фазы
-  EM_CURRENT_PHASE_1,                                       //!< Ток первой фазы
-  EM_CURRENT_PHASE_2,                                       //!< Ток второй фазы
-  EM_CURRENT_PHASE_3,                                       //!< Ток третей фазы
-  EM_ACTIVE_POWER,                                          //!< Общая активная мощность
-  EM_FREQUENCY,                                             //!< Частота питающей сети
-  EM_FULL_POWER,                                            //!< Полная мощность
-  EM_ACTIVE_ENERGY,                                         //!< Общая активная энергия
-  EM_VOLTAGE_PHASE_1_2,                                     //!< Напряжение межфазное первой и второй фазы
-  EM_VOLTAGE_PHASE_2_3,                                     //!< Напряжение межфазное второй и третьей фазы
-  EM_VOLTAGE_PHASE_3_1,                                     //!< Напряжение межфазное третьей и первой фазы
-  EM_COS_PHI,                                               //!< Общий коэффициент мощности
-  EM_COS_PHI_PHASE_1,                                       //!< Коэффициент мощности первой фазы
-  EM_COS_PHI_PHASE_2,                                       //!< Коэффициент мощности второй фазы
-  EM_COS_PHI_PHASE_3,                                       //!< Коэффициент мощности третей фазы
-  EM_FULL_POWER_PHASE_1,                                    //!< Полная мощность первой фазы
-  EM_FULL_POWER_PHASE_2,                                    //!< Полная мощность второй фазы
-  EM_FULL_POWER_PHASE_3,                                    //!< Полная мощность третей фазы
-  EM_ACTIVE_POWER_PHASE_1,                                  //!< Активная мощность первой фазы
-  EM_ACTIVE_POWER_PHASE_2,                                  //!< Активная мощность второй фазы
-  EM_ACTIVE_POWER_PHASE_3,                                  //!< Активная мощность третей фазы
-  EM_REACTIVE_POWER,                                        //!< Общая реактивная мощность
-  EM_REACTIVE_POWER_PHASE_1,                                //!< Реактивная мощность первой фазы
-  EM_REACTIVE_POWER_PHASE_2,                                //!< Реактивная мощность второй фазы
-  EM_REACTIVE_POWER_PHASE_3,                                //!< Реактивная мощность третей фазы
-  EM_ACTIVE_PLUS_ALL,                                       //!< Обшая активная плюс энергия за весь период
-  EM_ACTIVE_MINUS_ALL,                                      //!< Обшая активная минус энергия за весь период
-  EM_ACTIVE_PLUS_CUR_DAY,                                   //!< Активная плюс энергия за текущий день
-  EM_ACTIVE_MINUS_CUR_DAY,                                  //!< Активная минус энергия за текущий день
-  EM_ACTIVE_PLUS_PREV_DAY,                                  //!< Активная плюс энергия за предыдущий день
-  EM_ACTIVE_MINUS_PREV_DAY,                                 //!< Активная минус энергия за текущий день
-  EM_ACTIVE_PLUS_CUR_MONTH,                                 //!< Активная плюс энергия за текущий месяц
-  EM_ACTIVE_MINUS_CUR_MONTH,                                //!< Активная минус энергия за текущий месяц
-  EM_ACTIVE_PLUS_PREV_MONTH,                                //!< Активная плюс энергия на предыдущий месяц
-  EM_ACTIVE_MINUS_PREV_MONTH,                               //!< Активная минус энергия на предыдущий месяц
-  EM_REACTIVE_ENERGY,                                       //!< Общая реактивня энергия
-  EM_REACTIVE_PLUS_ALL,                                     //!< Общая плюс реактивная энергия за весь период
-  EM_REACTIVE_MINUS_ALL,                                    //!< Общая минус реактивная энергия за весь период
-  EM_REACTIVE_PLUS_CUR_DAY,                                 //!< Плюс реактивная энергия за весь день
-  EM_REACTIVE_MINUS_CUR_DAY,                                //!< Минус реактивная энергия за весь день
-  EM_REACTIVE_PLUS_PREV_DAY,                                //!< Плюс реактивная энергия за весь день
-  EM_REACTIVE_MINUS_PREV_DAY,                               //!< Минус реактивная энергия за весь день
-  EM_REACTIVE_PLUS_CUR_MONTH,                               //!< Плюс реактивная энергия за месяц
-  EM_REACTIVE_MINUS_CUR_MONTH,                              //!< Минус реактивная энергия за месяц
-  EM_REACTIVE_PLUS_PREV_MONTH,                              //!< Плюс реактивная энергия за предыдущий месяц
-  EM_REACTIVE_MINUS_PREV_MONTH,                             //!< Минус реактивная энергия за предыдущий месяц
-  EM_COEFFICIENT_TRANS_CURRENT,                             //!< Коэффицинт трансформации тока
-  EM_COEFFICIENT_TRANS_VOLTAGE,                             //!< Коэффициент трансформации напряжения
-  EM_END,                                                   //!< 
+  CCS_BEGIN = 0,                                             //!< Пустой регистр
+  CCS_MOTOR_SPEED_NOW = 1,                                   //!< Текущие обороты двигателя
+  CCS_MOTOR_CURRENT_PHASE_1 = 2,                             //!< Ток двигателя фаза 1
+  CCS_MOTOR_CURRENT_PHASE_2 = 3,                             //!< Ток двигателя фаза 2
+  CCS_MOTOR_CURRENT_PHASE_3 = 4,                             //!< Ток двигателя фаза 3
+  CCS_MOTOR_CURRENT_IMBALANCE = 5,                           //!< Дисбаланс токов двигателя
+  CCS_MOTOR_CURRENT_AVARAGE = 6,                             //!< Ток двигателя средний
+  CCS_MOTOR_LOAD_NOW = 7,                                    //!< Текущая загрузка двигателя
+  CCS_MOTOR_VOLTAGE_NOW = 8,                                 //!< Текущее напряжение двигателя
+  CCS_MOTOR_COS_PHI_NOW = 9,                                 //!< Текущий Косинус Фи
+  CCS_TURBO_ROTATION_NOW = 10,                               //!< Текущее турбинное вращение
+  CCS_RESISTANCE_ISOLATION = 11,                             //!< Сопротивление изоляции в системе
+  CCS_PHASE_ROTATION = 12,                                   //!< Порядок чередования фаз
+  CCS_CONDITION = 13,                                        //!< 
+  CCS_RUNNING_TYPE = 14,                                     //!< Режим пуска двигателя
+  CCS_WORKING_MODE = 15,                                     //!< Режим работы
+  CCS_VOLTAGE_IMBALANCE_IN = 16,                             //!< Дисбаланс входного напряжения
+  CCS_CURRENT_IMBALANCE_IN = 17,                             //!< Дисбаланс входного тока
+  CCS_AI_1_VALUE = 18,                                       //!< 
+  CCS_AI_2_VALUE = 19,                                       //!< 
+  CCS_AI_3_VALUE = 20,                                       //!< 
+  CCS_AI_4_VALUE = 21,                                       //!< 
+  CCS_DOOR_VALUE = 22,                                       //!< 
+  CCS_MONOMETR_CONTACT_VALUE = 23,                           //!< 
+  CCS_DI_1_VALUE = 24,                                       //!< 
+  CCS_DI_2_VALUE = 25,                                       //!< 
+  CCS_DI_3_VALUE = 26,                                       //!< 
+  CCS_DI_4_VALUE = 27,                                       //!< 
+  CCS_LOG_PERIOD_NORMAL = 28,                                //!< Период записи
+  CCS_LOG_PERIOD_FAST = 29,                                  //!< Период экстренной записи
+  CCS_LOG_PERIOD_DHS = 30,                                   //!< Период записи ТМС
+  CCS_MOTOR_CURRENT_HH = 31,                                 //!< Ток холостого хода
+  CCS_TRANS_NOMINAL_POWER = 32,                              //!< Мощность ТМПН
+  CCS_TRANS_NOMINAL_CURRENT = 33,                            //!< Номинальный ток ТМПН
+  CCS_TRANS_NOMINAL_VOLTAGE = 34,                            //!< Номинальное напряжение ТМПН
+  CCS_TRANS_CABLE_LENGHT = 35,                               //!< Длина кабеля
+  CCS_TRANS_CABLE_CROSS = 36,                                //!< Сечение кабеля
+  CCS_TRANS_NEED_VOLTAGE_TAP_OFF = 37,                       //!< Необходимое напряжение отпайки
+  CCS_TRANS_VOLTAGE_TAP_OFF = 38,                            //!< Напряжение отпайки
+  CCS_DHS_TYPE = 39,                                         //!< Тип ТМС
+  CCS_PUMP_CAPACITY = 40,                                    //!< Производительность насоса
+  CCS_PUMP_HEAD = 41,                                        //!< Напор ЭЦН
+  CCS_DEPTH = 42,                                            //!< Глубина спуска
+  CCS_PROT_SUPPLY_OVERVOLTAGE_MODE = 43,                     //!< Режим работа защиты
+  CCS_PROT_SUPPLY_OVERVOLTAGE_PREVENT = 44,                  //!< Параметр запрещающий запуск
+  CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY = 45,              //!< Задержка активации уставка
+  CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY = 46,               //!< Задержка срабатывания уставка
+  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY = 47,            //!< Задержка АПВ уставка
+  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_LIMIT = 48,            //!< Количество АПВ уставка
+  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET = 49,            //!< Автосброс счетчика АПВ
+  CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_SETPOINT = 50,            //!< Уставка срабатывания защиты
+  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_SETPOINT = 51,         //!< Условие АПВ уставка
+  CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER = 52,                //!< Уставка Параметр защиты, для этой защиты работать по ВРП
+  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FLAG = 53,             //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_SUPPLY_OVERVOLTAGE_STATE = 54,                    //!< Текущий параметр состояние автомата
+  CCS_PROT_SUPPLY_OVERVOLTAGE_TIME = 55,                     //!< Текущий параметр Фиксированное время
+  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT = 56,            //!< Текущий параметр Количество АПВ
+  CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME = 57,       //!< Текущий параметр Время первого АПВ
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE = 58,                    //!< Защита "Превышение питания сети"
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_PREVENT = 59,                 //!< Параметр запрещающий запуск
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY = 60,             //!< Задержка активации уставка
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY = 61,              //!< Задержка срабатывания уставка
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY = 62,           //!< Задержка АПВ уставка
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_LIMIT = 63,           //!< Количество АПВ уставка
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET = 64,           //!< Автосброс счетчика АПВ
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_SETPOINT = 65,           //!< Уставка срабатывания защиты
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_SETPOINT = 66,        //!< Условие АПВ уставка
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER = 67,               //!< Уставка Параметр защиты, для этой защиты работать по ВРП
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FLAG = 68,            //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_STATE = 69,                   //!< Текущий параметр состояние автомата
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME = 70,                    //!< Текущий параметр Фиксированное время
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_COUNT = 71,           //!< Текущий параметр Количество АПВ
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FIRST_TIME = 72,      //!< Текущий параметр Время первого АПВ
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_MODE = 73,               //!< Защита "Дисбаланс напряжения"
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PREVENT = 74,            //!< Параметр запрещающий запуск
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY = 75,        //!< Задержка активации уставка
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY = 76,         //!< Задержка срабатывания уставка
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY = 77,      //!< Задержка АПВ уставка
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_LIMIT = 78,      //!< Количество АПВ уставка
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_RESET = 79,      //!< Автосброс счетчика АПВ
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT = 80,      //!< Уставка срабатывания защиты
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_SETPOINT = 81,   //!< Условие АПВ уставка
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER = 82,          //!< Уставка Параметр защиты, для этой защиты работать по ВРП
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FLAG = 83,       //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_STATE = 84,              //!< Текущий параметр состояние автомата
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME = 85,               //!< Текущий параметр Фиксированное время
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_COUNT = 86,      //!< Текущий параметр Количество АПВ
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FIRST_TIME = 87, //!< Текущий параметр Время первого АПВ
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_MODE = 88,               //!< Защиты "Дисбаланс входных токов"
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PREVENT = 89,            //!< Параметр запрещающий запуск
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_ACTIV_DELAY = 90,        //!< Задержка активации уставка
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY = 91,         //!< Задержка срабатывания уставка
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY = 92,      //!< Задержка АПВ уставка
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_LIMIT = 93,      //!< Количество АПВ уставка
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_RESET = 94,      //!< Автосброс счетчика АПВ
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_SETPOINT = 95,      //!< Уставка срабатывания защиты
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_SETPOINT = 96,   //!< Условие АПВ уставка
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER = 97,          //!< Уставка параметр защиты
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FLAG = 98,       //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_STATE = 99,              //!< Текущий параметр состояние автомата
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME = 100,              //!< Текущий параметр Фиксированное время
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_COUNT = 101,     //!< Текущий параметр Количество АПВ
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FIRST_TIME = 102, //!< Текущий параметр Время первого АПВ
+  CCS_PROT_SUPPLY_PHASE_ROTATION_MODE = 103,                 //!< Защиты "Чередование фаз"
+  CCS_PROT_SUPPLY_PHASE_ROTATION_PREVENT = 104,              //!< Параметр запрещающий запуск
+  CCS_PROT_SUPPLY_PHASE_ROTATION_ACTIV_DELAY = 105,          //!< Задержка активации уставка
+  CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY = 106,           //!< Задержка срабатывания уставка
+  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY = 107,        //!< Задержка АПВ уставка
+  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_LIMIT = 108,        //!< Количество АПВ уставка
+  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_RESET = 109,        //!< Автосброс счетчика АПВ
+  CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT = 110,        //!< Уставка срабатывания защиты
+  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT = 111,     //!< Условие АПВ уставка
+  CCS_PROT_SUPPLY_PHASE_ROTATION_PARAMETER = 112,            //!< Уставка параметр защиты
+  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FLAG = 113,         //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_SUPPLY_PHASE_ROTATION_STATE = 114,                //!< Текущий параметр состояние автомата
+  CCS_PROT_SUPPLY_PHASE_ROTATION_TIME = 115,                 //!< Текущий параметр Фиксированное время
+  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_COUNT = 116,        //!< Текущий параметр Количество АПВ
+  CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FIRST_TIME = 117,   //!< Текущий параметр Время первого АПВ
+  CCS_PROT_MOTOR_OVERLOAD_MODE = 118,                        //!< Защита "Перегруз" (ЗП)
+  CCS_PROT_MOTOR_OVERLOAD_PREVENT = 119,                     //!< Параметр запрещающий запуск
+  CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY = 120,                 //!< Задержка активации уставка
+  CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY = 121,                  //!< Задержка срабатывания уставка
+  CCS_PROT_MOTOR_OVERLOAD_RESTART_DELAY = 122,               //!< Задержка АПВ уставка
+  CCS_PROT_MOTOR_OVERLOAD_RESTART_LIMIT = 123,               //!< Количество АПВ уставка
+  CCS_PROT_MOTOR_OVERLOAD_RESTART_RESET = 124,               //!< Автосброс счетчика АПВ
+  CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT = 125,               //!< Уставка срабатывания защиты
+  CCS_PROT_MOTOR_OVERLOAD_RESTART_SETPOINT = 126,            //!< Условие АПВ уставка
+  CCS_PROT_MOTOR_OVERLOAD_PARAMETER = 127,                   //!< Уставка параметр защиты
+  CCS_PROT_MOTOR_OVERLOAD_RESTART_FLAG = 128,                //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_MOTOR_OVERLOAD_STATE = 129,                       //!< Текущий параметр состояние автомата
+  CCS_PROT_MOTOR_OVERLOAD_TIME = 130,                        //!< Текущий параметр Фиксированное время
+  CCS_PROT_MOTOR_OVERLOAD_RESTART_COUNT = 131,               //!< Текущий параметр Количество АПВ
+  CCS_PROT_MOTOR_OVERLOAD_RESTART_FIRST_TIME = 132,          //!< Текущий параметр Время первого АПВ
+  CCS_PROT_MOTOR_UNDERLOAD_MODE = 133,                       //!< Защита "Недогруз" (ЗП)
+  CCS_PROT_MOTOR_UNDERLOAD_PREVENT = 134,                    //!< Параметр запрещающий запуск
+  CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY = 135,                //!< Задержка активации уставка
+  CCS_PROT_MOTOR_UNDERLOAD_TRIP_DELAY = 136,                 //!< Задержка срабатывания уставка
+  CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY = 137,              //!< Задержка АПВ уставка
+  CCS_PROT_MOTOR_UNDERLOAD_RESTART_LIMIT = 138,              //!< Количество АПВ уставка
+  CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET = 139,              //!< Автосброс счетчика АПВ
+  CCS_PROT_MOTOR_UNDERLOAD_TRIP_SETPOINT = 140,              //!< Уставка срабатывания защиты
+  CCS_PROT_MOTOR_UNDERLOAD_RESTART_SETPOINT = 141,           //!< Условие АПВ уставка
+  CCS_PROT_MOTOR_UNDERLOAD_PARAMETER = 142,                  //!< Уставка параметр защиты
+  CCS_PROT_MOTOR_UNDERLOAD_RESTART_FLAG = 143,               //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_MOTOR_UNDERLOAD_STATE = 144,                      //!< Текущий параметр состояние автомата
+  CCS_PROT_MOTOR_UNDERLOAD_TIME = 145,                       //!< Текущий параметр Фиксированное время
+  CCS_PROT_MOTOR_UNDERLOAD_RESTART_COUNT = 146,              //!< Текущий параметр Количество АПВ
+  CCS_PROT_MOTOR_UNDERLOAD_RESTART_FIRST_TIME = 147,         //!< Текущий параметр Время первого АПВ
+  CCS_PROT_MOTOR_CURRENT_MODE = 148,                         //!< Защита "Предел тока двигателя"
+  CCS_PROT_MOTOR_CURRENT_PREVENT = 149,                      //!< Параметр запрещающий запуск
+  CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY = 150,                  //!< Задержка активации уставка
+  CCS_PROT_MOTOR_CURRENT_TRIP_DELAY = 151,                   //!< Задержка срабатывания уставка
+  CCS_PROT_MOTOR_CURRENT_RESTART_DELAY = 152,                //!< Задержка АПВ уставка
+  CCS_PROT_MOTOR_CURRENT_RESTART_LIMIT = 153,                //!< Количество АПВ уставка
+  CCS_PROT_MOTOR_CURRENT_RESTART_RESET = 154,                //!< Автосброс счетчика АПВ
+  CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT = 155,                //!< Уставка срабатывания защиты
+  CCS_PROT_MOTOR_CURRENT_RESTART_SETPOINT = 156,             //!< Условие АПВ уставка
+  CCS_PROT_MOTOR_CURRENT_PARAMETER = 157,                    //!< Уставка параметр защиты
+  CCS_PROT_MOTOR_CURRENT_RESTART_FLAG = 158,                 //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_MOTOR_CURRENT_STATE = 159,                        //!< Текущий параметр состояние автомата
+  CCS_PROT_MOTOR_CURRENT_TIME = 160,                         //!< Текущий параметр Фиксированное время
+  CCS_PROT_MOTOR_CURRENT_RESTART_COUNT = 161,                //!< Текущий параметр Количество АПВ
+  CCS_PROT_MOTOR_CURRENT_RESTART_FIRST_TIME = 162,           //!< Текущий параметр Время первого АПВ
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE = 163,               //!< Защита "Дисбаланс токов двигателя"
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_PREVENT = 164,            //!< Параметр запрещающий запуск
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY = 165,        //!< Задержка активации уставка
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY = 166,         //!< Задержка срабатывания уставка
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY = 167,      //!< Задержка АПВ уставка
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_LIMIT = 168,      //!< Количество АПВ уставка
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_RESET = 169,      //!< Автосброс счетчика АПВ
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_SETPOINT = 170,      //!< Уставка срабатывания защиты
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_SETPOINT = 171,   //!< Условие АПВ уставка
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_PARAMETER = 172,          //!< Уставка параметр защиты
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FLAG = 173,       //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_STATE = 174,              //!< Текущий параметр состояние автомата
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_TIME = 175,               //!< Текущий параметр Фиксированное время
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_COUNT = 176,      //!< Текущий параметр Количество АПВ
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FIRST_TIME = 177, //!< Текущий параметр Время первого АПВ
+  CCS_PROT_MOTOR_ASYNC_MODE = 178,                           //!< Защита "Турбинное вращение"
+  CCS_PROT_MOTOR_ASYNC_PREVENT = 179,                        //!< Параметр запрещающий запуск
+  CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY = 180,                    //!< Задержка активации уставка
+  CCS_PROT_MOTOR_ASYNC_TRIP_DELAY = 181,                     //!< Задержка срабатывания уставка
+  CCS_PROT_MOTOR_ASYNC_RESTART_DELAY = 182,                  //!< Задержка АПВ уставка
+  CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT = 183,                  //!< Количество АПВ уставка
+  CCS_PROT_MOTOR_ASYNC_RESTART_RESET = 184,                  //!< Автосброс счетчика АПВ
+  CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT = 185,                  //!< Уставка срабатывания защиты
+  CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT = 186,               //!< Условие АПВ уставка
+  CCS_PROT_MOTOR_ASYNC_PARAMETER = 187,                      //!< Уставка параметр защиты
+  CCS_PROT_MOTOR_ASYNC_RESTART_FLAG = 188,                   //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_MOTOR_ASYNC_STATE = 189,                          //!< Текущий параметр состояние автомата
+  CCS_PROT_MOTOR_ASYNC_TIME = 190,                           //!< Текущий параметр Фиксированное время
+  CCS_PROT_MOTOR_ASYNC_RESTART_COUNT = 191,                  //!< Текущий параметр Количество АПВ
+  CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME = 192,             //!< Текущий параметр Время первого АПВ
+  CCS_PROT_MOTOR_OUT_OF_SYNC_MODE = 193,                     //!< Защита "Рассинхронизация ПВЭД"
+  CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT = 194,                  //!< Параметр запрещающий запуск
+  CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY = 195,              //!< Задержка активации уставка
+  CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY = 196,               //!< Задержка срабатывания уставка
+  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY = 197,            //!< Задержка АПВ уставка
+  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT = 198,            //!< Количество АПВ уставка
+  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET = 199,            //!< Автосброс счетчика АПВ
+  CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT = 200,            //!< Уставка срабатывания защиты
+  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT = 201,         //!< Условие АПВ уставка
+  CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER = 202,                //!< Уставка параметр защиты
+  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG = 203,             //!< Уставка параметр защиты
+  CCS_PROT_MOTOR_OUT_OF_SYNC_STATE = 204,                    //!< Текущий параметр состояние автомата
+  CCS_PROT_MOTOR_OUT_OF_SYNC_TIME = 205,                     //!< Текущий параметр Фиксированное время
+  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT = 206,            //!< Текущий параметр Количество АПВ
+  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME = 207,       //!< Текущий параметр Время первого АПВ
+  CCS_PROT_DHS_PRESSURE_INTAKE_MODE = 208,                   //!< Защита "Давление на приёме насоса"
+  CCS_PROT_DHS_PRESSURE_INTAKE_PREVENT = 209,                //!< Параметр запрещающий запуск
+  CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY = 210,            //!< Задержка активации уставка
+  CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY = 211,             //!< Задержка срабатывания уставка
+  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY = 212,          //!< Задержка АПВ уставка
+  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT = 213,          //!< Количество АПВ уставка
+  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET = 214,          //!< Автосброс счетчика АПВ
+  CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT = 215,          //!< Уставка срабатывания защиты
+  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT = 216,       //!< Условие АПВ уставка
+  CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER = 217,              //!< Уставка параметр защиты
+  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_FLAG = 218,           //!< Уставка параметр защиты
+  CCS_PROT_DHS_PRESSURE_INTAKE_STATE = 219,                  //!< Текущий параметр состояние автомата
+  CCS_PROT_DHS_PRESSURE_INTAKE_TIME = 220,                   //!< Текущий параметр Фиксированное время
+  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_COUNT = 221,          //!< Текущий параметр Количество АПВ
+  CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_FIRST_TIME = 222,     //!< Текущий параметр Время первого АПВ
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE = 223,                 //!< Защита "Температура двигателя"
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_PREVENT = 224,              //!< Параметр запрещающий запуск
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY = 225,          //!< Задержка активации уставка
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY = 226,           //!< Задержка срабатывания уставка
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY = 227,        //!< Задержка АПВ уставка
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_LIMIT = 228,        //!< Количество АПВ уставка
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_RESET = 229,        //!< Автосброс счетчика АПВ
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_SETPOINT = 230,        //!< Уставка срабатывания защиты
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_SETPOINT = 231,     //!< Условие АПВ уставка
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_PARAMETER = 232,            //!< Уставка параметр защиты
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_FLAG = 233,         //!< Уставка параметр защиты
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_STATE = 234,                //!< Текущий параметр состояние автомата
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_TIME = 235,                 //!< Текущий параметр Фиксированное время
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_COUNT = 236,        //!< Текущий параметр Количество АПВ
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_FIRST_TIME = 237,   //!< Текущий параметр Время первого АПВ
+  CCS_PROT_DHS_RESISTANCE_MODE = 238,                        //!< Защита "Сопротивление изоляции"
+  CCS_PROT_DHS_RESISTANCE_PREVENT = 239,                     //!< Параметр запрещающий запуск
+  CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY = 240,                 //!< Задержка активации уставка
+  CCS_PROT_DHS_RESISTANCE_TRIP_DELAY = 241,                  //!< Задержка срабатывания уставка
+  CCS_PROT_DHS_RESISTANCE_RESTART_DELAY = 242,               //!< Задержка АПВ уставка
+  CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT = 243,               //!< Количество АПВ уставка
+  CCS_PROT_DHS_RESISTANCE_RESTART_RESET = 244,               //!< Автосброс счетчика АПВ
+  CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT = 245,               //!< Уставка срабатывания защиты
+  CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT = 246,            //!< Условие АПВ уставка
+  CCS_PROT_DHS_RESISTANCE_PARAMETER = 247,                   //!< Уставка Параметр защиты, для этой защиты работать в режиме пониженной изоляции
+  CCS_PROT_DHS_RESISTANCE_RESTART_FLAG = 248,                //!< Уставка параметр защиты
+  CCS_PROT_DHS_RESISTANCE_STATE = 249,                       //!< Текущий параметр состояние автомата
+  CCS_PROT_DHS_RESISTANCE_TIME = 250,                        //!< Текущий параметр Фиксированное время
+  CCS_PROT_DHS_RESISTANCE_RESTART_COUNT = 251,               //!< Текущий параметр Количество АПВ
+  CCS_PROT_DHS_RESISTANCE_RESTART_FIRST_TIME = 252,          //!< Текущий параметр Время первого АПВ
+  CCS_PROT_DHS_VIBRATION_MODE = 253,                         //!< Защита "Вибрация двигателя"
+  CCS_PROT_DHS_VIBRATION_PREVENT = 254,                      //!< Параметр запрещающий запуск
+  CCS_PROT_DHS_VIBRATION_ACTIV_DELAY = 255,                  //!< Задержка активации уставка
+  CCS_PROT_DHS_VIBRATION_TRIP_DELAY = 256,                   //!< Задержка срабатывания уставка
+  CCS_PROT_DHS_VIBRATION_RESTART_DELAY = 257,                //!< Задержка АПВ уставка
+  CCS_PROT_DHS_VIBRATION_RESTART_LIMIT = 258,                //!< Количество АПВ уставка
+  CCS_PROT_DHS_VIBRATION_RESTART_RESET = 259,                //!< Автосброс счетчика АПВ
+  CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT = 260,                //!< Уставка срабатывания защиты
+  CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT = 261,             //!< Условие АПВ уставка
+  CCS_PROT_DHS_VIBRATION_PARAMETER = 262,                    //!< Уставка параметр защиты
+  CCS_PROT_DHS_VIBRATION_RESTART_FLAG = 263,                 //!< Уставка параметр защиты
+  CCS_PROT_DHS_VIBRATION_STATE = 264,                        //!< Текущий параметр состояние автомата
+  CCS_PROT_DHS_VIBRATION_TIME = 265,                         //!< Текущий параметр Фиксированное время
+  CCS_PROT_DHS_VIBRATION_RESTART_COUNT = 266,                //!< Текущий параметр Количество АПВ
+  CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME = 267,           //!< Текущий параметр Время первого АПВ
+  CCS_PROT_AI_1_MODE = 268,                                  //!< Защиты Аналоговый вход 1
+  CCS_PROT_AI_1_PREVENT = 269,                               //!< Параметр запрещающий запуск
+  CCS_PROT_AI_1_ACTIV_DELAY = 270,                           //!< Задержка активации уставка
+  CCS_PROT_AI_1_TRIP_DELAY = 271,                            //!< Задержка срабатывания уставка
+  CCS_PROT_AI_1_RESTART_DELAY = 272,                         //!< Задержка АПВ уставка
+  CCS_PROT_AI_1_RESTART_LIMIT = 273,                         //!< Количество АПВ уставка
+  CCS_PROT_AI_1_RESTART_RESET = 274,                         //!< Автосброс счетчика АПВ
+  CCS_PROT_AI_1_TRIP_SETPOINT = 275,                         //!< Уставка срабатывания защиты
+  CCS_PROT_AI_1_RESTART_SETPOINT = 276,                      //!< Условие АПВ уставка
+  CCS_PROT_AI_1_PARAMETER = 277,                             //!< Уставка параметр защиты
+  CCS_PROT_AI_1_RESTART_FLAG = 278,                          //!< Уставка параметр защиты
+  CCS_PROT_AI_1_STATE = 279,                                 //!< Текущий параметр состояние автомата
+  CCS_PROT_AI_1_TIME = 280,                                  //!< Текущий параметр Фиксированное время
+  CCS_PROT_AI_1_RESTART_COUNT = 281,                         //!< Текущий параметр Количество АПВ
+  CCS_PROT_AI_1_RESTART_FIRST_TIME = 282,                    //!< Текущий параметр Время первого АПВ
+  CCS_PROT_AI_2_MODE = 283,                                  //!< Защиты Аналоговый вход 2
+  CCS_PROT_AI_2_PREVENT = 284,                               //!< Параметр запрещающий запуск
+  CCS_PROT_AI_2_ACTIV_DELAY = 285,                           //!< Задержка активации уставка
+  CCS_PROT_AI_2_TRIP_DELAY = 286,                            //!< Задержка срабатывания уставка
+  CCS_PROT_AI_2_RESTART_DELAY = 287,                         //!< Задержка АПВ уставка
+  CCS_PROT_AI_2_RESTART_LIMIT = 288,                         //!< Количество АПВ уставка
+  CCS_PROT_AI_2_RESTART_RESET = 289,                         //!< Автосброс счетчика АПВ
+  CCS_PROT_AI_2_TRIP_SETPOINT = 290,                         //!< Уставка срабатывания защиты
+  CCS_PROT_AI_2_RESTART_SETPOINT = 291,                      //!< Условие АПВ уставка
+  CCS_PROT_AI_2_PARAMETER = 292,                             //!< Уставка параметр защиты
+  CCS_PROT_AI_2_RESTART_FLAG = 293,                          //!< Уставка параметр защиты
+  CCS_PROT_AI_2_STATE = 294,                                 //!< Текущий параметр состояние автомата
+  CCS_PROT_AI_2_TIME = 295,                                  //!< Текущий параметр Фиксированное время
+  CCS_PROT_AI_2_RESTART_COUNT = 296,                         //!< Текущий параметр Количество АПВ
+  CCS_PROT_AI_2_RESTART_FIRST_TIME = 297,                    //!< Текущий параметр Время первого АПВ
+  CCS_PROT_AI_3_MODE = 298,                                  //!< Защиты Аналоговый вход 3
+  CCS_PROT_AI_3_PREVENT = 299,                               //!< Параметр запрещающий запуск
+  CCS_PROT_AI_3_ACTIV_DELAY = 300,                           //!< Задержка активации уставка
+  CCS_PROT_AI_3_TRIP_DELAY = 301,                            //!< Задержка срабатывания уставка
+  CCS_PROT_AI_3_RESTART_DELAY = 302,                         //!< Задержка АПВ уставка
+  CCS_PROT_AI_3_RESTART_LIMIT = 303,                         //!< Количество АПВ уставка
+  CCS_PROT_AI_3_RESTART_RESET = 304,                         //!< Автосброс счетчика АПВ
+  CCS_PROT_AI_3_TRIP_SETPOINT = 305,                         //!< Уставка срабатывания защиты
+  CCS_PROT_AI_3_RESTART_SETPOINT = 306,                      //!< Условие АПВ уставка
+  CCS_PROT_AI_3_PARAMETER = 307,                             //!< Уставка параметр защиты
+  CCS_PROT_AI_3_RESTART_FLAG = 308,                          //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_AI_3_STATE = 309,                                 //!< Текущий параметр состояние автомата
+  CCS_PROT_AI_3_TIME = 310,                                  //!< Текущий параметр Фиксированное время
+  CCS_PROT_AI_3_RESTART_COUNT = 311,                         //!< Текущий параметр Количество АПВ
+  CCS_PROT_AI_3_RESTART_FIRST_TIME = 312,                    //!< Текущий параметр Время первого АПВ
+  CCS_PROT_AI_4_MODE = 313,                                  //!< Защиты Аналоговый вход 4
+  CCS_PROT_AI_4_PREVENT = 314,                               //!< Параметр запрещающий запуск
+  CCS_PROT_AI_4_ACTIV_DELAY = 315,                           //!< Задержка активации уставка
+  CCS_PROT_AI_4_TRIP_DELAY = 316,                            //!< Задержка срабатывания уставка
+  CCS_PROT_AI_4_RESTART_DELAY = 317,                         //!< Задержка АПВ уставка
+  CCS_PROT_AI_4_RESTART_LIMIT = 318,                         //!< Количество АПВ уставка
+  CCS_PROT_AI_4_RESTART_RESET = 319,                         //!< Автосброс счетчика АПВ
+  CCS_PROT_AI_4_TRIP_SETPOINT = 320,                         //!< Уставка срабатывания защиты
+  CCS_PROT_AI_4_RESTART_SETPOINT = 321,                      //!< Условие АПВ уставка
+  CCS_PROT_AI_4_PARAMETER = 322,                             //!< Уставка параметр защиты
+  CCS_PROT_AI_4_RESTART_FLAG = 323,                          //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_AI_4_STATE = 324,                                 //!< Текущий параметр состояние автомата
+  CCS_PROT_AI_4_TIME = 325,                                  //!< Текущий параметр Фиксированное время
+  CCS_PROT_AI_4_RESTART_COUNT = 326,                         //!< Текущий параметр Количество АПВ
+  CCS_PROT_AI_4_RESTART_FIRST_TIME = 327,                    //!< Текущий параметр Время первого АПВ
+  CCS_PROT_DI_1_MODE = 328,                                  //!< Защиты по дискретным входам
+  CCS_PROT_DI_1_PREVENT = 329,                               //!< Параметр запрещающий запуск
+  CCS_PROT_DI_1_ACTIV_DELAY = 330,                           //!< Задержка активации уставка
+  CCS_PROT_DI_1_TRIP_DELAY = 331,                            //!< Задержка срабатывания уставка
+  CCS_PROT_DI_1_RESTART_DELAY = 332,                         //!< Задержка АПВ уставка
+  CCS_PROT_DI_1_RESTART_LIMIT = 333,                         //!< Количество АПВ уставка
+  CCS_PROT_DI_1_RESTART_RESET = 334,                         //!< Автосброс счетчика АПВ
+  CCS_PROT_DI_1_TRIP_SETPOINT = 335,                         //!< Уставка срабатывания защиты
+  CCS_PROT_DI_1_RESTART_SETPOINT = 336,                      //!< Условие АПВ уставка
+  CCS_PROT_DI_1_PARAMETER = 337,                             //!< Уставка параметр защиты
+  CCS_PROT_DI_1_RESTART_FLAG = 338,                          //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_DI_1_STATE = 339,                                 //!< Текущий параметр состояние автомата
+  CCS_PROT_DI_1_TIME = 340,                                  //!< Текущий параметр Фиксированное время
+  CCS_PROT_DI_1_RESTART_COUNT = 341,                         //!< Текущий параметр Количество АПВ
+  CCS_PROT_DI_1_RESTART_FIRST_TIME = 342,                    //!< Текущий параметр Время первого АПВ
+  CCS_PROT_DI_2_MODE = 343,                                  //!< Защита дискретный вход 2
+  CCS_PROT_DI_2_PREVENT = 344,                               //!< Параметр запрещающий запуск
+  CCS_PROT_DI_2_ACTIV_DELAY = 345,                           //!< Задержка активации уставка
+  CCS_PROT_DI_2_TRIP_DELAY = 346,                            //!< Задержка срабатывания уставка
+  CCS_PROT_DI_2_RESTART_DELAY = 347,                         //!< Задержка АПВ уставка
+  CCS_PROT_DI_2_RESTART_LIMIT = 348,                         //!< Количество АПВ уставка
+  CCS_PROT_DI_2_RESTART_RESET = 349,                         //!< Автосброс счетчика АПВ
+  CCS_PROT_DI_2_TRIP_SETPOINT = 350,                         //!< Уставка срабатывания защиты
+  CCS_PROT_DI_2_RESTART_SETPOINT = 351,                      //!< Условие АПВ уставка
+  CCS_PROT_DI_2_PARAMETER = 352,                             //!< Уставка параметр защиты
+  CCS_PROT_DI_2_RESTART_FLAG = 353,                          //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_DI_2_STATE = 354,                                 //!< Текущий параметр состояние автомата
+  CCS_PROT_DI_2_TIME = 355,                                  //!< Текущий параметр Фиксированное время
+  CCS_PROT_DI_2_RESTART_COUNT = 356,                         //!< Текущий параметр Количество АПВ
+  CCS_PROT_DI_2_RESTART_FIRST_TIME = 357,                    //!< Текущий параметр Время первого АПВ
+  CCS_PROT_DI_3_MODE = 358,                                  //!< Защита дискретный вход 3
+  CCS_PROT_DI_3_PREVENT = 359,                               //!< Параметр запрещающий запуск
+  CCS_PROT_DI_3_ACTIV_DELAY = 360,                           //!< Задержка активации уставка
+  CCS_PROT_DI_3_TRIP_DELAY = 361,                            //!< Задержка срабатывания уставка
+  CCS_PROT_DI_3_RESTART_DELAY = 362,                         //!< Задержка АПВ уставка
+  CCS_PROT_DI_3_RESTART_LIMIT = 363,                         //!< Количество АПВ уставка
+  CCS_PROT_DI_3_RESTART_RESET = 364,                         //!< Автосброс счетчика АПВ
+  CCS_PROT_DI_3_TRIP_SETPOINT = 365,                         //!< Уставка срабатывания защиты
+  CCS_PROT_DI_3_RESTART_SETPOINT = 366,                      //!< Условие АПВ уставка
+  CCS_PROT_DI_3_PARAMETER = 367,                             //!< Уставка параметр защиты
+  CCS_PROT_DI_3_RESTART_FLAG = 368,                          //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_DI_3_STATE = 369,                                 //!< Текущий параметр состояние автомата
+  CCS_PROT_DI_3_TIME = 370,                                  //!< Текущий параметр Фиксированное время
+  CCS_PROT_DI_3_RESTART_COUNT = 371,                         //!< Текущий параметр Количество АПВ
+  CCS_PROT_DI_3_RESTART_FIRST_TIME = 372,                    //!< Текущий параметр Время первого АПВ
+  CCS_PROT_DI_4_MODE = 373,                                  //!< Защита дискретный вход 4
+  CCS_PROT_DI_4_PREVENT = 374,                               //!< Параметр запрещающий запуск
+  CCS_PROT_DI_4_ACTIV_DELAY = 375,                           //!< Задержка активации уставка
+  CCS_PROT_DI_4_TRIP_DELAY = 376,                            //!< Задержка срабатывания уставка
+  CCS_PROT_DI_4_RESTART_DELAY = 377,                         //!< Задержка АПВ уставка
+  CCS_PROT_DI_4_RESTART_LIMIT = 378,                         //!< Количество АПВ уставка
+  CCS_PROT_DI_4_RESTART_RESET = 379,                         //!< Автосброс счетчика АПВ
+  CCS_PROT_DI_4_TRIP_SETPOINT = 380,                         //!< Уставка срабатывания защиты
+  CCS_PROT_DI_4_RESTART_SETPOINT = 381,                      //!< Условие АПВ уставка
+  CCS_PROT_DI_4_PARAMETER = 382,                             //!< Уставка параметр защиты
+  CCS_PROT_DI_4_RESTART_FLAG = 383,                          //!< Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_DI_4_STATE = 384,                                 //!< Текущий параметр состояние автомата
+  CCS_PROT_DI_4_TIME = 385,                                  //!< Текущий параметр Фиксированное время
+  CCS_PROT_DI_4_RESTART_COUNT = 386,                         //!< Текущий параметр Количество АПВ
+  CCS_PROT_DI_4_RESTART_FIRST_TIME = 387,                    //!< Текущий параметр Время первого АПВ
+  CCS_PROT_OTHER_LIMIT_RESTART_MODE = 388,                   //!< Защита "Превышения числа пусков"
+  CCS_PROT_OTHER_LIMIT_RESTART_PREVENT = 389,                //!< 
+  CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY = 390,            //!< 
+  CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY = 391,             //!< 
+  CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY = 392,          //!< 
+  CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT = 393,          //!< 
+  CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET = 394,          //!< 
+  CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT = 395,          //!< 
+  CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT = 396,       //!< 
+  CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER = 397,              //!< 
+  CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG = 398,           //!< 
+  CCS_PROT_OTHER_LIMIT_RESTART_STATE = 399,                  //!< 
+  CCS_PROT_OTHER_LIMIT_RESTART_TIME = 400,                   //!< 
+  CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT = 401,          //!< Текущий параметр Время первого АПВ
+  CCS_PROT_OTHER_LOCK_DOOR_MODE = 402,                       //!< Защита "Блокировка силового отсека"
+  CCS_PROT_OTHER_LOCK_DOOR_PREVENT = 403,                    //!< Параметр запрещающий запуск
+  CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY = 404,                //!< Задержка активации уставка
+  CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY = 405,                 //!< Задержка срабатывания уставка
+  CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY = 406,              //!< Задержка АПВ уставка
+  CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT = 407,              //!< Количество АПВ уставка
+  CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET = 408,              //!< Автосброс счетчика АПВ
+  CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT = 409,              //!< Уставка срабатывания защиты
+  CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT = 410,           //!< Условие АПВ уставка
+  CCS_PROT_OTHER_LOCK_DOOR_PARAMETER = 411,                  //!< Уставка параметр защиты
+  CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG = 412,               //!< Уставка параметр защиты
+  CCS_PROT_OTHER_LOCK_DOOR_STATE = 413,                      //!< Текущий параметр состояние автомата
+  CCS_PROT_OTHER_LOCK_DOOR_TIME = 414,                       //!< Текущий параметр Фиксированное время
+  CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT = 415,              //!< Текущий параметр Количество АПВ
+  CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME = 416,         //!< Текущий параметр Время первого АПВ
+  CCS_PROT_OTHER_VSD_MODE = 417,                             //!< Защита "Аппаратные защиты ЧРП"
+  CCS_PROT_OTHER_VSD_PREVENT = 418,                          //!< Параметр запрещающий запуск
+  CCS_PROT_OTHER_VSD_ACTIV_DELAY = 419,                      //!< Задержка активации уставка
+  CCS_PROT_OTHER_VSD_TRIP_DELAY = 420,                       //!< Задержка срабатывания уставка
+  CCS_PROT_OTHER_VSD_RESTART_DELAY = 421,                    //!< Задержка АПВ уставка
+  CCS_PROT_OTHER_VSD_RESTART_LIMIT = 422,                    //!< Количество АПВ уставка
+  CCS_PROT_OTHER_VSD_RESTART_RESET = 423,                    //!< Автосброс счетчика АПВ
+  CCS_PROT_OTHER_VSD_TRIP_SETPOINT = 424,                    //!< Уставка срабатывания защиты
+  CCS_PROT_OTHER_VSD_RESTART_SETPOINT = 425,                 //!< Условие АПВ уставка
+  CCS_PROT_OTHER_VSD_PARAMETER = 426,                        //!< Уставка параметр защиты
+  CCS_PROT_OTHER_VSD_RESTART_FLAG = 427,                     //!< Уставка параметр защиты
+  CCS_PROT_OTHER_VSD_STATE = 428,                            //!< Текущий параметр состояние автомата
+  CCS_PROT_OTHER_VSD_TIME = 429,                             //!< Текущий параметр Фиксированное время
+  CCS_PROT_OTHER_VSD_RESTART_COUNT = 430,                    //!< Текущий параметр Количество АПВ
+  CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME = 431,               //!< Текущий параметр Время первого АПВ
+  CCS_PROT_OTHER_IMB_MODE = 432,                             //!< Защита "Контроль УКИ"
+  CCS_PROT_OTHER_IMB_PREVENT = 433,                          //!< Параметр запрещающий запуск
+  CCS_PROT_OTHER_IMB_ACTIV_DELAY = 434,                      //!< Задержка активации уставка
+  CCS_PROT_OTHER_IMB_TRIP_DELAY = 435,                       //!< Задержка срабатывания уставка
+  CCS_PROT_OTHER_IMB_RESTART_DELAY = 436,                    //!< Задержка АПВ уставка
+  CCS_PROT_OTHER_IMB_RESTART_LIMIT = 437,                    //!< Количество АПВ уставка
+  CCS_PROT_OTHER_IMB_RESTART_RESET = 438,                    //!< Автосброс счетчика АПВ
+  CCS_PROT_OTHER_IMB_TRIP_SETPOINT = 439,                    //!< Уставка срабатывания защиты
+  CCS_PROT_OTHER_IMB_RESTART_SETPOINT = 440,                 //!< Условие АПВ уставка
+  CCS_PROT_OTHER_IMB_PARAMETER = 441,                        //!< Уставка параметр защиты
+  CCS_PROT_OTHER_IMB_RESTART_FLAG = 442,                     //!< Уставка параметр защиты
+  CCS_PROT_OTHER_IMB_STATE = 443,                            //!< Текущий параметр состояние автомата
+  CCS_PROT_OTHER_IMB_TIME = 444,                             //!< Текущий параметр Фиксированное время
+  CCS_PROT_OTHER_IMB_RESTART_COUNT = 445,                    //!< Текущий параметр Количество АПВ
+  CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME = 446,               //!< Текущий параметр Время первого АПВ
+  CCS_RGM_PERIODIC_MODE = 447,                               //!< Режим периодический
+  CCS_RGM_PERIODIC_STATE = 448,                              //!< 
+  CCS_RGM_PERIODIC_RUN_PERIOD = 449,                         //!< 
+  CCS_RGM_PERIODIC_STOP_PERIOD = 450,                        //!< 
+  CCS_RGM_PERIODIC_RUN_BEGIN_TIME = 451,                     //!< 
+  CCS_RGM_PERIODIC_RUN_TIME_TO_END = 452,                    //!< 
+  CCS_RGM_PERIODIC_STOP_BEGIN_TIME = 453,                    //!< 
+  CCS_RGM_PERIODIC_STOP_TIME_TO_END = 454,                   //!< 
+  CCS_RGM_ALTERNATION_FREQ_MODE = 455,                       //!< Режим чередования частот
+  CCS_RGM_ALTERNATION_FREQ_FREQ_1 = 456,                     //!< Режим чередования частот частота 1
+  CCS_RGM_ALTERNATION_FREQ_TIMER_1 = 457,                    //!< Режим чередования частот время работы на частоте 1
+  CCS_RGM_ALTERNATION_FREQ_TIMER_1_END = 458,                //!< 
+  CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1 = 459,                //!< Режим чередования частот уставка ЗСП
+  CCS_RGM_ALTERNATION_FREQ_FREQ_2 = 460,                     //!< Режим чередования частот частота 2
+  CCS_RGM_ALTERNATION_FREQ_TIMER_2 = 461,                    //!< Режим чередования частот время работы на частоте 2
+  CCS_RGM_ALTERNATION_FREQ_TIMER_2_END = 462,                //!< 
+  CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2 = 463,                //!< Режим чередования частот уставка ЗСП 2
+  CCS_RGM_CHANGE_FREQ_MODE = 464,                            //!< Режим программного изменения частоты
+  CCS_RGM_CHANGE_FREQ_BEGIN_FREQ = 465,                      //!< Начальная частота
+  CCS_RGM_CHANGE_FREQ_END_FREQ = 466,                        //!< Конечная частота
+  CCS_RGM_CHANGE_FREQ_PERIOD = 467,                          //!< Время вывода на режим
+  CCS_RGM_CHANGE_FREQ_BEGIN_TIME = 468,                      //!< Зафиксированное время начала отсчета текущего шага частоты
+  CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP = 469,                 //!< Период шага частоты
+  CCS_RGM_MODE_DATE_TIME = 470,                              //!< Параметры ВНР
+  CCS_RGM_MODE_CURRENT = 471,                                //!< 
+  CCS_RGM_MODE_VOLTAGE = 472,                                //!< 
+  CCS_RGM_MODE_LOAD = 473,                                   //!< 
+  CCS_RGM_MAINTENANCE_PARAM_MODE = 474,                      //!< Режим поддержания параметра включение
+  CCS_RGM_MAINTENANCE_PARAM = 475,                           //!< Режим поддержания параметра параметра
+  CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE = 476,                //!< Режим поддержания параметра зависимость
+  CCS_RGM_MAINTENANCE_PARAM_SETPOINT = 477,                  //!< Режим поддержания параметра поддержка значения
+  CCS_RGM_MAINTENANCE_PARAM_PERIOD = 478,                    //!< Режим поддержания параметра период регулирования
+  CCS_RGM_MAINTENANCE_PARAM_PROP = 479,                      //!< Режим поддержания параметра пропорциональный коэффициент
+  CCS_RGM_MAINTENANCE_PARAM_INT = 480,                       //!< Режим поддержания параметра интегральный коэффициент
+  CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ = 481,                  //!< Режим поддержания параметра мин рабочая частота
+  CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ = 482,                  //!< Режим поддержания параметра макс рабочая частота
+  CCS_RGM_JARRING_MODE = 483,                                //!< Режим встряхивания
+  CCS_RGM_JARRING_PERIOD = 484,                              //!< Период экскурсий частоты режима встряхивания.
+  CCS_RGM_JARRING_UPDFREQ = 485,                             //!< Величина прибавки частоты вращения выше уставки в режиме встряхивания
+  CCS_RGM_JARRING_UPTIME = 486,                              //!< Время прибавки частоты вращения выше уставки в режиме встряхивания
+  CCS_RGM_JARRING_DOWNDFREQ = 487,                           //!< Величина уменьшения частоты вращения ниже уставки в режиме встряхивания
+  CCS_RGM_JARRING_DOWNTIME = 488,                            //!< Время уменьшения частоты вращения ниже уставки в режиме встряхивания
+  CCS_RGM_HEAT_CABLE_MODE = 489,                             //!< Режим Учёт нагрева кабеля
+  CCS_RGM_HEAT_CABLE_RESISTANCE_20 = 490,                    //!< Режим Учёт нагрева кабеля сопротивление при 20с
+  CCS_RGM_HEAT_CABLE_RESISTANCE_80 = 491,                    //!< Режим Учёт нагрева кабеля сопротивление при 80с
+  CCS_RGM_HEAT_CABLE_MODE_CURRENT = 492,                     //!< Режим Учёт нагрева кабеля номинальный ток кабеля
+  CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION = 493,              //!< Режим Учёт нагрева кабеля время нагрева
+  CCS_RGM_OPTIM_VOLTAGE_MODE = 494,                          //!< Режим оптимизации напряжения вкл
+  CCS_RGM_OPTIM_VOLTAGE_SCALE = 495,                         //!< Режим оптимизации напряжения диапазон
+  CCS_RGM_OPTIM_VOLTAGE_STEP = 496,                          //!< Режим оптимизации напряжения шаг
+  CCS_RGM_OPTIM_VOLTAGE_DELAY_REACTION = 497,                //!< Режим оптимизации напряжения первый цикл после запуска
+  CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART = 498,                 //!< Режим оптимизации напряжения периодичность оптимизации
+  CCS_RGM_PUMP_GAS_MODE = 499,                               //!< Режим прокачки газа
+  CCS_RGM_PUMP_GAS_SETPOINT = 500,                           //!< Режим прокачки газа
+  CCS_RGM_PUMP_GAS_DELAY_REACTION = 501,                     //!< Режим прокачки газа
+  CCS_RGM_PUMP_GAS_LIMIT_RESTART = 502,                      //!< Режим прокачки газа
+  CCS_RGM_CURRENT_LIMIT_MODE = 503,                          //!< Режим ограничения тока
+  CCS_RGM_CURRENT_LIMIT_SETPOINT = 504,                      //!< Режим ограничения тока уставка
+  CCS_RGM_CURRENT_LIMIT_STEPDOWN = 505,                      //!< Режим ограничения тока шаг снижения частоты
+  CCS_RGM_CURRENT_LIMIT_DELAY_REACTION = 506,                //!< Режим ограничения тока задержка срабатывания
+  CCS_RGM_CURRENT_LIMIT_DELAY_RESTART = 507,                 //!< Режим ограничения тока задержка АПВ
+  CCS_COEF_VOLTAGE_IN_A = 508,                               //!< Коэффициент корректировки входного напряжения
+  CCS_COEF_VOLTAGE_IN_B = 509,                               //!< 
+  CCS_COEF_VOLTAGE_IN_C = 510,                               //!< 
+  CCS_COEF_OUT_CURRENT_1 = 511,                              //!< Коэффициент корректировки выходного тока фаза U
+  CCS_COEF_OUT_CURRENT_2 = 512,                              //!< Коэффициент корректировки выходного тока фаза V
+  CCS_COEF_OUT_CURRENT_3 = 513,                              //!< Коэффициент корректировки выходного тока фаза W
+  CCS_COEF_RESISTANCE_ISOLATION = 514,                       //!< Коэффициент корректировки сопротивления изоляции
+  CCS_NUMBER_CDNG = 515,                                     //!< Номер ЦДНГ
+  CCS_NUMBER_BUSH = 516,                                     //!< Номер куста
+  CCS_NUMBER_WELL = 517,                                     //!< Номер скважины
+  CCS_COUNT_START = 518,                                     //!< Количество пусков
+  CCS_PROT_OVERLOAD_COUNT_STOP = 519,                        //!< Количество отключений по перезрузу
+  CCS_PROT_UNDERLOAD_COUNT_STOP = 520,                       //!< Количество отключений по недогрузу
+  CCS_PROT_OTHER_COUNT_STOP = 521,                           //!< Количество отключений по другим защитам
+  CCS_PROT_VOLTAGE_COUNT_RESTART = 522,                      //!< Количество АПВ после остановов по напряжению
+  CCS_PROT_OVERLOAD_COUNT_RESTART = 523,                     //!< Количество АПВ после остановов по перегрузу
+  CCS_PROT_UNDERLOAD_COUNT_RESTART = 524,                    //!< Количество АПВ после остановов по недогрузу
+  CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART = 525,      //!< Количество АПВ после остановов по дисбалансу токов
+  CCS_GENERAL_RUN_DATE_TIME = 526,                           //!< Общее время работы СУ
+  CCS_GENERAL_STOP_DATE_TIME = 527,                          //!< Общее время простоя СУ
+  CCS_RUN_TIME = 528,                                        //!< Текущая наработка
+  CCS_STOP_TIME = 529,                                       //!< Текущий простой
+  CCS_RGM_TIMER = 530,                                       //!< Время до изменения режима
+  CCS_RESTART_TIMER = 531,                                   //!< Время до запуска
+  CCS_LAST_RUN_DATE_TIME = 532,                              //!< Дата время последнего включения
+  CCS_LAST_RUN_REASON = 533,                                 //!< Причина последнего пуска
+  CCS_LAST_STOP_DATE_TIME = 534,                             //!< Дата время последнего отключения
+  CCS_LAST_STOP_REASON = 535,                                //!< Причина носледнего отключения
+  CCS_PREVIEW_FREQUENCY_DATE_TIME = 536,                     //!< Дата время изменения частоты
+  CCS_PREVIEW_FREQUENCY = 537,                               //!< Предпоследняя частота
+  CCS_TYPE_CCS = 538,                                        //!< Тип КСУ
+  CCS_CODE_PRODUCTION_CCS = 539,                             //!< Код производителя КСУ
+  CCS_NUM_PRODUCTION_CCS = 540,                              //!< Заводской номер КСУ
+  CCS_VERSION_SW_CCS = 541,                                  //!< Версия ПО КСУ
+  CCS_VERSION_SW_MS = 542,                                   //!< Версия ПО МС
+  CCS_VERSION_SW_VSD = 543,                                  //!< Версия ПО ПЧ
+  CCS_DATE_PRODUCTION_CCS = 544,                             //!< Дата изготовления КСУ
+  CCS_DATE_INSTALL_SW_CCS = 545,                             //!< Дата установки ПО КСУ
+  CCS_DATE_CREATE_SW_CCS = 546,                              //!< ДАта генерации ПО КСУ
+  CCS_DATE_INSTALL_SW_VSD = 547,                             //!< Дата установки ПО ПЧ
+  CCS_TYPE_SU = 548,                                         //!< Тип СУ
+  CCS_CODE_PRODUCTION_SU = 549,                              //!< Код завода изготовителя СУ
+  CCS_NUM_PRODUCTION_SU = 550,                               //!< Заводской номер СУ
+  CCS_DATE_PRODUCTION_SU = 551,                              //!< Дата изготовления СУ
+  CCS_NOTE_1 = 552,                                          //!< Примечание 1
+  CCS_NOTE_2 = 553,                                          //!< Примечание 2
+  CCS_NOTE_3 = 554,                                          //!< Примечание 3
+  CCS_NOTE_4 = 555,                                          //!< Примечание 4
+  CCS_NOTE_5 = 556,                                          //!< Примечание 5
+  CCS_NOTE_6 = 557,                                          //!< Примечание 6
+  CCS_NOTE_7 = 558,                                          //!< Примечание 7
+  CCS_NOTE_8 = 559,                                          //!< Примечание 8
+  CCS_NOTE_9 = 560,                                          //!< Примечание 9
+  CCS_NOTE_10 = 561,                                         //!< Примечание 10
+  CCS_DATE_TIME = 562,                                       //!< Дата время в формате POSIX
+  CCS_DATE_TIME_YEAR = 563,                                  //!< Дата время год
+  CCS_DATE_TIME_MONTH = 564,                                 //!< Дата время месяц
+  CCS_DATE_TIME_DAY = 565,                                   //!< Дата время дни
+  CCS_DATE_TIME_HOUR = 566,                                  //!< Дата время часы
+  CCS_DATE_TIME_MIN = 567,                                   //!< Дата время минуты
+  CCS_DATE_TIME_SEC = 568,                                   //!< Дата время секунды
+  CCS_DATE_TIME_MS = 569,                                    //!< Дата время мс
+  CCS_LANGUAGE = 570,                                        //!< Язык интерфейса
+  CCS_PASSWORD_ENEBLE = 571,                                 //!< Включение системы паролей
+  CCS_PASSWORD_LEVEL = 572,                                  //!< Текущий уровень доступа
+  CCS_PASSWORD_LEVEL_1 = 573,                                //!< Пароль 1 уровня
+  CCS_PASSWORD_LEVEL_2 = 574,                                //!< Пароль 2 уровня
+  CCS_PASSWORD_LEVEL_3 = 575,                                //!< Пароль 3 уровня
+  CCS_PASSWORD_LEVEL_4 = 576,                                //!< Пароль 4 уровня
+  CCS_PASSWORD_LEVEL_5 = 577,                                //!< Пароль 5 уровня
+  CCS_SCADA_TYPE = 578,                                      //!< Протокол телемеханики
+  CCS_SCADA_CODE = 579,                                      //!< Версия протокола телемеханики
+  CCS_SCADA_ADDRESS = 580,                                   //!< Адресу СУ в телемеханике
+  CCS_SCADA_BYTERATE = 581,                                  //!< Скорость опроса в телемеханике
+  CCS_SCADA_PARITY = 582,                                    //!< Чётность в телемеханике
+  CCS_SCADA_STOPBIT = 583,                                   //!< Количество стоп-бит в телемеханике
+  CCS_SCADA_DELAY = 584,                                     //!< Задержка ответа в телемеханкие
+  CCS_UNIT_PRESSURE = 585,                                   //!< Единицы измерения давления
+  CCS_UNIT_TEMPERATURE = 586,                                //!< Единицы измерения давления
+  CCS_UNIT_VIBRATION = 587,                                  //!< Единицы измерения вибрации
+  CCS_UNIT_LENGHT = 588,                                     //!< Единицы измерения длины
+  CCS_UNIT_FLOW = 589,                                       //!< Единицы измерения расхода
+  CCS_UNIT_PLACE = 590,                                      //!< Единицы измерения площади
+  CCS_VSD_CONDITION = 591,                                   //!< Состояние ЧРП
+  CCS_CMD_STOP = 592,                                        //!< Команда остановки
+  CCS_CMD_START = 593,                                       //!< Команда запуска
+  CCS_CMD_LOG_COPY = 594,                                    //!< 
+  CCS_CMD_LOG_DELETE = 595,                                  //!< 
+  CCS_CMD_SERVICE_LOG_DELETE = 596,                          //!< 
+  CCS_CMD_DHS_TYPE_AUTO = 597,                               //!< 
+  CCS_CMD_PROT_ALL_UNBLOCKING = 598,                         //!< 
+  CCS_CMD_PROT_ALL_SETPOINT_RESET = 599,                     //!< 
+  CCS_CMD_PROT_SUPPLY_UNBLOCKING = 600,                      //!< 
+  CCS_CMD_PROT_SUPPLY_SETPOINT_RESET = 601,                  //!< 
+  CCS_CMD_PROT_SUPPLY_OVERVOLTAGE_SETPOINT_RESET = 602,      //!< 
+  CCS_CMD_PROT_SUPPLY_UNDERVOLTAGE_SETPOINT_RESET = 603,     //!< 
+  CCS_CMD_PROT_SUPPLY_IMBALANCE_VOLTAGE_SETPOINT_RESET = 604, //!< 
+  CCS_CMD_PROT_SUPPLY_IMBALANCE_CURRENT_SETPOINT_RESET = 605, //!< 
+  CCS_CMD_PROT_SUPPLY_PHASE_ROTATION_SETPOINT_RESET = 606,   //!< 
+  CCS_CMD_PROT_MOTOR_UNBLOCKING = 607,                       //!< 
+  CCS_CMD_PROT_MOTOR_SETPOINT_RESET = 608,                   //!< 
+  CCS_CMD_PROT_MOTOR_OVERLOAD_SETPOINT_RESET = 609,          //!< 
+  CCS_CMD_PROT_MOTOR_UNDERLOAD_SETPOINT_RESET = 610,         //!< 
+  CCS_CMD_PROT_MOTOR_IMBALANCE_CURRENT_SETPOINT_RESET = 611, //!< 
+  CCS_CMD_PROT_MOTOR_ASYNC_SETPOINT_RESET = 612,             //!< 
+  CCS_CMD_PROT_MOTOR_OUT_OF_SYNC_SETPOINT_RESET = 613,       //!< 
+  CCS_CMD_PROT_DHS_UNBLOCKING = 614,                         //!< 
+  CCS_CMD_PROT_DHS_SETPOINT_RESET = 615,                     //!< 
+  CCS_CMD_PROT_DHS_PRESSURE_INTAKE_SETPOINT_RESET = 616,     //!< 
+  CCS_CMD_PROT_DHS_TEMPERATURE_MOTOR_SETPOINT_RESET = 617,   //!< 
+  CCS_CMD_PROT_DHS_RESISTANCE_SETPOINT_RESET = 618,          //!< 
+  CCS_CMD_PROT_DHS_VIBRATION_SETPOINT_RESET = 619,           //!< 
+  CCS_CMD_PROT_AI_SETPOINT_RESET = 620,                      //!< 
+  CCS_CMD_PROT_AI_1_SETPOINT_RESET = 621,                    //!< 
+  CCS_CMD_PROT_AI_2_SETPOINT_RESET = 622,                    //!< 
+  CCS_CMD_PROT_AI_3_SETPOINT_RESET = 623,                    //!< 
+  CCS_CMD_PROT_AI_4_SETPOINT_RESET = 624,                    //!< 
+  CCS_CMD_PROT_DI_SETPOINT_RESET = 625,                      //!< 
+  CCS_CMD_PROT_DI_1_SETPOINT_RESET = 626,                    //!< 
+  CCS_CMD_PROT_DI_2_SETPOINT_RESET = 627,                    //!< 
+  CCS_CMD_PROT_DI_3_SETPOINT_RESET = 628,                    //!< 
+  CCS_CMD_PROT_DI_4_SETPOINT_RESET = 629,                    //!< 
+  CCS_CMD_RGM_MODE_SAVE = 630,                               //!< 
+  CCS_CMD_COUNTER_ALL_RESET = 631,                           //!< 
+  CCS_VOLTAGE_TRANS_OUT = 632,                               //!< 
+  CCS_CONDITION_FLAG = 633,                                  //!< 
+  CCS_LAST_RUN_REASON_TMP = 634,                             //!< Причина последнего пуска - регистр временного хранения значения
+  CCS_PROT_PREVENT = 635,                                    //!< Наличие хотя бы одного запрещающего параметра
+  CCS_TIMER_DIFFERENT_START = 636,                           //!< Уставка ВРП (время разновременного пуска)
+  CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY = 637,      //!< Защита ЗСП: Прогрессивная задержка АПВ
+  CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_COUNT = 638,      //!< Защита ЗСП: Счётчик АПВ для вычисления прогрессивной задержки
+  CCS_PROT_SUPPLY_OVERVOLTAGE_BLOCK_FLAG = 639,              //!< 
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_BLOCK_FLAG = 640,             //!< 
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_BLOCK_FLAG = 641,        //!< 
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_BLOCK_FLAG = 642,        //!< 
+  CCS_PROT_SUPPLY_PHASE_ROTATION_BLOCK_FLAG = 643,           //!< 
+  CCS_PROT_MOTOR_OVERLOAD_BLOCK_FLAG = 644,                  //!< 
+  CCS_PROT_MOTOR_UNDERLOAD_BLOCK_FLAG = 645,                 //!< 
+  CCS_PROT_MOTOR_CURRENT_BLOCK_FLAG = 646,                   //!< 
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_BLOCK_FLAG = 647,         //!< 
+  CCS_PROT_MOTOR_ASYNC_BLOCK_FLAG = 648,                     //!< 
+  CCS_PROT_MOTOR_OUT_OF_SYNC_BLOCK_FLAG = 649,               //!< 
+  CCS_PROT_DHS_PRESSURE_INTAKE_BLOCK_FLAG = 650,             //!< 
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_BLOCK_FLAG = 651,           //!< 
+  CCS_PROT_DHS_RESISTANCE_BLOCK_FLAG = 652,                  //!< 
+  CCS_PROT_DHS_VIBRATION_BLOCK_FLAG = 653,                   //!< 
+  CCS_PROT_AI_1_BLOCK_FLAG = 654,                            //!< 
+  CCS_PROT_AI_2_BLOCK_FLAG = 655,                            //!< 
+  CCS_PROT_AI_3_BLOCK_FLAG = 656,                            //!< 
+  CCS_PROT_AI_4_BLOCK_FLAG = 657,                            //!< 
+  CCS_PROT_DI_1_BLOCK_FLAG = 658,                            //!< 
+  CCS_PROT_DI_2_BLOCK_FLAG = 659,                            //!< 
+  CCS_PROT_DI_3_BLOCK_FLAG = 660,                            //!< 
+  CCS_PROT_DI_4_BLOCK_FLAG = 661,                            //!< 
+  CCS_PROT_OTHER_LIMIT_RESTART_BLOCK_FLAG = 662,             //!< 
+  CCS_PROT_OTHER_LOCK_DOOR_BLOCK_FLAG = 663,                 //!< 
+  CCS_PROT_OTHER_VSD_BLOCK_FLAG = 664,                       //!< 
+  CCS_PROT_OTHER_IMB_BLOCK_FLAG = 665,                       //!< 
+  CCS_GENERAL_CONDITION = 666,                               //!< Общее состояние
+  CCS_COEF_TRANSFORMATION = 667,                             //!< Коэффициент трансформации
+  CCS_LAST_STOP_REASON_TMP = 668,                            //!< Причина последнего останова - регистр временного хранения значения
+  CCS_WORK_WITH_LOW_RESISTANCE = 669,                        //!< Работа с пониженным сопротивлением изоляции
+  CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_FLAG = 670,       //!< Защита ЗСП: Флаг использования прогрессивной задержки АПВ
+  CCS_RGM_CHANGE_FREQ_STATE = 671,                           //!< Состояние автомата режима "Программного изменения частоты"
+  CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD = 672,                 //!< Начальная уставка ЗСП режима "Программного изменения частоты"
+  CCS_RGM_RUN_PUSH_MODE = 673,                               //!< Действие режима пуска "Толчковый"
+  CCS_RGM_RUN_PUSH_STATE = 674,                              //!< Состояние автомата режима пуска "Толчковый"
+  CCS_RGM_RUN_PUSH_FREQ = 675,                               //!< 
+  CCS_RGM_RUN_PUSH_TIME = 676,                               //!< 
+  CCS_RGM_RUN_PUSH_VOLTAGE = 677,                            //!< 
+  CCS_RGM_RUN_PUSH_QUANTITY = 678,                           //!< 
+  CCS_END = 680,                                             //!< Последний параметр
+  VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
+  VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
+  VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
+  VSD_SPEED_RPM_NOW = 10003,                                 //!< Обороты двигателя
+  VSD_OUT_VOLTAGE_MOTOR = 10004,                             //!< Напряжение на выходе ПЧ
+  VSD_MOTOR_TYPE = 10005,                                    //!< Конструкция двигателя Danfoss 1-10 Используется в интерфейсе
+  VSD_MOTOR_CONTROL = 10006,                                 //!< Принцип управления двигателем Danfoss 1-01 Не используется в проекте, только при конфигурировании
+  VSD_ROTATION = 10007,                                      //!< Направления вращения Danfoss 4-10 Не используется в проекте, только при конфигурировании
+  VSD_CURRENT_OUT_PHASE_1 = 10008,                           //!< Выходной ток ПЧ фаза U
+  VSD_CURRENT_OUT_PHASE_2 = 10009,                           //!< Выходной ток ПЧ фаза V
+  VSD_CURRENT_OUT_PHASE_3 = 10010,                           //!< Выходной ток ПЧ фаза W
+  VSD_CURRENT_DC = 10011,                                    //!< Ток звена постоянного тока
+  VSD_VOLTAGE_DC = 10012,                                    //!< Напряжение цепи пост.тока Danfoss 16-30 Используется в проекте Novomet 0х008B IREG_UD
+  VSD_POWER_ACTIVE = 10013,                                  //!< Активная мощность Danfoss 16-10 Используется в проекте Novomet 0х0071 IREG_POUT
+  VSD_POWER_FULL = 10014,                                    //!< Полная мощность
+  VSD_MOTOR_POWER = 10015,                                   //!< Мощность двигателя Danfoss 1-20 Используется в проекте, интерфейс
+  VSD_MOTOR_VOLTAGE = 10016,                                 //!< Напряжение двигателя Danfoss 1-22 Используется в проекте, интерфейс Novomet 0х0045 IREG_MOTOR_U_MAх
+  VSD_MOTOR_CURRENT = 10017,                                 //!< Номинальный ток двигателя Danfoss 1-24 Используется в проекте, интерфейс Novomet 0х0044 IREG_MOTOR_I_MAх
+  VSD_MOTOR_SPEED = 10018,                                   //!< Скорость двигателя Danfoss 1-25 Используется в проекте, интерфейс
+  VSD_MOTOR_FREQUENCY = 10019,                               //!< Частота двигателя Danfoss 1-23 Используется в проекте, интерфейс Novomet 0х0043 IREG_MOTOR_F_MAх
+  VSD_MOTOR_COS_PHI = 10020,                                 //!< Номинальный косинус Фи Danfoss 14-43 Используется в проекте
+  VSD_D_AXIS_INDUNSTANCE = 10021,                            //!< Индуктивности по оси D Danfoss 1-37 Используется в проекте
+  VSD_BACK_EMF = 10022,                                      //!< Противо эдс Danfoss 1-40 Используется в проекте
+  VSD_UF_UHH = 10023,                                        //!< Ток холостого хода
+  VSD_MOTOR_POLES = 10024,                                   //!< Число полюсов двигателя Danfoss 1-39 Используется в проекте
+  VSD_LOW_LIM_SPEED_MOTOR = 10025,                           //!< Нижний предел скорости Danfoss 4-12 Гц Используется в проекте
+  VSD_HIGH_LIM_SPEED_MOTOR = 10026,                          //!< Верхний передел скорости Danfoss 4-14 Используется в проекте Novomet 0х0037 IREG_FREQ_REF_MAх
+  VSD_T_SPEEDUP = 10027,                                     //!< Период нарастания частоты Novomet 0х0038 IREG_T_SPEEDUP
+  VSD_T_SPEEDDOWN = 10028,                                   //!< Период Период снижения частоты Novomet 0х0039 IREG_T_SPEEDDOWN
+  VSD_UF_TYPE = 10029,                                       //!< U/f характеристика
+  VSD_UF_CHARACTERISTIC_U_1 = 10030,                         //!< Первая точка напряжения U/f характеристика
+  VSD_UF_CHARACTERISTIC_F_1 = 10031,                         //!< Первая точка частоты U/f характеристика
+  VSD_UF_CHARACTERISTIC_U_2 = 10032,                         //!< Вторая точка напряжения U/f характеристика
+  VSD_UF_CHARACTERISTIC_F_2 = 10033,                         //!< Вторая точка частоты U/f характеристика
+  VSD_UF_CHARACTERISTIC_U_3 = 10034,                         //!< Третья точка напряжения U/f характеристика
+  VSD_UF_CHARACTERISTIC_F_3 = 10035,                         //!< Третья точка частоты U/f характеристика
+  VSD_UF_CHARACTERISTIC_U_4 = 10036,                         //!< Четвертая точка напряжения U/f характеристика
+  VSD_UF_CHARACTERISTIC_F_4 = 10037,                         //!< Четвертая точка частоты U/f характеристика
+  VSD_UF_CHARACTERISTIC_U_5 = 10038,                         //!< Пятая точка напряжения U/f характеристика
+  VSD_UF_CHARACTERISTIC_F_5 = 10039,                         //!< Пятая точка частоты U/f характеристика
+  VSD_UF_CHARACTERISTIC_U_6 = 10040,                         //!< Шестая точка напряжения U/f характеристика
+  VSD_UF_CHARACTERISTIC_F_6 = 10041,                         //!< Шестая точка частоты U/f характеристика
+  VSD_THYR_ANGLE_REFERENCE = 10042,                          //!< Угол управления тиристорами;
+  VSD_THYR_STATUS = 10043,                                   //!< Статус платы выпрямителя.
+  VSD_THYR_CONTROL = 10044,                                  //!< Регистр управления тиристорами;
+  VSD_THYR_VOLT_SHORT_CUILT = 10045,                         //!< Напряжение защиты от КЗ инвертора.
+  VSD_INDICATOR_STATUS = 10046,                              //!< Статус индикатора
+  VSD_DOUTPUTS = 10047,                                      //!< Маска состояния цифровых выходов.
+  VSD_DINPUTS = 10048,                                       //!< Маска состояния цифровых входов.
+  VSD_DOUTPUTS_ENABLE = 10049,                               //!< Маска включения цифровых выходов.
+  VSD_DOUTPUTS_DISABLE = 10050,                              //!< Маска выключения цифровых выходов.
+  VSD_VENT_ON_TEMPERATURE = 10051,                           //!< Температура включения главного вентилятора.
+  VSD_VENT_OFF_TEMPERATURE = 10052,                          //!< Температура выключения главного вентилятора.
+  VSD_VENT_PERIOD = 10053,                                   //!< Период проверки температуры радиаторов
+  VSD_VENT_TEMPERATURE_FAULT = 10054,                        //!< Температура срабатывания тепловой защиты радиаторов
+  VSD_INVERTOR_CONTROL = 10055,                              //!< Флаговый регистр управления
+  VSD_INVERTOR_STATUS = 10056,                               //!< Регистр состояния инвертора
+  VSD_FREQUENCY_ERROR = 10057,                               //!< Уставка частоты "тревожного" режима
+  VSD_T_ILIMIT_SPEEDDOWN = 10058,                            //!< Период снижения частоты при токоограничении.
+  VSD_T_ULOW_SPEEDDOWN = 10059,                              //!< Период снижения частоты при нехватке напряжения на инверторе
+  VSD_CURRENT_REGULATOR = 10060,                             //!< Тип текущего алгоритма управления (регулятора)
+  VSD_UF_U_FORCE = 10061,                                    //!< Напряжение форсировки
+  VSD_UF_F_FORCE = 10062,                                    //!< Частота форсировки
+  VSD_IFB_COMP = 10063,                                      //!< Постоянная времени компенсации индуктивности
+  VSD_VUOUT_PROP = 10064,                                    //!< Пропорциональный коэффициент ОС частотного контура регулирования
+  VSD_ILIMIT = 10065,                                        //!< Максимальный порог ограничения тока на выходе ПЧ, абс. вел
+  VSD_VUOUT_INTEG = 10066,                                   //!< Интегральный коэффициент ОС частотного контура регулирования
+  VSD_VTOUF_INTEG = 10067,                                   //!< Коэффициент постоянной времени обратного перехода с вектора на U/f
+  VSD_LOUT = 10068,                                          //!< Суммарная индуктивность на выходе ПЧ, фазное значение
+  VSD_SW_STARTUP_FREQUENCY = 10069,                          //!< Режим раскачки: частота
+  VSD_SW_STARTUP_ANGLE_OSC = 10070,                          //!< Режим раскачки: угол качания
+  VSD_SW_STARTUP_ANGLE_SHIFT = 10071,                        //!< Режим раскачки: угол сдвига
+  VSD_SW_STARTUP_OSC_COUNT = 10072,                          //!< Режим раскачки: количество качаний на угол
+  VSD_SW_STARTUP_ROTATIONS = 10073,                          //!< Режим раскачки: количество оборотов двигателя
+  VSD_SW_STARTUP_U_PULSE = 10074,                            //!< Режим раскачки: кратность напряжения импульса расклинки
+  VSD_SW_STARTUP_I_LIM = 10075,                              //!< Режим раскачки: токоограничение
+  VSD_SW_STARTUP_I_LIM_PULSE = 10076,                        //!< Порог токоограничения импульса расклинки в режиме с раскачкой
+  VSD_VFREQ_INTEG = 10077,                                   //!< Интегральный коэффициент ОС фазового контура регулирования
+  VSD_REGULATOR_QUEUE_1 = 10078,                             //!< Регистры рабочей очереди алгоритмов управления
+  VSD_REGULATOR_QUEUE_2 = 10079,                             //!< Регистры рабочей очереди алгоритмов управления
+  VSD_REGULATOR_QUEUE_3 = 10080,                             //!< Регистры рабочей очереди алгоритмов управления
+  VSD_REGULATOR_QUEUE_4 = 10081,                             //!< Регистры рабочей очереди алгоритмов управления
+  VSD_REGULATOR_QUEUE_5 = 10082,                             //!< Регистры рабочей очереди алгоритмов управления
+  VSD_UD_LOW_FAULT = 10083,                                  //!< Порог защиты ПЧ по снижению напряжения на инверторе
+  VSD_UD_HIGH_FAULT = 10084,                                 //!< Порог защиты ПЧ по превыщению напряжения на инверторе
+  VSD_UIN_ASYM_LEVEL = 10085,                                //!< Порог защиты ПЧ по несимметрии входного напряжения на инверторе
+  VSD_UIN_ASYM_DELAY = 10086,                                //!< Время срабатывания защиты ПЧ по несимметрии входного напряжения на инверторе
+  VSD_F_VECT = 10087,                                        //!< Частота перехода на векторный алгоритм
+  VSD_VFREQ_GAIN = 10088,                                    //!< Пропорциональный коэффициент ОС фазового контура регулирования
+  VSD_VANGLE_GAIN = 10089,                                   //!< Фазовый коэффициент усиления системы подавления резонанса
+  VSD_RES_TIMECONST = 10090,                                 //!< Постоянная времени системы подавления резонанса
+  VSD_RES_IAMP_VALID = 10091,                                //!< Служебный регистр для отладки алгоритмов управления
+  VSD_IB = 10092,                                            //!< Выходной ток ПЧ по фазе В. (амплитудное значение)
+  VSD_PHB = 10093,                                           //!< Фаза выходного тока В
+  VSD_IC = 10094,                                            //!< Выходной ток ПЧ по фазе C. (амплитудное значение)
+  VSD_PHC = 10095,                                           //!< Фаза выходного тока C
+  VSD_DECEL_SPEEDDOWN = 10096,                               //!< Время снижения уставки в режиме остановки турбинного вращения
+  VSD_DECEL_VOLTAGE = 10097,                                 //!< Напряжение остаточного напряжения на шине (окончания разряда) в режиме остановки турбинного вращения (для ВД)
+  VSD_DECEL_F_MAX = 10098,                                   //!< Начальная частота режима остановки турбинного вращения (для АД)
+  VSD_TIME_SECOND = 10099,                                   //!< Время секунды
+  VSD_TIME_MINUTE = 10100,                                   //!< Время минуты
+  VSD_TIME_HOUR = 10101,                                     //!< Время часы
+  VSD_TIME_DAY = 10102,                                      //!< Время дни
+  VSD_TIME_MONTH = 10103,                                    //!< Время месяцы
+  VSD_TIME_YEAR = 10104,                                     //!< Время годы
+  VSD_AST_IMEAS = 10105,                                     //!< Величина измерительного тока автонастройки
+  VSD_AST_UMEAS = 10106,                                     //!< Величина измерительного напряжения автонастройки
+  VSD_AST_LOUT_1_0 = 10107,                                  //!< Измеренная величина выходной индуктивности автонастройки
+  VSD_AST_STANDING = 10108,                                  //!< Дополнительный регистр автонастройки, зарезервирован
+  VSD_INVERTOR_STATUS2 = 10109,                              //!< Расширенный регистр состояния инвертора
+  VSD_JARRING_PERIOD = 10110,                                //!< Период экскурсий частоты режима встряхивания.
+  VSD_JARRING_UPDFREQ = 10111,                               //!< Величина прибавки частоты вращения выше уставки в режиме встряхивания
+  VSD_JARRING_UPTIME = 10112,                                //!< Время прибавки частоты вращения выше уставки в режиме встряхивания
+  VSD_JARRING_DOWNDFREQ = 10113,                             //!< Величина уменьшения частоты вращения ниже уставки в режиме встряхивания
+  VSD_JARRING_DOWNTIME = 10114,                              //!< Время уменьшения частоты вращения ниже уставки в режиме встряхивания
+  VSD_JARRING_MODE = 10115,                                  //!< Регистры обслуживания внутренних нужд режима встряхивания
+  VSD_JARRING_TICK_CNT = 10116,                              //!< Регистры обслуживания внутренних нужд режима встряхивания
+  VSD_JARRING_SECOND_CNT = 10117,                            //!< Регистры обслуживания внутренних нужд режима встряхивания
+  VSD_START_FREQ = 10118,                                    //!< Стартовая частота вращения двигателя в основном режиме регулирования
+  VSD_IA = 10119,                                            //!< Выходной ток ПЧ по фазе A. (амплитудное значение)
+  VSD_PHA = 10120,                                           //!< Фаза выходного тока A
+  VSD_PHOUT = 10121,                                         //!< Усредненная фаза выходного тока ПЧ
+  VSD_TEST0 = 10122,                                         //!< Тестовый регистр 0
+  VSD_TEST1 = 10123,                                         //!< Тестовый регистр 1
+  VSD_TEST2 = 10124,                                         //!< Тестовый регистр 2
+  VSD_TEST3 = 10125,                                         //!< Тестовый регистр 3
+  VSD_TEST4 = 10126,                                         //!< Тестовый регистр 4
+  VSD_TEST5 = 10127,                                         //!< Тестовый регистр 5
+  VSD_TEST6 = 10128,                                         //!< Тестовый регистр 6
+  VSD_TEST7 = 10129,                                         //!< Тестовый регистр 7
+  VSD_IOUT = 10130,                                          //!< Выходной ток ПЧ
+  VSD_INV_FAULT = 10131,                                     //!< Регистр ошибок инвертора
+  VSD_SOUT = 10132,                                          //!< Текущая выходная полная мощность ПЧ
+  VSD_M_IRMS = 10133,                                        //!< Уставка срабатывания защиты (ЗП)
+  VSD_M_TRMS = 10134,                                        //!< Постоянная времени защиты i2t двигателя
+  VSD_OVERPWM2_ANGLE = 10135,                                //!< Максимальный угол остановки вектора в режиме
+  VSD_OVERPWM_GAIN = 10136,                                  //!< Степень постоянной времени отработки
+  VSD_DECEL_U_MAX = 10137,                                   //!< Стартовое напряжение торможения авторотации
+  VSD_FC_IRMS = 10138,                                       //!< Ток тепловой защиты ПЧ длительный
+  VSD_FC_ILIM_LONG = 10139,                                  //!< Ограничение тока для импульсов
+  VSD_FC_TLIM = 10140,                                       //!< Время импульса с общим (максимальным) токоограничением
+  VSD_U_SCALE = 10141,                                       //!< Масштаб измеряемого напряжения ПЧ отн. базового 250А
+  VSD_I_SCALE = 10142,                                       //!< Масштаб измеряемого тока ПЧ отн. базового 250А
+  VSD_M_I_FAST = 10143,                                      //!< Уровень быстрой токовой защиты двигателя
+  VSD_T_BLANK = 10144,                                       //!< Время отключения защиты двигателя после старта
+  VSD_PID_I_REF = 10145,                                     //!< Уровень уставки тока для ПИД-регулятора
+  VSD_PID_T_REG = 10146,                                     //!< Постоянная времени для ПИД-регулятора
+  VSD_PID_T_REG_1 = 10147,                                   //!< Постоянная времени для ПИД-регулятора
+  VSD_INVERTOR_STATUS3 = 10148,                              //!< Расширенный регистр состояния инвертора 3
+  VSD_CONFIG_MODE = 10149,                                   //!< Режим конфигурирования Danfoss 1-00 Не используется в проекте, только при конфигурировании
+  VSD_TIMER_DISPERSAL = 10150,                               //!< Время разгона Danfoss 3-41 % Активно используется в проекте
+  VSD_TIMER_DELAY = 10151,                                   //!< Время замедления Danfoss 3-42 % Активно используется в проекте
+  VSD_INDEX = 10152,                                         //!< Указатель индекса для массивных параметров Danfoss 0х0008 используется для массивов параметров
+  VSD_UNIT_SPEED = 10153,                                    //!< Единицы измерения скорости Danfoss 0-02 Не используется в проекте, только при конфигурировании
+  VSD_TORQUE_CHARACTERISTIC = 10154,                         //!< Характеристика момента нагрузки Danfoss 1-03 Не используется в проекте, только при конфигурировании
+  VSD_OVERLOAD_MODE = 10155,                                 //!< Режим перегрузки Danfoss 1-04 Не используется в проекте, только при конфигурировании
+  VSD_DAMPING_GANE = 10156,                                  //!< Усиление демпфирования Danfoss 1-14 Не используется в проекте, только при конфигурировании
+  VSD_LOW_SPEED_FILTER_TIME = 10157,                         //!< Время фильтрации при низкой скорости Danfoss 1-15 Используется в режиме автоадаптации
+  VSD_HIGH_SPEED_FILTER_TIME = 10158,                        //!< Время фильтрации при высокой скорости Danfoss 1-16 Используется в режиме автоадаптации
+  VSD_RATE_TORQUE_MOTOR = 10159,                             //!< Длительный номинальный момент двигателе Danfoss 1-26 Записывается в проекте один раз
+  VSD_RESISTANCE_STATOR = 10160,                             //!< Сопротивление статора Danfoss 1-30 Используется в режиме автоадаптации
+  VSD_UF_CHARACTERISTIC_U = 10161,                           //!< Характеристика Uf - U Danfoss 1-55
+  VSD_UF_CHARACTERISTIC_F = 10162,                           //!< Характеристика Uf - f Danfoss 1-56
+  VSD_RESONANCE_REMOVE = 10163,                              //!< Подавление резонанса % Danfoss 1-64 Не используется в проекте, только при конфигурировании
+  VSD_RESONANCE_TIME = 10164,                                //!< Постаянная времени подавления Danfoss 1-65 Не используется в проекте, только при конфигурировании Novomet 0х0067
+  VSD_MIN_CURRENT_LOW_SPEED = 10165,                         //!< Минимальный ток при низкой скорости Danfoss 1-66 Не используется в проекте, только при конфигурировании
+  VSD_PM_START_MODE = 10166,                                 //!< Тип запуска вентиля Danfoss 1-70 Не используется в проекте, только при конфигурировании
+  VSD_START_DELAY = 10167,                                   //!< Задержка запуска Danfoss 1-71 Используется в защите от невыхода на заданную частоту
+  VSD_START_FUNCTION = 10168,                                //!< Функция запуска Danfoss 1-72 Не используется в проекте, только при конфигурировании
+  VSD_STOP_FUNCTION = 10169,                                 //!< Функция при остановке Danfoss 1-80 Не используется в проекте, только при конфигурировании
+  VSD_STOP_SPEED = 10170,                                    //!< Минимальная скорость для функции при останове Danfoss 1-82 Не используется в проекте, только при конфигурировании
+  VSD_CONTROL_TERMISTOR_MTR = 10171,                         //!< Контроль термистора двигателя Danfoss 1-90 Не используется в проекте, только при конфигурировании
+  VSD_THERMISTOR_RESOURCE = 10172,                           //!< Вход термистора Danfoss 1-93 Не используется в проекте, только при конфигурировании
+  VSD_PARKING_CURRENT = 10173,                               //!< Начальный ток Danfoss 2-06 Не используется в проекте, только при конфигурировании
+  VSD_PARKING_TIME = 10174,                                  //!< Длительность действия начального ток Danfoss 2-07 В проекте есть, но отключено, используется при конфигурировании
+  VSD_OVERVOLTAGE_CONTROL = 10175,                           //!< Контроль перенапряжения Danfoss 2-17 Не используется в проекте, только при конфигурировании
+  VSD_MIN_REFERENCE = 10176,                                 //!< Минимальное задание Danfoss 3-02 Не используется в проекте, только при конфигурировании
+  VSD_MAX_REFERENCE = 10177,                                 //!< Максимальное задани Danfoss 3-03 Не используется в проекте, только при конфигурировании
+  VSD_RESOURCE_TASK_1 = 10178,                               //!< Ресурс задания 1 Danfoss 3-15 Не используется в проекте, только при конфигурировании
+  VSD_RESOURCE_TASK_2 = 10179,                               //!< Ресурс задания 2 Danfoss 3-16 Не используется в проекте, только при конфигурировании
+  VSD_RESOURCE_TASK_3 = 10180,                               //!< Ресурс задания 3 Danfoss 3-17 Не используется в проекте, только при конфигурировании
+  VSD_TYPE_SPEED_CHANGE = 10181,                             //!< Тип изменения скорости Danfoss 3-40 Не используется в проекте, только при конфигурировании
+  VSD_TIMER_DISP_FIX_SPEED = 10182,                          //!< Время разгона фиксированной скорости Danfoss 3-80 Используется в проекте один раз
+  VSD_TIMER_DELAY_FIX_SPEED = 10183,                         //!< Время замедления фиксированной скорости Danfoss 3-81 Используется в проекте один раз
+  VSD_TORQUE_LIMIT = 10184,                                  //!< Ограничение момента Danfoss 4-16 % Используется в защитах ЧРП. Интерфейс
+  VSD_TORQUE_LIMIT_GEN = 10185,                              //!< Ограничение момента в режиме генератора Danfoss 4-17 % Не используется в проекте, только при конфигурировании
+  VSD_CURRENT_LIMIT = 10186,                                 //!< Предел тока Danfoss 4-18 %
+  VSD_MAX_OUTPUT_FREQUENCY = 10187,                          //!< Максимальная выходная частота Danfoss 4-19 Используется в проекте
+  VSD_MTR_FEEDBACK_LOSS_FUNC = 10188,                        //!< Реакция на ошибку обратной связи Danfoss 4-30 Не используется в проекте, только при конфигурировании
+  VSD_TRACK_ERROR_FUNCTION = 10189,                          //!< Реакция на ошибку задания частоты Danfoss 4-34 Не используется в проекте, только при конфигурировании
+  VSD_TRACK_ERROR = 10190,                                   //!< Величина несоответствия частота Danfoss 4-35 Не используется в проекте, только при конфигурировании
+  VSD_TRACK_ERROR_TIMEOUT = 10191,                           //!< Величина несоответствия частоты Danfoss 4-36 Не используется в проекте, только при конфигурировании
+  VSD_TRACK_ERROR_RAMPING = 10192,                           //!< Величина несоответствия частоты при разгоне Danfoss 4-37 Не используется в проекте, только при конфигурировании
+  VSD_TRACK_ERROR_RAMP_TIME = 10193,                         //!< Задержка срабатывания при несоответствии частоты при разгоне Danfoss 4-38 Не используется в проекте, только при конфигурировании
+  VSD_TRACK_ERROR_AFTER_RAMP = 10194,                        //!< Tracking Error After Ramping Timeout Danfoss 4-39 Не используется в проекте, только при конфигурировании
+  VSD_WARNING_CURRENT_LOW = 10195,                           //!< Danfoss 4-50 Не используется в проекте, только при конфигурировании
+  VSD_WARNING_CURRENT_HIGH = 10196,                          //!< Danfoss 4-51 Не используется в проекте, только при конфигурировании
+  VSD_WARNING_SPEED_LOW = 10197,                             //!< Минимальная скорость Danfoss 4-52 об/мин Не используется в проекте, только при конфигурировании
+  VSD_TERMINAL_27_MODE = 10198,                              //!< Режим клеммы 27 Danfoss 5-01 Не используется в проекте, только при конфигурировании
+  VSD_TERMINAL_29_MODE = 10199,                              //!< Режим клеммы 29 Danfoss 5-02 Не используется в проекте, только при конфигурировании
+  VSD_DI_18 = 10200,                                         //!< Цифровой вход 18 Danfoss 5-10 Не используется в проекте, только при конфигурировании
+  VSD_DI_19 = 10201,                                         //!< Цифровой вход 19 Danfoss 5-11 Не используется в проекте, только при конфигурировании
+  VSD_DI_27 = 10202,                                         //!< Цифровой вход 27 Danfoss 5-12 Не используется в проекте, только при конфигурировании
+  VSD_DI_32 = 10203,                                         //!< Цифровой вход 32 Danfoss 5-14 Не используется в проекте, только при конфигурировании
+  VSD_DI_33 = 10204,                                         //!< Цифровой вход 33 Danfoss 5-15 Не используется в проекте, только при конфигурировании
+  VSD_TERMINAL_27_DI = 10205,                                //!< Клемма 27 Цифровой вход Danfoss 5-30 Не используется в проекте, только при конфигурировании
+  VSD_TERMINAL_29_DI = 10206,                                //!< Клемма 29 Цифровой вход Danfoss 5-31 Не используется в проекте, только при конфигурировании
+  VSD_FUNCTION_RELE = 10207,                                 //!< Реле функций Danfoss 5-40 Не используется в проекте, только при конфигурировании
+  VSD_ON_DELAY_RELAY = 10208,                                //!< Нипонятно Danfoss 5-41 Не используется в проекте, только при конфигурировании
+  VSD_42_AO = 10209,                                         //!< Клемма 42 аналоговый вход Danfoss 6-50 Не используется в проекте, только при конфигурировании
+  VSD_SL_CONTROLLER_MODE = 10210,                            //!< Режим контроллера SL Danfoss 13-00 Не используется в проекте, только при конфигурировании
+  VSD_SL_START_EVENT = 10211,                                //!< Событие запуска Danfoss 13-01 Не используется в проекте, только при конфигурировании
+  VSD_SL_STOP_EVENT = 10212,                                 //!< Событие останова Danfoss 13-02 Не используется в проекте, только при конфигурировании
+  VSD_SL_RESET = 10213,                                      //!< Сброс настроек компараторов Danfoss 13-03 Не используется в проекте, только при конфигурировании
+  VSD_SL_10 = 10214,                                         //!< Операнд сравнения компаратора Danfoss 13-10 Не используется в проекте, только при конфигурировании
+  VSD_SL_11 = 10215,                                         //!< Оператор сравнения компаратора Danfoss 13-11 Не используется в проекте, только при конфигурировании
+  VSD_SL_12 = 10216,                                         //!< Значение компаратора Danfoss 13-12 Не используется в проекте, только при конфигурировании
+  VSD_SL_15 = 10217,                                         //!< RS-FF Operand S Danfoss 13-15 Не используется в проекте, только при конфигурировании
+  VSD_SL_16 = 10218,                                         //!< RS-FF Operand R Danfoss 13-16 Не используется в проекте, только при конфигурировании
+  VSD_SL_20 = 10219,                                         //!< Временная задержка Danfoss 13-20 Не используется в проекте, только при конфигурировании
+  VSD_SL_40 = 10220,                                         //!< Булева переменная логического соотношения 1 Danfoss 13-40 Не используется в проекте, только при конфигурировании
+  VSD_SL_41 = 10221,                                         //!< Оператор логического соотношения 1 Danfoss 13-41 Не используется в проекте, только при конфигурировании
+  VSD_SL_42 = 10222,                                         //!< Булева переменная логического соотношения 2 Danfoss 13-42 Не используется в проекте, только при конфигурировании
+  VSD_SL_43 = 10223,                                         //!< Logic Rule Operator 2 Danfoss 13-43 Не используется в проекте, только при конфигурировании
+  VSD_SL_44 = 10224,                                         //!< Logic Rule Boolean 3 Danfoss 13-44 Не используется в проекте, только при конфигурировании
+  VSD_SL_51 = 10225,                                         //!< Событие контроллера SL Danfoss 13-51 Не используется в проекте, только при конфигурировании
+  VSD_SL_52 = 10226,                                         //!< Действие контроллера SL Danfoss 13-52 Не используется в проекте, только при конфигурировании
+  VSD_SWITCHING_FREQUENCY = 10227,                           //!< Частота коммутации Danfoss 14-01 Используется в проекте Novomet 0х003C IREG_FREQ_PWM
+  VSD_OVERMODULATION = 10228,                                //!< Сверхмодуляция Danfoss 14-03 Не используется в проекте, только при конфигурировании
+  VSD_DEAD_TIME_COMPENSATION = 10229,                        //!< Компенсация задержки Danfoss 14-06 Не используется в проекте, только при конфигурировании
+  VSD_MAINS_FAILURE = 10230,                                 //!< Отказ питания Danfoss 14-10 Не используется в проекте, только при конфигурировании
+  VSD_MAINS_VOLTAGE_FAILURE = 10231,                         //!< Напряжение сети при отказе питания Danfoss 14-11 Не используется в проекте, только при конфигурировании
+  VSD_RESET_MODE = 10232,                                    //!< Режим сброса Danfoss 14-20 Не используется в проекте, только при конфигурировании
+  VSD_AUTOSTART_TIME = 10233,                                //!< Время автоматического перезапуск Danfoss 14-21 Не используется в проекте, только при конфигурировании
+  VSD_DELAY_CURRENT_LIMIT = 10234,                           //!< Задержка перед выключение при пределе тока Danfoss 14-24 Не используется в проекте, только при конфигурировании
+  VSD_DELAY_TORQUE_LIMIT = 10235,                            //!< Задержка перед выключение при пределе моменте Danfoss 14-25 Не используется в проекте, только при конфигурировании
+  VSD_FIL_TIME_CURRENT_LIMIT = 10236,                        //!< Время фильтра регулятора тока Danfoss 14-32 Используется в проекте, CalcParam()
+  VSD_DC_COMPENSATION = 10237,                               //!< Компенсация напряжения постоянного тока Danfoss 14-51 Не используется в проекте, только при конфигурировании
+  VSD_FAN_CONTROL = 10238,                                   //!< Управление вентилятором Danfoss 14-52 Не используется в проекте, только при конфигурировании
+  VSD_OUT_FILTER = 10239,                                    //!< Выходной фильтр Danfoss 14-55 Используется в проекте, интерфейс
+  VSD_FAIL_RESET = 10240,                                    //!< Сброс аварий Danfoss 14-90 Не используется в проекте, только при конфигурировании
+  VSD_SOFT_VERSION = 10241,                                  //!< Версия ПО ЧРП Danfoss 15-43 Используется в проекте
+  VSD_COMMAND_WORD = 10242,                                  //!< Командное слово Danfoss 16-00 Используется в проекте
+  VSD_STATUS_WORD = 10243,                                   //!< Слово состояния Danfoss 16-03 Активно используется в проекте
+  VSD_OUT_CURRENT_MOTOR = 10244,                             //!< Выходной ток средний
+  VSD_RADIATOR_TEMPERATURE = 10245,                          //!< Температура радиатора Danfoss 16-34 Используется в проекте
+  VSD_CONTROL_TEMPERATURE = 10246,                           //!< Температура платы управления Danfoss 16-39 Используется в проекте
+  VSD_DI_VSD = 10247,                                        //!< Цифровоый вход ПЧ Danfoss 16-60 Используется в проекте
+  VSD_LAST_ALARM = 10248,                                    //!< Номер последней аварии и предупреждения Danfoss 16-87 Используется в проекте
+  VSD_ALARM_WORD_1 = 10249,                                  //!< Слово Аварии 1 Danfoss 16-90 Используется в проекте
+  VSD_ALARM_WORD_2 = 10250,                                  //!< Слово Аварии 2 Danfoss 16-91 Используется в проекте
+  VSD_WARNING_WORD_1 = 10251,                                //!< Слово предупреждения 1 Danfoss 16-92 Используется в проекте
+  VSD_WARNING_WORD_2 = 10252,                                //!< Слово предупреждения 2 Danfoss 16-93 Используется в проекте
+  VSD_HIGH_START_TORQUE_TIME = 10253,                        //!< Время применения высокого пускового момента Danfoss 30-20 Не используется в проекте, только при конфигурировании
+  VSD_HIGH_START_TORQUE_CURRENT = 10254,                     //!< Пусковой ток в % от номинального Danfoss 30-21 Не используется в проекте, только при конфигурировании
+  VSD_LOCK_ROTOR_PROTECTION = 10255,                         //!< Защита блокировки ротора Danfoss 30-22 Не используется в проекте, только при конфигурировании
+  VSD_LOCK_ROTOR_TIME = 10256,                               //!< Время задержки аварии блокировки ротора Danfoss 30-23 Не используется в проекте, только при конфигурировании
+  VSD_TEMP_SPEEDUP = 10257,                                  //!< 
+  VSD_TEMP_SPEEDDOWN = 10258,                                //!< 
+  VSD_END = 10259,                                           //!< 
+  TMS_BEGIN = 15000,                                         //!< 
+  TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
+  TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме
+  TMS_TEMPERATURE_WINDING = 15003,                           //!< Температура обмоток двигателя
+  TMS_TEMPERATURE_INTAKE = 15004,                            //!< Температура на приёме
+  TMS_ACCELERATION_X_INTAKE = 15005,                         //!< Ускорение по оси X на приёме
+  TMS_ACCELERATION_Y_INTAKE = 15006,                         //!< Ускорение по оси Y на приёме
+  TMS_ACCELERATION_Z_INTAKE = 15007,                         //!< Ускорение по оси Z на приёме
+  TMS_PRESSURE_DISCHARGE = 15008,                            //!< Давление на выкиде
+  TMS_TEMPERATURE_DISCHARGE = 15009,                         //!< Температура на выкиде
+  TMS_FLOW_DISCHARGE = 15010,                                //!< Расход на выкиде
+  TMS_ACCELERATION_XY_INTAKE = 15011,                        //!< Ускорение по оси Y на приёме
+  TMS_ACCELERATIN_XYZ_INTAKE = 15012,                        //!< Ускорение по оси по трём осям
+  TMS_MAX_PRESSURE_INTAKE = 15013,                           //!< Максимальное давление на приёме
+  TMS_MAX_TEMPERATUR_WINDING = 15014,                        //!< Максимальная температура обмоток
+  TMS_MAX_TEMPERATURE_INTAKE = 15015,                        //!< Максимальная температура на приёме
+  TMS_MAX_ACCELERATION_INTAKE = 15016,                       //!< Максимальное ускорение
+  TMS_FAIL_LINK_TMSP = 15017,                                //!< Обрыв связи с ТМСП
+  TMS_MANUFACTURE_TMSP = 15018,                              //!< Код изготовителя ТМСП
+  TMS_NUMBER_TMSP = 15019,                                   //!< Серийный номер ТМСП
+  TMS_DATE_TMSP = 15020,                                     //!< Дата изготовления ТМСП
+  TMS_CONSTRUCTION_TMSP = 15021,                             //!< Код конструкции ТМСП
+  TMS_PROTOCOL_TMSP = 15022,                                 //!< Код протокола ТМСП
+  TMS_SENSOR_TMSP = 15023,                                   //!< Состав датчиков ТМСП
+  TMS_SOFT_TMSP = 15024,                                     //!< Версия По ТМСП
+  TMS_TIME_BIT = 15025,                                      //!< Скорости передачи бита
+  TMS_MANUFACTURE_TMSN = 15026,                              //!< Код завода изготовителя ТМСН
+  TMS_NUMBER_TMSN = 15027,                                   //!< Заводской номер ТМСН
+  TMS_DATE_TMSN = 15028,                                     //!< Дата изготовления ТМСН
+  TMS_CONSTRUCTION_TMSN = 15029,                             //!< Код конструкции ТМСН
+  TMS_SOFT_TMSN = 15030,                                     //!< Версия ПО ТМСН
+  TMS_PROTOCOL_TMSN = 15031,                                 //!< Код протокола ТМСН
+  TMS_MIN_FLOW_DISCHARGE = 15032,                            //!< Минимальный расход на выкиде
+  TMS_MAX_FLOW_DISCHARGE = 15033,                            //!< Максимальный расход на выкиде
+  TMS_MAX_PRESSURE_DISHARGE = 15034,                         //!< Максимальное давление на выкиде
+  TMS_MAX_TEMPERATURE_DISCHARGE = 15035,                     //!< Максимальная температура на выкиде
+  TMS_RESISTANCE_ISOLATION_TIME = 15036,                     //!< Время измерения сопротивления изоляции
+  TMS_MEASURE_TIME = 15037,                                  //!< Время измерения данных и передачи
+  TMS_RESISTANCE_TRANS_TIME = 15038,                         //!< Время перехода в режим измерения сопротивления изоляции
+  TMS_NUMBER_WELL = 15039,                                   //!< Номер скважины
+  TMS_NUMBER_BUSH = 15040,                                   //!< Номер куста
+  TMS_NUMBER_CDNG = 15041,                                   //!< Номер ЦДНГ
+  TMS_MODBUS_ADDRESS = 15042,                                //!< Адрес Modbus
+  TMS_MODBUS_SPEED = 15043,                                  //!< Скорость Modbus
+  TMS_MODBUS_STOP_BIT = 15044,                               //!< Количество Стоп-бит
+  TMS_DATA_TIME = 15045,                                     //!< Текущее дата время
+  TMS_READ_STATIC_PARAM = 15046,                             //!< Команда чтения статических параметров
+  TMS_PACKAGE_ERROR_TMSP = 15047,                            //!< Количество ошибок от ТМСП
+  TMS_TEMPERATURE_MOTOR = 15048,                             //!< Температура масла двигателя
+  TMS_TEMPERATURE_UNIT = 15049,                              //!< Единицы измерения температуры
+  TMS_PRESSURE_UNIT = 15050,                                 //!< Единицы измерения давления
+  TMS_PSW_TMS = 15051,                                       //!< Слово состояние системы
+  TMS_PSW_TMSN = 15052,                                      //!< Слово состояние наземного блока
+  TMS_PSW_TMSP_1 = 15053,                                    //!< Cлово состояние погружного блока
+  TMS_PSW_TMSP_2 = 15054,                                    //!< Слово состояние погружного блока 2
+  TMS_ANGLE_INTAKE = 15055,                                  //!< Зенитный угол
+  TMS_HOWMIDITY = 15056,                                     //!< Обводненность
+  TMS_END = 15057,                                           //!< 
+  EM_BEGIN = 20000,                                          //!< Первый параметр группы счётчиков электроэнергии
+  EM_VOLTAGE_PHASE_1 = 20001,                                //!< Напряжение первой фазы
+  EM_VOLTAGE_PHASE_2 = 20002,                                //!< Напряжение второй фазы
+  EM_VOLTAGE_PHASE_3 = 20003,                                //!< Напряжение третей фазы
+  EM_CURRENT_PHASE_1 = 20004,                                //!< Ток первой фазы
+  EM_CURRENT_PHASE_2 = 20005,                                //!< Ток второй фазы
+  EM_CURRENT_PHASE_3 = 20006,                                //!< Ток третей фазы
+  EM_ACTIVE_POWER = 20007,                                   //!< Общая активная мощность
+  EM_FREQUENCY = 20008,                                      //!< Частота питающей сети
+  EM_FULL_POWER = 20009,                                     //!< Полная мощность
+  EM_ACTIVE_ENERGY = 20010,                                  //!< Общая активная энергия
+  EM_VOLTAGE_PHASE_1_2 = 20011,                              //!< Напряжение межфазное первой и второй фазы
+  EM_VOLTAGE_PHASE_2_3 = 20012,                              //!< Напряжение межфазное второй и третьей фазы
+  EM_VOLTAGE_PHASE_3_1 = 20013,                              //!< Напряжение межфазное третьей и первой фазы
+  EM_COS_PHI = 20014,                                        //!< Общий коэффициент мощности
+  EM_COS_PHI_PHASE_1 = 20015,                                //!< Коэффициент мощности первой фазы
+  EM_COS_PHI_PHASE_2 = 20016,                                //!< Коэффициент мощности второй фазы
+  EM_COS_PHI_PHASE_3 = 20017,                                //!< Коэффициент мощности третей фазы
+  EM_FULL_POWER_PHASE_1 = 20018,                             //!< Полная мощность первой фазы
+  EM_FULL_POWER_PHASE_2 = 20019,                             //!< Полная мощность второй фазы
+  EM_FULL_POWER_PHASE_3 = 20020,                             //!< Полная мощность третей фазы
+  EM_ACTIVE_POWER_PHASE_1 = 20021,                           //!< Активная мощность первой фазы
+  EM_ACTIVE_POWER_PHASE_2 = 20022,                           //!< Активная мощность второй фазы
+  EM_ACTIVE_POWER_PHASE_3 = 20023,                           //!< Активная мощность третей фазы
+  EM_REACTIVE_POWER = 20024,                                 //!< Общая реактивная мощность
+  EM_REACTIVE_POWER_PHASE_1 = 20025,                         //!< Реактивная мощность первой фазы
+  EM_REACTIVE_POWER_PHASE_2 = 20026,                         //!< Реактивная мощность второй фазы
+  EM_REACTIVE_POWER_PHASE_3 = 20027,                         //!< Реактивная мощность третей фазы
+  EM_ACTIVE_PLUS_ALL = 20028,                                //!< Обшая активная плюс энергия за весь период
+  EM_ACTIVE_MINUS_ALL = 20029,                               //!< Обшая активная минус энергия за весь период
+  EM_ACTIVE_PLUS_CUR_DAY = 20030,                            //!< Активная плюс энергия за текущий день
+  EM_ACTIVE_MINUS_CUR_DAY = 20031,                           //!< Активная минус энергия за текущий день
+  EM_ACTIVE_PLUS_PREV_DAY = 20032,                           //!< Активная плюс энергия за предыдущий день
+  EM_ACTIVE_MINUS_PREV_DAY = 20033,                          //!< Активная минус энергия за текущий день
+  EM_ACTIVE_PLUS_CUR_MONTH = 20034,                          //!< Активная плюс энергия за текущий месяц
+  EM_ACTIVE_MINUS_CUR_MONTH = 20035,                         //!< Активная минус энергия за текущий месяц
+  EM_ACTIVE_PLUS_PREV_MONTH = 20036,                         //!< Активная плюс энергия на предыдущий месяц
+  EM_ACTIVE_MINUS_PREV_MONTH = 20037,                        //!< Активная минус энергия на предыдущий месяц
+  EM_REACTIVE_ENERGY = 20038,                                //!< Общая реактивня энергия
+  EM_REACTIVE_PLUS_ALL = 20039,                              //!< Общая плюс реактивная энергия за весь период
+  EM_REACTIVE_MINUS_ALL = 20040,                             //!< Общая минус реактивная энергия за весь период
+  EM_REACTIVE_PLUS_CUR_DAY = 20041,                          //!< Плюс реактивная энергия за весь день
+  EM_REACTIVE_MINUS_CUR_DAY = 20042,                         //!< Минус реактивная энергия за весь день
+  EM_REACTIVE_PLUS_PREV_DAY = 20043,                         //!< Плюс реактивная энергия за весь день
+  EM_REACTIVE_MINUS_PREV_DAY = 20044,                        //!< Минус реактивная энергия за весь день
+  EM_REACTIVE_PLUS_CUR_MONTH = 20045,                        //!< Плюс реактивная энергия за месяц
+  EM_REACTIVE_MINUS_CUR_MONTH = 20046,                       //!< Минус реактивная энергия за месяц
+  EM_REACTIVE_PLUS_PREV_MONTH = 20047,                       //!< Плюс реактивная энергия за предыдущий месяц
+  EM_REACTIVE_MINUS_PREV_MONTH = 20048,                      //!< Минус реактивная энергия за предыдущий месяц
+  EM_COEFFICIENT_TRANS_CURRENT = 20049,                      //!< Коэффицинт трансформации тока
+  EM_COEFFICIENT_TRANS_VOLTAGE = 20050,                      //!< Коэффициент трансформации напряжения
+  EM_END = 20051,                                            //!< 
 };
 
 #endif // IDSLIST
