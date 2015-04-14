@@ -80,11 +80,3 @@ void RegimeRun::processing()
   setGeneralSetPoint();
   setOtherSetpoint();
 }
-
-
-
-
-
-
-
-

@@ -1,11 +1,14 @@
 #include "regime_main.h"
 
-#define COUNT_REGIMES 2
+#define COUNT_REGIMES 4
 
 Regime *regimes[COUNT_REGIMES];
 
 RegimeTechnologPeriodic regimeTechnologPeriodic;
 RegimeTechnologSoftChangeFreq regimeTechnologSoftChangeFreq;
+
+RegimeRunPush *regimeRunPush;
+RegimeRunSwing *regimeRunSwing;
 
 static void regimeTask(void *argument);
 
@@ -13,6 +16,18 @@ void regimeInit()
 {
   regimes[0] = &regimeTechnologPeriodic;
   regimes[1] = &regimeTechnologSoftChangeFreq;
+
+  parameters.set(CCS_TYPE_VSD, 1);
+  switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
+  case 1:
+    regimes[2] = new RegimeRunPushNovomet;
+    regimes[3] = new RegimeRunSwingNovomet;
+    break;
+  default:
+    regimes[2] = new RegimeRunPush;
+    regimes[3] = new RegimeRunSwing;
+    break;
+  }
 
   osThreadDef(RegimeTask, regimeTask, osPriorityNormal, 0, 4 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(RegimeTask), NULL);

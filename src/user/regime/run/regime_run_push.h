@@ -13,6 +13,9 @@ public:
   ~RegimeRunPush();
 
 private:
+  void processingStateRunning();
+  void processingStateWork();
+
   void getOtherSetpoint();
   void setOtherSetpoint();
 
