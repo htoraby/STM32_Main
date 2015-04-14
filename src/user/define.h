@@ -37,6 +37,19 @@ enum enTypeData {
   TYPE_DATA_LAST
 };
 
+/*!
+ * \brief The enPeriodExchange enum
+ */
+enum enPeriodExchange
+{
+  NOT_READ                        = 0,      /// Не читать
+  EVERY_TIME                      = 1,      /// Каждый раз
+  VERY_OFTEN                      = 10,     /// Очень часто
+  OFTEN                           = 100,    /// Часто
+  RARELY                          = 1000,   /// Редко
+  HARDLY_EVER                     = 10000   /// Очень редко
+};
+
 enum enReturns
 {
   RETURN_OK                     = 0,
@@ -76,12 +89,15 @@ enum enAccess
 	ACCESS_LAST
 };
 
+/*!
+ * \brief Список команд
+ */
 enum enOperation
 {
-  OPERATION_ERROR			  = 0,
-  OPERATION_READ				= 1,
-  OPERATION_WRITE				= 2,
-  OPERATION_LIMITED			= 3,
+  OPERATION_ERROR			  = 0,                //!<
+  OPERATION_READ				= 1,                //!< Параметр только для чтения
+  OPERATION_WRITE				= 2,                //!< Параметр только для записи
+  OPERATION_LIMITED			= 3,                //!< Параметр для записи только во время останова
 	OPERATION_LAST
 };
 

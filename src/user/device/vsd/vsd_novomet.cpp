@@ -83,7 +83,7 @@ void VsdNovomet::initModbusParameters()
                          13,                // Адрес регистра в устройстве
                          OPERATION_WRITE,   // Операции с параметром
                          PHYSIC_VOLTAGE,    // Физическая величина параметра
-                         VOLTAGE_V,      // Единицы измерения параметра
+                         VOLTAGE_V,         // Единицы измерения параметра
                          TYPE_DATA_INT16,   // Тип данных
                          0.655913978,       // Коэффициент преобразования параметра
                          15,                // Минимальное значение параметра
@@ -2827,10 +2827,35 @@ int VsdNovomet::onRegimeSwing()
 
 int VsdNovomet::offRegimeSwing()
 {
+  float freq = parameters.get(CCS_RGM_RUN_SWING_FREQ);      // Получаем частоту толчков
+  float numPush = parameters.get(CCS_RGM_RUN_SWING_QUANTITY);// Получаем количество толчков
+  float impulse = parameters.get(CCS_RGM_RUN_SWING_VOLTAGE); // Превышение напряжения
+  impulse = (uint16_t)((impulse - 100) / 10.0 + 0.5);       // Вычислили уставку напряжения
+  if ((impulse < 1.0) || (impulse > 10))
+    impulse = 1.0;
+
+  setNewValue(VSD_SW_STARTUP_FREQUENCY, freq);              // Записали в ЧРП частоту
+  setNewValue(VSD_SW_STARTUP_ANGLE_OSC, 360);               // Угол константа
+  setNewValue(VSD_SW_STARTUP_OSC_COUNT, numPush);           // Количество качаний
+  setNewValue(VSD_SW_STARTUP_ROTATIONS, 1);                 // Записали количество оборотов
+  setNewValue(VSD_SW_STARTUP_U_PULSE, impulse);             // Записали кратность импульса толчка
+  setNewValue(VSD_SW_STARTUP_I_LIM_PULSE, 1500.0);          // Записали предел тока
+  return setNewValue(VSD_REGULATOR_QUEUE_3, 2.0);           // Включаем режим в очередь алгоритмов
+}
+
+int VsdNovomet::onRegimeJarring()
+{
   return 1;
 }
 
-int VsdNovomet::setMainRegimeVSD()
+int VsdNovomet::offRegimeJarring()
 {
   return 1;
+}
+
+
+
+int VsdNovomet::setMainRegimeVSD()
+{
+  return setNewValue(VSD_REGULATOR_QUEUE_3, 0);             // Убираем режим из очереди алгоритмов
 }

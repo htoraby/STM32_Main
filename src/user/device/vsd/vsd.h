@@ -282,6 +282,18 @@ public:
   virtual int offRegimeSwing() = 0;
 
   /*!
+   * \brief onRegimeJarring
+   * \return
+   */
+  virtual int onRegimeJarring() = 0;
+
+  /*!
+   * \brief offRegimeJarring
+   * \return
+   */
+  virtual int offRegimeJarring() = 0;
+
+  /*!
    * \brief Задание в массив параметров ЧРП номинальной частоты двигателя
    * \param freq Задаваемая номинальная частота двигателя
    * \return

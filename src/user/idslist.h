@@ -948,7 +948,9 @@ enum enID
   VSD_LOCK_ROTOR_TIME = 10256,                               //!< Время задержки аварии блокировки ротора Danfoss 30-23 Не используется в проекте, только при конфигурировании
   VSD_TEMP_SPEEDUP = 10257,                                  //!< 
   VSD_TEMP_SPEEDDOWN = 10258,                                //!< 
-  VSD_END = 10259,                                           //!< 
+  VSD_RADIATOR_TEMPERATURE_1 = 10259,                        //!< 
+  VSD_CONTROL_TEMPERATURE_1 = 10260,                         //!< 
+  VSD_END = 10261,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме

@@ -10811,6 +10811,24 @@
 	</param>
 	<param>
 		<id>10259</id>
+		<name>VSD_RADIATOR_TEMPERATURE_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>0.0</min>
+		<valid>VALIDITY_ERROR</valid>
+	</param>
+	<param>
+		<id>10260</id>
+		<name>VSD_CONTROL_TEMPERATURE_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>0.0</min>
+		<valid>VALIDITY_ERROR</valid>
+	</param>
+	<param>
+		<id>10261</id>
 		<name>VSD_END</name>
 		<valid>VALIDITY_ERROR</valid>
 	</param>
