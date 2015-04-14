@@ -47,6 +47,11 @@ float Vsd::getCurrentFreq()
   return getValue(VSD_FREQUENCY_NOW);
 }
 
+float Vsd::getSetpointFreq()
+{
+  return getValue(VSD_FREQUENCY);
+}
+
 int Vsd::setNominalFreq(float freq)
 {
   return setValue(VSD_MOTOR_FREQUENCY, freq);

@@ -10,7 +10,7 @@ RegimeRunPush::~RegimeRunPush()
 
 }
 
-void RegimeRunPush::getOtherSetPoint()
+void RegimeRunPush::getOtherSetpoint()
 {
   action_ = parameters.get(CCS_RGM_RUN_PUSH_MODE);
   state_ = parameters.get(CCS_RGM_RUN_PUSH_STATE);
@@ -19,4 +19,9 @@ void RegimeRunPush::getOtherSetPoint()
   quantity_ = parameters.get(CCS_RGM_RUN_PUSH_QUANTITY);
   period_ = parameters.get(CCS_RGM_RUN_PUSH_PERIOD);
   voltage_ = parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE);
+}
+
+void RegimeRunPush::setOtherSetpoint()
+{
+  parameters.set(CCS_RGM_RUN_PUSH_STATE, state_);
 }

@@ -8610,6 +8610,26 @@
 	</param>
 	<param>
 		<id>685</id>
+		<name>CCS_TYPE_VSD</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>3.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<values>0-Откл;1-Новомет;2-Данфос;3-Эталон</values>
+		<comment>Тип подключенного ЧРП</comment>
+	</param>
+	<param>
+		<id>686</id>
 		<name>CCS_END</name>
 		<valid>VALIDITY_OK</valid>
 		<comment>Последний параметр</comment>
@@ -8713,7 +8733,7 @@
 		<short_text>Направ.вращения</short_text>
 		<form>1.1 Текущие параметры - сводка; 3.2 ЧРП</form>
 		<unit>NUMERIC_NUMBER</unit>
-		<unit_lcd>1</unit_lcd>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>TEXT</format>
 		<values>1-Прямое;2-Обратное</values>
 		<comment>Направления вращения Danfoss 4-10 Не используется в проекте, только при конфигурировании</comment>

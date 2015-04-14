@@ -83,6 +83,7 @@ typedef enum {
 
   RegimeSoftChangeFreqOffId,      //!< "Режим программного изменения частоты отключен"
   RegimeRunPushOffId,             //!< "Режим пуска толчками отключен"
+  RegimeRunSwingOffId,            //!< "Режим пуска раскачкой отключен"
 
 } EventId;
 

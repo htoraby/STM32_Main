@@ -76,6 +76,12 @@ public:
   float getCurrentFreq();
 
   /*!
+   * \brief Метод получения уставки частоты
+   * \return
+   */
+  float getSetpointFreq();
+
+  /*!
    * \brief Метод получения номинальной частоты двигателя
    * \return
    */

@@ -12,14 +12,15 @@ public:
   RegimeRunPush();
   ~RegimeRunPush();
 
+private:
+  void getOtherSetpoint();
+  void setOtherSetpoint();
+
   float freq_;
   float time_;
   float quantity_;
   float period_;
   float voltage_;
-
-private:
-  void getOtherSetPoint();
 };
 
 #endif // REGIMERUNPUSH_H

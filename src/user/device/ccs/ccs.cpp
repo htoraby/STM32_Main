@@ -602,6 +602,16 @@ uint8_t Ccs::setNewValue(uint16_t id, float value)
   case CCS_RGM_CHANGE_FREQ_END_FREQ:
     calcRegimeChangeFreqPeriodOneStep();
     break;
+  case CCS_RGM_RUN_PUSH_MODE:
+    if (value != 1) {                       // TODO: Заменить константу
+      parameters.set(CCS_RGM_RUN_SWING_MODE, 1);      // Отключаем режим раскачки
+    }
+    break;
+  case  CCS_RGM_RUN_SWING_MODE:
+    if (value != 1) {                       // TODO: Заменить константу
+      parameters.set(CCS_RGM_RUN_PUSH_MODE, 1);      // Отключаем режим раскачки
+    }
+    break;
   default:
     break;
   }

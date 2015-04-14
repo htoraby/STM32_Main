@@ -8,6 +8,13 @@ class RegimeRunSwing : public RegimeRun
 public:
   RegimeRunSwing();
   ~RegimeRunSwing();
+private:
+  void getOtherSetpoint();
+  void setOtherSetpoint();
+
+  float freq_;
+  float quantity_;
+  float voltage_;
 };
 
 #endif // REGIMERUNSWING_H

@@ -9,6 +9,7 @@ public:
   RegimeRunPushNovomet();
   ~RegimeRunPushNovomet();
 
+private:
   void processingStateRunning();
   void processingStateWork();
 };
