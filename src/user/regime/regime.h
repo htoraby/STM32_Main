@@ -23,13 +23,13 @@ public:
    * \brief Список состояний режима
   */
   typedef enum {
-    IdleState,
-    WorkState,
-    RunningState,
-    WaitPauseState,
-    PauseState,
-    RestartState,
-    StopState,
+    IdleState = 0,
+    WorkState = 100,
+    RunningState = 200,
+    WaitPauseState = 300,
+    PauseState = 400,
+    RestartState = 500,
+    StopState = 600
   } RegimeState;
 
   Regime();
