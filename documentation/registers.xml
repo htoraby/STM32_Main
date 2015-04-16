@@ -5666,63 +5666,63 @@
 		<name>CCS_RGM_MAINTENANCE_PARAM_MODE</name>
 		<access>ACCESS_OPERATOR</access>
 		<valid>VALIDITY_OK</valid>
-		<comment>Режим поддержания параметра включение</comment>
+		<comment>Режим поддержания параметра. Включение</comment>
 	</param>
 	<param>
 		<id>475</id>
-		<name>CCS_RGM_MAINTENANCE_PARAM</name>
+		<name>CCS_RGM_MAINTENANCE_PARAM_TYPE</name>
 		<access>ACCESS_OPERATOR</access>
 		<valid>VALIDITY_OK</valid>
-		<comment>Режим поддержания параметра параметра</comment>
+		<comment>Режим поддержания параметра. Тип параметра</comment>
 	</param>
 	<param>
 		<id>476</id>
 		<name>CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE</name>
 		<access>ACCESS_OPERATOR</access>
 		<valid>VALIDITY_OK</valid>
-		<comment>Режим поддержания параметра зависимость</comment>
+		<comment>Режим поддержания параметра. Зависимость</comment>
 	</param>
 	<param>
 		<id>477</id>
 		<name>CCS_RGM_MAINTENANCE_PARAM_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<valid>VALIDITY_OK</valid>
-		<comment>Режим поддержания параметра поддержка значения</comment>
+		<comment>Режим поддержания параметра. Поддержка значения</comment>
 	</param>
 	<param>
 		<id>478</id>
 		<name>CCS_RGM_MAINTENANCE_PARAM_PERIOD</name>
 		<access>ACCESS_OPERATOR</access>
 		<valid>VALIDITY_OK</valid>
-		<comment>Режим поддержания параметра период регулирования</comment>
+		<comment>Режим поддержания параметра. Период регулирования</comment>
 	</param>
 	<param>
 		<id>479</id>
 		<name>CCS_RGM_MAINTENANCE_PARAM_PROP</name>
 		<access>ACCESS_OPERATOR</access>
 		<valid>VALIDITY_OK</valid>
-		<comment>Режим поддержания параметра пропорциональный коэффициент</comment>
+		<comment>Режим поддержания параметра. Пропорциональный коэффициент</comment>
 	</param>
 	<param>
 		<id>480</id>
 		<name>CCS_RGM_MAINTENANCE_PARAM_INT</name>
 		<access>ACCESS_OPERATOR</access>
 		<valid>VALIDITY_OK</valid>
-		<comment>Режим поддержания параметра интегральный коэффициент</comment>
+		<comment>Режим поддержания параметра. Интегральный коэффициент</comment>
 	</param>
 	<param>
 		<id>481</id>
 		<name>CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ</name>
 		<access>ACCESS_OPERATOR</access>
 		<valid>VALIDITY_OK</valid>
-		<comment>Режим поддержания параметра мин рабочая частота</comment>
+		<comment>Режим поддержания параметра. Мин рабочая частота</comment>
 	</param>
 	<param>
 		<id>482</id>
 		<name>CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ</name>
 		<access>ACCESS_OPERATOR</access>
 		<valid>VALIDITY_OK</valid>
-		<comment>Режим поддержания параметра макс рабочая частота</comment>
+		<comment>Режим поддержания параметра. Макс рабочая частота</comment>
 	</param>
 	<param>
 		<id>483</id>
@@ -8739,6 +8739,15 @@
 	</param>
 	<param>
 		<id>686</id>
+		<name>CCS_RGM_MAINTENANCE_PARAM_STATE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<valid>VALIDITY_OK</valid>
+		<comment>Режим поддержания параметра. Состояние автомата</comment>
+	</param>
+	<param>
+		<id>687</id>
 		<name>CCS_RGM_ALTERNATION_FREQ_STATE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -8756,7 +8765,7 @@
 		<format>NULL</format>
 	</param>
 	<param>
-		<id>687</id>
+		<id>688</id>
 		<name>CCS_END</name>
 		<valid>VALIDITY_OK</valid>
 		<comment>Последний параметр</comment>

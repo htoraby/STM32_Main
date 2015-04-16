@@ -4742,7 +4742,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].min                                 = 0;
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].max                                 = 0;
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].def                                 = 0;
-  // Режим поддержания параметра включение
+  // Режим поддержания параметра. Включение
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].id                     = CCS_RGM_MAINTENANCE_PARAM_MODE;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].access                 = ACCESS_OPERATOR;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].operation              = 0;
@@ -4752,17 +4752,17 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].min                    = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].max                    = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].def                    = 0;
-  // Режим поддержания параметра параметра
-  parameters_[CCS_RGM_MAINTENANCE_PARAM - CCS_BEGIN].id                          = CCS_RGM_MAINTENANCE_PARAM;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM - CCS_BEGIN].access                      = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM - CCS_BEGIN].operation                   = 0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM - CCS_BEGIN].physic                      = 0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM - CCS_BEGIN].validity                    = VALIDITY_OK;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM - CCS_BEGIN].value.float_t               = 0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM - CCS_BEGIN].min                         = 0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM - CCS_BEGIN].max                         = 0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM - CCS_BEGIN].def                         = 0;
-  // Режим поддержания параметра зависимость
+  // Режим поддержания параметра. Тип параметра
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].id                     = CCS_RGM_MAINTENANCE_PARAM_TYPE;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].access                 = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].operation              = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].physic                 = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].validity               = VALIDITY_OK;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].value.float_t          = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].min                    = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].max                    = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].def                    = 0;
+  // Режим поддержания параметра. Зависимость
   parameters_[CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE - CCS_BEGIN].id               = CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE - CCS_BEGIN].access           = ACCESS_OPERATOR;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE - CCS_BEGIN].operation        = 0;
@@ -4772,7 +4772,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE - CCS_BEGIN].min              = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE - CCS_BEGIN].max              = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE - CCS_BEGIN].def              = 0;
-  // Режим поддержания параметра поддержка значения
+  // Режим поддержания параметра. Поддержка значения
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT - CCS_BEGIN].id                 = CCS_RGM_MAINTENANCE_PARAM_SETPOINT;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT - CCS_BEGIN].access             = ACCESS_OPERATOR;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT - CCS_BEGIN].operation          = 0;
@@ -4782,7 +4782,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT - CCS_BEGIN].min                = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT - CCS_BEGIN].max                = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT - CCS_BEGIN].def                = 0;
-  // Режим поддержания параметра период регулирования
+  // Режим поддержания параметра. Период регулирования
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].id                   = CCS_RGM_MAINTENANCE_PARAM_PERIOD;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].access               = ACCESS_OPERATOR;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].operation            = 0;
@@ -4792,7 +4792,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].min                  = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].max                  = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].def                  = 0;
-  // Режим поддержания параметра пропорциональный коэффициент
+  // Режим поддержания параметра. Пропорциональный коэффициент
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].id                     = CCS_RGM_MAINTENANCE_PARAM_PROP;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].access                 = ACCESS_OPERATOR;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].operation              = 0;
@@ -4802,7 +4802,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].min                    = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].max                    = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].def                    = 0;
-  // Режим поддержания параметра интегральный коэффициент
+  // Режим поддержания параметра. Интегральный коэффициент
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].id                      = CCS_RGM_MAINTENANCE_PARAM_INT;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].access                  = ACCESS_OPERATOR;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].operation               = 0;
@@ -4812,7 +4812,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].min                     = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].max                     = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].def                     = 0;
-  // Режим поддержания параметра мин рабочая частота
+  // Режим поддержания параметра. Мин рабочая частота
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].id                 = CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].access             = ACCESS_OPERATOR;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].operation          = 0;
@@ -4822,7 +4822,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].min                = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].max                = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].def                = 0;
-  // Режим поддержания параметра макс рабочая частота
+  // Режим поддержания параметра. Макс рабочая частота
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].id                 = CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].access             = ACCESS_OPERATOR;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].operation          = 0;
@@ -6862,6 +6862,16 @@ void Ccs::initParameters()
   parameters_[CCS_TYPE_VSD - CCS_BEGIN].min                                      = 0.0;
   parameters_[CCS_TYPE_VSD - CCS_BEGIN].max                                      = 3.0;
   parameters_[CCS_TYPE_VSD - CCS_BEGIN].def                                      = 0.0;
+  // Режим поддержания параметра. Состояние автомата
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].id                    = CCS_RGM_MAINTENANCE_PARAM_STATE;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].access                = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].physic                = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].validity              = VALIDITY_OK;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].value.float_t         = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].min                   = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].max                   = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].def                   = 0;
   // 
   parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].id                     = CCS_RGM_ALTERNATION_FREQ_STATE;
   parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].access                 = ACCESS_OPERATOR;
