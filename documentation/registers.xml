@@ -5379,7 +5379,7 @@
 		<name>CCS_RGM_ALTERNATION_FREQ_TIMER_1_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHSYIC_DATA_TIME</physic>
+		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0</min>
 		<max>4294967296</max>
 		<def>0</def>
@@ -5684,10 +5684,10 @@
 	</param>
 	<param>
 		<id>477</id>
-		<name>CCS_RGM_MAINTENANCE_PARAM_SETPOINT</name>
+		<name>CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT</name>
 		<access>ACCESS_OPERATOR</access>
 		<valid>VALIDITY_OK</valid>
-		<comment>Режим поддержания параметра. Поддержка значения</comment>
+		<comment>Режим поддержания параметра. Поддержка значения - Ток</comment>
 	</param>
 	<param>
 		<id>478</id>
@@ -8766,6 +8766,33 @@
 	</param>
 	<param>
 		<id>688</id>
+		<name>CCS_RGM_MAINTENANCE_PARAM_SETPOINT_PRESSURE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<valid>VALIDITY_OK</valid>
+		<comment>Режим поддержания параметра. Поддержка значения - Давление</comment>
+	</param>
+	<param>
+		<id>689</id>
+		<name>CCS_RGM_MAINTENANCE_PARAM_SETPOINT_TEMPERATURE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<valid>VALIDITY_OK</valid>
+		<comment>Режим поддержания параметра. Поддержка значения - Температура</comment>
+	</param>
+	<param>
+		<id>690</id>
+		<name>CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<valid>VALIDITY_OK</valid>
+		<comment>Режим поддержания параметра. Поддержка значения - Аналоговый вход</comment>
+	</param>
+	<param>
+		<id>691</id>
 		<name>CCS_END</name>
 		<valid>VALIDITY_OK</valid>
 		<comment>Последний параметр</comment>

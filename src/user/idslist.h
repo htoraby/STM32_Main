@@ -480,7 +480,7 @@ enum enID
   CCS_RGM_MAINTENANCE_PARAM_MODE = 474,                      //!< Режим поддержания параметра. Включение
   CCS_RGM_MAINTENANCE_PARAM_TYPE = 475,                      //!< Режим поддержания параметра. Тип параметра
   CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE = 476,                //!< Режим поддержания параметра. Зависимость
-  CCS_RGM_MAINTENANCE_PARAM_SETPOINT = 477,                  //!< Режим поддержания параметра. Поддержка значения
+  CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT = 477,          //!< Режим поддержания параметра. Поддержка значения - Ток
   CCS_RGM_MAINTENANCE_PARAM_PERIOD = 478,                    //!< Режим поддержания параметра. Период регулирования
   CCS_RGM_MAINTENANCE_PARAM_PROP = 479,                      //!< Режим поддержания параметра. Пропорциональный коэффициент
   CCS_RGM_MAINTENANCE_PARAM_INT = 480,                       //!< Режим поддержания параметра. Интегральный коэффициент
@@ -691,7 +691,10 @@ enum enID
   CCS_TYPE_VSD = 685,                                        //!< Тип подключенного ЧРП
   CCS_RGM_MAINTENANCE_PARAM_STATE = 686,                     //!< Режим поддержания параметра. Состояние автомата
   CCS_RGM_ALTERNATION_FREQ_STATE = 687,                      //!< 
-  CCS_END = 688,                                             //!< Последний параметр
+  CCS_RGM_MAINTENANCE_PARAM_SETPOINT_PRESSURE = 688,         //!< Режим поддержания параметра. Поддержка значения - Давление
+  CCS_RGM_MAINTENANCE_PARAM_SETPOINT_TEMPERATURE = 689,      //!< Режим поддержания параметра. Поддержка значения - Температура
+  CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN = 690,        //!< Режим поддержания параметра. Поддержка значения - Аналоговый вход
+  CCS_END = 691,                                             //!< Последний параметр
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF

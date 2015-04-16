@@ -44,20 +44,20 @@ void RegimeTechnologMaintenanceParam::processing()
       switch (type) {
       case PressureParam:
         curValue = parameters.get(TMS_PRESSURE_INTAKE);
-        setpoint = parameters.get(CCS_RGM_MAINTENANCE_PARAM_SETPOINT);
+        setpoint = parameters.get(CCS_RGM_MAINTENANCE_PARAM_SETPOINT_PRESSURE);
         break;
       case TemperatureParam:
-        curValue = parameters.get(TMS_PRESSURE_INTAKE);
-        setpoint = parameters.get(CCS_RGM_MAINTENANCE_PARAM_SETPOINT);
+        curValue = parameters.get(TMS_TEMPERATURE_WINDING);
+        setpoint = parameters.get(CCS_RGM_MAINTENANCE_PARAM_SETPOINT_TEMPERATURE);
         break;
       case AnalogIn1Param: case AnalogIn2Param:
       case AnalogIn3Param: case AnalogIn4Param:
-        curValue = parameters.get(TMS_PRESSURE_INTAKE);
-        setpoint = parameters.get(CCS_RGM_MAINTENANCE_PARAM_SETPOINT);
+        curValue = parameters.get(CCS_AI_1_VALUE + (type - AnalogIn1Param));
+        setpoint = parameters.get(CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN);
         break;
       default:
-        curValue = parameters.get(TMS_PRESSURE_INTAKE);
-        setpoint = parameters.get(CCS_RGM_MAINTENANCE_PARAM_SETPOINT);
+        curValue = parameters.get(CCS_MOTOR_CURRENT_AVARAGE);
+        setpoint = parameters.get(CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT);
         break;
       }
 
