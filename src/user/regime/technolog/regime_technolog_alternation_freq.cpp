@@ -23,6 +23,10 @@ void RegimeTechnologAlternationFreq::processing()
   state_ = parameters.get(CCS_RGM_ALTERNATION_FREQ_STATE);
   beginTime_ = parameters.getU32(CCS_RGM_ALTERNATION_FREQ_TIMER_1_END);
 
+  if (action_ == OffAction) {
+    state_ = IdleState;
+  }
+
   switch (state_) {
   case IdleState:
     if (action_ != OffAction) {                       // Режим - включен
@@ -34,27 +38,43 @@ void RegimeTechnologAlternationFreq::processing()
     }
     break;
   case RunningState:
-    //TODO: Задержка для перехода на новую частоту
-    state_ = WorkState;
+    state_ = WorkState;                               // TODO: Задержка для перехода на новую частоту
     break;
-  case WorkState:
-    if (ksu.isWorkMotor() && ksu.isAutoMode()) { // Двигатель - работа; Режим - авто;
-      uint32_t time = ksu.getSecFromCurTime(beginTime_);
-      if ((time > timeFirstFreq_) && timeFirstFreq_) {
-        vsd->setFrequency(secondFreq_);
+  case WorkState:                                     // Работа на первой частоте
+    if (ksu.isWorkMotor() && ksu.isAutoMode()) {      // Двигатель - работа; Режим - авто;
+      uint32_t time = ksu.getSecFromCurTime(beginTime_);        // Вычисляем сколько времени работаем на первой частоте
+      if ((time > timeFirstFreq_) && timeFirstFreq_) {// Если время работы на первой частоте вышло
+        vsd->setFrequency(secondFreq_);               // Посылаем команду на изменение частоты
         beginTime_ = ksu.getTime();
-        state_ = WorkState + 1;
+        state_ = RunningState + 1;
       }
     }
-    else { // Станция в останове
-      if (action_ == SingleAction) {
-        parameters.set(CCS_RGM_CHANGE_FREQ_MODE, OffAction);
-        logEvent.add(SetpointCode, AutoType, RegimeSoftChangeFreqOffId);
-      }
+    else {
       state_ = IdleState;
     }
     break;
-
+  case RunningState + 1: 
+    state_ = WorkState + 1;                           // TODO: Задержка для перехода на новую частоту
+    break;
+  case WorkState + 1:
+    if (ksu.isWorkMotor() && ksu.isAutoMode()) {      // Двигатель - работа; Режим - авто;
+      uint32_t time = ksu.getSecFromCurTime(beginTime_);
+      if ((time > timeSecondFreq_) && timeSecondFreq_) {
+        vsd->setFrequency(firstFreq_);
+        beginTime_ = ksu.getTime();
+        state_ = RunningState;
+      }
+    }
+    else {
+      state_ = IdleState;
+    }
+    break;
+  default:
+    state_ = IdleState;
+    break;
   }
+
+  parameters.set(CCS_RGM_ALTERNATION_FREQ_STATE, state_);
+  parameters.set(CCS_RGM_ALTERNATION_FREQ_TIMER_1_END, beginTime_);
 }
 
