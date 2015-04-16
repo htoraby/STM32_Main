@@ -689,7 +689,8 @@ enum enID
   CCS_RGM_RUN_SWING_VOLTAGE = 683,                           //!< Напряжение толчка в режиме пуска "Раскачка"
   CCS_RGM_RUN_SWING_QUANTITY = 684,                          //!< Количество толчков в режиме пуска "Раскачка"
   CCS_TYPE_VSD = 685,                                        //!< Тип подключенного ЧРП
-  CCS_END = 686,                                             //!< Последний параметр
+  CCS_RGM_ALTERNATION_FREQ_STATE = 686,                      //!< 
+  CCS_END = 687,                                             //!< Последний параметр
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF

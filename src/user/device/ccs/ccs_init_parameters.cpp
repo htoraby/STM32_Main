@@ -4515,7 +4515,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].id                    = CCS_RGM_PERIODIC_RUN_BEGIN_TIME;
   parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].access                = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].operation             = OPERATION_READ;
+  parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].operation             = OPERATION_WRITE;
   parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].physic                = PHYSIC_DATE_TIME;
   parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].value.float_t         = 0;
@@ -4525,7 +4525,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].id                   = CCS_RGM_PERIODIC_RUN_TIME_TO_END;
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].operation            = OPERATION_READ;
+  parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].operation            = OPERATION_WRITE;
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].value.float_t        = 0;
@@ -4535,7 +4535,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].id                   = CCS_RGM_PERIODIC_STOP_BEGIN_TIME;
   parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].operation            = OPERATION_READ;
+  parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].operation            = OPERATION_WRITE;
   parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].physic               = PHYSIC_DATE_TIME;
   parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].value.float_t        = 0;
@@ -4545,7 +4545,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].id                  = CCS_RGM_PERIODIC_STOP_TIME_TO_END;
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].access              = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].operation           = OPERATION_READ;
+  parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].operation           = OPERATION_WRITE;
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].physic              = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].value.float_t       = 0;
@@ -4555,93 +4555,93 @@ void Ccs::initParameters()
   // Режим чередования частот
   parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].id                      = CCS_RGM_ALTERNATION_FREQ_MODE;
   parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].access                  = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].operation               = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].physic                  = 0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].physic                  = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].validity                = VALIDITY_OK;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].value.float_t           = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].min                     = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].max                     = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].def                     = 0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].value.float_t           = 0.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].min                     = 0.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].max                     = 1.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].def                     = 0.0;
   // Режим чередования частот частота 1
   parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_1 - CCS_BEGIN].id                    = CCS_RGM_ALTERNATION_FREQ_FREQ_1;
   parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_1 - CCS_BEGIN].access                = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_1 - CCS_BEGIN].operation             = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_1 - CCS_BEGIN].physic                = 0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_1 - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_1 - CCS_BEGIN].physic                = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_1 - CCS_BEGIN].validity              = VALIDITY_OK;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_1 - CCS_BEGIN].value.float_t         = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_1 - CCS_BEGIN].min                   = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_1 - CCS_BEGIN].max                   = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_1 - CCS_BEGIN].def                   = 0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_1 - CCS_BEGIN].value.float_t         = 0.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_1 - CCS_BEGIN].min                   = 0.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_1 - CCS_BEGIN].max                   = 500.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_1 - CCS_BEGIN].def                   = 0.0;
   // Режим чередования частот время работы на частоте 1
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1 - CCS_BEGIN].id                   = CCS_RGM_ALTERNATION_FREQ_TIMER_1;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1 - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1 - CCS_BEGIN].operation            = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1 - CCS_BEGIN].physic               = 0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1 - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1 - CCS_BEGIN].physic               = PHYSIC_TIME;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1 - CCS_BEGIN].validity             = VALIDITY_OK;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1 - CCS_BEGIN].value.float_t        = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1 - CCS_BEGIN].min                  = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1 - CCS_BEGIN].max                  = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1 - CCS_BEGIN].def                  = 0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1 - CCS_BEGIN].value.float_t        = 0.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1 - CCS_BEGIN].min                  = 0.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1 - CCS_BEGIN].max                  = 86400.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1 - CCS_BEGIN].def                  = 0.0;
   // 
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].id               = CCS_RGM_ALTERNATION_FREQ_TIMER_1_END;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].access           = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].operation        = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].physic           = 0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].operation        = OPERATION_WRITE;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].physic           = PHSYIC_DATA_TIME;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].validity         = VALIDITY_OK;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].value.float_t    = 0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].value.float_t    = 0.0;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].min              = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].max              = 0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].max              = 4294967296;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].def              = 0;
   // Режим чередования частот уставка ЗСП
   parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1 - CCS_BEGIN].id               = CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1;
   parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1 - CCS_BEGIN].access           = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1 - CCS_BEGIN].operation        = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1 - CCS_BEGIN].physic           = 0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1 - CCS_BEGIN].operation        = OPERATION_WRITE;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1 - CCS_BEGIN].physic           = PHYSIC_PERCENT;
   parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1 - CCS_BEGIN].validity         = VALIDITY_OK;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1 - CCS_BEGIN].value.float_t    = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1 - CCS_BEGIN].min              = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1 - CCS_BEGIN].max              = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1 - CCS_BEGIN].def              = 0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1 - CCS_BEGIN].value.float_t    = 60.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1 - CCS_BEGIN].min              = 0.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1 - CCS_BEGIN].max              = 100.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1 - CCS_BEGIN].def              = 60.0;
   // Режим чередования частот частота 2
   parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].id                    = CCS_RGM_ALTERNATION_FREQ_FREQ_2;
   parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].access                = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].operation             = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].physic                = 0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].physic                = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].validity              = VALIDITY_OK;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].value.float_t         = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].min                   = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].max                   = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].def                   = 0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].value.float_t         = 0.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].min                   = 1.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].max                   = 500.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].def                   = 0.0;
   // Режим чередования частот время работы на частоте 2
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2 - CCS_BEGIN].id                   = CCS_RGM_ALTERNATION_FREQ_TIMER_2;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2 - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2 - CCS_BEGIN].operation            = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2 - CCS_BEGIN].physic               = 0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2 - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2 - CCS_BEGIN].physic               = PHYSIC_TIME;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2 - CCS_BEGIN].validity             = VALIDITY_OK;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2 - CCS_BEGIN].value.float_t        = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2 - CCS_BEGIN].min                  = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2 - CCS_BEGIN].max                  = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2 - CCS_BEGIN].def                  = 0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2 - CCS_BEGIN].value.float_t        = 0.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2 - CCS_BEGIN].min                  = 0.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2 - CCS_BEGIN].max                  = 86400.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2 - CCS_BEGIN].def                  = 0.0;
   // 
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].id               = CCS_RGM_ALTERNATION_FREQ_TIMER_2_END;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].access           = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].operation        = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].physic           = 0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].operation        = OPERATION_WRITE;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].physic           = PHYSIC_DATE_TIME;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].validity         = VALIDITY_OK;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].value.float_t    = 0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].value.float_t    = 0.0;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].min              = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].max              = 0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].max              = 4294967296;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].def              = 0;
   // Режим чередования частот уставка ЗСП 2
   parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2 - CCS_BEGIN].id               = CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2;
   parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2 - CCS_BEGIN].access           = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2 - CCS_BEGIN].operation        = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2 - CCS_BEGIN].physic           = 0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2 - CCS_BEGIN].operation        = OPERATION_WRITE;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2 - CCS_BEGIN].physic           = PHYSIC_PERCENT;
   parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2 - CCS_BEGIN].validity         = VALIDITY_OK;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2 - CCS_BEGIN].value.float_t    = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2 - CCS_BEGIN].min              = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2 - CCS_BEGIN].max              = 0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2 - CCS_BEGIN].def              = 0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2 - CCS_BEGIN].value.float_t    = 60.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2 - CCS_BEGIN].min              = 0.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2 - CCS_BEGIN].max              = 100.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2 - CCS_BEGIN].def              = 60.0;
   // Режим программного изменения частоты
   parameters_[CCS_RGM_CHANGE_FREQ_MODE - CCS_BEGIN].id                           = CCS_RGM_CHANGE_FREQ_MODE;
   parameters_[CCS_RGM_CHANGE_FREQ_MODE - CCS_BEGIN].access                       = ACCESS_OPERATOR;
@@ -6862,5 +6862,15 @@ void Ccs::initParameters()
   parameters_[CCS_TYPE_VSD - CCS_BEGIN].min                                      = 0.0;
   parameters_[CCS_TYPE_VSD - CCS_BEGIN].max                                      = 3.0;
   parameters_[CCS_TYPE_VSD - CCS_BEGIN].def                                      = 0.0;
+  // 
+  parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].id                     = CCS_RGM_ALTERNATION_FREQ_STATE;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].access                 = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].validity               = VALIDITY_OK;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].value.float_t          = 0.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].min                    = 0.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].max                    = 100.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].def                    = 0.0;
 }
 

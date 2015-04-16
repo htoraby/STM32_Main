@@ -19,7 +19,7 @@ void regimeInit()
 
   parameters.set(CCS_TYPE_VSD, 1);
   switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
-  case 1:
+  case VSD_TYPE_NOVOMET:
     regimes[2] = new RegimeRunPushNovomet;
     regimes[3] = new RegimeRunSwingNovomet;
     break;
