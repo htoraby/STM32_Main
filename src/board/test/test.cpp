@@ -12,6 +12,7 @@
 #include "host.h"
 #include "user_main.h"
 #include "test_protection.h"
+#include "shell.h"
 
 static void testThread(void *argument);
 
@@ -19,8 +20,8 @@ static void testThread(void *argument);
 static void testUartThread(void *argument);
 #endif
 
-#if (TEST_HOST_UART == 1)
 static void testHostUartRxThread(void *argument);
+#if (TEST_HOST_UART == 1)
 static void testHostUartTxThread(void *argument);
 #endif
 
@@ -57,9 +58,9 @@ void testInit()
   osThreadCreate(osThread(TestUart), NULL);
 #endif
 
-#if (TEST_HOST_UART == 1)
   osThreadDef(TestHostUartRx, testHostUartRxThread, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(TestHostUartRx), NULL);
+#if (TEST_HOST_UART == 1)
   osThreadDef(TestHostUartTx, testHostUartTxThread, osPriorityNormal, 0, 3 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(TestHostUartTx), NULL);
 #endif
@@ -68,33 +69,6 @@ void testInit()
   testProtectionInit();
 #endif
 }
-
-#if (TEST_HOST_UART == 1)
-static int testCmd(int argc, char *argv[])
-{
-  for(int i = 0; i < argc; i++) {
-    if (!strcmp(argv[i], "stm32")) {
-      if (++i >= argc) {
-        return 1;
-      }
-      if (!strcmp(argv[i], "tasklist")) {
-        osThreadList((uint8_t*)bufferTx);
-
-        static uint8_t buffer[UART_BUF_SIZE*2];
-        int size = xPortGetFreeHeapSize();
-        sprintf((char*)buffer, "\n%d\n", size);
-        uartWriteData(HOST_TEST_UART, buffer, strlen((char*)buffer));
-
-        uartWriteData(HOST_TEST_UART, bufferTx, strlen((char*)bufferTx));
-
-        return 0;
-      }
-    }
-  }
-
-  return 1;
-}
-#endif
 
 static void testThread(void * argument)
 {
@@ -245,7 +219,6 @@ static void testUartThread(void * argument)
 }
 #endif
 
-#if (TEST_HOST_UART == 1)
 static void testHostUartRxThread(void * argument)
 {
   (void)argument;
@@ -261,7 +234,13 @@ static void testHostUartRxThread(void * argument)
     while (1) {
       if (osSemaphoreWait(semaphoreUart, 5) == osEventTimeout) {
         sizePkt = uartReadData(HOST_UART, buffer);
+
+#if (TEST_HOST_UART == 1)
         uartWriteData(HOST_TEST_UART, buffer, sizePkt);
+#else
+        if (sizePkt)
+          shell_parse_request((char*)buffer);
+#endif
 
         countByte = 0;
         break;
@@ -272,6 +251,7 @@ static void testHostUartRxThread(void * argument)
   }
 }
 
+#if (TEST_HOST_UART == 1)
 static void testHostUartTxThread(void * argument)
 {
   (void)argument;
@@ -289,18 +269,7 @@ static void testHostUartTxThread(void * argument)
         memset(buffer, 0, UART_BUF_SIZE);
         sizePkt = uartReadData(HOST_TEST_UART, buffer);
 
-        memcpy(bufferRx, buffer, UART_BUF_SIZE);
-
-        int argc = 0;
-        char *argv[20];
-        char *str;
-        str = strtok((char*)bufferRx, " ");
-        while (str != NULL) {
-          argv[argc++] = str;
-          str = strtok (NULL, " ");
-        }
-        if (testCmd(argc, argv))
-          uartWriteData(HOST_UART, buffer, sizePkt);
+        uartWriteData(HOST_UART, buffer, sizePkt);
 
         countByte = 0;
         break;

@@ -66,6 +66,7 @@ Product {
         "src/board/temp_sensor/",
         "src/board/host/",
         "src/common/",
+        "src/shell/",
         "src/user/",
         "src/user/device/",
         "src/user/device/ccs",
