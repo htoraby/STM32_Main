@@ -45,6 +45,7 @@ void ProtectionUnderloadMotor::getOtherSetpointProt()
     progressiveRestartCount_ = 0;
   }
 
+  // Если включен режим "Периодический"
   if (parameters.get(CCS_RGM_CHANGE_FREQ_MODE) != Regime::OffAction) {
     float beginFreq_ = parameters.get(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ);
     float endFreq_ = parameters.get(CCS_RGM_CHANGE_FREQ_END_FREQ);
@@ -56,6 +57,16 @@ void ProtectionUnderloadMotor::getOtherSetpointProt()
   } else {
     if (ksu.getValue(idParam_) && (vsd->getNominalFreq() > 0))
       tripSetpoint_ = tripSetpoint_ * pow(vsd->getCurrentFreq(), 2) / pow(vsd->getNominalFreq(), 2);
+  }
+
+  // Если включен режим "Чередования частот"
+  if (parameters.get(CCS_RGM_ALTERNATION_FREQ_MODE) != Regime::OffAction) {
+    if (vsd->getCurrentFreq() == parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_1)) {
+      tripSetpoint_ = parameters.get(CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1);
+    }
+    if (vsd->getCurrentFreq() == parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_2)) {
+      tripSetpoint_ = parameters.get(CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2);
+    }
   }
 }
 
