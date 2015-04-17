@@ -1,12 +1,13 @@
 #include "regime_main.h"
 
-#define COUNT_REGIMES 5
+#define COUNT_REGIMES 6                     //!< Количество режимов, увеличивать при добавлении нового
 
 Regime *regimes[COUNT_REGIMES];
 
 RegimeTechnologPeriodic regimeTechnologPeriodic;
 RegimeTechnologSoftChangeFreq regimeTechnologSoftChangeFreq;
 RegimeTechnologMaintenanceParam regimeTechnologMaintenanceParam;
+RegimeTechnologAlternationFreq regimeTechnologAlternationFreq;
 
 RegimeRunPush *regimeRunPush;
 RegimeRunSwing *regimeRunSwing;
@@ -31,6 +32,7 @@ void regimeInit()
   }
 
   regimes[4] = &regimeTechnologMaintenanceParam;
+  regimes[5] = &regimeTechnologAlternationFreq;
 
   osThreadDef(RegimeTask, regimeTask, osPriorityNormal, 0, 4 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(RegimeTask), NULL);
