@@ -11012,6 +11012,14 @@
 	</param>
 	<param>
 		<id>10261</id>
+		<name>VSD_ETALON_ON_STATE</name>
+	</param>
+	<param>
+		<id>10262</id>
+		<name>VSD_ETALON_OFF_STATE</name>
+	</param>
+	<param>
+		<id>10263</id>
 		<name>VSD_END</name>
 		<valid>VALIDITY_ERROR</valid>
 	</param>
