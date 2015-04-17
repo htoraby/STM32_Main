@@ -20,6 +20,10 @@
 #define TEST_HOST_UART   0
 #define TEST_PROTECTIONS 1
 
+#define HOST_TEST_UART uart6
+#define TEST_UART_1 uart4 // 4
+#define TEST_UART_2 uart2
+
 void testInit();
 
 #endif // TEST_H

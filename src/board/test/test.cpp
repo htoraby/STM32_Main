@@ -92,8 +92,8 @@ static void testThread(void * argument)
   static uint8_t buffer[UART_BUF_SIZE];
   bool turn = false;
 
-  uartInit(uart4, 115200);
-  osSemaphoreId semaphoreUart = uartGetSemaphoreId(uart4);
+  uartInit(TEST_UART_1, 115200);
+  osSemaphoreId semaphoreUart = uartGetSemaphoreId(TEST_UART_1);
 #endif
 
   testRtc();
@@ -114,6 +114,7 @@ static void testThread(void * argument)
 //    toggleLed(FanLed);
 
     osDelay(500);
+
 //    parameters.set(CCS_NOTE_1 + t, 10);
 //    parameters.set(CCS_NOTE_1 + t + 1, 20);
 //    t = t + 2;
@@ -158,12 +159,12 @@ static void testThread(void * argument)
     buffer[0] = 0x55;
     buffer[1] = 0xAA;
     buffer[2] = 0x02;
-    uartWriteData(uart4, buffer, UART_BUF_SIZE);
+    uartWriteData(TEST_UART_1, buffer, UART_BUF_SIZE);
 
     osSemaphoreWait(semaphoreUart, osWaitForever);
     while (1) {
       if (osSemaphoreWait(semaphoreUart, 5) == osEventTimeout) {
-        sizePkt = uartReadData(uart4, buffer);
+        sizePkt = uartReadData(TEST_UART_1, buffer);
         if ((buffer[0] != 0xFE) || (buffer[1] != 0x55) ||
             (buffer[2] != 0x01) || (sizePkt != UART_BUF_SIZE))
           asm("nop");
@@ -188,8 +189,8 @@ static void testUartThread(void * argument)
   int sizePkt;
   static uint8_t buffer[UART_BUF_SIZE];
 
-  uartInit(uart2, 115200);
-  osSemaphoreId semaphoreUart = uartGetSemaphoreId(uart2);
+  uartInit(TEST_UART_2, 115200);
+  osSemaphoreId semaphoreUart = uartGetSemaphoreId(TEST_UART_2);
 
   while(1) {
     osSemaphoreWait(semaphoreUart, osWaitForever);
@@ -199,7 +200,7 @@ static void testUartThread(void * argument)
         buffer[1] = 0x55;
         buffer[2] = 0x01;
 
-        sizePkt = uartReadData(uart2, buffer);
+        sizePkt = uartReadData(TEST_UART_2, buffer);
         if ((buffer[0] != 0x55) || (buffer[1] != 0xAA) ||
             (buffer[2] != 0x02) || (sizePkt != UART_BUF_SIZE))
           asm("nop");
@@ -207,7 +208,7 @@ static void testUartThread(void * argument)
         buffer[0] = 0xFE;
         buffer[1] = 0x55;
         buffer[2] = 0x01;
-        uartWriteData(uart2, buffer, UART_BUF_SIZE);
+        uartWriteData(TEST_UART_2, buffer, UART_BUF_SIZE);
 
         countByte = 0;
         break;
@@ -233,11 +234,13 @@ static void testHostUartRxThread(void * argument)
     osSemaphoreWait(semaphoreUart, osWaitForever);
     while (1) {
       if (osSemaphoreWait(semaphoreUart, 5) == osEventTimeout) {
+        memset(buffer, 0, UART_BUF_SIZE);
         sizePkt = uartReadData(HOST_UART, buffer);
 
 #if (TEST_HOST_UART == 1)
         uartWriteData(HOST_TEST_UART, buffer, sizePkt);
 #else
+        uartWriteData(HOST_UART, buffer, sizePkt);
         if (sizePkt)
           shell_parse_request((char*)buffer);
 #endif

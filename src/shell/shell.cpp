@@ -20,10 +20,6 @@ void shell_parse_request(char *buf)
 int shell_main(int argc, char *argv[])
 {
   for(int i = 0; i < argc; i++) {
-    if (++i >= argc) {
-      return 1;
-    }
-
     if (!strcmp(argv[i], "task")) {
       return shell_task(argc, argv);
     }
