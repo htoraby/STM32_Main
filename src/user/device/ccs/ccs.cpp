@@ -609,10 +609,13 @@ uint8_t Ccs::setNewValue(uint16_t id, float value)
       parameters.set(CCS_RGM_RUN_SWING_MODE, 1);      // Отключаем режим раскачки
     }
     break;
-  case  CCS_RGM_RUN_SWING_MODE:
+  case CCS_RGM_RUN_SWING_MODE:
     if (value != 1) {                       // TODO: Заменить константу
       parameters.set(CCS_RGM_RUN_PUSH_MODE, 1);      // Отключаем режим раскачки
     }
+    break;
+  case CCS_CMD_LOG_COPY:
+    logStartSave();
     break;
   default:
     break;
