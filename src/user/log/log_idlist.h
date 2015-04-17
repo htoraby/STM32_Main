@@ -6,6 +6,7 @@
 */
 typedef enum {
   RunId = 10000,                  //!< Пуск
+  StopId,                         //!< Стоп
 
   OverVoltInProtReactId,          //!< "Сработала защита: Превышение питания сети"
   OverVoltInApvId,                //!< "АПВ по защите: Превышение питания сети"

@@ -48,7 +48,7 @@ void LogRunning::task()
     osSemaphoreWait(semaphoreId_, osWaitForever);
 
     if (type_ == RunTypeLog) {
-      EventType eventType = (EventType)ksu.getValue(CCS_LAST_RUN_REASON_TMP);
+      EventType eventType = (EventType)ksu.getValue(CCS_LAST_RUN_REASON);
       eventId_ = logEvent.add(RunCode, eventType, RunId);
     }
 

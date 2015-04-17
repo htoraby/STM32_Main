@@ -224,7 +224,9 @@ void Ccs::changedCondition()
       break;
     default:
       if (condition != conditionOld_) {
-        setNewValue(CCS_LAST_STOP_REASON, getValue(CCS_LAST_STOP_REASON_TMP));
+        float reason = getValue(CCS_LAST_STOP_REASON_TMP);
+        setNewValue(CCS_LAST_STOP_REASON, reason);
+        logEvent.add(StopCode, (EventType)reason, StopId);
       }
 
       if (flag == CCS_CONDITION_FLAG_BLOCK) {
