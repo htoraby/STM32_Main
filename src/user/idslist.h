@@ -956,7 +956,9 @@ enum enID
   VSD_TEMP_SPEEDDOWN = 10258,                                //!< 
   VSD_RADIATOR_TEMPERATURE_1 = 10259,                        //!< 
   VSD_CONTROL_TEMPERATURE_1 = 10260,                         //!< 
-  VSD_END = 10261,                                           //!< 
+  VSD_ETALON_ON_STATE = 10261,                               //!< Состояние работы ЧРП Эталон, 0 останов 1 в работе
+  VSD_ETALON_OFF_STATE = 10262,                              //!< Состояние останова ЧРП Эталон, 0 в работе 1 останов
+  VSD_END = 10263,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме
