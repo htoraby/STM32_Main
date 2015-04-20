@@ -165,7 +165,7 @@ void Ccs::vsdConditionTask()
       if (getValue(CCS_CONDITION) != CCS_CONDITION_RUN) {
         if (vsd->getValue(VSD_FREQUENCY) == vsd->getValue(VSD_FREQUENCY_NOW))
           setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
-#if DEBUG
+#if USE_DEBUG
         setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
 #endif
       }
@@ -371,7 +371,7 @@ bool Ccs::checkCanStart()
 
 bool Ccs::checkCanStop()
 {
-#if DEBUG
+#if USE_DEBUG
   return true;
 #endif
 

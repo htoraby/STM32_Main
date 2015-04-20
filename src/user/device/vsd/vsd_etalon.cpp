@@ -2160,7 +2160,7 @@ void VsdEtalon::writeToDevice(int id, float value)
 
 int VsdEtalon::start()
 {
-#if DEBUG
+#if USE_DEBUG
   return RETURN_OK;
 #endif
 
@@ -2194,7 +2194,7 @@ int VsdEtalon::start()
 
 bool VsdEtalon::checkStart()
 {
-#if DEBUG
+#if USE_DEBUG
   return true;
 #endif
 
@@ -2208,7 +2208,7 @@ bool VsdEtalon::checkStart()
 
 int VsdEtalon::stop()
 {
-#if DEBUG
+#if USE_DEBUG
   return RETURN_OK;
 #endif
 
@@ -2242,7 +2242,7 @@ int VsdEtalon::stop()
 
 bool VsdEtalon::checkStop()
 {
-#if DEBUG
+#if USE_DEBUG
   return true;
 #endif
 

@@ -2443,7 +2443,7 @@ void VsdNovomet::writeToDevice(int id, float value)
 
 int VsdNovomet::start()
 {
-#if DEBUG
+#if USE_DEBUG
   return RETURN_OK;
 #endif
 
@@ -2477,7 +2477,7 @@ int VsdNovomet::start()
 
 bool VsdNovomet::checkStart()
 {
-#if DEBUG
+#if USE_DEBUG
   return true;
 #endif
 
@@ -2491,7 +2491,7 @@ bool VsdNovomet::checkStart()
 
 int VsdNovomet::stop()
 {
-#if DEBUG
+#if USE_DEBUG
   return RETURN_OK;
 #endif
 
@@ -2555,7 +2555,7 @@ int VsdNovomet::alarmstop()
 
 bool VsdNovomet::checkStop()
 {
-#if DEBUG
+#if USE_DEBUG
   return true;
 #endif
 
