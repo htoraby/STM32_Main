@@ -240,9 +240,9 @@ static void testHostUartRxThread(void * argument)
 #if (TEST_HOST_UART == 1)
         uartWriteData(HOST_TEST_UART, buffer, sizePkt);
 #else
-        uartWriteData(HOST_UART, buffer, sizePkt);
-        if (sizePkt)
-          shell_parse_request((char*)buffer);
+//        uartWriteData(HOST_UART, buffer, sizePkt);
+//        if (sizePkt)
+//          shell_parse_request((char*)buffer);
 #endif
 
         countByte = 0;
