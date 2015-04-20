@@ -14,8 +14,7 @@ static float buffer[VSD_BEGIN] __attribute__((section(".extmem")));
 static float buffer[VSD_BEGIN];
 #endif
 
-// TODO: Мне так не нравится надо как-то объединить Units и enum enPhysic
-float Units[30][6][2] =                   //!< Коэффициенты преобразования единиц измерения
+float Device::units[PHYSIC_LAST][6][2] =
 {
   {{1.0, 0.0},                            // PHYSIC_NUMERIC
    {1.0, 0.0},
@@ -345,7 +344,7 @@ float Device::applyCoef(float value, float coef)
 
 float Device::applyUnit(float value, int physic, int units)
 {
-  return (value * Units[physic][units][0] + Units[physic][units][1]);
+  return (value * Device::units[physic][units][0] + Device::units[physic][units][1]);
 }
 
 unsigned short Device::getIndexAtId(unsigned short id)

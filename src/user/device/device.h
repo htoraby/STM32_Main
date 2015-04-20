@@ -165,6 +165,11 @@ public:
    */
   StatusType readParameters();
 
+  /*!
+   * \brief Коэффициенты преобразования единиц измерения
+   */
+  static float units[PHYSIC_LAST][6][2];
+
 protected:
 
   /*!
