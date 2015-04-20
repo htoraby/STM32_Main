@@ -5,8 +5,10 @@
  * \brief Id события
 */
 typedef enum {
-  RunId = 10000,                  //!< Пуск
-  StopId,                         //!< Стоп
+  RunId = 10000,                  //!< "Пуск"...
+  StopId,                         //!< "Стоп"...
+  PowerOnId,                      //!< "Включение питания"
+  PowerOffId,                     //!< "Отключение питания"
 
   OverVoltInProtReactId,          //!< "Сработала защита: Превышение питания сети"
   OverVoltInApvId,                //!< "АПВ по защите: Превышение питания сети"

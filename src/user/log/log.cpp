@@ -1,5 +1,5 @@
 #include "log.h"
-#include "gpio.h"
+#include "user_main.h"
 
 uint32_t Log::id_ = 0;
 uint32_t Log::idDebug_ = 0;
@@ -71,8 +71,8 @@ void Log::deInit()
 
 StatusType Log::write(uint8_t *data, uint32_t size, bool saveId, bool endLog)
 {
-  // Проверка питания платы
-  if (!isPowerGood())
+  // Проверка отключения питания платы
+  if (ksu.isPowerOff())
     return StatusError;
 
   flashExtWrite(flashSpiNum_, address_, data, size);

@@ -68,6 +68,8 @@ enum DoNum {
 
 //! Вывод детектора питания
 #define WATCH_PIN  GPIOI, GPIO_PIN_5
+//! Вывод переключения питания на ИБП
+#define OFF_REL_PIN  GPIOI, GPIO_PIN_6
 //! Вывод включения подсветки LCD
 #define LCD_ON_PIN  GPIOD, GPIO_PIN_3
 //! Вывод переключения USB между контроллерами
@@ -183,6 +185,12 @@ void setDigitalOutput(const uint16_t num, PinState value = PinReset);
  \return bool: true - норма, false - падение напряжения ниже 21,8В
 */
 bool isPowerGood();
+
+/*!
+ * \brief Функция вкл/выкл питания от ИБП
+ * \param on - вкл/выкл
+ */
+void turnPowerBattery(bool on);
 
 /*!
  * \brief Включение LCD

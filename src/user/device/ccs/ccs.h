@@ -251,6 +251,19 @@ public:
    */
   void calcRegimeChangeFreqPeriodOneStep();
 
+  /*!
+   * \brief Контроль питания и отключение ИБП по таймауту
+   */
+  void controlPower();
+
+  /*!
+   * \brief Метод проверки отключения питания платы
+   * \return
+   */
+  bool isPowerOff() const {
+    return powerOffFlag_;
+  }
+
 private:
   /*!
    * \brief Метод добавления в очередь событий включения/мигания LED
@@ -311,6 +324,11 @@ private:
   int flagOld_;
   //! Предыдущий режим работы
   int workModeOld_;
+
+  //! Флаг потери питания
+  bool powerOffFlag_;
+  //! Тайаут отключения питания ИБП
+  int powerOffTimeout_;
 
 };
 

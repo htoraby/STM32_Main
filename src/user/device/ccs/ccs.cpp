@@ -11,11 +11,15 @@
 #include "protection_main.h"
 #include "regime_main.h"
 
+#define TIMEOUT_POWER_OFF 6000 //!< 1 минута на отключение питания ИБП
+
 Ccs::Ccs()
   : Device(CCS_BEGIN, parametersArray_, CCS_END - CCS_BEGIN)
   , conditionOld_(-1)
   , flagOld_(-1)
   , workModeOld_(-1)
+  , powerOffFlag_(false)
+  , powerOffTimeout_(TIMEOUT_POWER_OFF)
 {
 
 }
@@ -71,6 +75,7 @@ void Ccs::mainTask()
 
     calcTime();
     calcParameters();
+    controlPower();
   }
 }
 
@@ -701,4 +706,23 @@ void Ccs::calcRegimeChangeFreqPeriodOneStep()
   setValue(CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP, periodOneStep);
 }
 
+void Ccs::controlPower()
+{
+  if (!isPowerGood()) {
+    if (!powerOffFlag_) {
+      // Запись в журнал "Отключение питания"
+      logEvent.add(PowerCode, AutoType, PowerOffId);
+      powerOffFlag_ = true;
+    }
 
+    if (powerOffTimeout_) {
+      powerOffTimeout_--;
+    }
+    else {
+      turnPowerBattery(false);
+    }
+  } else {
+    powerOffFlag_ = false;
+    powerOffTimeout_ = TIMEOUT_POWER_OFF;
+  }
+}

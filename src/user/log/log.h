@@ -46,6 +46,7 @@ typedef enum {
   OpenDoorAutoCode     = 66,          //!< Дверь открыт
 
   ProtectCode          = 100,         //!< Событие защиты
+  PowerCode,                          //!< Событие откл/вкл питания
 } EventCode;
 
 /*!

@@ -57,6 +57,7 @@ void gpioInit()
   initButton(SysResetButton);
 
   initPinInput(WATCH_PIN);
+  initPinOut(OFF_REL_PIN, PinSet);
   initPinOut(LCD_ON_PIN, PinSet);
 //  initPinOut(USB_ON_PIN, PinSet);
 
@@ -166,6 +167,14 @@ void setDigitalOutput(const uint16_t num, PinState value)
 bool isPowerGood()
 {
   return getPinInput(WATCH_PIN);
+}
+
+void turnPowerBattery(bool on)
+{
+  if (on)
+    HAL_GPIO_WritePin(OFF_REL_PIN, GPIO_PIN_SET);
+  else
+    HAL_GPIO_WritePin(OFF_REL_PIN, GPIO_PIN_RESET);
 }
 
 void onLcd()

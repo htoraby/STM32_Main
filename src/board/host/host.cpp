@@ -70,7 +70,7 @@ void hostInit()
   osSemaphoreWait(hostSemaphoreId, 0);
 
   osTimerDef_t timerDef = {hostTimer};
-  osTimerId timerId = osTimerCreate(&timerDef, osTimerPeriodic, 0);
+  osTimerId timerId = osTimerCreate(&timerDef, osTimerPeriodic, NULL);
   osTimerStart(timerId, 1);
 }
 

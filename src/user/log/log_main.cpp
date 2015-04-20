@@ -40,6 +40,8 @@ void logInit()
 
   logDebug.init();
 
+  // Запись в журнал "Включение питания"
+  logEvent.add(PowerCode, AutoType, PowerOnId);
 
   semaphoreId_ = osSemaphoreCreate(NULL, 1);
   osSemaphoreWait(semaphoreId_, 0);
