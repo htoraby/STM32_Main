@@ -14,7 +14,7 @@
 #include "board.h"
 #include "fram.h"
 
-extern float Units[28][6][2];
+extern float Units[30][6][2];
 
 /*!
  * \brief Структура для обработки и хранения параметров в СУ

@@ -142,17 +142,17 @@ enum enPhysic
 };
 
 enum enPhysicNumeric {
-  NUMERIC_NUMBER  = 0,
+  NUMERIC_NUMBER,
   NUMERIC_LAST
 };
 
 enum enPhysicDateTime {
-  DATE_TIME_SS = 0,
+  DATE_TIME_SS,
   DATE_TIME_LAST
 };
 
 enum enPhysicTime {
-  TIME_SS     = 0,
+  TIME_SS,
   TIME_US,
   TIME_MS,
   TIME_SS_MS,
@@ -166,114 +166,113 @@ enum enPhysicTime {
 };
 
 enum enPhysicPercent {
-  PERCENT_PERCENT = 0,
+  PERCENT_PERCENT,
   PERCENT_LAST
 };
 
 enum enPhysicLength {
-  LENGTH_M = 0,
-  LENGTH_MILE  = 2,
-  LENGTH_FOOT  = 3,
+  LENGTH_M,
+  LENGTH_MILE,
+  LENGTH_FOOT,
   LENGTH_LAST
 };
 
 enum enPhysicDensity {
-  DENSITY_KG_M3  = 0,
+  DENSITY_KG_M3,
   DENSITY_LAST
 };
 
 enum enPhysicSpace {
-  SPACE_M2  = 0,
+  SPACE_M2,
   SPACE_LAST
 };
 
 enum enPhysicFrequency {
-  FREQUENCY_HZ  = 0,
+  FREQUENCY_HZ,
   FREQUENCY_KHZ,
   FREQUENCY_LAST
 };
 
 enum enPhysicVoltage {
-  VOLTAGE_V = 0,
+  VOLTAGE_V,
   VOLTAGE_KV,
   VOLTAGE_LAST
 };
 
 enum enPhysicCurrent {
-  CURRENT_A = 0,
+  CURRENT_A,
   CURRENT_MA,
   CURRENT_LAST
 };
 
 enum enPhysicActivPower {
-  ACTIV_POWER_W = 0,
+  ACTIV_POWER_W,
   ACTIV_POWER_KW,
   ACTIV_POWER_LAST
 };
 
 enum enPhysicFullPower {
-  FULL_POWER_VA = 0,
+  FULL_POWER_VA,
   FULL_POWER_KVA,
   FULL_POWER_LAST
 };
 
 enum enPhysicReactivPower {
-  REACTIV_POWER_VAR = 0,
+  REACTIV_POWER_VAR,
   REACTIV_POWER_KVAR,
   REACTIV_POWER_LAST,
 };
 
 enum enPhysicAngle {
-  ANGLE_DEGREES = 0,
+  ANGLE_DEGREES,
   ANGLE_LAST
 };
 
 enum enPhysicRpm {
-  RPM_RPM = 0,
+  RPM_RPM,
   RPM_LAST
 };
 
 enum enPhysicTemp {
-  TEMP_HZ_SS = 0,
+  TEMP_HZ_SS,
   TEMP_LAST
 };
 
 enum enPhysicResistence {
-  RESISTANCE_KOM  = 0,
   RESISTANCE_OM,
+  RESISTANCE_KOM,
   RESISTANCE_MOM,
+  RESISTANCE_MILIOM,
   RESISTANCE_LAST
 };
 
 enum enPhysicResisCable {
-  RESIST_CABLE_KOM_M  = 0,
+  RESIST_CABLE_KOM_M,
   RESIST_CABLE_LAST
 };
 
 enum enPhysicPressure {
-  PRESSURE_MPA  = 0,
-  PRESSURE_ATM = 2,
-  PRESSURE_AT  = 3,
-  PRESSURE_BAR = 4,
-  PRESSURE_PSI = 5,
+  PRESSURE_MPA,
+  PRESSURE_ATM,
+  PRESSURE_AT,
+  PRESSURE_BAR,
+  PRESSURE_PSI,
   PRESSURE_LAST
 };
 
 enum enPhysicTemperature {
-  TEMPERATURE_C = 0,
-  TEMPERATURE_F = 2,
-  TEMPERATURE_K = 3,
+  TEMPERATURE_C,
   TEMPERATURE_LAST
 };
 
 enum enPhysicAcceleration {
-  ACCELERATION_G = 0,
+  ACCELERATION_G,
   ACCELERATION_MSS2,
   ACCELERATION_LAST
 };
 
 enum enPhysicSpeed {
-  SPEED_M_SS = 0,
+  SPEED_M_SS,
   SPEED_LAST
 };
 
@@ -283,40 +282,40 @@ enum enPhysicViscosity {
 };
 
 enum enPhysicFlow {
-  FLOW_M3_DD = 0,
+  FLOW_M3_DD,
   FLOW_LAST
 };
 
 enum emPhysicPower {
-  POWER_W  = 0,
+  POWER_W,
   POWER_KW,
   POWER_LAST
 };
 
 enum enPhysicActivEnergy {
-  ACTIVE_ENERGY_W_HH = 0,
+  ACTIVE_ENERGY_W_HH,
   ACTIVE_ENERGY_KW_HH,
   ACTIVE_ENERGY_LAST,
 };
 
 enum enPhysicReactivEnergy {
-  REACTIVE_ENERGY_VAR_HH = 0,
+  REACTIVE_ENERGY_VAR_HH,
   REACTIVE_ENERGY_KVAR_HH,
   REACTIVE_ENERGY_LAST,
 };
 
 enum enPhysicFullEnergy {
-  FULL_ENERGY_VAHH = 0,
+  FULL_ENERGY_VAHH,
   FULL_ENERGY_LAST
 };
 
 enum enPhysicRate {
-  RATE_NM   = 0,
+  RATE_NM,
   RATE_LAST
 };
 
 enum enPhysicIndunctance {
-  INDUNCTANCE_MH = 0,
+  INDUNCTANCE_MH,
   INDUNCTANCE_LAST
 };
 
