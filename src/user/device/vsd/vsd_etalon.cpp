@@ -7,7 +7,7 @@
 
 #include "vsd_etalon.h"
 #include "user_main.h"
-/*
+
 void VsdEtalon::initModbusParameters()
 {
   modbusParameters_[0] = {// Пустой регистр
@@ -27,6 +27,7 @@ void VsdEtalon::initModbusParameters()
                           0,
                           0
                          };
+
   modbusParameters_[1] = {// Текущая выходная активная мощность ПЧ
                           VSD_POWER_ACTIVE, // Уникальный идентификатор параметра
                           0x4000,           // Адрес регистра в устройстве
@@ -113,7 +114,7 @@ void VsdEtalon::initModbusParameters()
                           0                 // Значение
                          };
   modbusParameters_[6] = {// Температура1 IGBT модуля
-                          VSD_CONTROL_TEMPERATURE_1,
+                          VSD_CONTROL_TEMPERATURE,
                           0x400A,           // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
                           PHYSIC_TEMPERATURE,
@@ -129,8 +130,9 @@ void VsdEtalon::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
                          };
+
   modbusParameters_[7] = {// Температура2 IGBT модуля
-                          VSD_CONTROL_TEMPERATURE_2,
+                          VSD_CONTROL_TEMPERATURE_1,
                           0x400B,           // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
                           PHYSIC_TEMPERATURE,
@@ -147,8 +149,8 @@ void VsdEtalon::initModbusParameters()
                           0                 // Значение
                          };
   modbusParameters_[8] = {// Температура1 фильтра
-                          VSD_RADIATOR_TEMPERATURE_2,
-                          0x400С,           // Адрес регистра в устройстве
+                          VSD_RADIATOR_TEMPERATURE,
+                          0x400C,           // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
                           PHYSIC_TEMPERATURE,
                           TEMPERATURE_C,    // Единицы измерения параметра
@@ -197,6 +199,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
+  /*
   modbusParameters_[11] = {// Состояние ошибки VSD Эталон
                            VSD_INVERTOR_STATUS,
                            0x400F,           // Адрес регистра в устройстве
@@ -2039,6 +2042,7 @@ void VsdEtalon::initModbusParameters()
                             VALIDITY_ERROR,   // Поле состояния параметра
                             0                 // Значение
                            };
+*/
 }
 
 VsdEtalon::VsdEtalon()
@@ -2451,9 +2455,3 @@ void VsdEtalon::calcParameters(uint16_t id)
     break;
   }
 }
-
-int VsdEtalon::setMainRegimeVSD()
-{
-  return 1;
-}
-*/

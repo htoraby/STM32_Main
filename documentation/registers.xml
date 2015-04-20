@@ -11013,10 +11013,40 @@
 	<param>
 		<id>10261</id>
 		<name>VSD_ETALON_ON_STATE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<comment>Состояние работы ЧРП Эталон, 0 останов 1 в работе</comment>
 	</param>
 	<param>
 		<id>10262</id>
 		<name>VSD_ETALON_OFF_STATE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<comment>Состояние останова ЧРП Эталон, 0 в работе 1 останов</comment>
 	</param>
 	<param>
 		<id>10263</id>
