@@ -142,129 +142,137 @@ enum enPhysic
 };
 
 enum enPhysicNumeric {
-  NUMERIC_NUMBER  = 1,
+  NUMERIC_NUMBER,
   NUMERIC_LAST
 };
 
 enum enPhysicDateTime {
-  DATE_TIME_SS = 1,
+  DATE_TIME_SS,
   DATE_TIME_LAST
 };
 
 enum enPhysicTime {
-  TIME_SS     = 1,
+  TIME_SS,
+  TIME_US,
+  TIME_MS,
+  TIME_SS_MS,
+  TIME_MM_SS,
+  TIME_HH,
+  TIME_HH_MM,
+  TIME_HH_MM_SS,
+  TIME_YY_MM_DD,
+  TIME_YY_MM_DD_HH_MM_SS,
   TIME_LAST
 };
 
 enum enPhysicPercent {
-  PERCENT_PERCENT = 1,
+  PERCENT_PERCENT,
   PERCENT_LAST
 };
 
 enum enPhysicLength {
-  LENGTH_M = 1,
-  LENGTH_MILE  = 2,
-  LENGTH_FOOT  = 3,
+  LENGTH_M,
+  LENGTH_MILE,
+  LENGTH_FOOT,
   LENGTH_LAST
 };
 
 enum enPhysicDensity {
-  DENSITY_KG_M3  = 1,
+  DENSITY_KG_M3,
   DENSITY_LAST
 };
 
 enum enPhysicSpace {
-  SPACE_M2  = 1,
+  SPACE_M2,
   SPACE_LAST
 };
 
 enum enPhysicFrequency {
-  FREQUENCY_HZ  = 1,
+  FREQUENCY_HZ,
   FREQUENCY_KHZ,
   FREQUENCY_LAST
 };
 
 enum enPhysicVoltage {
-  VOLTAGE_V = 1,
+  VOLTAGE_V,
   VOLTAGE_KV,
   VOLTAGE_LAST
 };
 
 enum enPhysicCurrent {
-  CURRENT_A = 1,
+  CURRENT_A,
   CURRENT_MA,
   CURRENT_LAST
 };
 
 enum enPhysicActivPower {
-  ACTIV_POWER_W = 1,
+  ACTIV_POWER_W,
   ACTIV_POWER_KW,
   ACTIV_POWER_LAST
 };
 
 enum enPhysicFullPower {
-  FULL_POWER_VA = 1,
+  FULL_POWER_VA,
   FULL_POWER_KVA,
   FULL_POWER_LAST
 };
 
 enum enPhysicReactivPower {
-  REACTIV_POWER_VAR = 1,
+  REACTIV_POWER_VAR,
   REACTIV_POWER_KVAR,
   REACTIV_POWER_LAST,
 };
 
 enum enPhysicAngle {
-  ANGLE_DEGREES = 1,
+  ANGLE_DEGREES,
   ANGLE_LAST
 };
 
 enum enPhysicRpm {
-  RPM_RPM = 1,
+  RPM_RPM,
   RPM_LAST
 };
 
 enum enPhysicTemp {
-  TEMP_HZ_SS = 1,
+  TEMP_HZ_SS,
   TEMP_LAST
 };
 
 enum enPhysicResistence {
-  RESISTANCE_KOM  = 1,
   RESISTANCE_OM,
+  RESISTANCE_KOM,
   RESISTANCE_MOM,
+  RESISTANCE_MILIOM,
   RESISTANCE_LAST
 };
 
 enum enPhysicResisCable {
-  RESIST_CABLE_KOM_M  = 1,
+  RESIST_CABLE_KOM_M,
   RESIST_CABLE_LAST
 };
 
 enum enPhysicPressure {
-  PRESSURE_MPA  = 1,
-  PRESSURE_ATM = 2,
-  PRESSURE_AT  = 3,
-  PRESSURE_BAR = 4,
-  PRESSURE_PSI = 5,
+  PRESSURE_MPA,
+  PRESSURE_ATM,
+  PRESSURE_AT,
+  PRESSURE_BAR,
+  PRESSURE_PSI,
   PRESSURE_LAST
 };
 
 enum enPhysicTemperature {
-  TEMPERATURE_C = 1,
-  TEMPERATURE_F = 2,
-  TEMPERATURE_K = 3,
+  TEMPERATURE_C,
   TEMPERATURE_LAST
 };
 
 enum enPhysicAcceleration {
-  ACCELERATION_G = 1,
+  ACCELERATION_G,
   ACCELERATION_MSS2,
   ACCELERATION_LAST
 };
 
 enum enPhysicSpeed {
-  SPEED_M_SS = 1,
+  SPEED_M_SS,
   SPEED_LAST
 };
 
@@ -274,40 +282,40 @@ enum enPhysicViscosity {
 };
 
 enum enPhysicFlow {
-  FLOW_M3_DD = 1,
+  FLOW_M3_DD,
   FLOW_LAST
 };
 
 enum emPhysicPower {
-  POWER_W  = 1,
+  POWER_W,
   POWER_KW,
   POWER_LAST
 };
 
 enum enPhysicActivEnergy {
-  ACTIVE_ENERGY_W_HH = 1,
+  ACTIVE_ENERGY_W_HH,
   ACTIVE_ENERGY_KW_HH,
   ACTIVE_ENERGY_LAST,
 };
 
 enum enPhysicReactivEnergy {
-  REACTIVE_ENERGY_VAR_HH = 1,
+  REACTIVE_ENERGY_VAR_HH,
   REACTIVE_ENERGY_KVAR_HH,
   REACTIVE_ENERGY_LAST,
 };
 
 enum enPhysicFullEnergy {
-  FULL_ENERGY_VAHH = 1,
+  FULL_ENERGY_VAHH,
   FULL_ENERGY_LAST
 };
 
 enum enPhysicRate {
-  RATE_NM   = 1,
+  RATE_NM,
   RATE_LAST
 };
 
 enum enPhysicIndunctance {
-  INDUNCTANCE_MH = 1,
+  INDUNCTANCE_MH,
   INDUNCTANCE_LAST
 };
 
@@ -315,7 +323,7 @@ enum enPhysicIndunctance {
  * \brief Перечисление типов двигателя
  */
 enum enMotorType {
-  VSD_MOTOR_TYPE_ASYNC = 1,                 /// Асинхронный двигатель
+  VSD_MOTOR_TYPE_ASYNC = 0,                 /// Асинхронный двигатель
   VSD_MOTOR_TYPE_VENT                       /// Вентильный двигатель
 };
 
@@ -323,7 +331,7 @@ enum enMotorType {
  * \brief Перечисление направлений вращений двигателя
  */
 enum enRotation {
-  VSD_ROTATION_DIRECT = 1,                   /// Прямое(правое) направление вращения
+  VSD_ROTATION_DIRECT = 0,                   /// Прямое(правое) направление вращения
   VSD_ROTATION_REVERSE                       /// Обратное(левое) направление вращения
 };
 
@@ -331,7 +339,7 @@ enum enRotation {
  * \brief Перечисление типов управления двигателем
  */
 enum enMotorControl {
-  VSD_MOTOR_CONTROL_UF = 1,                 /// Метод управления U/f
+  VSD_MOTOR_CONTROL_UF = 0,                 /// Метод управления U/f
   VSD_MOTOR_CONTROL_VECT                    /// Векторное управление
 };
 
@@ -341,7 +349,7 @@ enum enMotorControl {
  */
 enum enUfType {
   /// По точкам
-  VSD_UF_TYPE_POINT = 1,
+  VSD_UF_TYPE_POINT = 0,
   /// Линейное
   VSD_UF_TYPE_LINE,
   /// Квадратичное
@@ -356,7 +364,7 @@ enum enUfType {
  */
 enum enNominalVoltage {
   /// 380 вольт
-  NOMINAL_VOLTAGE_380 = 1,
+  NOMINAL_VOLTAGE_380 = 0,
   /// 480 вольт
   NOMINAL_VOLTAGE_480,
   /// 500 вольт
@@ -369,7 +377,7 @@ enum enNominalVoltage {
  */
 enum enNominalFrequency {
   /// 50Гц
-  NOMINAL_FREQUENCY_50 = 1,
+  NOMINAL_FREQUENCY_50 = 0,
   /// 60Гц
   NOMINAL_FREQUENCY_60
 };
@@ -380,7 +388,7 @@ enum enNominalFrequency {
  */
 enum enCableCross {
   /// 16
-  CABLE_CROSS_16 = 1,
+  CABLE_CROSS_16 = 0,
   /// 21
   CABLE_CROSS_21,
   /// 25
@@ -440,7 +448,7 @@ enum enByteRate {
  * Порядок чередования фаз
  */
 enum enSequencePhase {
-  PHASE_ABC = 1,
+  PHASE_ABC = 0,
   PHASE_CBA
 };
 
@@ -449,7 +457,7 @@ enum enSequencePhase {
  * Кретерий защиты
  */
 enum enParamProt {
-  PARAM_PROT_POWER = 1,
+  PARAM_PROT_POWER = 0,
   PARAM_PROT_CURRENT
 };
 
@@ -474,7 +482,7 @@ enum enCcsCondition {
 };
 
 enum enCcsWorkingMode {
-  CCS_WORKING_MODE_MANUAL = 1,
+  CCS_WORKING_MODE_MANUAL = 0,
   CCS_WORKING_MODE_AUTO,
   CCS_WORKING_MODE_PROGRAM
 };
