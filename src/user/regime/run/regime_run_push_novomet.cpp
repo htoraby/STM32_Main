@@ -23,7 +23,7 @@ void RegimeRunPushNovomet::processingStateWork()
      (vsd->getCurrentFreq() == vsd->getSetpointFreq())){        // Если режим отработал
     if (action_ == SingleAction) {                              // Если режим отрабатывает один раз
       parameters.set(CCS_RGM_RUN_PUSH_MODE, OffAction);         // Выключаем режим
-      vsd->offRegimePush();                                     // Выключаем режим в ЧРП
+      // vsd->offRegimePush();                                     // Выключаем режим в ЧРП
       logEvent.add(SetpointCode, AutoType, RegimeRunPushOffId); // Записываем данные в лог
     }
     state_ = IdleState;

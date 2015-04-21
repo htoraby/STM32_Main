@@ -37,12 +37,12 @@ public:
   /*!
    * \brief processingStateRunning
    */
-  void processingStateRunning();
+  virtual void processingStateRunning();
 
   /*!
    * \brief processingStateWork
    */
-  void processingStateWork();
+  virtual void processingStateWork();
 
   /*!
    * \brief Автомат работы режима пуска

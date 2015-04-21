@@ -2794,7 +2794,7 @@ int VsdNovomet::onRegimePush()
 
 int VsdNovomet::offRegimePush()
 {
-  return setNewValue(VSD_REGULATOR_QUEUE_2, 0);             // Убираем режим из очереди алгоритмов
+  return setNewValue(VSD_REGULATOR_QUEUE_2, -1.0);          // Убираем режим из очереди алгоритмов
 }
 
 int VsdNovomet::onRegimeSwing()
