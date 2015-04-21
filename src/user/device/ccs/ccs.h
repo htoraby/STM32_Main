@@ -25,7 +25,7 @@ public:
     ToogleRedLed,               //!< Мигает красный
     ToogleGreenToogleRedLed,    //!< Мигают зеленый и красный
     OnGreenLed,                 //!< Горит зеленый
-    ToogleYellowLed,            //!< Мигает желтый
+    OnRedToogleYellowLed,            //!< Мигает желтый
     ToogleGreenLed,             //!< Мигает зеленый
   };
 
