@@ -59,7 +59,7 @@ void gpioInit()
   initPinInput(WATCH_PIN);
   initPinOut(OFF_REL_PIN, PinSet);
   initPinOut(LCD_ON_PIN, PinSet);
-//  initPinOut(USB_ON_PIN, PinSet);
+  initPinOut(USB_ON_PIN, PinSet);
 
   for (int i = 0; i < DigitalInputMax; ++i) {
     initPinInput(portDI[i], pinDI[i]);

@@ -106,7 +106,7 @@ void Ccs::ledConditionTask()
       case OnGreenLed:
         onLed(WorkLed);
         break;
-      case ToogleYellowLed:
+      case OnRedToogleYellowLed:
         onLed(StopLed);
         break;
       }
@@ -116,7 +116,7 @@ void Ccs::ledConditionTask()
     case ToogleGreenLed:
       toggleLed(WorkLed);
       break;
-    case ToogleYellowLed:
+    case OnRedToogleYellowLed:
       toggleLed(WaitLed);
       break;
     case OnGreenToogleYellowLed:
@@ -205,7 +205,7 @@ void Ccs::changedCondition()
       }
       else {
         setNewValue(CCS_GENERAL_CONDITION, GeneralConditionRunning);
-        setLedCondition(ToogleYellowLed);
+        setLedCondition(OnRedToogleYellowLed);
       }
       break;
     case CCS_CONDITION_RUN:
@@ -225,6 +225,7 @@ void Ccs::changedCondition()
       }
       else {
         setNewValue(CCS_GENERAL_CONDITION, GeneralConditionStopping);
+        setLedCondition(ToogleGreenLed);
       }
       break;
     default:
