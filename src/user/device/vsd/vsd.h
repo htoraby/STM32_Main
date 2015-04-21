@@ -224,7 +224,7 @@ public:
   int setTorqueLimit(double TorqueLimit);
 
   /*!
-   * \brief Метод включения толчкового режима
+   * \brief Метод настройки толчкового режима
    * \return
    */
   virtual int onRegimePush() = 0;
@@ -258,6 +258,12 @@ public:
    * \return
    */
   virtual int offRegimeJarring() = 0;
+
+  /*!
+   * \brief Метод настройки режима подхвата
+   * \return
+   */
+  virtual int onRegimePickup() = 0;
 
   /*!
    * \brief Задание в массив параметров ЧРП номинальной частоты двигателя

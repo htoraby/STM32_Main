@@ -88,6 +88,7 @@ typedef enum {
   RegimeAlternationFreqOffId,     //!< "Режим чередования фаз отключен"
   RegimeRunPushOffId,             //!< "Режим пуска толчками отключен"
   RegimeRunSwingOffId,            //!< "Режим пуска раскачкой отключен"
+  RegimeRunPickupOffId,           //!< "Режим подхвата турбинного вращения отключен"
 
 } EventId;
 

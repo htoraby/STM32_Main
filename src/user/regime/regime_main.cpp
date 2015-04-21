@@ -9,9 +9,6 @@ RegimeTechnologSoftChangeFreq regimeTechnologSoftChangeFreq;
 RegimeTechnologMaintenanceParam regimeTechnologMaintenanceParam;
 RegimeTechnologAlternationFreq regimeTechnologAlternationFreq;
 
-RegimeRunPush *regimeRunPush;
-RegimeRunSwing *regimeRunSwing;
-
 static void regimeTask(void *argument);
 
 void regimeInit()
@@ -22,8 +19,8 @@ void regimeInit()
   parameters.set(CCS_TYPE_VSD, 1);
   switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
   case VSD_TYPE_NOVOMET:
-    regimes[2] = new RegimeRunPushNovomet;
-    regimes[3] = new RegimeRunSwingNovomet;
+    regimes[2] = new RegimeRunNovomet;
+    regimes[3] = regimes[2];
     break;
   default:
     regimes[2] = new RegimeRunPush;

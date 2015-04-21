@@ -12,15 +12,7 @@ RegimeRunPush::~RegimeRunPush()
 
 void RegimeRunPush::processingStateRunning()
 {
-  /*
-  switch (control) {
-  case value:
 
-    break;
-  default:
-    break;
-  }
-  */
 }
 
 void RegimeRunPush::processingStateWork()

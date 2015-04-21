@@ -2771,35 +2771,23 @@ int VsdNovomet::onRegimePush()
   setNewValue(VSD_SW_STARTUP_OSC_COUNT, 1.0);               // Количество качаний константа
   setNewValue(VSD_SW_STARTUP_ROTATIONS, rotation);          // Записали количество оборотов
   setNewValue(VSD_SW_STARTUP_U_PULSE, impulse);             // Записали кратность импульса толчка
-  setNewValue(VSD_SW_STARTUP_I_LIM_PULSE, 1500.0);          // Записали предел тока
-  if (parameters.get(CCS_RGM_RUN_PICKUP_MODE) == Regime::OffAction) {
-    parameters.set(VSD_REGULATOR_QUEUE_1, VSD_REQULATOR_QUEUE_PUSH);
-    if (getValue(VSD_MOTOR_CONTROL) == VSD_MOTOR_CONTROL_UF)
-      parameters.set(VSD_REGULATOR_QUEUE_2, VSD_REQULATOR_QUEUE_UF);
-    else
-      parameters.set(VSD_REGULATOR_QUEUE_2, VSD_REQULATOR_QUEUE_VECT);
-    return 0;         // Включаем режим в очередь алгоритмов
-  }
-  else {
-    parameters.set(VSD_REGULATOR_QUEUE_1, VSD_REQULATOR_QUEUE_PICKUP);
-    parameters.set(VSD_REGULATOR_QUEUE_2, VSD_REQULATOR_QUEUE_PUSH);
-    if (getValue(VSD_MOTOR_CONTROL) == VSD_MOTOR_CONTROL_UF)
-      parameters.set(VSD_REGULATOR_QUEUE_3, VSD_REQULATOR_QUEUE_UF);
-    else
-      parameters.set(VSD_REGULATOR_QUEUE_3, VSD_REQULATOR_QUEUE_VECT);
-    return 0;         // Включаем режим в очередь алгоритмов
-  }
+  return setNewValue(VSD_SW_STARTUP_I_LIM_PULSE, 1500.0);   // Записали предел тока
+}
+
+int VsdNovomet::onRegimePickup()
+{
+  return 0;
 }
 
 int VsdNovomet::offRegimePush()
 {
-  return setNewValue(VSD_REGULATOR_QUEUE_2, -1.0);          // Убираем режим из очереди алгоритмов
+  return 0;
 }
 
 int VsdNovomet::onRegimeSwing()
 {
-  float freq = parameters.get(CCS_RGM_RUN_PUSH_FREQ);       // Получаем частоту толчков
-  float numPush = parameters.get(CCS_RGM_RUN_PUSH_QUANTITY);// Получаем количество толчков
+  float freq = parameters.get(CCS_RGM_RUN_SWING_FREQ);       // Получаем частоту толчков
+  float numPush = parameters.get(CCS_RGM_RUN_SWING_QUANTITY);// Получаем количество толчков
   float calcNumPush = 0;
   uint16_t rotation = 1;
   if (freq) {
@@ -2817,29 +2805,15 @@ int VsdNovomet::onRegimeSwing()
 
   setNewValue(VSD_SW_STARTUP_FREQUENCY, freq);              // Записали в ЧРП частоту
   setNewValue(VSD_SW_STARTUP_ANGLE_OSC, 180.0);             // Угол константа
-  setNewValue(VSD_SW_STARTUP_OSC_COUNT, 1.0);               // Количество качаний константа
+  setNewValue(VSD_SW_STARTUP_OSC_COUNT, 2.0);               // Количество качаний константа
   setNewValue(VSD_SW_STARTUP_ROTATIONS, rotation);          // Записали количество оборотов
   setNewValue(VSD_SW_STARTUP_U_PULSE, impulse);             // Записали кратность импульса толчка
-  setNewValue(VSD_SW_STARTUP_I_LIM_PULSE, 1500.0);          // Записали предел тока
-  return setNewValue(VSD_REGULATOR_QUEUE_2, 2.0);           // Включаем режим в очередь алгоритмов
+  return setNewValue(VSD_SW_STARTUP_I_LIM_PULSE, 1500.0);   // Записали предел тока
 }
 
 int VsdNovomet::offRegimeSwing()
 {
-  float freq = parameters.get(CCS_RGM_RUN_SWING_FREQ);      // Получаем частоту толчков
-  float numPush = parameters.get(CCS_RGM_RUN_SWING_QUANTITY);// Получаем количество толчков
-  float impulse = parameters.get(CCS_RGM_RUN_SWING_VOLTAGE); // Превышение напряжения
-  impulse = (uint16_t)((impulse - 100) / 10.0 + 0.5);       // Вычислили уставку напряжения
-  if ((impulse < 1.0) || (impulse > 10))
-    impulse = 1.0;
-
-  setNewValue(VSD_SW_STARTUP_FREQUENCY, freq);              // Записали в ЧРП частоту
-  setNewValue(VSD_SW_STARTUP_ANGLE_OSC, 360);               // Угол константа
-  setNewValue(VSD_SW_STARTUP_OSC_COUNT, numPush);           // Количество качаний
-  setNewValue(VSD_SW_STARTUP_ROTATIONS, 1);                 // Записали количество оборотов
-  setNewValue(VSD_SW_STARTUP_U_PULSE, impulse);             // Записали кратность импульса толчка
-  setNewValue(VSD_SW_STARTUP_I_LIM_PULSE, 1500.0);          // Записали предел тока
-  return setNewValue(VSD_REGULATOR_QUEUE_3, 2.0);           // Включаем режим в очередь алгоритмов
+  return 0;
 }
 
 int VsdNovomet::onRegimeJarring()
