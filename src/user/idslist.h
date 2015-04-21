@@ -694,7 +694,8 @@ enum enID
   CCS_RGM_MAINTENANCE_PARAM_SETPOINT_PRESSURE = 688,         //!< Режим поддержания параметра. Поддержка значения - Давление
   CCS_RGM_MAINTENANCE_PARAM_SETPOINT_TEMPERATURE = 689,      //!< Режим поддержания параметра. Поддержка значения - Температура
   CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN = 690,        //!< Режим поддержания параметра. Поддержка значения - Аналоговый вход
-  CCS_END = 691,                                             //!< Последний параметр
+  CCS_RGM_RUN_PICKUP_MODE = 691,                             //!< 
+  CCS_END = 692,                                             //!< Последний параметр
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF

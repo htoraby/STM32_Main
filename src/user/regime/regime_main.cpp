@@ -60,18 +60,21 @@ bool interceptionStartRegime()
     }
   }
 
-  parameters.set(VSD_REGULATOR_QUEUE_1, 5.0);
-  parameters.set(VSD_REGULATOR_QUEUE_2, -1.0);
-  parameters.set(VSD_REGULATOR_QUEUE_3, -1.0);
-  parameters.set(VSD_REGULATOR_QUEUE_4, -1.0);
-  parameters.set(VSD_MOTOR_CONTROL, parameters.get(VSD_MOTOR_CONTROL));
+  if (parameters.get(CCS_RGM_RUN_PICKUP_MODE) != Regime::OffAction) {
+    // TODO: Добавить обработку режима подхвата турбинного вращения
+
+  }
+
   if (parameters.get(CCS_RGM_RUN_PUSH_MODE) != Regime::OffAction) {
     if (parameters.get(CCS_RGM_RUN_PUSH_STATE) == Regime::IdleState) {
       return false;
     }
   }
-  else {
-    vsd->offRegimePush();
+
+  if (parameters.get(CCS_RGM_RUN_SWING_MODE) != Regime::OffAction) {
+    if (parameters.get(CCS_RGM_RUN_SWING_STATE) == Regime::IdleState) {
+      return false;
+    }
   }
 
   return true;

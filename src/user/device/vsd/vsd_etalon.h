@@ -169,13 +169,6 @@ public:
   int setTempSpeedDown(float value);
 
   /*!
-   * \brief Метод задания типа управления двигателем
-   * \param value
-   * \return Код результата операции
-   */
-  int setMotorControl(float value);
-
-  /*!
    * \brief Метод задания точки характеристики U/f F1
    * \param value
    * \return

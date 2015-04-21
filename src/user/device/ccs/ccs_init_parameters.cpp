@@ -6912,5 +6912,15 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].min      = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].max      = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].def      = 0;
+  // 
+  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].id                            = CCS_RGM_RUN_PICKUP_MODE;
+  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].access                        = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].operation                     = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].physic                        = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].validity                      = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].value.float_t                 = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].min                           = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].max                           = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].def                           = 0;
 }
 

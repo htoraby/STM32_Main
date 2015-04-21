@@ -7,6 +7,8 @@
 
 #include "vsd_novomet.h"
 #include "user_main.h"
+#include "regime_main.h"
+
 
 void VsdNovomet::initModbusParameters()
 {
@@ -2426,8 +2428,6 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
     return setTempSpeedUp(value);
   case  VSD_TEMP_SPEEDDOWN:
     return setTempSpeedDown(value);
-  case  VSD_MOTOR_CONTROL:
-    return setMotorControl(value);
   default:
     int result = setValue(id, value);
     if (!result)
@@ -2689,23 +2689,6 @@ int VsdNovomet::setTempSpeedDown(float value)
   }
 }
 
-int VsdNovomet::setMotorControl(float value)
-{
-  if (!Vsd::setMotorControl(value)) {
-    if (getValue(VSD_MOTOR_CONTROL) == VSD_MOTOR_CONTROL_UF) {
-      writeToDevice(VSD_REGULATOR_QUEUE_5, VSD_REQULATOR_QUEUE_UF);
-      return RETURN_OK;
-    }
-    else {
-      if (getValue(VSD_MOTOR_CONTROL) == VSD_MOTOR_CONTROL_VECT) {
-        writeToDevice(VSD_REGULATOR_QUEUE_5, VSD_REQULATOR_QUEUE_VECT);
-        return RETURN_OK;
-      }
-    }
-  }
-  return RETURN_ERROR;
-}
-
 int VsdNovomet::setRotation(float value)
 {
   if(Vsd::setRotation(value)){
@@ -2789,7 +2772,23 @@ int VsdNovomet::onRegimePush()
   setNewValue(VSD_SW_STARTUP_ROTATIONS, rotation);          // Записали количество оборотов
   setNewValue(VSD_SW_STARTUP_U_PULSE, impulse);             // Записали кратность импульса толчка
   setNewValue(VSD_SW_STARTUP_I_LIM_PULSE, 1500.0);          // Записали предел тока
-  return setNewValue(VSD_REGULATOR_QUEUE_2, 2.0);           // Включаем режим в очередь алгоритмов
+  if (parameters.get(CCS_RGM_RUN_PICKUP_MODE) == Regime::OffAction) {
+    parameters.set(VSD_REGULATOR_QUEUE_1, VSD_REQULATOR_QUEUE_PUSH);
+    if (getValue(VSD_MOTOR_CONTROL) == VSD_MOTOR_CONTROL_UF)
+      parameters.set(VSD_REGULATOR_QUEUE_2, VSD_REQULATOR_QUEUE_UF);
+    else
+      parameters.set(VSD_REGULATOR_QUEUE_2, VSD_REQULATOR_QUEUE_VECT);
+    return 0;         // Включаем режим в очередь алгоритмов
+  }
+  else {
+    parameters.set(VSD_REGULATOR_QUEUE_1, VSD_REQULATOR_QUEUE_PICKUP);
+    parameters.set(VSD_REGULATOR_QUEUE_2, VSD_REQULATOR_QUEUE_PUSH);
+    if (getValue(VSD_MOTOR_CONTROL) == VSD_MOTOR_CONTROL_UF)
+      parameters.set(VSD_REGULATOR_QUEUE_3, VSD_REQULATOR_QUEUE_UF);
+    else
+      parameters.set(VSD_REGULATOR_QUEUE_3, VSD_REQULATOR_QUEUE_VECT);
+    return 0;         // Включаем режим в очередь алгоритмов
+  }
 }
 
 int VsdNovomet::offRegimePush()

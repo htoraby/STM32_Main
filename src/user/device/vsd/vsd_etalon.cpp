@@ -2381,23 +2381,6 @@ int VsdEtalon::setTempSpeedDown(float value)
   }
 }
 
-int VsdEtalon::setMotorControl(float value)
-{
-  if (!Vsd::setMotorControl(value)) {
-    if (getValue(VSD_MOTOR_CONTROL) == VSD_MOTOR_CONTROL_UF) {
-      writeToDevice(VSD_REGULATOR_QUEUE_5, VSD_REQULATOR_QUEUE_UF);
-      return RETURN_OK;
-    }
-    else {
-      if (getValue(VSD_MOTOR_CONTROL) == VSD_MOTOR_CONTROL_VECT) {
-        writeToDevice(VSD_REGULATOR_QUEUE_5, VSD_REQULATOR_QUEUE_VECT);
-        return RETURN_OK;
-      }
-    }
-  }
-  return RETURN_ERROR;
-}
-
 int VsdEtalon::setRotation(float value)
 {
   if(Vsd::setRotation(value)){

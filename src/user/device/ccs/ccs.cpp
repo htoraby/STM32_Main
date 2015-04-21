@@ -155,7 +155,6 @@ void Ccs::vsdConditionTask()
       break;
     case VSD_CONDITION_WAIT_STOP:
       if (vsd->stop() == RETURN_OK) {
-        setLedCondition(ToogleGreenLed);
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
       } else {
         // TODO: Ошибка останова
@@ -336,6 +335,7 @@ void Ccs::checkCmd()
 
     setNewValue(CCS_CMD_STOP, 0);
     if (checkCanStop()) {
+      setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
       setBlock();
       setNewValue(CCS_CONDITION, CCS_CONDITION_STOPPING);
       setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
@@ -611,13 +611,13 @@ uint8_t Ccs::setNewValue(uint16_t id, float value)
     calcRegimeChangeFreqPeriodOneStep();
     break;
   case CCS_RGM_RUN_PUSH_MODE:
-    if (value != 1) {                       // TODO: Заменить константу
-      parameters.set(CCS_RGM_RUN_SWING_MODE, 1);      // Отключаем режим раскачки
+    if (value != Regime::OffAction) {
+      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction); // Отключаем режим раскачки
     }
     break;
   case CCS_RGM_RUN_SWING_MODE:
-    if (value != 1) {                       // TODO: Заменить константу
-      parameters.set(CCS_RGM_RUN_PUSH_MODE, 1);      // Отключаем режим раскачки
+    if (value != Regime::OffAction) {
+      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction); // Отключаем режим раскачки
     }
     break;
   case CCS_CMD_LOG_COPY:
