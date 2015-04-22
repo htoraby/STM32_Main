@@ -118,6 +118,10 @@ public:
    */
   int onRegimePush();
 
+  int onRegimePickup();
+
+
+
   /*!
    * \brief Функция выключения толчкового режима
    * \return

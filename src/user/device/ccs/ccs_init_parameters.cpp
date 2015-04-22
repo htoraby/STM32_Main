@@ -6922,5 +6922,25 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].min                           = 0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].max                           = 0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].def                           = 0;
+  // 
+  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].id                           = CCS_RGM_RUN_PICKUP_STATE;
+  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].access                       = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].operation                    = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].physic                       = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].validity                     = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].value.float_t                = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].min                          = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].max                          = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].def                          = 0;
+  // 
+  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].id                              = CCS_RGM_RUN_VSD_STATE;
+  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].access                          = 0;
+  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].operation                       = 0;
+  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].physic                          = 0;
+  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].validity                        = 0;
+  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].value.float_t                   = 0;
+  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].min                             = 0;
+  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].max                             = 0;
+  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].def                             = 0;
 }
 

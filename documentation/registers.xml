@@ -8797,6 +8797,14 @@
 	</param>
 	<param>
 		<id>692</id>
+		<name>CCS_RGM_RUN_PICKUP_STATE</name>
+	</param>
+	<param>
+		<id>693</id>
+		<name>CCS_RGM_RUN_VSD_STATE</name>
+	</param>
+	<param>
+		<id>694</id>
 		<name>CCS_END</name>
 		<valid>VALIDITY_OK</valid>
 		<comment>Последний параметр</comment>

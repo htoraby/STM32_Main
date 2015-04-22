@@ -345,20 +345,26 @@ void Ccs::checkCmd()
 
 bool Ccs::checkCanStart()
 {
-  if (getValue(CCS_VSD_CONDITION) != VSD_CONDITION_STOP)
+  if (getValue(CCS_VSD_CONDITION) != VSD_CONDITION_STOP) {
+    setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
     return false;
+  }
 
-  if (isBlock())
+  if (isBlock()) {
+    setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
     return false;
+  }
 
   if (isPrevent()) {
     if (getValue(CCS_PROT_DHS_PRESSURE_INTAKE_PREVENT)) {
       if (parameters.get(TMS_PRESSURE_INTAKE) < getValue(CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT)) {
+        setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
         addEventProtectionPrevent();
         return false;
       }
     }
     else {
+      setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
       addEventProtectionPrevent();
       return false;
     }
