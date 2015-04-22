@@ -58,19 +58,48 @@ bool interceptionStartRegime()
   }
 
   if (parameters.get(CCS_RGM_RUN_PICKUP_MODE) != Regime::OffAction) {
-    // TODO: Добавить обработку режима подхвата турбинного вращения
+    switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
+    case VSD_TYPE_NOVOMET:
+      if (parameters.get(CCS_RGM_RUN_VSD_STATE) == Regime::IdleState) {
+        return false;
+      }
+      break;
+    default:
+      if (parameters.get(CCS_RGM_RUN_PICKUP_MODE) == Regime::IdleState) {
+        return false;
+      }
+      break;
+    }
 
   }
 
   if (parameters.get(CCS_RGM_RUN_PUSH_MODE) != Regime::OffAction) {
-    if (parameters.get(CCS_RGM_RUN_PUSH_STATE) == Regime::IdleState) {
-      return false;
+    switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
+    case VSD_TYPE_NOVOMET:
+      if (parameters.get(CCS_RGM_RUN_VSD_STATE) == Regime::IdleState) {
+        return false;
+      }
+      break;
+    default:
+      if (parameters.get(CCS_RGM_RUN_PUSH_STATE) == Regime::IdleState) {
+        return false;
+      }
+      break;
     }
   }
 
   if (parameters.get(CCS_RGM_RUN_SWING_MODE) != Regime::OffAction) {
-    if (parameters.get(CCS_RGM_RUN_SWING_STATE) == Regime::IdleState) {
-      return false;
+    switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
+    case VSD_TYPE_NOVOMET:
+      if (parameters.get(CCS_RGM_RUN_VSD_STATE) == Regime::IdleState) {
+        return false;
+      }
+      break;
+    default:
+      if (parameters.get(CCS_RGM_RUN_SWING_MODE) == Regime::IdleState) {
+        return false;
+      }
+      break;
     }
   }
 
