@@ -12,6 +12,7 @@
 #include "host.h"
 #include "user_main.h"
 #include "test_protection.h"
+#include "test_power_off.h"
 #include "shell.h"
 
 static void testThread(void *argument);
@@ -67,6 +68,10 @@ void testInit()
 
 #if (TEST_PROTECTIONS == 1)
   testProtectionInit();
+#endif
+
+#if (TEST_POWER_OFF == 1)
+  testPowerOffInit();
 #endif
 }
 
@@ -240,7 +245,7 @@ static void testHostUartRxThread(void * argument)
 #if (TEST_HOST_UART == 1)
         uartWriteData(HOST_TEST_UART, buffer, sizePkt);
 #else
-//        uartWriteData(HOST_UART, buffer, sizePkt);
+        uartWriteData(HOST_UART, buffer, sizePkt);
 //        if (sizePkt)
 //          shell_parse_request((char*)buffer);
 #endif
