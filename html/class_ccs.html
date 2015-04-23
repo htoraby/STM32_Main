@@ -1,0 +1,1690 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Класс Ccs</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li><a href="classes.html"><span>Алфавитный&#160;указатель&#160;структур&#160;данных</span></a></li>
+      <li><a href="hierarchy.html"><span>Иерархия&#160;классов</span></a></li>
+      <li><a href="functions.html"><span>Поля&#160;структур</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Открытые типы</a> &#124;
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pri-methods">Закрытые члены</a> &#124;
+<a href="#pri-attribs">Закрытые данные</a>  </div>
+  <div class="headertitle">
+<div class="title">Класс Ccs</div>  </div>
+</div>
+<div class="contents">
+<!-- doxytag: class="Ccs" --><!-- doxytag: inherits="Device" -->
+<p><code>#include &lt;<a class="el" href="ccs_8h_source.html">ccs.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф наследования:Ccs:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_ccs.png" usemap="#Ccs_map" alt=""/>
+  <map id="Ccs_map" name="Ccs_map">
+<area href="class_device.html" title="Базовый класс для всех устройств Класс содержит банк параметров устройства во внутреннем представлени..." alt="Device" shape="rect" coords="0,0,52,24"/>
+</map>
+ </div></div>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="pub-types"></a>
+Открытые типы</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140">LedCondition</a> { <br/>
+&#160;&#160;<a class="el" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140a23a12df5e0c94c792c63150735a56061">OnRedLed</a>, 
+<a class="el" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140ad89863384d7572426c4fa63074d07160">OnRedOnYellowLed</a>, 
+<a class="el" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140a4e846de9210e9817023f4af6164bdaca">OnGreenToogleYellowLed</a>, 
+<a class="el" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140a0cf88c58b896a17ac83f3724ef6f383f">ToogleGreenToogleYellowLed</a>, 
+<br/>
+&#160;&#160;<a class="el" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140adf8b91e71707b23ad8943f6208948c92">ToogleRedLed</a>, 
+<a class="el" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140ab104f623118dc828537ddc8179cf493c">ToogleGreenToogleRedLed</a>, 
+<a class="el" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140ad3852fd4688d50b60dacd7659cfea9f9">OnGreenLed</a>, 
+<a class="el" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140a2db9ac2f4c323e8bccef3ed46e421a1f">OnRedToogleYellowLed</a>, 
+<br/>
+&#160;&#160;<a class="el" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140a6bed067204ba4633b3487dc434a1934a">ToogleGreenLed</a>
+<br/>
+ }</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Список состояний светодиодов  <a href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140">Подробнее...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47">GeneralCondition</a> { <br/>
+&#160;&#160;<a class="el" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47ae9384cfc547821cafc934c431d2f9941">GeneralConditionStop</a>, 
+<a class="el" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47a9871f5684cd999d5680aa7735c94c86e">GeneralConditionStopping</a>, 
+<a class="el" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47a2184373eb7aa944f9be5bf542c539f75">GeneralConditionRunning</a>, 
+<a class="el" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47a3370dceb949063f0e93951243c2ff050">GeneralConditionRun</a>, 
+<br/>
+&#160;&#160;<a class="el" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47a25d4a9f9770770474de283cd69fd3fa3">GeneralConditionDelay</a>, 
+<a class="el" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47a19cefa4965b0c88f4fb1ceca459deae1">GeneralConditionRestart</a>, 
+<a class="el" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47a2ab5edcf8662705e2dcb15f70554a814">GeneralConditionBlock</a>
+<br/>
+ }</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Список надписей о состоянии СУ  <a href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47">Подробнее...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a4e28e0e49af12415b487c9f1de36980f">CmdStart</a> { <a class="el" href="class_ccs.html#a4e28e0e49af12415b487c9f1de36980faf97be6758f815feeb61c9b34ad00c3d3">CmdStartNone</a>, 
+<a class="el" href="class_ccs.html#a4e28e0e49af12415b487c9f1de36980faa62ee45ab5163e49a6ed4a3b73b33706">CmdStartOperator</a>, 
+<a class="el" href="class_ccs.html#a4e28e0e49af12415b487c9f1de36980fa3d1a244fbbd80c11d3cd08c7ffad060a">CmdStartRemote</a>
+ }</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Список команд пуска от контроллера визуализации  <a href="class_ccs.html#a4e28e0e49af12415b487c9f1de36980f">Подробнее...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#ae00d6a6e2da7cb12338afa1b90787a46">CmdStop</a> { <a class="el" href="class_ccs.html#ae00d6a6e2da7cb12338afa1b90787a46ae0a1af433142db7d8a81cb8b9f51821d">CmdStopNone</a>, 
+<a class="el" href="class_ccs.html#ae00d6a6e2da7cb12338afa1b90787a46adf98449d7037fe6a5d8c30dc3ac1deee">CmdStopOperator</a>, 
+<a class="el" href="class_ccs.html#ae00d6a6e2da7cb12338afa1b90787a46a4ec0dbaad5cbd271eb35ee6aa9af041f">CmdStopRemote</a>
+ }</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Список команд останова от контроллера визуализации  <a href="class_ccs.html#ae00d6a6e2da7cb12338afa1b90787a46">Подробнее...</a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#adb962098e6c4c1f9198393fde2ae90ef">Ccs</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a8af933dcd80ccbb6b5bef7cd5598cb1a">~Ccs</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#ab6a8635d5f4bccd0eb1b7046657bdfc3">init</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализация устройства  <a href="#ab6a8635d5f4bccd0eb1b7046657bdfc3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#ae0419d192753df8c3562ced9c944f13b">initTask</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a98bba73ef6915df8ce78a6dea169e4a7">mainTask</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Основная задача обработки СУ  <a href="#a98bba73ef6915df8ce78a6dea169e4a7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a5474c540f3c354cb6b6b6db2dcd1ccff">ledConditionTask</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Задача обработки очереди событий включения/мигания LED.  <a href="#a5474c540f3c354cb6b6b6db2dcd1ccff"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#ac5b995a9c72a86eee9a9156964b1104d">vsdConditionTask</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Задача обработки переключения состояния ЧРП  <a href="#ac5b995a9c72a86eee9a9156964b1104d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a2561d891726d388b80e781789656dcae">initParameters</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализация массива параметров  <a href="#a2561d891726d388b80e781789656dcae"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#acec87b848452b5d4ddfa8e235526b767">start</a> (<a class="el" href="define_8h.html#a2e37372dbc4114112400e3845adc1372">LastReasonRun</a> reason)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод запуска двигателя  <a href="#acec87b848452b5d4ddfa8e235526b767"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#acf67ed9254718e37a5808b28085c73b1">stop</a> (<a class="el" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ff">LastReasonStop</a> reason)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод останова двигателя  <a href="#acf67ed9254718e37a5808b28085c73b1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a09bd2812f8e2feea48fc4c79e127239f">isStopMotor</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверка находится ли станция в стопе  <a href="#a09bd2812f8e2feea48fc4c79e127239f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a963252ab38bf6a9001f5518ca095607d">isWorkMotor</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверка находится ли станция в работе состояние работа, это все состояния кроме состояний "Стоп" и "Ожидания АПВ".  <a href="#a963252ab38bf6a9001f5518ca095607d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#abc3bdd00d2c7d77639d6a58862894939">isDelay</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверка находится ли станция в ожидании  <a href="#abc3bdd00d2c7d77639d6a58862894939"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a7ebdcb8f354fc1d4b3f2770666bce7c6">setDelay</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">setDelayCCS  <a href="#a7ebdcb8f354fc1d4b3f2770666bce7c6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a7db968cc15d189e42968ae84351c82f6">resetDelay</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">resetDelayCCS  <a href="#a7db968cc15d189e42968ae84351c82f6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a86fd4828f7535839e9f8133359271aae">isRestart</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">isRestartCCS  <a href="#a86fd4828f7535839e9f8133359271aae"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a5e41cab53769f3227bda30717000b0ea">setRestart</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">setRestartCCS  <a href="#a5e41cab53769f3227bda30717000b0ea"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#ace70b4dbd3ccc4a77bf520427f282efa">resetRestart</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">resetRestartCCS  <a href="#ace70b4dbd3ccc4a77bf520427f282efa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a8bc0242894b2a0f4ea9af3c6f43ea3a1">isBlock</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверка находится ли станция в блокировке  <a href="#a8bc0242894b2a0f4ea9af3c6f43ea3a1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#ad0f0a577f9660e9f761ef4d75c68ba58">setBlock</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Установка флага блокировки  <a href="#ad0f0a577f9660e9f761ef4d75c68ba58"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#ae6c087740511dfc0f6441ff3983bdc33">resetBlock</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Сброс флага блокировки  <a href="#ae6c087740511dfc0f6441ff3983bdc33"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a2b0743b38d680ef06b5f2cdf5e587787">isPrevent</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">isPrevent  <a href="#a2b0743b38d680ef06b5f2cdf5e587787"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a19ca1d9fa3f72a014f17372e1428a607">isAutoMode</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверка что КСУ в режиме АUTO.  <a href="#a19ca1d9fa3f72a014f17372e1428a607"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a26700133ec67b989db1f7c512da5d33f">isManualMode</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">isManualMode  <a href="#a26700133ec67b989db1f7c512da5d33f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a6a535ac0825a614e3b8d9960f94b9d8f">isProgramMode</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверка что КСУ в режиме "Программа".  <a href="#a6a535ac0825a614e3b8d9960f94b9d8f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a93744289036200862d44b61313a1aa54">getTime</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция получения текущего времени в сек от 00:00:00 01.01.1970 года  <a href="#a93744289036200862d44b61313a1aa54"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#afbf19ee6b4b0b1218ae8aecc1f4f6e53">getSecFromCurTime</a> (uint32_t <a class="el" href="adc_8cpp.html#ae73654f333e4363463ad8c594eca1905">time</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция получения прошедщего времени относительно текущего времени  <a href="#afbf19ee6b4b0b1218ae8aecc1f4f6e53"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#ab4c8150fab6d844a74eadbcbd8100406">getSecFromCurTime</a> (<a class="el" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cf">enID</a> timeId)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция получения прошедщего времени относительно текущего времени  <a href="#ab4c8150fab6d844a74eadbcbd8100406"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a4781aef688e3354e616a82cbe20dfc62">calcMotorCurrentPhase1</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">calcMotorCurrentPhase1  <a href="#a4781aef688e3354e616a82cbe20dfc62"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a276721f83f6f935fb2c57047a546e87d">calcMotorCurrentPhase2</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">calcMotorCurrentPhase2  <a href="#a276721f83f6f935fb2c57047a546e87d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a0a077d25046099eed9925d9298ad6373">calcMotorCurrentPhase3</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">calcMotorCurrentPhase3  <a href="#a0a077d25046099eed9925d9298ad6373"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a3d8d6f0cdf257181ae974bf0fdbf9215">calcMotorCurrentAvarage</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">calcMotorCurrentAvarage  <a href="#a3d8d6f0cdf257181ae974bf0fdbf9215"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a43c0a7e0adc6d9d24bbac53df38b0a3e">calcMotorCurrentPhase</a> (uint16_t vsdOutCurrent, uint16_t coefCorrect, uint16_t motorCurrent)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">calcMotorCurrentPhase  <a href="#a43c0a7e0adc6d9d24bbac53df38b0a3e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a8217c12620e095931c2bc4c410221a9a">calcMotorCurrentImbalance</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">calcMotorCurrentImbalance  <a href="#a8217c12620e095931c2bc4c410221a9a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#ac07e3e6d4be896c4ff2f70c8fb9ad4df">calcVoltageImbalanceIn</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">calcVoltageImbalanceIn  <a href="#ac07e3e6d4be896c4ff2f70c8fb9ad4df"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a67bc22057be9ef1f928f8d85134ee3f8">setNewValue</a> (uint16_t id, float value)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">setNewValue  <a href="#a67bc22057be9ef1f928f8d85134ee3f8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#ae565d20dd9c1f2e34dadc0b00ccf4335">setNewValue</a> (uint16_t id, uint32_t value)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">setNewValue  <a href="#ae565d20dd9c1f2e34dadc0b00ccf4335"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#ab37469d2b02d4ee8eeb7519a68c3b668">setNewValue</a> (uint16_t id, int value)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">setNewValue  <a href="#ab37469d2b02d4ee8eeb7519a68c3b668"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#aabe24261336a16dec1ee3c04a6cf0a97">calcRegimeChangeFreqPeriodOneStep</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция пересчёта периода одного шага для режима "Программного изменения частоты".  <a href="#aabe24261336a16dec1ee3c04a6cf0a97"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a7558efc3caffe764876a5bcc65413c58">controlPower</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Контроль питания и отключение ИБП по таймауту  <a href="#a7558efc3caffe764876a5bcc65413c58"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a1ba9496cc184cfdfc673880aefc6d384">isPowerOff</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод проверки отключения питания платы  <a href="#a1ba9496cc184cfdfc673880aefc6d384"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pri-methods"></a>
+Закрытые члены</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#aeb7f60f2cbd15d47bfaaf3a639dc6fea">setLedCondition</a> (<a class="el" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140">LedCondition</a> condition)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод добавления в очередь событий включения/мигания LED.  <a href="#aeb7f60f2cbd15d47bfaaf3a639dc6fea"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a3fb8391292a8d2c3f88c19ed968d99b9">changedCondition</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод обработки изменения состояния  <a href="#a3fb8391292a8d2c3f88c19ed968d99b9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a555e74424bc9a234b4a0cb044fddcf65">changedWorkMode</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод обработки изменения режима работы  <a href="#a555e74424bc9a234b4a0cb044fddcf65"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a7463ab9f818502862f01db3a64fb6ad0">checkCmd</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод проверки команды на запуск/останов от контроллера визуализации  <a href="#a7463ab9f818502862f01db3a64fb6ad0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#af5f38480d54c8e59362a240fefae5eb9">checkCanStart</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод проверки возможности пуска  <a href="#af5f38480d54c8e59362a240fefae5eb9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a2d49fcb52a688d53688083f7d381bceb">checkCanStop</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод проверки возможности останова  <a href="#a2d49fcb52a688d53688083f7d381bceb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a437b3c0a00c67c3cb7c743911b507422">calcTime</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод подсчёта времени работы и останова  <a href="#a437b3c0a00c67c3cb7c743911b507422"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a2288081eeb292bddcb60b571b548b6a8">calcParameters</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">calcParameters  <a href="#a2288081eeb292bddcb60b571b548b6a8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a948eecc22e65841ae874ac8a2059fc79">calcCoefTransformation</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">calcCoefTransformation  <a href="#a948eecc22e65841ae874ac8a2059fc79"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pri-attribs"></a>
+Закрытые данные</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structparameter.html">parameter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#acce4f3c3b622720a0e4c115aafa8b323">parametersArray_</a> [CCS_END-CCS_BEGIN]</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Массив параметров устройства  <a href="#acce4f3c3b622720a0e4c115aafa8b323"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">osMessageQId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a955990f23acf20d01a71d0142ab4c758">ledMessage_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Очередь событий включения/мигания LED.  <a href="#a955990f23acf20d01a71d0142ab4c758"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a901ee14cc75f7908fb0b2727a7307006">conditionOld_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Предыдущие состояние станции  <a href="#a901ee14cc75f7908fb0b2727a7307006"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#a71e235039f85b9dcb03dee7b6b873be4">flagOld_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Предыдущие значение флага (задержка, АПВ, блокировка)  <a href="#a71e235039f85b9dcb03dee7b6b873be4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#aa20615a672eafc921dd113079d5742be">workModeOld_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Предыдущий режим работы  <a href="#aa20615a672eafc921dd113079d5742be"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#aea5e986d6c4a4ec71e4a80daae9c570e">powerOffFlag_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Флаг потери питания  <a href="#aea5e986d6c4a4ec71e4a80daae9c570e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ccs.html#ad79ecad5ff249f8cb0e1e45e67e866b5">powerOffTimeout_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Тайаут отключения питания ИБП  <a href="#ad79ecad5ff249f8cb0e1e45e67e866b5"></a><br/></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Подробное описание</h2>
+<div class="textblock">
+<p>См. определение в файле <a class="el" href="ccs_8h_source.html">ccs.h</a> строка <a class="el" href="ccs_8h_source.html#l00014">14</a></p>
+</div><hr/><h2>Перечисления</h2>
+<a class="anchor" id="a4e28e0e49af12415b487c9f1de36980f"></a><!-- doxytag: member="Ccs::CmdStart" ref="a4e28e0e49af12415b487c9f1de36980f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_ccs.html#a4e28e0e49af12415b487c9f1de36980f">Ccs::CmdStart</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Список команд пуска от контроллера визуализации </p>
+<dl><dt><b>Элементы перечислений: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a4e28e0e49af12415b487c9f1de36980faf97be6758f815feeb61c9b34ad00c3d3"></a><!-- doxytag: member="CmdStartNone" ref="a4e28e0e49af12415b487c9f1de36980faf97be6758f815feeb61c9b34ad00c3d3" args="" -->CmdStartNone</em>&nbsp;</td><td>
+<p>Нет запуска </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a4e28e0e49af12415b487c9f1de36980faa62ee45ab5163e49a6ed4a3b73b33706"></a><!-- doxytag: member="CmdStartOperator" ref="a4e28e0e49af12415b487c9f1de36980faa62ee45ab5163e49a6ed4a3b73b33706" args="" -->CmdStartOperator</em>&nbsp;</td><td>
+<p>Запуск - оператор </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a4e28e0e49af12415b487c9f1de36980fa3d1a244fbbd80c11d3cd08c7ffad060a"></a><!-- doxytag: member="CmdStartRemote" ref="a4e28e0e49af12415b487c9f1de36980fa3d1a244fbbd80c11d3cd08c7ffad060a" args="" -->CmdStartRemote</em>&nbsp;</td><td>
+<p>Запуск - дистанционный </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8h_source.html">ccs.h</a> строка <a class="el" href="ccs_8h_source.html#l00048">48</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae00d6a6e2da7cb12338afa1b90787a46"></a><!-- doxytag: member="Ccs::CmdStop" ref="ae00d6a6e2da7cb12338afa1b90787a46" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_ccs.html#ae00d6a6e2da7cb12338afa1b90787a46">Ccs::CmdStop</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Список команд останова от контроллера визуализации </p>
+<dl><dt><b>Элементы перечислений: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="ae00d6a6e2da7cb12338afa1b90787a46ae0a1af433142db7d8a81cb8b9f51821d"></a><!-- doxytag: member="CmdStopNone" ref="ae00d6a6e2da7cb12338afa1b90787a46ae0a1af433142db7d8a81cb8b9f51821d" args="" -->CmdStopNone</em>&nbsp;</td><td>
+<p>Нет останова </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="ae00d6a6e2da7cb12338afa1b90787a46adf98449d7037fe6a5d8c30dc3ac1deee"></a><!-- doxytag: member="CmdStopOperator" ref="ae00d6a6e2da7cb12338afa1b90787a46adf98449d7037fe6a5d8c30dc3ac1deee" args="" -->CmdStopOperator</em>&nbsp;</td><td>
+<p>Останов - оператор </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="ae00d6a6e2da7cb12338afa1b90787a46a4ec0dbaad5cbd271eb35ee6aa9af041f"></a><!-- doxytag: member="CmdStopRemote" ref="ae00d6a6e2da7cb12338afa1b90787a46a4ec0dbaad5cbd271eb35ee6aa9af041f" args="" -->CmdStopRemote</em>&nbsp;</td><td>
+<p>Останов - дистанционный </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8h_source.html">ccs.h</a> строка <a class="el" href="ccs_8h_source.html#l00057">57</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a7ff3b48148cdba0c990821b325113c47"></a><!-- doxytag: member="Ccs::GeneralCondition" ref="a7ff3b48148cdba0c990821b325113c47" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47">Ccs::GeneralCondition</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Список надписей о состоянии СУ </p>
+<dl><dt><b>Элементы перечислений: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a7ff3b48148cdba0c990821b325113c47ae9384cfc547821cafc934c431d2f9941"></a><!-- doxytag: member="GeneralConditionStop" ref="a7ff3b48148cdba0c990821b325113c47ae9384cfc547821cafc934c431d2f9941" args="" -->GeneralConditionStop</em>&nbsp;</td><td>
+<p>Стоп </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7ff3b48148cdba0c990821b325113c47a9871f5684cd999d5680aa7735c94c86e"></a><!-- doxytag: member="GeneralConditionStopping" ref="a7ff3b48148cdba0c990821b325113c47a9871f5684cd999d5680aa7735c94c86e" args="" -->GeneralConditionStopping</em>&nbsp;</td><td>
+<p>Торможение </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7ff3b48148cdba0c990821b325113c47a2184373eb7aa944f9be5bf542c539f75"></a><!-- doxytag: member="GeneralConditionRunning" ref="a7ff3b48148cdba0c990821b325113c47a2184373eb7aa944f9be5bf542c539f75" args="" -->GeneralConditionRunning</em>&nbsp;</td><td>
+<p>Запуск </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7ff3b48148cdba0c990821b325113c47a3370dceb949063f0e93951243c2ff050"></a><!-- doxytag: member="GeneralConditionRun" ref="a7ff3b48148cdba0c990821b325113c47a3370dceb949063f0e93951243c2ff050" args="" -->GeneralConditionRun</em>&nbsp;</td><td>
+<p>Работа </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7ff3b48148cdba0c990821b325113c47a25d4a9f9770770474de283cd69fd3fa3"></a><!-- doxytag: member="GeneralConditionDelay" ref="a7ff3b48148cdba0c990821b325113c47a25d4a9f9770770474de283cd69fd3fa3" args="" -->GeneralConditionDelay</em>&nbsp;</td><td>
+<p>Задержка срабатывания </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7ff3b48148cdba0c990821b325113c47a19cefa4965b0c88f4fb1ceca459deae1"></a><!-- doxytag: member="GeneralConditionRestart" ref="a7ff3b48148cdba0c990821b325113c47a19cefa4965b0c88f4fb1ceca459deae1" args="" -->GeneralConditionRestart</em>&nbsp;</td><td>
+<p>Ожидание АПВ </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7ff3b48148cdba0c990821b325113c47a2ab5edcf8662705e2dcb15f70554a814"></a><!-- doxytag: member="GeneralConditionBlock" ref="a7ff3b48148cdba0c990821b325113c47a2ab5edcf8662705e2dcb15f70554a814" args="" -->GeneralConditionBlock</em>&nbsp;</td><td>
+<p>Блокировка </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8h_source.html">ccs.h</a> строка <a class="el" href="ccs_8h_source.html#l00035">35</a></p>
+
+</div>
+</div>
+<a class="anchor" id="af04f8afcfc6e7988b5b7078ab9151140"></a><!-- doxytag: member="Ccs::LedCondition" ref="af04f8afcfc6e7988b5b7078ab9151140" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140">Ccs::LedCondition</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Список состояний светодиодов </p>
+<dl><dt><b>Элементы перечислений: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="af04f8afcfc6e7988b5b7078ab9151140a23a12df5e0c94c792c63150735a56061"></a><!-- doxytag: member="OnRedLed" ref="af04f8afcfc6e7988b5b7078ab9151140a23a12df5e0c94c792c63150735a56061" args="" -->OnRedLed</em>&nbsp;</td><td>
+<p>Горит красный </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="af04f8afcfc6e7988b5b7078ab9151140ad89863384d7572426c4fa63074d07160"></a><!-- doxytag: member="OnRedOnYellowLed" ref="af04f8afcfc6e7988b5b7078ab9151140ad89863384d7572426c4fa63074d07160" args="" -->OnRedOnYellowLed</em>&nbsp;</td><td>
+<p>Горит красный и горит желтый </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="af04f8afcfc6e7988b5b7078ab9151140a4e846de9210e9817023f4af6164bdaca"></a><!-- doxytag: member="OnGreenToogleYellowLed" ref="af04f8afcfc6e7988b5b7078ab9151140a4e846de9210e9817023f4af6164bdaca" args="" -->OnGreenToogleYellowLed</em>&nbsp;</td><td>
+<p>Горит зеленый и мигает желтый </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="af04f8afcfc6e7988b5b7078ab9151140a0cf88c58b896a17ac83f3724ef6f383f"></a><!-- doxytag: member="ToogleGreenToogleYellowLed" ref="af04f8afcfc6e7988b5b7078ab9151140a0cf88c58b896a17ac83f3724ef6f383f" args="" -->ToogleGreenToogleYellowLed</em>&nbsp;</td><td>
+<p>Мигает зеленый и мигает желтый </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="af04f8afcfc6e7988b5b7078ab9151140adf8b91e71707b23ad8943f6208948c92"></a><!-- doxytag: member="ToogleRedLed" ref="af04f8afcfc6e7988b5b7078ab9151140adf8b91e71707b23ad8943f6208948c92" args="" -->ToogleRedLed</em>&nbsp;</td><td>
+<p>Мигает красный </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="af04f8afcfc6e7988b5b7078ab9151140ab104f623118dc828537ddc8179cf493c"></a><!-- doxytag: member="ToogleGreenToogleRedLed" ref="af04f8afcfc6e7988b5b7078ab9151140ab104f623118dc828537ddc8179cf493c" args="" -->ToogleGreenToogleRedLed</em>&nbsp;</td><td>
+<p>Мигают зеленый и красный </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="af04f8afcfc6e7988b5b7078ab9151140ad3852fd4688d50b60dacd7659cfea9f9"></a><!-- doxytag: member="OnGreenLed" ref="af04f8afcfc6e7988b5b7078ab9151140ad3852fd4688d50b60dacd7659cfea9f9" args="" -->OnGreenLed</em>&nbsp;</td><td>
+<p>Горит зеленый </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="af04f8afcfc6e7988b5b7078ab9151140a2db9ac2f4c323e8bccef3ed46e421a1f"></a><!-- doxytag: member="OnRedToogleYellowLed" ref="af04f8afcfc6e7988b5b7078ab9151140a2db9ac2f4c323e8bccef3ed46e421a1f" args="" -->OnRedToogleYellowLed</em>&nbsp;</td><td>
+<p>Мигает желтый </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="af04f8afcfc6e7988b5b7078ab9151140a6bed067204ba4633b3487dc434a1934a"></a><!-- doxytag: member="ToogleGreenLed" ref="af04f8afcfc6e7988b5b7078ab9151140a6bed067204ba4633b3487dc434a1934a" args="" -->ToogleGreenLed</em>&nbsp;</td><td>
+<p>Мигает зеленый </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8h_source.html">ccs.h</a> строка <a class="el" href="ccs_8h_source.html#l00020">20</a></p>
+
+</div>
+</div>
+<hr/><h2>Конструктор(ы)</h2>
+<a class="anchor" id="adb962098e6c4c1f9198393fde2ae90ef"></a><!-- doxytag: member="Ccs::Ccs" ref="adb962098e6c4c1f9198393fde2ae90ef" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Ccs::Ccs </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00016">16</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a8af933dcd80ccbb6b5bef7cd5598cb1a"></a><!-- doxytag: member="Ccs::~Ccs" ref="a8af933dcd80ccbb6b5bef7cd5598cb1a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Ccs::~Ccs </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00027">27</a></p>
+
+</div>
+</div>
+<hr/><h2>Методы</h2>
+<a class="anchor" id="a948eecc22e65841ae874ac8a2059fc79"></a><!-- doxytag: member="Ccs::calcCoefTransformation" ref="a948eecc22e65841ae874ac8a2059fc79" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::calcCoefTransformation </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>calcCoefTransformation </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00576">576</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a3d8d6f0cdf257181ae974bf0fdbf9215"></a><!-- doxytag: member="Ccs::calcMotorCurrentAvarage" ref="a3d8d6f0cdf257181ae974bf0fdbf9215" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::calcMotorCurrentAvarage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>calcMotorCurrentAvarage </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00694">694</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a8217c12620e095931c2bc4c410221a9a"></a><!-- doxytag: member="Ccs::calcMotorCurrentImbalance" ref="a8217c12620e095931c2bc4c410221a9a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::calcMotorCurrentImbalance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>calcMotorCurrentImbalance </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00648">648</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a43c0a7e0adc6d9d24bbac53df38b0a3e"></a><!-- doxytag: member="Ccs::calcMotorCurrentPhase" ref="a43c0a7e0adc6d9d24bbac53df38b0a3e" args="(uint16_t vsdOutCurrent, uint16_t coefCorrect, uint16_t motorCurrent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::calcMotorCurrentPhase </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>vsdOutCurrent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>coefCorrect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>motorCurrent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>calcMotorCurrentPhase </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vsdOutCurrent</td><td></td></tr>
+    <tr><td class="paramname">coefCorrect</td><td></td></tr>
+    <tr><td class="paramname">motorCurrent</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00657">657</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a4781aef688e3354e616a82cbe20dfc62"></a><!-- doxytag: member="Ccs::calcMotorCurrentPhase1" ref="a4781aef688e3354e616a82cbe20dfc62" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::calcMotorCurrentPhase1 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>calcMotorCurrentPhase1 </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00673">673</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a276721f83f6f935fb2c57047a546e87d"></a><!-- doxytag: member="Ccs::calcMotorCurrentPhase2" ref="a276721f83f6f935fb2c57047a546e87d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::calcMotorCurrentPhase2 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>calcMotorCurrentPhase2 </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00680">680</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a0a077d25046099eed9925d9298ad6373"></a><!-- doxytag: member="Ccs::calcMotorCurrentPhase3" ref="a0a077d25046099eed9925d9298ad6373" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::calcMotorCurrentPhase3 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>calcMotorCurrentPhase3 </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00687">687</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a2288081eeb292bddcb60b571b548b6a8"></a><!-- doxytag: member="Ccs::calcParameters" ref="a2288081eeb292bddcb60b571b548b6a8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::calcParameters </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>calcParameters </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00571">571</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aabe24261336a16dec1ee3c04a6cf0a97"></a><!-- doxytag: member="Ccs::calcRegimeChangeFreqPeriodOneStep" ref="aabe24261336a16dec1ee3c04a6cf0a97" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::calcRegimeChangeFreqPeriodOneStep </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Функция пересчёта периода одного шага для режима "Программного изменения частоты". </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00703">703</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a437b3c0a00c67c3cb7c743911b507422"></a><!-- doxytag: member="Ccs::calcTime" ref="a437b3c0a00c67c3cb7c743911b507422" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::calcTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод подсчёта времени работы и останова </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00546">546</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ac07e3e6d4be896c4ff2f70c8fb9ad4df"></a><!-- doxytag: member="Ccs::calcVoltageImbalanceIn" ref="ac07e3e6d4be896c4ff2f70c8fb9ad4df" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::calcVoltageImbalanceIn </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>calcVoltageImbalanceIn </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00590">590</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a3fb8391292a8d2c3f88c19ed968d99b9"></a><!-- doxytag: member="Ccs::changedCondition" ref="a3fb8391292a8d2c3f88c19ed968d99b9" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::changedCondition </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод обработки изменения состояния </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00191">191</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a555e74424bc9a234b4a0cb044fddcf65"></a><!-- doxytag: member="Ccs::changedWorkMode" ref="a555e74424bc9a234b4a0cb044fddcf65" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::changedWorkMode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод обработки изменения режима работы </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00257">257</a></p>
+
+</div>
+</div>
+<a class="anchor" id="af5f38480d54c8e59362a240fefae5eb9"></a><!-- doxytag: member="Ccs::checkCanStart" ref="af5f38480d54c8e59362a240fefae5eb9" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Ccs::checkCanStart </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод проверки возможности пуска </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00346">346</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a2d49fcb52a688d53688083f7d381bceb"></a><!-- doxytag: member="Ccs::checkCanStop" ref="a2d49fcb52a688d53688083f7d381bceb" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Ccs::checkCanStop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод проверки возможности останова </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00379">379</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a7463ab9f818502862f01db3a64fb6ad0"></a><!-- doxytag: member="Ccs::checkCmd" ref="a7463ab9f818502862f01db3a64fb6ad0" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::checkCmd </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод проверки команды на запуск/останов от контроллера визуализации </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00304">304</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a7558efc3caffe764876a5bcc65413c58"></a><!-- doxytag: member="Ccs::controlPower" ref="a7558efc3caffe764876a5bcc65413c58" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::controlPower </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Контроль питания и отключение ИБП по таймауту </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00716">716</a></p>
+
+</div>
+</div>
+<a class="anchor" id="afbf19ee6b4b0b1218ae8aecc1f4f6e53"></a><!-- doxytag: member="Ccs::getSecFromCurTime" ref="afbf19ee6b4b0b1218ae8aecc1f4f6e53" args="(uint32_t time)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t Ccs::getSecFromCurTime </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>time</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Функция получения прошедщего времени относительно текущего времени </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time</td><td>- фиксированное время </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>значение в секундах </dd></dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00528">528</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ab4c8150fab6d844a74eadbcbd8100406"></a><!-- doxytag: member="Ccs::getSecFromCurTime" ref="ab4c8150fab6d844a74eadbcbd8100406" args="(enID timeId)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t Ccs::getSecFromCurTime </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cf">enID</a>&#160;</td>
+          <td class="paramname"><em>timeId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Функция получения прошедщего времени относительно текущего времени </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timeId</td><td>- Id фиксированного времени </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>значение в секундах </dd></dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00537">537</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a93744289036200862d44b61313a1aa54"></a><!-- doxytag: member="Ccs::getTime" ref="a93744289036200862d44b61313a1aa54" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t Ccs::getTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Функция получения текущего времени в сек от 00:00:00 01.01.1970 года </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>значение в секундах </dd></dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00523">523</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ab6a8635d5f4bccd0eb1b7046657bdfc3"></a><!-- doxytag: member="Ccs::init" ref="ab6a8635d5f4bccd0eb1b7046657bdfc3" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Инициализация устройства </p>
+
+<p>Замещает <a class="el" href="class_device.html#a20d10b3501aa4df9c94a4b0b3c7f9caf">Device</a>.</p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00047">47</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a2561d891726d388b80e781789656dcae"></a><!-- doxytag: member="Ccs::initParameters" ref="a2561d891726d388b80e781789656dcae" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::initParameters </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Инициализация массива параметров </p>
+
+<p>Переопределяет метод предка <a class="el" href="class_device.html#a2add25cc55bec5674e3534a60e2c8a6a">Device</a>.</p>
+
+<p>См. определение в файле <a class="el" href="ccs__init__parameters_8cpp_source.html">ccs_init_parameters.cpp</a> строка <a class="el" href="ccs__init__parameters_8cpp_source.html#l00003">3</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae0419d192753df8c3562ced9c944f13b"></a><!-- doxytag: member="Ccs::initTask" ref="ae0419d192753df8c3562ced9c944f13b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::initTask </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00053">53</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a19ca1d9fa3f72a014f17372e1428a607"></a><!-- doxytag: member="Ccs::isAutoMode" ref="a19ca1d9fa3f72a014f17372e1428a607" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Ccs::isAutoMode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Проверка что КСУ в режиме АUTO. </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00488">488</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a8bc0242894b2a0f4ea9af3c6f43ea3a1"></a><!-- doxytag: member="Ccs::isBlock" ref="a8bc0242894b2a0f4ea9af3c6f43ea3a1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Ccs::isBlock </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Проверка находится ли станция в блокировке </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>0 - Не находится; 1 - находится </dd></dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00436">436</a></p>
+
+</div>
+</div>
+<a class="anchor" id="abc3bdd00d2c7d77639d6a58862894939"></a><!-- doxytag: member="Ccs::isDelay" ref="abc3bdd00d2c7d77639d6a58862894939" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Ccs::isDelay </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Проверка находится ли станция в ожидании </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00414">414</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a26700133ec67b989db1f7c512da5d33f"></a><!-- doxytag: member="Ccs::isManualMode" ref="a26700133ec67b989db1f7c512da5d33f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Ccs::isManualMode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>isManualMode </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00500">500</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a1ba9496cc184cfdfc673880aefc6d384"></a><!-- doxytag: member="Ccs::isPowerOff" ref="a1ba9496cc184cfdfc673880aefc6d384" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Ccs::isPowerOff </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод проверки отключения питания платы </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8h_source.html">ccs.h</a> строка <a class="el" href="ccs_8h_source.html#l00263">263</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a2b0743b38d680ef06b5f2cdf5e587787"></a><!-- doxytag: member="Ccs::isPrevent" ref="a2b0743b38d680ef06b5f2cdf5e587787" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Ccs::isPrevent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>isPrevent </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00483">483</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a6a535ac0825a614e3b8d9960f94b9d8f"></a><!-- doxytag: member="Ccs::isProgramMode" ref="a6a535ac0825a614e3b8d9960f94b9d8f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Ccs::isProgramMode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Проверка что КСУ в режиме "Программа". </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>true - да, false - нет </dd></dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00511">511</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a86fd4828f7535839e9f8133359271aae"></a><!-- doxytag: member="Ccs::isRestart" ref="a86fd4828f7535839e9f8133359271aae" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Ccs::isRestart </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>isRestartCCS </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00425">425</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a09bd2812f8e2feea48fc4c79e127239f"></a><!-- doxytag: member="Ccs::isStopMotor" ref="a09bd2812f8e2feea48fc4c79e127239f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Ccs::isStopMotor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Проверка находится ли станция в стопе </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00390">390</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a963252ab38bf6a9001f5518ca095607d"></a><!-- doxytag: member="Ccs::isWorkMotor" ref="a963252ab38bf6a9001f5518ca095607d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Ccs::isWorkMotor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Проверка находится ли станция в работе состояние работа, это все состояния кроме состояний "Стоп" и "Ожидания АПВ". </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00402">402</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a5474c540f3c354cb6b6b6db2dcd1ccff"></a><!-- doxytag: member="Ccs::ledConditionTask" ref="a5474c540f3c354cb6b6b6db2dcd1ccff" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::ledConditionTask </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Задача обработки очереди событий включения/мигания LED. </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00087">87</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a98bba73ef6915df8ce78a6dea169e4a7"></a><!-- doxytag: member="Ccs::mainTask" ref="a98bba73ef6915df8ce78a6dea169e4a7" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::mainTask </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Основная задача обработки СУ </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00067">67</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae6c087740511dfc0f6441ff3983bdc33"></a><!-- doxytag: member="Ccs::resetBlock" ref="ae6c087740511dfc0f6441ff3983bdc33" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::resetBlock </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Сброс флага блокировки </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00477">477</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a7db968cc15d189e42968ae84351c82f6"></a><!-- doxytag: member="Ccs::resetDelay" ref="a7db968cc15d189e42968ae84351c82f6" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::resetDelay </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>resetDelayCCS </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00465">465</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ace70b4dbd3ccc4a77bf520427f282efa"></a><!-- doxytag: member="Ccs::resetRestart" ref="ace70b4dbd3ccc4a77bf520427f282efa" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::resetRestart </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>resetRestartCCS </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00471">471</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ad0f0a577f9660e9f761ef4d75c68ba58"></a><!-- doxytag: member="Ccs::setBlock" ref="ad0f0a577f9660e9f761ef4d75c68ba58" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::setBlock </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Установка флага блокировки </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00459">459</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a7ebdcb8f354fc1d4b3f2770666bce7c6"></a><!-- doxytag: member="Ccs::setDelay" ref="a7ebdcb8f354fc1d4b3f2770666bce7c6" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::setDelay </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>setDelayCCS </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00447">447</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aeb7f60f2cbd15d47bfaaf3a639dc6fea"></a><!-- doxytag: member="Ccs::setLedCondition" ref="aeb7f60f2cbd15d47bfaaf3a639dc6fea" args="(LedCondition condition)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::setLedCondition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140">LedCondition</a>&#160;</td>
+          <td class="paramname"><em>condition</em></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод добавления в очередь событий включения/мигания LED. </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00082">82</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a67bc22057be9ef1f928f8d85134ee3f8"></a><!-- doxytag: member="Ccs::setNewValue" ref="a67bc22057be9ef1f928f8d85134ee3f8" args="(uint16_t id, float value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Ccs::setNewValue </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>setNewValue </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td></td></tr>
+    <tr><td class="paramname">value</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Переопределяет метод предка <a class="el" href="class_device.html#a12c3e2d1819a4fbc72cc99371f25c142">Device</a>.</p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00599">599</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae565d20dd9c1f2e34dadc0b00ccf4335"></a><!-- doxytag: member="Ccs::setNewValue" ref="ae565d20dd9c1f2e34dadc0b00ccf4335" args="(uint16_t id, uint32_t value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Ccs::setNewValue </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>setNewValue </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td></td></tr>
+    <tr><td class="paramname">value</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Переопределяет метод предка <a class="el" href="class_device.html#ac7b84ebdd6df9a1b3ae4e5e43aa33909">Device</a>.</p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00638">638</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ab37469d2b02d4ee8eeb7519a68c3b668"></a><!-- doxytag: member="Ccs::setNewValue" ref="ab37469d2b02d4ee8eeb7519a68c3b668" args="(uint16_t id, int value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Ccs::setNewValue </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>setNewValue </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td></td></tr>
+    <tr><td class="paramname">value</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Переопределяет метод предка <a class="el" href="class_device.html#ab7cd32b0d20775ef806c262b8e8cd2d5">Device</a>.</p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00643">643</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a5e41cab53769f3227bda30717000b0ea"></a><!-- doxytag: member="Ccs::setRestart" ref="a5e41cab53769f3227bda30717000b0ea" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::setRestart </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>setRestartCCS </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00453">453</a></p>
+
+</div>
+</div>
+<a class="anchor" id="acec87b848452b5d4ddfa8e235526b767"></a><!-- doxytag: member="Ccs::start" ref="acec87b848452b5d4ddfa8e235526b767" args="(LastReasonRun reason)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::start </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="define_8h.html#a2e37372dbc4114112400e3845adc1372">LastReasonRun</a>&#160;</td>
+          <td class="paramname"><em>reason</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод запуска двигателя </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reason</td><td>- Причина запуска </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00279">279</a></p>
+
+</div>
+</div>
+<a class="anchor" id="acf67ed9254718e37a5808b28085c73b1"></a><!-- doxytag: member="Ccs::stop" ref="acf67ed9254718e37a5808b28085c73b1" args="(LastReasonStop reason)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::stop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ff">LastReasonStop</a>&#160;</td>
+          <td class="paramname"><em>reason</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод останова двигателя </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reason</td><td>- Причина остановова </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00291">291</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ac5b995a9c72a86eee9a9156964b1104d"></a><!-- doxytag: member="Ccs::vsdConditionTask" ref="ac5b995a9c72a86eee9a9156964b1104d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ccs::vsdConditionTask </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Задача обработки переключения состояния ЧРП </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8cpp_source.html">ccs.cpp</a> строка <a class="el" href="ccs_8cpp_source.html#l00140">140</a></p>
+
+</div>
+</div>
+<hr/><h2>Поля</h2>
+<a class="anchor" id="a901ee14cc75f7908fb0b2727a7307006"></a><!-- doxytag: member="Ccs::conditionOld_" ref="a901ee14cc75f7908fb0b2727a7307006" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_ccs.html#a901ee14cc75f7908fb0b2727a7307006">Ccs::conditionOld_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Предыдущие состояние станции </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8h_source.html">ccs.h</a> строка <a class="el" href="ccs_8h_source.html#l00322">322</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a71e235039f85b9dcb03dee7b6b873be4"></a><!-- doxytag: member="Ccs::flagOld_" ref="a71e235039f85b9dcb03dee7b6b873be4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_ccs.html#a71e235039f85b9dcb03dee7b6b873be4">Ccs::flagOld_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Предыдущие значение флага (задержка, АПВ, блокировка) </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8h_source.html">ccs.h</a> строка <a class="el" href="ccs_8h_source.html#l00324">324</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a955990f23acf20d01a71d0142ab4c758"></a><!-- doxytag: member="Ccs::ledMessage_" ref="a955990f23acf20d01a71d0142ab4c758" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">osMessageQId <a class="el" href="class_ccs.html#a955990f23acf20d01a71d0142ab4c758">Ccs::ledMessage_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Очередь событий включения/мигания LED. </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8h_source.html">ccs.h</a> строка <a class="el" href="ccs_8h_source.html#l00320">320</a></p>
+
+</div>
+</div>
+<a class="anchor" id="acce4f3c3b622720a0e4c115aafa8b323"></a><!-- doxytag: member="Ccs::parametersArray_" ref="acce4f3c3b622720a0e4c115aafa8b323" args="[CCS_END&#45;CCS_BEGIN]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structparameter.html">parameter</a> <a class="el" href="class_ccs.html#acce4f3c3b622720a0e4c115aafa8b323">Ccs::parametersArray_</a>[CCS_END-CCS_BEGIN]<code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Массив параметров устройства </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8h_source.html">ccs.h</a> строка <a class="el" href="ccs_8h_source.html#l00317">317</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aea5e986d6c4a4ec71e4a80daae9c570e"></a><!-- doxytag: member="Ccs::powerOffFlag_" ref="aea5e986d6c4a4ec71e4a80daae9c570e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_ccs.html#aea5e986d6c4a4ec71e4a80daae9c570e">Ccs::powerOffFlag_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Флаг потери питания </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8h_source.html">ccs.h</a> строка <a class="el" href="ccs_8h_source.html#l00329">329</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ad79ecad5ff249f8cb0e1e45e67e866b5"></a><!-- doxytag: member="Ccs::powerOffTimeout_" ref="ad79ecad5ff249f8cb0e1e45e67e866b5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_ccs.html#ad79ecad5ff249f8cb0e1e45e67e866b5">Ccs::powerOffTimeout_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Тайаут отключения питания ИБП </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8h_source.html">ccs.h</a> строка <a class="el" href="ccs_8h_source.html#l00331">331</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa20615a672eafc921dd113079d5742be"></a><!-- doxytag: member="Ccs::workModeOld_" ref="aa20615a672eafc921dd113079d5742be" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_ccs.html#aa20615a672eafc921dd113079d5742be">Ccs::workModeOld_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Предыдущий режим работы </p>
+
+<p>См. определение в файле <a class="el" href="ccs_8h_source.html">ccs.h</a> строка <a class="el" href="ccs_8h_source.html#l00326">326</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>src/user/device/ccs/<a class="el" href="ccs_8h_source.html">ccs.h</a></li>
+<li>src/user/device/ccs/<a class="el" href="ccs_8cpp_source.html">ccs.cpp</a></li>
+<li>src/user/device/ccs/<a class="el" href="ccs__init__parameters_8cpp_source.html">ccs_init_parameters.cpp</a></li>
+</ul>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:25. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

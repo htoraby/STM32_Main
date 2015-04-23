@@ -56,7 +56,7 @@ void gpioInit()
   initButton(PowerButton);
   initButton(SysResetButton);
 
-  initPinInput(WATCH_PIN);
+  initPinInput(POWER_WARNING_PIN);
   initPinOut(OFF_REL_PIN, PinSet);
   initPinOut(LCD_ON_PIN, PinSet);
   initPinOut(USB_ON_PIN, PinSet);
@@ -166,7 +166,12 @@ void setDigitalOutput(const uint16_t num, PinState value)
 
 bool isPowerGood()
 {
-  return getPinInput(WATCH_PIN);
+  return getPinInput(POWER_WARNING_PIN);
+}
+
+bool isUpsGood()
+{
+  return getPinInput(POWER_ALARM_PIN);
 }
 
 void turnPowerBattery(bool on)

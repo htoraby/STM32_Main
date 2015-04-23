@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Файл src/user/device/vsd/vsd_novomet.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Структуры данных</a> &#124;
+<a href="#enum-members">Перечисления</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл src/user/device/vsd/vsd_novomet.h</div>  </div>
+</div>
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="vsd_8h_source.html">vsd.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="device__modbus_8h_source.html">device_modbus.h</a>&quot;</code><br/>
+</div>
+<p><a href="vsd__novomet_8h_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Структуры данных</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vsd_novomet.html">VsdNovomet</a></td></tr>
+<tr><td colspan="2"><h2><a name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30">enInvertorControl</a> { <br/>
+&#160;&#160;<a class="el" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a002e761a09ef8aca9a79f053b18b539b">INV_CONTROL_START</a> =  1, 
+<a class="el" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a53c90478b7418ed15037ef77108569ca">INV_CONTROL_STOP</a> =  2, 
+<a class="el" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a52ee06e7b78e453884f87209f433eb50">INV_CONTROL_LEFT_DIRECTION</a> =  4, 
+<a class="el" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a08edf1fccc6510d3bac27e772f6cff7b">INV_CONTROL_RIGHT_DIRECTION</a> =  8, 
+<br/>
+&#160;&#160;<a class="el" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a42518dea72b293b322d20929db267cb0">INV_CONTROL_ALARM</a> =  16, 
+<a class="el" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a44a445e43a4d353b3e908bb609554fff">INV_CONTROL_CURRENT_OPT</a> =  32, 
+<a class="el" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a6ebb8eff71439cc0c78f1b78036635ca">INV_CONTROL_POWER_OPT</a> =  64, 
+<a class="el" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30ab0845c7b1665086bebd10589221a821d">INV_CONTROL_CLEAR_OPT</a> =  128, 
+<br/>
+&#160;&#160;<a class="el" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a72b379b6df623b0d047709981f645e3d">INV_CONTROL_ASYN_MOTOR</a> =  256, 
+<a class="el" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30af63610873dfea36f0325dbe03aa26b98">INV_CONTROL_VENT_MOTOR</a> =  512, 
+<a class="el" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a61bfbb9b17f68bb72a28fe101caf703c">INV_CONTROL_OVERPWM1_ON</a> =  1024, 
+<a class="el" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30ac2189b80e27cd0d330035536a9021829">INV_CONTROL_OVERPWM2_ON</a> =  2048, 
+<br/>
+&#160;&#160;<a class="el" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a8697ee94836a75c2b6d8b9814db6caae">INV_CONTROL_OVERPWM_OFF</a> =  4096, 
+<a class="el" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a4a07b90710b1a4eb68dca3214ab8049a">INV_CONTROL_DISCHARGE_ON</a> =  8192, 
+<a class="el" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a6af68cabee7b71531613bc4f7b594de5">INV_CONTROL_DISCHARGE_OFF</a> =  16384
+<br/>
+ }</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The enInvertorControl enum Флаги регистра управления ПЧ  <a href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30">Подробнее...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827">enRegulatorQueue</a> { <br/>
+&#160;&#160;<a class="el" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827a06c44e242e642167763998509fe28ab6">VSD_REQULATOR_QUEUE_NULL</a> =  -1, 
+<a class="el" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827a0c07006201dcffb5933b21d4023bc6e8">VSD_REQULATOR_QUEUE_TEST</a>, 
+<a class="el" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827ac2b0e553dd3b7f1e25a1fdc7cb1632a7">VSD_REQULATOR_QUEUE_UF</a>, 
+<a class="el" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827ac9c2ddd23045c2e9906cf695a4914a5a">VSD_REQULATOR_QUEUE_PUSH</a>, 
+<br/>
+&#160;&#160;<a class="el" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827ab3c7a1a52a5d6b555f2139a3badbea21">VSD_REQULATOR_QUEUE_VECT</a>, 
+<a class="el" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827a352dbe1ea5a11e891a0e868bf0843560">VSD_REQULATOR_QUEUE_AUTO</a>, 
+<a class="el" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827a9542b98f88204709e3a63896ae72c9ec">VSD_REQULATOR_QUEUE_PICKUP</a>
+<br/>
+ }</td></tr>
+</table>
+<hr/><h2>Перечисления</h2>
+<a class="anchor" id="a7aae4afed4a694192aa96ce1a68b9a30"></a><!-- doxytag: member="vsd_novomet.h::enInvertorControl" ref="a7aae4afed4a694192aa96ce1a68b9a30" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30">enInvertorControl</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>The enInvertorControl enum Флаги регистра управления ПЧ </p>
+<dl><dt><b>Элементы перечислений: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a7aae4afed4a694192aa96ce1a68b9a30a002e761a09ef8aca9a79f053b18b539b"></a><!-- doxytag: member="INV_CONTROL_START" ref="a7aae4afed4a694192aa96ce1a68b9a30a002e761a09ef8aca9a79f053b18b539b" args="" -->INV_CONTROL_START</em>&nbsp;</td><td>
+<p>Запустить инвертор ("Старт") </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7aae4afed4a694192aa96ce1a68b9a30a53c90478b7418ed15037ef77108569ca"></a><!-- doxytag: member="INV_CONTROL_STOP" ref="a7aae4afed4a694192aa96ce1a68b9a30a53c90478b7418ed15037ef77108569ca" args="" -->INV_CONTROL_STOP</em>&nbsp;</td><td>
+<p>Остановить инвертор ("Стоп") </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7aae4afed4a694192aa96ce1a68b9a30a52ee06e7b78e453884f87209f433eb50"></a><!-- doxytag: member="INV_CONTROL_LEFT_DIRECTION" ref="a7aae4afed4a694192aa96ce1a68b9a30a52ee06e7b78e453884f87209f433eb50" args="" -->INV_CONTROL_LEFT_DIRECTION</em>&nbsp;</td><td>
+<p>Задать левое вращение </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7aae4afed4a694192aa96ce1a68b9a30a08edf1fccc6510d3bac27e772f6cff7b"></a><!-- doxytag: member="INV_CONTROL_RIGHT_DIRECTION" ref="a7aae4afed4a694192aa96ce1a68b9a30a08edf1fccc6510d3bac27e772f6cff7b" args="" -->INV_CONTROL_RIGHT_DIRECTION</em>&nbsp;</td><td>
+<p>Задать правое вращение </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7aae4afed4a694192aa96ce1a68b9a30a42518dea72b293b322d20929db267cb0"></a><!-- doxytag: member="INV_CONTROL_ALARM" ref="a7aae4afed4a694192aa96ce1a68b9a30a42518dea72b293b322d20929db267cb0" args="" -->INV_CONTROL_ALARM</em>&nbsp;</td><td>
+<p>Аварийный останов </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7aae4afed4a694192aa96ce1a68b9a30a44a445e43a4d353b3e908bb609554fff"></a><!-- doxytag: member="INV_CONTROL_CURRENT_OPT" ref="a7aae4afed4a694192aa96ce1a68b9a30a44a445e43a4d353b3e908bb609554fff" args="" -->INV_CONTROL_CURRENT_OPT</em>&nbsp;</td><td>
+<p>Задание оптимизации по току </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7aae4afed4a694192aa96ce1a68b9a30a6ebb8eff71439cc0c78f1b78036635ca"></a><!-- doxytag: member="INV_CONTROL_POWER_OPT" ref="a7aae4afed4a694192aa96ce1a68b9a30a6ebb8eff71439cc0c78f1b78036635ca" args="" -->INV_CONTROL_POWER_OPT</em>&nbsp;</td><td>
+<p>задание оптимизации по мощности </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7aae4afed4a694192aa96ce1a68b9a30ab0845c7b1665086bebd10589221a821d"></a><!-- doxytag: member="INV_CONTROL_CLEAR_OPT" ref="a7aae4afed4a694192aa96ce1a68b9a30ab0845c7b1665086bebd10589221a821d" args="" -->INV_CONTROL_CLEAR_OPT</em>&nbsp;</td><td>
+<p>Отключить оптимизацию </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7aae4afed4a694192aa96ce1a68b9a30a72b379b6df623b0d047709981f645e3d"></a><!-- doxytag: member="INV_CONTROL_ASYN_MOTOR" ref="a7aae4afed4a694192aa96ce1a68b9a30a72b379b6df623b0d047709981f645e3d" args="" -->INV_CONTROL_ASYN_MOTOR</em>&nbsp;</td><td>
+<p>Асинхронный </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7aae4afed4a694192aa96ce1a68b9a30af63610873dfea36f0325dbe03aa26b98"></a><!-- doxytag: member="INV_CONTROL_VENT_MOTOR" ref="a7aae4afed4a694192aa96ce1a68b9a30af63610873dfea36f0325dbe03aa26b98" args="" -->INV_CONTROL_VENT_MOTOR</em>&nbsp;</td><td>
+<p>Вентильный </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7aae4afed4a694192aa96ce1a68b9a30a61bfbb9b17f68bb72a28fe101caf703c"></a><!-- doxytag: member="INV_CONTROL_OVERPWM1_ON" ref="a7aae4afed4a694192aa96ce1a68b9a30a61bfbb9b17f68bb72a28fe101caf703c" args="" -->INV_CONTROL_OVERPWM1_ON</em>&nbsp;</td><td>
+<p>Включить режим OverPWM1. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7aae4afed4a694192aa96ce1a68b9a30ac2189b80e27cd0d330035536a9021829"></a><!-- doxytag: member="INV_CONTROL_OVERPWM2_ON" ref="a7aae4afed4a694192aa96ce1a68b9a30ac2189b80e27cd0d330035536a9021829" args="" -->INV_CONTROL_OVERPWM2_ON</em>&nbsp;</td><td>
+<p>Включить режим OverPWM2. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7aae4afed4a694192aa96ce1a68b9a30a8697ee94836a75c2b6d8b9814db6caae"></a><!-- doxytag: member="INV_CONTROL_OVERPWM_OFF" ref="a7aae4afed4a694192aa96ce1a68b9a30a8697ee94836a75c2b6d8b9814db6caae" args="" -->INV_CONTROL_OVERPWM_OFF</em>&nbsp;</td><td>
+<p>Выключить режим OverPWM. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7aae4afed4a694192aa96ce1a68b9a30a4a07b90710b1a4eb68dca3214ab8049a"></a><!-- doxytag: member="INV_CONTROL_DISCHARGE_ON" ref="a7aae4afed4a694192aa96ce1a68b9a30a4a07b90710b1a4eb68dca3214ab8049a" args="" -->INV_CONTROL_DISCHARGE_ON</em>&nbsp;</td><td>
+<p>Включить предразряд шины инвертора </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7aae4afed4a694192aa96ce1a68b9a30a6af68cabee7b71531613bc4f7b594de5"></a><!-- doxytag: member="INV_CONTROL_DISCHARGE_OFF" ref="a7aae4afed4a694192aa96ce1a68b9a30a6af68cabee7b71531613bc4f7b594de5" args="" -->INV_CONTROL_DISCHARGE_OFF</em>&nbsp;</td><td>
+<p>Выключить предразряд шины инвертора </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="vsd__novomet_8h_source.html">vsd_novomet.h</a> строка <a class="el" href="vsd__novomet_8h_source.html#l00018">18</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a2529894869576643fe91031434e77827"></a><!-- doxytag: member="vsd_novomet.h::enRegulatorQueue" ref="a2529894869576643fe91031434e77827" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827">enRegulatorQueue</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>Элементы перечислений: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a2529894869576643fe91031434e77827a06c44e242e642167763998509fe28ab6"></a><!-- doxytag: member="VSD_REQULATOR_QUEUE_NULL" ref="a2529894869576643fe91031434e77827a06c44e242e642167763998509fe28ab6" args="" -->VSD_REQULATOR_QUEUE_NULL</em>&nbsp;</td><td>
+<p>Пустой </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a2529894869576643fe91031434e77827a0c07006201dcffb5933b21d4023bc6e8"></a><!-- doxytag: member="VSD_REQULATOR_QUEUE_TEST" ref="a2529894869576643fe91031434e77827a0c07006201dcffb5933b21d4023bc6e8" args="" -->VSD_REQULATOR_QUEUE_TEST</em>&nbsp;</td><td>
+<p>Тестовый </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a2529894869576643fe91031434e77827ac2b0e553dd3b7f1e25a1fdc7cb1632a7"></a><!-- doxytag: member="VSD_REQULATOR_QUEUE_UF" ref="a2529894869576643fe91031434e77827ac2b0e553dd3b7f1e25a1fdc7cb1632a7" args="" -->VSD_REQULATOR_QUEUE_UF</em>&nbsp;</td><td>
+<p>U/f. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a2529894869576643fe91031434e77827ac9c2ddd23045c2e9906cf695a4914a5a"></a><!-- doxytag: member="VSD_REQULATOR_QUEUE_PUSH" ref="a2529894869576643fe91031434e77827ac9c2ddd23045c2e9906cf695a4914a5a" args="" -->VSD_REQULATOR_QUEUE_PUSH</em>&nbsp;</td><td>
+<p>Расклинка </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a2529894869576643fe91031434e77827ab3c7a1a52a5d6b555f2139a3badbea21"></a><!-- doxytag: member="VSD_REQULATOR_QUEUE_VECT" ref="a2529894869576643fe91031434e77827ab3c7a1a52a5d6b555f2139a3badbea21" args="" -->VSD_REQULATOR_QUEUE_VECT</em>&nbsp;</td><td>
+<p>Векторный </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a2529894869576643fe91031434e77827a352dbe1ea5a11e891a0e868bf0843560"></a><!-- doxytag: member="VSD_REQULATOR_QUEUE_AUTO" ref="a2529894869576643fe91031434e77827a352dbe1ea5a11e891a0e868bf0843560" args="" -->VSD_REQULATOR_QUEUE_AUTO</em>&nbsp;</td><td>
+<p>Автонастройка </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a2529894869576643fe91031434e77827a9542b98f88204709e3a63896ae72c9ec"></a><!-- doxytag: member="VSD_REQULATOR_QUEUE_PICKUP" ref="a2529894869576643fe91031434e77827a9542b98f88204709e3a63896ae72c9ec" args="" -->VSD_REQULATOR_QUEUE_PICKUP</em>&nbsp;</td><td>
+<p>Турбинное вращение </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="vsd__novomet_8h_source.html">vsd_novomet.h</a> строка <a class="el" href="vsd__novomet_8h_source.html#l00037">37</a></p>
+
+</div>
+</div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:25. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

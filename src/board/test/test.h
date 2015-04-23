@@ -18,7 +18,8 @@
 #define TEST_HOST_SPI    0
 #define TEST_LOG         0
 #define TEST_HOST_UART   0
-#define TEST_PROTECTIONS 1
+#define TEST_PROTECTIONS 0
+#define TEST_POWER_OFF   0
 
 #define HOST_TEST_UART uart6
 #define TEST_UART_1 uart4 // 4

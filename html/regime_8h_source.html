@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/regime/regime.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/regime/regime.h</div>  </div>
+</div>
+<div class="contents">
+<a href="regime_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef REGIME_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define REGIME_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &quot;<a class="code" href="user__main_8h.html">user_main.h</a>&quot;</span>
+<a name="l00005"></a>00005 
+<a name="l00009"></a><a class="code" href="class_regime.html">00009</a> <span class="keyword">class </span><a class="code" href="class_regime.html" title="Базовый класс режимов КСУ">Regime</a>
+<a name="l00010"></a>00010 {
+<a name="l00011"></a>00011 <span class="keyword">public</span>:
+<a name="l00015"></a><a class="code" href="class_regime.html#a09c01f9e6c25f501040ffd37843c4e3d">00015</a>   <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00016"></a><a class="code" href="class_regime.html#a09c01f9e6c25f501040ffd37843c4e3dad02c506b6c1db9186b6d1bd38b2bade4">00016</a>     <a class="code" href="class_regime.html#a09c01f9e6c25f501040ffd37843c4e3dad02c506b6c1db9186b6d1bd38b2bade4" title="Режим отключен">OffAction</a>,       
+<a name="l00017"></a><a class="code" href="class_regime.html#a09c01f9e6c25f501040ffd37843c4e3da5d01a74bd1c042228291e4c0fa28842f">00017</a>     <a class="code" href="class_regime.html#a09c01f9e6c25f501040ffd37843c4e3da5d01a74bd1c042228291e4c0fa28842f" title="Однократный">SingleAction</a>,    
+<a name="l00018"></a><a class="code" href="class_regime.html#a09c01f9e6c25f501040ffd37843c4e3daa066d91801805fa9796f909668a9689e">00018</a>     <a class="code" href="class_regime.html#a09c01f9e6c25f501040ffd37843c4e3daa066d91801805fa9796f909668a9689e" title="При каждом запуске">EachRunAction</a>,   
+<a name="l00019"></a><a class="code" href="class_regime.html#a09c01f9e6c25f501040ffd37843c4e3da122417799887e8386b534e20d1cbf284">00019</a>     <a class="code" href="class_regime.html#a09c01f9e6c25f501040ffd37843c4e3da122417799887e8386b534e20d1cbf284" title="Режим включен">OnAction</a>,        
+<a name="l00020"></a>00020   } <a class="code" href="class_regime.html#a09c01f9e6c25f501040ffd37843c4e3d" title="Список действий режима">RegimeAction</a>;
+<a name="l00021"></a>00021 
+<a name="l00025"></a><a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cc">00025</a>   <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00026"></a><a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cca635417b3935391077dab3ba16c3da407">00026</a>     <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cca635417b3935391077dab3ba16c3da407">IdleState</a> = 0,
+<a name="l00027"></a><a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335ccaa5b79526ad0898a5e7d06c0177d01c0f">00027</a>     <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335ccaa5b79526ad0898a5e7d06c0177d01c0f">WorkState</a> = 100,
+<a name="l00028"></a><a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cca5c231d99b05a2a4f07b0ea09399d9331">00028</a>     <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cca5c231d99b05a2a4f07b0ea09399d9331">RunningState</a> = 200,
+<a name="l00029"></a><a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cca53710de4808aca22922cd3c677552692">00029</a>     <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cca53710de4808aca22922cd3c677552692">WaitPauseState</a> = 300,
+<a name="l00030"></a><a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cca12ae89b5bd9b3ebaa2bb166026bdf752">00030</a>     <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cca12ae89b5bd9b3ebaa2bb166026bdf752">PauseState</a> = 400,
+<a name="l00031"></a><a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cca1008309defac8f3311cd6934d3d50ff4">00031</a>     <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cca1008309defac8f3311cd6934d3d50ff4">RestartState</a> = 500,
+<a name="l00032"></a><a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335ccafa515e01698cf8fae6aaf7cddc6f7c39">00032</a>     <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335ccafa515e01698cf8fae6aaf7cddc6f7c39">StopState</a> = 600
+<a name="l00033"></a>00033   } <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cc" title="Список состояний режима">RegimeState</a>;
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035   <a class="code" href="class_regime.html#a6c754e8a924034fc4538d7bede546068">Regime</a>();
+<a name="l00036"></a>00036   <a class="code" href="class_regime.html#a162bda11cd8deb80fd018056e6f4f959">~Regime</a>();
+<a name="l00037"></a>00037 
+<a name="l00041"></a>00041   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_regime.html#a502ab8779c75dcc52905a52cae9ab49e" title="Метод обработки режима">processing</a>() = 0;
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 <span class="keyword">protected</span>:
+<a name="l00044"></a><a class="code" href="class_regime.html#af3c209a68d065d51839d802182d1c814">00044</a>   <span class="keywordtype">int</span> <a class="code" href="class_regime.html#af3c209a68d065d51839d802182d1c814" title="Действие режима">action_</a>;    
+<a name="l00045"></a><a class="code" href="class_regime.html#a6f7e192aa69230d89925ab287af5a929">00045</a>   <span class="keywordtype">int</span> <a class="code" href="class_regime.html#a6f7e192aa69230d89925ab287af5a929" title="Состояние автомата">state_</a>;     
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047 };
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049 <span class="preprocessor">#endif // REGIME_H</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

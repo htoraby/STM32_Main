@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/protection/protection_main.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/protection/protection_main.h</div>  </div>
+</div>
+<div class="contents">
+<a href="protection__main_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef PROTECTION_MAIN_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define PROTECTION_MAIN_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &quot;<a class="code" href="protection__overvoltage__input_8h.html">protection_overvoltage_input.h</a>&quot;</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="protection__undervoltage__input_8h.html">protection_undervoltage_input.h</a>&quot;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="protection__imbalance__voltage__input_8h.html">protection_imbalance_voltage_input.h</a>&quot;</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="preprocessor">#include &quot;<a class="code" href="protection__overload__motor_8h.html">protection_overload_motor.h</a>&quot;</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include &quot;<a class="code" href="protection__underload__motor_8h.html">protection_underload_motor.h</a>&quot;</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include &quot;<a class="code" href="protection__imbalance__current__motor_8h.html">protection_imbalance_current_motor.h</a>&quot;</span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include &quot;<a class="code" href="protection__out__of__sync__motor_8h.html">protection_out_of_sync_motor.h</a>&quot;</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &quot;<a class="code" href="protection__turbine__rotation_8h.html">protection_turbine_rotation.h</a>&quot;</span>
+<a name="l00013"></a>00013 
+<a name="l00014"></a>00014 <span class="preprocessor">#include &quot;<a class="code" href="protection__temperature__motor_8h.html">protection_temperature_motor.h</a>&quot;</span>
+<a name="l00015"></a>00015 <span class="preprocessor">#include &quot;<a class="code" href="protection__pressure__intake_8h.html">protection_pressure_intake.h</a>&quot;</span>
+<a name="l00016"></a>00016 <span class="preprocessor">#include &quot;<a class="code" href="protection__resistance__isolation_8h.html">protection_resistance_isolation.h</a>&quot;</span>
+<a name="l00017"></a>00017 
+<a name="l00018"></a>00018 <span class="keyword">extern</span> <a class="code" href="class_protection_over_voltage_input.html" title="Класс автомата защиты &quot;Превышение питания сети&quot;.">ProtectionOverVoltageInput</a> <a class="code" href="protection__main_8cpp.html#a0263827e5a501056c3a06547aa003134">protOverVoltIn</a>;
+<a name="l00019"></a>00019 <span class="keyword">extern</span> <a class="code" href="class_protection_under_voltage_input.html" title="Класс автомата защиты &quot;Снижение питания сети&quot;.">ProtectionUnderVoltageInput</a> <a class="code" href="protection__main_8cpp.html#aa72b576034021bcdf3bbb2fb7f6f7829">protUnderVoltIn</a>;
+<a name="l00020"></a>00020 <span class="keyword">extern</span> <a class="code" href="class_protection_imbalance_voltage_input.html" title="Класс автомата защиты &quot;Дисбаланс напряжения&quot;.">ProtectionImbalanceVoltageInput</a> <a class="code" href="protection__main_8cpp.html#a41c8aab89676c32c63ce9efe95e623c8">protImbalanceVoltIn</a>;
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022 <span class="keyword">extern</span> <a class="code" href="class_protection_overload_motor.html" title="Класс автомата защиты &quot;Перегруз двигателя&quot;.">ProtectionOverloadMotor</a> <a class="code" href="protection__main_8cpp.html#ac4b8a91a9932859fbafeb3bca69d4b58">protOverloadMotor</a>;
+<a name="l00023"></a>00023 <span class="keyword">extern</span> <a class="code" href="class_protection_underload_motor.html" title="Класс автомата защиты &quot;Недогруз двигателя&quot;.">ProtectionUnderloadMotor</a> <a class="code" href="protection__main_8cpp.html#ae177743d94cc3266255d7112651fee48">protUnderloadMotor</a>;
+<a name="l00024"></a>00024 <span class="keyword">extern</span> <a class="code" href="class_protection_imbalance_current_motor.html" title="Класс автомата защиты &quot;Дисбаланс токов ПЭД&quot;.">ProtectionImbalanceCurrentMotor</a> <a class="code" href="protection__main_8cpp.html#a2d5577d07568fa5d0d42e57a785fb5d7">protImbalanceCurrentMotor</a>;
+<a name="l00025"></a>00025 <span class="keyword">extern</span> <a class="code" href="class_protection_out_of_sync_motor.html" title="Класс автомата защиты &quot;Рассинхронизация ПВЭД&quot;.">ProtectionOutOfSyncMotor</a> <a class="code" href="protection__main_8cpp.html#a62c601eb89092feb5966014ee666d0d7">protOutOfSyncMotor</a>;
+<a name="l00026"></a>00026 <span class="keyword">extern</span> <a class="code" href="class_protection_turbine_rotation.html" title="Класс автомата защиты &quot;Турбинное вращение&quot;.">ProtectionTurbineRotation</a> <a class="code" href="protection__main_8cpp.html#a9a1fddeb5cba6f9b904744a73c190097">protTurbineRotation</a>;
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028 <span class="keyword">extern</span> <a class="code" href="class_protection_temperature_motor.html" title="Класс автомата защиты &quot;Перегрев двигателя&quot;.">ProtectionTemperatureMotor</a> <a class="code" href="protection__main_8cpp.html#aede6e82b9c4def4c85d01d4815ac382c">protTemperatureMotor</a>;
+<a name="l00029"></a>00029 <span class="keyword">extern</span> <a class="code" href="class_protection_pressure_intake.html" title="Класс автомата защиты &quot;Давление на приёме насоса&quot;.">ProtectionPressureIntake</a> <a class="code" href="protection__main_8cpp.html#a5da546ca1e60a2f4b7e97d6a907971a2">protPressureIntake</a>;
+<a name="l00030"></a>00030 <span class="keyword">extern</span> <a class="code" href="class_protection_resistance_isolation.html" title="Класс автомата защиты &quot;Сопротивление изоляции&quot;.">ProtectionResistanceIsolation</a> <a class="code" href="protection__main_8cpp.html#aa57a6d6f13b32314f4d2340426ba34ad">protResistanceIsolation</a>;
+<a name="l00031"></a>00031 
+<a name="l00035"></a>00035 <span class="keywordtype">void</span> <a class="code" href="protection__main_8cpp.html#a89db53325abbc01e5ad68068b251eb03" title="Функция инициализации задачи обработки всех защит">protectionInit</a>();
+<a name="l00036"></a>00036 
+<a name="l00040"></a>00040 <span class="keywordtype">void</span> <a class="code" href="protection__main_8cpp.html#a36a4b6b12c2c0bab6a8d3abe2796ffea" title="Метод добавления события &quot;АПВ запрещён&quot;.">addEventProtectionPrevent</a>();
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042 <span class="preprocessor">#endif // PROTECTION_MAIN_H</span>
+<a name="l00043"></a>00043 <span class="preprocessor"></span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

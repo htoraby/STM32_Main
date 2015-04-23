@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/protection/protection.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/protection/protection.h</div>  </div>
+</div>
+<div class="contents">
+<a href="protection_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef PROTECTION_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define PROTECTION_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &quot;<a class="code" href="user__main_8h.html">user_main.h</a>&quot;</span>
+<a name="l00005"></a>00005 
+<a name="l00009"></a><a class="code" href="class_protection.html">00009</a> <span class="keyword">class </span><a class="code" href="class_protection.html" title="Базовый класс защит КСУ">Protection</a>
+<a name="l00010"></a>00010 {
+<a name="l00011"></a>00011 <span class="keyword">public</span>:
+<a name="l00015"></a><a class="code" href="class_protection.html#aa2a1619340be9725d72299f75bb3769b">00015</a>   <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00016"></a><a class="code" href="class_protection.html#aa2a1619340be9725d72299f75bb3769ba2b17106829c8432620e41db1e4483c17">00016</a>     <a class="code" href="class_protection.html#aa2a1619340be9725d72299f75bb3769ba2b17106829c8432620e41db1e4483c17" title="Защиты выключена">ModeOff</a>         = 0,                    
+<a name="l00017"></a><a class="code" href="class_protection.html#aa2a1619340be9725d72299f75bb3769baf3ac8c627b42333fcb0d600787e5f793">00017</a>     <a class="code" href="class_protection.html#aa2a1619340be9725d72299f75bb3769baf3ac8c627b42333fcb0d600787e5f793" title="Реакция защиты блокировка">ModeBlock</a>,                              
+<a name="l00018"></a><a class="code" href="class_protection.html#aa2a1619340be9725d72299f75bb3769baebff578a0fffb92fa1f9a377dff3f516">00018</a>     <a class="code" href="class_protection.html#aa2a1619340be9725d72299f75bb3769baebff578a0fffb92fa1f9a377dff3f516" title="Реакция защиты АПВ">ModeRestart</a>,                            
+<a name="l00019"></a><a class="code" href="class_protection.html#aa2a1619340be9725d72299f75bb3769baf33ba108363e7fa73e7e90c54435a8a1">00019</a>     <a class="code" href="class_protection.html#aa2a1619340be9725d72299f75bb3769baf33ba108363e7fa73e7e90c54435a8a1" title="Защита включена">ModeOn</a>,                                 
+<a name="l00020"></a>00020   } <a class="code" href="class_protection.html#aa2a1619340be9725d72299f75bb3769b" title="Список действий защиты">ProtMode</a>;
+<a name="l00021"></a>00021 
+<a name="l00025"></a><a class="code" href="class_protection.html#a6d1c7bec3db6077b5c0ff94aff4a0c20">00025</a>   <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00026"></a><a class="code" href="class_protection.html#a6d1c7bec3db6077b5c0ff94aff4a0c20a70e1bd04df1588b258708fea82b6c60e">00026</a>     <a class="code" href="class_protection.html#a6d1c7bec3db6077b5c0ff94aff4a0c20a70e1bd04df1588b258708fea82b6c60e">StateRunning</a>,
+<a name="l00027"></a><a class="code" href="class_protection.html#a6d1c7bec3db6077b5c0ff94aff4a0c20a46e5015f141986f9c7609a227370ca2c">00027</a>     <a class="code" href="class_protection.html#a6d1c7bec3db6077b5c0ff94aff4a0c20a46e5015f141986f9c7609a227370ca2c">StateRun</a>,
+<a name="l00028"></a><a class="code" href="class_protection.html#a6d1c7bec3db6077b5c0ff94aff4a0c20a005574cb392bc4de152e54152f11fbc6">00028</a>     <a class="code" href="class_protection.html#a6d1c7bec3db6077b5c0ff94aff4a0c20a005574cb392bc4de152e54152f11fbc6">StateStopping</a>,
+<a name="l00029"></a><a class="code" href="class_protection.html#a6d1c7bec3db6077b5c0ff94aff4a0c20a6241c6975959b00b0b4d5eccffe133f9">00029</a>     <a class="code" href="class_protection.html#a6d1c7bec3db6077b5c0ff94aff4a0c20a6241c6975959b00b0b4d5eccffe133f9">StateStop</a>,
+<a name="l00030"></a>00030   } <a class="code" href="class_protection.html#a6d1c7bec3db6077b5c0ff94aff4a0c20" title="Список состояний защиты">ProtState</a>;
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032   <a class="code" href="class_protection.html#ab17efa80e7f28a80a324b284a47b83f1">Protection</a>();
+<a name="l00033"></a>00033   <a class="code" href="class_protection.html#aa701f893bc1227920f3b818eaab0e001">~Protection</a>();
+<a name="l00034"></a>00034 
+<a name="l00038"></a>00038   <span class="keywordtype">void</span> <a class="code" href="class_protection.html#a19de6cbe472e5f8b183ebba172058b10" title="Метод обработки защиты">processing</a>();
+<a name="l00039"></a>00039 
+<a name="l00045"></a>00045   <span class="keywordtype">void</span> <a class="code" href="class_protection.html#ae0879b0a6493c58b3d0dafda8d3fd349" title="Метод получения основных уставок защиты. Метод должен вызываться с периодом работы автомата защиты...">getGeneralSetpointProt</a>();
+<a name="l00046"></a>00046 
+<a name="l00050"></a>00050   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_protection.html#abc8af9ef8655953b8264c136d6e39440" title="Метод получения индивидуальных уставок защит">getOtherSetpointProt</a>();
+<a name="l00051"></a>00051 
+<a name="l00056"></a>00056   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_protection.html#a6d6d0e12bebba3c2be89e1f094cca18f" title="Метод получения текущих параметров защиты. Эти данные меняются в процессе работы автомата защиты...">getCurrentParamProt</a>();
+<a name="l00057"></a>00057 
+<a name="l00061"></a>00061   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_protection.html#a978157629e987b187b9512b3289f44fa" title="Метод сохранения текущих параметров защиты">setCurrentParamProt</a>();
+<a name="l00062"></a>00062 
+<a name="l00066"></a>00066   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_protection.html#a170270af45df0a84398c9f08246cdb36" title="Метод сохранения индивидуальных текущих параметров защиты">setOtherParamProt</a>();
+<a name="l00067"></a>00067 
+<a name="l00072"></a>00072   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_protection.html#a45a13f6ee568d4ebcd05ee21e0c6c450" title="Метод проверки условия срабатывания защиты">checkAlarm</a>();
+<a name="l00073"></a>00073 
+<a name="l00078"></a>00078   <span class="keywordtype">bool</span> <a class="code" href="class_protection.html#a3faa0c8952e7e4443a86b39ca8b93f8d" title="Метод проверки превышения текущего значения отсительно уставки">isHigherLimit</a>(<span class="keywordtype">float</span> setpoint);
+<a name="l00079"></a>00079 
+<a name="l00084"></a>00084   <span class="keywordtype">bool</span> <a class="code" href="class_protection.html#a5088309072f2a1c639c267e8659bc618" title="Метод проверки уменьшения текущего значения отсительно уставки">isLowerLimit</a>(<span class="keywordtype">float</span> setpoint);
+<a name="l00085"></a>00085 
+<a name="l00090"></a>00090   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_protection.html#afa4c8563bedd46298f07e928f4d0573e" title="Метод проверки выполнения условия АПВ по значению параметра">checkPrevent</a>();
+<a name="l00091"></a>00091 
+<a name="l00096"></a>00096   <span class="keyword">virtual</span> <span class="keywordtype">float</span> <a class="code" href="class_protection.html#ad3bb444ba03fc72aea7b89eebcd3ce56" title="Пересчёт текущего значения для сравнения с уставкой">calcValue</a>();
+<a name="l00097"></a>00097 
+<a name="l00101"></a>00101   <span class="keywordtype">void</span> <a class="code" href="class_protection.html#ada7f9e2a8915ba0d72b049777ed008b3" title="Метод проверки таймера сброса счётчиков АПВ защиты">checkRestartResetCount</a>();
+<a name="l00102"></a>00102 
+<a name="l00106"></a>00106   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_protection.html#a8b549dca17a0c50af97b26a16e5f77e7" title="Метод добавления события &quot;Сработала защита&quot; в журнал">addEventReactionProt</a>();
+<a name="l00107"></a>00107 
+<a name="l00112"></a>00112   <span class="keywordtype">bool</span> <a class="code" href="class_protection.html#aee5b968e907471eca879806b91947b20" title="isReactionOff">isModeOff</a>();
+<a name="l00113"></a>00113 
+<a name="l00118"></a>00118   <span class="keywordtype">bool</span> <a class="code" href="class_protection.html#acc8b9bc1b52a08fd7464e7f078f981c5" title="isReactionBlock">isModeBlock</a>();
+<a name="l00119"></a>00119 
+<a name="l00124"></a>00124   <span class="keywordtype">bool</span> <a class="code" href="class_protection.html#ac6fbe5ef28c964941e76d7a2e71b9893" title="isReactionRestart">isModeRestart</a>();
+<a name="l00125"></a>00125 
+<a name="l00130"></a>00130   <span class="keywordtype">bool</span> <a class="code" href="class_protection.html#aa65d7e8e0ba685fb0a4ad44ee5438c0e" title="isReactionOn">isModeOn</a>();
+<a name="l00131"></a>00131 
+<a name="l00135"></a>00135   <span class="keywordtype">void</span> <a class="code" href="class_protection.html#abb7eec50276d509d427fb97e5b99a81e" title="Функция перевода автомата защиты в состояние стоп">setStateStop</a>();
+<a name="l00136"></a>00136 
+<a name="l00140"></a>00140   <span class="keywordtype">void</span> <a class="code" href="class_protection.html#a61a8263539b7280d75eb533c04719f47" title="Функция перевода автомата защиты в состояние работа">setStateRun</a>();
+<a name="l00141"></a>00141 
+<a name="l00145"></a>00145   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_protection.html#a47c05cd15f077210eaca36a1e2753eda" title="Универсальный автомат работы защиты">automatProtection</a>();
+<a name="l00146"></a>00146 
+<a name="l00150"></a>00150   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_protection.html#a17985d570059c9bbcbd463fc70a3f0c5" title="Состояние защиты задержка активации">processingStateRunning</a>();
+<a name="l00151"></a>00151 
+<a name="l00155"></a>00155   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_protection.html#aca4544bf0cffe381a492c3f1e669973d" title="Состояние защита контроля параметра и задержки срабатывания">processingStateRun</a>();
+<a name="l00156"></a>00156 
+<a name="l00160"></a>00160   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_protection.html#a25c619db7a87b5a6412b1864233cc5ba" title="Состояние защиты ожидание останова">proccessingStateStopping</a>();
+<a name="l00161"></a>00161 
+<a name="l00165"></a>00165   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_protection.html#a00a139e41fa563a1cf2fedf310cb6c56" title="Состояние защиты останов">proccessingStateStop</a>();
+<a name="l00166"></a>00166 
+<a name="l00171"></a>00171   <span class="keywordtype">float</span> <a class="code" href="class_protection.html#a6918d63c63027bf34fdd54563a82882d" title="Функция вычисления времени от начала события">calcTimeFromStart</a>();
+<a name="l00172"></a>00172 
+<a name="l00177"></a>00177   <span class="keywordtype">float</span> <a class="code" href="class_protection.html#a6b156a7db22f937c089b8cc6c45e5dab" title="Функция вычисления времени оставшегося до окончания события">calcTimeUntilEnd</a>();
+<a name="l00178"></a>00178 
+<a name="l00183"></a>00183   <span class="keywordtype">bool</span> <a class="code" href="class_protection.html#a3b16937db16baa2a64b9020359a8d1ad" title="Функция проверки времени сброса счётчика АПВ">calcRestartResetCount</a>();
+<a name="l00184"></a>00184 
+<a name="l00189"></a><a class="code" href="class_protection.html#a309deb1eee0a836ebd0114baf5948887">00189</a>   <span class="keywordtype">bool</span> <a class="code" href="class_protection.html#a309deb1eee0a836ebd0114baf5948887" title="isDelay">isDelay</a>() {
+<a name="l00190"></a>00190     <span class="keywordflow">return</span> <a class="code" href="class_protection.html#a61a4d19ee7b94978596b6b42be5d0968" title="Флаг задержки срабатывания">delay_</a>;
+<a name="l00191"></a>00191   }
+<a name="l00192"></a>00192 
+<a name="l00197"></a><a class="code" href="class_protection.html#a8ad11e8d98eef1386f5325bbc1db8edc">00197</a>   <span class="keywordtype">bool</span> <a class="code" href="class_protection.html#a8ad11e8d98eef1386f5325bbc1db8edc" title="isPrevent">isPrevent</a>() {
+<a name="l00198"></a>00198     <span class="keywordflow">return</span> <a class="code" href="class_protection.html#ac1ac78cc75e151998ea8a366fcee2d72" title="Флаг запрещающего параметра">prevent_</a>;
+<a name="l00199"></a>00199   }
+<a name="l00200"></a>00200 
+<a name="l00205"></a><a class="code" href="class_protection.html#a8869d6c016349985d3400f7f56c7015a">00205</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bf" title="Id события">EventId</a> <a class="code" href="class_protection.html#a8869d6c016349985d3400f7f56c7015a" title="getApvDisabledEventId">getApvDisabledEventId</a>() {
+<a name="l00206"></a>00206     <span class="keywordflow">return</span> <a class="code" href="class_protection.html#a7dd90b182f11cb40b0a101504dbb3a82">apvDisabledEventId_</a>;
+<a name="l00207"></a>00207   }
+<a name="l00208"></a>00208 
+<a name="l00209"></a>00209 <span class="keyword">protected</span>:
+<a name="l00210"></a>00210 
+<a name="l00211"></a>00211   <span class="keywordtype">void</span> <a class="code" href="class_protection.html#acb9a8ebc85bc57ddd82d24cbbc2d0bf1">incRestartCount</a>();
+<a name="l00212"></a>00212 
+<a name="l00214"></a><a class="code" href="class_protection.html#a19268efce822959480829d59d31826ca">00214</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_protection.html#a19268efce822959480829d59d31826ca" title="id параметров защиты">idMode_</a>;                   
+<a name="l00215"></a><a class="code" href="class_protection.html#a3d008718d0dd7bc1b4db9b9e244e2383">00215</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_protection.html#a3d008718d0dd7bc1b4db9b9e244e2383" title="id Флаг запрещающего параметра">idPrevent_</a>;                
+<a name="l00216"></a><a class="code" href="class_protection.html#a8a86748e2445f254259983e97d7c4dea">00216</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_protection.html#a8a86748e2445f254259983e97d7c4dea" title="id задержка активации защиты">idActivDelay_</a>;             
+<a name="l00217"></a><a class="code" href="class_protection.html#ac28447b4c01fcee3c6de01b6e1f99da2">00217</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_protection.html#ac28447b4c01fcee3c6de01b6e1f99da2" title="id задержка срабатывания защиты">idTripDelay_</a>;              
+<a name="l00218"></a><a class="code" href="class_protection.html#a5ae8c6b40c41c02bcda4764dc4882f90">00218</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_protection.html#a5ae8c6b40c41c02bcda4764dc4882f90" title="id задержка АПВ защиты">idRestartDelay_</a>;           
+<a name="l00219"></a><a class="code" href="class_protection.html#a49c2efad198e74ccd48543e685881266">00219</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_protection.html#a49c2efad198e74ccd48543e685881266" title="id количество АПВ">idRestartLimit_</a>;           
+<a name="l00220"></a><a class="code" href="class_protection.html#a607942ac6f46f09220a6841ccf349f56">00220</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_protection.html#a607942ac6f46f09220a6841ccf349f56" title="id Время сброса количества АПВ">idRestartResetTime_</a>;       
+<a name="l00221"></a><a class="code" href="class_protection.html#ab49e9871a127757d87f94d76864c49b1">00221</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_protection.html#ab49e9871a127757d87f94d76864c49b1" title="id граница срабатывания защиты">idTripSetpoint_</a>;           
+<a name="l00222"></a><a class="code" href="class_protection.html#aa9e310942cce88446b1f47aadf8f3723">00222</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_protection.html#aa9e310942cce88446b1f47aadf8f3723" title="id граница АПВ">idRestartSetpoint_</a>;        
+<a name="l00223"></a><a class="code" href="class_protection.html#ace700a9f47d7152d3dd255e3d48a2f5b">00223</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_protection.html#ace700a9f47d7152d3dd255e3d48a2f5b" title="id Параметр 1">idParam_</a>;                  
+<a name="l00224"></a><a class="code" href="class_protection.html#abe83013e52b98b5c65212dbe589d68c6">00224</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_protection.html#abe83013e52b98b5c65212dbe589d68c6" title="id Флаг что защита в состоянии АПВ">idRestartFlag_</a>;            
+<a name="l00225"></a><a class="code" href="class_protection.html#a7dcd955bb34edc02108837b4462de534">00225</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_protection.html#a7dcd955bb34edc02108837b4462de534" title="id Флаг что защита в состоянии БЛОК">idBlockFlag_</a>;              
+<a name="l00226"></a><a class="code" href="class_protection.html#a05de80f07ef003b57a47354a7e5c93d3">00226</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_protection.html#a05de80f07ef003b57a47354a7e5c93d3" title="id Состояние автомата">idState_</a>;                  
+<a name="l00227"></a><a class="code" href="class_protection.html#a534abfe01f4740afb17d49b7c70e7b54">00227</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_protection.html#a534abfe01f4740afb17d49b7c70e7b54" title="id Таймера">idTimer_</a>;                  
+<a name="l00228"></a><a class="code" href="class_protection.html#a864f0082ae4f278efa87a83fe3a064c4">00228</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_protection.html#a864f0082ae4f278efa87a83fe3a064c4" title="id Счётчика АПВ">idRestartCount_</a>;           
+<a name="l00229"></a><a class="code" href="class_protection.html#aa2dc723f7f83d7868270a05b15cdfa6a">00229</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_protection.html#aa2dc723f7f83d7868270a05b15cdfa6a" title="id Время первого срабатывания АПВ">idRestartFirstTime_</a>;       
+<a name="l00230"></a>00230 
+<a name="l00232"></a><a class="code" href="class_protection.html#a8a9830d3d3a5eb05c6dc39afccc499bd">00232</a>   <span class="keywordtype">float</span> <a class="code" href="class_protection.html#a8a9830d3d3a5eb05c6dc39afccc499bd" title="Локальные переменные для обработки">mode_</a>;                              
+<a name="l00233"></a><a class="code" href="class_protection.html#acaee7821e4ca938235b7fc52bb0f9772">00233</a>   <span class="keywordtype">float</span> <a class="code" href="class_protection.html#acaee7821e4ca938235b7fc52bb0f9772" title="Уставка: задержка активации защиты">activDelay_</a>;                        
+<a name="l00234"></a><a class="code" href="class_protection.html#ad9b4a7b6ef4863603c7fc16540fb3f2a">00234</a>   <span class="keywordtype">float</span> <a class="code" href="class_protection.html#ad9b4a7b6ef4863603c7fc16540fb3f2a" title="Уставка: задержка срабатывания защиты">tripDelay_</a>;                         
+<a name="l00235"></a><a class="code" href="class_protection.html#aa242953e6843648a53baa1bf33f42ebe">00235</a>   <span class="keywordtype">float</span> <a class="code" href="class_protection.html#aa242953e6843648a53baa1bf33f42ebe" title="Уставка: задержка АПВ защиты">restartDelay_</a>;                      
+<a name="l00236"></a><a class="code" href="class_protection.html#a90e3751c796ee5fa31f20fc95aa91b5b">00236</a>   <span class="keywordtype">float</span> <a class="code" href="class_protection.html#a90e3751c796ee5fa31f20fc95aa91b5b" title="Уставка: количество АПВ">restartLimit_</a>;                      
+<a name="l00237"></a><a class="code" href="class_protection.html#a9aa1456efc8eb1dc76a27f591cc9948a">00237</a>   <span class="keywordtype">float</span> <a class="code" href="class_protection.html#a9aa1456efc8eb1dc76a27f591cc9948a" title="Уставка: Время сброса количества АПВ">restartResetTime_</a>;                  
+<a name="l00238"></a><a class="code" href="class_protection.html#a4364e0200bcc4a0c10b25a32d86642f7">00238</a>   <span class="keywordtype">float</span> <a class="code" href="class_protection.html#a4364e0200bcc4a0c10b25a32d86642f7" title="Уставка: граница срабатывания защиты">tripSetpoint_</a>;                      
+<a name="l00239"></a><a class="code" href="class_protection.html#a1ae05a6f8fac838367d94f5dc652ad90">00239</a>   <span class="keywordtype">float</span> <a class="code" href="class_protection.html#a1ae05a6f8fac838367d94f5dc652ad90" title="Уставка: граница АПВ">restartSetpoint_</a>;                   
+<a name="l00240"></a><a class="code" href="class_protection.html#a6b3cf8e122360f6db67831f0f3f627dc">00240</a>   <span class="keywordtype">float</span> <a class="code" href="class_protection.html#a6b3cf8e122360f6db67831f0f3f627dc" title="Уставка: Параметр 1.">timerDifStartFlag_</a>;                 
+<a name="l00241"></a><a class="code" href="class_protection.html#a6f01793ff384a04208a8451b4faf9cd2">00241</a>   <span class="keywordtype">float</span> <a class="code" href="class_protection.html#a6f01793ff384a04208a8451b4faf9cd2" title="Уставка: Флаг разрешения работы при аварии">workWithAlarmFlag_</a>;                 
+<a name="l00242"></a><a class="code" href="class_protection.html#ab9d2c518c0815a6147355b599c748fa0">00242</a>   <span class="keywordtype">float</span> <a class="code" href="class_protection.html#ab9d2c518c0815a6147355b599c748fa0" title="Уставка: Флаг критерий АПВ">resetRestartDelayFlag_</a>;             
+<a name="l00243"></a><a class="code" href="class_protection.html#a6016cc506c8bf05c33cd671544edd670">00243</a>   <span class="keywordtype">int</span> <a class="code" href="class_protection.html#a6016cc506c8bf05c33cd671544edd670" title="Состояние автомата защиты">state_</a>;                               
+<a name="l00244"></a><a class="code" href="class_protection.html#a3d6e2bdab22bfb8d171e195ea1c75a1a">00244</a>   <span class="keywordtype">float</span> <a class="code" href="class_protection.html#a3d6e2bdab22bfb8d171e195ea1c75a1a" title="Текущее значение контролируемого параметра">valueParameter_</a>;                    
+<a name="l00245"></a><a class="code" href="class_protection.html#aa5d3c5948d3ae786a170c76600b25abb">00245</a>   uint32_t <a class="code" href="class_protection.html#aa5d3c5948d3ae786a170c76600b25abb" title="Текущее значение таймера">timer_</a>;                          
+<a name="l00246"></a><a class="code" href="class_protection.html#a1597cd2755248ab27fa1bcc5c54d8c4f">00246</a>   <span class="keywordtype">float</span> <a class="code" href="class_protection.html#a1597cd2755248ab27fa1bcc5c54d8c4f" title="Текущее количество АПВ по защите">restartCount_</a>;                      
+<a name="l00247"></a><a class="code" href="class_protection.html#a5d5248506ff553766f5be95c1b36c18f">00247</a>   uint32_t <a class="code" href="class_protection.html#a5d5248506ff553766f5be95c1b36c18f" title="Время первого срабатывания АПВ">restartFirstTime_</a>;               
+<a name="l00248"></a><a class="code" href="class_protection.html#a9808a38ca779317bfd586c6882eebc31">00248</a>   <span class="keywordtype">bool</span> <a class="code" href="class_protection.html#a9808a38ca779317bfd586c6882eebc31" title="Флаг выполнения условия срабатывания защиты">alarm_</a>;                              
+<a name="l00249"></a><a class="code" href="class_protection.html#ac1ac78cc75e151998ea8a366fcee2d72">00249</a>   <span class="keywordtype">bool</span> <a class="code" href="class_protection.html#ac1ac78cc75e151998ea8a366fcee2d72" title="Флаг запрещающего параметра">prevent_</a>;                            
+<a name="l00250"></a><a class="code" href="class_protection.html#a6aa3e069500a5254645a1ab15f862f14">00250</a>   <span class="keywordtype">float</span> <a class="code" href="class_protection.html#a6aa3e069500a5254645a1ab15f862f14" title="Флаг что защита в блокировке">block_</a>;                             
+<a name="l00251"></a><a class="code" href="class_protection.html#ae84e5a12a3b8231214a9f8bef2aad8ff">00251</a>   <span class="keywordtype">float</span> <a class="code" href="class_protection.html#ae84e5a12a3b8231214a9f8bef2aad8ff" title="Флаг что защита в состоянии АПВ">restart_</a>;                           
+<a name="l00252"></a><a class="code" href="class_protection.html#a4738c6bcd646446d1e67433faabe493c">00252</a>   <span class="keywordtype">bool</span> <a class="code" href="class_protection.html#a4738c6bcd646446d1e67433faabe493c" title="Флаг первой попытки запуска">attempt_</a>;                            
+<a name="l00253"></a><a class="code" href="class_protection.html#a61a4d19ee7b94978596b6b42be5d0968">00253</a>   <span class="keywordtype">bool</span> <a class="code" href="class_protection.html#a61a4d19ee7b94978596b6b42be5d0968" title="Флаг задержки срабатывания">delay_</a>;                              
+<a name="l00254"></a>00254 
+<a name="l00255"></a><a class="code" href="class_protection.html#af51dc6107f18459e606c7a10dbed2775">00255</a>   <span class="keywordtype">float</span> <a class="code" href="class_protection.html#af51dc6107f18459e606c7a10dbed2775" title="Текущее количество АПВ без учёта сброса для вычисления прогрессивной задержки">progressiveRestartCount_</a>;           
+<a name="l00256"></a>00256 
+<a name="l00257"></a><a class="code" href="class_protection.html#af300db56e96fca2b72d5c2fb3a1e373d">00257</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372" title="Список причин пуска">LastReasonRun</a> <a class="code" href="class_protection.html#af300db56e96fca2b72d5c2fb3a1e373d" title="Причина запуска">lastReasonRun_</a>;             
+<a name="l00258"></a><a class="code" href="class_protection.html#a438a0007201523d868664947d82cf963">00258</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ff" title="Список причин останова">LastReasonStop</a> <a class="code" href="class_protection.html#a438a0007201523d868664947d82cf963" title="Причина останова">lastReasonStop_</a>;           
+<a name="l00259"></a>00259 
+<a name="l00261"></a><a class="code" href="class_protection.html#ad9f00b97300ac27e31ff1aa5a46b099a">00261</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bf" title="Id события">EventId</a> <a class="code" href="class_protection.html#ad9f00b97300ac27e31ff1aa5a46b099a" title="Индексы событий для записи в журнал">protReactEventId_</a>;
+<a name="l00262"></a><a class="code" href="class_protection.html#ae72394ac48c703be019c6defa3938e6e">00262</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bf" title="Id события">EventId</a> <a class="code" href="class_protection.html#ae72394ac48c703be019c6defa3938e6e">apvEventId_</a>;
+<a name="l00263"></a><a class="code" href="class_protection.html#a7dd90b182f11cb40b0a101504dbb3a82">00263</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bf" title="Id события">EventId</a> <a class="code" href="class_protection.html#a7dd90b182f11cb40b0a101504dbb3a82">apvDisabledEventId_</a>;
+<a name="l00264"></a><a class="code" href="class_protection.html#ac9a9ddcf3754e4341ac9ae211b8eaa51">00264</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bf" title="Id события">EventId</a> <a class="code" href="class_protection.html#ac9a9ddcf3754e4341ac9ae211b8eaa51">protBlockedEventId_</a>;
+<a name="l00265"></a>00265 
+<a name="l00266"></a>00266 };
+<a name="l00267"></a>00267 
+<a name="l00268"></a>00268 <span class="preprocessor">#endif // PROTECTION_H</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

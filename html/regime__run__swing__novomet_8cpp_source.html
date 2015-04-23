@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/regime/run/regime_run_swing_novomet.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/regime/run/regime_run_swing_novomet.cpp</div>  </div>
+</div>
+<div class="contents">
+<a href="regime__run__swing__novomet_8cpp.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="regime__run__swing__novomet_8h.html">regime_run_swing_novomet.h</a>&quot;</span>
+<a name="l00002"></a>00002 
+<a name="l00003"></a><a class="code" href="class_regime_run_swing_novomet.html#a941cc0b5d89392b25922e6e8c459099e">00003</a> <a class="code" href="class_regime_run_swing_novomet.html#a941cc0b5d89392b25922e6e8c459099e">RegimeRunSwingNovomet::RegimeRunSwingNovomet</a>()
+<a name="l00004"></a>00004 {
+<a name="l00005"></a>00005 
+<a name="l00006"></a>00006 }
+<a name="l00007"></a>00007 
+<a name="l00008"></a><a class="code" href="class_regime_run_swing_novomet.html#ad2a5222057e54e70362793beb7ab4eeb">00008</a> <a class="code" href="class_regime_run_swing_novomet.html#ad2a5222057e54e70362793beb7ab4eeb">RegimeRunSwingNovomet::~RegimeRunSwingNovomet</a>()
+<a name="l00009"></a>00009 {
+<a name="l00010"></a>00010 
+<a name="l00011"></a>00011 }
+<a name="l00012"></a>00012 
+<a name="l00013"></a><a class="code" href="class_regime_run_swing_novomet.html#a95e03b00485c361bb99ed7ec9b27f4d4">00013</a> <span class="keywordtype">void</span> <a class="code" href="class_regime_run_swing_novomet.html#a95e03b00485c361bb99ed7ec9b27f4d4" title="processingStateRunning">RegimeRunSwingNovomet::processingStateRunning</a>()
+<a name="l00014"></a>00014 {
+<a name="l00015"></a>00015 <span class="comment">//  vsd-&gt;onRegimeSwing();</span>
+<a name="l00016"></a>00016   <a class="code" href="user__main_8cpp.html#ab926427831a5d518f567ee30b2f08804">ksu</a>.<a class="code" href="class_ccs.html#acec87b848452b5d4ddfa8e235526b767" title="Метод запуска двигателя">start</a>(<a class="code" href="class_regime_run.html#a422a2ad5abd5d316b168a4f16e47c351" title="Причина последней попытки запуска">runReason_</a>);
+<a name="l00017"></a>00017   <a class="code" href="class_regime.html#a6f7e192aa69230d89925ab287af5a929" title="Состояние автомата">state_</a> = <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335ccaa5b79526ad0898a5e7d06c0177d01c0f">WorkState</a>;
+<a name="l00018"></a>00018 }
+<a name="l00019"></a>00019 
+<a name="l00020"></a><a class="code" href="class_regime_run_swing_novomet.html#a6b593e44cff3a206b997a4db1cc9781f">00020</a> <span class="keywordtype">void</span> <a class="code" href="class_regime_run_swing_novomet.html#a6b593e44cff3a206b997a4db1cc9781f" title="processingStateWork">RegimeRunSwingNovomet::processingStateWork</a>()
+<a name="l00021"></a>00021 {
+<a name="l00022"></a>00022   <span class="keywordflow">if</span> ((<a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa060bc7572d63190fbde842c308fae7cf" title="Тип текущего алгоритма управления (регулятора)">VSD_CURRENT_REGULATOR</a> &gt; 2)) ||
+<a name="l00023"></a>00023      (<a class="code" href="user__main_8cpp.html#a4e22fcc92c38b9ccfa461659618478db">vsd</a>-&gt;<a class="code" href="class_vsd.html#aa1459f918f406d263da3d2baeddac8be" title="Метод получения текущего значения частоты">getCurrentFreq</a>() == <a class="code" href="user__main_8cpp.html#a4e22fcc92c38b9ccfa461659618478db">vsd</a>-&gt;<a class="code" href="class_vsd.html#a6cf40f62edbbd2dde5b18cfa294583df" title="Метод получения уставки частоты">getSetpointFreq</a>())){        <span class="comment">// Если режим отработал</span>
+<a name="l00024"></a>00024     <span class="keywordflow">if</span> (<a class="code" href="class_regime.html#af3c209a68d065d51839d802182d1c814" title="Действие режима">action_</a> == <a class="code" href="class_regime.html#a09c01f9e6c25f501040ffd37843c4e3da5d01a74bd1c042228291e4c0fa28842f" title="Однократный">SingleAction</a>) {                              <span class="comment">// Если режим отрабатывает один раз</span>
+<a name="l00025"></a>00025       <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#aeb8e4af971718a7e37bb3d72d159d821" title="Метод записи параметра по ID с определением необходимого массива">set</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfabd626d89ed0dc7fda8d57a6eaffc3537" title="Действие режима пуска &quot;Раскачка&quot;.">CCS_RGM_RUN_SWING_MODE</a>, <a class="code" href="class_regime.html#a09c01f9e6c25f501040ffd37843c4e3dad02c506b6c1db9186b6d1bd38b2bade4" title="Режим отключен">OffAction</a>);         <span class="comment">// Выключаем режим</span>
+<a name="l00026"></a>00026 <span class="comment">//      vsd-&gt;offRegimeSwing();                                    // Выключаем режим в ЧРП</span>
+<a name="l00027"></a>00027       <a class="code" href="log__main_8cpp.html#ac59bf01556b65dd1d2dbfcf7931b0759">logEvent</a>.<a class="code" href="class_log_event.html#a59bde4221222c33cf7c19450c30323ed" title="Метод добавления нового события в архив">add</a>(<a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a8d165f4ceee23c67fbf3d34d75effa92" title="ИзмПарам">SetpointCode</a>, <a class="code" href="log_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa18db7ade44c35f2239d1b3fe88b05532">AutoType</a>, <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa2d53a93599357757f9fc2fe7e1eaf678" title="&quot;Режим пуска раскачкой отключен&quot;">RegimeRunSwingOffId</a>); <span class="comment">// Записываем данные в лог</span>
+<a name="l00028"></a>00028     }
+<a name="l00029"></a>00029     <a class="code" href="class_regime.html#a6f7e192aa69230d89925ab287af5a929" title="Состояние автомата">state_</a> = <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cca635417b3935391077dab3ba16c3da407">IdleState</a>;
+<a name="l00030"></a>00030   }
+<a name="l00031"></a>00031 }
+<a name="l00032"></a>00032 
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

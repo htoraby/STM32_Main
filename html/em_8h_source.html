@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/device/em/em.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/device/em/em.h</div>  </div>
+</div>
+<div class="contents">
+<a href="em_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 ﻿#ifndef EM_H_
+<a name="l00002"></a>00002 <span class="preprocessor">#define EM_H_</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &quot;<a class="code" href="device_8h.html">device.h</a>&quot;</span>
+<a name="l00005"></a>00005 
+<a name="l00007"></a><a class="code" href="em_8h.html#a914cd6c347d2498a198242cf3105741c">00007</a> <span class="preprocessor">#define EM_ANSWER_TIMEOUT                 500</span>
+<a name="l00008"></a>00008 <span class="preprocessor"></span>
+<a name="l00009"></a><a class="code" href="em_8h.html#a8e95a009aa9bb73594f63bce42343bd9">00009</a> <span class="preprocessor">#define EM_TIME_END_PACKAGE               5</span>
+<a name="l00010"></a>00010 <span class="preprocessor"></span>
+<a name="l00011"></a><a class="code" href="em_8h.html#aea6e18f657734559337fd4311eb3a7fb">00011</a> <span class="preprocessor">#define EM_MIN_LENGHT_PACKAGE             5</span>
+<a name="l00012"></a>00012 <span class="preprocessor"></span>
+<a name="l00013"></a><a class="code" href="em_8h.html#ace780c987801b6753b76f1372c0d4b1f">00013</a> <span class="preprocessor">#define EM_MAX_DATA_SIZE                  256</span>
+<a name="l00014"></a>00014 <span class="preprocessor"></span>
+<a name="l00021"></a><a class="code" href="class_em.html">00021</a> <span class="keyword">class </span><a class="code" href="class_em.html" title="Базовый класс счётчика электроэнергии Наследник класса Device использующий его структуру и методы хра...">Em</a>: <span class="keyword">public</span> <a class="code" href="class_device.html" title="Базовый класс для всех устройств Класс содержит банк параметров устройства во внутреннем представлени...">Device</a>
+<a name="l00022"></a>00022 {
+<a name="l00023"></a>00023 <span class="keyword">public</span>:
+<a name="l00024"></a>00024   <a class="code" href="class_em.html#abd960fbf8f3ce07ecbcf21706ee72925">Em</a>();
+<a name="l00025"></a>00025   <span class="keyword">virtual</span> <a class="code" href="class_em.html#a5ad901135d1da44e2e09dcf935659e74">~Em</a>();
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027   <span class="keywordtype">void</span> <a class="code" href="class_em.html#ab1fb2f23579c79d1852b38659e740f58" title="Инициализация массива параметров">initParameters</a>();
+<a name="l00028"></a>00028 
+<a name="l00035"></a>00035   <span class="keywordtype">void</span> <a class="code" href="class_em.html#a89f5a0bc6a728bd38be701e93a719454" title="Открытие порта Uart.">openPort</a>(uint32_t baudRate, uint32_t parity = UART_PARITY_NONE, uint32_t stopBits = UART_STOPBITS_1);
+<a name="l00036"></a>00036 
+<a name="l00040"></a>00040   <span class="keywordtype">void</span> <a class="code" href="class_em.html#a52fbe1f6f2c4c42524b40c4ecb7ffb3c" title="Закрытие порта Uart.">closePort</a>();
+<a name="l00041"></a>00041 
+<a name="l00048"></a>00048   <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="class_em.html#a4e60f4420e2539fc603eacb1ee0644f7" title="Отправка данных в порт Uart.">sendUart</a>(uint8_t *data, <span class="keywordtype">int</span> count);
+<a name="l00049"></a>00049 
+<a name="l00055"></a>00055   <span class="keywordtype">int</span> <a class="code" href="class_em.html#a57f38eec84fa76d079dba7402ae87ac0" title="Приём данных из порта Uart.">receiveUart</a>(uint8_t *data);
+<a name="l00056"></a>00056 
+<a name="l00061"></a>00061   <span class="keywordtype">int</span> <a class="code" href="class_em.html#ad2a9c0f89251d77614dec13f1272a891" title="Метод задания коэффициентов трансформации">setCoefficientTransformation</a>();
+<a name="l00062"></a>00062 
+<a name="l00067"></a>00067   <span class="keywordtype">int</span> <a class="code" href="class_em.html#a1bdc67e6328a54ca1cf7b9df632d0126" title="Метод задания коэффициента трансформации тока">setCoefficientTransforamationCurrent</a>();
+<a name="l00068"></a>00068 
+<a name="l00073"></a>00073   <span class="keywordtype">int</span> <a class="code" href="class_em.html#ad2031c7ff869f23399b1f70e01d1b23e" title="Метод задания коэффициента трансформации напряжения">setCoefficientTransforamationVoltage</a>();
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075 <span class="keyword">protected</span>:
+<a name="l00076"></a><a class="code" href="class_em.html#a8f228210615f96500468e9e1f7d95ab7">00076</a>   uint8_t <a class="code" href="class_em.html#a8f228210615f96500468e9e1f7d95ab7">txBuffer_</a>[<a class="code" href="em_8h.html#ace780c987801b6753b76f1372c0d4b1f" title="Длина пакета">EM_MAX_DATA_SIZE</a>];
+<a name="l00077"></a><a class="code" href="class_em.html#a633909a2eb7815c370fdfa696b68d055">00077</a>   uint8_t <a class="code" href="class_em.html#a633909a2eb7815c370fdfa696b68d055">rxBuffer_</a>[<a class="code" href="em_8h.html#ace780c987801b6753b76f1372c0d4b1f" title="Длина пакета">EM_MAX_DATA_SIZE</a>];
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079 <span class="keyword">private</span>:
+<a name="l00081"></a><a class="code" href="class_em.html#a672a3e187d75c0acc0d2b7c990a2af55">00081</a>   <a class="code" href="structparameter.html" title="Структура для обработки и хранения параметров в СУ">parameter</a> <a class="code" href="class_em.html#a672a3e187d75c0acc0d2b7c990a2af55" title="Массив параметров устройства">parametersArray_</a>[<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfacc2d162c2417ffce2ee7bf2715bb1c98">EM_END</a> - <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa5e748a171946cdcd13706f73cb3b2491" title="Первый параметр группы счётчиков электроэнергии">EM_BEGIN</a>];
+<a name="l00082"></a>00082 
+<a name="l00084"></a><a class="code" href="class_em.html#a2487a221975a6a5da9c85af889561bee">00084</a>   osSemaphoreId <a class="code" href="class_em.html#a2487a221975a6a5da9c85af889561bee" title="Семафор по приёму байта данных по UART.">semaphoreAnswer_</a>;
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086 };
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088 <span class="preprocessor">#endif </span><span class="comment">/* EM_H_ */</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

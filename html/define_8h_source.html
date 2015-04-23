@@ -1,0 +1,650 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/define.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/define.h</div>  </div>
+</div>
+<div class="contents">
+<a href="define_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 ﻿<span class="comment">/*</span>
+<a name="l00002"></a>00002 <span class="comment"> * define.h</span>
+<a name="l00003"></a>00003 <span class="comment"> *</span>
+<a name="l00004"></a>00004 <span class="comment"> *  Created on: 14.06.2012</span>
+<a name="l00005"></a>00005 <span class="comment"> *      Author: trofimenko</span>
+<a name="l00006"></a>00006 <span class="comment"> */</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="preprocessor">#ifndef DEFINE_H_</span>
+<a name="l00009"></a>00009 <span class="preprocessor"></span><span class="preprocessor">#define DEFINE_H_</span>
+<a name="l00010"></a>00010 <span class="preprocessor"></span>
+<a name="l00015"></a><a class="code" href="unionun_type_data.html">00015</a> <span class="keyword">union </span><a class="code" href="unionun_type_data.html" title="The unDataType union Объединение для преобразования типов данных">unTypeData</a>
+<a name="l00016"></a>00016 {
+<a name="l00017"></a><a class="code" href="unionun_type_data.html#abc7c38b828708072b1b844013fc4f575">00017</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>      <a class="code" href="unionun_type_data.html#abc7c38b828708072b1b844013fc4f575">char_t</a>[4];
+<a name="l00018"></a><a class="code" href="unionun_type_data.html#a378853d24ff5834ef9e36c758cfa49ea">00018</a>   <span class="keywordtype">signed</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span>   <a class="code" href="unionun_type_data.html#a378853d24ff5834ef9e36c758cfa49ea">int16_t</a>[2];
+<a name="l00019"></a><a class="code" href="unionun_type_data.html#ace39bbba1c3c9b5bc9e5e0f47bd2adaf">00019</a>   <span class="keywordtype">signed</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>    <a class="code" href="unionun_type_data.html#ace39bbba1c3c9b5bc9e5e0f47bd2adaf">int32_t</a>;
+<a name="l00020"></a><a class="code" href="unionun_type_data.html#aad217718a63ca9f53383ea4e6a1d64ed">00020</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> <a class="code" href="unionun_type_data.html#aad217718a63ca9f53383ea4e6a1d64ed">uint16_t</a>[2];
+<a name="l00021"></a><a class="code" href="unionun_type_data.html#ac43a791eb045f045e9dca262afc3ce98">00021</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>  <a class="code" href="unionun_type_data.html#ac43a791eb045f045e9dca262afc3ce98">uint32_t</a>;
+<a name="l00022"></a><a class="code" href="unionun_type_data.html#ae39d6de2b81455b244e70cab61ab0cf9">00022</a>   <span class="keywordtype">float</span>              <a class="code" href="unionun_type_data.html#ae39d6de2b81455b244e70cab61ab0cf9">float_t</a>;
+<a name="l00023"></a>00023 };
+<a name="l00024"></a>00024 
+<a name="l00029"></a><a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ad">00029</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ad" title="The enTypeData enum Перечисление типов данных">enTypeData</a> {
+<a name="l00030"></a><a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42adabebb7ff918399785b97e421d22661f1a">00030</a>   <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42adabebb7ff918399785b97e421d22661f1a">TYPE_DATA_ERROR</a>  = 0,
+<a name="l00031"></a><a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42adaada1531f29cde78a34d7b357aff54dc8">00031</a>   <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42adaada1531f29cde78a34d7b357aff54dc8">TYPE_DATA_CHAR</a>   = 1,
+<a name="l00032"></a><a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada808c7cf8151eeae19a829cee83918742">00032</a>   <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada808c7cf8151eeae19a829cee83918742">TYPE_DATA_INT16</a>  = 2,
+<a name="l00033"></a><a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada7b25a9f95142f61a41004c0fba9a113d">00033</a>   <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada7b25a9f95142f61a41004c0fba9a113d">TYPE_DATA_INT32</a>  = 3,
+<a name="l00034"></a><a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada3cd32afbb91a273532aa9106ac133ac3">00034</a>   <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada3cd32afbb91a273532aa9106ac133ac3">TYPE_DATA_UINT16</a> = 4,
+<a name="l00035"></a><a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42adac73d4e8aa8c8d4d64e3b0f8222f8ad8d">00035</a>   <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42adac73d4e8aa8c8d4d64e3b0f8222f8ad8d">TYPE_DATA_UINT32</a> = 5,
+<a name="l00036"></a><a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada05f2e0d1222c1ecb7423e6c2a323da73">00036</a>   <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada05f2e0d1222c1ecb7423e6c2a323da73">TYPE_DATA_FLOAT</a>  = 6,
+<a name="l00037"></a><a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada66fe0105933239b2a70f5a1ce2f5faee">00037</a>   <a class="code" href="define_8h.html#a076e3ace189e5780047077ebcebc42ada66fe0105933239b2a70f5a1ce2f5faee">TYPE_DATA_LAST</a>
+<a name="l00038"></a>00038 };
+<a name="l00039"></a>00039 
+<a name="l00043"></a><a class="code" href="define_8h.html#aa9c444ff5cd1ccbd35ee6414f01af90f">00043</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#aa9c444ff5cd1ccbd35ee6414f01af90f" title="The enPeriodExchange enum.">enPeriodExchange</a>
+<a name="l00044"></a>00044 {
+<a name="l00045"></a><a class="code" href="define_8h.html#aa9c444ff5cd1ccbd35ee6414f01af90faf6b25d92a1cfd4ece8bce8f382dfb202">00045</a>   <a class="code" href="define_8h.html#aa9c444ff5cd1ccbd35ee6414f01af90faf6b25d92a1cfd4ece8bce8f382dfb202">NOT_READ</a>                        = 0,      
+<a name="l00046"></a><a class="code" href="define_8h.html#aa9c444ff5cd1ccbd35ee6414f01af90faeb365289e7ea51d02cc026d96883a99e">00046</a>   <a class="code" href="define_8h.html#aa9c444ff5cd1ccbd35ee6414f01af90faeb365289e7ea51d02cc026d96883a99e" title="Не читать">EVERY_TIME</a>                      = 1,      
+<a name="l00047"></a><a class="code" href="define_8h.html#aa9c444ff5cd1ccbd35ee6414f01af90fa2443caa4af25c9e970d46ed365f5837b">00047</a>   <a class="code" href="define_8h.html#aa9c444ff5cd1ccbd35ee6414f01af90fa2443caa4af25c9e970d46ed365f5837b" title="Каждый раз">VERY_OFTEN</a>                      = 10,     
+<a name="l00048"></a><a class="code" href="define_8h.html#aa9c444ff5cd1ccbd35ee6414f01af90fafcd0edb7027c475dc71739ec992bcc07">00048</a>   <a class="code" href="define_8h.html#aa9c444ff5cd1ccbd35ee6414f01af90fafcd0edb7027c475dc71739ec992bcc07" title="Очень часто">OFTEN</a>                           = 100,    
+<a name="l00049"></a><a class="code" href="define_8h.html#aa9c444ff5cd1ccbd35ee6414f01af90fa955f43129a4a794d68473db394f6a282">00049</a>   <a class="code" href="define_8h.html#aa9c444ff5cd1ccbd35ee6414f01af90fa955f43129a4a794d68473db394f6a282" title="Часто">RARELY</a>                          = 1000,   
+<a name="l00050"></a><a class="code" href="define_8h.html#aa9c444ff5cd1ccbd35ee6414f01af90fa7e0439e3b8f5fa79b4e88e584015557f">00050</a>   <a class="code" href="define_8h.html#aa9c444ff5cd1ccbd35ee6414f01af90fa7e0439e3b8f5fa79b4e88e584015557f" title="Редко">HARDLY_EVER</a>                     = 10000   
+<a name="l00051"></a>00051 };
+<a name="l00052"></a>00052 
+<a name="l00053"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7">00053</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7">enReturns</a>
+<a name="l00054"></a>00054 {
+<a name="l00055"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a5d1c9b3e398e7790aec3f821fb7a6ef8">00055</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a5d1c9b3e398e7790aec3f821fb7a6ef8">RETURN_OK</a>                     = 0,
+<a name="l00056"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a0d69fbc6071c40de52479590e5ac5121">00056</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a0d69fbc6071c40de52479590e5ac5121">RETURN_ERROR</a>                  = 1,
+<a name="l00057"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a34827a08223ca5f531e2eb3c4fe28145">00057</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a34827a08223ca5f531e2eb3c4fe28145">RETURN_ERROR_ID_VALUE</a>         = 2,
+<a name="l00058"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a19c28c47c6456c00ce0aa739cd2e5dc0">00058</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a19c28c47c6456c00ce0aa739cd2e5dc0">RETURN_ERROR_ID</a>               = 3,
+<a name="l00059"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7acf61c5d9dd506e587ca2137e4b20563f">00059</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7acf61c5d9dd506e587ca2137e4b20563f">RETURN_ERROR_ACCESS_VALUE</a>     = 4,
+<a name="l00060"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a0ecdc2e31dad14fc4bdb40f69d10c167">00060</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a0ecdc2e31dad14fc4bdb40f69d10c167">RETURN_ERROR_ACCESS</a>           = 5,
+<a name="l00061"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a5ca5740da4e2705fa36130cf52a14a7f">00061</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a5ca5740da4e2705fa36130cf52a14a7f">RETURN_ERROR_OPERATION_VALUE</a>  = 6,
+<a name="l00062"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a923f11e0ce505ac61bfed028462bde37">00062</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a923f11e0ce505ac61bfed028462bde37">RETURN_ERROR_OPERATION</a>        = 7,
+<a name="l00063"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7ab70da146f0069ce958fff5d1cdfb6544">00063</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7ab70da146f0069ce958fff5d1cdfb6544">RETURN_ERROR_PHYSIC_VALUE</a>     = 8,
+<a name="l00064"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a5a511bbeeb39a33e6b802b31656dfa4e">00064</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a5a511bbeeb39a33e6b802b31656dfa4e">RETURN_ERROR_PHYSIC</a>           = 9,
+<a name="l00065"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a03ecb8a6a65e5f697682e7e1d5ee03ee">00065</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a03ecb8a6a65e5f697682e7e1d5ee03ee">RETURN_ERROR_VALIDITY_VALUE</a>   = 10,
+<a name="l00066"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a491106411a2f3d63816266fc8bedf62f">00066</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a491106411a2f3d63816266fc8bedf62f">RETURN_ERROR_VALIDITY</a>         = 11,
+<a name="l00067"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7ac10abcc5159ed34d438c837059de901e">00067</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7ac10abcc5159ed34d438c837059de901e">RETURN_ERROR_MAXIMUM</a>          = 12,
+<a name="l00068"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7ad720b2c4a835238733f3ba2e6da89ce3">00068</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7ad720b2c4a835238733f3ba2e6da89ce3">RETURN_ERROR_MINIMUM</a>          = 13,
+<a name="l00069"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7aec7a888b0bf35d46a85e21d7f7ea319d">00069</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7aec7a888b0bf35d46a85e21d7f7ea319d">RETURN_ERROR_TYPE_DATA_VALUE</a>  = 14,
+<a name="l00070"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a138cb1e91c3a3dd3d1a11ea93e58d2f8">00070</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a138cb1e91c3a3dd3d1a11ea93e58d2f8">RETURN_ERROR_UNIT_VALUE</a>       = 15,
+<a name="l00071"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7aa43dcd1230fed0feee48fa9bb581e0c2">00071</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7aa43dcd1230fed0feee48fa9bb581e0c2">RETURN_MODBUS_TIMEOUT</a>         = 16,
+<a name="l00072"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a96f3281f7d0f44fe37a37d979d034a09">00072</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a96f3281f7d0f44fe37a37d979d034a09">RETURN_MODBUS_ERROR_CRC</a>       = 17,
+<a name="l00073"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a3ae26c6cb5de7ddc782a6c7f0999f6a7">00073</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a3ae26c6cb5de7ddc782a6c7f0999f6a7">RETURN_MODBUS_ERROR</a>           = 18,
+<a name="l00074"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a1a44108a5da505b3b0fddf6adcaccdcf">00074</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a1a44108a5da505b3b0fddf6adcaccdcf">RETURN_MODBUS_OK</a>              = 19,
+<a name="l00075"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a2ff328dee4117c27958bb9907021e4ba">00075</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a2ff328dee4117c27958bb9907021e4ba">RETURN_ERROR_UPDATE_VALUE</a>     = 20,
+<a name="l00076"></a><a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a4a757e00a948c1fd278497378ffc491d">00076</a>   <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a4a757e00a948c1fd278497378ffc491d">RETURN_LAST</a>
+<a name="l00077"></a>00077 };
+<a name="l00078"></a>00078 
+<a name="l00082"></a><a class="code" href="define_8h.html#a169f2155a02b6dda43c31ac7b2ceb961">00082</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a169f2155a02b6dda43c31ac7b2ceb961" title="Список уровеней доступа">enAccess</a>
+<a name="l00083"></a>00083 {
+<a name="l00084"></a><a class="code" href="define_8h.html#a169f2155a02b6dda43c31ac7b2ceb961af1dedb21b7691cab69bbfc2059700d97">00084</a>   <a class="code" href="define_8h.html#a169f2155a02b6dda43c31ac7b2ceb961af1dedb21b7691cab69bbfc2059700d97">ACCESS_ERROR</a>          = 0,
+<a name="l00085"></a><a class="code" href="define_8h.html#a169f2155a02b6dda43c31ac7b2ceb961ae8fd6f238d4cf293fd18e331d64ee16a">00085</a>   <a class="code" href="define_8h.html#a169f2155a02b6dda43c31ac7b2ceb961ae8fd6f238d4cf293fd18e331d64ee16a">ACCESS_OPERATOR</a>                               = 1,
+<a name="l00086"></a><a class="code" href="define_8h.html#a169f2155a02b6dda43c31ac7b2ceb961aff23267e04940c68b558b985052dbc85">00086</a>   <a class="code" href="define_8h.html#a169f2155a02b6dda43c31ac7b2ceb961aff23267e04940c68b558b985052dbc85">ACCESS_TECHNOLOG</a>                      = 2,
+<a name="l00087"></a><a class="code" href="define_8h.html#a169f2155a02b6dda43c31ac7b2ceb961afa3766091d999a27c6f78ed5b12a4372">00087</a>   <a class="code" href="define_8h.html#a169f2155a02b6dda43c31ac7b2ceb961afa3766091d999a27c6f78ed5b12a4372">ACCESS_SERVICE</a>                                = 3,
+<a name="l00088"></a><a class="code" href="define_8h.html#a169f2155a02b6dda43c31ac7b2ceb961a0befc72ca12c9135c97d2582530e5217">00088</a>   <a class="code" href="define_8h.html#a169f2155a02b6dda43c31ac7b2ceb961a0befc72ca12c9135c97d2582530e5217">ACCESS_GOD</a>            = 4,
+<a name="l00089"></a><a class="code" href="define_8h.html#a169f2155a02b6dda43c31ac7b2ceb961a60d0250e4e2e7ac986bc61c5c9816764">00089</a>         <a class="code" href="define_8h.html#a169f2155a02b6dda43c31ac7b2ceb961a60d0250e4e2e7ac986bc61c5c9816764">ACCESS_LAST</a>
+<a name="l00090"></a>00090 };
+<a name="l00091"></a>00091 
+<a name="l00095"></a><a class="code" href="define_8h.html#a9c6fdc3baaec14e1b3113c9eac1be43b">00095</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a9c6fdc3baaec14e1b3113c9eac1be43b" title="Список команд">enOperation</a>
+<a name="l00096"></a>00096 {
+<a name="l00097"></a><a class="code" href="define_8h.html#a9c6fdc3baaec14e1b3113c9eac1be43ba31bee192eb9e653b651a06239575c2c3">00097</a>   <a class="code" href="define_8h.html#a9c6fdc3baaec14e1b3113c9eac1be43ba31bee192eb9e653b651a06239575c2c3">OPERATION_ERROR</a>                         = 0,                
+<a name="l00098"></a><a class="code" href="define_8h.html#a9c6fdc3baaec14e1b3113c9eac1be43bad7d9000f0bef073e897dccf44ca9f35c">00098</a>   <a class="code" href="define_8h.html#a9c6fdc3baaec14e1b3113c9eac1be43bad7d9000f0bef073e897dccf44ca9f35c" title="Параметр только для чтения">OPERATION_READ</a>                                = 1,                
+<a name="l00099"></a><a class="code" href="define_8h.html#a9c6fdc3baaec14e1b3113c9eac1be43bad97c8fed1e373ad4d50dd5366bbfd516">00099</a>   <a class="code" href="define_8h.html#a9c6fdc3baaec14e1b3113c9eac1be43bad97c8fed1e373ad4d50dd5366bbfd516" title="Параметр только для записи">OPERATION_WRITE</a>                               = 2,                
+<a name="l00100"></a><a class="code" href="define_8h.html#a9c6fdc3baaec14e1b3113c9eac1be43ba4577c48d877c907a137b181829dd7c3d">00100</a>   <a class="code" href="define_8h.html#a9c6fdc3baaec14e1b3113c9eac1be43ba4577c48d877c907a137b181829dd7c3d" title="Параметр для записи только во время останова">OPERATION_LIMITED</a>                     = 3,                
+<a name="l00101"></a><a class="code" href="define_8h.html#a9c6fdc3baaec14e1b3113c9eac1be43bac029f53a4e4135cb9aa660c832743d29">00101</a>         <a class="code" href="define_8h.html#a9c6fdc3baaec14e1b3113c9eac1be43bac029f53a4e4135cb9aa660c832743d29">OPERATION_LAST</a>
+<a name="l00102"></a>00102 };
+<a name="l00103"></a>00103 
+<a name="l00108"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2d">00108</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2d" title="The enPhysic enum Типы физических величин">enPhysic</a>
+<a name="l00109"></a>00109 {
+<a name="l00110"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dad28790d8d2a8cae9ecb06bb3c4628595">00110</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dad28790d8d2a8cae9ecb06bb3c4628595">PHYSIC_ERROR</a>,
+<a name="l00111"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da2eaf576f807d99c8b5d83febefb3c368">00111</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da2eaf576f807d99c8b5d83febefb3c368" title="Просто число">PHYSIC_NUMERIC</a>,                           
+<a name="l00112"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dadb6d48ef06b1368048209651749750e2">00112</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dadb6d48ef06b1368048209651749750e2" title="Дата и время">PHYSIC_DATE_TIME</a>,                         
+<a name="l00113"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da11f57078b80ba0c748547cd5fadf5d4d">00113</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da11f57078b80ba0c748547cd5fadf5d4d" title="Время">PHYSIC_TIME</a>,                              
+<a name="l00114"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dadc2f91c95a089934bbe6cc2a9806448b">00114</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dadc2f91c95a089934bbe6cc2a9806448b" title="Проценты">PHYSIC_PERCENT</a>,                           
+<a name="l00115"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da60abffdbe94c460d5d6951c6b62fd887">00115</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da60abffdbe94c460d5d6951c6b62fd887" title="Длина">PHYSIC_LENGHT</a>,                            
+<a name="l00116"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dac40bfb7ca50cc075c51bd87edbc1d596">00116</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dac40bfb7ca50cc075c51bd87edbc1d596" title="Плотность">PHYSIC_DENSITY</a>,                           
+<a name="l00117"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2daf13561b9ffec12b371f9fc128be48962">00117</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2daf13561b9ffec12b371f9fc128be48962" title="Площадь">PHYSIC_SPACE</a>,                             
+<a name="l00118"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dacb3f767c5a784e9337693adaaae959fc">00118</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dacb3f767c5a784e9337693adaaae959fc" title="Частота">PHYSIC_FREQUENCY</a>,                         
+<a name="l00119"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da846408a21af84562b07403c8cb964f0b">00119</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da846408a21af84562b07403c8cb964f0b" title="Напряжение">PHYSIC_VOLTAGE</a>,                           
+<a name="l00120"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da4379ac60e8276296cc8e630dd4cae145">00120</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da4379ac60e8276296cc8e630dd4cae145" title="Ток">PHYSIC_CURRENT</a>,                           
+<a name="l00121"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da5b4d9e1b1f9f756b148dc27e657103e3">00121</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da5b4d9e1b1f9f756b148dc27e657103e3" title="Активная мощность">PHYSIC_ACTIVE_POWER</a>,                      
+<a name="l00122"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da3e582476c235689e23760f5028522b5e">00122</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da3e582476c235689e23760f5028522b5e" title="Полная мощность">PHYSIC_FULL_POWER</a>,                        
+<a name="l00123"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da4bb657324bf7993af767d870531caf8c">00123</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da4bb657324bf7993af767d870531caf8c" title="Реактивная мощность">PHYSIC_REACTIVE_POWER</a>,                    
+<a name="l00124"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da08f272d7dc99ee3d1924ea46bba73717">00124</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da08f272d7dc99ee3d1924ea46bba73717" title="Угол">PHYSIC_ANGLE</a>,                             
+<a name="l00125"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da663ea4f3d5300035aa1ae1f99bf802a7">00125</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da663ea4f3d5300035aa1ae1f99bf802a7" title="Скорость вращения">PHYSIC_RPM</a>,                               
+<a name="l00126"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dae4a1d2a97e8ef392cb18e83b24493ef3">00126</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dae4a1d2a97e8ef392cb18e83b24493ef3" title="Темп (разгона или замедления)">PHYSIC_TEMP</a>,                              
+<a name="l00127"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2daa5c42c782c5082f43d4ed41dc2cf2606">00127</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2daa5c42c782c5082f43d4ed41dc2cf2606" title="Сопротивление изоляции">PHYSIC_RESISTANCE</a>,                        
+<a name="l00128"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dadca5096636753ac1f296aeacbe960a9d">00128</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dadca5096636753ac1f296aeacbe960a9d" title="Сопротивление кабельной линии">PHYSIC_RESIST_CABLE</a>,                      
+<a name="l00129"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dab7b61dfabc016cdc2cdc2c1d148720c5">00129</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dab7b61dfabc016cdc2cdc2c1d148720c5" title="Давление">PHYSIC_PRESSURE</a>,                          
+<a name="l00130"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da514fb79b15b221415f07cdef2f0c31e0">00130</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da514fb79b15b221415f07cdef2f0c31e0" title="Температура">PHYSIC_TEMPERATURE</a>,                       
+<a name="l00131"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dae97ef272bd3c5ce17a6fdcdf8ca05b5d">00131</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dae97ef272bd3c5ce17a6fdcdf8ca05b5d" title="Ускорение">PHYSIC_ACCELERATION</a>,                      
+<a name="l00132"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da8820abaebec1a5ef6c59f021dfdeafc8">00132</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da8820abaebec1a5ef6c59f021dfdeafc8" title="Cкорость">PHYSIC_SPEED</a>,                             
+<a name="l00133"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da2ff2a6eb467b56ebd8e9912b1d98f5e4">00133</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da2ff2a6eb467b56ebd8e9912b1d98f5e4" title="Вязкость">PHYSIC_VISCOSITY</a>,                         
+<a name="l00134"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da8b521cffffe520866a0328523da25ecd">00134</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da8b521cffffe520866a0328523da25ecd" title="Расход">PHYSIC_FLOW</a>,                              
+<a name="l00135"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da7fcbbae7f2a065cc53738e8d5e9e2d42">00135</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da7fcbbae7f2a065cc53738e8d5e9e2d42" title="Мощность">PHYSIC_POWER</a>,                             
+<a name="l00136"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da32e79e963f2123954591cf6ace5da97b">00136</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da32e79e963f2123954591cf6ace5da97b" title="Активная энергия">PHYSIC_ACTIVE_ENERGY</a>,                     
+<a name="l00137"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da6a85395c0df09ca2dd77871414beb1b6">00137</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da6a85395c0df09ca2dd77871414beb1b6" title="Реактивная энергия">PHYSIC_REACTIVE_ENERGY</a>,                   
+<a name="l00138"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dac97169dcf52b34c281ba9f1e109ee547">00138</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dac97169dcf52b34c281ba9f1e109ee547" title="Полная энергия">PHYSIC_FULL_ENERGY</a>,                       
+<a name="l00139"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da745424549e98946a38f486e920e7bcf9">00139</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2da745424549e98946a38f486e920e7bcf9" title="Номинальный момент">PHYSIC_RATE</a>,                              
+<a name="l00140"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2daf03c6d8d857822eadb2b35a506527bf4">00140</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2daf03c6d8d857822eadb2b35a506527bf4" title="Индуктивность Гн">PHYSIC_INDUNCTANCE</a>,                       
+<a name="l00141"></a><a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dab0c53d0d09716065b7a43ceb3cdc78ae">00141</a>   <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dab0c53d0d09716065b7a43ceb3cdc78ae">PHYSIC_LAST</a>
+<a name="l00142"></a>00142 };
+<a name="l00143"></a>00143 
+<a name="l00144"></a><a class="code" href="define_8h.html#a6cf612b6b29fa0124d4fb54ec41a52c5">00144</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a6cf612b6b29fa0124d4fb54ec41a52c5">enPhysicNumeric</a> {
+<a name="l00145"></a><a class="code" href="define_8h.html#a6cf612b6b29fa0124d4fb54ec41a52c5ad9e82af52a3ac79e179ccbb3cd4be12f">00145</a>   <a class="code" href="define_8h.html#a6cf612b6b29fa0124d4fb54ec41a52c5ad9e82af52a3ac79e179ccbb3cd4be12f">NUMERIC_NUMBER</a>,
+<a name="l00146"></a><a class="code" href="define_8h.html#a6cf612b6b29fa0124d4fb54ec41a52c5a7eef60f52e314887a64d5747892304ba">00146</a>   <a class="code" href="define_8h.html#a6cf612b6b29fa0124d4fb54ec41a52c5a7eef60f52e314887a64d5747892304ba">NUMERIC_LAST</a>
+<a name="l00147"></a>00147 };
+<a name="l00148"></a>00148 
+<a name="l00149"></a><a class="code" href="define_8h.html#acb40aa7c0d718e960e44c974347b4249">00149</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#acb40aa7c0d718e960e44c974347b4249">enPhysicDateTime</a> {
+<a name="l00150"></a><a class="code" href="define_8h.html#acb40aa7c0d718e960e44c974347b4249aeb4327827b9a592faaa0641777cd55a5">00150</a>   <a class="code" href="define_8h.html#acb40aa7c0d718e960e44c974347b4249aeb4327827b9a592faaa0641777cd55a5">DATE_TIME_SS</a>,
+<a name="l00151"></a><a class="code" href="define_8h.html#acb40aa7c0d718e960e44c974347b4249a85f0e230874798fafd633d2f484afcad">00151</a>   <a class="code" href="define_8h.html#acb40aa7c0d718e960e44c974347b4249a85f0e230874798fafd633d2f484afcad">DATE_TIME_LAST</a>
+<a name="l00152"></a>00152 };
+<a name="l00153"></a>00153 
+<a name="l00154"></a><a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684">00154</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684">enPhysicTime</a> {
+<a name="l00155"></a><a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684af2850ae6e83ca71feabb048c136d8e22">00155</a>   <a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684af2850ae6e83ca71feabb048c136d8e22">TIME_SS</a>,
+<a name="l00156"></a><a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684aef96c3935bbc898edd62723ad8cb00ea">00156</a>   <a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684aef96c3935bbc898edd62723ad8cb00ea">TIME_US</a>,
+<a name="l00157"></a><a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684ab2234de0b81a6c02ab51dcfc63065bca">00157</a>   <a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684ab2234de0b81a6c02ab51dcfc63065bca">TIME_MS</a>,
+<a name="l00158"></a><a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684a4d2addce576ab43ad638bd56928c2100">00158</a>   <a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684a4d2addce576ab43ad638bd56928c2100">TIME_SS_MS</a>,
+<a name="l00159"></a><a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684a001d7f19776b34fe21357936df90132b">00159</a>   <a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684a001d7f19776b34fe21357936df90132b">TIME_MM_SS</a>,
+<a name="l00160"></a><a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684a87b506c2ecde14b575e1026bd0eada36">00160</a>   <a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684a87b506c2ecde14b575e1026bd0eada36">TIME_HH</a>,
+<a name="l00161"></a><a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684ad65a4b1c898dc037c907e0d0a361c261">00161</a>   <a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684ad65a4b1c898dc037c907e0d0a361c261">TIME_HH_MM</a>,
+<a name="l00162"></a><a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684a7de2782518285ab2a9411f902638754c">00162</a>   <a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684a7de2782518285ab2a9411f902638754c">TIME_HH_MM_SS</a>,
+<a name="l00163"></a><a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684ac50942dad59fdc32deb77d9276696a17">00163</a>   <a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684ac50942dad59fdc32deb77d9276696a17">TIME_YY_MM_DD</a>,
+<a name="l00164"></a><a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684ae61a51c681a97f1888190be3e4e4286c">00164</a>   <a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684ae61a51c681a97f1888190be3e4e4286c">TIME_YY_MM_DD_HH_MM_SS</a>,
+<a name="l00165"></a><a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684a0b9fa7f59131bf047dfd64ef8ec7c05b">00165</a>   <a class="code" href="define_8h.html#a2ca78e1f9fd7397d1504a3e6fe9b0684a0b9fa7f59131bf047dfd64ef8ec7c05b">TIME_LAST</a>
+<a name="l00166"></a>00166 };
+<a name="l00167"></a>00167 
+<a name="l00168"></a><a class="code" href="define_8h.html#acd78d43c214e1004cfb3d580bf682f73">00168</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#acd78d43c214e1004cfb3d580bf682f73">enPhysicPercent</a> {
+<a name="l00169"></a><a class="code" href="define_8h.html#acd78d43c214e1004cfb3d580bf682f73ae82b980b7f92af9f74e017e1c0cfb2bd">00169</a>   <a class="code" href="define_8h.html#acd78d43c214e1004cfb3d580bf682f73ae82b980b7f92af9f74e017e1c0cfb2bd">PERCENT_PERCENT</a>,
+<a name="l00170"></a><a class="code" href="define_8h.html#acd78d43c214e1004cfb3d580bf682f73a4530792a7f787bbbe0cb36de54b3be2b">00170</a>   <a class="code" href="define_8h.html#acd78d43c214e1004cfb3d580bf682f73a4530792a7f787bbbe0cb36de54b3be2b">PERCENT_LAST</a>
+<a name="l00171"></a>00171 };
+<a name="l00172"></a>00172 
+<a name="l00173"></a><a class="code" href="define_8h.html#a133a9197d08330e09fc435b58b2e6b7c">00173</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a133a9197d08330e09fc435b58b2e6b7c">enPhysicLength</a> {
+<a name="l00174"></a><a class="code" href="define_8h.html#a133a9197d08330e09fc435b58b2e6b7ca36d07bc632351f33478655c3a75b27be">00174</a>   <a class="code" href="define_8h.html#a133a9197d08330e09fc435b58b2e6b7ca36d07bc632351f33478655c3a75b27be">LENGTH_M</a>,
+<a name="l00175"></a><a class="code" href="define_8h.html#a133a9197d08330e09fc435b58b2e6b7ca91534196b4a53651af4aa95e4c591391">00175</a>   <a class="code" href="define_8h.html#a133a9197d08330e09fc435b58b2e6b7ca91534196b4a53651af4aa95e4c591391">LENGTH_MILE</a>,
+<a name="l00176"></a><a class="code" href="define_8h.html#a133a9197d08330e09fc435b58b2e6b7ca930e6d121dabbd9cb36ee33411c9a3df">00176</a>   <a class="code" href="define_8h.html#a133a9197d08330e09fc435b58b2e6b7ca930e6d121dabbd9cb36ee33411c9a3df">LENGTH_FOOT</a>,
+<a name="l00177"></a><a class="code" href="define_8h.html#a133a9197d08330e09fc435b58b2e6b7ca8458d015bf5fbf731dbe579a2cab4bf3">00177</a>   <a class="code" href="define_8h.html#a133a9197d08330e09fc435b58b2e6b7ca8458d015bf5fbf731dbe579a2cab4bf3">LENGTH_LAST</a>
+<a name="l00178"></a>00178 };
+<a name="l00179"></a>00179 
+<a name="l00180"></a><a class="code" href="define_8h.html#a708df34ab1f598c03df8ea0008037950">00180</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a708df34ab1f598c03df8ea0008037950">enPhysicDensity</a> {
+<a name="l00181"></a><a class="code" href="define_8h.html#a708df34ab1f598c03df8ea0008037950aed654ac3acdc9797bb7225b15231c8e3">00181</a>   <a class="code" href="define_8h.html#a708df34ab1f598c03df8ea0008037950aed654ac3acdc9797bb7225b15231c8e3">DENSITY_KG_M3</a>,
+<a name="l00182"></a><a class="code" href="define_8h.html#a708df34ab1f598c03df8ea0008037950ad8b9d117d424b899b567da29474740aa">00182</a>   <a class="code" href="define_8h.html#a708df34ab1f598c03df8ea0008037950ad8b9d117d424b899b567da29474740aa">DENSITY_LAST</a>
+<a name="l00183"></a>00183 };
+<a name="l00184"></a>00184 
+<a name="l00185"></a><a class="code" href="define_8h.html#a190adab1b5d9e0bdb55e4de749defcbf">00185</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a190adab1b5d9e0bdb55e4de749defcbf">enPhysicSpace</a> {
+<a name="l00186"></a><a class="code" href="define_8h.html#a190adab1b5d9e0bdb55e4de749defcbfab5d0e4561aaa98c6f1e8bddf0536ed01">00186</a>   <a class="code" href="define_8h.html#a190adab1b5d9e0bdb55e4de749defcbfab5d0e4561aaa98c6f1e8bddf0536ed01">SPACE_M2</a>,
+<a name="l00187"></a><a class="code" href="define_8h.html#a190adab1b5d9e0bdb55e4de749defcbfa48d56d27b449793ee3d57c8ad50c6638">00187</a>   <a class="code" href="define_8h.html#a190adab1b5d9e0bdb55e4de749defcbfa48d56d27b449793ee3d57c8ad50c6638">SPACE_LAST</a>
+<a name="l00188"></a>00188 };
+<a name="l00189"></a>00189 
+<a name="l00190"></a><a class="code" href="define_8h.html#a2827c82775a6c112bc5422d4fb782328">00190</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a2827c82775a6c112bc5422d4fb782328">enPhysicFrequency</a> {
+<a name="l00191"></a><a class="code" href="define_8h.html#a2827c82775a6c112bc5422d4fb782328a7ff59643eb9a54b2ac0696b2a9430743">00191</a>   <a class="code" href="define_8h.html#a2827c82775a6c112bc5422d4fb782328a7ff59643eb9a54b2ac0696b2a9430743">FREQUENCY_HZ</a>,
+<a name="l00192"></a><a class="code" href="define_8h.html#a2827c82775a6c112bc5422d4fb782328a1434b692f58c06722f84000dba15e68c">00192</a>   <a class="code" href="define_8h.html#a2827c82775a6c112bc5422d4fb782328a1434b692f58c06722f84000dba15e68c">FREQUENCY_KHZ</a>,
+<a name="l00193"></a><a class="code" href="define_8h.html#a2827c82775a6c112bc5422d4fb782328a8a113a233720a5c55bd5861cde196e4f">00193</a>   <a class="code" href="define_8h.html#a2827c82775a6c112bc5422d4fb782328a8a113a233720a5c55bd5861cde196e4f">FREQUENCY_LAST</a>
+<a name="l00194"></a>00194 };
+<a name="l00195"></a>00195 
+<a name="l00196"></a><a class="code" href="define_8h.html#ad3d1837a17733daa00fd96abbfe4cc0c">00196</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#ad3d1837a17733daa00fd96abbfe4cc0c">enPhysicVoltage</a> {
+<a name="l00197"></a><a class="code" href="define_8h.html#ad3d1837a17733daa00fd96abbfe4cc0ca3aec1554404120a1a9c5b4e7f3a7a3f8">00197</a>   <a class="code" href="define_8h.html#ad3d1837a17733daa00fd96abbfe4cc0ca3aec1554404120a1a9c5b4e7f3a7a3f8">VOLTAGE_V</a>,
+<a name="l00198"></a><a class="code" href="define_8h.html#ad3d1837a17733daa00fd96abbfe4cc0ca1b7dd57d8731c73df380f0adb27f0e6b">00198</a>   <a class="code" href="define_8h.html#ad3d1837a17733daa00fd96abbfe4cc0ca1b7dd57d8731c73df380f0adb27f0e6b">VOLTAGE_KV</a>,
+<a name="l00199"></a><a class="code" href="define_8h.html#ad3d1837a17733daa00fd96abbfe4cc0ca6ba66a72fd55ac959835b0a2ac4ec260">00199</a>   <a class="code" href="define_8h.html#ad3d1837a17733daa00fd96abbfe4cc0ca6ba66a72fd55ac959835b0a2ac4ec260">VOLTAGE_LAST</a>
+<a name="l00200"></a>00200 };
+<a name="l00201"></a>00201 
+<a name="l00202"></a><a class="code" href="define_8h.html#aee52edf236a367994c0d34d29d543c3c">00202</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#aee52edf236a367994c0d34d29d543c3c">enPhysicCurrent</a> {
+<a name="l00203"></a><a class="code" href="define_8h.html#aee52edf236a367994c0d34d29d543c3caf1cc68d7f12f7a3b2d885a2c1f58c4bc">00203</a>   <a class="code" href="define_8h.html#aee52edf236a367994c0d34d29d543c3caf1cc68d7f12f7a3b2d885a2c1f58c4bc">CURRENT_A</a>,
+<a name="l00204"></a><a class="code" href="define_8h.html#aee52edf236a367994c0d34d29d543c3ca9fcb1c26ff07c0422931d11a5386e934">00204</a>   <a class="code" href="define_8h.html#aee52edf236a367994c0d34d29d543c3ca9fcb1c26ff07c0422931d11a5386e934">CURRENT_MA</a>,
+<a name="l00205"></a><a class="code" href="define_8h.html#aee52edf236a367994c0d34d29d543c3ca798e8d3b01e6998e2797ceac45bdfa88">00205</a>   <a class="code" href="define_8h.html#aee52edf236a367994c0d34d29d543c3ca798e8d3b01e6998e2797ceac45bdfa88">CURRENT_LAST</a>
+<a name="l00206"></a>00206 };
+<a name="l00207"></a>00207 
+<a name="l00208"></a><a class="code" href="define_8h.html#a5bf230e26eec6d0507a8154602fce7d2">00208</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a5bf230e26eec6d0507a8154602fce7d2">enPhysicActivPower</a> {
+<a name="l00209"></a><a class="code" href="define_8h.html#a5bf230e26eec6d0507a8154602fce7d2a584629b7ee6b6ac82ec015052869e379">00209</a>   <a class="code" href="define_8h.html#a5bf230e26eec6d0507a8154602fce7d2a584629b7ee6b6ac82ec015052869e379">ACTIV_POWER_W</a>,
+<a name="l00210"></a><a class="code" href="define_8h.html#a5bf230e26eec6d0507a8154602fce7d2aca0188f37b04c50c7d6b6fcb860c1f13">00210</a>   <a class="code" href="define_8h.html#a5bf230e26eec6d0507a8154602fce7d2aca0188f37b04c50c7d6b6fcb860c1f13">ACTIV_POWER_KW</a>,
+<a name="l00211"></a><a class="code" href="define_8h.html#a5bf230e26eec6d0507a8154602fce7d2afc071ab3608ca91bbc70d126d80f8d1c">00211</a>   <a class="code" href="define_8h.html#a5bf230e26eec6d0507a8154602fce7d2afc071ab3608ca91bbc70d126d80f8d1c">ACTIV_POWER_LAST</a>
+<a name="l00212"></a>00212 };
+<a name="l00213"></a>00213 
+<a name="l00214"></a><a class="code" href="define_8h.html#a218fa7091733ddf2297157f8bd161915">00214</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a218fa7091733ddf2297157f8bd161915">enPhysicFullPower</a> {
+<a name="l00215"></a><a class="code" href="define_8h.html#a218fa7091733ddf2297157f8bd161915ae4991be20e8ba84bec2ea066507ef99b">00215</a>   <a class="code" href="define_8h.html#a218fa7091733ddf2297157f8bd161915ae4991be20e8ba84bec2ea066507ef99b">FULL_POWER_VA</a>,
+<a name="l00216"></a><a class="code" href="define_8h.html#a218fa7091733ddf2297157f8bd161915af20f9d6fa2b1f076b01502e56d6250af">00216</a>   <a class="code" href="define_8h.html#a218fa7091733ddf2297157f8bd161915af20f9d6fa2b1f076b01502e56d6250af">FULL_POWER_KVA</a>,
+<a name="l00217"></a><a class="code" href="define_8h.html#a218fa7091733ddf2297157f8bd161915acc250aeeef4ed34e0738aa9c09a38f0f">00217</a>   <a class="code" href="define_8h.html#a218fa7091733ddf2297157f8bd161915acc250aeeef4ed34e0738aa9c09a38f0f">FULL_POWER_LAST</a>
+<a name="l00218"></a>00218 };
+<a name="l00219"></a>00219 
+<a name="l00220"></a><a class="code" href="define_8h.html#a2f0e2e6adf5e4786a340975604789ee8">00220</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a2f0e2e6adf5e4786a340975604789ee8">enPhysicReactivPower</a> {
+<a name="l00221"></a><a class="code" href="define_8h.html#a2f0e2e6adf5e4786a340975604789ee8a48e2e1ea03d5721836d454ebfe1f0b88">00221</a>   <a class="code" href="define_8h.html#a2f0e2e6adf5e4786a340975604789ee8a48e2e1ea03d5721836d454ebfe1f0b88">REACTIV_POWER_VAR</a>,
+<a name="l00222"></a><a class="code" href="define_8h.html#a2f0e2e6adf5e4786a340975604789ee8aa45b75f94e435f161629fd59ddaae4d0">00222</a>   <a class="code" href="define_8h.html#a2f0e2e6adf5e4786a340975604789ee8aa45b75f94e435f161629fd59ddaae4d0">REACTIV_POWER_KVAR</a>,
+<a name="l00223"></a><a class="code" href="define_8h.html#a2f0e2e6adf5e4786a340975604789ee8aa2abc2ae29ca6c8b1c91722d73a9e444">00223</a>   <a class="code" href="define_8h.html#a2f0e2e6adf5e4786a340975604789ee8aa2abc2ae29ca6c8b1c91722d73a9e444">REACTIV_POWER_LAST</a>,
+<a name="l00224"></a>00224 };
+<a name="l00225"></a>00225 
+<a name="l00226"></a><a class="code" href="define_8h.html#a0e91adee2e97265e0be85ba5306f41f8">00226</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a0e91adee2e97265e0be85ba5306f41f8">enPhysicAngle</a> {
+<a name="l00227"></a><a class="code" href="define_8h.html#a0e91adee2e97265e0be85ba5306f41f8aa25642742fbec486a6c908f851d5453a">00227</a>   <a class="code" href="define_8h.html#a0e91adee2e97265e0be85ba5306f41f8aa25642742fbec486a6c908f851d5453a">ANGLE_DEGREES</a>,
+<a name="l00228"></a><a class="code" href="define_8h.html#a0e91adee2e97265e0be85ba5306f41f8a1e2d67fc8c919f187457464cebb15442">00228</a>   <a class="code" href="define_8h.html#a0e91adee2e97265e0be85ba5306f41f8a1e2d67fc8c919f187457464cebb15442">ANGLE_LAST</a>
+<a name="l00229"></a>00229 };
+<a name="l00230"></a>00230 
+<a name="l00231"></a><a class="code" href="define_8h.html#a3846a166861630babbf783087a1ff4e0">00231</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a3846a166861630babbf783087a1ff4e0">enPhysicRpm</a> {
+<a name="l00232"></a><a class="code" href="define_8h.html#a3846a166861630babbf783087a1ff4e0ae73262f3f1fdc06caba46d1501f78a79">00232</a>   <a class="code" href="define_8h.html#a3846a166861630babbf783087a1ff4e0ae73262f3f1fdc06caba46d1501f78a79">RPM_RPM</a>,
+<a name="l00233"></a><a class="code" href="define_8h.html#a3846a166861630babbf783087a1ff4e0a9bbaa2c3f3d9698ceb2c166305167c7e">00233</a>   <a class="code" href="define_8h.html#a3846a166861630babbf783087a1ff4e0a9bbaa2c3f3d9698ceb2c166305167c7e">RPM_LAST</a>
+<a name="l00234"></a>00234 };
+<a name="l00235"></a>00235 
+<a name="l00236"></a><a class="code" href="define_8h.html#af1140f3bc4fda22114cf3f47a110f74e">00236</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#af1140f3bc4fda22114cf3f47a110f74e">enPhysicTemp</a> {
+<a name="l00237"></a><a class="code" href="define_8h.html#af1140f3bc4fda22114cf3f47a110f74ea27ec6df5c582be84b8216b3acf649c3e">00237</a>   <a class="code" href="define_8h.html#af1140f3bc4fda22114cf3f47a110f74ea27ec6df5c582be84b8216b3acf649c3e">TEMP_HZ_SS</a>,
+<a name="l00238"></a><a class="code" href="define_8h.html#af1140f3bc4fda22114cf3f47a110f74ea2f8962211c7ed01faa0b12c8de795598">00238</a>   <a class="code" href="define_8h.html#af1140f3bc4fda22114cf3f47a110f74ea2f8962211c7ed01faa0b12c8de795598">TEMP_LAST</a>
+<a name="l00239"></a>00239 };
+<a name="l00240"></a>00240 
+<a name="l00241"></a><a class="code" href="define_8h.html#ac7d06567581d71e6b92264c91648381c">00241</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#ac7d06567581d71e6b92264c91648381c">enPhysicResistence</a> {
+<a name="l00242"></a><a class="code" href="define_8h.html#ac7d06567581d71e6b92264c91648381ca344bd43a3ffe4a6940b47969cee2b5d0">00242</a>   <a class="code" href="define_8h.html#ac7d06567581d71e6b92264c91648381ca344bd43a3ffe4a6940b47969cee2b5d0">RESISTANCE_OM</a>,
+<a name="l00243"></a><a class="code" href="define_8h.html#ac7d06567581d71e6b92264c91648381ca3e815f364ac719ce8e7d8cb0897ed168">00243</a>   <a class="code" href="define_8h.html#ac7d06567581d71e6b92264c91648381ca3e815f364ac719ce8e7d8cb0897ed168">RESISTANCE_KOM</a>,
+<a name="l00244"></a><a class="code" href="define_8h.html#ac7d06567581d71e6b92264c91648381cab3c64c90dadde73fbf3789e7112b01a4">00244</a>   <a class="code" href="define_8h.html#ac7d06567581d71e6b92264c91648381cab3c64c90dadde73fbf3789e7112b01a4">RESISTANCE_MOM</a>,
+<a name="l00245"></a><a class="code" href="define_8h.html#ac7d06567581d71e6b92264c91648381cac4fd21fef0f88adb3f2a320d41f65c47">00245</a>   <a class="code" href="define_8h.html#ac7d06567581d71e6b92264c91648381cac4fd21fef0f88adb3f2a320d41f65c47">RESISTANCE_MILIOM</a>,
+<a name="l00246"></a><a class="code" href="define_8h.html#ac7d06567581d71e6b92264c91648381ca1ce4c580abfca3157084f372a8b14e62">00246</a>   <a class="code" href="define_8h.html#ac7d06567581d71e6b92264c91648381ca1ce4c580abfca3157084f372a8b14e62">RESISTANCE_LAST</a>
+<a name="l00247"></a>00247 };
+<a name="l00248"></a>00248 
+<a name="l00249"></a><a class="code" href="define_8h.html#afee5c80bca7826f2deb4b7f516ca2515">00249</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#afee5c80bca7826f2deb4b7f516ca2515">enPhysicResisCable</a> {
+<a name="l00250"></a><a class="code" href="define_8h.html#afee5c80bca7826f2deb4b7f516ca2515aa2f644ba06c778feca9340043fd46eab">00250</a>   <a class="code" href="define_8h.html#afee5c80bca7826f2deb4b7f516ca2515aa2f644ba06c778feca9340043fd46eab">RESIST_CABLE_KOM_M</a>,
+<a name="l00251"></a><a class="code" href="define_8h.html#afee5c80bca7826f2deb4b7f516ca2515a19e588317c52dc70ed3432d087b49989">00251</a>   <a class="code" href="define_8h.html#afee5c80bca7826f2deb4b7f516ca2515a19e588317c52dc70ed3432d087b49989">RESIST_CABLE_LAST</a>
+<a name="l00252"></a>00252 };
+<a name="l00253"></a>00253 
+<a name="l00254"></a><a class="code" href="define_8h.html#aac5d06d4bdf54954289c295e9f88ec82">00254</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#aac5d06d4bdf54954289c295e9f88ec82">enPhysicPressure</a> {
+<a name="l00255"></a><a class="code" href="define_8h.html#aac5d06d4bdf54954289c295e9f88ec82a85012a13a882511e813972fb017ca87c">00255</a>   <a class="code" href="define_8h.html#aac5d06d4bdf54954289c295e9f88ec82a85012a13a882511e813972fb017ca87c">PRESSURE_MPA</a>,
+<a name="l00256"></a><a class="code" href="define_8h.html#aac5d06d4bdf54954289c295e9f88ec82a436883331bc2e63176e60e4483c41b9e">00256</a>   <a class="code" href="define_8h.html#aac5d06d4bdf54954289c295e9f88ec82a436883331bc2e63176e60e4483c41b9e">PRESSURE_ATM</a>,
+<a name="l00257"></a><a class="code" href="define_8h.html#aac5d06d4bdf54954289c295e9f88ec82a31f1331eddca5bcd282228f1678ebabb">00257</a>   <a class="code" href="define_8h.html#aac5d06d4bdf54954289c295e9f88ec82a31f1331eddca5bcd282228f1678ebabb">PRESSURE_AT</a>,
+<a name="l00258"></a><a class="code" href="define_8h.html#aac5d06d4bdf54954289c295e9f88ec82a2e802c4cc8841ed5f1248ba61daa4b67">00258</a>   <a class="code" href="define_8h.html#aac5d06d4bdf54954289c295e9f88ec82a2e802c4cc8841ed5f1248ba61daa4b67">PRESSURE_BAR</a>,
+<a name="l00259"></a><a class="code" href="define_8h.html#aac5d06d4bdf54954289c295e9f88ec82ada56a4c27f973e4bb878f3a9243db2a1">00259</a>   <a class="code" href="define_8h.html#aac5d06d4bdf54954289c295e9f88ec82ada56a4c27f973e4bb878f3a9243db2a1">PRESSURE_PSI</a>,
+<a name="l00260"></a><a class="code" href="define_8h.html#aac5d06d4bdf54954289c295e9f88ec82ae21a7e4d6d989e4b8fb9bb1238307dac">00260</a>   <a class="code" href="define_8h.html#aac5d06d4bdf54954289c295e9f88ec82ae21a7e4d6d989e4b8fb9bb1238307dac">PRESSURE_LAST</a>
+<a name="l00261"></a>00261 };
+<a name="l00262"></a>00262 
+<a name="l00263"></a><a class="code" href="define_8h.html#ada480223f557e1bf259dbc807953fda3">00263</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#ada480223f557e1bf259dbc807953fda3">enPhysicTemperature</a> {
+<a name="l00264"></a><a class="code" href="define_8h.html#ada480223f557e1bf259dbc807953fda3a47d49dcb6c61038fe9591b35d33b894f">00264</a>   <a class="code" href="define_8h.html#ada480223f557e1bf259dbc807953fda3a47d49dcb6c61038fe9591b35d33b894f">TEMPERATURE_C</a>,
+<a name="l00265"></a><a class="code" href="define_8h.html#ada480223f557e1bf259dbc807953fda3a6e474605a12517fad8f9f95c495bfa73">00265</a>   <a class="code" href="define_8h.html#ada480223f557e1bf259dbc807953fda3a6e474605a12517fad8f9f95c495bfa73">TEMPERATURE_LAST</a>
+<a name="l00266"></a>00266 };
+<a name="l00267"></a>00267 
+<a name="l00268"></a><a class="code" href="define_8h.html#af0aabf4d37cc016076f05c57e492860c">00268</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#af0aabf4d37cc016076f05c57e492860c">enPhysicAcceleration</a> {
+<a name="l00269"></a><a class="code" href="define_8h.html#af0aabf4d37cc016076f05c57e492860ca1fd14ecb23ec93ebd8935ef0e152d713">00269</a>   <a class="code" href="define_8h.html#af0aabf4d37cc016076f05c57e492860ca1fd14ecb23ec93ebd8935ef0e152d713">ACCELERATION_G</a>,
+<a name="l00270"></a><a class="code" href="define_8h.html#af0aabf4d37cc016076f05c57e492860ca83cc2d2c010428cbd5039b716e58bb1f">00270</a>   <a class="code" href="define_8h.html#af0aabf4d37cc016076f05c57e492860ca83cc2d2c010428cbd5039b716e58bb1f">ACCELERATION_MSS2</a>,
+<a name="l00271"></a><a class="code" href="define_8h.html#af0aabf4d37cc016076f05c57e492860cafd7a334932df68f82b6e929182833629">00271</a>   <a class="code" href="define_8h.html#af0aabf4d37cc016076f05c57e492860cafd7a334932df68f82b6e929182833629">ACCELERATION_LAST</a>
+<a name="l00272"></a>00272 };
+<a name="l00273"></a>00273 
+<a name="l00274"></a><a class="code" href="define_8h.html#aff2c85a45547c4eefb4fd69fcacfe89e">00274</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#aff2c85a45547c4eefb4fd69fcacfe89e">enPhysicSpeed</a> {
+<a name="l00275"></a><a class="code" href="define_8h.html#aff2c85a45547c4eefb4fd69fcacfe89ea8450244c698fadb4c4132a50ce4fedb1">00275</a>   <a class="code" href="define_8h.html#aff2c85a45547c4eefb4fd69fcacfe89ea8450244c698fadb4c4132a50ce4fedb1">SPEED_M_SS</a>,
+<a name="l00276"></a><a class="code" href="define_8h.html#aff2c85a45547c4eefb4fd69fcacfe89eae8efdd7de9d01dcddc77a6c50c6965e1">00276</a>   <a class="code" href="define_8h.html#aff2c85a45547c4eefb4fd69fcacfe89eae8efdd7de9d01dcddc77a6c50c6965e1">SPEED_LAST</a>
+<a name="l00277"></a>00277 };
+<a name="l00278"></a>00278 
+<a name="l00279"></a><a class="code" href="define_8h.html#ac71895d926967f1628df19884938d251">00279</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#ac71895d926967f1628df19884938d251">enPhysicViscosity</a> {
+<a name="l00280"></a><a class="code" href="define_8h.html#ac71895d926967f1628df19884938d251aaea5e9b46633791cc9f81523382de0e4">00280</a>   <a class="code" href="define_8h.html#ac71895d926967f1628df19884938d251aaea5e9b46633791cc9f81523382de0e4">VISCOSITY_MPA_SS</a>,
+<a name="l00281"></a><a class="code" href="define_8h.html#ac71895d926967f1628df19884938d251a950f22cf92a5f266f59c75c55f3b1e88">00281</a>   <a class="code" href="define_8h.html#ac71895d926967f1628df19884938d251a950f22cf92a5f266f59c75c55f3b1e88">VISCOSITY_LAST</a>
+<a name="l00282"></a>00282 };
+<a name="l00283"></a>00283 
+<a name="l00284"></a><a class="code" href="define_8h.html#aa60450181c397e92b350db49c5a2c584">00284</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#aa60450181c397e92b350db49c5a2c584">enPhysicFlow</a> {
+<a name="l00285"></a><a class="code" href="define_8h.html#aa60450181c397e92b350db49c5a2c584a77e856010cba155c3d76f8699a8a4530">00285</a>   <a class="code" href="define_8h.html#aa60450181c397e92b350db49c5a2c584a77e856010cba155c3d76f8699a8a4530">FLOW_M3_DD</a>,
+<a name="l00286"></a><a class="code" href="define_8h.html#aa60450181c397e92b350db49c5a2c584afb935315b2ac66b7bce425b94891217a">00286</a>   <a class="code" href="define_8h.html#aa60450181c397e92b350db49c5a2c584afb935315b2ac66b7bce425b94891217a">FLOW_LAST</a>
+<a name="l00287"></a>00287 };
+<a name="l00288"></a>00288 
+<a name="l00289"></a><a class="code" href="define_8h.html#a23de9f12c5faaa52d0b2cd5c41540886">00289</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a23de9f12c5faaa52d0b2cd5c41540886">emPhysicPower</a> {
+<a name="l00290"></a><a class="code" href="define_8h.html#a23de9f12c5faaa52d0b2cd5c41540886adf0bfdf4e24a33496f4535cb671a7685">00290</a>   <a class="code" href="define_8h.html#a23de9f12c5faaa52d0b2cd5c41540886adf0bfdf4e24a33496f4535cb671a7685">POWER_W</a>,
+<a name="l00291"></a><a class="code" href="define_8h.html#a23de9f12c5faaa52d0b2cd5c41540886ac36a2eed7eae238b0ee5b92931e83947">00291</a>   <a class="code" href="define_8h.html#a23de9f12c5faaa52d0b2cd5c41540886ac36a2eed7eae238b0ee5b92931e83947">POWER_KW</a>,
+<a name="l00292"></a><a class="code" href="define_8h.html#a23de9f12c5faaa52d0b2cd5c41540886ae45acba014aab9998bb7104c69ca0c17">00292</a>   <a class="code" href="define_8h.html#a23de9f12c5faaa52d0b2cd5c41540886ae45acba014aab9998bb7104c69ca0c17">POWER_LAST</a>
+<a name="l00293"></a>00293 };
+<a name="l00294"></a>00294 
+<a name="l00295"></a><a class="code" href="define_8h.html#a2bb088966600f44ef3d9f049674a253f">00295</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a2bb088966600f44ef3d9f049674a253f">enPhysicActivEnergy</a> {
+<a name="l00296"></a><a class="code" href="define_8h.html#a2bb088966600f44ef3d9f049674a253fa3fe6ec86ebdb01d0fa7019763ebfe5f4">00296</a>   <a class="code" href="define_8h.html#a2bb088966600f44ef3d9f049674a253fa3fe6ec86ebdb01d0fa7019763ebfe5f4">ACTIVE_ENERGY_W_HH</a>,
+<a name="l00297"></a><a class="code" href="define_8h.html#a2bb088966600f44ef3d9f049674a253fa8076594ebdcde5e3b6de84af497606c0">00297</a>   <a class="code" href="define_8h.html#a2bb088966600f44ef3d9f049674a253fa8076594ebdcde5e3b6de84af497606c0">ACTIVE_ENERGY_KW_HH</a>,
+<a name="l00298"></a><a class="code" href="define_8h.html#a2bb088966600f44ef3d9f049674a253fa8fb92eeb1096cadfff067575b460506b">00298</a>   <a class="code" href="define_8h.html#a2bb088966600f44ef3d9f049674a253fa8fb92eeb1096cadfff067575b460506b">ACTIVE_ENERGY_LAST</a>,
+<a name="l00299"></a>00299 };
+<a name="l00300"></a>00300 
+<a name="l00301"></a><a class="code" href="define_8h.html#a6777f217efa79e92e03958d56a5a2b05">00301</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a6777f217efa79e92e03958d56a5a2b05">enPhysicReactivEnergy</a> {
+<a name="l00302"></a><a class="code" href="define_8h.html#a6777f217efa79e92e03958d56a5a2b05a3a8a0be5fa536939a5baceb2c0771646">00302</a>   <a class="code" href="define_8h.html#a6777f217efa79e92e03958d56a5a2b05a3a8a0be5fa536939a5baceb2c0771646">REACTIVE_ENERGY_VAR_HH</a>,
+<a name="l00303"></a><a class="code" href="define_8h.html#a6777f217efa79e92e03958d56a5a2b05a01e308369b4aea126b778861baaa823a">00303</a>   <a class="code" href="define_8h.html#a6777f217efa79e92e03958d56a5a2b05a01e308369b4aea126b778861baaa823a">REACTIVE_ENERGY_KVAR_HH</a>,
+<a name="l00304"></a><a class="code" href="define_8h.html#a6777f217efa79e92e03958d56a5a2b05aff9ab6fb72065428ddec00e04cd15443">00304</a>   <a class="code" href="define_8h.html#a6777f217efa79e92e03958d56a5a2b05aff9ab6fb72065428ddec00e04cd15443">REACTIVE_ENERGY_LAST</a>,
+<a name="l00305"></a>00305 };
+<a name="l00306"></a>00306 
+<a name="l00307"></a><a class="code" href="define_8h.html#a06b637280995ebad7a5898331a95f90d">00307</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a06b637280995ebad7a5898331a95f90d">enPhysicFullEnergy</a> {
+<a name="l00308"></a><a class="code" href="define_8h.html#a06b637280995ebad7a5898331a95f90da0e478f2c5cff65ffa7cbf189e5e2072c">00308</a>   <a class="code" href="define_8h.html#a06b637280995ebad7a5898331a95f90da0e478f2c5cff65ffa7cbf189e5e2072c">FULL_ENERGY_VAHH</a>,
+<a name="l00309"></a><a class="code" href="define_8h.html#a06b637280995ebad7a5898331a95f90da03e0f70a468c654e04f398846f8ff4eb">00309</a>   <a class="code" href="define_8h.html#a06b637280995ebad7a5898331a95f90da03e0f70a468c654e04f398846f8ff4eb">FULL_ENERGY_LAST</a>
+<a name="l00310"></a>00310 };
+<a name="l00311"></a>00311 
+<a name="l00312"></a><a class="code" href="define_8h.html#a5efdd0e6208e29c7fbaacc4228f28088">00312</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a5efdd0e6208e29c7fbaacc4228f28088">enPhysicRate</a> {
+<a name="l00313"></a><a class="code" href="define_8h.html#a5efdd0e6208e29c7fbaacc4228f28088a824535a62cd446112e116f996cc2a5bc">00313</a>   <a class="code" href="define_8h.html#a5efdd0e6208e29c7fbaacc4228f28088a824535a62cd446112e116f996cc2a5bc">RATE_NM</a>,
+<a name="l00314"></a><a class="code" href="define_8h.html#a5efdd0e6208e29c7fbaacc4228f28088a1fa412d53eb1e3544317d6940cb1bff6">00314</a>   <a class="code" href="define_8h.html#a5efdd0e6208e29c7fbaacc4228f28088a1fa412d53eb1e3544317d6940cb1bff6">RATE_LAST</a>
+<a name="l00315"></a>00315 };
+<a name="l00316"></a>00316 
+<a name="l00317"></a><a class="code" href="define_8h.html#ac9898a9abe2a272e8d1f35cdfcb9b4b3">00317</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#ac9898a9abe2a272e8d1f35cdfcb9b4b3">enPhysicIndunctance</a> {
+<a name="l00318"></a><a class="code" href="define_8h.html#ac9898a9abe2a272e8d1f35cdfcb9b4b3acd5b544352c35137b1bddd344f434863">00318</a>   <a class="code" href="define_8h.html#ac9898a9abe2a272e8d1f35cdfcb9b4b3acd5b544352c35137b1bddd344f434863">INDUNCTANCE_MH</a>,
+<a name="l00319"></a><a class="code" href="define_8h.html#ac9898a9abe2a272e8d1f35cdfcb9b4b3a40c26ab34d0b4739143f3c63134f6510">00319</a>   <a class="code" href="define_8h.html#ac9898a9abe2a272e8d1f35cdfcb9b4b3a40c26ab34d0b4739143f3c63134f6510">INDUNCTANCE_LAST</a>
+<a name="l00320"></a>00320 };
+<a name="l00321"></a>00321 
+<a name="l00325"></a><a class="code" href="define_8h.html#a6f04f7b3927cf2fce2b1d778482393e3">00325</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a6f04f7b3927cf2fce2b1d778482393e3" title="Перечисление типов двигателя">enMotorType</a> {
+<a name="l00326"></a><a class="code" href="define_8h.html#a6f04f7b3927cf2fce2b1d778482393e3aa897f019afc753e105a293e3f9d766cc">00326</a>   <a class="code" href="define_8h.html#a6f04f7b3927cf2fce2b1d778482393e3aa897f019afc753e105a293e3f9d766cc">VSD_MOTOR_TYPE_ASYNC</a> = 0,                 
+<a name="l00327"></a><a class="code" href="define_8h.html#a6f04f7b3927cf2fce2b1d778482393e3af3e8353c7a1073433c274d2347ae669f">00327</a>   <a class="code" href="define_8h.html#a6f04f7b3927cf2fce2b1d778482393e3af3e8353c7a1073433c274d2347ae669f" title="Асинхронный двигатель">VSD_MOTOR_TYPE_VENT</a>                       
+<a name="l00328"></a>00328 };
+<a name="l00329"></a>00329 
+<a name="l00333"></a><a class="code" href="define_8h.html#a7926fc9c3608b29776b672048414fddd">00333</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a7926fc9c3608b29776b672048414fddd" title="Перечисление направлений вращений двигателя">enRotation</a> {
+<a name="l00334"></a><a class="code" href="define_8h.html#a7926fc9c3608b29776b672048414fddda2dc981a94dff587287bc0963b2ecfa19">00334</a>   <a class="code" href="define_8h.html#a7926fc9c3608b29776b672048414fddda2dc981a94dff587287bc0963b2ecfa19">VSD_ROTATION_DIRECT</a> = 0,                   
+<a name="l00335"></a><a class="code" href="define_8h.html#a7926fc9c3608b29776b672048414fddda7f6939649c6422a60ca26f68f80eeafc">00335</a>   <a class="code" href="define_8h.html#a7926fc9c3608b29776b672048414fddda7f6939649c6422a60ca26f68f80eeafc" title="Прямое(правое) направление вращения">VSD_ROTATION_REVERSE</a>                       
+<a name="l00336"></a>00336 };
+<a name="l00337"></a>00337 
+<a name="l00341"></a><a class="code" href="define_8h.html#aeabe5257343f98fd746e62b1bd3ad0d0">00341</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#aeabe5257343f98fd746e62b1bd3ad0d0" title="Перечисление типов управления двигателем">enMotorControl</a> {
+<a name="l00342"></a><a class="code" href="define_8h.html#aeabe5257343f98fd746e62b1bd3ad0d0acaf8af264d81ee6dfcd85efb651ca4dd">00342</a>   <a class="code" href="define_8h.html#aeabe5257343f98fd746e62b1bd3ad0d0acaf8af264d81ee6dfcd85efb651ca4dd">VSD_MOTOR_CONTROL_UF</a> = 0,                 
+<a name="l00343"></a><a class="code" href="define_8h.html#aeabe5257343f98fd746e62b1bd3ad0d0a66d2522f455f704a0509dbe7703ee739">00343</a>   <a class="code" href="define_8h.html#aeabe5257343f98fd746e62b1bd3ad0d0a66d2522f455f704a0509dbe7703ee739" title="Метод управления U/f.">VSD_MOTOR_CONTROL_VECT</a>                    
+<a name="l00344"></a>00344 };
+<a name="l00345"></a>00345 
+<a name="l00350"></a><a class="code" href="define_8h.html#a1798c5af0d85e9b43c179d4a82ed3aff">00350</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a1798c5af0d85e9b43c179d4a82ed3aff" title="The enUfType enum Перечисление типов зависимости U/f.">enUfType</a> {
+<a name="l00352"></a><a class="code" href="define_8h.html#a1798c5af0d85e9b43c179d4a82ed3affa37cd306fa9639b92de287858c370f2dd">00352</a>   <a class="code" href="define_8h.html#a1798c5af0d85e9b43c179d4a82ed3affa37cd306fa9639b92de287858c370f2dd" title="По точкам">VSD_UF_TYPE_POINT</a> = 0,
+<a name="l00354"></a><a class="code" href="define_8h.html#a1798c5af0d85e9b43c179d4a82ed3affab88a1c5ab112c7e984692e2db13e4c3c">00354</a>   <a class="code" href="define_8h.html#a1798c5af0d85e9b43c179d4a82ed3affab88a1c5ab112c7e984692e2db13e4c3c" title="Линейное">VSD_UF_TYPE_LINE</a>,
+<a name="l00356"></a><a class="code" href="define_8h.html#a1798c5af0d85e9b43c179d4a82ed3affae048cb4e4fa4be2be3c16173e5ccd4b1">00356</a>   <a class="code" href="define_8h.html#a1798c5af0d85e9b43c179d4a82ed3affae048cb4e4fa4be2be3c16173e5ccd4b1" title="Квадратичное">VSD_UF_TYPE_SQR</a>,
+<a name="l00358"></a><a class="code" href="define_8h.html#a1798c5af0d85e9b43c179d4a82ed3affa7038ffd13c70d37e1f3bf7bb1408cdae">00358</a>   <a class="code" href="define_8h.html#a1798c5af0d85e9b43c179d4a82ed3affa7038ffd13c70d37e1f3bf7bb1408cdae" title="Обратно квадратичное">VSD_UF_TYPE_SQRT</a>
+<a name="l00359"></a>00359 };
+<a name="l00360"></a>00360 
+<a name="l00365"></a><a class="code" href="define_8h.html#a262b2739c4de9db8ed65ccbaa9374e7d">00365</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a262b2739c4de9db8ed65ccbaa9374e7d" title="The enNominalVoltage enum Перечисление типов номинального напряжения">enNominalVoltage</a> {
+<a name="l00367"></a><a class="code" href="define_8h.html#a262b2739c4de9db8ed65ccbaa9374e7dabc381ff306323e38b87302c688cd0795">00367</a>   <a class="code" href="define_8h.html#a262b2739c4de9db8ed65ccbaa9374e7dabc381ff306323e38b87302c688cd0795" title="380 вольт">NOMINAL_VOLTAGE_380</a> = 0,
+<a name="l00369"></a><a class="code" href="define_8h.html#a262b2739c4de9db8ed65ccbaa9374e7da1b22887b927fd383123ee6044a16ce1f">00369</a>   <a class="code" href="define_8h.html#a262b2739c4de9db8ed65ccbaa9374e7da1b22887b927fd383123ee6044a16ce1f" title="480 вольт">NOMINAL_VOLTAGE_480</a>,
+<a name="l00371"></a><a class="code" href="define_8h.html#a262b2739c4de9db8ed65ccbaa9374e7da523f6c901d2846a4f54a63de179bf7e4">00371</a>   <a class="code" href="define_8h.html#a262b2739c4de9db8ed65ccbaa9374e7da523f6c901d2846a4f54a63de179bf7e4" title="500 вольт">NOVINAL_VOLTAGE_500</a>
+<a name="l00372"></a>00372 };
+<a name="l00373"></a>00373 
+<a name="l00378"></a><a class="code" href="define_8h.html#a24e5a773bf6a897723698e46852daeee">00378</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a24e5a773bf6a897723698e46852daeee" title="The enNominalFrequency enum Перечисление номинальная частота">enNominalFrequency</a> {
+<a name="l00380"></a><a class="code" href="define_8h.html#a24e5a773bf6a897723698e46852daeeea1885148d66c03760a46532a1bfeeba3a">00380</a>   <a class="code" href="define_8h.html#a24e5a773bf6a897723698e46852daeeea1885148d66c03760a46532a1bfeeba3a" title="50Гц">NOMINAL_FREQUENCY_50</a> = 0,
+<a name="l00382"></a><a class="code" href="define_8h.html#a24e5a773bf6a897723698e46852daeeea04f57d7ee1beac6edd0a630ddd05b7e8">00382</a>   <a class="code" href="define_8h.html#a24e5a773bf6a897723698e46852daeeea04f57d7ee1beac6edd0a630ddd05b7e8" title="60Гц">NOMINAL_FREQUENCY_60</a>
+<a name="l00383"></a>00383 };
+<a name="l00384"></a>00384 
+<a name="l00389"></a><a class="code" href="define_8h.html#a6b8b88e8290e5b16c4fdec9210b06272">00389</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a6b8b88e8290e5b16c4fdec9210b06272" title="The enCableCross enum Перечисление сечений кабеля">enCableCross</a> {
+<a name="l00391"></a><a class="code" href="define_8h.html#a6b8b88e8290e5b16c4fdec9210b06272acb59e51e47d50f6104b38b3e06d9ee98">00391</a>   <a class="code" href="define_8h.html#a6b8b88e8290e5b16c4fdec9210b06272acb59e51e47d50f6104b38b3e06d9ee98" title="16">CABLE_CROSS_16</a> = 0,
+<a name="l00393"></a><a class="code" href="define_8h.html#a6b8b88e8290e5b16c4fdec9210b06272abeecdf3110028b88ab2138fccb2a4659">00393</a>   <a class="code" href="define_8h.html#a6b8b88e8290e5b16c4fdec9210b06272abeecdf3110028b88ab2138fccb2a4659" title="21">CABLE_CROSS_21</a>,
+<a name="l00395"></a><a class="code" href="define_8h.html#a6b8b88e8290e5b16c4fdec9210b06272a7c37058daa8155b446ca1bd35316d48f">00395</a>   <a class="code" href="define_8h.html#a6b8b88e8290e5b16c4fdec9210b06272a7c37058daa8155b446ca1bd35316d48f" title="25">CABLE_CROSS_25</a>,
+<a name="l00397"></a><a class="code" href="define_8h.html#a6b8b88e8290e5b16c4fdec9210b06272a468bfe303d35ce8b413dbdf96ff42591">00397</a>   <a class="code" href="define_8h.html#a6b8b88e8290e5b16c4fdec9210b06272a468bfe303d35ce8b413dbdf96ff42591" title="33">CABLE_CROSS_33</a>,
+<a name="l00399"></a><a class="code" href="define_8h.html#a6b8b88e8290e5b16c4fdec9210b06272a7f1428e9b6be4b13e676364c9bf4c6a9">00399</a>   <a class="code" href="define_8h.html#a6b8b88e8290e5b16c4fdec9210b06272a7f1428e9b6be4b13e676364c9bf4c6a9" title="42">CABLE_CROSS_42</a>
+<a name="l00400"></a>00400 };
+<a name="l00401"></a>00401 
+<a name="l00406"></a><a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181">00406</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181" title="The enTypeDHS enum Перечисление типов ТМС">enTypeDHS</a> {
+<a name="l00408"></a><a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181a1144818b0222fcbf1b4a817f8ea9d3ba">00408</a>   <a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181a1144818b0222fcbf1b4a817f8ea9d3ba" title="Новомет">TYPE_DHS_NOVOMET</a>,
+<a name="l00410"></a><a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181a703e7ded78271f71ffefcb3021730f5e">00410</a>   <a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181a703e7ded78271f71ffefcb3021730f5e" title="Алмаз">TYPE_DHS_ALMAZ</a>,
+<a name="l00412"></a><a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181a7504af49024dee437da555942c9e0286">00412</a>   <a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181a7504af49024dee437da555942c9e0286" title="Борец">TYPE_DHS_BORETS</a>,
+<a name="l00414"></a><a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181a832523c2091b9aee8e9f12e02553a3dd">00414</a>   <a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181a832523c2091b9aee8e9f12e02553a3dd" title="Электон">TYPE_DHS_ELEKTON</a>,
+<a name="l00416"></a><a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181a9246b2826833878af6b0f19473362262">00416</a>   <a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181a9246b2826833878af6b0f19473362262" title="Эталон">TYPE_DHS_ETALON</a>,
+<a name="l00418"></a><a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181a5e898fad30e27873e783ffe5b5ec87f2">00418</a>   <a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181a5e898fad30e27873e783ffe5b5ec87f2" title="Ирз">TYPE_DHS_IRZ</a>,
+<a name="l00420"></a><a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181a6062462f7b7b5a4051a4f81cb5f51f45">00420</a>   <a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181a6062462f7b7b5a4051a4f81cb5f51f45" title="Орион">TYPE_DHS_ORION</a>,
+<a name="l00422"></a><a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181aaa5b27a93bb9c6756379d49303dc7511">00422</a>   <a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181aaa5b27a93bb9c6756379d49303dc7511" title="Шлюмберже">TYPE_DHS_PIC_V2</a>,
+<a name="l00424"></a><a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181a8e073328039f6893b09f4041275f0db6">00424</a>   <a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181a8e073328039f6893b09f4041275f0db6" title="Скад">TYPE_DHS_SCAD</a>,
+<a name="l00426"></a><a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181aefcfa483da96edd02606f324e1d4bd03">00426</a>   <a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181aefcfa483da96edd02606f324e1d4bd03" title="Скан">TYPE_DHS_SCAN</a>,
+<a name="l00428"></a><a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181af136d5ea0dff8d68f41336946d9555bc">00428</a>   <a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181af136d5ea0dff8d68f41336946d9555bc" title="Триол">TYPE_DHS_TRIOL</a>,
+<a name="l00430"></a><a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181aee11862d60dd42d23f28dc904cb33d13">00430</a>   <a class="code" href="define_8h.html#af450e658ee4754d589599c813544b181aee11862d60dd42d23f28dc904cb33d13" title="Зенит">TYPE_DHS_ZENIT</a>
+<a name="l00431"></a>00431 };
+<a name="l00432"></a>00432 
+<a name="l00437"></a><a class="code" href="define_8h.html#a741de5062d4d458670936367612e1972">00437</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a741de5062d4d458670936367612e1972" title="The enByteRate enum Скорость устройства по RS.">enByteRate</a> {
+<a name="l00438"></a><a class="code" href="define_8h.html#a741de5062d4d458670936367612e1972a288e3a22a25c8c843239d363a5eb8987">00438</a>   <a class="code" href="define_8h.html#a741de5062d4d458670936367612e1972a288e3a22a25c8c843239d363a5eb8987">BYTE_RATE_9600</a>,
+<a name="l00439"></a><a class="code" href="define_8h.html#a741de5062d4d458670936367612e1972a8563a2c6c06bb030328859525dc59477">00439</a>   <a class="code" href="define_8h.html#a741de5062d4d458670936367612e1972a8563a2c6c06bb030328859525dc59477">BYTE_RATE_14400</a>,
+<a name="l00440"></a><a class="code" href="define_8h.html#a741de5062d4d458670936367612e1972a6977f4b32874c02b8b12b16786f764c4">00440</a>   <a class="code" href="define_8h.html#a741de5062d4d458670936367612e1972a6977f4b32874c02b8b12b16786f764c4">BYTE_RATE_19200</a>,
+<a name="l00441"></a><a class="code" href="define_8h.html#a741de5062d4d458670936367612e1972a4c5bce622040a15dfe1968c6dd569088">00441</a>   <a class="code" href="define_8h.html#a741de5062d4d458670936367612e1972a4c5bce622040a15dfe1968c6dd569088">BYTE_RATE_38400</a>,
+<a name="l00442"></a><a class="code" href="define_8h.html#a741de5062d4d458670936367612e1972a095f0f55ab8b69de052142132db5b50a">00442</a>   <a class="code" href="define_8h.html#a741de5062d4d458670936367612e1972a095f0f55ab8b69de052142132db5b50a">BYTE_RATE_57600</a>,
+<a name="l00443"></a><a class="code" href="define_8h.html#a741de5062d4d458670936367612e1972aa6eea97628f4a4eac5577e9919c5265b">00443</a>   <a class="code" href="define_8h.html#a741de5062d4d458670936367612e1972aa6eea97628f4a4eac5577e9919c5265b">BYTE_RATE_115200</a>
+<a name="l00444"></a>00444 };
+<a name="l00445"></a>00445 
+<a name="l00450"></a><a class="code" href="define_8h.html#a7315e792b48079df3b856be64e63d823">00450</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a7315e792b48079df3b856be64e63d823" title="The enSequencePhase enum Порядок чередования фаз">enSequencePhase</a> {
+<a name="l00451"></a><a class="code" href="define_8h.html#a7315e792b48079df3b856be64e63d823a72092c94752c4ee23302bc8a93b3be03">00451</a>   <a class="code" href="define_8h.html#a7315e792b48079df3b856be64e63d823a72092c94752c4ee23302bc8a93b3be03">PHASE_ABC</a> = 0,
+<a name="l00452"></a><a class="code" href="define_8h.html#a7315e792b48079df3b856be64e63d823a636cf4cf0171fbc8bea115e52fe19e8f">00452</a>   <a class="code" href="define_8h.html#a7315e792b48079df3b856be64e63d823a636cf4cf0171fbc8bea115e52fe19e8f">PHASE_CBA</a>
+<a name="l00453"></a>00453 };
+<a name="l00454"></a>00454 
+<a name="l00459"></a><a class="code" href="define_8h.html#a7a9c4e72c0038eea2532bcacfa40e388">00459</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a7a9c4e72c0038eea2532bcacfa40e388" title="The enParamProt enum Кретерий защиты">enParamProt</a> {
+<a name="l00460"></a><a class="code" href="define_8h.html#a7a9c4e72c0038eea2532bcacfa40e388a82e6216699d359eb59b5fc4a1f939bff">00460</a>   <a class="code" href="define_8h.html#a7a9c4e72c0038eea2532bcacfa40e388a82e6216699d359eb59b5fc4a1f939bff">PARAM_PROT_POWER</a> = 0,
+<a name="l00461"></a><a class="code" href="define_8h.html#a7a9c4e72c0038eea2532bcacfa40e388a9350e6430dc9e804c444e8c70c1914bb">00461</a>   <a class="code" href="define_8h.html#a7a9c4e72c0038eea2532bcacfa40e388a9350e6430dc9e804c444e8c70c1914bb">PARAM_PROT_CURRENT</a>
+<a name="l00462"></a>00462 };
+<a name="l00463"></a>00463 
+<a name="l00464"></a><a class="code" href="define_8h.html#a759461643b649d1797f732ff4727a61a">00464</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a759461643b649d1797f732ff4727a61a">enValidity</a> {
+<a name="l00465"></a><a class="code" href="define_8h.html#a759461643b649d1797f732ff4727a61aa4d8edc7e2adc7fdbe277488cfc072821">00465</a>   <a class="code" href="define_8h.html#a759461643b649d1797f732ff4727a61aa4d8edc7e2adc7fdbe277488cfc072821">VALIDITY_OK</a>         = 0,
+<a name="l00466"></a><a class="code" href="define_8h.html#a759461643b649d1797f732ff4727a61aa451436902bed9700a1e973b7c1e30b4d">00466</a>   <a class="code" href="define_8h.html#a759461643b649d1797f732ff4727a61aa451436902bed9700a1e973b7c1e30b4d">VALIDITY_ERROR</a>      = 1,
+<a name="l00467"></a><a class="code" href="define_8h.html#a759461643b649d1797f732ff4727a61aaf03b45bb8b313b8056deb75a78b99f1a">00467</a>   <a class="code" href="define_8h.html#a759461643b649d1797f732ff4727a61aaf03b45bb8b313b8056deb75a78b99f1a">VALIDITY_MIN</a>        = 2,
+<a name="l00468"></a><a class="code" href="define_8h.html#a759461643b649d1797f732ff4727a61aab9a94695122001ef51a205c69230770b">00468</a>   <a class="code" href="define_8h.html#a759461643b649d1797f732ff4727a61aab9a94695122001ef51a205c69230770b">VALIDITY_MAX</a>        = 3,
+<a name="l00469"></a><a class="code" href="define_8h.html#a759461643b649d1797f732ff4727a61aac639e9fc263c9ca856ec109859264f27">00469</a>         <a class="code" href="define_8h.html#a759461643b649d1797f732ff4727a61aac639e9fc263c9ca856ec109859264f27">VALIDITY_LAST</a>
+<a name="l00470"></a>00470 };
+<a name="l00471"></a>00471 
+<a name="l00472"></a><a class="code" href="define_8h.html#ae703f3ce955345f6ca0d7b43a3bfab8a">00472</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#ae703f3ce955345f6ca0d7b43a3bfab8a">enUpdate</a> {
+<a name="l00473"></a><a class="code" href="define_8h.html#ae703f3ce955345f6ca0d7b43a3bfab8aada3e6c59b895f66f5b6678668bffe721">00473</a>   <a class="code" href="define_8h.html#ae703f3ce955345f6ca0d7b43a3bfab8aada3e6c59b895f66f5b6678668bffe721">UPDATE_ERROR</a>                          = 0,
+<a name="l00474"></a><a class="code" href="define_8h.html#ae703f3ce955345f6ca0d7b43a3bfab8aa288a29f030fb06cc9f4f5eddb1de2c38">00474</a>   <a class="code" href="define_8h.html#ae703f3ce955345f6ca0d7b43a3bfab8aa288a29f030fb06cc9f4f5eddb1de2c38">UPDATE_LAST</a>
+<a name="l00475"></a>00475 };
+<a name="l00476"></a>00476 
+<a name="l00477"></a><a class="code" href="define_8h.html#a3a16fc3c52e148f8600998cdac08099c">00477</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a3a16fc3c52e148f8600998cdac08099c">enCcsCondition</a> {
+<a name="l00478"></a><a class="code" href="define_8h.html#a3a16fc3c52e148f8600998cdac08099ca8eb0b42a92dde3269d89e365d2ac6702">00478</a>   <a class="code" href="define_8h.html#a3a16fc3c52e148f8600998cdac08099ca8eb0b42a92dde3269d89e365d2ac6702">CCS_CONDITION_STOP</a>,                       
+<a name="l00479"></a><a class="code" href="define_8h.html#a3a16fc3c52e148f8600998cdac08099caa5a0a3cfe4d427464b37c1dc269f86ec">00479</a>   <a class="code" href="define_8h.html#a3a16fc3c52e148f8600998cdac08099caa5a0a3cfe4d427464b37c1dc269f86ec" title="Останов">CCS_CONDITION_STOPPING</a>,                   
+<a name="l00480"></a><a class="code" href="define_8h.html#a3a16fc3c52e148f8600998cdac08099ca748235879140873861e7140e2d4b91c3">00480</a>   <a class="code" href="define_8h.html#a3a16fc3c52e148f8600998cdac08099ca748235879140873861e7140e2d4b91c3" title="Торможение">CCS_CONDITION_RUNNING</a>,                    
+<a name="l00481"></a><a class="code" href="define_8h.html#a3a16fc3c52e148f8600998cdac08099ca63f354168e527bf139c530da1edba868">00481</a>   <a class="code" href="define_8h.html#a3a16fc3c52e148f8600998cdac08099ca63f354168e527bf139c530da1edba868" title="Запуск">CCS_CONDITION_RUN</a>                         
+<a name="l00482"></a>00482 };
+<a name="l00483"></a>00483 
+<a name="l00484"></a><a class="code" href="define_8h.html#a423a83a05804d766c13b55de933c03b4">00484</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a423a83a05804d766c13b55de933c03b4">enCcsWorkingMode</a> {
+<a name="l00485"></a><a class="code" href="define_8h.html#a423a83a05804d766c13b55de933c03b4a9f7daa51b0a2d826136fd95aee96c4db">00485</a>   <a class="code" href="define_8h.html#a423a83a05804d766c13b55de933c03b4a9f7daa51b0a2d826136fd95aee96c4db">CCS_WORKING_MODE_MANUAL</a> = 0,
+<a name="l00486"></a><a class="code" href="define_8h.html#a423a83a05804d766c13b55de933c03b4acb7248a671cb82e581f93354cc54f95c">00486</a>   <a class="code" href="define_8h.html#a423a83a05804d766c13b55de933c03b4acb7248a671cb82e581f93354cc54f95c">CCS_WORKING_MODE_AUTO</a>,
+<a name="l00487"></a><a class="code" href="define_8h.html#a423a83a05804d766c13b55de933c03b4adf77fd2dd0f20d1714bf3c8df1f0e768">00487</a>   <a class="code" href="define_8h.html#a423a83a05804d766c13b55de933c03b4adf77fd2dd0f20d1714bf3c8df1f0e768">CCS_WORKING_MODE_PROGRAM</a>
+<a name="l00488"></a>00488 };
+<a name="l00489"></a>00489 
+<a name="l00490"></a><a class="code" href="define_8h.html#a1fa1ee9edab81e4de1b7216192c7711c">00490</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a1fa1ee9edab81e4de1b7216192c7711c">enVsdCondition</a> {
+<a name="l00492"></a><a class="code" href="define_8h.html#a1fa1ee9edab81e4de1b7216192c7711ca1db8920e046f2e3cfce443b693a9e971">00492</a>   <a class="code" href="define_8h.html#a1fa1ee9edab81e4de1b7216192c7711ca1db8920e046f2e3cfce443b693a9e971" title="Состояние останов">VSD_CONDITION_STOP</a>,
+<a name="l00494"></a><a class="code" href="define_8h.html#a1fa1ee9edab81e4de1b7216192c7711ca5933c1542f2491e627f543127790fee5">00494</a>   <a class="code" href="define_8h.html#a1fa1ee9edab81e4de1b7216192c7711ca5933c1542f2491e627f543127790fee5" title="Состояние торможение">VSD_CONDITION_STOPPING</a>,
+<a name="l00496"></a><a class="code" href="define_8h.html#a1fa1ee9edab81e4de1b7216192c7711ca375c1a80055d35e395da037d32059d0a">00496</a>   <a class="code" href="define_8h.html#a1fa1ee9edab81e4de1b7216192c7711ca375c1a80055d35e395da037d32059d0a" title="Состояние ожидание начала торможения">VSD_CONDITION_WAIT_STOP</a>,
+<a name="l00498"></a><a class="code" href="define_8h.html#a1fa1ee9edab81e4de1b7216192c7711cac4812a9b247a16af6d012dbad8420195">00498</a>   <a class="code" href="define_8h.html#a1fa1ee9edab81e4de1b7216192c7711cac4812a9b247a16af6d012dbad8420195" title="Состояние работа">VSD_CONDITION_RUN</a>,
+<a name="l00500"></a><a class="code" href="define_8h.html#a1fa1ee9edab81e4de1b7216192c7711ca2187bcfda2e6a874ff54c4f5f6c5ad04">00500</a>   <a class="code" href="define_8h.html#a1fa1ee9edab81e4de1b7216192c7711ca2187bcfda2e6a874ff54c4f5f6c5ad04" title="Состояние запуск">VSD_CONDITION_RUNNING</a>,
+<a name="l00502"></a><a class="code" href="define_8h.html#a1fa1ee9edab81e4de1b7216192c7711cac717828245011859da13594dfc0e3db1">00502</a>   <a class="code" href="define_8h.html#a1fa1ee9edab81e4de1b7216192c7711cac717828245011859da13594dfc0e3db1" title="Состояние ожидание запуска">VSD_CONDITION_WAIT_RUN</a>
+<a name="l00503"></a>00503 };
+<a name="l00504"></a>00504 
+<a name="l00505"></a><a class="code" href="define_8h.html#a45dadc0e4bfaadb6ec7c6b629f380c00">00505</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a45dadc0e4bfaadb6ec7c6b629f380c00">enCcsConditionFlag</a> {
+<a name="l00506"></a><a class="code" href="define_8h.html#a45dadc0e4bfaadb6ec7c6b629f380c00a26987f2c24919a588d350cbdc6438116">00506</a>   <a class="code" href="define_8h.html#a45dadc0e4bfaadb6ec7c6b629f380c00a26987f2c24919a588d350cbdc6438116">CCS_CONDITION_FLAG_NULL</a>    = 0,
+<a name="l00507"></a><a class="code" href="define_8h.html#a45dadc0e4bfaadb6ec7c6b629f380c00a06a8fdfa827bddc0e74a6df30c30bb1f">00507</a>   <a class="code" href="define_8h.html#a45dadc0e4bfaadb6ec7c6b629f380c00a06a8fdfa827bddc0e74a6df30c30bb1f">CCS_CONDITION_FLAG_DELAY</a>,                      
+<a name="l00508"></a><a class="code" href="define_8h.html#a45dadc0e4bfaadb6ec7c6b629f380c00a4dcfddd105d7b779834ef83b017e6ac6">00508</a>   <a class="code" href="define_8h.html#a45dadc0e4bfaadb6ec7c6b629f380c00a4dcfddd105d7b779834ef83b017e6ac6" title="Ожидание срабатывания">CCS_CONDITION_FLAG_RESTART</a>,                    
+<a name="l00509"></a><a class="code" href="define_8h.html#a45dadc0e4bfaadb6ec7c6b629f380c00abe5e680ca9960f61e0dcd41f6f804328">00509</a>   <a class="code" href="define_8h.html#a45dadc0e4bfaadb6ec7c6b629f380c00abe5e680ca9960f61e0dcd41f6f804328" title="Ожидание АПВ">CCS_CONDITION_FLAG_BLOCK</a>                       
+<a name="l00510"></a>00510 };
+<a name="l00511"></a>00511 
+<a name="l00515"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372">00515</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372" title="Список причин пуска">LastReasonRun</a> {
+<a name="l00516"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372afc2b6efb6f8f77a529b08616be7f01ed">00516</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372afc2b6efb6f8f77a529b08616be7f01ed" title="Нет пуска">LastReasonRunNone</a>                     = 0,    
+<a name="l00517"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372aa4ba4e19a44aef44162ee9b6f04e029e">00517</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372aa4ba4e19a44aef44162ee9b6f04e029e" title="&quot;Оператор&quot;">LastReasonRunOperator</a>                 = 1,    
+<a name="l00518"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a8802e18298b93754c4cb7edfce26280d">00518</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a8802e18298b93754c4cb7edfce26280d" title="&quot;Автоматический&quot;">LastReasonRunAuto</a>                     = 2,    
+<a name="l00519"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372aced7e3796b99a14163311faa77972191">00519</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372aced7e3796b99a14163311faa77972191" title="&quot;Телеуправление&quot;">LastReasonRunRemote</a>                   = 3,    
+<a name="l00520"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372aa0d18aaf7ad6d844d36c3389ab481d3b">00520</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372aa0d18aaf7ad6d844d36c3389ab481d3b" title="&quot;По программе&quot;">LastReasonRunProgram</a>                  = 4,    
+<a name="l00521"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372ac17484e3e94bf1e453f0eed61e338ce5">00521</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372ac17484e3e94bf1e453f0eed61e338ce5" title="&quot;АПВ по защите: Недогруз двигателя&quot;">LastReasonRunApvUnderloadMotor</a>        = 5,    
+<a name="l00522"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372aa95a8dd3846442a5c1228fc20e5a35dc">00522</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372aa95a8dd3846442a5c1228fc20e5a35dc" title="&quot;АПВ по защите: Перегруз двигателя&quot;">LastReasonRunApvOverloadMotor</a>         = 6,    
+<a name="l00523"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a8562813764b530950ff61e0ce9a2d502">00523</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a8562813764b530950ff61e0ce9a2d502" title="&quot;АПВ по защите: Дисбаланс токов ПЭД&quot;">LastReasonRunApvImbalanceCurMotor</a>     = 7,    
+<a name="l00524"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a3be02646c41520a17a8d1b032044bec5">00524</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a3be02646c41520a17a8d1b032044bec5" title="&quot;АПВ по защите: Снижение питания сети&quot;">LastReasonRunApvUnderVoltIn</a>           = 8,    
+<a name="l00525"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372aca07e4678bb195111d8cc2b0aaf65c2c">00525</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372aca07e4678bb195111d8cc2b0aaf65c2c" title="&quot;АПВ по защите: Превышение питания сети&quot;">LastReasonRunApvOverVoltIn</a>            = 9,    
+<a name="l00526"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a35bd47ddc14b81c1eeea14a00b411edb">00526</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a35bd47ddc14b81c1eeea14a00b411edb" title="&quot;АПВ по защите: Дисбаланс напряжения&quot;">LastReasonRunApvImbalanceVoltIn</a>       = 10,   
+<a name="l00527"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a2e0752bbb764e82d69401385e053b43c">00527</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a2e0752bbb764e82d69401385e053b43c" title="&quot;АПВ по защите: Турбинное вращение&quot;">LastReasonRunApvTurbineRotation</a>       = 11,   
+<a name="l00528"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a244358bfddcbfcdd8bee4accb09bce68">00528</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a244358bfddcbfcdd8bee4accb09bce68" title="&quot;АПВ по защите: Чередование фаз&quot;">LastReasonRunApvPhaseSequence</a>         = 12,   
+<a name="l00529"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a7c658489ab322d60562e36fdd7040068">00529</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a7c658489ab322d60562e36fdd7040068" title="&quot;АПВ по защите: Блокировка двери&quot;">LastReasonRunApvLockDoor</a>              = 13,   
+<a name="l00530"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a8f092d1fba444cb9be8a5bcddfc80e23">00530</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a8f092d1fba444cb9be8a5bcddfc80e23" title="&quot;АПВ по защите: Pmin на приёме насоса&quot;">LastReasonRunApvPressureIntake</a>        = 14,   
+<a name="l00531"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a3cc7d151adcb158b0b3b56a7da43e9b2">00531</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a3cc7d151adcb158b0b3b56a7da43e9b2" title="&quot;АПВ по защите: Перегрев двигателя&quot;">LastReasonRunApvTemperatureMotor</a>      = 15,   
+<a name="l00532"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372aabcd54de3100657a7134c058d8e8441c">00532</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372aabcd54de3100657a7134c058d8e8441c" title="&quot;АПВ по защите: Превышение вибрации&quot;">LastReasonRunApvVibrationMotor</a>        = 16,   
+<a name="l00533"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a2be69831f8b3c12ee4b7d322daac7dd3">00533</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a2be69831f8b3c12ee4b7d322daac7dd3" title="&quot;АПВ по защите: &quot;">LastReasonRunApvUnderPressure1</a>        = 17,   
+<a name="l00534"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a71060451ef02231779b44264a5318209">00534</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a71060451ef02231779b44264a5318209" title="&quot;АПВ по защите: &quot;">LastReasonRunApvMinAnalog1</a>            = 18,   
+<a name="l00535"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a89eb30b4246b025ffd34c916992c92e0">00535</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a89eb30b4246b025ffd34c916992c92e0" title="&quot;АПВ по защите: &quot;">LastReasonRunApvMaxAnalog1</a>            = 19,   
+<a name="l00536"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a673aed8b1e1d8d2128270aabb6ea90fb">00536</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a673aed8b1e1d8d2128270aabb6ea90fb" title="&quot;АПВ по защите: &quot;">LastReasonRunApvMinAnalog2</a>            = 20,   
+<a name="l00537"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a6024e312eb0282ae6b426d9c783d4d17">00537</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a6024e312eb0282ae6b426d9c783d4d17" title="&quot;АПВ по защите: &quot;">LastReasonRunApvMaxAnalog2</a>            = 21,   
+<a name="l00538"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a51d914050ed82b1182904666ec4c88dc">00538</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a51d914050ed82b1182904666ec4c88dc" title="&quot;АПВ по защите: &quot;">LastReasonRunApvFreqPower</a>             = 22,   
+<a name="l00539"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372ac04e612a65bedd5df95b45685a174aca">00539</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372ac04e612a65bedd5df95b45685a174aca" title="&quot;АПВ по защите: &quot;">LastReasonRunApvPower</a>                 = 23,   
+<a name="l00540"></a>00540   <span class="comment">// Дополнительные причины пуска</span>
+<a name="l00541"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372aa22da5c4b23a91d18e1cddb521c8c74f">00541</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372aa22da5c4b23a91d18e1cddb521c8c74f">LastReasonRunMinAnalog3</a>               = 100,  
+<a name="l00542"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a2205719d7d7eb94e81300780e3a1ad6c">00542</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a2205719d7d7eb94e81300780e3a1ad6c">LastReasonRunMinAnalog4</a>               = 101,  
+<a name="l00543"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372adcf3137f0af00bb4354fbb42e2b09bf4">00543</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372adcf3137f0af00bb4354fbb42e2b09bf4">LastReasonRunMaxAnalog3</a>               = 102,  
+<a name="l00544"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372ab489406ba8afa340ab3863345a0eea63">00544</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372ab489406ba8afa340ab3863345a0eea63">LastReasonRunMaxAnalog4</a>               = 103,  
+<a name="l00545"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a5e0443899349f80d07d9fb58b1f18114">00545</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a5e0443899349f80d07d9fb58b1f18114" title="&quot;АПВ по защите: Предел тока двигателя&quot;">LastReasonRunApvCurrentMotor</a>          = 104,  
+<a name="l00546"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a0aa996130757ea33c0249fe5b27d6ff6">00546</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a0aa996130757ea33c0249fe5b27d6ff6" title="&quot;АПВ по защите: Рассинхронизация ПВЭД&quot;">LastReasonRunApvOutOfSyncMotor</a>        = 105,  
+<a name="l00547"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a555dd5d7cb56d8b567818178381097d4">00547</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a555dd5d7cb56d8b567818178381097d4" title="&quot;АПВ по защите: Сопротивление изоляции&quot;">LastReasonRunApvResistIsolation</a>       = 106,  
+<a name="l00548"></a><a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372ae726453133cbca71c1b1d9344ef3a983">00548</a>   <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372ae726453133cbca71c1b1d9344ef3a983" title="&quot;АПВ по защите: Аппаратные защиты ЧРП&quot;">LastReasonRunApvHardwareVsd</a>           = 107,  
+<a name="l00549"></a>00549 };
+<a name="l00550"></a>00550 
+<a name="l00554"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ff">00554</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ff" title="Список причин останова">LastReasonStop</a> {
+<a name="l00555"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa93dce21c52ee5286418d544bfcfdd9cb">00555</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa93dce21c52ee5286418d544bfcfdd9cb" title="Нет останова">LastReasonStopNone</a>                    = 0,    
+<a name="l00556"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffab86b88daca2bdd05bf68477d7e36d02a">00556</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffab86b88daca2bdd05bf68477d7e36d02a" title="&quot;Оператор&quot;">LastReasonStopOperator</a>                = 1,    
+<a name="l00557"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffab11e113d2775c6be4bc5f56b8b2a4785">00557</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffab11e113d2775c6be4bc5f56b8b2a4785" title="&quot;Сопротивление изоляции&quot;">LastReasonStopResistIsolation</a>         = 2,    
+<a name="l00558"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa039ebb5d40b63e2d70be168ec519957c">00558</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa039ebb5d40b63e2d70be168ec519957c" title="&quot;Недогруз двигателя&quot;">LastReasonStopUnderloadMotor</a>          = 3,    
+<a name="l00559"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa5f501044de336ddf753df4a170529a6e">00559</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa5f501044de336ddf753df4a170529a6e" title="&quot;Перегруз двигателя&quot;">LastReasonStopOverloadMotor</a>           = 4,    
+<a name="l00560"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa279607ec21b8900926617489dcb23b27">00560</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa279607ec21b8900926617489dcb23b27" title="&quot;Снижение питания сети&quot;">LastReasonStopUnderVoltIn</a>             = 5,    
+<a name="l00561"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa0cf183d661519fa43e9489c1c47c763c">00561</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa0cf183d661519fa43e9489c1c47c763c" title="&quot;Превышение питания сети&quot;">LastReasonStopOverVoltIn</a>              = 6,    
+<a name="l00562"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa2f1c6ae11b8432f8b2be8916c0a5ee53">00562</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa2f1c6ae11b8432f8b2be8916c0a5ee53" title="&quot;Взлом СУ&quot;">LastReasonStopHackSu</a>                  = 9,    
+<a name="l00563"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa6990c66d0efccfb34984a922173ecc9f">00563</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa6990c66d0efccfb34984a922173ecc9f" title="&quot;Контактный манометр&quot;">LastReasonStopManometr</a>                = 12,   
+<a name="l00564"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa866071ef1a68a5aa5e2f08ebbb35cd4c">00564</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa866071ef1a68a5aa5e2f08ebbb35cd4c" title="&quot;Pmin на приёме насоса&quot;">LastReasonStopPressureIntake</a>          = 13,   
+<a name="l00565"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffaac34d68ce7821bf894ce2efd59896acc">00565</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffaac34d68ce7821bf894ce2efd59896acc" title="&quot;Перегрев двигателя&quot;">LastReasonStopTemperatureMotor</a>        = 14,   
+<a name="l00566"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffae6e76af2182c2444f22f42be632e7059">00566</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffae6e76af2182c2444f22f42be632e7059" title="&quot;Превышение вибрации&quot;">LastReasonStopVibrationMotor</a>          = 16,   
+<a name="l00567"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffaece3e4de0c4e9ec998ebf25c246c79bf">00567</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffaece3e4de0c4e9ec998ebf25c246c79bf" title="&quot;Дисбаланс токов ПЭД&quot;">LastReasonStopImbalanceCurMotor</a>       = 20,   
+<a name="l00568"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa8e27a163b66cf7965c591928289de185">00568</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa8e27a163b66cf7965c591928289de185" title="&quot;Дисбаланс напряжения&quot;">LastReasonStopImbalanceVoltIn</a>         = 21,   
+<a name="l00569"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa310d55d279bb7b2293d5bb8636a4586b">00569</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa310d55d279bb7b2293d5bb8636a4586b" title="&quot;По программе&quot;">LastReasonStopProgram</a>                 = 24,   
+<a name="l00570"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa4eadf80110edbcb639282c0fdf059e6a">00570</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa4eadf80110edbcb639282c0fdf059e6a" title="&quot;Ан.вх.№1 max&quot;">LastReasonStopMaxAnalog1</a>              = 26,   
+<a name="l00571"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa87913b6238222a6db9c9c6421b17f330">00571</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa87913b6238222a6db9c9c6421b17f330" title="&quot;Ан.вх.№2 max&quot;">LastReasonStopMaxAnalog2</a>              = 27,   
+<a name="l00572"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffab2c9d207d733e5712a0e827e220bb249">00572</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffab2c9d207d733e5712a0e827e220bb249" title="&quot;Телеуправление&quot;">LastReasonStopRemote</a>                  = 28,   
+<a name="l00573"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa498e92b25fe117ec89081fe868d35e39">00573</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa498e92b25fe117ec89081fe868d35e39">LastReasonStopNoVoltage</a>               = 30,   
+<a name="l00574"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa8a404b275f976d1db7f8cd39e9e32a57">00574</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa8a404b275f976d1db7f8cd39e9e32a57">LastReasonStopOverloadNoMinVolt</a>       = 35,   
+<a name="l00575"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa1fbf3f16576f5fba963ea158b8ed2480">00575</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa1fbf3f16576f5fba963ea158b8ed2480">LastReasonStopUnderloadNoMinVolt</a>      = 36,   
+<a name="l00576"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffad566094a8d736f363dfad5f815709abd">00576</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffad566094a8d736f363dfad5f815709abd">LastReasonStopOverloadNoMaxVolt</a>       = 37,   
+<a name="l00577"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa61372678eb2c1b36154fe6db8c2574be">00577</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa61372678eb2c1b36154fe6db8c2574be">LastReasonStopUnderloadNoMaxVolt</a>      = 38,   
+<a name="l00578"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffaa342733efc80e12e4caaebf0582b88d0">00578</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffaa342733efc80e12e4caaebf0582b88d0">LastReasonStopImbalanceVolt</a>           = 39,   
+<a name="l00579"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa82b559dec86c75b7b5b83178d37a375d">00579</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa82b559dec86c75b7b5b83178d37a375d">LastReasonStopMinAnalog1</a>              = 41,   
+<a name="l00580"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa7ee4b5ae2b9aaea6c1c7d2ab1600283c">00580</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa7ee4b5ae2b9aaea6c1c7d2ab1600283c">LastReasonStopMinAnalog2</a>              = 42,   
+<a name="l00581"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa8c7f882b903ae9c9ae810d21b0b28088">00581</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa8c7f882b903ae9c9ae810d21b0b28088">LastReasonStopOverloadBadVolt</a>         = 50,   
+<a name="l00582"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffaea72db32f62245c65b175bc7a3251a5e">00582</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffaea72db32f62245c65b175bc7a3251a5e">LastReasonStopUnderloadBadVolt</a>        = 51,   
+<a name="l00583"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffab7073ac94168de8933a3a60c2646d3e3">00583</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffab7073ac94168de8933a3a60c2646d3e3">LastReasonStopImbalanceCurrentBadVolt</a> = 52,   
+<a name="l00584"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa384c8dc802997ab28944a646e5bb715e">00584</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa384c8dc802997ab28944a646e5bb715e">LastReasonStopImbalanceVoltageBadVolt</a> = 53,   
+<a name="l00585"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffadbf1c55f00214e3399362b0be3197d0a">00585</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffadbf1c55f00214e3399362b0be3197d0a">LastReasonStopDigital1</a>                = 59,   
+<a name="l00586"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffae00589361f1b1743bc56bff7b00393e8">00586</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffae00589361f1b1743bc56bff7b00393e8">LastReasonStopDigital2</a>                = 60,   
+<a name="l00587"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa982502895e8ef5e0041b684b4fb4c32b">00587</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa982502895e8ef5e0041b684b4fb4c32b">LastReasonStopDigital3</a>                = 61,   
+<a name="l00588"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa6d50a4f5386d6cb1bfd84e07dd84c093">00588</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa6d50a4f5386d6cb1bfd84e07dd84c093">LastReasonStopDigital4</a>                = 62,   
+<a name="l00589"></a>00589   <span class="comment">// Дополнительные причины останова</span>
+<a name="l00590"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa588a2b59cf7270f8ef74bc1d94c992e5">00590</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa588a2b59cf7270f8ef74bc1d94c992e5">LastReasonStopMinAnalog3</a>              = 100,  
+<a name="l00591"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffac37626c65585e7c246dc942d1a120589">00591</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffac37626c65585e7c246dc942d1a120589">LastReasonStopMinAnalog4</a>              = 101,  
+<a name="l00592"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa83a2f83b83ee446dd829f3b58f75772b">00592</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa83a2f83b83ee446dd829f3b58f75772b">LastReasonStopMaxAnalog3</a>              = 102,  
+<a name="l00593"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffaddabcfd6ef3f604934d3d56ba7825a67">00593</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffaddabcfd6ef3f604934d3d56ba7825a67">LastReasonStopMaxAnalog4</a>              = 103,  
+<a name="l00594"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffaf2517da297a500f5e83606c64f65e11d">00594</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffaf2517da297a500f5e83606c64f65e11d" title="&quot;Предел тока двигателя&quot;">LastReasonStopCurrentMotor</a>            = 104,  
+<a name="l00595"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffad9d99d48972ce4f26608bdc472f5f8e1">00595</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffad9d99d48972ce4f26608bdc472f5f8e1" title="&quot;Рассинхронизация ПВЭД&quot;">LastReasonStopOutOfSyncMotor</a>          = 105,  
+<a name="l00596"></a><a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffafc41f3f7b831e9d636872a83e0ff5517">00596</a>   <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffafc41f3f7b831e9d636872a83e0ff5517" title="&quot;Аппаратные защиты ЧРП&quot;">LastReasonStopHardwareVsd</a>             = 106,  
+<a name="l00597"></a>00597 };
+<a name="l00598"></a>00598 
+<a name="l00602"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00">00602</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00" title="Флаги статусных регистров инвертора">enVsdFlags</a> {
+<a name="l00603"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00aa775b3e0ef3951d971f38dcf80c2c0d6">00603</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00aa775b3e0ef3951d971f38dcf80c2c0d6" title="Запуск ПЧ">VSD_STATUS_STARTED</a>          = 0,          
+<a name="l00604"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a093034599344f85a3a4c1bfcc7cb3f60">00604</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a093034599344f85a3a4c1bfcc7cb3f60" title="Ожидаем запуска выпрямителя">VSD_STATUS_WAIT_RECT_START</a>,               
+<a name="l00605"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a34eb015a02fffef6084b4315e065a6f4">00605</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a34eb015a02fffef6084b4315e065a6f4" title="Инвертор остановлен по изменению важного параметра">VSD_STATUS_STOPPED_REGISTER</a>,              
+<a name="l00606"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00afbef194129eca706ff63c0afef074e90">00606</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00afbef194129eca706ff63c0afef074e90" title="Инвертор остановлен по команде извне">VSD_STATUS_STOPPED_EXTERNAL</a>,              
+<a name="l00607"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a948929e0729947975cea3afc20229ddd">00607</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a948929e0729947975cea3afc20229ddd" title="Ожидание остнова выпрямителя">VSD_STATUS_WAIT_RECT_STOP</a>,                
+<a name="l00608"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00ac552ad5a06c479f81a7186693bacb01a">00608</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00ac552ad5a06c479f81a7186693bacb01a" title="Остановлен по причине FAULT.">VSD_STATUS_FAULT_STOPPED</a>,                 
+<a name="l00609"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00ab61aa8a2389984a80298a072f5ed24e7">00609</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00ab61aa8a2389984a80298a072f5ed24e7" title="Правое направление вращения">VSD_STATUS_RIGHT_DIRECTION</a>,               
+<a name="l00610"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00adf1dfea4789f210e33054370b5286514">00610</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00adf1dfea4789f210e33054370b5286514" title="Токоограничение">VSD_STATUS_I_LIMIT</a>,                       
+<a name="l00611"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00aa0b03742f050c89a2c1945320ee247c5">00611</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00aa0b03742f050c89a2c1945320ee247c5" title="Недостаточно напряжения">VSD_STATUS_ULOW</a>,                          
+<a name="l00612"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00ae5a94faa8878728f9a6ec31e6e9719e7">00612</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00ae5a94faa8878728f9a6ec31e6e9719e7" title="Остановлен аварийно">VSD_STATUS_STOPPED_ALARM</a>,                 
+<a name="l00613"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a3b79f35fc330c50142c81a247a4d09ee">00613</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a3b79f35fc330c50142c81a247a4d09ee" title="Остановлен по снижению напряжения на шин">VSD_STATUS_UD_LOW_FAULT</a>,                  
+<a name="l00614"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a8a3e2fcf483806c7a60889ff769ec529">00614</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a8a3e2fcf483806c7a60889ff769ec529" title="Остановлен по превышению напряжения на шине">VSD_STATUS_UD_HIGH_FAULT</a>,                 
+<a name="l00615"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a31846f4b796b7f5854bba87770db14df">00615</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a31846f4b796b7f5854bba87770db14df" title="Режим плавной остановки двигателя">VSD_STATUS_TO_STOP_MODE</a>,                  
+<a name="l00616"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a160ce7852061d78d0a866867326fce2a">00616</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a160ce7852061d78d0a866867326fce2a" title="Остановлен по несимметрии входного напряжения">VSD_STATUS_UIN_ASYM</a>,                      
+<a name="l00617"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00ab6bbc99b3c513ae7ab907fac1dd66ccc">00617</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00ab6bbc99b3c513ae7ab907fac1dd66ccc" title="Остановлен по КЗ от выпрямителя">VSD_STATUS_URECT_SHORTCIRCUIT</a>,            
+<a name="l00618"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00ae3084c2ed542ae166cbd845bb4d0f9e9">00618</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00ae3084c2ed542ae166cbd845bb4d0f9e9" title="Резерв">VSD_STATUS_RESERVED</a>,                      
+<a name="l00619"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a3be33d1ece4d70991fd40a38c38082b5">00619</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a3be33d1ece4d70991fd40a38c38082b5" title="Сработала токовая тепловая защита инвертора">VSD_STATUS_FC_I2T_ERR</a>       = 16,         
+<a name="l00620"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a3e4c59db5f314b41529b539a73dbe0cf">00620</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a3e4c59db5f314b41529b539a73dbe0cf" title="Система автонастройки не смогла определить параметры линии">VSD_STATUS_AST_ERR</a>,                       
+<a name="l00621"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a7833560aae233bad6404176c673353b5">00621</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a7833560aae233bad6404176c673353b5" title="Превышение порога мгновенного токоограничения">VSD_STATUS_I_LIMIT_FAST</a>,                  
+<a name="l00622"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00ad80271a5052709e8bc8ddeb990cb5abd">00622</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00ad80271a5052709e8bc8ddeb990cb5abd" title="Включена оптимизация по току">VSD_STATUS_CURRENT_OPT</a>,                   
+<a name="l00623"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a53674f62f133e486567835c5d6b233fe">00623</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a53674f62f133e486567835c5d6b233fe" title="Включена оптимизация по выходной мощности">VSD_STATUS_POWER_OPT</a>,                     
+<a name="l00624"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00abcf9037ce1bfe0a96dd85e414cd82c06">00624</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00abcf9037ce1bfe0a96dd85e414cd82c06" title="Оптимизация состоялась">VSD_STATUS_OPT_DONE</a>,                      
+<a name="l00625"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a52bd718dd198c73bab5ec01f7fed9d94">00625</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a52bd718dd198c73bab5ec01f7fed9d94" title="Бит типа двигателя 0.">VSD_STATUS_M_TYPE0</a>,                       
+<a name="l00626"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00add5685b5c2fd2d931cb3edece7a55118">00626</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00add5685b5c2fd2d931cb3edece7a55118" title="Бит типа двигателя 1.">VSD_STATUS_M_TYPE1</a>,                       
+<a name="l00627"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00ab799257a3d0a43bf2d3c440166f33b8e">00627</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00ab799257a3d0a43bf2d3c440166f33b8e" title="Задействован режим разряда шины">VSD_STATUS_DISCHARGE_ON</a>,                  
+<a name="l00628"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00ac220e42e471918c82b85bff3bcb00fdd">00628</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00ac220e42e471918c82b85bff3bcb00fdd" title="Режим разряда шины работает">VSD_STATUS_DISCAHRGE</a>,                     
+<a name="l00629"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a0f670a24f8eb76f71467de2adef5e068">00629</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a0f670a24f8eb76f71467de2adef5e068" title="Ошибка режима разряда шины">VSD_STATUS_DISCHARGE_ERR</a>,                 
+<a name="l00630"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a3194ab6680bf38347f1f8944120de673">00630</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a3194ab6680bf38347f1f8944120de673" title="Ошибка векторного режима">VSD_STATUS_VC_ERR</a>,                        
+<a name="l00631"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00aad9a9dd212271a86594a02142cb7cd9b">00631</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00aad9a9dd212271a86594a02142cb7cd9b" title="Быстрая токовая защита двигателя">VSD_STATUS_I_FAST_ERR</a>,                    
+<a name="l00632"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a757d70ba6241292ba4d98545e21161db">00632</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a757d70ba6241292ba4d98545e21161db" title="Токовая защита двигателя (перегруз)">VSD_STATUS_M_I2T_ERR</a>,                     
+<a name="l00633"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a505835e4e8ae9beba955edafb8042ddc">00633</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a505835e4e8ae9beba955edafb8042ddc" title="OverPWM тип 1.">VSD_STATUS_OWERPWM1</a>,                      
+<a name="l00634"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00ab1b4eeb34985e3c6ed2e80517624adab">00634</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00ab1b4eeb34985e3c6ed2e80517624adab" title="OverPWM тип 2.">VSD_STATUS_OWERPWM2</a>,                      
+<a name="l00635"></a><a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a464660a3df0134871163330e03cf39b0">00635</a>   <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a464660a3df0134871163330e03cf39b0">VSD_STATUS_3</a>               = 32
+<a name="l00636"></a>00636 };
+<a name="l00637"></a>00637 
+<a name="l00641"></a><a class="code" href="define_8h.html#a393227d2a988f4b7e55db32e9d98c37c">00641</a> <span class="keyword">enum</span> <a class="code" href="define_8h.html#a393227d2a988f4b7e55db32e9d98c37c" title="Список частотных приводов поддерживаемых в ПО">enVsdType</a> {
+<a name="l00642"></a><a class="code" href="define_8h.html#a393227d2a988f4b7e55db32e9d98c37ca1d99c5e9b7109b541c4b9a3738805e35">00642</a>   <a class="code" href="define_8h.html#a393227d2a988f4b7e55db32e9d98c37ca1d99c5e9b7109b541c4b9a3738805e35" title="Неизвестный или отсутствует">VSD_TYPE_NULL</a> = 0,                        
+<a name="l00643"></a><a class="code" href="define_8h.html#a393227d2a988f4b7e55db32e9d98c37caf3d09d84cc1898b40502ff1d81c30452">00643</a>   <a class="code" href="define_8h.html#a393227d2a988f4b7e55db32e9d98c37caf3d09d84cc1898b40502ff1d81c30452" title="ЧРП Новомет">VSD_TYPE_NOVOMET</a>,                         
+<a name="l00644"></a><a class="code" href="define_8h.html#a393227d2a988f4b7e55db32e9d98c37ca434cf9fd74cbbb5bf959201dbc0296dc">00644</a>   <a class="code" href="define_8h.html#a393227d2a988f4b7e55db32e9d98c37ca434cf9fd74cbbb5bf959201dbc0296dc" title="ЧРП Danfoss.">VSD_TYPE_DANFOSS</a>,                         
+<a name="l00645"></a><a class="code" href="define_8h.html#a393227d2a988f4b7e55db32e9d98c37ca15b566ecda1b7332c071fad90985b43f">00645</a>   <a class="code" href="define_8h.html#a393227d2a988f4b7e55db32e9d98c37ca15b566ecda1b7332c071fad90985b43f" title="ЧРП Эталон">VSD_TYPE_ETALON</a>                           
+<a name="l00646"></a>00646 };
+<a name="l00647"></a>00647 
+<a name="l00648"></a>00648 
+<a name="l00649"></a>00649 
+<a name="l00650"></a>00650 <span class="preprocessor">#endif </span><span class="comment">/* DEFINE_H_ */</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:23. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

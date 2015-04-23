@@ -716,17 +716,19 @@ void Ccs::calcRegimeChangeFreqPeriodOneStep()
 void Ccs::controlPower()
 {
   if (!isPowerGood()) {
-    if (!powerOffFlag_) {
-      // Запись в журнал "Отключение питания"
-      logEvent.add(PowerCode, AutoType, PowerOffId);
-      powerOffFlag_ = true;
+    if ((powerOffTimeout_ == 100) || !isUpsGood()) {
+      if (!powerOffFlag_) {
+        // Запись в журнал "Отключение питания"
+        logEvent.add(PowerCode, AutoType, PowerOffId);
+        powerOffFlag_ = true;
+      }
     }
 
-    if (powerOffTimeout_) {
-      powerOffTimeout_--;
+    if (!powerOffTimeout_) {
+      turnPowerBattery(false);
     }
     else {
-      turnPowerBattery(false);
+      powerOffTimeout_--;
     }
   } else {
     powerOffFlag_ = false;

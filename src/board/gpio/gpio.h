@@ -66,8 +66,10 @@ enum DoNum {
 #define SYS_RESET_BUTTON_PIN            GPIO_PIN_13
 #define SYS_RESET_BUTTON_PORT           GPIOC
 
-//! Вывод детектора питания
-#define WATCH_PIN  GPIOI, GPIO_PIN_5
+//! Вывод детектора основного питания
+#define POWER_WARNING_PIN  GPIOI, GPIO_PIN_5
+//! Вывод детектора ИБП
+#define POWER_ALARM_PIN  GPIOC, GPIO_PIN_0
 //! Вывод переключения питания на ИБП
 #define OFF_REL_PIN  GPIOI, GPIO_PIN_6
 //! Вывод включения подсветки LCD
@@ -180,11 +182,16 @@ PinState getDigitalInput(const uint16_t num);
 void setDigitalOutput(const uint16_t num, PinState value = PinReset);
 
 /*!
- \brief Получение состояния питания платы с внешнего детектора
-
- \return bool: true - норма, false - падение напряжения ниже 21,8В
+ * \brief Получение состояния питания платы от детектора
+ * \return bool: true - норма, false - падение напряжения ниже порога детектора
 */
 bool isPowerGood();
+
+/*!
+ * \brief Получение состояния ИБП от детектора
+ * \return
+ */
+bool isUpsGood();
 
 /*!
  * \brief Функция вкл/выкл питания от ИБП

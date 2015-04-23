@@ -1,0 +1,619 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Класс NovobusSlave</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li><a href="classes.html"><span>Алфавитный&#160;указатель&#160;структур&#160;данных</span></a></li>
+      <li><a href="hierarchy.html"><span>Иерархия&#160;классов</span></a></li>
+      <li><a href="functions.html"><span>Поля&#160;структур</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Открытые типы</a> &#124;
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pri-methods">Закрытые члены</a> &#124;
+<a href="#pri-attribs">Закрытые данные</a>  </div>
+  <div class="headertitle">
+<div class="title">Класс NovobusSlave</div>  </div>
+</div>
+<div class="contents">
+<!-- doxytag: class="NovobusSlave" -->
+<p>Класс протокола обмена между stm32 и контроллером визуализации  
+ <a href="class_novobus_slave.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="novobus__slave_8h_source.html">novobus_slave.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="pub-types"></a>
+Открытые типы</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4">NovobusCommand</a> { <br/>
+&#160;&#160;<a class="el" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a3f8363d67f3a99756bb63e99b096f7bd">NoneCommand</a>, 
+<a class="el" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a707907b12a3c0aa670a19eac8bfdca31">StatusCommand</a>, 
+<a class="el" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a0a258f4be550a93bfe890efc73eb28d6">ReadParamsCommand</a>, 
+<a class="el" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4acc088186dde393d32c21a360b1a67a48">WriteParamsCommand</a>, 
+<br/>
+&#160;&#160;<a class="el" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a6364507d1c5d8d3a5c4a2cb6ac148065">UpdateParamsCommand</a>, 
+<a class="el" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a930f9ff0785b5942ece3207c2396e8f2">UpdateEventsCommand</a>, 
+<a class="el" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a2b2e9637e767420426a16ba301468d80">ReadEventsCommand</a>
+<br/>
+ }</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Комманды протокола "Novobus".  <a href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4">Подробнее...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#afe608093a88304d5a57d5d4e86382e33">NovobusError</a> { <a class="el" href="class_novobus_slave.html#afe608093a88304d5a57d5d4e86382e33ad82e981f79d1bc601d726e0345060530">NoneError</a>, 
+<a class="el" href="class_novobus_slave.html#afe608093a88304d5a57d5d4e86382e33afd38329486c75e140ddc9a719765df86">CrcError</a>, 
+<a class="el" href="class_novobus_slave.html#afe608093a88304d5a57d5d4e86382e33af0e5fe7a2c6e2de0b83bb5804becf689">InvalidCmdError</a>
+ }</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Ошибки  <a href="class_novobus_slave.html#afe608093a88304d5a57d5d4e86382e33">Подробнее...</a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#a5ac7d4c45dee2cb0b720236a5a7c0f05">NovobusSlave</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#a91af883becc103d5ecc3469da64f717a">~NovobusSlave</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#a38b53190c1d1de69d46bcf3fb15a72c5">init</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализация протокола  <a href="#a38b53190c1d1de69d46bcf3fb15a72c5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#abd8352eb55fa2a019da39f1545732bf7">task</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Основная задача протокола  <a href="#abd8352eb55fa2a019da39f1545732bf7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#ac9a415ac4d4110feb1d0abcbfe62feb1">receivePackage</a> (uint8_t sizePkt)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция обработки запросов по Novobus.  <a href="#ac9a415ac4d4110feb1d0abcbfe62feb1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#aba46838199788fe89c68ae8c2fa1b725">getMessageEvents</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения адреса события из очереди  <a href="#aba46838199788fe89c68ae8c2fa1b725"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#a53ac3b87cf6ecb235a4a81e424e491fd">getMessageParams</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения ID параметра из очереди  <a href="#a53ac3b87cf6ecb235a4a81e424e491fd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#ae5bdb6b6f44cf07bb1a3db2355750f71">putMessageEvents</a> (uint32_t id)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод добавления ID события в очередь  <a href="#ae5bdb6b6f44cf07bb1a3db2355750f71"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#a3e9f20ec677d19775459610f9c67b82b">putMessageParams</a> (uint32_t id)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод добавления ID параметра в очередь  <a href="#a3e9f20ec677d19775459610f9c67b82b"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pri-methods"></a>
+Закрытые члены</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#a8ea677d674c823a47a57ef66ed85ee5f">checkMessage</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод проверки очередей и заполнения необходимых полей заголовка  <a href="#a8ea677d674c823a47a57ef66ed85ee5f"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pri-attribs"></a>
+Закрытые данные</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">osThreadId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#a26d0f304d4d90b163e3a906d04c4907b">threadId_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Идентификатор задачи Novobus.  <a href="#a26d0f304d4d90b163e3a906d04c4907b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">osMessageQId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#a6e62ccdfe21aa68150bb77e64175a747">messageEvents_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Очередь на посылку сообытий  <a href="#a6e62ccdfe21aa68150bb77e64175a747"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">osMessageQId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#af324e60a80ad8532d49a154b8e78f453">messageParams_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Очередь на запись данных  <a href="#af324e60a80ad8532d49a154b8e78f453"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a> [HOST_BUF_SIZE]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">rxBuffer_</a> [HOST_BUF_SIZE]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#a8f1dc77702c2f0c19cd2c13e09420576">idsBuffer_</a> [MAX_IDS_BUFFER]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#ac328d33812cff4b84164a863a2ed7db6">addrsBuffer_</a> [MAX_ADDRS_BUFFER]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#acc4654f4c75f79274bbd821fb6857792">idsCount_</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#a24c01a1ec060b25e1ae66d6ba2ac5706">addrsCount_</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_novobus_slave.html#aed6f5024161af6255a9a12b8352077fc">rxSize</a></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Подробное описание</h2>
+<div class="textblock"><p>Класс протокола обмена между stm32 и контроллером визуализации </p>
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8h_source.html">novobus_slave.h</a> строка <a class="el" href="novobus__slave_8h_source.html#l00015">15</a></p>
+</div><hr/><h2>Перечисления</h2>
+<a class="anchor" id="ab1258b26b958649f537dd17d4c43fcb4"></a><!-- doxytag: member="NovobusSlave::NovobusCommand" ref="ab1258b26b958649f537dd17d4c43fcb4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4">NovobusSlave::NovobusCommand</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Комманды протокола "Novobus". </p>
+<dl><dt><b>Элементы перечислений: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="ab1258b26b958649f537dd17d4c43fcb4a3f8363d67f3a99756bb63e99b096f7bd"></a><!-- doxytag: member="NoneCommand" ref="ab1258b26b958649f537dd17d4c43fcb4a3f8363d67f3a99756bb63e99b096f7bd" args="" -->NoneCommand</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="ab1258b26b958649f537dd17d4c43fcb4a707907b12a3c0aa670a19eac8bfdca31"></a><!-- doxytag: member="StatusCommand" ref="ab1258b26b958649f537dd17d4c43fcb4a707907b12a3c0aa670a19eac8bfdca31" args="" -->StatusCommand</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="ab1258b26b958649f537dd17d4c43fcb4a0a258f4be550a93bfe890efc73eb28d6"></a><!-- doxytag: member="ReadParamsCommand" ref="ab1258b26b958649f537dd17d4c43fcb4a0a258f4be550a93bfe890efc73eb28d6" args="" -->ReadParamsCommand</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="ab1258b26b958649f537dd17d4c43fcb4acc088186dde393d32c21a360b1a67a48"></a><!-- doxytag: member="WriteParamsCommand" ref="ab1258b26b958649f537dd17d4c43fcb4acc088186dde393d32c21a360b1a67a48" args="" -->WriteParamsCommand</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="ab1258b26b958649f537dd17d4c43fcb4a6364507d1c5d8d3a5c4a2cb6ac148065"></a><!-- doxytag: member="UpdateParamsCommand" ref="ab1258b26b958649f537dd17d4c43fcb4a6364507d1c5d8d3a5c4a2cb6ac148065" args="" -->UpdateParamsCommand</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="ab1258b26b958649f537dd17d4c43fcb4a930f9ff0785b5942ece3207c2396e8f2"></a><!-- doxytag: member="UpdateEventsCommand" ref="ab1258b26b958649f537dd17d4c43fcb4a930f9ff0785b5942ece3207c2396e8f2" args="" -->UpdateEventsCommand</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="ab1258b26b958649f537dd17d4c43fcb4a2b2e9637e767420426a16ba301468d80"></a><!-- doxytag: member="ReadEventsCommand" ref="ab1258b26b958649f537dd17d4c43fcb4a2b2e9637e767420426a16ba301468d80" args="" -->ReadEventsCommand</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8h_source.html">novobus_slave.h</a> строка <a class="el" href="novobus__slave_8h_source.html#l00022">22</a></p>
+
+</div>
+</div>
+<a class="anchor" id="afe608093a88304d5a57d5d4e86382e33"></a><!-- doxytag: member="NovobusSlave::NovobusError" ref="afe608093a88304d5a57d5d4e86382e33" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_novobus_slave.html#afe608093a88304d5a57d5d4e86382e33">NovobusSlave::NovobusError</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Ошибки </p>
+<dl><dt><b>Элементы перечислений: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="afe608093a88304d5a57d5d4e86382e33ad82e981f79d1bc601d726e0345060530"></a><!-- doxytag: member="NoneError" ref="afe608093a88304d5a57d5d4e86382e33ad82e981f79d1bc601d726e0345060530" args="" -->NoneError</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="afe608093a88304d5a57d5d4e86382e33afd38329486c75e140ddc9a719765df86"></a><!-- doxytag: member="CrcError" ref="afe608093a88304d5a57d5d4e86382e33afd38329486c75e140ddc9a719765df86" args="" -->CrcError</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="afe608093a88304d5a57d5d4e86382e33af0e5fe7a2c6e2de0b83bb5804becf689"></a><!-- doxytag: member="InvalidCmdError" ref="afe608093a88304d5a57d5d4e86382e33af0e5fe7a2c6e2de0b83bb5804becf689" args="" -->InvalidCmdError</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8h_source.html">novobus_slave.h</a> строка <a class="el" href="novobus__slave_8h_source.html#l00035">35</a></p>
+
+</div>
+</div>
+<hr/><h2>Конструктор(ы)</h2>
+<a class="anchor" id="a5ac7d4c45dee2cb0b720236a5a7c0f05"></a><!-- doxytag: member="NovobusSlave::NovobusSlave" ref="a5ac7d4c45dee2cb0b720236a5a7c0f05" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">NovobusSlave::NovobusSlave </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8cpp_source.html">novobus_slave.cpp</a> строка <a class="el" href="novobus__slave_8cpp_source.html#l00012">12</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a91af883becc103d5ecc3469da64f717a"></a><!-- doxytag: member="NovobusSlave::~NovobusSlave" ref="a91af883becc103d5ecc3469da64f717a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">NovobusSlave::~NovobusSlave </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8cpp_source.html">novobus_slave.cpp</a> строка <a class="el" href="novobus__slave_8cpp_source.html#l00019">19</a></p>
+
+</div>
+</div>
+<hr/><h2>Методы</h2>
+<a class="anchor" id="a8ea677d674c823a47a57ef66ed85ee5f"></a><!-- doxytag: member="NovobusSlave::checkMessage" ref="a8ea677d674c823a47a57ef66ed85ee5f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NovobusSlave::checkMessage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод проверки очередей и заполнения необходимых полей заголовка </p>
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8cpp_source.html">novobus_slave.cpp</a> строка <a class="el" href="novobus__slave_8cpp_source.html#l00288">288</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aba46838199788fe89c68ae8c2fa1b725"></a><!-- doxytag: member="NovobusSlave::getMessageEvents" ref="aba46838199788fe89c68ae8c2fa1b725" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NovobusSlave::getMessageEvents </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения адреса события из очереди </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>адрес события </dd></dl>
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8cpp_source.html">novobus_slave.cpp</a> строка <a class="el" href="novobus__slave_8cpp_source.html#l00057">57</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a53ac3b87cf6ecb235a4a81e424e491fd"></a><!-- doxytag: member="NovobusSlave::getMessageParams" ref="a53ac3b87cf6ecb235a4a81e424e491fd" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NovobusSlave::getMessageParams </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения ID параметра из очереди </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>ID параметра </dd></dl>
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8cpp_source.html">novobus_slave.cpp</a> строка <a class="el" href="novobus__slave_8cpp_source.html#l00066">66</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a38b53190c1d1de69d46bcf3fb15a72c5"></a><!-- doxytag: member="NovobusSlave::init" ref="a38b53190c1d1de69d46bcf3fb15a72c5" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NovobusSlave::init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Инициализация протокола </p>
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8cpp_source.html">novobus_slave.cpp</a> строка <a class="el" href="novobus__slave_8cpp_source.html#l00024">24</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae5bdb6b6f44cf07bb1a3db2355750f71"></a><!-- doxytag: member="NovobusSlave::putMessageEvents" ref="ae5bdb6b6f44cf07bb1a3db2355750f71" args="(uint32_t id)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NovobusSlave::putMessageEvents </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод добавления ID события в очередь </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>- ID события </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8cpp_source.html">novobus_slave.cpp</a> строка <a class="el" href="novobus__slave_8cpp_source.html#l00075">75</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a3e9f20ec677d19775459610f9c67b82b"></a><!-- doxytag: member="NovobusSlave::putMessageParams" ref="a3e9f20ec677d19775459610f9c67b82b" args="(uint32_t id)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NovobusSlave::putMessageParams </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод добавления ID параметра в очередь </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>- ID параметра </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8cpp_source.html">novobus_slave.cpp</a> строка <a class="el" href="novobus__slave_8cpp_source.html#l00081">81</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ac9a415ac4d4110feb1d0abcbfe62feb1"></a><!-- doxytag: member="NovobusSlave::receivePackage" ref="ac9a415ac4d4110feb1d0abcbfe62feb1" args="(uint8_t sizePkt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NovobusSlave::receivePackage </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sizePkt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Функция обработки запросов по Novobus. </p>
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8cpp_source.html">novobus_slave.cpp</a> строка <a class="el" href="novobus__slave_8cpp_source.html#l00086">86</a></p>
+
+</div>
+</div>
+<a class="anchor" id="abd8352eb55fa2a019da39f1545732bf7"></a><!-- doxytag: member="NovobusSlave::task" ref="abd8352eb55fa2a019da39f1545732bf7" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NovobusSlave::task </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Основная задача протокола </p>
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8cpp_source.html">novobus_slave.cpp</a> строка <a class="el" href="novobus__slave_8cpp_source.html#l00041">41</a></p>
+
+</div>
+</div>
+<hr/><h2>Поля</h2>
+<a class="anchor" id="ac328d33812cff4b84164a863a2ed7db6"></a><!-- doxytag: member="NovobusSlave::addrsBuffer_" ref="ac328d33812cff4b84164a863a2ed7db6" args="[MAX_ADDRS_BUFFER]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t <a class="el" href="class_novobus_slave.html#ac328d33812cff4b84164a863a2ed7db6">NovobusSlave::addrsBuffer_</a>[MAX_ADDRS_BUFFER]<code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8h_source.html">novobus_slave.h</a> строка <a class="el" href="novobus__slave_8h_source.html#l00099">99</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a24c01a1ec060b25e1ae66d6ba2ac5706"></a><!-- doxytag: member="NovobusSlave::addrsCount_" ref="a24c01a1ec060b25e1ae66d6ba2ac5706" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t <a class="el" href="class_novobus_slave.html#a24c01a1ec060b25e1ae66d6ba2ac5706">NovobusSlave::addrsCount_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8h_source.html">novobus_slave.h</a> строка <a class="el" href="novobus__slave_8h_source.html#l00101">101</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a8f1dc77702c2f0c19cd2c13e09420576"></a><!-- doxytag: member="NovobusSlave::idsBuffer_" ref="a8f1dc77702c2f0c19cd2c13e09420576" args="[MAX_IDS_BUFFER]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t <a class="el" href="class_novobus_slave.html#a8f1dc77702c2f0c19cd2c13e09420576">NovobusSlave::idsBuffer_</a>[MAX_IDS_BUFFER]<code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8h_source.html">novobus_slave.h</a> строка <a class="el" href="novobus__slave_8h_source.html#l00098">98</a></p>
+
+</div>
+</div>
+<a class="anchor" id="acc4654f4c75f79274bbd821fb6857792"></a><!-- doxytag: member="NovobusSlave::idsCount_" ref="acc4654f4c75f79274bbd821fb6857792" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t <a class="el" href="class_novobus_slave.html#acc4654f4c75f79274bbd821fb6857792">NovobusSlave::idsCount_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8h_source.html">novobus_slave.h</a> строка <a class="el" href="novobus__slave_8h_source.html#l00100">100</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a6e62ccdfe21aa68150bb77e64175a747"></a><!-- doxytag: member="NovobusSlave::messageEvents_" ref="a6e62ccdfe21aa68150bb77e64175a747" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">osMessageQId <a class="el" href="class_novobus_slave.html#a6e62ccdfe21aa68150bb77e64175a747">NovobusSlave::messageEvents_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Очередь на посылку сообытий </p>
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8h_source.html">novobus_slave.h</a> строка <a class="el" href="novobus__slave_8h_source.html#l00092">92</a></p>
+
+</div>
+</div>
+<a class="anchor" id="af324e60a80ad8532d49a154b8e78f453"></a><!-- doxytag: member="NovobusSlave::messageParams_" ref="af324e60a80ad8532d49a154b8e78f453" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">osMessageQId <a class="el" href="class_novobus_slave.html#af324e60a80ad8532d49a154b8e78f453">NovobusSlave::messageParams_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Очередь на запись данных </p>
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8h_source.html">novobus_slave.h</a> строка <a class="el" href="novobus__slave_8h_source.html#l00094">94</a></p>
+
+</div>
+</div>
+<a class="anchor" id="adbfbf511464b137f4a1fcbdd92cfdaf0"></a><!-- doxytag: member="NovobusSlave::rxBuffer_" ref="adbfbf511464b137f4a1fcbdd92cfdaf0" args="[HOST_BUF_SIZE]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t <a class="el" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">NovobusSlave::rxBuffer_</a>[HOST_BUF_SIZE]<code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8h_source.html">novobus_slave.h</a> строка <a class="el" href="novobus__slave_8h_source.html#l00097">97</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aed6f5024161af6255a9a12b8352077fc"></a><!-- doxytag: member="NovobusSlave::rxSize" ref="aed6f5024161af6255a9a12b8352077fc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t <a class="el" href="class_novobus_slave.html#aed6f5024161af6255a9a12b8352077fc">NovobusSlave::rxSize</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8h_source.html">novobus_slave.h</a> строка <a class="el" href="novobus__slave_8h_source.html#l00103">103</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a26d0f304d4d90b163e3a906d04c4907b"></a><!-- doxytag: member="NovobusSlave::threadId_" ref="a26d0f304d4d90b163e3a906d04c4907b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">osThreadId <a class="el" href="class_novobus_slave.html#a26d0f304d4d90b163e3a906d04c4907b">NovobusSlave::threadId_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Идентификатор задачи Novobus. </p>
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8h_source.html">novobus_slave.h</a> строка <a class="el" href="novobus__slave_8h_source.html#l00090">90</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a33e3b74f51f95b6b51ec6792b00e505f"></a><!-- doxytag: member="NovobusSlave::txBuffer_" ref="a33e3b74f51f95b6b51ec6792b00e505f" args="[HOST_BUF_SIZE]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t <a class="el" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">NovobusSlave::txBuffer_</a>[HOST_BUF_SIZE]<code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="novobus__slave_8h_source.html">novobus_slave.h</a> строка <a class="el" href="novobus__slave_8h_source.html#l00096">96</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>src/user/protocol/novobus/<a class="el" href="novobus__slave_8h_source.html">novobus_slave.h</a></li>
+<li>src/user/protocol/novobus/<a class="el" href="novobus__slave_8cpp_source.html">novobus_slave.cpp</a></li>
+</ul>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:26. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

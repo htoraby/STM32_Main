@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/common/common.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/common/common.h</div>  </div>
+</div>
+<div class="contents">
+<a href="common_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef COMMON_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define COMMON_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &lt;stdint.h&gt;</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;stddef.h&gt;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;math.h&gt;</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a><a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">00008</a> <span class="keyword">enum</span> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> {
+<a name="l00009"></a><a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">00009</a>   <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea22f96ad0d2ce48217102804a75d6afcd">StatusOk</a>,
+<a name="l00010"></a><a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea70864d0b86bb684b33a58b6c02a012c1">00010</a>   <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3ea70864d0b86bb684b33a58b6c02a012c1">StatusError</a>,
+<a name="l00011"></a>00011 };
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013 
+<a name="l00014"></a>00014 
+<a name="l00015"></a>00015 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00016"></a>00016 <span class="preprocessor"></span>
+<a name="l00023"></a>00023 <span class="keywordtype">void</span> *<a class="code" href="common_8cpp.html#a205ed048fdf5259c2e8e0cb60ee8f719">operator new</a>(<span class="keywordtype">size_t</span> size);
+<a name="l00024"></a>00024 
+<a name="l00030"></a>00030 <span class="keywordtype">void</span> <a class="code" href="common_8cpp.html#a86107594327f3a001230df9802cd4422">operator delete</a>(<span class="keywordtype">void</span> *p);
+<a name="l00031"></a>00031 
+<a name="l00040"></a>00040 uint16_t <a class="code" href="common_8cpp.html#a3708d95f4ea55e23f3fab4070f10a391">crc16_ibm</a>(uint8_t *<a class="code" href="flash__ext_8cpp.html#a05c8b1c963772dc6bb9416afb1a991b1">buf</a>, uint8_t size, uint16_t crc = 0xFFFF);
+<a name="l00041"></a>00041 
+<a name="l00049"></a>00049 <span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="keyword">inline</span> <span class="keyword">const</span> T&amp; max(<span class="keyword">const</span> T&amp; a, <span class="keyword">const</span> T&amp; b)
+<a name="l00050"></a>00050 {
+<a name="l00051"></a>00051   <span class="keywordflow">if</span> (a &gt; b) <span class="keywordflow">return</span>(a);
+<a name="l00052"></a>00052   <span class="keywordflow">else</span> <span class="keywordflow">return</span>(b);
+<a name="l00053"></a>00053 }
+<a name="l00054"></a>00054 
+<a name="l00062"></a>00062 <span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="keyword">inline</span> <span class="keyword">const</span> T&amp; min(<span class="keyword">const</span> T&amp; a, <span class="keyword">const</span> T&amp; b)
+<a name="l00063"></a>00063 {
+<a name="l00064"></a>00064   <span class="keywordflow">if</span> (a &lt; b) <span class="keywordflow">return</span>(a);
+<a name="l00065"></a>00065   <span class="keywordflow">else</span> <span class="keywordflow">return</span>(b);
+<a name="l00066"></a>00066 }
+<a name="l00067"></a>00067 
+<a name="l00076"></a>00076 <span class="keywordtype">int</span> <a class="code" href="common_8cpp.html#a3e13cad652e801492e949278a1e8f49a">checkRangeNoInclude</a>(<span class="keywordtype">double</span> value, <span class="keywordtype">double</span> min, <span class="keywordtype">double</span> max);
+<a name="l00077"></a>00077 
+<a name="l00086"></a>00086 <span class="keywordtype">int</span> <a class="code" href="common_8cpp.html#a328050424271187c9f23843901a3c34b">checkRangeInclude</a>(<span class="keywordtype">double</span> value, <span class="keywordtype">double</span> min, <span class="keywordtype">double</span> max);
+<a name="l00087"></a>00087 
+<a name="l00096"></a>00096 <span class="keywordtype">int</span> <a class="code" href="common_8cpp.html#ac14331c6c6101a5fddb1251986b1fcde">checkRange</a>(<span class="keywordtype">double</span> value, <span class="keywordtype">double</span> min, <span class="keywordtype">double</span> max, uint8_t inc);
+<a name="l00097"></a>00097 
+<a name="l00104"></a>00104 <span class="keywordtype">bool</span> <a class="code" href="common_8cpp.html#a1416af0b86a921cd6216a1682caf5224">checkBit</a>(uint32_t value, uint8_t bit);
+<a name="l00105"></a>00105 
+<a name="l00114"></a>00114 <span class="keywordtype">float</span> <a class="code" href="common_8cpp.html#ad7c47c24ef9d09871f282ec6453e1c4b">calcImbalance</a>(<span class="keywordtype">float</span> value1, <span class="keywordtype">float</span> value2, <span class="keywordtype">float</span> value3, <span class="keywordtype">int</span> digit);
+<a name="l00115"></a>00115 
+<a name="l00122"></a>00122 uint32_t <a class="code" href="common_8cpp.html#a22921abad341e39233e8363394020ea5">getTimeToEnd</a>(uint32_t period, uint32_t <a class="code" href="adc_8cpp.html#ae73654f333e4363463ad8c594eca1905">time</a>);
+<a name="l00123"></a>00123 
+<a name="l00130"></a>00130 <span class="keywordtype">float</span> <a class="code" href="common_8cpp.html#ad45bc2c7b44c91570e4a62336541d169">copySign</a>(<span class="keywordtype">float</span> value, <span class="keywordtype">float</span> sign);
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132 <span class="preprocessor">#endif</span>
+<a name="l00133"></a>00133 <span class="preprocessor"></span>
+<a name="l00134"></a>00134 <span class="preprocessor">#endif // COMMON_H</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:23. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Файл src/board/uart/uart.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Структуры данных</a> &#124;
+<a href="#define-members">Макросы</a> &#124;
+<a href="#enum-members">Перечисления</a> &#124;
+<a href="#var-members">Переменные</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл src/board/uart/uart.h</div>  </div>
+</div>
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="board_8h_source.html">board.h</a>&quot;</code><br/>
+</div>
+<p><a href="uart_8h_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Структуры данных</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_u_a_r_t___def.html">UART_Def</a></td></tr>
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Макросы</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#ab0249d81dd53336b7810ebcf29511210">UART_BUF_SIZE</a>&#160;&#160;&#160;1024</td></tr>
+<tr><td colspan="2"><h2><a name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313d">uartNum</a> { <br/>
+&#160;&#160;<a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313dac5d4a49921ae3945e4956c68ef82ef7e">uart1</a>, 
+<a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313dab451d4e63ecd522a24f90c790c15ee48">uart2</a>, 
+<a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313da8b1a074a85d32e284593e29bc1fd457b">uart3</a>, 
+<a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313da9671876e3a1bb6a53f978e2627fbd99d">uart4</a>, 
+<br/>
+&#160;&#160;<a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313daafbd43c1f73a63a2b3fe8842a8219b47">uart6</a>, 
+<a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313da06531c0d580cbbe76e8d49772802152b">uart7</a>, 
+<a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313daa16d300e4c6459569d5fd54dfc90dbc6">uartMax</a>
+<br/>
+ }</td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Переменные</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_u_a_r_t___def.html">UART_Def</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#a44d0ed7a167430dbcd5fea43d98932bb">uarts</a> []</td></tr>
+</table>
+<hr/><h2>Макросы</h2>
+<a class="anchor" id="ab0249d81dd53336b7810ebcf29511210"></a><!-- doxytag: member="uart.h::UART_BUF_SIZE" ref="ab0249d81dd53336b7810ebcf29511210" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define UART_BUF_SIZE&#160;&#160;&#160;1024</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="uart_8h_source.html">uart.h</a> строка <a class="el" href="uart_8h_source.html#l00006">6</a></p>
+
+</div>
+</div>
+<hr/><h2>Перечисления</h2>
+<a class="anchor" id="a6f3cc73e52fd8b0bc16f9a7d2aa3313d"></a><!-- doxytag: member="uart.h::uartNum" ref="a6f3cc73e52fd8b0bc16f9a7d2aa3313d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="uart_8h.html#a6f3cc73e52fd8b0bc16f9a7d2aa3313d">uartNum</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>Элементы перечислений: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a6f3cc73e52fd8b0bc16f9a7d2aa3313dac5d4a49921ae3945e4956c68ef82ef7e"></a><!-- doxytag: member="uart1" ref="a6f3cc73e52fd8b0bc16f9a7d2aa3313dac5d4a49921ae3945e4956c68ef82ef7e" args="" -->uart1</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a6f3cc73e52fd8b0bc16f9a7d2aa3313dab451d4e63ecd522a24f90c790c15ee48"></a><!-- doxytag: member="uart2" ref="a6f3cc73e52fd8b0bc16f9a7d2aa3313dab451d4e63ecd522a24f90c790c15ee48" args="" -->uart2</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a6f3cc73e52fd8b0bc16f9a7d2aa3313da8b1a074a85d32e284593e29bc1fd457b"></a><!-- doxytag: member="uart3" ref="a6f3cc73e52fd8b0bc16f9a7d2aa3313da8b1a074a85d32e284593e29bc1fd457b" args="" -->uart3</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a6f3cc73e52fd8b0bc16f9a7d2aa3313da9671876e3a1bb6a53f978e2627fbd99d"></a><!-- doxytag: member="uart4" ref="a6f3cc73e52fd8b0bc16f9a7d2aa3313da9671876e3a1bb6a53f978e2627fbd99d" args="" -->uart4</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a6f3cc73e52fd8b0bc16f9a7d2aa3313daafbd43c1f73a63a2b3fe8842a8219b47"></a><!-- doxytag: member="uart6" ref="a6f3cc73e52fd8b0bc16f9a7d2aa3313daafbd43c1f73a63a2b3fe8842a8219b47" args="" -->uart6</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a6f3cc73e52fd8b0bc16f9a7d2aa3313da06531c0d580cbbe76e8d49772802152b"></a><!-- doxytag: member="uart7" ref="a6f3cc73e52fd8b0bc16f9a7d2aa3313da06531c0d580cbbe76e8d49772802152b" args="" -->uart7</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a6f3cc73e52fd8b0bc16f9a7d2aa3313daa16d300e4c6459569d5fd54dfc90dbc6"></a><!-- doxytag: member="uartMax" ref="a6f3cc73e52fd8b0bc16f9a7d2aa3313daa16d300e4c6459569d5fd54dfc90dbc6" args="" -->uartMax</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="uart_8h_source.html">uart.h</a> строка <a class="el" href="uart_8h_source.html#l00008">8</a></p>
+
+</div>
+</div>
+<hr/><h2>Переменные</h2>
+<a class="anchor" id="a44d0ed7a167430dbcd5fea43d98932bb"></a><!-- doxytag: member="uart.h::uarts" ref="a44d0ed7a167430dbcd5fea43d98932bb" args="[]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_u_a_r_t___def.html">UART_Def</a> <a class="el" href="uart_8h.html#a44d0ed7a167430dbcd5fea43d98932bb">uarts</a>[]</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="uart_8cpp_source.html">uart.cpp</a> строка <a class="el" href="uart_8cpp_source.html#l00006">6</a></p>
+
+</div>
+</div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:25. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

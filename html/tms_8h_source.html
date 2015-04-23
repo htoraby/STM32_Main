@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/device/tms/tms.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/device/tms/tms.h</div>  </div>
+</div>
+<div class="contents">
+<a href="tms_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 ﻿<span class="comment">/*</span>
+<a name="l00002"></a>00002 <span class="comment"> * classTms.h</span>
+<a name="l00003"></a>00003 <span class="comment"> *</span>
+<a name="l00004"></a>00004 <span class="comment"> *  Created on: 23.06.2014</span>
+<a name="l00005"></a>00005 <span class="comment"> *      Author: trofimenko</span>
+<a name="l00006"></a>00006 <span class="comment"> */</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="preprocessor">#ifndef TMS_H_</span>
+<a name="l00009"></a>00009 <span class="preprocessor"></span><span class="preprocessor">#define TMS_H_</span>
+<a name="l00010"></a>00010 <span class="preprocessor"></span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include &quot;<a class="code" href="device_8h.html">Device.h</a>&quot;</span>
+<a name="l00012"></a>00012 
+<a name="l00019"></a><a class="code" href="class_tms.html">00019</a> <span class="keyword">class </span><a class="code" href="class_tms.html" title="Базовый класс ТМС Наследник класса Device использующий его структуру и методы хранения банка параметр...">Tms</a>: <span class="keyword">public</span> <a class="code" href="class_device.html" title="Базовый класс для всех устройств Класс содержит банк параметров устройства во внутреннем представлени...">Device</a>
+<a name="l00020"></a>00020 {
+<a name="l00021"></a>00021 <span class="keyword">public</span>:
+<a name="l00022"></a>00022   <a class="code" href="class_tms.html#aa0ab142da05bd3b338b5fea330e474df">Tms</a>();
+<a name="l00023"></a>00023   <span class="keyword">virtual</span> <a class="code" href="class_tms.html#a0c2195fe340aec86f4b375fbf2ef3210">~Tms</a>();
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025   <span class="keywordtype">void</span> <a class="code" href="class_tms.html#ad32fdb41f6ce5375c0d1670749224348" title="Инициализация массива параметров">initParameters</a>();
+<a name="l00026"></a>00026 
+<a name="l00032"></a>00032   <span class="keywordtype">int</span> <a class="code" href="class_tms.html#a9d0f2d4d87c15fa1f3085306a0ea133b" title="Метод задания единиц измерения давления">setUnitPressure</a>(<span class="keywordtype">float</span> Unit);
+<a name="l00033"></a>00033 
+<a name="l00039"></a>00039   <span class="keywordtype">int</span> <a class="code" href="class_tms.html#a30bb71264a1ff55bc967cd57bbf5cd35" title="Метод задания единиц измерения температуры">setUnitTemperature</a>(<span class="keywordtype">float</span> Unit);
+<a name="l00040"></a>00040 
+<a name="l00046"></a>00046   <span class="keywordtype">int</span> <a class="code" href="class_tms.html#a1a7eb532842e5b588417eeb4058ad7be" title="Метод задания единиц измерения виброускорения">setUnitAcceleration</a>(<span class="keywordtype">float</span> Unit);
+<a name="l00047"></a>00047 
+<a name="l00053"></a>00053   <span class="keywordtype">int</span> <a class="code" href="class_tms.html#ac7809199b4c02cce5783370259b5f355" title="Метод задания единиц измерения виброскорости">setUnitSpeed</a>(<span class="keywordtype">float</span> Unit);
+<a name="l00054"></a>00054 
+<a name="l00059"></a>00059   <span class="keywordtype">int</span> <a class="code" href="class_tms.html#af7d86d22f4198d84f587bf53762f3692" title="Метод включения чтения статических параметров">setEnableReadingStaticParam</a>();
+<a name="l00060"></a>00060 
+<a name="l00065"></a>00065   <span class="keywordtype">int</span> <a class="code" href="class_tms.html#a9dee869a6586c119fdfb0b0cbaad8d60" title="Метод выключения чтения статических параметров">setDisableReadingStaticParam</a>();
+<a name="l00066"></a>00066 
+<a name="l00071"></a>00071   <span class="keywordtype">int</span> <a class="code" href="class_tms.html#adce32533db025871513ac96b5fce868d" title="Метод включения режима КВД">setEnablePidLoop</a>();
+<a name="l00072"></a>00072 
+<a name="l00077"></a>00077   <span class="keywordtype">int</span> <a class="code" href="class_tms.html#a525c2e04191f6718dedc9cdc92af32da" title="Метод выключения режима КВД">setDisablePidLoop</a>();
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079 <span class="keyword">private</span>:
+<a name="l00081"></a><a class="code" href="class_tms.html#a9c0c5185877392bcbf2e6721102aa70f">00081</a>   <a class="code" href="structparameter.html" title="Структура для обработки и хранения параметров в СУ">parameter</a> <a class="code" href="class_tms.html#a9c0c5185877392bcbf2e6721102aa70f" title="Массив параметров устройства">parametersArray_</a>[<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa37837e207e2e1a8000d13e1898006f46">TMS_END</a> - <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa52e2bcdbacbe6c4a0d707f988e7314b9">TMS_BEGIN</a>];
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083 };
+<a name="l00084"></a>00084 
+<a name="l00085"></a>00085 <span class="preprocessor">#endif </span><span class="comment">/* TMS_H_ */</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

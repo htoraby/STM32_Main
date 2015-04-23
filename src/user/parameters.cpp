@@ -33,7 +33,7 @@ void Parameters::task()
     if (osSemaphoreWait(semaphoreId_, 1) != osEventTimeout) {
       save();
     } else {
-      if ((++time >= PARAMS_SAVE_TIME) || !isPowerGood()) {
+      if ((++time >= PARAMS_SAVE_TIME) || ksu.isPowerOff()) {
         time = 0;
         save();
       }

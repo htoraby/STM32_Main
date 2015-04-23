@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/device/vsd/vsd.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/device/vsd/vsd.cpp</div>  </div>
+</div>
+<div class="contents">
+<a href="vsd_8cpp.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 ﻿<span class="comment">/*</span>
+<a name="l00002"></a>00002 <span class="comment"> * Vsd.cpp</span>
+<a name="l00003"></a>00003 <span class="comment"> *</span>
+<a name="l00004"></a>00004 <span class="comment"> *  Created on: 23.06.2014</span>
+<a name="l00005"></a>00005 <span class="comment"> *      Author: trofimenko</span>
+<a name="l00006"></a>00006 <span class="comment"> */</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="preprocessor">#include &quot;<a class="code" href="vsd_8h.html">vsd.h</a>&quot;</span>
+<a name="l00009"></a>00009 
+<a name="l00010"></a><a class="code" href="class_vsd.html#a4ccef5fd91fe688cdfef4d81c934a2f9">00010</a> <a class="code" href="class_vsd.html#a4ccef5fd91fe688cdfef4d81c934a2f9">Vsd::Vsd</a>() : <a class="code" href="class_device.html" title="Базовый класс для всех устройств Класс содержит банк параметров устройства во внутреннем представлени...">Device</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaa8e06e539b0f8106c3900d309918daf0" title="Первый параметр ЧРП">VSD_BEGIN</a>, parametersArray_, <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa4c4fd9e0b514aeb1deab6a0f888f0ba5">VSD_END</a> - <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaa8e06e539b0f8106c3900d309918daf0" title="Первый параметр ЧРП">VSD_BEGIN</a>)
+<a name="l00011"></a>00011 {
+<a name="l00012"></a>00012   <a class="code" href="class_vsd.html#a36f8f37fa1fd291a7b6dc770488584ba" title="Инициализация массива параметров">initParameters</a>();
+<a name="l00013"></a>00013 }
+<a name="l00014"></a>00014 
+<a name="l00015"></a><a class="code" href="class_vsd.html#aa95fb8ae64f96e530e3eaea7c30a764d">00015</a> <a class="code" href="class_vsd.html#aa95fb8ae64f96e530e3eaea7c30a764d">Vsd::~Vsd</a>()
+<a name="l00016"></a>00016 {
+<a name="l00017"></a>00017   <span class="comment">// TODO Auto-generated destructor stub</span>
+<a name="l00018"></a>00018 }
+<a name="l00019"></a>00019 
+<a name="l00020"></a><a class="code" href="class_vsd.html#a36f8f37fa1fd291a7b6dc770488584ba">00020</a> <span class="keywordtype">void</span> <a class="code" href="class_vsd.html#a36f8f37fa1fd291a7b6dc770488584ba" title="Инициализация массива параметров">Vsd::initParameters</a>()
+<a name="l00021"></a>00021 {
+<a name="l00022"></a>00022   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> index = 0; index &lt; (<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa4c4fd9e0b514aeb1deab6a0f888f0ba5">VSD_END</a> - <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaa8e06e539b0f8106c3900d309918daf0" title="Первый параметр ЧРП">VSD_BEGIN</a>); index++) {
+<a name="l00023"></a>00023     <a class="code" href="class_device.html#a5e6fe641056462221b59111b619744be" title="Метод присвоения поля ID в массиве параметров по индексу">setFieldID</a>(index, index + <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaa8e06e539b0f8106c3900d309918daf0" title="Первый параметр ЧРП">VSD_BEGIN</a>);
+<a name="l00024"></a>00024     <a class="code" href="class_device.html#aee900b55f1d0716b291eed85fade0324" title="Метод присвоения поля Access в массиве параметров по индексу">setFieldAccess</a>(index, <a class="code" href="define_8h.html#a169f2155a02b6dda43c31ac7b2ceb961af1dedb21b7691cab69bbfc2059700d97">ACCESS_ERROR</a>);
+<a name="l00025"></a>00025     <a class="code" href="class_device.html#ab6d15a138710ab75155234462be1fda6" title="Метод присвоения поля Operation в массиве параметров по индексу">setFieldOperation</a>(index, <a class="code" href="define_8h.html#a9c6fdc3baaec14e1b3113c9eac1be43ba31bee192eb9e653b651a06239575c2c3">OPERATION_ERROR</a>);
+<a name="l00026"></a>00026     <a class="code" href="class_device.html#aee1e1cec569568cbd9efae45db602025" title="Метод присвоения поля Physic в массиве параметров по индексу">setFieldPhysic</a>(index, <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dad28790d8d2a8cae9ecb06bb3c4628595">PHYSIC_ERROR</a>);
+<a name="l00027"></a>00027     <a class="code" href="class_device.html#a6b0629a552d093f0bc664320ad1735c8" title="Метод присвоения поля Min в массиве параметров по индексу">setFieldMin</a>(index, 0.0);
+<a name="l00028"></a>00028     <a class="code" href="class_device.html#a5811ff731fbed9ba050fa67860e91d63" title="Метод присвоения поля Max в массиве параметров по индексу">setFieldMax</a>(index, 0.0);
+<a name="l00029"></a>00029     <a class="code" href="class_device.html#a6de8161b52b7bb7d255fb4820f1a959f" title="Метод присвоения поля def в массиве параметров по индексу">setFieldDef</a>(index, 0.0);
+<a name="l00030"></a>00030     <a class="code" href="class_device.html#a57f4d87e6dbee3a7029bef87c2976632" title="Метод присвоения поля Validity в массиве параметров по индексу">setFieldValidity</a>(index, <a class="code" href="define_8h.html#a759461643b649d1797f732ff4727a61aa451436902bed9700a1e973b7c1e30b4d">VALIDITY_ERROR</a>);
+<a name="l00031"></a>00031     <a class="code" href="class_device.html#afe3d557d16b87910966b022b4d433505" title="Метод присвоения поля value в массиве параметров по индексу">setFieldValue</a>(index, 0.0);
+<a name="l00032"></a>00032   }
+<a name="l00033"></a>00033 }
+<a name="l00034"></a>00034 
+<a name="l00035"></a><a class="code" href="class_vsd.html#aec92447fddac4cef52e37dc9639ff74a">00035</a> <span class="keywordtype">bool</span> <a class="code" href="class_vsd.html#aec92447fddac4cef52e37dc9639ff74a" title="Метод проверки флага в регистре статуса инвертора">Vsd::checkVsdStatus</a>(uint8_t bit)
+<a name="l00036"></a>00036 {
+<a name="l00037"></a>00037   <span class="keywordflow">if</span> (bit &lt; <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a3be33d1ece4d70991fd40a38c38082b5" title="Сработала токовая тепловая защита инвертора">VSD_STATUS_FC_I2T_ERR</a>)
+<a name="l00038"></a>00038     <span class="keywordflow">return</span> <a class="code" href="common_8cpp.html#a1416af0b86a921cd6216a1682caf5224">checkBit</a>(<a class="code" href="class_device.html#a073b111db61bdbfc67df04e0acaa05ef" title="Метод получения значения параметра по id.">getValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa525930796ec0da8e322253764f531c9d" title="Регистр состояния инвертора">VSD_INVERTOR_STATUS</a>), bit);
+<a name="l00039"></a>00039   <span class="keywordflow">if</span> ((bit &gt;= <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a3be33d1ece4d70991fd40a38c38082b5" title="Сработала токовая тепловая защита инвертора">VSD_STATUS_FC_I2T_ERR</a>) &amp;&amp; (bit &lt; <a class="code" href="define_8h.html#af1a271fdad1a4a67521828b6e4237f00a464660a3df0134871163330e03cf39b0">VSD_STATUS_3</a>))
+<a name="l00040"></a>00040     <span class="keywordflow">return</span> <a class="code" href="common_8cpp.html#a1416af0b86a921cd6216a1682caf5224">checkBit</a>(<a class="code" href="class_device.html#a073b111db61bdbfc67df04e0acaa05ef" title="Метод получения значения параметра по id.">getValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa285949ab8cb15125d9a50c6e2cdc9a3e" title="Расширенный регистр состояния инвертора">VSD_INVERTOR_STATUS2</a>), bit - 16);
+<a name="l00041"></a>00041   <span class="keywordflow">else</span>
+<a name="l00042"></a>00042     <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00043"></a>00043 }
+<a name="l00044"></a>00044 
+<a name="l00045"></a><a class="code" href="class_vsd.html#aa1459f918f406d263da3d2baeddac8be">00045</a> <span class="keywordtype">float</span> <a class="code" href="class_vsd.html#aa1459f918f406d263da3d2baeddac8be" title="Метод получения текущего значения частоты">Vsd::getCurrentFreq</a>()
+<a name="l00046"></a>00046 {
+<a name="l00047"></a>00047   <span class="keywordflow">return</span> <a class="code" href="class_device.html#a073b111db61bdbfc67df04e0acaa05ef" title="Метод получения значения параметра по id.">getValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaa3aee2b9c073cef1fca132d5d8dbb256" title="Выходная частота ПЧ">VSD_FREQUENCY_NOW</a>);
+<a name="l00048"></a>00048 }
+<a name="l00049"></a>00049 
+<a name="l00050"></a><a class="code" href="class_vsd.html#a6cf40f62edbbd2dde5b18cfa294583df">00050</a> <span class="keywordtype">float</span> <a class="code" href="class_vsd.html#a6cf40f62edbbd2dde5b18cfa294583df" title="Метод получения уставки частоты">Vsd::getSetpointFreq</a>()
+<a name="l00051"></a>00051 {
+<a name="l00052"></a>00052   <span class="keywordflow">return</span> <a class="code" href="class_device.html#a073b111db61bdbfc67df04e0acaa05ef" title="Метод получения значения параметра по id.">getValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa99aa001e43df30f05f4feff2626fab3b" title="Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG...">VSD_FREQUENCY</a>);
+<a name="l00053"></a>00053 }
+<a name="l00054"></a>00054 
+<a name="l00055"></a><a class="code" href="class_vsd.html#a7013aa9a607c393b2b3bcebe9494281b">00055</a> <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a7013aa9a607c393b2b3bcebe9494281b" title="Задание в массив параметров ЧРП номинальной частоты двигателя">Vsd::setNominalFreq</a>(<span class="keywordtype">float</span> freq)
+<a name="l00056"></a>00056 {
+<a name="l00057"></a>00057   <span class="keywordflow">return</span> <a class="code" href="class_device.html#a66f43ac758cff37a928cb2fcd5f4709d" title="Метод присвоения значения параметру Когда пытаемся записать значение, нам нужно проверить 1...">setValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa261ae72cb263d84a1952099a3838dfd1" title="Частота двигателя Danfoss 1-23 Используется в проекте, интерфейс Novomet 0х0043 IREG_MOTOR_F_MAх">VSD_MOTOR_FREQUENCY</a>, freq);
+<a name="l00058"></a>00058 }
+<a name="l00059"></a>00059 
+<a name="l00060"></a><a class="code" href="class_vsd.html#ae663105c2f5f835894d5eeab0741940d">00060</a> <span class="keywordtype">float</span> <a class="code" href="class_vsd.html#ae663105c2f5f835894d5eeab0741940d" title="Метод получения номинальной частоты двигателя">Vsd::getNominalFreq</a>()
+<a name="l00061"></a>00061 {
+<a name="l00062"></a>00062   <span class="keywordflow">return</span> <a class="code" href="class_device.html#a073b111db61bdbfc67df04e0acaa05ef" title="Метод получения значения параметра по id.">getValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa261ae72cb263d84a1952099a3838dfd1" title="Частота двигателя Danfoss 1-23 Используется в проекте, интерфейс Novomet 0х0043 IREG_MOTOR_F_MAх">VSD_MOTOR_FREQUENCY</a>);
+<a name="l00063"></a>00063 }
+<a name="l00064"></a>00064 
+<a name="l00065"></a><a class="code" href="class_vsd.html#a4410f14506e10e36a79f4eeaae9aef74">00065</a> <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a4410f14506e10e36a79f4eeaae9aef74" title="Метод задания типа двигателя">Vsd::setMotorType</a>(<span class="keywordtype">float</span> TypeMotor)
+<a name="l00066"></a>00066 {
+<a name="l00067"></a>00067   <span class="keywordflow">return</span> <a class="code" href="class_device.html#a66f43ac758cff37a928cb2fcd5f4709d" title="Метод присвоения значения параметру Когда пытаемся записать значение, нам нужно проверить 1...">setValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa07c1f9ec093627aa2f38af7132402750" title="Конструкция двигателя Danfoss 1-10 Используется в интерфейсе">VSD_MOTOR_TYPE</a>, TypeMotor);
+<a name="l00068"></a>00068 }
+<a name="l00069"></a>00069 
+<a name="l00070"></a><a class="code" href="class_vsd.html#a4d14d9ae5a5e84a6b234b2e67602319b">00070</a> <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a4d14d9ae5a5e84a6b234b2e67602319b" title="Метод задания направления вращения">Vsd::setRotation</a>(<span class="keywordtype">float</span> value)
+<a name="l00071"></a>00071 {
+<a name="l00072"></a>00072   <span class="keywordflow">return</span> <a class="code" href="class_device.html#a66f43ac758cff37a928cb2fcd5f4709d" title="Метод присвоения значения параметру Когда пытаемся записать значение, нам нужно проверить 1...">setValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa21d239374094b35f475fc94915892257" title="Направления вращения Danfoss 4-10 Не используется в проекте, только при конфигурировании">VSD_ROTATION</a>, value);
+<a name="l00073"></a>00073 }
+<a name="l00074"></a>00074 
+<a name="l00075"></a><a class="code" href="class_vsd.html#af157d0d13b00b703237985147b114a87">00075</a> <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#af157d0d13b00b703237985147b114a87" title="Метод задания частоты">Vsd::setFrequency</a>(<span class="keywordtype">float</span> value)
+<a name="l00076"></a>00076 {
+<a name="l00077"></a>00077   <span class="keywordflow">return</span> <a class="code" href="class_device.html#a66f43ac758cff37a928cb2fcd5f4709d" title="Метод присвоения значения параметру Когда пытаемся записать значение, нам нужно проверить 1...">setValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa99aa001e43df30f05f4feff2626fab3b" title="Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG...">VSD_FREQUENCY</a>, value);
+<a name="l00078"></a>00078 }
+<a name="l00079"></a>00079 
+<a name="l00080"></a><a class="code" href="class_vsd.html#a4e4c42679d98ee0296fe6dd13defc2a8">00080</a> <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a4e4c42679d98ee0296fe6dd13defc2a8" title="Метод задания минимальной частоты">Vsd::setMinFrequency</a>(<span class="keywordtype">float</span> value)
+<a name="l00081"></a>00081 {
+<a name="l00082"></a>00082   <span class="comment">// Если записываемое значение &quot;Минимальной частоты&quot; больше значения</span>
+<a name="l00083"></a>00083   <span class="comment">// &quot;Максимальной частоты&quot;</span>
+<a name="l00084"></a>00084   <span class="keywordflow">if</span> (value &gt; <a class="code" href="class_device.html#a073b111db61bdbfc67df04e0acaa05ef" title="Метод получения значения параметра по id.">getValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfafe8f934b1b7b5e6e77bb89c54f6a49e1" title="Верхний передел скорости Danfoss 4-14 Используется в проекте Novomet 0х0037 IREG_FREQ_REF_MAх">VSD_HIGH_LIM_SPEED_MOTOR</a>)) {
+<a name="l00085"></a>00085     <span class="keywordflow">return</span> <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a0d69fbc6071c40de52479590e5ac5121">RETURN_ERROR</a>;                    <span class="comment">// Возвращаем ошибку</span>
+<a name="l00086"></a>00086   }
+<a name="l00087"></a>00087   <span class="keywordflow">else</span> {
+<a name="l00088"></a>00088     <span class="comment">// Если установили новое значение в массив параметров</span>
+<a name="l00089"></a>00089     <span class="keywordflow">if</span> (!<a class="code" href="class_device.html#a66f43ac758cff37a928cb2fcd5f4709d" title="Метод присвоения значения параметру Когда пытаемся записать значение, нам нужно проверить 1...">setValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa81312b6c336053cfbbe9d2467fd46a37" title="Нижний предел скорости Danfoss 4-12 Гц Используется в проекте">VSD_LOW_LIM_SPEED_MOTOR</a>, value)) {
+<a name="l00090"></a>00090       <span class="comment">// Меняем поле минимум для уставки &quot;Максимальной частоты&quot;</span>
+<a name="l00091"></a>00091       <a class="code" href="class_device.html#a6b0629a552d093f0bc664320ad1735c8" title="Метод присвоения поля Min в массиве параметров по индексу">setFieldMin</a>(<a class="code" href="class_device.html#a3bdfc95a48a67b1093c3b2d344465775" title="Метод поиска и получения индекса по ID параметра">getIndexAtId</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfafe8f934b1b7b5e6e77bb89c54f6a49e1" title="Верхний передел скорости Danfoss 4-14 Используется в проекте Novomet 0х0037 IREG_FREQ_REF_MAх">VSD_HIGH_LIM_SPEED_MOTOR</a>), value);
+<a name="l00092"></a>00092       <span class="comment">// Меняем поле минимум для уставки &quot;Частота&quot;</span>
+<a name="l00093"></a>00093       <a class="code" href="class_device.html#a6b0629a552d093f0bc664320ad1735c8" title="Метод присвоения поля Min в массиве параметров по индексу">setFieldMin</a>(<a class="code" href="class_device.html#a3bdfc95a48a67b1093c3b2d344465775" title="Метод поиска и получения индекса по ID параметра">getIndexAtId</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa99aa001e43df30f05f4feff2626fab3b" title="Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG...">VSD_FREQUENCY</a>), value);
+<a name="l00094"></a>00094       <span class="keywordflow">return</span> <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a5d1c9b3e398e7790aec3f821fb7a6ef8">RETURN_OK</a>;
+<a name="l00095"></a>00095     }
+<a name="l00096"></a>00096     <span class="keywordflow">return</span> <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a0d69fbc6071c40de52479590e5ac5121">RETURN_ERROR</a>;
+<a name="l00097"></a>00097   }
+<a name="l00098"></a>00098 }
+<a name="l00099"></a>00099 
+<a name="l00100"></a><a class="code" href="class_vsd.html#ad01b71e20bd1bb05d1b2f207156d42a7">00100</a> <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#ad01b71e20bd1bb05d1b2f207156d42a7" title="Метод задания максимальной частоты">Vsd::setMaxFrequency</a>(<span class="keywordtype">float</span> value)
+<a name="l00101"></a>00101 {
+<a name="l00102"></a>00102   <span class="comment">// Если записываемое значение &quot;Максимальной частоты&quot; меньше значения</span>
+<a name="l00103"></a>00103   <span class="comment">// &quot;Минимальной частоты&quot;</span>
+<a name="l00104"></a>00104   <span class="keywordflow">if</span> (value &lt; <a class="code" href="class_device.html#a073b111db61bdbfc67df04e0acaa05ef" title="Метод получения значения параметра по id.">getValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa81312b6c336053cfbbe9d2467fd46a37" title="Нижний предел скорости Danfoss 4-12 Гц Используется в проекте">VSD_LOW_LIM_SPEED_MOTOR</a>)) {
+<a name="l00105"></a>00105     <span class="keywordflow">return</span> <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a0d69fbc6071c40de52479590e5ac5121">RETURN_ERROR</a>;                    <span class="comment">// Возвращаем ошибку</span>
+<a name="l00106"></a>00106   }
+<a name="l00107"></a>00107   <span class="keywordflow">else</span> {
+<a name="l00108"></a>00108     <span class="comment">// Если установили новое значение в массив параметров</span>
+<a name="l00109"></a>00109     <span class="keywordflow">if</span> (!<a class="code" href="class_device.html#a66f43ac758cff37a928cb2fcd5f4709d" title="Метод присвоения значения параметру Когда пытаемся записать значение, нам нужно проверить 1...">setValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaf09e7e9679d3621f05e415936c1bfd70" title="Время фильтрации при высокой скорости Danfoss 1-16 Используется в режиме автоадаптации">VSD_HIGH_SPEED_FILTER_TIME</a>, value)) {
+<a name="l00110"></a>00110       <span class="comment">// Меняем поле максимум для уставки &quot;Максимальной частоты&quot;</span>
+<a name="l00111"></a>00111       <a class="code" href="class_device.html#a5811ff731fbed9ba050fa67860e91d63" title="Метод присвоения поля Max в массиве параметров по индексу">setFieldMax</a>(<a class="code" href="class_device.html#a3bdfc95a48a67b1093c3b2d344465775" title="Метод поиска и получения индекса по ID параметра">getIndexAtId</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa81312b6c336053cfbbe9d2467fd46a37" title="Нижний предел скорости Danfoss 4-12 Гц Используется в проекте">VSD_LOW_LIM_SPEED_MOTOR</a>), value);
+<a name="l00112"></a>00112       <span class="comment">// Меняем поле максимум для уставки &quot;Частота&quot;</span>
+<a name="l00113"></a>00113       <a class="code" href="class_device.html#a5811ff731fbed9ba050fa67860e91d63" title="Метод присвоения поля Max в массиве параметров по индексу">setFieldMax</a>(<a class="code" href="class_device.html#a3bdfc95a48a67b1093c3b2d344465775" title="Метод поиска и получения индекса по ID параметра">getIndexAtId</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa99aa001e43df30f05f4feff2626fab3b" title="Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG...">VSD_FREQUENCY</a>), value);
+<a name="l00114"></a>00114       <span class="keywordflow">return</span> <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a5d1c9b3e398e7790aec3f821fb7a6ef8">RETURN_OK</a>;
+<a name="l00115"></a>00115     }
+<a name="l00116"></a>00116     <span class="keywordflow">return</span> <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a0d69fbc6071c40de52479590e5ac5121">RETURN_ERROR</a>;
+<a name="l00117"></a>00117   }
+<a name="l00118"></a>00118 }
+<a name="l00119"></a>00119 
+<a name="l00120"></a><a class="code" href="class_vsd.html#af7bd2471f14913a16f01813cae5b7610">00120</a> <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#af7bd2471f14913a16f01813cae5b7610" title="Метод задания темпа набора частоты Гц/с">Vsd::setTempSpeedUp</a>(<span class="keywordtype">float</span> value)
+<a name="l00121"></a>00121 {
+<a name="l00122"></a>00122   <span class="keywordflow">if</span> (!<a class="code" href="class_device.html#a66f43ac758cff37a928cb2fcd5f4709d" title="Метод присвоения значения параметру Когда пытаемся записать значение, нам нужно проверить 1...">setValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa4a847393b567ef8251f4a864c794446a">VSD_TEMP_SPEEDUP</a>, value)) {
+<a name="l00123"></a>00123     <span class="keywordflow">if</span> (!<a class="code" href="class_device.html#a66f43ac758cff37a928cb2fcd5f4709d" title="Метод присвоения значения параметру Когда пытаемся записать значение, нам нужно проверить 1...">setValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfafb2c86c49f9d7222d2d12c5d9281e6c0" title="Время разгона Danfoss 3-41 % Активно используется в проекте">VSD_TIMER_DISPERSAL</a>, <a class="code" href="class_device.html#a073b111db61bdbfc67df04e0acaa05ef" title="Метод получения значения параметра по id.">getValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa99aa001e43df30f05f4feff2626fab3b" title="Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG...">VSD_FREQUENCY</a>)/<a class="code" href="class_device.html#a073b111db61bdbfc67df04e0acaa05ef" title="Метод получения значения параметра по id.">getValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa4a847393b567ef8251f4a864c794446a">VSD_TEMP_SPEEDUP</a>))) {
+<a name="l00124"></a>00124       <span class="keywordflow">return</span> <a class="code" href="class_device.html#a66f43ac758cff37a928cb2fcd5f4709d" title="Метод присвоения значения параметру Когда пытаемся записать значение, нам нужно проверить 1...">setValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaca2c12c412e5c9c0fce141f5fe2ee43a" title="Период нарастания частоты Novomet 0х0038 IREG_T_SPEEDUP.">VSD_T_SPEEDUP</a>, 1/<a class="code" href="class_device.html#a073b111db61bdbfc67df04e0acaa05ef" title="Метод получения значения параметра по id.">getValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa4a847393b567ef8251f4a864c794446a">VSD_TEMP_SPEEDUP</a>));
+<a name="l00125"></a>00125     }
+<a name="l00126"></a>00126   }
+<a name="l00127"></a>00127   <span class="keywordflow">return</span> <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a0d69fbc6071c40de52479590e5ac5121">RETURN_ERROR</a>;
+<a name="l00128"></a>00128 }
+<a name="l00129"></a>00129 
+<a name="l00130"></a><a class="code" href="class_vsd.html#aa57d66e205605086d4e4f7fba0be2b35">00130</a> <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#aa57d66e205605086d4e4f7fba0be2b35" title="Метод задания темпа снижения частоты Гц/с">Vsd::setTempSpeedDown</a>(<span class="keywordtype">float</span> value)
+<a name="l00131"></a>00131 {
+<a name="l00132"></a>00132   <span class="keywordflow">if</span> (!<a class="code" href="class_device.html#a66f43ac758cff37a928cb2fcd5f4709d" title="Метод присвоения значения параметру Когда пытаемся записать значение, нам нужно проверить 1...">setValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa8ba3b39c45103acc95948c538f726aed">VSD_TEMP_SPEEDDOWN</a>, value)) {
+<a name="l00133"></a>00133     <span class="keywordflow">if</span> (!<a class="code" href="class_device.html#a66f43ac758cff37a928cb2fcd5f4709d" title="Метод присвоения значения параметру Когда пытаемся записать значение, нам нужно проверить 1...">setValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa35df94cf937a9ddc5097ec6112865ac8" title="Время замедления Danfoss 3-42 % Активно используется в проекте">VSD_TIMER_DELAY</a>, <a class="code" href="class_device.html#a073b111db61bdbfc67df04e0acaa05ef" title="Метод получения значения параметра по id.">getValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa99aa001e43df30f05f4feff2626fab3b" title="Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG...">VSD_FREQUENCY</a>)/<a class="code" href="class_device.html#a073b111db61bdbfc67df04e0acaa05ef" title="Метод получения значения параметра по id.">getValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa8ba3b39c45103acc95948c538f726aed">VSD_TEMP_SPEEDDOWN</a>))) {
+<a name="l00134"></a>00134       <span class="keywordflow">return</span> <a class="code" href="class_device.html#a66f43ac758cff37a928cb2fcd5f4709d" title="Метод присвоения значения параметру Когда пытаемся записать значение, нам нужно проверить 1...">setValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa2ad25f3295efe66450736555a81771f8" title="Период Период снижения частоты Novomet 0х0039 IREG_T_SPEEDDOWN.">VSD_T_SPEEDDOWN</a>, 1/<a class="code" href="class_device.html#a073b111db61bdbfc67df04e0acaa05ef" title="Метод получения значения параметра по id.">getValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa8ba3b39c45103acc95948c538f726aed">VSD_TEMP_SPEEDDOWN</a>));
+<a name="l00135"></a>00135     }
+<a name="l00136"></a>00136   }
+<a name="l00137"></a>00137   <span class="keywordflow">return</span> <a class="code" href="define_8h.html#ab8f11cadf88edc2927eeb71c43e22dc7a0d69fbc6071c40de52479590e5ac5121">RETURN_ERROR</a>;
+<a name="l00138"></a>00138 }
+<a name="l00139"></a>00139 
+<a name="l00140"></a><a class="code" href="class_vsd.html#a5ac72118ddafd6ce13a201d9e58e7cd1">00140</a> <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a5ac72118ddafd6ce13a201d9e58e7cd1" title="Метод задания времени набора частоты">Vsd::setSpeedUp</a>(<span class="keywordtype">float</span> value)
+<a name="l00141"></a>00141 {
+<a name="l00142"></a>00142   <span class="keywordflow">return</span> <a class="code" href="class_device.html#a66f43ac758cff37a928cb2fcd5f4709d" title="Метод присвоения значения параметру Когда пытаемся записать значение, нам нужно проверить 1...">setValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaca2c12c412e5c9c0fce141f5fe2ee43a" title="Период нарастания частоты Novomet 0х0038 IREG_T_SPEEDUP.">VSD_T_SPEEDUP</a>, value);
+<a name="l00143"></a>00143 }
+<a name="l00144"></a>00144 
+<a name="l00145"></a><a class="code" href="class_vsd.html#aef96fe559fbd47f40582ab6f70eb8f5b">00145</a> <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#aef96fe559fbd47f40582ab6f70eb8f5b" title="Метод задания времени снижения частоты">Vsd::setSpeedDown</a>(<span class="keywordtype">float</span> value)
+<a name="l00146"></a>00146 {
+<a name="l00147"></a>00147   <span class="keywordflow">return</span> <a class="code" href="class_device.html#a66f43ac758cff37a928cb2fcd5f4709d" title="Метод присвоения значения параметру Когда пытаемся записать значение, нам нужно проверить 1...">setValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa2ad25f3295efe66450736555a81771f8" title="Период Период снижения частоты Novomet 0х0039 IREG_T_SPEEDDOWN.">VSD_T_SPEEDDOWN</a>, value);
+<a name="l00148"></a>00148 }
+<a name="l00149"></a>00149 
+<a name="l00150"></a><a class="code" href="class_vsd.html#a0b99a14d694d1ee4f0cd636709c399e2">00150</a> <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a0b99a14d694d1ee4f0cd636709c399e2" title="Метод задания типа управления двигателем">Vsd::setMotorControl</a>(<span class="keywordtype">float</span> value)
+<a name="l00151"></a>00151 {
+<a name="l00152"></a>00152   <span class="keywordflow">return</span> <a class="code" href="class_device.html#a66f43ac758cff37a928cb2fcd5f4709d" title="Метод присвоения значения параметру Когда пытаемся записать значение, нам нужно проверить 1...">setValue</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfab16290e0f748ff6ffb1c619b728bd0ad" title="Принцип управления двигателем Danfoss 1-01 Не используется в проекте, только при конфигурировании">VSD_MOTOR_CONTROL</a>, value);
+<a name="l00153"></a>00153 }
+<a name="l00154"></a>00154 
+<a name="l00155"></a>00155 
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157 
+<a name="l00158"></a>00158 
+<a name="l00159"></a>00159 
+<a name="l00160"></a>00160 
+<a name="l00161"></a>00161 
+<a name="l00162"></a>00162 
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

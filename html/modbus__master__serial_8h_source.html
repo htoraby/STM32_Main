@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/protocol/modbus/modbus_master_serial.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/protocol/modbus/modbus_master_serial.h</div>  </div>
+</div>
+<div class="contents">
+<a href="modbus__master__serial_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 ﻿<span class="comment">/*</span>
+<a name="l00002"></a>00002 <span class="comment"> * modbus_master_serial.h</span>
+<a name="l00003"></a>00003 <span class="comment"> *</span>
+<a name="l00004"></a>00004 <span class="comment"> *  Created on: 03.07.2014</span>
+<a name="l00005"></a>00005 <span class="comment"> *      Author: trofimenko</span>
+<a name="l00006"></a>00006 <span class="comment"> */</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="preprocessor">#ifndef MODBUS_MASTER_SERIAL_H_</span>
+<a name="l00009"></a>00009 <span class="preprocessor"></span><span class="preprocessor">#define MODBUS_MASTER_SERIAL_H_</span>
+<a name="l00010"></a>00010 <span class="preprocessor"></span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include &quot;<a class="code" href="modbus__master_8h.html">modbus_master.h</a>&quot;</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &quot;<a class="code" href="uart_8h.html">uart.h</a>&quot;</span>
+<a name="l00013"></a>00013 
+<a name="l00018"></a><a class="code" href="class_modbus_master_serial.html">00018</a> <span class="keyword">class </span><a class="code" href="class_modbus_master_serial.html" title="Класс modbus master для последовательных портов Реализует некоторые настройки последовательного прото...">ModbusMasterSerial</a>: <span class="keyword">public</span> <a class="code" href="class_modbus_master.html">ModbusMaster</a>
+<a name="l00019"></a>00019 {
+<a name="l00020"></a>00020         <span class="keyword">public</span>:
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022     <a class="code" href="class_modbus_master_serial.html#a221122e58c4fbddf86f233851e045332">ModbusMasterSerial</a>(<span class="keywordtype">int</span> Com);
+<a name="l00023"></a>00023     <span class="keyword">virtual</span> <a class="code" href="class_modbus_master_serial.html#ae431bb90c424c0b1fc85a44d828abe18">~ModbusMasterSerial</a>();
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025                 <span class="comment">// МЕТОД ЗАКРЫТИЯ ПРОТОКОЛА</span>
+<a name="l00026"></a>00026                 <span class="comment">// Закрывает последовательного порта и освобождает все системные ресурсы,</span>
+<a name="l00027"></a>00027                 <span class="comment">// связанные с портом.</span>
+<a name="l00028"></a>00028                 <span class="keywordtype">int</span> <a class="code" href="class_modbus_master.html#ac33928dc3a9800a8853448ba35229037">closeProtocol</a>(<span class="keywordtype">int</span> PortName);
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030                 <span class="comment">// МЕТОД ОТКРЫТИЯ ПРОТОКОЛА</span>
+<a name="l00031"></a>00031                 <span class="comment">// Открывает протокол и связанный и с ним порт</span>
+<a name="l00032"></a>00032                 <span class="comment">// Параметры:</span>
+<a name="l00033"></a>00033                 <span class="comment">// PortName - Идентификатор Последовательного порта (например, &quot;COM1&quot;, &quot;/ dev/ser1&quot; или &quot;/ dev/ttyS0&quot;)</span>
+<a name="l00034"></a>00034                 <span class="comment">// BaudRate - Скорость передачи данных</span>
+<a name="l00035"></a>00035                 <span class="comment">// DataBits - 7 бит данных для протокол ASCII, 8 бит данных для RTU</span>
+<a name="l00036"></a>00036                 <span class="comment">// StopBits - стоп-бит</span>
+<a name="l00037"></a>00037                 <span class="comment">// Parity - контроль четности</span>
+<a name="l00038"></a>00038                 <span class="comment">// Возвращает:</span>
+<a name="l00039"></a>00039                 <span class="comment">// RETURN_OK в случае успешного завершения или код ошибки</span>
+<a name="l00040"></a>00040     <span class="keywordtype">int</span> <a class="code" href="class_modbus_master_serial.html#a4c22ebac5c1e7a14740ffbeea02f352b">openProtocol</a>(<span class="keywordtype">int</span> portName, <span class="keywordtype">long</span> baudRate, <span class="keywordtype">int</span> dataBits,
+<a name="l00041"></a>00041                      <span class="keywordtype">int</span> stopBits, <span class="keywordtype">int</span> parity);
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043                 <span class="comment">// МЕТОД ПРОВЕРКИ ОТКРЫТ ЛИ ПРОТОКОЛ</span>
+<a name="l00044"></a>00044                 <span class="comment">// Наследуется из classModbusMaster</span>
+<a name="l00045"></a>00045                 <span class="comment">// Возвращает:</span>
+<a name="l00046"></a>00046                 <span class="comment">// 1 - открыт</span>
+<a name="l00047"></a>00047                 <span class="comment">// 0 - закрыт</span>
+<a name="l00048"></a>00048                 <span class="keywordtype">int</span> <a class="code" href="class_modbus_master_serial.html#ad4ff8a7731057a04a0c263cd8ee24acb">isOpen</a>();
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050                 <span class="comment">// МЕТОД ЗАПИСИ ДАННЫХ В ПОРТ</span>
+<a name="l00051"></a>00051                 <span class="comment">// Buf - массив байт записываемый в порт</span>
+<a name="l00052"></a>00052                 <span class="comment">// Count - количество записываемых байт</span>
+<a name="l00053"></a>00053     <span class="keywordtype">int</span> <a class="code" href="class_modbus_master_serial.html#a16ba1342a736d4787c3f9c60bd07c6e3">transmitQuery</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *Buf, <span class="keywordtype">int</span> Count);
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055 
+<a name="l00061"></a>00061     <span class="keywordtype">int</span> <a class="code" href="class_modbus_master_serial.html#ad07c32db3a8b94ad5360a51d42d74680" title="receiveAnswer Метод получения данных из uart порта">receiveAnswer</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *Buf);
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063         <span class="keyword">private</span>:
+<a name="l00064"></a><a class="code" href="class_modbus_master_serial.html#a97d5392c5aa60dcffe2926b3bc35b3ae">00064</a>     <span class="keywordtype">int</span> <a class="code" href="class_modbus_master_serial.html#a97d5392c5aa60dcffe2926b3bc35b3ae">numberComPort_</a>;
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066     <span class="comment">// Семафор</span>
+<a name="l00067"></a><a class="code" href="class_modbus_master_serial.html#ab7d0416abe0ebc80cb656b407de49d9a">00067</a>     osSemaphoreId <a class="code" href="class_modbus_master_serial.html#ab7d0416abe0ebc80cb656b407de49d9a">semaphoreAnswer_</a>;
+<a name="l00068"></a>00068 };
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 <span class="preprocessor">#endif </span><span class="comment">/* MODBUS_MASTER_SERIAL_H_ */</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

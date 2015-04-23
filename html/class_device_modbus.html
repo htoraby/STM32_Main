@@ -1,0 +1,1384 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Класс DeviceModbus</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li><a href="classes.html"><span>Алфавитный&#160;указатель&#160;структур&#160;данных</span></a></li>
+      <li><a href="hierarchy.html"><span>Иерархия&#160;классов</span></a></li>
+      <li><a href="functions.html"><span>Поля&#160;структур</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pub-attribs">Поля данных</a> &#124;
+<a href="#pri-methods">Закрытые члены</a> &#124;
+<a href="#pri-attribs">Закрытые данные</a>  </div>
+  <div class="headertitle">
+<div class="title">Класс DeviceModbus</div>  </div>
+</div>
+<div class="contents">
+<!-- doxytag: class="DeviceModbus" -->
+<p>Класс для устройств работающих по протоколу Modbus. Содержит функции организации цикла чтения и записи параметров устройства  
+ <a href="class_device_modbus.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="device__modbus_8h_source.html">device_modbus.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a2e34b0ca9ddd2934902a705aafb218ac">DeviceModbus</a> (<a class="el" href="struct_modbus_parameter.html">ModbusParameter</a> *modbusParameters, int countParameter, int portName, long baudRate, int dataBits, int stopBits, int parity, int address)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Конструктор класса  <a href="#a2e34b0ca9ddd2934902a705aafb218ac"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a9817b9b1c696332d51ea3e935fb84d87">~DeviceModbus</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#aa1e62f1df42bd01e9d327138164e36a9">createThread</a> (const char *threadName, osMessageQId getValueDeviceQId)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод создания задачи  <a href="#aa1e62f1df42bd01e9d327138164e36a9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a8547941e0415621144c1d354a7056e1d">getFieldID</a> (int index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения ID параметра по индексу в массиве параметров  <a href="#a8547941e0415621144c1d354a7056e1d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a3d63c4329572c6a45a623c21fba80911">getFieldAddress</a> (int index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения Address параметра по индексу в массиве параметров  <a href="#a3d63c4329572c6a45a623c21fba80911"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#afb66b291c23f552efcb93ec3a9192c66">getFieldOperation</a> (int index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения Operation параметра по индексу в массиве параметров  <a href="#afb66b291c23f552efcb93ec3a9192c66"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#ae04b8f3dfdae11e8ce69b7e5b81417e0">getFieldPhysic</a> (int index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения Physic параметра по индексу в массиве параметров  <a href="#ae04b8f3dfdae11e8ce69b7e5b81417e0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a2f2de279c44f5c905003897a74582b33">getFieldUnit</a> (int index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения Unit параметра по индексу в массиве параметров  <a href="#a2f2de279c44f5c905003897a74582b33"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a89f484e6bd39cc60a7d8ed55069ae3d8">getFieldTypeData</a> (int index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения TypeData параметра по индексу в массиве параметров  <a href="#a89f484e6bd39cc60a7d8ed55069ae3d8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a6373253b1f689cfd5d6e746305c985ea">getFieldCoefficient</a> (int index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения Coefficient параметра по индексу в массиве параметров  <a href="#a6373253b1f689cfd5d6e746305c985ea"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#addb74cf3ebbeb007841cf2fcb0365171">getFieldMinimum</a> (int index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения Minimum параметра по индексу в массиве параметров  <a href="#addb74cf3ebbeb007841cf2fcb0365171"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#aa9b565deadcec456566c6170d4407894">getFieldMaximum</a> (int index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения Maximum параметра по индексу в массиве параметров  <a href="#aa9b565deadcec456566c6170d4407894"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a90a2d90f40e4c20ac9f52d64a2385ed8">getFieldDefault</a> (int index)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#ae18561971bc932f75d5e5d0dd0911e58">getFieldFreqExchange</a> (int index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения FreqExchange параметра по индексу в массиве параметров  <a href="#ae18561971bc932f75d5e5d0dd0911e58"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a59e3c02db89463643da60d7d5877f031">getFieldCntExchange</a> (int index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения CntExchange параметра по индексу в массиве параметров  <a href="#a59e3c02db89463643da60d7d5877f031"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#ac829ea1b96da91980060e4d7867749b0">setFieldCntExchange</a> (int index, int cntExchange)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод задания CntExchange параметра по индексу в массиве параметров  <a href="#ac829ea1b96da91980060e4d7867749b0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a9c422c1bead083b34e676214c6bd2afb">getFieldCommand</a> (int index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения Command параметра по индексу в массиве параметров  <a href="#a9c422c1bead083b34e676214c6bd2afb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#ade88416cbd29b2ef7eac689801b86abe">setFieldCommand</a> (int index, int command)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод присвоения Command параметра по индексу в массиве параметров  <a href="#ade88416cbd29b2ef7eac689801b86abe"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#aa7e2ac284cec01edd923469afe00426a">getFieldValidity</a> (int index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения Validity параметра по индексу в массиве параметров  <a href="#aa7e2ac284cec01edd923469afe00426a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a5d20f96254a60ff3b11ff4043dbbd255">setFieldValidity</a> (int Index, int Validity)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод задания Validity параметра по индексу в массиве  <a href="#a5d20f96254a60ff3b11ff4043dbbd255"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionun_type_data.html">unTypeData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#ab534b1974392413f677d2e0e55e4dbd8">getFieldValue</a> (int index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения Value параметра по индексу в массиве параметров  <a href="#ab534b1974392413f677d2e0e55e4dbd8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_modbus_parameter.html">ModbusParameter</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#ae53c7804a5436a4f330f16ed1ab81a39">getFieldAll</a> (int index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения указателя на параметр по индексу  <a href="#ae53c7804a5436a4f330f16ed1ab81a39"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#aeeab64d622c7dec3c65b58aa0d237570">getIndexAtId</a> (int id)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод поиска и получения индекса по ID параметра  <a href="#aeeab64d622c7dec3c65b58aa0d237570"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#ab3f45111e3af3c3c2c87b0b541360a5d">getIndexAtAddress</a> (int address)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод поиска и получения индекса по Address параметра  <a href="#ab3f45111e3af3c3c2c87b0b541360a5d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#adf960ee0558d8decb8afb1d7da84b781">writeModbusParameter</a> (int id, float value)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод записи параметра в устройство  <a href="#adf960ee0558d8decb8afb1d7da84b781"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a3fa6e79419edfd6765395f1c234e981f">exchangeTask</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод циклического опроса устройства по Modbus и/или внеочередной записи и/или чтения параметра  <a href="#a3fa6e79419edfd6765395f1c234e981f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#af5fa616470a3fb4e0552577ec8b750d7">getMessageOutOfTurn</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">putTurn метод добавления элемента в очередь  <a href="#af5fa616470a3fb4e0552577ec8b750d7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a48423442666f6edc4a58fa91132b6b12">putMessageOutOfTurn</a> (int element)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">putTurn метод добавления элемента в очередь  <a href="#a48423442666f6edc4a58fa91132b6b12"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a6354c8e3e3e300f647db207d94ba3642">getMessageReadyParam</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">getMessageReadyParam получить элемент из очереди готовых параметров  <a href="#a6354c8e3e3e300f647db207d94ba3642"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a66a5acfcb35b6652546909d67d1fead8">putMessageUpdateId</a> (int id)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">putMessagereadyParam положить элемент в очередь готовых параметров  <a href="#a66a5acfcb35b6652546909d67d1fead8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#af232f1903c5fa073c046c5db6f1454d5">searchExchangeParameters</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a133284a67991f57392d122ecbb43bd09">isConnect</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод проверяющий наличие связи с устройством  <a href="#a133284a67991f57392d122ecbb43bd09"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pub-attribs"></a>
+Поля данных</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a310e4550394c3b1dcb2a9ffd00357006">regArr_</a> [125]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a6683bd491def232c9acad6f870f3c0e7">int32Arr_</a> [62]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#aaa7ebed7c82274d2384c7480aef62d69">float32Arr_</a> [62]</td></tr>
+<tr><td colspan="2"><h2><a name="pri-methods"></a>
+Закрытые члены</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#aa28412841ef46a2f205012b074023b15">getDeviceAddress</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения адреса устройства  <a href="#aa28412841ef46a2f205012b074023b15"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a798e7ed0f50654d20e6c53ad761a7f43">setDeviceAddress</a> (int address)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод записи адреса устройства  <a href="#a798e7ed0f50654d20e6c53ad761a7f43"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pri-attribs"></a>
+Закрытые данные</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_modbus_parameter.html">ModbusParameter</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">modbusParameters_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Указатель на массив параметров устройства  <a href="#ab56187dcd35c2c03afec99620b19b554"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a219caa5a38d9cc25ab03c7de877717f9">countParameter_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Количество параметров в массиве  <a href="#a219caa5a38d9cc25ab03c7de877717f9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a8065df787064b4712367af27c9c55cbb">deviceAddress_</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a74f426012c2d39a2c31ba4a0218ec441">indexExchange_</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">osThreadId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a120e1bebb4463c8683efe5bba4a4e3ca">threadId_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Идентификатор задачи  <a href="#a120e1bebb4463c8683efe5bba4a4e3ca"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">osMessageQId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a5a91fd11214a2af977098c0a573db8e8">messageOutOfTurn_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Идентификатор очереди параметров опроса вне основного цикла  <a href="#a5a91fd11214a2af977098c0a573db8e8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">osMessageQId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#a6105d36c21ea31026b95863b2d8710d4">getValueDeviceQId_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Идентификатор очереди параметров с новыми значениями от устройства  <a href="#a6105d36c21ea31026b95863b2d8710d4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_modbus_master_serial.html">ModbusMasterSerial</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_modbus.html#add08bf58427c3f48c1caf26280807708">mms_</a></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Подробное описание</h2>
+<div class="textblock"><p>Класс для устройств работающих по протоколу Modbus. Содержит функции организации цикла чтения и записи параметров устройства </p>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8h_source.html">device_modbus.h</a> строка <a class="el" href="device__modbus_8h_source.html#l00040">40</a></p>
+</div><hr/><h2>Конструктор(ы)</h2>
+<a class="anchor" id="a2e34b0ca9ddd2934902a705aafb218ac"></a><!-- doxytag: member="DeviceModbus::DeviceModbus" ref="a2e34b0ca9ddd2934902a705aafb218ac" args="(ModbusParameter *modbusParameters, int countParameter, int portName, long baudRate, int dataBits, int stopBits, int parity, int address)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DeviceModbus::DeviceModbus </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_modbus_parameter.html">ModbusParameter</a> *&#160;</td>
+          <td class="paramname"><em>modbusParameters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>countParameter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>portName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>baudRate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dataBits</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stopBits</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>parity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>address</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Конструктор класса </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modbusParameters</td><td>- указатель на карту регистров </td></tr>
+    <tr><td class="paramname">countParameter</td><td>Количество регистров в массиве </td></tr>
+    <tr><td class="paramname">portName</td><td>- номер имя порта uart </td></tr>
+    <tr><td class="paramname">baudRate</td><td>- скорость обмена </td></tr>
+    <tr><td class="paramname">dataBits</td><td>- количество бит данных </td></tr>
+    <tr><td class="paramname">stopBits</td><td>- количество стоп бит </td></tr>
+    <tr><td class="paramname">parity</td><td>- чётность </td></tr>
+    <tr><td class="paramname">address</td><td>- адресс устройства </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00017">17</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a9817b9b1c696332d51ea3e935fb84d87"></a><!-- doxytag: member="DeviceModbus::~DeviceModbus" ref="a9817b9b1c696332d51ea3e935fb84d87" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DeviceModbus::~DeviceModbus </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00036">36</a></p>
+
+</div>
+</div>
+<hr/><h2>Методы</h2>
+<a class="anchor" id="aa1e62f1df42bd01e9d327138164e36a9"></a><!-- doxytag: member="DeviceModbus::createThread" ref="aa1e62f1df42bd01e9d327138164e36a9" args="(const char *threadName, osMessageQId getValueDeviceQId)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DeviceModbus::createThread </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>threadName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">osMessageQId&#160;</td>
+          <td class="paramname"><em>getValueDeviceQId</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод создания задачи </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">threadName</td><td>- имя задачи </td></tr>
+    <tr><td class="paramname">getValueDeviceQId</td><td>- Очередь параметров со значениями от устройства </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00041">41</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a3fa6e79419edfd6765395f1c234e981f"></a><!-- doxytag: member="DeviceModbus::exchangeTask" ref="a3fa6e79419edfd6765395f1c234e981f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DeviceModbus::exchangeTask </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод циклического опроса устройства по Modbus и/или внеочередной записи и/или чтения параметра </p>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00261">261</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa28412841ef46a2f205012b074023b15"></a><!-- doxytag: member="DeviceModbus::getDeviceAddress" ref="aa28412841ef46a2f205012b074023b15" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DeviceModbus::getDeviceAddress </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения адреса устройства </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>Адрес устройства </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00385">385</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a3d63c4329572c6a45a623c21fba80911"></a><!-- doxytag: member="DeviceModbus::getFieldAddress" ref="a3d63c4329572c6a45a623c21fba80911" args="(int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DeviceModbus::getFieldAddress </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения Address параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>- индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле Address </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00059">59</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae53c7804a5436a4f330f16ed1ab81a39"></a><!-- doxytag: member="DeviceModbus::getFieldAll" ref="ae53c7804a5436a4f330f16ed1ab81a39" args="(int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_modbus_parameter.html">ModbusParameter</a> * DeviceModbus::getFieldAll </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения указателя на параметр по индексу </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>- индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>Указатель </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00135">135</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a59e3c02db89463643da60d7d5877f031"></a><!-- doxytag: member="DeviceModbus::getFieldCntExchange" ref="a59e3c02db89463643da60d7d5877f031" args="(int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DeviceModbus::getFieldCntExchange </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения CntExchange параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>- индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле CntExchange </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00094">94</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a6373253b1f689cfd5d6e746305c985ea"></a><!-- doxytag: member="DeviceModbus::getFieldCoefficient" ref="a6373253b1f689cfd5d6e746305c985ea" args="(int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DeviceModbus::getFieldCoefficient </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения Coefficient параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>- индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле Coefficient </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00099">99</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a9c422c1bead083b34e676214c6bd2afb"></a><!-- doxytag: member="DeviceModbus::getFieldCommand" ref="a9c422c1bead083b34e676214c6bd2afb" args="(int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DeviceModbus::getFieldCommand </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения Command параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>- индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле Command </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00119">119</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a90a2d90f40e4c20ac9f52d64a2385ed8"></a><!-- doxytag: member="DeviceModbus::getFieldDefault" ref="a90a2d90f40e4c20ac9f52d64a2385ed8" args="(int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DeviceModbus::getFieldDefault </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00114">114</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae18561971bc932f75d5e5d0dd0911e58"></a><!-- doxytag: member="DeviceModbus::getFieldFreqExchange" ref="ae18561971bc932f75d5e5d0dd0911e58" args="(int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DeviceModbus::getFieldFreqExchange </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения FreqExchange параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>- индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле FreqExchange </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00089">89</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a8547941e0415621144c1d354a7056e1d"></a><!-- doxytag: member="DeviceModbus::getFieldID" ref="a8547941e0415621144c1d354a7056e1d" args="(int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DeviceModbus::getFieldID </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения ID параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>- индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле ID </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00054">54</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa9b565deadcec456566c6170d4407894"></a><!-- doxytag: member="DeviceModbus::getFieldMaximum" ref="aa9b565deadcec456566c6170d4407894" args="(int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DeviceModbus::getFieldMaximum </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения Maximum параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>- индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле Maximum </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00109">109</a></p>
+
+</div>
+</div>
+<a class="anchor" id="addb74cf3ebbeb007841cf2fcb0365171"></a><!-- doxytag: member="DeviceModbus::getFieldMinimum" ref="addb74cf3ebbeb007841cf2fcb0365171" args="(int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DeviceModbus::getFieldMinimum </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения Minimum параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>- индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле Minimum </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00104">104</a></p>
+
+</div>
+</div>
+<a class="anchor" id="afb66b291c23f552efcb93ec3a9192c66"></a><!-- doxytag: member="DeviceModbus::getFieldOperation" ref="afb66b291c23f552efcb93ec3a9192c66" args="(int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DeviceModbus::getFieldOperation </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения Operation параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>- индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле Operation </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00064">64</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae04b8f3dfdae11e8ce69b7e5b81417e0"></a><!-- doxytag: member="DeviceModbus::getFieldPhysic" ref="ae04b8f3dfdae11e8ce69b7e5b81417e0" args="(int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DeviceModbus::getFieldPhysic </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения Physic параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>- индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле Physic </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00069">69</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a89f484e6bd39cc60a7d8ed55069ae3d8"></a><!-- doxytag: member="DeviceModbus::getFieldTypeData" ref="a89f484e6bd39cc60a7d8ed55069ae3d8" args="(int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DeviceModbus::getFieldTypeData </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения TypeData параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>- индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле TypeData </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00084">84</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a2f2de279c44f5c905003897a74582b33"></a><!-- doxytag: member="DeviceModbus::getFieldUnit" ref="a2f2de279c44f5c905003897a74582b33" args="(int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DeviceModbus::getFieldUnit </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения Unit параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>- индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле Unit </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00074">74</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa7e2ac284cec01edd923469afe00426a"></a><!-- doxytag: member="DeviceModbus::getFieldValidity" ref="aa7e2ac284cec01edd923469afe00426a" args="(int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DeviceModbus::getFieldValidity </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения Validity параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>- индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле Validity </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00079">79</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ab534b1974392413f677d2e0e55e4dbd8"></a><!-- doxytag: member="DeviceModbus::getFieldValue" ref="ab534b1974392413f677d2e0e55e4dbd8" args="(int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="unionun_type_data.html">unTypeData</a> DeviceModbus::getFieldValue </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения Value параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>- индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле Value </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00130">130</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ab3f45111e3af3c3c2c87b0b541360a5d"></a><!-- doxytag: member="DeviceModbus::getIndexAtAddress" ref="ab3f45111e3af3c3c2c87b0b541360a5d" args="(int address)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DeviceModbus::getIndexAtAddress </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>address</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод поиска и получения индекса по Address параметра </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>- идентификатор параметра </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>Index </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00150">150</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aeeab64d622c7dec3c65b58aa0d237570"></a><!-- doxytag: member="DeviceModbus::getIndexAtId" ref="aeeab64d622c7dec3c65b58aa0d237570" args="(int id)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DeviceModbus::getIndexAtId </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод поиска и получения индекса по ID параметра </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ID</td><td>идентификатор параметра </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>Index </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00140">140</a></p>
+
+</div>
+</div>
+<a class="anchor" id="af5fa616470a3fb4e0552577ec8b750d7"></a><!-- doxytag: member="DeviceModbus::getMessageOutOfTurn" ref="af5fa616470a3fb4e0552577ec8b750d7" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DeviceModbus::getMessageOutOfTurn </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>putTurn метод добавления элемента в очередь </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Index</td><td>Индекс параметра </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>добавили элемент в очередь или нет </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00160">160</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a6354c8e3e3e300f647db207d94ba3642"></a><!-- doxytag: member="DeviceModbus::getMessageReadyParam" ref="a6354c8e3e3e300f647db207d94ba3642" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DeviceModbus::getMessageReadyParam </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>getMessageReadyParam получить элемент из очереди готовых параметров </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>0 - нет элементов или элемент </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a133284a67991f57392d122ecbb43bd09"></a><!-- doxytag: member="DeviceModbus::isConnect" ref="a133284a67991f57392d122ecbb43bd09" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool DeviceModbus::isConnect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод проверяющий наличие связи с устройством </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00253">253</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a48423442666f6edc4a58fa91132b6b12"></a><!-- doxytag: member="DeviceModbus::putMessageOutOfTurn" ref="a48423442666f6edc4a58fa91132b6b12" args="(int element)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DeviceModbus::putMessageOutOfTurn </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>element</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>putTurn метод добавления элемента в очередь </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Index</td><td>Индекс параметра </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>добавили элемент в очередь или нет </dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00168">168</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a66a5acfcb35b6652546909d67d1fead8"></a><!-- doxytag: member="DeviceModbus::putMessageUpdateId" ref="a66a5acfcb35b6652546909d67d1fead8" args="(int id)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DeviceModbus::putMessageUpdateId </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>putMessagereadyParam положить элемент в очередь готовых параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Element</td><td>- элемент </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00177">177</a></p>
+
+</div>
+</div>
+<a class="anchor" id="af232f1903c5fa073c046c5db6f1454d5"></a><!-- doxytag: member="DeviceModbus::searchExchangeParameters" ref="af232f1903c5fa073c046c5db6f1454d5" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DeviceModbus::searchExchangeParameters </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00222">222</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a798e7ed0f50654d20e6c53ad761a7f43"></a><!-- doxytag: member="DeviceModbus::setDeviceAddress" ref="a798e7ed0f50654d20e6c53ad761a7f43" args="(int address)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DeviceModbus::setDeviceAddress </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>address</em></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод записи адреса устройства </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Адрес</td><td>устройства </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00390">390</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ac829ea1b96da91980060e4d7867749b0"></a><!-- doxytag: member="DeviceModbus::setFieldCntExchange" ref="ac829ea1b96da91980060e4d7867749b0" args="(int index, int cntExchange)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DeviceModbus::setFieldCntExchange </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cntExchange</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод задания CntExchange параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>- индекс параметра в массиве </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>поле CntExchange </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ade88416cbd29b2ef7eac689801b86abe"></a><!-- doxytag: member="DeviceModbus::setFieldCommand" ref="ade88416cbd29b2ef7eac689801b86abe" args="(int index, int command)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DeviceModbus::setFieldCommand </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>command</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод присвоения Command параметра по индексу в массиве параметров </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>- индекс параметра в массиве </td></tr>
+    <tr><td class="paramname">Command</td><td>Присваиваемая команда </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00124">124</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a5d20f96254a60ff3b11ff4043dbbd255"></a><!-- doxytag: member="DeviceModbus::setFieldValidity" ref="a5d20f96254a60ff3b11ff4043dbbd255" args="(int Index, int Validity)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DeviceModbus::setFieldValidity </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Validity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод задания Validity параметра по индексу в массиве </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>- индекс параметра в массиве </td></tr>
+    <tr><td class="paramname">значение</td><td>Validity </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="adf960ee0558d8decb8afb1d7da84b781"></a><!-- doxytag: member="DeviceModbus::writeModbusParameter" ref="adf960ee0558d8decb8afb1d7da84b781" args="(int id, float value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DeviceModbus::writeModbusParameter </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод записи параметра в устройство </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ID</td><td>идентификатор параметра </td></tr>
+    <tr><td class="paramname">Value</td><td>значение </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a> строка <a class="el" href="device__modbus_8cpp_source.html#l00186">186</a></p>
+
+</div>
+</div>
+<hr/><h2>Поля</h2>
+<a class="anchor" id="a219caa5a38d9cc25ab03c7de877717f9"></a><!-- doxytag: member="DeviceModbus::countParameter_" ref="a219caa5a38d9cc25ab03c7de877717f9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t <a class="el" href="class_device_modbus.html#a219caa5a38d9cc25ab03c7de877717f9">DeviceModbus::countParameter_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Количество параметров в массиве </p>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8h_source.html">device_modbus.h</a> строка <a class="el" href="device__modbus_8h_source.html#l00288">288</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a8065df787064b4712367af27c9c55cbb"></a><!-- doxytag: member="DeviceModbus::deviceAddress_" ref="a8065df787064b4712367af27c9c55cbb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_device_modbus.html#a8065df787064b4712367af27c9c55cbb">DeviceModbus::deviceAddress_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="device__modbus_8h_source.html">device_modbus.h</a> строка <a class="el" href="device__modbus_8h_source.html#l00290">290</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aaa7ebed7c82274d2384c7480aef62d69"></a><!-- doxytag: member="DeviceModbus::float32Arr_" ref="aaa7ebed7c82274d2384c7480aef62d69" args="[62]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_device_modbus.html#aaa7ebed7c82274d2384c7480aef62d69">DeviceModbus::float32Arr_</a>[62]</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="device__modbus_8h_source.html">device_modbus.h</a> строка <a class="el" href="device__modbus_8h_source.html#l00270">270</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a6105d36c21ea31026b95863b2d8710d4"></a><!-- doxytag: member="DeviceModbus::getValueDeviceQId_" ref="a6105d36c21ea31026b95863b2d8710d4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">osMessageQId <a class="el" href="class_device_modbus.html#a6105d36c21ea31026b95863b2d8710d4">DeviceModbus::getValueDeviceQId_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Идентификатор очереди параметров с новыми значениями от устройства </p>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8h_source.html">device_modbus.h</a> строка <a class="el" href="device__modbus_8h_source.html#l00298">298</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a74f426012c2d39a2c31ba4a0218ec441"></a><!-- doxytag: member="DeviceModbus::indexExchange_" ref="a74f426012c2d39a2c31ba4a0218ec441" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_device_modbus.html#a74f426012c2d39a2c31ba4a0218ec441">DeviceModbus::indexExchange_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="device__modbus_8h_source.html">device_modbus.h</a> строка <a class="el" href="device__modbus_8h_source.html#l00291">291</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a6683bd491def232c9acad6f870f3c0e7"></a><!-- doxytag: member="DeviceModbus::int32Arr_" ref="a6683bd491def232c9acad6f870f3c0e7" args="[62]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_device_modbus.html#a6683bd491def232c9acad6f870f3c0e7">DeviceModbus::int32Arr_</a>[62]</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="device__modbus_8h_source.html">device_modbus.h</a> строка <a class="el" href="device__modbus_8h_source.html#l00269">269</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a5a91fd11214a2af977098c0a573db8e8"></a><!-- doxytag: member="DeviceModbus::messageOutOfTurn_" ref="a5a91fd11214a2af977098c0a573db8e8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">osMessageQId <a class="el" href="class_device_modbus.html#a5a91fd11214a2af977098c0a573db8e8">DeviceModbus::messageOutOfTurn_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Идентификатор очереди параметров опроса вне основного цикла </p>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8h_source.html">device_modbus.h</a> строка <a class="el" href="device__modbus_8h_source.html#l00296">296</a></p>
+
+</div>
+</div>
+<a class="anchor" id="add08bf58427c3f48c1caf26280807708"></a><!-- doxytag: member="DeviceModbus::mms_" ref="add08bf58427c3f48c1caf26280807708" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_modbus_master_serial.html">ModbusMasterSerial</a>* <a class="el" href="class_device_modbus.html#add08bf58427c3f48c1caf26280807708">DeviceModbus::mms_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="device__modbus_8h_source.html">device_modbus.h</a> строка <a class="el" href="device__modbus_8h_source.html#l00300">300</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ab56187dcd35c2c03afec99620b19b554"></a><!-- doxytag: member="DeviceModbus::modbusParameters_" ref="ab56187dcd35c2c03afec99620b19b554" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_modbus_parameter.html">ModbusParameter</a>* <a class="el" href="class_device_modbus.html#ab56187dcd35c2c03afec99620b19b554">DeviceModbus::modbusParameters_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Указатель на массив параметров устройства </p>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8h_source.html">device_modbus.h</a> строка <a class="el" href="device__modbus_8h_source.html#l00286">286</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a310e4550394c3b1dcb2a9ffd00357006"></a><!-- doxytag: member="DeviceModbus::regArr_" ref="a310e4550394c3b1dcb2a9ffd00357006" args="[125]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">short int <a class="el" href="class_device_modbus.html#a310e4550394c3b1dcb2a9ffd00357006">DeviceModbus::regArr_</a>[125]</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="device__modbus_8h_source.html">device_modbus.h</a> строка <a class="el" href="device__modbus_8h_source.html#l00268">268</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a120e1bebb4463c8683efe5bba4a4e3ca"></a><!-- doxytag: member="DeviceModbus::threadId_" ref="a120e1bebb4463c8683efe5bba4a4e3ca" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">osThreadId <a class="el" href="class_device_modbus.html#a120e1bebb4463c8683efe5bba4a4e3ca">DeviceModbus::threadId_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Идентификатор задачи </p>
+
+<p>См. определение в файле <a class="el" href="device__modbus_8h_source.html">device_modbus.h</a> строка <a class="el" href="device__modbus_8h_source.html#l00294">294</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>src/user/device/<a class="el" href="device__modbus_8h_source.html">device_modbus.h</a></li>
+<li>src/user/device/<a class="el" href="device__modbus_8cpp_source.html">device_modbus.cpp</a></li>
+</ul>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:25. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>
