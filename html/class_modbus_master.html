@@ -1,0 +1,1539 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Класс ModbusMaster</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li><a href="classes.html"><span>Алфавитный&#160;указатель&#160;структур&#160;данных</span></a></li>
+      <li><a href="hierarchy.html"><span>Иерархия&#160;классов</span></a></li>
+      <li><a href="functions.html"><span>Поля&#160;структур</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pro-methods">Защищенные члены</a> &#124;
+<a href="#pro-attribs">Защищенные данные</a>  </div>
+  <div class="headertitle">
+<div class="title">Класс ModbusMaster</div>  </div>
+</div>
+<div class="contents">
+<!-- doxytag: class="ModbusMaster" -->
+<p><code>#include &lt;<a class="el" href="modbus__master_8h_source.html">modbus_master.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф наследования:ModbusMaster:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_modbus_master.png" usemap="#ModbusMaster_map" alt=""/>
+  <map id="ModbusMaster_map" name="ModbusMaster_map">
+<area href="class_modbus_master_serial.html" title="Класс modbus master для последовательных портов Реализует некоторые настройки последовательного прото..." alt="ModbusMasterSerial" shape="rect" coords="0,56,129,80"/>
+<area href="class_modbus_master_tcp.html" alt="ModbusMasterTcp" shape="rect" coords="139,56,268,80"/>
+</map>
+ </div></div>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#ac33a5bbc8188eb4a3a9a6bf8494bdc27">ModbusMaster</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a81307d282ad889c1cac13081183f556a">~ModbusMaster</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#aba232dcd3f2136f890ccb4a7a5280246">readCoils</a> (int SlaveAddr, int StartRef, bool BitArr[], int RefCnt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a67436435157b4d344f602c1544371482">readInputDiscretes</a> (int SlaveAddr, int StartRef, bool BitArr[], int RefCnt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#aa81fc0da66698cce16187c7b3a4a281f">writeCoil</a> (int SlaveAddr, int BitAddr, int BitVal)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#ab39d9f9d31dcc9e8e267925c5ccb5766">forceMultipleCoils</a> (int SlaveAddr, int StartRef, const bool BitArr[], int RefCnt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a3b3b9efb2a40626a840513f16203238a">readMultipleRegisters</a> (int slaveAddr, int startRef, short *regArr, int refCnt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a5efb64610c97242524a0a30c5e713c7a">readInputRegisters</a> (int SlaveAddr, int StartRef, short RegArr[], int RefCnt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a1af5f7f1a7a22eeb4c15c45b3d9b4ae4">writeSingleRegister</a> (int SlaveAddr, int RegAddr, short RegVal)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a8aac38b1ce7717bbc0f0f8320ea51f90">writeMultipleRegisters</a> (int SlaveAddr, int StartRef, short *RegArr, int RefCnt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a115f735a110af444a3fb0e142b895dc8">readMultipleLongInts</a> (int SlaveAddr, int StartRef, int *Int32Arr, int RefCnt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a4e46afbf25dc897ffde73b7d107a428e">readInputLongInts</a> (int SlaveAddr, int StartRef, int Int32Arr[], int RefCnt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a0e3746e4bfb52748668241332501ed46">writeMultipleLongInts</a> (int SlaveAddr, int StartRef, int *Int32Arr, int RefCnt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a46dc1a2f7642dde9c9b89bbc06ac8150">readMultipleFloats</a> (int SlaveAddr, int StartRef, float Float32Arr[], int RefCnt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a35c92910e3845334f57cda737b18409c">readInputFloats</a> (int SlaveAddr, int StartRef, float Float32Arr[], int RefCnt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a60c506ccf4e433eb168fc509ac80020a">writeMultipleFloats</a> (int SlaveAddr, int StartRef, float *Float32Arr, int RefCnt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#afe7a6cff5fd836a3c3409d8fc9408070">readExceptionStatus</a> (int SlaveAddr, unsigned char *StatusBytePtr)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#ae456d8dc7dd516c20df75f70de153ebc">returnQueryData</a> (int SlaveAddr, const unsigned char QueryArr[], unsigned char EchoArr[], int Len)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a1861dc32237b9d4de18648a3b9ec6041">restartCommunicationsOption</a> (int SlaveAddr, int ClearEventLog)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a2dba032366f6755a5f03925e42bc3cfc">setTimeout</a> (int Time)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a18a45ae1e9fa1fd49ff17fe76e1c1162">getTimeout</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#adccb07fbdf387e1cf6b485e41f5ca39c">setPollDelay</a> (int Delay)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a80d304cd913d89a341c30240fd440654">getPollDelay</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a30a0463dfd603703c1e682174839ae44">setRetryCnt</a> (int Retry)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a2679f2b6ed146a5739ca0d9a807ca83d">getRetryCnt</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#aa3963238e3c2f281c231fd1d3c24243e">getTotalCounter</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#aa78e05655e172cd76f4a72bf18154154">resetTotalCounter</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a2072286449a726a5f9e544b2837794e2">incTotalCounter</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод увеличения счётчика запросов  <a href="#a2072286449a726a5f9e544b2837794e2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a29483e336a0e56539b817dc0d5258390">getSuccessCounter</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#af101df8a7c7e618b8c218683a0f5ee18">incSuccessCounter</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод увеличения счётчика принятых ответов  <a href="#af101df8a7c7e618b8c218683a0f5ee18"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a200f5bee08ed5677ff1bc371c597532a">resetSuccessCounter</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a07a07c96a5764f4b7038dbde745337eb">incLostCounter</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод увеличения счётчика принятых пакетов  <a href="#a07a07c96a5764f4b7038dbde745337eb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a7b81d76170cc637af42d95299e81f2da">resetLostCounter</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод сброса счётчика потерянных пакетов  <a href="#a7b81d76170cc637af42d95299e81f2da"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a75d055581351d1771f674eadb651fe63">getLostCounter</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">getLostCounter  <a href="#a75d055581351d1771f674eadb651fe63"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a5a94aa50e6ae6e7905a12a223f1763b6">configureBigEndianInts</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#ae5449d8a3df432ae01c4dd7d578cef25">configureLittleEndianInts</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#ac33928dc3a9800a8853448ba35229037">closeProtocol</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#aa39cb2bd3b24d8e83d4d296232d9a65f">isOpen</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a7288e3bfd2866a80f1535948a75a5b44">transmitQuery</a> (unsigned char *Buf, int Count)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a7fc68e734d9ba15abf8cdb41a8ebd6a7">receiveAnswer</a> (unsigned char *Buf)</td></tr>
+<tr><td colspan="2"><h2><a name="pro-methods"></a>
+Защищенные члены</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#ab8e32573e21adc4337cab922d7fb3dac">checkDeviceAddress</a> (int Address)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a909c7262cf85be955cb00b412f688087">checkCntCoils</a> (int Cnt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#ae010c86885c99c844a840d25987e1732">checkCntReg</a> (int Cnt)</td></tr>
+<tr><td colspan="2"><h2><a name="pro-attribs"></a>
+Защищенные данные</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#ae2a65401d749b93c69c43ae710d2f7a8">totalCounter_</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a32f18e0e5bf4689a6777c0e188975d35">successCounter_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Общий счётчик запросов  <a href="#a32f18e0e5bf4689a6777c0e188975d35"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a3969a0bd90896057037425e582a5df8f">lostCounter_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Общий счётчик корректных ответов  <a href="#a3969a0bd90896057037425e582a5df8f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#aa6eebf4f44023b7096c01779b9e98b9d">RetryCnt</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Счётчик потерянных пакетов  <a href="#aa6eebf4f44023b7096c01779b9e98b9d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a0be0be237edd1a87824258fee3c58103">TimeOut</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#adbdc123b12ff5f33928a039bdc5263e0">PollDelay</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#ac165ca20f4e496f8ca8637ae737300a6">Endian</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#aa65ba9d8b73d46a38e00824a11d8291a">Timer</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#a63995bdc5550983ef4265b8ce6e5f40e">countBytesAnswer_</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#af3341a9fe0c1e7328ac3c457d74bfa15">txBuffer_</a> [MODBUS_MAX_DATA_SIZE]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_modbus_master.html#adc436ac8622d99cae74bd74d6bec70df">rxBuffer_</a> [MODBUS_MAX_DATA_SIZE]</td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Подробное описание</h2>
+<div class="textblock">
+<p>См. определение в файле <a class="el" href="modbus__master_8h_source.html">modbus_master.h</a> строка <a class="el" href="modbus__master_8h_source.html#l00059">59</a></p>
+</div><hr/><h2>Конструктор(ы)</h2>
+<a class="anchor" id="ac33a5bbc8188eb4a3a9a6bf8494bdc27"></a><!-- doxytag: member="ModbusMaster::ModbusMaster" ref="ac33a5bbc8188eb4a3a9a6bf8494bdc27" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ModbusMaster::ModbusMaster </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l00012">12</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a81307d282ad889c1cac13081183f556a"></a><!-- doxytag: member="ModbusMaster::~ModbusMaster" ref="a81307d282ad889c1cac13081183f556a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ModbusMaster::~ModbusMaster </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l00018">18</a></p>
+
+</div>
+</div>
+<hr/><h2>Методы</h2>
+<a class="anchor" id="a909c7262cf85be955cb00b412f688087"></a><!-- doxytag: member="ModbusMaster::checkCntCoils" ref="a909c7262cf85be955cb00b412f688087" args="(int Cnt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ModbusMaster::checkCntCoils </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Cnt</em></td><td>)</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01155">1155</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae010c86885c99c844a840d25987e1732"></a><!-- doxytag: member="ModbusMaster::checkCntReg" ref="ae010c86885c99c844a840d25987e1732" args="(int Cnt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ModbusMaster::checkCntReg </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Cnt</em></td><td>)</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01173">1173</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ab8e32573e21adc4337cab922d7fb3dac"></a><!-- doxytag: member="ModbusMaster::checkDeviceAddress" ref="ab8e32573e21adc4337cab922d7fb3dac" args="(int Address)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ModbusMaster::checkDeviceAddress </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Address</em></td><td>)</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01137">1137</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ac33928dc3a9800a8853448ba35229037"></a><!-- doxytag: member="ModbusMaster::closeProtocol" ref="ac33928dc3a9800a8853448ba35229037" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ModbusMaster::closeProtocol </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Переопределяется в <a class="el" href="class_modbus_master_tcp.html#a8650a55233fd031de8cd0bf305f144c1">ModbusMasterTcp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5a94aa50e6ae6e7905a12a223f1763b6"></a><!-- doxytag: member="ModbusMaster::configureBigEndianInts" ref="a5a94aa50e6ae6e7905a12a223f1763b6" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ModbusMaster::configureBigEndianInts </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01378">1378</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae5449d8a3df432ae01c4dd7d578cef25"></a><!-- doxytag: member="ModbusMaster::configureLittleEndianInts" ref="ae5449d8a3df432ae01c4dd7d578cef25" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ModbusMaster::configureLittleEndianInts </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01386">1386</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ab39d9f9d31dcc9e8e267925c5ccb5766"></a><!-- doxytag: member="ModbusMaster::forceMultipleCoils" ref="ab39d9f9d31dcc9e8e267925c5ccb5766" args="(int SlaveAddr, int StartRef, const bool BitArr[], int RefCnt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::forceMultipleCoils </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>SlaveAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>StartRef</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>BitArr</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>RefCnt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l00934">934</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a75d055581351d1771f674eadb651fe63"></a><!-- doxytag: member="ModbusMaster::getLostCounter" ref="a75d055581351d1771f674eadb651fe63" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::getLostCounter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>getLostCounter </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01340">1340</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a80d304cd913d89a341c30240fd440654"></a><!-- doxytag: member="ModbusMaster::getPollDelay" ref="a80d304cd913d89a341c30240fd440654" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::getPollDelay </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01354">1354</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a2679f2b6ed146a5739ca0d9a807ca83d"></a><!-- doxytag: member="ModbusMaster::getRetryCnt" ref="a2679f2b6ed146a5739ca0d9a807ca83d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::getRetryCnt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01369">1369</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a29483e336a0e56539b817dc0d5258390"></a><!-- doxytag: member="ModbusMaster::getSuccessCounter" ref="a29483e336a0e56539b817dc0d5258390" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long ModbusMaster::getSuccessCounter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01361">1361</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a18a45ae1e9fa1fd49ff17fe76e1c1162"></a><!-- doxytag: member="ModbusMaster::getTimeout" ref="a18a45ae1e9fa1fd49ff17fe76e1c1162" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::getTimeout </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01347">1347</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa3963238e3c2f281c231fd1d3c24243e"></a><!-- doxytag: member="ModbusMaster::getTotalCounter" ref="aa3963238e3c2f281c231fd1d3c24243e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long ModbusMaster::getTotalCounter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01325">1325</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a07a07c96a5764f4b7038dbde745337eb"></a><!-- doxytag: member="ModbusMaster::incLostCounter" ref="a07a07c96a5764f4b7038dbde745337eb" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ModbusMaster::incLostCounter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод увеличения счётчика принятых пакетов </p>
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01330">1330</a></p>
+
+</div>
+</div>
+<a class="anchor" id="af101df8a7c7e618b8c218683a0f5ee18"></a><!-- doxytag: member="ModbusMaster::incSuccessCounter" ref="af101df8a7c7e618b8c218683a0f5ee18" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ModbusMaster::incSuccessCounter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод увеличения счётчика принятых ответов </p>
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01318">1318</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a2072286449a726a5f9e544b2837794e2"></a><!-- doxytag: member="ModbusMaster::incTotalCounter" ref="a2072286449a726a5f9e544b2837794e2" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ModbusMaster::incTotalCounter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод увеличения счётчика запросов </p>
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01306">1306</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa39cb2bd3b24d8e83d4d296232d9a65f"></a><!-- doxytag: member="ModbusMaster::isOpen" ref="aa39cb2bd3b24d8e83d4d296232d9a65f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::isOpen </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Переопределяется в <a class="el" href="class_modbus_master_serial.html#ad4ff8a7731057a04a0c263cd8ee24acb">ModbusMasterSerial</a>.</p>
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01191">1191</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aba232dcd3f2136f890ccb4a7a5280246"></a><!-- doxytag: member="ModbusMaster::readCoils" ref="aba232dcd3f2136f890ccb4a7a5280246" args="(int SlaveAddr, int StartRef, bool BitArr[], int RefCnt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::readCoils </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>SlaveAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>StartRef</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>BitArr</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>RefCnt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l00032">32</a></p>
+
+</div>
+</div>
+<a class="anchor" id="afe7a6cff5fd836a3c3409d8fc9408070"></a><!-- doxytag: member="ModbusMaster::readExceptionStatus" ref="afe7a6cff5fd836a3c3409d8fc9408070" args="(int SlaveAddr, unsigned char *StatusBytePtr)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::readExceptionStatus </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>SlaveAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>StatusBytePtr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l00832">832</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a67436435157b4d344f602c1544371482"></a><!-- doxytag: member="ModbusMaster::readInputDiscretes" ref="a67436435157b4d344f602c1544371482" args="(int SlaveAddr, int StartRef, bool BitArr[], int RefCnt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::readInputDiscretes </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>SlaveAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>StartRef</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>BitArr</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>RefCnt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l00137">137</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a35c92910e3845334f57cda737b18409c"></a><!-- doxytag: member="ModbusMaster::readInputFloats" ref="a35c92910e3845334f57cda737b18409c" args="(int SlaveAddr, int StartRef, float Float32Arr[], int RefCnt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::readInputFloats </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>SlaveAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>StartRef</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>Float32Arr</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>RefCnt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l00645">645</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a4e46afbf25dc897ffde73b7d107a428e"></a><!-- doxytag: member="ModbusMaster::readInputLongInts" ref="a4e46afbf25dc897ffde73b7d107a428e" args="(int SlaveAddr, int StartRef, int Int32Arr[], int RefCnt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::readInputLongInts </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>SlaveAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>StartRef</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Int32Arr</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>RefCnt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l00563">563</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a5efb64610c97242524a0a30c5e713c7a"></a><!-- doxytag: member="ModbusMaster::readInputRegisters" ref="a5efb64610c97242524a0a30c5e713c7a" args="(int SlaveAddr, int StartRef, short RegArr[], int RefCnt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::readInputRegisters </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>SlaveAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>StartRef</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>RegArr</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>RefCnt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l00483">483</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a46dc1a2f7642dde9c9b89bbc06ac8150"></a><!-- doxytag: member="ModbusMaster::readMultipleFloats" ref="a46dc1a2f7642dde9c9b89bbc06ac8150" args="(int SlaveAddr, int StartRef, float Float32Arr[], int RefCnt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::readMultipleFloats </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>SlaveAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>StartRef</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>Float32Arr</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>RefCnt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l00402">402</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a115f735a110af444a3fb0e142b895dc8"></a><!-- doxytag: member="ModbusMaster::readMultipleLongInts" ref="a115f735a110af444a3fb0e142b895dc8" args="(int SlaveAddr, int StartRef, int *Int32Arr, int RefCnt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::readMultipleLongInts </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>SlaveAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>StartRef</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Int32Arr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>RefCnt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l00321">321</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a3b3b9efb2a40626a840513f16203238a"></a><!-- doxytag: member="ModbusMaster::readMultipleRegisters" ref="a3b3b9efb2a40626a840513f16203238a" args="(int slaveAddr, int startRef, short *regArr, int refCnt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::readMultipleRegisters </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>slaveAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>startRef</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short *&#160;</td>
+          <td class="paramname"><em>regArr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>refCnt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l00236">236</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a7fc68e734d9ba15abf8cdb41a8ebd6a7"></a><!-- doxytag: member="ModbusMaster::receiveAnswer" ref="a7fc68e734d9ba15abf8cdb41a8ebd6a7" args="(unsigned char *Buf)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::receiveAnswer </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>Buf</em></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Переопределяется в <a class="el" href="class_modbus_master_serial.html#ad07c32db3a8b94ad5360a51d42d74680">ModbusMasterSerial</a>.</p>
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01400">1400</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a7b81d76170cc637af42d95299e81f2da"></a><!-- doxytag: member="ModbusMaster::resetLostCounter" ref="a7b81d76170cc637af42d95299e81f2da" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ModbusMaster::resetLostCounter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод сброса счётчика потерянных пакетов </p>
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01335">1335</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a200f5bee08ed5677ff1bc371c597532a"></a><!-- doxytag: member="ModbusMaster::resetSuccessCounter" ref="a200f5bee08ed5677ff1bc371c597532a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ModbusMaster::resetSuccessCounter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01313">1313</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa78e05655e172cd76f4a72bf18154154"></a><!-- doxytag: member="ModbusMaster::resetTotalCounter" ref="aa78e05655e172cd76f4a72bf18154154" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ModbusMaster::resetTotalCounter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01301">1301</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a1861dc32237b9d4de18648a3b9ec6041"></a><!-- doxytag: member="ModbusMaster::restartCommunicationsOption" ref="a1861dc32237b9d4de18648a3b9ec6041" args="(int SlaveAddr, int ClearEventLog)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::restartCommunicationsOption </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>SlaveAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ClearEventLog</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l00909">909</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae456d8dc7dd516c20df75f70de153ebc"></a><!-- doxytag: member="ModbusMaster::returnQueryData" ref="ae456d8dc7dd516c20df75f70de153ebc" args="(int SlaveAddr, const unsigned char QueryArr[], unsigned char EchoArr[], int Len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::returnQueryData </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>SlaveAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char&#160;</td>
+          <td class="paramname"><em>QueryArr</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>EchoArr</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l00867">867</a></p>
+
+</div>
+</div>
+<a class="anchor" id="adccb07fbdf387e1cf6b485e41f5ca39c"></a><!-- doxytag: member="ModbusMaster::setPollDelay" ref="adccb07fbdf387e1cf6b485e41f5ca39c" args="(int Delay)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::setPollDelay </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Delay</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01276">1276</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a30a0463dfd603703c1e682174839ae44"></a><!-- doxytag: member="ModbusMaster::setRetryCnt" ref="a30a0463dfd603703c1e682174839ae44" args="(int Retry)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::setRetryCnt </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Retry</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01244">1244</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a2dba032366f6755a5f03925e42bc3cfc"></a><!-- doxytag: member="ModbusMaster::setTimeout" ref="a2dba032366f6755a5f03925e42bc3cfc" args="(int Time)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::setTimeout </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Time</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01214">1214</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a7288e3bfd2866a80f1535948a75a5b44"></a><!-- doxytag: member="ModbusMaster::transmitQuery" ref="a7288e3bfd2866a80f1535948a75a5b44" args="(unsigned char *Buf, int Count)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::transmitQuery </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>Buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Переопределяется в <a class="el" href="class_modbus_master_serial.html#a16ba1342a736d4787c3f9c60bd07c6e3">ModbusMasterSerial</a>.</p>
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01393">1393</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa81fc0da66698cce16187c7b3a4a281f"></a><!-- doxytag: member="ModbusMaster::writeCoil" ref="aa81fc0da66698cce16187c7b3a4a281f" args="(int SlaveAddr, int BitAddr, int BitVal)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::writeCoil </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>SlaveAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>BitAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>BitVal</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l00724">724</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a60c506ccf4e433eb168fc509ac80020a"></a><!-- doxytag: member="ModbusMaster::writeMultipleFloats" ref="a60c506ccf4e433eb168fc509ac80020a" args="(int SlaveAddr, int StartRef, float *Float32Arr, int RefCnt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::writeMultipleFloats </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>SlaveAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>StartRef</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>Float32Arr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>RefCnt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01104">1104</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a0e3746e4bfb52748668241332501ed46"></a><!-- doxytag: member="ModbusMaster::writeMultipleLongInts" ref="a0e3746e4bfb52748668241332501ed46" args="(int SlaveAddr, int StartRef, int *Int32Arr, int RefCnt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::writeMultipleLongInts </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>SlaveAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>StartRef</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Int32Arr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>RefCnt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01065">1065</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a8aac38b1ce7717bbc0f0f8320ea51f90"></a><!-- doxytag: member="ModbusMaster::writeMultipleRegisters" ref="a8aac38b1ce7717bbc0f0f8320ea51f90" args="(int SlaveAddr, int StartRef, short *RegArr, int RefCnt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::writeMultipleRegisters </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>SlaveAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>StartRef</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short *&#160;</td>
+          <td class="paramname"><em>RegArr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>RefCnt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l01013">1013</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a1af5f7f1a7a22eeb4c15c45b3d9b4ae4"></a><!-- doxytag: member="ModbusMaster::writeSingleRegister" ref="a1af5f7f1a7a22eeb4c15c45b3d9b4ae4" args="(int SlaveAddr, int RegAddr, short RegVal)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModbusMaster::writeSingleRegister </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>SlaveAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>RegAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>RegVal</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a> строка <a class="el" href="modbus__master_8cpp_source.html#l00772">772</a></p>
+
+</div>
+</div>
+<hr/><h2>Поля</h2>
+<a class="anchor" id="a63995bdc5550983ef4265b8ce6e5f40e"></a><!-- doxytag: member="ModbusMaster::countBytesAnswer_" ref="a63995bdc5550983ef4265b8ce6e5f40e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_modbus_master.html#a63995bdc5550983ef4265b8ce6e5f40e">ModbusMaster::countBytesAnswer_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8h_source.html">modbus_master.h</a> строка <a class="el" href="modbus__master_8h_source.html#l00454">454</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ac165ca20f4e496f8ca8637ae737300a6"></a><!-- doxytag: member="ModbusMaster::Endian" ref="ac165ca20f4e496f8ca8637ae737300a6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_modbus_master.html#ac165ca20f4e496f8ca8637ae737300a6">ModbusMaster::Endian</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8h_source.html">modbus_master.h</a> строка <a class="el" href="modbus__master_8h_source.html#l00450">450</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a3969a0bd90896057037425e582a5df8f"></a><!-- doxytag: member="ModbusMaster::lostCounter_" ref="a3969a0bd90896057037425e582a5df8f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long <a class="el" href="class_modbus_master.html#a3969a0bd90896057037425e582a5df8f">ModbusMaster::lostCounter_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Общий счётчик корректных ответов </p>
+
+<p>См. определение в файле <a class="el" href="modbus__master_8h_source.html">modbus_master.h</a> строка <a class="el" href="modbus__master_8h_source.html#l00441">441</a></p>
+
+</div>
+</div>
+<a class="anchor" id="adbdc123b12ff5f33928a039bdc5263e0"></a><!-- doxytag: member="ModbusMaster::PollDelay" ref="adbdc123b12ff5f33928a039bdc5263e0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_modbus_master.html#adbdc123b12ff5f33928a039bdc5263e0">ModbusMaster::PollDelay</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8h_source.html">modbus_master.h</a> строка <a class="el" href="modbus__master_8h_source.html#l00448">448</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa6eebf4f44023b7096c01779b9e98b9d"></a><!-- doxytag: member="ModbusMaster::RetryCnt" ref="aa6eebf4f44023b7096c01779b9e98b9d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_modbus_master.html#aa6eebf4f44023b7096c01779b9e98b9d">ModbusMaster::RetryCnt</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Счётчик потерянных пакетов </p>
+
+<p>См. определение в файле <a class="el" href="modbus__master_8h_source.html">modbus_master.h</a> строка <a class="el" href="modbus__master_8h_source.html#l00444">444</a></p>
+
+</div>
+</div>
+<a class="anchor" id="adc436ac8622d99cae74bd74d6bec70df"></a><!-- doxytag: member="ModbusMaster::rxBuffer_" ref="adc436ac8622d99cae74bd74d6bec70df" args="[MODBUS_MAX_DATA_SIZE]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char <a class="el" href="class_modbus_master.html#adc436ac8622d99cae74bd74d6bec70df">ModbusMaster::rxBuffer_</a>[MODBUS_MAX_DATA_SIZE]<code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8h_source.html">modbus_master.h</a> строка <a class="el" href="modbus__master_8h_source.html#l00467">467</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a32f18e0e5bf4689a6777c0e188975d35"></a><!-- doxytag: member="ModbusMaster::successCounter_" ref="a32f18e0e5bf4689a6777c0e188975d35" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long <a class="el" href="class_modbus_master.html#a32f18e0e5bf4689a6777c0e188975d35">ModbusMaster::successCounter_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Общий счётчик запросов </p>
+
+<p>См. определение в файле <a class="el" href="modbus__master_8h_source.html">modbus_master.h</a> строка <a class="el" href="modbus__master_8h_source.html#l00440">440</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a0be0be237edd1a87824258fee3c58103"></a><!-- doxytag: member="ModbusMaster::TimeOut" ref="a0be0be237edd1a87824258fee3c58103" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_modbus_master.html#a0be0be237edd1a87824258fee3c58103">ModbusMaster::TimeOut</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8h_source.html">modbus_master.h</a> строка <a class="el" href="modbus__master_8h_source.html#l00446">446</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa65ba9d8b73d46a38e00824a11d8291a"></a><!-- doxytag: member="ModbusMaster::Timer" ref="aa65ba9d8b73d46a38e00824a11d8291a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_modbus_master.html#aa65ba9d8b73d46a38e00824a11d8291a">ModbusMaster::Timer</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8h_source.html">modbus_master.h</a> строка <a class="el" href="modbus__master_8h_source.html#l00452">452</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae2a65401d749b93c69c43ae710d2f7a8"></a><!-- doxytag: member="ModbusMaster::totalCounter_" ref="ae2a65401d749b93c69c43ae710d2f7a8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long <a class="el" href="class_modbus_master.html#ae2a65401d749b93c69c43ae710d2f7a8">ModbusMaster::totalCounter_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8h_source.html">modbus_master.h</a> строка <a class="el" href="modbus__master_8h_source.html#l00439">439</a></p>
+
+</div>
+</div>
+<a class="anchor" id="af3341a9fe0c1e7328ac3c457d74bfa15"></a><!-- doxytag: member="ModbusMaster::txBuffer_" ref="af3341a9fe0c1e7328ac3c457d74bfa15" args="[MODBUS_MAX_DATA_SIZE]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char <a class="el" href="class_modbus_master.html#af3341a9fe0c1e7328ac3c457d74bfa15">ModbusMaster::txBuffer_</a>[MODBUS_MAX_DATA_SIZE]<code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="modbus__master_8h_source.html">modbus_master.h</a> строка <a class="el" href="modbus__master_8h_source.html#l00466">466</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>src/user/protocol/modbus/<a class="el" href="modbus__master_8h_source.html">modbus_master.h</a></li>
+<li>src/user/protocol/modbus/<a class="el" href="modbus__master_8cpp_source.html">modbus_master.cpp</a></li>
+</ul>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:26. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

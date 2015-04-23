@@ -1,0 +1,434 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Файл src/user/protection/protection_main.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Макросы</a> &#124;
+<a href="#func-members">Функции</a> &#124;
+<a href="#var-members">Переменные</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл src/user/protection/protection_main.cpp</div>  </div>
+</div>
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="protection__main_8h_source.html">protection_main.h</a>&quot;</code><br/>
+</div>
+<p><a href="protection__main_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Макросы</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protection__main_8cpp.html#a5b3fa31d19e4dc7503a7f96342edf44a">COUNT_PROTECTIONS</a>&#160;&#160;&#160;10</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protection__main_8cpp.html#a1175dbea738b46acf5ab918e0215b884">protectionTask</a> (void *argument)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protection__main_8cpp.html#af52a3598c10215decc2a47526cdadea2">setProtectionPrevent</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protection__main_8cpp.html#aa5be27eb098bf5641335f94d2fea02c1">setProtectionDelay</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protection__main_8cpp.html#a89db53325abbc01e5ad68068b251eb03">protectionInit</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция инициализации задачи обработки всех защит  <a href="#a89db53325abbc01e5ad68068b251eb03"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protection__main_8cpp.html#a36a4b6b12c2c0bab6a8d3abe2796ffea">addEventProtectionPrevent</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод добавления события "АПВ запрещён".  <a href="#a36a4b6b12c2c0bab6a8d3abe2796ffea"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Переменные</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_protection.html">Protection</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protection__main_8cpp.html#ada3f2eafc4499964f73ac7ab871da296">protections</a> [COUNT_PROTECTIONS]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_protection_over_voltage_input.html">ProtectionOverVoltageInput</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protection__main_8cpp.html#a0263827e5a501056c3a06547aa003134">protOverVoltIn</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_protection_under_voltage_input.html">ProtectionUnderVoltageInput</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protection__main_8cpp.html#aa72b576034021bcdf3bbb2fb7f6f7829">protUnderVoltIn</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_protection_imbalance_voltage_input.html">ProtectionImbalanceVoltageInput</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protection__main_8cpp.html#a41c8aab89676c32c63ce9efe95e623c8">protImbalanceVoltIn</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_protection_overload_motor.html">ProtectionOverloadMotor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protection__main_8cpp.html#ac4b8a91a9932859fbafeb3bca69d4b58">protOverloadMotor</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_protection_underload_motor.html">ProtectionUnderloadMotor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protection__main_8cpp.html#ae177743d94cc3266255d7112651fee48">protUnderloadMotor</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_protection_imbalance_current_motor.html">ProtectionImbalanceCurrentMotor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protection__main_8cpp.html#a2d5577d07568fa5d0d42e57a785fb5d7">protImbalanceCurrentMotor</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_protection_out_of_sync_motor.html">ProtectionOutOfSyncMotor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protection__main_8cpp.html#a62c601eb89092feb5966014ee666d0d7">protOutOfSyncMotor</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_protection_turbine_rotation.html">ProtectionTurbineRotation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protection__main_8cpp.html#a9a1fddeb5cba6f9b904744a73c190097">protTurbineRotation</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_protection_temperature_motor.html">ProtectionTemperatureMotor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protection__main_8cpp.html#aede6e82b9c4def4c85d01d4815ac382c">protTemperatureMotor</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_protection_pressure_intake.html">ProtectionPressureIntake</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protection__main_8cpp.html#a5da546ca1e60a2f4b7e97d6a907971a2">protPressureIntake</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_protection_resistance_isolation.html">ProtectionResistanceIsolation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protection__main_8cpp.html#aa57a6d6f13b32314f4d2340426ba34ad">protResistanceIsolation</a></td></tr>
+</table>
+<hr/><h2>Макросы</h2>
+<a class="anchor" id="a5b3fa31d19e4dc7503a7f96342edf44a"></a><!-- doxytag: member="protection_main.cpp::COUNT_PROTECTIONS" ref="a5b3fa31d19e4dc7503a7f96342edf44a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define COUNT_PROTECTIONS&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection__main_8cpp_source.html">protection_main.cpp</a> строка <a class="el" href="protection__main_8cpp_source.html#l00003">3</a></p>
+
+</div>
+</div>
+<hr/><h2>Функции</h2>
+<a class="anchor" id="a36a4b6b12c2c0bab6a8d3abe2796ffea"></a><!-- doxytag: member="protection_main.cpp::addEventProtectionPrevent" ref="a36a4b6b12c2c0bab6a8d3abe2796ffea" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void addEventProtectionPrevent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод добавления события "АПВ запрещён". </p>
+
+<p>См. определение в файле <a class="el" href="protection__main_8cpp_source.html">protection_main.cpp</a> строка <a class="el" href="protection__main_8cpp_source.html#l00088">88</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a89db53325abbc01e5ad68068b251eb03"></a><!-- doxytag: member="protection_main.cpp::protectionInit" ref="a89db53325abbc01e5ad68068b251eb03" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void protectionInit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Функция инициализации задачи обработки всех защит </p>
+
+<p>См. определение в файле <a class="el" href="protection__main_8cpp_source.html">protection_main.cpp</a> строка <a class="el" href="protection__main_8cpp_source.html#l00025">25</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a1175dbea738b46acf5ab918e0215b884"></a><!-- doxytag: member="protection_main.cpp::protectionTask" ref="a1175dbea738b46acf5ab918e0215b884" args="(void *argument)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void protectionTask </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>argument</em></td><td>)</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection__main_8cpp_source.html">protection_main.cpp</a> строка <a class="el" href="protection__main_8cpp_source.html#l00053">53</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa5be27eb098bf5641335f94d2fea02c1"></a><!-- doxytag: member="protection_main.cpp::setProtectionDelay" ref="aa5be27eb098bf5641335f94d2fea02c1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setProtectionDelay </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection__main_8cpp_source.html">protection_main.cpp</a> строка <a class="el" href="protection__main_8cpp_source.html#l00068">68</a></p>
+
+</div>
+</div>
+<a class="anchor" id="af52a3598c10215decc2a47526cdadea2"></a><!-- doxytag: member="protection_main.cpp::setProtectionPrevent" ref="af52a3598c10215decc2a47526cdadea2" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setProtectionPrevent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection__main_8cpp_source.html">protection_main.cpp</a> строка <a class="el" href="protection__main_8cpp_source.html#l00079">79</a></p>
+
+</div>
+</div>
+<hr/><h2>Переменные</h2>
+<a class="anchor" id="ada3f2eafc4499964f73ac7ab871da296"></a><!-- doxytag: member="protection_main.cpp::protections" ref="ada3f2eafc4499964f73ac7ab871da296" args="[COUNT_PROTECTIONS]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_protection.html">Protection</a>* <a class="el" href="protection__main_8cpp.html#ada3f2eafc4499964f73ac7ab871da296">protections</a>[COUNT_PROTECTIONS]</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection__main_8cpp_source.html">protection_main.cpp</a> строка <a class="el" href="protection__main_8cpp_source.html#l00005">5</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a2d5577d07568fa5d0d42e57a785fb5d7"></a><!-- doxytag: member="protection_main.cpp::protImbalanceCurrentMotor" ref="a2d5577d07568fa5d0d42e57a785fb5d7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_protection_imbalance_current_motor.html">ProtectionImbalanceCurrentMotor</a> <a class="el" href="protection__main_8h.html#a2d5577d07568fa5d0d42e57a785fb5d7">protImbalanceCurrentMotor</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection__main_8cpp_source.html">protection_main.cpp</a> строка <a class="el" href="protection__main_8cpp_source.html#l00013">13</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a41c8aab89676c32c63ce9efe95e623c8"></a><!-- doxytag: member="protection_main.cpp::protImbalanceVoltIn" ref="a41c8aab89676c32c63ce9efe95e623c8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_protection_imbalance_voltage_input.html">ProtectionImbalanceVoltageInput</a> <a class="el" href="protection__main_8h.html#a41c8aab89676c32c63ce9efe95e623c8">protImbalanceVoltIn</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection__main_8cpp_source.html">protection_main.cpp</a> строка <a class="el" href="protection__main_8cpp_source.html#l00009">9</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a62c601eb89092feb5966014ee666d0d7"></a><!-- doxytag: member="protection_main.cpp::protOutOfSyncMotor" ref="a62c601eb89092feb5966014ee666d0d7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_protection_out_of_sync_motor.html">ProtectionOutOfSyncMotor</a> <a class="el" href="protection__main_8h.html#a62c601eb89092feb5966014ee666d0d7">protOutOfSyncMotor</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection__main_8cpp_source.html">protection_main.cpp</a> строка <a class="el" href="protection__main_8cpp_source.html#l00014">14</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ac4b8a91a9932859fbafeb3bca69d4b58"></a><!-- doxytag: member="protection_main.cpp::protOverloadMotor" ref="ac4b8a91a9932859fbafeb3bca69d4b58" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_protection_overload_motor.html">ProtectionOverloadMotor</a> <a class="el" href="protection__main_8h.html#ac4b8a91a9932859fbafeb3bca69d4b58">protOverloadMotor</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection__main_8cpp_source.html">protection_main.cpp</a> строка <a class="el" href="protection__main_8cpp_source.html#l00011">11</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a0263827e5a501056c3a06547aa003134"></a><!-- doxytag: member="protection_main.cpp::protOverVoltIn" ref="a0263827e5a501056c3a06547aa003134" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_protection_over_voltage_input.html">ProtectionOverVoltageInput</a> <a class="el" href="protection__main_8h.html#a0263827e5a501056c3a06547aa003134">protOverVoltIn</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection__main_8cpp_source.html">protection_main.cpp</a> строка <a class="el" href="protection__main_8cpp_source.html#l00007">7</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a5da546ca1e60a2f4b7e97d6a907971a2"></a><!-- doxytag: member="protection_main.cpp::protPressureIntake" ref="a5da546ca1e60a2f4b7e97d6a907971a2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_protection_pressure_intake.html">ProtectionPressureIntake</a> <a class="el" href="protection__main_8h.html#a5da546ca1e60a2f4b7e97d6a907971a2">protPressureIntake</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection__main_8cpp_source.html">protection_main.cpp</a> строка <a class="el" href="protection__main_8cpp_source.html#l00018">18</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa57a6d6f13b32314f4d2340426ba34ad"></a><!-- doxytag: member="protection_main.cpp::protResistanceIsolation" ref="aa57a6d6f13b32314f4d2340426ba34ad" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_protection_resistance_isolation.html">ProtectionResistanceIsolation</a> <a class="el" href="protection__main_8h.html#aa57a6d6f13b32314f4d2340426ba34ad">protResistanceIsolation</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection__main_8cpp_source.html">protection_main.cpp</a> строка <a class="el" href="protection__main_8cpp_source.html#l00019">19</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aede6e82b9c4def4c85d01d4815ac382c"></a><!-- doxytag: member="protection_main.cpp::protTemperatureMotor" ref="aede6e82b9c4def4c85d01d4815ac382c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_protection_temperature_motor.html">ProtectionTemperatureMotor</a> <a class="el" href="protection__main_8h.html#aede6e82b9c4def4c85d01d4815ac382c">protTemperatureMotor</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection__main_8cpp_source.html">protection_main.cpp</a> строка <a class="el" href="protection__main_8cpp_source.html#l00017">17</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a9a1fddeb5cba6f9b904744a73c190097"></a><!-- doxytag: member="protection_main.cpp::protTurbineRotation" ref="a9a1fddeb5cba6f9b904744a73c190097" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_protection_turbine_rotation.html">ProtectionTurbineRotation</a> <a class="el" href="protection__main_8h.html#a9a1fddeb5cba6f9b904744a73c190097">protTurbineRotation</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection__main_8cpp_source.html">protection_main.cpp</a> строка <a class="el" href="protection__main_8cpp_source.html#l00015">15</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae177743d94cc3266255d7112651fee48"></a><!-- doxytag: member="protection_main.cpp::protUnderloadMotor" ref="ae177743d94cc3266255d7112651fee48" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_protection_underload_motor.html">ProtectionUnderloadMotor</a> <a class="el" href="protection__main_8h.html#ae177743d94cc3266255d7112651fee48">protUnderloadMotor</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection__main_8cpp_source.html">protection_main.cpp</a> строка <a class="el" href="protection__main_8cpp_source.html#l00012">12</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa72b576034021bcdf3bbb2fb7f6f7829"></a><!-- doxytag: member="protection_main.cpp::protUnderVoltIn" ref="aa72b576034021bcdf3bbb2fb7f6f7829" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_protection_under_voltage_input.html">ProtectionUnderVoltageInput</a> <a class="el" href="protection__main_8h.html#aa72b576034021bcdf3bbb2fb7f6f7829">protUnderVoltIn</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection__main_8cpp_source.html">protection_main.cpp</a> строка <a class="el" href="protection__main_8cpp_source.html#l00008">8</a></p>
+
+</div>
+</div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:25. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

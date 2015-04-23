@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/log/log_idlist.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/log/log_idlist.h</div>  </div>
+</div>
+<div class="contents">
+<a href="log__idlist_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef LOG_IDLIST</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define LOG_IDLIST</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00007"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bf">00007</a> <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00008"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa189558cec7ea5911a8fa329cff6c8a53">00008</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa189558cec7ea5911a8fa329cff6c8a53" title="&quot;Пуск&quot;...">RunId</a> = 10000,                  
+<a name="l00009"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa193bd5bc6419fe40f4eb5b4dd34a7b05">00009</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa193bd5bc6419fe40f4eb5b4dd34a7b05" title="&quot;Стоп&quot;...">StopId</a>,                         
+<a name="l00010"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa09ba40f3b6667e567d55379718157508">00010</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa09ba40f3b6667e567d55379718157508" title="&quot;Включение питания&quot;">PowerOnId</a>,                      
+<a name="l00011"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa26b8287d1b3e1482e2c8282c6325c9d6">00011</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa26b8287d1b3e1482e2c8282c6325c9d6" title="&quot;Отключение питания&quot;">PowerOffId</a>,                     
+<a name="l00012"></a>00012 
+<a name="l00013"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa7856619ffc50278c7374c69f8d3820ba">00013</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa7856619ffc50278c7374c69f8d3820ba" title="&quot;Сработала защита: Превышение питания сети&quot;">OverVoltInProtReactId</a>,          
+<a name="l00014"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa9a38ea0b52a4a4b321d513054058cf38">00014</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa9a38ea0b52a4a4b321d513054058cf38" title="&quot;АПВ по защите: Превышение питания сети&quot;">OverVoltInApvId</a>,                
+<a name="l00015"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa7c3d1c82a3553859cfae6fbd50178f86">00015</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa7c3d1c82a3553859cfae6fbd50178f86" title="&quot;АПВ запрещен: Превышение питания сети&quot;">OverVoltInApvDisabledId</a>,        
+<a name="l00016"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa876e2e0c414567cf5f2b22942f71c009">00016</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa876e2e0c414567cf5f2b22942f71c009" title="&quot;Блокировка по защите: Превышение питания сети&quot;">OverVoltInProtBlockedId</a>,        
+<a name="l00017"></a>00017 
+<a name="l00018"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfad0b36f9f1f518dff9513d0b5c0bbe90b">00018</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfad0b36f9f1f518dff9513d0b5c0bbe90b" title="&quot;Сработала защита: Снижение питания сети&quot;">UnderVoltInProtReactId</a>,         
+<a name="l00019"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa202cf32c65c0626a0a637695f1b1156a">00019</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa202cf32c65c0626a0a637695f1b1156a" title="&quot;АПВ по защите: Снижение питания сети&quot;">UnderVoltInApvId</a>,               
+<a name="l00020"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfad4ec78b924b3c8ae3c58c9a416f20ef6">00020</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfad4ec78b924b3c8ae3c58c9a416f20ef6" title="&quot;АПВ запрещен: Снижение питания сети&quot;">UnderVoltInApvDisabledId</a>,       
+<a name="l00021"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa80657174643c5deea2227d57b8b0abb0">00021</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa80657174643c5deea2227d57b8b0abb0" title="&quot;Блокировка по защите: Снижение питания сети&quot;">UnderVoltInProtBlockedId</a>,       
+<a name="l00022"></a>00022 
+<a name="l00023"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfac1760bf9532439b14adda7989ca1dede">00023</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfac1760bf9532439b14adda7989ca1dede" title="&quot;Сработала защита: Дисбаланс напряжения&quot;">ImbalanceVoltInProtReactId</a>,     
+<a name="l00024"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfac2c75a0099805d68ae1ac7f9ad1a2454">00024</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfac2c75a0099805d68ae1ac7f9ad1a2454" title="&quot;АПВ по защите: Дисбаланс напряжения&quot;">ImbalanceVoltInApvId</a>,           
+<a name="l00025"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaa649d519a6f999d5ed9f7f1c807d2346">00025</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaa649d519a6f999d5ed9f7f1c807d2346" title="&quot;АПВ запрещен: Дисбаланс напряжения&quot;">ImbalanceVoltInApvDisabledId</a>,   
+<a name="l00026"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa4e614e14af59770f6b37fd5cb13b02b7">00026</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa4e614e14af59770f6b37fd5cb13b02b7" title="&quot;Блокировка по защите: Дисбаланс напряжения&quot;">ImbalanceVoltInProtBlockedId</a>,   
+<a name="l00027"></a>00027 
+<a name="l00028"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa46374a49c0d125ff9ad9ebc1dcb323e7">00028</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa46374a49c0d125ff9ad9ebc1dcb323e7" title="&quot;Сработала защита: Перегруз двигателя&quot;">OverloadMotorProtReactId</a>,       
+<a name="l00029"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfafc536b1de9cf0fb770dfc060992f3aa7">00029</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfafc536b1de9cf0fb770dfc060992f3aa7" title="&quot;АПВ по защите: Перегруз двигателя&quot;">OverloadMotorApvId</a>,             
+<a name="l00030"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa8dc6da807c9f8ab22036a2152a8f52dc">00030</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa8dc6da807c9f8ab22036a2152a8f52dc" title="&quot;АПВ запрещен: Перегруз двигателя&quot;">OverloadMotorApvDisabledId</a>,     
+<a name="l00031"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaa5dbcbc491624355bde90b0cef45bb69">00031</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaa5dbcbc491624355bde90b0cef45bb69" title="&quot;Блокировка по защите: Перегруз двигателя&quot;">OverloadMotorProtBlockedId</a>,     
+<a name="l00032"></a>00032 
+<a name="l00033"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaad0678df55ba478893296c09afd02f9f">00033</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaad0678df55ba478893296c09afd02f9f" title="&quot;Сработала защита: Недогруз двигателя&quot;">UnderloadMotorProtReactId</a>,      
+<a name="l00034"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa5f392c5934d070153f4f1cbdbdb41dac">00034</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa5f392c5934d070153f4f1cbdbdb41dac" title="&quot;АПВ по защите: Недогруз двигателя&quot;">UnderloadMotorApvId</a>,            
+<a name="l00035"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa97beef3b743ee18b36097d66534967b6">00035</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa97beef3b743ee18b36097d66534967b6" title="&quot;АПВ запрещен: Недогруз двигателя&quot;">UnderloadMotorApvDisabledId</a>,    
+<a name="l00036"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa9abe69bf71cad5b354e0397cb9778362">00036</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa9abe69bf71cad5b354e0397cb9778362" title="&quot;Блокировка по защите: Недогруз двигателя&quot;">UnderloadMotorProtBlockedId</a>,    
+<a name="l00037"></a>00037 
+<a name="l00038"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa4c02de0d5d65b0aa3170cae122e597d7">00038</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa4c02de0d5d65b0aa3170cae122e597d7" title="&quot;Сработала защита: Предел тока двигателя&quot;">CurrentMotorProtReactId</a>,        
+<a name="l00039"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa67d63f2e3101ab782a51de40f23f4f14">00039</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa67d63f2e3101ab782a51de40f23f4f14" title="&quot;АПВ по защите: Предел тока двигателя&quot;">CurrentMotorApvId</a>,              
+<a name="l00040"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa8c1532ada72f69802fb57afcdca2c97b">00040</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa8c1532ada72f69802fb57afcdca2c97b" title="&quot;АПВ запрещен: Предел тока двигателя&quot;">CurrentMotorApvDisabledId</a>,      
+<a name="l00041"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa73b18dfe0723b6a977e00bafd12c5031">00041</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa73b18dfe0723b6a977e00bafd12c5031" title="&quot;Блокировка по защите: Предел тока двигателя&quot;">CurrentMotorProtBlockedId</a>,      
+<a name="l00042"></a>00042 
+<a name="l00043"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa345b66b1e6b855632dba0c1c97ef9b73">00043</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa345b66b1e6b855632dba0c1c97ef9b73" title="&quot;Сработала защита: Дисбаланс токов ПЭД&quot;">ImbalanceCurMotorProtReactId</a>,   
+<a name="l00044"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaaa68b5d4968d75ca3db0f42dabf1066c">00044</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaaa68b5d4968d75ca3db0f42dabf1066c" title="&quot;АПВ по защите: Дисбаланс токов ПЭД&quot;">ImbalanceCurMotorApvId</a>,         
+<a name="l00045"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa9088a8474e063141cc52f988b18ae22c">00045</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa9088a8474e063141cc52f988b18ae22c" title="&quot;АПВ запрещен: Дисбаланс токов ПЭД&quot;">ImbalanceCurMotorApvDisabledId</a>, 
+<a name="l00046"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa358a859b969d3527499d3bc6765b92fd">00046</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa358a859b969d3527499d3bc6765b92fd" title="&quot;Блокировка по защите: Дисбаланс токов ПЭД&quot;">ImbalanceCurMotorProtBlockedId</a>, 
+<a name="l00047"></a>00047 
+<a name="l00048"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfad17e7fe400cc579a3504b517f1310c64">00048</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfad17e7fe400cc579a3504b517f1310c64" title="&quot;Сработала защита: Рассинхронизация ПВЭД&quot;">OutOfSyncMotorProtReactId</a>,      
+<a name="l00049"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaac8f3efd12707d73bd09218040858f71">00049</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaac8f3efd12707d73bd09218040858f71" title="&quot;АПВ по защите: Рассинхронизация ПВЭД&quot;">OutOfSyncMotorApvId</a>,            
+<a name="l00050"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa9ffa361034f66d14d82e045c18202457">00050</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa9ffa361034f66d14d82e045c18202457" title="&quot;АПВ запрещен: Рассинхронизация ПВЭД&quot;">OutOfSyncMotorApvDisabledId</a>,    
+<a name="l00051"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfac3c3473a3c6358a02befe37c280b1bd4">00051</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfac3c3473a3c6358a02befe37c280b1bd4" title="&quot;Блокировка по защите: Рассинхронизация ПВЭД&quot;">OutOfSyncMotorProtBlockedId</a>,    
+<a name="l00052"></a>00052 
+<a name="l00053"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaa360a2f14ebe62ac18b050e4065c03e1">00053</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaa360a2f14ebe62ac18b050e4065c03e1" title="&quot;Турбинное вращение. Начало&quot;">TurbineRotationBeginId</a>,         
+<a name="l00054"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaffeaea77125d5ab69a74657865585077">00054</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaffeaea77125d5ab69a74657865585077" title="&quot;Турбинное вращение. Окончание&quot;">TurbineRotationEndId</a>,           
+<a name="l00055"></a>00055 
+<a name="l00056"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa21064986f6b6c0a7c8d5432db462e27c">00056</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa21064986f6b6c0a7c8d5432db462e27c" title="&quot;Сработала защита: Перегрев двигателя&quot;">TemperatureMotorProtReactId</a>,    
+<a name="l00057"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfac840f575c97595ef2c1935ee76cd4097">00057</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfac840f575c97595ef2c1935ee76cd4097" title="&quot;АПВ по защите: Перегрев двигателя&quot;">TemperatureMotorApvId</a>,          
+<a name="l00058"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfae2cdff901242acfe74021b663a0ed5c9">00058</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfae2cdff901242acfe74021b663a0ed5c9" title="&quot;АПВ запрещен: Перегрев двигателя&quot;">TemperatureMotorApvDisabledId</a>,  
+<a name="l00059"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaa8cd9e4add19ed325da0d722a222df9b">00059</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaa8cd9e4add19ed325da0d722a222df9b" title="&quot;Блокировка по защите: Перегрев двигателя&quot;">TemperatureMotorProtBlockedId</a>,  
+<a name="l00060"></a>00060 
+<a name="l00061"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa099bf6544202d643340b9bbc2c1122e3">00061</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa099bf6544202d643340b9bbc2c1122e3" title="&quot;Сработала защита: Давление на приёме насоса&quot;">PressureIntakeProtReactId</a>,      
+<a name="l00062"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa83980ce0bfe809ec0f61fff39e0b53e8">00062</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa83980ce0bfe809ec0f61fff39e0b53e8" title="&quot;АПВ по защите: Давление на приёме насоса&quot;">PressureIntakeApvId</a>,            
+<a name="l00063"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa1cdcb832c18e33acc5bc9bfd6cc51d3b">00063</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa1cdcb832c18e33acc5bc9bfd6cc51d3b" title="&quot;АПВ запрещен: Давление на приёме насоса&quot;">PressureIntakeApvDisabledId</a>,    
+<a name="l00064"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaac77e51609d058d24e374d9140d1ccc6">00064</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaac77e51609d058d24e374d9140d1ccc6" title="&quot;Блокировка по защите: Давление на приёме насоса&quot;">PressureIntakeProtBlockedId</a>,    
+<a name="l00065"></a>00065 
+<a name="l00066"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa3495cb8dd95580b08f4ef10131f63cee">00066</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa3495cb8dd95580b08f4ef10131f63cee" title="&quot;Сработала защита: Сопротивление изоляции&quot;">ResistIsolationProtReactId</a>,     
+<a name="l00067"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa28d4bf7657f670837384a18f7086fc68">00067</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa28d4bf7657f670837384a18f7086fc68" title="&quot;АПВ по защите: Сопротивление изоляции&quot;">ResistIsolationApvId</a>,           
+<a name="l00068"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa86ce3a5dc03fb2d80b5192b61fadb146">00068</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa86ce3a5dc03fb2d80b5192b61fadb146" title="&quot;АПВ запрещен: Сопротивление изоляции&quot;">ResistIsolationApvDisabledId</a>,   
+<a name="l00069"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfacbfcb9ca80c43d590acff2d5f2929052">00069</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfacbfcb9ca80c43d590acff2d5f2929052" title="&quot;Блокировка по защите: Сопротивление изоляции&quot;">ResistIsolationProtBlockedId</a>,   
+<a name="l00070"></a>00070 
+<a name="l00071"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa65d1979794629f45ddaf387721bcf337">00071</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa65d1979794629f45ddaf387721bcf337" title="&quot;Сработала защита: Блокировка двери силового отсека&quot;">LookDoorProtReactId</a>,            
+<a name="l00072"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa0c2a81038ac61262d3a3aa772a5b061a">00072</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa0c2a81038ac61262d3a3aa772a5b061a" title="&quot;Блокировка по защите: Блокировка двери&quot;">LookDoorProtBlockedId</a>,          
+<a name="l00073"></a>00073 
+<a name="l00074"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfad7da5258e452b9dad756b7713f25c920">00074</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfad7da5258e452b9dad756b7713f25c920" title="&quot;Сработала защита: Аппаратная защита ЧРП&quot;">HardwareVsdProtReactId</a>,         
+<a name="l00075"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa893ab43bc204d14711f77cca3ee59c98">00075</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa893ab43bc204d14711f77cca3ee59c98" title="&quot;АПВ по защите: Аппаратная защита ЧРП&quot;">HardwareVsdApvId</a>,               
+<a name="l00076"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaf5d08099d70ff1a04c5872fa018b8b79">00076</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaf5d08099d70ff1a04c5872fa018b8b79" title="&quot;АПВ запрещен: Аппаратная защита ЧРП&quot;">HardwareVsdApvDisabledId</a>,       
+<a name="l00077"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa720795f80ede2490f803ecf7f37eb5c3">00077</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa720795f80ede2490f803ecf7f37eb5c3" title="&quot;Блокировка по защите: Аппаратная защита ЧРП&quot;">HardwareVsdProtBlockedId</a>,       
+<a name="l00078"></a>00078 
+<a name="l00079"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa4a16aecd60668ee84b5bcbc174500cae">00079</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa4a16aecd60668ee84b5bcbc174500cae" title="&quot;Сработала защита: Аппаратная защита ЧРП, напряжение на шине инвертора Ud ниже минимально допустимого...">HardwareVsdUdLowProtReactId</a>,    
+<a name="l00080"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaf5f199b48dea54e5c3e3dfda6f0c2679">00080</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaf5f199b48dea54e5c3e3dfda6f0c2679" title="&quot;Сработала защита: Аппаратная защита ЧРП, напряжение на шине инвертора Ud выше максимально допустимог...">HardwareVsdUdHighProtReactId</a>,   
+<a name="l00081"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaab559824f92edff996a931a3bc70c865">00081</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaab559824f92edff996a931a3bc70c865" title="&quot;Сработала защита: Аппаратная защита ЧРП, несимметрия входного переменного напряжения по фазам выше м...">HardwareVsdUinAsymProtReactId</a>,  
+<a name="l00082"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfabfe1143c5816ad884743a18a3c9f787c">00082</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfabfe1143c5816ad884743a18a3c9f787c" title="&quot;Сработала защита: Аппаратная защита ЧРП, короткое замыкание шины инвертора&quot;">HardwareVsdShortCirProtReactId</a>, 
+<a name="l00083"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa11c83df1440f80e530a08a8166505825">00083</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa11c83df1440f80e530a08a8166505825" title="&quot;Сработала защита: Аппаратная защита ЧРП, ампер-секундная защита инвертора&quot;">HardwareVsdI2tProtReactId</a>,      
+<a name="l00084"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa0dd8a975208a7d6d6e2a358c34b0ff26">00084</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa0dd8a975208a7d6d6e2a358c34b0ff26" title="&quot;Сработала защита: Аппаратная защита ЧРП, ошибка автонастройки установки&quot;">HardwareVsdAstProtReactId</a>,      
+<a name="l00085"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaabe167feb392c570c482fd795a4b6891">00085</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaabe167feb392c570c482fd795a4b6891" title="&quot;Сработала защита: Аппаратная защита ЧРП, ошибка рассогласования частоты векторного режима управления...">HardwareVsdVcProtReactId</a>,       
+<a name="l00086"></a>00086 
+<a name="l00087"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaf934c79897af21ed384374c52e7c05d9">00087</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaf934c79897af21ed384374c52e7c05d9" title="&quot;Режим программного изменения частоты отключен&quot;">RegimeSoftChangeFreqOffId</a>,      
+<a name="l00088"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa0171ccdcd526907cd243bd45a726b58f">00088</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa0171ccdcd526907cd243bd45a726b58f" title="&quot;Режим чередования фаз отключен&quot;">RegimeAlternationFreqOffId</a>,     
+<a name="l00089"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa40e5e92a7158572eef54ab460bfaf72a">00089</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa40e5e92a7158572eef54ab460bfaf72a" title="&quot;Режим пуска толчками отключен&quot;">RegimeRunPushOffId</a>,             
+<a name="l00090"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa2d53a93599357757f9fc2fe7e1eaf678">00090</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa2d53a93599357757f9fc2fe7e1eaf678" title="&quot;Режим пуска раскачкой отключен&quot;">RegimeRunSwingOffId</a>,            
+<a name="l00091"></a><a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa3712649bf6aa1d5dbdbcfed9d1efc108">00091</a>   <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa3712649bf6aa1d5dbdbcfed9d1efc108" title="&quot;Режим подхвата турбинного вращения отключен&quot;">RegimeRunPickupOffId</a>,           
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093 } <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bf" title="Id события">EventId</a>;
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095 <span class="preprocessor">#endif // LOG_IDLIST</span>
+<a name="l00096"></a>00096 <span class="preprocessor"></span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

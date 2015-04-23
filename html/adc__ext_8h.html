@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Файл src/board/adc/adc_ext.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Структуры данных</a> &#124;
+<a href="#define-members">Макросы</a> &#124;
+<a href="#enum-members">Перечисления</a> &#124;
+<a href="#func-members">Функции</a> &#124;
+<a href="#var-members">Переменные</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл src/board/adc/adc_ext.h</div>  </div>
+</div>
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="board_8h_source.html">board.h</a>&quot;</code><br/>
+</div>
+<p><a href="adc__ext_8h_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Структуры данных</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_analog_input_def.html">AnalogInputDef</a></td></tr>
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Макросы</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adc__ext_8h.html#a4e9257509535b9b40d5cc1cfc57d2b11">ANALOG_IN_NUM</a>&#160;&#160;&#160;8</td></tr>
+<tr><td colspan="2"><h2><a name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adc__ext_8h.html#a09ab9f4016ce3ebc73428c625645e357">AnalogInModeType</a> { <a class="el" href="adc__ext_8h.html#a09ab9f4016ce3ebc73428c625645e357aa792d28ffca35e5e70d4825f07df362f">AnalogInModeVoltage</a>, 
+<a class="el" href="adc__ext_8h.html#a09ab9f4016ce3ebc73428c625645e357ac0a4bd67518b656dd02a1e89c6038c5e">AnalogInModeCurrent</a>
+ }</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Список режимов аналогового входа: напряжение (мВ), ток (мкА)  <a href="adc__ext_8h.html#a09ab9f4016ce3ebc73428c625645e357">Подробнее...</a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adc__ext_8h.html#af9cbff131e0de5d021440a585d6c88d1">adcExtInit</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализация модуля работы с внешним АЦП  <a href="#af9cbff131e0de5d021440a585d6c88d1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adc__ext_8h.html#a4ea4c37a250af4cc3b467e1993b7851a">setModeAnalogInExt</a> (uint8_t num, uint8_t mode)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Установка режима аналогового входа внешнего АЦП  <a href="#a4ea4c37a250af4cc3b467e1993b7851a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adc__ext_8h.html#a4036b60c65173dd7ee795ebe6ff0c3ae">getValueAnalogInExt</a> (uint8_t num)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Получение значения с аналогового входа внешнего АЦП  <a href="#a4036b60c65173dd7ee795ebe6ff0c3ae"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Переменные</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_analog_input_def.html">AnalogInputDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adc__ext_8h.html#a0079457c8193e107a6e80a4986acc148">analogInExt</a> []</td></tr>
+</table>
+<hr/><h2>Макросы</h2>
+<a class="anchor" id="a4e9257509535b9b40d5cc1cfc57d2b11"></a><!-- doxytag: member="adc_ext.h::ANALOG_IN_NUM" ref="a4e9257509535b9b40d5cc1cfc57d2b11" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ANALOG_IN_NUM&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="adc__ext_8h_source.html">adc_ext.h</a> строка <a class="el" href="adc__ext_8h_source.html#l00006">6</a></p>
+
+</div>
+</div>
+<hr/><h2>Перечисления</h2>
+<a class="anchor" id="a09ab9f4016ce3ebc73428c625645e357"></a><!-- doxytag: member="adc_ext.h::AnalogInModeType" ref="a09ab9f4016ce3ebc73428c625645e357" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="adc__ext_8h.html#a09ab9f4016ce3ebc73428c625645e357">AnalogInModeType</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Список режимов аналогового входа: напряжение (мВ), ток (мкА) </p>
+<dl><dt><b>Элементы перечислений: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a09ab9f4016ce3ebc73428c625645e357aa792d28ffca35e5e70d4825f07df362f"></a><!-- doxytag: member="AnalogInModeVoltage" ref="a09ab9f4016ce3ebc73428c625645e357aa792d28ffca35e5e70d4825f07df362f" args="" -->AnalogInModeVoltage</em>&nbsp;</td><td>
+<p>В. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a09ab9f4016ce3ebc73428c625645e357ac0a4bd67518b656dd02a1e89c6038c5e"></a><!-- doxytag: member="AnalogInModeCurrent" ref="a09ab9f4016ce3ebc73428c625645e357ac0a4bd67518b656dd02a1e89c6038c5e" args="" -->AnalogInModeCurrent</em>&nbsp;</td><td>
+<p>мА </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="adc__ext_8h_source.html">adc_ext.h</a> строка <a class="el" href="adc__ext_8h_source.html#l00012">12</a></p>
+
+</div>
+</div>
+<hr/><h2>Функции</h2>
+<a class="anchor" id="af9cbff131e0de5d021440a585d6c88d1"></a><!-- doxytag: member="adc_ext.h::adcExtInit" ref="af9cbff131e0de5d021440a585d6c88d1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void adcExtInit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Инициализация модуля работы с внешним АЦП </p>
+
+<p>См. определение в файле <a class="el" href="adc__ext_8cpp_source.html">adc_ext.cpp</a> строка <a class="el" href="adc__ext_8cpp_source.html#l00054">54</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a4036b60c65173dd7ee795ebe6ff0c3ae"></a><!-- doxytag: member="adc_ext.h::getValueAnalogInExt" ref="a4036b60c65173dd7ee795ebe6ff0c3ae" args="(uint8_t num)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float getValueAnalogInExt </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>num</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Получение значения с аналогового входа внешнего АЦП </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>- возвращаемое значение (В или мА) </dd></dl>
+
+<p>См. определение в файле <a class="el" href="adc__ext_8cpp_source.html">adc_ext.cpp</a> строка <a class="el" href="adc__ext_8cpp_source.html#l00167">167</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a4ea4c37a250af4cc3b467e1993b7851a"></a><!-- doxytag: member="adc_ext.h::setModeAnalogInExt" ref="a4ea4c37a250af4cc3b467e1993b7851a" args="(uint8_t num, uint8_t mode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setModeAnalogInExt </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Установка режима аналогового входа внешнего АЦП </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">num</td><td>- номер аналогового входа </td></tr>
+    <tr><td class="paramname">mode</td><td>- режим <a class="el" href="adc__ext_8h.html#a09ab9f4016ce3ebc73428c625645e357">AnalogInModeType</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="adc__ext_8cpp_source.html">adc_ext.cpp</a> строка <a class="el" href="adc__ext_8cpp_source.html#l00119">119</a></p>
+
+</div>
+</div>
+<hr/><h2>Переменные</h2>
+<a class="anchor" id="a0079457c8193e107a6e80a4986acc148"></a><!-- doxytag: member="adc_ext.h::analogInExt" ref="a0079457c8193e107a6e80a4986acc148" args="[]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_analog_input_def.html">AnalogInputDef</a> <a class="el" href="adc__ext_8h.html#a0079457c8193e107a6e80a4986acc148">analogInExt</a>[]</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="adc__ext_8cpp_source.html">adc_ext.cpp</a> строка <a class="el" href="adc__ext_8cpp_source.html#l00021">21</a></p>
+
+</div>
+</div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

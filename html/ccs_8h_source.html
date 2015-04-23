@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/device/ccs/ccs.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/device/ccs/ccs.h</div>  </div>
+</div>
+<div class="contents">
+<a href="ccs_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 ﻿<span class="comment">/*</span>
+<a name="l00002"></a>00002 <span class="comment"> * classController.h</span>
+<a name="l00003"></a>00003 <span class="comment"> *</span>
+<a name="l00004"></a>00004 <span class="comment"> *  Created on: 23.06.2014</span>
+<a name="l00005"></a>00005 <span class="comment"> *      Author: trofimenko</span>
+<a name="l00006"></a>00006 <span class="comment"> */</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="preprocessor">#ifndef CCS_H_</span>
+<a name="l00009"></a>00009 <span class="preprocessor"></span><span class="preprocessor">#define CCS_H_</span>
+<a name="l00010"></a>00010 <span class="preprocessor"></span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include &quot;<a class="code" href="device_8h.html">device.h</a>&quot;</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &quot;<a class="code" href="log_8h.html">log.h</a>&quot;</span>
+<a name="l00013"></a>00013 
+<a name="l00014"></a><a class="code" href="class_ccs.html">00014</a> <span class="keyword">class </span><a class="code" href="class_ccs.html">Ccs</a>: <span class="keyword">public</span> <a class="code" href="class_device.html" title="Базовый класс для всех устройств Класс содержит банк параметров устройства во внутреннем представлени...">Device</a>
+<a name="l00015"></a>00015 {
+<a name="l00016"></a>00016 <span class="keyword">public</span>:
+<a name="l00020"></a><a class="code" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140">00020</a>   <span class="keyword">enum</span> <a class="code" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140" title="Список состояний светодиодов">LedCondition</a> {
+<a name="l00021"></a><a class="code" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140a23a12df5e0c94c792c63150735a56061">00021</a>     <a class="code" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140a23a12df5e0c94c792c63150735a56061" title="Горит красный">OnRedLed</a>,                   
+<a name="l00022"></a><a class="code" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140ad89863384d7572426c4fa63074d07160">00022</a>     <a class="code" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140ad89863384d7572426c4fa63074d07160" title="Горит красный и горит желтый">OnRedOnYellowLed</a>,           
+<a name="l00023"></a><a class="code" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140a4e846de9210e9817023f4af6164bdaca">00023</a>     <a class="code" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140a4e846de9210e9817023f4af6164bdaca" title="Горит зеленый и мигает желтый">OnGreenToogleYellowLed</a>,     
+<a name="l00024"></a><a class="code" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140a0cf88c58b896a17ac83f3724ef6f383f">00024</a>     <a class="code" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140a0cf88c58b896a17ac83f3724ef6f383f" title="Мигает зеленый и мигает желтый">ToogleGreenToogleYellowLed</a>, 
+<a name="l00025"></a><a class="code" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140adf8b91e71707b23ad8943f6208948c92">00025</a>     <a class="code" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140adf8b91e71707b23ad8943f6208948c92" title="Мигает красный">ToogleRedLed</a>,               
+<a name="l00026"></a><a class="code" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140ab104f623118dc828537ddc8179cf493c">00026</a>     <a class="code" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140ab104f623118dc828537ddc8179cf493c" title="Мигают зеленый и красный">ToogleGreenToogleRedLed</a>,    
+<a name="l00027"></a><a class="code" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140ad3852fd4688d50b60dacd7659cfea9f9">00027</a>     <a class="code" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140ad3852fd4688d50b60dacd7659cfea9f9" title="Горит зеленый">OnGreenLed</a>,                 
+<a name="l00028"></a><a class="code" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140a2db9ac2f4c323e8bccef3ed46e421a1f">00028</a>     <a class="code" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140a2db9ac2f4c323e8bccef3ed46e421a1f" title="Мигает желтый">OnRedToogleYellowLed</a>,            
+<a name="l00029"></a><a class="code" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140a6bed067204ba4633b3487dc434a1934a">00029</a>     <a class="code" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140a6bed067204ba4633b3487dc434a1934a" title="Мигает зеленый">ToogleGreenLed</a>,             
+<a name="l00030"></a>00030   };
+<a name="l00031"></a>00031 
+<a name="l00035"></a><a class="code" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47">00035</a>   <span class="keyword">enum</span> <a class="code" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47" title="Список надписей о состоянии СУ">GeneralCondition</a> {
+<a name="l00036"></a><a class="code" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47ae9384cfc547821cafc934c431d2f9941">00036</a>     <a class="code" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47ae9384cfc547821cafc934c431d2f9941" title="Стоп">GeneralConditionStop</a>,       
+<a name="l00037"></a><a class="code" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47a9871f5684cd999d5680aa7735c94c86e">00037</a>     <a class="code" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47a9871f5684cd999d5680aa7735c94c86e" title="Торможение">GeneralConditionStopping</a>,   
+<a name="l00038"></a><a class="code" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47a2184373eb7aa944f9be5bf542c539f75">00038</a>     <a class="code" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47a2184373eb7aa944f9be5bf542c539f75" title="Запуск">GeneralConditionRunning</a>,    
+<a name="l00039"></a><a class="code" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47a3370dceb949063f0e93951243c2ff050">00039</a>     <a class="code" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47a3370dceb949063f0e93951243c2ff050" title="Работа">GeneralConditionRun</a>,        
+<a name="l00040"></a><a class="code" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47a25d4a9f9770770474de283cd69fd3fa3">00040</a>     <a class="code" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47a25d4a9f9770770474de283cd69fd3fa3" title="Задержка срабатывания">GeneralConditionDelay</a>,      
+<a name="l00041"></a><a class="code" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47a19cefa4965b0c88f4fb1ceca459deae1">00041</a>     <a class="code" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47a19cefa4965b0c88f4fb1ceca459deae1" title="Ожидание АПВ">GeneralConditionRestart</a>,    
+<a name="l00042"></a><a class="code" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47a2ab5edcf8662705e2dcb15f70554a814">00042</a>     <a class="code" href="class_ccs.html#a7ff3b48148cdba0c990821b325113c47a2ab5edcf8662705e2dcb15f70554a814" title="Блокировка">GeneralConditionBlock</a>       
+<a name="l00043"></a>00043   };
+<a name="l00044"></a>00044 
+<a name="l00048"></a><a class="code" href="class_ccs.html#a4e28e0e49af12415b487c9f1de36980f">00048</a>   <span class="keyword">enum</span> <a class="code" href="class_ccs.html#a4e28e0e49af12415b487c9f1de36980f" title="Список команд пуска от контроллера визуализации">CmdStart</a> {
+<a name="l00049"></a><a class="code" href="class_ccs.html#a4e28e0e49af12415b487c9f1de36980faf97be6758f815feeb61c9b34ad00c3d3">00049</a>     <a class="code" href="class_ccs.html#a4e28e0e49af12415b487c9f1de36980faf97be6758f815feeb61c9b34ad00c3d3" title="Нет запуска">CmdStartNone</a>,       
+<a name="l00050"></a><a class="code" href="class_ccs.html#a4e28e0e49af12415b487c9f1de36980faa62ee45ab5163e49a6ed4a3b73b33706">00050</a>     <a class="code" href="class_ccs.html#a4e28e0e49af12415b487c9f1de36980faa62ee45ab5163e49a6ed4a3b73b33706" title="Запуск - оператор">CmdStartOperator</a>,   
+<a name="l00051"></a><a class="code" href="class_ccs.html#a4e28e0e49af12415b487c9f1de36980fa3d1a244fbbd80c11d3cd08c7ffad060a">00051</a>     <a class="code" href="class_ccs.html#a4e28e0e49af12415b487c9f1de36980fa3d1a244fbbd80c11d3cd08c7ffad060a" title="Запуск - дистанционный">CmdStartRemote</a>,     
+<a name="l00052"></a>00052   };
+<a name="l00053"></a>00053 
+<a name="l00057"></a><a class="code" href="class_ccs.html#ae00d6a6e2da7cb12338afa1b90787a46">00057</a>   <span class="keyword">enum</span> <a class="code" href="class_ccs.html#ae00d6a6e2da7cb12338afa1b90787a46" title="Список команд останова от контроллера визуализации">CmdStop</a> {
+<a name="l00058"></a><a class="code" href="class_ccs.html#ae00d6a6e2da7cb12338afa1b90787a46ae0a1af433142db7d8a81cb8b9f51821d">00058</a>     <a class="code" href="class_ccs.html#ae00d6a6e2da7cb12338afa1b90787a46ae0a1af433142db7d8a81cb8b9f51821d" title="Нет останова">CmdStopNone</a>,       
+<a name="l00059"></a><a class="code" href="class_ccs.html#ae00d6a6e2da7cb12338afa1b90787a46adf98449d7037fe6a5d8c30dc3ac1deee">00059</a>     <a class="code" href="class_ccs.html#ae00d6a6e2da7cb12338afa1b90787a46adf98449d7037fe6a5d8c30dc3ac1deee" title="Останов - оператор">CmdStopOperator</a>,   
+<a name="l00060"></a><a class="code" href="class_ccs.html#ae00d6a6e2da7cb12338afa1b90787a46a4ec0dbaad5cbd271eb35ee6aa9af041f">00060</a>     <a class="code" href="class_ccs.html#ae00d6a6e2da7cb12338afa1b90787a46a4ec0dbaad5cbd271eb35ee6aa9af041f" title="Останов - дистанционный">CmdStopRemote</a>,     
+<a name="l00061"></a>00061   };
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063   <a class="code" href="class_ccs.html#adb962098e6c4c1f9198393fde2ae90ef">Ccs</a>();
+<a name="l00064"></a>00064   <span class="keyword">virtual</span> <a class="code" href="class_ccs.html#a8af933dcd80ccbb6b5bef7cd5598cb1a">~Ccs</a>();
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#ab6a8635d5f4bccd0eb1b7046657bdfc3" title="Инициализация устройства">init</a>();
+<a name="l00067"></a>00067   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#ae0419d192753df8c3562ced9c944f13b">initTask</a>();
+<a name="l00068"></a>00068 
+<a name="l00072"></a>00072   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#a98bba73ef6915df8ce78a6dea169e4a7" title="Основная задача обработки СУ">mainTask</a>();
+<a name="l00073"></a>00073 
+<a name="l00077"></a>00077   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#a5474c540f3c354cb6b6b6db2dcd1ccff" title="Задача обработки очереди событий включения/мигания LED.">ledConditionTask</a>();
+<a name="l00078"></a>00078 
+<a name="l00082"></a>00082   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#ac5b995a9c72a86eee9a9156964b1104d" title="Задача обработки переключения состояния ЧРП">vsdConditionTask</a>();
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#a2561d891726d388b80e781789656dcae" title="Инициализация массива параметров">initParameters</a>();
+<a name="l00085"></a>00085 
+<a name="l00090"></a>00090   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#acec87b848452b5d4ddfa8e235526b767" title="Метод запуска двигателя">start</a>(<a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372" title="Список причин пуска">LastReasonRun</a> reason);
+<a name="l00091"></a>00091 
+<a name="l00096"></a>00096   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#acf67ed9254718e37a5808b28085c73b1" title="Метод останова двигателя">stop</a>(<a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ff" title="Список причин останова">LastReasonStop</a> reason);
+<a name="l00097"></a>00097 
+<a name="l00102"></a>00102   <span class="keywordtype">bool</span> <a class="code" href="class_ccs.html#a09bd2812f8e2feea48fc4c79e127239f" title="Проверка находится ли станция в стопе">isStopMotor</a>();
+<a name="l00103"></a>00103 
+<a name="l00109"></a>00109   <span class="keywordtype">bool</span> <a class="code" href="class_ccs.html#a963252ab38bf6a9001f5518ca095607d" title="Проверка находится ли станция в работе состояние работа, это все состояния кроме состояний &quot;Стоп&quot; и &quot;...">isWorkMotor</a>();
+<a name="l00110"></a>00110 
+<a name="l00115"></a>00115   <span class="keywordtype">bool</span> <a class="code" href="class_ccs.html#abc3bdd00d2c7d77639d6a58862894939" title="Проверка находится ли станция в ожидании">isDelay</a>();
+<a name="l00116"></a>00116 
+<a name="l00120"></a>00120   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#a7ebdcb8f354fc1d4b3f2770666bce7c6" title="setDelayCCS">setDelay</a>();
+<a name="l00121"></a>00121 
+<a name="l00125"></a>00125   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#a7db968cc15d189e42968ae84351c82f6" title="resetDelayCCS">resetDelay</a>();
+<a name="l00126"></a>00126 
+<a name="l00131"></a>00131   <span class="keywordtype">bool</span> <a class="code" href="class_ccs.html#a86fd4828f7535839e9f8133359271aae" title="isRestartCCS">isRestart</a>();
+<a name="l00132"></a>00132 
+<a name="l00136"></a>00136   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#a5e41cab53769f3227bda30717000b0ea" title="setRestartCCS">setRestart</a>();
+<a name="l00137"></a>00137 
+<a name="l00141"></a>00141   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#ace70b4dbd3ccc4a77bf520427f282efa" title="resetRestartCCS">resetRestart</a>();
+<a name="l00142"></a>00142 
+<a name="l00147"></a>00147   <span class="keywordtype">bool</span> <a class="code" href="class_ccs.html#a8bc0242894b2a0f4ea9af3c6f43ea3a1" title="Проверка находится ли станция в блокировке">isBlock</a>();
+<a name="l00148"></a>00148 
+<a name="l00152"></a>00152   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#ad0f0a577f9660e9f761ef4d75c68ba58" title="Установка флага блокировки">setBlock</a>();
+<a name="l00153"></a>00153 
+<a name="l00157"></a>00157   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#ae6c087740511dfc0f6441ff3983bdc33" title="Сброс флага блокировки">resetBlock</a>();
+<a name="l00158"></a>00158 
+<a name="l00163"></a>00163   <span class="keywordtype">bool</span> <a class="code" href="class_ccs.html#a2b0743b38d680ef06b5f2cdf5e587787" title="isPrevent">isPrevent</a>();
+<a name="l00164"></a>00164 
+<a name="l00169"></a>00169   <span class="keywordtype">bool</span> <a class="code" href="class_ccs.html#a19ca1d9fa3f72a014f17372e1428a607" title="Проверка что КСУ в режиме АUTO.">isAutoMode</a>();
+<a name="l00170"></a>00170 
+<a name="l00175"></a>00175   <span class="keywordtype">bool</span> <a class="code" href="class_ccs.html#a26700133ec67b989db1f7c512da5d33f" title="isManualMode">isManualMode</a>();
+<a name="l00176"></a>00176 
+<a name="l00181"></a>00181   <span class="keywordtype">bool</span> <a class="code" href="class_ccs.html#a6a535ac0825a614e3b8d9960f94b9d8f" title="Проверка что КСУ в режиме &quot;Программа&quot;.">isProgramMode</a>();
+<a name="l00182"></a>00182 
+<a name="l00188"></a>00188   uint32_t <a class="code" href="class_ccs.html#a93744289036200862d44b61313a1aa54" title="Функция получения текущего времени в сек от 00:00:00 01.01.1970 года">getTime</a>();
+<a name="l00189"></a>00189 
+<a name="l00195"></a>00195   uint32_t <a class="code" href="class_ccs.html#afbf19ee6b4b0b1218ae8aecc1f4f6e53" title="Функция получения прошедщего времени относительно текущего времени">getSecFromCurTime</a>(uint32_t <a class="code" href="adc_8cpp.html#ae73654f333e4363463ad8c594eca1905">time</a>);
+<a name="l00196"></a>00196 
+<a name="l00202"></a>00202   uint32_t <a class="code" href="class_ccs.html#afbf19ee6b4b0b1218ae8aecc1f4f6e53" title="Функция получения прошедщего времени относительно текущего времени">getSecFromCurTime</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cf">enID</a> timeId);
+<a name="l00203"></a>00203 
+<a name="l00207"></a>00207   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#a4781aef688e3354e616a82cbe20dfc62" title="calcMotorCurrentPhase1">calcMotorCurrentPhase1</a>();
+<a name="l00208"></a>00208 
+<a name="l00212"></a>00212   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#a276721f83f6f935fb2c57047a546e87d" title="calcMotorCurrentPhase2">calcMotorCurrentPhase2</a>();
+<a name="l00213"></a>00213 
+<a name="l00217"></a>00217   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#a0a077d25046099eed9925d9298ad6373" title="calcMotorCurrentPhase3">calcMotorCurrentPhase3</a>();
+<a name="l00218"></a>00218 
+<a name="l00222"></a>00222   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#a3d8d6f0cdf257181ae974bf0fdbf9215" title="calcMotorCurrentAvarage">calcMotorCurrentAvarage</a>();
+<a name="l00223"></a>00223 
+<a name="l00230"></a>00230   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#a43c0a7e0adc6d9d24bbac53df38b0a3e" title="calcMotorCurrentPhase">calcMotorCurrentPhase</a>(uint16_t vsdOutCurrent, uint16_t coefCorrect, uint16_t motorCurrent);
+<a name="l00231"></a>00231 
+<a name="l00235"></a>00235   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#a8217c12620e095931c2bc4c410221a9a" title="calcMotorCurrentImbalance">calcMotorCurrentImbalance</a>();
+<a name="l00236"></a>00236 
+<a name="l00240"></a>00240   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#ac07e3e6d4be896c4ff2f70c8fb9ad4df" title="calcVoltageImbalanceIn">calcVoltageImbalanceIn</a>();
+<a name="l00241"></a>00241 
+<a name="l00242"></a>00242   uint8_t <a class="code" href="class_ccs.html#a67bc22057be9ef1f928f8d85134ee3f8" title="setNewValue">setNewValue</a>(uint16_t <span class="keywordtype">id</span>, <span class="keywordtype">float</span> value);
+<a name="l00243"></a>00243 
+<a name="l00244"></a>00244   uint8_t <a class="code" href="class_ccs.html#a67bc22057be9ef1f928f8d85134ee3f8" title="setNewValue">setNewValue</a>(uint16_t <span class="keywordtype">id</span>, uint32_t value);
+<a name="l00245"></a>00245 
+<a name="l00246"></a>00246   uint8_t <a class="code" href="class_ccs.html#a67bc22057be9ef1f928f8d85134ee3f8" title="setNewValue">setNewValue</a>(uint16_t <span class="keywordtype">id</span>, <span class="keywordtype">int</span> value);
+<a name="l00247"></a>00247 
+<a name="l00252"></a>00252   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#aabe24261336a16dec1ee3c04a6cf0a97" title="Функция пересчёта периода одного шага для режима &quot;Программного изменения частоты&quot;.">calcRegimeChangeFreqPeriodOneStep</a>();
+<a name="l00253"></a>00253 
+<a name="l00257"></a>00257   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#a7558efc3caffe764876a5bcc65413c58" title="Контроль питания и отключение ИБП по таймауту">controlPower</a>();
+<a name="l00258"></a>00258 
+<a name="l00263"></a><a class="code" href="class_ccs.html#a1ba9496cc184cfdfc673880aefc6d384">00263</a>   <span class="keywordtype">bool</span> <a class="code" href="class_ccs.html#a1ba9496cc184cfdfc673880aefc6d384" title="Метод проверки отключения питания платы">isPowerOff</a>()<span class="keyword"> const </span>{
+<a name="l00264"></a>00264     <span class="keywordflow">return</span> <a class="code" href="class_ccs.html#aea5e986d6c4a4ec71e4a80daae9c570e" title="Флаг потери питания">powerOffFlag_</a>;
+<a name="l00265"></a>00265   }
+<a name="l00266"></a>00266 
+<a name="l00267"></a>00267 <span class="keyword">private</span>:
+<a name="l00271"></a>00271   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#aeb7f60f2cbd15d47bfaaf3a639dc6fea" title="Метод добавления в очередь событий включения/мигания LED.">setLedCondition</a>(<a class="code" href="class_ccs.html#af04f8afcfc6e7988b5b7078ab9151140" title="Список состояний светодиодов">LedCondition</a> condition);
+<a name="l00272"></a>00272 
+<a name="l00276"></a>00276   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#a3fb8391292a8d2c3f88c19ed968d99b9" title="Метод обработки изменения состояния">changedCondition</a>();
+<a name="l00277"></a>00277 
+<a name="l00281"></a>00281   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#a555e74424bc9a234b4a0cb044fddcf65" title="Метод обработки изменения режима работы">changedWorkMode</a>();
+<a name="l00282"></a>00282 
+<a name="l00287"></a>00287   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#a7463ab9f818502862f01db3a64fb6ad0" title="Метод проверки команды на запуск/останов от контроллера визуализации">checkCmd</a>();
+<a name="l00288"></a>00288 
+<a name="l00293"></a>00293   <span class="keywordtype">bool</span> <a class="code" href="class_ccs.html#af5f38480d54c8e59362a240fefae5eb9" title="Метод проверки возможности пуска">checkCanStart</a>();
+<a name="l00294"></a>00294 
+<a name="l00299"></a>00299   <span class="keywordtype">bool</span> <a class="code" href="class_ccs.html#a2d49fcb52a688d53688083f7d381bceb" title="Метод проверки возможности останова">checkCanStop</a>();
+<a name="l00300"></a>00300 
+<a name="l00304"></a>00304   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#a437b3c0a00c67c3cb7c743911b507422" title="Метод подсчёта времени работы и останова">calcTime</a>();
+<a name="l00305"></a>00305 
+<a name="l00309"></a>00309   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#a2288081eeb292bddcb60b571b548b6a8" title="calcParameters">calcParameters</a>();
+<a name="l00310"></a>00310 
+<a name="l00314"></a>00314   <span class="keywordtype">void</span> <a class="code" href="class_ccs.html#a948eecc22e65841ae874ac8a2059fc79" title="calcCoefTransformation">calcCoefTransformation</a>();
+<a name="l00315"></a>00315 
+<a name="l00317"></a><a class="code" href="class_ccs.html#acce4f3c3b622720a0e4c115aafa8b323">00317</a>   <a class="code" href="structparameter.html" title="Структура для обработки и хранения параметров в СУ">parameter</a> <a class="code" href="class_ccs.html#acce4f3c3b622720a0e4c115aafa8b323" title="Массив параметров устройства">parametersArray_</a>[<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaef2e93f706eda6cdf60cdba04c45a342" title="Последний параметр">CCS_END</a> - <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa93369639070f4462de1c1d4122ea941a" title="Пустой регистр">CCS_BEGIN</a>];
+<a name="l00318"></a>00318 
+<a name="l00320"></a><a class="code" href="class_ccs.html#a955990f23acf20d01a71d0142ab4c758">00320</a>   osMessageQId <a class="code" href="class_ccs.html#a955990f23acf20d01a71d0142ab4c758" title="Очередь событий включения/мигания LED.">ledMessage_</a>;
+<a name="l00322"></a><a class="code" href="class_ccs.html#a901ee14cc75f7908fb0b2727a7307006">00322</a>   <span class="keywordtype">int</span> <a class="code" href="class_ccs.html#a901ee14cc75f7908fb0b2727a7307006" title="Предыдущие состояние станции">conditionOld_</a>;
+<a name="l00324"></a><a class="code" href="class_ccs.html#a71e235039f85b9dcb03dee7b6b873be4">00324</a>   <span class="keywordtype">int</span> <a class="code" href="class_ccs.html#a71e235039f85b9dcb03dee7b6b873be4" title="Предыдущие значение флага (задержка, АПВ, блокировка)">flagOld_</a>;
+<a name="l00326"></a><a class="code" href="class_ccs.html#aa20615a672eafc921dd113079d5742be">00326</a>   <span class="keywordtype">int</span> <a class="code" href="class_ccs.html#aa20615a672eafc921dd113079d5742be" title="Предыдущий режим работы">workModeOld_</a>;
+<a name="l00327"></a>00327 
+<a name="l00329"></a><a class="code" href="class_ccs.html#aea5e986d6c4a4ec71e4a80daae9c570e">00329</a>   <span class="keywordtype">bool</span> <a class="code" href="class_ccs.html#aea5e986d6c4a4ec71e4a80daae9c570e" title="Флаг потери питания">powerOffFlag_</a>;
+<a name="l00331"></a><a class="code" href="class_ccs.html#ad79ecad5ff249f8cb0e1e45e67e866b5">00331</a>   <span class="keywordtype">int</span> <a class="code" href="class_ccs.html#ad79ecad5ff249f8cb0e1e45e67e866b5" title="Тайаут отключения питания ИБП">powerOffTimeout_</a>;
+<a name="l00332"></a>00332 
+<a name="l00333"></a>00333 };
+<a name="l00334"></a>00334 
+<a name="l00335"></a>00335 <span class="preprocessor">#endif </span><span class="comment">/* CCS_H_ */</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:23. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

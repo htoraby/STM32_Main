@@ -1,0 +1,410 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/protocol/novobus/novobus_slave.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/protocol/novobus/novobus_slave.cpp</div>  </div>
+</div>
+<div class="contents">
+<a href="novobus__slave_8cpp.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="novobus__slave_8h.html">novobus_slave.h</a>&quot;</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#include &quot;<a class="code" href="user__main_8h.html">user_main.h</a>&quot;</span>
+<a name="l00003"></a>00003 <span class="preprocessor">#include &quot;string.h&quot;</span>
+<a name="l00004"></a>00004 
+<a name="l00005"></a><a class="code" href="novobus__slave_8cpp.html#a623ec78b7909090dbedac4af1d52abb4">00005</a> <span class="preprocessor">#define MAX_QUEUE_SIZE 500</span>
+<a name="l00006"></a>00006 <span class="preprocessor"></span>
+<a name="l00007"></a><a class="code" href="novobus__slave_8cpp.html#a377154c04e759370de2710e7bcd74b7f">00007</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="novobus__slave_8cpp.html#a377154c04e759370de2710e7bcd74b7f">novobusSlaveTask</a>(<span class="keywordtype">void</span> *p)
+<a name="l00008"></a>00008 {
+<a name="l00009"></a>00009   (<span class="keyword">static_cast&lt;</span><a class="code" href="class_novobus_slave.html" title="Класс протокола обмена между stm32 и контроллером визуализации">NovobusSlave</a>*<span class="keyword">&gt;</span>(p))-&gt;task();
+<a name="l00010"></a>00010 }
+<a name="l00011"></a>00011 
+<a name="l00012"></a><a class="code" href="class_novobus_slave.html#a5ac7d4c45dee2cb0b720236a5a7c0f05">00012</a> <a class="code" href="class_novobus_slave.html#a5ac7d4c45dee2cb0b720236a5a7c0f05">NovobusSlave::NovobusSlave</a>()
+<a name="l00013"></a>00013   : idsCount_(0)
+<a name="l00014"></a>00014   , addrsCount_(0)
+<a name="l00015"></a>00015 {
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 }
+<a name="l00018"></a>00018 
+<a name="l00019"></a><a class="code" href="class_novobus_slave.html#a91af883becc103d5ecc3469da64f717a">00019</a> <a class="code" href="class_novobus_slave.html#a91af883becc103d5ecc3469da64f717a">NovobusSlave::~NovobusSlave</a>()
+<a name="l00020"></a>00020 {
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022 }
+<a name="l00023"></a>00023 
+<a name="l00024"></a><a class="code" href="class_novobus_slave.html#a38b53190c1d1de69d46bcf3fb15a72c5">00024</a> <span class="keywordtype">void</span> <a class="code" href="class_novobus_slave.html#a38b53190c1d1de69d46bcf3fb15a72c5" title="Инициализация протокола">NovobusSlave::init</a>()
+<a name="l00025"></a>00025 {
+<a name="l00026"></a>00026   <a class="code" href="host_8cpp.html#a829d2cc46a867eef155da5b1ca654963" title="Инициализация драйвера работы с контроллером визуализации (SPI4-Slave)">hostInit</a>();
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028   <span class="comment">// Создаём очередь сообщений событий</span>
+<a name="l00029"></a>00029   osMessageQDef(MessageEventsNovobus, <a class="code" href="novobus__slave_8cpp.html#a623ec78b7909090dbedac4af1d52abb4">MAX_QUEUE_SIZE</a>, uint32_t);
+<a name="l00030"></a>00030   <a class="code" href="class_novobus_slave.html#a6e62ccdfe21aa68150bb77e64175a747" title="Очередь на посылку сообытий">messageEvents_</a> = osMessageCreate(osMessageQ(MessageEventsNovobus), NULL);
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032   <span class="comment">// Создаём очередь сообщений параметров для записи</span>
+<a name="l00033"></a>00033   osMessageQDef(MessageParamsNovobus, <a class="code" href="novobus__slave_8cpp.html#a623ec78b7909090dbedac4af1d52abb4">MAX_QUEUE_SIZE</a>, uint32_t);
+<a name="l00034"></a>00034   <a class="code" href="class_novobus_slave.html#af324e60a80ad8532d49a154b8e78f453" title="Очередь на запись данных">messageParams_</a> = osMessageCreate(osMessageQ(MessageParamsNovobus), NULL);
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036   <span class="comment">// Создаём задачу обработки принятых пакетов</span>
+<a name="l00037"></a>00037   osThreadDef_t t = {<span class="stringliteral">&quot;NovobusSlave&quot;</span>, <a class="code" href="novobus__slave_8cpp.html#a377154c04e759370de2710e7bcd74b7f">novobusSlaveTask</a>, osPriorityNormal, 0, 4 * <a class="code" href="_free_r_t_o_s_config_8h.html#a6c534a6cf8a00528fe0be42083484f9a">configMINIMAL_STACK_SIZE</a>};
+<a name="l00038"></a>00038   <a class="code" href="class_novobus_slave.html#a26d0f304d4d90b163e3a906d04c4907b" title="Идентификатор задачи Novobus.">threadId_</a> = osThreadCreate(&amp;t, <span class="keyword">this</span>);
+<a name="l00039"></a>00039 }
+<a name="l00040"></a>00040 
+<a name="l00041"></a><a class="code" href="class_novobus_slave.html#abd8352eb55fa2a019da39f1545732bf7">00041</a> <span class="keywordtype">void</span> <a class="code" href="class_novobus_slave.html#abd8352eb55fa2a019da39f1545732bf7" title="Основная задача протокола">NovobusSlave::task</a>()
+<a name="l00042"></a>00042 {
+<a name="l00043"></a>00043   osSemaphoreId semaphoreId = <a class="code" href="host_8cpp.html#af5e10e18de58109f9ab14e6ef9f0d833" title="Создание семафора драйвера работы с контроллером визуализации Семафор необходим для сообщения задачи ...">getHostSemaphore</a>();
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045   <span class="keywordflow">while</span>(1) {
+<a name="l00046"></a>00046     <span class="comment">// Проверка семафора - если он свободен, то получен покет от хоста</span>
+<a name="l00047"></a>00047     <span class="keywordflow">if</span> (osSemaphoreWait(semaphoreId, osWaitForever) != osEventTimeout) {
+<a name="l00048"></a>00048       <a class="code" href="class_novobus_slave.html#aed6f5024161af6255a9a12b8352077fc">rxSize</a> = <a class="code" href="host_8cpp.html#a3538db2e7e2e52121a1ee284f52cb3bb" title="Чтение данных из буфера приёма от контроллера визуализации">hostReadData</a>(<a class="code" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">rxBuffer_</a>);
+<a name="l00049"></a>00049       <a class="code" href="class_novobus_slave.html#ac9a415ac4d4110feb1d0abcbfe62feb1" title="Функция обработки запросов по Novobus.">receivePackage</a>(<a class="code" href="class_novobus_slave.html#aed6f5024161af6255a9a12b8352077fc">rxSize</a>);
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051       osDelay(1);
+<a name="l00052"></a>00052       <a class="code" href="host_8cpp.html#a4430dce308818bdf8bb25917a33d59c8" title="Отправка данных контроллеру визуализации">hostWriteData</a>(<a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>, <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[1]);
+<a name="l00053"></a>00053     }
+<a name="l00054"></a>00054   }
+<a name="l00055"></a>00055 }
+<a name="l00056"></a>00056 
+<a name="l00057"></a><a class="code" href="class_novobus_slave.html#aba46838199788fe89c68ae8c2fa1b725">00057</a> <span class="keywordtype">int</span> <a class="code" href="class_novobus_slave.html#aba46838199788fe89c68ae8c2fa1b725" title="Метод получения адреса события из очереди">NovobusSlave::getMessageEvents</a>()
+<a name="l00058"></a>00058 {
+<a name="l00059"></a>00059   osEvent Event;
+<a name="l00060"></a>00060   Event = osMessageGet(<a class="code" href="class_novobus_slave.html#a6e62ccdfe21aa68150bb77e64175a747" title="Очередь на посылку сообытий">messageEvents_</a>, 0);
+<a name="l00061"></a>00061   <span class="keywordflow">if</span> (Event.status == osEventMessage)
+<a name="l00062"></a>00062     <span class="keywordflow">return</span> Event.value.v;
+<a name="l00063"></a>00063   <span class="keywordflow">return</span> -1;
+<a name="l00064"></a>00064 }
+<a name="l00065"></a>00065 
+<a name="l00066"></a><a class="code" href="class_novobus_slave.html#a53ac3b87cf6ecb235a4a81e424e491fd">00066</a> <span class="keywordtype">int</span> <a class="code" href="class_novobus_slave.html#a53ac3b87cf6ecb235a4a81e424e491fd" title="Метод получения ID параметра из очереди">NovobusSlave::getMessageParams</a>()
+<a name="l00067"></a>00067 {
+<a name="l00068"></a>00068   osEvent Event;
+<a name="l00069"></a>00069   Event = osMessageGet(<a class="code" href="class_novobus_slave.html#af324e60a80ad8532d49a154b8e78f453" title="Очередь на запись данных">messageParams_</a>, 0);
+<a name="l00070"></a>00070   <span class="keywordflow">if</span> (Event.status == osEventMessage)
+<a name="l00071"></a>00071     <span class="keywordflow">return</span> Event.value.v;
+<a name="l00072"></a>00072   <span class="keywordflow">return</span> 0;
+<a name="l00073"></a>00073 }
+<a name="l00074"></a>00074 
+<a name="l00075"></a><a class="code" href="class_novobus_slave.html#ae5bdb6b6f44cf07bb1a3db2355750f71">00075</a> <span class="keywordtype">void</span> <a class="code" href="class_novobus_slave.html#ae5bdb6b6f44cf07bb1a3db2355750f71" title="Метод добавления ID события в очередь">NovobusSlave::putMessageEvents</a>(uint32_t <span class="keywordtype">id</span>)
+<a name="l00076"></a>00076 {
+<a name="l00077"></a>00077 <span class="comment">//  TODO: Необходима реализация чтения событий</span>
+<a name="l00078"></a>00078 <span class="comment">//  osMessagePut(messageEvents_, id, 0);</span>
+<a name="l00079"></a>00079 }
+<a name="l00080"></a>00080 
+<a name="l00081"></a><a class="code" href="class_novobus_slave.html#a3e9f20ec677d19775459610f9c67b82b">00081</a> <span class="keywordtype">void</span> <a class="code" href="class_novobus_slave.html#a3e9f20ec677d19775459610f9c67b82b" title="Метод добавления ID параметра в очередь">NovobusSlave::putMessageParams</a>(uint32_t <span class="keywordtype">id</span>)
+<a name="l00082"></a>00082 {
+<a name="l00083"></a>00083   osMessagePut(<a class="code" href="class_novobus_slave.html#af324e60a80ad8532d49a154b8e78f453" title="Очередь на запись данных">messageParams_</a>, <span class="keywordtype">id</span>, 0);
+<a name="l00084"></a>00084 }
+<a name="l00085"></a>00085 
+<a name="l00086"></a><a class="code" href="class_novobus_slave.html#ac9a415ac4d4110feb1d0abcbfe62feb1">00086</a> <span class="keywordtype">void</span> <a class="code" href="class_novobus_slave.html#ac9a415ac4d4110feb1d0abcbfe62feb1" title="Функция обработки запросов по Novobus.">NovobusSlave::receivePackage</a>(uint8_t sizePkt)
+<a name="l00087"></a>00087 {
+<a name="l00088"></a>00088   <span class="comment">// Заполняем заголовок пакета</span>
+<a name="l00089"></a>00089   <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[0] = <a class="code" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">rxBuffer_</a>[0];
+<a name="l00090"></a>00090   <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[2] = <a class="code" href="class_novobus_slave.html#afe608093a88304d5a57d5d4e86382e33ad82e981f79d1bc601d726e0345060530">NoneError</a>;
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092   <span class="comment">// Команда</span>
+<a name="l00093"></a>00093   uint8_t command = <a class="code" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">rxBuffer_</a>[0];
+<a name="l00094"></a>00094   uint8_t sizePktT = <a class="code" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">rxBuffer_</a>[1];
+<a name="l00095"></a>00095   <span class="comment">// Количество данных</span>
+<a name="l00096"></a>00096   uint8_t dataNumber;
+<a name="l00097"></a>00097   <span class="comment">// Временная переменная преобразования типов</span>
+<a name="l00098"></a>00098   <a class="code" href="unionun_type_data.html" title="The unDataType union Объединение для преобразования типов данных">unTypeData</a> id;
+<a name="l00099"></a>00099   <a class="code" href="unionun_type_data.html" title="The unDataType union Объединение для преобразования типов данных">unTypeData</a> value;
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101   <span class="comment">// Получаем контрольную сумму</span>
+<a name="l00102"></a>00102   uint16_t rxCrc = (<a class="code" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">rxBuffer_</a>[sizePktT - 2] &lt;&lt; 8) + <a class="code" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">rxBuffer_</a>[sizePktT - 1];
+<a name="l00103"></a>00103   <span class="comment">// Вычисляем контрольную сумму</span>
+<a name="l00104"></a>00104   uint16_t calcCrc = <a class="code" href="common_8cpp.html#a3708d95f4ea55e23f3fab4070f10a391">crc16_ibm</a>(<a class="code" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">rxBuffer_</a>, sizePktT - 2);
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106   <span class="comment">// Проверка контрольной суммы</span>
+<a name="l00107"></a>00107   <span class="keywordflow">if</span> ((rxCrc == calcCrc) &amp;&amp; sizePkt &amp;&amp; (sizePkt == sizePktT)) {
+<a name="l00108"></a>00108     <a class="code" href="host_8cpp.html#ae700f858181a4b0f44df4b4f4930ac34">statHost</a>.<a class="code" href="struct_stat_host_def.html#a7b32e04a4b032ee170bba9b802b3326b">rxGood</a>++;
+<a name="l00109"></a>00109     <span class="comment">// Анализ команды</span>
+<a name="l00110"></a>00110     <span class="keywordflow">switch</span> (command) {
+<a name="l00111"></a>00111       <span class="comment">// Команда запроса данных от Master к Slave есть ли у него готовые данные</span>
+<a name="l00112"></a>00112       <span class="keywordflow">case</span> <a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a707907b12a3c0aa670a19eac8bfdca31">StatusCommand</a>:
+<a name="l00113"></a>00113         <a class="code" href="class_novobus_slave.html#a8ea677d674c823a47a57ef66ed85ee5f" title="Метод проверки очередей и заполнения необходимых полей заголовка">checkMessage</a>();
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115         sizePkt = 7;
+<a name="l00116"></a>00116         <span class="keywordflow">break</span>;
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118         <span class="comment">// Команда чтения ID новых событий</span>
+<a name="l00119"></a>00119       <span class="keywordflow">case</span> <a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a930f9ff0785b5942ece3207c2396e8f2">UpdateEventsCommand</a>:
+<a name="l00120"></a>00120         <span class="keywordflow">if</span> (!<a class="code" href="class_novobus_slave.html#a24c01a1ec060b25e1ae66d6ba2ac5706">addrsCount_</a>) {
+<a name="l00121"></a>00121           <span class="keywordflow">if</span> (osMessageNumber(<a class="code" href="class_novobus_slave.html#a6e62ccdfe21aa68150bb77e64175a747" title="Очередь на посылку сообытий">messageEvents_</a>)) {
+<a name="l00122"></a>00122             <span class="keywordflow">while</span> (1) {
+<a name="l00123"></a>00123               <span class="keywordtype">int</span> addr = <a class="code" href="class_novobus_slave.html#aba46838199788fe89c68ae8c2fa1b725" title="Метод получения адреса события из очереди">getMessageEvents</a>();
+<a name="l00124"></a>00124               <span class="keywordflow">if</span> (addr &gt;= 0) {
+<a name="l00125"></a>00125                 <a class="code" href="class_novobus_slave.html#ac328d33812cff4b84164a863a2ed7db6">addrsBuffer_</a>[<a class="code" href="class_novobus_slave.html#a24c01a1ec060b25e1ae66d6ba2ac5706">addrsCount_</a>++] = addr;
+<a name="l00126"></a>00126                 <span class="keywordflow">if</span> (<a class="code" href="class_novobus_slave.html#a24c01a1ec060b25e1ae66d6ba2ac5706">addrsCount_</a> &gt;= <a class="code" href="novobus__slave_8h.html#a27ac010388bd46cc99067b56b9c05613" title="Максимальное количество адресов во временом буффере">MAX_ADDRS_BUFFER</a>)
+<a name="l00127"></a>00127                   <span class="keywordflow">break</span>;
+<a name="l00128"></a>00128               }
+<a name="l00129"></a>00129               <span class="keywordflow">else</span> {
+<a name="l00130"></a>00130                 <span class="keywordflow">break</span>;
+<a name="l00131"></a>00131               }
+<a name="l00132"></a>00132             }
+<a name="l00133"></a>00133           }
+<a name="l00134"></a>00134         }
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136         <span class="keywordflow">if</span> (<a class="code" href="class_novobus_slave.html#a24c01a1ec060b25e1ae66d6ba2ac5706">addrsCount_</a>) {
+<a name="l00137"></a>00137           <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_novobus_slave.html#a24c01a1ec060b25e1ae66d6ba2ac5706">addrsCount_</a>; ++i) {
+<a name="l00138"></a>00138             <span class="keywordtype">id</span>.uint32_t = <a class="code" href="class_novobus_slave.html#ac328d33812cff4b84164a863a2ed7db6">addrsBuffer_</a>[i];
+<a name="l00139"></a>00139             <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[5 + i*4] = <span class="keywordtype">id</span>.char_t[3];
+<a name="l00140"></a>00140             <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[6 + i*4] = <span class="keywordtype">id</span>.char_t[2];
+<a name="l00141"></a>00141             <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[7 + i*4] = <span class="keywordtype">id</span>.char_t[1];
+<a name="l00142"></a>00142             <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[8 + i*4] = <span class="keywordtype">id</span>.char_t[0];
+<a name="l00143"></a>00143           }
+<a name="l00144"></a>00144         }
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146         <a class="code" href="class_novobus_slave.html#a8ea677d674c823a47a57ef66ed85ee5f" title="Метод проверки очередей и заполнения необходимых полей заголовка">checkMessage</a>();
+<a name="l00147"></a>00147 
+<a name="l00148"></a>00148         sizePkt = 7 + <a class="code" href="class_novobus_slave.html#a24c01a1ec060b25e1ae66d6ba2ac5706">addrsCount_</a>*4;
+<a name="l00149"></a>00149         <span class="keywordflow">break</span>;
+<a name="l00150"></a>00150 
+<a name="l00151"></a>00151         <span class="comment">// Команда чтения событий</span>
+<a name="l00152"></a>00152       <span class="keywordflow">case</span> <a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a2b2e9637e767420426a16ba301468d80">ReadEventsCommand</a>:
+<a name="l00153"></a>00153         <span class="comment">// После получения мастером списка адресов событий - обнуляем счётчик</span>
+<a name="l00154"></a>00154         <a class="code" href="class_novobus_slave.html#a24c01a1ec060b25e1ae66d6ba2ac5706">addrsCount_</a> = 0;
+<a name="l00155"></a>00155 
+<a name="l00156"></a>00156         <span class="comment">// Количество событий = (размер пакета - заголовок - crc) / (размер адреса)</span>
+<a name="l00157"></a>00157         dataNumber = (sizePkt - 4)/4;
+<a name="l00158"></a>00158         <span class="comment">// Цикл по количеству считываемых событий</span>
+<a name="l00159"></a>00159         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; dataNumber; i++) {
+<a name="l00160"></a>00160           <span class="comment">// Получаем адрес события</span>
+<a name="l00161"></a>00161           <span class="keywordtype">id</span>.char_t[3] = <a class="code" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">rxBuffer_</a>[2 + i*4];
+<a name="l00162"></a>00162           <span class="keywordtype">id</span>.char_t[2] = <a class="code" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">rxBuffer_</a>[3 + i*4];
+<a name="l00163"></a>00163           <span class="keywordtype">id</span>.char_t[1] = <a class="code" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">rxBuffer_</a>[4 + i*4];
+<a name="l00164"></a>00164           <span class="keywordtype">id</span>.char_t[0] = <a class="code" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">rxBuffer_</a>[5 + i*4];
+<a name="l00165"></a>00165           <span class="keywordtype">int</span> addr = <span class="keywordtype">id</span>.uint32_t;
+<a name="l00166"></a>00166           <span class="comment">// Считываем событие</span>
+<a name="l00167"></a>00167           <a class="code" href="log__main_8cpp.html#a9bbe1c3884e785093896a44d9d2a5d44" title="Чтение архивов">logRead</a>(addr, &amp;<a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[5 + i*21], 21);
+<a name="l00168"></a>00168         }
+<a name="l00169"></a>00169 
+<a name="l00170"></a>00170         <a class="code" href="class_novobus_slave.html#a8ea677d674c823a47a57ef66ed85ee5f" title="Метод проверки очередей и заполнения необходимых полей заголовка">checkMessage</a>();
+<a name="l00171"></a>00171 
+<a name="l00172"></a>00172         sizePkt = 7 + dataNumber*21;
+<a name="l00173"></a>00173         <span class="keywordflow">break</span>;
+<a name="l00174"></a>00174 
+<a name="l00175"></a>00175         <span class="comment">// Команда чтения ID обновлённых параметров</span>
+<a name="l00176"></a>00176       <span class="keywordflow">case</span> <a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a6364507d1c5d8d3a5c4a2cb6ac148065">UpdateParamsCommand</a>:
+<a name="l00177"></a>00177         <span class="keywordflow">if</span> (!<a class="code" href="class_novobus_slave.html#acc4654f4c75f79274bbd821fb6857792">idsCount_</a>) {
+<a name="l00178"></a>00178           <span class="keywordflow">if</span> (osMessageNumber(<a class="code" href="class_novobus_slave.html#af324e60a80ad8532d49a154b8e78f453" title="Очередь на запись данных">messageParams_</a>)) {
+<a name="l00179"></a>00179             <span class="keywordflow">while</span> (1) {
+<a name="l00180"></a>00180               <span class="keywordtype">id</span>.uint16_t[0] = <a class="code" href="class_novobus_slave.html#a53ac3b87cf6ecb235a4a81e424e491fd" title="Метод получения ID параметра из очереди">getMessageParams</a>();
+<a name="l00181"></a>00181               <span class="keywordflow">if</span> (<span class="keywordtype">id</span>.uint16_t[0]) {
+<a name="l00182"></a>00182                 <a class="code" href="class_novobus_slave.html#a8f1dc77702c2f0c19cd2c13e09420576">idsBuffer_</a>[<a class="code" href="class_novobus_slave.html#acc4654f4c75f79274bbd821fb6857792">idsCount_</a>++] = <span class="keywordtype">id</span>.uint16_t[0];
+<a name="l00183"></a>00183                 <span class="keywordflow">if</span> (<a class="code" href="class_novobus_slave.html#acc4654f4c75f79274bbd821fb6857792">idsCount_</a> &gt;= <a class="code" href="novobus__slave_8h.html#adf1e997bb3d555e280ebfd78a69a9f02" title="Максимальное количество ID во временом буффере">MAX_IDS_BUFFER</a>)
+<a name="l00184"></a>00184                   <span class="keywordflow">break</span>;
+<a name="l00185"></a>00185               }
+<a name="l00186"></a>00186               <span class="keywordflow">else</span> {
+<a name="l00187"></a>00187                 <span class="keywordflow">break</span>;
+<a name="l00188"></a>00188               }
+<a name="l00189"></a>00189             }
+<a name="l00190"></a>00190           }
+<a name="l00191"></a>00191         }
+<a name="l00192"></a>00192 
+<a name="l00193"></a>00193         <span class="keywordflow">if</span> (<a class="code" href="class_novobus_slave.html#acc4654f4c75f79274bbd821fb6857792">idsCount_</a>) {
+<a name="l00194"></a>00194           <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_novobus_slave.html#acc4654f4c75f79274bbd821fb6857792">idsCount_</a>; ++i) {
+<a name="l00195"></a>00195             <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[5 + i*2] = <a class="code" href="class_novobus_slave.html#a8f1dc77702c2f0c19cd2c13e09420576">idsBuffer_</a>[i] &gt;&gt; 8;
+<a name="l00196"></a>00196             <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[6 + i*2] = <a class="code" href="class_novobus_slave.html#a8f1dc77702c2f0c19cd2c13e09420576">idsBuffer_</a>[i];
+<a name="l00197"></a>00197           }
+<a name="l00198"></a>00198         }
+<a name="l00199"></a>00199 
+<a name="l00200"></a>00200         <a class="code" href="class_novobus_slave.html#a8ea677d674c823a47a57ef66ed85ee5f" title="Метод проверки очередей и заполнения необходимых полей заголовка">checkMessage</a>();
+<a name="l00201"></a>00201 
+<a name="l00202"></a>00202         sizePkt = 7 + <a class="code" href="class_novobus_slave.html#acc4654f4c75f79274bbd821fb6857792">idsCount_</a>*2;
+<a name="l00203"></a>00203         <span class="keywordflow">break</span>;
+<a name="l00204"></a>00204 
+<a name="l00205"></a>00205         <span class="comment">// Команда чтения параметров</span>
+<a name="l00206"></a>00206       <span class="keywordflow">case</span> <a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a0a258f4be550a93bfe890efc73eb28d6">ReadParamsCommand</a>:
+<a name="l00207"></a>00207         <span class="comment">// После получения мастером списка ID параметров - обнуляем счётчик</span>
+<a name="l00208"></a>00208         <a class="code" href="class_novobus_slave.html#acc4654f4c75f79274bbd821fb6857792">idsCount_</a> = 0;
+<a name="l00209"></a>00209 
+<a name="l00210"></a>00210         <span class="comment">// Количество параметров = (размер пакета - заголовок - crc) /</span>
+<a name="l00211"></a>00211         <span class="comment">// (размер id)</span>
+<a name="l00212"></a>00212         dataNumber = (sizePkt - 4)/2;
+<a name="l00213"></a>00213         <span class="comment">// Цикл по количеству считываемых параметров</span>
+<a name="l00214"></a>00214         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; dataNumber; i++) {
+<a name="l00215"></a>00215           <span class="comment">// Получаем ID параметра</span>
+<a name="l00216"></a>00216           <span class="keywordtype">id</span>.uint16_t[0] = (<a class="code" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">rxBuffer_</a>[2 + i*2] &lt;&lt; 8) + <a class="code" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">rxBuffer_</a>[3 + i*2];
+<a name="l00217"></a>00217           <span class="comment">// Получить значение параметра</span>
+<a name="l00218"></a>00218           <span class="keywordflow">if</span> (<a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#a09b6758a8a0f99983cc0eb752c58333f" title="Метод получения типа физической величины по ID с определением необходимого массива">getPhysic</a>(<span class="keywordtype">id</span>.uint16_t[0]) == <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dadb6d48ef06b1368048209651749750e2" title="Дата и время">PHYSIC_DATE_TIME</a>)
+<a name="l00219"></a>00219             value.<a class="code" href="unionun_type_data.html#ac43a791eb045f045e9dca262afc3ce98">uint32_t</a> = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#a7543650520b1f0ce2a5b9cdcf3209511" title="Метод чтения параметра типа uint32_t по ID с определением необходимого массива">getU32</a>(<span class="keywordtype">id</span>.uint16_t[0]);
+<a name="l00220"></a>00220           <span class="keywordflow">else</span>
+<a name="l00221"></a>00221             value.<a class="code" href="unionun_type_data.html#ae39d6de2b81455b244e70cab61ab0cf9">float_t</a> = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<span class="keywordtype">id</span>.uint16_t[0]);
+<a name="l00222"></a>00222           <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[5 + i*6]  = <span class="keywordtype">id</span>.char_t[1];
+<a name="l00223"></a>00223           <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[6 + i*6]  = <span class="keywordtype">id</span>.char_t[0];
+<a name="l00224"></a>00224           <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[7 + i*6]  = value.<a class="code" href="unionun_type_data.html#abc7c38b828708072b1b844013fc4f575">char_t</a>[3];
+<a name="l00225"></a>00225           <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[8 + i*6]  = value.<a class="code" href="unionun_type_data.html#abc7c38b828708072b1b844013fc4f575">char_t</a>[2];
+<a name="l00226"></a>00226           <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[9 + i*6]  = value.<a class="code" href="unionun_type_data.html#abc7c38b828708072b1b844013fc4f575">char_t</a>[1];
+<a name="l00227"></a>00227           <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[10 + i*6] = value.<a class="code" href="unionun_type_data.html#abc7c38b828708072b1b844013fc4f575">char_t</a>[0];
+<a name="l00228"></a>00228         }
+<a name="l00229"></a>00229 
+<a name="l00230"></a>00230         <a class="code" href="class_novobus_slave.html#a8ea677d674c823a47a57ef66ed85ee5f" title="Метод проверки очередей и заполнения необходимых полей заголовка">checkMessage</a>();
+<a name="l00231"></a>00231 
+<a name="l00232"></a>00232         sizePkt = 7 + dataNumber*6;
+<a name="l00233"></a>00233         <span class="keywordflow">break</span>;
+<a name="l00234"></a>00234 
+<a name="l00235"></a>00235         <span class="comment">// Команда записи параметров</span>
+<a name="l00236"></a>00236       <span class="keywordflow">case</span> <a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4acc088186dde393d32c21a360b1a67a48">WriteParamsCommand</a>:
+<a name="l00237"></a>00237         <span class="comment">// Количество параметров = (размер пакета - заголовок - crc) /</span>
+<a name="l00238"></a>00238         <span class="comment">// (размер id и значения параметра)</span>
+<a name="l00239"></a>00239         dataNumber = (sizePkt - 4)/6;
+<a name="l00240"></a>00240         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; dataNumber; i++) {
+<a name="l00241"></a>00241           <span class="comment">// Получаем ID параметра</span>
+<a name="l00242"></a>00242           <span class="keywordtype">id</span>.uint16_t[0] = (<a class="code" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">rxBuffer_</a>[2 + i*6] &lt;&lt; 8) + <a class="code" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">rxBuffer_</a>[3 + i*6];
+<a name="l00243"></a>00243           <span class="comment">// Получаем значение параметра</span>
+<a name="l00244"></a>00244           value.<a class="code" href="unionun_type_data.html#abc7c38b828708072b1b844013fc4f575">char_t</a>[3] = <a class="code" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">rxBuffer_</a>[4 + i*6];
+<a name="l00245"></a>00245           value.<a class="code" href="unionun_type_data.html#abc7c38b828708072b1b844013fc4f575">char_t</a>[2] = <a class="code" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">rxBuffer_</a>[5 + i*6];
+<a name="l00246"></a>00246           value.<a class="code" href="unionun_type_data.html#abc7c38b828708072b1b844013fc4f575">char_t</a>[1] = <a class="code" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">rxBuffer_</a>[6 + i*6];
+<a name="l00247"></a>00247           value.<a class="code" href="unionun_type_data.html#abc7c38b828708072b1b844013fc4f575">char_t</a>[0] = <a class="code" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">rxBuffer_</a>[7 + i*6];
+<a name="l00248"></a>00248           <span class="comment">// Вызываем функцию записи значения параметра</span>
+<a name="l00249"></a>00249           <span class="keywordflow">if</span> (<a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#a09b6758a8a0f99983cc0eb752c58333f" title="Метод получения типа физической величины по ID с определением необходимого массива">getPhysic</a>(<span class="keywordtype">id</span>.uint16_t[0]) == <a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dadb6d48ef06b1368048209651749750e2" title="Дата и время">PHYSIC_DATE_TIME</a>)
+<a name="l00250"></a>00250             <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#aeb8e4af971718a7e37bb3d72d159d821" title="Метод записи параметра по ID с определением необходимого массива">set</a>(<span class="keywordtype">id</span>.uint16_t[0], value.<a class="code" href="unionun_type_data.html#ac43a791eb045f045e9dca262afc3ce98">uint32_t</a>);
+<a name="l00251"></a>00251           <span class="keywordflow">else</span>
+<a name="l00252"></a>00252             <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#aeb8e4af971718a7e37bb3d72d159d821" title="Метод записи параметра по ID с определением необходимого массива">set</a>(<span class="keywordtype">id</span>.uint16_t[0], value.<a class="code" href="unionun_type_data.html#ae39d6de2b81455b244e70cab61ab0cf9">float_t</a>);
+<a name="l00253"></a>00253         }
+<a name="l00254"></a>00254 
+<a name="l00255"></a>00255         <a class="code" href="class_novobus_slave.html#a8ea677d674c823a47a57ef66ed85ee5f" title="Метод проверки очередей и заполнения необходимых полей заголовка">checkMessage</a>();
+<a name="l00256"></a>00256 
+<a name="l00257"></a>00257         sizePkt = 7;
+<a name="l00258"></a>00258         <span class="keywordflow">break</span>;
+<a name="l00259"></a>00259 
+<a name="l00260"></a>00260       <span class="keywordflow">default</span>:
+<a name="l00261"></a>00261         <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[2] = <a class="code" href="class_novobus_slave.html#afe608093a88304d5a57d5d4e86382e33af0e5fe7a2c6e2de0b83bb5804becf689">InvalidCmdError</a>;
+<a name="l00262"></a>00262         <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[3] = <a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a3f8363d67f3a99756bb63e99b096f7bd">NoneCommand</a>;
+<a name="l00263"></a>00263         <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[4] = 0;
+<a name="l00264"></a>00264         sizePkt = 7;
+<a name="l00265"></a>00265         <span class="keywordflow">break</span>;
+<a name="l00266"></a>00266     }
+<a name="l00267"></a>00267   }
+<a name="l00268"></a>00268   <span class="keywordflow">else</span> {
+<a name="l00269"></a>00269     <span class="keywordflow">if</span> (rxCrc == calcCrc)
+<a name="l00270"></a>00270       <a class="code" href="host_8cpp.html#ae700f858181a4b0f44df4b4f4930ac34">statHost</a>.<a class="code" href="struct_stat_host_def.html#a98dc69340de36ae5ad0030a8dff3dd70">crcError</a>++;
+<a name="l00271"></a>00271     <span class="keywordflow">else</span>
+<a name="l00272"></a>00272       <a class="code" href="host_8cpp.html#ae700f858181a4b0f44df4b4f4930ac34">statHost</a>.<a class="code" href="struct_stat_host_def.html#a8867a1c8664427c7c58dc9266bed51cc">sizeError</a>++;
+<a name="l00273"></a>00273 
+<a name="l00274"></a>00274     <span class="comment">// Ошибка CRC</span>
+<a name="l00275"></a>00275     <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[2] = <a class="code" href="class_novobus_slave.html#afe608093a88304d5a57d5d4e86382e33afd38329486c75e140ddc9a719765df86">CrcError</a>;
+<a name="l00276"></a>00276     <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[3] = <a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a3f8363d67f3a99756bb63e99b096f7bd">NoneCommand</a>;
+<a name="l00277"></a>00277     <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[4] = 0;
+<a name="l00278"></a>00278     sizePkt = 7;
+<a name="l00279"></a>00279   }
+<a name="l00280"></a>00280 
+<a name="l00281"></a>00281   <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[1] = sizePkt;
+<a name="l00282"></a>00282   <span class="comment">// Вычисляем и добавляем контрольную сумму</span>
+<a name="l00283"></a>00283   calcCrc = <a class="code" href="common_8cpp.html#a3708d95f4ea55e23f3fab4070f10a391">crc16_ibm</a>(<a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>, <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[1] - 2);
+<a name="l00284"></a>00284   <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[sizePkt-2] = calcCrc &gt;&gt; 8;
+<a name="l00285"></a>00285   <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[sizePkt-1] = calcCrc;
+<a name="l00286"></a>00286 }
+<a name="l00287"></a>00287 
+<a name="l00288"></a><a class="code" href="class_novobus_slave.html#a8ea677d674c823a47a57ef66ed85ee5f">00288</a> <span class="keywordtype">void</span> <a class="code" href="class_novobus_slave.html#a8ea677d674c823a47a57ef66ed85ee5f" title="Метод проверки очередей и заполнения необходимых полей заголовка">NovobusSlave::checkMessage</a>()
+<a name="l00289"></a>00289 {
+<a name="l00290"></a>00290   <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[3] = <a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a3f8363d67f3a99756bb63e99b096f7bd">NoneCommand</a>;
+<a name="l00291"></a>00291 
+<a name="l00292"></a>00292   <span class="comment">// Проверка очереди событий</span>
+<a name="l00293"></a>00293   uint8_t dataNumber = osMessageNumber(<a class="code" href="class_novobus_slave.html#a6e62ccdfe21aa68150bb77e64175a747" title="Очередь на посылку сообытий">messageEvents_</a>);
+<a name="l00294"></a>00294   <span class="keywordflow">if</span> (dataNumber) {
+<a name="l00295"></a>00295     <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[3] = <a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a930f9ff0785b5942ece3207c2396e8f2">UpdateEventsCommand</a>;
+<a name="l00296"></a>00296   }
+<a name="l00297"></a>00297   <span class="comment">// Проверка очереди параметров</span>
+<a name="l00298"></a>00298   <span class="keywordflow">else</span> {
+<a name="l00299"></a>00299     dataNumber = osMessageNumber(<a class="code" href="class_novobus_slave.html#af324e60a80ad8532d49a154b8e78f453" title="Очередь на запись данных">messageParams_</a>);
+<a name="l00300"></a>00300     <span class="keywordflow">if</span> (dataNumber)
+<a name="l00301"></a>00301       <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[3] = <a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a6364507d1c5d8d3a5c4a2cb6ac148065">UpdateParamsCommand</a>;
+<a name="l00302"></a>00302   }
+<a name="l00303"></a>00303   <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[4] = dataNumber;
+<a name="l00304"></a>00304 }
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

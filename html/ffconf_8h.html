@@ -1,0 +1,536 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Файл src/board/stm32f4/conf/ffconf.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Макросы</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл src/board/stm32f4/conf/ffconf.h</div>  </div>
+</div>
+<div class="contents">
+<div class="textblock"><code>#include &quot;stm32f4xx_hal.h&quot;</code><br/>
+<code>#include &quot;cmsis_os.h&quot;</code><br/>
+<code>#include &quot;usbh_core.h&quot;</code><br/>
+<code>#include &quot;usbh_msc.h&quot;</code><br/>
+<code>#include &quot;<a class="el" href="fatfs__handles_8h_source.html">fatfs_handles.h</a>&quot;</code><br/>
+</div>
+<p><a href="ffconf_8h_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Макросы</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#a45082af332369ed49492446a2d4d4c5a">_FFCONF</a>&#160;&#160;&#160;80960</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#ae203d750d3b4134002991c7ef22eb964">HOST_HANDLE</a>&#160;&#160;&#160;_HUSBH</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#aa21b30e70610594d3af3a28832b584f6">_FS_TINY</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#afb8d35370cfe0c23832ac2d82e854ec6">_FS_READONLY</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#abefed32e4f049538ff7d7101cd8e3643">_FS_MINIMIZE</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#aaab0313f867bb008b64236239f5c2660">_USE_STRFUNC</a>&#160;&#160;&#160;2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#a62cdce547af40f0c1599698ee151bbd7">_USE_MKFS</a>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#a85f4bdb33729ebdaaf9edeec948ac0e7">_USE_FASTSEEK</a>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#a281a4fc4668e40fc896fc865f52f9421">_USE_LABEL</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#ae49b948c9a92ff7082b88bd36f63d988">_USE_FORWARD</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#aaf9b5cee569d93f1ebe43ea70916569f">_CODE_PAGE</a>&#160;&#160;&#160;1252</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#ae471cce284bf1888f9e991f5a811fc11">_USE_LFN</a>&#160;&#160;&#160;3</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#a14e73a5c703a586c614b3e40b849f82c">_MAX_LFN</a>&#160;&#160;&#160;255</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#a8dd7e7f166bb146970b394d53cf01d80">_LFN_UNICODE</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#a36a53af63e05351562e34f082eec3f33">_STRF_ENCODE</a>&#160;&#160;&#160;3</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#a52faf11025401372f71e9d81905b7af4">_FS_RPATH</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#a366da9a40c8ceb3103a6b72ca02b9969">_VOLUMES</a>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#adc02609ba893fe8706a2f8af0e3a3bb5">_MULTI_PARTITION</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#ac271b697378912f17132cb9c7d0de024">_MAX_SS</a>&#160;&#160;&#160;512</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#a0e697dc4206d98eac355ae878dcc286e">_USE_ERASE</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#aaa0caa2085332d2febf0e392559ad138">_FS_NOFSINFO</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#a943a47fa5ed8073725b45e49e5634dea">_WORD_ACCESS</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#a4e07d7fcae4241b73eb5b70fab5f676d">_FS_REENTRANT</a>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#a526e3cac667f53cc9a48507873348e60">_FS_TIMEOUT</a>&#160;&#160;&#160;1000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#a9a3f0670343e51652dd12b18fa90a9eb">_SYNC_t</a>&#160;&#160;&#160;osSemaphoreId</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ffconf_8h.html#a01410fcb45c2d2d2c5692c56d4f0a481">_FS_LOCK</a>&#160;&#160;&#160;2</td></tr>
+</table>
+<hr/><h2>Макросы</h2>
+<a class="anchor" id="aaf9b5cee569d93f1ebe43ea70916569f"></a><!-- doxytag: member="ffconf.h::_CODE_PAGE" ref="aaf9b5cee569d93f1ebe43ea70916569f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _CODE_PAGE&#160;&#160;&#160;1252</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00063">63</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a45082af332369ed49492446a2d4d4c5a"></a><!-- doxytag: member="ffconf.h::_FFCONF" ref="a45082af332369ed49492446a2d4d4c5a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _FFCONF&#160;&#160;&#160;80960</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00008">8</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a01410fcb45c2d2d2c5692c56d4f0a481"></a><!-- doxytag: member="ffconf.h::_FS_LOCK" ref="a01410fcb45c2d2d2c5692c56d4f0a481" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _FS_LOCK&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00197">197</a></p>
+
+</div>
+</div>
+<a class="anchor" id="abefed32e4f049538ff7d7101cd8e3643"></a><!-- doxytag: member="ffconf.h::_FS_MINIMIZE" ref="abefed32e4f049538ff7d7101cd8e3643" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _FS_MINIMIZE&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00035">35</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aaa0caa2085332d2febf0e392559ad138"></a><!-- doxytag: member="ffconf.h::_FS_NOFSINFO" ref="aaa0caa2085332d2febf0e392559ad138" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _FS_NOFSINFO&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00155">155</a></p>
+
+</div>
+</div>
+<a class="anchor" id="afb8d35370cfe0c23832ac2d82e854ec6"></a><!-- doxytag: member="ffconf.h::_FS_READONLY" ref="afb8d35370cfe0c23832ac2d82e854ec6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _FS_READONLY&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00030">30</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a4e07d7fcae4241b73eb5b70fab5f676d"></a><!-- doxytag: member="ffconf.h::_FS_REENTRANT" ref="a4e07d7fcae4241b73eb5b70fab5f676d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _FS_REENTRANT&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00185">185</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a52faf11025401372f71e9d81905b7af4"></a><!-- doxytag: member="ffconf.h::_FS_RPATH" ref="a52faf11025401372f71e9d81905b7af4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _FS_RPATH&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00122">122</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a526e3cac667f53cc9a48507873348e60"></a><!-- doxytag: member="ffconf.h::_FS_TIMEOUT" ref="a526e3cac667f53cc9a48507873348e60" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _FS_TIMEOUT&#160;&#160;&#160;1000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00186">186</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa21b30e70610594d3af3a28832b584f6"></a><!-- doxytag: member="ffconf.h::_FS_TINY" ref="aa21b30e70610594d3af3a28832b584f6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _FS_TINY&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00025">25</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a8dd7e7f166bb146970b394d53cf01d80"></a><!-- doxytag: member="ffconf.h::_LFN_UNICODE" ref="a8dd7e7f166bb146970b394d53cf01d80" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _LFN_UNICODE&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00111">111</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a14e73a5c703a586c614b3e40b849f82c"></a><!-- doxytag: member="ffconf.h::_MAX_LFN" ref="a14e73a5c703a586c614b3e40b849f82c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _MAX_LFN&#160;&#160;&#160;255</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00096">96</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ac271b697378912f17132cb9c7d0de024"></a><!-- doxytag: member="ffconf.h::_MAX_SS" ref="ac271b697378912f17132cb9c7d0de024" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _MAX_SS&#160;&#160;&#160;512</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00143">143</a></p>
+
+</div>
+</div>
+<a class="anchor" id="adc02609ba893fe8706a2f8af0e3a3bb5"></a><!-- doxytag: member="ffconf.h::_MULTI_PARTITION" ref="adc02609ba893fe8706a2f8af0e3a3bb5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _MULTI_PARTITION&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00138">138</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a36a53af63e05351562e34f082eec3f33"></a><!-- doxytag: member="ffconf.h::_STRF_ENCODE" ref="a36a53af63e05351562e34f082eec3f33" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _STRF_ENCODE&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00115">115</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a9a3f0670343e51652dd12b18fa90a9eb"></a><!-- doxytag: member="ffconf.h::_SYNC_t" ref="a9a3f0670343e51652dd12b18fa90a9eb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _SYNC_t&#160;&#160;&#160;osSemaphoreId</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00187">187</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a0e697dc4206d98eac355ae878dcc286e"></a><!-- doxytag: member="ffconf.h::_USE_ERASE" ref="a0e697dc4206d98eac355ae878dcc286e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _USE_ERASE&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00151">151</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a85f4bdb33729ebdaaf9edeec948ac0e7"></a><!-- doxytag: member="ffconf.h::_USE_FASTSEEK" ref="a85f4bdb33729ebdaaf9edeec948ac0e7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _USE_FASTSEEK&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00050">50</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae49b948c9a92ff7082b88bd36f63d988"></a><!-- doxytag: member="ffconf.h::_USE_FORWARD" ref="ae49b948c9a92ff7082b88bd36f63d988" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _USE_FORWARD&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00056">56</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a281a4fc4668e40fc896fc865f52f9421"></a><!-- doxytag: member="ffconf.h::_USE_LABEL" ref="a281a4fc4668e40fc896fc865f52f9421" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _USE_LABEL&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00053">53</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae471cce284bf1888f9e991f5a811fc11"></a><!-- doxytag: member="ffconf.h::_USE_LFN" ref="ae471cce284bf1888f9e991f5a811fc11" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _USE_LFN&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00095">95</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a62cdce547af40f0c1599698ee151bbd7"></a><!-- doxytag: member="ffconf.h::_USE_MKFS" ref="a62cdce547af40f0c1599698ee151bbd7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _USE_MKFS&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00047">47</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aaab0313f867bb008b64236239f5c2660"></a><!-- doxytag: member="ffconf.h::_USE_STRFUNC" ref="aaab0313f867bb008b64236239f5c2660" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _USE_STRFUNC&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00044">44</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a366da9a40c8ceb3103a6b72ca02b9969"></a><!-- doxytag: member="ffconf.h::_VOLUMES" ref="a366da9a40c8ceb3103a6b72ca02b9969" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _VOLUMES&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00135">135</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a943a47fa5ed8073725b45e49e5634dea"></a><!-- doxytag: member="ffconf.h::_WORD_ACCESS" ref="a943a47fa5ed8073725b45e49e5634dea" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _WORD_ACCESS&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00168">168</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae203d750d3b4134002991c7ef22eb964"></a><!-- doxytag: member="ffconf.h::HOST_HANDLE" ref="ae203d750d3b4134002991c7ef22eb964" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HOST_HANDLE&#160;&#160;&#160;_HUSBH</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="ffconf_8h_source.html">ffconf.h</a> строка <a class="el" href="ffconf_8h_source.html#l00019">19</a></p>
+
+</div>
+</div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

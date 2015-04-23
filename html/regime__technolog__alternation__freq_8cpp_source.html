@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/regime/technolog/regime_technolog_alternation_freq.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/regime/technolog/regime_technolog_alternation_freq.cpp</div>  </div>
+</div>
+<div class="contents">
+<a href="regime__technolog__alternation__freq_8cpp.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="regime__technolog__alternation__freq_8h.html">regime_technolog_alternation_freq.h</a>&quot;</span>
+<a name="l00002"></a>00002 
+<a name="l00003"></a><a class="code" href="class_regime_technolog_alternation_freq.html#a56de2315156dcf021081ac3903cc30de">00003</a> <a class="code" href="class_regime_technolog_alternation_freq.html#a56de2315156dcf021081ac3903cc30de">RegimeTechnologAlternationFreq::RegimeTechnologAlternationFreq</a>()
+<a name="l00004"></a>00004 {
+<a name="l00005"></a>00005 
+<a name="l00006"></a>00006 }
+<a name="l00007"></a>00007 
+<a name="l00008"></a><a class="code" href="class_regime_technolog_alternation_freq.html#a9585135521e51d8de43862de866b9c4b">00008</a> <a class="code" href="class_regime_technolog_alternation_freq.html#a9585135521e51d8de43862de866b9c4b">RegimeTechnologAlternationFreq::~RegimeTechnologAlternationFreq</a>()
+<a name="l00009"></a>00009 {
+<a name="l00010"></a>00010 
+<a name="l00011"></a>00011 }
+<a name="l00012"></a>00012 
+<a name="l00013"></a><a class="code" href="class_regime_technolog_alternation_freq.html#ae186e9318e8b6b24942f97c1ddcbb3a6">00013</a> <span class="keywordtype">void</span> <a class="code" href="class_regime_technolog_alternation_freq.html#ae186e9318e8b6b24942f97c1ddcbb3a6" title="Метод обработки режима">RegimeTechnologAlternationFreq::processing</a>()
+<a name="l00014"></a>00014 {
+<a name="l00015"></a>00015   <span class="comment">// Получение уставок режима</span>
+<a name="l00016"></a>00016   <a class="code" href="class_regime.html#af3c209a68d065d51839d802182d1c814" title="Действие режима">action_</a> = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfae055a7b4825c151d37fb2a8c59665be4" title="Режим чередования частот">CCS_RGM_ALTERNATION_FREQ_MODE</a>);
+<a name="l00017"></a>00017   <a class="code" href="class_regime_technolog_alternation_freq.html#a2a6a36b65e755c7e9e8d99158f16086b" title="Первая рабочая частота">firstFreq_</a> = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaca0d802bbf70f9dbccec9bfa5fdbf8d8" title="Режим чередования частот частота 1.">CCS_RGM_ALTERNATION_FREQ_FREQ_1</a>);
+<a name="l00018"></a>00018   <a class="code" href="class_regime_technolog_alternation_freq.html#a48b72852e95f4c133bf8430c91e26919" title="Вторая рабочая частота">secondFreq_</a> = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa9541651eccb0faa0da2e7db6b890c5af" title="Режим чередования частот частота 2.">CCS_RGM_ALTERNATION_FREQ_FREQ_2</a>);
+<a name="l00019"></a>00019   <a class="code" href="class_regime_technolog_alternation_freq.html#a9fb826c52c917213fd040bb991cc1e2d" title="Время работы на первой частоте">timeFirstFreq_</a> = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa80cd0b4cec252cad6055a03eaa6debfc" title="Режим чередования частот время работы на частоте 1.">CCS_RGM_ALTERNATION_FREQ_TIMER_1</a>);
+<a name="l00020"></a>00020   <a class="code" href="class_regime_technolog_alternation_freq.html#a197f65717ad069dee137cb8092b6ddc1" title="Время работы на второй частоте">timeSecondFreq_</a> = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa034df00e2cd1f39dd92221f610810871" title="Режим чередования частот время работы на частоте 2.">CCS_RGM_ALTERNATION_FREQ_TIMER_2</a>);
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022   <span class="comment">// Получение текущих параметров режима</span>
+<a name="l00023"></a>00023   <a class="code" href="class_regime.html#a6f7e192aa69230d89925ab287af5a929" title="Состояние автомата">state_</a> = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfacdd2e24e2955aa307e13ea0492592b50">CCS_RGM_ALTERNATION_FREQ_STATE</a>);
+<a name="l00024"></a>00024   <a class="code" href="class_regime_technolog_alternation_freq.html#a865d6f9eea3a31c787030ef270307b5e">beginTime_</a> = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#a7543650520b1f0ce2a5b9cdcf3209511" title="Метод чтения параметра типа uint32_t по ID с определением необходимого массива">getU32</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfac76ed1c0ec5ee012540e2dc98411dd2b">CCS_RGM_ALTERNATION_FREQ_TIMER_1_END</a>);
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026   <span class="keywordflow">if</span> (<a class="code" href="class_regime.html#af3c209a68d065d51839d802182d1c814" title="Действие режима">action_</a> == <a class="code" href="class_regime.html#a09c01f9e6c25f501040ffd37843c4e3dad02c506b6c1db9186b6d1bd38b2bade4" title="Режим отключен">OffAction</a>) {
+<a name="l00027"></a>00027     <a class="code" href="class_regime.html#a6f7e192aa69230d89925ab287af5a929" title="Состояние автомата">state_</a> = <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cca635417b3935391077dab3ba16c3da407">IdleState</a>;
+<a name="l00028"></a>00028   }
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030   <span class="keywordflow">switch</span> (<a class="code" href="class_regime.html#a6f7e192aa69230d89925ab287af5a929" title="Состояние автомата">state_</a>) {
+<a name="l00031"></a>00031   <span class="keywordflow">case</span> <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cca635417b3935391077dab3ba16c3da407">IdleState</a>:
+<a name="l00032"></a>00032     <span class="keywordflow">if</span> (<a class="code" href="class_regime.html#af3c209a68d065d51839d802182d1c814" title="Действие режима">action_</a> != <a class="code" href="class_regime.html#a09c01f9e6c25f501040ffd37843c4e3dad02c506b6c1db9186b6d1bd38b2bade4" title="Режим отключен">OffAction</a>) {                       <span class="comment">// Режим - включен</span>
+<a name="l00033"></a>00033       <span class="keywordflow">if</span> (<a class="code" href="user__main_8cpp.html#ab926427831a5d518f567ee30b2f08804">ksu</a>.<a class="code" href="class_ccs.html#a963252ab38bf6a9001f5518ca095607d" title="Проверка находится ли станция в работе состояние работа, это все состояния кроме состояний &quot;Стоп&quot; и &quot;...">isWorkMotor</a>() &amp;&amp; <a class="code" href="user__main_8cpp.html#ab926427831a5d518f567ee30b2f08804">ksu</a>.<a class="code" href="class_ccs.html#a19ca1d9fa3f72a014f17372e1428a607" title="Проверка что КСУ в режиме АUTO.">isAutoMode</a>()) {    <span class="comment">// Двигатель - работа; Режим - авто;</span>
+<a name="l00034"></a>00034         <a class="code" href="user__main_8cpp.html#a4e22fcc92c38b9ccfa461659618478db">vsd</a>-&gt;<a class="code" href="class_vsd.html#af157d0d13b00b703237985147b114a87" title="Метод задания частоты">setFrequency</a>(<a class="code" href="class_regime_technolog_alternation_freq.html#a2a6a36b65e755c7e9e8d99158f16086b" title="Первая рабочая частота">firstFreq_</a>);                <span class="comment">// Устанавливаем первую частоту</span>
+<a name="l00035"></a>00035         <a class="code" href="class_regime_technolog_alternation_freq.html#a865d6f9eea3a31c787030ef270307b5e">beginTime_</a> = <a class="code" href="user__main_8cpp.html#ab926427831a5d518f567ee30b2f08804">ksu</a>.<a class="code" href="class_ccs.html#a93744289036200862d44b61313a1aa54" title="Функция получения текущего времени в сек от 00:00:00 01.01.1970 года">getTime</a>();                   <span class="comment">// Запоминаем время когда перешли на частоту</span>
+<a name="l00036"></a>00036         <a class="code" href="class_regime.html#a6f7e192aa69230d89925ab287af5a929" title="Состояние автомата">state_</a> = <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cca5c231d99b05a2a4f07b0ea09399d9331">RunningState</a>;                        <span class="comment">// Переходим на работу на первой частоте</span>
+<a name="l00037"></a>00037       }
+<a name="l00038"></a>00038     }
+<a name="l00039"></a>00039     <span class="keywordflow">break</span>;
+<a name="l00040"></a>00040   <span class="keywordflow">case</span> <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cca5c231d99b05a2a4f07b0ea09399d9331">RunningState</a>:
+<a name="l00041"></a>00041     <a class="code" href="class_regime.html#a6f7e192aa69230d89925ab287af5a929" title="Состояние автомата">state_</a> = <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335ccaa5b79526ad0898a5e7d06c0177d01c0f">WorkState</a>;                               <span class="comment">// TODO: Задержка для перехода на новую частоту</span>
+<a name="l00042"></a>00042     <span class="keywordflow">break</span>;
+<a name="l00043"></a>00043   <span class="keywordflow">case</span> <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335ccaa5b79526ad0898a5e7d06c0177d01c0f">WorkState</a>:                                     <span class="comment">// Работа на первой частоте</span>
+<a name="l00044"></a>00044     <span class="keywordflow">if</span> (<a class="code" href="user__main_8cpp.html#ab926427831a5d518f567ee30b2f08804">ksu</a>.<a class="code" href="class_ccs.html#a963252ab38bf6a9001f5518ca095607d" title="Проверка находится ли станция в работе состояние работа, это все состояния кроме состояний &quot;Стоп&quot; и &quot;...">isWorkMotor</a>() &amp;&amp; <a class="code" href="user__main_8cpp.html#ab926427831a5d518f567ee30b2f08804">ksu</a>.<a class="code" href="class_ccs.html#a19ca1d9fa3f72a014f17372e1428a607" title="Проверка что КСУ в режиме АUTO.">isAutoMode</a>()) {      <span class="comment">// Двигатель - работа; Режим - авто;</span>
+<a name="l00045"></a>00045       uint32_t <a class="code" href="adc_8cpp.html#ae73654f333e4363463ad8c594eca1905">time</a> = <a class="code" href="user__main_8cpp.html#ab926427831a5d518f567ee30b2f08804">ksu</a>.<a class="code" href="class_ccs.html#afbf19ee6b4b0b1218ae8aecc1f4f6e53" title="Функция получения прошедщего времени относительно текущего времени">getSecFromCurTime</a>(<a class="code" href="class_regime_technolog_alternation_freq.html#a865d6f9eea3a31c787030ef270307b5e">beginTime_</a>);        <span class="comment">// Вычисляем сколько времени работаем на первой частоте</span>
+<a name="l00046"></a>00046       <span class="keywordflow">if</span> ((time &gt; <a class="code" href="class_regime_technolog_alternation_freq.html#a9fb826c52c917213fd040bb991cc1e2d" title="Время работы на первой частоте">timeFirstFreq_</a>) &amp;&amp; <a class="code" href="class_regime_technolog_alternation_freq.html#a9fb826c52c917213fd040bb991cc1e2d" title="Время работы на первой частоте">timeFirstFreq_</a>) {<span class="comment">// Если время работы на первой частоте вышло</span>
+<a name="l00047"></a>00047         <a class="code" href="user__main_8cpp.html#a4e22fcc92c38b9ccfa461659618478db">vsd</a>-&gt;<a class="code" href="class_vsd.html#af157d0d13b00b703237985147b114a87" title="Метод задания частоты">setFrequency</a>(<a class="code" href="class_regime_technolog_alternation_freq.html#a48b72852e95f4c133bf8430c91e26919" title="Вторая рабочая частота">secondFreq_</a>);               <span class="comment">// Посылаем команду на изменение частоты</span>
+<a name="l00048"></a>00048         <a class="code" href="class_regime_technolog_alternation_freq.html#a865d6f9eea3a31c787030ef270307b5e">beginTime_</a> = <a class="code" href="user__main_8cpp.html#ab926427831a5d518f567ee30b2f08804">ksu</a>.<a class="code" href="class_ccs.html#a93744289036200862d44b61313a1aa54" title="Функция получения текущего времени в сек от 00:00:00 01.01.1970 года">getTime</a>();
+<a name="l00049"></a>00049         <a class="code" href="class_regime.html#a6f7e192aa69230d89925ab287af5a929" title="Состояние автомата">state_</a> = <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cca5c231d99b05a2a4f07b0ea09399d9331">RunningState</a> + 1;
+<a name="l00050"></a>00050       }
+<a name="l00051"></a>00051     }
+<a name="l00052"></a>00052     <span class="keywordflow">else</span> {
+<a name="l00053"></a>00053       <a class="code" href="class_regime.html#a6f7e192aa69230d89925ab287af5a929" title="Состояние автомата">state_</a> = <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cca635417b3935391077dab3ba16c3da407">IdleState</a>;
+<a name="l00054"></a>00054     }
+<a name="l00055"></a>00055     <span class="keywordflow">break</span>;
+<a name="l00056"></a>00056   <span class="keywordflow">case</span> <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cca5c231d99b05a2a4f07b0ea09399d9331">RunningState</a> + 1: 
+<a name="l00057"></a>00057     <a class="code" href="class_regime.html#a6f7e192aa69230d89925ab287af5a929" title="Состояние автомата">state_</a> = <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335ccaa5b79526ad0898a5e7d06c0177d01c0f">WorkState</a> + 1;                           <span class="comment">// TODO: Задержка для перехода на новую частоту</span>
+<a name="l00058"></a>00058     <span class="keywordflow">break</span>;
+<a name="l00059"></a>00059   <span class="keywordflow">case</span> <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335ccaa5b79526ad0898a5e7d06c0177d01c0f">WorkState</a> + 1:
+<a name="l00060"></a>00060     <span class="keywordflow">if</span> (<a class="code" href="user__main_8cpp.html#ab926427831a5d518f567ee30b2f08804">ksu</a>.<a class="code" href="class_ccs.html#a963252ab38bf6a9001f5518ca095607d" title="Проверка находится ли станция в работе состояние работа, это все состояния кроме состояний &quot;Стоп&quot; и &quot;...">isWorkMotor</a>() &amp;&amp; <a class="code" href="user__main_8cpp.html#ab926427831a5d518f567ee30b2f08804">ksu</a>.<a class="code" href="class_ccs.html#a19ca1d9fa3f72a014f17372e1428a607" title="Проверка что КСУ в режиме АUTO.">isAutoMode</a>()) {      <span class="comment">// Двигатель - работа; Режим - авто;</span>
+<a name="l00061"></a>00061       uint32_t <a class="code" href="adc_8cpp.html#ae73654f333e4363463ad8c594eca1905">time</a> = <a class="code" href="user__main_8cpp.html#ab926427831a5d518f567ee30b2f08804">ksu</a>.<a class="code" href="class_ccs.html#afbf19ee6b4b0b1218ae8aecc1f4f6e53" title="Функция получения прошедщего времени относительно текущего времени">getSecFromCurTime</a>(<a class="code" href="class_regime_technolog_alternation_freq.html#a865d6f9eea3a31c787030ef270307b5e">beginTime_</a>);
+<a name="l00062"></a>00062       <span class="keywordflow">if</span> ((time &gt; <a class="code" href="class_regime_technolog_alternation_freq.html#a197f65717ad069dee137cb8092b6ddc1" title="Время работы на второй частоте">timeSecondFreq_</a>) &amp;&amp; <a class="code" href="class_regime_technolog_alternation_freq.html#a197f65717ad069dee137cb8092b6ddc1" title="Время работы на второй частоте">timeSecondFreq_</a>) {
+<a name="l00063"></a>00063         <a class="code" href="user__main_8cpp.html#a4e22fcc92c38b9ccfa461659618478db">vsd</a>-&gt;<a class="code" href="class_vsd.html#af157d0d13b00b703237985147b114a87" title="Метод задания частоты">setFrequency</a>(<a class="code" href="class_regime_technolog_alternation_freq.html#a2a6a36b65e755c7e9e8d99158f16086b" title="Первая рабочая частота">firstFreq_</a>);
+<a name="l00064"></a>00064         <a class="code" href="class_regime_technolog_alternation_freq.html#a865d6f9eea3a31c787030ef270307b5e">beginTime_</a> = <a class="code" href="user__main_8cpp.html#ab926427831a5d518f567ee30b2f08804">ksu</a>.<a class="code" href="class_ccs.html#a93744289036200862d44b61313a1aa54" title="Функция получения текущего времени в сек от 00:00:00 01.01.1970 года">getTime</a>();
+<a name="l00065"></a>00065         <a class="code" href="class_regime.html#a6f7e192aa69230d89925ab287af5a929" title="Состояние автомата">state_</a> = <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cca5c231d99b05a2a4f07b0ea09399d9331">RunningState</a>;
+<a name="l00066"></a>00066       }
+<a name="l00067"></a>00067     }
+<a name="l00068"></a>00068     <span class="keywordflow">else</span> {
+<a name="l00069"></a>00069       <a class="code" href="class_regime.html#a6f7e192aa69230d89925ab287af5a929" title="Состояние автомата">state_</a> = <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cca635417b3935391077dab3ba16c3da407">IdleState</a>;
+<a name="l00070"></a>00070     }
+<a name="l00071"></a>00071     <span class="keywordflow">break</span>;
+<a name="l00072"></a>00072   <span class="keywordflow">default</span>:
+<a name="l00073"></a>00073     <a class="code" href="class_regime.html#a6f7e192aa69230d89925ab287af5a929" title="Состояние автомата">state_</a> = <a class="code" href="class_regime.html#a79d5495a4e0ecc547640ed638e8335cca635417b3935391077dab3ba16c3da407">IdleState</a>;
+<a name="l00074"></a>00074     <span class="keywordflow">break</span>;
+<a name="l00075"></a>00075   }
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077   <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#aeb8e4af971718a7e37bb3d72d159d821" title="Метод записи параметра по ID с определением необходимого массива">set</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfacdd2e24e2955aa307e13ea0492592b50">CCS_RGM_ALTERNATION_FREQ_STATE</a>, <a class="code" href="class_regime.html#a6f7e192aa69230d89925ab287af5a929" title="Состояние автомата">state_</a>);
+<a name="l00078"></a>00078   <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#aeb8e4af971718a7e37bb3d72d159d821" title="Метод записи параметра по ID с определением необходимого массива">set</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfac76ed1c0ec5ee012540e2dc98411dd2b">CCS_RGM_ALTERNATION_FREQ_TIMER_1_END</a>, <a class="code" href="class_regime_technolog_alternation_freq.html#a865d6f9eea3a31c787030ef270307b5e">beginTime_</a>);
+<a name="l00079"></a>00079 }
+<a name="l00080"></a>00080 
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

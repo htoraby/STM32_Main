@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/device/vsd/vsd_novomet.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/device/vsd/vsd_novomet.h</div>  </div>
+</div>
+<div class="contents">
+<a href="vsd__novomet_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 ﻿<span class="comment">/*</span>
+<a name="l00002"></a>00002 <span class="comment"> * vsd_novomet.h</span>
+<a name="l00003"></a>00003 <span class="comment"> *</span>
+<a name="l00004"></a>00004 <span class="comment"> *  Created on: 23.06.2014</span>
+<a name="l00005"></a>00005 <span class="comment"> *      Author: trofimenko</span>
+<a name="l00006"></a>00006 <span class="comment"> */</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="preprocessor">#ifndef VSD_NOVOMET_H_</span>
+<a name="l00009"></a>00009 <span class="preprocessor"></span><span class="preprocessor">#define VSD_NOVOMET_H_</span>
+<a name="l00010"></a>00010 <span class="preprocessor"></span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include &quot;<a class="code" href="vsd_8h.html">vsd.h</a>&quot;</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &quot;<a class="code" href="device__modbus_8h.html">device_modbus.h</a>&quot;</span>
+<a name="l00013"></a>00013 
+<a name="l00018"></a><a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30">00018</a> <span class="keyword">enum</span> <a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30" title="The enInvertorControl enum Флаги регистра управления ПЧ">enInvertorControl</a>
+<a name="l00019"></a>00019 {  
+<a name="l00020"></a><a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a002e761a09ef8aca9a79f053b18b539b">00020</a>   <a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a002e761a09ef8aca9a79f053b18b539b" title="Запустить инвертор (&quot;Старт&quot;)">INV_CONTROL_START</a>           = 1,       
+<a name="l00021"></a><a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a53c90478b7418ed15037ef77108569ca">00021</a>   <a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a53c90478b7418ed15037ef77108569ca" title="Остановить инвертор (&quot;Стоп&quot;)">INV_CONTROL_STOP</a>            = 2,       
+<a name="l00022"></a><a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a52ee06e7b78e453884f87209f433eb50">00022</a>   <a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a52ee06e7b78e453884f87209f433eb50" title="Задать левое вращение">INV_CONTROL_LEFT_DIRECTION</a>  = 4,       
+<a name="l00023"></a><a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a08edf1fccc6510d3bac27e772f6cff7b">00023</a>   <a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a08edf1fccc6510d3bac27e772f6cff7b" title="Задать правое вращение">INV_CONTROL_RIGHT_DIRECTION</a> = 8,       
+<a name="l00024"></a><a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a42518dea72b293b322d20929db267cb0">00024</a>   <a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a42518dea72b293b322d20929db267cb0" title="Аварийный останов">INV_CONTROL_ALARM</a>           = 16,      
+<a name="l00025"></a><a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a44a445e43a4d353b3e908bb609554fff">00025</a>   <a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a44a445e43a4d353b3e908bb609554fff" title="Задание оптимизации по току">INV_CONTROL_CURRENT_OPT</a>     = 32,      
+<a name="l00026"></a><a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a6ebb8eff71439cc0c78f1b78036635ca">00026</a>   <a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a6ebb8eff71439cc0c78f1b78036635ca" title="задание оптимизации по мощности">INV_CONTROL_POWER_OPT</a>       = 64,      
+<a name="l00027"></a><a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30ab0845c7b1665086bebd10589221a821d">00027</a>   <a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30ab0845c7b1665086bebd10589221a821d" title="Отключить оптимизацию">INV_CONTROL_CLEAR_OPT</a>       = 128,     
+<a name="l00028"></a><a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a72b379b6df623b0d047709981f645e3d">00028</a>   <a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a72b379b6df623b0d047709981f645e3d" title="Асинхронный">INV_CONTROL_ASYN_MOTOR</a>      = 256,     
+<a name="l00029"></a><a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30af63610873dfea36f0325dbe03aa26b98">00029</a>   <a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30af63610873dfea36f0325dbe03aa26b98" title="Вентильный">INV_CONTROL_VENT_MOTOR</a>      = 512,     
+<a name="l00030"></a><a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a61bfbb9b17f68bb72a28fe101caf703c">00030</a>   <a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a61bfbb9b17f68bb72a28fe101caf703c" title="Включить режим OverPWM1.">INV_CONTROL_OVERPWM1_ON</a>     = 1024,    
+<a name="l00031"></a><a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30ac2189b80e27cd0d330035536a9021829">00031</a>   <a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30ac2189b80e27cd0d330035536a9021829" title="Включить режим OverPWM2.">INV_CONTROL_OVERPWM2_ON</a>     = 2048,    
+<a name="l00032"></a><a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a8697ee94836a75c2b6d8b9814db6caae">00032</a>   <a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a8697ee94836a75c2b6d8b9814db6caae" title="Выключить режим OverPWM.">INV_CONTROL_OVERPWM_OFF</a>     = 4096,    
+<a name="l00033"></a><a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a4a07b90710b1a4eb68dca3214ab8049a">00033</a>   <a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a4a07b90710b1a4eb68dca3214ab8049a" title="Включить предразряд шины инвертора">INV_CONTROL_DISCHARGE_ON</a>    = 8192,    
+<a name="l00034"></a><a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a6af68cabee7b71531613bc4f7b594de5">00034</a>   <a class="code" href="vsd__novomet_8h.html#a7aae4afed4a694192aa96ce1a68b9a30a6af68cabee7b71531613bc4f7b594de5" title="Выключить предразряд шины инвертора">INV_CONTROL_DISCHARGE_OFF</a>   = 16384,   
+<a name="l00035"></a>00035 };
+<a name="l00036"></a>00036 
+<a name="l00037"></a><a class="code" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827">00037</a> <span class="keyword">enum</span> <a class="code" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827">enRegulatorQueue</a>
+<a name="l00038"></a>00038 {
+<a name="l00039"></a><a class="code" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827a06c44e242e642167763998509fe28ab6">00039</a>   <a class="code" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827a06c44e242e642167763998509fe28ab6" title="Пустой">VSD_REQULATOR_QUEUE_NULL</a> = -1,         
+<a name="l00040"></a><a class="code" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827a0c07006201dcffb5933b21d4023bc6e8">00040</a>   <a class="code" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827a0c07006201dcffb5933b21d4023bc6e8" title="Тестовый">VSD_REQULATOR_QUEUE_TEST</a>,              
+<a name="l00041"></a><a class="code" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827ac2b0e553dd3b7f1e25a1fdc7cb1632a7">00041</a>   <a class="code" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827ac2b0e553dd3b7f1e25a1fdc7cb1632a7" title="U/f.">VSD_REQULATOR_QUEUE_UF</a>,                
+<a name="l00042"></a><a class="code" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827ac9c2ddd23045c2e9906cf695a4914a5a">00042</a>   <a class="code" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827ac9c2ddd23045c2e9906cf695a4914a5a" title="Расклинка">VSD_REQULATOR_QUEUE_PUSH</a>,              
+<a name="l00043"></a><a class="code" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827ab3c7a1a52a5d6b555f2139a3badbea21">00043</a>   <a class="code" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827ab3c7a1a52a5d6b555f2139a3badbea21" title="Векторный">VSD_REQULATOR_QUEUE_VECT</a>,              
+<a name="l00044"></a><a class="code" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827a352dbe1ea5a11e891a0e868bf0843560">00044</a>   <a class="code" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827a352dbe1ea5a11e891a0e868bf0843560" title="Автонастройка">VSD_REQULATOR_QUEUE_AUTO</a>,              
+<a name="l00045"></a><a class="code" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827a9542b98f88204709e3a63896ae72c9ec">00045</a>   <a class="code" href="vsd__novomet_8h.html#a2529894869576643fe91031434e77827a9542b98f88204709e3a63896ae72c9ec" title="Турбинное вращение">VSD_REQULATOR_QUEUE_PICKUP</a>             
+<a name="l00046"></a>00046 };
+<a name="l00047"></a>00047 
+<a name="l00048"></a><a class="code" href="class_vsd_novomet.html">00048</a> <span class="keyword">class </span><a class="code" href="class_vsd_novomet.html">VsdNovomet</a>: <span class="keyword">public</span> <a class="code" href="class_vsd.html" title="Базовый класс ЧРП Наследник класса Device использующий его структуру и методы хранения банка параметр...">Vsd</a>
+<a name="l00049"></a>00049 {
+<a name="l00050"></a>00050 <span class="keyword">public</span>:
+<a name="l00051"></a>00051   <a class="code" href="class_vsd_novomet.html#a8761fb9f0f80328e7c416696e4f8f707">VsdNovomet</a>();
+<a name="l00052"></a>00052   <span class="keyword">virtual</span> <a class="code" href="class_vsd_novomet.html#aeaf2b95864dedab49d563dccf9bdab06">~VsdNovomet</a>();
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054   <span class="keywordtype">void</span> <a class="code" href="class_vsd_novomet.html#ac4e7ad11b28d7f97476a257f78eb2975" title="Инициализация устройства">init</a>();
+<a name="l00055"></a>00055   <span class="keywordtype">void</span> <a class="code" href="class_vsd_novomet.html#afc697f52bc7d9b1987f02bcece9ac04f">initModbusParameters</a>();
+<a name="l00056"></a>00056   <span class="keywordtype">void</span> <a class="code" href="class_vsd_novomet.html#a03812500b0535a5ca91fcb172d7f0703" title="Инициализация массива параметров">initParameters</a>();
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058   <span class="keywordtype">void</span> <a class="code" href="class_vsd_novomet.html#a92739f47cacf9d7c61d0165e135d77fa">getNewValue</a>(uint16_t <span class="keywordtype">id</span>);
+<a name="l00059"></a>00059   uint8_t <a class="code" href="class_vsd_novomet.html#ae1f32c202932d142cb27dc9ea5feccf6" title="setNewValue">setNewValue</a>(uint16_t <span class="keywordtype">id</span>, <span class="keywordtype">float</span> value);
+<a name="l00060"></a>00060 
+<a name="l00067"></a>00067   <span class="keywordtype">void</span> <a class="code" href="class_vsd_novomet.html#a5e172413f213eb2bc786b580badd8b22" title="Метод записи параметра в устройство">writeToDevice</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">float</span> value);
+<a name="l00068"></a>00068 
+<a name="l00090"></a>00090   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#a00a153497855f19a80627f41ab31b2a6" title="Метод запуска ЧРП Новомет Для управления запусками и остановами, и для контроля состояния ПЧ использу...">start</a>();
+<a name="l00091"></a>00091 
+<a name="l00104"></a>00104   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#a8527a04c74bb3ae14a16b21fed457f99" title="Метод останова ЧРП Новомет При установке бита 1 (&quot;Стоп&quot;) в регистре управления ПЧ контроллер ПЧ устан...">stop</a>();
+<a name="l00105"></a>00105 
+<a name="l00110"></a>00110   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#a3ad9c2b390ce968ef527b4031e959c78" title="alarmstop">alarmstop</a>();
+<a name="l00111"></a>00111 
+<a name="l00112"></a>00112   <span class="keywordtype">bool</span> <a class="code" href="class_vsd_novomet.html#ae9e6625b43a4573f95730a0d374a9ae0" title="Метод проверки запуска ЧРП">checkStart</a>();
+<a name="l00113"></a>00113   <span class="keywordtype">bool</span> <a class="code" href="class_vsd_novomet.html#accd2a4a6b14bd293fae6e6f810496c21" title="Метод проверки останова ЧРП">checkStop</a>();
+<a name="l00114"></a>00114 
+<a name="l00119"></a>00119   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#afffab6b39b850398d0864815bd19611a" title="Функция включения толчкового режима">onRegimePush</a>();
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#a9fae24d88a83d9d263d9438828581318" title="Метод настройки режима подхвата">onRegimePickup</a>();
+<a name="l00122"></a>00122 
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124 
+<a name="l00129"></a>00129   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#acb96911e84e42b4ca8ec89250285531a" title="Функция выключения толчкового режима">offRegimePush</a>();
+<a name="l00130"></a>00130 
+<a name="l00135"></a>00135   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#aaf6c142f1eea66ba972db5c425b15dc4" title="onRegimeSwing">onRegimeSwing</a>();
+<a name="l00136"></a>00136 
+<a name="l00141"></a>00141   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#a8ac5661b2dc128ae8f1f7fd13cae190b" title="offRegimeSwing">offRegimeSwing</a>();
+<a name="l00142"></a>00142 
+<a name="l00147"></a>00147   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#ac39f7ee8a277bf9798b6a6f08f7c8b24" title="onRegimeJarring">onRegimeJarring</a>();
+<a name="l00148"></a>00148 
+<a name="l00153"></a>00153   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#a8098a5a7cfc89530cd5ad99ce34b6f62" title="offRegimeJarring">offRegimeJarring</a>();
+<a name="l00154"></a>00154 
+<a name="l00164"></a>00164   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#a8e7cfe6be5cbbfc5e49243a8578bf1e9" title="Метод записи основного режима работы ЧРП Основных методов 2: U/f регулирование АД и ВД код: 1 Векторн...">setMainRegimeVSD</a>();
+<a name="l00165"></a>00165 
+<a name="l00173"></a>00173   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#aa68d8917c80026e37ad2ae7e816a9b44" title="Метод задания уставки частоты двигателя При установке текущей частоты проверяется диапазон уставок ми...">setFrequency</a>(<span class="keywordtype">float</span> value);
+<a name="l00174"></a>00174 
+<a name="l00180"></a>00180   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#a24e79376ab437510678f61064402c6e2" title="Метод задания минимальной частоты">setMinFrequency</a>(<span class="keywordtype">float</span> value);
+<a name="l00181"></a>00181 
+<a name="l00187"></a>00187   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#ab6d972e63f1a277147df3dd06df64cb7" title="Метод задания максимальной частоты">setMaxFrequency</a>(<span class="keywordtype">float</span> value);
+<a name="l00188"></a>00188 
+<a name="l00194"></a>00194   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#aafd647c4654ec875ebad6df2640cbaeb" title="Метод задания типа двигателя">setMotorType</a>(<span class="keywordtype">float</span> value);
+<a name="l00195"></a>00195 
+<a name="l00199"></a>00199   <span class="keywordtype">void</span> <a class="code" href="class_vsd_novomet.html#aa3fa5e32b1dd80d83ca21013fc9e1c11" title="getMotorType">calcMotorType</a>();
+<a name="l00200"></a>00200 
+<a name="l00204"></a>00204   <span class="keywordtype">void</span> <a class="code" href="class_vsd_novomet.html#af0aad8c92f87ccfefa86fc4f6344b819" title="calcSpeedUp">calcTempSpeedUp</a>();
+<a name="l00205"></a>00205 
+<a name="l00209"></a>00209   <span class="keywordtype">void</span> <a class="code" href="class_vsd_novomet.html#a9bdd1cfbfbd3148f12523b528c958b08" title="calcTimeSpeedUp">calcTimeSpeedUp</a>();
+<a name="l00210"></a>00210 
+<a name="l00214"></a>00214   <span class="keywordtype">void</span> <a class="code" href="class_vsd_novomet.html#a33d917d939d2459e8d1ee669ea2fd6ac" title="calcMotorControl">calcMotorControl</a>();
+<a name="l00215"></a>00215 
+<a name="l00219"></a>00219   <span class="keywordtype">void</span> <a class="code" href="class_vsd_novomet.html#adec9ff4b8d11987f7de96821c23048fb" title="calcRotation">calcRotation</a>();
+<a name="l00220"></a>00220 
+<a name="l00224"></a>00224   <span class="keywordtype">void</span> <a class="code" href="class_vsd_novomet.html#ab6a3a78cc0cd3fcd6a98fa72703b83a1" title="Функция вычисления тока звена постоянного тока">calcCurrentDC</a>();
+<a name="l00225"></a>00225 
+<a name="l00230"></a>00230   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#a3733bb614e1f2b0028c33c4a098e6a8c" title="Метод задания времени набора частоты">setTempSpeedUp</a>(<span class="keywordtype">float</span> value);
+<a name="l00231"></a>00231 
+<a name="l00237"></a>00237   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#a3adb3a82ba4b61faa24b7eec40ffbc52" title="Метод задания времени снижения частоты">setTempSpeedDown</a>(<span class="keywordtype">float</span> value);
+<a name="l00238"></a>00238 
+<a name="l00244"></a>00244   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#a82e18d4429b8362cbde132bf2e1c0f73" title="Метод задания точки характеристики U/f F1.">setUfF1</a>(<span class="keywordtype">float</span> value);
+<a name="l00245"></a>00245 
+<a name="l00252"></a>00252   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#a6750e30d285ed23f7cf32decf30b1c82" title="Метод задания точки характеристики U/f F2.">setUfF2</a>(<span class="keywordtype">float</span> value);
+<a name="l00258"></a>00258   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#a8ddea3937c2d12377379f7094cce8f5c" title="Метод задания точки характеристики U/f F3.">setUfF3</a>(<span class="keywordtype">float</span> value);
+<a name="l00259"></a>00259 
+<a name="l00265"></a>00265   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#abe7765a6a18f4b228abd5a9ee7091a94" title="Метод задания точки характеристики U/f F4.">setUfF4</a>(<span class="keywordtype">float</span> value);
+<a name="l00266"></a>00266 
+<a name="l00272"></a>00272   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#a5451df1e3466165f8e0039309d2272d2" title="Метод задания точки характеристики U/f F5.">setUfF5</a>(<span class="keywordtype">float</span> value);
+<a name="l00273"></a>00273 
+<a name="l00279"></a>00279   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#a28046475d5fa1967f52bfb914e0d0d44" title="Метод задания точки характеристики U/f F6.">setUfF6</a>(<span class="keywordtype">float</span> value);
+<a name="l00280"></a>00280 
+<a name="l00286"></a>00286   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#a380f86c6148f4aafbee29bd1a0e7b83f" title="Метод задания точки характиристики U/f U1.">setUfU1</a>(<span class="keywordtype">float</span> value);
+<a name="l00287"></a>00287 
+<a name="l00293"></a>00293   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#ad404f6eb046fd1a2f794b7c7d320ac58" title="Метод задания точки характиристики U/f U2.">setUfU2</a>(<span class="keywordtype">float</span> value);
+<a name="l00294"></a>00294 
+<a name="l00300"></a>00300   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#a1758137a203030c648ecbbe5f4d210f4" title="Метод задания точки характиристики U/f U3.">setUfU3</a>(<span class="keywordtype">float</span> value);
+<a name="l00301"></a>00301 
+<a name="l00307"></a>00307   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#a01920ceec9b7a47d3a0a66700b81d1ad" title="Метод задания точки характиристики U/f U4.">setUfU4</a>(<span class="keywordtype">float</span> value);
+<a name="l00308"></a>00308 
+<a name="l00314"></a>00314   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#acbb93acbd07b05316c668ba442775759" title="Метод задания точки характиристики U/f U5.">setUfU5</a>(<span class="keywordtype">float</span> value);
+<a name="l00315"></a>00315 
+<a name="l00321"></a>00321   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#a11aae331d118f04420b1eae0fb9311eb" title="Метод задания точки характиристики U/f U6.">setUfU6</a>(<span class="keywordtype">float</span> value);
+<a name="l00322"></a>00322 
+<a name="l00329"></a>00329   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#a4216fd11cef3f4f03508bbdbdcc89d68" title="Метод задания направления вращения">setRotation</a>(<span class="keywordtype">float</span> value);
+<a name="l00330"></a>00330 
+<a name="l00336"></a>00336   <span class="keywordtype">int</span> <a class="code" href="class_vsd_novomet.html#a296d9c9dded7f67e3868a7f60dd09f91" title="Проверка на &quot;необходимость&quot; работы с параметром">checkExchangModbusParameters</a>(<span class="keywordtype">int</span> indexParam);
+<a name="l00337"></a>00337 
+<a name="l00341"></a>00341   <span class="keywordtype">void</span> <a class="code" href="class_vsd_novomet.html#a2c75b8d9da34da159e0244aff7d7d6a3" title="Функция вычисления значений,.">calcParameters</a>(uint16_t <span class="keywordtype">id</span>);
+<a name="l00342"></a>00342 
+<a name="l00343"></a>00343 <span class="keyword">private</span>:
+<a name="l00344"></a><a class="code" href="class_vsd_novomet.html#a2b7bd6978c84ba89c451dac84235462c">00344</a>   <a class="code" href="struct_modbus_parameter.html" title="Структура для хранения полей параметра из карты устройства">ModbusParameter</a> <a class="code" href="class_vsd_novomet.html#a2b7bd6978c84ba89c451dac84235462c">modbusParameters_</a>[135];
+<a name="l00345"></a><a class="code" href="class_vsd_novomet.html#a616b5e3571c75fa1652f43f64769ac74">00345</a>   <a class="code" href="class_device_modbus.html" title="Класс для устройств работающих по протоколу Modbus. Содержит функции организации цикла чтения и запис...">DeviceModbus</a> *<a class="code" href="class_vsd_novomet.html#a616b5e3571c75fa1652f43f64769ac74">dm_</a>;
+<a name="l00346"></a>00346 
+<a name="l00347"></a>00347 };
+<a name="l00348"></a>00348 
+<a name="l00349"></a>00349 <span class="preprocessor">#endif </span><span class="comment">/* VSD_NOVOMET_H_ */</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/device/vsd/vsd.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/device/vsd/vsd.h</div>  </div>
+</div>
+<div class="contents">
+<a href="vsd_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 ﻿<span class="comment">/*</span>
+<a name="l00002"></a>00002 <span class="comment"> * vsd.h</span>
+<a name="l00003"></a>00003 <span class="comment"> *</span>
+<a name="l00004"></a>00004 <span class="comment"> *  Created on: 23.06.2014</span>
+<a name="l00005"></a>00005 <span class="comment"> *      Author: trofimenko</span>
+<a name="l00006"></a>00006 <span class="comment"> */</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="preprocessor">#ifndef VSD_H_</span>
+<a name="l00009"></a>00009 <span class="preprocessor"></span><span class="preprocessor">#define VSD_H_</span>
+<a name="l00010"></a>00010 <span class="preprocessor"></span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include &quot;<a class="code" href="device_8h.html">device.h</a>&quot;</span>
+<a name="l00012"></a>00012 
+<a name="l00013"></a><a class="code" href="vsd_8h.html#a156e823985a361b26b6696a879d8d520">00013</a> <span class="preprocessor">#define VSD_CMD_NUMBER_REPEATS 10 //!&lt; Количество повторов</span>
+<a name="l00014"></a><a class="code" href="vsd_8h.html#aa3c829de1b1c3079689ebbb5504ef644">00014</a> <span class="preprocessor"></span><span class="preprocessor">#define VSD_CMD_TIMEOUT 1000      //!&lt; Время ожидания подтверждения команды</span>
+<a name="l00015"></a>00015 <span class="preprocessor"></span>
+<a name="l00022"></a><a class="code" href="class_vsd.html">00022</a> <span class="keyword">class </span><a class="code" href="class_vsd.html" title="Базовый класс ЧРП Наследник класса Device использующий его структуру и методы хранения банка параметр...">Vsd</a>: <span class="keyword">public</span> <a class="code" href="class_device.html" title="Базовый класс для всех устройств Класс содержит банк параметров устройства во внутреннем представлени...">Device</a>
+<a name="l00023"></a>00023 {
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025 <span class="keyword">public</span>:
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027   <a class="code" href="class_vsd.html#a4ccef5fd91fe688cdfef4d81c934a2f9">Vsd</a>();
+<a name="l00028"></a>00028   <span class="keyword">virtual</span> <a class="code" href="class_vsd.html#aa95fb8ae64f96e530e3eaea7c30a764d">~Vsd</a>();
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030   <span class="keywordtype">void</span> <a class="code" href="class_vsd.html#a36f8f37fa1fd291a7b6dc770488584ba" title="Инициализация массива параметров">initParameters</a>();
+<a name="l00031"></a>00031 
+<a name="l00036"></a>00036   <span class="keywordtype">float</span> <a class="code" href="class_vsd.html#aa1459f918f406d263da3d2baeddac8be" title="Метод получения текущего значения частоты">getCurrentFreq</a>();
+<a name="l00037"></a>00037 
+<a name="l00042"></a>00042   <span class="keywordtype">float</span> <a class="code" href="class_vsd.html#a6cf40f62edbbd2dde5b18cfa294583df" title="Метод получения уставки частоты">getSetpointFreq</a>();
+<a name="l00043"></a>00043 
+<a name="l00048"></a>00048   <span class="keywordtype">float</span> <a class="code" href="class_vsd.html#ae663105c2f5f835894d5eeab0741940d" title="Метод получения номинальной частоты двигателя">getNominalFreq</a>();
+<a name="l00049"></a>00049 
+<a name="l00055"></a>00055   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a4410f14506e10e36a79f4eeaae9aef74" title="Метод задания типа двигателя">setMotorType</a>(<span class="keywordtype">float</span> TypeMotor);
+<a name="l00056"></a>00056 
+<a name="l00062"></a>00062   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a4d14d9ae5a5e84a6b234b2e67602319b" title="Метод задания направления вращения">setRotation</a>(<span class="keywordtype">float</span> value);
+<a name="l00063"></a>00063 
+<a name="l00068"></a>00068   <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a5cdac2779aa424054a3d57fdcfc0b365" title="Метод запуска ЧРП">start</a>() = 0;
+<a name="l00069"></a>00069 
+<a name="l00074"></a>00074   <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a9da24496ee0e15945d20cf0a74ed613e" title="Метод останова ЧРП">stop</a>() = 0;
+<a name="l00075"></a>00075 
+<a name="l00080"></a>00080   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_vsd.html#ad1ab672965ec64daadaa954374150011" title="Метод проверки запуска ЧРП">checkStart</a>() = 0;
+<a name="l00081"></a>00081 
+<a name="l00086"></a>00086   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_vsd.html#a7e82476c3081b01d81c6a3bcad009ad5" title="Метод проверки останова ЧРП">checkStop</a>() = 0;
+<a name="l00087"></a>00087 
+<a name="l00093"></a>00093   <span class="keywordtype">bool</span> <a class="code" href="class_vsd.html#aec92447fddac4cef52e37dc9639ff74a" title="Метод проверки флага в регистре статуса инвертора">checkVsdStatus</a>(uint8_t bit);
+<a name="l00094"></a>00094 
+<a name="l00100"></a>00100   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#af157d0d13b00b703237985147b114a87" title="Метод задания частоты">setFrequency</a>(<span class="keywordtype">float</span> value);
+<a name="l00101"></a>00101 
+<a name="l00107"></a>00107   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a4e4c42679d98ee0296fe6dd13defc2a8" title="Метод задания минимальной частоты">setMinFrequency</a>(<span class="keywordtype">float</span> value);
+<a name="l00108"></a>00108 
+<a name="l00114"></a>00114   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#ad01b71e20bd1bb05d1b2f207156d42a7" title="Метод задания максимальной частоты">setMaxFrequency</a>(<span class="keywordtype">float</span> value);
+<a name="l00115"></a>00115 
+<a name="l00121"></a>00121   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#af7bd2471f14913a16f01813cae5b7610" title="Метод задания темпа набора частоты Гц/с">setTempSpeedUp</a>(<span class="keywordtype">float</span> value);
+<a name="l00122"></a>00122 
+<a name="l00128"></a>00128   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#aa57d66e205605086d4e4f7fba0be2b35" title="Метод задания темпа снижения частоты Гц/с">setTempSpeedDown</a>(<span class="keywordtype">float</span> value);
+<a name="l00129"></a>00129 
+<a name="l00134"></a>00134   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a5ac72118ddafd6ce13a201d9e58e7cd1" title="Метод задания времени набора частоты">setSpeedUp</a>(<span class="keywordtype">float</span> value);
+<a name="l00135"></a>00135 
+<a name="l00141"></a>00141   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#aef96fe559fbd47f40582ab6f70eb8f5b" title="Метод задания времени снижения частоты">setSpeedDown</a>(<span class="keywordtype">float</span> SpeedDown);
+<a name="l00142"></a>00142 
+<a name="l00148"></a>00148   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a941b3196d0009025e0ca7b8a8ba240c1" title="Метод задания противоЭДС">setBackEmf</a>(<span class="keywordtype">double</span> BackEmf);
+<a name="l00149"></a>00149 
+<a name="l00155"></a>00155   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a0b99a14d694d1ee4f0cd636709c399e2" title="Метод задания типа управления двигателем">setMotorControl</a>(<span class="keywordtype">float</span> value);
+<a name="l00156"></a>00156 
+<a name="l00161"></a>00161   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a816341c8488fc35b840ffd5ba7f4549f" title="Метод задания предела тока">setCurrentLim</a>(<span class="keywordtype">double</span> CurrentLim);
+<a name="l00162"></a>00162 
+<a name="l00168"></a>00168   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a067da9c096acfd0923f6b1ab16717fc8" title="Метод задания индуктивности">setDAxisIndunstance</a>(<span class="keywordtype">double</span> Indunstance);
+<a name="l00169"></a>00169 
+<a name="l00175"></a>00175   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a01ef7e3c7d7d681c194e0df4bcf242c2" title="Метод задания времени фильтрации">setFilterTimeCurrentLim</a>(<span class="keywordtype">double</span> FilterTimeCurrentLim);
+<a name="l00176"></a>00176 
+<a name="l00182"></a>00182   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#ab17e870a090bf2a09a202a8babd8db58" title="Метод задания времени фильтрации на высокой скорости">setHighSpeedFilterTimeCurrentLim</a>(<span class="keywordtype">double</span> HighSpeedFilterTimeCurrentLim);
+<a name="l00183"></a>00183 
+<a name="l00189"></a>00189   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a2bcfd07ecc9c20c162e6092ea11374b3" title="Метод задания количества полюсов">setPolesMotor</a>(<span class="keywordtype">double</span> PolesMotor);
+<a name="l00190"></a>00190 
+<a name="l00196"></a>00196   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a9d33879d0bac0cd98e4b242290b7ba85" title="Метод задания номинального момента двигателя">setRateTorqueMotor</a>(<span class="keywordtype">double</span> RateTorqueMotor);
+<a name="l00197"></a>00197 
+<a name="l00203"></a>00203   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a5b9d8b99635ef5d576a9a20b08f0c7d7" title="Метод задания сопротивления статора">setResistanceStator</a>(<span class="keywordtype">double</span> ResistanceStator);
+<a name="l00204"></a>00204 
+<a name="l00210"></a>00210   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#adf102c9962ed9cfef5b8c625095e6c55" title="Метод записи скорости вращения двигателя">setSpeedMotor</a>(<span class="keywordtype">double</span> SpeedMotor);
+<a name="l00211"></a>00211 
+<a name="l00217"></a>00217   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#acd22c002a9e7d401f06d8df68b21786a" title="Метод задания частоты коммутации ШИМ">setSwitchingFrequency</a>(<span class="keywordtype">double</span> SwitchingFrequency);
+<a name="l00218"></a>00218 
+<a name="l00224"></a>00224   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#abdd259f9580ff2d341a557981d5ac82f" title="Метод задания момента">setTorqueLimit</a>(<span class="keywordtype">double</span> TorqueLimit);
+<a name="l00225"></a>00225 
+<a name="l00230"></a>00230   <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a5f682ce8d8fdd87edc0155f2f5e89658" title="Метод настройки толчкового режима">onRegimePush</a>() = 0;
+<a name="l00231"></a>00231 
+<a name="l00236"></a>00236   <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a6077e0560332ac5638b4d8b9b4967c2c" title="Метод выключения толчкогового режима">offRegimePush</a>() = 0;
+<a name="l00237"></a>00237 
+<a name="l00242"></a>00242   <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#afa809f33c5fcd1967dc81dd4bb166990" title="onRegimeSwing">onRegimeSwing</a>() = 0;
+<a name="l00243"></a>00243 
+<a name="l00248"></a>00248   <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#af2820f603ee4863d1f0f93deb71b8b33" title="offRegimeSwing">offRegimeSwing</a>() = 0;
+<a name="l00249"></a>00249 
+<a name="l00254"></a>00254   <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a463936cbd2ba7d9e3ee43c857c4ded3f" title="onRegimeJarring">onRegimeJarring</a>() = 0;
+<a name="l00255"></a>00255 
+<a name="l00260"></a>00260   <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a470f977d8455b992df5a555ac0b89bd6" title="offRegimeJarring">offRegimeJarring</a>() = 0;
+<a name="l00261"></a>00261 
+<a name="l00266"></a>00266   <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a12a477157f86382fb021a7b17bfc7eb6" title="Метод настройки режима подхвата">onRegimePickup</a>() = 0;
+<a name="l00267"></a>00267 
+<a name="l00273"></a>00273   <span class="keywordtype">int</span> <a class="code" href="class_vsd.html#a7013aa9a607c393b2b3bcebe9494281b" title="Задание в массив параметров ЧРП номинальной частоты двигателя">setNominalFreq</a>(<span class="keywordtype">float</span> freq);
+<a name="l00274"></a>00274 
+<a name="l00275"></a>00275 <span class="keyword">private</span>:
+<a name="l00277"></a><a class="code" href="class_vsd.html#a7e5dc549487a9f82db0a2e79a1fa220f">00277</a>   <a class="code" href="structparameter.html" title="Структура для обработки и хранения параметров в СУ">parameter</a> <a class="code" href="class_vsd.html#a7e5dc549487a9f82db0a2e79a1fa220f" title="Массив параметров устройства">parametersArray_</a>[<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa4c4fd9e0b514aeb1deab6a0f888f0ba5">VSD_END</a> - <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaa8e06e539b0f8106c3900d309918daf0" title="Первый параметр ЧРП">VSD_BEGIN</a>];
+<a name="l00278"></a>00278 
+<a name="l00279"></a>00279 };
+<a name="l00280"></a>00280 
+<a name="l00281"></a>00281 <span class="preprocessor">#endif </span><span class="comment">/* VSD_H_ */</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

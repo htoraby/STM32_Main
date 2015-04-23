@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Файл src/board/rcause/rcause.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Функции</a> &#124;
+<a href="#var-members">Переменные</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл src/board/rcause/rcause.cpp</div>  </div>
+</div>
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="rcause_8h_source.html">rcause.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="fram_8h_source.html">fram.h</a>&quot;</code><br/>
+<code>#include &lt;string.h&gt;</code><br/>
+</div>
+<p><a href="rcause_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rcause_8cpp.html#a1e41953884de093a6a98ab80687cb73b">resetCauseCheck</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция подсчета счетчиков перезапуска СPU.  <a href="#a1e41953884de093a6a98ab80687cb73b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_r_c_a_u_s_e___c_o_u_n_t_s.html">RCAUSE_COUNTS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rcause_8cpp.html#afb01a9d4262c174348e79b08ca2125be">rcauseCountersGet</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Получение стетчиков перезапуска СPU.  <a href="#afb01a9d4262c174348e79b08ca2125be"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rcause_8cpp.html#aebb09be5611890a5e4828fff62aa93ba">rcauseCountersClear</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Обнуление счетчиков перезапуска СPU.  <a href="#aebb09be5611890a5e4828fff62aa93ba"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Переменные</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_r_c_a_u_s_e___c_o_u_n_t_s.html">RCAUSE_COUNTS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rcause_8cpp.html#a404e93372ba41621ec2771db4f58b0a1">rcauseCounts</a></td></tr>
+</table>
+<hr/><h2>Функции</h2>
+<a class="anchor" id="aebb09be5611890a5e4828fff62aa93ba"></a><!-- doxytag: member="rcause.cpp::rcauseCountersClear" ref="aebb09be5611890a5e4828fff62aa93ba" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rcauseCountersClear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Обнуление счетчиков перезапуска СPU. </p>
+
+<p>См. определение в файле <a class="el" href="rcause_8cpp_source.html">rcause.cpp</a> строка <a class="el" href="rcause_8cpp_source.html#l00044">44</a></p>
+
+</div>
+</div>
+<a class="anchor" id="afb01a9d4262c174348e79b08ca2125be"></a><!-- doxytag: member="rcause.cpp::rcauseCountersGet" ref="afb01a9d4262c174348e79b08ca2125be" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_r_c_a_u_s_e___c_o_u_n_t_s.html">RCAUSE_COUNTS</a> rcauseCountersGet </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Получение стетчиков перезапуска СPU. </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd><a class="el" href="struct_r_c_a_u_s_e___c_o_u_n_t_s.html" title="Структура счётчиков перезапуска СPU.">RCAUSE_COUNTS</a> </dd></dl>
+
+<p>См. определение в файле <a class="el" href="rcause_8cpp_source.html">rcause.cpp</a> строка <a class="el" href="rcause_8cpp_source.html#l00039">39</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a1e41953884de093a6a98ab80687cb73b"></a><!-- doxytag: member="rcause.cpp::resetCauseCheck" ref="a1e41953884de093a6a98ab80687cb73b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void resetCauseCheck </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Функция подсчета счетчиков перезапуска СPU. </p>
+
+<p>См. определение в файле <a class="el" href="rcause_8cpp_source.html">rcause.cpp</a> строка <a class="el" href="rcause_8cpp_source.html#l00007">7</a></p>
+
+</div>
+</div>
+<hr/><h2>Переменные</h2>
+<a class="anchor" id="a404e93372ba41621ec2771db4f58b0a1"></a><!-- doxytag: member="rcause.cpp::rcauseCounts" ref="a404e93372ba41621ec2771db4f58b0a1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_r_c_a_u_s_e___c_o_u_n_t_s.html">RCAUSE_COUNTS</a> <a class="el" href="rcause_8cpp.html#a404e93372ba41621ec2771db4f58b0a1">rcauseCounts</a><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="rcause_8cpp_source.html">rcause.cpp</a> строка <a class="el" href="rcause_8cpp_source.html#l00005">5</a></p>
+
+</div>
+</div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

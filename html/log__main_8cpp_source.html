@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/log/log_main.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/log/log_main.cpp</div>  </div>
+</div>
+<div class="contents">
+<a href="log__main_8cpp.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="log__main_8h.html">log_main.h</a>&quot;</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#include &quot;ff_gen_drv.h&quot;</span>
+<a name="l00003"></a>00003 <span class="preprocessor">#include &quot;usbh_diskio.h&quot;</span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &quot;<a class="code" href="usb__host_8h.html">usb_host.h</a>&quot;</span>
+<a name="l00005"></a>00005 
+<a name="l00006"></a><a class="code" href="log__main_8cpp.html#acd4d3023d24d5314b895981b17825666">00006</a> <span class="preprocessor">#define LOG_DIR USB_DISK &quot;:ksu_log&quot;</span>
+<a name="l00007"></a><a class="code" href="log__main_8cpp.html#aa7176f7e3edae75c7826b05499c355ec">00007</a> <span class="preprocessor"></span><span class="preprocessor">#define DEBUG_LOG_FILE LOG_DIR &quot;\\debug.log&quot;</span>
+<a name="l00008"></a><a class="code" href="log__main_8cpp.html#a86897ca03b5733453a4fb6e329fe02b9">00008</a> <span class="preprocessor"></span><span class="preprocessor">#define MAIN_LOG_FILE LOG_DIR &quot;\\main.log&quot;</span>
+<a name="l00009"></a>00009 <span class="preprocessor"></span>
+<a name="l00010"></a>00010 <span class="preprocessor">#if USE_EXT_MEM</span>
+<a name="l00011"></a>00011 <span class="preprocessor"></span><span class="keyword">static</span> uint8_t <a class="code" href="log__main_8cpp.html#a4cee47997e2d68da053a60ffadb4c2a6">bufData</a>[4096] <a class="code" href="__reset__hardware_8c.html#a93b9cf91f7623d6d8b100a3693d6d5e4">__attribute__</a>((section(<span class="stringliteral">&quot;.extmem&quot;</span>)));
+<a name="l00012"></a>00012 <span class="preprocessor">#else</span>
+<a name="l00013"></a><a class="code" href="log__main_8cpp.html#a4cee47997e2d68da053a60ffadb4c2a6">00013</a> <span class="preprocessor"></span><span class="keyword">static</span> uint8_t <a class="code" href="log__main_8cpp.html#a4cee47997e2d68da053a60ffadb4c2a6">bufData</a>[4096];
+<a name="l00014"></a>00014 <span class="preprocessor">#endif</span>
+<a name="l00015"></a><a class="code" href="log__main_8cpp.html#acedeafb8fb6e46407ce58ecf2f38079e">00015</a> <span class="preprocessor"></span><span class="keyword">static</span> osSemaphoreId <a class="code" href="log__main_8cpp.html#acedeafb8fb6e46407ce58ecf2f38079e">semaphoreId_</a>;
+<a name="l00016"></a>00016 
+<a name="l00017"></a><a class="code" href="log__main_8h.html#ac59bf01556b65dd1d2dbfcf7931b0759">00017</a> <a class="code" href="class_log_event.html" title="Класс архива событий">LogEvent</a> <a class="code" href="log__main_8cpp.html#ac59bf01556b65dd1d2dbfcf7931b0759">logEvent</a>;
+<a name="l00018"></a><a class="code" href="log__main_8h.html#a7e99922ec37fc26624d6bfb716fba5ef">00018</a> <a class="code" href="class_log_data.html" title="Класс архива данных">LogData</a> <a class="code" href="log__main_8cpp.html#a7e99922ec37fc26624d6bfb716fba5ef">logData</a>;
+<a name="l00019"></a><a class="code" href="log__main_8h.html#ae87ac9240037937f16c9bf4740ae0284">00019</a> <a class="code" href="class_log_running.html" title="Класс архива пусковых характеристик">LogRunning</a> <a class="code" href="log__main_8cpp.html#ae87ac9240037937f16c9bf4740ae0284">logRunning</a>;
+<a name="l00020"></a><a class="code" href="log__main_8h.html#a3f23628137d9bf6ac7dbdedb3342f53b">00020</a> <a class="code" href="class_log_alarm.html" title="Класс архива аварийных ситуаций">LogAlarm</a> <a class="code" href="log__main_8cpp.html#a3f23628137d9bf6ac7dbdedb3342f53b">logAlarm</a>;
+<a name="l00021"></a><a class="code" href="log__main_8h.html#a61ae6e5e58b620b0df91ac44b4b3b349">00021</a> <a class="code" href="class_log_tms.html" title="Класс архива ТМС">LogTms</a> <a class="code" href="log__main_8cpp.html#a61ae6e5e58b620b0df91ac44b4b3b349">logTms</a>;
+<a name="l00022"></a>00022 
+<a name="l00023"></a><a class="code" href="log__main_8h.html#aeefb30a6fce637c5b58be762cc117a66">00023</a> <a class="code" href="class_log_debug.html" title="Класс программистких архивов">LogDebug</a> <a class="code" href="log__main_8cpp.html#aeefb30a6fce637c5b58be762cc117a66">logDebug</a>;
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="log__main_8cpp.html#ac5dd5f77abb257959d05eeded692df50">logSaveTask</a>(<span class="keywordtype">void</span> *argument);
+<a name="l00026"></a>00026 
+<a name="l00027"></a><a class="code" href="log__main_8h.html#a922fe26598492a0117d8b89b417e7df5">00027</a> <span class="keywordtype">void</span> <a class="code" href="log__main_8cpp.html#a922fe26598492a0117d8b89b417e7df5" title="Инициализация архивов">logInit</a>()
+<a name="l00028"></a>00028 {
+<a name="l00029"></a>00029   <a class="code" href="fram_8cpp.html#a52ab99f48fd3b905f3a5ae04be4355c6" title="Чтение данных из FRAM.">framReadData</a>(<a class="code" href="fram_8h.html#a286904df9d547fdd23e57a6c268a76dfa8e83772efff780631c326eae33d92130">IdLogAddrFram</a>, (uint8_t*)&amp;<a class="code" href="class_log.html#a90e56a0a4e707bfe5fe34819e80996a5" title="Глобальный индекс записей всех журналов, кроме отладочного">Log::id_</a>, 4);
+<a name="l00030"></a>00030   <a class="code" href="fram_8cpp.html#a52ab99f48fd3b905f3a5ae04be4355c6" title="Чтение данных из FRAM.">framReadData</a>(<a class="code" href="fram_8h.html#a286904df9d547fdd23e57a6c268a76dfae574cd3c8efb2b053531546654bc1462">IdDebugLogAddrFram</a>, (uint8_t*)&amp;<a class="code" href="class_log.html#abfebd17b5dc5741f5fd13ffb5ee551d0" title="Глобальный индекс записей отладочного архива">Log::idDebug_</a>, 4);
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032   logEvent.<a class="code" href="class_log.html#a2ad858bd01378935dfea6c5e1e324c01" title="Инициализация журнала">init</a>();
+<a name="l00033"></a>00033   logRunning.<a class="code" href="class_log_running.html#a507f94211432dc9d84cd6abd02af2d00" title="Инициализация архива">init</a>();
+<a name="l00034"></a>00034   logAlarm.<a class="code" href="class_log_alarm.html#a489e18399f509b697baa43928b3c1e1a" title="Инициализация журнала">init</a>();
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 <span class="preprocessor">#ifndef DEBUG</span>
+<a name="l00037"></a>00037 <span class="preprocessor"></span>  logData.<a class="code" href="class_log_data.html#aaf43569a560afc6f5df0fafff462bb27" title="Инициализация журнала">init</a>();
+<a name="l00038"></a>00038   logTms.<a class="code" href="class_log_tms.html#aae20a0aa44d6d3bf8e9447fdfe7f80ce" title="Инициализация журнала">init</a>();
+<a name="l00039"></a>00039 <span class="preprocessor">#endif</span>
+<a name="l00040"></a>00040 <span class="preprocessor"></span>
+<a name="l00041"></a>00041   logDebug.<a class="code" href="class_log.html#a2ad858bd01378935dfea6c5e1e324c01" title="Инициализация журнала">init</a>();
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043   <span class="comment">// Запись в журнал &quot;Включение питания&quot;</span>
+<a name="l00044"></a>00044   logEvent.<a class="code" href="class_log_event.html#a59bde4221222c33cf7c19450c30323ed" title="Метод добавления нового события в архив">add</a>(<a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a844e0fa87d23e56b08cab436cf597c86" title="Событие откл/вкл питания">PowerCode</a>, <a class="code" href="log_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa18db7ade44c35f2239d1b3fe88b05532">AutoType</a>, <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa09ba40f3b6667e567d55379718157508" title="&quot;Включение питания&quot;">PowerOnId</a>);
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046   semaphoreId_ = osSemaphoreCreate(NULL, 1);
+<a name="l00047"></a>00047   osSemaphoreWait(semaphoreId_, 0);
+<a name="l00048"></a>00048   osThreadDef(LogSaveUsbTask, <a class="code" href="log__main_8cpp.html#ac5dd5f77abb257959d05eeded692df50">logSaveTask</a>, osPriorityNormal, 0, 8 * <a class="code" href="_free_r_t_o_s_config_8h.html#a6c534a6cf8a00528fe0be42083484f9a">configMINIMAL_STACK_SIZE</a>);
+<a name="l00049"></a>00049   osThreadCreate(osThread(LogSaveUsbTask), NULL);
+<a name="l00050"></a>00050 }
+<a name="l00051"></a>00051 
+<a name="l00052"></a><a class="code" href="log__main_8h.html#acfb464e1241ad43563b00d42d8e6a7c0">00052</a> <span class="keywordtype">void</span> <a class="code" href="log__main_8cpp.html#acfb464e1241ad43563b00d42d8e6a7c0" title="Стирание архивов (в т.ч. стирание всей Flash)">logErase</a>()
+<a name="l00053"></a>00053 {
+<a name="l00054"></a>00054   <a class="code" href="class_log.html#a90e56a0a4e707bfe5fe34819e80996a5" title="Глобальный индекс записей всех журналов, кроме отладочного">Log::id_</a> = 0;
+<a name="l00055"></a>00055   <a class="code" href="fram_8cpp.html#a19b5a25431b76df6ee29173e0d81fb4b" title="Запись данных во FRAM.">framWriteData</a>(<a class="code" href="fram_8h.html#a286904df9d547fdd23e57a6c268a76dfa8e83772efff780631c326eae33d92130">IdLogAddrFram</a>, (uint8_t*)&amp;<a class="code" href="class_log.html#a90e56a0a4e707bfe5fe34819e80996a5" title="Глобальный индекс записей всех журналов, кроме отладочного">Log::id_</a>, 4);
+<a name="l00056"></a>00056   <a class="code" href="class_log.html#abfebd17b5dc5741f5fd13ffb5ee551d0" title="Глобальный индекс записей отладочного архива">Log::idDebug_</a> = 0;
+<a name="l00057"></a>00057   <a class="code" href="fram_8cpp.html#a19b5a25431b76df6ee29173e0d81fb4b" title="Запись данных во FRAM.">framWriteData</a>(<a class="code" href="fram_8h.html#a286904df9d547fdd23e57a6c268a76dfae574cd3c8efb2b053531546654bc1462">IdDebugLogAddrFram</a>, (uint8_t*)&amp;<a class="code" href="class_log.html#abfebd17b5dc5741f5fd13ffb5ee551d0" title="Глобальный индекс записей отладочного архива">Log::idDebug_</a>, 4);
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059   logEvent.<a class="code" href="class_log.html#a910967de6e35098cedb3589e7210db58" title="Деинициализация журнала Установка адреса в начало StartAddrLog.">deInit</a>();
+<a name="l00060"></a>00060   logData.<a class="code" href="class_log.html#a910967de6e35098cedb3589e7210db58" title="Деинициализация журнала Установка адреса в начало StartAddrLog.">deInit</a>();
+<a name="l00061"></a>00061   logRunning.<a class="code" href="class_log.html#a910967de6e35098cedb3589e7210db58" title="Деинициализация журнала Установка адреса в начало StartAddrLog.">deInit</a>();
+<a name="l00062"></a>00062   logTms.<a class="code" href="class_log.html#a910967de6e35098cedb3589e7210db58" title="Деинициализация журнала Установка адреса в начало StartAddrLog.">deInit</a>();
+<a name="l00063"></a>00063   logDebug.<a class="code" href="class_log.html#a910967de6e35098cedb3589e7210db58" title="Деинициализация журнала Установка адреса в начало StartAddrLog.">deInit</a>();
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065   <a class="code" href="flash__ext_8cpp.html#ade2592f87a1c09873f4e5a5a7c6f9f9b">flashExtChipErase</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fba688049fe14f78480f4b22161b6f9fad5">FlashSpi5</a>);
+<a name="l00066"></a>00066   <a class="code" href="flash__ext_8cpp.html#ade2592f87a1c09873f4e5a5a7c6f9f9b">flashExtChipErase</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fbafc1cc925ab1ca7ede64e84265b2960db">FlashSpi1</a>);
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068   <a class="code" href="log__main_8cpp.html#a922fe26598492a0117d8b89b417e7df5" title="Инициализация архивов">logInit</a>();
+<a name="l00069"></a>00069 }
+<a name="l00070"></a>00070 
+<a name="l00071"></a><a class="code" href="log__main_8h.html#a9bbe1c3884e785093896a44d9d2a5d44">00071</a> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="log__main_8cpp.html#a9bbe1c3884e785093896a44d9d2a5d44" title="Чтение архивов">logRead</a>(uint32_t address, uint8_t *data, uint32_t size)
+<a name="l00072"></a>00072 {
+<a name="l00073"></a>00073   <span class="keywordflow">return</span> <a class="code" href="flash__ext_8cpp.html#af3eee9b1987480bd00e3eb1d2ce681ab">flashExtRead</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fba688049fe14f78480f4b22161b6f9fad5">FlashSpi5</a>, address, data, size);
+<a name="l00074"></a>00074 }
+<a name="l00075"></a>00075 
+<a name="l00076"></a><a class="code" href="log__main_8h.html#a0847a0f253c03926165146b41c4bbeaa">00076</a> <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="log__main_8cpp.html#a0847a0f253c03926165146b41c4bbeaa" title="Чтение программистких архивов">logDebugRead</a>(uint32_t address, uint8_t *data, uint32_t size)
+<a name="l00077"></a>00077 {
+<a name="l00078"></a>00078   <span class="keywordflow">return</span> <a class="code" href="flash__ext_8cpp.html#af3eee9b1987480bd00e3eb1d2ce681ab">flashExtRead</a>(<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fbafc1cc925ab1ca7ede64e84265b2960db">FlashSpi1</a>, address, data, size);
+<a name="l00079"></a>00079 }
+<a name="l00080"></a>00080 
+<a name="l00081"></a><a class="code" href="log__main_8h.html#a3d60c571e1d6fa5f0e9bdeec6cdd0607">00081</a> <span class="keywordtype">void</span> <a class="code" href="log__main_8cpp.html#a3d60c571e1d6fa5f0e9bdeec6cdd0607" title="Запуск сохранения архивов на USB flash.">logStartSave</a>()
+<a name="l00082"></a>00082 {
+<a name="l00083"></a>00083   osSemaphoreRelease(semaphoreId_);
+<a name="l00084"></a>00084 }
+<a name="l00085"></a>00085 
+<a name="l00086"></a><a class="code" href="log__main_8cpp.html#ac5dd5f77abb257959d05eeded692df50">00086</a> <span class="keywordtype">void</span> <a class="code" href="log__main_8cpp.html#ac5dd5f77abb257959d05eeded692df50">logSaveTask</a>(<span class="keywordtype">void</span> *argument)
+<a name="l00087"></a>00087 {
+<a name="l00088"></a>00088   (void)argument;
+<a name="l00089"></a>00089   FATFS fatfs;
+<a name="l00090"></a>00090   FIL file;
+<a name="l00091"></a>00091   UINT bytesWritten;
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093   <span class="keywordflow">while</span> (1) {
+<a name="l00094"></a>00094     osSemaphoreWait(semaphoreId_, osWaitForever);
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096     <span class="keywordflow">while</span>(disk_status(0) != RES_OK)
+<a name="l00097"></a>00097       osDelay(10);
+<a name="l00098"></a>00098     <span class="keywordflow">while</span> (f_mount(&amp;fatfs, <a class="code" href="board_8h.html#a6836f8a81fe679d8aac99567b18300d2">USB_DISK</a>, 1) != FR_OK)
+<a name="l00099"></a>00099       osDelay(10);
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101     f_unlink(<a class="code" href="log__main_8cpp.html#aa7176f7e3edae75c7826b05499c355ec">DEBUG_LOG_FILE</a>);
+<a name="l00102"></a>00102     f_unlink(<a class="code" href="log__main_8cpp.html#a86897ca03b5733453a4fb6e329fe02b9">MAIN_LOG_FILE</a>);
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104     FRESULT result = f_mkdir(<a class="code" href="log__main_8cpp.html#acd4d3023d24d5314b895981b17825666">LOG_DIR</a>);
+<a name="l00105"></a>00105     <span class="keywordflow">if</span> ((result == FR_OK) || (result == FR_EXIST)) {
+<a name="l00106"></a>00106       uint32_t <a class="code" href="adc_8cpp.html#ae73654f333e4363463ad8c594eca1905">time</a> = HAL_GetTick();
+<a name="l00107"></a>00107       <span class="keywordflow">if</span> (f_open(&amp;file, <a class="code" href="log__main_8cpp.html#aa7176f7e3edae75c7826b05499c355ec">DEBUG_LOG_FILE</a>, FA_CREATE_ALWAYS | FA_WRITE) == FR_OK) {
+<a name="l00108"></a>00108         uint32_t addr = 0;
+<a name="l00109"></a>00109         uint32_t size = 4096;
+<a name="l00110"></a>00110         bytesWritten = 0;
+<a name="l00111"></a>00111         <span class="keywordflow">while</span> (1) {
+<a name="l00112"></a>00112           <a class="code" href="log__main_8cpp.html#a0847a0f253c03926165146b41c4bbeaa" title="Чтение программистких архивов">logDebugRead</a>(addr, bufData, size);
+<a name="l00113"></a>00113           f_write(&amp;file, bufData, size, &amp;bytesWritten);
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115           addr = addr + size;
+<a name="l00116"></a>00116           <span class="keywordflow">if</span> (addr &gt;= <a class="code" href="flash__ext_8cpp.html#a15b0678b8d2782237ef0a03ef625dcca">flashExts</a>[<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fbafc1cc925ab1ca7ede64e84265b2960db">FlashSpi1</a>].size)
+<a name="l00117"></a>00117             <span class="keywordflow">break</span>;
+<a name="l00118"></a>00118         }
+<a name="l00119"></a>00119         f_close(&amp;file);
+<a name="l00120"></a>00120       }
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122       <span class="keywordflow">if</span> (f_open(&amp;file, <a class="code" href="log__main_8cpp.html#a86897ca03b5733453a4fb6e329fe02b9">MAIN_LOG_FILE</a>, FA_CREATE_ALWAYS | FA_WRITE) == FR_OK) {
+<a name="l00123"></a>00123         uint32_t addr = 0;
+<a name="l00124"></a>00124         uint32_t size = 4096;
+<a name="l00125"></a>00125         bytesWritten = 0;
+<a name="l00126"></a>00126         <span class="keywordflow">while</span> (1) {
+<a name="l00127"></a>00127           <a class="code" href="log__main_8cpp.html#a9bbe1c3884e785093896a44d9d2a5d44" title="Чтение архивов">logRead</a>(addr, bufData, size);
+<a name="l00128"></a>00128           f_write(&amp;file, bufData, size, &amp;bytesWritten);
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130           addr = addr + size;
+<a name="l00131"></a>00131           <span class="keywordflow">if</span> (addr &gt;= <a class="code" href="flash__ext_8cpp.html#a15b0678b8d2782237ef0a03ef625dcca">flashExts</a>[<a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fba688049fe14f78480f4b22161b6f9fad5">FlashSpi5</a>].size)
+<a name="l00132"></a>00132             <span class="keywordflow">break</span>;
+<a name="l00133"></a>00133         }
+<a name="l00134"></a>00134         f_close(&amp;file);
+<a name="l00135"></a>00135       }
+<a name="l00136"></a>00136       time = HAL_GetTick() - <a class="code" href="adc_8cpp.html#ae73654f333e4363463ad8c594eca1905">time</a>;
+<a name="l00137"></a>00137       <span class="keyword">asm</span>(<span class="stringliteral">&quot;nop&quot;</span>);
+<a name="l00138"></a>00138     }
+<a name="l00139"></a>00139   }
+<a name="l00140"></a>00140 }
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

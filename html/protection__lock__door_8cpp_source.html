@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/protection/other/protection_lock_door.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/protection/other/protection_lock_door.cpp</div>  </div>
+</div>
+<div class="contents">
+<a href="protection__lock__door_8cpp.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="protection__lock__door_8h.html">protection_lock_door.h</a>&quot;</span>
+<a name="l00002"></a>00002 
+<a name="l00003"></a><a class="code" href="class_protection_lock_door.html#a592315b778c106889e78d5d296b029b0">00003</a> <a class="code" href="class_protection_lock_door.html#a592315b778c106889e78d5d296b029b0">ProtectionLockDoor::ProtectionLockDoor</a>()
+<a name="l00004"></a>00004 {
+<a name="l00005"></a>00005   <a class="code" href="class_protection.html#a19268efce822959480829d59d31826ca" title="id параметров защиты">idMode_</a>= <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa67da73b78b3772560421da55ef105819" title="Защита &quot;Блокировка силового отсека&quot;.">CCS_PROT_OTHER_LOCK_DOOR_MODE</a>;
+<a name="l00006"></a>00006   <a class="code" href="class_protection.html#a3d008718d0dd7bc1b4db9b9e244e2383" title="id Флаг запрещающего параметра">idPrevent_</a>= <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfacb8c99c0f34a8027b86b0efd2d0fd2a1" title="Параметр запрещающий запуск">CCS_PROT_OTHER_LOCK_DOOR_PREVENT</a>;
+<a name="l00007"></a>00007   <a class="code" href="class_protection.html#a8a86748e2445f254259983e97d7c4dea" title="id задержка активации защиты">idActivDelay_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfafdfc3baca77375cfcfa73194c9045d32" title="Задержка активации уставка">CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY</a>;
+<a name="l00008"></a>00008   <a class="code" href="class_protection.html#ac28447b4c01fcee3c6de01b6e1f99da2" title="id задержка срабатывания защиты">idTripDelay_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa5e9b600a44a933a08bf3e255aa1aa184" title="Задержка срабатывания уставка">CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY</a>;
+<a name="l00009"></a>00009   <a class="code" href="class_protection.html#a5ae8c6b40c41c02bcda4764dc4882f90" title="id задержка АПВ защиты">idRestartDelay_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfad659aa1f3d7aebb2556b82d32672930e" title="Задержка АПВ уставка">CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY</a>;
+<a name="l00010"></a>00010   <a class="code" href="class_protection.html#a49c2efad198e74ccd48543e685881266" title="id количество АПВ">idRestartLimit_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa7d805e5434922d498e72d5961d54f8a5" title="Количество АПВ уставка">CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT</a>;
+<a name="l00011"></a>00011   <a class="code" href="class_protection.html#a607942ac6f46f09220a6841ccf349f56" title="id Время сброса количества АПВ">idRestartResetTime_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa05313c0da47cff4ef5244274ac9f949f" title="Автосброс счетчика АПВ">CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET</a>;
+<a name="l00012"></a>00012   <a class="code" href="class_protection.html#ab49e9871a127757d87f94d76864c49b1" title="id граница срабатывания защиты">idTripSetpoint_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa675f4460176bba032dd930d6404c329d" title="Уставка срабатывания защиты">CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT</a>;
+<a name="l00013"></a>00013   <a class="code" href="class_protection.html#aa9e310942cce88446b1f47aadf8f3723" title="id граница АПВ">idRestartSetpoint_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa3c0d468dfb98e8dbed28d0d6676289f1" title="Условие АПВ уставка">CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT</a>;
+<a name="l00014"></a>00014   <a class="code" href="class_protection.html#ace700a9f47d7152d3dd255e3d48a2f5b" title="id Параметр 1">idParam_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa5a3cfca6d8c9b4156c042b9e5345e034" title="Уставка параметр защиты">CCS_PROT_OTHER_LOCK_DOOR_PARAMETER</a>;
+<a name="l00015"></a>00015   <a class="code" href="class_protection.html#abe83013e52b98b5c65212dbe589d68c6" title="id Флаг что защита в состоянии АПВ">idRestartFlag_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa973feff7447fad22026963d89eae5a66" title="Уставка параметр защиты">CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG</a>;
+<a name="l00016"></a>00016   <a class="code" href="class_protection.html#a7dcd955bb34edc02108837b4462de534" title="id Флаг что защита в состоянии БЛОК">idBlockFlag_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa739a2cef0eafe7f7c65cfd62e864a286">CCS_PROT_OTHER_LOCK_DOOR_BLOCK_FLAG</a>;
+<a name="l00017"></a>00017   <a class="code" href="class_protection.html#a05de80f07ef003b57a47354a7e5c93d3" title="id Состояние автомата">idState_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa1a1da88378c62a5ee63e95c156bcd7c8" title="Текущий параметр состояние автомата">CCS_PROT_OTHER_LOCK_DOOR_STATE</a>;
+<a name="l00018"></a>00018   <a class="code" href="class_protection.html#a534abfe01f4740afb17d49b7c70e7b54" title="id Таймера">idTimer_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa5d971fbeff8312bb5107641e4a6b8ed2" title="Текущий параметр Фиксированное время">CCS_PROT_OTHER_LOCK_DOOR_TIME</a>;
+<a name="l00019"></a>00019   <a class="code" href="class_protection.html#a864f0082ae4f278efa87a83fe3a064c4" title="id Счётчика АПВ">idRestartCount_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa7ffbb1c6fdd862625a50e5f651c34d2a" title="Текущий параметр Количество АПВ">CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT</a>;
+<a name="l00020"></a>00020   <a class="code" href="class_protection.html#aa2dc723f7f83d7868270a05b15cdfa6a" title="id Время первого срабатывания АПВ">idRestartFirstTime_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa7e19c8cd56d8eb7f792f794f38e3f60d" title="Текущий параметр Время первого АПВ">CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME</a>;
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022   <a class="code" href="class_protection.html#af300db56e96fca2b72d5c2fb3a1e373d" title="Причина запуска">lastReasonRun_</a> = <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a7c658489ab322d60562e36fdd7040068" title="&quot;АПВ по защите: Блокировка двери&quot;">LastReasonRunApvLockDoor</a>;
+<a name="l00023"></a>00023   <a class="code" href="class_protection.html#a438a0007201523d868664947d82cf963" title="Причина останова">lastReasonStop_</a> = <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa2f1c6ae11b8432f8b2be8916c0a5ee53" title="&quot;Взлом СУ&quot;">LastReasonStopHackSu</a>;
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025   <a class="code" href="class_protection.html#ad9f00b97300ac27e31ff1aa5a46b099a" title="Индексы событий для записи в журнал">protReactEventId_</a> = <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa65d1979794629f45ddaf387721bcf337" title="&quot;Сработала защита: Блокировка двери силового отсека&quot;">LookDoorProtReactId</a>;
+<a name="l00026"></a>00026   <a class="code" href="class_protection.html#ac9a9ddcf3754e4341ac9ae211b8eaa51">protBlockedEventId_</a> = <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa0c2a81038ac61262d3a3aa772a5b061a" title="&quot;Блокировка по защите: Блокировка двери&quot;">LookDoorProtBlockedId</a>;
+<a name="l00027"></a>00027 }
+<a name="l00028"></a>00028 
+<a name="l00029"></a><a class="code" href="class_protection_lock_door.html#a42c4d1c4b88c01635d73458cc762e6e4">00029</a> <a class="code" href="class_protection_lock_door.html#a42c4d1c4b88c01635d73458cc762e6e4">ProtectionLockDoor::~ProtectionLockDoor</a>()
+<a name="l00030"></a>00030 {
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032 }
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

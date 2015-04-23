@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/device/device.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/device/device.h</div>  </div>
+</div>
+<div class="contents">
+<a href="device_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 ﻿<span class="comment">/*</span>
+<a name="l00002"></a>00002 <span class="comment"> * device.h</span>
+<a name="l00003"></a>00003 <span class="comment"></span>
+<a name="l00004"></a>00004 <span class="comment"> *</span>
+<a name="l00005"></a>00005 <span class="comment"> *  Created on: 23.06.2014</span>
+<a name="l00006"></a>00006 <span class="comment"> *      Author: trofimenko</span>
+<a name="l00007"></a>00007 <span class="comment"> */</span>
+<a name="l00008"></a>00008 
+<a name="l00009"></a>00009 <span class="preprocessor">#ifndef DEVICE_H_</span>
+<a name="l00010"></a>00010 <span class="preprocessor"></span><span class="preprocessor">#define DEVICE_H_</span>
+<a name="l00011"></a>00011 <span class="preprocessor"></span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &quot;<a class="code" href="define_8h.html">define.h</a>&quot;</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include &quot;<a class="code" href="idslist_8h.html">idslist.h</a>&quot;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &quot;<a class="code" href="board_8h.html">board.h</a>&quot;</span>
+<a name="l00015"></a>00015 <span class="preprocessor">#include &quot;<a class="code" href="fram_8h.html">fram.h</a>&quot;</span>
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 <span class="keyword">extern</span> <span class="keywordtype">float</span> <a class="code" href="device_8h.html#a0a3050ef9770d27ac40369a6c9cd499a">Units</a>[30][6][2];
+<a name="l00018"></a>00018 
+<a name="l00022"></a><a class="code" href="structparameter.html">00022</a> <span class="keyword">struct </span><a class="code" href="structparameter.html" title="Структура для обработки и хранения параметров в СУ">parameter</a>
+<a name="l00023"></a>00023 {
+<a name="l00024"></a><a class="code" href="structparameter.html#a83bc5020236334a81cdfbc2199f9acbf">00024</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="structparameter.html#a83bc5020236334a81cdfbc2199f9acbf">id</a>;        
+<a name="l00025"></a><a class="code" href="structparameter.html#a7e2c37a20dc5eeccb9612f92e5796e5b">00025</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="structparameter.html#a7e2c37a20dc5eeccb9612f92e5796e5b" title="Уникальный идентификатор параметра заменяет название параметра равен">access</a>;     
+<a name="l00026"></a><a class="code" href="structparameter.html#a5b4a6abed61fc475b5a749fa97e6f5a7">00026</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="structparameter.html#a5b4a6abed61fc475b5a749fa97e6f5a7" title="Уровень доступа к параметру">operation</a>;  
+<a name="l00027"></a><a class="code" href="structparameter.html#ab3601e2ac228df424aff3888c0f08c5d">00027</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="structparameter.html#ab3601e2ac228df424aff3888c0f08c5d" title="Операции с параметром: чтение, запись, запись во время останова">physic</a>;     
+<a name="l00028"></a><a class="code" href="structparameter.html#a9e2ed9696f8f7aa451083c211a89b3b1">00028</a>   <span class="keywordtype">float</span> <a class="code" href="structparameter.html#a9e2ed9696f8f7aa451083c211a89b3b1" title="Физический смысл">min</a>;                
+<a name="l00029"></a><a class="code" href="structparameter.html#a735e66d8c60510b2f552842576c29b1f">00029</a>   <span class="keywordtype">float</span> <a class="code" href="structparameter.html#a735e66d8c60510b2f552842576c29b1f" title="Минимально допустимое значение для этого параметра.">max</a>;                
+<a name="l00030"></a><a class="code" href="structparameter.html#ac49ac394ebd6aad1df8f3b9ea22cacfa">00030</a>   <span class="keywordtype">float</span> <a class="code" href="structparameter.html#ac49ac394ebd6aad1df8f3b9ea22cacfa" title="Максимально допустимое значение для этого параметра.">def</a>;                
+<a name="l00031"></a><a class="code" href="structparameter.html#a595554c7f847eb7142b71bd4c625fff0">00031</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="structparameter.html#a595554c7f847eb7142b71bd4c625fff0" title="Значение по умолчанию">validity</a>;   
+<a name="l00032"></a><a class="code" href="structparameter.html#aaad8a99b7fec2db78e585eb385714be8">00032</a>   <a class="code" href="unionun_type_data.html" title="The unDataType union Объединение для преобразования типов данных">unTypeData</a> <a class="code" href="structparameter.html#aaad8a99b7fec2db78e585eb385714be8" title="Валидность параметра">value</a>;         
+<a name="l00033"></a>00033 };
+<a name="l00034"></a>00034 
+<a name="l00040"></a><a class="code" href="class_device.html">00040</a> <span class="keyword">class </span><a class="code" href="class_device.html" title="Базовый класс для всех устройств Класс содержит банк параметров устройства во внутреннем представлени...">Device</a>
+<a name="l00041"></a>00041 {
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 <span class="keyword">public</span>:
+<a name="l00050"></a>00050   <a class="code" href="class_device.html#a18549d70005f1ff106860f5388d261f9" title="Конструктор класса">Device</a>(uint32_t startAddrParams, <a class="code" href="structparameter.html" title="Структура для обработки и хранения параметров в СУ">parameter</a> *<a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>, uint16_t countParameter);
+<a name="l00051"></a>00051   <span class="keyword">virtual</span> <a class="code" href="class_device.html#a9dabc419c8d8df3a686c33ce042bc99a">~Device</a>();
+<a name="l00052"></a>00052 
+<a name="l00056"></a>00056   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_device.html#a20d10b3501aa4df9c94a4b0b3c7f9caf" title="Инициализация устройства">init</a>() = 0;
+<a name="l00057"></a>00057 
+<a name="l00061"></a>00061   <span class="keywordtype">void</span> <a class="code" href="class_device.html#a2add25cc55bec5674e3534a60e2c8a6a" title="Инициализация массива параметров">initParameters</a>();
+<a name="l00062"></a>00062 
+<a name="l00067"></a>00067   <span class="keywordtype">void</span> <a class="code" href="class_device.html#aeb25cb7e8d3b20cb0cde9f1ff173c012" title="Метод создания задач для FreeRTOS.">createThread</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *threadName);
+<a name="l00068"></a>00068 
+<a name="l00070"></a><a class="code" href="class_device.html#a7387d408a320fa8ed6ffd64635af7edf">00070</a>   osThreadId <a class="code" href="class_device.html#a7387d408a320fa8ed6ffd64635af7edf" title="Идентификатор задачи обновления значений параметра устройства">updateValueThreadId_</a>;
+<a name="l00072"></a><a class="code" href="class_device.html#a8eade4c6a61eda863ce9ad436292e14b">00072</a>   osMessageQId <a class="code" href="class_device.html#a8eade4c6a61eda863ce9ad436292e14b" title="Идентификатор очереди параметров с новыми значениями от устройства">getValueDeviceQId_</a>;
+<a name="l00073"></a>00073 
+<a name="l00075"></a>00075   <span class="keywordtype">void</span> <a class="code" href="class_device.html#a7b82857c9f2138b6533fab2507449677">updateValueTask</a>();
+<a name="l00076"></a>00076   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_device.html#a6a7cc1b1b6c9f07b0ee885362577eb67">getNewValue</a>(uint16_t <span class="keywordtype">id</span>);
+<a name="l00077"></a>00077   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_device.html#a022854925f2320f37ef47120a7d481f2">calcParameters</a>(uint16_t <span class="keywordtype">id</span>);
+<a name="l00078"></a>00078 
+<a name="l00084"></a>00084   <span class="keyword">virtual</span> uint8_t <a class="code" href="class_device.html#a12c3e2d1819a4fbc72cc99371f25c142" title="setNewValue">setNewValue</a>(uint16_t <span class="keywordtype">id</span>, <span class="keywordtype">float</span> value);
+<a name="l00085"></a>00085 
+<a name="l00091"></a>00091   <span class="keyword">virtual</span> uint8_t <a class="code" href="class_device.html#a12c3e2d1819a4fbc72cc99371f25c142" title="setNewValue">setNewValue</a>(uint16_t <span class="keywordtype">id</span>, uint32_t value);
+<a name="l00092"></a>00092 
+<a name="l00098"></a>00098   <span class="keyword">virtual</span> uint8_t <a class="code" href="class_device.html#a12c3e2d1819a4fbc72cc99371f25c142" title="setNewValue">setNewValue</a>(uint16_t <span class="keywordtype">id</span>, <span class="keywordtype">int</span> value);
+<a name="l00099"></a>00099 
+<a name="l00105"></a>00105   <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_device.html#a3bdfc95a48a67b1093c3b2d344465775" title="Метод поиска и получения индекса по ID параметра">getIndexAtId</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">id</span>);
+<a name="l00106"></a>00106 
+<a name="l00113"></a>00113   <span class="keywordtype">float</span> <a class="code" href="class_device.html#a073b111db61bdbfc67df04e0acaa05ef" title="Метод получения значения параметра по id.">getValue</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">id</span>, <span class="keywordtype">bool</span> *ok = 0);
+<a name="l00114"></a>00114 
+<a name="l00121"></a>00121   uint32_t <a class="code" href="class_device.html#a1ef4aa07dd6ce647bb6c66c403c756f0" title="Метод получения значения параметра типа uint32_t по id.">getValueUint32</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">id</span>, <span class="keywordtype">bool</span> *ok = 0);
+<a name="l00122"></a>00122 
+<a name="l00133"></a>00133   uint8_t <a class="code" href="class_device.html#a66f43ac758cff37a928cb2fcd5f4709d" title="Метод присвоения значения параметру Когда пытаемся записать значение, нам нужно проверить 1...">setValue</a>(uint16_t <span class="keywordtype">id</span>, <span class="keywordtype">float</span> value);
+<a name="l00134"></a>00134 
+<a name="l00141"></a>00141   uint8_t <a class="code" href="class_device.html#a66f43ac758cff37a928cb2fcd5f4709d" title="Метод присвоения значения параметру Когда пытаемся записать значение, нам нужно проверить 1...">setValue</a>(uint16_t <span class="keywordtype">id</span>, uint32_t value);
+<a name="l00142"></a>00142 
+<a name="l00149"></a>00149   uint8_t <a class="code" href="class_device.html#a66f43ac758cff37a928cb2fcd5f4709d" title="Метод присвоения значения параметру Когда пытаемся записать значение, нам нужно проверить 1...">setValue</a>(uint16_t <span class="keywordtype">id</span>, <span class="keywordtype">int</span> value);
+<a name="l00150"></a>00150 
+<a name="l00156"></a>00156   uint8_t <a class="code" href="class_device.html#a1c45f2fe0278ae98e127dae468ead96b" title="Метод получения типа физической величины по id.">getPhysic</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">id</span>);
+<a name="l00157"></a>00157 
+<a name="l00161"></a>00161   <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="class_device.html#a429b58f966472c9d10f96f25a26ba1cd" title="Сохранение массива параметров на Flash.">saveParameters</a>();
+<a name="l00162"></a>00162 
+<a name="l00166"></a>00166   <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="class_device.html#a84a0ac6bd7e4cf1d9d103753fd9843d2" title="Чтение массива параметров с Flash.">readParameters</a>();
+<a name="l00167"></a>00167 
+<a name="l00171"></a><a class="code" href="class_device.html#a7ed38e8b8467a984bc65774782032eb5">00171</a>   <span class="keyword">static</span> <span class="keywordtype">float</span> <a class="code" href="class_device.html#a7ed38e8b8467a984bc65774782032eb5" title="Коэффициенты преобразования единиц измерения">units</a>[<a class="code" href="define_8h.html#a980e3d04619f6fc31783ee98befcfe2dab0c53d0d09716065b7a43ceb3cdc78ae">PHYSIC_LAST</a>][6][2];
+<a name="l00172"></a>00172 
+<a name="l00173"></a>00173 <span class="keyword">protected</span>:
+<a name="l00174"></a>00174 
+<a name="l00180"></a>00180   <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_device.html#a28601907258f92f593f5fdf420eca4ba" title="Метод получения ID параметра по индексу в массиве параметров">getFieldId</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> index);
+<a name="l00181"></a>00181 
+<a name="l00187"></a>00187   <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="class_device.html#a1200c8de37952e0759ad3a0347d24cd3" title="Метод получения Access параметра по индексу в массиве параметров">getFieldAccess</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> index);
+<a name="l00188"></a>00188 
+<a name="l00194"></a>00194   <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="class_device.html#a78467bfdd717de10e58fc3ab24a1ec39" title="Метод получения Operation параметра по индексу в массиве параметров">getFieldOperation</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> index);
+<a name="l00195"></a>00195 
+<a name="l00201"></a>00201   <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="class_device.html#a7f93f725fc65d79dcb2334866dc4c277" title="Метод получения Physic параметра по индексу в массиве параметров">getFieldPhysic</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> index);
+<a name="l00202"></a>00202 
+<a name="l00208"></a>00208   <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="class_device.html#aec3b3ec2d2b8d637d16bc15ba614d535" title="Метод получения Validity параметра по индексу в массиве параметров">getFieldValidity</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> index);
+<a name="l00209"></a>00209 
+<a name="l00215"></a>00215   <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="class_device.html#a9ac6edbc3782fac9f8a0ceeb1c7eb2ce" title="Метод получения Update параметра по индексу в массиве параметров">getFieldUpdate</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> index);
+<a name="l00216"></a>00216 
+<a name="l00222"></a>00222   <span class="keywordtype">float</span> <a class="code" href="class_device.html#aad0c7dff264d6c5ea3bcb5b32cee02cd" title="Метод получения Value параметра по индексу в массиве параметров">getFieldValue</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> index);
+<a name="l00223"></a>00223 
+<a name="l00229"></a>00229   uint32_t <a class="code" href="class_device.html#ac16c30fc83abc35a51371d749a01abd4" title="Метод получения value.uint32_t параметра по индексу в массиве параметров">getFieldValueUint32</a>(uint16_t index);
+<a name="l00230"></a>00230 
+<a name="l00236"></a>00236   <span class="keywordtype">float</span> <a class="code" href="class_device.html#a5b7beaad8f02596b959601b29eebbfd9" title="Метод получения Minimum параметра по индексу в массиве параметров">getFieldMinimum</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> index);
+<a name="l00237"></a>00237 
+<a name="l00243"></a>00243   <span class="keywordtype">float</span> <a class="code" href="class_device.html#a5c76616763c4d4f1f98026aa08e06292" title="Метод получения Maximum параметра по индексу в массиве параметров">getFieldMaximum</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> index);
+<a name="l00244"></a>00244 
+<a name="l00250"></a>00250   <span class="keywordtype">float</span> <a class="code" href="class_device.html#a61d6904e7437d059d27f0edad1b560d0" title="Метод получения Default параметра по индексу в массиве параметров">getFieldDefault</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> index);
+<a name="l00251"></a>00251 
+<a name="l00257"></a>00257   <a class="code" href="structparameter.html" title="Структура для обработки и хранения параметров в СУ">parameter</a> <a class="code" href="class_device.html#a4b4b697d9fe0fdf57d45b358b92cf93b" title="Метод получения All полей параметра по индексу в массиве параметров">getFieldAll</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> index);
+<a name="l00258"></a>00258 
+<a name="l00264"></a>00264   <span class="keywordtype">void</span> <a class="code" href="class_device.html#a5e6fe641056462221b59111b619744be" title="Метод присвоения поля ID в массиве параметров по индексу">setFieldID</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> index, <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">id</span>);
+<a name="l00265"></a>00265 
+<a name="l00271"></a>00271   <span class="keywordtype">void</span> <a class="code" href="class_device.html#aee900b55f1d0716b291eed85fade0324" title="Метод присвоения поля Access в массиве параметров по индексу">setFieldAccess</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> index, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> access);
+<a name="l00272"></a>00272 
+<a name="l00278"></a>00278   <span class="keywordtype">void</span> <a class="code" href="class_device.html#ab6d15a138710ab75155234462be1fda6" title="Метод присвоения поля Operation в массиве параметров по индексу">setFieldOperation</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> index, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> operation);
+<a name="l00279"></a>00279 
+<a name="l00285"></a>00285   <span class="keywordtype">void</span> <a class="code" href="class_device.html#aee1e1cec569568cbd9efae45db602025" title="Метод присвоения поля Physic в массиве параметров по индексу">setFieldPhysic</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> index, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> physic);
+<a name="l00286"></a>00286 
+<a name="l00292"></a>00292   <span class="keywordtype">void</span> <a class="code" href="class_device.html#a57f4d87e6dbee3a7029bef87c2976632" title="Метод присвоения поля Validity в массиве параметров по индексу">setFieldValidity</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> index, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> validity);
+<a name="l00293"></a>00293 
+<a name="l00299"></a>00299   <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keywordtype">void</span> <a class="code" href="class_device.html#afe3d557d16b87910966b022b4d433505" title="Метод присвоения поля value в массиве параметров по индексу">setFieldValue</a>(<span class="keyword">const</span> uint16_t &amp;index, <span class="keyword">const</span> T &amp;value);
+<a name="l00300"></a>00300 
+<a name="l00306"></a>00306   <span class="keywordtype">void</span> <a class="code" href="class_device.html#a6b0629a552d093f0bc664320ad1735c8" title="Метод присвоения поля Min в массиве параметров по индексу">setFieldMin</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> index, <span class="keywordtype">float</span> min);
+<a name="l00307"></a>00307 
+<a name="l00313"></a>00313   <span class="keywordtype">void</span> <a class="code" href="class_device.html#a5811ff731fbed9ba050fa67860e91d63" title="Метод присвоения поля Max в массиве параметров по индексу">setFieldMax</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> index, <span class="keywordtype">float</span> max);
+<a name="l00314"></a>00314 
+<a name="l00320"></a>00320   <span class="keywordtype">void</span> <a class="code" href="class_device.html#a6de8161b52b7bb7d255fb4820f1a959f" title="Метод присвоения поля def в массиве параметров по индексу">setFieldDef</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> index, <span class="keywordtype">float</span> def);
+<a name="l00321"></a>00321 
+<a name="l00327"></a>00327   <span class="keywordtype">void</span> <a class="code" href="class_device.html#a873c4585fd2b32eefcc41101ca60707e" title="Метод присвоения поля All в массиве параметров по индексу">setFieldAll</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> index, <a class="code" href="structparameter.html" title="Структура для обработки и хранения параметров в СУ">parameter</a> param);
+<a name="l00328"></a>00328 
+<a name="l00329"></a>00329   <span class="keywordtype">float</span> <a class="code" href="class_device.html#a1270cda781a6710bfa4d39c31ac46b5a">applyCoef</a>(<span class="keywordtype">float</span> value, <span class="keywordtype">float</span> coef);
+<a name="l00330"></a>00330 
+<a name="l00331"></a>00331   <span class="keywordtype">float</span> <a class="code" href="class_device.html#a07dd075b9277685f148f859a1dae0dc2">applyUnit</a>(<span class="keywordtype">float</span> value, <span class="keywordtype">int</span> physic, <span class="keywordtype">int</span> <a class="code" href="class_device.html#a7ed38e8b8467a984bc65774782032eb5" title="Коэффициенты преобразования единиц измерения">units</a>);
+<a name="l00332"></a>00332 
+<a name="l00334"></a><a class="code" href="class_device.html#aa0a6503d4e81a9bc83ae714b4f1d53fd">00334</a>   uint32_t <a class="code" href="class_device.html#aa0a6503d4e81a9bc83ae714b4f1d53fd" title="Начальный адрес массива параметров из списка enID.">startAddrParams_</a>;
+<a name="l00336"></a><a class="code" href="class_device.html#ad11411bd18bc89ab1c568d07752cb55a">00336</a>   <a class="code" href="structparameter.html" title="Структура для обработки и хранения параметров в СУ">parameter</a> *<a class="code" href="class_device.html#ad11411bd18bc89ab1c568d07752cb55a" title="Указатель на массив параметров устройства">parameters_</a>;
+<a name="l00338"></a><a class="code" href="class_device.html#ad741cb24b89e894f1de9dc87cf91e70f">00338</a>   uint16_t <a class="code" href="class_device.html#ad741cb24b89e894f1de9dc87cf91e70f" title="Количество параметров в массиве">countParameter_</a>;
+<a name="l00339"></a>00339 
+<a name="l00340"></a>00340 <span class="keyword">private</span>:
+<a name="l00341"></a>00341 
+<a name="l00342"></a>00342 };
+<a name="l00343"></a>00343 
+<a name="l00344"></a>00344 <span class="preprocessor">#endif </span><span class="comment">/* DEVICE_H_ */</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:23. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

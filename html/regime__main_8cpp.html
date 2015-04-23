@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Файл src/user/regime/regime_main.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Макросы</a> &#124;
+<a href="#func-members">Функции</a> &#124;
+<a href="#var-members">Переменные</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл src/user/regime/regime_main.cpp</div>  </div>
+</div>
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="regime__main_8h_source.html">regime_main.h</a>&quot;</code><br/>
+</div>
+<p><a href="regime__main_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Макросы</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="regime__main_8cpp.html#a3db0bed995f73f7b289778a954f06d2a">COUNT_REGIMES</a>&#160;&#160;&#160;6</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Количество режимов, увеличивать при добавлении нового  <a href="#a3db0bed995f73f7b289778a954f06d2a"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="regime__main_8cpp.html#a213fb08ea88bf8a3d75080a2ef1e929d">regimeTask</a> (void *argument)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="regime__main_8cpp.html#a27d091be54e4151820a4a08190393180">regimeInit</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция инициализации задачи обработки всех режимов  <a href="#a27d091be54e4151820a4a08190393180"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="regime__main_8cpp.html#ad98312c87df83e9cdf413c1aad7047e1">interceptionStartRegime</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод перехвата запуска режимом  <a href="#ad98312c87df83e9cdf413c1aad7047e1"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Переменные</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_regime.html">Regime</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="regime__main_8cpp.html#a09dbecbe8973664dcb1c5b072c5a8bb5">regimes</a> [COUNT_REGIMES]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_regime_technolog_periodic.html">RegimeTechnologPeriodic</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="regime__main_8cpp.html#a31880841d0a556cdf68d51c2ac1c8e47">regimeTechnologPeriodic</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_regime_technolog_soft_change_freq.html">RegimeTechnologSoftChangeFreq</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="regime__main_8cpp.html#a04f2a3e4d87bfc4e5dc64afbf9f7ea77">regimeTechnologSoftChangeFreq</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_regime_technolog_maintenance_param.html">RegimeTechnologMaintenanceParam</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="regime__main_8cpp.html#aa8d3b987c406402a753ae2ed961c8e50">regimeTechnologMaintenanceParam</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_regime_technolog_alternation_freq.html">RegimeTechnologAlternationFreq</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="regime__main_8cpp.html#a0646ed6a33f421c8c4e51185a5afafbc">regimeTechnologAlternationFreq</a></td></tr>
+</table>
+<hr/><h2>Макросы</h2>
+<a class="anchor" id="a3db0bed995f73f7b289778a954f06d2a"></a><!-- doxytag: member="regime_main.cpp::COUNT_REGIMES" ref="a3db0bed995f73f7b289778a954f06d2a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define COUNT_REGIMES&#160;&#160;&#160;6</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Количество режимов, увеличивать при добавлении нового </p>
+
+<p>См. определение в файле <a class="el" href="regime__main_8cpp_source.html">regime_main.cpp</a> строка <a class="el" href="regime__main_8cpp_source.html#l00003">3</a></p>
+
+</div>
+</div>
+<hr/><h2>Функции</h2>
+<a class="anchor" id="ad98312c87df83e9cdf413c1aad7047e1"></a><!-- doxytag: member="regime_main.cpp::interceptionStartRegime" ref="ad98312c87df83e9cdf413c1aad7047e1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool interceptionStartRegime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод перехвата запуска режимом </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>false - пуск запрещён, true - пуск разрещён </dd></dl>
+
+<p>См. определение в файле <a class="el" href="regime__main_8cpp_source.html">regime_main.cpp</a> строка <a class="el" href="regime__main_8cpp_source.html#l00051">51</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a27d091be54e4151820a4a08190393180"></a><!-- doxytag: member="regime_main.cpp::regimeInit" ref="a27d091be54e4151820a4a08190393180" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void regimeInit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Функция инициализации задачи обработки всех режимов </p>
+
+<p>См. определение в файле <a class="el" href="regime__main_8cpp_source.html">regime_main.cpp</a> строка <a class="el" href="regime__main_8cpp_source.html#l00014">14</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a213fb08ea88bf8a3d75080a2ef1e929d"></a><!-- doxytag: member="regime_main.cpp::regimeTask" ref="a213fb08ea88bf8a3d75080a2ef1e929d" args="(void *argument)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void regimeTask </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>argument</em></td><td>)</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="regime__main_8cpp_source.html">regime_main.cpp</a> строка <a class="el" href="regime__main_8cpp_source.html#l00038">38</a></p>
+
+</div>
+</div>
+<hr/><h2>Переменные</h2>
+<a class="anchor" id="a09dbecbe8973664dcb1c5b072c5a8bb5"></a><!-- doxytag: member="regime_main.cpp::regimes" ref="a09dbecbe8973664dcb1c5b072c5a8bb5" args="[COUNT_REGIMES]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_regime.html">Regime</a>* <a class="el" href="regime__main_8cpp.html#a09dbecbe8973664dcb1c5b072c5a8bb5">regimes</a>[COUNT_REGIMES]</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="regime__main_8cpp_source.html">regime_main.cpp</a> строка <a class="el" href="regime__main_8cpp_source.html#l00005">5</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a0646ed6a33f421c8c4e51185a5afafbc"></a><!-- doxytag: member="regime_main.cpp::regimeTechnologAlternationFreq" ref="a0646ed6a33f421c8c4e51185a5afafbc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_regime_technolog_alternation_freq.html">RegimeTechnologAlternationFreq</a> <a class="el" href="regime__main_8cpp.html#a0646ed6a33f421c8c4e51185a5afafbc">regimeTechnologAlternationFreq</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="regime__main_8cpp_source.html">regime_main.cpp</a> строка <a class="el" href="regime__main_8cpp_source.html#l00010">10</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa8d3b987c406402a753ae2ed961c8e50"></a><!-- doxytag: member="regime_main.cpp::regimeTechnologMaintenanceParam" ref="aa8d3b987c406402a753ae2ed961c8e50" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_regime_technolog_maintenance_param.html">RegimeTechnologMaintenanceParam</a> <a class="el" href="regime__main_8cpp.html#aa8d3b987c406402a753ae2ed961c8e50">regimeTechnologMaintenanceParam</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="regime__main_8cpp_source.html">regime_main.cpp</a> строка <a class="el" href="regime__main_8cpp_source.html#l00009">9</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a31880841d0a556cdf68d51c2ac1c8e47"></a><!-- doxytag: member="regime_main.cpp::regimeTechnologPeriodic" ref="a31880841d0a556cdf68d51c2ac1c8e47" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_regime_technolog_periodic.html">RegimeTechnologPeriodic</a> <a class="el" href="regime__main_8cpp.html#a31880841d0a556cdf68d51c2ac1c8e47">regimeTechnologPeriodic</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="regime__main_8cpp_source.html">regime_main.cpp</a> строка <a class="el" href="regime__main_8cpp_source.html#l00007">7</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a04f2a3e4d87bfc4e5dc64afbf9f7ea77"></a><!-- doxytag: member="regime_main.cpp::regimeTechnologSoftChangeFreq" ref="a04f2a3e4d87bfc4e5dc64afbf9f7ea77" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_regime_technolog_soft_change_freq.html">RegimeTechnologSoftChangeFreq</a> <a class="el" href="regime__main_8cpp.html#a04f2a3e4d87bfc4e5dc64afbf9f7ea77">regimeTechnologSoftChangeFreq</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="regime__main_8cpp_source.html">regime_main.cpp</a> строка <a class="el" href="regime__main_8cpp_source.html#l00008">8</a></p>
+
+</div>
+</div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:25. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

@@ -1,0 +1,536 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Файл src/board/host/host.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Макросы</a> &#124;
+<a href="#func-members">Функции</a> &#124;
+<a href="#var-members">Переменные</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл src/board/host/host.cpp</div>  </div>
+</div>
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="host_8h_source.html">host.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="gpio_8h_source.html">gpio.h</a>&quot;</code><br/>
+<code>#include &quot;string.h&quot;</code><br/>
+</div>
+<p><a href="host_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Макросы</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="host_8cpp.html#aa45d8ff798300055aa125f325bc53551">TIMEOUT_RX</a>&#160;&#160;&#160;100</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="host_8cpp.html#a1a7de8dccbbae6d7e4b52c02208f620d">hostTimer</a> (const void *argument)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="host_8cpp.html#a3ebe1f0e99fde5218f70bb60e53f9170">spiDmaTransmitCplt</a> (DMA_HandleTypeDef *hdma)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="host_8cpp.html#a829d2cc46a867eef155da5b1ca654963">hostInit</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализация драйвера работы с контроллером визуализации (SPI4-Slave)  <a href="#a829d2cc46a867eef155da5b1ca654963"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">osSemaphoreId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="host_8cpp.html#af5e10e18de58109f9ab14e6ef9f0d833">getHostSemaphore</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Создание семафора драйвера работы с контроллером визуализации Семафор необходим для сообщения задачи о получении пакета данных  <a href="#af5e10e18de58109f9ab14e6ef9f0d833"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="host_8cpp.html#ae7e5d2042286ee472575bf72b7de9111">hostRxIRQHandler</a> (void)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция обработки прерывания по приёму SPI4.  <a href="#ae7e5d2042286ee472575bf72b7de9111"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="host_8cpp.html#a3538db2e7e2e52121a1ee284f52cb3bb">hostReadData</a> (uint8_t *data)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Чтение данных из буфера приёма от контроллера визуализации  <a href="#a3538db2e7e2e52121a1ee284f52cb3bb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="host_8cpp.html#af93cb7abdd6328bb045fb6c65a5c9c11">spiWaitOnFlagUntilTimeout</a> (uint32_t flag, FlagStatus status, uint32_t timeout)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Ожидание установки флага статусного регистра SPI.  <a href="#af93cb7abdd6328bb045fb6c65a5c9c11"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="host_8cpp.html#a4430dce308818bdf8bb25917a33d59c8">hostWriteData</a> (uint8_t *data, int size, uint32_t)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Отправка данных контроллеру визуализации  <a href="#a4430dce308818bdf8bb25917a33d59c8"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Переменные</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SPI_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="host_8cpp.html#ad11f23991deec4a1a2ffe474d1ef4ddd">hspi4</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">DMA_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="host_8cpp.html#ad790392d1f26fe2990cd755d5497fbdb">hdma_spi4_tx</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static osSemaphoreId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="host_8cpp.html#ae44111fd42e708a0d389ce358cff892a">hostSemaphoreId</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="host_8cpp.html#afe79f7d8eb9a24adf00b63250f3748b7">txBuffer</a> [2 *HOST_BUF_SIZE]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="host_8cpp.html#a60b0dbb4b0d8dabe2e8d2ddd1fc5d373">rxBuffer</a> [HOST_BUF_SIZE]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_stat_host_def.html">StatHostDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="host_8cpp.html#ae700f858181a4b0f44df4b4f4930ac34">statHost</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="host_8cpp.html#a471cecc6e1a3d09efc3d2ab87eece983">rxCount</a> = 0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="host_8cpp.html#ad183fec1089a422aa5697e060810fa43">rxTimeout</a> = TIMEOUT_RX</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="host_8cpp.html#a560efaee55571ea588551a80aadc6cda">rxActive</a> = 0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="host_8cpp.html#a8f30fc5e3ad05d44c971f273f2407810">unstuff</a> = 0</td></tr>
+</table>
+<hr/><h2>Макросы</h2>
+<a class="anchor" id="aa45d8ff798300055aa125f325bc53551"></a><!-- doxytag: member="host.cpp::TIMEOUT_RX" ref="aa45d8ff798300055aa125f325bc53551" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TIMEOUT_RX&#160;&#160;&#160;100</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="host_8cpp_source.html">host.cpp</a> строка <a class="el" href="host_8cpp_source.html#l00005">5</a></p>
+
+</div>
+</div>
+<hr/><h2>Функции</h2>
+<a class="anchor" id="af5e10e18de58109f9ab14e6ef9f0d833"></a><!-- doxytag: member="host.cpp::getHostSemaphore" ref="af5e10e18de58109f9ab14e6ef9f0d833" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">osSemaphoreId getHostSemaphore </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Создание семафора драйвера работы с контроллером визуализации Семафор необходим для сообщения задачи о получении пакета данных </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>osSemaphoreId - id созданного семафора </dd></dl>
+
+<p>См. определение в файле <a class="el" href="host_8cpp_source.html">host.cpp</a> строка <a class="el" href="host_8cpp_source.html#l00077">77</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a829d2cc46a867eef155da5b1ca654963"></a><!-- doxytag: member="host.cpp::hostInit" ref="a829d2cc46a867eef155da5b1ca654963" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hostInit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Инициализация драйвера работы с контроллером визуализации (SPI4-Slave) </p>
+
+<p>См. определение в файле <a class="el" href="host_8cpp_source.html">host.cpp</a> строка <a class="el" href="host_8cpp_source.html#l00023">23</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a3538db2e7e2e52121a1ee284f52cb3bb"></a><!-- doxytag: member="host.cpp::hostReadData" ref="a3538db2e7e2e52121a1ee284f52cb3bb" args="(uint8_t *data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int hostReadData </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Чтение данных из буфера приёма от контроллера визуализации </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>- указатель на буфер </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>int - количество принятых байт </dd></dl>
+
+<p>См. определение в файле <a class="el" href="host_8cpp_source.html">host.cpp</a> строка <a class="el" href="host_8cpp_source.html#l00170">170</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae7e5d2042286ee472575bf72b7de9111"></a><!-- doxytag: member="host.cpp::hostRxIRQHandler" ref="ae7e5d2042286ee472575bf72b7de9111" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hostRxIRQHandler </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Функция обработки прерывания по приёму SPI4. </p>
+
+<p>См. определение в файле <a class="el" href="host_8cpp_source.html">host.cpp</a> строка <a class="el" href="host_8cpp_source.html#l00105">105</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a1a7de8dccbbae6d7e4b52c02208f620d"></a><!-- doxytag: member="host.cpp::hostTimer" ref="a1a7de8dccbbae6d7e4b52c02208f620d" args="(const void *argument)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void hostTimer </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>argument</em></td><td>)</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="host_8cpp_source.html">host.cpp</a> строка <a class="el" href="host_8cpp_source.html#l00082">82</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a4430dce308818bdf8bb25917a33d59c8"></a><!-- doxytag: member="host.cpp::hostWriteData" ref="a4430dce308818bdf8bb25917a33d59c8" args="(uint8_t *data, int size, uint32_t)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> hostWriteData </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>timeout</em> = <code>1000</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Отправка данных контроллеру визуализации </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>- указатель на буфер </td></tr>
+    <tr><td class="paramname">size</td><td>- количество отправляемых байт </td></tr>
+    <tr><td class="paramname">timeout</td><td>- таймаут отправки (по умолчанию: 1000 мс) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>StatusType - ошибка или ок </dd></dl>
+
+<p>См. определение в файле <a class="el" href="host_8cpp_source.html">host.cpp</a> строка <a class="el" href="host_8cpp_source.html#l00226">226</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a3ebe1f0e99fde5218f70bb60e53f9170"></a><!-- doxytag: member="host.cpp::spiDmaTransmitCplt" ref="a3ebe1f0e99fde5218f70bb60e53f9170" args="(DMA_HandleTypeDef *hdma)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void spiDmaTransmitCplt </td>
+          <td>(</td>
+          <td class="paramtype">DMA_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>hdma</em></td><td>)</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="host_8cpp_source.html">host.cpp</a> строка <a class="el" href="host_8cpp_source.html#l00201">201</a></p>
+
+</div>
+</div>
+<a class="anchor" id="af93cb7abdd6328bb045fb6c65a5c9c11"></a><!-- doxytag: member="host.cpp::spiWaitOnFlagUntilTimeout" ref="af93cb7abdd6328bb045fb6c65a5c9c11" args="(uint32_t flag, FlagStatus status, uint32_t timeout)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static HAL_StatusTypeDef spiWaitOnFlagUntilTimeout </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>flag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FlagStatus&#160;</td>
+          <td class="paramname"><em>status</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Ожидание установки флага статусного регистра SPI. </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flag</td><td>- флаг </td></tr>
+    <tr><td class="paramname">status</td><td>- необходимое состояние флага </td></tr>
+    <tr><td class="paramname">timeout</td><td>- таймаут </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>HAL_StatusTypeDef </dd></dl>
+
+<p>См. определение в файле <a class="el" href="host_8cpp_source.html">host.cpp</a> строка <a class="el" href="host_8cpp_source.html#l00186">186</a></p>
+
+</div>
+</div>
+<hr/><h2>Переменные</h2>
+<a class="anchor" id="ad790392d1f26fe2990cd755d5497fbdb"></a><!-- doxytag: member="host.cpp::hdma_spi4_tx" ref="ad790392d1f26fe2990cd755d5497fbdb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DMA_HandleTypeDef <a class="el" href="stm32f4xx__it_8c.html#ad790392d1f26fe2990cd755d5497fbdb">hdma_spi4_tx</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="host_8cpp_source.html">host.cpp</a> строка <a class="el" href="host_8cpp_source.html#l00008">8</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae44111fd42e708a0d389ce358cff892a"></a><!-- doxytag: member="host.cpp::hostSemaphoreId" ref="ae44111fd42e708a0d389ce358cff892a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">osSemaphoreId <a class="el" href="host_8cpp.html#ae44111fd42e708a0d389ce358cff892a">hostSemaphoreId</a><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="host_8cpp_source.html">host.cpp</a> строка <a class="el" href="host_8cpp_source.html#l00010">10</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ad11f23991deec4a1a2ffe474d1ef4ddd"></a><!-- doxytag: member="host.cpp::hspi4" ref="ad11f23991deec4a1a2ffe474d1ef4ddd" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SPI_HandleTypeDef <a class="el" href="host_8cpp.html#ad11f23991deec4a1a2ffe474d1ef4ddd">hspi4</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="host_8cpp_source.html">host.cpp</a> строка <a class="el" href="host_8cpp_source.html#l00007">7</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a560efaee55571ea588551a80aadc6cda"></a><!-- doxytag: member="host.cpp::rxActive" ref="a560efaee55571ea588551a80aadc6cda" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="host_8cpp.html#a560efaee55571ea588551a80aadc6cda">rxActive</a> = 0<code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="host_8cpp_source.html">host.cpp</a> строка <a class="el" href="host_8cpp_source.html#l00017">17</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a60b0dbb4b0d8dabe2e8d2ddd1fc5d373"></a><!-- doxytag: member="host.cpp::rxBuffer" ref="a60b0dbb4b0d8dabe2e8d2ddd1fc5d373" args="[HOST_BUF_SIZE]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t <a class="el" href="host_8cpp.html#a60b0dbb4b0d8dabe2e8d2ddd1fc5d373">rxBuffer</a>[HOST_BUF_SIZE]<code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="host_8cpp_source.html">host.cpp</a> строка <a class="el" href="host_8cpp_source.html#l00012">12</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a471cecc6e1a3d09efc3d2ab87eece983"></a><!-- doxytag: member="host.cpp::rxCount" ref="a471cecc6e1a3d09efc3d2ab87eece983" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="host_8cpp.html#a471cecc6e1a3d09efc3d2ab87eece983">rxCount</a> = 0<code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="host_8cpp_source.html">host.cpp</a> строка <a class="el" href="host_8cpp_source.html#l00015">15</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ad183fec1089a422aa5697e060810fa43"></a><!-- doxytag: member="host.cpp::rxTimeout" ref="ad183fec1089a422aa5697e060810fa43" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="host_8cpp.html#ad183fec1089a422aa5697e060810fa43">rxTimeout</a> = TIMEOUT_RX<code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="host_8cpp_source.html">host.cpp</a> строка <a class="el" href="host_8cpp_source.html#l00016">16</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae700f858181a4b0f44df4b4f4930ac34"></a><!-- doxytag: member="host.cpp::statHost" ref="ae700f858181a4b0f44df4b4f4930ac34" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_stat_host_def.html">StatHostDef</a> <a class="el" href="host_8h.html#ae700f858181a4b0f44df4b4f4930ac34">statHost</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="host_8cpp_source.html">host.cpp</a> строка <a class="el" href="host_8cpp_source.html#l00014">14</a></p>
+
+</div>
+</div>
+<a class="anchor" id="afe79f7d8eb9a24adf00b63250f3748b7"></a><!-- doxytag: member="host.cpp::txBuffer" ref="afe79f7d8eb9a24adf00b63250f3748b7" args="[2 *HOST_BUF_SIZE]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t <a class="el" href="host_8cpp.html#afe79f7d8eb9a24adf00b63250f3748b7">txBuffer</a>[2 *HOST_BUF_SIZE]<code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="host_8cpp_source.html">host.cpp</a> строка <a class="el" href="host_8cpp_source.html#l00011">11</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a8f30fc5e3ad05d44c971f273f2407810"></a><!-- doxytag: member="host.cpp::unstuff" ref="a8f30fc5e3ad05d44c971f273f2407810" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="host_8cpp.html#a8f30fc5e3ad05d44c971f273f2407810">unstuff</a> = 0<code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="host_8cpp_source.html">host.cpp</a> строка <a class="el" href="host_8cpp_source.html#l00018">18</a></p>
+
+</div>
+</div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

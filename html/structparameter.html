@@ -1,0 +1,295 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Структура parameter</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li><a href="classes.html"><span>Алфавитный&#160;указатель&#160;структур&#160;данных</span></a></li>
+      <li><a href="hierarchy.html"><span>Иерархия&#160;классов</span></a></li>
+      <li><a href="functions.html"><span>Поля&#160;структур</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Поля данных</a>  </div>
+  <div class="headertitle">
+<div class="title">Структура parameter</div>  </div>
+</div>
+<div class="contents">
+<!-- doxytag: class="parameter" -->
+<p>Структура для обработки и хранения параметров в СУ  
+ <a href="structparameter.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="device_8h_source.html">device.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="pub-attribs"></a>
+Поля данных</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparameter.html#a83bc5020236334a81cdfbc2199f9acbf">id</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparameter.html#a7e2c37a20dc5eeccb9612f92e5796e5b">access</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Уникальный идентификатор параметра заменяет название параметра равен  <a href="#a7e2c37a20dc5eeccb9612f92e5796e5b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparameter.html#a5b4a6abed61fc475b5a749fa97e6f5a7">operation</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Уровень доступа к параметру  <a href="#a5b4a6abed61fc475b5a749fa97e6f5a7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparameter.html#ab3601e2ac228df424aff3888c0f08c5d">physic</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Операции с параметром: чтение, запись, запись во время останова  <a href="#ab3601e2ac228df424aff3888c0f08c5d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparameter.html#a9e2ed9696f8f7aa451083c211a89b3b1">min</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Физический смысл  <a href="#a9e2ed9696f8f7aa451083c211a89b3b1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparameter.html#a735e66d8c60510b2f552842576c29b1f">max</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Минимально допустимое значение для этого параметра.  <a href="#a735e66d8c60510b2f552842576c29b1f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparameter.html#ac49ac394ebd6aad1df8f3b9ea22cacfa">def</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Максимально допустимое значение для этого параметра.  <a href="#ac49ac394ebd6aad1df8f3b9ea22cacfa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparameter.html#a595554c7f847eb7142b71bd4c625fff0">validity</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Значение по умолчанию  <a href="#a595554c7f847eb7142b71bd4c625fff0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionun_type_data.html">unTypeData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparameter.html#aaad8a99b7fec2db78e585eb385714be8">value</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Валидность параметра  <a href="#aaad8a99b7fec2db78e585eb385714be8"></a><br/></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Подробное описание</h2>
+<div class="textblock"><p>Структура для обработки и хранения параметров в СУ </p>
+
+<p>См. определение в файле <a class="el" href="device_8h_source.html">device.h</a> строка <a class="el" href="device_8h_source.html#l00022">22</a></p>
+</div><hr/><h2>Поля</h2>
+<a class="anchor" id="a7e2c37a20dc5eeccb9612f92e5796e5b"></a><!-- doxytag: member="parameter::access" ref="a7e2c37a20dc5eeccb9612f92e5796e5b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char <a class="el" href="structparameter.html#a7e2c37a20dc5eeccb9612f92e5796e5b">parameter::access</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Уникальный идентификатор параметра заменяет название параметра равен </p>
+
+<p>См. определение в файле <a class="el" href="device_8h_source.html">device.h</a> строка <a class="el" href="device_8h_source.html#l00025">25</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ac49ac394ebd6aad1df8f3b9ea22cacfa"></a><!-- doxytag: member="parameter::def" ref="ac49ac394ebd6aad1df8f3b9ea22cacfa" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="structparameter.html#ac49ac394ebd6aad1df8f3b9ea22cacfa">parameter::def</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Максимально допустимое значение для этого параметра. </p>
+
+<p>См. определение в файле <a class="el" href="device_8h_source.html">device.h</a> строка <a class="el" href="device_8h_source.html#l00030">30</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a83bc5020236334a81cdfbc2199f9acbf"></a><!-- doxytag: member="parameter::id" ref="a83bc5020236334a81cdfbc2199f9acbf" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short <a class="el" href="structparameter.html#a83bc5020236334a81cdfbc2199f9acbf">parameter::id</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="device_8h_source.html">device.h</a> строка <a class="el" href="device_8h_source.html#l00024">24</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a735e66d8c60510b2f552842576c29b1f"></a><!-- doxytag: member="parameter::max" ref="a735e66d8c60510b2f552842576c29b1f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="structparameter.html#a735e66d8c60510b2f552842576c29b1f">parameter::max</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Минимально допустимое значение для этого параметра. </p>
+
+<p>См. определение в файле <a class="el" href="device_8h_source.html">device.h</a> строка <a class="el" href="device_8h_source.html#l00029">29</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a9e2ed9696f8f7aa451083c211a89b3b1"></a><!-- doxytag: member="parameter::min" ref="a9e2ed9696f8f7aa451083c211a89b3b1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="structparameter.html#a9e2ed9696f8f7aa451083c211a89b3b1">parameter::min</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Физический смысл </p>
+
+<p>См. определение в файле <a class="el" href="device_8h_source.html">device.h</a> строка <a class="el" href="device_8h_source.html#l00028">28</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a5b4a6abed61fc475b5a749fa97e6f5a7"></a><!-- doxytag: member="parameter::operation" ref="a5b4a6abed61fc475b5a749fa97e6f5a7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char <a class="el" href="structparameter.html#a5b4a6abed61fc475b5a749fa97e6f5a7">parameter::operation</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Уровень доступа к параметру </p>
+
+<p>См. определение в файле <a class="el" href="device_8h_source.html">device.h</a> строка <a class="el" href="device_8h_source.html#l00026">26</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ab3601e2ac228df424aff3888c0f08c5d"></a><!-- doxytag: member="parameter::physic" ref="ab3601e2ac228df424aff3888c0f08c5d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char <a class="el" href="structparameter.html#ab3601e2ac228df424aff3888c0f08c5d">parameter::physic</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Операции с параметром: чтение, запись, запись во время останова </p>
+
+<p>См. определение в файле <a class="el" href="device_8h_source.html">device.h</a> строка <a class="el" href="device_8h_source.html#l00027">27</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a595554c7f847eb7142b71bd4c625fff0"></a><!-- doxytag: member="parameter::validity" ref="a595554c7f847eb7142b71bd4c625fff0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char <a class="el" href="structparameter.html#a595554c7f847eb7142b71bd4c625fff0">parameter::validity</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Значение по умолчанию </p>
+
+<p>См. определение в файле <a class="el" href="device_8h_source.html">device.h</a> строка <a class="el" href="device_8h_source.html#l00031">31</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aaad8a99b7fec2db78e585eb385714be8"></a><!-- doxytag: member="parameter::value" ref="aaad8a99b7fec2db78e585eb385714be8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="unionun_type_data.html">unTypeData</a> <a class="el" href="structparameter.html#aaad8a99b7fec2db78e585eb385714be8">parameter::value</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Валидность параметра </p>
+
+<p>См. определение в файле <a class="el" href="device_8h_source.html">device.h</a> строка <a class="el" href="device_8h_source.html#l00032">32</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов структуры находятся в файле:<ul>
+<li>src/user/device/<a class="el" href="device_8h_source.html">device.h</a></li>
+</ul>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:26. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/board/test/blink_led.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/board/test/blink_led.cpp</div>  </div>
+</div>
+<div class="contents">
+<a href="blink__led_8cpp.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="blink__led_8h.html">blink_led.h</a>&quot;</span>
+<a name="l00002"></a>00002 
+<a name="l00003"></a><a class="code" href="class_blink_led.html#ae3fbaa7a6a41ccd0ee40a5911cf4de07">00003</a> <a class="code" href="class_blink_led.html#ae3fbaa7a6a41ccd0ee40a5911cf4de07">BlinkLed::BlinkLed</a>()
+<a name="l00004"></a>00004   : numLed(0)
+<a name="l00005"></a>00005 {
+<a name="l00006"></a>00006 
+<a name="l00007"></a>00007 }
+<a name="l00008"></a>00008 
+<a name="l00009"></a><a class="code" href="class_blink_led.html#afde7408ac765e72cd78939d51f1c8efc">00009</a> <span class="keywordtype">void</span> <a class="code" href="class_blink_led.html#afde7408ac765e72cd78939d51f1c8efc">BlinkLed::prvSetupHardware</a>()
+<a name="l00010"></a>00010 {
+<a name="l00011"></a>00011   GPIO_InitTypeDef GPIO_InitStructure;
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013   <span class="comment">// Configure pin in output push/pull mode</span>
+<a name="l00014"></a>00014   GPIO_InitStructure.Pin = <a class="code" href="blink__led_8h.html#af091155a3d1b0ce24cb4f5ea9627e863">BLINK_PIN_MASK</a>(<a class="code" href="blink__led_8h.html#a8c3ae51eb8a6422b636ac8b05584c1ea">BLINK_PIN_NUMBER1</a>);
+<a name="l00015"></a>00015   GPIO_InitStructure.Speed = GPIO_SPEED_FAST;
+<a name="l00016"></a>00016   GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP;
+<a name="l00017"></a>00017   GPIO_InitStructure.Pull = GPIO_NOPULL;
+<a name="l00018"></a>00018   HAL_GPIO_Init(<a class="code" href="blink__led_8h.html#ae33d9eec36eda04d9dcab64b88087fbb">BLINK_GPIOx</a>(<a class="code" href="blink__led_8h.html#a69a9f2b5ce8305aef2b18afaa3e3333f">BLINK_PORT_NUMBER1</a>), &amp;GPIO_InitStructure);
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020   GPIO_InitStructure.Pin = <a class="code" href="blink__led_8h.html#af091155a3d1b0ce24cb4f5ea9627e863">BLINK_PIN_MASK</a>(<a class="code" href="blink__led_8h.html#a83641d7f3d3a9e0fa970cf3770c03d10">BLINK_PIN_NUMBER2</a>);
+<a name="l00021"></a>00021   GPIO_InitStructure.Speed = GPIO_SPEED_FAST;
+<a name="l00022"></a>00022   GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP;
+<a name="l00023"></a>00023   GPIO_InitStructure.Pull = GPIO_NOPULL;
+<a name="l00024"></a>00024   HAL_GPIO_Init(<a class="code" href="blink__led_8h.html#ae33d9eec36eda04d9dcab64b88087fbb">BLINK_GPIOx</a>(<a class="code" href="blink__led_8h.html#a51b21222cc4735031175a8112df63207">BLINK_PORT_NUMBER2</a>), &amp;GPIO_InitStructure);
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026   GPIO_InitStructure.Pin = <a class="code" href="blink__led_8h.html#af091155a3d1b0ce24cb4f5ea9627e863">BLINK_PIN_MASK</a>(<a class="code" href="blink__led_8h.html#a863331ab4c335e22e5502b31b22e3d4b">BLINK_PIN_NUMBER3</a>);
+<a name="l00027"></a>00027   GPIO_InitStructure.Speed = GPIO_SPEED_FAST;
+<a name="l00028"></a>00028   GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP;
+<a name="l00029"></a>00029   GPIO_InitStructure.Pull = GPIO_NOPULL;
+<a name="l00030"></a>00030   HAL_GPIO_Init(<a class="code" href="blink__led_8h.html#ae33d9eec36eda04d9dcab64b88087fbb">BLINK_GPIOx</a>(<a class="code" href="blink__led_8h.html#ac366f2d2873dfaa898839a648e3aa7a3">BLINK_PORT_NUMBER3</a>), &amp;GPIO_InitStructure);
+<a name="l00031"></a>00031 }
+<a name="l00032"></a>00032 
+<a name="l00033"></a><a class="code" href="class_blink_led.html#aff31dba7300b2e5403881019e3d9a8f6">00033</a> <span class="keywordtype">void</span> <a class="code" href="class_blink_led.html#aff31dba7300b2e5403881019e3d9a8f6">BlinkLed::prvLedBlink</a>(<span class="keywordtype">void</span> *pdTASK_CODE)
+<a name="l00034"></a>00034 {
+<a name="l00035"></a>00035   (void)(pdTASK_CODE);
+<a name="l00036"></a>00036   <span class="keywordflow">while</span>(1) {
+<a name="l00037"></a>00037     turnOff();
+<a name="l00038"></a>00038     HAL_Delay(500);
+<a name="l00039"></a>00039     turnOn();
+<a name="l00040"></a>00040     HAL_Delay(500);
+<a name="l00041"></a>00041   }
+<a name="l00042"></a>00042 }
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:23. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>
