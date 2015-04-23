@@ -11,7 +11,7 @@ static void powerOffTimer(const void *argument)
 {
   (void)argument;
 
-  if (!isPowerGood()) {
+  if (!isUpsGood()) {
     backupSaveParameter(RTC_BKP_DR1, ++timeMs);
   }
 }
@@ -19,7 +19,7 @@ static void powerOffTimer(const void *argument)
 void testPowerOffInit()
 {
   // Раскомментировать для получения значения времени отключения питания
-  timeMs = backupRestoreParameter(RTC_BKP_DR1);
+//  timeMs = backupRestoreParameter(RTC_BKP_DR1);
 
   osTimerDef_t timerDef = {powerOffTimer};
   osTimerId timerId = osTimerCreate(&timerDef, osTimerPeriodic, NULL);
