@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/board/host/host.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/board/host/host.h</div>  </div>
+</div>
+<div class="contents">
+<a href="host_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef HOST_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define HOST_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &quot;<a class="code" href="board_8h.html">board.h</a>&quot;</span>
+<a name="l00005"></a>00005 
+<a name="l00006"></a><a class="code" href="host_8h.html#af61d1a4314492f819fd09103d112bdd9">00006</a> <span class="preprocessor">#define HOST_BUF_SIZE   256</span>
+<a name="l00007"></a>00007 <span class="preprocessor"></span>
+<a name="l00008"></a><a class="code" href="struct_stat_host_def.html">00008</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+<a name="l00009"></a><a class="code" href="struct_stat_host_def.html#a66d2b9aa184b03c9c9fdc21bc8afede7">00009</a>   uint32_t <a class="code" href="struct_stat_host_def.html#a66d2b9aa184b03c9c9fdc21bc8afede7">txGood</a>;
+<a name="l00010"></a><a class="code" href="struct_stat_host_def.html#a7b32e04a4b032ee170bba9b802b3326b">00010</a>   uint32_t <a class="code" href="struct_stat_host_def.html#a7b32e04a4b032ee170bba9b802b3326b">rxGood</a>;
+<a name="l00011"></a><a class="code" href="struct_stat_host_def.html#a1df5b3636acfca5345e9aca79779d464">00011</a>   uint32_t <a class="code" href="struct_stat_host_def.html#a1df5b3636acfca5345e9aca79779d464">ovrFlagError</a>;
+<a name="l00012"></a><a class="code" href="struct_stat_host_def.html#a98dc69340de36ae5ad0030a8dff3dd70">00012</a>   uint32_t <a class="code" href="struct_stat_host_def.html#a98dc69340de36ae5ad0030a8dff3dd70">crcError</a>;
+<a name="l00013"></a><a class="code" href="struct_stat_host_def.html#a8867a1c8664427c7c58dc9266bed51cc">00013</a>   uint32_t <a class="code" href="struct_stat_host_def.html#a8867a1c8664427c7c58dc9266bed51cc">sizeError</a>;
+<a name="l00014"></a><a class="code" href="struct_stat_host_def.html#a9354d42880604180005a29e637732ede">00014</a>   uint32_t <a class="code" href="struct_stat_host_def.html#a9354d42880604180005a29e637732ede">timeoutError</a>;
+<a name="l00015"></a><a class="code" href="struct_stat_host_def.html#a20e4f57e696268b1476d22fb9492c06e">00015</a>   uint32_t <a class="code" href="struct_stat_host_def.html#a20e4f57e696268b1476d22fb9492c06e">txError</a>;
+<a name="l00016"></a>00016 } <a class="code" href="struct_stat_host_def.html">StatHostDef</a>;
+<a name="l00017"></a>00017 
+<a name="l00018"></a>00018 <span class="keyword">extern</span> <a class="code" href="struct_stat_host_def.html">StatHostDef</a> <a class="code" href="host_8cpp.html#ae700f858181a4b0f44df4b4f4930ac34">statHost</a>;
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00021"></a>00021 <span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {
+<a name="l00022"></a>00022 <span class="preprocessor">#endif</span>
+<a name="l00023"></a>00023 <span class="preprocessor"></span>
+<a name="l00028"></a>00028 <span class="keywordtype">void</span> <a class="code" href="host_8cpp.html#ae7e5d2042286ee472575bf72b7de9111" title="Функция обработки прерывания по приёму SPI4.">hostRxIRQHandler</a>(<span class="keywordtype">void</span>);
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span>}
+<a name="l00032"></a>00032 <span class="preprocessor">#endif</span>
+<a name="l00033"></a>00033 <span class="preprocessor"></span>
+<a name="l00038"></a>00038 <span class="keywordtype">void</span> <a class="code" href="host_8cpp.html#a829d2cc46a867eef155da5b1ca654963" title="Инициализация драйвера работы с контроллером визуализации (SPI4-Slave)">hostInit</a>();
+<a name="l00039"></a>00039 
+<a name="l00045"></a>00045 osSemaphoreId <a class="code" href="host_8cpp.html#af5e10e18de58109f9ab14e6ef9f0d833" title="Создание семафора драйвера работы с контроллером визуализации Семафор необходим для сообщения задачи ...">getHostSemaphore</a>();
+<a name="l00046"></a>00046 
+<a name="l00053"></a>00053 <span class="keywordtype">int</span> <a class="code" href="host_8cpp.html#a3538db2e7e2e52121a1ee284f52cb3bb" title="Чтение данных из буфера приёма от контроллера визуализации">hostReadData</a>(uint8_t *data);
+<a name="l00054"></a>00054 
+<a name="l00063"></a>00063 <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="host_8cpp.html#a4430dce308818bdf8bb25917a33d59c8" title="Отправка данных контроллеру визуализации">hostWriteData</a>(uint8_t *data, <span class="keywordtype">int</span> size, uint32_t timeout = 1000);
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065 <span class="preprocessor">#endif // HOST_H</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:23. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

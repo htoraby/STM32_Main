@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/protection/supply/protection_imbalance_voltage_input.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/protection/supply/protection_imbalance_voltage_input.cpp</div>  </div>
+</div>
+<div class="contents">
+<a href="protection__imbalance__voltage__input_8cpp.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="protection__imbalance__voltage__input_8h.html">protection_imbalance_voltage_input.h</a>&quot;</span>
+<a name="l00002"></a>00002 
+<a name="l00003"></a><a class="code" href="class_protection_imbalance_voltage_input.html#a657f1c620da8da45fd70ff76e8b649b0">00003</a> <a class="code" href="class_protection_imbalance_voltage_input.html#a657f1c620da8da45fd70ff76e8b649b0">ProtectionImbalanceVoltageInput::ProtectionImbalanceVoltageInput</a>()
+<a name="l00004"></a>00004 {
+<a name="l00005"></a>00005   <a class="code" href="class_protection.html#a19268efce822959480829d59d31826ca" title="id параметров защиты">idMode_</a>= <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa4ac094c72b0534872adca7987bf82727" title="Защита &quot;Дисбаланс напряжения&quot;.">CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_MODE</a>;
+<a name="l00006"></a>00006   <a class="code" href="class_protection.html#a3d008718d0dd7bc1b4db9b9e244e2383" title="id Флаг запрещающего параметра">idPrevent_</a>= <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfab032323df3968aef09862ae121a33071" title="Параметр запрещающий запуск">CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PREVENT</a>;
+<a name="l00007"></a>00007   <a class="code" href="class_protection.html#a8a86748e2445f254259983e97d7c4dea" title="id задержка активации защиты">idActivDelay_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaba1363e203964cee92592a8a877da1da" title="Задержка активации уставка">CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY</a>;
+<a name="l00008"></a>00008   <a class="code" href="class_protection.html#ac28447b4c01fcee3c6de01b6e1f99da2" title="id задержка срабатывания защиты">idTripDelay_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa7bde32ce9a2ddfea2934b2a7472ad0b6" title="Задержка срабатывания уставка">CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY</a>;
+<a name="l00009"></a>00009   <a class="code" href="class_protection.html#a5ae8c6b40c41c02bcda4764dc4882f90" title="id задержка АПВ защиты">idRestartDelay_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfae188140003027b6acbce54c7823c5a4b" title="Задержка АПВ уставка">CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY</a>;
+<a name="l00010"></a>00010   <a class="code" href="class_protection.html#a49c2efad198e74ccd48543e685881266" title="id количество АПВ">idRestartLimit_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa353c232856de765391492e8987bc12f1" title="Количество АПВ уставка">CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_LIMIT</a>;
+<a name="l00011"></a>00011   <a class="code" href="class_protection.html#a607942ac6f46f09220a6841ccf349f56" title="id Время сброса количества АПВ">idRestartResetTime_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa0c531307748f586e43ae3ee8ef325faf" title="Автосброс счетчика АПВ">CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_RESET</a>;
+<a name="l00012"></a>00012   <a class="code" href="class_protection.html#ab49e9871a127757d87f94d76864c49b1" title="id граница срабатывания защиты">idTripSetpoint_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa755b950d08cc168994715259e2e72a9c" title="Уставка срабатывания защиты">CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT</a>;
+<a name="l00013"></a>00013   <span class="keywordflow">if</span> (1)  <span class="comment">// По ТТ СНГ</span>
+<a name="l00014"></a>00014     <a class="code" href="class_protection.html#aa9e310942cce88446b1f47aadf8f3723" title="id граница АПВ">idRestartSetpoint_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa755b950d08cc168994715259e2e72a9c" title="Уставка срабатывания защиты">CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT</a>;
+<a name="l00015"></a>00015   <span class="keywordflow">else</span>
+<a name="l00016"></a>00016     <a class="code" href="class_protection.html#aa9e310942cce88446b1f47aadf8f3723" title="id граница АПВ">idRestartSetpoint_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa6c27695ce7944178ed38ffb62ce40238" title="Условие АПВ уставка">CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_SETPOINT</a>;
+<a name="l00017"></a>00017   <a class="code" href="class_protection.html#ace700a9f47d7152d3dd255e3d48a2f5b" title="id Параметр 1">idParam_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa776014af760511e6a19372492af6f798" title="Уставка Параметр защиты, для этой защиты работать по ВРП">CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER</a>;
+<a name="l00018"></a>00018   <a class="code" href="class_protection.html#abe83013e52b98b5c65212dbe589d68c6" title="id Флаг что защита в состоянии АПВ">idRestartFlag_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa96d05886b2139c49a6d60e5300241885" title="Текущий параметр Флаг что защита в АПВ">CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FLAG</a>;
+<a name="l00019"></a>00019   <a class="code" href="class_protection.html#a7dcd955bb34edc02108837b4462de534" title="id Флаг что защита в состоянии БЛОК">idBlockFlag_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa7977288f19f8be0ae5eafe497bff5db0">CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_BLOCK_FLAG</a>;
+<a name="l00020"></a>00020   <a class="code" href="class_protection.html#a05de80f07ef003b57a47354a7e5c93d3" title="id Состояние автомата">idState_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa975b8c18a8e876b081ce3bd6f7c5ea8b" title="Текущий параметр состояние автомата">CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_STATE</a>;
+<a name="l00021"></a>00021   <a class="code" href="class_protection.html#a534abfe01f4740afb17d49b7c70e7b54" title="id Таймера">idTimer_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaba9871cbfec5bebd97da20b2fbd716cd" title="Текущий параметр Фиксированное время">CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME</a>;
+<a name="l00022"></a>00022   <a class="code" href="class_protection.html#a864f0082ae4f278efa87a83fe3a064c4" title="id Счётчика АПВ">idRestartCount_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaf122c0048c175552da6a91b1676180c1" title="Текущий параметр Количество АПВ">CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_COUNT</a>;
+<a name="l00023"></a>00023   <a class="code" href="class_protection.html#aa2dc723f7f83d7868270a05b15cdfa6a" title="id Время первого срабатывания АПВ">idRestartFirstTime_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaeeb02b80af575ef42138ce2b5f054dbb" title="Текущий параметр Время первого АПВ">CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FIRST_TIME</a>;
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025   <a class="code" href="class_protection.html#af300db56e96fca2b72d5c2fb3a1e373d" title="Причина запуска">lastReasonRun_</a> = <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a35bd47ddc14b81c1eeea14a00b411edb" title="&quot;АПВ по защите: Дисбаланс напряжения&quot;">LastReasonRunApvImbalanceVoltIn</a>;
+<a name="l00026"></a>00026   <a class="code" href="class_protection.html#a438a0007201523d868664947d82cf963" title="Причина останова">lastReasonStop_</a> = <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffa8e27a163b66cf7965c591928289de185" title="&quot;Дисбаланс напряжения&quot;">LastReasonStopImbalanceVoltIn</a>;
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028   <a class="code" href="class_protection.html#ad9f00b97300ac27e31ff1aa5a46b099a" title="Индексы событий для записи в журнал">protReactEventId_</a> = <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfac1760bf9532439b14adda7989ca1dede" title="&quot;Сработала защита: Дисбаланс напряжения&quot;">ImbalanceVoltInProtReactId</a>;
+<a name="l00029"></a>00029   <a class="code" href="class_protection.html#ae72394ac48c703be019c6defa3938e6e">apvEventId_</a> = <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfac2c75a0099805d68ae1ac7f9ad1a2454" title="&quot;АПВ по защите: Дисбаланс напряжения&quot;">ImbalanceVoltInApvId</a>;
+<a name="l00030"></a>00030   <a class="code" href="class_protection.html#a7dd90b182f11cb40b0a101504dbb3a82">apvDisabledEventId_</a> = <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaa649d519a6f999d5ed9f7f1c807d2346" title="&quot;АПВ запрещен: Дисбаланс напряжения&quot;">ImbalanceVoltInApvDisabledId</a>;
+<a name="l00031"></a>00031   <a class="code" href="class_protection.html#ac9a9ddcf3754e4341ac9ae211b8eaa51">protBlockedEventId_</a> = <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa4e614e14af59770f6b37fd5cb13b02b7" title="&quot;Блокировка по защите: Дисбаланс напряжения&quot;">ImbalanceVoltInProtBlockedId</a>;
+<a name="l00032"></a>00032 }
+<a name="l00033"></a>00033 
+<a name="l00034"></a><a class="code" href="class_protection_imbalance_voltage_input.html#aaf241819701ab0ebbd1b82a803e716d1">00034</a> <a class="code" href="class_protection_imbalance_voltage_input.html#aaf241819701ab0ebbd1b82a803e716d1">ProtectionImbalanceVoltageInput::~ProtectionImbalanceVoltageInput</a>()
+<a name="l00035"></a>00035 {
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037 }
+<a name="l00038"></a>00038 
+<a name="l00039"></a><a class="code" href="class_protection_imbalance_voltage_input.html#ae34e9b03c4bb04b10c7bed9ba6aa6431">00039</a> <span class="keywordtype">void</span> <a class="code" href="class_protection_imbalance_voltage_input.html#ae34e9b03c4bb04b10c7bed9ba6aa6431" title="Метод получения индивидуальных уставок защит">ProtectionImbalanceVoltageInput::getOtherSetpointProt</a>()
+<a name="l00040"></a>00040 {
+<a name="l00041"></a>00041   <a class="code" href="class_protection.html#a6b3cf8e122360f6db67831f0f3f627dc" title="Уставка: Параметр 1.">timerDifStartFlag_</a> = <a class="code" href="user__main_8cpp.html#ab926427831a5d518f567ee30b2f08804">ksu</a>.<a class="code" href="class_device.html#a073b111db61bdbfc67df04e0acaa05ef" title="Метод получения значения параметра по id.">getValue</a>(<a class="code" href="class_protection.html#ace700a9f47d7152d3dd255e3d48a2f5b" title="id Параметр 1">idParam_</a>);
+<a name="l00042"></a>00042 }
+<a name="l00043"></a>00043 
+<a name="l00044"></a><a class="code" href="class_protection_imbalance_voltage_input.html#a6d3ae51072669b708287dde097c7d224">00044</a> <span class="keywordtype">bool</span> <a class="code" href="class_protection_imbalance_voltage_input.html#a6d3ae51072669b708287dde097c7d224" title="Метод проверки условия срабатывания защиты">ProtectionImbalanceVoltageInput::checkAlarm</a>()
+<a name="l00045"></a>00045 {
+<a name="l00046"></a>00046   <span class="keywordflow">return</span> <a class="code" href="class_protection.html#a3faa0c8952e7e4443a86b39ca8b93f8d" title="Метод проверки превышения текущего значения отсительно уставки">Protection::isHigherLimit</a>(<a class="code" href="class_protection.html#a4364e0200bcc4a0c10b25a32d86642f7" title="Уставка: граница срабатывания защиты">tripSetpoint_</a>);
+<a name="l00047"></a>00047 }
+<a name="l00048"></a>00048 
+<a name="l00049"></a><a class="code" href="class_protection_imbalance_voltage_input.html#a47521f076725c099d4131a0e37b7b06a">00049</a> <span class="keywordtype">bool</span> <a class="code" href="class_protection_imbalance_voltage_input.html#a47521f076725c099d4131a0e37b7b06a" title="Метод проверки выполнения условия АПВ по значению параметра">ProtectionImbalanceVoltageInput::checkPrevent</a>()
+<a name="l00050"></a>00050 {
+<a name="l00051"></a>00051   <span class="keywordflow">if</span> (<a class="code" href="class_protection.html#ae84e5a12a3b8231214a9f8bef2aad8ff" title="Флаг что защита в состоянии АПВ">restart_</a>)
+<a name="l00052"></a>00052     <span class="keywordflow">return</span> <a class="code" href="class_protection.html#a3faa0c8952e7e4443a86b39ca8b93f8d" title="Метод проверки превышения текущего значения отсительно уставки">Protection::isHigherLimit</a>(<a class="code" href="class_protection.html#a1ae05a6f8fac838367d94f5dc652ad90" title="Уставка: граница АПВ">restartSetpoint_</a>);
+<a name="l00053"></a>00053   <span class="keywordflow">else</span>
+<a name="l00054"></a>00054     <span class="keywordflow">return</span> <a class="code" href="class_protection.html#a3faa0c8952e7e4443a86b39ca8b93f8d" title="Метод проверки превышения текущего значения отсительно уставки">Protection::isHigherLimit</a>(<a class="code" href="class_protection.html#a4364e0200bcc4a0c10b25a32d86642f7" title="Уставка: граница срабатывания защиты">tripSetpoint_</a>);
+<a name="l00055"></a>00055 }
+<a name="l00056"></a>00056 
+<a name="l00057"></a><a class="code" href="class_protection_imbalance_voltage_input.html#a68a114d85eb3ca2d5741f35c0a9d37ef">00057</a> <span class="keywordtype">float</span> <a class="code" href="class_protection_imbalance_voltage_input.html#a68a114d85eb3ca2d5741f35c0a9d37ef" title="Пересчёт текущего значения для сравнения с уставкой">ProtectionImbalanceVoltageInput::calcValue</a>()
+<a name="l00058"></a>00058 {
+<a name="l00059"></a>00059   <span class="keywordflow">return</span> <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa7164e7f463f54ed72cced05098ddd044" title="Дисбаланс входного напряжения">CCS_VOLTAGE_IMBALANCE_IN</a>);
+<a name="l00060"></a>00060 }
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

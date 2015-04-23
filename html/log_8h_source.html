@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/log/log.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/log/log.h</div>  </div>
+</div>
+<div class="contents">
+<a href="log_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef LOG_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define LOG_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &quot;<a class="code" href="flash__ext_8h.html">flash_ext.h</a>&quot;</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="rtc_8h.html">rtc.h</a>&quot;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="fram_8h.html">fram.h</a>&quot;</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include &quot;<a class="code" href="log__idlist_8h.html">log_idlist.h</a>&quot;</span>
+<a name="l00008"></a>00008 
+<a name="l00012"></a><a class="code" href="log_8h.html#afb6901ec50cf6f307fbc3f398a6abb58">00012</a> <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00013"></a><a class="code" href="log_8h.html#afb6901ec50cf6f307fbc3f398a6abb58a1d5334e520df9235d5f47d32c9d76182">00013</a>   <a class="code" href="log_8h.html#afb6901ec50cf6f307fbc3f398a6abb58a1d5334e520df9235d5f47d32c9d76182">EventTypeLog</a>,
+<a name="l00014"></a><a class="code" href="log_8h.html#afb6901ec50cf6f307fbc3f398a6abb58aa0c4e54409db07d39a97dba9e81058f4">00014</a>   <a class="code" href="log_8h.html#afb6901ec50cf6f307fbc3f398a6abb58aa0c4e54409db07d39a97dba9e81058f4">DataTypeLog</a>,
+<a name="l00015"></a><a class="code" href="log_8h.html#afb6901ec50cf6f307fbc3f398a6abb58ae73016188d512c838533d33f2c7936fe">00015</a>   <a class="code" href="log_8h.html#afb6901ec50cf6f307fbc3f398a6abb58ae73016188d512c838533d33f2c7936fe">RunTypeLog</a>,
+<a name="l00016"></a><a class="code" href="log_8h.html#afb6901ec50cf6f307fbc3f398a6abb58a76db876f602acce97951237c938aa9c8">00016</a>   <a class="code" href="log_8h.html#afb6901ec50cf6f307fbc3f398a6abb58a76db876f602acce97951237c938aa9c8">AlarmTypeLog</a>,
+<a name="l00017"></a><a class="code" href="log_8h.html#afb6901ec50cf6f307fbc3f398a6abb58a1d1dcd574e64629d2bb30eb75bd5c1f3">00017</a>   <a class="code" href="log_8h.html#afb6901ec50cf6f307fbc3f398a6abb58a1d1dcd574e64629d2bb30eb75bd5c1f3">TmsTypeLog</a>,
+<a name="l00018"></a><a class="code" href="log_8h.html#afb6901ec50cf6f307fbc3f398a6abb58a425dcb5da9214664f12afa23f4118d7c">00018</a>   <a class="code" href="log_8h.html#afb6901ec50cf6f307fbc3f398a6abb58a425dcb5da9214664f12afa23f4118d7c">DebugTypeLog</a>,
+<a name="l00019"></a>00019 } <a class="code" href="log_8h.html#afb6901ec50cf6f307fbc3f398a6abb58" title="Тип журнала">TypeLog</a>;
+<a name="l00020"></a>00020 
+<a name="l00024"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8">00024</a> <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00025"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8aef99476d2cfda79fa1e6d1f8b13f10c6">00025</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8aef99476d2cfda79fa1e6d1f8b13f10c6" title="Пуск">RunCode</a>              = 1,           
+<a name="l00026"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8abb93cfb06663530e181e55f379a21a1d">00026</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8abb93cfb06663530e181e55f379a21a1d" title="Стоп">StopCode</a>             = 2,           
+<a name="l00027"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8ad84ea5d64e23fe025befcad50d20ba11">00027</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8ad84ea5d64e23fe025befcad50d20ba11" title="Изменение режима работы СУ">ModeCode</a>             = 3,           
+<a name="l00028"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a4e86dae90a6ef4421883fdba5c00fefe">00028</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a4e86dae90a6ef4421883fdba5c00fefe" title="Блокировка СУ">BlockCode</a>            = 4,           
+<a name="l00029"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a17fe4b32a988aa8658a0e7c4594646d9">00029</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a17fe4b32a988aa8658a0e7c4594646d9" title="Деблокировка СУ">UnblockCode</a>          = 5,           
+<a name="l00030"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a19cfd247e1f563f71b7b4c1c05153fab">00030</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a19cfd247e1f563f71b7b4c1c05153fab" title="Задержка срабатывания">TripDelayCode</a>        = 8,           
+<a name="l00031"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a5462907cda7b49883be23cd094333c76">00031</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a5462907cda7b49883be23cd094333c76" title="Задержка АПВ">RestartDelayCode</a>     = 9,           
+<a name="l00032"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a84ad7128f0901df93aa78fc86b5b2bef">00032</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a84ad7128f0901df93aa78fc86b5b2bef" title="ОткрытаДверь">OpenDoorOperatorCode</a> = 12,          
+<a name="l00033"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a8d165f4ceee23c67fbf3d34d75effa92">00033</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a8d165f4ceee23c67fbf3d34d75effa92" title="ИзмПарам">SetpointCode</a>         = 13,          
+<a name="l00034"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a147823f760e1fcd4bfbdb69e16ced52e">00034</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a147823f760e1fcd4bfbdb69e16ced52e" title="Удаление хронологии">DelLogCode</a>           = 14,          
+<a name="l00035"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a81136291431ba6c2b92a83f71e9817c5">00035</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a81136291431ba6c2b92a83f71e9817c5" title="Считывание хронологии">CopyLogCode</a>          = 15,          
+<a name="l00036"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8afcdfe47095cf1aa3165f3e7c5965633c">00036</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8afcdfe47095cf1aa3165f3e7c5965633c" title="Сброс счётчиков наработки">ResetCountsCode</a>      = 18,          
+<a name="l00037"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8acc5b255b079924621d5e09a6f7bef227">00037</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8acc5b255b079924621d5e09a6f7bef227" title="ЗаписьУскРеж">FastModeCode</a>         = 28,          
+<a name="l00038"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a978c1f7bdef4921565466d488ec85f6c">00038</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a978c1f7bdef4921565466d488ec85f6c" title="ЗаписьНормРеж">NormModeCode</a>         = 29,          
+<a name="l00039"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a946b0ead2bc0ce5b42407ae9c32ef13e">00039</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a946b0ead2bc0ce5b42407ae9c32ef13e" title="ЗаписьТМС">TmsCode</a>              = 32,          
+<a name="l00040"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a094852848d2f7bd32806cb256d71eded">00040</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a094852848d2f7bd32806cb256d71eded" title="Связь ТМС">ConnectTmsCode</a>       = 33,          
+<a name="l00041"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a300825b163c6b3b92887c67208b5574e">00041</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a300825b163c6b3b92887c67208b5574e" title="Связь ЧРП">ConnectVsdCode</a>       = 37,          
+<a name="l00042"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a27e36c0e767f209e7379c418368308c7">00042</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a27e36c0e767f209e7379c418368308c7" title="Связь ИМ1.">ConnectEmCode</a>        = 38,          
+<a name="l00043"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a52f7f9a6e7003344c308fdbd1f21e859">00043</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a52f7f9a6e7003344c308fdbd1f21e859" title="Турб.Вращ.">TurbineRotationCode</a>  = 44,          
+<a name="l00044"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a538328204d099c350db68da3ccdc0f58">00044</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a538328204d099c350db68da3ccdc0f58" title="Чередования фаз">SequencePhaseCode</a>    = 45,          
+<a name="l00045"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8abb88ea2f3d6a67fab5a7c47e51bffa01">00045</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8abb88ea2f3d6a67fab5a7c47e51bffa01" title="Взлом СУ">HackSuCode</a>           = 49,          
+<a name="l00046"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a21740d320299507d2578d1e67dc9f3e9">00046</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a21740d320299507d2578d1e67dc9f3e9" title="Дверь открыт">OpenDoorAutoCode</a>     = 66,          
+<a name="l00047"></a>00047 
+<a name="l00048"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8aaa46df7c5442a4e315971e10fe1b2eda">00048</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8aaa46df7c5442a4e315971e10fe1b2eda" title="Событие защиты">ProtectCode</a>          = 100,         
+<a name="l00049"></a><a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a844e0fa87d23e56b08cab436cf597c86">00049</a>   <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a844e0fa87d23e56b08cab436cf597c86" title="Событие откл/вкл питания">PowerCode</a>,                          
+<a name="l00050"></a>00050 } <a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8" title="Код события">EventCode</a>;
+<a name="l00051"></a>00051 
+<a name="l00055"></a><a class="code" href="log_8h.html#a2628ea8d12e8b2563c32f05dc7fff6fa">00055</a> <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00056"></a><a class="code" href="log_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faae86c570ee4c4d9840252998f639b14ad">00056</a>   <a class="code" href="log_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faae86c570ee4c4d9840252998f639b14ad">NoneType</a>,
+<a name="l00057"></a><a class="code" href="log_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa6e8b281159b4f6beb403ed995a705214">00057</a>   <a class="code" href="log_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa6e8b281159b4f6beb403ed995a705214">OperatorType</a>,
+<a name="l00058"></a><a class="code" href="log_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa18db7ade44c35f2239d1b3fe88b05532">00058</a>   <a class="code" href="log_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa18db7ade44c35f2239d1b3fe88b05532">AutoType</a>,
+<a name="l00059"></a><a class="code" href="log_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa618bc39c2eb64f29fa27f15ed1b24bfa">00059</a>   <a class="code" href="log_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa618bc39c2eb64f29fa27f15ed1b24bfa">RemoteType</a>,
+<a name="l00060"></a><a class="code" href="log_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa52f92fe81d555bd749640dbec4a62723">00060</a>   <a class="code" href="log_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa52f92fe81d555bd749640dbec4a62723">ProtType</a>,
+<a name="l00061"></a><a class="code" href="log_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faafe0e76dcf81ffc7b400b57ef17ae3156">00061</a>   <a class="code" href="log_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faafe0e76dcf81ffc7b400b57ef17ae3156">LatchType</a>,
+<a name="l00062"></a>00062 } <a class="code" href="log_8h.html#a2628ea8d12e8b2563c32f05dc7fff6fa" title="Вид события">EventType</a>;
+<a name="l00063"></a>00063 
+<a name="l00067"></a><a class="code" href="log_8h.html#a776283aa5adad955016611bf995a5859">00067</a> <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00069"></a><a class="code" href="log_8h.html#a776283aa5adad955016611bf995a5859ae289323471366123698fb0071f17c793">00069</a>   <a class="code" href="log_8h.html#a776283aa5adad955016611bf995a5859ae289323471366123698fb0071f17c793" title="FlashSpi5.">StartAddrEventLog</a> = 0x00000000,  
+<a name="l00070"></a><a class="code" href="log_8h.html#a776283aa5adad955016611bf995a5859a1b99b00108755a0da997343925878ffd">00070</a>   <a class="code" href="log_8h.html#a776283aa5adad955016611bf995a5859a1b99b00108755a0da997343925878ffd" title="2357+1 сектора">StartAddrDataLog</a>  = 0x00005000,  
+<a name="l00071"></a><a class="code" href="log_8h.html#a776283aa5adad955016611bf995a5859a4eafc1796f683347a79aba9a2ee66819">00071</a>   <a class="code" href="log_8h.html#a776283aa5adad955016611bf995a5859a4eafc1796f683347a79aba9a2ee66819" title="640+1 секторов">StartAddrRunLog</a>   = 0x0093B000,  
+<a name="l00072"></a><a class="code" href="log_8h.html#a776283aa5adad955016611bf995a5859a32653af60770519faaf6e1ca6f0f7527">00072</a>   <a class="code" href="log_8h.html#a776283aa5adad955016611bf995a5859a32653af60770519faaf6e1ca6f0f7527" title="640+1 секторов">StartAddrAlarmLog</a> = 0x00BBC000,  
+<a name="l00073"></a><a class="code" href="log_8h.html#a776283aa5adad955016611bf995a5859abdbec8b2e628f47bc1cc55c2f566efef">00073</a>   <a class="code" href="log_8h.html#a776283aa5adad955016611bf995a5859abdbec8b2e628f47bc1cc55c2f566efef">StartAddrTmsLog</a>   = 0x00E3D000,  
+<a name="l00074"></a>00074 
+<a name="l00075"></a><a class="code" href="log_8h.html#a776283aa5adad955016611bf995a5859acecc0f768d1db5781d3fd8fb606d02f8">00075</a>   <a class="code" href="log_8h.html#a776283aa5adad955016611bf995a5859acecc0f768d1db5781d3fd8fb606d02f8" title="FlashSpi1.">StartAddrDebugLog</a> = 0x00000000,  
+<a name="l00076"></a>00076 } <a class="code" href="log_8h.html#a776283aa5adad955016611bf995a5859" title="Начальные адреса журналов на FLASH.">StartAddrLog</a>;
+<a name="l00077"></a>00077 
+<a name="l00081"></a><a class="code" href="log_8h.html#a5e9978153ed48dbf016c32079588fbb0">00081</a> <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00083"></a><a class="code" href="log_8h.html#a5e9978153ed48dbf016c32079588fbb0ad1ce3953bb947e66a5177be0d80d014f">00083</a>   <a class="code" href="log_8h.html#a5e9978153ed48dbf016c32079588fbb0ad1ce3953bb947e66a5177be0d80d014f" title="FlashSpi5.">EndAddrEventLog</a> = 0x00005000,
+<a name="l00084"></a><a class="code" href="log_8h.html#a5e9978153ed48dbf016c32079588fbb0ad57d99a7d05a66f56efefc4fe13017ed">00084</a>   <a class="code" href="log_8h.html#a5e9978153ed48dbf016c32079588fbb0ad57d99a7d05a66f56efefc4fe13017ed">EndAddrDataLog</a>  = 0x0093B000,
+<a name="l00085"></a><a class="code" href="log_8h.html#a5e9978153ed48dbf016c32079588fbb0a26609d65a4b750be6cc60dcee6266b4f">00085</a>   <a class="code" href="log_8h.html#a5e9978153ed48dbf016c32079588fbb0a26609d65a4b750be6cc60dcee6266b4f">EndAddrRunLog</a>   = 0x00BBC000,
+<a name="l00086"></a><a class="code" href="log_8h.html#a5e9978153ed48dbf016c32079588fbb0a2d909f299e2105bd5a3faf10e1a3a41e">00086</a>   <a class="code" href="log_8h.html#a5e9978153ed48dbf016c32079588fbb0a2d909f299e2105bd5a3faf10e1a3a41e">EndAddrAlarmLog</a> = 0x00E3D000,
+<a name="l00087"></a><a class="code" href="log_8h.html#a5e9978153ed48dbf016c32079588fbb0a4f078a64e0a5e2c42ac3b11f393dcf1f">00087</a>   <a class="code" href="log_8h.html#a5e9978153ed48dbf016c32079588fbb0a4f078a64e0a5e2c42ac3b11f393dcf1f">EndAddrTmsLog</a>   = 0x01000000,
+<a name="l00089"></a><a class="code" href="log_8h.html#a5e9978153ed48dbf016c32079588fbb0a282a8c204f8d9f6d0a5bbe550857642c">00089</a>   <a class="code" href="log_8h.html#a5e9978153ed48dbf016c32079588fbb0a282a8c204f8d9f6d0a5bbe550857642c" title="FlashSpi1.">EndAddrDebugLog</a> = 0x00800000,
+<a name="l00090"></a>00090 } <a class="code" href="log_8h.html#a5e9978153ed48dbf016c32079588fbb0" title="Конечные адреса журналов на FLASH.">EndAddrLog</a>;
+<a name="l00091"></a>00091 
+<a name="l00095"></a><a class="code" href="class_log.html">00095</a> <span class="keyword">class </span><a class="code" href="class_log.html" title="Базовый класс журналов">Log</a>
+<a name="l00096"></a>00096 {
+<a name="l00097"></a>00097 <span class="keyword">public</span>:
+<a name="l00098"></a>00098   <a class="code" href="class_log.html#abafbd1adea9cd4dbefc9cc99af8f325e">Log</a>(<a class="code" href="log_8h.html#afb6901ec50cf6f307fbc3f398a6abb58" title="Тип журнала">TypeLog</a> type);
+<a name="l00099"></a>00099   <a class="code" href="class_log.html#a0fbfda88fbee5027c89f6eb121059360">~Log</a>();
+<a name="l00100"></a>00100 
+<a name="l00104"></a>00104   <span class="keywordtype">void</span> <a class="code" href="class_log.html#a2ad858bd01378935dfea6c5e1e324c01" title="Инициализация журнала">init</a>();
+<a name="l00105"></a>00105 
+<a name="l00110"></a>00110   <span class="keywordtype">void</span> <a class="code" href="class_log.html#a910967de6e35098cedb3589e7210db58" title="Деинициализация журнала Установка адреса в начало StartAddrLog.">deInit</a>();
+<a name="l00111"></a>00111 
+<a name="l00116"></a><a class="code" href="class_log.html#a90e56a0a4e707bfe5fe34819e80996a5">00116</a>   <span class="keyword">static</span> uint32_t <a class="code" href="class_log.html#a90e56a0a4e707bfe5fe34819e80996a5" title="Глобальный индекс записей всех журналов, кроме отладочного">id_</a>;
+<a name="l00117"></a>00117 
+<a name="l00121"></a><a class="code" href="class_log.html#abfebd17b5dc5741f5fd13ffb5ee551d0">00121</a>   <span class="keyword">static</span> uint32_t <a class="code" href="class_log.html#abfebd17b5dc5741f5fd13ffb5ee551d0" title="Глобальный индекс записей отладочного архива">idDebug_</a>;
+<a name="l00122"></a>00122 
+<a name="l00123"></a><a class="code" href="class_log.html#a95028948d046527c775782efa1bd587a">00123</a>   uint32_t <a class="code" href="class_log.html#a95028948d046527c775782efa1bd587a">address</a>()<span class="keyword"> const </span>{
+<a name="l00124"></a>00124     <span class="keywordflow">return</span> <a class="code" href="class_log.html#af324cdd5e5c978d794b8e697f06bc51a">address_</a>;
+<a name="l00125"></a>00125   }
+<a name="l00126"></a>00126 
+<a name="l00127"></a>00127 <span class="keyword">protected</span>:
+<a name="l00136"></a>00136   <a class="code" href="common_8h.html#a90549f45cfc442187c1d769596107d3e">StatusType</a> <a class="code" href="class_log.html#af247932c73fc597292bbc39afeeacadf" title="Метод записи данных в журнал">write</a>(uint8_t *data, uint32_t size, <span class="keywordtype">bool</span> saveId = <span class="keyword">true</span>, <span class="keywordtype">bool</span> endLog = <span class="keyword">false</span>);
+<a name="l00137"></a>00137 
+<a name="l00141"></a><a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1">00141</a>   uint8_t <a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>[256];
+<a name="l00142"></a>00142 
+<a name="l00143"></a><a class="code" href="class_log.html#a8ac664d87d28e183960f616934100379">00143</a>   <a class="code" href="log_8h.html#afb6901ec50cf6f307fbc3f398a6abb58" title="Тип журнала">TypeLog</a> <a class="code" href="class_log.html#a8ac664d87d28e183960f616934100379">type_</a>;
+<a name="l00144"></a>00144 
+<a name="l00145"></a>00145 <span class="keyword">private</span>:
+<a name="l00146"></a><a class="code" href="class_log.html#ade53b2d7c479514ab8c582c34793d026">00146</a>   <a class="code" href="flash__ext_8h.html#a7c50f63d44133ac45b6aedce63db12fb" title="Список SPI каналов задействованых для Flash памяти">FlashSpiNum</a> <a class="code" href="class_log.html#ade53b2d7c479514ab8c582c34793d026">flashSpiNum_</a>;
+<a name="l00147"></a><a class="code" href="class_log.html#a49aaddf920a2f6a0b44de4729a2e7e11">00147</a>   uint32_t <a class="code" href="class_log.html#a49aaddf920a2f6a0b44de4729a2e7e11">addrFram_</a>;
+<a name="l00148"></a>00148 
+<a name="l00149"></a><a class="code" href="class_log.html#af324cdd5e5c978d794b8e697f06bc51a">00149</a>   uint32_t <a class="code" href="class_log.html#af324cdd5e5c978d794b8e697f06bc51a">address_</a>;
+<a name="l00150"></a><a class="code" href="class_log.html#add8f7866123459e21c9cef1c828a2884">00150</a>   uint32_t <a class="code" href="class_log.html#add8f7866123459e21c9cef1c828a2884">startAddr_</a>;
+<a name="l00151"></a><a class="code" href="class_log.html#a6e1cce98d082c54d7ab9929f59c78d3a">00151</a>   uint32_t <a class="code" href="class_log.html#a6e1cce98d082c54d7ab9929f59c78d3a">endAddr_</a>;
+<a name="l00152"></a><a class="code" href="class_log.html#af824ecbd2de22bdc03aefa50eb17714a">00152</a>   uint32_t <a class="code" href="class_log.html#af824ecbd2de22bdc03aefa50eb17714a">sectorSize_</a>;
+<a name="l00153"></a><a class="code" href="class_log.html#a9c7371937c003605e1e6af3640d00fb7">00153</a>   uint32_t <a class="code" href="class_log.html#a9c7371937c003605e1e6af3640d00fb7">addrSectorOld_</a>;
+<a name="l00154"></a>00154 
+<a name="l00155"></a>00155 };
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157 <span class="preprocessor">#endif // LOG_H</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/protocol/novobus/novobus_slave.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/protocol/novobus/novobus_slave.h</div>  </div>
+</div>
+<div class="contents">
+<a href="novobus__slave_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef NOVOBUS_SLAVE_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define NOVOBUS_SLAVE_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &quot;<a class="code" href="define_8h.html">define.h</a>&quot;</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="board_8h.html">board.h</a>&quot;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="host_8h.html">host.h</a>&quot;</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a><a class="code" href="novobus__slave_8h.html#adf1e997bb3d555e280ebfd78a69a9f02">00008</a> <span class="preprocessor">#define MAX_IDS_BUFFER 40 //!&lt; Максимальное количество ID во временом буффере</span>
+<a name="l00009"></a><a class="code" href="novobus__slave_8h.html#a27ac010388bd46cc99067b56b9c05613">00009</a> <span class="preprocessor"></span><span class="preprocessor">#define MAX_ADDRS_BUFFER 10 //!&lt; Максимальное количество адресов во временом буффере</span>
+<a name="l00010"></a>00010 <span class="preprocessor"></span>
+<a name="l00015"></a><a class="code" href="class_novobus_slave.html">00015</a> <span class="keyword">class </span><a class="code" href="class_novobus_slave.html" title="Класс протокола обмена между stm32 и контроллером визуализации">NovobusSlave</a>
+<a name="l00016"></a>00016 {
+<a name="l00017"></a>00017 
+<a name="l00018"></a>00018 <span class="keyword">public</span>:
+<a name="l00022"></a><a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4">00022</a>   <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00023"></a><a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a3f8363d67f3a99756bb63e99b096f7bd">00023</a>     <a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a3f8363d67f3a99756bb63e99b096f7bd">NoneCommand</a>,
+<a name="l00024"></a><a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a707907b12a3c0aa670a19eac8bfdca31">00024</a>     <a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a707907b12a3c0aa670a19eac8bfdca31">StatusCommand</a>,
+<a name="l00025"></a><a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a0a258f4be550a93bfe890efc73eb28d6">00025</a>     <a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a0a258f4be550a93bfe890efc73eb28d6">ReadParamsCommand</a>,
+<a name="l00026"></a><a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4acc088186dde393d32c21a360b1a67a48">00026</a>     <a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4acc088186dde393d32c21a360b1a67a48">WriteParamsCommand</a>,
+<a name="l00027"></a><a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a6364507d1c5d8d3a5c4a2cb6ac148065">00027</a>     <a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a6364507d1c5d8d3a5c4a2cb6ac148065">UpdateParamsCommand</a>,
+<a name="l00028"></a><a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a930f9ff0785b5942ece3207c2396e8f2">00028</a>     <a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a930f9ff0785b5942ece3207c2396e8f2">UpdateEventsCommand</a>,
+<a name="l00029"></a><a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a2b2e9637e767420426a16ba301468d80">00029</a>     <a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4a2b2e9637e767420426a16ba301468d80">ReadEventsCommand</a>,
+<a name="l00030"></a>00030   } <a class="code" href="class_novobus_slave.html#ab1258b26b958649f537dd17d4c43fcb4" title="Комманды протокола &quot;Novobus&quot;.">NovobusCommand</a>;
+<a name="l00031"></a>00031 
+<a name="l00035"></a><a class="code" href="class_novobus_slave.html#afe608093a88304d5a57d5d4e86382e33">00035</a>   <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00036"></a><a class="code" href="class_novobus_slave.html#afe608093a88304d5a57d5d4e86382e33ad82e981f79d1bc601d726e0345060530">00036</a>     <a class="code" href="class_novobus_slave.html#afe608093a88304d5a57d5d4e86382e33ad82e981f79d1bc601d726e0345060530">NoneError</a>,
+<a name="l00037"></a><a class="code" href="class_novobus_slave.html#afe608093a88304d5a57d5d4e86382e33afd38329486c75e140ddc9a719765df86">00037</a>     <a class="code" href="class_novobus_slave.html#afe608093a88304d5a57d5d4e86382e33afd38329486c75e140ddc9a719765df86">CrcError</a>,
+<a name="l00038"></a><a class="code" href="class_novobus_slave.html#afe608093a88304d5a57d5d4e86382e33af0e5fe7a2c6e2de0b83bb5804becf689">00038</a>     <a class="code" href="class_novobus_slave.html#afe608093a88304d5a57d5d4e86382e33af0e5fe7a2c6e2de0b83bb5804becf689">InvalidCmdError</a>,
+<a name="l00039"></a>00039   } <a class="code" href="class_novobus_slave.html#afe608093a88304d5a57d5d4e86382e33" title="Ошибки">NovobusError</a>;
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041   <a class="code" href="class_novobus_slave.html#a5ac7d4c45dee2cb0b720236a5a7c0f05">NovobusSlave</a>();
+<a name="l00042"></a>00042   <a class="code" href="class_novobus_slave.html#a91af883becc103d5ecc3469da64f717a">~NovobusSlave</a>();
+<a name="l00043"></a>00043 
+<a name="l00047"></a>00047   <span class="keywordtype">void</span> <a class="code" href="class_novobus_slave.html#a38b53190c1d1de69d46bcf3fb15a72c5" title="Инициализация протокола">init</a>();
+<a name="l00048"></a>00048 
+<a name="l00052"></a>00052   <span class="keywordtype">void</span> <a class="code" href="class_novobus_slave.html#abd8352eb55fa2a019da39f1545732bf7" title="Основная задача протокола">task</a>();
+<a name="l00053"></a>00053 
+<a name="l00057"></a>00057   <span class="keywordtype">void</span> <a class="code" href="class_novobus_slave.html#ac9a415ac4d4110feb1d0abcbfe62feb1" title="Функция обработки запросов по Novobus.">receivePackage</a>(uint8_t sizePkt);
+<a name="l00058"></a>00058 
+<a name="l00063"></a>00063   <span class="keywordtype">int</span> <a class="code" href="class_novobus_slave.html#aba46838199788fe89c68ae8c2fa1b725" title="Метод получения адреса события из очереди">getMessageEvents</a>();
+<a name="l00064"></a>00064 
+<a name="l00069"></a>00069   <span class="keywordtype">int</span> <a class="code" href="class_novobus_slave.html#a53ac3b87cf6ecb235a4a81e424e491fd" title="Метод получения ID параметра из очереди">getMessageParams</a>();
+<a name="l00070"></a>00070 
+<a name="l00075"></a>00075   <span class="keywordtype">void</span> <a class="code" href="class_novobus_slave.html#ae5bdb6b6f44cf07bb1a3db2355750f71" title="Метод добавления ID события в очередь">putMessageEvents</a>(uint32_t <span class="keywordtype">id</span>);
+<a name="l00076"></a>00076 
+<a name="l00081"></a>00081   <span class="keywordtype">void</span> <a class="code" href="class_novobus_slave.html#a3e9f20ec677d19775459610f9c67b82b" title="Метод добавления ID параметра в очередь">putMessageParams</a>(uint32_t <span class="keywordtype">id</span>);
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083 <span class="keyword">private</span>:
+<a name="l00087"></a>00087   <span class="keywordtype">void</span> <a class="code" href="class_novobus_slave.html#a8ea677d674c823a47a57ef66ed85ee5f" title="Метод проверки очередей и заполнения необходимых полей заголовка">checkMessage</a>();
+<a name="l00088"></a>00088 
+<a name="l00090"></a><a class="code" href="class_novobus_slave.html#a26d0f304d4d90b163e3a906d04c4907b">00090</a>   osThreadId <a class="code" href="class_novobus_slave.html#a26d0f304d4d90b163e3a906d04c4907b" title="Идентификатор задачи Novobus.">threadId_</a>;
+<a name="l00092"></a><a class="code" href="class_novobus_slave.html#a6e62ccdfe21aa68150bb77e64175a747">00092</a>   osMessageQId <a class="code" href="class_novobus_slave.html#a6e62ccdfe21aa68150bb77e64175a747" title="Очередь на посылку сообытий">messageEvents_</a>;
+<a name="l00094"></a><a class="code" href="class_novobus_slave.html#af324e60a80ad8532d49a154b8e78f453">00094</a>   osMessageQId <a class="code" href="class_novobus_slave.html#af324e60a80ad8532d49a154b8e78f453" title="Очередь на запись данных">messageParams_</a>;
+<a name="l00095"></a>00095 
+<a name="l00096"></a><a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">00096</a>   uint8_t <a class="code" href="class_novobus_slave.html#a33e3b74f51f95b6b51ec6792b00e505f">txBuffer_</a>[<a class="code" href="host_8h.html#af61d1a4314492f819fd09103d112bdd9">HOST_BUF_SIZE</a>];
+<a name="l00097"></a><a class="code" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">00097</a>   uint8_t <a class="code" href="class_novobus_slave.html#adbfbf511464b137f4a1fcbdd92cfdaf0">rxBuffer_</a>[<a class="code" href="host_8h.html#af61d1a4314492f819fd09103d112bdd9">HOST_BUF_SIZE</a>];
+<a name="l00098"></a><a class="code" href="class_novobus_slave.html#a8f1dc77702c2f0c19cd2c13e09420576">00098</a>   uint16_t <a class="code" href="class_novobus_slave.html#a8f1dc77702c2f0c19cd2c13e09420576">idsBuffer_</a>[<a class="code" href="novobus__slave_8h.html#adf1e997bb3d555e280ebfd78a69a9f02" title="Максимальное количество ID во временом буффере">MAX_IDS_BUFFER</a>];
+<a name="l00099"></a><a class="code" href="class_novobus_slave.html#ac328d33812cff4b84164a863a2ed7db6">00099</a>   uint32_t <a class="code" href="class_novobus_slave.html#ac328d33812cff4b84164a863a2ed7db6">addrsBuffer_</a>[<a class="code" href="novobus__slave_8h.html#a27ac010388bd46cc99067b56b9c05613" title="Максимальное количество адресов во временом буффере">MAX_ADDRS_BUFFER</a>];
+<a name="l00100"></a><a class="code" href="class_novobus_slave.html#acc4654f4c75f79274bbd821fb6857792">00100</a>   uint8_t <a class="code" href="class_novobus_slave.html#acc4654f4c75f79274bbd821fb6857792">idsCount_</a>;
+<a name="l00101"></a><a class="code" href="class_novobus_slave.html#a24c01a1ec060b25e1ae66d6ba2ac5706">00101</a>   uint8_t <a class="code" href="class_novobus_slave.html#a24c01a1ec060b25e1ae66d6ba2ac5706">addrsCount_</a>;
+<a name="l00102"></a>00102 
+<a name="l00103"></a><a class="code" href="class_novobus_slave.html#aed6f5024161af6255a9a12b8352077fc">00103</a>   uint16_t <a class="code" href="class_novobus_slave.html#aed6f5024161af6255a9a12b8352077fc">rxSize</a>;
+<a name="l00104"></a>00104 };
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106 <span class="preprocessor">#endif // NOVOBUS_SLAVE_H</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

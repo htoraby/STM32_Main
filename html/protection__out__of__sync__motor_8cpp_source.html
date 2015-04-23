@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/protection/motor/protection_out_of_sync_motor.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/protection/motor/protection_out_of_sync_motor.cpp</div>  </div>
+</div>
+<div class="contents">
+<a href="protection__out__of__sync__motor_8cpp.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="protection__out__of__sync__motor_8h.html">protection_out_of_sync_motor.h</a>&quot;</span>
+<a name="l00002"></a>00002 
+<a name="l00003"></a><a class="code" href="class_protection_out_of_sync_motor.html#a76a1b1057331c036ec8b9963215aaba4">00003</a> <a class="code" href="class_protection_out_of_sync_motor.html#a76a1b1057331c036ec8b9963215aaba4">ProtectionOutOfSyncMotor::ProtectionOutOfSyncMotor</a>()
+<a name="l00004"></a>00004 {
+<a name="l00005"></a>00005   <a class="code" href="class_protection.html#a19268efce822959480829d59d31826ca" title="id параметров защиты">idMode_</a>= <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa748609a5972be28cd0a0336a8664b929" title="Защита &quot;Рассинхронизация ПВЭД&quot;.">CCS_PROT_MOTOR_OUT_OF_SYNC_MODE</a>;
+<a name="l00006"></a>00006   <a class="code" href="class_protection.html#a3d008718d0dd7bc1b4db9b9e244e2383" title="id Флаг запрещающего параметра">idPrevent_</a>= <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfade98fd6e33cbf917ff1d0347adc7992a" title="Параметр запрещающий запуск">CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT</a>;
+<a name="l00007"></a>00007   <a class="code" href="class_protection.html#a8a86748e2445f254259983e97d7c4dea" title="id задержка активации защиты">idActivDelay_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa3c3ec270ecd80277149a5d2d82e75d07" title="Задержка активации уставка">CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY</a>;
+<a name="l00008"></a>00008   <a class="code" href="class_protection.html#ac28447b4c01fcee3c6de01b6e1f99da2" title="id задержка срабатывания защиты">idTripDelay_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa9669baa4fe8b9ef3a08cc5fbe6b55966" title="Задержка срабатывания уставка">CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY</a>;
+<a name="l00009"></a>00009   <a class="code" href="class_protection.html#a5ae8c6b40c41c02bcda4764dc4882f90" title="id задержка АПВ защиты">idRestartDelay_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa6838a4c4815ac3c3e0fa324769cf4d5e" title="Задержка АПВ уставка">CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY</a>;
+<a name="l00010"></a>00010   <a class="code" href="class_protection.html#a49c2efad198e74ccd48543e685881266" title="id количество АПВ">idRestartLimit_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfab57a0652d2411e3d1bc97723709a2139" title="Количество АПВ уставка">CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT</a>;
+<a name="l00011"></a>00011   <a class="code" href="class_protection.html#a607942ac6f46f09220a6841ccf349f56" title="id Время сброса количества АПВ">idRestartResetTime_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa910547b8c3cd224a6efb20c2179544b4" title="Автосброс счетчика АПВ">CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET</a>;
+<a name="l00012"></a>00012   <a class="code" href="class_protection.html#ab49e9871a127757d87f94d76864c49b1" title="id граница срабатывания защиты">idTripSetpoint_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa799bf476750a03d16dcd16141674f90c" title="Уставка срабатывания защиты">CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT</a>;
+<a name="l00013"></a>00013   <a class="code" href="class_protection.html#aa9e310942cce88446b1f47aadf8f3723" title="id граница АПВ">idRestartSetpoint_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfad3468d806a5ca45df1c732af79083061" title="Условие АПВ уставка">CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT</a>;
+<a name="l00014"></a>00014   <a class="code" href="class_protection.html#ace700a9f47d7152d3dd255e3d48a2f5b" title="id Параметр 1">idParam_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa350973464230e3a7bdd5010b0b8dc450" title="Уставка параметр защиты">CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER</a>;
+<a name="l00015"></a>00015   <a class="code" href="class_protection.html#abe83013e52b98b5c65212dbe589d68c6" title="id Флаг что защита в состоянии АПВ">idRestartFlag_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa6afbe8d1845c48eaaad424645e5495b1" title="Уставка параметр защиты">CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG</a>;
+<a name="l00016"></a>00016   <a class="code" href="class_protection.html#a7dcd955bb34edc02108837b4462de534" title="id Флаг что защита в состоянии БЛОК">idBlockFlag_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaf7c7ec138bedc1d562aaa480a2d92ce1">CCS_PROT_MOTOR_OUT_OF_SYNC_BLOCK_FLAG</a>;
+<a name="l00017"></a>00017   <a class="code" href="class_protection.html#a05de80f07ef003b57a47354a7e5c93d3" title="id Состояние автомата">idState_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfae6dc082ef069d5a76b2575475f6a71e6" title="Текущий параметр состояние автомата">CCS_PROT_MOTOR_OUT_OF_SYNC_STATE</a>;
+<a name="l00018"></a>00018   <a class="code" href="class_protection.html#a534abfe01f4740afb17d49b7c70e7b54" title="id Таймера">idTimer_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa0e5474dccaad677ae5267f3fe40d3871" title="Текущий параметр Фиксированное время">CCS_PROT_MOTOR_OUT_OF_SYNC_TIME</a>;
+<a name="l00019"></a>00019   <a class="code" href="class_protection.html#a864f0082ae4f278efa87a83fe3a064c4" title="id Счётчика АПВ">idRestartCount_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaf04f1a89a106a38c6f2316d2c08aeed8" title="Текущий параметр Количество АПВ">CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT</a>;
+<a name="l00020"></a>00020   <a class="code" href="class_protection.html#aa2dc723f7f83d7868270a05b15cdfa6a" title="id Время первого срабатывания АПВ">idRestartFirstTime_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaa0c45e13276bcff2155a15ca056d0f35" title="Текущий параметр Время первого АПВ">CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME</a>;
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022   <a class="code" href="class_protection.html#af300db56e96fca2b72d5c2fb3a1e373d" title="Причина запуска">lastReasonRun_</a> = <a class="code" href="define_8h.html#a2e37372dbc4114112400e3845adc1372a0aa996130757ea33c0249fe5b27d6ff6" title="&quot;АПВ по защите: Рассинхронизация ПВЭД&quot;">LastReasonRunApvOutOfSyncMotor</a>;
+<a name="l00023"></a>00023   <a class="code" href="class_protection.html#a438a0007201523d868664947d82cf963" title="Причина останова">lastReasonStop_</a> = <a class="code" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ffad9d99d48972ce4f26608bdc472f5f8e1" title="&quot;Рассинхронизация ПВЭД&quot;">LastReasonStopOutOfSyncMotor</a>;
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025   <a class="code" href="class_protection.html#ad9f00b97300ac27e31ff1aa5a46b099a" title="Индексы событий для записи в журнал">protReactEventId_</a> = <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfad17e7fe400cc579a3504b517f1310c64" title="&quot;Сработала защита: Рассинхронизация ПВЭД&quot;">OutOfSyncMotorProtReactId</a>;
+<a name="l00026"></a>00026   <a class="code" href="class_protection.html#ae72394ac48c703be019c6defa3938e6e">apvEventId_</a> = <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaac8f3efd12707d73bd09218040858f71" title="&quot;АПВ по защите: Рассинхронизация ПВЭД&quot;">OutOfSyncMotorApvId</a>;
+<a name="l00027"></a>00027   <a class="code" href="class_protection.html#a7dd90b182f11cb40b0a101504dbb3a82">apvDisabledEventId_</a> = <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfa9ffa361034f66d14d82e045c18202457" title="&quot;АПВ запрещен: Рассинхронизация ПВЭД&quot;">OutOfSyncMotorApvDisabledId</a>;
+<a name="l00028"></a>00028   <a class="code" href="class_protection.html#ac9a9ddcf3754e4341ac9ae211b8eaa51">protBlockedEventId_</a> = <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfac3c3473a3c6358a02befe37c280b1bd4" title="&quot;Блокировка по защите: Рассинхронизация ПВЭД&quot;">OutOfSyncMotorProtBlockedId</a>;
+<a name="l00029"></a>00029 }
+<a name="l00030"></a>00030 
+<a name="l00031"></a><a class="code" href="class_protection_out_of_sync_motor.html#a8d8f633558606769372a75ef541c37da">00031</a> <a class="code" href="class_protection_out_of_sync_motor.html#a8d8f633558606769372a75ef541c37da">ProtectionOutOfSyncMotor::~ProtectionOutOfSyncMotor</a>()
+<a name="l00032"></a>00032 {
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 }
+<a name="l00035"></a>00035 
+<a name="l00036"></a><a class="code" href="class_protection_out_of_sync_motor.html#aaa688c02a5c093f32f153719ae4a23d5">00036</a> <span class="keywordtype">bool</span> <a class="code" href="class_protection_out_of_sync_motor.html#aaa688c02a5c093f32f153719ae4a23d5" title="Метод проверки условия срабатывания защиты">ProtectionOutOfSyncMotor::checkAlarm</a>()
+<a name="l00037"></a>00037 {
+<a name="l00038"></a>00038   <span class="keywordtype">float</span> nominal = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa2517844085cb2c9d618868e616b6f1a4" title="Номинальный ток двигателя Danfoss 1-24 Используется в проекте, интерфейс Novomet 0х0044 IREG_MOTOR_I_...">VSD_MOTOR_CURRENT</a>);
+<a name="l00039"></a>00039   <a class="code" href="class_protection_out_of_sync_motor.html#a742da4d58308f111e07e95a3868986ea">valueParameter2_</a> = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa58894e5605b0fb2508d1718980bd87f2" title="Ток двигателя средний">CCS_MOTOR_CURRENT_AVARAGE</a>);
+<a name="l00040"></a>00040   <a class="code" href="class_protection.html#a3d6e2bdab22bfb8d171e195ea1c75a1a" title="Текущее значение контролируемого параметра">valueParameter_</a> = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa9554dc09fd3249f551ff75dea06a5b53" title="Текущий Косинус Фи">CCS_MOTOR_COS_PHI_NOW</a>);
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042   <span class="keywordflow">if</span> ((<a class="code" href="class_protection_out_of_sync_motor.html#a742da4d58308f111e07e95a3868986ea">valueParameter2_</a> &gt; nominal) &amp;&amp; (<a class="code" href="class_protection.html#a3d6e2bdab22bfb8d171e195ea1c75a1a" title="Текущее значение контролируемого параметра">valueParameter_</a> &lt; <a class="code" href="class_protection.html#a4364e0200bcc4a0c10b25a32d86642f7" title="Уставка: граница срабатывания защиты">tripSetpoint_</a>))
+<a name="l00043"></a>00043     <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00044"></a>00044   <span class="keywordflow">else</span>
+<a name="l00045"></a>00045     <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00046"></a>00046 }
+<a name="l00047"></a>00047 
+<a name="l00048"></a><a class="code" href="class_protection_out_of_sync_motor.html#a98615de25175c19f2e6052faa96070e6">00048</a> <span class="keywordtype">void</span> <a class="code" href="class_protection_out_of_sync_motor.html#a98615de25175c19f2e6052faa96070e6" title="Метод добавления события &quot;Сработала защита&quot; в журнал">ProtectionOutOfSyncMotor::addEventReactionProt</a>()
+<a name="l00049"></a>00049 {
+<a name="l00050"></a>00050   <span class="keywordtype">float</span> nominal = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa2517844085cb2c9d618868e616b6f1a4" title="Номинальный ток двигателя Danfoss 1-24 Используется в проекте, интерфейс Novomet 0х0044 IREG_MOTOR_I_...">VSD_MOTOR_CURRENT</a>);
+<a name="l00051"></a>00051   <a class="code" href="log__main_8cpp.html#ac59bf01556b65dd1d2dbfcf7931b0759">logEvent</a>.<a class="code" href="class_log_event.html#a59bde4221222c33cf7c19450c30323ed" title="Метод добавления нового события в архив">add</a>(<a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8aaa46df7c5442a4e315971e10fe1b2eda" title="Событие защиты">ProtectCode</a>, <a class="code" href="log_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa18db7ade44c35f2239d1b3fe88b05532">AutoType</a>, <a class="code" href="class_protection.html#ad9f00b97300ac27e31ff1aa5a46b099a" title="Индексы событий для записи в журнал">protReactEventId_</a>, <a class="code" href="class_protection_out_of_sync_motor.html#a742da4d58308f111e07e95a3868986ea">valueParameter2_</a>, nominal,
+<a name="l00052"></a>00052                <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#a09b6758a8a0f99983cc0eb752c58333f" title="Метод получения типа физической величины по ID с определением необходимого массива">getPhysic</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa2517844085cb2c9d618868e616b6f1a4" title="Номинальный ток двигателя Danfoss 1-24 Используется в проекте, интерфейс Novomet 0х0044 IREG_MOTOR_I_...">VSD_MOTOR_CURRENT</a>));
+<a name="l00053"></a>00053   <a class="code" href="log__main_8cpp.html#ac59bf01556b65dd1d2dbfcf7931b0759">logEvent</a>.<a class="code" href="class_log_event.html#a59bde4221222c33cf7c19450c30323ed" title="Метод добавления нового события в архив">add</a>(<a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8aaa46df7c5442a4e315971e10fe1b2eda" title="Событие защиты">ProtectCode</a>, <a class="code" href="log_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa18db7ade44c35f2239d1b3fe88b05532">AutoType</a>, <a class="code" href="class_protection.html#ad9f00b97300ac27e31ff1aa5a46b099a" title="Индексы событий для записи в журнал">protReactEventId_</a>, <a class="code" href="class_protection.html#a3d6e2bdab22bfb8d171e195ea1c75a1a" title="Текущее значение контролируемого параметра">valueParameter_</a>, <a class="code" href="class_protection.html#a4364e0200bcc4a0c10b25a32d86642f7" title="Уставка: граница срабатывания защиты">tripSetpoint_</a>,
+<a name="l00054"></a>00054                <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#a09b6758a8a0f99983cc0eb752c58333f" title="Метод получения типа физической величины по ID с определением необходимого массива">getPhysic</a>(<a class="code" href="class_protection.html#ab49e9871a127757d87f94d76864c49b1" title="id граница срабатывания защиты">idTripSetpoint_</a>));
+<a name="l00055"></a>00055 }
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

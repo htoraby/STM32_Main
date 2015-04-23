@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/log/log_data.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/log/log_data.cpp</div>  </div>
+</div>
+<div class="contents">
+<a href="log__data_8cpp.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="log__data_8h.html">log_data.h</a>&quot;</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#include &quot;<a class="code" href="user__main_8h.html">user_main.h</a>&quot;</span>
+<a name="l00003"></a>00003 <span class="preprocessor">#include &lt;string.h&gt;</span>
+<a name="l00004"></a>00004 
+<a name="l00005"></a><a class="code" href="class_log_data.html#ae9cecfc998b6e04f892825ed38405912">00005</a> <a class="code" href="class_log_data.html#ae9cecfc998b6e04f892825ed38405912">LogData::LogData</a>() : <a class="code" href="class_log.html" title="Базовый класс журналов">Log</a>(<a class="code" href="log_8h.html#afb6901ec50cf6f307fbc3f398a6abb58aa0c4e54409db07d39a97dba9e81058f4">DataTypeLog</a>)
+<a name="l00006"></a>00006 {
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 }
+<a name="l00009"></a>00009 
+<a name="l00010"></a><a class="code" href="class_log_data.html#a4c0f14fdc267a141ff05d65feaec9dd6">00010</a> <a class="code" href="class_log_data.html#a4c0f14fdc267a141ff05d65feaec9dd6">LogData::~LogData</a>()
+<a name="l00011"></a>00011 {
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013 }
+<a name="l00014"></a>00014 
+<a name="l00015"></a><a class="code" href="log__data_8cpp.html#aefc9567e620eb41f75b3a71eff9ea83d">00015</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="log__data_8cpp.html#aefc9567e620eb41f75b3a71eff9ea83d">logDataTask</a>(<span class="keywordtype">void</span> *p)
+<a name="l00016"></a>00016 {
+<a name="l00017"></a>00017   (<span class="keyword">static_cast&lt;</span><a class="code" href="class_log_data.html" title="Класс архива данных">LogData</a>*<span class="keyword">&gt;</span>(p))-&gt;task();
+<a name="l00018"></a>00018 }
+<a name="l00019"></a>00019 
+<a name="l00020"></a><a class="code" href="class_log_data.html#aaf43569a560afc6f5df0fafff462bb27">00020</a> <span class="keywordtype">void</span> <a class="code" href="class_log_data.html#aaf43569a560afc6f5df0fafff462bb27" title="Инициализация журнала">LogData::init</a>()
+<a name="l00021"></a>00021 {
+<a name="l00022"></a>00022   <a class="code" href="class_log_data.html#aaf43569a560afc6f5df0fafff462bb27" title="Инициализация журнала">Log::init</a>();
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024   osThreadDef_t t = {<span class="stringliteral">&quot;LogData&quot;</span>, <a class="code" href="log__data_8cpp.html#aefc9567e620eb41f75b3a71eff9ea83d">logDataTask</a>, osPriorityNormal, 0, 2 * <a class="code" href="_free_r_t_o_s_config_8h.html#a6c534a6cf8a00528fe0be42083484f9a">configMINIMAL_STACK_SIZE</a>};
+<a name="l00025"></a>00025   <a class="code" href="class_log_data.html#ad7d39298fc058d7bdd20992fc3e44571" title="Идентификатор задачи">threadId_</a> = osThreadCreate(&amp;t, <span class="keyword">this</span>);
+<a name="l00026"></a>00026 }
+<a name="l00027"></a>00027 
+<a name="l00028"></a><a class="code" href="class_log_data.html#a617059395681676f72a3f0a184fef021">00028</a> <span class="keywordtype">void</span> <a class="code" href="class_log_data.html#a617059395681676f72a3f0a184fef021">LogData::task</a>()
+<a name="l00029"></a>00029 {
+<a name="l00030"></a>00030   <span class="keywordtype">int</span> normTimeCnt = 0;
+<a name="l00031"></a>00031   <span class="keywordtype">int</span> fastTimeCnt = 0;
+<a name="l00032"></a>00032   <span class="keywordtype">bool</span> startFastMode = <span class="keyword">false</span>;
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034   <span class="keywordflow">while</span> (1) {
+<a name="l00035"></a>00035     osDelay(1000);
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037     <span class="keywordflow">if</span> (<a class="code" href="user__main_8cpp.html#ab926427831a5d518f567ee30b2f08804">ksu</a>.<a class="code" href="class_ccs.html#abc3bdd00d2c7d77639d6a58862894939" title="Проверка находится ли станция в ожидании">isDelay</a>()) {
+<a name="l00038"></a>00038       <span class="keywordflow">if</span> (!startFastMode) {
+<a name="l00039"></a>00039         startFastMode = <span class="keyword">true</span>;
+<a name="l00040"></a>00040         <a class="code" href="class_log_data.html#a537774e9cc4da0cbb038d28d7d48447b" title="Метод добавления записи в архив">add</a>(<a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8acc5b255b079924621d5e09a6f7bef227" title="ЗаписьУскРеж">FastModeCode</a>);
+<a name="l00041"></a>00041       } <span class="keywordflow">else</span> {
+<a name="l00042"></a>00042         <span class="keywordtype">int</span> period = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa0cbd5f23b88c01fdfed311bb770bc31b" title="Период экстренной записи">CCS_LOG_PERIOD_FAST</a>);
+<a name="l00043"></a>00043         <span class="keywordflow">if</span> (++fastTimeCnt &gt;= period) {
+<a name="l00044"></a>00044           fastTimeCnt = 0;
+<a name="l00045"></a>00045           <a class="code" href="class_log_data.html#a537774e9cc4da0cbb038d28d7d48447b" title="Метод добавления записи в архив">add</a>(<a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8acc5b255b079924621d5e09a6f7bef227" title="ЗаписьУскРеж">FastModeCode</a>);
+<a name="l00046"></a>00046         }
+<a name="l00047"></a>00047       }
+<a name="l00048"></a>00048     } <span class="keywordflow">else</span> {
+<a name="l00049"></a>00049       startFastMode = <span class="keyword">false</span>;
+<a name="l00050"></a>00050       fastTimeCnt = 0;
+<a name="l00051"></a>00051     }
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053     <span class="keywordtype">int</span> period = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa09f74a8691fd39790f2d0009d0522e2c" title="Период записи">CCS_LOG_PERIOD_NORMAL</a>);
+<a name="l00054"></a>00054     <span class="keywordflow">if</span> (++normTimeCnt &gt;= period) {
+<a name="l00055"></a>00055       normTimeCnt = 0;
+<a name="l00056"></a>00056       <span class="keywordflow">if</span> (!<a class="code" href="user__main_8cpp.html#ab926427831a5d518f567ee30b2f08804">ksu</a>.<a class="code" href="class_ccs.html#abc3bdd00d2c7d77639d6a58862894939" title="Проверка находится ли станция в ожидании">isDelay</a>())
+<a name="l00057"></a>00057         <a class="code" href="class_log_data.html#a537774e9cc4da0cbb038d28d7d48447b" title="Метод добавления записи в архив">add</a>(<a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8a978c1f7bdef4921565466d488ec85f6c" title="ЗаписьНормРеж">NormModeCode</a>);
+<a name="l00058"></a>00058     }
+<a name="l00059"></a>00059   }
+<a name="l00060"></a>00060 }
+<a name="l00061"></a>00061 
+<a name="l00062"></a><a class="code" href="class_log_data.html#a537774e9cc4da0cbb038d28d7d48447b">00062</a> <span class="keywordtype">void</span> <a class="code" href="class_log_data.html#a537774e9cc4da0cbb038d28d7d48447b" title="Метод добавления записи в архив">LogData::add</a>(uint8_t code)
+<a name="l00063"></a>00063 {
+<a name="l00064"></a>00064   memset(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>, 0, <span class="keyword">sizeof</span>(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>));
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066   time_t <a class="code" href="adc_8cpp.html#ae73654f333e4363463ad8c594eca1905">time</a> = <a class="code" href="user__main_8cpp.html#ab926427831a5d518f567ee30b2f08804">ksu</a>.<a class="code" href="class_ccs.html#a93744289036200862d44b61313a1aa54" title="Функция получения текущего времени в сек от 00:00:00 01.01.1970 года">getTime</a>();
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068   *(uint32_t*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>) = ++<a class="code" href="class_log.html#a90e56a0a4e707bfe5fe34819e80996a5" title="Глобальный индекс записей всех журналов, кроме отладочного">id_</a>;
+<a name="l00069"></a>00069   *(uint32_t*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+4) = <a class="code" href="adc_8cpp.html#ae73654f333e4363463ad8c594eca1905">time</a>;
+<a name="l00070"></a>00070   *(uint8_t*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+8) = code;
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+9) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa31935a0e6b9d439e9479945f4e3fa0af" title="Номер скважины">CCS_NUMBER_WELL</a>);
+<a name="l00073"></a>00073   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+13) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaa3aee2b9c073cef1fca132d5d8dbb256" title="Выходная частота ПЧ">VSD_FREQUENCY_NOW</a>);
+<a name="l00074"></a>00074   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+17) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaead20fbb2b4fcf0eccd996328329b5d1" title="Выходной ток ПЧ фаза U.">VSD_CURRENT_OUT_PHASE_1</a>);
+<a name="l00075"></a>00075   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+21) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaea4c3edb14c5e5ad77205b449d2bd376" title="Выходной ток ПЧ фаза V.">VSD_CURRENT_OUT_PHASE_2</a>);
+<a name="l00076"></a>00076   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+25) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa63ae65f581144a6f78ccd5ad309a6acb" title="Выходной ток ПЧ фаза W.">VSD_CURRENT_OUT_PHASE_3</a>);
+<a name="l00077"></a>00077   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+29) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa08cc309173c8adfe0e2b308bce19ae62" title="Напряжение двигателя Danfoss 1-22 Используется в проекте, интерфейс Novomet 0х0045 IREG_MOTOR_U_MAх...">VSD_MOTOR_VOLTAGE</a>);
+<a name="l00078"></a>00078   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+33) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa4546f911e1b140c771c93e1f11953305" title="Дисбаланс токов двигателя">CCS_MOTOR_CURRENT_IMBALANCE</a>);
+<a name="l00079"></a>00079   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+37) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa92411f46705324a51c1a8d1581a18b26" title="Номинальный косинус Фи Danfoss 14-43 Используется в проекте">VSD_MOTOR_COS_PHI</a>);
+<a name="l00080"></a>00080   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+41) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa4dae37aae0b670f69b982a9dcf816a42" title="Текущая загрузка двигателя">CCS_MOTOR_LOAD_NOW</a>);
+<a name="l00081"></a>00081   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+45) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaa8c6d6fb0ed5f65e530833fa1a971556" title="Активная мощность Danfoss 16-10 Используется в проекте Novomet 0х0071 IREG_POUT.">VSD_POWER_ACTIVE</a>);
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+49) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfacd84c8bd2eef237d095ca4539aad14f7" title="Полная мощность">VSD_POWER_FULL</a>);
+<a name="l00084"></a>00084   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+53) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa1ef59cb2d15985d76459f95280ba02f3" title="Напряжение первой фазы">EM_VOLTAGE_PHASE_1</a>);
+<a name="l00085"></a>00085   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+57) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaf9aa7da5f266d540f3ab3e246a634b61" title="Напряжение второй фазы">EM_VOLTAGE_PHASE_2</a>);
+<a name="l00086"></a>00086   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+61) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaf56aa067ec2acd497602271dcda9f0e4" title="Напряжение третей фазы">EM_VOLTAGE_PHASE_3</a>);
+<a name="l00087"></a>00087   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+65) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa7164e7f463f54ed72cced05098ddd044" title="Дисбаланс входного напряжения">CCS_VOLTAGE_IMBALANCE_IN</a>);
+<a name="l00088"></a>00088   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+69) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfacb0714482c7ccfa6784dcd997467c0c1" title="Ток первой фазы">EM_CURRENT_PHASE_1</a>);
+<a name="l00089"></a>00089   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+73) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa8960d678851066bbb3bb12814508a7a3" title="Ток второй фазы">EM_CURRENT_PHASE_2</a>);
+<a name="l00090"></a>00090   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+77) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfabc415fa443bf411a5f7baa4080039451" title="Ток третей фазы">EM_CURRENT_PHASE_3</a>);
+<a name="l00091"></a>00091   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+81) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa3d8defa013067e4ba3ae977d1d18717c" title="Дисбаланс входного тока">CCS_CURRENT_IMBALANCE_IN</a>);
+<a name="l00092"></a>00092   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+85) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa359b40bf18f452a873e587cd492b5dcf" title="Сопротивление изоляции в системе">CCS_RESISTANCE_ISOLATION</a>);
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 <span class="comment">//  *(float*)(buffer+89) = parameters.getValue(TMS_); // TMS_ACTIVE_CURRENT_LEAKAGE|Iутеч(мА) Активные токи утечки</span>
+<a name="l00095"></a>00095   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+93) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfafeb4e56f863096836d1120d28f6ceaf4" title="Температура обмоток двигателя">TMS_TEMPERATURE_WINDING</a>);
+<a name="l00096"></a>00096   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+97) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfae4ed4c50e772c626dc65f7127c27df69" title="Давление на приёме">TMS_PRESSURE_INTAKE</a>);
+<a name="l00097"></a>00097   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+101) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cface4f07d714ea76ddcb70c4e88a59faab" title="Температура на приёме">TMS_TEMPERATURE_INTAKE</a>);
+<a name="l00098"></a>00098   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+105) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfae7de17dadde20de11ef40e5f96d440b9" title="Общая активная мощность">EM_ACTIVE_POWER</a>);
+<a name="l00099"></a>00099   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+109) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa4284ab7e43f5002d24435a80453d3fd9" title="Полная мощность">EM_FULL_POWER</a>);
+<a name="l00100"></a>00100   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+113) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa7565a9b81dc0ab7bbad2c46b2b342c2e" title="Выходной ток средний">VSD_OUT_CURRENT_MOTOR</a>);
+<a name="l00101"></a>00101   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+117) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa408bd2979a147a57ae8a09f2eb46985d" title="Напряжение на выходе ПЧ">VSD_OUT_VOLTAGE_MOTOR</a>);
+<a name="l00102"></a>00102   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+121) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfafc5154215a374d5c53d950f8ea427579" title="Общая активная энергия">EM_ACTIVE_ENERGY</a>);
+<a name="l00103"></a>00103   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+125) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa1c573b23a074322400ec24ff4d7b4bbe" title="Ускорение по оси Y на приёме">TMS_ACCELERATION_XY_INTAKE</a>);
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+129) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfafe3d420224eb1e9a22ef17dccbc8e4f8" title="Ускорение по оси Z на приёме">TMS_ACCELERATION_Z_INTAKE</a>);
+<a name="l00106"></a>00106   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+133) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa1c86953507f5e02262511aa4b831848e" title="Температура на выкиде">TMS_TEMPERATURE_DISCHARGE</a>);
+<a name="l00107"></a>00107   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+137) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa1fe98e2b4b4a26a636977bb93599b807" title="Давление на выкиде">TMS_PRESSURE_DISCHARGE</a>);
+<a name="l00108"></a>00108 <span class="comment">//  *(float*)(buffer+141) = parameters.getValue(RESERVE);</span>
+<a name="l00109"></a>00109 <span class="comment">//  *(float*)(buffer+145) = parameters.getValue(RESERVE);</span>
+<a name="l00110"></a>00110   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+149) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa2d18cd43b1f81d32fc2de68d49ae5132" title="Расход на выкиде">TMS_FLOW_DISCHARGE</a>);
+<a name="l00111"></a>00111   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+153) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaf0e099cc07e98f878131d9c4cc34bd5c" title="Температура радиатора Danfoss 16-34 Используется в проекте">VSD_RADIATOR_TEMPERATURE</a>);
+<a name="l00112"></a>00112   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+157) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa824282305094b22634829837e660d089" title="Температура платы управления Danfoss 16-39 Используется в проекте">VSD_CONTROL_TEMPERATURE</a>);
+<a name="l00113"></a>00113 <span class="comment">//  *(float*)(buffer+161) = parameters.getValue(); // TEMPERATURE_CY_PK|Тбу(°С) Температура платы контроллера</span>
+<a name="l00114"></a>00114   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+165) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa6d00a0be994c9a3f0500335f085462b8">CCS_CONDITION</a>);
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+169) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaa127d2518f55cffd74acd21412641ca6" title="Режим работы">CCS_WORKING_MODE</a>);
+<a name="l00117"></a>00117 <span class="comment">//  *(float*)(buffer+173) = parameters.getValue(); // TIME_PROCESS|Траб/стоп Время работы/стопа</span>
+<a name="l00118"></a>00118 <span class="comment">//  *(float*)(buffer+177) = parameters.getValue(); // PSW_CY_PK|PSWПк Слово состяние платы контроллера</span>
+<a name="l00119"></a>00119   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+181) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaef5c34c21caeaa2f64397e09c1dc1d7b" title="Слово состояние системы">TMS_PSW_TMS</a>);
+<a name="l00120"></a>00120   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+185) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa37e9b87e945bdb5562f1ece0f2344872" title="Слово состояние наземного блока">TMS_PSW_TMSN</a>);
+<a name="l00121"></a>00121   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+189) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfac3238193c0c2cd1ec05af0823f42c148" title="Напряжение цепи пост.тока Danfoss 16-30 Используется в проекте Novomet 0х008B IREG_UD.">VSD_VOLTAGE_DC</a>);
+<a name="l00122"></a>00122   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+193) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa918f25fadf3307ef2be8d047fec36ded" title="Слово состояния Danfoss 16-03 Активно используется в проекте">VSD_STATUS_WORD</a>);
+<a name="l00123"></a>00123   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+197) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfafedabb1502e8d0500dfef11c6c9c9726" title="Слово Аварии 1 Danfoss 16-90 Используется в проекте">VSD_ALARM_WORD_1</a>);
+<a name="l00124"></a>00124   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+201) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa6019d0b4060c7a8f4997be3a6b7d2692" title="Слово Аварии 2 Danfoss 16-91 Используется в проекте">VSD_ALARM_WORD_2</a>);
+<a name="l00125"></a>00125   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+205) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa19c141d07e1fdab1b749b40d633c75b1" title="Слово предупреждения 1 Danfoss 16-92 Используется в проекте">VSD_WARNING_WORD_1</a>);
+<a name="l00126"></a>00126 
+<a name="l00127"></a>00127   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+209) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa5de7e0100fca366d808365561d10de66" title="Слово предупреждения 2 Danfoss 16-93 Используется в проекте">VSD_WARNING_WORD_2</a>);
+<a name="l00128"></a>00128 <span class="comment">//  *(float*)(buffer+213) = parameters.getValue(); // WARNING_WORD_EXT|WarnEXT Слово состояния ЧРП расширенное</span>
+<a name="l00129"></a>00129   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+217) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaf192fb9ae277d2d94d284bec77d65ddd" title="Номер последней аварии и предупреждения Danfoss 16-87 Используется в проекте">VSD_LAST_ALARM</a>);
+<a name="l00130"></a>00130   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+221) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaa2ec14cfc81cb67f1ffe3c443b4ac1c2" title="Текущее турбинное вращение">CCS_TURBO_ROTATION_NOW</a>);
+<a name="l00131"></a>00131   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+225) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa03aa6a223980e1ff3f08a462610676d5" title="Режим периодический">CCS_RGM_PERIODIC_MODE</a>);
+<a name="l00132"></a>00132   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+229) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaffe87f701ca1aed338f33bb20a4a8b01">CCS_RGM_PERIODIC_RUN_PERIOD</a>);
+<a name="l00133"></a>00133   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+233) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaffe87f701ca1aed338f33bb20a4a8b01">CCS_RGM_PERIODIC_RUN_PERIOD</a>);
+<a name="l00134"></a>00134   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+237) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfae4c7983bec198f68ddbc665c4ebcc9a0">CCS_RGM_PERIODIC_RUN_TIME_TO_END</a>);
+<a name="l00135"></a>00135   *(<span class="keywordtype">float</span>*)(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>+241) = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfae4c7983bec198f68ddbc665c4ebcc9a0">CCS_RGM_PERIODIC_RUN_TIME_TO_END</a>);
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137 <span class="comment">//  *(float*)(buffer+245) = parameters.getValue(RESERVE);</span>
+<a name="l00138"></a>00138 <span class="comment">//  *(float*)(buffer+249) = parameters.getValue(RESERVE);</span>
+<a name="l00139"></a>00139 
+<a name="l00140"></a>00140   <a class="code" href="class_log.html#af247932c73fc597292bbc39afeeacadf" title="Метод записи данных в журнал">write</a>(<a class="code" href="class_log.html#ae64592876be46fcfbc79edb25c550ef1" title="Буфер для формирования записи журнала">buffer</a>, 253);
+<a name="l00141"></a>00141 }
+<a name="l00142"></a>00142 
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/board/gpio/gpio.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/board/gpio/gpio.h</div>  </div>
+</div>
+<div class="contents">
+<a href="gpio_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef GPIO_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define GPIO_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &quot;<a class="code" href="board_8h.html">board.h</a>&quot;</span>
+<a name="l00005"></a>00005 
+<a name="l00010"></a><a class="code" href="gpio_8h.html#a481bba4ee500a381c7ae5b767e641bdc">00010</a> <span class="keyword">enum</span> <a class="code" href="gpio_8h.html#a481bba4ee500a381c7ae5b767e641bdc" title="Значения вывода">PinState</a> {
+<a name="l00011"></a><a class="code" href="gpio_8h.html#a481bba4ee500a381c7ae5b767e641bdca22210032c374250cca65519ba979ecfb">00011</a>   <a class="code" href="gpio_8h.html#a481bba4ee500a381c7ae5b767e641bdca22210032c374250cca65519ba979ecfb">PinReset</a>,
+<a name="l00012"></a><a class="code" href="gpio_8h.html#a481bba4ee500a381c7ae5b767e641bdca6f8cb1132be097709feddb4c4139c028">00012</a>   <a class="code" href="gpio_8h.html#a481bba4ee500a381c7ae5b767e641bdca6f8cb1132be097709feddb4c4139c028">PinSet</a>,
+<a name="l00013"></a>00013 };
+<a name="l00014"></a>00014 
+<a name="l00019"></a><a class="code" href="gpio_8h.html#af78bf8225e8e9ba72fda2f5f2e800412">00019</a> <span class="keyword">enum</span> <a class="code" href="gpio_8h.html#af78bf8225e8e9ba72fda2f5f2e800412" title="Список LED.">LedType</a> {
+<a name="l00020"></a><a class="code" href="gpio_8h.html#af78bf8225e8e9ba72fda2f5f2e800412a06d2dea7243e67f464a515af59b87a2a">00020</a>   <a class="code" href="gpio_8h.html#af78bf8225e8e9ba72fda2f5f2e800412a06d2dea7243e67f464a515af59b87a2a">StopLed</a>,
+<a name="l00021"></a><a class="code" href="gpio_8h.html#af78bf8225e8e9ba72fda2f5f2e800412a74cefb9dacc7deaf9f8cdc830d0526c0">00021</a>   <a class="code" href="gpio_8h.html#af78bf8225e8e9ba72fda2f5f2e800412a74cefb9dacc7deaf9f8cdc830d0526c0">WaitLed</a>,
+<a name="l00022"></a><a class="code" href="gpio_8h.html#af78bf8225e8e9ba72fda2f5f2e800412a7a418b4ce5b01da31bf8a6edeb6b9b2e">00022</a>   <a class="code" href="gpio_8h.html#af78bf8225e8e9ba72fda2f5f2e800412a7a418b4ce5b01da31bf8a6edeb6b9b2e">WorkLed</a>,
+<a name="l00023"></a><a class="code" href="gpio_8h.html#af78bf8225e8e9ba72fda2f5f2e800412a3fad4c1eae660a203478cfe41d0f8381">00023</a>   <a class="code" href="gpio_8h.html#af78bf8225e8e9ba72fda2f5f2e800412a3fad4c1eae660a203478cfe41d0f8381">FanLed</a>,
+<a name="l00024"></a><a class="code" href="gpio_8h.html#af78bf8225e8e9ba72fda2f5f2e800412aa0b348ddb18b7aff1f1944c00b570a6f">00024</a>   <a class="code" href="gpio_8h.html#af78bf8225e8e9ba72fda2f5f2e800412aa0b348ddb18b7aff1f1944c00b570a6f">LedMax</a>,
+<a name="l00025"></a>00025 };
+<a name="l00026"></a>00026 
+<a name="l00031"></a><a class="code" href="gpio_8h.html#ae2d5c50fae96a83cc4f5974af78e6943">00031</a> <span class="keyword">enum</span> <a class="code" href="gpio_8h.html#ae2d5c50fae96a83cc4f5974af78e6943" title="Список кнопок">ButtonType</a> {
+<a name="l00032"></a><a class="code" href="gpio_8h.html#ae2d5c50fae96a83cc4f5974af78e6943a09a3f24a45c9246ea196797594cc8b4a">00032</a>   <a class="code" href="gpio_8h.html#ae2d5c50fae96a83cc4f5974af78e6943a09a3f24a45c9246ea196797594cc8b4a">PowerButton</a>,
+<a name="l00033"></a><a class="code" href="gpio_8h.html#ae2d5c50fae96a83cc4f5974af78e6943a1c393f5aabfe84b290f478aed777e596">00033</a>   <a class="code" href="gpio_8h.html#ae2d5c50fae96a83cc4f5974af78e6943a1c393f5aabfe84b290f478aed777e596">SysResetButton</a>,
+<a name="l00034"></a><a class="code" href="gpio_8h.html#ae2d5c50fae96a83cc4f5974af78e6943a52cefb3368e10014a422f300a7dd5b2a">00034</a>   <a class="code" href="gpio_8h.html#ae2d5c50fae96a83cc4f5974af78e6943a52cefb3368e10014a422f300a7dd5b2a">ButtonMax</a>,
+<a name="l00035"></a>00035 };
+<a name="l00036"></a>00036 
+<a name="l00041"></a><a class="code" href="gpio_8h.html#aaac85a8f48f5ae1267497cc30820ec6a">00041</a> <span class="keyword">enum</span> <a class="code" href="gpio_8h.html#aaac85a8f48f5ae1267497cc30820ec6a" title="Список цифровых входов">DiNum</a> {
+<a name="l00042"></a><a class="code" href="gpio_8h.html#aaac85a8f48f5ae1267497cc30820ec6aad3662da77112b79137e32d488b6fd358">00042</a>   <a class="code" href="gpio_8h.html#aaac85a8f48f5ae1267497cc30820ec6aa1a6a58a3f24b2e2b53acd1705fa7e4b4">DI1</a>, <a class="code" href="gpio_8h.html#aaac85a8f48f5ae1267497cc30820ec6aafb375ef16f00838ded5ce93ee8d7be75">DI2</a>, <a class="code" href="gpio_8h.html#aaac85a8f48f5ae1267497cc30820ec6aa41f61f31b6c4d233cf28ec2c9844fa69">DI3</a>, <a class="code" href="gpio_8h.html#aaac85a8f48f5ae1267497cc30820ec6aa199a06e24854c35af11b96c69f8f713b">DI4</a>, <a class="code" href="gpio_8h.html#aaac85a8f48f5ae1267497cc30820ec6aa4e7bc2deb386c920f8296404859fb8ae">DI5</a>, <a class="code" href="gpio_8h.html#aaac85a8f48f5ae1267497cc30820ec6aa3686963110242a5166063b0f619e35f4">DI6</a>, <a class="code" href="gpio_8h.html#aaac85a8f48f5ae1267497cc30820ec6aa5c19a263b059dc2a04d829f3ff5fbf2b">DI7</a>, <a class="code" href="gpio_8h.html#aaac85a8f48f5ae1267497cc30820ec6aad26845771549352d20e001e511b13a50">DI8</a>, <a class="code" href="gpio_8h.html#aaac85a8f48f5ae1267497cc30820ec6aad3662da77112b79137e32d488b6fd358">DI9</a>, <a class="code" href="gpio_8h.html#aaac85a8f48f5ae1267497cc30820ec6aaa96ab15bb568fcef94921d546483cc41">DI10</a>, <a class="code" href="gpio_8h.html#aaac85a8f48f5ae1267497cc30820ec6aa6682d68f7842ed2b3f74515d2e9d85a9">DI11</a>, <a class="code" href="gpio_8h.html#aaac85a8f48f5ae1267497cc30820ec6aac93a4a1b0c56b327b1f820ab65ecb09f">DI12</a>, <a class="code" href="gpio_8h.html#aaac85a8f48f5ae1267497cc30820ec6aa81f74c736b62f04c43e54ef72d679208">DI13</a>, <a class="code" href="gpio_8h.html#aaac85a8f48f5ae1267497cc30820ec6aab8f7fdfc7462fc9880c01130a52135d4">DI14</a>,
+<a name="l00043"></a><a class="code" href="gpio_8h.html#aaac85a8f48f5ae1267497cc30820ec6aa0e3514e38e5698c917289b6ae75f2e75">00043</a>   <a class="code" href="gpio_8h.html#aaac85a8f48f5ae1267497cc30820ec6aa0e3514e38e5698c917289b6ae75f2e75">DigitalInputMax</a>
+<a name="l00044"></a>00044 };
+<a name="l00045"></a>00045 
+<a name="l00050"></a><a class="code" href="gpio_8h.html#a4a3be473787cd416f778c87c4d471334">00050</a> <span class="keyword">enum</span> <a class="code" href="gpio_8h.html#a4a3be473787cd416f778c87c4d471334" title="Список цифровых выходов">DoNum</a> {
+<a name="l00051"></a><a class="code" href="gpio_8h.html#a4a3be473787cd416f778c87c4d471334a1df62be5fa6c7da66ed11dbefcd4e2c7">00051</a>   <a class="code" href="gpio_8h.html#a4a3be473787cd416f778c87c4d471334a7865be2e2f2e53f035590828c1939399">DO1</a>, <a class="code" href="gpio_8h.html#a4a3be473787cd416f778c87c4d471334a84631f113424d76e0c4d1f49c16c3b58">DO2</a>, <a class="code" href="gpio_8h.html#a4a3be473787cd416f778c87c4d471334a0337d2b986de0114d8cd2e2268fb3c0a">DO3</a>, <a class="code" href="gpio_8h.html#a4a3be473787cd416f778c87c4d471334a1df62be5fa6c7da66ed11dbefcd4e2c7">DO4</a>,
+<a name="l00052"></a><a class="code" href="gpio_8h.html#a4a3be473787cd416f778c87c4d471334a97f9b978d2bb49816445a9ba24a700a1">00052</a>   <a class="code" href="gpio_8h.html#a4a3be473787cd416f778c87c4d471334a97f9b978d2bb49816445a9ba24a700a1">DigitalOutputMax</a>
+<a name="l00053"></a>00053 };
+<a name="l00054"></a>00054 
+<a name="l00055"></a><a class="code" href="gpio_8h.html#a156126ac6c25b2b8d95d6c573c3f9061">00055</a> <span class="preprocessor">#define STOP_LED_PIN                    GPIO_PIN_6</span>
+<a name="l00056"></a><a class="code" href="gpio_8h.html#a0935d6571d56cf32cb8e91e2decdbb91">00056</a> <span class="preprocessor"></span><span class="preprocessor">#define STOP_LED_PORT                   GPIOB</span>
+<a name="l00057"></a><a class="code" href="gpio_8h.html#a7e5abb4402e0a7ae714ff50cc2fdfd85">00057</a> <span class="preprocessor"></span><span class="preprocessor">#define WAIT_LED_PIN                    GPIO_PIN_7</span>
+<a name="l00058"></a><a class="code" href="gpio_8h.html#a78491244c87fad4c18200f338c10ea73">00058</a> <span class="preprocessor"></span><span class="preprocessor">#define WAIT_LED_PORT                   GPIOB</span>
+<a name="l00059"></a><a class="code" href="gpio_8h.html#a84560a83b540aaa86a8af90ca8d5fbda">00059</a> <span class="preprocessor"></span><span class="preprocessor">#define WORK_LED_PIN                    GPIO_PIN_8</span>
+<a name="l00060"></a><a class="code" href="gpio_8h.html#aa8fa8804800883e29b1eca654acf5ac1">00060</a> <span class="preprocessor"></span><span class="preprocessor">#define WORK_LED_PORT                   GPIOB</span>
+<a name="l00061"></a><a class="code" href="gpio_8h.html#a3431122415994ea7fb2ffde82adef041">00061</a> <span class="preprocessor"></span><span class="preprocessor">#define FAN_LED_PIN                     GPIO_PIN_3</span>
+<a name="l00062"></a><a class="code" href="gpio_8h.html#aab462a8c59130b7f7ce0b5d588d37f2d">00062</a> <span class="preprocessor"></span><span class="preprocessor">#define FAN_LED_PORT                    GPIOH</span>
+<a name="l00063"></a>00063 <span class="preprocessor"></span>
+<a name="l00064"></a><a class="code" href="gpio_8h.html#a4341c2a45c65fd3616f0eb15d36b115d">00064</a> <span class="preprocessor">#define POWER_BUTTON_PIN                GPIO_PIN_9</span>
+<a name="l00065"></a><a class="code" href="gpio_8h.html#a9c926aa1f03fb77c99206b38bb552c1e">00065</a> <span class="preprocessor"></span><span class="preprocessor">#define POWER_BUTTON_PORT               GPIOI</span>
+<a name="l00066"></a><a class="code" href="gpio_8h.html#aa5f9f3c5e00d12e52acc4cee10a582dc">00066</a> <span class="preprocessor"></span><span class="preprocessor">#define SYS_RESET_BUTTON_PIN            GPIO_PIN_13</span>
+<a name="l00067"></a><a class="code" href="gpio_8h.html#a0cae631ad6676256d287616097593208">00067</a> <span class="preprocessor"></span><span class="preprocessor">#define SYS_RESET_BUTTON_PORT           GPIOC</span>
+<a name="l00068"></a>00068 <span class="preprocessor"></span>
+<a name="l00070"></a><a class="code" href="gpio_8h.html#a3e25a7d3b432e4b41d1937ff84670bb4">00070</a> <span class="preprocessor">#define WATCH_PIN  GPIOI, GPIO_PIN_5</span>
+<a name="l00071"></a>00071 <span class="preprocessor"></span>
+<a name="l00072"></a><a class="code" href="gpio_8h.html#a111119d2aedc984f89f6a402f862eca3">00072</a> <span class="preprocessor">#define OFF_REL_PIN  GPIOI, GPIO_PIN_6</span>
+<a name="l00073"></a>00073 <span class="preprocessor"></span>
+<a name="l00074"></a><a class="code" href="gpio_8h.html#a8247144b126fb2790f116c0fd6900f04">00074</a> <span class="preprocessor">#define LCD_ON_PIN  GPIOD, GPIO_PIN_3</span>
+<a name="l00075"></a>00075 <span class="preprocessor"></span>
+<a name="l00076"></a><a class="code" href="gpio_8h.html#a2618cb8bc6805d3c81816aab1c9dbe6d">00076</a> <span class="preprocessor">#define USB_ON_PIN  GPIOG, GPIO_PIN_9</span>
+<a name="l00077"></a>00077 <span class="preprocessor"></span>
+<a name="l00082"></a>00082 <span class="keywordtype">void</span> <a class="code" href="gpio_8cpp.html#a119f536e628cb7ead78d377b4766dceb" title="Инициализация выводов, кнопок, LED, DI, DO.">gpioInit</a>();
+<a name="l00083"></a>00083 
+<a name="l00094"></a>00094 <span class="keywordtype">void</span> <a class="code" href="gpio_8cpp.html#a989b8355d153ae1a535518ff2ff4e69e" title="Turns selected LED On.">onLed</a>(<a class="code" href="gpio_8h.html#af78bf8225e8e9ba72fda2f5f2e800412" title="Список LED.">LedType</a> led);
+<a name="l00095"></a>00095 
+<a name="l00105"></a>00105 <span class="keywordtype">void</span> <a class="code" href="gpio_8cpp.html#ab0e400fa8cfddfaa208938646f4f5c3e" title="Turns selected LED Off.">offLed</a>(<a class="code" href="gpio_8h.html#af78bf8225e8e9ba72fda2f5f2e800412" title="Список LED.">LedType</a> led);
+<a name="l00106"></a>00106 
+<a name="l00116"></a>00116 <span class="keywordtype">void</span> <a class="code" href="gpio_8cpp.html#aa6d157ddc459c0c5b97e07c7bca83740" title="Toggles the selected LED.">toggleLed</a>(<a class="code" href="gpio_8h.html#af78bf8225e8e9ba72fda2f5f2e800412" title="Список LED.">LedType</a> led);
+<a name="l00117"></a>00117 
+<a name="l00121"></a>00121 <span class="keywordtype">void</span> <a class="code" href="gpio_8cpp.html#a9579058820154d47f0002142e85c5d5b" title="Отключение всех LED.">offAllLeds</a>();
+<a name="l00122"></a>00122 
+<a name="l00129"></a>00129 <span class="keywordtype">void</span> <a class="code" href="gpio_8cpp.html#a15f67a4d7ba4d784143552ac9e813bb7" title="Настройка вывода на вход">initPinInput</a>(GPIO_TypeDef* port, <span class="keyword">const</span> uint16_t pin);
+<a name="l00130"></a>00130 
+<a name="l00131"></a>00131 
+<a name="l00139"></a>00139 <a class="code" href="gpio_8h.html#a481bba4ee500a381c7ae5b767e641bdc" title="Значения вывода">PinState</a> <a class="code" href="gpio_8cpp.html#a74d4b75f9219adcd82e4bac96fd65346" title="Получение значения на входе">getPinInput</a>(GPIO_TypeDef* port, <span class="keyword">const</span> uint16_t pin);
+<a name="l00140"></a>00140 
+<a name="l00148"></a>00148 <span class="keywordtype">void</span> <a class="code" href="gpio_8cpp.html#aaf3eb02cdf380b681e99344f0e13cd9c" title="Настройка вывода на выход">initPinOut</a>(GPIO_TypeDef* port, <span class="keyword">const</span> uint16_t pin, <a class="code" href="gpio_8h.html#a481bba4ee500a381c7ae5b767e641bdc" title="Значения вывода">PinState</a> value = <a class="code" href="gpio_8h.html#a481bba4ee500a381c7ae5b767e641bdca22210032c374250cca65519ba979ecfb">PinReset</a>);
+<a name="l00149"></a>00149 
+<a name="l00156"></a>00156 <span class="keywordtype">void</span> <a class="code" href="gpio_8cpp.html#aba699330765a5e803af52bf01f87083f" title="Установка значения на выходе в 1.">setPinOut</a>(GPIO_TypeDef* port, <span class="keyword">const</span> uint16_t pin);
+<a name="l00157"></a>00157 
+<a name="l00164"></a>00164 <span class="keywordtype">void</span> <a class="code" href="gpio_8cpp.html#ac32a975524168003f471ffb6d188cc4c" title="Установка значения на выходе в 0.">clrPinOut</a>(GPIO_TypeDef* port, <span class="keyword">const</span> uint16_t pin);
+<a name="l00165"></a>00165 
+<a name="l00172"></a>00172 <a class="code" href="gpio_8h.html#a481bba4ee500a381c7ae5b767e641bdc" title="Значения вывода">PinState</a> <a class="code" href="gpio_8cpp.html#af33c98865be35b1377fa4c33b101c744" title="Получение значения на цифровом входе">getDigitalInput</a>(<span class="keyword">const</span> uint16_t num);
+<a name="l00173"></a>00173 
+<a name="l00180"></a>00180 <span class="keywordtype">void</span> <a class="code" href="gpio_8cpp.html#a4b605b2c3d7afda0f0f139ffb82233f4" title="Установка значения на цифровом выходе">setDigitalOutput</a>(<span class="keyword">const</span> uint16_t num, <a class="code" href="gpio_8h.html#a481bba4ee500a381c7ae5b767e641bdc" title="Значения вывода">PinState</a> value = <a class="code" href="gpio_8h.html#a481bba4ee500a381c7ae5b767e641bdca22210032c374250cca65519ba979ecfb">PinReset</a>);
+<a name="l00181"></a>00181 
+<a name="l00187"></a>00187 <span class="keywordtype">bool</span> <a class="code" href="gpio_8cpp.html#a405a3b59f4c4bc5d86ca66ae6d751732" title="Получение состояния питания платы с внешнего детектора">isPowerGood</a>();
+<a name="l00188"></a>00188 
+<a name="l00193"></a>00193 <span class="keywordtype">void</span> <a class="code" href="gpio_8cpp.html#ad514e56eeb03ff9245c23630220050dd" title="Функция вкл/выкл питания от ИБП">turnPowerBattery</a>(<span class="keywordtype">bool</span> on);
+<a name="l00194"></a>00194 
+<a name="l00199"></a>00199 <span class="keywordtype">void</span> <a class="code" href="gpio_8cpp.html#a79c6a71473ddb23cd5340690759cf0e2" title="Включение LCD.">onLcd</a>();
+<a name="l00200"></a>00200 
+<a name="l00205"></a>00205 <span class="keywordtype">void</span> <a class="code" href="gpio_8cpp.html#a77db861d0765aa4c4f67030a21608b21" title="Выключение LCD.">offLcd</a>();
+<a name="l00206"></a>00206 
+<a name="l00207"></a>00207 <span class="preprocessor">#endif // GPIO_H</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:23. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

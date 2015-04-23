@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/device/em/em_set.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/device/em/em_set.h</div>  </div>
+</div>
+<div class="contents">
+<a href="em__set_8h.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 ﻿#ifndef EM_SET_H_
+<a name="l00002"></a>00002 <span class="preprocessor">#define EM_SET_H_</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &quot;<a class="code" href="em_8h.html">em.h</a>&quot;</span>
+<a name="l00005"></a>00005 
+<a name="l00010"></a><a class="code" href="class_em_set.html">00010</a> <span class="keyword">class </span><a class="code" href="class_em_set.html" title="Класс счётчика электроэнергии СЕТ">EmSet</a>: <span class="keyword">public</span> <a class="code" href="class_em.html" title="Базовый класс счётчика электроэнергии Наследник класса Device использующий его структуру и методы хра...">Em</a>
+<a name="l00011"></a>00011 {
+<a name="l00012"></a>00012 <span class="keyword">public</span>:
+<a name="l00013"></a>00013   <a class="code" href="class_em_set.html#a2693aafbb606a3cfd38449e1db63b904">EmSet</a>();
+<a name="l00014"></a>00014   <span class="keyword">virtual</span> <a class="code" href="class_em_set.html#ab414d8bffc96bc6f9523cefeb12eddc7">~EmSet</a>();
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016   <span class="keywordtype">void</span> <a class="code" href="class_em_set.html#a883bb24b8acfbbb3877a578fbe30add3" title="Инициализация устройства">init</a>();
+<a name="l00017"></a>00017 
+<a name="l00021"></a>00021   <span class="keywordtype">void</span> <a class="code" href="class_em_set.html#a36d0d9de2b08fa7eecf98529fe8a62d8" title="Задача отправки/приёма данных в/от СЭ">task</a>();
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023 <span class="keyword">private</span>:
+<a name="l00027"></a>00027   <span class="keywordtype">void</span> <a class="code" href="class_em_set.html#aeb77c43d679b744d65274bff0417648f" title="Метод отправки запросов">sendRequest</a>();
+<a name="l00028"></a>00028 
+<a name="l00032"></a>00032   <span class="keywordtype">void</span> <a class="code" href="class_em_set.html#a18cf0f14fbb11546eb7287432fd45369" title="Метод обработки ответов на запросы">receiveAnswer</a>();
+<a name="l00033"></a>00033 
+<a name="l00037"></a>00037   <span class="keywordtype">void</span> <a class="code" href="class_em_set.html#aeaf3f7ac5e932cd085c66250fe4d8bed" title="Сохранение полученных значений в массив параметров">setParameter</a>();
+<a name="l00038"></a>00038 
+<a name="l00042"></a>00042   <span class="keywordtype">void</span> <a class="code" href="class_em_set.html#a092d56e37350c67c27ed65a3d11f24f5" title="Сохранение полученных значений энергии в массив параметров">setParamEnergy</a>();
+<a name="l00043"></a>00043 
+<a name="l00048"></a>00048   <span class="keywordtype">void</span> <a class="code" href="class_em_set.html#ae0914d52e2490766784ba48a789cebef" title="Сохранение полученных значений энергопотребления (за весь период) в массив параметров">setParamEnergyConsumpAll</a>();
+<a name="l00049"></a>00049 
+<a name="l00054"></a>00054   <span class="keywordtype">void</span> <a class="code" href="class_em_set.html#abfb989a429e319cf2f6b3dd8070c34a5" title="Сохранение полученных значений энергопотребления (текущие сутки) в массив параметров">setParamEnergyConsumpCurDay</a>();
+<a name="l00055"></a>00055 
+<a name="l00060"></a>00060   <span class="keywordtype">void</span> <a class="code" href="class_em_set.html#a32d536370263158f099d904c92219808" title="Сохранение полученных значений энергопотребления (предыдущие сутки) в массив параметров">setParamEnergyConsumpPrevDay</a>();
+<a name="l00061"></a>00061 
+<a name="l00066"></a>00066   <span class="keywordtype">void</span> <a class="code" href="class_em_set.html#a8204e74ccce3dfc1808b9fd942b628e4" title="Сохранение полученных значений энергопотребления (текущий месяц) в массив параметров">setParamEnergyConsumpCurMonth</a>();
+<a name="l00067"></a>00067 
+<a name="l00072"></a>00072   <span class="keywordtype">void</span> <a class="code" href="class_em_set.html#a2b5361125b757c163ca618546ed60caa" title="Сохранение полученных значений энергопотребления (предыдущий месяц) в массив параметров">setParamEnergyConsumpPrevMonth</a>();
+<a name="l00073"></a>00073 
+<a name="l00077"></a>00077   <span class="keywordtype">void</span> <a class="code" href="class_em_set.html#accafa391815149d9fbe41811a1c1e8ba" title="Сохранение константы счётчика">setConstantEm</a>();
+<a name="l00078"></a>00078 
+<a name="l00085"></a>00085   <span class="keywordtype">int</span> <a class="code" href="class_em_set.html#a8d807a52f9dfb6f73627145ff222e88d" title="Подготовка записи коэффициента трансформации в СЭ Если коэффициент СЭ не отличается от значения в мас...">prepareSendConstantCoefTrans</a>();
+<a name="l00086"></a>00086 
+<a name="l00088"></a><a class="code" href="class_em_set.html#a717a229e039f8ce4c0c2015732388b41">00088</a>   osThreadId <a class="code" href="class_em_set.html#a717a229e039f8ce4c0c2015732388b41" title="Идентификатор задачи">threadId_</a>;
+<a name="l00089"></a>00089 
+<a name="l00091"></a><a class="code" href="class_em_set.html#ab12ce60b710d2bbc861a5d8d0f99b3d1">00091</a>   <span class="keywordtype">int</span> <a class="code" href="class_em_set.html#ab12ce60b710d2bbc861a5d8d0f99b3d1" title="Номер запроса">numberRequest_</a>;
+<a name="l00093"></a><a class="code" href="class_em_set.html#a01aec26b75a1bb098c1860d1091a38ca">00093</a>   <span class="keywordtype">int</span> <a class="code" href="class_em_set.html#a01aec26b75a1bb098c1860d1091a38ca" title="Константа счётчика">constEm_</a>;
+<a name="l00095"></a><a class="code" href="class_em_set.html#a86d6e98d5db8fc119030d9282be3b4e6">00095</a>   <span class="keywordtype">float</span> <a class="code" href="class_em_set.html#a86d6e98d5db8fc119030d9282be3b4e6" title="Константа коэффициента трансформации тока">constCoefTrans_</a>;
+<a name="l00097"></a><a class="code" href="class_em_set.html#ac1dfec8747af31fe24b8c463face6d9b">00097</a>   <span class="keywordtype">int</span> <a class="code" href="class_em_set.html#ac1dfec8747af31fe24b8c463face6d9b" title="Количество принятых байт в пакете">sizePkt_</a>;
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099 };
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101 <span class="preprocessor">#endif </span><span class="comment">/* EM_SET_H_ */</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

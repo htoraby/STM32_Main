@@ -1,0 +1,1833 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Класс Protection</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li><a href="classes.html"><span>Алфавитный&#160;указатель&#160;структур&#160;данных</span></a></li>
+      <li><a href="hierarchy.html"><span>Иерархия&#160;классов</span></a></li>
+      <li><a href="functions.html"><span>Поля&#160;структур</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Открытые типы</a> &#124;
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pro-methods">Защищенные члены</a> &#124;
+<a href="#pro-attribs">Защищенные данные</a>  </div>
+  <div class="headertitle">
+<div class="title">Класс Protection</div>  </div>
+</div>
+<div class="contents">
+<!-- doxytag: class="Protection" -->
+<p>Базовый класс защит КСУ  
+ <a href="class_protection.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="protection_8h_source.html">protection.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф наследования:Protection:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_protection.png" usemap="#Protection_map" alt=""/>
+  <map id="Protection_map" name="Protection_map">
+<area href="class_protection_analog_input.html" alt="ProtectionAnalogInput" shape="rect" coords="212,56,414,80"/>
+<area href="class_protection_current_motor.html" title="Класс автомата защиты &quot;Предел тока двигателя&quot;." alt="ProtectionCurrentMotor" shape="rect" coords="212,112,414,136"/>
+<area href="class_protection_digital_input.html" alt="ProtectionDigitalInput" shape="rect" coords="212,168,414,192"/>
+<area href="class_protection_hardware_vsd.html" alt="ProtectionHardwareVsd" shape="rect" coords="212,224,414,248"/>
+<area href="class_protection_imbalance_current_input.html" alt="ProtectionImbalanceCurrentInput" shape="rect" coords="212,280,414,304"/>
+<area href="class_protection_imbalance_current_motor.html" title="Класс автомата защиты &quot;Дисбаланс токов ПЭД&quot;." alt="ProtectionImbalanceCurrentMotor" shape="rect" coords="212,336,414,360"/>
+<area href="class_protection_imbalance_voltage_input.html" title="Класс автомата защиты &quot;Дисбаланс напряжения&quot;." alt="ProtectionImbalanceVoltageInput" shape="rect" coords="212,392,414,416"/>
+<area href="class_protection_i_m_d.html" alt="ProtectionIMD" shape="rect" coords="212,448,414,472"/>
+<area href="class_protection_lock_door.html" alt="ProtectionLockDoor" shape="rect" coords="212,504,414,528"/>
+<area href="class_protection_out_of_sync_motor.html" title="Класс автомата защиты &quot;Рассинхронизация ПВЭД&quot;." alt="ProtectionOutOfSyncMotor" shape="rect" coords="212,560,414,584"/>
+<area href="class_protection_overload_motor.html" title="Класс автомата защиты &quot;Перегруз двигателя&quot;." alt="ProtectionOverloadMotor" shape="rect" coords="212,616,414,640"/>
+<area href="class_protection_overnumber_of_start.html" alt="ProtectionOvernumberOfStart" shape="rect" coords="212,672,414,696"/>
+<area href="class_protection_over_voltage_input.html" title="Класс автомата защиты &quot;Превышение питания сети&quot;." alt="ProtectionOverVoltageInput" shape="rect" coords="212,728,414,752"/>
+<area href="class_protection_pressure_intake.html" title="Класс автомата защиты &quot;Давление на приёме насоса&quot;." alt="ProtectionPressureIntake" shape="rect" coords="212,784,414,808"/>
+<area href="class_protection_resistance_isolation.html" title="Класс автомата защиты &quot;Сопротивление изоляции&quot;." alt="ProtectionResistanceIsolation" shape="rect" coords="212,840,414,864"/>
+<area href="class_protection_sequence_phase.html" alt="ProtectionSequencePhase" shape="rect" coords="212,896,414,920"/>
+<area href="class_protection_temperature_motor.html" title="Класс автомата защиты &quot;Перегрев двигателя&quot;." alt="ProtectionTemperatureMotor" shape="rect" coords="212,952,414,976"/>
+<area href="class_protection_turbine_rotation.html" title="Класс автомата защиты &quot;Турбинное вращение&quot;." alt="ProtectionTurbineRotation" shape="rect" coords="212,1008,414,1032"/>
+<area href="class_protection_underload_motor.html" title="Класс автомата защиты &quot;Недогруз двигателя&quot;." alt="ProtectionUnderloadMotor" shape="rect" coords="212,1064,414,1088"/>
+<area href="class_protection_under_voltage_input.html" title="Класс автомата защиты &quot;Снижение питания сети&quot;." alt="ProtectionUnderVoltageInput" shape="rect" coords="212,1120,414,1144"/>
+<area href="class_protection_vibration_motor.html" alt="ProtectionVibrationMotor" shape="rect" coords="212,1176,414,1200"/>
+</map>
+ </div></div>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="pub-types"></a>
+Открытые типы</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#aa2a1619340be9725d72299f75bb3769b">ProtMode</a> { <a class="el" href="class_protection.html#aa2a1619340be9725d72299f75bb3769ba2b17106829c8432620e41db1e4483c17">ModeOff</a> =  0, 
+<a class="el" href="class_protection.html#aa2a1619340be9725d72299f75bb3769baf3ac8c627b42333fcb0d600787e5f793">ModeBlock</a>, 
+<a class="el" href="class_protection.html#aa2a1619340be9725d72299f75bb3769baebff578a0fffb92fa1f9a377dff3f516">ModeRestart</a>, 
+<a class="el" href="class_protection.html#aa2a1619340be9725d72299f75bb3769baf33ba108363e7fa73e7e90c54435a8a1">ModeOn</a>
+ }</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Список действий защиты  <a href="class_protection.html#aa2a1619340be9725d72299f75bb3769b">Подробнее...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a6d1c7bec3db6077b5c0ff94aff4a0c20">ProtState</a> { <a class="el" href="class_protection.html#a6d1c7bec3db6077b5c0ff94aff4a0c20a70e1bd04df1588b258708fea82b6c60e">StateRunning</a>, 
+<a class="el" href="class_protection.html#a6d1c7bec3db6077b5c0ff94aff4a0c20a46e5015f141986f9c7609a227370ca2c">StateRun</a>, 
+<a class="el" href="class_protection.html#a6d1c7bec3db6077b5c0ff94aff4a0c20a005574cb392bc4de152e54152f11fbc6">StateStopping</a>, 
+<a class="el" href="class_protection.html#a6d1c7bec3db6077b5c0ff94aff4a0c20a6241c6975959b00b0b4d5eccffe133f9">StateStop</a>
+ }</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Список состояний защиты  <a href="class_protection.html#a6d1c7bec3db6077b5c0ff94aff4a0c20">Подробнее...</a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#ab17efa80e7f28a80a324b284a47b83f1">Protection</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#aa701f893bc1227920f3b818eaab0e001">~Protection</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a19de6cbe472e5f8b183ebba172058b10">processing</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод обработки защиты  <a href="#a19de6cbe472e5f8b183ebba172058b10"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#ae0879b0a6493c58b3d0dafda8d3fd349">getGeneralSetpointProt</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения основных уставок защиты. Метод должен вызываться с периодом работы автомата защиты, таким образом получаем актуальные значения уставок  <a href="#ae0879b0a6493c58b3d0dafda8d3fd349"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#abc8af9ef8655953b8264c136d6e39440">getOtherSetpointProt</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения индивидуальных уставок защит  <a href="#abc8af9ef8655953b8264c136d6e39440"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a6d6d0e12bebba3c2be89e1f094cca18f">getCurrentParamProt</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод получения текущих параметров защиты. Эти данные меняются в процессе работы автомата защиты  <a href="#a6d6d0e12bebba3c2be89e1f094cca18f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a978157629e987b187b9512b3289f44fa">setCurrentParamProt</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод сохранения текущих параметров защиты  <a href="#a978157629e987b187b9512b3289f44fa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a170270af45df0a84398c9f08246cdb36">setOtherParamProt</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод сохранения индивидуальных текущих параметров защиты  <a href="#a170270af45df0a84398c9f08246cdb36"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a45a13f6ee568d4ebcd05ee21e0c6c450">checkAlarm</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод проверки условия срабатывания защиты  <a href="#a45a13f6ee568d4ebcd05ee21e0c6c450"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a3faa0c8952e7e4443a86b39ca8b93f8d">isHigherLimit</a> (float setpoint)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод проверки превышения текущего значения отсительно уставки  <a href="#a3faa0c8952e7e4443a86b39ca8b93f8d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a5088309072f2a1c639c267e8659bc618">isLowerLimit</a> (float setpoint)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод проверки уменьшения текущего значения отсительно уставки  <a href="#a5088309072f2a1c639c267e8659bc618"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#afa4c8563bedd46298f07e928f4d0573e">checkPrevent</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод проверки выполнения условия АПВ по значению параметра  <a href="#afa4c8563bedd46298f07e928f4d0573e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#ad3bb444ba03fc72aea7b89eebcd3ce56">calcValue</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Пересчёт текущего значения для сравнения с уставкой  <a href="#ad3bb444ba03fc72aea7b89eebcd3ce56"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#ada7f9e2a8915ba0d72b049777ed008b3">checkRestartResetCount</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод проверки таймера сброса счётчиков АПВ защиты  <a href="#ada7f9e2a8915ba0d72b049777ed008b3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a8b549dca17a0c50af97b26a16e5f77e7">addEventReactionProt</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод добавления события "Сработала защита" в журнал  <a href="#a8b549dca17a0c50af97b26a16e5f77e7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#aee5b968e907471eca879806b91947b20">isModeOff</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">isReactionOff  <a href="#aee5b968e907471eca879806b91947b20"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#acc8b9bc1b52a08fd7464e7f078f981c5">isModeBlock</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">isReactionBlock  <a href="#acc8b9bc1b52a08fd7464e7f078f981c5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#ac6fbe5ef28c964941e76d7a2e71b9893">isModeRestart</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">isReactionRestart  <a href="#ac6fbe5ef28c964941e76d7a2e71b9893"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#aa65d7e8e0ba685fb0a4ad44ee5438c0e">isModeOn</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">isReactionOn  <a href="#aa65d7e8e0ba685fb0a4ad44ee5438c0e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#abb7eec50276d509d427fb97e5b99a81e">setStateStop</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция перевода автомата защиты в состояние стоп  <a href="#abb7eec50276d509d427fb97e5b99a81e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a61a8263539b7280d75eb533c04719f47">setStateRun</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция перевода автомата защиты в состояние работа  <a href="#a61a8263539b7280d75eb533c04719f47"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a47c05cd15f077210eaca36a1e2753eda">automatProtection</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Универсальный автомат работы защиты  <a href="#a47c05cd15f077210eaca36a1e2753eda"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a17985d570059c9bbcbd463fc70a3f0c5">processingStateRunning</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Состояние защиты задержка активации  <a href="#a17985d570059c9bbcbd463fc70a3f0c5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#aca4544bf0cffe381a492c3f1e669973d">processingStateRun</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Состояние защита контроля параметра и задержки срабатывания  <a href="#aca4544bf0cffe381a492c3f1e669973d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a25c619db7a87b5a6412b1864233cc5ba">proccessingStateStopping</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Состояние защиты ожидание останова  <a href="#a25c619db7a87b5a6412b1864233cc5ba"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a00a139e41fa563a1cf2fedf310cb6c56">proccessingStateStop</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Состояние защиты останов  <a href="#a00a139e41fa563a1cf2fedf310cb6c56"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a6918d63c63027bf34fdd54563a82882d">calcTimeFromStart</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция вычисления времени от начала события  <a href="#a6918d63c63027bf34fdd54563a82882d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a6b156a7db22f937c089b8cc6c45e5dab">calcTimeUntilEnd</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция вычисления времени оставшегося до окончания события  <a href="#a6b156a7db22f937c089b8cc6c45e5dab"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a3b16937db16baa2a64b9020359a8d1ad">calcRestartResetCount</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция проверки времени сброса счётчика АПВ  <a href="#a3b16937db16baa2a64b9020359a8d1ad"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a309deb1eee0a836ebd0114baf5948887">isDelay</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">isDelay  <a href="#a309deb1eee0a836ebd0114baf5948887"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a8ad11e8d98eef1386f5325bbc1db8edc">isPrevent</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">isPrevent  <a href="#a8ad11e8d98eef1386f5325bbc1db8edc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bf">EventId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a8869d6c016349985d3400f7f56c7015a">getApvDisabledEventId</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">getApvDisabledEventId  <a href="#a8869d6c016349985d3400f7f56c7015a"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pro-methods"></a>
+Защищенные члены</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#acb9a8ebc85bc57ddd82d24cbbc2d0bf1">incRestartCount</a> ()</td></tr>
+<tr><td colspan="2"><h2><a name="pro-attribs"></a>
+Защищенные данные</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a19268efce822959480829d59d31826ca">idMode_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">id параметров защиты  <a href="#a19268efce822959480829d59d31826ca"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a3d008718d0dd7bc1b4db9b9e244e2383">idPrevent_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">id Флаг запрещающего параметра  <a href="#a3d008718d0dd7bc1b4db9b9e244e2383"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a8a86748e2445f254259983e97d7c4dea">idActivDelay_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">id задержка активации защиты  <a href="#a8a86748e2445f254259983e97d7c4dea"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#ac28447b4c01fcee3c6de01b6e1f99da2">idTripDelay_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">id задержка срабатывания защиты  <a href="#ac28447b4c01fcee3c6de01b6e1f99da2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a5ae8c6b40c41c02bcda4764dc4882f90">idRestartDelay_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">id задержка АПВ защиты  <a href="#a5ae8c6b40c41c02bcda4764dc4882f90"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a49c2efad198e74ccd48543e685881266">idRestartLimit_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">id количество АПВ  <a href="#a49c2efad198e74ccd48543e685881266"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a607942ac6f46f09220a6841ccf349f56">idRestartResetTime_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">id Время сброса количества АПВ  <a href="#a607942ac6f46f09220a6841ccf349f56"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#ab49e9871a127757d87f94d76864c49b1">idTripSetpoint_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">id граница срабатывания защиты  <a href="#ab49e9871a127757d87f94d76864c49b1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#aa9e310942cce88446b1f47aadf8f3723">idRestartSetpoint_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">id граница АПВ  <a href="#aa9e310942cce88446b1f47aadf8f3723"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#ace700a9f47d7152d3dd255e3d48a2f5b">idParam_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">id Параметр 1  <a href="#ace700a9f47d7152d3dd255e3d48a2f5b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#abe83013e52b98b5c65212dbe589d68c6">idRestartFlag_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">id Флаг что защита в состоянии АПВ  <a href="#abe83013e52b98b5c65212dbe589d68c6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a7dcd955bb34edc02108837b4462de534">idBlockFlag_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">id Флаг что защита в состоянии БЛОК  <a href="#a7dcd955bb34edc02108837b4462de534"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a05de80f07ef003b57a47354a7e5c93d3">idState_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">id Состояние автомата  <a href="#a05de80f07ef003b57a47354a7e5c93d3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a534abfe01f4740afb17d49b7c70e7b54">idTimer_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">id Таймера  <a href="#a534abfe01f4740afb17d49b7c70e7b54"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a864f0082ae4f278efa87a83fe3a064c4">idRestartCount_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">id Счётчика АПВ  <a href="#a864f0082ae4f278efa87a83fe3a064c4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#aa2dc723f7f83d7868270a05b15cdfa6a">idRestartFirstTime_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">id Время первого срабатывания АПВ  <a href="#aa2dc723f7f83d7868270a05b15cdfa6a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a8a9830d3d3a5eb05c6dc39afccc499bd">mode_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Локальные переменные для обработки  <a href="#a8a9830d3d3a5eb05c6dc39afccc499bd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#acaee7821e4ca938235b7fc52bb0f9772">activDelay_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Уставка: задержка активации защиты  <a href="#acaee7821e4ca938235b7fc52bb0f9772"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#ad9b4a7b6ef4863603c7fc16540fb3f2a">tripDelay_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Уставка: задержка срабатывания защиты  <a href="#ad9b4a7b6ef4863603c7fc16540fb3f2a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#aa242953e6843648a53baa1bf33f42ebe">restartDelay_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Уставка: задержка АПВ защиты  <a href="#aa242953e6843648a53baa1bf33f42ebe"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a90e3751c796ee5fa31f20fc95aa91b5b">restartLimit_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Уставка: количество АПВ  <a href="#a90e3751c796ee5fa31f20fc95aa91b5b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a9aa1456efc8eb1dc76a27f591cc9948a">restartResetTime_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Уставка: Время сброса количества АПВ  <a href="#a9aa1456efc8eb1dc76a27f591cc9948a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a4364e0200bcc4a0c10b25a32d86642f7">tripSetpoint_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Уставка: граница срабатывания защиты  <a href="#a4364e0200bcc4a0c10b25a32d86642f7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a1ae05a6f8fac838367d94f5dc652ad90">restartSetpoint_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Уставка: граница АПВ  <a href="#a1ae05a6f8fac838367d94f5dc652ad90"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a6b3cf8e122360f6db67831f0f3f627dc">timerDifStartFlag_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Уставка: Параметр 1.  <a href="#a6b3cf8e122360f6db67831f0f3f627dc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a6f01793ff384a04208a8451b4faf9cd2">workWithAlarmFlag_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Уставка: Флаг разрешения работы при аварии  <a href="#a6f01793ff384a04208a8451b4faf9cd2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#ab9d2c518c0815a6147355b599c748fa0">resetRestartDelayFlag_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Уставка: Флаг критерий АПВ  <a href="#ab9d2c518c0815a6147355b599c748fa0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a6016cc506c8bf05c33cd671544edd670">state_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Состояние автомата защиты  <a href="#a6016cc506c8bf05c33cd671544edd670"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a3d6e2bdab22bfb8d171e195ea1c75a1a">valueParameter_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Текущее значение контролируемого параметра  <a href="#a3d6e2bdab22bfb8d171e195ea1c75a1a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#aa5d3c5948d3ae786a170c76600b25abb">timer_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Текущее значение таймера  <a href="#aa5d3c5948d3ae786a170c76600b25abb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a1597cd2755248ab27fa1bcc5c54d8c4f">restartCount_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Текущее количество АПВ по защите  <a href="#a1597cd2755248ab27fa1bcc5c54d8c4f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a5d5248506ff553766f5be95c1b36c18f">restartFirstTime_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Время первого срабатывания АПВ  <a href="#a5d5248506ff553766f5be95c1b36c18f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a9808a38ca779317bfd586c6882eebc31">alarm_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Флаг выполнения условия срабатывания защиты  <a href="#a9808a38ca779317bfd586c6882eebc31"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#ac1ac78cc75e151998ea8a366fcee2d72">prevent_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Флаг запрещающего параметра  <a href="#ac1ac78cc75e151998ea8a366fcee2d72"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a6aa3e069500a5254645a1ab15f862f14">block_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Флаг что защита в блокировке  <a href="#a6aa3e069500a5254645a1ab15f862f14"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#ae84e5a12a3b8231214a9f8bef2aad8ff">restart_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Флаг что защита в состоянии АПВ  <a href="#ae84e5a12a3b8231214a9f8bef2aad8ff"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a4738c6bcd646446d1e67433faabe493c">attempt_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Флаг первой попытки запуска  <a href="#a4738c6bcd646446d1e67433faabe493c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a61a4d19ee7b94978596b6b42be5d0968">delay_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Флаг задержки срабатывания  <a href="#a61a4d19ee7b94978596b6b42be5d0968"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#af51dc6107f18459e606c7a10dbed2775">progressiveRestartCount_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Текущее количество АПВ без учёта сброса для вычисления прогрессивной задержки  <a href="#af51dc6107f18459e606c7a10dbed2775"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="define_8h.html#a2e37372dbc4114112400e3845adc1372">LastReasonRun</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#af300db56e96fca2b72d5c2fb3a1e373d">lastReasonRun_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Причина запуска  <a href="#af300db56e96fca2b72d5c2fb3a1e373d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ff">LastReasonStop</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a438a0007201523d868664947d82cf963">lastReasonStop_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Причина останова  <a href="#a438a0007201523d868664947d82cf963"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bf">EventId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#ad9f00b97300ac27e31ff1aa5a46b099a">protReactEventId_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Индексы событий для записи в журнал  <a href="#ad9f00b97300ac27e31ff1aa5a46b099a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bf">EventId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#ae72394ac48c703be019c6defa3938e6e">apvEventId_</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bf">EventId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#a7dd90b182f11cb40b0a101504dbb3a82">apvDisabledEventId_</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bf">EventId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_protection.html#ac9a9ddcf3754e4341ac9ae211b8eaa51">protBlockedEventId_</a></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Подробное описание</h2>
+<div class="textblock"><p>Базовый класс защит КСУ </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00009">9</a></p>
+</div><hr/><h2>Перечисления</h2>
+<a class="anchor" id="aa2a1619340be9725d72299f75bb3769b"></a><!-- doxytag: member="Protection::ProtMode" ref="aa2a1619340be9725d72299f75bb3769b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_protection.html#aa2a1619340be9725d72299f75bb3769b">Protection::ProtMode</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Список действий защиты </p>
+<dl><dt><b>Элементы перечислений: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="aa2a1619340be9725d72299f75bb3769ba2b17106829c8432620e41db1e4483c17"></a><!-- doxytag: member="ModeOff" ref="aa2a1619340be9725d72299f75bb3769ba2b17106829c8432620e41db1e4483c17" args="" -->ModeOff</em>&nbsp;</td><td>
+<p>Защиты выключена </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="aa2a1619340be9725d72299f75bb3769baf3ac8c627b42333fcb0d600787e5f793"></a><!-- doxytag: member="ModeBlock" ref="aa2a1619340be9725d72299f75bb3769baf3ac8c627b42333fcb0d600787e5f793" args="" -->ModeBlock</em>&nbsp;</td><td>
+<p>Реакция защиты блокировка </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="aa2a1619340be9725d72299f75bb3769baebff578a0fffb92fa1f9a377dff3f516"></a><!-- doxytag: member="ModeRestart" ref="aa2a1619340be9725d72299f75bb3769baebff578a0fffb92fa1f9a377dff3f516" args="" -->ModeRestart</em>&nbsp;</td><td>
+<p>Реакция защиты АПВ </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="aa2a1619340be9725d72299f75bb3769baf33ba108363e7fa73e7e90c54435a8a1"></a><!-- doxytag: member="ModeOn" ref="aa2a1619340be9725d72299f75bb3769baf33ba108363e7fa73e7e90c54435a8a1" args="" -->ModeOn</em>&nbsp;</td><td>
+<p>Защита включена </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00015">15</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a6d1c7bec3db6077b5c0ff94aff4a0c20"></a><!-- doxytag: member="Protection::ProtState" ref="a6d1c7bec3db6077b5c0ff94aff4a0c20" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_protection.html#a6d1c7bec3db6077b5c0ff94aff4a0c20">Protection::ProtState</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Список состояний защиты </p>
+<dl><dt><b>Элементы перечислений: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a6d1c7bec3db6077b5c0ff94aff4a0c20a70e1bd04df1588b258708fea82b6c60e"></a><!-- doxytag: member="StateRunning" ref="a6d1c7bec3db6077b5c0ff94aff4a0c20a70e1bd04df1588b258708fea82b6c60e" args="" -->StateRunning</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a6d1c7bec3db6077b5c0ff94aff4a0c20a46e5015f141986f9c7609a227370ca2c"></a><!-- doxytag: member="StateRun" ref="a6d1c7bec3db6077b5c0ff94aff4a0c20a46e5015f141986f9c7609a227370ca2c" args="" -->StateRun</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a6d1c7bec3db6077b5c0ff94aff4a0c20a005574cb392bc4de152e54152f11fbc6"></a><!-- doxytag: member="StateStopping" ref="a6d1c7bec3db6077b5c0ff94aff4a0c20a005574cb392bc4de152e54152f11fbc6" args="" -->StateStopping</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a6d1c7bec3db6077b5c0ff94aff4a0c20a6241c6975959b00b0b4d5eccffe133f9"></a><!-- doxytag: member="StateStop" ref="a6d1c7bec3db6077b5c0ff94aff4a0c20a6241c6975959b00b0b4d5eccffe133f9" args="" -->StateStop</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00025">25</a></p>
+
+</div>
+</div>
+<hr/><h2>Конструктор(ы)</h2>
+<a class="anchor" id="ab17efa80e7f28a80a324b284a47b83f1"></a><!-- doxytag: member="Protection::Protection" ref="ab17efa80e7f28a80a324b284a47b83f1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Protection::Protection </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00004">4</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa701f893bc1227920f3b818eaab0e001"></a><!-- doxytag: member="Protection::~Protection" ref="aa701f893bc1227920f3b818eaab0e001" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Protection::~Protection </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00014">14</a></p>
+
+</div>
+</div>
+<hr/><h2>Методы</h2>
+<a class="anchor" id="a8b549dca17a0c50af97b26a16e5f77e7"></a><!-- doxytag: member="Protection::addEventReactionProt" ref="a8b549dca17a0c50af97b26a16e5f77e7" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Protection::addEventReactionProt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод добавления события "Сработала защита" в журнал </p>
+
+<p>Переопределяется в <a class="el" href="class_protection_out_of_sync_motor.html#a98615de25175c19f2e6052faa96070e6">ProtectionOutOfSyncMotor</a>.</p>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00125">125</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a47c05cd15f077210eaca36a1e2753eda"></a><!-- doxytag: member="Protection::automatProtection" ref="a47c05cd15f077210eaca36a1e2753eda" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Protection::automatProtection </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Универсальный автомат работы защиты </p>
+
+<p>Переопределяется в <a class="el" href="class_protection_turbine_rotation.html#a41c0d5303d3487c0009604332cfd4b9b">ProtectionTurbineRotation</a>.</p>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00450">450</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a3b16937db16baa2a64b9020359a8d1ad"></a><!-- doxytag: member="Protection::calcRestartResetCount" ref="a3b16937db16baa2a64b9020359a8d1ad" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Protection::calcRestartResetCount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Функция проверки времени сброса счётчика АПВ </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a6918d63c63027bf34fdd54563a82882d"></a><!-- doxytag: member="Protection::calcTimeFromStart" ref="a6918d63c63027bf34fdd54563a82882d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Protection::calcTimeFromStart </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Функция вычисления времени от начала события </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a6b156a7db22f937c089b8cc6c45e5dab"></a><!-- doxytag: member="Protection::calcTimeUntilEnd" ref="a6b156a7db22f937c089b8cc6c45e5dab" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Protection::calcTimeUntilEnd </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Функция вычисления времени оставшегося до окончания события </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ad3bb444ba03fc72aea7b89eebcd3ce56"></a><!-- doxytag: member="Protection::calcValue" ref="ad3bb444ba03fc72aea7b89eebcd3ce56" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Protection::calcValue </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Пересчёт текущего значения для сравнения с уставкой </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>Пересчитанное значение </dd></dl>
+
+<p>Переопределяется в <a class="el" href="class_protection_imbalance_voltage_input.html#a68a114d85eb3ca2d5741f35c0a9d37ef">ProtectionImbalanceVoltageInput</a>, <a class="el" href="class_protection_under_voltage_input.html#a211948edeb8e10ed8ab4ce0a59bdf28a">ProtectionUnderVoltageInput</a>, <a class="el" href="class_protection_underload_motor.html#ae2d2cb7fffb3a9563b66001aeb5f206c">ProtectionUnderloadMotor</a>, <a class="el" href="class_protection_over_voltage_input.html#ad7381b25bb6389195e2347488b6a7fc4">ProtectionOverVoltageInput</a>, <a class="el" href="class_protection_pressure_intake.html#ae0176fb4cbe178e034f3d5cf0e8c2620">ProtectionPressureIntake</a>, <a class="el" href="class_protection_resistance_isolation.html#afe5342f2f196320b052812cb5f449958">ProtectionResistanceIsolation</a>, <a class="el" href="class_protection_current_motor.html#aabf3be4b794700ae1828551e54ddcf42">ProtectionCurrentMotor</a>, <a class="el" href="class_protection_overload_motor.html#ad2edad04978deab42dba070d8c893e26">ProtectionOverloadMotor</a>, <a class="el" href="class_protection_temperature_motor.html#a929a10f4950913af3d955e9896671873">ProtectionTemperatureMotor</a> и <a class="el" href="class_protection_imbalance_current_motor.html#a8bd6ac17de3ccf3493d95916d933b010">ProtectionImbalanceCurrentMotor</a>.</p>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00120">120</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a45a13f6ee568d4ebcd05ee21e0c6c450"></a><!-- doxytag: member="Protection::checkAlarm" ref="a45a13f6ee568d4ebcd05ee21e0c6c450" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Protection::checkAlarm </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод проверки условия срабатывания защиты </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>false - параметр в норме, true - параметр не в норме </dd></dl>
+
+<p>Переопределяется в <a class="el" href="class_protection_underload_motor.html#a7775148644f3b61d1d4d85711e41d20e">ProtectionUnderloadMotor</a>, <a class="el" href="class_protection_imbalance_voltage_input.html#a6d3ae51072669b708287dde097c7d224">ProtectionImbalanceVoltageInput</a>, <a class="el" href="class_protection_under_voltage_input.html#adf90718c1e8915939ead0744853bc6d9">ProtectionUnderVoltageInput</a>, <a class="el" href="class_protection_current_motor.html#af2ec036d4329adc48afbf687c9dd588f">ProtectionCurrentMotor</a>, <a class="el" href="class_protection_overload_motor.html#aeb08c9ce84e686083d513964cbe826b3">ProtectionOverloadMotor</a>, <a class="el" href="class_protection_over_voltage_input.html#a3cc690faf7368d1fcce2d7eb0bca6a66">ProtectionOverVoltageInput</a>, <a class="el" href="class_protection_pressure_intake.html#a5e4578689676c74594fa8858ac625bfe">ProtectionPressureIntake</a>, <a class="el" href="class_protection_resistance_isolation.html#a07ac136dde2e837fc36fc22d6b002cf1">ProtectionResistanceIsolation</a>, <a class="el" href="class_protection_imbalance_current_motor.html#ad2130441073b6740f594a9cb203a5706">ProtectionImbalanceCurrentMotor</a>, <a class="el" href="class_protection_out_of_sync_motor.html#aaa688c02a5c093f32f153719ae4a23d5">ProtectionOutOfSyncMotor</a>, <a class="el" href="class_protection_temperature_motor.html#a615edb1459db262576c56862a3d81849">ProtectionTemperatureMotor</a> и <a class="el" href="class_protection_hardware_vsd.html#ac237ae1dc6ff03be0026c87aa6273562">ProtectionHardwareVsd</a>.</p>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00080">80</a></p>
+
+</div>
+</div>
+<a class="anchor" id="afa4c8563bedd46298f07e928f4d0573e"></a><!-- doxytag: member="Protection::checkPrevent" ref="afa4c8563bedd46298f07e928f4d0573e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Protection::checkPrevent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод проверки выполнения условия АПВ по значению параметра </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>false параметр в норме, true параметр не в норме </dd></dl>
+
+<p>Переопределяется в <a class="el" href="class_protection_imbalance_voltage_input.html#a47521f076725c099d4131a0e37b7b06a">ProtectionImbalanceVoltageInput</a>, <a class="el" href="class_protection_under_voltage_input.html#a5e1ed8db00d6b4762d95c4d12f76bfac">ProtectionUnderVoltageInput</a>, <a class="el" href="class_protection_over_voltage_input.html#aba1d13a3b254990e6cdd6ec68cb92f73">ProtectionOverVoltageInput</a>, <a class="el" href="class_protection_pressure_intake.html#a22d65bd0ebdef97aace6106ef6b84c4c">ProtectionPressureIntake</a>, <a class="el" href="class_protection_resistance_isolation.html#aed8ec4a66e76c00b8a1e38e2ddd18c43">ProtectionResistanceIsolation</a>, <a class="el" href="class_protection_temperature_motor.html#a74ae9a7bd1bdcbc8f3148ec6888e4183">ProtectionTemperatureMotor</a> и <a class="el" href="class_protection_turbine_rotation.html#ace8f006f61bd51241459a9a10b14db54">ProtectionTurbineRotation</a>.</p>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00115">115</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ada7f9e2a8915ba0d72b049777ed008b3"></a><!-- doxytag: member="Protection::checkRestartResetCount" ref="ada7f9e2a8915ba0d72b049777ed008b3" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Protection::checkRestartResetCount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод проверки таймера сброса счётчиков АПВ защиты </p>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00105">105</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a8869d6c016349985d3400f7f56c7015a"></a><!-- doxytag: member="Protection::getApvDisabledEventId" ref="a8869d6c016349985d3400f7f56c7015a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bf">EventId</a> Protection::getApvDisabledEventId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>getApvDisabledEventId </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00205">205</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a6d6d0e12bebba3c2be89e1f094cca18f"></a><!-- doxytag: member="Protection::getCurrentParamProt" ref="a6d6d0e12bebba3c2be89e1f094cca18f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Protection::getCurrentParamProt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения текущих параметров защиты. Эти данные меняются в процессе работы автомата защиты </p>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00056">56</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae0879b0a6493c58b3d0dafda8d3fd349"></a><!-- doxytag: member="Protection::getGeneralSetpointProt" ref="ae0879b0a6493c58b3d0dafda8d3fd349" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Protection::getGeneralSetpointProt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения основных уставок защиты. Метод должен вызываться с периодом работы автомата защиты, таким образом получаем актуальные значения уставок </p>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00039">39</a></p>
+
+</div>
+</div>
+<a class="anchor" id="abc8af9ef8655953b8264c136d6e39440"></a><!-- doxytag: member="Protection::getOtherSetpointProt" ref="abc8af9ef8655953b8264c136d6e39440" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Protection::getOtherSetpointProt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод получения индивидуальных уставок защит </p>
+
+<p>Переопределяется в <a class="el" href="class_protection_imbalance_voltage_input.html#ae34e9b03c4bb04b10c7bed9ba6aa6431">ProtectionImbalanceVoltageInput</a>, <a class="el" href="class_protection_under_voltage_input.html#a91788435ec957255e76b10b2a97772fe">ProtectionUnderVoltageInput</a>, <a class="el" href="class_protection_current_motor.html#a543209c60143a9ca2afb62091e4b045a">ProtectionCurrentMotor</a>, <a class="el" href="class_protection_overload_motor.html#af114f87b65d6fb907426591e57e848ae">ProtectionOverloadMotor</a>, <a class="el" href="class_protection_underload_motor.html#ab71f89ec7df1827593dae1693a62fa33">ProtectionUnderloadMotor</a>, <a class="el" href="class_protection_over_voltage_input.html#a861cbb24034cfaf05c4d6530c6cdd4b9">ProtectionOverVoltageInput</a>, <a class="el" href="class_protection_pressure_intake.html#a7e1156d2fbb525e8133528a18f961080">ProtectionPressureIntake</a> и <a class="el" href="class_protection_resistance_isolation.html#a2fbd691284db331f03282f00953d65bb">ProtectionResistanceIsolation</a>.</p>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00051">51</a></p>
+
+</div>
+</div>
+<a class="anchor" id="acb9a8ebc85bc57ddd82d24cbbc2d0bf1"></a><!-- doxytag: member="Protection::incRestartCount" ref="acb9a8ebc85bc57ddd82d24cbbc2d0bf1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Protection::incRestartCount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00439">439</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a309deb1eee0a836ebd0114baf5948887"></a><!-- doxytag: member="Protection::isDelay" ref="a309deb1eee0a836ebd0114baf5948887" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Protection::isDelay </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>isDelay </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00189">189</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a3faa0c8952e7e4443a86b39ca8b93f8d"></a><!-- doxytag: member="Protection::isHigherLimit" ref="a3faa0c8952e7e4443a86b39ca8b93f8d" args="(float setpoint)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Protection::isHigherLimit </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>setpoint</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод проверки превышения текущего значения отсительно уставки </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>false параметр в норме, true параметр не в норме </dd></dl>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00085">85</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a5088309072f2a1c639c267e8659bc618"></a><!-- doxytag: member="Protection::isLowerLimit" ref="a5088309072f2a1c639c267e8659bc618" args="(float setpoint)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Protection::isLowerLimit </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>setpoint</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод проверки уменьшения текущего значения отсительно уставки </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd>false параметр в норме, true параметр не в норме </dd></dl>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00095">95</a></p>
+
+</div>
+</div>
+<a class="anchor" id="acc8b9bc1b52a08fd7464e7f078f981c5"></a><!-- doxytag: member="Protection::isModeBlock" ref="acc8b9bc1b52a08fd7464e7f078f981c5" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Protection::isModeBlock </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>isReactionBlock </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00139">139</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aee5b968e907471eca879806b91947b20"></a><!-- doxytag: member="Protection::isModeOff" ref="aee5b968e907471eca879806b91947b20" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Protection::isModeOff </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>isReactionOff </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00131">131</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa65d7e8e0ba685fb0a4ad44ee5438c0e"></a><!-- doxytag: member="Protection::isModeOn" ref="aa65d7e8e0ba685fb0a4ad44ee5438c0e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Protection::isModeOn </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>isReactionOn </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00155">155</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ac6fbe5ef28c964941e76d7a2e71b9893"></a><!-- doxytag: member="Protection::isModeRestart" ref="ac6fbe5ef28c964941e76d7a2e71b9893" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Protection::isModeRestart </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>isReactionRestart </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00147">147</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a8ad11e8d98eef1386f5325bbc1db8edc"></a><!-- doxytag: member="Protection::isPrevent" ref="a8ad11e8d98eef1386f5325bbc1db8edc" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Protection::isPrevent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>isPrevent </p>
+<dl class="return"><dt><b>Возвращает:</b></dt><dd></dd></dl>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00197">197</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a00a139e41fa563a1cf2fedf310cb6c56"></a><!-- doxytag: member="Protection::proccessingStateStop" ref="a00a139e41fa563a1cf2fedf310cb6c56" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Protection::proccessingStateStop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Состояние защиты останов </p>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00340">340</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a25c619db7a87b5a6412b1864233cc5ba"></a><!-- doxytag: member="Protection::proccessingStateStopping" ref="a25c619db7a87b5a6412b1864233cc5ba" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Protection::proccessingStateStopping </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Состояние защиты ожидание останова </p>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00312">312</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a19de6cbe472e5f8b183ebba172058b10"></a><!-- doxytag: member="Protection::processing" ref="a19de6cbe472e5f8b183ebba172058b10" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Protection::processing </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод обработки защиты </p>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00019">19</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aca4544bf0cffe381a492c3f1e669973d"></a><!-- doxytag: member="Protection::processingStateRun" ref="aca4544bf0cffe381a492c3f1e669973d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Protection::processingStateRun </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Состояние защита контроля параметра и задержки срабатывания </p>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00196">196</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a17985d570059c9bbcbd463fc70a3f0c5"></a><!-- doxytag: member="Protection::processingStateRunning" ref="a17985d570059c9bbcbd463fc70a3f0c5" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Protection::processingStateRunning </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Состояние защиты задержка активации </p>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00175">175</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a978157629e987b187b9512b3289f44fa"></a><!-- doxytag: member="Protection::setCurrentParamProt" ref="a978157629e987b187b9512b3289f44fa" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Protection::setCurrentParamProt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод сохранения текущих параметров защиты </p>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00065">65</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a170270af45df0a84398c9f08246cdb36"></a><!-- doxytag: member="Protection::setOtherParamProt" ref="a170270af45df0a84398c9f08246cdb36" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Protection::setOtherParamProt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Метод сохранения индивидуальных текущих параметров защиты </p>
+
+<p>Переопределяется в <a class="el" href="class_protection_underload_motor.html#af2427796451a27dd99c0a7a0e1b8661f">ProtectionUnderloadMotor</a> и <a class="el" href="class_protection_hardware_vsd.html#a3a1452e042a6258369a268f7f2818a6a">ProtectionHardwareVsd</a>.</p>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00075">75</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a61a8263539b7280d75eb533c04719f47"></a><!-- doxytag: member="Protection::setStateRun" ref="a61a8263539b7280d75eb533c04719f47" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Protection::setStateRun </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Функция перевода автомата защиты в состояние работа </p>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00169">169</a></p>
+
+</div>
+</div>
+<a class="anchor" id="abb7eec50276d509d427fb97e5b99a81e"></a><!-- doxytag: member="Protection::setStateStop" ref="abb7eec50276d509d427fb97e5b99a81e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Protection::setStateStop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Функция перевода автомата защиты в состояние стоп </p>
+
+<p>См. определение в файле <a class="el" href="protection_8cpp_source.html">protection.cpp</a> строка <a class="el" href="protection_8cpp_source.html#l00163">163</a></p>
+
+</div>
+</div>
+<hr/><h2>Поля</h2>
+<a class="anchor" id="acaee7821e4ca938235b7fc52bb0f9772"></a><!-- doxytag: member="Protection::activDelay_" ref="acaee7821e4ca938235b7fc52bb0f9772" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_protection.html#acaee7821e4ca938235b7fc52bb0f9772">Protection::activDelay_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Уставка: задержка активации защиты </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00233">233</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a9808a38ca779317bfd586c6882eebc31"></a><!-- doxytag: member="Protection::alarm_" ref="a9808a38ca779317bfd586c6882eebc31" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_protection.html#a9808a38ca779317bfd586c6882eebc31">Protection::alarm_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Флаг выполнения условия срабатывания защиты </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00248">248</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a7dd90b182f11cb40b0a101504dbb3a82"></a><!-- doxytag: member="Protection::apvDisabledEventId_" ref="a7dd90b182f11cb40b0a101504dbb3a82" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bf">EventId</a> <a class="el" href="class_protection.html#a7dd90b182f11cb40b0a101504dbb3a82">Protection::apvDisabledEventId_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00263">263</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae72394ac48c703be019c6defa3938e6e"></a><!-- doxytag: member="Protection::apvEventId_" ref="ae72394ac48c703be019c6defa3938e6e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bf">EventId</a> <a class="el" href="class_protection.html#ae72394ac48c703be019c6defa3938e6e">Protection::apvEventId_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00262">262</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a4738c6bcd646446d1e67433faabe493c"></a><!-- doxytag: member="Protection::attempt_" ref="a4738c6bcd646446d1e67433faabe493c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_protection.html#a4738c6bcd646446d1e67433faabe493c">Protection::attempt_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Флаг первой попытки запуска </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00252">252</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a6aa3e069500a5254645a1ab15f862f14"></a><!-- doxytag: member="Protection::block_" ref="a6aa3e069500a5254645a1ab15f862f14" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_protection.html#a6aa3e069500a5254645a1ab15f862f14">Protection::block_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Флаг что защита в блокировке </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00250">250</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a61a4d19ee7b94978596b6b42be5d0968"></a><!-- doxytag: member="Protection::delay_" ref="a61a4d19ee7b94978596b6b42be5d0968" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_protection.html#a61a4d19ee7b94978596b6b42be5d0968">Protection::delay_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Флаг задержки срабатывания </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00253">253</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a8a86748e2445f254259983e97d7c4dea"></a><!-- doxytag: member="Protection::idActivDelay_" ref="a8a86748e2445f254259983e97d7c4dea" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short <a class="el" href="class_protection.html#a8a86748e2445f254259983e97d7c4dea">Protection::idActivDelay_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>id задержка активации защиты </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00216">216</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a7dcd955bb34edc02108837b4462de534"></a><!-- doxytag: member="Protection::idBlockFlag_" ref="a7dcd955bb34edc02108837b4462de534" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short <a class="el" href="class_protection.html#a7dcd955bb34edc02108837b4462de534">Protection::idBlockFlag_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>id Флаг что защита в состоянии БЛОК </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00225">225</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a19268efce822959480829d59d31826ca"></a><!-- doxytag: member="Protection::idMode_" ref="a19268efce822959480829d59d31826ca" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short <a class="el" href="class_protection.html#a19268efce822959480829d59d31826ca">Protection::idMode_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>id параметров защиты </p>
+<p>id Режим защиты </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00214">214</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ace700a9f47d7152d3dd255e3d48a2f5b"></a><!-- doxytag: member="Protection::idParam_" ref="ace700a9f47d7152d3dd255e3d48a2f5b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short <a class="el" href="class_protection.html#ace700a9f47d7152d3dd255e3d48a2f5b">Protection::idParam_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>id Параметр 1 </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00223">223</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a3d008718d0dd7bc1b4db9b9e244e2383"></a><!-- doxytag: member="Protection::idPrevent_" ref="a3d008718d0dd7bc1b4db9b9e244e2383" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short <a class="el" href="class_protection.html#a3d008718d0dd7bc1b4db9b9e244e2383">Protection::idPrevent_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>id Флаг запрещающего параметра </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00215">215</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a864f0082ae4f278efa87a83fe3a064c4"></a><!-- doxytag: member="Protection::idRestartCount_" ref="a864f0082ae4f278efa87a83fe3a064c4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short <a class="el" href="class_protection.html#a864f0082ae4f278efa87a83fe3a064c4">Protection::idRestartCount_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>id Счётчика АПВ </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00228">228</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a5ae8c6b40c41c02bcda4764dc4882f90"></a><!-- doxytag: member="Protection::idRestartDelay_" ref="a5ae8c6b40c41c02bcda4764dc4882f90" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short <a class="el" href="class_protection.html#a5ae8c6b40c41c02bcda4764dc4882f90">Protection::idRestartDelay_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>id задержка АПВ защиты </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00218">218</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa2dc723f7f83d7868270a05b15cdfa6a"></a><!-- doxytag: member="Protection::idRestartFirstTime_" ref="aa2dc723f7f83d7868270a05b15cdfa6a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short <a class="el" href="class_protection.html#aa2dc723f7f83d7868270a05b15cdfa6a">Protection::idRestartFirstTime_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>id Время первого срабатывания АПВ </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00229">229</a></p>
+
+</div>
+</div>
+<a class="anchor" id="abe83013e52b98b5c65212dbe589d68c6"></a><!-- doxytag: member="Protection::idRestartFlag_" ref="abe83013e52b98b5c65212dbe589d68c6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short <a class="el" href="class_protection.html#abe83013e52b98b5c65212dbe589d68c6">Protection::idRestartFlag_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>id Флаг что защита в состоянии АПВ </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00224">224</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a49c2efad198e74ccd48543e685881266"></a><!-- doxytag: member="Protection::idRestartLimit_" ref="a49c2efad198e74ccd48543e685881266" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short <a class="el" href="class_protection.html#a49c2efad198e74ccd48543e685881266">Protection::idRestartLimit_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>id количество АПВ </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00219">219</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a607942ac6f46f09220a6841ccf349f56"></a><!-- doxytag: member="Protection::idRestartResetTime_" ref="a607942ac6f46f09220a6841ccf349f56" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short <a class="el" href="class_protection.html#a607942ac6f46f09220a6841ccf349f56">Protection::idRestartResetTime_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>id Время сброса количества АПВ </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00220">220</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa9e310942cce88446b1f47aadf8f3723"></a><!-- doxytag: member="Protection::idRestartSetpoint_" ref="aa9e310942cce88446b1f47aadf8f3723" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short <a class="el" href="class_protection.html#aa9e310942cce88446b1f47aadf8f3723">Protection::idRestartSetpoint_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>id граница АПВ </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00222">222</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a05de80f07ef003b57a47354a7e5c93d3"></a><!-- doxytag: member="Protection::idState_" ref="a05de80f07ef003b57a47354a7e5c93d3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short <a class="el" href="class_protection.html#a05de80f07ef003b57a47354a7e5c93d3">Protection::idState_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>id Состояние автомата </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00226">226</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a534abfe01f4740afb17d49b7c70e7b54"></a><!-- doxytag: member="Protection::idTimer_" ref="a534abfe01f4740afb17d49b7c70e7b54" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short <a class="el" href="class_protection.html#a534abfe01f4740afb17d49b7c70e7b54">Protection::idTimer_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>id Таймера </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00227">227</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ac28447b4c01fcee3c6de01b6e1f99da2"></a><!-- doxytag: member="Protection::idTripDelay_" ref="ac28447b4c01fcee3c6de01b6e1f99da2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short <a class="el" href="class_protection.html#ac28447b4c01fcee3c6de01b6e1f99da2">Protection::idTripDelay_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>id задержка срабатывания защиты </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00217">217</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ab49e9871a127757d87f94d76864c49b1"></a><!-- doxytag: member="Protection::idTripSetpoint_" ref="ab49e9871a127757d87f94d76864c49b1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short <a class="el" href="class_protection.html#ab49e9871a127757d87f94d76864c49b1">Protection::idTripSetpoint_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>id граница срабатывания защиты </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00221">221</a></p>
+
+</div>
+</div>
+<a class="anchor" id="af300db56e96fca2b72d5c2fb3a1e373d"></a><!-- doxytag: member="Protection::lastReasonRun_" ref="af300db56e96fca2b72d5c2fb3a1e373d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="define_8h.html#a2e37372dbc4114112400e3845adc1372">LastReasonRun</a> <a class="el" href="class_protection.html#af300db56e96fca2b72d5c2fb3a1e373d">Protection::lastReasonRun_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Причина запуска </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00257">257</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a438a0007201523d868664947d82cf963"></a><!-- doxytag: member="Protection::lastReasonStop_" ref="a438a0007201523d868664947d82cf963" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="define_8h.html#a0a3f07d2b0c60264eb31390400d692ff">LastReasonStop</a> <a class="el" href="class_protection.html#a438a0007201523d868664947d82cf963">Protection::lastReasonStop_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Причина останова </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00258">258</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a8a9830d3d3a5eb05c6dc39afccc499bd"></a><!-- doxytag: member="Protection::mode_" ref="a8a9830d3d3a5eb05c6dc39afccc499bd" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_protection.html#a8a9830d3d3a5eb05c6dc39afccc499bd">Protection::mode_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Локальные переменные для обработки </p>
+<p>Режим защиты </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00232">232</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ac1ac78cc75e151998ea8a366fcee2d72"></a><!-- doxytag: member="Protection::prevent_" ref="ac1ac78cc75e151998ea8a366fcee2d72" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_protection.html#ac1ac78cc75e151998ea8a366fcee2d72">Protection::prevent_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Флаг запрещающего параметра </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00249">249</a></p>
+
+</div>
+</div>
+<a class="anchor" id="af51dc6107f18459e606c7a10dbed2775"></a><!-- doxytag: member="Protection::progressiveRestartCount_" ref="af51dc6107f18459e606c7a10dbed2775" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_protection.html#af51dc6107f18459e606c7a10dbed2775">Protection::progressiveRestartCount_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Текущее количество АПВ без учёта сброса для вычисления прогрессивной задержки </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00255">255</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ac9a9ddcf3754e4341ac9ae211b8eaa51"></a><!-- doxytag: member="Protection::protBlockedEventId_" ref="ac9a9ddcf3754e4341ac9ae211b8eaa51" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bf">EventId</a> <a class="el" href="class_protection.html#ac9a9ddcf3754e4341ac9ae211b8eaa51">Protection::protBlockedEventId_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00264">264</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ad9f00b97300ac27e31ff1aa5a46b099a"></a><!-- doxytag: member="Protection::protReactEventId_" ref="ad9f00b97300ac27e31ff1aa5a46b099a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bf">EventId</a> <a class="el" href="class_protection.html#ad9f00b97300ac27e31ff1aa5a46b099a">Protection::protReactEventId_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Индексы событий для записи в журнал </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00261">261</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ab9d2c518c0815a6147355b599c748fa0"></a><!-- doxytag: member="Protection::resetRestartDelayFlag_" ref="ab9d2c518c0815a6147355b599c748fa0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_protection.html#ab9d2c518c0815a6147355b599c748fa0">Protection::resetRestartDelayFlag_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Уставка: Флаг критерий АПВ </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00242">242</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae84e5a12a3b8231214a9f8bef2aad8ff"></a><!-- doxytag: member="Protection::restart_" ref="ae84e5a12a3b8231214a9f8bef2aad8ff" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_protection.html#ae84e5a12a3b8231214a9f8bef2aad8ff">Protection::restart_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Флаг что защита в состоянии АПВ </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00251">251</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a1597cd2755248ab27fa1bcc5c54d8c4f"></a><!-- doxytag: member="Protection::restartCount_" ref="a1597cd2755248ab27fa1bcc5c54d8c4f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_protection.html#a1597cd2755248ab27fa1bcc5c54d8c4f">Protection::restartCount_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Текущее количество АПВ по защите </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00246">246</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa242953e6843648a53baa1bf33f42ebe"></a><!-- doxytag: member="Protection::restartDelay_" ref="aa242953e6843648a53baa1bf33f42ebe" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_protection.html#aa242953e6843648a53baa1bf33f42ebe">Protection::restartDelay_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Уставка: задержка АПВ защиты </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00235">235</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a5d5248506ff553766f5be95c1b36c18f"></a><!-- doxytag: member="Protection::restartFirstTime_" ref="a5d5248506ff553766f5be95c1b36c18f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t <a class="el" href="class_protection.html#a5d5248506ff553766f5be95c1b36c18f">Protection::restartFirstTime_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Время первого срабатывания АПВ </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00247">247</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a90e3751c796ee5fa31f20fc95aa91b5b"></a><!-- doxytag: member="Protection::restartLimit_" ref="a90e3751c796ee5fa31f20fc95aa91b5b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_protection.html#a90e3751c796ee5fa31f20fc95aa91b5b">Protection::restartLimit_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Уставка: количество АПВ </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00236">236</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a9aa1456efc8eb1dc76a27f591cc9948a"></a><!-- doxytag: member="Protection::restartResetTime_" ref="a9aa1456efc8eb1dc76a27f591cc9948a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_protection.html#a9aa1456efc8eb1dc76a27f591cc9948a">Protection::restartResetTime_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Уставка: Время сброса количества АПВ </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00237">237</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a1ae05a6f8fac838367d94f5dc652ad90"></a><!-- doxytag: member="Protection::restartSetpoint_" ref="a1ae05a6f8fac838367d94f5dc652ad90" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_protection.html#a1ae05a6f8fac838367d94f5dc652ad90">Protection::restartSetpoint_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Уставка: граница АПВ </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00239">239</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a6016cc506c8bf05c33cd671544edd670"></a><!-- doxytag: member="Protection::state_" ref="a6016cc506c8bf05c33cd671544edd670" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_protection.html#a6016cc506c8bf05c33cd671544edd670">Protection::state_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Состояние автомата защиты </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00243">243</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa5d3c5948d3ae786a170c76600b25abb"></a><!-- doxytag: member="Protection::timer_" ref="aa5d3c5948d3ae786a170c76600b25abb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t <a class="el" href="class_protection.html#aa5d3c5948d3ae786a170c76600b25abb">Protection::timer_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Текущее значение таймера </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00245">245</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a6b3cf8e122360f6db67831f0f3f627dc"></a><!-- doxytag: member="Protection::timerDifStartFlag_" ref="a6b3cf8e122360f6db67831f0f3f627dc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_protection.html#a6b3cf8e122360f6db67831f0f3f627dc">Protection::timerDifStartFlag_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Уставка: Параметр 1. </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00240">240</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ad9b4a7b6ef4863603c7fc16540fb3f2a"></a><!-- doxytag: member="Protection::tripDelay_" ref="ad9b4a7b6ef4863603c7fc16540fb3f2a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_protection.html#ad9b4a7b6ef4863603c7fc16540fb3f2a">Protection::tripDelay_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Уставка: задержка срабатывания защиты </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00234">234</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a4364e0200bcc4a0c10b25a32d86642f7"></a><!-- doxytag: member="Protection::tripSetpoint_" ref="a4364e0200bcc4a0c10b25a32d86642f7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_protection.html#a4364e0200bcc4a0c10b25a32d86642f7">Protection::tripSetpoint_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Уставка: граница срабатывания защиты </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00238">238</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a3d6e2bdab22bfb8d171e195ea1c75a1a"></a><!-- doxytag: member="Protection::valueParameter_" ref="a3d6e2bdab22bfb8d171e195ea1c75a1a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_protection.html#a3d6e2bdab22bfb8d171e195ea1c75a1a">Protection::valueParameter_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Текущее значение контролируемого параметра </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00244">244</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a6f01793ff384a04208a8451b4faf9cd2"></a><!-- doxytag: member="Protection::workWithAlarmFlag_" ref="a6f01793ff384a04208a8451b4faf9cd2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_protection.html#a6f01793ff384a04208a8451b4faf9cd2">Protection::workWithAlarmFlag_</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Уставка: Флаг разрешения работы при аварии </p>
+
+<p>См. определение в файле <a class="el" href="protection_8h_source.html">protection.h</a> строка <a class="el" href="protection_8h_source.html#l00241">241</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>src/user/protection/<a class="el" href="protection_8h_source.html">protection.h</a></li>
+<li>src/user/protection/<a class="el" href="protection_8cpp_source.html">protection.cpp</a></li>
+</ul>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:26. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

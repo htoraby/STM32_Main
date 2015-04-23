@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/board/rcause/rcause.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/board/rcause/rcause.cpp</div>  </div>
+</div>
+<div class="contents">
+<a href="rcause_8cpp.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="rcause_8h.html">rcause.h</a>&quot;</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#include &quot;<a class="code" href="fram_8h.html">fram.h</a>&quot;</span>
+<a name="l00003"></a>00003 <span class="preprocessor">#include &lt;string.h&gt;</span>
+<a name="l00004"></a>00004 
+<a name="l00005"></a><a class="code" href="rcause_8cpp.html#a404e93372ba41621ec2771db4f58b0a1">00005</a> <span class="keyword">static</span> <a class="code" href="struct_r_c_a_u_s_e___c_o_u_n_t_s.html" title="Структура счётчиков перезапуска СPU.">RCAUSE_COUNTS</a> <a class="code" href="rcause_8cpp.html#a404e93372ba41621ec2771db4f58b0a1">rcauseCounts</a>;
+<a name="l00006"></a>00006 
+<a name="l00007"></a><a class="code" href="rcause_8h.html#a1e41953884de093a6a98ab80687cb73b">00007</a> <span class="keywordtype">void</span> <a class="code" href="rcause_8cpp.html#a1e41953884de093a6a98ab80687cb73b" title="Функция подсчета счетчиков перезапуска СPU.">resetCauseCheck</a>()
+<a name="l00008"></a>00008 {
+<a name="l00009"></a>00009   <a class="code" href="fram_8cpp.html#a52ab99f48fd3b905f3a5ae04be4355c6" title="Чтение данных из FRAM.">framReadData</a>(<a class="code" href="fram_8h.html#a286904df9d547fdd23e57a6c268a76dfa6788d6ec18ed27a66e7758ce8317f5c0">RcauseAddrFram</a>, (uint8_t*)&amp;rcauseCounts, <span class="keyword">sizeof</span>(<a class="code" href="struct_r_c_a_u_s_e___c_o_u_n_t_s.html" title="Структура счётчиков перезапуска СPU.">RCAUSE_COUNTS</a>));
+<a name="l00010"></a>00010 
+<a name="l00011"></a>00011   <span class="keywordflow">if</span> (__HAL_RCC_GET_FLAG(RCC_FLAG_BORRST) == SET) {
+<a name="l00012"></a>00012     rcauseCounts.bor++;
+<a name="l00013"></a>00013   }
+<a name="l00014"></a>00014   <span class="keywordflow">else</span> <span class="keywordflow">if</span> (__HAL_RCC_GET_FLAG(RCC_FLAG_SFTRST) == SET) {
+<a name="l00015"></a>00015     rcauseCounts.sft++;
+<a name="l00016"></a>00016   }
+<a name="l00017"></a>00017   <span class="keywordflow">else</span> <span class="keywordflow">if</span> (__HAL_RCC_GET_FLAG(RCC_FLAG_IWDGRST) == SET) {
+<a name="l00018"></a>00018     rcauseCounts.iwdg++;
+<a name="l00019"></a>00019   }
+<a name="l00020"></a>00020   <span class="keywordflow">else</span> <span class="keywordflow">if</span> (__HAL_RCC_GET_FLAG(RCC_FLAG_WWDGRST) == SET) {
+<a name="l00021"></a>00021     rcauseCounts.wwdg++;
+<a name="l00022"></a>00022   }
+<a name="l00023"></a>00023   <span class="keywordflow">else</span> <span class="keywordflow">if</span> (__HAL_RCC_GET_FLAG(RCC_FLAG_PINRST) == SET) {
+<a name="l00024"></a>00024     rcauseCounts.pin++;
+<a name="l00025"></a>00025   }
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027   <span class="keywordflow">if</span> (__HAL_RCC_GET_FLAG(RCC_FLAG_PORRST) == SET) {
+<a name="l00028"></a>00028     rcauseCounts.por++;
+<a name="l00029"></a>00029   }
+<a name="l00030"></a>00030   <span class="keywordflow">if</span> (__HAL_RCC_GET_FLAG(RCC_FLAG_LPWRRST) == SET) {
+<a name="l00031"></a>00031     rcauseCounts.lpwr++;
+<a name="l00032"></a>00032   }
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034   __HAL_RCC_CLEAR_RESET_FLAGS();
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036   <a class="code" href="fram_8cpp.html#a19b5a25431b76df6ee29173e0d81fb4b" title="Запись данных во FRAM.">framWriteData</a>(<a class="code" href="fram_8h.html#a286904df9d547fdd23e57a6c268a76dfa6788d6ec18ed27a66e7758ce8317f5c0">RcauseAddrFram</a>, (uint8_t*)&amp;rcauseCounts, <span class="keyword">sizeof</span>(<a class="code" href="struct_r_c_a_u_s_e___c_o_u_n_t_s.html" title="Структура счётчиков перезапуска СPU.">RCAUSE_COUNTS</a>));
+<a name="l00037"></a>00037 }
+<a name="l00038"></a>00038 
+<a name="l00039"></a><a class="code" href="rcause_8h.html#afb01a9d4262c174348e79b08ca2125be">00039</a> <a class="code" href="struct_r_c_a_u_s_e___c_o_u_n_t_s.html" title="Структура счётчиков перезапуска СPU.">RCAUSE_COUNTS</a> <a class="code" href="rcause_8cpp.html#afb01a9d4262c174348e79b08ca2125be" title="Получение стетчиков перезапуска СPU.">rcauseCountersGet</a>()
+<a name="l00040"></a>00040 {
+<a name="l00041"></a>00041   <span class="keywordflow">return</span> <a class="code" href="rcause_8cpp.html#a404e93372ba41621ec2771db4f58b0a1">rcauseCounts</a>;
+<a name="l00042"></a>00042 }
+<a name="l00043"></a>00043 
+<a name="l00044"></a><a class="code" href="rcause_8h.html#aebb09be5611890a5e4828fff62aa93ba">00044</a> <span class="keywordtype">void</span> <a class="code" href="rcause_8cpp.html#aebb09be5611890a5e4828fff62aa93ba" title="Обнуление счетчиков перезапуска СPU.">rcauseCountersClear</a>()
+<a name="l00045"></a>00045 {
+<a name="l00046"></a>00046   memset(&amp;rcauseCounts, 0, <span class="keyword">sizeof</span>(<a class="code" href="struct_r_c_a_u_s_e___c_o_u_n_t_s.html" title="Структура счётчиков перезапуска СPU.">RCAUSE_COUNTS</a>));
+<a name="l00047"></a>00047 }
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:23. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

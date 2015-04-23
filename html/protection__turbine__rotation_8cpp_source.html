@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/protection/motor/protection_turbine_rotation.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/protection/motor/protection_turbine_rotation.cpp</div>  </div>
+</div>
+<div class="contents">
+<a href="protection__turbine__rotation_8cpp.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="protection__turbine__rotation_8h.html">protection_turbine_rotation.h</a>&quot;</span>
+<a name="l00002"></a>00002 
+<a name="l00003"></a><a class="code" href="class_protection_turbine_rotation.html#a745874d1217ee38e5cd7ea5ce1543308">00003</a> <a class="code" href="class_protection_turbine_rotation.html#a745874d1217ee38e5cd7ea5ce1543308">ProtectionTurbineRotation::ProtectionTurbineRotation</a>()
+<a name="l00004"></a>00004   : isStartProtect_(false)
+<a name="l00005"></a>00005 {
+<a name="l00006"></a>00006   <a class="code" href="class_protection.html#a19268efce822959480829d59d31826ca" title="id параметров защиты">idMode_</a>= <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa941375f861baf522d356127f94b23dc3" title="Защита &quot;Турбинное вращение&quot;.">CCS_PROT_MOTOR_ASYNC_MODE</a>;
+<a name="l00007"></a>00007   <a class="code" href="class_protection.html#a3d008718d0dd7bc1b4db9b9e244e2383" title="id Флаг запрещающего параметра">idPrevent_</a>= <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa7cc35851a6aca5d87814b1ec3228a19a" title="Параметр запрещающий запуск">CCS_PROT_MOTOR_ASYNC_PREVENT</a>;
+<a name="l00008"></a>00008   <a class="code" href="class_protection.html#a8a86748e2445f254259983e97d7c4dea" title="id задержка активации защиты">idActivDelay_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa8af8934ed3b57f9c6c46aea6b97eacae" title="Задержка активации уставка">CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY</a>;
+<a name="l00009"></a>00009   <a class="code" href="class_protection.html#ac28447b4c01fcee3c6de01b6e1f99da2" title="id задержка срабатывания защиты">idTripDelay_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfae4558e394a58856750743d4b16b0efee" title="Задержка срабатывания уставка">CCS_PROT_MOTOR_ASYNC_TRIP_DELAY</a>;
+<a name="l00010"></a>00010   <a class="code" href="class_protection.html#a5ae8c6b40c41c02bcda4764dc4882f90" title="id задержка АПВ защиты">idRestartDelay_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa19683d0359d39d282c1059c2fdb6b519" title="Задержка АПВ уставка">CCS_PROT_MOTOR_ASYNC_RESTART_DELAY</a>;
+<a name="l00011"></a>00011   <a class="code" href="class_protection.html#a49c2efad198e74ccd48543e685881266" title="id количество АПВ">idRestartLimit_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa4582513ac62be669dfde0391d7ae2709" title="Количество АПВ уставка">CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT</a>;
+<a name="l00012"></a>00012   <a class="code" href="class_protection.html#a607942ac6f46f09220a6841ccf349f56" title="id Время сброса количества АПВ">idRestartResetTime_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa52671822e7bb47064ab05a7ce622acf9" title="Автосброс счетчика АПВ">CCS_PROT_MOTOR_ASYNC_RESTART_RESET</a>;
+<a name="l00013"></a>00013   <a class="code" href="class_protection.html#ab49e9871a127757d87f94d76864c49b1" title="id граница срабатывания защиты">idTripSetpoint_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfabac51e7b2c2296061294298d74428af8" title="Уставка срабатывания защиты">CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT</a>;
+<a name="l00014"></a>00014   <a class="code" href="class_protection.html#aa9e310942cce88446b1f47aadf8f3723" title="id граница АПВ">idRestartSetpoint_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa118263dbef8ab44369b43930131c5ff5" title="Условие АПВ уставка">CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT</a>;
+<a name="l00015"></a>00015   <a class="code" href="class_protection.html#ace700a9f47d7152d3dd255e3d48a2f5b" title="id Параметр 1">idParam_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaf01d8432a9c0ea7ca15248d4b7f45d3e" title="Уставка параметр защиты">CCS_PROT_MOTOR_ASYNC_PARAMETER</a>;
+<a name="l00016"></a>00016   <a class="code" href="class_protection.html#abe83013e52b98b5c65212dbe589d68c6" title="id Флаг что защита в состоянии АПВ">idRestartFlag_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa97c464466d8f01aa389cf1b7b6d90cec" title="Текущий параметр Флаг что защита в АПВ">CCS_PROT_MOTOR_ASYNC_RESTART_FLAG</a>;
+<a name="l00017"></a>00017   <a class="code" href="class_protection.html#a7dcd955bb34edc02108837b4462de534" title="id Флаг что защита в состоянии БЛОК">idBlockFlag_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfadaa08e5793c2192e39cbdf052e6b197c">CCS_PROT_MOTOR_ASYNC_BLOCK_FLAG</a>;
+<a name="l00018"></a>00018   <a class="code" href="class_protection.html#a05de80f07ef003b57a47354a7e5c93d3" title="id Состояние автомата">idState_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaddf0a36543f8d03ef223e1bd9d706e6f" title="Текущий параметр состояние автомата">CCS_PROT_MOTOR_ASYNC_STATE</a>;
+<a name="l00019"></a>00019   <a class="code" href="class_protection.html#a534abfe01f4740afb17d49b7c70e7b54" title="id Таймера">idTimer_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa1956044f90cee231d62a71633eac0780" title="Текущий параметр Фиксированное время">CCS_PROT_MOTOR_ASYNC_TIME</a>;
+<a name="l00020"></a>00020   <a class="code" href="class_protection.html#a864f0082ae4f278efa87a83fe3a064c4" title="id Счётчика АПВ">idRestartCount_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa02ec526396b356eab731245434997e55" title="Текущий параметр Количество АПВ">CCS_PROT_MOTOR_ASYNC_RESTART_COUNT</a>;
+<a name="l00021"></a>00021   <a class="code" href="class_protection.html#aa2dc723f7f83d7868270a05b15cdfa6a" title="id Время первого срабатывания АПВ">idRestartFirstTime_</a> = <a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfac5528eb79a66078fc3df7ee6f9e3febf" title="Текущий параметр Время первого АПВ">CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME</a>;
+<a name="l00022"></a>00022 }
+<a name="l00023"></a>00023 
+<a name="l00024"></a><a class="code" href="class_protection_turbine_rotation.html#a66efea08184b7ef5ea18221999fc2f89">00024</a> <a class="code" href="class_protection_turbine_rotation.html#a66efea08184b7ef5ea18221999fc2f89">ProtectionTurbineRotation::~ProtectionTurbineRotation</a>()
+<a name="l00025"></a>00025 {
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027 }
+<a name="l00028"></a>00028 
+<a name="l00029"></a><a class="code" href="class_protection_turbine_rotation.html#ace8f006f61bd51241459a9a10b14db54">00029</a> <span class="keywordtype">bool</span> <a class="code" href="class_protection_turbine_rotation.html#ace8f006f61bd51241459a9a10b14db54" title="Метод проверки выполнения условия АПВ по значению параметра">ProtectionTurbineRotation::checkPrevent</a>()
+<a name="l00030"></a>00030 {
+<a name="l00031"></a>00031   <span class="keywordtype">float</span> value = <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfaa2ec14cfc81cb67f1ffe3c443b4ac1c2" title="Текущее турбинное вращение">CCS_TURBO_ROTATION_NOW</a>);
+<a name="l00032"></a>00032   <span class="keywordflow">if</span> ((<a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#afb79bd0591442e598efa835c2c3641b2" title="Метод чтения параметра по ID с определением необходимого массива">get</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa6d00a0be994c9a3f0500335f085462b8">CCS_CONDITION</a>) == <a class="code" href="define_8h.html#a3a16fc3c52e148f8600998cdac08099ca8eb0b42a92dde3269d89e365d2ac6702">CCS_CONDITION_STOP</a>) &amp;&amp;
+<a name="l00033"></a>00033       value &gt; <a class="code" href="class_protection.html#a4364e0200bcc4a0c10b25a32d86642f7" title="Уставка: граница срабатывания защиты">tripSetpoint_</a>) {
+<a name="l00034"></a>00034     <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00035"></a>00035   }
+<a name="l00036"></a>00036   <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00037"></a>00037 }
+<a name="l00038"></a>00038 
+<a name="l00039"></a><a class="code" href="class_protection_turbine_rotation.html#a41c0d5303d3487c0009604332cfd4b9b">00039</a> <span class="keywordtype">void</span> <a class="code" href="class_protection_turbine_rotation.html#a41c0d5303d3487c0009604332cfd4b9b" title="Универсальный автомат работы защиты">ProtectionTurbineRotation::automatProtection</a>()
+<a name="l00040"></a>00040 {
+<a name="l00041"></a>00041   <span class="keywordflow">if</span> (<a class="code" href="class_protection.html#aee5b968e907471eca879806b91947b20" title="isReactionOff">isModeOff</a>()) {
+<a name="l00042"></a>00042     <a class="code" href="class_protection_turbine_rotation.html#a506de2ccb77cd20033ac3122a96e7858">isStartProtect_</a> = <span class="keyword">false</span>;
+<a name="l00043"></a>00043     <span class="keywordflow">return</span>;
+<a name="l00044"></a>00044   }
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046   <span class="keywordflow">if</span> (<a class="code" href="class_protection.html#ac1ac78cc75e151998ea8a366fcee2d72" title="Флаг запрещающего параметра">prevent_</a>) {
+<a name="l00047"></a>00047     <span class="keywordflow">if</span> (!<a class="code" href="class_protection_turbine_rotation.html#a506de2ccb77cd20033ac3122a96e7858">isStartProtect_</a>) {
+<a name="l00048"></a>00048       <a class="code" href="class_protection_turbine_rotation.html#a506de2ccb77cd20033ac3122a96e7858">isStartProtect_</a> = <span class="keyword">true</span>;
+<a name="l00049"></a>00049       <a class="code" href="log__main_8cpp.html#ac59bf01556b65dd1d2dbfcf7931b0759">logEvent</a>.<a class="code" href="class_log_event.html#a59bde4221222c33cf7c19450c30323ed" title="Метод добавления нового события в архив">add</a>(<a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8aaa46df7c5442a4e315971e10fe1b2eda" title="Событие защиты">ProtectCode</a>, <a class="code" href="log_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa18db7ade44c35f2239d1b3fe88b05532">AutoType</a>, <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaa360a2f14ebe62ac18b050e4065c03e1" title="&quot;Турбинное вращение. Начало&quot;">TurbineRotationBeginId</a>);
+<a name="l00050"></a>00050     }
+<a name="l00051"></a>00051   } <span class="keywordflow">else</span> {
+<a name="l00052"></a>00052     <span class="keywordflow">if</span> (<a class="code" href="class_protection_turbine_rotation.html#a506de2ccb77cd20033ac3122a96e7858">isStartProtect_</a>) {
+<a name="l00053"></a>00053       <a class="code" href="class_protection_turbine_rotation.html#a506de2ccb77cd20033ac3122a96e7858">isStartProtect_</a> = <span class="keyword">false</span>;
+<a name="l00054"></a>00054       <a class="code" href="log__main_8cpp.html#ac59bf01556b65dd1d2dbfcf7931b0759">logEvent</a>.<a class="code" href="class_log_event.html#a59bde4221222c33cf7c19450c30323ed" title="Метод добавления нового события в архив">add</a>(<a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8aaa46df7c5442a4e315971e10fe1b2eda" title="Событие защиты">ProtectCode</a>, <a class="code" href="log_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa18db7ade44c35f2239d1b3fe88b05532">AutoType</a>, <a class="code" href="log__idlist_8h.html#a4cf8d4a4d56e9f795518b6541ddeb5bfaffeaea77125d5ab69a74657865585077" title="&quot;Турбинное вращение. Окончание&quot;">TurbineRotationEndId</a>);
+<a name="l00055"></a>00055     }
+<a name="l00056"></a>00056   }
+<a name="l00057"></a>00057 }
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/main.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/main.cpp</div>  </div>
+</div>
+<div class="contents">
+<a href="main_8cpp.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00012"></a>00012 <span class="preprocessor">#include &quot;ff_gen_drv.h&quot;</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include &quot;<a class="code" href="board_8h.html">board.h</a>&quot;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &quot;<a class="code" href="rcause_8h.html">rcause.h</a>&quot;</span>
+<a name="l00015"></a>00015 <span class="preprocessor">#include &quot;<a class="code" href="user__main_8h.html">user_main.h</a>&quot;</span>
+<a name="l00016"></a>00016 <span class="preprocessor">#include &quot;<a class="code" href="test_8h.html">test.h</a>&quot;</span>
+<a name="l00017"></a>00017 
+<a name="l00018"></a>00018 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="main_8cpp.html#adf3f0dca7f213f0d65a6decf29369a3f" title="Инициализация системы тактирования">systemClockConfig</a>();
+<a name="l00019"></a>00019 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="main_8cpp.html#a30256f08b0a97bdce9a8d00868fed26c" title="Основная задача">mainThread</a>(<span class="keywordtype">void</span> *argument);
+<a name="l00020"></a>00020 
+<a name="l00021"></a><a class="code" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">00021</a> <span class="keywordtype">int</span> <a class="code" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>()
+<a name="l00022"></a>00022 {
+<a name="l00023"></a>00023   <span class="comment">// Сброс всей переферии, инициализация интерфейса Flash и системного таймера (1мс)</span>
+<a name="l00024"></a>00024   HAL_Init();
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026   <span class="comment">// Инициализация системы тактирования</span>
+<a name="l00027"></a>00027   <a class="code" href="main_8cpp.html#adf3f0dca7f213f0d65a6decf29369a3f" title="Инициализация системы тактирования">systemClockConfig</a>();
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029   <a class="code" href="board_8cpp.html#afc9da530ebb6d2fa4a3e16d2f2b0c016" title="Инициализация переферии">boardInit</a>();
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031   <span class="comment">// Создание основной задачи</span>
+<a name="l00032"></a>00032   osThreadDef(MainThread, <a class="code" href="main_8cpp.html#a30256f08b0a97bdce9a8d00868fed26c" title="Основная задача">mainThread</a>, osPriorityNormal, 0, 6*<a class="code" href="_free_r_t_o_s_config_8h.html#a6c534a6cf8a00528fe0be42083484f9a">configMINIMAL_STACK_SIZE</a>);
+<a name="l00033"></a>00033   osThreadCreate(osThread(MainThread), NULL);
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035   <span class="comment">// Запуск диспетчера задач</span>
+<a name="l00036"></a>00036   osKernelStart();
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038   <span class="comment">// Сюда не должны попасть, т.к. мы запустили диспетчер задач</span>
+<a name="l00039"></a>00039   <span class="keywordflow">while</span> (1) { }
+<a name="l00040"></a>00040 }
+<a name="l00041"></a>00041 
+<a name="l00045"></a><a class="code" href="main_8cpp.html#adf3f0dca7f213f0d65a6decf29369a3f">00045</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="main_8cpp.html#adf3f0dca7f213f0d65a6decf29369a3f" title="Инициализация системы тактирования">systemClockConfig</a>()
+<a name="l00046"></a>00046 {
+<a name="l00047"></a>00047   RCC_ClkInitTypeDef RCC_ClkInitStruct;
+<a name="l00048"></a>00048   RCC_OscInitTypeDef RCC_OscInitStruct;
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050   __PWR_CLK_ENABLE();
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSI|RCC_OSCILLATORTYPE_HSE;
+<a name="l00055"></a>00055   RCC_OscInitStruct.LSIState = RCC_LSI_ON;
+<a name="l00056"></a>00056   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+<a name="l00057"></a>00057   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+<a name="l00058"></a>00058   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+<a name="l00059"></a>00059   RCC_OscInitStruct.PLL.PLLM = 12;
+<a name="l00060"></a>00060   RCC_OscInitStruct.PLL.PLLN = 336;
+<a name="l00061"></a>00061   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+<a name="l00062"></a>00062   RCC_OscInitStruct.PLL.PLLQ = 7;
+<a name="l00063"></a>00063   HAL_RCC_OscConfig(&amp;RCC_OscInitStruct);
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_SYSCLK|RCC_CLOCKTYPE_PCLK1
+<a name="l00066"></a>00066       |RCC_CLOCKTYPE_PCLK2;
+<a name="l00067"></a>00067   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+<a name="l00068"></a>00068   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+<a name="l00069"></a>00069   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
+<a name="l00070"></a>00070   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
+<a name="l00071"></a>00071   HAL_RCC_ClockConfig(&amp;RCC_ClkInitStruct, FLASH_LATENCY_5);
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073   __DMA1_CLK_ENABLE();
+<a name="l00074"></a>00074   __DMA2_CLK_ENABLE();
+<a name="l00075"></a>00075 }
+<a name="l00076"></a>00076 
+<a name="l00080"></a><a class="code" href="main_8cpp.html#a30256f08b0a97bdce9a8d00868fed26c">00080</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="main_8cpp.html#a30256f08b0a97bdce9a8d00868fed26c" title="Основная задача">mainThread</a>(<span class="keywordtype">void</span> *argument)
+<a name="l00081"></a>00081 {
+<a name="l00082"></a>00082   (void)argument;
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084   <span class="comment">// Подсчет счетчиков перезапуска СPU</span>
+<a name="l00085"></a>00085   <a class="code" href="rcause_8cpp.html#a1e41953884de093a6a98ab80687cb73b" title="Функция подсчета счетчиков перезапуска СPU.">resetCauseCheck</a>();
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087   <a class="code" href="board_8cpp.html#af8c88a08633aee905360ba98b1617c64" title="Инициализация USB и подключение файловой системы">usbInit</a>();
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089 <span class="preprocessor">#if (USE_TEST == 1)</span>
+<a name="l00090"></a>00090 <span class="preprocessor"></span>  <a class="code" href="test_8cpp.html#a0ceb3b63cded7e4acbf6ca99fc337235">testInit</a>();
+<a name="l00091"></a>00091 <span class="preprocessor">#endif</span>
+<a name="l00092"></a>00092 <span class="preprocessor"></span>
+<a name="l00093"></a>00093   <a class="code" href="user__main_8cpp.html#a0c5fe2b0843784b74406a16461353491" title="Инициализация пользовательских задач и объектов">userInit</a>();
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095   <span class="keywordflow">while</span>(1) {
+<a name="l00096"></a>00096     osDelay(100);
+<a name="l00097"></a>00097   }
+<a name="l00098"></a>00098 }
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100 <span class="preprocessor">#ifdef USE_FULL_ASSERT</span>
+<a name="l00101"></a>00101 <span class="preprocessor"></span>
+<a name="l00108"></a>00108 <span class="keywordtype">void</span> assert_failed(uint8_t* file, uint32_t line)
+<a name="l00109"></a>00109 {
+<a name="l00110"></a>00110   <span class="comment">/* User can add his own implementation to report the file name and line number,</span>
+<a name="l00111"></a>00111 <span class="comment">    ex: printf(&quot;Wrong parameters value: file %s on line %d\r\n&quot;, file, line) */</span>
+<a name="l00112"></a>00112   printf(<span class="stringliteral">&quot;Wrong parameters value: file %s on line %d\r\n&quot;</span>, file, (<span class="keywordtype">int</span>)line);
+<a name="l00113"></a>00113 }
+<a name="l00114"></a>00114 <span class="preprocessor">#endif</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:23. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

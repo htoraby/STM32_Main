@@ -1,0 +1,990 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Файл src/board/usb/usbh_conf.c</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Функции</a> &#124;
+<a href="#var-members">Переменные</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл src/board/usb/usbh_conf.c</div>  </div>
+</div>
+<div class="contents">
+
+<p>: This file implements the board support package for the USB host library  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="board_8h_source.html">board.h</a>&quot;</code><br/>
+<code>#include &quot;usbh_core.h&quot;</code><br/>
+</div>
+<p><a href="usbh__conf_8c_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#ae0bbb4527b7b68699a7c17d30500842d">HAL_HCD_MspInit</a> (HCD_HandleTypeDef *hhcd)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#aecb264553245a0de4e234d51f4a0d207">HAL_HCD_MspDeInit</a> (HCD_HandleTypeDef *hhcd)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#a4db2ea557e081600238759cb55353628">HAL_HCD_SOF_Callback</a> (HCD_HandleTypeDef *hhcd)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">SOF callback.  <a href="#a4db2ea557e081600238759cb55353628"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#a95cbb5d1910e3cbf9bd462e057b3df33">HAL_HCD_Connect_Callback</a> (HCD_HandleTypeDef *hhcd)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">SOF callback.  <a href="#a95cbb5d1910e3cbf9bd462e057b3df33"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#ad59d0d3fdd9ef512faa0b0e56d83bfdc">HAL_HCD_Disconnect_Callback</a> (HCD_HandleTypeDef *hhcd)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">SOF callback.  <a href="#ad59d0d3fdd9ef512faa0b0e56d83bfdc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#a668704f16414d9ec2fa8023506b28e76">HAL_HCD_HC_NotifyURBChange_Callback</a> (HCD_HandleTypeDef *hhcd, uint8_t chnum, HCD_URBStateTypeDef urb_state)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Notify URB state change callback.  <a href="#a668704f16414d9ec2fa8023506b28e76"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">USBH_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#a5b46d8afbd254c9172b84d791d438306">USBH_LL_Init</a> (USBH_HandleTypeDef *phost)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">USBH_LL_Init Initialize the HOST portion of the driver.  <a href="#a5b46d8afbd254c9172b84d791d438306"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">USBH_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#a69ba6969d548a428bc4a5aa6eb2e135a">USBH_LL_DeInit</a> (USBH_HandleTypeDef *phost)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">USBH_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#ae895412b62103a712cfd2f1841d1420a">USBH_LL_Start</a> (USBH_HandleTypeDef *phost)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">USBH_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#a874eb40ed9b76406ffa64c20e47258cd">USBH_LL_Stop</a> (USBH_HandleTypeDef *phost)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">USBH_SpeedTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#af3c4ca2987ab678661d8d293adb02095">USBH_LL_GetSpeed</a> (USBH_HandleTypeDef *phost)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">USBH_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#a1844d882f66ca6a49f3c8eba7c88c24a">USBH_LL_ResetPort</a> (USBH_HandleTypeDef *phost)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#a46e36c65b21fa6bb30cc618588ed590c">USBH_LL_GetLastXferSize</a> (USBH_HandleTypeDef *phost, uint8_t pipe)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">USBH_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#a66ab8f32ce26048def4714c734ac84ab">USBH_LL_OpenPipe</a> (USBH_HandleTypeDef *phost, uint8_t pipe_num, uint8_t epnum, uint8_t dev_address, uint8_t speed, uint8_t ep_type, uint16_t mps)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">USBH_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#aefb43a461debda9e4b1a5e4023e799ee">USBH_LL_ClosePipe</a> (USBH_HandleTypeDef *phost, uint8_t pipe)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">USBH_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#a6d5456368ad4cb95eecae935e54f49cb">USBH_LL_SubmitURB</a> (USBH_HandleTypeDef *phost, uint8_t pipe, uint8_t direction, uint8_t ep_type, uint8_t token, uint8_t *pbuff, uint16_t length, uint8_t do_ping)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">USBH_URBStateTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#a78cc4409546dfc6ddcb9477f94cc2659">USBH_LL_GetURBState</a> (USBH_HandleTypeDef *phost, uint8_t pipe)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">USBH_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#acb4111af58651c28ebe4a557ca568b24">USBH_LL_DriverVBUS</a> (USBH_HandleTypeDef *phost, uint8_t state)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">USBH_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#ab272f515d41419156ec959281d5716e0">USBH_LL_SetToggle</a> (USBH_HandleTypeDef *phost, uint8_t pipe, uint8_t toggle)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">USBH_LL_SetToggle Initialize the HOST portion of the driver.  <a href="#ab272f515d41419156ec959281d5716e0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#a6271b251ae9bd23740e91276cdb7d3ba">USBH_LL_GetToggle</a> (USBH_HandleTypeDef *phost, uint8_t pipe)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">USBH_LL_GetToggle Initialize the HOST portion of the driver.  <a href="#a6271b251ae9bd23740e91276cdb7d3ba"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#a641108182e7e56c085e2d539ae060deb">USBH_Delay</a> (uint32_t Delay)</td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Переменные</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">HCD_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usbh__conf_8c.html#a135943d3578f7906d4be1d774650ecd0">hhcd_USB_OTG_FS</a></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Подробное описание</h2>
+<div class="textblock"><p>: This file implements the board support package for the USB host library </p>
+<dl class="date"><dt><b>Дата:</b></dt><dd>: 11/09/2014 11:08:12 </dd></dl>
+<dl class="version"><dt><b>Версия:</b></dt><dd>: v1.0_Cube COPYRIGHT(c) 2014 STMicroelectronics</dd></dl>
+<p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. 3. Neither the name of STMicroelectronics nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</p>
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a></p>
+</div><hr/><h2>Функции</h2>
+<a class="anchor" id="a95cbb5d1910e3cbf9bd462e057b3df33"></a><!-- doxytag: member="usbh_conf.c::HAL_HCD_Connect_Callback" ref="a95cbb5d1910e3cbf9bd462e057b3df33" args="(HCD_HandleTypeDef *hhcd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_HCD_Connect_Callback </td>
+          <td>(</td>
+          <td class="paramtype">HCD_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>hhcd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>SOF callback. </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hhcd,:</td><td>HCD handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Возвращаемые значения:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00103">103</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ad59d0d3fdd9ef512faa0b0e56d83bfdc"></a><!-- doxytag: member="usbh_conf.c::HAL_HCD_Disconnect_Callback" ref="ad59d0d3fdd9ef512faa0b0e56d83bfdc" args="(HCD_HandleTypeDef *hhcd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_HCD_Disconnect_Callback </td>
+          <td>(</td>
+          <td class="paramtype">HCD_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>hhcd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>SOF callback. </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hhcd,:</td><td>HCD handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Возвращаемые значения:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00113">113</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a668704f16414d9ec2fa8023506b28e76"></a><!-- doxytag: member="usbh_conf.c::HAL_HCD_HC_NotifyURBChange_Callback" ref="a668704f16414d9ec2fa8023506b28e76" args="(HCD_HandleTypeDef *hhcd, uint8_t chnum, HCD_URBStateTypeDef urb_state)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_HCD_HC_NotifyURBChange_Callback </td>
+          <td>(</td>
+          <td class="paramtype">HCD_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>hhcd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>chnum</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">HCD_URBStateTypeDef&#160;</td>
+          <td class="paramname"><em>urb_state</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Notify URB state change callback. </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hhcd,:</td><td>HCD handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Возвращаемые значения:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00123">123</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aecb264553245a0de4e234d51f4a0d207"></a><!-- doxytag: member="usbh_conf.c::HAL_HCD_MspDeInit" ref="aecb264553245a0de4e234d51f4a0d207" args="(HCD_HandleTypeDef *hhcd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_HCD_MspDeInit </td>
+          <td>(</td>
+          <td class="paramtype">HCD_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>hhcd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>USB_OTG_FS GPIO Configuration PA11 ------&gt; USB_OTG_FS_DM PA12 ------&gt; USB_OTG_FS_DP</p>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00070">70</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae0bbb4527b7b68699a7c17d30500842d"></a><!-- doxytag: member="usbh_conf.c::HAL_HCD_MspInit" ref="ae0bbb4527b7b68699a7c17d30500842d" args="(HCD_HandleTypeDef *hhcd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_HCD_MspInit </td>
+          <td>(</td>
+          <td class="paramtype">HCD_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>hhcd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>USB_OTG_FS GPIO Configuration PA11 ------&gt; USB_OTG_FS_DM PA12 ------&gt; USB_OTG_FS_DP</p>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00045">45</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a4db2ea557e081600238759cb55353628"></a><!-- doxytag: member="usbh_conf.c::HAL_HCD_SOF_Callback" ref="a4db2ea557e081600238759cb55353628" args="(HCD_HandleTypeDef *hhcd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_HCD_SOF_Callback </td>
+          <td>(</td>
+          <td class="paramtype">HCD_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>hhcd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>SOF callback. </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hhcd,:</td><td>HCD handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Возвращаемые значения:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00093">93</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a641108182e7e56c085e2d539ae060deb"></a><!-- doxytag: member="usbh_conf.c::USBH_Delay" ref="a641108182e7e56c085e2d539ae060deb" args="(uint32_t Delay)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void USBH_Delay </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>Delay</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">@param</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Возвращаемые значения:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Status</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00411">411</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aefb43a461debda9e4b1a5e4023e799ee"></a><!-- doxytag: member="usbh_conf.c::USBH_LL_ClosePipe" ref="aefb43a461debda9e4b1a5e4023e799ee" args="(USBH_HandleTypeDef *phost, uint8_t pipe)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">USBH_StatusTypeDef USBH_LL_ClosePipe </td>
+          <td>(</td>
+          <td class="paramtype">USBH_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>phost</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>pipe</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">@param</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Возвращаемые значения:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Status</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00284">284</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a69ba6969d548a428bc4a5aa6eb2e135a"></a><!-- doxytag: member="usbh_conf.c::USBH_LL_DeInit" ref="a69ba6969d548a428bc4a5aa6eb2e135a" args="(USBH_HandleTypeDef *phost)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">USBH_StatusTypeDef USBH_LL_DeInit </td>
+          <td>(</td>
+          <td class="paramtype">USBH_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>phost</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">@param</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Возвращаемые значения:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Status</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00170">170</a></p>
+
+</div>
+</div>
+<a class="anchor" id="acb4111af58651c28ebe4a557ca568b24"></a><!-- doxytag: member="usbh_conf.c::USBH_LL_DriverVBUS" ref="acb4111af58651c28ebe4a557ca568b24" args="(USBH_HandleTypeDef *phost, uint8_t state)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">USBH_StatusTypeDef USBH_LL_DriverVBUS </td>
+          <td>(</td>
+          <td class="paramtype">USBH_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>phost</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>state</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">@param</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Возвращаемые значения:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Status</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00334">334</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a46e36c65b21fa6bb30cc618588ed590c"></a><!-- doxytag: member="usbh_conf.c::USBH_LL_GetLastXferSize" ref="a46e36c65b21fa6bb30cc618588ed590c" args="(USBH_HandleTypeDef *phost, uint8_t pipe)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t USBH_LL_GetLastXferSize </td>
+          <td>(</td>
+          <td class="paramtype">USBH_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>phost</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>pipe</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">@param</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Возвращаемые значения:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Status</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00249">249</a></p>
+
+</div>
+</div>
+<a class="anchor" id="af3c4ca2987ab678661d8d293adb02095"></a><!-- doxytag: member="usbh_conf.c::USBH_LL_GetSpeed" ref="af3c4ca2987ab678661d8d293adb02095" args="(USBH_HandleTypeDef *phost)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">USBH_SpeedTypeDef USBH_LL_GetSpeed </td>
+          <td>(</td>
+          <td class="paramtype">USBH_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>phost</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">@param</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Возвращаемые значения:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Status</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00206">206</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a6271b251ae9bd23740e91276cdb7d3ba"></a><!-- doxytag: member="usbh_conf.c::USBH_LL_GetToggle" ref="a6271b251ae9bd23740e91276cdb7d3ba" args="(USBH_HandleTypeDef *phost, uint8_t pipe)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t USBH_LL_GetToggle </td>
+          <td>(</td>
+          <td class="paramtype">USBH_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>phost</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>pipe</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>USBH_LL_GetToggle Initialize the HOST portion of the driver. </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">phost,:</td><td>Selected device </td></tr>
+    <tr><td class="paramname">base_address,:</td><td>OTG base address </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Возвращаемые значения:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Status</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00388">388</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a78cc4409546dfc6ddcb9477f94cc2659"></a><!-- doxytag: member="usbh_conf.c::USBH_LL_GetURBState" ref="a78cc4409546dfc6ddcb9477f94cc2659" args="(USBH_HandleTypeDef *phost, uint8_t pipe)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">USBH_URBStateTypeDef USBH_LL_GetURBState </td>
+          <td>(</td>
+          <td class="paramtype">USBH_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>phost</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>pipe</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">@param</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Возвращаемые значения:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Status</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00323">323</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a5b46d8afbd254c9172b84d791d438306"></a><!-- doxytag: member="usbh_conf.c::USBH_LL_Init" ref="a5b46d8afbd254c9172b84d791d438306" args="(USBH_HandleTypeDef *phost)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">USBH_StatusTypeDef USBH_LL_Init </td>
+          <td>(</td>
+          <td class="paramtype">USBH_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>phost</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>USBH_LL_Init Initialize the HOST portion of the driver. </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">phost,:</td><td>Selected device </td></tr>
+    <tr><td class="paramname">base_address,:</td><td>OTG base address </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Возвращаемые значения:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Status</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00140">140</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a66ab8f32ce26048def4714c734ac84ab"></a><!-- doxytag: member="usbh_conf.c::USBH_LL_OpenPipe" ref="a66ab8f32ce26048def4714c734ac84ab" args="(USBH_HandleTypeDef *phost, uint8_t pipe_num, uint8_t epnum, uint8_t dev_address, uint8_t speed, uint8_t ep_type, uint16_t mps)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">USBH_StatusTypeDef USBH_LL_OpenPipe </td>
+          <td>(</td>
+          <td class="paramtype">USBH_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>phost</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>pipe_num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>epnum</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>dev_address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>speed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ep_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>mps</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">@param</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Возвращаемые значения:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Status</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00260">260</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a1844d882f66ca6a49f3c8eba7c88c24a"></a><!-- doxytag: member="usbh_conf.c::USBH_LL_ResetPort" ref="a1844d882f66ca6a49f3c8eba7c88c24a" args="(USBH_HandleTypeDef *phost)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">USBH_StatusTypeDef USBH_LL_ResetPort </td>
+          <td>(</td>
+          <td class="paramtype">USBH_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>phost</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">@param</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Возвращаемые значения:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Status</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00237">237</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ab272f515d41419156ec959281d5716e0"></a><!-- doxytag: member="usbh_conf.c::USBH_LL_SetToggle" ref="ab272f515d41419156ec959281d5716e0" args="(USBH_HandleTypeDef *phost, uint8_t pipe, uint8_t toggle)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">USBH_StatusTypeDef USBH_LL_SetToggle </td>
+          <td>(</td>
+          <td class="paramtype">USBH_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>phost</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>pipe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>toggle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>USBH_LL_SetToggle Initialize the HOST portion of the driver. </p>
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">phost,:</td><td>Selected device </td></tr>
+    <tr><td class="paramname">base_address,:</td><td>OTG base address </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Возвращаемые значения:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Status</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00364">364</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ae895412b62103a712cfd2f1841d1420a"></a><!-- doxytag: member="usbh_conf.c::USBH_LL_Start" ref="ae895412b62103a712cfd2f1841d1420a" args="(USBH_HandleTypeDef *phost)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">USBH_StatusTypeDef USBH_LL_Start </td>
+          <td>(</td>
+          <td class="paramtype">USBH_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>phost</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">@param</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Возвращаемые значения:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Status</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00182">182</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a874eb40ed9b76406ffa64c20e47258cd"></a><!-- doxytag: member="usbh_conf.c::USBH_LL_Stop" ref="a874eb40ed9b76406ffa64c20e47258cd" args="(USBH_HandleTypeDef *phost)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">USBH_StatusTypeDef USBH_LL_Stop </td>
+          <td>(</td>
+          <td class="paramtype">USBH_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>phost</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">@param</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Возвращаемые значения:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Status</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00194">194</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a6d5456368ad4cb95eecae935e54f49cb"></a><!-- doxytag: member="usbh_conf.c::USBH_LL_SubmitURB" ref="a6d5456368ad4cb95eecae935e54f49cb" args="(USBH_HandleTypeDef *phost, uint8_t pipe, uint8_t direction, uint8_t ep_type, uint8_t token, uint8_t *pbuff, uint16_t length, uint8_t do_ping)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">USBH_StatusTypeDef USBH_LL_SubmitURB </td>
+          <td>(</td>
+          <td class="paramtype">USBH_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>phost</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>pipe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>direction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ep_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>token</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>pbuff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>do_ping</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>Аргументы:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">@param</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Возвращаемые значения:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Status</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00297">297</a></p>
+
+</div>
+</div>
+<hr/><h2>Переменные</h2>
+<a class="anchor" id="a135943d3578f7906d4be1d774650ecd0"></a><!-- doxytag: member="usbh_conf.c::hhcd_USB_OTG_FS" ref="a135943d3578f7906d4be1d774650ecd0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HCD_HandleTypeDef <a class="el" href="usbh__conf_8c.html#a135943d3578f7906d4be1d774650ecd0">hhcd_USB_OTG_FS</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>См. определение в файле <a class="el" href="usbh__conf_8c_source.html">usbh_conf.c</a> строка <a class="el" href="usbh__conf_8c_source.html#l00038">38</a></p>
+
+</div>
+</div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:25. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>

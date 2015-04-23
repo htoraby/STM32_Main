@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>КСУ-02: Исходный файл src/user/protection/protection_main.cpp</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">КСУ-02
+   
+   </div>
+   <div id="projectbrief">Станция управления</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Создано системой Doxygen 1.7.5.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Структуры&#160;данных</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/user/protection/protection_main.cpp</div>  </div>
+</div>
+<div class="contents">
+<a href="protection__main_8cpp.html">См. документацию.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="protection__main_8h.html">protection_main.h</a>&quot;</span>
+<a name="l00002"></a>00002 
+<a name="l00003"></a><a class="code" href="protection__main_8cpp.html#a5b3fa31d19e4dc7503a7f96342edf44a">00003</a> <span class="preprocessor">#define COUNT_PROTECTIONS 10 // 11</span>
+<a name="l00004"></a>00004 <span class="preprocessor"></span>
+<a name="l00005"></a><a class="code" href="protection__main_8cpp.html#ada3f2eafc4499964f73ac7ab871da296">00005</a> <a class="code" href="class_protection.html" title="Базовый класс защит КСУ">Protection</a> *<a class="code" href="protection__main_8cpp.html#ada3f2eafc4499964f73ac7ab871da296">protections</a>[<a class="code" href="protection__main_8cpp.html#a5b3fa31d19e4dc7503a7f96342edf44a">COUNT_PROTECTIONS</a>];
+<a name="l00006"></a>00006 
+<a name="l00007"></a><a class="code" href="protection__main_8h.html#a0263827e5a501056c3a06547aa003134">00007</a> <a class="code" href="class_protection_over_voltage_input.html" title="Класс автомата защиты &quot;Превышение питания сети&quot;.">ProtectionOverVoltageInput</a> <a class="code" href="protection__main_8cpp.html#a0263827e5a501056c3a06547aa003134">protOverVoltIn</a>;
+<a name="l00008"></a><a class="code" href="protection__main_8h.html#aa72b576034021bcdf3bbb2fb7f6f7829">00008</a> <a class="code" href="class_protection_under_voltage_input.html" title="Класс автомата защиты &quot;Снижение питания сети&quot;.">ProtectionUnderVoltageInput</a> <a class="code" href="protection__main_8cpp.html#aa72b576034021bcdf3bbb2fb7f6f7829">protUnderVoltIn</a>;
+<a name="l00009"></a><a class="code" href="protection__main_8h.html#a41c8aab89676c32c63ce9efe95e623c8">00009</a> <a class="code" href="class_protection_imbalance_voltage_input.html" title="Класс автомата защиты &quot;Дисбаланс напряжения&quot;.">ProtectionImbalanceVoltageInput</a> <a class="code" href="protection__main_8cpp.html#a41c8aab89676c32c63ce9efe95e623c8">protImbalanceVoltIn</a>;
+<a name="l00010"></a>00010 
+<a name="l00011"></a><a class="code" href="protection__main_8h.html#ac4b8a91a9932859fbafeb3bca69d4b58">00011</a> <a class="code" href="class_protection_overload_motor.html" title="Класс автомата защиты &quot;Перегруз двигателя&quot;.">ProtectionOverloadMotor</a> <a class="code" href="protection__main_8cpp.html#ac4b8a91a9932859fbafeb3bca69d4b58">protOverloadMotor</a>;
+<a name="l00012"></a><a class="code" href="protection__main_8h.html#ae177743d94cc3266255d7112651fee48">00012</a> <a class="code" href="class_protection_underload_motor.html" title="Класс автомата защиты &quot;Недогруз двигателя&quot;.">ProtectionUnderloadMotor</a> <a class="code" href="protection__main_8cpp.html#ae177743d94cc3266255d7112651fee48">protUnderloadMotor</a>;
+<a name="l00013"></a><a class="code" href="protection__main_8h.html#a2d5577d07568fa5d0d42e57a785fb5d7">00013</a> <a class="code" href="class_protection_imbalance_current_motor.html" title="Класс автомата защиты &quot;Дисбаланс токов ПЭД&quot;.">ProtectionImbalanceCurrentMotor</a> <a class="code" href="protection__main_8cpp.html#a2d5577d07568fa5d0d42e57a785fb5d7">protImbalanceCurrentMotor</a>;
+<a name="l00014"></a><a class="code" href="protection__main_8h.html#a62c601eb89092feb5966014ee666d0d7">00014</a> <a class="code" href="class_protection_out_of_sync_motor.html" title="Класс автомата защиты &quot;Рассинхронизация ПВЭД&quot;.">ProtectionOutOfSyncMotor</a> <a class="code" href="protection__main_8cpp.html#a62c601eb89092feb5966014ee666d0d7">protOutOfSyncMotor</a>;
+<a name="l00015"></a><a class="code" href="protection__main_8h.html#a9a1fddeb5cba6f9b904744a73c190097">00015</a> <a class="code" href="class_protection_turbine_rotation.html" title="Класс автомата защиты &quot;Турбинное вращение&quot;.">ProtectionTurbineRotation</a> <a class="code" href="protection__main_8cpp.html#a9a1fddeb5cba6f9b904744a73c190097">protTurbineRotation</a>;
+<a name="l00016"></a>00016 
+<a name="l00017"></a><a class="code" href="protection__main_8h.html#aede6e82b9c4def4c85d01d4815ac382c">00017</a> <a class="code" href="class_protection_temperature_motor.html" title="Класс автомата защиты &quot;Перегрев двигателя&quot;.">ProtectionTemperatureMotor</a> <a class="code" href="protection__main_8cpp.html#aede6e82b9c4def4c85d01d4815ac382c">protTemperatureMotor</a>;
+<a name="l00018"></a><a class="code" href="protection__main_8h.html#a5da546ca1e60a2f4b7e97d6a907971a2">00018</a> <a class="code" href="class_protection_pressure_intake.html" title="Класс автомата защиты &quot;Давление на приёме насоса&quot;.">ProtectionPressureIntake</a> <a class="code" href="protection__main_8cpp.html#a5da546ca1e60a2f4b7e97d6a907971a2">protPressureIntake</a>;
+<a name="l00019"></a><a class="code" href="protection__main_8h.html#aa57a6d6f13b32314f4d2340426ba34ad">00019</a> <a class="code" href="class_protection_resistance_isolation.html" title="Класс автомата защиты &quot;Сопротивление изоляции&quot;.">ProtectionResistanceIsolation</a> <a class="code" href="protection__main_8cpp.html#aa57a6d6f13b32314f4d2340426ba34ad">protResistanceIsolation</a>;
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="protection__main_8cpp.html#a1175dbea738b46acf5ab918e0215b884">protectionTask</a>(<span class="keywordtype">void</span> *argument);
+<a name="l00022"></a>00022 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="protection__main_8cpp.html#af52a3598c10215decc2a47526cdadea2">setProtectionPrevent</a>();
+<a name="l00023"></a>00023 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="protection__main_8cpp.html#aa5be27eb098bf5641335f94d2fea02c1">setProtectionDelay</a>();
+<a name="l00024"></a>00024 
+<a name="l00025"></a><a class="code" href="protection__main_8h.html#a89db53325abbc01e5ad68068b251eb03">00025</a> <span class="keywordtype">void</span> <a class="code" href="protection__main_8cpp.html#a89db53325abbc01e5ad68068b251eb03" title="Функция инициализации задачи обработки всех защит">protectionInit</a>()
+<a name="l00026"></a>00026 {
+<a name="l00027"></a>00027   protections[0] = &amp;<a class="code" href="protection__main_8cpp.html#a0263827e5a501056c3a06547aa003134">protOverVoltIn</a>;
+<a name="l00028"></a>00028   protections[1] = &amp;<a class="code" href="protection__main_8cpp.html#aa72b576034021bcdf3bbb2fb7f6f7829">protUnderVoltIn</a>;
+<a name="l00029"></a>00029   protections[2] = &amp;<a class="code" href="protection__main_8cpp.html#a41c8aab89676c32c63ce9efe95e623c8">protImbalanceVoltIn</a>;
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031   protections[3] = &amp;<a class="code" href="protection__main_8cpp.html#a2d5577d07568fa5d0d42e57a785fb5d7">protImbalanceCurrentMotor</a>;
+<a name="l00032"></a>00032   protections[4] = &amp;<a class="code" href="protection__main_8cpp.html#a9a1fddeb5cba6f9b904744a73c190097">protTurbineRotation</a>;
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034   protections[5] = &amp;<a class="code" href="protection__main_8cpp.html#aa57a6d6f13b32314f4d2340426ba34ad">protResistanceIsolation</a>;
+<a name="l00035"></a>00035   protections[6] = &amp;<a class="code" href="protection__main_8cpp.html#a5da546ca1e60a2f4b7e97d6a907971a2">protPressureIntake</a>;
+<a name="l00036"></a>00036   protections[7] = &amp;<a class="code" href="protection__main_8cpp.html#aede6e82b9c4def4c85d01d4815ac382c">protTemperatureMotor</a>;
+<a name="l00037"></a>00037   protections[8] = &amp;<a class="code" href="protection__main_8cpp.html#ae177743d94cc3266255d7112651fee48">protUnderloadMotor</a>;
+<a name="l00038"></a>00038   protections[9] = &amp;<a class="code" href="protection__main_8cpp.html#ac4b8a91a9932859fbafeb3bca69d4b58">protOverloadMotor</a>;
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 <span class="comment">//  protections[3] = &amp;protOverloadMotor;</span>
+<a name="l00041"></a>00041 <span class="comment">//  protections[4] = &amp;protUnderloadMotor;</span>
+<a name="l00042"></a>00042 <span class="comment">//  protections[5] = &amp;protImbalanceCurrentMotor;</span>
+<a name="l00043"></a>00043 <span class="comment">//  protections[6] = &amp;protOutOfSyncMotor;</span>
+<a name="l00044"></a>00044 <span class="comment">//  protections[7] = &amp;protTurbineRotation;</span>
+<a name="l00045"></a>00045 <span class="comment">//  protections[8] = &amp;protTemperatureMotor;</span>
+<a name="l00046"></a>00046 <span class="comment">//  protections[9] = &amp;protPressureIntake;</span>
+<a name="l00047"></a>00047 <span class="comment">//  protections[10] = &amp;protResistanceIsolation;</span>
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049   osThreadDef(ProtectionTask, <a class="code" href="protection__main_8cpp.html#a1175dbea738b46acf5ab918e0215b884">protectionTask</a>, osPriorityNormal, 0, 4 * <a class="code" href="_free_r_t_o_s_config_8h.html#a6c534a6cf8a00528fe0be42083484f9a">configMINIMAL_STACK_SIZE</a>);
+<a name="l00050"></a>00050   osThreadCreate(osThread(ProtectionTask), NULL);
+<a name="l00051"></a>00051 }
+<a name="l00052"></a>00052 
+<a name="l00053"></a><a class="code" href="protection__main_8cpp.html#a1175dbea738b46acf5ab918e0215b884">00053</a> <span class="keywordtype">void</span> <a class="code" href="protection__main_8cpp.html#a1175dbea738b46acf5ab918e0215b884">protectionTask</a>(<span class="keywordtype">void</span> *argument)
+<a name="l00054"></a>00054 {
+<a name="l00055"></a>00055   (void)argument;
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057   <span class="keywordflow">while</span> (1) {
+<a name="l00058"></a>00058     osDelay(100);
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="protection__main_8cpp.html#a5b3fa31d19e4dc7503a7f96342edf44a">COUNT_PROTECTIONS</a>; ++i) {
+<a name="l00061"></a>00061       protections[i]-&gt;<a class="code" href="class_protection.html#a19de6cbe472e5f8b183ebba172058b10" title="Метод обработки защиты">processing</a>();
+<a name="l00062"></a>00062     }
+<a name="l00063"></a>00063     <a class="code" href="protection__main_8cpp.html#aa5be27eb098bf5641335f94d2fea02c1">setProtectionDelay</a>();
+<a name="l00064"></a>00064     <a class="code" href="protection__main_8cpp.html#af52a3598c10215decc2a47526cdadea2">setProtectionPrevent</a>();
+<a name="l00065"></a>00065   }
+<a name="l00066"></a>00066 }
+<a name="l00067"></a>00067 
+<a name="l00068"></a><a class="code" href="protection__main_8cpp.html#aa5be27eb098bf5641335f94d2fea02c1">00068</a> <span class="keywordtype">void</span> <a class="code" href="protection__main_8cpp.html#aa5be27eb098bf5641335f94d2fea02c1">setProtectionDelay</a>()
+<a name="l00069"></a>00069 {
+<a name="l00070"></a>00070   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="protection__main_8cpp.html#a5b3fa31d19e4dc7503a7f96342edf44a">COUNT_PROTECTIONS</a>; ++i) {
+<a name="l00071"></a>00071     <span class="keywordflow">if</span> (protections[i]-&gt;isDelay()) {
+<a name="l00072"></a>00072       <a class="code" href="user__main_8cpp.html#ab926427831a5d518f567ee30b2f08804">ksu</a>.<a class="code" href="class_ccs.html#a7ebdcb8f354fc1d4b3f2770666bce7c6" title="setDelayCCS">setDelay</a>();
+<a name="l00073"></a>00073       <span class="keywordflow">return</span>;
+<a name="l00074"></a>00074     }
+<a name="l00075"></a>00075     <a class="code" href="user__main_8cpp.html#ab926427831a5d518f567ee30b2f08804">ksu</a>.<a class="code" href="class_ccs.html#a7db968cc15d189e42968ae84351c82f6" title="resetDelayCCS">resetDelay</a>();
+<a name="l00076"></a>00076   }
+<a name="l00077"></a>00077 }
+<a name="l00078"></a>00078 
+<a name="l00079"></a><a class="code" href="protection__main_8cpp.html#af52a3598c10215decc2a47526cdadea2">00079</a> <span class="keywordtype">void</span> <a class="code" href="protection__main_8cpp.html#af52a3598c10215decc2a47526cdadea2">setProtectionPrevent</a>()
+<a name="l00080"></a>00080 {
+<a name="l00081"></a>00081   <span class="keywordtype">bool</span> prevent = <span class="keyword">false</span>;
+<a name="l00082"></a>00082   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="protection__main_8cpp.html#a5b3fa31d19e4dc7503a7f96342edf44a">COUNT_PROTECTIONS</a>; ++i) {
+<a name="l00083"></a>00083     prevent = prevent ? <span class="keyword">true</span> : protections[i]-&gt;<a class="code" href="class_protection.html#a8ad11e8d98eef1386f5325bbc1db8edc" title="isPrevent">isPrevent</a>();
+<a name="l00084"></a>00084   }
+<a name="l00085"></a>00085   <a class="code" href="user__main_8cpp.html#aecf58615a3442a354517debbf8adeb59">parameters</a>.<a class="code" href="class_parameters.html#aeb8e4af971718a7e37bb3d72d159d821" title="Метод записи параметра по ID с определением необходимого массива">set</a>(<a class="code" href="idslist_8h.html#a28ebf845fa2e5ac0007afae79f0fa3cfa9e78a3cac85a6e9cde02ee48e104abe7" title="Наличие хотя бы одного запрещающего параметра">CCS_PROT_PREVENT</a>, prevent);
+<a name="l00086"></a>00086 }
+<a name="l00087"></a>00087 
+<a name="l00088"></a><a class="code" href="protection__main_8h.html#a36a4b6b12c2c0bab6a8d3abe2796ffea">00088</a> <span class="keywordtype">void</span> <a class="code" href="protection__main_8cpp.html#a36a4b6b12c2c0bab6a8d3abe2796ffea" title="Метод добавления события &quot;АПВ запрещён&quot;.">addEventProtectionPrevent</a>()
+<a name="l00089"></a>00089 {
+<a name="l00090"></a>00090   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="protection__main_8cpp.html#a5b3fa31d19e4dc7503a7f96342edf44a">COUNT_PROTECTIONS</a>; ++i) {
+<a name="l00091"></a>00091     <span class="keywordflow">if</span> (protections[i]-&gt;isPrevent())
+<a name="l00092"></a>00092       <a class="code" href="log__main_8cpp.html#ac59bf01556b65dd1d2dbfcf7931b0759">logEvent</a>.<a class="code" href="class_log_event.html#a59bde4221222c33cf7c19450c30323ed" title="Метод добавления нового события в архив">add</a>(<a class="code" href="log_8h.html#a080ee5c80bcb8b9f3fda41b5e4eb0ef8aaa46df7c5442a4e315971e10fe1b2eda" title="Событие защиты">ProtectCode</a>, <a class="code" href="log_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa18db7ade44c35f2239d1b3fe88b05532">AutoType</a>, protections[i]-&gt;getApvDisabledEventId());
+<a name="l00093"></a>00093   }
+<a name="l00094"></a>00094 }
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Структуры данных</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Макросы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Документация по КСУ-02. Последние изменения: Чт 23 Апр 2015 08:29:24. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.5.1
+</small></address>
+
+</body>
+</html>
