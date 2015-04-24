@@ -654,6 +654,25 @@ void Ccs::calcMotorCurrentImbalance()
   setNewValue(CCS_MOTOR_CURRENT_IMBALANCE, imbalance);
 }
 
+float Ccs::calcVoltageDropCable(float current)
+{
+  if (parameters.get(CCS_RGM_HEAT_CABLE_MODE) != Regime::OffAction) {
+    float lenght = 2 * parameters.get(CCS_TRANS_CABLE_LENGHT) / 1000;   // Длина петли кабеля в кМ
+    float R80 = parameters.get(CCS_RGM_HEAT_CABLE_RESISTANCE_80);       // Сопротивление кабеля при 80°С
+    float Inom = parameters.get(VSD_MOTOR_CURRENT);                     // Номинальный ток ПЭД
+    float dUcl = R80 * lenght * Inom;
+    return dUcl;
+  }
+  else {
+    float lenght = parameters.get(CCS_TRANS_CABLE_LENGHT);              // Длина кабеля
+    float cross = parameters.get(CCS_TRANS_CABLE_CROSS);                // Cечение кабеля
+    if (!cross)
+      cross = 16;
+    float dUcl = 38.7 * (current * lenght) / (cross * 1000);            // Падение напряжения на кабельной линии
+    return dUcl;
+  }
+}
+
 void Ccs::calcMotorCurrentPhase(uint16_t vsdOutCurrent, uint16_t coefCorrect, uint16_t motorCurrent)
 {
   float current;

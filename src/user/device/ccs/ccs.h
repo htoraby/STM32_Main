@@ -235,6 +235,14 @@ public:
   void calcMotorCurrentImbalance();
 
   /*!
+   * \brief Функция вычисления падения напряжения в кабельной линии
+   * \param current текущий ток двигателя
+   * \return величину падения напряжения
+   */
+  float calcVoltageDropCable(float current);
+
+
+  /*!
    * \brief calcVoltageImbalanceIn
    */
   void calcVoltageImbalanceIn();
