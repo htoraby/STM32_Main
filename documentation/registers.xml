@@ -8794,17 +8794,34 @@
 	<param>
 		<id>691</id>
 		<name>CCS_RGM_RUN_PICKUP_MODE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 	</param>
 	<param>
 		<id>692</id>
 		<name>CCS_RGM_RUN_PICKUP_STATE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 	</param>
 	<param>
 		<id>693</id>
 		<name>CCS_RGM_RUN_VSD_STATE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 	</param>
 	<param>
 		<id>694</id>
+		<name>CCS_CMD_AM335_POWER_OFF</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<comment>Команда отключения модуля AM335x</comment>
+	</param>
+	<param>
+		<id>695</id>
 		<name>CCS_END</name>
 		<valid>VALIDITY_OK</valid>
 		<comment>Последний параметр</comment>

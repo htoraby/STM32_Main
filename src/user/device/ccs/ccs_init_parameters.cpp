@@ -6914,9 +6914,9 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].def      = 0;
   // 
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].id                            = CCS_RGM_RUN_PICKUP_MODE;
-  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].access                        = 0;
-  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].operation                     = 0;
-  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].physic                        = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].access                        = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].validity                      = 0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].min                           = 0;
@@ -6924,9 +6924,9 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].def                           = 0;
   // 
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].id                           = CCS_RGM_RUN_PICKUP_STATE;
-  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].access                       = 0;
-  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].operation                    = 0;
-  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].physic                       = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].validity                     = 0;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].value.float_t                = 0;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].min                          = 0;
@@ -6934,13 +6934,23 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].def                          = 0;
   // 
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].id                              = CCS_RGM_RUN_VSD_STATE;
-  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].access                          = 0;
-  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].operation                       = 0;
-  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].physic                          = 0;
+  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].access                          = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].validity                        = 0;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].min                             = 0;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].max                             = 0;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].def                             = 0;
+  // Команда отключения модуля AM335x
+  parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].id                            = CCS_CMD_AM335_POWER_OFF;
+  parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].access                        = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
+  parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].validity                      = 0;
+  parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].value.float_t                 = 0;
+  parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].min                           = 0;
+  parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].max                           = 0;
+  parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].def                           = 0;
 }
 

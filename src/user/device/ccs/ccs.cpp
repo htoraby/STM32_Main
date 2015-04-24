@@ -716,10 +716,19 @@ void Ccs::calcRegimeChangeFreqPeriodOneStep()
 void Ccs::controlPower()
 {
   if (!isPowerGood()) {
+    if (powerOffTimeout_ == (TIMEOUT_POWER_OFF - 100)) {
+      setNewValue(CCS_CMD_AM335_POWER_OFF, 1);
+      setNewValue(CCS_CMD_AM335_POWER_OFF, 0);
+    }
+
     if ((powerOffTimeout_ == 100) || !isUpsGood()) {
       if (!powerOffFlag_) {
+        setNewValue(CCS_CMD_AM335_POWER_OFF, 1);
+        setNewValue(CCS_CMD_AM335_POWER_OFF, 0);
+
         // Запись в журнал "Отключение питания"
         logEvent.add(PowerCode, AutoType, PowerOffId);
+
         powerOffFlag_ = true;
       }
     }
