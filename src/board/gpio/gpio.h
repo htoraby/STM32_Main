@@ -4,8 +4,7 @@
 #include "board.h"
 
 /*!
- \brief Значения вывода
-
+ * \brief Значения вывода
 */
 enum PinState {
   PinReset,
@@ -13,8 +12,7 @@ enum PinState {
 };
 
 /*!
- \brief Список LED
-
+ * \brief Список LED
 */
 enum LedType {
   StopLed,
@@ -25,18 +23,7 @@ enum LedType {
 };
 
 /*!
- \brief Список кнопок
-
-*/
-enum ButtonType {
-  PowerButton,
-  SysResetButton,
-  ButtonMax,
-};
-
-/*!
- \brief Список цифровых входов
-
+ * \brief Список цифровых входов
 */
 enum DiNum {
   DI1, DI2, DI3, DI4, DI5, DI6, DI7, DI8, DI9, DI10, DI11, DI12, DI13, DI14,
@@ -44,8 +31,7 @@ enum DiNum {
 };
 
 /*!
- \brief Список цифровых выходов
-
+ * \brief Список цифровых выходов
 */
 enum DoNum {
   DO1, DO2, DO3, DO4,
@@ -61,10 +47,8 @@ enum DoNum {
 #define FAN_LED_PIN                     GPIO_PIN_3
 #define FAN_LED_PORT                    GPIOH
 
-#define POWER_BUTTON_PIN                GPIO_PIN_9
-#define POWER_BUTTON_PORT               GPIOI
-#define SYS_RESET_BUTTON_PIN            GPIO_PIN_13
-#define SYS_RESET_BUTTON_PORT           GPIOC
+#define POWER_BUTTON_PIN                GPIOI, GPIO_PIN_9
+#define SYS_RESET_BUTTON_PIN            GPIOC, GPIO_PIN_13
 
 //! Вывод детектора основного питания
 #define POWER_WARNING_PIN  GPIOI, GPIO_PIN_5

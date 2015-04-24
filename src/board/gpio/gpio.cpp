@@ -7,13 +7,6 @@ const uint16_t pinLeds[LedMax] = {
   STOP_LED_PIN, WAIT_LED_PIN, WORK_LED_PIN, FAN_LED_PIN
 };
 
-GPIO_TypeDef* portButtons[ButtonMax] = {
-  POWER_BUTTON_PORT, SYS_RESET_BUTTON_PORT,
-};
-const uint16_t pinButtons[ButtonMax] = {
-  POWER_BUTTON_PIN, SYS_RESET_BUTTON_PIN,
-};
-
 GPIO_TypeDef* portDI[DigitalInputMax] = {
   GPIOF, GPIOB, GPIOB, GPIOC, GPIOC, GPIOG,
   GPIOB, GPIOB, GPIOB, GPIOH, GPIOD, GPIOB,
@@ -33,7 +26,6 @@ const uint16_t pinDO[DigitalOutputMax] = {
 };
 
 static void initLed(LedType led, PinState value = PinReset);
-static void initButton(ButtonType button);
 
 void gpioInit()
 {
@@ -53,10 +45,11 @@ void gpioInit()
   initLed(WorkLed);
   initLed(FanLed);
 
-  initButton(PowerButton);
-  initButton(SysResetButton);
+  initPinOut(POWER_BUTTON_PIN, PinSet);
+//  initPinOut(SYS_RESET_BUTTON_PIN, PinSet);
 
   initPinInput(POWER_WARNING_PIN);
+  initPinInput(POWER_ALARM_PIN);
   initPinOut(OFF_REL_PIN, PinSet);
   initPinOut(LCD_ON_PIN, PinSet);
   initPinOut(USB_ON_PIN, PinSet);
@@ -101,16 +94,6 @@ void offAllLeds()
   offLed(WaitLed);
   offLed(WorkLed);
   offLed(FanLed);
-}
-
-/*!
- \brief Инициализация кнопки
-
- \param button: номер из списка @ref ButtonType
-*/
-static void initButton(ButtonType button)
-{
-  initPinInput(portButtons[button], pinButtons[button]);
 }
 
 void initPinInput(GPIO_TypeDef* port, const uint16_t pin)
@@ -190,4 +173,18 @@ void onLcd()
 void offLcd()
 {
   HAL_GPIO_WritePin(LCD_ON_PIN, GPIO_PIN_RESET);
+}
+
+void onPower()
+{
+  clrPinOut(POWER_BUTTON_PIN);
+  HAL_Delay(200);
+  setPinOut(POWER_BUTTON_PIN);
+}
+
+void offPower()
+{
+  clrPinOut(POWER_BUTTON_PIN);
+  HAL_Delay(10000);
+  setPinOut(POWER_BUTTON_PIN);
 }
