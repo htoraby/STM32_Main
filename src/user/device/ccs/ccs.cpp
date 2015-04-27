@@ -654,6 +654,48 @@ void Ccs::calcMotorCurrentImbalance()
   setNewValue(CCS_MOTOR_CURRENT_IMBALANCE, imbalance);
 }
 
+float Ccs::calcVoltageDropCable(float lenght, float cross, float current)
+{
+  if (parameters.get(CCS_RGM_HEAT_CABLE_MODE) != Regime::OffAction) {
+    lenght = 2 * lenght / 1000;                                         // Длина петли кабеля в кМ
+    float R80 = parameters.get(CCS_RGM_HEAT_CABLE_RESISTANCE_80);       // Сопротивление кабеля при 80°С
+    current = parameters.get(VSD_MOTOR_CURRENT);                        // Номинальный ток ПЭД
+    float dUcl = R80 * lenght * current;
+    return dUcl;
+  }
+  else {
+    if (!cross)
+      cross = 16;
+    float dUcl = 38.7 * (current * lenght) / (cross * 1000);            // Падение напряжения на кабельной линии
+    return dUcl;
+  }
+}
+
+float Ccs::calcVoltageDropFilter(float current, float freq, float inputVoltage, float tapOff, float filter)
+{
+  if (!freq)
+    freq = parameters.get(VSD_MOTOR_FREQUENCY);
+  if (!inputVoltage)
+    inputVoltage = 380.0;
+  float trans = parameters.get(CCS_TRANS_VOLTAGE_TAP_OFF) / inputVoltage;
+  float dUf = 2 * NUM_PI * filter * freq * current * trans / 1000.0;
+  return dUf;
+}
+
+float Ccs::calcResistPhaseMotorFromInduct(float induct)
+{
+  float freq = parameters.get(VSD_MOTOR_FREQUENCY);
+  float resist = 2 * NUM_PI * induct * freq / 1000;
+  return resist;
+}
+
+float Ccs::calcInductMotorFromResistPhase(float resist)
+{
+  float freq = parameters.get(VSD_MOTOR_FREQUENCY);
+  float induct = resist * 1000 / (2 * NUM_PI * freq);
+  return induct;
+}
+
 void Ccs::calcMotorCurrentPhase(uint16_t vsdOutCurrent, uint16_t coefCorrect, uint16_t motorCurrent)
 {
   float current;

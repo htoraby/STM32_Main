@@ -235,6 +235,40 @@ public:
   void calcMotorCurrentImbalance();
 
   /*!
+   * \brief Функция вычисления падения напряжения на кабельной линии
+   * \param lenght длина кабельной линни
+   * \param cross сечение кабеля
+   * \param current ток
+   * \return
+   */
+  float calcVoltageDropCable(float lenght, float cross, float current);
+
+  /*!
+   * \brief Функция вычисления падения напряжения на фильтре
+   * \param current расчёт для этого значения тока
+   * \param freq расчет для этого значения частоты
+   * \param inputVoltage Входное напряжение ТМПН
+   * \param tapOff Напряжение отпайки ТМПН
+   * \param filter Индуктивность фильтра
+   * \return
+   */
+  float calcVoltageDropFilter(float current, float freq, float inputVoltage, float tapOff, float filter);
+
+  /*!
+   * \brief Функция вычисления индуктивности двигателя по полному сопротивлению фаз двигателя
+   * \param resist сопротивление
+   * \return
+   */
+  float calcInductMotorFromResistPhase(float resist);
+
+  /*!
+   * \brief Функция вычисления полного сопротивления фаз двигателя по индуктивности
+   * \param induct
+   * \return
+   */
+  float calcResistPhaseMotorFromInduct(float induct);
+
+  /*!
    * \brief calcVoltageImbalanceIn
    */
   void calcVoltageImbalanceIn();

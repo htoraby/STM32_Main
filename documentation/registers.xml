@@ -8822,6 +8822,62 @@
 	</param>
 	<param>
 		<id>695</id>
+		<name>CCS_FILTER_INDUCTANCE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_INDUNCTANCE</physic>
+		<min>0.0</min>
+		<max>100.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Индуктивность фильтра</text>
+		<short_text>Индуктивность фильтра</short_text>
+		<form>6.4 Станция управления</form>
+		<unit>INDUNCTANCE_MH</unit>
+		<unit_lcd>INDUNCTANCE_MH</unit_lcd>
+		<format>XXX_XX</format>
+	</param>
+	<param>
+		<id>696</id>
+		<name>CCS_MOTOR_INDUCTANCE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_INDUNCTANCE</physic>
+		<min>0.0</min>
+		<max>100.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Индуктивность</text>
+		<short_text>Индуктивность</short_text>
+		<form>3.1 Двигатель</form>
+		<unit>INDUNCTANCE_MH</unit>
+		<unit_lcd>INDUNCTANCE_MH</unit_lcd>
+		<format>ХХХ_ХХ</format>
+		<comment>Индуктивность</comment>
+	</param>
+	<param>
+		<id>697</id>
+		<name>CCS_MOTOR_INDUCTANCE_RESIST_PHASE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_RESISTANCE</physic>
+		<min>0.0</min>
+		<max>100.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Полн.инд.сопротивления фазы</text>
+		<short_text>Полн.инд.сопр.фазы</short_text>
+		<form>3.1 Двигателя</form>
+		<unit>RESISTANCE_OM</unit>
+		<unit_lcd>RESISTANCE_OM</unit_lcd>
+		<format>XXXXXX</format>
+		<comment>Полн.инд.сопр.фазы</comment>
+	</param>
+	<param>
+		<id>698</id>
 		<name>CCS_END</name>
 		<valid>VALIDITY_OK</valid>
 		<comment>Последний параметр</comment>

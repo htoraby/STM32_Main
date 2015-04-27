@@ -6952,5 +6952,35 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].min                           = 0;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].max                           = 0;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].def                           = 0;
+  // 
+  parameters_[CCS_FILTER_INDUCTANCE - CCS_BEGIN].id                              = CCS_FILTER_INDUCTANCE;
+  parameters_[CCS_FILTER_INDUCTANCE - CCS_BEGIN].access                          = ACCESS_OPERATOR;
+  parameters_[CCS_FILTER_INDUCTANCE - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_FILTER_INDUCTANCE - CCS_BEGIN].physic                          = PHYSIC_INDUNCTANCE;
+  parameters_[CCS_FILTER_INDUCTANCE - CCS_BEGIN].validity                        = VALIDITY_OK;
+  parameters_[CCS_FILTER_INDUCTANCE - CCS_BEGIN].value.float_t                   = 0.0;
+  parameters_[CCS_FILTER_INDUCTANCE - CCS_BEGIN].min                             = 0.0;
+  parameters_[CCS_FILTER_INDUCTANCE - CCS_BEGIN].max                             = 100.0;
+  parameters_[CCS_FILTER_INDUCTANCE - CCS_BEGIN].def                             = 0.0;
+  // Индуктивность
+  parameters_[CCS_MOTOR_INDUCTANCE - CCS_BEGIN].id                               = CCS_MOTOR_INDUCTANCE;
+  parameters_[CCS_MOTOR_INDUCTANCE - CCS_BEGIN].access                           = ACCESS_OPERATOR;
+  parameters_[CCS_MOTOR_INDUCTANCE - CCS_BEGIN].operation                        = OPERATION_WRITE;
+  parameters_[CCS_MOTOR_INDUCTANCE - CCS_BEGIN].physic                           = PHYSIC_INDUNCTANCE;
+  parameters_[CCS_MOTOR_INDUCTANCE - CCS_BEGIN].validity                         = VALIDITY_OK;
+  parameters_[CCS_MOTOR_INDUCTANCE - CCS_BEGIN].value.float_t                    = 0.0;
+  parameters_[CCS_MOTOR_INDUCTANCE - CCS_BEGIN].min                              = 0.0;
+  parameters_[CCS_MOTOR_INDUCTANCE - CCS_BEGIN].max                              = 100.0;
+  parameters_[CCS_MOTOR_INDUCTANCE - CCS_BEGIN].def                              = 0.0;
+  // Полн.инд.сопр.фазы
+  parameters_[CCS_MOTOR_INDUCTANCE_RESIST_PHASE - CCS_BEGIN].id                  = CCS_MOTOR_INDUCTANCE_RESIST_PHASE;
+  parameters_[CCS_MOTOR_INDUCTANCE_RESIST_PHASE - CCS_BEGIN].access              = ACCESS_OPERATOR;
+  parameters_[CCS_MOTOR_INDUCTANCE_RESIST_PHASE - CCS_BEGIN].operation           = OPERATION_WRITE;
+  parameters_[CCS_MOTOR_INDUCTANCE_RESIST_PHASE - CCS_BEGIN].physic              = PHYSIC_RESISTANCE;
+  parameters_[CCS_MOTOR_INDUCTANCE_RESIST_PHASE - CCS_BEGIN].validity            = VALIDITY_OK;
+  parameters_[CCS_MOTOR_INDUCTANCE_RESIST_PHASE - CCS_BEGIN].value.float_t       = 0.0;
+  parameters_[CCS_MOTOR_INDUCTANCE_RESIST_PHASE - CCS_BEGIN].min                 = 0.0;
+  parameters_[CCS_MOTOR_INDUCTANCE_RESIST_PHASE - CCS_BEGIN].max                 = 100.0;
+  parameters_[CCS_MOTOR_INDUCTANCE_RESIST_PHASE - CCS_BEGIN].def                 = 0.0;
 }
 
