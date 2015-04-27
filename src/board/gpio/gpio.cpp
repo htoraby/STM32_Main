@@ -175,14 +175,14 @@ void offLcd()
   HAL_GPIO_WritePin(LCD_ON_PIN, GPIO_PIN_RESET);
 }
 
-void onPower()
+void onPowerAm335x()
 {
   clrPinOut(POWER_BUTTON_PIN);
   HAL_Delay(200);
   setPinOut(POWER_BUTTON_PIN);
 }
 
-void offPower()
+void offPowerAm335x()
 {
   clrPinOut(POWER_BUTTON_PIN);
   HAL_Delay(10000);

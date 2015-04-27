@@ -716,15 +716,14 @@ void Ccs::calcRegimeChangeFreqPeriodOneStep()
 void Ccs::controlPower()
 {
   if (!isPowerGood()) {
-    if (powerOffTimeout_ == (TIMEOUT_POWER_OFF - 100)) {
-      setNewValue(CCS_CMD_AM335_POWER_OFF, 1);
-      setNewValue(CCS_CMD_AM335_POWER_OFF, 0);
+    if (powerOffTimeout_ == (TIMEOUT_POWER_OFF - 1000)) {
+      setNewValue(CCS_CMD_AM335_POWER_OFF, 1.0);
+      offLcd();
     }
 
-    if ((powerOffTimeout_ == 100) || !isUpsGood()) {
+    if ((powerOffTimeout_ == 1000) || !isUpsGood()) {
       if (!powerOffFlag_) {
-        setNewValue(CCS_CMD_AM335_POWER_OFF, 1);
-        setNewValue(CCS_CMD_AM335_POWER_OFF, 0);
+        setNewValue(CCS_CMD_AM335_POWER_OFF, 1.0);
 
         // Запись в журнал "Отключение питания"
         logEvent.add(PowerCode, AutoType, PowerOffId);
@@ -740,6 +739,15 @@ void Ccs::controlPower()
       powerOffTimeout_--;
     }
   } else {
+    setNewValue(CCS_CMD_AM335_POWER_OFF, 0.0);
+
+    if (powerOffTimeout_ <= (TIMEOUT_POWER_OFF - 1000)) {
+      onLcd();
+      offPowerAm335x();
+      osDelay(200);
+      onPowerAm335x();
+    }
+
     powerOffFlag_ = false;
     powerOffTimeout_ = TIMEOUT_POWER_OFF;
   }

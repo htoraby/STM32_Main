@@ -185,14 +185,22 @@ void turnPowerBattery(bool on);
 
 /*!
  * \brief Включение LCD
- *
 */
 void onLcd();
 
 /*!
  * \brief Выключение LCD
- *
 */
 void offLcd();
+
+/*!
+ * \brief Включение модуля AM335x
+*/
+void onPowerAm335x();
+
+/*!
+ * \brief Выключение модуля AM335x
+*/
+void offPowerAm335x();
 
 #endif // GPIO_H
