@@ -645,6 +645,6 @@ enum enVsdType {
   VSD_TYPE_ETALON                           //!< ЧРП Эталон
 };
 
-
+#define NUM_PI 3.14159265358979323846
 
 #endif /* DEFINE_H_ */

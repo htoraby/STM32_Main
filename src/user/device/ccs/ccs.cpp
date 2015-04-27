@@ -654,23 +654,32 @@ void Ccs::calcMotorCurrentImbalance()
   setNewValue(CCS_MOTOR_CURRENT_IMBALANCE, imbalance);
 }
 
-float Ccs::calcVoltageDropCable(float current)
+float Ccs::calcVoltageDropCable(float lenght, float cross, float current)
 {
   if (parameters.get(CCS_RGM_HEAT_CABLE_MODE) != Regime::OffAction) {
-    float lenght = 2 * parameters.get(CCS_TRANS_CABLE_LENGHT) / 1000;   // Длина петли кабеля в кМ
+    lenght = 2 * lenght / 1000;                                         // Длина петли кабеля в кМ
     float R80 = parameters.get(CCS_RGM_HEAT_CABLE_RESISTANCE_80);       // Сопротивление кабеля при 80°С
-    float Inom = parameters.get(VSD_MOTOR_CURRENT);                     // Номинальный ток ПЭД
-    float dUcl = R80 * lenght * Inom;
+    current = parameters.get(VSD_MOTOR_CURRENT);                        // Номинальный ток ПЭД
+    float dUcl = R80 * lenght * current;
     return dUcl;
   }
   else {
-    float lenght = parameters.get(CCS_TRANS_CABLE_LENGHT);              // Длина кабеля
-    float cross = parameters.get(CCS_TRANS_CABLE_CROSS);                // Cечение кабеля
     if (!cross)
       cross = 16;
     float dUcl = 38.7 * (current * lenght) / (cross * 1000);            // Падение напряжения на кабельной линии
     return dUcl;
   }
+}
+
+float Ccs::calcVoltageDropFilter(float current, float freq, float inputVoltage, float tapOff, float filter)
+{
+  if (!freq)
+    freq = parameters.get(VSD_MOTOR_FREQUENCY);
+  if (!inputVoltage)
+    inputVoltage = 380.0;
+  float trans = parameters.get(CCS_TRANS_VOLTAGE_TAP_OFF) / inputVoltage;
+  float dUf = 2 * NUM_PI * filter * freq * current * trans / 1000.0;
+  return dUf;
 }
 
 void Ccs::calcMotorCurrentPhase(uint16_t vsdOutCurrent, uint16_t coefCorrect, uint16_t motorCurrent)
