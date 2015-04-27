@@ -682,6 +682,20 @@ float Ccs::calcVoltageDropFilter(float current, float freq, float inputVoltage, 
   return dUf;
 }
 
+float Ccs::calcResistPhaseMotorFromInduct(float induct)
+{
+  float freq = parameters.get(VSD_MOTOR_FREQUENCY);
+  float resist = 2 * NUM_PI * induct * freq / 1000;
+  return resist;
+}
+
+float Ccs::calcInductMotorFromResistPhase(float resist)
+{
+  float freq = parameters.get(VSD_MOTOR_FREQUENCY);
+  float induct = resist * 1000 / (2 * NUM_PI * freq);
+  return induct;
+}
+
 void Ccs::calcMotorCurrentPhase(uint16_t vsdOutCurrent, uint16_t coefCorrect, uint16_t motorCurrent)
 {
   float current;

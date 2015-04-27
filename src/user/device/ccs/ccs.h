@@ -10,7 +10,6 @@
 
 #include "device.h"
 #include "log.h"
-#include "math.h"
 
 class Ccs: public Device
 {
@@ -255,6 +254,19 @@ public:
    */
   float calcVoltageDropFilter(float current, float freq, float inputVoltage, float tapOff, float filter);
 
+  /*!
+   * \brief Функция вычисления индуктивности двигателя по полному сопротивлению фаз двигателя
+   * \param resist сопротивление
+   * \return
+   */
+  float calcInductMotorFromResistPhase(float resist);
+
+  /*!
+   * \brief Функция вычисления полного сопротивления фаз двигателя по индуктивности
+   * \param induct
+   * \return
+   */
+  float calcResistPhaseMotorFromInduct(float induct);
 
   /*!
    * \brief calcVoltageImbalanceIn
