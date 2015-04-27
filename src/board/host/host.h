@@ -45,6 +45,11 @@ void hostInit();
 osSemaphoreId getHostSemaphore();
 
 /*!
+ * \brief Включение драйвера работы с контроллером визуализации
+ */
+void hostEnable();
+
+/*!
  \brief Чтение данных из буфера приёма от контроллера визуализации
 
  \param data - указатель на буфер

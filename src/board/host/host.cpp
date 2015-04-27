@@ -2,7 +2,7 @@
 #include "gpio.h"
 #include "string.h"
 
-#define TIMEOUT_RX 100
+#define TIMEOUT_RX 900
 
 SPI_HandleTypeDef hspi4;
 DMA_HandleTypeDef hdma_spi4_tx;
@@ -23,8 +23,6 @@ static void spiDmaTransmitCplt(DMA_HandleTypeDef *hdma);
 void hostInit()
 {
   memset(&statHost, 0, sizeof(statHost));
-
-  HAL_SPI_DeInit(&hspi4);
 
   hspi4.Instance = SPI4;
   hspi4.Init.Mode = SPI_MODE_SLAVE;
@@ -63,9 +61,6 @@ void hostInit()
   HAL_NVIC_SetPriority(SPI4_IRQn, HOST_IRQ_PREPRIO, 0);
   HAL_NVIC_EnableIRQ(SPI4_IRQn);
 
-  __HAL_SPI_ENABLE_IT(&hspi4, (SPI_IT_RXNE | SPI_IT_ERR));
-  __HAL_SPI_ENABLE(&hspi4);
-
   hostSemaphoreId = osSemaphoreCreate(NULL, 1);
   osSemaphoreWait(hostSemaphoreId, 0);
 
@@ -77,6 +72,14 @@ void hostInit()
 osSemaphoreId getHostSemaphore()
 {
   return hostSemaphoreId;
+}
+
+void hostEnable()
+{
+  osDelay(10);
+  __HAL_SPI_ENABLE_IT(&hspi4, (SPI_IT_RXNE | SPI_IT_ERR));
+  if((hspi4.Instance->CR1 &SPI_CR1_SPE) != SPI_CR1_SPE)
+    __HAL_SPI_ENABLE(&hspi4);
 }
 
 static void hostTimer(const void * argument)
@@ -96,8 +99,9 @@ static void hostTimer(const void * argument)
       rxTimeout--;
     } else {
       rxTimeout = TIMEOUT_RX;
-      __HAL_SPI_DISABLE(&hspi4);
-      __HAL_SPI_ENABLE(&hspi4);
+
+      HAL_SPI_Init(&hspi4);
+      hostEnable();
     }
   }
 }

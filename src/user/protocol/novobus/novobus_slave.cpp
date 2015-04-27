@@ -41,6 +41,7 @@ void NovobusSlave::init()
 void NovobusSlave::task()
 {
   osSemaphoreId semaphoreId = getHostSemaphore();
+  hostEnable();
 
   while(1) {
     // Проверка семафора - если он свободен, то получен покет от хоста
