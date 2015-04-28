@@ -259,14 +259,19 @@ public:
    * \param resist сопротивление
    * \return
    */
-  float calcInductMotorFromResistPhase(float resist);
+  float calcMotorInductFromResistPhase(float resist);
 
   /*!
    * \brief Функция вычисления полного сопротивления фаз двигателя по индуктивности
    * \param induct
    * \return
    */
-  float calcResistPhaseMotorFromInduct(float induct);
+  float calcMotorResistPhaseFromInduct(float induct);
+
+  /*!
+   * \brief Функция вычисляет и сохраняет в регистр общую индуктивность системы
+   */
+  void calcSystemInduct();
 
   /*!
    * \brief calcVoltageImbalanceIn

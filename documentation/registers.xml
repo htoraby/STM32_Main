@@ -8878,6 +8878,64 @@
 	</param>
 	<param>
 		<id>698</id>
+		<name>CCS_TRANS_VOLTAGE_SHORT_CIRCUIT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>0.0</min>
+		<max>100.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение короткого замыкания ТМПН</text>
+		<short_text>U КЗ ТМПН</short_text>
+		<form>3.3 ТМПН</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXXXX</format>
+		<comment>Напряжение короткого замыкания ТМПН</comment>
+	</param>
+	<param>
+		<id>699</id>
+		<name>CCS_TRANS_NOMINAL_FREQUENCY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>50.0</min>
+		<max>60.0</max>
+		<def>50.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>50.0</value>
+		<text>Частота питающей сети</text>
+		<short_text>Входная частота</short_text>
+		<form>3.3 ТМПН</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXXXXX</format>
+		<values>0-50;1-60</values>
+		<comment>Частота питающей сети</comment>
+	</param>
+	<param>
+		<id>700</id>
+		<name>CCS_SYSTEM_INDUCTANCE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_INDUNCTANCE</physic>
+		<min>0.0</min>
+		<max>100.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>INDUNCTANCE_MH</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<comment>Индуктивность системы</comment>
+	</param>
+	<param>
+		<id>701</id>
 		<name>CCS_END</name>
 		<valid>VALIDITY_OK</valid>
 		<comment>Последний параметр</comment>

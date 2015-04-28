@@ -186,16 +186,8 @@ public:
    */
   int setMaxFrequency(float value);
 
-  /*!
-   * \brief Метод задания типа двигателя
-   * \param TypeMotor - Тип двигателя
-   * \return Код результата операции
-   */
   int setMotorType(float value);
 
-  /*!
-   * \brief getMotorType
-   */
   void calcMotorType();
 
   /*!

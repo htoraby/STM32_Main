@@ -49,10 +49,12 @@ public:
 
   /*!
    * \brief Метод задания типа двигателя
-   * \param TypeMotor - Тип двигателя
-   * \return Код результата операции
+   * функция записывает в регистр код типа двигателя, и для реальных устройств
+   * в само устройство
+   * \param value Тип двигателя
+   * \return
    */
-  int setMotorType(float TypeMotor);
+  int setMotorType(float value);
 
   /*!
    * \brief Метод задания направления вращения
@@ -266,8 +268,8 @@ public:
   virtual int onRegimePickup() = 0;
 
   /*!
-   * \brief Задание в массив параметров ЧРП номинальной частоты двигателя
-   * \param freq Задаваемая номинальная частота двигателя
+   * \brief Задание в регистр номинальной частоты двигатля
+   * \param freq Задаваемая частота
    * \return
    */
   int setNominalFreq(float freq);

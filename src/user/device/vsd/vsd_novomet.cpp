@@ -2424,9 +2424,9 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
     if (value < getValue(VSD_FREQUENCY))
       setFrequency(value);
     return setMaxFrequency(value);
-  case  VSD_TEMP_SPEEDUP:
+  case VSD_TEMP_SPEEDUP:
     return setTempSpeedUp(value);
-  case  VSD_TEMP_SPEEDDOWN:
+  case VSD_TEMP_SPEEDDOWN:
     return setTempSpeedDown(value);
   default:
     int result = setValue(id, value);
@@ -2603,11 +2603,11 @@ int VsdNovomet::setMaxFrequency(float value)
 
 int VsdNovomet::setMotorType(float value)
 {
-  if (Vsd::setMotorType(value)) {           // Записываем тип двигателя в массив
+  if (Vsd::setMotorType(value)) {           // Записываем тип двигателя в регистр
     logDebug.add(WarningMsg, "setTypeMotor");
     return RETURN_ERROR;                    // Если не записали возвращаем ошибку
   }
-  else {                                    // Если записали
+  else {                                    // Записываем тип двигателя в устройство
     if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) {
       writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_ASYN_MOTOR);
     }

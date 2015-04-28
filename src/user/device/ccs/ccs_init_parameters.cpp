@@ -6982,5 +6982,35 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_INDUCTANCE_RESIST_PHASE - CCS_BEGIN].min                 = 0.0;
   parameters_[CCS_MOTOR_INDUCTANCE_RESIST_PHASE - CCS_BEGIN].max                 = 100.0;
   parameters_[CCS_MOTOR_INDUCTANCE_RESIST_PHASE - CCS_BEGIN].def                 = 0.0;
+  // Напряжение короткого замыкания ТМПН
+  parameters_[CCS_TRANS_VOLTAGE_SHORT_CIRCUIT - CCS_BEGIN].id                    = CCS_TRANS_VOLTAGE_SHORT_CIRCUIT;
+  parameters_[CCS_TRANS_VOLTAGE_SHORT_CIRCUIT - CCS_BEGIN].access                = ACCESS_OPERATOR;
+  parameters_[CCS_TRANS_VOLTAGE_SHORT_CIRCUIT - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_TRANS_VOLTAGE_SHORT_CIRCUIT - CCS_BEGIN].physic                = PHYSIC_PERCENT;
+  parameters_[CCS_TRANS_VOLTAGE_SHORT_CIRCUIT - CCS_BEGIN].validity              = VALIDITY_OK;
+  parameters_[CCS_TRANS_VOLTAGE_SHORT_CIRCUIT - CCS_BEGIN].value.float_t         = 0.0;
+  parameters_[CCS_TRANS_VOLTAGE_SHORT_CIRCUIT - CCS_BEGIN].min                   = 0.0;
+  parameters_[CCS_TRANS_VOLTAGE_SHORT_CIRCUIT - CCS_BEGIN].max                   = 100.0;
+  parameters_[CCS_TRANS_VOLTAGE_SHORT_CIRCUIT - CCS_BEGIN].def                   = 0.0;
+  // Частота питающей сети
+  parameters_[CCS_TRANS_NOMINAL_FREQUENCY - CCS_BEGIN].id                        = CCS_TRANS_NOMINAL_FREQUENCY;
+  parameters_[CCS_TRANS_NOMINAL_FREQUENCY - CCS_BEGIN].access                    = ACCESS_OPERATOR;
+  parameters_[CCS_TRANS_NOMINAL_FREQUENCY - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_TRANS_NOMINAL_FREQUENCY - CCS_BEGIN].physic                    = PHYSIC_FREQUENCY;
+  parameters_[CCS_TRANS_NOMINAL_FREQUENCY - CCS_BEGIN].validity                  = VALIDITY_OK;
+  parameters_[CCS_TRANS_NOMINAL_FREQUENCY - CCS_BEGIN].value.float_t             = 50.0;
+  parameters_[CCS_TRANS_NOMINAL_FREQUENCY - CCS_BEGIN].min                       = 50.0;
+  parameters_[CCS_TRANS_NOMINAL_FREQUENCY - CCS_BEGIN].max                       = 60.0;
+  parameters_[CCS_TRANS_NOMINAL_FREQUENCY - CCS_BEGIN].def                       = 50.0;
+  // Индуктивность системы
+  parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].id                              = CCS_SYSTEM_INDUCTANCE;
+  parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].access                          = ACCESS_OPERATOR;
+  parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].physic                          = PHYSIC_INDUNCTANCE;
+  parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].validity                        = VALIDITY_OK;
+  parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].value.float_t                   = 0.0;
+  parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].min                             = 0.0;
+  parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].max                             = 100.0;
+  parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].def                             = 0.0;
 }
 

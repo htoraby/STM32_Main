@@ -10,6 +10,7 @@
 #include "user_main.h"
 #include "protection_main.h"
 #include "regime_main.h"
+#include "math.h"
 
 #define TIMEOUT_POWER_OFF 6000 //!< 1 минута на отключение питания ИБП
 
@@ -629,6 +630,31 @@ uint8_t Ccs::setNewValue(uint16_t id, float value)
   case CCS_CMD_LOG_COPY:
     logStartSave();
     break;
+  case CCS_COEF_TRANSFORMATION:
+    calcSystemInduct();
+    break;
+  case CCS_TRANS_VOLTAGE_SHORT_CIRCUIT:
+    calcSystemInduct();
+    break;
+  case CCS_TRANS_NOMINAL_VOLTAGE:
+    calcSystemInduct();
+    break;
+  case CCS_TRANS_NOMINAL_CURRENT:
+    calcSystemInduct();
+    break;
+  case CCS_TRANS_NOMINAL_FREQUENCY:
+    calcSystemInduct();
+    break;
+  case CCS_MOTOR_INDUCTANCE:
+    calcSystemInduct();
+    break;
+  case CCS_MOTOR_INDUCTANCE_RESIST_PHASE:
+    parameters.set(CCS_MOTOR_INDUCTANCE, calcMotorInductFromResistPhase(parameters.get(CCS_MOTOR_INDUCTANCE_RESIST_PHASE)));
+    calcSystemInduct();
+    break;
+  case CCS_FILTER_INDUCTANCE:
+    calcSystemInduct();
+    break;
   default:
     break;
   }
@@ -682,14 +708,27 @@ float Ccs::calcVoltageDropFilter(float current, float freq, float inputVoltage, 
   return dUf;
 }
 
-float Ccs::calcResistPhaseMotorFromInduct(float induct)
+float Ccs::calcMotorResistPhaseFromInduct(float induct)
 {
   float freq = parameters.get(VSD_MOTOR_FREQUENCY);
   float resist = 2 * NUM_PI * induct * freq / 1000;
   return resist;
 }
 
-float Ccs::calcInductMotorFromResistPhase(float resist)
+void Ccs::calcSystemInduct()
+{
+  float coefTrans2 = pow(parameters.get(CCS_COEF_TRANSFORMATION), 2);
+  float inductTrans = (parameters.get(CCS_TRANS_VOLTAGE_SHORT_CIRCUIT) * parameters.get(CCS_TRANS_NOMINAL_VOLTAGE) * 0.01) /
+                      (parameters.get(CCS_TRANS_NOMINAL_CURRENT) * parameters.get(CCS_TRANS_NOMINAL_FREQUENCY) * 2 * NUM_PI);
+  float inductCable = ((parameters.get(CCS_TRANS_CABLE_LENGHT) * 1.5) / coefTrans2) / 1000000;
+  float inductMotor = (parameters.get(CCS_MOTOR_INDUCTANCE) / coefTrans2) / 1000;
+  float inductFilter = parameters.get(CCS_FILTER_INDUCTANCE) / 1000;
+  float induct = (inductTrans + inductCable + inductMotor + inductFilter) * 1000;
+  parameters.set(CCS_SYSTEM_INDUCTANCE, induct);
+  parameters.set(VSD_LOUT, parameters.get(CCS_SYSTEM_INDUCTANCE));
+}
+
+float Ccs::calcMotorInductFromResistPhase(float resist)
 {
   float freq = parameters.get(VSD_MOTOR_FREQUENCY);
   float induct = resist * 1000 / (2 * NUM_PI * freq);

@@ -701,7 +701,10 @@ enum enID
   CCS_FILTER_INDUCTANCE = 695,                               //!< 
   CCS_MOTOR_INDUCTANCE = 696,                                //!< Индуктивность
   CCS_MOTOR_INDUCTANCE_RESIST_PHASE = 697,                   //!< Полн.инд.сопр.фазы
-  CCS_END = 698,                                             //!< Последний параметр
+  CCS_TRANS_VOLTAGE_SHORT_CIRCUIT = 698,                     //!< Напряжение короткого замыкания ТМПН
+  CCS_TRANS_NOMINAL_FREQUENCY = 699,                         //!< Частота питающей сети
+  CCS_SYSTEM_INDUCTANCE = 700,                               //!< Индуктивность системы
+  CCS_END = 701,                                             //!< Последний параметр
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF

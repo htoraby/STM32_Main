@@ -62,9 +62,9 @@ float Vsd::getNominalFreq()
   return getValue(VSD_MOTOR_FREQUENCY);
 }
 
-int Vsd::setMotorType(float TypeMotor)
+int Vsd::setMotorType(float value)
 {
-  return setValue(VSD_MOTOR_TYPE, TypeMotor);
+  return setValue(VSD_MOTOR_TYPE, value);
 }
 
 int Vsd::setRotation(float value)
