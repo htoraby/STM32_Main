@@ -314,11 +314,13 @@ public:
 
   /*!
    * \brief Метод задания направления вращения
-   * \param value - направление вращения 1 прямое(правое),
-   * 2 обратное(левое)
+   * \param value - направление вращения 0 прямое(правое),
+   * 1 обратное(левое)
    * \return
    */
   int setRotation(float value);
+
+  int setSwitchingFrequency(float value);
 
   /*!
    * \brief Проверка на "необходимость" работы с параметром

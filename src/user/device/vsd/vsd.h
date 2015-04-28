@@ -212,11 +212,11 @@ public:
   int setSpeedMotor(double SpeedMotor);
 
   /*!
-   * \brief Метод задания частоты коммутации ШИМ
-   * \param SwitchingFrequency
+   * \brief Функция задания частоты коммутации (Частота ШИМ)
+   * \param value задаваемая частота коммутации (Частота ШИМ)
    * \return Код результата операции
    */
-  int setSwitchingFrequency(double SwitchingFrequency);
+  int setSwitchingFrequency(float value);
 
   /*!
    * \brief Метод задания момента

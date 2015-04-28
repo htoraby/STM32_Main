@@ -2705,6 +2705,17 @@ int VsdNovomet::setRotation(float value)
   }
 }
 
+int VsdNovomet::setSwitchingFrequency(float value)
+{
+  if(Vsd::setSwitchingFrequency(value)){
+    return RETURN_ERROR;
+  }
+  else {
+    writeToDevice(VSD_SWITCHING_FREQUENCY, value);
+    return RETURN_OK;
+  }
+}
+
 void VsdNovomet::calcParameters(uint16_t id)
 {
   switch (id) {
