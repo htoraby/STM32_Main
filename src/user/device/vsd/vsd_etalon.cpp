@@ -27,7 +27,6 @@ void VsdEtalon::initModbusParameters()
                           0,
                           0
                          };
-
   modbusParameters_[1] = {// Текущая выходная активная мощность ПЧ
                           VSD_POWER_ACTIVE, // Уникальный идентификатор параметра
                           0x4000,           // Адрес регистра в устройстве
@@ -47,7 +46,7 @@ void VsdEtalon::initModbusParameters()
                          };
   modbusParameters_[2] = {// Выходной ток ПЧ по фазе A. (амплитудное значение)
                           VSD_CURRENT_OUT_PHASE_1, // Уникальный идентификатор параметра
-                          0x4001,           // Адрес регистра в устройстве
+                          0x4001,            // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
                           PHYSIC_CURRENT,   // Физическая величина параметра
                           CURRENT_A,        // Единицы измерения параметра
@@ -130,7 +129,6 @@ void VsdEtalon::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
                          };
-
   modbusParameters_[7] = {// Температура2 IGBT модуля
                           VSD_CONTROL_TEMPERATURE_1,
                           0x400B,           // Адрес регистра в устройстве
@@ -149,7 +147,7 @@ void VsdEtalon::initModbusParameters()
                           0                 // Значение
                          };
   modbusParameters_[8] = {// Температура1 фильтра
-                          VSD_RADIATOR_TEMPERATURE,
+                          VSD_RADIATOR_TEMPERATURE_1,
                           0x400C,           // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
                           PHYSIC_TEMPERATURE,
@@ -267,6 +265,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
+
   modbusParameters_[15] = {// Температура1 фильтра
                            VSD_RADIATOR_TEMPERATURE_1,
                            0x401C,           // Адрес регистра в устройстве
@@ -284,6 +283,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
+  }/*
   modbusParameters_[16] = {// Текущее значение частоты
                            VSD_FREQUENCY_NOW,// Уникальный идентификатор параметра
                            0x401D,           // Адрес регистра в устройстве
@@ -352,9 +352,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  /*
-  modbusParameters_[24] = {// Коэффициент U по подхвату
-                           PICKUP_KU,        // Уникальный идентификатор параметра
+  modbusParameters_[20] = {// Коэффициент U по подхвату
+                           VSD_PICKUP_KU,        // Уникальный идентификатор параметра
                            0x4045,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_PERCENT,      // Физическая величина параметра
@@ -370,8 +369,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[25] = {// Контроль турбинного вращения {"Подхв.": 2, "Вкл": 1, "Откл": 0}
-                           ENGINE_DECEL_MODE,// Уникальный идентификатор параметра
+  modbusParameters_[21] = {// Контроль турбинного вращения {"Подхв.": 2, "Вкл": 1, "Откл": 0}
+                           VSD_ENGINE_DECEL_MODE,// Уникальный идентификатор параметра
                            0x404A,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_NUMERIC,      // Физическая величина параметра
@@ -387,8 +386,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[26] = {// Коэф.МТЗ мотор (нужен для ВД)
-                           BLDC_K_MTZ,       // Уникальный идентификатор параметра
+  modbusParameters_[22] = {// Коэф.МТЗ мотор (нужен для ВД)
+                           VSD_BLDC_K_MTZ,       // Уникальный идентификатор параметра
                            0x404E,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_NUMERIC,      // Физическая величина параметра
@@ -404,41 +403,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[27] = {// Задержка контроля недогрузки для дегазации
-                           CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY,       // Уникальный идентификатор параметра
-                           0x404E,           // Адрес регистра в устройстве
-                           OPERATION_WRITE,  // Операции с параметром
-                           PHYSIC_TIME,      // Физическая величина параметра
-                           TIME_SS,          // Единицы измерения параметра
-                           TYPE_DATA_INT16,  // Тип данных
-                           1,                // Коэффициент преобразования параметра
-                           0,                // Минимальное значение параметра
-                           600,              // Максимально значение параметра
-                           60,               // Считываемое значение "по умолчанию"
-                           RARELY,           // Частота опроса параметра
-                           RARELY,           // Количество запросов к параметру
-                           OPERATION_ERROR,  // Команда
-                           VALIDITY_ERROR,   // Поле состояния параметра
-                           0                 // Значение
-                          };
-  modbusParameters_[28] = {// Шаг изменения напряжения за 1 мин при оптимизации
-                           OPTIMIZATION_STEP,// Уникальный идентификатор параметра
-                           0x4061,           // Адрес регистра в устройстве
-                           OPERATION_WRITE,  // Операции с параметром
-                           PHYSIC_VOLTAGE,   // Физическая величина параметра
-                           VOLTAGE_V,        // Единицы измерения параметра
-                           TYPE_DATA_INT16,  // Тип данных
-                           1,                // Коэффициент преобразования параметра
-                           1,                // Минимальное значение параметра
-                           10,               // Максимально значение параметра
-                           2,                // Считываемое значение "по умолчанию"
-                           RARELY,           // Частота опроса параметра
-                           RARELY,           // Количество запросов к параметру
-                           OPERATION_ERROR,  // Команда
-                           VALIDITY_ERROR,   // Поле состояния параметра
-                           0                 // Значение
-                          };
-  modbusParameters_[29] = {// Коэффициент коррекции тока Ia
+  modbusParameters_[23] = {// Коэффициент коррекции тока Ia
                            CCS_COEF_OUT_CURRENT_1,// Уникальный идентификатор параметра
                            0x4082,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -455,7 +420,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[30] = {// Коэффициент коррекции тока Ib
+  modbusParameters_[24] = {// Коэффициент коррекции тока Ib
                            CCS_COEF_OUT_CURRENT_2,// Уникальный идентификатор параметра
                            0x4083,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -472,7 +437,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[31] = {// Коэффициент коррекции тока Ic
+  modbusParameters_[25] = {// Коэффициент коррекции тока Ic
                            CCS_COEF_OUT_CURRENT_3,// Уникальный идентификатор параметра
                            0x4084,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -489,7 +454,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[31] = {// Коэффициент коррекции тока Ic
+  modbusParameters_[26] = {// Коэффициент коррекции тока Ic
                            CCS_COEF_OUT_CURRENT_3,// Уникальный идентификатор параметра
                            0x4084,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -506,7 +471,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[32] = {// Коэффициент коррекции напряжения Uab
+  modbusParameters_[27] = {// Коэффициент коррекции напряжения Uab
                            CCS_COEF_VOLTAGE_IN_AB,// Уникальный идентификатор параметра
                            0x4086,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -523,7 +488,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[33] = {// Коэффициент коррекции напряжения Ubc
+  modbusParameters_[28] = {// Коэффициент коррекции напряжения Ubc
                            CCS_COEF_VOLTAGE_IN_BC,// Уникальный идентификатор параметра
                            0x4087,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -540,7 +505,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[34] = {// Коэффициент коррекции напряжения Uca
+  modbusParameters_[29] = {// Коэффициент коррекции напряжения Uca
                            CCS_COEF_VOLTAGE_IN_CA,// Уникальный идентификатор параметра
                            0x4088,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -557,7 +522,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[35] = {// Коэффициент коррекции напряжения Udc
+  modbusParameters_[30] = {// Коэффициент коррекции напряжения Udc
                            CCS_COEF_VOLTAGE_IN_DC,// Уникальный идентификатор параметра
                            0x4097,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -574,7 +539,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[36] = {// Коэффициент коррекции тока Idc
+  modbusParameters_[31] = {// Коэффициент коррекции тока Idc
                            CCS_COEF_CURRENT_IN_DC,// Уникальный идентификатор параметра
                            0x4098,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -591,7 +556,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[37] = {// Коэф. корр. показ.напряжения Uвых
+  modbusParameters_[32] = {// Коэф. корр. показ.напряжения Uвых
                            CCS_COEF_VOLTAGE_OUT_1,// Уникальный идентификатор параметра
                            0x4099,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -608,7 +573,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[38] = {// Коэффициент корр.напряжения Uвых
+  modbusParameters_[33] = {// Коэффициент корр.напряжения Uвых
                            CCS_COEF_VOLTAGE_OUT_2,// Уникальный идентификатор параметра
                            0x409A,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -625,8 +590,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[39] = {//       "Номинальные обороты ПЭД" ("BLDC Speed Rating") нужен для ВД
-                           BLDC_RPM_NOM,      // Уникальный идентификатор параметра
+  modbusParameters_[34] = {//       "Номинальные обороты ПЭД" ("VSD_BLDC Speed Rating") нужен для ВД
+                           VSD_MOTOR_SPEED,  // Уникальный идентификатор параметра
                            0x40BC,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_RPM,       // Физическая величина параметра
@@ -642,7 +607,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[40] = {// Номинальный(максимальный) ток двигателя
+  modbusParameters_[35] = {// Номинальный(максимальный) ток двигателя
                            VSD_MOTOR_CURRENT,// Уникальный идентификатор параметра
                            0x40BE,              // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -659,7 +624,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[41] = {// Номинальная мощность ПЭД
+  modbusParameters_[36] = {// Номинальная мощность ПЭД
                            VSD_MOTOR_POWER,  // Уникальный идентификатор параметра
                            0x40BF,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -676,7 +641,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[42] = {// Номинальная косинус фи ПЭД
+  modbusParameters_[37] = {// Номинальная косинус фи ПЭД
                            VSD_MOTOR_COS_PHI,// Уникальный идентификатор параметра
                            0x40C0,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -693,7 +658,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[43] = {// Напряжение отпайки ТМПН
+  modbusParameters_[38] = {// Напряжение отпайки ТМПН
                            CCS_TRANS_VOLTAGE_TAP_OFF,// Уникальный идентификатор параметра
                            0x40C0,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -710,8 +675,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[44] = {// Глубина подвеса ЭЦН
-                           SEM_DRAIN_DEPTH,  // Уникальный идентификатор параметра
+  modbusParameters_[39] = {// Глубина подвеса ЭЦН
+                           CCS_DRAIN_DEPTH,  // Уникальный идентификатор параметра
                            0x40C0,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_LENGHT,    // Физическая величина параметра
@@ -727,7 +692,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[45] = {// Количество пар полюсов
+  modbusParameters_[40] = {// Количество пар полюсов
                            VSD_MOTOR_POLES,// Уникальный идентификатор параметра
                            0x40C5,              // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -744,8 +709,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[46] = {// Быстрый останов
-                           ETALON_FAST_OFF,  // Уникальный идентификатор параметра
+  modbusParameters_[41] = {// Быстрый останов
+                           VSD_ETALON_FAST_OFF,  // Уникальный идентификатор параметра
                            0x40EC,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -761,8 +726,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[47] = {// Сброс аварии
-                           ETALON_UNLOCK,    // Уникальный идентификатор параметра
+  modbusParameters_[42] = {// Сброс аварии
+                           VSD_ETALON_UNLOCK,    // Уникальный идентификатор параметра
                            0x40ED,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -778,8 +743,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[48] = {// Запуск
-                           ETALON_ON,        // Уникальный идентификатор параметра
+  modbusParameters_[43] = {// Запуск
+                           VSD_ETALON_ON,        // Уникальный идентификатор параметра
                            0x40EE,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -795,8 +760,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[49] = {// Останов
-                           ETALON_OFF,        // Уникальный идентификатор параметра
+  modbusParameters_[44] = {// Останов
+                           VSD_ETALON_OFF,        // Уникальный идентификатор параметра
                            0x40EF,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -812,8 +777,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[50] = {// сброс уставок на дефалтные
-                           ETALON_RESET,     // Уникальный идентификатор параметра
+  modbusParameters_[45] = {// сброс уставок на дефалтные
+                           VSD_ETALON_RESET,     // Уникальный идентификатор параметра
                            0x40F3,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -829,8 +794,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[51] = {//       "Предельная рабочая частота\nЧРП" ("FMC Frequency Limit") для ВД
-                           BLDC_MAX_WORK_FREQ,     // Уникальный идентификатор параметра
+  modbusParameters_[46] = {//       "Предельная рабочая частота\nЧРП" ("FMC Frequency Limit") для ВД
+                           VSD_BLDC_MAX_WORK_FREQ,     // Уникальный идентификатор параметра
                            0x40FA,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_FREQUENCY, // Физическая величина параметра
@@ -846,8 +811,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[52] = {//Индуктивность обмотки ВПЭД для ВД
-                           BLDC_INDUCTION,     // Уникальный идентификатор параметра
+  modbusParameters_[47] = {//Индуктивность обмотки ВПЭД для ВД
+                           VSD_BLDC_INDUCTION,     // Уникальный идентификатор параметра
                            0x40FB,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_INDUNCTANCE, // Физическая величина параметра
@@ -863,8 +828,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[53] = {//Активное сопротивление обмотки ВПЭД для ВД
-                           BLDC_RESISTANCE,     // Уникальный идентификатор параметра
+  modbusParameters_[48] = {//Активное сопротивление обмотки ВПЭД для ВД
+                           VSD_BLDC_RESISTANCE,     // Уникальный идентификатор параметра
                            0x40FC,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_RESISTANCE, // Физическая величина параметра
@@ -880,8 +845,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[54] = {//Пусковая частота ВПЭД для ВД
-                           BLDC_START_FREQ,     // Уникальный идентификатор параметра
+  modbusParameters_[49] = {//Пусковая частота ВПЭД для ВД
+                           VSD_BLDC_START_FREQ,     // Уникальный идентификатор параметра
                            0x40FD,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_FREQUENCY, // Физическая величина параметра
@@ -897,8 +862,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[55] = {//Нижний предел регулирования для ВД
-                           BLDC_DOWN_REG,     // Уникальный идентификатор параметра
+  modbusParameters_[50] = {//Нижний предел регулирования для ВД
+                           VSD_BLDC_DOWN_REG,     // Уникальный идентификатор параметра
                            0x40FE,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_NUMERIC, // Физическая величина параметра
@@ -914,8 +879,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[56] = {//Верхний предел регулирования для ВД
-                           BLDC_UP_REG,     // Уникальный идентификатор параметра
+  modbusParameters_[51] = {//Верхний предел регулирования для ВД
+                           VSD_BLDC_UP_REG,     // Уникальный идентификатор параметра
                            0x40FF,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_NUMERIC, // Физическая величина параметра
@@ -931,8 +896,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[57] = {//Темп защиты от срыва синхронизации для ВД
-                           BLDC_SYNC_RATE,     // Уникальный идентификатор параметра
+  modbusParameters_[52] = {//Темп защиты от срыва синхронизации для ВД
+                           VSD_BLDC_SYNC_RATE,     // Уникальный идентификатор параметра
                            0x4100,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_NUMERIC, // Физическая величина параметра
@@ -948,7 +913,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[57] = {//Тип двигателя ({"Вентиль": 1, "Асинхр": 0})
+  modbusParameters_[53] = {//Тип двигателя ({"Вентиль": 1, "Асинхр": 0})
                            VSD_MOTOR_TYPE,   // Уникальный идентификатор параметра
                            0x4102,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -965,8 +930,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[58] = {//Максимальный угол дельта тета положения ротора для ВД
-                           BLDC_MAX_ANGLE,   // Уникальный идентификатор параметра
+  modbusParameters_[54] = {//Максимальный угол дельта тета положения ротора для ВД
+                           VSD_BLDC_MAX_ANGLE,   // Уникальный идентификатор параметра
                            0x4105,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_ANGLE,     // Физическая величина параметра
@@ -982,7 +947,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[59] = {//Стабилизация выходного напряжения {"Нет": 0, "Да": 1}
+  modbusParameters_[55] = {//Стабилизация выходного напряжения {"Нет": 0, "Да": 1}
                            ENGINE_U_OUT_STABLE, // Уникальный идентификатор параметра
                            0x4108,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -999,8 +964,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[60] = {// Вид пуска {"Плавный": 0, "Толчок": 1, "Расклин": 2}
-                           CCS_RUNNING_TYPE, // Уникальный идентификатор параметра
+  modbusParameters_[56] = {// Вид пуска {"Плавный": 0, "Толчок": 1, "Расклин": 2}
+                           CCS_ETALON_START_TYPE, // Уникальный идентификатор параметра
                            0x4109,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -1016,7 +981,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[61] = {// Уставка Направление вращения {"Обратн": 1, "Прямое": 0}
+  modbusParameters_[57] = {// Уставка Направление вращения {"Обратн": 1, "Прямое": 0}
                            VSD_ROTATION,     // Уникальный идентификатор параметра
                            0x410A,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1033,7 +998,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[62] = {// Верхняя граница частоты
+  modbusParameters_[58] = {// Верхняя граница частоты
                            VSD_HIGH_LIM_SPEED_MOTOR,     // Уникальный идентификатор параметра
                            0x410B,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1050,7 +1015,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[63] = {// Нижняя граница частоты
+  modbusParameters_[59] = {// Нижняя граница частоты
                            VSD_LOW_LIM_SPEED_MOTOR,     // Уникальный идентификатор параметра
                            0x410C,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1067,7 +1032,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[64] = {// уставка частоты
+  modbusParameters_[60] = {// уставка частоты
                            VSD_FREQUENCY,     // Уникальный идентификатор параметра
                            0x410D,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1084,7 +1049,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[65] = {// время разгона до базовой частоты
+  modbusParameters_[61] = {// время разгона до базовой частоты
                            VSD_TIMER_DISPERSAL,  // Уникальный идентификатор параметра
                            0x410E,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1101,7 +1066,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[66] = {// время торможения
+  modbusParameters_[62] = {// время торможения
                            VSD_TIMER_DELAY,  // Уникальный идентификатор параметра
                            0x410F,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1118,7 +1083,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[67] = {// частота толчка
+  modbusParameters_[63] = {// частота толчка
                            CCS_RGM_RUN_PUSH_FREQ,     // Уникальный идентификатор параметра
                            0x4111,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1135,7 +1100,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[68] = {// напряжение толчка
+  modbusParameters_[64] = {// напряжение толчка
                            CCS_RGM_RUN_PUSH_VOLTAGE,     // Уникальный идентификатор параметра
                            0x4112,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1152,8 +1117,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[69] = {// время подъема толчка
-                           CCS_RGM_RUN_PUSH_TIME,     // Уникальный идентификатор параметра ???
+  modbusParameters_[65] = {// время подъема толчка
+                           CCS_RGM_RUN_PUSH_UPTIME,     // Уникальный идентификатор параметра ???
                            0x4113,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_TIME,      // Физическая величина параметра
@@ -1169,8 +1134,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[70] = {// время спада толчка
-                           ????,     // Уникальный идентификатор параметра
+  modbusParameters_[66] = {// время спада толчка
+                           CCS_RGM_RUN_PUSH_DOWNTIME,     // Уникальный идентификатор параметра
                            0x4114,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_TIME,      // Физическая величина параметра
@@ -1186,7 +1151,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[71] = {// Время паузы между толчками
+  modbusParameters_[67] = {// Время паузы между толчками
                            CCS_RGM_RUN_PUSH_PERIOD, // Уникальный идентификатор параметра
                            0x4115,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1203,7 +1168,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[72] = {// Количество толчков
+  modbusParameters_[68] = {// Количество толчков
                            CCS_RGM_RUN_PUSH_QUANTITY, // Уникальный идентификатор параметра
                            0x4116,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1220,8 +1185,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[73] = {// Автоматический режим регулирования {"Нет": 0, "Аналог": 1, "Давл": 2, "Ток": 3}
-                           AUTOCONTROL_MODE, // Уникальный идентификатор параметра
+  modbusParameters_[69] = {// Автоматический режим регулирования {"Нет": 0, "Аналог": 1, "Давл": 2, "Ток": 3}
+                           VSD_PID_MODE,     // Уникальный идентификатор параметра
                            0x4117,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -1237,8 +1202,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[74] = {// Стабилизируемое значение
-                           AUTOCONTROL_SETT, // Уникальный идентификатор параметра
+  modbusParameters_[70] = {// Стабилизируемое значение
+                           VSD_PID_I_REF, // Уникальный идентификатор параметра
                            0x4118,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -1254,8 +1219,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[75] = {// Коэффициент пропорц. ПИД
-                           AUTOCONTROL_KPR,  // Уникальный идентификатор параметра
+  modbusParameters_[71] = {// Коэффициент пропорц. ПИД
+                           VSD_PID_KPR,  // Уникальный идентификатор параметра
                            0x411D,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -1271,8 +1236,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[76] = {// Коэффициент интегральный ПИД
-                           AUTOCONTROL_KINT, // Уникальный идентификатор параметра
+  modbusParameters_[72] = {// Коэффициент интегральный ПИД
+                           VSD_PID_KINT, // Уникальный идентификатор параметра
                            0x411E,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -1288,8 +1253,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[77] = {// Коэффициент дифференц. ПИД
-                           AUTOCONTROL_KDIF, // Уникальный идентификатор параметра
+  modbusParameters_[73] = {// Коэффициент дифференц. ПИД
+                           VSD_PID_KDIF, // Уникальный идентификатор параметра
                            0x411F,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -1305,8 +1270,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[78] = {// Характеристика ПИД {"Обр": 0, "Прям": 1}
-                           AUTOCONTROL_TYPE, // Уникальный идентификатор параметра
+  modbusParameters_[74] = {// Характеристика ПИД {"Обр": 0, "Прям": 1}
+                           VSD_PID_TYPE, // Уникальный идентификатор параметра
                            0x4128,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -1322,8 +1287,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[79] = {// Характеристика выход. напряжения {"Лин": 0, "Квадр.": 1, "Обр. Кв.": 2, "По точк.": 3}
-                           U_F_MODE, //  может VSD_UF_CHARACTERISTIC_U
+  modbusParameters_[75] = {// Характеристика выход. напряжения {"Лин": 0, "Квадр.": 1, "Обр. Кв.": 2, "По точк.": 3}
+                           VSD_UF_TYPE,
                            0x411A,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -1339,7 +1304,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[80] = {// Частота U/f двигателя, точка u6
+  modbusParameters_[76] = {// Частота U/f двигателя, точка u6
                            VSD_UF_CHARACTERISTIC_U_6,
                            0x411B,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1356,8 +1321,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[81] = {// Частота ШИМ (для ВД = 5000, для АС = 3230)
-                           SEM_PWM_FREQ, // может VSD_SWITCHING_FREQUENCY
+  modbusParameters_[77] = {// Частота ШИМ (для ВД = 5000, для АС = 3230)
+                           VSD_SWITCHING_FREQUENCY,
                            0x4120,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_FREQUENCY,   // Физическая величина параметра
@@ -1373,12 +1338,12 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[82] = {// Сдвиг между фазным током и АЦП для ВД
-                           BLDC_ADC_SHIFT,   // Уникальный идентификатор параметра
+  modbusParameters_[78] = {// Сдвиг между фазным током и АЦП для ВД
+                           VSD_BLDC_ADC_SHIFT,   // Уникальный идентификатор параметра
                            0x4124,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_TIME,      // Физическая величина параметра
-                           TIME_uS,          // Единицы измерения параметра
+                           TIME_US,          // Единицы измерения параметра
                            TYPE_DATA_INT16,  // Тип данных
                            1,                // Коэффициент преобразования параметра
                            10,               // Минимальное значение параметра
@@ -1390,12 +1355,12 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[83] = {// "Сдвиг фазы ТМПН и ДЛ" ( "Step-up Transformation Line Shift" ) для ВД
-                           BLDC_TMPN_SHIFT,   // Уникальный идентификатор параметра
+  modbusParameters_[79] = {// "Сдвиг фазы ТМПН и ДЛ" ( "Step-up Transformation Line Shift" ) для ВД
+                           VSD_BLDC_TMPN_SHIFT,   // Уникальный идентификатор параметра
                            0x4125,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_TIME,      // Физическая величина параметра
-                           TIME_uS,          // Единицы измерения параметра
+                           TIME_US,          // Единицы измерения параметра
                            TYPE_DATA_INT16,  // Тип данных
                            1,                // Коэффициент преобразования параметра
                            0,               // Минимальное значение параметра
@@ -1407,7 +1372,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[84] = {// Останов выбегом (0 - нет, 1-да)
+  modbusParameters_[80] = {// Останов выбегом (0 - нет, 1-да)
                            ENGINE_OFF_MODE,   // Уникальный идентификатор параметра
                            0x4126,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1424,7 +1389,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[85] = {// Номинальный ток СУ
+  modbusParameters_[81] = {// Номинальный ток СУ
                            STATION_I_NOM,   // Уникальный идентификатор параметра
                            0x412B,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1441,7 +1406,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[86] = {// Режим встряхивания (0-откл, 1-вкл)
+  modbusParameters_[82] = {// Режим встряхивания (0-откл, 1-вкл)
                            CCS_RGM_JARRING_MODE,   // Уникальный идентификатор параметра
                            0x412D,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1458,8 +1423,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[87] = {// Период встряхиваний
-                           CCS_RGM_JARRING_PERIOD,   // Уникальный идентификатор параметра
+  modbusParameters_[83] = {// Период встряхиваний
+                           VSD_JARRING_PERIOD,   // Уникальный идентификатор параметра
                            0x412E,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_TIME,      // Физическая величина параметра
@@ -1475,8 +1440,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[88] = {// Отклонение частоты встряхиваний
-                           JOG_FREQ1,        // Уникальный идентификатор параметра
+  modbusParameters_[84] = {// Отклонение частоты встряхиваний
+                           VSD_JARRING_UPDFREQ,   // Уникальный идентификатор параметра
                            0x412F,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_FREQUENCY, // Физическая величина параметра
@@ -1492,8 +1457,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[89] = {// Скорость изменения частоты при встряхивании
-                           JOG_ACCEL,        // Уникальный идентификатор параметра
+  modbusParameters_[85] = {// Скорость изменения частоты при встряхивании
+                           VSD_JARRING_UPTIME,        // Уникальный идентификатор параметра
                            0x4130,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            ??, // Физическая величина параметра
@@ -1509,8 +1474,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[90] = {// Количество встряхиваний
-                           JOG_NUM,          // Уникальный идентификатор параметра
+  modbusParameters_[86] = {// Количество встряхиваний
+                           VSD_JARRING_NUM,          // Уникальный идентификатор параметра
                            0x4131,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
                            PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -1526,24 +1491,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[91] = {// Автооптимизация по параметру {"Откл": 0, "Ток": 1, "Мощность": 2}
-                           OPTIMIZATION_MODE,// Уникальный идентификатор параметра
-                           0x4134,           // Адрес регистра в устройстве
-                           OPERATION_WRITE,  // Операции с параметром
-                           PHYSIC_NUMERIC,   // Физическая величина параметра
-                           1,                // Единицы измерения параметра
-                           TYPE_DATA_INT16,  // Тип данных
-                           1,                // Коэффициент преобразования параметра
-                           0,                // Минимальное значение параметра
-                           2,               // Максимально значение параметра
-                           0,                // Считываемое значение "по умолчанию"
-                           RARELY,           // Частота опроса параметра
-                           RARELY,           // Количество запросов к параметру
-                           OPERATION_ERROR,  // Команда
-                           VALIDITY_ERROR,   // Поле состояния параметра
-                           0                 // Значение
-                          };
-  modbusParameters_[92] = {// Частота U/f двигателя, точка f6
+  modbusParameters_[87] = {// Частота U/f двигателя, точка f6
                            VSD_UF_CHARACTERISTIC_F_6,
                            0x4136,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1560,7 +1508,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[93] = {// Частота U/f двигателя, точка f1
+  modbusParameters_[88] = {// Частота U/f двигателя, точка f1
                            VSD_UF_CHARACTERISTIC_F_1,
                            0x4137,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1577,7 +1525,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[94] = {// Частота U/f двигателя, точка u1
+  modbusParameters_[89] = {// Частота U/f двигателя, точка u1
                            VSD_UF_CHARACTERISTIC_U_1,
                            0x4138,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1594,7 +1542,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[95] = {// Частота U/f двигателя, точка f2
+  modbusParameters_[90] = {// Частота U/f двигателя, точка f2
                            VSD_UF_CHARACTERISTIC_F_2,
                            0x4139,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1611,7 +1559,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[96] = {// Частота U/f двигателя, точка u2
+  modbusParameters_[91] = {// Частота U/f двигателя, точка u2
                            VSD_UF_CHARACTERISTIC_U_2,
                            0x413A,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1628,7 +1576,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[97] = {// Частота U/f двигателя, точка f3
+  modbusParameters_[92] = {// Частота U/f двигателя, точка f3
                            VSD_UF_CHARACTERISTIC_F_3,
                            0x413B,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1645,7 +1593,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[98] = {// Частота U/f двигателя, точка u3
+  modbusParameters_[93] = {// Частота U/f двигателя, точка u3
                            VSD_UF_CHARACTERISTIC_U_3,
                            0x413C,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1662,7 +1610,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[99] = {// Частота U/f двигателя, точка f4
+  modbusParameters_[94] = {// Частота U/f двигателя, точка f4
                            VSD_UF_CHARACTERISTIC_F_4,
                            0x413D,           // Адрес регистра в устройстве
                            OPERATION_WRITE,  // Операции с параметром
@@ -1679,93 +1627,93 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-  modbusParameters_[100] = {// Частота U/f двигателя, точка u4
-                            VSD_UF_CHARACTERISTIC_U_4,
-                            0x413E,           // Адрес регистра в устройстве
-                            OPERATION_WRITE,  // Операции с параметром
-                            PHYSIC_PERCENT,   // Физическая величина параметра
-                            PERCENT_PERCENT,  // Единицы измерения параметра
-                            TYPE_DATA_INT16,  // Тип данных
-                            0.1,              // Коэффициент преобразования параметра
-                            0,                // Минимальное значение параметра
-                            2000,             // Максимально значение параметра
-                            800,              // Считываемое значение "по умолчанию"
-                            RARELY,           // Частота опроса параметра
-                            RARELY,           // Количество запросов к параметру
-                            OPERATION_ERROR,  // Команда
-                            VALIDITY_ERROR,   // Поле состояния параметра
-                            0                 // Значение
-                           };
-  modbusParameters_[101] = {// Частота U/f двигателя, точка f5
-                            VSD_UF_CHARACTERISTIC_F_5,
-                            0x413F,           // Адрес регистра в устройстве
-                            OPERATION_WRITE,  // Операции с параметром
-                            PHYSIC_FREQUENCY, // Физическая величина параметра
-                            FREQUENCY_HZ,     // Единицы измерения параметра
-                            TYPE_DATA_INT16,  // Тип данных
-                            0.1,              // Коэффициент преобразования параметра
-                            0,                // Минимальное значение параметра
-                            5000,             // Максимально значение параметра
-                            500,              // Считываемое значение "по умолчанию"
-                            RARELY,           // Частота опроса параметра
-                            RARELY,           // Количество запросов к параметру
-                            OPERATION_ERROR,  // Команда
-                            VALIDITY_ERROR,   // Поле состояния параметра
-                            0                 // Значение
-                           };
-  modbusParameters_[102] = {// Частота U/f двигателя, точка u5
-                            VSD_UF_CHARACTERISTIC_U_5,
-                            0x4140,           // Адрес регистра в устройстве
-                            OPERATION_WRITE,  // Операции с параметром
-                            PHYSIC_PERCENT,   // Физическая величина параметра
-                            PERCENT_PERCENT,  // Единицы измерения параметра
-                            TYPE_DATA_INT16,  // Тип данных
-                            0.1,              // Коэффициент преобразования параметра
-                            0,                // Минимальное значение параметра
-                            2000,             // Максимально значение параметра
-                            1000,              // Считываемое значение "по умолчанию"
-                            RARELY,           // Частота опроса параметра
-                            RARELY,           // Количество запросов к параметру
-                            OPERATION_ERROR,  // Команда
-                            VALIDITY_ERROR,   // Поле состояния параметра
-                            0                 // Значение
-                           };
-  modbusParameters_[103] = {// Порог токоограничения
-                            I_LIMIT_THRESHOLD,
-                            0x4144,           // Адрес регистра в устройстве
-                            OPERATION_WRITE,  // Операции с параметром
-                            PHYSIC_CURRENT,   // Физическая величина параметра
-                            CURRENT_A,        // Единицы измерения параметра
-                            TYPE_DATA_INT16,  // Тип данных
-                            0.1,              // Коэффициент преобразования параметра
-                            2,                // Минимальное значение параметра
-                            9999,             // Максимально значение параметра
-                            2,              // Считываемое значение "по умолчанию"
-                            RARELY,           // Частота опроса параметра
-                            RARELY,           // Количество запросов к параметру
-                            OPERATION_ERROR,  // Команда
-                            VALIDITY_ERROR,   // Поле состояния параметра
-                            0                 // Значение
-                           };
-  modbusParameters_[104] = {// Режим токоограничения {"Откл": 0, "Блк": 1, "АПВ": 2}
-                            I_LIMIT_MODE,
-                            0x4145,           // Адрес регистра в устройстве
-                            OPERATION_WRITE,  // Операции с параметром
-                            PHYSIC_NUMERIC,   // Физическая величина параметра
-                            1,                // Единицы измерения параметра
-                            TYPE_DATA_INT16,  // Тип данных
-                            1,                // Коэффициент преобразования параметра
-                            0,                // Минимальное значение параметра
-                            2,                // Максимально значение параметра
-                            0,                // Считываемое значение "по умолчанию"
-                            RARELY,           // Частота опроса параметра
-                            RARELY,           // Количество запросов к параметру
-                            OPERATION_ERROR,  // Команда
-                            VALIDITY_ERROR,   // Поле состояния параметра
-                            0                 // Значение
-                           };
-  modbusParameters_[105] = {// Задержка отключения при токоограничении
-                            I_LIMIT_TM,
+  modbusParameters_[95] = {// Частота U/f двигателя, точка u4
+                           VSD_UF_CHARACTERISTIC_U_4,
+                           0x413E,           // Адрес регистра в устройстве
+                           OPERATION_WRITE,  // Операции с параметром
+                           PHYSIC_PERCENT,   // Физическая величина параметра
+                           PERCENT_PERCENT,  // Единицы измерения параметра
+                           TYPE_DATA_INT16,  // Тип данных
+                           0.1,              // Коэффициент преобразования параметра
+                           0,                // Минимальное значение параметра
+                           2000,             // Максимально значение параметра
+                           800,              // Считываемое значение "по умолчанию"
+                           RARELY,           // Частота опроса параметра
+                           RARELY,           // Количество запросов к параметру
+                           OPERATION_ERROR,  // Команда
+                           VALIDITY_ERROR,   // Поле состояния параметра
+                           0                 // Значение
+                          };
+  modbusParameters_[96] = {// Частота U/f двигателя, точка f5
+                           VSD_UF_CHARACTERISTIC_F_5,
+                           0x413F,           // Адрес регистра в устройстве
+                           OPERATION_WRITE,  // Операции с параметром
+                           PHYSIC_FREQUENCY, // Физическая величина параметра
+                           FREQUENCY_HZ,     // Единицы измерения параметра
+                           TYPE_DATA_INT16,  // Тип данных
+                           0.1,              // Коэффициент преобразования параметра
+                           0,                // Минимальное значение параметра
+                           5000,             // Максимально значение параметра
+                           500,              // Считываемое значение "по умолчанию"
+                           RARELY,           // Частота опроса параметра
+                           RARELY,           // Количество запросов к параметру
+                           OPERATION_ERROR,  // Команда
+                           VALIDITY_ERROR,   // Поле состояния параметра
+                           0                 // Значение
+                          };
+  modbusParameters_[97] = {// Частота U/f двигателя, точка u5
+                           VSD_UF_CHARACTERISTIC_U_5,
+                           0x4140,           // Адрес регистра в устройстве
+                           OPERATION_WRITE,  // Операции с параметром
+                           PHYSIC_PERCENT,   // Физическая величина параметра
+                           PERCENT_PERCENT,  // Единицы измерения параметра
+                           TYPE_DATA_INT16,  // Тип данных
+                           0.1,              // Коэффициент преобразования параметра
+                           0,                // Минимальное значение параметра
+                           2000,             // Максимально значение параметра
+                           1000,              // Считываемое значение "по умолчанию"
+                           RARELY,           // Частота опроса параметра
+                           RARELY,           // Количество запросов к параметру
+                           OPERATION_ERROR,  // Команда
+                           VALIDITY_ERROR,   // Поле состояния параметра
+                           0                 // Значение
+                          };
+  modbusParameters_[98] = {// Порог токоограничения
+                           VSD_I_LIMIT_THRESHOLD,
+                           0x4144,           // Адрес регистра в устройстве
+                           OPERATION_WRITE,  // Операции с параметром
+                           PHYSIC_CURRENT,   // Физическая величина параметра
+                           CURRENT_A,        // Единицы измерения параметра
+                           TYPE_DATA_INT16,  // Тип данных
+                           0.1,              // Коэффициент преобразования параметра
+                           2,                // Минимальное значение параметра
+                           9999,             // Максимально значение параметра
+                           2,              // Считываемое значение "по умолчанию"
+                           RARELY,           // Частота опроса параметра
+                           RARELY,           // Количество запросов к параметру
+                           OPERATION_ERROR,  // Команда
+                           VALIDITY_ERROR,   // Поле состояния параметра
+                           0                 // Значение
+                          };
+  modbusParameters_[99] = {// Режим токоограничения {"Откл": 0, "Блк": 1, "АПВ": 2}
+                           VSD_I_LIMIT_MODE,
+                           0x4145,           // Адрес регистра в устройстве
+                           OPERATION_WRITE,  // Операции с параметром
+                           PHYSIC_NUMERIC,   // Физическая величина параметра
+                           1,                // Единицы измерения параметра
+                           TYPE_DATA_INT16,  // Тип данных
+                           1,                // Коэффициент преобразования параметра
+                           0,                // Минимальное значение параметра
+                           2,                // Максимально значение параметра
+                           0,                // Считываемое значение "по умолчанию"
+                           RARELY,           // Частота опроса параметра
+                           RARELY,           // Количество запросов к параметру
+                           OPERATION_ERROR,  // Команда
+                           VALIDITY_ERROR,   // Поле состояния параметра
+                           0                 // Значение
+                          };
+  modbusParameters_[100] = {// Задержка отключения при токоограничении
+                            VSD_I_LIMIT_TM,
                             0x414D,           // Адрес регистра в устройстве
                             OPERATION_WRITE,  // Операции с параметром
                             PHYSIC_TIME,      // Физическая величина параметра
@@ -1781,76 +1729,9 @@ void VsdEtalon::initModbusParameters()
                             VALIDITY_ERROR,   // Поле состояния параметра
                             0                 // Значение
                            };
-  modbusParameters_[107] = {// Время работы на F дегазации ниж.
-                            CCS_RGM_PUMP_GAS_DELAY_REACTION,
-                            0x4147,           // Адрес регистра в устройстве
-                            OPERATION_WRITE,  // Операции с параметром
-                            PHYSIC_TIME,      // Физическая величина параметра
-                            TIME_MM,          // Единицы измерения параметра
-                            TYPE_DATA_INT16,  // Тип данных
-                            1,                // Коэффициент преобразования параметра
-                            1,                // Минимальное значение параметра
-                            30,               // Максимально значение параметра
-                            300,              // Считываемое значение "по умолчанию"
-                            RARELY,           // Частота опроса параметра
-                            RARELY,           // Количество запросов к параметру
-                            OPERATION_ERROR,  // Команда
-                            VALIDITY_ERROR,   // Поле состояния параметра
-                            0                 // Значение
-                           };
-  modbusParameters_[108] = {// Режим дегазации {"Откл": 0, "Вкл": 1}
-                            CCS_RGM_PUMP_GAS_MODE,
-                            0x4148,           // Адрес регистра в устройстве
-                            OPERATION_WRITE,  // Операции с параметром
-                            PHYSIC_NUMERIC,   // Физическая величина параметра
-                            1,                // Единицы измерения параметра
-                            TYPE_DATA_INT16,  // Тип данных
-                            1,                // Коэффициент преобразования параметра
-                            0,                // Минимальное значение параметра
-                            1,                // Максимально значение параметра
-                            0,                // Считываемое значение "по умолчанию"
-                            RARELY,           // Частота опроса параметра
-                            RARELY,           // Количество запросов к параметру
-                            OPERATION_ERROR,  // Команда
-                            VALIDITY_ERROR,   // Поле состояния параметра
-                            0                 // Значение
-                           };
-  modbusParameters_[109] = {// Задание тактов дегазации
-                            CCS_RGM_PUMP_GAS_LIMIT_RESTART,
-                            0x414A,           // Адрес регистра в устройстве
-                            OPERATION_WRITE,  // Операции с параметром
-                            PHYSIC_NUMERIC,   // Физическая величина параметра
-                            1,                // Единицы измерения параметра
-                            TYPE_DATA_INT16,  // Тип данных
-                            1,                // Коэффициент преобразования параметра
-                            1,                // Минимальное значение параметра
-                            3,                // Максимально значение параметра
-                            1,                // Считываемое значение "по умолчанию"
-                            RARELY,           // Частота опроса параметра
-                            RARELY,           // Количество запросов к параметру
-                            OPERATION_ERROR,  // Команда
-                            VALIDITY_ERROR,   // Поле состояния параметра
-                            0                 // Значение
-                           };
-  modbusParameters_[110] = {//"Время разгона на F дегазации верх
-                            CCS_RGM_PUMP_GAS_DELAY_REACTION,
-                            0x414C,           // Адрес регистра в устройстве
-                            OPERATION_WRITE,  // Операции с параметром
-                            PHYSIC_TIME,      // Физическая величина параметра
-                            TIME_MM,          // Единицы измерения параметра
-                            TYPE_DATA_INT16,  // Тип данных
-                            1,                // Коэффициент преобразования параметра
-                            1,                // Минимальное значение параметра
-                            30,               // Максимально значение параметра
-                            300,              // Считываемое значение "по умолчанию"
-                            RARELY,           // Частота опроса параметра
-                            RARELY,           // Количество запросов к параметру
-                            OPERATION_ERROR,  // Команда
-                            VALIDITY_ERROR,   // Поле состояния параметра
-                            0                 // Значение
-                           };
-  modbusParameters_[111] = {//"Режим пропуска частот (0-откл, 1-вкл)
-                            FREQ_SKIP_MODE,
+
+  modbusParameters_[101] = {//"Режим пропуска частот (0-откл, 1-вкл)
+                            VSD_FREQ_SKIP_MODE,
                             0x4152,           // Адрес регистра в устройстве
                             OPERATION_WRITE,  // Операции с параметром
                             PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -1866,8 +1747,8 @@ void VsdEtalon::initModbusParameters()
                             VALIDITY_ERROR,   // Поле состояния параметра
                             0                 // Значение
                            };
-  modbusParameters_[112] = {//Начальная частота пропуска
-                            FREQ_SKIP_START_FREQ,
+  modbusParameters_[102] = {//Начальная частота пропуска
+                            VSD_FREQ_SKIP_START_FREQ,
                             0x4153,           // Адрес регистра в устройстве
                             OPERATION_WRITE,  // Операции с параметром
                             PHYSIC_FREQUENCY, // Физическая величина параметра
@@ -1883,8 +1764,8 @@ void VsdEtalon::initModbusParameters()
                             VALIDITY_ERROR,   // Поле состояния параметра
                             0                 // Значение
                            };
-  modbusParameters_[113] = {//Конечная частота пропуска
-                            FREQ_SKIP_STOP_FREQ,
+  modbusParameters_[103] = {//Конечная частота пропуска
+                            VSD_FREQ_SKIP_STOP_FREQ,
                             0x4154,           // Адрес регистра в устройстве
                             OPERATION_WRITE,  // Операции с параметром
                             PHYSIC_FREQUENCY, // Физическая величина параметра
@@ -1900,12 +1781,12 @@ void VsdEtalon::initModbusParameters()
                             VALIDITY_ERROR,   // Поле состояния параметра
                             0                 // Значение
                            };
-  modbusParameters_[114] = {//Скорость изменения частоты при пропуске
-                            FREQ_SKIP_ACCEL,
+  modbusParameters_[104] = {//Скорость изменения частоты при пропуске
+                            VSD_FREQ_SKIP_ACCEL,
                             0x4155,           // Адрес регистра в устройстве
                             OPERATION_WRITE,  // Операции с параметром
-                            ???,              // Физическая величина параметра
-                            ??Гц/с??,         // Единицы измерения параметра
+                            PHYSIC_TEMP,      // Физическая величина параметра
+                            TEMP_HZ_SS,       // Единицы измерения параметра
                             TYPE_DATA_INT16,  // Тип данных
                             0.1,              // Коэффициент преобразования параметра
                             10,               // Минимальное значение параметра
@@ -1918,8 +1799,8 @@ void VsdEtalon::initModbusParameters()
                             0                 // Значение
                            };
 
-  modbusParameters_[115] = {//Коэффициент пропорц.рег.угла для ВД
-                            BLDC_KP,
+  modbusParameters_[105] = {//Коэффициент пропорц.рег.угла для ВД
+                            VSD_BLDC_KP,
                             0x4157,           // Адрес регистра в устройстве
                             OPERATION_WRITE,  // Операции с параметром
                             PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -1935,8 +1816,8 @@ void VsdEtalon::initModbusParameters()
                             VALIDITY_ERROR,   // Поле состояния параметра
                             0                 // Значение
                            };
-  modbusParameters_[116] = {//Коэффициент интегр.рег.угла для ВД
-                            BLDC_KI,
+  modbusParameters_[106] = {//Коэффициент интегр.рег.угла для ВД
+                            VSD_BLDC_KI,
                             0x4158,           // Адрес регистра в устройстве
                             OPERATION_WRITE,  // Операции с параметром
                             PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -1952,8 +1833,8 @@ void VsdEtalon::initModbusParameters()
                             VALIDITY_ERROR,   // Поле состояния параметра
                             0                 // Значение
                            };
-  modbusParameters_[116] = {//Максимальная доб. верхнего предела для ВД
-                            BLDC_MAX_UP,
+  modbusParameters_[107] = {//Максимальная доб. верхнего предела для ВД
+                            VSD_BLDC_MAX_UP,
                             0x4159,           // Адрес регистра в устройстве
                             OPERATION_WRITE,  // Операции с параметром
                             PHYSIC_PERCENT,   // Физическая величина параметра
@@ -1969,12 +1850,11 @@ void VsdEtalon::initModbusParameters()
                             VALIDITY_ERROR,   // Поле состояния параметра
                             0                 // Значение
                            };
-*/
 }
 
 VsdEtalon::VsdEtalon()
 {
-  initModbusParameters(); 
+  initModbusParameters();
   readParameters();
 }
 
@@ -2048,7 +1928,7 @@ void VsdEtalon::getNewValue(uint16_t id)
     break;
   }
   value = value * param->coefficient;
-  value = (value - (Device::units[param->physic][param->unit][1]))/(Device::units[param->physic][param->unit][0]);
+  value = (value - (Units[param->physic][param->unit][1]))/(Units[param->physic][param->unit][0]);
   setValue(id, value);
   calcParameters(id);
 }
@@ -2091,7 +1971,7 @@ void VsdEtalon::writeToDevice(int id, float value)
 
 int VsdEtalon::start()
 {
-#if USE_DEBUG
+#if DEBUG
   return RETURN_OK;
 #endif
 
@@ -2110,7 +1990,7 @@ int VsdEtalon::start()
       if (countRepeats > VSD_CMD_NUMBER_REPEATS)
         return RETURN_ERROR;
 
-      if (setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_START))
+      if (setNewValue(VSD_ETALON_ON, 1))
         return RETURN_ERROR;
     } else {
       timeMs = timeMs + 100;
@@ -2125,7 +2005,7 @@ int VsdEtalon::start()
 
 bool VsdEtalon::checkStart()
 {
-#if USE_DEBUG
+#if DEBUG
   return true;
 #endif
 
@@ -2139,7 +2019,7 @@ bool VsdEtalon::checkStart()
 
 int VsdEtalon::stop()
 {
-#if USE_DEBUG
+#if DEBUG
   return RETURN_OK;
 #endif
 
@@ -2158,7 +2038,7 @@ int VsdEtalon::stop()
       if (countRepeats > VSD_CMD_NUMBER_REPEATS)
         return RETURN_ERROR;
 
-      if (setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_STOP))
+      if (setNewValue(VSD_ETALON_OFF, 1))
         return RETURN_ERROR;
     } else {
       timeMs = timeMs + 100;
@@ -2173,7 +2053,7 @@ int VsdEtalon::stop()
 
 bool VsdEtalon::checkStop()
 {
-#if USE_DEBUG
+#if DEBUG
   return true;
 #endif
 
@@ -2308,6 +2188,23 @@ int VsdEtalon::setTempSpeedDown(float value)
   }
 }
 
+int VsdEtalon::setMotorControl(float value)
+{
+  if (!Vsd::setMotorControl(value)) {
+    if (getValue(VSD_MOTOR_CONTROL) == VSD_MOTOR_CONTROL_UF) {
+      writeToDevice(VSD_REGULATOR_QUEUE_5, VSD_REQULATOR_QUEUE_UF);
+      return RETURN_OK;
+    }
+    else {
+      if (getValue(VSD_MOTOR_CONTROL) == VSD_MOTOR_CONTROL_VECT) {
+        writeToDevice(VSD_REGULATOR_QUEUE_5, VSD_REQULATOR_QUEUE_VECT);
+        return RETURN_OK;
+      }
+    }
+  }
+  return RETURN_ERROR;
+}
+
 int VsdEtalon::setRotation(float value)
 {
   if(Vsd::setRotation(value)){
@@ -2365,3 +2262,9 @@ void VsdEtalon::calcParameters(uint16_t id)
     break;
   }
 }
+
+int VsdEtalon::setMainRegimeVSD()
+{
+  return 1;
+}
+*/
