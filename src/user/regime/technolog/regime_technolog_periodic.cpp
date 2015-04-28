@@ -73,6 +73,7 @@ void RegimeTechnologPeriodic::processing()
             workTimeToEnd = workTimeToEnd + stopTime;                                    // Время доработки
             if (workTimeToEnd < (30 * 60)) { // Если время доработки меньше 30 минут
               stopBeginTime_ = parameters.getU32(CCS_LAST_STOP_DATE_TIME); // Время перехода в паузу фиксируем как время остановки двигателя
+              parameters.set(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
               state_ = PauseState;
             }
             else {
@@ -85,6 +86,7 @@ void RegimeTechnologPeriodic::processing()
             }
           }
           else {
+            ksu.start(runReason);
             state_ = IdleState;
           }
         }
@@ -94,6 +96,7 @@ void RegimeTechnologPeriodic::processing()
             state_ = RunningState;
           }
           else {
+            ksu.start(runReason);
             state_ = IdleState;
           }
         }

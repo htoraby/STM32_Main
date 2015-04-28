@@ -253,7 +253,7 @@
 		<form>1.1 Текущие параметры - сводка</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
-		<values>1-Ручной;2-Автоматический;3-По программе</values>
+		<values>0-Ручной;1-Автоматический;2-По программе</values>
 		<comment>Режим работы</comment>
 	</param>
 	<param>
