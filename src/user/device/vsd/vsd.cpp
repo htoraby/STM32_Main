@@ -152,10 +152,16 @@ int Vsd::setMotorControl(float value)
   return setValue(VSD_MOTOR_CONTROL, value);
 }
 
+int Vsd::setCurrentLim(float value)
+{
+  return setValue(VSD_ILIMIT, value);
+}
+
 int Vsd::setSwitchingFrequency(float value)
 {
   return setValue(VSD_SWITCHING_FREQUENCY, value);
 }
+
 
 
 

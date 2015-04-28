@@ -156,18 +156,13 @@ public:
    */
   int setMotorControl(float value);
 
+  int setMotorCurrent(float value);
+
   /*!
    * \brief Метод задания предела тока
    * \return Код результата операции
    */
-  int setCurrentLim(double CurrentLim);
-
-  /*!
-   * \brief Метод задания индуктивности
-   * \param Indunstance
-   * \return Код результата операции
-   */
-  int setDAxisIndunstance(double Indunstance);
+  int setCurrentLim(float value);
 
   /*!
    * \brief Метод задания времени фильтрации

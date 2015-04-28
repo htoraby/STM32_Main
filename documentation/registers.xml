@@ -7003,7 +7003,7 @@
 		<form>7.1 Система</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
-		<values>1-Русский;2-Английский;3-Испанский</values>
+		<values>0-Русский;1-Английский;2-Испанский</values>
 		<comment>Язык интерфейса</comment>
 	</param>
 	<param>
@@ -7033,7 +7033,7 @@
 		<form>7.2 Пароли</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
-		<values>1-Пароль;2-Мастер</values>
+		<values>0-Пароль;1-Мастер</values>
 		<comment>Текущий уровень доступа</comment>
 	</param>
 	<param>
@@ -7174,7 +7174,7 @@
 		<form>7.3 Телемеханика</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
-		<values>1-No patity;2-Even;3-Odd;4-Mark;5-Space</values>
+		<values>0-No patity;1-Even;2-Odd;3-Mark;4-Space</values>
 		<comment>Чётность в телемеханике</comment>
 	</param>
 	<param>
@@ -7189,7 +7189,7 @@
 		<form>7.3 Телемеханика</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
-		<values>1-1;2-1,5;3-2</values>
+		<values>0-1;1-1,5;2-2</values>
 		<comment>Количество стоп-бит в телемеханике</comment>
 	</param>
 	<param>
@@ -7219,7 +7219,7 @@
 		<form>7.4 Единицы измерения</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
-		<values>1-МПа;2-Атм;3-Ат;4-Бар;5-PSI</values>
+		<values>0-МПа;1-Атм;2-Ат;3-Бар;4-PSI</values>
 		<comment>Единицы измерения давления</comment>
 	</param>
 	<param>
@@ -7234,7 +7234,7 @@
 		<form>7.4 Единицы измерения</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
-		<values>1-С;2-Ф;3-К</values>
+		<values>0-С;1-Ф;2-К</values>
 		<comment>Единицы измерения давления</comment>
 	</param>
 	<param>
@@ -7249,7 +7249,7 @@
 		<form>7.4 Единицы измерения</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
-		<values>1-G;2-м/с2</values>
+		<values>0-G;1-м/с2</values>
 		<comment>Единицы измерения вибрации</comment>
 	</param>
 	<param>
@@ -7264,7 +7264,7 @@
 		<form>7.4 Единицы измерения</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
-		<values>1-м;2-миля;3-фут</values>
+		<values>0-м;1-миля;2-фут</values>
 		<comment>Единицы измерения длины</comment>
 	</param>
 	<param>
@@ -7279,7 +7279,7 @@
 		<form>7.4 Единицы измерения</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
-		<values>1-м3/сут</values>
+		<values>0-м3/сут</values>
 		<comment>Единицы измерения расхода</comment>
 	</param>
 	<param>
@@ -7294,7 +7294,7 @@
 		<form>7.4 Единицы измерения</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
-		<values>1-см2</values>
+		<values>0-см2</values>
 		<comment>Единицы измерения площади</comment>
 	</param>
 	<param>
@@ -9010,7 +9010,7 @@
 		<form>1.1 Текущие параметры - сводка; 3.1 Двигатель</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
-		<values>1-Асинхронный;2-Вентильный</values>
+		<values>0-Асинхронный;1-Вентильный</values>
 		<comment>Конструкция двигателя Danfoss 1-10 Используется в интерфейсе</comment>
 	</param>
 	<param>
@@ -9025,7 +9025,7 @@
 		<form>1.1 Текущие параметры - сводка; 3.2 ЧРП</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
-		<values>1-U/f;2-Векторный</values>
+		<values>0-U/f;1-Векторный</values>
 		<comment>Принцип управления двигателем Danfoss 1-01 Не используется в проекте, только при конфигурировании</comment>
 	</param>
 	<param>
@@ -9041,7 +9041,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>TEXT</format>
-		<values>1-Прямое;2-Обратное</values>
+		<values>0-Прямое;1-Обратное</values>
 		<comment>Направления вращения Danfoss 4-10 Не используется в проекте, только при конфигурировании</comment>
 	</param>
 	<param>
@@ -11193,13 +11193,278 @@
 	</param>
 	<param>
 		<id>10263</id>
-		<name>VSD_END</name>
+		<name>VSD_PICKUP_KU</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>0.3</min>
+		<max>0.8</max>
+		<def>0.4</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>0.4</value>
+		<text>Коэффициент U по подхвату</text>
+		<short_text>K_U подхв</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXX_X</format>
+		<comment>Коэффициент U по подхвату</comment>
+	</param>
+	<param>
+		<id>10264</id>
+		<name>VSD_ENGINE_DECEL_MODE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>1.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Контроль турбинного вращения</text>
+		<short_text>Контр Турб Вращ</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<values>0-Откл;1-Вкл;2-Подхват</values>
+		<comment>Контроль турбинного вращения</comment>
+	</param>
+	<param>
+		<id>10265</id>
+		<name>VSD_BLDC_K_MTZ</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>1.0</min>
+		<max>2.5</max>
+		<def>2.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>2.0</value>
+		<text>Коэффициент мгновенной токовой защиты</text>
+		<short_text>Коэф.МТЗ мотор</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXX_X</format>
+		<comment>Коэффициент мгновенной токовой защиты</comment>
+	</param>
+	<param>
+		<id>10266</id>
+		<name>VSD_COEF_VOLTAGE_IN_AB</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.5</min>
+		<max>1.5</max>
+		<def>1.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Коэффициент коррекции напряжения Uab</text>
+		<short_text>Коэфф.коррек.напряж.Uab</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<comment>Коэффициент коррекции напряжения Uab</comment>
+	</param>
+	<param>
+		<id>10267</id>
+		<name>VSD_COEF_VOLTAGE_IN_BC</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.5</min>
+		<max>1.5</max>
+		<def>1.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Коэффициент коррекции напряжения Ubс</text>
+		<short_text>Коэфф.коррек.напряж.Ubс</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<comment>Коэффициент коррекции напряжения Ubс</comment>
+	</param>
+	<param>
+		<id>10268</id>
+		<name>VSD_COEF_VOLTAGE_IN_CA</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.5</min>
+		<max>1.5</max>
+		<def>1.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Коэффициент коррекции напряжения Uсa</text>
+		<short_text>Коэфф.коррек.напряж.Uca</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<comment>Коэффициент коррекции напряжения Uсa</comment>
+	</param>
+	<param>
+		<id>10269</id>
+		<name>VSD_COEF_VOLTAGE_IN_DC</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.5</min>
+		<max>2.0</max>
+		<def>1.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Коэффициент коррекции напряжения Udc</text>
+		<short_text>Коэфф.коррек.напряж.Udc</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<comment>Коэффициент коррекции напряжения Udc</comment>
+	</param>
+	<param>
+		<id>10270</id>
+		<name>VSD_COEF_CURRENT_IN_DC</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.5</min>
+		<max>1.5</max>
+		<def>1.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Коэффициент коррекции тока Idc</text>
+		<short_text>Коэфф.коррек.тока Idc</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<comment>Коэффициент коррекции тока Idc</comment>
+	</param>
+	<param>
+		<id>10271</id>
+		<name>VSD_COEF_VOLTAGE_OUT_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.5</min>
+		<max>1.5</max>
+		<def>1.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Коэф. корр. показ.напряжения Uвых</text>
+		<short_text>Коэфф.коррек.показ.напряж.Uвых</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<comment>Коэф. корр. показ.напряжения Uвых</comment>
+	</param>
+	<param>
+		<id>10272</id>
+		<name>VSD_COEF_VOLTAGE_OUT_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.5</min>
+		<max>1.05</max>
+		<def>1.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Коэффициент корр.напряжения Uвых</text>
+		<short_text>Коэфф.коррек.напряж.Uвых</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<comment>Коэффициент корр.напряжения Uвых</comment>
+	</param>
+	<param>
+		<id>10273</id>
+		<name>VSD_TRANS_VOLTAGE_TAP_OFF</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>380.0</min>
+		<max>5000.0</max>
+		<def>3950.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>3950.0</value>
+		<text>Напряжение отпайки ТМПН</text>
+		<short_text>Напряж.отпайки</short_text>
+		<form>NULL</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<comment>Напряжение отпайки</comment>
+	</param>
+	<param>
+		<id>10274</id>
+		<name>VSD_DEPTH</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_LENGHT</physic>
+		<min>0.0</min>
+		<max>5000.0</max>
+		<def>2000.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>2000.0</value>
+		<text>Глубина спуска УЭЦН</text>
+		<short_text>Глубина спуска</short_text>
+		<form>NULL</form>
+		<unit>LENGTH_M</unit>
+		<unit_lcd>LENGTH_M</unit_lcd>
+		<format>XXXXXX</format>
+		<comment>Глубина спуска</comment>
+	</param>
+	<param>
+		<id>10275</id>
+		<name>VSD_ETALON_FAST_OFF</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Быстрый останов</text>
+		<short_text>Быстрый останов</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<comment>Быстрый останов</comment>
+	</param>
+	<param>
+		<id>10276</id>
+		<name>VSD_ETALON_UNLOCK</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Сброс аварии</text>
+		<short_text>Сброс аварии</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<comment>Сброс аварии</comment>
+	</param>
+	<param>
+		<id>10277</id>
+		<name>VSD_END</name>
 	</param>
 	<param>
 		<id>15000</id>
 		<name>TMS_BEGIN</name>
-		<valid>VALIDITY_ERROR</valid>
 	</param>
 	<param>
 		<id>15001</id>
