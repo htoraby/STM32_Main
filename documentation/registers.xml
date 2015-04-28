@@ -253,7 +253,7 @@
 		<form>1.1 Текущие параметры - сводка</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
-		<values>0-Ручной;1-Автоматический;2-По программе</values>
+		<values>1-Ручной;2-Автоматический;3-По программе</values>
 		<comment>Режим работы</comment>
 	</param>
 	<param>
@@ -11460,6 +11460,101 @@
 	</param>
 	<param>
 		<id>10277</id>
+		<name>VSD_ETALON_ON</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Запуск</text>
+		<short_text>Запуск</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<comment>Запуск</comment>
+	</param>
+	<param>
+		<id>10278</id>
+		<name>VSD_ETALON_OFF</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Останов</text>
+		<short_text>Останов</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<comment>Останов</comment>
+	</param>
+	<param>
+		<id>10279</id>
+		<name>VSD_ETALON_RESET</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Сброс уставок по умолчанию</text>
+		<short_text>Сброс уставок</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<comment>Сброс уставок по умолчанию</comment>
+	</param>
+	<param>
+		<id>10280</id>
+		<name>VSD_BLDC_MAX_WORK_FREQ</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>500.0</max>
+		<def>50.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>50.0</value>
+		<text>Предельная рабочая частота</text>
+		<short_text>Предельная рабочая частота</short_text>
+		<form>NULL</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>ХХХХ_Х</format>
+		<comment>Предельная рабочая частота</comment>
+	</param>
+	<param>
+		<id>10281</id>
+		<name>VSD_MOTOR_INDUCTANCE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_INDUNCTANCE</physic>
+		<min>0.0</min>
+		<max>10000.0</max>
+		<def>20.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>20.0</value>
+		<text>Индуктивность обмотки ВПЭД для ВД</text>
+		<short_text>Индуктивность двигателя</short_text>
+		<form>NULL</form>
+		<unit>INDUNCTANCE_MH</unit>
+		<unit_lcd>INDUNCTANCE_MH</unit_lcd>
+		<format>XXXXXX</format>
+		<comment>Индуктивность обмотки ВПЭД для ВД</comment>
+	</param>
+	<param>
+		<id>10282</id>
 		<name>VSD_END</name>
 	</param>
 	<param>

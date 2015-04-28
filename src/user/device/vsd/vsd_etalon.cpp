@@ -725,7 +725,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
-}/*
+
   modbusParameters_[43] = {// Запуск
                            VSD_ETALON_ON,    // Уникальный идентификатор параметра
                            0x40EE,           // Адрес регистра в устройстве
@@ -743,6 +743,7 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,   // Поле состояния параметра
                            0                 // Значение
                           };
+  }/*
   modbusParameters_[44] = {// Останов
                            VSD_ETALON_OFF,   // Уникальный идентификатор параметра
                            0x40EF,           // Адрес регистра в устройстве

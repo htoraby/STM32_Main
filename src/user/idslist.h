@@ -982,7 +982,12 @@ enum enID
   VSD_DEPTH = 10274,                                         //!< Глубина спуска
   VSD_ETALON_FAST_OFF = 10275,                               //!< Быстрый останов
   VSD_ETALON_UNLOCK = 10276,                                 //!< Сброс аварии
-  VSD_END = 10277,                                           //!< 
+  VSD_ETALON_ON = 10277,                                     //!< Запуск
+  VSD_ETALON_OFF = 10278,                                    //!< Останов
+  VSD_ETALON_RESET = 10279,                                  //!< Сброс уставок по умолчанию
+  VSD_BLDC_MAX_WORK_FREQ = 10280,                            //!< Предельная рабочая частота
+  VSD_MOTOR_INDUCTANCE = 10281,                              //!< Индуктивность обмотки ВПЭД для ВД
+  VSD_END = 10282,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме
