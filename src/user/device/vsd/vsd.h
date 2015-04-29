@@ -30,38 +30,36 @@ public:
   void initParameters();
 
   /*!
-   * \brief Метод получения текущего значения частоты
-   * \return
+   * \brief Метод получения текущего значения частоты из массива параметров
+   * \return Текущее значение частоты
    */
   float getCurrentFreq();
 
   /*!
-   * \brief Метод получения уставки частоты
-   * \return
+   * \brief Метод получения уставки частоты из массива параметров
+   * \return Текущее значение частоты
    */
   float getSetpointFreq();
 
   /*!
-   * \brief Метод получения номинальной частоты двигателя
-   * \return
+   * \brief Метод получения номинальной частоты двигателя из массива параметров
+   * \return Метод получения номинальной частоты двигателя
    */
   float getNominalFreq();
 
   /*!
-   * \brief Метод задания типа двигателя
-   * функция записывает в регистр код типа двигателя, и для реальных устройств
-   * в само устройство
+   * \brief Метод задания типа двигателя в массив параметров
    * \param value Тип двигателя
    * \return
    */
-  int setMotorType(float value);
+  virtual int setMotorType(float value);
 
   /*!
    * \brief Метод задания направления вращения
    * \param value - направление вращения
    * \return Код результата операции
    */
-  int setRotation(float value);
+  virtual int setRotation(float value);
 
   /*!
    * \brief Метод запуска ЧРП
@@ -92,7 +90,7 @@ public:
    * \param bit проверяемый бит
    * \return 0 - бит не установлен 1 - бит установлен
    */
-  bool checkVsdStatus(uint8_t bit);
+  virtual bool checkVsdStatus(uint8_t bit);
 
   /*!
    * \brief Метод задания частоты
@@ -106,119 +104,62 @@ public:
    * \param value
    * \return Код результата операции
    */
-  int setMinFrequency(float value);
+  virtual int setMinFrequency(float value);
 
   /*!
    * \brief Метод задания максимальной частоты
    * \param value
    * \return Код результата операции
    */
-  int setMaxFrequency(float value);
+  virtual int setMaxFrequency(float value);
 
   /*!
    * \brief Метод задания темпа набора частоты Гц/с
    * \param value
    * \return
    */
-  int setTempSpeedUp(float value);
+  virtual int setTempSpeedUp(float value);
 
   /*!
    * \brief Метод задания темпа снижения частоты Гц/с
    * \param value
    * \return
    */
-  int setTempSpeedDown(float value);
+  virtual int setTempSpeedDown(float value);
 
   /*!
    * \brief Метод задания времени набора частоты
    * \return Код результата операции
    */
-  int setSpeedUp(float value);
+  virtual int setSpeedUp(float value);
 
   /*!
    * \brief Метод задания времени снижения частоты
    * \param SpeedDown
    * \return Код результата операции
    */
-  int setSpeedDown(float SpeedDown);
+  virtual int setSpeedDown(float SpeedDown);
 
-  /*!
-   * \brief Метод задания противоЭДС
-   * \param BackEmf
-   * \return Код результата операции
-   */
-  int setBackEmf(double BackEmf);
 
   /*!
    * \brief Метод задания типа управления двигателем
    * \param value
    * \return Код результата операции
    */
-  int setMotorControl(float value);
-
-  int setMotorCurrent(float value);
+  virtual int setMotorControl(float value);
 
   /*!
    * \brief Метод задания предела тока
    * \return Код результата операции
    */
-  int setCurrentLim(float value);
-
-  /*!
-   * \brief Метод задания времени фильтрации
-   * \param FilterTimeCurrentLim
-   * \return Код результата операции
-   */
-  int setFilterTimeCurrentLim(double FilterTimeCurrentLim);
-
-  /*!
-   * \brief Метод задания времени фильтрации на высокой скорости
-   * \param HighSpeedFilterTimeCurrentLim
-   * \return Код результата операции
-   */
-  int setHighSpeedFilterTimeCurrentLim(double HighSpeedFilterTimeCurrentLim);
-
-  /*!
-   * \brief Метод задания количества полюсов
-   * \param PolesMotor
-   * \return Код результата операции
-   */
-  int setPolesMotor(double PolesMotor);
-
-  /*!
-   * \brief Метод задания номинального момента двигателя
-   * \param RateTorqueMotor
-   * \return Код результата операции
-   */
-  int setRateTorqueMotor(double RateTorqueMotor);
-
-  /*!
-   * \brief Метод задания сопротивления статора
-   * \param ResistanceStator
-   * \return Код результата операции
-   */
-  int setResistanceStator(double ResistanceStator);
-
-  /*!
-   * \brief Метод записи скорости вращения двигателя
-   * \param SpeedMotor
-   * \return Код результата операции
-   */
-  int setSpeedMotor(double SpeedMotor);
+  virtual int setCurrentLim(float value);
 
   /*!
    * \brief Функция задания частоты коммутации (Частота ШИМ)
    * \param value задаваемая частота коммутации (Частота ШИМ)
    * \return Код результата операции
    */
-  int setSwitchingFrequency(float value);
-
-  /*!
-   * \brief Метод задания момента
-   * \param TorqueLimit
-   * \return Код результата операции
-   */
-  int setTorqueLimit(double TorqueLimit);
+  virtual int setSwitchingFrequency(float value);
 
   /*!
    * \brief Метод настройки толчкового режима
