@@ -987,7 +987,11 @@ enum enID
   VSD_ETALON_RESET = 10279,                                  //!< Сброс уставок по умолчанию
   VSD_BLDC_MAX_WORK_FREQ = 10280,                            //!< Предельная рабочая частота
   VSD_MOTOR_INDUCTANCE = 10281,                              //!< Индуктивность обмотки ВПЭД для ВД
-  VSD_END = 10282,                                           //!< 
+  VSD_MOTOR_INDUCTANCE_RESIST_PHASE = 10282,                 //!< Активное сопротивление обмотки ВПЭД для ВД
+  VSD_BLDC_DOWN_REG = 10283,                                 //!< Нижний предел регулирования для ВД
+  VSD_BLDC_UP_REG = 10284,                                   //!< Верхний предел регулирования для ВД
+  VSD_BLDC_SYNC_RATE = 10285,                                //!< Темп защиты от срыва синхронизации для ВД
+  VSD_END = 10286,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме
