@@ -788,9 +788,10 @@ void Ccs::calcRegimeChangeFreqPeriodOneStep()
   float period = parameters.get(CCS_RGM_CHANGE_FREQ_PERIOD);
   float periodOneStep = 0;
   if ((endFreq - beginFreq) != 0)
-    periodOneStep = period / (fabs(endFreq - beginFreq) * 1);
-  if (periodOneStep < 5)
+    periodOneStep = period / (fabs(endFreq - beginFreq)) * 0.1;
+  if (periodOneStep < 5) {
     periodOneStep = 5;
+  }
   setValue(CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP, periodOneStep);
 }
 

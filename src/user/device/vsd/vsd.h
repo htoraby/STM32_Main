@@ -99,7 +99,7 @@ public:
    * \param value
    * \return Код результата операции
    */
-  int setFrequency(float value);
+  virtual int setFrequency(float value);
 
   /*!
    * \brief Метод задания минимальной частоты
