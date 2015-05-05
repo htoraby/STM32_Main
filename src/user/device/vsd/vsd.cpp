@@ -17,61 +17,44 @@ Vsd::~Vsd()
   // TODO Auto-generated destructor stub
 }
 
-void Vsd::initParameters()
+// Задаваемые параметры двигателя
+int Vsd::setMotorType(float value)
 {
-  for (int index = 0; index < (VSD_END - VSD_BEGIN); index++) {
-    setFieldID(index, index + VSD_BEGIN);
-    setFieldAccess(index, ACCESS_ERROR);
-    setFieldOperation(index, OPERATION_ERROR);
-    setFieldPhysic(index, PHYSIC_ERROR);
-    setFieldMin(index, 0.0);
-    setFieldMax(index, 0.0);
-    setFieldDef(index, 0.0);
-    setFieldValidity(index, VALIDITY_ERROR);
-    setFieldValue(index, 0.0);
-  }
+  return setValue(VSD_MOTOR_TYPE, (float)value);
 }
 
-bool Vsd::checkVsdStatus(uint8_t bit)
-{
-  if (bit < VSD_STATUS_FC_I2T_ERR)
-    return checkBit(getValue(VSD_INVERTOR_STATUS), bit);
-  if ((bit >= VSD_STATUS_FC_I2T_ERR) && (bit < VSD_STATUS_3))
-    return checkBit(getValue(VSD_INVERTOR_STATUS2), bit - 16);
-  else
-    return false;
-}
-
-float Vsd::getCurrentFreq()
-{
-  return getValue(VSD_FREQUENCY_NOW);
-}
-
-float Vsd::getSetpointFreq()
-{
-  return getValue(VSD_FREQUENCY);
-}
-
-int Vsd::setNominalFreq(float freq)
+int Vsd::setMotorNominalFreq(float freq)
 {
   return setValue(VSD_MOTOR_FREQUENCY, freq);
 }
 
-float Vsd::getNominalFreq()
+int Vsd::setMotorNominalCurrent(float current)
 {
-  return getValue(VSD_MOTOR_FREQUENCY);
+  return setValue(VSD_MOTOR_CURRENT, current);
 }
 
-int Vsd::setMotorType(float value)
+int Vsd::setMotorNominalVoltage(float voltage)
 {
-  return setValue(VSD_MOTOR_TYPE, value);
+    return setValue(VSD_MOTOR_VOLTAGE, voltage);
 }
 
-int Vsd::setRotation(float value)
+// Задаваемые параметры ЧРП
+int Vsd::setSwitchingFrequency(float value)
 {
-  return setValue(VSD_ROTATION, value);
+  return setValue(VSD_SWITCHING_FREQUENCY, value);
 }
 
+int Vsd::setCurrentLim(float value)
+{
+  return setValue(VSD_ILIMIT, value);
+}
+
+int Vsd::setSumInduct(float induct)
+{
+  return setValue(VSD_LOUT, induct);
+}
+
+// Задаваемые параметры работы
 int Vsd::setFrequency(float value)
 {
   return setValue(VSD_FREQUENCY, value);
@@ -137,14 +120,19 @@ int Vsd::setTempSpeedDown(float value)
   return RETURN_ERROR;
 }
 
-int Vsd::setSpeedUp(float value)
+int Vsd::setSpeedUp(float speedUp)
 {
-  return setValue(VSD_T_SPEEDUP, value);
+  return setValue(VSD_T_SPEEDUP, speedUp);
 }
 
-int Vsd::setSpeedDown(float value)
+int Vsd::setSpeedDown(float speedDown)
 {
-  return setValue(VSD_T_SPEEDDOWN, value);
+  return setValue(VSD_T_SPEEDDOWN, speedDown);
+}
+
+int Vsd::setRotation(float value)
+{
+  return setValue(VSD_ROTATION, value);
 }
 
 int Vsd::setMotorControl(float value)
@@ -152,22 +140,46 @@ int Vsd::setMotorControl(float value)
   return setValue(VSD_MOTOR_CONTROL, value);
 }
 
-int Vsd::setCurrentLim(float value)
+// Читаемые параметры ЧРП
+float Vsd::getCurrentFreq()
 {
-  return setValue(VSD_ILIMIT, value);
+  return getValue(VSD_FREQUENCY_NOW);
 }
 
-int Vsd::setSwitchingFrequency(float value)
+float Vsd::getSetpointFreq()
 {
-  return setValue(VSD_SWITCHING_FREQUENCY, value);
+  return getValue(VSD_FREQUENCY);
 }
 
+float Vsd::getNominalFreq()
+{
+  return getValue(VSD_MOTOR_FREQUENCY);
+}
 
+// Команды и операции
+bool Vsd::checkVsdStatus(uint8_t bit)
+{
+  if (bit < VSD_STATUS_FC_I2T_ERR)
+    return checkBit(getValue(VSD_INVERTOR_STATUS), bit);
+  if ((bit >= VSD_STATUS_FC_I2T_ERR) && (bit < VSD_STATUS_3))
+    return checkBit(getValue(VSD_INVERTOR_STATUS2), bit - 16);
+  if ((bit >= VSD_FLT_IMAX) && (bit < VSD_FLT_TEST))
+      return checkBit(getValue(VSD_INV_FAULT), bit - 16);
+  else
+    return false;
+}
 
-
-
-
-
-
-
-
+void Vsd::initParameters()
+{
+  for (int index = 0; index < (VSD_END - VSD_BEGIN); index++) {
+    setFieldID(index, index + VSD_BEGIN);
+    setFieldAccess(index, ACCESS_ERROR);
+    setFieldOperation(index, OPERATION_ERROR);
+    setFieldPhysic(index, PHYSIC_ERROR);
+    setFieldMin(index, 0.0);
+    setFieldMax(index, 0.0);
+    setFieldDef(index, 0.0);
+    setFieldValidity(index, VALIDITY_ERROR);
+    setFieldValue(index, 0.0);
+  }
+}

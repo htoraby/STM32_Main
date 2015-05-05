@@ -323,8 +323,8 @@ enum enPhysicIndunctance {
  * \brief Перечисление типов двигателя
  */
 enum enMotorType {
-  VSD_MOTOR_TYPE_ASYNC = 0,                 /// Асинхронный двигатель
-  VSD_MOTOR_TYPE_VENT                       /// Вентильный двигатель
+  VSD_MOTOR_TYPE_ASYNC = 0,                 //!< Асинхронный двигатель
+  VSD_MOTOR_TYPE_VENT  = 1                  //!< Вентильный двигатель
 };
 
 /*!
@@ -632,7 +632,17 @@ enum enVsdFlags {
   VSD_STATUS_M_I2T_ERR,                     //!< Токовая защита двигателя (перегруз)
   VSD_STATUS_OWERPWM1,                      //!< OverPWM тип 1
   VSD_STATUS_OWERPWM2,                      //!< OverPWM тип 2
-  VSD_STATUS_3               = 32
+  VSD_STATUS_3                = 32,
+  VSD_FLT_IMAX                = 48,         //!< Превышен максимальный ток инвертора
+  VSD_FLT_IZ,                               //!< Детектирован разностный ток выходных фаз (утечка)
+  VSD_FLT_AN_MON,                           //!< Ошибка монитора питания  аналоговой цепи контроллера
+  VSD_FLT_CTR_MON,                          //!< Ошибка монитора питания цифровой цепи контроллера
+  VSD_FLT_CLK_MON,                          //!< Ошибка монитора питания часов контроллера
+  VSD_FLT_MB_MON,                           //!< Ошибка монитора платы измерений
+  VSD_FLT_DRV0,                             //!< Ошибка драйвера 0
+  VSD_FLT_DRV1,                             //!< Ошибка драйвера 1
+  VSD_FLT_DRV2,                             //!< Ошибка драйвера 2
+  VSD_FLT_TEST                              //!< Включен тестовый режим контроллера ПЧ
 };
 
 /*!
