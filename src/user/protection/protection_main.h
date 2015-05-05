@@ -15,6 +15,8 @@
 #include "protection_pressure_intake.h"
 #include "protection_resistance_isolation.h"
 
+#include "protection_hardware_vsd.h"
+
 extern ProtectionOverVoltageInput protOverVoltIn;
 extern ProtectionUnderVoltageInput protUnderVoltIn;
 extern ProtectionImbalanceVoltageInput protImbalanceVoltIn;
@@ -28,6 +30,8 @@ extern ProtectionTurbineRotation protTurbineRotation;
 extern ProtectionTemperatureMotor protTemperatureMotor;
 extern ProtectionPressureIntake protPressureIntake;
 extern ProtectionResistanceIsolation protResistanceIsolation;
+
+extern ProtectionHardwareVsd protHardwareVsd;
 
 /*!
  * \brief Функция инициализации задачи обработки всех защит

@@ -29,6 +29,123 @@ public:
 
   void initParameters();
 
+  /*! Задаваемые параметры двигателя */
+  /*!
+   * \brief Метод задания типа двигателя в массив параметров
+   * \param value - тип двигателя:VSD_MOTOR_TYPE_ASYNC = 0,VSD_MOTOR_TYPE_VENT = 1
+   * \return 0 - задание успешно, № - ошибки
+   */
+  virtual int setMotorType(float value);
+
+  /*!
+   * \brief Функция записи в регистр номинальной частоты двигателя
+   * \param freq - задаваемая частота
+   * \return 0 - задание успешно, № - ошибки
+   */
+  virtual int setMotorNominalFreq(float freq);
+
+  /*!
+   * \brief Функция записи в регистр номинального тока двигателя
+   * \param current - задаваемый ток
+   * \return 0 - задание успешно, № - ошибки
+   */
+  virtual int setMotorNominalCurrent(float current);
+
+  /*!
+   * \brief Функция записи в регистр номинального напряжения двигателя
+   * \param voltage - задаваемое напряжение
+   * \return 0 - задание успешно, № - ошибки
+   */
+  virtual int setMotorNominalVoltage(float voltage);
+
+  /*! Задаваемые параметры ЧРП */
+  /*!
+   * \brief Функция записи в регистр частоты коммутации (Частота ШИМ)
+   * \param value задаваемая частота коммутации (Частота ШИМ)
+   * \return 0 - задание успешно, № - ошибки
+   */
+  virtual int setSwitchingFrequency(float value);
+
+  /*!
+   * \brief Метод задания предела тока
+   * \return Код результата операции
+   */
+  virtual int setCurrentLim(float value);
+
+  /*!
+   * \brief Функция записи в регистр суммарной индуктивности
+   * \param induct - задаваемая суммарная индуктивности
+   * \return 0 - задание успешно, № - ошибки
+   */
+  virtual int setSumInduct(float induct);
+
+  /*! Задаваемые параметры работы */
+  /*!
+   * \brief Функция записи в регистр уставки частоты
+   * \param value - задаваемая частота
+   * \return 0 - задание успешно, № - ошибки
+   */
+  virtual int setFrequency(float value);
+
+  /*!
+   * \brief Функция записи в регистр минимальной частоты
+   * \param value - минимальная частота
+   * \return 0 - задание успешно, № - ошибки
+   */
+  virtual int setMinFrequency(float value);
+
+  /*!
+   * \brief Функция записи в регистр максимальной частоты
+   * \param value - максимальная частота
+   * \return 0 - задание успешно, № - ошибки
+   */
+  virtual int setMaxFrequency(float value);
+
+  /*!
+   * \brief Функция записи в регистр темпа набора частоты Гц/с
+   * и пересчитанного значения в регистр время набора частота
+   * \param value - темп
+   * \return 0 - задание успешно, № - ошибки
+   */
+  virtual int setTempSpeedUp(float value);
+
+  /*!
+   * \brief Функция записи в регистр темпа снижения частоты Гц/с
+   * и пересчитанного значения в регистр время снижения частота
+   * \param value - темп
+   * \return 0 - задание успешно, № - ошибки
+   */
+  virtual int setTempSpeedDown(float value);
+
+  /*!
+   * \brief Функция записи в регистр времени набора частоты
+   * \param SpeedDown
+   * \return Код результата операции
+   */
+  virtual int setSpeedUp(float speedUp);
+
+  /*!
+   * \brief Функция записи в регистр снижения частоты
+   * \param SpeedDown
+   * \return 0 - задание успешно, № - ошибки
+   */
+  virtual int setSpeedDown(float speedDown);
+
+  /*!
+   * \brief Функция записи в регистр направления вращения
+   * \param value - направление вращения
+   * \return 0 - задание успешно, № - ошибки
+   */
+  virtual int setRotation(float value);
+
+  /*!
+   * \brief Функция записи в регистр управления двигателем
+   * \param value
+   * \return 0 - задание успешно, № - ошибки
+   */
+  virtual int setMotorControl(float value);
+
+  /*! Читаемые параметры ЧРП */
   /*!
    * \brief Метод получения текущего значения частоты из массива параметров
    * \return Текущее значение частоты
@@ -47,19 +164,7 @@ public:
    */
   float getNominalFreq();
 
-  /*!
-   * \brief Метод задания типа двигателя в массив параметров
-   * \param value Тип двигателя
-   * \return
-   */
-  virtual int setMotorType(float value);
-
-  /*!
-   * \brief Метод задания направления вращения
-   * \param value - направление вращения
-   * \return Код результата операции
-   */
-  virtual int setRotation(float value);
+  /*! Команды и операции */
 
   /*!
    * \brief Метод запуска ЧРП
@@ -87,79 +192,10 @@ public:
 
   /*!
    * \brief Метод проверки флага в регистре статуса инвертора
-   * \param bit проверяемый бит
+   * \param bit - проверяемый бит
    * \return 0 - бит не установлен 1 - бит установлен
    */
   virtual bool checkVsdStatus(uint8_t bit);
-
-  /*!
-   * \brief Метод задания частоты
-   * \param value
-   * \return Код результата операции
-   */
-  virtual int setFrequency(float value);
-
-  /*!
-   * \brief Метод задания минимальной частоты
-   * \param value
-   * \return Код результата операции
-   */
-  virtual int setMinFrequency(float value);
-
-  /*!
-   * \brief Метод задания максимальной частоты
-   * \param value
-   * \return Код результата операции
-   */
-  virtual int setMaxFrequency(float value);
-
-  /*!
-   * \brief Метод задания темпа набора частоты Гц/с
-   * \param value
-   * \return
-   */
-  virtual int setTempSpeedUp(float value);
-
-  /*!
-   * \brief Метод задания темпа снижения частоты Гц/с
-   * \param value
-   * \return
-   */
-  virtual int setTempSpeedDown(float value);
-
-  /*!
-   * \brief Метод задания времени набора частоты
-   * \return Код результата операции
-   */
-  virtual int setSpeedUp(float value);
-
-  /*!
-   * \brief Метод задания времени снижения частоты
-   * \param SpeedDown
-   * \return Код результата операции
-   */
-  virtual int setSpeedDown(float SpeedDown);
-
-
-  /*!
-   * \brief Метод задания типа управления двигателем
-   * \param value
-   * \return Код результата операции
-   */
-  virtual int setMotorControl(float value);
-
-  /*!
-   * \brief Метод задания предела тока
-   * \return Код результата операции
-   */
-  virtual int setCurrentLim(float value);
-
-  /*!
-   * \brief Функция задания частоты коммутации (Частота ШИМ)
-   * \param value задаваемая частота коммутации (Частота ШИМ)
-   * \return Код результата операции
-   */
-  virtual int setSwitchingFrequency(float value);
 
   /*!
    * \brief Метод настройки толчкового режима
@@ -202,13 +238,6 @@ public:
    * \return
    */
   virtual int onRegimePickup() = 0;
-
-  /*!
-   * \brief Задание в регистр номинальной частоты двигатля
-   * \param freq Задаваемая частота
-   * \return
-   */
-  int setNominalFreq(float freq);
 
 private:
   //! Массив параметров устройства

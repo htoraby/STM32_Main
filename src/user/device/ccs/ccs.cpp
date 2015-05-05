@@ -655,6 +655,24 @@ uint8_t Ccs::setNewValue(uint16_t id, float value)
   case CCS_FILTER_INDUCTANCE:
     calcSystemInduct();
     break;
+  case CCS_DATE_TIME_SEC:
+    parameters.set(VSD_TIME_SECOND, value);
+    break;
+  case CCS_DATE_TIME_MIN:
+    parameters.set(VSD_TIME_MINUTE, value);
+    break;
+  case CCS_DATE_TIME_HOUR:
+    parameters.set(VSD_TIME_HOUR, value);
+    break;
+  case CCS_DATE_TIME_DAY:
+    parameters.set(VSD_TIME_DAY, value);
+    break;
+  case CCS_DATE_TIME_MONTH:
+    parameters.set(VSD_TIME_MONTH, value);
+    break;
+  case CCS_DATE_TIME_YEAR:
+    parameters.set(VSD_TIME_YEAR, value);
+    break;
   default:
     break;
   }
