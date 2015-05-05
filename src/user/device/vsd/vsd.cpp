@@ -164,7 +164,9 @@ bool Vsd::checkVsdStatus(uint8_t bit)
   if ((bit >= VSD_STATUS_FC_I2T_ERR) && (bit < VSD_STATUS_3))
     return checkBit(getValue(VSD_INVERTOR_STATUS2), bit - 16);
   if ((bit >= VSD_FLT_IMAX) && (bit < VSD_FLT_TEST))
-      return checkBit(getValue(VSD_INV_FAULT), bit - 16);
+    return checkBit(getValue(VSD_INV_FAULT), bit - 16);
+  if ((bit >= VSD_THYR_ABC_STATE) && (bit < VSD_THYR_ERR_SHORTCIRQUIT))
+    return checkBit(getValue(VSD_THYR_CONTROL), bit - 16);
   else
     return false;
 }

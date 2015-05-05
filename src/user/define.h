@@ -642,7 +642,15 @@ enum enVsdFlags {
   VSD_FLT_DRV0,                             //!< Ошибка драйвера 0
   VSD_FLT_DRV1,                             //!< Ошибка драйвера 1
   VSD_FLT_DRV2,                             //!< Ошибка драйвера 2
-  VSD_FLT_TEST                              //!< Включен тестовый режим контроллера ПЧ
+  VSD_FLT_TEST,                             //!< Включен тестовый режим контроллера ПЧ
+  VSD_THYR_ABC_STATE          = 64,         //!< Направление чередования фаз
+  VSD_THYR_1,
+  VSD_THYR_ERR_STATE,                       //!< Ошибка синхронизации с сетью
+  VSD_THYR_CHARGE_STATE,                    //!< Производится заряд ёмкости инвертора
+  VSD_THYR_STARTED_STATE,                   //!< Ёмкость заряжена
+  VSD_THYR_SYNC_STATE,                      //!< Первая попытка синхронизации
+  VSD_THYR_BOUNCE_WAIT,                     //!< Ожидание времени антидребезга
+  VSD_THYR_ERR_SHORTCIRQUIT                 //!< Ошибка по КЗ на инверторе
 };
 
 /*!
