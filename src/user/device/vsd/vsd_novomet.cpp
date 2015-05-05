@@ -2777,6 +2777,7 @@ int VsdNovomet::onRegimePush()
   if ((impulse < 1.0) || (impulse > 10))
     impulse = 1.0;
 
+  setNewValue(VSD_START_FREQ, freq);                        // Задаём частоту основного режима
   setNewValue(VSD_SW_STARTUP_FREQUENCY, freq);              // Записали в ЧРП частоту
   setNewValue(VSD_SW_STARTUP_ANGLE_OSC, 180.0);             // Угол константа
   setNewValue(VSD_SW_STARTUP_OSC_COUNT, 1.0);               // Количество качаний константа
@@ -2814,6 +2815,7 @@ int VsdNovomet::onRegimeSwing()
   if ((impulse < 1.0) || (impulse > 10))
     impulse = 1.0;
 
+  setNewValue(VSD_START_FREQ, freq);                        // Задаём частоту основного режима
   setNewValue(VSD_SW_STARTUP_FREQUENCY, freq);              // Записали в ЧРП частоту
   setNewValue(VSD_SW_STARTUP_ANGLE_OSC, 180.0);             // Угол константа
   setNewValue(VSD_SW_STARTUP_OSC_COUNT, 2.0);               // Количество качаний константа

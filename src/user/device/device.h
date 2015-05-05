@@ -326,6 +326,12 @@ protected:
    */
   void setFieldAll(unsigned short index, parameter param);
 
+  /*!
+   * \brief Метод присвоения поля value, значению из поля def
+   * \param index - индекс параметра в массиве
+   */
+  void setFieldValueDef(unsigned short index);
+
   float applyCoef(float value, float coef);
 
   float applyUnit(float value, int physic, int units);

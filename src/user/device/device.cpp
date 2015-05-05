@@ -337,6 +337,11 @@ void Device::setFieldAll(unsigned short index, parameter param)
   parameters_[index] = param;
 }
 
+void Device::setFieldValueDef(unsigned short index)
+{
+  parameters_[index].value.float_t = parameters_[index].def;
+}
+
 float Device::applyCoef(float value, float coef)
 {
   return value * coef;
