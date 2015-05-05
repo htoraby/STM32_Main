@@ -3,14 +3,15 @@
 
 #include "protection.h"
 
+/*!
+ * \brief Класс аппаратных защит ЧРП
+ */
 class ProtectionHardwareVsd : public Protection
 {
 public:
   ProtectionHardwareVsd();
   ~ProtectionHardwareVsd();
 private:
-
-  void setOtherParamProt();
   bool checkAlarm();
 };
 

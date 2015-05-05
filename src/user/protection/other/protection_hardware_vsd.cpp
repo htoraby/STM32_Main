@@ -66,14 +66,6 @@ bool ProtectionHardwareVsd::checkAlarm()
     protReactEventId_ = HardwareVsdVcProtReactId;
     return true;
   }
-//  TODO: Прояснить вопрос с перегрузом
-//  if (vsd->checkVsdStatus(VSD_STATUS_M_I2T_ERR)) {
-//    return true;
-//  }
-//  if (vsd->checkVsdStatus(VSD_STATUS_I_FAST_ERR)) {
-//    return true;
-//  }
-
   return false;
 }
 
