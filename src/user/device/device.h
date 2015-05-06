@@ -11,10 +11,9 @@
 
 #include "define.h"
 #include "idslist.h"
+#include "units.h"
 #include "board.h"
 #include "fram.h"
-
-extern float Units[30][6][2];
 
 /*!
  * \brief Структура для обработки и хранения параметров в СУ
@@ -164,11 +163,6 @@ public:
    * \brief Чтение массива параметров с Flash
    */
   StatusType readParameters();
-
-  /*!
-   * \brief Коэффициенты преобразования единиц измерения
-   */
-  static float units[PHYSIC_LAST][6][2];
 
 protected:
 
@@ -334,7 +328,7 @@ protected:
 
   float applyCoef(float value, float coef);
 
-  float applyUnit(float value, int physic, int units);
+  float applyUnit(float value, int physic, int unit);
 
   //! Начальный адрес массива параметров из списка enID
   uint32_t startAddrParams_;

@@ -189,7 +189,7 @@ void DeviceModbus::writeModbusParameter(int id, float value)
   // Получаем всю структуру параметра
   ModbusParameter *param = getFieldAll(index);
   // Применяем преобразование единиц измерения
-  value = (value * (Device::units[param->physic][param->unit][0])) + (Device::units[param->physic][param->unit][1]);
+  value = (value * (units[param->physic][param->unit][0])) + (units[param->physic][param->unit][1]);
   // Применяем преобразование коэффициента
   value = value / param->coefficient;
   // Применяем тип данных

@@ -1917,7 +1917,7 @@ void VsdEtalon::getNewValue(uint16_t id)
     break;
   }
   value = value * param->coefficient;
-  value = (value - (Units[param->physic][param->unit][1]))/(Units[param->physic][param->unit][0]);
+  value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
   setValue(id, value);
   calcParameters(id);
 }
