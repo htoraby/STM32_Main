@@ -29,6 +29,7 @@
 #define MODBUS_MAX_FC01_COILS                 MODBUS_MAX_FC03_WORDS * 16
 #define MODBUS_MAX_FC16_WORDS                 (MODBUS_MAX_DATA_SIZE - 5) / 2
 #define MODBUS_MAX_FC15_COILS                 MODBUS_MAX_FC16_WORDS * 16
+
 #define MODBUS_READ_COILS_0x01                1
 #define MODBUS_READ_DISCRETE_INPUTS_0x02      2
 #define MODBUS_READ_HOLDING_REGISTERS_0x03    3
@@ -39,7 +40,9 @@
 #define MODBUS_DIAGNOSTICS_0x08               8
 #define MODBUS_WRITE_MULTIPLE_COILS_0x0F      15
 #define MODBUS_WRITE_MULTIPLE_REGISTERS_0x10  16
+
 #define MODBUS_ERROR_0x80                     128
+
 #define MODBUS_ILLEGAL_FUNCTION_0x01          1
 #define MODBUS_ILLEGAL_DATA_ADDRESS_0x02      2
 #define MODBUS_ILLEGAL_DATA_VALUE_0x03        3
@@ -52,62 +55,126 @@
 
 #define MODBUS_COUNTER_LOST_CONNECT           10
 
-
-// БАЗОВЫЙ КЛАСС MODBUS MASTER
-// Релизует функции Modbus и некоторые другие функции
-// Методы этого класс применяются ко всем классам типов обмена через наследование
+/*!
+ * \brief Класс Modbus master
+ * Релизует функции Modbus и некоторые другие функции
+ */
 class ModbusMaster
 {
 public:
   ModbusMaster();
   virtual ~ModbusMaster();
 
-  ///////////////////////////////////////////////////////////////////////
-  // МЕТОДЫ РЕАЛИЗУЮЩИЙ ФУНКЦИИ ПРОТОКОЛА MODBUS
-  ///////////////////////////////////////////////////////////////////////
+  /*! Функции реализующий протокол Modbus */
+  /*! Битовые методы */
+  /*!
+   * \brief Функция чтения состояния катушек
+   * Функция 1, считывание состояния катушек
+   * \param SlaveAddr - modbus адрес ведомого устройства (диапазон: 1 - 255)
+   * \param StartRef - первая катушка
+   * \param BitArr - массив возвращаемых значений
+   * \param RefCnt - количество считываемых катушек (Диапазон: 1-2000)
+   * \return 0 - выполнено или код ошибки
+   */
+  int readCoils(int SlaveAddr, int StartRef, bool BitArr[], int RefCnt);
 
-  // ПОБИТОВЫЕ МЕТОДЫ ///////////////////////////////////////////////////
+  /*!
+   * \brief Функция чтения состояния дискретных входов
+   * Modbus функция 2, Чтение дискретных входов
+   * \param SlaveAddr - modbus адрес ведомого устройства (диапазон: 1 - 255)
+   * \param StartRef - первый вход
+   * \param BitArr - массив возвращаемых значений
+   * \param RefCnt - количество считываемых входов (Диапазон: 1-2000)
+   * \return 0 - выполнено или код ошибки
+   */
+  int readInputDiscretes(int SlaveAddr, int StartRef, bool BitArr[], int RefCnt);
+  
+  /*!
+   * \brief Функция чтения регистров
+   * Modbus функция 3,  Читать нескольких регистров.
+   * \param slaveAddr - modbus Адрес ведомого устройства (диапазон: 1 - 255)
+   * \param startRef - начните регистр (диапазон: 1 - 0x10000)
+   * \param regArr - буфера, который будет наполнен прочитанныйми данными
+   * \param refCnt - количество считываемых регистров
+   * \return 0 - выполнено или код ошибки
+   */
+  int readMultipleRegisters(int slaveAddr, int startRef, short *regArr, int refCnt); 
 
-  // МЕТОД ЧТЕНИЯ СОСТОЯНИЯ КАТУШЕК
-  // Modbus функция 1, Считывание состояния катушки
-  // Читает содержимое катушек
-  // Параметры:
-  // SlaveAddr Modbus Адрес ведомого устройства (диапазон: 1 - 255)
-  // StartRef Первая катушка
-  // RefCnt Количество считываемых катушек (Диапазон: 1-2000)
-  // Возвращает:
-  // RETURN_OK в случае успешного завершения или код ошибки
-  int readCoils(				int SlaveAddr,
-                        int StartRef,
-                        bool BitArr[],
-                        int RefCnt);
+  /*!
+   * \brief Функция чтения регистров 32 битных регистров
+   * Функция Modbus (03 Hex) для 32-разрядных типов данных Int
+   * \param slaveAddr - modbus Адрес ведомого устройства или идентификатор единицы (Диапазон: 0 - 255)
+   * \param startRef - Первый регистр
+   * \param int32Arr - буфера с данными
+   * \param refCnt - количество длинных целых регистров
+   * \return 0 - выполнено или код ошибки
+   */
+  int readMultipleLongInts(int slaveAddr, int startRef, int *int32Arr, int refCnt);
 
-  // МЕТОД ЧТЕНИЯ СОСТОЯНИЯ ДИСКРЕТНЫХ ВХОДОВ
-  // Modbus функция 2, Чтение дискретных входов
-  // Считывает содержимое дискретных входов
-  // Параметры:
-  // SlaveAddr Modbus Адрес ведомого устройства (диапазон: 1 - 255)
-  // StartRef Первый вход
-  // BitArr буфера, который будет содержать считывать данные
-  // RefCnt Количество считываемых входов (Диапазон: 1-2000)
-  // Возвращает:
-  // RETURN_OK в случае успешного завершения или код ошибки
-  int readInputDiscretes(		int SlaveAddr,
-                            int StartRef,
-                            bool BitArr[],
-                            int RefCnt);
+  /*!
+   * \brief Функция чтения регистров 32 битных регистров
+   * Modbus функция 3 для 32-битных типов данных с плавающей точкой
+   * \param slaveAddr - modbus Адрес ведомого устройства (диапазон: 1 - 255)
+   * \param startRef - первый регистр
+   * \param float32Arr - буфер, который будет наполнен прочитаными данными
+   * \param refCnt - количество поплавков значений, которые будут читать (диапазон: 1-62)
+   * \return 0 - выполнено или код ошибки
+   */
+  int readMultipleFloats(int slaveAddr, int startRef, float float32Arr[], int refCnt);
 
-  // МЕТОД ЗАПИСИ КАТУШКИ
-  // Modbus функция 5, Записать катушку.
-  // Параметры:
-  // SlaveAddr Modbus Адрес ведомого устройства (Диапазон: 0 - 255)
-  // BitAddr катушки адрес
-  // BitVal записываемое состояние
-  // Возвращает:
-  // RETURN_OK в случае успешного завершения или код ошибки
-  int writeCoil(				int SlaveAddr,
-                        int BitAddr,
-                        int BitVal);
+  /*!
+   * \brief Функция чтения регистров
+   * Modbus функция 4,  Читать нескольких регистров.
+   * \param slaveAddr - modbus Адрес ведомого устройства (диапазон: 1 - 255)
+   * \param startRef - начните регистр (диапазон: 1 - 0x10000)
+   * \param regArr - буфера, который будет наполнен прочитанныйми данными
+   * \param refCnt - количество считываемых регистров
+   * \return 0 - выполнено или код ошибки
+   */
+  int readInputRegisters(int slaveAddr, int startRef, short regArr[], int refCnt);
+
+  /*!
+   * \brief Функция чтения регистров 32 битных регистров
+   * Функция Modbus (04 Hex) для 32-разрядных типов данных Int
+   * \param slaveAddr - modbus Адрес ведомого устройства или идентификатор единицы (Диапазон: 0 - 255)
+   * \param startRef - Первый регистр
+   * \param int32Arr - буфера с данными
+   * \param refCnt - количество длинных целых регистров
+   * \return 0 - выполнено или код ошибки
+   */
+  int readInputLongInts(int slaveAddr, int startRef, int *int32Arr, int refCnt);
+
+  /*!
+   * \brief Функция чтения регистров 32 битных регистров
+   * Modbus функция 3 для 32-битных типов данных с плавающей точкой
+   * \param slaveAddr - modbus Адрес ведомого устройства (диапазон: 1 - 255)
+   * \param startRef - первый регистр
+   * \param float32Arr - буфер, который будет наполнен прочитаными данными
+   * \param refCnt - количество поплавков значений, которые будут читать (диапазон: 1-62)
+   * \return 0 - выполнено или код ошибки
+   */
+  int readInputFloats(int slaveAddr, int startRef, float float32Arr[], int refCnt);
+
+  /*!
+   * \brief Функция записи катушки
+   * modbus функция 5, Записать катушку.
+   * \param slaveAddr - modbus Адрес ведомого устройства (Диапазон: 0 - 255)
+   * \param bitAddr - катушки адрес
+   * \param bitVal - записываемое состояние
+   * \return 0 - выполнено или код ошибки
+   */
+  int writeCoil(int slaveAddr, int bitAddr, int bitVal);
+
+  /*!
+   * \brief Функция записи значения в регистр
+   * Modbus функция 6, Запись одного регистра. Записывает значение в один регистр выходной
+   * \param slaveAddr -modbus Адрес ведомого устройства (Диапазон: 0 - 255)
+   * \param regAddr - адрес регистра (диапазон: 1 - 0x10000)
+   * \param regVal - данные для отправки
+   * \return 0 - выполнено или код ошибки
+   */
+  int writeSingleRegister(int slaveAddr, int regAddr, short regVal);
+
 
   // МЕТОД ЗАПИСИ КАТУШЕК
   // Modbus функция 15 (0F Hex), Воздействие на несколько катушек
@@ -126,47 +193,11 @@ public:
 
   // МЕТОДЫ ДЛЯ 16-ТИ БИТОВЫХ РЕГИСТРОВ /////////////////////////////////
 
-  // МЕТОД ЧТЕНИЯ РЕГИСТРОВ УСТРОЙТВА
-  // Modbus функция 3,  Читать нескольких регистров.
-  // Читает содержимое регистров
-  // Параметры:
-  // SlaveAddr Modbus Адрес ведомого устройства (диапазон: 1 - 255)
-  // StartRef Начните регистр (диапазон: 1 - 0x10000)
-  // RegArr буфера, который будет наполнен прочитанныйми данными
-  // RefCnt Количество считываемых регистров
-  // Возвращает:
-  // RETURN_OK в случае успешного завершения или код ошибки
-  int readMultipleRegisters(int slaveAddr,
-                            int startRef,
-                            short *regArr,
-                            int refCnt);
 
-  // МЕТОД ЧТЕНИЯ ВНУТРЕННИХ РЕГИСТРОВ УСТРОЙСТВА
-  // Modbus функция 4, Чтение входных регистров.
-  // Параметры:
-  // SlaveAddr Modbus Адрес ведомого устройства (диапазон: 1 - 255)
-  // StartRef Начните регистр
-  // RegArr буфера, который будет наполнен данными читать.
-  // RefCnt Количество считываемых регистров (Диапазон: 1-125)
-  // Возвращает:
-  // RETURN_OK в случае успешного завершения или код ошибки
-  int readInputRegisters(		int SlaveAddr,
-                            int StartRef,
-                            short RegArr[],
-                            int RefCnt);
 
-  // МЕТОД ЗАПИСИ РЕГИСТРА
-  // Modbus функция 6, Запись одного регистра.
-  // Записывает значение в один регистр выходной
-  // Параметры:
-  // SlaveAddr - Modbus Адрес ведомого устройства (Диапазон: 0 - 255)
-  // RegAddr - Адрес регистра (диапазон: 1 - 0x10000)
-  // Regval - данные для отправки
-  // Возвращает:
-  // RETURN_OK в случае успешного завершения или код ошибки
-  int writeSingleRegister(	int SlaveAddr,
-                            int RegAddr,
-                            short RegVal);
+
+
+
 
   // МЕТОД ЗАПИСИ НЕСКОЛЬКИХ РЕГИСТРОВ
   // Modbus функция 16 (10 Hex) Запись нескольких регистров.
@@ -183,37 +214,7 @@ public:
                               short *RegArr,
                               int RefCnt);
 
-  // МЕТОДЫ РАБОТЫ С 32-УХ БИТОВЫМИ РЕГИСТРАМИ //////////////////////////
 
-  // МЕТОД ЧТЕНИЯ РЕГИСТРОВ УСТРОЙТВА
-  // Функция MModbus (03 Hex) для 32-разрядных типов данных Int,
-  // Пишет длинные десятичного значения в пар выходных регистров
-  // Параметры:
-  // SlaveAddr Modbus Адрес ведомого устройства или идентификатор единицы (Диапазон: 0 - 255)
-  // StartRef Первый регистр
-  // Int32Arr буфера с данными для отправки
-  // RefCnt Количество длинных целых чисел, которые будут отправлены (Диапазон: 1-50)
-  // Возвращает:
-  // RETURN_OK в случае успешного завершения или код ошибки
-  int readMultipleLongInts(	int SlaveAddr,
-                            int StartRef,
-                            int *Int32Arr,
-                            int RefCnt);
-
-  // МЕТОД ЧТЕНИЯ ВНУТРЕННИХ РЕГИСТРОВ УСТРОЙСТВА
-  // Modbus функция 4 для 32-битных типов данных Int
-  // Считывает содержимое пар последовательных регистров
-  // Параметры:
-  // SlaveAddr Modbus Адрес ведомого устройства или идентификатор единицы
-  // StartRef Первый регистр (диапазон: 1 - 0x10000)
-  // Int32Arr буфера, который будет наполнен чтения данных
-  // RefCnt Количество длинных целых чисел, которые будут читать (диапазон: 1-62)
-  // Возвращает:
-  // RETURN_OK в случае успешного завершения или код ошибки
-  int readInputLongInts(		int SlaveAddr,
-                            int StartRef,
-                            int Int32Arr[],
-                            int RefCnt);
   // МЕТОД ЗАПИСИ РЕГИСТРОВ
   // Modbus функция 16 (10 Hex) для 32-разрядных типов данных Int, Запись нескольких регистров с
   // Пишет длинные десятичного значения в пары регистров
@@ -228,35 +229,6 @@ public:
                               int StartRef,
                               int *Int32Arr,
                               int RefCnt);
-
-  // МЕТОД ЧТЕНИЯ FLOAT РЕГИСТРОВ
-  // Modbus функция 3 для 32-битных типов данных с плавающей точкой
-  // Параметры:
-  // SlaveAddr Modbus Адрес ведомого устройства (диапазон: 1 - 255)
-  // StartRef Первый регистр
-  // Float32Arr буфер, который будет наполнен прочитаными данными
-  // RefCnt Количество поплавков значений, которые будут читать (диапазон: 1-62)
-  // Возвращает:
-  // RETURN_OK в случае успешного завершения или код ошибки
-  int readMultipleFloats(		int SlaveAddr,
-                            int StartRef,
-                            float Float32Arr[],
-                            int RefCnt);
-
-  // МЕТОД ЧТЕНИЯ ВНУТРЕННИХ РЕГИСТРОВ
-  // Modbus функция 4 для 32-битных типов данных с плавающей точкойй.
-  // Считывает содержимое пар последовательных регистров ввода
-  // Параметры:
-  // SlaveAddr Modbus Адрес ведомого устройства (диапазон: 1 - 255)
-  // StartRef Первая ссылка
-  // Float32Arr буфера, который будет наполнен прочитанными данных
-  // RefCnt Количество регистров (диапазон: 1-62)
-  // Возвращает:
-  // RETURN_OK в случае успешного завершения или код ошибки
-  int readInputFloats(		int SlaveAddr,
-                          int StartRef,
-                          float Float32Arr[],
-                          int RefCnt);
 
   // МЕТОД ЗАПИСИ FLOAT РЕГИСТРОВ
   // Modbus функция 16 (10 Hex) для 32-разрядных типов данных с плавающей точкой, запись нескольких регистров данных с плавающей точкой.
@@ -427,10 +399,13 @@ public:
   // МЕТОД ПОСЫЛКИ ДАННЫХ
   virtual int transmitQuery(unsigned char *Buf, int Count);
 
-  // МЕТОД ЧТЕНИЕ ДАННЫХ
-  // Buf - массив байт считываемый из порта
-  // Byte - ожидаемое количество байт для считывания
-  virtual int receiveAnswer(unsigned char *Buf);
+  /*!
+   * \brief Функция чтения данных из порта
+   * \param Buf - массив байт в которые записываются данные
+   * \param count - ожидаемое количество байт
+   * \return 0 - выполнено, № - код ошибки
+   */
+  virtual int receiveAnswer(uint8_t *Buf, uint8_t count);
 
   ///////////////////////////////////////////////////////////////////////////
   // ЗАЩИЩЕННЫЕ ЧЛЕНЫ КЛАССА

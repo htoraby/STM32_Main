@@ -17,48 +17,46 @@
  */
 class ModbusMasterSerial: public ModbusMaster
 {
-	public:
+public:
+  ModbusMasterSerial(int Com);
+  virtual ~ModbusMasterSerial();
 
-    ModbusMasterSerial(int Com);
-    virtual ~ModbusMasterSerial();
+  /*!
+   * \brief Функция закрытия протокола обмена
+   * Закрывает последовательного порта и освобождает все системные ресурсы,
+   * связанные с портом.
+   * \param PortName - номер UART порта
+   * \return 0 - выполнено, 1 - не выполнено
+   */
+  int closeProtocol(int PortName);
 
-		// МЕТОД ЗАКРЫТИЯ ПРОТОКОЛА
-		// Закрывает последовательного порта и освобождает все системные ресурсы,
-		// связанные с портом.
-		int closeProtocol(int PortName);
+  /*!
+   * \brief Функция открытия протокола обмена
+   * Открывает протокол и связанный и с ним порт
+   * \param portName - Идентификатор Последовательного порта (например, "COM1", "/ dev/ser1" или "/ dev/ttyS0")
+   * \param baudRate - Скорость передачи данных
+   * \param dataBits - 7 бит данных для протокол ASCII, 8 бит данных для RTU
+   * \param stopBits - стоп-бит
+   * \param parity - контроль четности
+   * \return 0 - выполнено, 1 - не выполнено
+   */
+  int openProtocol(int portName, long baudRate, int dataBits, int stopBits, int parity);
 
-		// МЕТОД ОТКРЫТИЯ ПРОТОКОЛА
-		// Открывает протокол и связанный и с ним порт
-		// Параметры:
-		// PortName - Идентификатор Последовательного порта (например, "COM1", "/ dev/ser1" или "/ dev/ttyS0")
-		// BaudRate - Скорость передачи данных
-		// DataBits - 7 бит данных для протокол ASCII, 8 бит данных для RTU
-		// StopBits - стоп-бит
-		// Parity - контроль четности
-		// Возвращает:
-		// RETURN_OK в случае успешного завершения или код ошибки
-    int openProtocol(int portName, long baudRate, int dataBits,
-                     int stopBits, int parity);
+  /*!
+   * \brief Метод проверки открыт ли протоколо
+   * \return 0 - закрыт, 1 - открыт
+   */
+  int isOpen();
 
-		// МЕТОД ПРОВЕРКИ ОТКРЫТ ЛИ ПРОТОКОЛ
-		// Наследуется из classModbusMaster
-		// Возвращает:
-		// 1 - открыт
-		// 0 - закрыт
-		int isOpen();
+  /*!
+   * \brief Функция записи данных в порт
+   * \param Buf - массив байт записываемый в порт
+   * \param Count - количество записываемых байт
+   * \return 0 - выполнено, 1 - не выполнено
+   */
+  int transmitQuery(unsigned char *Buf, int Count);
 
-		// МЕТОД ЗАПИСИ ДАННЫХ В ПОРТ
-		// Buf - массив байт записываемый в порт
-		// Count - количество записываемых байт
-    int transmitQuery(unsigned char *Buf, int Count);
-
-
-    /*!
-     * \brief receiveAnswer Метод получения данных из uart порта
-     * \param Buf Массив принятых данных байт
-     * \return Количество принятых байт
-     */
-    int receiveAnswer(unsigned char *Buf);
+  int receiveAnswer(uint8_t *Buf, uint8_t count);
 
 	private:
     int numberComPort_;
