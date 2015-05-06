@@ -397,7 +397,7 @@ int ModbusMaster::writeSingleRegister(int slaveAddr, int regAddr, short regVal)
 {
   int result = RETURN_ERROR;
   unsigned short crc = 0;
-  if (!checkDeviceAddress(slaveAddr)) {
+  if (checkDeviceAddress(slaveAddr)) {
     txBuffer_[0] = slaveAddr;                         // Адрес устройства
     txBuffer_[1] = MODBUS_WRITE_SINGLE_REGISTER_0x06; // Команды
     txBuffer_[2] = ((regAddr >> 8) & 0x00ff);         // Старший байт адреса катушки
@@ -414,333 +414,54 @@ int ModbusMaster::writeSingleRegister(int slaveAddr, int regAddr, short regVal)
   return result;
 }
 
-// МЕТОД ЧТЕНИЯ ИСКЛЮЧЕНИЯ
-// Modbus функция 7 чтение cтатуса исключений
-// Считывание состояния катушки исключение внутри ведомого устройства.
-// Параметры:
-// slaveAddr Modbus Адрес ведомого устройства
-// Возвращает:
-// RETURN_OK в случае успешного завершения или код ошибки
-int ModbusMaster::readExceptionStatus(    int SlaveAddr,
-                                          unsigned char *StatusBytePtr)
+int ModbusMaster::readExceptionStatus(int slaveAddr, unsigned char *statusBytePtr)
 {
-  int Result = RETURN_ERROR;
-  unsigned short Crc = 0;
-  try
-  {
-    // ФОРМИРУЕМ ПОСЫЛКУ
-    // Проверяем корректность адреса
-    if(checkDeviceAddress(SlaveAddr))
-    {
-      txBuffer_[0] = SlaveAddr;                                // Адрес устройства
-      txBuffer_[1] = MODBUS_READ_EXCEPTION_STATUS_0x07;        // Команды
-      Crc = crc16_ibm(txBuffer_, 2);                            // Вычисляем контрольную сумму
-      txBuffer_[2] = Crc & 0x00ff;                            // Младший байт контрольной суммы
-      txBuffer_[3] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
-
-    }
-  }
-  catch(...)
-  {
-
-  }
-  return Result;
+  //TODO: Написать функцию
+  return MODBUS_ERROR_TRASH;
 }
 
-// МЕТОД ЭХО ЗАПРОСА
-// Функция Modbus код 8, подфункция 00, Вернуться Запрос данных.
-// Параметры:
-// SlaveAddr Modbus Адрес ведомого устройства или идентификатор единицы (диапазон: 1 - 255)
-// QueryArr буфер с данными для отправки
-// EchoArr буфера, который будет содержать считывать данные
-// Len Количество байт Написать отправлено и читать назад
-// Возвращает:
-// RETURN_OK в случае успешного завершения или код ошибки
-int ModbusMaster::returnQueryData(        int SlaveAddr,
-                                          const unsigned char QueryArr[],
-                                          unsigned char EchoArr[],
-                                          int Len)
+int ModbusMaster::returnQueryData(int slaveAddr, const unsigned char queryArr[], unsigned char echoArr[], int len)
 {
-  int Result = RETURN_ERROR;
-  unsigned char I = 0;                                                // Временный счётчик
-  unsigned short Crc = 0;                                                // Переменная для контрольной суммы
-
-  try
-  {
-    // ФОРМИРУЕМ ПОСЫЛКУ
-    // Проверяем корректность адреса
-    if(checkDeviceAddress(SlaveAddr))
-    {
-      txBuffer_[0] = SlaveAddr;                                    // Адрес устройства
-      txBuffer_[1] = MODBUS_DIAGNOSTICS_0x08;                        // Команды
-      txBuffer_[2] = 0x00;                                        // Запрос эхо
-      txBuffer_[3] = 0x00;                                        // Запрос эхо
-      for(I = 0; I <= Len; I++)
-      {
-        txBuffer_[I + 4] = QueryArr[I];
-      }
-      Crc = crc16_ibm(txBuffer_, Len + 4);
-      txBuffer_[Len + 5] = Crc & 0x00ff;                            // Младший байт контрольной суммы
-      txBuffer_[Len + 6] = ((Crc >> 8) & 0x00ff);                    // Старший байт контрольной суммы
-    }
-  }
-  catch(...)
-  {
-
-  }
-  return Result;
+  //TODO: Написать функцию
+  return MODBUS_ERROR_TRASH;
 }
 
-// МЕТОД СБРОСА НАСТРОЕКТ ОПРОСА
-// Функция Modbus код 8, подфункция 01, сброс настроек
-// Параметры:
-// slaveAddr Modbus Адрес ведомого устройства  (диапазон: 1 - 255)
-// clearEventLog Флаг
-// Возвращает:
-// RETURN_OK в случае успешного завершения или код ошибки
-int ModbusMaster::restartCommunicationsOption( int SlaveAddr,
-                                               int ClearEventLog)
+int ModbusMaster::restartCommunicationsOption(int slaveAddr, int clearEventLog)
 {
-  int Result = RETURN_ERROR;
-  try
-  {
-
-  }
-  catch(...)
-  {
-
-  }
-  return Result;
+  //TODO: Написать функцию
+  return MODBUS_ERROR_TRASH;
 }
 
-// МЕТОД ЗАПИСИ КАТУШЕК
-// Modbus функция 15 (0F Hex), Воздействие на несколько катушек
-// Записывает двоичные значения в последовательность дискретных выходов или катушек
-// Параметры:
-// SlaveAddr Modbus Адрес ведомого устройства (диапазон: 1 - 255)
-// StartRef Первая ссылка
-// BitArr буфера, который содержит отправляемые данные
-// RefCnt Количество катушек, которые будут записаны (Диапазон: 1-1968)
-// Возвращает:
-// RETURN_OK в случае успешного завершения или код ошибки
-int ModbusMaster::forceMultipleCoils( int SlaveAddr,
-                                      int StartRef,
-                                      const bool BitArr[],
-                                      int RefCnt)
+int ModbusMaster::forceMultipleCoils(int slaveAddr, int startRef, const bool bitArr[], int refCnt)
 {
-  int Result = RETURN_ERROR;
-  div_t Div;
-  unsigned char CntByte = 0;             // Счётчик байт данных
-  unsigned char I = 0;                   // Временный счётчик
-  unsigned short Crc = 0;                // Переменная для контрольной суммы
-
-  try
-  {
-    // ФОРМИРУЕМ ПОСЫЛКУ
-    // Проверяем корректность адреса
-    if(checkDeviceAddress(SlaveAddr))
-    {
-      // Проверяем корректность количества записываемых катушек
-      if(checkCntReg(RefCnt))
-      {
-        // Адрес устройства
-        txBuffer_[0] = SlaveAddr;
-        // Команды
-        txBuffer_[1] = MODBUS_WRITE_MULTIPLE_COILS_0x0F;
-        // Старший байт адреса первой катушки
-        txBuffer_[2] = ((StartRef >> 8) & 0x00ff);
-        // Младший байт адреса катушки
-        txBuffer_[3] = StartRef & 0x00ff;
-        // Заполнение данных
-        // Вычисляем сколько у нас байт данных
-        // Получаем Целое и остаток от деления
-        Div = div(RefCnt,8);
-        // Если остаток не равен 0
-        if(Div.rem != 0)
-        {
-          // Увеличиваем целую часть
-          Div.quot++;
-        }
-        // Получаем количество байт
-        CntByte = Div.quot;
-        // Проверяем количество байт данных
-        if(checkDeviceAddress(CntByte))
-        {
-          // Количество байт с данными
-          txBuffer_[4] = CntByte;
-          for(I = 0; I <= CntByte; I++)
-          {
-            // Младший байт данных
-            txBuffer_[I + 5] = BitArr[I] & 0x00ff;
-            // Старший байт данных
-            txBuffer_[I + 6] = ((BitArr[I] >> 8) & 0x00ff);
-          }
-          // Вычисляем контрольную сумму
-          Crc = crc16_ibm(txBuffer_, CntByte + 5);
-          // Старший байт контрольной суммы
-          txBuffer_[CntByte + 6] = ((Crc >> 8) & 0x00ff);
-          // Младший байт контрольной суммы
-          txBuffer_[CntByte + 7] = Crc & 0x00ff;
-        }
-      }
-    }
-  }
-  catch(...)
-  {
-
-  }
-  return Result;
+  //TODO: Написать функцию
+  return MODBUS_ERROR_TRASH;
 }
 
-// МЕТОД ЗАПИСИ НЕСКОЛЬКИХ РЕГИСТРОВ
-// Modbus функция 16 (10 Hex) Запись нескольких регистров.
-// Записывает значения в последовательность регистров
-// Параметры:
-// SlaveAddr - Modbus Адрес ведомого устройства
-// StartRef - Первый регистр (диапазон: 1 - 0x10000)
-// RegArr - буфера с данными, которые будут отправлены.
-// RefCnt - Количество регистров, которые будут записаны (Диапазон: 1-123)
-// Возвращает:
-// RETURN_OK в случае успешного завершения или код ошибки
-int ModbusMaster::writeMultipleRegisters(    int SlaveAddr,
-                                             int StartRef,
-                                             short *RegArr,
-                                             int RefCnt)
+int ModbusMaster::writeMultipleRegisters(int slaveAddr, int startRef, short *regArr, int refCnt)
 {
-  int Result = RETURN_ERROR;
-  unsigned char I = 0;                                                // Временный счётчик
-  unsigned short Crc = 0;                                                // Переменная для контрольной суммы
-  try
-  {
-    // ФОРМИРУЕМ ПОСЫЛКУ
-    // Проверяем корректность адреса
-    if(checkDeviceAddress(SlaveAddr))
-    {
-      // Проверяем корректность количества регистров
-      if(checkCntReg(RefCnt))
-      {
-        txBuffer_[0] = SlaveAddr;                                // Адрес устройства
-        txBuffer_[1] = MODBUS_WRITE_MULTIPLE_REGISTERS_0x10;    // Команды
-        txBuffer_[2] = ((StartRef >> 8) & 0x00ff);                // Старший байт адреса первого регистра
-        txBuffer_[3] = StartRef & 0x00ff;                        // Младший байт адреса первого регистра
-        txBuffer_[4] = ((RefCnt >> 8) & 0x00ff);                // Старший байт адреса первого регистра
-        txBuffer_[5] = RefCnt & 0x00ff;                            // Младший байт адреса первого регистра
-        txBuffer_[6] = RefCnt*2;                                // Количество
-        for(I = 0; I <= RefCnt; I++)
-        {
-          txBuffer_[I * 2 + 7] = RegArr[I] & 0x00ff;            // Младший байт данных
-          txBuffer_[I * 2 + 8] = ((RegArr[I] >> 8) & 0x00ff);    // Старший байт данных
-        }
-        Crc = crc16_ibm(txBuffer_, RefCnt*2 + 7);                // Вычисляем контрольную сумму
-        txBuffer_[RefCnt*2 + 8] = ((Crc >> 8) & 0x00ff);        // Старший байт контрольной суммы
-        txBuffer_[RefCnt*2 + 9] = Crc & 0x00ff;                    // Младший байт контрольной суммы
-      }
-    }
-  }
-  catch(...)
-  {
-
-  }
-  return Result;
+  //TODO: Написать функцию
+  return MODBUS_ERROR_TRASH;
 }
 
-// МЕТОД ЗАПИСИ РЕГИСТРОВ
-// Modbus функция 16 (10 Hex) для 32-разрядных типов данных Int, Запись нескольких регистров с
-// Пишет длинные десятичного значения в пары регистров
-// Параметры:
-// SlaveAddr Modbus Адрес ведомого устройства (Диапазон: 0 - 255)
-// StartRef Первый регистр
-// Int32Arr буфера с данными для отправки
-// RefCnt Количество длинных целых чисел, которые будут отправлены (Диапазон: 1-50)
-// Возвращает:
-// RETURN_OK в случае успешного завершения или код ошибки
-int ModbusMaster::writeMultipleLongInts(    int SlaveAddr,
-                                            int StartRef,
-                                            int *Int32Arr,
-                                            int RefCnt)
+int ModbusMaster::writeMultipleLongInts(int slaveAddr, int startRef, int *int32Arr, int refCnt)
 {
-  int Result = RETURN_ERROR;
-  unsigned char I = 0;                                                // Временный счётчик
-  //unsigned short Crc = 0;                                                // Переменная для контрольной суммы
-  short RegArr[RefCnt*2+9];
-  try
-  {
-    // Переводим в формат 16-ти битовых регистров
-    for(I = 0; I<= RefCnt; I++)
-    {
-      RegArr[I * 4] = (Int32Arr[I] >> 24) & 0x000000ff;
-      RegArr[I * 4 + 1] = (Int32Arr[I] >> 16) & 0x000000ff;
-      RegArr[I * 4 + 2] = (Int32Arr[I] >> 8) & 0x000000ff;
-      RegArr[I * 4 + 3] = (Int32Arr[I]) & 0x000000ff;
-    }
-    // Вызываем запись данных
-    writeMultipleRegisters(SlaveAddr, StartRef, RegArr, RefCnt*2);
-  }
-  catch(...)
-  {
-
-  }
-  return Result;
+  //TODO: Написать функцию
+  return MODBUS_ERROR_TRASH;
 }
 
-// МЕТОД ЗАПИСИ FLOAT РЕГИСТРОВ
-// Modbus функция 16 (10 Hex) для 32-разрядных типов данных с плавающей точкой, запись нескольких регистров данных с плавающей точкой.
-// Записывает значения с плавающей точкой на пары регистров выходных
-// Параметры:
-// SlaveAddr Modbus Адрес ведомого устройства или идентификатор единицы (Диапазон: 0 - 255)
-// StartRef Первая ссылка
-// Float32Arr буфера с данными для отправки
-// RefCnt Количество значений с плавающей точкой, которые будут отправлены (Диапазон: 1-50)
-// Возвращает:
-// RETURN_OK в случае успешного завершения или код ошибки
-int ModbusMaster::writeMultipleFloats(    int SlaveAddr,
-                                          int StartRef,
-                                          float *Float32Arr,
-                                          int RefCnt)
+int ModbusMaster::writeMultipleFloats(int slaveAddr, int startRef, float *float32Arr, int refCnt)
 {
-  int Result = RETURN_ERROR;
-  unsigned char I = 0;                                                // Временный счётчик
-  //unsigned short Crc = 0;                                                // Переменная для контрольной суммы
-  short RegArr[RefCnt*2 + 9];
-  unTypeData Arr;
-  try
-  {
-    // Переводим в формат 16-ти битовых регистров
-    for(I = 0; I<= RefCnt; I++)
-    {
-      Arr.float_t = Float32Arr[I];
-      RegArr[I * 4] = Arr.char_t[0];
-      RegArr[I * 4 + 1] = Arr.char_t[1];
-      RegArr[I * 4 + 2] = Arr.char_t[2];
-      RegArr[I * 4 + 3] = Arr.char_t[3];
-    }
-    // Вызываем запись данных
-    writeMultipleRegisters(SlaveAddr, StartRef, RegArr, RefCnt*2);
-  }
-  catch(...)
-  {
-
-  }
-  return Result;
+  //TODO: Написать функцию
+  return MODBUS_ERROR_TRASH;
 }
 
-
-// МЕТОД ПРОВЕРКИ КОРРЕКТНОСТИ АДРЕСА УСТРОЙТВА
-bool ModbusMaster::checkDeviceAddress(int Address)
+bool ModbusMaster::checkDeviceAddress(int address)
 {
-  bool Result = RETURN_ERROR;
-  try
-  {
-    if((Address > 0)&&(Address < 256))
-    {
-      Result = RETURN_OK;
-    }
-  }
-  catch(...)
-  {
-    // Упали в функции checkDeviceAddress
-  }
-  return Result;
+  if ((address > 0) && (address < 256))
+    return true;
+  else
+    return false;
 }
 
 // МЕТОД ПРОВЕРКИ КОЛИЧЕСТВА КАТУШЕК
