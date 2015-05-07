@@ -269,6 +269,7 @@ enum enPhysicAcceleration {
 
 enum enPhysicSpeed {
   SPEED_M_SS,
+  SPEED_MM_SS,
   SPEED_LAST
 };
 

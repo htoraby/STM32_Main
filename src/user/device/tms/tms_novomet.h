@@ -11,6 +11,9 @@
 #include "tms.h"
 #include "device_modbus.h"
 
+/*!
+ * \brief Класс системы телеметрической "Новомет"
+ */
 class TmsNovomet: public Tms
 {
 public:
@@ -32,7 +35,7 @@ public:
   void writeToDevice(int id, float value);
 
 private:
-  ModbusParameter modbusParameters_[54];
+  ModbusParameter modbusParameters_[74];
   DeviceModbus *dm_;
 
 };

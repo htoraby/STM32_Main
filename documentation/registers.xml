@@ -12697,7 +12697,7 @@
 	</param>
 	<param>
 		<id>15056</id>
-		<name>TMS_HOWMIDITY</name>
+		<name>TMS_HOWMIDITY_DISCHARGE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_HOWMIDITY</physic>
@@ -12706,6 +12706,234 @@
 	</param>
 	<param>
 		<id>15057</id>
+		<name>TMS_SPEED_XY_DISCHARGE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_SPEED</physic>
+		<min>0.0</min>
+		<max>50.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Радиальная виброскорость насоса</text>
+		<short_text>Радиальная виброскорость насоса</short_text>
+		<form>NULL</form>
+		<unit>SPEED_MM_SS</unit>
+		<unit_lcd>SPEED_MM_SS</unit_lcd>
+		<format>XXXX_X</format>
+		<comment>Радиальная виброскорость насоса</comment>
+	</param>
+	<param>
+		<id>15058</id>
+		<name>TMS_SPEED_Z_DISCHARGE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_SPEED</physic>
+		<min>0.0</min>
+		<max>50.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Осевая виброскорость насоса</text>
+		<short_text>Осевая виброскорость насоса</short_text>
+		<form>NULL</form>
+		<unit>SPEED_MM_SS</unit>
+		<unit_lcd>SPEED_MM_SS</unit_lcd>
+		<format>XXXX_X</format>
+		<comment>Осевая виброскорость насоса</comment>
+	</param>
+	<param>
+		<id>15059</id>
+		<name>TMS_ANGLE_DISCHARGE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_ANGLE</physic>
+		<min>0.0</min>
+		<max>90.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Зенитный угол насоса</text>
+		<short_text>Зенитный угол насоса</short_text>
+		<form>NULL</form>
+		<unit>ANGLE_DEGREES</unit>
+		<unit_lcd>ANGLE_DEGREES</unit_lcd>
+		<format>XXXXXX</format>
+		<comment>Зенитный угол насоса</comment>
+	</param>
+	<param>
+		<id>15060</id>
+		<name>TMS_VOLTAGE_TMSP_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>15.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Напряжение питания блока на выкиде насоса</text>
+		<short_text>Напряжение питания блока на выкиде насоса</short_text>
+		<form>NULL</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXX_X</format>
+		<comment>Напряжение питания блока на выкиде насоса</comment>
+	</param>
+	<param>
+		<id>15061</id>
+		<name>TMS_FLOW_DISCHARGE_FREQ_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>200.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Частота от двухфазного расходомера на выкиде насоса датчик 1</text>
+		<short_text>Частота от двухфазного расходомера на выкиде насоса датчик 1</short_text>
+		<form>NULL</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXX_XX</format>
+		<comment>Частота от двухфазного расходомера на выкиде насоса датчик 1</comment>
+	</param>
+	<param>
+		<id>15062</id>
+		<name>TMS_FLOW_DISCHARGE_FREQ_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>200.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Частота от двухфазного расходомера на выкиде насоса датчик 2</text>
+		<short_text>Частота от двухфазного расходомера на выкиде насоса датчик 2</short_text>
+		<form>NULL</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXX_XX</format>
+		<comment>Частота от двухфазного расходомера на выкиде насоса датчик 2</comment>
+	</param>
+	<param>
+		<id>15063</id>
+		<name>TMS_SPEED_XY_INTAKE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_SPEED</physic>
+		<min>0.0</min>
+		<max>50.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Радиальная виброскорость двигателя</text>
+		<short_text>Радиальная виброскорость двигателя</short_text>
+		<form>NULL</form>
+		<unit>SPEED_MM_SS</unit>
+		<unit_lcd>SPEED_MM_SS</unit_lcd>
+		<format>XXXX_X</format>
+		<comment>Радиальная виброскорость двигателя</comment>
+	</param>
+	<param>
+		<id>15064</id>
+		<name>TMS_SPEED_Z_INTAKE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_SPEED</physic>
+		<min>0.0</min>
+		<max>50.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Осевая виброскорость двигателя</text>
+		<short_text>Осевая виброскорость двигателя</short_text>
+		<form>NULL</form>
+		<unit>SPEED_MM_SS</unit>
+		<unit_lcd>SPEED_MM_SS</unit_lcd>
+		<format>XXXX_X</format>
+		<comment>Осевая виброскорость двигателя</comment>
+	</param>
+	<param>
+		<id>15065</id>
+		<name>TMS_TEMPERATURE_DOWNHOLE</name>
+	</param>
+	<param>
+		<id>15066</id>
+		<name>TMS_PRESSURE_DOWNHOLE</name>
+	</param>
+	<param>
+		<id>15067</id>
+		<name>TMS_SPEED_XY_DOWNHOLE</name>
+	</param>
+	<param>
+		<id>15068</id>
+		<name>TMS_SPEED_Z_DOWNHOLE</name>
+	</param>
+	<param>
+		<id>15069</id>
+		<name>TMS_ANGLE_DOWNHOLE</name>
+	</param>
+	<param>
+		<id>15070</id>
+		<name>TMS_PSW_TMSP_3</name>
+	</param>
+	<param>
+		<id>15071</id>
+		<name>TMS_VOLTAGE_TMSP_3</name>
+	</param>
+	<param>
+		<id>15072</id>
+		<name>TMS_HOWMIDITY_DOWNHOLE</name>
+	</param>
+	<param>
+		<id>15073</id>
+		<name>TMS_HOWMIDITY_FREQ_DISCHARGE</name>
+	</param>
+	<param>
+		<id>15074</id>
+		<name>TMS_VOLTAGE_TMSP</name>
+	</param>
+	<param>
+		<id>15075</id>
+		<name>TMS_PACKAGE_LOST_TMSP</name>
+	</param>
+	<param>
+		<id>15076</id>
+		<name>TMS_PACKAGE_RECEIVE_TMSP</name>
+	</param>
+	<param>
+		<id>15077</id>
+		<name>TMS_PACKAGE_MASK_TMSP_1</name>
+	</param>
+	<param>
+		<id>15078</id>
+		<name>TMS_PACKAGE_NUMBER_TMSP</name>
+	</param>
+	<param>
+		<id>15079</id>
+		<name>TMS_PACKAGE_QUALITY_TMSP</name>
+	</param>
+	<param>
+		<id>15080</id>
+		<name>TMS_PACKAGE_TMSP</name>
+	</param>
+	<param>
+		<id>15081</id>
+		<name>TMS_PACKAGE_TIME_TMSP</name>
+	</param>
+	<param>
+		<id>15082</id>
+		<name>TMS_PACKAGE_ONLY_TMSP</name>
+	</param>
+	<param>
+		<id>15083</id>
+		<name>TMS_PACKAGE_ONLY_TIME_TMSP</name>
+	</param>
+	<param>
+		<id>15084</id>
 		<name>TMS_END</name>
 		<valid>VALIDITY_ERROR</valid>
 	</param>
