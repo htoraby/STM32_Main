@@ -265,7 +265,7 @@ public:
    */
   bool isConnect();
 
-  short int regArr_[125];
+  uint16_t regArr_[125];
   int int32Arr_[62];
   float float32Arr_[62];
 
@@ -287,7 +287,7 @@ private:
   //! Количество параметров в массиве
   uint16_t countParameter_;
 
-  int deviceAddress_;
+  uint8_t deviceAddress_;
   int indexExchange_;
 
   //! Идентификатор задачи

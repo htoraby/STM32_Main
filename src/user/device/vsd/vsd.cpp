@@ -65,7 +65,7 @@ int Vsd::setMinFrequency(float value)
   // Если записываемое значение "Минимальной частоты" больше значения
   // "Максимальной частоты"
   if (value > getValue(VSD_HIGH_LIM_SPEED_MOTOR)) {
-    return RETURN_ERROR;                    // Возвращаем ошибку
+    return err_r;                    // Возвращаем ошибку
   }
   else {
     // Если установили новое значение в массив параметров
@@ -74,9 +74,9 @@ int Vsd::setMinFrequency(float value)
       setFieldMin(getIndexAtId(VSD_HIGH_LIM_SPEED_MOTOR), value);
       // Меняем поле минимум для уставки "Частота"
       setFieldMin(getIndexAtId(VSD_FREQUENCY), value);
-      return RETURN_OK;
+      return ok_r;
     }
-    return RETURN_ERROR;
+    return err_r;
   }
 }
 
@@ -85,7 +85,7 @@ int Vsd::setMaxFrequency(float value)
   // Если записываемое значение "Максимальной частоты" меньше значения
   // "Минимальной частоты"
   if (value < getValue(VSD_LOW_LIM_SPEED_MOTOR)) {
-    return RETURN_ERROR;                    // Возвращаем ошибку
+    return err_r;                    // Возвращаем ошибку
   }
   else {
     // Если установили новое значение в массив параметров
@@ -94,9 +94,9 @@ int Vsd::setMaxFrequency(float value)
       setFieldMax(getIndexAtId(VSD_LOW_LIM_SPEED_MOTOR), value);
       // Меняем поле максимум для уставки "Частота"
       setFieldMax(getIndexAtId(VSD_FREQUENCY), value);
-      return RETURN_OK;
+      return ok_r;
     }
-    return RETURN_ERROR;
+    return err_r;
   }
 }
 
@@ -107,7 +107,7 @@ int Vsd::setTempSpeedUp(float value)
       return setValue(VSD_T_SPEEDUP, 1/getValue(VSD_TEMP_SPEEDUP));
     }
   }
-  return RETURN_ERROR;
+  return err_r;
 }
 
 int Vsd::setTempSpeedDown(float value)
@@ -117,7 +117,7 @@ int Vsd::setTempSpeedDown(float value)
       return setValue(VSD_T_SPEEDDOWN, 1/getValue(VSD_TEMP_SPEEDDOWN));
     }
   }
-  return RETURN_ERROR;
+  return err_r;
 }
 
 int Vsd::setSpeedUp(float speedUp)

@@ -52,8 +52,8 @@ enum enPeriodExchange
 
 enum enReturns
 {
-  RETURN_OK                     = 0,
-  RETURN_ERROR                  = 1,
+  ok_r                          = 0,
+  err_r                         = 1,
   RETURN_ERROR_ID_VALUE         = 2,
   RETURN_ERROR_ID               = 3,
   RETURN_ERROR_ACCESS_VALUE     = 4,

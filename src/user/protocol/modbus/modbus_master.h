@@ -88,17 +88,17 @@ public:
    * \return 0 - выполнено или код ошибки
    */
   int readInputDiscretes(int SlaveAddr, int StartRef, bool BitArr[], int RefCnt);
-  
+
   /*!
    * \brief Функция чтения регистров
    * Modbus функция 3,  Читать нескольких регистров.
    * \param slaveAddr - modbus Адрес ведомого устройства (диапазон: 1 - 255)
-   * \param startRef - начните регистр (диапазон: 1 - 0x10000)
+   * \param startRef  - начните регистр (диапазон: 1 - 0x10000)
    * \param regArr - буфера, который будет наполнен прочитанныйми данными
    * \param refCnt - количество считываемых регистров
-   * \return 0 - выполнено или код ошибки
+   * \return код результата операции
    */
-  int readMultipleRegisters(int slaveAddr, int startRef, short *regArr, int refCnt); 
+  uint8_t readMultipleRegisters(uint8_t slaveAddr, uint16_t startRef, uint16_t *regArr, uint16_t refCnt);
 
   /*!
    * \brief Функция чтения регистров 32 битных регистров
@@ -332,16 +332,21 @@ public:
   // МЕТОД ПРОВЕРКИ ОТКРЫТИЯ ПРОТОКОЛА
   int isOpen();
 
-  // МЕТОД ПОСЫЛКИ ДАННЫХ
-  virtual int transmitQuery(unsigned char *Buf, int Count);
+  /*!
+   * \brief Функция записи данных
+   * \param buf - массив байт записываемый
+   * \param num - количество байт
+   * \return код выполнения операции
+   */
+  virtual uint8_t txBuf(uint8_t *buf, uint8_t num);
 
   /*!
    * \brief Функция чтения данных из порта
-   * \param Buf - массив байт в которые записываются данные
-   * \param count - ожидаемое количество байт
-   * \return 0 - выполнено, № - код ошибки
+   * \param buf - массив принятых байт
+   * \param num - ожидаемое количество байт
+   * \return код выполнения операции
    */
-  virtual int receiveAnswer(uint8_t *Buf, uint8_t count);
+  virtual uint8_t rxBuf(uint8_t *buf, uint8_t num);
 
   ///////////////////////////////////////////////////////////////////////////
   // ЗАЩИЩЕННЫЕ ЧЛЕНЫ КЛАССА

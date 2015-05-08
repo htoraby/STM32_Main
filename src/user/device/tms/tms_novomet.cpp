@@ -1389,7 +1389,7 @@ int TmsNovomet::setUnitPressure(float unit)
 {
   if (Tms::setUnitPressure(unit)) {
     logDebug.add(WarningMsg, "setUnitPressure");
-    return RETURN_ERROR;
+    return err_r;
   }
   else {
     switch ((uint16_t)getValue(TMS_PRESSURE_UNIT)) {
@@ -1398,20 +1398,20 @@ int TmsNovomet::setUnitPressure(float unit)
       break;
     case PRESSURE_ATM:
       logDebug.add(WarningMsg, "setPressureAtmTmsNovomet");
-      return RETURN_ERROR;
+      return err_r;
     case PRESSURE_AT:
       logDebug.add(WarningMsg, "setPressureAtTmsNovomet");
-      return RETURN_ERROR;
+      return err_r;
       break;
     case PRESSURE_BAR:
       logDebug.add(WarningMsg, "setPressureBarTmsNovomet");
-      return RETURN_ERROR;
+      return err_r;
       break;
     case PRESSURE_PSI:
       writeToDevice(TMS_TEMPERATURE_UNIT, 1);
       break;
     }
-    return RETURN_OK;
+    return ok_r;
   }
 }
 
@@ -1419,11 +1419,11 @@ int TmsNovomet::setUnitTemperature(float unit)
 {
   if (Tms::setUnitTemperature(unit)) {
     logDebug.add(WarningMsg, "setUnitTemperature");
-    return RETURN_ERROR;
+    return err_r;
   }
   else {
     writeToDevice(TMS_TEMPERATURE_UNIT, unit);
-    return RETURN_OK;
+    return ok_r;
   }
 }
 

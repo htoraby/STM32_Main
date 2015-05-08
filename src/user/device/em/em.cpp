@@ -58,20 +58,17 @@ int Em::receiveUart(uint8_t *data)
 
 int Em::setCoefficientTransformation()
 {
-  int Result = RETURN_ERROR;
-  return Result;
+  return err_r;
 }
 
 int Em::setCoefficientTransforamationCurrent()
 {
-  int Result = RETURN_ERROR;
-  return Result;
+  return err_r;
 }
 
 int Em::setCoefficientTransforamationVoltage()
 {
-  int Result = RETURN_ERROR;
-  return Result;
+  return err_r;
 }
 
 void Em::initParameters()

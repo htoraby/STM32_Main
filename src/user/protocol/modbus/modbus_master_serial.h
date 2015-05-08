@@ -49,14 +49,20 @@ public:
   int isOpen();
 
   /*!
-   * \brief Функция записи данных в порт
-   * \param Buf - массив байт записываемый в порт
-   * \param Count - количество записываемых байт
-   * \return 0 - выполнено, 1 - не выполнено
+   * \brief Функция записи данных в serial port
+   * \param buf - массив байт записываемый в порт
+   * \param num - количество записываемых байт
+   * \return код выполнения операции
    */
-  int transmitQuery(unsigned char *Buf, int Count);
+  uint8_t txBuf(uint8_t *buf, uint8_t num);
 
-  int receiveAnswer(uint8_t *Buf, uint8_t count);
+  /*!
+   * \brief Функция чтения данных из serial port
+   * \param buf - массив полученных байт
+   * \param num - ожидаемое количество полученных байт
+   * \return код выполнения операции
+   */
+  uint8_t rxBuf(uint8_t *buf, uint8_t num);
 
 	private:
     int numberComPort_;
