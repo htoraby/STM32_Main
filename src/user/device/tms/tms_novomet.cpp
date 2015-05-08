@@ -959,7 +959,7 @@ void TmsNovomet::initModbusParameters()
                            EVERY_TIME,      // Количество запросов к параметру
                            OPERATION_ERROR, // Команда
                            VALIDITY_ERROR,  // Поле состояния параметра
-                           9999             // Значение
+                           0                // Значение
                           };
   modbusParameters_[55] = {// Температура жидкости на приёме насоса
                            TMS_TEMPERATURE_INTAKE,
@@ -1119,6 +1119,7 @@ void TmsNovomet::initModbusParameters()
                            1554,            // Адрес регистра в устройстве
                            OPERATION_READ,  // Операции с параметром
                            PHYSIC_PRESSURE, // Физическая величина параметра
+                           PRESSURE_MPA,
                            TYPE_DATA_FLOAT, // Тип данных
                            1,               // Коэффициент преобразования параметра
                            0.0,             // Минимальное значение параметра
