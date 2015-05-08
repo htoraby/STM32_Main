@@ -7,7 +7,6 @@
 
 #include "tms.h"
 
-
 Tms::Tms() : Device(TMS_BEGIN, parametersArray_, TMS_END - TMS_BEGIN)
 {
   initParameters();
@@ -32,3 +31,14 @@ void Tms::initParameters()
     setFieldValue(index, 0.0);
   }
 }
+
+int Tms::setUnitPressure(float unit)
+{
+  return setValue(TMS_PRESSURE_UNIT, unit);
+}
+
+int Tms::setUnitTemperature(float unit)
+{
+  return setValue(TMS_TEMPERATURE_UNIT, unit);
+}
+

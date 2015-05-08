@@ -6,6 +6,7 @@
  */
 
 #include "tms_novomet.h"
+#include "user_main.h"
 
 void TmsNovomet::initModbusParameters()
 {
@@ -1288,8 +1289,8 @@ void TmsNovomet::initModbusParameters()
 
 TmsNovomet::TmsNovomet()
 {
-  initModbusParameters();
-  readParameters();
+  initModbusParameters();                   // Инициализация modbus карты
+  readParameters();                         // Чтение параметров из памяти
 }
 
 TmsNovomet::~TmsNovomet()
@@ -1299,19 +1300,16 @@ TmsNovomet::~TmsNovomet()
 
 void TmsNovomet::init()
 {
-  // Создание задачи обновления параметров
   createThread("UpdateParametersTms");
-  // Создание объекта протокола связи с утройством
   int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
   dm_ = new DeviceModbus(modbusParameters_, count,
-                        TMS_UART, 9600, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1);
+                         TMS_UART, 9600, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1);
   dm_->createThread("ProtocolTms", getValueDeviceQId_);
 }
 
 void TmsNovomet::initParameters()
 {
   Tms::initParameters();
-  // Заполняем карту регистров ТМС
   int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
   for (int indexModbus = 0; indexModbus <= count; indexModbus++) {
     int indexDevice = getIndexAtId(dm_->getFieldID(indexModbus));
@@ -1339,16 +1337,93 @@ void TmsNovomet::initParameters()
 
 void TmsNovomet::getNewValue(uint16_t id)
 {
-
+  float value = 0;
+  ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtId(id));
+  switch (param->typeData) {
+  case TYPE_DATA_INT16:
+    value = (float)param->value.int16_t[0];
+    break;
+  case TYPE_DATA_UINT16:
+    value = (float)param->value.uint16_t[0];
+    break;
+  case  TYPE_DATA_INT32:
+    value = (float)param->value.int32_t;
+    break;
+  case  TYPE_DATA_UINT32:
+    value = (float)param->value.uint32_t;
+    break;
+  case  TYPE_DATA_FLOAT:
+    value = (float)param->value.float_t;
+    break;
+  default:
+    break;
+  }
+  value = value * param->coefficient;
+  value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
+  setValue(id, value);
+  calcParameters(id);
 }
 
 uint8_t TmsNovomet::setNewValue(uint16_t id, float value)
 {
-  return setValue(id, value);
+  switch (id) {
+  case TMS_PRESSURE_UNIT:
+    return setUnitPressure(value);
+  case TMS_TEMPERATURE_UNIT:
+    return setUnitTemperature(value);
+  default:
+    int result = setValue(id, value);
+    if (!result)
+      writeToDevice(id, value);
+    return result;
+  }
+
 }
 
 void TmsNovomet::writeToDevice(int id, float value)
 {
   dm_->writeModbusParameter(id, value);
+}
+
+int TmsNovomet::setUnitPressure(float unit)
+{
+  if (Tms::setUnitPressure(unit)) {
+    logDebug.add(WarningMsg, "setUnitPressure");
+    return RETURN_ERROR;
+  }
+  else {
+    switch ((uint16_t)getValue(TMS_PRESSURE_UNIT)) {
+    case PRESSURE_MPA:
+      writeToDevice(TMS_PRESSURE_UNIT, 0);
+      break;
+    case PRESSURE_ATM:
+      logDebug.add(WarningMsg, "setPressureAtmTmsNovomet");
+      return RETURN_ERROR;
+    case PRESSURE_AT:
+      logDebug.add(WarningMsg, "setPressureAtTmsNovomet");
+      return RETURN_ERROR;
+      break;
+    case PRESSURE_BAR:
+      logDebug.add(WarningMsg, "setPressureBarTmsNovomet");
+      return RETURN_ERROR;
+      break;
+    case PRESSURE_PSI:
+      writeToDevice(TMS_TEMPERATURE_UNIT, 1);
+      break;
+    }
+    return RETURN_OK;
+  }
+}
+
+int TmsNovomet::setUnitTemperature(float unit)
+{
+  if (Tms::setUnitTemperature(unit)) {
+    logDebug.add(WarningMsg, "setUnitTemperature");
+    return RETURN_ERROR;
+  }
+  else {
+    writeToDevice(TMS_TEMPERATURE_UNIT, unit);
+    return RETURN_OK;
+  }
 }
 

@@ -258,6 +258,7 @@ enum enPhysicPressure {
 
 enum enPhysicTemperature {
   TEMPERATURE_C,
+  TEMPERATURE_F,
   TEMPERATURE_LAST
 };
 

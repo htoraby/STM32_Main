@@ -8,7 +8,7 @@
 #ifndef TMS_H_
 #define TMS_H_
 
-#include "Device.h"
+#include "device.h"
 
 /*!
  * \brief Базовый класс ТМС
@@ -22,21 +22,25 @@ public:
   Tms();
   virtual ~Tms();
 
+  /*!
+   * \brief Функция заполнения массива параметров ТМС.
+   * Заполняем массив id параметрами и значенями по умолчанию (ошибочными)
+   */
   void initParameters();
 
   /*!
-   * \brief Метод задания единиц измерения давления
-   * \param
+   * \brief Функция задания единиц измерения давления
+   * \param unit - код единиц измерения
    * \return
    */
-  int setUnitPressure(float Unit);
+  virtual int setUnitPressure(float unit);
 
   /*!
    * \brief Метод задания единиц измерения температуры
    * \param
    * \return
    */
-  int setUnitTemperature(float Unit);
+  virtual int setUnitTemperature(float unit);
 
   /*!
    * \brief Метод задания единиц измерения виброускорения

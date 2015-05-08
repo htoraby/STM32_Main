@@ -2348,7 +2348,6 @@ void VsdNovomet::init()
   dm_->createThread("ProtocolVsd", getValueDeviceQId_);
 }
 
-// Метод заполнения внутреннего банка параметров по карте устройства
 void VsdNovomet::initParameters()
 {
   Vsd::initParameters();
