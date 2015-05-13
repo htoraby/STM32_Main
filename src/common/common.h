@@ -93,7 +93,7 @@ int checkRangeInclude(double value, double min, double max);
  * \param max
  * \return
  */
-int checkRange(double value, double min, double max, uint8_t inc);
+int checkRange(double value, double min, double max, bool inc);
 
 /*!
  * \brief Функция проверки бита

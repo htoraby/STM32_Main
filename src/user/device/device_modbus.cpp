@@ -266,65 +266,152 @@ void DeviceModbus::exchangeTask()
     osDelay(1);
 
     // Проверяем очередь параметров для обработки вне очереди
-    int outOfTurn = getMessageOutOfTurn();
-    if (outOfTurn) {
-      // Если записать
-      if (mbParams_[outOfTurn].command == OPERATION_WRITE) {
-        int address = mbParams_[outOfTurn].address;
-        switch (mbParams_[outOfTurn].typeData) {
+    int outOfTurn = getMessageOutOfTurn();  // Проверка если параметр вне очереди
+    if (outOfTurn) {                        // Если есть параметр вне очереди
+      if (mbParams_[outOfTurn].command == OPERATION_WRITE) {    // Команда записи
+        int address = mbParams_[outOfTurn].address;             // Получаем адрес параметра в устройстве
+        switch (mbParams_[outOfTurn].typeData) {                // Тип данных
           case TYPE_DATA_INT16:
             res = mms_->writeSingleRegister(devAdrs_, address, mbParams_[outOfTurn].value.int16_t[0]);
             if (res != ok_r) {
-              char stroka[30];
-              sprintf(stroka, "mbCmd0x06 %d %d %d", devAdrs_, address, mbParams_[outOfTurn].value.int16_t[0]);
-              logDebug.add(WarningMsg, stroka);
+              char message[30];
+              sprintf(message, "mbCmd0x06 %d %d %d", devAdrs_, address, mbParams_[outOfTurn].value.int16_t[0]);
+              logDebug.add(WarningMsg, message);
             }
             break;
           case TYPE_DATA_UINT16:
             res = mms_->writeSingleRegister(devAdrs_, address, mbParams_[outOfTurn].value.uint16_t[0]);
             if (res != ok_r) {
-              char stroka[30];
-              sprintf(stroka, "mbCmd0x06 %d %d %d", devAdrs_, address, mbParams_[outOfTurn].value.uint16_t[0]);
-              logDebug.add(WarningMsg, stroka);
+              char message[30];
+              sprintf(message, "mbCmd0x06 %d %d %d", devAdrs_, address, mbParams_[outOfTurn].value.uint16_t[0]);
+              logDebug.add(WarningMsg, message);
             }
             break;
           case  TYPE_DATA_INT32:
             int32Arr_[0] = mbParams_[outOfTurn].value.int32_t;
-            mms_->writeMultipleLongInts(devAdrs_,
-                                        address,
-                                        int32Arr_,
-                                        1);
+            res = mms_->writeMultipleLongInts(devAdrs_, address, int32Arr_, 1);
+            if (res != ok_r) {
+              char message[30];
+              sprintf(message, "mbCmd0x10 %d %d %d", devAdrs_, address, int32Arr_[0]);
+              logDebug.add(WarningMsg, message);
+            }
             break;
           case  TYPE_DATA_UINT32:
             int32Arr_[0] =  mbParams_[outOfTurn].value.uint32_t;
-            mms_->writeMultipleLongInts(devAdrs_,
-                                        mbParams_[outOfTurn].address,
-                                        int32Arr_,
-                                        1);
+            res = mms_->writeMultipleLongInts(devAdrs_, address, int32Arr_, 1);
+            if (res != ok_r) {
+              char message[30];
+              sprintf(message, "mbCmd0x10 %d %d %d", devAdrs_, address, int32Arr_[0]);
+              logDebug.add(WarningMsg, message);
+            }
             break;
           case  TYPE_DATA_FLOAT:
             float32Arr_[0] = mbParams_[outOfTurn].value.float_t;
-            mms_->writeMultipleFloats(devAdrs_,
-                                      mbParams_[outOfTurn].address,
-                                      float32Arr_,
-                                      1);
+            res = mms_->writeMultipleFloats(devAdrs_ ,address, float32Arr_, 1);
+            if (res != ok_r) {
+              char message[30];
+              sprintf(message, "mbCmd0x10 %d %d %f", devAdrs_, address, float32Arr_[0]);
+              logDebug.add(WarningMsg, message);
+            }
             break;
           default:
             break;
         }
       }
-      else { // Чтение вне очереди
+      else {                                // Чтение вне очереди
         if (mbParams_[outOfTurn].command == OPERATION_READ) {
           int address = mbParams_[outOfTurn].address;
-          if(!(mms_->readMultipleRegisters(devAdrs_,address,regArr_,1))) {
-            int index = getIndexAtAddress(address);
-            mbParams_[index].value.int16_t[0] = regArr_[0];
-            mbParams_[index].validity = VALIDITY_OK;
-            putMessageUpdateId(mbParams_[index].id);
-          }
-          else {
-            int index = getIndexAtAddress(address);
-            mbParams_[index].validity = VALIDITY_ERROR;
+          switch (mbParams_[outOfTurn].typeData) {
+          case TYPE_DATA_INT16:
+            count = 1;                      // Пока только одного параметра
+            res = mms_->readMultipleRegisters(devAdrs_, address, regArr_, count);
+            if (res == ok_r) {
+              int index = getIndexAtAddress(address);
+              for (int i = 0; i < count; i++) {
+                mbParams_[index].value.int16_t[0] = regArr_[i];
+                mbParams_[index].validity = checkRange(mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, true);
+                if (mbParams_[index].validity != ok_r) {
+                  char message[30];
+                  sprintf(message, "mbCmd0x03 %d %d %d %d", devAdrs_, index, regArr_[i], mbParams_[index].validity);
+                  logDebug.add(WarningMsg, message);
+                }
+                putMessageUpdateId(mbParams_[index].id);
+                index++;
+              }
+            }
+            else {
+              int index = getIndexAtAddress(address);
+              for (int i = 0; i < count; i++) {
+                mbParams_[index].validity = err_r;
+                char message[30];
+                sprintf(message, "mbCmd0x03 %d %d %d", devAdrs_, index, regArr_[i]);
+                logDebug.add(WarningMsg, message);
+                index++;
+              }
+            }
+            break;
+          case TYPE_DATA_UINT16:
+            count = 1;                      // Пока только одного параметра
+            res = mms_->readMultipleRegisters(devAdrs_, address, regArr_, count);
+            if (res == ok_r) {
+              int index = getIndexAtAddress(address);
+              for (int i = 0; i < count; i++) {
+                mbParams_[index].value.uint16_t[0] = regArr_[i];
+                mbParams_[index].validity = checkRange(mbParams_[index].value.uint16_t[0], mbParams_[index].min, mbParams_[index].max, true);
+                if (mbParams_[index].validity != ok_r) {
+                  char message[30];
+                  sprintf(message, "mbCmd0x03 %d %d %d %d", devAdrs_, index, regArr_[i], mbParams_[index].validity);
+                  logDebug.add(WarningMsg, message);
+                }
+                putMessageUpdateId(mbParams_[index].id);
+                index++;
+              }
+            }
+            else {
+              int index = getIndexAtAddress(address);
+              for (int i = 0; i < count; i++) {
+                mbParams_[index].validity = err_r;
+                char message[30];
+                sprintf(message, "mbCmd0x03 %d %d %d", devAdrs_, index, regArr_[i]);
+                logDebug.add(WarningMsg, message);
+                index++;
+              }
+            }
+            break;
+          case TYPE_DATA_INT32:
+            count = 1;
+            res = mms_->readMultipleLongInts(devAdrs_, address, int32Arr_, count);
+            if (res == ok_r) {
+              int index = getIndexAtAddress(address);
+              for (int i = 0; i < count; i++) {
+                mbParams_[index].value.uint16_t[0] = int32Arr_[i];
+                mbParams_[index].validity = checkRange(mbParams_[index].value.int32_t, mbParams_[index].min, mbParams_[index].max, true);
+                if (mbParams_[index].validity != ok_r) {
+                  char message[30];
+                  sprintf(message, "mbCmd0x03 %d %d %d %d", devAdrs_, index, int32Arr_[i], mbParams_[index].validity);
+                  logDebug.add(WarningMsg, message);
+                }
+                putMessageUpdateId(mbParams_[index].id);
+                index++;
+              }
+            }
+            else {
+              int index = getIndexAtAddress(address);
+              for (int i = 0; i < count; i++) {
+                mbParams_[index].validity = err_r;
+                char message[30];
+                sprintf(message, "mbCmd0x03 %d %d %d", devAdrs_, index, int32Arr_[i]);
+                logDebug.add(WarningMsg, message);
+                index++;
+              }
+            }
+            break;
+          case TYPE_DATA_UINT32:
+            mms_->readMultipleLongInts(devAdrs_, address, int32Arr_, 1);
+            break;
+          case TYPE_DATA_FLOAT:
+            mms_->readMultipleFloats(devAdrs_, address, float32Arr_, 1);
+            break;
           }
         }
       }

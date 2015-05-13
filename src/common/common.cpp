@@ -41,12 +41,12 @@ int checkRangeNoInclude(double value, double min, double max)
     }
     else {
       // Иначе возвращаем что больше максимума
-      return 2;
+      return 3;
     }
   }
   else {
     // Возвращаем что меньше минимума
-    return 1;
+    return 2;
   }
 }
 
@@ -61,16 +61,16 @@ int checkRangeInclude(double value, double min, double max)
     }
     else {
       // Иначе возвращаем что больше максимума
-      return 2;
+      return 3;
     }
   }
   else {
     // Возвращаем что меньше минимума
-    return 1;
+    return 2;
   }
 }
 
-int checkRange(double value, double min, double max, uint8_t inc)
+int checkRange(double value, double min, double max, bool inc)
 {
   // Если включая диапазон
   if (inc)
