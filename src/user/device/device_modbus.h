@@ -283,11 +283,11 @@ private:
   void setDeviceAddress(int address);
 
   //! Указатель на массив параметров устройства
-  ModbusParameter *modbusParameters_;
+  ModbusParameter *mbParams_;
   //! Количество параметров в массиве
   uint16_t countParameter_;
 
-  uint8_t deviceAddress_;
+  uint8_t devAdrs_;
   int indexExchange_;
 
   //! Идентификатор задачи

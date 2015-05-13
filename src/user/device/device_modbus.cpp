@@ -6,8 +6,8 @@
  */
 
 #include "device_modbus.h"
-
-
+#include "user_main.h"
+#include "stdio.h"
 
 static void deviceModbusTask(void *p)
 {
@@ -22,9 +22,9 @@ DeviceModbus::DeviceModbus(ModbusParameter *modbusParameters,
                            int stopBits,
                            int parity,
                            int address)
-  : modbusParameters_(modbusParameters)
+  : mbParams_(modbusParameters)
   , countParameter_(countParameter)
-  , deviceAddress_(address)
+  , devAdrs_(address)
   , indexExchange_(1)
 {
   // Создаём экземпляр класса ModbusMasterSerial
@@ -53,88 +53,88 @@ void DeviceModbus::createThread(const char *threadName, osMessageQId getValueDev
 
 int DeviceModbus::getFieldID(int index)
 {
-  return modbusParameters_[index].id;
+  return mbParams_[index].id;
 }
 
 int DeviceModbus::getFieldAddress(int index)
 {
-  return modbusParameters_[index].address;
+  return mbParams_[index].address;
 }
 
 int DeviceModbus::getFieldOperation(int index)
 {
-  return modbusParameters_[index].operation;
+  return mbParams_[index].operation;
 }
 
 int DeviceModbus::getFieldPhysic(int index)
 {
-  return modbusParameters_[index].physic;
+  return mbParams_[index].physic;
 }
 
 int DeviceModbus::getFieldUnit(int index)
 {
-  return modbusParameters_[index].unit;
+  return mbParams_[index].unit;
 }
 
 int DeviceModbus::getFieldValidity(int index)
 {
-  return modbusParameters_[index].validity;
+  return mbParams_[index].validity;
 }
 
 int DeviceModbus::getFieldTypeData(int index)
 {
-  return modbusParameters_[index].typeData;
+  return mbParams_[index].typeData;
 }
 
 int DeviceModbus::getFieldFreqExchange(int index)
 {
-  return modbusParameters_[index].freqExchange;
+  return mbParams_[index].freqExchange;
 }
 
 int DeviceModbus::getFieldCntExchange(int index)
 {
-  return modbusParameters_[index].cntExchange;
+  return mbParams_[index].cntExchange;
 }
 
 float DeviceModbus::getFieldCoefficient(int index)
 {
-  return modbusParameters_[index].coefficient;
+  return mbParams_[index].coefficient;
 }
 
 float DeviceModbus::getFieldMinimum(int index)
 {
-  return modbusParameters_[index].min;
+  return mbParams_[index].min;
 }
 
 float DeviceModbus::getFieldMaximum(int index)
 {
-  return modbusParameters_[index].max;
+  return mbParams_[index].max;
 }
 
 float DeviceModbus::getFieldDefault(int index)
 {
-  return modbusParameters_[index].def;
+  return mbParams_[index].def;
 }
 
 int DeviceModbus::getFieldCommand(int index)
 {
-  return modbusParameters_[index].command;
+  return mbParams_[index].command;
 }
 
 int DeviceModbus::setFieldCommand(int index, int command)
 {
-  modbusParameters_[index].command = command;
-  return modbusParameters_[index].command;
+  mbParams_[index].command = command;
+  return mbParams_[index].command;
 }
 
 unTypeData DeviceModbus::getFieldValue(int index)
 {
-  return modbusParameters_[index].value;
+  return mbParams_[index].value;
 }
 
 ModbusParameter* DeviceModbus::getFieldAll(int index)
 {
-  return &modbusParameters_[index];
+  return &mbParams_[index];
 }
 
 int DeviceModbus::getIndexAtId(int id)
@@ -222,26 +222,26 @@ void DeviceModbus::writeModbusParameter(int id, float value)
 int DeviceModbus::searchExchangeParameters()
 {
   for (int i = indexExchange_; i < countParameter_; i++) {
-    if (modbusParameters_[i].freqExchange > 0) {
+    if (mbParams_[i].freqExchange > 0) {
       // Если счётчик циклов опроса параметра не достиг уставки частоты опроса
-      if (modbusParameters_[i].cntExchange < modbusParameters_[i].freqExchange) {
-        modbusParameters_[i].cntExchange++;
+      if (mbParams_[i].cntExchange < mbParams_[i].freqExchange) {
+        mbParams_[i].cntExchange++;
       }
       else {
-        modbusParameters_[i].cntExchange = 0;
+        mbParams_[i].cntExchange = 0;
         indexExchange_ = i+1;
         return i;
       }
     }
   }
   for (int i = 1; i < indexExchange_; i++) {
-    if (modbusParameters_[i].freqExchange > 0) {
+    if (mbParams_[i].freqExchange > 0) {
       // Если счётчик циклов опроса параметра не достиг уставки частоты опроса
-      if (modbusParameters_[i].cntExchange < modbusParameters_[i].freqExchange) {
-        modbusParameters_[i].cntExchange++;
+      if (mbParams_[i].cntExchange < mbParams_[i].freqExchange) {
+        mbParams_[i].cntExchange++;
       }
       else {
-        modbusParameters_[i].cntExchange = 0;
+        mbParams_[i].cntExchange = 0;
         indexExchange_ = i+1;
         return i;
       }
@@ -261,7 +261,7 @@ bool DeviceModbus::isConnect()
 void DeviceModbus::exchangeTask()
 {
   int count = 0;
-
+  uint16_t res = 1;
   while (1) {
     osDelay(1);
 
@@ -269,37 +269,43 @@ void DeviceModbus::exchangeTask()
     int outOfTurn = getMessageOutOfTurn();
     if (outOfTurn) {
       // Если записать
-      if (modbusParameters_[outOfTurn].command == OPERATION_WRITE) {
-        int address = modbusParameters_[outOfTurn].address;
-        switch (modbusParameters_[outOfTurn].typeData) {
+      if (mbParams_[outOfTurn].command == OPERATION_WRITE) {
+        int address = mbParams_[outOfTurn].address;
+        switch (mbParams_[outOfTurn].typeData) {
           case TYPE_DATA_INT16:
-            mms_->writeSingleRegister(deviceAddress_,
-                                      address,
-                                      modbusParameters_[outOfTurn].value.int16_t[0]);
+            res = mms_->writeSingleRegister(devAdrs_, address, mbParams_[outOfTurn].value.int16_t[0]);
+            if (res != ok_r) {
+              char stroka[30];
+              sprintf(stroka, "mbCmd0x06 %d %d %d", devAdrs_, address, mbParams_[outOfTurn].value.int16_t[0]);
+              logDebug.add(WarningMsg, stroka);
+            }
             break;
           case TYPE_DATA_UINT16:
-            mms_->writeSingleRegister(deviceAddress_,
-                                      address,
-                                      modbusParameters_[outOfTurn].value.uint16_t[0]);
+            res = mms_->writeSingleRegister(devAdrs_, address, mbParams_[outOfTurn].value.uint16_t[0]);
+            if (res != ok_r) {
+              char stroka[30];
+              sprintf(stroka, "mbCmd0x06 %d %d %d", devAdrs_, address, mbParams_[outOfTurn].value.uint16_t[0]);
+              logDebug.add(WarningMsg, stroka);
+            }
             break;
           case  TYPE_DATA_INT32:
-            int32Arr_[0] = modbusParameters_[outOfTurn].value.int32_t;
-            mms_->writeMultipleLongInts(deviceAddress_,
+            int32Arr_[0] = mbParams_[outOfTurn].value.int32_t;
+            mms_->writeMultipleLongInts(devAdrs_,
                                         address,
                                         int32Arr_,
                                         1);
             break;
           case  TYPE_DATA_UINT32:
-            int32Arr_[0] =  modbusParameters_[outOfTurn].value.uint32_t;
-            mms_->writeMultipleLongInts(deviceAddress_,
-                                        modbusParameters_[outOfTurn].address,
+            int32Arr_[0] =  mbParams_[outOfTurn].value.uint32_t;
+            mms_->writeMultipleLongInts(devAdrs_,
+                                        mbParams_[outOfTurn].address,
                                         int32Arr_,
                                         1);
             break;
           case  TYPE_DATA_FLOAT:
-            float32Arr_[0] = modbusParameters_[outOfTurn].value.float_t;
-            mms_->writeMultipleFloats(deviceAddress_,
-                                      modbusParameters_[outOfTurn].address,
+            float32Arr_[0] = mbParams_[outOfTurn].value.float_t;
+            mms_->writeMultipleFloats(devAdrs_,
+                                      mbParams_[outOfTurn].address,
                                       float32Arr_,
                                       1);
             break;
@@ -308,68 +314,68 @@ void DeviceModbus::exchangeTask()
         }
       }
       else { // Чтение вне очереди
-        if (modbusParameters_[outOfTurn].command == OPERATION_READ) {
-          int address = modbusParameters_[outOfTurn].address;
-          if(!(mms_->readMultipleRegisters(deviceAddress_,address,regArr_,1))) {
+        if (mbParams_[outOfTurn].command == OPERATION_READ) {
+          int address = mbParams_[outOfTurn].address;
+          if(!(mms_->readMultipleRegisters(devAdrs_,address,regArr_,1))) {
             int index = getIndexAtAddress(address);
-            modbusParameters_[index].value.int16_t[0] = regArr_[0];
-            modbusParameters_[index].validity = VALIDITY_OK;
-            putMessageUpdateId(modbusParameters_[index].id);
+            mbParams_[index].value.int16_t[0] = regArr_[0];
+            mbParams_[index].validity = VALIDITY_OK;
+            putMessageUpdateId(mbParams_[index].id);
           }
           else {
             int index = getIndexAtAddress(address);
-            modbusParameters_[index].validity = VALIDITY_ERROR;
+            mbParams_[index].validity = VALIDITY_ERROR;
           }
         }
       }
-      modbusParameters_[outOfTurn].command = OPERATION_ERROR;
+      mbParams_[outOfTurn].command = OPERATION_ERROR;
     }
     else {
       outOfTurn = searchExchangeParameters();
       if (outOfTurn) {
-        int address = modbusParameters_[outOfTurn].address;
-        switch (modbusParameters_[outOfTurn].typeData) {
+        int address = mbParams_[outOfTurn].address;
+        switch (mbParams_[outOfTurn].typeData) {
           case TYPE_DATA_INT16:
             count = 1;
-            if (!(mms_->readMultipleRegisters(deviceAddress_,address,regArr_,count))) {
+            if (!(mms_->readMultipleRegisters(devAdrs_,address,regArr_,count))) {
               // TODO: Сделать проверки на минимум максиму и т.п
               // Получаем индекс элемента в массиве с которого начинаем сохранение
               int index = getIndexAtAddress(address);
               for (int i = 0; i < count; i++) {
-                modbusParameters_[index].value.int16_t[0] = regArr_[i];
-                modbusParameters_[index].validity = VALIDITY_OK;
-                putMessageUpdateId(modbusParameters_[index].id);
+                mbParams_[index].value.int16_t[0] = regArr_[i];
+                mbParams_[index].validity = VALIDITY_OK;
+                putMessageUpdateId(mbParams_[index].id);
                 index++;
               }
             }
             else {
               int index = getIndexAtAddress(address);
               for (int i = 0; i < count; i++) {
-                modbusParameters_[index].validity = VALIDITY_ERROR;
+                mbParams_[index].validity = VALIDITY_ERROR;
                 index++;
               }
             }
             break;
           case TYPE_DATA_UINT16:
-            mms_->readMultipleRegisters(deviceAddress_,
+            mms_->readMultipleRegisters(devAdrs_,
                                         address,
                                         regArr_,
                                         1);
             break;
           case  TYPE_DATA_INT32:
-            mms_->readMultipleLongInts(deviceAddress_,
+            mms_->readMultipleLongInts(devAdrs_,
                                        address,
                                        int32Arr_,
                                        1);
             break;
           case  TYPE_DATA_UINT32:
-            mms_->readMultipleLongInts(deviceAddress_,
+            mms_->readMultipleLongInts(devAdrs_,
                                        address,
                                        int32Arr_,
                                        1);
             break;
           case  TYPE_DATA_FLOAT:
-            mms_->readMultipleFloats(deviceAddress_,
+            mms_->readMultipleFloats(devAdrs_,
                                      address,
                                      float32Arr_,
                                      1);
@@ -384,10 +390,10 @@ void DeviceModbus::exchangeTask()
 
 int DeviceModbus::getDeviceAddress()
 {
-  return deviceAddress_;
+  return devAdrs_;
 }
 
 void DeviceModbus::setDeviceAddress(int address)
 {
-  deviceAddress_ = address;
+  devAdrs_ = address;
 }
