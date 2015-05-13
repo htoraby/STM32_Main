@@ -18,7 +18,7 @@
 class ModbusMasterSerial: public ModbusMaster
 {
 public:
-  ModbusMasterSerial(int Com);
+  ModbusMasterSerial(int com);
   virtual ~ModbusMasterSerial();
 
   /*!

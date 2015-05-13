@@ -10,6 +10,8 @@
 
 
 ModbusMaster::ModbusMaster()
+  : retryCnt_(MODBUS_COUNTER_LOST_CONNECT)
+  , timeOut_(MODBUS_ANSWER_TIMEOUT)
 {
   // TODO Auto-generated constructor stub
 
@@ -149,7 +151,7 @@ uint8_t ModbusMaster::readMultipleRegisters(uint8_t slaveAddr, uint16_t startRef
             return res;
           }
         }
-        if (retry > RetryCnt) {
+        if (retry > retryCnt_) {
           return res;
         }
       }
@@ -190,7 +192,7 @@ int ModbusMaster::readMultipleLongInts(int slaveAddr, int startRef, int *int32Ar
             }
             return res;
           }
-          if (retry > RetryCnt) {
+          if (retry > retryCnt_) {
             return res;
           }
         }                                               // Не смог отправить запрос
@@ -232,7 +234,7 @@ int ModbusMaster::readMultipleFloats(int slaveAddr, int startRef, float *float32
             return res;
           }
         }
-        if (retry > RetryCnt) {
+        if (retry > retryCnt_) {
           return res;
         }
       }
@@ -413,7 +415,7 @@ int ModbusMaster::writeSingleRegister(int slaveAddr, int regAddr, short regVal)
           return res;                                   // Возвращаем что запись выполнена
         }
       }
-      if (retry > RetryCnt) {
+      if (retry > retryCnt_) {
         return res;                                     // Возвращаем код ошибки Modbus
       }
     }
@@ -542,7 +544,7 @@ int  ModbusMaster::setTimeout(int Time)
       // Проверяем корректность введённого значения
       if((Time >=1 )&&(Time <= 100000))
       {
-        TimeOut = Time;                                // Присваиваем время ожидания
+        timeOut_ = Time;                                // Присваиваем время ожидания
         Result = ok_r;                            // Возвращаем ОК
       }
     }
@@ -572,7 +574,7 @@ int ModbusMaster::setRetryCnt(int Retry)
       // Проверяем корректность введенного значения
       if((Retry >=0 )&&(Retry <= 10))
       {
-        RetryCnt = Retry;                            // Присваиваем количества повторений
+        retryCnt_ = Retry;                            // Присваиваем количества повторений
         Result = ok_r;                            // Возвращаем ОК
       }
     }
@@ -604,7 +606,7 @@ int ModbusMaster::setPollDelay(int Delay)
       // Проверяем корректность введенного значения
       if((Delay >=1 )&&(Delay <= 100000))
       {
-        PollDelay = Delay;                            // Присваиваем таймер задержки опроса
+        pollDelay_ = Delay;                            // Присваиваем таймер задержки опроса
         Result = ok_r;                            // Возвращаем ОК
       }
     }
@@ -666,14 +668,14 @@ int ModbusMaster::getLostCounter()
 // Возвращает значение таймаута
 int ModbusMaster::getTimeout()
 {
-  return (TimeOut);
+  return (timeOut_);
 };
 
 // МЕТОД ПОЛУЧЕНИЯ ЗНАЧЕНИЯ ЗАДЕРЖКИ МЕЖДУ ЗАПРОСАМИ
 // Возвращает значение задержки между опросами
 int ModbusMaster::getPollDelay()
 {
-  return (PollDelay);
+  return (pollDelay_);
 };
 
 // МЕТОД ПОЛУЧЕНИЯ ОБЩЕГО КОЛИЧЕСТВ ОТВЕТОВ НА ЗАПРОСЫ
@@ -688,7 +690,7 @@ long ModbusMaster::getSuccessCounter()
 // Возвращает количество автоматических запросов
 int ModbusMaster::getRetryCnt()
 {
-  return (RetryCnt);
+  return (retryCnt_);
 };
 
 // МЕТОД КОНФИГУРИРОВАНИЯ BIG ENDIAN
@@ -697,7 +699,7 @@ int ModbusMaster::getRetryCnt()
 // сначала старший, потом младший
 void ModbusMaster::configureBigEndianInts()
 {
-  Endian = 0;
+  endian_ = 0;
 };
 
 // МЕТОД КОНФИГУРИРОВАНИЯ LITTLE ENDIAN
@@ -705,7 +707,7 @@ void ModbusMaster::configureBigEndianInts()
 // сначала младший потом старший
 void ModbusMaster::configureLittleEndianInts()
 {
-  Endian = 1;
+  endian_ = 1;
 };
 
 uint8_t ModbusMaster::txBuf(uint8_t *buf, uint8_t num)

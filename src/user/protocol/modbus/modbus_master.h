@@ -17,7 +17,7 @@
 #define MODBUS_ERROR_CRC                      2
 #define MODBUS_ERROR_TRASH                    3
 // Максимальное время ожидания ответа от устройства в мс
-#define MODBUS_ANSWER_TIMEOUT                 500
+#define MODBUS_ANSWER_TIMEOUT                 100
 // Максимальное время между байтами в ответе в мс
 #define MODBUS_TIME_END_PACKAGE               5
 // Минимальная возможная длина "корректного" ответа по Modbus
@@ -53,7 +53,7 @@
 #define MODBUS_GATEWAY_PATH_UNAVAILABLE_0x0A  10
 #define MODBUS_GATEWAY_TARGET_DEVICE_0x0B     11
 
-#define MODBUS_COUNTER_LOST_CONNECT           10
+#define MODBUS_COUNTER_LOST_CONNECT           5
 
 /*!
  * \brief Класс Modbus master
@@ -357,17 +357,13 @@ protected:
   unsigned long lostCounter_;               /// Счётчик потерянных пакетов
 
   // Число автоматических повторений запроса
-  int RetryCnt;
+  int retryCnt_;
   // Время ожидания ответа
-  int TimeOut;
+  int timeOut_;
   // Время между запросами
-  int PollDelay;
+  int pollDelay_;
   // Порядок байт
-  int Endian;
-  // Текущий таймер ожидания ответа
-  int Timer;
-  // Количество байт в ответе
-  int countBytesAnswer_;
+  int endian_;
 
   /*!
    * \brief Функция проверки корректности адреса устройства

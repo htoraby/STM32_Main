@@ -9,10 +9,9 @@
 #include "user_main.h"
 
 
-ModbusMasterSerial::ModbusMasterSerial(int Com)
+ModbusMasterSerial::ModbusMasterSerial(int com)
 {
-	// TODO Auto-generated constructor stub
-  numberComPort_ = Com;
+  numberComPort_ = com;
 }
 
 ModbusMasterSerial::~ModbusMasterSerial()
@@ -55,7 +54,7 @@ int ModbusMasterSerial::closeProtocol(int PortName)
 uint8_t ModbusMasterSerial::txBuf(uint8_t *buf, uint8_t num)
 {
   uint16_t res = err_r;
-  if (uartWriteData((uartNum)numberComPort_, txBuffer_, num) == ok_r) {
+  if (uartWriteData((uartNum)numberComPort_, txBuffer_, num, timeOut_) == ok_r) {
     incTotalCounter();
     res = ok_r;
   }
@@ -69,7 +68,7 @@ uint8_t ModbusMasterSerial::rxBuf(uint8_t *buf, uint8_t num)
 {
   uint16_t res = MODBUS_ERROR_TRASH;
   // Если истек таймаут ожидания ответа
-  if (osSemaphoreWait(semaphoreAnswer_, MODBUS_ANSWER_TIMEOUT) == osEventTimeout) {
+  if (osSemaphoreWait(semaphoreAnswer_, timeOut_) == osEventTimeout) {
     incLostCounter();
     res = MODBUS_ERROR_TIMEOUT;                      // Возвращаем ошибку что нет ответа от устройства
   }
