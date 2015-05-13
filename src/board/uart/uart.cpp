@@ -304,15 +304,15 @@ int uartReadData(uartNum num, uint8_t *data)
   return count;
 }
 
-StatusType uartWriteData(uartNum num, uint8_t *data, int count,
+uint8_t uartWriteData(uartNum num, uint8_t *data, int count,
                          uint32_t timeout)
 {
-  StatusType status = StatusError;
+  uint8_t status = 1;
   memcpy(uarts[num].txBuffer, data, count);
 
   uartSetRts(num, GPIO_PIN_SET);
   if (HAL_UART_Transmit(&uarts[num].uart, uarts[num].txBuffer, count, timeout) == HAL_OK)
-    status = StatusOk;
+    status = 0;
   uartSetRts(num, GPIO_PIN_RESET);
 
   return status;

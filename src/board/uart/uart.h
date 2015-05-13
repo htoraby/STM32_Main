@@ -88,7 +88,7 @@ int uartReadData(uartNum num, uint8_t *data);
  \param count - количество отправляемых байт
  \return StatusType - ошибка или ок
 */
-StatusType uartWriteData(uartNum num, uint8_t *data, int count,
+uint8_t uartWriteData(uartNum num, uint8_t *data, int count,
                          uint32_t timeout = 100);
 
 #endif

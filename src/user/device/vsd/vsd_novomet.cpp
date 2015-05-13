@@ -2348,7 +2348,6 @@ void VsdNovomet::init()
   dm_->createThread("ProtocolVsd", getValueDeviceQId_);
 }
 
-// Метод заполнения внутреннего банка параметров по карте устройства
 void VsdNovomet::initParameters()
 {
   Vsd::initParameters();
@@ -2449,7 +2448,7 @@ int VsdNovomet::start()
 
   // Если стоит бит запуска двигателя
   if (checkVsdStatus(VSD_STATUS_STARTED))
-    return RETURN_OK;
+    return ok_r;
 
   int timeMs = VSD_CMD_TIMEOUT;
   int countRepeats = 0;
@@ -2460,10 +2459,10 @@ int VsdNovomet::start()
       countRepeats++;
 
       if (countRepeats > VSD_CMD_NUMBER_REPEATS)
-        return RETURN_ERROR;
+        return err_r;
 
       if (setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_START))
-        return RETURN_ERROR;
+        return err_r;
     } else {
       timeMs = timeMs + 100;
     }
@@ -2471,7 +2470,7 @@ int VsdNovomet::start()
     osDelay(100);
 
     if (checkVsdStatus(VSD_STATUS_STARTED))
-      return RETURN_OK;
+      return ok_r;
   }
 }
 
@@ -2497,7 +2496,7 @@ int VsdNovomet::stop()
 
   // Если стоит бит остановки по внешней команде
   if (checkVsdStatus(VSD_STATUS_STOPPED_EXTERNAL))
-    return RETURN_OK;
+    return ok_r;
 
   int timeMs = VSD_CMD_TIMEOUT;
   int countRepeats = 0;
@@ -2508,10 +2507,10 @@ int VsdNovomet::stop()
       countRepeats++;
 
       if (countRepeats > VSD_CMD_NUMBER_REPEATS)
-        return RETURN_ERROR;
+        return err_r;
 
       if (setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_STOP))
-        return RETURN_ERROR;
+        return err_r;
     } else {
       timeMs = timeMs + 100;
     }
@@ -2519,7 +2518,7 @@ int VsdNovomet::stop()
     osDelay(100);
 
     if (checkVsdStatus(VSD_STATUS_STOPPED_EXTERNAL))
-      return RETURN_OK;
+      return ok_r;
   }
 }
 
@@ -2527,7 +2526,7 @@ int VsdNovomet::alarmstop()
 {
   // Если стоит бит остановки по внешней команде
   if (checkVsdStatus(VSD_STATUS_STOPPED_ALARM))
-    return RETURN_OK;
+    return ok_r;
 
   int timeMs = VSD_CMD_TIMEOUT;
   int countRepeats = 0;
@@ -2538,10 +2537,10 @@ int VsdNovomet::alarmstop()
       countRepeats++;
 
       if (countRepeats > VSD_CMD_NUMBER_REPEATS)
-        return RETURN_ERROR;
+        return err_r;
 
       if (setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_ALARM))
-        return RETURN_ERROR;
+        return err_r;
     } else {
       timeMs = timeMs + 100;
     }
@@ -2549,7 +2548,7 @@ int VsdNovomet::alarmstop()
     osDelay(100);
 
     if (checkVsdStatus(VSD_STATUS_STOPPED_EXTERNAL))
-      return RETURN_OK;
+      return ok_r;
   }
 }
 
@@ -2572,32 +2571,32 @@ bool VsdNovomet::checkStop()
 int VsdNovomet::setFrequency(float value)
 {
   if (Vsd::setFrequency(value))
-    return RETURN_ERROR;
+    return err_r;
   else {
     writeToDevice(VSD_FREQUENCY, value);
-    return RETURN_OK;
+    return ok_r;
   }
 }
 
 int VsdNovomet::setMinFrequency(float value)
 {
   if (Vsd::setMinFrequency(value)) {
-    return RETURN_ERROR;
+    return err_r;
   }
   else {
     writeToDevice(VSD_LOW_LIM_SPEED_MOTOR, getValue(VSD_LOW_LIM_SPEED_MOTOR));
-    return RETURN_OK;
+    return ok_r;
   }
 }
 
 int VsdNovomet::setMaxFrequency(float value)
 {
   if (Vsd::setMaxFrequency(value)) {
-    return RETURN_ERROR;
+    return err_r;
   }
   else {
     writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
-    return RETURN_OK;
+    return ok_r;
   }
 }
 
@@ -2605,7 +2604,7 @@ int VsdNovomet::setMotorType(float value)
 {
   if (Vsd::setMotorType(value)) {           // Записываем тип двигателя в регистр
     logDebug.add(WarningMsg, "setTypeMotor");
-    return RETURN_ERROR;                    // Если не записали возвращаем ошибку
+    return err_r;                    // Если не записали возвращаем ошибку
   }
   else {                                    // Записываем тип двигателя в устройство
     if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) {
@@ -2614,7 +2613,7 @@ int VsdNovomet::setMotorType(float value)
     else {
       writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_VENT_MOTOR);
     }
-    return RETURN_OK;
+    return ok_r;
   }
 }
 
@@ -2670,29 +2669,29 @@ void VsdNovomet::calcCurrentDC()
 int VsdNovomet::setTempSpeedUp(float value)
 {
   if (Vsd::setTempSpeedUp(value)) {
-    return RETURN_ERROR;
+    return err_r;
   }
   else {
     writeToDevice(VSD_T_SPEEDUP, getValue(VSD_T_SPEEDUP));
-    return RETURN_OK;
+    return ok_r;
   }
 }
 
 int VsdNovomet::setTempSpeedDown(float value)
 {
   if (Vsd::setTempSpeedDown(value)) {
-    return RETURN_ERROR;
+    return err_r;
   }
   else {
     writeToDevice(VSD_T_SPEEDDOWN, getValue(VSD_T_SPEEDDOWN));
-    return RETURN_OK;
+    return ok_r;
   }
 }
 
 int VsdNovomet::setRotation(float value)
 {
   if(Vsd::setRotation(value)){
-    return RETURN_ERROR;
+    return err_r;
   }
   else {
     if (getValue(VSD_ROTATION) == VSD_ROTATION_DIRECT) {
@@ -2701,18 +2700,18 @@ int VsdNovomet::setRotation(float value)
     else {
       writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_LEFT_DIRECTION);
     }
-    return RETURN_OK;
+    return ok_r;
   }
 }
 
 int VsdNovomet::setSwitchingFrequency(float value)
 {
   if(Vsd::setSwitchingFrequency(value)){
-    return RETURN_ERROR;
+    return err_r;
   }
   else {
     writeToDevice(VSD_SWITCHING_FREQUENCY, value);
-    return RETURN_OK;
+    return ok_r;
   }
 }
 

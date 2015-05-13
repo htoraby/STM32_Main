@@ -52,8 +52,8 @@ enum enPeriodExchange
 
 enum enReturns
 {
-  RETURN_OK                     = 0,
-  RETURN_ERROR                  = 1,
+  ok_r                          = 0,
+  err_r                         = 1,
   RETURN_ERROR_ID_VALUE         = 2,
   RETURN_ERROR_ID               = 3,
   RETURN_ERROR_ACCESS_VALUE     = 4,
@@ -68,11 +68,7 @@ enum enReturns
   RETURN_ERROR_MINIMUM          = 13,
   RETURN_ERROR_TYPE_DATA_VALUE  = 14,
   RETURN_ERROR_UNIT_VALUE       = 15,
-  RETURN_MODBUS_TIMEOUT         = 16,
-  RETURN_MODBUS_ERROR_CRC       = 17,
-  RETURN_MODBUS_ERROR           = 18,
-  RETURN_MODBUS_OK              = 19,
-  RETURN_ERROR_UPDATE_VALUE     = 20,
+  RETURN_ERROR_UPDATE_VALUE     = 16,
   RETURN_LAST
 };
 

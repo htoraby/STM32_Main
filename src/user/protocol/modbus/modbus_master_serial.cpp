@@ -6,11 +6,12 @@
  */
 
 #include "modbus_master_serial.h"
+#include "user_main.h"
 
-ModbusMasterSerial::ModbusMasterSerial(int Com)
+
+ModbusMasterSerial::ModbusMasterSerial(int com)
 {
-	// TODO Auto-generated constructor stub
-  numberComPort_ = Com;
+  numberComPort_ = com;
 }
 
 ModbusMasterSerial::~ModbusMasterSerial()
@@ -24,14 +25,14 @@ int ModbusMasterSerial::openProtocol(int portName,
                                      int stopBits,
                                      int parity)
 {
-	int Result = RETURN_ERROR;
+  int Result = err_r;
 	try	{
     // Вызываем функцию инициализации UART
     uartInit((uartNum)portName, baudRate, parity, stopBits);
     // Семафор для ожидания ответов по Modbus
     semaphoreAnswer_ = uartGetSemaphoreId((uartNum)portName);
 		// Возвращаем что операция выполнена
-		Result = RETURN_OK;
+    Result = ok_r;
 	}
 	catch(...)
 	{
@@ -42,47 +43,66 @@ int ModbusMasterSerial::openProtocol(int portName,
 
 int ModbusMasterSerial::closeProtocol(int PortName)
 {
-	int Result = RETURN_ERROR;
-	try
-	{
-		// Вызываем функцию UART
-    uartClose((uartNum)PortName);
-    resetTotalCounter();
-    resetSuccessCounter();
-		Result = RETURN_OK;
-	}
-	catch(...)
-	{
-		// Формируем сообщение упали в функции closeProtocol
-	}
-	return Result;
+  int Result = err_r;
+  uartClose((uartNum)PortName);
+  resetTotalCounter();
+  resetSuccessCounter();
+  Result = ok_r;
+  return Result;
 }
 
-int ModbusMasterSerial::transmitQuery(unsigned char *Buf, int Count)
+uint8_t ModbusMasterSerial::txBuf(uint8_t *buf, uint8_t num)
 {
-  uartWriteData((uartNum)numberComPort_, txBuffer_, Count);
-  incTotalCounter();
-  return 1;
-}
-
-int ModbusMasterSerial::receiveAnswer(unsigned char *Buf)
-{
-  // Если истек таймаут ожидания ответа
-  if (osSemaphoreWait(semaphoreAnswer_, MODBUS_ANSWER_TIMEOUT) == osEventTimeout) {
-    incLostCounter();
-    // Возвращаем ошибку что нет ответа от устройства
-    return 0;
+  uint16_t res = err_r;
+  if (uartWriteData((uartNum)numberComPort_, txBuffer_, num, timeOut_) == ok_r) {
+    incTotalCounter();
+    res = ok_r;
   }
-  // Получили первый байт
   else {
-    // Крутимся пока время между байтами не станет больше MODBUS_TIME_END_PACKAGE
-    while (1) {
-      if (osSemaphoreWait(semaphoreAnswer_, MODBUS_TIME_END_PACKAGE) == osEventTimeout) {
-        // Получаем количество полученных байт и массив байт
-        incSuccessCounter();
-        resetLostCounter();
-        return uartReadData((uartNum)numberComPort_, Buf);
+    logDebug.add(WarningMsg, "txQuery");
+  }
+  return res;
+}
+
+uint8_t ModbusMasterSerial::rxBuf(uint8_t *buf, uint8_t num)
+{
+  uint16_t res = MODBUS_ERROR_TRASH;
+  // Если истек таймаут ожидания ответа
+  if (osSemaphoreWait(semaphoreAnswer_, timeOut_) == osEventTimeout) {
+    incLostCounter();
+    res = MODBUS_ERROR_TIMEOUT;                      // Возвращаем ошибку что нет ответа от устройства
+  }
+  else {                                              // Получили первый байт
+    while (1) {                                       // Крутимся пока время между байтами не станет больше MODBUS_TIME_END_PACKAGE
+      if (osSemaphoreWait(semaphoreAnswer_, MODBUS_TIME_END_PACKAGE) == osEventTimeout) {       
+        int rxNum = uartReadData((uartNum)numberComPort_, buf);
+        if ((rxNum == num) &&                         // Получили ожидаемое количество байт
+            (rxBuffer_[0] == txBuffer_[0]) &&         // Ответ от нужного устройства
+            (rxBuffer_[1] == txBuffer_[1]) &&         // Ответ на нужную команду
+            (rxBuffer_[2] == rxNum - MODBUS_MIN_LENGHT_PACKAGE)) {        // Нужное количество данных
+          if (((rxBuffer_[rxNum - 1] << 8) + rxBuffer_[rxNum - 2]) == crc16_ibm(rxBuffer_, (rxNum - 2))) {
+            incSuccessCounter();
+            resetLostCounter();
+            res =  MODBUS_OK;
+          }
+          else {
+            res =  MODBUS_ERROR_CRC;
+          }
+        }
+        // Приняли 5 байт, проверяем на ошибку
+        else if ((rxNum == MODBUS_MIN_LENGHT_PACKAGE) &&        // Получили ожидаемое количество байт
+                 (rxBuffer_[0] == txBuffer_[0]) &&              // Ответ от нужного устройства
+                 (rxBuffer_[1] == txBuffer_[1] + MODBUS_ERROR_0x80) &&    // Ответ с документированной ошибкой
+                 (rxBuffer_[2] >= MODBUS_ILLEGAL_FUNCTION_0x01) &&
+                 (rxBuffer_[2] <= MODBUS_GATEWAY_TARGET_DEVICE_0x0B)) {
+          res =  MODBUS_ERROR_0x80 + rxBuffer_[2];
+        }
+        // Неизвестная ошибка
+        else {
+          res =  MODBUS_ERROR_TRASH;
+        }
       }
     }
   }
+  return res;
 }
