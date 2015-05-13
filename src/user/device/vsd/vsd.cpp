@@ -177,7 +177,7 @@ void Vsd::initParameters()
     setFieldID(index, index + VSD_BEGIN);
     setFieldAccess(index, ACCESS_ERROR);
     setFieldOperation(index, OPERATION_ERROR);
-    setFieldPhysic(index, PHYSIC_ERROR);
+    setFieldPhysic(index, PHYSIC_NUMERIC);
     setFieldMin(index, 0.0);
     setFieldMax(index, 0.0);
     setFieldDef(index, 0.0);

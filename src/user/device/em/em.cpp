@@ -80,7 +80,7 @@ void Em::initParameters()
   parameters_[EM_BEGIN - EM_BEGIN].id            = EM_BEGIN;
   parameters_[EM_BEGIN - EM_BEGIN].access        = ACCESS_ERROR;
   parameters_[EM_BEGIN - EM_BEGIN].operation     = OPERATION_ERROR;
-  parameters_[EM_BEGIN - EM_BEGIN].physic        = PHYSIC_ERROR;
+  parameters_[EM_BEGIN - EM_BEGIN].physic        = PHYSIC_NUMERIC;
   parameters_[EM_BEGIN - EM_BEGIN].validity      = VALIDITY_ERROR;
   parameters_[EM_BEGIN - EM_BEGIN].value.float_t         = 0.0;
   parameters_[EM_BEGIN - EM_BEGIN].min           = 0.0;

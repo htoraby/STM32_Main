@@ -11980,7 +11980,7 @@
 		<comment>Задержка отключения при токоограничении</comment>
 	</param>
 	<param>
-		<id>10303</id>
+		<id>10304</id>
 		<name>VSD_FREQ_SKIP_MODE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -12000,7 +12000,7 @@
 		<comment>Режим пропуска частот</comment>
 	</param>
 	<param>
-		<id>10303</id>
+		<id>10305</id>
 		<name>VSD_FREQ_SKIP_START_FREQ</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -12019,7 +12019,7 @@
 		<comment>Начальная частота пропуска</comment>
 	</param>
 	<param>
-		<id>10303</id>
+		<id>10306</id>
 		<name>VSD_FREQ_SKIP_STOP_FREQ</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -12038,7 +12038,7 @@
 		<comment>Конечная частота пропуска</comment>
 	</param>
 	<param>
-		<id>10303</id>
+		<id>10307</id>
 		<name>VSD_FREQ_SKIP_ACCEL</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -12057,7 +12057,7 @@
 		<comment>Скорость изменения частоты при пропуске</comment>
 	</param>
 	<param>
-		<id>10303</id>
+		<id>10308</id>
 		<name>VSD_BLDC_KP</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -12076,7 +12076,7 @@
 		<comment>Коэффициент пропорц.рег.угла для ВД</comment>
 	</param>
 	<param>
-		<id>10303</id>
+		<id>10309</id>
 		<name>VSD_BLDC_KI</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -12095,7 +12095,7 @@
 		<comment>Коэффициент интегр.рег.угла для ВД</comment>
 	</param>
 	<param>
-		<id>10303</id>
+		<id>10310</id>
 		<name>VSD_BLDC_MAX_UP</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -12114,7 +12114,7 @@
 		<comment>Максимальная доб. верхнего предела для ВД</comment>
 	</param>
 	<param>
-		<id>10303</id>
+		<id>10311</id>
 		<name>VSD_END</name>
 	</param>
 	<param>

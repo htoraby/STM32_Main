@@ -1,123 +1,309 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <KSU-02measure_conv xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<param>
-		<midIn>ACCELERATION_G</midIn>
-		<midOut>ACCELERATION_MC2</midOut>
-		<a>9.80665</a>
+		<midIn>PHYSIC_NUMERIC</midIn>
+		<midOut>NUMERIC_NUMBER</midOut>
+		<a>1</a>
 		<b>0</b>
 	</param>
 	<param>
-		<midIn>ACTIV_POWER_W</midIn>
-		<midOut>ACTIV_POWER_KW</midOut>
+		<midIn>PHYSIC_DATE_TIME</midIn>
+		<midOut>DATE_TIME_SS</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_TIME</midIn>
+		<midOut>TIME_SS</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_TIME</midIn>
+		<midOut>TIME_US</midOut>
+		<a>0.000001</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_TIME</midIn>
+		<midOut>TIME_MS</midOut>
 		<a>0.001</a>
 		<b>0</b>
 	</param>
 	<param>
-		<midIn>ACTIVE_ENERGY_W_HH</midIn>
-		<midOut>ACTIVE_ENERGY_KW_HH</midOut>
-		<a>0.001</a>
+		<midIn>PHYSIC_PERCENT</midIn>
+		<midOut>PERCENT_PERCENT</midOut>
+		<a>1</a>
 		<b>0</b>
 	</param>
 	<param>
-		<midIn>FREQUENCY_HZ</midIn>
-		<midOut>FREQUENCY_KHZ</midOut>
-		<a>0.001</a>
+		<midIn>PHYSIC_LENGHT</midIn>
+		<midOut>LENGTH_M</midOut>
+		<a>1</a>
 		<b>0</b>
 	</param>
 	<param>
-		<midIn>FULL_POWER_VA</midIn>
-		<midOut>FULL_POWER_KVA</midOut>
-		<a>0.001</a>
-		<b>0</b>
-	</param>
-	<param>
-		<midIn>INDUNCTANCE_H</midIn>
-		<midOut>INDUNCTANCE_MH</midOut>
-		<a>1000</a>
-		<b>0</b>
-	</param>
-	<param>
-		<midIn>LENGTH_M</midIn>
+		<midIn>PHYSIC_LENGHT</midIn>
 		<midOut>LENGTH_MILE</midOut>
 		<a>1609.344</a>
 		<b>0</b>
 	</param>
 	<param>
-		<midIn>LENGTH_M</midIn>
+		<midIn>PHYSIC_LENGHT</midIn>
 		<midOut>LENGTH_FOOT</midOut>
 		<a>0.3048</a>
 		<b>0</b>
 	</param>
 	<param>
-		<midIn>POWER_W</midIn>
-		<midOut>POWER_KW</midOut>
+		<midIn>PHYSIC_DENSITY</midIn>
+		<midOut>DENSITY_KG_M3</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_SPACE</midIn>
+		<midOut>SPACE_M2</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_FREQUENCY</midIn>
+		<midOut>FREQUENCY_HZ</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_FREQUENCY</midIn>
+		<midOut>FREQUENCY_KHZ</midOut>
 		<a>0.001</a>
 		<b>0</b>
 	</param>
 	<param>
-		<midIn>PRESSURE_MPA</midIn>
-		<midOut>PRESSURE_ATM</midOut>
-		<a>9.8692</a>
+		<midIn>PHYSIC_VOLTAGE</midIn>
+		<midOut>VOLTAGE_V</midOut>
+		<a>1</a>
 		<b>0</b>
 	</param>
 	<param>
-		<midIn>PRESSURE_MPA</midIn>
-		<midOut>PRESSURE_AT</midOut>
-		<a>10.197</a>
+		<midIn>PHYSIC_VOLTAGE</midIn>
+		<midOut>VOLTAGE_KV</midOut>
+		<a>0.001</a>
 		<b>0</b>
 	</param>
 	<param>
-		<midIn>PRESSURE_MPA</midIn>
-		<midOut>PRESSURE_BAR</midOut>
-		<a>10</a>
+		<midIn>PHYSIC_CURRENT</midIn>
+		<midOut>CURRENT_A</midOut>
+		<a>1</a>
 		<b>0</b>
 	</param>
 	<param>
-		<midIn>PRESSURE_MPA</midIn>
-		<midOut>PRESSURE_PSI</midOut>
-		<a>145.04</a>
+		<midIn>PHYSIC_CURRENT</midIn>
+		<midOut>CURRENT_MA</midOut>
+		<a>1000</a>
 		<b>0</b>
 	</param>
 	<param>
-		<midIn>REACTIV_POWER_VAR</midIn>
+		<midIn>PHYSIC_ACTIVE_POWER</midIn>
+		<midOut>ACTIV_POWER_W</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_ACTIVE_POWER</midIn>
+		<midOut>ACTIV_POWER_KW</midOut>
+		<a>0.001</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_FULL_POWER</midIn>
+		<midOut>FULL_POWER_VA</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_FULL_POWER</midIn>
+		<midOut>FULL_POWER_KVA</midOut>
+		<a>0.001</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_REACTIVE_POWER</midIn>
+		<midOut>FULL_POWER_KVA</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_REACTIVE_POWER</midIn>
 		<midOut>REACTIV_POWER_KVAR</midOut>
 		<a>0.001</a>
 		<b>0</b>
 	</param>
 	<param>
-		<midIn>REACTIVE_ENERGY_VAR_HH</midIn>
-		<midOut>REACTIVE_ENERGY_KVAR_HH</midOut>
-		<a>0.001</a>
+		<midIn>PHYSIC_ANGLE</midIn>
+		<midOut>ANGLE_DEGREES</midOut>
+		<a>1</a>
 		<b>0</b>
 	</param>
 	<param>
-		<midIn>RESISTANCE_OM</midIn>
+		<midIn>PHYSIC_RPM</midIn>
+		<midOut>RPM_RPM</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_TEMP</midIn>
+		<midOut>TEMP_HZ_SS</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_RESISTANCE</midIn>
+		<midOut>RESISTANCE_OM</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_RESISTANCE</midIn>
 		<midOut>RESISTANCE_KOM</midOut>
 		<a>0.001</a>
 		<b>0</b>
 	</param>
 	<param>
-		<midIn>RESISTANCE_OM</midIn>
+		<midIn>PHYSIC_RESISTANCE</midIn>
 		<midOut>RESISTANCE_MOM</midOut>
 		<a>0.000001</a>
 		<b>0</b>
 	</param>
 	<param>
-		<midIn>RESISTANCE_OM</midIn>
+		<midIn>PHYSIC_RESISTANCE</midIn>
 		<midOut>RESISTANCE_MILIOM</midOut>
 		<a>1000</a>
 		<b>0</b>
 	</param>
 	<param>
-		<midIn>TEMPERATURE_C</midIn>
-		<midOut>TEMPERATURE_F</midOut>
-		<a>1.8</a>
-		<b>32</b>
+		<midIn>PHYSIC_RESIST_CABLE</midIn>
+		<midOut>RESIST_CABLE_KOM_M</midOut>
+		<a>1</a>
+		<b>0</b>
 	</param>
 	<param>
-		<midIn>TEMPERATURE_C</midIn>
-		<midOut>TEMPERATURE_K</midOut>
+		<midIn>PHYSIC_PRESSURE</midIn>
+		<midOut>PRESSURE_MPA</midOut>
 		<a>1</a>
-		<b>273.15</b>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_PRESSURE</midIn>
+		<midOut>PRESSURE_ATM</midOut>
+		<a>9.8692</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_PRESSURE</midIn>
+		<midOut>PRESSURE_AT</midOut>
+		<a>10.197</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_PRESSURE</midIn>
+		<midOut>PRESSURE_BAR</midOut>
+		<a>10</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_PRESSURE</midIn>
+		<midOut>PRESSURE_PSI</midOut>
+		<a>145.04</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_TEMPERATURE</midIn>
+		<midOut>TEMPERATURE_C</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_ACCELERATION</midIn>
+		<midOut>ACCELERATION_G</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_ACCELERATION</midIn>
+		<midOut>ACCELERATION_MSS2</midOut>
+		<a>9.80665</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_SPEED</midIn>
+		<midOut>SPEED_M_SS</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_VISCOSITY</midIn>
+		<midOut>VISCOSITY_MPA_SS</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_FLOW</midIn>
+		<midOut>FLOW_M3_DD</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_POWER</midIn>
+		<midOut>POWER_W</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_POWER</midIn>
+		<midOut>POWER_KW</midOut>
+		<a>0.001</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_ACTIVE_ENERGY</midIn>
+		<midOut>ACTIVE_ENERGY_W_HH</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_ACTIVE_ENERGY</midIn>
+		<midOut>ACTIVE_ENERGY_KW_HH</midOut>
+		<a>0.001</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_REACTIVE_ENERGY</midIn>
+		<midOut>REACTIVE_ENERGY_VAR_HH</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_REACTIVE_ENERGY</midIn>
+		<midOut>REACTIVE_ENERGY_KVAR_HH</midOut>
+		<a>0.001</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_FULL_ENERGY</midIn>
+		<midOut>FULL_ENERGY_VAHH</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_RATE</midIn>
+		<midOut>RATE_NM</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_INDUNCTANCE</midIn>
+		<midOut>INDUNCTANCE_MH</midOut>
+		<a>1</a>
+		<b>0</b>
 	</param>
 </KSU-02measure_conv>
