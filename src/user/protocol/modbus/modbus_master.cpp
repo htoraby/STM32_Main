@@ -393,23 +393,32 @@ int ModbusMaster::writeCoil(int slaveAddr, int bitAddr, int bitVal)
 
 int ModbusMaster::writeSingleRegister(int slaveAddr, int regAddr, short regVal)
 {
-  int result = err_r;
-  unsigned short crc = 0;
+  int res = err_r;
+  uint16_t crc = 0;
+  uint8_t retry = 0;
   if (checkDeviceAddress(slaveAddr)) {
-    txBuffer_[0] = slaveAddr;                         // Адрес устройства
-    txBuffer_[1] = MODBUS_WRITE_SINGLE_REGISTER_0x06; // Команды
-    txBuffer_[2] = ((regAddr >> 8) & 0x00ff);         // Старший байт адреса катушки
-    txBuffer_[3] = regAddr & 0x00ff;                  // Младший байт адреса катушки
-    txBuffer_[4] = ((regVal >> 8) & 0x00ff);          // Старший байт значения
-    txBuffer_[5] = regVal & 0x00ff;                   // Младший байт значения
-    crc = crc16_ibm(txBuffer_, 6);                    // Вычисляем контрольную сумму
-    txBuffer_[6] = crc & 0x00ff;
-    txBuffer_[7] = ((crc >> 8) & 0x00ff);
-    if (txBuf(txBuffer_, 8)) {
-      result = rxBuf(rxBuffer_, 8);
+    while (1) {
+      txBuffer_[0] = slaveAddr;                         // Адрес устройства
+      txBuffer_[1] = MODBUS_WRITE_SINGLE_REGISTER_0x06; // Команды
+      txBuffer_[2] = ((regAddr >> 8) & 0x00ff);         // Старший байт адреса катушки
+      txBuffer_[3] = regAddr & 0x00ff;                  // Младший байт адреса катушки
+      txBuffer_[4] = ((regVal >> 8) & 0x00ff);          // Старший байт значения
+      txBuffer_[5] = regVal & 0x00ff;                   // Младший байт значения
+      crc = crc16_ibm(txBuffer_, 6);                    // Вычисляем контрольную сумму
+      txBuffer_[6] = crc & 0x00ff;
+      txBuffer_[7] = ((crc >> 8) & 0x00ff);
+      if (txBuf(txBuffer_, 8) == ok_r) {
+        res = rxBuf(rxBuffer_, 8);
+        if (res == MODBUS_OK) {
+          return res;                                   // Возвращаем что запись выполнена
+        }
+      }
+      if (retry > RetryCnt) {
+        return res;                                     // Возвращаем код ошибки Modbus
+      }
     }
   }
-  return result;
+  return res;
 }
 
 int ModbusMaster::readExceptionStatus(int slaveAddr, unsigned char *statusBytePtr)
