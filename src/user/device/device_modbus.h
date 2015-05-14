@@ -259,10 +259,6 @@ public:
 
   int searchExchangeParameters();
 
-  /*!
-   * \brief Метод проверяющий наличие связи с устройством
-   * \return
-   */
   bool isConnect();
 
   uint16_t regArr_[125];

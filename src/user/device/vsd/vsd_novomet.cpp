@@ -2376,6 +2376,11 @@ void VsdNovomet::initParameters()
   }
 }
 
+bool VsdNovomet::isConnect()
+{
+  return dm_->isConnect();
+}
+
 // Метод проверки и обновления параметров устройства
 void VsdNovomet::getNewValue(uint16_t id)
 {

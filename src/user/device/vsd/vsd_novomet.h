@@ -55,6 +55,8 @@ public:
   void initModbusParameters();
   void initParameters();
 
+  bool isConnect();
+
   void getNewValue(uint16_t id);
   uint8_t setNewValue(uint16_t id, float value);
 
@@ -119,8 +121,6 @@ public:
   int onRegimePush();
 
   int onRegimePickup();
-
-
 
   /*!
    * \brief Функция выключения толчкового режима

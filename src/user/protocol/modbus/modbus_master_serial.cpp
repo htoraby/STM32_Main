@@ -31,6 +31,13 @@ int ModbusMasterSerial::openProtocol(int portName,
     uartInit((uartNum)portName, baudRate, parity, stopBits);
     // Семафор для ожидания ответов по Modbus
     semaphoreAnswer_ = uartGetSemaphoreId((uartNum)portName);
+    resetTotalCounter();
+    resetSuccessCounter();
+    resetCrcCounter();
+    resetErrCounter();
+    resetFailCounter();
+    resetLostCounter();
+    resetTrashCounter();
 		// Возвращаем что операция выполнена
     Result = ok_r;
 	}
@@ -47,6 +54,11 @@ int ModbusMasterSerial::closeProtocol(int PortName)
   uartClose((uartNum)PortName);
   resetTotalCounter();
   resetSuccessCounter();
+  resetCrcCounter();
+  resetErrCounter();
+  resetFailCounter();
+  resetLostCounter();
+  resetTrashCounter();
   Result = ok_r;
   return Result;
 }
@@ -82,10 +94,10 @@ uint8_t ModbusMasterSerial::rxBuf(uint8_t *buf, uint8_t num)
             (rxBuffer_[2] == rxNum - MODBUS_MIN_LENGHT_PACKAGE)) {        // Нужное количество данных
           if (((rxBuffer_[rxNum - 1] << 8) + rxBuffer_[rxNum - 2]) == crc16_ibm(rxBuffer_, (rxNum - 2))) {
             incSuccessCounter();
-            resetLostCounter();
             res =  MODBUS_OK;
           }
           else {
+            incCrcCounter();
             res =  MODBUS_ERROR_CRC;
           }
         }
@@ -95,10 +107,13 @@ uint8_t ModbusMasterSerial::rxBuf(uint8_t *buf, uint8_t num)
                  (rxBuffer_[1] == txBuffer_[1] + MODBUS_ERROR_0x80) &&    // Ответ с документированной ошибкой
                  (rxBuffer_[2] >= MODBUS_ILLEGAL_FUNCTION_0x01) &&
                  (rxBuffer_[2] <= MODBUS_GATEWAY_TARGET_DEVICE_0x0B)) {
+          incErrCounter();
           res =  MODBUS_ERROR_0x80 + rxBuffer_[2];
+
         }
         // Неизвестная ошибка
         else {
+          incTrashCounter();
           res =  MODBUS_ERROR_TRASH;
         }
       }

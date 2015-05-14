@@ -38,7 +38,6 @@ struct parameter
  */
 class Device
 {
-
 public:
   /*!
    * \brief Конструктор класса
@@ -163,6 +162,14 @@ public:
    * \brief Чтение массива параметров с Flash
    */
   StatusType readParameters();
+
+  /*!
+   * \brief Функция проверки есть ли связь с утройством
+   * \return
+   */
+  virtual bool isConnect();
+
+
 
 protected:
 

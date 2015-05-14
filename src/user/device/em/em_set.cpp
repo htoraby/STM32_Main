@@ -39,6 +39,11 @@ void EmSet::task()
   }
 }
 
+bool EmSet::isConnect()
+{
+
+}
+
 void EmSet::sendRequest()
 {
   int sizePktTx = 0;

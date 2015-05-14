@@ -252,10 +252,7 @@ int DeviceModbus::searchExchangeParameters()
 
 bool DeviceModbus::isConnect()
 {
-  if(mms_->getLostCounter() > MODBUS_COUNTER_LOST_CONNECT)
-    return false;
-  else
-    return true;
+  return mms_->isConnect();
 }
 
 void DeviceModbus::exchangeTask()

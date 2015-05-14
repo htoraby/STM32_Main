@@ -303,6 +303,11 @@ public:
     return powerOffFlag_;
   }
 
+  /*!
+   * \brief Функция проверки связи с устройствами
+   */
+  void checkConnectDevice();
+
 private:
   /*!
    * \brief Метод добавления в очередь событий включения/мигания LED

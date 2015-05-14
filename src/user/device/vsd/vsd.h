@@ -190,6 +190,8 @@ public:
    */
   virtual bool checkStop() = 0;
 
+  virtual bool isConnect() = 0;
+
   /*!
    * \brief Метод проверки флага в регистре статуса инвертора
    * \param bit - проверяемый бит

@@ -524,114 +524,43 @@ int ModbusMaster:: isOpen()
   return Result;
 }
 
-// МЕТОД НАСТРОЙКИ ВРЕМЕНИ ОЖИДАНИЯ ОТВЕТА
-// Настраивает тайм-аут
-// Протокол должен быть закрыт
-// Параметры:
-// TimeOut значение  в мс (диапазон: 1 - 100000)
-// Возвращает:
-// RETURN_OK в случае успешного завершения
-// Ошибку вне диапазона
-// Ошибку протокол уже открыт
-int  ModbusMaster::setTimeout(int Time)
+bool ModbusMaster::isConnect()
 {
-  int Result = err_r;
-  try
-  {
-    // Проверяем если у нас уже открыт порт
-    if(isOpen())
-    {
-      // Проверяем корректность введённого значения
-      if((Time >=1 )&&(Time <= 100000))
-      {
-        timeOut_ = Time;                                // Присваиваем время ожидания
-        Result = ok_r;                            // Возвращаем ОК
-      }
-    }
-  }
-  catch(...)
-  {
-
-  }
-  return Result;
+  if (getFailCounter() >= MODBUS_COUNTER_LOST_CONNECT)
+    return false;
+  else
+    return true;
 }
 
-// МЕТОД УСТАНОВКИ ПОЛИЧЕСТВА ПОВТОРОВ ЗАПРОСОВ
-// Настраивает количество автоматических повторов запросов
-// Параметры:
-// RetryCnt    (0 - 10)
-// RETURN_OK в случае успешного завершения
-// Ошибку вне диапазона
-// Ошибку протокол уже открыт
-int ModbusMaster::setRetryCnt(int Retry)
-{
-  int Result = err_r;
-  try
-  {
-    // Проверяем если у нас уже открыт порт
-    if(isOpen())
-    {
-      // Проверяем корректность введенного значения
-      if((Retry >=0 )&&(Retry <= 10))
-      {
-        retryCnt_ = Retry;                            // Присваиваем количества повторений
-        Result = ok_r;                            // Возвращаем ОК
-      }
-    }
-  }
-  catch(...)
-  {
 
-  }
-  return Result;
+int  ModbusMaster::setTimeout(uint32_t time)
+{
+  int res = err_r;
+  res = checkRange(time,1,100000,true);
+  if (res == ok_r)
+    timeOut_ = time;
+  return res;
 }
 
-// МЕТОД ЗАДАНИЯ ЗАДЕРЖКИ МЕЖДУ ЗАПРОСАМИ
-// Настраивает задержку между запросами,
-// Протокол должен быть закрыт
-// Параметры:
-// PollDelay значение  в мс (диапазон: 1 - 100000)
-// Возвращает:
-// RETURN_OK в случае успешного завершения
-// Ошибку вне диапазона
-// Ошибку протокол уже открыт
-int ModbusMaster::setPollDelay(int Delay)
+int ModbusMaster::setRetryCnt(int retry)
 {
-  int Result = err_r;
-  try
-  {
-    // Проверяем если у нас уже открыт порт
-    if(isOpen())
-    {
-      // Проверяем корректность введенного значения
-      if((Delay >=1 )&&(Delay <= 100000))
-      {
-        pollDelay_ = Delay;                            // Присваиваем таймер задержки опроса
-        Result = ok_r;                            // Возвращаем ОК
-      }
-    }
-  }
-  catch(...)
-  {
-
-  }
-  return Result;
+  int res = err_r;
+  res = checkRange(retry,0,10,true);
+  if (res == ok_r)
+    retryCnt_ = retry;
+  return res;
 }
 
-// МЕТОД СБРОСА СЧЁТЧИКА ОБЩЕГО КОЛИЧЕСТВА ЗАПРОСОВ
-// Сбрасывает значение счётчика общего количества запросов в 0
 void ModbusMaster::resetTotalCounter()
 {
   totalCounter_ = 0;
-};
+}
 
 void ModbusMaster::incTotalCounter()
 {
   totalCounter_++;
-};
+}
 
-// МЕТОД СБРОСА СЧЁТЧИКА ОТВЕТОВ НА ЗАПРОСЫ
-//Сбрасывает значение счётчика корректных ответов в 0
 void ModbusMaster::resetSuccessCounter()
 {
   successCounter_ = 0;
@@ -640,18 +569,18 @@ void ModbusMaster::resetSuccessCounter()
 void ModbusMaster::incSuccessCounter()
 {
   successCounter_++;
-};
+  resetFailCounter();
+}
 
-// МЕТОД ПОЛУЧЕНИЯ ОБЩЕГО КОЛИЧЕСТВА ЗАПРОСОВ
-// Вовзращает значение счётчика общего количества запросов
-long ModbusMaster::getTotalCounter()
+uint32_t ModbusMaster::getTotalCounter()
 {
   return (totalCounter_);
-};
+}
 
 void ModbusMaster::incLostCounter()
 {
   lostCounter_++;
+  incFailCounter();
 }
 
 void ModbusMaster::resetLostCounter()
@@ -659,56 +588,98 @@ void ModbusMaster::resetLostCounter()
   lostCounter_ = 0;
 }
 
-int ModbusMaster::getLostCounter()
+void ModbusMaster::incCrcCounter()
+{
+  crcCounter_++;
+  incFailCounter();
+}
+
+uint32_t ModbusMaster::getCrcCounter()
+{
+  return crcCounter_;
+}
+
+void ModbusMaster::resetCrcCounter()
+{
+  crcCounter_ = 0;
+}
+
+void ModbusMaster::incErrCounter()
+{
+  errCounter_++;
+  incFailCounter();
+}
+
+uint32_t ModbusMaster::getErrCounter()
+{
+  return errCounter_;
+}
+
+void ModbusMaster::resetErrCounter()
+{
+  errCounter_ = 0;
+}
+
+void ModbusMaster::incTrashCounter()
+{
+  trashCounter_++;
+  incFailCounter();
+}
+
+uint32_t ModbusMaster::getTrashCounter()
+{
+  return trashCounter_;
+}
+
+void ModbusMaster::resetTrashCounter()
+{
+  trashCounter_ = 0;
+}
+
+void ModbusMaster::incFailCounter()
+{
+  failCounter_++;
+}
+
+uint32_t ModbusMaster::getFailCounter()
+{
+  return failCounter_;
+}
+
+void ModbusMaster::resetFailCounter()
+{
+  failCounter_ = 0;
+}
+
+uint32_t ModbusMaster::getLostCounter()
 {
   return (lostCounter_);
-};
+}
 
-// МЕТОД ПОЛУЧЕНИЯ ЗНАЧЕНИЯ ТАЙМАУТА ОТВЕТА
-// Возвращает значение таймаута
-int ModbusMaster::getTimeout()
+uint32_t ModbusMaster::getTimeout()
 {
-  return (timeOut_);
-};
+  return timeOut_;
+}
 
-// МЕТОД ПОЛУЧЕНИЯ ЗНАЧЕНИЯ ЗАДЕРЖКИ МЕЖДУ ЗАПРОСАМИ
-// Возвращает значение задержки между опросами
-int ModbusMaster::getPollDelay()
-{
-  return (pollDelay_);
-};
-
-// МЕТОД ПОЛУЧЕНИЯ ОБЩЕГО КОЛИЧЕСТВ ОТВЕТОВ НА ЗАПРОСЫ
-// Вовзращает значение счётчика корректных ответов на запросы
-long ModbusMaster::getSuccessCounter()
+uint32_t ModbusMaster::getSuccessCounter()
 {
   return (successCounter_);
 }
 
-
-// МЕТОД ПОЛУЧЕНИЯ ЗНАЧЕНИЯ АВТОМАТИЧЕСКИХ ПОВТОРОВ ЗАПРОСОВ
-// Возвращает количество автоматических запросов
 int ModbusMaster::getRetryCnt()
 {
   return (retryCnt_);
-};
+}
 
-// МЕТОД КОНФИГУРИРОВАНИЯ BIG ENDIAN
-// По умолчанию Modbus использует little-endian порядок передачи байт
-// сначала младший потом старший, функция настраивает что другой порядок
-// сначала старший, потом младший
 void ModbusMaster::configureBigEndianInts()
 {
   endian_ = 0;
-};
+}
 
-// МЕТОД КОНФИГУРИРОВАНИЯ LITTLE ENDIAN
-// По умолчанию Modbus использует little-endian порядок передачи байт
-// сначала младший потом старший
 void ModbusMaster::configureLittleEndianInts()
 {
   endian_ = 1;
-};
+}
 
 uint8_t ModbusMaster::txBuf(uint8_t *buf, uint8_t num)
 {
@@ -719,5 +690,3 @@ uint8_t ModbusMaster::rxBuf(uint8_t *buf, uint8_t num)
 {
   return err_r;
 }
-
-

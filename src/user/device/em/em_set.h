@@ -20,6 +20,8 @@ public:
   */
   void task();
 
+  bool isConnect();
+
 private:
   /*!
    * \brief Метод отправки запросов

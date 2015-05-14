@@ -299,3 +299,8 @@ StatusType Device::readParameters()
 
   return status;
 }
+
+bool Device::isConnect()
+{
+  return false;
+}
