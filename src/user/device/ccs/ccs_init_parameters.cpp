@@ -7012,5 +7012,45 @@ void Ccs::initParameters()
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].min                             = 0.0;
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].max                             = 100.0;
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].def                             = 0.0;
+  // Связь с верхним контроллером
+  parameters_[CCS_SPI_CONNECTION - CCS_BEGIN].id                                 = CCS_SPI_CONNECTION;
+  parameters_[CCS_SPI_CONNECTION - CCS_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[CCS_SPI_CONNECTION - CCS_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[CCS_SPI_CONNECTION - CCS_BEGIN].physic                             = PHYSIC_NUMERIC;
+  parameters_[CCS_SPI_CONNECTION - CCS_BEGIN].validity                           = VALIDITY_OK;
+  parameters_[CCS_SPI_CONNECTION - CCS_BEGIN].value.float_t                      = 0.0;
+  parameters_[CCS_SPI_CONNECTION - CCS_BEGIN].min                                = 0.0;
+  parameters_[CCS_SPI_CONNECTION - CCS_BEGIN].max                                = 1.0;
+  parameters_[CCS_SPI_CONNECTION - CCS_BEGIN].def                                = 0.0;
+  // Связь с ЧРП
+  parameters_[CCS_VSD_CONNECTION - CCS_BEGIN].id                                 = CCS_VSD_CONNECTION;
+  parameters_[CCS_VSD_CONNECTION - CCS_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[CCS_VSD_CONNECTION - CCS_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[CCS_VSD_CONNECTION - CCS_BEGIN].physic                             = PHYSIC_NUMERIC;
+  parameters_[CCS_VSD_CONNECTION - CCS_BEGIN].validity                           = VALIDITY_OK;
+  parameters_[CCS_VSD_CONNECTION - CCS_BEGIN].value.float_t                      = 0.0;
+  parameters_[CCS_VSD_CONNECTION - CCS_BEGIN].min                                = 0.0;
+  parameters_[CCS_VSD_CONNECTION - CCS_BEGIN].max                                = 1.0;
+  parameters_[CCS_VSD_CONNECTION - CCS_BEGIN].def                                = 0.0;
+  // Связь с ТМС
+  parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].id                                 = CCS_DHS_CONNECTION;
+  parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].physic                             = PHYSIC_NUMERIC;
+  parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].validity                           = VALIDITY_OK;
+  parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].value.float_t                      = 0.0;
+  parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].min                                = 0.0;
+  parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].max                                = 1.0;
+  parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].def                                = 0.0;
+  // Связь со счётчиком электроэнергии
+  parameters_[CCS_EM_CONNECTION - CCS_BEGIN].id                                  = CCS_EM_CONNECTION;
+  parameters_[CCS_EM_CONNECTION - CCS_BEGIN].access                              = ACCESS_OPERATOR;
+  parameters_[CCS_EM_CONNECTION - CCS_BEGIN].operation                           = OPERATION_WRITE;
+  parameters_[CCS_EM_CONNECTION - CCS_BEGIN].physic                              = PHYSIC_NUMERIC;
+  parameters_[CCS_EM_CONNECTION - CCS_BEGIN].validity                            = VALIDITY_OK;
+  parameters_[CCS_EM_CONNECTION - CCS_BEGIN].value.float_t                       = 0.0;
+  parameters_[CCS_EM_CONNECTION - CCS_BEGIN].min                                 = 0.0;
+  parameters_[CCS_EM_CONNECTION - CCS_BEGIN].max                                 = 1.0;
+  parameters_[CCS_EM_CONNECTION - CCS_BEGIN].def                                 = 0.0;
 }
 

@@ -8934,6 +8934,86 @@
 	</param>
 	<param>
 		<id>701</id>
+		<name>CCS_SPI_CONNECTION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Связь с верхним контроллером</text>
+		<short_text>Связь с верхним контроллером</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<values>0-Нет;1-Да</values>
+		<comment>Связь с верхним контроллером</comment>
+	</param>
+	<param>
+		<id>702</id>
+		<name>CCS_VSD_CONNECTION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Связь с ЧРП</text>
+		<short_text>Связь с ЧРП</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<values>0-Нет;1-Да</values>
+		<comment>Связь с ЧРП</comment>
+	</param>
+	<param>
+		<id>703</id>
+		<name>CCS_DHS_CONNECTION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Связь с ТМС</text>
+		<short_text>Связь с ТМС</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<values>0-Нет;1-Да</values>
+		<comment>Связь с ТМС</comment>
+	</param>
+	<param>
+		<id>704</id>
+		<name>CCS_EM_CONNECTION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Связь со счётчиком электроэнергии</text>
+		<short_text>Связь со счётчиком электроэнергии</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<values>0-Нет;1-Да</values>
+		<comment>Связь со счётчиком электроэнергии</comment>
+	</param>
+	<param>
+		<id>705</id>
 		<name>CCS_END</name>
 		<valid>VALIDITY_OK</valid>
 		<comment>Последний параметр</comment>

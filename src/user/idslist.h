@@ -704,7 +704,11 @@ enum enID
   CCS_TRANS_VOLTAGE_SHORT_CIRCUIT = 698,                     //!< Напряжение короткого замыкания ТМПН
   CCS_TRANS_NOMINAL_FREQUENCY = 699,                         //!< Частота питающей сети
   CCS_SYSTEM_INDUCTANCE = 700,                               //!< Индуктивность системы
-  CCS_END = 701,                                             //!< Последний параметр
+  CCS_SPI_CONNECTION = 701,                                  //!< Связь с верхним контроллером
+  CCS_VSD_CONNECTION = 702,                                  //!< Связь с ЧРП
+  CCS_DHS_CONNECTION = 703,                                  //!< Связь с ТМС
+  CCS_EM_CONNECTION = 704,                                   //!< Связь со счётчиком электроэнергии
+  CCS_END = 705,                                             //!< Последний параметр
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
