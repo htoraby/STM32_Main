@@ -314,8 +314,6 @@ public:
   uint32_t getFailCounter();
   void resetFailCounter();
 
-  void calcConnect();
-
   void configureBigEndianInts();
 
   void configureLittleEndianInts();
@@ -325,7 +323,16 @@ public:
   // МЕТОД ПРОВЕРКИ ОТКРЫТИЯ ПРОТОКОЛА
   int isOpen();
 
+  /*!
+   * \brief Функция проверки наличия связи с устройством
+   * \return true - связь есть; false - связи нет
+   */
   bool isConnect();
+
+  /*!
+   * \brief Функция вычисления качества связи с устройством
+   */
+  void calcConnect();
 
   /*!
    * \brief Функция записи данных

@@ -73,6 +73,7 @@ public:
   int setCoefficientTransforamationVoltage();
 
   bool isConnect();
+  void calcConnect();
 
   uint32_t totalCounter_;                   //!< общий счётчик запросов
   uint32_t successCounter_;                 //!< общий счётчик корректных ответов

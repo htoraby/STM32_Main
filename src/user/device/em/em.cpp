@@ -79,6 +79,21 @@ bool Em::isConnect()
     return true;
 }
 
+void Em::calcConnect()
+{
+  if (totalCounter_ > 1000000) {
+    totalCounter_ = 0;
+    successCounter_ = 0;
+    lostCounter_ = 0;
+    crcCounter_ = 0;
+    errCounter_ = 0;
+    trashCounter_ = 0;
+  }
+  if (totalCounter_) {
+    calcConnect_ = (successCounter_ * 100) / totalCounter_;
+  }
+}
+
 void Em::initParameters()
 {
   // Пустой элемент массива
