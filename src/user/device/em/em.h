@@ -32,7 +32,7 @@ public:
    * \param parity - чётность
    * \param stopBits - стоп бит
    */
-  void openPort(uint32_t baudRate, uint32_t parity = UART_PARITY_NONE, uint32_t stopBits = UART_STOPBITS_1);
+  void openPort(uint32_t baudRate, uint32_t parity = UART_PARITY_ODD, uint32_t stopBits = UART_STOPBITS_1);
 
   /*!
    * \brief Закрытие порта Uart

@@ -35,7 +35,10 @@ StatusType uartInit(uartNum num, uint32_t baudRate, uint32_t parity, uint32_t st
   }
 
   uartX->Init.BaudRate = baudRate;
-  uartX->Init.WordLength = UART_WORDLENGTH_8B;
+  if (parity == UART_PARITY_NONE)
+    uartX->Init.WordLength = UART_WORDLENGTH_8B;
+  else
+    uartX->Init.WordLength = UART_WORDLENGTH_9B;
   uartX->Init.StopBits = stopBits;
   uartX->Init.Parity = parity;
   uartX->Init.Mode = UART_MODE_TX_RX;

@@ -165,8 +165,7 @@ void EmSet::sendRequest()
       break;
   }
 
-  uint16_t calcCrc = crc16_ibm(txBuffer_, sizePktTx);
-  sizePktTx = sizePktTx + 2;
+  uint16_t calcCrc = crc16_ibm(txBuffer_, sizePktTx-2);
   txBuffer_[sizePktTx - 2] = calcCrc & 0x00FF;
   txBuffer_[sizePktTx - 1] = calcCrc >> 8;
 
@@ -176,6 +175,7 @@ void EmSet::sendRequest()
 
 void EmSet::receiveAnswer()
 {
+  memset(rxBuffer_, 0, sizeof(rxBuffer_));
   sizePkt_ = receiveUart(rxBuffer_);
   if (!sizePkt_) {
     // TODO: Предупреждение: пустой пакет
