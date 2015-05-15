@@ -558,6 +558,7 @@ void ModbusMaster::resetTotalCounter()
 
 void ModbusMaster::incTotalCounter()
 {
+  calcConnect();
   totalCounter_++;
 }
 
@@ -649,6 +650,22 @@ uint32_t ModbusMaster::getFailCounter()
 void ModbusMaster::resetFailCounter()
 {
   failCounter_ = 0;
+}
+
+void ModbusMaster::calcConnect()
+{
+  uint32_t total = getTotalCounter();
+  uint32_t success = getSuccessCounter();
+  if (total > 1000000) {
+    resetTotalCounter();
+    resetSuccessCounter();
+    resetLostCounter();
+    resetCrcCounter();
+    resetErrCounter();
+    resetTrashCounter();
+  }
+  if (total)
+    calcConnect_ = (success * 100) / total;
 }
 
 uint32_t ModbusMaster::getLostCounter()

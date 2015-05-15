@@ -41,7 +41,7 @@ void EmSet::task()
 
 bool EmSet::isConnect()
 {
-
+  return false;
 }
 
 void EmSet::sendRequest()
@@ -171,6 +171,7 @@ void EmSet::sendRequest()
   txBuffer_[sizePktTx - 1] = calcCrc >> 8;
 
   sendUart(txBuffer_, sizePktTx);
+  totalCounter_++;
 }
 
 void EmSet::receiveAnswer()
@@ -178,6 +179,8 @@ void EmSet::receiveAnswer()
   sizePkt_ = receiveUart(rxBuffer_);
   if (!sizePkt_) {
     // TODO: Предупреждение: пустой пакет
+    lostCounter_++;
+    failCounter_++;
     return;
   }
 
@@ -186,6 +189,8 @@ void EmSet::receiveAnswer()
 
   if (rxCrc != calcCrc) {
     // TODO: Предупреждение: Ошибка CRC
+    crcCounter_++;
+    failCounter_++;
     return;
   }
 
@@ -262,7 +267,8 @@ void EmSet::receiveAnswer()
       numberRequest_ = 1;
       break;
   }
-
+  successCounter_++;
+  failCounter_ = 0;
   asm("nop");
 }
 

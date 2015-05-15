@@ -72,6 +72,17 @@ public:
    */
   int setCoefficientTransforamationVoltage();
 
+  bool isConnect();
+
+  uint32_t totalCounter_;                   //!< общий счётчик запросов
+  uint32_t successCounter_;                 //!< общий счётчик корректных ответов
+  uint32_t lostCounter_;                    //!< счётчик потерянных пакетов,
+  uint32_t crcCounter_;                     //!< счётчик пакетов с некорректной CRC
+  uint32_t errCounter_;                     //!< счётчик пакетов с документированны ошибками
+  uint32_t trashCounter_;                   //!< счётчик пакетов с мусором
+  uint32_t failCounter_;                    //!< счётчик ошибочных пакетов подряд
+  float calcConnect_;                       //!< качество связи в %
+
 protected:
   uint8_t txBuffer_[EM_MAX_DATA_SIZE];
   uint8_t rxBuffer_[EM_MAX_DATA_SIZE];
@@ -82,7 +93,6 @@ private:
 
   //! Семафор по приёму байта данных по UART
   osSemaphoreId semaphoreAnswer_;
-
 };
 
 #endif /* EM_H_ */

@@ -71,6 +71,14 @@ int Em::setCoefficientTransforamationVoltage()
   return err_r;
 }
 
+bool Em::isConnect()
+{
+  if (failCounter_ >= 5)
+    return false;
+  else
+    return true;
+}
+
 void Em::initParameters()
 {
   // Пустой элемент массива
