@@ -69,7 +69,7 @@ public:
   int setUnitTemperature(float unit);
 
 private:
-  ModbusParameter modbusParameters_[74];
+  ModbusParameter modbusParameters_[21];
   DeviceModbus *dm_;
 
 };
