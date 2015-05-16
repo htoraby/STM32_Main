@@ -90,30 +90,26 @@ uint8_t ModbusMasterSerial::rxBuf(uint8_t *buf, uint8_t num)
     while (1) {                                       // Крутимся пока время между байтами не станет больше MODBUS_TIME_END_PACKAGE
       if (osSemaphoreWait(semaphoreAnswer_, MODBUS_TIME_END_PACKAGE) == osEventTimeout) {
         int rxNum = uartReadData((uartNum)numberComPort_, buf);
-        if ((rxNum == num) &&                         // Получили ожидаемое количество байт
-            (rxBuffer_[0] == txBuffer_[0]) &&         // Ответ от нужного устройства
-            (rxBuffer_[1] == txBuffer_[1]) /* &&         // Ответ на нужную команду
-            (rxBuffer_[2] == rxNum - MODBUS_MIN_LENGHT_PACKAGE)*/) {        // Нужное количество данных
-          if (((rxBuffer_[rxNum - 1] << 8) + rxBuffer_[rxNum - 2]) == crc16_ibm(rxBuffer_, (rxNum - 2))) {
-            incSuccessCounter();
-            return  MODBUS_OK;
-          }
-          else {
-            incCrcCounter();
-            return  MODBUS_ERROR_CRC;
-          }
+        if ((rxNum == MODBUS_MIN_LENGHT_PACKAGE) &&
+            (rxBuffer_[0] == txBuffer_[0]) &&              // Ответ от нужного устройства
+            (rxBuffer_[1] == txBuffer_[1] + MODBUS_ERROR_0x80) &&    // Ответ с документированной ошибкой
+            (rxBuffer_[2] >= MODBUS_ILLEGAL_FUNCTION_0x01) &&
+            (rxBuffer_[2] <= MODBUS_GATEWAY_TARGET_DEVICE_0x0B)) {
+              incErrCounter();
+              return  MODBUS_ERROR_0x80 + rxBuffer_[2];
         }
-        // Приняли 5 байт, проверяем на ошибку
-        else if ((rxNum == MODBUS_MIN_LENGHT_PACKAGE) &&        // Получили ожидаемое количество байт
-                 (rxBuffer_[0] == txBuffer_[0]) &&              // Ответ от нужного устройства
-                 (rxBuffer_[1] == txBuffer_[1] + MODBUS_ERROR_0x80) &&    // Ответ с документированной ошибкой
-                 (rxBuffer_[2] >= MODBUS_ILLEGAL_FUNCTION_0x01) &&
-                 (rxBuffer_[2] <= MODBUS_GATEWAY_TARGET_DEVICE_0x0B)) {
-          incErrCounter();
-          return  MODBUS_ERROR_0x80 + rxBuffer_[2];
-
+        else if ((rxNum >= num) &&                    // Получили ожидаемое количество байт
+                 (rxBuffer_[0] == txBuffer_[0]) &&         // Ответ от нужного устройства
+                 (rxBuffer_[1] == txBuffer_[1])) {        // Нужное количество данных
+                  if (((rxBuffer_[num - 1] << 8) + rxBuffer_[num - 2]) == crc16_ibm(rxBuffer_, (num - 2))) {
+                    incSuccessCounter();
+                    return  MODBUS_OK;
+                  }
+                  else {
+                    incCrcCounter();
+                    return  MODBUS_ERROR_CRC;
+                  }
         }
-        // Неизвестная ошибка
         else {
           incTrashCounter();
           return  MODBUS_ERROR_TRASH;
