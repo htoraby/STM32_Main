@@ -170,27 +170,27 @@ public:
    * \brief Метод запуска ЧРП
    * \return Код результата операции
    */
-  virtual int start() = 0;
+  virtual int start();
 
   /*!
    * \brief Метод останова ЧРП
    * \return Код результата операции
    */
-  virtual int stop() = 0;
+  virtual int stop();
 
   /*!
    * \brief Метод проверки запуска ЧРП
    * \return true - запуск, false - нет
    */
-  virtual bool checkStart() = 0;
+  virtual bool checkStart();
 
   /*!
    * \brief Метод проверки останова ЧРП
    * \return true - останов, false - нет
    */
-  virtual bool checkStop() = 0;
+  virtual bool checkStop();
 
-  virtual bool isConnect() = 0;
+  virtual bool isConnect();
 
   /*!
    * \brief Метод проверки флага в регистре статуса инвертора
@@ -203,43 +203,43 @@ public:
    * \brief Метод настройки толчкового режима
    * \return
    */
-  virtual int onRegimePush() = 0;
+  virtual int onRegimePush();
 
   /*!
    * \brief Метод выключения толчкогового режима
    * \return
    */
-  virtual int offRegimePush() = 0;
+  virtual int offRegimePush();
 
   /*!
    * \brief onRegimeSwing
    * \return
    */
-  virtual int onRegimeSwing() = 0;
+  virtual int onRegimeSwing();
 
   /*!
    * \brief offRegimeSwing
    * \return
    */
-  virtual int offRegimeSwing() = 0;
+  virtual int offRegimeSwing();
 
   /*!
    * \brief onRegimeJarring
    * \return
    */
-  virtual int onRegimeJarring() = 0;
+  virtual int onRegimeJarring();
 
   /*!
    * \brief offRegimeJarring
    * \return
    */
-  virtual int offRegimeJarring() = 0;
+  virtual int offRegimeJarring();
 
   /*!
    * \brief Метод настройки режима подхвата
    * \return
    */
-  virtual int onRegimePickup() = 0;
+  virtual int onRegimePickup();
 
 private:
   //! Массив параметров устройства

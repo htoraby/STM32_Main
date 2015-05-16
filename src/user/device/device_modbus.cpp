@@ -47,7 +47,7 @@ void DeviceModbus::createThread(const char *threadName, osMessageQId getValueDev
   messageOutOfTurn_ = osMessageCreate (osMessageQ(OutOfTurn), NULL);
 
   // Создаём задачу цикла опроса
-  osThreadDef_t t = {threadName, deviceModbusTask, osPriorityNormal, 0, 4 * configMINIMAL_STACK_SIZE};
+  osThreadDef_t t = {threadName, deviceModbusTask, osPriorityNormal, 0, 8 * configMINIMAL_STACK_SIZE};
   threadId_ = osThreadCreate(&t, this);
 }
 

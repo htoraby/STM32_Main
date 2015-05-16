@@ -51,7 +51,7 @@ public:
   /*!
    * \brief Инициализация устройства
    */
-  virtual void init() = 0;
+  virtual void init();
 
   /*!
    * \brief Инициализация массива параметров

@@ -13,7 +13,7 @@ void userInit()
 {
   ksu.init();
 
-  vsd = new VsdNovomet();
+  vsd = new Vsd/*Novomet*/();
   tms = new TmsNovomet();
   em = new EmSet();
 

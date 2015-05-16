@@ -120,7 +120,7 @@ public:
    * \param refCnt - количество поплавков значений, которые будут читать (диапазон: 1-62)
    * \return 0 - выполнено или код ошибки
    */
-  int readMultipleFloats(int slaveAddr, int startRef, float float32Arr[], int refCnt);
+  int readMultipleFloats(int slaveAddr, int startRef, float *float32Arr, int refCnt);
 
   /*!
    * \brief Функция чтения регистров

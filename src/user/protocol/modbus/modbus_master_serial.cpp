@@ -79,26 +79,28 @@ uint8_t ModbusMasterSerial::txBuf(uint8_t *buf, uint8_t num)
 uint8_t ModbusMasterSerial::rxBuf(uint8_t *buf, uint8_t num)
 {
   uint16_t res = MODBUS_ERROR_TRASH;
+  uint32_t callTest = 0;
   // Если истек таймаут ожидания ответа
   if (osSemaphoreWait(semaphoreAnswer_, timeOut_) == osEventTimeout) {
     incLostCounter();
-    res = MODBUS_ERROR_TIMEOUT;                      // Возвращаем ошибку что нет ответа от устройства
+    return MODBUS_ERROR_TIMEOUT;                      // Возвращаем ошибку что нет ответа от устройства
   }
   else {                                              // Получили первый байт
+    callTest++;
     while (1) {                                       // Крутимся пока время между байтами не станет больше MODBUS_TIME_END_PACKAGE
-      if (osSemaphoreWait(semaphoreAnswer_, MODBUS_TIME_END_PACKAGE) == osEventTimeout) {       
+      if (osSemaphoreWait(semaphoreAnswer_, MODBUS_TIME_END_PACKAGE) == osEventTimeout) {
         int rxNum = uartReadData((uartNum)numberComPort_, buf);
         if ((rxNum == num) &&                         // Получили ожидаемое количество байт
             (rxBuffer_[0] == txBuffer_[0]) &&         // Ответ от нужного устройства
-            (rxBuffer_[1] == txBuffer_[1]) &&         // Ответ на нужную команду
-            (rxBuffer_[2] == rxNum - MODBUS_MIN_LENGHT_PACKAGE)) {        // Нужное количество данных
+            (rxBuffer_[1] == txBuffer_[1]) /* &&         // Ответ на нужную команду
+            (rxBuffer_[2] == rxNum - MODBUS_MIN_LENGHT_PACKAGE)*/) {        // Нужное количество данных
           if (((rxBuffer_[rxNum - 1] << 8) + rxBuffer_[rxNum - 2]) == crc16_ibm(rxBuffer_, (rxNum - 2))) {
             incSuccessCounter();
-            res =  MODBUS_OK;
+            return  MODBUS_OK;
           }
           else {
             incCrcCounter();
-            res =  MODBUS_ERROR_CRC;
+            return  MODBUS_ERROR_CRC;
           }
         }
         // Приняли 5 байт, проверяем на ошибку
@@ -108,15 +110,16 @@ uint8_t ModbusMasterSerial::rxBuf(uint8_t *buf, uint8_t num)
                  (rxBuffer_[2] >= MODBUS_ILLEGAL_FUNCTION_0x01) &&
                  (rxBuffer_[2] <= MODBUS_GATEWAY_TARGET_DEVICE_0x0B)) {
           incErrCounter();
-          res =  MODBUS_ERROR_0x80 + rxBuffer_[2];
+          return  MODBUS_ERROR_0x80 + rxBuffer_[2];
 
         }
         // Неизвестная ошибка
         else {
           incTrashCounter();
-          res =  MODBUS_ERROR_TRASH;
+          return  MODBUS_ERROR_TRASH;
         }
       }
+      callTest++;
     }
   }
   return res;

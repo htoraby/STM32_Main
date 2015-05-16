@@ -32,6 +32,11 @@ Device::~Device()
   osThreadTerminate(updateValueThreadId_);
 }
 
+void Device::init()
+{
+
+}
+
 void Device::createThread(const char *threadName)
 {
   osMessageQDef(GetValueDeviceQueue, 100, uint32_t);

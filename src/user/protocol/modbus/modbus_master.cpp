@@ -181,13 +181,13 @@ int ModbusMaster::readMultipleLongInts(int slaveAddr, int startRef, int *int32Ar
         txBuffer_[6] = crc & 0x00ff;                    // Младший байт контрольной суммы
         txBuffer_[7] = ((crc >> 8) & 0x00ff);           // Старший байт контрольной суммы
         if (txBuf(txBuffer_, 8) == ok_r) {
-          res = rxBuf(txBuffer_, refCnt*4 + MODBUS_MIN_LENGHT_PACKAGE);
+          res = rxBuf(rxBuffer_, refCnt*4 + MODBUS_MIN_LENGHT_PACKAGE);
           if (res == MODBUS_OK) {
             for (i = 0; i <= refCnt; i++) {
-              Value.char_t[0] = txBuffer_[6 + 4*i];
-              Value.char_t[1] = txBuffer_[5 + 4*i];
-              Value.char_t[2] = txBuffer_[4 + 4*i];
-              Value.char_t[3] = txBuffer_[3 + 4*i];
+              Value.char_t[0] = rxBuffer_[6 + 4*i];
+              Value.char_t[1] = rxBuffer_[5 + 4*i];
+              Value.char_t[2] = rxBuffer_[4 + 4*i];
+              Value.char_t[3] = rxBuffer_[3 + 4*i];
               int32Arr[i] = Value.uint32_t;
             }
             return res;
@@ -222,13 +222,13 @@ int ModbusMaster::readMultipleFloats(int slaveAddr, int startRef, float *float32
         txBuffer_[6] = crc & 0x00ff;                    // Младший байт контрольной суммы
         txBuffer_[7] = ((crc >> 8) & 0x00ff);           // Старший байт контрольной суммы
         if (txBuf(txBuffer_, 8) == ok_r) {
-          res = rxBuf(txBuffer_, refCnt*4 + MODBUS_MIN_LENGHT_PACKAGE);
+          res = rxBuf(rxBuffer_, refCnt*4 + MODBUS_MIN_LENGHT_PACKAGE);
           if (res == MODBUS_OK) {
             for (int i = 0; i <= refCnt; i++) {
-              value.char_t[0] = txBuffer_[6 + 4*i];
-              value.char_t[1] = txBuffer_[5 + 4*i];
-              value.char_t[2] = txBuffer_[4 + 4*i];
-              value.char_t[3] = txBuffer_[3 + 4*i];
+              value.char_t[0] = rxBuffer_[6 + 4*i];
+              value.char_t[1] = rxBuffer_[5 + 4*i];
+              value.char_t[2] = rxBuffer_[4 + 4*i];
+              value.char_t[3] = rxBuffer_[3 + 4*i];
               float32Arr[i] = value.float_t;
             }
             return res;
@@ -250,7 +250,7 @@ int ModbusMaster::readInputRegisters(int slaveAddr, int startRef, short regArr[]
   uint16_t crc;
 
   txBuffer_[0] = slaveAddr;                           // Адрес устройства
-  txBuffer_[1] = MODBUS_READ_INPUT_REGISTERS_0x04;  // Команды
+  txBuffer_[1] = MODBUS_READ_INPUT_REGISTERS_0x04;    // Команды
   txBuffer_[2] = ((startRef >> 8) & 0x00ff);          // Старший байт адреса первого регистра
   txBuffer_[3] = startRef & 0x00ff;                   // Младший байт адреса первого регистра
   txBuffer_[4] = 0;                                   // Старший байт количества регистров
@@ -299,14 +299,14 @@ int ModbusMaster::readInputLongInts(int slaveAddr, int startRef, int *int32Arr, 
       txBuffer_[6] = crc & 0x00ff;                    // Младший байт контрольной суммы
       txBuffer_[7] = ((crc >> 8) & 0x00ff);           // Старший байт контрольной суммы
       if (txBuf(txBuffer_, 8)) {
-        result = rxBuf(txBuffer_, refCnt*4 + MODBUS_MIN_LENGHT_PACKAGE);
+        result = rxBuf(rxBuffer_, refCnt*4 + MODBUS_MIN_LENGHT_PACKAGE);
         switch (result) {
         case MODBUS_OK:                               // Получен корректный ответ
           for (i = 0; i <= refCnt; i++) {
-            Value.char_t[0] = txBuffer_[6 + 4*i];
-            Value.char_t[1] = txBuffer_[5 + 4*i];
-            Value.char_t[2] = txBuffer_[4 + 4*i];
-            Value.char_t[3] = txBuffer_[3 + 4*i];
+            Value.char_t[0] = rxBuffer_[6 + 4*i];
+            Value.char_t[1] = rxBuffer_[5 + 4*i];
+            Value.char_t[2] = rxBuffer_[4 + 4*i];
+            Value.char_t[3] = rxBuffer_[3 + 4*i];
             int32Arr[i] = Value.uint32_t;
           }
           break;
@@ -343,14 +343,14 @@ int ModbusMaster::readInputFloats(int slaveAddr, int startRef, float *float32Arr
       txBuffer_[6] = crc & 0x00ff;                    // Младший байт контрольной суммы
       txBuffer_[7] = ((crc >> 8) & 0x00ff);           // Старший байт контрольной суммы
       if (txBuf(txBuffer_, 8)) {
-        result = rxBuf(txBuffer_, refCnt*4 + MODBUS_MIN_LENGHT_PACKAGE);
+        result = rxBuf(rxBuffer_, refCnt*4 + MODBUS_MIN_LENGHT_PACKAGE);
         switch(result) {                              // Анализируем ответ
         case MODBUS_OK:                               // Получен корректный ответ
           for(i = 0; i <= refCnt; i++) {
-            value.char_t[0] = txBuffer_[6 + 4*i];
-            value.char_t[1] = txBuffer_[5 + 4*i];
-            value.char_t[2] = txBuffer_[4 + 4*i];
-            value.char_t[3] = txBuffer_[3 + 4*i];
+            value.char_t[0] = rxBuffer_[6 + 4*i];
+            value.char_t[1] = rxBuffer_[5 + 4*i];
+            value.char_t[2] = rxBuffer_[4 + 4*i];
+            value.char_t[3] = rxBuffer_[3 + 4*i];
             float32Arr[i] = value.float_t;
           }
           break;
@@ -400,6 +400,7 @@ int ModbusMaster::writeSingleRegister(int slaveAddr, int regAddr, short regVal)
   uint8_t retry = 0;
   if (checkDeviceAddress(slaveAddr)) {
     while (1) {
+      retry++;
       txBuffer_[0] = slaveAddr;                         // Адрес устройства
       txBuffer_[1] = MODBUS_WRITE_SINGLE_REGISTER_0x06; // Команды
       txBuffer_[2] = ((regAddr >> 8) & 0x00ff);         // Старший байт адреса катушки
@@ -491,22 +492,12 @@ bool ModbusMaster::checkCntCoils(int Cnt)
   return Result;
 }
 
-// МЕТОД ПРОВЕРКИ КОЛИЧЕСТВА РЕГИСТРОВ
 bool ModbusMaster::checkCntReg(int Cnt)
 {
-  bool Result = err_r;
-  try
-  {
-    if(Cnt <= MODBUS_MAX_FC03_WORDS)
-    {
-      Result = ok_r;
-    }
-  }
-  catch(...)
-  {
-    // Упали в функции checkCntReg
-  }
-  return Result;
+  bool res = false;
+  if (Cnt <= MODBUS_MAX_FC03_WORDS)
+    res = true;
+  return res;
 }
 
 // МЕТОД ПРОВЕРКИ ОТКРЫТИЯ ПРОТОКОЛА

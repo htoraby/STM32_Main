@@ -156,6 +156,31 @@ float Vsd::getNominalFreq()
   return getValue(VSD_MOTOR_FREQUENCY);
 }
 
+int Vsd::start()
+{
+  return 0;
+}
+
+int Vsd::stop()
+{
+  return 0;
+}
+
+bool Vsd::checkStart()
+{
+  return 0;
+}
+
+bool Vsd::checkStop()
+{
+  return 0;
+}
+
+bool Vsd::isConnect()
+{
+  return false;
+}
+
 // Команды и операции
 bool Vsd::checkVsdStatus(uint8_t bit)
 {
@@ -170,6 +195,42 @@ bool Vsd::checkVsdStatus(uint8_t bit)
   else
     return false;
 }
+
+int Vsd::onRegimePush()
+{
+  return 0;
+}
+
+int Vsd::offRegimePush()
+{
+  return 0;
+}
+
+int Vsd::onRegimeSwing()
+{
+  return 0;
+}
+
+int Vsd::onRegimeJarring()
+{
+  return 0;
+}
+
+int Vsd::offRegimeJarring()
+{
+  return 0;
+}
+
+int Vsd::onRegimePickup()
+{
+  return 0;
+}
+
+int Vsd::offRegimeSwing()
+{
+  return 0;
+}
+
 
 void Vsd::initParameters()
 {
