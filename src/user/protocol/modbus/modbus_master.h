@@ -16,14 +16,12 @@
 #define MODBUS_ERROR_TIMEOUT                  1
 #define MODBUS_ERROR_CRC                      2
 #define MODBUS_ERROR_TRASH                    3
-// Максимальное время ожидания ответа от устройства в мс
-#define MODBUS_ANSWER_TIMEOUT                 100
-// Максимальное время между байтами в ответе в мс
-#define MODBUS_TIME_END_PACKAGE               5
-// Минимальная возможная длина "корректного" ответа по Modbus
-#define MODBUS_MIN_LENGHT_PACKAGE             5
-// Длина modbus запроса по спецификации
-#define MODBUS_PDU_SIZE                       253
+
+#define MODBUS_ANSWER_TIMEOUT                 100     //!< Максимальное время ожидания ответа от устройства в мс
+#define MODBUS_TIME_END_PACKAGE               10      //!< Максимальное время между байтами в ответе в мс
+#define MODBUS_MIN_LENGHT_PACKAGE             5       //!< Минимальная возможная длина "корректного" ответа по Modbus
+
+#define MODBUS_PDU_SIZE                       253     //!< Длина modbus запроса по спецификации
 #define MODBUS_MAX_DATA_SIZE                  MODBUS_PDU_SIZE - 1
 #define MODBUS_MAX_FC03_WORDS                 (MODBUS_MAX_DATA_SIZE - 1) / 2
 #define MODBUS_MAX_FC01_COILS                 MODBUS_MAX_FC03_WORDS * 16

@@ -647,7 +647,7 @@ void ModbusMaster::calcConnect()
 {
   uint32_t total = getTotalCounter();
   uint32_t success = getSuccessCounter();
-  if (total > 1000000) {
+  if (total > 100) {
     resetTotalCounter();
     resetSuccessCounter();
     resetLostCounter();

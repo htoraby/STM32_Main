@@ -116,7 +116,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
     HAL_GPIO_Init(GPIOH, &GPIO_InitStruct);
     HAL_GPIO_WritePin(GPIOH, GPIO_PIN_2, GPIO_PIN_RESET);
 
-    HAL_NVIC_SetPriority(UART4_IRQn, UART_IRQ_PREPRIO, 1);
+    HAL_NVIC_SetPriority(UART4_IRQn, UART_IRQ_PREPRIO, 0);
     HAL_NVIC_EnableIRQ(UART4_IRQn);
   }
   else if(huart->Instance == UART7) {
@@ -142,7 +142,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
     HAL_GPIO_Init(GPIOI, &GPIO_InitStruct);
     HAL_GPIO_WritePin(GPIOI, GPIO_PIN_11, GPIO_PIN_RESET);
 
-    HAL_NVIC_SetPriority(UART7_IRQn, UART_IRQ_PREPRIO, 1);
+    HAL_NVIC_SetPriority(UART7_IRQn, UART_IRQ_PREPRIO, 0);
     HAL_NVIC_EnableIRQ(UART7_IRQn);
   }
   else if(huart->Instance == USART1) {
@@ -160,7 +160,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
     GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-    HAL_NVIC_SetPriority(USART1_IRQn, UART_IRQ_PREPRIO, 1);
+    HAL_NVIC_SetPriority(USART1_IRQn, UART_IRQ_PREPRIO, 0);
     HAL_NVIC_EnableIRQ(USART1_IRQn);
   }
   else if(huart->Instance == USART2) {
@@ -186,7 +186,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
     HAL_GPIO_Init(GPIOH, &GPIO_InitStruct);
     HAL_GPIO_WritePin(GPIOH, GPIO_PIN_5, GPIO_PIN_RESET);
 
-    HAL_NVIC_SetPriority(USART2_IRQn, UART_IRQ_PREPRIO, 1);
+    HAL_NVIC_SetPriority(USART2_IRQn, UART_IRQ_PREPRIO, 0);
     HAL_NVIC_EnableIRQ(USART2_IRQn);
   }
   else if(huart->Instance == USART3) {
@@ -213,7 +213,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
 
-    HAL_NVIC_SetPriority(USART3_IRQn, UART_IRQ_PREPRIO, 1);
+    HAL_NVIC_SetPriority(USART3_IRQn, UART_IRQ_PREPRIO, 0);
     HAL_NVIC_EnableIRQ(USART3_IRQn);
   }
   else if(huart->Instance == USART6) {
@@ -231,7 +231,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
     GPIO_InitStruct.Alternate = GPIO_AF8_USART6;
     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-    HAL_NVIC_SetPriority(USART6_IRQn, UART_IRQ_PREPRIO, 1);
+    HAL_NVIC_SetPriority(USART6_IRQn, UART_IRQ_PREPRIO, 0);
     HAL_NVIC_EnableIRQ(USART6_IRQn);
   }
 }
