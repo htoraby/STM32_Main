@@ -17,13 +17,7 @@
 class TmsNovomet: public Tms
 {
 public:
-  /*!
-   * \brief Конструктор класса TmsNovomet
-   */
   TmsNovomet();
-  /*!
-   * \brief Деструктор класса TmsNovomet
-   */
   virtual ~TmsNovomet();
 
   /*!
@@ -65,7 +59,6 @@ public:
   void writeToDevice(int id, float value);
 
   int setUnitPressure(float unit);
-
   int setUnitTemperature(float unit);
 
 private:
