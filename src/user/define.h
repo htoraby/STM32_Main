@@ -253,10 +253,10 @@ enum enUpdate {
 };
 
 enum enCcsCondition {
-  CCS_CONDITION_STOP,                       /// Останов
-  CCS_CONDITION_STOPPING,                   /// Торможение
-  CCS_CONDITION_RUNNING,                    /// Запуск
-  CCS_CONDITION_RUN                         /// Работа
+  CCS_CONDITION_STOP,                       //!< Останов
+  CCS_CONDITION_STOPPING,                   //!< Торможение
+  CCS_CONDITION_RUNNING,                    //!< Запуск
+  CCS_CONDITION_RUN                         //!< Работа
 };
 
 enum enCcsWorkingMode {
@@ -266,25 +266,19 @@ enum enCcsWorkingMode {
 };
 
 enum enVsdCondition {
-  /// Состояние останов
-  VSD_CONDITION_STOP,
-  /// Состояние торможение
-  VSD_CONDITION_STOPPING,
-  /// Состояние ожидание начала торможения
-  VSD_CONDITION_WAIT_STOP,
-  /// Состояние работа
-  VSD_CONDITION_RUN,
-  /// Состояние запуск
-  VSD_CONDITION_RUNNING,
-  /// Состояние ожидание запуска
-  VSD_CONDITION_WAIT_RUN
+  VSD_CONDITION_STOP,                       //!< Состояние останов
+  VSD_CONDITION_STOPPING,                   //!< Состояние торможение
+  VSD_CONDITION_WAIT_STOP,                  //!< Состояние ожидание начала торможения
+  VSD_CONDITION_RUN,                        //!< Состояние работа
+  VSD_CONDITION_RUNNING,                    //!< Состояние запуск
+  VSD_CONDITION_WAIT_RUN                    //!< Состояние ожидание запуска
 };
 
 enum enCcsConditionFlag {
   CCS_CONDITION_FLAG_NULL    = 0,
-  CCS_CONDITION_FLAG_DELAY,                      /// Ожидание срабатывания
-  CCS_CONDITION_FLAG_RESTART,                    /// Ожидание АПВ
-  CCS_CONDITION_FLAG_BLOCK                       /// Блокировка
+  CCS_CONDITION_FLAG_DELAY,                 //!< Ожидание срабатывания
+  CCS_CONDITION_FLAG_RESTART,               //!< Ожидание АПВ
+  CCS_CONDITION_FLAG_BLOCK                  //!< Блокировка
 };
 
 /*!
