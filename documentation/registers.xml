@@ -741,6 +741,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Ручной выбор ТМС</text>
+		<short_text>Ручной выбор ТМС</short_text>
 		<form>3.4 ТМС</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -820,6 +821,7 @@
 		<short_text>Повышен.напряж.РР3</short_text>
 		<form>4.1.1 Повышенное напряжение сети</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<values>0-Откл;1-Блок;2-АПВ;</values>
 		<comment>Режим работа защиты</comment>
@@ -835,9 +837,12 @@
 		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>NULL</text>
-		<short_text>NULL</short_text>
+		<text>Высокое напряжение</text>
+		<short_text>Высокое напряжение</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Параметр запрещающий запуск</comment>
 	</param>
 	<param>
@@ -890,6 +895,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Задержка АПВ</text>
+		<short_text>Задержка АПВ</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -908,7 +914,11 @@
 		<valid>VALIDITY_OK</valid>
 		<value>9999.0</value>
 		<text>Количество разрешенных АПВ</text>
+		<short_text>Количество разрешенных АПВ</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Количество АПВ уставка</comment>
 	</param>
 	<param>
@@ -980,6 +990,11 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Уставка Параметр защиты, для этой защиты работать по ВРП</comment>
 	</param>
 	<param>
@@ -996,6 +1011,9 @@
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр Флаг что защита в АПВ</comment>
 	</param>
 	<param>
@@ -1012,6 +1030,9 @@
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр состояние автомата</comment>
 	</param>
 	<param>
@@ -1020,12 +1041,17 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0</min>
-		<max>4294967296</max>
+		<min>0.0</min>
+		<max>1000000.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр Фиксированное время</comment>
 	</param>
 	<param>
@@ -1035,11 +1061,16 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>9999.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр Количество АПВ</comment>
 	</param>
 	<param>
@@ -1048,12 +1079,17 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_DATE_TIME</physic>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<min>0</min>
+		<max>4294967296</max>
+		<def>0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>DATE_TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр Время первого АПВ</comment>
 	</param>
 	<param>
@@ -1063,12 +1099,15 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>2.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>РРЗ от низкого напряжения фазы</text>
 		<short_text>Понижен.напряж.РРЗ</short_text>
 		<form>4.1.2 Пониженное напряжение сети</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<values>0-Откл;1-Блок;2-АПВ;</values>
 		<comment>Защита "Превышение питания сети"</comment>
@@ -1080,9 +1119,16 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Параметр запрещающий запуск</comment>
 	</param>
 	<param>
@@ -1092,8 +1138,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>60.0</max>
+		<def>60.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Задержка активации</text>
 		<short_text>Понижен.напряж.пуск.время</short_text>
 		<form>4.1.2 Пониженное напряжение сети</form>
@@ -1109,8 +1157,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>60.0</max>
+		<def>30.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Задержка срабатывания</text>
 		<short_text>Понижен.напряж.время</short_text>
 		<form>4.1.2 Пониженное напряжение сети</form>
@@ -1126,8 +1176,15 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>86400.0</max>
+		<def>3600.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Задержка АПВ</text>
+		<short_text>Задержка АПВ</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
 	<param>
@@ -1135,9 +1192,17 @@
 		<name>CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>9999.0</max>
+		<def>9999.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>9999.0</value>
+		<text>Количество разрешенных АПВ</text>
+		<short_text>Количество разрешенных АПВ</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
 		<comment>Количество АПВ уставка</comment>
 	</param>
 	<param>
@@ -1147,8 +1212,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>86400.0</max>
+		<def>86400.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>86400.0</value>
 		<text>Сброс счетчиков АПВ по напряжению</text>
 		<short_text>Защиты напряж.сброс счёт.</short_text>
 		<form>4.1.2 Пониженное напряжение сети</form>
@@ -1200,9 +1267,18 @@
 		<name>CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Уставка Параметр защиты, для этой защиты работать по ВРП</comment>
 	</param>
 	<param>
@@ -1210,12 +1286,18 @@
 		<name>CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр Флаг что защита в АПВ</comment>
 	</param>
 	<param>
@@ -1223,12 +1305,18 @@
 		<name>CCS_PROT_SUPPLY_UNDERVOLTAGE_STATE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>3.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр состояние автомата</comment>
 	</param>
 	<param>
@@ -1236,12 +1324,18 @@
 		<name>CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1000000.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр Фиксированное время</comment>
 	</param>
 	<param>
@@ -1249,12 +1343,18 @@
 		<name>CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>9999.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр Количество АПВ</comment>
 	</param>
 	<param>
@@ -1262,12 +1362,18 @@
 		<name>CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FIRST_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<physic>PHYSIC_DATE_TIME</physic>
+		<min>0</min>
+		<max>4294967296</max>
+		<def>0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>DATE_TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр Время первого АПВ</comment>
 	</param>
 	<param>
@@ -1277,12 +1383,15 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>2.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>РРЗ от дисбаланса напряжений</text>
 		<short_text>Дисбал.напряж.РР3</short_text>
 		<form>4.1.3 Дисбаланс напряжения сети</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<values>0-Откл;1-Блок;2-АПВ;</values>
 		<comment>Защита "Дисбаланс напряжения"</comment>
@@ -1292,12 +1401,18 @@
 		<name>CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Параметр запрещающий запуск</comment>
 	</param>
 	<param>
@@ -1307,8 +1422,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>60.0</max>
+		<def>60.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Задержка активации</text>
 		<short_text>Дисбал.напряж.пуск.время</short_text>
 		<form>4.1.3 Дисбаланс напряжения сети</form>
@@ -1324,8 +1441,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>60.0</max>
+		<def>30.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Задержка срабатывания</text>
 		<short_text>Дисбал.напряж.время</short_text>
 		<form>4.1.3 Дисбаланс напряжения сети</form>
@@ -1341,8 +1460,16 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>86400.0</max>
+		<def>3600.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
 	<param>
@@ -1350,9 +1477,18 @@
 		<name>CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>9999.0</max>
+		<def>9999.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>9999.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Количество АПВ уставка</comment>
 	</param>
 	<param>
@@ -1362,8 +1498,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>86400.0</max>
+		<def>86400.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>86400.0</value>
 		<text>Сброс счетчиков АПВ по напряжению</text>
 		<short_text>Защиты напряж.сброс счёт.</short_text>
 		<form>4.1.3 Дисбаланс напряжения сети</form>
@@ -1379,8 +1517,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>20.0</max>
+		<def>20.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>20.0</value>
 		<text>Уставка дисбаланса напряжений</text>
 		<short_text>Дисбал.напряж.уст.</short_text>
 		<form>4.1.3 Дисбаланс напряжения сети</form>
@@ -1394,9 +1534,18 @@
 		<name>CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>20.0</max>
+		<def>20.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>20.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Условие АПВ уставка</comment>
 	</param>
 	<param>
@@ -1404,9 +1553,18 @@
 		<name>CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Уставка Параметр защиты, для этой защиты работать по ВРП</comment>
 	</param>
 	<param>
@@ -1414,9 +1572,18 @@
 		<name>CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр Флаг что защита в АПВ</comment>
 	</param>
 	<param>
@@ -1424,12 +1591,18 @@
 		<name>CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_STATE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>3.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр состояние автомата</comment>
 	</param>
 	<param>
@@ -1437,12 +1610,18 @@
 		<name>CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1000000.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр Фиксированное время</comment>
 	</param>
 	<param>
@@ -1450,12 +1629,18 @@
 		<name>CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>9999.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр Количество АПВ</comment>
 	</param>
 	<param>
@@ -1463,12 +1648,18 @@
 		<name>CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FIRST_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<physic>PHYSIC_DATE_TIME</physic>
+		<min>0</min>
+		<max>4294967296</max>
+		<def>0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>DATE_TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр Время первого АПВ</comment>
 	</param>
 	<param>
@@ -1476,9 +1667,12 @@
 		<name>CCS_PROT_SUPPLY_IMBALANCE_CURRENT_MODE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>2.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<comment>Защиты "Дисбаланс входных токов"</comment>
 	</param>
 	<param>
@@ -1486,9 +1680,12 @@
 		<name>CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -1501,8 +1698,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>60.0</max>
+		<def>60.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<comment>Задержка активации уставка</comment>
 	</param>
 	<param>
@@ -1512,8 +1711,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>60.0</max>
+		<def>30.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
 	<param>
@@ -1523,8 +1724,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>86400.0</max>
+		<def>3600.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
 	<param>
@@ -1532,9 +1735,12 @@
 		<name>CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>9999.0</max>
+		<def>9999.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>9999.0</value>
 		<comment>Количество АПВ уставка</comment>
 	</param>
 	<param>
@@ -1542,9 +1748,12 @@
 		<name>CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_RESET</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>86400.0</max>
+		<def>86400.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>86400.0</value>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
 	<param>
@@ -1552,8 +1761,10 @@
 		<name>CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>20.0</max>
+		<def>20.0</def>
 		<valid>VALIDITY_OK</valid>
 		<comment>Уставка срабатывания защиты</comment>
 	</param>
@@ -1562,8 +1773,10 @@
 		<name>CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>20.0</max>
+		<def>20.0</def>
 		<valid>VALIDITY_OK</valid>
 		<comment>Условие АПВ уставка</comment>
 	</param>
@@ -1572,9 +1785,18 @@
 		<name>CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Уставка параметр защиты</comment>
 	</param>
 	<param>
@@ -1582,9 +1804,12 @@
 		<name>CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -1595,9 +1820,12 @@
 		<name>CCS_PROT_SUPPLY_IMBALANCE_CURRENT_STATE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>3.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -1608,9 +1836,12 @@
 		<name>CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1000000.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -1621,9 +1852,12 @@
 		<name>CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>9999.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -1634,9 +1868,12 @@
 		<name>CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FIRST_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<physic>PHYSIC_DATE_TIME</physic>
+		<min>0</min>
+		<max>4294967296</max>
+		<def>0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -1648,8 +1885,10 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>2.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<comment>Защиты "Чередование фаз"</comment>
 	</param>
 	<param>
@@ -1658,8 +1897,10 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -1672,8 +1913,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>60.0</max>
+		<def>60.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<comment>Задержка активации уставка</comment>
 	</param>
 	<param>
@@ -1683,8 +1926,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>60.0</max>
+		<def>30.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
 	<param>
@@ -1694,8 +1939,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>86400.0</max>
+		<def>3600.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
 	<param>
@@ -1704,8 +1951,10 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>9999.0</max>
+		<def>9999.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>9999.0</value>
 		<comment>Количество АПВ уставка</comment>
 	</param>
 	<param>
@@ -1713,9 +1962,12 @@
 		<name>CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_RESET</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>86400.0</max>
+		<def>86400.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>86400.0</value>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
 	<param>
@@ -1744,8 +1996,16 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Уставка параметр защиты</comment>
 	</param>
 	<param>
@@ -1754,8 +2014,10 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -1767,8 +2029,10 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>3.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -1780,8 +2044,10 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1000000.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -1793,8 +2059,10 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>9999.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -1805,9 +2073,11 @@
 		<name>CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FIRST_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<min>0</min>
+		<max>4294967296</max>
+		<def>0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -2113,6 +2383,7 @@
 		<short_text>Недогруз двиг.РР3</short_text>
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<values>0-Откл;1-Блок;2-АПВ;</values>
 		<comment>Защита "Недогруз" (ЗП)</comment>
@@ -2284,6 +2555,7 @@
 		<short_text>Недогруз двиг.авто.уст.</short_text>
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
 		<format>TEXT</format>
 		<values>0-Откл;1-Вкл;</values>
 		<comment>Уставка параметр защиты</comment>
@@ -2398,6 +2670,7 @@
 		<short_text>Предел тока двиг.РРЗ</short_text>
 		<form>4.2.6 Предел тока</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<values>1-Блок;2-АПВ;</values>
 		<comment>Защита "Предел тока двигателя"</comment>
@@ -2675,12 +2948,15 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>2.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>РРЗ от дисбаланса токов</text>
 		<short_text>Дисб.тока.двиг.РР3</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<values>0-Откл;1-Блок;2-АПВ;</values>
 		<comment>Защита "Дисбаланс токов двигателя"</comment>
@@ -2689,12 +2965,19 @@
 		<id>164</id>
 		<name>CCS_PROT_MOTOR_IMBALANCE_CURRENT_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Параметр запрещающий запуск</comment>
 	</param>
 	<param>
@@ -2704,8 +2987,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>60.0</max>
+		<def>60.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>60.0</value>
 		<text>Задержка активации</text>
 		<short_text>Дисб.тока.двиг.пуск.время</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
@@ -2721,8 +3006,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>60.0</max>
+		<def>30.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>30.0</value>
 		<text>Задержка срабатывания</text>
 		<short_text>Дисб.тока.двиг.время</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
@@ -2738,8 +3025,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>86400.0</max>
+		<def>3600.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>3600.0</value>
 		<text>Задержка АПВ</text>
 		<short_text>Дисб.тока.двиг.зад.АПВ</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
@@ -2752,9 +3041,19 @@
 		<id>168</id>
 		<name>CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>9999.0</max>
+		<def>9999.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>9999.0</value>
+		<text>Количество разрешенных АПВ</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Количество АПВ уставка</comment>
 	</param>
 	<param>
@@ -2764,8 +3063,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>86400.0</max>
+		<def>86400.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>86400.0</value>
 		<text>Сброс счетчиков АПВ по дисбалансу токов</text>
 		<short_text>Дисб.тока.двиг.сброс счет</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
@@ -2781,8 +3082,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>20.0</max>
+		<def>20.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>20.0</value>
 		<text>Уставка дисбаланса токов</text>
 		<short_text>Дисб.тока.двиг.уст.</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
@@ -2795,78 +3098,133 @@
 		<id>171</id>
 		<name>CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>20.0</max>
+		<def>20.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>20.0</value>
+		<text>Дисбаланс токов АПВ</text>
+		<short_text>Дисб.тока.двиг.АПВ</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Условие АПВ уставка</comment>
 	</param>
 	<param>
 		<id>172</id>
 		<name>CCS_PROT_MOTOR_IMBALANCE_CURRENT_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Уставка параметр защиты</comment>
 	</param>
 	<param>
 		<id>173</id>
 		<name>CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр Флаг что защита в АПВ</comment>
 	</param>
 	<param>
 		<id>174</id>
 		<name>CCS_PROT_MOTOR_IMBALANCE_CURRENT_STATE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>3.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр состояние автомата</comment>
 	</param>
 	<param>
 		<id>175</id>
 		<name>CCS_PROT_MOTOR_IMBALANCE_CURRENT_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1000000.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр Фиксированное время</comment>
 	</param>
 	<param>
 		<id>176</id>
 		<name>CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>9999.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр Количество АПВ</comment>
 	</param>
 	<param>
 		<id>177</id>
 		<name>CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FIRST_TIME</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
+		<min>0</min>
+		<max>4294967296</max>
+		<def>0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>DATE_TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр Время первого АПВ</comment>
 	</param>
 	<param>
@@ -2882,6 +3240,7 @@
 		<short_text>Турбин.вращение РРЗ</short_text>
 		<form>4.2.4 Турбинное вращение</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
 		<format>TEXT</format>
 		<values>0-Откл;1-Вкл;</values>
 		<comment>Защита "Турбинное вращение"</comment>
@@ -3381,6 +3740,7 @@
 		<short_text>Рвх.нас.нормал.</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<values>0-Откл;1-Вкл;</values>
 		<comment>Уставка параметр защиты</comment>
@@ -3399,6 +3759,9 @@
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Уставка параметр защиты</comment>
 	</param>
 	<param>
@@ -3492,6 +3855,7 @@
 		<short_text>Т обмотки ПЭД РРЗ</short_text>
 		<form>4.3.2 Температура двигателя</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<values>0-Откл;1-Блок;2-АПВ;</values>
 		<comment>Защита "Температура двигателя"</comment>
@@ -3511,6 +3875,7 @@
 		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
 		<format>TEXT</format>
 		<values>0-NULL;1-Перегрев двигателя</values>
 		<comment>Параметр запрещающий запуск</comment>
@@ -3662,6 +4027,9 @@
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Уставка параметр защиты</comment>
 	</param>
 	<param>
@@ -3678,6 +4046,9 @@
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Уставка параметр защиты</comment>
 	</param>
 	<param>
@@ -3694,6 +4065,9 @@
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр состояние автомата</comment>
 	</param>
 	<param>
@@ -3710,6 +4084,9 @@
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр Фиксированное время</comment>
 	</param>
 	<param>
@@ -3726,6 +4103,9 @@
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<comment>Текущий параметр Количество АПВ</comment>
 	</param>
 	<param>
