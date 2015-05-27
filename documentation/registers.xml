@@ -6081,18 +6081,33 @@
 		<id>417</id>
 		<name>CCS_PROT_OTHER_VSD_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>2.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>РРЗ аппаратных защит ЧРП</text>
+		<short_text>РРЗ аппаратных защит ЧРП</short_text>
+		<form>4.6.3 Аппаратные защиты ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<values>0-Откл;1-Блок;2-АПВ</values>
 		<comment>Защита "Аппаратные защиты ЧРП"</comment>
 	</param>
 	<param>
 		<id>418</id>
 		<name>CCS_PROT_OTHER_VSD_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -6102,93 +6117,157 @@
 		<id>419</id>
 		<name>CCS_PROT_OTHER_VSD_ACTIV_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>999.9</max>
+		<def>5.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>5.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
 		<comment>Задержка активации уставка</comment>
 	</param>
 	<param>
 		<id>420</id>
 		<name>CCS_PROT_OTHER_VSD_TRIP_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>60.0</max>
+		<def>5.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>5.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
 	<param>
 		<id>421</id>
 		<name>CCS_PROT_OTHER_VSD_RESTART_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>180000.0</max>
+		<def>3600.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>3600.0</value>
+		<text>Задержка АПВ</text>
+		<short_text>Задержка АПВ</short_text>
+		<form>4.6.3 Аппаратные защиты ЧРП</form>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
 	<param>
 		<id>422</id>
 		<name>CCS_PROT_OTHER_VSD_RESTART_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>9999.0</max>
+		<def>5.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>5.0</value>
+		<text>Количество разрешенных АПВ</text>
+		<short_text>Количество разрешенных АПВ</short_text>
+		<form>4.6.3 Аппаратные защиты ЧРП</form>
 		<comment>Количество АПВ уставка</comment>
 	</param>
 	<param>
 		<id>423</id>
 		<name>CCS_PROT_OTHER_VSD_RESTART_RESET</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>3599940.0</max>
+		<def>3600.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>3600.0</value>
+		<text>Сброс счетчиков АПВ</text>
+		<short_text>Сброс счетчиков АПВ</short_text>
+		<form>4.6.3 Аппаратные защиты ЧРП</form>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
 	<param>
 		<id>424</id>
 		<name>CCS_PROT_OTHER_VSD_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
 		<comment>Уставка срабатывания защиты</comment>
 	</param>
 	<param>
 		<id>425</id>
 		<name>CCS_PROT_OTHER_VSD_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
 		<comment>Условие АПВ уставка</comment>
 	</param>
 	<param>
 		<id>426</id>
 		<name>CCS_PROT_OTHER_VSD_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
 		<comment>Уставка параметр защиты</comment>
 	</param>
 	<param>
 		<id>427</id>
 		<name>CCS_PROT_OTHER_VSD_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
 		<comment>Уставка параметр защиты</comment>
 	</param>
 	<param>
 		<id>428</id>
 		<name>CCS_PROT_OTHER_VSD_STATE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>3.0</max>
+		<def>3.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>3.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -6198,9 +6277,13 @@
 		<id>429</id>
 		<name>CCS_PROT_OTHER_VSD_TIME</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0</min>
+		<max>4294967296</max>
+		<def>0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -6210,9 +6293,13 @@
 		<id>430</id>
 		<name>CCS_PROT_OTHER_VSD_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>9999.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -6222,9 +6309,13 @@
 		<id>431</id>
 		<name>CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
+		<min>0</min>
+		<max>4294967296</max>
+		<def>0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
