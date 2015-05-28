@@ -80,7 +80,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_LOAD_NOW - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_MOTOR_LOAD_NOW - CCS_BEGIN].value.float_t                      = 0.0;
   parameters_[CCS_MOTOR_LOAD_NOW - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_MOTOR_LOAD_NOW - CCS_BEGIN].max                                = 1000.0;
+  parameters_[CCS_MOTOR_LOAD_NOW - CCS_BEGIN].max                                = 200.0;
   parameters_[CCS_MOTOR_LOAD_NOW - CCS_BEGIN].def                                = 0.0;
   // Текущее напряжение двигателя
   parameters_[CCS_MOTOR_VOLTAGE_NOW - CCS_BEGIN].id                              = CCS_MOTOR_VOLTAGE_NOW;
@@ -90,7 +90,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_VOLTAGE_NOW - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_MOTOR_VOLTAGE_NOW - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_MOTOR_VOLTAGE_NOW - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_MOTOR_VOLTAGE_NOW - CCS_BEGIN].max                             = 2000000.0;
+  parameters_[CCS_MOTOR_VOLTAGE_NOW - CCS_BEGIN].max                             = 10000.0;
   parameters_[CCS_MOTOR_VOLTAGE_NOW - CCS_BEGIN].def                             = 0.0;
   // Текущий Косинус Фи
   parameters_[CCS_MOTOR_COS_PHI_NOW - CCS_BEGIN].id                              = CCS_MOTOR_COS_PHI_NOW;
@@ -190,7 +190,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_1_VALUE - CCS_BEGIN].validity                               = VALIDITY_OK;
   parameters_[CCS_AI_1_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
   parameters_[CCS_AI_1_VALUE - CCS_BEGIN].min                                    = 0.0;
-  parameters_[CCS_AI_1_VALUE - CCS_BEGIN].max                                    = 10000000.0;
+  parameters_[CCS_AI_1_VALUE - CCS_BEGIN].max                                    = 10000.0;
   parameters_[CCS_AI_1_VALUE - CCS_BEGIN].def                                    = 0.0;
   // 
   parameters_[CCS_AI_2_VALUE - CCS_BEGIN].id                                     = CCS_AI_2_VALUE;
@@ -200,7 +200,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_2_VALUE - CCS_BEGIN].validity                               = VALIDITY_OK;
   parameters_[CCS_AI_2_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
   parameters_[CCS_AI_2_VALUE - CCS_BEGIN].min                                    = 0.0;
-  parameters_[CCS_AI_2_VALUE - CCS_BEGIN].max                                    = 10000000.0;
+  parameters_[CCS_AI_2_VALUE - CCS_BEGIN].max                                    = 10000.0;
   parameters_[CCS_AI_2_VALUE - CCS_BEGIN].def                                    = 0.0;
   // 
   parameters_[CCS_AI_3_VALUE - CCS_BEGIN].id                                     = CCS_AI_3_VALUE;
@@ -210,7 +210,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_3_VALUE - CCS_BEGIN].validity                               = VALIDITY_OK;
   parameters_[CCS_AI_3_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
   parameters_[CCS_AI_3_VALUE - CCS_BEGIN].min                                    = 0.0;
-  parameters_[CCS_AI_3_VALUE - CCS_BEGIN].max                                    = 10000000.0;
+  parameters_[CCS_AI_3_VALUE - CCS_BEGIN].max                                    = 10000.0;
   parameters_[CCS_AI_3_VALUE - CCS_BEGIN].def                                    = 0.0;
   // 
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].id                                     = CCS_AI_4_VALUE;
@@ -220,7 +220,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].validity                               = VALIDITY_OK;
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].min                                    = 0.0;
-  parameters_[CCS_AI_4_VALUE - CCS_BEGIN].max                                    = 10000000.0;
+  parameters_[CCS_AI_4_VALUE - CCS_BEGIN].max                                    = 10000.0;
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].def                                    = 0.0;
   // 
   parameters_[CCS_DOOR_VALUE - CCS_BEGIN].id                                     = CCS_DOOR_VALUE;
@@ -288,10 +288,10 @@ void Ccs::initParameters()
   parameters_[CCS_LOG_PERIOD_NORMAL - CCS_BEGIN].operation                       = OPERATION_WRITE;
   parameters_[CCS_LOG_PERIOD_NORMAL - CCS_BEGIN].physic                          = PHYSIC_TIME;
   parameters_[CCS_LOG_PERIOD_NORMAL - CCS_BEGIN].validity                        = VALIDITY_OK;
-  parameters_[CCS_LOG_PERIOD_NORMAL - CCS_BEGIN].value.float_t                   = 60.0;
+  parameters_[CCS_LOG_PERIOD_NORMAL - CCS_BEGIN].value.float_t                   = 600.0;
   parameters_[CCS_LOG_PERIOD_NORMAL - CCS_BEGIN].min                             = 60.0;
   parameters_[CCS_LOG_PERIOD_NORMAL - CCS_BEGIN].max                             = 86400.0;
-  parameters_[CCS_LOG_PERIOD_NORMAL - CCS_BEGIN].def                             = 60.0;
+  parameters_[CCS_LOG_PERIOD_NORMAL - CCS_BEGIN].def                             = 600.0;
   // Период экстренной записи
   parameters_[CCS_LOG_PERIOD_FAST - CCS_BEGIN].id                                = CCS_LOG_PERIOD_FAST;
   parameters_[CCS_LOG_PERIOD_FAST - CCS_BEGIN].access                            = ACCESS_OPERATOR;
@@ -308,10 +308,10 @@ void Ccs::initParameters()
   parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].operation                          = OPERATION_WRITE;
   parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].physic                             = PHYSIC_TIME;
   parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].validity                           = VALIDITY_OK;
-  parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].value.float_t                      = 60.0;
+  parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].value.float_t                      = 600.0;
   parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].min                                = 60.0;
   parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].max                                = 86400.0;
-  parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].def                                = 60.0;
+  parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].def                                = 600.0;
   // Ток холостого хода
   parameters_[CCS_MOTOR_CURRENT_HH - CCS_BEGIN].id                               = CCS_MOTOR_CURRENT_HH;
   parameters_[CCS_MOTOR_CURRENT_HH - CCS_BEGIN].access                           = ACCESS_OPERATOR;
@@ -320,7 +320,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_CURRENT_HH - CCS_BEGIN].validity                         = VALIDITY_OK;
   parameters_[CCS_MOTOR_CURRENT_HH - CCS_BEGIN].value.float_t                    = 0.0;
   parameters_[CCS_MOTOR_CURRENT_HH - CCS_BEGIN].min                              = 0.0;
-  parameters_[CCS_MOTOR_CURRENT_HH - CCS_BEGIN].max                              = 1000.0;
+  parameters_[CCS_MOTOR_CURRENT_HH - CCS_BEGIN].max                              = 10000.0;
   parameters_[CCS_MOTOR_CURRENT_HH - CCS_BEGIN].def                              = 0.0;
   // Мощность ТМПН
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].id                            = CCS_TRANS_NOMINAL_POWER;
@@ -328,10 +328,10 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].operation                     = OPERATION_WRITE;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].physic                        = PHYSIC_FULL_POWER;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].validity                      = VALIDITY_OK;
-  parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].value.float_t                 = 0.0;
+  parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].value.float_t                 = 2000.0;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].max                           = 1000000.0;
-  parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].def                           = 0.0;
+  parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].max                           = 10000.0;
+  parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].def                           = 2000.0;
   // Номинальный ток ТМПН
   parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].id                          = CCS_TRANS_NOMINAL_CURRENT;
   parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].access                      = ACCESS_OPERATOR;
@@ -340,7 +340,7 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].max                         = 1000000.0;
+  parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].max                         = 10000.0;
   parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].def                         = 0.0;
   // Номинальное напряжение ТМПН
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].id                          = CCS_TRANS_NOMINAL_VOLTAGE;
@@ -350,7 +350,7 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].value.float_t               = 380.0;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].max                         = 1000.0;
+  parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].max                         = 10000.0;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].def                         = 380.0;
   // Длина кабеля
   parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].id                             = CCS_TRANS_CABLE_LENGHT;
@@ -358,10 +358,10 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].operation                      = OPERATION_WRITE;
   parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].physic                         = PHYSIC_LENGHT;
   parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].validity                       = VALIDITY_OK;
-  parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].value.float_t                  = 1000.0;
+  parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].value.float_t                  = 2000.0;
   parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].min                            = 0.0;
   parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].max                            = 10000.0;
-  parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].def                            = 1000.0;
+  parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].def                            = 2000.0;
   // Сечение кабеля
   parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].id                              = CCS_TRANS_CABLE_CROSS;
   parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].access                          = ACCESS_OPERATOR;
@@ -378,20 +378,20 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].operation              = OPERATION_WRITE;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].physic                 = PHYSIC_VOLTAGE;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].validity               = VALIDITY_OK;
-  parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].value.float_t          = 300.0;
+  parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].value.float_t          = 380.0;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].min                    = 300.0;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].max                    = 7000.0;
-  parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].def                    = 300.0;
+  parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].def                    = 380.0;
   // Напряжение отпайки
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].id                          = CCS_TRANS_VOLTAGE_TAP_OFF;
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].access                      = ACCESS_OPERATOR;
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].operation                   = OPERATION_WRITE;
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].physic                      = PHYSIC_VOLTAGE;
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].validity                    = VALIDITY_OK;
-  parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].value.float_t               = 300.0;
+  parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].value.float_t               = 380.0;
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].min                         = 300.0;
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].max                         = 7000.0;
-  parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].def                         = 300.0;
+  parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].def                         = 380.0;
   // Тип ТМС
   parameters_[CCS_DHS_TYPE - CCS_BEGIN].id                                       = CCS_DHS_TYPE;
   parameters_[CCS_DHS_TYPE - CCS_BEGIN].access                                   = ACCESS_OPERATOR;
@@ -4175,152 +4175,152 @@ void Ccs::initParameters()
   // Защита "Аппаратные защиты ЧРП"
   parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].id                            = CCS_PROT_OTHER_VSD_MODE;
   parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].operation                     = 0;
-  parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].physic                        = 0;
+  parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].validity                      = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].value.float_t                 = 0;
+  parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].value.float_t                 = 1.0;
   parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].max                           = 10000000.0;
-  parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].def                           = 0;
+  parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].max                           = 2.0;
+  parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].def                           = 0.0;
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].id                         = CCS_PROT_OTHER_VSD_PREVENT;
   parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].operation                  = 0;
-  parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].physic                     = 0;
+  parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].validity                   = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].value.float_t              = 0;
+  parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].value.float_t              = 0.0;
   parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].max                        = 10000000.0;
-  parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].def                        = 0;
+  parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].max                        = 1.0;
+  parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].def                        = 0.0;
   // Задержка активации уставка
   parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].id                     = CCS_PROT_OTHER_VSD_ACTIV_DELAY;
   parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].operation              = 0;
+  parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].operation              = OPERATION_WRITE;
   parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].physic                 = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].validity               = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].value.float_t          = 0;
+  parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].value.float_t          = 5.0;
   parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].max                    = 10000000.0;
-  parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].def                    = 0;
+  parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].max                    = 999.9;
+  parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].def                    = 5.0;
   // Задержка срабатывания уставка
   parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].id                      = CCS_PROT_OTHER_VSD_TRIP_DELAY;
   parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].access                  = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].operation               = 0;
+  parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].operation               = OPERATION_WRITE;
   parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].physic                  = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].validity                = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].value.float_t           = 0;
+  parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].value.float_t           = 5.0;
   parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].min                     = 0.0;
-  parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].max                     = 10000000.0;
-  parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].def                     = 0;
+  parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].max                     = 60.0;
+  parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].def                     = 5.0;
   // Задержка АПВ уставка
   parameters_[CCS_PROT_OTHER_VSD_RESTART_DELAY - CCS_BEGIN].id                   = CCS_PROT_OTHER_VSD_RESTART_DELAY;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_DELAY - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_DELAY - CCS_BEGIN].operation            = 0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_DELAY - CCS_BEGIN].operation            = OPERATION_WRITE;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_DELAY - CCS_BEGIN].physic               = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_DELAY - CCS_BEGIN].validity             = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_DELAY - CCS_BEGIN].value.float_t        = 0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_DELAY - CCS_BEGIN].value.float_t        = 3600.0;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_DELAY - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_DELAY - CCS_BEGIN].max                  = 10000000.0;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_DELAY - CCS_BEGIN].def                  = 0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_DELAY - CCS_BEGIN].max                  = 180000.0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_DELAY - CCS_BEGIN].def                  = 3600.0;
   // Количество АПВ уставка
   parameters_[CCS_PROT_OTHER_VSD_RESTART_LIMIT - CCS_BEGIN].id                   = CCS_PROT_OTHER_VSD_RESTART_LIMIT;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_LIMIT - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_LIMIT - CCS_BEGIN].operation            = 0;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_LIMIT - CCS_BEGIN].physic               = 0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_LIMIT - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_LIMIT - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_LIMIT - CCS_BEGIN].validity             = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_LIMIT - CCS_BEGIN].value.float_t        = 0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_LIMIT - CCS_BEGIN].value.float_t        = 5.0;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_LIMIT - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_LIMIT - CCS_BEGIN].max                  = 10000000.0;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_LIMIT - CCS_BEGIN].def                  = 0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_LIMIT - CCS_BEGIN].max                  = 9999.0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_LIMIT - CCS_BEGIN].def                  = 5.0;
   // Автосброс счетчика АПВ
   parameters_[CCS_PROT_OTHER_VSD_RESTART_RESET - CCS_BEGIN].id                   = CCS_PROT_OTHER_VSD_RESTART_RESET;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_RESET - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_RESET - CCS_BEGIN].operation            = 0;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_RESET - CCS_BEGIN].physic               = 0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_RESET - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_RESET - CCS_BEGIN].physic               = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_RESET - CCS_BEGIN].validity             = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_RESET - CCS_BEGIN].value.float_t        = 0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_RESET - CCS_BEGIN].value.float_t        = 3600.0;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_RESET - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_RESET - CCS_BEGIN].max                  = 10000000.0;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_RESET - CCS_BEGIN].def                  = 0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_RESET - CCS_BEGIN].max                  = 3599940.0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_RESET - CCS_BEGIN].def                  = 3600.0;
   // Уставка срабатывания защиты
   parameters_[CCS_PROT_OTHER_VSD_TRIP_SETPOINT - CCS_BEGIN].id                   = CCS_PROT_OTHER_VSD_TRIP_SETPOINT;
   parameters_[CCS_PROT_OTHER_VSD_TRIP_SETPOINT - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_TRIP_SETPOINT - CCS_BEGIN].operation            = 0;
-  parameters_[CCS_PROT_OTHER_VSD_TRIP_SETPOINT - CCS_BEGIN].physic               = 0;
+  parameters_[CCS_PROT_OTHER_VSD_TRIP_SETPOINT - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_TRIP_SETPOINT - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_VSD_TRIP_SETPOINT - CCS_BEGIN].validity             = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_VSD_TRIP_SETPOINT - CCS_BEGIN].value.float_t        = 0;
+  parameters_[CCS_PROT_OTHER_VSD_TRIP_SETPOINT - CCS_BEGIN].value.float_t        = 0.0;
   parameters_[CCS_PROT_OTHER_VSD_TRIP_SETPOINT - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_OTHER_VSD_TRIP_SETPOINT - CCS_BEGIN].max                  = 10000000.0;
-  parameters_[CCS_PROT_OTHER_VSD_TRIP_SETPOINT - CCS_BEGIN].def                  = 0;
+  parameters_[CCS_PROT_OTHER_VSD_TRIP_SETPOINT - CCS_BEGIN].max                  = 1.0;
+  parameters_[CCS_PROT_OTHER_VSD_TRIP_SETPOINT - CCS_BEGIN].def                  = 0.0;
   // Условие АПВ уставка
   parameters_[CCS_PROT_OTHER_VSD_RESTART_SETPOINT - CCS_BEGIN].id                = CCS_PROT_OTHER_VSD_RESTART_SETPOINT;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_SETPOINT - CCS_BEGIN].access            = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_SETPOINT - CCS_BEGIN].operation         = 0;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_SETPOINT - CCS_BEGIN].physic            = 0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_SETPOINT - CCS_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_SETPOINT - CCS_BEGIN].physic            = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_SETPOINT - CCS_BEGIN].validity          = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_SETPOINT - CCS_BEGIN].value.float_t     = 0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_SETPOINT - CCS_BEGIN].value.float_t     = 0.0;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_SETPOINT - CCS_BEGIN].min               = 0.0;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_SETPOINT - CCS_BEGIN].max               = 10000000.0;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_SETPOINT - CCS_BEGIN].def               = 0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_SETPOINT - CCS_BEGIN].max               = 1.0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_SETPOINT - CCS_BEGIN].def               = 0.0;
   // Уставка параметр защиты
   parameters_[CCS_PROT_OTHER_VSD_PARAMETER - CCS_BEGIN].id                       = CCS_PROT_OTHER_VSD_PARAMETER;
   parameters_[CCS_PROT_OTHER_VSD_PARAMETER - CCS_BEGIN].access                   = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_PARAMETER - CCS_BEGIN].operation                = 0;
-  parameters_[CCS_PROT_OTHER_VSD_PARAMETER - CCS_BEGIN].physic                   = 0;
+  parameters_[CCS_PROT_OTHER_VSD_PARAMETER - CCS_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_PARAMETER - CCS_BEGIN].physic                   = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_VSD_PARAMETER - CCS_BEGIN].validity                 = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_VSD_PARAMETER - CCS_BEGIN].value.float_t            = 0;
+  parameters_[CCS_PROT_OTHER_VSD_PARAMETER - CCS_BEGIN].value.float_t            = 0.0;
   parameters_[CCS_PROT_OTHER_VSD_PARAMETER - CCS_BEGIN].min                      = 0.0;
-  parameters_[CCS_PROT_OTHER_VSD_PARAMETER - CCS_BEGIN].max                      = 10000000.0;
-  parameters_[CCS_PROT_OTHER_VSD_PARAMETER - CCS_BEGIN].def                      = 0;
+  parameters_[CCS_PROT_OTHER_VSD_PARAMETER - CCS_BEGIN].max                      = 1.0;
+  parameters_[CCS_PROT_OTHER_VSD_PARAMETER - CCS_BEGIN].def                      = 0.0;
   // Уставка параметр защиты
   parameters_[CCS_PROT_OTHER_VSD_RESTART_FLAG - CCS_BEGIN].id                    = CCS_PROT_OTHER_VSD_RESTART_FLAG;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_FLAG - CCS_BEGIN].access                = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_FLAG - CCS_BEGIN].operation             = 0;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_FLAG - CCS_BEGIN].physic                = 0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_FLAG - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_FLAG - CCS_BEGIN].physic                = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_FLAG - CCS_BEGIN].validity              = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_FLAG - CCS_BEGIN].value.float_t         = 0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_FLAG - CCS_BEGIN].value.float_t         = 0.0;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_FLAG - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_FLAG - CCS_BEGIN].max                   = 10000000.0;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_FLAG - CCS_BEGIN].def                   = 0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_FLAG - CCS_BEGIN].max                   = 1.0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_FLAG - CCS_BEGIN].def                   = 0.0;
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_OTHER_VSD_STATE - CCS_BEGIN].id                           = CCS_PROT_OTHER_VSD_STATE;
   parameters_[CCS_PROT_OTHER_VSD_STATE - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_STATE - CCS_BEGIN].operation                    = 0;
-  parameters_[CCS_PROT_OTHER_VSD_STATE - CCS_BEGIN].physic                       = 0;
+  parameters_[CCS_PROT_OTHER_VSD_STATE - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_STATE - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_VSD_STATE - CCS_BEGIN].validity                     = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_VSD_STATE - CCS_BEGIN].value.float_t                = 0;
+  parameters_[CCS_PROT_OTHER_VSD_STATE - CCS_BEGIN].value.float_t                = 3.0;
   parameters_[CCS_PROT_OTHER_VSD_STATE - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_PROT_OTHER_VSD_STATE - CCS_BEGIN].max                          = 10000000.0;
-  parameters_[CCS_PROT_OTHER_VSD_STATE - CCS_BEGIN].def                          = 0;
+  parameters_[CCS_PROT_OTHER_VSD_STATE - CCS_BEGIN].max                          = 3.0;
+  parameters_[CCS_PROT_OTHER_VSD_STATE - CCS_BEGIN].def                          = 3.0;
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_OTHER_VSD_TIME - CCS_BEGIN].id                            = CCS_PROT_OTHER_VSD_TIME;
   parameters_[CCS_PROT_OTHER_VSD_TIME - CCS_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_TIME - CCS_BEGIN].operation                     = 0;
-  parameters_[CCS_PROT_OTHER_VSD_TIME - CCS_BEGIN].physic                        = 0;
+  parameters_[CCS_PROT_OTHER_VSD_TIME - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_TIME - CCS_BEGIN].physic                        = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_VSD_TIME - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_VSD_TIME - CCS_BEGIN].value.float_t                 = 0;
-  parameters_[CCS_PROT_OTHER_VSD_TIME - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_PROT_OTHER_VSD_TIME - CCS_BEGIN].max                           = 10000000.0;
+  parameters_[CCS_PROT_OTHER_VSD_TIME - CCS_BEGIN].min                           = 0;
+  parameters_[CCS_PROT_OTHER_VSD_TIME - CCS_BEGIN].max                           = 4294967296;
   parameters_[CCS_PROT_OTHER_VSD_TIME - CCS_BEGIN].def                           = 0;
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_OTHER_VSD_RESTART_COUNT - CCS_BEGIN].id                   = CCS_PROT_OTHER_VSD_RESTART_COUNT;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_COUNT - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_COUNT - CCS_BEGIN].operation            = 0;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_COUNT - CCS_BEGIN].physic               = 0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_COUNT - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_COUNT - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_COUNT - CCS_BEGIN].validity             = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_COUNT - CCS_BEGIN].value.float_t        = 0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_COUNT - CCS_BEGIN].value.float_t        = 0.0;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_COUNT - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_COUNT - CCS_BEGIN].max                  = 10000000.0;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_COUNT - CCS_BEGIN].def                  = 0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_COUNT - CCS_BEGIN].max                  = 9999.0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_COUNT - CCS_BEGIN].def                  = 0.0;
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME - CCS_BEGIN].id              = CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME - CCS_BEGIN].access          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME - CCS_BEGIN].operation       = 0;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME - CCS_BEGIN].physic          = 0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME - CCS_BEGIN].operation       = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME - CCS_BEGIN].physic          = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t   = 0;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME - CCS_BEGIN].min             = 0.0;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME - CCS_BEGIN].max             = 10000000.0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME - CCS_BEGIN].min             = 0;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME - CCS_BEGIN].max             = 4294967296;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME - CCS_BEGIN].def             = 0;
   // Защита "Контроль УКИ"
   parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].id                            = CCS_PROT_OTHER_IMB_MODE;
@@ -4482,76 +4482,76 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].min                             = 0.0;
   parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].max                             = 10000000.0;
   parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].def                             = 0;
-  // 
+  // Состояние автомата периодического режима
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].id                             = CCS_RGM_PERIODIC_STATE;
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].access                         = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].operation                      = 0;
-  parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].physic                         = 0;
+  parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].physic                         = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].validity                       = VALIDITY_OK;
-  parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].value.float_t                  = 0;
+  parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].value.float_t                  = 0.0;
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].max                            = 10000000.0;
-  parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].def                            = 0;
-  // 
+  parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].max                            = 10.0;
+  parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].def                            = 0.0;
+  // Период работы по программе
   parameters_[CCS_RGM_PERIODIC_RUN_PERIOD - CCS_BEGIN].id                        = CCS_RGM_PERIODIC_RUN_PERIOD;
   parameters_[CCS_RGM_PERIODIC_RUN_PERIOD - CCS_BEGIN].access                    = ACCESS_OPERATOR;
   parameters_[CCS_RGM_PERIODIC_RUN_PERIOD - CCS_BEGIN].operation                 = OPERATION_WRITE;
   parameters_[CCS_RGM_PERIODIC_RUN_PERIOD - CCS_BEGIN].physic                    = PHYSIC_TIME;
   parameters_[CCS_RGM_PERIODIC_RUN_PERIOD - CCS_BEGIN].validity                  = VALIDITY_OK;
-  parameters_[CCS_RGM_PERIODIC_RUN_PERIOD - CCS_BEGIN].value.float_t             = 0;
+  parameters_[CCS_RGM_PERIODIC_RUN_PERIOD - CCS_BEGIN].value.float_t             = 3600.0;
   parameters_[CCS_RGM_PERIODIC_RUN_PERIOD - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_RGM_PERIODIC_RUN_PERIOD - CCS_BEGIN].max                       = 10000000.0;
-  parameters_[CCS_RGM_PERIODIC_RUN_PERIOD - CCS_BEGIN].def                       = 0;
-  // 
+  parameters_[CCS_RGM_PERIODIC_RUN_PERIOD - CCS_BEGIN].max                       = 86400.0;
+  parameters_[CCS_RGM_PERIODIC_RUN_PERIOD - CCS_BEGIN].def                       = 3600.0;
+  // Период паузы по программе
   parameters_[CCS_RGM_PERIODIC_STOP_PERIOD - CCS_BEGIN].id                       = CCS_RGM_PERIODIC_STOP_PERIOD;
   parameters_[CCS_RGM_PERIODIC_STOP_PERIOD - CCS_BEGIN].access                   = ACCESS_OPERATOR;
   parameters_[CCS_RGM_PERIODIC_STOP_PERIOD - CCS_BEGIN].operation                = OPERATION_WRITE;
   parameters_[CCS_RGM_PERIODIC_STOP_PERIOD - CCS_BEGIN].physic                   = PHYSIC_TIME;
   parameters_[CCS_RGM_PERIODIC_STOP_PERIOD - CCS_BEGIN].validity                 = VALIDITY_OK;
-  parameters_[CCS_RGM_PERIODIC_STOP_PERIOD - CCS_BEGIN].value.float_t            = 0;
+  parameters_[CCS_RGM_PERIODIC_STOP_PERIOD - CCS_BEGIN].value.float_t            = 3600.0;
   parameters_[CCS_RGM_PERIODIC_STOP_PERIOD - CCS_BEGIN].min                      = 0.0;
-  parameters_[CCS_RGM_PERIODIC_STOP_PERIOD - CCS_BEGIN].max                      = 10000000.0;
-  parameters_[CCS_RGM_PERIODIC_STOP_PERIOD - CCS_BEGIN].def                      = 0;
-  // 
+  parameters_[CCS_RGM_PERIODIC_STOP_PERIOD - CCS_BEGIN].max                      = 86400.0;
+  parameters_[CCS_RGM_PERIODIC_STOP_PERIOD - CCS_BEGIN].def                      = 3600.0;
+  // Время запуска по программе
   parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].id                    = CCS_RGM_PERIODIC_RUN_BEGIN_TIME;
   parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].access                = ACCESS_OPERATOR;
   parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].operation             = OPERATION_WRITE;
   parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].physic                = PHYSIC_DATE_TIME;
   parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].validity              = VALIDITY_OK;
-  parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].value.float_t         = 0;
+  parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].value.float_t         = 0.0;
   parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].min                   = 0;
   parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].max                   = 4294967296;
   parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].def                   = 0;
-  // 
+  // Время до окончания работы по программе
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].id                   = CCS_RGM_PERIODIC_RUN_TIME_TO_END;
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].access               = ACCESS_OPERATOR;
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].operation            = OPERATION_WRITE;
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].validity             = VALIDITY_OK;
-  parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].value.float_t        = 0;
+  parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].value.float_t        = 0.0;
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].max                  = 10000000.0;
-  parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].def                  = 0;
-  // 
+  parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].max                  = 86400.0;
+  parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].def                  = 0.0;
+  // Время останова по программе
   parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].id                   = CCS_RGM_PERIODIC_STOP_BEGIN_TIME;
   parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].access               = ACCESS_OPERATOR;
   parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].operation            = OPERATION_WRITE;
   parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].physic               = PHYSIC_DATE_TIME;
   parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].validity             = VALIDITY_OK;
-  parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].value.float_t        = 0;
+  parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].value.float_t        = 0.0;
   parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].min                  = 0;
   parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].max                  = 4294967296;
   parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].def                  = 0;
-  // 
+  // Время до окончания останова по программе
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].id                  = CCS_RGM_PERIODIC_STOP_TIME_TO_END;
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].access              = ACCESS_OPERATOR;
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].operation           = OPERATION_WRITE;
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].physic              = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].validity            = VALIDITY_OK;
-  parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].value.float_t       = 0;
+  parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].value.float_t       = 0.0;
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].min                 = 0.0;
-  parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].max                 = 10000000.0;
-  parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].def                 = 0;
+  parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].max                 = 86400.0;
+  parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].def                 = 0.0;
   // Режим чередования частот
   parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].id                      = CCS_RGM_ALTERNATION_FREQ_MODE;
   parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].access                  = ACCESS_OPERATOR;
@@ -4582,7 +4582,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1 - CCS_BEGIN].min                  = 0.0;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1 - CCS_BEGIN].max                  = 86400.0;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1 - CCS_BEGIN].def                  = 0.0;
-  // 
+  // Время окончания работы на частоте 1
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].id               = CCS_RGM_ALTERNATION_FREQ_TIMER_1_END;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].access           = ACCESS_OPERATOR;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].operation        = OPERATION_WRITE;
@@ -4622,7 +4622,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2 - CCS_BEGIN].min                  = 0.0;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2 - CCS_BEGIN].max                  = 86400.0;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2 - CCS_BEGIN].def                  = 0.0;
-  // 
+  // Время окончания работы на частоте 2
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].id               = CCS_RGM_ALTERNATION_FREQ_TIMER_2_END;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].access           = ACCESS_OPERATOR;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].operation        = OPERATION_WRITE;
@@ -4745,58 +4745,58 @@ void Ccs::initParameters()
   // Режим поддержания параметра. Включение
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].id                     = CCS_RGM_MAINTENANCE_PARAM_MODE;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].operation              = 0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].physic                 = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].validity               = VALIDITY_OK;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].value.float_t          = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].value.float_t          = 0.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].max                    = 10000000.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].def                    = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].max                    = 10.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].def                    = 0.0;
   // Режим поддержания параметра. Тип параметра
   parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].id                     = CCS_RGM_MAINTENANCE_PARAM_TYPE;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].operation              = 0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].physic                 = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].validity               = VALIDITY_OK;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].value.float_t          = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].value.float_t          = 0.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].max                    = 10000000.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].def                    = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].max                    = 6.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].def                    = 0.0;
   // Режим поддержания параметра. Зависимость
   parameters_[CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE - CCS_BEGIN].id               = CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE - CCS_BEGIN].access           = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE - CCS_BEGIN].operation        = 0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE - CCS_BEGIN].physic           = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE - CCS_BEGIN].operation        = OPERATION_WRITE;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE - CCS_BEGIN].physic           = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE - CCS_BEGIN].validity         = VALIDITY_OK;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE - CCS_BEGIN].value.float_t    = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE - CCS_BEGIN].value.float_t    = 0.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE - CCS_BEGIN].max              = 10000000.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE - CCS_BEGIN].def              = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE - CCS_BEGIN].max              = 1.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE - CCS_BEGIN].def              = 0.0;
   // Режим поддержания параметра. Поддержка значения - Ток
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT - CCS_BEGIN].id         = CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT - CCS_BEGIN].access     = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT - CCS_BEGIN].operation  = 0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT - CCS_BEGIN].physic     = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT - CCS_BEGIN].operation  = OPERATION_WRITE;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT - CCS_BEGIN].physic     = PHYSIC_CURRENT;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT - CCS_BEGIN].validity   = VALIDITY_OK;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT - CCS_BEGIN].min        = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT - CCS_BEGIN].max        = 10000000.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT - CCS_BEGIN].def        = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT - CCS_BEGIN].max        = 1000.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT - CCS_BEGIN].def        = 0.0;
   // Режим поддержания параметра. Период регулирования
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].id                   = CCS_RGM_MAINTENANCE_PARAM_PERIOD;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].operation            = 0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].physic               = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].physic               = PHYSIC_TIME;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].max                  = 10000000.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].max                  = 86400.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].def                  = 0;
   // Режим поддержания параметра. Пропорциональный коэффициент
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].id                     = CCS_RGM_MAINTENANCE_PARAM_PROP;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].operation              = 0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].physic                 = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].min                    = 0.0;
@@ -4805,8 +4805,8 @@ void Ccs::initParameters()
   // Режим поддержания параметра. Интегральный коэффициент
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].id                      = CCS_RGM_MAINTENANCE_PARAM_INT;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].access                  = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].operation               = 0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].physic                  = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].physic                  = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].value.float_t           = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].min                     = 0.0;
@@ -4815,8 +4815,8 @@ void Ccs::initParameters()
   // Режим поддержания параметра. Мин рабочая частота
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].id                 = CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].access             = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].operation          = 0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].physic             = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].physic             = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].value.float_t      = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].min                = 0.0;
@@ -4825,13 +4825,13 @@ void Ccs::initParameters()
   // Режим поддержания параметра. Макс рабочая частота
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].id                 = CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].access             = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].operation          = 0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].physic             = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].physic             = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].validity           = VALIDITY_OK;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].value.float_t      = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].value.float_t      = 200.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].max                = 10000000.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].def                = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].max                = 200.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].def                = 200.0;
   // Режим встряхивания
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].id                               = CCS_RGM_JARRING_MODE;
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].access                           = ACCESS_OPERATOR;
@@ -5785,23 +5785,23 @@ void Ccs::initParameters()
   // Протокол телемеханики
   parameters_[CCS_SCADA_TYPE - CCS_BEGIN].id                                     = CCS_SCADA_TYPE;
   parameters_[CCS_SCADA_TYPE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
-  parameters_[CCS_SCADA_TYPE - CCS_BEGIN].operation                              = 0;
-  parameters_[CCS_SCADA_TYPE - CCS_BEGIN].physic                                 = 0;
+  parameters_[CCS_SCADA_TYPE - CCS_BEGIN].operation                              = OPERATION_WRITE;
+  parameters_[CCS_SCADA_TYPE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
   parameters_[CCS_SCADA_TYPE - CCS_BEGIN].validity                               = VALIDITY_OK;
-  parameters_[CCS_SCADA_TYPE - CCS_BEGIN].value.float_t                          = 0;
+  parameters_[CCS_SCADA_TYPE - CCS_BEGIN].value.float_t                          = 0.0;
   parameters_[CCS_SCADA_TYPE - CCS_BEGIN].min                                    = 0.0;
-  parameters_[CCS_SCADA_TYPE - CCS_BEGIN].max                                    = 10000000.0;
-  parameters_[CCS_SCADA_TYPE - CCS_BEGIN].def                                    = 0;
+  parameters_[CCS_SCADA_TYPE - CCS_BEGIN].max                                    = 1.0;
+  parameters_[CCS_SCADA_TYPE - CCS_BEGIN].def                                    = 0.0;
   // Версия протокола телемеханики
   parameters_[CCS_SCADA_CODE - CCS_BEGIN].id                                     = CCS_SCADA_CODE;
   parameters_[CCS_SCADA_CODE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
   parameters_[CCS_SCADA_CODE - CCS_BEGIN].operation                              = OPERATION_WRITE;
   parameters_[CCS_SCADA_CODE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
   parameters_[CCS_SCADA_CODE - CCS_BEGIN].validity                               = VALIDITY_OK;
-  parameters_[CCS_SCADA_CODE - CCS_BEGIN].value.float_t                          = 0;
+  parameters_[CCS_SCADA_CODE - CCS_BEGIN].value.float_t                          = 0.0;
   parameters_[CCS_SCADA_CODE - CCS_BEGIN].min                                    = 0.0;
-  parameters_[CCS_SCADA_CODE - CCS_BEGIN].max                                    = 10000000.0;
-  parameters_[CCS_SCADA_CODE - CCS_BEGIN].def                                    = 0;
+  parameters_[CCS_SCADA_CODE - CCS_BEGIN].max                                    = 10.0;
+  parameters_[CCS_SCADA_CODE - CCS_BEGIN].def                                    = 0.0;
   // Адресу СУ в телемеханике
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].id                                  = CCS_SCADA_ADDRESS;
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].access                              = ACCESS_OPERATOR;
@@ -5818,10 +5818,10 @@ void Ccs::initParameters()
   parameters_[CCS_SCADA_BYTERATE - CCS_BEGIN].operation                          = OPERATION_WRITE;
   parameters_[CCS_SCADA_BYTERATE - CCS_BEGIN].physic                             = PHYSIC_NUMERIC;
   parameters_[CCS_SCADA_BYTERATE - CCS_BEGIN].validity                           = VALIDITY_OK;
-  parameters_[CCS_SCADA_BYTERATE - CCS_BEGIN].value.float_t                      = 0;
-  parameters_[CCS_SCADA_BYTERATE - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_SCADA_BYTERATE - CCS_BEGIN].max                                = 10000000.0;
-  parameters_[CCS_SCADA_BYTERATE - CCS_BEGIN].def                                = 0;
+  parameters_[CCS_SCADA_BYTERATE - CCS_BEGIN].value.float_t                      = 9600.0;
+  parameters_[CCS_SCADA_BYTERATE - CCS_BEGIN].min                                = 9600.0;
+  parameters_[CCS_SCADA_BYTERATE - CCS_BEGIN].max                                = 115200.0;
+  parameters_[CCS_SCADA_BYTERATE - CCS_BEGIN].def                                = 9600.0;
   // Чётность в телемеханике
   parameters_[CCS_SCADA_PARITY - CCS_BEGIN].id                                   = CCS_SCADA_PARITY;
   parameters_[CCS_SCADA_PARITY - CCS_BEGIN].access                               = ACCESS_OPERATOR;
@@ -5858,60 +5858,60 @@ void Ccs::initParameters()
   parameters_[CCS_UNIT_PRESSURE - CCS_BEGIN].operation                           = OPERATION_WRITE;
   parameters_[CCS_UNIT_PRESSURE - CCS_BEGIN].physic                              = PHYSIC_NUMERIC;
   parameters_[CCS_UNIT_PRESSURE - CCS_BEGIN].validity                            = VALIDITY_OK;
-  parameters_[CCS_UNIT_PRESSURE - CCS_BEGIN].value.float_t                       = 0;
+  parameters_[CCS_UNIT_PRESSURE - CCS_BEGIN].value.float_t                       = 0.0;
   parameters_[CCS_UNIT_PRESSURE - CCS_BEGIN].min                                 = 0.0;
-  parameters_[CCS_UNIT_PRESSURE - CCS_BEGIN].max                                 = 10000000.0;
-  parameters_[CCS_UNIT_PRESSURE - CCS_BEGIN].def                                 = 0;
+  parameters_[CCS_UNIT_PRESSURE - CCS_BEGIN].max                                 = 5.0;
+  parameters_[CCS_UNIT_PRESSURE - CCS_BEGIN].def                                 = 0.0;
   // Единицы измерения давления
   parameters_[CCS_UNIT_TEMPERATURE - CCS_BEGIN].id                               = CCS_UNIT_TEMPERATURE;
   parameters_[CCS_UNIT_TEMPERATURE - CCS_BEGIN].access                           = ACCESS_OPERATOR;
   parameters_[CCS_UNIT_TEMPERATURE - CCS_BEGIN].operation                        = OPERATION_WRITE;
   parameters_[CCS_UNIT_TEMPERATURE - CCS_BEGIN].physic                           = PHYSIC_NUMERIC;
   parameters_[CCS_UNIT_TEMPERATURE - CCS_BEGIN].validity                         = VALIDITY_OK;
-  parameters_[CCS_UNIT_TEMPERATURE - CCS_BEGIN].value.float_t                    = 0;
+  parameters_[CCS_UNIT_TEMPERATURE - CCS_BEGIN].value.float_t                    = 0.0;
   parameters_[CCS_UNIT_TEMPERATURE - CCS_BEGIN].min                              = 0.0;
-  parameters_[CCS_UNIT_TEMPERATURE - CCS_BEGIN].max                              = 10000000.0;
-  parameters_[CCS_UNIT_TEMPERATURE - CCS_BEGIN].def                              = 0;
+  parameters_[CCS_UNIT_TEMPERATURE - CCS_BEGIN].max                              = 1.0;
+  parameters_[CCS_UNIT_TEMPERATURE - CCS_BEGIN].def                              = 0.0;
   // Единицы измерения вибрации
   parameters_[CCS_UNIT_VIBRATION - CCS_BEGIN].id                                 = CCS_UNIT_VIBRATION;
   parameters_[CCS_UNIT_VIBRATION - CCS_BEGIN].access                             = ACCESS_OPERATOR;
   parameters_[CCS_UNIT_VIBRATION - CCS_BEGIN].operation                          = OPERATION_WRITE;
   parameters_[CCS_UNIT_VIBRATION - CCS_BEGIN].physic                             = PHYSIC_NUMERIC;
   parameters_[CCS_UNIT_VIBRATION - CCS_BEGIN].validity                           = VALIDITY_OK;
-  parameters_[CCS_UNIT_VIBRATION - CCS_BEGIN].value.float_t                      = 0;
+  parameters_[CCS_UNIT_VIBRATION - CCS_BEGIN].value.float_t                      = 0.0;
   parameters_[CCS_UNIT_VIBRATION - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_UNIT_VIBRATION - CCS_BEGIN].max                                = 10000000.0;
-  parameters_[CCS_UNIT_VIBRATION - CCS_BEGIN].def                                = 0;
+  parameters_[CCS_UNIT_VIBRATION - CCS_BEGIN].max                                = 1.0;
+  parameters_[CCS_UNIT_VIBRATION - CCS_BEGIN].def                                = 0.0;
   // Единицы измерения длины
   parameters_[CCS_UNIT_LENGHT - CCS_BEGIN].id                                    = CCS_UNIT_LENGHT;
   parameters_[CCS_UNIT_LENGHT - CCS_BEGIN].access                                = ACCESS_OPERATOR;
   parameters_[CCS_UNIT_LENGHT - CCS_BEGIN].operation                             = OPERATION_WRITE;
   parameters_[CCS_UNIT_LENGHT - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
   parameters_[CCS_UNIT_LENGHT - CCS_BEGIN].validity                              = VALIDITY_OK;
-  parameters_[CCS_UNIT_LENGHT - CCS_BEGIN].value.float_t                         = 0;
+  parameters_[CCS_UNIT_LENGHT - CCS_BEGIN].value.float_t                         = 0.0;
   parameters_[CCS_UNIT_LENGHT - CCS_BEGIN].min                                   = 0.0;
-  parameters_[CCS_UNIT_LENGHT - CCS_BEGIN].max                                   = 10000000.0;
-  parameters_[CCS_UNIT_LENGHT - CCS_BEGIN].def                                   = 0;
+  parameters_[CCS_UNIT_LENGHT - CCS_BEGIN].max                                   = 2.0;
+  parameters_[CCS_UNIT_LENGHT - CCS_BEGIN].def                                   = 0.0;
   // Единицы измерения расхода
   parameters_[CCS_UNIT_FLOW - CCS_BEGIN].id                                      = CCS_UNIT_FLOW;
   parameters_[CCS_UNIT_FLOW - CCS_BEGIN].access                                  = ACCESS_OPERATOR;
   parameters_[CCS_UNIT_FLOW - CCS_BEGIN].operation                               = OPERATION_WRITE;
   parameters_[CCS_UNIT_FLOW - CCS_BEGIN].physic                                  = PHYSIC_NUMERIC;
   parameters_[CCS_UNIT_FLOW - CCS_BEGIN].validity                                = VALIDITY_OK;
-  parameters_[CCS_UNIT_FLOW - CCS_BEGIN].value.float_t                           = 0;
+  parameters_[CCS_UNIT_FLOW - CCS_BEGIN].value.float_t                           = 0.0;
   parameters_[CCS_UNIT_FLOW - CCS_BEGIN].min                                     = 0.0;
-  parameters_[CCS_UNIT_FLOW - CCS_BEGIN].max                                     = 10000000.0;
-  parameters_[CCS_UNIT_FLOW - CCS_BEGIN].def                                     = 0;
+  parameters_[CCS_UNIT_FLOW - CCS_BEGIN].max                                     = 1.0;
+  parameters_[CCS_UNIT_FLOW - CCS_BEGIN].def                                     = 0.0;
   // Единицы измерения площади
   parameters_[CCS_UNIT_PLACE - CCS_BEGIN].id                                     = CCS_UNIT_PLACE;
   parameters_[CCS_UNIT_PLACE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
   parameters_[CCS_UNIT_PLACE - CCS_BEGIN].operation                              = OPERATION_WRITE;
   parameters_[CCS_UNIT_PLACE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
   parameters_[CCS_UNIT_PLACE - CCS_BEGIN].validity                               = VALIDITY_OK;
-  parameters_[CCS_UNIT_PLACE - CCS_BEGIN].value.float_t                          = 0;
+  parameters_[CCS_UNIT_PLACE - CCS_BEGIN].value.float_t                          = 0.0;
   parameters_[CCS_UNIT_PLACE - CCS_BEGIN].min                                    = 0.0;
-  parameters_[CCS_UNIT_PLACE - CCS_BEGIN].max                                    = 10000000.0;
-  parameters_[CCS_UNIT_PLACE - CCS_BEGIN].def                                    = 0;
+  parameters_[CCS_UNIT_PLACE - CCS_BEGIN].max                                    = 1.0;
+  parameters_[CCS_UNIT_PLACE - CCS_BEGIN].def                                    = 0.0;
   // Состояние ЧРП
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].id                                  = CCS_VSD_CONDITION;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].access                              = ACCESS_OPERATOR;
