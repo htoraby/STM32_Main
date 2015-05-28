@@ -7880,9 +7880,9 @@
 		<text>Наработка с момента последнего пуска ПЭД</text>
 		<short_text>Время работы</short_text>
 		<form>6.3 Статистика</form>
-		<unit>DATE_TIME_SS</unit>
-		<unit_lcd>DATE_TIME_YY_MM_DD_HH_MM_SS</unit_lcd>
-		<format>XX_XX_XX_XX_XX_XX</format>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>ХХ_ХХ</format>
 		<comment>Текущая наработка</comment>
 	</param>
 	<param>
@@ -7898,7 +7898,7 @@
 		<short_text>Время простоя</short_text>
 		<form>6.3 Статистика</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>TIME_HH_SS</unit_lcd>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>ХХ_ХХ</format>
 		<comment>Текущий простой</comment>
 	</param>
@@ -15704,6 +15704,7 @@
 		<form>6.3 Статистика</form>
 		<unit>ACTIVE_ENERGY_W_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
+		<format>XXXX_X</format>
 		<comment>Общая активная энергия</comment>
 	</param>
 	<param>
@@ -15918,11 +15919,11 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Реактивная энергия</text>
-		<short_text>Реактивная энергия</short_text>
-		<form>6.3 Статистика</form>
+		<text>Реактивная мощность</text>
+		<short_text>Реактивная мощность</short_text>
 		<unit>REACTIV_POWER_VAR</unit>
 		<unit_lcd>REACTIV_POWER_KVAR</unit_lcd>
+		<format>XXXX_X</format>
 		<comment>Общая реактивная мощность</comment>
 	</param>
 	<param>
@@ -16131,8 +16132,12 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
+		<text>Реактивная энергия</text>
+		<short_text>Реактивная энергия</short_text>
+		<form>6.3 Статистика</form>
 		<unit>REACTIVE_ENERGY_VAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
+		<format>XXXX_X</format>
 		<comment>Общая реактивня энергия</comment>
 	</param>
 	<param>
