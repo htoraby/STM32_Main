@@ -5638,70 +5638,70 @@ void Ccs::initParameters()
   parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].operation                          = OPERATION_WRITE;
   parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].physic                             = PHYSIC_NUMERIC;
   parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].validity                           = VALIDITY_OK;
-  parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].value.float_t                      = 0;
-  parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].max                                = 10000000.0;
-  parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].def                                = 0;
+  parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].value.float_t                      = 2015.0;
+  parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].min                                = 1970.0;
+  parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].max                                = 2040.0;
+  parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].def                                = 2015.0;
   // Дата время месяц
   parameters_[CCS_DATE_TIME_MONTH - CCS_BEGIN].id                                = CCS_DATE_TIME_MONTH;
   parameters_[CCS_DATE_TIME_MONTH - CCS_BEGIN].access                            = ACCESS_OPERATOR;
   parameters_[CCS_DATE_TIME_MONTH - CCS_BEGIN].operation                         = OPERATION_WRITE;
   parameters_[CCS_DATE_TIME_MONTH - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_DATE_TIME_MONTH - CCS_BEGIN].validity                          = VALIDITY_OK;
-  parameters_[CCS_DATE_TIME_MONTH - CCS_BEGIN].value.float_t                     = 0;
-  parameters_[CCS_DATE_TIME_MONTH - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_DATE_TIME_MONTH - CCS_BEGIN].max                               = 10000000.0;
-  parameters_[CCS_DATE_TIME_MONTH - CCS_BEGIN].def                               = 0;
+  parameters_[CCS_DATE_TIME_MONTH - CCS_BEGIN].value.float_t                     = 1.0;
+  parameters_[CCS_DATE_TIME_MONTH - CCS_BEGIN].min                               = 1.0;
+  parameters_[CCS_DATE_TIME_MONTH - CCS_BEGIN].max                               = 12.0;
+  parameters_[CCS_DATE_TIME_MONTH - CCS_BEGIN].def                               = 1.0;
   // Дата время дни
   parameters_[CCS_DATE_TIME_DAY - CCS_BEGIN].id                                  = CCS_DATE_TIME_DAY;
   parameters_[CCS_DATE_TIME_DAY - CCS_BEGIN].access                              = ACCESS_OPERATOR;
   parameters_[CCS_DATE_TIME_DAY - CCS_BEGIN].operation                           = OPERATION_WRITE;
   parameters_[CCS_DATE_TIME_DAY - CCS_BEGIN].physic                              = PHYSIC_NUMERIC;
   parameters_[CCS_DATE_TIME_DAY - CCS_BEGIN].validity                            = VALIDITY_OK;
-  parameters_[CCS_DATE_TIME_DAY - CCS_BEGIN].value.float_t                       = 0;
-  parameters_[CCS_DATE_TIME_DAY - CCS_BEGIN].min                                 = 0.0;
-  parameters_[CCS_DATE_TIME_DAY - CCS_BEGIN].max                                 = 10000000.0;
-  parameters_[CCS_DATE_TIME_DAY - CCS_BEGIN].def                                 = 0;
+  parameters_[CCS_DATE_TIME_DAY - CCS_BEGIN].value.float_t                       = 1.0;
+  parameters_[CCS_DATE_TIME_DAY - CCS_BEGIN].min                                 = 1.0;
+  parameters_[CCS_DATE_TIME_DAY - CCS_BEGIN].max                                 = 31.0;
+  parameters_[CCS_DATE_TIME_DAY - CCS_BEGIN].def                                 = 1.0;
   // Дата время часы
   parameters_[CCS_DATE_TIME_HOUR - CCS_BEGIN].id                                 = CCS_DATE_TIME_HOUR;
   parameters_[CCS_DATE_TIME_HOUR - CCS_BEGIN].access                             = ACCESS_OPERATOR;
   parameters_[CCS_DATE_TIME_HOUR - CCS_BEGIN].operation                          = OPERATION_WRITE;
   parameters_[CCS_DATE_TIME_HOUR - CCS_BEGIN].physic                             = PHYSIC_NUMERIC;
   parameters_[CCS_DATE_TIME_HOUR - CCS_BEGIN].validity                           = VALIDITY_OK;
-  parameters_[CCS_DATE_TIME_HOUR - CCS_BEGIN].value.float_t                      = 0;
+  parameters_[CCS_DATE_TIME_HOUR - CCS_BEGIN].value.float_t                      = 0.0;
   parameters_[CCS_DATE_TIME_HOUR - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_DATE_TIME_HOUR - CCS_BEGIN].max                                = 10000000.0;
-  parameters_[CCS_DATE_TIME_HOUR - CCS_BEGIN].def                                = 0;
+  parameters_[CCS_DATE_TIME_HOUR - CCS_BEGIN].max                                = 23.0;
+  parameters_[CCS_DATE_TIME_HOUR - CCS_BEGIN].def                                = 0.0;
   // Дата время минуты
   parameters_[CCS_DATE_TIME_MIN - CCS_BEGIN].id                                  = CCS_DATE_TIME_MIN;
   parameters_[CCS_DATE_TIME_MIN - CCS_BEGIN].access                              = ACCESS_OPERATOR;
   parameters_[CCS_DATE_TIME_MIN - CCS_BEGIN].operation                           = OPERATION_WRITE;
   parameters_[CCS_DATE_TIME_MIN - CCS_BEGIN].physic                              = PHYSIC_NUMERIC;
   parameters_[CCS_DATE_TIME_MIN - CCS_BEGIN].validity                            = VALIDITY_OK;
-  parameters_[CCS_DATE_TIME_MIN - CCS_BEGIN].value.float_t                       = 0;
+  parameters_[CCS_DATE_TIME_MIN - CCS_BEGIN].value.float_t                       = 0.0;
   parameters_[CCS_DATE_TIME_MIN - CCS_BEGIN].min                                 = 0.0;
-  parameters_[CCS_DATE_TIME_MIN - CCS_BEGIN].max                                 = 10000000.0;
-  parameters_[CCS_DATE_TIME_MIN - CCS_BEGIN].def                                 = 0;
+  parameters_[CCS_DATE_TIME_MIN - CCS_BEGIN].max                                 = 59.0;
+  parameters_[CCS_DATE_TIME_MIN - CCS_BEGIN].def                                 = 0.0;
   // Дата время секунды
   parameters_[CCS_DATE_TIME_SEC - CCS_BEGIN].id                                  = CCS_DATE_TIME_SEC;
   parameters_[CCS_DATE_TIME_SEC - CCS_BEGIN].access                              = ACCESS_OPERATOR;
   parameters_[CCS_DATE_TIME_SEC - CCS_BEGIN].operation                           = OPERATION_WRITE;
   parameters_[CCS_DATE_TIME_SEC - CCS_BEGIN].physic                              = PHYSIC_NUMERIC;
   parameters_[CCS_DATE_TIME_SEC - CCS_BEGIN].validity                            = VALIDITY_OK;
-  parameters_[CCS_DATE_TIME_SEC - CCS_BEGIN].value.float_t                       = 0;
+  parameters_[CCS_DATE_TIME_SEC - CCS_BEGIN].value.float_t                       = 0.0;
   parameters_[CCS_DATE_TIME_SEC - CCS_BEGIN].min                                 = 0.0;
-  parameters_[CCS_DATE_TIME_SEC - CCS_BEGIN].max                                 = 10000000.0;
-  parameters_[CCS_DATE_TIME_SEC - CCS_BEGIN].def                                 = 0;
+  parameters_[CCS_DATE_TIME_SEC - CCS_BEGIN].max                                 = 59.0;
+  parameters_[CCS_DATE_TIME_SEC - CCS_BEGIN].def                                 = 0.0;
   // Дата время мс
   parameters_[CCS_DATE_TIME_MS - CCS_BEGIN].id                                   = CCS_DATE_TIME_MS;
   parameters_[CCS_DATE_TIME_MS - CCS_BEGIN].access                               = ACCESS_OPERATOR;
   parameters_[CCS_DATE_TIME_MS - CCS_BEGIN].operation                            = OPERATION_WRITE;
   parameters_[CCS_DATE_TIME_MS - CCS_BEGIN].physic                               = PHYSIC_NUMERIC;
   parameters_[CCS_DATE_TIME_MS - CCS_BEGIN].validity                             = VALIDITY_OK;
-  parameters_[CCS_DATE_TIME_MS - CCS_BEGIN].value.float_t                        = 0;
+  parameters_[CCS_DATE_TIME_MS - CCS_BEGIN].value.float_t                        = 0.0;
   parameters_[CCS_DATE_TIME_MS - CCS_BEGIN].min                                  = 0.0;
-  parameters_[CCS_DATE_TIME_MS - CCS_BEGIN].max                                  = 10000000.0;
-  parameters_[CCS_DATE_TIME_MS - CCS_BEGIN].def                                  = 0;
+  parameters_[CCS_DATE_TIME_MS - CCS_BEGIN].max                                  = 1000.0;
+  parameters_[CCS_DATE_TIME_MS - CCS_BEGIN].def                                  = 0.0;
   // Язык интерфейса
   parameters_[CCS_LANGUAGE - CCS_BEGIN].id                                       = CCS_LANGUAGE;
   parameters_[CCS_LANGUAGE - CCS_BEGIN].access                                   = ACCESS_OPERATOR;
@@ -6675,13 +6675,13 @@ void Ccs::initParameters()
   // Коэффициент трансформации
   parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].id                            = CCS_COEF_TRANSFORMATION;
   parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].operation                     = 0;
-  parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].physic                        = 0;
+  parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].validity                      = VALIDITY_OK;
-  parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].value.float_t                 = 0;
-  parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].max                           = 10000000.0;
-  parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].def                           = 0;
+  parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].value.float_t                 = 1.0;
+  parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].min                           = 1.0;
+  parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].max                           = 1000.0;
+  parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].def                           = 1.0;
   // Причина последнего останова - регистр временного хранения значения
   parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].id                           = CCS_LAST_STOP_REASON_TMP;
   parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].access                       = ACCESS_OPERATOR;
