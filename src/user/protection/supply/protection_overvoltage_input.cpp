@@ -56,9 +56,9 @@ bool ProtectionOverVoltageInput::checkPrevent()
 
 float ProtectionOverVoltageInput::calcValue()
 {
-  float value = parameters.get(EM_VOLTAGE_PHASE_1);
-  float value2 = parameters.get(EM_VOLTAGE_PHASE_2);
-  float value3 = parameters.get(EM_VOLTAGE_PHASE_3);
+  float value = parameters.get(CCS_VOLTAGE_PHASE_1);
+  float value2 = parameters.get(CCS_VOLTAGE_PHASE_2);
+  float value3 = parameters.get(CCS_VOLTAGE_PHASE_3);
 
   value = max(max(value, value2), value3);
 

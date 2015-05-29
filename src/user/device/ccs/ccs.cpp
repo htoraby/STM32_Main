@@ -572,6 +572,7 @@ void Ccs::calcTime()
 
 void Ccs::calcParameters()
 {
+  correctVoltageIn();
   calcVoltageImbalanceIn();
 }
 
@@ -589,11 +590,38 @@ void Ccs::calcCoefTransformation()
   setNewValue(CCS_COEF_TRANSFORMATION, coefTransformation);
 }
 
+void Ccs::correctVoltageIn()
+{
+  float phase = parameters.get(EM_VOLTAGE_PHASE_1);
+  phase = phase * parameters.get(CCS_COEF_VOLTAGE_IN_A);
+  setNewValue(CCS_VOLTAGE_PHASE_1, phase);
+
+  phase = parameters.get(EM_VOLTAGE_PHASE_1_2);
+  phase = phase * parameters.get(CCS_COEF_VOLTAGE_IN_A);
+  setNewValue(CCS_VOLTAGE_PHASE_1_2, phase);
+
+  phase = parameters.get(EM_VOLTAGE_PHASE_2);
+  phase = phase * parameters.get(CCS_COEF_VOLTAGE_IN_B);
+  setNewValue(CCS_VOLTAGE_PHASE_2, phase);
+
+  phase = parameters.get(EM_VOLTAGE_PHASE_2_3);
+  phase = phase * parameters.get(CCS_COEF_VOLTAGE_IN_B);
+  setNewValue(CCS_VOLTAGE_PHASE_2_3, phase);
+
+  phase = parameters.get(EM_VOLTAGE_PHASE_3);
+  phase = phase * parameters.get(CCS_COEF_VOLTAGE_IN_C);
+  setNewValue(CCS_VOLTAGE_PHASE_2, phase);
+
+  phase = parameters.get(EM_VOLTAGE_PHASE_3_1);
+  phase = phase * parameters.get(CCS_COEF_VOLTAGE_IN_C);
+  setNewValue(CCS_VOLTAGE_PHASE_3_1, phase);
+}
+
 void Ccs::calcVoltageImbalanceIn()
 {
-  float imbalance = calcImbalance(parameters.get(EM_VOLTAGE_PHASE_1),
-                                  parameters.get(EM_VOLTAGE_PHASE_2),
-                                  parameters.get(EM_VOLTAGE_PHASE_3),
+  float imbalance = calcImbalance(parameters.get(CCS_VOLTAGE_PHASE_1),
+                                  parameters.get(CCS_VOLTAGE_PHASE_2),
+                                  parameters.get(CCS_VOLTAGE_PHASE_3),
                                   0);
   setNewValue(CCS_VOLTAGE_IMBALANCE_IN, imbalance);
 }
