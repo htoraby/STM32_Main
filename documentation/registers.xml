@@ -135,7 +135,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>1000.0</max>
+		<max>200.0</max>
 		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
@@ -154,7 +154,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>2000000.0</max>
+		<max>10000.0</max>
 		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
@@ -346,7 +346,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>10000.0</max>
 		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
@@ -364,7 +364,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>10000.0</max>
 		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
@@ -382,7 +382,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>10000.0</max>
 		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
@@ -400,7 +400,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>10000.0</max>
 		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
@@ -533,9 +533,9 @@
 		<physic>PHYSIC_TIME</physic>
 		<min>60.0</min>
 		<max>86400.0</max>
-		<def>60.0</def>
+		<def>600.0</def>
 		<valid>VALIDITY_OK</valid>
-		<value>60.0</value>
+		<value>600.0</value>
 		<text>Период записи хронологии в работе</text>
 		<short_text>Период записи</short_text>
 		<form>2.0 Архивы</form>
@@ -571,9 +571,9 @@
 		<physic>PHYSIC_TIME</physic>
 		<min>60.0</min>
 		<max>86400.0</max>
-		<def>60.0</def>
+		<def>600.0</def>
 		<valid>VALIDITY_OK</valid>
-		<value>60.0</value>
+		<value>600.0</value>
 		<text>Период записи параметров ТМС</text>
 		<short_text>Период записи ТМС</short_text>
 		<form>2.0 Архивы</form>
@@ -589,7 +589,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>1000.0</max>
+		<max>10000.0</max>
 		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
@@ -607,10 +607,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
 		<min>0.0</min>
-		<max>1000000.0</max>
-		<def>0.0</def>
+		<max>10000.0</max>
+		<def>2000.0</def>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>2000.0</value>
 		<text>Номинальная мощность ТМПН</text>
 		<short_text>Мощность ТМПН</short_text>
 		<form>3.3 ТМПН</form>
@@ -626,7 +626,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>1000000.0</max>
+		<max>10000.0</max>
 		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
@@ -644,7 +644,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>1000.0</max>
+		<max>10000.0</max>
 		<def>380.0</def>
 		<valid>VALIDITY_OK</valid>
 		<value>380.0</value>
@@ -664,9 +664,9 @@
 		<physic>PHYSIC_LENGHT</physic>
 		<min>0.0</min>
 		<max>10000.0</max>
-		<def>1000.0</def>
+		<def>2000.0</def>
 		<valid>VALIDITY_OK</valid>
-		<value>1000.0</value>
+		<value>2000.0</value>
 		<text>Длина кабеля</text>
 		<form>3.3 ТМПН</form>
 		<unit>LENGTH_M</unit>
@@ -700,9 +700,9 @@
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>300.0</min>
 		<max>7000.0</max>
-		<def>300.0</def>
+		<def>380.0</def>
 		<valid>VALIDITY_OK</valid>
-		<value>300.0</value>
+		<value>380.0</value>
 		<text>Необходимое напряжение отпайки</text>
 		<form>3.3 ТМПН</form>
 		<unit>VOLTAGE_V</unit>
@@ -718,9 +718,9 @@
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>300.0</min>
 		<max>7000.0</max>
-		<def>300.0</def>
+		<def>380.0</def>
 		<valid>VALIDITY_OK</valid>
-		<value>300.0</value>
+		<value>380.0</value>
 		<text>Напряжение отпайки ТМПН</text>
 		<short_text>Напряж.отпайки</short_text>
 		<form>3.3 ТМПН</form>
@@ -6081,18 +6081,33 @@
 		<id>417</id>
 		<name>CCS_PROT_OTHER_VSD_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>2.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>РРЗ аппаратных защит ЧРП</text>
+		<short_text>РРЗ аппаратных защит ЧРП</short_text>
+		<form>4.6.3 Аппаратные защиты ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<values>0-Откл;1-Блок;2-АПВ</values>
 		<comment>Защита "Аппаратные защиты ЧРП"</comment>
 	</param>
 	<param>
 		<id>418</id>
 		<name>CCS_PROT_OTHER_VSD_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -6102,93 +6117,157 @@
 		<id>419</id>
 		<name>CCS_PROT_OTHER_VSD_ACTIV_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>999.9</max>
+		<def>5.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>5.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
 		<comment>Задержка активации уставка</comment>
 	</param>
 	<param>
 		<id>420</id>
 		<name>CCS_PROT_OTHER_VSD_TRIP_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>60.0</max>
+		<def>5.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>5.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
 	<param>
 		<id>421</id>
 		<name>CCS_PROT_OTHER_VSD_RESTART_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>180000.0</max>
+		<def>3600.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>3600.0</value>
+		<text>Задержка АПВ</text>
+		<short_text>Задержка АПВ</short_text>
+		<form>4.6.3 Аппаратные защиты ЧРП</form>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
 	<param>
 		<id>422</id>
 		<name>CCS_PROT_OTHER_VSD_RESTART_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>9999.0</max>
+		<def>5.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>5.0</value>
+		<text>Количество разрешенных АПВ</text>
+		<short_text>Количество разрешенных АПВ</short_text>
+		<form>4.6.3 Аппаратные защиты ЧРП</form>
 		<comment>Количество АПВ уставка</comment>
 	</param>
 	<param>
 		<id>423</id>
 		<name>CCS_PROT_OTHER_VSD_RESTART_RESET</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>3599940.0</max>
+		<def>3600.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>3600.0</value>
+		<text>Сброс счетчиков АПВ</text>
+		<short_text>Сброс счетчиков АПВ</short_text>
+		<form>4.6.3 Аппаратные защиты ЧРП</form>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
 	<param>
 		<id>424</id>
 		<name>CCS_PROT_OTHER_VSD_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
 		<comment>Уставка срабатывания защиты</comment>
 	</param>
 	<param>
 		<id>425</id>
 		<name>CCS_PROT_OTHER_VSD_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
 		<comment>Условие АПВ уставка</comment>
 	</param>
 	<param>
 		<id>426</id>
 		<name>CCS_PROT_OTHER_VSD_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
 		<comment>Уставка параметр защиты</comment>
 	</param>
 	<param>
 		<id>427</id>
 		<name>CCS_PROT_OTHER_VSD_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
 		<comment>Уставка параметр защиты</comment>
 	</param>
 	<param>
 		<id>428</id>
 		<name>CCS_PROT_OTHER_VSD_STATE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>3.0</max>
+		<def>3.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>3.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -6198,9 +6277,13 @@
 		<id>429</id>
 		<name>CCS_PROT_OTHER_VSD_TIME</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0</min>
+		<max>4294967296</max>
+		<def>0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -6210,9 +6293,13 @@
 		<id>430</id>
 		<name>CCS_PROT_OTHER_VSD_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>9999.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -6222,9 +6309,13 @@
 		<id>431</id>
 		<name>CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
+		<min>0</min>
+		<max>4294967296</max>
+		<def>0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -6449,6 +6540,7 @@
 		<short_text>Работа по прог.</short_text>
 		<form>5.1.1 Периодический режим</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<values>0-Откл;1-Вкл</values>
 		<comment>Режим периодический</comment>
@@ -6457,9 +6549,20 @@
 		<id>448</id>
 		<name>CCS_RGM_PERIODIC_STATE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>10.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<comment>Состояние автомата периодического режима</comment>
 	</param>
 	<param>
 		<id>449</id>
@@ -6468,14 +6571,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>86400.0</max>
+		<def>3600.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>3600.0</value>
 		<text>Время работы ПЭД в режиме таймера</text>
 		<short_text>Время работы по прогр.</short_text>
 		<form>5.1.1 Периодический режим</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XX_XX</format>
+		<comment>Период работы по программе</comment>
 	</param>
 	<param>
 		<id>450</id>
@@ -6484,14 +6590,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>86400.0</max>
+		<def>3600.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>3600.0</value>
 		<text>Время останова ПЭД в режиме таймера</text>
 		<short_text>Время останова по прогр.</short_text>
 		<form>5.1.1 Периодический режим</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XX_XX</format>
+		<comment>Период паузы по программе</comment>
 	</param>
 	<param>
 		<id>451</id>
@@ -6503,10 +6612,14 @@
 		<max>4294967296</max>
 		<def>0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>DATE_TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<comment>Время запуска по программе</comment>
 	</param>
 	<param>
 		<id>452</id>
@@ -6515,11 +6628,16 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>86400.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<comment>Время до окончания работы по программе</comment>
 	</param>
 	<param>
 		<id>453</id>
@@ -6531,10 +6649,13 @@
 		<max>4294967296</max>
 		<def>0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>DATE_TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<comment>Время останова по программе</comment>
 	</param>
 	<param>
 		<id>454</id>
@@ -6543,11 +6664,16 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>86400.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<comment>Время до окончания останова по программе</comment>
 	</param>
 	<param>
 		<id>455</id>
@@ -6564,6 +6690,7 @@
 		<short_text>Режим</short_text>
 		<form>5.1.2 Чередование частот</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<values>0-Откл;1-Вкл</values>
 		<comment>Режим чередования частот</comment>
@@ -6623,6 +6750,7 @@
 		<unit>DATE_TIME_SS</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
+		<comment>Время окончания работы на частоте 1</comment>
 	</param>
 	<param>
 		<id>459</id>
@@ -6698,6 +6826,7 @@
 		<unit>DATE_TIME_SS</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
+		<comment>Время окончания работы на частоте 2</comment>
 	</param>
 	<param>
 		<id>463</id>
@@ -6902,81 +7031,126 @@
 		<id>474</id>
 		<name>CCS_RGM_MAINTENANCE_PARAM_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>10.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Состояние</text>
+		<short_text>Состояние</short_text>
 		<comment>Режим поддержания параметра. Включение</comment>
 	</param>
 	<param>
 		<id>475</id>
 		<name>CCS_RGM_MAINTENANCE_PARAM_TYPE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>6.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Параметр</text>
+		<short_text>Параметр</short_text>
 		<comment>Режим поддержания параметра. Тип параметра</comment>
 	</param>
 	<param>
 		<id>476</id>
 		<name>CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Зависимость</text>
+		<short_text>Зависимость</short_text>
 		<comment>Режим поддержания параметра. Зависимость</comment>
 	</param>
 	<param>
 		<id>477</id>
 		<name>CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1000.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<text>Поддерживаемое значение</text>
+		<short_text>Поддерживаемое значение</short_text>
 		<comment>Режим поддержания параметра. Поддержка значения - Ток</comment>
 	</param>
 	<param>
 		<id>478</id>
 		<name>CCS_RGM_MAINTENANCE_PARAM_PERIOD</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>86400.0</max>
 		<valid>VALIDITY_OK</valid>
+		<text>Период регулирования</text>
+		<short_text>Период регулирования</short_text>
 		<comment>Режим поддержания параметра. Период регулирования</comment>
 	</param>
 	<param>
 		<id>479</id>
 		<name>CCS_RGM_MAINTENANCE_PARAM_PROP</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<valid>VALIDITY_OK</valid>
+		<text>Пропорциональный коэф-т</text>
+		<short_text>Пропорциональный коэф-т</short_text>
 		<comment>Режим поддержания параметра. Пропорциональный коэффициент</comment>
 	</param>
 	<param>
 		<id>480</id>
 		<name>CCS_RGM_MAINTENANCE_PARAM_INT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<valid>VALIDITY_OK</valid>
+		<text>Интегральный коэф-т</text>
+		<short_text>Интегральный коэф-т</short_text>
 		<comment>Режим поддержания параметра. Интегральный коэффициент</comment>
 	</param>
 	<param>
 		<id>481</id>
 		<name>CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<valid>VALIDITY_OK</valid>
+		<text>Минимальная частота</text>
+		<short_text>Минимальная частота</short_text>
 		<comment>Режим поддержания параметра. Мин рабочая частота</comment>
 	</param>
 	<param>
 		<id>482</id>
 		<name>CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>200.0</max>
+		<def>200.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>200.0</value>
+		<text>Максимальная частота</text>
+		<short_text>Максимальная частота</short_text>
 		<comment>Режим поддержания параметра. Макс рабочая частота</comment>
 	</param>
 	<param>
@@ -7706,9 +7880,9 @@
 		<text>Наработка с момента последнего пуска ПЭД</text>
 		<short_text>Время работы</short_text>
 		<form>6.3 Статистика</form>
-		<unit>DATE_TIME_SS</unit>
-		<unit_lcd>DATE_TIME_YY_MM_DD_HH_MM_SS</unit_lcd>
-		<format>XX_XX_XX_XX_XX_XX</format>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>ХХ_ХХ</format>
 		<comment>Текущая наработка</comment>
 	</param>
 	<param>
@@ -7724,7 +7898,7 @@
 		<short_text>Время простоя</short_text>
 		<form>6.3 Статистика</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>TIME_HH_SS</unit_lcd>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>ХХ_ХХ</format>
 		<comment>Текущий простой</comment>
 	</param>
@@ -8302,9 +8476,11 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<min>1970.0</min>
+		<max>2040.0</max>
+		<def>2015.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>2015.0</value>
 		<text>Год</text>
 		<short_text>Год</short_text>
 		<form>7.1 Система</form>
@@ -8319,9 +8495,11 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<min>1.0</min>
+		<max>12.0</max>
+		<def>1.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
 		<text>Месяц</text>
 		<short_text>Месяц</short_text>
 		<form>7.1 Система</form>
@@ -8336,9 +8514,11 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<min>1.0</min>
+		<max>31.0</max>
+		<def>1.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
 		<text>Число</text>
 		<short_text>Число</short_text>
 		<form>7.1 Система</form>
@@ -8354,8 +8534,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>23.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Часы</text>
 		<short_text>Часы</short_text>
 		<form>7.1 Система</form>
@@ -8371,8 +8553,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>59.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Минуты</text>
 		<short_text>Минуты</short_text>
 		<form>7.1 Система</form>
@@ -8388,8 +8572,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>59.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Секунды</text>
 		<short_text>Секунды</short_text>
 		<form>7.1 Система</form>
@@ -8405,8 +8591,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1000.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -8555,9 +8743,20 @@
 		<id>578</id>
 		<name>CCS_SCADA_TYPE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Протокол</text>
+		<short_text>Протокол обмена</short_text>
+		<form>7.3 Телемеханика</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>TEXT</format>
+		<values>0-Откл;1-Новомет</values>
 		<comment>Протокол телемеханики</comment>
 	</param>
 	<param>
@@ -8567,8 +8766,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>10.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Номер версии протокола передачи данных</text>
 		<short_text>Протокол обмена</short_text>
 		<form>7.3 Телемеханика</form>
@@ -8599,9 +8800,11 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<min>9600.0</min>
+		<max>115200.0</max>
+		<def>9600.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>9600.0</value>
 		<text>Код скорости протокола передачи данных</text>
 		<short_text>Скорость обмена</short_text>
 		<form>7.3 Телемеханика</form>
@@ -8668,12 +8871,15 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>5.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Давление</text>
 		<short_text>Давление</short_text>
 		<form>7.4 Единицы измерения</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<values>0-МПа;1-Атм;2-Ат;3-Бар;4-PSI</values>
 		<comment>Единицы измерения давления</comment>
@@ -8685,12 +8891,15 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Температура</text>
 		<short_text>Температура</short_text>
 		<form>7.4 Единицы измерения</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<values>0-С;1-Ф;2-К</values>
 		<comment>Единицы измерения давления</comment>
@@ -8702,12 +8911,15 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Вибрация</text>
 		<short_text>Вибрация</short_text>
 		<form>7.4 Единицы измерения</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<values>0-G;1-м/с2</values>
 		<comment>Единицы измерения вибрации</comment>
@@ -8719,12 +8931,15 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>2.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Длина</text>
 		<short_text>Длина</short_text>
 		<form>7.4 Единицы измерения</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<values>0-м;1-миля;2-фут</values>
 		<comment>Единицы измерения длины</comment>
@@ -8736,12 +8951,15 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Расход</text>
 		<short_text>Расход</short_text>
 		<form>7.4 Единицы измерения</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<values>0-м3/сут</values>
 		<comment>Единицы измерения расхода</comment>
@@ -8753,12 +8971,15 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Площадь</text>
 		<short_text>Площадь</short_text>
 		<form>7.4 Единицы измерения</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<values>0-см2</values>
 		<comment>Единицы измерения площади</comment>
@@ -9877,9 +10098,13 @@
 		<id>667</id>
 		<name>CCS_COEF_TRANSFORMATION</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>1.0</min>
+		<max>1000.0</max>
+		<def>1.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
 		<text>Null</text>
 		<comment>Коэффициент трансформации</comment>
 	</param>
@@ -10040,7 +10265,7 @@
 		<short_text>Время толчка</short_text>
 		<form>3.2.1.2 Толчковый</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>TIME_MS</unit_lcd>
+		<unit_lcd>TIME_SS</unit_lcd>
 		<format>XXXXXX</format>
 		<comment>Время толчка в режиме пуска "Толчковый"</comment>
 	</param>
@@ -10059,7 +10284,7 @@
 		<short_text>Время между толчками</short_text>
 		<form>3.2.1.2 Толчковый</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>TIME_MS</unit_lcd>
+		<unit_lcd>TIME_SS</unit_lcd>
 		<format>ХХХХХХ</format>
 		<comment>Время между толчками в режиме пуска "Толчковый"</comment>
 	</param>
@@ -10511,6 +10736,26 @@
 	</param>
 	<param>
 		<id>705</id>
+		<name>CCS_EM_TYPE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Тип счётчика электоэнергии</text>
+		<short_text>Тип счётчика электоэнергии</short_text>
+		<form>3.5 Счётчик</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<values>0-Нет;1-СЭТ-4ТМ</values>
+		<comment>Тип счётчика электоэнергии</comment>
+	</param>
+	<param>
+		<id>706</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
@@ -10551,7 +10796,8 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>200.0</max>
+		<def>50.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<text>Знач.поддержив.частота</text>
 		<short_text>Задание частоты ПЧ</short_text>
@@ -10594,12 +10840,15 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
 		<text>Тип двигателя</text>
 		<short_text>Тип двиг.</short_text>
 		<form>1.1 Текущие параметры - сводка; 3.1 Двигатель</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<values>0-Асинхронный;1-Вентильный</values>
 		<comment>Конструкция двигателя Danfoss 1-10 Используется в интерфейсе</comment>
@@ -10611,12 +10860,15 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
 		<text>Тип управления двигателем</text>
 		<short_text>Тип упр.двиг.</short_text>
 		<form>1.1 Текущие параметры - сводка; 3.2 ЧРП</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<values>0-U/f;1-Векторный</values>
 		<comment>Принцип управления двигателем Danfoss 1-01 Не используется в проекте, только при конфигурировании</comment>
@@ -10628,13 +10880,15 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
 		<text>Направление вращения</text>
 		<short_text>Направ.вращения</short_text>
 		<form>1.1 Текущие параметры - сводка; 3.2 ЧРП</form>
 		<unit>NUMERIC_NUMBER</unit>
-		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<values>0-Прямое;1-Обратное</values>
 		<comment>Направления вращения Danfoss 4-10 Не используется в проекте, только при конфигурировании</comment>
@@ -10757,6 +11011,7 @@
 		<form>1.2 Текущие параметры ЧРП</form>
 		<unit>FULL_POWER_VA</unit>
 		<unit_lcd>FULL_POWER_KVA</unit_lcd>
+		<format>XXXX_X</format>
 		<comment>Полная мощность</comment>
 	</param>
 	<param>
@@ -10767,7 +11022,9 @@
 		<physic>PHYSIC_POWER</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
+		<def>125000.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>125000.0</value>
 		<text>Номинальная мощность ПЭД</text>
 		<short_text>Мощн.двигателя</short_text>
 		<form>3.1 Двигатель</form>
@@ -10780,9 +11037,19 @@
 		<id>10016</id>
 		<name>VSD_MOTOR_VOLTAGE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>5000.0</max>
+		<def>380.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>380.0</value>
+		<text>Номинальная напряжение ПЭД</text>
+		<short_text>Напряжение двигателя</short_text>
+		<form>3.1 Двигатель</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
 		<comment>Напряжение двигателя Danfoss 1-22 Используется в проекте, интерфейс Novomet 0х0045 IREG_MOTOR_U_MAх</comment>
 	</param>
 	<param>
@@ -10792,8 +11059,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1000.0</max>
+		<def>26,5</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>26,5</value>
 		<text>Номинальный ток ПЭД</text>
 		<short_text>Номинальный ток двиг.</short_text>
 		<form>3.1 Двигатель</form>
@@ -10806,18 +11075,38 @@
 		<id>10018</id>
 		<name>VSD_MOTOR_SPEED</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_RPM</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>10000.0</max>
+		<def>2895.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>2895.0</value>
+		<text>Номинальная скорость вращения двигателя</text>
+		<short_text>Скорость вращения</short_text>
+		<form>3.1 Двигатель</form>
+		<unit>RPM_RPM</unit>
+		<unit_lcd>RPM_RPM</unit_lcd>
+		<format>XXXXXX</format>
 		<comment>Скорость двигателя Danfoss 1-25 Используется в проекте, интерфейс</comment>
 	</param>
 	<param>
 		<id>10019</id>
 		<name>VSD_MOTOR_FREQUENCY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>200.0</max>
+		<def>50.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>50.0</value>
+		<text>Номинальная частота двигателя</text>
+		<short_text>Частота двигателя</short_text>
+		<form>3.1 Двигатель</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXXXXX</format>
 		<comment>Частота двигателя Danfoss 1-23 Используется в проекте, интерфейс Novomet 0х0043 IREG_MOTOR_F_MAх</comment>
 	</param>
 	<param>
@@ -10827,8 +11116,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.85</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>0.85</value>
 		<text>Номинальный коэффициент мощности</text>
 		<short_text>Номин.коэф.мощ.</short_text>
 		<form>3.1 Двигатель</form>
@@ -10841,9 +11132,19 @@
 		<id>10021</id>
 		<name>VSD_D_AXIS_INDUNSTANCE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_INDUNCTANCE</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>100.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Индуктивность обмотки ПЭД</text>
+		<short_text>Индуктивность обмотки ПЭД</short_text>
+		<form>3.1 Двигатель</form>
+		<unit>INDUNCTANCE_MH</unit>
+		<unit_lcd>INDUNCTANCE_MH</unit_lcd>
+		<format>XX_XXX</format>
 		<comment>Индуктивности по оси D Danfoss 1-37 Используется в проекте</comment>
 	</param>
 	<param>
@@ -10862,8 +11163,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1000.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
 		<text>Ток холостого хода ПЭД</text>
 		<short_text>Ток ХХ ПЭД</short_text>
 		<form>3.2.3 Дополнительные настройки ЧРП</form>
@@ -10896,8 +11199,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>200.0</max>
+		<def>40.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>40.0</value>
 		<text>Уставка минимального значения частоты</text>
 		<short_text>Миним.частота регул.</short_text>
 		<form>3.2 ЧРП</form>
@@ -10913,8 +11218,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>200.0</max>
+		<def>60.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>60.0</value>
 		<text>Уставка максимального значения частоты</text>
 		<short_text>Максим.частота регул.</short_text>
 		<form>3.2 ЧРП</form>
@@ -10931,7 +11238,9 @@
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
+		<def>100.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>100.0</value>
 		<text>Время разгона</text>
 		<short_text>Время разгона</short_text>
 		<unit>TIME_SS</unit>
@@ -10947,7 +11256,9 @@
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
 		<text>Время торможения</text>
 		<short_text>Время торможен.</short_text>
 		<unit>TIME_SS</unit>
@@ -10959,9 +11270,20 @@
 		<id>10029</id>
 		<name>VSD_UF_TYPE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Характеристика U/f</text>
+		<short_text>Характеристика U/f</short_text>
+		<form>NULL</form>
+		<unit>PHYSIC_NUMERIC</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<values>0-По точкам;1-Линейная</values>
 		<comment>U/f характеристика</comment>
 	</param>
 	<param>
@@ -10971,8 +11293,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>380.0</max>
+		<def>10.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>10.0</value>
 		<text>U/F точка U1</text>
 		<short_text>U/F точка U1</short_text>
 		<form>3.2.2 Настройка U/f</form>
@@ -10988,8 +11312,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>200.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
 		<text>U/F точка F1</text>
 		<short_text>U/F точка F1</short_text>
 		<form>3.2.2 Настройка U/f</form>
@@ -11005,8 +11331,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>380.0</max>
+		<def>380.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>380.0</value>
 		<text>U/F точка U2</text>
 		<short_text>U/F точка U2</short_text>
 		<form>3.2.2 Настройка U/f</form>
@@ -11022,8 +11350,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>200.0</max>
+		<def>50.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>50.0</value>
 		<text>U/F точка F2</text>
 		<short_text>U/F точка F2</short_text>
 		<form>3.2.2 Настройка U/f</form>
@@ -11039,8 +11369,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>380.0</max>
+		<def>380.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>380.0</value>
 		<text>U/F точка U3</text>
 		<short_text>U/F точка U3</short_text>
 		<form>3.2.2 Настройка U/f</form>
@@ -11056,8 +11388,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>200.0</max>
+		<def>50.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>50.0</value>
 		<text>U/F точка F3</text>
 		<short_text>U/F точка F3</short_text>
 		<form>3.2.2 Настройка U/f</form>
@@ -11073,8 +11407,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>380.0</max>
+		<def>380.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>380.0</value>
 		<text>U/F точка U4</text>
 		<short_text>U/F точка U4</short_text>
 		<form>3.2.2 Настройка U/f</form>
@@ -11090,8 +11426,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>200.0</max>
+		<def>50.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>50.0</value>
 		<text>U/F точка F4</text>
 		<short_text>U/F точка F4</short_text>
 		<form>3.2.2 Настройка U/f</form>
@@ -11107,8 +11445,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>380.0</max>
+		<def>380.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>380.0</value>
 		<text>U/F точка U5</text>
 		<short_text>U/F точка U5</short_text>
 		<form>3.2.2 Настройка U/f</form>
@@ -11124,8 +11464,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>200.0</max>
+		<def>50.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>50.0</value>
 		<text>U/F точка F5</text>
 		<short_text>U/F точка F5</short_text>
 		<form>3.2.2 Настройка U/f</form>
@@ -11141,8 +11483,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>380.0</max>
+		<def>380.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>380.0</value>
 		<text>U/F точка U6</text>
 		<short_text>U/F точка U6</short_text>
 		<form>3.2.2 Настройка U/f</form>
@@ -11158,8 +11502,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>200.0</max>
+		<def>50.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>50.0</value>
 		<text>U/F точка F6</text>
 		<short_text>U/F точка F6</short_text>
 		<form>3.2.2 Настройка U/f</form>
@@ -15396,6 +15742,7 @@
 		<form>6.3 Статистика</form>
 		<unit>ACTIVE_ENERGY_W_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
+		<format>XXXX_X</format>
 		<comment>Общая активная энергия</comment>
 	</param>
 	<param>
@@ -15610,11 +15957,11 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Реактивная энергия</text>
-		<short_text>Реактивная энергия</short_text>
-		<form>6.3 Статистика</form>
+		<text>Реактивная мощность</text>
+		<short_text>Реактивная мощность</short_text>
 		<unit>REACTIV_POWER_VAR</unit>
 		<unit_lcd>REACTIV_POWER_KVAR</unit_lcd>
+		<format>XXXX_X</format>
 		<comment>Общая реактивная мощность</comment>
 	</param>
 	<param>
@@ -15823,8 +16170,12 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
+		<text>Реактивная энергия</text>
+		<short_text>Реактивная энергия</short_text>
+		<form>6.3 Статистика</form>
 		<unit>REACTIVE_ENERGY_VAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
+		<format>XXXX_X</format>
 		<comment>Общая реактивня энергия</comment>
 	</param>
 	<param>
