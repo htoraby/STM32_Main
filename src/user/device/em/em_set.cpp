@@ -435,7 +435,7 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 21];
       value.char_t[2] = rxBuffer_[sizePkt_ - 20];
       value.char_t[3] = rxBuffer_[sizePkt_ - 19];
-      value.float_t = value.float_t/coefTrans;
+      value.float_t = value.float_t;
       setNewValue(EM_CURRENT_PHASE_3, value.float_t);
 
       // 11. Ток фазы 2
@@ -443,7 +443,7 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 25];
       value.char_t[2] = rxBuffer_[sizePkt_ - 24];
       value.char_t[3] = rxBuffer_[sizePkt_ - 23];
-      value.float_t = value.float_t/coefTrans;
+      value.float_t = value.float_t;
       setNewValue(EM_CURRENT_PHASE_2, value.float_t);
 
       // 10. Ток фазы 1
@@ -451,7 +451,7 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 29];
       value.char_t[2] = rxBuffer_[sizePkt_ - 28];
       value.char_t[3] = rxBuffer_[sizePkt_ - 27];
-      value.float_t = value.float_t/coefTrans;
+      value.float_t = value.float_t;
       setNewValue(EM_CURRENT_PHASE_1, value.float_t);
 
       // 9. Коэффициент несиметрии тока в прямой последовательности
@@ -673,7 +673,7 @@ void EmSet::setParamEnergy()
   value.char_t[1] = rxBuffer_[sizePkt_ - 8];
   value.char_t[2] = rxBuffer_[sizePkt_ - 9];
   value.char_t[3] = rxBuffer_[sizePkt_ - 10];
-  value.float_t = (float)value.uint32_t/(2*constEm_);
+  value.float_t = (float)value.uint32_t*1000/(2*constEm_);
   setNewValue(EM_ACTIVE_ENERGY, value.float_t);
 }
 

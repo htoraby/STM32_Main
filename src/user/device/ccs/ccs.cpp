@@ -574,6 +574,7 @@ void Ccs::calcParameters()
 {
   correctVoltageIn();
   calcVoltageImbalanceIn();
+  calcCurrentImbalanceIn();
 }
 
 void Ccs::calcCoefTransformation()
@@ -624,6 +625,15 @@ void Ccs::calcVoltageImbalanceIn()
                                   parameters.get(CCS_VOLTAGE_PHASE_3),
                                   0);
   setNewValue(CCS_VOLTAGE_IMBALANCE_IN, imbalance);
+}
+
+void Ccs::calcCurrentImbalanceIn()
+{
+  float imbalance = calcImbalance(parameters.get(EM_CURRENT_PHASE_1),
+                                  parameters.get(EM_CURRENT_PHASE_2),
+                                  parameters.get(EM_CURRENT_PHASE_3),
+                                  1);
+  setNewValue(CCS_CURRENT_IMBALANCE_IN, imbalance);
 }
 
 uint8_t Ccs::setNewValue(uint16_t id, float value)
