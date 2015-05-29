@@ -838,6 +838,20 @@ void Ccs::calcMotorCurrentAvarage()
   setNewValue(CCS_MOTOR_CURRENT_AVARAGE, motorCurrent);
 }
 
+void Ccs::calcMotorSpeed()
+{
+  if (parameters.get(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) {
+    parameters.set(CCS_MOTOR_SPEED_NOW, vsd->getCurrentFreq() * 60) ;
+  }
+  else if (parameters.get(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_VENT) {
+    parameters.set(CCS_MOTOR_SPEED_NOW, vsd->getCurrentFreq() * 30);
+  }
+  else {
+    parameters.set(CCS_MOTOR_SPEED_NOW, 0.0);
+  }
+
+}
+
 void Ccs::calcRegimeChangeFreqPeriodOneStep()
 {
   float beginFreq = parameters.get(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ);

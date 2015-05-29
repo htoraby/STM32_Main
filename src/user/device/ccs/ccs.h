@@ -364,6 +364,8 @@ private:
 
   void calcCurrentImbalanceIn();
 
+  void calcMotorSpeed();
+
   //! Массив параметров устройства
   parameter parametersArray_[CCS_END - CCS_BEGIN];
 
@@ -380,6 +382,7 @@ private:
   bool powerOffFlag_;
   //! Тайаут отключения питания ИБП
   int powerOffTimeout_;
+
 };
 
 #endif /* CCS_H_ */
