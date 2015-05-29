@@ -610,7 +610,7 @@ void Ccs::correctVoltageIn()
 
   phase = parameters.get(EM_VOLTAGE_PHASE_3);
   phase = phase * parameters.get(CCS_COEF_VOLTAGE_IN_C);
-  setNewValue(CCS_VOLTAGE_PHASE_2, phase);
+  setNewValue(CCS_VOLTAGE_PHASE_3, phase);
 
   phase = parameters.get(EM_VOLTAGE_PHASE_3_1);
   phase = phase * parameters.get(CCS_COEF_VOLTAGE_IN_C);

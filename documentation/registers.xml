@@ -15753,7 +15753,7 @@
 		<form>1.3 Текущие параметры сети</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<comment>Ток первой фазы</comment>
 	</param>
 	<param>
@@ -15772,7 +15772,7 @@
 		<form>1.3 Текущие параметры сети</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<comment>Ток второй фазы</comment>
 	</param>
 	<param>
@@ -15791,7 +15791,7 @@
 		<form>1.3 Текущие параметры сети</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<comment>Ток третей фазы</comment>
 	</param>
 	<param>
@@ -15808,6 +15808,7 @@
 		<text>Активная мощность</text>
 		<unit>ACTIV_POWER_W</unit>
 		<unit_lcd>ACTIV_POWER_KW</unit_lcd>
+		<format>XXXX_X</format>
 		<comment>Общая активная мощность</comment>
 	</param>
 	<param>
@@ -15823,6 +15824,7 @@
 		<value>0.0</value>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXXX_X</format>
 		<comment>Частота питающей сети</comment>
 	</param>
 	<param>
@@ -15838,6 +15840,7 @@
 		<value>0.0</value>
 		<unit>FULL_POWER_VA</unit>
 		<unit_lcd>FULL_POWER_KVA</unit_lcd>
+		<format>XXXX_X</format>
 		<comment>Полная мощность</comment>
 	</param>
 	<param>
