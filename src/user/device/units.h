@@ -194,9 +194,8 @@ enum emPhysicPower {
 };
 
 enum enPhysicActivEnergy {
-  ACTIVE_ENERGY_W_HH,
   ACTIVE_ENERGY_KW_HH,
-  ACTIVE_ENERGY_LAST,
+  ACTIVE_ENERGY_LAST
 };
 
 enum enPhysicReactivEnergy {

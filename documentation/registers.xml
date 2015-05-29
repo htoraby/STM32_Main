@@ -15857,7 +15857,7 @@
 		<text>Активная энергия</text>
 		<short_text>Активная энергия</short_text>
 		<form>6.3 Статистика</form>
-		<unit>ACTIVE_ENERGY_W_HH</unit>
+		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
 		<format>XXXX_X</format>
 		<comment>Общая активная энергия</comment>

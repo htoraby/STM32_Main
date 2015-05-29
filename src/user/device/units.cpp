@@ -152,8 +152,8 @@ float units[PHYSIC_LAST][6][2] =
    {1.0, 0.0},
    {1.0, 0.0},
    {1.0, 0.0}},
-  {{1.0, 0.0},         //PHYSIC_ACTIVE_ENERGY -> ACTIVE_ENERGY_W_HH
-   {0.001, 0.0},       //PHYSIC_ACTIVE_ENERGY -> ACTIVE_ENERGY_KW_HH
+  {{1.0, 0.0},         //PHYSIC_ACTIVE_ENERGY -> ACTIVE_ENERGY_KW_HH
+   {1.0, 0.0},
    {1.0, 0.0},
    {1.0, 0.0},
    {1.0, 0.0},
