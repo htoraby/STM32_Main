@@ -7062,5 +7062,65 @@ void Ccs::initParameters()
   parameters_[CCS_EM_TYPE - CCS_BEGIN].min                                       = 0.0;
   parameters_[CCS_EM_TYPE - CCS_BEGIN].max                                       = 1.0;
   parameters_[CCS_EM_TYPE - CCS_BEGIN].def                                       = 0.0;
+  // Напряжение первой фазы
+  parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].id                                = CCS_VOLTAGE_PHASE_1;
+  parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].access                            = ACCESS_OPERATOR;
+  parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].operation                         = OPERATION_READ;
+  parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].physic                            = PHYSIC_VOLTAGE;
+  parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].validity                          = VALIDITY_ERROR;
+  parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].value.float_t                     = 0.0;
+  parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].min                               = 0.0;
+  parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].max                               = 10000000.0;
+  parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].def                               = 0.0;
+  // Напряжение второй фазы
+  parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].id                                = CCS_VOLTAGE_PHASE_2;
+  parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].access                            = ACCESS_OPERATOR;
+  parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].operation                         = OPERATION_READ;
+  parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].physic                            = PHYSIC_VOLTAGE;
+  parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].validity                          = VALIDITY_ERROR;
+  parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].value.float_t                     = 0.0;
+  parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].min                               = 0.0;
+  parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].max                               = 10000000.0;
+  parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].def                               = 0.0;
+  // Напряжение третей фазы
+  parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].id                                = CCS_VOLTAGE_PHASE_3;
+  parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].access                            = ACCESS_OPERATOR;
+  parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].operation                         = OPERATION_READ;
+  parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].physic                            = PHYSIC_VOLTAGE;
+  parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].validity                          = VALIDITY_ERROR;
+  parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].value.float_t                     = 0.0;
+  parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].min                               = 0.0;
+  parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].max                               = 10000000.0;
+  parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].def                               = 0.0;
+  // Напряжение межфазное первой и второй фазы
+  parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].id                              = CCS_VOLTAGE_PHASE_1_2;
+  parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].access                          = ACCESS_OPERATOR;
+  parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].operation                       = OPERATION_READ;
+  parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].physic                          = PHYSIC_VOLTAGE;
+  parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].validity                        = VALIDITY_ERROR;
+  parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].value.float_t                   = 0.0;
+  parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].min                             = 0.0;
+  parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].def                             = 0.0;
+  // Напряжение межфазное второй и третьей фазы
+  parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].id                              = CCS_VOLTAGE_PHASE_2_3;
+  parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].access                          = ACCESS_OPERATOR;
+  parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].operation                       = OPERATION_READ;
+  parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].physic                          = PHYSIC_VOLTAGE;
+  parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].validity                        = VALIDITY_ERROR;
+  parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].value.float_t                   = 0.0;
+  parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].min                             = 0.0;
+  parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].def                             = 0.0;
+  // Напряжение межфазное третьей и первой фазы
+  parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].id                              = CCS_VOLTAGE_PHASE_3_1;
+  parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].access                          = ACCESS_OPERATOR;
+  parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].operation                       = OPERATION_READ;
+  parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].physic                          = PHYSIC_VOLTAGE;
+  parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].validity                        = VALIDITY_ERROR;
+  parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].value.float_t                   = 0.0;
+  parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].min                             = 0.0;
+  parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].def                             = 0.0;
 }
 
