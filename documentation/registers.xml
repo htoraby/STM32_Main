@@ -8476,9 +8476,11 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<min>1970.0</min>
+		<max>2040.0</max>
+		<def>2015.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>2015.0</value>
 		<text>Год</text>
 		<short_text>Год</short_text>
 		<form>7.1 Система</form>
@@ -8493,9 +8495,11 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<min>1.0</min>
+		<max>12.0</max>
+		<def>1.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
 		<text>Месяц</text>
 		<short_text>Месяц</short_text>
 		<form>7.1 Система</form>
@@ -8510,9 +8514,11 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<min>1.0</min>
+		<max>31.0</max>
+		<def>1.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
 		<text>Число</text>
 		<short_text>Число</short_text>
 		<form>7.1 Система</form>
@@ -8528,8 +8534,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>23.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Часы</text>
 		<short_text>Часы</short_text>
 		<form>7.1 Система</form>
@@ -8545,8 +8553,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>59.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Минуты</text>
 		<short_text>Минуты</short_text>
 		<form>7.1 Система</form>
@@ -8562,8 +8572,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>59.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Секунды</text>
 		<short_text>Секунды</short_text>
 		<form>7.1 Система</form>
@@ -8579,8 +8591,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1000.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -10084,9 +10098,13 @@
 		<id>667</id>
 		<name>CCS_COEF_TRANSFORMATION</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>1.0</min>
+		<max>1000.0</max>
+		<def>1.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
 		<text>Null</text>
 		<comment>Коэффициент трансформации</comment>
 	</param>
