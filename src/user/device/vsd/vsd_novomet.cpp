@@ -2448,7 +2448,7 @@ void VsdNovomet::writeToDevice(int id, float value)
 int VsdNovomet::start()
 {
 #if USE_DEBUG
-  return RETURN_OK;
+  return ok_r;
 #endif
 
   // Если стоит бит запуска двигателя
@@ -2496,7 +2496,7 @@ bool VsdNovomet::checkStart()
 int VsdNovomet::stop()
 {
 #if USE_DEBUG
-  return RETURN_OK;
+  return ok_r;
 #endif
 
   // Если стоит бит остановки по внешней команде
