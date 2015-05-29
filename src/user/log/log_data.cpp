@@ -81,9 +81,9 @@ void LogData::add(uint8_t code)
   *(float*)(buffer+45) = parameters.get(VSD_POWER_ACTIVE);
 
   *(float*)(buffer+49) = parameters.get(VSD_POWER_FULL);
-  *(float*)(buffer+53) = parameters.get(EM_VOLTAGE_PHASE_1);
-  *(float*)(buffer+57) = parameters.get(EM_VOLTAGE_PHASE_2);
-  *(float*)(buffer+61) = parameters.get(EM_VOLTAGE_PHASE_3);
+  *(float*)(buffer+53) = parameters.get(CCS_VOLTAGE_PHASE_1);
+  *(float*)(buffer+57) = parameters.get(CCS_VOLTAGE_PHASE_2);
+  *(float*)(buffer+61) = parameters.get(CCS_VOLTAGE_PHASE_3);
   *(float*)(buffer+65) = parameters.get(CCS_VOLTAGE_IMBALANCE_IN);
   *(float*)(buffer+69) = parameters.get(EM_CURRENT_PHASE_1);
   *(float*)(buffer+73) = parameters.get(EM_CURRENT_PHASE_2);
