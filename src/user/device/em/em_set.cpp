@@ -673,7 +673,7 @@ void EmSet::setParamEnergy()
   value.char_t[1] = rxBuffer_[sizePkt_ - 8];
   value.char_t[2] = rxBuffer_[sizePkt_ - 9];
   value.char_t[3] = rxBuffer_[sizePkt_ - 10];
-  value.float_t = (float)value.uint32_t*1000/(2*constEm_);
+  value.float_t = (float)value.uint32_t/(2*constEm_);
   setNewValue(EM_ACTIVE_ENERGY, value.float_t);
 }
 
