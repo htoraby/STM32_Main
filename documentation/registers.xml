@@ -16196,7 +16196,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<unit>ACTIVE_ENERGY_W_HH</unit>
+		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
 		<comment>Обшая активная плюс энергия за весь период</comment>
 	</param>
@@ -16211,7 +16211,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<unit>ACTIVE_ENERGY_W_HH</unit>
+		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
 		<comment>Обшая активная минус энергия за весь период</comment>
 	</param>
@@ -16226,7 +16226,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<unit>ACTIVE_ENERGY_W_HH</unit>
+		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
 		<comment>Активная плюс энергия за текущий день</comment>
 	</param>
@@ -16241,7 +16241,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<unit>ACTIVE_ENERGY_W_HH</unit>
+		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
 		<comment>Активная минус энергия за текущий день</comment>
 	</param>
@@ -16256,7 +16256,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<unit>ACTIVE_ENERGY_W_HH</unit>
+		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
 		<comment>Активная плюс энергия за предыдущий день</comment>
 	</param>
@@ -16271,7 +16271,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<unit>ACTIVE_ENERGY_W_HH</unit>
+		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
 		<comment>Активная минус энергия за текущий день</comment>
 	</param>
@@ -16286,7 +16286,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<unit>ACTIVE_ENERGY_W_HH</unit>
+		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
 		<comment>Активная плюс энергия за текущий месяц</comment>
 	</param>
@@ -16301,7 +16301,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<unit>ACTIVE_ENERGY_W_HH</unit>
+		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
 		<comment>Активная минус энергия за текущий месяц</comment>
 	</param>
@@ -16316,7 +16316,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<unit>ACTIVE_ENERGY_W_HH</unit>
+		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
 		<comment>Активная плюс энергия на предыдущий месяц</comment>
 	</param>
@@ -16331,7 +16331,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<unit>ACTIVE_ENERGY_W_HH</unit>
+		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
 		<comment>Активная минус энергия на предыдущий месяц</comment>
 	</param>
