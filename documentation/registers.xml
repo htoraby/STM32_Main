@@ -16340,7 +16340,7 @@
 		<name>EM_REACTIVE_ENERGY</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_REACTIV_ENERGY</physic>
+		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<def>0.0</def>
@@ -16359,7 +16359,7 @@
 		<name>EM_REACTIVE_PLUS_ALL</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_REACTIV_ENERGY</physic>
+		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<def>0.0</def>
@@ -16374,7 +16374,7 @@
 		<name>EM_REACTIVE_MINUS_ALL</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_REACTIV_ENERGY</physic>
+		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<def>0.0</def>
@@ -16389,7 +16389,7 @@
 		<name>EM_REACTIVE_PLUS_CUR_DAY</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_REACTIV_ENERGY</physic>
+		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<def>0.0</def>
@@ -16404,7 +16404,7 @@
 		<name>EM_REACTIVE_MINUS_CUR_DAY</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_REACTIV_ENERGY</physic>
+		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<def>0.0</def>
@@ -16419,7 +16419,7 @@
 		<name>EM_REACTIVE_PLUS_PREV_DAY</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_REACTIV_ENERGY</physic>
+		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<def>0.0</def>
@@ -16434,7 +16434,7 @@
 		<name>EM_REACTIVE_MINUS_PREV_DAY</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_REACTIV_ENERGY</physic>
+		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<def>0.0</def>
@@ -16449,7 +16449,7 @@
 		<name>EM_REACTIVE_PLUS_CUR_MONTH</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_REACTIV_ENERGY</physic>
+		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<def>0.0</def>
@@ -16464,7 +16464,7 @@
 		<name>EM_REACTIVE_MINUS_CUR_MONTH</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_REACTIV_ENERGY</physic>
+		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<def>0.0</def>
@@ -16479,7 +16479,7 @@
 		<name>EM_REACTIVE_PLUS_PREV_MONTH</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_REACTIV_ENERGY</physic>
+		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<def>0.0</def>
@@ -16494,7 +16494,7 @@
 		<name>EM_REACTIVE_MINUS_PREV_MONTH</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_REACTIV_ENERGY</physic>
+		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<def>0.0</def>
