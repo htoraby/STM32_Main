@@ -7067,7 +7067,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].access                            = ACCESS_OPERATOR;
   parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].operation                         = OPERATION_READ;
   parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].physic                            = PHYSIC_VOLTAGE;
-  parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].validity                          = VALIDITY_ERROR;
+  parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].min                               = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].max                               = 10000000.0;
@@ -7077,7 +7077,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].access                            = ACCESS_OPERATOR;
   parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].operation                         = OPERATION_READ;
   parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].physic                            = PHYSIC_VOLTAGE;
-  parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].validity                          = VALIDITY_ERROR;
+  parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].min                               = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].max                               = 10000000.0;
@@ -7087,7 +7087,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].access                            = ACCESS_OPERATOR;
   parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].operation                         = OPERATION_READ;
   parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].physic                            = PHYSIC_VOLTAGE;
-  parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].validity                          = VALIDITY_ERROR;
+  parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].min                               = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].max                               = 10000000.0;
@@ -7097,7 +7097,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].access                          = ACCESS_OPERATOR;
   parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].physic                          = PHYSIC_VOLTAGE;
-  parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].validity                        = VALIDITY_ERROR;
+  parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].min                             = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].max                             = 10000000.0;
@@ -7107,7 +7107,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].access                          = ACCESS_OPERATOR;
   parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].physic                          = PHYSIC_VOLTAGE;
-  parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].validity                        = VALIDITY_ERROR;
+  parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].min                             = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].max                             = 10000000.0;
@@ -7117,10 +7117,40 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].access                          = ACCESS_OPERATOR;
   parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].physic                          = PHYSIC_VOLTAGE;
-  parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].validity                        = VALIDITY_ERROR;
+  parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].min                             = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].max                             = 10000000.0;
   parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].def                             = 0.0;
+  // Входной фильтр
+  parameters_[CCS_FILTER_INPUT - CCS_BEGIN].id                                   = CCS_FILTER_INPUT;
+  parameters_[CCS_FILTER_INPUT - CCS_BEGIN].access                               = ACCESS_OPERATOR;
+  parameters_[CCS_FILTER_INPUT - CCS_BEGIN].operation                            = OPERATION_WRITE;
+  parameters_[CCS_FILTER_INPUT - CCS_BEGIN].physic                               = PHYSIC_NUMERIC;
+  parameters_[CCS_FILTER_INPUT - CCS_BEGIN].validity                             = VALIDITY_OK;
+  parameters_[CCS_FILTER_INPUT - CCS_BEGIN].value.float_t                        = 0.0;
+  parameters_[CCS_FILTER_INPUT - CCS_BEGIN].min                                  = 0.0;
+  parameters_[CCS_FILTER_INPUT - CCS_BEGIN].max                                  = 1.0;
+  parameters_[CCS_FILTER_INPUT - CCS_BEGIN].def                                  = 0.0;
+  // Выходной фильтр
+  parameters_[CCS_FILTER_OUTPUT - CCS_BEGIN].id                                  = CCS_FILTER_OUTPUT;
+  parameters_[CCS_FILTER_OUTPUT - CCS_BEGIN].access                              = ACCESS_OPERATOR;
+  parameters_[CCS_FILTER_OUTPUT - CCS_BEGIN].operation                           = OPERATION_WRITE;
+  parameters_[CCS_FILTER_OUTPUT - CCS_BEGIN].physic                              = PHYSIC_NUMERIC;
+  parameters_[CCS_FILTER_OUTPUT - CCS_BEGIN].validity                            = VALIDITY_OK;
+  parameters_[CCS_FILTER_OUTPUT - CCS_BEGIN].value.float_t                       = 0.0;
+  parameters_[CCS_FILTER_OUTPUT - CCS_BEGIN].min                                 = 0.0;
+  parameters_[CCS_FILTER_OUTPUT - CCS_BEGIN].max                                 = 1.0;
+  parameters_[CCS_FILTER_OUTPUT - CCS_BEGIN].def                                 = 0.0;
+  // Ёмкость выходного фильтра
+  parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].id                                = CCS_FILTER_CAPACITY;
+  parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].access                            = ACCESS_OPERATOR;
+  parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].operation                         = OPERATION_WRITE;
+  parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
+  parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].validity                          = VALIDITY_OK;
+  parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].value.float_t                     = 0.0;
+  parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].min                               = 0.0;
+  parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].max                               = 10000000.0;
+  parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].def                               = 0.0;
 }
 

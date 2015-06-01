@@ -266,14 +266,8 @@
 	</param>
 	<param>
 		<midIn>PHYSIC_ACTIVE_ENERGY</midIn>
-		<midOut>ACTIVE_ENERGY_W_HH</midOut>
-		<a>1</a>
-		<b>0</b>
-	</param>
-	<param>
-		<midIn>PHYSIC_ACTIVE_ENERGY</midIn>
 		<midOut>ACTIVE_ENERGY_KW_HH</midOut>
-		<a>0.001</a>
+		<a>1</a>
 		<b>0</b>
 	</param>
 	<param>

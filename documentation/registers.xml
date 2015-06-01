@@ -10763,7 +10763,7 @@
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<def>0.0</def>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Вход.напр.А</text>
 		<short_text>Напряжение Ua</short_text>
@@ -10782,7 +10782,7 @@
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<def>0.0</def>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Вход.напр.B</text>
 		<short_text>Напряжение Ub</short_text>
@@ -10801,7 +10801,7 @@
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<def>0.0</def>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Вход.напр.С</text>
 		<short_text>Напряжение Uc</short_text>
@@ -10820,7 +10820,7 @@
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<def>0.0</def>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Входное напряжение AB</text>
 		<short_text>Напряжение Uab</short_text>
@@ -10839,7 +10839,7 @@
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<def>0.0</def>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Входное напряжение BC</text>
 		<short_text>Напряжение Ubc</short_text>
@@ -10858,7 +10858,7 @@
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<def>0.0</def>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Входное напряжение CA</text>
 		<short_text>Напряжение Uca</short_text>
@@ -10870,6 +10870,65 @@
 	</param>
 	<param>
 		<id>712</id>
+		<name>CCS_FILTER_INPUT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Входной фильтр</text>
+		<short_text>Входной фильтр</short_text>
+		<form>3.7 Фильтры</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<values>0-Откл;1-Вкл</values>
+		<comment>Входной фильтр</comment>
+	</param>
+	<param>
+		<id>713</id>
+		<name>CCS_FILTER_OUTPUT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Выходной фильтр</text>
+		<short_text>Выходной фильтр</short_text>
+		<form>3.7 Фильтры</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<values>0-Откл;1-Вкл</values>
+		<comment>Выходной фильтр</comment>
+	</param>
+	<param>
+		<id>714</id>
+		<name>CCS_FILTER_CAPACITY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>10000000.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Ёмкость выходного фильтра</text>
+		<short_text>Ёмкость выходного фильтра</short_text>
+		<form>3.7 Фильтры</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXX_XX</format>
+		<comment>Ёмкость выходного фильтра</comment>
+	</param>
+	<param>
+		<id>715</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
