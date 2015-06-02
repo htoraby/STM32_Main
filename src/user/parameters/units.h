@@ -47,6 +47,8 @@ enum enPhysicNumeric {
 
 enum enPhysicDateTime {
   DATE_TIME_SS,
+  DATE_TIME_YY_MM_DD_HH_MM_SS,
+  DATE_TIME_YY_MM_DD,
   DATE_TIME_LAST
 };
 
@@ -59,8 +61,6 @@ enum enPhysicTime {
   TIME_HH,
   TIME_HH_MM,
   TIME_HH_MM_SS,
-  TIME_YY_MM_DD,
-  TIME_YY_MM_DD_HH_MM_SS,
   TIME_LAST
 };
 
