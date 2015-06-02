@@ -572,6 +572,7 @@ void Ccs::calcTime()
 
 void Ccs::calcParameters()
 {
+  calcMotorSpeed();
   correctVoltageIn();
   calcVoltageImbalanceIn();
   calcCurrentImbalanceIn();

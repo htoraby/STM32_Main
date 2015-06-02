@@ -2624,7 +2624,7 @@ int VsdNovomet::setMotorType(float value)
 
 void VsdNovomet::calcMotorType()
 {
-  if (checkVsdStatus(VSD_STATUS_M_TYPE1)) {
+  if (checkVsdStatus(VSD_STATUS_M_TYPE0)) {
     setValue(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_VENT);
   }
   else {
