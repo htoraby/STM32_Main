@@ -74,6 +74,7 @@ Product {
         "src/user/device/tms",
         "src/user/device/vsd/",
         "src/user/log/",
+        "src/user/parameters/",
         "src/user/protection/",
         "src/user/protection/analog/",
         "src/user/protection/digital/",
