@@ -2607,6 +2607,7 @@ int VsdNovomet::setMaxFrequency(float value)
 
 int VsdNovomet::setMotorType(float value)
 {
+  /*
   if (Vsd::setMotorType(value)) {           // Записываем тип двигателя в регистр
     logDebug.add(WarningMsg, "setTypeMotor");
     return err_r;                    // Если не записали возвращаем ошибку
@@ -2620,6 +2621,14 @@ int VsdNovomet::setMotorType(float value)
     }
     return ok_r;
   }
+  */
+  if (value == VSD_MOTOR_TYPE_ASYNC) {
+    writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_ASYN_MOTOR);
+  }
+  else {
+    writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_VENT_MOTOR);
+  }
+  return ok_r;
 }
 
 void VsdNovomet::calcMotorType()
