@@ -572,6 +572,8 @@ void Ccs::calcTime()
 
 void Ccs::calcParameters()
 {
+  calcMotorLoad();
+  calcMotorCos();
   calcMotorSpeed();
   correctVoltageIn();
   calcVoltageImbalanceIn();
@@ -839,6 +841,37 @@ void Ccs::calcMotorCurrentAvarage()
   setNewValue(CCS_MOTOR_CURRENT_AVARAGE, motorCurrent);
 }
 
+void Ccs::calcMotorLoad()
+{
+  float mtrCur = parameters.get(CCS_MOTOR_CURRENT_AVARAGE);
+  float mtrCos = 1;
+  float nomMtrCur = parameters.get(VSD_MOTOR_CURRENT);
+  if (nomMtrCur == 0) {
+    return;
+  }
+  float nomMtrCos = parameters.get(VSD_MOTOR_COS_PHI);
+  if (nomMtrCos == 0) {
+    return;
+  }
+  float mtrLoad = ((mtrCur * mtrCos) / (nomMtrCur * nomMtrCos)) * 100;
+  setNewValue(CCS_MOTOR_LOAD_NOW, mtrLoad);
+}
+
+void Ccs::calcMotorCos()
+{
+  float actPwr = parameters.get(VSD_POWER_ACTIVE);
+  float fullPwr = parameters.get(VSD_POWER_FULL);
+  float cos = actPwr;
+  if (fullPwr != 0) {
+    cos = actPwr / fullPwr;
+  }
+  if (cos < 0)
+    cos = cos * (-1);
+  if (cos > 1)
+    cos = 1;
+  setNewValue(CCS_MOTOR_COS_PHI_NOW, cos);
+}
+
 void Ccs::calcMotorSpeed()
 {
   if (parameters.get(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) {
@@ -849,8 +882,7 @@ void Ccs::calcMotorSpeed()
   }
   else {
     parameters.set(CCS_MOTOR_SPEED_NOW, 0.0);
-  }
-
+  } 
 }
 
 void Ccs::calcRegimeChangeFreqPeriodOneStep()
