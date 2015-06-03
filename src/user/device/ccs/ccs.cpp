@@ -552,9 +552,17 @@ void Ccs::calcTime()
 
   int condition = getValue(CCS_CONDITION);
 
-  if ((HAL_GetTick() - timer) >= 100) {
+  if ((HAL_GetTick() - timer) >= 250) {
     timer = HAL_GetTick();
-    setNewValue(CCS_DATE_TIME, (uint32_t)rtcGetTime());
+    time_t time = rtcGetTime();
+    setValue(CCS_DATE_TIME, (uint32_t)time);
+    tm dateTime = *localtime(&time);
+    setNewValue(CCS_DATE_TIME_SEC, dateTime.tm_sec);
+    setNewValue(CCS_DATE_TIME_MIN, dateTime.tm_min);
+    setNewValue(CCS_DATE_TIME_HOUR, dateTime.tm_hour);
+    setNewValue(CCS_DATE_TIME_DAY, dateTime.tm_mday);
+    setNewValue(CCS_DATE_TIME_MONTH, dateTime.tm_mon);
+    setNewValue(CCS_DATE_TIME_YEAR, 1900 + dateTime.tm_year);
   }
 
   if (conditionOld != condition) {
@@ -721,6 +729,14 @@ uint8_t Ccs::setNewValue(uint16_t id, float value)
 
 uint8_t Ccs::setNewValue(uint16_t id, uint32_t value)
 {
+  switch (id) {
+  case CCS_DATE_TIME:
+    {
+      time_t time = value;
+      rtcSetTime(&time);
+    }
+    break;
+  }
   return setValue(id, value);
 }
 

@@ -7873,7 +7873,7 @@
 		<name>CCS_RUN_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMERIC</physic>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<valid>VALIDITY_OK</valid>
@@ -7984,7 +7984,7 @@
 		<short_text>Послед.отключ.</short_text>
 		<form>6.3 Статистика</form>
 		<unit>DATE_TIME_SS</unit>
-		<unit_lcd>TIME_YY_MM_DD_HH_MM_SS</unit_lcd>
+		<unit_lcd>DATE_TIME_YY_MM_DD_HH_MM_SS</unit_lcd>
 		<format>XX_XX_XX_XX_XX_XX</format>
 		<comment>Дата время последнего отключения</comment>
 	</param>
