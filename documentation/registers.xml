@@ -10929,6 +10929,82 @@
 	</param>
 	<param>
 		<id>715</id>
+		<name>CCS_MOTOR_VOLTAGE_PHASE_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>10000000.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение двигателя фаза A</text>
+		<short_text>Напряжение двигателя фаза A</short_text>
+		<form>1.4 Текущие параметры двигателя</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<comment>Напряжение двигателя фаза A</comment>
+	</param>
+	<param>
+		<id>716</id>
+		<name>CCS_MOTOR_VOLTAGE_PHASE_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>10000000.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение двигателя фаза B</text>
+		<short_text>Напряжение двигателя фаза B</short_text>
+		<form>1.4 Текущие параметры двигателя</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<comment>Напряжение двигателя фаза B</comment>
+	</param>
+	<param>
+		<id>717</id>
+		<name>CCS_MOTOR_VOLTAGE_PHASE_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>10000000.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение двигателя фаза C</text>
+		<short_text>Напряжение двигателя фаза C</short_text>
+		<form>1.4 Текущие параметры двигателя</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<comment>Напряжение двигателя фаза C</comment>
+	</param>
+	<param>
+		<id>718</id>
+		<name>CCS_MOTOR_VOLTAGE_IMBALANCE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>0.0</min>
+		<max>10000000.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Дисбаланс напряжений</text>
+		<short_text>Дисбаланс напряжений</short_text>
+		<form>1.4 Текущие параметры двигателя</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXXXX</format>
+		<comment>Дисбаланс напряжений</comment>
+	</param>
+	<param>
+		<id>719</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
