@@ -93,7 +93,7 @@ float calcImbalance(float value1, float value2, float value3, int digit)
 {
   float max_;
   float min_;
-  float avarage;
+  float average;
   float imbalance;
 
   value1 = round(value1 * pow(10,digit));
@@ -101,15 +101,19 @@ float calcImbalance(float value1, float value2, float value3, int digit)
   value3 = round(value3 * pow(10,digit));
   max_ = max(value1, max(value2, value3));
   min_ = min(value1, min(value2, value3));
-  avarage = (value1 + value2 + value3)/3;
-  if (avarage == 0)
-    avarage = 1;
-  imbalance = ((max_ - min_)/avarage)*100;
+  average = calcAverage3Values(value1, value2, value3);
+  if (average == 0)
+    average = 1;
+  imbalance = ((max_ - min_)/average)*100;
   if (imbalance < 0)
     imbalance = 0;
   return imbalance;
 }
 
+float calcAverage3Values(float value1, float value2, float value3)
+{
+  return (value1 + value2 + value3)/3;
+}
 
 uint32_t getTimeToEnd(uint32_t period, uint32_t time)
 {

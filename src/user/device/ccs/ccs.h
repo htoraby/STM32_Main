@@ -202,57 +202,70 @@ public:
   uint32_t getSecFromCurTime(enID timeId);
 
   /*!
-   * \brief calcMotorCurrentPhase1
+   * \brief Функция вычисления коэффициента трансформации трансформатора
+   * \param voltTapOff - напряжение отпайки
+   * \param voltInput - входной напряжение трансформатора
+   * \return
    */
-  void calcMotorCurrentPhase1();
+  float calcTransCoef(float voltTapOff, float voltInput);
 
   /*!
-   * \brief calcMotorCurrentPhase2
-   */
-  void calcMotorCurrentPhase2();
-
-  /*!
-   * \brief calcMotorCurrentPhase3
-   */
-  void calcMotorCurrentPhase3();
-
-  /*!
-   * \brief calcMotorCurrentAvarage
-   */
-  void calcMotorCurrentAvarage();
-
-  /*!
-   * \brief calcMotorCurrentPhase
-   * \param vsdOutCurrent
+   * \brief Функция вычисления тока на фазе двигателя
+   * \param vsdCurOut
    * \param coefCorrect
-   * \param motorCurrent
+   * \param coefTrans
+   * \return
    */
-  void calcMotorCurrentPhase(uint16_t vsdOutCurrent, uint16_t coefCorrect, uint16_t motorCurrent);
+  float calcMotorCurrentPhase(float vsdCurOut,
+                              float coefCorrect,
+                              float coefTrans);
+  /*!
+   * \brief Функция вычисления падения напряжения на фильтре
+   * \param outFilter - наличие выходного фильтра
+   * \param inductFilter - индуктивность фильтра
+   * \param current - расчёт для этого значения тока
+   * \param freq - расчет для этого значения частоты
+   * \param coefTrans - коэффициент трансформатора
+   * \return
+   */
+  float calcDropVoltageFilter(float outFilter,
+                              float inductFilter,
+                              float current,
+                              float freq,
+                              float coefTrans);
+
+  /*!
+   * \brief Функция вычисления падения напряжения на кабельной линии
+   * \param lenght - длина кабельной линни
+   * \param cross - сечение кабеля
+   * \param current - ток
+   * \return
+   */
+  float calcDropVoltageCable(float lenght, float cross, float current);
+
+  /*!
+   * \brief Функция вычисления напряжения на фазе двигателя
+   * \param vsdVoltOut - выходное напряжение ПЧ
+   * \param dropVoltFilter - падение напряжения на фильтре
+   * \param dropVoltCable - падение напряжения на кабеле
+   * \param coefTrans - коэффициент транформации ТМПН
+   * \return
+   */
+  float calcMotorVoltagePhase(float vsdVoltOut,
+                              float dropVoltFilter,
+                              float dropVoltCable,
+                              float coefTrans);
 
   /*!
    * \brief calcMotorCurrentImbalance
    */
   void calcMotorCurrentImbalance();
 
-  /*!
-   * \brief Функция вычисления падения напряжения на кабельной линии
-   * \param lenght длина кабельной линни
-   * \param cross сечение кабеля
-   * \param current ток
-   * \return
-   */
-  float calcVoltageDropCable(float lenght, float cross, float current);
+  float calcMotorSpeed();
 
-  /*!
-   * \brief Функция вычисления падения напряжения на фильтре
-   * \param current расчёт для этого значения тока
-   * \param freq расчет для этого значения частоты
-   * \param inputVoltage Входное напряжение ТМПН
-   * \param tapOff Напряжение отпайки ТМПН
-   * \param filter Индуктивность фильтра
-   * \return
-   */
-  float calcVoltageDropFilter(float current, float freq, float inputVoltage, float tapOff, float filter);
+  float calcMotorCos(float actPwr, float fullPwr);
+
+
 
   /*!
    * \brief Функция вычисления индуктивности двигателя по полному сопротивлению фаз двигателя
@@ -277,6 +290,13 @@ public:
    * \brief calcVoltageImbalanceIn
    */
   void calcVoltageImbalanceIn();
+
+  /*!
+   * \brief Функция вычисления расчётных параметров
+   */
+  void calcParameters();
+
+  float calcMotorLoad(float mtrCur, float mtrCos, float nomMtrCur, float nomMtrCos);
 
   uint8_t setNewValue(uint16_t id, float value);
 
@@ -347,29 +367,6 @@ private:
    */
   void calcTime();
 
-  /*!
-   * \brief calcParameters
-   */
-  void calcParameters();
-
-  /*!
-   * \brief calcCoefTransformation
-   */
-  void calcCoefTransformation();
-
-  /*!
-   * \brief Функция применения коэффициентов корректировки входного напряжения
-   */
-  void correctVoltageIn();
-
-  void calcCurrentImbalanceIn();
-
-  void calcMotorSpeed();
-
-  void calcMotorCos();
-
-  void calcMotorLoad();
-
   //! Массив параметров устройства
   parameter parametersArray_[CCS_END - CCS_BEGIN];
 
@@ -386,6 +383,7 @@ private:
   bool powerOffFlag_;
   //! Тайаут отключения питания ИБП
   int powerOffTimeout_;
+
 
 };
 
