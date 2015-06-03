@@ -5286,7 +5286,7 @@ void Ccs::initParameters()
   parameters_[CCS_RUN_TIME - CCS_BEGIN].id                                       = CCS_RUN_TIME;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].access                                   = ACCESS_OPERATOR;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].operation                                = OPERATION_READ;
-  parameters_[CCS_RUN_TIME - CCS_BEGIN].physic                                   = PHYSIC_NUMERIC;
+  parameters_[CCS_RUN_TIME - CCS_BEGIN].physic                                   = PHYSIC_TIME;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].validity                                 = VALIDITY_OK;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].value.float_t                            = 0;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].min                                      = 0.0;
