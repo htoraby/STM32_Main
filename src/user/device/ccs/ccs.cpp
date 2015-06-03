@@ -552,7 +552,7 @@ void Ccs::calcTime()
 
   int condition = getValue(CCS_CONDITION);
 
-  if ((HAL_GetTick() - timer) >= 250) {
+  if ((HAL_GetTick() - timer) >= 100) {
     timer = HAL_GetTick();
     time_t time = rtcGetTime();
     setValue(CCS_DATE_TIME, (uint32_t)time);
