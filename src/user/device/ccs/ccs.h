@@ -261,7 +261,7 @@ public:
    */
   void calcMotorCurrentImbalance();
 
-  float calcMotorSpeed();
+  float calcMotorSpeed(float mtrType, float freq);
 
   float calcMotorCos(float actPwr, float fullPwr);
 

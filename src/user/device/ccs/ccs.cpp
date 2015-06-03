@@ -587,22 +587,22 @@ void Ccs::calcParameters()
   setValue(CCS_MOTOR_CURRENT_PHASE_1,
            calcMotorCurrentPhase(parameters.get(VSD_CURRENT_OUT_PHASE_1),
                                  parameters.get(CCS_COEF_OUT_CURRENT_1),
-                                 parameters.get(CCS_COEF_TRANSFORMATION));
+                                 parameters.get(CCS_COEF_TRANSFORMATION)));
 
   setValue(CCS_MOTOR_CURRENT_PHASE_2,
            calcMotorCurrentPhase(parameters.get(VSD_CURRENT_OUT_PHASE_2),
                                  parameters.get(CCS_COEF_OUT_CURRENT_2),
-                                 parameters.get(CCS_COEF_TRANSFORMATION));
+                                 parameters.get(CCS_COEF_TRANSFORMATION)));
 
   setValue(CCS_MOTOR_CURRENT_PHASE_3,
            calcMotorCurrentPhase(parameters.get(VSD_CURRENT_OUT_PHASE_3),
                                  parameters.get(CCS_COEF_OUT_CURRENT_3),
-                                 parameters.get(CCS_COEF_TRANSFORMATION));
+                                 parameters.get(CCS_COEF_TRANSFORMATION)));
 
   setValue(CCS_MOTOR_CURRENT_AVARAGE,
            calcAverage3Values(parameters.get(CCS_MOTOR_CURRENT_PHASE_1),
                               parameters.get(CCS_MOTOR_CURRENT_PHASE_2),
-                              parameters.get(CCS_MOTOR_CURRENT_PHASE_3));
+                              parameters.get(CCS_MOTOR_CURRENT_PHASE_3)));
 
   setValue(CCS_MOTOR_CURRENT_IMBALANCE,
            calcImbalance(parameters.get(CCS_MOTOR_CURRENT_PHASE_1),
@@ -620,7 +620,7 @@ void Ccs::calcParameters()
                                  calcDropVoltageCable(parameters.get(CCS_TRANS_CABLE_LENGHT),
                                                       parameters.get(CCS_TRANS_CABLE_CROSS),
                                                       parameters.get(CCS_MOTOR_CURRENT_PHASE_1)),
-                                 parameters.get(CCS_COEF_TRANSFORMATION));
+                                 parameters.get(CCS_COEF_TRANSFORMATION)));
 
   setValue(CCS_MOTOR_VOLTAGE_PHASE_2,
            calcMotorVoltagePhase(parameters.get(VSD_OUT_VOLTAGE_MOTOR),
@@ -632,7 +632,7 @@ void Ccs::calcParameters()
                                  calcDropVoltageCable(parameters.get(CCS_TRANS_CABLE_LENGHT),
                                                       parameters.get(CCS_TRANS_CABLE_CROSS),
                                                       parameters.get(CCS_MOTOR_CURRENT_PHASE_2)),
-                                 parameters.get(CCS_COEF_TRANSFORMATION));
+                                 parameters.get(CCS_COEF_TRANSFORMATION)));
 
   setValue(CCS_MOTOR_VOLTAGE_PHASE_3,
            calcMotorVoltagePhase(parameters.get(VSD_OUT_VOLTAGE_MOTOR),
@@ -644,7 +644,7 @@ void Ccs::calcParameters()
                                  calcDropVoltageCable(parameters.get(CCS_TRANS_CABLE_LENGHT),
                                                       parameters.get(CCS_TRANS_CABLE_CROSS),
                                                       parameters.get(CCS_MOTOR_CURRENT_PHASE_3)),
-                                 parameters.get(CCS_COEF_TRANSFORMATION));
+                                 parameters.get(CCS_COEF_TRANSFORMATION)));
 
   setValue(CCS_MOTOR_VOLTAGE_IMBALANCE,
            calcImbalance(parameters.get(CCS_MOTOR_VOLTAGE_PHASE_1),
@@ -658,10 +658,13 @@ void Ccs::calcParameters()
 
   setValue(CCS_MOTOR_COS_PHI_NOW,
            calcMotorCos(parameters.get(VSD_POWER_ACTIVE),
-                        parameters.get(VSD_POWER_FULL));
+                        parameters.get(VSD_POWER_FULL)));
 
   setValue(CCS_MOTOR_LOAD_NOW,
-           calcMotorLoad();
+           calcMotorLoad(parameters.get(CCS_MOTOR_CURRENT_AVARAGE),
+                         parameters.get(CCS_MOTOR_COS_PHI_NOW),
+                         parameters.get(VSD_MOTOR_CURRENT),
+                         parameters.get(VSD_MOTOR_COS_PHI)));
 
   setValue(CCS_VOLTAGE_PHASE_1,
            applyCoef(parameters.get(EM_VOLTAGE_PHASE_1),
@@ -782,21 +785,12 @@ float Ccs::calcMotorCos(float actPwr, float fullPwr)
 
 float Ccs::calcMotorLoad(float mtrCur, float mtrCos, float nomMtrCur, float nomMtrCos)
 {
-
-
-  float mtrCur = parameters.get(CCS_MOTOR_CURRENT_AVARAGE);
-  float mtrCos = 1;
-  float nomMtrCur = parameters.get(VSD_MOTOR_CURRENT);
-  if (nomMtrCur == 0) {
-    return;
-  }
-  float nomMtrCos = parameters.get(VSD_MOTOR_COS_PHI);
-  if (nomMtrCos == 0) {
-    return;
-  }
-  float mtrLoad = ((mtrCur * mtrCos) / (nomMtrCur * nomMtrCos)) * 100;
-  setNewValue(CCS_MOTOR_LOAD_NOW, mtrLoad);
+  if ((nomMtrCur == 0) || (nomMtrCos == 0))
+    return 0;
+  else
+    return ((mtrCur * mtrCos) / (nomMtrCur * nomMtrCos)) * 100;
 }
+
 uint8_t Ccs::setNewValue(uint16_t id, float value)
 {
   switch (id) {
