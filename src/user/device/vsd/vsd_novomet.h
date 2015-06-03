@@ -201,11 +201,6 @@ public:
   void calcTimeSpeedUp();
 
   /*!
-   * \brief calcMotorControl
-   */
-  void calcMotorControl();
-
-  /*!
    * \brief calcRotation
    */
   void calcRotation();

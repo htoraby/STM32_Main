@@ -40,8 +40,8 @@ void VsdNovomet::initModbusParameters()
                          0,                 // Минимальное значение параметра
                          180,               // Максимально значение параметра
                          0,                 // Считываемое значение "по умолчанию"
-                         OFTEN,             // Частота опроса параметра
-                         OFTEN,             // Количество запросов к параметру
+                         NOT_READ,            // Частота опроса параметра
+                         NOT_READ,             // Количество запросов к параметру
                          OPERATION_ERROR,   // Команда
                          VALIDITY_ERROR,    // Поле состояния параметра
                          0                  // Значение
@@ -91,8 +91,8 @@ void VsdNovomet::initModbusParameters()
                          15,                // Минимальное значение параметра
                          609,               // Максимально значение параметра
                          76,                // Считываемое значение "по умолчанию"
-                         OFTEN,             // Частота опроса параметра
-                         OFTEN,             // Количество запросов к параметру
+                         HARDLY_EVER,       // Частота опроса параметра
+                         HARDLY_EVER,       // Количество запросов к параметру
                          OPERATION_ERROR,   // Команда
                          VALIDITY_ERROR,    // Поле состояния параметра
                          0                  // Значение
@@ -2607,6 +2607,7 @@ int VsdNovomet::setMaxFrequency(float value)
 
 int VsdNovomet::setMotorType(float value)
 {
+  /*
   if (Vsd::setMotorType(value)) {           // Записываем тип двигателя в регистр
     logDebug.add(WarningMsg, "setTypeMotor");
     return err_r;                    // Если не записали возвращаем ошибку
@@ -2620,6 +2621,14 @@ int VsdNovomet::setMotorType(float value)
     }
     return ok_r;
   }
+  */
+  if (value == VSD_MOTOR_TYPE_ASYNC) {
+    writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_ASYN_MOTOR);
+  }
+  else {
+    writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_VENT_MOTOR);
+  }
+  return ok_r;
 }
 
 void VsdNovomet::calcMotorType()
@@ -2640,16 +2649,6 @@ void VsdNovomet::calcTempSpeedUp()
 void VsdNovomet::calcTimeSpeedUp()
 {
   setValue(VSD_TIMER_DISPERSAL, getValue(VSD_FREQUENCY)/getValue(VSD_TEMP_SPEEDUP));
-}
-
-void VsdNovomet::calcMotorControl()
-{
-  if(getValue(VSD_REGULATOR_QUEUE_5) == VSD_MOTOR_CONTROL_UF) {
-    setValue(VSD_MOTOR_CONTROL, VSD_MOTOR_CONTROL_UF);
-  }
-  else {
-    setValue(VSD_MOTOR_CONTROL, VSD_MOTOR_CONTROL_VECT);
-  }
 }
 
 void VsdNovomet::calcRotation()
@@ -2695,18 +2694,13 @@ int VsdNovomet::setTempSpeedDown(float value)
 
 int VsdNovomet::setRotation(float value)
 {
-  if(Vsd::setRotation(value)){
-    return err_r;
+  if (value == VSD_ROTATION_DIRECT) {
+    writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_RIGHT_DIRECTION);
   }
   else {
-    if (getValue(VSD_ROTATION) == VSD_ROTATION_DIRECT) {
-      writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_RIGHT_DIRECTION);
-    }
-    else {
-      writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_LEFT_DIRECTION);
-    }
-    return ok_r;
+    writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_LEFT_DIRECTION);
   }
+  return ok_r;
 }
 
 int VsdNovomet::setSwitchingFrequency(float value)
@@ -2729,9 +2723,6 @@ void VsdNovomet::calcParameters(uint16_t id)
   case VSD_T_SPEEDUP:
     calcTempSpeedUp();
     calcTimeSpeedUp();
-    break;
-  case VSD_REGULATOR_QUEUE_5:
-    calcMotorControl();
     break;
   case VSD_INVERTOR_STATUS:
     calcRotation();
@@ -2821,7 +2812,7 @@ int VsdNovomet::onRegimeSwing()
 
   setNewValue(VSD_START_FREQ, freq);                        // Задаём частоту основного режима
   setNewValue(VSD_SW_STARTUP_FREQUENCY, freq);              // Записали в ЧРП частоту
-  setNewValue(VSD_SW_STARTUP_ANGLE_OSC, 180.0);             // Угол константа
+  setNewValue(VSD_SW_STARTUP_ANGLE_OSC, 359.0);             // Угол константа
   setNewValue(VSD_SW_STARTUP_OSC_COUNT, 2.0);               // Количество качаний константа
   setNewValue(VSD_SW_STARTUP_ROTATIONS, rotation);          // Записали количество оборотов
   setNewValue(VSD_SW_STARTUP_U_PULSE, impulse);             // Записали кратность импульса толчка

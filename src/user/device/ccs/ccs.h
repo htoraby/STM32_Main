@@ -366,6 +366,10 @@ private:
 
   void calcMotorSpeed();
 
+  void calcMotorCos();
+
+  void calcMotorLoad();
+
   //! Массив параметров устройства
   parameter parametersArray_[CCS_END - CCS_BEGIN];
 

@@ -62,13 +62,15 @@ void RegimeRunNovomet::processingStateRunning()
     }
   }
 
-  if (parameters.get(CCS_RGM_RUN_PICKUP_MODE)) {
-    queue[pickupRun] = VSD_REQULATOR_QUEUE_PICKUP;
-    pushRun++;
-    swingRun++;
-    autoRun++;
-    vsd->onRegimePickup();
-  }
+  /*
+    if (parameters.get(CCS_RGM_RUN_PICKUP_MODE)) {
+      queue[pickupRun] = VSD_REQULATOR_QUEUE_PICKUP;
+      pushRun++;
+      swingRun++;
+      autoRun++;
+      vsd->onRegimePickup();
+    }
+  */
 
   if (parameters.get(CCS_RGM_RUN_PUSH_MODE)) {
     queue[pushRun] = VSD_REQULATOR_QUEUE_PUSH;
