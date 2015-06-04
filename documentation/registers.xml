@@ -12810,18 +12810,34 @@
 		<id>10151</id>
 		<name>VSD_TIMER_DISPERSAL</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1000.0</max>
+		<def>30.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>30.0</value>
+		<text>Время разгона до номинал. Частоты</text>
+		<short_text>Время разгона до номинал. Частоты</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
 		<comment>Время разгона Danfoss 3-41 % Активно используется в проекте</comment>
 	</param>
 	<param>
 		<id>10152</id>
 		<name>VSD_TIMER_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1000.0</max>
+		<def>30.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>30.0</value>
+		<text>Время торм. с номинал. Частоты</text>
+		<short_text>Время торм. с номинал. Частоты</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
 		<comment>Время замедления Danfoss 3-42 % Активно используется в проекте</comment>
 	</param>
 	<param>
@@ -13857,7 +13873,8 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TEMP</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>100.0</max>
+		<def>1.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<text>Темп набора частоты</text>
 		<short_text>Темп набора частоты</short_text>
@@ -13865,6 +13882,7 @@
 		<unit>TEMP_HZ_SS</unit>
 		<unit_lcd>TEMP_HZ_SS</unit_lcd>
 		<format>XXX_XX</format>
+		<comment>Темп набора частоты</comment>
 	</param>
 	<param>
 		<id>10259</id>
@@ -13873,7 +13891,8 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TEMP</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>100.0</max>
+		<def>1.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<text>Темп снижения частоты</text>
 		<short_text>Темп снижения частоты</short_text>
@@ -13881,6 +13900,7 @@
 		<unit>TEMP_HZ_SS</unit>
 		<unit_lcd>TEMP_HZ_SS</unit_lcd>
 		<format>XXX_XX</format>
+		<comment>Темп снижения частоты</comment>
 	</param>
 	<param>
 		<id>10260</id>
@@ -16425,7 +16445,7 @@
 		<text>Реактивная энергия</text>
 		<short_text>Реактивная энергия</short_text>
 		<form>6.3 Статистика</form>
-		<unit>REACTIVE_ENERGY_VAR_HH</unit>
+		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
 		<format>XXXX_X</format>
 		<comment>Общая реактивня энергия</comment>
@@ -16441,7 +16461,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<unit>REACTIVE_ENERGY_VAR_HH</unit>
+		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
 		<comment>Общая плюс реактивная энергия за весь период</comment>
 	</param>
@@ -16456,7 +16476,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<unit>REACTIVE_ENERGY_VAR_HH</unit>
+		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
 		<comment>Общая минус реактивная энергия за весь период</comment>
 	</param>
@@ -16471,7 +16491,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<unit>REACTIVE_ENERGY_VAR_HH</unit>
+		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
 		<comment>Плюс реактивная энергия за весь день</comment>
 	</param>
@@ -16486,7 +16506,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<unit>REACTIVE_ENERGY_VAR_HH</unit>
+		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
 		<comment>Минус реактивная энергия за весь день</comment>
 	</param>
@@ -16501,7 +16521,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<unit>REACTIVE_ENERGY_VAR_HH</unit>
+		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
 		<comment>Плюс реактивная энергия за весь день</comment>
 	</param>
@@ -16516,7 +16536,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<unit>REACTIVE_ENERGY_VAR_HH</unit>
+		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
 		<comment>Минус реактивная энергия за весь день</comment>
 	</param>
@@ -16531,7 +16551,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<unit>REACTIVE_ENERGY_VAR_HH</unit>
+		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
 		<comment>Плюс реактивная энергия за месяц</comment>
 	</param>
@@ -16546,7 +16566,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<unit>REACTIVE_ENERGY_VAR_HH</unit>
+		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
 		<comment>Минус реактивная энергия за месяц</comment>
 	</param>
@@ -16561,7 +16581,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<unit>REACTIVE_ENERGY_VAR_HH</unit>
+		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
 		<comment>Плюс реактивная энергия за предыдущий месяц</comment>
 	</param>
@@ -16576,7 +16596,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<unit>REACTIVE_ENERGY_VAR_HH</unit>
+		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
 		<comment>Минус реактивная энергия за предыдущий месяц</comment>
 	</param>

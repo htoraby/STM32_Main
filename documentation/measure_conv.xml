@@ -272,19 +272,13 @@
 	</param>
 	<param>
 		<midIn>PHYSIC_REACTIVE_ENERGY</midIn>
-		<midOut>REACTIVE_ENERGY_VAR_HH</midOut>
+		<midOut>REACTIVE_ENERGY_KVAR_HH</midOut>
 		<a>1</a>
 		<b>0</b>
 	</param>
 	<param>
-		<midIn>PHYSIC_REACTIVE_ENERGY</midIn>
-		<midOut>REACTIVE_ENERGY_KVAR_HH</midOut>
-		<a>0.001</a>
-		<b>0</b>
-	</param>
-	<param>
 		<midIn>PHYSIC_FULL_ENERGY</midIn>
-		<midOut>FULL_ENERGY_VAHH</midOut>
+		<midOut>FULL_ENERGY_KVAHH</midOut>
 		<a>1</a>
 		<b>0</b>
 	</param>

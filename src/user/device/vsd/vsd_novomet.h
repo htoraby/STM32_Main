@@ -214,14 +214,11 @@ public:
    * \brief Метод задания времени набора частоты
    * \return Код результата операции
    */
+  int setTimeSpeedUp(float value);
+  int setTimeSpeedDown(float value);
   int setTempSpeedUp(float value);
-
-  /*!
-   * \brief Метод задания времени снижения частоты
-   * \param SpeedDown
-   * \return Код результата операции
-   */
   int setTempSpeedDown(float value);
+
 
   /*!
    * \brief Метод задания точки характеристики U/f F1
