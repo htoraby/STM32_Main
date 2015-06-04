@@ -7152,6 +7152,16 @@ void Ccs::initParameters()
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].min                               = 0.0;
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].max                               = 10000000.0;
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].def                               = 0.0;
+  // Количество АПВ
+  parameters_[CCS_RESTART_COUNT - CCS_BEGIN].id                                  = CCS_RESTART_COUNT;
+  parameters_[CCS_RESTART_COUNT - CCS_BEGIN].access                              = ACCESS_OPERATOR;
+  parameters_[CCS_RESTART_COUNT - CCS_BEGIN].operation                           = OPERATION_READ;
+  parameters_[CCS_RESTART_COUNT - CCS_BEGIN].physic                              = PHYSIC_NUMERIC;
+  parameters_[CCS_RESTART_COUNT - CCS_BEGIN].validity                            = VALIDITY_OK;
+  parameters_[CCS_RESTART_COUNT - CCS_BEGIN].value.float_t                       = 0.0;
+  parameters_[CCS_RESTART_COUNT - CCS_BEGIN].min                                 = 0.0;
+  parameters_[CCS_RESTART_COUNT - CCS_BEGIN].max                                 = 10000000.0;
+  parameters_[CCS_RESTART_COUNT - CCS_BEGIN].def                                 = 0.0;
   // Напряжение двигателя фаза A
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].id                          = CCS_MOTOR_VOLTAGE_PHASE_1;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].access                      = ACCESS_OPERATOR;
