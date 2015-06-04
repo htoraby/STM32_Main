@@ -114,6 +114,15 @@ bool checkBit(uint32_t value, uint8_t bit);
 float calcImbalance(float value1, float value2, float value3, int digit);
 
 /*!
+ * \brief Функция вычисления среднего между 3 значениями
+ * \param value1 - значение 1
+ * \param value2 - значение 2
+ * \param value3 - значение 3
+ * \return среднее значение
+ */
+float calcAverage3Values(float value1, float value2, float value3);
+
+/*!
  * \brief Функция получения времени до конца периода
  * \param period
  * \param time

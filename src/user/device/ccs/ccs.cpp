@@ -557,12 +557,13 @@ void Ccs::calcTime()
     time_t time = rtcGetTime();
     setValue(CCS_DATE_TIME, (uint32_t)time);
     tm dateTime = *localtime(&time);
-    setNewValue(CCS_DATE_TIME_SEC, dateTime.tm_sec);
-    setNewValue(CCS_DATE_TIME_MIN, dateTime.tm_min);
-    setNewValue(CCS_DATE_TIME_HOUR, dateTime.tm_hour);
-    setNewValue(CCS_DATE_TIME_DAY, dateTime.tm_mday);
-    setNewValue(CCS_DATE_TIME_MONTH, dateTime.tm_mon);
-    setNewValue(CCS_DATE_TIME_YEAR, 1900 + dateTime.tm_year);
+    setValue(CCS_DATE_TIME_SEC, dateTime.tm_sec);
+    setValue(CCS_DATE_TIME_MIN, dateTime.tm_min);
+    setValue(CCS_DATE_TIME_HOUR, dateTime.tm_hour);
+    setValue(CCS_DATE_TIME_DAY, dateTime.tm_mday);
+    setValue(CCS_DATE_TIME_MONTH, dateTime.tm_mon);
+    setValue(CCS_DATE_TIME_YEAR, 1900 + dateTime.tm_year);
+    // TODO: Синхронизация времени
   }
 
   if (conditionOld != condition) {
@@ -580,71 +581,319 @@ void Ccs::calcTime()
 
 void Ccs::calcParameters()
 {
-  calcMotorLoad();
-  calcMotorCos();
+  calcTransCoef();
+  calcMotorCurrentPhase1();
+  calcMotorCurrentPhase2();
+  calcMotorCurrentPhase3();
+  calcMotorCurrentAverage();
+  calcMotorCurrentImbalance();
+  calcMotorVoltagePhase1();
+  calcMotorVoltagePhase2();
+  calcMotorVoltagePhase3();
+  calcMotorVoltageImbalance();
   calcMotorSpeed();
-  correctVoltageIn();
-  calcVoltageImbalanceIn();
-  calcCurrentImbalanceIn();
+  calcMotorCos();
+  calcMotorLoad();
+  calcInputVoltagePhase1();
+  calcInputVoltagePhase2();
+  calcInputVoltagePhase3();
+  calcInputVoltagePhase12();
+  calcInputVoltagePhase23();
+  calcInputVoltagePhase31();
+  calcInputVoltageImbalance();
+  calcInputCurrentImbalance();
 }
 
-void Ccs::calcCoefTransformation()
+float Ccs::calcTransCoef()
 {
-  float transVoltageTapOff = parameters.get(CCS_TRANS_VOLTAGE_TAP_OFF);
-  float transNominalVoltage = parameters.get(CCS_TRANS_NOMINAL_VOLTAGE);
-  float coefTransformation;
-  if (transNominalVoltage) {
-    coefTransformation = transVoltageTapOff / transNominalVoltage;
+  float voltTapOff = parameters.get(CCS_TRANS_VOLTAGE_TAP_OFF);
+  float voltInput =  parameters.get(CCS_TRANS_NOMINAL_VOLTAGE);
+  float transCoef;
+  if (voltInput == 0)
+    transCoef = voltTapOff / 380;
+  else
+    transCoef = voltTapOff / voltInput;
+  setValue(CCS_COEF_TRANSFORMATION, transCoef);
+  return parameters.get(CCS_COEF_TRANSFORMATION);
+}
+
+float Ccs::calcMotorCurrentPhase(float vsdCurOut)
+{
+  float coefTrans = parameters.get(CCS_COEF_TRANSFORMATION);
+  if (coefTrans == 0)
+    return vsdCurOut;
+  else
+    return (vsdCurOut / coefTrans);
+}
+
+float Ccs::calcMotorCurrentPhase1()
+{
+  setValue(CCS_MOTOR_CURRENT_PHASE_1,
+           calcMotorCurrentPhase(applyCoef(parameters.get(VSD_CURRENT_OUT_PHASE_1),
+                                           parameters.get(CCS_COEF_OUT_CURRENT_1))));
+  return parameters.get(CCS_MOTOR_CURRENT_PHASE_1);
+}
+
+float Ccs::calcMotorCurrentPhase2()
+{
+  setValue(CCS_MOTOR_CURRENT_PHASE_2,
+           calcMotorCurrentPhase(applyCoef(parameters.get(VSD_CURRENT_OUT_PHASE_2),
+                                           parameters.get(CCS_COEF_OUT_CURRENT_2))));
+  return parameters.get(CCS_MOTOR_CURRENT_PHASE_2);
+}
+
+float Ccs::calcMotorCurrentPhase3()
+{
+  setValue(CCS_MOTOR_CURRENT_PHASE_3,
+           calcMotorCurrentPhase(applyCoef(parameters.get(VSD_CURRENT_OUT_PHASE_3),
+                                           parameters.get(CCS_COEF_OUT_CURRENT_3))));
+  return parameters.get(CCS_MOTOR_CURRENT_PHASE_3);
+}
+
+float Ccs::calcMotorCurrentAverage()
+{
+  setValue(CCS_MOTOR_CURRENT_AVARAGE,
+           calcAverage3Values(parameters.get(CCS_MOTOR_CURRENT_PHASE_1),
+                              parameters.get(CCS_MOTOR_CURRENT_PHASE_2),
+                              parameters.get(CCS_MOTOR_CURRENT_PHASE_3)));
+  return parameters.get(CCS_MOTOR_CURRENT_AVARAGE);
+}
+
+float Ccs::calcMotorCurrentImbalance()
+{
+  setValue(CCS_MOTOR_CURRENT_IMBALANCE,
+           calcImbalance(parameters.get(CCS_MOTOR_CURRENT_PHASE_1),
+                         parameters.get(CCS_MOTOR_CURRENT_PHASE_2),
+                         parameters.get(CCS_MOTOR_CURRENT_PHASE_3),
+                         1));
+  return parameters.get(CCS_MOTOR_CURRENT_IMBALANCE);
+}
+
+float Ccs::calcDropVoltageFilter(float current)
+{
+  float outFilter = parameters.get(CCS_FILTER_OUTPUT);
+  float inductFilter = parameters.get(CCS_FILTER_INDUCTANCE);
+  float freq =  parameters.get(VSD_FREQUENCY_NOW);
+  float coefTrans = parameters.get(CCS_COEF_TRANSFORMATION);
+  if (outFilter == 0)
+    return 0;
+  if (freq == 0)
+    freq = parameters.get(VSD_MOTOR_FREQUENCY);
+  if (coefTrans == 0)
+    coefTrans = 380.0;
+  float dUf = 2 * NUM_PI * inductFilter * freq * current * coefTrans / 1000.0;
+  return dUf;
+}
+
+float Ccs::calcDropVoltageCable(float current)
+{
+  float lenght = parameters.get(CCS_TRANS_CABLE_LENGHT);
+  float cross =  parameters.get(CCS_TRANS_CABLE_CROSS);
+  if (parameters.get(CCS_RGM_HEAT_CABLE_MODE) != Regime::OffAction) {
+    lenght = 2 * lenght / 1000;                                         // Длина петли кабеля в кМ
+    float R80 = parameters.get(CCS_RGM_HEAT_CABLE_RESISTANCE_80);       // Сопротивление кабеля при 80°С
+    current = parameters.get(VSD_MOTOR_CURRENT);                        // Номинальный ток ПЭД
+    float dUcl = R80 * lenght * current;
+    return dUcl;
   }
   else {
-    coefTransformation = transVoltageTapOff / 380;
+    if (!cross)
+      cross = 16;
+    float dUcl = 38.7 * (current * lenght) / (cross * 1000);            // Падение напряжения на кабельной линии
+    return dUcl;
   }
-  setNewValue(CCS_COEF_TRANSFORMATION, coefTransformation);
 }
 
-void Ccs::correctVoltageIn()
+float Ccs::calcMotorVoltagePhase(float dropVoltFilter, float dropVoltCable)
 {
-  float phase = parameters.get(EM_VOLTAGE_PHASE_1);
-  phase = phase * parameters.get(CCS_COEF_VOLTAGE_IN_A);
-  setNewValue(CCS_VOLTAGE_PHASE_1, phase);
-
-  phase = parameters.get(EM_VOLTAGE_PHASE_1_2);
-  phase = phase * parameters.get(CCS_COEF_VOLTAGE_IN_A);
-  setNewValue(CCS_VOLTAGE_PHASE_1_2, phase);
-
-  phase = parameters.get(EM_VOLTAGE_PHASE_2);
-  phase = phase * parameters.get(CCS_COEF_VOLTAGE_IN_B);
-  setNewValue(CCS_VOLTAGE_PHASE_2, phase);
-
-  phase = parameters.get(EM_VOLTAGE_PHASE_2_3);
-  phase = phase * parameters.get(CCS_COEF_VOLTAGE_IN_B);
-  setNewValue(CCS_VOLTAGE_PHASE_2_3, phase);
-
-  phase = parameters.get(EM_VOLTAGE_PHASE_3);
-  phase = phase * parameters.get(CCS_COEF_VOLTAGE_IN_C);
-  setNewValue(CCS_VOLTAGE_PHASE_3, phase);
-
-  phase = parameters.get(EM_VOLTAGE_PHASE_3_1);
-  phase = phase * parameters.get(CCS_COEF_VOLTAGE_IN_C);
-  setNewValue(CCS_VOLTAGE_PHASE_3_1, phase);
+  float vsdVoltOut = parameters.get(VSD_OUT_VOLTAGE_MOTOR);
+  float coefTrans = parameters.get(CCS_COEF_TRANSFORMATION);
+  return (vsdVoltOut * coefTrans - (dropVoltFilter + dropVoltCable) * sqrt(3));
 }
 
-void Ccs::calcVoltageImbalanceIn()
+float Ccs::calcMotorVoltagePhase1()
 {
-  float imbalance = calcImbalance(parameters.get(CCS_VOLTAGE_PHASE_1),
-                                  parameters.get(CCS_VOLTAGE_PHASE_2),
-                                  parameters.get(CCS_VOLTAGE_PHASE_3),
-                                  0);
-  setNewValue(CCS_VOLTAGE_IMBALANCE_IN, imbalance);
+  float current = parameters.get(CCS_MOTOR_CURRENT_PHASE_1);
+  setValue(CCS_MOTOR_VOLTAGE_PHASE_1, calcMotorVoltagePhase(calcDropVoltageFilter(current),
+                                                            calcDropVoltageCable(current)));
+  return parameters.get(CCS_MOTOR_VOLTAGE_PHASE_1);
 }
 
-void Ccs::calcCurrentImbalanceIn()
+float Ccs::calcMotorVoltagePhase2()
 {
-  float imbalance = calcImbalance(parameters.get(EM_CURRENT_PHASE_1),
-                                  parameters.get(EM_CURRENT_PHASE_2),
-                                  parameters.get(EM_CURRENT_PHASE_3),
-                                  1);
-  setNewValue(CCS_CURRENT_IMBALANCE_IN, imbalance);
+  float current = parameters.get(CCS_MOTOR_CURRENT_PHASE_2);
+  setValue(CCS_MOTOR_VOLTAGE_PHASE_2, calcMotorVoltagePhase(calcDropVoltageFilter(current),
+                                                            calcDropVoltageCable(current)));
+  return parameters.get(CCS_MOTOR_VOLTAGE_PHASE_2);
+}
+
+float Ccs::calcMotorVoltagePhase3()
+{
+  float current = parameters.get(CCS_MOTOR_CURRENT_PHASE_3);
+  setValue(CCS_MOTOR_VOLTAGE_PHASE_3, calcMotorVoltagePhase(calcDropVoltageFilter(current),
+                                                            calcDropVoltageCable(current)));
+  return parameters.get(CCS_MOTOR_VOLTAGE_PHASE_3);
+}
+
+float Ccs::calcMotorVoltageImbalance()
+{
+  setValue(CCS_MOTOR_VOLTAGE_IMBALANCE,
+           calcImbalance(parameters.get(CCS_MOTOR_VOLTAGE_PHASE_1),
+                         parameters.get(CCS_MOTOR_VOLTAGE_PHASE_2),
+                         parameters.get(CCS_MOTOR_VOLTAGE_PHASE_3),
+                         0));
+  return parameters.get(CCS_MOTOR_VOLTAGE_IMBALANCE);
+}
+
+float Ccs::calcMotorSpeed()
+{
+  float mtrType = parameters.get(VSD_MOTOR_TYPE);
+  float freq = parameters.get(VSD_FREQUENCY_NOW);
+  float mtrSpeed;
+  if (mtrType == VSD_MOTOR_TYPE_ASYNC) {
+    mtrSpeed = freq * 60;
+  }
+  else {
+    if (mtrType == VSD_MOTOR_TYPE_VENT) {
+      mtrSpeed = freq * 30;
+    }
+    else {
+      mtrSpeed = 0;
+    }
+  }
+  setValue(CCS_MOTOR_SPEED_NOW, mtrSpeed);
+  return parameters.get(CCS_MOTOR_SPEED_NOW);
+}
+
+float Ccs::calcMotorCos()
+{
+  float actPwr = parameters.get(VSD_POWER_ACTIVE);
+  float fullPwr =  parameters.get(VSD_POWER_FULL);
+  float cos = actPwr;
+  if (fullPwr != 0) {
+    cos = actPwr / fullPwr;
+  }
+  if (cos < 0)
+    cos = cos * (-1);
+  if (cos > 1)
+    cos = 1;
+  setValue(CCS_MOTOR_COS_PHI_NOW, cos);
+  return parameters.get(CCS_MOTOR_COS_PHI_NOW);
+}
+
+float Ccs::calcMotorLoad()
+{
+  float mtrCur = parameters.get(CCS_MOTOR_CURRENT_AVARAGE);
+  float mtrCos = parameters.get(CCS_MOTOR_COS_PHI_NOW);
+  float nomMtrCur = parameters.get(VSD_MOTOR_CURRENT);
+  float nomMtrCos = parameters.get(VSD_MOTOR_COS_PHI);
+  float mtrLoad;
+  if ((nomMtrCur == 0) || (nomMtrCos == 0))
+    mtrLoad = 0;
+  else
+    mtrLoad = ((mtrCur * mtrCos) / (nomMtrCur * nomMtrCos)) * 100;
+  setValue(CCS_MOTOR_LOAD_NOW, mtrLoad);
+  return parameters.get(CCS_MOTOR_LOAD_NOW);
+}
+
+float Ccs::calcInputVoltagePhase1()
+{
+  setValue(CCS_VOLTAGE_PHASE_1,
+           applyCoef(parameters.get(EM_VOLTAGE_PHASE_1),
+                     parameters.get(CCS_COEF_VOLTAGE_IN_A)));
+  return parameters.get(CCS_VOLTAGE_PHASE_1);
+}
+
+float Ccs::calcInputVoltagePhase2()
+{
+  setValue(CCS_VOLTAGE_PHASE_2,
+           applyCoef(parameters.get(EM_VOLTAGE_PHASE_2),
+                     parameters.get(CCS_COEF_VOLTAGE_IN_B)));
+  return parameters.get(CCS_VOLTAGE_PHASE_2);
+}
+
+float Ccs::calcInputVoltagePhase3()
+{
+  setValue(CCS_VOLTAGE_PHASE_3,
+           applyCoef(parameters.get(EM_VOLTAGE_PHASE_3),
+                     parameters.get(CCS_COEF_VOLTAGE_IN_C)));
+  return parameters.get(CCS_VOLTAGE_PHASE_3);
+}
+
+float Ccs::calcInputVoltagePhase12()
+{
+  setValue(CCS_VOLTAGE_PHASE_1_2,
+           applyCoef(parameters.get(EM_VOLTAGE_PHASE_1_2),
+                     parameters.get(CCS_COEF_VOLTAGE_IN_A)));
+  return parameters.get(CCS_VOLTAGE_PHASE_1_2);
+}
+
+float Ccs::calcInputVoltagePhase23()
+{
+  setValue(CCS_VOLTAGE_PHASE_2_3,
+           applyCoef(parameters.get(EM_VOLTAGE_PHASE_2_3),
+                     parameters.get(CCS_COEF_VOLTAGE_IN_B)));
+  return parameters.get(CCS_VOLTAGE_PHASE_2_3);
+}
+
+float Ccs::calcInputVoltagePhase31()
+{
+  setValue(CCS_VOLTAGE_PHASE_3_1,
+           applyCoef(parameters.get(EM_VOLTAGE_PHASE_3_1),
+                     parameters.get(CCS_COEF_VOLTAGE_IN_C)));
+  return parameters.get(CCS_VOLTAGE_PHASE_3_1);
+}
+
+float Ccs::calcInputVoltageImbalance()
+{
+  setValue(CCS_VOLTAGE_IMBALANCE_IN,
+           calcImbalance(parameters.get(CCS_VOLTAGE_PHASE_1),
+                         parameters.get(CCS_VOLTAGE_PHASE_2),
+                         parameters.get(CCS_VOLTAGE_PHASE_3),
+                         0));
+  return parameters.get(CCS_VOLTAGE_IMBALANCE_IN);
+}
+
+float Ccs::calcInputCurrentImbalance()
+{
+  setValue(CCS_CURRENT_IMBALANCE_IN,
+           calcImbalance(parameters.get(EM_CURRENT_PHASE_1),
+                         parameters.get(EM_CURRENT_PHASE_2),
+                         parameters.get(EM_CURRENT_PHASE_3),
+                         1));
+  return parameters.get(CCS_CURRENT_IMBALANCE_IN);
+}
+
+float Ccs::calcMotorInductFromResistPhase()
+{
+  float resist = parameters.get(CCS_MOTOR_INDUCTANCE_RESIST_PHASE);
+  float freq = parameters.get(VSD_MOTOR_FREQUENCY);
+  float induct = resist * 1000 / (2 * NUM_PI * freq);
+  setValue(CCS_MOTOR_INDUCTANCE, induct);
+  return parameters.get(CCS_MOTOR_INDUCTANCE);
+}
+
+float Ccs::calcMotorResistPhaseFromInduct()
+{
+  float induct = parameters.get(CCS_MOTOR_INDUCTANCE);
+  float freq = parameters.get(VSD_MOTOR_FREQUENCY);
+  float resist = 2 * NUM_PI * induct * freq / 1000;
+  setValue(CCS_MOTOR_INDUCTANCE_RESIST_PHASE, resist);
+  return parameters.get(CCS_MOTOR_INDUCTANCE_RESIST_PHASE);
+}
+
+float Ccs::calcSystemInduct()
+{
+  float coefTrans2 = pow(parameters.get(CCS_COEF_TRANSFORMATION), 2);
+  float inductTrans = (parameters.get(CCS_TRANS_VOLTAGE_SHORT_CIRCUIT) * parameters.get(CCS_TRANS_NOMINAL_VOLTAGE) * 0.01) /
+                      (parameters.get(CCS_TRANS_NOMINAL_CURRENT) * parameters.get(CCS_TRANS_NOMINAL_FREQUENCY) * 2 * NUM_PI);
+  float inductCable = ((parameters.get(CCS_TRANS_CABLE_LENGHT) * 1.5) / coefTrans2) / 1000000;
+  float inductMotor = (parameters.get(CCS_MOTOR_INDUCTANCE) / coefTrans2) / 1000;
+  float inductFilter = parameters.get(CCS_FILTER_INDUCTANCE) / 1000;
+  float induct = (inductTrans + inductCable + inductMotor + inductFilter) * 1000;
+  parameters.set(CCS_SYSTEM_INDUCTANCE, induct);
+  parameters.set(VSD_LOUT, parameters.get(CCS_SYSTEM_INDUCTANCE));
+  return parameters.get(CCS_SYSTEM_INDUCTANCE);
 }
 
 uint8_t Ccs::setNewValue(uint16_t id, float value)
@@ -699,7 +948,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value)
     calcSystemInduct();
     break;
   case CCS_MOTOR_INDUCTANCE_RESIST_PHASE:
-    parameters.set(CCS_MOTOR_INDUCTANCE, calcMotorInductFromResistPhase(parameters.get(CCS_MOTOR_INDUCTANCE_RESIST_PHASE)));
+    calcMotorInductFromResistPhase();
     calcSystemInduct();
     break;
   case CCS_FILTER_INDUCTANCE:
@@ -736,6 +985,13 @@ uint8_t Ccs::setNewValue(uint16_t id, uint32_t value)
     {
       time_t time = value;
       rtcSetTime(&time);
+      tm dateTime = *localtime(&time);
+      setNewValue(CCS_DATE_TIME_SEC, dateTime.tm_sec);
+      setNewValue(CCS_DATE_TIME_MIN, dateTime.tm_min);
+      setNewValue(CCS_DATE_TIME_HOUR, dateTime.tm_hour);
+      setNewValue(CCS_DATE_TIME_DAY, dateTime.tm_mday);
+      setNewValue(CCS_DATE_TIME_MONTH, dateTime.tm_mon);
+      setNewValue(CCS_DATE_TIME_YEAR, 1900 + dateTime.tm_year);
     }
     break;
   }
@@ -745,160 +1001,6 @@ uint8_t Ccs::setNewValue(uint16_t id, uint32_t value)
 uint8_t Ccs::setNewValue(uint16_t id, int value)
 {
   return setNewValue(id, (float)value);
-}
-
-void Ccs::calcMotorCurrentImbalance()
-{
-  float imbalance = calcImbalance(parameters.get(CCS_MOTOR_CURRENT_PHASE_1),
-                                  parameters.get(CCS_MOTOR_CURRENT_PHASE_2),
-                                  parameters.get(CCS_MOTOR_CURRENT_PHASE_3),
-                                  1);
-  setNewValue(CCS_MOTOR_CURRENT_IMBALANCE, imbalance);
-}
-
-float Ccs::calcVoltageDropCable(float lenght, float cross, float current)
-{
-  if (parameters.get(CCS_RGM_HEAT_CABLE_MODE) != Regime::OffAction) {
-    lenght = 2 * lenght / 1000;                                         // Длина петли кабеля в кМ
-    float R80 = parameters.get(CCS_RGM_HEAT_CABLE_RESISTANCE_80);       // Сопротивление кабеля при 80°С
-    current = parameters.get(VSD_MOTOR_CURRENT);                        // Номинальный ток ПЭД
-    float dUcl = R80 * lenght * current;
-    return dUcl;
-  }
-  else {
-    if (!cross)
-      cross = 16;
-    float dUcl = 38.7 * (current * lenght) / (cross * 1000);            // Падение напряжения на кабельной линии
-    return dUcl;
-  }
-}
-
-float Ccs::calcVoltageDropFilter(float current, float freq, float inputVoltage, float tapOff, float filter)
-{
-  if (!freq)
-    freq = parameters.get(VSD_MOTOR_FREQUENCY);
-  if (!inputVoltage)
-    inputVoltage = 380.0;
-  float trans = parameters.get(CCS_TRANS_VOLTAGE_TAP_OFF) / inputVoltage;
-  float dUf = 2 * NUM_PI * filter * freq * current * trans / 1000.0;
-  return dUf;
-}
-
-float Ccs::calcMotorResistPhaseFromInduct(float induct)
-{
-  float freq = parameters.get(VSD_MOTOR_FREQUENCY);
-  float resist = 2 * NUM_PI * induct * freq / 1000;
-  return resist;
-}
-
-void Ccs::calcSystemInduct()
-{
-  float coefTrans2 = pow(parameters.get(CCS_COEF_TRANSFORMATION), 2);
-  float inductTrans = (parameters.get(CCS_TRANS_VOLTAGE_SHORT_CIRCUIT) * parameters.get(CCS_TRANS_NOMINAL_VOLTAGE) * 0.01) /
-                      (parameters.get(CCS_TRANS_NOMINAL_CURRENT) * parameters.get(CCS_TRANS_NOMINAL_FREQUENCY) * 2 * NUM_PI);
-  float inductCable = ((parameters.get(CCS_TRANS_CABLE_LENGHT) * 1.5) / coefTrans2) / 1000000;
-  float inductMotor = (parameters.get(CCS_MOTOR_INDUCTANCE) / coefTrans2) / 1000;
-  float inductFilter = parameters.get(CCS_FILTER_INDUCTANCE) / 1000;
-  float induct = (inductTrans + inductCable + inductMotor + inductFilter) * 1000;
-  parameters.set(CCS_SYSTEM_INDUCTANCE, induct);
-  parameters.set(VSD_LOUT, parameters.get(CCS_SYSTEM_INDUCTANCE));
-}
-
-float Ccs::calcMotorInductFromResistPhase(float resist)
-{
-  float freq = parameters.get(VSD_MOTOR_FREQUENCY);
-  float induct = resist * 1000 / (2 * NUM_PI * freq);
-  return induct;
-}
-
-void Ccs::calcMotorCurrentPhase(uint16_t vsdOutCurrent, uint16_t coefCorrect, uint16_t motorCurrent)
-{
-  float current;
-  float vsdCurrent = parameters.get(vsdOutCurrent);
-  float coefTrans = parameters.get(CCS_COEF_TRANSFORMATION);
-  float coefCor = parameters.get(coefCorrect);
-  if (coefTrans) {
-    current = vsdCurrent / coefTrans;
-  }
-  else {
-    current = vsdCurrent;
-  }
-  current = current * coefCor;
-  setNewValue(motorCurrent, current);
-}
-
-void Ccs::calcMotorCurrentPhase1()
-{
-  calcMotorCurrentPhase(VSD_CURRENT_OUT_PHASE_1,
-                        CCS_COEF_OUT_CURRENT_1,
-                        CCS_MOTOR_CURRENT_PHASE_1);
-}
-
-void Ccs::calcMotorCurrentPhase2()
-{
-  calcMotorCurrentPhase(VSD_CURRENT_OUT_PHASE_2,
-                        CCS_COEF_OUT_CURRENT_2,
-                        CCS_MOTOR_CURRENT_PHASE_2);
-}
-
-void Ccs::calcMotorCurrentPhase3()
-{
-  calcMotorCurrentPhase(VSD_CURRENT_OUT_PHASE_3,
-                        CCS_COEF_OUT_CURRENT_3,
-                        CCS_MOTOR_CURRENT_PHASE_3);
-}
-
-void Ccs::calcMotorCurrentAvarage()
-{
-  float motorCurrent = parameters.get(CCS_MOTOR_CURRENT_PHASE_1);
-  motorCurrent = motorCurrent + parameters.get(CCS_MOTOR_CURRENT_PHASE_2);
-  motorCurrent = parameters.get(CCS_MOTOR_CURRENT_PHASE_3);
-  motorCurrent = motorCurrent / 3;
-  setNewValue(CCS_MOTOR_CURRENT_AVARAGE, motorCurrent);
-}
-
-void Ccs::calcMotorLoad()
-{
-  float mtrCur = parameters.get(CCS_MOTOR_CURRENT_AVARAGE);
-  float mtrCos = 1;
-  float nomMtrCur = parameters.get(VSD_MOTOR_CURRENT);
-  if (nomMtrCur == 0) {
-    return;
-  }
-  float nomMtrCos = parameters.get(VSD_MOTOR_COS_PHI);
-  if (nomMtrCos == 0) {
-    return;
-  }
-  float mtrLoad = ((mtrCur * mtrCos) / (nomMtrCur * nomMtrCos)) * 100;
-  setNewValue(CCS_MOTOR_LOAD_NOW, mtrLoad);
-}
-
-void Ccs::calcMotorCos()
-{
-  float actPwr = parameters.get(VSD_POWER_ACTIVE);
-  float fullPwr = parameters.get(VSD_POWER_FULL);
-  float cos = actPwr;
-  if (fullPwr != 0) {
-    cos = actPwr / fullPwr;
-  }
-  if (cos < 0)
-    cos = cos * (-1);
-  if (cos > 1)
-    cos = 1;
-  setNewValue(CCS_MOTOR_COS_PHI_NOW, cos);
-}
-
-void Ccs::calcMotorSpeed()
-{
-  if (parameters.get(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) {
-    parameters.set(CCS_MOTOR_SPEED_NOW, vsd->getCurrentFreq() * 60) ;
-  }
-  else if (parameters.get(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_VENT) {
-    parameters.set(CCS_MOTOR_SPEED_NOW, vsd->getCurrentFreq() * 30);
-  }
-  else {
-    parameters.set(CCS_MOTOR_SPEED_NOW, 0.0);
-  } 
 }
 
 void Ccs::calcRegimeChangeFreqPeriodOneStep()

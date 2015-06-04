@@ -202,81 +202,112 @@ public:
   uint32_t getSecFromCurTime(enID timeId);
 
   /*!
-   * \brief calcMotorCurrentPhase1
+   * \brief Функция вычисления расчётных параметров
    */
-  void calcMotorCurrentPhase1();
+  void calcParameters();
 
   /*!
-   * \brief calcMotorCurrentPhase2
-   */
-  void calcMotorCurrentPhase2();
-
-  /*!
-   * \brief calcMotorCurrentPhase3
-   */
-  void calcMotorCurrentPhase3();
-
-  /*!
-   * \brief calcMotorCurrentAvarage
-   */
-  void calcMotorCurrentAvarage();
-
-  /*!
-   * \brief calcMotorCurrentPhase
-   * \param vsdOutCurrent
-   * \param coefCorrect
-   * \param motorCurrent
-   */
-  void calcMotorCurrentPhase(uint16_t vsdOutCurrent, uint16_t coefCorrect, uint16_t motorCurrent);
-
-  /*!
-   * \brief calcMotorCurrentImbalance
-   */
-  void calcMotorCurrentImbalance();
-
-  /*!
-   * \brief Функция вычисления падения напряжения на кабельной линии
-   * \param lenght длина кабельной линни
-   * \param cross сечение кабеля
-   * \param current ток
+   * \brief Функция вычисления коэффициента трансформации трансформатора
    * \return
    */
-  float calcVoltageDropCable(float lenght, float cross, float current);
+  float calcTransCoef();
+
+  /*!
+   * \brief Функция вычисления тока на фазе двигателя
+   * \param vsdCurOut - ток фазы на выходе ЧРП с учётом коэффициента коррекции
+   * \return ток на фазе двигателя
+   */
+  float calcMotorCurrentPhase(float vsdCurOut);
+  float calcMotorCurrentPhase1();
+  float calcMotorCurrentPhase2();
+  float calcMotorCurrentPhase3();
+  float calcMotorCurrentAverage();
+  float calcMotorCurrentImbalance();
 
   /*!
    * \brief Функция вычисления падения напряжения на фильтре
-   * \param current расчёт для этого значения тока
-   * \param freq расчет для этого значения частоты
-   * \param inputVoltage Входное напряжение ТМПН
-   * \param tapOff Напряжение отпайки ТМПН
-   * \param filter Индуктивность фильтра
+   * \param current - расчёт для этого значения тока
+   * \return величину падения напряжения на фильтре
+   */
+  float calcDropVoltageFilter(float current);
+
+  /*!
+   * \brief Функция вычисления падения напряжения на кабельной линии
+   * \param current - ток
+   * \return величину падения напряжения в кабельной линии
+   */
+  float calcDropVoltageCable(float current);
+
+  /*!
+   * \brief Функция вычисления напряжения на фазе двигателя
+   * \param dropVoltFilter - падение напряжения на фильтре
+   * \param dropVoltCable - падение напряжения на кабеле
+   * \return напряжение фазы двигателя
+   */
+  float calcMotorVoltagePhase(float dropVoltFilter, float dropVoltCable);
+  float calcMotorVoltagePhase1();
+  float calcMotorVoltagePhase2();
+  float calcMotorVoltagePhase3();
+
+  /*!
+   * \brief Функция вычисления дисбаланса напряжения двигателя
    * \return
    */
-  float calcVoltageDropFilter(float current, float freq, float inputVoltage, float tapOff, float filter);
+  float calcMotorVoltageImbalance();
+
+  /*!
+   * \brief Функция вычисления текущей скорости вращения двигателя
+   * \return Скорость вращения
+   */
+  float calcMotorSpeed();
+
+  /*!
+   * \brief Функция вычисления текущего коэффициента мощности
+   * \return Текущий коэффициент мощности
+   */
+  float calcMotorCos();
+
+  /*!
+   * \brief Функция вычисления загрузки двигателя
+   * \return
+   */
+  float calcMotorLoad();
+
+  /*!
+   * \brief Функция вычисления корректированного значения входного напряжения
+   * \return
+   */
+  float calcInputVoltagePhase1();
+  float calcInputVoltagePhase2();
+  float calcInputVoltagePhase3();
+  float calcInputVoltagePhase12();
+  float calcInputVoltagePhase23();
+  float calcInputVoltagePhase31();
+  float calcInputVoltageImbalance();
+
+  /*!
+   * \brief Функция вычисления дисбаланса входных токов
+   * \return
+   */
+  float calcInputCurrentImbalance();
 
   /*!
    * \brief Функция вычисления индуктивности двигателя по полному сопротивлению фаз двигателя
-   * \param resist сопротивление
    * \return
    */
-  float calcMotorInductFromResistPhase(float resist);
+  float calcMotorInductFromResistPhase();
 
   /*!
    * \brief Функция вычисления полного сопротивления фаз двигателя по индуктивности
-   * \param induct
    * \return
    */
-  float calcMotorResistPhaseFromInduct(float induct);
+  float calcMotorResistPhaseFromInduct();
 
   /*!
    * \brief Функция вычисляет и сохраняет в регистр общую индуктивность системы
    */
-  void calcSystemInduct();
+  float calcSystemInduct();
 
-  /*!
-   * \brief calcVoltageImbalanceIn
-   */
-  void calcVoltageImbalanceIn();
 
   uint8_t setNewValue(uint16_t id, float value);
 
@@ -346,29 +377,6 @@ private:
    * \brief Метод подсчёта времени работы и останова
    */
   void calcTime();
-
-  /*!
-   * \brief calcParameters
-   */
-  void calcParameters();
-
-  /*!
-   * \brief calcCoefTransformation
-   */
-  void calcCoefTransformation();
-
-  /*!
-   * \brief Функция применения коэффициентов корректировки входного напряжения
-   */
-  void correctVoltageIn();
-
-  void calcCurrentImbalanceIn();
-
-  void calcMotorSpeed();
-
-  void calcMotorCos();
-
-  void calcMotorLoad();
 
   //! Массив параметров устройства
   parameter parametersArray_[CCS_END - CCS_BEGIN];

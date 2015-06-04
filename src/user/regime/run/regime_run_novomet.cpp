@@ -46,7 +46,6 @@ void RegimeRunNovomet::processingStateIdle()
 
 void RegimeRunNovomet::processingStateRunning()
 {
-  int pickupRun = 0;
   int pushRun = 0;
   int swingRun = 0;
   int autoRun = 0;

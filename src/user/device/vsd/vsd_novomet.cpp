@@ -1185,7 +1185,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  modbusParameters_[69] = {// Выходной ток ПЧ по фазе В. (амплитудное значение)
+  modbusParameters_[69] = {// Выходной ток ПЧ по фазе В.
                           VSD_CURRENT_OUT_PHASE_2,           // Уникальный идентификатор параметра
                           145,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -1219,7 +1219,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-  modbusParameters_[71] = {// Выходной ток ПЧ по фазе C. (амплитудное значение)
+  modbusParameters_[71] = {// Выходной ток ПЧ по фазе C.
                           VSD_CURRENT_OUT_PHASE_3,           // Уникальный идентификатор параметра
                           147,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
@@ -1326,7 +1326,7 @@ void VsdNovomet::initModbusParameters()
                           153,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
                           PHYSIC_ACTIVE_POWER,
-                          ACTIV_POWER_W, // Единицы измерения параметра
+                          ACTIV_POWER_KW,   // Единицы измерения параметра
                           TYPE_DATA_INT16,  // Тип данных
                           1,                // Коэффициент преобразования параметра
                           0,                // Минимальное значение параметра
@@ -1751,7 +1751,7 @@ void VsdNovomet::initModbusParameters()
                           178,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
                           PHYSIC_FULL_POWER,// Физическая величина параметра
-                          FULL_POWER_VA,    // Единицы измерения параметра
+                          FULL_POWER_KVA,   // Единицы измерения параметра
                           TYPE_DATA_INT16,  // Тип данных
                           1,                // Коэффициент преобразования параметра
                           0,                // Минимальное значение параметра
@@ -2733,20 +2733,6 @@ void VsdNovomet::calcParameters(uint16_t id)
   case  VSD_POWER_ACTIVE:
     calcCurrentDC();
     break;
-  case  VSD_CURRENT_OUT_PHASE_1:
-    ksu.calcMotorCurrentPhase1();
-    ksu.calcMotorCurrentAvarage();
-    ksu.calcMotorCurrentImbalance();
-    break;
-  case  VSD_CURRENT_OUT_PHASE_2:
-    ksu.calcMotorCurrentPhase2();
-    ksu.calcMotorCurrentAvarage();
-    ksu.calcMotorCurrentImbalance();
-    break;
-  case  VSD_CURRENT_OUT_PHASE_3:
-    ksu.calcMotorCurrentPhase3();
-    ksu.calcMotorCurrentAvarage();
-    ksu.calcMotorCurrentImbalance();
   default:
 
     break;
