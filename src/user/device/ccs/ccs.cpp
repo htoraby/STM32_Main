@@ -557,12 +557,13 @@ void Ccs::calcTime()
     time_t time = rtcGetTime();
     setValue(CCS_DATE_TIME, (uint32_t)time);
     tm dateTime = *localtime(&time);
-    setNewValue(CCS_DATE_TIME_SEC, dateTime.tm_sec);
-    setNewValue(CCS_DATE_TIME_MIN, dateTime.tm_min);
-    setNewValue(CCS_DATE_TIME_HOUR, dateTime.tm_hour);
-    setNewValue(CCS_DATE_TIME_DAY, dateTime.tm_mday);
-    setNewValue(CCS_DATE_TIME_MONTH, dateTime.tm_mon);
-    setNewValue(CCS_DATE_TIME_YEAR, 1900 + dateTime.tm_year);
+    setValue(CCS_DATE_TIME_SEC, dateTime.tm_sec);
+    setValue(CCS_DATE_TIME_MIN, dateTime.tm_min);
+    setValue(CCS_DATE_TIME_HOUR, dateTime.tm_hour);
+    setValue(CCS_DATE_TIME_DAY, dateTime.tm_mday);
+    setValue(CCS_DATE_TIME_MONTH, dateTime.tm_mon);
+    setValue(CCS_DATE_TIME_YEAR, 1900 + dateTime.tm_year);
+    // TODO: Синхронизация времени
   }
 
   if (conditionOld != condition) {
@@ -984,6 +985,13 @@ uint8_t Ccs::setNewValue(uint16_t id, uint32_t value)
     {
       time_t time = value;
       rtcSetTime(&time);
+      tm dateTime = *localtime(&time);
+      setNewValue(CCS_DATE_TIME_SEC, dateTime.tm_sec);
+      setNewValue(CCS_DATE_TIME_MIN, dateTime.tm_min);
+      setNewValue(CCS_DATE_TIME_HOUR, dateTime.tm_hour);
+      setNewValue(CCS_DATE_TIME_DAY, dateTime.tm_mday);
+      setNewValue(CCS_DATE_TIME_MONTH, dateTime.tm_mon);
+      setNewValue(CCS_DATE_TIME_YEAR, 1900 + dateTime.tm_year);
     }
     break;
   }
