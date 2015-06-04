@@ -981,8 +981,8 @@ enum enID
   VSD_HIGH_START_TORQUE_CURRENT = 10255,                     //!< Пусковой ток в % от номинального Danfoss 30-21 Не используется в проекте, только при конфигурировании
   VSD_LOCK_ROTOR_PROTECTION = 10256,                         //!< Защита блокировки ротора Danfoss 30-22 Не используется в проекте, только при конфигурировании
   VSD_LOCK_ROTOR_TIME = 10257,                               //!< Время задержки аварии блокировки ротора Danfoss 30-23 Не используется в проекте, только при конфигурировании
-  VSD_TEMP_SPEEDUP = 10258,                                  //!< 
-  VSD_TEMP_SPEEDDOWN = 10259,                                //!< 
+  VSD_TEMP_SPEEDUP = 10258,                                  //!< Темп набора частоты
+  VSD_TEMP_SPEEDDOWN = 10259,                                //!< Темп снижения частоты
   VSD_RADIATOR_TEMPERATURE_1 = 10260,                        //!< 
   VSD_CONTROL_TEMPERATURE_1 = 10261,                         //!< 
   VSD_ETALON_ON_STATE = 10262,                               //!< Состояние работы ЧРП Эталон, 0 останов 1 в работе

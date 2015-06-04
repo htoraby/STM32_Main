@@ -1940,9 +1940,9 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
       setFrequency(value);
     return setMaxFrequency(value);
   case  VSD_TEMP_SPEEDUP:
-    return setTempSpeedUp(value);
+    return setTimeSpeedUp(value);
   case  VSD_TEMP_SPEEDDOWN:
-    return setTempSpeedDown(value);
+    return setTimeSpeedDown(value);
   case  VSD_MOTOR_CONTROL:
     return setMotorControl(value);
   default:
@@ -2155,9 +2155,9 @@ void VsdEtalon::calcCurrentDC()
 }
 
 
-int VsdEtalon::setTempSpeedUp(float value)
+int VsdEtalon::setTimeSpeedUp(float value)
 {
-  if (Vsd::setTempSpeedUp(value)) {
+  if (Vsd::setTimeSpeedUp(value)) {
     return err_r;
   }
   else {
@@ -2166,9 +2166,9 @@ int VsdEtalon::setTempSpeedUp(float value)
   }
 }
 
-int VsdEtalon::setTempSpeedDown(float value)
+int VsdEtalon::setTimeSpeedDown(float value)
 {
-  if (Vsd::setTempSpeedDown(value)) {
+  if (Vsd::setTimeSpeedDown(value)) {
     return err_r;
   }
   else {
