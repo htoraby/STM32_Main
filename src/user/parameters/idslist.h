@@ -718,7 +718,8 @@ enum enID
   CCS_FILTER_INPUT = 712,                                    //!< Входной фильтр
   CCS_FILTER_OUTPUT = 713,                                   //!< Выходной фильтр
   CCS_FILTER_CAPACITY = 714,                                 //!< Ёмкость выходного фильтра
-  CCS_END = 715,                                             //!< Последний параметр
+  CCS_RESTART_COUNT = 715,                                   //!< Количество АПВ
+  CCS_END = 716,                                             //!< Последний параметр
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF

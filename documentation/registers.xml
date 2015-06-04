@@ -7881,8 +7881,8 @@
 		<short_text>Время работы</short_text>
 		<form>6.3 Статистика</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>ХХ_ХХ</format>
+		<unit_lcd>TIME_HH_MM_SS</unit_lcd>
+		<format>ХХ_ХХ_XX</format>
 		<comment>Текущая наработка</comment>
 	</param>
 	<param>
@@ -7898,8 +7898,8 @@
 		<short_text>Время простоя</short_text>
 		<form>6.3 Статистика</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>ХХ_ХХ</format>
+		<unit_lcd>TIME_HH_MM_SS</unit_lcd>
+		<format>ХХ_ХХ_XX</format>
 		<comment>Текущий простой</comment>
 	</param>
 	<param>
@@ -7932,8 +7932,8 @@
 		<short_text>Время до запуска</short_text>
 		<form>6.3 Статистика</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>ХХ_ХХ</format>
+		<unit_lcd>TIME_HH_MM_SS</unit_lcd>
+		<format>ХХ_ХХ_XX</format>
 		<comment>Время до запуска</comment>
 	</param>
 	<param>
@@ -10929,6 +10929,24 @@
 	</param>
 	<param>
 		<id>715</id>
+		<name>CCS_RESTART_COUNT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>10000000.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Количество АПВ</text>
+		<short_text>Количество АПВ</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<comment>Количество АПВ</comment>
+	</param>
+	<param>
+		<id>716</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
