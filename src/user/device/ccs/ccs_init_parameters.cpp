@@ -7152,5 +7152,45 @@ void Ccs::initParameters()
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].min                               = 0.0;
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].max                               = 10000000.0;
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].def                               = 0.0;
+  // Напряжение двигателя фаза A
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].id                          = CCS_MOTOR_VOLTAGE_PHASE_1;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].access                      = ACCESS_OPERATOR;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].physic                      = PHYSIC_VOLTAGE;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].validity                    = VALIDITY_OK;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].value.float_t               = 0.0;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].min                         = 0.0;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].def                         = 0.0;
+  // Напряжение двигателя фаза B
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].id                          = CCS_MOTOR_VOLTAGE_PHASE_2;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].access                      = ACCESS_OPERATOR;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].physic                      = PHYSIC_VOLTAGE;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].validity                    = VALIDITY_OK;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].value.float_t               = 0.0;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].min                         = 0.0;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].def                         = 0.0;
+  // Напряжение двигателя фаза C
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].id                          = CCS_MOTOR_VOLTAGE_PHASE_3;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].access                      = ACCESS_OPERATOR;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].physic                      = PHYSIC_VOLTAGE;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].validity                    = VALIDITY_OK;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].value.float_t               = 0.0;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].min                         = 0.0;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].def                         = 0.0;
+  // Дисбаланс напряжений
+  parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].id                        = CCS_MOTOR_VOLTAGE_IMBALANCE;
+  parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].access                    = ACCESS_OPERATOR;
+  parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].physic                    = PHYSIC_PERCENT;
+  parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].validity                  = VALIDITY_OK;
+  parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].value.float_t             = 0.0;
+  parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].min                       = 0.0;
+  parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].def                       = 0.0;
 }
 
