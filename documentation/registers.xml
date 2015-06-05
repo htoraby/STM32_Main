@@ -10617,7 +10617,7 @@
 	</param>
 	<param>
 		<id>699</id>
-		<name>CCS_TRANS_NOMINAL_FREQUENCY</name>
+		<name>CCS_TRANS_NOMINAL_FREQUENCY_INPUT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
@@ -11023,6 +11023,44 @@
 	</param>
 	<param>
 		<id>720</id>
+		<name>CCS_TRANS_NOMINAL_VOLTAGE_INPUT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>10000000.0</max>
+		<def>380.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>380.0</value>
+		<text>Напряжение питающей сети</text>
+		<short_text>Входное напряжение</short_text>
+		<form>3.3 ТМПН</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<comment>Напряжение питающей сети</comment>
+	</param>
+	<param>
+		<id>721</id>
+		<name>CCS_VOLTAGE_HIGH_LIMIT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>10000000.0</max>
+		<def>380.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>380.0</value>
+		<text>Максимальная рабочее напряжение</text>
+		<short_text>Максимальная рабочее напряжение</short_text>
+		<form>3.3 ТМПН</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<comment>Максимальная рабочее напряжение</comment>
+	</param>
+	<param>
+		<id>722</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
@@ -13599,9 +13637,19 @@
 		<id>10228</id>
 		<name>VSD_SWITCHING_FREQUENCY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
+		<def>1.0</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Частота ШИМ</text>
+		<short_text>Частота ШИМ</short_text>
+		<form>3.2 ЧРП</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_KHZ</unit_lcd>
+		<format>XXXX_X</format>
 		<comment>Частота коммутации Danfoss 14-01 Используется в проекте Novomet 0х003C IREG_FREQ_PWM</comment>
 	</param>
 	<param>
