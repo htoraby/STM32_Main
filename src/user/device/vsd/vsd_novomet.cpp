@@ -2425,13 +2425,18 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
       setFrequency(value);
     return setMinFrequency(value);
   case VSD_HIGH_LIM_SPEED_MOTOR:
-    if (value < getValue(VSD_FREQUENCY))
+    if (value < getValue(VSD_FREQUENCY)) {
       setFrequency(value);
+      ksu.calcTransTapOff();
+    }
     return setMaxFrequency(value);
-  case VSD_TEMP_SPEEDUP:
-    return setTempSpeedUp(value);
-  case VSD_TEMP_SPEEDDOWN:
-    return setTempSpeedDown(value);
+  case VSD_TIMER_DISPERSAL:
+    return setTimeSpeedUp(value);
+  case VSD_TIMER_DELAY:
+    return setTimeSpeedDown(value);
+  case VSD_MOTOR_VOLTAGE:
+    ksu.calcTransTapOff();
+    return ok_r;
   default:
     int result = setValue(id, value);
     if (!result)
@@ -2667,6 +2672,28 @@ void VsdNovomet::calcCurrentDC()
   float volt = getValue(VSD_VOLTAGE_DC);
   if (volt > 0) {
     setValue(VSD_CURRENT_DC, pwr/volt);
+  }
+}
+
+int VsdNovomet::setTimeSpeedUp(float value)
+{
+  if (Vsd::setTimeSpeedUp(value)) {
+    return err_r;
+  }
+  else {
+    writeToDevice(VSD_T_SPEEDUP, getValue(VSD_T_SPEEDUP));
+    return ok_r;
+  }
+}
+
+int VsdNovomet::setTimeSpeedDown(float value)
+{
+  if (Vsd::setTimeSpeedDown(value)) {
+    return err_r;
+  }
+  else {
+    writeToDevice(VSD_T_SPEEDDOWN, getValue(VSD_T_SPEEDDOWN));
+    return ok_r;
   }
 }
 

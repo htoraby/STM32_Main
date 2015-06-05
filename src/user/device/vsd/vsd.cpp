@@ -100,11 +100,34 @@ int Vsd::setMaxFrequency(float value)
   }
 }
 
+int Vsd::setTimeSpeedUp(float value)
+{
+  if (!setValue(VSD_TIMER_DISPERSAL, value)) {        // Записали время разгона (с)
+    if (!setValue(VSD_TEMP_SPEEDUP,                   // Записали темп разгона (Гц/с)
+        getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TIMER_DISPERSAL))) {
+      return setValue(VSD_T_SPEEDUP, 1/getValue(VSD_TEMP_SPEEDUP));       // Записали время на 1Гц
+    }
+  }
+  return err_r;
+}
+
+int Vsd::setTimeSpeedDown(float value)
+{
+  if (!setValue(VSD_TIMER_DELAY, value)) {            // Записали время торможения (с)
+    if (!setValue(VSD_TEMP_SPEEDDOWN,                 // Записали темп торможения (Гц/с)
+        getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TIMER_DELAY))) {
+      return setValue(VSD_T_SPEEDDOWN, 1/getValue(VSD_TEMP_SPEEDDOWN));   // Записали время на 1Гц
+    }
+  }
+  return err_r;
+}
+
 int Vsd::setTempSpeedUp(float value)
 {
-  if (!setValue(VSD_TEMP_SPEEDUP, value)) {
-    if (!setValue(VSD_TIMER_DISPERSAL, getValue(VSD_FREQUENCY)/getValue(VSD_TEMP_SPEEDUP))) {
-      return setValue(VSD_T_SPEEDUP, 1/getValue(VSD_TEMP_SPEEDUP));
+  if (!setValue(VSD_TEMP_SPEEDUP, value)) {           // Записали темп разгона (Гц/с)
+    if (!setValue(VSD_TIMER_DISPERSAL,                // Записали время разгона (с)
+        getValue(VSD_FREQUENCY)/getValue(VSD_TEMP_SPEEDUP))) {
+      return setValue(VSD_T_SPEEDUP, 1/getValue(VSD_TEMP_SPEEDUP));       // Записали время на 1Гц
     }
   }
   return err_r;
@@ -112,22 +135,13 @@ int Vsd::setTempSpeedUp(float value)
 
 int Vsd::setTempSpeedDown(float value)
 {
-  if (!setValue(VSD_TEMP_SPEEDDOWN, value)) {
-    if (!setValue(VSD_TIMER_DELAY, getValue(VSD_FREQUENCY)/getValue(VSD_TEMP_SPEEDDOWN))) {
-      return setValue(VSD_T_SPEEDDOWN, 1/getValue(VSD_TEMP_SPEEDDOWN));
+  if (!setValue(VSD_TEMP_SPEEDDOWN, value)) {             // Записали темп торможения (Гц/с)
+    if (!setValue(VSD_TIMER_DELAY,                        // Записали время торможения (с)
+        getValue(VSD_FREQUENCY)/getValue(VSD_TEMP_SPEEDDOWN))) {
+      return setValue(VSD_T_SPEEDDOWN, 1/getValue(VSD_TEMP_SPEEDDOWN));   // Записали время на 1Гц
     }
   }
   return err_r;
-}
-
-int Vsd::setSpeedUp(float speedUp)
-{
-  return setValue(VSD_T_SPEEDUP, speedUp);
-}
-
-int Vsd::setSpeedDown(float speedDown)
-{
-  return setValue(VSD_T_SPEEDDOWN, speedDown);
 }
 
 int Vsd::setRotation(float value)

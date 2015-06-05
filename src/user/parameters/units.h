@@ -199,13 +199,12 @@ enum enPhysicActivEnergy {
 };
 
 enum enPhysicReactivEnergy {
-  REACTIVE_ENERGY_VAR_HH,
   REACTIVE_ENERGY_KVAR_HH,
-  REACTIVE_ENERGY_LAST,
+  REACTIVE_ENERGY_LAST
 };
 
 enum enPhysicFullEnergy {
-  FULL_ENERGY_VAHH,
+  FULL_ENERGY_KVAHH,
   FULL_ENERGY_LAST
 };
 

@@ -158,13 +158,13 @@ float units[PHYSIC_LAST][6][2] =
    {1.0, 0.0},
    {1.0, 0.0},
    {1.0, 0.0}},
-  {{1.0, 0.0},         //PHYSIC_REACTIVE_ENERGY -> REACTIVE_ENERGY_VAR_HH
-   {0.001, 0.0},       //PHYSIC_REACTIVE_ENERGY -> REACTIVE_ENERGY_KVAR_HH
+  {{1.0, 0.0},         //PHYSIC_REACTIVE_ENERGY -> REACTIVE_ENERGY_KVAR_HH
+   {1.0, 0.0},
    {1.0, 0.0},
    {1.0, 0.0},
    {1.0, 0.0},
    {1.0, 0.0}},
-  {{1.0, 0.0},         //PHYSIC_FULL_ENERGY -> FULL_ENERGY_VAHH
+  {{1.0, 0.0},         //PHYSIC_FULL_ENERGY -> FULL_ENERGY_KVAHH
    {1.0, 0.0},
    {1.0, 0.0},
    {1.0, 0.0},

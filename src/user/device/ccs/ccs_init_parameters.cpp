@@ -6993,15 +6993,15 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_VOLTAGE_SHORT_CIRCUIT - CCS_BEGIN].max                   = 100.0;
   parameters_[CCS_TRANS_VOLTAGE_SHORT_CIRCUIT - CCS_BEGIN].def                   = 0.0;
   // Частота питающей сети
-  parameters_[CCS_TRANS_NOMINAL_FREQUENCY - CCS_BEGIN].id                        = CCS_TRANS_NOMINAL_FREQUENCY;
-  parameters_[CCS_TRANS_NOMINAL_FREQUENCY - CCS_BEGIN].access                    = ACCESS_OPERATOR;
-  parameters_[CCS_TRANS_NOMINAL_FREQUENCY - CCS_BEGIN].operation                 = OPERATION_WRITE;
-  parameters_[CCS_TRANS_NOMINAL_FREQUENCY - CCS_BEGIN].physic                    = PHYSIC_FREQUENCY;
-  parameters_[CCS_TRANS_NOMINAL_FREQUENCY - CCS_BEGIN].validity                  = VALIDITY_OK;
-  parameters_[CCS_TRANS_NOMINAL_FREQUENCY - CCS_BEGIN].value.float_t             = 50.0;
-  parameters_[CCS_TRANS_NOMINAL_FREQUENCY - CCS_BEGIN].min                       = 50.0;
-  parameters_[CCS_TRANS_NOMINAL_FREQUENCY - CCS_BEGIN].max                       = 60.0;
-  parameters_[CCS_TRANS_NOMINAL_FREQUENCY - CCS_BEGIN].def                       = 50.0;
+  parameters_[CCS_TRANS_NOMINAL_FREQUENCY_INPUT - CCS_BEGIN].id                  = CCS_TRANS_NOMINAL_FREQUENCY_INPUT;
+  parameters_[CCS_TRANS_NOMINAL_FREQUENCY_INPUT - CCS_BEGIN].access              = ACCESS_OPERATOR;
+  parameters_[CCS_TRANS_NOMINAL_FREQUENCY_INPUT - CCS_BEGIN].operation           = OPERATION_WRITE;
+  parameters_[CCS_TRANS_NOMINAL_FREQUENCY_INPUT - CCS_BEGIN].physic              = PHYSIC_FREQUENCY;
+  parameters_[CCS_TRANS_NOMINAL_FREQUENCY_INPUT - CCS_BEGIN].validity            = VALIDITY_OK;
+  parameters_[CCS_TRANS_NOMINAL_FREQUENCY_INPUT - CCS_BEGIN].value.float_t       = 50.0;
+  parameters_[CCS_TRANS_NOMINAL_FREQUENCY_INPUT - CCS_BEGIN].min                 = 50.0;
+  parameters_[CCS_TRANS_NOMINAL_FREQUENCY_INPUT - CCS_BEGIN].max                 = 60.0;
+  parameters_[CCS_TRANS_NOMINAL_FREQUENCY_INPUT - CCS_BEGIN].def                 = 50.0;
   // Индуктивность системы
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].id                              = CCS_SYSTEM_INDUCTANCE;
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].access                          = ACCESS_OPERATOR;
@@ -7202,5 +7202,25 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].min                       = 0.0;
   parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].max                       = 10000000.0;
   parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].def                       = 0.0;
+  // Напряжение питающей сети
+  parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].id                    = CCS_TRANS_NOMINAL_VOLTAGE_INPUT;
+  parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].access                = ACCESS_OPERATOR;
+  parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].physic                = PHYSIC_VOLTAGE;
+  parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].validity              = VALIDITY_OK;
+  parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].value.float_t         = 380.0;
+  parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].min                   = 0.0;
+  parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].max                   = 10000000.0;
+  parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].def                   = 380.0;
+  // Максимальная рабочее напряжение
+  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].id                             = CCS_VOLTAGE_HIGH_LIMIT;
+  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].access                         = ACCESS_OPERATOR;
+  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].physic                         = PHYSIC_VOLTAGE;
+  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].validity                       = VALIDITY_OK;
+  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].value.float_t                  = 380.0;
+  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].min                            = 0.0;
+  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].max                            = 10000000.0;
+  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].def                            = 380.0;
 }
 

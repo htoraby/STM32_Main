@@ -107,29 +107,10 @@ public:
    * \param value - темп
    * \return 0 - задание успешно, № - ошибки
    */
+  virtual int setTimeSpeedUp(float value);
+  virtual int setTimeSpeedDown(float value);
   virtual int setTempSpeedUp(float value);
-
-  /*!
-   * \brief Функция записи в регистр темпа снижения частоты Гц/с
-   * и пересчитанного значения в регистр время снижения частота
-   * \param value - темп
-   * \return 0 - задание успешно, № - ошибки
-   */
   virtual int setTempSpeedDown(float value);
-
-  /*!
-   * \brief Функция записи в регистр времени набора частоты
-   * \param SpeedDown
-   * \return Код результата операции
-   */
-  virtual int setSpeedUp(float speedUp);
-
-  /*!
-   * \brief Функция записи в регистр снижения частоты
-   * \param SpeedDown
-   * \return 0 - задание успешно, № - ошибки
-   */
-  virtual int setSpeedDown(float speedDown);
 
   /*!
    * \brief Функция записи в регистр направления вращения
