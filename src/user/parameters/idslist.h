@@ -61,7 +61,7 @@ enum enID
   CCS_PROT_SUPPLY_OVERVOLTAGE_TIME = 55,                     //!< Текущий параметр Фиксированное время
   CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT = 56,            //!< Текущий параметр Количество АПВ
   CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME = 57,       //!< Текущий параметр Время первого АПВ
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE = 58,                    //!< Защита "Превышение питания сети"
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE = 58,                    //!< Защита "Пониженное напряжение сети"
   CCS_PROT_SUPPLY_UNDERVOLTAGE_PREVENT = 59,                 //!< Параметр запрещающий запуск
   CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY = 60,             //!< Задержка активации уставка
   CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY = 61,              //!< Задержка срабатывания уставка

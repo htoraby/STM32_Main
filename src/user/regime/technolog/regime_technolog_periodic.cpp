@@ -2,7 +2,8 @@
 #include "protection_main.h"
 
 RegimeTechnologPeriodic::RegimeTechnologPeriodic()
-  : attempt_(false)
+  : restart_(false)
+  , attempt_(false)
   , addTime_(0)
 {
 
@@ -29,6 +30,10 @@ void RegimeTechnologPeriodic::processing()
   LastReasonStop stopReason = (LastReasonStop)parameters.get(CCS_LAST_STOP_REASON);
 
   if (action_ == OffAction) { // Режим - выключен
+    if (restart_) {
+      ksu.resetRestart();
+      restart_ = false;
+    }
     state_ = IdleState;
   }
 
@@ -51,7 +56,10 @@ void RegimeTechnologPeriodic::processing()
       workTimeToEnd_ = getTimeToEnd(workPeriod_, time);
       if (workTimeToEnd_ == 0) {   // Время работы истекло
         if (ksu.isProgramMode()) { // Режим - программа;
+          logDebug.add(DebugMsg, "Reaction - Restart");
+          ksu.setRestart();
           ksu.stop(LastReasonStopProgram);
+          restart_ = true;
           state_ = WaitPauseState;
         }
       }
@@ -186,4 +194,11 @@ void RegimeTechnologPeriodic::processing()
   parameters.set(CCS_RGM_PERIODIC_STOP_BEGIN_TIME, stopBeginTime_);
   parameters.set(CCS_RGM_PERIODIC_RUN_TIME_TO_END, workTimeToEnd_);
   parameters.set(CCS_RGM_PERIODIC_STOP_TIME_TO_END, stopTimeToEnd_);
+
+  if (!((state_ == PauseState) || (state_ == RestartState) ||
+        (state_ == WaitPauseState)))
+    restart_ = false;
+
+  if (restart_)
+    parameters.set(CCS_RESTART_TIMER, stopTimeToEnd_);
 }

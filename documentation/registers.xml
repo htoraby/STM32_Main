@@ -1110,7 +1110,7 @@
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<values>0-Откл;1-Блок;2-АПВ;</values>
-		<comment>Защита "Превышение питания сети"</comment>
+		<comment>Защита "Пониженное напряжение сети"</comment>
 	</param>
 	<param>
 		<id>59</id>
@@ -7635,15 +7635,15 @@
 		<name>CCS_COEF_RESISTANCE_ISOLATION</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_RESISTANCE</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<valid>VALIDITY_OK</valid>
 		<text>Коэффициент коррекции сопротивления изоляции</text>
 		<short_text>Сопр.изоляции коэф.кор.</short_text>
 		<form>5.2 Корректировки</form>
-		<unit>RESISTANCE_OM</unit>
-		<unit_lcd>RESISTANCE_KOM</unit_lcd>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>ХХХХХХ</format>
 		<comment>Коэффициент корректировки сопротивления изоляции</comment>
 	</param>
@@ -9539,6 +9539,8 @@
 		<id>635</id>
 		<name>CCS_PROT_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<valid>VALIDITY_OK</valid>
@@ -9548,9 +9550,14 @@
 		<id>636</id>
 		<name>CCS_TIMER_DIFFERENT_START</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<valid>VALIDITY_OK</valid>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
 		<comment>Уставка ВРП (время разновременного пуска)</comment>
 	</param>
 	<param>

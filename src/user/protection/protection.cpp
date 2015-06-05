@@ -177,7 +177,7 @@ void Protection::processingStateRunning()
   if (ksu.isWorkMotor()) {
     if (ksu.isAutoMode() || ksu.isManualMode()) {
       if (isModeOff()) {
-        state_ = StateStop;
+        setStateStop();
       }
       else if (ksu.getValue(CCS_RUN_TIME) >= activDelay_) {
         logDebug.add(DebugMsg, "ProtActiv");
@@ -185,11 +185,11 @@ void Protection::processingStateRunning()
       }
     }
     else {
-      state_ = StateStop;
+      setStateStop();
     }
   }
   else {
-    state_ = StateStop;
+    setStateStop();
   }
 }
 
@@ -198,7 +198,7 @@ void Protection::processingStateRun()       // Состояние работа
   if (ksu.isWorkMotor()) {                  // Двигатель - работа;
     if (ksu.isAutoMode()) {                 // Двигатель - работа; Режим - авто;
       if (isModeOff()) {                    // Двигатель - работа; Режим - авто; Защита - выкл;
-        state_ = StateStop;
+        setStateStop();
       }
       else if (isModeBlock()) {             // Двигатель - работа; Режим - авто; Защита - блок;
         if (alarm_) {                       // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме
@@ -215,7 +215,7 @@ void Protection::processingStateRun()       // Состояние работа
               ksu.setBlock();
               ksu.stop(lastReasonStop_);
               block_ = true;
-              state_ = StateStop;
+              setStateStop();
             }
           }
         }
@@ -238,11 +238,12 @@ void Protection::processingStateRun()       // Состояние работа
               ksu.setBlock();
               ksu.stop(lastReasonStop_);
               block_ = true;
-              state_ = StateStop;
+              setStateStop();
             }
             else {
               logDebug.add(DebugMsg, "Reaction - Restart");
               addEventReactionProt();
+              parameters.set(CCS_RESTART_COUNT, restartCount_);
               ksu.setRestart();
               ksu.stop(lastReasonStop_);
               restart_ = true;
@@ -266,7 +267,7 @@ void Protection::processingStateRun()       // Состояние работа
             addEventReactionProt();
             ksu.resetDelay();
             ksu.stop(lastReasonStop_);
-            state_ = StateStop;
+            setStateStop();
           }
         }
         else {                              // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - в норме
@@ -276,7 +277,7 @@ void Protection::processingStateRun()       // Состояние работа
     }
     else if (ksu.isManualMode()) {          // Двигатель - работа; Режим - ручной;
       if (isModeOff()) {                    // Двигатель - работа; Режим - авто; Защита - выкл;
-        state_ = StateStop;
+        setStateStop();
       }
       else {                                // Двигатель - работа; Режим - авто; Защита - вкл;
         if (alarm_ && !workWithAlarmFlag_) {// Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме
@@ -292,7 +293,7 @@ void Protection::processingStateRun()       // Состояние работа
             ksu.setBlock();
             ksu.stop(lastReasonStop_);
             block_ = true;
-            state_ = StateStop;
+            setStateStop();
           }
         }
         else {                              // Двигатель - работа; Режим - авто; Защита - блок; Параметр - в норме
@@ -301,11 +302,11 @@ void Protection::processingStateRun()       // Состояние работа
       }
     }
     else {
-      state_ = StateStop;
+      setStateStop();
     }
   }
   else {
-    state_ = StateStop;
+    setStateStop();
   }
 }
 
@@ -329,7 +330,7 @@ void Protection::proccessingStateStopping()
   }
   else if (ksu.isStopMotor()) {             // Двигатель - стоп;
     if (ksu.getValue(CCS_CONDITION) == CCS_CONDITION_STOP) {
-      state_ = StateStop;
+      setStateStop();
     }
   }
   else {
@@ -373,25 +374,30 @@ void Protection::proccessingStateStop()
   else if (ksu.isStopMotor()) {             // Двигатель - стоп;
     if (ksu.isAutoMode() && !ksu.isBlock()) { // Двигатель - стоп; Режим - авто; Нет блокировки;
       if (restart_) {                         // Двигатель - стоп; Режим - авто; Флаг - АПВ;
-        if (ksu.getValue(CCS_STOP_TIME) >= restartDelay_) {
+        float restartTimer = restartDelay_ - ksu.getValue(CCS_STOP_TIME);
+        if (restartTimer <= 0) {
           if (timerDifStartFlag_) {               // Защита с отсчётом АПВ после нормализации параметра (ВРП)
+            restartTimer = parameters.get(CCS_TIMER_DIFFERENT_START);
             if (!prevent_) {                  // Параметр защиты в норме
               if (timer_ == 0) {              //
                 timer_ = ksu.getTime();       // Зафиксировали время начала отсёта АПВ
                 logDebug.add(DebugMsg, "Time restart - begin");
                 ksu.setRestart();
               }
-              else if (ksu.getSecFromCurTime(timer_) >= parameters.get(CCS_TIMER_DIFFERENT_START)) {
-                if (ksu.isPrevent()) {
-                  if (!attempt_) {                // Первая попытка запуска по АПВ
-                    attempt_ = true;
-                    ksu.start(lastReasonRun_);
+              else {
+                restartTimer = parameters.get(CCS_TIMER_DIFFERENT_START) - ksu.getSecFromCurTime(timer_);
+                if (restartTimer <= 0) {
+                  if (ksu.isPrevent()) {
+                    if (!attempt_) {                // Первая попытка запуска по АПВ
+                      attempt_ = true;
+                      ksu.start(lastReasonRun_);
+                    }
                   }
-                }
-                else {
-                  incRestartCount();
-                  ksu.start(lastReasonRun_);
-                  state_ = StateRunning;
+                  else {
+                    incRestartCount();
+                    ksu.start(lastReasonRun_);
+                    state_ = StateRunning;
+                  }
                 }
               }
             }
@@ -413,6 +419,9 @@ void Protection::proccessingStateStop()
             }
           }
         }
+        if (restartTimer < 0)
+          restartTimer = 0;
+        parameters.set(CCS_RESTART_TIMER, restartTimer);
       }
     }
     else {

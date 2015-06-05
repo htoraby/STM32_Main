@@ -582,7 +582,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].min    = 0;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].max    = 4294967296;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].def    = 0;
-  // Защита "Превышение питания сети"
+  // Защита "Пониженное напряжение сети"
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE - CCS_BEGIN].id                  = CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE - CCS_BEGIN].access              = ACCESS_OPERATOR;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE - CCS_BEGIN].operation           = OPERATION_WRITE;
@@ -5146,7 +5146,7 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].id                      = CCS_COEF_RESISTANCE_ISOLATION;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].access                  = ACCESS_TECHNOLOG;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].operation               = OPERATION_WRITE;
-  parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].physic                  = PHYSIC_RESISTANCE;
+  parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].physic                  = PHYSIC_NUMERIC;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].value.float_t           = 0;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].min                     = 0.0;
@@ -6355,8 +6355,8 @@ void Ccs::initParameters()
   // Наличие хотя бы одного запрещающего параметра
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].id                                   = CCS_PROT_PREVENT;
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].access                               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_PREVENT - CCS_BEGIN].operation                            = 0;
-  parameters_[CCS_PROT_PREVENT - CCS_BEGIN].physic                               = 0;
+  parameters_[CCS_PROT_PREVENT - CCS_BEGIN].operation                            = OPERATION_READ;
+  parameters_[CCS_PROT_PREVENT - CCS_BEGIN].physic                               = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].validity                             = VALIDITY_OK;
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].value.float_t                        = 0;
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].min                                  = 0.0;
@@ -6365,8 +6365,8 @@ void Ccs::initParameters()
   // Уставка ВРП (время разновременного пуска)
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].id                          = CCS_TIMER_DIFFERENT_START;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].access                      = ACCESS_OPERATOR;
-  parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].operation                   = 0;
-  parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].physic                      = 0;
+  parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].physic                      = PHYSIC_TIME;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].min                         = 0.0;

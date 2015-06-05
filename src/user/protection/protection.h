@@ -199,6 +199,18 @@ public:
   }
 
   /*!
+   * \brief isRestart
+   * \return
+   */
+  bool isRestart() const { return restart_; }
+
+  /*!
+   * \brief getRestartDelay
+   * \return
+   */
+  float getRestartDelay() const { return restartDelay_; }
+
+  /*!
    * \brief getApvDisabledEventId
    * \return
    */
