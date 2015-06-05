@@ -229,7 +229,7 @@ public:
    * \param current - расчёт для этого значения тока
    * \return величину падения напряжения на фильтре
    */
-  float calcDropVoltageFilter(float current);
+  float calcDropVoltageFilter(float current, float freq = -1, float coefTrans = -1);
 
   /*!
    * \brief Функция вычисления падения напряжения на кабельной линии
@@ -307,6 +307,12 @@ public:
    * \brief Функция вычисляет и сохраняет в регистр общую индуктивность системы
    */
   float calcSystemInduct();
+
+  /*!
+   * \brief Функция вычисления рекомендуемой отпайки ТМПН
+   * \return
+   */
+  float calcTransTapOff(float coefTrans = -1);
 
 
   uint8_t setNewValue(uint16_t id, float value);

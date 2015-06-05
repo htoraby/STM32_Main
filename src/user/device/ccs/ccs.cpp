@@ -669,12 +669,14 @@ float Ccs::calcMotorCurrentImbalance()
   return parameters.get(CCS_MOTOR_CURRENT_IMBALANCE);
 }
 
-float Ccs::calcDropVoltageFilter(float current)
+float Ccs::calcDropVoltageFilter(float current, float freq, float coefTrans)
 {
   float outFilter = parameters.get(CCS_FILTER_OUTPUT);
   float inductFilter = parameters.get(CCS_FILTER_INDUCTANCE);
-  float freq =  parameters.get(VSD_FREQUENCY_NOW);
-  float coefTrans = parameters.get(CCS_COEF_TRANSFORMATION);
+  if (freq == -1)
+    freq = parameters.get(VSD_FREQUENCY_NOW);
+  if (coefTrans == -1)
+    coefTrans = parameters.get(CCS_COEF_TRANSFORMATION);
   if (outFilter == 0)
     return 0;
   if (freq == 0)
@@ -886,7 +888,7 @@ float Ccs::calcSystemInduct()
 {
   float coefTrans2 = pow(parameters.get(CCS_COEF_TRANSFORMATION), 2);
   float inductTrans = (parameters.get(CCS_TRANS_VOLTAGE_SHORT_CIRCUIT) * parameters.get(CCS_TRANS_NOMINAL_VOLTAGE) * 0.01) /
-                      (parameters.get(CCS_TRANS_NOMINAL_CURRENT) * parameters.get(CCS_TRANS_NOMINAL_FREQUENCY) * 2 * NUM_PI);
+                      (parameters.get(CCS_TRANS_NOMINAL_CURRENT) * parameters.get(CCS_TRANS_NOMINAL_FREQUENCY_INPUT) * 2 * NUM_PI);
   float inductCable = ((parameters.get(CCS_TRANS_CABLE_LENGHT) * 1.5) / coefTrans2) / 1000000;
   float inductMotor = (parameters.get(CCS_MOTOR_INDUCTANCE) / coefTrans2) / 1000;
   float inductFilter = parameters.get(CCS_FILTER_INDUCTANCE) / 1000;
@@ -894,6 +896,34 @@ float Ccs::calcSystemInduct()
   parameters.set(CCS_SYSTEM_INDUCTANCE, induct);
   parameters.set(VSD_LOUT, parameters.get(CCS_SYSTEM_INDUCTANCE));
   return parameters.get(CCS_SYSTEM_INDUCTANCE);
+}
+
+float Ccs::calcTransTapOff(float coefTrans)
+{
+  float nomVoltIn = parameters.get(CCS_TRANS_NOMINAL_VOLTAGE_INPUT);
+  float curVoltIn = calcAverage3Values(parameters.get(CCS_VOLTAGE_PHASE_1_2),
+                                       parameters.get(CCS_VOLTAGE_PHASE_2_3),
+                                       parameters.get(CCS_VOLTAGE_PHASE_3_1));
+  if (curVoltIn > nomVoltIn) {
+    curVoltIn = nomVoltIn;
+  }
+  float nomCurMtr = parameters.get(VSD_MOTOR_CURRENT);
+  float nomVoltMtr = parameters.get(VSD_MOTOR_VOLTAGE);
+  float nomFreqMtr = parameters.get(VSD_MOTOR_FREQUENCY);
+  if (nomFreqMtr == 0)
+    nomFreqMtr = 50;
+  float baseFreq = parameters.get(VSD_HIGH_LIM_SPEED_MOTOR);
+  if (baseFreq == 0)
+    baseFreq = nomFreqMtr;
+  float baseVolt = (baseFreq / nomFreqMtr ) * nomVoltMtr;
+  float dropVoltCable = calcDropVoltageCable(nomCurMtr);
+  if (coefTrans == -1)
+    coefTrans = parameters.get(CCS_COEF_TRANSFORMATION);
+  float dropVoltFilter = calcDropVoltageFilter(nomCurMtr, nomFreqMtr, coefTrans);
+  float voltHiLim = parameters.get(CCS_VOLTAGE_HIGH_LIMIT);
+  float transTapOff = (baseVolt + dropVoltCable) / (voltHiLim - dropVoltFilter);
+  setValue(CCS_TRANS_NEED_VOLTAGE_TAP_OFF, transTapOff);
+  return parameters.get(CCS_TRANS_NEED_VOLTAGE_TAP_OFF);
 }
 
 uint8_t Ccs::setNewValue(uint16_t id, float value)
@@ -935,14 +965,27 @@ uint8_t Ccs::setNewValue(uint16_t id, float value)
   case CCS_TRANS_VOLTAGE_SHORT_CIRCUIT:
     calcSystemInduct();
     break;
-  case CCS_TRANS_NOMINAL_VOLTAGE:
-    calcSystemInduct();
+  case CCS_TRANS_NOMINAL_VOLTAGE:           // Номинальное напряжение ТМПН
+    calcSystemInduct();                     // Пересчитываем индуктивность системы
+    calcTransTapOff();                      // Пересчитываем рекомендуемое напряжение отпайки
     break;
   case CCS_TRANS_NOMINAL_CURRENT:
+    calcSystemInduct();                     // Пересчитываем индуктивность системы
+    break;
+  case CCS_VOLTAGE_HIGH_LIMIT:              // Максимальное входное напряжение
+    calcTransTapOff();                      // Пересчитываем рекомендуемое напряжение отпайки
+    break;
+  case CCS_TRANS_NOMINAL_FREQUENCY_INPUT:
     calcSystemInduct();
     break;
-  case CCS_TRANS_NOMINAL_FREQUENCY:
-    calcSystemInduct();
+  case CCS_TRANS_CABLE_LENGHT:              // Длина кабеля
+    calcTransTapOff();                      // Пересчитываем рекомендуемое напряжение отпайки
+    break;
+  case CCS_TRANS_CABLE_CROSS:               // Сечение кабеля
+    calcTransTapOff();                      // Пересчитываем рекомендуемое напряжение отпайки
+    break;
+  case CCS_TRANS_VOLTAGE_TAP_OFF:           // Напряжение отпайки
+    calcTransTapOff();                      // Пересчитываем рекомендуемое напряжение отпайки
     break;
   case CCS_MOTOR_INDUCTANCE:
     calcSystemInduct();
