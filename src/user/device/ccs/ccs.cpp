@@ -568,15 +568,15 @@ void Ccs::calcTime()
 
   if (conditionOld != condition) {
     if ((condition != CCS_CONDITION_STOP) && (conditionOld == CCS_CONDITION_STOP))
-      setNewValue(CCS_LAST_RUN_DATE_TIME, getTime());
+      setNewValue(CCS_LAST_RUN_DATE_TIME, getTime());   
     if ((condition == CCS_CONDITION_STOP) && (conditionOld != CCS_CONDITION_STOP))
       setNewValue(CCS_LAST_STOP_DATE_TIME, getTime());
-
     conditionOld = condition;
   }
-
-  setNewValue(CCS_RUN_TIME, (float)getSecFromCurTime(CCS_LAST_RUN_DATE_TIME));
-  setNewValue(CCS_STOP_TIME, (float)getSecFromCurTime(CCS_LAST_STOP_DATE_TIME));
+  if (condition == CCS_CONDITION_STOP)
+    setNewValue(CCS_STOP_TIME, (float)getSecFromCurTime(CCS_LAST_STOP_DATE_TIME));
+  else
+    setNewValue(CCS_RUN_TIME, (float)getSecFromCurTime(CCS_LAST_RUN_DATE_TIME));
 }
 
 void Ccs::calcParameters()
@@ -1015,6 +1015,37 @@ uint8_t Ccs::setNewValue(uint16_t id, float value)
   case CCS_DATE_TIME_YEAR:
     parameters.set(VSD_TIME_YEAR, value);
     break;
+  case CCS_CMD_PROT_SUPPLY_OVERVOLTAGE_SETPOINT_RESET:
+    cmdProtSupplyOvervoltageSetpointReset();
+    break;
+  case CCS_CMD_PROT_SUPPLY_UNDERVOLTAGE_SETPOINT_RESET:
+    cmdProtSupplyUndervoltageSetpointReset();
+    break;
+  case CCS_CMD_PROT_SUPPLY_IMBALANCE_VOLTAGE_SETPOINT_RESET:
+    cmdProtSupplyImbalanceVoltageSetpointReset();
+    break;
+  case CCS_CMD_PROT_MOTOR_OVERLOAD_SETPOINT_RESET:
+    cmdProtMotorOverloadSetpointReset();
+    break;
+  case CCS_CMD_PROT_MOTOR_UNDERLOAD_SETPOINT_RESET:
+    cmdProtMotorUnderloadSetpointReset();
+    break;
+  case CCS_CMD_PROT_MOTOR_IMBALANCE_CURRENT_SETPOINT_RESET:
+    cmdProtMotorImbalanceCurrentSetpointReset();
+    break;
+  case CCS_CMD_PROT_DHS_PRESSURE_INTAKE_SETPOINT_RESET:
+    cmdProtDhsPressureIntakeSetpointReset();
+    break;
+  case CCS_CMD_PROT_DHS_TEMPERATURE_MOTOR_SETPOINT_RESET:
+    cmdProtDhsTemperatureMotorSetpointReset();
+    break;
+  case CCS_CMD_PROT_DHS_RESISTANCE_SETPOINT_RESET:
+    cmdProtDhsResistanceSetpointReset();
+    break;
+// TODO: Добавить регистр CCS_CMD_PROT_OTHER_HARDWARE_VSD_SETPOINT_RESET
+//  case CCS_CMD_PROT_OTHER_HARDWARE_VSD_SETPOINT_RESET:
+//    cmdProtOtherHardwareVsdSetpointReset();
+//    break;
   default:
     break;
   }
@@ -1117,3 +1148,90 @@ void Ccs::checkConnectDevice()
   else
     setNewValue(CCS_EM_CONNECTION, 0);
 }
+
+void Ccs::cmdProtSupplyOvervoltageSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_SUPPLY_OVERVOLTAGE_MODE;
+       i <= CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtSupplyUndervoltageSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE;
+       i <= CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtSupplyImbalanceVoltageSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_MODE;
+       i <= CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtMotorOverloadSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_MOTOR_OVERLOAD_MODE;
+       i <=  CCS_PROT_MOTOR_OVERLOAD_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtMotorUnderloadSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_MOTOR_UNDERLOAD_MODE;
+       i <= CCS_PROT_MOTOR_UNDERLOAD_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtMotorImbalanceCurrentSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE;
+       i <= CCS_PROT_MOTOR_IMBALANCE_CURRENT_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtDhsPressureIntakeSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_DHS_PRESSURE_INTAKE_MODE;
+       i <= CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtDhsTemperatureMotorSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE;
+       i <= CCS_PROT_DHS_TEMPERATURE_MOTOR_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtDhsResistanceSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_DHS_RESISTANCE_MODE;
+       i <= CCS_PROT_DHS_RESISTANCE_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtOtherHardwareVsdSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_OTHER_VSD_MODE;
+       i <= CCS_PROT_OTHER_VSD_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+
+
+
+
+
+

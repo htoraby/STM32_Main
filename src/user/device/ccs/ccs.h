@@ -367,6 +367,20 @@ private:
    */
   void checkCmd();
 
+  void cmdProtSupplyOvervoltageSetpointReset();
+  void cmdProtSupplyUndervoltageSetpointReset();
+  void cmdProtSupplyImbalanceVoltageSetpointReset();
+
+  void cmdProtMotorOverloadSetpointReset();
+  void cmdProtMotorUnderloadSetpointReset();
+  void cmdProtMotorImbalanceCurrentSetpointReset();
+
+  void cmdProtDhsPressureIntakeSetpointReset();
+  void cmdProtDhsTemperatureMotorSetpointReset();
+  void cmdProtDhsResistanceSetpointReset();
+
+  void cmdProtOtherHardwareVsdSetpointReset();
+
   /*!
    * \brief Метод проверки возможности пуска
    * \return

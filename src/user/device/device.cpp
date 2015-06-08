@@ -231,6 +231,13 @@ uint8_t Device::setValue(uint16_t id, int value)
   return setValue(id, (float)value);
 }
 
+void Device::resetValue(uint16_t id)
+{
+  uint16_t index = getIndexAtId(id);
+  float def = getFieldDefault(index);
+  setValue(id, def);
+}
+
 uint8_t Device::getPhysic(unsigned short id)
 {
   return getFieldPhysic(getIndexAtId(id));
