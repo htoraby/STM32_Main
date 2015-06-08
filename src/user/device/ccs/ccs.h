@@ -382,6 +382,23 @@ private:
   void cmdProtOtherHardwareVsdSetpointReset();
 
   /*!
+   * \brief calcCounterStop
+   * \param reason
+   */
+  void calcCountersStop(float reason);
+
+  /*!
+   * \brief calcCountersRun
+   * \param reason
+   */
+  void calcCountersRun(float reason);
+
+  /*!
+   * \brief cmdCounterAllReset
+   */
+  void cmdCountersAllReset();
+
+  /*!
    * \brief Метод проверки возможности пуска
    * \return
    */

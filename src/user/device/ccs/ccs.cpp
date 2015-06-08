@@ -233,6 +233,7 @@ void Ccs::changedCondition()
       if (condition != conditionOld_) {
         float reason = getValue(CCS_LAST_STOP_REASON_TMP);
         setNewValue(CCS_LAST_STOP_REASON, reason);
+        calcCountersStop(reason);
         logEvent.add(StopCode, (EventType)reason, StopId);
       }
 
@@ -287,6 +288,7 @@ void Ccs::start(LastReasonRun reason)
     setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
     setNewValue(CCS_CONDITION, CCS_CONDITION_RUNNING);
     setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
+    calcCountersRun(reason);
   }
 }
 
@@ -320,10 +322,12 @@ void Ccs::checkCmd()
 
     setNewValue(CCS_CMD_START, 0);
     if (checkCanStart()) {
-      setNewValue(CCS_LAST_RUN_REASON, getValue(CCS_LAST_RUN_REASON_TMP));
+      float reason = getValue(CCS_LAST_RUN_REASON_TMP);
+      setNewValue(CCS_LAST_RUN_REASON, reason);
       setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
       setNewValue(CCS_CONDITION, CCS_CONDITION_RUNNING);
       setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
+      calcCountersRun(reason);
     }
   } else if (stop) {
     switch (stop) {
@@ -334,7 +338,6 @@ void Ccs::checkCmd()
       setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopOperator);
       break;
     }
-
     setNewValue(CCS_CMD_STOP, 0);
     if (checkCanStop()) {
       setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
@@ -1229,9 +1232,50 @@ void Ccs::cmdProtOtherHardwareVsdSetpointReset()
   }
 }
 
+void Ccs::calcCountersStop(float reason)
+{
+  switch ((uint16_t)reason) {
+  case LastReasonStopOverloadMotor:
+    setValue(CCS_PROT_OVERLOAD_COUNT_STOP, getValue(CCS_PROT_OVERLOAD_COUNT_STOP) + 1);
+    break;
+  case LastReasonStopUnderloadMotor:
+    setValue(CCS_PROT_UNDERLOAD_COUNT_STOP, getValue(CCS_PROT_UNDERLOAD_COUNT_STOP) + 1);
+    break;
+  case LastReasonStopResistIsolation:       // "Сопротивление изоляции"
+  case LastReasonStopUnderVoltIn:           // "Снижение питания сети"
+  case LastReasonStopOverVoltIn:            // "Превышение питания сети"
+  case LastReasonStopHackSu:                // "Взлом СУ"
+  case LastReasonStopManometr:              // "Контактный манометр"
+  case LastReasonStopPressureIntake:        // "Pmin на приёме насоса"
+  case LastReasonStopTemperatureMotor:      // "Перегрев двигателя"
+  case LastReasonStopVibrationMotor:        // "Превышение вибрации"
+  case LastReasonStopImbalanceCurMotor:     // "Дисбаланс токов ПЭД"
+  case LastReasonStopImbalanceVoltIn:       // "Дисбаланс напряжения"
+  case LastReasonStopMaxAnalog1:            // "Ан.вх.№1 max"
+  case LastReasonStopMaxAnalog2:            // "Ан.вх.№2 max"
+  case LastReasonStopCurrentMotor:          // "Предел тока двигателя"
+  case LastReasonStopOutOfSyncMotor:        // "Рассинхронизация ПВЭД"
+  case LastReasonStopHardwareVsd:           // "Аппаратные защиты ЧРП"
+    setValue(CCS_PROT_OTHER_COUNT_STOP, getValue(CCS_PROT_OTHER_COUNT_STOP) + 1);
+    break;
+  default:
+    break;
+  }
+}
 
+void Ccs::calcCountersRun(float reason)
+{
+  switch ((uint16_t)reason) {
+  default:
+    setValue(CCS_COUNT_START, getValue(CCS_COUNT_START) + 1);
+    break;
+  }
+}
 
-
-
-
-
+void Ccs::cmdCountersAllReset()
+{
+  setValue(CCS_COUNT_START, 0.0);
+  setValue(CCS_PROT_OVERLOAD_COUNT_STOP, 0.0);
+  setValue(CCS_PROT_UNDERLOAD_COUNT_STOP, 0.0);
+  setValue(CCS_PROT_OTHER_COUNT_STOP, 0.0);
+}

@@ -2479,8 +2479,9 @@ int VsdNovomet::start()
 
     osDelay(100);
 
-    if (checkVsdStatus(VSD_STATUS_STARTED))
+    if (checkVsdStatus(VSD_STATUS_STARTED)) {
       return ok_r;
+    }
   }
 }
 
