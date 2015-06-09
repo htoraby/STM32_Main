@@ -725,8 +725,8 @@ enum enID
   CCS_MOTOR_VOLTAGE_IMBALANCE = 719,                         //!< Дисбаланс напряжений
   CCS_TRANS_NOMINAL_VOLTAGE_INPUT = 720,                     //!< Напряжение питающей сети
   CCS_VOLTAGE_HIGH_LIMIT = 721,                              //!< Максимальная рабочее напряжение
-  CCS_PASSWORD_COUNT_ERRORS = 722,                           //!< Количество попыток ввода пароля
-  CCS_PASSWORD_TIME_ERROR = 723,                             //!< Время последней попытки ввода пароля
+  CCS_PASSWORD_COUNT_ATTEMPTS = 722,                         //!< Количество попыток ввода пароля
+  CCS_PASSWORD_LAST_ATTEMPT_TIME = 723,                      //!< Время последней попытки ввода пароля
   CCS_END = 724,                                             //!< Последний параметр
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ

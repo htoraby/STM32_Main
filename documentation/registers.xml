@@ -11086,7 +11086,7 @@
 	</param>
 	<param>
 		<id>722</id>
-		<name>CCS_PASSWORD_COUNT_ERRORS</name>
+		<name>CCS_PASSWORD_COUNT_ATTEMPTS</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -11097,7 +11097,7 @@
 	</param>
 	<param>
 		<id>723</id>
-		<name>CCS_PASSWORD_TIME_ERROR</name>
+		<name>CCS_PASSWORD_LAST_ATTEMPT_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_DATE_TIME</physic>
