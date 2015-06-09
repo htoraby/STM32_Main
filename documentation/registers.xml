@@ -8045,9 +8045,11 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<min>2.0</min>
+		<max>2.0</max>
+		<def>2.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>2.0</value>
 		<text>Тип КСУ</text>
 		<short_text>Тип КСУ</short_text>
 		<form>6.4 Станция управления</form>
@@ -8062,9 +8064,11 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<min>3.0</min>
+		<max>3.0</max>
+		<def>3.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>3.0</value>
 		<text>Код предприятия изготовителя КСУ</text>
 		<short_text>Предп.изг.КСУ</short_text>
 		<form>6.4 Станция управления</form>
@@ -8076,7 +8080,7 @@
 	<param>
 		<id>540</id>
 		<name>CCS_NUM_PRODUCTION_CCS</name>
-		<access>ACCESS_OPERATOR</access>
+		<access>ACCESS_SERVICE</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
@@ -8093,7 +8097,7 @@
 	<param>
 		<id>541</id>
 		<name>CCS_VERSION_SW_CCS</name>
-		<access>ACCESS_OPERATOR</access>
+		<access>ACCESS_SERVICE</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
@@ -8110,7 +8114,7 @@
 	<param>
 		<id>542</id>
 		<name>CCS_VERSION_SW_MS</name>
-		<access>ACCESS_OPERATOR</access>
+		<access>ACCESS_SERVICE</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
@@ -8127,7 +8131,7 @@
 	<param>
 		<id>543</id>
 		<name>CCS_VERSION_SW_VSD</name>
-		<access>ACCESS_OPERATOR</access>
+		<access>ACCESS_SERVICE</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
@@ -8627,8 +8631,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Система разграничения прав доступа</text>
 		<short_text>Уровни доступа</short_text>
 		<form>7.2 Пароли</form>
@@ -8644,8 +8650,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>4.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Текущий уровень доступа</text>
 		<short_text>Уровень доступа</short_text>
 		<form>7.2 Пароли</form>
@@ -8661,8 +8669,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>9999.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Пароль первого уровня</text>
 		<short_text>Пароль</short_text>
 		<form>7.2 Пароли</form>
@@ -8678,8 +8688,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>9999.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Пароль второго уровня</text>
 		<short_text>Мастер пароль</short_text>
 		<form>7.2 Пароли</form>
@@ -8695,8 +8707,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>9999.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -8712,8 +8726,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>9999.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -8729,8 +8745,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>9999.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>

@@ -5388,23 +5388,23 @@ void Ccs::initParameters()
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].operation                                = OPERATION_READ;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].physic                                   = PHYSIC_NUMERIC;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].validity                                 = VALIDITY_OK;
-  parameters_[CCS_TYPE_CCS - CCS_BEGIN].value.float_t                            = 0;
-  parameters_[CCS_TYPE_CCS - CCS_BEGIN].min                                      = 0.0;
-  parameters_[CCS_TYPE_CCS - CCS_BEGIN].max                                      = 10000000.0;
-  parameters_[CCS_TYPE_CCS - CCS_BEGIN].def                                      = 0;
+  parameters_[CCS_TYPE_CCS - CCS_BEGIN].value.float_t                            = 2.0;
+  parameters_[CCS_TYPE_CCS - CCS_BEGIN].min                                      = 2.0;
+  parameters_[CCS_TYPE_CCS - CCS_BEGIN].max                                      = 2.0;
+  parameters_[CCS_TYPE_CCS - CCS_BEGIN].def                                      = 2.0;
   // Код производителя КСУ
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].id                            = CCS_CODE_PRODUCTION_CCS;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].access                        = ACCESS_OPERATOR;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].operation                     = OPERATION_READ;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].validity                      = VALIDITY_OK;
-  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].value.float_t                 = 0;
-  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].max                           = 10000000.0;
-  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].def                           = 0;
+  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].value.float_t                 = 3.0;
+  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].min                           = 3.0;
+  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].max                           = 3.0;
+  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].def                           = 3.0;
   // Заводской номер КСУ
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].id                             = CCS_NUM_PRODUCTION_CCS;
-  parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].access                         = ACCESS_OPERATOR;
+  parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].access                         = ACCESS_SERVICE;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].operation                      = OPERATION_READ;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].physic                         = PHYSIC_NUMERIC;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].validity                       = VALIDITY_OK;
@@ -5414,7 +5414,7 @@ void Ccs::initParameters()
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].def                            = 0;
   // Версия ПО КСУ
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].id                                 = CCS_VERSION_SW_CCS;
-  parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].access                             = ACCESS_SERVICE;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].operation                          = OPERATION_READ;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].physic                             = PHYSIC_NUMERIC;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].validity                           = VALIDITY_OK;
@@ -5424,7 +5424,7 @@ void Ccs::initParameters()
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].def                                = 0;
   // Версия ПО МС
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].id                                  = CCS_VERSION_SW_MS;
-  parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].access                              = ACCESS_OPERATOR;
+  parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].access                              = ACCESS_SERVICE;
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].operation                           = OPERATION_READ;
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].physic                              = PHYSIC_NUMERIC;
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].validity                            = VALIDITY_OK;
@@ -5434,7 +5434,7 @@ void Ccs::initParameters()
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].def                                 = 0;
   // Версия ПО ПЧ
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].id                                 = CCS_VERSION_SW_VSD;
-  parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].access                             = ACCESS_SERVICE;
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].operation                          = OPERATION_READ;
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].physic                             = PHYSIC_NUMERIC;
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].validity                           = VALIDITY_OK;
@@ -5718,70 +5718,70 @@ void Ccs::initParameters()
   parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].operation                         = OPERATION_WRITE;
   parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].validity                          = VALIDITY_OK;
-  parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].value.float_t                     = 0;
+  parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].max                               = 10000000.0;
-  parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].def                               = 0;
+  parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].max                               = 1.0;
+  parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].def                               = 0.0;
   // Текущий уровень доступа
   parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].id                                 = CCS_PASSWORD_LEVEL;
   parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].access                             = ACCESS_OPERATOR;
   parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].operation                          = OPERATION_WRITE;
   parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].physic                             = PHYSIC_NUMERIC;
   parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].validity                           = VALIDITY_OK;
-  parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].value.float_t                      = 0;
+  parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].value.float_t                      = 0.0;
   parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].max                                = 10000000.0;
-  parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].def                                = 0;
+  parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].max                                = 4.0;
+  parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].def                                = 0.0;
   // Пароль 1 уровня
   parameters_[CCS_PASSWORD_LEVEL_1 - CCS_BEGIN].id                               = CCS_PASSWORD_LEVEL_1;
   parameters_[CCS_PASSWORD_LEVEL_1 - CCS_BEGIN].access                           = ACCESS_OPERATOR;
   parameters_[CCS_PASSWORD_LEVEL_1 - CCS_BEGIN].operation                        = OPERATION_WRITE;
   parameters_[CCS_PASSWORD_LEVEL_1 - CCS_BEGIN].physic                           = PHYSIC_NUMERIC;
   parameters_[CCS_PASSWORD_LEVEL_1 - CCS_BEGIN].validity                         = VALIDITY_OK;
-  parameters_[CCS_PASSWORD_LEVEL_1 - CCS_BEGIN].value.float_t                    = 0;
+  parameters_[CCS_PASSWORD_LEVEL_1 - CCS_BEGIN].value.float_t                    = 0.0;
   parameters_[CCS_PASSWORD_LEVEL_1 - CCS_BEGIN].min                              = 0.0;
-  parameters_[CCS_PASSWORD_LEVEL_1 - CCS_BEGIN].max                              = 10000000.0;
-  parameters_[CCS_PASSWORD_LEVEL_1 - CCS_BEGIN].def                              = 0;
+  parameters_[CCS_PASSWORD_LEVEL_1 - CCS_BEGIN].max                              = 9999.0;
+  parameters_[CCS_PASSWORD_LEVEL_1 - CCS_BEGIN].def                              = 0.0;
   // Пароль 2 уровня
   parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].id                               = CCS_PASSWORD_LEVEL_2;
   parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].access                           = ACCESS_TECHNOLOG;
   parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].operation                        = OPERATION_WRITE;
   parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].physic                           = PHYSIC_NUMERIC;
   parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].validity                         = VALIDITY_OK;
-  parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].value.float_t                    = 0;
+  parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].value.float_t                    = 0.0;
   parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].min                              = 0.0;
-  parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].max                              = 10000000.0;
-  parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].def                              = 0;
+  parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].max                              = 9999.0;
+  parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].def                              = 0.0;
   // Пароль 3 уровня
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].id                               = CCS_PASSWORD_LEVEL_3;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].access                           = ACCESS_SERVICE;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].operation                        = OPERATION_WRITE;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].physic                           = PHYSIC_NUMERIC;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].validity                         = VALIDITY_OK;
-  parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].value.float_t                    = 0;
+  parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].value.float_t                    = 0.0;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].min                              = 0.0;
-  parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].max                              = 10000000.0;
-  parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].def                              = 0;
+  parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].max                              = 9999.0;
+  parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].def                              = 0.0;
   // Пароль 4 уровня
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].id                               = CCS_PASSWORD_LEVEL_4;
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].access                           = ACCESS_GOD;
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].operation                        = OPERATION_WRITE;
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].physic                           = PHYSIC_NUMERIC;
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].validity                         = VALIDITY_OK;
-  parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].value.float_t                    = 0;
+  parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].value.float_t                    = 0.0;
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].min                              = 0.0;
-  parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].max                              = 10000000.0;
-  parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].def                              = 0;
+  parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].max                              = 9999.0;
+  parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].def                              = 0.0;
   // Пароль 5 уровня
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].id                               = CCS_PASSWORD_LEVEL_5;
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].access                           = ACCESS_OPERATOR;
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].operation                        = OPERATION_WRITE;
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].physic                           = PHYSIC_NUMERIC;
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].validity                         = VALIDITY_OK;
-  parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].value.float_t                    = 0;
+  parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].value.float_t                    = 0.0;
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].min                              = 0.0;
-  parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].max                              = 10000000.0;
-  parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].def                              = 0;
+  parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].max                              = 9999.0;
+  parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].def                              = 0.0;
   // Протокол телемеханики
   parameters_[CCS_SCADA_TYPE - CCS_BEGIN].id                                     = CCS_SCADA_TYPE;
   parameters_[CCS_SCADA_TYPE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
