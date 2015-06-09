@@ -962,6 +962,9 @@ uint8_t Ccs::setNewValue(uint16_t id, float value)
   case CCS_CMD_LOG_COPY:
     logStartSave();
     break;
+  case CCS_CMD_LOG_DELETE:
+    logErase();
+    break;
   case CCS_COEF_TRANSFORMATION:
     calcSystemInduct();
     break;
@@ -1049,6 +1052,9 @@ uint8_t Ccs::setNewValue(uint16_t id, float value)
 //  case CCS_CMD_PROT_OTHER_HARDWARE_VSD_SETPOINT_RESET:
 //    cmdProtOtherHardwareVsdSetpointReset();
 //    break;
+  case CCS_CMD_COUNTER_ALL_RESET:
+    cmdCountersAllReset();
+    break;
   default:
     break;
   }
@@ -1265,9 +1271,26 @@ void Ccs::calcCountersStop(float reason)
 
 void Ccs::calcCountersRun(float reason)
 {
+  setValue(CCS_COUNT_START, getValue(CCS_COUNT_START) + 1);
   switch ((uint16_t)reason) {
+  case LastReasonRunApvImbalanceVoltIn:
+  case LastReasonRunApvOverVoltIn:
+  case LastReasonRunApvUnderVoltIn:
+    setValue(CCS_PROT_VOLTAGE_COUNT_RESTART,
+             getValue(CCS_PROT_VOLTAGE_COUNT_RESTART) + 1);
+    break;
+  case LastReasonRunApvOverloadMotor:
+    setValue(CCS_PROT_OVERLOAD_COUNT_RESTART,
+             getValue(CCS_PROT_OVERLOAD_COUNT_RESTART) + 1);
+    break;
+  case LastReasonRunApvUnderloadMotor:
+    setValue(CCS_PROT_UNDERLOAD_COUNT_RESTART,
+             getValue(CCS_PROT_UNDERLOAD_COUNT_RESTART) + 1);
+    break;
+  case LastReasonRunApvImbalanceCurMotor:
+    setValue(CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART,
+             getValue(CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART) + 1);
   default:
-    setValue(CCS_COUNT_START, getValue(CCS_COUNT_START) + 1);
     break;
   }
 }
@@ -1278,4 +1301,8 @@ void Ccs::cmdCountersAllReset()
   setValue(CCS_PROT_OVERLOAD_COUNT_STOP, 0.0);
   setValue(CCS_PROT_UNDERLOAD_COUNT_STOP, 0.0);
   setValue(CCS_PROT_OTHER_COUNT_STOP, 0.0);
+  setValue(CCS_PROT_VOLTAGE_COUNT_RESTART, 0.0);
+  setValue(CCS_PROT_OVERLOAD_COUNT_RESTART, 0.0);
+  setValue(CCS_PROT_UNDERLOAD_COUNT_RESTART, 0.0);
+  setValue(CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART, 0.0);
 }
