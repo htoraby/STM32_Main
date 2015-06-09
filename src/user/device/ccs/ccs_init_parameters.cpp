@@ -7222,5 +7222,25 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].min                            = 0.0;
   parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].max                            = 10000000.0;
   parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].def                            = 380.0;
+  // Количество попыток ввода пароля
+  parameters_[CCS_PASSWORD_COUNT_ERRORS - CCS_BEGIN].id                          = CCS_PASSWORD_COUNT_ERRORS;
+  parameters_[CCS_PASSWORD_COUNT_ERRORS - CCS_BEGIN].access                      = ACCESS_OPERATOR;
+  parameters_[CCS_PASSWORD_COUNT_ERRORS - CCS_BEGIN].operation                   = OPERATION_READ;
+  parameters_[CCS_PASSWORD_COUNT_ERRORS - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
+  parameters_[CCS_PASSWORD_COUNT_ERRORS - CCS_BEGIN].validity                    = VALIDITY_OK;
+  parameters_[CCS_PASSWORD_COUNT_ERRORS - CCS_BEGIN].value.float_t               = 0;
+  parameters_[CCS_PASSWORD_COUNT_ERRORS - CCS_BEGIN].min                         = 0.0;
+  parameters_[CCS_PASSWORD_COUNT_ERRORS - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_PASSWORD_COUNT_ERRORS - CCS_BEGIN].def                         = 0;
+  // Время последней попытки ввода пароля
+  parameters_[CCS_PASSWORD_TIME_ERROR - CCS_BEGIN].id                            = CCS_PASSWORD_TIME_ERROR;
+  parameters_[CCS_PASSWORD_TIME_ERROR - CCS_BEGIN].access                        = ACCESS_OPERATOR;
+  parameters_[CCS_PASSWORD_TIME_ERROR - CCS_BEGIN].operation                     = OPERATION_READ;
+  parameters_[CCS_PASSWORD_TIME_ERROR - CCS_BEGIN].physic                        = PHYSIC_DATE_TIME;
+  parameters_[CCS_PASSWORD_TIME_ERROR - CCS_BEGIN].validity                      = VALIDITY_OK;
+  parameters_[CCS_PASSWORD_TIME_ERROR - CCS_BEGIN].value.float_t                 = 0;
+  parameters_[CCS_PASSWORD_TIME_ERROR - CCS_BEGIN].min                           = 0;
+  parameters_[CCS_PASSWORD_TIME_ERROR - CCS_BEGIN].max                           = 4294967296;
+  parameters_[CCS_PASSWORD_TIME_ERROR - CCS_BEGIN].def                           = 0;
 }
 

@@ -11068,6 +11068,28 @@
 	</param>
 	<param>
 		<id>722</id>
+		<name>CCS_PASSWORD_COUNT_ERRORS</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>10000000.0</max>
+		<valid>VALIDITY_OK</valid>
+		<comment>Количество попыток ввода пароля</comment>
+	</param>
+	<param>
+		<id>723</id>
+		<name>CCS_PASSWORD_TIME_ERROR</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
+		<min>0</min>
+		<max>4294967296</max>
+		<valid>VALIDITY_OK</valid>
+		<comment>Время последней попытки ввода пароля</comment>
+	</param>
+	<param>
+		<id>724</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
