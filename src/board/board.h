@@ -8,7 +8,7 @@
 #define USE_WATCHDOG 0
 #define USE_EXT_MEM  1
 #define USE_TEST     1
-#define USE_DEBUG    0
+#define USE_DEBUG    1
 
 #define WATCHDOG_TIMEOUT 5 // 5 сек
 
@@ -18,10 +18,10 @@
 #define FIRMWARE_TIME __TIME__
 
 
-#define FLASH_IRQ_PREPRIO 6
-#define UART_IRQ_PREPRIO  7
-#define HOST_IRQ_PREPRIO  8
-#define USB_IRQ_PREPRIO   9
+#define USB_IRQ_PREPRIO   6
+#define FLASH_IRQ_PREPRIO 7
+#define UART_IRQ_PREPRIO  8
+#define HOST_IRQ_PREPRIO  9
 #define ADC_IRQ_PREPRIO   10
 
 

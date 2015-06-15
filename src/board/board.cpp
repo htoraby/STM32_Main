@@ -40,3 +40,15 @@ void usbInit()
   // Инициализация USB HOST
   MX_USB_HOST_Init();
 }
+
+void HAL_Delay(__IO uint32_t Delay)
+{
+  if (isBoardInit) {
+    osDelay(Delay);
+  }
+  else {
+    uint32_t tickstart = 0;
+    tickstart = HAL_GetTick();
+    while((HAL_GetTick() - tickstart) < Delay);
+  }
+}

@@ -151,9 +151,10 @@ uint8_t ModbusMaster::readMultipleRegisters(uint8_t slaveAddr, uint16_t startRef
             return res;
           }
         }
-        if (retry > retryCnt_) {
+        if (retry >= retryCnt_) {
           return res;
         }
+        osDelay(100);
       }
     }
   }
@@ -192,9 +193,10 @@ int ModbusMaster::readMultipleLongInts(int slaveAddr, int startRef, int *int32Ar
             }
             return res;
           }
-          if (retry > retryCnt_) {
+          if (retry >= retryCnt_) {
             return res;
           }
+          osDelay(100);
         }                                               // Не смог отправить запрос
       }                                                 // Некорректное число регистров
     }
@@ -234,9 +236,10 @@ int ModbusMaster::readMultipleFloats(int slaveAddr, int startRef, float *float32
             return res;
           }
         }
-        if (retry > retryCnt_) {
+        if (retry >= retryCnt_) {
           return res;
         }
+        osDelay(100);
       }
     }
   }
@@ -416,9 +419,10 @@ int ModbusMaster::writeSingleRegister(int slaveAddr, int regAddr, short regVal)
           return res;                                   // Возвращаем что запись выполнена
         }
       }
-      if (retry > retryCnt_) {
+      if (retry >= retryCnt_) {
         return res;                                     // Возвращаем код ошибки Modbus
       }
+      osDelay(100);
     }
   }
   return res;
@@ -480,7 +484,7 @@ bool ModbusMaster::checkCntCoils(int Cnt)
   bool Result = err_r;
   try
   {
-    if(Cnt <=MODBUS_MAX_FC01_COILS)
+    if(Cnt <= MODBUS_MAX_FC01_COILS)
     {
       Result = ok_r;
     }
@@ -517,7 +521,7 @@ int ModbusMaster:: isOpen()
 
 bool ModbusMaster::isConnect()
 {
-  if (getFailCounter() >= MODBUS_COUNTER_LOST_CONNECT)
+  if (getFailCounter() > MODBUS_COUNTER_LOST_CONNECT)
     return false;
   else
     return true;

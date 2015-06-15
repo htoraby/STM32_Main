@@ -960,10 +960,12 @@ uint8_t Ccs::setNewValue(uint16_t id, float value)
     }
     break;
   case CCS_CMD_LOG_COPY:
-    logStartSave();
+    if (value)
+      logStartSave();
     break;
   case CCS_CMD_LOG_DELETE:
-    logErase();
+    if (value)
+      logErase();
     break;
   case CCS_COEF_TRANSFORMATION:
     calcSystemInduct();
