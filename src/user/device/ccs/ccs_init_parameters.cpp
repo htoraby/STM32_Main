@@ -7242,5 +7242,25 @@ void Ccs::initParameters()
   parameters_[CCS_PASSWORD_LAST_ATTEMPT_TIME - CCS_BEGIN].min                    = 0;
   parameters_[CCS_PASSWORD_LAST_ATTEMPT_TIME - CCS_BEGIN].max                    = 4294967296;
   parameters_[CCS_PASSWORD_LAST_ATTEMPT_TIME - CCS_BEGIN].def                    = 0;
+  // Текущие значение операции (например, копирование архивов)
+  parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].id                                 = CCS_PROGRESS_VALUE;
+  parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].operation                          = OPERATION_READ;
+  parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].physic                             = PHYSIC_NUMERIC;
+  parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].validity                           = VALIDITY_OK;
+  parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].value.float_t                      = 0.0;
+  parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].min                                = 0.0;
+  parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].max                                = 10000000.0;
+  parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].def                                = 0.0;
+  // Максимальное значение прогресс-бара (например, копирование архивов)
+  parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].id                                   = CCS_PROGRESS_MAX;
+  parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].access                               = ACCESS_OPERATOR;
+  parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].operation                            = OPERATION_READ;
+  parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].physic                               = PHYSIC_NUMERIC;
+  parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].validity                             = VALIDITY_OK;
+  parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].value.float_t                        = 0.0;
+  parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].min                                  = 0.0;
+  parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].max                                  = 10000000.0;
+  parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].def                                  = 0.0;
 }
 
