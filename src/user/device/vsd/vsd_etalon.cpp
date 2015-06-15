@@ -438,7 +438,7 @@ void VsdEtalon::initModbusParameters()
                           };
   modbusParameters_[25] = {// Коэффициент коррекции тока Ic
                            CCS_COEF_OUT_CURRENT_3,// Уникальный идентификатор параметра
-                           0x4084,          // Адрес регистра в устройстве
+                           0x4085,          // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_NUMERIC,  // Физическая величина параметра
                            NUMERIC_NUMBER,  // Единицы измерения параметра
@@ -642,7 +642,7 @@ void VsdEtalon::initModbusParameters()
                           };
   modbusParameters_[38] = {// Напряжение отпайки ТМПН
                            VSD_TRANS_VOLTAGE_TAP_OFF, // Уникальный идентификатор параметра
-                           0x40C0,          // Адрес регистра в устройстве
+                           0x40C3,          // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_VOLTAGE,  // Физическая величина параметра
                            VOLTAGE_V,       // Единицы измерения параметра
@@ -659,7 +659,7 @@ void VsdEtalon::initModbusParameters()
                           };
   modbusParameters_[39] = {// Глубина подвеса ЭЦН
                            VSD_DEPTH,       // Уникальный идентификатор параметра
-                           0x40C0,          // Адрес регистра в устройстве
+                           0x40C4,          // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_LENGHT,   // Физическая величина параметра
                            LENGTH_M,        // Единицы измерения параметра
