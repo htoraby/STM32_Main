@@ -53,19 +53,10 @@ extern uint8_t USBH_DriverNum;
 extern char USBH_Path[];
 		
 void MX_USB_HOST_Init(void);
-void MX_USB_HOST_Process(void);
 
 #ifdef __cplusplus
 }
 #endif
 #endif /*__usb_host_H */
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

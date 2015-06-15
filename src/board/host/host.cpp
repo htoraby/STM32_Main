@@ -33,8 +33,8 @@ void hostInit()
   hspi4.Init.NSS = SPI_NSS_SOFT;
   hspi4.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
   hspi4.Init.FirstBit = SPI_FIRSTBIT_MSB;
-  hspi4.Init.TIMode = SPI_TIMODE_DISABLED;
-  hspi4.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLED;
+  hspi4.Init.TIMode = SPI_TIMODE_DISABLE;
+  hspi4.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
   HAL_SPI_Init(&hspi4);
 
   /* Peripheral DMA init*/

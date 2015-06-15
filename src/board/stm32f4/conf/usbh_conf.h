@@ -1,107 +1,74 @@
 /**
   ******************************************************************************
-  * @file           : usbh_conf.h
-  * @date           : 11/09/2014 11:08:12
-  * @version        : v1.0_Cube
-  * @brief          : Header for usbh_conf file.
+  * @file    FatFs/FatFs_USBDisk_RTOS/Inc/usbh_conf.h
+  * @author  MCD Application Team
+  * @version V1.2.2
+  * @date    25-May-2015
+  * @brief   General low level driver configuration
   ******************************************************************************
-  * COPYRIGHT(c) 2014 STMicroelectronics
+  * @attention
   *
-  * Redistribution and use in source and binary forms, with or without modification,
-  * are permitted provided that the following conditions are met:
-  * 1. Redistributions of source code must retain the above copyright notice,
-  * this list of conditions and the following disclaimer.
-  * 2. Redistributions in binary form must reproduce the above copyright notice,
-  * this list of conditions and the following disclaimer in the documentation
-  * and/or other materials provided with the distribution.
-  * 3. Neither the name of STMicroelectronics nor the names of its contributors
-  * may be used to endorse or promote products derived from this software
-  * without specific prior written permission.
+  * <h2><center>&copy; COPYRIGHT(c) 2015 STMicroelectronics</center></h2>
   *
-  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-  * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+  * You may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at:
+  *
+  *        http://www.st.com/software_license_agreement_liberty_v2
+  *
+  * Unless required by applicable law or agreed to in writing, software 
+  * distributed under the License is distributed on an "AS IS" BASIS, 
+  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
   *
   ******************************************************************************
-*/
+  */
+  
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __USBH_CONF__H__
-#define __USBH_CONF__H__
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#ifdef __cplusplus
- extern "C" {
-#endif
+#ifndef __USBH_CONF_H
+#define __USBH_CONF_H
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx.h"
-#include "stm32f4xx_hal.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-/**
-	MiddleWare name : USB_HOST
-	MiddleWare fileName : usbh_conf.h
-	MiddleWare version : 
-*/
-/*----------   -----------*/
-#define USBH_MAX_NUM_ENDPOINTS      3 
- 
-/*----------   -----------*/
-#define USBH_MAX_NUM_INTERFACES      2 
- 
-/*----------   -----------*/
-#define USBH_MAX_NUM_CONFIGURATION      1 
- 
-/*----------   -----------*/
-#define USBH_KEEP_CFG_DESCRIPTOR      0 
- 
-/*----------   -----------*/
-#define USBH_MAX_NUM_SUPPORTED_CLASS      1 
- 
-/*----------   -----------*/
-#define USBH_MAX_SIZE_CONFIGURATION      255 
- 
-/*----------   -----------*/
-#define USBH_MAX_DATA_BUFFER      512 
- 
-/*----------   -----------*/
-#define USBH_DEBUG_LEVEL      0 
- 
-/*----------   -----------*/
-#define USBH_USE_OS      1 
- 
+/* Exported types ------------------------------------------------------------*/
+#define USBH_MAX_NUM_ENDPOINTS                3
+#define USBH_MAX_NUM_INTERFACES               2
+#define USBH_MAX_NUM_CONFIGURATION            1
+#define USBH_MAX_NUM_SUPPORTED_CLASS          1
+#define USBH_KEEP_CFG_DESCRIPTOR              0
+#define USBH_MAX_SIZE_CONFIGURATION           0x200
+#define USBH_MAX_DATA_BUFFER                  0x200
+#define USBH_DEBUG_LEVEL                      0
+#define USBH_USE_OS                           1
 
-/****************************************/
 /* #define for FS and HS identification */
 #define HOST_HS 		0
 #define HOST_FS 		1
 
-/** @defgroup USBH_Exported_Macros
-  * @{
-  */ 
+/* Exported constants --------------------------------------------------------*/
+/* Exported macro ------------------------------------------------------------*/
+/* CMSIS OS macros */   
 #if (USBH_USE_OS == 1)
   #include "cmsis_os.h"
-  #define   USBH_PROCESS_PRIO    osPriorityNormal
-#endif    
+  #define   USBH_PROCESS_PRIO          osPriorityNormal
+  #define   USBH_PROCESS_STACK_SIZE    (8 * configMINIMAL_STACK_SIZE)
+#endif  
 
- /* Memory management macros */   
+/* Memory management macros */   
 #define USBH_malloc               malloc
 #define USBH_free                 free
 #define USBH_memset               memset
 #define USBH_memcpy               memcpy
     
- /* DEBUG macros */  
-
+/* DEBUG macros */   
 #if (USBH_DEBUG_LEVEL > 0)
-#define  USBH_UsrLog(...)   printf(__VA_ARGS__);\
-                            printf("\n");
+#define USBH_UsrLog(...)   printf(__VA_ARGS__);\
+                           printf("\n");
 #else
 #define USBH_UsrLog(...)   
 #endif 
@@ -109,14 +76,13 @@
                             
 #if (USBH_DEBUG_LEVEL > 1)
 
-#define  USBH_ErrLog(...)   printf("ERROR: ") ;\
-                            printf(__VA_ARGS__);\
-                            printf("\n");
+#define USBH_ErrLog(...)   printf("ERROR: ") ;\
+                           printf(__VA_ARGS__);\
+                           printf("\n");
 #else
 #define USBH_ErrLog(...)   
 #endif 
-                            
-                            
+                                                      
 #if (USBH_DEBUG_LEVEL > 2)                         
 #define  USBH_DbgLog(...)   printf("DEBUG : ") ;\
                             printf(__VA_ARGS__);\
@@ -124,57 +90,9 @@
 #else
 #define USBH_DbgLog(...)                         
 #endif
-                            
-/**
-  * @}
-  */ 
-                                                                
-    
-    
-/**
-  * @}
-  */ 
 
-/** @defgroup USBH_CONF_Exported_Types
-  * @{
-  */ 
-/**
-  * @}
-  */ 
+/* Exported functions ------------------------------------------------------- */
 
-/** @defgroup USBH_CONF_Exported_Macros
-  * @{
-  */ 
-/**
-  * @}
-  */ 
+#endif /* __USB_CONF_H */
 
-/** @defgroup USBH_CONF_Exported_Variables
-  * @{
-  */ 
-/**
-  * @}
-  */ 
-
-/** @defgroup USBH_CONF_Exported_FunctionsPrototype
-  * @{
-  */ 
-/**
-  * @}
-  */ 
-
-#ifdef __cplusplus
- }
-#endif
-
-#endif //__USBH_CONF__H__
-
-/**
-  * @}
-  */ 
-
-/**
-  * @}
-  */ 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
-

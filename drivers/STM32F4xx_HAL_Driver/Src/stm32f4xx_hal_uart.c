@@ -1626,6 +1626,7 @@ static HAL_StatusTypeDef UART_WaitOnFlagUntilTimeout(UART_HandleTypeDef *huart, 
           return HAL_TIMEOUT;
         }
       }
+      HAL_Delay(1);
     }
   }
   else

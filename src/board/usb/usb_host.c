@@ -48,7 +48,7 @@ char USBH_Path[4];           /* USBH logical drive path */
 /*
 * user callbak declaration
 */ 
-static void USBH_UserProcess  (USBH_HandleTypeDef *phost, uint8_t id);
+static void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8_t id);
 
 /* init function */				        
 void MX_USB_HOST_Init(void)
@@ -61,19 +61,11 @@ void MX_USB_HOST_Init(void)
   USBH_Start(&hUsbHostFS);
 
 }
-/*
- * Background task
-*/ 
-void MX_USB_HOST_Process() 
-{
-  /* USB Host Background task */
-    USBH_Process(&hUsbHostFS); 						
-}
 
 /*
  * user callbak definition
 */ 
-static void USBH_UserProcess  (USBH_HandleTypeDef *phost, uint8_t id)
+static void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8_t id)
 {
 
   switch(id)
@@ -97,13 +89,5 @@ static void USBH_UserProcess  (USBH_HandleTypeDef *phost, uint8_t id)
   break; 
   }
 }
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -3,9 +3,10 @@
 
 #include "board.h"
 
-/*!
- \brief Список SPI каналов задействованых для Flash памяти
+#define FLASH_TIMEOUT 5000
 
+/*!
+ * \brief Список SPI каналов задействованых для Flash памяти
 */
 typedef enum {
   FlashSpi1,
@@ -15,7 +16,7 @@ typedef enum {
 
 typedef struct {
   SPI_HandleTypeDef spi;  //!< Структура SPI
-  osSemaphoreId cmdSemaphoreId;
+  osMutexId cmdMutexId;
   osSemaphoreId operSemaphoreId;
   GPIO_TypeDef* nss_port; //!< Порт вывода NSS
   uint16_t nss_pin;       //!< Номер вывода NSS

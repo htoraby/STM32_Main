@@ -1,51 +1,50 @@
 /**
   ******************************************************************************
-  * @file            : usbh_conf.c
-  * @date            : 11/09/2014 11:08:12 
-  * @version         : v1.0_Cube
-  * @brief           : This file implements the board support package for the USB host library
+  * @file    FatFs/FatFs_USBDisk_RTOS/Src/usbh_conf.c
+  * @author  MCD Application Team
+  * @version V1.2.2
+  * @date    25-May-2015
+  * @brief   USB Host configuration file.
   ******************************************************************************
-  * COPYRIGHT(c) 2014 STMicroelectronics
+  * @attention
   *
-  * Redistribution and use in source and binary forms, with or without modification,
-  * are permitted provided that the following conditions are met:
-  * 1. Redistributions of source code must retain the above copyright notice,
-  * this list of conditions and the following disclaimer.
-  * 2. Redistributions in binary form must reproduce the above copyright notice,
-  * this list of conditions and the following disclaimer in the documentation
-  * and/or other materials provided with the distribution.
-  * 3. Neither the name of STMicroelectronics nor the names of its contributors
-  * may be used to endorse or promote products derived from this software
-  * without specific prior written permission.
+  * <h2><center>&copy; COPYRIGHT(c) 2015 STMicroelectronics</center></h2>
   *
-  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-  * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+  * You may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at:
+  *
+  *        http://www.st.com/software_license_agreement_liberty_v2
+  *
+  * Unless required by applicable law or agreed to in writing, software 
+  * distributed under the License is distributed on an "AS IS" BASIS, 
+  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
   *
   ******************************************************************************
-*/
+  */
+
 /* Includes ------------------------------------------------------------------*/
 #include "board.h"
 #include "usbh_core.h"
 
+/* Private variables ---------------------------------------------------------*/
 HCD_HandleTypeDef hhcd_USB_OTG_FS;
 
 /*******************************************************************************
-                       LL Driver Callbacks (HCD -> USB Host Library)
+                       HCD BSP Routines
 *******************************************************************************/
-/* MSP Init */
-
+/**
+  * @brief  Initializes the HCD MSP.
+  * @param  hhcd: HCD handle
+  * @retval None
+  */
 void HAL_HCD_MspInit(HCD_HandleTypeDef* hhcd)
 {
   GPIO_InitTypeDef GPIO_InitStruct;
-  if(hhcd->Instance==USB_OTG_FS)
+
+  if(hhcd->Instance == USB_OTG_FS)
   {
     /* Peripheral clock enable */
     __USB_OTG_FS_CLK_ENABLE();
@@ -69,7 +68,7 @@ void HAL_HCD_MspInit(HCD_HandleTypeDef* hhcd)
 
 void HAL_HCD_MspDeInit(HCD_HandleTypeDef* hhcd)
 {
-  if(hhcd->Instance==USB_OTG_FS)
+  if(hhcd->Instance == USB_OTG_FS)
   {
     /* Peripheral clock disable */
     __USB_OTG_FS_CLK_DISABLE();
@@ -84,6 +83,10 @@ void HAL_HCD_MspDeInit(HCD_HandleTypeDef* hhcd)
     HAL_NVIC_DisableIRQ(OTG_FS_IRQn);
   }
 }
+
+/*******************************************************************************
+                       LL Driver Callbacks (HCD -> USB Host Library)
+*******************************************************************************/
 
 /**
   * @brief  SOF callback.
@@ -131,11 +134,9 @@ void HAL_HCD_HC_NotifyURBChange_Callback(HCD_HandleTypeDef *hhcd, uint8_t chnum,
                        LL Driver Interface (USB Host Library --> HCD)
 *******************************************************************************/
 /**
-  * @brief  USBH_LL_Init 
-  *         Initialize the HOST portion of the driver.
-  * @param  phost: Selected device
-  * @param  base_address: OTG base address
-  * @retval Status
+  * @brief  Initializes the Low Level portion of the Host driver.
+  * @param  phost: Host handle
+  * @retval USBH Status
   */
 USBH_StatusTypeDef  USBH_LL_Init (USBH_HandleTypeDef *phost)
 {
@@ -151,11 +152,12 @@ USBH_StatusTypeDef  USBH_LL_Init (USBH_HandleTypeDef *phost)
   hhcd_USB_OTG_FS.Init.low_power_enable = ENABLE;
   hhcd_USB_OTG_FS.Init.vbus_sensing_enable = DISABLE;
   hhcd_USB_OTG_FS.Init.use_external_vbus = DISABLE;
-  HAL_HCD_Init(&hhcd_USB_OTG_FS);
-
   /* Link The driver to the stack */
   hhcd_USB_OTG_FS.pData = phost;
   phost->pData = &hhcd_USB_OTG_FS;
+  /* Initialize the LL Driver */	
+  HAL_HCD_Init(&hhcd_USB_OTG_FS);
+	
   USBH_LL_SetTimer (phost, HAL_HCD_GetCurrentFrame(&hhcd_USB_OTG_FS));
   }
   return USBH_OK;

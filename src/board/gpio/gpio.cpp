@@ -178,13 +178,13 @@ void offLcd()
 void onPowerAm335x()
 {
   clrPinOut(POWER_BUTTON_PIN);
-  HAL_Delay(200);
+  osDelay(200);
   setPinOut(POWER_BUTTON_PIN);
 }
 
 void offPowerAm335x()
 {
   clrPinOut(POWER_BUTTON_PIN);
-  HAL_Delay(10000);
+  osDelay(10000);
   setPinOut(POWER_BUTTON_PIN);
 }
