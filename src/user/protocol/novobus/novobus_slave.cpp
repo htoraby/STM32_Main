@@ -248,9 +248,9 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
           value.char_t[0] = rxBuffer_[7 + i*6];
           // Вызываем функцию записи значения параметра
           if (parameters.getPhysic(id.uint16_t[0]) == PHYSIC_DATE_TIME)
-            parameters.set(id.uint16_t[0], (uint32_t)value.uint32_t);
+            parameters.set(id.uint16_t[0], (uint32_t)value.uint32_t, OperatorType);
           else
-            parameters.set(id.uint16_t[0], value.float_t);
+            parameters.set(id.uint16_t[0], value.float_t, OperatorType);
         }
 
         checkMessage();
