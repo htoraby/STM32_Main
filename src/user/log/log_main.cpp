@@ -83,7 +83,8 @@ StatusType logDebugRead(uint32_t address, uint8_t *data, uint32_t size)
 
 void logStartSave()
 {
-  parameters.set(CCS_LOG_PROGRESS, 0);
+  parameters.set(CCS_PROGRESS_VALUE, 0);
+  parameters.set(CCS_PROGRESS_MAX, (EndAddrDebugLog + EndAddrTmsLog)/1024);
   osSemaphoreRelease(semaphoreId_);
 }
 
@@ -99,9 +100,7 @@ void logSaveTask(void *argument)
   while (1) {
     osSemaphoreWait(semaphoreId_, osWaitForever);
 
-    for (int i = 0; i < 3; ++i) {
-
-      bool error = false;
+    bool error = false;
 
     uint32_t time = 0;
     while(disk_status(0) != RES_OK) {
@@ -154,7 +153,7 @@ void logSaveTask(void *argument)
           count++;
           if (count >= 20) {
             count = 0;
-            parameters.set(CCS_LOG_PROGRESS, (float)addr/1024);
+            parameters.set(CCS_PROGRESS_VALUE, (float)addr/1024);
           }
           if (addr >= EndAddrDebugLog)
             break;
@@ -184,7 +183,7 @@ void logSaveTask(void *argument)
           count++;
           if (count >= 20) {
             count = 0;
-            parameters.set(CCS_LOG_PROGRESS, (float)(addr + EndAddrDebugLog)/1024);
+            parameters.set(CCS_PROGRESS_VALUE, (float)(addr + EndAddrDebugLog)/1024);
           }
           if (addr >= EndAddrTmsLog)
             break;
@@ -209,7 +208,6 @@ void logSaveTask(void *argument)
     if (error) {
       parameters.set(CCS_CMD_LOG_COPY, 0);
       continue;
-    }
     }
 
     parameters.set(CCS_CMD_LOG_COPY, 0);
