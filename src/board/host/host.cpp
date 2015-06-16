@@ -2,7 +2,7 @@
 #include "gpio.h"
 #include "string.h"
 
-#define TIMEOUT_RX 900
+#define TIMEOUT_RX 950
 
 SPI_HandleTypeDef hspi4;
 DMA_HandleTypeDef hdma_spi4_tx;
@@ -100,6 +100,7 @@ static void hostTimer(const void * argument)
     } else {
       rxTimeout = TIMEOUT_RX;
 
+      HAL_SPI_DeInit(&hspi4);
       HAL_SPI_Init(&hspi4);
       hostEnable();
     }

@@ -117,7 +117,7 @@ void HAL_SPI_MspDeInit(SPI_HandleTypeDef* hspi)
   else if(hspi->Instance == SPI4) {
     __SPI4_CLK_DISABLE();
 
-    HAL_GPIO_DeInit(GPIOE, GPIO_PIN_2|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6);
+    HAL_GPIO_DeInit(GPIOE, GPIO_PIN_2/*|GPIO_PIN_4*/|GPIO_PIN_5|GPIO_PIN_6);
   }
   else if(hspi->Instance == SPI5) {
     __SPI5_CLK_DISABLE();
