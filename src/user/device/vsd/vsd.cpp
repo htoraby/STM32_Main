@@ -248,7 +248,6 @@ int Vsd::offRegimeSwing()
   return 0;
 }
 
-
 void Vsd::initParameters()
 {
   for (int index = 0; index < (VSD_END - VSD_BEGIN); index++) {

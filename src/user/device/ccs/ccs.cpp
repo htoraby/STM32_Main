@@ -929,7 +929,7 @@ float Ccs::calcTransTapOff(float coefTrans)
   return parameters.get(CCS_TRANS_NEED_VOLTAGE_TAP_OFF);
 }
 
-uint8_t Ccs::setNewValue(uint16_t id, float value)
+uint8_t Ccs::setNewValue(uint16_t id, float value, EventType reason)
 {
   switch (id) {
   case CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT:
@@ -1050,20 +1050,16 @@ uint8_t Ccs::setNewValue(uint16_t id, float value)
   case CCS_CMD_PROT_DHS_RESISTANCE_SETPOINT_RESET:
     cmdProtDhsResistanceSetpointReset();
     break;
-// TODO: Добавить регистр CCS_CMD_PROT_OTHER_HARDWARE_VSD_SETPOINT_RESET
-//  case CCS_CMD_PROT_OTHER_HARDWARE_VSD_SETPOINT_RESET:
-//    cmdProtOtherHardwareVsdSetpointReset();
-//    break;
   case CCS_CMD_COUNTER_ALL_RESET:
     cmdCountersAllReset();
     break;
   default:
     break;
   }
-  return setValue(id, value);
+  return setValue(id, value, reason);
 }
 
-uint8_t Ccs::setNewValue(uint16_t id, uint32_t value)
+uint8_t Ccs::setNewValue(uint16_t id, uint32_t value, EventType reason)
 {
   switch (id) {
   case CCS_DATE_TIME:
@@ -1080,12 +1076,12 @@ uint8_t Ccs::setNewValue(uint16_t id, uint32_t value)
     }
     break;
   }
-  return setValue(id, value);
+  return setValue(id, value, reason);
 }
 
-uint8_t Ccs::setNewValue(uint16_t id, int value)
+uint8_t Ccs::setNewValue(uint16_t id, int value, EventType reason)
 {
-  return setNewValue(id, (float)value);
+  return setNewValue(id, (float)value, reason);
 }
 
 void Ccs::calcRegimeChangeFreqPeriodOneStep()

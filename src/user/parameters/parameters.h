@@ -53,7 +53,7 @@ public:
    * \param value присваемое значение
    * \return 0 - значение присвоено или ошибка
    */
-  int set(unsigned short id, float value);
+  int set(unsigned short id, float value, EventType reason = AutoType);
 
   /*!
    * \brief Метод записи параметра типа uint32_t по ID
@@ -62,7 +62,7 @@ public:
    * \param value присваемое значение
    * \return 0 - значение присвоено или ошибка
    */
-  int set(unsigned short id, uint32_t value);
+  int set(unsigned short id, uint32_t value, EventType reason = AutoType);
 
   /*!
    * \brief Метод записи параметра типа int по ID
@@ -71,7 +71,7 @@ public:
    * \param value присваемое значение
    * \return 0 - значение присвоено или ошибка
    */
-  int set(unsigned short id, int value);
+  int set(unsigned short id, int value, EventType reason = AutoType);
 
   /*!
    * \brief Метод получения типа физической величины по ID

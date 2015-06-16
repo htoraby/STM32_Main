@@ -14,6 +14,7 @@
 #include "units.h"
 #include "board.h"
 #include "fram.h"
+#include "log.h"
 
 /*!
  * \brief Структура для обработки и хранения параметров в СУ
@@ -29,6 +30,7 @@ struct parameter
   float def;                /// Значение по умолчанию
   unsigned char validity;   /// Валидность параметра
   unTypeData value;         /// Значение параметра, для единообразия значения всех параметров будем
+  uint16_t code;            /// Код события журнала событий, при изменениии параметра.
 };
 
 /*!
@@ -126,9 +128,10 @@ public:
    * 3. Минимальное и максимальное значение
    * \param id уникальный идентификатор параметра
    * \param value присваемое значение
+   * \param reason источник(первопричина) изменения параметра (по умолчанию авто)
    * \return 0 - значение присвоено или код ошибки
    */
-  uint8_t setValue(uint16_t id, float value);
+  uint8_t setValue(uint16_t id, float value, EventType reason = AutoType);
 
   /*!
    * \brief Метод присвоения значения параметра типа uint32_t
@@ -136,7 +139,7 @@ public:
    * \param value - присваемое значение
    * \return 0 - значение присвоено или код ошибки
    */
-  uint8_t setValue(uint16_t id, uint32_t value);
+  uint8_t setValue(uint16_t id, uint32_t value, EventType reason = AutoType);
 
   /*!
    * \brief Метод присвоения значения параметра типа float переменным типа int
@@ -144,7 +147,7 @@ public:
    * \param value - присваемое значение
    * \return 0 - значение присвоено или код ошибки
    */
-  uint8_t setValue(uint16_t id, int value);
+  uint8_t setValue(uint16_t id, int value, EventType reason = AutoType);
 
   /*!
    * \brief Функция сброса значения параметра на значение по умолчанию
@@ -235,6 +238,13 @@ protected:
    * \return
    */
   uint32_t getFieldValueUint32(uint16_t index);
+
+  /*!
+   * \brief Функция получения поля "code" параметра, по индексу в массиве параметров
+   * \param index - индекс параметра в массиве
+   * \return
+   */
+  EventCode getFieldCode(uint16_t index);
 
   /*!
    * \brief Метод получения Minimum параметра по индексу в массиве параметров

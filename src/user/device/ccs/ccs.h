@@ -315,11 +315,11 @@ public:
   float calcTransTapOff(float coefTrans = -1);
 
 
-  uint8_t setNewValue(uint16_t id, float value);
+  uint8_t setNewValue(uint16_t id, float value, EventType reason = AutoType);
 
-  uint8_t setNewValue(uint16_t id, uint32_t value);
+  uint8_t setNewValue(uint16_t id, uint32_t value, EventType reason = AutoType);
 
-  uint8_t setNewValue(uint16_t id, int value);
+  uint8_t setNewValue(uint16_t id, int value, EventType reason = AutoType);
 
   /*!
    * \brief Функция пересчёта периода одного шага
