@@ -89,6 +89,24 @@ bool checkBit(uint32_t value, uint8_t bit)
     return false;
 }
 
+uint32_t setOneToBit(uint32_t value, uint8_t bit)
+{
+  return value |= (1 << bit);
+}
+
+uint32_t setZeroToBit(uint32_t value, uint8_t bit)
+{
+  return value &= (~(1 << bit));
+}
+
+uint32_t setBit(uint32_t value, uint8_t bit, bool flag)
+{
+  if (flag)
+    return setOneToBit(value, bit);
+  else
+    return setZeroToBit(value, bit);
+}
+
 float calcImbalance(float value1, float value2, float value3, int digit)
 {
   float max_;

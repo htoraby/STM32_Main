@@ -104,6 +104,31 @@ int checkRange(double value, double min, double max, bool inc);
 bool checkBit(uint32_t value, uint8_t bit);
 
 /*!
+ * \brief setOneToBit
+ * \param value
+ * \param bit
+ * \return
+ */
+uint32_t setOneToBit(uint32_t value, uint8_t bit);
+
+/*!
+ * \brief setZeroToBit
+ * \param value
+ * \param bit
+ * \return
+ */
+uint32_t setZeroToBit(uint32_t value, uint8_t bit);
+
+/*!
+ * \brief setBit
+ * \param value
+ * \param bit
+ * \param flag
+ * \return
+ */
+uint32_t setBit(uint32_t value, uint8_t bit, bool flag);
+
+/*!
  * \brief Функция вычисления дисбаланса между 3 значениями по формуле СНГ
  * \param value1
  * \param value2
