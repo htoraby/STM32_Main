@@ -988,7 +988,7 @@ void VsdEtalon::initModbusParameters()
                           };
   modbusParameters_[58] = {// Верхняя граница частоты
                            VSD_HIGH_LIM_SPEED_MOTOR,// Уникальный идентификатор параметра
-                           0x410B,          // Адрес регистра в устройстве
+                           0x4000 + 267,    // 0x410B Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_FREQUENCY,// Физическая величина параметра
                            FREQUENCY_HZ,    // Единицы измерения параметра
@@ -1005,7 +1005,7 @@ void VsdEtalon::initModbusParameters()
                           };
   modbusParameters_[59] = {// Нижняя граница частоты
                            VSD_LOW_LIM_SPEED_MOTOR, // Уникальный идентификатор параметра
-                           0x410C,          // Адрес регистра в устройстве
+                           0x4000 + 268,    // 0x410CАдрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_FREQUENCY,// Физическая величина параметра
                            FREQUENCY_HZ,    // Единицы измерения параметра
@@ -1896,6 +1896,8 @@ void VsdEtalon::initParameters()
 void VsdEtalon::getNewValue(uint16_t id)
 {
   float value = 0;
+
+  // Преобразуем данные из полученного типа данных в float
   ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtId(id));
   switch (param->typeData) {
   case TYPE_DATA_INT16:
@@ -1916,10 +1918,29 @@ void VsdEtalon::getNewValue(uint16_t id)
   default:
     break;
   }
+
+  // Применяем коэффициент преобразования
   value = value * param->coefficient;
+
+  // Применяем единицы измерения
   value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
-  setValue(id, value);
-  calcParameters(id);
+
+  // Преобразования для параметров требующих особой обработки по id
+  switch (id) {
+  case VSD_ETALON_ON_STATE:
+    // Устанавливаем в параметре VSD_INVERTOR_STATUS бит VSD_INVERTOR_STATUS равный значениею VSD_ETALON_ON_STATE
+    setValue(VSD_INVERTOR_STATUS, setBit(getValue(VSD_INVERTOR_STATUS), VSD_STATUS_STARTED, (bool)value));
+    setValue(VSD_ETALON_ON_STATE, value);
+    break;
+  case VSD_ETALON_OFF_STATE:
+    // Устанавливаем в параметре VSD_INVERTOR_STATUS бит VSD_STATUS_STOPPED_EXTERNAL равный значениею VSD_ETALON_OFF_STATE
+    setValue(VSD_INVERTOR_STATUS, setBit(getValue(VSD_INVERTOR_STATUS), VSD_STATUS_STOPPED_EXTERNAL, value));
+    setValue(VSD_ETALON_OFF_STATE, value);
+    break;
+  default:
+    setValue(id, value);
+    break;
+  }
 }
 
 uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
@@ -1960,11 +1981,10 @@ void VsdEtalon::writeToDevice(int id, float value)
 
 int VsdEtalon::start()
 {
-#if DEBUG
+#if USE_DEBUG
   return ok_r;
 #endif
-
-  // Если стоит бит запуска двигателя
+  // Если стоит бит запуска двигателя, бит должен устанавливаться при чтении
   if (checkVsdStatus(VSD_STATUS_STARTED))
     return ok_r;
 
@@ -1987,8 +2007,9 @@ int VsdEtalon::start()
 
     osDelay(100);
 
-    if (checkVsdStatus(VSD_STATUS_STARTED))
+    if (checkVsdStatus(VSD_STATUS_STARTED)) {
       return ok_r;
+    }
   }
 }
 
@@ -1998,11 +2019,8 @@ bool VsdEtalon::checkStart()
   return true;
 #endif
 
-  if (checkVsdStatus(VSD_STATUS_STARTED)) {
-    if (!checkVsdStatus(VSD_STATUS_WAIT_RECT_START)) {
-      return true;
-    }
-  }
+  if (checkVsdStatus(VSD_STATUS_STARTED))
+    return true;
   return false;
 }
 
@@ -2047,10 +2065,8 @@ bool VsdEtalon::checkStop()
 #endif
 
   if (checkVsdStatus(VSD_STATUS_STOPPED_EXTERNAL)) {
-    if (!checkVsdStatus(VSD_STATUS_STARTED)) {
-      if (!checkVsdStatus(VSD_STATUS_WAIT_RECT_STOP)) {
-        return true;
-      }
+    if (!checkVsdStatus(VSD_STATUS_STARTED)) { 
+      return true;
     }
   }
   return false;
