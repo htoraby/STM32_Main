@@ -19,8 +19,8 @@ enum enInvertorControl
 {  
   INV_CONTROL_START           = 1,       //!< Запустить инвертор ("Старт")
   INV_CONTROL_STOP            = 2,       //!< Остановить инвертор ("Стоп")
-  INV_CONTROL_LEFT_DIRECTION  = 4,       //!< Задать левое вращение
-  INV_CONTROL_RIGHT_DIRECTION = 8,       //!< Задать правое вращение
+  INV_CONTROL_LEFT_DIRECTION  = 4,       //!< Задать левое вращение (обратное)
+  INV_CONTROL_RIGHT_DIRECTION = 8,       //!< Задать правое вращение (прямое)
   INV_CONTROL_ALARM           = 16,      //!< Аварийный останов
   INV_CONTROL_CURRENT_OPT     = 32,      //!< Задание оптимизации по току
   INV_CONTROL_POWER_OPT       = 64,      //!< задание оптимизации по мощности

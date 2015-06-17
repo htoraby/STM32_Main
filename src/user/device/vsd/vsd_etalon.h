@@ -21,6 +21,8 @@ public:
   void initModbusParameters();
   void initParameters();
 
+  bool isConnect();
+
   void getNewValue(uint16_t id);
   uint8_t setNewValue(uint16_t id, float value);
 
@@ -52,42 +54,6 @@ public:
 
   bool checkStart();
   bool checkStop();
-
-  /*!
-   * \brief Функция включения толчкового режима
-   * \return
-   */
-  int onRegimePush();
-
-  /*!
-   * \brief Функция выключения толчкового режима
-   * \return
-   */
-  int offRegimePush();
-
-  /*!
-   * \brief onRegimeSwing
-   * \return
-   */
-  int onRegimeSwing();
-
-  /*!
-   * \brief offRegimeSwing
-   * \return
-   */
-  int offRegimeSwing();
-
-  /*!
-   * \brief onRegimeJarring
-   * \return
-   */
-  int onRegimeJarring();
-
-  /*!
-   * \brief offRegimeJarring
-   * \return
-   */
-  int offRegimeJarring();
 
   /*!
    * \brief Метод записи основного режима работы ЧРП
@@ -124,36 +90,6 @@ public:
    * \return Код результата операции
    */
   int setMotorType(float value);
-
-  /*!
-   * \brief getMotorType
-   */
-  void calcMotorType();
-
-  /*!
-   * \brief calcSpeedUp
-   */
-  void calcTempSpeedUp();
-
-  /*!
-   * \brief calcTimeSpeedUp
-   */
-  void calcTimeSpeedUp();
-
-  /*!
-   * \brief calcMotorControl
-   */
-  void calcMotorControl();
-
-  /*!
-   * \brief calcRotation
-   */
-  void calcRotation();
-
-  /*!
-   * \brief Функция вычисления тока звена постоянного тока
-   */
-  void calcCurrentDC();
 
   /*!
    * \brief Метод задания времени набора частоты
@@ -273,7 +209,7 @@ public:
   void calcParameters(uint16_t id);
 
 private:
-  ModbusParameter modbusParameters_[135];
+  ModbusParameter modbusParameters_[108];
   DeviceModbus *dm_;
 
 };
