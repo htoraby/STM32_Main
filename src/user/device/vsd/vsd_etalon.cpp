@@ -99,20 +99,19 @@ void VsdEtalon::getNewValue(uint16_t id)
   // Преобразования для параметров требующих особой обработки по id
   switch (id) {
   case VSD_ETALON_ON_STATE:
-    // Устанавливаем в параметре VSD_INVERTOR_STATUS бит VSD_INVERTOR_STATUS равный значениею VSD_ETALON_ON_STATE
-    //setValue(VSD_INVERTOR_STATUS, setBit(getValue(VSD_INVERTOR_STATUS), VSD_STATUS_STARTED, (bool)value));
-    setValue(VSD_ETALON_ON_STATE, value);
+    setBitVsdStatus(VSD_STATUS_STARTED, value);
+    setValue(id, value);
     break;
   case VSD_ETALON_OFF_STATE:
-    // Устанавливаем в параметре VSD_INVERTOR_STATUS бит VSD_STATUS_STOPPED_EXTERNAL равный значениею VSD_ETALON_OFF_STATE
-    //setValue(VSD_INVERTOR_STATUS, setBit(getValue(VSD_INVERTOR_STATUS), VSD_STATUS_STOPPED_EXTERNAL, value));
-    setValue(VSD_ETALON_OFF_STATE, value);
+    setBitVsdStatus(VSD_STATUS_STOPPED_EXTERNAL, value);
+    setValue(id, value);
     break;
   case VSD_INVERTOR_STATUS:
-    // TODO: Добавить перераспредление бит
+    convertBitVsdStatus(value);
     break;
   default:
     setValue(id, value);
+
     break;
   }
 }
@@ -155,11 +154,10 @@ void VsdEtalon::writeToDevice(int id, float value)
 
 int VsdEtalon::start()
 {
-  /*
 #if USE_DEBUG
   return ok_r;
 #endif
-*/
+
   if (getValue(VSD_ETALON_ON_STATE) == 1)
     return ok_r;
 
@@ -171,12 +169,15 @@ int VsdEtalon::start()
       timeMs = 0;
       countRepeats++;
 
-      if (countRepeats > VSD_CMD_NUMBER_REPEATS)
-        return err_r;
+    if (countRepeats > VSD_CMD_NUMBER_REPEATS)
+      return err_r;
 
-      if (setNewValue(VSD_ETALON_ON, 1))
-        return err_r;
-    } else {
+    if (setNewValue(VSD_ETALON_UNLOCK, 1))
+      return err_r;
+    if (setNewValue(VSD_ETALON_ON, 1))
+      return err_r;
+    }
+    else {
       timeMs = timeMs + 100;
     }
 
@@ -334,4 +335,169 @@ void VsdEtalon::calcParameters(uint16_t id)
 int VsdEtalon::setMainRegimeVSD()
 {
   return 1;
+}
+
+void VsdEtalon::convertBitVsdStatus(float value)
+{
+  // Стираем биты в словах состояниях которыми управляем
+  setBitVsdStatus(VSD_STATUS_READY, false);
+  setBitVsdStatus(VSD_STATUS_UNDERLOAD, false);
+  setBitVsdStatus(VSD_STATUS_M_I2T_ERR, false);
+  setBitVsdStatus(VSD_STATUS_RESISTANCE, false);
+  setBitVsdStatus(VSD_STATUS_UNDERVOLTAGE, false);
+  setBitVsdStatus(VSD_STATUS_OVERVOLTAGE, false);
+  setBitVsdStatus(VSD_STATUS_UD_LOW_FAULT, false);
+  setBitVsdStatus(VSD_STATUS_UD_HIGH_FAULT, false);
+  setBitVsdStatus(VSD_STATUS_RUN_COUNT, false);
+  setBitVsdStatus(VSD_STATUS_FC_I2T_ERR, false);
+  setBitVsdStatus(VSD_STATUS_OVERHEAT_FILTER, false);
+  setBitVsdStatus(VSD_STATUS_STOPPED_ALARM, false);
+  setBitVsdStatus(VSD_FLT_DRV0, false);
+  setBitVsdStatus(VSD_STATUS_MONOMETR, false);
+  setBitVsdStatus(VSD_STATUS_AI_0, false);
+  setBitVsdStatus(VSD_THYR_ABC_STATE, false);
+  setBitVsdStatus(VSD_STATUS_OVERHEAT_MOTOR, false);
+  setBitVsdStatus(VSD_STATUS_OVERVIBRATION, false);
+  setBitVsdStatus(VSD_STATUS_PRESSURE, false);
+  setBitVsdStatus(VSD_STATUS_FAULT_STOPPED, false);
+  setBitVsdStatus(VSD_STATUS_I_LIMIT, false);
+  setBitVsdStatus(VSD_FLT_CLK_MON, false);
+  setBitVsdStatus(VSD_FLT_CTR_MON, false);
+  setBitVsdStatus(VSD_FLT_AN_MON, false);
+  setBitVsdStatus(VSD_FLT_MB_MON, false);
+  setBitVsdStatus(VSD_FLT_CLK_MON, false);
+  switch ((uint16_t)value) {
+  case VSD_ETALON_INFO_READY:             // VSD_STATUS_READY
+    setBitVsdStatus(VSD_STATUS_READY, true);
+    break;
+  case VSD_ETALON_INFO_UNDERLOAD:         // VSD_STATUS_UNDERLOAD
+    setBitVsdStatus(VSD_STATUS_UNDERLOAD, true);
+    break;
+  case VSD_ETALON_INFO_OVERLOAD:          // VSD_STATUS_M_I2T_ERR
+    setBitVsdStatus(VSD_STATUS_M_I2T_ERR, true);
+    break;
+  case VSD_ETALON_INFO_RESISTANCE:        // VSD_STATUS_RESISTANCE
+    setBitVsdStatus(VSD_STATUS_RESISTANCE, true);
+    break;
+  case VSD_ETALON_INFO_UNDERVOLTAGE:      // VSD_STATUS_UNDERVOLTAGE
+    setBitVsdStatus(VSD_STATUS_UNDERVOLTAGE, true);
+    break;
+  case VSD_ETALON_INFO_OVERVOLTAGE:       // VSD_STATUS_OVERVOLTAGE
+    setBitVsdStatus(VSD_STATUS_OVERVOLTAGE, true);
+    break;
+  case VSD_ETALON_INFO_OVERVOLTAGE_DC:    // VSD_STATUS_UD_LOW_FAULT
+    setBitVsdStatus(VSD_STATUS_UD_LOW_FAULT, true);
+    break;
+  case VSD_ETALON_INFO_UNDERVOLTAGE_DC:   // VSD_STATUS_UD_HIGH_FAULT
+    setBitVsdStatus(VSD_STATUS_UD_HIGH_FAULT, true);
+    break;
+  case VSD_ETALON_INFO_RUN_COUNT:         // VSD_STATUS_RUN_COUNT
+    setBitVsdStatus(VSD_STATUS_RUN_COUNT, true);
+    break;
+  case VSD_ETALON_INFO_OVERHEAT_IGBT:     // VSD_STATUS_FC_I2T_ERR
+    setBitVsdStatus(VSD_STATUS_FC_I2T_ERR, true);
+    break;
+  case VSD_ETALON_INFO_OVERHEAT_FILTER:   // VSD_STATUS_OVERHEAT_FILTER
+    setBitVsdStatus(VSD_STATUS_OVERHEAT_FILTER, true);
+    break;
+  case VSD_ETALON_INFO_PROT:              // VSD_STATUS_STOPPED_ALARM
+    setBitVsdStatus(VSD_STATUS_STOPPED_ALARM, true);
+    break;
+  case VSD_ETALON_INFO_SUPPLY_DRIVERS:    // VSD_FLT_DRV0
+    setBitVsdStatus(VSD_FLT_DRV0, true);
+    break;
+  case VSD_ETALON_INFO_MONOMETR:          // VSD_STATUS_MONOMETR
+    setBitVsdStatus(VSD_STATUS_MONOMETR, true);
+    break;
+  case VSD_ETALON_INFO_AI_0:              // VSD_STATUS_AI_0
+    setBitVsdStatus(VSD_STATUS_AI_0, true);
+    break;
+  case VSD_ETALON_INFO_SEQUENCE_PHASE:    // VSD_THYR_ABC_STATE
+    setBitVsdStatus(VSD_THYR_ABC_STATE, true);
+    break;
+  case VSD_ETALON_INFO_OVERHEAT_MOTOR:    // VSD_STATUS_OVERHEAT_MOTOR
+    setBitVsdStatus(VSD_STATUS_OVERHEAT_MOTOR, true);
+    break;
+  case VSD_ETALON_INFO_OVERVIBRATION:     // VSD_STATUS_OVERVIBRATION
+    setBitVsdStatus(VSD_STATUS_OVERVIBRATION, true);
+    break;
+  case VSD_ETALON_INFO_PRESSURE:          // VSD_STATUS_PRESSURE
+    setBitVsdStatus(VSD_STATUS_PRESSURE, true);
+    break;
+  case VSD_ETALON_INFO_19:                // VSD_STATUS_FAULT_STOPPED
+    setBitVsdStatus(VSD_STATUS_FAULT_STOPPED, true);
+    break;
+  case VSD_ETALON_INFO_IMBALANCE_CURRENT: // VSD_FLT_IZ
+    setBitVsdStatus(VSD_FLT_IZ, true);
+    break;
+  case VSD_ETALON_INFO_IMBALANCE_VOLTAGE: // VSD_STATUS_UIN_ASYM
+    setBitVsdStatus(VSD_STATUS_UIN_ASYM, true);
+    break;
+  case VSD_ETALON_INFO_TURBINE:           // VSD_STATUS_TURBINE
+    setBitVsdStatus(VSD_STATUS_TURBINE, true);
+    break;
+  case VSD_ETALON_INFO_24:                // VSD_STATUS_FAULT_STOPPED
+    setBitVsdStatus(VSD_STATUS_FAULT_STOPPED, true);
+    break;
+  case VSD_ETALON_INFO_FAILURE_SUPPLY:
+    break;
+  case VSD_ETALON_INFO_DOOR:
+    break;
+  case VSD_ETALON_INFO_LOST_SUPPLY:
+    break;
+  case VSD_ETALON_INFO_CONDENSATOR:
+    break;
+  case VSD_ETALON_INFO_TERISTORS:
+    break;
+  case VSD_ETALON_INFO_CURRENT_LIMIT:     // VSD_STATUS_I_LIMIT
+    setBitVsdStatus(VSD_STATUS_I_LIMIT, true);
+    break;
+  case VSD_ETALON_INFO_31:                // VSD_STATUS_FAULT_STOPPED
+    setBitVsdStatus(VSD_STATUS_FAULT_STOPPED, true);
+    break;
+  case VSD_ETALON_INFO_32:
+    break;
+  case VSD_ETALON_INFO_AUTO_STOP:
+    break;
+  case VSD_ETALON_INFO_MANUAL_STOP:
+    break;
+  case VSD_ETALON_INFO_REMOTE_STOP:
+    break;
+  case VSD_ETALON_INFO_AUTO_RUN:
+    break;
+  case VSD_ETALON_INFO_MANUAL_RUN:
+    break;
+  case VSD_ETALON_INFO_REMOTE_RUN:
+    break;
+  case VSD_ETALON_INFO_RESTART_COUNT:
+    break;
+  case VSD_ETALON_INFO_MEMORY:            // VSD_FLT_CLK_MON
+    setBitVsdStatus(VSD_FLT_CLK_MON, true);
+    break;
+  case VSD_ETALON_INFO_41:
+    break;
+  case VSD_ETALON_INFO_DI:                // VSD_FLT_CTR_MON
+    setBitVsdStatus(VSD_FLT_CTR_MON, true);
+    break;
+  case VSD_ETALON_INFO_ADC:               // VSD_FLT_AN_MON
+    setBitVsdStatus(VSD_FLT_AN_MON, true);
+    break;
+  case VSD_ETALON_INFO_ANALOG_SUPPLY:     // VSD_FLT_AN_MON
+    setBitVsdStatus(VSD_FLT_AN_MON, true);
+    break;
+  case VSD_ETALON_INFO_SENSOR_SUPPLY:     // VSD_FLT_MB_MON
+    setBitVsdStatus(VSD_FLT_MB_MON, true);
+    break;
+  case VSD_ETALON_INFO_EEPROM:            // VSD_FLT_CLK_MON
+    setBitVsdStatus(VSD_FLT_CLK_MON, true);
+    break;
+  case VSD_ETALON_INFO_NOT_READY:
+    break;
+  case VSD_ETALON_INFO_SETPOINT:
+    break;
+  case VSD_ETALON_INFO_BLOCK_RUN:
+    break;
+  default:
+    break;
+  }
 }
