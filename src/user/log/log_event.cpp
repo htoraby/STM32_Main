@@ -28,7 +28,7 @@ uint32_t LogEvent::add(EventCode code, EventType type, EventId id,
   *(float*)(buffer+12) = oldValue;
   *(float*)(buffer+16) = newValue;
   *(uint8_t*)(buffer+20) = units;
-  StatusType status = write(buffer, 21);
+  StatusType status = write(buffer, LOG_EVENT_SIZE);
 
   // Сообщить контроллеру визуализации о новом событии
   if (status == StatusOk)

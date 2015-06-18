@@ -73,10 +73,9 @@ int NovobusSlave::getMessageParams()
   return 0;
 }
 
-void NovobusSlave::putMessageEvents(uint32_t id)
+void NovobusSlave::putMessageEvents(uint32_t addr)
 {
-//  TODO: Необходима реализация чтения событий
-//  osMessagePut(messageEvents_, id, 0);
+  osMessagePut(messageEvents_, addr, 0);
 }
 
 void NovobusSlave::putMessageParams(uint32_t id)
@@ -117,7 +116,7 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
         break;
 
         // Команда чтения ID новых событий
-      case UpdateEventsCommand:
+      case NewEventsCommand:
         if (!addrsCount_) {
           if (osMessageNumber(messageEvents_)) {
             while (1) {
@@ -165,12 +164,12 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
           id.char_t[0] = rxBuffer_[5 + i*4];
           int addr = id.uint32_t;
           // Считываем событие
-          logRead(addr, &txBuffer_[5 + i*21], 21);
+          logRead(addr, &txBuffer_[5 + i*LOG_EVENT_SIZE], LOG_EVENT_SIZE);
         }
 
         checkMessage();
 
-        sizePkt = 7 + dataNumber*21;
+        sizePkt = 7 + dataNumber*LOG_EVENT_SIZE;
         break;
 
         // Команда чтения ID обновлённых параметров
@@ -293,7 +292,7 @@ void NovobusSlave::checkMessage()
   // Проверка очереди событий
   uint8_t dataNumber = osMessageNumber(messageEvents_);
   if (dataNumber) {
-    txBuffer_[3] = UpdateEventsCommand;
+    txBuffer_[3] = NewEventsCommand;
   }
   // Проверка очереди параметров
   else {

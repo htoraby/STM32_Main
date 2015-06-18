@@ -25,7 +25,7 @@ public:
     ReadParamsCommand,
     WriteParamsCommand,
     UpdateParamsCommand,
-    UpdateEventsCommand,
+    NewEventsCommand,
     ReadEventsCommand,
   } NovobusCommand;
 
@@ -69,10 +69,10 @@ public:
   int getMessageParams();
 
   /*!
-   * \brief Метод добавления ID события в очередь
-   * \param id - ID события
+   * \brief Метод добавления адреса события в очередь
+   * \param addr - адрес события
    */
-  void putMessageEvents(uint32_t id);
+  void putMessageEvents(uint32_t addr);
 
   /*!
    * \brief Метод добавления ID параметра в очередь

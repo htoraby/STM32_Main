@@ -3,9 +3,10 @@
 
 #include "log.h"
 
+#define LOG_EVENT_SIZE 21
+
 /*!
  * \brief Класс архива событий
- *
  */
 class LogEvent : public Log
 {

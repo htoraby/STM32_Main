@@ -208,19 +208,19 @@ uint8_t Device::setValue(uint16_t id, float value, EventType reason)
   //TODO: Добавить проверки на корректность записываемых данных
 
   uint16_t index = getIndexAtId(id);
-  float valueOld = getFieldValue(index);
+  float oldValue = getFieldValue(index);
   EventCode code = getFieldCode(index);
   uint8_t units = getFieldPhysic(index);
 
   setFieldValue(index, value);
 
   // Сообщить контроллеру визуализации об обновлении параметра
-  if (value != valueOld)
+  if (value != oldValue)
     novobusSlave.putMessageParams(id);
 
   // Формирование сообщения в архив событий об изменении параметра
   if (code) {                     // Если у параметра есть Код события
-    logEvent.add(code, reason, (EventId)id, valueOld, value, units);
+    logEvent.add(code, reason, (EventId)id, oldValue, value, units);
   }
   return 0;
 }
@@ -228,19 +228,19 @@ uint8_t Device::setValue(uint16_t id, float value, EventType reason)
 uint8_t Device::setValue(uint16_t id, uint32_t value, EventType reason)
 {
   uint16_t index = getIndexAtId(id);
-  uint32_t valueOld = getFieldValueUint32(index);
+  uint32_t oldValue = getFieldValueUint32(index);
   EventCode code = getFieldCode(index);
   uint8_t units = getFieldPhysic(index);
 
   setFieldValue(index, value);
 
   // Сообщить контроллеру визуализации об обновлении параметра
-  if (value != valueOld)
+  if (value != oldValue)
     novobusSlave.putMessageParams(id);
 
   // Формирование сообщения в архив событий об изменении параметра
   if (code) {                     // Если у параметра есть Код события
-    logEvent.add(code, reason, (EventId)id, valueOld, value, units);
+    logEvent.add(code, reason, (EventId)id, oldValue, value, units);
   }
   return 0;
 }
