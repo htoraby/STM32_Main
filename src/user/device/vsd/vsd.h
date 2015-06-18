@@ -222,6 +222,8 @@ public:
    */
   virtual int onRegimePickup();
 
+  bool setBitVsdStatus(uint8_t bit, bool flag);
+
 private:
   //! Массив параметров устройства
   parameter parametersArray_[VSD_END - VSD_BEGIN];

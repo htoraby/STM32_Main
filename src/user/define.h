@@ -372,57 +372,76 @@ enum LastReasonStop {
  * \brief Флаги статусных регистров инвертора
  */
 enum enVsdFlags {
-  VSD_STATUS_STARTED          = 0,          //!< Запуск ПЧ
-  VSD_STATUS_WAIT_RECT_START,               //!< Ожидаем запуска выпрямителя
-  VSD_STATUS_STOPPED_REGISTER,              //!< Инвертор остановлен по изменению важного параметра
-  VSD_STATUS_STOPPED_EXTERNAL,              //!< Инвертор остановлен по команде извне
-  VSD_STATUS_WAIT_RECT_STOP,                //!< Ожидание остнова выпрямителя
-  VSD_STATUS_FAULT_STOPPED,                 //!< Остановлен по причине FAULT
-  VSD_STATUS_RIGHT_DIRECTION,               //!< Правое направление вращения
-  VSD_STATUS_I_LIMIT,                       //!< Токоограничение
-  VSD_STATUS_ULOW,                          //!< Недостаточно напряжения
-  VSD_STATUS_STOPPED_ALARM,                 //!< Остановлен аварийно
-  VSD_STATUS_UD_LOW_FAULT,                  //!< Остановлен по снижению напряжения на шин
-  VSD_STATUS_UD_HIGH_FAULT,                 //!< Остановлен по превышению напряжения на шине
-  VSD_STATUS_TO_STOP_MODE,                  //!< Режим плавной остановки двигателя
-  VSD_STATUS_UIN_ASYM,                      //!< Остановлен по несимметрии входного напряжения
-  VSD_STATUS_URECT_SHORTCIRCUIT,            //!< Остановлен по КЗ от выпрямителя
-  VSD_STATUS_RESERVED,                      //!< Резерв
-  VSD_STATUS_FC_I2T_ERR       = 16,         //!< Сработала токовая тепловая защита инвертора
-  VSD_STATUS_AST_ERR,                       //!< Система автонастройки не смогла определить параметры линии
-  VSD_STATUS_I_LIMIT_FAST,                  //!< Превышение порога мгновенного токоограничения
-  VSD_STATUS_CURRENT_OPT,                   //!< Включена оптимизация по току
-  VSD_STATUS_POWER_OPT,                     //!< Включена оптимизация по выходной мощности
-  VSD_STATUS_OPT_DONE,                      //!< Оптимизация состоялась
-  VSD_STATUS_M_TYPE0,                       //!< Бит типа двигателя 0
-  VSD_STATUS_M_TYPE1,                       //!< Бит типа двигателя 1
-  VSD_STATUS_DISCHARGE_ON,                  //!< Задействован режим разряда шины
-  VSD_STATUS_DISCAHRGE,                     //!< Режим разряда шины работает
-  VSD_STATUS_DISCHARGE_ERR,                 //!< Ошибка режима разряда шины
-  VSD_STATUS_VC_ERR,                        //!< Ошибка векторного режима
-  VSD_STATUS_I_FAST_ERR,                    //!< Быстрая токовая защита двигателя
-  VSD_STATUS_M_I2T_ERR,                     //!< Токовая защита двигателя (перегруз)
-  VSD_STATUS_OWERPWM1,                      //!< OverPWM тип 1
-  VSD_STATUS_OWERPWM2,                      //!< OverPWM тип 2
-  VSD_STATUS_3                = 32,
-  VSD_FLT_IMAX                = 48,         //!< Превышен максимальный ток инвертора
-  VSD_FLT_IZ,                               //!< Детектирован разностный ток выходных фаз (утечка)
-  VSD_FLT_AN_MON,                           //!< Ошибка монитора питания  аналоговой цепи контроллера
-  VSD_FLT_CTR_MON,                          //!< Ошибка монитора питания цифровой цепи контроллера
-  VSD_FLT_CLK_MON,                          //!< Ошибка монитора питания часов контроллера
-  VSD_FLT_MB_MON,                           //!< Ошибка монитора платы измерений
-  VSD_FLT_DRV0,                             //!< Ошибка драйвера 0
-  VSD_FLT_DRV1,                             //!< Ошибка драйвера 1
-  VSD_FLT_DRV2,                             //!< Ошибка драйвера 2
-  VSD_FLT_TEST,                             //!< Включен тестовый режим контроллера ПЧ
-  VSD_THYR_ABC_STATE          = 64,         //!< Направление чередования фаз
-  VSD_THYR_1,
-  VSD_THYR_ERR_STATE,                       //!< Ошибка синхронизации с сетью
-  VSD_THYR_CHARGE_STATE,                    //!< Производится заряд ёмкости инвертора
-  VSD_THYR_STARTED_STATE,                   //!< Ёмкость заряжена
-  VSD_THYR_SYNC_STATE,                      //!< Первая попытка синхронизации
-  VSD_THYR_BOUNCE_WAIT,                     //!< Ожидание времени антидребезга
-  VSD_THYR_ERR_SHORTCIRQUIT                 //!< Ошибка по КЗ на инверторе
+  VSD_STATUS_STARTED              = 0,      //!< Запуск ПЧ
+  VSD_STATUS_WAIT_RECT_START      = 1,      //!< Ожидаем запуска выпрямителя
+  VSD_STATUS_STOPPED_REGISTER     = 2,      //!< Инвертор остановлен по изменению важного параметра
+  VSD_STATUS_STOPPED_EXTERNAL     = 3,      //!< Инвертор остановлен по команде извне
+  VSD_STATUS_WAIT_RECT_STOP       = 4,      //!< Ожидание остнова выпрямителя
+  VSD_STATUS_FAULT_STOPPED        = 5,      //!< Остановлен по причине FAULT
+  VSD_STATUS_RIGHT_DIRECTION      = 6,      //!< Правое направление вращения
+  VSD_STATUS_I_LIMIT              = 7,      //!< Токоограничение
+  VSD_STATUS_ULOW                 = 8,      //!< Недостаточно напряжения
+  VSD_STATUS_STOPPED_ALARM        = 9,      //!< Остановлен аварийно
+  VSD_STATUS_UD_LOW_FAULT         = 10,     //!< Остановлен по снижению напряжения на шин
+  VSD_STATUS_UD_HIGH_FAULT        = 11,     //!< Остановлен по превышению напряжения на шине
+  VSD_STATUS_TO_STOP_MODE         = 12,     //!< Режим плавной остановки двигателя
+  VSD_STATUS_UIN_ASYM             = 13,     //!< Остановлен по несимметрии входного напряжения
+  VSD_STATUS_URECT_SHORTCIRCUIT   = 14,     //!< Остановлен по КЗ от выпрямителя
+  VSD_STATUS_RESERVED             = 15,     //!< Резерв
+
+  VSD_STATUS_FC_I2T_ERR           = 16,     //!< Сработала токовая тепловая защита инвертора
+  VSD_STATUS_AST_ERR              = 17,     //!< Система автонастройки не смогла определить параметры линии
+  VSD_STATUS_I_LIMIT_FAST         = 18,     //!< Превышение порога мгновенного токоограничения
+  VSD_STATUS_CURRENT_OPT          = 19,     //!< Включена оптимизация по току
+  VSD_STATUS_POWER_OPT            = 20,     //!< Включена оптимизация по выходной мощности
+  VSD_STATUS_OPT_DONE             = 21,     //!< Оптимизация состоялась
+  VSD_STATUS_M_TYPE0              = 22,     //!< Бит типа двигателя 0
+  VSD_STATUS_M_TYPE1              = 23,     //!< Бит типа двигателя 1
+  VSD_STATUS_DISCHARGE_ON         = 24,     //!< Задействован режим разряда шины
+  VSD_STATUS_DISCAHRGE            = 25,     //!< Режим разряда шины работает
+  VSD_STATUS_DISCHARGE_ERR        = 26,     //!< Ошибка режима разряда шины
+  VSD_STATUS_VC_ERR               = 27,     //!< Ошибка векторного режима
+  VSD_STATUS_I_FAST_ERR           = 28,     //!< Быстрая токовая защита двигателя
+  VSD_STATUS_M_I2T_ERR            = 29,     //!< Токовая защита двигателя (перегруз)
+  VSD_STATUS_OWERPWM1             = 30,     //!< OverPWM тип 1
+  VSD_STATUS_OWERPWM2             = 31,     //!< OverPWM тип 2
+
+  VSD_STATUS_3                    = 32,
+
+  VSD_FLT_IMAX                    = 48,     //!< Превышен максимальный ток инвертора
+  VSD_FLT_IZ                      = 49,     //!< Детектирован разностный ток выходных фаз (утечка)
+  VSD_FLT_AN_MON                  = 50,     //!< Ошибка монитора питания  аналоговой цепи контроллера
+  VSD_FLT_CTR_MON                 = 51,     //!< Ошибка монитора питания цифровой цепи контроллера
+  VSD_FLT_CLK_MON                 = 52,     //!< Ошибка монитора питания часов контроллера
+  VSD_FLT_MB_MON                  = 53,     //!< Ошибка монитора платы измерений
+  VSD_FLT_DRV0                    = 54,     //!< Ошибка драйвера 0
+  VSD_FLT_DRV1                    = 55,     //!< Ошибка драйвера 1
+  VSD_FLT_DRV2                    = 56,     //!< Ошибка драйвера 2
+  VSD_FLT_TEST                    = 57,     //!< Включен тестовый режим контроллера ПЧ
+
+  VSD_THYR_ABC_STATE              = 64,     //!< Направление чередования фаз
+  VSD_THYR_1                      = 65,
+  VSD_THYR_ERR_STATE              = 66,     //!< Ошибка синхронизации с сетью
+  VSD_THYR_CHARGE_STATE           = 67,     //!< Производится заряд ёмкости инвертора
+  VSD_THYR_STARTED_STATE          = 68,     //!< Ёмкость заряжена
+  VSD_THYR_SYNC_STATE             = 69,     //!< Первая попытка синхронизации
+  VSD_THYR_BOUNCE_WAIT            = 70,     //!< Ожидание времени антидребезга
+  VSD_THYR_ERR_SHORTCIRQUIT       = 71,     //!< Ошибка по КЗ на инверторе
+
+  VSD_STATUS_READY                = 80,     //!< Готов
+  VSD_STATUS_UNDERLOAD            = 81,     //!< Недогруз
+  VSD_STATUS_RESISTANCE           = 82,     //!< Низкое Rиз
+  VSD_STATUS_UNDERVOLTAGE         = 83,     //!< Низкое напряжение
+  VSD_STATUS_OVERVOLTAGE          = 84,     //!< Высокое напряжение
+  VSD_STATUS_RUN_COUNT            = 85,     //!< Прев. кол-во пусков
+  VSD_STATUS_OVERHEAT_FILTER      = 86,     //!< Перегрев фильтра
+  VSD_STATUS_MONOMETR             = 87,     //!< Конт манометр
+  VSD_STATUS_OVERHEAT_MOTOR       = 88,     //!< Выс. Температура
+  VSD_STATUS_OVERVIBRATION        = 89,     //!< Выс. Вибрация
+  VSD_STATUS_PRESSURE             = 90,     //!< Низ. Давление
+  VSD_STATUS_PRESSURE_Z           = 91,     //!< Низкое Pзатр
+  VSD_STATUS_AI_0                 = 92,     //!< Доп. аналог вход 0
+  VSD_STATUS_TURBINE              = 93,     //!< Турбинное вращение
 };
 
 /*!

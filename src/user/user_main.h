@@ -5,6 +5,7 @@
 #include "log_main.h"
 #include "ccs.h"
 #include "vsd_novomet.h"
+#include "vsd_etalon.h"
 #include "tms_novomet.h"
 #include "em_set.h"
 #include "parameters.h"

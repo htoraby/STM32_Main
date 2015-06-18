@@ -11,6 +11,60 @@
 #include "vsd.h"
 #include "device_modbus.h"
 
+enum enInfoEtalon
+{
+  VSD_ETALON_INFO_READY = 0,                //!< Готов
+  VSD_ETALON_INFO_UNDERLOAD = 1,            //!< Недогруз
+  VSD_ETALON_INFO_OVERLOAD = 2,             //!< Перегруз
+  VSD_ETALON_INFO_RESISTANCE = 3,           //!< Низкое Rиз
+  VSD_ETALON_INFO_UNDERVOLTAGE = 4,         //!< Низкое напряжение
+  VSD_ETALON_INFO_OVERVOLTAGE = 5,          //!< Высокое напряжение
+  VSD_ETALON_INFO_OVERVOLTAGE_DC = 6,       //!< Высокое U сил. Цепи
+  VSD_ETALON_INFO_UNDERVOLTAGE_DC = 7,      //!< Низкое U сил. цепи
+  VSD_ETALON_INFO_RUN_COUNT = 8,            //!< Прев. кол-во пусков
+  VSD_ETALON_INFO_OVERHEAT_IGBT = 9,        //!< Перегрев IGBT
+  VSD_ETALON_INFO_OVERHEAT_FILTER = 10,     //!< Перегрев фильтра
+  VSD_ETALON_INFO_PROT = 11,                //!< Защита ЧРП
+  VSD_ETALON_INFO_SUPPLY_DRIVERS = 12,      //!< Питание драйверов
+  VSD_ETALON_INFO_MONOMETR = 13,            //!< Конт манометр
+  VSD_ETALON_INFO_AI_0 = 14,                //!< Доп. аналог вход 0
+  VSD_ETALON_INFO_SEQUENCE_PHASE = 15,      //!< Чередование фаз
+  VSD_ETALON_INFO_OVERHEAT_MOTOR = 16,      //!< Выс. Температура
+  VSD_ETALON_INFO_OVERVIBRATION = 17,     	//!< Выс. Вибрация
+  VSD_ETALON_INFO_PRESSURE = 18,            //!< Низ. Давление
+  VSD_ETALON_INFO_19 = 19,                  //!< Ошибка 19
+  VSD_ETALON_INFO_PRESSURE_Z = 20,          //!< Низкое Pзатр
+  VSD_ETALON_INFO_IMBALANCE_CURRENT = 21, 	//!< Дисбаланс токов
+  VSD_ETALON_INFO_IMBALANCE_VOLTAGE = 22,   //!< Дисбаланс напряж.
+  VSD_ETALON_INFO_TURBINE = 23,             //!< Турбинное вращение
+  VSD_ETALON_INFO_24 = 24,                  //!< Прочие ошибки
+  VSD_ETALON_INFO_FAILURE_SUPPLY = 25,      //!< Авария питания
+  VSD_ETALON_INFO_DOOR = 26,                //!< Открыта дверь
+  VSD_ETALON_INFO_LOST_SUPPLY = 27,         //!< Пропало питание
+  VSD_ETALON_INFO_CONDENSATOR = 28,         //!< Нет заряда конденс.
+  VSD_ETALON_INFO_TERISTORS = 29,           //!< Авария тиристоров
+  VSD_ETALON_INFO_CURRENT_LIMIT = 30,       //!< Токоограничение
+  VSD_ETALON_INFO_31 = 31,                  //!< Ошибка номер 31
+  VSD_ETALON_INFO_32 = 32,                  //!< По подхвату
+  VSD_ETALON_INFO_AUTO_STOP = 33,           //!< Авто останов
+  VSD_ETALON_INFO_MANUAL_STOP = 34,         //!< Ручной останов
+  VSD_ETALON_INFO_REMOTE_STOP = 35,         //!< Внешний останов
+  VSD_ETALON_INFO_AUTO_RUN = 36,            //!< Автоматич. пуск
+  VSD_ETALON_INFO_MANUAL_RUN = 37,          //!< Ручной пуск
+  VSD_ETALON_INFO_REMOTE_RUN = 38,          //!< Внешний пуск
+  VSD_ETALON_INFO_RESTART_COUNT = 39,       //!< По количеству АПВ
+  VSD_ETALON_INFO_MEMORY = 40,              //!< Ошибка ОЗУ
+  VSD_ETALON_INFO_41 = 41,                  //!< Отключен
+  VSD_ETALON_INFO_DI = 42,                  //!< Отказ дискр. вх.
+  VSD_ETALON_INFO_ADC = 43,                 //!< Отказ АЦП
+  VSD_ETALON_INFO_ANALOG_SUPPLY = 44,       //!< Аналог. Питание
+  VSD_ETALON_INFO_SENSOR_SUPPLY = 45,       //!< Питание датчиков
+  VSD_ETALON_INFO_EEPROM = 46,              //!< Ошибка EEPROM
+  VSD_ETALON_INFO_NOT_READY = 47,           //!< ПЧ не готов
+  VSD_ETALON_INFO_SETPOINT = 48,            //!< Сбой уставок
+  VSD_ETALON_INFO_BLOCK_RUN = 49            //!< Блокировка пуска
+};
+
 class VsdEtalon: public Vsd
 {
 public:
@@ -20,6 +74,8 @@ public:
   void init();
   void initModbusParameters();
   void initParameters();
+
+  bool isConnect();
 
   void getNewValue(uint16_t id);
   uint8_t setNewValue(uint16_t id, float value);
@@ -52,42 +108,6 @@ public:
 
   bool checkStart();
   bool checkStop();
-
-  /*!
-   * \brief Функция включения толчкового режима
-   * \return
-   */
-  int onRegimePush();
-
-  /*!
-   * \brief Функция выключения толчкового режима
-   * \return
-   */
-  int offRegimePush();
-
-  /*!
-   * \brief onRegimeSwing
-   * \return
-   */
-  int onRegimeSwing();
-
-  /*!
-   * \brief offRegimeSwing
-   * \return
-   */
-  int offRegimeSwing();
-
-  /*!
-   * \brief onRegimeJarring
-   * \return
-   */
-  int onRegimeJarring();
-
-  /*!
-   * \brief offRegimeJarring
-   * \return
-   */
-  int offRegimeJarring();
 
   /*!
    * \brief Метод записи основного режима работы ЧРП
@@ -124,36 +144,6 @@ public:
    * \return Код результата операции
    */
   int setMotorType(float value);
-
-  /*!
-   * \brief getMotorType
-   */
-  void calcMotorType();
-
-  /*!
-   * \brief calcSpeedUp
-   */
-  void calcTempSpeedUp();
-
-  /*!
-   * \brief calcTimeSpeedUp
-   */
-  void calcTimeSpeedUp();
-
-  /*!
-   * \brief calcMotorControl
-   */
-  void calcMotorControl();
-
-  /*!
-   * \brief calcRotation
-   */
-  void calcRotation();
-
-  /*!
-   * \brief Функция вычисления тока звена постоянного тока
-   */
-  void calcCurrentDC();
 
   /*!
    * \brief Метод задания времени набора частоты
@@ -273,9 +263,14 @@ public:
   void calcParameters(uint16_t id);
 
 private:
-  ModbusParameter modbusParameters_[135];
+  ModbusParameter modbusParameters_[108];
   DeviceModbus *dm_;
 
+  /*!
+   * \brief convertBitVsdStatus
+   * \param value
+   */
+  void convertBitVsdStatus(float value);
 };
 
 #endif /* VSD_NOVOMET_H_ */
