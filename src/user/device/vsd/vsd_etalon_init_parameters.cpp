@@ -1288,7 +1288,7 @@ void VsdEtalon::initModbusParameters()
                           };
   modbusParameters_[76] = {// Частота U/f двигателя, точка u6
                            VSD_UF_CHARACTERISTIC_U_6,
-                           0x411B,          // Адрес регистра в устройстве
+                           283 + 0x4000,    // 0x411B Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_VOLTAGE,  // Физическая величина параметра
                            VOLTAGE_V,       // Единицы измерения параметра
@@ -1475,7 +1475,7 @@ void VsdEtalon::initModbusParameters()
                           };
   modbusParameters_[87] = {// Частота U/f двигателя, точка f6
                            VSD_UF_CHARACTERISTIC_F_6,
-                           0x4136,          // Адрес регистра в устройстве
+                           310 + 0x4000,    // 0x4136 Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_FREQUENCY,// Физическая величина параметра
                            FREQUENCY_HZ,    // Единицы измерения параметра
@@ -1492,7 +1492,7 @@ void VsdEtalon::initModbusParameters()
                           };
   modbusParameters_[88] = {// Частота U/f двигателя, точка f1
                            VSD_UF_CHARACTERISTIC_F_1,
-                           0x4137,          // Адрес регистра в устройстве
+                           311 + 0x4000,    // 0x4137 Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_FREQUENCY,// Физическая величина параметра
                            FREQUENCY_HZ,    // Единицы измерения параметра
@@ -1509,7 +1509,7 @@ void VsdEtalon::initModbusParameters()
                           };
   modbusParameters_[89] = {// Частота U/f двигателя, точка u1
                            VSD_UF_CHARACTERISTIC_U_1,
-                           0x4138,          // Адрес регистра в устройстве
+                           312 + 0x4000,    // 0x4138 Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_PERCENT,  // Физическая величина параметра
                            PERCENT_PERCENT, // Единицы измерения параметра
@@ -1526,7 +1526,7 @@ void VsdEtalon::initModbusParameters()
                           };
   modbusParameters_[90] = {// Частота U/f двигателя, точка f2
                            VSD_UF_CHARACTERISTIC_F_2,
-                           0x4139,          // Адрес регистра в устройстве
+                           313 + 0x4000,    // 0x4139 // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_FREQUENCY,// Физическая величина параметра
                            FREQUENCY_HZ,    // Единицы измерения параметра
@@ -1543,7 +1543,7 @@ void VsdEtalon::initModbusParameters()
                           };
   modbusParameters_[91] = {// Частота U/f двигателя, точка u2
                            VSD_UF_CHARACTERISTIC_U_2,
-                           0x413A,          // Адрес регистра в устройстве
+                           314 + 0x4000,    // 0x413A Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_PERCENT,  // Физическая величина параметра
                            PERCENT_PERCENT, // Единицы измерения параметра
@@ -1560,7 +1560,7 @@ void VsdEtalon::initModbusParameters()
                           };
   modbusParameters_[92] = {// Частота U/f двигателя, точка f3
                            VSD_UF_CHARACTERISTIC_F_3,
-                           0x413B,          // Адрес регистра в устройстве
+                           315 + 0x4000,    // 0x413B Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_FREQUENCY,// Физическая величина параметра
                            FREQUENCY_HZ,    // Единицы измерения параметра
@@ -1577,7 +1577,7 @@ void VsdEtalon::initModbusParameters()
                           };
   modbusParameters_[93] = {// Частота U/f двигателя, точка u3
                            VSD_UF_CHARACTERISTIC_U_3,
-                           0x413C,          // Адрес регистра в устройстве
+                           316 + 0x4000,    // 0x413C Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_PERCENT,  // Физическая величина параметра
                            PERCENT_PERCENT, // Единицы измерения параметра
@@ -1594,7 +1594,7 @@ void VsdEtalon::initModbusParameters()
                           };
   modbusParameters_[94] = {// Частота U/f двигателя, точка f4
                            VSD_UF_CHARACTERISTIC_F_4,
-                           0x413D,          // Адрес регистра в устройстве
+                           317 + 0x4000,    // 0x413D Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_FREQUENCY,// Физическая величина параметра
                            FREQUENCY_HZ,    // Единицы измерения параметра
@@ -1611,7 +1611,7 @@ void VsdEtalon::initModbusParameters()
                           };
   modbusParameters_[95] = {// Частота U/f двигателя, точка u4
                            VSD_UF_CHARACTERISTIC_U_4,
-                           0x413E,          // Адрес регистра в устройстве
+                           318 + 0x4000,    // 0x413E Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_PERCENT,  // Физическая величина параметра
                            PERCENT_PERCENT, // Единицы измерения параметра
@@ -1628,7 +1628,7 @@ void VsdEtalon::initModbusParameters()
                           };
   modbusParameters_[96] = {// Частота U/f двигателя, точка f5
                            VSD_UF_CHARACTERISTIC_F_5,
-                           0x413F,          // Адрес регистра в устройстве
+                           319 + 0x4000,    // 0x413F Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_FREQUENCY,// Физическая величина параметра
                            FREQUENCY_HZ,    // Единицы измерения параметра
@@ -1645,7 +1645,7 @@ void VsdEtalon::initModbusParameters()
                           };
   modbusParameters_[97] = {// Частота U/f двигателя, точка u5
                            VSD_UF_CHARACTERISTIC_U_5,
-                           0x4140,          // Адрес регистра в устройстве
+                           320 + 0x4000,    // 0x4140 Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_PERCENT,  // Физическая величина параметра
                            PERCENT_PERCENT, // Единицы измерения параметра

@@ -221,6 +221,12 @@ public:
   */
   void writeModbusParameter(int id, float value);
 
+  /*!
+   * \brief readModbusParameter
+   * \param id
+   */
+  void readModbusParameter(int id);
+
   // Методы для работы цикла опроса и записи параметров
   /*!
    \brief Метод циклического опроса устройства по Modbus и/или внеочередной

@@ -219,6 +219,14 @@ void DeviceModbus::writeModbusParameter(int id, float value)
   putMessageOutOfTurn(index);
 }
 
+void DeviceModbus::readModbusParameter(int id)
+{
+  int index = getIndexAtId(id);
+  ModbusParameter *param = getFieldAll(index);
+  param->command = OPERATION_READ;
+  putMessageOutOfTurn(index);
+}
+
 int DeviceModbus::searchExchangeParameters()
 {
   for (int i = indexExchange_; i < countParameter_; i++) {
