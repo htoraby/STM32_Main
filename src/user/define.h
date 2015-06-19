@@ -303,17 +303,17 @@ enum LastReasonRun {
   LastReasonRunApvTemperatureMotor      = 15,   //!< "АПВ по защите: Перегрев двигателя"
   LastReasonRunApvVibrationMotor        = 16,   //!< "АПВ по защите: Превышение вибрации"
   LastReasonRunApvUnderPressure1        = 17,   //!< "АПВ по защите: "
-  LastReasonRunApvMinAnalog1            = 18,   //!< "АПВ по защите: "
-  LastReasonRunApvMaxAnalog1            = 19,   //!< "АПВ по защите: "
-  LastReasonRunApvMinAnalog2            = 20,   //!< "АПВ по защите: "
-  LastReasonRunApvMaxAnalog2            = 21,   //!< "АПВ по защите: "
+  LastReasonRunApvMinAnalog1            = 18,   //!< "АПВ по защите: Ан.вх.№1 min"
+  LastReasonRunApvMaxAnalog1            = 19,   //!< "АПВ по защите: Ан.вх.№1 max"
+  LastReasonRunApvMinAnalog2            = 20,   //!< "АПВ по защите: Ан.вх.№2 min"
+  LastReasonRunApvMaxAnalog2            = 21,   //!< "АПВ по защите: Ан.вх.№2 max"
   LastReasonRunApvFreqPower             = 22,   //!< "АПВ по защите: "
   LastReasonRunApvPower                 = 23,   //!< "АПВ по защите: "
   // Дополнительные причины пуска
-  LastReasonRunMinAnalog3               = 100,  //!<
-  LastReasonRunMinAnalog4               = 101,  //!<
-  LastReasonRunMaxAnalog3               = 102,  //!<
-  LastReasonRunMaxAnalog4               = 103,  //!<
+  LastReasonRunMinAnalog3               = 100,  //!< "Ан.вх.№3 min"
+  LastReasonRunMinAnalog4               = 101,  //!< "Ан.вх.№4 min"
+  LastReasonRunMaxAnalog3               = 102,  //!< "Ан.вх.№3 max"
+  LastReasonRunMaxAnalog4               = 103,  //!< "Ан.вх.№4 max"
   LastReasonRunApvCurrentMotor          = 104,  //!< "АПВ по защите: Предел тока двигателя"
   LastReasonRunApvOutOfSyncMotor        = 105,  //!< "АПВ по защите: Рассинхронизация ПВЭД"
   LastReasonRunApvResistIsolation       = 106,  //!< "АПВ по защите: Сопротивление изоляции"
