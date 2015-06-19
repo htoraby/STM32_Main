@@ -109,6 +109,13 @@ void VsdEtalon::getNewValue(uint16_t id)
   case VSD_INVERTOR_STATUS:
     convertBitVsdStatus(value);
     break;
+  case VSD_UF_CHARACTERISTIC_U_1:
+  case VSD_UF_CHARACTERISTIC_U_2:
+  case VSD_UF_CHARACTERISTIC_U_3:
+  case VSD_UF_CHARACTERISTIC_U_4:
+  case VSD_UF_CHARACTERISTIC_U_5:
+    setValue(id, getValue(VSD_UF_CHARACTERISTIC_U_6) * value / 100.0);
+    break;
   default:
     setValue(id, value);
 
@@ -118,6 +125,7 @@ void VsdEtalon::getNewValue(uint16_t id)
 
 uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
 {
+  int result;
   switch (id) {
   case VSD_FREQUENCY:
     return setFrequency(value);
@@ -139,8 +147,28 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
     return setTimeSpeedDown(value);
   case  VSD_MOTOR_CONTROL:
     return setMotorControl(value);
+  case VSD_UF_CHARACTERISTIC_U_6:
+    result = setValue(id, value);
+    if (!result)
+      writeToDevice(id, value);
+    readInDevice(VSD_UF_CHARACTERISTIC_U_1);
+    readInDevice(VSD_UF_CHARACTERISTIC_U_2);
+    readInDevice(VSD_UF_CHARACTERISTIC_U_3);
+    readInDevice(VSD_UF_CHARACTERISTIC_U_4);
+    readInDevice(VSD_UF_CHARACTERISTIC_U_5);
+    return result;
+  case VSD_UF_CHARACTERISTIC_U_1:
+  case VSD_UF_CHARACTERISTIC_U_2:
+  case VSD_UF_CHARACTERISTIC_U_3:
+  case VSD_UF_CHARACTERISTIC_U_4:
+  case VSD_UF_CHARACTERISTIC_U_5:
+    result = setValue(id, value);
+    if (!result)
+      writeToDevice(id, (value * 100.0) / getValue(VSD_UF_CHARACTERISTIC_U_6));
+    return result;
+    break;
   default:
-    int result = setValue(id, value);
+    result = setValue(id, value);
     if (!result)
       writeToDevice(id, value);
     return result;
@@ -150,6 +178,11 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
 void VsdEtalon::writeToDevice(int id, float value)
 {
   dm_->writeModbusParameter(id, value);
+}
+
+void VsdEtalon::readInDevice(int id)
+{
+  dm_->readModbusParameter(id);
 }
 
 int VsdEtalon::start()

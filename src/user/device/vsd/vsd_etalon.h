@@ -89,6 +89,12 @@ public:
   void writeToDevice(int id, float value);
 
   /*!
+   * \brief readInDevice
+   * \param id
+   */
+  void readInDevice(int id);
+
+  /*!
    * \brief Метод запуска
    * \return Код выполнения операции
    */
