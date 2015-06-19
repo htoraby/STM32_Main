@@ -92,8 +92,8 @@ int Vsd::setMaxFrequency(float value)
   }
   else {
     // Если установили новое значение в массив параметров
-    if (!setValue(VSD_HIGH_SPEED_FILTER_TIME, value)) {
-      // Меняем поле максимум для уставки "Максимальной частоты"
+    if (!setValue(VSD_HIGH_LIM_SPEED_MOTOR, value)) {
+      // Меняем поле максимум для уставки "Минимальной частоты"
       setFieldMax(getIndexAtId(VSD_LOW_LIM_SPEED_MOTOR), value);
       // Меняем поле максимум для уставки "Частота"
       setFieldMax(getIndexAtId(VSD_FREQUENCY), value);
@@ -229,6 +229,7 @@ bool Vsd::setBitVsdStatus(uint8_t bit, bool flag)
     setValue(VSD_INV_FAULT, setBit(getValue(VSD_INVERTOR_STATUS4), bit - 64, flag));
   else
     return false;
+  return true;
 }
 
 int Vsd::onRegimePush()
