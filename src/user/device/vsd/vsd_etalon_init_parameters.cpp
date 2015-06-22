@@ -788,7 +788,7 @@ void VsdEtalon::initModbusParameters()
                           };
   modbusParameters_[47] = {//Индуктивность обмотки ВПЭД для ВД
                            VSD_MOTOR_INDUCTANCE,// Уникальный идентификатор параметра
-                           0x40FB,          // Адрес регистра в устройстве
+                           250 + 0x4000,    // 0x40FB Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_INDUNCTANCE,// Физическая величина параметра
                            INDUNCTANCE_MH,  // Единицы измерения параметра
@@ -805,7 +805,7 @@ void VsdEtalon::initModbusParameters()
                           };
   modbusParameters_[48] = {//Активное сопротивление обмотки ВПЭД для ВД
                            VSD_MOTOR_INDUCTANCE_RESIST_PHASE, // Уникальный идентификатор параметра
-                           0x40FC,          // Адрес регистра в устройстве
+                           251 + 0x4000,    // 0x40FC Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_RESISTANCE, // Физическая величина параметра
                            RESISTANCE_MILIOM, // Единицы измерения параметра
