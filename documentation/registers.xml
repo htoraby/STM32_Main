@@ -729,8 +729,8 @@
 		<value>0.0</value>
 		<text>Сечение кабеля</text>
 		<form>3.3 ТМПН</form>
-		<unit>SPACE_M2</unit>
-		<unit_lcd>SPACE_M2</unit_lcd>
+		<unit>SPACE_MM2</unit>
+		<unit_lcd>SPACE_MM2</unit_lcd>
 		<format>XXXXXX</format>
 		<code>13</code>
 		<comment>Сечение кабеля</comment>
@@ -11321,7 +11321,7 @@
 		<form>3.1 Двигателя</form>
 		<unit>RESISTANCE_OM</unit>
 		<unit_lcd>RESISTANCE_OM</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Полн.инд.сопр.фазы</comment>
 	</param>

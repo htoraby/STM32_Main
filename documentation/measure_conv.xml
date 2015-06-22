@@ -62,7 +62,7 @@
 	</param>
 	<param>
 		<midIn>PHYSIC_SPACE</midIn>
-		<midOut>SPACE_M2</midOut>
+		<midOut>SPACE_MM2</midOut>
 		<a>1</a>
 		<b>0</b>
 	</param>
