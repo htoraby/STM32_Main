@@ -118,7 +118,6 @@ void VsdEtalon::getNewValue(uint16_t id)
     break;
   default:
     setValue(id, value);
-
     break;
   }
 }
@@ -147,16 +146,6 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
     return setTimeSpeedDown(value);
   case  VSD_MOTOR_CONTROL:
     return setMotorControl(value);
-  case VSD_UF_CHARACTERISTIC_U_6:
-    result = setValue(id, value);
-    if (!result)
-      writeToDevice(id, value);
-    readInDevice(VSD_UF_CHARACTERISTIC_U_1);
-    readInDevice(VSD_UF_CHARACTERISTIC_U_2);
-    readInDevice(VSD_UF_CHARACTERISTIC_U_3);
-    readInDevice(VSD_UF_CHARACTERISTIC_U_4);
-    readInDevice(VSD_UF_CHARACTERISTIC_U_5);
-    return result;
   case VSD_UF_CHARACTERISTIC_U_1:
   case VSD_UF_CHARACTERISTIC_U_2:
   case VSD_UF_CHARACTERISTIC_U_3:
@@ -166,7 +155,10 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
     if (!result)
       writeToDevice(id, (value * 100.0) / getValue(VSD_UF_CHARACTERISTIC_U_6));
     return result;
-    break;
+  case VSD_UF_CHARACTERISTIC_U_6:
+    return setUfU6(value);
+  case VSD_UF_CHARACTERISTIC_F_6:
+    return setUfF6(value);
   default:
     result = setValue(id, value);
     if (!result)
@@ -343,6 +335,45 @@ int VsdEtalon::setTimeSpeedDown(float value)
     writeToDevice(VSD_TIMER_DELAY, getValue(VSD_TIMER_DELAY));
     return ok_r;
   }
+}
+
+int VsdEtalon::setUfF6(float value)
+{
+  int result = setValue(VSD_UF_CHARACTERISTIC_F_6, value);
+  if (!result)
+    writeToDevice(VSD_UF_CHARACTERISTIC_F_6, value);
+  result = setValue(VSD_BLDC_MAX_WORK_FREQ, value);
+  if (!result)
+    writeToDevice(VSD_BLDC_MAX_WORK_FREQ, value);
+  osDelay(200);
+  readUfCharacterictic();
+  return result;
+}
+
+int VsdEtalon::setUfU6(float value)
+{
+  int result = setValue(VSD_UF_CHARACTERISTIC_U_6, value);
+  if (!result)
+    writeToDevice(VSD_UF_CHARACTERISTIC_U_6, value);
+  osDelay(200);
+  readUfCharacterictic();
+  return result;
+}
+
+void VsdEtalon::readUfCharacterictic()
+{
+  readInDevice(VSD_UF_CHARACTERISTIC_F_1);
+  readInDevice(VSD_UF_CHARACTERISTIC_F_2);
+  readInDevice(VSD_UF_CHARACTERISTIC_F_3);
+  readInDevice(VSD_UF_CHARACTERISTIC_F_4);
+  readInDevice(VSD_UF_CHARACTERISTIC_F_5);
+  readInDevice(VSD_UF_CHARACTERISTIC_U_1);
+  readInDevice(VSD_UF_CHARACTERISTIC_U_2);
+  readInDevice(VSD_UF_CHARACTERISTIC_U_3);
+  readInDevice(VSD_UF_CHARACTERISTIC_U_4);
+  readInDevice(VSD_UF_CHARACTERISTIC_U_5);
+  //readInDevice(VSD_UF_CHARACTERISTIC_F_6);
+  //readInDevice(VSD_UF_CHARACTERISTIC_U_6);
 }
 
 int VsdEtalon::setRotation(float value)
