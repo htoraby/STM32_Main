@@ -988,19 +988,23 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType reason)
     break;
   case CCS_TRANS_CABLE_LENGHT:              // Длина кабеля
     calcTransTapOff();                      // Пересчитываем рекомендуемое напряжение отпайки
+    parameters.set(VSD_DEPTH, value);       // Записываем в ЧРП
     break;
   case CCS_TRANS_CABLE_CROSS:               // Сечение кабеля
     calcTransTapOff();                      // Пересчитываем рекомендуемое напряжение отпайки
     break;
   case CCS_TRANS_VOLTAGE_TAP_OFF:           // Напряжение отпайки
     calcTransTapOff();                      // Пересчитываем рекомендуемое напряжение отпайки
+    parameters.set(VSD_TRANS_VOLTAGE_TAP_OFF, value); // Задаём в ЧРП напряжение отпайки
     break;
   case CCS_MOTOR_INDUCTANCE:
     calcSystemInduct();
+    parameters.set(VSD_MOTOR_INDUCTANCE, value);      // Задаём индуктивность в ЧРП
     break;
   case CCS_MOTOR_INDUCTANCE_RESIST_PHASE:
     calcMotorInductFromResistPhase();
     calcSystemInduct();
+    parameters.set(VSD_MOTOR_INDUCTANCE_RESIST_PHASE, value);   // Задаём сопротивление в ЧРП
     break;
   case CCS_FILTER_INDUCTANCE:
     calcSystemInduct();
