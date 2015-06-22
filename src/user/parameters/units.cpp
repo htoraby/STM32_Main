@@ -38,7 +38,7 @@ float units[PHYSIC_LAST][6][2] =
    {1.0, 0.0},
    {1.0, 0.0},
    {1.0, 0.0}},
-  {{1.0, 0.0},         //PHYSIC_SPACE -> SPACE_M2
+  {{1.0, 0.0},         //PHYSIC_SPACE -> SPACE_MM2
    {1.0, 0.0},
    {1.0, 0.0},
    {1.0, 0.0},
