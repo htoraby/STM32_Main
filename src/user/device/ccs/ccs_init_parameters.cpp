@@ -7444,10 +7444,10 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_PUSH_TIME - CCS_BEGIN].operation                       = OPERATION_WRITE;
   parameters_[CCS_RGM_RUN_PUSH_TIME - CCS_BEGIN].physic                          = PHYSIC_TIME;
   parameters_[CCS_RGM_RUN_PUSH_TIME - CCS_BEGIN].validity                        = VALIDITY_OK;
-  parameters_[CCS_RGM_RUN_PUSH_TIME - CCS_BEGIN].value.float_t                   = 0.005;
-  parameters_[CCS_RGM_RUN_PUSH_TIME - CCS_BEGIN].min                             = 0.001;
-  parameters_[CCS_RGM_RUN_PUSH_TIME - CCS_BEGIN].max                             = 0.005;
-  parameters_[CCS_RGM_RUN_PUSH_TIME - CCS_BEGIN].def                             = 0.005;
+  parameters_[CCS_RGM_RUN_PUSH_TIME - CCS_BEGIN].value.float_t                   = 5.0;
+  parameters_[CCS_RGM_RUN_PUSH_TIME - CCS_BEGIN].min                             = 1.0;
+  parameters_[CCS_RGM_RUN_PUSH_TIME - CCS_BEGIN].max                             = 100.0;
+  parameters_[CCS_RGM_RUN_PUSH_TIME - CCS_BEGIN].def                             = 5.0;
   parameters_[CCS_RGM_RUN_PUSH_TIME - CCS_BEGIN].code                            = 0;
   // Время между толчками в режиме пуска "Толчковый"
   parameters_[CCS_RGM_RUN_PUSH_PERIOD - CCS_BEGIN].id                            = CCS_RGM_RUN_PUSH_PERIOD;
@@ -7455,10 +7455,10 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_PUSH_PERIOD - CCS_BEGIN].operation                     = OPERATION_WRITE;
   parameters_[CCS_RGM_RUN_PUSH_PERIOD - CCS_BEGIN].physic                        = PHYSIC_TIME;
   parameters_[CCS_RGM_RUN_PUSH_PERIOD - CCS_BEGIN].validity                      = VALIDITY_OK;
-  parameters_[CCS_RGM_RUN_PUSH_PERIOD - CCS_BEGIN].value.float_t                 = 1.0;
-  parameters_[CCS_RGM_RUN_PUSH_PERIOD - CCS_BEGIN].min                           = 0.001;
+  parameters_[CCS_RGM_RUN_PUSH_PERIOD - CCS_BEGIN].value.float_t                 = 5.0;
+  parameters_[CCS_RGM_RUN_PUSH_PERIOD - CCS_BEGIN].min                           = 1.0;
   parameters_[CCS_RGM_RUN_PUSH_PERIOD - CCS_BEGIN].max                           = 100.0;
-  parameters_[CCS_RGM_RUN_PUSH_PERIOD - CCS_BEGIN].def                           = 1.0;
+  parameters_[CCS_RGM_RUN_PUSH_PERIOD - CCS_BEGIN].def                           = 5.0;
   parameters_[CCS_RGM_RUN_PUSH_PERIOD - CCS_BEGIN].code                          = 0;
   // Напряжение толчка в режиме пуска "Толчковый"
   parameters_[CCS_RGM_RUN_PUSH_VOLTAGE - CCS_BEGIN].id                           = CCS_RGM_RUN_PUSH_VOLTAGE;

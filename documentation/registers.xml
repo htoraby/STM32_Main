@@ -10963,11 +10963,11 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.001</min>
-		<max>0.005</max>
-		<def>0.005</def>
+		<min>1.0</min>
+		<max>100.0</max>
+		<def>5.0</def>
 		<valid>VALIDITY_OK</valid>
-		<value>0.005</value>
+		<value>5.0</value>
 		<text>Длительность толчка</text>
 		<short_text>Время толчка</short_text>
 		<form>3.2.1.2 Толчковый</form>
@@ -10983,11 +10983,11 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.001</min>
+		<min>1.0</min>
 		<max>100.0</max>
-		<def>1.0</def>
+		<def>5.0</def>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>5.0</value>
 		<text>Время между толчками</text>
 		<short_text>Время между толчками</short_text>
 		<form>3.2.1.2 Толчковый</form>
