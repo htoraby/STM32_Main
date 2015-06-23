@@ -116,6 +116,18 @@ public:
   bool checkStop();
 
   /*!
+   * \brief Функция включения толчкового режима
+   * \return
+   */
+  int onRegimePush();
+
+  int offRegimePush();
+
+  int onRegimeSwing();
+
+  int offRegimeSwing();
+
+  /*!
    * \brief Метод записи основного режима работы ЧРП
    * \return
    */

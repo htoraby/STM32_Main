@@ -271,6 +271,33 @@ bool VsdEtalon::checkStop()
   return false;
 }
 
+int VsdEtalon::onRegimePush()
+{
+  setNewValue(VSD_SW_STARTUP_FREQUENCY, parameters.get(CCS_RGM_RUN_PUSH_FREQ));
+  setNewValue(VSD_SW_STARTUP_U_PULSE, parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE));
+  setNewValue(VSD_RGM_RUN_PUSH_UPTIME, parameters.get(CCS_RGM_RUN_PUSH_TIME));
+  setNewValue(VSD_RGM_RUN_PUSH_PERIOD, parameters.get(CCS_RGM_RUN_PUSH_PERIOD));
+  setNewValue(VSD_SW_STARTUP_OSC_COUNT, parameters.get(CCS_RGM_RUN_PUSH_QUANTITY));
+  return setNewValue(VSD_ETALON_START_TYPE, 1);
+}
+
+int VsdEtalon::offRegimePush()
+{
+  return setNewValue(VSD_ETALON_START_TYPE, 0);
+}
+
+int VsdEtalon::onRegimeSwing()
+{
+  setNewValue(VSD_SW_STARTUP_FREQUENCY, parameters.get(CCS_RGM_RUN_SWING_FREQ));
+  setNewValue(VSD_SW_STARTUP_OSC_COUNT, parameters.get(CCS_RGM_RUN_SWING_QUANTITY));
+  return setNewValue(VSD_ETALON_START_TYPE, 2);
+}
+
+int VsdEtalon::offRegimeSwing()
+{
+  return setNewValue(VSD_ETALON_START_TYPE, 0);
+}
+
 int VsdEtalon::setFrequency(float value)
 {
   if (Vsd::setFrequency(value))
