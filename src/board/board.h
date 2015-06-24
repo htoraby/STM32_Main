@@ -8,7 +8,7 @@
 #define USE_WATCHDOG 0
 #define USE_EXT_MEM  1
 #define USE_TEST     1
-#define USE_DEBUG    1
+#define USE_DEBUG    0
 
 #define WATCHDOG_TIMEOUT 5 // 5 сек
 
