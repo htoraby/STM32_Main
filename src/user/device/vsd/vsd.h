@@ -222,6 +222,25 @@ public:
    */
   virtual int onRegimePickup();
 
+  /*!
+   * \brief offRegimePickup
+   * \return
+   */
+  virtual int offRegimePickup();
+
+  /*!
+   * \brief onRegimeSkipFreq
+   * \return
+   */
+  virtual int onRegimeSkipFreq();
+
+  /*!
+   * \brief offRegimeSkipFreq
+   * \return
+   */
+  virtual int offRegimeSkipFreq();
+
+
   bool setBitVsdStatus(uint8_t bit, bool flag);
 
 private:

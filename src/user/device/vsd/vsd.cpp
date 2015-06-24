@@ -267,6 +267,21 @@ int Vsd::offRegimeSwing()
   return 0;
 }
 
+int Vsd::offRegimePickup()
+{
+  return 0;
+}
+
+int Vsd::onRegimeSkipFreq()
+{
+  return 0;
+}
+
+int Vsd::offRegimeSkipFreq()
+{
+  return 0;
+}
+
 void Vsd::initParameters()
 {
   for (int index = 0; index < (VSD_END - VSD_BEGIN); index++) {
