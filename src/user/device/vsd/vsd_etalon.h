@@ -226,6 +226,14 @@ public:
   int setUfF6(float value);
 
   /*!
+   * \brief setUfU
+   * \param id
+   * \param value
+   * \return
+   */
+  int setUfU(uint16_t id, float value);
+
+  /*!
    * \brief Метод задания точки характиристики U/f U6
    * \param value
    * \return

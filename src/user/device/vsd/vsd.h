@@ -101,6 +101,8 @@ public:
    */
   virtual int setMaxFrequency(float value);
 
+  virtual int setUfU(uint16_t id, float value);
+
   /*!
    * \brief Функция записи в регистр темпа набора частоты Гц/с
    * и пересчитанного значения в регистр время набора частота

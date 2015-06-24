@@ -98,23 +98,32 @@ void VsdEtalon::getNewValue(uint16_t id)
 
   // Преобразования для параметров требующих особой обработки по id
   switch (id) {
-  case VSD_ETALON_ON_STATE:
+  case VSD_ETALON_ON_STATE:                 // Получили подтверждение запуска
     setBitVsdStatus(VSD_STATUS_STARTED, value);
     setValue(id, value);
     break;
-  case VSD_ETALON_OFF_STATE:
+  case VSD_ETALON_OFF_STATE:                // Получили подтверждение останова
     setBitVsdStatus(VSD_STATUS_STOPPED_EXTERNAL, value);
     setValue(id, value);
     break;
-  case VSD_INVERTOR_STATUS:
+  case VSD_INVERTOR_STATUS:                 // Получили слово состояния
     convertBitVsdStatus(value);
     break;
-  case VSD_UF_CHARACTERISTIC_U_1:
+  case VSD_UF_CHARACTERISTIC_U_1:           // Получили точку напряжения U/f
   case VSD_UF_CHARACTERISTIC_U_2:
   case VSD_UF_CHARACTERISTIC_U_3:
   case VSD_UF_CHARACTERISTIC_U_4:
   case VSD_UF_CHARACTERISTIC_U_5:
     setValue(id, getValue(VSD_UF_CHARACTERISTIC_U_6) * value / 100.0);
+    break;
+  case VSD_CURRENT_DC:                      // Получили ток Id
+    setValue(id, getValue(VSD_COEF_CURRENT_IN_DC) * value);
+    break;
+  case VSD_VOLTAGE_DC:
+    setValue(id, getValue(VSD_COEF_VOLTAGE_IN_DC) * value);
+    break;
+  case VSD_OUT_VOLTAGE_MOTOR:
+    setValue(id, getValue(VSD_COEF_VOLTAGE_OUT_1) * getValue(VSD_COEF_VOLTAGE_OUT_2) * value);
     break;
   default:
     setValue(id, value);
@@ -151,10 +160,7 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
   case VSD_UF_CHARACTERISTIC_U_3:
   case VSD_UF_CHARACTERISTIC_U_4:
   case VSD_UF_CHARACTERISTIC_U_5:
-    result = setValue(id, value);
-    if (!result)
-      writeToDevice(id, (value * 100.0) / getValue(VSD_UF_CHARACTERISTIC_U_6));
-    return result;
+    return setUfU(id, value);
   case VSD_UF_CHARACTERISTIC_U_6:
     return setUfU6(value);
   case VSD_UF_CHARACTERISTIC_F_6:
@@ -398,6 +404,17 @@ int VsdEtalon::setUfF6(float value)
   osDelay(200);
   readUfCharacterictic();
   return result;
+}
+
+int VsdEtalon::setUfU(uint16_t id, float value)
+{
+  if (Vsd::setUfU(id, value)) {
+    return err_r;
+  }
+  else {
+    writeToDevice(id, (getValue(id) * 100.0) / getValue(VSD_UF_CHARACTERISTIC_U_6));
+  return ok_r;
+  }
 }
 
 int VsdEtalon::setUfU6(float value)

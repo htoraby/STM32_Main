@@ -103,6 +103,11 @@ int Vsd::setMaxFrequency(float value)
   }
 }
 
+int Vsd::setUfU(uint16_t id, float value)
+{
+  return setValue(id, value);
+}
+
 int Vsd::setTimeSpeedUp(float value)
 {
   if (!setValue(VSD_TIMER_DISPERSAL, value)) {        // Записали время разгона (с)
