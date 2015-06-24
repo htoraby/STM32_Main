@@ -117,15 +117,57 @@ public:
 
   /*!
    * \brief Функция включения толчкового режима
+   * Записывает в ЧРП настройки режима и
+   * Записывает в параметр 265 VSD_ETALON_START_TYPE - 1
    * \return
    */
   int onRegimePush();
 
+  /*!
+   * \brief Функция выключения толчкового режима
+   * Записывает в параметр 265 VSD_ETALON_START_TYPE - 0
+   * \return
+   */
   int offRegimePush();
 
+  /*!
+   * \brief Функция включения режима раскачки
+   * Записывает в ЧРП настройки режима
+   * Записывает в параметр 265 VSD_ETALON_START_TYPE - 2
+   * \return
+   */
   int onRegimeSwing();
 
+  /*!
+   * \brief Функция выключения режима раскачки
+   * Записывает в параметр 265 VSD_ETALON_START_TYPE - 0
+   * \return
+   */
   int offRegimeSwing();
+
+  /*!
+   * \brief onRegimePickup
+   * \return
+   */
+  int onRegimePickup();
+
+  /*!
+   * \brief offRegimePickup
+   * \return
+   */
+  int offRegimePickup();
+
+  /*!
+   * \brief onRegimeSkipFreq
+   * \return
+   */
+  int onRegimeSkipFreq();
+
+  /*!
+   * \brief offRegimeSkipFreq
+   * \return
+   */
+  int offRegimeSkipFreq();
 
   /*!
    * \brief Метод записи основного режима работы ЧРП

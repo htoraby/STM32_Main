@@ -274,7 +274,10 @@ bool VsdEtalon::checkStop()
 int VsdEtalon::onRegimePush()
 {
   setNewValue(VSD_SW_STARTUP_FREQUENCY, parameters.get(CCS_RGM_RUN_PUSH_FREQ));
-  setNewValue(VSD_SW_STARTUP_U_PULSE, parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE));
+  float UpVoltage = (parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) - 100.0);
+  if (UpVoltage < 0)
+    UpVoltage = 0;
+  setNewValue(VSD_SW_STARTUP_U_PULSE, UpVoltage);
   setNewValue(VSD_RGM_RUN_PUSH_UPTIME, parameters.get(CCS_RGM_RUN_PUSH_TIME));
   setNewValue(VSD_RGM_RUN_PUSH_PERIOD, parameters.get(CCS_RGM_RUN_PUSH_PERIOD));
   setNewValue(VSD_SW_STARTUP_OSC_COUNT, parameters.get(CCS_RGM_RUN_PUSH_QUANTITY));
@@ -296,6 +299,26 @@ int VsdEtalon::onRegimeSwing()
 int VsdEtalon::offRegimeSwing()
 {
   return setNewValue(VSD_ETALON_START_TYPE, 0);
+}
+
+int VsdEtalon::onRegimePickup()
+{
+  return setNewValue(VSD_ENGINE_DECEL_MODE, 2);
+}
+
+int VsdEtalon::offRegimePickup()
+{
+  return setNewValue(VSD_ENGINE_DECEL_MODE, 0);
+}
+
+int VsdEtalon::onRegimeSkipFreq()
+{
+  return setNewValue(VSD_FREQ_SKIP_MODE, 1);
+}
+
+int VsdEtalon::offRegimeSkipFreq()
+{
+  return setNewValue(VSD_FREQ_SKIP_MODE, 0);
 }
 
 int VsdEtalon::setFrequency(float value)
