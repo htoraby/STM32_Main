@@ -1042,7 +1042,9 @@ enum enID
   VSD_BLDC_KI = 10309,                                       //!< Коэффициент интегр.рег.угла для ВД
   VSD_BLDC_MAX_UP = 10310,                                   //!< Максимальная доб. верхнего предела для ВД
   VSD_INVERTOR_STATUS4 = 10311,                              //!< 
-  VSD_END = 10312,                                           //!< 
+  VSD_SYNC_FREQ = 10312,                                     //!< 
+  VSD_SYNC_TIME = 10313,                                     //!< 
+  VSD_END = 10314,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме

@@ -1056,7 +1056,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType reason)
     break;
   case CCS_CMD_COUNTER_ALL_RESET:
     cmdCountersAllReset();
-    break;
+    break;  
   default:
     break;
   }
