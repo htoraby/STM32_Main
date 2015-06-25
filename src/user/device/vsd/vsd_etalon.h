@@ -266,7 +266,7 @@ public:
   void calcParameters(uint16_t id);
 
 private:
-  ModbusParameter modbusParameters_[111];
+  ModbusParameter modbusParameters_[113];
   DeviceModbus *dm_;
 
   /*!

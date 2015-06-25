@@ -1044,7 +1044,10 @@ enum enID
   VSD_INVERTOR_STATUS4 = 10311,                              //!< 
   VSD_SYNC_FREQ = 10312,                                     //!< 
   VSD_SYNC_TIME = 10313,                                     //!< 
-  VSD_END = 10314,                                           //!< 
+  VSD_VOLTAGE_PHASE_1_2 = 10314,                             //!< Напряжение входное линейное Uab
+  VSD_VOLTAGE_PHASE_2_3 = 10315,                             //!< Напряжение входное линейное Ubc
+  VSD_VOLTAGE_PHASE_3_1 = 10316,                             //!< Напряжение входное линейное Uca
+  VSD_END = 10317,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме
