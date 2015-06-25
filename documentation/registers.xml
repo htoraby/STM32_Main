@@ -13031,9 +13031,19 @@
 		<id>10077</id>
 		<name>VSD_VFREQ_INTEG</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>0.1</max>
+		<def>0.007</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>0.007</value>
+		<text>Коэффициент интегр.рег.угла для ВД</text>
+		<short_text>Коэффициент интегр.рег.угла для ВД</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>X_XXXX</format>
 		<code>0</code>
 		<comment>Интегральный коэффициент ОС фазового контура регулирования</comment>
 	</param>
@@ -13150,9 +13160,19 @@
 		<id>10088</id>
 		<name>VSD_VFREQ_GAIN</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>0.5</max>
+		<def>0.03</def>
 		<valid>VALIDITY_ERROR</valid>
+		<value>0.03</value>
+		<text>Коэффициент пропорц.рег.угла для ВД</text>
+		<short_text>Коэффициент пропорц.рег.угла для ВД</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>X_XXXX</format>
 		<code>0</code>
 		<comment>Пропорциональный коэффициент ОС фазового контура регулирования</comment>
 	</param>
@@ -16094,6 +16114,66 @@
 	</param>
 	<param>
 		<id>10314</id>
+		<name>VSD_VOLTAGE_PHASE_1_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>100.0</min>
+		<max>500.0</max>
+		<def>100.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>100.0</value>
+		<text>Напряжение входное линейное Uab</text>
+		<short_text>Напряжение входное линейное Uab</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Напряжение входное линейное Uab</comment>
+	</param>
+	<param>
+		<id>10315</id>
+		<name>VSD_VOLTAGE_PHASE_2_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>100.0</min>
+		<max>500.0</max>
+		<def>100.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>100.0</value>
+		<text>Напряжение входное линейное Ubc</text>
+		<short_text>Напряжение входное линейное Ubc</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Напряжение входное линейное Ubc</comment>
+	</param>
+	<param>
+		<id>10316</id>
+		<name>VSD_VOLTAGE_PHASE_3_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>100.0</min>
+		<max>500.0</max>
+		<def>100.0</def>
+		<valid>VALIDITY_ERROR</valid>
+		<value>100.0</value>
+		<text>Напряжение входное линейное Uca</text>
+		<short_text>Напряжение входное линейное Uca</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Напряжение входное линейное Uca</comment>
+	</param>
+	<param>
+		<id>10317</id>
 		<name>VSD_END</name>
 		<code>0</code>
 	</param>
