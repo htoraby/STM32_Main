@@ -7824,7 +7824,7 @@
 		<form>5.1.7 Режим оптимизации напряжения</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>ХХХХХХ</format>
+		<format>XXXXXX</format>
 		<code>13</code>
 		<comment>Режим оптимизации напряжения диапазон</comment>
 	</param>
@@ -7842,7 +7842,7 @@
 		<form>5.1.7 Режим оптимизации напряжения</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>ХХХХХХ</format>
+		<format>XXXXXX</format>
 		<code>13</code>
 		<comment>Режим оптимизации напряжения шаг</comment>
 	</param>
@@ -7950,7 +7950,7 @@
 		<form>5.1.8 Режим прокачки газа</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>ХХХХХХ</format>
+		<format>XXXXXX</format>
 		<code>13</code>
 		<comment>Режим прокачки газа</comment>
 	</param>
@@ -7986,7 +7986,7 @@
 		<form>5.1.9 Режим ограничения тока</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>ХХХХХХ</format>
+		<format>XXXXXX</format>
 		<code>13</code>
 		<comment>Режим ограничения тока уставка</comment>
 	</param>
@@ -8164,7 +8164,7 @@
 		<form>5.2 Корректировки</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>ХХХХХХ</format>
+		<format>XXXXXX</format>
 		<code>13</code>
 		<comment>Коэффициент корректировки сопротивления изоляции</comment>
 	</param>
@@ -8416,7 +8416,7 @@
 		<form>6.3 Статистика</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM_SS</unit_lcd>
-		<format>ХХ_ХХ_XX</format>
+		<format>XX_XX_XX</format>
 		<code>0</code>
 		<comment>Текущая наработка</comment>
 	</param>
@@ -8434,7 +8434,7 @@
 		<form>6.3 Статистика</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM_SS</unit_lcd>
-		<format>ХХ_ХХ_XX</format>
+		<format>XX_XX_XX</format>
 		<code>0</code>
 		<comment>Текущий простой</comment>
 	</param>
@@ -8452,7 +8452,7 @@
 		<form>6.3 Статистика</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>ХХ_ХХ</format>
+		<format>XX_XX</format>
 		<code>0</code>
 		<comment>Время до изменения режима</comment>
 	</param>
@@ -8470,7 +8470,7 @@
 		<form>6.3 Статистика</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM_SS</unit_lcd>
-		<format>ХХ_ХХ_XX</format>
+		<format>XX_XX_XX</format>
 		<code>0</code>
 		<comment>Время до запуска</comment>
 	</param>
@@ -9469,7 +9469,7 @@
 		<form>7.3 Телемеханика</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MS</unit_lcd>
-		<format>ХХХХХХ</format>
+		<format>XXXXXX</format>
 		<code>13</code>
 		<comment>Задержка ответа в телемеханкие</comment>
 	</param>
@@ -10993,7 +10993,7 @@
 		<form>3.2.1.2 Толчковый</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_SS</unit_lcd>
-		<format>ХХХХХХ</format>
+		<format>XXXXXX</format>
 		<code>13</code>
 		<comment>Время между толчками в режиме пуска "Толчковый"</comment>
 	</param>
@@ -11301,7 +11301,7 @@
 		<form>3.1 Двигатель</form>
 		<unit>INDUNCTANCE_MH</unit>
 		<unit_lcd>INDUNCTANCE_MH</unit_lcd>
-		<format>ХХХ_ХХ</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Индуктивность</comment>
 	</param>
@@ -12300,7 +12300,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Ток холостого хода ПЭД</text>
-		<short_text>Ток ХХ ПЭД</short_text>
+		<short_text>Ток XX ПЭД</short_text>
 		<form>3.2.3 Дополнительные настройки ЧРП</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
@@ -15450,7 +15450,7 @@
 		<form>NULL</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
-		<format>ХХХХ_Х</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Предельная рабочая частота</comment>
 	</param>
@@ -15713,7 +15713,7 @@
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>ХХХ_ХХ</format>
+		<format>XXX_XX</format>
 		<code>0</code>
 		<comment>Коэффициент пропорц. ПИД</comment>
 	</param>
@@ -15733,7 +15733,7 @@
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>ХХХХ_Х</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Коэффициент интегральный ПИД</comment>
 	</param>
@@ -15753,7 +15753,7 @@
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>ХХХ_ХХ</format>
+		<format>XXX_XX</format>
 		<code>0</code>
 		<comment>Коэффициент дифференц. ПИД</comment>
 	</param>
@@ -15855,7 +15855,7 @@
 		<form>NULL</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
-		<format>ХХХХХХ</format>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Номинальный ток СУ</comment>
 	</param>
