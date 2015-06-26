@@ -791,7 +791,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
-		<code>20</code>
+		<code>0</code>
 		<values>0-Откл;1-Новомет</values>
 		<comment>Тип ТМС</comment>
 	</param>
@@ -3986,7 +3986,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>Уставка параметр защиты</comment>
 	</param>
 	<param>
@@ -9621,7 +9621,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<code>2</code>
+		<code>0</code>
 		<comment>Команда остановки</comment>
 	</param>
 	<param>
@@ -9635,7 +9635,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<code>1</code>
+		<code>0</code>
 		<comment>Команда запуска</comment>
 	</param>
 	<param>
@@ -9681,7 +9681,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<code>14</code>
+		<code>0</code>
 	</param>
 	<param>
 		<id>597</id>
@@ -11154,7 +11154,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
-		<code>20</code>
+		<code>0</code>
 		<values>0-Откл;1-Новомет;2-Данфос;3-Эталон</values>
 		<comment>Тип подключенного ЧРП</comment>
 	</param>
@@ -11424,7 +11424,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
-		<code>37</code>
+		<code>0</code>
 		<values>0-Нет;1-Да</values>
 		<comment>Связь с ЧРП</comment>
 	</param>
@@ -11445,7 +11445,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
-		<code>33</code>
+		<code>0</code>
 		<values>0-Нет;1-Да</values>
 		<comment>Связь с ТМС</comment>
 	</param>
@@ -11466,7 +11466,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
-		<code>38</code>
+		<code>0</code>
 		<values>0-Нет;1-Да</values>
 		<comment>Связь со счётчиком электроэнергии</comment>
 	</param>
@@ -11487,7 +11487,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
-		<code>20</code>
+		<code>0</code>
 		<values>0-Нет;1-СЭТ-4ТМ</values>
 		<comment>Тип счётчика электоэнергии</comment>
 	</param>
@@ -11628,7 +11628,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
-		<code>20</code>
+		<code>0</code>
 		<values>0-Откл;1-Вкл</values>
 		<comment>Входной фильтр</comment>
 	</param>
@@ -11649,7 +11649,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
-		<code>20</code>
+		<code>0</code>
 		<values>0-Откл;1-Вкл</values>
 		<comment>Выходной фильтр</comment>
 	</param>
