@@ -131,7 +131,7 @@ public:
    * \param reason источник(первопричина) изменения параметра (по умолчанию авто)
    * \return 0 - значение присвоено или код ошибки
    */
-  uint8_t setValue(uint16_t id, float value, EventType reason = AutoType);
+  uint8_t setValue(uint16_t id, float value, EventType eventType = AutoType);
 
   /*!
    * \brief Метод присвоения значения параметра типа uint32_t
@@ -139,7 +139,7 @@ public:
    * \param value - присваемое значение
    * \return 0 - значение присвоено или код ошибки
    */
-  uint8_t setValue(uint16_t id, uint32_t value, EventType reason = AutoType);
+  uint8_t setValue(uint16_t id, uint32_t value, EventType eventType = AutoType);
 
   /*!
    * \brief Метод присвоения значения параметра типа float переменным типа int
@@ -147,7 +147,7 @@ public:
    * \param value - присваемое значение
    * \return 0 - значение присвоено или код ошибки
    */
-  uint8_t setValue(uint16_t id, int value, EventType reason = AutoType);
+  uint8_t setValue(uint16_t id, int value, EventType eventType = AutoType);
 
   /*!
    * \brief Функция сброса значения параметра на значение по умолчанию

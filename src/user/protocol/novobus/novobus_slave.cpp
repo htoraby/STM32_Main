@@ -97,6 +97,7 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
   // Временная переменная преобразования типов
   unTypeData id;
   unTypeData value;
+  EventType eventType;
 
   // Получаем контрольную сумму
   uint16_t rxCrc = (rxBuffer_[sizePktT - 2] << 8) + rxBuffer_[sizePktT - 1];
@@ -236,20 +237,21 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
       case WriteParamsCommand:
         // Количество параметров = (размер пакета - заголовок - crc) /
         // (размер id и значения параметра)
-        dataNumber = (sizePkt - 4)/6;
+        dataNumber = (sizePkt - 4)/7;
         for (int i = 0; i < dataNumber; i++) {
           // Получаем ID параметра
-          id.uint16_t[0] = (rxBuffer_[2 + i*6] << 8) + rxBuffer_[3 + i*6];
+          id.uint16_t[0] = (rxBuffer_[2 + i*7] << 8) + rxBuffer_[3 + i*7];
           // Получаем значение параметра
-          value.char_t[3] = rxBuffer_[4 + i*6];
-          value.char_t[2] = rxBuffer_[5 + i*6];
-          value.char_t[1] = rxBuffer_[6 + i*6];
-          value.char_t[0] = rxBuffer_[7 + i*6];
+          value.char_t[3] = rxBuffer_[4 + i*7];
+          value.char_t[2] = rxBuffer_[5 + i*7];
+          value.char_t[1] = rxBuffer_[6 + i*7];
+          value.char_t[0] = rxBuffer_[7 + i*7];
+          eventType = (EventType)rxBuffer_[8 + i*7];
           // Вызываем функцию записи значения параметра
           if (parameters.getPhysic(id.uint16_t[0]) == PHYSIC_DATE_TIME)
-            parameters.set(id.uint16_t[0], (uint32_t)value.uint32_t, OperatorType);
+            parameters.set(id.uint16_t[0], (uint32_t)value.uint32_t, eventType);
           else
-            parameters.set(id.uint16_t[0], value.float_t, OperatorType);
+            parameters.set(id.uint16_t[0], value.float_t, eventType);
         }
 
         checkMessage();

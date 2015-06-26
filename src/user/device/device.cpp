@@ -203,7 +203,7 @@ uint32_t Device::getValueUint32(unsigned short id, bool *ok)
   return getFieldValueUint32(index);
 }
 
-uint8_t Device::setValue(uint16_t id, float value, EventType reason)
+uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
 {
   //TODO: Добавить проверки на корректность записываемых данных
 
@@ -215,17 +215,17 @@ uint8_t Device::setValue(uint16_t id, float value, EventType reason)
   setFieldValue(index, value);
 
   // Сообщить контроллеру визуализации об обновлении параметра
-  if (value != oldValue)
+  if (value != oldValue) {
     novobusSlave.putMessageParams(id);
-
-  // Формирование сообщения в архив событий об изменении параметра
-  if (code) {                     // Если у параметра есть Код события
-    logEvent.add(code, reason, (EventId)id, oldValue, value, units);
+    // Формирование сообщения в архив событий об изменении параметра
+    if (code && (eventType != NoneType))
+      logEvent.add(code, eventType, (EventId)id, oldValue, value, units);
   }
+
   return 0;
 }
 
-uint8_t Device::setValue(uint16_t id, uint32_t value, EventType reason)
+uint8_t Device::setValue(uint16_t id, uint32_t value, EventType eventType)
 {
   uint16_t index = getIndexAtId(id);
   uint32_t oldValue = getFieldValueUint32(index);
@@ -235,19 +235,19 @@ uint8_t Device::setValue(uint16_t id, uint32_t value, EventType reason)
   setFieldValue(index, value);
 
   // Сообщить контроллеру визуализации об обновлении параметра
-  if (value != oldValue)
+  if (value != oldValue) {
     novobusSlave.putMessageParams(id);
-
-  // Формирование сообщения в архив событий об изменении параметра
-  if (code) {                     // Если у параметра есть Код события
-    logEvent.add(code, reason, (EventId)id, oldValue, value, units);
+    // Формирование сообщения в архив событий об изменении параметра
+    if (code && (eventType != NoneType))
+      logEvent.add(code, eventType, (EventId)id, oldValue, value, units);
   }
+
   return 0;
 }
 
-uint8_t Device::setValue(uint16_t id, int value, EventType reason)
+uint8_t Device::setValue(uint16_t id, int value, EventType eventType)
 {
-  return setValue(id, (float)value, reason);
+  return setValue(id, (float)value, eventType);
 }
 
 void Device::resetValue(uint16_t id)

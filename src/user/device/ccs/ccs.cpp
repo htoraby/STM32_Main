@@ -560,12 +560,12 @@ void Ccs::calcTime()
     time_t time = rtcGetTime();
     setValue(CCS_DATE_TIME, (uint32_t)time);
     tm dateTime = *localtime(&time);
-    setValue(CCS_DATE_TIME_SEC, dateTime.tm_sec);
-    setValue(CCS_DATE_TIME_MIN, dateTime.tm_min);
-    setValue(CCS_DATE_TIME_HOUR, dateTime.tm_hour);
-    setValue(CCS_DATE_TIME_DAY, dateTime.tm_mday);
-    setValue(CCS_DATE_TIME_MONTH, dateTime.tm_mon);
-    setValue(CCS_DATE_TIME_YEAR, 1900 + dateTime.tm_year);
+    setValue(CCS_DATE_TIME_SEC, dateTime.tm_sec, NoneType);
+    setValue(CCS_DATE_TIME_MIN, dateTime.tm_min, NoneType);
+    setValue(CCS_DATE_TIME_HOUR, dateTime.tm_hour, NoneType);
+    setValue(CCS_DATE_TIME_DAY, dateTime.tm_mday, NoneType);
+    setValue(CCS_DATE_TIME_MONTH, dateTime.tm_mon, NoneType);
+    setValue(CCS_DATE_TIME_YEAR, 1900 + dateTime.tm_year, NoneType);
     // TODO: Синхронизация времени
   }
 
@@ -929,7 +929,7 @@ float Ccs::calcTransTapOff(float coefTrans)
   return parameters.get(CCS_TRANS_NEED_VOLTAGE_TAP_OFF);
 }
 
-uint8_t Ccs::setNewValue(uint16_t id, float value, EventType reason)
+uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
 {
   switch (id) {
   case CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT:
@@ -1060,10 +1060,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType reason)
   default:
     break;
   }
-  return setValue(id, value, reason);
+  return setValue(id, value, eventType);
 }
 
-uint8_t Ccs::setNewValue(uint16_t id, uint32_t value, EventType reason)
+uint8_t Ccs::setNewValue(uint16_t id, uint32_t value, EventType eventType)
 {
   switch (id) {
   case CCS_DATE_TIME:
@@ -1080,12 +1080,12 @@ uint8_t Ccs::setNewValue(uint16_t id, uint32_t value, EventType reason)
     }
     break;
   }
-  return setValue(id, value, reason);
+  return setValue(id, value, eventType);
 }
 
-uint8_t Ccs::setNewValue(uint16_t id, int value, EventType reason)
+uint8_t Ccs::setNewValue(uint16_t id, int value, EventType eventType)
 {
-  return setNewValue(id, (float)value, reason);
+  return setNewValue(id, (float)value, eventType);
 }
 
 void Ccs::calcRegimeChangeFreqPeriodOneStep()

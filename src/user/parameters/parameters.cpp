@@ -90,10 +90,10 @@ uint32_t Parameters::getU32(unsigned short id)
   return 0;
 }
 
-int Parameters::set(unsigned short id, float value, EventType reason)
+int Parameters::set(unsigned short id, float value, EventType eventType)
 {
   if ((id > CCS_BEGIN) && (id < CCS_END))
-    return ksu.setNewValue(id, value, reason);
+    return ksu.setNewValue(id, value, eventType);
   // TODO: После проверки что формирование события работает для CCS, добавить для остальных устройств
   if ((id > VSD_BEGIN) && (id < VSD_END))
     return vsd->setNewValue(id, value);
@@ -104,10 +104,10 @@ int Parameters::set(unsigned short id, float value, EventType reason)
   return 0;
 }
 
-int Parameters::set(unsigned short id, uint32_t value, EventType reason)
+int Parameters::set(unsigned short id, uint32_t value, EventType eventType)
 {
   if ((id > CCS_BEGIN) && (id < CCS_END))
-    return ksu.setNewValue(id, value, reason);
+    return ksu.setNewValue(id, value, eventType);
   if ((id > VSD_BEGIN) && (id < VSD_END))
     return vsd->setNewValue(id, value);
   if ((id > TMS_BEGIN) && (id < TMS_END))
@@ -117,9 +117,9 @@ int Parameters::set(unsigned short id, uint32_t value, EventType reason)
   return 0;
 }
 
-int Parameters::set(unsigned short id, int value, EventType reason)
+int Parameters::set(unsigned short id, int value, EventType eventType)
 {
-  return set(id, (float)value, reason);
+  return set(id, (float)value, eventType);
 }
 
 uint8_t Parameters::getPhysic(unsigned short id)

@@ -51,27 +51,30 @@ public:
    * \brief Метод записи параметра по ID с определением необходимого массива
    * \param id - уникальный идентификатор параметра
    * \param value присваемое значение
+   * \param eventType - тип события для фиксирования изменений в журнале
    * \return 0 - значение присвоено или ошибка
    */
-  int set(unsigned short id, float value, EventType reason = AutoType);
+  int set(unsigned short id, float value, EventType eventType = AutoType);
 
   /*!
    * \brief Метод записи параметра типа uint32_t по ID
    * с определением необходимого массива
    * \param id - уникальный идентификатор параметра
    * \param value присваемое значение
+   * \param eventType - тип события для фиксирования изменений в журнале
    * \return 0 - значение присвоено или ошибка
    */
-  int set(unsigned short id, uint32_t value, EventType reason = AutoType);
+  int set(unsigned short id, uint32_t value, EventType eventType = AutoType);
 
   /*!
    * \brief Метод записи параметра типа int по ID
    * с определением необходимого массива
    * \param id - уникальный идентификатор параметра
    * \param value присваемое значение
+   * \param eventType - тип события для фиксирования изменений в журнале
    * \return 0 - значение присвоено или ошибка
    */
-  int set(unsigned short id, int value, EventType reason = AutoType);
+  int set(unsigned short id, int value, EventType eventType = AutoType);
 
   /*!
    * \brief Метод получения типа физической величины по ID
