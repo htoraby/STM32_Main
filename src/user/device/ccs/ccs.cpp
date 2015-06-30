@@ -13,6 +13,7 @@
 #include "math.h"
 
 #define TIMEOUT_POWER_OFF 6000 //!< 1 минута на отключение питания ИБП
+#define DELAY_CHECK_CONNECT_DEVICE 1000 //!< Задержка проверки подключения устройств - 20 сек
 
 Ccs::Ccs()
   : Device(CCS_BEGIN, parametersArray_, CCS_END - CCS_BEGIN)
@@ -21,6 +22,7 @@ Ccs::Ccs()
   , workModeOld_(-1)
   , powerOffFlag_(false)
   , powerOffTimeout_(TIMEOUT_POWER_OFF)
+  , checkConnectDeviceTimer_(DELAY_CHECK_CONNECT_DEVICE)
 {
 
 }
@@ -1170,18 +1172,23 @@ void Ccs::controlPower()
 
 void Ccs::checkConnectDevice()
 {
-  if (vsd->isConnect())
-    setNewValue(CCS_VSD_CONNECTION, 1);
-  else
-    setNewValue(CCS_VSD_CONNECTION, 0);
-  if (tms->isConnect())
-    setNewValue(CCS_DHS_CONNECTION, 1);
-  else
-    setNewValue(CCS_DHS_CONNECTION, 0);
-  if (em->isConnect())
-    setNewValue(CCS_EM_CONNECTION, 1);
-  else
-    setNewValue(CCS_EM_CONNECTION, 0);
+  if (checkConnectDeviceTimer_ == 0) {
+    if (vsd->isConnect())
+      setNewValue(CCS_VSD_CONNECTION, 1);
+    else
+      setNewValue(CCS_VSD_CONNECTION, 0);
+    if (tms->isConnect())
+      setNewValue(CCS_DHS_CONNECTION, 1);
+    else
+      setNewValue(CCS_DHS_CONNECTION, 0);
+    if (em->isConnect())
+      setNewValue(CCS_EM_CONNECTION, 1);
+    else
+      setNewValue(CCS_EM_CONNECTION, 0);
+  }
+  else {
+    checkConnectDeviceTimer_--;
+  }
 }
 
 void Ccs::cmdProtSupplyOvervoltageSetpointReset()

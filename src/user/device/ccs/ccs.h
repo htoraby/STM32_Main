@@ -432,6 +432,9 @@ private:
   //! Тайаут отключения питания ИБП
   int powerOffTimeout_;
 
+  //! Таймер задержки проверки подключения устройств
+  int checkConnectDeviceTimer_;
+
 };
 
 #endif /* CCS_H_ */
