@@ -9690,7 +9690,7 @@
 		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Очистка архивов</text>
+		<text>Удаление архивов</text>
 		<short_text>Очистить архив?</short_text>
 		<form>2.0 Архивы</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -9709,7 +9709,8 @@
 		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<code>0</code>
+		<text>Удаление сервисного архива</text>
+		<code>14</code>
 	</param>
 	<param>
 		<id>597</id>
@@ -11465,7 +11466,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
-		<code>0</code>
+		<code>37</code>
 		<values>0-Нет;1-Да</values>
 		<comment>Связь с ЧРП</comment>
 	</param>
@@ -11486,7 +11487,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
-		<code>0</code>
+		<code>33</code>
 		<values>0-Нет;1-Да</values>
 		<comment>Связь с ТМС</comment>
 	</param>
@@ -11507,7 +11508,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
-		<code>0</code>
+		<code>38</code>
 		<values>0-Нет;1-Да</values>
 		<comment>Связь со счётчиком электроэнергии</comment>
 	</param>

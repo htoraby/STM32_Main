@@ -6568,7 +6568,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_SERVICE_LOG_DELETE - CCS_BEGIN].min                        = 0.0;
   parameters_[CCS_CMD_SERVICE_LOG_DELETE - CCS_BEGIN].max                        = 1.0;
   parameters_[CCS_CMD_SERVICE_LOG_DELETE - CCS_BEGIN].def                        = 0.0;
-  parameters_[CCS_CMD_SERVICE_LOG_DELETE - CCS_BEGIN].code                       = 0;
+  parameters_[CCS_CMD_SERVICE_LOG_DELETE - CCS_BEGIN].code                       = 14;
   // 
   parameters_[CCS_CMD_DHS_TYPE_AUTO - CCS_BEGIN].id                              = CCS_CMD_DHS_TYPE_AUTO;
   parameters_[CCS_CMD_DHS_TYPE_AUTO - CCS_BEGIN].access                          = ACCESS_OPERATOR;
@@ -7734,7 +7734,7 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_CONNECTION - CCS_BEGIN].min                                = 0.0;
   parameters_[CCS_VSD_CONNECTION - CCS_BEGIN].max                                = 1.0;
   parameters_[CCS_VSD_CONNECTION - CCS_BEGIN].def                                = 0.0;
-  parameters_[CCS_VSD_CONNECTION - CCS_BEGIN].code                               = 0;
+  parameters_[CCS_VSD_CONNECTION - CCS_BEGIN].code                               = 37;
   // Связь с ТМС
   parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].id                                 = CCS_DHS_CONNECTION;
   parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].access                             = ACCESS_OPERATOR;
@@ -7745,7 +7745,7 @@ void Ccs::initParameters()
   parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].min                                = 0.0;
   parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].max                                = 1.0;
   parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].def                                = 0.0;
-  parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].code                               = 0;
+  parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].code                               = 33;
   // Связь со счётчиком электроэнергии
   parameters_[CCS_EM_CONNECTION - CCS_BEGIN].id                                  = CCS_EM_CONNECTION;
   parameters_[CCS_EM_CONNECTION - CCS_BEGIN].access                              = ACCESS_OPERATOR;
@@ -7756,7 +7756,7 @@ void Ccs::initParameters()
   parameters_[CCS_EM_CONNECTION - CCS_BEGIN].min                                 = 0.0;
   parameters_[CCS_EM_CONNECTION - CCS_BEGIN].max                                 = 1.0;
   parameters_[CCS_EM_CONNECTION - CCS_BEGIN].def                                 = 0.0;
-  parameters_[CCS_EM_CONNECTION - CCS_BEGIN].code                                = 0;
+  parameters_[CCS_EM_CONNECTION - CCS_BEGIN].code                                = 38;
   // Тип счётчика электоэнергии
   parameters_[CCS_EM_TYPE - CCS_BEGIN].id                                        = CCS_EM_TYPE;
   parameters_[CCS_EM_TYPE - CCS_BEGIN].access                                    = ACCESS_OPERATOR;

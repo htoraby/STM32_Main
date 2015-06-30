@@ -16,7 +16,6 @@ void regimeInit()
   regimes[0] = &regimeTechnologPeriodic;
   regimes[1] = &regimeTechnologSoftChangeFreq;
 
-  parameters.set(CCS_TYPE_VSD, 1);
   switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
   case VSD_TYPE_NOVOMET:
     regimes[2] = new RegimeRunNovomet;
