@@ -34,6 +34,8 @@ typedef enum {
   DelLogCode           = 14,          //!< Удаление хронологии
   CopyLogCode          = 15,          //!< Считывание хронологии
   ResetCountsCode      = 18,          //!< Сброс счётчиков наработки
+  AddDeviceCode        = 20,          //!< Подключение устройства
+  RemoveDeviceCode     = 21,          //!< Отключение устройства
   FastModeCode         = 28,          //!< ЗаписьУскРеж
   NormModeCode         = 29,          //!< ЗаписьНормРеж
   TmsCode              = 32,          //!< ЗаписьТМС

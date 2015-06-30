@@ -90,6 +90,15 @@ typedef enum {
   RegimeRunSwingOffId,            //!< "Режим пуска раскачкой отключен"
   RegimeRunPickupOffId,           //!< "Режим подхвата турбинного вращения отключен"
 
+  AddDeviceDhsId,                 //!< "Подключение ТМС"
+  RemoveDeviceDhsId,              //!< "Отключение ТМС"
+  AddDeviceVsdId,                 //!< "Подключение ЧРП"
+  RemoveDeviceVsdId,              //!< "Отключение ЧРП"
+  AddDeviceEmId,                  //!< "Подключение СЭ"
+  RemoveDeviceEmId,               //!< "Отключение СЭ"
+  AddDeviceFiltOutId,             //!< "Подключение Выходного фильтра"
+  RemoveDeviceFiltOutId,          //!< "Отключение Выходного фильтра"
+
 } EventId;
 
 #endif // LOG_IDLIST

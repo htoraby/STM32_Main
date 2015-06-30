@@ -931,6 +931,8 @@ float Ccs::calcTransTapOff(float coefTrans)
 
 uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
 {
+  float oldValue = getValue(id);
+
   switch (id) {
   case CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT:
     parameters.set(VSD_M_IRMS, value);
@@ -1056,7 +1058,29 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     break;
   case CCS_CMD_COUNTER_ALL_RESET:
     cmdCountersAllReset();
-    break;  
+    break;
+  case CCS_DHS_TYPE:
+    if (value)
+      logEvent.add(AddDeviceCode, eventType, AddDeviceDhsId, oldValue, value);
+    else
+      logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceDhsId, oldValue, value);
+    break;
+  case CCS_TYPE_VSD:
+    if (value)
+      logEvent.add(AddDeviceCode, eventType, AddDeviceVsdId, oldValue, value);
+    else
+      logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceVsdId, oldValue, value);
+    break;
+  case CCS_EM_TYPE:
+    if (value)
+      logEvent.add(AddDeviceCode, eventType, AddDeviceEmId, oldValue, value);
+    else
+      logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceEmId, oldValue, value);
+  case CCS_FILTER_OUTPUT:
+    if (value)
+      logEvent.add(AddDeviceCode, eventType, AddDeviceFiltOutId, oldValue, value);
+    else
+      logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceFiltOutId, oldValue, value);
   default:
     break;
   }

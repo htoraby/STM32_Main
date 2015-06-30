@@ -2476,7 +2476,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_PREVENT - CCS_BEGIN].min            = 0.0;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_PREVENT - CCS_BEGIN].max            = 1.0;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_PREVENT - CCS_BEGIN].def            = 0.0;
-  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_PREVENT - CCS_BEGIN].code           = 13;
+  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_PREVENT - CCS_BEGIN].code           = 0;
   // Задержка активации уставка
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY - CCS_BEGIN].id         = CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY - CCS_BEGIN].access     = ACCESS_OPERATOR;
@@ -5710,7 +5710,7 @@ void Ccs::initParameters()
   parameters_[CCS_COUNT_START - CCS_BEGIN].min                                   = 0.0;
   parameters_[CCS_COUNT_START - CCS_BEGIN].max                                   = 10000000.0;
   parameters_[CCS_COUNT_START - CCS_BEGIN].def                                   = 0;
-  parameters_[CCS_COUNT_START - CCS_BEGIN].code                                  = 13;
+  parameters_[CCS_COUNT_START - CCS_BEGIN].code                                  = 0;
   // Количество отключений по перезрузу
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].id                       = CCS_PROT_OVERLOAD_COUNT_STOP;
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].access                   = ACCESS_OPERATOR;
