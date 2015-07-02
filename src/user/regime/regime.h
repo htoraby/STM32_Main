@@ -20,6 +20,16 @@ public:
   } RegimeAction;
 
   /*!
+   * \brief Список режимов запуска
+  */
+  typedef enum {
+    NoneRegimeRun,                          //!< Нет режима
+    SmoothRegimeRun,                        //!< Плавный
+    PushRegimeRun,                          //!< Толчковый
+    SwingRegimeRun,                         //!< Раскачкой
+  } TypeRegimeRun;
+
+  /*!
    * \brief Список состояний режима
   */
   typedef enum {

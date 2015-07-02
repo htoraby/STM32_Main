@@ -363,6 +363,7 @@ void DeviceModbus::exchangeTask()
                   sprintf(message, "mbCmd0x03 %d %d %d", devAdrs_, index, regArr_[i]);
                   logDebug.add(WarningMsg, message);
                 }
+                putMessageUpdateId(mbParams_[index].id);
                 index++;
               }
             }
@@ -393,6 +394,7 @@ void DeviceModbus::exchangeTask()
                   sprintf(message, "mbCmd0x03 %d %d %d", devAdrs_, index, regArr_[i]);
                   logDebug.add(WarningMsg, message);
                 }
+                putMessageUpdateId(mbParams_[index].id);
                 index++;
               }
             }
@@ -423,6 +425,7 @@ void DeviceModbus::exchangeTask()
                   sprintf(message, "mbCmd0x03 %d %d %d", devAdrs_, index, int32Arr_[i]);
                   logDebug.add(WarningMsg, message);
                 }
+                putMessageUpdateId(mbParams_[index].id);
                 index++;
               }
             }
@@ -453,6 +456,7 @@ void DeviceModbus::exchangeTask()
                   sprintf(message, "mbCmd0x03 %d %d %d", devAdrs_, index, int32Arr_[i]);
                   logDebug.add(WarningMsg, message);
                 }
+                putMessageUpdateId(mbParams_[index].id);
                 index++;
               }
             }
@@ -484,6 +488,7 @@ void DeviceModbus::exchangeTask()
                   sprintf(message, "mbCmd0x03 %d %d %f", devAdrs_, index, float32Arr_[i]);
                   logDebug.add(WarningMsg, message);
                 }
+                putMessageUpdateId(mbParams_[index].id);
                 index++;
               }
             }
@@ -524,6 +529,7 @@ void DeviceModbus::exchangeTask()
                 sprintf(message, "mbCmd0x03 %d %d %d", devAdrs_, index, regArr_[i]);
                 logDebug.add(WarningMsg, message);
               }
+              putMessageUpdateId(mbParams_[index].id);
               index++;
             }
           }
@@ -554,6 +560,7 @@ void DeviceModbus::exchangeTask()
                 sprintf(message, "mbCmd0x03 %d %d %d", devAdrs_, index, regArr_[i]);
                 logDebug.add(WarningMsg, message);
               }
+              putMessageUpdateId(mbParams_[index].id);
               index++;
             }
           }
@@ -584,6 +591,7 @@ void DeviceModbus::exchangeTask()
                 sprintf(message, "mbCmd0x03 %d %d %d", devAdrs_, index, int32Arr_[i]);
                 logDebug.add(WarningMsg, message);
               }
+              putMessageUpdateId(mbParams_[index].id);
               index++;
             }
           }
@@ -614,6 +622,7 @@ void DeviceModbus::exchangeTask()
                 sprintf(message, "mbCmd0x03 %d %d %d", devAdrs_, index, int32Arr_[i]);
                 logDebug.add(WarningMsg, message);
               }
+              putMessageUpdateId(mbParams_[index].id);
               index++;
             }
           }
@@ -645,6 +654,7 @@ void DeviceModbus::exchangeTask()
                 sprintf(message, "mbCmd0x03 %d %d %f", devAdrs_, index, float32Arr_[i]);
                 logDebug.add(WarningMsg, message);
               }
+              putMessageUpdateId(mbParams_[index].id);
               index++;
             }
           }

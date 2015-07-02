@@ -70,6 +70,13 @@ void VsdEtalon::getNewValue(uint16_t id)
   float value = 0;
   // Преобразуем данные из полученного типа данных в float
   ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtId(id));
+
+  if (param->validity == err_r) {
+    value = 0xFFFF;
+    setValue(id, value);
+    return;
+  }
+
   switch (param->typeData) {
   case TYPE_DATA_INT16:
     value = (float)param->value.int16_t[0];

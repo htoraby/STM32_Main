@@ -607,6 +607,7 @@ void Ccs::calcParameters()
   calcInputVoltagePhase31();
   calcInputVoltageImbalance();
   calcInputCurrentImbalance();
+  calcRegimeRun();
 }
 
 float Ccs::calcTransCoef()
@@ -1128,6 +1129,20 @@ void Ccs::calcRegimeChangeFreqPeriodOneStep()
     periodOneStep = 1;
   }
   setValue(CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP, periodOneStep);
+}
+
+void Ccs::calcRegimeRun()
+{
+  if (parameters.get(CCS_RGM_RUN_PUSH_MODE) != Regime::OffAction) {
+    parameters.set(CCS_RUNNING_TYPE, Regime::PushRegimeRun);
+    return;
+  }
+  if (parameters.get(CCS_RGM_RUN_SWING_MODE) != Regime::OffAction) {
+    parameters.set(CCS_RUNNING_TYPE, Regime::SwingRegimeRun);
+    return;
+  }
+  parameters.set(CCS_RUNNING_TYPE, Regime::SmoothRegimeRun);
+  return;
 }
 
 void Ccs::controlPower()
