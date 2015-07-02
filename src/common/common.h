@@ -163,6 +163,8 @@ uint32_t getTimeToEnd(uint32_t period, uint32_t time);
  */
 float copySign(float value, float sign);
 
+int convert_utf8_to_windows1251(const char* utf8, char* windows1251, size_t n);
+
 #endif
 
 #endif // COMMON_H

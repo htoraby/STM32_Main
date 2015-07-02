@@ -5,8 +5,7 @@
 #include "user_main.h"
 
 #define LOG_DIR USB_DISK ":ksu_log"
-#define DEBUG_LOG_FILE LOG_DIR "\\debug.log"
-#define MAIN_LOG_FILE LOG_DIR "\\main.log"
+#define FILE_MASK "М-е%d куст%d скв%d(%d).%s"
 
 #if USE_EXT_MEM
 static uint8_t bufData[4096] __attribute__((section(".extmem")));
@@ -41,7 +40,7 @@ void logInit()
 
   logDebug.init();
 
-  // Запись в журнал "Включение питания"
+  // Р—Р°РїРёСЃСЊ РІ Р¶СѓСЂРЅР°Р» "Р’РєР»СЋС‡РµРЅРёРµ РїРёС‚Р°РЅРёСЏ"
   logEvent.add(PowerCode, AutoType, PowerOnId);
 
   semaphoreId_ = osSemaphoreCreate(NULL, 1);
@@ -84,8 +83,54 @@ StatusType logDebugRead(uint32_t address, uint8_t *data, uint32_t size)
 void logStartSave()
 {
   parameters.set(CCS_PROGRESS_VALUE, 0);
+  parameters.set(CCS_PROGRESS_MAX, 0);
   parameters.set(CCS_PROGRESS_MAX, (EndAddrDebugLog + EndAddrTmsLog)/1024);
   osSemaphoreRelease(semaphoreId_);
+}
+
+static void getFilePath(char *path, const char *suffix)
+{
+  FRESULT result;
+  FILINFO fileInfo;
+  DIR dir;
+  char *fn;
+#if _USE_LFN
+  static char lfn[_MAX_LFN + 1];
+  fileInfo.lfname = lfn;
+  fileInfo.lfsize = sizeof(lfn);
+#endif
+  char *fileName = new char[_MAX_LFN + 1];
+
+  int cdng = parameters.get(CCS_NUMBER_CDNG);
+  int bush = parameters.get(CCS_NUMBER_BUSH);
+  int well = parameters.get(CCS_NUMBER_WELL);
+  int count = 0;
+  sprintf(fileName, FILE_MASK, cdng, bush, well, count, suffix);
+  convert_utf8_to_windows1251(fileName, fileName, _MAX_LFN + 1);
+
+  result = f_opendir(&dir, path);
+  if (result == FR_OK) {
+    while (1) {
+      result = f_readdir(&dir, &fileInfo);
+      if (result != FR_OK || fileInfo.fname[0] == 0)
+        break;
+#if _USE_LFN
+      fn = *fileInfo.lfname ? fileInfo.lfname : fileInfo.fname;
+#else
+      fileName = fileInfo.fname;
+#endif
+      if (!strcmp(fn, fileName)) {
+        count++;
+        sprintf(fileName, FILE_MASK, cdng, bush, well, count, suffix);
+        convert_utf8_to_windows1251(fileName, fileName, _MAX_LFN + 1);
+      }
+    }
+  }
+
+  strcat(path, "\\");
+  strcat(path, fileName);
+
+  delete[] fileName;
 }
 
 void logSaveTask(void *argument)
@@ -93,8 +138,7 @@ void logSaveTask(void *argument)
   (void)argument;
   FATFS fatfs;
   FRESULT result;
-  FIL debugFile;
-  FIL mainFile;
+  FIL file;
   UINT bytesWritten;
 
   while (1) {
@@ -129,13 +173,16 @@ void logSaveTask(void *argument)
       continue;
     }
 
-    f_unlink(DEBUG_LOG_FILE);
-    f_unlink(MAIN_LOG_FILE);
-
     result = f_mkdir(LOG_DIR);
     if ((result == FR_OK) || (result == FR_EXIST)) {
       time = HAL_GetTick();
-      if (f_open(&debugFile, DEBUG_LOG_FILE, FA_CREATE_ALWAYS | FA_WRITE) == FR_OK) {
+
+      char *logPath = new char[_MAX_LFN + 1];
+
+      strcpy(logPath, LOG_DIR);
+      getFilePath(logPath, "dlog");
+
+      if (f_open(&file, logPath, FA_CREATE_ALWAYS | FA_WRITE) == FR_OK) {
         uint32_t addr = 0;
         uint32_t size = 4096;
         uint32_t count = 0;
@@ -145,7 +192,7 @@ void logSaveTask(void *argument)
           if (status == StatusError)
             asm("nop");
 
-          result = f_write(&debugFile, &bufData[0], size, &bytesWritten);
+          result = f_write(&file, &bufData[0], size, &bytesWritten);
           if ((result != FR_OK) || (size != bytesWritten))
             asm("nop");
 
@@ -159,12 +206,16 @@ void logSaveTask(void *argument)
             break;
         }
 
-        result = f_close(&debugFile);
+        result = f_close(&file);
         if (result != FR_OK)
           asm("nop");
       }
 
-      if (f_open(&mainFile, MAIN_LOG_FILE, FA_CREATE_ALWAYS | FA_WRITE) == FR_OK) {
+      strcpy(logPath, LOG_DIR);
+      getFilePath(logPath, "log");
+
+      int t = f_open(&file, logPath, FA_CREATE_ALWAYS | FA_WRITE);
+      if (t == FR_OK) {
         uint32_t addr = 0;
         uint32_t size = 4096;
         bytesWritten = 0;
@@ -175,7 +226,7 @@ void logSaveTask(void *argument)
           if (status == StatusError)
             asm("nop");
 
-          result = f_write(&mainFile, &bufData[0], size, &bytesWritten);
+          result = f_write(&file, &bufData[0], size, &bytesWritten);
           if ((result != FR_OK) || (size != bytesWritten))
             asm("nop");
 
@@ -189,10 +240,13 @@ void logSaveTask(void *argument)
             break;
         }
 
-        result = f_close(&mainFile);
+        result = f_close(&file);
         if (result != FR_OK)
           asm("nop");
       }
+
+      delete[] logPath;
+
       time = HAL_GetTick() - time;
       asm("nop");
     }
