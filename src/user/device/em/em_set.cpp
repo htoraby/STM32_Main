@@ -2,6 +2,8 @@
 #include "user_main.h"
 #include <string.h>
 
+#define EM_COUNTER_LOST_CONNECT 5
+
 static void emSetTask(void *p)
 {
   (static_cast<EmSet*>(p))->task();
@@ -41,7 +43,10 @@ void EmSet::task()
 
 bool EmSet::isConnect()
 {
-  return false;
+  if (failCounter_ > EM_COUNTER_LOST_CONNECT)
+    return false;
+  else
+    return true;
 }
 
 void EmSet::sendRequest()

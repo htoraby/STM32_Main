@@ -213,7 +213,7 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
   uint8_t units = getFieldPhysic(index);
 
   setFieldValue(index, value);  
-  setFieldValidity(index, (value == 0xFFFF) ? err_r : ok_r);
+  setFieldValidity(index, isnan(value) ? VALIDITY_ERROR : VALIDITY_OK);
 
   // Сообщить контроллеру визуализации об обновлении параметра
   if (value != oldValue) {
@@ -234,6 +234,7 @@ uint8_t Device::setValue(uint16_t id, uint32_t value, EventType eventType)
   uint8_t units = getFieldPhysic(index);
 
   setFieldValue(index, value);
+  setFieldValidity(index, (value == 0xFFFFFFFF) ? VALIDITY_ERROR : VALIDITY_OK);
 
   // Сообщить контроллеру визуализации об обновлении параметра
   if (value != oldValue) {

@@ -70,8 +70,12 @@ float Parameters::get(unsigned short id)
     return vsd->getValue(id);
   if ((id > TMS_BEGIN) && (id < TMS_END))
     return tms->getValue(id);
-  if ((id > EM_BEGIN) && (id < EM_END))
-    return em->getValue(id);
+  if ((id > EM_BEGIN) && (id < EM_END)) {
+    if (em->isConnect())
+      return em->getValue(id);
+    else
+      return NAN;
+  }
 
   return 0;
 }

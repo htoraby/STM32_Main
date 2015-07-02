@@ -423,7 +423,7 @@ void TmsNovomet::getNewValue(uint16_t id)
   ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtId(id));
 
   if (param->validity == err_r) {
-    value = 0xFFFF;
+    value = NAN;
     setValue(id, value);
     return;
   }
