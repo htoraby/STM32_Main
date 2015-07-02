@@ -212,7 +212,8 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
   EventCode code = getFieldCode(index);
   uint8_t units = getFieldPhysic(index);
 
-  setFieldValue(index, value);
+  setFieldValue(index, value);  
+  setFieldValidity(index, (value == 0xFFFF) ? err_r : ok_r);
 
   // Сообщить контроллеру визуализации об обновлении параметра
   if (value != oldValue) {
