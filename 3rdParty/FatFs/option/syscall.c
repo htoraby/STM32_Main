@@ -101,7 +101,12 @@ void* ff_memalloc (	/* Returns pointer to the allocated memory block */
 	UINT size		/* Number of bytes to allocate */
 )
 {
-  return malloc(size);
+  void *p = pvPortMalloc(size);
+  if (p == NULL) {
+    // Error: память не выделена
+    asm("nop");
+  }
+  return p;
 }
 
 
@@ -113,7 +118,7 @@ void ff_memfree(
 	void* mblock	/* Pointer to the memory block to free */
 )
 {
-  free(mblock);
+  vPortFree(mblock);
 }
 
 #endif

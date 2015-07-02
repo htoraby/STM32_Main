@@ -43,6 +43,7 @@
 /* Private define ------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 extern Disk_drvTypeDef  disk;
+extern RTC_HandleTypeDef hrtc;
 
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
@@ -129,9 +130,19 @@ DRESULT disk_ioctl(BYTE pdrv, BYTE cmd, void *buff)
   * @param  None
   * @retval Time in DWORD
   */
-DWORD get_fattime (void)
+DWORD get_fattime(void)
 {
-  return 0;
+  RTC_TimeTypeDef timeRtc;
+  HAL_RTC_GetTime(&hrtc, &timeRtc, FORMAT_BIN);
+  RTC_DateTypeDef dateRtc;
+  HAL_RTC_GetDate(&hrtc, &dateRtc, FORMAT_BIN);
+
+  return ((DWORD)(dateRtc.Year + 2000 - 1980) << 25)
+      | ((DWORD)(dateRtc.Month) << 21)
+      | ((DWORD)dateRtc.Date << 16)
+      | ((DWORD)timeRtc.Hours << 11)
+      | ((DWORD)timeRtc.Minutes << 5)
+      | ((DWORD)timeRtc.Seconds >> 1);
 }
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
