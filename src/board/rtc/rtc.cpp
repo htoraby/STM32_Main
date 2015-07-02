@@ -86,7 +86,7 @@ void rtcSetTime(const time_t *time)
 
   RTC_DateTypeDef dateRtc;
   dateRtc.Date = dateTime->tm_mday;
-  dateRtc.Month = dateTime->tm_mon;
+  dateRtc.Month = dateTime->tm_mon + 1;
   dateRtc.Year = dateTime->tm_year - 100;
   dateRtc.WeekDay = RTC_WEEKDAY_MONDAY;
   HAL_RTC_SetDate(&hrtc, &dateRtc, FORMAT_BIN);
@@ -104,11 +104,12 @@ time_t rtcGetTime()
   RTC_DateTypeDef dateRtc;
   HAL_RTC_GetDate(&hrtc, &dateRtc, FORMAT_BIN);
   dateTime.tm_mday = dateRtc.Date;
-  dateTime.tm_mon = dateRtc.Month;
+  dateTime.tm_mon = dateRtc.Month - 1;
   dateTime.tm_year = dateRtc.Year + 100;
-  if((dateTime.tm_mday == 0) || (dateTime.tm_mon == 0)) {
-    dateTime.tm_mday = dateTime.tm_mon = 1;
-  }
+  if(dateTime.tm_mday == 0)
+    dateTime.tm_mday = 1;
+  if(dateTime.tm_mon < 0)
+    dateTime.tm_mon = 0;
 
   return mktime(&dateTime);
 }
