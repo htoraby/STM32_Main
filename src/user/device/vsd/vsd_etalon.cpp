@@ -490,7 +490,7 @@ void VsdEtalon::convertBitVsdStatus(float value)
   setBitVsdStatus(VSD_STATUS_FC_I2T_ERR, false);
   setBitVsdStatus(VSD_STATUS_OVERHEAT_FILTER, false);
   setBitVsdStatus(VSD_STATUS_STOPPED_ALARM, false);
-  setBitVsdStatus(VSD_FLT_DRV0, false);
+  setBitVsdStatus(VSD_STATUS_DRV0, false);
   setBitVsdStatus(VSD_STATUS_MONOMETR, false);
   setBitVsdStatus(VSD_STATUS_AI_0, false);
   setBitVsdStatus(VSD_THYR_ABC_STATE, false);
@@ -499,11 +499,11 @@ void VsdEtalon::convertBitVsdStatus(float value)
   setBitVsdStatus(VSD_STATUS_PRESSURE, false);
   setBitVsdStatus(VSD_STATUS_FAULT_STOPPED, false);
   setBitVsdStatus(VSD_STATUS_I_LIMIT, false);
-  setBitVsdStatus(VSD_FLT_CLK_MON, false);
-  setBitVsdStatus(VSD_FLT_CTR_MON, false);
-  setBitVsdStatus(VSD_FLT_AN_MON, false);
-  setBitVsdStatus(VSD_FLT_MB_MON, false);
-  setBitVsdStatus(VSD_FLT_CLK_MON, false);
+  setBitVsdStatus(VSD_STATUS_CLK_MON, false);
+  setBitVsdStatus(VSD_STATUS_CTR_MON, false);
+  setBitVsdStatus(VSD_STATUS_AN_MON, false);
+  setBitVsdStatus(VSD_STATUS_MB_MON, false);
+  setBitVsdStatus(VSD_STATUS_CLK_MON, false);
   switch ((uint16_t)value) {
   case VSD_ETALON_INFO_READY:             // VSD_STATUS_READY
     setBitVsdStatus(VSD_STATUS_READY, true);
@@ -542,7 +542,7 @@ void VsdEtalon::convertBitVsdStatus(float value)
     setBitVsdStatus(VSD_STATUS_STOPPED_ALARM, true);
     break;
   case VSD_ETALON_INFO_SUPPLY_DRIVERS:    // VSD_FLT_DRV0
-    setBitVsdStatus(VSD_FLT_DRV0, true);
+    setBitVsdStatus(VSD_STATUS_DRV0, true);
     break;
   case VSD_ETALON_INFO_MONOMETR:          // VSD_STATUS_MONOMETR
     setBitVsdStatus(VSD_STATUS_MONOMETR, true);
@@ -566,7 +566,7 @@ void VsdEtalon::convertBitVsdStatus(float value)
     setBitVsdStatus(VSD_STATUS_FAULT_STOPPED, true);
     break;
   case VSD_ETALON_INFO_IMBALANCE_CURRENT: // VSD_FLT_IZ
-    setBitVsdStatus(VSD_FLT_IZ, true);
+    setBitVsdStatus(VSD_STATUS_IZ, true);
     break;
   case VSD_ETALON_INFO_IMBALANCE_VOLTAGE: // VSD_STATUS_UIN_ASYM
     setBitVsdStatus(VSD_STATUS_UIN_ASYM, true);
@@ -609,25 +609,25 @@ void VsdEtalon::convertBitVsdStatus(float value)
     break;
   case VSD_ETALON_INFO_RESTART_COUNT:
     break;
-  case VSD_ETALON_INFO_MEMORY:            // VSD_FLT_CLK_MON
-    setBitVsdStatus(VSD_FLT_CLK_MON, true);
+  case VSD_ETALON_INFO_MEMORY:            // VSD_STATUS_CLK_MON
+    setBitVsdStatus(VSD_STATUS_CLK_MON, true);
     break;
   case VSD_ETALON_INFO_41:
     break;
-  case VSD_ETALON_INFO_DI:                // VSD_FLT_CTR_MON
-    setBitVsdStatus(VSD_FLT_CTR_MON, true);
+  case VSD_ETALON_INFO_DI:                // VSD_STATUS_CTR_MON
+    setBitVsdStatus(VSD_STATUS_CTR_MON, true);
     break;
-  case VSD_ETALON_INFO_ADC:               // VSD_FLT_AN_MON
-    setBitVsdStatus(VSD_FLT_AN_MON, true);
+  case VSD_ETALON_INFO_ADC:               // VSD_STATUS_AN_MON
+    setBitVsdStatus(VSD_STATUS_AN_MON, true);
     break;
-  case VSD_ETALON_INFO_ANALOG_SUPPLY:     // VSD_FLT_AN_MON
-    setBitVsdStatus(VSD_FLT_AN_MON, true);
+  case VSD_ETALON_INFO_ANALOG_SUPPLY:     // VSD_STATUS_AN_MON
+    setBitVsdStatus(VSD_STATUS_AN_MON, true);
     break;
-  case VSD_ETALON_INFO_SENSOR_SUPPLY:     // VSD_FLT_MB_MON
-    setBitVsdStatus(VSD_FLT_MB_MON, true);
+  case VSD_ETALON_INFO_SENSOR_SUPPLY:     // VSD_STATUS_MB_MON
+    setBitVsdStatus(VSD_STATUS_MB_MON, true);
     break;
-  case VSD_ETALON_INFO_EEPROM:            // VSD_FLT_CLK_MON
-    setBitVsdStatus(VSD_FLT_CLK_MON, true);
+  case VSD_ETALON_INFO_EEPROM:            // VSD_STATUS_CLK_MON
+    setBitVsdStatus(VSD_STATUS_CLK_MON, true);
     break;
   case VSD_ETALON_INFO_NOT_READY:
     break;

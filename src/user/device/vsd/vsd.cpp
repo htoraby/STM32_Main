@@ -210,7 +210,7 @@ bool Vsd::checkVsdStatus(uint8_t bit)
     return checkBit(getValue(VSD_INVERTOR_STATUS), bit);
   if ((bit >= VSD_STATUS_FC_I2T_ERR) && (bit < VSD_STATUS_3))
     return checkBit(getValue(VSD_INVERTOR_STATUS2), bit - 16);
-  if ((bit >= VSD_FLT_IMAX) && (bit < VSD_FLT_TEST))
+  if ((bit >= VSD_STATUS_IMAX) && (bit < VSD_STATUS_TEST))
     return checkBit(getValue(VSD_INV_FAULT), bit - 32);
   if ((bit >= VSD_THYR_ABC_STATE) && (bit < VSD_THYR_ERR_SHORTCIRQUIT))
     return checkBit(getValue(VSD_THYR_CONTROL), bit - 48);
@@ -226,7 +226,7 @@ bool Vsd::setBitVsdStatus(uint8_t bit, bool flag)
     setValue(VSD_INVERTOR_STATUS, setBit(getValue(VSD_INVERTOR_STATUS), bit, flag));
   if ((bit >= VSD_STATUS_FC_I2T_ERR) && (bit < VSD_STATUS_3))
     setValue(VSD_INVERTOR_STATUS2, setBit(getValue(VSD_INVERTOR_STATUS2), bit - 16, flag));
-  if ((bit >= VSD_FLT_IMAX) && (bit < VSD_FLT_TEST))
+  if ((bit >= VSD_STATUS_IMAX) && (bit < VSD_STATUS_TEST))
     setValue(VSD_INV_FAULT, setBit(getValue(VSD_INV_FAULT), bit - 32, flag));
   if ((bit >= VSD_THYR_ABC_STATE) && (bit < VSD_THYR_ERR_SHORTCIRQUIT))
     setValue(VSD_INV_FAULT, setBit(getValue(VSD_THYR_CONTROL), bit - 48, flag));

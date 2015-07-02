@@ -88,7 +88,6 @@ typedef enum {
   HardwareVsdUndervoltageProtReactId,       //!< "Сработала защита: Аппаратная защита ЧРП, низкое напряжение"
   HardwareVsdOvervoltageProtReactId,        //!< "Сработала защита: Аппаратная защита ЧРП, высокое напряжение"
   HardwareVsdRunCountProtReactId,           //!< "Сработала защита: Аппаратная защита ЧРП, прев. кол-во пусков"
-  HardwareVsdOverheatIGBTProtReactId,       //!< "Сработала защита: Аппаратная защита ЧРП, перегрев IGBT"
   HardwareVsdOverheatFilterProtReactId,     //!< "Сработала защита: Аппаратная защита ЧРП, перегрев фильтра"
   HardwareVsdInfoProtReactId,               //!< "Сработала защита: Аппаратная защита ЧРП, защита ЧРП"
   HardwareVsdSupplyDriversProtReactId,      //!< "Сработала защита: Аппаратная защита ЧРП, питание драйверов"
