@@ -66,6 +66,98 @@ bool ProtectionHardwareVsd::checkAlarm()
     protReactEventId_ = HardwareVsdVcProtReactId;
     return true;
   }
+  if (vsd->checkVsdStatus(VSD_STATUS_I_LIMIT)) {
+    protReactEventId_ = HardwareVsdCurrentLimitReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_UNDERLOAD)) {
+    protReactEventId_ = HardwareVsdUndervoltageProtReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_RESISTANCE)) {
+    protReactEventId_ = HardwareVsdResistanceProtReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_OVERVOLTAGE)) {
+    protReactEventId_ = HardwareVsdOvervoltageProtReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_UNDERVOLTAGE)) {
+    protReactEventId_ = HardwareVsdUndervoltageProtReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_RUN_COUNT)) {
+    protReactEventId_ = HardwareVsdRunCountProtReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_OVERHEAT_FILTER)) {
+    protReactEventId_ = HardwareVsdOverheatFilterProtReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_DRV0)) {
+    protReactEventId_ = HardwareVsdSupplyDriversProtReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_DRV1)) {
+    protReactEventId_ = HardwareVsdSupplyDriversProtReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_DRV2)) {
+    protReactEventId_ = HardwareVsdSupplyDriversProtReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_MONOMETR)) {
+    protReactEventId_ = HardwareVsdMonometrProtReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_AI_0)) {
+    protReactEventId_ = HardwareVsdAI0ProtReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_THYR_ABC_STATE)) {
+    protReactEventId_ = HardwareVsdSequencePhaseReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_OVERHEAT_MOTOR)) {
+    protReactEventId_ = HardwareVsdOverheatMotorReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_OVERVIBRATION)) {
+    protReactEventId_ = HardwareVsdOvervibrationReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_PRESSURE)) {
+    protReactEventId_ = HardwareVsdPressureReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_FAULT_STOPPED)) {
+    protReactEventId_ = HardwareVsd19ReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_IZ)) {
+    protReactEventId_ = HardwareVsdImbalanceCurrentReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_CLK_MON)) {
+    protReactEventId_ = HardwareVsdMemoryReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_CTR_MON)) {
+    protReactEventId_ = HardwareVsdDIReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_AN_MON)) {
+    protReactEventId_ = HardwareVsdADCReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_MB_MON)) {
+    protReactEventId_ = HardwareVsdSensorSupplyReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_CLK_MON)) {
+    protReactEventId_ = HardwareVsdEepromReactId;
+    return true;
+  }
   return false;
 }
 
