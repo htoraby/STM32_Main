@@ -328,6 +328,11 @@ public:
   void calcRegimeChangeFreqPeriodOneStep();
 
   /*!
+   * \brief calcRegimeRun
+   */
+  void calcRegimeRun();
+
+  /*!
    * \brief Контроль питания и отключение ИБП по таймауту
    */
   void controlPower();
