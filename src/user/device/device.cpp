@@ -215,8 +215,8 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
   setFieldValue(index, value);  
   setFieldValidity(index, isnan(value) ? VALIDITY_ERROR : VALIDITY_OK);
 
-  // Сообщить контроллеру визуализации об обновлении параметра
-  if (value != oldValue) {
+  if ((value != oldValue) && !(isnan(value) && isnan(oldValue))) {
+    // Сообщить контроллеру визуализации об обновлении параметра
     novobusSlave.putMessageParams(id);
     // Формирование сообщения в архив событий об изменении параметра
     if (code && (eventType != NoneType))
@@ -236,8 +236,8 @@ uint8_t Device::setValue(uint16_t id, uint32_t value, EventType eventType)
   setFieldValue(index, value);
   setFieldValidity(index, (value == 0xFFFFFFFF) ? VALIDITY_ERROR : VALIDITY_OK);
 
-  // Сообщить контроллеру визуализации об обновлении параметра
   if (value != oldValue) {
+    // Сообщить контроллеру визуализации об обновлении параметра
     novobusSlave.putMessageParams(id);
     // Формирование сообщения в архив событий об изменении параметра
     if (code && (eventType != NoneType))
