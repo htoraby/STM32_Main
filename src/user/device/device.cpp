@@ -205,14 +205,19 @@ uint32_t Device::getValueUint32(unsigned short id, bool *ok)
 
 uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
 {
-  //TODO: Добавить проверки на корректность записываемых данных
-
   uint16_t index = getIndexAtId(id);
   float oldValue = getFieldValue(index);
   EventCode code = getFieldCode(index);
   uint8_t units = getFieldPhysic(index);
 
-  setFieldValue(index, value);  
+  // Проверка на диапазон
+  float min = getFieldMinimum(index);
+  float max = getFieldMaximum(index);
+  uint8_t check = checkRange(value, min, max, true);
+  if(check != 0)
+    return check;
+
+  setFieldValue(index, value);
   setFieldValidity(index, isnan(value) ? VALIDITY_ERROR : VALIDITY_OK);
 
   if ((value != oldValue) && !(isnan(value) && isnan(oldValue))) {
@@ -222,7 +227,6 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
     if (code && (eventType != NoneType))
       logEvent.add(code, eventType, (EventId)id, oldValue, value, units);
   }
-
   return 0;
 }
 
