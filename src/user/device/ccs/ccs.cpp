@@ -65,6 +65,9 @@ void Ccs::initTask()
 
   osThreadDef(CcsMain, ccsMainTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(CcsMain), this);
+
+  rebootSemaphoreId_ = osSemaphoreCreate(NULL, 1);
+  osSemaphoreWait(rebootSemaphoreId_, 0);
 }
 
 void Ccs::mainTask()
@@ -80,6 +83,9 @@ void Ccs::mainTask()
     calcParameters();
     controlPower();
     checkConnectDevice();
+
+    if (osSemaphoreWait(rebootSemaphoreId_, 0) != osEventTimeout)
+      reboot();
   }
 }
 
@@ -1067,23 +1073,28 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       logEvent.add(AddDeviceCode, eventType, AddDeviceDhsId, oldValue, value);
     else
       logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceDhsId, oldValue, value);
+    startReboot();
     break;
   case CCS_TYPE_VSD:
     if (value)
       logEvent.add(AddDeviceCode, eventType, AddDeviceVsdId, oldValue, value);
     else
       logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceVsdId, oldValue, value);
+    startReboot();
     break;
   case CCS_EM_TYPE:
     if (value)
       logEvent.add(AddDeviceCode, eventType, AddDeviceEmId, oldValue, value);
     else
       logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceEmId, oldValue, value);
+    startReboot();
+    break;
   case CCS_FILTER_OUTPUT:
     if (value)
       logEvent.add(AddDeviceCode, eventType, AddDeviceFiltOutId, oldValue, value);
     else
       logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceFiltOutId, oldValue, value);
+    break;
   default:
     break;
   }
@@ -1353,4 +1364,17 @@ void Ccs::cmdCountersAllReset()
   setValue(CCS_PROT_OVERLOAD_COUNT_RESTART, 0.0);
   setValue(CCS_PROT_UNDERLOAD_COUNT_RESTART, 0.0);
   setValue(CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART, 0.0);
+}
+
+void Ccs::startReboot()
+{
+  parameters.startSave();
+  logEvent.add(PowerCode, AutoType, PowerOffId);
+  osSemaphoreRelease(rebootSemaphoreId_);
+}
+
+void Ccs::reboot()
+{
+  osDelay(500);
+  HAL_NVIC_SystemReset();
 }

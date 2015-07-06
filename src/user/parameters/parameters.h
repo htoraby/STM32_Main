@@ -28,6 +28,11 @@ public:
   void startSave();
 
   /*!
+   * \brief Сохранение параметров из ОЗУ в Flash
+   */
+  void save();
+
+  /*!
    * \brief Чтение параметров из Flash в ОЗУ
    */
   void read();
@@ -85,10 +90,7 @@ public:
   uint8_t getPhysic(unsigned short id);
 
 private:
-  /*!
-   * \brief Сохранение параметров из ОЗУ в Flash
-   */
-  void save();
+
 
   //! Идентификатор семафора
   osSemaphoreId semaphoreId_;

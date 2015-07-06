@@ -350,6 +350,11 @@ public:
    */
   void checkConnectDevice();
 
+  /*!
+   * \brief Функция начала перезагрузки
+   */
+  void startReboot();
+
 private:
   /*!
    * \brief Метод добавления в очередь событий включения/мигания LED
@@ -420,6 +425,11 @@ private:
    */
   void calcTime();
 
+  /*!
+   * \brief Перезагрузка софта контроллера
+   */
+  void reboot();
+
   //! Массив параметров устройства
   parameter parametersArray_[CCS_END - CCS_BEGIN];
 
@@ -439,6 +449,10 @@ private:
 
   //! Таймер задержки проверки подключения устройств
   int checkConnectDeviceTimer_;
+
+  //! Идентификатор семафора
+  osSemaphoreId rebootSemaphoreId_;
+
 
 };
 

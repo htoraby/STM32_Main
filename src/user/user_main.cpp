@@ -5,18 +5,17 @@
 Parameters parameters;
 NovobusSlave novobusSlave;
 Ccs ksu;
-Vsd *vsd;
-Tms *tms;
-Em *em;
+Vsd *vsd = 0;
+Tms *tms = 0;
+Em *em = 0;
 
 void userInit()
 {
   ksu.init();
 
-//  vsd = new VsdNovomet();
-  vsd = new VsdEtalon();
-  tms = new TmsNovomet();
-  em = new EmSet();
+  createVsd();
+  createDhs();
+  createEm();
 
   parameters.init();
   novobusSlave.init();
@@ -30,4 +29,55 @@ void userInit()
 
   protectionInit();
   regimeInit();
+}
+
+void createVsd()
+{
+  if (vsd)
+    delete vsd;
+
+  uint8_t type = parameters.get(CCS_TYPE_VSD);
+  switch (type) {
+  case VSD_TYPE_NOVOMET:
+    vsd = new VsdNovomet();
+    break;
+  case VSD_TYPE_ETALON:
+    vsd = new VsdEtalon();
+    break;
+  default:
+    vsd = new Vsd();
+    break;
+  }
+}
+
+void createDhs()
+{
+  if (tms)
+    delete tms;
+
+  uint8_t type = parameters.get(CCS_DHS_TYPE);
+  switch (type) {
+  case TYPE_DHS_NOVOMET:
+    tms = new TmsNovomet();
+    break;
+  default:
+    tms = new Tms();
+    break;
+  }
+}
+
+void createEm()
+{
+  if (em)
+    delete em;
+
+  uint8_t type = parameters.get(CCS_EM_TYPE);
+  switch (type) {
+  case 1:
+    em = new EmSet();
+    break;
+  default:
+    em = new Em();
+    break;
+  }
 }

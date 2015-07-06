@@ -22,5 +22,8 @@ extern Em *em;
  * \brief Инициализация пользовательских задач и объектов
  */
 void userInit();
+void createVsd();
+void createDhs();
+void createEm();
 
 #endif // USER_MAIN_H
