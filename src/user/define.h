@@ -182,30 +182,19 @@ enum enCableCross {
  * Перечисление типов ТМС
  */
 enum enTypeDHS {
-  /// Новомет
-  TYPE_DHS_NOVOMET,
-  /// Алмаз
-  TYPE_DHS_ALMAZ,
-  /// Борец
-  TYPE_DHS_BORETS,
-  /// Электон
-  TYPE_DHS_ELEKTON,
-  /// Эталон
-  TYPE_DHS_ETALON,
-  /// Ирз
-  TYPE_DHS_IRZ,
-  /// Орион
-  TYPE_DHS_ORION,
-  /// Шлюмберже
-  TYPE_DHS_PIC_V2,
-  /// Скад
-  TYPE_DHS_SCAD,
-  /// Скан
-  TYPE_DHS_SCAN,
-  /// Триол
-  TYPE_DHS_TRIOL,
-  /// Зенит
-  TYPE_DHS_ZENIT
+  TYPE_DHS_NONE,                            //!< Не подключен
+  TYPE_DHS_NOVOMET,                         //!< Новомет
+  TYPE_DHS_ALMAZ,                           //!< Алмаз
+  TYPE_DHS_BORETS,                          //!< Борец
+  TYPE_DHS_ELEKTON,                         //!< Электон
+  TYPE_DHS_ETALON,                          //!< Эталон
+  TYPE_DHS_IRZ,                             //!< Ирз
+  TYPE_DHS_ORION,                           //!< Орион
+  TYPE_DHS_PIC_V2,                          //!< Шлюмберже
+  TYPE_DHS_SCAD,                            //!< Скад
+  TYPE_DHS_SCAN,                            //!< Скан
+  TYPE_DHS_TRIOL,                           //!< Триол
+  TYPE_DHS_ZENIT                            //!< Зенит
 };
 
 /*!
