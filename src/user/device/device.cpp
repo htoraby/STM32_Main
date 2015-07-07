@@ -183,9 +183,9 @@ unsigned short Device::getIndexAtId(unsigned short id)
     if (getFieldId(id - startAddrParams_) == id)
       return (id - startAddrParams_);
   }
-
-  // TODO: Предупреждение о не найденом параметре
-
+  char message[30];
+  sprintf(message, "Не найден параметра %d", id);
+  logDebug.add(WarningMsg, message);
   return 0;
 }
 
@@ -266,6 +266,11 @@ void Device::resetValue(uint16_t id)
 uint8_t Device::getPhysic(unsigned short id)
 {
   return getFieldPhysic(getIndexAtId(id));
+}
+
+uint8_t Device::getValidity(unsigned short id)
+{
+  return getFieldValidity(getIndexAtId(id));
 }
 
 void Device::updateValueTask()
