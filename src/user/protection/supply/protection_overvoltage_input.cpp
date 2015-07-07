@@ -71,25 +71,31 @@ float ProtectionOverVoltageInput::calcValue()
 
   value = max(max(value, value2), value3);
 
-  float nominal = parameters.get(CCS_TRANS_NOMINAL_VOLTAGE);
-  return (value / (nominal / 100.0));
+  float nominal = NOM_VOLTAGE;
+  if  (parameters.getValidity(CCS_TRANS_NOMINAL_VOLTAGE) == ok_r) {
+    nominal = parameters.get(CCS_TRANS_NOMINAL_VOLTAGE);
+  }
+
+  return (value / ((nominal / SQRT_3) / 100.0));
 }
 
 bool ProtectionOverVoltageInput::isProtect()
 {
   if (parameters.get(CCS_EM_TYPE) == EM_TYPE_NONE) {
-    if ((parameters.getValidity(CCS_VOLTAGE_PHASE_1) == ok_r) ||
-        (parameters.getValidity(CCS_VOLTAGE_PHASE_2) == ok_r) ||
-        (parameters.getValidity(CCS_VOLTAGE_PHASE_3) == ok_r)) {
-        return true;
+    if (((parameters.getValidity(CCS_VOLTAGE_PHASE_1) == ok_r) ||
+         (parameters.getValidity(CCS_VOLTAGE_PHASE_2) == ok_r) ||
+         (parameters.getValidity(CCS_VOLTAGE_PHASE_3) == ok_r))&&
+         (parameters.getValidity(CCS_TRANS_NOMINAL_VOLTAGE) == ok_r)) {
+         return true;
     }
   }
   else {
     if (em->isConnect()) {
-      if ((parameters.getValidity(CCS_VOLTAGE_PHASE_1) == ok_r) ||
-          (parameters.getValidity(CCS_VOLTAGE_PHASE_2) == ok_r) ||
-          (parameters.getValidity(CCS_VOLTAGE_PHASE_3) == ok_r)) {
-          return true;
+      if (((parameters.getValidity(CCS_VOLTAGE_PHASE_1) == ok_r) ||
+           (parameters.getValidity(CCS_VOLTAGE_PHASE_2) == ok_r) ||
+           (parameters.getValidity(CCS_VOLTAGE_PHASE_3) == ok_r))&&
+           (parameters.getValidity(CCS_TRANS_NOMINAL_VOLTAGE) == ok_r)) {
+           return true;
       }
     }
   }
