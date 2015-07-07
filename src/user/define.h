@@ -444,6 +444,14 @@ enum enVsdType {
   VSD_TYPE_ETALON                           //!< ЧРП Эталон
 };
 
+/*!
+ * \brief Список счётчиков электроэнергии поддерживаемых в ПО
+ */
+enum enEmType {
+  EM_TYPE_NONE = 0,                         //!< Неизвестный или отсутствует
+  EM_TYPE_SET4TM,                           //!< СЭТ-4ТМ03
+};
+
 #define NUM_PI 3.14159265358979323846
 
 #endif /* DEFINE_H_ */
