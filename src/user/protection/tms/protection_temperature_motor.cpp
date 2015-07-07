@@ -50,3 +50,12 @@ float ProtectionTemperatureMotor::calcValue()
 {
   return parameters.get(TMS_TEMPERATURE_WINDING);
 }
+
+bool ProtectionTemperatureMotor::isProtect()
+{
+  if (parameters.get(CCS_DHS_TYPE) != TYPE_DHS_NONE)
+    if (tms->isConnect())
+      if (parameters.getValidity(TMS_TEMPERATURE_WINDING) == ok_r)
+        return true;
+  return false;
+}
