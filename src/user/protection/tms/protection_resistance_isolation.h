@@ -19,6 +19,8 @@ private:
   bool checkPrevent();
   float calcValue();
 
+  bool isProtect();
+
 };
 
 #endif // PROTECTIONRESISTANCEISOLATION_H
