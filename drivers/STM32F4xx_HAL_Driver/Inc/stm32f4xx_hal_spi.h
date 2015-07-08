@@ -99,7 +99,7 @@ typedef struct
                                     This parameter can be a value of @ref SPI_CRC_Calculation */
 
   uint32_t CRCPolynomial;      /*!< Specifies the polynomial used for the CRC calculation.
-                                    This parameter must be a number between Min_Data = 0 and Max_Data = 65535 */
+                                    This parameter must be a number between Min_Data = 1 and Max_Data = 65535 */
 
 }SPI_InitTypeDef;
 

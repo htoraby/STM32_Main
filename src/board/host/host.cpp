@@ -35,6 +35,7 @@ void hostInit()
   hspi4.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi4.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi4.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  hspi4.Init.CRCPolynomial = 0xFFFF;
   HAL_SPI_Init(&hspi4);
 
   /* Peripheral DMA init*/

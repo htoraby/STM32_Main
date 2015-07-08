@@ -72,6 +72,7 @@ void adcExtInit()
   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  hspi2.Init.CRCPolynomial = 0xFFFF;
   HAL_SPI_Init(&hspi2);
 
   /* Peripheral DMA init*/
