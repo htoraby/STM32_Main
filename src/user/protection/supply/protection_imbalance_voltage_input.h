@@ -20,6 +20,7 @@ private:
   bool checkPrevent();
   float calcValue();
 
+  bool isProtect();
 };
 
 #endif // PROTECTIONIMBALANCEVOLTAGEINPUT_H

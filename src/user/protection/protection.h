@@ -130,6 +130,12 @@ public:
   bool isModeOn();
 
   /*!
+   * \brief Функция проверки что защита должна работать
+   * \return
+   */
+  virtual bool isProtect();
+
+  /*!
    * \brief Функция перевода автомата защиты в состояние стоп
    */
   void setStateStop();

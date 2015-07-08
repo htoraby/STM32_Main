@@ -139,3 +139,17 @@ uint8_t Parameters::getPhysic(unsigned short id)
 
   return 0;
 }
+
+uint8_t Parameters::getValidity(unsigned short id)
+{
+  if ((id > CCS_BEGIN) && (id < CCS_END))
+    return ksu.getValidity(id);
+  if ((id > VSD_BEGIN) && (id < VSD_END))
+    return vsd->getValidity(id);
+  if ((id > TMS_BEGIN) && (id < TMS_END))
+    return tms->getValidity(id);
+  if ((id > EM_BEGIN) && (id < EM_END))
+    return em->getValidity(id);
+
+  return err_r;
+}

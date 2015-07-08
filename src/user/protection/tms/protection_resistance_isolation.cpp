@@ -52,3 +52,18 @@ float ProtectionResistanceIsolation::calcValue()
 {
   return parameters.get(CCS_RESISTANCE_ISOLATION);
 }
+
+bool ProtectionResistanceIsolation::isProtect()
+{
+  if (parameters.get(CCS_DHS_TYPE) == TYPE_DHS_NONE) {
+    if (parameters.getValidity(CCS_RESISTANCE_ISOLATION) == ok_r) {
+      return true;
+    }
+  }
+  else {
+    if (tms->isConnect())
+      if (parameters.getValidity(CCS_RESISTANCE_ISOLATION) == ok_r)
+        return true;
+  }
+  return false;
+}

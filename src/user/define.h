@@ -182,30 +182,19 @@ enum enCableCross {
  * Перечисление типов ТМС
  */
 enum enTypeDHS {
-  /// Новомет
-  TYPE_DHS_NOVOMET,
-  /// Алмаз
-  TYPE_DHS_ALMAZ,
-  /// Борец
-  TYPE_DHS_BORETS,
-  /// Электон
-  TYPE_DHS_ELEKTON,
-  /// Эталон
-  TYPE_DHS_ETALON,
-  /// Ирз
-  TYPE_DHS_IRZ,
-  /// Орион
-  TYPE_DHS_ORION,
-  /// Шлюмберже
-  TYPE_DHS_PIC_V2,
-  /// Скад
-  TYPE_DHS_SCAD,
-  /// Скан
-  TYPE_DHS_SCAN,
-  /// Триол
-  TYPE_DHS_TRIOL,
-  /// Зенит
-  TYPE_DHS_ZENIT
+  TYPE_DHS_NONE,                            //!< Не подключен
+  TYPE_DHS_NOVOMET,                         //!< Новомет
+  TYPE_DHS_ALMAZ,                           //!< Алмаз
+  TYPE_DHS_BORETS,                          //!< Борец
+  TYPE_DHS_ELEKTON,                         //!< Электон
+  TYPE_DHS_ETALON,                          //!< Эталон
+  TYPE_DHS_IRZ,                             //!< Ирз
+  TYPE_DHS_ORION,                           //!< Орион
+  TYPE_DHS_PIC_V2,                          //!< Шлюмберже
+  TYPE_DHS_SCAD,                            //!< Скад
+  TYPE_DHS_SCAN,                            //!< Скан
+  TYPE_DHS_TRIOL,                           //!< Триол
+  TYPE_DHS_ZENIT                            //!< Зенит
 };
 
 /*!
@@ -453,6 +442,14 @@ enum enVsdType {
   VSD_TYPE_NOVOMET,                         //!< ЧРП Новомет
   VSD_TYPE_DANFOSS,                         //!< ЧРП Danfoss
   VSD_TYPE_ETALON                           //!< ЧРП Эталон
+};
+
+/*!
+ * \brief Список счётчиков электроэнергии поддерживаемых в ПО
+ */
+enum enEmType {
+  EM_TYPE_NONE = 0,                         //!< Неизвестный или отсутствует
+  EM_TYPE_SET4TM,                           //!< СЭТ-4ТМ03
 };
 
 #define NUM_PI 3.14159265358979323846

@@ -89,6 +89,8 @@ public:
    */
   uint8_t getPhysic(unsigned short id);
 
+  uint8_t getValidity(unsigned short id);
+
 private:
 
 

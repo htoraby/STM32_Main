@@ -42,3 +42,8 @@ int Tms::setUnitTemperature(float unit)
   return setValue(TMS_TEMPERATURE_UNIT, unit);
 }
 
+bool Tms::isConnect()
+{
+  return false;
+}
+

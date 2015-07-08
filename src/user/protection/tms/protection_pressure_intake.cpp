@@ -58,3 +58,12 @@ float ProtectionPressureIntake::calcValue()
 {
   return parameters.get(TMS_PRESSURE_INTAKE);
 }
+
+bool ProtectionPressureIntake::isProtect()
+{
+  if (parameters.get(CCS_DHS_TYPE) != TYPE_DHS_NONE)
+    if (tms->isConnect())
+      if (parameters.getValidity(TMS_PRESSURE_INTAKE) == ok_r)
+        return true;
+  return false;
+}

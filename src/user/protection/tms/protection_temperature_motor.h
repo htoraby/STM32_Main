@@ -18,6 +18,8 @@ private:
   bool checkPrevent();
   float calcValue();
 
+  bool isProtect();
+
 };
 
 #endif // PROTECTIONTEMPERATUREMOTOR_H

@@ -61,6 +61,8 @@ public:
   int setUnitPressure(float unit);
   int setUnitTemperature(float unit);
 
+  bool isConnect();
+
 private:
   ModbusParameter modbusParameters_[21];
   DeviceModbus *dm_;

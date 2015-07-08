@@ -514,3 +514,8 @@ int TmsNovomet::setUnitTemperature(float unit)
     return ok_r;
   }
 }
+
+bool TmsNovomet::isConnect()
+{
+  return dm_->isConnect();
+}

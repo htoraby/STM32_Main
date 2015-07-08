@@ -21,7 +21,7 @@ void Protection::processing()
   getGeneralSetpointProt();                 // Получаем уставки защиты
   getOtherSetpointProt();
   getCurrentParamProt();                    // Получаем текущие параметры защиты
-  if (!isModeOff()) {
+  if (!isModeOff() && isProtect()) {
     alarm_ = checkAlarm();                  // Определяем выполняется ли условие срабатывания защиты
     prevent_ = checkPrevent();              // Определяем есть ли запрещаюший параметр
   }
@@ -48,11 +48,6 @@ void Protection::getGeneralSetpointProt()
   restartSetpoint_= ksu.getValue(idRestartSetpoint_);
 }
 
-void Protection::getOtherSetpointProt()
-{
-
-}
-
 void Protection::getCurrentParamProt()
 {
   state_                = ksu.getValue(idState_);
@@ -73,6 +68,11 @@ void Protection::setCurrentParamProt()
 }
 
 void Protection::setOtherParamProt()
+{
+
+}
+
+void Protection::getOtherSetpointProt()
 {
 
 }
@@ -134,6 +134,11 @@ bool Protection::isModeOff()
     return true;
   else
     return false;
+}
+
+bool Protection::isProtect()
+{
+  return false;
 }
 
 bool Protection::isModeBlock()

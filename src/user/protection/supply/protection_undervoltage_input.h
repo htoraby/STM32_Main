@@ -20,6 +20,7 @@ private:
   bool checkPrevent();
   float calcValue();
 
+  bool isProtect();
 };
 
 #endif // PROTECTIONUNDERVOLTAGEINPUT_H

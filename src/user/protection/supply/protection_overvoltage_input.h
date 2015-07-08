@@ -19,6 +19,7 @@ private:
   bool checkPrevent();
   float calcValue();
 
+  bool isProtect();
 };
 
 #endif // PROTECTIONOVERVOLTAGEINPUT_H

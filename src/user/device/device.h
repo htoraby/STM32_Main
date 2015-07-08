@@ -163,6 +163,8 @@ public:
    */
   uint8_t getPhysic(unsigned short id);
 
+  uint8_t getValidity(unsigned short id);
+
   /*!
    * \brief Сохранение массива параметров на Flash
    */
@@ -178,8 +180,6 @@ public:
    * \return
    */
   virtual bool isConnect();
-
-
 
 protected:
 
