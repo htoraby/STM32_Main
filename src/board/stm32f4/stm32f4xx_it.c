@@ -39,9 +39,12 @@
 #include "adc.h"
 
 /* External variables --------------------------------------------------------*/
- 
+
 extern void xPortSysTickHandler(void);
 extern void hostRxIRQHandler(void);
+
+extern void vMBPort_TIM_IRQHandler(void);
+extern void vMBPort_USART_IRQHandler(void);
 
 extern HCD_HandleTypeDef hhcd_USB_OTG_FS;
 extern uint8_t isBoardInit;
@@ -124,7 +127,7 @@ void DMA2_Stream3_IRQHandler(void)
 }
 
 /**
-* @brief This function handles USB On The Go FS global interrupt.
+* @brief This function handles USB On The Go FS global interrupt
 */
 void OTG_FS_IRQHandler(void)
 {
@@ -134,32 +137,58 @@ void OTG_FS_IRQHandler(void)
 
 void USART1_IRQHandler(void)
 {
-  HAL_UART_IRQHandler(&uarts[uart1].uart);
+  if (SCADA_UART == uart1)
+    vMBPort_USART_IRQHandler();
+  else
+    HAL_UART_IRQHandler(&uarts[uart1].uart);
 }
 
 void USART2_IRQHandler(void)
 {
-  HAL_UART_IRQHandler(&uarts[uart2].uart);
+  if (SCADA_UART == uart2)
+    vMBPort_USART_IRQHandler();
+  else
+    HAL_UART_IRQHandler(&uarts[uart2].uart);
 }
 
 void USART3_IRQHandler(void)
 {
-  HAL_UART_IRQHandler(&uarts[uart3].uart);
+  if (SCADA_UART == uart3)
+    vMBPort_USART_IRQHandler();
+  else
+    HAL_UART_IRQHandler(&uarts[uart3].uart);
 }
 
 void USART6_IRQHandler(void)
 {
-  HAL_UART_IRQHandler(&uarts[uart6].uart);
+  if (SCADA_UART == uart6)
+    vMBPort_USART_IRQHandler();
+  else
+    HAL_UART_IRQHandler(&uarts[uart6].uart);
 }
 
 void UART4_IRQHandler(void)
 {
-  HAL_UART_IRQHandler(&uarts[uart4].uart);
+  if (SCADA_UART == uart4)
+    vMBPort_USART_IRQHandler();
+  else
+    HAL_UART_IRQHandler(&uarts[uart4].uart);
 }
 
 void UART7_IRQHandler(void)
 {
-  HAL_UART_IRQHandler(&uarts[uart7].uart);
+  if (SCADA_UART == uart7)
+    vMBPort_USART_IRQHandler();
+  else
+    HAL_UART_IRQHandler(&uarts[uart7].uart);
+}
+
+/*!
+ * \brief This function handles TIM interrupt request
+ */
+void TIM2_IRQHandler(void)
+{
+  vMBPort_TIM_IRQHandler();
 }
 
 /**

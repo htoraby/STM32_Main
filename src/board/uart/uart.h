@@ -56,14 +56,6 @@ HAL_StatusTypeDef uartClose(uartNum num);
 osSemaphoreId uartGetSemaphoreId(uartNum num);
 
 /*!
- \brief Получение номера порта UART по указателю
-
- \param huart    - Указатель на порт UART
- \return uartNum - номер порта
-*/
-uartNum uartGetNum(UART_HandleTypeDef *huart);
-
-/*!
  \brief Получение количества принятых байт
 
  \param num  - номер порта (@ref uartNum)
@@ -90,7 +82,29 @@ int uartReadData(uartNum num, uint8_t *data);
 */
 uint8_t uartWriteData(uartNum num, uint8_t *data, int count,
                          uint32_t timeout = 100);
+#endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+/*!
+ \brief Получение номера порта UART по указателю
+
+ \param huart    - Указатель на порт UART
+ \return uartNum - номер порта
+*/
+uint8_t uartGetNum(UART_HandleTypeDef *huart);
+
+/*!
+ \brief Управление выводом RTS порта UART
+
+ \param num - номер порта (@ref uartNum)
+ \param value - значение на выходе 0 или 1
+*/
+void uartSetRts(uint8_t num, GPIO_PinState value);
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif // UART_H

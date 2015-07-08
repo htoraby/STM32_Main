@@ -8,6 +8,7 @@ Ccs ksu;
 Vsd *vsd = 0;
 Tms *tms = 0;
 Em *em = 0;
+Scada *scada = 0;
 
 void userInit()
 {
@@ -29,6 +30,8 @@ void userInit()
 
   protectionInit();
   regimeInit();
+
+  createScada();
 }
 
 void createVsd()
@@ -78,6 +81,22 @@ void createEm()
     break;
   default:
     em = new Em();
+    break;
+  }
+}
+
+void createScada()
+{
+  if (scada)
+    delete scada;
+
+  uint8_t type = parameters.get(CCS_SCADA_TYPE);
+  switch (type) {
+  case Scada::Region30Type:
+    scada = new Scada();
+    break;
+  default:
+    scada = new Scada();
     break;
   }
 }

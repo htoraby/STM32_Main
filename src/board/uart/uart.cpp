@@ -4,7 +4,6 @@
 #include "string.h"
 
 UART_Def uarts[uartMax];
-static void uartSetRts(uartNum num, GPIO_PinState value);
 
 StatusType uartInit(uartNum num, uint32_t baudRate, uint32_t parity, uint32_t stopBits)
 {
@@ -272,7 +271,7 @@ osSemaphoreId uartGetSemaphoreId(uartNum num)
   return uarts[num].semaphoreId;
 }
 
-inline uartNum uartGetNum(UART_HandleTypeDef *huart)
+uint8_t uartGetNum(UART_HandleTypeDef *huart)
 {
   if (huart->Instance == USART2) {
     return uart2;
@@ -341,13 +340,7 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
   (void)huart;
 }
 
-/*!
- \brief Управление выводом RTS порта UART
-
- \param num - номер порта (@ref uartNum)
- \param value - значение на выходе 0 или 1
-*/
-static void uartSetRts(uartNum num, GPIO_PinState value)
+void uartSetRts(uint8_t num, GPIO_PinState value)
 {
   if (num == uart2) {
     HAL_GPIO_WritePin(GPIOH, GPIO_PIN_5, value);

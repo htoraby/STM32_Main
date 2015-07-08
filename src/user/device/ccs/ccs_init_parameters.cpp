@@ -6368,7 +6368,7 @@ void Ccs::initParameters()
   parameters_[CCS_SCADA_TYPE - CCS_BEGIN].validity                               = VALIDITY_OK;
   parameters_[CCS_SCADA_TYPE - CCS_BEGIN].value.float_t                          = 0.0;
   parameters_[CCS_SCADA_TYPE - CCS_BEGIN].min                                    = 0.0;
-  parameters_[CCS_SCADA_TYPE - CCS_BEGIN].max                                    = 1.0;
+  parameters_[CCS_SCADA_TYPE - CCS_BEGIN].max                                    = 2.0;
   parameters_[CCS_SCADA_TYPE - CCS_BEGIN].def                                    = 0.0;
   parameters_[CCS_SCADA_TYPE - CCS_BEGIN].code                                   = 13;
   // Версия протокола телемеханики
@@ -6412,8 +6412,8 @@ void Ccs::initParameters()
   parameters_[CCS_SCADA_PARITY - CCS_BEGIN].validity                             = VALIDITY_OK;
   parameters_[CCS_SCADA_PARITY - CCS_BEGIN].value.float_t                        = 0;
   parameters_[CCS_SCADA_PARITY - CCS_BEGIN].min                                  = 0.0;
-  parameters_[CCS_SCADA_PARITY - CCS_BEGIN].max                                  = 10000000.0;
-  parameters_[CCS_SCADA_PARITY - CCS_BEGIN].def                                  = 0;
+  parameters_[CCS_SCADA_PARITY - CCS_BEGIN].max                                  = 2.0;
+  parameters_[CCS_SCADA_PARITY - CCS_BEGIN].def                                  = 0.0;
   parameters_[CCS_SCADA_PARITY - CCS_BEGIN].code                                 = 13;
   // Количество стоп-бит в телемеханике
   parameters_[CCS_SCADA_STOPBIT - CCS_BEGIN].id                                  = CCS_SCADA_STOPBIT;
@@ -6422,9 +6422,9 @@ void Ccs::initParameters()
   parameters_[CCS_SCADA_STOPBIT - CCS_BEGIN].physic                              = PHYSIC_NUMERIC;
   parameters_[CCS_SCADA_STOPBIT - CCS_BEGIN].validity                            = VALIDITY_OK;
   parameters_[CCS_SCADA_STOPBIT - CCS_BEGIN].value.float_t                       = 0;
-  parameters_[CCS_SCADA_STOPBIT - CCS_BEGIN].min                                 = 0.0;
-  parameters_[CCS_SCADA_STOPBIT - CCS_BEGIN].max                                 = 10000000.0;
-  parameters_[CCS_SCADA_STOPBIT - CCS_BEGIN].def                                 = 0;
+  parameters_[CCS_SCADA_STOPBIT - CCS_BEGIN].min                                 = 1.0;
+  parameters_[CCS_SCADA_STOPBIT - CCS_BEGIN].max                                 = 2.0;
+  parameters_[CCS_SCADA_STOPBIT - CCS_BEGIN].def                                 = 1.0;
   parameters_[CCS_SCADA_STOPBIT - CCS_BEGIN].code                                = 13;
   // Задержка ответа в телемеханкие
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].id                                    = CCS_SCADA_DELAY;
@@ -6435,7 +6435,7 @@ void Ccs::initParameters()
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].value.float_t                         = 0;
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].min                                   = 0.0;
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].max                                   = 10000000.0;
-  parameters_[CCS_SCADA_DELAY - CCS_BEGIN].def                                   = 0;
+  parameters_[CCS_SCADA_DELAY - CCS_BEGIN].def                                   = 0.0;
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].code                                  = 13;
   // Единицы измерения давления
   parameters_[CCS_UNIT_PRESSURE - CCS_BEGIN].id                                  = CCS_UNIT_PRESSURE;

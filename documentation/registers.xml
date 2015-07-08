@@ -9375,7 +9375,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>1.0</max>
+		<max>2.0</max>
 		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
@@ -9386,7 +9386,7 @@
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>TEXT</format>
 		<code>13</code>
-		<values>0-Откл;1-Новомет</values>
+		<values>0-Откл;1-Новомет;2-Регион 3.0;</values>
 		<comment>Протокол телемеханики</comment>
 	</param>
 	<param>
@@ -9453,7 +9453,8 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000000.0</max>
+		<max>2.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
 		<text>Телемеханика. Проверка чётности</text>
 		<short_text>Четность</short_text>
@@ -9470,8 +9471,9 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<min>1.0</min>
+		<max>2.0</max>
+		<def>1.0</def>
 		<valid>VALIDITY_OK</valid>
 		<text>Телемеханика. Количество стоп-бит</text>
 		<short_text>Стоп-бит</short_text>
@@ -9490,6 +9492,7 @@
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
+		<def>0.0</def>
 		<valid>VALIDITY_OK</valid>
 		<text>Телемеханика. Задержка ответа</text>
 		<short_text>Задержка ответа</short_text>

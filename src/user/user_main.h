@@ -8,6 +8,7 @@
 #include "vsd_etalon.h"
 #include "tms_novomet.h"
 #include "em_set.h"
+#include "scada.h"
 #include "parameters.h"
 #include "novobus_slave.h"
 
@@ -17,6 +18,7 @@ extern Ccs ksu;
 extern Vsd *vsd;
 extern Tms *tms;
 extern Em *em;
+extern Scada *scada;
 
 /*!
  * \brief Инициализация пользовательских задач и объектов
@@ -25,5 +27,6 @@ void userInit();
 void createVsd();
 void createDhs();
 void createEm();
+void createScada();
 
 #endif // USER_MAIN_H
