@@ -453,5 +453,7 @@ enum enEmType {
 };
 
 #define NUM_PI 3.14159265358979323846
+#define SQRT_3 1.73205080756887
+#define NOM_VOLTAGE 380
 
 #endif /* DEFINE_H_ */
