@@ -6,6 +6,8 @@
 #include "fram.h"
 #include "log_idlist.h"
 
+#define SIZE_BUF_LOG 256
+
 /*!
  * \brief Тип журнала
 */
@@ -140,7 +142,7 @@ protected:
   /*!
    * \brief Буфер для формирования записи журнала
    */
-  uint8_t buffer[256];
+  uint8_t buffer[SIZE_BUF_LOG];
 
   TypeLog type_;
 

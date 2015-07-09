@@ -504,7 +504,7 @@ static void testLog()
   }
 
   logRead(StartAddrEventLog, bufferRx, 20*4);
-  logDebugRead(StartAddrDebugLog, bufferRx, 256*4);
+  logDebugRead(StartAddrDebugLog, bufferRx, SIZE_BUF_LOG*4);
   asm("nop");
 #endif
 }

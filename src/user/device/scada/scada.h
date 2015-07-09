@@ -2,8 +2,27 @@
 #define SCADA_H
 
 #include "board.h"
+#include "define.h"
 #include "mb.h"
 #include "mbport.h"
+
+//! Структура для хранения полей параметра из карты Скады
+struct ScadaParameter
+{
+  int id;              //!< Уникальный идентификатор параметра
+  int address;         //!< Адрес регистра в Скаде
+  int operation;       //!< Операции с параметром
+  int physic;          //!< Физическая величина параметра
+  int unit;            //!< Единицы измерения параметра
+  int typeData;        //!< Тип данных
+  float coefficient;   //!< Коэффициент преобразования параметра
+  float min;           //!< Минимальное значение параметра
+  float max;           //!< Максимально значение параметра
+  float def;           //!< Значение по умолчанию
+  int command;         //!< Команда читать или писать
+  int validity;        //!< Флаг получено ли значение параметра
+  unTypeData value;    //!< Значение, записываемое или считанное
+};
 
 class Scada
 {

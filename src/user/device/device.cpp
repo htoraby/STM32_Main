@@ -183,7 +183,7 @@ unsigned short Device::getIndexAtId(unsigned short id)
     if (getFieldId(id - startAddrParams_) == id)
       return (id - startAddrParams_);
   }
-  char message[50];
+  char message[SIZE_MSG_DEBUG];
   sprintf(message, "Не найден параметра %d", id);
   logDebug.add(WarningMsg, message);
   return 0;

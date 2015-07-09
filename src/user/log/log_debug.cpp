@@ -23,11 +23,11 @@ uint32_t LogDebug::add(MsgType type, const char* msg)
   *(uint8_t*)(buffer+8) = type;
 
   int size = strlen((char*)msg);
-  if (size > (256 - 9))
-    size = 256 - 9;
+  if (size > SIZE_MSG_DEBUG)
+    size = SIZE_MSG_DEBUG;
   memcpy(&buffer[9], msg, size);
 
-  write(buffer, 256);
+  write(buffer, SIZE_BUF_LOG);
 
   return idDebug_;
 }

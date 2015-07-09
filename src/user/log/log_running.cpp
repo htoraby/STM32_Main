@@ -69,7 +69,7 @@ void LogRunning::add()
   memset(buffer, 0, sizeof(buffer));
   *(uint32_t*)(buffer) = eventId_;
   *(float*)(buffer+4) = parameters.get(CCS_RESISTANCE_ISOLATION);
-  write(buffer, 256);
+  write(buffer, SIZE_BUF_LOG);
 
   for (int i = 0; i < ADC_POINTS_NUM/8; ++i) {
     memset(buffer, 0, sizeof(buffer));
@@ -85,9 +85,9 @@ void LogRunning::add()
       *(float*)(buffer+28+j*32) = uValue[2 + j*3 + i*24];
     }
     if (i == (ADC_POINTS_NUM/8 - 1))
-      write(buffer, 256, false, true);
+      write(buffer, SIZE_BUF_LOG, false, true);
     else
-      write(buffer, 256, false);
+      write(buffer, SIZE_BUF_LOG, false);
   }
 }
 

@@ -3,6 +3,8 @@
 
 #include "log.h"
 
+#define SIZE_MSG_DEBUG SIZE_BUF_LOG - 9
+
 /*!
  * \brief Список типов отладочных сообщений
 */
