@@ -168,7 +168,7 @@ void Ccs::vsdConditionTask()
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
       }
       else {
-        char message[30];
+        char message[50];
         sprintf(message, "Ошибка останова");
         logDebug.add(WarningMsg, message);
       }
@@ -194,7 +194,7 @@ void Ccs::vsdConditionTask()
       if (vsd->start() == ok_r) {
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
       } else {
-        char message[30];
+        char message[50];
         sprintf(message, "Ошибка запуска");
         logDebug.add(WarningMsg, message);
       }
