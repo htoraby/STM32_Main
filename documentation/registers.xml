@@ -9386,7 +9386,7 @@
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>TEXT</format>
 		<code>13</code>
-		<values>0-Откл;1-Новомет;2-Регион 3.0;</values>
+		<values>0-Откл;1-Новомет;2-Регион 3.0</values>
 		<comment>Протокол телемеханики</comment>
 	</param>
 	<param>
@@ -9443,7 +9443,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
-		<values>3-9600;4-19200;5-38400;6-57600;7-115200</values>
+		<values>1200;2400;4800;9600;19200;38400;57600;115200</values>
 		<comment>Скорость опроса в телемеханике</comment>
 	</param>
 	<param>
@@ -9462,7 +9462,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
-		<values>0-No patity;1-Even;2-Odd;3-Mark;4-Space</values>
+		<values>0-None;1-Odd;2-Even</values>
 		<comment>Чётность в телемеханике</comment>
 	</param>
 	<param>
@@ -9481,7 +9481,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
-		<values>0-1;1-1,5;2-2</values>
+		<values>1;2</values>
 		<comment>Количество стоп-бит в телемеханике</comment>
 	</param>
 	<param>
