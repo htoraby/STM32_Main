@@ -15,8 +15,8 @@ float units[PHYSIC_LAST][6][2] =
    {1.0, 0.0},
    {1.0, 0.0}},
   {{1.0, 0.0},         //PHYSIC_TIME -> TIME_SS
-   {0.000001, 0.0},    //PHYSIC_TIME -> TIME_US
-   {0.001, 0.0},       //PHYSIC_TIME -> TIME_MS
+   {1000000.0, 0.0},   //PHYSIC_TIME -> TIME_US
+   {1000.0, 0.0},      //PHYSIC_TIME -> TIME_MS
    {1.0, 0.0},
    {1.0, 0.0},
    {1.0, 0.0}},
