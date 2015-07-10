@@ -19,10 +19,10 @@ static void deviceUpdateValueTask(void *p)
   (static_cast<Device*>(p))->updateValueTask();
 }
 
-Device::Device(uint32_t startAddrParams, parameter *parameters, uint16_t countParameter)
+Device::Device(uint32_t startAddrParams, parameter *parameters, uint16_t countParameters)
   : startAddrParams_(startAddrParams)
   , parameters_(parameters)
-  , countParameter_(countParameter)
+  , countParameters_(countParameters)
 {
 
 }
@@ -179,7 +179,7 @@ float Device::applyUnit(float value, int physic, int unit)
 
 unsigned short Device::getIndexAtId(unsigned short id)
 {
-  if ((id >= startAddrParams_) && (id < (startAddrParams_ + countParameter_))) {
+  if ((id >= startAddrParams_) && (id < (startAddrParams_ + countParameters_))) {
     if (getFieldId(id - startAddrParams_) == id)
       return (id - startAddrParams_);
   }
@@ -315,13 +315,13 @@ StatusType Device::saveParameters()
   // Проверка на завершение работы DMA
   framReadData(startAddrParams_*4, (uint8_t *)buffer, 1*4);
 
-  for (int i = 0; i < countParameter_; ++i) {
+  for (int i = 0; i < countParameters_; ++i) {
     buffer[i] = parameters_[i].value.float_t;
   }
 
   StatusType status = framWriteData(startAddrParams_*4,
                                     (uint8_t *)buffer,
-                                    countParameter_*4);
+                                    countParameters_*4);
   if (status == StatusError)
     asm("nop");
   return status;
@@ -331,11 +331,11 @@ StatusType Device::readParameters()
 {
   StatusType status = framReadData(startAddrParams_*4,
                                    (uint8_t *)buffer,
-                                   countParameter_*4);
+                                   countParameters_*4);
   if (status == StatusError)
     asm("nop");
 
-  for (int i = 0; i < countParameter_; ++i) {
+  for (int i = 0; i < countParameters_; ++i) {
     parameters_[i].value.float_t = buffer[i];
   }
 

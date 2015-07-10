@@ -359,7 +359,7 @@ protected:
   //! Указатель на массив параметров устройства
   parameter *parameters_;
   //! Количество параметров в массиве
-  uint16_t countParameter_;
+  uint16_t countParameters_;
 
 private:
 
