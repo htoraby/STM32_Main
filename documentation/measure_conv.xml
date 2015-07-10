@@ -21,13 +21,13 @@
 	<param>
 		<midIn>PHYSIC_TIME</midIn>
 		<midOut>TIME_US</midOut>
-		<a>0.000001</a>
+		<a>1000000</a>
 		<b>0</b>
 	</param>
 	<param>
 		<midIn>PHYSIC_TIME</midIn>
 		<midOut>TIME_MS</midOut>
-		<a>0.001</a>
+		<a>1000</a>
 		<b>0</b>
 	</param>
 	<param>
