@@ -91,9 +91,25 @@ public:
 
   uint8_t getValidity(unsigned short id);
 
+  /*!
+   * \brief Конвертация значения из формата STM
+   * \param value
+   * \param physic
+   * \param unit
+   * \return
+   */
+  float convertFrom(float value, int physic, int unit);
+
+  /*!
+   * \brief Конвертация значения в формат STM
+   * \param value
+   * \param physic
+   * \param unit
+   * \return
+   */
+  float convertTo(float value, int physic, int unit);
+
 private:
-
-
   //! Идентификатор семафора
   osSemaphoreId semaphoreId_;
 

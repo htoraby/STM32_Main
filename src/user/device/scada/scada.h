@@ -3,24 +3,26 @@
 
 #include "board.h"
 #include "define.h"
+#include "idslist.h"
+#include "units.h"
+#include "log.h"
+
 #include "mb.h"
 #include "mbport.h"
 
 //! Структура для хранения полей параметра из карты Скады
 struct ScadaParameter
 {
-  int id;              //!< Уникальный идентификатор параметра
-  int address;         //!< Адрес регистра в Скаде
-  int operation;       //!< Операции с параметром
-  int physic;          //!< Физическая величина параметра
-  int unit;            //!< Единицы измерения параметра
-  int typeData;        //!< Тип данных
+  uint16_t id;         //!< Уникальный идентификатор параметра
+  uint16_t address;    //!< Адрес регистра в Скаде
+  uint8_t operation;   //!< Операции с параметром
+  uint8_t physic;      //!< Физическая величина параметра
+  uint8_t unit;        //!< Единицы измерения параметра
+  uint8_t typeData;    //!< Тип данных
   float coefficient;   //!< Коэффициент преобразования параметра
   float min;           //!< Минимальное значение параметра
-  float max;           //!< Максимально значение параметра
-  float def;           //!< Значение по умолчанию
-  int command;         //!< Команда читать или писать
-  int validity;        //!< Флаг получено ли значение параметра
+  float max;           //!< Максимальное значение параметра
+  uint8_t command;     //!< Команда читать или писать
   unTypeData value;    //!< Значение, записываемое или считанное
 };
 
@@ -46,6 +48,12 @@ public:
   eMBErrorCode writeCoils(uint8_t *buffer, uint16_t address, uint16_t numCoils);
 
   float delay() const { return delay_; }
+
+protected:
+  //! Указатель на массив параметров Скады
+  ScadaParameter *scadaParameter_;
+  //! Количество параметров в массиве
+  uint16_t countParameters_;
 
 private:
   //! Идентификатор задачи опроса MB

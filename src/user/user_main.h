@@ -8,7 +8,7 @@
 #include "vsd_etalon.h"
 #include "tms_novomet.h"
 #include "em_set.h"
-#include "scada.h"
+#include "scada_region_3_0.h"
 #include "parameters.h"
 #include "novobus_slave.h"
 

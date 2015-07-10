@@ -153,3 +153,17 @@ uint8_t Parameters::getValidity(unsigned short id)
 
   return err_r;
 }
+
+float Parameters::convertFrom(float value, int physic, int unit)
+{
+  if (unit >= 6)
+    unit = 0;
+  return (value * units[physic][unit][0] + units[physic][unit][1]);
+}
+
+float Parameters::convertTo(float value, int physic, int unit)
+{
+  if (unit >= 6)
+    unit = 0;
+  return (value - (units[physic][unit][1]))/(units[physic][unit][0]);
+}

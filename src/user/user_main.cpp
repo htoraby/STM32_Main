@@ -93,10 +93,9 @@ void createScada()
   uint8_t type = parameters.get(CCS_SCADA_TYPE);
   switch (type) {
   case Scada::Region30Type:
-    scada = new Scada();
+    scada = new ScadaRegion30();
     break;
   default:
-    scada = new Scada();
     break;
   }
 }

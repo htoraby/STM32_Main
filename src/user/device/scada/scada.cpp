@@ -1,8 +1,11 @@
 #include "scada.h"
 #include "user_main.h"
 
-static uint16_t buf[1000];
-static uint16_t usRegHoldingStart = 1;
+#if USE_EXT_MEM
+static ScadaParameter scadaParameter[1000] __attribute__((section(".extmem")));
+#else
+static ScadaParameter scadaParameter[1000];
+#endif
 
 static void scadaTask(void *p)
 {
@@ -11,6 +14,7 @@ static void scadaTask(void *p)
 
 Scada::Scada()
 {
+  scadaParameter_ = scadaParameter;
   osThreadDef(ScadaTask, scadaTask, osPriorityLow, 0, 4*configMINIMAL_STACK_SIZE);
   mbThreadId_ = osThreadCreate(osThread(ScadaTask), this);
 }
@@ -29,6 +33,7 @@ void Scada::task()
   uint32_t baudRate = parameters.get(CCS_SCADA_BYTERATE);
   eMBParity parity = (eMBParity)parameters.get(CCS_SCADA_PARITY);
   delay_ = parameters.get(CCS_SCADA_DELAY);
+  delay_ = parameters.convertFrom(delay_, PHYSIC_TIME, TIME_MS);
 
   eMBInit(MB_RTU, address, SCADA_UART, baudRate,  parity);
   eMBEnable();
@@ -42,13 +47,13 @@ eMBErrorCode Scada::readReg(uint8_t *buffer, uint16_t address, uint16_t numRegs)
   eMBErrorCode status = MB_ENOERR;
   // TODO: Проверка адреса регистра
 
-  int iRegIndex = address - usRegHoldingStart;
-  while (numRegs > 0) {
-    *buffer++ = (UCHAR)(buf[iRegIndex] >> 8);
-    *buffer++ = (UCHAR)(buf[iRegIndex] & 0xFF);
-    iRegIndex++;
-    numRegs--;
-  }
+//  int iRegIndex = address - usRegHoldingStart;
+//  while (numRegs > 0) {
+//    *buffer++ = (UCHAR)(buf[iRegIndex] >> 8);
+//    *buffer++ = (UCHAR)(buf[iRegIndex] & 0xFF);
+//    iRegIndex++;
+//    numRegs--;
+//  }
 
   return status;
 }
@@ -58,13 +63,13 @@ eMBErrorCode Scada::writeReg(uint8_t *buffer, uint16_t address, uint16_t numRegs
   eMBErrorCode status = MB_ENOERR;
   // TODO: Проверка адреса регистра
 
-  int iRegIndex = address - usRegHoldingStart;
-  while (numRegs > 0) {
-    buf[iRegIndex] = *buffer++ << 8;
-    buf[iRegIndex] |= *buffer++;
-    iRegIndex++;
-    numRegs--;
-  }
+//  int iRegIndex = address - usRegHoldingStart;
+//  while (numRegs > 0) {
+//    buf[iRegIndex] = *buffer++ << 8;
+//    buf[iRegIndex] |= *buffer++;
+//    iRegIndex++;
+//    numRegs--;
+//  }
 //      unTypeData data;
 //      data.char_t[3] = buf[1] >> 8;
 //      data.char_t[2] = buf[1] & 0xFF;
