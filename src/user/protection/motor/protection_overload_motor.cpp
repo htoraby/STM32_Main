@@ -57,12 +57,25 @@ bool ProtectionOverloadMotor::checkAlarm()
 
 float ProtectionOverloadMotor::calcValue()
 {
-  float value = parameters.get(CCS_MOTOR_CURRENT_PHASE_1);
-  float value2 = parameters.get(CCS_MOTOR_CURRENT_PHASE_2);
-  float value3 = parameters.get(CCS_MOTOR_CURRENT_PHASE_3);
+  float value = 0;
+  if (parameters.getValidity(CCS_MOTOR_CURRENT_PHASE_1) == ok_r) {
+    value = parameters.get(CCS_MOTOR_CURRENT_PHASE_1);
+  }
+  float value2 = 0;
+  if (parameters.getValidity(CCS_MOTOR_CURRENT_PHASE_2) == ok_r) {
+    value = parameters.get(CCS_MOTOR_CURRENT_PHASE_2);
+  }
+  float value3 = 0;
+  if (parameters.getValidity(CCS_MOTOR_CURRENT_PHASE_3) == ok_r) {
+    value = parameters.get(CCS_MOTOR_CURRENT_PHASE_3);
+  }
 
   value = max(max(value, value2), value3);
 
-  float nominal = parameters.get(VSD_MOTOR_CURRENT);
+  float nominal = 1;
+  if (parameters.getValidity(VSD_MOTOR_CURRENT) == ok_r) {
+    nominal = parameters.get(VSD_MOTOR_CURRENT);
+  }
+
   return (value / (nominal / 100.0));
 }
