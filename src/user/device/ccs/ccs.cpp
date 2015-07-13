@@ -969,10 +969,16 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (value != Regime::OffAction) {
       parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction); // Отключаем режим раскачки
     }
+    else {
+      vsd->offRegimePush();
+    }
     break;
   case CCS_RGM_RUN_SWING_MODE:
     if (value != Regime::OffAction) {
       parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction); // Отключаем режим раскачки
+    }
+    else {
+      vsd->offRegimeSwing();
     }
     break;
   case CCS_CMD_LOG_COPY:
