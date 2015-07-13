@@ -59,3 +59,6 @@ float ProtectionCurrentMotor::calcValue()
   float nominal = parameters.get(VSD_MOTOR_CURRENT);
   return (value / (nominal / 100.0));
 }
+
+bool ProtectionCurrentMotor::isProtect()
+{}
