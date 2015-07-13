@@ -400,8 +400,10 @@ bool Ccs::checkCanStop()
   return true;
 #endif
 
-  if (getValue(CCS_VSD_CONDITION) == VSD_CONDITION_STOP)
+  if (getValue(CCS_VSD_CONDITION) == VSD_CONDITION_STOP) {
+    setBlock();
     return false;
+  }
   return true;
 }
 
