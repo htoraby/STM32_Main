@@ -63,7 +63,7 @@ void Ccs::initTask()
   osThreadDef(VsdConditionTask, ccsVsdConditionTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(VsdConditionTask), this);
 
-  osThreadDef(CcsMain, ccsMainTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
+  osThreadDef(CcsMain, ccsMainTask, osPriorityNormal, 0, 4*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(CcsMain), this);
 
   rebootSemaphoreId_ = osSemaphoreCreate(NULL, 1);
