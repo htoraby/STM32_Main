@@ -174,7 +174,7 @@ float Device::applyCoef(float value, float coef)
 
 float Device::applyUnit(float value, int physic, int unit)
 {
-  return (value * units[physic][unit][0] + units[physic][unit][1]);
+  return (value - (units[physic][unit][1]))/(units[physic][unit][0]);
 }
 
 unsigned short Device::getIndexAtId(unsigned short id)
