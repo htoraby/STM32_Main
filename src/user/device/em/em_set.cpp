@@ -14,6 +14,7 @@ EmSet::EmSet()
   , constEm_(1250)
   , constCoefTrans_(1.0)
 {
+  initParameters();
   readParameters();
 }
 

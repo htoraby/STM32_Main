@@ -3,7 +3,7 @@
 
 Em::Em() : Device(EM_BEGIN, parametersArray_, EM_END - EM_BEGIN)
 {
-  initParameters();
+
 }
 
 Em::~Em()

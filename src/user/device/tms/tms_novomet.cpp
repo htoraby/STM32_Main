@@ -371,8 +371,7 @@ void TmsNovomet::initModbusParameters()
 
 TmsNovomet::TmsNovomet()
 {
-  initModbusParameters();                   // Инициализация modbus карты
-  readParameters();                         // Чтение параметров из памяти
+
 }
 
 TmsNovomet::~TmsNovomet()
@@ -382,11 +381,16 @@ TmsNovomet::~TmsNovomet()
 
 void TmsNovomet::init()
 {
+  initModbusParameters();                   // Инициализация modbus карты
+
   createThread("UpdateParametersTms");
   int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
   dm_ = new DeviceModbus(modbusParameters_, count,
                          TMS_UART, 9600, 8, UART_STOPBITS_1, UART_PARITY_NONE, 37);
   dm_->createThread("ProtocolTms", getValueDeviceQId_);
+
+  initParameters();
+  readParameters();                         // Чтение параметров из памяти
 }
 
 void TmsNovomet::initParameters()

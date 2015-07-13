@@ -10,7 +10,7 @@
 
 Vsd::Vsd() : Device(VSD_BEGIN, parametersArray_, VSD_END - VSD_BEGIN)
 {
-  initParameters();
+
 }
 
 Vsd::~Vsd()

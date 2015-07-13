@@ -10,8 +10,7 @@
 
 VsdEtalon::VsdEtalon()
 {
-  initModbusParameters();
-  readParameters();
+
 }
 
 VsdEtalon::~VsdEtalon()
@@ -21,6 +20,8 @@ VsdEtalon::~VsdEtalon()
 
 void VsdEtalon::init()
 {
+  initModbusParameters();
+
   // Создание задачи обновления параметров
   createThread("UpdateParametersVsd");
   // Создание объекта протокола связи с утройством
@@ -28,6 +29,9 @@ void VsdEtalon::init()
   dm_ = new DeviceModbus(modbusParameters_, count,
                          VSD_UART, 115200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1);
   dm_->createThread("ProtocolVsd", getValueDeviceQId_);
+
+  initParameters();
+  readParameters();
 }
 
 // Метод заполнения внутреннего банка параметров по карте устройства
