@@ -61,4 +61,6 @@ float ProtectionCurrentMotor::calcValue()
 }
 
 bool ProtectionCurrentMotor::isProtect()
-{}
+{
+  return true;
+}

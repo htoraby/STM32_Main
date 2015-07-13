@@ -17,6 +17,8 @@ private:
 
   bool checkAlarm();
   float calcValue();
+  bool isProtect();
+
 };
 
 #endif // PROTECTIONCURRENTMOTOR_H
