@@ -1,6 +1,6 @@
 #include "regime_main.h"
 
-#define COUNT_REGIMES 6                     //!< Количество режимов, увеличивать при добавлении нового
+#define COUNT_REGIMES 4                     //!< Количество режимов, увеличивать при добавлении нового
 
 Regime *regimes[COUNT_REGIMES];
 
@@ -15,20 +15,8 @@ void regimeInit()
 {
   regimes[0] = &regimeTechnologPeriodic;
   regimes[1] = &regimeTechnologSoftChangeFreq;
-
-  switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
-  case VSD_TYPE_NOVOMET:
-    regimes[2] = new RegimeRunNovomet;
-    regimes[3] = regimes[2];
-    break;
-  default:
-    regimes[2] = new RegimeRunPush;
-    regimes[3] = new RegimeRunSwing;
-    break;
-  }
-
-  regimes[4] = &regimeTechnologMaintenanceParam;
-  regimes[5] = &regimeTechnologAlternationFreq;
+  regimes[2] = &regimeTechnologMaintenanceParam;
+  regimes[3] = &regimeTechnologAlternationFreq;
 
   osThreadDef(RegimeTask, regimeTask, osPriorityNormal, 0, 4 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(RegimeTask), NULL);
@@ -43,7 +31,8 @@ void regimeTask(void *argument)
 
     for (int i = 0; i < COUNT_REGIMES; ++i) {
       regimes[i]->processing();
-    }
+    }  
+    vsd->processingRegimeRun();
   }
 }
 
