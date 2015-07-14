@@ -1,5 +1,5 @@
 ﻿/*
- * vsd_novomet.h
+ * vsd_etalon.h
  *
  *  Created on: 23.06.2014
  *      Author: trofimenko
@@ -10,6 +10,8 @@
 
 #include "vsd.h"
 #include "device_modbus.h"
+
+class RegimeRunEtalon;
 
 enum enInfoEtalon
 {
@@ -114,6 +116,9 @@ public:
 
   bool checkStart();
   bool checkStop();
+
+
+  void processingRegimeRun();
 
   /*!
    * \brief Функция включения толчкового режима
@@ -268,6 +273,8 @@ public:
 private:
   ModbusParameter modbusParameters_[113];
   DeviceModbus *dm_;
+
+  RegimeRunEtalon *regimeRun_;
 
   /*!
    * \brief convertBitVsdStatus

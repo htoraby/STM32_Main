@@ -7,6 +7,7 @@
 
 #include "vsd_etalon.h"
 #include "user_main.h"
+#include "regime_run_etalon.h"
 
 VsdEtalon::VsdEtalon()
 {
@@ -32,6 +33,8 @@ void VsdEtalon::init()
 
   initParameters();
   readParameters();
+
+    regimeRun_ = new RegimeRunEtalon();
 }
 
 // Метод заполнения внутреннего банка параметров по карте устройства
@@ -286,6 +289,11 @@ bool VsdEtalon::checkStop()
     return ok_r;
   }
   return false;
+}
+
+void VsdEtalon::processingRegimeRun()
+{
+  regimeRun_->processing();
 }
 
 int VsdEtalon::onRegimePush()
