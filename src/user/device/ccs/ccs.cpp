@@ -60,10 +60,10 @@ void Ccs::initTask()
   osThreadDef(LedCondition, ccsLedConditionTask, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(LedCondition), this);
 
-  osThreadDef(VsdConditionTask, ccsVsdConditionTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
+  osThreadDef(VsdConditionTask, ccsVsdConditionTask, osPriorityNormal, 0, 3*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(VsdConditionTask), this);
 
-  osThreadDef(CcsMain, ccsMainTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
+  osThreadDef(CcsMain, ccsMainTask, osPriorityNormal, 0, 4*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(CcsMain), this);
 
   rebootSemaphoreId_ = osSemaphoreCreate(NULL, 1);

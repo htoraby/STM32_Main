@@ -47,7 +47,7 @@ void Device::createThread(const char *threadName)
                      deviceUpdateValueTask,       // Указатель на функцию задачи
                      osPriorityNormal,            // Приоритет задачи
                      0,                           //
-                     2 * configMINIMAL_STACK_SIZE // Размер стека задачи
+                     4 * configMINIMAL_STACK_SIZE // Размер стека задачи
                     };
   updateValueThreadId_ = osThreadCreate(&t, this);// Создаём задачу
 }
