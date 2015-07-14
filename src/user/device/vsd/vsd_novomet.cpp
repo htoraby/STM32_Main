@@ -8,6 +8,7 @@
 #include "vsd_novomet.h"
 #include "user_main.h"
 #include "regime_main.h"
+#include "regime_run_novomet.h"
 
 VsdNovomet::VsdNovomet()
 {
@@ -33,6 +34,8 @@ void VsdNovomet::init()
 
   initParameters();
   readParameters();
+
+  regimeRun_ = new RegimeRunNovomet();
 }
 
 void VsdNovomet::initParameters()
@@ -271,6 +274,11 @@ bool VsdNovomet::checkStop()
     }
   }
   return false;
+}
+
+void VsdNovomet::processingRegimeRun()
+{
+  regimeRun_->processing();
 }
 
 int VsdNovomet::setFrequency(float value)

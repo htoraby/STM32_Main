@@ -220,6 +220,7 @@ bool Vsd::checkVsdStatus(uint8_t bit)
     return false;
 }
 
+
 bool Vsd::setBitVsdStatus(uint8_t bit, bool flag)
 {
   if (bit < VSD_STATUS_FC_I2T_ERR)
@@ -235,6 +236,11 @@ bool Vsd::setBitVsdStatus(uint8_t bit, bool flag)
   else
     return false;
   return true;
+}
+
+void Vsd::processingRegimeRun()
+{
+
 }
 
 int Vsd::onRegimePush()
