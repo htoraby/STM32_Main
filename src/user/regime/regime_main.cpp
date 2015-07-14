@@ -48,6 +48,7 @@ bool interceptionStartRegime()
   if (parameters.get(CCS_RGM_RUN_PICKUP_MODE) != Regime::OffAction) {
     switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
     case VSD_TYPE_NOVOMET:
+    case VSD_TYPE_ETALON:
       if (parameters.get(CCS_RGM_RUN_VSD_STATE) == Regime::IdleState) {
         return false;
       }
@@ -64,6 +65,7 @@ bool interceptionStartRegime()
   if (parameters.get(CCS_RGM_RUN_PUSH_MODE) != Regime::OffAction) {
     switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
     case VSD_TYPE_NOVOMET:
+    case VSD_TYPE_ETALON:
       if (parameters.get(CCS_RGM_RUN_VSD_STATE) == Regime::IdleState) {
         return false;
       }
@@ -79,6 +81,7 @@ bool interceptionStartRegime()
   if (parameters.get(CCS_RGM_RUN_SWING_MODE) != Regime::OffAction) {
     switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
     case VSD_TYPE_NOVOMET:
+    case VSD_TYPE_ETALON:
       if (parameters.get(CCS_RGM_RUN_VSD_STATE) == Regime::IdleState) {
         return false;
       }

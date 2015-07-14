@@ -27,7 +27,7 @@ float units[PHYSIC_LAST][6][2] =
    {1.0, 0.0},
    {1.0, 0.0}},
   {{1.0, 0.0},         //PHYSIC_LENGHT -> LENGTH_M
-   {1609.344, 0.0},    //PHYSIC_LENGHT -> LENGTH_MILE
+   {0.006214, 0.0},    //PHYSIC_LENGHT -> LENGTH_MILE
    {0.3048, 0.0},      //PHYSIC_LENGHT -> LENGTH_FOOT
    {1.0, 0.0},
    {1.0, 0.0},

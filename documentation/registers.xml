@@ -12231,9 +12231,9 @@
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
 		<max>1000.0</max>
-		<def>26,5</def>
+		<def>26.5</def>
 		<valid>VALIDITY_ERROR</valid>
-		<value>26,5</value>
+		<value>26.5</value>
 		<text>Номинальный ток ПЭД</text>
 		<short_text>Номинальный ток двиг.</short_text>
 		<form>3.1 Двигатель</form>
@@ -16962,7 +16962,7 @@
 		<name>TMS_HOWMIDITY_DISCHARGE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_HOWMIDITY</physic>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<valid>VALIDITY_ERROR</valid>
@@ -17690,7 +17690,7 @@
 		<name>EM_REACTIVE_POWER</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_REACTIV_POWER</physic>
+		<physic>PHYSIC_REACTIVE_POWER</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<def>0.0</def>
@@ -17709,7 +17709,7 @@
 		<name>EM_REACTIVE_POWER_PHASE_1</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_REACTIV_POWER</physic>
+		<physic>PHYSIC_REACTIVE_POWER</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<def>0.0</def>
@@ -17725,7 +17725,7 @@
 		<name>EM_REACTIVE_POWER_PHASE_2</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_REACTIV_POWER</physic>
+		<physic>PHYSIC_REACTIVE_POWER</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<def>0.0</def>
@@ -17741,7 +17741,7 @@
 		<name>EM_REACTIVE_POWER_PHASE_3</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_REACTIV_POWER</physic>
+		<physic>PHYSIC_REACTIVE_POWER</physic>
 		<min>0.0</min>
 		<max>10000000.0</max>
 		<def>0.0</def>
