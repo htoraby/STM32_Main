@@ -182,6 +182,8 @@ public:
    */
   virtual bool checkVsdStatus(uint8_t bit);
 
+  virtual void processingRegimeRun();
+
   /*!
    * \brief Метод настройки толчкового режима
    * \return
