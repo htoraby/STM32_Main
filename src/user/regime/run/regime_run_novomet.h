@@ -12,8 +12,9 @@ public:
   RegimeRunNovomet();
   ~RegimeRunNovomet();
 
-private:
   void processing();
+
+private:
   void automatRegime();
   void processingStateWork();
   void processingStateRunning();

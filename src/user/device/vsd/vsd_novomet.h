@@ -11,6 +11,8 @@
 #include "vsd.h"
 #include "device_modbus.h"
 
+class RegimeRunNovomet;
+
 /*!
  * \brief The enInvertorControl enum
  * Флаги регистра управления ПЧ
@@ -113,6 +115,8 @@ public:
 
   bool checkStart();
   bool checkStop();
+
+  void processingRegimeRun();
 
   /*!
    * \brief Функция включения толчкового режима
@@ -330,6 +334,7 @@ private:
   ModbusParameter modbusParameters_[135];
   DeviceModbus *dm_;
 
+  RegimeRunNovomet *regimeRun_;
 };
 
 #endif /* VSD_NOVOMET_H_ */
