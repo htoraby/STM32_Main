@@ -43,6 +43,7 @@ Product {
         "3rdParty/FreeModbus/functions/",
         "3rdParty/FreeModbus/include/",
         "3rdParty/FreeModbus/rtu/",
+        "3rdParty/RTT/",
         "drivers/CMSIS/Include/",
         "drivers/CMSIS/STM32F4xx/",
         "drivers/STM32_USB_Host_Library/Class/MSC/Inc/",
@@ -102,6 +103,7 @@ Product {
         "USE_HAL_DRIVER",
         "HSE_VALUE=12000000",
         "USE_FULL_ASSERT",
+        "USE_RTT",
     ]
 
 //    Properties {
@@ -122,19 +124,25 @@ Product {
             "*.h",
             "*.s"
         ]
-        excludeFiles: [
-            "stm32_cube/*",
-            "3rdParty/FatFs/drivers/sdram_diskio.*",
-            "3rdParty/FatFs/drivers/sram_diskio.*",
-            "3rdParty/FatFs/drivers/sd_diskio.*",
-            "3rdParty/FatFs/option/cc*",
-            "3rdParty/FreeModbus/modbus/ascii/*",
-            "3rdParty/FreeModbus/modbus/tcp/*",
-            "heap_1.c",
-            "heap_2.c",
-            "heap_3.c",
-            "heap_5.c",
-        ]
+        excludeFiles: {
+            var files = [
+                        "stm32_cube/*",
+                        "3rdParty/FatFs/drivers/sdram_diskio.*",
+                        "3rdParty/FatFs/drivers/sram_diskio.*",
+                        "3rdParty/FatFs/drivers/sd_diskio.*",
+                        "3rdParty/FatFs/option/cc*",
+                        "3rdParty/FreeModbus/modbus/ascii/*",
+                        "3rdParty/FreeModbus/modbus/tcp/*",
+                        "heap_1.c",
+                        "heap_2.c",
+                        "heap_3.c",
+                        "heap_5.c",
+                    ]
+            if (!cpp.defines.contains("USE_RTT"))
+                files.push("3rdParty/RTT/*");
+            return files;
+        }
+
         cpp.cxxFlags: [ "-std=c++11" ]
         cpp.cFlags: [ "-std=gnu11" ]
         cpp.warningLevel: "all"

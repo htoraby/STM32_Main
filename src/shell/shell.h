@@ -4,7 +4,8 @@
 #include <string.h>
 #include <stdio.h>
 
-void shell_parse_request(char *buf);
-int shell_main(int argc, char *argv[]);
+void shellInit();
+void shellParseRequest(char *buf);
+int shellMain(int argc, char *argv[]);
 
 #endif // SHELL_H

@@ -1,10 +1,25 @@
 #include "shell.h"
 #include "cmds.h"
+#include "cmsis_os.h"
 
 #include <string.h>
 #include <stdio.h>
 
-void shell_parse_request(char *buf)
+#ifdef USE_RTT
+#include "SEGGER_RTT.h"
+#endif
+
+static void shellThread(void *argument);
+
+static char buf[100];
+
+void shellInit()
+{
+  osThreadDef(Shell, shellThread, osPriorityNormal, 0, 3*configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(Shell), NULL);
+}
+
+void shellParseRequest(char *buf)
 {
   int argc = 0;
   char *argv[20];
@@ -14,10 +29,10 @@ void shell_parse_request(char *buf)
     argv[argc++] = str;
     str = strtok(NULL, " ");
   }
-  shell_main(argc, argv);
+  shellMain(argc, argv);
 }
 
-int shell_main(int argc, char *argv[])
+int shellMain(int argc, char *argv[])
 {
   for(int i = 0; i < argc; i++) {
     if (!strcmp(argv[i], "task")) {
@@ -30,4 +45,32 @@ int shell_main(int argc, char *argv[])
   }
 
   return 1;
+}
+
+static void shellThread(void *argument)
+{
+  (void)argument;
+
+  int key = -1;
+  int count = 0;
+
+  memset(buf, 0, sizeof(buf));
+
+  while(1) {
+    osDelay(10);
+
+#ifdef USE_RTT
+    key = SEGGER_RTT_GetKey();
+#endif
+
+    if (key >= 0) {
+      if (key == '\n') {
+        shellParseRequest(buf);
+        count = 0;
+        memset(buf, 0, sizeof(buf));
+      } else {
+        buf[count++] = (char)key;
+      }
+    }
+  }
 }

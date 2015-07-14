@@ -14,6 +14,7 @@
 #include "rcause.h"
 #include "user_main.h"
 #include "test.h"
+#include "shell.h"
 
 static void systemClockConfig();
 static void mainThread(void *argument);
@@ -91,6 +92,7 @@ static void mainThread(void *argument)
 #if (USE_TEST == 1)
   testInit();
 #endif
+  shellInit();
 
   userInit();
 
