@@ -55,6 +55,11 @@ int Vsd::setSumInduct(float induct)
   return setValue(VSD_LOUT, induct);
 }
 
+int Vsd::resetBlock()
+{
+  return 0;
+}
+
 // Задаваемые параметры работы
 int Vsd::setFrequency(float value)
 { 

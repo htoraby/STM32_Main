@@ -173,6 +173,8 @@ public:
    */
   virtual bool checkStop();
 
+  virtual int resetBlock();
+
   virtual bool isConnect();
 
   /*!
