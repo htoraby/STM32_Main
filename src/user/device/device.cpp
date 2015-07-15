@@ -275,6 +275,11 @@ uint8_t Device::getValidity(unsigned short id)
   return getFieldValidity(getIndexAtId(id));
 }
 
+void Device::setValidity(uint16_t id, uint8_t validity)
+{
+  setFieldValidity(getIndexAtId(id), validity);
+}
+
 void Device::updateValueTask()
 {
   osEvent event;

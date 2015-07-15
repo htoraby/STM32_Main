@@ -165,6 +165,8 @@ public:
 
   uint8_t getValidity(unsigned short id);
 
+  void setValidity(uint16_t id, uint8_t validity);
+
   /*!
    * \brief Сохранение массива параметров на Flash
    */

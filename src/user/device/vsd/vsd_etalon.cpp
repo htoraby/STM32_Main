@@ -217,7 +217,7 @@ int VsdEtalon::start()
     if (countRepeats > VSD_CMD_NUMBER_REPEATS)
       return err_r;
 
-    if (setNewValue(VSD_ETALON_UNLOCK, 1))
+    if (vsd->resetBlock())
       return err_r;
     if (setNewValue(VSD_ETALON_ON, 1))
       return err_r;
@@ -289,6 +289,11 @@ bool VsdEtalon::checkStop()
     return ok_r;
   }
   return false;
+}
+
+int VsdEtalon::resetBlock()
+{
+  return setNewValue(VSD_ETALON_UNLOCK, 1);
 }
 
 void VsdEtalon::processingRegimeRun()

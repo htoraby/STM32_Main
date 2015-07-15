@@ -117,6 +117,8 @@ public:
   bool checkStart();
   bool checkStop();
 
+  int resetBlock();
+
 
   void processingRegimeRun();
 
