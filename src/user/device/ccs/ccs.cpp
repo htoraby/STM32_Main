@@ -47,6 +47,11 @@ static void ccsVsdConditionTask(void *p)
   (static_cast<Ccs*>(p))->vsdConditionTask();
 }
 
+static void ccsCalcParametersTask(void *p)
+{
+  (static_cast<Ccs*>(p))->calcParametersTask();
+}
+
 void Ccs::init()
 {  
   initParameters();
@@ -66,6 +71,9 @@ void Ccs::initTask()
   osThreadDef(CcsMain, ccsMainTask, osPriorityNormal, 0, 4*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(CcsMain), this);
 
+  osThreadDef(CalcParametersTask, ccsCalcParametersTask, osPriorityNormal, 0 , 2*configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(CalcParametersTask), this);
+
   rebootSemaphoreId_ = osSemaphoreCreate(NULL, 1);
   osSemaphoreWait(rebootSemaphoreId_, 0);
 }
@@ -80,7 +88,6 @@ void Ccs::mainTask()
     changedCondition();
 
     calcTime();
-    calcParameters();
     controlPower();
     checkConnectDevice();
 
@@ -599,30 +606,33 @@ void Ccs::calcTime()
     setNewValue(CCS_RUN_TIME, (float)getSecFromCurTime(CCS_LAST_RUN_DATE_TIME));
 }
 
-void Ccs::calcParameters()
+void Ccs::calcParametersTask()
 {
-  calcTransCoef();
-  calcMotorCurrentPhase1();
-  calcMotorCurrentPhase2();
-  calcMotorCurrentPhase3();
-  calcMotorCurrentAverage();
-  calcMotorCurrentImbalance();
-  calcMotorVoltagePhase1();
-  calcMotorVoltagePhase2();
-  calcMotorVoltagePhase3();
-  calcMotorVoltageImbalance();
-  calcMotorSpeed();
-  calcMotorCos();
-  calcMotorLoad();
-  calcInputVoltagePhase1();
-  calcInputVoltagePhase2();
-  calcInputVoltagePhase3();
-  calcInputVoltagePhase12();
-  calcInputVoltagePhase23();
-  calcInputVoltagePhase31();
-  calcInputVoltageImbalance();
-  calcInputCurrentImbalance();
-  calcRegimeRun();
+  while (1) {
+    osDelay(10);
+    calcTransCoef();
+    calcMotorCurrentPhase1();
+    calcMotorCurrentPhase2();
+    calcMotorCurrentPhase3();
+    calcMotorCurrentAverage();
+    calcMotorCurrentImbalance();
+    calcMotorVoltagePhase1();
+    calcMotorVoltagePhase2();
+    calcMotorVoltagePhase3();
+    calcMotorVoltageImbalance();
+    calcMotorSpeed();
+    calcMotorCos();
+    calcMotorLoad();
+    calcInputVoltagePhase1();
+    calcInputVoltagePhase2();
+    calcInputVoltagePhase3();
+    calcInputVoltagePhase12();
+    calcInputVoltagePhase23();
+    calcInputVoltagePhase31();
+    calcInputVoltageImbalance();
+    calcInputCurrentImbalance();
+    calcRegimeRun();
+  }
 }
 
 float Ccs::calcTransCoef()

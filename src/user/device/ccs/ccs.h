@@ -204,7 +204,7 @@ public:
   /*!
    * \brief Функция вычисления расчётных параметров
    */
-  void calcParameters();
+  void calcParametersTask();
 
   /*!
    * \brief Функция вычисления коэффициента трансформации трансформатора
