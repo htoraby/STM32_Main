@@ -39,13 +39,32 @@ void Scada::task()
   eMBEnable();
   while (1) {
     eMBPoll();
+    osDelay(1);
   }
+}
+
+inline int Scada::getIndexAtAddress(uint16_t address)
+{
+  if ((address - 1) >= 0) {
+    for (int i = 0; i < countParameters_; ++i) {
+      if (scadaParameter_[i].address == (address - 1))
+        return scadaParameter_[i].id;
+    }
+  }
+
+  char message[SIZE_MSG_DEBUG];
+  sprintf(message, "Регистр %d не найден по указаннному адресу", int(address - 1));
+  logDebug.add(WarningMsg, message);
+
+  return -1;
 }
 
 eMBErrorCode Scada::readReg(uint8_t *buffer, uint16_t address, uint16_t numRegs)
 {
   eMBErrorCode status = MB_ENOERR;
-  // TODO: Проверка адреса регистра
+  int id = getIndexAtAddress(address);
+  if (id == -1)
+    return MB_ENOREG;
 
 //  int iRegIndex = address - usRegHoldingStart;
 //  while (numRegs > 0) {
@@ -62,6 +81,8 @@ eMBErrorCode Scada::writeReg(uint8_t *buffer, uint16_t address, uint16_t numRegs
 {
   eMBErrorCode status = MB_ENOERR;
   // TODO: Проверка адреса регистра
+
+
 
 //  int iRegIndex = address - usRegHoldingStart;
 //  while (numRegs > 0) {
@@ -140,6 +161,10 @@ eMBErrorCode eMBRegCoilsCB(UCHAR * pucRegBuffer, USHORT usAddress,
 eMBErrorCode eMBRegDiscreteCB(UCHAR * pucRegBuffer, USHORT usAddress,
                               USHORT usNDiscrete)
 {
+  eMBErrorCode status = MB_ENOERR;
+
+  status = MB_ENOREG;
+
   osDelay(scada->delay());
-  return MB_ENOREG;
+  return status;
 }

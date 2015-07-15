@@ -50,6 +50,8 @@ public:
   float delay() const { return delay_; }
 
 protected:
+  int getIndexAtAddress(uint16_t address);
+
   //! Указатель на массив параметров Скады
   ScadaParameter *scadaParameter_;
   //! Количество параметров в массиве
