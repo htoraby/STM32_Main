@@ -34,7 +34,7 @@ void NovobusSlave::init()
   messageParams_ = osMessageCreate(osMessageQ(MessageParamsNovobus), NULL);
 
   // Создаём задачу обработки принятых пакетов
-  osThreadDef_t t = {"NovobusSlave", novobusSlaveTask, osPriorityNormal, 0, 4 * configMINIMAL_STACK_SIZE};
+  osThreadDef_t t = {"NovobusSlave", novobusSlaveTask, osPriorityNormal, 0, 3 * configMINIMAL_STACK_SIZE};
   threadId_ = osThreadCreate(&t, this);
 }
 

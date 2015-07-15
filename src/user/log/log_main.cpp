@@ -45,8 +45,8 @@ void logInit()
 
   semaphoreId_ = osSemaphoreCreate(NULL, 1);
   osSemaphoreWait(semaphoreId_, 0);
-  osThreadDef(LogSaveUsbTask, logSaveTask, osPriorityNormal, 0, 10 * configMINIMAL_STACK_SIZE);
-  osThreadCreate(osThread(LogSaveUsbTask), NULL);
+  osThreadDef(LogSaveUsb, logSaveTask, osPriorityNormal, 0, 8 * configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(LogSaveUsb), NULL);
 }
 
 void logErase()

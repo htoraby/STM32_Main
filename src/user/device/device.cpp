@@ -183,8 +183,9 @@ unsigned short Device::getIndexAtId(unsigned short id)
     if (getFieldId(id - startAddrParams_) == id)
       return (id - startAddrParams_);
   }
+
   char message[SIZE_MSG_DEBUG];
-  sprintf(message, "Не найден параметра %d", id);
+  sprintf(message, "Не найден параметр %d", id);
   logDebug.add(WarningMsg, message);
   return 0;
 }
@@ -192,14 +193,16 @@ unsigned short Device::getIndexAtId(unsigned short id)
 float Device::getValue(unsigned short id, bool *ok)
 {
   uint16_t index = getIndexAtId(id);
-  *ok = (getFieldValidity(index) == VALIDITY_OK) ? true : false;
+  if (ok)
+    *ok = (getFieldValidity(index) == VALIDITY_OK) ? true : false;
   return getFieldValue(index);
 }
 
 uint32_t Device::getValueUint32(unsigned short id, bool *ok)
 {
   uint16_t index = getIndexAtId(id);
-  *ok = (getFieldValidity(index) == VALIDITY_OK) ? true : false;
+  if (ok)
+    *ok = (getFieldValidity(index) == VALIDITY_OK) ? true : false;
   return getFieldValueUint32(index);
 }
 

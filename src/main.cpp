@@ -30,7 +30,7 @@ int main()
   boardInit();
 
   // Создание основной задачи
-  osThreadDef(MainThread, mainThread, osPriorityNormal, 0, 6*configMINIMAL_STACK_SIZE);
+  osThreadDef(MainThread, mainThread, osPriorityNormal, 0, 3*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(MainThread), NULL);
 
   // Запуск диспетчера задач
