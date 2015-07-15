@@ -71,7 +71,7 @@ void Ccs::initTask()
   osThreadDef(CcsMain, ccsMainTask, osPriorityNormal, 0, 4*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(CcsMain), this);
 
-  osThreadDef(CalcParametersTask, ccsCalcParametersTask, osPriorityNormal, 0 , 2*configMINIMAL_STACK_SIZE);
+  osThreadDef(CalcParametersTask, ccsCalcParametersTask, osPriorityNormal, 0 , 4*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(CalcParametersTask), this);
 
   rebootSemaphoreId_ = osSemaphoreCreate(NULL, 1);
@@ -609,7 +609,7 @@ void Ccs::calcTime()
 void Ccs::calcParametersTask()
 {
   while (1) {
-    osDelay(10);
+    osDelay(100);
     calcTransCoef();
     calcMotorCurrentPhase1();
     calcMotorCurrentPhase2();
