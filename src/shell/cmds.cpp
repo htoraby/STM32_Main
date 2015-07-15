@@ -2,10 +2,6 @@
 #include "shell.h"
 #include "user_main.h"
 
-#ifdef USE_RTT
-#include "SEGGER_RTT.h"
-#endif
-
 #if USE_EXT_MEM
 static uint8_t bufferTx[4096] __attribute__((section(".extmem")));
 #else

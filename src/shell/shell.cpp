@@ -1,13 +1,6 @@
 #include "shell.h"
 #include "cmds.h"
-#include "cmsis_os.h"
-
-#include <string.h>
-#include <stdio.h>
-
-#ifdef USE_RTT
-#include "SEGGER_RTT.h"
-#endif
+#include "board.h"
 
 static void shellThread(void *argument);
 
