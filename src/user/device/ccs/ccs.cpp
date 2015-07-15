@@ -65,14 +65,14 @@ void Ccs::initTask()
   osThreadDef(LedCondition, ccsLedConditionTask, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(LedCondition), this);
 
-  osThreadDef(VsdConditionTask, ccsVsdConditionTask, osPriorityNormal, 0, 3*configMINIMAL_STACK_SIZE);
-  osThreadCreate(osThread(VsdConditionTask), this);
+  osThreadDef(VsdCondition, ccsVsdConditionTask, osPriorityNormal, 0, 3*configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(VsdCondition), this);
 
-  osThreadDef(CcsMain, ccsMainTask, osPriorityNormal, 0, 4*configMINIMAL_STACK_SIZE);
+  osThreadDef(CcsMain, ccsMainTask, osPriorityNormal, 0, 3*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(CcsMain), this);
 
-  osThreadDef(CalcParametersTask, ccsCalcParametersTask, osPriorityNormal, 0 , 2*configMINIMAL_STACK_SIZE);
-  osThreadCreate(osThread(CalcParametersTask), this);
+  osThreadDef(CalcParameters, ccsCalcParametersTask, osPriorityNormal, 0 , 4*configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(CalcParameters), this);
 
   rebootSemaphoreId_ = osSemaphoreCreate(NULL, 1);
   osSemaphoreWait(rebootSemaphoreId_, 0);
@@ -610,6 +610,7 @@ void Ccs::calcParametersTask()
 {
   while (1) {
     osDelay(10);
+
     calcTransCoef();
     calcMotorCurrentPhase1();
     calcMotorCurrentPhase2();
