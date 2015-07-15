@@ -10,7 +10,7 @@
 
 Vsd::Vsd() : Device(VSD_BEGIN, parametersArray_, VSD_END - VSD_BEGIN)
 {
-
+  initParameters();
 }
 
 Vsd::~Vsd()
@@ -36,7 +36,7 @@ int Vsd::setMotorNominalCurrent(float current)
 
 int Vsd::setMotorNominalVoltage(float voltage)
 {
-    return setValue(VSD_MOTOR_VOLTAGE, voltage);
+  return setValue(VSD_MOTOR_VOLTAGE, voltage);
 }
 
 // Задаваемые параметры ЧРП

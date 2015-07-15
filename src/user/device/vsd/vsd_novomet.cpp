@@ -40,28 +40,30 @@ void VsdNovomet::init()
 
 void VsdNovomet::initParameters()
 {
-  Vsd::initParameters();
   int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
   for (int indexModbus = 0; indexModbus < count; indexModbus++) {         // Цикл по карте регистров
-    int indexDevice = getIndexAtId(dm_->getFieldID(indexModbus));         // Получаем индекс параметра в банке параметров
-    if (indexDevice) {                                                    // Если нашли параметр
-      setFieldAccess(indexDevice, ACCESS_OPERATOR);                       // Уровень доступа оператор
-      setFieldOperation(indexDevice, dm_->getFieldOperation(indexModbus));// Операции над параметром
-      setFieldPhysic(indexDevice, dm_->getFieldPhysic(indexModbus));      // Физический смысл
+    int id = dm_->getFieldID(indexModbus);
+    if (id <= 0)
+      continue;
+    int indexArray = getIndexAtId(id);                                   // Получаем индекс параметра в банке параметров
+    if (indexArray) {                                                    // Если нашли параметр
+      setFieldAccess(indexArray, ACCESS_OPERATOR);                       // Уровень доступа оператор
+      setFieldOperation(indexArray, dm_->getFieldOperation(indexModbus));// Операции над параметром
+      setFieldPhysic(indexArray, dm_->getFieldPhysic(indexModbus));      // Физический смысл
       float tempVal = dm_->getFieldMinimum(indexModbus);                  // Получаем минимум
       tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));// Применяем коэффициент
       tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
-      setFieldMin(indexDevice, tempVal);
+      setFieldMin(indexArray, tempVal);
       tempVal = dm_->getFieldMaximum(indexModbus);                        // Получаем мaксимум
       tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));// Применяем коэффициент
       tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
-      setFieldMax(indexDevice, tempVal);
+      setFieldMax(indexArray, tempVal);
       tempVal = dm_->getFieldDefault(indexModbus);                        // Получаем значение по умолчанию
       tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));// Применяем коэффициент
       tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
-      setFieldDef(indexDevice, tempVal);
-      setFieldValidity(indexDevice, dm_->getFieldValidity(indexModbus));  // Получили флаг валидности
-      setFieldValue(indexDevice, getFieldDefault(indexDevice));           // Присвоили значение значению по умолчанию
+      setFieldDef(indexArray, tempVal);
+      setFieldValidity(indexArray, dm_->getFieldValidity(indexModbus));  // Получили флаг валидности
+      setFieldValue(indexArray, getFieldDefault(indexArray));           // Присвоили значение значению по умолчанию
     }
   }
 }

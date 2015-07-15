@@ -9,7 +9,7 @@
 
 Tms::Tms() : Device(TMS_BEGIN, parametersArray_, TMS_END - TMS_BEGIN)
 {
-
+  initParameters();
 }
 
 Tms::~Tms()

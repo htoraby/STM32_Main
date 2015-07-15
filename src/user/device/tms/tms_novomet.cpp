@@ -395,28 +395,30 @@ void TmsNovomet::init()
 
 void TmsNovomet::initParameters()
 {
-  Tms::initParameters();
   int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
-  for (int indexModbus = 0; indexModbus <= count; indexModbus++) {
-    int indexDevice = getIndexAtId(dm_->getFieldID(indexModbus));
-    if (indexDevice) {
-      setFieldAccess(indexDevice, ACCESS_OPERATOR);
-      setFieldOperation(indexDevice, dm_->getFieldOperation(indexModbus));
-      setFieldPhysic(indexDevice, dm_->getFieldPhysic(indexModbus));
+  for (int indexModbus = 0; indexModbus < count; indexModbus++) {
+    int id = dm_->getFieldID(indexModbus);
+    if (id <= 0)
+      continue;
+    int indexArray = getIndexAtId(id);                                   // Получаем индекс параметра в банке параметров
+    if (indexArray) {
+      setFieldAccess(indexArray, ACCESS_OPERATOR);
+      setFieldOperation(indexArray, dm_->getFieldOperation(indexModbus));
+      setFieldPhysic(indexArray, dm_->getFieldPhysic(indexModbus));
       float tempVal = dm_->getFieldMinimum(indexModbus);
       tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));
       tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
-      setFieldMin(indexDevice, tempVal);
+      setFieldMin(indexArray, tempVal);
       tempVal = dm_->getFieldMaximum(indexModbus);
       tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));
       tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
-      setFieldMax(indexDevice, tempVal);
+      setFieldMax(indexArray, tempVal);
       tempVal = dm_->getFieldDefault(indexModbus);
       tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));
       tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
-      setFieldDef(indexDevice, tempVal);
-      setFieldValidity(indexDevice, dm_->getFieldValidity(indexModbus));
-      setFieldValue(indexDevice, getFieldDefault(indexDevice));
+      setFieldDef(indexArray, tempVal);
+      setFieldValidity(indexArray, dm_->getFieldValidity(indexModbus));
+      setFieldValue(indexArray, getFieldDefault(indexArray));
     }
   }
 }

@@ -14,8 +14,7 @@ EmSet::EmSet()
   , constEm_(1250)
   , constCoefTrans_(1.0)
 {
-  initParameters();
-  readParameters();
+
 }
 
 EmSet::~EmSet()
@@ -30,6 +29,8 @@ void EmSet::init()
 
   osThreadDef_t t = {"EmSet", emSetTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
   threadId_ = osThreadCreate(&t, this);
+
+  readParameters();
 }
 
 void EmSet::task()
