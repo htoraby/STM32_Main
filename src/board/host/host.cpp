@@ -2,7 +2,8 @@
 #include "gpio.h"
 #include "string.h"
 
-#define TIMEOUT_RX 950
+//! Время таймаута запроса от мастера для сброса SPI (n*10 мс)
+#define TIMEOUT_RX 95
 
 SPI_HandleTypeDef hspi4;
 DMA_HandleTypeDef hdma_spi4_tx;
@@ -67,7 +68,7 @@ void hostInit()
 
   osTimerDef_t timerDef = {hostTimer};
   osTimerId timerId = osTimerCreate(&timerDef, osTimerPeriodic, NULL);
-  osTimerStart(timerId, 1);
+  osTimerStart(timerId, 10);
 }
 
 osSemaphoreId getHostSemaphore()
@@ -77,7 +78,7 @@ osSemaphoreId getHostSemaphore()
 
 void hostEnable()
 {
-  osDelay(10);
+  osDelay(5);
   __HAL_SPI_ENABLE_IT(&hspi4, (SPI_IT_RXNE | SPI_IT_ERR));
   if((hspi4.Instance->CR1 &SPI_CR1_SPE) != SPI_CR1_SPE)
     __HAL_SPI_ENABLE(&hspi4);

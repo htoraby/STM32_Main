@@ -40,15 +40,6 @@ void protectionInit()
 
   protections[10] = &protHardwareVsd;
 
-//  protections[3] = &protOverloadMotor;
-//  protections[4] = &protUnderloadMotor;
-//  protections[5] = &protImbalanceCurrentMotor;
-//  protections[6] = &protOutOfSyncMotor;
-//  protections[7] = &protTurbineRotation;
-//  protections[8] = &protTemperatureMotor;
-//  protections[9] = &protPressureIntake;
-//  protections[10] = &protResistanceIsolation;
-
   osThreadDef(ProtectionTask, protectionTask, osPriorityNormal, 0, 4 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(ProtectionTask), NULL);
 }

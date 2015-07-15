@@ -40,7 +40,7 @@ void logInit()
 
   logDebug.init();
 
-  // Р—Р°РїРёСЃСЊ РІ Р¶СѓСЂРЅР°Р» "Р’РєР»СЋС‡РµРЅРёРµ РїРёС‚Р°РЅРёСЏ"
+  // Запись в журнал "Включение питания"
   logEvent.add(PowerCode, AutoType, PowerOnId);
 
   semaphoreId_ = osSemaphoreCreate(NULL, 1);
