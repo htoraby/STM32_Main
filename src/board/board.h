@@ -5,6 +5,10 @@
 #include "stm32f4xx_hal.h"
 #include "cmsis_os.h"
 
+#ifdef USE_RTT
+#include "SEGGER_RTT.h"
+#endif
+
 #define USE_WATCHDOG 0
 #define USE_EXT_MEM  1
 #define USE_TEST     1
