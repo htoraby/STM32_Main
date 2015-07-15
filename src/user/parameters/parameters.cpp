@@ -154,6 +154,18 @@ uint8_t Parameters::getValidity(unsigned short id)
   return err_r;
 }
 
+void Parameters::setValidity(uint16_t id, uint8_t validity)
+{
+  if ((id > CCS_BEGIN) && (id < CCS_END))
+    ksu.setValidity(id, validity);
+  if ((id > VSD_BEGIN) && (id < VSD_END))
+    vsd->setValidity(id, validity);
+  if ((id > TMS_BEGIN) && (id < TMS_END))
+    tms->setValidity(id, validity);
+  if ((id > EM_BEGIN) && (id < EM_END))
+    em->setValidity(id, validity);
+}
+
 float Parameters::convertFrom(float value, int physic, int unit)
 {
   if (unit >= 6)

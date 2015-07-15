@@ -91,6 +91,8 @@ public:
 
   uint8_t getValidity(unsigned short id);
 
+  void setValidity(uint16_t id, uint8_t validity);
+
   /*!
    * \brief Конвертация значения из формата STM
    * \param value
