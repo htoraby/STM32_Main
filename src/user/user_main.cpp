@@ -5,10 +5,10 @@
 Parameters parameters;
 NovobusSlave novobusSlave;
 Ccs ksu;
-Vsd *vsd = 0;
-Tms *tms = 0;
-Em *em = 0;
-Scada *scada = 0;
+Vsd *vsd = NULL;
+Tms *tms = NULL;
+Em *em = NULL;
+Scada *scada = NULL;
 
 void userInit()
 {
@@ -87,8 +87,10 @@ void createEm()
 
 void createScada()
 {
-  if (scada)
+  if (scada) {
     delete scada;
+    scada = NULL;
+  }
 
   uint8_t type = parameters.get(CCS_SCADA_TYPE);
   switch (type) {

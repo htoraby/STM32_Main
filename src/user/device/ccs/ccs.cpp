@@ -1164,8 +1164,12 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceFiltOutId, oldValue, value);
     break;
   case CCS_SCADA_TYPE:
-    createScada();
-    break;
+    {
+      uint8_t err = setValue(id, value, eventType);
+      if ((value != oldValue) && !err)
+        createScada();
+      return err;
+    }
   default:
     break;
   }

@@ -48,8 +48,6 @@ xMBPortTimersInit( USHORT usTim1Timerout50us )
   HAL_NVIC_SetPriority(TIM2_IRQn, 8, 1);
   HAL_NVIC_EnableIRQ(TIM2_IRQn);
 
-  HAL_TIM_Base_Start_IT(&htim2);
-
   return TRUE;
 }
 
