@@ -189,9 +189,7 @@ unsigned short Device::getIndexAtId(unsigned short id)
       return (id - startAddrParams_);
   }
 
-  char message[SIZE_MSG_DEBUG];
-  sprintf(message, "Не найден параметр %d", id);
-  logDebug.add(WarningMsg, message);
+  logDebug.add(WarningMsg, "Не найден параметр %d", id);
   return 0;
 }
 

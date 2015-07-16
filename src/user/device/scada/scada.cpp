@@ -52,9 +52,7 @@ inline int Scada::getIndexAtAddress(uint16_t address)
     }
   }
 
-  char message[SIZE_MSG_DEBUG];
-  sprintf(message, "Регистр %d не найден по указаннному адресу", int(address - 1));
-  logDebug.add(WarningMsg, message);
+  logDebug.add(WarningMsg, "Регистр %d не найден по указаннному адресу", int(address - 1));
 
   return -1;
 }

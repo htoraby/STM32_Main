@@ -32,7 +32,7 @@ public:
    * \param msg - сообщение, максимальная длина 250
    * \return id записанного события
    */
-  uint32_t add(MsgType type, const char* msg);
+  uint32_t add(MsgType type, const char *msg, ...);
 };
 
 #endif // LOGDEBUG_H

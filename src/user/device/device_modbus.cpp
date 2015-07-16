@@ -284,9 +284,8 @@ void DeviceModbus::exchangeTask()
           res = mms_->writeSingleRegister(devAdrs_, address, mbParams_[outOfTurn].value.int16_t[0]);
           if (res != ok_r) {
             if (isConnect()) {
-              char message[SIZE_MSG_DEBUG];
-              sprintf(message, "mbCmd0x06 %d %d %d", devAdrs_, address, mbParams_[outOfTurn].value.int16_t[0]);
-              logDebug.add(WarningMsg, message);
+              logDebug.add(WarningMsg, "mbCmd0x06 %d %d %d", devAdrs_, address,
+                           mbParams_[outOfTurn].value.int16_t[0]);
             }
           }
           break;
@@ -294,9 +293,8 @@ void DeviceModbus::exchangeTask()
           res = mms_->writeSingleRegister(devAdrs_, address, mbParams_[outOfTurn].value.uint16_t[0]);
           if (res != ok_r) {
             if (isConnect()) {
-              char message[SIZE_MSG_DEBUG];
-              sprintf(message, "mbCmd0x06 %d %d %d", devAdrs_, address, mbParams_[outOfTurn].value.uint16_t[0]);
-              logDebug.add(WarningMsg, message);
+              logDebug.add(WarningMsg, "mbCmd0x06 %d %d %d", devAdrs_, address,
+                           mbParams_[outOfTurn].value.uint16_t[0]);
             }
           }
           break;
@@ -305,9 +303,7 @@ void DeviceModbus::exchangeTask()
           res = mms_->writeMultipleLongInts(devAdrs_, address, int32Arr_, 1);
           if (res != ok_r) {
             if (isConnect()) {
-              char message[SIZE_MSG_DEBUG];
-              sprintf(message, "mbCmd0x10 %d %d %d", devAdrs_, address, int32Arr_[0]);
-              logDebug.add(WarningMsg, message);
+              logDebug.add(WarningMsg, "mbCmd0x10 %d %d %d", devAdrs_, address, int32Arr_[0]);
             }
           }
           break;
@@ -316,9 +312,7 @@ void DeviceModbus::exchangeTask()
           res = mms_->writeMultipleLongInts(devAdrs_, address, int32Arr_, 1);
           if (res != ok_r) {
             if (isConnect()) {
-              char message[SIZE_MSG_DEBUG];
-              sprintf(message, "mbCmd0x10 %d %d %d", devAdrs_, address, int32Arr_[0]);
-              logDebug.add(WarningMsg, message);
+              logDebug.add(WarningMsg, "mbCmd0x10 %d %d %d", devAdrs_, address, int32Arr_[0]);
             }
           }
           break;
@@ -327,9 +321,7 @@ void DeviceModbus::exchangeTask()
           res = mms_->writeMultipleFloats(devAdrs_ ,address, float32Arr_, 1);
           if (res != ok_r) {
             if (isConnect()) {
-              char message[SIZE_MSG_DEBUG];
-              sprintf(message, "mbCmd0x10 %d %d %f", devAdrs_, address, float32Arr_[0]);
-              logDebug.add(WarningMsg, message);
+              logDebug.add(WarningMsg, "mbCmd0x10 %d %d %f", devAdrs_, address, float32Arr_[0]);
             }
           }
           break;
@@ -350,9 +342,8 @@ void DeviceModbus::exchangeTask()
                 mbParams_[index].value.int16_t[0] = regArr_[i];
                 mbParams_[index].validity = checkRange(mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, true);
                 if (mbParams_[index].validity != ok_r) {
-                  char message[SIZE_MSG_DEBUG];
-                  sprintf(message, "mbCmd0x03 %d %d %d %d", devAdrs_, index, regArr_[i], mbParams_[index].validity);
-                  logDebug.add(WarningMsg, message);
+                  logDebug.add(WarningMsg, "mbCmd0x03 %d %d %d %d", devAdrs_,
+                               index, regArr_[i], mbParams_[index].validity);
                 }
                 putMessageUpdateId(mbParams_[index].id);
                 index++;
@@ -363,9 +354,7 @@ void DeviceModbus::exchangeTask()
               for (int i = 0; i < count; i++) {
                 mbParams_[index].validity = err_r;
                 if (isConnect()) {
-                  char message[SIZE_MSG_DEBUG];
-                  sprintf(message, "mbCmd0x03 %d %d %d", devAdrs_, index, regArr_[i]);
-                  logDebug.add(WarningMsg, message);
+                  logDebug.add(WarningMsg, "mbCmd0x03 %d %d %d", devAdrs_, index, regArr_[i]);
                 }
                 putMessageUpdateId(mbParams_[index].id);
                 index++;
@@ -381,9 +370,8 @@ void DeviceModbus::exchangeTask()
                 mbParams_[index].value.uint16_t[0] = regArr_[i];
                 mbParams_[index].validity = checkRange(mbParams_[index].value.uint16_t[0], mbParams_[index].min, mbParams_[index].max, true);
                 if (mbParams_[index].validity != ok_r) {
-                  char message[SIZE_MSG_DEBUG];
-                  sprintf(message, "mbCmd0x03 %d %d %d %d", devAdrs_, index, regArr_[i], mbParams_[index].validity);
-                  logDebug.add(WarningMsg, message);
+                  logDebug.add(WarningMsg, "mbCmd0x03 %d %d %d %d", devAdrs_,
+                               index, regArr_[i], mbParams_[index].validity);
                 }
                 putMessageUpdateId(mbParams_[index].id);
                 index++;
@@ -394,9 +382,7 @@ void DeviceModbus::exchangeTask()
               for (int i = 0; i < count; i++) {
                 mbParams_[index].validity = err_r;
                 if (isConnect()) {
-                  char message[SIZE_MSG_DEBUG];
-                  sprintf(message, "mbCmd0x03 %d %d %d", devAdrs_, index, regArr_[i]);
-                  logDebug.add(WarningMsg, message);
+                  logDebug.add(WarningMsg, "mbCmd0x03 %d %d %d", devAdrs_, index, regArr_[i]);
                 }
                 putMessageUpdateId(mbParams_[index].id);
                 index++;
@@ -412,9 +398,8 @@ void DeviceModbus::exchangeTask()
                 mbParams_[index].value.int32_t = int32Arr_[i];
                 mbParams_[index].validity = checkRange(mbParams_[index].value.int32_t, mbParams_[index].min, mbParams_[index].max, true);
                 if (mbParams_[index].validity != ok_r) {
-                  char message[SIZE_MSG_DEBUG];
-                  sprintf(message, "mbCmd0x03 %d %d %d %d", devAdrs_, index, int32Arr_[i], mbParams_[index].validity);
-                  logDebug.add(WarningMsg, message);
+                  logDebug.add(WarningMsg, "mbCmd0x03 %d %d %d %d", devAdrs_,
+                               index, int32Arr_[i], mbParams_[index].validity);
                 }
                 putMessageUpdateId(mbParams_[index].id);
                 index++;
@@ -425,9 +410,7 @@ void DeviceModbus::exchangeTask()
               for (int i = 0; i < count; i++) {
                 mbParams_[index].validity = err_r;
                 if (isConnect()) {
-                  char message[SIZE_MSG_DEBUG];
-                  sprintf(message, "mbCmd0x03 %d %d %d", devAdrs_, index, int32Arr_[i]);
-                  logDebug.add(WarningMsg, message);
+                  logDebug.add(WarningMsg, "mbCmd0x03 %d %d %d", devAdrs_, index, int32Arr_[i]);
                 }
                 putMessageUpdateId(mbParams_[index].id);
                 index++;
@@ -443,9 +426,7 @@ void DeviceModbus::exchangeTask()
                 mbParams_[index].value.uint32_t = int32Arr_[i];
                 mbParams_[index].validity = checkRange(mbParams_[index].value.uint32_t, mbParams_[index].min, mbParams_[index].max, true);
                 if (mbParams_[index].validity != ok_r) {
-                  char message[SIZE_MSG_DEBUG];
-                  sprintf(message, "mbCmd0x03 %d %d %d %d", devAdrs_, index, int32Arr_[i], mbParams_[index].validity);
-                  logDebug.add(WarningMsg, message);
+                  logDebug.add(WarningMsg, "mbCmd0x03 %d %d %d %d", devAdrs_, index, int32Arr_[i], mbParams_[index].validity);
                 }
                 putMessageUpdateId(mbParams_[index].id);
                 index++;
@@ -456,9 +437,7 @@ void DeviceModbus::exchangeTask()
               for (int i = 0; i < count; i++) {
                 mbParams_[index].validity = err_r;
                 if (isConnect()) {
-                  char message[SIZE_MSG_DEBUG];
-                  sprintf(message, "mbCmd0x03 %d %d %d", devAdrs_, index, int32Arr_[i]);
-                  logDebug.add(WarningMsg, message);
+                  logDebug.add(WarningMsg, "mbCmd0x03 %d %d %d", devAdrs_, index, int32Arr_[i]);
                 }
                 putMessageUpdateId(mbParams_[index].id);
                 index++;
@@ -475,9 +454,8 @@ void DeviceModbus::exchangeTask()
                 mbParams_[index].value.float_t = float32Arr_[i];
                 mbParams_[index].validity = checkRange(mbParams_[index].value.float_t, mbParams_[index].min, mbParams_[index].max, true);
                 if (mbParams_[index].validity != ok_r) {
-                  char message[SIZE_MSG_DEBUG];
-                  sprintf(message, "mbCmd0x03 %d %d %f %d", devAdrs_, index, float32Arr_[i], mbParams_[index].validity);
-                  logDebug.add(WarningMsg, message);
+                  logDebug.add(WarningMsg, "mbCmd0x03 %d %d %f %d", devAdrs_,
+                               index, float32Arr_[i], mbParams_[index].validity);
                 }
                 putMessageUpdateId(mbParams_[index].id);
                 index++;
@@ -488,9 +466,8 @@ void DeviceModbus::exchangeTask()
               for (int i = 0; i < count; i++) {
                 mbParams_[index].validity = err_r;
                 if (isConnect()) {
-                  char message[SIZE_MSG_DEBUG];
-                  sprintf(message, "mbCmd0x03 %d %d %f", devAdrs_, index, float32Arr_[i]);
-                  logDebug.add(WarningMsg, message);
+                  logDebug.add(WarningMsg, "mbCmd0x03 %d %d %f", devAdrs_,
+                               index, float32Arr_[i]);
                 }
                 putMessageUpdateId(mbParams_[index].id);
                 index++;
@@ -516,9 +493,8 @@ void DeviceModbus::exchangeTask()
               mbParams_[index].value.int16_t[0] = regArr_[i];
               mbParams_[index].validity = checkRange(mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, true);
               if (mbParams_[index].validity != ok_r) {
-                char message[SIZE_MSG_DEBUG];
-                sprintf(message, "mbCmd0x03 %d %d %d %d", devAdrs_, index, regArr_[i], mbParams_[index].validity);
-                logDebug.add(WarningMsg, message);
+                logDebug.add(WarningMsg, "mbCmd0x03 %d %d %d %d", devAdrs_,
+                             index, regArr_[i], mbParams_[index].validity);
               }
               putMessageUpdateId(mbParams_[index].id);
               index++;
@@ -529,9 +505,7 @@ void DeviceModbus::exchangeTask()
             for (int i = 0; i < count; i++) {
               mbParams_[index].validity = err_r;
               if (isConnect()) {
-                char message[SIZE_MSG_DEBUG];
-                sprintf(message, "mbCmd0x03 %d %d %d", devAdrs_, index, regArr_[i]);
-                logDebug.add(WarningMsg, message);
+                logDebug.add(WarningMsg, "mbCmd0x03 %d %d %d", devAdrs_, index, regArr_[i]);
               }
               putMessageUpdateId(mbParams_[index].id);
               index++;
@@ -547,9 +521,8 @@ void DeviceModbus::exchangeTask()
               mbParams_[index].value.uint16_t[0] = regArr_[i];
               mbParams_[index].validity = checkRange(mbParams_[index].value.uint16_t[0], mbParams_[index].min, mbParams_[index].max, true);
               if (mbParams_[index].validity != ok_r) {
-                char message[SIZE_MSG_DEBUG];
-                sprintf(message, "mbCmd0x03 %d %d %d %d", devAdrs_, index, regArr_[i], mbParams_[index].validity);
-                logDebug.add(WarningMsg, message);
+                logDebug.add(WarningMsg, "mbCmd0x03 %d %d %d %d", devAdrs_,
+                             index, regArr_[i], mbParams_[index].validity);
               }
               putMessageUpdateId(mbParams_[index].id);
               index++;
@@ -560,9 +533,7 @@ void DeviceModbus::exchangeTask()
             for (int i = 0; i < count; i++) {
               mbParams_[index].validity = err_r;
               if (isConnect()) {
-                char message[SIZE_MSG_DEBUG];
-                sprintf(message, "mbCmd0x03 %d %d %d", devAdrs_, index, regArr_[i]);
-                logDebug.add(WarningMsg, message);
+                logDebug.add(WarningMsg, "mbCmd0x03 %d %d %d", devAdrs_, index, regArr_[i]);
               }
               putMessageUpdateId(mbParams_[index].id);
               index++;
@@ -578,9 +549,8 @@ void DeviceModbus::exchangeTask()
               mbParams_[index].value.int32_t = int32Arr_[i];
               mbParams_[index].validity = checkRange(mbParams_[index].value.int32_t, mbParams_[index].min, mbParams_[index].max, true);
               if (mbParams_[index].validity != ok_r) {
-                char message[SIZE_MSG_DEBUG];
-                sprintf(message, "mbCmd0x03 %d %d %d %d", devAdrs_, index, int32Arr_[i], mbParams_[index].validity);
-                logDebug.add(WarningMsg, message);
+                logDebug.add(WarningMsg, "mbCmd0x03 %d %d %d %d", devAdrs_,
+                             index, int32Arr_[i], mbParams_[index].validity);
               }
               putMessageUpdateId(mbParams_[index].id);
               index++;
@@ -591,9 +561,7 @@ void DeviceModbus::exchangeTask()
             for (int i = 0; i < count; i++) {
               mbParams_[index].validity = err_r;
               if (isConnect()) {
-                char message[SIZE_MSG_DEBUG];
-                sprintf(message, "mbCmd0x03 %d %d %d", devAdrs_, index, int32Arr_[i]);
-                logDebug.add(WarningMsg, message);
+                logDebug.add(WarningMsg, "mbCmd0x03 %d %d %d", devAdrs_, index, int32Arr_[i]);
               }
               putMessageUpdateId(mbParams_[index].id);
               index++;
@@ -609,9 +577,8 @@ void DeviceModbus::exchangeTask()
               mbParams_[index].value.uint32_t = int32Arr_[i];
               mbParams_[index].validity = checkRange(mbParams_[index].value.uint32_t, mbParams_[index].min, mbParams_[index].max, true);
               if (mbParams_[index].validity != ok_r) {
-                char message[SIZE_MSG_DEBUG];
-                sprintf(message, "mbCmd0x03 %d %d %d %d", devAdrs_, index, int32Arr_[i], mbParams_[index].validity);
-                logDebug.add(WarningMsg, message);
+                logDebug.add(WarningMsg, "mbCmd0x03 %d %d %d %d", devAdrs_,
+                             index, int32Arr_[i], mbParams_[index].validity);
               }
               putMessageUpdateId(mbParams_[index].id);
               index++;
@@ -622,9 +589,7 @@ void DeviceModbus::exchangeTask()
             for (int i = 0; i < count; i++) {
               mbParams_[index].validity = err_r;
               if (isConnect()) {
-                char message[SIZE_MSG_DEBUG];
-                sprintf(message, "mbCmd0x03 %d %d %d", devAdrs_, index, int32Arr_[i]);
-                logDebug.add(WarningMsg, message);
+                logDebug.add(WarningMsg, "mbCmd0x03 %d %d %d", devAdrs_, index, int32Arr_[i]);
               }
               putMessageUpdateId(mbParams_[index].id);
               index++;
@@ -641,9 +606,8 @@ void DeviceModbus::exchangeTask()
               mbParams_[index].value.float_t = float32Arr_[i];
               mbParams_[index].validity = checkRange(mbParams_[index].value.float_t, mbParams_[index].min, mbParams_[index].max, true);
               if (mbParams_[index].validity != ok_r) {
-                char message[SIZE_MSG_DEBUG];
-                sprintf(message, "mbCmd0x03 %d %d %f %d", devAdrs_, index, float32Arr_[i], mbParams_[index].validity);
-                logDebug.add(WarningMsg, message);
+                logDebug.add(WarningMsg, "mbCmd0x03 %d %d %f %d", devAdrs_,
+                             index, float32Arr_[i], mbParams_[index].validity);
               }
               putMessageUpdateId(mbParams_[index].id);
               index++;
@@ -654,9 +618,7 @@ void DeviceModbus::exchangeTask()
             for (int i = 0; i < count; i++) {
               mbParams_[index].validity = err_r;
               if (isConnect()) {
-                char message[SIZE_MSG_DEBUG];
-                sprintf(message, "mbCmd0x03 %d %d %f", devAdrs_, index, float32Arr_[i]);
-                logDebug.add(WarningMsg, message);
+                logDebug.add(WarningMsg, "mbCmd0x03 %d %d %f", devAdrs_, index, float32Arr_[i]);
               }
               putMessageUpdateId(mbParams_[index].id);
               index++;

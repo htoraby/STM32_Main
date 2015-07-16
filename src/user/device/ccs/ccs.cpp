@@ -175,9 +175,7 @@ void Ccs::vsdConditionTask()
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
       }
       else {
-        char message[SIZE_MSG_DEBUG];
-        sprintf(message, "Ошибка останова");
-        logDebug.add(WarningMsg, message);
+        logDebug.add(WarningMsg, "Ошибка останова");
       }
       break;
     case VSD_CONDITION_RUN:
@@ -201,9 +199,7 @@ void Ccs::vsdConditionTask()
       if (vsd->start() == ok_r) {
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
       } else {
-        char message[SIZE_MSG_DEBUG];
-        sprintf(message, "Ошибка запуска");
-        logDebug.add(WarningMsg, message);
+        logDebug.add(WarningMsg, "Ошибка запуска");
       }
       break;
     }
@@ -1169,7 +1165,8 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       return err;
     }
     break;
-  case CCS_SCADA_TYPE:
+  case CCS_SCADA_TYPE: case CCS_SCADA_ADDRESS: case CCS_SCADA_BYTERATE:
+  case CCS_SCADA_PARITY: case CCS_SCADA_DELAY:
     {
       uint8_t err = setValue(id, value, eventType);
       if ((value != oldValue) && !err)
