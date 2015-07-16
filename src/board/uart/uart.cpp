@@ -44,6 +44,7 @@ StatusType uartInit(uartNum num, uint32_t baudRate, uint32_t parity, uint32_t st
   uartX->Init.HwFlowCtl = UART_HWCONTROL_NONE;
   uartX->Init.OverSampling = UART_OVERSAMPLING_16;
 
+  uarts[num].semaphoreId = NULL;
   if (HAL_UART_Init(uartX) == HAL_OK) {
     // Разрешение прерываний
     if (HAL_UART_Receive_IT(uartX, uarts[num].rxBuffer, UART_BUF_SIZE) == HAL_OK) {
@@ -58,7 +59,8 @@ StatusType uartInit(uartNum num, uint32_t baudRate, uint32_t parity, uint32_t st
 
 HAL_StatusTypeDef uartClose(uartNum num)
 {
-  osSemaphoreDelete(uarts[num].semaphoreId);
+  if (uarts[num].semaphoreId)
+    osSemaphoreDelete(uarts[num].semaphoreId);
 
   UART_HandleTypeDef *uartX = &uarts[num].uart;
   /* Process Locked */

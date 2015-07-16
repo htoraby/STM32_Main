@@ -11,12 +11,13 @@
 
 VsdEtalon::VsdEtalon()
 {
-
+  regimeRun_ = new RegimeRunEtalon();
 }
 
 VsdEtalon::~VsdEtalon()
 {
-  // TODO Auto-generated destructor stub
+  delete regimeRun_;
+  delete dm_;
 }
 
 void VsdEtalon::init()
@@ -33,8 +34,6 @@ void VsdEtalon::init()
 
   initParameters();
   readParameters();
-
-  regimeRun_ = new RegimeRunEtalon();
 }
 
 // Метод заполнения внутреннего банка параметров по карте устройства

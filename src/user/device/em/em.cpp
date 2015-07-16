@@ -1,5 +1,6 @@
 ﻿#include "em.h"
 #include "uart.h"
+#include "user_main.h"
 
 Em::Em() : Device(EM_BEGIN, parametersArray_, EM_END - EM_BEGIN)
 {
@@ -15,7 +16,7 @@ void Em::openPort(uint32_t baudRate, uint32_t parity, uint32_t stopBits)
 {
   // Инициализация UART
   if (uartInit(EM_UART, baudRate, parity, stopBits) == StatusError) {
-    // TODO: Предупреждение об ошибке инициализации UART
+    logDebug.add(CriticalMsg, "Ошибка инициализации UART EM");
   } else {
     semaphoreAnswer_ = uartGetSemaphoreId(EM_UART);
   }
@@ -30,8 +31,7 @@ StatusType Em::sendUart(uint8_t *data, int count)
 {
   StatusType status = StatusOk;
   if (uartWriteData(EM_UART, data, count) == StatusError) {
-    // TODO: Предупреждение об ошибке отправки данных
-
+    logDebug.add(WarningMsg, "Ошибка отправки данных UART EM");
     status = StatusError;
   }
   return status;

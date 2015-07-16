@@ -10,7 +10,7 @@ class RegimeRunEtalon : public Regime
 {
 public:
   RegimeRunEtalon();
-  ~RegimeRunEtalon();
+  virtual ~RegimeRunEtalon();
 
   void processing();
   void automatRegime();

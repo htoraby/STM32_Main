@@ -34,10 +34,12 @@ void userInit()
   createScada();
 }
 
-void createVsd()
+void createVsd(bool init)
 {
-  if (vsd)
+  if (vsd) {
     delete vsd;
+    vsd = NULL;
+  }
 
   uint8_t type = parameters.get(CCS_TYPE_VSD);
   switch (type) {
@@ -51,12 +53,17 @@ void createVsd()
     vsd = new Vsd();
     break;
   }
+
+  if (init)
+    vsd->init();
 }
 
-void createDhs()
+void createDhs(bool init)
 {
-  if (tms)
+  if (tms) {
     delete tms;
+    tms = NULL;
+  }
 
   uint8_t type = parameters.get(CCS_DHS_TYPE);
   switch (type) {
@@ -67,12 +74,17 @@ void createDhs()
     tms = new Tms();
     break;
   }
+
+  if (init)
+    tms->init();
 }
 
-void createEm()
+void createEm(bool init)
 {
-  if (em)
+  if (em) {
     delete em;
+    em = NULL;
+  }
 
   uint8_t type = parameters.get(CCS_EM_TYPE);
   switch (type) {
@@ -83,6 +95,9 @@ void createEm()
     em = new Em();
     break;
   }
+
+  if (init)
+    em->init();
 }
 
 void createScada()

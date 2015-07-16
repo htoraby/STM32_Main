@@ -24,9 +24,9 @@ extern Scada *scada;
  * \brief Инициализация пользовательских задач и объектов
  */
 void userInit();
-void createVsd();
-void createDhs();
-void createEm();
+void createVsd(bool init = false);
+void createDhs(bool init = false);
+void createEm(bool init = false);
 void createScada();
 
 #endif // USER_MAIN_H

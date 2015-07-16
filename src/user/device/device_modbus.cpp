@@ -16,7 +16,7 @@ static void deviceModbusTask(void *p)
 
 DeviceModbus::DeviceModbus(ModbusParameter *modbusParameters,
                            int countParameter,
-                           int portName,
+                           int numPort,
                            long baudRate,
                            int dataBits,
                            int stopBits,
@@ -24,18 +24,22 @@ DeviceModbus::DeviceModbus(ModbusParameter *modbusParameters,
                            int address)
   : mbParams_(modbusParameters)
   , countParameter_(countParameter)
+  , numPort_(numPort)
   , devAdrs_(address)
   , indexExchange_(1)
 {
   // Создаём экземпляр класса ModbusMasterSerial
-  mms_ = new ModbusMasterSerial(portName);
+  mms_ = new ModbusMasterSerial();
   // Открываем порт
-  mms_->openProtocol(portName, baudRate, dataBits, stopBits, parity);
+  mms_->openProtocol(numPort_, baudRate, dataBits, stopBits, parity);
 }
 
 DeviceModbus::~DeviceModbus()
 {
   osThreadTerminate(threadId_);
+  osMessageDelete(messageOutOfTurn_);
+  mms_->closeProtocol(numPort_);
+  delete mms_;
 }
 
 void DeviceModbus::createThread(const char *threadName, osMessageQId getValueDeviceQId)

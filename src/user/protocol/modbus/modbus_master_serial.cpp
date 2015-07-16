@@ -9,14 +9,14 @@
 #include "user_main.h"
 
 
-ModbusMasterSerial::ModbusMasterSerial(int com)
+ModbusMasterSerial::ModbusMasterSerial()
 {
-  numberComPort_ = com;
+
 }
 
 ModbusMasterSerial::~ModbusMasterSerial()
 {
-	// TODO Auto-generated destructor stub
+
 }
 
 int ModbusMasterSerial::openProtocol(int portName,
@@ -25,6 +25,7 @@ int ModbusMasterSerial::openProtocol(int portName,
                                      int stopBits,
                                      int parity)
 {
+  numberComPort_ = portName;
   int Result = err_r;
 	try	{
     // Вызываем функцию инициализации UART

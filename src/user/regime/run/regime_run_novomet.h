@@ -10,7 +10,7 @@ class RegimeRunNovomet : public Regime
 {
 public:
   RegimeRunNovomet();
-  ~RegimeRunNovomet();
+  virtual ~RegimeRunNovomet();
 
   void processing();
 

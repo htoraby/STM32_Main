@@ -20,7 +20,9 @@ static void deviceUpdateValueTask(void *p)
 }
 
 Device::Device(uint32_t startAddrParams, parameter *parameters, uint16_t countParameters)
-  : startAddrParams_(startAddrParams)
+  : updateValueThreadId_(NULL)
+  , getValueDeviceQId_(NULL)
+  , startAddrParams_(startAddrParams)
   , parameters_(parameters)
   , countParameters_(countParameters)
 {
@@ -29,7 +31,10 @@ Device::Device(uint32_t startAddrParams, parameter *parameters, uint16_t countPa
 
 Device::~Device()
 {
-  osThreadTerminate(updateValueThreadId_);
+  if (updateValueThreadId_)
+    osThreadTerminate(updateValueThreadId_);
+  if (getValueDeviceQId_)
+    osMessageDelete(getValueDeviceQId_);
 }
 
 void Device::init()

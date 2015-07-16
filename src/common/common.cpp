@@ -1,12 +1,12 @@
 #include "common.h"
 #include "cmsis_os.h"
+#include "user_main.h"
 
 void *operator new(size_t size)
 {
   void *p = pvPortMalloc(size);
   if (p == NULL) {
-    // Ошибка: память не выделена
-    asm("nop");
+    logDebug.add(CriticalMsg, "Ошибка: память не выделена");
   }
   return p;
 }

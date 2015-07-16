@@ -376,7 +376,7 @@ TmsNovomet::TmsNovomet()
 
 TmsNovomet::~TmsNovomet()
 {
-
+  delete dm_;
 }
 
 void TmsNovomet::init()

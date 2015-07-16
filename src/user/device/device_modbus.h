@@ -45,7 +45,7 @@ public:
    *
    * \param modbusParameters - указатель на карту регистров
    * \param countParameter Количество регистров в массиве
-   * \param portName - номер имя порта uart
+   * \param numPort - номер имя порта uart
    * \param baudRate - скорость обмена
    * \param dataBits - количество бит данных
    * \param stopBits - количество стоп бит
@@ -54,7 +54,7 @@ public:
    */
   DeviceModbus(ModbusParameter *modbusParameters,
                int countParameter,
-               int portName,
+               int numPort,
                long baudRate,
                int dataBits,
                int stopBits,
@@ -289,6 +289,7 @@ private:
   //! Количество параметров в массиве
   uint16_t countParameter_;
 
+  int numPort_;
   uint8_t devAdrs_;
   int indexExchange_;
 

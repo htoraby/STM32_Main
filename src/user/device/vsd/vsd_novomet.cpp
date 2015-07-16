@@ -12,12 +12,13 @@
 
 VsdNovomet::VsdNovomet()
 {
-
+  regimeRun_ = new RegimeRunNovomet();
 }
 
 VsdNovomet::~VsdNovomet()
 {
-  // TODO Auto-generated destructor stub
+  delete regimeRun_;
+  delete dm_;
 }
 
 void VsdNovomet::init()
@@ -34,8 +35,6 @@ void VsdNovomet::init()
 
   initParameters();
   readParameters();
-
-  regimeRun_ = new RegimeRunNovomet();
 }
 
 void VsdNovomet::initParameters()

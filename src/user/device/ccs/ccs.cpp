@@ -1144,24 +1144,43 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     startReboot();
     break;
   case CCS_TYPE_VSD:
-    if (value)
-      logEvent.add(AddDeviceCode, eventType, AddDeviceVsdId, oldValue, value);
-    else
-      logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceVsdId, oldValue, value);
-    startReboot();
+    {
+      uint8_t err = setValue(id, value, eventType);
+      if ((value != oldValue) && !err) {
+        if (value)
+          logEvent.add(AddDeviceCode, eventType, AddDeviceVsdId, oldValue, value);
+        else
+          logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceVsdId, oldValue, value);
+        startReboot();
+      }
+      return err;
+    }
     break;
   case CCS_EM_TYPE:
-    if (value)
-      logEvent.add(AddDeviceCode, eventType, AddDeviceEmId, oldValue, value);
-    else
-      logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceEmId, oldValue, value);
-    startReboot();
+    {
+      uint8_t err = setValue(id, value, eventType);
+      if ((value != oldValue) && !err) {
+        if (value)
+          logEvent.add(AddDeviceCode, eventType, AddDeviceEmId, oldValue, value);
+        else
+          logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceEmId, oldValue, value);
+        startReboot();
+      }
+      return err;
+    }
     break;
   case CCS_FILTER_OUTPUT:
-    if (value)
-      logEvent.add(AddDeviceCode, eventType, AddDeviceFiltOutId, oldValue, value);
-    else
-      logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceFiltOutId, oldValue, value);
+    {
+      uint8_t err = setValue(id, value, eventType);
+      if ((value != oldValue) && !err) {
+        if (value)
+          logEvent.add(AddDeviceCode, eventType, AddDeviceFiltOutId, oldValue, value);
+        else
+          logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceFiltOutId, oldValue, value);
+
+      }
+      return err;
+    }
     break;
   case CCS_SCADA_TYPE:
     {
@@ -1170,6 +1189,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
         createScada();
       return err;
     }
+    break;
   default:
     break;
   }
@@ -1450,6 +1470,6 @@ void Ccs::startReboot()
 
 void Ccs::reboot()
 {
-  osDelay(500);
+  osDelay(250);
   HAL_NVIC_SystemReset();
 }
