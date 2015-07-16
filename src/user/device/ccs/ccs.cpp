@@ -797,17 +797,7 @@ float Ccs::calcMotorSpeed()
 
 float Ccs::calcMotorCos()
 {
-  float actPwr = parameters.get(VSD_POWER_ACTIVE);
-  float fullPwr =  parameters.get(VSD_POWER_FULL);
-  float cos = actPwr;
-  if (fullPwr != 0) {
-    cos = actPwr / fullPwr;
-  }
-  if (cos < 0)
-    cos = cos * (-1);
-  if (cos > 1)
-    cos = 1;
-  setValue(CCS_MOTOR_COS_PHI_NOW, cos);
+  setValue(CCS_MOTOR_COS_PHI_NOW, parameters.get(VSD_MOTOR_COS_PHI_NOW));
   return parameters.get(CCS_MOTOR_COS_PHI_NOW);
 }
 

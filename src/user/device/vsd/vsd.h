@@ -249,6 +249,12 @@ public:
 
   bool setBitVsdStatus(uint8_t bit, bool flag);
 
+  /*!
+   * \brief Функция вычисления текущего cos ЧРП по активной и полной мощности
+   * \return
+   */
+  int calcVsdCos();
+
 private:
   //! Массив параметров устройства
   parameter parametersArray_[VSD_END - VSD_BEGIN];

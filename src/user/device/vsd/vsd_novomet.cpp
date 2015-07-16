@@ -134,20 +134,20 @@ void VsdNovomet::getNewValue(uint16_t id)
   case VSD_INVERTOR_STATUS:
     calcRotation();
     break;
-  case  VSD_VOLTAGE_DC:
+  case VSD_VOLTAGE_DC:
     calcCurrentDC();
     break;
-  case  VSD_POWER_ACTIVE:
+  case VSD_POWER_ACTIVE:
+    calcVsdCos();
     calcCurrentDC();
+    break;
+  case VSD_POWER_FULL:
+    calcVsdCos();
     break;
   default:                                  // Прямая запись в массив параметров
     setValue(id, value);
     break;
-
   }
-
-
-  calcParameters(id);
 }
 
 uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
