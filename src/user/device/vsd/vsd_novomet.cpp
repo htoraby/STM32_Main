@@ -78,12 +78,14 @@ void VsdNovomet::getNewValue(uint16_t id)
   float value = 0;
   ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtId(id));
 
+  // Проверка на валидность параметра в устройсте
   if (param->validity == err_r) {
     value = NAN;
     setValue(id, value);
     return;
   }
 
+  // Преобразование типа данных устройства -> float
   switch (param->typeData) {
   case TYPE_DATA_INT16:
     value = (float)param->value.int16_t[0];
@@ -103,10 +105,48 @@ void VsdNovomet::getNewValue(uint16_t id)
   default:
     break;
   }
+
+  // Применение коэффициента из устройства
   value = value * param->coefficient;
+
+  // Преобразование из единиц измерения устройства в единицы КСУ
   value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
-  setValue(id, value);
-  calcParameters(id);
+
+  // Особенная обработка некоторых параметров
+  switch (id) {
+  case VSD_CURRENT_OUT_PHASE_1:             // Выходной ток ЧРП Фаза 1
+    setValue(id, getValue(VSD_COEF_OUT_CURRENT_1) * value);
+    break;
+  case VSD_CURRENT_OUT_PHASE_2:             // Выходной ток ЧРП Фаза 2
+    setValue(id, getValue(VSD_COEF_OUT_CURRENT_2) * value);
+    break;
+  case VSD_CURRENT_OUT_PHASE_3:             // Выходной ток ЧРП Фаза 3
+    setValue(id, getValue(VSD_COEF_OUT_CURRENT_3) * value);
+    break;
+  case VSD_INVERTOR_STATUS2:
+    calcMotorType();
+    break;
+  case VSD_T_SPEEDUP:
+    calcTempSpeedUp();
+    calcTimeSpeedUp();
+    break;
+  case VSD_INVERTOR_STATUS:
+    calcRotation();
+    break;
+  case VSD_VOLTAGE_DC:
+    calcCurrentDC();
+    break;
+  case VSD_POWER_ACTIVE:
+    calcVsdCos();
+    calcCurrentDC();
+    break;
+  case VSD_POWER_FULL:
+    calcVsdCos();
+    break;
+  default:                                  // Прямая запись в массив параметров
+    setValue(id, value);
+    break;
+  }
 }
 
 uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
@@ -432,27 +472,7 @@ int VsdNovomet::setSwitchingFrequency(float value)
 
 void VsdNovomet::calcParameters(uint16_t id)
 {
-  switch (id) {
-  case VSD_INVERTOR_STATUS2:
-    calcMotorType();
-    break;
-  case VSD_T_SPEEDUP:
-    calcTempSpeedUp();
-    calcTimeSpeedUp();
-    break;
-  case VSD_INVERTOR_STATUS:
-    calcRotation();
-    break;
-  case  VSD_VOLTAGE_DC:
-    calcCurrentDC();
-    break;
-  case  VSD_POWER_ACTIVE:
-    calcCurrentDC();
-    break;
-  default:
 
-    break;
-  }
 }
 
 int VsdNovomet::onRegimePush()

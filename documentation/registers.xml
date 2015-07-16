@@ -8129,9 +8129,11 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<min>0.1</min>
+		<max>10.0</max>
+		<def>1.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
 		<text>Коэффициент коррекции тока Ia</text>
 		<short_text>Коэфф.коррек.тока Ia</short_text>
 		<form>5.2 Корректировки</form>
@@ -8147,9 +8149,11 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<min>0.1</min>
+		<max>10.0</max>
+		<def>1.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
 		<text>Коэффициент коррекции тока Ib</text>
 		<short_text>Коэфф.коррек.тока Ib</short_text>
 		<form>5.2 Корректировки</form>
@@ -8165,9 +8169,11 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>10000000.0</max>
+		<min>0.1</min>
+		<max>10.0</max>
+		<def>1.0</def>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
 		<text>Коэффициент коррекции тока Ic</text>
 		<short_text>Коэфф.коррек.тока Ic</short_text>
 		<form>5.2 Корректировки</form>
@@ -16219,6 +16225,106 @@
 	</param>
 	<param>
 		<id>10317</id>
+		<name>VSD_COEF_OUT_CURRENT_1</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.1</min>
+		<max>10.0</max>
+		<def>1.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Коэффициент коррекции тока Ia в ЧРП</text>
+		<short_text>Коэфф.коррек.тока Ia в ЧРП</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Коэффициент корректировки выходного тока фаза U в ЧРП</comment>
+	</param>
+	<param>
+		<id>10318</id>
+		<name>VSD_COEF_OUT_CURRENT_2</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.1</min>
+		<max>10.0</max>
+		<def>1.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Коэффициент коррекции тока Ib в ЧРП</text>
+		<short_text>Коэфф.коррек.тока Ib в ЧРП</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Коэффициент корректировки выходного тока фаза U в ЧРП</comment>
+	</param>
+	<param>
+		<id>10319</id>
+		<name>VSD_COEF_OUT_CURRENT_3</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.1</min>
+		<max>10.0</max>
+		<def>1.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Коэффициент коррекции тока Ic в ЧРП</text>
+		<short_text>Коэфф.коррек.тока Ic в ЧРП</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Коэффициент корректировки выходного тока фаза U в ЧРП</comment>
+	</param>
+	<param>
+		<id>10320</id>
+		<name>VSD_MOTOR_COS_PHI_NOW</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Коэффициент мощности в ЧРП</text>
+		<short_text>Коэф.мощности в ЧРП</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXX_XX</format>
+		<code>0</code>
+		<comment>Текущий Косинус Фи в ЧРП</comment>
+	</param>
+	<param>
+		<id>10321</id>
+		<name>VSD_MOTOR_LOAD_NOW</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>0.0</min>
+		<max>200.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Загрузка ПЭД в ЧРП</text>
+		<short_text>Загрузка в ЧРП</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Текущая загрузка двигателя в ЧРП</comment>
+	</param>
+	<param>
+		<id>10322</id>
 		<name>VSD_END</name>
 		<code>0</code>
 	</param>

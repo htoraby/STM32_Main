@@ -5629,10 +5629,10 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_OUT_CURRENT_1 - CCS_BEGIN].operation                      = OPERATION_WRITE;
   parameters_[CCS_COEF_OUT_CURRENT_1 - CCS_BEGIN].physic                         = PHYSIC_NUMERIC;
   parameters_[CCS_COEF_OUT_CURRENT_1 - CCS_BEGIN].validity                       = VALIDITY_OK;
-  parameters_[CCS_COEF_OUT_CURRENT_1 - CCS_BEGIN].value.float_t                  = 0;
-  parameters_[CCS_COEF_OUT_CURRENT_1 - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_COEF_OUT_CURRENT_1 - CCS_BEGIN].max                            = 10000000.0;
-  parameters_[CCS_COEF_OUT_CURRENT_1 - CCS_BEGIN].def                            = 0;
+  parameters_[CCS_COEF_OUT_CURRENT_1 - CCS_BEGIN].value.float_t                  = 1.0;
+  parameters_[CCS_COEF_OUT_CURRENT_1 - CCS_BEGIN].min                            = 0.1;
+  parameters_[CCS_COEF_OUT_CURRENT_1 - CCS_BEGIN].max                            = 10.0;
+  parameters_[CCS_COEF_OUT_CURRENT_1 - CCS_BEGIN].def                            = 1.0;
   parameters_[CCS_COEF_OUT_CURRENT_1 - CCS_BEGIN].code                           = 13;
   // Коэффициент корректировки выходного тока фаза V
   parameters_[CCS_COEF_OUT_CURRENT_2 - CCS_BEGIN].id                             = CCS_COEF_OUT_CURRENT_2;
@@ -5640,10 +5640,10 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_OUT_CURRENT_2 - CCS_BEGIN].operation                      = OPERATION_WRITE;
   parameters_[CCS_COEF_OUT_CURRENT_2 - CCS_BEGIN].physic                         = PHYSIC_NUMERIC;
   parameters_[CCS_COEF_OUT_CURRENT_2 - CCS_BEGIN].validity                       = VALIDITY_OK;
-  parameters_[CCS_COEF_OUT_CURRENT_2 - CCS_BEGIN].value.float_t                  = 0;
-  parameters_[CCS_COEF_OUT_CURRENT_2 - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_COEF_OUT_CURRENT_2 - CCS_BEGIN].max                            = 10000000.0;
-  parameters_[CCS_COEF_OUT_CURRENT_2 - CCS_BEGIN].def                            = 0;
+  parameters_[CCS_COEF_OUT_CURRENT_2 - CCS_BEGIN].value.float_t                  = 1.0;
+  parameters_[CCS_COEF_OUT_CURRENT_2 - CCS_BEGIN].min                            = 0.1;
+  parameters_[CCS_COEF_OUT_CURRENT_2 - CCS_BEGIN].max                            = 10.0;
+  parameters_[CCS_COEF_OUT_CURRENT_2 - CCS_BEGIN].def                            = 1.0;
   parameters_[CCS_COEF_OUT_CURRENT_2 - CCS_BEGIN].code                           = 13;
   // Коэффициент корректировки выходного тока фаза W
   parameters_[CCS_COEF_OUT_CURRENT_3 - CCS_BEGIN].id                             = CCS_COEF_OUT_CURRENT_3;
@@ -5651,10 +5651,10 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_OUT_CURRENT_3 - CCS_BEGIN].operation                      = OPERATION_WRITE;
   parameters_[CCS_COEF_OUT_CURRENT_3 - CCS_BEGIN].physic                         = PHYSIC_NUMERIC;
   parameters_[CCS_COEF_OUT_CURRENT_3 - CCS_BEGIN].validity                       = VALIDITY_OK;
-  parameters_[CCS_COEF_OUT_CURRENT_3 - CCS_BEGIN].value.float_t                  = 0;
-  parameters_[CCS_COEF_OUT_CURRENT_3 - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_COEF_OUT_CURRENT_3 - CCS_BEGIN].max                            = 10000000.0;
-  parameters_[CCS_COEF_OUT_CURRENT_3 - CCS_BEGIN].def                            = 0;
+  parameters_[CCS_COEF_OUT_CURRENT_3 - CCS_BEGIN].value.float_t                  = 1.0;
+  parameters_[CCS_COEF_OUT_CURRENT_3 - CCS_BEGIN].min                            = 0.1;
+  parameters_[CCS_COEF_OUT_CURRENT_3 - CCS_BEGIN].max                            = 10.0;
+  parameters_[CCS_COEF_OUT_CURRENT_3 - CCS_BEGIN].def                            = 1.0;
   parameters_[CCS_COEF_OUT_CURRENT_3 - CCS_BEGIN].code                           = 13;
   // Коэффициент корректировки сопротивления изоляции
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].id                      = CCS_COEF_RESISTANCE_ISOLATION;

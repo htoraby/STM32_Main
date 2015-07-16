@@ -71,9 +71,9 @@ void LogData::add(uint8_t code)
 
   *(float*)(buffer+9) = parameters.get(CCS_NUMBER_WELL);
   *(float*)(buffer+13) = parameters.get(VSD_FREQUENCY_NOW);
-  *(float*)(buffer+17) = parameters.get(VSD_CURRENT_OUT_PHASE_1);
-  *(float*)(buffer+21) = parameters.get(VSD_CURRENT_OUT_PHASE_2);
-  *(float*)(buffer+25) = parameters.get(VSD_CURRENT_OUT_PHASE_3);
+  *(float*)(buffer+17) = parameters.get(CCS_MOTOR_CURRENT_PHASE_1);
+  *(float*)(buffer+21) = parameters.get(CCS_MOTOR_CURRENT_PHASE_2);
+  *(float*)(buffer+25) = parameters.get(CCS_MOTOR_CURRENT_PHASE_3);
   *(float*)(buffer+29) = parameters.get(VSD_MOTOR_VOLTAGE);
   *(float*)(buffer+33) = parameters.get(CCS_MOTOR_CURRENT_IMBALANCE);
   *(float*)(buffer+37) = parameters.get(VSD_MOTOR_COS_PHI);

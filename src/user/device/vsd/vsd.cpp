@@ -157,6 +157,22 @@ int Vsd::setTempSpeedDown(float value)
   return err_r;
 }
 
+int Vsd::calcVsdCos()
+{
+  float actPwr = parameters.get(VSD_POWER_ACTIVE);
+  float fullPwr =  parameters.get(VSD_POWER_FULL);
+  float cos = actPwr;
+  if (fullPwr != 0) {
+    cos = actPwr / fullPwr;
+  }
+  if (cos < 0)
+    cos = cos * (-1);
+  if (cos > 1)
+    cos = 1;
+  setValue(VSD_MOTOR_COS_PHI_NOW, cos);
+  return parameters.get(VSD_MOTOR_COS_PHI_NOW);
+}
+
 int Vsd::setRotation(float value)
 {
   return setValue(VSD_ROTATION, value);

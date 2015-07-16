@@ -273,7 +273,7 @@ public:
   void calcParameters(uint16_t id);
 
 private:
-  ModbusParameter modbusParameters_[113];
+  ModbusParameter modbusParameters_[114];
   DeviceModbus *dm_;
 
   RegimeRunEtalon *regimeRun_;
