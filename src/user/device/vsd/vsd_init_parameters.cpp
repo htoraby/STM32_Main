@@ -3489,5 +3489,60 @@ void Vsd::initParameters()
   parameters_[VSD_VOLTAGE_PHASE_3_1 - VSD_BEGIN].max                             = 500.0;
   parameters_[VSD_VOLTAGE_PHASE_3_1 - VSD_BEGIN].def                             = 100.0;
   parameters_[VSD_VOLTAGE_PHASE_3_1 - VSD_BEGIN].code                            = 0;
+  // Коэффициент корректировки выходного тока фаза U в ЧРП
+  parameters_[VSD_COEF_OUT_CURRENT_1 - VSD_BEGIN].id                             = VSD_COEF_OUT_CURRENT_1;
+  parameters_[VSD_COEF_OUT_CURRENT_1 - VSD_BEGIN].access                         = ACCESS_TECHNOLOG;
+  parameters_[VSD_COEF_OUT_CURRENT_1 - VSD_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[VSD_COEF_OUT_CURRENT_1 - VSD_BEGIN].physic                         = PHYSIC_NUMERIC;
+  parameters_[VSD_COEF_OUT_CURRENT_1 - VSD_BEGIN].validity                       = VALIDITY_OK;
+  parameters_[VSD_COEF_OUT_CURRENT_1 - VSD_BEGIN].value.float_t                  = 1.0;
+  parameters_[VSD_COEF_OUT_CURRENT_1 - VSD_BEGIN].min                            = 0.1;
+  parameters_[VSD_COEF_OUT_CURRENT_1 - VSD_BEGIN].max                            = 10.0;
+  parameters_[VSD_COEF_OUT_CURRENT_1 - VSD_BEGIN].def                            = 1.0;
+  parameters_[VSD_COEF_OUT_CURRENT_1 - VSD_BEGIN].code                           = 13;
+  // Коэффициент корректировки выходного тока фаза U в ЧРП
+  parameters_[VSD_COEF_OUT_CURRENT_2 - VSD_BEGIN].id                             = VSD_COEF_OUT_CURRENT_2;
+  parameters_[VSD_COEF_OUT_CURRENT_2 - VSD_BEGIN].access                         = ACCESS_TECHNOLOG;
+  parameters_[VSD_COEF_OUT_CURRENT_2 - VSD_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[VSD_COEF_OUT_CURRENT_2 - VSD_BEGIN].physic                         = PHYSIC_NUMERIC;
+  parameters_[VSD_COEF_OUT_CURRENT_2 - VSD_BEGIN].validity                       = VALIDITY_OK;
+  parameters_[VSD_COEF_OUT_CURRENT_2 - VSD_BEGIN].value.float_t                  = 1.0;
+  parameters_[VSD_COEF_OUT_CURRENT_2 - VSD_BEGIN].min                            = 0.1;
+  parameters_[VSD_COEF_OUT_CURRENT_2 - VSD_BEGIN].max                            = 10.0;
+  parameters_[VSD_COEF_OUT_CURRENT_2 - VSD_BEGIN].def                            = 1.0;
+  parameters_[VSD_COEF_OUT_CURRENT_2 - VSD_BEGIN].code                           = 13;
+  // Коэффициент корректировки выходного тока фаза U в ЧРП
+  parameters_[VSD_COEF_OUT_CURRENT_3 - VSD_BEGIN].id                             = VSD_COEF_OUT_CURRENT_3;
+  parameters_[VSD_COEF_OUT_CURRENT_3 - VSD_BEGIN].access                         = ACCESS_TECHNOLOG;
+  parameters_[VSD_COEF_OUT_CURRENT_3 - VSD_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[VSD_COEF_OUT_CURRENT_3 - VSD_BEGIN].physic                         = PHYSIC_NUMERIC;
+  parameters_[VSD_COEF_OUT_CURRENT_3 - VSD_BEGIN].validity                       = VALIDITY_OK;
+  parameters_[VSD_COEF_OUT_CURRENT_3 - VSD_BEGIN].value.float_t                  = 1.0;
+  parameters_[VSD_COEF_OUT_CURRENT_3 - VSD_BEGIN].min                            = 0.1;
+  parameters_[VSD_COEF_OUT_CURRENT_3 - VSD_BEGIN].max                            = 10.0;
+  parameters_[VSD_COEF_OUT_CURRENT_3 - VSD_BEGIN].def                            = 1.0;
+  parameters_[VSD_COEF_OUT_CURRENT_3 - VSD_BEGIN].code                           = 13;
+  // Текущий Косинус Фи в ЧРП
+  parameters_[VSD_MOTOR_COS_PHI_NOW - VSD_BEGIN].id                              = VSD_MOTOR_COS_PHI_NOW;
+  parameters_[VSD_MOTOR_COS_PHI_NOW - VSD_BEGIN].access                          = ACCESS_OPERATOR;
+  parameters_[VSD_MOTOR_COS_PHI_NOW - VSD_BEGIN].operation                       = OPERATION_READ;
+  parameters_[VSD_MOTOR_COS_PHI_NOW - VSD_BEGIN].physic                          = PHYSIC_NUMERIC;
+  parameters_[VSD_MOTOR_COS_PHI_NOW - VSD_BEGIN].validity                        = VALIDITY_OK;
+  parameters_[VSD_MOTOR_COS_PHI_NOW - VSD_BEGIN].value.float_t                   = 0.0;
+  parameters_[VSD_MOTOR_COS_PHI_NOW - VSD_BEGIN].min                             = 0.0;
+  parameters_[VSD_MOTOR_COS_PHI_NOW - VSD_BEGIN].max                             = 1.0;
+  parameters_[VSD_MOTOR_COS_PHI_NOW - VSD_BEGIN].def                             = 0.0;
+  parameters_[VSD_MOTOR_COS_PHI_NOW - VSD_BEGIN].code                            = 0;
+  // Текущая загрузка двигателя в ЧРП
+  parameters_[VSD_MOTOR_LOAD_NOW - VSD_BEGIN].id                                 = VSD_MOTOR_LOAD_NOW;
+  parameters_[VSD_MOTOR_LOAD_NOW - VSD_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[VSD_MOTOR_LOAD_NOW - VSD_BEGIN].operation                          = OPERATION_READ;
+  parameters_[VSD_MOTOR_LOAD_NOW - VSD_BEGIN].physic                             = PHYSIC_PERCENT;
+  parameters_[VSD_MOTOR_LOAD_NOW - VSD_BEGIN].validity                           = VALIDITY_OK;
+  parameters_[VSD_MOTOR_LOAD_NOW - VSD_BEGIN].value.float_t                      = 0.0;
+  parameters_[VSD_MOTOR_LOAD_NOW - VSD_BEGIN].min                                = 0.0;
+  parameters_[VSD_MOTOR_LOAD_NOW - VSD_BEGIN].max                                = 200.0;
+  parameters_[VSD_MOTOR_LOAD_NOW - VSD_BEGIN].def                                = 0.0;
+  parameters_[VSD_MOTOR_LOAD_NOW - VSD_BEGIN].code                               = 0;
 }
 
