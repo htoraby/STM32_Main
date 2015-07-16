@@ -660,24 +660,21 @@ float Ccs::calcMotorCurrentPhase(float vsdCurOut)
 float Ccs::calcMotorCurrentPhase1()
 {
   setValue(CCS_MOTOR_CURRENT_PHASE_1,
-           calcMotorCurrentPhase(applyCoef(parameters.get(VSD_CURRENT_OUT_PHASE_1),
-                                           parameters.get(CCS_COEF_OUT_CURRENT_1))));
+           calcMotorCurrentPhase(parameters.get(VSD_CURRENT_OUT_PHASE_1)));
   return parameters.get(CCS_MOTOR_CURRENT_PHASE_1);
 }
 
 float Ccs::calcMotorCurrentPhase2()
 {
   setValue(CCS_MOTOR_CURRENT_PHASE_2,
-           calcMotorCurrentPhase(applyCoef(parameters.get(VSD_CURRENT_OUT_PHASE_2),
-                                           parameters.get(CCS_COEF_OUT_CURRENT_2))));
+           calcMotorCurrentPhase(parameters.get(VSD_CURRENT_OUT_PHASE_2)));
   return parameters.get(CCS_MOTOR_CURRENT_PHASE_2);
 }
 
 float Ccs::calcMotorCurrentPhase3()
 {
   setValue(CCS_MOTOR_CURRENT_PHASE_3,
-           calcMotorCurrentPhase(applyCoef(parameters.get(VSD_CURRENT_OUT_PHASE_3),
-                                           parameters.get(CCS_COEF_OUT_CURRENT_3))));
+           calcMotorCurrentPhase(parameters.get(VSD_CURRENT_OUT_PHASE_3)));
   return parameters.get(CCS_MOTOR_CURRENT_PHASE_3);
 }
 
@@ -1170,6 +1167,15 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
         createScada();
       return err;
     }
+  case CCS_COEF_OUT_CURRENT_1:
+    parameters.set(VSD_COEF_OUT_CURRENT_1, value);
+    break;
+  case CCS_COEF_OUT_CURRENT_2:
+    parameters.set(VSD_COEF_OUT_CURRENT_1, value);
+    break;
+  case CCS_COEF_OUT_CURRENT_3:
+    parameters.set(VSD_COEF_OUT_CURRENT_3, value);
+    break;
   default:
     break;
   }
