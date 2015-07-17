@@ -66,8 +66,8 @@ void setProtectionDelay()
       ksu.setDelay();
       return;
     }
-    ksu.resetDelay();
   }
+  ksu.resetDelay();
 }
 
 void setProtectionPrevent()
