@@ -129,10 +129,10 @@ void Ccs::initParameters()
   parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].physic                       = PHYSIC_RESISTANCE;
   parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].validity                     = VALIDITY_OK;
-  parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].value.float_t                = 9999.0;
-  parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].min                          = 20.0;
-  parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].max                          = 9999.0;
-  parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].def                          = 9999.0;
+  parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].value.float_t                = 9999000.0;
+  parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].min                          = 20000.0;
+  parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].max                          = 9999999.0;
+  parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].def                          = 9999000.0;
   parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].code                         = 0;
   // Порядок чередования фаз
   parameters_[CCS_PHASE_ROTATION - CCS_BEGIN].id                                 = CCS_PHASE_ROTATION;
