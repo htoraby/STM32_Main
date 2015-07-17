@@ -361,6 +361,10 @@ public:
    */
   void startReboot();
 
+  /*!
+   * \brief setFreq
+   */
+  void setFreq(float value);
 private:
   /*!
    * \brief Метод добавления в очередь событий включения/мигания LED

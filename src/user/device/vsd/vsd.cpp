@@ -63,8 +63,6 @@ int Vsd::resetBlock()
 // Задаваемые параметры работы
 int Vsd::setFrequency(float value)
 { 
-  parameters.set(CCS_PREVIEW_FREQUENCY, getValue(VSD_FREQUENCY));
-  parameters.set(CCS_PREVIEW_FREQUENCY_DATE_TIME, parameters.getU32(CCS_DATE_TIME));
   return setValue(VSD_FREQUENCY, value);
 }
 

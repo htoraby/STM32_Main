@@ -31,7 +31,7 @@ void RegimeTechnologAlternationFreq::processing()
   case IdleState:
     if (action_ != OffAction) {                       // Режим - включен
       if (ksu.isWorkMotor() && ksu.isAutoMode()) {    // Двигатель - работа; Режим - авто;
-        vsd->setFrequency(firstFreq_);                // Устанавливаем первую частоту
+        ksu.setFreq(firstFreq_);                // Устанавливаем первую частоту
         beginTime_ = ksu.getTime();                   // Запоминаем время когда перешли на частоту
         state_ = RunningState;                        // Переходим на работу на первой частоте
       }
@@ -44,7 +44,7 @@ void RegimeTechnologAlternationFreq::processing()
     if (ksu.isWorkMotor() && ksu.isAutoMode()) {      // Двигатель - работа; Режим - авто;
       uint32_t time = ksu.getSecFromCurTime(beginTime_);        // Вычисляем сколько времени работаем на первой частоте
       if ((time > timeFirstFreq_) && timeFirstFreq_) {// Если время работы на первой частоте вышло
-        vsd->setFrequency(secondFreq_);               // Посылаем команду на изменение частоты
+        ksu.setFreq(secondFreq_);               // Посылаем команду на изменение частоты
         beginTime_ = ksu.getTime();
         state_ = RunningState + 1;
       }
@@ -60,7 +60,7 @@ void RegimeTechnologAlternationFreq::processing()
     if (ksu.isWorkMotor() && ksu.isAutoMode()) {      // Двигатель - работа; Режим - авто;
       uint32_t time = ksu.getSecFromCurTime(beginTime_);
       if ((time > timeSecondFreq_) && timeSecondFreq_) {
-        vsd->setFrequency(firstFreq_);
+        ksu.setFreq(firstFreq_);
         beginTime_ = ksu.getTime();
         state_ = RunningState;
       }
