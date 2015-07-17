@@ -627,6 +627,7 @@ void Ccs::calcParametersTask()
     calcInputVoltagePhase31();
     calcInputVoltageImbalance();
     calcInputCurrentImbalance();
+    calcResistanceIsolation();
     calcRegimeRun();
   }
 }
@@ -981,6 +982,14 @@ float Ccs::calcTransTapOff(float coefTrans)
   float transTapOff = (baseVolt + dropVoltCable) / (voltHiLim - dropVoltFilter);
   setValue(CCS_TRANS_NEED_VOLTAGE_TAP_OFF, transTapOff);
   return parameters.get(CCS_TRANS_NEED_VOLTAGE_TAP_OFF);
+}
+
+float Ccs::calcResistanceIsolation()
+{
+  if ((parameters.get(CCS_DHS_TYPE) != TYPE_DHS_NONE) &&
+      (!parameters.getValidity(TMS_RESISTANCE_ISOLATION)))
+  setValue(CCS_RESISTANCE_ISOLATION, parameters.get(TMS_RESISTANCE_ISOLATION));
+  return parameters.get(CCS_RESISTANCE_ISOLATION);
 }
 
 uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)

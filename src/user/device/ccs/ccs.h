@@ -314,6 +314,12 @@ public:
    */
   float calcTransTapOff(float coefTrans = -1);
 
+  /*!
+   * \brief calcResistanceIsolation
+   * \return
+   */
+  float calcResistanceIsolation();
+
 
   uint8_t setNewValue(uint16_t id, float value, EventType eventType = AutoType);
 
