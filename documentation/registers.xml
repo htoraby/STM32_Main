@@ -227,11 +227,11 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_RESISTANCE</physic>
-		<min>20.0</min>
-		<max>9999.0</max>
-		<def>9999.0</def>
+		<min>20000.0</min>
+		<max>9999999.0</max>
+		<def>9999000.0</def>
 		<valid>VALIDITY_OK</valid>
-		<value>9999.0</value>
+		<value>9999000.0</value>
 		<text>Сопротивление изоляции</text>
 		<short_text>Сопр.изоляции</short_text>
 		<form>1.1 Текущие параметры - сводка</form>
