@@ -79,7 +79,7 @@ void VsdEtalon::getNewValue(uint16_t id)
   // Преобразуем данные из полученного типа данных в float
   ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtId(id));
 
-  if (param->validity == err_r) {
+  if (param->validity != ok_r) {
     value = NAN;
     setValue(id, value);
     return;
