@@ -246,9 +246,6 @@ public:
    */
   virtual int offRegimeSkipFreq();
 
-
-  bool setBitVsdStatus(uint8_t bit, bool flag);
-
   /*!
    * \brief Функция вычисления текущего cos ЧРП по активной и полной мощности
    * \return
