@@ -782,18 +782,20 @@ float Ccs::calcMotorVoltageImbalance()
 
 float Ccs::calcMotorSpeed()
 {
-  float mtrType = parameters.get(VSD_MOTOR_TYPE);
-  float freq = parameters.get(VSD_FREQUENCY_NOW);
-  float mtrSpeed;
-  if (mtrType == VSD_MOTOR_TYPE_ASYNC) {
-    mtrSpeed = freq * 60;
-  }
-  else {
-    if (mtrType == VSD_MOTOR_TYPE_VENT) {
-      mtrSpeed = freq * 30;
+  float mtrSpeed = NAN;
+  if (parameters.getValidity(VSD_FREQUENCY_NOW) == ok_r) {
+    float mtrType = parameters.get(VSD_MOTOR_TYPE);
+    float freq = parameters.get(VSD_FREQUENCY_NOW);
+    if (mtrType == VSD_MOTOR_TYPE_ASYNC) {
+      mtrSpeed = freq * 60;
     }
     else {
-      mtrSpeed = 0;
+      if (mtrType == VSD_MOTOR_TYPE_VENT) {
+        mtrSpeed = freq * 30;
+      }
+      else {
+        mtrSpeed = 0;
+      }
     }
   }
   setValue(CCS_MOTOR_SPEED_NOW, mtrSpeed);
