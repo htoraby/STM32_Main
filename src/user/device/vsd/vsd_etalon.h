@@ -73,13 +73,36 @@ public:
   VsdEtalon();
   virtual ~VsdEtalon();
 
-  void init();
+  /*!
+   * \brief Метод инициализации карты modbus регистров ЧРП Эталон
+   */
   void initModbusParameters();
+
+  /*!
+   * \brief Переопределенная функция инициализации внутреннего массива
+   * параметров ЧРП. Заполняем поля существующих регистров согласно карты
+   * modbus регистров ЧРП Эталон(доступ, операции, границы, по умолчанию и
+   * валидность)
+   */
   void initParameters();
 
+  /*!
+   * \brief Переопределенный метод инициализации устройства.
+   * вызывает функции initModbusParameters(), создает объект протокола обмена
+   * modbus, доинициализирует функцией initParameters() и присваивает в массив
+   * сохранённые значения функцией Device::readParameters()
+   */
+  void init();
+
+  /*!
+   * \brief Переопределенный метод проверки наличия связи с устройством по
+   * протоколу обмена данными. Вызывает метод dm_->isConnect()
+   * \return true - связь есть, false - связи нет
+   */
   bool isConnect();
 
   void getNewValue(uint16_t id);
+
   uint8_t setNewValue(uint16_t id, float value);
 
   /*!
