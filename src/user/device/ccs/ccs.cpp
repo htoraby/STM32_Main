@@ -1135,6 +1135,9 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_CMD_PROT_DHS_RESISTANCE_SETPOINT_RESET:
     cmdProtDhsResistanceSetpointReset();
     break;
+  case CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET:
+    cmdProtOtherHardwareVsdSetpointReset();
+    break;
   case CCS_CMD_COUNTER_ALL_RESET:
     cmdCountersAllReset();
     break;
@@ -1347,6 +1350,7 @@ void Ccs::cmdProtSupplyImbalanceVoltageSetpointReset()
     resetValue(i);
   }
 }
+
 
 void Ccs::cmdProtMotorOverloadSetpointReset()
 {

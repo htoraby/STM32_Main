@@ -11917,6 +11917,20 @@
 	</param>
 	<param>
 		<id>726</id>
+		<name>CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<code>13</code>
+		<comment>Команда сброса уставок защиты ЧРП по умолчанию</comment>
+	</param>
+	<param>
+		<id>727</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
