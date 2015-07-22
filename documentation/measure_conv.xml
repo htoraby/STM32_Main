@@ -31,6 +31,12 @@
 		<b>0</b>
 	</param>
 	<param>
+		<midIn>PHYSIC_TIME</midIn>
+		<midOut>TIME_MM</midOut>
+		<a>0.016667</a>
+		<b>0</b>
+	</param>
+	<param>
 		<midIn>PHYSIC_PERCENT</midIn>
 		<midOut>PERCENT_PERCENT</midOut>
 		<a>1</a>

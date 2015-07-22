@@ -57,6 +57,7 @@ enum enPhysicTime {
   TIME_US,
   TIME_MS,
   TIME_SS_MS,
+  TIME_MM,
   TIME_MM_SS,
   TIME_HH,
   TIME_HH_MM,
