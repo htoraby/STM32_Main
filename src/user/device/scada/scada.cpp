@@ -2,9 +2,9 @@
 #include "user_main.h"
 
 #if USE_EXT_MEM
-static ScadaParameter scadaParameter[1000] __attribute__((section(".extmem")));
+static ScadaParameter scadaParameters[1000] __attribute__((section(".extmem")));
 #else
-static ScadaParameter scadaParameter[1000];
+static ScadaParameter scadaParameters[1000];
 #endif
 
 static void scadaTask(void *p)
@@ -14,7 +14,7 @@ static void scadaTask(void *p)
 
 Scada::Scada()
 {
-  scadaParameter_ = scadaParameter;
+  scadaParameters_ = scadaParameters;
   osThreadDef(ScadaTask, scadaTask, osPriorityLow, 0, 4*configMINIMAL_STACK_SIZE);
   mbThreadId_ = osThreadCreate(osThread(ScadaTask), this);
 }
@@ -43,60 +43,121 @@ void Scada::task()
   }
 }
 
-inline int Scada::getIndexAtAddress(uint16_t address)
+inline int Scada::sizeDataFromTypeData(uint8_t typeData)
 {
-  if ((address - 1) >= 0) {
+  switch (typeData) {
+  case TYPE_DATA_CHAR: case TYPE_DATA_INT16: case TYPE_DATA_UINT16:
+    return 2;
+  case TYPE_DATA_INT32: case TYPE_DATA_UINT32: case TYPE_DATA_FLOAT:
+    return 4;
+  default:
+    return -1;
+  }
+}
+
+inline int Scada::getIndexAtAddress(int address)
+{
+  address = address - 1;
+  if (address >= 0) {
     for (int i = 0; i < countParameters_; ++i) {
-      if (scadaParameter_[i].address == (address - 1))
-        return scadaParameter_[i].id;
+      if (scadaParameters_[i].address == address)
+        return i;
     }
   }
 
-  logDebug.add(WarningMsg, "Регистр %d не найден по указаннному адресу", int(address - 1));
+  logDebug.add(WarningMsg, "Скада. Регистр %d не найден по указаннному адресу", address);
 
   return -1;
 }
 
 eMBErrorCode Scada::readReg(uint8_t *buffer, uint16_t address, uint16_t numRegs)
 {
-  eMBErrorCode status = MB_ENOERR;
-  int id = getIndexAtAddress(address);
-  if (id == -1)
-    return MB_ENOREG;
+  for (int i = 0; i < numRegs; ++i) {
+    int index = getIndexAtAddress(address + i);
+    if (index == -1)
+      return MB_ENOREG;
 
-//  int iRegIndex = address - usRegHoldingStart;
-//  while (numRegs > 0) {
-//    *buffer++ = (UCHAR)(buf[iRegIndex] >> 8);
-//    *buffer++ = (UCHAR)(buf[iRegIndex] & 0xFF);
-//    iRegIndex++;
-//    numRegs--;
-//  }
+    ScadaParameter *param = &scadaParameters_[index];
+    int sizeData = sizeDataFromTypeData(param->typeData);
+    if (sizeData == -1)
+      return MB_EINVAL;
 
-  return status;
+    float value = parameters.get(param->id);
+    value = parameters.convertFrom(value, param->physic, param->unit);
+    value = value / param->coefficient;
+    unTypeData data;
+    if (param->typeData == TYPE_DATA_FLOAT)
+      data.float_t = value;
+    else
+      data.uint32_t = lround(value);
+
+    if (sizeData == 2) {
+      *buffer++ = data.char_t[1];
+      *buffer++ = data.char_t[0];
+    }
+    else {
+      i++;
+      if (i >= numRegs)
+        return MB_ENOREG;
+
+      *buffer++ = data.char_t[3];
+      *buffer++ = data.char_t[2];
+      *buffer++ = data.char_t[1];
+      *buffer++ = data.char_t[0];
+    }
+  }
+
+  return MB_ENOERR;
 }
 
 eMBErrorCode Scada::writeReg(uint8_t *buffer, uint16_t address, uint16_t numRegs)
 {
-  eMBErrorCode status = MB_ENOERR;
-  // TODO: Проверка адреса регистра
+  for (int i = 0; i < numRegs; ++i) {
+    int index = getIndexAtAddress(address + i);
+    if (index == -1)
+      return MB_ENOREG;
 
+    ScadaParameter *param = &scadaParameters_[index];
+    int sizeData = sizeDataFromTypeData(param->typeData);
+    if (sizeData == -1)
+      return MB_EINVAL;
 
+    unTypeData data;
+    if (sizeData == 2) {
+      data.char_t[1] = *buffer++;
+      data.char_t[0] = *buffer++;
+    }
+    else {
+      i++;
+      if (i >= numRegs)
+        return MB_ENOREG;
 
-//  int iRegIndex = address - usRegHoldingStart;
-//  while (numRegs > 0) {
-//    buf[iRegIndex] = *buffer++ << 8;
-//    buf[iRegIndex] |= *buffer++;
-//    iRegIndex++;
-//    numRegs--;
-//  }
-//      unTypeData data;
-//      data.char_t[3] = buf[1] >> 8;
-//      data.char_t[2] = buf[1] & 0xFF;
-//      data.char_t[1] = buf[2] >> 8;
-//      data.char_t[0] = buf[2] & 0xFF;
-  asm("nop");
+      data.char_t[3] = *buffer++;
+      data.char_t[2] = *buffer++;
+      data.char_t[1] = *buffer++;
+      data.char_t[0] = *buffer++;
+    }
 
-  return status;
+    if (param->typeData == TYPE_DATA_FLOAT) {
+      if (checkRange(data.float_t, param->min, param->max, true))
+        return MB_EINVAL;
+    }
+    else {
+      if (checkRange(data.uint32_t, param->min, param->max, true))
+        return MB_EINVAL;
+    }
+
+    float value;
+    if (param->typeData == TYPE_DATA_FLOAT)
+      value = data.float_t * param->coefficient;
+    else
+      value = lround(data.uint32_t * param->coefficient);
+    value = parameters.convertTo(value, param->physic, param->unit);
+    if (parameters.set(param->id, value, RemoteType) != ok_r)
+      return MB_EINVAL;
+  }
+
+  return MB_ENOERR;
 }
 
 eMBErrorCode Scada::writeCoils(uint8_t *buffer, uint16_t address, uint16_t numCoils)

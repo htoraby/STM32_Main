@@ -450,9 +450,10 @@ private:
   //! Таймер задержки проверки подключения устройств
   int checkConnectDeviceTimer_;
 
-  //! Идентификатор семафора
+  //! Идентификатор семафора перезапуска платы
   osSemaphoreId rebootSemaphoreId_;
-
+  //! Идентификатор семафора переинициализации скады
+  osSemaphoreId scadaSemaphoreId_;
 
 };
 

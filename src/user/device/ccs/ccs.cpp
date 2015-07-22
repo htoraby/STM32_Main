@@ -76,6 +76,8 @@ void Ccs::initTask()
 
   rebootSemaphoreId_ = osSemaphoreCreate(NULL, 1);
   osSemaphoreWait(rebootSemaphoreId_, 0);
+  scadaSemaphoreId_ = osSemaphoreCreate(NULL, 1);
+  osSemaphoreWait(scadaSemaphoreId_, 0);
 }
 
 void Ccs::mainTask()
@@ -93,6 +95,10 @@ void Ccs::mainTask()
 
     if (osSemaphoreWait(rebootSemaphoreId_, 0) != osEventTimeout)
       reboot();
+    if (osSemaphoreWait(scadaSemaphoreId_, 0) != osEventTimeout) {
+      osDelay(100);
+      createScada();
+    }
   }
 }
 
@@ -1170,7 +1176,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     {
       uint8_t err = setValue(id, value, eventType);
       if ((value != oldValue) && !err)
-        createScada();
+        osSemaphoreRelease(scadaSemaphoreId_);
       return err;
     }
     break;

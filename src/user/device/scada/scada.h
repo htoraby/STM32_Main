@@ -23,7 +23,7 @@ struct ScadaParameter
   float min;           //!< Минимальное значение параметра
   float max;           //!< Максимальное значение параметра
   uint8_t command;     //!< Команда читать или писать
-  unTypeData value;    //!< Значение, записываемое или считанное
+  unTypeData value;    //!< Значение параметра
 };
 
 class Scada
@@ -50,10 +50,17 @@ public:
   float delay() const { return delay_; }
 
 protected:
-  int getIndexAtAddress(uint16_t address);
+  /*!
+   * \brief Метод получения индекса в массиве параметров
+   * \param address - адрес регистра
+   * \return
+   */
+  int getIndexAtAddress(int address);
+
+  int sizeDataFromTypeData(uint8_t typeData);
 
   //! Указатель на массив параметров Скады
-  ScadaParameter *scadaParameter_;
+  ScadaParameter *scadaParameters_;
   //! Количество параметров в массиве
   uint16_t countParameters_;
 
