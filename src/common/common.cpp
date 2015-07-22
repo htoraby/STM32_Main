@@ -57,16 +57,16 @@ int checkRangeInclude(double value, double min, double max)
     // Если значение меньше максимума
     if (value <= max) {
       // Возвращаем что прошли проверку
-      return 0;
+      return ok_r;
     }
     else {
       // Иначе возвращаем что больше максимума
-      return 3;
+      return err_max_r;
     }
   }
   else {
     // Возвращаем что меньше минимума
-    return 2;
+    return err_min_r;
   }
 }
 

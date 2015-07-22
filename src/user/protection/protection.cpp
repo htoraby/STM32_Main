@@ -138,7 +138,7 @@ bool Protection::isModeOff()
 
 bool Protection::isProtect()
 {
-  return false;
+  return true;
 }
 
 bool Protection::isModeBlock()

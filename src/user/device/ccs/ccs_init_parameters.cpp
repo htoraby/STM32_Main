@@ -129,10 +129,10 @@ void Ccs::initParameters()
   parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].physic                       = PHYSIC_RESISTANCE;
   parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].validity                     = VALIDITY_OK;
-  parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].value.float_t                = 9999.0;
-  parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].min                          = 20.0;
-  parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].max                          = 9999.0;
-  parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].def                          = 9999.0;
+  parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].value.float_t                = 9999000.0;
+  parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].min                          = 20000.0;
+  parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].max                          = 9999999.0;
+  parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].def                          = 9999000.0;
   parameters_[CCS_RESISTANCE_ISOLATION - CCS_BEGIN].code                         = 0;
   // Порядок чередования фаз
   parameters_[CCS_PHASE_ROTATION - CCS_BEGIN].id                                 = CCS_PHASE_ROTATION;
@@ -888,10 +888,10 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT - CCS_BEGIN].operation = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT - CCS_BEGIN].physic = PHYSIC_PERCENT;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT - CCS_BEGIN].validity = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT - CCS_BEGIN].value.float_t = 20.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT - CCS_BEGIN].value.float_t = 200.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT - CCS_BEGIN].min   = 0.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT - CCS_BEGIN].max   = 20.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT - CCS_BEGIN].def   = 20.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT - CCS_BEGIN].max   = 200.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT - CCS_BEGIN].def   = 200.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT - CCS_BEGIN].code  = 13;
   // Условие АПВ уставка
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_SETPOINT - CCS_BEGIN].id = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_SETPOINT;
@@ -2704,9 +2704,9 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT - CCS_BEGIN].physic          = PHYSIC_RESISTANCE;
   parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT - CCS_BEGIN].value.float_t   = 30.0;
-  parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT - CCS_BEGIN].min             = 30.0;
-  parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT - CCS_BEGIN].max             = 500.0;
-  parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT - CCS_BEGIN].def             = 30.0;
+  parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT - CCS_BEGIN].min             = 30000.0;
+  parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT - CCS_BEGIN].max             = 500000.0;
+  parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT - CCS_BEGIN].def             = 30000.0;
   parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT - CCS_BEGIN].code            = 13;
   // Условие АПВ уставка
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT - CCS_BEGIN].id           = CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT;
@@ -7988,5 +7988,16 @@ void Ccs::initParameters()
   parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].max                                  = 10000000.0;
   parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].def                                  = 0.0;
   parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].code                                 = 0;
+  // Команда сброса уставок защиты ЧРП по умолчанию
+  parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].id              = CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].access          = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].operation       = OPERATION_WRITE;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].physic          = PHYSIC_NUMERIC;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].validity        = VALIDITY_OK;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].value.float_t   = 0.0;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].min             = 0.0;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].max             = 1.0;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].def             = 0.0;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].code            = 13;
 }
 

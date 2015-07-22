@@ -63,8 +63,6 @@ int Vsd::resetBlock()
 // Задаваемые параметры работы
 int Vsd::setFrequency(float value)
 { 
-  parameters.set(CCS_PREVIEW_FREQUENCY, getValue(VSD_FREQUENCY));
-  parameters.set(CCS_PREVIEW_FREQUENCY_DATE_TIME, parameters.getU32(CCS_DATE_TIME));
   return setValue(VSD_FREQUENCY, value);
 }
 
@@ -229,34 +227,21 @@ bool Vsd::checkVsdStatus(uint8_t bit)
 {
   if (bit < VSD_STATUS_FC_I2T_ERR)
     return checkBit(getValue(VSD_INVERTOR_STATUS), bit);
+
   if ((bit >= VSD_STATUS_FC_I2T_ERR) && (bit < VSD_STATUS_3))
     return checkBit(getValue(VSD_INVERTOR_STATUS2), bit - 16);
+
   if ((bit >= VSD_STATUS_IMAX) && (bit < VSD_STATUS_TEST))
     return checkBit(getValue(VSD_INV_FAULT), bit - 32);
+
   if ((bit >= VSD_THYR_ABC_STATE) && (bit < VSD_THYR_ERR_SHORTCIRQUIT))
     return checkBit(getValue(VSD_THYR_CONTROL), bit - 48);
+
   if ((bit >= VSD_STATUS_READY) && (bit < VSD_STATUS_TURBINE))
     return checkBit(getValue(VSD_INVERTOR_STATUS4), bit - 64);
+
   else
     return false;
-}
-
-
-bool Vsd::setBitVsdStatus(uint8_t bit, bool flag)
-{
-  if (bit < VSD_STATUS_FC_I2T_ERR)
-    setValue(VSD_INVERTOR_STATUS, setBit(getValue(VSD_INVERTOR_STATUS), bit, flag));
-  if ((bit >= VSD_STATUS_FC_I2T_ERR) && (bit < VSD_STATUS_3))
-    setValue(VSD_INVERTOR_STATUS2, setBit(getValue(VSD_INVERTOR_STATUS2), bit - 16, flag));
-  if ((bit >= VSD_STATUS_IMAX) && (bit < VSD_STATUS_TEST))
-    setValue(VSD_INV_FAULT, setBit(getValue(VSD_INV_FAULT), bit - 32, flag));
-  if ((bit >= VSD_THYR_ABC_STATE) && (bit < VSD_THYR_ERR_SHORTCIRQUIT))
-    setValue(VSD_INV_FAULT, setBit(getValue(VSD_THYR_CONTROL), bit - 48, flag));
-  if ((bit >= VSD_STATUS_READY) && (bit < VSD_STATUS_TURBINE))
-    setValue(VSD_INV_FAULT, setBit(getValue(VSD_INVERTOR_STATUS4), bit - 64, flag));
-  else
-    return false;
-  return true;
 }
 
 void Vsd::processingRegimeRun()

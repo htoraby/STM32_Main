@@ -473,6 +473,14 @@ bool Ccs::isBlock()
   }
 }
 
+void Ccs::setFreq(float value)
+{
+  if (vsd->setFrequency(value) == ok_r) {
+    parameters.set(CCS_PREVIEW_FREQUENCY, getValue(VSD_FREQUENCY));
+    parameters.set(CCS_PREVIEW_FREQUENCY_DATE_TIME, parameters.getU32(CCS_DATE_TIME));
+  }
+}
+
 void Ccs::setDelay()
 {
   if (getValue(CCS_CONDITION_FLAG) < CCS_CONDITION_FLAG_DELAY)
@@ -633,6 +641,7 @@ void Ccs::calcParametersTask()
     calcInputVoltagePhase31();
     calcInputVoltageImbalance();
     calcInputCurrentImbalance();
+    calcResistanceIsolation();
     calcRegimeRun();
   }
 }
@@ -779,18 +788,20 @@ float Ccs::calcMotorVoltageImbalance()
 
 float Ccs::calcMotorSpeed()
 {
-  float mtrType = parameters.get(VSD_MOTOR_TYPE);
-  float freq = parameters.get(VSD_FREQUENCY_NOW);
-  float mtrSpeed;
-  if (mtrType == VSD_MOTOR_TYPE_ASYNC) {
-    mtrSpeed = freq * 60;
-  }
-  else {
-    if (mtrType == VSD_MOTOR_TYPE_VENT) {
-      mtrSpeed = freq * 30;
+  float mtrSpeed = NAN;
+  if (parameters.getValidity(VSD_FREQUENCY_NOW) == ok_r) {
+    float mtrType = parameters.get(VSD_MOTOR_TYPE);
+    float freq = parameters.get(VSD_FREQUENCY_NOW);
+    if (mtrType == VSD_MOTOR_TYPE_ASYNC) {
+      mtrSpeed = freq * 60;
     }
     else {
-      mtrSpeed = 0;
+      if (mtrType == VSD_MOTOR_TYPE_VENT) {
+        mtrSpeed = freq * 30;
+      }
+      else {
+        mtrSpeed = 0;
+      }
     }
   }
   setValue(CCS_MOTOR_SPEED_NOW, mtrSpeed);
@@ -989,6 +1000,14 @@ float Ccs::calcTransTapOff(float coefTrans)
   return parameters.get(CCS_TRANS_NEED_VOLTAGE_TAP_OFF);
 }
 
+float Ccs::calcResistanceIsolation()
+{
+  if ((parameters.get(CCS_DHS_TYPE) != TYPE_DHS_NONE) &&
+      (!parameters.getValidity(TMS_RESISTANCE_ISOLATION)))
+  setValue(CCS_RESISTANCE_ISOLATION, parameters.get(TMS_RESISTANCE_ISOLATION));
+  return parameters.get(CCS_RESISTANCE_ISOLATION);
+}
+
 uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
 {
   float oldValue = getValue(id);
@@ -1121,6 +1140,9 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     break;
   case CCS_CMD_PROT_DHS_RESISTANCE_SETPOINT_RESET:
     cmdProtDhsResistanceSetpointReset();
+    break;
+  case CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET:
+    cmdProtOtherHardwareVsdSetpointReset();
     break;
   case CCS_CMD_COUNTER_ALL_RESET:
     cmdCountersAllReset();
@@ -1334,6 +1356,7 @@ void Ccs::cmdProtSupplyImbalanceVoltageSetpointReset()
     resetValue(i);
   }
 }
+
 
 void Ccs::cmdProtMotorOverloadSetpointReset()
 {

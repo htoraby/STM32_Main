@@ -314,6 +314,12 @@ public:
    */
   float calcTransTapOff(float coefTrans = -1);
 
+  /*!
+   * \brief calcResistanceIsolation
+   * \return
+   */
+  float calcResistanceIsolation();
+
 
   uint8_t setNewValue(uint16_t id, float value, EventType eventType = AutoType);
 
@@ -355,6 +361,10 @@ public:
    */
   void startReboot();
 
+  /*!
+   * \brief setFreq
+   */
+  void setFreq(float value);
 private:
   /*!
    * \brief Метод добавления в очередь событий включения/мигания LED

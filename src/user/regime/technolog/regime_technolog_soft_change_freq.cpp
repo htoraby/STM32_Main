@@ -29,7 +29,7 @@ void RegimeTechnologSoftChangeFreq::processing()
     if (action_ != OffAction) { // Режим - включен
       if ((parameters.get(CCS_CONDITION) == CCS_CONDITION_RUN) && // Двигатель - работа;
           ksu.isAutoMode()) {                                     // Режим - авто;
-        vsd->setFrequency(beginFreq_);
+        ksu.setFreq(beginFreq_);
         beginTime_ = ksu.getTime();
         state_ = WorkState;
       }
@@ -43,7 +43,7 @@ void RegimeTechnologSoftChangeFreq::processing()
         float freq = parameters.get(VSD_FREQUENCY) + copySign(0.1, endFreq_ - beginFreq_);
         float sign = copySign(1, endFreq_ - beginFreq_);
         if (freq * sign < endFreq_ * sign + 0.05) {
-          vsd->setFrequency(freq);
+          ksu.setFreq(freq);
         }
         else {
           if (action_ == SingleAction) {

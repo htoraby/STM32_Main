@@ -227,11 +227,11 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_RESISTANCE</physic>
-		<min>20.0</min>
-		<max>9999.0</max>
-		<def>9999.0</def>
+		<min>20000.0</min>
+		<max>9999999.0</max>
+		<def>9999000.0</def>
 		<valid>VALIDITY_OK</valid>
-		<value>9999.0</value>
+		<value>9999000.0</value>
 		<text>Сопротивление изоляции</text>
 		<short_text>Сопр.изоляции</short_text>
 		<form>1.1 Текущие параметры - сводка</form>
@@ -1603,10 +1603,10 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>20.0</max>
-		<def>20.0</def>
+		<max>200.0</max>
+		<def>200.0</def>
 		<valid>VALIDITY_OK</valid>
-		<value>20.0</value>
+		<value>200.0</value>
 		<text>Дисбал.напряж. Уставка дисбаланса напряжений</text>
 		<short_text>Дисбал.напряж.уст.</short_text>
 		<form>4.1.3 Дисбаланс напряжения сети</form>
@@ -4536,9 +4536,9 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_RESISTANCE</physic>
-		<min>30.0</min>
-		<max>500.0</max>
-		<def>30.0</def>
+		<min>30000.0</min>
+		<max>500000.0</max>
+		<def>30000.0</def>
 		<valid>VALIDITY_OK</valid>
 		<value>30.0</value>
 		<text>Минимальное сопротивление изоляции</text>
@@ -11917,6 +11917,20 @@
 	</param>
 	<param>
 		<id>726</id>
+		<name>CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<code>13</code>
+		<comment>Команда сброса уставок защиты ЧРП по умолчанию</comment>
+	</param>
+	<param>
+		<id>727</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>

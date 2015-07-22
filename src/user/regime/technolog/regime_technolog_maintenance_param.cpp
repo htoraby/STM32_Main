@@ -92,7 +92,7 @@ void RegimeTechnologMaintenanceParam::processing()
         freq = max(freq, minFreq);
         freq = min(freq, maxFreq);
 
-        vsd->setFrequency(freq);
+        ksu.setFreq(freq);
 
         timer_ = 0;
         delta_ = 0;
