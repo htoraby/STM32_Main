@@ -93,6 +93,10 @@ public:
 
   void setValidity(uint16_t id, uint8_t validity);
 
+  float getMin(uint16_t id);
+
+  float getMax(uint16_t id);
+
   /*!
    * \brief Конвертация значения из формата STM
    * \param value

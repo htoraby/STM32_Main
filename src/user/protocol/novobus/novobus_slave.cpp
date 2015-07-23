@@ -64,7 +64,7 @@ int NovobusSlave::getMessageEvents()
   return -1;
 }
 
-int NovobusSlave::getMessageParams()
+uint32_t NovobusSlave::getMessageParams()
 {
   osEvent Event;
   Event = osMessageGet(messageParams_, 0);
@@ -78,9 +78,12 @@ void NovobusSlave::putMessageEvents(uint32_t addr)
   osMessagePut(messageEvents_, addr, 0);
 }
 
-void NovobusSlave::putMessageParams(uint32_t id)
+void NovobusSlave::putMessageParams(uint16_t id, uint16_t type)
 {
-  osMessagePut(messageParams_, id, 0);
+  type = 1;
+  id = 1;
+  uint32_t message = (type << 16) + id;
+  osMessagePut(messageParams_, message, 0);
 }
 
 void NovobusSlave::receivePackage(uint8_t sizePkt)
@@ -178,9 +181,9 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
         if (!idsCount_) {
           if (osMessageNumber(messageParams_)) {
             while (1) {
-              id.uint16_t[0] = getMessageParams();
-              if (id.uint16_t[0]) {
-                idsBuffer_[idsCount_++] = id.uint16_t[0];
+              id.uint32_t = getMessageParams();
+              if (id.uint32_t) {
+                idsBuffer_[idsCount_++] = id.uint32_t;
                 if (idsCount_ >= MAX_IDS_BUFFER)
                   break;
               }
@@ -193,14 +196,15 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
 
         if (idsCount_) {
           for (int i = 0; i < idsCount_; ++i) {
-            txBuffer_[5 + i*2] = idsBuffer_[i] >> 8;
-            txBuffer_[6 + i*2] = idsBuffer_[i];
+            txBuffer_[5 + i*3] = idsBuffer_[i] >> 16;
+            txBuffer_[6 + i*3] = idsBuffer_[i] >> 8;
+            txBuffer_[7 + i*3] = idsBuffer_[i];
           }
         }
 
         checkMessage();
 
-        sizePkt = 7 + idsCount_*2;
+        sizePkt = 7 + idsCount_*3;
         break;
 
         // Команда чтения параметров
@@ -259,6 +263,59 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
         sizePkt = 7;
         break;
 
+      // Команда чтения минимума параметра
+      case ReadMinCommand:
+        // После получения мастером списка ID параметров - обнуляем счётчик
+        idsCount_ = 0;
+
+        // Количество параметров = (размер пакета - заголовок - crc) /
+        // (размер id)
+        dataNumber = (sizePkt - 4)/2;
+        // Цикл по количеству считываемых параметров
+        for (int i = 0; i < dataNumber; i++) {
+          // Получаем ID параметра
+          id.uint16_t[0] = (rxBuffer_[2 + i*2] << 8) + rxBuffer_[3 + i*2];
+          // Получить значение параметра
+          value.float_t = parameters.getMin(id.uint16_t[0]);
+          txBuffer_[5 + i*6]  = id.char_t[1];
+          txBuffer_[6 + i*6]  = id.char_t[0];
+          txBuffer_[7 + i*6]  = value.char_t[3];
+          txBuffer_[8 + i*6]  = value.char_t[2];
+          txBuffer_[9 + i*6]  = value.char_t[1];
+          txBuffer_[10 + i*6] = value.char_t[0];
+        }
+
+        checkMessage();
+
+        sizePkt = 7 + dataNumber*6;
+        break;
+
+      // Команда чтения маума параметра
+      case ReadMaxCommand:
+        // После получения мастером списка ID параметров - обнуляем счётчик
+        idsCount_ = 0;
+
+        // Количество параметров = (размер пакета - заголовок - crc) /
+        // (размер id)
+        dataNumber = (sizePkt - 4)/2;
+        // Цикл по количеству считываемых параметров
+        for (int i = 0; i < dataNumber; i++) {
+          // Получаем ID параметра
+          id.uint16_t[0] = (rxBuffer_[2 + i*2] << 8) + rxBuffer_[3 + i*2];
+          value.float_t = parameters.getMax(id.uint16_t[0]);
+          txBuffer_[5 + i*6]  = id.char_t[1];
+          txBuffer_[6 + i*6]  = id.char_t[0];
+          txBuffer_[7 + i*6]  = value.char_t[3];
+          txBuffer_[8 + i*6]  = value.char_t[2];
+          txBuffer_[9 + i*6]  = value.char_t[1];
+          txBuffer_[10 + i*6] = value.char_t[0];
+        }
+
+        checkMessage();
+
+        sizePkt = 7 + dataNumber*6;
+        break;
+
       default:
         txBuffer_[2] = InvalidCmdError;
         txBuffer_[3] = NoneCommand;
@@ -299,8 +356,9 @@ void NovobusSlave::checkMessage()
   // Проверка очереди параметров
   else {
     dataNumber = osMessageNumber(messageParams_);
-    if (dataNumber)
+    if (dataNumber) {
       txBuffer_[3] = UpdateParamsCommand;
+    }
   }
   txBuffer_[4] = dataNumber;
 }

@@ -27,6 +27,8 @@ public:
     UpdateParamsCommand,
     NewEventsCommand,
     ReadEventsCommand,
+    ReadMinCommand,
+    ReadMaxCommand,
   } NovobusCommand;
 
   /*!
@@ -66,7 +68,7 @@ public:
    * \brief Метод получения ID параметра из очереди
    * \return ID параметра
    */
-  int getMessageParams();
+  uint32_t getMessageParams();
 
   /*!
    * \brief Метод добавления адреса события в очередь
@@ -78,7 +80,7 @@ public:
    * \brief Метод добавления ID параметра в очередь
    * \param id - ID параметра
    */
-  void putMessageParams(uint32_t id);
+  void putMessageParams(uint16_t id, uint16_t type = 0);
 
 private:
   /*!
@@ -95,7 +97,7 @@ private:
 
   uint8_t txBuffer_[HOST_BUF_SIZE];
   uint8_t rxBuffer_[HOST_BUF_SIZE];
-  uint16_t idsBuffer_[MAX_IDS_BUFFER];
+  uint32_t idsBuffer_[MAX_IDS_BUFFER];
   uint32_t addrsBuffer_[MAX_ADDRS_BUFFER];
   uint8_t idsCount_;
   uint8_t addrsCount_;
