@@ -166,6 +166,33 @@ void Parameters::setValidity(uint16_t id, uint8_t validity)
     em->setValidity(id, validity);
 }
 
+float Parameters::getMin(uint16_t id)
+{
+  if ((id > CCS_BEGIN) && (id < CCS_END))
+    return ksu.getMin(id);
+  if ((id > VSD_BEGIN) && (id < VSD_END))
+    return vsd->getMin(id);
+  if ((id > TMS_BEGIN) && (id < TMS_END))
+    return tms->getMin(id);
+  if ((id > EM_BEGIN) && (id < EM_END))
+    return em->getMin(id);
+  return err_r;
+}
+
+float Parameters::getMax(uint16_t id)
+{
+  if ((id > CCS_BEGIN) && (id < CCS_END))
+    return ksu.getMax(id);
+  if ((id > VSD_BEGIN) && (id < VSD_END))
+    return vsd->getMax(id);
+  if ((id > TMS_BEGIN) && (id < TMS_END))
+    return tms->getMax(id);
+  if ((id > EM_BEGIN) && (id < EM_END))
+    return em->getMax(id);
+  return err_r;
+}
+
+
 float Parameters::convertFrom(float value, int physic, int unit)
 {
   if (unit >= 6)

@@ -179,7 +179,11 @@ float Device::applyCoef(float value, float coef)
 
 float Device::applyUnit(float value, int physic, int unit)
 {
-  return (value - (units[physic][unit][1]))/(units[physic][unit][0]);
+  value = value * 1000000;
+  value = value - (units[physic][unit][1]);
+  value = value / (units[physic][unit][0]);
+  value = value / 1000000;
+  return ((value * 1000 - (units[physic][unit][1]))/(units[physic][unit][0])/1000);
 }
 
 unsigned short Device::getIndexAtId(unsigned short id)
@@ -268,6 +272,32 @@ uint8_t Device::setValue(uint16_t id, int value, EventType eventType)
   return setValue(id, (float)value, eventType);
 }
 
+uint8_t Device::setMin(uint16_t id, float min)
+{
+  uint16_t index = getIndexAtId(id);
+  float oldMin = getFieldMinimum(index);
+
+  setFieldMin(index, min);
+  if (min != oldMin) {
+    novobusSlave.putMessageParams(id, 7);   // 7 - ReadMinCommand
+  }
+
+  return 0;
+}
+
+uint8_t Device::setMax(uint16_t id, float max)
+{
+  uint16_t index = getIndexAtId(id);
+  float oldMax = getFieldMaximum(index);
+
+  setFieldMax(index, max);
+  if (max != oldMax) {
+    novobusSlave.putMessageParams(id, 8);   // 8 - ReadMaxCommand
+  }
+
+  return 0;
+}
+
 void Device::resetValue(uint16_t id)
 {
   uint16_t index = getIndexAtId(id);
@@ -288,6 +318,16 @@ uint8_t Device::getValidity(unsigned short id)
 void Device::setValidity(uint16_t id, uint8_t validity)
 {
   setFieldValidity(getIndexAtId(id), validity);
+}
+
+float Device::getMin(uint16_t id)
+{
+  return getFieldMinimum(getIndexAtId(id));
+}
+
+float Device::getMax(uint16_t id)
+{
+  return getFieldMaximum(getIndexAtId(id));
 }
 
 void Device::updateValueTask()
