@@ -73,7 +73,7 @@ template<class T> inline const T& min(const T& a, const T& b)
  * \param max
  * \return
  */
-int checkRangeNoInclude(double value, double min, double max);
+int checkRangeNoInclude(double value, double min, double max, uint16_t discret = 1);
 
 /*!
  * \brief Функция проверки вхождения значения в диапазон включая границы
@@ -83,7 +83,7 @@ int checkRangeNoInclude(double value, double min, double max);
  * \param max
  * \return
  */
-int checkRangeInclude(double value, double min, double max);
+int checkRangeInclude(double value, double min, double max, uint16_t discret = 1);
 
 /*!
  * \brief Функция проверки вхождения значения в диапазон
@@ -93,7 +93,7 @@ int checkRangeInclude(double value, double min, double max);
  * \param max
  * \return
  */
-int checkRange(double value, double min, double max, bool inc);
+int checkRange(double value, double min, double max, bool inc, uint32_t discret = 1);
 
 /*!
  * \brief Функция проверки бита

@@ -77,6 +77,11 @@ inline unsigned char Device::getFieldPhysic(unsigned short index)
   return parameters_[index].physic;
 }
 
+inline uint16_t Device::getFieldDiscret(uint16_t index)
+{
+  return parameters_[index].discret;
+}
+
 inline unsigned char Device::getFieldValidity(unsigned short index)
 {
   return parameters_[index].validity;
@@ -178,12 +183,8 @@ float Device::applyCoef(float value, float coef)
 }
 
 float Device::applyUnit(float value, int physic, int unit)
-{
-  value = value * 1000000;
-  value = value - (units[physic][unit][1]);
-  value = value / (units[physic][unit][0]);
-  value = value / 1000000;
-  return ((value * 1000 - (units[physic][unit][1]))/(units[physic][unit][0])/1000);
+{ 
+  return ((value - (units[physic][unit][1]))/(units[physic][unit][0]));
 }
 
 unsigned short Device::getIndexAtId(unsigned short id)
@@ -219,11 +220,12 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
   float oldValue = getFieldValue(index);
   EventCode code = getFieldCode(index);
   uint8_t units = getFieldPhysic(index);
+  uint16_t discret = getFieldDiscret(index);
 
   // Проверка на диапазон
   float min = getFieldMinimum(index);
   float max = getFieldMaximum(index);
-  uint8_t check = checkRange(value, min, max, true);
+  uint8_t check = checkRange(value, min, max, true/*, discret*/);
   if((check != 0) && !isnan(value)) {
     novobusSlave.putMessageParams(id);
     return check;

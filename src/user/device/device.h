@@ -28,6 +28,7 @@ struct parameter
   float min;          //! Минимально допустимое значение для этого параметра.
   float max;          //! Максимально допустимое значение для этого параметра.
   float def;          //! Значение по умолчанию
+  uint32_t discret;
   uint8_t validity;   //! Валидность параметра
   unTypeData value;   //! Значение параметра, для единообразия значения всех параметров будем
   uint8_t code;       //! Код события журнала событий, при изменениии параметра.
@@ -200,6 +201,8 @@ public:
   uint8_t setMin(uint16_t id, float min);
 
   uint8_t setMax(uint16_t id, float max);
+
+  uint16_t getFieldDiscret(uint16_t index);
 
 protected:
 

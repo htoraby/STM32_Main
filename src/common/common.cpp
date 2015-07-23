@@ -30,12 +30,15 @@ uint16_t crc16_ibm(uint8_t *buf, uint8_t size, uint16_t crc)
   return crc;
 }
 
-int checkRangeNoInclude(double value, double min, double max)
+int checkRangeNoInclude(double value, double min, double max, uint16_t discret)
 {
+  uint32_t valueU32 = value * discret + 0.5;
+  uint32_t minU32 = min * discret + 0.5;
+  uint32_t maxU32 = max * discret + 0.5;
   // Если значение больше минимума
-  if (value > min) {
+  if (valueU32 > minU32) {
     // Если значение меньше максимума
-    if (value < max) {
+    if (valueU32 < maxU32) {
       // Возвращаем что прошли проверку
       return 0;
     }
@@ -50,12 +53,15 @@ int checkRangeNoInclude(double value, double min, double max)
   }
 }
 
-int checkRangeInclude(double value, double min, double max)
+int checkRangeInclude(double value, double min, double max, uint16_t discret)
 {
+  uint32_t valueU32 = value * discret + 0.5;
+  uint32_t minU32 = min * discret + 0.5;
+  uint32_t maxU32 = max * discret + 0.5;
   // Если значение больше минимума
-  if (value >= min) {
+  if (valueU32 >= minU32) {
     // Если значение меньше максимума
-    if (value <= max) {
+    if (valueU32 <= maxU32) {
       // Возвращаем что прошли проверку
       return ok_r;
     }
@@ -70,14 +76,14 @@ int checkRangeInclude(double value, double min, double max)
   }
 }
 
-int checkRange(double value, double min, double max, bool inc)
+int checkRange(double value, double min, double max, bool inc, uint32_t discret)
 {
   // Если включая диапазон
   if (inc)
-    return checkRangeInclude(value, min, max);
+    return checkRangeInclude(value, min, max, discret);
   // Иначе не включая диапазон
   else
-    return checkRangeNoInclude(value, min, max);
+    return checkRangeNoInclude(value, min, max, discret);
 }
 
 
