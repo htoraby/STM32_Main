@@ -6333,10 +6333,10 @@ void Ccs::initParameters()
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].operation                        = OPERATION_WRITE;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].physic                           = PHYSIC_NUMERIC;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].validity                         = VALIDITY_OK;
-  parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].value.float_t                    = 0.0;
+  parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].value.float_t                    = 6666.0;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].min                              = 0.0;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].max                              = 9999.0;
-  parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].def                              = 0.0;
+  parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].def                              = 6666.0;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].code                             = 0;
   // Пароль 4 уровня
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].id                               = CCS_PASSWORD_LEVEL_4;
