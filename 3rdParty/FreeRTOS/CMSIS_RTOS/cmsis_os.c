@@ -819,7 +819,7 @@ osMessageQId osMessageCreate (const osMessageQDef_t *queue_def, osThreadId threa
 {
   (void) thread_id;
   
-  return xQueueCreate(queue_def->queue_sz, (uint32_t) sizeof(queue_def->item_sz));
+  return xQueueCreate(queue_def->queue_sz, (uint32_t)queue_def->item_sz);
 }
 
 osStatus osMessageDelete (osMessageQId queue_id)
