@@ -52,11 +52,11 @@ void VsdNovomet::initParameters()
       float tempVal = dm_->getFieldMinimum(indexModbus);                  // Получаем минимум
       tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));// Применяем коэффициент
       tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
-      setFieldMin(indexArray, tempVal);
+      setMin(id, tempVal);
       tempVal = dm_->getFieldMaximum(indexModbus);                        // Получаем мaксимум
       tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));// Применяем коэффициент
       tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
-      setFieldMax(indexArray, tempVal);
+      setMax(id, tempVal);
       tempVal = dm_->getFieldDefault(indexModbus);                        // Получаем значение по умолчанию
       tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));// Применяем коэффициент
       tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));

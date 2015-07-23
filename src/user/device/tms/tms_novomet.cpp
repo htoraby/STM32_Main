@@ -408,11 +408,11 @@ void TmsNovomet::initParameters()
       float tempVal = dm_->getFieldMinimum(indexModbus);
       tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));
       tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
-      setFieldMin(indexArray, tempVal);
+      setMin(id, tempVal);
       tempVal = dm_->getFieldMaximum(indexModbus);
       tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));
       tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
-      setFieldMax(indexArray, tempVal);
+      setMax(id, tempVal);
       tempVal = dm_->getFieldDefault(indexModbus);
       tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));
       tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));

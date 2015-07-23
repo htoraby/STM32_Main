@@ -157,6 +157,20 @@ public:
   void resetValue(uint16_t id);
 
   /*!
+   * \brief getMinimum
+   * \param id
+   * \return
+   */
+  float getMin(uint16_t id);
+
+  /*!
+   * \brief getMaximum
+   * \param id
+   * \return
+   */
+  float getMax(uint16_t id);
+
+  /*!
    * \brief Метод получения типа физической величины по id
    * \param id уникальный идентификатор параметра
    * \return типа физической величины
@@ -182,6 +196,10 @@ public:
    * \return
    */
   virtual bool isConnect();
+
+  uint8_t setMin(uint16_t id, float min);
+
+  uint8_t setMax(uint16_t id, float max);
 
 protected:
 
