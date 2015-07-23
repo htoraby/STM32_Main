@@ -151,10 +151,10 @@ void Vsd::initParameters()
   parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].operation                            = OPERATION_READ;
   parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].physic                               = PHYSIC_ACTIVE_POWER;
   parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].validity                             = VALIDITY_ERROR;
-  parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].value.float_t                        = 0;
-  parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].min                                  = 0;
-  parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].max                                  = 9999;
-  parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].def                                  = 0;
+  parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].value.float_t                        = 0.0;
+  parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].min                                  = 0.0;
+  parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].max                                  = 9999000.0;
+  parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].def                                  = 0.0;
   parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].code                                 = 0;
   // Полная мощность
   parameters_[VSD_POWER_FULL - VSD_BEGIN].id                                     = VSD_POWER_FULL;
