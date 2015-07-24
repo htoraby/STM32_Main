@@ -6314,7 +6314,7 @@ void Ccs::initParameters()
   parameters_[CCS_PASSWORD_LEVEL_1 - CCS_BEGIN].value.float_t                    = 0.0;
   parameters_[CCS_PASSWORD_LEVEL_1 - CCS_BEGIN].min                              = 0.0;
   parameters_[CCS_PASSWORD_LEVEL_1 - CCS_BEGIN].max                              = 9999.0;
-  parameters_[CCS_PASSWORD_LEVEL_1 - CCS_BEGIN].def                              = 0.0;
+  parameters_[CCS_PASSWORD_LEVEL_1 - CCS_BEGIN].def                              = 0000.0;
   parameters_[CCS_PASSWORD_LEVEL_1 - CCS_BEGIN].code                             = 13;
   // Пароль 2 уровня
   parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].id                               = CCS_PASSWORD_LEVEL_2;
@@ -6325,7 +6325,7 @@ void Ccs::initParameters()
   parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].value.float_t                    = 0.0;
   parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].min                              = 0.0;
   parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].max                              = 9999.0;
-  parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].def                              = 0.0;
+  parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].def                              = 1111.0;
   parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].code                             = 13;
   // Пароль 3 уровня
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].id                               = CCS_PASSWORD_LEVEL_3;
@@ -6336,7 +6336,7 @@ void Ccs::initParameters()
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].value.float_t                    = 6666.0;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].min                              = 0.0;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].max                              = 9999.0;
-  parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].def                              = 6666.0;
+  parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].def                              = 3141.0;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].code                             = 0;
   // Пароль 4 уровня
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].id                               = CCS_PASSWORD_LEVEL_4;
@@ -6347,7 +6347,7 @@ void Ccs::initParameters()
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].value.float_t                    = 0.0;
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].min                              = 0.0;
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].max                              = 9999.0;
-  parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].def                              = 0.0;
+  parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].def                              = 1991.0;
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].code                             = 0;
   // Пароль 5 уровня
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].id                               = CCS_PASSWORD_LEVEL_5;
@@ -6358,7 +6358,7 @@ void Ccs::initParameters()
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].value.float_t                    = 0.0;
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].min                              = 0.0;
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].max                              = 9999.0;
-  parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].def                              = 0.0;
+  parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].def                              = 2304.0;
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].code                             = 0;
   // Протокол телемеханики
   parameters_[CCS_SCADA_TYPE - CCS_BEGIN].id                                     = CCS_SCADA_TYPE;

@@ -9855,7 +9855,7 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>9999.0</max>
-		<def>0.0</def>
+		<def>0000.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
@@ -9876,7 +9876,7 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>9999.0</max>
-		<def>0.0</def>
+		<def>1111.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
@@ -9897,7 +9897,7 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>9999.0</max>
-		<def>6666.0</def>
+		<def>3141.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>6666.0</value>
@@ -9918,7 +9918,7 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>9999.0</max>
-		<def>0.0</def>
+		<def>1991.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
@@ -9939,7 +9939,7 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>9999.0</max>
-		<def>0.0</def>
+		<def>2304.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
