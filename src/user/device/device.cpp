@@ -7,6 +7,7 @@
 
 #include "device.h"
 #include "user_main.h"
+#include "novobus_slave.h"
 
 #if USE_EXT_MEM
 static float buffer[VSD_BEGIN] __attribute__((section(".extmem")));
@@ -281,7 +282,7 @@ uint8_t Device::setMin(uint16_t id, float min)
 
   setFieldMin(index, min);
   if (min != oldMin) {
-    novobusSlave.putMessageParams(id, 7);   // 7 - ReadMinCommand
+    novobusSlave.putMessageParams(id, NovobusSlave::ReadMinCommand);   // 7 - ReadMinCommand
   }
 
   return 0;
@@ -294,7 +295,7 @@ uint8_t Device::setMax(uint16_t id, float max)
 
   setFieldMax(index, max);
   if (max != oldMax) {
-    novobusSlave.putMessageParams(id, 8);   // 8 - ReadMaxCommand
+    novobusSlave.putMessageParams(id, NovobusSlave::ReadMaxCommand);   // 8 - ReadMaxCommand
   }
 
   return 0;

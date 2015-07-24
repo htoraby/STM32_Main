@@ -80,8 +80,6 @@ void NovobusSlave::putMessageEvents(uint32_t addr)
 
 void NovobusSlave::putMessageParams(uint16_t id, uint16_t type)
 {
-  type = 1;
-  id = 1;
   uint32_t message = (type << 16) + id;
   osMessagePut(messageParams_, message, 0);
 }
