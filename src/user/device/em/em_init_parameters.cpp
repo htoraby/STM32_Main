@@ -12,6 +12,7 @@ void Em::initParameters()
   parameters_[EM_BEGIN - EM_BEGIN].min                                           = 0.0;
   parameters_[EM_BEGIN - EM_BEGIN].max                                           = 999999.0;
   parameters_[EM_BEGIN - EM_BEGIN].def                                           = 0;
+  parameters_[EM_BEGIN - EM_BEGIN].discret                                       = 1;
   parameters_[EM_BEGIN - EM_BEGIN].code                                          = 0;
   // Напряжение первой фазы
   parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].id                                  = EM_VOLTAGE_PHASE_1;
@@ -23,6 +24,7 @@ void Em::initParameters()
   parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].min                                 = 0.0;
   parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].max                                 = 999999.0;
   parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].def                                 = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].discret                             = 1;
   parameters_[EM_VOLTAGE_PHASE_1 - EM_BEGIN].code                                = 0;
   // Напряжение второй фазы
   parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].id                                  = EM_VOLTAGE_PHASE_2;
@@ -34,6 +36,7 @@ void Em::initParameters()
   parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].min                                 = 0.0;
   parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].max                                 = 999999.0;
   parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].def                                 = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].discret                             = 1;
   parameters_[EM_VOLTAGE_PHASE_2 - EM_BEGIN].code                                = 0;
   // Напряжение третей фазы
   parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].id                                  = EM_VOLTAGE_PHASE_3;
@@ -45,6 +48,7 @@ void Em::initParameters()
   parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].min                                 = 0.0;
   parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].max                                 = 999999.0;
   parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].def                                 = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].discret                             = 1;
   parameters_[EM_VOLTAGE_PHASE_3 - EM_BEGIN].code                                = 0;
   // Ток первой фазы
   parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].id                                  = EM_CURRENT_PHASE_1;
@@ -56,6 +60,7 @@ void Em::initParameters()
   parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].min                                 = 0.0;
   parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].max                                 = 999999.0;
   parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].def                                 = 0.0;
+  parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].discret                             = 10;
   parameters_[EM_CURRENT_PHASE_1 - EM_BEGIN].code                                = 0;
   // Ток второй фазы
   parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].id                                  = EM_CURRENT_PHASE_2;
@@ -67,6 +72,7 @@ void Em::initParameters()
   parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].min                                 = 0.0;
   parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].max                                 = 999999.0;
   parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].def                                 = 0.0;
+  parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].discret                             = 10;
   parameters_[EM_CURRENT_PHASE_2 - EM_BEGIN].code                                = 0;
   // Ток третей фазы
   parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].id                                  = EM_CURRENT_PHASE_3;
@@ -78,6 +84,7 @@ void Em::initParameters()
   parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].min                                 = 0.0;
   parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].max                                 = 999999.0;
   parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].def                                 = 0.0;
+  parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].discret                             = 10;
   parameters_[EM_CURRENT_PHASE_3 - EM_BEGIN].code                                = 0;
   // Общая активная мощность
   parameters_[EM_ACTIVE_POWER - EM_BEGIN].id                                     = EM_ACTIVE_POWER;
@@ -89,6 +96,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_POWER - EM_BEGIN].min                                    = 0.0;
   parameters_[EM_ACTIVE_POWER - EM_BEGIN].max                                    = 999999.0;
   parameters_[EM_ACTIVE_POWER - EM_BEGIN].def                                    = 0.0;
+  parameters_[EM_ACTIVE_POWER - EM_BEGIN].discret                                = 10;
   parameters_[EM_ACTIVE_POWER - EM_BEGIN].code                                   = 0;
   // Частота питающей сети
   parameters_[EM_FREQUENCY - EM_BEGIN].id                                        = EM_FREQUENCY;
@@ -100,6 +108,7 @@ void Em::initParameters()
   parameters_[EM_FREQUENCY - EM_BEGIN].min                                       = 0.0;
   parameters_[EM_FREQUENCY - EM_BEGIN].max                                       = 999999.0;
   parameters_[EM_FREQUENCY - EM_BEGIN].def                                       = 0.0;
+  parameters_[EM_FREQUENCY - EM_BEGIN].discret                                   = 10;
   parameters_[EM_FREQUENCY - EM_BEGIN].code                                      = 0;
   // Полная мощность
   parameters_[EM_FULL_POWER - EM_BEGIN].id                                       = EM_FULL_POWER;
@@ -111,6 +120,7 @@ void Em::initParameters()
   parameters_[EM_FULL_POWER - EM_BEGIN].min                                      = 0.0;
   parameters_[EM_FULL_POWER - EM_BEGIN].max                                      = 999999.0;
   parameters_[EM_FULL_POWER - EM_BEGIN].def                                      = 0.0;
+  parameters_[EM_FULL_POWER - EM_BEGIN].discret                                  = 10;
   parameters_[EM_FULL_POWER - EM_BEGIN].code                                     = 0;
   // Общая активная энергия
   parameters_[EM_ACTIVE_ENERGY - EM_BEGIN].id                                    = EM_ACTIVE_ENERGY;
@@ -122,6 +132,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_ENERGY - EM_BEGIN].min                                   = 0.0;
   parameters_[EM_ACTIVE_ENERGY - EM_BEGIN].max                                   = 999999.0;
   parameters_[EM_ACTIVE_ENERGY - EM_BEGIN].def                                   = 0.0;
+  parameters_[EM_ACTIVE_ENERGY - EM_BEGIN].discret                               = 10;
   parameters_[EM_ACTIVE_ENERGY - EM_BEGIN].code                                  = 0;
   // Напряжение межфазное первой и второй фазы
   parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].id                                = EM_VOLTAGE_PHASE_1_2;
@@ -133,6 +144,7 @@ void Em::initParameters()
   parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].min                               = 0.0;
   parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].max                               = 999999.0;
   parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].def                               = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].discret                           = 1;
   parameters_[EM_VOLTAGE_PHASE_1_2 - EM_BEGIN].code                              = 0;
   // Напряжение межфазное второй и третьей фазы
   parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].id                                = EM_VOLTAGE_PHASE_2_3;
@@ -144,6 +156,7 @@ void Em::initParameters()
   parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].min                               = 0.0;
   parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].max                               = 999999.0;
   parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].def                               = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].discret                           = 1;
   parameters_[EM_VOLTAGE_PHASE_2_3 - EM_BEGIN].code                              = 0;
   // Напряжение межфазное третьей и первой фазы
   parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].id                                = EM_VOLTAGE_PHASE_3_1;
@@ -155,6 +168,7 @@ void Em::initParameters()
   parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].min                               = 0.0;
   parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].max                               = 999999.0;
   parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].def                               = 0.0;
+  parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].discret                           = 1;
   parameters_[EM_VOLTAGE_PHASE_3_1 - EM_BEGIN].code                              = 0;
   // Общий коэффициент мощности
   parameters_[EM_COS_PHI - EM_BEGIN].id                                          = EM_COS_PHI;
@@ -166,6 +180,7 @@ void Em::initParameters()
   parameters_[EM_COS_PHI - EM_BEGIN].min                                         = 0.0;
   parameters_[EM_COS_PHI - EM_BEGIN].max                                         = 999999.0;
   parameters_[EM_COS_PHI - EM_BEGIN].def                                         = 0.0;
+  parameters_[EM_COS_PHI - EM_BEGIN].discret                                     = 1;
   parameters_[EM_COS_PHI - EM_BEGIN].code                                        = 0;
   // Коэффициент мощности первой фазы
   parameters_[EM_COS_PHI_PHASE_1 - EM_BEGIN].id                                  = EM_COS_PHI_PHASE_1;
@@ -177,6 +192,7 @@ void Em::initParameters()
   parameters_[EM_COS_PHI_PHASE_1 - EM_BEGIN].min                                 = 0.0;
   parameters_[EM_COS_PHI_PHASE_1 - EM_BEGIN].max                                 = 999999.0;
   parameters_[EM_COS_PHI_PHASE_1 - EM_BEGIN].def                                 = 0.0;
+  parameters_[EM_COS_PHI_PHASE_1 - EM_BEGIN].discret                             = 1;
   parameters_[EM_COS_PHI_PHASE_1 - EM_BEGIN].code                                = 0;
   // Коэффициент мощности второй фазы
   parameters_[EM_COS_PHI_PHASE_2 - EM_BEGIN].id                                  = EM_COS_PHI_PHASE_2;
@@ -188,6 +204,7 @@ void Em::initParameters()
   parameters_[EM_COS_PHI_PHASE_2 - EM_BEGIN].min                                 = 0.0;
   parameters_[EM_COS_PHI_PHASE_2 - EM_BEGIN].max                                 = 999999.0;
   parameters_[EM_COS_PHI_PHASE_2 - EM_BEGIN].def                                 = 0.0;
+  parameters_[EM_COS_PHI_PHASE_2 - EM_BEGIN].discret                             = 1;
   parameters_[EM_COS_PHI_PHASE_2 - EM_BEGIN].code                                = 0;
   // Коэффициент мощности третей фазы
   parameters_[EM_COS_PHI_PHASE_3 - EM_BEGIN].id                                  = EM_COS_PHI_PHASE_3;
@@ -199,6 +216,7 @@ void Em::initParameters()
   parameters_[EM_COS_PHI_PHASE_3 - EM_BEGIN].min                                 = 0.0;
   parameters_[EM_COS_PHI_PHASE_3 - EM_BEGIN].max                                 = 999999.0;
   parameters_[EM_COS_PHI_PHASE_3 - EM_BEGIN].def                                 = 0.0;
+  parameters_[EM_COS_PHI_PHASE_3 - EM_BEGIN].discret                             = 1;
   parameters_[EM_COS_PHI_PHASE_3 - EM_BEGIN].code                                = 0;
   // Полная мощность первой фазы
   parameters_[EM_FULL_POWER_PHASE_1 - EM_BEGIN].id                               = EM_FULL_POWER_PHASE_1;
@@ -210,6 +228,7 @@ void Em::initParameters()
   parameters_[EM_FULL_POWER_PHASE_1 - EM_BEGIN].min                              = 0.0;
   parameters_[EM_FULL_POWER_PHASE_1 - EM_BEGIN].max                              = 999999.0;
   parameters_[EM_FULL_POWER_PHASE_1 - EM_BEGIN].def                              = 0.0;
+  parameters_[EM_FULL_POWER_PHASE_1 - EM_BEGIN].discret                          = 1;
   parameters_[EM_FULL_POWER_PHASE_1 - EM_BEGIN].code                             = 0;
   // Полная мощность второй фазы
   parameters_[EM_FULL_POWER_PHASE_2 - EM_BEGIN].id                               = EM_FULL_POWER_PHASE_2;
@@ -221,6 +240,7 @@ void Em::initParameters()
   parameters_[EM_FULL_POWER_PHASE_2 - EM_BEGIN].min                              = 0.0;
   parameters_[EM_FULL_POWER_PHASE_2 - EM_BEGIN].max                              = 999999.0;
   parameters_[EM_FULL_POWER_PHASE_2 - EM_BEGIN].def                              = 0.0;
+  parameters_[EM_FULL_POWER_PHASE_2 - EM_BEGIN].discret                          = 1;
   parameters_[EM_FULL_POWER_PHASE_2 - EM_BEGIN].code                             = 0;
   // Полная мощность третей фазы
   parameters_[EM_FULL_POWER_PHASE_3 - EM_BEGIN].id                               = EM_FULL_POWER_PHASE_3;
@@ -232,6 +252,7 @@ void Em::initParameters()
   parameters_[EM_FULL_POWER_PHASE_3 - EM_BEGIN].min                              = 0.0;
   parameters_[EM_FULL_POWER_PHASE_3 - EM_BEGIN].max                              = 999999.0;
   parameters_[EM_FULL_POWER_PHASE_3 - EM_BEGIN].def                              = 0.0;
+  parameters_[EM_FULL_POWER_PHASE_3 - EM_BEGIN].discret                          = 1;
   parameters_[EM_FULL_POWER_PHASE_3 - EM_BEGIN].code                             = 0;
   // Активная мощность первой фазы
   parameters_[EM_ACTIVE_POWER_PHASE_1 - EM_BEGIN].id                             = EM_ACTIVE_POWER_PHASE_1;
@@ -243,6 +264,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_POWER_PHASE_1 - EM_BEGIN].min                            = 0.0;
   parameters_[EM_ACTIVE_POWER_PHASE_1 - EM_BEGIN].max                            = 999999.0;
   parameters_[EM_ACTIVE_POWER_PHASE_1 - EM_BEGIN].def                            = 0.0;
+  parameters_[EM_ACTIVE_POWER_PHASE_1 - EM_BEGIN].discret                        = 1;
   parameters_[EM_ACTIVE_POWER_PHASE_1 - EM_BEGIN].code                           = 0;
   // Активная мощность второй фазы
   parameters_[EM_ACTIVE_POWER_PHASE_2 - EM_BEGIN].id                             = EM_ACTIVE_POWER_PHASE_2;
@@ -254,6 +276,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_POWER_PHASE_2 - EM_BEGIN].min                            = 0.0;
   parameters_[EM_ACTIVE_POWER_PHASE_2 - EM_BEGIN].max                            = 999999.0;
   parameters_[EM_ACTIVE_POWER_PHASE_2 - EM_BEGIN].def                            = 0.0;
+  parameters_[EM_ACTIVE_POWER_PHASE_2 - EM_BEGIN].discret                        = 1;
   parameters_[EM_ACTIVE_POWER_PHASE_2 - EM_BEGIN].code                           = 0;
   // Активная мощность третей фазы
   parameters_[EM_ACTIVE_POWER_PHASE_3 - EM_BEGIN].id                             = EM_ACTIVE_POWER_PHASE_3;
@@ -265,6 +288,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_POWER_PHASE_3 - EM_BEGIN].min                            = 0.0;
   parameters_[EM_ACTIVE_POWER_PHASE_3 - EM_BEGIN].max                            = 999999.0;
   parameters_[EM_ACTIVE_POWER_PHASE_3 - EM_BEGIN].def                            = 0.0;
+  parameters_[EM_ACTIVE_POWER_PHASE_3 - EM_BEGIN].discret                        = 1;
   parameters_[EM_ACTIVE_POWER_PHASE_3 - EM_BEGIN].code                           = 0;
   // Общая реактивная мощность
   parameters_[EM_REACTIVE_POWER - EM_BEGIN].id                                   = EM_REACTIVE_POWER;
@@ -276,6 +300,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_POWER - EM_BEGIN].min                                  = 0.0;
   parameters_[EM_REACTIVE_POWER - EM_BEGIN].max                                  = 999999.0;
   parameters_[EM_REACTIVE_POWER - EM_BEGIN].def                                  = 0.0;
+  parameters_[EM_REACTIVE_POWER - EM_BEGIN].discret                              = 10;
   parameters_[EM_REACTIVE_POWER - EM_BEGIN].code                                 = 0;
   // Реактивная мощность первой фазы
   parameters_[EM_REACTIVE_POWER_PHASE_1 - EM_BEGIN].id                           = EM_REACTIVE_POWER_PHASE_1;
@@ -287,6 +312,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_POWER_PHASE_1 - EM_BEGIN].min                          = 0.0;
   parameters_[EM_REACTIVE_POWER_PHASE_1 - EM_BEGIN].max                          = 999999.0;
   parameters_[EM_REACTIVE_POWER_PHASE_1 - EM_BEGIN].def                          = 0.0;
+  parameters_[EM_REACTIVE_POWER_PHASE_1 - EM_BEGIN].discret                      = 1;
   parameters_[EM_REACTIVE_POWER_PHASE_1 - EM_BEGIN].code                         = 0;
   // Реактивная мощность второй фазы
   parameters_[EM_REACTIVE_POWER_PHASE_2 - EM_BEGIN].id                           = EM_REACTIVE_POWER_PHASE_2;
@@ -298,6 +324,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_POWER_PHASE_2 - EM_BEGIN].min                          = 0.0;
   parameters_[EM_REACTIVE_POWER_PHASE_2 - EM_BEGIN].max                          = 999999.0;
   parameters_[EM_REACTIVE_POWER_PHASE_2 - EM_BEGIN].def                          = 0.0;
+  parameters_[EM_REACTIVE_POWER_PHASE_2 - EM_BEGIN].discret                      = 1;
   parameters_[EM_REACTIVE_POWER_PHASE_2 - EM_BEGIN].code                         = 0;
   // Реактивная мощность третей фазы
   parameters_[EM_REACTIVE_POWER_PHASE_3 - EM_BEGIN].id                           = EM_REACTIVE_POWER_PHASE_3;
@@ -309,6 +336,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_POWER_PHASE_3 - EM_BEGIN].min                          = 0.0;
   parameters_[EM_REACTIVE_POWER_PHASE_3 - EM_BEGIN].max                          = 999999.0;
   parameters_[EM_REACTIVE_POWER_PHASE_3 - EM_BEGIN].def                          = 0.0;
+  parameters_[EM_REACTIVE_POWER_PHASE_3 - EM_BEGIN].discret                      = 1;
   parameters_[EM_REACTIVE_POWER_PHASE_3 - EM_BEGIN].code                         = 0;
   // Обшая активная плюс энергия за весь период
   parameters_[EM_ACTIVE_PLUS_ALL - EM_BEGIN].id                                  = EM_ACTIVE_PLUS_ALL;
@@ -320,6 +348,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_PLUS_ALL - EM_BEGIN].min                                 = 0.0;
   parameters_[EM_ACTIVE_PLUS_ALL - EM_BEGIN].max                                 = 999999.0;
   parameters_[EM_ACTIVE_PLUS_ALL - EM_BEGIN].def                                 = 0.0;
+  parameters_[EM_ACTIVE_PLUS_ALL - EM_BEGIN].discret                             = 1;
   parameters_[EM_ACTIVE_PLUS_ALL - EM_BEGIN].code                                = 0;
   // Обшая активная минус энергия за весь период
   parameters_[EM_ACTIVE_MINUS_ALL - EM_BEGIN].id                                 = EM_ACTIVE_MINUS_ALL;
@@ -331,6 +360,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_MINUS_ALL - EM_BEGIN].min                                = 0.0;
   parameters_[EM_ACTIVE_MINUS_ALL - EM_BEGIN].max                                = 999999.0;
   parameters_[EM_ACTIVE_MINUS_ALL - EM_BEGIN].def                                = 0.0;
+  parameters_[EM_ACTIVE_MINUS_ALL - EM_BEGIN].discret                            = 1;
   parameters_[EM_ACTIVE_MINUS_ALL - EM_BEGIN].code                               = 0;
   // Активная плюс энергия за текущий день
   parameters_[EM_ACTIVE_PLUS_CUR_DAY - EM_BEGIN].id                              = EM_ACTIVE_PLUS_CUR_DAY;
@@ -342,6 +372,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_PLUS_CUR_DAY - EM_BEGIN].min                             = 0.0;
   parameters_[EM_ACTIVE_PLUS_CUR_DAY - EM_BEGIN].max                             = 999999.0;
   parameters_[EM_ACTIVE_PLUS_CUR_DAY - EM_BEGIN].def                             = 0.0;
+  parameters_[EM_ACTIVE_PLUS_CUR_DAY - EM_BEGIN].discret                         = 1;
   parameters_[EM_ACTIVE_PLUS_CUR_DAY - EM_BEGIN].code                            = 0;
   // Активная минус энергия за текущий день
   parameters_[EM_ACTIVE_MINUS_CUR_DAY - EM_BEGIN].id                             = EM_ACTIVE_MINUS_CUR_DAY;
@@ -353,6 +384,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_MINUS_CUR_DAY - EM_BEGIN].min                            = 0.0;
   parameters_[EM_ACTIVE_MINUS_CUR_DAY - EM_BEGIN].max                            = 999999.0;
   parameters_[EM_ACTIVE_MINUS_CUR_DAY - EM_BEGIN].def                            = 0.0;
+  parameters_[EM_ACTIVE_MINUS_CUR_DAY - EM_BEGIN].discret                        = 1;
   parameters_[EM_ACTIVE_MINUS_CUR_DAY - EM_BEGIN].code                           = 0;
   // Активная плюс энергия за предыдущий день
   parameters_[EM_ACTIVE_PLUS_PREV_DAY - EM_BEGIN].id                             = EM_ACTIVE_PLUS_PREV_DAY;
@@ -364,6 +396,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_PLUS_PREV_DAY - EM_BEGIN].min                            = 0.0;
   parameters_[EM_ACTIVE_PLUS_PREV_DAY - EM_BEGIN].max                            = 999999.0;
   parameters_[EM_ACTIVE_PLUS_PREV_DAY - EM_BEGIN].def                            = 0.0;
+  parameters_[EM_ACTIVE_PLUS_PREV_DAY - EM_BEGIN].discret                        = 1;
   parameters_[EM_ACTIVE_PLUS_PREV_DAY - EM_BEGIN].code                           = 0;
   // Активная минус энергия за текущий день
   parameters_[EM_ACTIVE_MINUS_PREV_DAY - EM_BEGIN].id                            = EM_ACTIVE_MINUS_PREV_DAY;
@@ -375,6 +408,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_MINUS_PREV_DAY - EM_BEGIN].min                           = 0.0;
   parameters_[EM_ACTIVE_MINUS_PREV_DAY - EM_BEGIN].max                           = 999999.0;
   parameters_[EM_ACTIVE_MINUS_PREV_DAY - EM_BEGIN].def                           = 0.0;
+  parameters_[EM_ACTIVE_MINUS_PREV_DAY - EM_BEGIN].discret                       = 1;
   parameters_[EM_ACTIVE_MINUS_PREV_DAY - EM_BEGIN].code                          = 0;
   // Активная плюс энергия за текущий месяц
   parameters_[EM_ACTIVE_PLUS_CUR_MONTH - EM_BEGIN].id                            = EM_ACTIVE_PLUS_CUR_MONTH;
@@ -386,6 +420,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_PLUS_CUR_MONTH - EM_BEGIN].min                           = 0.0;
   parameters_[EM_ACTIVE_PLUS_CUR_MONTH - EM_BEGIN].max                           = 999999.0;
   parameters_[EM_ACTIVE_PLUS_CUR_MONTH - EM_BEGIN].def                           = 0.0;
+  parameters_[EM_ACTIVE_PLUS_CUR_MONTH - EM_BEGIN].discret                       = 1;
   parameters_[EM_ACTIVE_PLUS_CUR_MONTH - EM_BEGIN].code                          = 0;
   // Активная минус энергия за текущий месяц
   parameters_[EM_ACTIVE_MINUS_CUR_MONTH - EM_BEGIN].id                           = EM_ACTIVE_MINUS_CUR_MONTH;
@@ -397,6 +432,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_MINUS_CUR_MONTH - EM_BEGIN].min                          = 0.0;
   parameters_[EM_ACTIVE_MINUS_CUR_MONTH - EM_BEGIN].max                          = 999999.0;
   parameters_[EM_ACTIVE_MINUS_CUR_MONTH - EM_BEGIN].def                          = 0.0;
+  parameters_[EM_ACTIVE_MINUS_CUR_MONTH - EM_BEGIN].discret                      = 1;
   parameters_[EM_ACTIVE_MINUS_CUR_MONTH - EM_BEGIN].code                         = 0;
   // Активная плюс энергия на предыдущий месяц
   parameters_[EM_ACTIVE_PLUS_PREV_MONTH - EM_BEGIN].id                           = EM_ACTIVE_PLUS_PREV_MONTH;
@@ -408,6 +444,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_PLUS_PREV_MONTH - EM_BEGIN].min                          = 0.0;
   parameters_[EM_ACTIVE_PLUS_PREV_MONTH - EM_BEGIN].max                          = 999999.0;
   parameters_[EM_ACTIVE_PLUS_PREV_MONTH - EM_BEGIN].def                          = 0.0;
+  parameters_[EM_ACTIVE_PLUS_PREV_MONTH - EM_BEGIN].discret                      = 1;
   parameters_[EM_ACTIVE_PLUS_PREV_MONTH - EM_BEGIN].code                         = 0;
   // Активная минус энергия на предыдущий месяц
   parameters_[EM_ACTIVE_MINUS_PREV_MONTH - EM_BEGIN].id                          = EM_ACTIVE_MINUS_PREV_MONTH;
@@ -419,6 +456,7 @@ void Em::initParameters()
   parameters_[EM_ACTIVE_MINUS_PREV_MONTH - EM_BEGIN].min                         = 0.0;
   parameters_[EM_ACTIVE_MINUS_PREV_MONTH - EM_BEGIN].max                         = 999999.0;
   parameters_[EM_ACTIVE_MINUS_PREV_MONTH - EM_BEGIN].def                         = 0.0;
+  parameters_[EM_ACTIVE_MINUS_PREV_MONTH - EM_BEGIN].discret                     = 1;
   parameters_[EM_ACTIVE_MINUS_PREV_MONTH - EM_BEGIN].code                        = 0;
   // Общая реактивня энергия
   parameters_[EM_REACTIVE_ENERGY - EM_BEGIN].id                                  = EM_REACTIVE_ENERGY;
@@ -430,6 +468,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_ENERGY - EM_BEGIN].min                                 = 0.0;
   parameters_[EM_REACTIVE_ENERGY - EM_BEGIN].max                                 = 999999.0;
   parameters_[EM_REACTIVE_ENERGY - EM_BEGIN].def                                 = 0.0;
+  parameters_[EM_REACTIVE_ENERGY - EM_BEGIN].discret                             = 10;
   parameters_[EM_REACTIVE_ENERGY - EM_BEGIN].code                                = 0;
   // Общая плюс реактивная энергия за весь период
   parameters_[EM_REACTIVE_PLUS_ALL - EM_BEGIN].id                                = EM_REACTIVE_PLUS_ALL;
@@ -441,6 +480,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_PLUS_ALL - EM_BEGIN].min                               = 0.0;
   parameters_[EM_REACTIVE_PLUS_ALL - EM_BEGIN].max                               = 999999.0;
   parameters_[EM_REACTIVE_PLUS_ALL - EM_BEGIN].def                               = 0.0;
+  parameters_[EM_REACTIVE_PLUS_ALL - EM_BEGIN].discret                           = 1;
   parameters_[EM_REACTIVE_PLUS_ALL - EM_BEGIN].code                              = 0;
   // Общая минус реактивная энергия за весь период
   parameters_[EM_REACTIVE_MINUS_ALL - EM_BEGIN].id                               = EM_REACTIVE_MINUS_ALL;
@@ -452,6 +492,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_MINUS_ALL - EM_BEGIN].min                              = 0.0;
   parameters_[EM_REACTIVE_MINUS_ALL - EM_BEGIN].max                              = 999999.0;
   parameters_[EM_REACTIVE_MINUS_ALL - EM_BEGIN].def                              = 0.0;
+  parameters_[EM_REACTIVE_MINUS_ALL - EM_BEGIN].discret                          = 1;
   parameters_[EM_REACTIVE_MINUS_ALL - EM_BEGIN].code                             = 0;
   // Плюс реактивная энергия за весь день
   parameters_[EM_REACTIVE_PLUS_CUR_DAY - EM_BEGIN].id                            = EM_REACTIVE_PLUS_CUR_DAY;
@@ -463,6 +504,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_PLUS_CUR_DAY - EM_BEGIN].min                           = 0.0;
   parameters_[EM_REACTIVE_PLUS_CUR_DAY - EM_BEGIN].max                           = 999999.0;
   parameters_[EM_REACTIVE_PLUS_CUR_DAY - EM_BEGIN].def                           = 0.0;
+  parameters_[EM_REACTIVE_PLUS_CUR_DAY - EM_BEGIN].discret                       = 1;
   parameters_[EM_REACTIVE_PLUS_CUR_DAY - EM_BEGIN].code                          = 0;
   // Минус реактивная энергия за весь день
   parameters_[EM_REACTIVE_MINUS_CUR_DAY - EM_BEGIN].id                           = EM_REACTIVE_MINUS_CUR_DAY;
@@ -474,6 +516,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_MINUS_CUR_DAY - EM_BEGIN].min                          = 0.0;
   parameters_[EM_REACTIVE_MINUS_CUR_DAY - EM_BEGIN].max                          = 999999.0;
   parameters_[EM_REACTIVE_MINUS_CUR_DAY - EM_BEGIN].def                          = 0.0;
+  parameters_[EM_REACTIVE_MINUS_CUR_DAY - EM_BEGIN].discret                      = 1;
   parameters_[EM_REACTIVE_MINUS_CUR_DAY - EM_BEGIN].code                         = 0;
   // Плюс реактивная энергия за весь день
   parameters_[EM_REACTIVE_PLUS_PREV_DAY - EM_BEGIN].id                           = EM_REACTIVE_PLUS_PREV_DAY;
@@ -485,6 +528,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_PLUS_PREV_DAY - EM_BEGIN].min                          = 0.0;
   parameters_[EM_REACTIVE_PLUS_PREV_DAY - EM_BEGIN].max                          = 999999.0;
   parameters_[EM_REACTIVE_PLUS_PREV_DAY - EM_BEGIN].def                          = 0.0;
+  parameters_[EM_REACTIVE_PLUS_PREV_DAY - EM_BEGIN].discret                      = 1;
   parameters_[EM_REACTIVE_PLUS_PREV_DAY - EM_BEGIN].code                         = 0;
   // Минус реактивная энергия за весь день
   parameters_[EM_REACTIVE_MINUS_PREV_DAY - EM_BEGIN].id                          = EM_REACTIVE_MINUS_PREV_DAY;
@@ -496,6 +540,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_MINUS_PREV_DAY - EM_BEGIN].min                         = 0.0;
   parameters_[EM_REACTIVE_MINUS_PREV_DAY - EM_BEGIN].max                         = 999999.0;
   parameters_[EM_REACTIVE_MINUS_PREV_DAY - EM_BEGIN].def                         = 0.0;
+  parameters_[EM_REACTIVE_MINUS_PREV_DAY - EM_BEGIN].discret                     = 1;
   parameters_[EM_REACTIVE_MINUS_PREV_DAY - EM_BEGIN].code                        = 0;
   // Плюс реактивная энергия за месяц
   parameters_[EM_REACTIVE_PLUS_CUR_MONTH - EM_BEGIN].id                          = EM_REACTIVE_PLUS_CUR_MONTH;
@@ -507,6 +552,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_PLUS_CUR_MONTH - EM_BEGIN].min                         = 0.0;
   parameters_[EM_REACTIVE_PLUS_CUR_MONTH - EM_BEGIN].max                         = 999999.0;
   parameters_[EM_REACTIVE_PLUS_CUR_MONTH - EM_BEGIN].def                         = 0.0;
+  parameters_[EM_REACTIVE_PLUS_CUR_MONTH - EM_BEGIN].discret                     = 1;
   parameters_[EM_REACTIVE_PLUS_CUR_MONTH - EM_BEGIN].code                        = 0;
   // Минус реактивная энергия за месяц
   parameters_[EM_REACTIVE_MINUS_CUR_MONTH - EM_BEGIN].id                         = EM_REACTIVE_MINUS_CUR_MONTH;
@@ -518,6 +564,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_MINUS_CUR_MONTH - EM_BEGIN].min                        = 0.0;
   parameters_[EM_REACTIVE_MINUS_CUR_MONTH - EM_BEGIN].max                        = 999999.0;
   parameters_[EM_REACTIVE_MINUS_CUR_MONTH - EM_BEGIN].def                        = 0.0;
+  parameters_[EM_REACTIVE_MINUS_CUR_MONTH - EM_BEGIN].discret                    = 1;
   parameters_[EM_REACTIVE_MINUS_CUR_MONTH - EM_BEGIN].code                       = 0;
   // Плюс реактивная энергия за предыдущий месяц
   parameters_[EM_REACTIVE_PLUS_PREV_MONTH - EM_BEGIN].id                         = EM_REACTIVE_PLUS_PREV_MONTH;
@@ -529,6 +576,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_PLUS_PREV_MONTH - EM_BEGIN].min                        = 0.0;
   parameters_[EM_REACTIVE_PLUS_PREV_MONTH - EM_BEGIN].max                        = 999999.0;
   parameters_[EM_REACTIVE_PLUS_PREV_MONTH - EM_BEGIN].def                        = 0.0;
+  parameters_[EM_REACTIVE_PLUS_PREV_MONTH - EM_BEGIN].discret                    = 1;
   parameters_[EM_REACTIVE_PLUS_PREV_MONTH - EM_BEGIN].code                       = 0;
   // Минус реактивная энергия за предыдущий месяц
   parameters_[EM_REACTIVE_MINUS_PREV_MONTH - EM_BEGIN].id                        = EM_REACTIVE_MINUS_PREV_MONTH;
@@ -540,6 +588,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_MINUS_PREV_MONTH - EM_BEGIN].min                       = 0.0;
   parameters_[EM_REACTIVE_MINUS_PREV_MONTH - EM_BEGIN].max                       = 999999.0;
   parameters_[EM_REACTIVE_MINUS_PREV_MONTH - EM_BEGIN].def                       = 0.0;
+  parameters_[EM_REACTIVE_MINUS_PREV_MONTH - EM_BEGIN].discret                   = 1;
   parameters_[EM_REACTIVE_MINUS_PREV_MONTH - EM_BEGIN].code                      = 0;
   // Коэффицинт трансформации тока
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].id                        = EM_COEFFICIENT_TRANS_CURRENT;
@@ -551,6 +600,7 @@ void Em::initParameters()
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].min                       = 1.0;
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].max                       = 999999.0;
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].def                       = 1.0;
+  parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].discret                   = 1;
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].code                      = 0;
   // Коэффициент трансформации напряжения
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].id                        = EM_COEFFICIENT_TRANS_VOLTAGE;
@@ -562,6 +612,7 @@ void Em::initParameters()
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].min                       = 1.0;
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].max                       = 999999.0;
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].def                       = 1.0;
+  parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].discret                   = 1;
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].code                      = 0;
 }
 
