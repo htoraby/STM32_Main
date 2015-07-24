@@ -880,6 +880,7 @@ osEvent osMessageGet (osMessageQId queue_id, uint32_t millisec)
   osEvent event;
   
   event.def.message_id = queue_id;
+  event.value.v = 0;
   
   if (queue_id == NULL) {
     event.status = osErrorParameter;
