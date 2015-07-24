@@ -677,7 +677,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
 		<min>0.0</min>
-		<max>10000.0</max>
+		<max>999999.0</max>
 		<def>2000.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -698,7 +698,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>10000.0</max>
+		<max>9999.9</max>
 		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>

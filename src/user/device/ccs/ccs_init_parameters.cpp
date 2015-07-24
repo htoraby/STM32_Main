@@ -362,7 +362,7 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].value.float_t                 = 2000.0;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].max                           = 10000.0;
+  parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].max                           = 999999.0;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].def                           = 2000.0;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].code                          = 13;
   // Номинальный ток ТМПН
@@ -373,7 +373,7 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].max                         = 10000.0;
+  parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].max                         = 9999.9;
   parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].code                        = 13;
   // Номинальное напряжение ТМПН
