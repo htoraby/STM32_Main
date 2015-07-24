@@ -10,7 +10,7 @@ void Vsd::initParameters()
   parameters_[VSD_BEGIN - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_BEGIN - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_BEGIN - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_BEGIN - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_BEGIN - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_BEGIN - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_BEGIN - VSD_BEGIN].code                                        = 0;
   // Выходная частота ПЧ
@@ -21,7 +21,7 @@ void Vsd::initParameters()
   parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].max                                 = 10000000.0;
+  parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].max                                 = 999999.0;
   parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].code                                = 0;
   // Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
@@ -43,7 +43,7 @@ void Vsd::initParameters()
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].max                                 = 10000000.0;
+  parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].max                                 = 999999.0;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].code                                = 0;
   // Напряжение на выходе ПЧ
@@ -54,7 +54,7 @@ void Vsd::initParameters()
   parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].max                             = 10000000.0;
+  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].max                             = 999999.0;
   parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].def                             = 0;
   parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].code                            = 0;
   // Конструкция двигателя Danfoss 1-10 Используется в интерфейсе
@@ -98,7 +98,7 @@ void Vsd::initParameters()
   parameters_[VSD_CURRENT_OUT_PHASE_1 - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_CURRENT_OUT_PHASE_1 - VSD_BEGIN].value.float_t                 = 0;
   parameters_[VSD_CURRENT_OUT_PHASE_1 - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_CURRENT_OUT_PHASE_1 - VSD_BEGIN].max                           = 10000000.0;
+  parameters_[VSD_CURRENT_OUT_PHASE_1 - VSD_BEGIN].max                           = 999999.0;
   parameters_[VSD_CURRENT_OUT_PHASE_1 - VSD_BEGIN].def                           = 0;
   parameters_[VSD_CURRENT_OUT_PHASE_1 - VSD_BEGIN].code                          = 0;
   // Выходной ток ПЧ фаза V
@@ -109,7 +109,7 @@ void Vsd::initParameters()
   parameters_[VSD_CURRENT_OUT_PHASE_2 - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_CURRENT_OUT_PHASE_2 - VSD_BEGIN].value.float_t                 = 0;
   parameters_[VSD_CURRENT_OUT_PHASE_2 - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_CURRENT_OUT_PHASE_2 - VSD_BEGIN].max                           = 10000000.0;
+  parameters_[VSD_CURRENT_OUT_PHASE_2 - VSD_BEGIN].max                           = 999999.0;
   parameters_[VSD_CURRENT_OUT_PHASE_2 - VSD_BEGIN].def                           = 0;
   parameters_[VSD_CURRENT_OUT_PHASE_2 - VSD_BEGIN].code                          = 0;
   // Выходной ток ПЧ фаза W
@@ -120,7 +120,7 @@ void Vsd::initParameters()
   parameters_[VSD_CURRENT_OUT_PHASE_3 - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_CURRENT_OUT_PHASE_3 - VSD_BEGIN].value.float_t                 = 0;
   parameters_[VSD_CURRENT_OUT_PHASE_3 - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_CURRENT_OUT_PHASE_3 - VSD_BEGIN].max                           = 10000000.0;
+  parameters_[VSD_CURRENT_OUT_PHASE_3 - VSD_BEGIN].max                           = 999999.0;
   parameters_[VSD_CURRENT_OUT_PHASE_3 - VSD_BEGIN].def                           = 0;
   parameters_[VSD_CURRENT_OUT_PHASE_3 - VSD_BEGIN].code                          = 0;
   // Ток звена постоянного тока
@@ -131,7 +131,7 @@ void Vsd::initParameters()
   parameters_[VSD_CURRENT_DC - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_CURRENT_DC - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_CURRENT_DC - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_CURRENT_DC - VSD_BEGIN].max                                    = 10000000.0;
+  parameters_[VSD_CURRENT_DC - VSD_BEGIN].max                                    = 999999.0;
   parameters_[VSD_CURRENT_DC - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_CURRENT_DC - VSD_BEGIN].code                                   = 0;
   // Напряжение цепи пост.тока Danfoss 16-30 Используется в проекте Novomet 0х008B IREG_UD
@@ -142,7 +142,7 @@ void Vsd::initParameters()
   parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].max                                    = 10000000.0;
+  parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].max                                    = 999999.0;
   parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].code                                   = 0;
   // Активная мощность Danfoss 16-10 Используется в проекте Novomet 0х0071 IREG_POUT
@@ -164,7 +164,7 @@ void Vsd::initParameters()
   parameters_[VSD_POWER_FULL - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_POWER_FULL - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_POWER_FULL - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_POWER_FULL - VSD_BEGIN].max                                    = 10000000.0;
+  parameters_[VSD_POWER_FULL - VSD_BEGIN].max                                    = 999999.0;
   parameters_[VSD_POWER_FULL - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_POWER_FULL - VSD_BEGIN].code                                   = 0;
   // Мощность двигателя Danfoss 1-20 Используется в проекте, интерфейс
@@ -175,7 +175,7 @@ void Vsd::initParameters()
   parameters_[VSD_MOTOR_POWER - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_MOTOR_POWER - VSD_BEGIN].value.float_t                         = 125000.0;
   parameters_[VSD_MOTOR_POWER - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_MOTOR_POWER - VSD_BEGIN].max                                   = 10000000.0;
+  parameters_[VSD_MOTOR_POWER - VSD_BEGIN].max                                   = 999999.0;
   parameters_[VSD_MOTOR_POWER - VSD_BEGIN].def                                   = 125000.0;
   parameters_[VSD_MOTOR_POWER - VSD_BEGIN].code                                  = 13;
   // Напряжение двигателя Danfoss 1-22 Используется в проекте, интерфейс Novomet 0х0045 IREG_MOTOR_U_MAх
@@ -252,7 +252,7 @@ void Vsd::initParameters()
   parameters_[VSD_BACK_EMF - VSD_BEGIN].validity                                 = VALIDITY_ERROR;
   parameters_[VSD_BACK_EMF - VSD_BEGIN].value.float_t                            = 0;
   parameters_[VSD_BACK_EMF - VSD_BEGIN].min                                      = 0.0;
-  parameters_[VSD_BACK_EMF - VSD_BEGIN].max                                      = 10000000.0;
+  parameters_[VSD_BACK_EMF - VSD_BEGIN].max                                      = 999999.0;
   parameters_[VSD_BACK_EMF - VSD_BEGIN].def                                      = 0;
   parameters_[VSD_BACK_EMF - VSD_BEGIN].code                                     = 0;
   // Ток холостого хода
@@ -274,7 +274,7 @@ void Vsd::initParameters()
   parameters_[VSD_MOTOR_POLES - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_MOTOR_POLES - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_MOTOR_POLES - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_MOTOR_POLES - VSD_BEGIN].max                                   = 10000000.0;
+  parameters_[VSD_MOTOR_POLES - VSD_BEGIN].max                                   = 999999.0;
   parameters_[VSD_MOTOR_POLES - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_MOTOR_POLES - VSD_BEGIN].code                                  = 13;
   // Нижний предел скорости Danfoss 4-12 Гц Используется в проекте
@@ -307,7 +307,7 @@ void Vsd::initParameters()
   parameters_[VSD_T_SPEEDUP - VSD_BEGIN].validity                                = VALIDITY_ERROR;
   parameters_[VSD_T_SPEEDUP - VSD_BEGIN].value.float_t                           = 100.0;
   parameters_[VSD_T_SPEEDUP - VSD_BEGIN].min                                     = 0.0;
-  parameters_[VSD_T_SPEEDUP - VSD_BEGIN].max                                     = 10000000.0;
+  parameters_[VSD_T_SPEEDUP - VSD_BEGIN].max                                     = 999999.0;
   parameters_[VSD_T_SPEEDUP - VSD_BEGIN].def                                     = 100.0;
   parameters_[VSD_T_SPEEDUP - VSD_BEGIN].code                                    = 13;
   // Период Период снижения частоты Novomet 0х0039 IREG_T_SPEEDDOWN
@@ -318,7 +318,7 @@ void Vsd::initParameters()
   parameters_[VSD_T_SPEEDDOWN - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_T_SPEEDDOWN - VSD_BEGIN].value.float_t                         = 0.0;
   parameters_[VSD_T_SPEEDDOWN - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_T_SPEEDDOWN - VSD_BEGIN].max                                   = 10000000.0;
+  parameters_[VSD_T_SPEEDDOWN - VSD_BEGIN].max                                   = 999999.0;
   parameters_[VSD_T_SPEEDDOWN - VSD_BEGIN].def                                   = 0.0;
   parameters_[VSD_T_SPEEDDOWN - VSD_BEGIN].code                                  = 13;
   // U/f характеристика
@@ -472,7 +472,7 @@ void Vsd::initParameters()
   parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].value.float_t                = 0;
   parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].max                          = 10000000.0;
+  parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].max                          = 999999.0;
   parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].def                          = 0;
   parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].code                         = 0;
   // Статус платы выпрямителя.
@@ -483,7 +483,7 @@ void Vsd::initParameters()
   parameters_[VSD_THYR_STATUS - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_THYR_STATUS - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_THYR_STATUS - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_THYR_STATUS - VSD_BEGIN].max                                   = 10000000.0;
+  parameters_[VSD_THYR_STATUS - VSD_BEGIN].max                                   = 999999.0;
   parameters_[VSD_THYR_STATUS - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_THYR_STATUS - VSD_BEGIN].code                                  = 0;
   // Регистр управления тиристорами;
@@ -494,7 +494,7 @@ void Vsd::initParameters()
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_THYR_CONTROL - VSD_BEGIN].max                                  = 10000000.0;
+  parameters_[VSD_THYR_CONTROL - VSD_BEGIN].max                                  = 999999.0;
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].code                                 = 0;
   // Напряжение защиты от КЗ инвертора.
@@ -505,7 +505,7 @@ void Vsd::initParameters()
   parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].value.float_t               = 0;
   parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].min                         = 0.0;
-  parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].max                         = 10000000.0;
+  parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].max                         = 999999.0;
   parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].def                         = 0;
   parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].code                        = 0;
   // Статус индикатора
@@ -516,7 +516,7 @@ void Vsd::initParameters()
   parameters_[VSD_INDICATOR_STATUS - VSD_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[VSD_INDICATOR_STATUS - VSD_BEGIN].value.float_t                    = 0;
   parameters_[VSD_INDICATOR_STATUS - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_INDICATOR_STATUS - VSD_BEGIN].max                              = 10000000.0;
+  parameters_[VSD_INDICATOR_STATUS - VSD_BEGIN].max                              = 999999.0;
   parameters_[VSD_INDICATOR_STATUS - VSD_BEGIN].def                              = 0;
   parameters_[VSD_INDICATOR_STATUS - VSD_BEGIN].code                             = 0;
   // Маска состояния цифровых выходов.
@@ -527,7 +527,7 @@ void Vsd::initParameters()
   parameters_[VSD_DOUTPUTS - VSD_BEGIN].validity                                 = VALIDITY_ERROR;
   parameters_[VSD_DOUTPUTS - VSD_BEGIN].value.float_t                            = 0;
   parameters_[VSD_DOUTPUTS - VSD_BEGIN].min                                      = 0.0;
-  parameters_[VSD_DOUTPUTS - VSD_BEGIN].max                                      = 10000000.0;
+  parameters_[VSD_DOUTPUTS - VSD_BEGIN].max                                      = 999999.0;
   parameters_[VSD_DOUTPUTS - VSD_BEGIN].def                                      = 0;
   parameters_[VSD_DOUTPUTS - VSD_BEGIN].code                                     = 0;
   // Маска состояния цифровых входов.
@@ -538,7 +538,7 @@ void Vsd::initParameters()
   parameters_[VSD_DINPUTS - VSD_BEGIN].validity                                  = VALIDITY_ERROR;
   parameters_[VSD_DINPUTS - VSD_BEGIN].value.float_t                             = 0;
   parameters_[VSD_DINPUTS - VSD_BEGIN].min                                       = 0.0;
-  parameters_[VSD_DINPUTS - VSD_BEGIN].max                                       = 10000000.0;
+  parameters_[VSD_DINPUTS - VSD_BEGIN].max                                       = 999999.0;
   parameters_[VSD_DINPUTS - VSD_BEGIN].def                                       = 0;
   parameters_[VSD_DINPUTS - VSD_BEGIN].code                                      = 0;
   // Маска включения цифровых выходов.
@@ -549,7 +549,7 @@ void Vsd::initParameters()
   parameters_[VSD_DOUTPUTS_ENABLE - VSD_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[VSD_DOUTPUTS_ENABLE - VSD_BEGIN].value.float_t                     = 0;
   parameters_[VSD_DOUTPUTS_ENABLE - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_DOUTPUTS_ENABLE - VSD_BEGIN].max                               = 10000000.0;
+  parameters_[VSD_DOUTPUTS_ENABLE - VSD_BEGIN].max                               = 999999.0;
   parameters_[VSD_DOUTPUTS_ENABLE - VSD_BEGIN].def                               = 0;
   parameters_[VSD_DOUTPUTS_ENABLE - VSD_BEGIN].code                              = 0;
   // Маска выключения цифровых выходов.
@@ -560,7 +560,7 @@ void Vsd::initParameters()
   parameters_[VSD_DOUTPUTS_DISABLE - VSD_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[VSD_DOUTPUTS_DISABLE - VSD_BEGIN].value.float_t                    = 0;
   parameters_[VSD_DOUTPUTS_DISABLE - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_DOUTPUTS_DISABLE - VSD_BEGIN].max                              = 10000000.0;
+  parameters_[VSD_DOUTPUTS_DISABLE - VSD_BEGIN].max                              = 999999.0;
   parameters_[VSD_DOUTPUTS_DISABLE - VSD_BEGIN].def                              = 0;
   parameters_[VSD_DOUTPUTS_DISABLE - VSD_BEGIN].code                             = 0;
   // Температура включения главного вентилятора.
@@ -571,7 +571,7 @@ void Vsd::initParameters()
   parameters_[VSD_VENT_ON_TEMPERATURE - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_VENT_ON_TEMPERATURE - VSD_BEGIN].value.float_t                 = 0;
   parameters_[VSD_VENT_ON_TEMPERATURE - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_VENT_ON_TEMPERATURE - VSD_BEGIN].max                           = 10000000.0;
+  parameters_[VSD_VENT_ON_TEMPERATURE - VSD_BEGIN].max                           = 999999.0;
   parameters_[VSD_VENT_ON_TEMPERATURE - VSD_BEGIN].def                           = 0;
   parameters_[VSD_VENT_ON_TEMPERATURE - VSD_BEGIN].code                          = 13;
   // Температура выключения главного вентилятора.
@@ -582,7 +582,7 @@ void Vsd::initParameters()
   parameters_[VSD_VENT_OFF_TEMPERATURE - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_VENT_OFF_TEMPERATURE - VSD_BEGIN].value.float_t                = 0;
   parameters_[VSD_VENT_OFF_TEMPERATURE - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_VENT_OFF_TEMPERATURE - VSD_BEGIN].max                          = 10000000.0;
+  parameters_[VSD_VENT_OFF_TEMPERATURE - VSD_BEGIN].max                          = 999999.0;
   parameters_[VSD_VENT_OFF_TEMPERATURE - VSD_BEGIN].def                          = 0;
   parameters_[VSD_VENT_OFF_TEMPERATURE - VSD_BEGIN].code                         = 13;
   // Период проверки температуры радиаторов
@@ -593,7 +593,7 @@ void Vsd::initParameters()
   parameters_[VSD_VENT_PERIOD - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_VENT_PERIOD - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_VENT_PERIOD - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_VENT_PERIOD - VSD_BEGIN].max                                   = 10000000.0;
+  parameters_[VSD_VENT_PERIOD - VSD_BEGIN].max                                   = 999999.0;
   parameters_[VSD_VENT_PERIOD - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_VENT_PERIOD - VSD_BEGIN].code                                  = 0;
   // Температура срабатывания тепловой защиты радиаторов
@@ -604,7 +604,7 @@ void Vsd::initParameters()
   parameters_[VSD_VENT_TEMPERATURE_FAULT - VSD_BEGIN].validity                   = VALIDITY_ERROR;
   parameters_[VSD_VENT_TEMPERATURE_FAULT - VSD_BEGIN].value.float_t              = 0;
   parameters_[VSD_VENT_TEMPERATURE_FAULT - VSD_BEGIN].min                        = 0.0;
-  parameters_[VSD_VENT_TEMPERATURE_FAULT - VSD_BEGIN].max                        = 10000000.0;
+  parameters_[VSD_VENT_TEMPERATURE_FAULT - VSD_BEGIN].max                        = 999999.0;
   parameters_[VSD_VENT_TEMPERATURE_FAULT - VSD_BEGIN].def                        = 0;
   parameters_[VSD_VENT_TEMPERATURE_FAULT - VSD_BEGIN].code                       = 0;
   // Флаговый регистр управления
@@ -615,7 +615,7 @@ void Vsd::initParameters()
   parameters_[VSD_INVERTOR_CONTROL - VSD_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[VSD_INVERTOR_CONTROL - VSD_BEGIN].value.float_t                    = 0;
   parameters_[VSD_INVERTOR_CONTROL - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_INVERTOR_CONTROL - VSD_BEGIN].max                              = 10000000.0;
+  parameters_[VSD_INVERTOR_CONTROL - VSD_BEGIN].max                              = 999999.0;
   parameters_[VSD_INVERTOR_CONTROL - VSD_BEGIN].def                              = 0;
   parameters_[VSD_INVERTOR_CONTROL - VSD_BEGIN].code                             = 0;
   // Регистр состояния инвертора
@@ -626,7 +626,7 @@ void Vsd::initParameters()
   parameters_[VSD_INVERTOR_STATUS - VSD_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[VSD_INVERTOR_STATUS - VSD_BEGIN].value.float_t                     = 0;
   parameters_[VSD_INVERTOR_STATUS - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_INVERTOR_STATUS - VSD_BEGIN].max                               = 10000000.0;
+  parameters_[VSD_INVERTOR_STATUS - VSD_BEGIN].max                               = 999999.0;
   parameters_[VSD_INVERTOR_STATUS - VSD_BEGIN].def                               = 0;
   parameters_[VSD_INVERTOR_STATUS - VSD_BEGIN].code                              = 0;
   // Уставка частоты "тревожного" режима
@@ -637,7 +637,7 @@ void Vsd::initParameters()
   parameters_[VSD_FREQUENCY_ERROR - VSD_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[VSD_FREQUENCY_ERROR - VSD_BEGIN].value.float_t                     = 0;
   parameters_[VSD_FREQUENCY_ERROR - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_FREQUENCY_ERROR - VSD_BEGIN].max                               = 10000000.0;
+  parameters_[VSD_FREQUENCY_ERROR - VSD_BEGIN].max                               = 999999.0;
   parameters_[VSD_FREQUENCY_ERROR - VSD_BEGIN].def                               = 0;
   parameters_[VSD_FREQUENCY_ERROR - VSD_BEGIN].code                              = 0;
   // Период снижения частоты при токоограничении.
@@ -648,7 +648,7 @@ void Vsd::initParameters()
   parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].validity                       = VALIDITY_ERROR;
   parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].value.float_t                  = 0;
   parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].min                            = 0.0;
-  parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].max                            = 10000000.0;
+  parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].max                            = 999999.0;
   parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].def                            = 0;
   parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].code                           = 0;
   // Период снижения частоты при нехватке напряжения на инверторе
@@ -659,7 +659,7 @@ void Vsd::initParameters()
   parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].value.float_t                    = 0;
   parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].max                              = 10000000.0;
+  parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].max                              = 999999.0;
   parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].def                              = 0;
   parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].code                             = 0;
   // Тип текущего алгоритма управления (регулятора)
@@ -670,7 +670,7 @@ void Vsd::initParameters()
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].max                             = 10000000.0;
+  parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].max                             = 999999.0;
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].def                             = 0;
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].code                            = 0;
   // Напряжение форсировки
@@ -681,7 +681,7 @@ void Vsd::initParameters()
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_UF_U_FORCE - VSD_BEGIN].max                                    = 10000000.0;
+  parameters_[VSD_UF_U_FORCE - VSD_BEGIN].max                                    = 999999.0;
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].code                                   = 0;
   // Частота форсировки
@@ -692,7 +692,7 @@ void Vsd::initParameters()
   parameters_[VSD_UF_F_FORCE - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_UF_F_FORCE - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_UF_F_FORCE - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_UF_F_FORCE - VSD_BEGIN].max                                    = 10000000.0;
+  parameters_[VSD_UF_F_FORCE - VSD_BEGIN].max                                    = 999999.0;
   parameters_[VSD_UF_F_FORCE - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_UF_F_FORCE - VSD_BEGIN].code                                   = 0;
   // Постоянная времени компенсации индуктивности
@@ -703,7 +703,7 @@ void Vsd::initParameters()
   parameters_[VSD_IFB_COMP - VSD_BEGIN].validity                                 = VALIDITY_ERROR;
   parameters_[VSD_IFB_COMP - VSD_BEGIN].value.float_t                            = 0;
   parameters_[VSD_IFB_COMP - VSD_BEGIN].min                                      = 0.0;
-  parameters_[VSD_IFB_COMP - VSD_BEGIN].max                                      = 10000000.0;
+  parameters_[VSD_IFB_COMP - VSD_BEGIN].max                                      = 999999.0;
   parameters_[VSD_IFB_COMP - VSD_BEGIN].def                                      = 0;
   parameters_[VSD_IFB_COMP - VSD_BEGIN].code                                     = 0;
   // Пропорциональный коэффициент ОС частотного контура регулирования
@@ -714,7 +714,7 @@ void Vsd::initParameters()
   parameters_[VSD_VUOUT_PROP - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_VUOUT_PROP - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_VUOUT_PROP - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_VUOUT_PROP - VSD_BEGIN].max                                    = 10000000.0;
+  parameters_[VSD_VUOUT_PROP - VSD_BEGIN].max                                    = 999999.0;
   parameters_[VSD_VUOUT_PROP - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_VUOUT_PROP - VSD_BEGIN].code                                   = 0;
   // Максимальный порог ограничения тока на выходе ПЧ, абс. вел (Токоограничение)
@@ -725,7 +725,7 @@ void Vsd::initParameters()
   parameters_[VSD_ILIMIT - VSD_BEGIN].validity                                   = VALIDITY_ERROR;
   parameters_[VSD_ILIMIT - VSD_BEGIN].value.float_t                              = 0;
   parameters_[VSD_ILIMIT - VSD_BEGIN].min                                        = 0.0;
-  parameters_[VSD_ILIMIT - VSD_BEGIN].max                                        = 10000000.0;
+  parameters_[VSD_ILIMIT - VSD_BEGIN].max                                        = 999999.0;
   parameters_[VSD_ILIMIT - VSD_BEGIN].def                                        = 0;
   parameters_[VSD_ILIMIT - VSD_BEGIN].code                                       = 0;
   // Интегральный коэффициент ОС частотного контура регулирования
@@ -736,7 +736,7 @@ void Vsd::initParameters()
   parameters_[VSD_VUOUT_INTEG - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_VUOUT_INTEG - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_VUOUT_INTEG - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_VUOUT_INTEG - VSD_BEGIN].max                                   = 10000000.0;
+  parameters_[VSD_VUOUT_INTEG - VSD_BEGIN].max                                   = 999999.0;
   parameters_[VSD_VUOUT_INTEG - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_VUOUT_INTEG - VSD_BEGIN].code                                  = 0;
   // Коэффициент постоянной времени обратного перехода с вектора на U/f
@@ -747,7 +747,7 @@ void Vsd::initParameters()
   parameters_[VSD_VTOUF_INTEG - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_VTOUF_INTEG - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_VTOUF_INTEG - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_VTOUF_INTEG - VSD_BEGIN].max                                   = 10000000.0;
+  parameters_[VSD_VTOUF_INTEG - VSD_BEGIN].max                                   = 999999.0;
   parameters_[VSD_VTOUF_INTEG - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_VTOUF_INTEG - VSD_BEGIN].code                                  = 0;
   // Суммарная индуктивность на выходе ПЧ, фазное значение
@@ -758,7 +758,7 @@ void Vsd::initParameters()
   parameters_[VSD_LOUT - VSD_BEGIN].validity                                     = VALIDITY_ERROR;
   parameters_[VSD_LOUT - VSD_BEGIN].value.float_t                                = 0;
   parameters_[VSD_LOUT - VSD_BEGIN].min                                          = 0.0;
-  parameters_[VSD_LOUT - VSD_BEGIN].max                                          = 10000000.0;
+  parameters_[VSD_LOUT - VSD_BEGIN].max                                          = 999999.0;
   parameters_[VSD_LOUT - VSD_BEGIN].def                                          = 0;
   parameters_[VSD_LOUT - VSD_BEGIN].code                                         = 0;
   // Режим раскачки: частота
@@ -769,7 +769,7 @@ void Vsd::initParameters()
   parameters_[VSD_SW_STARTUP_FREQUENCY - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_SW_STARTUP_FREQUENCY - VSD_BEGIN].value.float_t                = 0;
   parameters_[VSD_SW_STARTUP_FREQUENCY - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_SW_STARTUP_FREQUENCY - VSD_BEGIN].max                          = 10000000.0;
+  parameters_[VSD_SW_STARTUP_FREQUENCY - VSD_BEGIN].max                          = 999999.0;
   parameters_[VSD_SW_STARTUP_FREQUENCY - VSD_BEGIN].def                          = 0;
   parameters_[VSD_SW_STARTUP_FREQUENCY - VSD_BEGIN].code                         = 0;
   // Режим раскачки: угол качания
@@ -780,7 +780,7 @@ void Vsd::initParameters()
   parameters_[VSD_SW_STARTUP_ANGLE_OSC - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_SW_STARTUP_ANGLE_OSC - VSD_BEGIN].value.float_t                = 0;
   parameters_[VSD_SW_STARTUP_ANGLE_OSC - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_SW_STARTUP_ANGLE_OSC - VSD_BEGIN].max                          = 10000000.0;
+  parameters_[VSD_SW_STARTUP_ANGLE_OSC - VSD_BEGIN].max                          = 999999.0;
   parameters_[VSD_SW_STARTUP_ANGLE_OSC - VSD_BEGIN].def                          = 0;
   parameters_[VSD_SW_STARTUP_ANGLE_OSC - VSD_BEGIN].code                         = 0;
   // Режим раскачки: угол сдвига
@@ -791,7 +791,7 @@ void Vsd::initParameters()
   parameters_[VSD_SW_STARTUP_ANGLE_SHIFT - VSD_BEGIN].validity                   = VALIDITY_ERROR;
   parameters_[VSD_SW_STARTUP_ANGLE_SHIFT - VSD_BEGIN].value.float_t              = 0;
   parameters_[VSD_SW_STARTUP_ANGLE_SHIFT - VSD_BEGIN].min                        = 0.0;
-  parameters_[VSD_SW_STARTUP_ANGLE_SHIFT - VSD_BEGIN].max                        = 10000000.0;
+  parameters_[VSD_SW_STARTUP_ANGLE_SHIFT - VSD_BEGIN].max                        = 999999.0;
   parameters_[VSD_SW_STARTUP_ANGLE_SHIFT - VSD_BEGIN].def                        = 0;
   parameters_[VSD_SW_STARTUP_ANGLE_SHIFT - VSD_BEGIN].code                       = 0;
   // Режим раскачки: количество качаний на угол
@@ -802,7 +802,7 @@ void Vsd::initParameters()
   parameters_[VSD_SW_STARTUP_OSC_COUNT - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_SW_STARTUP_OSC_COUNT - VSD_BEGIN].value.float_t                = 0;
   parameters_[VSD_SW_STARTUP_OSC_COUNT - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_SW_STARTUP_OSC_COUNT - VSD_BEGIN].max                          = 10000000.0;
+  parameters_[VSD_SW_STARTUP_OSC_COUNT - VSD_BEGIN].max                          = 999999.0;
   parameters_[VSD_SW_STARTUP_OSC_COUNT - VSD_BEGIN].def                          = 0;
   parameters_[VSD_SW_STARTUP_OSC_COUNT - VSD_BEGIN].code                         = 0;
   // Режим раскачки: количество оборотов двигателя
@@ -813,7 +813,7 @@ void Vsd::initParameters()
   parameters_[VSD_SW_STARTUP_ROTATIONS - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_SW_STARTUP_ROTATIONS - VSD_BEGIN].value.float_t                = 0;
   parameters_[VSD_SW_STARTUP_ROTATIONS - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_SW_STARTUP_ROTATIONS - VSD_BEGIN].max                          = 10000000.0;
+  parameters_[VSD_SW_STARTUP_ROTATIONS - VSD_BEGIN].max                          = 999999.0;
   parameters_[VSD_SW_STARTUP_ROTATIONS - VSD_BEGIN].def                          = 0;
   parameters_[VSD_SW_STARTUP_ROTATIONS - VSD_BEGIN].code                         = 0;
   // Режим раскачки: кратность напряжения импульса расклинки
@@ -824,7 +824,7 @@ void Vsd::initParameters()
   parameters_[VSD_SW_STARTUP_U_PULSE - VSD_BEGIN].validity                       = VALIDITY_ERROR;
   parameters_[VSD_SW_STARTUP_U_PULSE - VSD_BEGIN].value.float_t                  = 0;
   parameters_[VSD_SW_STARTUP_U_PULSE - VSD_BEGIN].min                            = 0.0;
-  parameters_[VSD_SW_STARTUP_U_PULSE - VSD_BEGIN].max                            = 10000000.0;
+  parameters_[VSD_SW_STARTUP_U_PULSE - VSD_BEGIN].max                            = 999999.0;
   parameters_[VSD_SW_STARTUP_U_PULSE - VSD_BEGIN].def                            = 0;
   parameters_[VSD_SW_STARTUP_U_PULSE - VSD_BEGIN].code                           = 0;
   // Режим раскачки: токоограничение
@@ -835,7 +835,7 @@ void Vsd::initParameters()
   parameters_[VSD_SW_STARTUP_I_LIM - VSD_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[VSD_SW_STARTUP_I_LIM - VSD_BEGIN].value.float_t                    = 0;
   parameters_[VSD_SW_STARTUP_I_LIM - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_SW_STARTUP_I_LIM - VSD_BEGIN].max                              = 10000000.0;
+  parameters_[VSD_SW_STARTUP_I_LIM - VSD_BEGIN].max                              = 999999.0;
   parameters_[VSD_SW_STARTUP_I_LIM - VSD_BEGIN].def                              = 0;
   parameters_[VSD_SW_STARTUP_I_LIM - VSD_BEGIN].code                             = 0;
   // Порог токоограничения импульса расклинки в режиме с раскачкой
@@ -846,7 +846,7 @@ void Vsd::initParameters()
   parameters_[VSD_SW_STARTUP_I_LIM_PULSE - VSD_BEGIN].validity                   = VALIDITY_ERROR;
   parameters_[VSD_SW_STARTUP_I_LIM_PULSE - VSD_BEGIN].value.float_t              = 0;
   parameters_[VSD_SW_STARTUP_I_LIM_PULSE - VSD_BEGIN].min                        = 0.0;
-  parameters_[VSD_SW_STARTUP_I_LIM_PULSE - VSD_BEGIN].max                        = 10000000.0;
+  parameters_[VSD_SW_STARTUP_I_LIM_PULSE - VSD_BEGIN].max                        = 999999.0;
   parameters_[VSD_SW_STARTUP_I_LIM_PULSE - VSD_BEGIN].def                        = 0;
   parameters_[VSD_SW_STARTUP_I_LIM_PULSE - VSD_BEGIN].code                       = 0;
   // Интегральный коэффициент ОС фазового контура регулирования
@@ -868,7 +868,7 @@ void Vsd::initParameters()
   parameters_[VSD_REGULATOR_QUEUE_1 - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_REGULATOR_QUEUE_1 - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_REGULATOR_QUEUE_1 - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_REGULATOR_QUEUE_1 - VSD_BEGIN].max                             = 10000000.0;
+  parameters_[VSD_REGULATOR_QUEUE_1 - VSD_BEGIN].max                             = 999999.0;
   parameters_[VSD_REGULATOR_QUEUE_1 - VSD_BEGIN].def                             = 0;
   parameters_[VSD_REGULATOR_QUEUE_1 - VSD_BEGIN].code                            = 0;
   // Регистры рабочей очереди алгоритмов управления
@@ -879,7 +879,7 @@ void Vsd::initParameters()
   parameters_[VSD_REGULATOR_QUEUE_2 - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_REGULATOR_QUEUE_2 - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_REGULATOR_QUEUE_2 - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_REGULATOR_QUEUE_2 - VSD_BEGIN].max                             = 10000000.0;
+  parameters_[VSD_REGULATOR_QUEUE_2 - VSD_BEGIN].max                             = 999999.0;
   parameters_[VSD_REGULATOR_QUEUE_2 - VSD_BEGIN].def                             = 0;
   parameters_[VSD_REGULATOR_QUEUE_2 - VSD_BEGIN].code                            = 0;
   // Регистры рабочей очереди алгоритмов управления
@@ -890,7 +890,7 @@ void Vsd::initParameters()
   parameters_[VSD_REGULATOR_QUEUE_3 - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_REGULATOR_QUEUE_3 - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_REGULATOR_QUEUE_3 - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_REGULATOR_QUEUE_3 - VSD_BEGIN].max                             = 10000000.0;
+  parameters_[VSD_REGULATOR_QUEUE_3 - VSD_BEGIN].max                             = 999999.0;
   parameters_[VSD_REGULATOR_QUEUE_3 - VSD_BEGIN].def                             = 0;
   parameters_[VSD_REGULATOR_QUEUE_3 - VSD_BEGIN].code                            = 0;
   // Регистры рабочей очереди алгоритмов управления
@@ -901,7 +901,7 @@ void Vsd::initParameters()
   parameters_[VSD_REGULATOR_QUEUE_4 - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_REGULATOR_QUEUE_4 - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_REGULATOR_QUEUE_4 - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_REGULATOR_QUEUE_4 - VSD_BEGIN].max                             = 10000000.0;
+  parameters_[VSD_REGULATOR_QUEUE_4 - VSD_BEGIN].max                             = 999999.0;
   parameters_[VSD_REGULATOR_QUEUE_4 - VSD_BEGIN].def                             = 0;
   parameters_[VSD_REGULATOR_QUEUE_4 - VSD_BEGIN].code                            = 0;
   // Регистры рабочей очереди алгоритмов управления
@@ -912,7 +912,7 @@ void Vsd::initParameters()
   parameters_[VSD_REGULATOR_QUEUE_5 - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_REGULATOR_QUEUE_5 - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_REGULATOR_QUEUE_5 - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_REGULATOR_QUEUE_5 - VSD_BEGIN].max                             = 10000000.0;
+  parameters_[VSD_REGULATOR_QUEUE_5 - VSD_BEGIN].max                             = 999999.0;
   parameters_[VSD_REGULATOR_QUEUE_5 - VSD_BEGIN].def                             = 0;
   parameters_[VSD_REGULATOR_QUEUE_5 - VSD_BEGIN].code                            = 0;
   // Порог защиты ПЧ по снижению напряжения на инверторе
@@ -923,7 +923,7 @@ void Vsd::initParameters()
   parameters_[VSD_UD_LOW_FAULT - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_UD_LOW_FAULT - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_UD_LOW_FAULT - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_UD_LOW_FAULT - VSD_BEGIN].max                                  = 10000000.0;
+  parameters_[VSD_UD_LOW_FAULT - VSD_BEGIN].max                                  = 999999.0;
   parameters_[VSD_UD_LOW_FAULT - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_UD_LOW_FAULT - VSD_BEGIN].code                                 = 0;
   // Порог защиты ПЧ по превыщению напряжения на инверторе
@@ -934,7 +934,7 @@ void Vsd::initParameters()
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].max                                 = 10000000.0;
+  parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].max                                 = 999999.0;
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].code                                = 0;
   // Порог защиты ПЧ по несимметрии входного напряжения на инверторе
@@ -945,7 +945,7 @@ void Vsd::initParameters()
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].max                                = 10000000.0;
+  parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].max                                = 999999.0;
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].def                                = 0;
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].code                               = 0;
   // Время срабатывания защиты ПЧ по несимметрии входного напряжения на инверторе
@@ -956,7 +956,7 @@ void Vsd::initParameters()
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].max                                = 10000000.0;
+  parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].max                                = 999999.0;
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].def                                = 0;
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].code                               = 0;
   // Частота перехода на векторный алгоритм
@@ -989,7 +989,7 @@ void Vsd::initParameters()
   parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].max                                   = 10000000.0;
+  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].max                                   = 999999.0;
   parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].code                                  = 0;
   // Постоянная времени системы подавления резонанса
@@ -1000,7 +1000,7 @@ void Vsd::initParameters()
   parameters_[VSD_RES_TIMECONST - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_RES_TIMECONST - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_RES_TIMECONST - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_RES_TIMECONST - VSD_BEGIN].max                                 = 10000000.0;
+  parameters_[VSD_RES_TIMECONST - VSD_BEGIN].max                                 = 999999.0;
   parameters_[VSD_RES_TIMECONST - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_RES_TIMECONST - VSD_BEGIN].code                                = 0;
   // Служебный регистр для отладки алгоритмов управления
@@ -1011,7 +1011,7 @@ void Vsd::initParameters()
   parameters_[VSD_RES_IAMP_VALID - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_RES_IAMP_VALID - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_RES_IAMP_VALID - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_RES_IAMP_VALID - VSD_BEGIN].max                                = 10000000.0;
+  parameters_[VSD_RES_IAMP_VALID - VSD_BEGIN].max                                = 999999.0;
   parameters_[VSD_RES_IAMP_VALID - VSD_BEGIN].def                                = 0;
   parameters_[VSD_RES_IAMP_VALID - VSD_BEGIN].code                               = 0;
   // Выходной ток ПЧ по фазе В. (амплитудное значение)
@@ -1022,7 +1022,7 @@ void Vsd::initParameters()
   parameters_[VSD_IB - VSD_BEGIN].validity                                       = VALIDITY_ERROR;
   parameters_[VSD_IB - VSD_BEGIN].value.float_t                                  = 0;
   parameters_[VSD_IB - VSD_BEGIN].min                                            = 0.0;
-  parameters_[VSD_IB - VSD_BEGIN].max                                            = 10000000.0;
+  parameters_[VSD_IB - VSD_BEGIN].max                                            = 999999.0;
   parameters_[VSD_IB - VSD_BEGIN].def                                            = 0;
   parameters_[VSD_IB - VSD_BEGIN].code                                           = 0;
   // Фаза выходного тока В
@@ -1033,7 +1033,7 @@ void Vsd::initParameters()
   parameters_[VSD_PHB - VSD_BEGIN].validity                                      = VALIDITY_ERROR;
   parameters_[VSD_PHB - VSD_BEGIN].value.float_t                                 = 0;
   parameters_[VSD_PHB - VSD_BEGIN].min                                           = 0.0;
-  parameters_[VSD_PHB - VSD_BEGIN].max                                           = 10000000.0;
+  parameters_[VSD_PHB - VSD_BEGIN].max                                           = 999999.0;
   parameters_[VSD_PHB - VSD_BEGIN].def                                           = 0;
   parameters_[VSD_PHB - VSD_BEGIN].code                                          = 0;
   // Выходной ток ПЧ по фазе C. (амплитудное значение)
@@ -1044,7 +1044,7 @@ void Vsd::initParameters()
   parameters_[VSD_IC - VSD_BEGIN].validity                                       = VALIDITY_ERROR;
   parameters_[VSD_IC - VSD_BEGIN].value.float_t                                  = 0;
   parameters_[VSD_IC - VSD_BEGIN].min                                            = 0.0;
-  parameters_[VSD_IC - VSD_BEGIN].max                                            = 10000000.0;
+  parameters_[VSD_IC - VSD_BEGIN].max                                            = 999999.0;
   parameters_[VSD_IC - VSD_BEGIN].def                                            = 0;
   parameters_[VSD_IC - VSD_BEGIN].code                                           = 0;
   // Фаза выходного тока C
@@ -1055,7 +1055,7 @@ void Vsd::initParameters()
   parameters_[VSD_PHC - VSD_BEGIN].validity                                      = VALIDITY_ERROR;
   parameters_[VSD_PHC - VSD_BEGIN].value.float_t                                 = 0;
   parameters_[VSD_PHC - VSD_BEGIN].min                                           = 0.0;
-  parameters_[VSD_PHC - VSD_BEGIN].max                                           = 10000000.0;
+  parameters_[VSD_PHC - VSD_BEGIN].max                                           = 999999.0;
   parameters_[VSD_PHC - VSD_BEGIN].def                                           = 0;
   parameters_[VSD_PHC - VSD_BEGIN].code                                          = 0;
   // Время снижения уставки в режиме остановки турбинного вращения
@@ -1066,7 +1066,7 @@ void Vsd::initParameters()
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].value.float_t                     = 0;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].max                               = 10000000.0;
+  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].max                               = 999999.0;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].def                               = 0;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].code                              = 0;
   // Напряжение остаточного напряжения на шине (окончания разряда) в режиме остановки турбинного вращения (для ВД)
@@ -1077,7 +1077,7 @@ void Vsd::initParameters()
   parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].max                                 = 10000000.0;
+  parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].max                                 = 999999.0;
   parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].code                                = 0;
   // Начальная частота режима остановки турбинного вращения (для АД)
@@ -1088,7 +1088,7 @@ void Vsd::initParameters()
   parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].max                                   = 10000000.0;
+  parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].max                                   = 999999.0;
   parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].code                                  = 0;
   // Время секунды
@@ -1099,7 +1099,7 @@ void Vsd::initParameters()
   parameters_[VSD_TIME_SECOND - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_TIME_SECOND - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_TIME_SECOND - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_TIME_SECOND - VSD_BEGIN].max                                   = 10000000.0;
+  parameters_[VSD_TIME_SECOND - VSD_BEGIN].max                                   = 999999.0;
   parameters_[VSD_TIME_SECOND - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_TIME_SECOND - VSD_BEGIN].code                                  = 0;
   // Время минуты
@@ -1110,7 +1110,7 @@ void Vsd::initParameters()
   parameters_[VSD_TIME_MINUTE - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_TIME_MINUTE - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_TIME_MINUTE - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_TIME_MINUTE - VSD_BEGIN].max                                   = 10000000.0;
+  parameters_[VSD_TIME_MINUTE - VSD_BEGIN].max                                   = 999999.0;
   parameters_[VSD_TIME_MINUTE - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_TIME_MINUTE - VSD_BEGIN].code                                  = 0;
   // Время часы
@@ -1121,7 +1121,7 @@ void Vsd::initParameters()
   parameters_[VSD_TIME_HOUR - VSD_BEGIN].validity                                = VALIDITY_ERROR;
   parameters_[VSD_TIME_HOUR - VSD_BEGIN].value.float_t                           = 0;
   parameters_[VSD_TIME_HOUR - VSD_BEGIN].min                                     = 0.0;
-  parameters_[VSD_TIME_HOUR - VSD_BEGIN].max                                     = 10000000.0;
+  parameters_[VSD_TIME_HOUR - VSD_BEGIN].max                                     = 999999.0;
   parameters_[VSD_TIME_HOUR - VSD_BEGIN].def                                     = 0;
   parameters_[VSD_TIME_HOUR - VSD_BEGIN].code                                    = 0;
   // Время дни
@@ -1132,7 +1132,7 @@ void Vsd::initParameters()
   parameters_[VSD_TIME_DAY - VSD_BEGIN].validity                                 = VALIDITY_ERROR;
   parameters_[VSD_TIME_DAY - VSD_BEGIN].value.float_t                            = 0;
   parameters_[VSD_TIME_DAY - VSD_BEGIN].min                                      = 0.0;
-  parameters_[VSD_TIME_DAY - VSD_BEGIN].max                                      = 10000000.0;
+  parameters_[VSD_TIME_DAY - VSD_BEGIN].max                                      = 999999.0;
   parameters_[VSD_TIME_DAY - VSD_BEGIN].def                                      = 0;
   parameters_[VSD_TIME_DAY - VSD_BEGIN].code                                     = 0;
   // Время месяцы
@@ -1143,7 +1143,7 @@ void Vsd::initParameters()
   parameters_[VSD_TIME_MONTH - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_TIME_MONTH - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_TIME_MONTH - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_TIME_MONTH - VSD_BEGIN].max                                    = 10000000.0;
+  parameters_[VSD_TIME_MONTH - VSD_BEGIN].max                                    = 999999.0;
   parameters_[VSD_TIME_MONTH - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_TIME_MONTH - VSD_BEGIN].code                                   = 0;
   // Время годы
@@ -1154,7 +1154,7 @@ void Vsd::initParameters()
   parameters_[VSD_TIME_YEAR - VSD_BEGIN].validity                                = VALIDITY_ERROR;
   parameters_[VSD_TIME_YEAR - VSD_BEGIN].value.float_t                           = 0;
   parameters_[VSD_TIME_YEAR - VSD_BEGIN].min                                     = 0.0;
-  parameters_[VSD_TIME_YEAR - VSD_BEGIN].max                                     = 10000000.0;
+  parameters_[VSD_TIME_YEAR - VSD_BEGIN].max                                     = 999999.0;
   parameters_[VSD_TIME_YEAR - VSD_BEGIN].def                                     = 0;
   parameters_[VSD_TIME_YEAR - VSD_BEGIN].code                                    = 0;
   // Величина измерительного тока автонастройки
@@ -1165,7 +1165,7 @@ void Vsd::initParameters()
   parameters_[VSD_AST_IMEAS - VSD_BEGIN].validity                                = VALIDITY_ERROR;
   parameters_[VSD_AST_IMEAS - VSD_BEGIN].value.float_t                           = 0;
   parameters_[VSD_AST_IMEAS - VSD_BEGIN].min                                     = 0.0;
-  parameters_[VSD_AST_IMEAS - VSD_BEGIN].max                                     = 10000000.0;
+  parameters_[VSD_AST_IMEAS - VSD_BEGIN].max                                     = 999999.0;
   parameters_[VSD_AST_IMEAS - VSD_BEGIN].def                                     = 0;
   parameters_[VSD_AST_IMEAS - VSD_BEGIN].code                                    = 0;
   // Величина измерительного напряжения автонастройки
@@ -1176,7 +1176,7 @@ void Vsd::initParameters()
   parameters_[VSD_AST_UMEAS - VSD_BEGIN].validity                                = VALIDITY_ERROR;
   parameters_[VSD_AST_UMEAS - VSD_BEGIN].value.float_t                           = 0;
   parameters_[VSD_AST_UMEAS - VSD_BEGIN].min                                     = 0.0;
-  parameters_[VSD_AST_UMEAS - VSD_BEGIN].max                                     = 10000000.0;
+  parameters_[VSD_AST_UMEAS - VSD_BEGIN].max                                     = 999999.0;
   parameters_[VSD_AST_UMEAS - VSD_BEGIN].def                                     = 0;
   parameters_[VSD_AST_UMEAS - VSD_BEGIN].code                                    = 0;
   // Измеренная величина выходной индуктивности автонастройки
@@ -1187,7 +1187,7 @@ void Vsd::initParameters()
   parameters_[VSD_AST_LOUT_1_0 - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_AST_LOUT_1_0 - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_AST_LOUT_1_0 - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_AST_LOUT_1_0 - VSD_BEGIN].max                                  = 10000000.0;
+  parameters_[VSD_AST_LOUT_1_0 - VSD_BEGIN].max                                  = 999999.0;
   parameters_[VSD_AST_LOUT_1_0 - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_AST_LOUT_1_0 - VSD_BEGIN].code                                 = 0;
   // Дополнительный регистр автонастройки, зарезервирован
@@ -1198,7 +1198,7 @@ void Vsd::initParameters()
   parameters_[VSD_AST_STANDING - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_AST_STANDING - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_AST_STANDING - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_AST_STANDING - VSD_BEGIN].max                                  = 10000000.0;
+  parameters_[VSD_AST_STANDING - VSD_BEGIN].max                                  = 999999.0;
   parameters_[VSD_AST_STANDING - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_AST_STANDING - VSD_BEGIN].code                                 = 0;
   // Расширенный регистр состояния инвертора
@@ -1209,7 +1209,7 @@ void Vsd::initParameters()
   parameters_[VSD_INVERTOR_STATUS2 - VSD_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[VSD_INVERTOR_STATUS2 - VSD_BEGIN].value.float_t                    = 0;
   parameters_[VSD_INVERTOR_STATUS2 - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_INVERTOR_STATUS2 - VSD_BEGIN].max                              = 10000000.0;
+  parameters_[VSD_INVERTOR_STATUS2 - VSD_BEGIN].max                              = 999999.0;
   parameters_[VSD_INVERTOR_STATUS2 - VSD_BEGIN].def                              = 0;
   parameters_[VSD_INVERTOR_STATUS2 - VSD_BEGIN].code                             = 0;
   // Период экскурсий частоты режима встряхивания.
@@ -1220,7 +1220,7 @@ void Vsd::initParameters()
   parameters_[VSD_JARRING_PERIOD - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_JARRING_PERIOD - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_JARRING_PERIOD - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_JARRING_PERIOD - VSD_BEGIN].max                                = 10000000.0;
+  parameters_[VSD_JARRING_PERIOD - VSD_BEGIN].max                                = 999999.0;
   parameters_[VSD_JARRING_PERIOD - VSD_BEGIN].def                                = 0;
   parameters_[VSD_JARRING_PERIOD - VSD_BEGIN].code                               = 0;
   // Величина прибавки частоты вращения выше уставки в режиме встряхивания
@@ -1231,7 +1231,7 @@ void Vsd::initParameters()
   parameters_[VSD_JARRING_UPDFREQ - VSD_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[VSD_JARRING_UPDFREQ - VSD_BEGIN].value.float_t                     = 0;
   parameters_[VSD_JARRING_UPDFREQ - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_JARRING_UPDFREQ - VSD_BEGIN].max                               = 10000000.0;
+  parameters_[VSD_JARRING_UPDFREQ - VSD_BEGIN].max                               = 999999.0;
   parameters_[VSD_JARRING_UPDFREQ - VSD_BEGIN].def                               = 0;
   parameters_[VSD_JARRING_UPDFREQ - VSD_BEGIN].code                              = 0;
   // Время прибавки частоты вращения выше уставки в режиме встряхивания
@@ -1242,7 +1242,7 @@ void Vsd::initParameters()
   parameters_[VSD_JARRING_UPTIME - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_JARRING_UPTIME - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_JARRING_UPTIME - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_JARRING_UPTIME - VSD_BEGIN].max                                = 10000000.0;
+  parameters_[VSD_JARRING_UPTIME - VSD_BEGIN].max                                = 999999.0;
   parameters_[VSD_JARRING_UPTIME - VSD_BEGIN].def                                = 0;
   parameters_[VSD_JARRING_UPTIME - VSD_BEGIN].code                               = 0;
   // Величина уменьшения частоты вращения ниже уставки в режиме встряхивания
@@ -1253,7 +1253,7 @@ void Vsd::initParameters()
   parameters_[VSD_JARRING_DOWNDFREQ - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_JARRING_DOWNDFREQ - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_JARRING_DOWNDFREQ - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_JARRING_DOWNDFREQ - VSD_BEGIN].max                             = 10000000.0;
+  parameters_[VSD_JARRING_DOWNDFREQ - VSD_BEGIN].max                             = 999999.0;
   parameters_[VSD_JARRING_DOWNDFREQ - VSD_BEGIN].def                             = 0;
   parameters_[VSD_JARRING_DOWNDFREQ - VSD_BEGIN].code                            = 0;
   // Время уменьшения частоты вращения ниже уставки в режиме встряхивания
@@ -1264,7 +1264,7 @@ void Vsd::initParameters()
   parameters_[VSD_JARRING_DOWNTIME - VSD_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[VSD_JARRING_DOWNTIME - VSD_BEGIN].value.float_t                    = 0;
   parameters_[VSD_JARRING_DOWNTIME - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_JARRING_DOWNTIME - VSD_BEGIN].max                              = 10000000.0;
+  parameters_[VSD_JARRING_DOWNTIME - VSD_BEGIN].max                              = 999999.0;
   parameters_[VSD_JARRING_DOWNTIME - VSD_BEGIN].def                              = 0;
   parameters_[VSD_JARRING_DOWNTIME - VSD_BEGIN].code                             = 0;
   // Регистры обслуживания внутренних нужд режима встряхивания
@@ -1286,7 +1286,7 @@ void Vsd::initParameters()
   parameters_[VSD_JARRING_TICK_CNT - VSD_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[VSD_JARRING_TICK_CNT - VSD_BEGIN].value.float_t                    = 0;
   parameters_[VSD_JARRING_TICK_CNT - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_JARRING_TICK_CNT - VSD_BEGIN].max                              = 10000000.0;
+  parameters_[VSD_JARRING_TICK_CNT - VSD_BEGIN].max                              = 999999.0;
   parameters_[VSD_JARRING_TICK_CNT - VSD_BEGIN].def                              = 0;
   parameters_[VSD_JARRING_TICK_CNT - VSD_BEGIN].code                             = 0;
   // Регистры обслуживания внутренних нужд режима встряхивания
@@ -1297,7 +1297,7 @@ void Vsd::initParameters()
   parameters_[VSD_JARRING_SECOND_CNT - VSD_BEGIN].validity                       = VALIDITY_ERROR;
   parameters_[VSD_JARRING_SECOND_CNT - VSD_BEGIN].value.float_t                  = 0;
   parameters_[VSD_JARRING_SECOND_CNT - VSD_BEGIN].min                            = 0.0;
-  parameters_[VSD_JARRING_SECOND_CNT - VSD_BEGIN].max                            = 10000000.0;
+  parameters_[VSD_JARRING_SECOND_CNT - VSD_BEGIN].max                            = 999999.0;
   parameters_[VSD_JARRING_SECOND_CNT - VSD_BEGIN].def                            = 0;
   parameters_[VSD_JARRING_SECOND_CNT - VSD_BEGIN].code                           = 0;
   // Стартовая частота вращения двигателя в основном режиме регулирования
@@ -1308,7 +1308,7 @@ void Vsd::initParameters()
   parameters_[VSD_START_FREQ - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_START_FREQ - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_START_FREQ - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_START_FREQ - VSD_BEGIN].max                                    = 10000000.0;
+  parameters_[VSD_START_FREQ - VSD_BEGIN].max                                    = 999999.0;
   parameters_[VSD_START_FREQ - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_START_FREQ - VSD_BEGIN].code                                   = 0;
   // Выходной ток ПЧ по фазе A. (амплитудное значение)
@@ -1319,7 +1319,7 @@ void Vsd::initParameters()
   parameters_[VSD_IA - VSD_BEGIN].validity                                       = VALIDITY_ERROR;
   parameters_[VSD_IA - VSD_BEGIN].value.float_t                                  = 0;
   parameters_[VSD_IA - VSD_BEGIN].min                                            = 0.0;
-  parameters_[VSD_IA - VSD_BEGIN].max                                            = 10000000.0;
+  parameters_[VSD_IA - VSD_BEGIN].max                                            = 999999.0;
   parameters_[VSD_IA - VSD_BEGIN].def                                            = 0;
   parameters_[VSD_IA - VSD_BEGIN].code                                           = 0;
   // Фаза выходного тока A
@@ -1330,7 +1330,7 @@ void Vsd::initParameters()
   parameters_[VSD_PHA - VSD_BEGIN].validity                                      = VALIDITY_ERROR;
   parameters_[VSD_PHA - VSD_BEGIN].value.float_t                                 = 0;
   parameters_[VSD_PHA - VSD_BEGIN].min                                           = 0.0;
-  parameters_[VSD_PHA - VSD_BEGIN].max                                           = 10000000.0;
+  parameters_[VSD_PHA - VSD_BEGIN].max                                           = 999999.0;
   parameters_[VSD_PHA - VSD_BEGIN].def                                           = 0;
   parameters_[VSD_PHA - VSD_BEGIN].code                                          = 0;
   // Усредненная фаза выходного тока ПЧ
@@ -1341,7 +1341,7 @@ void Vsd::initParameters()
   parameters_[VSD_PHOUT - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_PHOUT - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_PHOUT - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_PHOUT - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_PHOUT - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_PHOUT - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_PHOUT - VSD_BEGIN].code                                        = 0;
   // Тестовый регистр 0
@@ -1352,7 +1352,7 @@ void Vsd::initParameters()
   parameters_[VSD_TEST0 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_TEST0 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_TEST0 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_TEST0 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_TEST0 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_TEST0 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_TEST0 - VSD_BEGIN].code                                        = 0;
   // Тестовый регистр 1
@@ -1363,7 +1363,7 @@ void Vsd::initParameters()
   parameters_[VSD_TEST1 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_TEST1 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_TEST1 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_TEST1 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_TEST1 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_TEST1 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_TEST1 - VSD_BEGIN].code                                        = 0;
   // Тестовый регистр 2
@@ -1374,7 +1374,7 @@ void Vsd::initParameters()
   parameters_[VSD_TEST2 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_TEST2 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_TEST2 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_TEST2 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_TEST2 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_TEST2 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_TEST2 - VSD_BEGIN].code                                        = 0;
   // Тестовый регистр 3
@@ -1385,7 +1385,7 @@ void Vsd::initParameters()
   parameters_[VSD_TEST3 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_TEST3 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_TEST3 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_TEST3 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_TEST3 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_TEST3 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_TEST3 - VSD_BEGIN].code                                        = 0;
   // Тестовый регистр 4
@@ -1396,7 +1396,7 @@ void Vsd::initParameters()
   parameters_[VSD_TEST4 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_TEST4 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_TEST4 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_TEST4 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_TEST4 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_TEST4 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_TEST4 - VSD_BEGIN].code                                        = 0;
   // Тестовый регистр 5
@@ -1407,7 +1407,7 @@ void Vsd::initParameters()
   parameters_[VSD_TEST5 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_TEST5 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_TEST5 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_TEST5 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_TEST5 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_TEST5 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_TEST5 - VSD_BEGIN].code                                        = 0;
   // Тестовый регистр 6
@@ -1418,7 +1418,7 @@ void Vsd::initParameters()
   parameters_[VSD_TEST6 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_TEST6 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_TEST6 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_TEST6 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_TEST6 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_TEST6 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_TEST6 - VSD_BEGIN].code                                        = 0;
   // Тестовый регистр 7
@@ -1429,7 +1429,7 @@ void Vsd::initParameters()
   parameters_[VSD_TEST7 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_TEST7 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_TEST7 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_TEST7 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_TEST7 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_TEST7 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_TEST7 - VSD_BEGIN].code                                        = 0;
   // Выходной ток ПЧ
@@ -1440,7 +1440,7 @@ void Vsd::initParameters()
   parameters_[VSD_IOUT - VSD_BEGIN].validity                                     = VALIDITY_ERROR;
   parameters_[VSD_IOUT - VSD_BEGIN].value.float_t                                = 0;
   parameters_[VSD_IOUT - VSD_BEGIN].min                                          = 0.0;
-  parameters_[VSD_IOUT - VSD_BEGIN].max                                          = 10000000.0;
+  parameters_[VSD_IOUT - VSD_BEGIN].max                                          = 999999.0;
   parameters_[VSD_IOUT - VSD_BEGIN].def                                          = 0;
   parameters_[VSD_IOUT - VSD_BEGIN].code                                         = 0;
   // Регистр ошибок инвертора
@@ -1451,7 +1451,7 @@ void Vsd::initParameters()
   parameters_[VSD_INV_FAULT - VSD_BEGIN].validity                                = VALIDITY_ERROR;
   parameters_[VSD_INV_FAULT - VSD_BEGIN].value.float_t                           = 0;
   parameters_[VSD_INV_FAULT - VSD_BEGIN].min                                     = 0.0;
-  parameters_[VSD_INV_FAULT - VSD_BEGIN].max                                     = 10000000.0;
+  parameters_[VSD_INV_FAULT - VSD_BEGIN].max                                     = 999999.0;
   parameters_[VSD_INV_FAULT - VSD_BEGIN].def                                     = 0;
   parameters_[VSD_INV_FAULT - VSD_BEGIN].code                                    = 0;
   // Текущая выходная полная мощность ПЧ
@@ -1462,7 +1462,7 @@ void Vsd::initParameters()
   parameters_[VSD_SOUT - VSD_BEGIN].validity                                     = VALIDITY_ERROR;
   parameters_[VSD_SOUT - VSD_BEGIN].value.float_t                                = 0;
   parameters_[VSD_SOUT - VSD_BEGIN].min                                          = 0.0;
-  parameters_[VSD_SOUT - VSD_BEGIN].max                                          = 10000000.0;
+  parameters_[VSD_SOUT - VSD_BEGIN].max                                          = 999999.0;
   parameters_[VSD_SOUT - VSD_BEGIN].def                                          = 0;
   parameters_[VSD_SOUT - VSD_BEGIN].code                                         = 0;
   // Уставка срабатывания защиты (ЗП)
@@ -1495,7 +1495,7 @@ void Vsd::initParameters()
   parameters_[VSD_OVERPWM2_ANGLE - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_OVERPWM2_ANGLE - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_OVERPWM2_ANGLE - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_OVERPWM2_ANGLE - VSD_BEGIN].max                                = 10000000.0;
+  parameters_[VSD_OVERPWM2_ANGLE - VSD_BEGIN].max                                = 999999.0;
   parameters_[VSD_OVERPWM2_ANGLE - VSD_BEGIN].def                                = 0;
   parameters_[VSD_OVERPWM2_ANGLE - VSD_BEGIN].code                               = 0;
   // Степень постоянной времени отработки
@@ -1506,7 +1506,7 @@ void Vsd::initParameters()
   parameters_[VSD_OVERPWM_GAIN - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_OVERPWM_GAIN - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_OVERPWM_GAIN - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_OVERPWM_GAIN - VSD_BEGIN].max                                  = 10000000.0;
+  parameters_[VSD_OVERPWM_GAIN - VSD_BEGIN].max                                  = 999999.0;
   parameters_[VSD_OVERPWM_GAIN - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_OVERPWM_GAIN - VSD_BEGIN].code                                 = 0;
   // Стартовое напряжение торможения авторотации
@@ -1517,7 +1517,7 @@ void Vsd::initParameters()
   parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].max                                   = 10000000.0;
+  parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].max                                   = 999999.0;
   parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].code                                  = 0;
   // Ток тепловой защиты ПЧ длительный
@@ -1528,7 +1528,7 @@ void Vsd::initParameters()
   parameters_[VSD_FC_IRMS - VSD_BEGIN].validity                                  = VALIDITY_ERROR;
   parameters_[VSD_FC_IRMS - VSD_BEGIN].value.float_t                             = 0;
   parameters_[VSD_FC_IRMS - VSD_BEGIN].min                                       = 0.0;
-  parameters_[VSD_FC_IRMS - VSD_BEGIN].max                                       = 10000000.0;
+  parameters_[VSD_FC_IRMS - VSD_BEGIN].max                                       = 999999.0;
   parameters_[VSD_FC_IRMS - VSD_BEGIN].def                                       = 0;
   parameters_[VSD_FC_IRMS - VSD_BEGIN].code                                      = 0;
   // 
@@ -1539,7 +1539,7 @@ void Vsd::initParameters()
   parameters_[VSD_FC_T_OVERLOAD - VSD_BEGIN].validity                            = 0;
   parameters_[VSD_FC_T_OVERLOAD - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_FC_T_OVERLOAD - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_FC_T_OVERLOAD - VSD_BEGIN].max                                 = 10000000.0;
+  parameters_[VSD_FC_T_OVERLOAD - VSD_BEGIN].max                                 = 999999.0;
   parameters_[VSD_FC_T_OVERLOAD - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_FC_T_OVERLOAD - VSD_BEGIN].code                                = 0;
   // Ограничение тока для импульсов
@@ -1550,7 +1550,7 @@ void Vsd::initParameters()
   parameters_[VSD_FC_ILIM_LONG - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_FC_ILIM_LONG - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_FC_ILIM_LONG - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_FC_ILIM_LONG - VSD_BEGIN].max                                  = 10000000.0;
+  parameters_[VSD_FC_ILIM_LONG - VSD_BEGIN].max                                  = 999999.0;
   parameters_[VSD_FC_ILIM_LONG - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_FC_ILIM_LONG - VSD_BEGIN].code                                 = 0;
   // Время импульса с общим (максимальным) токоограничением
@@ -1561,7 +1561,7 @@ void Vsd::initParameters()
   parameters_[VSD_FC_TLIM - VSD_BEGIN].validity                                  = VALIDITY_ERROR;
   parameters_[VSD_FC_TLIM - VSD_BEGIN].value.float_t                             = 0;
   parameters_[VSD_FC_TLIM - VSD_BEGIN].min                                       = 0.0;
-  parameters_[VSD_FC_TLIM - VSD_BEGIN].max                                       = 10000000.0;
+  parameters_[VSD_FC_TLIM - VSD_BEGIN].max                                       = 999999.0;
   parameters_[VSD_FC_TLIM - VSD_BEGIN].def                                       = 0;
   parameters_[VSD_FC_TLIM - VSD_BEGIN].code                                      = 0;
   // Масштаб измеряемого напряжения ПЧ отн. базового 250А
@@ -1572,7 +1572,7 @@ void Vsd::initParameters()
   parameters_[VSD_U_SCALE - VSD_BEGIN].validity                                  = VALIDITY_ERROR;
   parameters_[VSD_U_SCALE - VSD_BEGIN].value.float_t                             = 0;
   parameters_[VSD_U_SCALE - VSD_BEGIN].min                                       = 0.0;
-  parameters_[VSD_U_SCALE - VSD_BEGIN].max                                       = 10000000.0;
+  parameters_[VSD_U_SCALE - VSD_BEGIN].max                                       = 999999.0;
   parameters_[VSD_U_SCALE - VSD_BEGIN].def                                       = 0;
   parameters_[VSD_U_SCALE - VSD_BEGIN].code                                      = 0;
   // Масштаб измеряемого тока ПЧ отн. базового 250А
@@ -1583,7 +1583,7 @@ void Vsd::initParameters()
   parameters_[VSD_I_SCALE - VSD_BEGIN].validity                                  = VALIDITY_ERROR;
   parameters_[VSD_I_SCALE - VSD_BEGIN].value.float_t                             = 0;
   parameters_[VSD_I_SCALE - VSD_BEGIN].min                                       = 0.0;
-  parameters_[VSD_I_SCALE - VSD_BEGIN].max                                       = 10000000.0;
+  parameters_[VSD_I_SCALE - VSD_BEGIN].max                                       = 999999.0;
   parameters_[VSD_I_SCALE - VSD_BEGIN].def                                       = 0;
   parameters_[VSD_I_SCALE - VSD_BEGIN].code                                      = 0;
   // Уровень быстрой токовой защиты двигателя
@@ -1594,7 +1594,7 @@ void Vsd::initParameters()
   parameters_[VSD_M_I_FAST - VSD_BEGIN].validity                                 = VALIDITY_ERROR;
   parameters_[VSD_M_I_FAST - VSD_BEGIN].value.float_t                            = 0;
   parameters_[VSD_M_I_FAST - VSD_BEGIN].min                                      = 0.0;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].max                                      = 10000000.0;
+  parameters_[VSD_M_I_FAST - VSD_BEGIN].max                                      = 999999.0;
   parameters_[VSD_M_I_FAST - VSD_BEGIN].def                                      = 0;
   parameters_[VSD_M_I_FAST - VSD_BEGIN].code                                     = 0;
   // Время отключения защиты двигателя после старта
@@ -1605,7 +1605,7 @@ void Vsd::initParameters()
   parameters_[VSD_T_BLANK - VSD_BEGIN].validity                                  = VALIDITY_ERROR;
   parameters_[VSD_T_BLANK - VSD_BEGIN].value.float_t                             = 0;
   parameters_[VSD_T_BLANK - VSD_BEGIN].min                                       = 0.0;
-  parameters_[VSD_T_BLANK - VSD_BEGIN].max                                       = 10000000.0;
+  parameters_[VSD_T_BLANK - VSD_BEGIN].max                                       = 999999.0;
   parameters_[VSD_T_BLANK - VSD_BEGIN].def                                       = 0;
   parameters_[VSD_T_BLANK - VSD_BEGIN].code                                      = 0;
   // Уровень уставки тока для ПИД-регулятора
@@ -1616,7 +1616,7 @@ void Vsd::initParameters()
   parameters_[VSD_PID_I_REF - VSD_BEGIN].validity                                = VALIDITY_ERROR;
   parameters_[VSD_PID_I_REF - VSD_BEGIN].value.float_t                           = 0;
   parameters_[VSD_PID_I_REF - VSD_BEGIN].min                                     = 0.0;
-  parameters_[VSD_PID_I_REF - VSD_BEGIN].max                                     = 10000000.0;
+  parameters_[VSD_PID_I_REF - VSD_BEGIN].max                                     = 999999.0;
   parameters_[VSD_PID_I_REF - VSD_BEGIN].def                                     = 0;
   parameters_[VSD_PID_I_REF - VSD_BEGIN].code                                    = 0;
   // Постоянная времени для ПИД-регулятора
@@ -1627,7 +1627,7 @@ void Vsd::initParameters()
   parameters_[VSD_PID_T_REG - VSD_BEGIN].validity                                = VALIDITY_ERROR;
   parameters_[VSD_PID_T_REG - VSD_BEGIN].value.float_t                           = 0;
   parameters_[VSD_PID_T_REG - VSD_BEGIN].min                                     = 0.0;
-  parameters_[VSD_PID_T_REG - VSD_BEGIN].max                                     = 10000000.0;
+  parameters_[VSD_PID_T_REG - VSD_BEGIN].max                                     = 999999.0;
   parameters_[VSD_PID_T_REG - VSD_BEGIN].def                                     = 0;
   parameters_[VSD_PID_T_REG - VSD_BEGIN].code                                    = 0;
   // Постоянная времени для ПИД-регулятора
@@ -1638,7 +1638,7 @@ void Vsd::initParameters()
   parameters_[VSD_PID_T_REG_1 - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_PID_T_REG_1 - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_PID_T_REG_1 - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_PID_T_REG_1 - VSD_BEGIN].max                                   = 10000000.0;
+  parameters_[VSD_PID_T_REG_1 - VSD_BEGIN].max                                   = 999999.0;
   parameters_[VSD_PID_T_REG_1 - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_PID_T_REG_1 - VSD_BEGIN].code                                  = 0;
   // Расширенный регистр состояния инвертора 3
@@ -1649,7 +1649,7 @@ void Vsd::initParameters()
   parameters_[VSD_INVERTOR_STATUS3 - VSD_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[VSD_INVERTOR_STATUS3 - VSD_BEGIN].value.float_t                    = 0;
   parameters_[VSD_INVERTOR_STATUS3 - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_INVERTOR_STATUS3 - VSD_BEGIN].max                              = 10000000.0;
+  parameters_[VSD_INVERTOR_STATUS3 - VSD_BEGIN].max                              = 999999.0;
   parameters_[VSD_INVERTOR_STATUS3 - VSD_BEGIN].def                              = 0;
   parameters_[VSD_INVERTOR_STATUS3 - VSD_BEGIN].code                             = 0;
   // Режим конфигурирования Danfoss 1-00 Не используется в проекте, только при конфигурировании
@@ -1660,7 +1660,7 @@ void Vsd::initParameters()
   parameters_[VSD_CONFIG_MODE - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_CONFIG_MODE - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_CONFIG_MODE - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_CONFIG_MODE - VSD_BEGIN].max                                   = 10000000.0;
+  parameters_[VSD_CONFIG_MODE - VSD_BEGIN].max                                   = 999999.0;
   parameters_[VSD_CONFIG_MODE - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_CONFIG_MODE - VSD_BEGIN].code                                  = 0;
   // Время разгона Danfoss 3-41 % Активно используется в проекте
@@ -1693,7 +1693,7 @@ void Vsd::initParameters()
   parameters_[VSD_INDEX - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_INDEX - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_INDEX - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_INDEX - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_INDEX - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_INDEX - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_INDEX - VSD_BEGIN].code                                        = 0;
   // Единицы измерения скорости Danfoss 0-02 Не используется в проекте, только при конфигурировании
@@ -1704,7 +1704,7 @@ void Vsd::initParameters()
   parameters_[VSD_UNIT_SPEED - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_UNIT_SPEED - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_UNIT_SPEED - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_UNIT_SPEED - VSD_BEGIN].max                                    = 10000000.0;
+  parameters_[VSD_UNIT_SPEED - VSD_BEGIN].max                                    = 999999.0;
   parameters_[VSD_UNIT_SPEED - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_UNIT_SPEED - VSD_BEGIN].code                                   = 0;
   // Характеристика момента нагрузки Danfoss 1-03 Не используется в проекте, только при конфигурировании
@@ -1715,7 +1715,7 @@ void Vsd::initParameters()
   parameters_[VSD_TORQUE_CHARACTERISTIC - VSD_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[VSD_TORQUE_CHARACTERISTIC - VSD_BEGIN].value.float_t               = 0;
   parameters_[VSD_TORQUE_CHARACTERISTIC - VSD_BEGIN].min                         = 0.0;
-  parameters_[VSD_TORQUE_CHARACTERISTIC - VSD_BEGIN].max                         = 10000000.0;
+  parameters_[VSD_TORQUE_CHARACTERISTIC - VSD_BEGIN].max                         = 999999.0;
   parameters_[VSD_TORQUE_CHARACTERISTIC - VSD_BEGIN].def                         = 0;
   parameters_[VSD_TORQUE_CHARACTERISTIC - VSD_BEGIN].code                        = 0;
   // Режим перегрузки Danfoss 1-04 Не используется в проекте, только при конфигурировании
@@ -1726,7 +1726,7 @@ void Vsd::initParameters()
   parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].max                                 = 10000000.0;
+  parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].max                                 = 999999.0;
   parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].code                                = 0;
   // Усиление демпфирования Danfoss 1-14 Не используется в проекте, только при конфигурировании
@@ -1737,7 +1737,7 @@ void Vsd::initParameters()
   parameters_[VSD_DAMPING_GANE - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_DAMPING_GANE - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_DAMPING_GANE - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_DAMPING_GANE - VSD_BEGIN].max                                  = 10000000.0;
+  parameters_[VSD_DAMPING_GANE - VSD_BEGIN].max                                  = 999999.0;
   parameters_[VSD_DAMPING_GANE - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_DAMPING_GANE - VSD_BEGIN].code                                 = 0;
   // Время фильтрации при низкой скорости Danfoss 1-15 Используется в режиме автоадаптации
@@ -1748,7 +1748,7 @@ void Vsd::initParameters()
   parameters_[VSD_LOW_SPEED_FILTER_TIME - VSD_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[VSD_LOW_SPEED_FILTER_TIME - VSD_BEGIN].value.float_t               = 0;
   parameters_[VSD_LOW_SPEED_FILTER_TIME - VSD_BEGIN].min                         = 0.0;
-  parameters_[VSD_LOW_SPEED_FILTER_TIME - VSD_BEGIN].max                         = 10000000.0;
+  parameters_[VSD_LOW_SPEED_FILTER_TIME - VSD_BEGIN].max                         = 999999.0;
   parameters_[VSD_LOW_SPEED_FILTER_TIME - VSD_BEGIN].def                         = 0;
   parameters_[VSD_LOW_SPEED_FILTER_TIME - VSD_BEGIN].code                        = 0;
   // Время фильтрации при высокой скорости Danfoss 1-16 Используется в режиме автоадаптации
@@ -1759,7 +1759,7 @@ void Vsd::initParameters()
   parameters_[VSD_HIGH_SPEED_FILTER_TIME - VSD_BEGIN].validity                   = VALIDITY_ERROR;
   parameters_[VSD_HIGH_SPEED_FILTER_TIME - VSD_BEGIN].value.float_t              = 0;
   parameters_[VSD_HIGH_SPEED_FILTER_TIME - VSD_BEGIN].min                        = 0.0;
-  parameters_[VSD_HIGH_SPEED_FILTER_TIME - VSD_BEGIN].max                        = 10000000.0;
+  parameters_[VSD_HIGH_SPEED_FILTER_TIME - VSD_BEGIN].max                        = 999999.0;
   parameters_[VSD_HIGH_SPEED_FILTER_TIME - VSD_BEGIN].def                        = 0;
   parameters_[VSD_HIGH_SPEED_FILTER_TIME - VSD_BEGIN].code                       = 0;
   // Длительный номинальный момент двигателе Danfoss 1-26 Записывается в проекте один раз
@@ -1770,7 +1770,7 @@ void Vsd::initParameters()
   parameters_[VSD_RATE_TORQUE_MOTOR - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_RATE_TORQUE_MOTOR - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_RATE_TORQUE_MOTOR - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_RATE_TORQUE_MOTOR - VSD_BEGIN].max                             = 10000000.0;
+  parameters_[VSD_RATE_TORQUE_MOTOR - VSD_BEGIN].max                             = 999999.0;
   parameters_[VSD_RATE_TORQUE_MOTOR - VSD_BEGIN].def                             = 0;
   parameters_[VSD_RATE_TORQUE_MOTOR - VSD_BEGIN].code                            = 0;
   // Сопротивление статора Danfoss 1-30 Используется в режиме автоадаптации
@@ -1781,7 +1781,7 @@ void Vsd::initParameters()
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].max                             = 10000000.0;
+  parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].max                             = 999999.0;
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].def                             = 0;
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].code                            = 0;
   // Характеристика Uf - U Danfoss 1-55
@@ -1792,7 +1792,7 @@ void Vsd::initParameters()
   parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].value.float_t                 = 0;
   parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].max                           = 10000000.0;
+  parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].max                           = 999999.0;
   parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].def                           = 0;
   parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].code                          = 0;
   // Характеристика Uf - f Danfoss 1-56
@@ -1803,7 +1803,7 @@ void Vsd::initParameters()
   parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].value.float_t                 = 0;
   parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].max                           = 10000000.0;
+  parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].max                           = 999999.0;
   parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].def                           = 0;
   parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].code                          = 0;
   // Подавление резонанса % Danfoss 1-64 Не используется в проекте, только при конфигурировании
@@ -1814,7 +1814,7 @@ void Vsd::initParameters()
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].value.float_t                    = 0;
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].max                              = 10000000.0;
+  parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].max                              = 999999.0;
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].def                              = 0;
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].code                             = 0;
   // Постаянная времени подавления Danfoss 1-65 Не используется в проекте, только при конфигурировании Novomet 0х0067
@@ -1825,7 +1825,7 @@ void Vsd::initParameters()
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].max                                = 10000000.0;
+  parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].max                                = 999999.0;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].def                                = 0;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].code                               = 0;
   // Минимальный ток при низкой скорости Danfoss 1-66 Не используется в проекте, только при конфигурировании
@@ -1836,7 +1836,7 @@ void Vsd::initParameters()
   parameters_[VSD_MIN_CURRENT_LOW_SPEED - VSD_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[VSD_MIN_CURRENT_LOW_SPEED - VSD_BEGIN].value.float_t               = 0;
   parameters_[VSD_MIN_CURRENT_LOW_SPEED - VSD_BEGIN].min                         = 0.0;
-  parameters_[VSD_MIN_CURRENT_LOW_SPEED - VSD_BEGIN].max                         = 10000000.0;
+  parameters_[VSD_MIN_CURRENT_LOW_SPEED - VSD_BEGIN].max                         = 999999.0;
   parameters_[VSD_MIN_CURRENT_LOW_SPEED - VSD_BEGIN].def                         = 0;
   parameters_[VSD_MIN_CURRENT_LOW_SPEED - VSD_BEGIN].code                        = 0;
   // Тип запуска вентиля Danfoss 1-70 Не используется в проекте, только при конфигурировании
@@ -1847,7 +1847,7 @@ void Vsd::initParameters()
   parameters_[VSD_PM_START_MODE - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_PM_START_MODE - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_PM_START_MODE - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_PM_START_MODE - VSD_BEGIN].max                                 = 10000000.0;
+  parameters_[VSD_PM_START_MODE - VSD_BEGIN].max                                 = 999999.0;
   parameters_[VSD_PM_START_MODE - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_PM_START_MODE - VSD_BEGIN].code                                = 0;
   // Задержка запуска Danfoss 1-71 Используется в защите от невыхода на заданную частоту
@@ -1858,7 +1858,7 @@ void Vsd::initParameters()
   parameters_[VSD_START_DELAY - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_START_DELAY - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_START_DELAY - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_START_DELAY - VSD_BEGIN].max                                   = 10000000.0;
+  parameters_[VSD_START_DELAY - VSD_BEGIN].max                                   = 999999.0;
   parameters_[VSD_START_DELAY - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_START_DELAY - VSD_BEGIN].code                                  = 0;
   // Функция запуска Danfoss 1-72 Не используется в проекте, только при конфигурировании
@@ -1869,7 +1869,7 @@ void Vsd::initParameters()
   parameters_[VSD_START_FUNCTION - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_START_FUNCTION - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_START_FUNCTION - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_START_FUNCTION - VSD_BEGIN].max                                = 10000000.0;
+  parameters_[VSD_START_FUNCTION - VSD_BEGIN].max                                = 999999.0;
   parameters_[VSD_START_FUNCTION - VSD_BEGIN].def                                = 0;
   parameters_[VSD_START_FUNCTION - VSD_BEGIN].code                               = 0;
   // Функция при остановке Danfoss 1-80 Не используется в проекте, только при конфигурировании
@@ -1880,7 +1880,7 @@ void Vsd::initParameters()
   parameters_[VSD_STOP_FUNCTION - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_STOP_FUNCTION - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_STOP_FUNCTION - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_STOP_FUNCTION - VSD_BEGIN].max                                 = 10000000.0;
+  parameters_[VSD_STOP_FUNCTION - VSD_BEGIN].max                                 = 999999.0;
   parameters_[VSD_STOP_FUNCTION - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_STOP_FUNCTION - VSD_BEGIN].code                                = 0;
   // Минимальная скорость для функции при останове Danfoss 1-82 Не используется в проекте, только при конфигурировании
@@ -1891,7 +1891,7 @@ void Vsd::initParameters()
   parameters_[VSD_STOP_SPEED - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_STOP_SPEED - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_STOP_SPEED - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_STOP_SPEED - VSD_BEGIN].max                                    = 10000000.0;
+  parameters_[VSD_STOP_SPEED - VSD_BEGIN].max                                    = 999999.0;
   parameters_[VSD_STOP_SPEED - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_STOP_SPEED - VSD_BEGIN].code                                   = 0;
   // Контроль термистора двигателя Danfoss 1-90 Не используется в проекте, только при конфигурировании
@@ -1902,7 +1902,7 @@ void Vsd::initParameters()
   parameters_[VSD_CONTROL_TERMISTOR_MTR - VSD_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[VSD_CONTROL_TERMISTOR_MTR - VSD_BEGIN].value.float_t               = 0;
   parameters_[VSD_CONTROL_TERMISTOR_MTR - VSD_BEGIN].min                         = 0.0;
-  parameters_[VSD_CONTROL_TERMISTOR_MTR - VSD_BEGIN].max                         = 10000000.0;
+  parameters_[VSD_CONTROL_TERMISTOR_MTR - VSD_BEGIN].max                         = 999999.0;
   parameters_[VSD_CONTROL_TERMISTOR_MTR - VSD_BEGIN].def                         = 0;
   parameters_[VSD_CONTROL_TERMISTOR_MTR - VSD_BEGIN].code                        = 0;
   // Вход термистора Danfoss 1-93 Не используется в проекте, только при конфигурировании
@@ -1913,7 +1913,7 @@ void Vsd::initParameters()
   parameters_[VSD_THERMISTOR_RESOURCE - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_THERMISTOR_RESOURCE - VSD_BEGIN].value.float_t                 = 0;
   parameters_[VSD_THERMISTOR_RESOURCE - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_THERMISTOR_RESOURCE - VSD_BEGIN].max                           = 10000000.0;
+  parameters_[VSD_THERMISTOR_RESOURCE - VSD_BEGIN].max                           = 999999.0;
   parameters_[VSD_THERMISTOR_RESOURCE - VSD_BEGIN].def                           = 0;
   parameters_[VSD_THERMISTOR_RESOURCE - VSD_BEGIN].code                          = 0;
   // Начальный ток Danfoss 2-06 Не используется в проекте, только при конфигурировании
@@ -1924,7 +1924,7 @@ void Vsd::initParameters()
   parameters_[VSD_PARKING_CURRENT - VSD_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[VSD_PARKING_CURRENT - VSD_BEGIN].value.float_t                     = 0;
   parameters_[VSD_PARKING_CURRENT - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_PARKING_CURRENT - VSD_BEGIN].max                               = 10000000.0;
+  parameters_[VSD_PARKING_CURRENT - VSD_BEGIN].max                               = 999999.0;
   parameters_[VSD_PARKING_CURRENT - VSD_BEGIN].def                               = 0;
   parameters_[VSD_PARKING_CURRENT - VSD_BEGIN].code                              = 0;
   // Длительность действия начального ток Danfoss 2-07 В проекте есть, но отключено, используется при конфигурировании
@@ -1935,7 +1935,7 @@ void Vsd::initParameters()
   parameters_[VSD_PARKING_TIME - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_PARKING_TIME - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_PARKING_TIME - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_PARKING_TIME - VSD_BEGIN].max                                  = 10000000.0;
+  parameters_[VSD_PARKING_TIME - VSD_BEGIN].max                                  = 999999.0;
   parameters_[VSD_PARKING_TIME - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_PARKING_TIME - VSD_BEGIN].code                                 = 0;
   // Контроль перенапряжения Danfoss 2-17 Не используется в проекте, только при конфигурировании
@@ -1946,7 +1946,7 @@ void Vsd::initParameters()
   parameters_[VSD_OVERVOLTAGE_CONTROL - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_OVERVOLTAGE_CONTROL - VSD_BEGIN].value.float_t                 = 0;
   parameters_[VSD_OVERVOLTAGE_CONTROL - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_OVERVOLTAGE_CONTROL - VSD_BEGIN].max                           = 10000000.0;
+  parameters_[VSD_OVERVOLTAGE_CONTROL - VSD_BEGIN].max                           = 999999.0;
   parameters_[VSD_OVERVOLTAGE_CONTROL - VSD_BEGIN].def                           = 0;
   parameters_[VSD_OVERVOLTAGE_CONTROL - VSD_BEGIN].code                          = 0;
   // Минимальное задание Danfoss 3-02 Не используется в проекте, только при конфигурировании
@@ -1957,7 +1957,7 @@ void Vsd::initParameters()
   parameters_[VSD_MIN_REFERENCE - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_MIN_REFERENCE - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_MIN_REFERENCE - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_MIN_REFERENCE - VSD_BEGIN].max                                 = 10000000.0;
+  parameters_[VSD_MIN_REFERENCE - VSD_BEGIN].max                                 = 999999.0;
   parameters_[VSD_MIN_REFERENCE - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_MIN_REFERENCE - VSD_BEGIN].code                                = 0;
   // Максимальное задани Danfoss 3-03 Не используется в проекте, только при конфигурировании
@@ -1968,7 +1968,7 @@ void Vsd::initParameters()
   parameters_[VSD_MAX_REFERENCE - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_MAX_REFERENCE - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_MAX_REFERENCE - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_MAX_REFERENCE - VSD_BEGIN].max                                 = 10000000.0;
+  parameters_[VSD_MAX_REFERENCE - VSD_BEGIN].max                                 = 999999.0;
   parameters_[VSD_MAX_REFERENCE - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_MAX_REFERENCE - VSD_BEGIN].code                                = 0;
   // Ресурс задания 1 Danfoss 3-15 Не используется в проекте, только при конфигурировании
@@ -1979,7 +1979,7 @@ void Vsd::initParameters()
   parameters_[VSD_RESOURCE_TASK_1 - VSD_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[VSD_RESOURCE_TASK_1 - VSD_BEGIN].value.float_t                     = 0;
   parameters_[VSD_RESOURCE_TASK_1 - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_RESOURCE_TASK_1 - VSD_BEGIN].max                               = 10000000.0;
+  parameters_[VSD_RESOURCE_TASK_1 - VSD_BEGIN].max                               = 999999.0;
   parameters_[VSD_RESOURCE_TASK_1 - VSD_BEGIN].def                               = 0;
   parameters_[VSD_RESOURCE_TASK_1 - VSD_BEGIN].code                              = 0;
   // Ресурс задания 2 Danfoss 3-16 Не используется в проекте, только при конфигурировании
@@ -1990,7 +1990,7 @@ void Vsd::initParameters()
   parameters_[VSD_RESOURCE_TASK_2 - VSD_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[VSD_RESOURCE_TASK_2 - VSD_BEGIN].value.float_t                     = 0;
   parameters_[VSD_RESOURCE_TASK_2 - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_RESOURCE_TASK_2 - VSD_BEGIN].max                               = 10000000.0;
+  parameters_[VSD_RESOURCE_TASK_2 - VSD_BEGIN].max                               = 999999.0;
   parameters_[VSD_RESOURCE_TASK_2 - VSD_BEGIN].def                               = 0;
   parameters_[VSD_RESOURCE_TASK_2 - VSD_BEGIN].code                              = 0;
   // Ресурс задания 3 Danfoss 3-17 Не используется в проекте, только при конфигурировании
@@ -2001,7 +2001,7 @@ void Vsd::initParameters()
   parameters_[VSD_RESOURCE_TASK_3 - VSD_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[VSD_RESOURCE_TASK_3 - VSD_BEGIN].value.float_t                     = 0;
   parameters_[VSD_RESOURCE_TASK_3 - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_RESOURCE_TASK_3 - VSD_BEGIN].max                               = 10000000.0;
+  parameters_[VSD_RESOURCE_TASK_3 - VSD_BEGIN].max                               = 999999.0;
   parameters_[VSD_RESOURCE_TASK_3 - VSD_BEGIN].def                               = 0;
   parameters_[VSD_RESOURCE_TASK_3 - VSD_BEGIN].code                              = 0;
   // Тип изменения скорости Danfoss 3-40 Не используется в проекте, только при конфигурировании
@@ -2012,7 +2012,7 @@ void Vsd::initParameters()
   parameters_[VSD_TYPE_SPEED_CHANGE - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_TYPE_SPEED_CHANGE - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_TYPE_SPEED_CHANGE - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_TYPE_SPEED_CHANGE - VSD_BEGIN].max                             = 10000000.0;
+  parameters_[VSD_TYPE_SPEED_CHANGE - VSD_BEGIN].max                             = 999999.0;
   parameters_[VSD_TYPE_SPEED_CHANGE - VSD_BEGIN].def                             = 0;
   parameters_[VSD_TYPE_SPEED_CHANGE - VSD_BEGIN].code                            = 0;
   // Время разгона фиксированной скорости Danfoss 3-80 Используется в проекте один раз
@@ -2023,7 +2023,7 @@ void Vsd::initParameters()
   parameters_[VSD_TIMER_DISP_FIX_SPEED - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_TIMER_DISP_FIX_SPEED - VSD_BEGIN].value.float_t                = 0;
   parameters_[VSD_TIMER_DISP_FIX_SPEED - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_TIMER_DISP_FIX_SPEED - VSD_BEGIN].max                          = 10000000.0;
+  parameters_[VSD_TIMER_DISP_FIX_SPEED - VSD_BEGIN].max                          = 999999.0;
   parameters_[VSD_TIMER_DISP_FIX_SPEED - VSD_BEGIN].def                          = 0;
   parameters_[VSD_TIMER_DISP_FIX_SPEED - VSD_BEGIN].code                         = 0;
   // Время замедления фиксированной скорости Danfoss 3-81 Используется в проекте один раз
@@ -2034,7 +2034,7 @@ void Vsd::initParameters()
   parameters_[VSD_TIMER_DELAY_FIX_SPEED - VSD_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[VSD_TIMER_DELAY_FIX_SPEED - VSD_BEGIN].value.float_t               = 0;
   parameters_[VSD_TIMER_DELAY_FIX_SPEED - VSD_BEGIN].min                         = 0.0;
-  parameters_[VSD_TIMER_DELAY_FIX_SPEED - VSD_BEGIN].max                         = 10000000.0;
+  parameters_[VSD_TIMER_DELAY_FIX_SPEED - VSD_BEGIN].max                         = 999999.0;
   parameters_[VSD_TIMER_DELAY_FIX_SPEED - VSD_BEGIN].def                         = 0;
   parameters_[VSD_TIMER_DELAY_FIX_SPEED - VSD_BEGIN].code                        = 0;
   // Ограничение момента Danfoss 4-16 % Используется в защитах ЧРП. Интерфейс
@@ -2045,7 +2045,7 @@ void Vsd::initParameters()
   parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].max                                  = 10000000.0;
+  parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].max                                  = 999999.0;
   parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].code                                 = 0;
   // Ограничение момента в режиме генератора Danfoss 4-17 % Не используется в проекте, только при конфигурировании
@@ -2056,7 +2056,7 @@ void Vsd::initParameters()
   parameters_[VSD_TORQUE_LIMIT_GEN - VSD_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[VSD_TORQUE_LIMIT_GEN - VSD_BEGIN].value.float_t                    = 0;
   parameters_[VSD_TORQUE_LIMIT_GEN - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_TORQUE_LIMIT_GEN - VSD_BEGIN].max                              = 10000000.0;
+  parameters_[VSD_TORQUE_LIMIT_GEN - VSD_BEGIN].max                              = 999999.0;
   parameters_[VSD_TORQUE_LIMIT_GEN - VSD_BEGIN].def                              = 0;
   parameters_[VSD_TORQUE_LIMIT_GEN - VSD_BEGIN].code                             = 0;
   // Предел тока Danfoss 4-18 %
@@ -2067,7 +2067,7 @@ void Vsd::initParameters()
   parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].max                                 = 10000000.0;
+  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].max                                 = 999999.0;
   parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].code                                = 0;
   // Максимальная выходная частота Danfoss 4-19 Используется в проекте
@@ -2078,7 +2078,7 @@ void Vsd::initParameters()
   parameters_[VSD_MAX_OUTPUT_FREQUENCY - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_MAX_OUTPUT_FREQUENCY - VSD_BEGIN].value.float_t                = 0;
   parameters_[VSD_MAX_OUTPUT_FREQUENCY - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_MAX_OUTPUT_FREQUENCY - VSD_BEGIN].max                          = 10000000.0;
+  parameters_[VSD_MAX_OUTPUT_FREQUENCY - VSD_BEGIN].max                          = 999999.0;
   parameters_[VSD_MAX_OUTPUT_FREQUENCY - VSD_BEGIN].def                          = 0;
   parameters_[VSD_MAX_OUTPUT_FREQUENCY - VSD_BEGIN].code                         = 0;
   // Реакция на ошибку обратной связи Danfoss 4-30 Не используется в проекте, только при конфигурировании
@@ -2089,7 +2089,7 @@ void Vsd::initParameters()
   parameters_[VSD_MTR_FEEDBACK_LOSS_FUNC - VSD_BEGIN].validity                   = VALIDITY_ERROR;
   parameters_[VSD_MTR_FEEDBACK_LOSS_FUNC - VSD_BEGIN].value.float_t              = 0;
   parameters_[VSD_MTR_FEEDBACK_LOSS_FUNC - VSD_BEGIN].min                        = 0.0;
-  parameters_[VSD_MTR_FEEDBACK_LOSS_FUNC - VSD_BEGIN].max                        = 10000000.0;
+  parameters_[VSD_MTR_FEEDBACK_LOSS_FUNC - VSD_BEGIN].max                        = 999999.0;
   parameters_[VSD_MTR_FEEDBACK_LOSS_FUNC - VSD_BEGIN].def                        = 0;
   parameters_[VSD_MTR_FEEDBACK_LOSS_FUNC - VSD_BEGIN].code                       = 0;
   // Реакция на ошибку задания частоты Danfoss 4-34 Не используется в проекте, только при конфигурировании
@@ -2100,7 +2100,7 @@ void Vsd::initParameters()
   parameters_[VSD_TRACK_ERROR_FUNCTION - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_TRACK_ERROR_FUNCTION - VSD_BEGIN].value.float_t                = 0;
   parameters_[VSD_TRACK_ERROR_FUNCTION - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_TRACK_ERROR_FUNCTION - VSD_BEGIN].max                          = 10000000.0;
+  parameters_[VSD_TRACK_ERROR_FUNCTION - VSD_BEGIN].max                          = 999999.0;
   parameters_[VSD_TRACK_ERROR_FUNCTION - VSD_BEGIN].def                          = 0;
   parameters_[VSD_TRACK_ERROR_FUNCTION - VSD_BEGIN].code                         = 0;
   // Величина несоответствия частота Danfoss 4-35 Не используется в проекте, только при конфигурировании
@@ -2111,7 +2111,7 @@ void Vsd::initParameters()
   parameters_[VSD_TRACK_ERROR - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_TRACK_ERROR - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_TRACK_ERROR - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_TRACK_ERROR - VSD_BEGIN].max                                   = 10000000.0;
+  parameters_[VSD_TRACK_ERROR - VSD_BEGIN].max                                   = 999999.0;
   parameters_[VSD_TRACK_ERROR - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_TRACK_ERROR - VSD_BEGIN].code                                  = 0;
   // Величина несоответствия частоты Danfoss 4-36 Не используется в проекте, только при конфигурировании
@@ -2122,7 +2122,7 @@ void Vsd::initParameters()
   parameters_[VSD_TRACK_ERROR_TIMEOUT - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_TRACK_ERROR_TIMEOUT - VSD_BEGIN].value.float_t                 = 0;
   parameters_[VSD_TRACK_ERROR_TIMEOUT - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_TRACK_ERROR_TIMEOUT - VSD_BEGIN].max                           = 10000000.0;
+  parameters_[VSD_TRACK_ERROR_TIMEOUT - VSD_BEGIN].max                           = 999999.0;
   parameters_[VSD_TRACK_ERROR_TIMEOUT - VSD_BEGIN].def                           = 0;
   parameters_[VSD_TRACK_ERROR_TIMEOUT - VSD_BEGIN].code                          = 0;
   // Величина несоответствия частоты при разгоне Danfoss 4-37 Не используется в проекте, только при конфигурировании
@@ -2133,7 +2133,7 @@ void Vsd::initParameters()
   parameters_[VSD_TRACK_ERROR_RAMPING - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_TRACK_ERROR_RAMPING - VSD_BEGIN].value.float_t                 = 0;
   parameters_[VSD_TRACK_ERROR_RAMPING - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_TRACK_ERROR_RAMPING - VSD_BEGIN].max                           = 10000000.0;
+  parameters_[VSD_TRACK_ERROR_RAMPING - VSD_BEGIN].max                           = 999999.0;
   parameters_[VSD_TRACK_ERROR_RAMPING - VSD_BEGIN].def                           = 0;
   parameters_[VSD_TRACK_ERROR_RAMPING - VSD_BEGIN].code                          = 0;
   // Задержка срабатывания при несоответствии частоты при разгоне Danfoss 4-38 Не используется в проекте, только при конфигурировании
@@ -2144,7 +2144,7 @@ void Vsd::initParameters()
   parameters_[VSD_TRACK_ERROR_RAMP_TIME - VSD_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[VSD_TRACK_ERROR_RAMP_TIME - VSD_BEGIN].value.float_t               = 0;
   parameters_[VSD_TRACK_ERROR_RAMP_TIME - VSD_BEGIN].min                         = 0.0;
-  parameters_[VSD_TRACK_ERROR_RAMP_TIME - VSD_BEGIN].max                         = 10000000.0;
+  parameters_[VSD_TRACK_ERROR_RAMP_TIME - VSD_BEGIN].max                         = 999999.0;
   parameters_[VSD_TRACK_ERROR_RAMP_TIME - VSD_BEGIN].def                         = 0;
   parameters_[VSD_TRACK_ERROR_RAMP_TIME - VSD_BEGIN].code                        = 0;
   // Tracking Error After Ramping Timeout Danfoss 4-39 Не используется в проекте, только при конфигурировании
@@ -2155,7 +2155,7 @@ void Vsd::initParameters()
   parameters_[VSD_TRACK_ERROR_AFTER_RAMP - VSD_BEGIN].validity                   = VALIDITY_ERROR;
   parameters_[VSD_TRACK_ERROR_AFTER_RAMP - VSD_BEGIN].value.float_t              = 0;
   parameters_[VSD_TRACK_ERROR_AFTER_RAMP - VSD_BEGIN].min                        = 0.0;
-  parameters_[VSD_TRACK_ERROR_AFTER_RAMP - VSD_BEGIN].max                        = 10000000.0;
+  parameters_[VSD_TRACK_ERROR_AFTER_RAMP - VSD_BEGIN].max                        = 999999.0;
   parameters_[VSD_TRACK_ERROR_AFTER_RAMP - VSD_BEGIN].def                        = 0;
   parameters_[VSD_TRACK_ERROR_AFTER_RAMP - VSD_BEGIN].code                       = 0;
   // Danfoss 4-50 Не используется в проекте, только при конфигурировании
@@ -2166,7 +2166,7 @@ void Vsd::initParameters()
   parameters_[VSD_WARNING_CURRENT_LOW - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_WARNING_CURRENT_LOW - VSD_BEGIN].value.float_t                 = 0;
   parameters_[VSD_WARNING_CURRENT_LOW - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_WARNING_CURRENT_LOW - VSD_BEGIN].max                           = 10000000.0;
+  parameters_[VSD_WARNING_CURRENT_LOW - VSD_BEGIN].max                           = 999999.0;
   parameters_[VSD_WARNING_CURRENT_LOW - VSD_BEGIN].def                           = 0;
   parameters_[VSD_WARNING_CURRENT_LOW - VSD_BEGIN].code                          = 0;
   // Danfoss 4-51 Не используется в проекте, только при конфигурировании
@@ -2177,7 +2177,7 @@ void Vsd::initParameters()
   parameters_[VSD_WARNING_CURRENT_HIGH - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_WARNING_CURRENT_HIGH - VSD_BEGIN].value.float_t                = 0;
   parameters_[VSD_WARNING_CURRENT_HIGH - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_WARNING_CURRENT_HIGH - VSD_BEGIN].max                          = 10000000.0;
+  parameters_[VSD_WARNING_CURRENT_HIGH - VSD_BEGIN].max                          = 999999.0;
   parameters_[VSD_WARNING_CURRENT_HIGH - VSD_BEGIN].def                          = 0;
   parameters_[VSD_WARNING_CURRENT_HIGH - VSD_BEGIN].code                         = 0;
   // Минимальная скорость Danfoss 4-52 об/мин Не используется в проекте, только при конфигурировании
@@ -2188,7 +2188,7 @@ void Vsd::initParameters()
   parameters_[VSD_WARNING_SPEED_LOW - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_WARNING_SPEED_LOW - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_WARNING_SPEED_LOW - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_WARNING_SPEED_LOW - VSD_BEGIN].max                             = 10000000.0;
+  parameters_[VSD_WARNING_SPEED_LOW - VSD_BEGIN].max                             = 999999.0;
   parameters_[VSD_WARNING_SPEED_LOW - VSD_BEGIN].def                             = 0;
   parameters_[VSD_WARNING_SPEED_LOW - VSD_BEGIN].code                            = 0;
   // Режим клеммы 27 Danfoss 5-01 Не используется в проекте, только при конфигурировании
@@ -2199,7 +2199,7 @@ void Vsd::initParameters()
   parameters_[VSD_TERMINAL_27_MODE - VSD_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[VSD_TERMINAL_27_MODE - VSD_BEGIN].value.float_t                    = 0;
   parameters_[VSD_TERMINAL_27_MODE - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_TERMINAL_27_MODE - VSD_BEGIN].max                              = 10000000.0;
+  parameters_[VSD_TERMINAL_27_MODE - VSD_BEGIN].max                              = 999999.0;
   parameters_[VSD_TERMINAL_27_MODE - VSD_BEGIN].def                              = 0;
   parameters_[VSD_TERMINAL_27_MODE - VSD_BEGIN].code                             = 0;
   // Режим клеммы 29 Danfoss 5-02 Не используется в проекте, только при конфигурировании
@@ -2210,7 +2210,7 @@ void Vsd::initParameters()
   parameters_[VSD_TERMINAL_29_MODE - VSD_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[VSD_TERMINAL_29_MODE - VSD_BEGIN].value.float_t                    = 0;
   parameters_[VSD_TERMINAL_29_MODE - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_TERMINAL_29_MODE - VSD_BEGIN].max                              = 10000000.0;
+  parameters_[VSD_TERMINAL_29_MODE - VSD_BEGIN].max                              = 999999.0;
   parameters_[VSD_TERMINAL_29_MODE - VSD_BEGIN].def                              = 0;
   parameters_[VSD_TERMINAL_29_MODE - VSD_BEGIN].code                             = 0;
   // Цифровой вход 18 Danfoss 5-10 Не используется в проекте, только при конфигурировании
@@ -2221,7 +2221,7 @@ void Vsd::initParameters()
   parameters_[VSD_DI_18 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_DI_18 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_DI_18 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_DI_18 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_DI_18 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_DI_18 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_DI_18 - VSD_BEGIN].code                                        = 0;
   // Цифровой вход 19 Danfoss 5-11 Не используется в проекте, только при конфигурировании
@@ -2232,7 +2232,7 @@ void Vsd::initParameters()
   parameters_[VSD_DI_19 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_DI_19 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_DI_19 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_DI_19 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_DI_19 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_DI_19 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_DI_19 - VSD_BEGIN].code                                        = 0;
   // Цифровой вход 27 Danfoss 5-12 Не используется в проекте, только при конфигурировании
@@ -2243,7 +2243,7 @@ void Vsd::initParameters()
   parameters_[VSD_DI_27 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_DI_27 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_DI_27 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_DI_27 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_DI_27 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_DI_27 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_DI_27 - VSD_BEGIN].code                                        = 0;
   // Цифровой вход 32 Danfoss 5-14 Не используется в проекте, только при конфигурировании
@@ -2254,7 +2254,7 @@ void Vsd::initParameters()
   parameters_[VSD_DI_32 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_DI_32 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_DI_32 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_DI_32 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_DI_32 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_DI_32 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_DI_32 - VSD_BEGIN].code                                        = 0;
   // Цифровой вход 33 Danfoss 5-15 Не используется в проекте, только при конфигурировании
@@ -2265,7 +2265,7 @@ void Vsd::initParameters()
   parameters_[VSD_DI_33 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_DI_33 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_DI_33 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_DI_33 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_DI_33 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_DI_33 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_DI_33 - VSD_BEGIN].code                                        = 0;
   // Клемма 27 Цифровой вход Danfoss 5-30 Не используется в проекте, только при конфигурировании
@@ -2276,7 +2276,7 @@ void Vsd::initParameters()
   parameters_[VSD_TERMINAL_27_DI - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_TERMINAL_27_DI - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_TERMINAL_27_DI - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_TERMINAL_27_DI - VSD_BEGIN].max                                = 10000000.0;
+  parameters_[VSD_TERMINAL_27_DI - VSD_BEGIN].max                                = 999999.0;
   parameters_[VSD_TERMINAL_27_DI - VSD_BEGIN].def                                = 0;
   parameters_[VSD_TERMINAL_27_DI - VSD_BEGIN].code                               = 0;
   // Клемма 29 Цифровой вход Danfoss 5-31 Не используется в проекте, только при конфигурировании
@@ -2287,7 +2287,7 @@ void Vsd::initParameters()
   parameters_[VSD_TERMINAL_29_DI - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_TERMINAL_29_DI - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_TERMINAL_29_DI - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_TERMINAL_29_DI - VSD_BEGIN].max                                = 10000000.0;
+  parameters_[VSD_TERMINAL_29_DI - VSD_BEGIN].max                                = 999999.0;
   parameters_[VSD_TERMINAL_29_DI - VSD_BEGIN].def                                = 0;
   parameters_[VSD_TERMINAL_29_DI - VSD_BEGIN].code                               = 0;
   // Реле функций Danfoss 5-40 Не используется в проекте, только при конфигурировании
@@ -2298,7 +2298,7 @@ void Vsd::initParameters()
   parameters_[VSD_FUNCTION_RELE - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_FUNCTION_RELE - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_FUNCTION_RELE - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_FUNCTION_RELE - VSD_BEGIN].max                                 = 10000000.0;
+  parameters_[VSD_FUNCTION_RELE - VSD_BEGIN].max                                 = 999999.0;
   parameters_[VSD_FUNCTION_RELE - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_FUNCTION_RELE - VSD_BEGIN].code                                = 0;
   // Нипонятно Danfoss 5-41 Не используется в проекте, только при конфигурировании
@@ -2309,7 +2309,7 @@ void Vsd::initParameters()
   parameters_[VSD_ON_DELAY_RELAY - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_ON_DELAY_RELAY - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_ON_DELAY_RELAY - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_ON_DELAY_RELAY - VSD_BEGIN].max                                = 10000000.0;
+  parameters_[VSD_ON_DELAY_RELAY - VSD_BEGIN].max                                = 999999.0;
   parameters_[VSD_ON_DELAY_RELAY - VSD_BEGIN].def                                = 0;
   parameters_[VSD_ON_DELAY_RELAY - VSD_BEGIN].code                               = 0;
   // Клемма 42 аналоговый вход Danfoss 6-50 Не используется в проекте, только при конфигурировании
@@ -2320,7 +2320,7 @@ void Vsd::initParameters()
   parameters_[VSD_42_AO - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_42_AO - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_42_AO - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_42_AO - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_42_AO - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_42_AO - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_42_AO - VSD_BEGIN].code                                        = 0;
   // Режим контроллера SL Danfoss 13-00 Не используется в проекте, только при конфигурировании
@@ -2331,7 +2331,7 @@ void Vsd::initParameters()
   parameters_[VSD_SL_CONTROLLER_MODE - VSD_BEGIN].validity                       = VALIDITY_ERROR;
   parameters_[VSD_SL_CONTROLLER_MODE - VSD_BEGIN].value.float_t                  = 0;
   parameters_[VSD_SL_CONTROLLER_MODE - VSD_BEGIN].min                            = 0.0;
-  parameters_[VSD_SL_CONTROLLER_MODE - VSD_BEGIN].max                            = 10000000.0;
+  parameters_[VSD_SL_CONTROLLER_MODE - VSD_BEGIN].max                            = 999999.0;
   parameters_[VSD_SL_CONTROLLER_MODE - VSD_BEGIN].def                            = 0;
   parameters_[VSD_SL_CONTROLLER_MODE - VSD_BEGIN].code                           = 0;
   // Событие запуска Danfoss 13-01 Не используется в проекте, только при конфигурировании
@@ -2342,7 +2342,7 @@ void Vsd::initParameters()
   parameters_[VSD_SL_START_EVENT - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_SL_START_EVENT - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_SL_START_EVENT - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_SL_START_EVENT - VSD_BEGIN].max                                = 10000000.0;
+  parameters_[VSD_SL_START_EVENT - VSD_BEGIN].max                                = 999999.0;
   parameters_[VSD_SL_START_EVENT - VSD_BEGIN].def                                = 0;
   parameters_[VSD_SL_START_EVENT - VSD_BEGIN].code                               = 0;
   // Событие останова Danfoss 13-02 Не используется в проекте, только при конфигурировании
@@ -2353,7 +2353,7 @@ void Vsd::initParameters()
   parameters_[VSD_SL_STOP_EVENT - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_SL_STOP_EVENT - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_SL_STOP_EVENT - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_SL_STOP_EVENT - VSD_BEGIN].max                                 = 10000000.0;
+  parameters_[VSD_SL_STOP_EVENT - VSD_BEGIN].max                                 = 999999.0;
   parameters_[VSD_SL_STOP_EVENT - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_SL_STOP_EVENT - VSD_BEGIN].code                                = 0;
   // Сброс настроек компараторов Danfoss 13-03 Не используется в проекте, только при конфигурировании
@@ -2364,7 +2364,7 @@ void Vsd::initParameters()
   parameters_[VSD_SL_RESET - VSD_BEGIN].validity                                 = VALIDITY_ERROR;
   parameters_[VSD_SL_RESET - VSD_BEGIN].value.float_t                            = 0;
   parameters_[VSD_SL_RESET - VSD_BEGIN].min                                      = 0.0;
-  parameters_[VSD_SL_RESET - VSD_BEGIN].max                                      = 10000000.0;
+  parameters_[VSD_SL_RESET - VSD_BEGIN].max                                      = 999999.0;
   parameters_[VSD_SL_RESET - VSD_BEGIN].def                                      = 0;
   parameters_[VSD_SL_RESET - VSD_BEGIN].code                                     = 0;
   // Операнд сравнения компаратора Danfoss 13-10 Не используется в проекте, только при конфигурировании
@@ -2375,7 +2375,7 @@ void Vsd::initParameters()
   parameters_[VSD_SL_10 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_SL_10 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_SL_10 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_SL_10 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_SL_10 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_SL_10 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_SL_10 - VSD_BEGIN].code                                        = 0;
   // Оператор сравнения компаратора Danfoss 13-11 Не используется в проекте, только при конфигурировании
@@ -2386,7 +2386,7 @@ void Vsd::initParameters()
   parameters_[VSD_SL_11 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_SL_11 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_SL_11 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_SL_11 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_SL_11 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_SL_11 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_SL_11 - VSD_BEGIN].code                                        = 0;
   // Значение компаратора Danfoss 13-12 Не используется в проекте, только при конфигурировании
@@ -2397,7 +2397,7 @@ void Vsd::initParameters()
   parameters_[VSD_SL_12 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_SL_12 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_SL_12 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_SL_12 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_SL_12 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_SL_12 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_SL_12 - VSD_BEGIN].code                                        = 0;
   // RS-FF Operand S Danfoss 13-15 Не используется в проекте, только при конфигурировании
@@ -2408,7 +2408,7 @@ void Vsd::initParameters()
   parameters_[VSD_SL_15 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_SL_15 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_SL_15 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_SL_15 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_SL_15 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_SL_15 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_SL_15 - VSD_BEGIN].code                                        = 0;
   // RS-FF Operand R Danfoss 13-16 Не используется в проекте, только при конфигурировании
@@ -2419,7 +2419,7 @@ void Vsd::initParameters()
   parameters_[VSD_SL_16 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_SL_16 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_SL_16 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_SL_16 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_SL_16 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_SL_16 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_SL_16 - VSD_BEGIN].code                                        = 0;
   // Временная задержка Danfoss 13-20 Не используется в проекте, только при конфигурировании
@@ -2430,7 +2430,7 @@ void Vsd::initParameters()
   parameters_[VSD_SL_20 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_SL_20 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_SL_20 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_SL_20 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_SL_20 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_SL_20 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_SL_20 - VSD_BEGIN].code                                        = 0;
   // Булева переменная логического соотношения 1 Danfoss 13-40 Не используется в проекте, только при конфигурировании
@@ -2441,7 +2441,7 @@ void Vsd::initParameters()
   parameters_[VSD_SL_40 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_SL_40 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_SL_40 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_SL_40 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_SL_40 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_SL_40 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_SL_40 - VSD_BEGIN].code                                        = 0;
   // Оператор логического соотношения 1 Danfoss 13-41 Не используется в проекте, только при конфигурировании
@@ -2452,7 +2452,7 @@ void Vsd::initParameters()
   parameters_[VSD_SL_41 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_SL_41 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_SL_41 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_SL_41 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_SL_41 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_SL_41 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_SL_41 - VSD_BEGIN].code                                        = 0;
   // Булева переменная логического соотношения 2 Danfoss 13-42 Не используется в проекте, только при конфигурировании
@@ -2463,7 +2463,7 @@ void Vsd::initParameters()
   parameters_[VSD_SL_42 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_SL_42 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_SL_42 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_SL_42 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_SL_42 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_SL_42 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_SL_42 - VSD_BEGIN].code                                        = 0;
   // Logic Rule Operator 2 Danfoss 13-43 Не используется в проекте, только при конфигурировании
@@ -2474,7 +2474,7 @@ void Vsd::initParameters()
   parameters_[VSD_SL_43 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_SL_43 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_SL_43 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_SL_43 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_SL_43 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_SL_43 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_SL_43 - VSD_BEGIN].code                                        = 0;
   // Logic Rule Boolean 3 Danfoss 13-44 Не используется в проекте, только при конфигурировании
@@ -2485,7 +2485,7 @@ void Vsd::initParameters()
   parameters_[VSD_SL_44 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_SL_44 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_SL_44 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_SL_44 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_SL_44 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_SL_44 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_SL_44 - VSD_BEGIN].code                                        = 0;
   // Событие контроллера SL Danfoss 13-51 Не используется в проекте, только при конфигурировании
@@ -2496,7 +2496,7 @@ void Vsd::initParameters()
   parameters_[VSD_SL_51 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_SL_51 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_SL_51 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_SL_51 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_SL_51 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_SL_51 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_SL_51 - VSD_BEGIN].code                                        = 0;
   // Действие контроллера SL Danfoss 13-52 Не используется в проекте, только при конфигурировании
@@ -2507,7 +2507,7 @@ void Vsd::initParameters()
   parameters_[VSD_SL_52 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_SL_52 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_SL_52 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_SL_52 - VSD_BEGIN].max                                         = 10000000.0;
+  parameters_[VSD_SL_52 - VSD_BEGIN].max                                         = 999999.0;
   parameters_[VSD_SL_52 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_SL_52 - VSD_BEGIN].code                                        = 0;
   // Частота коммутации Danfoss 14-01 Используется в проекте Novomet 0х003C IREG_FREQ_PWM
@@ -2518,7 +2518,7 @@ void Vsd::initParameters()
   parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].value.float_t                 = 1.0;
   parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].max                           = 10000000.0;
+  parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].max                           = 999999.0;
   parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].def                           = 1.0;
   parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].code                          = 0;
   // Сверхмодуляция Danfoss 14-03 Не используется в проекте, только при конфигурировании
@@ -2529,7 +2529,7 @@ void Vsd::initParameters()
   parameters_[VSD_OVERMODULATION - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_OVERMODULATION - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_OVERMODULATION - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_OVERMODULATION - VSD_BEGIN].max                                = 10000000.0;
+  parameters_[VSD_OVERMODULATION - VSD_BEGIN].max                                = 999999.0;
   parameters_[VSD_OVERMODULATION - VSD_BEGIN].def                                = 0;
   parameters_[VSD_OVERMODULATION - VSD_BEGIN].code                               = 0;
   // Компенсация задержки Danfoss 14-06 Не используется в проекте, только при конфигурировании
@@ -2540,7 +2540,7 @@ void Vsd::initParameters()
   parameters_[VSD_DEAD_TIME_COMPENSATION - VSD_BEGIN].validity                   = VALIDITY_ERROR;
   parameters_[VSD_DEAD_TIME_COMPENSATION - VSD_BEGIN].value.float_t              = 0;
   parameters_[VSD_DEAD_TIME_COMPENSATION - VSD_BEGIN].min                        = 0.0;
-  parameters_[VSD_DEAD_TIME_COMPENSATION - VSD_BEGIN].max                        = 10000000.0;
+  parameters_[VSD_DEAD_TIME_COMPENSATION - VSD_BEGIN].max                        = 999999.0;
   parameters_[VSD_DEAD_TIME_COMPENSATION - VSD_BEGIN].def                        = 0;
   parameters_[VSD_DEAD_TIME_COMPENSATION - VSD_BEGIN].code                       = 0;
   // Отказ питания Danfoss 14-10 Не используется в проекте, только при конфигурировании
@@ -2551,7 +2551,7 @@ void Vsd::initParameters()
   parameters_[VSD_MAINS_FAILURE - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_MAINS_FAILURE - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_MAINS_FAILURE - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_MAINS_FAILURE - VSD_BEGIN].max                                 = 10000000.0;
+  parameters_[VSD_MAINS_FAILURE - VSD_BEGIN].max                                 = 999999.0;
   parameters_[VSD_MAINS_FAILURE - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_MAINS_FAILURE - VSD_BEGIN].code                                = 0;
   // Напряжение сети при отказе питания Danfoss 14-11 Не используется в проекте, только при конфигурировании
@@ -2562,7 +2562,7 @@ void Vsd::initParameters()
   parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].value.float_t               = 0;
   parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].min                         = 0.0;
-  parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].max                         = 10000000.0;
+  parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].max                         = 999999.0;
   parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].def                         = 0;
   parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].code                        = 0;
   // Режим сброса Danfoss 14-20 Не используется в проекте, только при конфигурировании
@@ -2573,7 +2573,7 @@ void Vsd::initParameters()
   parameters_[VSD_RESET_MODE - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_RESET_MODE - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_RESET_MODE - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_RESET_MODE - VSD_BEGIN].max                                    = 10000000.0;
+  parameters_[VSD_RESET_MODE - VSD_BEGIN].max                                    = 999999.0;
   parameters_[VSD_RESET_MODE - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_RESET_MODE - VSD_BEGIN].code                                   = 0;
   // Время автоматического перезапуск Danfoss 14-21 Не используется в проекте, только при конфигурировании
@@ -2584,7 +2584,7 @@ void Vsd::initParameters()
   parameters_[VSD_AUTOSTART_TIME - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_AUTOSTART_TIME - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_AUTOSTART_TIME - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_AUTOSTART_TIME - VSD_BEGIN].max                                = 10000000.0;
+  parameters_[VSD_AUTOSTART_TIME - VSD_BEGIN].max                                = 999999.0;
   parameters_[VSD_AUTOSTART_TIME - VSD_BEGIN].def                                = 0;
   parameters_[VSD_AUTOSTART_TIME - VSD_BEGIN].code                               = 0;
   // Задержка перед выключение при пределе тока Danfoss 14-24 Не используется в проекте, только при конфигурировании
@@ -2595,7 +2595,7 @@ void Vsd::initParameters()
   parameters_[VSD_DELAY_CURRENT_LIMIT - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_DELAY_CURRENT_LIMIT - VSD_BEGIN].value.float_t                 = 0;
   parameters_[VSD_DELAY_CURRENT_LIMIT - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_DELAY_CURRENT_LIMIT - VSD_BEGIN].max                           = 10000000.0;
+  parameters_[VSD_DELAY_CURRENT_LIMIT - VSD_BEGIN].max                           = 999999.0;
   parameters_[VSD_DELAY_CURRENT_LIMIT - VSD_BEGIN].def                           = 0;
   parameters_[VSD_DELAY_CURRENT_LIMIT - VSD_BEGIN].code                          = 0;
   // Задержка перед выключение при пределе моменте Danfoss 14-25 Не используется в проекте, только при конфигурировании
@@ -2606,7 +2606,7 @@ void Vsd::initParameters()
   parameters_[VSD_DELAY_TORQUE_LIMIT - VSD_BEGIN].validity                       = VALIDITY_ERROR;
   parameters_[VSD_DELAY_TORQUE_LIMIT - VSD_BEGIN].value.float_t                  = 0;
   parameters_[VSD_DELAY_TORQUE_LIMIT - VSD_BEGIN].min                            = 0.0;
-  parameters_[VSD_DELAY_TORQUE_LIMIT - VSD_BEGIN].max                            = 10000000.0;
+  parameters_[VSD_DELAY_TORQUE_LIMIT - VSD_BEGIN].max                            = 999999.0;
   parameters_[VSD_DELAY_TORQUE_LIMIT - VSD_BEGIN].def                            = 0;
   parameters_[VSD_DELAY_TORQUE_LIMIT - VSD_BEGIN].code                           = 0;
   // Время фильтра регулятора тока Danfoss 14-32 Используется в проекте, CalcParam()
@@ -2617,7 +2617,7 @@ void Vsd::initParameters()
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].validity                   = VALIDITY_ERROR;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].value.float_t              = 0;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].min                        = 0.0;
-  parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].max                        = 10000000.0;
+  parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].max                        = 999999.0;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].def                        = 0;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].code                       = 0;
   // Компенсация напряжения постоянного тока Danfoss 14-51 Не используется в проекте, только при конфигурировании
@@ -2628,7 +2628,7 @@ void Vsd::initParameters()
   parameters_[VSD_DC_COMPENSATION - VSD_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[VSD_DC_COMPENSATION - VSD_BEGIN].value.float_t                     = 0;
   parameters_[VSD_DC_COMPENSATION - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_DC_COMPENSATION - VSD_BEGIN].max                               = 10000000.0;
+  parameters_[VSD_DC_COMPENSATION - VSD_BEGIN].max                               = 999999.0;
   parameters_[VSD_DC_COMPENSATION - VSD_BEGIN].def                               = 0;
   parameters_[VSD_DC_COMPENSATION - VSD_BEGIN].code                              = 0;
   // Управление вентилятором Danfoss 14-52 Не используется в проекте, только при конфигурировании
@@ -2639,7 +2639,7 @@ void Vsd::initParameters()
   parameters_[VSD_FAN_CONTROL - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_FAN_CONTROL - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_FAN_CONTROL - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_FAN_CONTROL - VSD_BEGIN].max                                   = 10000000.0;
+  parameters_[VSD_FAN_CONTROL - VSD_BEGIN].max                                   = 999999.0;
   parameters_[VSD_FAN_CONTROL - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_FAN_CONTROL - VSD_BEGIN].code                                  = 0;
   // Выходной фильтр Danfoss 14-55 Используется в проекте, интерфейс
@@ -2650,7 +2650,7 @@ void Vsd::initParameters()
   parameters_[VSD_OUT_FILTER - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_OUT_FILTER - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_OUT_FILTER - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_OUT_FILTER - VSD_BEGIN].max                                    = 10000000.0;
+  parameters_[VSD_OUT_FILTER - VSD_BEGIN].max                                    = 999999.0;
   parameters_[VSD_OUT_FILTER - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_OUT_FILTER - VSD_BEGIN].code                                   = 0;
   // Сброс аварий Danfoss 14-90 Не используется в проекте, только при конфигурировании
@@ -2661,7 +2661,7 @@ void Vsd::initParameters()
   parameters_[VSD_FAIL_RESET - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_FAIL_RESET - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_FAIL_RESET - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_FAIL_RESET - VSD_BEGIN].max                                    = 10000000.0;
+  parameters_[VSD_FAIL_RESET - VSD_BEGIN].max                                    = 999999.0;
   parameters_[VSD_FAIL_RESET - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_FAIL_RESET - VSD_BEGIN].code                                   = 0;
   // Версия ПО ЧРП Danfoss 15-43 Используется в проекте
@@ -2672,7 +2672,7 @@ void Vsd::initParameters()
   parameters_[VSD_SOFT_VERSION - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_SOFT_VERSION - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_SOFT_VERSION - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_SOFT_VERSION - VSD_BEGIN].max                                  = 10000000.0;
+  parameters_[VSD_SOFT_VERSION - VSD_BEGIN].max                                  = 999999.0;
   parameters_[VSD_SOFT_VERSION - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_SOFT_VERSION - VSD_BEGIN].code                                 = 0;
   // Командное слово Danfoss 16-00 Используется в проекте
@@ -2683,7 +2683,7 @@ void Vsd::initParameters()
   parameters_[VSD_COMMAND_WORD - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_COMMAND_WORD - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_COMMAND_WORD - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_COMMAND_WORD - VSD_BEGIN].max                                  = 10000000.0;
+  parameters_[VSD_COMMAND_WORD - VSD_BEGIN].max                                  = 999999.0;
   parameters_[VSD_COMMAND_WORD - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_COMMAND_WORD - VSD_BEGIN].code                                 = 0;
   // Слово состояния Danfoss 16-03 Активно используется в проекте
@@ -2694,7 +2694,7 @@ void Vsd::initParameters()
   parameters_[VSD_STATUS_WORD - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_STATUS_WORD - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_STATUS_WORD - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_STATUS_WORD - VSD_BEGIN].max                                   = 10000000.0;
+  parameters_[VSD_STATUS_WORD - VSD_BEGIN].max                                   = 999999.0;
   parameters_[VSD_STATUS_WORD - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_STATUS_WORD - VSD_BEGIN].code                                  = 0;
   // Выходной ток средний
@@ -2705,7 +2705,7 @@ void Vsd::initParameters()
   parameters_[VSD_OUT_CURRENT_MOTOR - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_OUT_CURRENT_MOTOR - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_OUT_CURRENT_MOTOR - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_OUT_CURRENT_MOTOR - VSD_BEGIN].max                             = 10000000.0;
+  parameters_[VSD_OUT_CURRENT_MOTOR - VSD_BEGIN].max                             = 999999.0;
   parameters_[VSD_OUT_CURRENT_MOTOR - VSD_BEGIN].def                             = 0;
   parameters_[VSD_OUT_CURRENT_MOTOR - VSD_BEGIN].code                            = 0;
   // Температура радиатора Danfoss 16-34 Используется в проекте
@@ -2716,7 +2716,7 @@ void Vsd::initParameters()
   parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].value.float_t                = 0;
   parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].max                          = 10000000.0;
+  parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].max                          = 999999.0;
   parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].def                          = 0;
   parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].code                         = 0;
   // Температура платы управления Danfoss 16-39 Используется в проекте
@@ -2727,7 +2727,7 @@ void Vsd::initParameters()
   parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].value.float_t                 = 0;
   parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].max                           = 10000000.0;
+  parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].max                           = 999999.0;
   parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].def                           = 0;
   parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].code                          = 0;
   // Цифровоый вход ПЧ Danfoss 16-60 Используется в проекте
@@ -2738,7 +2738,7 @@ void Vsd::initParameters()
   parameters_[VSD_DI_VSD - VSD_BEGIN].validity                                   = VALIDITY_ERROR;
   parameters_[VSD_DI_VSD - VSD_BEGIN].value.float_t                              = 0;
   parameters_[VSD_DI_VSD - VSD_BEGIN].min                                        = 0.0;
-  parameters_[VSD_DI_VSD - VSD_BEGIN].max                                        = 10000000.0;
+  parameters_[VSD_DI_VSD - VSD_BEGIN].max                                        = 999999.0;
   parameters_[VSD_DI_VSD - VSD_BEGIN].def                                        = 0;
   parameters_[VSD_DI_VSD - VSD_BEGIN].code                                       = 0;
   // Номер последней аварии и предупреждения Danfoss 16-87 Используется в проекте
@@ -2749,7 +2749,7 @@ void Vsd::initParameters()
   parameters_[VSD_LAST_ALARM - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_LAST_ALARM - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_LAST_ALARM - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_LAST_ALARM - VSD_BEGIN].max                                    = 10000000.0;
+  parameters_[VSD_LAST_ALARM - VSD_BEGIN].max                                    = 999999.0;
   parameters_[VSD_LAST_ALARM - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_LAST_ALARM - VSD_BEGIN].code                                   = 0;
   // Слово Аварии 1 Danfoss 16-90 Используется в проекте
@@ -2760,7 +2760,7 @@ void Vsd::initParameters()
   parameters_[VSD_ALARM_WORD_1 - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_ALARM_WORD_1 - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_ALARM_WORD_1 - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_ALARM_WORD_1 - VSD_BEGIN].max                                  = 10000000.0;
+  parameters_[VSD_ALARM_WORD_1 - VSD_BEGIN].max                                  = 999999.0;
   parameters_[VSD_ALARM_WORD_1 - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_ALARM_WORD_1 - VSD_BEGIN].code                                 = 0;
   // Слово Аварии 2 Danfoss 16-91 Используется в проекте
@@ -2771,7 +2771,7 @@ void Vsd::initParameters()
   parameters_[VSD_ALARM_WORD_2 - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_ALARM_WORD_2 - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_ALARM_WORD_2 - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_ALARM_WORD_2 - VSD_BEGIN].max                                  = 10000000.0;
+  parameters_[VSD_ALARM_WORD_2 - VSD_BEGIN].max                                  = 999999.0;
   parameters_[VSD_ALARM_WORD_2 - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_ALARM_WORD_2 - VSD_BEGIN].code                                 = 0;
   // Слово предупреждения 1 Danfoss 16-92 Используется в проекте
@@ -2782,7 +2782,7 @@ void Vsd::initParameters()
   parameters_[VSD_WARNING_WORD_1 - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_WARNING_WORD_1 - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_WARNING_WORD_1 - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_WARNING_WORD_1 - VSD_BEGIN].max                                = 10000000.0;
+  parameters_[VSD_WARNING_WORD_1 - VSD_BEGIN].max                                = 999999.0;
   parameters_[VSD_WARNING_WORD_1 - VSD_BEGIN].def                                = 0;
   parameters_[VSD_WARNING_WORD_1 - VSD_BEGIN].code                               = 0;
   // Слово предупреждения 2 Danfoss 16-93 Используется в проекте
@@ -2793,7 +2793,7 @@ void Vsd::initParameters()
   parameters_[VSD_WARNING_WORD_2 - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_WARNING_WORD_2 - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_WARNING_WORD_2 - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_WARNING_WORD_2 - VSD_BEGIN].max                                = 10000000.0;
+  parameters_[VSD_WARNING_WORD_2 - VSD_BEGIN].max                                = 999999.0;
   parameters_[VSD_WARNING_WORD_2 - VSD_BEGIN].def                                = 0;
   parameters_[VSD_WARNING_WORD_2 - VSD_BEGIN].code                               = 0;
   // Время применения высокого пускового момента Danfoss 30-20 Не используется в проекте, только при конфигурировании
@@ -2804,7 +2804,7 @@ void Vsd::initParameters()
   parameters_[VSD_HIGH_START_TORQUE_TIME - VSD_BEGIN].validity                   = VALIDITY_ERROR;
   parameters_[VSD_HIGH_START_TORQUE_TIME - VSD_BEGIN].value.float_t              = 0;
   parameters_[VSD_HIGH_START_TORQUE_TIME - VSD_BEGIN].min                        = 0.0;
-  parameters_[VSD_HIGH_START_TORQUE_TIME - VSD_BEGIN].max                        = 10000000.0;
+  parameters_[VSD_HIGH_START_TORQUE_TIME - VSD_BEGIN].max                        = 999999.0;
   parameters_[VSD_HIGH_START_TORQUE_TIME - VSD_BEGIN].def                        = 0;
   parameters_[VSD_HIGH_START_TORQUE_TIME - VSD_BEGIN].code                       = 0;
   // Пусковой ток в % от номинального Danfoss 30-21 Не используется в проекте, только при конфигурировании
@@ -2815,7 +2815,7 @@ void Vsd::initParameters()
   parameters_[VSD_HIGH_START_TORQUE_CURRENT - VSD_BEGIN].validity                = VALIDITY_ERROR;
   parameters_[VSD_HIGH_START_TORQUE_CURRENT - VSD_BEGIN].value.float_t           = 0;
   parameters_[VSD_HIGH_START_TORQUE_CURRENT - VSD_BEGIN].min                     = 0.0;
-  parameters_[VSD_HIGH_START_TORQUE_CURRENT - VSD_BEGIN].max                     = 10000000.0;
+  parameters_[VSD_HIGH_START_TORQUE_CURRENT - VSD_BEGIN].max                     = 999999.0;
   parameters_[VSD_HIGH_START_TORQUE_CURRENT - VSD_BEGIN].def                     = 0;
   parameters_[VSD_HIGH_START_TORQUE_CURRENT - VSD_BEGIN].code                    = 0;
   // Защита блокировки ротора Danfoss 30-22 Не используется в проекте, только при конфигурировании
@@ -2826,7 +2826,7 @@ void Vsd::initParameters()
   parameters_[VSD_LOCK_ROTOR_PROTECTION - VSD_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[VSD_LOCK_ROTOR_PROTECTION - VSD_BEGIN].value.float_t               = 0;
   parameters_[VSD_LOCK_ROTOR_PROTECTION - VSD_BEGIN].min                         = 0.0;
-  parameters_[VSD_LOCK_ROTOR_PROTECTION - VSD_BEGIN].max                         = 10000000.0;
+  parameters_[VSD_LOCK_ROTOR_PROTECTION - VSD_BEGIN].max                         = 999999.0;
   parameters_[VSD_LOCK_ROTOR_PROTECTION - VSD_BEGIN].def                         = 0;
   parameters_[VSD_LOCK_ROTOR_PROTECTION - VSD_BEGIN].code                        = 0;
   // Время задержки аварии блокировки ротора Danfoss 30-23 Не используется в проекте, только при конфигурировании
@@ -2837,7 +2837,7 @@ void Vsd::initParameters()
   parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].value.float_t                     = 0;
   parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].max                               = 10000000.0;
+  parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].max                               = 999999.0;
   parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].def                               = 0;
   parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].code                              = 0;
   // Темп набора частоты
@@ -2870,7 +2870,7 @@ void Vsd::initParameters()
   parameters_[VSD_RADIATOR_TEMPERATURE_1 - VSD_BEGIN].validity                   = VALIDITY_ERROR;
   parameters_[VSD_RADIATOR_TEMPERATURE_1 - VSD_BEGIN].value.float_t              = 0;
   parameters_[VSD_RADIATOR_TEMPERATURE_1 - VSD_BEGIN].min                        = 0.0;
-  parameters_[VSD_RADIATOR_TEMPERATURE_1 - VSD_BEGIN].max                        = 10000000.0;
+  parameters_[VSD_RADIATOR_TEMPERATURE_1 - VSD_BEGIN].max                        = 999999.0;
   parameters_[VSD_RADIATOR_TEMPERATURE_1 - VSD_BEGIN].def                        = 0;
   parameters_[VSD_RADIATOR_TEMPERATURE_1 - VSD_BEGIN].code                       = 0;
   // 
@@ -2881,7 +2881,7 @@ void Vsd::initParameters()
   parameters_[VSD_CONTROL_TEMPERATURE_1 - VSD_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[VSD_CONTROL_TEMPERATURE_1 - VSD_BEGIN].value.float_t               = 0;
   parameters_[VSD_CONTROL_TEMPERATURE_1 - VSD_BEGIN].min                         = 0.0;
-  parameters_[VSD_CONTROL_TEMPERATURE_1 - VSD_BEGIN].max                         = 10000000.0;
+  parameters_[VSD_CONTROL_TEMPERATURE_1 - VSD_BEGIN].max                         = 999999.0;
   parameters_[VSD_CONTROL_TEMPERATURE_1 - VSD_BEGIN].def                         = 0;
   parameters_[VSD_CONTROL_TEMPERATURE_1 - VSD_BEGIN].code                        = 0;
   // Состояние работы ЧРП Эталон, 0 останов 1 в работе
