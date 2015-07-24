@@ -1220,7 +1220,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].min      = 0.0;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].max      = 10000000.0;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].max      = 999999.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].def      = 0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].code     = 13;
   // Условие АПВ уставка
@@ -1231,7 +1231,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].min   = 0.0;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].max   = 10000000.0;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].max   = 999999.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].def   = 0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].code  = 13;
   // Уставка параметр защиты
@@ -1968,7 +1968,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].max                         = 999999.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].def                         = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].code                        = 13;
   // Параметр запрещающий запуск
@@ -1979,7 +1979,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].validity                 = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].value.float_t            = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].min                      = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].max                      = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].max                      = 999999.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].def                      = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].code                     = 0;
   // Задержка активации уставка
@@ -1990,7 +1990,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].max                  = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].max                  = 999999.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].code                 = 0;
   // Задержка срабатывания уставка
@@ -2001,7 +2001,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].value.float_t         = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].max                   = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].max                   = 999999.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].def                   = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].code                  = 0;
   // Задержка АПВ уставка
@@ -2012,7 +2012,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].value.float_t      = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].max                = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].max                = 999999.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].def                = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].code               = 0;
   // Количество АПВ уставка
@@ -2023,7 +2023,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].value.float_t      = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].max                = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].max                = 999999.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].def                = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].code               = 0;
   // Автосброс счетчика АПВ
@@ -2034,7 +2034,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].value.float_t      = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].max                = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].max                = 999999.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].def                = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].code               = 0;
   // Уставка срабатывания защиты
@@ -2045,7 +2045,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT - CCS_BEGIN].value.float_t      = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT - CCS_BEGIN].max                = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT - CCS_BEGIN].max                = 999999.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT - CCS_BEGIN].def                = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT - CCS_BEGIN].code               = 13;
   // Условие АПВ уставка
@@ -2056,7 +2056,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].value.float_t   = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].min             = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].max             = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].max             = 999999.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].def             = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].code            = 0;
   // Уставка параметр защиты
@@ -2067,7 +2067,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].max                    = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].max                    = 999999.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].def                    = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].code                   = 0;
   // Текущий параметр Флаг что защита в АПВ
@@ -2078,7 +2078,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].value.float_t       = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].min                 = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].max                 = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].max                 = 999999.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].def                 = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].code                = 0;
   // Текущий параметр состояние автомата
@@ -2089,7 +2089,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].max                        = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].max                        = 999999.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].def                        = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].code                       = 0;
   // Текущий параметр Фиксированное время
@@ -2100,7 +2100,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].max                         = 999999.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].def                         = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].code                        = 0;
   // Текущий параметр Количество АПВ
@@ -2111,7 +2111,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].value.float_t      = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].max                = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].max                = 999999.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].def                = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].code               = 0;
   // Текущий параметр Время первого АПВ
@@ -2122,7 +2122,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].validity      = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].min           = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].max           = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].max           = 999999.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].def           = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].code          = 0;
   // Защита "Рассинхронизация ПВЭД"
@@ -2133,7 +2133,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].value.float_t         = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].max                   = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].max                   = 999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].def                   = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].code                  = 13;
   // Параметр запрещающий запуск
@@ -2144,7 +2144,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].value.float_t      = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].max                = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].max                = 999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].def                = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].code               = 0;
   // Задержка активации уставка
@@ -2155,7 +2155,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY - CCS_BEGIN].value.float_t  = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY - CCS_BEGIN].min            = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY - CCS_BEGIN].max            = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY - CCS_BEGIN].max            = 999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY - CCS_BEGIN].def            = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY - CCS_BEGIN].code           = 0;
   // Задержка срабатывания уставка
@@ -2166,7 +2166,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY - CCS_BEGIN].value.float_t   = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY - CCS_BEGIN].min             = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY - CCS_BEGIN].max             = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY - CCS_BEGIN].max             = 999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY - CCS_BEGIN].def             = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY - CCS_BEGIN].code            = 0;
   // Задержка АПВ уставка
@@ -2177,7 +2177,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY - CCS_BEGIN].validity     = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY - CCS_BEGIN].min          = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY - CCS_BEGIN].max          = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY - CCS_BEGIN].max          = 999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY - CCS_BEGIN].def          = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY - CCS_BEGIN].code         = 0;
   // Количество АПВ уставка
@@ -2188,7 +2188,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT - CCS_BEGIN].validity     = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT - CCS_BEGIN].min          = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT - CCS_BEGIN].max          = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT - CCS_BEGIN].max          = 999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT - CCS_BEGIN].def          = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT - CCS_BEGIN].code         = 0;
   // Автосброс счетчика АПВ
@@ -2199,7 +2199,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET - CCS_BEGIN].validity     = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET - CCS_BEGIN].min          = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET - CCS_BEGIN].max          = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET - CCS_BEGIN].max          = 999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET - CCS_BEGIN].def          = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET - CCS_BEGIN].code         = 0;
   // Уставка срабатывания защиты
@@ -2210,7 +2210,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT - CCS_BEGIN].validity     = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT - CCS_BEGIN].min          = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT - CCS_BEGIN].max          = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT - CCS_BEGIN].max          = 999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT - CCS_BEGIN].def          = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT - CCS_BEGIN].code         = 0;
   // Условие АПВ уставка
@@ -2221,7 +2221,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT - CCS_BEGIN].validity  = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT - CCS_BEGIN].min       = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT - CCS_BEGIN].max       = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT - CCS_BEGIN].max       = 999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT - CCS_BEGIN].def       = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT - CCS_BEGIN].code      = 0;
   // Уставка параметр защиты
@@ -2232,7 +2232,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].value.float_t    = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].max              = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].max              = 999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].def              = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].code             = 0;
   // Уставка параметр защиты
@@ -2243,7 +2243,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].validity      = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].min           = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].max           = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].max           = 999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].def           = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].code          = 0;
   // Текущий параметр состояние автомата
@@ -2254,7 +2254,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].max                  = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].max                  = 999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].code                 = 0;
   // Текущий параметр Фиксированное время
@@ -2265,7 +2265,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].value.float_t         = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].max                   = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].max                   = 999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].def                   = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].code                  = 0;
   // Текущий параметр Количество АПВ
@@ -2276,7 +2276,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].validity     = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].min          = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].max          = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].max          = 999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].def          = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].code         = 0;
   // Текущий параметр Время первого АПВ
@@ -2287,7 +2287,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].min     = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].max     = 10000000.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].max     = 999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].def     = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].code    = 0;
   // Защита "Давление на приёме насоса"
@@ -2793,7 +2793,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].code                      = 0;
   // Параметр запрещающий запуск
@@ -2804,7 +2804,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].max                    = 10000000.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].max                    = 999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].def                    = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].code                   = 0;
   // Задержка активации уставка
@@ -2815,7 +2815,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].value.float_t      = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].max                = 10000000.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].max                = 999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].def                = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].code               = 0;
   // Задержка срабатывания уставка
@@ -2826,7 +2826,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].value.float_t       = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].min                 = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].max                 = 10000000.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].max                 = 999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].def                 = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].code                = 0;
   // Задержка АПВ уставка
@@ -2837,7 +2837,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].value.float_t    = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].max              = 10000000.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].max              = 999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].def              = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].code             = 0;
   // Количество АПВ уставка
@@ -2848,7 +2848,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_LIMIT - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_LIMIT - CCS_BEGIN].value.float_t    = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_LIMIT - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_LIMIT - CCS_BEGIN].max              = 10000000.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_LIMIT - CCS_BEGIN].max              = 999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_LIMIT - CCS_BEGIN].def              = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_LIMIT - CCS_BEGIN].code             = 0;
   // Автосброс счетчика АПВ
@@ -2859,7 +2859,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].value.float_t    = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].max              = 10000000.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].max              = 999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].def              = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].code             = 0;
   // Уставка срабатывания защиты
@@ -2870,7 +2870,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT - CCS_BEGIN].value.float_t    = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT - CCS_BEGIN].max              = 10000000.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT - CCS_BEGIN].max              = 999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT - CCS_BEGIN].def              = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT - CCS_BEGIN].code             = 0;
   // Условие АПВ уставка
@@ -2881,7 +2881,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].validity      = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].min           = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].max           = 10000000.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].max           = 999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].def           = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].code          = 0;
   // Уставка параметр защиты
@@ -2892,7 +2892,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].max                  = 10000000.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].max                  = 999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].code                 = 0;
   // Уставка параметр защиты
@@ -2903,7 +2903,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].value.float_t     = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].min               = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].max               = 10000000.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].max               = 999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].def               = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].code              = 0;
   // Текущий параметр состояние автомата
@@ -2914,7 +2914,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].validity                 = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].value.float_t            = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].min                      = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].max                      = 10000000.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].max                      = 999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].def                      = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].code                     = 0;
   // Текущий параметр Фиксированное время
@@ -2925,7 +2925,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].code                      = 0;
   // Текущий параметр Количество АПВ
@@ -2936,7 +2936,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].value.float_t    = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].max              = 10000000.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].max              = 999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].def              = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].code             = 0;
   // Текущий параметр Время первого АПВ
@@ -2947,7 +2947,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].min         = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].max         = 10000000.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].max         = 999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].def         = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].code        = 0;
   // Защиты Аналоговый вход 1
@@ -2958,7 +2958,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_1_MODE - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_MODE - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_PROT_AI_1_MODE - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_PROT_AI_1_MODE - CCS_BEGIN].max                                = 10000000.0;
+  parameters_[CCS_PROT_AI_1_MODE - CCS_BEGIN].max                                = 999999.0;
   parameters_[CCS_PROT_AI_1_MODE - CCS_BEGIN].def                                = 0;
   parameters_[CCS_PROT_AI_1_MODE - CCS_BEGIN].code                               = 0;
   // Параметр запрещающий запуск
@@ -2969,7 +2969,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_1_PREVENT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_PREVENT - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_PROT_AI_1_PREVENT - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_PROT_AI_1_PREVENT - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_PROT_AI_1_PREVENT - CCS_BEGIN].max                             = 999999.0;
   parameters_[CCS_PROT_AI_1_PREVENT - CCS_BEGIN].def                             = 0;
   parameters_[CCS_PROT_AI_1_PREVENT - CCS_BEGIN].code                            = 0;
   // Задержка активации уставка
@@ -2980,7 +2980,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_1_ACTIV_DELAY - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_ACTIV_DELAY - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_PROT_AI_1_ACTIV_DELAY - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_AI_1_ACTIV_DELAY - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_PROT_AI_1_ACTIV_DELAY - CCS_BEGIN].max                         = 999999.0;
   parameters_[CCS_PROT_AI_1_ACTIV_DELAY - CCS_BEGIN].def                         = 0;
   parameters_[CCS_PROT_AI_1_ACTIV_DELAY - CCS_BEGIN].code                        = 0;
   // Задержка срабатывания уставка
@@ -2991,7 +2991,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_1_TRIP_DELAY - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_TRIP_DELAY - CCS_BEGIN].value.float_t                = 0;
   parameters_[CCS_PROT_AI_1_TRIP_DELAY - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_PROT_AI_1_TRIP_DELAY - CCS_BEGIN].max                          = 10000000.0;
+  parameters_[CCS_PROT_AI_1_TRIP_DELAY - CCS_BEGIN].max                          = 999999.0;
   parameters_[CCS_PROT_AI_1_TRIP_DELAY - CCS_BEGIN].def                          = 0;
   parameters_[CCS_PROT_AI_1_TRIP_DELAY - CCS_BEGIN].code                         = 0;
   // Задержка АПВ уставка
@@ -3002,7 +3002,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_1_RESTART_DELAY - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_RESTART_DELAY - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_AI_1_RESTART_DELAY - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_1_RESTART_DELAY - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_AI_1_RESTART_DELAY - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_AI_1_RESTART_DELAY - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_AI_1_RESTART_DELAY - CCS_BEGIN].code                      = 0;
   // Количество АПВ уставка
@@ -3013,7 +3013,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_1_RESTART_LIMIT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_RESTART_LIMIT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_AI_1_RESTART_LIMIT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_1_RESTART_LIMIT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_AI_1_RESTART_LIMIT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_AI_1_RESTART_LIMIT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_AI_1_RESTART_LIMIT - CCS_BEGIN].code                      = 0;
   // Автосброс счетчика АПВ
@@ -3024,7 +3024,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_1_RESTART_RESET - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_RESTART_RESET - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_AI_1_RESTART_RESET - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_1_RESTART_RESET - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_AI_1_RESTART_RESET - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_AI_1_RESTART_RESET - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_AI_1_RESTART_RESET - CCS_BEGIN].code                      = 0;
   // Уставка срабатывания защиты
@@ -3035,7 +3035,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_1_TRIP_SETPOINT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_TRIP_SETPOINT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_AI_1_TRIP_SETPOINT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_1_TRIP_SETPOINT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_AI_1_TRIP_SETPOINT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_AI_1_TRIP_SETPOINT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_AI_1_TRIP_SETPOINT - CCS_BEGIN].code                      = 0;
   // Условие АПВ уставка
@@ -3046,7 +3046,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_1_RESTART_SETPOINT - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_RESTART_SETPOINT - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_PROT_AI_1_RESTART_SETPOINT - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_PROT_AI_1_RESTART_SETPOINT - CCS_BEGIN].max                    = 10000000.0;
+  parameters_[CCS_PROT_AI_1_RESTART_SETPOINT - CCS_BEGIN].max                    = 999999.0;
   parameters_[CCS_PROT_AI_1_RESTART_SETPOINT - CCS_BEGIN].def                    = 0;
   parameters_[CCS_PROT_AI_1_RESTART_SETPOINT - CCS_BEGIN].code                   = 0;
   // Уставка параметр защиты
@@ -3057,7 +3057,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_1_PARAMETER - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_PARAMETER - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_PROT_AI_1_PARAMETER - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_PROT_AI_1_PARAMETER - CCS_BEGIN].max                           = 10000000.0;
+  parameters_[CCS_PROT_AI_1_PARAMETER - CCS_BEGIN].max                           = 999999.0;
   parameters_[CCS_PROT_AI_1_PARAMETER - CCS_BEGIN].def                           = 0;
   parameters_[CCS_PROT_AI_1_PARAMETER - CCS_BEGIN].code                          = 0;
   // Уставка параметр защиты
@@ -3068,7 +3068,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_1_RESTART_FLAG - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_RESTART_FLAG - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_PROT_AI_1_RESTART_FLAG - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_PROT_AI_1_RESTART_FLAG - CCS_BEGIN].max                        = 10000000.0;
+  parameters_[CCS_PROT_AI_1_RESTART_FLAG - CCS_BEGIN].max                        = 999999.0;
   parameters_[CCS_PROT_AI_1_RESTART_FLAG - CCS_BEGIN].def                        = 0;
   parameters_[CCS_PROT_AI_1_RESTART_FLAG - CCS_BEGIN].code                       = 0;
   // Текущий параметр состояние автомата
@@ -3079,7 +3079,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_1_STATE - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_STATE - CCS_BEGIN].value.float_t                     = 0;
   parameters_[CCS_PROT_AI_1_STATE - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_PROT_AI_1_STATE - CCS_BEGIN].max                               = 10000000.0;
+  parameters_[CCS_PROT_AI_1_STATE - CCS_BEGIN].max                               = 999999.0;
   parameters_[CCS_PROT_AI_1_STATE - CCS_BEGIN].def                               = 0;
   parameters_[CCS_PROT_AI_1_STATE - CCS_BEGIN].code                              = 0;
   // Текущий параметр Фиксированное время
@@ -3090,7 +3090,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_1_TIME - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_TIME - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_PROT_AI_1_TIME - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_PROT_AI_1_TIME - CCS_BEGIN].max                                = 10000000.0;
+  parameters_[CCS_PROT_AI_1_TIME - CCS_BEGIN].max                                = 999999.0;
   parameters_[CCS_PROT_AI_1_TIME - CCS_BEGIN].def                                = 0;
   parameters_[CCS_PROT_AI_1_TIME - CCS_BEGIN].code                               = 0;
   // Текущий параметр Количество АПВ
@@ -3101,7 +3101,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_1_RESTART_COUNT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_RESTART_COUNT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_AI_1_RESTART_COUNT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_1_RESTART_COUNT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_AI_1_RESTART_COUNT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_AI_1_RESTART_COUNT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_AI_1_RESTART_COUNT - CCS_BEGIN].code                      = 0;
   // Текущий параметр Время первого АПВ
@@ -3112,7 +3112,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_1_RESTART_FIRST_TIME - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_AI_1_RESTART_FIRST_TIME - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_AI_1_RESTART_FIRST_TIME - CCS_BEGIN].max                  = 10000000.0;
+  parameters_[CCS_PROT_AI_1_RESTART_FIRST_TIME - CCS_BEGIN].max                  = 999999.0;
   parameters_[CCS_PROT_AI_1_RESTART_FIRST_TIME - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_AI_1_RESTART_FIRST_TIME - CCS_BEGIN].code                 = 0;
   // Защиты Аналоговый вход 2
@@ -3123,7 +3123,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_2_MODE - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_MODE - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_PROT_AI_2_MODE - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_PROT_AI_2_MODE - CCS_BEGIN].max                                = 10000000.0;
+  parameters_[CCS_PROT_AI_2_MODE - CCS_BEGIN].max                                = 999999.0;
   parameters_[CCS_PROT_AI_2_MODE - CCS_BEGIN].def                                = 0;
   parameters_[CCS_PROT_AI_2_MODE - CCS_BEGIN].code                               = 0;
   // Параметр запрещающий запуск
@@ -3134,7 +3134,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_2_PREVENT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_PREVENT - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_PROT_AI_2_PREVENT - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_PROT_AI_2_PREVENT - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_PROT_AI_2_PREVENT - CCS_BEGIN].max                             = 999999.0;
   parameters_[CCS_PROT_AI_2_PREVENT - CCS_BEGIN].def                             = 0;
   parameters_[CCS_PROT_AI_2_PREVENT - CCS_BEGIN].code                            = 0;
   // Задержка активации уставка
@@ -3145,7 +3145,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_2_ACTIV_DELAY - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_ACTIV_DELAY - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_PROT_AI_2_ACTIV_DELAY - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_AI_2_ACTIV_DELAY - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_PROT_AI_2_ACTIV_DELAY - CCS_BEGIN].max                         = 999999.0;
   parameters_[CCS_PROT_AI_2_ACTIV_DELAY - CCS_BEGIN].def                         = 0;
   parameters_[CCS_PROT_AI_2_ACTIV_DELAY - CCS_BEGIN].code                        = 0;
   // Задержка срабатывания уставка
@@ -3156,7 +3156,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_2_TRIP_DELAY - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_TRIP_DELAY - CCS_BEGIN].value.float_t                = 0;
   parameters_[CCS_PROT_AI_2_TRIP_DELAY - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_PROT_AI_2_TRIP_DELAY - CCS_BEGIN].max                          = 10000000.0;
+  parameters_[CCS_PROT_AI_2_TRIP_DELAY - CCS_BEGIN].max                          = 999999.0;
   parameters_[CCS_PROT_AI_2_TRIP_DELAY - CCS_BEGIN].def                          = 0;
   parameters_[CCS_PROT_AI_2_TRIP_DELAY - CCS_BEGIN].code                         = 0;
   // Задержка АПВ уставка
@@ -3167,7 +3167,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_2_RESTART_DELAY - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_RESTART_DELAY - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_AI_2_RESTART_DELAY - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_2_RESTART_DELAY - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_AI_2_RESTART_DELAY - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_AI_2_RESTART_DELAY - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_AI_2_RESTART_DELAY - CCS_BEGIN].code                      = 0;
   // Количество АПВ уставка
@@ -3178,7 +3178,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_2_RESTART_LIMIT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_RESTART_LIMIT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_AI_2_RESTART_LIMIT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_2_RESTART_LIMIT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_AI_2_RESTART_LIMIT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_AI_2_RESTART_LIMIT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_AI_2_RESTART_LIMIT - CCS_BEGIN].code                      = 0;
   // Автосброс счетчика АПВ
@@ -3189,7 +3189,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_2_RESTART_RESET - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_RESTART_RESET - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_AI_2_RESTART_RESET - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_2_RESTART_RESET - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_AI_2_RESTART_RESET - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_AI_2_RESTART_RESET - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_AI_2_RESTART_RESET - CCS_BEGIN].code                      = 0;
   // Уставка срабатывания защиты
@@ -3200,7 +3200,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_2_TRIP_SETPOINT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_TRIP_SETPOINT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_AI_2_TRIP_SETPOINT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_2_TRIP_SETPOINT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_AI_2_TRIP_SETPOINT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_AI_2_TRIP_SETPOINT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_AI_2_TRIP_SETPOINT - CCS_BEGIN].code                      = 0;
   // Условие АПВ уставка
@@ -3211,7 +3211,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_2_RESTART_SETPOINT - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_RESTART_SETPOINT - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_PROT_AI_2_RESTART_SETPOINT - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_PROT_AI_2_RESTART_SETPOINT - CCS_BEGIN].max                    = 10000000.0;
+  parameters_[CCS_PROT_AI_2_RESTART_SETPOINT - CCS_BEGIN].max                    = 999999.0;
   parameters_[CCS_PROT_AI_2_RESTART_SETPOINT - CCS_BEGIN].def                    = 0;
   parameters_[CCS_PROT_AI_2_RESTART_SETPOINT - CCS_BEGIN].code                   = 0;
   // Уставка параметр защиты
@@ -3222,7 +3222,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_2_PARAMETER - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_PARAMETER - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_PROT_AI_2_PARAMETER - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_PROT_AI_2_PARAMETER - CCS_BEGIN].max                           = 10000000.0;
+  parameters_[CCS_PROT_AI_2_PARAMETER - CCS_BEGIN].max                           = 999999.0;
   parameters_[CCS_PROT_AI_2_PARAMETER - CCS_BEGIN].def                           = 0;
   parameters_[CCS_PROT_AI_2_PARAMETER - CCS_BEGIN].code                          = 0;
   // Уставка параметр защиты
@@ -3233,7 +3233,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_2_RESTART_FLAG - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_RESTART_FLAG - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_PROT_AI_2_RESTART_FLAG - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_PROT_AI_2_RESTART_FLAG - CCS_BEGIN].max                        = 10000000.0;
+  parameters_[CCS_PROT_AI_2_RESTART_FLAG - CCS_BEGIN].max                        = 999999.0;
   parameters_[CCS_PROT_AI_2_RESTART_FLAG - CCS_BEGIN].def                        = 0;
   parameters_[CCS_PROT_AI_2_RESTART_FLAG - CCS_BEGIN].code                       = 0;
   // Текущий параметр состояние автомата
@@ -3244,7 +3244,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_2_STATE - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_STATE - CCS_BEGIN].value.float_t                     = 0;
   parameters_[CCS_PROT_AI_2_STATE - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_PROT_AI_2_STATE - CCS_BEGIN].max                               = 10000000.0;
+  parameters_[CCS_PROT_AI_2_STATE - CCS_BEGIN].max                               = 999999.0;
   parameters_[CCS_PROT_AI_2_STATE - CCS_BEGIN].def                               = 0;
   parameters_[CCS_PROT_AI_2_STATE - CCS_BEGIN].code                              = 0;
   // Текущий параметр Фиксированное время
@@ -3255,7 +3255,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_2_TIME - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_TIME - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_PROT_AI_2_TIME - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_PROT_AI_2_TIME - CCS_BEGIN].max                                = 10000000.0;
+  parameters_[CCS_PROT_AI_2_TIME - CCS_BEGIN].max                                = 999999.0;
   parameters_[CCS_PROT_AI_2_TIME - CCS_BEGIN].def                                = 0;
   parameters_[CCS_PROT_AI_2_TIME - CCS_BEGIN].code                               = 0;
   // Текущий параметр Количество АПВ
@@ -3266,7 +3266,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_2_RESTART_COUNT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_RESTART_COUNT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_AI_2_RESTART_COUNT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_2_RESTART_COUNT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_AI_2_RESTART_COUNT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_AI_2_RESTART_COUNT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_AI_2_RESTART_COUNT - CCS_BEGIN].code                      = 0;
   // Текущий параметр Время первого АПВ
@@ -3277,7 +3277,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_2_RESTART_FIRST_TIME - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_AI_2_RESTART_FIRST_TIME - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_AI_2_RESTART_FIRST_TIME - CCS_BEGIN].max                  = 10000000.0;
+  parameters_[CCS_PROT_AI_2_RESTART_FIRST_TIME - CCS_BEGIN].max                  = 999999.0;
   parameters_[CCS_PROT_AI_2_RESTART_FIRST_TIME - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_AI_2_RESTART_FIRST_TIME - CCS_BEGIN].code                 = 0;
   // Защиты Аналоговый вход 3
@@ -3288,7 +3288,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_3_MODE - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_MODE - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_PROT_AI_3_MODE - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_PROT_AI_3_MODE - CCS_BEGIN].max                                = 10000000.0;
+  parameters_[CCS_PROT_AI_3_MODE - CCS_BEGIN].max                                = 999999.0;
   parameters_[CCS_PROT_AI_3_MODE - CCS_BEGIN].def                                = 0;
   parameters_[CCS_PROT_AI_3_MODE - CCS_BEGIN].code                               = 0;
   // Параметр запрещающий запуск
@@ -3299,7 +3299,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_3_PREVENT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_PREVENT - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_PROT_AI_3_PREVENT - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_PROT_AI_3_PREVENT - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_PROT_AI_3_PREVENT - CCS_BEGIN].max                             = 999999.0;
   parameters_[CCS_PROT_AI_3_PREVENT - CCS_BEGIN].def                             = 0;
   parameters_[CCS_PROT_AI_3_PREVENT - CCS_BEGIN].code                            = 0;
   // Задержка активации уставка
@@ -3310,7 +3310,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_3_ACTIV_DELAY - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_ACTIV_DELAY - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_PROT_AI_3_ACTIV_DELAY - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_AI_3_ACTIV_DELAY - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_PROT_AI_3_ACTIV_DELAY - CCS_BEGIN].max                         = 999999.0;
   parameters_[CCS_PROT_AI_3_ACTIV_DELAY - CCS_BEGIN].def                         = 0;
   parameters_[CCS_PROT_AI_3_ACTIV_DELAY - CCS_BEGIN].code                        = 0;
   // Задержка срабатывания уставка
@@ -3321,7 +3321,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_3_TRIP_DELAY - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_TRIP_DELAY - CCS_BEGIN].value.float_t                = 0;
   parameters_[CCS_PROT_AI_3_TRIP_DELAY - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_PROT_AI_3_TRIP_DELAY - CCS_BEGIN].max                          = 10000000.0;
+  parameters_[CCS_PROT_AI_3_TRIP_DELAY - CCS_BEGIN].max                          = 999999.0;
   parameters_[CCS_PROT_AI_3_TRIP_DELAY - CCS_BEGIN].def                          = 0;
   parameters_[CCS_PROT_AI_3_TRIP_DELAY - CCS_BEGIN].code                         = 0;
   // Задержка АПВ уставка
@@ -3332,7 +3332,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_3_RESTART_DELAY - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_RESTART_DELAY - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_AI_3_RESTART_DELAY - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_3_RESTART_DELAY - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_AI_3_RESTART_DELAY - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_AI_3_RESTART_DELAY - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_AI_3_RESTART_DELAY - CCS_BEGIN].code                      = 0;
   // Количество АПВ уставка
@@ -3343,7 +3343,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_3_RESTART_LIMIT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_RESTART_LIMIT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_AI_3_RESTART_LIMIT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_3_RESTART_LIMIT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_AI_3_RESTART_LIMIT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_AI_3_RESTART_LIMIT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_AI_3_RESTART_LIMIT - CCS_BEGIN].code                      = 0;
   // Автосброс счетчика АПВ
@@ -3354,7 +3354,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_3_RESTART_RESET - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_RESTART_RESET - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_AI_3_RESTART_RESET - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_3_RESTART_RESET - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_AI_3_RESTART_RESET - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_AI_3_RESTART_RESET - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_AI_3_RESTART_RESET - CCS_BEGIN].code                      = 0;
   // Уставка срабатывания защиты
@@ -3365,7 +3365,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_3_TRIP_SETPOINT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_TRIP_SETPOINT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_AI_3_TRIP_SETPOINT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_3_TRIP_SETPOINT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_AI_3_TRIP_SETPOINT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_AI_3_TRIP_SETPOINT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_AI_3_TRIP_SETPOINT - CCS_BEGIN].code                      = 0;
   // Условие АПВ уставка
@@ -3376,7 +3376,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_3_RESTART_SETPOINT - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_RESTART_SETPOINT - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_PROT_AI_3_RESTART_SETPOINT - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_PROT_AI_3_RESTART_SETPOINT - CCS_BEGIN].max                    = 10000000.0;
+  parameters_[CCS_PROT_AI_3_RESTART_SETPOINT - CCS_BEGIN].max                    = 999999.0;
   parameters_[CCS_PROT_AI_3_RESTART_SETPOINT - CCS_BEGIN].def                    = 0;
   parameters_[CCS_PROT_AI_3_RESTART_SETPOINT - CCS_BEGIN].code                   = 0;
   // Уставка параметр защиты
@@ -3387,7 +3387,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_3_PARAMETER - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_PARAMETER - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_PROT_AI_3_PARAMETER - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_PROT_AI_3_PARAMETER - CCS_BEGIN].max                           = 10000000.0;
+  parameters_[CCS_PROT_AI_3_PARAMETER - CCS_BEGIN].max                           = 999999.0;
   parameters_[CCS_PROT_AI_3_PARAMETER - CCS_BEGIN].def                           = 0;
   parameters_[CCS_PROT_AI_3_PARAMETER - CCS_BEGIN].code                          = 0;
   // Текущий параметр Флаг что защита в АПВ
@@ -3398,7 +3398,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_3_RESTART_FLAG - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_RESTART_FLAG - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_PROT_AI_3_RESTART_FLAG - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_PROT_AI_3_RESTART_FLAG - CCS_BEGIN].max                        = 10000000.0;
+  parameters_[CCS_PROT_AI_3_RESTART_FLAG - CCS_BEGIN].max                        = 999999.0;
   parameters_[CCS_PROT_AI_3_RESTART_FLAG - CCS_BEGIN].def                        = 0;
   parameters_[CCS_PROT_AI_3_RESTART_FLAG - CCS_BEGIN].code                       = 0;
   // Текущий параметр состояние автомата
@@ -3409,7 +3409,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_3_STATE - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_STATE - CCS_BEGIN].value.float_t                     = 0;
   parameters_[CCS_PROT_AI_3_STATE - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_PROT_AI_3_STATE - CCS_BEGIN].max                               = 10000000.0;
+  parameters_[CCS_PROT_AI_3_STATE - CCS_BEGIN].max                               = 999999.0;
   parameters_[CCS_PROT_AI_3_STATE - CCS_BEGIN].def                               = 0;
   parameters_[CCS_PROT_AI_3_STATE - CCS_BEGIN].code                              = 0;
   // Текущий параметр Фиксированное время
@@ -3420,7 +3420,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_3_TIME - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_TIME - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_PROT_AI_3_TIME - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_PROT_AI_3_TIME - CCS_BEGIN].max                                = 10000000.0;
+  parameters_[CCS_PROT_AI_3_TIME - CCS_BEGIN].max                                = 999999.0;
   parameters_[CCS_PROT_AI_3_TIME - CCS_BEGIN].def                                = 0;
   parameters_[CCS_PROT_AI_3_TIME - CCS_BEGIN].code                               = 0;
   // Текущий параметр Количество АПВ
@@ -3431,7 +3431,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_3_RESTART_COUNT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_RESTART_COUNT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_AI_3_RESTART_COUNT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_3_RESTART_COUNT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_AI_3_RESTART_COUNT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_AI_3_RESTART_COUNT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_AI_3_RESTART_COUNT - CCS_BEGIN].code                      = 0;
   // Текущий параметр Время первого АПВ
@@ -3442,7 +3442,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_3_RESTART_FIRST_TIME - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_AI_3_RESTART_FIRST_TIME - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_AI_3_RESTART_FIRST_TIME - CCS_BEGIN].max                  = 10000000.0;
+  parameters_[CCS_PROT_AI_3_RESTART_FIRST_TIME - CCS_BEGIN].max                  = 999999.0;
   parameters_[CCS_PROT_AI_3_RESTART_FIRST_TIME - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_AI_3_RESTART_FIRST_TIME - CCS_BEGIN].code                 = 0;
   // Защиты Аналоговый вход 4
@@ -3453,7 +3453,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_MODE - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_MODE - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_PROT_AI_4_MODE - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_PROT_AI_4_MODE - CCS_BEGIN].max                                = 10000000.0;
+  parameters_[CCS_PROT_AI_4_MODE - CCS_BEGIN].max                                = 999999.0;
   parameters_[CCS_PROT_AI_4_MODE - CCS_BEGIN].def                                = 0;
   parameters_[CCS_PROT_AI_4_MODE - CCS_BEGIN].code                               = 0;
   // Параметр запрещающий запуск
@@ -3464,7 +3464,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_PREVENT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_PREVENT - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_PROT_AI_4_PREVENT - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_PROT_AI_4_PREVENT - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_PROT_AI_4_PREVENT - CCS_BEGIN].max                             = 999999.0;
   parameters_[CCS_PROT_AI_4_PREVENT - CCS_BEGIN].def                             = 0;
   parameters_[CCS_PROT_AI_4_PREVENT - CCS_BEGIN].code                            = 0;
   // Задержка активации уставка
@@ -3475,7 +3475,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_ACTIV_DELAY - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_ACTIV_DELAY - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_PROT_AI_4_ACTIV_DELAY - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_AI_4_ACTIV_DELAY - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_PROT_AI_4_ACTIV_DELAY - CCS_BEGIN].max                         = 999999.0;
   parameters_[CCS_PROT_AI_4_ACTIV_DELAY - CCS_BEGIN].def                         = 0;
   parameters_[CCS_PROT_AI_4_ACTIV_DELAY - CCS_BEGIN].code                        = 0;
   // Задержка срабатывания уставка
@@ -3486,7 +3486,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_TRIP_DELAY - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_TRIP_DELAY - CCS_BEGIN].value.float_t                = 0;
   parameters_[CCS_PROT_AI_4_TRIP_DELAY - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_PROT_AI_4_TRIP_DELAY - CCS_BEGIN].max                          = 10000000.0;
+  parameters_[CCS_PROT_AI_4_TRIP_DELAY - CCS_BEGIN].max                          = 999999.0;
   parameters_[CCS_PROT_AI_4_TRIP_DELAY - CCS_BEGIN].def                          = 0;
   parameters_[CCS_PROT_AI_4_TRIP_DELAY - CCS_BEGIN].code                         = 0;
   // Задержка АПВ уставка
@@ -3497,7 +3497,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_RESTART_DELAY - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_RESTART_DELAY - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_AI_4_RESTART_DELAY - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_4_RESTART_DELAY - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_AI_4_RESTART_DELAY - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_AI_4_RESTART_DELAY - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_AI_4_RESTART_DELAY - CCS_BEGIN].code                      = 0;
   // Количество АПВ уставка
@@ -3508,7 +3508,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_RESTART_LIMIT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_RESTART_LIMIT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_AI_4_RESTART_LIMIT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_4_RESTART_LIMIT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_AI_4_RESTART_LIMIT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_AI_4_RESTART_LIMIT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_AI_4_RESTART_LIMIT - CCS_BEGIN].code                      = 0;
   // Автосброс счетчика АПВ
@@ -3519,7 +3519,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_RESTART_RESET - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_RESTART_RESET - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_AI_4_RESTART_RESET - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_4_RESTART_RESET - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_AI_4_RESTART_RESET - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_AI_4_RESTART_RESET - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_AI_4_RESTART_RESET - CCS_BEGIN].code                      = 0;
   // Уставка срабатывания защиты
@@ -3530,7 +3530,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_TRIP_SETPOINT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_TRIP_SETPOINT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_AI_4_TRIP_SETPOINT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_4_TRIP_SETPOINT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_AI_4_TRIP_SETPOINT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_AI_4_TRIP_SETPOINT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_AI_4_TRIP_SETPOINT - CCS_BEGIN].code                      = 0;
   // Условие АПВ уставка
@@ -3541,7 +3541,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_RESTART_SETPOINT - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_RESTART_SETPOINT - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_PROT_AI_4_RESTART_SETPOINT - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_PROT_AI_4_RESTART_SETPOINT - CCS_BEGIN].max                    = 10000000.0;
+  parameters_[CCS_PROT_AI_4_RESTART_SETPOINT - CCS_BEGIN].max                    = 999999.0;
   parameters_[CCS_PROT_AI_4_RESTART_SETPOINT - CCS_BEGIN].def                    = 0;
   parameters_[CCS_PROT_AI_4_RESTART_SETPOINT - CCS_BEGIN].code                   = 0;
   // Уставка параметр защиты
@@ -3552,7 +3552,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_PARAMETER - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_PARAMETER - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_PROT_AI_4_PARAMETER - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_PROT_AI_4_PARAMETER - CCS_BEGIN].max                           = 10000000.0;
+  parameters_[CCS_PROT_AI_4_PARAMETER - CCS_BEGIN].max                           = 999999.0;
   parameters_[CCS_PROT_AI_4_PARAMETER - CCS_BEGIN].def                           = 0;
   parameters_[CCS_PROT_AI_4_PARAMETER - CCS_BEGIN].code                          = 0;
   // Текущий параметр Флаг что защита в АПВ
@@ -3563,7 +3563,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_RESTART_FLAG - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_RESTART_FLAG - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_PROT_AI_4_RESTART_FLAG - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_PROT_AI_4_RESTART_FLAG - CCS_BEGIN].max                        = 10000000.0;
+  parameters_[CCS_PROT_AI_4_RESTART_FLAG - CCS_BEGIN].max                        = 999999.0;
   parameters_[CCS_PROT_AI_4_RESTART_FLAG - CCS_BEGIN].def                        = 0;
   parameters_[CCS_PROT_AI_4_RESTART_FLAG - CCS_BEGIN].code                       = 0;
   // Текущий параметр состояние автомата
@@ -3574,7 +3574,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_STATE - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_STATE - CCS_BEGIN].value.float_t                     = 0;
   parameters_[CCS_PROT_AI_4_STATE - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_PROT_AI_4_STATE - CCS_BEGIN].max                               = 10000000.0;
+  parameters_[CCS_PROT_AI_4_STATE - CCS_BEGIN].max                               = 999999.0;
   parameters_[CCS_PROT_AI_4_STATE - CCS_BEGIN].def                               = 0;
   parameters_[CCS_PROT_AI_4_STATE - CCS_BEGIN].code                              = 0;
   // Текущий параметр Фиксированное время
@@ -3585,7 +3585,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_TIME - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_TIME - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_PROT_AI_4_TIME - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_PROT_AI_4_TIME - CCS_BEGIN].max                                = 10000000.0;
+  parameters_[CCS_PROT_AI_4_TIME - CCS_BEGIN].max                                = 999999.0;
   parameters_[CCS_PROT_AI_4_TIME - CCS_BEGIN].def                                = 0;
   parameters_[CCS_PROT_AI_4_TIME - CCS_BEGIN].code                               = 0;
   // Текущий параметр Количество АПВ
@@ -3596,7 +3596,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_RESTART_COUNT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_RESTART_COUNT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_AI_4_RESTART_COUNT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_4_RESTART_COUNT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_AI_4_RESTART_COUNT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_AI_4_RESTART_COUNT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_AI_4_RESTART_COUNT - CCS_BEGIN].code                      = 0;
   // Текущий параметр Время первого АПВ
@@ -3607,7 +3607,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_RESTART_FIRST_TIME - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_AI_4_RESTART_FIRST_TIME - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_AI_4_RESTART_FIRST_TIME - CCS_BEGIN].max                  = 10000000.0;
+  parameters_[CCS_PROT_AI_4_RESTART_FIRST_TIME - CCS_BEGIN].max                  = 999999.0;
   parameters_[CCS_PROT_AI_4_RESTART_FIRST_TIME - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_AI_4_RESTART_FIRST_TIME - CCS_BEGIN].code                 = 0;
   // Защиты по дискретным входам
@@ -3618,7 +3618,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_1_MODE - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_MODE - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_PROT_DI_1_MODE - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_PROT_DI_1_MODE - CCS_BEGIN].max                                = 10000000.0;
+  parameters_[CCS_PROT_DI_1_MODE - CCS_BEGIN].max                                = 999999.0;
   parameters_[CCS_PROT_DI_1_MODE - CCS_BEGIN].def                                = 0;
   parameters_[CCS_PROT_DI_1_MODE - CCS_BEGIN].code                               = 0;
   // Параметр запрещающий запуск
@@ -3629,7 +3629,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].max                             = 999999.0;
   parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].def                             = 0;
   parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].code                            = 0;
   // Задержка активации уставка
@@ -3640,7 +3640,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_1_ACTIV_DELAY - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_ACTIV_DELAY - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_PROT_DI_1_ACTIV_DELAY - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_DI_1_ACTIV_DELAY - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_PROT_DI_1_ACTIV_DELAY - CCS_BEGIN].max                         = 999999.0;
   parameters_[CCS_PROT_DI_1_ACTIV_DELAY - CCS_BEGIN].def                         = 0;
   parameters_[CCS_PROT_DI_1_ACTIV_DELAY - CCS_BEGIN].code                        = 0;
   // Задержка срабатывания уставка
@@ -3651,7 +3651,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_1_TRIP_DELAY - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_TRIP_DELAY - CCS_BEGIN].value.float_t                = 0;
   parameters_[CCS_PROT_DI_1_TRIP_DELAY - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_PROT_DI_1_TRIP_DELAY - CCS_BEGIN].max                          = 10000000.0;
+  parameters_[CCS_PROT_DI_1_TRIP_DELAY - CCS_BEGIN].max                          = 999999.0;
   parameters_[CCS_PROT_DI_1_TRIP_DELAY - CCS_BEGIN].def                          = 0;
   parameters_[CCS_PROT_DI_1_TRIP_DELAY - CCS_BEGIN].code                         = 0;
   // Задержка АПВ уставка
@@ -3662,7 +3662,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_1_RESTART_DELAY - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_RESTART_DELAY - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DI_1_RESTART_DELAY - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_1_RESTART_DELAY - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DI_1_RESTART_DELAY - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DI_1_RESTART_DELAY - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DI_1_RESTART_DELAY - CCS_BEGIN].code                      = 0;
   // Количество АПВ уставка
@@ -3673,7 +3673,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_1_RESTART_LIMIT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_RESTART_LIMIT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DI_1_RESTART_LIMIT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_1_RESTART_LIMIT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DI_1_RESTART_LIMIT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DI_1_RESTART_LIMIT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DI_1_RESTART_LIMIT - CCS_BEGIN].code                      = 0;
   // Автосброс счетчика АПВ
@@ -3684,7 +3684,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_1_RESTART_RESET - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_RESTART_RESET - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DI_1_RESTART_RESET - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_1_RESTART_RESET - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DI_1_RESTART_RESET - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DI_1_RESTART_RESET - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DI_1_RESTART_RESET - CCS_BEGIN].code                      = 0;
   // Уставка срабатывания защиты
@@ -3695,7 +3695,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_1_TRIP_SETPOINT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_TRIP_SETPOINT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DI_1_TRIP_SETPOINT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_1_TRIP_SETPOINT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DI_1_TRIP_SETPOINT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DI_1_TRIP_SETPOINT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DI_1_TRIP_SETPOINT - CCS_BEGIN].code                      = 0;
   // Условие АПВ уставка
@@ -3706,7 +3706,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_1_RESTART_SETPOINT - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_RESTART_SETPOINT - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_PROT_DI_1_RESTART_SETPOINT - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_PROT_DI_1_RESTART_SETPOINT - CCS_BEGIN].max                    = 10000000.0;
+  parameters_[CCS_PROT_DI_1_RESTART_SETPOINT - CCS_BEGIN].max                    = 999999.0;
   parameters_[CCS_PROT_DI_1_RESTART_SETPOINT - CCS_BEGIN].def                    = 0;
   parameters_[CCS_PROT_DI_1_RESTART_SETPOINT - CCS_BEGIN].code                   = 0;
   // Уставка параметр защиты
@@ -3717,7 +3717,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_1_PARAMETER - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_PARAMETER - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_PROT_DI_1_PARAMETER - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_PROT_DI_1_PARAMETER - CCS_BEGIN].max                           = 10000000.0;
+  parameters_[CCS_PROT_DI_1_PARAMETER - CCS_BEGIN].max                           = 999999.0;
   parameters_[CCS_PROT_DI_1_PARAMETER - CCS_BEGIN].def                           = 0;
   parameters_[CCS_PROT_DI_1_PARAMETER - CCS_BEGIN].code                          = 0;
   // Текущий параметр Флаг что защита в АПВ
@@ -3728,7 +3728,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_1_RESTART_FLAG - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_RESTART_FLAG - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_PROT_DI_1_RESTART_FLAG - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_PROT_DI_1_RESTART_FLAG - CCS_BEGIN].max                        = 10000000.0;
+  parameters_[CCS_PROT_DI_1_RESTART_FLAG - CCS_BEGIN].max                        = 999999.0;
   parameters_[CCS_PROT_DI_1_RESTART_FLAG - CCS_BEGIN].def                        = 0;
   parameters_[CCS_PROT_DI_1_RESTART_FLAG - CCS_BEGIN].code                       = 0;
   // Текущий параметр состояние автомата
@@ -3739,7 +3739,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_1_STATE - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_STATE - CCS_BEGIN].value.float_t                     = 0;
   parameters_[CCS_PROT_DI_1_STATE - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_PROT_DI_1_STATE - CCS_BEGIN].max                               = 10000000.0;
+  parameters_[CCS_PROT_DI_1_STATE - CCS_BEGIN].max                               = 999999.0;
   parameters_[CCS_PROT_DI_1_STATE - CCS_BEGIN].def                               = 0;
   parameters_[CCS_PROT_DI_1_STATE - CCS_BEGIN].code                              = 0;
   // Текущий параметр Фиксированное время
@@ -3750,7 +3750,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_1_TIME - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_TIME - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_PROT_DI_1_TIME - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_PROT_DI_1_TIME - CCS_BEGIN].max                                = 10000000.0;
+  parameters_[CCS_PROT_DI_1_TIME - CCS_BEGIN].max                                = 999999.0;
   parameters_[CCS_PROT_DI_1_TIME - CCS_BEGIN].def                                = 0;
   parameters_[CCS_PROT_DI_1_TIME - CCS_BEGIN].code                               = 0;
   // Текущий параметр Количество АПВ
@@ -3761,7 +3761,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_1_RESTART_COUNT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_RESTART_COUNT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DI_1_RESTART_COUNT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_1_RESTART_COUNT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DI_1_RESTART_COUNT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DI_1_RESTART_COUNT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DI_1_RESTART_COUNT - CCS_BEGIN].code                      = 0;
   // Текущий параметр Время первого АПВ
@@ -3772,7 +3772,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_1_RESTART_FIRST_TIME - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_DI_1_RESTART_FIRST_TIME - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_DI_1_RESTART_FIRST_TIME - CCS_BEGIN].max                  = 10000000.0;
+  parameters_[CCS_PROT_DI_1_RESTART_FIRST_TIME - CCS_BEGIN].max                  = 999999.0;
   parameters_[CCS_PROT_DI_1_RESTART_FIRST_TIME - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_DI_1_RESTART_FIRST_TIME - CCS_BEGIN].code                 = 0;
   // Защита дискретный вход 2
@@ -3783,7 +3783,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_2_MODE - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_MODE - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_PROT_DI_2_MODE - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_PROT_DI_2_MODE - CCS_BEGIN].max                                = 10000000.0;
+  parameters_[CCS_PROT_DI_2_MODE - CCS_BEGIN].max                                = 999999.0;
   parameters_[CCS_PROT_DI_2_MODE - CCS_BEGIN].def                                = 0;
   parameters_[CCS_PROT_DI_2_MODE - CCS_BEGIN].code                               = 0;
   // Параметр запрещающий запуск
@@ -3794,7 +3794,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].max                             = 999999.0;
   parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].def                             = 0;
   parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].code                            = 0;
   // Задержка активации уставка
@@ -3805,7 +3805,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_2_ACTIV_DELAY - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_ACTIV_DELAY - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_PROT_DI_2_ACTIV_DELAY - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_DI_2_ACTIV_DELAY - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_PROT_DI_2_ACTIV_DELAY - CCS_BEGIN].max                         = 999999.0;
   parameters_[CCS_PROT_DI_2_ACTIV_DELAY - CCS_BEGIN].def                         = 0;
   parameters_[CCS_PROT_DI_2_ACTIV_DELAY - CCS_BEGIN].code                        = 0;
   // Задержка срабатывания уставка
@@ -3816,7 +3816,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_2_TRIP_DELAY - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_TRIP_DELAY - CCS_BEGIN].value.float_t                = 0;
   parameters_[CCS_PROT_DI_2_TRIP_DELAY - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_PROT_DI_2_TRIP_DELAY - CCS_BEGIN].max                          = 10000000.0;
+  parameters_[CCS_PROT_DI_2_TRIP_DELAY - CCS_BEGIN].max                          = 999999.0;
   parameters_[CCS_PROT_DI_2_TRIP_DELAY - CCS_BEGIN].def                          = 0;
   parameters_[CCS_PROT_DI_2_TRIP_DELAY - CCS_BEGIN].code                         = 0;
   // Задержка АПВ уставка
@@ -3827,7 +3827,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_2_RESTART_DELAY - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_RESTART_DELAY - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DI_2_RESTART_DELAY - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_2_RESTART_DELAY - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DI_2_RESTART_DELAY - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DI_2_RESTART_DELAY - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DI_2_RESTART_DELAY - CCS_BEGIN].code                      = 0;
   // Количество АПВ уставка
@@ -3838,7 +3838,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_2_RESTART_LIMIT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_RESTART_LIMIT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DI_2_RESTART_LIMIT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_2_RESTART_LIMIT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DI_2_RESTART_LIMIT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DI_2_RESTART_LIMIT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DI_2_RESTART_LIMIT - CCS_BEGIN].code                      = 0;
   // Автосброс счетчика АПВ
@@ -3849,7 +3849,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_2_RESTART_RESET - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_RESTART_RESET - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DI_2_RESTART_RESET - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_2_RESTART_RESET - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DI_2_RESTART_RESET - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DI_2_RESTART_RESET - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DI_2_RESTART_RESET - CCS_BEGIN].code                      = 0;
   // Уставка срабатывания защиты
@@ -3860,7 +3860,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_2_TRIP_SETPOINT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_TRIP_SETPOINT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DI_2_TRIP_SETPOINT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_2_TRIP_SETPOINT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DI_2_TRIP_SETPOINT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DI_2_TRIP_SETPOINT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DI_2_TRIP_SETPOINT - CCS_BEGIN].code                      = 0;
   // Условие АПВ уставка
@@ -3871,7 +3871,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_2_RESTART_SETPOINT - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_RESTART_SETPOINT - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_PROT_DI_2_RESTART_SETPOINT - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_PROT_DI_2_RESTART_SETPOINT - CCS_BEGIN].max                    = 10000000.0;
+  parameters_[CCS_PROT_DI_2_RESTART_SETPOINT - CCS_BEGIN].max                    = 999999.0;
   parameters_[CCS_PROT_DI_2_RESTART_SETPOINT - CCS_BEGIN].def                    = 0;
   parameters_[CCS_PROT_DI_2_RESTART_SETPOINT - CCS_BEGIN].code                   = 0;
   // Уставка параметр защиты
@@ -3882,7 +3882,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_2_PARAMETER - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_PARAMETER - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_PROT_DI_2_PARAMETER - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_PROT_DI_2_PARAMETER - CCS_BEGIN].max                           = 10000000.0;
+  parameters_[CCS_PROT_DI_2_PARAMETER - CCS_BEGIN].max                           = 999999.0;
   parameters_[CCS_PROT_DI_2_PARAMETER - CCS_BEGIN].def                           = 0;
   parameters_[CCS_PROT_DI_2_PARAMETER - CCS_BEGIN].code                          = 0;
   // Текущий параметр Флаг что защита в АПВ
@@ -3893,7 +3893,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_2_RESTART_FLAG - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_RESTART_FLAG - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_PROT_DI_2_RESTART_FLAG - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_PROT_DI_2_RESTART_FLAG - CCS_BEGIN].max                        = 10000000.0;
+  parameters_[CCS_PROT_DI_2_RESTART_FLAG - CCS_BEGIN].max                        = 999999.0;
   parameters_[CCS_PROT_DI_2_RESTART_FLAG - CCS_BEGIN].def                        = 0;
   parameters_[CCS_PROT_DI_2_RESTART_FLAG - CCS_BEGIN].code                       = 0;
   // Текущий параметр состояние автомата
@@ -3904,7 +3904,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_2_STATE - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_STATE - CCS_BEGIN].value.float_t                     = 0;
   parameters_[CCS_PROT_DI_2_STATE - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_PROT_DI_2_STATE - CCS_BEGIN].max                               = 10000000.0;
+  parameters_[CCS_PROT_DI_2_STATE - CCS_BEGIN].max                               = 999999.0;
   parameters_[CCS_PROT_DI_2_STATE - CCS_BEGIN].def                               = 0;
   parameters_[CCS_PROT_DI_2_STATE - CCS_BEGIN].code                              = 0;
   // Текущий параметр Фиксированное время
@@ -3915,7 +3915,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_2_TIME - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_TIME - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_PROT_DI_2_TIME - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_PROT_DI_2_TIME - CCS_BEGIN].max                                = 10000000.0;
+  parameters_[CCS_PROT_DI_2_TIME - CCS_BEGIN].max                                = 999999.0;
   parameters_[CCS_PROT_DI_2_TIME - CCS_BEGIN].def                                = 0;
   parameters_[CCS_PROT_DI_2_TIME - CCS_BEGIN].code                               = 0;
   // Текущий параметр Количество АПВ
@@ -3926,7 +3926,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_2_RESTART_COUNT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_RESTART_COUNT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DI_2_RESTART_COUNT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_2_RESTART_COUNT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DI_2_RESTART_COUNT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DI_2_RESTART_COUNT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DI_2_RESTART_COUNT - CCS_BEGIN].code                      = 0;
   // Текущий параметр Время первого АПВ
@@ -3937,7 +3937,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_2_RESTART_FIRST_TIME - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_DI_2_RESTART_FIRST_TIME - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_DI_2_RESTART_FIRST_TIME - CCS_BEGIN].max                  = 10000000.0;
+  parameters_[CCS_PROT_DI_2_RESTART_FIRST_TIME - CCS_BEGIN].max                  = 999999.0;
   parameters_[CCS_PROT_DI_2_RESTART_FIRST_TIME - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_DI_2_RESTART_FIRST_TIME - CCS_BEGIN].code                 = 0;
   // Защита дискретный вход 3
@@ -3948,7 +3948,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_3_MODE - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_MODE - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_PROT_DI_3_MODE - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_PROT_DI_3_MODE - CCS_BEGIN].max                                = 10000000.0;
+  parameters_[CCS_PROT_DI_3_MODE - CCS_BEGIN].max                                = 999999.0;
   parameters_[CCS_PROT_DI_3_MODE - CCS_BEGIN].def                                = 0;
   parameters_[CCS_PROT_DI_3_MODE - CCS_BEGIN].code                               = 0;
   // Параметр запрещающий запуск
@@ -3959,7 +3959,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].max                             = 999999.0;
   parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].def                             = 0;
   parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].code                            = 0;
   // Задержка активации уставка
@@ -3970,7 +3970,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_3_ACTIV_DELAY - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_ACTIV_DELAY - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_PROT_DI_3_ACTIV_DELAY - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_DI_3_ACTIV_DELAY - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_PROT_DI_3_ACTIV_DELAY - CCS_BEGIN].max                         = 999999.0;
   parameters_[CCS_PROT_DI_3_ACTIV_DELAY - CCS_BEGIN].def                         = 0;
   parameters_[CCS_PROT_DI_3_ACTIV_DELAY - CCS_BEGIN].code                        = 0;
   // Задержка срабатывания уставка
@@ -3981,7 +3981,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_3_TRIP_DELAY - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_TRIP_DELAY - CCS_BEGIN].value.float_t                = 0;
   parameters_[CCS_PROT_DI_3_TRIP_DELAY - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_PROT_DI_3_TRIP_DELAY - CCS_BEGIN].max                          = 10000000.0;
+  parameters_[CCS_PROT_DI_3_TRIP_DELAY - CCS_BEGIN].max                          = 999999.0;
   parameters_[CCS_PROT_DI_3_TRIP_DELAY - CCS_BEGIN].def                          = 0;
   parameters_[CCS_PROT_DI_3_TRIP_DELAY - CCS_BEGIN].code                         = 0;
   // Задержка АПВ уставка
@@ -3992,7 +3992,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_3_RESTART_DELAY - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_RESTART_DELAY - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DI_3_RESTART_DELAY - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_3_RESTART_DELAY - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DI_3_RESTART_DELAY - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DI_3_RESTART_DELAY - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DI_3_RESTART_DELAY - CCS_BEGIN].code                      = 0;
   // Количество АПВ уставка
@@ -4003,7 +4003,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_3_RESTART_LIMIT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_RESTART_LIMIT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DI_3_RESTART_LIMIT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_3_RESTART_LIMIT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DI_3_RESTART_LIMIT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DI_3_RESTART_LIMIT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DI_3_RESTART_LIMIT - CCS_BEGIN].code                      = 0;
   // Автосброс счетчика АПВ
@@ -4014,7 +4014,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_3_RESTART_RESET - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_RESTART_RESET - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DI_3_RESTART_RESET - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_3_RESTART_RESET - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DI_3_RESTART_RESET - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DI_3_RESTART_RESET - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DI_3_RESTART_RESET - CCS_BEGIN].code                      = 0;
   // Уставка срабатывания защиты
@@ -4025,7 +4025,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_3_TRIP_SETPOINT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_TRIP_SETPOINT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DI_3_TRIP_SETPOINT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_3_TRIP_SETPOINT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DI_3_TRIP_SETPOINT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DI_3_TRIP_SETPOINT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DI_3_TRIP_SETPOINT - CCS_BEGIN].code                      = 0;
   // Условие АПВ уставка
@@ -4036,7 +4036,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_3_RESTART_SETPOINT - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_RESTART_SETPOINT - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_PROT_DI_3_RESTART_SETPOINT - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_PROT_DI_3_RESTART_SETPOINT - CCS_BEGIN].max                    = 10000000.0;
+  parameters_[CCS_PROT_DI_3_RESTART_SETPOINT - CCS_BEGIN].max                    = 999999.0;
   parameters_[CCS_PROT_DI_3_RESTART_SETPOINT - CCS_BEGIN].def                    = 0;
   parameters_[CCS_PROT_DI_3_RESTART_SETPOINT - CCS_BEGIN].code                   = 0;
   // Уставка параметр защиты
@@ -4047,7 +4047,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_3_PARAMETER - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_PARAMETER - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_PROT_DI_3_PARAMETER - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_PROT_DI_3_PARAMETER - CCS_BEGIN].max                           = 10000000.0;
+  parameters_[CCS_PROT_DI_3_PARAMETER - CCS_BEGIN].max                           = 999999.0;
   parameters_[CCS_PROT_DI_3_PARAMETER - CCS_BEGIN].def                           = 0;
   parameters_[CCS_PROT_DI_3_PARAMETER - CCS_BEGIN].code                          = 0;
   // Текущий параметр Флаг что защита в АПВ
@@ -4058,7 +4058,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_3_RESTART_FLAG - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_RESTART_FLAG - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_PROT_DI_3_RESTART_FLAG - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_PROT_DI_3_RESTART_FLAG - CCS_BEGIN].max                        = 10000000.0;
+  parameters_[CCS_PROT_DI_3_RESTART_FLAG - CCS_BEGIN].max                        = 999999.0;
   parameters_[CCS_PROT_DI_3_RESTART_FLAG - CCS_BEGIN].def                        = 0;
   parameters_[CCS_PROT_DI_3_RESTART_FLAG - CCS_BEGIN].code                       = 0;
   // Текущий параметр состояние автомата
@@ -4069,7 +4069,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_3_STATE - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_STATE - CCS_BEGIN].value.float_t                     = 0;
   parameters_[CCS_PROT_DI_3_STATE - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_PROT_DI_3_STATE - CCS_BEGIN].max                               = 10000000.0;
+  parameters_[CCS_PROT_DI_3_STATE - CCS_BEGIN].max                               = 999999.0;
   parameters_[CCS_PROT_DI_3_STATE - CCS_BEGIN].def                               = 0;
   parameters_[CCS_PROT_DI_3_STATE - CCS_BEGIN].code                              = 0;
   // Текущий параметр Фиксированное время
@@ -4080,7 +4080,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_3_TIME - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_TIME - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_PROT_DI_3_TIME - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_PROT_DI_3_TIME - CCS_BEGIN].max                                = 10000000.0;
+  parameters_[CCS_PROT_DI_3_TIME - CCS_BEGIN].max                                = 999999.0;
   parameters_[CCS_PROT_DI_3_TIME - CCS_BEGIN].def                                = 0;
   parameters_[CCS_PROT_DI_3_TIME - CCS_BEGIN].code                               = 0;
   // Текущий параметр Количество АПВ
@@ -4091,7 +4091,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_3_RESTART_COUNT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_RESTART_COUNT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DI_3_RESTART_COUNT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_3_RESTART_COUNT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DI_3_RESTART_COUNT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DI_3_RESTART_COUNT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DI_3_RESTART_COUNT - CCS_BEGIN].code                      = 0;
   // Текущий параметр Время первого АПВ
@@ -4102,7 +4102,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_3_RESTART_FIRST_TIME - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_DI_3_RESTART_FIRST_TIME - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_DI_3_RESTART_FIRST_TIME - CCS_BEGIN].max                  = 10000000.0;
+  parameters_[CCS_PROT_DI_3_RESTART_FIRST_TIME - CCS_BEGIN].max                  = 999999.0;
   parameters_[CCS_PROT_DI_3_RESTART_FIRST_TIME - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_DI_3_RESTART_FIRST_TIME - CCS_BEGIN].code                 = 0;
   // Защита дискретный вход 4
@@ -4113,7 +4113,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_4_MODE - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_MODE - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_PROT_DI_4_MODE - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_PROT_DI_4_MODE - CCS_BEGIN].max                                = 10000000.0;
+  parameters_[CCS_PROT_DI_4_MODE - CCS_BEGIN].max                                = 999999.0;
   parameters_[CCS_PROT_DI_4_MODE - CCS_BEGIN].def                                = 0;
   parameters_[CCS_PROT_DI_4_MODE - CCS_BEGIN].code                               = 0;
   // Параметр запрещающий запуск
@@ -4124,7 +4124,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].max                             = 999999.0;
   parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].def                             = 0;
   parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].code                            = 0;
   // Задержка активации уставка
@@ -4135,7 +4135,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_4_ACTIV_DELAY - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_ACTIV_DELAY - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_PROT_DI_4_ACTIV_DELAY - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_DI_4_ACTIV_DELAY - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_PROT_DI_4_ACTIV_DELAY - CCS_BEGIN].max                         = 999999.0;
   parameters_[CCS_PROT_DI_4_ACTIV_DELAY - CCS_BEGIN].def                         = 0;
   parameters_[CCS_PROT_DI_4_ACTIV_DELAY - CCS_BEGIN].code                        = 0;
   // Задержка срабатывания уставка
@@ -4146,7 +4146,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_4_TRIP_DELAY - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_TRIP_DELAY - CCS_BEGIN].value.float_t                = 0;
   parameters_[CCS_PROT_DI_4_TRIP_DELAY - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_PROT_DI_4_TRIP_DELAY - CCS_BEGIN].max                          = 10000000.0;
+  parameters_[CCS_PROT_DI_4_TRIP_DELAY - CCS_BEGIN].max                          = 999999.0;
   parameters_[CCS_PROT_DI_4_TRIP_DELAY - CCS_BEGIN].def                          = 0;
   parameters_[CCS_PROT_DI_4_TRIP_DELAY - CCS_BEGIN].code                         = 0;
   // Задержка АПВ уставка
@@ -4157,7 +4157,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_4_RESTART_DELAY - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_RESTART_DELAY - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DI_4_RESTART_DELAY - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_4_RESTART_DELAY - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DI_4_RESTART_DELAY - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DI_4_RESTART_DELAY - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DI_4_RESTART_DELAY - CCS_BEGIN].code                      = 0;
   // Количество АПВ уставка
@@ -4168,7 +4168,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_4_RESTART_LIMIT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_RESTART_LIMIT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DI_4_RESTART_LIMIT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_4_RESTART_LIMIT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DI_4_RESTART_LIMIT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DI_4_RESTART_LIMIT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DI_4_RESTART_LIMIT - CCS_BEGIN].code                      = 0;
   // Автосброс счетчика АПВ
@@ -4179,7 +4179,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_4_RESTART_RESET - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_RESTART_RESET - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DI_4_RESTART_RESET - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_4_RESTART_RESET - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DI_4_RESTART_RESET - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DI_4_RESTART_RESET - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DI_4_RESTART_RESET - CCS_BEGIN].code                      = 0;
   // Уставка срабатывания защиты
@@ -4190,7 +4190,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_4_TRIP_SETPOINT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_TRIP_SETPOINT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DI_4_TRIP_SETPOINT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_4_TRIP_SETPOINT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DI_4_TRIP_SETPOINT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DI_4_TRIP_SETPOINT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DI_4_TRIP_SETPOINT - CCS_BEGIN].code                      = 0;
   // Условие АПВ уставка
@@ -4201,7 +4201,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_4_RESTART_SETPOINT - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_RESTART_SETPOINT - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_PROT_DI_4_RESTART_SETPOINT - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_PROT_DI_4_RESTART_SETPOINT - CCS_BEGIN].max                    = 10000000.0;
+  parameters_[CCS_PROT_DI_4_RESTART_SETPOINT - CCS_BEGIN].max                    = 999999.0;
   parameters_[CCS_PROT_DI_4_RESTART_SETPOINT - CCS_BEGIN].def                    = 0;
   parameters_[CCS_PROT_DI_4_RESTART_SETPOINT - CCS_BEGIN].code                   = 0;
   // Уставка параметр защиты
@@ -4212,7 +4212,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_4_PARAMETER - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_PARAMETER - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_PROT_DI_4_PARAMETER - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_PROT_DI_4_PARAMETER - CCS_BEGIN].max                           = 10000000.0;
+  parameters_[CCS_PROT_DI_4_PARAMETER - CCS_BEGIN].max                           = 999999.0;
   parameters_[CCS_PROT_DI_4_PARAMETER - CCS_BEGIN].def                           = 0;
   parameters_[CCS_PROT_DI_4_PARAMETER - CCS_BEGIN].code                          = 0;
   // Текущий параметр Флаг что защита в АПВ
@@ -4223,7 +4223,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_4_RESTART_FLAG - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_RESTART_FLAG - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_PROT_DI_4_RESTART_FLAG - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_PROT_DI_4_RESTART_FLAG - CCS_BEGIN].max                        = 10000000.0;
+  parameters_[CCS_PROT_DI_4_RESTART_FLAG - CCS_BEGIN].max                        = 999999.0;
   parameters_[CCS_PROT_DI_4_RESTART_FLAG - CCS_BEGIN].def                        = 0;
   parameters_[CCS_PROT_DI_4_RESTART_FLAG - CCS_BEGIN].code                       = 0;
   // Текущий параметр состояние автомата
@@ -4234,7 +4234,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_4_STATE - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_STATE - CCS_BEGIN].value.float_t                     = 0;
   parameters_[CCS_PROT_DI_4_STATE - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_PROT_DI_4_STATE - CCS_BEGIN].max                               = 10000000.0;
+  parameters_[CCS_PROT_DI_4_STATE - CCS_BEGIN].max                               = 999999.0;
   parameters_[CCS_PROT_DI_4_STATE - CCS_BEGIN].def                               = 0;
   parameters_[CCS_PROT_DI_4_STATE - CCS_BEGIN].code                              = 0;
   // Текущий параметр Фиксированное время
@@ -4245,7 +4245,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_4_TIME - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_TIME - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_PROT_DI_4_TIME - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_PROT_DI_4_TIME - CCS_BEGIN].max                                = 10000000.0;
+  parameters_[CCS_PROT_DI_4_TIME - CCS_BEGIN].max                                = 999999.0;
   parameters_[CCS_PROT_DI_4_TIME - CCS_BEGIN].def                                = 0;
   parameters_[CCS_PROT_DI_4_TIME - CCS_BEGIN].code                               = 0;
   // Текущий параметр Количество АПВ
@@ -4256,7 +4256,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_4_RESTART_COUNT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_RESTART_COUNT - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DI_4_RESTART_COUNT - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_4_RESTART_COUNT - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PROT_DI_4_RESTART_COUNT - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PROT_DI_4_RESTART_COUNT - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DI_4_RESTART_COUNT - CCS_BEGIN].code                      = 0;
   // Текущий параметр Время первого АПВ
@@ -4267,7 +4267,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_4_RESTART_FIRST_TIME - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_DI_4_RESTART_FIRST_TIME - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_DI_4_RESTART_FIRST_TIME - CCS_BEGIN].max                  = 10000000.0;
+  parameters_[CCS_PROT_DI_4_RESTART_FIRST_TIME - CCS_BEGIN].max                  = 999999.0;
   parameters_[CCS_PROT_DI_4_RESTART_FIRST_TIME - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_DI_4_RESTART_FIRST_TIME - CCS_BEGIN].code                 = 0;
   // Защита "Превышения числа пусков"
@@ -4278,7 +4278,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].value.float_t       = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].min                 = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].max                 = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].max                 = 999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].def                 = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].code                = 0;
   // 
@@ -4289,7 +4289,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].value.float_t    = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].max              = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].max              = 999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].def              = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].code             = 0;
   // 
@@ -4300,7 +4300,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].validity     = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].min          = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].max          = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].max          = 999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].def          = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].code         = 0;
   // 
@@ -4311,7 +4311,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].validity      = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].min           = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].max           = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].max           = 999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].def           = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].code          = 0;
   // 
@@ -4322,7 +4322,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].validity   = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].min        = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].max        = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].max        = 999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].def        = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].code       = 0;
   // 
@@ -4333,7 +4333,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].validity   = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].min        = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].max        = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].max        = 999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].def        = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].code       = 0;
   // 
@@ -4344,7 +4344,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].validity   = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].min        = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].max        = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].max        = 999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].def        = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].code       = 0;
   // 
@@ -4355,7 +4355,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT - CCS_BEGIN].validity   = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT - CCS_BEGIN].min        = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT - CCS_BEGIN].max        = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT - CCS_BEGIN].max        = 999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT - CCS_BEGIN].def        = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT - CCS_BEGIN].code       = 0;
   // 
@@ -4366,7 +4366,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].min     = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].max     = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].max     = 999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].def     = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].code    = 0;
   // 
@@ -4377,7 +4377,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER - CCS_BEGIN].value.float_t  = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER - CCS_BEGIN].min            = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER - CCS_BEGIN].max            = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER - CCS_BEGIN].max            = 999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER - CCS_BEGIN].def            = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER - CCS_BEGIN].code           = 0;
   // 
@@ -4388,7 +4388,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].min         = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].max         = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].max         = 999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].def         = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].code        = 0;
   // 
@@ -4399,7 +4399,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].value.float_t      = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].max                = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].max                = 999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].def                = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].code               = 0;
   // 
@@ -4410,7 +4410,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].value.float_t       = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].min                 = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].max                 = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].max                 = 999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].def                 = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].code                = 0;
   // Текущий параметр Время первого АПВ
@@ -4421,7 +4421,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].validity   = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].min        = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].max        = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].max        = 999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].def        = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].code       = 0;
   // Защита "Блокировка силового отсека"
@@ -4432,7 +4432,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_MODE - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_MODE - CCS_BEGIN].value.float_t           = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_MODE - CCS_BEGIN].min                     = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_MODE - CCS_BEGIN].max                     = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_MODE - CCS_BEGIN].max                     = 999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_MODE - CCS_BEGIN].def                     = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_MODE - CCS_BEGIN].code                    = 13;
   // Параметр запрещающий запуск
@@ -4443,7 +4443,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PREVENT - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PREVENT - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PREVENT - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_PREVENT - CCS_BEGIN].max                  = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_PREVENT - CCS_BEGIN].max                  = 999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PREVENT - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PREVENT - CCS_BEGIN].code                 = 0;
   // Задержка активации уставка
@@ -4454,7 +4454,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].value.float_t    = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].max              = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].max              = 999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].def              = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].code             = 0;
   // Задержка срабатывания уставка
@@ -4465,7 +4465,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].value.float_t     = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].min               = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].max               = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].max               = 999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].def               = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].code              = 0;
   // Задержка АПВ уставка
@@ -4476,7 +4476,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].value.float_t  = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].min            = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].max            = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].max            = 999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].def            = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].code           = 0;
   // Количество АПВ уставка
@@ -4487,7 +4487,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].value.float_t  = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].min            = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].max            = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].max            = 999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].def            = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].code           = 0;
   // Автосброс счетчика АПВ
@@ -4498,7 +4498,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].value.float_t  = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].min            = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].max            = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].max            = 999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].def            = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].code           = 0;
   // Уставка срабатывания защиты
@@ -4509,7 +4509,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].value.float_t  = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].min            = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].max            = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].max            = 999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].def            = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].code           = 0;
   // Условие АПВ уставка
@@ -4520,7 +4520,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].min         = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].max         = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].max         = 999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].def         = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].code        = 0;
   // Уставка параметр защиты
@@ -4531,7 +4531,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].value.float_t      = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].max                = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].max                = 999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].def                = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].code               = 0;
   // Уставка параметр защиты
@@ -4542,7 +4542,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].value.float_t   = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].min             = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].max             = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].max             = 999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].def             = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].code            = 0;
   // Текущий параметр состояние автомата
@@ -4553,7 +4553,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].max                    = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].max                    = 999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].def                    = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].code                   = 0;
   // Текущий параметр Фиксированное время
@@ -4564,7 +4564,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].value.float_t           = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].min                     = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].max                     = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].max                     = 999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].def                     = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].code                    = 0;
   // Текущий параметр Количество АПВ
@@ -4575,7 +4575,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].value.float_t  = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].min            = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].max            = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].max            = 999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].def            = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].code           = 0;
   // Текущий параметр Время первого АПВ
@@ -4586,7 +4586,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].validity  = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].min       = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].max       = 10000000.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].max       = 999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].def       = 0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].code      = 0;
   // Защита "Аппаратные защиты ЧРП"
@@ -4762,7 +4762,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].max                           = 10000000.0;
+  parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].max                           = 999999.0;
   parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].def                           = 0;
   parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].code                          = 13;
   // Параметр запрещающий запуск
@@ -4773,7 +4773,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].max                        = 10000000.0;
+  parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].max                        = 999999.0;
   parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].def                        = 0;
   parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].code                       = 0;
   // Задержка активации уставка
@@ -4784,7 +4784,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].max                    = 10000000.0;
+  parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].max                    = 999999.0;
   parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].def                    = 0;
   parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].code                   = 0;
   // Задержка срабатывания уставка
@@ -4795,7 +4795,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].value.float_t           = 0;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].min                     = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].max                     = 10000000.0;
+  parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].max                     = 999999.0;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].def                     = 0;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].code                    = 0;
   // Задержка АПВ уставка
@@ -4806,7 +4806,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].max                  = 10000000.0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].max                  = 999999.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].code                 = 0;
   // Количество АПВ уставка
@@ -4817,7 +4817,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].max                  = 10000000.0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].max                  = 999999.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].code                 = 0;
   // Автосброс счетчика АПВ
@@ -4828,7 +4828,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].max                  = 10000000.0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].max                  = 999999.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].code                 = 0;
   // Уставка срабатывания защиты
@@ -4839,7 +4839,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].max                  = 10000000.0;
+  parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].max                  = 999999.0;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].code                 = 0;
   // Условие АПВ уставка
@@ -4850,7 +4850,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].value.float_t     = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].min               = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].max               = 10000000.0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].max               = 999999.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].def               = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].code              = 0;
   // Уставка параметр защиты
@@ -4861,7 +4861,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].validity                 = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].value.float_t            = 0;
   parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].min                      = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].max                      = 10000000.0;
+  parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].max                      = 999999.0;
   parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].def                      = 0;
   parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].code                     = 0;
   // Уставка параметр защиты
@@ -4872,7 +4872,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].value.float_t         = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].max                   = 10000000.0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].max                   = 999999.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].def                   = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].code                  = 0;
   // Текущий параметр состояние автомата
@@ -4883,7 +4883,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].value.float_t                = 0;
   parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].max                          = 10000000.0;
+  parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].max                          = 999999.0;
   parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].def                          = 0;
   parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].code                         = 0;
   // Текущий параметр Фиксированное время
@@ -4894,7 +4894,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].max                           = 10000000.0;
+  parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].max                           = 999999.0;
   parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].def                           = 0;
   parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].code                          = 0;
   // Текущий параметр Количество АПВ
@@ -4905,7 +4905,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].max                  = 10000000.0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].max                  = 999999.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].code                 = 0;
   // Текущий параметр Время первого АПВ
@@ -4916,7 +4916,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t   = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].min             = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].max             = 10000000.0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].max             = 999999.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].def             = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].code            = 0;
   // Режим периодический
@@ -4927,7 +4927,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].max                             = 999999.0;
   parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].def                             = 0;
   parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].code                            = 13;
   // Состояние автомата периодического режима
@@ -5191,7 +5191,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].validity                         = VALIDITY_OK;
   parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].value.float_t                    = 0;
   parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].min                              = 0.0;
-  parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].max                              = 10000000.0;
+  parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].max                              = 999999.0;
   parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].def                              = 0;
   parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].code                             = 0;
   // 
@@ -5202,7 +5202,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].validity                         = VALIDITY_OK;
   parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].value.float_t                    = 0;
   parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].min                              = 0.0;
-  parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].max                              = 10000000.0;
+  parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].max                              = 999999.0;
   parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].def                              = 0;
   parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].code                             = 0;
   // 
@@ -5213,7 +5213,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].validity                            = VALIDITY_OK;
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].value.float_t                       = 0;
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].min                                 = 0.0;
-  parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].max                                 = 10000000.0;
+  parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].max                                 = 999999.0;
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].def                                 = 0;
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].code                                = 0;
   // Режим поддержания параметра. Включение
@@ -5279,7 +5279,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].max                    = 10000000.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].max                    = 999999.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].def                    = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].code                   = 13;
   // Режим поддержания параметра. Интегральный коэффициент
@@ -5290,7 +5290,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].value.float_t           = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].min                     = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].max                     = 10000000.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].max                     = 999999.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].def                     = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].code                    = 13;
   // Режим поддержания параметра. Мин рабочая частота
@@ -5301,7 +5301,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].value.float_t      = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].max                = 10000000.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].max                = 999999.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].def                = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].code               = 13;
   // Режим поддержания параметра. Макс рабочая частота
@@ -5323,7 +5323,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].validity                         = VALIDITY_OK;
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].value.float_t                    = 0;
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].min                              = 0.0;
-  parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].max                              = 10000000.0;
+  parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].max                              = 999999.0;
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].def                              = 0;
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].code                             = 13;
   // Период экскурсий частоты режима встряхивания.
@@ -5334,7 +5334,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].value.float_t                  = 0;
   parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].max                            = 10000000.0;
+  parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].max                            = 999999.0;
   parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].def                            = 0;
   parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].code                           = 13;
   // Величина прибавки частоты вращения выше уставки в режиме встряхивания
@@ -5345,7 +5345,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_JARRING_UPDFREQ - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_RGM_JARRING_UPDFREQ - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_RGM_JARRING_UPDFREQ - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_RGM_JARRING_UPDFREQ - CCS_BEGIN].max                           = 10000000.0;
+  parameters_[CCS_RGM_JARRING_UPDFREQ - CCS_BEGIN].max                           = 999999.0;
   parameters_[CCS_RGM_JARRING_UPDFREQ - CCS_BEGIN].def                           = 0;
   parameters_[CCS_RGM_JARRING_UPDFREQ - CCS_BEGIN].code                          = 13;
   // Время прибавки частоты вращения выше уставки в режиме встряхивания
@@ -5356,7 +5356,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_JARRING_UPTIME - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_RGM_JARRING_UPTIME - CCS_BEGIN].value.float_t                  = 0;
   parameters_[CCS_RGM_JARRING_UPTIME - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_RGM_JARRING_UPTIME - CCS_BEGIN].max                            = 10000000.0;
+  parameters_[CCS_RGM_JARRING_UPTIME - CCS_BEGIN].max                            = 999999.0;
   parameters_[CCS_RGM_JARRING_UPTIME - CCS_BEGIN].def                            = 0;
   parameters_[CCS_RGM_JARRING_UPTIME - CCS_BEGIN].code                           = 13;
   // Величина уменьшения частоты вращения ниже уставки в режиме встряхивания
@@ -5367,7 +5367,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_JARRING_DOWNDFREQ - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_RGM_JARRING_DOWNDFREQ - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_RGM_JARRING_DOWNDFREQ - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_RGM_JARRING_DOWNDFREQ - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_RGM_JARRING_DOWNDFREQ - CCS_BEGIN].max                         = 999999.0;
   parameters_[CCS_RGM_JARRING_DOWNDFREQ - CCS_BEGIN].def                         = 0;
   parameters_[CCS_RGM_JARRING_DOWNDFREQ - CCS_BEGIN].code                        = 13;
   // Время уменьшения частоты вращения ниже уставки в режиме встряхивания
@@ -5378,7 +5378,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_JARRING_DOWNTIME - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_RGM_JARRING_DOWNTIME - CCS_BEGIN].value.float_t                = 0;
   parameters_[CCS_RGM_JARRING_DOWNTIME - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_RGM_JARRING_DOWNTIME - CCS_BEGIN].max                          = 10000000.0;
+  parameters_[CCS_RGM_JARRING_DOWNTIME - CCS_BEGIN].max                          = 999999.0;
   parameters_[CCS_RGM_JARRING_DOWNTIME - CCS_BEGIN].def                          = 0;
   parameters_[CCS_RGM_JARRING_DOWNTIME - CCS_BEGIN].code                         = 13;
   // Режим Учёт нагрева кабеля
@@ -5389,7 +5389,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].max                           = 10000000.0;
+  parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].max                           = 999999.0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].def                           = 0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].code                          = 13;
   // Режим Учёт нагрева кабеля сопротивление при 20с
@@ -5400,7 +5400,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].max                  = 10000000.0;
+  parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].max                  = 999999.0;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].def                  = 0;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].code                 = 13;
   // Режим Учёт нагрева кабеля сопротивление при 80с
@@ -5411,7 +5411,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].max                  = 10000000.0;
+  parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].max                  = 999999.0;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].def                  = 0;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].code                 = 13;
   // Режим Учёт нагрева кабеля номинальный ток кабеля
@@ -5422,7 +5422,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].value.float_t         = 0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].max                   = 10000000.0;
+  parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].max                   = 999999.0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].def                   = 0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].code                  = 13;
   // Режим Учёт нагрева кабеля время нагрева
@@ -5433,7 +5433,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].value.float_t  = 0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].min            = 0.0;
-  parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].max            = 10000000.0;
+  parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].max            = 999999.0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].def            = 0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].code           = 13;
   // Режим оптимизации напряжения вкл
@@ -5444,7 +5444,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].max                        = 10000000.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].max                        = 999999.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].def                        = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].code                       = 13;
   // Режим оптимизации напряжения диапазон
@@ -5455,7 +5455,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_OPTIM_VOLTAGE_SCALE - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_SCALE - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_SCALE - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_RGM_OPTIM_VOLTAGE_SCALE - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_SCALE - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_SCALE - CCS_BEGIN].def                       = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_SCALE - CCS_BEGIN].code                      = 13;
   // Режим оптимизации напряжения шаг
@@ -5466,7 +5466,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_OPTIM_VOLTAGE_STEP - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_STEP - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_STEP - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_RGM_OPTIM_VOLTAGE_STEP - CCS_BEGIN].max                        = 10000000.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_STEP - CCS_BEGIN].max                        = 999999.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_STEP - CCS_BEGIN].def                        = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_STEP - CCS_BEGIN].code                       = 13;
   // Режим оптимизации напряжения первый цикл после запуска
@@ -5477,7 +5477,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_REACTION - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_REACTION - CCS_BEGIN].value.float_t    = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_REACTION - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_REACTION - CCS_BEGIN].max              = 10000000.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_REACTION - CCS_BEGIN].max              = 999999.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_REACTION - CCS_BEGIN].def              = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_REACTION - CCS_BEGIN].code             = 13;
   // Режим оптимизации напряжения периодичность оптимизации
@@ -5488,7 +5488,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].value.float_t     = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].min               = 0.0;
-  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].max               = 10000000.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].max               = 999999.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].def               = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].code              = 13;
   // Режим прокачки газа
@@ -5499,7 +5499,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].max                             = 999999.0;
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].def                             = 0;
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].code                            = 13;
   // Режим прокачки газа
@@ -5510,7 +5510,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].max                         = 999999.0;
   parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].def                         = 0;
   parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].code                        = 13;
   // Режим прокачки газа
@@ -5521,7 +5521,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].value.float_t         = 0;
   parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].max                   = 10000000.0;
+  parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].max                   = 999999.0;
   parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].def                   = 0;
   parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].code                  = 13;
   // Режим прокачки газа
@@ -5532,7 +5532,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].max                    = 10000000.0;
+  parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].max                    = 999999.0;
   parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].def                    = 0;
   parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].code                   = 13;
   // Режим ограничения тока
@@ -5543,7 +5543,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].max                        = 10000000.0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].max                        = 999999.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].def                        = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].code                       = 13;
   // Режим ограничения тока уставка
@@ -5554,7 +5554,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].max                    = 10000000.0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].max                    = 999999.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].def                    = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].code                   = 13;
   // Режим ограничения тока шаг снижения частоты
@@ -5565,7 +5565,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].max                    = 10000000.0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].max                    = 999999.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].def                    = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].code                   = 13;
   // Режим ограничения тока задержка срабатывания
@@ -5576,7 +5576,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].value.float_t    = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].max              = 10000000.0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].max              = 999999.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].def              = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].code             = 13;
   // Режим ограничения тока задержка АПВ
@@ -5587,7 +5587,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].value.float_t     = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].min               = 0.0;
-  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].max               = 10000000.0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].max               = 999999.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].def               = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].code              = 13;
   // Коэффициент корректировки входного напряжения
@@ -5598,7 +5598,7 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].max                             = 999999.0;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].def                             = 0;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].code                            = 13;
   // 
@@ -5609,7 +5609,7 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].max                             = 999999.0;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].def                             = 0;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].code                            = 13;
   // 
@@ -5620,7 +5620,7 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].max                             = 999999.0;
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].def                             = 0;
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].code                            = 13;
   // Коэффициент корректировки выходного тока фаза U
@@ -5664,7 +5664,7 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].value.float_t           = 0;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].min                     = 0.0;
-  parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].max                     = 10000000.0;
+  parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].max                     = 999999.0;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].def                     = 0;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].code                    = 13;
   // Номер ЦДНГ
@@ -5675,7 +5675,7 @@ void Ccs::initParameters()
   parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].validity                              = VALIDITY_OK;
   parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].value.float_t                         = 0;
   parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].min                                   = 0.0;
-  parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].max                                   = 10000000.0;
+  parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].max                                   = 999999.0;
   parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].def                                   = 0;
   parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].code                                  = 13;
   // Номер куста
@@ -5686,7 +5686,7 @@ void Ccs::initParameters()
   parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].validity                              = VALIDITY_OK;
   parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].value.float_t                         = 0;
   parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].min                                   = 0.0;
-  parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].max                                   = 10000000.0;
+  parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].max                                   = 999999.0;
   parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].def                                   = 0;
   parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].code                                  = 13;
   // Номер скважины
@@ -5697,7 +5697,7 @@ void Ccs::initParameters()
   parameters_[CCS_NUMBER_WELL - CCS_BEGIN].validity                              = VALIDITY_OK;
   parameters_[CCS_NUMBER_WELL - CCS_BEGIN].value.float_t                         = 0;
   parameters_[CCS_NUMBER_WELL - CCS_BEGIN].min                                   = 0.0;
-  parameters_[CCS_NUMBER_WELL - CCS_BEGIN].max                                   = 10000000.0;
+  parameters_[CCS_NUMBER_WELL - CCS_BEGIN].max                                   = 999999.0;
   parameters_[CCS_NUMBER_WELL - CCS_BEGIN].def                                   = 0;
   parameters_[CCS_NUMBER_WELL - CCS_BEGIN].code                                  = 13;
   // Количество пусков
@@ -5708,7 +5708,7 @@ void Ccs::initParameters()
   parameters_[CCS_COUNT_START - CCS_BEGIN].validity                              = VALIDITY_OK;
   parameters_[CCS_COUNT_START - CCS_BEGIN].value.float_t                         = 0;
   parameters_[CCS_COUNT_START - CCS_BEGIN].min                                   = 0.0;
-  parameters_[CCS_COUNT_START - CCS_BEGIN].max                                   = 10000000.0;
+  parameters_[CCS_COUNT_START - CCS_BEGIN].max                                   = 999999.0;
   parameters_[CCS_COUNT_START - CCS_BEGIN].def                                   = 0;
   parameters_[CCS_COUNT_START - CCS_BEGIN].code                                  = 0;
   // Количество отключений по перезрузу
@@ -5719,7 +5719,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].validity                 = VALIDITY_OK;
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].value.float_t            = 0;
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].min                      = 0.0;
-  parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].max                      = 10000000.0;
+  parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].max                      = 999999.0;
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].def                      = 0;
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].code                     = 0;
   // Количество отключений по недогрузу
@@ -5730,7 +5730,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].value.float_t           = 0;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].min                     = 0.0;
-  parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].max                     = 10000000.0;
+  parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].max                     = 999999.0;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].def                     = 0;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].code                    = 0;
   // Количество отключений по другим защитам
@@ -5741,7 +5741,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].max                         = 999999.0;
   parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].def                         = 0;
   parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].code                        = 0;
   // Количество АПВ после остановов по напряжению
@@ -5752,7 +5752,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].max                    = 10000000.0;
+  parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].max                    = 999999.0;
   parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].def                    = 0;
   parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].code                   = 0;
   // Количество АПВ после остановов по перегрузу
@@ -5763,7 +5763,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].value.float_t         = 0;
   parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].max                   = 10000000.0;
+  parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].max                   = 999999.0;
   parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].def                   = 0;
   parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].code                  = 0;
   // Количество АПВ после остановов по недогрузу
@@ -5774,7 +5774,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].max                  = 10000000.0;
+  parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].max                  = 999999.0;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].code                 = 0;
   // Количество АПВ после остановов по дисбалансу токов
@@ -5785,7 +5785,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].min    = 0.0;
-  parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].max    = 10000000.0;
+  parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].max    = 999999.0;
   parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].def    = 0;
   parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].code   = 0;
   // Общее время работы СУ
@@ -5796,7 +5796,7 @@ void Ccs::initParameters()
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].max                         = 999999.0;
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].def                         = 0;
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].code                        = 0;
   // Общее время простоя СУ
@@ -5807,7 +5807,7 @@ void Ccs::initParameters()
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].max                        = 10000000.0;
+  parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].max                        = 999999.0;
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].def                        = 0;
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].code                       = 0;
   // Текущая наработка
@@ -5818,7 +5818,7 @@ void Ccs::initParameters()
   parameters_[CCS_RUN_TIME - CCS_BEGIN].validity                                 = VALIDITY_OK;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].value.float_t                            = 0;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].min                                      = 0.0;
-  parameters_[CCS_RUN_TIME - CCS_BEGIN].max                                      = 10000000.0;
+  parameters_[CCS_RUN_TIME - CCS_BEGIN].max                                      = 999999.0;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].def                                      = 0;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].code                                     = 0;
   // Текущий простой
@@ -5829,7 +5829,7 @@ void Ccs::initParameters()
   parameters_[CCS_STOP_TIME - CCS_BEGIN].validity                                = VALIDITY_OK;
   parameters_[CCS_STOP_TIME - CCS_BEGIN].value.float_t                           = 0;
   parameters_[CCS_STOP_TIME - CCS_BEGIN].min                                     = 0.0;
-  parameters_[CCS_STOP_TIME - CCS_BEGIN].max                                     = 10000000.0;
+  parameters_[CCS_STOP_TIME - CCS_BEGIN].max                                     = 999999.0;
   parameters_[CCS_STOP_TIME - CCS_BEGIN].def                                     = 0;
   parameters_[CCS_STOP_TIME - CCS_BEGIN].code                                    = 0;
   // Время до изменения режима
@@ -5840,7 +5840,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].validity                                = VALIDITY_OK;
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].value.float_t                           = 0;
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].min                                     = 0.0;
-  parameters_[CCS_RGM_TIMER - CCS_BEGIN].max                                     = 10000000.0;
+  parameters_[CCS_RGM_TIMER - CCS_BEGIN].max                                     = 999999.0;
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].def                                     = 0;
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].code                                    = 0;
   // Время до запуска
@@ -5851,7 +5851,7 @@ void Ccs::initParameters()
   parameters_[CCS_RESTART_TIMER - CCS_BEGIN].validity                            = VALIDITY_OK;
   parameters_[CCS_RESTART_TIMER - CCS_BEGIN].value.float_t                       = 0;
   parameters_[CCS_RESTART_TIMER - CCS_BEGIN].min                                 = 0.0;
-  parameters_[CCS_RESTART_TIMER - CCS_BEGIN].max                                 = 10000000.0;
+  parameters_[CCS_RESTART_TIMER - CCS_BEGIN].max                                 = 999999.0;
   parameters_[CCS_RESTART_TIMER - CCS_BEGIN].def                                 = 0;
   parameters_[CCS_RESTART_TIMER - CCS_BEGIN].code                                = 0;
   // Дата время последнего включения
@@ -5873,7 +5873,7 @@ void Ccs::initParameters()
   parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].value.float_t                     = 0;
   parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].max                               = 10000000.0;
+  parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].max                               = 999999.0;
   parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].def                               = 0;
   parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].code                              = 0;
   // Дата время последнего отключения
@@ -5895,7 +5895,7 @@ void Ccs::initParameters()
   parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].validity                         = VALIDITY_OK;
   parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].value.float_t                    = 0;
   parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].min                              = 0.0;
-  parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].max                              = 10000000.0;
+  parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].max                              = 999999.0;
   parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].def                              = 0;
   parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].code                             = 0;
   // Дата время изменения частоты
@@ -5917,7 +5917,7 @@ void Ccs::initParameters()
   parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].max                             = 999999.0;
   parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].def                             = 0;
   parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].code                            = 0;
   // Тип КСУ
@@ -5950,7 +5950,7 @@ void Ccs::initParameters()
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].value.float_t                  = 0;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].max                            = 10000000.0;
+  parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].max                            = 999999.0;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].def                            = 0;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].code                           = 13;
   // Версия ПО КСУ
@@ -5961,7 +5961,7 @@ void Ccs::initParameters()
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].max                                = 10000000.0;
+  parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].max                                = 999999.0;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].def                                = 0;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].code                               = 13;
   // Версия ПО МС
@@ -5972,7 +5972,7 @@ void Ccs::initParameters()
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].validity                            = VALIDITY_OK;
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].value.float_t                       = 0;
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].min                                 = 0.0;
-  parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].max                                 = 10000000.0;
+  parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].max                                 = 999999.0;
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].def                                 = 0;
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].code                                = 13;
   // Версия ПО ПЧ
@@ -5983,7 +5983,7 @@ void Ccs::initParameters()
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].max                                = 10000000.0;
+  parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].max                                = 999999.0;
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].def                                = 0;
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].code                               = 13;
   // Дата изготовления КСУ
@@ -6038,7 +6038,7 @@ void Ccs::initParameters()
   parameters_[CCS_TYPE_SU - CCS_BEGIN].validity                                  = VALIDITY_OK;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].value.float_t                             = 0;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].min                                       = 0.0;
-  parameters_[CCS_TYPE_SU - CCS_BEGIN].max                                       = 10000000.0;
+  parameters_[CCS_TYPE_SU - CCS_BEGIN].max                                       = 999999.0;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].def                                       = 0;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].code                                      = 13;
   // Код завода изготовителя СУ
@@ -6049,7 +6049,7 @@ void Ccs::initParameters()
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].value.float_t                  = 0;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].max                            = 10000000.0;
+  parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].max                            = 999999.0;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].def                            = 0;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].code                           = 13;
   // Заводской номер СУ
@@ -6060,7 +6060,7 @@ void Ccs::initParameters()
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].max                             = 999999.0;
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].def                             = 0;
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].code                            = 13;
   // Дата изготовления СУ
@@ -6082,7 +6082,7 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_1 - CCS_BEGIN].validity                                   = VALIDITY_OK;
   parameters_[CCS_NOTE_1 - CCS_BEGIN].value.float_t                              = 0;
   parameters_[CCS_NOTE_1 - CCS_BEGIN].min                                        = 0.0;
-  parameters_[CCS_NOTE_1 - CCS_BEGIN].max                                        = 10000000.0;
+  parameters_[CCS_NOTE_1 - CCS_BEGIN].max                                        = 999999.0;
   parameters_[CCS_NOTE_1 - CCS_BEGIN].def                                        = 0;
   parameters_[CCS_NOTE_1 - CCS_BEGIN].code                                       = 13;
   // Примечание 2
@@ -6093,7 +6093,7 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_2 - CCS_BEGIN].validity                                   = VALIDITY_OK;
   parameters_[CCS_NOTE_2 - CCS_BEGIN].value.float_t                              = 0;
   parameters_[CCS_NOTE_2 - CCS_BEGIN].min                                        = 0.0;
-  parameters_[CCS_NOTE_2 - CCS_BEGIN].max                                        = 10000000.0;
+  parameters_[CCS_NOTE_2 - CCS_BEGIN].max                                        = 999999.0;
   parameters_[CCS_NOTE_2 - CCS_BEGIN].def                                        = 0;
   parameters_[CCS_NOTE_2 - CCS_BEGIN].code                                       = 13;
   // Примечание 3
@@ -6104,7 +6104,7 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_3 - CCS_BEGIN].validity                                   = VALIDITY_OK;
   parameters_[CCS_NOTE_3 - CCS_BEGIN].value.float_t                              = 0;
   parameters_[CCS_NOTE_3 - CCS_BEGIN].min                                        = 0.0;
-  parameters_[CCS_NOTE_3 - CCS_BEGIN].max                                        = 10000000.0;
+  parameters_[CCS_NOTE_3 - CCS_BEGIN].max                                        = 999999.0;
   parameters_[CCS_NOTE_3 - CCS_BEGIN].def                                        = 0;
   parameters_[CCS_NOTE_3 - CCS_BEGIN].code                                       = 13;
   // Примечание 4
@@ -6115,7 +6115,7 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_4 - CCS_BEGIN].validity                                   = VALIDITY_OK;
   parameters_[CCS_NOTE_4 - CCS_BEGIN].value.float_t                              = 0;
   parameters_[CCS_NOTE_4 - CCS_BEGIN].min                                        = 0.0;
-  parameters_[CCS_NOTE_4 - CCS_BEGIN].max                                        = 10000000.0;
+  parameters_[CCS_NOTE_4 - CCS_BEGIN].max                                        = 999999.0;
   parameters_[CCS_NOTE_4 - CCS_BEGIN].def                                        = 0;
   parameters_[CCS_NOTE_4 - CCS_BEGIN].code                                       = 13;
   // Примечание 5
@@ -6126,7 +6126,7 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_5 - CCS_BEGIN].validity                                   = VALIDITY_OK;
   parameters_[CCS_NOTE_5 - CCS_BEGIN].value.float_t                              = 0;
   parameters_[CCS_NOTE_5 - CCS_BEGIN].min                                        = 0.0;
-  parameters_[CCS_NOTE_5 - CCS_BEGIN].max                                        = 10000000.0;
+  parameters_[CCS_NOTE_5 - CCS_BEGIN].max                                        = 999999.0;
   parameters_[CCS_NOTE_5 - CCS_BEGIN].def                                        = 0;
   parameters_[CCS_NOTE_5 - CCS_BEGIN].code                                       = 13;
   // Примечание 6
@@ -6137,7 +6137,7 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_6 - CCS_BEGIN].validity                                   = VALIDITY_OK;
   parameters_[CCS_NOTE_6 - CCS_BEGIN].value.float_t                              = 0;
   parameters_[CCS_NOTE_6 - CCS_BEGIN].min                                        = 0.0;
-  parameters_[CCS_NOTE_6 - CCS_BEGIN].max                                        = 10000000.0;
+  parameters_[CCS_NOTE_6 - CCS_BEGIN].max                                        = 999999.0;
   parameters_[CCS_NOTE_6 - CCS_BEGIN].def                                        = 0;
   parameters_[CCS_NOTE_6 - CCS_BEGIN].code                                       = 13;
   // Примечание 7
@@ -6148,7 +6148,7 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_7 - CCS_BEGIN].validity                                   = VALIDITY_OK;
   parameters_[CCS_NOTE_7 - CCS_BEGIN].value.float_t                              = 0;
   parameters_[CCS_NOTE_7 - CCS_BEGIN].min                                        = 0.0;
-  parameters_[CCS_NOTE_7 - CCS_BEGIN].max                                        = 10000000.0;
+  parameters_[CCS_NOTE_7 - CCS_BEGIN].max                                        = 999999.0;
   parameters_[CCS_NOTE_7 - CCS_BEGIN].def                                        = 0;
   parameters_[CCS_NOTE_7 - CCS_BEGIN].code                                       = 13;
   // Примечание 8
@@ -6159,7 +6159,7 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_8 - CCS_BEGIN].validity                                   = VALIDITY_OK;
   parameters_[CCS_NOTE_8 - CCS_BEGIN].value.float_t                              = 0;
   parameters_[CCS_NOTE_8 - CCS_BEGIN].min                                        = 0.0;
-  parameters_[CCS_NOTE_8 - CCS_BEGIN].max                                        = 10000000.0;
+  parameters_[CCS_NOTE_8 - CCS_BEGIN].max                                        = 999999.0;
   parameters_[CCS_NOTE_8 - CCS_BEGIN].def                                        = 0;
   parameters_[CCS_NOTE_8 - CCS_BEGIN].code                                       = 13;
   // Примечание 9
@@ -6170,7 +6170,7 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_9 - CCS_BEGIN].validity                                   = VALIDITY_OK;
   parameters_[CCS_NOTE_9 - CCS_BEGIN].value.float_t                              = 0;
   parameters_[CCS_NOTE_9 - CCS_BEGIN].min                                        = 0.0;
-  parameters_[CCS_NOTE_9 - CCS_BEGIN].max                                        = 10000000.0;
+  parameters_[CCS_NOTE_9 - CCS_BEGIN].max                                        = 999999.0;
   parameters_[CCS_NOTE_9 - CCS_BEGIN].def                                        = 0;
   parameters_[CCS_NOTE_9 - CCS_BEGIN].code                                       = 13;
   // Примечание 10
@@ -6181,7 +6181,7 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_10 - CCS_BEGIN].validity                                  = VALIDITY_OK;
   parameters_[CCS_NOTE_10 - CCS_BEGIN].value.float_t                             = 0;
   parameters_[CCS_NOTE_10 - CCS_BEGIN].min                                       = 0.0;
-  parameters_[CCS_NOTE_10 - CCS_BEGIN].max                                       = 10000000.0;
+  parameters_[CCS_NOTE_10 - CCS_BEGIN].max                                       = 999999.0;
   parameters_[CCS_NOTE_10 - CCS_BEGIN].def                                       = 0;
   parameters_[CCS_NOTE_10 - CCS_BEGIN].code                                      = 13;
   // Дата время в формате POSIX
@@ -6280,7 +6280,7 @@ void Ccs::initParameters()
   parameters_[CCS_LANGUAGE - CCS_BEGIN].validity                                 = VALIDITY_OK;
   parameters_[CCS_LANGUAGE - CCS_BEGIN].value.float_t                            = 0;
   parameters_[CCS_LANGUAGE - CCS_BEGIN].min                                      = 0.0;
-  parameters_[CCS_LANGUAGE - CCS_BEGIN].max                                      = 10000000.0;
+  parameters_[CCS_LANGUAGE - CCS_BEGIN].max                                      = 999999.0;
   parameters_[CCS_LANGUAGE - CCS_BEGIN].def                                      = 0;
   parameters_[CCS_LANGUAGE - CCS_BEGIN].code                                     = 13;
   // Включение системы паролей
@@ -6390,7 +6390,7 @@ void Ccs::initParameters()
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].validity                            = VALIDITY_OK;
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].value.float_t                       = 0;
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].min                                 = 0.0;
-  parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].max                                 = 10000000.0;
+  parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].max                                 = 999999.0;
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].def                                 = 0;
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].code                                = 13;
   // Скорость опроса в телемеханике
@@ -6434,7 +6434,7 @@ void Ccs::initParameters()
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].validity                              = VALIDITY_OK;
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].value.float_t                         = 0;
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].min                                   = 0.0;
-  parameters_[CCS_SCADA_DELAY - CCS_BEGIN].max                                   = 10000000.0;
+  parameters_[CCS_SCADA_DELAY - CCS_BEGIN].max                                   = 999999.0;
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].def                                   = 0.0;
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].code                                  = 13;
   // Единицы измерения давления
@@ -6511,7 +6511,7 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].validity                            = VALIDITY_OK;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].value.float_t                       = 0;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].min                                 = 0.0;
-  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].max                                 = 10000000.0;
+  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].max                                 = 999999.0;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].def                                 = 0;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].code                                = 0;
   // Команда остановки
@@ -6962,7 +6962,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].max                             = 999999.0;
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].def                             = 0;
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].code                            = 13;
   // 
@@ -6973,7 +6973,7 @@ void Ccs::initParameters()
   parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].max                                = 10000000.0;
+  parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].max                                = 999999.0;
   parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].def                                = 0;
   parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].code                               = 0;
   // Причина последнего пуска - регистр временного хранения значения
@@ -6984,7 +6984,7 @@ void Ccs::initParameters()
   parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].max                           = 10000000.0;
+  parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].max                           = 999999.0;
   parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].def                           = 0;
   parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].code                          = 0;
   // Наличие хотя бы одного запрещающего параметра
@@ -6995,7 +6995,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].validity                             = VALIDITY_OK;
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].value.float_t                        = 0;
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].min                                  = 0.0;
-  parameters_[CCS_PROT_PREVENT - CCS_BEGIN].max                                  = 10000000.0;
+  parameters_[CCS_PROT_PREVENT - CCS_BEGIN].max                                  = 999999.0;
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].def                                  = 0;
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].code                                 = 0;
   // Уставка ВРП (время разновременного пуска)
@@ -7006,7 +7006,7 @@ void Ccs::initParameters()
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].max                         = 999999.0;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].def                         = 0;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].code                        = 13;
   // Защита ЗСП: Прогрессивная задержка АПВ
@@ -7336,7 +7336,7 @@ void Ccs::initParameters()
   parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].max                             = 999999.0;
   parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].def                             = 0;
   parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].code                            = 0;
   // Коэффициент трансформации
@@ -7358,7 +7358,7 @@ void Ccs::initParameters()
   parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].value.float_t                = 0;
   parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].max                          = 10000000.0;
+  parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].max                          = 999999.0;
   parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].def                          = 0;
   parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].code                         = 0;
   // Работа с пониженным сопротивлением изоляции
@@ -7556,7 +7556,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].value.float_t         = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].max                   = 10000000.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].max                   = 999999.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].def                   = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].code                  = 0;
   // 
@@ -7578,7 +7578,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_PRESSURE - CCS_BEGIN].validity  = VALIDITY_OK;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_PRESSURE - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_PRESSURE - CCS_BEGIN].min       = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_PRESSURE - CCS_BEGIN].max       = 10000000.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_PRESSURE - CCS_BEGIN].max       = 999999.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_PRESSURE - CCS_BEGIN].def       = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_PRESSURE - CCS_BEGIN].code      = 13;
   // Режим поддержания параметра. Поддержка значения - Температура
@@ -7589,7 +7589,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_TEMPERATURE - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_TEMPERATURE - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_TEMPERATURE - CCS_BEGIN].min    = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_TEMPERATURE - CCS_BEGIN].max    = 10000000.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_TEMPERATURE - CCS_BEGIN].max    = 999999.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_TEMPERATURE - CCS_BEGIN].def    = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_TEMPERATURE - CCS_BEGIN].code   = 13;
   // Режим поддержания параметра. Поддержка значения - Аналоговый вход
@@ -7600,7 +7600,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].min      = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].max      = 10000000.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].max      = 999999.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].def      = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].code     = 13;
   // 
@@ -7611,7 +7611,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].validity                      = 0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].max                           = 10000000.0;
+  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].max                           = 999999.0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].def                           = 0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].code                          = 13;
   // 
@@ -7622,7 +7622,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].validity                     = 0;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].value.float_t                = 0;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].max                          = 10000000.0;
+  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].max                          = 999999.0;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].def                          = 0;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].code                         = 0;
   // 
@@ -7633,7 +7633,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].validity                        = 0;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].max                             = 999999.0;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].def                             = 0;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].code                            = 0;
   // Команда отключения модуля AM335x
@@ -7644,7 +7644,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].validity                      = 0;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].max                           = 10000000.0;
+  parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].max                           = 999999.0;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].def                           = 0;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].code                          = 0;
   // 
@@ -7776,7 +7776,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].max                               = 10000000.0;
+  parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].max                               = 999999.0;
   parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].def                               = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].code                              = 0;
   // Напряжение второй фазы
@@ -7787,7 +7787,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].max                               = 10000000.0;
+  parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].max                               = 999999.0;
   parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].def                               = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].code                              = 0;
   // Напряжение третей фазы
@@ -7798,7 +7798,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].max                               = 10000000.0;
+  parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].max                               = 999999.0;
   parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].def                               = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].code                              = 0;
   // Напряжение межфазное первой и второй фазы
@@ -7809,7 +7809,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].max                             = 999999.0;
   parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].code                            = 0;
   // Напряжение межфазное второй и третьей фазы
@@ -7820,7 +7820,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].max                             = 999999.0;
   parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].code                            = 0;
   // Напряжение межфазное третьей и первой фазы
@@ -7831,7 +7831,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].max                             = 10000000.0;
+  parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].max                             = 999999.0;
   parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].code                            = 0;
   // Входной фильтр
@@ -7864,7 +7864,7 @@ void Ccs::initParameters()
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].max                               = 10000000.0;
+  parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].max                               = 999999.0;
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].def                               = 0.0;
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].code                              = 13;
   // Количество АПВ
@@ -7875,7 +7875,7 @@ void Ccs::initParameters()
   parameters_[CCS_RESTART_COUNT - CCS_BEGIN].validity                            = VALIDITY_OK;
   parameters_[CCS_RESTART_COUNT - CCS_BEGIN].value.float_t                       = 0.0;
   parameters_[CCS_RESTART_COUNT - CCS_BEGIN].min                                 = 0.0;
-  parameters_[CCS_RESTART_COUNT - CCS_BEGIN].max                                 = 10000000.0;
+  parameters_[CCS_RESTART_COUNT - CCS_BEGIN].max                                 = 999999.0;
   parameters_[CCS_RESTART_COUNT - CCS_BEGIN].def                                 = 0.0;
   parameters_[CCS_RESTART_COUNT - CCS_BEGIN].code                                = 0;
   // Напряжение двигателя фаза A
@@ -7886,7 +7886,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].max                         = 999999.0;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].code                        = 0;
   // Напряжение двигателя фаза B
@@ -7897,7 +7897,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].max                         = 999999.0;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].code                        = 0;
   // Напряжение двигателя фаза C
@@ -7908,7 +7908,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].max                         = 10000000.0;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].max                         = 999999.0;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].code                        = 0;
   // Дисбаланс напряжений
@@ -7919,7 +7919,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].value.float_t             = 0.0;
   parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].def                       = 0.0;
   parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].code                      = 0;
   // Напряжение питающей сети
@@ -7930,7 +7930,7 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].value.float_t         = 380.0;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].max                   = 10000000.0;
+  parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].max                   = 999999.0;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].def                   = 380.0;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].code                  = 13;
   // Максимальная рабочее напряжение
@@ -7941,7 +7941,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].value.float_t                  = 380.0;
   parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].max                            = 10000000.0;
+  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].max                            = 999999.0;
   parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].def                            = 380.0;
   parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].code                           = 13;
   // Количество попыток ввода пароля
@@ -7952,7 +7952,7 @@ void Ccs::initParameters()
   parameters_[CCS_PASSWORD_COUNT_ATTEMPTS - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PASSWORD_COUNT_ATTEMPTS - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PASSWORD_COUNT_ATTEMPTS - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PASSWORD_COUNT_ATTEMPTS - CCS_BEGIN].max                       = 10000000.0;
+  parameters_[CCS_PASSWORD_COUNT_ATTEMPTS - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PASSWORD_COUNT_ATTEMPTS - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PASSWORD_COUNT_ATTEMPTS - CCS_BEGIN].code                      = 0;
   // Время последней попытки ввода пароля
@@ -7974,7 +7974,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].value.float_t                      = 0.0;
   parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].max                                = 10000000.0;
+  parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].max                                = 999999.0;
   parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].def                                = 0.0;
   parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].code                               = 0;
   // Максимальное значение прогресс-бара (например, копирование архивов)
@@ -7985,7 +7985,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].validity                             = VALIDITY_OK;
   parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].value.float_t                        = 0.0;
   parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].min                                  = 0.0;
-  parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].max                                  = 10000000.0;
+  parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].max                                  = 999999.0;
   parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].def                                  = 0.0;
   parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].code                                 = 0;
   // Команда сброса уставок защиты ЧРП по умолчанию

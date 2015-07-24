@@ -21,7 +21,7 @@ void Tms::initParameters()
   parameters_[TMS_RESISTANCE_ISOLATION - TMS_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[TMS_RESISTANCE_ISOLATION - TMS_BEGIN].value.float_t                = 0;
   parameters_[TMS_RESISTANCE_ISOLATION - TMS_BEGIN].min                          = 0.0;
-  parameters_[TMS_RESISTANCE_ISOLATION - TMS_BEGIN].max                          = 10000000.0;
+  parameters_[TMS_RESISTANCE_ISOLATION - TMS_BEGIN].max                          = 999999.0;
   parameters_[TMS_RESISTANCE_ISOLATION - TMS_BEGIN].def                          = 0;
   parameters_[TMS_RESISTANCE_ISOLATION - TMS_BEGIN].code                         = 0;
   // Давление на приёме
@@ -32,7 +32,7 @@ void Tms::initParameters()
   parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].value.float_t                     = 0;
   parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].min                               = 0.0;
-  parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].max                               = 10000000.0;
+  parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].max                               = 999999.0;
   parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].def                               = 0;
   parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].code                              = 0;
   // Температура обмоток двигателя
@@ -43,7 +43,7 @@ void Tms::initParameters()
   parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].value.float_t                 = 0;
   parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].min                           = 0.0;
-  parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].max                           = 10000000.0;
+  parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].max                           = 999999.0;
   parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].def                           = 0;
   parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].code                          = 0;
   // Температура на приёме
@@ -54,7 +54,7 @@ void Tms::initParameters()
   parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].validity                       = VALIDITY_ERROR;
   parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].value.float_t                  = 0;
   parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].min                            = 0.0;
-  parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].max                            = 10000000.0;
+  parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].max                            = 999999.0;
   parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].def                            = 0;
   parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].code                           = 0;
   // Ускорение по оси X на приёме
@@ -65,7 +65,7 @@ void Tms::initParameters()
   parameters_[TMS_ACCELERATION_X_INTAKE - TMS_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[TMS_ACCELERATION_X_INTAKE - TMS_BEGIN].value.float_t               = 0;
   parameters_[TMS_ACCELERATION_X_INTAKE - TMS_BEGIN].min                         = 0.0;
-  parameters_[TMS_ACCELERATION_X_INTAKE - TMS_BEGIN].max                         = 10000000.0;
+  parameters_[TMS_ACCELERATION_X_INTAKE - TMS_BEGIN].max                         = 999999.0;
   parameters_[TMS_ACCELERATION_X_INTAKE - TMS_BEGIN].def                         = 0;
   parameters_[TMS_ACCELERATION_X_INTAKE - TMS_BEGIN].code                        = 0;
   // Ускорение по оси Y на приёме
@@ -76,7 +76,7 @@ void Tms::initParameters()
   parameters_[TMS_ACCELERATION_Y_INTAKE - TMS_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[TMS_ACCELERATION_Y_INTAKE - TMS_BEGIN].value.float_t               = 0;
   parameters_[TMS_ACCELERATION_Y_INTAKE - TMS_BEGIN].min                         = 0.0;
-  parameters_[TMS_ACCELERATION_Y_INTAKE - TMS_BEGIN].max                         = 10000000.0;
+  parameters_[TMS_ACCELERATION_Y_INTAKE - TMS_BEGIN].max                         = 999999.0;
   parameters_[TMS_ACCELERATION_Y_INTAKE - TMS_BEGIN].def                         = 0;
   parameters_[TMS_ACCELERATION_Y_INTAKE - TMS_BEGIN].code                        = 0;
   // Ускорение по оси Z на приёме
@@ -87,7 +87,7 @@ void Tms::initParameters()
   parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].value.float_t               = 0;
   parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].min                         = 0.0;
-  parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].max                         = 10000000.0;
+  parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].max                         = 999999.0;
   parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].def                         = 0;
   parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].code                        = 0;
   // Давление на выкиде
@@ -98,7 +98,7 @@ void Tms::initParameters()
   parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].validity                       = VALIDITY_ERROR;
   parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].value.float_t                  = 0;
   parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].min                            = 0.0;
-  parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].max                            = 10000000.0;
+  parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].max                            = 999999.0;
   parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].def                            = 0;
   parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].code                           = 0;
   // Температура на выкиде
@@ -109,7 +109,7 @@ void Tms::initParameters()
   parameters_[TMS_TEMPERATURE_DISCHARGE - TMS_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[TMS_TEMPERATURE_DISCHARGE - TMS_BEGIN].value.float_t               = 0;
   parameters_[TMS_TEMPERATURE_DISCHARGE - TMS_BEGIN].min                         = 0.0;
-  parameters_[TMS_TEMPERATURE_DISCHARGE - TMS_BEGIN].max                         = 10000000.0;
+  parameters_[TMS_TEMPERATURE_DISCHARGE - TMS_BEGIN].max                         = 999999.0;
   parameters_[TMS_TEMPERATURE_DISCHARGE - TMS_BEGIN].def                         = 0;
   parameters_[TMS_TEMPERATURE_DISCHARGE - TMS_BEGIN].code                        = 0;
   // Расход на выкиде
@@ -120,7 +120,7 @@ void Tms::initParameters()
   parameters_[TMS_FLOW_DISCHARGE - TMS_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[TMS_FLOW_DISCHARGE - TMS_BEGIN].value.float_t                      = 0;
   parameters_[TMS_FLOW_DISCHARGE - TMS_BEGIN].min                                = 0.0;
-  parameters_[TMS_FLOW_DISCHARGE - TMS_BEGIN].max                                = 10000000.0;
+  parameters_[TMS_FLOW_DISCHARGE - TMS_BEGIN].max                                = 999999.0;
   parameters_[TMS_FLOW_DISCHARGE - TMS_BEGIN].def                                = 0;
   parameters_[TMS_FLOW_DISCHARGE - TMS_BEGIN].code                               = 0;
   // Ускорение по оси Y на приёме
@@ -131,7 +131,7 @@ void Tms::initParameters()
   parameters_[TMS_ACCELERATION_XY_INTAKE - TMS_BEGIN].validity                   = VALIDITY_ERROR;
   parameters_[TMS_ACCELERATION_XY_INTAKE - TMS_BEGIN].value.float_t              = 0;
   parameters_[TMS_ACCELERATION_XY_INTAKE - TMS_BEGIN].min                        = 0.0;
-  parameters_[TMS_ACCELERATION_XY_INTAKE - TMS_BEGIN].max                        = 10000000.0;
+  parameters_[TMS_ACCELERATION_XY_INTAKE - TMS_BEGIN].max                        = 999999.0;
   parameters_[TMS_ACCELERATION_XY_INTAKE - TMS_BEGIN].def                        = 0;
   parameters_[TMS_ACCELERATION_XY_INTAKE - TMS_BEGIN].code                       = 0;
   // Ускорение по оси по трём осям
@@ -142,7 +142,7 @@ void Tms::initParameters()
   parameters_[TMS_ACCELERATIN_XYZ_INTAKE - TMS_BEGIN].validity                   = VALIDITY_ERROR;
   parameters_[TMS_ACCELERATIN_XYZ_INTAKE - TMS_BEGIN].value.float_t              = 0;
   parameters_[TMS_ACCELERATIN_XYZ_INTAKE - TMS_BEGIN].min                        = 0.0;
-  parameters_[TMS_ACCELERATIN_XYZ_INTAKE - TMS_BEGIN].max                        = 10000000.0;
+  parameters_[TMS_ACCELERATIN_XYZ_INTAKE - TMS_BEGIN].max                        = 999999.0;
   parameters_[TMS_ACCELERATIN_XYZ_INTAKE - TMS_BEGIN].def                        = 0;
   parameters_[TMS_ACCELERATIN_XYZ_INTAKE - TMS_BEGIN].code                       = 0;
   // Максимальное давление на приёме
@@ -153,7 +153,7 @@ void Tms::initParameters()
   parameters_[TMS_MAX_PRESSURE_INTAKE - TMS_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[TMS_MAX_PRESSURE_INTAKE - TMS_BEGIN].value.float_t                 = 0;
   parameters_[TMS_MAX_PRESSURE_INTAKE - TMS_BEGIN].min                           = 0.0;
-  parameters_[TMS_MAX_PRESSURE_INTAKE - TMS_BEGIN].max                           = 10000000.0;
+  parameters_[TMS_MAX_PRESSURE_INTAKE - TMS_BEGIN].max                           = 999999.0;
   parameters_[TMS_MAX_PRESSURE_INTAKE - TMS_BEGIN].def                           = 0;
   parameters_[TMS_MAX_PRESSURE_INTAKE - TMS_BEGIN].code                          = 0;
   // Максимальная температура обмоток
@@ -164,7 +164,7 @@ void Tms::initParameters()
   parameters_[TMS_MAX_TEMPERATUR_WINDING - TMS_BEGIN].validity                   = VALIDITY_ERROR;
   parameters_[TMS_MAX_TEMPERATUR_WINDING - TMS_BEGIN].value.float_t              = 0;
   parameters_[TMS_MAX_TEMPERATUR_WINDING - TMS_BEGIN].min                        = 0.0;
-  parameters_[TMS_MAX_TEMPERATUR_WINDING - TMS_BEGIN].max                        = 10000000.0;
+  parameters_[TMS_MAX_TEMPERATUR_WINDING - TMS_BEGIN].max                        = 999999.0;
   parameters_[TMS_MAX_TEMPERATUR_WINDING - TMS_BEGIN].def                        = 0;
   parameters_[TMS_MAX_TEMPERATUR_WINDING - TMS_BEGIN].code                       = 0;
   // Максимальная температура на приёме
@@ -175,7 +175,7 @@ void Tms::initParameters()
   parameters_[TMS_MAX_TEMPERATURE_INTAKE - TMS_BEGIN].validity                   = VALIDITY_ERROR;
   parameters_[TMS_MAX_TEMPERATURE_INTAKE - TMS_BEGIN].value.float_t              = 0;
   parameters_[TMS_MAX_TEMPERATURE_INTAKE - TMS_BEGIN].min                        = 0.0;
-  parameters_[TMS_MAX_TEMPERATURE_INTAKE - TMS_BEGIN].max                        = 10000000.0;
+  parameters_[TMS_MAX_TEMPERATURE_INTAKE - TMS_BEGIN].max                        = 999999.0;
   parameters_[TMS_MAX_TEMPERATURE_INTAKE - TMS_BEGIN].def                        = 0;
   parameters_[TMS_MAX_TEMPERATURE_INTAKE - TMS_BEGIN].code                       = 0;
   // Максимальное ускорение
@@ -186,7 +186,7 @@ void Tms::initParameters()
   parameters_[TMS_MAX_ACCELERATION_INTAKE - TMS_BEGIN].validity                  = VALIDITY_ERROR;
   parameters_[TMS_MAX_ACCELERATION_INTAKE - TMS_BEGIN].value.float_t             = 0;
   parameters_[TMS_MAX_ACCELERATION_INTAKE - TMS_BEGIN].min                       = 0.0;
-  parameters_[TMS_MAX_ACCELERATION_INTAKE - TMS_BEGIN].max                       = 10000000.0;
+  parameters_[TMS_MAX_ACCELERATION_INTAKE - TMS_BEGIN].max                       = 999999.0;
   parameters_[TMS_MAX_ACCELERATION_INTAKE - TMS_BEGIN].def                       = 0;
   parameters_[TMS_MAX_ACCELERATION_INTAKE - TMS_BEGIN].code                      = 0;
   // Обрыв связи с ТМСП
@@ -197,7 +197,7 @@ void Tms::initParameters()
   parameters_[TMS_FAIL_LINK_TMSP - TMS_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[TMS_FAIL_LINK_TMSP - TMS_BEGIN].value.float_t                      = 0;
   parameters_[TMS_FAIL_LINK_TMSP - TMS_BEGIN].min                                = 0.0;
-  parameters_[TMS_FAIL_LINK_TMSP - TMS_BEGIN].max                                = 10000000.0;
+  parameters_[TMS_FAIL_LINK_TMSP - TMS_BEGIN].max                                = 999999.0;
   parameters_[TMS_FAIL_LINK_TMSP - TMS_BEGIN].def                                = 0;
   parameters_[TMS_FAIL_LINK_TMSP - TMS_BEGIN].code                               = 0;
   // Код изготовителя ТМСП
@@ -208,7 +208,7 @@ void Tms::initParameters()
   parameters_[TMS_MANUFACTURE_TMSP - TMS_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[TMS_MANUFACTURE_TMSP - TMS_BEGIN].value.float_t                    = 0;
   parameters_[TMS_MANUFACTURE_TMSP - TMS_BEGIN].min                              = 0.0;
-  parameters_[TMS_MANUFACTURE_TMSP - TMS_BEGIN].max                              = 10000000.0;
+  parameters_[TMS_MANUFACTURE_TMSP - TMS_BEGIN].max                              = 999999.0;
   parameters_[TMS_MANUFACTURE_TMSP - TMS_BEGIN].def                              = 0;
   parameters_[TMS_MANUFACTURE_TMSP - TMS_BEGIN].code                             = 0;
   // Серийный номер ТМСП
@@ -219,7 +219,7 @@ void Tms::initParameters()
   parameters_[TMS_NUMBER_TMSP - TMS_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[TMS_NUMBER_TMSP - TMS_BEGIN].value.float_t                         = 0;
   parameters_[TMS_NUMBER_TMSP - TMS_BEGIN].min                                   = 0.0;
-  parameters_[TMS_NUMBER_TMSP - TMS_BEGIN].max                                   = 10000000.0;
+  parameters_[TMS_NUMBER_TMSP - TMS_BEGIN].max                                   = 999999.0;
   parameters_[TMS_NUMBER_TMSP - TMS_BEGIN].def                                   = 0;
   parameters_[TMS_NUMBER_TMSP - TMS_BEGIN].code                                  = 0;
   // Дата изготовления ТМСП
@@ -241,7 +241,7 @@ void Tms::initParameters()
   parameters_[TMS_CONSTRUCTION_TMSP - TMS_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[TMS_CONSTRUCTION_TMSP - TMS_BEGIN].value.float_t                   = 0;
   parameters_[TMS_CONSTRUCTION_TMSP - TMS_BEGIN].min                             = 0.0;
-  parameters_[TMS_CONSTRUCTION_TMSP - TMS_BEGIN].max                             = 10000000.0;
+  parameters_[TMS_CONSTRUCTION_TMSP - TMS_BEGIN].max                             = 999999.0;
   parameters_[TMS_CONSTRUCTION_TMSP - TMS_BEGIN].def                             = 0;
   parameters_[TMS_CONSTRUCTION_TMSP - TMS_BEGIN].code                            = 0;
   // Код протокола ТМСП
@@ -252,7 +252,7 @@ void Tms::initParameters()
   parameters_[TMS_PROTOCOL_TMSP - TMS_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[TMS_PROTOCOL_TMSP - TMS_BEGIN].value.float_t                       = 0;
   parameters_[TMS_PROTOCOL_TMSP - TMS_BEGIN].min                                 = 0.0;
-  parameters_[TMS_PROTOCOL_TMSP - TMS_BEGIN].max                                 = 10000000.0;
+  parameters_[TMS_PROTOCOL_TMSP - TMS_BEGIN].max                                 = 999999.0;
   parameters_[TMS_PROTOCOL_TMSP - TMS_BEGIN].def                                 = 0;
   parameters_[TMS_PROTOCOL_TMSP - TMS_BEGIN].code                                = 0;
   // Состав датчиков ТМСП
@@ -263,7 +263,7 @@ void Tms::initParameters()
   parameters_[TMS_SENSOR_TMSP - TMS_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[TMS_SENSOR_TMSP - TMS_BEGIN].value.float_t                         = 0;
   parameters_[TMS_SENSOR_TMSP - TMS_BEGIN].min                                   = 0.0;
-  parameters_[TMS_SENSOR_TMSP - TMS_BEGIN].max                                   = 10000000.0;
+  parameters_[TMS_SENSOR_TMSP - TMS_BEGIN].max                                   = 999999.0;
   parameters_[TMS_SENSOR_TMSP - TMS_BEGIN].def                                   = 0;
   parameters_[TMS_SENSOR_TMSP - TMS_BEGIN].code                                  = 0;
   // Версия По ТМСП
@@ -274,7 +274,7 @@ void Tms::initParameters()
   parameters_[TMS_SOFT_TMSP - TMS_BEGIN].validity                                = VALIDITY_ERROR;
   parameters_[TMS_SOFT_TMSP - TMS_BEGIN].value.float_t                           = 0;
   parameters_[TMS_SOFT_TMSP - TMS_BEGIN].min                                     = 0.0;
-  parameters_[TMS_SOFT_TMSP - TMS_BEGIN].max                                     = 10000000.0;
+  parameters_[TMS_SOFT_TMSP - TMS_BEGIN].max                                     = 999999.0;
   parameters_[TMS_SOFT_TMSP - TMS_BEGIN].def                                     = 0;
   parameters_[TMS_SOFT_TMSP - TMS_BEGIN].code                                    = 0;
   // Скорости передачи бита
@@ -285,7 +285,7 @@ void Tms::initParameters()
   parameters_[TMS_TIME_BIT - TMS_BEGIN].validity                                 = VALIDITY_ERROR;
   parameters_[TMS_TIME_BIT - TMS_BEGIN].value.float_t                            = 0;
   parameters_[TMS_TIME_BIT - TMS_BEGIN].min                                      = 0.0;
-  parameters_[TMS_TIME_BIT - TMS_BEGIN].max                                      = 10000000.0;
+  parameters_[TMS_TIME_BIT - TMS_BEGIN].max                                      = 999999.0;
   parameters_[TMS_TIME_BIT - TMS_BEGIN].def                                      = 0;
   parameters_[TMS_TIME_BIT - TMS_BEGIN].code                                     = 0;
   // Код завода изготовителя ТМСН
@@ -296,7 +296,7 @@ void Tms::initParameters()
   parameters_[TMS_MANUFACTURE_TMSN - TMS_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[TMS_MANUFACTURE_TMSN - TMS_BEGIN].value.float_t                    = 0;
   parameters_[TMS_MANUFACTURE_TMSN - TMS_BEGIN].min                              = 0.0;
-  parameters_[TMS_MANUFACTURE_TMSN - TMS_BEGIN].max                              = 10000000.0;
+  parameters_[TMS_MANUFACTURE_TMSN - TMS_BEGIN].max                              = 999999.0;
   parameters_[TMS_MANUFACTURE_TMSN - TMS_BEGIN].def                              = 0;
   parameters_[TMS_MANUFACTURE_TMSN - TMS_BEGIN].code                             = 0;
   // Заводской номер ТМСН
@@ -307,7 +307,7 @@ void Tms::initParameters()
   parameters_[TMS_NUMBER_TMSN - TMS_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[TMS_NUMBER_TMSN - TMS_BEGIN].value.float_t                         = 0;
   parameters_[TMS_NUMBER_TMSN - TMS_BEGIN].min                                   = 0.0;
-  parameters_[TMS_NUMBER_TMSN - TMS_BEGIN].max                                   = 10000000.0;
+  parameters_[TMS_NUMBER_TMSN - TMS_BEGIN].max                                   = 999999.0;
   parameters_[TMS_NUMBER_TMSN - TMS_BEGIN].def                                   = 0;
   parameters_[TMS_NUMBER_TMSN - TMS_BEGIN].code                                  = 0;
   // Дата изготовления ТМСН
@@ -329,7 +329,7 @@ void Tms::initParameters()
   parameters_[TMS_CONSTRUCTION_TMSN - TMS_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[TMS_CONSTRUCTION_TMSN - TMS_BEGIN].value.float_t                   = 0;
   parameters_[TMS_CONSTRUCTION_TMSN - TMS_BEGIN].min                             = 0.0;
-  parameters_[TMS_CONSTRUCTION_TMSN - TMS_BEGIN].max                             = 10000000.0;
+  parameters_[TMS_CONSTRUCTION_TMSN - TMS_BEGIN].max                             = 999999.0;
   parameters_[TMS_CONSTRUCTION_TMSN - TMS_BEGIN].def                             = 0;
   parameters_[TMS_CONSTRUCTION_TMSN - TMS_BEGIN].code                            = 0;
   // Версия ПО ТМСН
@@ -340,7 +340,7 @@ void Tms::initParameters()
   parameters_[TMS_SOFT_TMSN - TMS_BEGIN].validity                                = VALIDITY_ERROR;
   parameters_[TMS_SOFT_TMSN - TMS_BEGIN].value.float_t                           = 0;
   parameters_[TMS_SOFT_TMSN - TMS_BEGIN].min                                     = 0.0;
-  parameters_[TMS_SOFT_TMSN - TMS_BEGIN].max                                     = 10000000.0;
+  parameters_[TMS_SOFT_TMSN - TMS_BEGIN].max                                     = 999999.0;
   parameters_[TMS_SOFT_TMSN - TMS_BEGIN].def                                     = 0;
   parameters_[TMS_SOFT_TMSN - TMS_BEGIN].code                                    = 0;
   // Код протокола ТМСН
@@ -351,7 +351,7 @@ void Tms::initParameters()
   parameters_[TMS_PROTOCOL_TMSN - TMS_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[TMS_PROTOCOL_TMSN - TMS_BEGIN].value.float_t                       = 0;
   parameters_[TMS_PROTOCOL_TMSN - TMS_BEGIN].min                                 = 0.0;
-  parameters_[TMS_PROTOCOL_TMSN - TMS_BEGIN].max                                 = 10000000.0;
+  parameters_[TMS_PROTOCOL_TMSN - TMS_BEGIN].max                                 = 999999.0;
   parameters_[TMS_PROTOCOL_TMSN - TMS_BEGIN].def                                 = 0;
   parameters_[TMS_PROTOCOL_TMSN - TMS_BEGIN].code                                = 0;
   // Минимальный расход на выкиде
@@ -362,7 +362,7 @@ void Tms::initParameters()
   parameters_[TMS_MIN_FLOW_DISCHARGE - TMS_BEGIN].validity                       = VALIDITY_ERROR;
   parameters_[TMS_MIN_FLOW_DISCHARGE - TMS_BEGIN].value.float_t                  = 0;
   parameters_[TMS_MIN_FLOW_DISCHARGE - TMS_BEGIN].min                            = 0.0;
-  parameters_[TMS_MIN_FLOW_DISCHARGE - TMS_BEGIN].max                            = 10000000.0;
+  parameters_[TMS_MIN_FLOW_DISCHARGE - TMS_BEGIN].max                            = 999999.0;
   parameters_[TMS_MIN_FLOW_DISCHARGE - TMS_BEGIN].def                            = 0;
   parameters_[TMS_MIN_FLOW_DISCHARGE - TMS_BEGIN].code                           = 0;
   // Максимальный расход на выкиде
@@ -373,7 +373,7 @@ void Tms::initParameters()
   parameters_[TMS_MAX_FLOW_DISCHARGE - TMS_BEGIN].validity                       = VALIDITY_ERROR;
   parameters_[TMS_MAX_FLOW_DISCHARGE - TMS_BEGIN].value.float_t                  = 0;
   parameters_[TMS_MAX_FLOW_DISCHARGE - TMS_BEGIN].min                            = 0.0;
-  parameters_[TMS_MAX_FLOW_DISCHARGE - TMS_BEGIN].max                            = 10000000.0;
+  parameters_[TMS_MAX_FLOW_DISCHARGE - TMS_BEGIN].max                            = 999999.0;
   parameters_[TMS_MAX_FLOW_DISCHARGE - TMS_BEGIN].def                            = 0;
   parameters_[TMS_MAX_FLOW_DISCHARGE - TMS_BEGIN].code                           = 0;
   // Максимальное давление на выкиде
@@ -384,7 +384,7 @@ void Tms::initParameters()
   parameters_[TMS_MAX_PRESSURE_DISHARGE - TMS_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[TMS_MAX_PRESSURE_DISHARGE - TMS_BEGIN].value.float_t               = 0;
   parameters_[TMS_MAX_PRESSURE_DISHARGE - TMS_BEGIN].min                         = 0.0;
-  parameters_[TMS_MAX_PRESSURE_DISHARGE - TMS_BEGIN].max                         = 10000000.0;
+  parameters_[TMS_MAX_PRESSURE_DISHARGE - TMS_BEGIN].max                         = 999999.0;
   parameters_[TMS_MAX_PRESSURE_DISHARGE - TMS_BEGIN].def                         = 0;
   parameters_[TMS_MAX_PRESSURE_DISHARGE - TMS_BEGIN].code                        = 0;
   // Максимальная температура на выкиде
@@ -395,7 +395,7 @@ void Tms::initParameters()
   parameters_[TMS_MAX_TEMPERATURE_DISCHARGE - TMS_BEGIN].validity                = VALIDITY_ERROR;
   parameters_[TMS_MAX_TEMPERATURE_DISCHARGE - TMS_BEGIN].value.float_t           = 0;
   parameters_[TMS_MAX_TEMPERATURE_DISCHARGE - TMS_BEGIN].min                     = 0.0;
-  parameters_[TMS_MAX_TEMPERATURE_DISCHARGE - TMS_BEGIN].max                     = 10000000.0;
+  parameters_[TMS_MAX_TEMPERATURE_DISCHARGE - TMS_BEGIN].max                     = 999999.0;
   parameters_[TMS_MAX_TEMPERATURE_DISCHARGE - TMS_BEGIN].def                     = 0;
   parameters_[TMS_MAX_TEMPERATURE_DISCHARGE - TMS_BEGIN].code                    = 0;
   // Время измерения сопротивления изоляции
@@ -406,7 +406,7 @@ void Tms::initParameters()
   parameters_[TMS_RESISTANCE_ISOLATION_TIME - TMS_BEGIN].validity                = VALIDITY_ERROR;
   parameters_[TMS_RESISTANCE_ISOLATION_TIME - TMS_BEGIN].value.float_t           = 0;
   parameters_[TMS_RESISTANCE_ISOLATION_TIME - TMS_BEGIN].min                     = 0.0;
-  parameters_[TMS_RESISTANCE_ISOLATION_TIME - TMS_BEGIN].max                     = 10000000.0;
+  parameters_[TMS_RESISTANCE_ISOLATION_TIME - TMS_BEGIN].max                     = 999999.0;
   parameters_[TMS_RESISTANCE_ISOLATION_TIME - TMS_BEGIN].def                     = 0;
   parameters_[TMS_RESISTANCE_ISOLATION_TIME - TMS_BEGIN].code                    = 0;
   // Время измерения данных и передачи
@@ -417,7 +417,7 @@ void Tms::initParameters()
   parameters_[TMS_MEASURE_TIME - TMS_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[TMS_MEASURE_TIME - TMS_BEGIN].value.float_t                        = 0;
   parameters_[TMS_MEASURE_TIME - TMS_BEGIN].min                                  = 0.0;
-  parameters_[TMS_MEASURE_TIME - TMS_BEGIN].max                                  = 10000000.0;
+  parameters_[TMS_MEASURE_TIME - TMS_BEGIN].max                                  = 999999.0;
   parameters_[TMS_MEASURE_TIME - TMS_BEGIN].def                                  = 0;
   parameters_[TMS_MEASURE_TIME - TMS_BEGIN].code                                 = 0;
   // Время перехода в режим измерения сопротивления изоляции
@@ -428,7 +428,7 @@ void Tms::initParameters()
   parameters_[TMS_RESISTANCE_TRANS_TIME - TMS_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[TMS_RESISTANCE_TRANS_TIME - TMS_BEGIN].value.float_t               = 0;
   parameters_[TMS_RESISTANCE_TRANS_TIME - TMS_BEGIN].min                         = 0.0;
-  parameters_[TMS_RESISTANCE_TRANS_TIME - TMS_BEGIN].max                         = 10000000.0;
+  parameters_[TMS_RESISTANCE_TRANS_TIME - TMS_BEGIN].max                         = 999999.0;
   parameters_[TMS_RESISTANCE_TRANS_TIME - TMS_BEGIN].def                         = 0;
   parameters_[TMS_RESISTANCE_TRANS_TIME - TMS_BEGIN].code                        = 0;
   // Номер скважины
@@ -439,7 +439,7 @@ void Tms::initParameters()
   parameters_[TMS_NUMBER_WELL - TMS_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[TMS_NUMBER_WELL - TMS_BEGIN].value.float_t                         = 0;
   parameters_[TMS_NUMBER_WELL - TMS_BEGIN].min                                   = 0.0;
-  parameters_[TMS_NUMBER_WELL - TMS_BEGIN].max                                   = 10000000.0;
+  parameters_[TMS_NUMBER_WELL - TMS_BEGIN].max                                   = 999999.0;
   parameters_[TMS_NUMBER_WELL - TMS_BEGIN].def                                   = 0;
   parameters_[TMS_NUMBER_WELL - TMS_BEGIN].code                                  = 0;
   // Номер куста
@@ -450,7 +450,7 @@ void Tms::initParameters()
   parameters_[TMS_NUMBER_BUSH - TMS_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[TMS_NUMBER_BUSH - TMS_BEGIN].value.float_t                         = 0;
   parameters_[TMS_NUMBER_BUSH - TMS_BEGIN].min                                   = 0.0;
-  parameters_[TMS_NUMBER_BUSH - TMS_BEGIN].max                                   = 10000000.0;
+  parameters_[TMS_NUMBER_BUSH - TMS_BEGIN].max                                   = 999999.0;
   parameters_[TMS_NUMBER_BUSH - TMS_BEGIN].def                                   = 0;
   parameters_[TMS_NUMBER_BUSH - TMS_BEGIN].code                                  = 0;
   // Номер ЦДНГ
@@ -461,7 +461,7 @@ void Tms::initParameters()
   parameters_[TMS_NUMBER_CDNG - TMS_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[TMS_NUMBER_CDNG - TMS_BEGIN].value.float_t                         = 0;
   parameters_[TMS_NUMBER_CDNG - TMS_BEGIN].min                                   = 0.0;
-  parameters_[TMS_NUMBER_CDNG - TMS_BEGIN].max                                   = 10000000.0;
+  parameters_[TMS_NUMBER_CDNG - TMS_BEGIN].max                                   = 999999.0;
   parameters_[TMS_NUMBER_CDNG - TMS_BEGIN].def                                   = 0;
   parameters_[TMS_NUMBER_CDNG - TMS_BEGIN].code                                  = 0;
   // Адрес Modbus
@@ -472,7 +472,7 @@ void Tms::initParameters()
   parameters_[TMS_MODBUS_ADDRESS - TMS_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[TMS_MODBUS_ADDRESS - TMS_BEGIN].value.float_t                      = 0;
   parameters_[TMS_MODBUS_ADDRESS - TMS_BEGIN].min                                = 0.0;
-  parameters_[TMS_MODBUS_ADDRESS - TMS_BEGIN].max                                = 10000000.0;
+  parameters_[TMS_MODBUS_ADDRESS - TMS_BEGIN].max                                = 999999.0;
   parameters_[TMS_MODBUS_ADDRESS - TMS_BEGIN].def                                = 0;
   parameters_[TMS_MODBUS_ADDRESS - TMS_BEGIN].code                               = 0;
   // Скорость Modbus
@@ -483,7 +483,7 @@ void Tms::initParameters()
   parameters_[TMS_MODBUS_SPEED - TMS_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[TMS_MODBUS_SPEED - TMS_BEGIN].value.float_t                        = 0;
   parameters_[TMS_MODBUS_SPEED - TMS_BEGIN].min                                  = 0.0;
-  parameters_[TMS_MODBUS_SPEED - TMS_BEGIN].max                                  = 10000000.0;
+  parameters_[TMS_MODBUS_SPEED - TMS_BEGIN].max                                  = 999999.0;
   parameters_[TMS_MODBUS_SPEED - TMS_BEGIN].def                                  = 0;
   parameters_[TMS_MODBUS_SPEED - TMS_BEGIN].code                                 = 0;
   // Количество Стоп-бит
@@ -494,7 +494,7 @@ void Tms::initParameters()
   parameters_[TMS_MODBUS_STOP_BIT - TMS_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[TMS_MODBUS_STOP_BIT - TMS_BEGIN].value.float_t                     = 0;
   parameters_[TMS_MODBUS_STOP_BIT - TMS_BEGIN].min                               = 0.0;
-  parameters_[TMS_MODBUS_STOP_BIT - TMS_BEGIN].max                               = 10000000.0;
+  parameters_[TMS_MODBUS_STOP_BIT - TMS_BEGIN].max                               = 999999.0;
   parameters_[TMS_MODBUS_STOP_BIT - TMS_BEGIN].def                               = 0;
   parameters_[TMS_MODBUS_STOP_BIT - TMS_BEGIN].code                              = 0;
   // Текущее дата время
@@ -516,7 +516,7 @@ void Tms::initParameters()
   parameters_[TMS_READ_STATIC_PARAM - TMS_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[TMS_READ_STATIC_PARAM - TMS_BEGIN].value.float_t                   = 0;
   parameters_[TMS_READ_STATIC_PARAM - TMS_BEGIN].min                             = 0.0;
-  parameters_[TMS_READ_STATIC_PARAM - TMS_BEGIN].max                             = 10000000.0;
+  parameters_[TMS_READ_STATIC_PARAM - TMS_BEGIN].max                             = 999999.0;
   parameters_[TMS_READ_STATIC_PARAM - TMS_BEGIN].def                             = 0;
   parameters_[TMS_READ_STATIC_PARAM - TMS_BEGIN].code                            = 0;
   // Количество ошибок от ТМСП
@@ -527,7 +527,7 @@ void Tms::initParameters()
   parameters_[TMS_PACKAGE_ERROR_TMSP - TMS_BEGIN].validity                       = VALIDITY_ERROR;
   parameters_[TMS_PACKAGE_ERROR_TMSP - TMS_BEGIN].value.float_t                  = 0;
   parameters_[TMS_PACKAGE_ERROR_TMSP - TMS_BEGIN].min                            = 0.0;
-  parameters_[TMS_PACKAGE_ERROR_TMSP - TMS_BEGIN].max                            = 10000000.0;
+  parameters_[TMS_PACKAGE_ERROR_TMSP - TMS_BEGIN].max                            = 999999.0;
   parameters_[TMS_PACKAGE_ERROR_TMSP - TMS_BEGIN].def                            = 0;
   parameters_[TMS_PACKAGE_ERROR_TMSP - TMS_BEGIN].code                           = 0;
   // Температура масла двигателя
@@ -538,7 +538,7 @@ void Tms::initParameters()
   parameters_[TMS_TEMPERATURE_MOTOR - TMS_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[TMS_TEMPERATURE_MOTOR - TMS_BEGIN].value.float_t                   = 0;
   parameters_[TMS_TEMPERATURE_MOTOR - TMS_BEGIN].min                             = 0.0;
-  parameters_[TMS_TEMPERATURE_MOTOR - TMS_BEGIN].max                             = 10000000.0;
+  parameters_[TMS_TEMPERATURE_MOTOR - TMS_BEGIN].max                             = 999999.0;
   parameters_[TMS_TEMPERATURE_MOTOR - TMS_BEGIN].def                             = 0;
   parameters_[TMS_TEMPERATURE_MOTOR - TMS_BEGIN].code                            = 0;
   // Единицы измерения температуры
@@ -549,7 +549,7 @@ void Tms::initParameters()
   parameters_[TMS_TEMPERATURE_UNIT - TMS_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[TMS_TEMPERATURE_UNIT - TMS_BEGIN].value.float_t                    = 0;
   parameters_[TMS_TEMPERATURE_UNIT - TMS_BEGIN].min                              = 0.0;
-  parameters_[TMS_TEMPERATURE_UNIT - TMS_BEGIN].max                              = 10000000.0;
+  parameters_[TMS_TEMPERATURE_UNIT - TMS_BEGIN].max                              = 999999.0;
   parameters_[TMS_TEMPERATURE_UNIT - TMS_BEGIN].def                              = 0;
   parameters_[TMS_TEMPERATURE_UNIT - TMS_BEGIN].code                             = 0;
   // Единицы измерения давления
@@ -560,7 +560,7 @@ void Tms::initParameters()
   parameters_[TMS_PRESSURE_UNIT - TMS_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[TMS_PRESSURE_UNIT - TMS_BEGIN].value.float_t                       = 0;
   parameters_[TMS_PRESSURE_UNIT - TMS_BEGIN].min                                 = 0.0;
-  parameters_[TMS_PRESSURE_UNIT - TMS_BEGIN].max                                 = 10000000.0;
+  parameters_[TMS_PRESSURE_UNIT - TMS_BEGIN].max                                 = 999999.0;
   parameters_[TMS_PRESSURE_UNIT - TMS_BEGIN].def                                 = 0;
   parameters_[TMS_PRESSURE_UNIT - TMS_BEGIN].code                                = 0;
   // Слово состояние системы
@@ -571,7 +571,7 @@ void Tms::initParameters()
   parameters_[TMS_PSW_TMS - TMS_BEGIN].validity                                  = VALIDITY_ERROR;
   parameters_[TMS_PSW_TMS - TMS_BEGIN].value.float_t                             = 0;
   parameters_[TMS_PSW_TMS - TMS_BEGIN].min                                       = 0.0;
-  parameters_[TMS_PSW_TMS - TMS_BEGIN].max                                       = 10000000.0;
+  parameters_[TMS_PSW_TMS - TMS_BEGIN].max                                       = 999999.0;
   parameters_[TMS_PSW_TMS - TMS_BEGIN].def                                       = 0;
   parameters_[TMS_PSW_TMS - TMS_BEGIN].code                                      = 0;
   // Слово состояние наземного блока
@@ -582,7 +582,7 @@ void Tms::initParameters()
   parameters_[TMS_PSW_TMSN - TMS_BEGIN].validity                                 = VALIDITY_ERROR;
   parameters_[TMS_PSW_TMSN - TMS_BEGIN].value.float_t                            = 0;
   parameters_[TMS_PSW_TMSN - TMS_BEGIN].min                                      = 0.0;
-  parameters_[TMS_PSW_TMSN - TMS_BEGIN].max                                      = 10000000.0;
+  parameters_[TMS_PSW_TMSN - TMS_BEGIN].max                                      = 999999.0;
   parameters_[TMS_PSW_TMSN - TMS_BEGIN].def                                      = 0;
   parameters_[TMS_PSW_TMSN - TMS_BEGIN].code                                     = 0;
   // Cлово состояние погружного блока
@@ -593,7 +593,7 @@ void Tms::initParameters()
   parameters_[TMS_PSW_TMSP_1 - TMS_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[TMS_PSW_TMSP_1 - TMS_BEGIN].value.float_t                          = 0;
   parameters_[TMS_PSW_TMSP_1 - TMS_BEGIN].min                                    = 0.0;
-  parameters_[TMS_PSW_TMSP_1 - TMS_BEGIN].max                                    = 10000000.0;
+  parameters_[TMS_PSW_TMSP_1 - TMS_BEGIN].max                                    = 999999.0;
   parameters_[TMS_PSW_TMSP_1 - TMS_BEGIN].def                                    = 0;
   parameters_[TMS_PSW_TMSP_1 - TMS_BEGIN].code                                   = 0;
   // Слово состояние погружного блока 2
@@ -604,7 +604,7 @@ void Tms::initParameters()
   parameters_[TMS_PSW_TMSP_2 - TMS_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[TMS_PSW_TMSP_2 - TMS_BEGIN].value.float_t                          = 0;
   parameters_[TMS_PSW_TMSP_2 - TMS_BEGIN].min                                    = 0.0;
-  parameters_[TMS_PSW_TMSP_2 - TMS_BEGIN].max                                    = 10000000.0;
+  parameters_[TMS_PSW_TMSP_2 - TMS_BEGIN].max                                    = 999999.0;
   parameters_[TMS_PSW_TMSP_2 - TMS_BEGIN].def                                    = 0;
   parameters_[TMS_PSW_TMSP_2 - TMS_BEGIN].code                                   = 0;
   // Зенитный угол
@@ -615,7 +615,7 @@ void Tms::initParameters()
   parameters_[TMS_ANGLE_INTAKE - TMS_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[TMS_ANGLE_INTAKE - TMS_BEGIN].value.float_t                        = 0;
   parameters_[TMS_ANGLE_INTAKE - TMS_BEGIN].min                                  = 0.0;
-  parameters_[TMS_ANGLE_INTAKE - TMS_BEGIN].max                                  = 10000000.0;
+  parameters_[TMS_ANGLE_INTAKE - TMS_BEGIN].max                                  = 999999.0;
   parameters_[TMS_ANGLE_INTAKE - TMS_BEGIN].def                                  = 0;
   parameters_[TMS_ANGLE_INTAKE - TMS_BEGIN].code                                 = 0;
   // Обводненность
@@ -626,7 +626,7 @@ void Tms::initParameters()
   parameters_[TMS_HOWMIDITY_DISCHARGE - TMS_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[TMS_HOWMIDITY_DISCHARGE - TMS_BEGIN].value.float_t                 = 0;
   parameters_[TMS_HOWMIDITY_DISCHARGE - TMS_BEGIN].min                           = 0.0;
-  parameters_[TMS_HOWMIDITY_DISCHARGE - TMS_BEGIN].max                           = 10000000.0;
+  parameters_[TMS_HOWMIDITY_DISCHARGE - TMS_BEGIN].max                           = 999999.0;
   parameters_[TMS_HOWMIDITY_DISCHARGE - TMS_BEGIN].def                           = 0;
   parameters_[TMS_HOWMIDITY_DISCHARGE - TMS_BEGIN].code                          = 0;
   // Радиальная виброскорость насоса
@@ -725,7 +725,7 @@ void Tms::initParameters()
   parameters_[TMS_TEMPERATURE_DOWNHOLE - TMS_BEGIN].validity                     = 0;
   parameters_[TMS_TEMPERATURE_DOWNHOLE - TMS_BEGIN].value.float_t                = 0;
   parameters_[TMS_TEMPERATURE_DOWNHOLE - TMS_BEGIN].min                          = 0.0;
-  parameters_[TMS_TEMPERATURE_DOWNHOLE - TMS_BEGIN].max                          = 10000000.0;
+  parameters_[TMS_TEMPERATURE_DOWNHOLE - TMS_BEGIN].max                          = 999999.0;
   parameters_[TMS_TEMPERATURE_DOWNHOLE - TMS_BEGIN].def                          = 0;
   parameters_[TMS_TEMPERATURE_DOWNHOLE - TMS_BEGIN].code                         = 0;
   // 
@@ -736,7 +736,7 @@ void Tms::initParameters()
   parameters_[TMS_PRESSURE_DOWNHOLE - TMS_BEGIN].validity                        = 0;
   parameters_[TMS_PRESSURE_DOWNHOLE - TMS_BEGIN].value.float_t                   = 0;
   parameters_[TMS_PRESSURE_DOWNHOLE - TMS_BEGIN].min                             = 0.0;
-  parameters_[TMS_PRESSURE_DOWNHOLE - TMS_BEGIN].max                             = 10000000.0;
+  parameters_[TMS_PRESSURE_DOWNHOLE - TMS_BEGIN].max                             = 999999.0;
   parameters_[TMS_PRESSURE_DOWNHOLE - TMS_BEGIN].def                             = 0;
   parameters_[TMS_PRESSURE_DOWNHOLE - TMS_BEGIN].code                            = 0;
   // 
@@ -747,7 +747,7 @@ void Tms::initParameters()
   parameters_[TMS_SPEED_XY_DOWNHOLE - TMS_BEGIN].validity                        = 0;
   parameters_[TMS_SPEED_XY_DOWNHOLE - TMS_BEGIN].value.float_t                   = 0;
   parameters_[TMS_SPEED_XY_DOWNHOLE - TMS_BEGIN].min                             = 0.0;
-  parameters_[TMS_SPEED_XY_DOWNHOLE - TMS_BEGIN].max                             = 10000000.0;
+  parameters_[TMS_SPEED_XY_DOWNHOLE - TMS_BEGIN].max                             = 999999.0;
   parameters_[TMS_SPEED_XY_DOWNHOLE - TMS_BEGIN].def                             = 0;
   parameters_[TMS_SPEED_XY_DOWNHOLE - TMS_BEGIN].code                            = 0;
   // 
@@ -758,7 +758,7 @@ void Tms::initParameters()
   parameters_[TMS_SPEED_Z_DOWNHOLE - TMS_BEGIN].validity                         = 0;
   parameters_[TMS_SPEED_Z_DOWNHOLE - TMS_BEGIN].value.float_t                    = 0;
   parameters_[TMS_SPEED_Z_DOWNHOLE - TMS_BEGIN].min                              = 0.0;
-  parameters_[TMS_SPEED_Z_DOWNHOLE - TMS_BEGIN].max                              = 10000000.0;
+  parameters_[TMS_SPEED_Z_DOWNHOLE - TMS_BEGIN].max                              = 999999.0;
   parameters_[TMS_SPEED_Z_DOWNHOLE - TMS_BEGIN].def                              = 0;
   parameters_[TMS_SPEED_Z_DOWNHOLE - TMS_BEGIN].code                             = 0;
   // 
@@ -769,7 +769,7 @@ void Tms::initParameters()
   parameters_[TMS_ANGLE_DOWNHOLE - TMS_BEGIN].validity                           = 0;
   parameters_[TMS_ANGLE_DOWNHOLE - TMS_BEGIN].value.float_t                      = 0;
   parameters_[TMS_ANGLE_DOWNHOLE - TMS_BEGIN].min                                = 0.0;
-  parameters_[TMS_ANGLE_DOWNHOLE - TMS_BEGIN].max                                = 10000000.0;
+  parameters_[TMS_ANGLE_DOWNHOLE - TMS_BEGIN].max                                = 999999.0;
   parameters_[TMS_ANGLE_DOWNHOLE - TMS_BEGIN].def                                = 0;
   parameters_[TMS_ANGLE_DOWNHOLE - TMS_BEGIN].code                               = 0;
   // 
@@ -780,7 +780,7 @@ void Tms::initParameters()
   parameters_[TMS_PSW_TMSP_3 - TMS_BEGIN].validity                               = 0;
   parameters_[TMS_PSW_TMSP_3 - TMS_BEGIN].value.float_t                          = 0;
   parameters_[TMS_PSW_TMSP_3 - TMS_BEGIN].min                                    = 0.0;
-  parameters_[TMS_PSW_TMSP_3 - TMS_BEGIN].max                                    = 10000000.0;
+  parameters_[TMS_PSW_TMSP_3 - TMS_BEGIN].max                                    = 999999.0;
   parameters_[TMS_PSW_TMSP_3 - TMS_BEGIN].def                                    = 0;
   parameters_[TMS_PSW_TMSP_3 - TMS_BEGIN].code                                   = 0;
   // 
@@ -791,7 +791,7 @@ void Tms::initParameters()
   parameters_[TMS_VOLTAGE_TMSP_3 - TMS_BEGIN].validity                           = 0;
   parameters_[TMS_VOLTAGE_TMSP_3 - TMS_BEGIN].value.float_t                      = 0;
   parameters_[TMS_VOLTAGE_TMSP_3 - TMS_BEGIN].min                                = 0.0;
-  parameters_[TMS_VOLTAGE_TMSP_3 - TMS_BEGIN].max                                = 10000000.0;
+  parameters_[TMS_VOLTAGE_TMSP_3 - TMS_BEGIN].max                                = 999999.0;
   parameters_[TMS_VOLTAGE_TMSP_3 - TMS_BEGIN].def                                = 0;
   parameters_[TMS_VOLTAGE_TMSP_3 - TMS_BEGIN].code                               = 0;
   // 
@@ -802,7 +802,7 @@ void Tms::initParameters()
   parameters_[TMS_HOWMIDITY_DOWNHOLE - TMS_BEGIN].validity                       = 0;
   parameters_[TMS_HOWMIDITY_DOWNHOLE - TMS_BEGIN].value.float_t                  = 0;
   parameters_[TMS_HOWMIDITY_DOWNHOLE - TMS_BEGIN].min                            = 0.0;
-  parameters_[TMS_HOWMIDITY_DOWNHOLE - TMS_BEGIN].max                            = 10000000.0;
+  parameters_[TMS_HOWMIDITY_DOWNHOLE - TMS_BEGIN].max                            = 999999.0;
   parameters_[TMS_HOWMIDITY_DOWNHOLE - TMS_BEGIN].def                            = 0;
   parameters_[TMS_HOWMIDITY_DOWNHOLE - TMS_BEGIN].code                           = 0;
   // 
@@ -813,7 +813,7 @@ void Tms::initParameters()
   parameters_[TMS_HOWMIDITY_FREQ_DISCHARGE - TMS_BEGIN].validity                 = 0;
   parameters_[TMS_HOWMIDITY_FREQ_DISCHARGE - TMS_BEGIN].value.float_t            = 0;
   parameters_[TMS_HOWMIDITY_FREQ_DISCHARGE - TMS_BEGIN].min                      = 0.0;
-  parameters_[TMS_HOWMIDITY_FREQ_DISCHARGE - TMS_BEGIN].max                      = 10000000.0;
+  parameters_[TMS_HOWMIDITY_FREQ_DISCHARGE - TMS_BEGIN].max                      = 999999.0;
   parameters_[TMS_HOWMIDITY_FREQ_DISCHARGE - TMS_BEGIN].def                      = 0;
   parameters_[TMS_HOWMIDITY_FREQ_DISCHARGE - TMS_BEGIN].code                     = 0;
   // 
@@ -824,7 +824,7 @@ void Tms::initParameters()
   parameters_[TMS_VOLTAGE_TMSP - TMS_BEGIN].validity                             = 0;
   parameters_[TMS_VOLTAGE_TMSP - TMS_BEGIN].value.float_t                        = 0;
   parameters_[TMS_VOLTAGE_TMSP - TMS_BEGIN].min                                  = 0.0;
-  parameters_[TMS_VOLTAGE_TMSP - TMS_BEGIN].max                                  = 10000000.0;
+  parameters_[TMS_VOLTAGE_TMSP - TMS_BEGIN].max                                  = 999999.0;
   parameters_[TMS_VOLTAGE_TMSP - TMS_BEGIN].def                                  = 0;
   parameters_[TMS_VOLTAGE_TMSP - TMS_BEGIN].code                                 = 0;
   // 
@@ -835,7 +835,7 @@ void Tms::initParameters()
   parameters_[TMS_PACKAGE_LOST_TMSP - TMS_BEGIN].validity                        = 0;
   parameters_[TMS_PACKAGE_LOST_TMSP - TMS_BEGIN].value.float_t                   = 0;
   parameters_[TMS_PACKAGE_LOST_TMSP - TMS_BEGIN].min                             = 0.0;
-  parameters_[TMS_PACKAGE_LOST_TMSP - TMS_BEGIN].max                             = 10000000.0;
+  parameters_[TMS_PACKAGE_LOST_TMSP - TMS_BEGIN].max                             = 999999.0;
   parameters_[TMS_PACKAGE_LOST_TMSP - TMS_BEGIN].def                             = 0;
   parameters_[TMS_PACKAGE_LOST_TMSP - TMS_BEGIN].code                            = 0;
   // 
@@ -846,7 +846,7 @@ void Tms::initParameters()
   parameters_[TMS_PACKAGE_RECEIVE_TMSP - TMS_BEGIN].validity                     = 0;
   parameters_[TMS_PACKAGE_RECEIVE_TMSP - TMS_BEGIN].value.float_t                = 0;
   parameters_[TMS_PACKAGE_RECEIVE_TMSP - TMS_BEGIN].min                          = 0.0;
-  parameters_[TMS_PACKAGE_RECEIVE_TMSP - TMS_BEGIN].max                          = 10000000.0;
+  parameters_[TMS_PACKAGE_RECEIVE_TMSP - TMS_BEGIN].max                          = 999999.0;
   parameters_[TMS_PACKAGE_RECEIVE_TMSP - TMS_BEGIN].def                          = 0;
   parameters_[TMS_PACKAGE_RECEIVE_TMSP - TMS_BEGIN].code                         = 0;
   // 
@@ -857,7 +857,7 @@ void Tms::initParameters()
   parameters_[TMS_PACKAGE_MASK_TMSP_1 - TMS_BEGIN].validity                      = 0;
   parameters_[TMS_PACKAGE_MASK_TMSP_1 - TMS_BEGIN].value.float_t                 = 0;
   parameters_[TMS_PACKAGE_MASK_TMSP_1 - TMS_BEGIN].min                           = 0.0;
-  parameters_[TMS_PACKAGE_MASK_TMSP_1 - TMS_BEGIN].max                           = 10000000.0;
+  parameters_[TMS_PACKAGE_MASK_TMSP_1 - TMS_BEGIN].max                           = 999999.0;
   parameters_[TMS_PACKAGE_MASK_TMSP_1 - TMS_BEGIN].def                           = 0;
   parameters_[TMS_PACKAGE_MASK_TMSP_1 - TMS_BEGIN].code                          = 0;
   // 
@@ -868,7 +868,7 @@ void Tms::initParameters()
   parameters_[TMS_PACKAGE_NUMBER_TMSP - TMS_BEGIN].validity                      = 0;
   parameters_[TMS_PACKAGE_NUMBER_TMSP - TMS_BEGIN].value.float_t                 = 0;
   parameters_[TMS_PACKAGE_NUMBER_TMSP - TMS_BEGIN].min                           = 0.0;
-  parameters_[TMS_PACKAGE_NUMBER_TMSP - TMS_BEGIN].max                           = 10000000.0;
+  parameters_[TMS_PACKAGE_NUMBER_TMSP - TMS_BEGIN].max                           = 999999.0;
   parameters_[TMS_PACKAGE_NUMBER_TMSP - TMS_BEGIN].def                           = 0;
   parameters_[TMS_PACKAGE_NUMBER_TMSP - TMS_BEGIN].code                          = 0;
   // 
@@ -879,7 +879,7 @@ void Tms::initParameters()
   parameters_[TMS_PACKAGE_QUALITY_TMSP - TMS_BEGIN].validity                     = 0;
   parameters_[TMS_PACKAGE_QUALITY_TMSP - TMS_BEGIN].value.float_t                = 0;
   parameters_[TMS_PACKAGE_QUALITY_TMSP - TMS_BEGIN].min                          = 0.0;
-  parameters_[TMS_PACKAGE_QUALITY_TMSP - TMS_BEGIN].max                          = 10000000.0;
+  parameters_[TMS_PACKAGE_QUALITY_TMSP - TMS_BEGIN].max                          = 999999.0;
   parameters_[TMS_PACKAGE_QUALITY_TMSP - TMS_BEGIN].def                          = 0;
   parameters_[TMS_PACKAGE_QUALITY_TMSP - TMS_BEGIN].code                         = 0;
   // 
@@ -890,7 +890,7 @@ void Tms::initParameters()
   parameters_[TMS_PACKAGE_TMSP - TMS_BEGIN].validity                             = 0;
   parameters_[TMS_PACKAGE_TMSP - TMS_BEGIN].value.float_t                        = 0;
   parameters_[TMS_PACKAGE_TMSP - TMS_BEGIN].min                                  = 0.0;
-  parameters_[TMS_PACKAGE_TMSP - TMS_BEGIN].max                                  = 10000000.0;
+  parameters_[TMS_PACKAGE_TMSP - TMS_BEGIN].max                                  = 999999.0;
   parameters_[TMS_PACKAGE_TMSP - TMS_BEGIN].def                                  = 0;
   parameters_[TMS_PACKAGE_TMSP - TMS_BEGIN].code                                 = 0;
   // 
@@ -901,7 +901,7 @@ void Tms::initParameters()
   parameters_[TMS_PACKAGE_TIME_TMSP - TMS_BEGIN].validity                        = 0;
   parameters_[TMS_PACKAGE_TIME_TMSP - TMS_BEGIN].value.float_t                   = 0;
   parameters_[TMS_PACKAGE_TIME_TMSP - TMS_BEGIN].min                             = 0.0;
-  parameters_[TMS_PACKAGE_TIME_TMSP - TMS_BEGIN].max                             = 10000000.0;
+  parameters_[TMS_PACKAGE_TIME_TMSP - TMS_BEGIN].max                             = 999999.0;
   parameters_[TMS_PACKAGE_TIME_TMSP - TMS_BEGIN].def                             = 0;
   parameters_[TMS_PACKAGE_TIME_TMSP - TMS_BEGIN].code                            = 0;
   // 
@@ -912,7 +912,7 @@ void Tms::initParameters()
   parameters_[TMS_PACKAGE_ONLY_TMSP - TMS_BEGIN].validity                        = 0;
   parameters_[TMS_PACKAGE_ONLY_TMSP - TMS_BEGIN].value.float_t                   = 0;
   parameters_[TMS_PACKAGE_ONLY_TMSP - TMS_BEGIN].min                             = 0.0;
-  parameters_[TMS_PACKAGE_ONLY_TMSP - TMS_BEGIN].max                             = 10000000.0;
+  parameters_[TMS_PACKAGE_ONLY_TMSP - TMS_BEGIN].max                             = 999999.0;
   parameters_[TMS_PACKAGE_ONLY_TMSP - TMS_BEGIN].def                             = 0;
   parameters_[TMS_PACKAGE_ONLY_TMSP - TMS_BEGIN].code                            = 0;
   // 
@@ -923,7 +923,7 @@ void Tms::initParameters()
   parameters_[TMS_PACKAGE_ONLY_TIME_TMSP - TMS_BEGIN].validity                   = 0;
   parameters_[TMS_PACKAGE_ONLY_TIME_TMSP - TMS_BEGIN].value.float_t              = 0;
   parameters_[TMS_PACKAGE_ONLY_TIME_TMSP - TMS_BEGIN].min                        = 0.0;
-  parameters_[TMS_PACKAGE_ONLY_TIME_TMSP - TMS_BEGIN].max                        = 10000000.0;
+  parameters_[TMS_PACKAGE_ONLY_TIME_TMSP - TMS_BEGIN].max                        = 999999.0;
   parameters_[TMS_PACKAGE_ONLY_TIME_TMSP - TMS_BEGIN].def                        = 0;
   parameters_[TMS_PACKAGE_ONLY_TIME_TMSP - TMS_BEGIN].code                       = 0;
 }
