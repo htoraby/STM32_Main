@@ -8013,7 +8013,7 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].value.float_t                 = 1.0;
-  parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].min                           = 1.0;
+  parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].min                           = 0.5;
   parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].max                           = 1000.0;
   parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].def                           = 1.0;
