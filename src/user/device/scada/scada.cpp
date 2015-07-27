@@ -12,11 +12,19 @@ static void scadaTask(void *p)
   (static_cast<Scada*>(p))->task();
 }
 
+static void scadaCalcParametersTask(void *p)
+{
+  (static_cast<Scada*>(p))->calcParametersTask();
+}
+
 Scada::Scada()
 {
   scadaParameters_ = scadaParameters;
   osThreadDef(ScadaTask, scadaTask, osPriorityLow, 0, 4*configMINIMAL_STACK_SIZE);
   mbThreadId_ = osThreadCreate(osThread(ScadaTask), this);
+
+  osThreadDef(ScadaCalcParameters, scadaCalcParametersTask, osPriorityNormal, 0, 4*configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(ScadaCalcParameters), this);
 }
 
 Scada::~Scada()
@@ -41,6 +49,11 @@ void Scada::task()
     eMBPoll();
     osDelay(1);
   }
+}
+
+void Scada::calcParametersTask()
+{
+
 }
 
 inline int Scada::sizeDataFromTypeData(uint8_t typeData)

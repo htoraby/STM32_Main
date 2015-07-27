@@ -9,3 +9,8 @@ ScadaRegion30::~ScadaRegion30()
 {
 
 }
+
+void ScadaRegion30::calcParametersTask()
+{
+  asm("nop");
+}

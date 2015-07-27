@@ -42,6 +42,7 @@ public:
   ~Scada();
 
   void task();
+  virtual void calcParametersTask();
 
   eMBErrorCode readReg(uint8_t *buffer, uint16_t address, uint16_t numRegs);
   eMBErrorCode writeReg(uint8_t *buffer, uint16_t address, uint16_t numRegs);

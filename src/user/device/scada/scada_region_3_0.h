@@ -11,7 +11,7 @@ public:
 
 private:
   void initParameters();
-
+  void calcParametersTask();
 
 
 };
