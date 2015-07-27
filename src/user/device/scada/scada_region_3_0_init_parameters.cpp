@@ -1083,7 +1083,7 @@ void ScadaRegion30::initParameters()
   scadaParameters_[89].command           = OPERATION_ERROR;
   scadaParameters_[89].value.float_t     = 0;
   // Время АПВ защит по напряжению (Автозапуск)
-  scadaParameters_[90].id                = 0;
+  scadaParameters_[90].id                = CCS_PROT_SUPPLY_RESTART_DELAY;
   scadaParameters_[90].address           = 557;
   scadaParameters_[90].operation         = OPERATION_WRITE;
   scadaParameters_[90].physic            = PHYSIC_TIME;
@@ -1527,7 +1527,7 @@ void ScadaRegion30::initParameters()
   scadaParameters_[126].command          = OPERATION_ERROR;
   scadaParameters_[126].value.float_t    = 0;
   // Кол-во разрешенных АПВ после других защит
-  scadaParameters_[127].id               = 0;
+  scadaParameters_[127].id               = CCS_PROT_OTHER_RESTART_LIMIT;
   scadaParameters_[127].address          = 594;
   scadaParameters_[127].operation        = OPERATION_WRITE;
   scadaParameters_[127].physic           = PHYSIC_NUMERIC;
@@ -1815,7 +1815,7 @@ void ScadaRegion30::initParameters()
   scadaParameters_[150].command          = OPERATION_ERROR;
   scadaParameters_[150].value.float_t    = 0;
   // Кол-во встряхиваний
-  scadaParameters_[151].id               = 0;
+  scadaParameters_[151].id               = CCS_RGM_JARRING_COUNT;
   scadaParameters_[151].address          = 618;
   scadaParameters_[151].operation        = OPERATION_WRITE;
   scadaParameters_[151].physic           = 0;

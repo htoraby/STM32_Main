@@ -12646,7 +12646,6 @@
 		<name>CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
 		<def>0.0</def>
@@ -12658,6 +12657,56 @@
 	</param>
 	<param>
 		<id>727</id>
+		<name>CCS_RGM_JARRING_COUNT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999.0</max>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<text>Количество встряхиваний</text>
+		<code>13</code>
+		<comment>Количество встряхиваний</comment>
+	</param>
+	<param>
+		<id>728</id>
+		<name>CCS_PROT_OTHER_RESTART_LIMIT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>9999.0</max>
+		<def>9999.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>9999.0</value>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>13</code>
+		<comment>Кол-во разрешенных АПВ после других защит</comment>
+	</param>
+	<param>
+		<id>729</id>
+		<name>CCS_PROT_SUPPLY_RESTART_DELAY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>86400.0</max>
+		<def>3600.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<unit>TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>13</code>
+		<comment>Задержка АПВ защит по напряжению уставка</comment>
+	</param>
+	<param>
+		<id>730</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>

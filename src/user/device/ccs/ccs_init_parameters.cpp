@@ -8718,7 +8718,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].id              = CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].access          = ACCESS_OPERATOR;
   parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].operation       = OPERATION_WRITE;
-  parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].physic          = PHYSIC_NUMERIC;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].physic          = 0;
   parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].value.float_t   = 0.0;
   parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].min             = 0.0;
@@ -8726,5 +8726,41 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].discret         = 1;
   parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].def             = 0.0;
   parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].code            = 13;
+  // Количество встряхиваний
+  parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].id                              = CCS_RGM_JARRING_COUNT;
+  parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].access                          = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].validity                        = VALIDITY_OK;
+  parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].value.float_t                   = 0;
+  parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].min                             = 0.0;
+  parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].max                             = 999999.0;
+  parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].discret                         = 1;
+  parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].def                             = 0;
+  parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].code                            = 13;
+  // Кол-во разрешенных АПВ после других защит
+  parameters_[CCS_PROT_OTHER_RESTART_LIMIT - CCS_BEGIN].id                       = CCS_PROT_OTHER_RESTART_LIMIT;
+  parameters_[CCS_PROT_OTHER_RESTART_LIMIT - CCS_BEGIN].access                   = ACCESS_OPERATOR;
+  parameters_[CCS_PROT_OTHER_RESTART_LIMIT - CCS_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_RESTART_LIMIT - CCS_BEGIN].physic                   = PHYSIC_NUMERIC;
+  parameters_[CCS_PROT_OTHER_RESTART_LIMIT - CCS_BEGIN].validity                 = VALIDITY_OK;
+  parameters_[CCS_PROT_OTHER_RESTART_LIMIT - CCS_BEGIN].value.float_t            = 9999.0;
+  parameters_[CCS_PROT_OTHER_RESTART_LIMIT - CCS_BEGIN].min                      = 0.0;
+  parameters_[CCS_PROT_OTHER_RESTART_LIMIT - CCS_BEGIN].max                      = 9999.0;
+  parameters_[CCS_PROT_OTHER_RESTART_LIMIT - CCS_BEGIN].discret                  = 1;
+  parameters_[CCS_PROT_OTHER_RESTART_LIMIT - CCS_BEGIN].def                      = 9999.0;
+  parameters_[CCS_PROT_OTHER_RESTART_LIMIT - CCS_BEGIN].code                     = 13;
+  // Задержка АПВ защит по напряжению уставка
+  parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].id                      = CCS_PROT_SUPPLY_RESTART_DELAY;
+  parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].access                  = ACCESS_OPERATOR;
+  parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].physic                  = PHYSIC_TIME;
+  parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].validity                = VALIDITY_OK;
+  parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].value.float_t           = 0.0;
+  parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].min                     = 0.0;
+  parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].max                     = 86400.0;
+  parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].discret                 = 1;
+  parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].def                     = 3600.0;
+  parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].code                    = 13;
 }
 
