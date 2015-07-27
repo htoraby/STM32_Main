@@ -77,9 +77,13 @@ int Vsd::setMinFrequency(float value)
     // Если установили новое значение в массив параметров
     if (!setValue(VSD_LOW_LIM_SPEED_MOTOR, value)) {
       // Меняем поле минимум для уставки "Максимальной частоты"
-      setMin(getIndexAtId(VSD_HIGH_LIM_SPEED_MOTOR), value);
+      setMin(VSD_HIGH_LIM_SPEED_MOTOR, value);
       // Меняем поле минимум для уставки "Частота"
-      setMin(getIndexAtId(VSD_FREQUENCY), value);
+      setMin(VSD_FREQUENCY, value);
+
+      if (value > getValue(VSD_FREQUENCY))
+        setFrequency(value);
+
       return ok_r;
     }
     return err_r;
@@ -97,9 +101,13 @@ int Vsd::setMaxFrequency(float value)
     // Если установили новое значение в массив параметров
     if (!setValue(VSD_HIGH_LIM_SPEED_MOTOR, value)) {
       // Меняем поле максимум для уставки "Минимальной частоты"
-      setMax(getIndexAtId(VSD_LOW_LIM_SPEED_MOTOR), value);
+      setMax(VSD_LOW_LIM_SPEED_MOTOR, value);
       // Меняем поле максимум для уставки "Частота"
-      setMax(getIndexAtId(VSD_FREQUENCY), value);
+      setMax(VSD_FREQUENCY, value);
+
+      if (value < getValue(VSD_FREQUENCY))
+        setFrequency(value);
+
       return ok_r;
     }
     return err_r;

@@ -159,14 +159,8 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
   case VSD_ROTATION:
     return setRotation(value);
   case VSD_LOW_LIM_SPEED_MOTOR:
-    if (value > getValue(VSD_FREQUENCY))
-      setFrequency(value);
     return setMinFrequency(value);
   case VSD_HIGH_LIM_SPEED_MOTOR:
-    if (value < getValue(VSD_FREQUENCY)) {
-      setFrequency(value);
-      ksu.calcTransTapOff();
-    }
     return setMaxFrequency(value);
   case VSD_TIMER_DISPERSAL:
     return setTimeSpeedUp(value);
