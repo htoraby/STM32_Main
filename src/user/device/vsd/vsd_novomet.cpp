@@ -464,6 +464,31 @@ int VsdNovomet::setSwitchingFrequency(float value)
   }
 }
 
+int VsdNovomet::setUfU1(float value)
+{
+  return Vsd::setUfU1(value);
+}
+
+int VsdNovomet::setUfU2(float value)
+{
+  return Vsd::setUfU2(value);
+}
+
+int VsdNovomet::setUfU3(float value)
+{
+  return Vsd::setUfU3(value);
+}
+
+int VsdNovomet::setUfU4(float value)
+{
+  return Vsd::setUfU4(value);
+}
+
+int VsdNovomet::setUfU5(float value)
+{
+  return Vsd::setUfU5(value);
+}
+
 void VsdNovomet::calcParameters(uint16_t id)
 {
 

@@ -104,6 +104,12 @@ public:
 
   virtual int setUfU(uint16_t id, float value);
 
+  virtual int setUfU1(float value);
+  virtual int setUfU2(float value);
+  virtual int setUfU3(float value);
+  virtual int setUfU4(float value);
+  virtual int setUfU5(float value);
+
   /*!
    * \brief Функция записи в регистр темпа набора частоты Гц/с
    * и пересчитанного значения в регистр время набора частота

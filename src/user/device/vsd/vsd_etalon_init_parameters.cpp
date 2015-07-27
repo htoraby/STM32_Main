@@ -1508,7 +1508,7 @@ void VsdEtalon::initModbusParameters()
                            0                // Значение
                           };
   modbusParameters_[89] = {// Частота U/f двигателя, точка u1
-                           VSD_UF_CHARACTERISTIC_U_1,
+                           VSD_UF_CHARACTERISTIC_U_1_PERCENT,
                            312 + 0x4000,    // 0x4138 Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_PERCENT,  // Физическая величина параметра
@@ -1518,8 +1518,8 @@ void VsdEtalon::initModbusParameters()
                            0,               // Минимальное значение параметра
                            2000,            // Максимально значение параметра
                            200,             // Считываемое значение "по умолчанию"
-                           HARDLY_EVER,          // Частота опроса параметра
-                           HARDLY_EVER,          // Количество запросов к параметру
+                           HARDLY_EVER,     // Частота опроса параметра
+                           HARDLY_EVER,     // Количество запросов к параметру
                            OPERATION_ERROR, // Команда
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
@@ -1535,14 +1535,14 @@ void VsdEtalon::initModbusParameters()
                            0,               // Минимальное значение параметра
                            5000,            // Максимально значение параметра
                            200,             // Считываемое значение "по умолчанию"
-                           HARDLY_EVER,          // Частота опроса параметра
-                           HARDLY_EVER,          // Количество запросов к параметру
+                           HARDLY_EVER,     // Частота опроса параметра
+                           HARDLY_EVER,     // Количество запросов к параметру
                            OPERATION_ERROR, // Команда
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
   modbusParameters_[91] = {// Частота U/f двигателя, точка u2
-                           VSD_UF_CHARACTERISTIC_U_2,
+                           VSD_UF_CHARACTERISTIC_U_2_PERCENT,
                            314 + 0x4000,    // 0x413A Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_PERCENT,  // Физическая величина параметра
@@ -1576,7 +1576,7 @@ void VsdEtalon::initModbusParameters()
                            0                // Значение
                           };
   modbusParameters_[93] = {// Частота U/f двигателя, точка u3
-                           VSD_UF_CHARACTERISTIC_U_3,
+                           VSD_UF_CHARACTERISTIC_U_3_PERCENT,
                            316 + 0x4000,    // 0x413C Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_PERCENT,  // Физическая величина параметра
@@ -1610,7 +1610,7 @@ void VsdEtalon::initModbusParameters()
                            0                // Значение
                           };
   modbusParameters_[95] = {// Частота U/f двигателя, точка u4
-                           VSD_UF_CHARACTERISTIC_U_4,
+                           VSD_UF_CHARACTERISTIC_U_4_PERCENT,
                            318 + 0x4000,    // 0x413E Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_PERCENT,  // Физическая величина параметра
@@ -1644,7 +1644,7 @@ void VsdEtalon::initModbusParameters()
                            0                // Значение
                           };
   modbusParameters_[97] = {// Частота U/f двигателя, точка u5
-                           VSD_UF_CHARACTERISTIC_U_5,
+                           VSD_UF_CHARACTERISTIC_U_5_PERCENT,
                            320 + 0x4000,    // 0x4140 Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_PERCENT,  // Физическая величина параметра

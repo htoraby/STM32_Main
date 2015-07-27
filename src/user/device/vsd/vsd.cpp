@@ -119,6 +119,31 @@ int Vsd::setUfU(uint16_t id, float value)
   return setValue(id, value);
 }
 
+int Vsd::setUfU1(float value)
+{
+  return setValue(VSD_UF_CHARACTERISTIC_U_1, value);
+}
+
+int Vsd::setUfU2(float value)
+{
+  return setValue(VSD_UF_CHARACTERISTIC_U_2, value);
+}
+
+int Vsd::setUfU3(float value)
+{
+  return setValue(VSD_UF_CHARACTERISTIC_U_3, value);
+}
+
+int Vsd::setUfU4(float value)
+{
+  return setValue(VSD_UF_CHARACTERISTIC_U_4, value);
+}
+
+int Vsd::setUfU5(float value)
+{
+  return setValue(VSD_UF_CHARACTERISTIC_U_5, value);
+}
+
 int Vsd::setTimeSpeedUp(float value)
 {
   if (!setValue(VSD_TIMER_DISPERSAL, value)) {        // Записали время разгона (с)
