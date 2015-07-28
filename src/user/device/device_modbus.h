@@ -302,6 +302,8 @@ private:
 
   ModbusMasterSerial *mms_;
 
+  bool prevConnect;
+
 };
 
 #endif /* DEVICE_MODBUS_H_ */
