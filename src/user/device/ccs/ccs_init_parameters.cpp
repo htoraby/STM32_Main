@@ -8574,11 +8574,11 @@ void Ccs::initParameters()
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].id                                = CCS_FILTER_CAPACITY;
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].access                            = ACCESS_OPERATOR;
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].operation                         = OPERATION_WRITE;
-  parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
+  parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].physic                            = PHYSIC_CAPACITY;
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].max                               = 999999.0;
+  parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].max                               = 999.99;
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].discret                           = 100;
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].def                               = 0.0;
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].code                              = 13;
@@ -8650,7 +8650,7 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].value.float_t         = 380.0;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].max                   = 999999.0;
+  parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].max                   = 999.0;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].discret               = 1;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].def                   = 380.0;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].code                  = 13;

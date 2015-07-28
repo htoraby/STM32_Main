@@ -12423,9 +12423,9 @@
 		<name>CCS_FILTER_CAPACITY</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_NUMERIC</physic>
+		<physic>PHYSIC_CAPACITY</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>999.99</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
@@ -12433,8 +12433,8 @@
 		<text>Ёмкость выходного фильтра</text>
 		<short_text>Ёмкость выходного фильтра</short_text>
 		<form>3.7 Фильтры</form>
-		<unit>NUMERIC_NUMBER</unit>
-		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<unit>CAPACITY_MKF</unit>
+		<unit_lcd>CAPACITY_MKF</unit_lcd>
 		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Ёмкость выходного фильтра</comment>
@@ -12550,7 +12550,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>999.0</max>
 		<def>380.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13044,7 +13044,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>1000.0</max>
+		<max>9999.0</max>
 		<def>26.5</def>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -19558,7 +19558,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>1.0</min>
-		<max>999999.0</max>
+		<max>999.0</max>
 		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -19576,7 +19576,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>1.0</min>
-		<max>999999.0</max>
+		<max>999.0</max>
 		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>

@@ -214,7 +214,7 @@ void Vsd::initParameters()
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].value.float_t                       = 26.5;
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].max                                 = 1000.0;
+  parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].max                                 = 9999.0;
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].def                                 = 26.5;
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].discret                             = 10;
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].code                                = 13;

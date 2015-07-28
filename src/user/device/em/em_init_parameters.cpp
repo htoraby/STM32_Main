@@ -598,7 +598,7 @@ void Em::initParameters()
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].validity                  = VALIDITY_ERROR;
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].value.float_t             = 1.0;
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].min                       = 1.0;
-  parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].max                       = 999999.0;
+  parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].max                       = 999.0;
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].def                       = 1.0;
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].discret                   = 1;
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].code                      = 0;
@@ -610,7 +610,7 @@ void Em::initParameters()
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].validity                  = VALIDITY_ERROR;
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].value.float_t             = 1.0;
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].min                       = 1.0;
-  parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].max                       = 999999.0;
+  parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].max                       = 999.0;
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].def                       = 1.0;
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].discret                   = 1;
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].code                      = 0;
