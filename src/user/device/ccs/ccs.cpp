@@ -400,6 +400,9 @@ bool Ccs::checkCanStart()
   if (!interceptionStartRegime())
     return false;
 
+  if (!vsd->isConnect())
+    return false;
+
   return true;
 }
 
