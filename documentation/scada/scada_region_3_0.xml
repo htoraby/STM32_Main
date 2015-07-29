@@ -5,6 +5,7 @@
 		<address>256</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
+		<unit>NULL</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
@@ -17,6 +18,7 @@
 		<address>257</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
+		<unit>NULL</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
@@ -29,6 +31,7 @@
 		<address>258</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
+		<unit>NULL</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
@@ -41,6 +44,7 @@
 		<address>259</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
+		<unit>NULL</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
@@ -53,6 +57,7 @@
 		<address>260</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
+		<unit>NULL</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
@@ -65,6 +70,7 @@
 		<address>261</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
+		<unit>NULL</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
@@ -77,6 +83,7 @@
 		<address>262</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
+		<unit>NULL</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
@@ -85,10 +92,11 @@
 		<name>Время последнего останова</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_RESTART_TIMER</id>
 		<address>263</address>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMERIC</physic>
+		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_MM</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
@@ -101,104 +109,104 @@
 		<address>264</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
+		<unit>CURRENT_A</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>65535</max>
 		<command>OPERATION_ERROR</command>
 		<name>Ток двигателя фаза 1</name>
-		<unit>CURRENT_A</unit>
 	</param>
 	<param>
 		<id>CCS_MOTOR_CURRENT_PHASE_2</id>
 		<address>265</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
+		<unit>CURRENT_A</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>65535</max>
 		<command>OPERATION_ERROR</command>
 		<name>Ток двигателя фаза 2</name>
-		<unit>CURRENT_A</unit>
 	</param>
 	<param>
 		<id>CCS_MOTOR_CURRENT_PHASE_3</id>
 		<address>266</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
+		<unit>CURRENT_A</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>65535</max>
 		<command>OPERATION_ERROR</command>
 		<name>Ток двигателя фаза 3</name>
-		<unit>CURRENT_A</unit>
 	</param>
 	<param>
 		<id>CCS_MOTOR_CURRENT_IMBALANCE</id>
 		<address>267</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PERCENT</physic>
+		<unit>PERCENT_PERCENT</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
 		<command>OPERATION_ERROR</command>
 		<name>Дисбаланс токов</name>
-		<unit>PERCENT_PERCENT</unit>
 	</param>
 	<param>
 		<id>CCS_VOLTAGE_PHASE_1_2</id>
 		<address>268</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
+		<unit>VOLTAGE_V</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
 		<command>OPERATION_ERROR</command>
 		<name>Межфазное напряжение Uin(AB)</name>
-		<unit>VOLTAGE_V</unit>
 	</param>
 	<param>
 		<id>CCS_VOLTAGE_PHASE_2_3</id>
 		<address>269</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
+		<unit>VOLTAGE_V</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
 		<command>OPERATION_ERROR</command>
 		<name>Межфазное напряжение Uin(BC)</name>
-		<unit>VOLTAGE_V</unit>
 	</param>
 	<param>
 		<id>CCS_VOLTAGE_PHASE_3_1</id>
 		<address>270</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
+		<unit>VOLTAGE_V</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
 		<command>OPERATION_ERROR</command>
 		<name>Межфазное напряжение Uin(CA)</name>
-		<unit>VOLTAGE_V</unit>
 	</param>
 	<param>
 		<id>CCS_VOLTAGE_IMBALANCE_IN</id>
 		<address>271</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PERCENT</physic>
+		<unit>PERCENT_PERCENT</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
 		<command>OPERATION_ERROR</command>
 		<name>Дисбаланс входного напряжения dUin</name>
-		<unit>PERCENT_PERCENT</unit>
 	</param>
 	<param>
 		<id>CCS_MOTOR_COS_PHI_NOW</id>
@@ -217,143 +225,143 @@
 		<address>273</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PERCENT</physic>
+		<unit>PERCENT_PERCENT</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>200</max>
 		<command>OPERATION_ERROR</command>
 		<name>Загрузка двигателя</name>
-		<unit>PERCENT_PERCENT</unit>
 	</param>
 	<param>
 		<id>VSD_POWER_FULL</id>
 		<address>274</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
+		<unit>FULL_POWER_KVA</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>10000</max>
 		<command>OPERATION_ERROR</command>
 		<name>Полная мощность</name>
-		<unit>FULL_POWER_KVA</unit>
 	</param>
 	<param>
 		<id>VSD_POWER_ACTIVE</id>
 		<address>275</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_POWER</physic>
+		<unit>ACTIV_POWER_KW</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>10000</max>
 		<command>OPERATION_ERROR</command>
 		<name>Активная мощность</name>
-		<unit>ACTIV_POWER_KW</unit>
 	</param>
 	<param>
 		<id>CCS_RESISTANCE_ISOLATION</id>
 		<address>276</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_RESISTANCE</physic>
+		<unit>RESISTANCE_KOM</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Сопротивление изоляции Rinsul</name>
-		<unit>RESISTANCE_KOM</unit>
 	</param>
 	<param>
 		<id>CCS_TURBO_ROTATION_NOW</id>
 		<address>277</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
+		<unit>FREQUENCY_HZ</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>8000</max>
 		<command>OPERATION_ERROR</command>
 		<name>Частота турбинного вращения</name>
-		<unit>FREQUENCY_HZ</unit>
 	</param>
 	<param>
 		<id>VSD_FREQUENCY_NOW</id>
 		<address>278</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
+		<unit>FREQUENCY_HZ</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>20000</max>
 		<command>OPERATION_ERROR</command>
 		<name>Выходная частота ПЧ</name>
-		<unit>FREQUENCY_HZ</unit>
 	</param>
 	<param>
 		<id>VSD_OUT_VOLTAGE_MOTOR</id>
 		<address>279</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
+		<unit>VOLTAGE_V</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
 		<command>OPERATION_ERROR</command>
 		<name>Выходное напряжение ПЧ</name>
-		<unit>VOLTAGE_V</unit>
 	</param>
 	<param>
 		<id>CCS_VOLTAGE_TRANS_OUT</id>
 		<address>280</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
+		<unit>VOLTAGE_V</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
 		<command>OPERATION_ERROR</command>
 		<name>Напряжение на выходе ТМПН</name>
-		<unit>VOLTAGE_V</unit>
 	</param>
 	<param>
 		<id>VSD_CURRENT_DC</id>
 		<address>281</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
+		<unit>CURRENT_A</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>Ток в звене постоянного тока Id</name>
-		<unit>CURRENT_A</unit>
 	</param>
 	<param>
 		<id>VSD_VOLTAGE_DC</id>
 		<address>282</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
+		<unit>VOLTAGE_V</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
 		<command>OPERATION_ERROR</command>
 		<name>Напряжение цепи постоянного тока Ud</name>
-		<unit>VOLTAGE_V</unit>
 	</param>
 	<param>
 		<id>CCS_GENERAL_RUN_DATE_TIME</id>
 		<address>283</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_HH</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>999999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Время работы в часах</name>
-		<unit>TIME_HH</unit>
 	</param>
 	<param>
 		<id>CCS_COUNT_START</id>
@@ -384,182 +392,182 @@
 		<address>286</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PRESSURE</physic>
+		<unit>PRESSURE_AT</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>Устьевое давление</name>
-		<unit>PRESSURE_AT</unit>
 	</param>
 	<param>
 		<id>-1</id>
 		<address>287</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PRESSURE</physic>
+		<unit>PRESSURE_AT</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>Затрубное давление</name>
-		<unit>PRESSURE_AT</unit>
 	</param>
 	<param>
 		<id>-1</id>
 		<address>288</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PRESSURE</physic>
+		<unit>PRESSURE_AT</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>Линейное давление</name>
-		<unit>PRESSURE_AT</unit>
 	</param>
 	<param>
 		<id>TMS_PRESSURE_INTAKE</id>
 		<address>289</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PRESSURE</physic>
+		<unit>PRESSURE_AT</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>40</max>
 		<command>OPERATION_ERROR</command>
 		<name>Давление на приеме</name>
-		<unit>PRESSURE_AT</unit>
 	</param>
 	<param>
 		<id>-1</id>
 		<address>290</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PRESSURE</physic>
+		<unit>PRESSURE_AT</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>Давление на приеме насоса (масло двигателя)</name>
-		<unit>PRESSURE_AT</unit>
 	</param>
 	<param>
 		<id>TMS_PRESSURE_DISCHARGE</id>
 		<address>291</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PRESSURE</physic>
+		<unit>PRESSURE_AT</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>40</max>
 		<command>OPERATION_ERROR</command>
 		<name>Давление на выкиде насоса</name>
-		<unit>PRESSURE_AT</unit>
 	</param>
 	<param>
 		<id>TMS_TEMPERATURE_INTAKE</id>
 		<address>292</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
+		<unit>TEMPERATURE_C</unit>
 		<typeData>TYPE_DATA_INT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>150</max>
 		<command>OPERATION_ERROR</command>
 		<name>Температура на приемеTin</name>
-		<unit>TEMPERATURE_C</unit>
 	</param>
 	<param>
 		<id>TMS_TEMPERATURE_MOTOR</id>
 		<address>293</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
+		<unit>TEMPERATURE_C</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>Температура  на приеме насоса (масло двигателя)</name>
-		<unit>TEMPERATURE_C</unit>
 	</param>
 	<param>
 		<id>TMS_TEMPERATURE_WINDING</id>
 		<address>294</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
+		<unit>TEMPERATURE_C</unit>
 		<typeData>TYPE_DATA_INT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>300</max>
 		<command>OPERATION_ERROR</command>
 		<name>Температура обмоток двигателя Tw</name>
-		<unit>TEMPERATURE_C</unit>
 	</param>
 	<param>
 		<id>TMS_TEMPERATURE_DISCHARGE</id>
 		<address>295</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
+		<unit>TEMPERATURE_C</unit>
 		<typeData>TYPE_DATA_INT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>150</max>
 		<command>OPERATION_ERROR</command>
 		<name>Температура на выкиде насоса</name>
-		<unit>TEMPERATURE_C</unit>
 	</param>
 	<param>
 		<id>TMS_SPEED_XY_DISCHARGE</id>
 		<address>296</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_SPEED</physic>
+		<unit>SPEED_MM_SS</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>40</max>
 		<command>OPERATION_ERROR</command>
 		<name>Вибрация насоса радиальная Vradial</name>
-		<unit>SPEED_MM_SS</unit>
 	</param>
 	<param>
 		<id>TMS_SPEED_Z_DISCHARGE</id>
 		<address>297</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_SPEED</physic>
+		<unit>SPEED_MM_SS</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>40</max>
 		<command>OPERATION_ERROR</command>
 		<name>Вибрация насоса осевая Vaxial</name>
-		<unit>SPEED_MM_SS</unit>
 	</param>
 	<param>
 		<id>TMS_ACCELERATIN_XYZ_INTAKE</id>
 		<address>298</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACCELERATION</physic>
+		<unit>ACCELERATION_MSS2</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>Виброускорение(результирующий вектор)</name>
-		<unit>ACCELERATION_MSS2</unit>
 	</param>
 	<param>
 		<id>TMS_FLOW_DISCHARGE</id>
 		<address>299</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FLOW</physic>
+		<unit>FLOW_M3_DD</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>Расход жидкости</name>
-		<unit>FLOW_M3_DD</unit>
 	</param>
 	<param>
 		<id>CCS_DHS_CONNECTION</id>
@@ -634,260 +642,260 @@
 		<address>306</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
+		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>А+ за весь период</name>
-		<unit>ACTIVE_ENERGY_KW_HH</unit>
 	</param>
 	<param>
 		<id>EM_ACTIVE_MINUS_ALL</id>
 		<address>308</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
+		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>А- за весь период</name>
-		<unit>ACTIVE_ENERGY_KW_HH</unit>
 	</param>
 	<param>
 		<id>EM_REACTIVE_PLUS_ALL</id>
 		<address>310</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
+		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>R+ за весь период</name>
-		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 	</param>
 	<param>
 		<id>EM_REACTIVE_MINUS_ALL</id>
 		<address>312</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
+		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>R- за весь период</name>
-		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 	</param>
 	<param>
 		<id>EM_ACTIVE_PLUS_CUR_DAY</id>
 		<address>314</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
+		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>А+ за текущие сутки</name>
-		<unit>ACTIVE_ENERGY_KW_HH</unit>
 	</param>
 	<param>
 		<id>EM_ACTIVE_MINUS_CUR_DAY</id>
 		<address>316</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
+		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>А- за текущие сутки</name>
-		<unit>ACTIVE_ENERGY_KW_HH</unit>
 	</param>
 	<param>
 		<id>EM_REACTIVE_PLUS_CUR_DAY</id>
 		<address>318</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
+		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>R+ за текущие сутки</name>
-		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 	</param>
 	<param>
 		<id>EM_REACTIVE_MINUS_CUR_DAY</id>
 		<address>320</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
+		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>R- за текущие сутки</name>
-		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 	</param>
 	<param>
 		<id>EM_ACTIVE_PLUS_PREV_DAY</id>
 		<address>322</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
+		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>А+ за предыдущие сутки</name>
-		<unit>ACTIVE_ENERGY_KW_HH</unit>
 	</param>
 	<param>
 		<id>EM_ACTIVE_MINUS_PREV_DAY</id>
 		<address>324</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
+		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>А- за предыдущие сутки</name>
-		<unit>ACTIVE_ENERGY_KW_HH</unit>
 	</param>
 	<param>
 		<id>EM_REACTIVE_PLUS_PREV_DAY</id>
 		<address>326</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
+		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>R+ за предыдущие сутки</name>
-		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 	</param>
 	<param>
 		<id>EM_REACTIVE_MINUS_PREV_DAY</id>
 		<address>328</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
+		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>R- за предыдущие сутки</name>
-		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 	</param>
 	<param>
 		<id>EM_ACTIVE_PLUS_CUR_MONTH</id>
 		<address>330</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
+		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>А+ за текущий месяц</name>
-		<unit>ACTIVE_ENERGY_KW_HH</unit>
 	</param>
 	<param>
 		<id>EM_ACTIVE_MINUS_CUR_MONTH</id>
 		<address>332</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
+		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>А- за текущий месяц</name>
-		<unit>ACTIVE_ENERGY_KW_HH</unit>
 	</param>
 	<param>
 		<id>EM_REACTIVE_PLUS_CUR_MONTH</id>
 		<address>334</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
+		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>R+ за текущий месяц</name>
-		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 	</param>
 	<param>
 		<id>EM_REACTIVE_MINUS_CUR_MONTH</id>
 		<address>336</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
+		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>R- за текущий месяц</name>
-		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 	</param>
 	<param>
 		<id>EM_ACTIVE_PLUS_PREV_MONTH</id>
 		<address>338</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
+		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>А+ за предыдущий месяц</name>
-		<unit>ACTIVE_ENERGY_KW_HH</unit>
 	</param>
 	<param>
 		<id>EM_ACTIVE_MINUS_PREV_MONTH</id>
 		<address>340</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
+		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>А- за предыдущий месяц</name>
-		<unit>ACTIVE_ENERGY_KW_HH</unit>
 	</param>
 	<param>
 		<id>EM_REACTIVE_PLUS_PREV_MONTH</id>
 		<address>342</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
+		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>R+ за предыдущий месяц</name>
-		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 	</param>
 	<param>
 		<id>EM_REACTIVE_MINUS_PREV_MONTH</id>
 		<address>344</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
+		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
 		<name>R- за предыдущий месяц</name>
-		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 	</param>
 	<param>
 		<id>0</id>
@@ -974,13 +982,13 @@
 		<address>544</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
+		<unit>VOLTAGE_V</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>100</min>
 		<max>600</max>
 		<command>OPERATION_ERROR</command>
 		<name>Номинальное напряжение ТМПН</name>
-		<unit>VOLTAGE_V</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_SUPPLY_OVERVOLTAGE_MODE</id>
@@ -999,39 +1007,39 @@
 		<address>546</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
+		<unit>PERCENT_PERCENT</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>260</max>
 		<command>OPERATION_ERROR</command>
 		<name>Уставка высокого напряжения фазы</name>
-		<unit>PERCENT_PERCENT</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY</id>
 		<address>547</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_SS</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600</max>
 		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания уставка</name>
-		<unit>TIME_SS</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY</id>
 		<address>548</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_SS</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Задержка активации уставка</name>
-		<unit>TIME_SS</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE</id>
@@ -1050,39 +1058,39 @@
 		<address>550</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
+		<unit>PERCENT_PERCENT</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
 		<command>OPERATION_ERROR</command>
 		<name>Уставка низкого напряжения фазы</name>
-		<unit>PERCENT_PERCENT</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY</id>
 		<address>551</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_SS</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600</max>
 		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания уставка</name>
-		<unit>TIME_SS</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY</id>
 		<address>552</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_SS</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Задержка активации уставка</name>
-		<unit>TIME_SS</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_MODE</id>
@@ -1101,65 +1109,65 @@
 		<address>554</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
+		<unit>PERCENT_PERCENT</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>200</max>
 		<command>OPERATION_ERROR</command>
 		<name>Уставка дисбаланса напряжений</name>
-		<unit>PERCENT_PERCENT</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY</id>
 		<address>555</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_SS</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600</max>
 		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания уставка</name>
-		<unit>TIME_SS</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY</id>
 		<address>556</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_SS</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Задержка активации уставка</name>
-		<unit>TIME_SS</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_SUPPLY_RESTART_DELAY</id>
 		<address>557</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_SS</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Время АПВ защит по напряжению (Автозапуск)</name>
-		<unit>TIME_SS</unit>
 	</param>
 	<param>
 		<id>VSD_MOTOR_CURRENT</id>
 		<address>558</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_CURRENT</physic>
+		<unit>CURRENT_A</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>300</max>
 		<command>OPERATION_ERROR</command>
 		<name>Номинальный ток ПЭД</name>
-		<unit>CURRENT_A</unit>
 	</param>
 	<param>
 		<id>VSD_MOTOR_COS_PHI</id>
@@ -1178,13 +1186,13 @@
 		<address>560</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
+		<unit>VOLTAGE_V</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>380</min>
 		<max>5500</max>
 		<command>OPERATION_ERROR</command>
 		<name>Напряж. Отпайки ТМПН</name>
-		<unit>VOLTAGE_V</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_MOTOR_OVERLOAD_MODE</id>
@@ -1203,52 +1211,52 @@
 		<address>562</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
+		<unit>PERCENT_PERCENT</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>100</min>
 		<max>200</max>
 		<command>OPERATION_ERROR</command>
 		<name>Уставка перегрузки</name>
-		<unit>PERCENT_PERCENT</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY</id>
 		<address>563</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_SS</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600</max>
 		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания уставка</name>
-		<unit>TIME_SS</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY</id>
 		<address>564</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_SS</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>5</max>
 		<command>OPERATION_ERROR</command>
 		<name>Задержка активации уставка</name>
-		<unit>TIME_SS</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_MOTOR_OVERLOAD_RESTART_DELAY</id>
 		<address>565</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_MM</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ уставка</name>
-		<unit>TIME_MM</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_MOTOR_UNDERLOAD_MODE</id>
@@ -1267,52 +1275,52 @@
 		<address>567</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
+		<unit>PERCENT_PERCENT</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
 		<command>OPERATION_ERROR</command>
 		<name>Уставка недогрузки</name>
-		<unit>PERCENT_PERCENT</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_MOTOR_UNDERLOAD_TRIP_DELAY</id>
 		<address>568</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_SS</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600</max>
 		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания уставка</name>
-		<unit>TIME_SS</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY</id>
 		<address>569</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_SS</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>120</max>
 		<command>OPERATION_ERROR</command>
 		<name>Задержка активации уставка</name>
-		<unit>TIME_SS</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY</id>
 		<address>570</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_MM</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ уставка</name>
-		<unit>TIME_MM</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE</id>
@@ -1331,52 +1339,52 @@
 		<address>572</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
+		<unit>PERCENT_PERCENT</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
 		<command>OPERATION_ERROR</command>
 		<name>Дисбаланс тока, уставка</name>
-		<unit>PERCENT_PERCENT</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY</id>
 		<address>573</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_SS</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600</max>
 		<command>OPERATION_ERROR</command>
 		<name>Дисбаланс тока, задержка отключения</name>
-		<unit>TIME_SS</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY</id>
 		<address>574</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_SS</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Дисбаланс тока, пусковое время</name>
-		<unit>TIME_SS</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY</id>
 		<address>575</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_MM</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Дисбаланс тока, задержка АПВ</name>
-		<unit>TIME_MM</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_DHS_RESISTANCE_MODE</id>
@@ -1395,13 +1403,13 @@
 		<address>577</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_RESISTANCE</physic>
+		<unit>RESISTANCE_KOM</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>30</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Минимальное сопротивление изоляции</name>
-		<unit>RESISTANCE_KOM</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_MOTOR_ASYNC_MODE</id>
@@ -1420,13 +1428,13 @@
 		<address>579</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
+		<unit>FREQUENCY_HZ</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>255</max>
 		<command>OPERATION_ERROR</command>
 		<name>Турбин.вращение уст.</name>
-		<unit>FREQUENCY_HZ</unit>
 	</param>
 	<param>
 		<id>-1</id>
@@ -1456,39 +1464,39 @@
 		<address>582</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PRESSURE</physic>
+		<unit>PRESSURE_ATM</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Минимальное давление</name>
-		<unit>PRESSURE_ATM</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT</id>
 		<address>583</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PRESSURE</physic>
+		<unit>PRESSURE_ATM</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Максимальное давление</name>
-		<unit>PRESSURE_ATM</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY</id>
 		<address>584</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_MM</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ уставка</name>
-		<unit>TIME_MM</unit>
 	</param>
 	<param>
 		<id>-1</id>
@@ -1518,39 +1526,39 @@
 		<address>587</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
+		<unit>TEMPERATURE_C</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Макс.температура</name>
-		<unit>TEMPERATURE_C</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_SETPOINT</id>
 		<address>588</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
+		<unit>TEMPERATURE_C</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Мин.температура</name>
-		<unit>TEMPERATURE_C</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY</id>
 		<address>589</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_MM</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ уставка</name>
-		<unit>TIME_MM</unit>
 	</param>
 	<param>
 		<id>CCS_PROT_MOTOR_CURRENT_MODE</id>
@@ -1629,26 +1637,26 @@
 		<address>596</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_MM</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Период работы по программе</name>
-		<unit>TIME_MM</unit>
 	</param>
 	<param>
 		<id>CCS_RGM_PERIODIC_STOP_PERIOD</id>
 		<address>597</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_MM</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Период паузы по программе</name>
-		<unit>TIME_MM</unit>
 	</param>
 	<param>
 		<id>-1</id>
@@ -1666,13 +1674,13 @@
 		<address>599</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
+		<unit>FREQUENCY_HZ</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.01</coefficient>
 		<min>3.5</min>
 		<max>70</max>
 		<command>OPERATION_ERROR</command>
 		<name>Уставка частоты</name>
-		<unit>FREQUENCY_HZ</unit>
 	</param>
 	<param>
 		<id>-1</id>
@@ -1701,26 +1709,26 @@
 		<address>602</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TEMP</physic>
+		<unit>TEMP_HZ_SS</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.01</coefficient>
 		<min>0.01</min>
 		<max>20</max>
 		<command>OPERATION_ERROR</command>
 		<name>Темп замедления</name>
-		<unit>TEMP_HZ_SS</unit>
 	</param>
 	<param>
 		<id>VSD_TEMP_SPEEDUP</id>
 		<address>603</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TEMP</physic>
+		<unit>TEMP_HZ_SS</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.01</coefficient>
 		<min>0.01</min>
 		<max>20</max>
 		<command>OPERATION_ERROR</command>
 		<name>Темп разгона</name>
-		<unit>TEMP_HZ_SS</unit>
 	</param>
 	<param>
 		<id>-1</id>
@@ -1738,13 +1746,13 @@
 		<address>605</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
+		<unit>FREQUENCY_HZ</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.01</coefficient>
 		<min>3.5</min>
 		<max>70</max>
 		<command>OPERATION_ERROR</command>
 		<name>Уставка минимального значения частоты</name>
-		<unit>FREQUENCY_HZ</unit>
 	</param>
 	<param>
 		<id>-1</id>
@@ -1795,13 +1803,13 @@
 		<address>610</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
+		<unit>FREQUENCY_HZ</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.01</coefficient>
 		<min>3.5</min>
 		<max>70</max>
 		<command>OPERATION_ERROR</command>
 		<name>Уставка максимального значения частоты</name>
-		<unit>FREQUENCY_HZ</unit>
 	</param>
 	<param>
 		<id>-1</id>
@@ -1841,13 +1849,13 @@
 		<address>614</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
+		<unit>FREQUENCY_HZ</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.01</coefficient>
 		<min>3.5</min>
 		<max>70</max>
 		<command>OPERATION_ERROR</command>
 		<name>Уставка частоты</name>
-		<unit>FREQUENCY_HZ</unit>
 	</param>
 	<param>
 		<id>-1</id>
@@ -1877,13 +1885,13 @@
 		<address>617</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_MM</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Период встряхивания</name>
-		<unit>TIME_MM</unit>
 	</param>
 	<param>
 		<id>CCS_RGM_JARRING_COUNT</id>
@@ -2014,65 +2022,65 @@
 		<address>629</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>POWER_W</physic>
+		<unit>POWER_KW</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>1000</max>
 		<command>OPERATION_ERROR</command>
 		<name>Мощн. Двигателя</name>
-		<unit>POWER_KW</unit>
 	</param>
 	<param>
 		<id>CCS_PUMP_CAPACITY</id>
 		<address>630</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FLOW</physic>
+		<unit>FLOW_M3_DD</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2000</max>
 		<command>OPERATION_ERROR</command>
 		<name>Производительность насоса</name>
-		<unit>FLOW_M3_DD</unit>
 	</param>
 	<param>
 		<id>CCS_PUMP_HEAD</id>
 		<address>631</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_LENGHT</physic>
+		<unit>LENGTH_M</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Напор насоса</name>
-		<unit>LENGTH_M</unit>
 	</param>
 	<param>
 		<id>CCS_DEPTH</id>
 		<address>632</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_LENGHT</physic>
+		<unit>LENGTH_M</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Глубина спуска</name>
-		<unit>LENGTH_M</unit>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>633</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_LENGHT</physic>
+		<unit>LENGTH_M</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.001</coefficient>
 		<min>0</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
 		<name>Диаметр НКТ</name>
-		<unit>LENGTH_M</unit>
 	</param>
 	<param>
 		<id>0</id>

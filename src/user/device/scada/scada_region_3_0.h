@@ -10,9 +10,12 @@ public:
   ~ScadaRegion30();
 
 private:
+  /*!
+   * \brief Инициализация параметров скады Регион 3.0
+   */
   void initParameters();
-  void calcParametersTask();
-
+  void calcParamsTask();
+  int setNewValue(ScadaParameter *param);
 
 };
 

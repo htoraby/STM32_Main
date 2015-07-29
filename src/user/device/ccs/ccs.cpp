@@ -598,7 +598,7 @@ void Ccs::calcTime()
     setValue(CCS_DATE_TIME_MIN, dateTime.tm_min, NoneType);
     setValue(CCS_DATE_TIME_HOUR, dateTime.tm_hour, NoneType);
     setValue(CCS_DATE_TIME_DAY, dateTime.tm_mday, NoneType);
-    setValue(CCS_DATE_TIME_MONTH, dateTime.tm_mon, NoneType);
+    setValue(CCS_DATE_TIME_MONTH, dateTime.tm_mon+1, NoneType);
     setValue(CCS_DATE_TIME_YEAR, 1900 + dateTime.tm_year, NoneType);
     // TODO: Синхронизация времени
   }

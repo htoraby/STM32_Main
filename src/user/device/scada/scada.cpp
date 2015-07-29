@@ -12,9 +12,9 @@ static void scadaTask(void *p)
   (static_cast<Scada*>(p))->task();
 }
 
-static void scadaCalcParametersTask(void *p)
+static void scadaCalcParamsTask(void *p)
 {
-  (static_cast<Scada*>(p))->calcParametersTask();
+  (static_cast<Scada*>(p))->calcParamsTask();
 }
 
 Scada::Scada()
@@ -23,8 +23,8 @@ Scada::Scada()
   osThreadDef(ScadaTask, scadaTask, osPriorityLow, 0, 4*configMINIMAL_STACK_SIZE);
   mbThreadId_ = osThreadCreate(osThread(ScadaTask), this);
 
-  osThreadDef(ScadaCalcParameters, scadaCalcParametersTask, osPriorityNormal, 0, 4*configMINIMAL_STACK_SIZE);
-  osThreadCreate(osThread(ScadaCalcParameters), this);
+  osThreadDef(ScadaCalcParams, scadaCalcParamsTask, osPriorityNormal, 0, 4*configMINIMAL_STACK_SIZE);
+  calcParamsThreadId_ = osThreadCreate(osThread(ScadaCalcParams), this);
 }
 
 Scada::~Scada()
@@ -33,6 +33,7 @@ Scada::~Scada()
   eMBClose();
 
   osThreadTerminate(mbThreadId_);
+  osThreadTerminate(calcParamsThreadId_);
 }
 
 void Scada::task()
@@ -51,9 +52,14 @@ void Scada::task()
   }
 }
 
-void Scada::calcParametersTask()
+void Scada::calcParamsTask()
 {
 
+}
+
+int Scada::setNewValue(ScadaParameter */*param*/)
+{
+  return err_r;
 }
 
 inline int Scada::sizeDataFromTypeData(uint8_t typeData)
@@ -95,7 +101,7 @@ eMBErrorCode Scada::readReg(uint8_t *buffer, uint16_t address, uint16_t numRegs)
     if (sizeData == -1)
       return MB_EINVAL;
 
-    float value = parameters.get(param->id);
+    float value = param->value.float_t;
     value = parameters.convertFrom(value, param->physic, param->unit);
     value = value / param->coefficient;
     unTypeData data;
@@ -131,6 +137,9 @@ eMBErrorCode Scada::writeReg(uint8_t *buffer, uint16_t address, uint16_t numRegs
       return MB_ENOREG;
 
     ScadaParameter *param = &scadaParameters_[index];
+    if (param->operation != OPERATION_WRITE)
+      return MB_EINVAL;
+
     int sizeData = sizeDataFromTypeData(param->typeData);
     if (sizeData == -1)
       return MB_EINVAL;
@@ -166,7 +175,9 @@ eMBErrorCode Scada::writeReg(uint8_t *buffer, uint16_t address, uint16_t numRegs
     else
       value = lround(data.uint32_t * param->coefficient);
     value = parameters.convertTo(value, param->physic, param->unit);
-    if (parameters.set(param->id, value, RemoteType) != ok_r)
+    param->value.float_t = value;
+
+    if (setNewValue(param) != ok_r)
       return MB_EINVAL;
   }
 
@@ -175,15 +186,43 @@ eMBErrorCode Scada::writeReg(uint8_t *buffer, uint16_t address, uint16_t numRegs
 
 eMBErrorCode Scada::writeCoils(uint8_t *buffer, uint16_t address, uint16_t numCoils)
 {
-  eMBErrorCode status = MB_ENOERR;
+  if (numCoils == 1) {
+    int addr = address - 1;
+    if (addr < 0)
+      return MB_ENOREG;
 
-  status = MB_ENOREG;
+    uint8_t value = *buffer++;
 
-  return status;
+    switch (addr) {
+    case 0x0000:
+    case 0x0040:
+    case 0x0201:
+      if (value) {
+        ksu.start(LastReasonRunRemote);
+      }
+      else {
+        ksu.stop(LastReasonStopRemote);
+        ksu.resetBlock();
+      }
+      return MB_ENOERR;
+    case 0x0041:
+      if (value) {
+        ksu.stop(LastReasonStopRemote);
+        ksu.resetBlock();
+      }
+      return MB_ENOERR;
+    default:
+      break;
+    }
+
+    return MB_ENOREG;
+  }
+
+  return MB_ENOREG;
 }
 
-eMBErrorCode eMBRegInputCB(UCHAR * pucRegBuffer, USHORT usAddress,
-                           USHORT usNRegs)
+
+eMBErrorCode eMBRegInputCB(UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs)
 {
   eMBErrorCode status = MB_ENOERR;
 
@@ -228,7 +267,6 @@ eMBErrorCode eMBRegCoilsCB(UCHAR * pucRegBuffer, USHORT usAddress,
   osDelay(scada->delay());
   return status;
 }
-
 
 eMBErrorCode eMBRegDiscreteCB(UCHAR * pucRegBuffer, USHORT usAddress,
                               USHORT usNDiscrete)
