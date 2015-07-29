@@ -230,12 +230,17 @@ float Vsd::getNominalFreq()
   return getValue(VSD_MOTOR_FREQUENCY);
 }
 
+float Vsd::getTypeStop()
+{
+  return getValue(VSD_TYPE_STOP);
+}
+
 int Vsd::start()
 {
   return 0;
 }
 
-int Vsd::stop()
+int Vsd::stop(float type)
 {
   return 0;
 }

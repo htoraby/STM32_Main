@@ -154,6 +154,12 @@ public:
    */
   float getNominalFreq();
 
+  /*!
+   * \brief getTypeStop
+   * \return
+   */
+  float getTypeStop();
+
   /*! Команды и операции */
 
   /*!
@@ -164,9 +170,10 @@ public:
 
   /*!
    * \brief Метод останова ЧРП
-   * \return Код результата операции
+   * \param type - тип останова
+   * \return
    */
-  virtual int stop();
+  virtual int stop(float type);
 
   /*!
    * \brief Метод проверки запуска ЧРП

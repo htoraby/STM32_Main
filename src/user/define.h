@@ -452,6 +452,14 @@ enum enEmType {
   EM_TYPE_SET4TM,                           //!< СЭТ-4ТМ03
 };
 
+/*!
+ * \brief Список типов остановов
+ */
+enum enTypeStop {
+  TYPE_STOP_SMOTH = 0,
+  TYPE_STOP_ALARM
+};
+
 #define NUM_PI 3.14159265358979323846
 #define SQRT_3 1.732050807568877
 #define NOM_VOLTAGE 380

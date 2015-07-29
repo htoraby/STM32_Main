@@ -1355,7 +1355,7 @@ void VsdEtalon::initModbusParameters()
                            0                // Значение
                           };
   modbusParameters_[80] = {// Останов выбегом (0 - нет, 1-да)
-                           VSD_ENGINE_OFF_MODE,       // Уникальный идентификатор параметра
+                           VSD_TYPE_STOP,       // Уникальный идентификатор параметра
                            294 + 0x4000,    // 0x4126 Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_NUMERIC,  // Физическая величина параметра

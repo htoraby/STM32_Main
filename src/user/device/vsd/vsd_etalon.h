@@ -127,9 +127,10 @@ public:
 
   /*!
    * \brief Метод останова
+   * \param type - тип останова
    * \return Код выполнения операции
    */
-  int stop();
+  int stop(float type);
 
   /*!
    * \brief alarmstop

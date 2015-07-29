@@ -3602,18 +3602,18 @@ void Vsd::initParameters()
   parameters_[VSD_BLDC_TMPN_SHIFT - VSD_BEGIN].def                               = 110.0;
   parameters_[VSD_BLDC_TMPN_SHIFT - VSD_BEGIN].discret                           = 1;
   parameters_[VSD_BLDC_TMPN_SHIFT - VSD_BEGIN].code                              = 0;
-  // Останов выбегом
-  parameters_[VSD_ENGINE_OFF_MODE - VSD_BEGIN].id                                = VSD_ENGINE_OFF_MODE;
-  parameters_[VSD_ENGINE_OFF_MODE - VSD_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[VSD_ENGINE_OFF_MODE - VSD_BEGIN].operation                         = OPERATION_WRITE;
-  parameters_[VSD_ENGINE_OFF_MODE - VSD_BEGIN].physic                            = PHYSIC_NUMERIC;
-  parameters_[VSD_ENGINE_OFF_MODE - VSD_BEGIN].validity                          = VALIDITY_ERROR;
-  parameters_[VSD_ENGINE_OFF_MODE - VSD_BEGIN].value.float_t                     = 1.0;
-  parameters_[VSD_ENGINE_OFF_MODE - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_ENGINE_OFF_MODE - VSD_BEGIN].max                               = 1.0;
-  parameters_[VSD_ENGINE_OFF_MODE - VSD_BEGIN].def                               = 1.0;
-  parameters_[VSD_ENGINE_OFF_MODE - VSD_BEGIN].discret                           = 1;
-  parameters_[VSD_ENGINE_OFF_MODE - VSD_BEGIN].code                              = 0;
+  // Тип торможения
+  parameters_[VSD_TYPE_STOP - VSD_BEGIN].id                                      = VSD_TYPE_STOP;
+  parameters_[VSD_TYPE_STOP - VSD_BEGIN].access                                  = ACCESS_OPERATOR;
+  parameters_[VSD_TYPE_STOP - VSD_BEGIN].operation                               = OPERATION_WRITE;
+  parameters_[VSD_TYPE_STOP - VSD_BEGIN].physic                                  = PHYSIC_NUMERIC;
+  parameters_[VSD_TYPE_STOP - VSD_BEGIN].validity                                = VALIDITY_ERROR;
+  parameters_[VSD_TYPE_STOP - VSD_BEGIN].value.float_t                           = 0.0;
+  parameters_[VSD_TYPE_STOP - VSD_BEGIN].min                                     = 0.0;
+  parameters_[VSD_TYPE_STOP - VSD_BEGIN].max                                     = 1.0;
+  parameters_[VSD_TYPE_STOP - VSD_BEGIN].def                                     = 0.0;
+  parameters_[VSD_TYPE_STOP - VSD_BEGIN].discret                                 = 1;
+  parameters_[VSD_TYPE_STOP - VSD_BEGIN].code                                    = 13;
   // Номинальный ток СУ
   parameters_[VSD_STATION_I_NOM - VSD_BEGIN].id                                  = VSD_STATION_I_NOM;
   parameters_[VSD_STATION_I_NOM - VSD_BEGIN].access                              = ACCESS_OPERATOR;
