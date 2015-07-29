@@ -37,6 +37,7 @@ enum enPhysic
   PHYSIC_FULL_ENERGY,                       //!< Полная энергия
   PHYSIC_RATE,                              //!< Номинальный момент
   PHYSIC_INDUNCTANCE,                       //!< Индуктивность Гн
+  PHYSIC_CAPACITY,                          //!< Ёмкость
   PHYSIC_LAST
 };
 
@@ -217,6 +218,11 @@ enum enPhysicRate {
 enum enPhysicIndunctance {
   INDUNCTANCE_MH,
   INDUNCTANCE_LAST
+};
+
+enum enPhysicCapacity {
+  CAPACITY_MKF,
+  CAPACITY_LAST
 };
 
 /*!

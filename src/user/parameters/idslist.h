@@ -1056,7 +1056,12 @@ enum enID
   VSD_COEF_OUT_CURRENT_3 = 10319,                            //!< Коэффициент корректировки выходного тока фаза U в ЧРП
   VSD_MOTOR_COS_PHI_NOW = 10320,                             //!< Текущий Косинус Фи в ЧРП
   VSD_MOTOR_LOAD_NOW = 10321,                                //!< Текущая загрузка двигателя в ЧРП
-  VSD_END = 10322,                                           //!< 
+  VSD_UF_CHARACTERISTIC_U_1_PERCENT = 10322,                 //!< U/F точка U1 в процентах
+  VSD_UF_CHARACTERISTIC_U_2_PERCENT = 10323,                 //!< U/F точка U2 в процентах
+  VSD_UF_CHARACTERISTIC_U_3_PERCENT = 10324,                 //!< U/F точка U3 в процентах
+  VSD_UF_CHARACTERISTIC_U_4_PERCENT = 10325,                 //!< U/F точка U4 в процентах
+  VSD_UF_CHARACTERISTIC_U_5_PERCENT = 10326,                 //!< U/F точка U5 в процентах
+  VSD_END = 10327,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме

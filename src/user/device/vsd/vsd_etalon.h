@@ -248,6 +248,12 @@ public:
    */
   int setTimeSpeedDown(float value);
 
+  int setUfU1(float value);
+  int setUfU2(float value);
+  int setUfU3(float value);
+  int setUfU4(float value);
+  int setUfU5(float value);
+
   /*!
    * \brief Метод задания точки характеристики U/f F6
    * \param value

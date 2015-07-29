@@ -27,6 +27,7 @@ DeviceModbus::DeviceModbus(ModbusParameter *modbusParameters,
   , numPort_(numPort)
   , devAdrs_(address)
   , indexExchange_(1)
+  , prevConnect(true)
 {
   // Создаём экземпляр класса ModbusMasterSerial
   mms_ = new ModbusMasterSerial();
@@ -264,7 +265,16 @@ int DeviceModbus::searchExchangeParameters()
 
 bool DeviceModbus::isConnect()
 {
-  return mms_->isConnect();
+  bool curConnect = mms_->isConnect();
+  if (!prevConnect && curConnect) {
+    int count = sizeof(mbParams_)/sizeof(ModbusParameter);
+    for (int indexModbus = 0; indexModbus < count; indexModbus++) {
+      mbParams_[indexModbus].cntExchange = mbParams_[indexModbus].freqExchange;
+    }
+    logDebug.add(WarningMsg, "Connect restored %d %d", numPort_, devAdrs_);
+  }
+  prevConnect = curConnect;
+  return curConnect;
 }
 
 void DeviceModbus::exchangeTask()
