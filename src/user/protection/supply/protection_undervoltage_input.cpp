@@ -73,14 +73,18 @@ float ProtectionUnderVoltageInput::calcValue()
 
   float nominal = NOM_VOLTAGE;
   if  (parameters.getValidity(CCS_TRANS_NOMINAL_VOLTAGE) == ok_r) {
-    nominal = parameters.get(CCS_TRANS_NOMINAL_VOLTAGE);
+    nominal = parameters.get(CCS_TRANS_NOMINAL_VOLTAGE) / SQRT_3;
   }
 
-  return (value / ((nominal / SQRT_3) / 100.0));
+  return (value / (nominal / 100.0));
 }
 
 bool ProtectionUnderVoltageInput::isProtect()
 {
+#if USE_DEBUG
+    return true;
+#endif
+
   if (parameters.get(CCS_EM_TYPE) == EM_TYPE_NONE) {
     if (((parameters.getValidity(CCS_VOLTAGE_PHASE_1) == ok_r) ||
          (parameters.getValidity(CCS_VOLTAGE_PHASE_2) == ok_r) ||

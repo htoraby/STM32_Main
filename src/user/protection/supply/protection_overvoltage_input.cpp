@@ -73,10 +73,10 @@ float ProtectionOverVoltageInput::calcValue()
 
   float nominal = NOM_VOLTAGE;
   if  (parameters.getValidity(CCS_TRANS_NOMINAL_VOLTAGE) == ok_r) {
-    nominal = parameters.get(CCS_TRANS_NOMINAL_VOLTAGE);
+    nominal = parameters.get(CCS_TRANS_NOMINAL_VOLTAGE) / SQRT_3;
   }
 
-  return (value / ((nominal / SQRT_3) / 100.0));
+  return (value / (nominal / 100.0));
 }
 
 bool ProtectionOverVoltageInput::isProtect()
