@@ -231,7 +231,7 @@ bool VsdNovomet::checkStart()
   return false;
 }
 
-int VsdNovomet::stop()
+int VsdNovomet::stop(float type)
 {
 #ifdef USE_DEBUG
   return ok_r;
@@ -252,8 +252,16 @@ int VsdNovomet::stop()
       if (countRepeats > VSD_CMD_NUMBER_REPEATS)
         return err_r;
 
-      if (setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_STOP))
-        return err_r;
+      switch((uint16_t)type) {
+      case TYPE_STOP_ALARM:
+        if (setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_ALARM))
+          return err_r;
+        break;
+      default:
+        if (setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_STOP))
+          return err_r;
+       break;
+      }
     } else {
       timeMs = timeMs + 100;
     }

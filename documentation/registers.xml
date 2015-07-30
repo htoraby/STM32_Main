@@ -16982,25 +16982,25 @@
 	</param>
 	<param>
 		<id>10300</id>
-		<name>VSD_ENGINE_OFF_MODE</name>
+		<name>VSD_TYPE_STOP</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
-		<def>1.0</def>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>1.0</value>
-		<text>Останов выбегом</text>
-		<short_text>Останов выбегом</short_text>
-		<form>NULL</form>
+		<value>0.0</value>
+		<text>Тип торможения</text>
+		<short_text>Тип торможения</short_text>
+		<form>3.2 ЧРП</form>
 		<unit>NUMERIC_NUMBER</unit>
-		<unit_lcd>TEXT</unit_lcd>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>TEXT</format>
-		<code>0</code>
-		<values>0-Откл;1-Вкл</values>
-		<comment>Останов выбегом</comment>
+		<code>13</code>
+		<values>0-Плавное;1-Выбегом</values>
+		<comment>Тип торможения</comment>
 	</param>
 	<param>
 		<id>10301</id>
