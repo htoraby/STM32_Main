@@ -400,8 +400,10 @@ bool Ccs::checkCanStart()
   if (!interceptionStartRegime())
     return false;
 
+#ifndef USE_DEBUG
   if (!vsd->isConnect())
     return false;
+#endif
 
   return true;
 }

@@ -233,7 +233,7 @@ bool VsdNovomet::checkStart()
 
 int VsdNovomet::stop()
 {
-#if USE_DEBUG
+#ifdef USE_DEBUG
   return ok_r;
 #endif
 
