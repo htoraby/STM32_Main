@@ -1,5 +1,6 @@
 #include "scada.h"
 #include "user_main.h"
+#include "string.h"
 
 #if USE_EXT_MEM
 static ScadaParameter scadaParameters[1000] __attribute__((section(".extmem")));
@@ -221,6 +222,56 @@ eMBErrorCode Scada::writeCoils(uint8_t *buffer, uint16_t address, uint16_t numCo
   return MB_ENOREG;
 }
 
+eMBErrorCode Scada::readInfo(uint8_t *buffer, uint16_t address, uint16_t *len)
+{
+  int addr = address - 1;
+  if (addr < 0)
+    return MB_EINVAL;
+
+  if (addr == 0x0E01) {
+    *buffer++ = 0x0E;
+    *buffer++ = 0x01;
+    *buffer++ = 0x01;
+    *buffer++ = 0x00;
+    *buffer++ = 0x00;
+    *buffer++ = 0x03;
+    *len += 6;
+
+    // Компания
+    *buffer++ = 0x00;
+    const char *company = "NOVOMET";
+    int size = strlen(company);
+    *buffer++ = size;
+    memcpy(buffer, company, size);
+    buffer += size;
+    *len += 2 + size;
+
+    // Код продукта
+    *buffer++ = 0x01;
+    const char *code = "-05 ";
+    size = strlen(code);
+    *buffer++ = size;
+    memcpy(buffer, code, size);
+    buffer += size;
+    *len += 2 + size;
+
+    // Версия
+    *buffer++ = 0x02;
+    char version[20];
+    float ver = parameters.get(CCS_VERSION_SW_CCS);
+    sprintf(version, "V%d", (int)ver);
+    size = strlen(version);
+    *buffer++ = size;
+    memcpy(buffer, version, size);
+    buffer += size;
+    *len += 2 + size;
+
+    return MB_ENOERR;
+  }
+
+  return MB_EINVAL;
+}
+
 
 eMBErrorCode eMBRegInputCB(UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs)
 {
@@ -274,6 +325,14 @@ eMBErrorCode eMBRegDiscreteCB(UCHAR * pucRegBuffer, USHORT usAddress,
   eMBErrorCode status = MB_ENOERR;
 
   status = MB_ENOREG;
+
+  osDelay(scada->delay());
+  return status;
+}
+
+eMBErrorCode eMBRegReadInfo(UCHAR * pucRegBuffer, USHORT usAddress, USHORT * usLen)
+{
+  eMBErrorCode status = scada->readInfo(pucRegBuffer, usAddress, usLen);
 
   osDelay(scada->delay());
   return status;

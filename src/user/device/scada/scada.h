@@ -78,6 +78,15 @@ public:
    */
   virtual eMBErrorCode writeCoils(uint8_t *buffer, uint16_t address, uint16_t numCoils);
 
+  /*!
+   * \brief readInfo
+   * \param buffer
+   * \param address
+   * \param len
+   * \return
+   */
+  eMBErrorCode readInfo(uint8_t *buffer, uint16_t address, uint16_t *len);
+
   float delay() const { return delay_; }
 
 protected:
