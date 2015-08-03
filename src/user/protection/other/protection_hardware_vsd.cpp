@@ -35,7 +35,12 @@ ProtectionHardwareVsd::~ProtectionHardwareVsd()
 
 bool ProtectionHardwareVsd::checkAlarm()
 {
+  if (!vsd->isConnect()) {
+    protReactEventId_ = HardwareVsdProtReactId;
+    return true;
+  }
   if (vsd->checkVsdStatus(VSD_STATUS_FAULT_STOPPED)) {
+    protReactEventId_ = HardwareVsdProtReactId;
     return true;
   }
   if (vsd->checkVsdStatus(VSD_STATUS_UD_LOW_FAULT)) {
@@ -161,3 +166,9 @@ bool ProtectionHardwareVsd::checkAlarm()
   return false;
 }
 
+bool ProtectionHardwareVsd::checkPrevent() {
+  if (!vsd->isConnect()) {
+    return true;
+  }
+  return false;
+}

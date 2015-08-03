@@ -13,6 +13,7 @@ public:
   ~ProtectionHardwareVsd();
 private:
   bool checkAlarm();
+  bool checkPrevent();
 };
 
 #endif // PROTECTIONHARDWAREVSD_H
