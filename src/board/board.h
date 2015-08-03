@@ -25,6 +25,7 @@
 #define USB_IRQ_PREPRIO   6
 #define FLASH_IRQ_PREPRIO 7
 #define UART_IRQ_PREPRIO  8
+#define SCADA_IRQ_PREPRIO  8
 #define HOST_IRQ_PREPRIO  9
 #define ADC_IRQ_PREPRIO   10
 

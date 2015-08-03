@@ -62,7 +62,6 @@ static HAL_StatusTypeDef waitOnFlagUntilTimeout(UART_HandleTypeDef *huart,
 void vMBPortSerialEnable(BOOL xRxEnable, BOOL xTxEnable)
 {
   if(xRxEnable) {
-    waitOnFlagUntilTimeout(uart, UART_FLAG_TC, RESET, 10);
     uartSetRts(uartGetNum(uart), GPIO_PIN_RESET);
     __HAL_UART_ENABLE_IT(uart, UART_IT_RXNE);
   }
@@ -76,6 +75,7 @@ void vMBPortSerialEnable(BOOL xRxEnable, BOOL xTxEnable)
   }
   else {
     __HAL_UART_DISABLE_IT(uart, UART_IT_TXE);
+
   }
 }
 
@@ -183,6 +183,7 @@ void vMBPort_USART_IRQHandler(void)
 
   if ((__HAL_UART_GET_FLAG(uart, UART_FLAG_TXE)) &&
       (__HAL_UART_GET_IT_SOURCE(uart, UART_IT_TXE) != RESET)) {
+    waitOnFlagUntilTimeout(uart, UART_FLAG_TC, RESET, 1000);
     pxMBFrameCBTransmitterEmpty();
   }
 }

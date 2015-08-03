@@ -21,6 +21,7 @@
 
 /* ----------------------- Platform includes --------------------------------*/
 #include "port.h"
+#include "board.h"
 
 /* ----------------------- Modbus includes ----------------------------------*/
 #include "mb.h"
@@ -45,7 +46,7 @@ xMBPortTimersInit( USHORT usTim1Timerout50us )
   htim2.Init.RepetitionCounter = 0;
   HAL_TIM_Base_Init(&htim2);
 
-  HAL_NVIC_SetPriority(TIM2_IRQn, 8, 1);
+  HAL_NVIC_SetPriority(TIM2_IRQn, SCADA_IRQ_PREPRIO, 1);
   HAL_NVIC_EnableIRQ(TIM2_IRQn);
 
   return TRUE;
