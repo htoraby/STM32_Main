@@ -124,23 +124,29 @@ void VsdNovomet::getNewValue(uint16_t id)
     setValue(id, getValue(VSD_COEF_OUT_CURRENT_3) * value);
     break;
   case VSD_INVERTOR_STATUS2:
+    setValue(id, value);
     calcMotorType();
     break;
   case VSD_T_SPEEDUP:
+    setValue(id, value);
     calcTempSpeedUp();
     calcTimeSpeedUp();
     break;
   case VSD_INVERTOR_STATUS:
+    setValue(id, value);
     calcRotation();
     break;
   case VSD_VOLTAGE_DC:
+    setValue(id, value);
     calcCurrentDC();
     break;
   case VSD_POWER_ACTIVE:
+    setValue(id, value);
     calcVsdCos();
     calcCurrentDC();
     break;
   case VSD_POWER_FULL:
+    setValue(id, value);
     calcVsdCos();
     break;
   default:                                  // Прямая запись в массив параметров
@@ -233,7 +239,7 @@ bool VsdNovomet::checkStart()
 
 int VsdNovomet::stop(float type)
 {
-#ifdef USE_DEBUG
+#if USE_DEBUG
   return ok_r;
 #endif
 

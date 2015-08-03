@@ -427,7 +427,7 @@ float Ccs::checkTypeStop()
   if ((reason == LastReasonStopOperator) ||
       (reason == LastReasonStopProgram) ||
       (reason == LastReasonStopRemote)) {
-    return parameters.get(VSD_TYPE_STOP);
+    return TYPE_STOP_SMOTH/*parameters.get(VSD_TYPE_STOP)*/;
   }
   else {
     return TYPE_STOP_ALARM;
@@ -1170,6 +1170,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       logEvent.add(AddDeviceCode, eventType, AddDeviceDhsId, oldValue, value);
     else
       logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceDhsId, oldValue, value);
+    tms->initParameters();
     startReboot();
     break;
   case CCS_TYPE_VSD:
@@ -1180,6 +1181,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
           logEvent.add(AddDeviceCode, eventType, AddDeviceVsdId, oldValue, value);
         else
           logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceVsdId, oldValue, value);
+        vsd->initParameters();
         startReboot();
       }
       return err;
@@ -1224,7 +1226,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     parameters.set(VSD_COEF_OUT_CURRENT_1, value);
     break;
   case CCS_COEF_OUT_CURRENT_2:
-    parameters.set(VSD_COEF_OUT_CURRENT_1, value);
+    parameters.set(VSD_COEF_OUT_CURRENT_2, value);
     break;
   case CCS_COEF_OUT_CURRENT_3:
     parameters.set(VSD_COEF_OUT_CURRENT_3, value);
