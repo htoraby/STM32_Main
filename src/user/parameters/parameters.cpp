@@ -71,14 +71,7 @@ float Parameters::get(unsigned short id)
   if ((id > TMS_BEGIN) && (id < TMS_END))
     return tms->getValue(id);
   if ((id > EM_BEGIN) && (id < EM_END)) {
-#if USE_DEBUG
     return em->getValue(id);
-#else
-    if (em->isConnect())
-      return em->getValue(id);
-    else
-      return NAN;
-#endif
   }
 
   return 0;

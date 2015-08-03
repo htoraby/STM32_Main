@@ -2,7 +2,11 @@
 #include "uart.h"
 #include "user_main.h"
 
-Em::Em() : Device(EM_BEGIN, parametersArray_, EM_END - EM_BEGIN)
+#define EM_COUNTER_LOST_CONNECT 5
+
+Em::Em()
+  : Device(EM_BEGIN, parametersArray_, EM_END - EM_BEGIN)
+  , prevConnect(true)
 {
   initParameters();
 }
@@ -73,7 +77,7 @@ int Em::setCoefficientTransforamationVoltage()
 
 bool Em::isConnect()
 {
-  if (failCounter_ >= 5)
+  if (failCounter_ > EM_COUNTER_LOST_CONNECT)
     return false;
   else
     return true;
@@ -92,4 +96,17 @@ void Em::calcConnect()
   if (totalCounter_) {
     calcConnect_ = (successCounter_ * 100) / totalCounter_;
   }
+}
+
+void Em::checkConnect()
+{
+  bool curConnect = isConnect();
+  if (prevConnect && !curConnect) {
+    for (int i = 0; i < countParameters_; ++i) {
+      uint16_t id = getFieldId(i);
+      float value = NAN;
+      setValue(id, value);
+    }
+  }
+  prevConnect = curConnect;
 }
