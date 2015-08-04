@@ -427,7 +427,7 @@ float Ccs::checkTypeStop()
   if ((reason == LastReasonStopOperator) ||
       (reason == LastReasonStopProgram) ||
       (reason == LastReasonStopRemote)) {
-    return TYPE_STOP_SMOTH/*parameters.get(VSD_TYPE_STOP)*/;
+    return parameters.get(VSD_TYPE_STOP);
   }
   else {
     return TYPE_STOP_ALARM;
