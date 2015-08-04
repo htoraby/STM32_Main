@@ -2,8 +2,6 @@
 #include "uart.h"
 #include "user_main.h"
 
-#define EM_COUNTER_LOST_CONNECT 5
-
 Em::Em()
   : Device(EM_BEGIN, parametersArray_, EM_END - EM_BEGIN)
   , prevConnect(true)
@@ -77,10 +75,7 @@ int Em::setCoefficientTransforamationVoltage()
 
 bool Em::isConnect()
 {
-  if (failCounter_ > EM_COUNTER_LOST_CONNECT)
-    return false;
-  else
-    return true;
+  return false;
 }
 
 void Em::calcConnect()

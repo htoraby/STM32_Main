@@ -21,6 +21,8 @@ public:
   void task();
 
 private:
+  bool isConnect();
+
   /*!
    * \brief Метод отправки запросов
   */

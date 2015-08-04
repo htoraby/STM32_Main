@@ -45,6 +45,14 @@ void EmSet::task()
   }
 }
 
+bool EmSet::isConnect()
+{
+  if (failCounter_ > EM_COUNTER_LOST_CONNECT)
+    return false;
+  else
+    return true;
+}
+
 void EmSet::sendRequest()
 {
   int sizePktTx = 0;

@@ -11,6 +11,8 @@
 #define EM_MIN_LENGHT_PACKAGE             5
 //! Длина пакета
 #define EM_MAX_DATA_SIZE                  256
+//! Максимальное количество потерянных пакетов
+#define EM_COUNTER_LOST_CONNECT           5
 
 /*!
  * \brief Базовый класс счётчика электроэнергии
