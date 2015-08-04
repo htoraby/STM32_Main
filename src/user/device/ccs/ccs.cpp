@@ -1195,6 +1195,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
           logEvent.add(AddDeviceCode, eventType, AddDeviceEmId, oldValue, value);
         else
           logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceEmId, oldValue, value);
+        em->initParameters();
         startReboot();
       }
       return err;
