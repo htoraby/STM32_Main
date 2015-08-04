@@ -14,6 +14,7 @@ ProtectionHardwareVsd::ProtectionHardwareVsd()
   idParam_ = CCS_PROT_OTHER_VSD_PARAMETER;
   idRestartFlag_ = CCS_PROT_OTHER_VSD_RESTART_FLAG;
   idBlockFlag_ = CCS_PROT_OTHER_VSD_BLOCK_FLAG;
+  idDelayFlag_ = CCS_PROT_OTHER_VSD_DELAY_FLAG;
   idState_ = CCS_PROT_OTHER_VSD_STATE;
   idTimer_ = CCS_PROT_OTHER_VSD_TIME;
   idRestartCount_ = CCS_PROT_OTHER_VSD_RESTART_COUNT;

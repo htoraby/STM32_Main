@@ -14,6 +14,7 @@ ProtectionResistanceIsolation::ProtectionResistanceIsolation()
   idParam_ = CCS_PROT_DHS_RESISTANCE_PARAMETER;
   idRestartFlag_ = CCS_PROT_DHS_RESISTANCE_RESTART_FLAG;
   idBlockFlag_ = CCS_PROT_DHS_RESISTANCE_BLOCK_FLAG;
+  idDelayFlag_ = CCS_PROT_DHS_RESISTANCE_DELAY_FLAG;
   idState_ = CCS_PROT_DHS_RESISTANCE_STATE;
   idTimer_ = CCS_PROT_DHS_RESISTANCE_TIME;
   idRestartCount_ = CCS_PROT_DHS_RESISTANCE_RESTART_COUNT;
