@@ -62,6 +62,7 @@ void Protection::setCurrentParamProt()
   parameters.set(idState_, state_);
   parameters.set(idRestartFlag_, restart_);
   parameters.set(idBlockFlag_, block_);
+  parameters.set(idDelayFlag_, delay_);
   parameters.set(idRestartCount_, restartCount_);
   parameters.set(idRestartFirstTime_, restartFirstTime_);
   parameters.set(idPrevent_, prevent_);

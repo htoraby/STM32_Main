@@ -241,6 +241,7 @@ protected:
   unsigned short idParam_;                  //!< id Параметр 1
   unsigned short idRestartFlag_;            //!< id Флаг что защита в состоянии АПВ
   unsigned short idBlockFlag_;              //!< id Флаг что защита в состоянии БЛОК
+  unsigned short idDelayFlag_;              //!< id Флаг что защита в состоянии Задержка срабатывания
   unsigned short idState_;                  //!< id Состояние автомата
   unsigned short idTimer_;                  //!< id Таймера
   unsigned short idRestartCount_;           //!< id Счётчика АПВ
