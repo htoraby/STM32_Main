@@ -1360,6 +1360,7 @@ void Ccs::cmdProtSupplyOvervoltageSetpointReset()
        i <= CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER; i++) {
     resetValue(i);
   }
+  resetValue(CCS_TIMER_DIFFERENT_START);
 }
 
 void Ccs::cmdProtSupplyUndervoltageSetpointReset()
@@ -1368,6 +1369,7 @@ void Ccs::cmdProtSupplyUndervoltageSetpointReset()
        i <= CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER; i++) {
     resetValue(i);
   }
+  resetValue(CCS_TIMER_DIFFERENT_START);
 }
 
 void Ccs::cmdProtSupplyImbalanceVoltageSetpointReset()
@@ -1376,6 +1378,7 @@ void Ccs::cmdProtSupplyImbalanceVoltageSetpointReset()
        i <= CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER; i++) {
     resetValue(i);
   }
+  resetValue(CCS_TIMER_DIFFERENT_START);
 }
 
 
