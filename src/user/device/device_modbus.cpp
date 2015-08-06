@@ -266,13 +266,18 @@ int DeviceModbus::searchExchangeParameters()
 bool DeviceModbus::isConnect()
 {
   bool curConnect = mms_->isConnect();
+
+  if (prevConnect && !curConnect) {
+    logDebug.add(WarningMsg, "Connect lost %d %d", numPort_, devAdrs_);
+  }
+
   if (!prevConnect && curConnect) {
-    int count = sizeof(mbParams_)/sizeof(ModbusParameter);
-    for (int indexModbus = 0; indexModbus < count; indexModbus++) {
+    for (int indexModbus = 0; indexModbus < countParameter_; indexModbus++) {
       mbParams_[indexModbus].cntExchange = mbParams_[indexModbus].freqExchange;
     }
     logDebug.add(WarningMsg, "Connect restored %d %d", numPort_, devAdrs_);
   }
+
   prevConnect = curConnect;
   return curConnect;
 }

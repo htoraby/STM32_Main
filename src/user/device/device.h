@@ -204,6 +204,7 @@ public:
 
   uint16_t getFieldDiscret(uint16_t index);
 
+  void reactionToConnect(bool curConnect);
 protected:
 
   /*!
@@ -385,6 +386,8 @@ protected:
   uint16_t countParameters_;
 
 private:
+
+  bool prevConnect_;
 
 };
 

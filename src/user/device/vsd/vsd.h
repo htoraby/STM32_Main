@@ -102,6 +102,8 @@ public:
    */
   virtual int setMaxFrequency(float value);
 
+  int setLimitsFrequence(bool Min, float value);
+
   virtual int setUfU(uint16_t id, float value);
 
   virtual int setUfU1(float value);
@@ -265,6 +267,8 @@ public:
    * \return
    */
   int calcVsdCos();
+
+protected:
 
 private:
   //! Массив параметров устройства

@@ -66,6 +66,34 @@ int Vsd::setFrequency(float value)
   return setValue(VSD_FREQUENCY, value);
 }
 
+int Vsd::setLimitsFrequence(bool Max, float value)
+{
+  if (Max) {
+    if (!setValue(VSD_HIGH_LIM_SPEED_MOTOR, value)) {
+      // Меняем поле максимум для уставки "Минимальной частоты"
+      setMax(VSD_LOW_LIM_SPEED_MOTOR, value);
+      // Меняем поле максимум для уставки "Частота"
+      setMax(VSD_FREQUENCY, value);
+      return ok_r;
+    }
+    else {
+      return err_r;
+    }
+  }
+  else {
+    if (!setValue(VSD_LOW_LIM_SPEED_MOTOR, value)) {
+      // Меняем поле минимум для уставки "Максимальной частоты"
+      setMin(VSD_HIGH_LIM_SPEED_MOTOR, value);
+      // Меняем поле минимум для уставки "Частота"
+      setMin(VSD_FREQUENCY, value);
+      return ok_r;
+    }
+    else {
+      return err_r;
+    }
+  }
+}
+
 int Vsd::setMinFrequency(float value)
 {
   // Если записываемое значение "Минимальной частоты" больше значения
@@ -74,13 +102,7 @@ int Vsd::setMinFrequency(float value)
     return err_r;                    // Возвращаем ошибку
   }
   else {
-    // Если установили новое значение в массив параметров
-    if (!setValue(VSD_LOW_LIM_SPEED_MOTOR, value)) {
-      // Меняем поле минимум для уставки "Максимальной частоты"
-      setMin(VSD_HIGH_LIM_SPEED_MOTOR, value);
-      // Меняем поле минимум для уставки "Частота"
-      setMin(VSD_FREQUENCY, value);
-
+    if (!setLimitsFrequence(0, value)) {
       if (value > getValue(VSD_FREQUENCY))
         setFrequency(value);
 
@@ -98,13 +120,7 @@ int Vsd::setMaxFrequency(float value)
     return err_r;                    // Возвращаем ошибку
   }
   else {
-    // Если установили новое значение в массив параметров
-    if (!setValue(VSD_HIGH_LIM_SPEED_MOTOR, value)) {
-      // Меняем поле максимум для уставки "Минимальной частоты"
-      setMax(VSD_LOW_LIM_SPEED_MOTOR, value);
-      // Меняем поле максимум для уставки "Частота"
-      setMax(VSD_FREQUENCY, value);
-
+    if (!setLimitsFrequence(1, value)) {
       if (value < getValue(VSD_FREQUENCY))
         setFrequency(value);
 

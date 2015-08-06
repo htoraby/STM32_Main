@@ -35,6 +35,8 @@ void VsdNovomet::init()
 
   initParameters();
   readParameters();
+  setLimitsFrequence(0, getValue(VSD_LOW_LIM_SPEED_MOTOR));
+  setLimitsFrequence(1, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
 }
 
 void VsdNovomet::initParameters()
@@ -65,13 +67,13 @@ void VsdNovomet::initParameters()
       setFieldValue(indexArray, getFieldDefault(indexArray));           // Присвоили значение значению по умолчанию
     }
   }
-  setMin(VSD_FREQUENCY, getValue(VSD_LOW_LIM_SPEED_MOTOR));
-  setMax(VSD_FREQUENCY, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
 }
 
 bool VsdNovomet::isConnect()
 {
-  return dm_->isConnect();
+  bool connect = dm_->isConnect();
+  reactionToConnect(connect);
+  return connect;
 }
 
 // Метод проверки и обновления параметров устройства
@@ -150,6 +152,12 @@ void VsdNovomet::getNewValue(uint16_t id)
   case VSD_POWER_FULL:
     setValue(id, value);
     calcVsdCos();
+    break;
+  case VSD_LOW_LIM_SPEED_MOTOR:
+    setLimitsFrequence(0, value);
+    break;
+  case VSD_HIGH_LIM_SPEED_MOTOR:
+    setLimitsFrequence(1, value);
     break;
   default:                                  // Прямая запись в массив параметров
     setValue(id, value);

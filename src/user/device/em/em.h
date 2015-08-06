@@ -87,9 +87,6 @@ public:
   float calcConnect_;                       //!< качество связи в %
 
 protected:
-  void checkConnect();
-  bool prevConnect;
-
   uint8_t txBuffer_[EM_MAX_DATA_SIZE];
   uint8_t rxBuffer_[EM_MAX_DATA_SIZE];
 

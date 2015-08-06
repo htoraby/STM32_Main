@@ -26,6 +26,7 @@ Device::Device(uint32_t startAddrParams, parameter *parameters, uint16_t countPa
   , startAddrParams_(startAddrParams)
   , parameters_(parameters)
   , countParameters_(countParameters)
+  , prevConnect_(true)
 {
 
 }
@@ -405,4 +406,16 @@ StatusType Device::readParameters()
 bool Device::isConnect()
 {
   return false;
+}
+
+void Device::reactionToConnect(bool curConnect)
+{
+  if (prevConnect_ && !curConnect) {
+    for (int i = 0; i < countParameters_; ++i) {
+      uint16_t id = getFieldId(i);
+      float value = NAN;
+      setValue(id, value);
+    }
+  }
+  prevConnect_ = curConnect;
 }

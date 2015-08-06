@@ -40,17 +40,16 @@ void EmSet::task()
 
     sendRequest();
     receiveAnswer();
-
-    checkConnect();
   }
 }
 
 bool EmSet::isConnect()
 {
+  bool connect = true;
   if (failCounter_ > EM_COUNTER_LOST_CONNECT)
-    return false;
-  else
-    return true;
+    connect = false;
+  reactionToConnect(connect);
+  return connect;
 }
 
 void EmSet::sendRequest()

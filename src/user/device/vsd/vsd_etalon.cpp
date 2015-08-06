@@ -34,6 +34,9 @@ void VsdEtalon::init()
 
   initParameters();
   readParameters();
+
+  setLimitsFrequence(0, getValue(VSD_LOW_LIM_SPEED_MOTOR));
+  setLimitsFrequence(1, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
 }
 
 // Метод заполнения внутреннего банка параметров по карте устройства
@@ -65,13 +68,13 @@ void VsdEtalon::initParameters()
       setFieldValue(indexArray, getFieldDefault(indexArray));           // Присвоили значение значению по умолчанию
     }
   }
-  setMin(VSD_FREQUENCY, getValue(VSD_LOW_LIM_SPEED_MOTOR));
-  setMax(VSD_FREQUENCY, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
 }
 
 bool VsdEtalon::isConnect()
 {
-  return dm_->isConnect();
+  bool connect = dm_->isConnect();
+  reactionToConnect(connect);
+  return connect;
 }
 
 // Метод проверки и обновления параметров устройства
@@ -161,6 +164,12 @@ void VsdEtalon::getNewValue(uint16_t id)
     break;
   case VSD_OUT_VOLTAGE_MOTOR:
     setValue(id, getValue(VSD_COEF_VOLTAGE_OUT_1) * getValue(VSD_COEF_VOLTAGE_OUT_2) * value);
+    break;
+  case VSD_LOW_LIM_SPEED_MOTOR:
+    setLimitsFrequence(0, value);
+    break;
+  case VSD_HIGH_LIM_SPEED_MOTOR:
+    setLimitsFrequence(1, value);
     break;
   default:
     setValue(id, value);
