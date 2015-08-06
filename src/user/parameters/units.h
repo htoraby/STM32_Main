@@ -84,7 +84,7 @@ enum enPhysicDensity {
 };
 
 enum enPhysicSpace {
-  SPACE_M2,
+  SPACE_MM2,
   SPACE_LAST
 };
 
