@@ -1209,7 +1209,6 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
           logEvent.add(AddDeviceCode, eventType, AddDeviceFiltOutId, oldValue, value);
         else
           logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceFiltOutId, oldValue, value);
-
       }
       return err;
     }
@@ -1231,6 +1230,17 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     break;
   case CCS_COEF_OUT_CURRENT_3:
     parameters.set(VSD_COEF_OUT_CURRENT_3, value);
+    break;
+  case CCS_CMD_REBOOT_SOFTWARE:
+    {
+      uint8_t err = setValue(id, value, eventType);
+      if (value && !err) {
+        setValue(CCS_CMD_AM335_REBOOT, 0.0);
+        setValue(CCS_CMD_AM335_REBOOT, 1.0);
+        logEvent.add(PowerCode, AutoType, RebootSoftwareId);
+        startReboot();
+      }
+    }
     break;
   default:
     break;

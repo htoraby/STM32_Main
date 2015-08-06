@@ -9086,5 +9086,41 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_DELAY_FLAG - CCS_BEGIN].discret                 = 1;
   parameters_[CCS_PROT_OTHER_IMB_DELAY_FLAG - CCS_BEGIN].def                     = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_DELAY_FLAG - CCS_BEGIN].code                    = 0;
+  // Команда обновления ПО
+  parameters_[CCS_CMD_UPDATE_SOFTWARE - CCS_BEGIN].id                            = CCS_CMD_UPDATE_SOFTWARE;
+  parameters_[CCS_CMD_UPDATE_SOFTWARE - CCS_BEGIN].access                        = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_UPDATE_SOFTWARE - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_CMD_UPDATE_SOFTWARE - CCS_BEGIN].physic                        = 0;
+  parameters_[CCS_CMD_UPDATE_SOFTWARE - CCS_BEGIN].validity                      = VALIDITY_OK;
+  parameters_[CCS_CMD_UPDATE_SOFTWARE - CCS_BEGIN].value.float_t                 = 0.0;
+  parameters_[CCS_CMD_UPDATE_SOFTWARE - CCS_BEGIN].min                           = 0.0;
+  parameters_[CCS_CMD_UPDATE_SOFTWARE - CCS_BEGIN].max                           = 1.0;
+  parameters_[CCS_CMD_UPDATE_SOFTWARE - CCS_BEGIN].discret                       = 1;
+  parameters_[CCS_CMD_UPDATE_SOFTWARE - CCS_BEGIN].def                           = 0.0;
+  parameters_[CCS_CMD_UPDATE_SOFTWARE - CCS_BEGIN].code                          = 13;
+  // Команда перезагрузки ПО
+  parameters_[CCS_CMD_REBOOT_SOFTWARE - CCS_BEGIN].id                            = CCS_CMD_REBOOT_SOFTWARE;
+  parameters_[CCS_CMD_REBOOT_SOFTWARE - CCS_BEGIN].access                        = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_REBOOT_SOFTWARE - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_CMD_REBOOT_SOFTWARE - CCS_BEGIN].physic                        = 0;
+  parameters_[CCS_CMD_REBOOT_SOFTWARE - CCS_BEGIN].validity                      = VALIDITY_OK;
+  parameters_[CCS_CMD_REBOOT_SOFTWARE - CCS_BEGIN].value.float_t                 = 0.0;
+  parameters_[CCS_CMD_REBOOT_SOFTWARE - CCS_BEGIN].min                           = 0.0;
+  parameters_[CCS_CMD_REBOOT_SOFTWARE - CCS_BEGIN].max                           = 1.0;
+  parameters_[CCS_CMD_REBOOT_SOFTWARE - CCS_BEGIN].discret                       = 1;
+  parameters_[CCS_CMD_REBOOT_SOFTWARE - CCS_BEGIN].def                           = 0.0;
+  parameters_[CCS_CMD_REBOOT_SOFTWARE - CCS_BEGIN].code                          = 14;
+  // Команда перезагрузки ПО
+  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].id                               = CCS_CMD_AM335_REBOOT;
+  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].access                           = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].operation                        = OPERATION_WRITE;
+  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].physic                           = 0;
+  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].validity                         = VALIDITY_OK;
+  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].value.float_t                    = 0.0;
+  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].min                              = 0.0;
+  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].max                              = 1.0;
+  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].discret                          = 1;
+  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].def                              = 0.0;
+  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].code                             = 14;
 }
 

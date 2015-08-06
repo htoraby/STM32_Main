@@ -760,7 +760,10 @@ enum enID
   CCS_PROT_OTHER_LOCK_DOOR_DELAY_FLAG = 754,                 //!< 
   CCS_PROT_OTHER_VSD_DELAY_FLAG = 755,                       //!< 
   CCS_PROT_OTHER_IMB_DELAY_FLAG = 756,                       //!< 
-  CCS_END = 757,                                             //!< Последний параметр
+  CCS_CMD_UPDATE_SOFTWARE = 757,                             //!< Команда обновления ПО
+  CCS_CMD_REBOOT_SOFTWARE = 758,                             //!< Команда перезагрузки ПО
+  CCS_CMD_AM335_REBOOT = 759,                                //!< Команда перезагрузки ПО
+  CCS_END = 760,                                             //!< Последний параметр
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF

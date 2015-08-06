@@ -9,6 +9,7 @@ typedef enum {
   StopId,                         //!< "Стоп"...
   PowerOnId,                      //!< "Включение питания"
   PowerOffId,                     //!< "Отключение питания"
+  RebootSoftwareId,               //!< "Перезагрузка ПО"
 
   OverVoltInProtReactId,          //!< "Сработала защита: Превышение питания сети"
   OverVoltInApvId,                //!< "АПВ по защите: Превышение питания сети"

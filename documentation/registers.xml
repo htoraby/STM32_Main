@@ -13247,6 +13247,48 @@
 	</param>
 	<param>
 		<id>757</id>
+		<name>CCS_CMD_UPDATE_SOFTWARE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<code>13</code>
+		<comment>Команда обновления ПО</comment>
+	</param>
+	<param>
+		<id>758</id>
+		<name>CCS_CMD_REBOOT_SOFTWARE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<code>14</code>
+		<comment>Команда перезагрузки ПО</comment>
+	</param>
+	<param>
+		<id>759</id>
+		<name>CCS_CMD_AM335_REBOOT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<code>14</code>
+		<comment>Команда перезагрузки ПО</comment>
+	</param>
+	<param>
+		<id>760</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
