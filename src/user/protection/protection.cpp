@@ -186,7 +186,7 @@ void Protection::processingStateRunning()
         setStateStop();
       }
       else if (ksu.getValue(CCS_RUN_TIME) >= activDelay_) {
-        logDebug.add(DebugMsg, "ProtActiv");
+        logDebug.add(DebugMsg, "prot: activ %d", idMode_);
         setStateRun();
       }
     }
@@ -210,12 +210,12 @@ void Protection::processingStateRun()       // Состояние работа
         if (alarm_) {                       // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме
           if ((timer_ == 0) && tripDelay_) {// Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - начало;
             timer_ = ksu.getTime();         // Зафиксировали время начала задержки срабатывания
-            logDebug.add(DebugMsg, "Reaction - Begin");
+            logDebug.add(DebugMsg, "prot: react %d", idMode_);
             delay_ = true;
           }
           else {
             if (ksu.getSecFromCurTime(timer_) >= tripDelay_) {   // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - конец;
-              logDebug.add(DebugMsg, "Reaction - Block");
+              logDebug.add(DebugMsg, "prot: react->block %d", idMode_);
               addEventReactionProt();
               logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
               ksu.setBlock();
@@ -233,12 +233,12 @@ void Protection::processingStateRun()       // Состояние работа
         if (alarm_) {                       // Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме
           if ((timer_ == 0) && tripDelay_) {// Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме; Срабатывание - начало;
             timer_ = ksu.getTime();         // Зафиксировали время начала задержки срабатывания
-            logDebug.add(DebugMsg, "Reaction - Begin");
+            logDebug.add(DebugMsg, "prot: react %d", idMode_);
             delay_ = true;
           }
           else if (ksu.getSecFromCurTime(timer_) >= tripDelay_) { // Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме; Срабатывание - конец;
             if (restartCount_ >= restartLimit_) {
-              logDebug.add(DebugMsg, "Reaction - Block");
+              logDebug.add(DebugMsg, "prot: react->block %d", idMode_);
               addEventReactionProt();
               logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
               ksu.setBlock();
@@ -247,7 +247,7 @@ void Protection::processingStateRun()       // Состояние работа
               setStateStop();
             }
             else {
-              logDebug.add(DebugMsg, "Reaction - Restart");
+              logDebug.add(DebugMsg, "prot: react->restart %d", idMode_);
               addEventReactionProt();
               parameters.set(CCS_RESTART_COUNT, restartCount_);
               ksu.setRestart();
@@ -265,11 +265,11 @@ void Protection::processingStateRun()       // Состояние работа
         if (alarm_ && !workWithAlarmFlag_) { // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме
           if ((timer_ == 0) && tripDelay_) { // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме; Срабатывание - начало;
             timer_ = ksu.getTime();          // Зафиксировали время начала задержки срабатывания
-            logDebug.add(DebugMsg, "Reaction - Begin");
+            logDebug.add(DebugMsg, "prot: react %d", idMode_);
             delay_ = true;
           }
           else if (timer_ >= tripDelay_) {  // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме; Срабатывание - конец;
-            logDebug.add(DebugMsg, "Reaction - Stop");
+            logDebug.add(DebugMsg, "prot: react->stop %d", idMode_);
             addEventReactionProt();
             ksu.resetDelay();
             ksu.stop(lastReasonStop_);
@@ -288,12 +288,12 @@ void Protection::processingStateRun()       // Состояние работа
       else {                                // Двигатель - работа; Режим - авто; Защита - вкл;
         if (alarm_ && !workWithAlarmFlag_) {// Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме
           if ((timer_ == 0) && tripDelay_) {// Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - начало;
-            timer_ = ksu.getTime();             // Зафиксировали время начала задержки срабатывания
-            logDebug.add(DebugMsg, "Reaction - Begin");
+            timer_ = ksu.getTime();         // Зафиксировали время начала задержки срабатывания
+            logDebug.add(DebugMsg, "prot: react %d", idMode_);
             delay_ = true;
           }
           else if (ksu.getSecFromCurTime(timer_) >= tripDelay_) {   // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - конец;
-            logDebug.add(DebugMsg, "Reaction - Block");
+            logDebug.add(DebugMsg, "prot: react->block  %d", idMode_);
             addEventReactionProt();
             logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
             ksu.setBlock();
@@ -340,7 +340,7 @@ void Protection::proccessingStateStopping()
     }
   }
   else {
-    logDebug.add(CriticalMsg, "Prot: StateMotor - Unknown!");
+    logDebug.add(CriticalMsg, "prot: unknown state motor %d", idMode_);
   }
 }
 
@@ -374,7 +374,7 @@ void Protection::proccessingStateStop()
       }
     }
     else {                                  // Двигатель - работа; Режим - неизвестный
-      logDebug.add(CriticalMsg, "Prot: ControlMode - Unknown!");
+      logDebug.add(CriticalMsg, "prot: unknown control mode %d", idMode_);
     }
   }
   else if (ksu.isStopMotor()) {             // Двигатель - стоп;
@@ -387,7 +387,7 @@ void Protection::proccessingStateStop()
             if (!prevent_) {                  // Параметр защиты в норме
               if (timer_ == 0) {              //
                 timer_ = ksu.getTime();       // Зафиксировали время начала отсёта АПВ
-                logDebug.add(DebugMsg, "Time restart - begin");
+                logDebug.add(DebugMsg, "prot: time restart %d", idMode_);
                 ksu.setRestart();
               }
               else {
@@ -439,7 +439,7 @@ void Protection::proccessingStateStop()
     }
   }
   else {
-    logDebug.add(CriticalMsg, "Prot: StateMotor - Unknown!");
+    logDebug.add(CriticalMsg, "prot: unknown state motor %d", idMode_);
   }
 
   if (block_ && !ksu.isBlock()) {

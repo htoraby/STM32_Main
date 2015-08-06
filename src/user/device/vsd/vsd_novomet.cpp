@@ -65,6 +65,8 @@ void VsdNovomet::initParameters()
       setFieldValue(indexArray, getFieldDefault(indexArray));           // Присвоили значение значению по умолчанию
     }
   }
+  setMin(VSD_FREQUENCY, getValue(VSD_LOW_LIM_SPEED_MOTOR));
+  setMax(VSD_FREQUENCY, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
 }
 
 bool VsdNovomet::isConnect()
