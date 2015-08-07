@@ -5386,7 +5386,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].value.float_t                  = 0.0;
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].max                            = 10.0;
+  parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].max                            = 999999.0;
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].discret                        = 1;
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].def                            = 0.0;
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].code                           = 0;
@@ -8062,7 +8062,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].max                         = 1.0;
+  parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].max                         = 999999.0;
   parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].code                        = 0;
@@ -8254,7 +8254,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].value.float_t          = 0.0;
   parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].max                    = 100.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].max                    = 999999.0;
   parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].discret                = 1;
   parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].def                    = 0.0;
   parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].code                   = 0;

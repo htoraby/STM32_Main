@@ -494,7 +494,7 @@ bool Ccs::isBlock()
 void Ccs::setFreq(float value)
 {
   if (vsd->setFrequency(value) == ok_r) {
-    parameters.set(CCS_PREVIEW_FREQUENCY, getValue(VSD_FREQUENCY));
+    parameters.set(CCS_PREVIEW_FREQUENCY, parameters.get(VSD_FREQUENCY));
     parameters.set(CCS_PREVIEW_FREQUENCY_DATE_TIME, parameters.getU32(CCS_DATE_TIME));
   }
 }
