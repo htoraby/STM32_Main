@@ -5,7 +5,7 @@
 #include "board.h"
 #include "host.h"
 
-#define MAX_IDS_BUFFER 40 //!< Максимальное количество ID во временом буффере
+#define MAX_IDS_BUFFER 35 //!< Максимальное количество ID во временом буффере
 #define MAX_ADDRS_BUFFER 10 //!< Максимальное количество адресов во временом буффере
 
 /*!
