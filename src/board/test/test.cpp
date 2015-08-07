@@ -116,7 +116,7 @@ static void testThread(void * argument)
 //  int t = 0;
 
   while(1) {
-//    toggleLed(FanLed);
+    toggleLed(FanLed);
 
     osDelay(500);
 
