@@ -31,42 +31,51 @@ void RegimeTechnologAlternationFreq::processing()
   case IdleState:
     if (action_ != OffAction) {                       // Режим - включен
       if (ksu.isWorkMotor() && ksu.isAutoMode()) {    // Двигатель - работа; Режим - авто;
-        ksu.setFreq(firstFreq_);                // Устанавливаем первую частоту
+        ksu.setFreq(firstFreq_);                      // Устанавливаем первую частоту
         beginTime_ = ksu.getTime();                   // Запоминаем время когда перешли на частоту
         state_ = RunningState;                        // Переходим на работу на первой частоте
+        logDebug.add(DebugMsg, "regime: alternation_freq IdleState -> RunningState");
       }
     }
     break;
   case RunningState:
     state_ = WorkState;                               // TODO: Задержка для перехода на новую частоту
+    logDebug.add(DebugMsg, "regime: alternation_freq RunningState -> WorkState");
     break;
   case WorkState:                                     // Работа на первой частоте
     if (ksu.isWorkMotor() && ksu.isAutoMode()) {      // Двигатель - работа; Режим - авто;
       uint32_t time = ksu.getSecFromCurTime(beginTime_);        // Вычисляем сколько времени работаем на первой частоте
       if ((time > timeFirstFreq_) && timeFirstFreq_) {// Если время работы на первой частоте вышло
         ksu.setFreq(secondFreq_);               // Посылаем команду на изменение частоты
+        logDebug.add(DebugMsg, "regime: alternation_freq firstFreq -> secondFreq_");
         beginTime_ = ksu.getTime();
         state_ = RunningState + 1;
+        logDebug.add(DebugMsg, "regime: alternation_freq WorkState -> RunningState + 1");
       }
     }
     else {
       state_ = IdleState;
+      logDebug.add(DebugMsg, "regime: alternation_freq WorkState -> IdleState");
     }
     break;
   case RunningState + 1: 
     state_ = WorkState + 1;                           // TODO: Задержка для перехода на новую частоту
+    logDebug.add(DebugMsg, "regime: alternation_freq RunningState + 1 -> WorkState + 1");
     break;
   case WorkState + 1:
     if (ksu.isWorkMotor() && ksu.isAutoMode()) {      // Двигатель - работа; Режим - авто;
       uint32_t time = ksu.getSecFromCurTime(beginTime_);
       if ((time > timeSecondFreq_) && timeSecondFreq_) {
         ksu.setFreq(firstFreq_);
+        logDebug.add(DebugMsg, "regime: alternation_freq secondFreq_ -> firstFreq_");
         beginTime_ = ksu.getTime();
         state_ = RunningState;
+        logDebug.add(DebugMsg, "regime: alternation_freq WorkState + 1 -> RunningState");
       }
     }
     else {
       state_ = IdleState;
+      logDebug.add(DebugMsg, "regime: alternation_freq WorkState + 1 -> IdleState");
     }
     break;
   default:
