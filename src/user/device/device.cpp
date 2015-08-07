@@ -240,8 +240,10 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
     // Сообщить контроллеру визуализации об обновлении параметра
     novobusSlave.putMessageParams(id);
     // Формирование сообщения в архив событий об изменении параметра
-    if (code && (eventType != NoneType))
+    if (code && (eventType != NoneType) && !(isnan(value) || isnan(oldValue))) {
       logEvent.add(code, eventType, (EventId)id, oldValue, value, units);
+      logDebug.add(DebugMsg, "code %d, eventType %d, id %d, oldValue %f, value %f", code, eventType, (EventId)id, oldValue, value);
+    }
   }
 
   if(isnan(value))
