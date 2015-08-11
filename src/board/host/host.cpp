@@ -1,12 +1,12 @@
 #include "host.h"
 #include "gpio.h"
 #include "string.h"
+#include "user_main.h"
 
 //! Время таймаута запроса от мастера для сброса SPI (n*10 мс)
-#define TIMEOUT_RX 95
+#define TIMEOUT_RX 3000
 
 SPI_HandleTypeDef hspi4;
-DMA_HandleTypeDef hdma_spi4_tx;
 
 static osSemaphoreId hostSemaphoreId;
 static uint8_t txBuffer[2*HOST_BUF_SIZE];
@@ -19,7 +19,6 @@ static int rxActive = 0;
 static int unstuff = 0;
 
 static void hostTimer(const void *argument);
-static void spiDmaTransmitCplt(DMA_HandleTypeDef *hdma);
 
 void hostInit()
 {
@@ -39,36 +38,21 @@ void hostInit()
   hspi4.Init.CRCPolynomial = 0xFFFF;
   HAL_SPI_Init(&hspi4);
 
-  /* Peripheral DMA init*/
-
-  hdma_spi4_tx.Instance = DMA2_Stream1;
-  hdma_spi4_tx.Init.Channel = DMA_CHANNEL_4;
-  hdma_spi4_tx.Init.Direction = DMA_MEMORY_TO_PERIPH;
-  hdma_spi4_tx.Init.PeriphInc = DMA_PINC_DISABLE;
-  hdma_spi4_tx.Init.MemInc = DMA_MINC_ENABLE;
-  hdma_spi4_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
-  hdma_spi4_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
-  hdma_spi4_tx.Init.Mode = DMA_NORMAL;
-  hdma_spi4_tx.Init.Priority = DMA_PRIORITY_MEDIUM;
-  hdma_spi4_tx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
-  HAL_DMA_Init(&hdma_spi4_tx);
-
-  hdma_spi4_tx.XferCpltCallback = spiDmaTransmitCplt;
-
-  __HAL_LINKDMA(&hspi4, hdmatx, hdma_spi4_tx);
-
-  HAL_NVIC_SetPriority(DMA2_Stream1_IRQn, HOST_IRQ_PREPRIO, 1);
-  HAL_NVIC_EnableIRQ(DMA2_Stream1_IRQn);
-
-  HAL_NVIC_SetPriority(SPI4_IRQn, HOST_IRQ_PREPRIO, 0);
-  HAL_NVIC_EnableIRQ(SPI4_IRQn);
-
   hostSemaphoreId = osSemaphoreCreate(NULL, 1);
   osSemaphoreWait(hostSemaphoreId, 0);
 
   osTimerDef_t timerDef = {hostTimer};
   osTimerId timerId = osTimerCreate(&timerDef, osTimerPeriodic, NULL);
   osTimerStart(timerId, 10);
+}
+
+void hostReset()
+{
+  logDebug.add(CriticalMsg, "Host reset");
+
+  HAL_SPI_DeInit(&hspi4);
+  HAL_SPI_Init(&hspi4);
+  hostEnable();
 }
 
 osSemaphoreId getHostSemaphore()
@@ -101,10 +85,7 @@ static void hostTimer(const void * argument)
       rxTimeout--;
     } else {
       rxTimeout = TIMEOUT_RX;
-
-      HAL_SPI_DeInit(&hspi4);
-      HAL_SPI_Init(&hspi4);
-      hostEnable();
+      hostReset();
     }
   }
 }
@@ -178,6 +159,7 @@ int hostReadData(uint8_t *data)
 {
   const int count = rxCount;
   memcpy(data, rxBuffer, count);
+  memset(rxBuffer, 0, sizeof(rxBuffer));
 
   return count;
 }
@@ -205,7 +187,7 @@ static HAL_StatusTypeDef spiWaitOnFlagUntilTimeout(uint32_t flag, FlagStatus sta
   return HAL_OK;
 }
 
-static void spiDmaTransmitCplt(DMA_HandleTypeDef *hdma)
+void hostSpiDmaTransmitCplt(DMA_HandleTypeDef *hdma)
 {
   StatusType status = StatusOk;
   SPI_HandleTypeDef* hspi = (SPI_HandleTypeDef*)((DMA_HandleTypeDef*)hdma)->Parent;
@@ -248,8 +230,8 @@ StatusType hostWriteData(uint8_t *data, int size, uint32_t)
   txBuffer[idx++] = 0x7E;
   txBuffer[idx++] = 0x00;
 
-  hspi4.Instance->CR2 |= SPI_CR2_TXDMAEN;
   HAL_DMA_Start_IT(hspi4.hdmatx, (uint32_t)txBuffer, (uint32_t)&hspi4.Instance->DR, idx);
+  hspi4.Instance->CR2 |= SPI_CR2_TXDMAEN;
 
   return StatusOk;
 }
