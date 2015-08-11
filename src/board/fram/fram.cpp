@@ -139,8 +139,11 @@ StatusType framWriteData(uint32_t address, uint8_t *data, uint32_t size)
   if (HAL_SPI_Transmit(&hspi3, &buffer[0], 4, TIMEOUT) == HAL_OK)
     status = StatusOk;
   if (status == StatusOk) {
-    if (HAL_SPI_Transmit_DMA(&hspi3, data, size) == HAL_OK)
-      status = StatusOk;
+    if (HAL_SPI_Transmit_DMA(&hspi3, data, size) != HAL_OK)
+      status = StatusError;
+  }
+  if (status != StatusOk) {
+    framTxRxCpltCallback();
   }
 
   return status;
@@ -170,11 +173,13 @@ StatusType framReadData(uint32_t address, uint8_t *data, uint32_t size)
       status = StatusOk;
 
     if (osSemaphoreWait(framSemaphoreId, TIMEOUT) == osEventTimeout) {
-      framTxRxCpltCallback();
       status = StatusError;
     } else {
       osSemaphoreRelease(framSemaphoreId);
     }
+  }
+  if (status != StatusOk) {
+    framTxRxCpltCallback();
   }
 
   return status;

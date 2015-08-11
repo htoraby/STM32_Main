@@ -299,10 +299,10 @@ StatusType flashExtRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32
 {
   StatusType status = StatusError;
 
-  if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) != osOK)
+  if (address > flashExts[num].size)
     return status;
 
-  if (address > flashExts[num].size)
+  if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) != osOK)
     return status;
 
   osDelay(5);
@@ -322,11 +322,13 @@ StatusType flashExtRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32
       status = StatusOk;
 
     if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) == osEventTimeout) {
-      flashTxRxCpltCallback(num);
       status = StatusError;
     } else {
       osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
     }
+  }
+  if (status != StatusOk) {
+    flashTxRxCpltCallback(num);
   }
 
   return status;
@@ -336,10 +338,10 @@ StatusType flashWritePage(FlashSpiNum num, uint32_t address, uint8_t *data, uint
 {
   StatusType status = StatusError;
 
-  if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) != osOK)
+  if (address > flashExts[num].size)
     return status;
 
-  if (address > flashExts[num].size)
+  if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) != osOK)
     return status;
 
   flashWriteEnable(num);
@@ -357,11 +359,13 @@ StatusType flashWritePage(FlashSpiNum num, uint32_t address, uint8_t *data, uint
       status = StatusOk;
 
     if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) == osEventTimeout) {
-      flashTxRxCpltCallback(num);
       status = StatusError;
     } else {
       osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
     }
+  }
+  if (status != StatusOk) {
+    flashTxRxCpltCallback(num);
   }
 
   // Ожидание завершения операции
