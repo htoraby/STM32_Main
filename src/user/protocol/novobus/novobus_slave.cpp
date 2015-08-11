@@ -10,7 +10,8 @@ static void novobusSlaveTask(void *p)
 }
 
 NovobusSlave::NovobusSlave()
-  : idsCount_(0)
+  : oldCommand_(NoneCommand)
+  , idsCount_(0)
   , addrsCount_(0)
 {
 
@@ -345,18 +346,18 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
 void NovobusSlave::checkMessage()
 {
   txBuffer_[3] = NoneCommand;
+  txBuffer_[4] = 0;
 
-  // Проверка очереди событий
-  uint8_t dataNumber = osMessageNumber(messageEvents_);
-  if (dataNumber) {
+  uint8_t numberEvents = osMessageNumber(messageEvents_);
+  uint8_t numberParams = osMessageNumber(messageParams_);
+
+  if (numberEvents && !((oldCommand_ == NewEventsCommand) && numberParams)) {
     txBuffer_[3] = NewEventsCommand;
+    txBuffer_[4] = numberEvents;
+  } else if (numberParams) {
+    txBuffer_[3] = UpdateParamsCommand;
+    txBuffer_[4] = numberParams;
   }
-  // Проверка очереди параметров
-  else {
-    dataNumber = osMessageNumber(messageParams_);
-    if (dataNumber) {
-      txBuffer_[3] = UpdateParamsCommand;
-    }
-  }
-  txBuffer_[4] = dataNumber;
+
+  oldCommand_ = txBuffer_[3];
 }
