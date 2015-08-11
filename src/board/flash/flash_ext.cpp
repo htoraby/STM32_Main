@@ -172,8 +172,7 @@ void flashExtInit(FlashSpiNum num)
     HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
   }
 
-  flashExts[num].cmdMutexId = osMutexCreate(NULL);
-  flashExts[num].operSemaphoreId = osSemaphoreCreate(NULL, 1);
+  flashExts[num].cmdSemaphoreId = osSemaphoreCreate(NULL, 1);
 
   // Чтение данных из JEDEC ID регистров для определения производителя
   buf[0] = CMD_JEDEC_ID;
@@ -210,8 +209,7 @@ void flashExtInit(FlashSpiNum num)
 void flashTxRxCpltCallback(FlashSpiNum num)
 {
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  osMutexRelease(flashExts[num].cmdMutexId);
-  osSemaphoreRelease(flashExts[num].operSemaphoreId);
+  osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
 }
 
 StatusType spiTransmitReceive(FlashSpiNum num, uint8_t *txData, uint8_t *rxData,
@@ -271,7 +269,7 @@ StatusType flashEraseSector4k(FlashSpiNum num, uint32_t address)
 {
   StatusType status = StatusError;
 
-  if (osMutexWait(flashExts[num].cmdMutexId, FLASH_TIMEOUT) != osOK)
+  if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) != osOK)
     return status;
 
   address &= ~(flashExts[num].sectorSize - 1);
@@ -292,7 +290,7 @@ StatusType flashEraseSector4k(FlashSpiNum num, uint32_t address)
   flashReady(num);
   flashWriteDisable(num);
 
-  osMutexRelease(flashExts[num].cmdMutexId);
+  osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
 
   return status;
 }
@@ -301,7 +299,7 @@ StatusType flashExtRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32
 {
   StatusType status = StatusError;
 
-  if (osMutexWait(flashExts[num].cmdMutexId, FLASH_TIMEOUT) != osOK)
+  if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) != osOK)
     return status;
 
   if (address > flashExts[num].size)
@@ -320,14 +318,14 @@ StatusType flashExtRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32
     status = StatusOk;
 
   if (status == StatusOk) {
-    osSemaphoreWait(flashExts[num].operSemaphoreId, 0);
-
     if (HAL_SPI_Receive_DMA(&flashExts[num].spi, data, size) == HAL_OK)
       status = StatusOk;
 
-    if (osSemaphoreWait(flashExts[num].operSemaphoreId, FLASH_TIMEOUT) == osEventTimeout) {
+    if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) == osEventTimeout) {
       flashTxRxCpltCallback(num);
       status = StatusError;
+    } else {
+      osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
     }
   }
 
@@ -338,7 +336,7 @@ StatusType flashWritePage(FlashSpiNum num, uint32_t address, uint8_t *data, uint
 {
   StatusType status = StatusError;
 
-  if (osMutexWait(flashExts[num].cmdMutexId, FLASH_TIMEOUT) != osOK)
+  if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) != osOK)
     return status;
 
   if (address > flashExts[num].size)
@@ -355,14 +353,14 @@ StatusType flashWritePage(FlashSpiNum num, uint32_t address, uint8_t *data, uint
   if (HAL_SPI_Transmit(&flashExts[num].spi, buf, 4, FLASH_TIMEOUT) == HAL_OK)
     status = StatusOk;
   if (status == StatusOk) {
-    osSemaphoreWait(flashExts[num].operSemaphoreId, 0);
-
     if (HAL_SPI_Transmit_DMA(&flashExts[num].spi, data, size) == HAL_OK)
       status = StatusOk;
 
-    if (osSemaphoreWait(flashExts[num].operSemaphoreId, FLASH_TIMEOUT) == osEventTimeout) {
+    if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) == osEventTimeout) {
       flashTxRxCpltCallback(num);
       status = StatusError;
+    } else {
+      osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
     }
   }
 
@@ -463,7 +461,7 @@ StatusType flashExtChipErase(FlashSpiNum num)
 {
   StatusType status = StatusError;
 
-  if (osMutexWait(flashExts[num].cmdMutexId, FLASH_TIMEOUT) != osOK)
+  if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) != osOK)
     return status;
 
   flashWriteEnable(num);
@@ -478,7 +476,7 @@ StatusType flashExtChipErase(FlashSpiNum num)
   flashReady(num);
   flashWriteDisable(num);
 
-  osMutexRelease(flashExts[num].cmdMutexId);
+  osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
 
   return status;
 }

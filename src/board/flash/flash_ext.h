@@ -16,7 +16,7 @@ typedef enum {
 
 typedef struct {
   SPI_HandleTypeDef spi;  //!< Структура SPI
-  osMutexId cmdMutexId;
+  osSemaphoreId cmdSemaphoreId;
   osSemaphoreId operSemaphoreId;
   GPIO_TypeDef* nss_port; //!< Порт вывода NSS
   uint16_t nss_pin;       //!< Номер вывода NSS
