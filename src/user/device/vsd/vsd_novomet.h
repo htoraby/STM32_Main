@@ -221,6 +221,16 @@ public:
   void calcTimeSpeedUp();
 
   /*!
+   * \brief calcSpeedDown
+   */
+  void calcTempSpeedDown();
+
+  /*!
+   * \brief calcTimeSpeedDown
+   */
+  void calcTimeSpeedDown();
+
+  /*!
    * \brief calcRotation
    */
   void calcRotation();

@@ -136,6 +136,11 @@ void VsdNovomet::getNewValue(uint16_t id)
     calcTempSpeedUp();
     calcTimeSpeedUp();
     break;
+  case VSD_T_SPEEDDOWN:
+    setValue(id, value);
+    calcTempSpeedDown();
+    calcTimeSpeedDown();
+    break;
   case VSD_INVERTOR_STATUS:
     setValue(id, value);
     calcRotation();
@@ -154,9 +159,11 @@ void VsdNovomet::getNewValue(uint16_t id)
     calcVsdCos();
     break;
   case VSD_LOW_LIM_SPEED_MOTOR:
+    setValue(id, value);
     setLimitsFrequence(0, value);
     break;
   case VSD_HIGH_LIM_SPEED_MOTOR:
+    setValue(id, value);
     setLimitsFrequence(1, value);
     break;
   default:                                  // Прямая запись в массив параметров
@@ -401,6 +408,16 @@ void VsdNovomet::calcTempSpeedUp()
 void VsdNovomet::calcTimeSpeedUp()
 {
   setValue(VSD_TIMER_DISPERSAL, getValue(VSD_FREQUENCY)/getValue(VSD_TEMP_SPEEDUP));
+}
+
+void VsdNovomet::calcTempSpeedDown()
+{
+  setValue(VSD_TEMP_SPEEDDOWN, 1/getValue(VSD_T_SPEEDDOWN));
+}
+
+void VsdNovomet::calcTimeSpeedDown()
+{
+  setValue(VSD_TIMER_DELAY, getValue(VSD_FREQUENCY)/getValue(VSD_TEMP_SPEEDDOWN));
 }
 
 void VsdNovomet::calcRotation()
