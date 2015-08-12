@@ -164,6 +164,15 @@ bool ProtectionHardwareVsd::checkAlarm()
     protReactEventId_ = HardwareVsdEepromReactId;
     return true;
   }
+  if (vsd->checkVsdStatus(VSD_STATUS_I_FAST_ERR)) {
+    protReactEventId_ = HardwareVsdIfastReactId;
+    return true;
+  }
+  if (vsd->checkVsdStatus(VSD_STATUS_M_I2T_ERR)) {
+    protReactEventId_ = HardwareVsdMI2TReactId;
+    return true;
+  }
+
   return false;
 }
 
