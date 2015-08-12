@@ -45,11 +45,22 @@ void EmSet::task()
 
 bool EmSet::isConnect()
 {
-  bool connect = true;
+  bool curConnect = true;
   if (failCounter_ > EM_COUNTER_LOST_CONNECT)
-    connect = false;
-  reactionToConnect(connect);
-  return connect;
+    curConnect = false;
+
+  if (prevConnect_ && !curConnect) {
+    for (int i = 0; i < countParameters_; ++i) {
+      uint16_t id = getFieldId(i);
+      if (id != EM_COEFFICIENT_TRANS_CURRENT) {
+        float value = NAN;
+        setValue(id, value);
+      }
+    }
+  }
+  prevConnect_ = curConnect;
+
+  return curConnect;
 }
 
 void EmSet::sendRequest()
@@ -199,6 +210,11 @@ void EmSet::receiveAnswer()
     // TODO: Предупреждение: Ошибка CRC
     crcCounter_++;
     failCounter_++;
+    return;
+  }
+
+  if (rxBuffer_[1] == 0x05) {
+    numberRequest_ = 0;
     return;
   }
 

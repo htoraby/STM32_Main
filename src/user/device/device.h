@@ -385,8 +385,7 @@ protected:
   //! Количество параметров в массиве
   uint16_t countParameters_;
 
-private:
-
+  //!
   bool prevConnect_;
 
 };
