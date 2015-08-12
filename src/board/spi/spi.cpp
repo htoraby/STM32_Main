@@ -3,6 +3,9 @@
 
 extern void framTxRxCpltCallback();
 extern void adcExtTxRxCpltCallback();
+extern void hostSpiDmaTransmitCplt(DMA_HandleTypeDef *hdma);
+
+static DMA_HandleTypeDef hdma_spi4_tx;
 
 void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
 {
@@ -71,6 +74,28 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
     GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
     GPIO_InitStruct.Alternate = GPIO_AF5_SPI4;
     HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
+
+    /* Peripheral DMA init*/
+    hdma_spi4_tx.Instance = DMA2_Stream1;
+    hdma_spi4_tx.Init.Channel = DMA_CHANNEL_4;
+    hdma_spi4_tx.Init.Direction = DMA_MEMORY_TO_PERIPH;
+    hdma_spi4_tx.Init.PeriphInc = DMA_PINC_DISABLE;
+    hdma_spi4_tx.Init.MemInc = DMA_MINC_ENABLE;
+    hdma_spi4_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+    hdma_spi4_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+    hdma_spi4_tx.Init.Mode = DMA_NORMAL;
+    hdma_spi4_tx.Init.Priority = DMA_PRIORITY_MEDIUM;
+    hdma_spi4_tx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+    HAL_DMA_Init(&hdma_spi4_tx);
+
+    hdma_spi4_tx.XferCpltCallback = hostSpiDmaTransmitCplt;
+
+    __HAL_LINKDMA(hspi, hdmatx, hdma_spi4_tx);
+
+    HAL_NVIC_SetPriority(SPI4_IRQn, HOST_IRQ_PREPRIO, 0);
+    HAL_NVIC_EnableIRQ(SPI4_IRQn);
+    HAL_NVIC_SetPriority(DMA2_Stream1_IRQn, HOST_IRQ_PREPRIO, 1);
+    HAL_NVIC_EnableIRQ(DMA2_Stream1_IRQn);
   }
   else if(hspi->Instance == SPI5) {
     /* Peripheral clock enable */
@@ -100,27 +125,37 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
 void HAL_SPI_MspDeInit(SPI_HandleTypeDef* hspi)
 {
   if(hspi->Instance == SPI1) {
-    __SPI1_CLK_DISABLE();
+    __SPI1_FORCE_RESET();
+    __SPI1_RELEASE_RESET();
 
     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7);
   }
   else if(hspi->Instance == SPI2) {
-    __SPI2_CLK_DISABLE();
+    __SPI2_FORCE_RESET();
+    __SPI2_RELEASE_RESET();
 
     HAL_GPIO_DeInit(GPIOI, GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3);
   }
   else if(hspi->Instance == SPI3) {
-    __SPI3_CLK_DISABLE();
+    __SPI3_FORCE_RESET();
+    __SPI3_RELEASE_RESET();
 
     HAL_GPIO_DeInit(GPIOC, GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12);
   }
   else if(hspi->Instance == SPI4) {
-    __SPI4_CLK_DISABLE();
+    __SPI4_FORCE_RESET();
+    __SPI4_RELEASE_RESET();
 
     HAL_GPIO_DeInit(GPIOE, GPIO_PIN_2/*|GPIO_PIN_4*/|GPIO_PIN_5|GPIO_PIN_6);
+
+    HAL_DMA_DeInit(hspi->hdmatx);
+
+    HAL_NVIC_DisableIRQ(SPI4_IRQn);
+    HAL_NVIC_DisableIRQ(DMA2_Stream1_IRQn);
   }
   else if(hspi->Instance == SPI5) {
-    __SPI5_CLK_DISABLE();
+    __SPI5_FORCE_RESET();
+    __SPI5_RELEASE_RESET();
 
     HAL_GPIO_DeInit(GPIOF, GPIO_PIN_8|GPIO_PIN_9);
     HAL_GPIO_DeInit(GPIOH, GPIO_PIN_6);

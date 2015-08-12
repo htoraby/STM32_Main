@@ -114,17 +114,24 @@ static void testThread(void * argument)
   testLog();
 
 //  int t = 0;
+//  int t1  = 0;
 
   while(1) {
     toggleLed(FanLed);
 
     osDelay(500);
 
-//    parameters.set(CCS_NOTE_1 + t, 10);
-//    parameters.set(CCS_NOTE_1 + t + 1, 20);
-//    t = t + 2;
-//    if (t > 10) t = 0;
-
+//    if (t1 < 300000) {
+//    for (int i = 0; i < 10; ++i) {
+//      parameters.set(CCS_NOTE_1 + i, t);
+//    }
+//    if (t) t = 0;
+//    else t = 10;
+//    t1++;
+//    } else if (t1 == 300000) {
+//      t1++;
+//      logDebug.add(CriticalMsg, "Test1");
+//    }
 
 //    logRunning.start(AutoType);
 //    logAlarm.start(AutoType, 0);

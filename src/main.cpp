@@ -22,7 +22,7 @@ static void mainThread(void *argument);
 int main()
 {
   // Сброс всей переферии, инициализация интерфейса Flash и системного таймера (1мс)
-  HAL_Init();
+   HAL_Init();
 
   // Инициализация системы тактирования
   systemClockConfig();

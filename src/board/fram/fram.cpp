@@ -30,8 +30,7 @@ SPI_HandleTypeDef hspi3;
 DMA_HandleTypeDef hdma_spi3_tx;
 DMA_HandleTypeDef hdma_spi3_rx;
 
-static osSemaphoreId framTxSemaphoreId;
-static osSemaphoreId framRxSemaphoreId;
+static osSemaphoreId framSemaphoreId;
 
 static StatusType spiTransmitReceive(uint8_t *txData, uint8_t *rxData,
                                      uint16_t txSize, uint16_t rxSize);
@@ -94,8 +93,7 @@ void framInit()
   HAL_NVIC_SetPriority(DMA1_Stream0_IRQn, FLASH_IRQ_PREPRIO, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream0_IRQn);
 
-  framTxSemaphoreId = osSemaphoreCreate(NULL, 1);
-  framRxSemaphoreId = osSemaphoreCreate(NULL, 1);
+  framSemaphoreId = osSemaphoreCreate(NULL, 1);
 
   // Разрешение записи
   buffer[0] = CMD_WREN;
@@ -116,8 +114,7 @@ void framInit()
 void framTxRxCpltCallback()
 {
   setPinOut(FRAM_NSS_PORT, FRAM_NSS_PIN);
-  osSemaphoreRelease(framTxSemaphoreId);
-  osSemaphoreRelease(framRxSemaphoreId);
+  osSemaphoreRelease(framSemaphoreId);
 }
 
 StatusType framWriteData(uint32_t address, uint8_t *data, uint32_t size)
@@ -127,7 +124,7 @@ StatusType framWriteData(uint32_t address, uint8_t *data, uint32_t size)
   if ((address > FRAM_END) || !size)
     return status;
 
-  if (osSemaphoreWait(framTxSemaphoreId, TIMEOUT) == osEventTimeout)
+  if (osSemaphoreWait(framSemaphoreId, TIMEOUT) == osEventTimeout)
     return status;
 
   buffer[0] = CMD_WREN;
@@ -142,8 +139,11 @@ StatusType framWriteData(uint32_t address, uint8_t *data, uint32_t size)
   if (HAL_SPI_Transmit(&hspi3, &buffer[0], 4, TIMEOUT) == HAL_OK)
     status = StatusOk;
   if (status == StatusOk) {
-    if (HAL_SPI_Transmit_DMA(&hspi3, data, size) == HAL_OK)
-      status = StatusOk;
+    if (HAL_SPI_Transmit_DMA(&hspi3, data, size) != HAL_OK)
+      status = StatusError;
+  }
+  if (status != StatusOk) {
+    framTxRxCpltCallback();
   }
 
   return status;
@@ -156,7 +156,7 @@ StatusType framReadData(uint32_t address, uint8_t *data, uint32_t size)
   if ((address > FRAM_END) || !size)
     return status;
 
-  if (osSemaphoreWait(framTxSemaphoreId, TIMEOUT) == osEventTimeout)
+  if (osSemaphoreWait(framSemaphoreId, TIMEOUT) == osEventTimeout)
     return status;
 
   buffer[0] = CMD_FSTRD;
@@ -169,15 +169,17 @@ StatusType framReadData(uint32_t address, uint8_t *data, uint32_t size)
   if (HAL_SPI_Transmit(&hspi3, &buffer[0], 5, TIMEOUT) == HAL_OK)
     status = StatusOk;
   if (status == StatusOk) {
-    osSemaphoreWait(framRxSemaphoreId, 0);
-
     if (HAL_SPI_Receive_DMA(&hspi3, data, size) == HAL_OK)
       status = StatusOk;
 
-    if (osSemaphoreWait(framRxSemaphoreId, TIMEOUT) == osEventTimeout) {
-      framTxRxCpltCallback();
+    if (osSemaphoreWait(framSemaphoreId, TIMEOUT) == osEventTimeout) {
       status = StatusError;
+    } else {
+      osSemaphoreRelease(framSemaphoreId);
     }
+  }
+  if (status != StatusOk) {
+    framTxRxCpltCallback();
   }
 
   return status;

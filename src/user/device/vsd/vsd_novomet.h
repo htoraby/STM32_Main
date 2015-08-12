@@ -357,7 +357,7 @@ public:
   void calcParameters(uint16_t id);
 
 private:
-  ModbusParameter modbusParameters_[136];
+  ModbusParameter modbusParameters_[135];
   DeviceModbus *dm_;
 
   RegimeRunNovomet *regimeRun_;

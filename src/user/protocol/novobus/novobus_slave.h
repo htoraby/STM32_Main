@@ -95,6 +95,7 @@ private:
   //! Очередь на запись данных
   osMessageQId messageParams_;
 
+  uint8_t oldCommand_;
   uint8_t txBuffer_[HOST_BUF_SIZE];
   uint8_t rxBuffer_[HOST_BUF_SIZE];
   uint32_t idsBuffer_[MAX_IDS_BUFFER];
