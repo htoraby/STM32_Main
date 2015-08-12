@@ -18,7 +18,7 @@
 #define MODBUS_ERROR_TRASH                    3
 
 #define MODBUS_ANSWER_TIMEOUT                 100     //!< Максимальное время ожидания ответа от устройства в мс
-#define MODBUS_TIME_END_PACKAGE               10      //!< Максимальное время между байтами в ответе в мс
+#define MODBUS_TIME_END_PACKAGE               20      //!< Максимальное время между байтами в ответе в мс
 #define MODBUS_MIN_LENGHT_PACKAGE             5       //!< Минимальная возможная длина "корректного" ответа по Modbus
 
 #define MODBUS_PDU_SIZE                       253     //!< Длина modbus запроса по спецификации
@@ -51,7 +51,7 @@
 #define MODBUS_GATEWAY_PATH_UNAVAILABLE_0x0A  10
 #define MODBUS_GATEWAY_TARGET_DEVICE_0x0B     11
 
-#define MODBUS_COUNTER_LOST_CONNECT           5
+#define MODBUS_COUNTER_LOST_CONNECT           50
 
 /*!
  * \brief Класс Modbus master

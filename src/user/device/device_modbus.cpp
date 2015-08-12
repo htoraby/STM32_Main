@@ -357,7 +357,7 @@ void DeviceModbus::exchangeTask()
                 mbParams_[index].value.int16_t[0] = regArr_[i];
                 mbParams_[index].validity = checkRange(mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, true);
                 if (mbParams_[index].validity != ok_r) {
-                  logDebug.add(WarningMsg, "0x03 devAdr %d, index %d, value %d, valid %d", devAdrs_,
+                  logDebug.add(WarningMsg, "0x03 ok_r no valid devAdr %d, index %d, value %d, valid %d", devAdrs_,
                                index, regArr_[i], mbParams_[index].validity);
                 }
                 putMessageUpdateId(mbParams_[index].id);
@@ -369,7 +369,7 @@ void DeviceModbus::exchangeTask()
               for (int i = 0; i < count; i++) {
                 mbParams_[index].validity = err_r;
                 if (isConnect()) {
-                  logDebug.add(WarningMsg, "0x03 devAdr %d, index %d, value %d, valid %d", devAdrs_, index, regArr_[i]);
+                  logDebug.add(WarningMsg, "0x03 no ok_r devAdr %d, index %d, value %d, valid %d", devAdrs_, index, regArr_[i]);
                 }
                 putMessageUpdateId(mbParams_[index].id);
                 index++;
@@ -508,7 +508,7 @@ void DeviceModbus::exchangeTask()
               mbParams_[index].value.int16_t[0] = regArr_[i];
               mbParams_[index].validity = checkRange(mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, true);
               if (mbParams_[index].validity != ok_r) {
-                logDebug.add(WarningMsg, "0x03 devAdr %d, index %d, value %d, valid %d", devAdrs_,
+                logDebug.add(WarningMsg, "0x03 res %d devAdr %d, index %d, value %d, valid %d", res, devAdrs_,
                              index, regArr_[i], mbParams_[index].validity);
               }
               putMessageUpdateId(mbParams_[index].id);
@@ -520,7 +520,7 @@ void DeviceModbus::exchangeTask()
             for (int i = 0; i < count; i++) {
               mbParams_[index].validity = err_r;
               if (isConnect()) {
-                logDebug.add(WarningMsg, "0x03 devAdr %d, index %d, value %d, valid %d", devAdrs_, index, regArr_[i]);
+                logDebug.add(WarningMsg, "0x03 res %d, devAdr %d, index %d, value %d, valid %d", res, devAdrs_, index, regArr_[i]);
               }
               putMessageUpdateId(mbParams_[index].id);
               index++;
