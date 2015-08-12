@@ -191,8 +191,6 @@ public:
 
   virtual int resetBlock();
 
-  virtual bool isConnect();
-
   /*!
    * \brief Метод проверки флага в регистре статуса инвертора
    * \param bit - проверяемый бит

@@ -72,11 +72,6 @@ int Em::setCoefficientTransforamationVoltage()
   return err_r;
 }
 
-bool Em::isConnect()
-{
-  return false;
-}
-
 void Em::calcConnect()
 {
   if (totalCounter_ > 1000000) {

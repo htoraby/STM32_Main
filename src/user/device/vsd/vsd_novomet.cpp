@@ -71,9 +71,21 @@ void VsdNovomet::initParameters()
 
 bool VsdNovomet::isConnect()
 {
-  bool connect = dm_->isConnect();
-  reactionToConnect(connect);
-  return connect;
+  bool curConnect = dm_->isConnect();
+
+  if (prevConnect_ && !curConnect) {
+    int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
+    for (int indexModbus = 0; indexModbus < count; indexModbus++) {         // Цикл по карте регистров
+      int id = dm_->getFieldID(indexModbus);
+      if (id <= 0)
+        continue;
+      float value = NAN;
+      setValue(id, value);
+    }
+  }
+  prevConnect_ = curConnect;
+
+  return curConnect;
 }
 
 // Метод проверки и обновления параметров устройства

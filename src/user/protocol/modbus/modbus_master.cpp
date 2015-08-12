@@ -527,7 +527,6 @@ bool ModbusMaster::isConnect()
     return true;
 }
 
-
 int  ModbusMaster::setTimeout(uint32_t time)
 {
   int res = err_r;

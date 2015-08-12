@@ -80,8 +80,6 @@ public:
    */
   int setDisablePidLoop();
 
-  virtual bool isConnect();
-
 private:
   //! Массив параметров устройства
   parameter parametersArray_[TMS_END - TMS_BEGIN];

@@ -271,11 +271,6 @@ bool Vsd::checkStop()
   return 0;
 }
 
-bool Vsd::isConnect()
-{
-  return false;
-}
-
 // Команды и операции
 bool Vsd::checkVsdStatus(uint8_t bit)
 {
