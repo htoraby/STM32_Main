@@ -318,8 +318,8 @@ StatusType flashExtRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32
     status = StatusOk;
 
   if (status == StatusOk) {
-    if (HAL_SPI_Receive_DMA(&flashExts[num].spi, data, size) == HAL_OK)
-      status = StatusOk;
+    if (HAL_SPI_Receive_DMA(&flashExts[num].spi, data, size) != HAL_OK)
+      status = StatusError;
 
     if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) == osEventTimeout) {
       status = StatusError;
@@ -355,8 +355,8 @@ StatusType flashWritePage(FlashSpiNum num, uint32_t address, uint8_t *data, uint
   if (HAL_SPI_Transmit(&flashExts[num].spi, buf, 4, FLASH_TIMEOUT) == HAL_OK)
     status = StatusOk;
   if (status == StatusOk) {
-    if (HAL_SPI_Transmit_DMA(&flashExts[num].spi, data, size) == HAL_OK)
-      status = StatusOk;
+    if (HAL_SPI_Transmit_DMA(&flashExts[num].spi, data, size) != HAL_OK)
+      status = StatusError;
 
     if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) == osEventTimeout) {
       status = StatusError;

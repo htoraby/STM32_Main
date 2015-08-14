@@ -375,9 +375,6 @@ uint8_t Device::setNewValue(uint16_t id, int value)
 
 StatusType Device::saveParameters()
 {
-  // Проверка на завершение работы DMA
-  framReadData(startAddrParams_*4, (uint8_t *)buffer, 1*4);
-
   for (int i = 0; i < countParameters_; ++i) {
     buffer[i] = parameters_[i].value.float_t;
   }
@@ -385,6 +382,7 @@ StatusType Device::saveParameters()
   StatusType status = framWriteData(startAddrParams_*4,
                                     (uint8_t *)buffer,
                                     countParameters_*4);
+
   if (status == StatusError)
     asm("nop");
   return status;
