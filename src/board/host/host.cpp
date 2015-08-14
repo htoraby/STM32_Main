@@ -17,6 +17,7 @@ static int rxCount = 0;
 static int rxTimeout = TIMEOUT_RX;
 static int rxActive = 0;
 static int unstuff = 0;
+static uint8_t isConnect = 0;
 
 static void hostTimer(const void *argument);
 
@@ -48,7 +49,10 @@ void hostInit()
 
 void hostReset()
 {
-  logDebug.add(CriticalMsg, "Host reset");
+  if (isConnect) {
+    isConnect = 0;
+    logDebug.add(CriticalMsg, "Host reset");
+  }
 
   HAL_SPI_DeInit(&hspi4);
   HAL_SPI_Init(&hspi4);
@@ -104,6 +108,7 @@ void hostRxIRQHandler(void)
     if (data == 0x7E) {
       // Конец пакета
       if (rxActive) {
+        isConnect = 1;
         rxActive = 0;
         osSemaphoreRelease(hostSemaphoreId);
       }
