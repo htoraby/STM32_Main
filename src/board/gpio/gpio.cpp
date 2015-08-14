@@ -188,3 +188,10 @@ void offPowerAm335x()
   osDelay(10000);
   setPinOut(POWER_BUTTON_PIN);
 }
+
+void resetAm335x()
+{
+  offPowerAm335x();
+  osDelay(200);
+  onPowerAm335x();
+}

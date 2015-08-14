@@ -31,10 +31,14 @@ void Parameters::task()
   static int time = 0;
   while (1) {  
     if (osSemaphoreWait(semaphoreId_, 1) != osEventTimeout) {
+      time = 0;
+      logDebug.add(DebugMsg, "Сохранение параметров");
       save();
     } else {
       if ((++time >= PARAMS_SAVE_TIME) || ksu.isPowerOff()) {
         time = 0;
+        if (ksu.isPowerOff())
+          logDebug.add(DebugMsg, "Сохранение параметров");
         save();
       }
     }

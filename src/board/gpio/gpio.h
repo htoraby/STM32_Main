@@ -203,4 +203,9 @@ void onPowerAm335x();
 */
 void offPowerAm335x();
 
+/*!
+ * \brief Сброс модуля AM335x
+ */
+void resetAm335x();
+
 #endif // GPIO_H

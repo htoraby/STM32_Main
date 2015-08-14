@@ -78,6 +78,9 @@ void Ccs::initTask()
   osSemaphoreWait(rebootSemaphoreId_, 0);
   scadaSemaphoreId_ = osSemaphoreCreate(NULL, 1);
   osSemaphoreWait(scadaSemaphoreId_, 0);
+
+  setValue(CCS_CMD_SYNC_ALL_PARAMS, 0.0);
+  setValue(CCS_CMD_SYNC_ALL_PARAMS, 1.0);
 }
 
 void Ccs::mainTask()
@@ -1166,12 +1169,18 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     cmdCountersAllReset();
     break;
   case CCS_DHS_TYPE:
-    if (value)
-      logEvent.add(AddDeviceCode, eventType, AddDeviceDhsId, oldValue, value);
-    else
-      logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceDhsId, oldValue, value);
-    tms->initParameters();
-    startReboot();
+    {
+      uint8_t err = setValue(id, value, eventType);
+      if ((value != oldValue) && !err) {
+        if (value)
+          logEvent.add(AddDeviceCode, eventType, AddDeviceDhsId, oldValue, value);
+        else
+          logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceDhsId, oldValue, value);
+        tms->initParameters();
+        startReboot();
+      }
+      return err;
+    }
     break;
   case CCS_TYPE_VSD:
     {
@@ -1307,13 +1316,15 @@ void Ccs::controlPower()
 {
   if (!isPowerGood()) {
     if (powerOffTimeout_ == (TIMEOUT_POWER_OFF - 1000)) {
-      setNewValue(CCS_CMD_AM335_POWER_OFF, 1.0);
+      setValue(CCS_CMD_AM335_POWER_OFF, 0.0);
+      setValue(CCS_CMD_AM335_POWER_OFF, 1.0);
       offLcd();
     }
 
     if ((powerOffTimeout_ == 1000) || !isUpsGood()) {
       if (!powerOffFlag_) {
-        setNewValue(CCS_CMD_AM335_POWER_OFF, 1.0);
+        setValue(CCS_CMD_AM335_POWER_OFF, 0.0);
+        setValue(CCS_CMD_AM335_POWER_OFF, 1.0);
 
         // Запись в журнал "Отключение питания"
         logEvent.add(PowerCode, AutoType, PowerOffId);
@@ -1329,13 +1340,11 @@ void Ccs::controlPower()
       powerOffTimeout_--;
     }
   } else {
-    setNewValue(CCS_CMD_AM335_POWER_OFF, 0.0);
+    setValue(CCS_CMD_AM335_POWER_OFF, 0.0);
 
     if (powerOffTimeout_ <= (TIMEOUT_POWER_OFF - 1000)) {
       onLcd();
-      offPowerAm335x();
-      osDelay(200);
-      onPowerAm335x();
+      resetAm335x();
     }
 
     powerOffFlag_ = false;
@@ -1519,13 +1528,15 @@ void Ccs::cmdCountersAllReset()
 
 void Ccs::startReboot()
 {
-  parameters.startSave();
   logEvent.add(PowerCode, AutoType, PowerOffId);
+  parameters.startSave();
   osSemaphoreRelease(rebootSemaphoreId_);
 }
 
 void Ccs::reboot()
 {
-  osDelay(250);
+  logDebug.add(WarningMsg, "Перезагрузка");
+  osDelay(200);
+  osThreadSuspendAll();
   HAL_NVIC_SystemReset();
 }

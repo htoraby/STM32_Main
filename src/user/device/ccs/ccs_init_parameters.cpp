@@ -9122,5 +9122,17 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].discret                          = 1;
   parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].def                              = 0.0;
   parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].code                             = 14;
+  // Команда синхронизации параметров
+  parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].id                            = CCS_CMD_SYNC_ALL_PARAMS;
+  parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].access                        = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].physic                        = 0;
+  parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].validity                      = VALIDITY_OK;
+  parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].value.float_t                 = 0.0;
+  parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].min                           = 0.0;
+  parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].max                           = 1.0;
+  parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].discret                       = 1;
+  parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].def                           = 0.0;
+  parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].code                          = 14;
 }
 

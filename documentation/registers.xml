@@ -13289,6 +13289,20 @@
 	</param>
 	<param>
 		<id>760</id>
+		<name>CCS_CMD_SYNC_ALL_PARAMS</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<code>14</code>
+		<comment>Команда синхронизации параметров</comment>
+	</param>
+	<param>
+		<id>761</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
