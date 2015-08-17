@@ -549,7 +549,7 @@ enum enID
   CCS_VERSION_SW_VSD = 543,                                  //!< Версия ПО ПЧ
   CCS_DATE_PRODUCTION_CCS = 544,                             //!< Дата изготовления КСУ
   CCS_DATE_INSTALL_SW_CCS = 545,                             //!< Дата установки ПО КСУ
-  CCS_DATE_CREATE_SW_CCS = 546,                              //!< ДАта генерации ПО КСУ
+  CCS_DATE_CREATE_SW_CCS = 546,                              //!< Дата генерации ПО КСУ
   CCS_DATE_INSTALL_SW_VSD = 547,                             //!< Дата установки ПО ПЧ
   CCS_TYPE_SU = 548,                                         //!< Тип СУ
   CCS_CODE_PRODUCTION_SU = 549,                              //!< Код завода изготовителя СУ

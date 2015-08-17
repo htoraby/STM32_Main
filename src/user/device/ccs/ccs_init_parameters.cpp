@@ -6460,25 +6460,25 @@ void Ccs::initParameters()
   parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].code                            = 0;
   // Тип КСУ
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].id                                       = CCS_TYPE_CCS;
-  parameters_[CCS_TYPE_CCS - CCS_BEGIN].access                                   = ACCESS_OPERATOR;
+  parameters_[CCS_TYPE_CCS - CCS_BEGIN].access                                   = ACCESS_SERVICE;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].operation                                = OPERATION_READ;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].physic                                   = PHYSIC_NUMERIC;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].validity                                 = VALIDITY_OK;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].value.float_t                            = 2.0;
-  parameters_[CCS_TYPE_CCS - CCS_BEGIN].min                                      = 2.0;
-  parameters_[CCS_TYPE_CCS - CCS_BEGIN].max                                      = 2.0;
+  parameters_[CCS_TYPE_CCS - CCS_BEGIN].min                                      = 0.0;
+  parameters_[CCS_TYPE_CCS - CCS_BEGIN].max                                      = 9999.0;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].discret                                  = 1;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].def                                      = 2.0;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].code                                     = 13;
   // Код производителя КСУ
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].id                            = CCS_CODE_PRODUCTION_CCS;
-  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].access                        = ACCESS_OPERATOR;
+  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].access                        = ACCESS_SERVICE;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].operation                     = OPERATION_READ;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].value.float_t                 = 3.0;
-  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].min                           = 3.0;
-  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].max                           = 3.0;
+  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].min                           = 0.0;
+  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].max                           = 9999.0;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].def                           = 3.0;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].code                          = 13;
@@ -6532,7 +6532,7 @@ void Ccs::initParameters()
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].code                               = 13;
   // Дата изготовления КСУ
   parameters_[CCS_DATE_PRODUCTION_CCS - CCS_BEGIN].id                            = CCS_DATE_PRODUCTION_CCS;
-  parameters_[CCS_DATE_PRODUCTION_CCS - CCS_BEGIN].access                        = ACCESS_OPERATOR;
+  parameters_[CCS_DATE_PRODUCTION_CCS - CCS_BEGIN].access                        = ACCESS_SERVICE;
   parameters_[CCS_DATE_PRODUCTION_CCS - CCS_BEGIN].operation                     = OPERATION_READ;
   parameters_[CCS_DATE_PRODUCTION_CCS - CCS_BEGIN].physic                        = PHYSIC_DATE_TIME;
   parameters_[CCS_DATE_PRODUCTION_CCS - CCS_BEGIN].validity                      = VALIDITY_OK;
@@ -6544,7 +6544,7 @@ void Ccs::initParameters()
   parameters_[CCS_DATE_PRODUCTION_CCS - CCS_BEGIN].code                          = 13;
   // Дата установки ПО КСУ
   parameters_[CCS_DATE_INSTALL_SW_CCS - CCS_BEGIN].id                            = CCS_DATE_INSTALL_SW_CCS;
-  parameters_[CCS_DATE_INSTALL_SW_CCS - CCS_BEGIN].access                        = ACCESS_OPERATOR;
+  parameters_[CCS_DATE_INSTALL_SW_CCS - CCS_BEGIN].access                        = ACCESS_SERVICE;
   parameters_[CCS_DATE_INSTALL_SW_CCS - CCS_BEGIN].operation                     = OPERATION_READ;
   parameters_[CCS_DATE_INSTALL_SW_CCS - CCS_BEGIN].physic                        = PHYSIC_DATE_TIME;
   parameters_[CCS_DATE_INSTALL_SW_CCS - CCS_BEGIN].validity                      = VALIDITY_OK;
@@ -6554,9 +6554,9 @@ void Ccs::initParameters()
   parameters_[CCS_DATE_INSTALL_SW_CCS - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_DATE_INSTALL_SW_CCS - CCS_BEGIN].def                           = 0;
   parameters_[CCS_DATE_INSTALL_SW_CCS - CCS_BEGIN].code                          = 13;
-  // ДАта генерации ПО КСУ
+  // Дата генерации ПО КСУ
   parameters_[CCS_DATE_CREATE_SW_CCS - CCS_BEGIN].id                             = CCS_DATE_CREATE_SW_CCS;
-  parameters_[CCS_DATE_CREATE_SW_CCS - CCS_BEGIN].access                         = ACCESS_OPERATOR;
+  parameters_[CCS_DATE_CREATE_SW_CCS - CCS_BEGIN].access                         = ACCESS_SERVICE;
   parameters_[CCS_DATE_CREATE_SW_CCS - CCS_BEGIN].operation                      = OPERATION_READ;
   parameters_[CCS_DATE_CREATE_SW_CCS - CCS_BEGIN].physic                         = PHYSIC_DATE_TIME;
   parameters_[CCS_DATE_CREATE_SW_CCS - CCS_BEGIN].validity                       = VALIDITY_OK;
@@ -6568,7 +6568,7 @@ void Ccs::initParameters()
   parameters_[CCS_DATE_CREATE_SW_CCS - CCS_BEGIN].code                           = 13;
   // Дата установки ПО ПЧ
   parameters_[CCS_DATE_INSTALL_SW_VSD - CCS_BEGIN].id                            = CCS_DATE_INSTALL_SW_VSD;
-  parameters_[CCS_DATE_INSTALL_SW_VSD - CCS_BEGIN].access                        = ACCESS_OPERATOR;
+  parameters_[CCS_DATE_INSTALL_SW_VSD - CCS_BEGIN].access                        = ACCESS_SERVICE;
   parameters_[CCS_DATE_INSTALL_SW_VSD - CCS_BEGIN].operation                     = OPERATION_READ;
   parameters_[CCS_DATE_INSTALL_SW_VSD - CCS_BEGIN].physic                        = PHYSIC_DATE_TIME;
   parameters_[CCS_DATE_INSTALL_SW_VSD - CCS_BEGIN].validity                      = VALIDITY_OK;
@@ -6580,7 +6580,7 @@ void Ccs::initParameters()
   parameters_[CCS_DATE_INSTALL_SW_VSD - CCS_BEGIN].code                          = 13;
   // Тип СУ
   parameters_[CCS_TYPE_SU - CCS_BEGIN].id                                        = CCS_TYPE_SU;
-  parameters_[CCS_TYPE_SU - CCS_BEGIN].access                                    = ACCESS_OPERATOR;
+  parameters_[CCS_TYPE_SU - CCS_BEGIN].access                                    = ACCESS_SERVICE;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].operation                                 = OPERATION_WRITE;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].physic                                    = PHYSIC_NUMERIC;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].validity                                  = VALIDITY_OK;
@@ -6592,7 +6592,7 @@ void Ccs::initParameters()
   parameters_[CCS_TYPE_SU - CCS_BEGIN].code                                      = 13;
   // Код завода изготовителя СУ
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].id                             = CCS_CODE_PRODUCTION_SU;
-  parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].access                         = ACCESS_OPERATOR;
+  parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].access                         = ACCESS_SERVICE;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].operation                      = OPERATION_WRITE;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].physic                         = PHYSIC_NUMERIC;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].validity                       = VALIDITY_OK;
@@ -6604,7 +6604,7 @@ void Ccs::initParameters()
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].code                           = 13;
   // Заводской номер СУ
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].id                              = CCS_NUM_PRODUCTION_SU;
-  parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].access                          = ACCESS_OPERATOR;
+  parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].access                          = ACCESS_SERVICE;
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].operation                       = OPERATION_WRITE;
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].validity                        = VALIDITY_OK;
@@ -6616,7 +6616,7 @@ void Ccs::initParameters()
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].code                            = 13;
   // Дата изготовления СУ
   parameters_[CCS_DATE_PRODUCTION_SU - CCS_BEGIN].id                             = CCS_DATE_PRODUCTION_SU;
-  parameters_[CCS_DATE_PRODUCTION_SU - CCS_BEGIN].access                         = ACCESS_OPERATOR;
+  parameters_[CCS_DATE_PRODUCTION_SU - CCS_BEGIN].access                         = ACCESS_SERVICE;
   parameters_[CCS_DATE_PRODUCTION_SU - CCS_BEGIN].operation                      = OPERATION_WRITE;
   parameters_[CCS_DATE_PRODUCTION_SU - CCS_BEGIN].physic                         = PHYSIC_DATE_TIME;
   parameters_[CCS_DATE_PRODUCTION_SU - CCS_BEGIN].validity                       = VALIDITY_OK;
