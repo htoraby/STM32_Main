@@ -9157,11 +9157,11 @@
 	<param>
 		<id>538</id>
 		<name>CCS_TYPE_CCS</name>
-		<access>ACCESS_OPERATOR</access>
+		<access>ACCESS_SERVICE</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>2.0</min>
-		<max>2.0</max>
+		<min>0.0</min>
+		<max>9999.0</max>
 		<def>2.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -9178,11 +9178,11 @@
 	<param>
 		<id>539</id>
 		<name>CCS_CODE_PRODUCTION_CCS</name>
-		<access>ACCESS_OPERATOR</access>
+		<access>ACCESS_SERVICE</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>3.0</min>
-		<max>3.0</max>
+		<min>0.0</min>
+		<max>9999.0</max>
 		<def>3.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -9275,7 +9275,7 @@
 	<param>
 		<id>544</id>
 		<name>CCS_DATE_PRODUCTION_CCS</name>
-		<access>ACCESS_OPERATOR</access>
+		<access>ACCESS_SERVICE</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0</min>
@@ -9295,7 +9295,7 @@
 	<param>
 		<id>545</id>
 		<name>CCS_DATE_INSTALL_SW_CCS</name>
-		<access>ACCESS_OPERATOR</access>
+		<access>ACCESS_SERVICE</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0</min>
@@ -9315,7 +9315,7 @@
 	<param>
 		<id>546</id>
 		<name>CCS_DATE_CREATE_SW_CCS</name>
-		<access>ACCESS_OPERATOR</access>
+		<access>ACCESS_SERVICE</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0</min>
@@ -9330,12 +9330,12 @@
 		<unit_lcd>DATE_TIME_YY_MM_DD</unit_lcd>
 		<format>XX_XX_XX</format>
 		<code>13</code>
-		<comment>ДАта генерации ПО КСУ</comment>
+		<comment>Дата генерации ПО КСУ</comment>
 	</param>
 	<param>
 		<id>547</id>
 		<name>CCS_DATE_INSTALL_SW_VSD</name>
-		<access>ACCESS_OPERATOR</access>
+		<access>ACCESS_SERVICE</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0</min>
@@ -9355,7 +9355,7 @@
 	<param>
 		<id>548</id>
 		<name>CCS_TYPE_SU</name>
-		<access>ACCESS_OPERATOR</access>
+		<access>ACCESS_SERVICE</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
@@ -9374,7 +9374,7 @@
 	<param>
 		<id>549</id>
 		<name>CCS_CODE_PRODUCTION_SU</name>
-		<access>ACCESS_OPERATOR</access>
+		<access>ACCESS_SERVICE</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
@@ -9393,7 +9393,7 @@
 	<param>
 		<id>550</id>
 		<name>CCS_NUM_PRODUCTION_SU</name>
-		<access>ACCESS_OPERATOR</access>
+		<access>ACCESS_SERVICE</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
@@ -9412,7 +9412,7 @@
 	<param>
 		<id>551</id>
 		<name>CCS_DATE_PRODUCTION_SU</name>
-		<access>ACCESS_OPERATOR</access>
+		<access>ACCESS_SERVICE</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0</min>
