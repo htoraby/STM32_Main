@@ -80,7 +80,7 @@ public:
    * \brief Метод добавления ID параметра в очередь
    * \param id - ID параметра
    */
-  void putMessageParams(uint16_t id, uint16_t type = 0);
+  void putMessageParams(uint16_t id, uint16_t type = ReadParamsCommand);
 
 private:
   /*!
