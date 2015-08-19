@@ -307,6 +307,7 @@ enum LastReasonRun {
   LastReasonRunApvOutOfSyncMotor        = 105,  //!< "АПВ по защите: Рассинхронизация ПВЭД"
   LastReasonRunApvResistIsolation       = 106,  //!< "АПВ по защите: Сопротивление изоляции"
   LastReasonRunApvHardwareVsd           = 107,  //!< "АПВ по защите: Аппаратные защиты ЧРП"
+  LastReasonRunLast
 };
 
 /*!
@@ -355,6 +356,7 @@ enum LastReasonStop {
   LastReasonStopCurrentMotor            = 104,  //!< "Предел тока двигателя"
   LastReasonStopOutOfSyncMotor          = 105,  //!< "Рассинхронизация ПВЭД"
   LastReasonStopHardwareVsd             = 106,  //!< "Аппаратные защиты ЧРП"
+  LastReasonStopLast
 };
 
 /*!
