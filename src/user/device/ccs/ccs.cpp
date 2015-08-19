@@ -78,8 +78,9 @@ void Ccs::initTask()
   scadaSemaphoreId_ = osSemaphoreCreate(NULL, 1);
   osSemaphoreWait(scadaSemaphoreId_, 0);
 
-  setValue(CCS_CMD_SYNC_ALL_PARAMS, 0.0);
-  setValue(CCS_CMD_SYNC_ALL_PARAMS, 1.0);
+  setCmd(CCS_CMD_SYNC_ALL_PARAMS);
+  resetCmd(CCS_CMD_AM335_REBOOT);
+  resetCmd(CCS_CMD_START_SLAVE_REBOOT);
 }
 
 void Ccs::mainTask()
@@ -87,7 +88,6 @@ void Ccs::mainTask()
   while (1) {
     osDelay(10);
 
-    checkCmd();
     changedWorkMode();
     changedCondition();
 
@@ -329,46 +329,45 @@ void Ccs::stop(LastReasonStop reason)
   }
 }
 
-void Ccs::checkCmd()
+void Ccs::cmdStart(int value)
 {
-  int start = getValue(CCS_CMD_START);
-  int stop = getValue(CCS_CMD_STOP);
+  switch (value) {
+  case CmdStartRemote:
+    setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunRemote);
+    break;
+  default:
+    setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunOperator);
+    break;
+  }
 
-  if (start) {
-    switch (start) {
-    case CmdStartRemote:
-      setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunRemote);
-      break;
-    default:
-      setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunOperator);
-      break;
-    }
+  resetCmd(CCS_CMD_START);
+  if (checkCanStart()) {
+    float reason = getValue(CCS_LAST_RUN_REASON_TMP);
+    setNewValue(CCS_LAST_RUN_REASON, reason);
+    setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
+    setNewValue(CCS_CONDITION, CCS_CONDITION_RUNNING);
+    setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
+    calcCountersRun(reason);
+  }
+}
 
-    setNewValue(CCS_CMD_START, 0);
-    if (checkCanStart()) {
-      float reason = getValue(CCS_LAST_RUN_REASON_TMP);
-      setNewValue(CCS_LAST_RUN_REASON, reason);
-      setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
-      setNewValue(CCS_CONDITION, CCS_CONDITION_RUNNING);
-      setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
-      calcCountersRun(reason);
-    }
-  } else if (stop) {
-    switch (stop) {
-    case CmdStopRemote:
-      setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopRemote);
-      break;
-    default:
-      setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopOperator);
-      break;
-    }
-    setNewValue(CCS_CMD_STOP, 0);
-    if (checkCanStop()) {
-      setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
-      setBlock();
-      setNewValue(CCS_CONDITION, CCS_CONDITION_STOPPING);
-      setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
-    }
+void Ccs::cmdStop(int value)
+{
+  switch (value) {
+  case CmdStopRemote:
+    setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopRemote);
+    break;
+  default:
+    setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopOperator);
+    break;
+  }
+
+  resetCmd(CCS_CMD_STOP);
+  if (checkCanStop()) {
+    setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
+    setBlock();
+    setNewValue(CCS_CONDITION, CCS_CONDITION_STOPPING);
+    setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
   }
 }
 
@@ -853,13 +852,18 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     {
       uint8_t err = setValue(id, value, eventType);
       if (value && !err) {
-        setValue(CCS_CMD_AM335_REBOOT, 0.0);
-        setValue(CCS_CMD_AM335_REBOOT, 1.0);
+        setCmd(CCS_CMD_AM335_REBOOT);
         logEvent.add(PowerCode, AutoType, RebootSoftwareId);
         startReboot();
       }
     }
     break;
+  case CCS_CMD_START:
+    cmdStart(value);
+    return ok_r;
+  case CCS_CMD_STOP:
+    cmdStop(value);
+    return ok_r;
   default:
     break;
   }
@@ -895,15 +899,13 @@ void Ccs::controlPower()
 {
   if (!isPowerGood()) {
     if (powerOffTimeout_ == (TIMEOUT_POWER_OFF - 1000)) {
-      setValue(CCS_CMD_AM335_POWER_OFF, 0.0);
-      setValue(CCS_CMD_AM335_POWER_OFF, 1.0);
+      setCmd(CCS_CMD_AM335_POWER_OFF);
       offLcd();
     }
 
     if ((powerOffTimeout_ == 1000) || !isUpsGood()) {
       if (!powerOffFlag_) {
-        setValue(CCS_CMD_AM335_POWER_OFF, 0.0);
-        setValue(CCS_CMD_AM335_POWER_OFF, 1.0);
+        setCmd(CCS_CMD_AM335_POWER_OFF);
 
         // Запись в журнал "Отключение питания"
         logEvent.add(PowerCode, AutoType, PowerOffId);
@@ -919,7 +921,7 @@ void Ccs::controlPower()
       powerOffTimeout_--;
     }
   } else {
-    setValue(CCS_CMD_AM335_POWER_OFF, 0.0);
+    resetCmd(CCS_CMD_AM335_POWER_OFF);
 
     if (powerOffTimeout_ <= (TIMEOUT_POWER_OFF - 1000)) {
       onLcd();
@@ -1107,6 +1109,7 @@ void Ccs::cmdCountersAllReset()
 
 void Ccs::startReboot()
 {
+  setCmd(CCS_CMD_START_SLAVE_REBOOT);
   logEvent.add(PowerCode, AutoType, PowerOffId);
   parameters.startSave();
   osSemaphoreRelease(rebootSemaphoreId_);
@@ -1118,4 +1121,15 @@ void Ccs::reboot()
   osDelay(200);
   osThreadSuspendAll();
   HAL_NVIC_SystemReset();
+}
+
+void Ccs::setCmd(uint16_t id)
+{
+  setValue(id, 0.0);
+  setValue(id, 1.0);
+}
+
+void Ccs::resetCmd(uint16_t id)
+{
+  setValue(id, 0.0);
 }

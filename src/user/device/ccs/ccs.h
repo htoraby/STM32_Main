@@ -8,6 +8,8 @@
 #ifndef CCS_H_
 #define CCS_H_
 
+#include <math.h>
+
 #include "device.h"
 #include "log.h"
 
@@ -382,10 +384,14 @@ private:
   void changedWorkMode();
 
   /*!
-   * \brief Метод проверки команды на запуск/останов
-   * от контроллера визуализации
+   * \brief Метод запуска по команде от контроллера визуализации
    */
-  void checkCmd();
+  void cmdStart(int value);
+
+  /*!
+   * \brief Метод останова по команде от контроллера визуализации
+   */
+  void cmdStop(int value);
 
   void cmdProtSupplyOvervoltageSetpointReset();
   void cmdProtSupplyUndervoltageSetpointReset();
@@ -438,9 +444,12 @@ private:
   void calcTime();
 
   /*!
-   * \brief Перезагрузка софта контроллера
+   * \brief Перезагрузка контроллера
    */
   void reboot();
+
+  void setCmd(uint16_t id);
+  void resetCmd(uint16_t id);
 
   //! Массив параметров устройства
   parameter parametersArray_[CCS_END - CCS_BEGIN];
