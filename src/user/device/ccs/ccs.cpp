@@ -569,8 +569,7 @@ bool Ccs::isManualMode()
 bool Ccs::isProgramMode()
 {
   unsigned int controlMode = (unsigned int)getValue(CCS_WORKING_MODE);
-  if ((controlMode == CCS_WORKING_MODE_AUTO) ||
-      (controlMode == CCS_WORKING_MODE_PROGRAM)) {
+  if (controlMode == CCS_WORKING_MODE_PROGRAM) {
     return true;
   }
   else {
