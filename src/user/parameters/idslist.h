@@ -762,9 +762,10 @@ enum enID
   CCS_PROT_OTHER_IMB_DELAY_FLAG = 756,                       //!< 
   CCS_CMD_UPDATE_SOFTWARE = 757,                             //!< Команда обновления ПО
   CCS_CMD_REBOOT_SOFTWARE = 758,                             //!< Команда перезагрузки ПО
-  CCS_CMD_AM335_REBOOT = 759,                                //!< Команда перезагрузки ПО
+  CCS_CMD_AM335_REBOOT = 759,                                //!< Команда перезагрузки модуля AM335x
   CCS_CMD_SYNC_ALL_PARAMS = 760,                             //!< Команда синхронизации параметров
-  CCS_END = 761,                                             //!< Последний параметр
+  CCS_CMD_START_SLAVE_REBOOT = 761,                          //!< Команда запуска перезапуска Slave (STM32)
+  CCS_END = 762,                                             //!< Последний параметр
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF

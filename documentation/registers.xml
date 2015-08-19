@@ -13250,12 +13250,19 @@
 		<name>CCS_CMD_UPDATE_SOFTWARE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>13</code>
 		<comment>Команда обновления ПО</comment>
 	</param>
@@ -13264,12 +13271,19 @@
 		<name>CCS_CMD_REBOOT_SOFTWARE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>14</code>
 		<comment>Команда перезагрузки ПО</comment>
 	</param>
@@ -13278,31 +13292,66 @@
 		<name>CCS_CMD_AM335_REBOOT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<code>14</code>
-		<comment>Команда перезагрузки ПО</comment>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Команда перезагрузки модуля AM335x</comment>
 	</param>
 	<param>
 		<id>760</id>
 		<name>CCS_CMD_SYNC_ALL_PARAMS</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<code>14</code>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
 		<comment>Команда синхронизации параметров</comment>
 	</param>
 	<param>
 		<id>761</id>
+		<name>CCS_CMD_START_SLAVE_REBOOT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Команда запуска перезапуска Slave (STM32)</comment>
+	</param>
+	<param>
+		<id>762</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
