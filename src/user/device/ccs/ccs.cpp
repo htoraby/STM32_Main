@@ -692,6 +692,9 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     calcSystemInduct();                     // Пересчитываем индуктивность системы
     calcTransTapOff();                      // Пересчитываем рекомендуемое напряжение отпайки
     break;
+  case CCS_TRANS_NOMINAL_VOLTAGE_INPUT:
+    calcTransTapOff();                      // Пересчитываем рекомендуемое напряжение отпайки
+    break;
   case CCS_TRANS_NOMINAL_CURRENT:
     calcSystemInduct();                     // Пересчитываем индуктивность системы
     break;
