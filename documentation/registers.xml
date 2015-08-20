@@ -4469,7 +4469,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<min>0.0</min>
-		<max>150.0</max>
+		<max>250.0</max>
 		<def>115.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -4490,7 +4490,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<min>0.0</min>
-		<max>150.0</max>
+		<max>250.0</max>
 		<def>115.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -9172,7 +9172,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXX</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>Тип КСУ</comment>
 	</param>
 	<param>
@@ -9193,7 +9193,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXX</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>Код производителя КСУ</comment>
 	</param>
 	<param>
@@ -9212,7 +9212,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXX</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>Заводской номер КСУ</comment>
 	</param>
 	<param>
@@ -9223,7 +9223,7 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
-		<discret>1</discret>
+		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Версия программы КСУ</text>
 		<short_text>Вер.програм.КСУ</short_text>
@@ -9231,7 +9231,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXX_XX</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>Версия ПО КСУ</comment>
 	</param>
 	<param>
@@ -9242,7 +9242,7 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
-		<discret>1</discret>
+		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Версия программы МС</text>
 		<short_text>Вер.програм.МС</short_text>
@@ -9250,7 +9250,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXX_XX</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>Версия ПО МС</comment>
 	</param>
 	<param>
@@ -9261,7 +9261,7 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
-		<discret>1</discret>
+		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Версия программы КПЧ</text>
 		<short_text>Вер.програм.КПЧ</short_text>
@@ -9269,7 +9269,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXX_XX</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>Версия ПО ПЧ</comment>
 	</param>
 	<param>
@@ -9289,7 +9289,7 @@
 		<unit>DATE_TIME_SS</unit>
 		<unit_lcd>DATE_TIME_YY_MM_DD</unit_lcd>
 		<format>XX_XX_XX</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>Дата изготовления КСУ</comment>
 	</param>
 	<param>
@@ -9309,7 +9309,7 @@
 		<unit>DATE_TIME_SS</unit>
 		<unit_lcd>DATE_TIME_YY_MM_DD</unit_lcd>
 		<format>XX_XX_XX</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>Дата установки ПО КСУ</comment>
 	</param>
 	<param>
@@ -9329,7 +9329,7 @@
 		<unit>DATE_TIME_SS</unit>
 		<unit_lcd>DATE_TIME_YY_MM_DD</unit_lcd>
 		<format>XX_XX_XX</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>Дата генерации ПО КСУ</comment>
 	</param>
 	<param>
@@ -9349,7 +9349,7 @@
 		<unit>DATE_TIME_SS</unit>
 		<unit_lcd>DATE_TIME_YY_MM_DD</unit_lcd>
 		<format>XX_XX_XX</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>Дата установки ПО ПЧ</comment>
 	</param>
 	<param>
