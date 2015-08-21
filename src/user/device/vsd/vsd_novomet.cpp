@@ -640,8 +640,7 @@ void VsdNovomet::resetRunQueue()
   int action = (parameters.get(CCS_RGM_RUN_PICKUP_MODE) ||
                 parameters.get(CCS_RGM_RUN_PUSH_MODE) ||
                 parameters.get(CCS_RGM_RUN_SWING_MODE));
-
-  if (action == Regime::OffAction)
+  if (action)
     return;
 
   float queue[5];

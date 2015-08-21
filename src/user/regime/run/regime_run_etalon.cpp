@@ -62,7 +62,7 @@ void RegimeRunEtalon::processingStateWork()
   if (ksu.getValue(CCS_CONDITION) != CCS_CONDITION_STOP) {
     if (vsd->getCurrentFreq() == vsd->getSetpointFreq()) {         // Если режимы отработали
       if (parameters.get(CCS_RGM_RUN_PICKUP_MODE) == SingleAction) {
-        parameters.set(CCS_RGM_RUN_PUSH_MODE, OffAction);         // Выключаем режим
+        parameters.set(CCS_RGM_RUN_PICKUP_MODE, OffAction);         // Выключаем режим
         // TODO: Выключить подхват
         logEvent.add(SetpointCode, AutoType, RegimeRunPickupOffId); // Записываем данные в лог
       }
@@ -72,7 +72,7 @@ void RegimeRunEtalon::processingStateWork()
         logEvent.add(SetpointCode, AutoType, RegimeRunPushOffId); // Записываем данные в лог
       }
       if (parameters.get(CCS_RGM_RUN_SWING_MODE) == SingleAction) {
-        parameters.set(CCS_RGM_RUN_PUSH_MODE, OffAction);         // Выключаем режим
+        parameters.set(CCS_RGM_RUN_SWING_MODE, OffAction);         // Выключаем режим
         vsd->offRegimeSwing();
         logEvent.add(SetpointCode, AutoType, RegimeRunSwingOffId); // Записываем данные в лог
       }
