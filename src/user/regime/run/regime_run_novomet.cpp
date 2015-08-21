@@ -12,7 +12,7 @@ RegimeRunNovomet::~RegimeRunNovomet()
 
 void RegimeRunNovomet::getGeneralSetpoint()
 {
-  runReason_= (LastReasonRun)parameters.get(CCS_LAST_RUN_REASON_TMP);
+  runReason_ = (LastReasonRun)parameters.get(CCS_LAST_RUN_REASON_TMP);
 }
 
 void RegimeRunNovomet::setOtherSetpoint()
@@ -51,10 +51,11 @@ void RegimeRunNovomet::processingStateRunning()
   int autoRun = 0;
 
   float queue[5];
-  if (parameters.get(VSD_MOTOR_CONTROL) == VSD_MOTOR_CONTROL_UF)
+  if (parameters.get(VSD_MOTOR_CONTROL) == VSD_MOTOR_CONTROL_UF) {
     for (int i = 0; i < 5; i++) {
       queue[i] = VSD_REQULATOR_QUEUE_UF;
     }
+  }
   else if (parameters.get(VSD_MOTOR_CONTROL) == VSD_MOTOR_CONTROL_VECT) {
     for (int i = 0; i < 5; i++) {
       queue[i] = VSD_REQULATOR_QUEUE_VECT;

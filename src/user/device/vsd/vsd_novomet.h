@@ -356,6 +356,12 @@ public:
    */
   void calcParameters(uint16_t id);
 
+  /*!
+   * \brief Сброс очереди запуска ЧРП
+   * \return
+   */
+  void resetRunQueue();
+
 private:
   ModbusParameter modbusParameters_[135];
   DeviceModbus *dm_;
