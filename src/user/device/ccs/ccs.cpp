@@ -401,7 +401,7 @@ bool Ccs::checkCanStart()
   if (!interceptionStartRegime())
     return false;
 
-#ifndef USE_DEBUG
+#if (USE_DEBUG == 0)
   if (!vsd->isConnect())
     return false;
 #endif

@@ -704,7 +704,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Номинальный ток ТМПН</text>
-		<form>NULL</form>
+		<form>3.3 ТМПН</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
 		<format>XXXX_X</format>
