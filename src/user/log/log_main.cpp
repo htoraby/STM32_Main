@@ -152,7 +152,7 @@ static void logSave()
     return;
   }
   time = 0;
-  while (f_mount(&fatfs, USB_DISK, 1) != FR_OK) {
+  while (f_mount(&fatfs, USB_DISK, 0) != FR_OK) {
     osDelay(10);
     time += 10;
     if (time > 5000) {
@@ -242,7 +242,7 @@ static void logSave()
     asm("nop");
   }
 
-  while (f_mount(&fatfs, USB_DISK, 0) != FR_OK) {
+  while (f_mount(NULL, USB_DISK, 0) != FR_OK) {
     osDelay(10);
     time += 10;
     if (time > 5000) {
