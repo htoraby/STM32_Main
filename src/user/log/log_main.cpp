@@ -12,8 +12,6 @@ static uint8_t bufData[4096] __attribute__((section(".extmem")));
 #else
 static uint8_t bufData[4096];
 #endif
-static osSemaphoreId saveSemaphoreId_;
-static osSemaphoreId deleteSemaphoreId_;
 
 LogEvent logEvent;
 LogData logData;
@@ -23,9 +21,12 @@ LogTms logTms;
 
 LogDebug logDebug;
 
-static void logSaveTask(void *argument);
-
 static osThreadId logSaveThreadId;
+static osSemaphoreId saveSemaphoreId_;
+static osSemaphoreId deleteSemaphoreId_;
+static EventType eventType;
+
+static void logSaveTask(void *argument);
 
 void logInit()
 {
@@ -51,13 +52,24 @@ void logInit()
   logSaveThreadId = osThreadCreate(osThread(LogSaveUsb), NULL);
 }
 
-void logStartDelete()
+void logStartSave(EventType type)
 {
-  if (parameters.get(CCS_CMD_SERVICE_LOG_DELETE)) {
-    parameters.set(CCS_PROGRESS_VALUE, 0);
-    parameters.set(CCS_PROGRESS_MAX, 0);
+  eventType = type;
+  parameters.set(CCS_PROGRESS_VALUE, 0);
+  parameters.set(CCS_PROGRESS_MAX, 0);
+  parameters.set(CCS_PROGRESS_MAX, (EndAddrDebugLog + EndAddrTmsLog)/1024);
+  osSemaphoreRelease(saveSemaphoreId_);
+}
+
+void logStartDelete(EventType type)
+{
+  eventType = type;
+  parameters.set(CCS_PROGRESS_VALUE, 0);
+  parameters.set(CCS_PROGRESS_MAX, 0);
+  if (parameters.get(CCS_CMD_LOG_DELETE))
+    parameters.set(CCS_PROGRESS_MAX, EndAddrTmsLog/1024);
+  else
     parameters.set(CCS_PROGRESS_MAX, EndAddrDebugLog/1024);
-  }
   osSemaphoreRelease(deleteSemaphoreId_);
 }
 
@@ -71,14 +83,6 @@ StatusType logDebugRead(uint32_t address, uint8_t *data, uint32_t size)
 {
   StatusType status = flashExtRead(FlashSpi1, address, data, size);
   return status;
-}
-
-void logStartSave()
-{
-  parameters.set(CCS_PROGRESS_VALUE, 0);
-  parameters.set(CCS_PROGRESS_MAX, 0);
-  parameters.set(CCS_PROGRESS_MAX, (EndAddrDebugLog + EndAddrTmsLog)/1024);
-  osSemaphoreRelease(saveSemaphoreId_);
 }
 
 static void getFilePath(char *path, const char *suffix)
@@ -263,7 +267,19 @@ void logDeleted()
   logData.deInit();
   logTms.deInit();
   #endif
-  flashExtChipErase(FlashSpi5);
+
+  uint32_t addr = 0;
+  while (1) {
+    StatusType status = flashExtEraseBlock(FlashSpi5, addr);
+    if (status == StatusError)
+      asm("nop");
+
+    addr = addr + flashExts[FlashSpi5].blockSize;
+    parameters.set(CCS_PROGRESS_VALUE, (float)addr/1024);
+    if (addr >= EndAddrTmsLog)
+      break;
+  }
+
   logEvent.init();
   logRunning.init();
   logAlarm.init();
@@ -272,6 +288,7 @@ void logDeleted()
   logTms.init();
 #endif
 
+  logEvent.add(DelLogCode, eventType, DelLogId);
   parameters.set(CCS_CMD_LOG_DELETE, 0);
 }
 
@@ -296,6 +313,7 @@ void logDebugDeleted()
 
   logDebug.init();
 
+  logEvent.add(DelLogCode, eventType, DelDebugLogId);
   parameters.set(CCS_CMD_SERVICE_LOG_DELETE, 0);
 }
 
@@ -306,6 +324,7 @@ void logSaveTask(void *argument)
   while (1) {
     if (osSemaphoreWait(saveSemaphoreId_, 10) == osOK) {
       logSave();
+      logEvent.add(CopyLogCode, eventType, CopyLogId);
       parameters.set(CCS_CMD_LOG_COPY, 0);
     }
 

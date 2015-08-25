@@ -10281,7 +10281,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Копирование архивов</text>
-		<code>15</code>
+		<code>0</code>
 	</param>
 	<param>
 		<id>595</id>
@@ -10300,7 +10300,7 @@
 		<form>2.0 Архивы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
-		<code>14</code>
+		<code>0</code>
 		<values>0-Нет;1-Да</values>
 	</param>
 	<param>
@@ -10316,7 +10316,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Удаление сервисного архива</text>
-		<code>14</code>
+		<code>0</code>
 	</param>
 	<param>
 		<id>597</id>

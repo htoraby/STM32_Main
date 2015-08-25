@@ -676,13 +676,14 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     }
     break;
   case CCS_CMD_LOG_COPY:
+    err = setValue(id, value, eventType);
     if (value)
-      logStartSave();
-    break;
+      logStartSave(eventType);
+    return err;
   case CCS_CMD_LOG_DELETE: case CCS_CMD_SERVICE_LOG_DELETE:
     err = setValue(id, value, eventType);
     if (value)
-      logStartDelete();
+      logStartDelete(eventType);
     return err;
   case CCS_COEF_TRANSFORMATION:
     calcSystemInduct();

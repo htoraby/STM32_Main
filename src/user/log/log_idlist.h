@@ -140,6 +140,10 @@ typedef enum {
   AddDeviceFiltOutId,                       //!< "Подключение Выходного фильтра"
   RemoveDeviceFiltOutId,                    //!< "Отключение Выходного фильтра"
 
+  CopyLogId,                                //!< "Копирование архивов"
+  DelLogId,                                 //!< "Удаление архивов"
+  DelDebugLogId,                            //!< "Удаление служебных архивов"
+
 } EventId;
 
 #endif // LOG_IDLIST

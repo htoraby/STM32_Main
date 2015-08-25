@@ -7141,7 +7141,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_LOG_COPY - CCS_BEGIN].max                                  = 1.0;
   parameters_[CCS_CMD_LOG_COPY - CCS_BEGIN].discret                              = 1;
   parameters_[CCS_CMD_LOG_COPY - CCS_BEGIN].def                                  = 0.0;
-  parameters_[CCS_CMD_LOG_COPY - CCS_BEGIN].code                                 = 15;
+  parameters_[CCS_CMD_LOG_COPY - CCS_BEGIN].code                                 = 0;
   // 
   parameters_[CCS_CMD_LOG_DELETE - CCS_BEGIN].id                                 = CCS_CMD_LOG_DELETE;
   parameters_[CCS_CMD_LOG_DELETE - CCS_BEGIN].access                             = ACCESS_OPERATOR;
@@ -7153,7 +7153,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_LOG_DELETE - CCS_BEGIN].max                                = 1.0;
   parameters_[CCS_CMD_LOG_DELETE - CCS_BEGIN].discret                            = 1;
   parameters_[CCS_CMD_LOG_DELETE - CCS_BEGIN].def                                = 0.0;
-  parameters_[CCS_CMD_LOG_DELETE - CCS_BEGIN].code                               = 14;
+  parameters_[CCS_CMD_LOG_DELETE - CCS_BEGIN].code                               = 0;
   // 
   parameters_[CCS_CMD_SERVICE_LOG_DELETE - CCS_BEGIN].id                         = CCS_CMD_SERVICE_LOG_DELETE;
   parameters_[CCS_CMD_SERVICE_LOG_DELETE - CCS_BEGIN].access                     = ACCESS_OPERATOR;
@@ -7165,7 +7165,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_SERVICE_LOG_DELETE - CCS_BEGIN].max                        = 1.0;
   parameters_[CCS_CMD_SERVICE_LOG_DELETE - CCS_BEGIN].discret                    = 1;
   parameters_[CCS_CMD_SERVICE_LOG_DELETE - CCS_BEGIN].def                        = 0.0;
-  parameters_[CCS_CMD_SERVICE_LOG_DELETE - CCS_BEGIN].code                       = 14;
+  parameters_[CCS_CMD_SERVICE_LOG_DELETE - CCS_BEGIN].code                       = 0;
   // 
   parameters_[CCS_CMD_DHS_TYPE_AUTO - CCS_BEGIN].id                              = CCS_CMD_DHS_TYPE_AUTO;
   parameters_[CCS_CMD_DHS_TYPE_AUTO - CCS_BEGIN].access                          = ACCESS_OPERATOR;

@@ -22,9 +22,15 @@ extern LogDebug logDebug;
 void logInit();
 
 /*!
- * \brief Запуск стирания архивов (в т.ч. стирание всей Flash)
+ * \brief Запуск сохранения архивов на USB flash
 */
-void logStartDelete();
+void logStartSave(EventType type);
+
+/*!
+ * \brief Запуск стирания архивов (в т.ч. стирание всей Flash)
+ * type - Тип события
+*/
+void logStartDelete(EventType type);
 
 /*!
  * \brief Чтение архивов
@@ -43,10 +49,5 @@ StatusType logRead(uint32_t address, uint8_t *data, uint32_t size);
  * \return StatusType - ошибка или ок
 */
 StatusType logDebugRead(uint32_t address, uint8_t *data, uint32_t size);
-
-/*!
- * \brief Запуск сохранения архивов на USB flash
-*/
-void logStartSave();
 
 #endif // LOG_MAIN_H
