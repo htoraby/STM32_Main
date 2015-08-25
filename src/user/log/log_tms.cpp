@@ -25,6 +25,12 @@ void LogTms::init()
   threadId_ = osThreadCreate(&t, this);
 }
 
+void LogTms::deInit()
+{
+  osThreadTerminate(threadId_);
+  Log::deInit();
+}
+
 void LogTms::task()
 {
   while (1) {

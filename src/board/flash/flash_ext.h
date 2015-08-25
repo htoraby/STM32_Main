@@ -79,13 +79,21 @@ StatusType flashExtWriteEx(FlashSpiNum num, uint32_t address, uint8_t *data, uin
 StatusType flashExtRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size);
 
 /*!
- \brief Стирание сектора Flash
+ \brief Стирание сектора (4k) Flash
  Операция занимает около 17 мс
  \param num - номер spi @ref FlashSpiNum
  \param address - адрес сектора
  \return StatusType - ошибка или ок
 */
-StatusType flashEraseSector4k(FlashSpiNum num, uint32_t address);
+StatusType flashExtEraseSector4k(FlashSpiNum num, uint32_t address);
+
+/*!
+ * \brief Стирание блока (64k) Flash
+ * \param num
+ * \param address
+ * \return
+ */
+StatusType flashExtEraseBlock(FlashSpiNum num, uint32_t address);
 
 /*!
  \brief Стирание всей Flash памяти

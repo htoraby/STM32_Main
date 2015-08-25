@@ -37,6 +37,13 @@ void LogRunning::init(const char *threadName)
   threadId_ = osThreadCreate(&t, this);
 }
 
+void LogRunning::deInit()
+{
+  osThreadTerminate(threadId_);
+  osSemaphoreDelete(semaphoreId_);
+  Log::deInit();
+}
+
 void LogRunning::start()
 {
   osSemaphoreRelease(semaphoreId_);

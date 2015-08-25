@@ -20,6 +20,8 @@ public:
    */
   void init(const char *threadName = "LogRunning");
 
+  void deInit();
+
   /*!
    * \brief Запуск формирования и записи архива
    */

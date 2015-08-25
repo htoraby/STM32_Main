@@ -22,9 +22,9 @@ extern LogDebug logDebug;
 void logInit();
 
 /*!
- * \brief Стирание архивов (в т.ч. стирание всей Flash)
+ * \brief Запуск стирания архивов (в т.ч. стирание всей Flash)
 */
-void logErase();
+void logStartDelete();
 
 /*!
  * \brief Чтение архивов

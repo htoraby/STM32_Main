@@ -12,7 +12,8 @@ static uint8_t bufData[4096] __attribute__((section(".extmem")));
 #else
 static uint8_t bufData[4096];
 #endif
-static osSemaphoreId semaphoreId_;
+static osSemaphoreId saveSemaphoreId_;
+static osSemaphoreId deleteSemaphoreId_;
 
 LogEvent logEvent;
 LogData logData;
@@ -24,6 +25,8 @@ LogDebug logDebug;
 
 static void logSaveTask(void *argument);
 
+static osThreadId logSaveThreadId;
+
 void logInit()
 {
   framReadData(IdLogAddrFram, (uint8_t*)&Log::id_, 4);
@@ -32,7 +35,6 @@ void logInit()
   logEvent.init();
   logRunning.init();
   logAlarm.init();
-
 #ifndef DEBUG
   logData.init();
   logTms.init();
@@ -40,32 +42,23 @@ void logInit()
 
   logDebug.init();
 
-  // Запись в журнал "Включение питания"
-  logEvent.add(PowerCode, AutoType, PowerOnId);
+  saveSemaphoreId_ = osSemaphoreCreate(NULL, 1);
+  osSemaphoreWait(saveSemaphoreId_, 0);
+  deleteSemaphoreId_ = osSemaphoreCreate(NULL, 1);
+  osSemaphoreWait(deleteSemaphoreId_, 0);
 
-  semaphoreId_ = osSemaphoreCreate(NULL, 1);
-  osSemaphoreWait(semaphoreId_, 0);
   osThreadDef(LogSaveUsb, logSaveTask, osPriorityNormal, 0, 8 * configMINIMAL_STACK_SIZE);
-  osThreadCreate(osThread(LogSaveUsb), NULL);
+  logSaveThreadId = osThreadCreate(osThread(LogSaveUsb), NULL);
 }
 
-void logErase()
+void logStartDelete()
 {
-  Log::id_ = 0;
-  framWriteData(IdLogAddrFram, (uint8_t*)&Log::id_, 4);
-  Log::idDebug_ = 0;
-  framWriteData(IdDebugLogAddrFram, (uint8_t*)&Log::idDebug_, 4);
-
-  logEvent.deInit();
-  logData.deInit();
-  logRunning.deInit();
-  logTms.deInit();
-  logDebug.deInit();
-
-  flashExtChipErase(FlashSpi5);
-  flashExtChipErase(FlashSpi1);
-
-  logInit();
+  if (parameters.get(CCS_CMD_SERVICE_LOG_DELETE)) {
+    parameters.set(CCS_PROGRESS_VALUE, 0);
+    parameters.set(CCS_PROGRESS_MAX, 0);
+    parameters.set(CCS_PROGRESS_MAX, EndAddrDebugLog/1024);
+  }
+  osSemaphoreRelease(deleteSemaphoreId_);
 }
 
 StatusType logRead(uint32_t address, uint8_t *data, uint32_t size)
@@ -85,7 +78,7 @@ void logStartSave()
   parameters.set(CCS_PROGRESS_VALUE, 0);
   parameters.set(CCS_PROGRESS_MAX, 0);
   parameters.set(CCS_PROGRESS_MAX, (EndAddrDebugLog + EndAddrTmsLog)/1024);
-  osSemaphoreRelease(semaphoreId_);
+  osSemaphoreRelease(saveSemaphoreId_);
 }
 
 static void getFilePath(char *path, const char *suffix)
@@ -133,137 +126,194 @@ static void getFilePath(char *path, const char *suffix)
   delete[] fileName;
 }
 
-void logSaveTask(void *argument)
+static void logSave()
 {
-  (void)argument;
   FATFS fatfs;
   FRESULT result;
   FIL file;
   UINT bytesWritten;
 
+  bool error = false;
+
+  uint32_t time = 0;
+  while(disk_status(0) != RES_OK) {
+    osDelay(10);
+    time += 10;
+    if (time > 5000) {
+      error = true;
+      break;
+    }
+  }
+  if (error) {
+    return;
+  }
+  time = 0;
+  while (f_mount(&fatfs, USB_DISK, 1) != FR_OK) {
+    osDelay(10);
+    time += 10;
+    if (time > 5000) {
+      error = true;
+      break;
+    }
+  }
+  if (error) {
+    return;
+  }
+
+  result = f_mkdir(LOG_DIR);
+  if ((result == FR_OK) || (result == FR_EXIST)) {
+    time = HAL_GetTick();
+
+    char *logPath = new char[_MAX_LFN + 1];
+
+    strcpy(logPath, LOG_DIR);
+    getFilePath(logPath, "dlog");
+
+    if (f_open(&file, logPath, FA_CREATE_ALWAYS | FA_WRITE) == FR_OK) {
+      uint32_t addr = 0;
+      uint32_t size = 4096;
+      uint32_t count = 0;
+
+      while (1) {
+        StatusType status = logDebugRead(addr, &bufData[0], size);
+        if (status == StatusError)
+          asm("nop");
+
+        result = f_write(&file, &bufData[0], size, &bytesWritten);
+        if ((result != FR_OK) || (size != bytesWritten))
+          asm("nop");
+
+        addr = addr + size;
+        count++;
+        if (count >= 20) {
+          count = 0;
+          parameters.set(CCS_PROGRESS_VALUE, (float)addr/1024);
+        }
+        if (addr >= EndAddrDebugLog)
+          break;
+      }
+
+      result = f_close(&file);
+      if (result != FR_OK)
+        asm("nop");
+    }
+
+    strcpy(logPath, LOG_DIR);
+    getFilePath(logPath, "log");
+
+    int t = f_open(&file, logPath, FA_CREATE_ALWAYS | FA_WRITE);
+    if (t == FR_OK) {
+      uint32_t addr = 0;
+      uint32_t size = 4096;
+      bytesWritten = 0;
+      uint32_t count = 0;
+
+      while (1) {
+        StatusType status = logRead(addr, &bufData[0], size);
+        if (status == StatusError)
+          asm("nop");
+
+        result = f_write(&file, &bufData[0], size, &bytesWritten);
+        if ((result != FR_OK) || (size != bytesWritten))
+          asm("nop");
+
+        addr = addr + size;
+        count++;
+        if (count >= 20) {
+          count = 0;
+          parameters.set(CCS_PROGRESS_VALUE, (float)(addr + EndAddrDebugLog)/1024);
+        }
+        if (addr >= EndAddrTmsLog)
+          break;
+      }
+
+      result = f_close(&file);
+      if (result != FR_OK)
+        asm("nop");
+    }
+
+    delete[] logPath;
+
+    time = HAL_GetTick() - time;
+    asm("nop");
+  }
+
+  while (f_mount(&fatfs, USB_DISK, 0) != FR_OK) {
+    osDelay(10);
+    time += 10;
+    if (time > 5000) {
+      error = true;
+      break;
+    }
+  }
+  if (error) {
+    return;
+  }
+}
+
+void logDeleted()
+{
+  Log::id_ = 0;
+  framWriteData(IdLogAddrFram, (uint8_t*)&Log::id_, 4);
+
+  logEvent.deInit();
+  logRunning.deInit();
+  logAlarm.deInit();
+  #ifndef DEBUG
+  logData.deInit();
+  logTms.deInit();
+  #endif
+  flashExtChipErase(FlashSpi5);
+  logEvent.init();
+  logRunning.init();
+  logAlarm.init();
+#ifndef DEBUG
+  logData.init();
+  logTms.init();
+#endif
+
+  parameters.set(CCS_CMD_LOG_DELETE, 0);
+}
+
+void logDebugDeleted()
+{
+  Log::idDebug_ = 0;
+  framWriteData(IdDebugLogAddrFram, (uint8_t*)&Log::idDebug_, 4);
+
+  logDebug.deInit();
+
+  uint32_t addr = 0;
   while (1) {
-    osSemaphoreWait(semaphoreId_, osWaitForever);
-
-    bool error = false;
-
-    uint32_t time = 0;
-    while(disk_status(0) != RES_OK) {
-      osDelay(10);
-      time += 10;
-      if (time > 5000) {
-        error = true;
-        break;
-      }
-    }
-    if (error) {
-      parameters.set(CCS_CMD_LOG_COPY, 0);
-      continue;
-    }
-    time = 0;
-    while (f_mount(&fatfs, USB_DISK, 1) != FR_OK) {
-      osDelay(10);
-      time += 10;
-      if (time > 5000) {
-        error = true;
-        break;
-      }
-    }
-    if (error) {
-      parameters.set(CCS_CMD_LOG_COPY, 0);
-      continue;
-    }
-
-    result = f_mkdir(LOG_DIR);
-    if ((result == FR_OK) || (result == FR_EXIST)) {
-      time = HAL_GetTick();
-
-      char *logPath = new char[_MAX_LFN + 1];
-
-      strcpy(logPath, LOG_DIR);
-      getFilePath(logPath, "dlog");
-
-      if (f_open(&file, logPath, FA_CREATE_ALWAYS | FA_WRITE) == FR_OK) {
-        uint32_t addr = 0;
-        uint32_t size = 4096;
-        uint32_t count = 0;
-
-        while (1) {
-          StatusType status = logDebugRead(addr, &bufData[0], size);
-          if (status == StatusError)
-            asm("nop");
-
-          result = f_write(&file, &bufData[0], size, &bytesWritten);
-          if ((result != FR_OK) || (size != bytesWritten))
-            asm("nop");
-
-          addr = addr + size;
-          count++;
-          if (count >= 20) {
-            count = 0;
-            parameters.set(CCS_PROGRESS_VALUE, (float)addr/1024);
-          }
-          if (addr >= EndAddrDebugLog)
-            break;
-        }
-
-        result = f_close(&file);
-        if (result != FR_OK)
-          asm("nop");
-      }
-
-      strcpy(logPath, LOG_DIR);
-      getFilePath(logPath, "log");
-
-      int t = f_open(&file, logPath, FA_CREATE_ALWAYS | FA_WRITE);
-      if (t == FR_OK) {
-        uint32_t addr = 0;
-        uint32_t size = 4096;
-        bytesWritten = 0;
-        uint32_t count = 0;
-
-        while (1) {
-          StatusType status = logRead(addr, &bufData[0], size);
-          if (status == StatusError)
-            asm("nop");
-
-          result = f_write(&file, &bufData[0], size, &bytesWritten);
-          if ((result != FR_OK) || (size != bytesWritten))
-            asm("nop");
-
-          addr = addr + size;
-          count++;
-          if (count >= 20) {
-            count = 0;
-            parameters.set(CCS_PROGRESS_VALUE, (float)(addr + EndAddrDebugLog)/1024);
-          }
-          if (addr >= EndAddrTmsLog)
-            break;
-        }
-
-        result = f_close(&file);
-        if (result != FR_OK)
-          asm("nop");
-      }
-
-      delete[] logPath;
-
-      time = HAL_GetTick() - time;
+    StatusType status = flashExtEraseBlock(FlashSpi1, addr);
+    if (status == StatusError)
       asm("nop");
-    }
 
-    while (f_mount(&fatfs, USB_DISK, 0) != FR_OK) {
-      osDelay(10);
-      time += 10;
-      if (time > 5000) {
-        error = true;
-        break;
-      }
-    }
-    if (error) {
+    addr = addr + flashExts[FlashSpi1].blockSize;
+    parameters.set(CCS_PROGRESS_VALUE, (float)addr/1024);
+    if (addr >= EndAddrDebugLog)
+      break;
+  }
+
+  logDebug.init();
+
+  parameters.set(CCS_CMD_SERVICE_LOG_DELETE, 0);
+}
+
+void logSaveTask(void *argument)
+{
+  (void)argument;
+
+  while (1) {
+    if (osSemaphoreWait(saveSemaphoreId_, 10) == osOK) {
+      logSave();
       parameters.set(CCS_CMD_LOG_COPY, 0);
-      continue;
     }
 
-    parameters.set(CCS_CMD_LOG_COPY, 0);
+    if (osSemaphoreWait(deleteSemaphoreId_, 10) == osOK) {
+      if (parameters.get(CCS_CMD_LOG_DELETE))
+        logDeleted();
+      else
+        logDebugDeleted();
+    }
   }
 }

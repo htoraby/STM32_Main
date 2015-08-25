@@ -14,6 +14,7 @@ public:
   ~LogData();
 
   void init();
+  void deInit();
   void task();
 
 private:

@@ -22,6 +22,9 @@ void userInit()
   novobusSlave.init();
   logInit();
 
+  // Запись в журнал "Включение питания"
+  logEvent.add(PowerCode, AutoType, PowerOnId);
+
   vsd->init();
   tms->init();
   em->init();

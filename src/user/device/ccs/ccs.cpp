@@ -123,7 +123,7 @@ void Ccs::ledConditionTask()
         break;
       case OnRedOnYellowLed:
         onLed(StopLed);
-        onLed(WaitLed);   
+        onLed(WaitLed);
         break;
       case OnGreenToogleYellowLed:
         onLed(WorkLed);
@@ -178,7 +178,7 @@ void Ccs::vsdConditionTask()
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
       }
       break;
-    case VSD_CONDITION_WAIT_STOP:  
+    case VSD_CONDITION_WAIT_STOP:
       if (vsd->stop(checkTypeStop()) == ok_r) {
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
       }
@@ -623,7 +623,7 @@ void Ccs::calcTime()
 
   if (conditionOld != condition) {
     if ((condition != CCS_CONDITION_STOP) && (conditionOld == CCS_CONDITION_STOP))
-      setNewValue(CCS_LAST_RUN_DATE_TIME, getTime());   
+      setNewValue(CCS_LAST_RUN_DATE_TIME, getTime());
     if ((condition == CCS_CONDITION_STOP) && (conditionOld != CCS_CONDITION_STOP))
       setNewValue(CCS_LAST_STOP_DATE_TIME, getTime());
     conditionOld = condition;
@@ -638,6 +638,7 @@ void Ccs::calcTime()
 
 uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
 {
+  uint8_t err;
   float oldValue = getValue(id);
 
   switch (id) {
@@ -678,10 +679,11 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (value)
       logStartSave();
     break;
-  case CCS_CMD_LOG_DELETE:
+  case CCS_CMD_LOG_DELETE: case CCS_CMD_SERVICE_LOG_DELETE:
+    err = setValue(id, value, eventType);
     if (value)
-      logErase();
-    break;
+      logStartDelete();
+    return err;
   case CCS_COEF_TRANSFORMATION:
     calcSystemInduct();
     break;
@@ -779,68 +781,53 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     cmdCountersAllReset();
     break;
   case CCS_DHS_TYPE:
-    {
-      uint8_t err = setValue(id, value, eventType);
-      if ((value != oldValue) && !err) {
-        if (value)
-          logEvent.add(AddDeviceCode, eventType, AddDeviceDhsId, oldValue, value);
-        else
-          logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceDhsId, oldValue, value);
-        tms->initParameters();
-        startReboot();
-      }
-      return err;
+    err = setValue(id, value, eventType);
+    if ((value != oldValue) && !err) {
+      if (value)
+        logEvent.add(AddDeviceCode, eventType, AddDeviceDhsId, oldValue, value);
+      else
+        logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceDhsId, oldValue, value);
+      tms->initParameters();
+      startReboot();
     }
-    break;
+    return err;
   case CCS_TYPE_VSD:
-    {
-      uint8_t err = setValue(id, value, eventType);
-      if ((value != oldValue) && !err) {
-        if (value)
-          logEvent.add(AddDeviceCode, eventType, AddDeviceVsdId, oldValue, value);
-        else
-          logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceVsdId, oldValue, value);
-        vsd->initParameters();
-        startReboot();
-      }
-      return err;
+    err = setValue(id, value, eventType);
+    if ((value != oldValue) && !err) {
+      if (value)
+        logEvent.add(AddDeviceCode, eventType, AddDeviceVsdId, oldValue, value);
+      else
+        logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceVsdId, oldValue, value);
+      vsd->initParameters();
+      startReboot();
     }
-    break;
+    return err;
   case CCS_EM_TYPE:
-    {
-      uint8_t err = setValue(id, value, eventType);
-      if ((value != oldValue) && !err) {
-        if (value)
-          logEvent.add(AddDeviceCode, eventType, AddDeviceEmId, oldValue, value);
-        else
-          logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceEmId, oldValue, value);
-        em->initParameters();
-        startReboot();
-      }
-      return err;
+    err = setValue(id, value, eventType);
+    if ((value != oldValue) && !err) {
+      if (value)
+        logEvent.add(AddDeviceCode, eventType, AddDeviceEmId, oldValue, value);
+      else
+        logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceEmId, oldValue, value);
+      em->initParameters();
+      startReboot();
     }
-    break;
+    return err;
   case CCS_FILTER_OUTPUT:
-    {
-      uint8_t err = setValue(id, value, eventType);
-      if ((value != oldValue) && !err) {
-        if (value)
-          logEvent.add(AddDeviceCode, eventType, AddDeviceFiltOutId, oldValue, value);
-        else
-          logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceFiltOutId, oldValue, value);
-      }
-      return err;
+    err = setValue(id, value, eventType);
+    if ((value != oldValue) && !err) {
+      if (value)
+        logEvent.add(AddDeviceCode, eventType, AddDeviceFiltOutId, oldValue, value);
+      else
+        logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceFiltOutId, oldValue, value);
     }
-    break;
+    return err;
   case CCS_SCADA_TYPE: case CCS_SCADA_ADDRESS: case CCS_SCADA_BYTERATE:
   case CCS_SCADA_PARITY: case CCS_SCADA_DELAY:
-    {
-      uint8_t err = setValue(id, value, eventType);
-      if ((value != oldValue) && !err)
-        osSemaphoreRelease(scadaSemaphoreId_);
-      return err;
-    }
-    break;
+    err = setValue(id, value, eventType);
+    if ((value != oldValue) && !err)
+      osSemaphoreRelease(scadaSemaphoreId_);
+    return err;
   case CCS_COEF_OUT_CURRENT_1:
     parameters.set(VSD_COEF_OUT_CURRENT_1, value);
     break;
@@ -851,15 +838,13 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     parameters.set(VSD_COEF_OUT_CURRENT_3, value);
     break;
   case CCS_CMD_REBOOT_SOFTWARE:
-    {
-      uint8_t err = setValue(id, value, eventType);
-      if (value && !err) {
-        setCmd(CCS_CMD_AM335_REBOOT);
-        logEvent.add(PowerCode, AutoType, RebootSoftwareId);
-        startReboot();
-      }
+    err = setValue(id, value, eventType);
+    if (value && !err) {
+      setCmd(CCS_CMD_AM335_REBOOT);
+      logEvent.add(PowerCode, AutoType, RebootSoftwareId);
+      startReboot();
     }
-    break;
+    return err;
   case CCS_CMD_START:
     cmdStart(value);
     return ok_r;

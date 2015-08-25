@@ -13,6 +13,7 @@ public:
   ~LogTms();
 
   void init();
+  void deInit();
   void task();
 
 private:

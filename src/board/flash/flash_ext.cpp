@@ -265,7 +265,7 @@ static void flashWriteDisable(FlashSpiNum num)
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 }
 
-StatusType flashEraseSector4k(FlashSpiNum num, uint32_t address)
+StatusType flashExtEraseSector4k(FlashSpiNum num, uint32_t address)
 {
   StatusType status = StatusError;
 
@@ -277,6 +277,36 @@ StatusType flashEraseSector4k(FlashSpiNum num, uint32_t address)
   flashWriteEnable(num);
 
   buf[0] = CMD_W_SECTOR_ERASE;
+  buf[1] = address>>16;
+  buf[2] = address>>8;
+  buf[3] = address&0xFF;
+
+  clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+  if (HAL_SPI_Transmit(&flashExts[num].spi, buf, 4, FLASH_TIMEOUT) == HAL_OK)
+    status = StatusOk;
+  setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+
+  // Ожидание завершения операции
+  flashReady(num);
+  flashWriteDisable(num);
+
+  osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
+
+  return status;
+}
+
+StatusType flashExtEraseBlock(FlashSpiNum num, uint32_t address)
+{
+  StatusType status = StatusError;
+
+  if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) != osOK)
+    return status;
+
+  address &= ~(flashExts[num].sectorSize - 1);
+
+  flashWriteEnable(num);
+
+  buf[0] = CMD_W_BLOCK64k_ERASE;
   buf[1] = address>>16;
   buf[2] = address>>8;
   buf[3] = address&0xFF;
@@ -380,7 +410,7 @@ StatusType flashWriteSector(FlashSpiNum num, uint32_t address, uint8_t *data, ui
   uint32_t offSetPage = 0;
   uint32_t len = 0;
 
-  flashEraseSector4k(num, address);
+  flashExtEraseSector4k(num, address);
 
   while(size) {
     if(address > flashExts[num].size)

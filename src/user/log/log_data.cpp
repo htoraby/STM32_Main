@@ -25,6 +25,12 @@ void LogData::init()
   threadId_ = osThreadCreate(&t, this);
 }
 
+void LogData::deInit()
+{
+  osThreadTerminate(threadId_);
+  Log::deInit();
+}
+
 void LogData::task()
 {
   int normTimeCnt = 0;

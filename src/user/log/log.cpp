@@ -93,7 +93,7 @@ StatusType Log::write(uint8_t *data, uint32_t size, bool saveId, bool endLog)
 
   if (addrSector != addrSectorOld_) {
     address_ = addrSector;
-    flashEraseSector4k(flashSpiNum_, address_);
+    flashExtEraseSector4k(flashSpiNum_, address_);
     addrSectorOld_ = addrSector;
   }
 
