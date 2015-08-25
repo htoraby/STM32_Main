@@ -5430,7 +5430,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].id                   = CCS_RGM_PERIODIC_RUN_TIME_TO_END;
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].access               = ACCESS_OPERATOR;
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].operation            = OPERATION_WRITE;
-  parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].physic               = PHYSIC_TIME;
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].value.float_t        = 0.0;
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].min                  = 0.0;
@@ -5454,7 +5454,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].id                  = CCS_RGM_PERIODIC_STOP_TIME_TO_END;
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].access              = ACCESS_OPERATOR;
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].operation           = OPERATION_WRITE;
-  parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].physic              = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].physic              = PHYSIC_TIME;
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].value.float_t       = 0.0;
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].min                 = 0.0;

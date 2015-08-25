@@ -7557,7 +7557,7 @@
 		<name>CCS_RGM_PERIODIC_RUN_TIME_TO_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_NUMERIC</physic>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>86400.0</max>
 		<def>0.0</def>
@@ -7568,7 +7568,8 @@
 		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>NULL</unit_lcd>
+		<unit_lcd>TIME_HH_MM_SS</unit_lcd>
+		<format>XX_XX_XX</format>
 		<code>0</code>
 		<comment>Время до окончания работы по программе</comment>
 	</param>
@@ -7597,7 +7598,7 @@
 		<name>CCS_RGM_PERIODIC_STOP_TIME_TO_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_NUMERIC</physic>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>86400.0</max>
 		<def>0.0</def>
@@ -7608,7 +7609,8 @@
 		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>NULL</unit_lcd>
+		<unit_lcd>TIME_HH_MM_SS</unit_lcd>
+		<format>XX_XX_XX</format>
 		<code>0</code>
 		<comment>Время до окончания останова по программе</comment>
 	</param>
@@ -9171,7 +9173,7 @@
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>0</code>
 		<comment>Тип КСУ</comment>
 	</param>
@@ -9192,7 +9194,7 @@
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>0</code>
 		<comment>Код производителя КСУ</comment>
 	</param>
