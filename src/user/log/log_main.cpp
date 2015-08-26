@@ -1,6 +1,4 @@
 #include "log_main.h"
-#include "ff_gen_drv.h"
-#include "usbh_diskio.h"
 #include "usb_host.h"
 #include "user_main.h"
 
@@ -132,7 +130,6 @@ static void getFilePath(char *path, const char *suffix)
 
 static void logSave()
 {
-  FATFS fatfs;
   FRESULT result;
   FIL file;
   UINT bytesWritten;
@@ -151,19 +148,8 @@ static void logSave()
   if (error) {
     return;
   }
-  time = 0;
-  while (f_mount(&fatfs, USB_DISK, 0) != FR_OK) {
-    osDelay(10);
-    time += 10;
-    if (time > 5000) {
-      error = true;
-      break;
-    }
-  }
-  if (error) {
-    return;
-  }
 
+  time = 0;
   result = f_mkdir(LOG_DIR);
   if ((result == FR_OK) || (result == FR_EXIST)) {
     time = HAL_GetTick();
@@ -240,18 +226,6 @@ static void logSave()
 
     time = HAL_GetTick() - time;
     asm("nop");
-  }
-
-  while (f_mount(NULL, USB_DISK, 0) != FR_OK) {
-    osDelay(10);
-    time += 10;
-    if (time > 5000) {
-      error = true;
-      break;
-    }
-  }
-  if (error) {
-    return;
   }
 }
 

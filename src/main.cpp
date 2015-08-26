@@ -9,9 +9,8 @@
   ******************************************************************************
   */
 
-#include "ff_gen_drv.h"
-#include "board.h"
 #include "rcause.h"
+#include "usb_host.h"
 #include "user_main.h"
 #include "test.h"
 #include "shell.h"

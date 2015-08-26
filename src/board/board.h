@@ -45,9 +45,4 @@
  */
 void boardInit();
 
-/*!
- * \brief Инициализация USB и подключение файловой системы
- */
-void usbInit();
-
 #endif // BOARD_H

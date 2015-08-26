@@ -1,93 +1,51 @@
-/**
- ******************************************************************************
-  * @file            : USB_HOST
-  * @date            : 11/09/2014 11:08:12 
-  * @version         : v1.0_Cube
-  * @brief           :  This file implements the USB Host 
-  ******************************************************************************
-  * COPYRIGHT(c) 2014 STMicroelectronics
-  *
-  * Redistribution and use in source and binary forms, with or without modification,
-  * are permitted provided that the following conditions are met:
-  * 1. Redistributions of source code must retain the above copyright notice,
-  * this list of conditions and the following disclaimer.
-  * 2. Redistributions in binary form must reproduce the above copyright notice,
-  * this list of conditions and the following disclaimer in the documentation
-  * and/or other materials provided with the distribution.
-  * 3. Neither the name of STMicroelectronics nor the names of its contributors
-  * may be used to endorse or promote products derived from this software
-  * without specific prior written permission.
-  *
-  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-  * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  *
-  ******************************************************************************
-*/
-
-/* Includes ------------------------------------------------------------------*/
-
 #include "usb_host.h"
 #include "usbh_core.h"
 #include "usbh_msc.h"
 
-/* USB Host Core handle declaration */
-USBH_HandleTypeDef hUsbHostFS;
-ApplicationTypeDef Appli_state = APPLICATION_IDLE;
+#include "board.h"
 
+USBH_HandleTypeDef hUsbHostFS;
+UsbStateTypeDef usbState = USB_IDLE;
 uint8_t USBH_DriverNum;      /* FatFS USBH part */
 char USBH_Path[4];           /* USBH logical drive path */
+FATFS fatfs;
 
-/*
-* user callbak declaration
-*/ 
-static void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8_t id);
+static void userProcess(USBH_HandleTypeDef *phost, uint8_t id);
 
-/* init function */				        
-void MX_USB_HOST_Init(void)
+void usbInit()
 {
-  /* Init Host Library,Add Supported Class and Start the library*/
-  USBH_Init(&hUsbHostFS, USBH_UserProcess, HOST_FS);
+  // FatFS: Link the USBH disk I/O driver
+  USBH_DriverNum = FATFS_LinkDriver(&USBH_Driver, USBH_Path);
+
+  // Инициализация USB HOST
+  USBH_Init(&hUsbHostFS, userProcess, HOST_FS);
 
   USBH_RegisterClass(&hUsbHostFS, USBH_MSC_CLASS);
 
   USBH_Start(&hUsbHostFS);
-
 }
 
-/*
- * user callbak definition
-*/ 
-static void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8_t id)
+static void userProcess(USBH_HandleTypeDef *phost, uint8_t id)
 {
-
   switch(id)
-  { 
+  {
   case HOST_USER_SELECT_CONFIGURATION:
-  break;
-    
+    break;
   case HOST_USER_DISCONNECTION:
-  Appli_state = APPLICATION_DISCONNECT;
-  break;
-    
+    f_mount(NULL, USB_DISK, 0);
+    usbState = USB_DISCONNECT;
+    break;
   case HOST_USER_CLASS_ACTIVE:
-  Appli_state = APPLICATION_READY;
-  break;
-
+    if (f_mount(&fatfs, USB_DISK, 0) != FR_OK) {
+      asm("nop"); // Ошибка
+    } else {
+      usbState = USB_READY;
+    }
+    break;
   case HOST_USER_CONNECTION:
-  Appli_state = APPLICATION_START;
-  break;
-
+    usbState = USB_START;
+    break;
   default:
-  break; 
+    break;
   }
 }
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
