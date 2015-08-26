@@ -229,23 +229,26 @@ StatusType spiTransmitReceive(FlashSpiNum num, uint8_t *txData, uint8_t *rxData,
 
 static void flashReady(FlashSpiNum num)
 {
-  clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  buf[0] = CMD_W_READ_SR;
-  if (HAL_SPI_Transmit(&flashExts[num].spi, buf, 1, FLASH_TIMEOUT) == HAL_OK) {
-    while (1) {
+  StatusType status = StatusError;
+
+  while (1) {
+    buf[0] = CMD_W_READ_SR;
+    clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+    if (HAL_SPI_Transmit(&flashExts[num].spi, buf, 1, FLASH_TIMEOUT) == HAL_OK) {
       buf[0] = 0xFF;
-      if (HAL_SPI_TransmitReceive(&flashExts[num].spi, buf, buf, 1, FLASH_TIMEOUT) != HAL_OK)
-        break;
-      if(!(buf[0] & 0x01)) {
-        asm("nop");
-        break;
-      }
-      HAL_Delay(1);
+      if (HAL_SPI_TransmitReceive(&flashExts[num].spi, buf, buf, 1, FLASH_TIMEOUT) == HAL_OK)
+        status = StatusOk;
     }
-  } else {
-    asm("nop");
+    setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+
+    if (status == StatusError)
+      return;
+    if(!(buf[0] & 0x01)) {
+      asm("nop");
+      return;
+    }
+    HAL_Delay(1);
   }
-  setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 }
 
 static void flashWriteEnable(FlashSpiNum num)

@@ -13286,7 +13286,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
-		<code>14</code>
+		<code>0</code>
 		<comment>Команда перезагрузки ПО</comment>
 	</param>
 	<param>
