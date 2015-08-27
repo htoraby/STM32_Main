@@ -94,7 +94,7 @@ void flashExtInit(FlashSpiNum num)
   spiX->Init.CLKPolarity = SPI_POLARITY_LOW;
   spiX->Init.CLKPhase = SPI_PHASE_1EDGE;
   spiX->Init.NSS = SPI_NSS_SOFT;
-  spiX->Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  spiX->Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
   spiX->Init.FirstBit = SPI_FIRSTBIT_MSB;
   spiX->Init.TIMode = SPI_TIMODE_DISABLE;
   spiX->Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -233,17 +233,15 @@ static void flashReady(FlashSpiNum num)
 
   while (1) {
     buf[0] = CMD_W_READ_SR;
+    buf[1] = 0xFF;
     clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-    if (HAL_SPI_Transmit(&flashExts[num].spi, buf, 1, FLASH_TIMEOUT) == HAL_OK) {
-      buf[0] = 0xFF;
-      if (HAL_SPI_TransmitReceive(&flashExts[num].spi, buf, buf, 1, FLASH_TIMEOUT) == HAL_OK)
-        status = StatusOk;
-    }
+    if (HAL_SPI_TransmitReceive(&flashExts[num].spi, buf, buf, 2, FLASH_TIMEOUT) == HAL_OK)
+      status = StatusOk;
     setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 
     if (status == StatusError)
       return;
-    if(!(buf[0] & 0x01)) {
+    if(!(buf[1] & 0x01)) {
       asm("nop");
       return;
     }

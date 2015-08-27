@@ -9109,7 +9109,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_REBOOT_SOFTWARE - CCS_BEGIN].max                           = 1.0;
   parameters_[CCS_CMD_REBOOT_SOFTWARE - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_CMD_REBOOT_SOFTWARE - CCS_BEGIN].def                           = 0.0;
-  parameters_[CCS_CMD_REBOOT_SOFTWARE - CCS_BEGIN].code                          = 14;
+  parameters_[CCS_CMD_REBOOT_SOFTWARE - CCS_BEGIN].code                          = 0;
   // Команда перезагрузки модуля AM335x
   parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].id                               = CCS_CMD_AM335_REBOOT;
   parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].access                           = ACCESS_OPERATOR;

@@ -373,7 +373,7 @@ static void testFram()
 static void testFlash1()
 {
 #if (TEST_FLASH1 == 1)
-  flashEraseSector4k(FlashSpi1, 0);
+  flashExtEraseSector4k(FlashSpi1, 0);
 
   uint32_t time = HAL_GetTick();
   bufferTx[0] = 0x21;
@@ -388,6 +388,7 @@ static void testFlash1()
   bufferTx[9] = 0x12;
   bufferTx[sizeof(bufferTx)-1] = 0x55;
   memset(bufferRx, 0, sizeof(bufferRx));
+  flashExtRead(FlashSpi1, 0, &bufferRx[0], sizeof(bufferTx));
   flashExtWrite(FlashSpi1, 0, &bufferTx[0], sizeof(bufferTx));
   flashExtRead(FlashSpi1, 0, &bufferRx[0], sizeof(bufferTx));
 
@@ -402,7 +403,7 @@ static void testFlash1()
 static void testFlash2()
 {
 #if (TEST_FLASH2 == 1)
-  flashEraseSector4k(FlashSpi5, 0);
+  flashExtEraseSector4k(FlashSpi5, 0);
 
   uint32_t time = HAL_GetTick();
   bufferTx[0] = 0x21;
@@ -417,6 +418,7 @@ static void testFlash2()
   bufferTx[9] = 0x12;
   bufferTx[sizeof(bufferTx)-1] = 0x55;
   memset(bufferRx, 0, sizeof(bufferRx));
+  flashExtRead(FlashSpi5, 0, &bufferRx[0], sizeof(bufferTx));
   flashExtWrite(FlashSpi5, 0, &bufferTx[0], sizeof(bufferTx));
   flashExtRead(FlashSpi5, 0, &bufferRx[0], sizeof(bufferTx));
 
