@@ -13354,6 +13354,27 @@
 	</param>
 	<param>
 		<id>762</id>
+		<name>CCS_INTERFACE_CYCLE_TIME</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>5.0</min>
+		<max>300.0</max>
+		<def>10.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>10.0</value>
+		<text>Время циклического переключения окон состояния</text>
+		<short_text>Время циклического переключения окон состояния</short_text>
+		<form>7.5 Интерфейс</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXX</format>
+		<code>13</code>
+		<comment>Время циклического переключения окон состояния</comment>
+	</param>
+	<param>
+		<id>763</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>

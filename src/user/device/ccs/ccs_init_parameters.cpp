@@ -9146,5 +9146,17 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_START_SLAVE_REBOOT - CCS_BEGIN].discret                    = 1;
   parameters_[CCS_CMD_START_SLAVE_REBOOT - CCS_BEGIN].def                        = 0.0;
   parameters_[CCS_CMD_START_SLAVE_REBOOT - CCS_BEGIN].code                       = 0;
+  // Время циклического переключения окон состояния
+  parameters_[CCS_INTERFACE_CYCLE_TIME - CCS_BEGIN].id                           = CCS_INTERFACE_CYCLE_TIME;
+  parameters_[CCS_INTERFACE_CYCLE_TIME - CCS_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[CCS_INTERFACE_CYCLE_TIME - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_INTERFACE_CYCLE_TIME - CCS_BEGIN].physic                       = PHYSIC_TIME;
+  parameters_[CCS_INTERFACE_CYCLE_TIME - CCS_BEGIN].validity                     = VALIDITY_OK;
+  parameters_[CCS_INTERFACE_CYCLE_TIME - CCS_BEGIN].value.float_t                = 10.0;
+  parameters_[CCS_INTERFACE_CYCLE_TIME - CCS_BEGIN].min                          = 5.0;
+  parameters_[CCS_INTERFACE_CYCLE_TIME - CCS_BEGIN].max                          = 300.0;
+  parameters_[CCS_INTERFACE_CYCLE_TIME - CCS_BEGIN].discret                      = 1;
+  parameters_[CCS_INTERFACE_CYCLE_TIME - CCS_BEGIN].def                          = 10.0;
+  parameters_[CCS_INTERFACE_CYCLE_TIME - CCS_BEGIN].code                         = 13;
 }
 
