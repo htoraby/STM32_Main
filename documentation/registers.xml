@@ -12114,9 +12114,9 @@
 		<form>3.3 ТМПН</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
-		<format>XXXXXX</format>
+		<format>TEXT</format>
 		<code>13</code>
-		<values>0-50;1-60</values>
+		<values>50-50;60-60</values>
 		<comment>Частота питающей сети</comment>
 	</param>
 	<param>
