@@ -99,8 +99,8 @@
 /*!< Uncomment the following line if you need to relocate your vector Table in
      Internal SRAM. */
 /* #define VECT_TAB_SRAM */
-//перенести таблицу векторов прерываний по адресу 0х08008000
-#define VECT_TAB_OFFSET  0x8000 /*!< Vector Table base offset field.
+//перенести таблицу векторов прерываний по адресу 0х08010000
+#define VECT_TAB_OFFSET  0x10000 /*!< Vector Table base offset field.
                                    This value must be a multiple of 0x200. */
 /******************************************************************************/
 
