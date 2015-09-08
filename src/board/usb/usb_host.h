@@ -5,7 +5,7 @@
 #include "usbh_diskio.h"
 
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 
 typedef enum {
@@ -14,6 +14,8 @@ typedef enum {
   USB_READY,
   USB_DISCONNECT,
 } UsbStateTypeDef;
+
+extern UsbStateTypeDef usbState;
 
 /*!
  * \brief Инициализация USB и подключение файловой системы

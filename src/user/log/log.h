@@ -35,6 +35,7 @@ typedef enum {
   SetpointCode         = 13,          //!< ИзмПарам
   DelLogCode           = 14,          //!< Удаление хронологии
   CopyLogCode          = 15,          //!< Считывание хронологии
+  UpdateSwCode         = 16,          //!< Перепрошивка КСУ
   ResetCountsCode      = 18,          //!< Сброс счётчиков наработки
   AddDeviceCode        = 20,          //!< Подключение устройства
   RemoveDeviceCode     = 21,          //!< Отключение устройства

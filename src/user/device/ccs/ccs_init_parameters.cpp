@@ -9111,17 +9111,17 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_REBOOT_SOFTWARE - CCS_BEGIN].def                           = 0.0;
   parameters_[CCS_CMD_REBOOT_SOFTWARE - CCS_BEGIN].code                          = 0;
   // Команда перезагрузки модуля AM335x
-  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].id                               = CCS_CMD_AM335_REBOOT;
-  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].access                           = ACCESS_OPERATOR;
-  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].operation                        = OPERATION_WRITE;
-  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].physic                           = PHYSIC_NUMERIC;
-  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].validity                         = VALIDITY_OK;
-  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].value.float_t                    = 0.0;
-  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].min                              = 0.0;
-  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].max                              = 1.0;
-  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].discret                          = 1;
-  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].def                              = 0.0;
-  parameters_[CCS_CMD_AM335_REBOOT - CCS_BEGIN].code                             = 0;
+  parameters_[CCS_CMD_REBOOT_MASTER - CCS_BEGIN].id                              = CCS_CMD_REBOOT_MASTER;
+  parameters_[CCS_CMD_REBOOT_MASTER - CCS_BEGIN].access                          = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_REBOOT_MASTER - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_CMD_REBOOT_MASTER - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
+  parameters_[CCS_CMD_REBOOT_MASTER - CCS_BEGIN].validity                        = VALIDITY_OK;
+  parameters_[CCS_CMD_REBOOT_MASTER - CCS_BEGIN].value.float_t                   = 0.0;
+  parameters_[CCS_CMD_REBOOT_MASTER - CCS_BEGIN].min                             = 0.0;
+  parameters_[CCS_CMD_REBOOT_MASTER - CCS_BEGIN].max                             = 1.0;
+  parameters_[CCS_CMD_REBOOT_MASTER - CCS_BEGIN].discret                         = 1;
+  parameters_[CCS_CMD_REBOOT_MASTER - CCS_BEGIN].def                             = 0.0;
+  parameters_[CCS_CMD_REBOOT_MASTER - CCS_BEGIN].code                            = 0;
   // Команда синхронизации параметров
   parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].id                            = CCS_CMD_SYNC_ALL_PARAMS;
   parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].access                        = ACCESS_OPERATOR;
@@ -9135,17 +9135,17 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].def                           = 0.0;
   parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].code                          = 0;
   // Команда запуска перезапуска Slave (STM32)
-  parameters_[CCS_CMD_START_SLAVE_REBOOT - CCS_BEGIN].id                         = CCS_CMD_START_SLAVE_REBOOT;
-  parameters_[CCS_CMD_START_SLAVE_REBOOT - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_CMD_START_SLAVE_REBOOT - CCS_BEGIN].operation                  = OPERATION_WRITE;
-  parameters_[CCS_CMD_START_SLAVE_REBOOT - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
-  parameters_[CCS_CMD_START_SLAVE_REBOOT - CCS_BEGIN].validity                   = VALIDITY_OK;
-  parameters_[CCS_CMD_START_SLAVE_REBOOT - CCS_BEGIN].value.float_t              = 0.0;
-  parameters_[CCS_CMD_START_SLAVE_REBOOT - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_CMD_START_SLAVE_REBOOT - CCS_BEGIN].max                        = 1.0;
-  parameters_[CCS_CMD_START_SLAVE_REBOOT - CCS_BEGIN].discret                    = 1;
-  parameters_[CCS_CMD_START_SLAVE_REBOOT - CCS_BEGIN].def                        = 0.0;
-  parameters_[CCS_CMD_START_SLAVE_REBOOT - CCS_BEGIN].code                       = 0;
+  parameters_[CCS_CMD_START_REBOOT_SLAVE - CCS_BEGIN].id                         = CCS_CMD_START_REBOOT_SLAVE;
+  parameters_[CCS_CMD_START_REBOOT_SLAVE - CCS_BEGIN].access                     = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_START_REBOOT_SLAVE - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_CMD_START_REBOOT_SLAVE - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
+  parameters_[CCS_CMD_START_REBOOT_SLAVE - CCS_BEGIN].validity                   = VALIDITY_OK;
+  parameters_[CCS_CMD_START_REBOOT_SLAVE - CCS_BEGIN].value.float_t              = 0.0;
+  parameters_[CCS_CMD_START_REBOOT_SLAVE - CCS_BEGIN].min                        = 0.0;
+  parameters_[CCS_CMD_START_REBOOT_SLAVE - CCS_BEGIN].max                        = 1.0;
+  parameters_[CCS_CMD_START_REBOOT_SLAVE - CCS_BEGIN].discret                    = 1;
+  parameters_[CCS_CMD_START_REBOOT_SLAVE - CCS_BEGIN].def                        = 0.0;
+  parameters_[CCS_CMD_START_REBOOT_SLAVE - CCS_BEGIN].code                       = 0;
   // Время циклического переключения окон состояния
   parameters_[CCS_INTERFACE_CYCLE_TIME - CCS_BEGIN].id                           = CCS_INTERFACE_CYCLE_TIME;
   parameters_[CCS_INTERFACE_CYCLE_TIME - CCS_BEGIN].access                       = ACCESS_OPERATOR;
@@ -9158,5 +9158,41 @@ void Ccs::initParameters()
   parameters_[CCS_INTERFACE_CYCLE_TIME - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_INTERFACE_CYCLE_TIME - CCS_BEGIN].def                          = 10.0;
   parameters_[CCS_INTERFACE_CYCLE_TIME - CCS_BEGIN].code                         = 13;
+  // Команда обновления ПО модуля AM335x
+  parameters_[CCS_CMD_UPDATE_SW_MASTER - CCS_BEGIN].id                           = CCS_CMD_UPDATE_SW_MASTER;
+  parameters_[CCS_CMD_UPDATE_SW_MASTER - CCS_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_UPDATE_SW_MASTER - CCS_BEGIN].operation                    = OPERATION_READ;
+  parameters_[CCS_CMD_UPDATE_SW_MASTER - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
+  parameters_[CCS_CMD_UPDATE_SW_MASTER - CCS_BEGIN].validity                     = VALIDITY_OK;
+  parameters_[CCS_CMD_UPDATE_SW_MASTER - CCS_BEGIN].value.float_t                = 0.0;
+  parameters_[CCS_CMD_UPDATE_SW_MASTER - CCS_BEGIN].min                          = 0.0;
+  parameters_[CCS_CMD_UPDATE_SW_MASTER - CCS_BEGIN].max                          = 1.0;
+  parameters_[CCS_CMD_UPDATE_SW_MASTER - CCS_BEGIN].discret                      = 1;
+  parameters_[CCS_CMD_UPDATE_SW_MASTER - CCS_BEGIN].def                          = 0.0;
+  parameters_[CCS_CMD_UPDATE_SW_MASTER - CCS_BEGIN].code                         = 0;
+  // Команда запуска перезапуска Slave (STM32)
+  parameters_[CCS_CMD_START_UPDATE_SW_SLAVE - CCS_BEGIN].id                      = CCS_CMD_START_UPDATE_SW_SLAVE;
+  parameters_[CCS_CMD_START_UPDATE_SW_SLAVE - CCS_BEGIN].access                  = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_START_UPDATE_SW_SLAVE - CCS_BEGIN].operation               = OPERATION_READ;
+  parameters_[CCS_CMD_START_UPDATE_SW_SLAVE - CCS_BEGIN].physic                  = PHYSIC_NUMERIC;
+  parameters_[CCS_CMD_START_UPDATE_SW_SLAVE - CCS_BEGIN].validity                = VALIDITY_OK;
+  parameters_[CCS_CMD_START_UPDATE_SW_SLAVE - CCS_BEGIN].value.float_t           = 0.0;
+  parameters_[CCS_CMD_START_UPDATE_SW_SLAVE - CCS_BEGIN].min                     = 0.0;
+  parameters_[CCS_CMD_START_UPDATE_SW_SLAVE - CCS_BEGIN].max                     = 1.0;
+  parameters_[CCS_CMD_START_UPDATE_SW_SLAVE - CCS_BEGIN].discret                 = 1;
+  parameters_[CCS_CMD_START_UPDATE_SW_SLAVE - CCS_BEGIN].def                     = 0.0;
+  parameters_[CCS_CMD_START_UPDATE_SW_SLAVE - CCS_BEGIN].code                    = 0;
+  // Регистр ошибок Slave
+  parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].id                                    = CCS_ERROR_SLAVE;
+  parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].access                                = ACCESS_OPERATOR;
+  parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].operation                             = OPERATION_READ;
+  parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
+  parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].validity                              = VALIDITY_OK;
+  parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].value.float_t                         = 0.0;
+  parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].min                                   = 0.0;
+  parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].max                                   = 9999999.0;
+  parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].discret                               = 1;
+  parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].def                                   = 0.0;
+  parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].code                                  = 0;
 }
 

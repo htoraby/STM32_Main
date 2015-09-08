@@ -448,6 +448,16 @@ private:
    */
   void reboot();
 
+  /*!
+   * \brief Функция запуска обновления ПО
+   */
+  void startUpdateSoftware();
+
+  /*!
+   * \brief Функция обновления ПО
+   */
+  void updateSoftware();
+
   void setCmd(uint16_t id);
   void resetCmd(uint16_t id);
 
@@ -471,8 +481,12 @@ private:
   //! Таймер задержки проверки подключения устройств
   int checkConnectDeviceTimer_;
 
+  osThreadId ccsMainTaskId_;
+
   //! Идентификатор семафора перезапуска платы
   osSemaphoreId rebootSemaphoreId_;
+  //! Идентификатор семафора обновления ПО
+  osSemaphoreId updateSemaphoreId_;
   //! Идентификатор семафора переинициализации скады
   osSemaphoreId scadaSemaphoreId_;
 

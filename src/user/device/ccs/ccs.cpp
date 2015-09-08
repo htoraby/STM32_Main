@@ -10,6 +10,7 @@
 #include "user_main.h"
 #include "protection_main.h"
 #include "regime_main.h"
+#include "update.h"
 
 #define TIMEOUT_POWER_OFF 6000 //!< 1 минута на отключение питания ИБП
 #define DELAY_CHECK_CONNECT_DEVICE 1000 //!< Задержка проверки подключения устройств - 20 сек
@@ -67,20 +68,24 @@ void Ccs::initTask()
   osThreadDef(VsdConditionTask, ccsVsdConditionTask, osPriorityNormal, 0, 3*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(VsdConditionTask), this);
 
-  osThreadDef(CcsMain, ccsMainTask, osPriorityNormal, 0, 4*configMINIMAL_STACK_SIZE);
-  osThreadCreate(osThread(CcsMain), this);
+  osThreadDef(CcsMain, ccsMainTask, osPriorityNormal, 0, 8*configMINIMAL_STACK_SIZE);
+  ccsMainTaskId_ = osThreadCreate(osThread(CcsMain), this);
 
   osThreadDef(CalcParametersTask, ccsCalcParametersTask, osPriorityNormal, 0 , 4*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(CalcParametersTask), this);
 
   rebootSemaphoreId_ = osSemaphoreCreate(NULL, 1);
   osSemaphoreWait(rebootSemaphoreId_, 0);
+  updateSemaphoreId_ = osSemaphoreCreate(NULL, 1);
+  osSemaphoreWait(updateSemaphoreId_, 0);
   scadaSemaphoreId_ = osSemaphoreCreate(NULL, 1);
   osSemaphoreWait(scadaSemaphoreId_, 0);
 
   setCmd(CCS_CMD_SYNC_ALL_PARAMS);
-  resetCmd(CCS_CMD_AM335_REBOOT);
-  resetCmd(CCS_CMD_START_SLAVE_REBOOT);
+  resetCmd(CCS_CMD_REBOOT_MASTER);
+  resetCmd(CCS_CMD_START_REBOOT_SLAVE);
+  resetCmd(CCS_CMD_UPDATE_SOFTWARE);
+  resetCmd(CCS_CMD_START_UPDATE_SW_SLAVE);
 }
 
 void Ccs::mainTask()
@@ -97,6 +102,8 @@ void Ccs::mainTask()
 
     if (osSemaphoreWait(rebootSemaphoreId_, 0) != osEventTimeout)
       reboot();
+    if (osSemaphoreWait(updateSemaphoreId_, 0) != osEventTimeout)
+      updateSoftware();
     if (osSemaphoreWait(scadaSemaphoreId_, 0) != osEventTimeout) {
       osDelay(100);
       createScada();
@@ -839,12 +846,17 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     parameters.set(VSD_COEF_OUT_CURRENT_3, value);
     break;
   case CCS_CMD_REBOOT_SOFTWARE:
-    err = setValue(id, value, eventType);
+    err = setValue(id, 0.0, eventType);
     if (value && !err) {
-      setCmd(CCS_CMD_AM335_REBOOT);
+      setCmd(CCS_CMD_REBOOT_MASTER);
       logEvent.add(PowerCode, AutoType, RebootSoftwareId);
       startReboot();
     }
+    return err;
+  case CCS_CMD_UPDATE_SOFTWARE:
+    err = setValue(id, value, eventType);
+    if (value)
+      startUpdateSoftware();
     return err;
   case CCS_CMD_START:
     cmdStart(value);
@@ -1097,8 +1109,8 @@ void Ccs::cmdCountersAllReset()
 
 void Ccs::startReboot()
 {
-  setCmd(CCS_CMD_START_SLAVE_REBOOT);
-  logEvent.add(PowerCode, AutoType, PowerOffId);
+  setCmd(CCS_CMD_START_REBOOT_SLAVE);
+  logEvent.add(PowerCode, AutoType, RebootSoftwareId);
   parameters.startSave();
   osSemaphoreRelease(rebootSemaphoreId_);
 }
@@ -1109,6 +1121,26 @@ void Ccs::reboot()
   osDelay(200);
   osThreadSuspendAll();
   HAL_NVIC_SystemReset();
+}
+
+void Ccs::startUpdateSoftware()
+{
+  setCmd(CCS_CMD_START_UPDATE_SW_SLAVE);
+  logEvent.add(UpdateSwCode, AutoType, UpdateSoftwareId);
+  osSemaphoreRelease(updateSemaphoreId_);
+}
+
+void Ccs::updateSoftware()
+{
+  logDebug.add(WarningMsg, "Обновление ПО");
+  osDelay(200);
+  if (updateFromUsb()) {
+    resetCmd(CCS_CMD_UPDATE_SOFTWARE);
+    startReboot();
+  }
+  else {
+    resetCmd(CCS_CMD_UPDATE_SOFTWARE);
+  }
 }
 
 void Ccs::setCmd(uint16_t id)

@@ -137,7 +137,7 @@ static void logSave()
   bool error = false;
 
   uint32_t time = 0;
-  while(disk_status(0) != RES_OK) {
+  while(usbState != USB_READY) {
     osDelay(10);
     time += 10;
     if (time > 5000) {

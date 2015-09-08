@@ -13291,7 +13291,7 @@
 	</param>
 	<param>
 		<id>759</id>
-		<name>CCS_CMD_AM335_REBOOT</name>
+		<name>CCS_CMD_REBOOT_MASTER</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -13333,7 +13333,7 @@
 	</param>
 	<param>
 		<id>761</id>
-		<name>CCS_CMD_START_SLAVE_REBOOT</name>
+		<name>CCS_CMD_START_REBOOT_SLAVE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -13375,6 +13375,69 @@
 	</param>
 	<param>
 		<id>763</id>
+		<name>CCS_CMD_UPDATE_SW_MASTER</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Команда обновления ПО модуля AM335x</comment>
+	</param>
+	<param>
+		<id>764</id>
+		<name>CCS_CMD_START_UPDATE_SW_SLAVE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Команда запуска перезапуска Slave (STM32)</comment>
+	</param>
+	<param>
+		<id>765</id>
+		<name>CCS_ERROR_SLAVE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>9999999.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Регистр ошибок Slave</comment>
+	</param>
+	<param>
+		<id>766</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>

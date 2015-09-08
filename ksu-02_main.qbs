@@ -95,6 +95,7 @@ Product {
         "src/user/regime/",
         "src/user/regime/run",
         "src/user/regime/technolog",
+        "src/user/update",
     ]
     cpp.defines: [
         (qbs.debugInformation ? "DEBUG" : "RELEASE"),
