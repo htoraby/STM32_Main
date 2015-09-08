@@ -16,9 +16,9 @@ void operator delete(void *p)
   vPortFree(p);
 }
 
-uint16_t crc16_ibm(uint8_t *buf, uint8_t size, uint16_t crc)
+uint16_t crc16_ibm(uint8_t *buf, uint32_t size, uint16_t crc)
 {
-  for (uint8_t byte = 0; byte < size; byte++) {
+  for (uint32_t byte = 0; byte < size; byte++) {
     crc = crc ^ buf[byte];
     for (uint8_t bit = 0; bit < 8; bit++) {
       uint8_t flag = crc & 0x0001;

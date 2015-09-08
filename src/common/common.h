@@ -37,7 +37,7 @@ void operator delete(void *p);
  \param crc - начальное значение контрольной суммы (по умолчанию: 0xFFFF)
  \return uint16_t - контрольная сумма
 */
-uint16_t crc16_ibm(uint8_t *buf, uint8_t size, uint16_t crc = 0xFFFF);
+uint16_t crc16_ibm(uint8_t *buf, uint32_t size, uint16_t crc = 0xFFFF);
 
 /*!
  * \brief Шаблон определения максимального числа
