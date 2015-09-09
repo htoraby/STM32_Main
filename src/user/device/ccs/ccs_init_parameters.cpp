@@ -9194,5 +9194,77 @@ void Ccs::initParameters()
   parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].discret                               = 1;
   parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].def                                   = 0.0;
   parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].code                                  = 0;
+  // Слово состояние ЧРП
+  parameters_[CCS_VSD_INVERTOR_STATUS_1 - CCS_BEGIN].id                          = CCS_VSD_INVERTOR_STATUS_1;
+  parameters_[CCS_VSD_INVERTOR_STATUS_1 - CCS_BEGIN].access                      = ACCESS_OPERATOR;
+  parameters_[CCS_VSD_INVERTOR_STATUS_1 - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_VSD_INVERTOR_STATUS_1 - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
+  parameters_[CCS_VSD_INVERTOR_STATUS_1 - CCS_BEGIN].validity                    = VALIDITY_OK;
+  parameters_[CCS_VSD_INVERTOR_STATUS_1 - CCS_BEGIN].value.float_t               = 0.0;
+  parameters_[CCS_VSD_INVERTOR_STATUS_1 - CCS_BEGIN].min                         = 0.0;
+  parameters_[CCS_VSD_INVERTOR_STATUS_1 - CCS_BEGIN].max                         = 65535.0;
+  parameters_[CCS_VSD_INVERTOR_STATUS_1 - CCS_BEGIN].discret                     = 1;
+  parameters_[CCS_VSD_INVERTOR_STATUS_1 - CCS_BEGIN].def                         = 0.0;
+  parameters_[CCS_VSD_INVERTOR_STATUS_1 - CCS_BEGIN].code                        = 0;
+  // Слово состояние ЧРП
+  parameters_[CCS_VSD_INVERTOR_STATUS_2 - CCS_BEGIN].id                          = CCS_VSD_INVERTOR_STATUS_2;
+  parameters_[CCS_VSD_INVERTOR_STATUS_2 - CCS_BEGIN].access                      = ACCESS_OPERATOR;
+  parameters_[CCS_VSD_INVERTOR_STATUS_2 - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_VSD_INVERTOR_STATUS_2 - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
+  parameters_[CCS_VSD_INVERTOR_STATUS_2 - CCS_BEGIN].validity                    = VALIDITY_OK;
+  parameters_[CCS_VSD_INVERTOR_STATUS_2 - CCS_BEGIN].value.float_t               = 0.0;
+  parameters_[CCS_VSD_INVERTOR_STATUS_2 - CCS_BEGIN].min                         = 0.0;
+  parameters_[CCS_VSD_INVERTOR_STATUS_2 - CCS_BEGIN].max                         = 65535.0;
+  parameters_[CCS_VSD_INVERTOR_STATUS_2 - CCS_BEGIN].discret                     = 1;
+  parameters_[CCS_VSD_INVERTOR_STATUS_2 - CCS_BEGIN].def                         = 0.0;
+  parameters_[CCS_VSD_INVERTOR_STATUS_2 - CCS_BEGIN].code                        = 0;
+  // Слово состояние ЧРП
+  parameters_[CCS_VSD_INVERTOR_STATUS_3 - CCS_BEGIN].id                          = CCS_VSD_INVERTOR_STATUS_3;
+  parameters_[CCS_VSD_INVERTOR_STATUS_3 - CCS_BEGIN].access                      = ACCESS_OPERATOR;
+  parameters_[CCS_VSD_INVERTOR_STATUS_3 - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_VSD_INVERTOR_STATUS_3 - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
+  parameters_[CCS_VSD_INVERTOR_STATUS_3 - CCS_BEGIN].validity                    = VALIDITY_OK;
+  parameters_[CCS_VSD_INVERTOR_STATUS_3 - CCS_BEGIN].value.float_t               = 0.0;
+  parameters_[CCS_VSD_INVERTOR_STATUS_3 - CCS_BEGIN].min                         = 0.0;
+  parameters_[CCS_VSD_INVERTOR_STATUS_3 - CCS_BEGIN].max                         = 65535.0;
+  parameters_[CCS_VSD_INVERTOR_STATUS_3 - CCS_BEGIN].discret                     = 1;
+  parameters_[CCS_VSD_INVERTOR_STATUS_3 - CCS_BEGIN].def                         = 0.0;
+  parameters_[CCS_VSD_INVERTOR_STATUS_3 - CCS_BEGIN].code                        = 0;
+  // Слово состояние ЧРП
+  parameters_[CCS_VSD_INVERTOR_STATUS_4 - CCS_BEGIN].id                          = CCS_VSD_INVERTOR_STATUS_4;
+  parameters_[CCS_VSD_INVERTOR_STATUS_4 - CCS_BEGIN].access                      = ACCESS_OPERATOR;
+  parameters_[CCS_VSD_INVERTOR_STATUS_4 - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_VSD_INVERTOR_STATUS_4 - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
+  parameters_[CCS_VSD_INVERTOR_STATUS_4 - CCS_BEGIN].validity                    = VALIDITY_OK;
+  parameters_[CCS_VSD_INVERTOR_STATUS_4 - CCS_BEGIN].value.float_t               = 0.0;
+  parameters_[CCS_VSD_INVERTOR_STATUS_4 - CCS_BEGIN].min                         = 0.0;
+  parameters_[CCS_VSD_INVERTOR_STATUS_4 - CCS_BEGIN].max                         = 65535.0;
+  parameters_[CCS_VSD_INVERTOR_STATUS_4 - CCS_BEGIN].discret                     = 1;
+  parameters_[CCS_VSD_INVERTOR_STATUS_4 - CCS_BEGIN].def                         = 0.0;
+  parameters_[CCS_VSD_INVERTOR_STATUS_4 - CCS_BEGIN].code                        = 0;
+  // Слово состояние ЧРП
+  parameters_[CCS_VSD_INV_FAULT - CCS_BEGIN].id                                  = CCS_VSD_INV_FAULT;
+  parameters_[CCS_VSD_INV_FAULT - CCS_BEGIN].access                              = ACCESS_OPERATOR;
+  parameters_[CCS_VSD_INV_FAULT - CCS_BEGIN].operation                           = OPERATION_WRITE;
+  parameters_[CCS_VSD_INV_FAULT - CCS_BEGIN].physic                              = PHYSIC_NUMERIC;
+  parameters_[CCS_VSD_INV_FAULT - CCS_BEGIN].validity                            = VALIDITY_OK;
+  parameters_[CCS_VSD_INV_FAULT - CCS_BEGIN].value.float_t                       = 0.0;
+  parameters_[CCS_VSD_INV_FAULT - CCS_BEGIN].min                                 = 0.0;
+  parameters_[CCS_VSD_INV_FAULT - CCS_BEGIN].max                                 = 65535.0;
+  parameters_[CCS_VSD_INV_FAULT - CCS_BEGIN].discret                             = 1;
+  parameters_[CCS_VSD_INV_FAULT - CCS_BEGIN].def                                 = 0.0;
+  parameters_[CCS_VSD_INV_FAULT - CCS_BEGIN].code                                = 0;
+  // 
+  parameters_[CCS_VSD_THYR_STATUS - CCS_BEGIN].id                                = CCS_VSD_THYR_STATUS;
+  parameters_[CCS_VSD_THYR_STATUS - CCS_BEGIN].access                            = ACCESS_OPERATOR;
+  parameters_[CCS_VSD_THYR_STATUS - CCS_BEGIN].operation                         = OPERATION_WRITE;
+  parameters_[CCS_VSD_THYR_STATUS - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
+  parameters_[CCS_VSD_THYR_STATUS - CCS_BEGIN].validity                          = VALIDITY_OK;
+  parameters_[CCS_VSD_THYR_STATUS - CCS_BEGIN].value.float_t                     = 0.0;
+  parameters_[CCS_VSD_THYR_STATUS - CCS_BEGIN].min                               = 0.0;
+  parameters_[CCS_VSD_THYR_STATUS - CCS_BEGIN].max                               = 65535.0;
+  parameters_[CCS_VSD_THYR_STATUS - CCS_BEGIN].discret                           = 1;
+  parameters_[CCS_VSD_THYR_STATUS - CCS_BEGIN].def                               = 0.0;
+  parameters_[CCS_VSD_THYR_STATUS - CCS_BEGIN].code                              = 0;
 }
 

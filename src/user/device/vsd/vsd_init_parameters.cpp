@@ -41,7 +41,7 @@ void Vsd::initParameters()
   // Обороты двигателя
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].id                                  = VSD_SPEED_RPM_NOW;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].access                              = ACCESS_OPERATOR;
-  parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].operation                           = 0;
+  parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].operation                           = OPERATION_READ;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].physic                              = 0;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].value.float_t                       = 0;
