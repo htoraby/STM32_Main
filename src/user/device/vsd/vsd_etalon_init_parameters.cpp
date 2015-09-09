@@ -105,7 +105,7 @@ void VsdEtalon::initModbusParameters()
                           0                 // Значение
                          };
   modbusParameters_[6] = {// Температура1 IGBT модуля
-                          VSD_CONTROL_TEMPERATURE,
+                          VSD_RADIATOR_TEMPERATURE,
                           10 + 0x4000,      // 0x400A Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
                           PHYSIC_TEMPERATURE, // Физическая величина параметра
@@ -1933,4 +1933,21 @@ void VsdEtalon::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
+  modbusParameters_[114] = {// Температура платы
+                          VSD_CONTROL_TEMPERATURE,
+                          45 + 0x4000,      // Адрес регистра в устройстве
+                          OPERATION_READ,   // Операции с параметром
+                          PHYSIC_TEMPERATURE, // Физическая величина параметра
+                          TEMPERATURE_C,    // Единицы измерения параметра
+                          TYPE_DATA_INT16,  // Тип данных
+                          1,                // Коэффициент преобразования параметра
+                          0,                // Минимальное значение параметра
+                          100,              // Максимально значение параметра
+                          0,                // Считываемое значение "по умолчанию"
+                          OFTEN + 8,            // Частота опроса параметра
+                          OFTEN + 8,            // Количество запросов к параметру
+                          OPERATION_ERROR,  // Команда
+                          VALIDITY_ERROR,   // Поле состояния параметра
+                          0                 // Значение
+                         };
 }
