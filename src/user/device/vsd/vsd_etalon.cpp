@@ -188,6 +188,27 @@ void VsdEtalon::getNewValue(uint16_t id)
     setValue(id, value);
     parameters.set(CCS_VERSION_SW_VSD, value);
     break;
+  case VSD_SW_STARTUP_FREQUENCY:
+    setValue(id, value);
+    parameters.set(CCS_RGM_RUN_PUSH_FREQ, value);
+    break;
+  case VSD_SW_STARTUP_U_PULSE:
+    setValue(id, value);
+    parameters.set(CCS_RGM_RUN_PUSH_VOLTAGE, value + 100.0);
+    break;
+  case VSD_RGM_RUN_PUSH_UPTIME:
+    setValue(id, value);
+    parameters.set(CCS_RGM_RUN_PUSH_TIME, value);
+    break;
+  case VSD_RGM_RUN_PUSH_PERIOD:
+    setValue(id, value);
+    parameters.set(CCS_RGM_RUN_PUSH_PERIOD, value);
+    break;
+  case VSD_SW_STARTUP_OSC_COUNT:
+    setValue(id, value);
+    parameters.set(CCS_RGM_RUN_PUSH_QUANTITY, value);
+    break;
+
   default:
     setValue(id, value);
     break;
