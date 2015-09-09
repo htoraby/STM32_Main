@@ -184,6 +184,10 @@ void VsdEtalon::getNewValue(uint16_t id)
   case VSD_HIGH_LIM_SPEED_MOTOR:
     setLimitsFrequence(1, value);
     break;
+  case VSD_SOFT_VERSION:
+    setValue(id, value);
+    parameters.set(CCS_VERSION_SW_VSD, value);
+    break;
   default:
     setValue(id, value);
     break;

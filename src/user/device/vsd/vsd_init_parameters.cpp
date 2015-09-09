@@ -3926,5 +3926,29 @@ void Vsd::initParameters()
   parameters_[VSD_UF_CHARACTERISTIC_U_5_PERCENT - VSD_BEGIN].def                 = 100.0;
   parameters_[VSD_UF_CHARACTERISTIC_U_5_PERCENT - VSD_BEGIN].discret             = 1;
   parameters_[VSD_UF_CHARACTERISTIC_U_5_PERCENT - VSD_BEGIN].code                = 0;
+  // Температура выходного фильтра
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].id                           = VSD_FILTER_TEMPERATURE_1;
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].operation                    = OPERATION_READ;
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].physic                       = PHYSIC_TEMPERATURE;
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].validity                     = VALIDITY_ERROR;
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].value.float_t                = 0.0;
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].min                          = 0.0;
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].max                          = 999999.0;
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].def                          = 0.0;
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].discret                      = 1;
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].code                         = 0;
+  // Температура выходного фильтра
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].id                           = VSD_FILTER_TEMPERATURE_2;
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].operation                    = OPERATION_READ;
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].physic                       = PHYSIC_TEMPERATURE;
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].validity                     = VALIDITY_ERROR;
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].value.float_t                = 0.0;
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].min                          = 0.0;
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].max                          = 999999.0;
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].def                          = 0.0;
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].discret                      = 1;
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].code                         = 0;
 }
 

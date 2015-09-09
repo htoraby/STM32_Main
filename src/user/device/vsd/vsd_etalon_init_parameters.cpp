@@ -122,7 +122,7 @@ void VsdEtalon::initModbusParameters()
                           0                 // Значение
                          };
   modbusParameters_[7] = {// Температура2 IGBT модуля
-                          VSD_CONTROL_TEMPERATURE_1,
+                          VSD_RADIATOR_TEMPERATURE_1,
                           11 + 0x4000,      // 0x400B Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
                           PHYSIC_TEMPERATURE, // Физическая величина параметра
@@ -139,7 +139,7 @@ void VsdEtalon::initModbusParameters()
                           0                 // Значение
                          };
   modbusParameters_[8] = {// Температура1 фильтра
-                          VSD_RADIATOR_TEMPERATURE_1,
+                          VSD_FILTER_TEMPERATURE_1,
                           12 + 0x4000,      // 0x400C Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
                           PHYSIC_TEMPERATURE, // Физическая величина параметра
@@ -258,8 +258,8 @@ void VsdEtalon::initModbusParameters()
                            0                // Значение
                           };
 
-  modbusParameters_[15] = {// Температура 1 фильтра
-                           VSD_RADIATOR_TEMPERATURE_1,  // Уникальный идентификатор параметра
+  modbusParameters_[15] = {// Температура 2 фильтра
+                           VSD_FILTER_TEMPERATURE_2,  // Уникальный идентификатор параметра
                            28 + 0x4000,     // 0x401C Адрес регистра в устройстве
                            OPERATION_READ,  // Операции с параметром
                            PHYSIC_TEMPERATURE,// Физическая величина параметра
