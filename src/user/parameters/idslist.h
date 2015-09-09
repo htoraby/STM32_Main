@@ -1103,7 +1103,9 @@ enum enID
   VSD_UF_CHARACTERISTIC_U_3_PERCENT = 10324,                 //!< U/F точка U3 в процентах
   VSD_UF_CHARACTERISTIC_U_4_PERCENT = 10325,                 //!< U/F точка U4 в процентах
   VSD_UF_CHARACTERISTIC_U_5_PERCENT = 10326,                 //!< U/F точка U5 в процентах
-  VSD_END = 10327,                                           //!< 
+  VSD_FILTER_TEMPERATURE_1 = 10327,                          //!< Температура выходного фильтра
+  VSD_FILTER_TEMPERATURE_2 = 10328,                          //!< Температура выходного фильтра
+  VSD_END = 10329,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме

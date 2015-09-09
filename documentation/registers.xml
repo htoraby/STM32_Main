@@ -18400,6 +18400,48 @@
 	</param>
 	<param>
 		<id>10327</id>
+		<name>VSD_FILTER_TEMPERATURE_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>0.0</min>
+		<max>999999.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Температура выходного фильтра</text>
+		<short_text>Температура выходного фильтра</short_text>
+		<form>NULL</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXX_XX</format>
+		<code>0</code>
+		<comment>Температура выходного фильтра</comment>
+	</param>
+	<param>
+		<id>10328</id>
+		<name>VSD_FILTER_TEMPERATURE_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>0.0</min>
+		<max>999999.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Температура выходного фильтра</text>
+		<short_text>Температура выходного фильтра</short_text>
+		<form>NULL</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXX_XX</format>
+		<code>0</code>
+		<comment>Температура выходного фильтра</comment>
+	</param>
+	<param>
+		<id>10329</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>
