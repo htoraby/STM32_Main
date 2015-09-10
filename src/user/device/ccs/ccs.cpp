@@ -864,7 +864,9 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_CMD_STOP:
     cmdStop(value);
     return ok_r;
-  default:
+  case CCS_CMD_VSD_RESET_SETPOINTS:
+    return vsd->resetSetpoints();
+    default:
     break;
   }
   return setValue(id, value, eventType);
