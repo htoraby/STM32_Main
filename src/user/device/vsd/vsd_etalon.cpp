@@ -424,6 +424,11 @@ int VsdEtalon::offRegimeSkipFreq()
   return setNewValue(VSD_FREQ_SKIP_MODE, 0);
 }
 
+int VsdEtalon::resetSetpoints()
+{
+  return setNewValue(VSD_ETALON_RESET, 1);
+}
+
 int VsdEtalon::setFrequency(float value)
 {
   if (Vsd::setFrequency(value))

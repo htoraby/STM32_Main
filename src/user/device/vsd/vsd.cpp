@@ -347,3 +347,8 @@ int Vsd::offRegimeSkipFreq()
 {
   return 0;
 }
+
+int Vsd::resetSetpoints()
+{
+  return 0;
+}

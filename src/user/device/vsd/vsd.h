@@ -261,10 +261,17 @@ public:
   virtual int offRegimeSkipFreq();
 
   /*!
+   * \brief resetSetpoints
+   * \return
+   */
+  virtual int resetSetpoints();
+
+  /*!
    * \brief Функция вычисления текущего cos ЧРП по активной и полной мощности
    * \return
    */
   int calcVsdCos();
+
 
 protected:
 

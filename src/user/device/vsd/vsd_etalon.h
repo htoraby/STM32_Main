@@ -201,6 +201,12 @@ public:
   int offRegimeSkipFreq();
 
   /*!
+   * \brief resetSetpoints
+   * \return
+   */
+  int resetSetpoints();
+
+  /*!
    * \brief Метод записи основного режима работы ЧРП
    * \return
    */
