@@ -190,25 +190,39 @@ void VsdEtalon::getNewValue(uint16_t id)
     break;
   case VSD_SW_STARTUP_FREQUENCY:
     setValue(id, value);
-    parameters.set(CCS_RGM_RUN_PUSH_FREQ, value);
+    if (parameters.get(CCS_RGM_RUN_PUSH_FREQ) != value)
+      parameters.set(CCS_RGM_RUN_PUSH_FREQ, value);
     break;
   case VSD_SW_STARTUP_U_PULSE:
     setValue(id, value);
-    parameters.set(CCS_RGM_RUN_PUSH_VOLTAGE, value + 100.0);
+    if (parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) != value + 100.0)
+      parameters.set(CCS_RGM_RUN_PUSH_VOLTAGE, value + 100.0);
     break;
   case VSD_RGM_RUN_PUSH_UPTIME:
     setValue(id, value);
-    parameters.set(CCS_RGM_RUN_PUSH_TIME, value);
+    if (parameters.get(CCS_RGM_RUN_PUSH_TIME) != value)
+      parameters.set(CCS_RGM_RUN_PUSH_TIME, value);
     break;
   case VSD_RGM_RUN_PUSH_PERIOD:
     setValue(id, value);
-    parameters.set(CCS_RGM_RUN_PUSH_PERIOD, value);
+    if (parameters.get(CCS_RGM_RUN_PUSH_PERIOD) != value)
+      parameters.set(CCS_RGM_RUN_PUSH_PERIOD, value);
     break;
   case VSD_SW_STARTUP_OSC_COUNT:
     setValue(id, value);
-    parameters.set(CCS_RGM_RUN_PUSH_QUANTITY, value);
+    if (parameters.get(CCS_RGM_RUN_PUSH_QUANTITY) != value)
+      parameters.set(CCS_RGM_RUN_PUSH_QUANTITY, value);
     break;
-
+  case VSD_MOTOR_INDUCTANCE:
+    setValue(id, value);
+    if (parameters.get(CCS_MOTOR_INDUCTANCE) != value)
+      parameters.set(CCS_MOTOR_INDUCTANCE, value);
+    break;
+  case VSD_MOTOR_INDUCTANCE_RESIST_PHASE:
+    setValue(id, value);
+    if (parameters.get(CCS_MOTOR_INDUCTANCE_RESIST_PHASE) != value)
+      parameters.set(CCS_MOTOR_INDUCTANCE_RESIST_PHASE, value);
+    break;
   default:
     setValue(id, value);
     break;
@@ -249,6 +263,8 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
     return setUfU6(value);
   case VSD_UF_CHARACTERISTIC_F_6:
     return setUfF6(value);
+  case VSD_COEF_VOLTAGE_IN_AB:
+    return setCoefVoltageInAB(value);
   default:
     result = setValue(id, value);
     if (!result)
@@ -628,6 +644,42 @@ void VsdEtalon::calcParameters(uint16_t id)
   }
 }
 
+int VsdEtalon::setCoefVoltageInAB(float value)
+{
+  if (Vsd::setCoefVoltageInAB(value)) {
+    return err_r;
+  }
+  else {
+    writeToDevice(VSD_COEF_VOLTAGE_IN_AB, value);
+    readInDevice(VSD_VOLTAGE_PHASE_1_2);
+  return ok_r;
+  }
+}
+
+int VsdEtalon::setCoefVoltageInBC(float value)
+{
+  if (Vsd::setCoefVoltageInBC(value)) {
+    return err_r;
+  }
+  else {
+    writeToDevice(VSD_COEF_VOLTAGE_IN_BC, value);
+    readInDevice(VSD_VOLTAGE_PHASE_2_3);
+  return ok_r;
+  }
+}
+
+int VsdEtalon::setCoefVoltageInCA(float value)
+{
+  if (Vsd::setCoefVoltageInCA(value)) {
+    return err_r;
+  }
+  else {
+    writeToDevice(VSD_COEF_VOLTAGE_IN_CA, value);
+    readInDevice(VSD_VOLTAGE_PHASE_3_1);
+  return ok_r;
+  }
+}
+
 int VsdEtalon::setMainRegimeVSD()
 {
   return 1;
@@ -640,7 +692,7 @@ void VsdEtalon::convertBitVsdStatus(float value)
   uint32_t vsdInvertorStatus1 = (uint32_t)parameters.get(CCS_VSD_INVERTOR_STATUS_1) & 0xD1DF;
   uint32_t vsdInvertorStatus2 = (uint32_t)parameters.get(CCS_VSD_INVERTOR_STATUS_2) & 0xDFFE;
   uint32_t vsdInvFault = (uint32_t)parameters.get(CCS_VSD_INV_FAULT) & 0xFF81;
-  uint32_t vsdThyrControl = (uint32_t)parameters.get(VSD_THYR_CONTROL) & 0xFFF1;
+  uint32_t vsdThyrStatus = (uint32_t)parameters.get(VSD_THYR_STATUS) & 0xFFF1;
   uint32_t vsdInvertorStatus4 = (uint32_t)parameters.get(CCS_VSD_INVERTOR_STATUS_4) & 0x8000;
 
   switch ((uint32_t)value) {
@@ -690,7 +742,7 @@ void VsdEtalon::convertBitVsdStatus(float value)
     vsdInvertorStatus4 = setBit(vsdInvertorStatus4, VSD_STATUS_AI_0, true);
     break;
   case VSD_ETALON_INFO_SEQUENCE_PHASE:    // VSD_THYR_ABC_STATE
-    vsdThyrControl = setBit(vsdThyrControl, VSD_THYR_ABC_STATE, true);
+    vsdThyrStatus = setBit(vsdThyrStatus, VSD_THYR_ABC_STATE, true);
     break;
   case VSD_ETALON_INFO_OVERHEAT_MOTOR:    // VSD_STATUS_OVERHEAT_MOTOR
     vsdInvertorStatus4 = setBit(vsdInvertorStatus4, VSD_STATUS_OVERHEAT_MOTOR, true);
@@ -781,6 +833,6 @@ void VsdEtalon::convertBitVsdStatus(float value)
   parameters.set(CCS_VSD_INVERTOR_STATUS_1,  (float)vsdInvertorStatus1);
   parameters.set(CCS_VSD_INVERTOR_STATUS_2, (float)vsdInvertorStatus2);
   parameters.set(CCS_VSD_INV_FAULT, (float)vsdInvFault);
-  parameters.set(VSD_THYR_CONTROL, (float)vsdThyrControl);
+  parameters.set(CCS_VSD_THYR_STATUS, (float)vsdThyrStatus);
   parameters.set(CCS_VSD_INVERTOR_STATUS_4, (float)vsdInvertorStatus4);
 }

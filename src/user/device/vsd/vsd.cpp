@@ -160,6 +160,21 @@ int Vsd::setUfU5(float value)
   return setValue(VSD_UF_CHARACTERISTIC_U_5, value);
 }
 
+int Vsd::setCoefVoltageInAB(float value)
+{
+  return setValue(VSD_COEF_VOLTAGE_IN_AB, value);
+}
+
+int Vsd::setCoefVoltageInBC(float value)
+{
+  return setValue(VSD_COEF_VOLTAGE_IN_BC, value);
+}
+
+int Vsd::setCoefVoltageInCA(float value)
+{
+  return setValue(VSD_COEF_VOLTAGE_IN_CA, value);
+}
+
 int Vsd::setTimeSpeedUp(float value)
 {
   if (!setValue(VSD_TIMER_DISPERSAL, value)) {        // Записали время разгона (с)

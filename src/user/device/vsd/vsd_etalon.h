@@ -308,8 +308,12 @@ public:
    */
   void calcParameters(uint16_t id);
 
+  int setCoefVoltageInAB(float value);
+  int setCoefVoltageInBC(float value);
+  int setCoefVoltageInCA(float value);
+
 private:
-  ModbusParameter modbusParameters_[115];
+  ModbusParameter modbusParameters_[116];
   DeviceModbus *dm_;
 
   RegimeRunEtalon *regimeRun_;
