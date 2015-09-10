@@ -16148,10 +16148,15 @@
 		<id>10187</id>
 		<name>VSD_CURRENT_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>1.0</min>
+		<max>2.0</max>
+		<def>1.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>NULL</text>
 		<code>0</code>
 		<comment>Предел тока Danfoss 4-18 %</comment>
 	</param>
