@@ -18469,6 +18469,28 @@
 	</param>
 	<param>
 		<id>10329</id>
+		<name>VSD_ETALON_FLAG</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Выбор источника расчёта точек U/f</text>
+		<short_text>Выбор источника расчёта точек U/f</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-ЧРП;1-КСУ</values>
+		<comment>Выбор источника расчёта точек U/f</comment>
+	</param>
+	<param>
+		<id>10330</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>

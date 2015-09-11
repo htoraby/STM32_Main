@@ -3950,5 +3950,17 @@ void Vsd::initParameters()
   parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].def                          = 0.0;
   parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].discret                      = 1;
   parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].code                         = 0;
+  // Выбор источника расчёта точек U/f
+  parameters_[VSD_ETALON_FLAG - VSD_BEGIN].id                                    = VSD_ETALON_FLAG;
+  parameters_[VSD_ETALON_FLAG - VSD_BEGIN].access                                = ACCESS_OPERATOR;
+  parameters_[VSD_ETALON_FLAG - VSD_BEGIN].operation                             = OPERATION_WRITE;
+  parameters_[VSD_ETALON_FLAG - VSD_BEGIN].physic                                = PHYSIC_NUMERIC;
+  parameters_[VSD_ETALON_FLAG - VSD_BEGIN].validity                              = VALIDITY_ERROR;
+  parameters_[VSD_ETALON_FLAG - VSD_BEGIN].value.float_t                         = 0.0;
+  parameters_[VSD_ETALON_FLAG - VSD_BEGIN].min                                   = 0.0;
+  parameters_[VSD_ETALON_FLAG - VSD_BEGIN].max                                   = 1.0;
+  parameters_[VSD_ETALON_FLAG - VSD_BEGIN].def                                   = 0.0;
+  parameters_[VSD_ETALON_FLAG - VSD_BEGIN].discret                               = 1;
+  parameters_[VSD_ETALON_FLAG - VSD_BEGIN].code                                  = 13;
 }
 

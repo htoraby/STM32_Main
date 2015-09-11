@@ -382,6 +382,7 @@ bool VsdEtalon::checkStop()
 
 int VsdEtalon::resetBlock()
 {
+  setNewValue(VSD_ETALON_FLAG, 0);
   return setNewValue(VSD_ETALON_UNLOCK, 1);
 }
 
