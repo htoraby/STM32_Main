@@ -3582,7 +3582,7 @@ void Vsd::initParameters()
   parameters_[VSD_BLDC_ADC_SHIFT - VSD_BEGIN].id                                 = VSD_BLDC_ADC_SHIFT;
   parameters_[VSD_BLDC_ADC_SHIFT - VSD_BEGIN].access                             = ACCESS_OPERATOR;
   parameters_[VSD_BLDC_ADC_SHIFT - VSD_BEGIN].operation                          = OPERATION_WRITE;
-  parameters_[VSD_BLDC_ADC_SHIFT - VSD_BEGIN].physic                             = PHYSIC_TIME;
+  parameters_[VSD_BLDC_ADC_SHIFT - VSD_BEGIN].physic                             = PHYSIC_NUMERIC;
   parameters_[VSD_BLDC_ADC_SHIFT - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_BLDC_ADC_SHIFT - VSD_BEGIN].value.float_t                      = 50.0;
   parameters_[VSD_BLDC_ADC_SHIFT - VSD_BEGIN].min                                = 10.0;
@@ -3594,7 +3594,7 @@ void Vsd::initParameters()
   parameters_[VSD_BLDC_TMPN_SHIFT - VSD_BEGIN].id                                = VSD_BLDC_TMPN_SHIFT;
   parameters_[VSD_BLDC_TMPN_SHIFT - VSD_BEGIN].access                            = ACCESS_OPERATOR;
   parameters_[VSD_BLDC_TMPN_SHIFT - VSD_BEGIN].operation                         = OPERATION_WRITE;
-  parameters_[VSD_BLDC_TMPN_SHIFT - VSD_BEGIN].physic                            = PHYSIC_TIME;
+  parameters_[VSD_BLDC_TMPN_SHIFT - VSD_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[VSD_BLDC_TMPN_SHIFT - VSD_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[VSD_BLDC_TMPN_SHIFT - VSD_BEGIN].value.float_t                     = 110.0;
   parameters_[VSD_BLDC_TMPN_SHIFT - VSD_BEGIN].min                               = 0.0;

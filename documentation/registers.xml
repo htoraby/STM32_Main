@@ -17827,7 +17827,7 @@
 		<name>VSD_BLDC_ADC_SHIFT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_TIME</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>10.0</min>
 		<max>300.0</max>
 		<def>50.0</def>
@@ -17837,8 +17837,8 @@
 		<text>Сдвиг между фазным током и АЦП для ВД</text>
 		<short_text>Сдвиг между фазным током и АЦП для ВД</short_text>
 		<form>NULL</form>
-		<unit>TIME_US</unit>
-		<unit_lcd>TIME_US</unit_lcd>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Сдвиг между фазным током и АЦП для ВД</comment>
@@ -17848,7 +17848,7 @@
 		<name>VSD_BLDC_TMPN_SHIFT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_TIME</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>300.0</max>
 		<def>110.0</def>
@@ -17858,8 +17858,8 @@
 		<text>Сдвиг фазы ТМПН и ДЛ</text>
 		<short_text>Сдвиг фазы ТМПН и ДЛ</short_text>
 		<form>NULL</form>
-		<unit>TIME_US</unit>
-		<unit_lcd>TIME_US</unit_lcd>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Сдвиг фазы ТМПН и ДЛ</comment>
