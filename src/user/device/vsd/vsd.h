@@ -112,6 +112,10 @@ public:
   virtual int setUfU4(float value);
   virtual int setUfU5(float value);
 
+  virtual int setCoefVoltageInAB(float value);
+  virtual int setCoefVoltageInBC(float value);
+  virtual int setCoefVoltageInCA(float value);
+
   /*!
    * \brief Функция записи в регистр темпа набора частоты Гц/с
    * и пересчитанного значения в регистр время набора частота
@@ -261,10 +265,17 @@ public:
   virtual int offRegimeSkipFreq();
 
   /*!
+   * \brief resetSetpoints
+   * \return
+   */
+  virtual int resetSetpoints();
+
+  /*!
    * \brief Функция вычисления текущего cos ЧРП по активной и полной мощности
    * \return
    */
   int calcVsdCos();
+
 
 protected:
 

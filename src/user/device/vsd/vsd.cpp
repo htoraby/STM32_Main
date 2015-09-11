@@ -160,6 +160,21 @@ int Vsd::setUfU5(float value)
   return setValue(VSD_UF_CHARACTERISTIC_U_5, value);
 }
 
+int Vsd::setCoefVoltageInAB(float value)
+{
+  return setValue(VSD_COEF_VOLTAGE_IN_AB, value);
+}
+
+int Vsd::setCoefVoltageInBC(float value)
+{
+  return setValue(VSD_COEF_VOLTAGE_IN_BC, value);
+}
+
+int Vsd::setCoefVoltageInCA(float value)
+{
+  return setValue(VSD_COEF_VOLTAGE_IN_CA, value);
+}
+
 int Vsd::setTimeSpeedUp(float value)
 {
   if (!setValue(VSD_TIMER_DISPERSAL, value)) {        // Записали время разгона (с)
@@ -275,19 +290,19 @@ bool Vsd::checkStop()
 bool Vsd::checkVsdStatus(uint8_t bit)
 {
   if (bit < VSD_STATUS_FC_I2T_ERR)
-    return checkBit(getValue(VSD_INVERTOR_STATUS), bit);
+    return checkBit(getValue(CCS_VSD_INVERTOR_STATUS_1), bit);
 
   if ((bit >= VSD_STATUS_FC_I2T_ERR) && (bit < VSD_STATUS_3))
-    return checkBit(getValue(VSD_INVERTOR_STATUS2), bit - 16);
+    return checkBit(getValue(CCS_VSD_INVERTOR_STATUS_2), bit - 16);
 
   if ((bit >= VSD_STATUS_IMAX) && (bit < VSD_STATUS_TEST))
-    return checkBit(getValue(VSD_INV_FAULT), bit - 32);
+    return checkBit(getValue(CCS_VSD_INV_FAULT), bit - 32);
 
   if ((bit >= VSD_THYR_ABC_STATE) && (bit < VSD_THYR_ERR_SHORTCIRQUIT))
-    return checkBit(getValue(VSD_THYR_CONTROL), bit - 48);
+    return checkBit(getValue(CCS_VSD_THYR_STATUS), bit - 48);
 
   if ((bit >= VSD_STATUS_READY) && (bit < VSD_STATUS_TURBINE))
-    return checkBit(getValue(VSD_INVERTOR_STATUS4), bit - 64);
+    return checkBit(getValue(CCS_VSD_INVERTOR_STATUS_4), bit - 64);
 
   else
     return false;
@@ -344,6 +359,11 @@ int Vsd::onRegimeSkipFreq()
 }
 
 int Vsd::offRegimeSkipFreq()
+{
+  return 0;
+}
+
+int Vsd::resetSetpoints()
 {
   return 0;
 }

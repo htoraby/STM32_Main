@@ -769,7 +769,14 @@ enum enID
   CCS_CMD_UPDATE_SW_MASTER = 763,                            //!< Команда обновления ПО модуля AM335x
   CCS_CMD_START_UPDATE_SW_SLAVE = 764,                       //!< Команда запуска перезапуска Slave (STM32)
   CCS_ERROR_SLAVE = 765,                                     //!< Регистр ошибок Slave
-  CCS_END = 766,                                             //!< Последний параметр
+  CCS_VSD_INVERTOR_STATUS_1 = 766,                           //!< Слово состояние ЧРП
+  CCS_VSD_INVERTOR_STATUS_2 = 767,                           //!< Слово состояние ЧРП
+  CCS_VSD_INVERTOR_STATUS_3 = 768,                           //!< Слово состояние ЧРП
+  CCS_VSD_INVERTOR_STATUS_4 = 769,                           //!< Слово состояние ЧРП
+  CCS_VSD_INV_FAULT = 770,                                   //!< Слово состояние ЧРП
+  CCS_VSD_THYR_STATUS = 771,                                 //!< Слово состояние ЧРП
+  CCS_CMD_VSD_RESET_SETPOINTS = 772,                         //!< Команда сброса уставок ЧРП по умолчанию
+  CCS_END = 773,                                             //!< Последний параметр
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
@@ -1097,7 +1104,9 @@ enum enID
   VSD_UF_CHARACTERISTIC_U_3_PERCENT = 10324,                 //!< U/F точка U3 в процентах
   VSD_UF_CHARACTERISTIC_U_4_PERCENT = 10325,                 //!< U/F точка U4 в процентах
   VSD_UF_CHARACTERISTIC_U_5_PERCENT = 10326,                 //!< U/F точка U5 в процентах
-  VSD_END = 10327,                                           //!< 
+  VSD_FILTER_TEMPERATURE_1 = 10327,                          //!< Температура выходного фильтра
+  VSD_FILTER_TEMPERATURE_2 = 10328,                          //!< Температура выходного фильтра
+  VSD_END = 10329,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме

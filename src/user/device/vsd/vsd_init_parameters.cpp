@@ -41,7 +41,7 @@ void Vsd::initParameters()
   // Обороты двигателя
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].id                                  = VSD_SPEED_RPM_NOW;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].access                              = ACCESS_OPERATOR;
-  parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].operation                           = 0;
+  parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].operation                           = OPERATION_READ;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].physic                              = 0;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].value.float_t                       = 0;
@@ -2249,14 +2249,14 @@ void Vsd::initParameters()
   // Предел тока Danfoss 4-18 %
   parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].id                                  = VSD_CURRENT_LIMIT;
   parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].access                              = ACCESS_OPERATOR;
-  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].operation                           = 0;
-  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].physic                              = 0;
+  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].operation                           = OPERATION_WRITE;
+  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].physic                              = PHYSIC_NUMERIC;
   parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].validity                            = VALIDITY_ERROR;
-  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].value.float_t                       = 0;
-  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].max                                 = 999999.0;
-  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].def                                 = 0;
-  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].discret                             = 1;
+  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].value.float_t                       = 1.0;
+  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].min                                 = 1.0;
+  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].max                                 = 2.0;
+  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].def                                 = 1.0;
+  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].discret                             = 10;
   parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].code                                = 0;
   // Максимальная выходная частота Danfoss 4-19 Используется в проекте
   parameters_[VSD_MAX_OUTPUT_FREQUENCY - VSD_BEGIN].id                           = VSD_MAX_OUTPUT_FREQUENCY;
@@ -3926,5 +3926,29 @@ void Vsd::initParameters()
   parameters_[VSD_UF_CHARACTERISTIC_U_5_PERCENT - VSD_BEGIN].def                 = 100.0;
   parameters_[VSD_UF_CHARACTERISTIC_U_5_PERCENT - VSD_BEGIN].discret             = 1;
   parameters_[VSD_UF_CHARACTERISTIC_U_5_PERCENT - VSD_BEGIN].code                = 0;
+  // Температура выходного фильтра
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].id                           = VSD_FILTER_TEMPERATURE_1;
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].operation                    = OPERATION_READ;
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].physic                       = PHYSIC_TEMPERATURE;
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].validity                     = VALIDITY_ERROR;
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].value.float_t                = 0.0;
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].min                          = 0.0;
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].max                          = 999999.0;
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].def                          = 0.0;
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].discret                      = 1;
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].code                         = 0;
+  // Температура выходного фильтра
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].id                           = VSD_FILTER_TEMPERATURE_2;
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].operation                    = OPERATION_READ;
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].physic                       = PHYSIC_TEMPERATURE;
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].validity                     = VALIDITY_ERROR;
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].value.float_t                = 0.0;
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].min                          = 0.0;
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].max                          = 999999.0;
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].def                          = 0.0;
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].discret                      = 1;
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].code                         = 0;
 }
 

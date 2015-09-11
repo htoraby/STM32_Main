@@ -139,9 +139,31 @@ void VsdNovomet::getNewValue(uint16_t id)
   case VSD_CURRENT_OUT_PHASE_3:             // Выходной ток ЧРП Фаза 3
     setValue(id, getValue(VSD_COEF_OUT_CURRENT_3) * value);
     break;
+  case VSD_INVERTOR_STATUS:
+    setValue(id, value);
+    calcRotation();
+    parameters.set(CCS_VSD_INVERTOR_STATUS_1, value);
+    break;
   case VSD_INVERTOR_STATUS2:
     setValue(id, value);
     calcMotorType();
+    parameters.set(CCS_VSD_INVERTOR_STATUS_2, value);
+    break;
+  case VSD_INVERTOR_STATUS3:
+    setValue(id, value);
+    parameters.set(CCS_VSD_INVERTOR_STATUS_3, value);
+    break;
+  case VSD_INVERTOR_STATUS4:
+    setValue(id, value);
+    parameters.set(CCS_VSD_INVERTOR_STATUS_4, value);
+    break;
+  case VSD_INV_FAULT:
+    setValue(id, value);
+    parameters.set(CCS_VSD_INV_FAULT, value);
+    break;
+  case VSD_THYR_STATUS:
+    setValue(id, value);
+    parameters.set(CCS_VSD_THYR_STATUS, value);
     break;
   case VSD_T_SPEEDUP:
     setValue(id, value);
@@ -153,10 +175,7 @@ void VsdNovomet::getNewValue(uint16_t id)
     calcTempSpeedDown();
     calcTimeSpeedDown();
     break;
-  case VSD_INVERTOR_STATUS:
-    setValue(id, value);
-    calcRotation();
-    break;
+
   case VSD_VOLTAGE_DC:
     setValue(id, value);
     calcCurrentDC();

@@ -13438,6 +13438,153 @@
 	</param>
 	<param>
 		<id>766</id>
+		<name>CCS_VSD_INVERTOR_STATUS_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Слово состояние ЧРП</comment>
+	</param>
+	<param>
+		<id>767</id>
+		<name>CCS_VSD_INVERTOR_STATUS_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Слово состояние ЧРП</comment>
+	</param>
+	<param>
+		<id>768</id>
+		<name>CCS_VSD_INVERTOR_STATUS_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Слово состояние ЧРП</comment>
+	</param>
+	<param>
+		<id>769</id>
+		<name>CCS_VSD_INVERTOR_STATUS_4</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Слово состояние ЧРП</comment>
+	</param>
+	<param>
+		<id>770</id>
+		<name>CCS_VSD_INV_FAULT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Слово состояние ЧРП</comment>
+	</param>
+	<param>
+		<id>771</id>
+		<name>CCS_VSD_THYR_STATUS</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Слово состояние ЧРП</comment>
+	</param>
+	<param>
+		<id>772</id>
+		<name>CCS_CMD_VSD_RESET_SETPOINTS</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Команда сброса уставок ЧРП по умолчанию</comment>
+	</param>
+	<param>
+		<id>773</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
@@ -13499,6 +13646,7 @@
 		<id>10003</id>
 		<name>VSD_SPEED_RPM_NOW</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16000,10 +16148,15 @@
 		<id>10187</id>
 		<name>VSD_CURRENT_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>1.0</min>
+		<max>2.0</max>
+		<def>1.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>NULL</text>
 		<code>0</code>
 		<comment>Предел тока Danfoss 4-18 %</comment>
 	</param>
@@ -18274,6 +18427,48 @@
 	</param>
 	<param>
 		<id>10327</id>
+		<name>VSD_FILTER_TEMPERATURE_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>0.0</min>
+		<max>999999.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Температура выходного фильтра</text>
+		<short_text>Температура выходного фильтра</short_text>
+		<form>NULL</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXX_XX</format>
+		<code>0</code>
+		<comment>Температура выходного фильтра</comment>
+	</param>
+	<param>
+		<id>10328</id>
+		<name>VSD_FILTER_TEMPERATURE_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>0.0</min>
+		<max>999999.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Температура выходного фильтра</text>
+		<short_text>Температура выходного фильтра</short_text>
+		<form>NULL</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXX_XX</format>
+		<code>0</code>
+		<comment>Температура выходного фильтра</comment>
+	</param>
+	<param>
+		<id>10329</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>
