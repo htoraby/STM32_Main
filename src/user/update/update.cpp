@@ -13,10 +13,10 @@
 #include "flash_ext.h"
 #include "usb_host.h"
 #include "ff.h"
-#include "log_main.h"
+#include "user_main.h"
 
 // 4 Kbytes
-#define BUFFER_SIZE ((uint16_t)512*8)
+#define BUFFER_SIZE ((uint16_t)512*4)
 
 #if USE_EXT_MEM
 static uint8_t buffer[BUFFER_SIZE] __attribute__((section(".extmem")));
@@ -65,21 +65,24 @@ static void getFile(char *fileName)
 
 static bool saveSwInFlashExt(char *fileName)
 {
-  static UINT readSize = 0x00;
-  static uint8_t readflag = 1;
-  static FIL file;
-  static IMAGE_FILE_HEADER imageHeader;
+  UINT readSize = 0x00;
+  uint8_t readflag = 1;
+  FIL file;
+  IMAGE_FILE_HEADER imageHeader;
   bool isSaveSw = false;
   uint16_t calcCrc = 0xFFFF;
-  static uint32_t lastAddress;
+  uint32_t startAddress;
+  uint32_t lastAddress;
+
   if (updateHeader.numRegion == 0) {
     updateHeader.numRegion = 1;
-    lastAddress = AddrUpdateFile2;
+    startAddress = AddrUpdateFile2;
   }
   else {
     updateHeader.numRegion = 0;
-    lastAddress = AddrUpdateFile1;
+    startAddress = AddrUpdateFile1;
   }
+  lastAddress = startAddress;
 
   // Открытие файла прошивки и сохранение на внешнию flash
   if (f_open(&file, fileName, FA_READ) == FR_OK) {
@@ -90,12 +93,18 @@ static bool saveSwInFlashExt(char *fileName)
         (imageHeader.codeProduction == CODE_PRODUCTION) &&
         (imageHeader.codeEquip == CODE_EQUIP) &&
         (imageHeader.subCodeEquip == SUBCODE_EQUIP)) {
+      parameters.set(CCS_PROGRESS_VALUE, 0);
+      parameters.set(CCS_PROGRESS_MAX, 0);
+      parameters.set(CCS_PROGRESS_MAX, (float)imageHeader.size/1024);
+
       calcCrc = crc16_ibm((uint8_t*)&imageHeader, readSize, calcCrc);
       flashExtWriteEx(FlashSpi1, lastAddress, (uint8_t*)&imageHeader, readSize);
       lastAddress = lastAddress + readSize;
 
+      int count = 0;
       while ((readflag == 1) && (usbState == USB_READY)) {
-        f_read(&file, buffer, BUFFER_SIZE, &readSize);
+        osDelay(5);
+        f_read(&file, &buffer[0], BUFFER_SIZE, &readSize);
         if (readSize < BUFFER_SIZE)
           readflag = 0;
 
@@ -105,15 +114,20 @@ static bool saveSwInFlashExt(char *fileName)
           calcCrc = crc16_ibm(buffer, readSize-6, calcCrc);
         flashExtWriteEx(FlashSpi1, lastAddress, buffer, readSize);
         lastAddress = lastAddress + readSize;
+
+        if (++count > 20) {
+          count = 0;
+          parameters.set(CCS_PROGRESS_VALUE, (float)(lastAddress - startAddress)/1024);
+        }
       }
 
       uint16_t crc = (buffer[readSize - 1 - 4] << 8) + buffer[readSize - 2 - 4];
       uint32_t finish = (buffer[readSize - 1] << 24) + (buffer[readSize - 2] << 16) +
           (buffer[readSize - 3] << 8) + (buffer[readSize - 4]);
-      if ((calcCrc == crc) && (finish == 0xFFFFFFF1))
+      if ((calcCrc == crc) && (finish == 0xFFFFFFFF))
         isSaveSw = true;
       else
-        logDebug.add(WarningMsg, "Update. Ошибка CRС - %h %h", calcCrc, finish);
+        logDebug.add(WarningMsg, "Update. Ошибка CRС - %x %x", calcCrc, finish);
     }
     else {
       logDebug.add(WarningMsg, "Update. Ошибка в загаловке файла прошивки - %d %d %d %d %d",
@@ -134,9 +148,6 @@ bool updateFromUsb()
 {
   static char fileName[_MAX_LFN] = {0};
 
-  // TODO: Падение
-  return false;
-
   if (usbState != USB_READY) {
     logDebug.add(WarningMsg, "Update. Не подключен USB накопитель");
     return false;
@@ -150,10 +161,10 @@ bool updateFromUsb()
   flashExtRead(FlashSpi1, AddrUpdateHeader, (uint8_t*)&updateHeader, sizeof(updateHeader));
 
   if (saveSwInFlashExt(fileName)) {
-//    updateHeader.flag = 0x5A;
-//    updateHeader.type = TypeNewUpdate;
-//    flashExtWriteEx(FlashSpi1, AddrUpdateHeader, (uint8_t*)&updateHeader, sizeof(updateHeader));
-//    return true;
+    updateHeader.flag = 0x5A;
+    updateHeader.type = TypeNewUpdate;
+    flashExtWriteEx(FlashSpi1, AddrUpdateHeader, (uint8_t*)&updateHeader, sizeof(updateHeader));
+    return true;
   }
 
   return false;
