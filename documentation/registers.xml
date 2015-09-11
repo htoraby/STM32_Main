@@ -18491,6 +18491,25 @@
 	</param>
 	<param>
 		<id>10330</id>
+		<name>VSD_ETALON_RESISTANCE_ISOLATION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_RESISTANCE</physic>
+		<min>0.0</min>
+		<max>20.0</max>
+		<def>9999.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>9999.0</value>
+		<text>Сопротивление изоляции</text>
+		<short_text>Сопротивление изоляции</short_text>
+		<unit>RESISTANCE_OM</unit>
+		<unit_lcd>RESISTANCE_KOM</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10331</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>

@@ -3962,5 +3962,17 @@ void Vsd::initParameters()
   parameters_[VSD_ETALON_FLAG - VSD_BEGIN].def                                   = 0.0;
   parameters_[VSD_ETALON_FLAG - VSD_BEGIN].discret                               = 1;
   parameters_[VSD_ETALON_FLAG - VSD_BEGIN].code                                  = 13;
+  // 
+  parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].id                    = VSD_ETALON_RESISTANCE_ISOLATION;
+  parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].access                = ACCESS_OPERATOR;
+  parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].operation             = OPERATION_READ;
+  parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].physic                = PHYSIC_RESISTANCE;
+  parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].validity              = VALIDITY_ERROR;
+  parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].value.float_t         = 9999.0;
+  parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].min                   = 0.0;
+  parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].max                   = 20.0;
+  parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].def                   = 9999.0;
+  parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].discret               = 1;
+  parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].code                  = 0;
 }
 
