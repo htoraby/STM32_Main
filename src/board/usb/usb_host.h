@@ -16,6 +16,7 @@ typedef enum {
 } UsbStateTypeDef;
 
 extern UsbStateTypeDef usbState;
+extern USBH_HandleTypeDef hUsbHostFS;
 
 /*!
  * \brief Инициализация USB и подключение файловой системы

@@ -52,7 +52,7 @@
 
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
-/* CMSIS OS macros */   
+/* CMSIS OS macros */
 #if (USBH_USE_OS == 1)
   #include "cmsis_os.h"
   #define   USBH_PROCESS_PRIO          osPriorityNormal
@@ -60,8 +60,8 @@
 #endif  
 
 /* Memory management macros */   
-#define USBH_malloc               malloc
-#define USBH_free                 free
+#define USBH_malloc               pvPortMalloc
+#define USBH_free                 vPortFree
 #define USBH_memset               memset
 #define USBH_memcpy               memcpy
     
