@@ -94,6 +94,7 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
   // Команда
   uint8_t command = rxBuffer_[0];
   uint8_t sizePktT = rxBuffer_[1];
+  uint16_t calcCrc = 0;
   // Количество данных
   uint8_t dataNumber;
   // Временная переменная преобразования типов
@@ -101,16 +102,17 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
   unTypeData value;
   EventType eventType;
 
-  // Получаем контрольную сумму
-  uint16_t rxCrc = (rxBuffer_[sizePktT - 2] << 8) + rxBuffer_[sizePktT - 1];
-  // Вычисляем контрольную сумму
-  uint16_t calcCrc = crc16_ibm(rxBuffer_, sizePktT - 2);
-
   // Проверка контрольной суммы
-  if ((rxCrc == calcCrc) && sizePkt && (sizePkt == sizePktT)) {
-    statHost.rxGood++;
-    // Анализ команды
-    switch (command) {
+  if (sizePkt && (sizePkt == sizePktT)) {
+    // Получаем контрольную сумму
+    uint16_t rxCrc = (rxBuffer_[sizePktT - 2] << 8) + rxBuffer_[sizePktT - 1];
+    // Вычисляем контрольную сумму
+    calcCrc = crc16_ibm(rxBuffer_, sizePktT - 2);
+
+    if (rxCrc == calcCrc) {
+      statHost.rxGood++;
+      // Анализ команды
+      switch (command) {
       // Команда запроса данных от Master к Slave есть ли у него готовые данные
       case StatusCommand:
         checkMessage();
@@ -262,7 +264,7 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
         sizePkt = 7;
         break;
 
-      // Команда чтения минимума параметра
+        // Команда чтения минимума параметра
       case ReadMinCommand:
         // После получения мастером списка ID параметров - обнуляем счётчик
         idsCount_ = 0;
@@ -289,7 +291,7 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
         sizePkt = 7 + dataNumber*6;
         break;
 
-      // Команда чтения маума параметра
+        // Команда чтения маума параметра
       case ReadMaxCommand:
         // После получения мастером списка ID параметров - обнуляем счётчик
         idsCount_ = 0;
@@ -321,15 +323,20 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
         txBuffer_[4] = 0;
         sizePkt = 7;
         break;
+      }
+    }
+    // Ошибка CRC
+    else {
+      statHost.crcError++;
+      txBuffer_[2] = CrcError;
+      txBuffer_[3] = NoneCommand;
+      txBuffer_[4] = 0;
+      sizePkt = 7;
     }
   }
+  // Неверный размер пакета
   else {
-    if (rxCrc == calcCrc)
-      statHost.crcError++;
-    else
-      statHost.sizeError++;
-
-    // Ошибка CRC
+    statHost.sizeError++;
     txBuffer_[2] = CrcError;
     txBuffer_[3] = NoneCommand;
     txBuffer_[4] = 0;
