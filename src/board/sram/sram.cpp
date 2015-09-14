@@ -31,7 +31,7 @@ void sramInit()
   /* Timing */
   Timing.AddressSetupTime = 3;
   Timing.AddressHoldTime = 1;
-  Timing.DataSetupTime = 15;
+  Timing.DataSetupTime = 6;
   Timing.BusTurnAroundDuration = 0;
   Timing.CLKDivision = 2;
   Timing.DataLatency = 2;
