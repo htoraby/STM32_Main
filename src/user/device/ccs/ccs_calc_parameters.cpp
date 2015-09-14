@@ -390,8 +390,16 @@ float Ccs::calcTransTapOff(float coefTrans)
 float Ccs::calcResistanceIsolation()
 {
   if ((parameters.get(CCS_DHS_TYPE) != TYPE_DHS_NONE) &&
-      (!parameters.getValidity(TMS_RESISTANCE_ISOLATION)))
-  setValue(CCS_RESISTANCE_ISOLATION, parameters.get(TMS_RESISTANCE_ISOLATION));
+      (!parameters.getValidity(TMS_RESISTANCE_ISOLATION))) {
+    setValue(CCS_RESISTANCE_ISOLATION, parameters.get(TMS_RESISTANCE_ISOLATION));
+  }
+  else {
+    if ((parameters.get(CCS_TYPE_VSD) == VSD_TYPE_ETALON) &&
+        (!parameters.getValidity(VSD_ETALON_RESISTANCE_ISOLATION))) {
+      setValue(CCS_RESISTANCE_ISOLATION, parameters.get(VSD_ETALON_RESISTANCE_ISOLATION));
+    }
+  }
+
   return parameters.get(CCS_RESISTANCE_ISOLATION);
 }
 
