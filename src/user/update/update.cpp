@@ -16,14 +16,13 @@
 #include "user_main.h"
 
 // 4 Kbytes
-#define BUFFER_SIZE ((uint16_t)512*4)
+#define BUFFER_SIZE 512*8
 
 #if USE_EXT_MEM
 static uint8_t buffer[BUFFER_SIZE] __attribute__((section(".extmem")));
 #else
 static uint8_t buffer[BUFFER_SIZE];
 #endif
-
 static UPDATE_HEADER updateHeader;
 
 static void getFile(char *fileName)
@@ -104,7 +103,7 @@ static bool saveSwInFlashExt(char *fileName)
       int count = 0;
       while ((readflag == 1) && (usbState == USB_READY)) {
         osDelay(5);
-        f_read(&file, &buffer[0], BUFFER_SIZE, &readSize);
+        f_read(&file, buffer, BUFFER_SIZE, &readSize);
         if (readSize < BUFFER_SIZE)
           readflag = 0;
 
