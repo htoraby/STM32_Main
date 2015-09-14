@@ -1156,6 +1156,5 @@ void Ccs::setCmd(uint16_t id)
 
 void Ccs::resetCmd(uint16_t id)
 {
-  setValue(id, 1.0);
   setValue(id, 0.0);
 }
