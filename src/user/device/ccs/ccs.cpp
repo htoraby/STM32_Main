@@ -171,6 +171,7 @@ void Ccs::ledConditionTask()
 
 void Ccs::vsdConditionTask()
 {
+  int vsdConditionOld = -1;
   while (1) {
     osDelay(10);
 
@@ -189,7 +190,7 @@ void Ccs::vsdConditionTask()
       if (vsd->stop(checkTypeStop()) == ok_r) {
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
       }
-      else {
+      else if (vsdCondition != vsdConditionOld) {
         logDebug.add(WarningMsg, "Ошибка останова");
       }
       break;
@@ -213,11 +214,13 @@ void Ccs::vsdConditionTask()
     case VSD_CONDITION_WAIT_RUN:
       if (vsd->start() == ok_r) {
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
-      } else {
+      } else if (vsdCondition != vsdConditionOld) {
         logDebug.add(WarningMsg, "Ошибка запуска");
       }
       break;
     }
+
+    vsdConditionOld = vsdCondition;
   }
 }
 
@@ -1153,5 +1156,6 @@ void Ccs::setCmd(uint16_t id)
 
 void Ccs::resetCmd(uint16_t id)
 {
+  setValue(id, 1.0);
   setValue(id, 0.0);
 }
