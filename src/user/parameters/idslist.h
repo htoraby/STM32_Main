@@ -1108,7 +1108,8 @@ enum enID
   VSD_FILTER_TEMPERATURE_2 = 10328,                          //!< Температура выходного фильтра
   VSD_ETALON_FLAG = 10329,                                   //!< Выбор источника расчёта точек U/f
   VSD_ETALON_RESISTANCE_ISOLATION = 10330,                   //!< 
-  VSD_END = 10331,                                           //!< 
+  VSD_TRANS_NEED_VOLTAGE_TAP_OFF = 10331,                    //!< Необходимое напряжение отпайки
+  VSD_END = 10332,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме

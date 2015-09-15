@@ -192,6 +192,8 @@ void VsdEtalon::getNewValue(uint16_t id)
     setValue(id, value);
     if (parameters.get(CCS_RGM_RUN_PUSH_FREQ) != value)
       parameters.set(CCS_RGM_RUN_PUSH_FREQ, value);
+    if (parameters.get(CCS_RGM_RUN_SWING_FREQ) != value)
+      parameters.set(CCS_RGM_RUN_SWING_FREQ, value);
     break;
   case VSD_SW_STARTUP_U_PULSE:
     setValue(id, value);
@@ -212,6 +214,8 @@ void VsdEtalon::getNewValue(uint16_t id)
     setValue(id, value);
     if (parameters.get(CCS_RGM_RUN_PUSH_QUANTITY) != value)
       parameters.set(CCS_RGM_RUN_PUSH_QUANTITY, value);
+    if (parameters.get(CCS_RGM_RUN_SWING_QUANTITY) != value)
+      parameters.set(CCS_RGM_RUN_SWING_QUANTITY, value);
     break;
   case VSD_MOTOR_INDUCTANCE:
     setValue(id, value);
