@@ -12,7 +12,6 @@ RegimeRunSwingNovomet::~RegimeRunSwingNovomet()
 
 void RegimeRunSwingNovomet::processingStateRunning()
 {
-//  vsd->onRegimeSwing();
   ksu.start(runReason_);
   state_ = WorkState;
 }

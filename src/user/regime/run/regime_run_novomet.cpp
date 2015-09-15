@@ -68,7 +68,6 @@ void RegimeRunNovomet::processingStateRunning()
       pushRun++;
       swingRun++;
       autoRun++;
-      vsd->onRegimePickup();
     }
   */
 
@@ -76,13 +75,11 @@ void RegimeRunNovomet::processingStateRunning()
     queue[pushRun] = VSD_REQULATOR_QUEUE_PUSH;
     swingRun++;
     autoRun++;
-    vsd->onRegimePush();
   }
 
   if (parameters.get(CCS_RGM_RUN_SWING_MODE)) {
     queue[swingRun] = VSD_REQULATOR_QUEUE_PUSH;
     autoRun++;
-    vsd->onRegimeSwing();
   }
 
   parameters.set(VSD_REGULATOR_QUEUE_1, queue[0]);

@@ -190,9 +190,11 @@ void VsdEtalon::getNewValue(uint16_t id)
     break;
   case VSD_SW_STARTUP_FREQUENCY:
     setValue(id, value);
-    if (parameters.get(CCS_RGM_RUN_PUSH_FREQ) != value)
+    if ((parameters.get(CCS_RGM_RUN_PUSH_FREQ) != value) &&
+        (parameters.get(CCS_RGM_RUN_PUSH_MODE) != Regime::OffAction))
       parameters.set(CCS_RGM_RUN_PUSH_FREQ, value);
-    if (parameters.get(CCS_RGM_RUN_SWING_FREQ) != value)
+    if ((parameters.get(CCS_RGM_RUN_SWING_FREQ) != value) &&
+        (parameters.get(CCS_RGM_RUN_SWING_MODE) != Regime::OffAction))
       parameters.set(CCS_RGM_RUN_SWING_FREQ, value);
     break;
   case VSD_SW_STARTUP_U_PULSE:
@@ -212,9 +214,11 @@ void VsdEtalon::getNewValue(uint16_t id)
     break;
   case VSD_SW_STARTUP_OSC_COUNT:
     setValue(id, value);
-    if (parameters.get(CCS_RGM_RUN_PUSH_QUANTITY) != value)
+    if ((parameters.get(CCS_RGM_RUN_PUSH_QUANTITY) != value) &&
+        (parameters.get(CCS_RGM_RUN_PUSH_MODE) != Regime::OffAction))
       parameters.set(CCS_RGM_RUN_PUSH_QUANTITY, value);
-    if (parameters.get(CCS_RGM_RUN_SWING_QUANTITY) != value)
+    if ((parameters.get(CCS_RGM_RUN_SWING_QUANTITY) != value) &&
+        (parameters.get(CCS_RGM_RUN_SWING_MODE) != Regime::OffAction))
       parameters.set(CCS_RGM_RUN_SWING_QUANTITY, value);
     break;
   case VSD_MOTOR_INDUCTANCE:

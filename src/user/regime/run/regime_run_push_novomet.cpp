@@ -12,7 +12,6 @@ RegimeRunPushNovomet::~RegimeRunPushNovomet()
 
 void RegimeRunPushNovomet::processingStateRunning()
 {
-  vsd->onRegimePush();
   ksu.start(runReason_);
   state_ = WorkState;
 }

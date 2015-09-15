@@ -672,6 +672,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_RGM_RUN_PUSH_MODE:
     if (value != Regime::OffAction) {
       parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction); // Отключаем режим раскачки
+      vsd->onRegimePush();
     }
     else {
       vsd->offRegimePush();
@@ -680,6 +681,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_RGM_RUN_SWING_MODE:
     if (value != Regime::OffAction) {
       parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction); // Отключаем режим раскачки
+      vsd->onRegimeSwing();
     }
     else {
       vsd->offRegimeSwing();
@@ -869,9 +871,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return ok_r;
   case CCS_CMD_VSD_RESET_SETPOINTS:
     return vsd->resetSetpoints();
-    default:
+  default:
     break;
   }
+
   return setValue(id, value, eventType);
 }
 

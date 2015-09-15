@@ -46,13 +46,6 @@ void RegimeRunEtalon::processingStateIdle()
 
 void RegimeRunEtalon::processingStateRunning()
 {
-  if (parameters.get(CCS_RGM_RUN_PUSH_MODE)) {
-    vsd->onRegimePush();
-  }
-  if (parameters.get(CCS_RGM_RUN_SWING_MODE)) {
-    vsd->onRegimeSwing();
-  }
-
   ksu.start(runReason_);
   state_ = WorkState;
 }
