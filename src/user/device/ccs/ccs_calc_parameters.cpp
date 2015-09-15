@@ -361,7 +361,7 @@ float Ccs::calcSystemInduct()
 
 float Ccs::calcTransRecommendedTapOff()
 {
-  // Вычисляем рекомендуемую отпайку ТМПН без учёта коэффициента трансформации
+  // Вычисляем коэффициент трансформации без учёта потери в фильтре
   float nomVoltIn = parameters.get(CCS_TRANS_NOMINAL_VOLTAGE_INPUT);
   float curVoltIn = calcAverage3Values(parameters.get(CCS_VOLTAGE_PHASE_1_2),
                                        parameters.get(CCS_VOLTAGE_PHASE_2_3),
@@ -380,21 +380,20 @@ float Ccs::calcTransRecommendedTapOff()
   float baseVolt = (baseFreq / nomFreqMtr ) * nomVoltMtr;
   float dropVoltCable = calcDropVoltageCable(nomCurMtr);
   float voltHiLim = parameters.get(CCS_VOLTAGE_HIGH_LIMIT);
-  float transTapOff = (baseVolt + dropVoltCable) / (voltHiLim);
+  float transCoef = (baseVolt + dropVoltCable) / (voltHiLim);
 
-  // Вычисляем "идеальный" коэффициент трансформации
-  float voltNom =  parameters.get(CCS_TRANS_NOMINAL_VOLTAGE);
-  float transCoef = 1;
-  if (voltNom == 0)
-    transCoef = transTapOff / 380;
-  else
-    transCoef = transTapOff / voltNom;
-
-  // Вычисляем падение на фильтре
+  // Вычисляем коэффициент трансформации с учётом потери в фильтре
   float dropVoltFilter = calcDropVoltageFilter(nomCurMtr, nomFreqMtr, transCoef);
+  transCoef = (baseVolt + dropVoltCable) / (voltHiLim - dropVoltFilter);
 
-  // Вычисляем рекомендуемую отпайку ТМПН с "идеальным" коэффициентом трансформации
-  transTapOff = (baseVolt + dropVoltCable) / (voltHiLim - dropVoltFilter);
+  // Вычисляем рекомендуемое напряжение отпайки
+  float voltNom =  parameters.get(CCS_TRANS_NOMINAL_VOLTAGE);
+  float transTapOff = voltNom;
+  if ((voltNom == 0) || (transCoef == 0))
+    transTapOff = transCoef / 380;
+  else
+    transTapOff = transCoef / voltNom;
+
   setValue(CCS_TRANS_NEED_VOLTAGE_TAP_OFF, transTapOff);
   return parameters.get(CCS_TRANS_NEED_VOLTAGE_TAP_OFF);
 }
