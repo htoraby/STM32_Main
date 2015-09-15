@@ -191,34 +191,37 @@ void VsdEtalon::getNewValue(uint16_t id)
   case VSD_SW_STARTUP_FREQUENCY:
     setValue(id, value);
     if ((parameters.get(CCS_RGM_RUN_PUSH_FREQ) != value) &&
-        (parameters.get(CCS_RGM_RUN_PUSH_MODE) != Regime::OffAction))
+        parameters.get(CCS_RGM_RUN_PUSH_MODE))
       parameters.set(CCS_RGM_RUN_PUSH_FREQ, value);
     if ((parameters.get(CCS_RGM_RUN_SWING_FREQ) != value) &&
-        (parameters.get(CCS_RGM_RUN_SWING_MODE) != Regime::OffAction))
+        parameters.get(CCS_RGM_RUN_SWING_MODE))
       parameters.set(CCS_RGM_RUN_SWING_FREQ, value);
     break;
   case VSD_SW_STARTUP_U_PULSE:
     setValue(id, value);
-    if (parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) != value + 100.0)
+    if ((parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) != (value + 100.0)) &&
+        parameters.get(CCS_RGM_RUN_PUSH_MODE))
       parameters.set(CCS_RGM_RUN_PUSH_VOLTAGE, value + 100.0);
     break;
   case VSD_RGM_RUN_PUSH_UPTIME:
     setValue(id, value);
-    if (parameters.get(CCS_RGM_RUN_PUSH_TIME) != value)
+    if ((parameters.get(CCS_RGM_RUN_PUSH_TIME) != value) &&
+        parameters.get(CCS_RGM_RUN_PUSH_MODE))
       parameters.set(CCS_RGM_RUN_PUSH_TIME, value);
     break;
   case VSD_RGM_RUN_PUSH_PERIOD:
     setValue(id, value);
-    if (parameters.get(CCS_RGM_RUN_PUSH_PERIOD) != value)
+    if ((parameters.get(CCS_RGM_RUN_PUSH_PERIOD) != value) &&
+        parameters.get(CCS_RGM_RUN_PUSH_MODE))
       parameters.set(CCS_RGM_RUN_PUSH_PERIOD, value);
     break;
   case VSD_SW_STARTUP_OSC_COUNT:
     setValue(id, value);
     if ((parameters.get(CCS_RGM_RUN_PUSH_QUANTITY) != value) &&
-        (parameters.get(CCS_RGM_RUN_PUSH_MODE) != Regime::OffAction))
+        parameters.get(CCS_RGM_RUN_PUSH_MODE))
       parameters.set(CCS_RGM_RUN_PUSH_QUANTITY, value);
     if ((parameters.get(CCS_RGM_RUN_SWING_QUANTITY) != value) &&
-        (parameters.get(CCS_RGM_RUN_SWING_MODE) != Regime::OffAction))
+        parameters.get(CCS_RGM_RUN_SWING_MODE))
       parameters.set(CCS_RGM_RUN_SWING_QUANTITY, value);
     break;
   case VSD_MOTOR_INDUCTANCE:
@@ -401,6 +404,9 @@ void VsdEtalon::processingRegimeRun()
 
 int VsdEtalon::onRegimePush()
 {
+  if (parameters.get(CCS_RGM_RUN_PUSH_MODE) == Regime::OffAction)
+    return 1;
+
   setNewValue(VSD_SW_STARTUP_FREQUENCY, parameters.get(CCS_RGM_RUN_PUSH_FREQ));
   float UpVoltage = (parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) - 100.0);
   if (UpVoltage < 0)
@@ -419,6 +425,9 @@ int VsdEtalon::offRegimePush()
 
 int VsdEtalon::onRegimeSwing()
 {
+  if (parameters.get(CCS_RGM_RUN_SWING_MODE) == Regime::OffAction)
+    return 1;
+
   setNewValue(VSD_SW_STARTUP_FREQUENCY, parameters.get(CCS_RGM_RUN_SWING_FREQ));
   setNewValue(VSD_SW_STARTUP_OSC_COUNT, parameters.get(CCS_RGM_RUN_SWING_QUANTITY));
   return setNewValue(VSD_ETALON_START_TYPE, 2);

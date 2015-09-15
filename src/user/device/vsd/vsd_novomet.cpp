@@ -570,6 +570,9 @@ void VsdNovomet::calcParameters(uint16_t id)
 
 int VsdNovomet::onRegimePush()
 {
+  if (parameters.get(CCS_RGM_RUN_PUSH_MODE) == Regime::OffAction)
+    return 1;
+
   float freq = parameters.get(CCS_RGM_RUN_PUSH_FREQ);       // Получаем частоту толчков
   float numPush = parameters.get(CCS_RGM_RUN_PUSH_QUANTITY);// Получаем количество толчков
   float calcNumPush = 0;
@@ -608,6 +611,9 @@ int VsdNovomet::offRegimePush()
 
 int VsdNovomet::onRegimeSwing()
 {
+  if (parameters.get(CCS_RGM_RUN_SWING_MODE) == Regime::OffAction)
+    return 1;
+
   float freq = parameters.get(CCS_RGM_RUN_SWING_FREQ);       // Получаем частоту толчков
   float numPush = parameters.get(CCS_RGM_RUN_SWING_QUANTITY);// Получаем количество толчков
   float calcNumPush = 0;

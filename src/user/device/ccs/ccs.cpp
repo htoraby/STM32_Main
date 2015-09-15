@@ -670,6 +670,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     calcRegimeChangeFreqPeriodOneStep();
     break;
   case CCS_RGM_RUN_PUSH_MODE:
+    err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
       parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction); // Отключаем режим раскачки
       vsd->onRegimePush();
@@ -677,8 +678,9 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     else {
       vsd->offRegimePush();
     }
-    break;
+    return err;
   case CCS_RGM_RUN_SWING_MODE:
+    err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
       parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction); // Отключаем режим раскачки
       vsd->onRegimeSwing();
@@ -686,7 +688,21 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     else {
       vsd->offRegimeSwing();
     }
-    break;
+    return err;
+  case CCS_RGM_RUN_PUSH_FREQ: case CCS_RGM_RUN_PUSH_TIME:
+  case CCS_RGM_RUN_PUSH_PERIOD: case CCS_RGM_RUN_PUSH_QUANTITY:
+    err = setValue(id, value, eventType);
+    vsd->onRegimePush();
+    return err;
+  case CCS_RGM_RUN_PUSH_VOLTAGE:
+    err = setValue(id, value, eventType);
+    vsd->onRegimePush();
+    vsd->onRegimeSwing();
+    return err;
+  case CCS_RGM_RUN_SWING_FREQ: case CCS_RGM_RUN_SWING_QUANTITY:
+    err = setValue(id, value, eventType);
+    vsd->onRegimeSwing();
+    return err;
   case CCS_CMD_LOG_COPY:
     err = setValue(id, value, eventType);
     if (value)
