@@ -221,7 +221,7 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
   case VSD_TIMER_DELAY:
     return setTimeSpeedDown(value);
   case VSD_MOTOR_VOLTAGE:
-    ksu.calcTransTapOff();
+    ksu.calcTransRecommendedTapOff();
     return ok_r;
   default:
     int result = setValue(id, value);
