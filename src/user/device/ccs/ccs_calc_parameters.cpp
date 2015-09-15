@@ -36,12 +36,12 @@ void Ccs::calcParametersTask()
 float Ccs::calcTransCoef()
 {
   float voltTapOff = parameters.get(CCS_TRANS_VOLTAGE_TAP_OFF);
-  float voltInput =  parameters.get(CCS_TRANS_NOMINAL_VOLTAGE);
+  float voltNom =  parameters.get(CCS_TRANS_NOMINAL_VOLTAGE);
   float transCoef;
-  if (voltInput == 0)
+  if (voltNom == 0)
     transCoef = voltTapOff / 380;
   else
-    transCoef = voltTapOff / voltInput;
+    transCoef = voltTapOff / voltNom;
   setValue(CCS_COEF_TRANSFORMATION, transCoef);
   return parameters.get(CCS_COEF_TRANSFORMATION);
 }
@@ -359,8 +359,9 @@ float Ccs::calcSystemInduct()
   return parameters.get(CCS_SYSTEM_INDUCTANCE);
 }
 
-float Ccs::calcTransTapOff(float coefTrans)
+float Ccs::calcTransRecommendedTapOff()
 {
+  // Вычисляем рекомендуемую отпайку ТМПН без учёта коэффициента трансформации
   float nomVoltIn = parameters.get(CCS_TRANS_NOMINAL_VOLTAGE_INPUT);
   float curVoltIn = calcAverage3Values(parameters.get(CCS_VOLTAGE_PHASE_1_2),
                                        parameters.get(CCS_VOLTAGE_PHASE_2_3),
@@ -378,11 +379,22 @@ float Ccs::calcTransTapOff(float coefTrans)
     baseFreq = nomFreqMtr;
   float baseVolt = (baseFreq / nomFreqMtr ) * nomVoltMtr;
   float dropVoltCable = calcDropVoltageCable(nomCurMtr);
-  if (coefTrans == -1)
-    coefTrans = parameters.get(CCS_COEF_TRANSFORMATION);
-  float dropVoltFilter = calcDropVoltageFilter(nomCurMtr, nomFreqMtr, coefTrans);
   float voltHiLim = parameters.get(CCS_VOLTAGE_HIGH_LIMIT);
-  float transTapOff = (baseVolt + dropVoltCable) / (voltHiLim - dropVoltFilter);
+  float transTapOff = (baseVolt + dropVoltCable) / (voltHiLim);
+
+  // Вычисляем "идеальный" коэффициент трансформации
+  float voltNom =  parameters.get(CCS_TRANS_NOMINAL_VOLTAGE);
+  float transCoef = 1;
+  if (voltNom == 0)
+    transCoef = transTapOff / 380;
+  else
+    transCoef = transTapOff / voltNom;
+
+  // Вычисляем падение на фильтре
+  float dropVoltFilter = calcDropVoltageFilter(nomCurMtr, nomFreqMtr, transCoef);
+
+  // Вычисляем рекомендуемую отпайку ТМПН с "идеальным" коэффициентом трансформации
+  transTapOff = (baseVolt + dropVoltCable) / (voltHiLim - dropVoltFilter);
   setValue(CCS_TRANS_NEED_VOLTAGE_TAP_OFF, transTapOff);
   return parameters.get(CCS_TRANS_NEED_VOLTAGE_TAP_OFF);
 }
