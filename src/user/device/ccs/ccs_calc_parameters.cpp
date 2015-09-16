@@ -374,7 +374,7 @@ float Ccs::calcTransRecommendedTapOff()
   float nomFreqMtr = parameters.get(VSD_MOTOR_FREQUENCY);
   if (nomFreqMtr == 0)
     nomFreqMtr = 50;
-  float baseFreq = parameters.get(VSD_HIGH_LIM_SPEED_MOTOR);
+  float baseFreq = parameters.get(CCS_FREQUENCY_HIGH_LIMIT);
   if (baseFreq == 0)
     baseFreq = nomFreqMtr;
   float baseVolt = (baseFreq / nomFreqMtr ) * nomVoltMtr;
