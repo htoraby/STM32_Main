@@ -3986,5 +3986,41 @@ void Vsd::initParameters()
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].def                    = 380.0;
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].discret                = 1;
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].code                   = 0;
+  // Максимальная рабочая частота
+  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].id                          = VSD_ETALON_BASE_FREQUENCY;
+  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].access                      = ACCESS_OPERATOR;
+  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].physic                      = PHYSIC_FREQUENCY;
+  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].validity                    = VALIDITY_OK;
+  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].value.float_t               = 35.0;
+  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].min                         = 35.0;
+  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].max                         = 500.0;
+  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].def                         = 35.0;
+  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].discret                     = 0;
+  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].code                        = 13;
+  // Максимальная рабочая частота
+  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].id                            = VSD_ETALON_BASE_VOLTAGE;
+  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].access                        = ACCESS_OPERATOR;
+  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].physic                        = PHYSIC_VOLTAGE;
+  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].validity                      = VALIDITY_OK;
+  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].value.float_t                 = 380.0;
+  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].min                           = 10.0;
+  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].max                           = 400.0;
+  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].def                           = 380.0;
+  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].discret                       = 0;
+  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].code                          = 13;
+  // Сечение кабеля
+  parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].id                              = VSD_TRANS_CABLE_CROSS;
+  parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].access                          = ACCESS_OPERATOR;
+  parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].physic                          = PHYSIC_SPACE;
+  parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].validity                        = VALIDITY_OK;
+  parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].value.float_t                   = 16.0;
+  parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].min                             = 16.0;
+  parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].max                             = 100.0;
+  parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].def                             = 16.0;
+  parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].discret                         = 1;
+  parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].code                            = 13;
 }
 

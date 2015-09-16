@@ -319,7 +319,7 @@ public:
    * \brief Функция вычисления рекомендуемой отпайки ТМПН
    * \return
    */
-  float calcTransTapOff(float coefTrans = -1);
+  float calcTransRecommendedTapOff();
 
   /*!
    * \brief calcResistanceIsolation

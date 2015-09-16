@@ -234,6 +234,16 @@ void VsdEtalon::getNewValue(uint16_t id)
     if (parameters.get(CCS_MOTOR_INDUCTANCE_RESIST_PHASE) != value)
       parameters.set(CCS_MOTOR_INDUCTANCE_RESIST_PHASE, value);
     break;
+  case VSD_TRANS_CABLE_CROSS:
+    setValue(id, value);
+    if (parameters.get(CCS_TRANS_CABLE_CROSS) != value)
+      parameters.set(CCS_TRANS_CABLE_CROSS, value);
+    break;
+  case VSD_TRANS_NEED_VOLTAGE_TAP_OFF:
+    setValue(id, value);
+    if (parameters.get(CCS_TRANS_NEED_VOLTAGE_TAP_OFF) != value)
+      parameters.set(CCS_TRANS_NEED_VOLTAGE_TAP_OFF, value);
+    break;
   default:
     setValue(id, value);
     break;
@@ -698,11 +708,6 @@ int VsdEtalon::setCoefVoltageInCA(float value)
     readInDevice(VSD_VOLTAGE_PHASE_3_1);
   return ok_r;
   }
-}
-
-int VsdEtalon::setMainRegimeVSD()
-{
-  return 1;
 }
 
 void VsdEtalon::convertBitVsdStatus(float value)

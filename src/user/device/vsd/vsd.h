@@ -32,32 +32,32 @@ public:
   void initParameters();
 
   /*!
-   * \brief Виртуальный метод задания типа двигателя в массив параметров
+   * \brief Метод задания типа двигателя в массив параметров
    * \param value - тип двигателя: VSD_MOTOR_TYPE_ASYNC = 0, VSD_MOTOR_TYPE_VENT = 1
    * \return 0 - задание успешно, !0 - ошибки
    */
-  virtual int setMotorType(float value);
+  int setMotorType(float value);
 
   /*!
    * \brief Функция записи в регистр номинальной частоты двигателя
    * \param freq - задаваемая частота
    * \return 0 - задание успешно, № - ошибки
    */
-  virtual int setMotorNominalFreq(float freq);
+  int setMotorNominalFreq(float freq);
 
   /*!
    * \brief Функция записи в регистр номинального тока двигателя
    * \param current - задаваемый ток
    * \return 0 - задание успешно, № - ошибки
    */
-  virtual int setMotorNominalCurrent(float current);
+  int setMotorNominalCurrent(float current);
 
   /*!
    * \brief Функция записи в регистр номинального напряжения двигателя
    * \param voltage - задаваемое напряжение
    * \return 0 - задание успешно, № - ошибки
    */
-  virtual int setMotorNominalVoltage(float voltage);
+  int setMotorNominalVoltage(float voltage);
 
   /*! Задаваемые параметры ЧРП */
   /*!
@@ -65,20 +65,20 @@ public:
    * \param value задаваемая частота коммутации (Частота ШИМ)
    * \return 0 - задание успешно, № - ошибки
    */
-  virtual int setSwitchingFrequency(float value);
+  int setSwitchingFrequency(float value);
 
   /*!
    * \brief Метод задания предела тока
    * \return Код результата операции
    */
-  virtual int setCurrentLim(float value);
+  int setCurrentLim(float value);
 
   /*!
    * \brief Функция записи в регистр суммарной индуктивности
    * \param induct - задаваемая суммарная индуктивности
    * \return 0 - задание успешно, № - ошибки
    */
-  virtual int setSumInduct(float induct);
+  int setSumInduct(float induct);
 
   /*! Задаваемые параметры работы */
   /*!
@@ -93,7 +93,7 @@ public:
    * \param value - минимальная частота
    * \return 0 - задание успешно, № - ошибки
    */
-  virtual int setMinFrequency(float value);
+  int setMinFrequency(float value);
 
   /*!
    * \brief Функция записи в регистр максимальной частоты
@@ -104,17 +104,17 @@ public:
 
   int setLimitsFrequence(bool Min, float value);
 
-  virtual int setUfU(uint16_t id, float value);
+  int setUfU(uint16_t id, float value);
 
-  virtual int setUfU1(float value);
-  virtual int setUfU2(float value);
-  virtual int setUfU3(float value);
-  virtual int setUfU4(float value);
-  virtual int setUfU5(float value);
+  int setUfU1(float value);
+  int setUfU2(float value);
+  int setUfU3(float value);
+  int setUfU4(float value);
+  int setUfU5(float value);
 
-  virtual int setCoefVoltageInAB(float value);
-  virtual int setCoefVoltageInBC(float value);
-  virtual int setCoefVoltageInCA(float value);
+  int setCoefVoltageInAB(float value);
+  int setCoefVoltageInBC(float value);
+  int setCoefVoltageInCA(float value);
 
   /*!
    * \brief Функция записи в регистр темпа набора частоты Гц/с

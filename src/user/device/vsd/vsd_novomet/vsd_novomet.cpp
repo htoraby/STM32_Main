@@ -221,7 +221,7 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
   case VSD_TIMER_DELAY:
     return setTimeSpeedDown(value);
   case VSD_MOTOR_VOLTAGE:
-    ksu.calcTransTapOff();
+    ksu.calcTransRecommendedTapOff();
     return ok_r;
   default:
     int result = setValue(id, value);
@@ -414,13 +414,19 @@ int VsdNovomet::setMaxFrequency(float value)
 
 int VsdNovomet::setMotorType(float value)
 {
-  if (value == VSD_MOTOR_TYPE_ASYNC) {
-    writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_ASYN_MOTOR);
+  if (Vsd::setMotorType(value)) {           // Записываем тип двигателя в массив
+    logDebug.add(WarningMsg, "setTypeMotor");
+    return err_r;                           // Если не записали возвращаем ошибку
   }
   else {
-    writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_VENT_MOTOR);
+    if (value == VSD_MOTOR_TYPE_ASYNC) {
+      writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_ASYN_MOTOR);
+    }
+    else {
+      writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_VENT_MOTOR);
+    }
+    return ok_r;
   }
-  return ok_r;
 }
 
 void VsdNovomet::calcMotorType()
@@ -525,17 +531,6 @@ int VsdNovomet::setRotation(float value)
     writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_LEFT_DIRECTION);
   }
   return ok_r;
-}
-
-int VsdNovomet::setSwitchingFrequency(float value)
-{
-  if(Vsd::setSwitchingFrequency(value)){
-    return err_r;
-  }
-  else {
-    writeToDevice(VSD_SWITCHING_FREQUENCY, value);
-    return ok_r;
-  }
 }
 
 int VsdNovomet::setUfU1(float value)

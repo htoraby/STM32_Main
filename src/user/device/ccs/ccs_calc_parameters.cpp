@@ -36,12 +36,12 @@ void Ccs::calcParametersTask()
 float Ccs::calcTransCoef()
 {
   float voltTapOff = parameters.get(CCS_TRANS_VOLTAGE_TAP_OFF);
-  float voltInput =  parameters.get(CCS_TRANS_NOMINAL_VOLTAGE);
+  float voltNom =  parameters.get(CCS_TRANS_NOMINAL_VOLTAGE);
   float transCoef;
-  if (voltInput == 0)
+  if (voltNom == 0)
     transCoef = voltTapOff / 380;
   else
-    transCoef = voltTapOff / voltInput;
+    transCoef = voltTapOff / voltNom;
   setValue(CCS_COEF_TRANSFORMATION, transCoef);
   return parameters.get(CCS_COEF_TRANSFORMATION);
 }
@@ -359,8 +359,9 @@ float Ccs::calcSystemInduct()
   return parameters.get(CCS_SYSTEM_INDUCTANCE);
 }
 
-float Ccs::calcTransTapOff(float coefTrans)
+float Ccs::calcTransRecommendedTapOff()
 {
+  // Вычисляем коэффициент трансформации без учёта потери в фильтре
   float nomVoltIn = parameters.get(CCS_TRANS_NOMINAL_VOLTAGE_INPUT);
   float curVoltIn = calcAverage3Values(parameters.get(CCS_VOLTAGE_PHASE_1_2),
                                        parameters.get(CCS_VOLTAGE_PHASE_2_3),
@@ -373,16 +374,26 @@ float Ccs::calcTransTapOff(float coefTrans)
   float nomFreqMtr = parameters.get(VSD_MOTOR_FREQUENCY);
   if (nomFreqMtr == 0)
     nomFreqMtr = 50;
-  float baseFreq = parameters.get(VSD_HIGH_LIM_SPEED_MOTOR);
+  float baseFreq = parameters.get(CCS_FREQUENCY_HIGH_LIMIT);
   if (baseFreq == 0)
     baseFreq = nomFreqMtr;
   float baseVolt = (baseFreq / nomFreqMtr ) * nomVoltMtr;
   float dropVoltCable = calcDropVoltageCable(nomCurMtr);
-  if (coefTrans == -1)
-    coefTrans = parameters.get(CCS_COEF_TRANSFORMATION);
-  float dropVoltFilter = calcDropVoltageFilter(nomCurMtr, nomFreqMtr, coefTrans);
   float voltHiLim = parameters.get(CCS_VOLTAGE_HIGH_LIMIT);
-  float transTapOff = (baseVolt + dropVoltCable) / (voltHiLim - dropVoltFilter);
+  float transCoef = (baseVolt + dropVoltCable) / (voltHiLim);
+
+  // Вычисляем коэффициент трансформации с учётом потери в фильтре
+  float dropVoltFilter = calcDropVoltageFilter(nomCurMtr, nomFreqMtr, transCoef);
+  transCoef = (baseVolt + dropVoltCable) / (voltHiLim - dropVoltFilter);
+
+  // Вычисляем рекомендуемое напряжение отпайки
+  float voltNom =  parameters.get(CCS_TRANS_NOMINAL_VOLTAGE);
+  float transTapOff = voltNom;
+  if ((voltNom == 0) || (transCoef == 0))
+    transTapOff = transCoef / 380;
+  else
+    transTapOff = transCoef / voltNom;
+
   setValue(CCS_TRANS_NEED_VOLTAGE_TAP_OFF, transTapOff);
   return parameters.get(CCS_TRANS_NEED_VOLTAGE_TAP_OFF);
 }

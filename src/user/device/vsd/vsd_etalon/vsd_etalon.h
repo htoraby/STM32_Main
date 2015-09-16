@@ -207,12 +207,6 @@ public:
   int resetSetpoints();
 
   /*!
-   * \brief Метод записи основного режима работы ЧРП
-   * \return
-   */
-  int setMainRegimeVSD();
-
-  /*!
    * \brief Метод задания уставки частоты двигателя
    * При установке текущей частоты проверяется диапазон уставок
    * минимальной и максимальной частоты
@@ -313,7 +307,7 @@ public:
   int setCoefVoltageInCA(float value);
 
 private:
-  ModbusParameter modbusParameters_[119];
+  ModbusParameter modbusParameters_[120];
   DeviceModbus *dm_;
 
   RegimeRunEtalon *regimeRun_;
