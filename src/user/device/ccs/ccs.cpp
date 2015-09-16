@@ -20,6 +20,11 @@ static void ccsMainTask(void *p)
   (static_cast<Ccs*>(p))->mainTask();
 }
 
+static void ccsToolsTask(void *p)
+{
+  (static_cast<Ccs*>(p))->toolsTask();
+}
+
 static void ccsLedConditionTask(void *p)
 {
   (static_cast<Ccs*>(p))->ledConditionTask();
@@ -65,13 +70,16 @@ void Ccs::initTask()
   osThreadDef(LedCondition, ccsLedConditionTask, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(LedCondition), this);
 
-  osThreadDef(VsdConditionTask, ccsVsdConditionTask, osPriorityNormal, 0, 3*configMINIMAL_STACK_SIZE);
+  osThreadDef(VsdConditionTask, ccsVsdConditionTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(VsdConditionTask), this);
 
-  osThreadDef(CcsMain, ccsMainTask, osPriorityNormal, 0, 8*configMINIMAL_STACK_SIZE);
+  osThreadDef(CcsMain, ccsMainTask, osPriorityNormal, 0, 4*configMINIMAL_STACK_SIZE);
   ccsMainTaskId_ = osThreadCreate(osThread(CcsMain), this);
 
-  osThreadDef(CalcParametersTask, ccsCalcParametersTask, osPriorityNormal, 0 , 4*configMINIMAL_STACK_SIZE);
+  osThreadDef(CcsTools, ccsToolsTask, osPriorityNormal, 0, 7*configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(CcsTools), this);
+
+  osThreadDef(CalcParametersTask, ccsCalcParametersTask, osPriorityNormal, 0 , 3*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(CalcParametersTask), this);
 
   rebootSemaphoreId_ = osSemaphoreCreate(NULL, 1);
@@ -99,13 +107,19 @@ void Ccs::mainTask()
     calcTime();
     controlPower();
     checkConnectDevice();
+  }
+}
+
+void Ccs::toolsTask()
+{
+  while (1) {
+    osDelay(50);
 
     if (osSemaphoreWait(rebootSemaphoreId_, 0) != osEventTimeout)
       reboot();
     if (osSemaphoreWait(updateSemaphoreId_, 0) != osEventTimeout)
       updateSoftware();
     if (osSemaphoreWait(scadaSemaphoreId_, 0) != osEventTimeout) {
-      osDelay(100);
       createScada();
     }
   }

@@ -74,6 +74,11 @@ public:
   void mainTask();
 
   /*!
+   * \brief Задача обработки вспомогательных команд СУ
+   */
+  void toolsTask();
+
+  /*!
    * \brief Задача обработки очереди событий включения/мигания LED
    */
   void ledConditionTask();
