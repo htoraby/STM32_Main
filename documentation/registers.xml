@@ -6986,10 +6986,10 @@
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999.9</max>
-		<def>5.0</def>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>5.0</value>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -7004,10 +7004,10 @@
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>60.0</max>
-		<def>5.0</def>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>5.0</value>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -13606,6 +13606,27 @@
 	</param>
 	<param>
 		<id>774</id>
+		<name>CCS_CMD_UNBLOCK</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Команда разблокировки СУ</comment>
+	</param>
+	<param>
+		<id>775</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>

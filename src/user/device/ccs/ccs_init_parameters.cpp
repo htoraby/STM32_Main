@@ -5036,11 +5036,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].operation              = OPERATION_WRITE;
   parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].physic                 = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].validity               = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].value.float_t          = 5.0;
+  parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].value.float_t          = 0.0;
   parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].min                    = 0.0;
   parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].max                    = 999.9;
   parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].discret                = 1;
-  parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].def                    = 5.0;
+  parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].def                    = 0.0;
   parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].code                   = 0;
   // Задержка срабатывания уставка
   parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].id                      = CCS_PROT_OTHER_VSD_TRIP_DELAY;
@@ -5048,11 +5048,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].operation               = OPERATION_WRITE;
   parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].physic                  = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].validity                = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].value.float_t           = 5.0;
+  parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].value.float_t           = 0.0;
   parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].min                     = 0.0;
   parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].max                     = 60.0;
   parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].discret                 = 1;
-  parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].def                     = 5.0;
+  parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].def                     = 0.0;
   parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].code                    = 0;
   // Задержка АПВ уставка
   parameters_[CCS_PROT_OTHER_VSD_RESTART_DELAY - CCS_BEGIN].id                   = CCS_PROT_OTHER_VSD_RESTART_DELAY;
@@ -9290,5 +9290,17 @@ void Ccs::initParameters()
   parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].discret                      = 0;
   parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].def                          = 35.0;
   parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].code                         = 13;
+  // Команда разблокировки СУ
+  parameters_[CCS_CMD_UNBLOCK - CCS_BEGIN].id                                    = CCS_CMD_UNBLOCK;
+  parameters_[CCS_CMD_UNBLOCK - CCS_BEGIN].access                                = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_UNBLOCK - CCS_BEGIN].operation                             = OPERATION_WRITE;
+  parameters_[CCS_CMD_UNBLOCK - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
+  parameters_[CCS_CMD_UNBLOCK - CCS_BEGIN].validity                              = VALIDITY_OK;
+  parameters_[CCS_CMD_UNBLOCK - CCS_BEGIN].value.float_t                         = 0.0;
+  parameters_[CCS_CMD_UNBLOCK - CCS_BEGIN].min                                   = 0.0;
+  parameters_[CCS_CMD_UNBLOCK - CCS_BEGIN].max                                   = 1.0;
+  parameters_[CCS_CMD_UNBLOCK - CCS_BEGIN].discret                               = 1;
+  parameters_[CCS_CMD_UNBLOCK - CCS_BEGIN].def                                   = 0.0;
+  parameters_[CCS_CMD_UNBLOCK - CCS_BEGIN].code                                  = 0;
 }
 

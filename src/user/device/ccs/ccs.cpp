@@ -732,6 +732,11 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (value)
       logStartDelete(eventType);
     return err;
+  case CCS_CMD_UNBLOCK:
+    err = setValue(id, 0.0, eventType);
+    if (value)
+      resetBlock();
+    return err;
   case CCS_COEF_TRANSFORMATION:
     err = setValue(id, value, eventType);
     calcSystemInduct();
