@@ -703,29 +703,35 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     break;
   case CCS_TRANS_NOMINAL_VOLTAGE:           // Номинальное напряжение ТМПН
     calcSystemInduct();                     // Пересчитываем индуктивность системы
-    calcTransRecommendedTapOff();                      // Пересчитываем рекомендуемое напряжение отпайки
+    calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
     break;
-  case CCS_TRANS_NOMINAL_VOLTAGE_INPUT:
-    calcTransRecommendedTapOff();                      // Пересчитываем рекомендуемое напряжение отпайки
+  case CCS_TRANS_NOMINAL_VOLTAGE_INPUT:     // Номинальное напряжение питающей сети
+    calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
     break;
   case CCS_TRANS_NOMINAL_CURRENT:
     calcSystemInduct();                     // Пересчитываем индуктивность системы
     break;
   case CCS_VOLTAGE_HIGH_LIMIT:              // Максимальное входное напряжение
     calcTransRecommendedTapOff();                      // Пересчитываем рекомендуемое напряжение отпайки
+    parameters.set(VSD_ETALON_BASE_VOLTAGE, value);
+    break;
+  case CCS_FREQUENCY_HIGH_LIMIT:
+    calcTransRecommendedTapOff();
+    parameters.set(VSD_ETALON_BASE_FREQUENCY, value);
     break;
   case CCS_TRANS_NOMINAL_FREQUENCY_INPUT:
     calcSystemInduct();
     break;
   case CCS_TRANS_CABLE_LENGHT:              // Длина кабеля
-    calcTransRecommendedTapOff();                      // Пересчитываем рекомендуемое напряжение отпайки
+    calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
     parameters.set(VSD_DEPTH, value);       // Записываем в ЧРП
     break;
   case CCS_TRANS_CABLE_CROSS:               // Сечение кабеля
-    calcTransRecommendedTapOff();                      // Пересчитываем рекомендуемое напряжение отпайки
+    calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
+    parameters.set(VSD_TRANS_CABLE_CROSS, value);
     break;
   case CCS_TRANS_VOLTAGE_TAP_OFF:           // Напряжение отпайки
-    calcTransRecommendedTapOff();                      // Пересчитываем рекомендуемое напряжение отпайки
+    calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
     parameters.set(VSD_TRANS_VOLTAGE_TAP_OFF, value); // Задаём в ЧРП напряжение отпайки
     break;
   case CCS_MOTOR_INDUCTANCE:
