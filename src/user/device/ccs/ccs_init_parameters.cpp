@@ -9278,5 +9278,17 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_VSD_RESET_SETPOINTS - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_CMD_VSD_RESET_SETPOINTS - CCS_BEGIN].def                       = 0.0;
   parameters_[CCS_CMD_VSD_RESET_SETPOINTS - CCS_BEGIN].code                      = 0;
+  // Максимальная рабочая частота
+  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].id                           = CCS_FREQUENCY_HIGH_LIMIT;
+  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].physic                       = PHYSIC_FREQUENCY;
+  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].validity                     = VALIDITY_OK;
+  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].value.float_t                = 35.0;
+  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].min                          = 35.0;
+  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].max                          = 500.0;
+  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].discret                      = 0;
+  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].def                          = 35.0;
+  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].code                         = 13;
 }
 

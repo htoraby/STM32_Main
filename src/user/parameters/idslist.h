@@ -776,7 +776,8 @@ enum enID
   CCS_VSD_INV_FAULT = 770,                                   //!< Слово состояние ЧРП
   CCS_VSD_THYR_STATUS = 771,                                 //!< Слово состояние ЧРП
   CCS_CMD_VSD_RESET_SETPOINTS = 772,                         //!< Команда сброса уставок ЧРП по умолчанию
-  CCS_END = 773,                                             //!< Последний параметр
+  CCS_FREQUENCY_HIGH_LIMIT = 773,                            //!< Максимальная рабочая частота
+  CCS_END = 774,                                             //!< Последний параметр
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
@@ -1109,7 +1110,10 @@ enum enID
   VSD_ETALON_FLAG = 10329,                                   //!< Выбор источника расчёта точек U/f
   VSD_ETALON_RESISTANCE_ISOLATION = 10330,                   //!< 
   VSD_TRANS_NEED_VOLTAGE_TAP_OFF = 10331,                    //!< Необходимое напряжение отпайки
-  VSD_END = 10332,                                           //!< 
+  VSD_ETALON_BASE_FREQUENCY = 10332,                         //!< Максимальная рабочая частота
+  VSD_ETALON_BASE_VOLTAGE = 10333,                           //!< Максимальная рабочая частота
+  VSD_TRANS_CABLE_CROSS = 10334,                             //!< Сечение кабеля
+  VSD_END = 10335,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме
