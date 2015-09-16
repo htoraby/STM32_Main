@@ -2001,7 +2001,7 @@ void VsdEtalon::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
                          };
-  modbusParameters_[118] = {// Номинальное напряжение двигателя
+  modbusParameters_[118] = {// Необходимое напряжение отпайки
                           VSD_TRANS_NEED_VOLTAGE_TAP_OFF,
                           628 + 0x4000,     // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром

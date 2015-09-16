@@ -687,11 +687,6 @@ int VsdEtalon::setCoefVoltageInCA(float value)
   }
 }
 
-int VsdEtalon::setMainRegimeVSD()
-{
-  return 1;
-}
-
 void VsdEtalon::convertBitVsdStatus(float value)
 {
   // Получаем значение из регистры и сбрасываем в 0, только те биты,

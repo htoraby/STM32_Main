@@ -249,42 +249,6 @@ public:
   int setTempSpeedUp(float value);
   int setTempSpeedDown(float value);
 
-
-  /*!
-   * \brief Метод задания точки характеристики U/f F1
-   * \param value
-   * \return
-   */
-  int setUfF1(float value);
-
-  /*!
-   * \brief Метод задания точки характеристики U/f F2
-   * \param value
-   * \return
-   */
-
-  int setUfF2(float value);
-  /*!
-   * \brief Метод задания точки характеристики U/f F3
-   * \param value
-   * \return
-   */
-  int setUfF3(float value);
-
-  /*!
-   * \brief Метод задания точки характеристики U/f F4
-   * \param value
-   * \return
-   */
-  int setUfF4(float value);
-
-  /*!
-   * \brief Метод задания точки характеристики U/f F5
-   * \param value
-   * \return
-   */
-  int setUfF5(float value);
-
   /*!
    * \brief Метод задания точки характеристики U/f F6
    * \param value
