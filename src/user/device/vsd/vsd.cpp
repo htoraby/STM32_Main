@@ -290,19 +290,19 @@ bool Vsd::checkStop()
 bool Vsd::checkVsdStatus(uint8_t bit)
 {
   if (bit < VSD_STATUS_FC_I2T_ERR)
-    return checkBit(getValue(CCS_VSD_INVERTOR_STATUS_1), bit);
+    return checkBit(parameters.get(CCS_VSD_INVERTOR_STATUS_1), bit);
 
   if ((bit >= VSD_STATUS_FC_I2T_ERR) && (bit < VSD_STATUS_3))
-    return checkBit(getValue(CCS_VSD_INVERTOR_STATUS_2), bit - 16);
+    return checkBit(parameters.get(CCS_VSD_INVERTOR_STATUS_2), bit - 16);
 
   if ((bit >= VSD_STATUS_IMAX) && (bit < VSD_STATUS_TEST))
-    return checkBit(getValue(CCS_VSD_INV_FAULT), bit - 32);
+    return checkBit(parameters.get(CCS_VSD_INV_FAULT), bit - 32);
 
   if ((bit >= VSD_THYR_ABC_STATE) && (bit < VSD_THYR_ERR_SHORTCIRQUIT))
-    return checkBit(getValue(CCS_VSD_THYR_STATUS), bit - 48);
+    return checkBit(parameters.get(CCS_VSD_THYR_STATUS), bit - 48);
 
   if ((bit >= VSD_STATUS_READY) && (bit < VSD_STATUS_TURBINE))
-    return checkBit(getValue(CCS_VSD_INVERTOR_STATUS_4), bit - 64);
+    return checkBit(parameters.get(CCS_VSD_INVERTOR_STATUS_4), bit - 64);
 
   else
     return false;

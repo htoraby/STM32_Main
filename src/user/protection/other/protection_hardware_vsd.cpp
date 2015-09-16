@@ -176,9 +176,7 @@ bool ProtectionHardwareVsd::checkAlarm()
   return false;
 }
 
-bool ProtectionHardwareVsd::checkPrevent() {
-  if (!vsd->isConnect()) {
-    return true;
-  }
-  return false;
+bool ProtectionHardwareVsd::checkPrevent()
+{
+  return alarm_;
 }
