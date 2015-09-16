@@ -662,27 +662,32 @@ void Ccs::calcTime()
 
 uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
 {
-  uint8_t err;
+  uint8_t err = ok_r;
   float oldValue = getValue(id);
 
   switch (id) {
   case CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT:
+    err = setValue(id, value, eventType);
     parameters.set(VSD_M_IRMS, value);
-    break;
+    return err;
   case CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY:
+    err = setValue(id, value, eventType);
     parameters.set(VSD_T_BLANK, value);
     break;
   case CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY:
+    err = setValue(id, value, eventType);
     parameters.set(VSD_M_TRMS, value);
-    break;
+    return err;
   case CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT:
+    err = setValue(id, value, eventType);
     parameters.set(VSD_M_I_FAST, value);
-    break;
+    return err;
   case CCS_RGM_CHANGE_FREQ_PERIOD:
   case CCS_RGM_CHANGE_FREQ_BEGIN_FREQ:
   case CCS_RGM_CHANGE_FREQ_END_FREQ:
+    err = setValue(id, value, eventType);
     calcRegimeChangeFreqPeriodOneStep();
-    break;
+    return err;
   case CCS_RGM_RUN_PUSH_MODE:
     err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
@@ -728,107 +733,138 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       logStartDelete(eventType);
     return err;
   case CCS_COEF_TRANSFORMATION:
+    err = setValue(id, value, eventType);
     calcSystemInduct();
-    break;
+    return err;
   case CCS_TRANS_VOLTAGE_SHORT_CIRCUIT:
+    err = setValue(id, value, eventType);
     calcSystemInduct();
-    break;
+    return err;
   case CCS_TRANS_NOMINAL_VOLTAGE:           // Номинальное напряжение ТМПН
+    err = setValue(id, value, eventType);
     calcSystemInduct();                     // Пересчитываем индуктивность системы
     calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
-    break;
+    return err;
   case CCS_TRANS_NOMINAL_VOLTAGE_INPUT:     // Номинальное напряжение питающей сети
+    err = setValue(id, value, eventType);
     calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
-    break;
+    return err;
   case CCS_TRANS_NOMINAL_CURRENT:
+    err = setValue(id, value, eventType);
     calcSystemInduct();                     // Пересчитываем индуктивность системы
-    break;
+    return err;
   case CCS_VOLTAGE_HIGH_LIMIT:              // Максимальное входное напряжение
+    err = setValue(id, value, eventType);
     calcTransRecommendedTapOff();                      // Пересчитываем рекомендуемое напряжение отпайки
     parameters.set(VSD_ETALON_BASE_VOLTAGE, value);
-    break;
+    return err;
   case CCS_FREQUENCY_HIGH_LIMIT:
+    err = setValue(id, value, eventType);
     calcTransRecommendedTapOff();
     parameters.set(VSD_ETALON_BASE_FREQUENCY, value);
-    break;
+    return err;
   case CCS_TRANS_NOMINAL_FREQUENCY_INPUT:
+    err = setValue(id, value, eventType);
     calcSystemInduct();
-    break;
+    return err;
   case CCS_TRANS_CABLE_LENGHT:              // Длина кабеля
+    err = setValue(id, value, eventType);
     calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
     parameters.set(VSD_DEPTH, value);       // Записываем в ЧРП
-    break;
+    return err;
   case CCS_TRANS_CABLE_CROSS:               // Сечение кабеля
+    err = setValue(id, value, eventType);
     calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
     parameters.set(VSD_TRANS_CABLE_CROSS, value);
-    break;
+    return err;
   case CCS_TRANS_VOLTAGE_TAP_OFF:           // Напряжение отпайки
+    err = setValue(id, value, eventType);
     calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
     parameters.set(VSD_TRANS_VOLTAGE_TAP_OFF, value); // Задаём в ЧРП напряжение отпайки
-    break;
+    return err;
   case CCS_MOTOR_INDUCTANCE:
+    err = setValue(id, value, eventType);
     calcSystemInduct();
     parameters.set(VSD_MOTOR_INDUCTANCE, value);      // Задаём индуктивность в ЧРП
-    break;
+    return err;
   case CCS_MOTOR_INDUCTANCE_RESIST_PHASE:
+    err = setValue(id, value, eventType);
     calcMotorInductFromResistPhase();
     calcSystemInduct();
     parameters.set(VSD_MOTOR_INDUCTANCE_RESIST_PHASE, value);   // Задаём сопротивление в ЧРП
-    break;
+    return err;
   case CCS_FILTER_INDUCTANCE:
+    err = setValue(id, value, eventType);
     calcSystemInduct();
-    break;
+    return err;
   case CCS_DATE_TIME_SEC:
+    err = setValue(id, value, eventType);
     parameters.set(VSD_TIME_SECOND, value);
-    break;
+    return err;
   case CCS_DATE_TIME_MIN:
+    err = setValue(id, value, eventType);
     parameters.set(VSD_TIME_MINUTE, value);
-    break;
+    return err;
   case CCS_DATE_TIME_HOUR:
+    err = setValue(id, value, eventType);
     parameters.set(VSD_TIME_HOUR, value);
-    break;
+    return err;
   case CCS_DATE_TIME_DAY:
+    err = setValue(id, value, eventType);
     parameters.set(VSD_TIME_DAY, value);
-    break;
+    return err;
   case CCS_DATE_TIME_MONTH:
+    err = setValue(id, value, eventType);
     parameters.set(VSD_TIME_MONTH, value);
-    break;
+    return err;
   case CCS_DATE_TIME_YEAR:
+    err = setValue(id, value, eventType);
     parameters.set(VSD_TIME_YEAR, value);
-    break;
+    return err;
   case CCS_CMD_PROT_SUPPLY_OVERVOLTAGE_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
     cmdProtSupplyOvervoltageSetpointReset();
-    break;
+    return err;
   case CCS_CMD_PROT_SUPPLY_UNDERVOLTAGE_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
     cmdProtSupplyUndervoltageSetpointReset();
-    break;
+    return err;
   case CCS_CMD_PROT_SUPPLY_IMBALANCE_VOLTAGE_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
     cmdProtSupplyImbalanceVoltageSetpointReset();
-    break;
+    return err;
   case CCS_CMD_PROT_MOTOR_OVERLOAD_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
     cmdProtMotorOverloadSetpointReset();
-    break;
+    return err;
   case CCS_CMD_PROT_MOTOR_UNDERLOAD_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
     cmdProtMotorUnderloadSetpointReset();
-    break;
+    return err;
   case CCS_CMD_PROT_MOTOR_IMBALANCE_CURRENT_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
     cmdProtMotorImbalanceCurrentSetpointReset();
-    break;
+    return err;
   case CCS_CMD_PROT_DHS_PRESSURE_INTAKE_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
     cmdProtDhsPressureIntakeSetpointReset();
-    break;
+    return err;
   case CCS_CMD_PROT_DHS_TEMPERATURE_MOTOR_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
     cmdProtDhsTemperatureMotorSetpointReset();
-    break;
+    return err;
   case CCS_CMD_PROT_DHS_RESISTANCE_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
     cmdProtDhsResistanceSetpointReset();
-    break;
+    return err;
   case CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
     cmdProtOtherHardwareVsdSetpointReset();
-    break;
+    return err;
   case CCS_CMD_COUNTER_ALL_RESET:
+    err = setValue(id, value, eventType);
     cmdCountersAllReset();
-    break;
+    return err;
   case CCS_DHS_TYPE:
     err = setValue(id, value, eventType);
     if ((value != oldValue) && !err) {
@@ -878,14 +914,17 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       osSemaphoreRelease(scadaSemaphoreId_);
     return err;
   case CCS_COEF_OUT_CURRENT_1:
+    err = setValue(id, value, eventType);
     parameters.set(VSD_COEF_OUT_CURRENT_1, value);
-    break;
+    return err;
   case CCS_COEF_OUT_CURRENT_2:
+    err = setValue(id, value, eventType);
     parameters.set(VSD_COEF_OUT_CURRENT_2, value);
-    break;
+    return err;
   case CCS_COEF_OUT_CURRENT_3:
+    err = setValue(id, value, eventType);
     parameters.set(VSD_COEF_OUT_CURRENT_3, value);
-    break;
+    return err;
   case CCS_CMD_REBOOT_SOFTWARE:
     err = setValue(id, 0.0, eventType);
     if (value && !err) {
@@ -908,10 +947,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_CMD_VSD_RESET_SETPOINTS:
     return vsd->resetSetpoints();
   default:
-    break;
+    return setValue(id, value, eventType);
   }
 
-  return setValue(id, value, eventType);
+  return err;
 }
 
 uint8_t Ccs::setNewValue(uint16_t id, uint32_t value, EventType eventType)
