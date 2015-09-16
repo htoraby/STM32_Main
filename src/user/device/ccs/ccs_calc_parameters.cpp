@@ -6,8 +6,6 @@ void Ccs::calcParametersTask()
 {
   while (1) {
     osDelay(100);
-
-    calcTransCoef();
     calcMotorCurrentPhase1();
     calcMotorCurrentPhase2();
     calcMotorCurrentPhase3();
