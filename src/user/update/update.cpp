@@ -15,14 +15,15 @@
 #include "ff.h"
 #include "user_main.h"
 
-// 4 Kbytes
-#define BUFFER_SIZE 512*8
+// 2 Kbytes
+#define BUFFER_SIZE 512*4
 
 #if USE_EXT_MEM
 static uint8_t buffer[BUFFER_SIZE] __attribute__((section(".extmem")));
 #else
 static uint8_t buffer[BUFFER_SIZE];
 #endif
+
 static UPDATE_HEADER updateHeader;
 
 static void getFile(char *fileName)
@@ -70,6 +71,7 @@ static bool saveSwInFlashExt(char *fileName)
   IMAGE_FILE_HEADER imageHeader;
   bool isSaveSw = false;
   uint16_t calcCrc = 0xFFFF;
+  uint16_t calcCrcRx = 0xFFFF;
   uint32_t startAddress;
   uint32_t lastAddress;
 
@@ -98,6 +100,8 @@ static bool saveSwInFlashExt(char *fileName)
 
       calcCrc = crc16_ibm((uint8_t*)&imageHeader, readSize, calcCrc);
       flashExtWriteEx(FlashSpi1, lastAddress, (uint8_t*)&imageHeader, readSize);
+      flashExtRead(FlashSpi1, lastAddress, buffer, readSize);
+      calcCrcRx = crc16_ibm(buffer, readSize, calcCrcRx);
       lastAddress = lastAddress + readSize;
 
       int count = 0;
@@ -111,7 +115,17 @@ static bool saveSwInFlashExt(char *fileName)
           calcCrc = crc16_ibm(buffer, readSize, calcCrc);
         else
           calcCrc = crc16_ibm(buffer, readSize-6, calcCrc);
-        flashExtWriteEx(FlashSpi1, lastAddress, buffer, readSize);
+        if (flashExtWriteEx(FlashSpi1, lastAddress, buffer, readSize))
+          asm("nop");
+        if (flashExtRead(FlashSpi1, lastAddress, buffer, readSize))
+          asm("nop");
+        if (readflag)
+          calcCrcRx = crc16_ibm(buffer, readSize, calcCrcRx);
+        else
+          calcCrcRx = crc16_ibm(buffer, readSize-6, calcCrcRx);
+        if (calcCrc != calcCrcRx)
+          asm("nop");
+
         lastAddress = lastAddress + readSize;
 
         if (++count > 20) {
@@ -123,10 +137,10 @@ static bool saveSwInFlashExt(char *fileName)
       uint16_t crc = (buffer[readSize - 1 - 4] << 8) + buffer[readSize - 2 - 4];
       uint32_t finish = (buffer[readSize - 1] << 24) + (buffer[readSize - 2] << 16) +
           (buffer[readSize - 3] << 8) + (buffer[readSize - 4]);
-      if ((calcCrc == crc) && (finish == 0xFFFFFFFF))
+      if ((calcCrc == crc) && (calcCrcRx == crc) && (finish == 0xFFFFFFFF))
         isSaveSw = true;
       else
-        logDebug.add(WarningMsg, "Update. Ошибка CRС - %x %x", calcCrc, finish);
+        logDebug.add(WarningMsg, "Update. Ошибка CRС - %x %x %x, %x", crc, calcCrc, calcCrcRx, finish);
     }
     else {
       logDebug.add(WarningMsg, "Update. Ошибка в загаловке файла прошивки - %d %d %d %d %d",
