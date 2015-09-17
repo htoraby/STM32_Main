@@ -376,6 +376,8 @@ int VsdEtalon::stop(float type)
       if (setNewValue(VSD_ETALON_OFF, 1))
         return err_r;
 
+      resetBlock();
+
     } else {
       timeMs = timeMs + 100;
     }
