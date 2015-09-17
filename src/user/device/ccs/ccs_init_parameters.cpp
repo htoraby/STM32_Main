@@ -9302,5 +9302,17 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_UNBLOCK - CCS_BEGIN].discret                               = 1;
   parameters_[CCS_CMD_UNBLOCK - CCS_BEGIN].def                                   = 0.0;
   parameters_[CCS_CMD_UNBLOCK - CCS_BEGIN].code                                  = 0;
+  // Код аппаратной аварии ЧРП
+  parameters_[CCS_PROT_OTHER_VSD_ALARM - CCS_BEGIN].id                           = CCS_PROT_OTHER_VSD_ALARM;
+  parameters_[CCS_PROT_OTHER_VSD_ALARM - CCS_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[CCS_PROT_OTHER_VSD_ALARM - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_ALARM - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
+  parameters_[CCS_PROT_OTHER_VSD_ALARM - CCS_BEGIN].validity                     = VALIDITY_OK;
+  parameters_[CCS_PROT_OTHER_VSD_ALARM - CCS_BEGIN].value.float_t                = 0.0;
+  parameters_[CCS_PROT_OTHER_VSD_ALARM - CCS_BEGIN].min                          = 0.0;
+  parameters_[CCS_PROT_OTHER_VSD_ALARM - CCS_BEGIN].max                          = 65535.0;
+  parameters_[CCS_PROT_OTHER_VSD_ALARM - CCS_BEGIN].discret                      = 1;
+  parameters_[CCS_PROT_OTHER_VSD_ALARM - CCS_BEGIN].def                          = 0.0;
+  parameters_[CCS_PROT_OTHER_VSD_ALARM - CCS_BEGIN].code                         = 0;
 }
 

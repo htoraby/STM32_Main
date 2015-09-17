@@ -778,8 +778,8 @@ void VsdEtalon::convertBitVsdStatus(float value)
   case VSD_ETALON_INFO_PRESSURE:          // VSD_STATUS_PRESSURE
     vsdInvertorStatus4 = setBit(vsdInvertorStatus4, VSD_STATUS_PRESSURE, true);
     break;
-  case VSD_ETALON_INFO_19:                // VSD_STATUS_FAULT_STOPPED
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_FAULT_STOPPED, true);
+  case VSD_ETALON_INFO_19:                // VSD_STATUS_ERR_19
+    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_ERR_19, true);
     break;
   case VSD_ETALON_INFO_IMBALANCE_CURRENT: // VSD_FLT_IZ
     vsdInvFault = setBit(vsdInvFault, VSD_STATUS_IZ, true);
@@ -811,8 +811,8 @@ void VsdEtalon::convertBitVsdStatus(float value)
   case VSD_ETALON_INFO_CURRENT_LIMIT:     // VSD_STATUS_I_LIMIT
     vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_I_LIMIT, true);
     break;
-  case VSD_ETALON_INFO_31:                // VSD_STATUS_FAULT_STOPPED
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_FAULT_STOPPED, true);
+  case VSD_ETALON_INFO_31:                // VSD_STATUS_ERR_31
+    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_ERR_31, true);
     break;
   case VSD_ETALON_INFO_32:
     break;
@@ -862,7 +862,7 @@ void VsdEtalon::convertBitVsdStatus(float value)
     break;
   }
 
-  parameters.set(CCS_VSD_INVERTOR_STATUS_1,  (float)vsdInvertorStatus1);
+  parameters.set(CCS_VSD_INVERTOR_STATUS_1, (float)vsdInvertorStatus1);
   parameters.set(CCS_VSD_INVERTOR_STATUS_2, (float)vsdInvertorStatus2);
   parameters.set(CCS_VSD_INV_FAULT, (float)vsdInvFault);
   parameters.set(CCS_VSD_THYR_STATUS, (float)vsdThyrStatus);

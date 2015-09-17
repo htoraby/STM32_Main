@@ -433,7 +433,10 @@ enum enVsdFlags {
   VSD_STATUS_PRESSURE_Z           = 91,     //!< Низкое Pзатр
   VSD_STATUS_AI_0                 = 92,     //!< Доп. аналог вход 0
   VSD_STATUS_TURBINE              = 93,     //!< Турбинное вращение
-  VSD_STATUS_OVERHEAT_IGBT        = 94,     //!< Перегрев IGBT
+  VSD_STATUS_ERR_19               = 94,     //!< Ошибка 19
+  VSD_STATUS_ERR_31               = 95,     //!< Ошибка 31
+
+  VSD_STATUS_NO_CONNECT           = 250,     //!< Нет связи с ЧРП
 };
 
 /*!
