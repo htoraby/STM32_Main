@@ -747,6 +747,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_TRANS_NOMINAL_VOLTAGE:           // Номинальное напряжение ТМПН
     err = setValue(id, value, eventType);
+    calcTransCoef();
     calcSystemInduct();                     // Пересчитываем индуктивность системы
     calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
     return err;
@@ -784,6 +785,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_TRANS_VOLTAGE_TAP_OFF:           // Напряжение отпайки
     err = setValue(id, value, eventType);
+    calcTransCoef();
     calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
     parameters.set(VSD_TRANS_VOLTAGE_TAP_OFF, value); // Задаём в ЧРП напряжение отпайки
     return err;

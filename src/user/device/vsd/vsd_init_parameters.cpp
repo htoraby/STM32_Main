@@ -3991,7 +3991,7 @@ void Vsd::initParameters()
   parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].access                      = ACCESS_OPERATOR;
   parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].operation                   = OPERATION_WRITE;
   parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].physic                      = PHYSIC_FREQUENCY;
-  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].validity                    = VALIDITY_OK;
+  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].value.float_t               = 35.0;
   parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].min                         = 35.0;
   parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].max                         = 500.0;
@@ -4003,7 +4003,7 @@ void Vsd::initParameters()
   parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].access                        = ACCESS_OPERATOR;
   parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].operation                     = OPERATION_WRITE;
   parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].physic                        = PHYSIC_VOLTAGE;
-  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].validity                      = VALIDITY_OK;
+  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].value.float_t                 = 380.0;
   parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].min                           = 10.0;
   parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].max                           = 400.0;
@@ -4015,12 +4015,24 @@ void Vsd::initParameters()
   parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].access                          = ACCESS_OPERATOR;
   parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].operation                       = OPERATION_WRITE;
   parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].physic                          = PHYSIC_SPACE;
-  parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].validity                        = VALIDITY_OK;
+  parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].value.float_t                   = 16.0;
   parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].min                             = 16.0;
   parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].max                             = 100.0;
   parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].def                             = 16.0;
   parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].discret                         = 1;
   parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].code                            = 13;
+  // Температура пласта
+  parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].id                             = VSD_TEMPERATURE_INTAKE;
+  parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].access                         = ACCESS_OPERATOR;
+  parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].physic                         = PHYSIC_TEMPERATURE;
+  parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].validity                       = VALIDITY_ERROR;
+  parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].value.float_t                  = 20.0;
+  parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].min                            = 20.0;
+  parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].max                            = 200.0;
+  parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].def                            = 20.0;
+  parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].discret                        = 0;
+  parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].code                           = 13;
 }
 

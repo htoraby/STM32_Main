@@ -307,7 +307,7 @@ public:
   int setCoefVoltageInCA(float value);
 
 private:
-  ModbusParameter modbusParameters_[120];
+  ModbusParameter modbusParameters_[121];
   DeviceModbus *dm_;
 
   RegimeRunEtalon *regimeRun_;
