@@ -289,19 +289,19 @@ bool Vsd::checkStop()
 // Команды и операции
 bool Vsd::checkVsdStatus(uint8_t bit)
 {
-  if (bit < VSD_STATUS_FC_I2T_ERR)
+  if (bit <= VSD_STATUS_RESERVED)
     return checkBit(parameters.get(CCS_VSD_INVERTOR_STATUS_1), bit);
 
-  if ((bit >= VSD_STATUS_FC_I2T_ERR) && (bit < VSD_STATUS_3))
+  if ((bit >= VSD_STATUS_FC_I2T_ERR) && (bit <= (VSD_STATUS_FC_I2T_ERR+15)))
     return checkBit(parameters.get(CCS_VSD_INVERTOR_STATUS_2), bit - 16);
 
-  if ((bit >= VSD_STATUS_IMAX) && (bit < VSD_STATUS_TEST))
+  if ((bit >= VSD_STATUS_IMAX) && (bit <= (VSD_STATUS_IMAX+15)))
     return checkBit(parameters.get(CCS_VSD_INV_FAULT), bit - 32);
 
-  if ((bit >= VSD_THYR_ABC_STATE) && (bit < VSD_THYR_ERR_SHORTCIRQUIT))
+  if ((bit >= VSD_THYR_ABC_STATE) && (bit <= (VSD_THYR_ABC_STATE+15)))
     return checkBit(parameters.get(CCS_VSD_THYR_STATUS), bit - 48);
 
-  if ((bit >= VSD_STATUS_READY) && (bit < VSD_STATUS_TURBINE))
+  if ((bit >= VSD_STATUS_READY) && (bit <= (VSD_STATUS_READY+15)))
     return checkBit(parameters.get(CCS_VSD_INVERTOR_STATUS_4), bit - 64);
 
   else
