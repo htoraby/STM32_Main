@@ -244,6 +244,16 @@ void VsdEtalon::getNewValue(uint16_t id)
     if (parameters.get(CCS_TRANS_NEED_VOLTAGE_TAP_OFF) != value)
       parameters.set(CCS_TRANS_NEED_VOLTAGE_TAP_OFF, value);
     break;
+  case VSD_ETALON_BASE_VOLTAGE:
+    setValue(id, value);
+    if (parameters.get(CCS_VOLTAGE_HIGH_LIMIT) != value)
+      parameters.set(CCS_VOLTAGE_HIGH_LIMIT, value);
+    break;
+  case VSD_ETALON_BASE_FREQUENCY:
+    setValue(id, value);
+    if (parameters.get(CCS_FREQUENCY_HIGH_LIMIT) != value)
+      parameters.set(CCS_FREQUENCY_HIGH_LIMIT, value);
+    break;
   default:
     setValue(id, value);
     break;
@@ -792,23 +802,23 @@ void VsdEtalon::convertBitVsdStatus(float value)
   case VSD_ETALON_INFO_TURBINE:           // VSD_STATUS_TURBINE
     vsdInvertorStatus4 = setBit(vsdInvertorStatus4, VSD_STATUS_TURBINE, true);
     break;
-  case VSD_ETALON_INFO_24:                // VSD_STATUS_FAULT_STOPPED
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_FAULT_STOPPED, true);
+  case VSD_ETALON_INFO_24:                // VSD_STATUS_STOPPED_ALARM
+    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_STOPPED_ALARM, true);
     break;
-  case VSD_ETALON_INFO_FAILURE_SUPPLY:
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_FAULT_STOPPED, true);
+  case VSD_ETALON_INFO_FAILURE_SUPPLY:    // VSD_STATUS_STOPPED_ALARM
+    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_STOPPED_ALARM, true);
     break;
-  case VSD_ETALON_INFO_DOOR:
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_FAULT_STOPPED, true);
+  case VSD_ETALON_INFO_DOOR:              // VSD_STATUS_STOPPED_ALARM
+    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_STOPPED_ALARM, true);
     break;
-  case VSD_ETALON_INFO_LOST_SUPPLY:
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_FAULT_STOPPED, true);
+  case VSD_ETALON_INFO_LOST_SUPPLY:       // VSD_STATUS_STOPPED_ALARM
+    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_STOPPED_ALARM, true);
     break;
-  case VSD_ETALON_INFO_CONDENSATOR:
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_FAULT_STOPPED, true);
+  case VSD_ETALON_INFO_CONDENSATOR:       // VSD_THYR_CHARGE_STATE
+    vsdInvertorStatus1 = setBit(vsdThyrStatus, VSD_THYR_CHARGE_STATE, true);
     break;
-  case VSD_ETALON_INFO_TERISTORS:
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_FAULT_STOPPED, true);
+  case VSD_ETALON_INFO_TERISTORS:         // VSD_STATUS_STOPPED_ALARM
+    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_STOPPED_ALARM, true);
     break;
   case VSD_ETALON_INFO_CURRENT_LIMIT:     // VSD_STATUS_I_LIMIT
     vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_I_LIMIT, true);
@@ -853,12 +863,12 @@ void VsdEtalon::convertBitVsdStatus(float value)
     vsdInvFault = setBit(vsdInvFault, VSD_STATUS_CLK_MON, true);
     break;
   case VSD_ETALON_INFO_NOT_READY:
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_FAULT_STOPPED, true);
+    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_STOPPED_ALARM, true);
     break;
   case VSD_ETALON_INFO_SETPOINT:
     break;
   case VSD_ETALON_INFO_BLOCK_RUN:
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_FAULT_STOPPED, true);
+    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_STOPPED_ALARM, true);
     break;
   default:
     break;

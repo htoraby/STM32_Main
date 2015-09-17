@@ -9287,7 +9287,7 @@ void Ccs::initParameters()
   parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].value.float_t                = 35.0;
   parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].min                          = 35.0;
   parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].max                          = 500.0;
-  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].discret                      = 0;
+  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].def                          = 35.0;
   parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].code                         = 13;
   // Команда разблокировки СУ

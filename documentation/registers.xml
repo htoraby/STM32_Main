@@ -13592,7 +13592,7 @@
 		<min>35.0</min>
 		<max>500.0</max>
 		<def>35.0</def>
-		<discret>0</discret>
+		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>35.0</value>
 		<text>NULL</text>
