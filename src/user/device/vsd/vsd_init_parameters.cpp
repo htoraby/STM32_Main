@@ -3996,7 +3996,7 @@ void Vsd::initParameters()
   parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].min                         = 35.0;
   parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].max                         = 500.0;
   parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].def                         = 35.0;
-  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].discret                     = 0;
+  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].discret                     = 1;
   parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].code                        = 13;
   // Максимальная рабочая частота
   parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].id                            = VSD_ETALON_BASE_VOLTAGE;
@@ -4008,7 +4008,7 @@ void Vsd::initParameters()
   parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].min                           = 10.0;
   parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].max                           = 400.0;
   parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].def                           = 380.0;
-  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].discret                       = 0;
+  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].discret                       = 1;
   parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].code                          = 13;
   // Сечение кабеля
   parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].id                              = VSD_TRANS_CABLE_CROSS;
@@ -4032,7 +4032,7 @@ void Vsd::initParameters()
   parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].min                            = 20.0;
   parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].max                            = 200.0;
   parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].def                            = 20.0;
-  parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].discret                        = 0;
+  parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].discret                        = 1;
   parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].code                           = 13;
 }
 
