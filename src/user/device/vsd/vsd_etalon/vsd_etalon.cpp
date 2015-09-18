@@ -151,23 +151,23 @@ void VsdEtalon::getNewValue(uint16_t id)
     break;
   case VSD_UF_CHARACTERISTIC_U_1_PERCENT:           // Получили точку напряжения U/f
     setValue(id, value);
-    setValue(VSD_UF_CHARACTERISTIC_U_1, getValue(VSD_UF_CHARACTERISTIC_U_6) * value / 100.0);
+    setValue(VSD_UF_CHARACTERISTIC_U_1, getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0);
     break;
   case VSD_UF_CHARACTERISTIC_U_2_PERCENT:
     setValue(id, value);
-    setValue(VSD_UF_CHARACTERISTIC_U_2, getValue(VSD_UF_CHARACTERISTIC_U_6) * value / 100.0);
+    setValue(VSD_UF_CHARACTERISTIC_U_2, getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0);
     break;
   case VSD_UF_CHARACTERISTIC_U_3_PERCENT:
     setValue(id, value);
-    setValue(VSD_UF_CHARACTERISTIC_U_3, getValue(VSD_UF_CHARACTERISTIC_U_6) * value / 100.0);
+    setValue(VSD_UF_CHARACTERISTIC_U_3, getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0);
     break;
   case VSD_UF_CHARACTERISTIC_U_4_PERCENT:
     setValue(id, value);
-    setValue(VSD_UF_CHARACTERISTIC_U_4, getValue(VSD_UF_CHARACTERISTIC_U_6) * value / 100.0);
+    setValue(VSD_UF_CHARACTERISTIC_U_4, getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0);
     break;
   case VSD_UF_CHARACTERISTIC_U_5_PERCENT:
     setValue(id, value);
-    setValue(VSD_UF_CHARACTERISTIC_U_5, getValue(VSD_UF_CHARACTERISTIC_U_6) * value / 100.0);
+    setValue(VSD_UF_CHARACTERISTIC_U_5, getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0);
     break;
   case VSD_CURRENT_DC:                      // Получили ток Id
     setValue(id, getValue(VSD_COEF_CURRENT_IN_DC) * value);
@@ -290,9 +290,9 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
     return setUfU4(value);
   case VSD_UF_CHARACTERISTIC_U_5:
     return setUfU5(value);
-  case VSD_UF_CHARACTERISTIC_U_6:
+  case VSD_ETALON_BASE_VOLTAGE:
     return setUfU6(value);
-  case VSD_UF_CHARACTERISTIC_F_6:
+  case VSD_ETALON_BASE_FREQUENCY:
     return setUfF6(value);
   case VSD_COEF_VOLTAGE_IN_AB:
     return setCoefVoltageInAB(value);
@@ -557,7 +557,7 @@ int VsdEtalon::setUfU1(float value)
 {
   int result = Vsd::setUfU1(value);
   if (result == ok_r) {
-    result = setValue(VSD_UF_CHARACTERISTIC_U_1_PERCENT, (value * 100.0) / getValue(VSD_UF_CHARACTERISTIC_U_6));
+    result = setValue(VSD_UF_CHARACTERISTIC_U_1_PERCENT, (value * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE));
     if (result == ok_r) {
       writeToDevice(VSD_UF_CHARACTERISTIC_U_1_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_1_PERCENT));
     }
@@ -569,7 +569,7 @@ int VsdEtalon::setUfU2(float value)
 {
   int result = Vsd::setUfU2(value);
   if (result == ok_r) {
-    result = setValue(VSD_UF_CHARACTERISTIC_U_2_PERCENT, (value * 100.0) / getValue(VSD_UF_CHARACTERISTIC_U_6));
+    result = setValue(VSD_UF_CHARACTERISTIC_U_2_PERCENT, (value * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE));
     if (result == ok_r) {
       writeToDevice(VSD_UF_CHARACTERISTIC_U_2_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_2_PERCENT));
     }
@@ -581,7 +581,7 @@ int VsdEtalon::setUfU3(float value)
 {
   int result = Vsd::setUfU3(value);
   if (result == ok_r) {
-    result = setValue(VSD_UF_CHARACTERISTIC_U_3_PERCENT, (value * 100.0) / getValue(VSD_UF_CHARACTERISTIC_U_6));
+    result = setValue(VSD_UF_CHARACTERISTIC_U_3_PERCENT, (value * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE));
     if (result == ok_r) {
       writeToDevice(VSD_UF_CHARACTERISTIC_U_3_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_3_PERCENT));
     }
@@ -593,7 +593,7 @@ int VsdEtalon::setUfU4(float value)
 {
   int result = Vsd::setUfU4(value);
   if (result == ok_r) {
-    result = setValue(VSD_UF_CHARACTERISTIC_U_4_PERCENT, (value * 100.0) / getValue(VSD_UF_CHARACTERISTIC_U_6));
+    result = setValue(VSD_UF_CHARACTERISTIC_U_4_PERCENT, (value * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE));
     if (result == ok_r) {
       writeToDevice(VSD_UF_CHARACTERISTIC_U_4_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_4_PERCENT));
     }
@@ -605,7 +605,7 @@ int VsdEtalon::setUfU5(float value)
 {
   int result = Vsd::setUfU5(value);
   if (result == ok_r) {
-    result = setValue(VSD_UF_CHARACTERISTIC_U_5_PERCENT, (value * 100.0) / getValue(VSD_UF_CHARACTERISTIC_U_6));
+    result = setValue(VSD_UF_CHARACTERISTIC_U_5_PERCENT, (value * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE));
     if (result == ok_r) {
       writeToDevice(VSD_UF_CHARACTERISTIC_U_5_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_5_PERCENT));
     }
@@ -615,9 +615,9 @@ int VsdEtalon::setUfU5(float value)
 
 int VsdEtalon::setUfF6(float value)
 {
-  int result = setValue(VSD_UF_CHARACTERISTIC_F_6, value);
+  int result = setValue(VSD_ETALON_BASE_FREQUENCY, value);
   if (!result)
-    writeToDevice(VSD_UF_CHARACTERISTIC_F_6, value);
+    writeToDevice(VSD_ETALON_BASE_FREQUENCY, value);
   result = setValue(VSD_BLDC_MAX_WORK_FREQ, value);
   if (!result)
     writeToDevice(VSD_BLDC_MAX_WORK_FREQ, value);
@@ -632,16 +632,16 @@ int VsdEtalon::setUfU(uint16_t id, float value)
     return err_r;
   }
   else {
-    writeToDevice(id, (getValue(id) * 100.0) / getValue(VSD_UF_CHARACTERISTIC_U_6));
+    writeToDevice(id, (getValue(id) * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE));
   return ok_r;
   }
 }
 
 int VsdEtalon::setUfU6(float value)
 {
-  int result = setValue(VSD_UF_CHARACTERISTIC_U_6, value);
+  int result = setValue(VSD_ETALON_BASE_VOLTAGE, value);
   if (!result)
-    writeToDevice(VSD_UF_CHARACTERISTIC_U_6, value);
+    writeToDevice(VSD_ETALON_BASE_VOLTAGE, value);
   osDelay(200);
   readUfCharacterictic();
   setMax(VSD_UF_CHARACTERISTIC_U_1, value);
