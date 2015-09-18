@@ -25,6 +25,7 @@ int Vsd::setMotorType(float value)
     if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) {
       return setValue(VSD_MOTOR_CONTROL, (float)VSD_MOTOR_CONTROL_UF);
     }
+    return ok_r;
   }
   return err_r;
 }
