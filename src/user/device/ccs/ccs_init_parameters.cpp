@@ -8661,8 +8661,8 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].physic                         = PHYSIC_VOLTAGE;
   parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].value.float_t                  = 380.0;
-  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].max                            = 999999.0;
+  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].min                            = 10.0;
+  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].max                            = 400.0;
   parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].discret                        = 1;
   parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].def                            = 380.0;
   parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].code                           = 13;
