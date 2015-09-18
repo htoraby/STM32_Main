@@ -12572,8 +12572,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<min>10.0</min>
+		<max>400.0</max>
 		<def>380.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
