@@ -922,15 +922,12 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_COEF_OUT_CURRENT_1:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_COEF_OUT_CURRENT_1, value);
     return err;
   case CCS_COEF_OUT_CURRENT_2:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_COEF_OUT_CURRENT_2, value);
     return err;
   case CCS_COEF_OUT_CURRENT_3:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_COEF_OUT_CURRENT_3, value);
     return err;
   case CCS_CMD_REBOOT_SOFTWARE:
     err = setValue(id, 0.0, eventType);

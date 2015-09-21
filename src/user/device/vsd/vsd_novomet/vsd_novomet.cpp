@@ -131,13 +131,13 @@ void VsdNovomet::getNewValue(uint16_t id)
   // Особенная обработка некоторых параметров
   switch (id) {
   case VSD_CURRENT_OUT_PHASE_1:             // Выходной ток ЧРП Фаза 1
-    setValue(id, getValue(VSD_COEF_OUT_CURRENT_1) * value);
+    setValue(id, getValue(CCS_COEF_OUT_CURRENT_1) * value);
     break;
   case VSD_CURRENT_OUT_PHASE_2:             // Выходной ток ЧРП Фаза 2
-    setValue(id, getValue(VSD_COEF_OUT_CURRENT_2) * value);
+    setValue(id, getValue(CCS_COEF_OUT_CURRENT_2) * value);
     break;
   case VSD_CURRENT_OUT_PHASE_3:             // Выходной ток ЧРП Фаза 3
-    setValue(id, getValue(VSD_COEF_OUT_CURRENT_3) * value);
+    setValue(id, getValue(CCS_COEF_OUT_CURRENT_3) * value);
     break;
   case VSD_INVERTOR_STATUS:
     setValue(id, value);

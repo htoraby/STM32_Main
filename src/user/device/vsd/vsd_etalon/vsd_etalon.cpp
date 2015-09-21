@@ -254,6 +254,24 @@ void VsdEtalon::getNewValue(uint16_t id)
     if (parameters.get(CCS_FREQUENCY_HIGH_LIMIT) != value)
       parameters.set(CCS_FREQUENCY_HIGH_LIMIT, value);
     break;
+  case VSD_CURRENT_OUT_PHASE_1:             // Выходной ток ЧРП Фаза 1
+    setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_1) * value);
+    break;
+  case VSD_CURRENT_OUT_PHASE_2:             // Выходной ток ЧРП Фаза 2
+    setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_2) * value);
+    break;
+  case VSD_CURRENT_OUT_PHASE_3:             // Выходной ток ЧРП Фаза 3
+    setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_3) * value);
+    break;
+  case VSD_COEF_OUT_CURRENT_1:
+    setValue(id, value);
+    break;
+  case VSD_COEF_OUT_CURRENT_2:
+    setValue(id, value);
+    break;
+  case VSD_COEF_OUT_CURRENT_3:
+    setValue(id, value);
+    break;
   default:
     setValue(id, value);
     break;
