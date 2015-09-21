@@ -129,158 +129,165 @@ void VsdEtalon::getNewValue(uint16_t id)
   // Применяем единицы измерения
   value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
 
-  // Преобразования для параметров требующих особой обработки по id
-  switch (id) {
-  case VSD_ETALON_ON_STATE:                 // Получили подтверждение запуска
-    vsdInvertorStatus = (uint32_t)parameters.get(CCS_VSD_INVERTOR_STATUS_1) & 0xFFFE;
-    if (value)
-      vsdInvertorStatus = setBit(vsdInvertorStatus, VSD_STATUS_READY, true);
-    parameters.set(CCS_VSD_INVERTOR_STATUS_2,  (float)vsdInvertorStatus);
-    setValue(id, value);
-    break;
-  case VSD_ETALON_OFF_STATE:                // Получили подтверждение останова
-    vsdInvertorStatus = (uint32_t)parameters.get(CCS_VSD_INVERTOR_STATUS_1) & 0xFFF7;
-    if (value)
-      vsdInvertorStatus = setBit(vsdInvertorStatus, VSD_STATUS_STOPPED_EXTERNAL, true);
-    parameters.set(CCS_VSD_INVERTOR_STATUS_1,  (float)vsdInvertorStatus);
-    setValue(id, value);
-    break;
-  case VSD_INVERTOR_STATUS:                 // Получили слово состояния
-    convertBitVsdStatus(value);
-    setValue(id, value);
-    break;
-  case VSD_UF_CHARACTERISTIC_U_1_PERCENT:           // Получили точку напряжения U/f
-    setValue(id, value);
-    setValue(VSD_UF_CHARACTERISTIC_U_1, getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0);
-    break;
-  case VSD_UF_CHARACTERISTIC_U_2_PERCENT:
-    setValue(id, value);
-    setValue(VSD_UF_CHARACTERISTIC_U_2, getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0);
-    break;
-  case VSD_UF_CHARACTERISTIC_U_3_PERCENT:
-    setValue(id, value);
-    setValue(VSD_UF_CHARACTERISTIC_U_3, getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0);
-    break;
-  case VSD_UF_CHARACTERISTIC_U_4_PERCENT:
-    setValue(id, value);
-    setValue(VSD_UF_CHARACTERISTIC_U_4, getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0);
-    break;
-  case VSD_UF_CHARACTERISTIC_U_5_PERCENT:
-    setValue(id, value);
-    setValue(VSD_UF_CHARACTERISTIC_U_5, getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0);
-    break;
-  case VSD_CURRENT_DC:                      // Получили ток Id
-    setValue(id, getValue(VSD_COEF_CURRENT_IN_DC) * value);
-    break;
-  case VSD_VOLTAGE_DC:
-    setValue(id, getValue(VSD_COEF_VOLTAGE_IN_DC) * value);
-    break;
-  case VSD_OUT_VOLTAGE_MOTOR:
-    setValue(id, getValue(VSD_COEF_VOLTAGE_OUT_1) * getValue(VSD_COEF_VOLTAGE_OUT_2) * value);
-    break;
-  case VSD_LOW_LIM_SPEED_MOTOR:
-    setLimitsFrequence(0, value);
-    break;
-  case VSD_HIGH_LIM_SPEED_MOTOR:
-    setLimitsFrequence(1, value);
-    break;
-  case VSD_SOFT_VERSION:
-    setValue(id, value);
-    parameters.set(CCS_VERSION_SW_VSD, value);
-    break;
-  case VSD_SW_STARTUP_FREQUENCY:
-    setValue(id, value);
-    if ((parameters.get(CCS_RGM_RUN_PUSH_FREQ) != value) &&
-        parameters.get(CCS_RGM_RUN_PUSH_MODE))
-      parameters.set(CCS_RGM_RUN_PUSH_FREQ, value);
-    if ((parameters.get(CCS_RGM_RUN_SWING_FREQ) != value) &&
-        parameters.get(CCS_RGM_RUN_SWING_MODE))
-      parameters.set(CCS_RGM_RUN_SWING_FREQ, value);
-    break;
-  case VSD_SW_STARTUP_U_PULSE:
-    setValue(id, value);
-    if ((parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) != (value + 100.0)) &&
-        parameters.get(CCS_RGM_RUN_PUSH_MODE))
-      parameters.set(CCS_RGM_RUN_PUSH_VOLTAGE, value + 100.0);
-    break;
-  case VSD_RGM_RUN_PUSH_UPTIME:
-    setValue(id, value);
-    if ((parameters.get(CCS_RGM_RUN_PUSH_TIME) != value) &&
-        parameters.get(CCS_RGM_RUN_PUSH_MODE))
-      parameters.set(CCS_RGM_RUN_PUSH_TIME, value);
-    break;
-  case VSD_RGM_RUN_PUSH_PERIOD:
-    setValue(id, value);
-    if ((parameters.get(CCS_RGM_RUN_PUSH_PERIOD) != value) &&
-        parameters.get(CCS_RGM_RUN_PUSH_MODE))
-      parameters.set(CCS_RGM_RUN_PUSH_PERIOD, value);
-    break;
-  case VSD_SW_STARTUP_OSC_COUNT:
-    setValue(id, value);
-    if ((parameters.get(CCS_RGM_RUN_PUSH_QUANTITY) != value) &&
-        parameters.get(CCS_RGM_RUN_PUSH_MODE))
-      parameters.set(CCS_RGM_RUN_PUSH_QUANTITY, value);
-    if ((parameters.get(CCS_RGM_RUN_SWING_QUANTITY) != value) &&
-        parameters.get(CCS_RGM_RUN_SWING_MODE))
-      parameters.set(CCS_RGM_RUN_SWING_QUANTITY, value);
-    break;
-  case VSD_MOTOR_INDUCTANCE:
-    setValue(id, value);
-    if (parameters.get(CCS_MOTOR_INDUCTANCE) != value)
-      parameters.set(CCS_MOTOR_INDUCTANCE, value);
-    break;
-  case VSD_MOTOR_INDUCTANCE_RESIST_PHASE:
-    setValue(id, value);
-    if (parameters.get(CCS_MOTOR_INDUCTANCE_RESIST_PHASE) != value)
-      parameters.set(CCS_MOTOR_INDUCTANCE_RESIST_PHASE, value);
-    break;
-  case VSD_TRANS_CABLE_CROSS:
-    setValue(id, value);
-    if (parameters.get(CCS_TRANS_CABLE_CROSS) != value)
-      parameters.set(CCS_TRANS_CABLE_CROSS, value);
-    break;
-  case VSD_TRANS_NEED_VOLTAGE_TAP_OFF:
-    setValue(id, value);
-    if (parameters.get(CCS_TRANS_NEED_VOLTAGE_TAP_OFF) != value)
-      parameters.set(CCS_TRANS_NEED_VOLTAGE_TAP_OFF, value);
-    break;
-  case VSD_ETALON_BASE_VOLTAGE:
-    setValue(id, value);
-    if (parameters.get(CCS_VOLTAGE_HIGH_LIMIT) != value)
-      parameters.set(CCS_VOLTAGE_HIGH_LIMIT, value);
-    break;
-  case VSD_ETALON_BASE_FREQUENCY:
-    setValue(id, value);
-    if (parameters.get(CCS_FREQUENCY_HIGH_LIMIT) != value)
-      parameters.set(CCS_FREQUENCY_HIGH_LIMIT, value);
-    break;
-  case VSD_CURRENT_OUT_PHASE_1:             // Выходной ток ЧРП Фаза 1
-    setValue(id, value);
-    break;
-  case VSD_CURRENT_OUT_PHASE_2:             // Выходной ток ЧРП Фаза 2
-    setValue(id, value);
-    break;
-  case VSD_CURRENT_OUT_PHASE_3:             // Выходной ток ЧРП Фаза 3
-    setValue(id, value);
-    break;
-  case VSD_COEF_OUT_CURRENT_1:
-    setValue(id, value);
-    if (parameters.get(CCS_COEF_OUT_CURRENT_1) != value)
-      parameters.set(CCS_COEF_OUT_CURRENT_1, value);
-    break;
-  case VSD_COEF_OUT_CURRENT_2:
-    setValue(id, value);
-    if (parameters.get(CCS_COEF_OUT_CURRENT_2) != value)
-      parameters.set(CCS_COEF_OUT_CURRENT_2, value);
-    break;
-  case VSD_COEF_OUT_CURRENT_3:
-    setValue(id, value);
-    if (parameters.get(CCS_COEF_OUT_CURRENT_3) != value)
-      parameters.set(CCS_COEF_OUT_CURRENT_3, value);
-    break;
-  default:
-    setValue(id, value);
-    break;
+  // Если получено новое значение параметра
+  if (getValue(id) != value) {
+    // Преобразования для параметров требующих особой обработки по id
+    switch (id) {
+    case VSD_ETALON_ON_STATE:                 // Получили подтверждение запуска
+      vsdInvertorStatus = (uint32_t)parameters.get(CCS_VSD_INVERTOR_STATUS_1) & 0xFFFE;
+      if (value)
+        vsdInvertorStatus = setBit(vsdInvertorStatus, VSD_STATUS_READY, true);
+      parameters.set(CCS_VSD_INVERTOR_STATUS_2,  (float)vsdInvertorStatus);
+      setValue(id, value);
+      break;
+    case VSD_ETALON_OFF_STATE:                // Получили подтверждение останова
+      vsdInvertorStatus = (uint32_t)parameters.get(CCS_VSD_INVERTOR_STATUS_1) & 0xFFF7;
+      if (value)
+        vsdInvertorStatus = setBit(vsdInvertorStatus, VSD_STATUS_STOPPED_EXTERNAL, true);
+      parameters.set(CCS_VSD_INVERTOR_STATUS_1,  (float)vsdInvertorStatus);
+      setValue(id, value);
+      break;
+    case VSD_INVERTOR_STATUS:                 // Получили слово состояния
+      convertBitVsdStatus(value);
+      setValue(id, value);
+      break;
+    case VSD_UF_CHARACTERISTIC_U_1_PERCENT:           // Получили точку напряжения U/f
+      setValue(id, value);
+      setValue(VSD_UF_CHARACTERISTIC_U_1, getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0);
+      break;
+    case VSD_UF_CHARACTERISTIC_U_2_PERCENT:
+      setValue(id, value);
+      setValue(VSD_UF_CHARACTERISTIC_U_2, getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0);
+      break;
+    case VSD_UF_CHARACTERISTIC_U_3_PERCENT:
+      setValue(id, value);
+      setValue(VSD_UF_CHARACTERISTIC_U_3, getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0);
+      break;
+    case VSD_UF_CHARACTERISTIC_U_4_PERCENT:
+      setValue(id, value);
+      setValue(VSD_UF_CHARACTERISTIC_U_4, getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0);
+      break;
+    case VSD_UF_CHARACTERISTIC_U_5_PERCENT:
+      setValue(id, value);
+      setValue(VSD_UF_CHARACTERISTIC_U_5, getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0);
+      break;
+    case VSD_LOW_LIM_SPEED_MOTOR:
+      setLimitsFrequence(0, value);
+      break;
+    case VSD_HIGH_LIM_SPEED_MOTOR:
+      setLimitsFrequence(1, value);
+      break;
+    case VSD_SOFT_VERSION:
+      setValue(id, value);
+      parameters.set(CCS_VERSION_SW_VSD, value);
+      break;
+    case VSD_SW_STARTUP_FREQUENCY:
+      setValue(id, value);
+      if ((parameters.get(CCS_RGM_RUN_PUSH_FREQ) != value) &&
+          parameters.get(CCS_RGM_RUN_PUSH_MODE))
+        parameters.set(CCS_RGM_RUN_PUSH_FREQ, value);
+      if ((parameters.get(CCS_RGM_RUN_SWING_FREQ) != value) &&
+          parameters.get(CCS_RGM_RUN_SWING_MODE))
+        parameters.set(CCS_RGM_RUN_SWING_FREQ, value);
+      break;
+    case VSD_SW_STARTUP_U_PULSE:
+      setValue(id, value);
+      if ((parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) != (value + 100.0)) &&
+          parameters.get(CCS_RGM_RUN_PUSH_MODE))
+        parameters.set(CCS_RGM_RUN_PUSH_VOLTAGE, value + 100.0);
+      break;
+    case VSD_RGM_RUN_PUSH_UPTIME:
+      setValue(id, value);
+      if ((parameters.get(CCS_RGM_RUN_PUSH_TIME) != value) &&
+          parameters.get(CCS_RGM_RUN_PUSH_MODE))
+        parameters.set(CCS_RGM_RUN_PUSH_TIME, value);
+      break;
+    case VSD_RGM_RUN_PUSH_PERIOD:
+      setValue(id, value);
+      if ((parameters.get(CCS_RGM_RUN_PUSH_PERIOD) != value) &&
+          parameters.get(CCS_RGM_RUN_PUSH_MODE))
+        parameters.set(CCS_RGM_RUN_PUSH_PERIOD, value);
+      break;
+    case VSD_SW_STARTUP_OSC_COUNT:
+      setValue(id, value);
+      if ((parameters.get(CCS_RGM_RUN_PUSH_QUANTITY) != value) &&
+          parameters.get(CCS_RGM_RUN_PUSH_MODE))
+        parameters.set(CCS_RGM_RUN_PUSH_QUANTITY, value);
+      if ((parameters.get(CCS_RGM_RUN_SWING_QUANTITY) != value) &&
+          parameters.get(CCS_RGM_RUN_SWING_MODE))
+        parameters.set(CCS_RGM_RUN_SWING_QUANTITY, value);
+      break;
+    case VSD_MOTOR_INDUCTANCE:
+      setValue(id, value);
+      if (parameters.get(CCS_MOTOR_INDUCTANCE) != value)
+        parameters.set(CCS_MOTOR_INDUCTANCE, value);
+      break;
+    case VSD_MOTOR_INDUCTANCE_RESIST_PHASE:
+      setValue(id, value);
+      if (parameters.get(CCS_MOTOR_INDUCTANCE_RESIST_PHASE) != value)
+        parameters.set(CCS_MOTOR_INDUCTANCE_RESIST_PHASE, value);
+      break;
+    case VSD_TRANS_CABLE_CROSS:
+      setValue(id, value);
+      if (parameters.get(CCS_TRANS_CABLE_CROSS) != value)
+        parameters.set(CCS_TRANS_CABLE_CROSS, value);
+      break;
+    case VSD_TRANS_NEED_VOLTAGE_TAP_OFF:
+      setValue(id, value);
+      if (parameters.get(CCS_TRANS_NEED_VOLTAGE_TAP_OFF) != value)
+        parameters.set(CCS_TRANS_NEED_VOLTAGE_TAP_OFF, value);
+      break;
+    case VSD_ETALON_BASE_VOLTAGE:
+      setValue(id, value);
+      if (parameters.get(CCS_VOLTAGE_HIGH_LIMIT) != value)
+        parameters.set(CCS_VOLTAGE_HIGH_LIMIT, value);
+      break;
+    case VSD_ETALON_BASE_FREQUENCY:
+      setValue(id, value);
+      if (parameters.get(CCS_FREQUENCY_HIGH_LIMIT) != value)
+        parameters.set(CCS_FREQUENCY_HIGH_LIMIT, value);
+      break;
+    case VSD_CURRENT_OUT_PHASE_1:             // Выходной ток ЧРП Фаза 1
+      setValue(id, value);
+      ksu.calcMotorCurrentPhase1();
+      ksu.calcMotorCurrentAverage();
+      ksu.calcMotorCurrentImbalance();
+      break;
+    case VSD_CURRENT_OUT_PHASE_2:             // Выходной ток ЧРП Фаза 2
+      setValue(id, value);
+      ksu.calcMotorCurrentPhase2();
+      ksu.calcMotorCurrentAverage();
+      ksu.calcMotorCurrentImbalance();
+      break;
+    case VSD_CURRENT_OUT_PHASE_3:             // Выходной ток ЧРП Фаза 3
+      setValue(id, value);
+      ksu.calcMotorCurrentPhase3();
+      ksu.calcMotorCurrentAverage();
+      ksu.calcMotorCurrentImbalance();
+      break;
+    case VSD_FREQUENCY_NOW:
+      setValue(id, value);
+      ksu.calcMotorSpeed();
+      break;
+    case VSD_COEF_OUT_CURRENT_1:
+      setValue(id, value);
+      if (parameters.get(CCS_COEF_OUT_CURRENT_1) != value)
+        parameters.set(CCS_COEF_OUT_CURRENT_1, value);
+      break;
+    case VSD_COEF_OUT_CURRENT_2:
+      setValue(id, value);
+      if (parameters.get(CCS_COEF_OUT_CURRENT_2) != value)
+        parameters.set(CCS_COEF_OUT_CURRENT_2, value);
+      break;
+    case VSD_COEF_OUT_CURRENT_3:
+      setValue(id, value);
+      if (parameters.get(CCS_COEF_OUT_CURRENT_3) != value)
+        parameters.set(CCS_COEF_OUT_CURRENT_3, value);
+      break;
+    default:
+      setValue(id, value);
+      break;
+    }
   }
 }
 

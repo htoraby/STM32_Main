@@ -6,16 +6,16 @@ void Ccs::calcParametersTask()
 {
   while (1) {
     osDelay(100);
-    calcMotorCurrentPhase1();
-    calcMotorCurrentPhase2();
-    calcMotorCurrentPhase3();
-    calcMotorCurrentAverage();
-    calcMotorCurrentImbalance();
+//    calcMotorCurrentPhase1();
+//    calcMotorCurrentPhase2();
+//    calcMotorCurrentPhase3();
+//    calcMotorCurrentAverage();
+//    calcMotorCurrentImbalance();
     calcMotorVoltagePhase1();
     calcMotorVoltagePhase2();
     calcMotorVoltagePhase3();
     calcMotorVoltageImbalance();
-    calcMotorSpeed();
+//    calcMotorSpeed();
     calcMotorCos();
     calcMotorLoad();
     calcInputVoltagePhase1();
