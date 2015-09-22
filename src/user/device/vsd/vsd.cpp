@@ -21,7 +21,13 @@ Vsd::~Vsd()
 // Задаваемые параметры двигателя
 int Vsd::setMotorType(float value)
 {
-  return setValue(VSD_MOTOR_TYPE, (float)value);
+  if (!setValue(VSD_MOTOR_TYPE, (float)value)) {
+    if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) {
+      return setValue(VSD_MOTOR_CONTROL, (float)VSD_MOTOR_CONTROL_UF);
+    }
+    return ok_r;
+  }
+  return err_r;
 }
 
 int Vsd::setMotorNominalFreq(float freq)

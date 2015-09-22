@@ -12572,8 +12572,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<min>10.0</min>
+		<max>400.0</max>
 		<def>380.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13592,7 +13592,7 @@
 		<min>35.0</min>
 		<max>500.0</max>
 		<def>35.0</def>
-		<discret>0</discret>
+		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>35.0</value>
 		<text>NULL</text>
@@ -18601,7 +18601,7 @@
 		<min>35.0</min>
 		<max>500.0</max>
 		<def>35.0</def>
-		<discret>0</discret>
+		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>35.0</value>
 		<text>NULL</text>
@@ -18622,7 +18622,7 @@
 		<min>10.0</min>
 		<max>400.0</max>
 		<def>380.0</def>
-		<discret>0</discret>
+		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>380.0</value>
 		<text>NULL</text>
@@ -18664,7 +18664,7 @@
 		<min>20.0</min>
 		<max>200.0</max>
 		<def>20.0</def>
-		<discret>0</discret>
+		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>20.0</value>
 		<text>NULL</text>
