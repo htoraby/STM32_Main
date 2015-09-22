@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+#include "flash_ext.h"
+
 #define SW_FILE_NAME "505.013.1000-SW.31"
 
 #define CODE_PRODUCTION 1
@@ -54,5 +56,23 @@ typedef enum {
  * \return
  */
 bool updateFromUsb();
+
+/*!
+ * \brief Чтение прошивки с внешней flash для Master
+ * \param address
+ * \param data
+ * \param size
+ * \return
+ */
+StatusType readSwFromFlashExt(uint32_t address, uint8_t *data, uint32_t size);
+
+/*!
+ * \brief Запись прошивки на внешнию flash от Master
+ * \param address
+ * \param data
+ * \param size
+ * \return
+ */
+StatusType writeSwInFlashExt(uint32_t address, uint8_t *data, uint32_t size);
 
 #endif  /* UPDATE_H */

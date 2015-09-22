@@ -10,13 +10,14 @@
   */
 
 #include "update.h"
-#include "flash_ext.h"
 #include "usb_host.h"
 #include "ff.h"
 #include "user_main.h"
 
 // 2 Kbytes
 #define BUFFER_SIZE 512*4
+// Таймаут обновление мастера - 30 сек
+#define UPDATE_MASTER_TIMEOUT 6000
 
 #if USE_EXT_MEM
 static uint8_t buffer[BUFFER_SIZE] __attribute__((section(".extmem")));
@@ -25,6 +26,7 @@ static uint8_t buffer[BUFFER_SIZE];
 #endif
 
 static UPDATE_HEADER updateHeader;
+static UPDATE_HEADER updateHeaderOld;
 
 static void getFile(char *fileName)
 {
@@ -96,7 +98,7 @@ static bool saveSwInFlashExt(char *fileName)
         (imageHeader.subCodeEquip == SUBCODE_EQUIP)) {
       parameters.set(CCS_PROGRESS_VALUE, 0);
       parameters.set(CCS_PROGRESS_MAX, 0);
-      parameters.set(CCS_PROGRESS_MAX, (float)imageHeader.size/1024);
+      parameters.set(CCS_PROGRESS_MAX, (float)(imageHeader.size + imageHeader.swGuiSize)/1024);
 
       calcCrc = crc16_ibm((uint8_t*)&imageHeader, readSize, calcCrc);
       flashExtWriteEx(FlashSpi1, lastAddress, (uint8_t*)&imageHeader, readSize);
@@ -106,7 +108,7 @@ static bool saveSwInFlashExt(char *fileName)
 
       int count = 0;
       while ((readflag == 1) && (usbState == USB_READY)) {
-        osDelay(5);
+        osDelay(1);
         f_read(&file, buffer, BUFFER_SIZE, &readSize);
         if (readSize < BUFFER_SIZE)
           readflag = 0;
@@ -116,19 +118,19 @@ static bool saveSwInFlashExt(char *fileName)
         else
           calcCrc = crc16_ibm(buffer, readSize-6, calcCrc);
         if (flashExtWriteEx(FlashSpi1, lastAddress, buffer, readSize))
-          asm("nop");
+          printf("Error: file %s on line %d\r\n", __FILE__, __LINE__);
         if (flashExtRead(FlashSpi1, lastAddress, buffer, readSize))
-          asm("nop");
+          printf("Error: file %s on line %d\r\n", __FILE__, __LINE__);
         if (readflag)
           calcCrcRx = crc16_ibm(buffer, readSize, calcCrcRx);
         else
           calcCrcRx = crc16_ibm(buffer, readSize-6, calcCrcRx);
         if (calcCrc != calcCrcRx)
-          asm("nop");
+          printf("Error CRC: file %s on line %d\r\n", __FILE__, __LINE__);
 
         lastAddress = lastAddress + readSize;
 
-        if (++count > 20) {
+        if (++count > 30) {
           count = 0;
           parameters.set(CCS_PROGRESS_VALUE, (float)(lastAddress - startAddress)/1024);
         }
@@ -137,10 +139,12 @@ static bool saveSwInFlashExt(char *fileName)
       uint16_t crc = (buffer[readSize - 1 - 4] << 8) + buffer[readSize - 2 - 4];
       uint32_t finish = (buffer[readSize - 1] << 24) + (buffer[readSize - 2] << 16) +
           (buffer[readSize - 3] << 8) + (buffer[readSize - 4]);
-      if ((calcCrc == crc) && (calcCrcRx == crc) && (finish == 0xFFFFFFFF))
+      if ((calcCrc == crc) && (calcCrcRx == crc) && (finish == 0xFFFFFFFF)) {
         isSaveSw = true;
-      else
+      }
+      else {
         logDebug.add(WarningMsg, "Update. Ошибка CRС - %x %x %x, %x", crc, calcCrc, calcCrcRx, finish);
+      }
     }
     else {
       logDebug.add(WarningMsg, "Update. Ошибка в загаловке файла прошивки - %d %d %d %d %d",
@@ -171,14 +175,52 @@ bool updateFromUsb()
     return false;
   }
 
-  flashExtRead(FlashSpi1, AddrUpdateHeader, (uint8_t*)&updateHeader, sizeof(updateHeader));
+  flashExtRead(FlashSpi1, AddrUpdateHeader, (uint8_t*)&updateHeader, sizeof(UPDATE_HEADER));
+  memcpy((uint8_t*)&updateHeaderOld, (uint8_t*)&updateHeader, sizeof(UPDATE_HEADER));
 
   if (saveSwInFlashExt(fileName)) {
+    flashExtWriteEx(FlashSpi1, AddrUpdateHeader, (uint8_t*)&updateHeader, sizeof(UPDATE_HEADER));
+
+    parameters.set(CCS_CMD_UPDATE_SW_MASTER, 0.0);
+    parameters.set(CCS_CMD_UPDATE_SW_MASTER, 1.0);
+    int timeOut = UPDATE_MASTER_TIMEOUT;
+    float oldValue = 0;
+    while (1) {
+      osDelay(5);
+      if (parameters.get(CCS_CMD_UPDATE_SW_MASTER) == 0)
+        break;
+      if (parameters.get(CCS_CMD_UPDATE_SW_MASTER) == 2) {
+        parameters.set(CCS_CMD_UPDATE_SW_MASTER, 0.0);
+        flashExtWriteEx(FlashSpi1, AddrUpdateHeader, (uint8_t*)&updateHeaderOld, sizeof(UPDATE_HEADER));
+        return false;
+      }
+      if (--timeOut <= 0) {
+        parameters.set(CCS_CMD_UPDATE_SW_MASTER, 0.0);
+        flashExtWriteEx(FlashSpi1, AddrUpdateHeader, (uint8_t*)&updateHeaderOld, sizeof(UPDATE_HEADER));
+        return false;
+      }
+      if (parameters.get(CCS_PROGRESS_VALUE) != oldValue)
+        timeOut = UPDATE_MASTER_TIMEOUT;
+      oldValue = parameters.get(CCS_PROGRESS_VALUE);
+    }
+
     updateHeader.flag = 0x5A;
     updateHeader.type = TypeNewUpdate;
-    flashExtWriteEx(FlashSpi1, AddrUpdateHeader, (uint8_t*)&updateHeader, sizeof(updateHeader));
+    flashExtWriteEx(FlashSpi1, AddrUpdateHeader, (uint8_t*)&updateHeader, sizeof(UPDATE_HEADER));
     return true;
   }
 
   return false;
+}
+
+StatusType readSwFromFlashExt(uint32_t address, uint8_t *data, uint32_t size)
+{
+  StatusType status = flashExtRead(FlashSpi1, address, data, size);
+  return status;
+}
+
+StatusType writeSwInFlashExt(uint32_t address, uint8_t *data, uint32_t size)
+{
+  StatusType status = flashExtWriteEx(FlashSpi1, address, data, size);
+  return status;
 }
