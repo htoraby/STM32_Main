@@ -232,6 +232,11 @@ void VsdEtalon::getNewValue(uint16_t id)
       if (parameters.get(CCS_TRANS_CABLE_CROSS) != value)
         parameters.set(CCS_TRANS_CABLE_CROSS, value);
       break;
+    case VSD_TRANS_VOLTAGE_TAP_OFF:
+      setValue(id, value);
+      if (parameters.get(CCS_TRANS_VOLTAGE_TAP_OFF) != value)
+        parameters.set(CCS_TRANS_VOLTAGE_TAP_OFF, value);
+      break;
     case VSD_TRANS_NEED_VOLTAGE_TAP_OFF:
       setValue(id, value);
       if (parameters.get(CCS_TRANS_NEED_VOLTAGE_TAP_OFF) != value)
