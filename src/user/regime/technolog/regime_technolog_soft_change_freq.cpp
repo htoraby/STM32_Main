@@ -27,8 +27,9 @@ void RegimeTechnologSoftChangeFreq::processing()
   switch (state_) {
   case IdleState:
     if (action_ != OffAction) { // Режим - включен
-      if ((parameters.get(CCS_CONDITION) == CCS_CONDITION_RUN) && // Двигатель - работа;
-          ksu.isAutoMode()) {                                     // Режим - авто;
+      if ((((parameters.get(CCS_CONDITION) == CCS_CONDITION_RUNNING) &&
+            (parameters.get(VSD_FREQUENCY_NOW) >= beginFreq_)) ||
+           (parameters.get(CCS_CONDITION) == CCS_CONDITION_RUN)) && ksu.isAutoMode()) {
         ksu.setFreq(beginFreq_);
         beginTime_ = ksu.getTime();
         state_ = WorkState;
