@@ -30,7 +30,9 @@ void RegimeTechnologAlternationFreq::processing()
   switch (state_) {
   case IdleState:
     if (action_ != OffAction) {                       // Режим - включен
-      if (ksu.isWorkMotor() && ksu.isAutoMode()) {    // Двигатель - работа; Режим - авто;
+     if ((((parameters.get(CCS_CONDITION) == CCS_CONDITION_RUNNING) &&
+           (parameters.get(VSD_FREQUENCY_NOW) >= parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_1))) ||
+          (parameters.get(CCS_CONDITION) == CCS_CONDITION_RUN)) && ksu.isAutoMode()) {
         ksu.setFreq(firstFreq_);                      // Устанавливаем первую частоту
         beginTime_ = ksu.getTime();                   // Запоминаем время когда перешли на частоту
         state_ = RunningState;                        // Переходим на работу на первой частоте
