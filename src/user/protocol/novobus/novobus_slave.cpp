@@ -1,6 +1,7 @@
 #include "novobus_slave.h"
 #include "user_main.h"
 #include "string.h"
+#include "update.h"
 
 #define MAX_QUEUE_SIZE 500
 
@@ -315,6 +316,42 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
         checkMessage();
 
         sizePkt = 7 + dataNumber*6;
+        break;
+
+        // Команда чтения прошивки обновления
+      case ReadSoftwareCommand:
+        id.char_t[3] = rxBuffer_[2];
+        id.char_t[2] = rxBuffer_[3];
+        id.char_t[1] = rxBuffer_[4];
+        id.char_t[0] = rxBuffer_[5];
+        value.char_t[1] = rxBuffer_[6];
+        value.char_t[0] = rxBuffer_[7];
+        readSwFromFlashExt(id.uint32_t, &txBuffer_[11], value.uint32_t);
+
+        txBuffer_[5] = rxBuffer_[2];
+        txBuffer_[6] = rxBuffer_[3];
+        txBuffer_[7] = rxBuffer_[4];
+        txBuffer_[8] = rxBuffer_[5];
+        txBuffer_[9] = rxBuffer_[6];
+        txBuffer_[10] = rxBuffer_[7];
+
+        checkMessage();
+
+        sizePkt = 7 + 6 + value.uint32_t;
+        break;
+        // Команда записи прошивки обновления
+      case WriteSoftwareCommand:
+        id.char_t[3] = rxBuffer_[2];
+        id.char_t[2] = rxBuffer_[3];
+        id.char_t[1] = rxBuffer_[4];
+        id.char_t[0] = rxBuffer_[5];
+        value.char_t[1] = rxBuffer_[6];
+        value.char_t[0] = rxBuffer_[7];
+        writeSwInFlashExt(id.uint32_t, &rxBuffer_[8], value.uint32_t);
+
+        checkMessage();
+
+        sizePkt = 7;
         break;
 
       default:

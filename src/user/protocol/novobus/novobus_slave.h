@@ -5,8 +5,9 @@
 #include "board.h"
 #include "host.h"
 
-#define MAX_IDS_BUFFER 35 //!< Максимальное количество ID во временом буффере
-#define MAX_ADDRS_BUFFER 10 //!< Максимальное количество адресов во временом буффере
+#define MAX_IDS_BUFFER 35    //!< Максимальное количество ID во временом буффере
+#define MAX_ADDRS_BUFFER 10  //!< Максимальное количество адресов во временом буффере
+#define MAX_SIZE_SW 220      //!< Максимальный размер пакета с прошивкой
 
 /*!
  * \brief Класс протокола обмена между stm32 и контроллером визуализации
@@ -29,6 +30,8 @@ public:
     ReadEventsCommand,
     ReadMinCommand,
     ReadMaxCommand,
+    ReadSoftwareCommand,
+    WriteSoftwareCommand,
   } NovobusCommand;
 
   /*!

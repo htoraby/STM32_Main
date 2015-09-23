@@ -35,6 +35,7 @@
 #define EM_UART uart7
 #define HOST_UART uart1
 #define SCADA_UART uart4
+#define VSD_LOG_UART uart6
 
 
 #define USB_DISK "0"
