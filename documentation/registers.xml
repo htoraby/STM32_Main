@@ -50,7 +50,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>150.0</max>
+		<max>2500.0</max>
 		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
@@ -71,7 +71,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>150.0</max>
+		<max>2500.0</max>
 		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
@@ -92,7 +92,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>150.0</max>
+		<max>2500.0</max>
 		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
@@ -134,7 +134,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>150.0</max>
+		<max>2500.0</max>
 		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13809,7 +13809,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>2500.0</max>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>Выходной ток ПЧ фаза U</text>
@@ -13828,7 +13828,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>2500.0</max>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>Выходной ток ПЧ фаза V</text>
@@ -13847,7 +13847,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>2500.0</max>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>Выходной ток ПЧ фаза W</text>
@@ -13866,7 +13866,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>2500.0</max>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>Ток Id</text>

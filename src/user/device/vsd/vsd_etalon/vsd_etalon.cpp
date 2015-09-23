@@ -284,6 +284,9 @@ void VsdEtalon::getNewValue(uint16_t id)
       if (parameters.get(CCS_COEF_OUT_CURRENT_3) != value)
         parameters.set(CCS_COEF_OUT_CURRENT_3, value);
       break;
+    case VSD_OUT_VOLTAGE_MOTOR:
+      setValue(id, value);
+      break;
     default:
       setValue(id, value);
       break;
