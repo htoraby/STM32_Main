@@ -106,7 +106,7 @@ void Vsd::initParameters()
   parameters_[VSD_CURRENT_OUT_PHASE_1 - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_CURRENT_OUT_PHASE_1 - VSD_BEGIN].value.float_t                 = 0;
   parameters_[VSD_CURRENT_OUT_PHASE_1 - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_CURRENT_OUT_PHASE_1 - VSD_BEGIN].max                           = 999999.0;
+  parameters_[VSD_CURRENT_OUT_PHASE_1 - VSD_BEGIN].max                           = 2500.0;
   parameters_[VSD_CURRENT_OUT_PHASE_1 - VSD_BEGIN].def                           = 0;
   parameters_[VSD_CURRENT_OUT_PHASE_1 - VSD_BEGIN].discret                       = 10;
   parameters_[VSD_CURRENT_OUT_PHASE_1 - VSD_BEGIN].code                          = 0;
@@ -118,7 +118,7 @@ void Vsd::initParameters()
   parameters_[VSD_CURRENT_OUT_PHASE_2 - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_CURRENT_OUT_PHASE_2 - VSD_BEGIN].value.float_t                 = 0;
   parameters_[VSD_CURRENT_OUT_PHASE_2 - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_CURRENT_OUT_PHASE_2 - VSD_BEGIN].max                           = 999999.0;
+  parameters_[VSD_CURRENT_OUT_PHASE_2 - VSD_BEGIN].max                           = 2500.0;
   parameters_[VSD_CURRENT_OUT_PHASE_2 - VSD_BEGIN].def                           = 0;
   parameters_[VSD_CURRENT_OUT_PHASE_2 - VSD_BEGIN].discret                       = 10;
   parameters_[VSD_CURRENT_OUT_PHASE_2 - VSD_BEGIN].code                          = 0;
@@ -130,7 +130,7 @@ void Vsd::initParameters()
   parameters_[VSD_CURRENT_OUT_PHASE_3 - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_CURRENT_OUT_PHASE_3 - VSD_BEGIN].value.float_t                 = 0;
   parameters_[VSD_CURRENT_OUT_PHASE_3 - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_CURRENT_OUT_PHASE_3 - VSD_BEGIN].max                           = 999999.0;
+  parameters_[VSD_CURRENT_OUT_PHASE_3 - VSD_BEGIN].max                           = 2500.0;
   parameters_[VSD_CURRENT_OUT_PHASE_3 - VSD_BEGIN].def                           = 0;
   parameters_[VSD_CURRENT_OUT_PHASE_3 - VSD_BEGIN].discret                       = 10;
   parameters_[VSD_CURRENT_OUT_PHASE_3 - VSD_BEGIN].code                          = 0;
@@ -142,7 +142,7 @@ void Vsd::initParameters()
   parameters_[VSD_CURRENT_DC - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_CURRENT_DC - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_CURRENT_DC - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_CURRENT_DC - VSD_BEGIN].max                                    = 999999.0;
+  parameters_[VSD_CURRENT_DC - VSD_BEGIN].max                                    = 2500.0;
   parameters_[VSD_CURRENT_DC - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_CURRENT_DC - VSD_BEGIN].discret                                = 10;
   parameters_[VSD_CURRENT_DC - VSD_BEGIN].code                                   = 0;
@@ -4034,5 +4034,41 @@ void Vsd::initParameters()
   parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].def                            = 20.0;
   parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].discret                        = 1;
   parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].code                           = 13;
+  // Рабочее состояние при включении питания
+  parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].id                             = VSD_WORK_STATE_WHEN_ON;
+  parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].access                         = ACCESS_OPERATOR;
+  parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].physic                         = PHYSIC_NUMERIC;
+  parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].validity                       = VALIDITY_ERROR;
+  parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].value.float_t                  = 0.0;
+  parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].min                            = 0.0;
+  parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].max                            = 1.0;
+  parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].def                            = 0.0;
+  parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].discret                        = 1;
+  parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].code                           = 0;
+  // 
+  parameters_[VSD_VOLTAGE_FILTER_TIME_CONST - VSD_BEGIN].id                      = VSD_VOLTAGE_FILTER_TIME_CONST;
+  parameters_[VSD_VOLTAGE_FILTER_TIME_CONST - VSD_BEGIN].access                  = ACCESS_OPERATOR;
+  parameters_[VSD_VOLTAGE_FILTER_TIME_CONST - VSD_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[VSD_VOLTAGE_FILTER_TIME_CONST - VSD_BEGIN].physic                  = PHYSIC_TIME;
+  parameters_[VSD_VOLTAGE_FILTER_TIME_CONST - VSD_BEGIN].validity                = VALIDITY_ERROR;
+  parameters_[VSD_VOLTAGE_FILTER_TIME_CONST - VSD_BEGIN].value.float_t           = 0.0;
+  parameters_[VSD_VOLTAGE_FILTER_TIME_CONST - VSD_BEGIN].min                     = 0.001;
+  parameters_[VSD_VOLTAGE_FILTER_TIME_CONST - VSD_BEGIN].max                     = 1.0;
+  parameters_[VSD_VOLTAGE_FILTER_TIME_CONST - VSD_BEGIN].def                     = 0.0;
+  parameters_[VSD_VOLTAGE_FILTER_TIME_CONST - VSD_BEGIN].discret                 = 1000;
+  parameters_[VSD_VOLTAGE_FILTER_TIME_CONST - VSD_BEGIN].code                    = 0;
+  // 
+  parameters_[VSD_CONTROL_WORD_TIMEOUT_TIME - VSD_BEGIN].id                      = VSD_CONTROL_WORD_TIMEOUT_TIME;
+  parameters_[VSD_CONTROL_WORD_TIMEOUT_TIME - VSD_BEGIN].access                  = ACCESS_OPERATOR;
+  parameters_[VSD_CONTROL_WORD_TIMEOUT_TIME - VSD_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[VSD_CONTROL_WORD_TIMEOUT_TIME - VSD_BEGIN].physic                  = PHYSIC_TIME;
+  parameters_[VSD_CONTROL_WORD_TIMEOUT_TIME - VSD_BEGIN].validity                = VALIDITY_ERROR;
+  parameters_[VSD_CONTROL_WORD_TIMEOUT_TIME - VSD_BEGIN].value.float_t           = 1.0;
+  parameters_[VSD_CONTROL_WORD_TIMEOUT_TIME - VSD_BEGIN].min                     = 0.1;
+  parameters_[VSD_CONTROL_WORD_TIMEOUT_TIME - VSD_BEGIN].max                     = 18000.0;
+  parameters_[VSD_CONTROL_WORD_TIMEOUT_TIME - VSD_BEGIN].def                     = 1.0;
+  parameters_[VSD_CONTROL_WORD_TIMEOUT_TIME - VSD_BEGIN].discret                 = 10;
+  parameters_[VSD_CONTROL_WORD_TIMEOUT_TIME - VSD_BEGIN].code                    = 0;
 }
 

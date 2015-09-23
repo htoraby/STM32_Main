@@ -38,7 +38,7 @@ void RegimeTechnologSoftChangeFreq::processing()
   case WorkState:
     if (ksu.isWorkMotor() && ksu.isAutoMode()) { // Двигатель - работа; Режим - авто;
       uint32_t time = ksu.getSecFromCurTime(beginTime_);
-      if ((time > period_one_step_) && period_one_step_) {
+      if ((time >= period_one_step_) && period_one_step_) {
         beginTime_ = ksu.getTime();
         float freq = parameters.get(VSD_FREQUENCY) + copySign(0.1, endFreq_ - beginFreq_);
         float sign = copySign(1, endFreq_ - beginFreq_);

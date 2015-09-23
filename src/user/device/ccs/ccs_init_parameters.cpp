@@ -34,7 +34,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_CURRENT_PHASE_1 - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_MOTOR_CURRENT_PHASE_1 - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_MOTOR_CURRENT_PHASE_1 - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_MOTOR_CURRENT_PHASE_1 - CCS_BEGIN].max                         = 150.0;
+  parameters_[CCS_MOTOR_CURRENT_PHASE_1 - CCS_BEGIN].max                         = 2500.0;
   parameters_[CCS_MOTOR_CURRENT_PHASE_1 - CCS_BEGIN].discret                     = 10;
   parameters_[CCS_MOTOR_CURRENT_PHASE_1 - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_MOTOR_CURRENT_PHASE_1 - CCS_BEGIN].code                        = 0;
@@ -46,7 +46,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_CURRENT_PHASE_2 - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_MOTOR_CURRENT_PHASE_2 - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_MOTOR_CURRENT_PHASE_2 - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_MOTOR_CURRENT_PHASE_2 - CCS_BEGIN].max                         = 150.0;
+  parameters_[CCS_MOTOR_CURRENT_PHASE_2 - CCS_BEGIN].max                         = 2500.0;
   parameters_[CCS_MOTOR_CURRENT_PHASE_2 - CCS_BEGIN].discret                     = 10;
   parameters_[CCS_MOTOR_CURRENT_PHASE_2 - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_MOTOR_CURRENT_PHASE_2 - CCS_BEGIN].code                        = 0;
@@ -58,7 +58,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_CURRENT_PHASE_3 - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_MOTOR_CURRENT_PHASE_3 - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_MOTOR_CURRENT_PHASE_3 - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_MOTOR_CURRENT_PHASE_3 - CCS_BEGIN].max                         = 150.0;
+  parameters_[CCS_MOTOR_CURRENT_PHASE_3 - CCS_BEGIN].max                         = 2500.0;
   parameters_[CCS_MOTOR_CURRENT_PHASE_3 - CCS_BEGIN].discret                     = 10;
   parameters_[CCS_MOTOR_CURRENT_PHASE_3 - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_MOTOR_CURRENT_PHASE_3 - CCS_BEGIN].code                        = 0;
@@ -82,7 +82,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_CURRENT_AVARAGE - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_MOTOR_CURRENT_AVARAGE - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_MOTOR_CURRENT_AVARAGE - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_MOTOR_CURRENT_AVARAGE - CCS_BEGIN].max                         = 150.0;
+  parameters_[CCS_MOTOR_CURRENT_AVARAGE - CCS_BEGIN].max                         = 2500.0;
   parameters_[CCS_MOTOR_CURRENT_AVARAGE - CCS_BEGIN].discret                     = 10;
   parameters_[CCS_MOTOR_CURRENT_AVARAGE - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_MOTOR_CURRENT_AVARAGE - CCS_BEGIN].code                        = 0;
@@ -5636,11 +5636,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP - CCS_BEGIN].operation         = OPERATION_WRITE;
   parameters_[CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP - CCS_BEGIN].physic            = PHYSIC_TIME;
   parameters_[CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP - CCS_BEGIN].validity          = VALIDITY_OK;
-  parameters_[CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP - CCS_BEGIN].value.float_t     = 5.0;
-  parameters_[CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP - CCS_BEGIN].min               = 5.0;
+  parameters_[CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP - CCS_BEGIN].value.float_t     = 1.0;
+  parameters_[CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP - CCS_BEGIN].min               = 1.0;
   parameters_[CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP - CCS_BEGIN].max               = 86400.0;
   parameters_[CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP - CCS_BEGIN].discret           = 1;
-  parameters_[CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP - CCS_BEGIN].def               = 5.0;
+  parameters_[CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP - CCS_BEGIN].def               = 1.0;
   parameters_[CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP - CCS_BEGIN].code              = 0;
   // Параметры ВНР
   parameters_[CCS_RGM_MODE_DATE_TIME - CCS_BEGIN].id                             = CCS_RGM_MODE_DATE_TIME;

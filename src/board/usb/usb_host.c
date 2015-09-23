@@ -36,6 +36,7 @@ static void userProcess(USBH_HandleTypeDef *phost, uint8_t id)
     usbState = USB_DISCONNECT;
     break;
   case HOST_USER_CLASS_ACTIVE:
+    osDelay(100);
     if (f_mount(&fatfs, USB_DISK, 0) != FR_OK) {
       asm("nop"); // Ошибка
     } else {

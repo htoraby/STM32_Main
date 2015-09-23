@@ -1116,7 +1116,10 @@ enum enID
   VSD_ETALON_BASE_VOLTAGE = 10333,                           //!< Максимальная рабочая частота
   VSD_TRANS_CABLE_CROSS = 10334,                             //!< Сечение кабеля
   VSD_TEMPERATURE_INTAKE = 10335,                            //!< Температура пласта
-  VSD_END = 10336,                                           //!< 
+  VSD_WORK_STATE_WHEN_ON = 10336,                            //!< Рабочее состояние при включении питания
+  VSD_VOLTAGE_FILTER_TIME_CONST = 10337,                     //!< 
+  VSD_CONTROL_WORD_TIMEOUT_TIME = 10338,                     //!< 
+  VSD_END = 10339,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме
