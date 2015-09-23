@@ -8,7 +8,19 @@ class VsdDanfoss : public Vsd
 {
 public:
   VsdDanfoss();
-  ~VsdDanfoss();
+  virtual ~VsdDanfoss();
+
+  void initModbusParameters();
+//  void initParameters();
+//  void init();
+//  bool isConnect();
+//  void getNewValue(uint16_t id);
+//  uint8_t setNewValue(uint16_t id, float value);
+
+private:
+  ModbusParameter modbusParameters_[132];
+  DeviceModbus *dm_;
+
 };
 
 #endif // VSDDANFOSS_H

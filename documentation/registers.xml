@@ -18678,6 +18678,67 @@
 	</param>
 	<param>
 		<id>10336</id>
+		<name>VSD_WORK_STATE_WHEN_ON</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<comment>Рабочее состояние при включении питания</comment>
+	</param>
+	<param>
+		<id>10337</id>
+		<name>VSD_VOLTAGE_FILTER_TIME_CONST</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.001</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XX_XXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10338</id>
+		<name>VSD_CONTROL_WORD_TIMEOUT_TIME</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.1</min>
+		<max>18000.0</max>
+		<def>1.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXXX_X</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10339</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>
