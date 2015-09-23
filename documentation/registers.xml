@@ -7915,12 +7915,12 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>5.0</min>
+		<min>1.0</min>
 		<max>86400.0</max>
-		<def>5.0</def>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>5.0</value>
+		<value>1.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
