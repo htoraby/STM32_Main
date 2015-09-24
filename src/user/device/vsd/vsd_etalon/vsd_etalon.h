@@ -12,6 +12,7 @@
 #include "device_modbus.h"
 
 class RegimeRunEtalon;
+class VsdEtalonLog;
 
 enum enInfoEtalon
 {
@@ -309,6 +310,7 @@ public:
 private:
   ModbusParameter modbusParameters_[121];
   DeviceModbus *dm_;
+  VsdEtalonLog *log_;
 
   RegimeRunEtalon *regimeRun_;
 

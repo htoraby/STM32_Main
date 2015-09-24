@@ -8,6 +8,7 @@
 #include "vsd_etalon.h"
 #include "user_main.h"
 #include "regime_run_etalon.h"
+#include "vsd_etalon_log.h"
 
 VsdEtalon::VsdEtalon()
 {
@@ -18,6 +19,7 @@ VsdEtalon::~VsdEtalon()
 {
   delete regimeRun_;
   delete dm_;
+  delete log_;
 }
 
 void VsdEtalon::init()
@@ -31,6 +33,8 @@ void VsdEtalon::init()
   dm_ = new DeviceModbus(modbusParameters_, count,
                          VSD_UART, 115200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1);
   dm_->createThread("ProtocolVsd", getValueDeviceQId_);
+
+  log_ = new VsdEtalonLog();
 
   initParameters();
   readParameters();
