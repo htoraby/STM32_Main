@@ -206,10 +206,20 @@ void flashExtInit(FlashSpiNum num)
   asm("nop");
 }
 
+static StatusType flashDmaWait(FlashSpiNum num)
+{
+  int timeOut = FLASH_TIMEOUT;
+  while (!flashExts[num].spiReady) {
+    osDelay(1);
+    if (--timeOut <= 0)
+      return StatusError;
+  }
+  return StatusOk;
+}
+
 void flashTxRxCpltCallback(FlashSpiNum num)
 {
-  setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
+  flashExts[num].spiReady = true;
 }
 
 StatusType spiTransmitReceive(FlashSpiNum num, uint8_t *txData, uint8_t *rxData,
@@ -348,18 +358,15 @@ StatusType flashExtRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32
     status = StatusOk;
 
   if (status == StatusOk) {
+    flashExts[num].spiReady = false;
     if (HAL_SPI_Receive_DMA(&flashExts[num].spi, data, size) != HAL_OK)
       status = StatusError;
+    else
+      status = flashDmaWait(num);
+  }
+  setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 
-    if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) == osEventTimeout) {
-      status = StatusError;
-    } else {
-      osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
-    }
-  }
-  if (status != StatusOk) {
-    flashTxRxCpltCallback(num);
-  }
+  osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
 
   return status;
 }
@@ -385,22 +392,19 @@ StatusType flashWritePage(FlashSpiNum num, uint32_t address, uint8_t *data, uint
   if (HAL_SPI_Transmit(&flashExts[num].spi, buf, 4, FLASH_TIMEOUT) == HAL_OK)
     status = StatusOk;
   if (status == StatusOk) {
+    flashExts[num].spiReady = false;
     if (HAL_SPI_Transmit_DMA(&flashExts[num].spi, data, size) != HAL_OK)
       status = StatusError;
-
-    if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) == osEventTimeout) {
-      status = StatusError;
-    } else {
-      osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
-    }
+    else
+      status = flashDmaWait(num);
   }
-  if (status != StatusOk) {
-    flashTxRxCpltCallback(num);
-  }
+  setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 
   // Ожидание завершения операции
   flashReady(num);
   flashWriteDisable(num);
+
+  osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
 
   return status;
 }
