@@ -14,42 +14,42 @@ typedef enum {
 
   OverVoltInProtReactId,          //!< "Сработала защита: Превышение питания сети"
   OverVoltInApvId,                //!< "АПВ по защите: Превышение питания сети"
-  OverVoltInApvDisabledId,        //!< "АПВ запрещен: Превышение питания сети"
+  OverVoltInApvDisabledId,        //!< "АПВ запрещено: Превышение питания сети"
   OverVoltInProtBlockedId,        //!< "Блокировка по защите: Превышение питания сети"
 
   UnderVoltInProtReactId,         //!< "Сработала защита: Снижение питания сети"
   UnderVoltInApvId,               //!< "АПВ по защите: Снижение питания сети"
-  UnderVoltInApvDisabledId,       //!< "АПВ запрещен: Снижение питания сети"
+  UnderVoltInApvDisabledId,       //!< "АПВ запрещено: Снижение питания сети"
   UnderVoltInProtBlockedId,       //!< "Блокировка по защите: Снижение питания сети"
 
   ImbalanceVoltInProtReactId,     //!< "Сработала защита: Дисбаланс напряжения"
   ImbalanceVoltInApvId,           //!< "АПВ по защите: Дисбаланс напряжения"
-  ImbalanceVoltInApvDisabledId,   //!< "АПВ запрещен: Дисбаланс напряжения"
+  ImbalanceVoltInApvDisabledId,   //!< "АПВ запрещено: Дисбаланс напряжения"
   ImbalanceVoltInProtBlockedId,   //!< "Блокировка по защите: Дисбаланс напряжения"
 
   OverloadMotorProtReactId,       //!< "Сработала защита: Перегруз двигателя"
   OverloadMotorApvId,             //!< "АПВ по защите: Перегруз двигателя"
-  OverloadMotorApvDisabledId,     //!< "АПВ запрещен: Перегруз двигателя"
+  OverloadMotorApvDisabledId,     //!< "АПВ запрещено: Перегруз двигателя"
   OverloadMotorProtBlockedId,     //!< "Блокировка по защите: Перегруз двигателя"
 
   UnderloadMotorProtReactId,      //!< "Сработала защита: Недогруз двигателя"
   UnderloadMotorApvId,            //!< "АПВ по защите: Недогруз двигателя"
-  UnderloadMotorApvDisabledId,    //!< "АПВ запрещен: Недогруз двигателя"
+  UnderloadMotorApvDisabledId,    //!< "АПВ запрещено: Недогруз двигателя"
   UnderloadMotorProtBlockedId,    //!< "Блокировка по защите: Недогруз двигателя"
 
   CurrentMotorProtReactId,        //!< "Сработала защита: Предел тока двигателя"
   CurrentMotorApvId,              //!< "АПВ по защите: Предел тока двигателя"
-  CurrentMotorApvDisabledId,      //!< "АПВ запрещен: Предел тока двигателя"
+  CurrentMotorApvDisabledId,      //!< "АПВ запрещено: Предел тока двигателя"
   CurrentMotorProtBlockedId,      //!< "Блокировка по защите: Предел тока двигателя"
 
   ImbalanceCurMotorProtReactId,   //!< "Сработала защита: Дисбаланс токов ПЭД"
   ImbalanceCurMotorApvId,         //!< "АПВ по защите: Дисбаланс токов ПЭД"
-  ImbalanceCurMotorApvDisabledId, //!< "АПВ запрещен: Дисбаланс токов ПЭД"
+  ImbalanceCurMotorApvDisabledId, //!< "АПВ запрещено: Дисбаланс токов ПЭД"
   ImbalanceCurMotorProtBlockedId, //!< "Блокировка по защите: Дисбаланс токов ПЭД"
 
   OutOfSyncMotorProtReactId,      //!< "Сработала защита: Рассинхронизация ПВЭД"
   OutOfSyncMotorApvId,            //!< "АПВ по защите: Рассинхронизация ПВЭД"
-  OutOfSyncMotorApvDisabledId,    //!< "АПВ запрещен: Рассинхронизация ПВЭД"
+  OutOfSyncMotorApvDisabledId,    //!< "АПВ запрещено: Рассинхронизация ПВЭД"
   OutOfSyncMotorProtBlockedId,    //!< "Блокировка по защите: Рассинхронизация ПВЭД"
 
   TurbineRotationBeginId,         //!< "Турбинное вращение. Начало"
@@ -57,17 +57,17 @@ typedef enum {
 
   TemperatureMotorProtReactId,    //!< "Сработала защита: Перегрев двигателя"
   TemperatureMotorApvId,          //!< "АПВ по защите: Перегрев двигателя"
-  TemperatureMotorApvDisabledId,  //!< "АПВ запрещен: Перегрев двигателя"
+  TemperatureMotorApvDisabledId,  //!< "АПВ запрещено: Перегрев двигателя"
   TemperatureMotorProtBlockedId,  //!< "Блокировка по защите: Перегрев двигателя"
 
   PressureIntakeProtReactId,      //!< "Сработала защита: Давление на приёме насоса"
   PressureIntakeApvId,            //!< "АПВ по защите: Давление на приёме насоса"
-  PressureIntakeApvDisabledId,    //!< "АПВ запрещен: Давление на приёме насоса"
+  PressureIntakeApvDisabledId,    //!< "АПВ запрещено: Давление на приёме насоса"
   PressureIntakeProtBlockedId,    //!< "Блокировка по защите: Давление на приёме насоса"
 
   ResistIsolationProtReactId,     //!< "Сработала защита: Сопротивление изоляции"
   ResistIsolationApvId,           //!< "АПВ по защите: Сопротивление изоляции"
-  ResistIsolationApvDisabledId,   //!< "АПВ запрещен: Сопротивление изоляции"
+  ResistIsolationApvDisabledId,   //!< "АПВ запрещено: Сопротивление изоляции"
   ResistIsolationProtBlockedId,   //!< "Блокировка по защите: Сопротивление изоляции"
 
   LookDoorProtReactId,            //!< "Сработала защита: Блокировка двери силового отсека"
@@ -75,7 +75,7 @@ typedef enum {
 
   HardwareVsdProtReactId,         //!< "Сработала защита: Аппаратная защита ЧРП"
   HardwareVsdApvId,               //!< "АПВ по защите: Аппаратная защита ЧРП"
-  HardwareVsdApvDisabledId,       //!< "АПВ запрещен: Аппаратная защита ЧРП"
+  HardwareVsdApvDisabledId,       //!< "АПВ запрещено: Аппаратная защита ЧРП"
   HardwareVsdProtBlockedId,       //!< "Блокировка по защите: Аппаратная защита ЧРП"
 
   HardwareVsdUdLowProtReactId,    //!< "Сработала защита: Аппаратная защита ЧРП, напряжение на шине инвертора Ud ниже минимально допустимого"
