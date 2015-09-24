@@ -1,4 +1,5 @@
 #include "vsd_danfoss.h"
+#include "user_main.h"
 
 VsdDanfoss::VsdDanfoss()
 {
@@ -8,5 +9,158 @@ VsdDanfoss::VsdDanfoss()
 VsdDanfoss::~VsdDanfoss()
 {
 
+}
+
+void VsdDanfoss::initParameters()
+{
+  int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
+  // Цикл по карте регистров Modbus
+  for (int indexModbus = 0; indexModbus < count; indexModbus++) {
+    int id = dm_->getFieldID(indexModbus);
+    if (id <= 0)
+      continue;
+    // Получаем индекс параметра в банке параметров
+    int indexArray = getIndexAtId(id);
+    // Если нашли параметр
+    if (indexArray) {
+      // Уровень доступа оператор
+      setFieldAccess(indexArray, ACCESS_OPERATOR);
+      // Операции над параметром
+      setFieldOperation(indexArray, dm_->getFieldOperation(indexModbus));
+      // Физический смысл
+      setFieldPhysic(indexArray, dm_->getFieldPhysic(indexModbus));
+      // Получаем минимум
+      float tempVal = dm_->getFieldMinimum(indexModbus);
+      // Применяем коэффициент
+      tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));
+      tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
+      setMin(id, tempVal);
+      // Получаем мaксимум
+      tempVal = dm_->getFieldMaximum(indexModbus);
+      // Применяем коэффициент
+      tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));
+      tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
+      setMax(id, tempVal);
+      // Получаем значение по умолчанию
+      tempVal = dm_->getFieldDefault(indexModbus);
+      // Применяем коэффициент
+      tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));
+      tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
+      setFieldDef(indexArray, tempVal);
+      // Получили флаг валидности
+      setFieldValidity(indexArray, dm_->getFieldValidity(indexModbus));
+      // Присвоили значение значению по умолчанию
+      setFieldValue(indexArray, getFieldDefault(indexArray));
+    }
+  }
+}
+
+void VsdDanfoss::init()
+{
+  initModbusParameters();
+
+  // Создание задачи обновления параметров
+  createThread("UpdateParamsVsd");
+  // Создание объекта протокола связи с утройством
+  int16_t count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
+  dm_ = new DeviceModbus(modbusParameters_, count,
+                         VSD_UART, 115200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1);
+  dm_->createThread("ProtocolVsd", getValueDeviceQId_);
+
+  initParameters();
+  readParameters();
+
+  setLimitsFrequence(0, getValue(VSD_LOW_LIM_SPEED_MOTOR));
+  setLimitsFrequence(1, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+}
+
+bool VsdDanfoss::isConnect()
+{
+  bool curConnect = dm_->isConnect();
+
+  if (prevConnect_ && !curConnect) {
+    int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
+    // Цикл по карте регистров
+    for (int indexModbus = 0; indexModbus < count; indexModbus++) {
+      int id = dm_->getFieldID(indexModbus);
+      if (id <= 0)
+        continue;
+      float value = NAN;
+      setValue(id, value);
+    }
+  }
+  prevConnect_ = curConnect;
+
+  return curConnect;
+}
+
+void VsdDanfoss::getNewValue(uint16_t id)
+{
+  float value = 0;
+  // Преобразуем данные из полученного типа данных в float
+  ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtId(id));
+
+  if (param->validity != ok_r) {
+    value = NAN;
+    setValue(id, value);
+    return;
+  }
+
+  switch (param->typeData) {
+  case TYPE_DATA_INT16:
+    value = (float)param->value.int16_t[0];
+    break;
+  case TYPE_DATA_UINT16:
+    value = (float)param->value.uint16_t[0];
+    break;
+  case  TYPE_DATA_INT32:
+    value = (float)param->value.int32_t;
+    break;
+  case  TYPE_DATA_UINT32:
+    value = (float)param->value.uint32_t;
+    break;
+  case  TYPE_DATA_FLOAT:
+    value = (float)param->value.float_t;
+    break;
+  default:
+    break;
+  }
+
+  // Применяем коэффициент преобразования
+  value = value * param->coefficient;
+
+  // Применяем единицы измерения
+  value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
+
+  // Если получено новое значение параметра
+  if (getValue(id) != value) {
+    switch (id) {
+    default:
+      setValue(id, value);
+      break;
+    }
+  }
+}
+
+uint8_t VsdDanfoss::setNewValue(uint16_t id, float value)
+{
+  int16_t result;
+  switch (id) {
+  default:
+    result = setValue(id, value);
+    if (!result)
+      writeToDevice(id, value);
+    return result;
+  }
+}
+
+void VsdDanfoss::writeToDevice(int id, float value)
+{
+  dm_->writeModbusParameter(id, value);
+}
+
+void VsdDanfoss::readInDevice(int id)
+{
+  dm_->readModbusParameter(id);
 }
 

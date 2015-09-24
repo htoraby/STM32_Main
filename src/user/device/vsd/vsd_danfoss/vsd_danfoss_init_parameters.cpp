@@ -2275,3 +2275,5 @@ void VsdDanfoss::initModbusParameters()
                             0               // Значение
                            };
 }
+
+
