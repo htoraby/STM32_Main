@@ -125,13 +125,13 @@ static bool saveSwInFlashExt(char *fileName)
           calcCrcRx = crc16_ibm(buffer, readSize, calcCrcRx);
         else
           calcCrcRx = crc16_ibm(buffer, readSize-6, calcCrcRx);
-        if (calcCrc != calcCrcRx)
-          printf("Error CRC: file %s on line %d\r\n", __FILE__, __LINE__);
 
         lastAddress = lastAddress + readSize;
 
         if (++count > 30) {
           count = 0;
+          if (calcCrc != calcCrcRx)
+            printf("Error CRC: file %s on line %d\r\n", __FILE__, __LINE__);
           parameters.set(CCS_PROGRESS_VALUE, (float)(lastAddress - startAddress)/1024);
         }
       }
