@@ -94,6 +94,11 @@ bool VsdDanfoss::isConnect()
   return curConnect;
 }
 
+int VsdDanfoss::start()
+{
+  return ok_r;
+}
+
 void VsdDanfoss::getNewValue(uint16_t id)
 {
   float value = 0;
@@ -135,6 +140,55 @@ void VsdDanfoss::getNewValue(uint16_t id)
   // Если получено новое значение параметра
   if (getValue(id) != value) {
     switch (id) {
+    case VSD_UF_CHARACTERISTIC_F:
+      switch ((uint16_t)getValue(VSD_INDEX)) {
+      case 0:
+        setValue(VSD_UF_CHARACTERISTIC_F_1, value);
+        break;
+      case 1:
+        setValue(VSD_UF_CHARACTERISTIC_F_2, value);
+        break;
+      case 2:
+        setValue(VSD_UF_CHARACTERISTIC_F_3, value);
+        break;
+      case 3:
+        setValue(VSD_UF_CHARACTERISTIC_F_4, value);
+        break;
+      case 4:
+        setValue(VSD_UF_CHARACTERISTIC_F_5, value);
+        break;
+      case 5:
+        setValue(VSD_UF_CHARACTERISTIC_F_6, value);
+        break;
+      default:
+        break;
+      }
+      break;
+    case VSD_UF_CHARACTERISTIC_U:
+      switch ((uint16_t)getValue(VSD_INDEX)) {
+      case 0:
+        setValue(VSD_UF_CHARACTERISTIC_U_1, value);
+        break;
+      case 1:
+        setValue(VSD_UF_CHARACTERISTIC_U_2, value);
+        break;
+      case 2:
+        setValue(VSD_UF_CHARACTERISTIC_U_3, value);
+        break;
+      case 3:
+        setValue(VSD_UF_CHARACTERISTIC_U_4, value);
+        break;
+      case 4:
+        setValue(VSD_UF_CHARACTERISTIC_U_5, value);
+        break;
+      case 5:
+        setValue(VSD_UF_CHARACTERISTIC_U_6, value);
+        break;
+      default:
+        break;
+      }
+      break;
+
     default:
       setValue(id, value);
       break;
@@ -146,6 +200,7 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value)
 {
   int16_t result;
   switch (id) {
+
   default:
     result = setValue(id, value);
     if (!result)
@@ -162,5 +217,37 @@ void VsdDanfoss::writeToDevice(int id, float value)
 void VsdDanfoss::readInDevice(int id)
 {
   dm_->readModbusParameter(id);
+}
+
+void VsdDanfoss::readUf_F(uint16_t numPoint)
+{
+  if (getValue(VSD_INDEX) != numPoint) {
+    writeToDevice(VSD_INDEX, numPoint);
+  }
+  readInDevice(VSD_UF_CHARACTERISTIC_F);
+}
+
+void VsdDanfoss::writeUf_F(uint16_t numPoint, float value)
+{
+  if (getValue(VSD_INDEX) != numPoint) {
+    writeToDevice(VSD_INDEX, numPoint);
+  }
+  writeToDevice(VSD_UF_CHARACTERISTIC_F, value);
+}
+
+void VsdDanfoss::readUf_U(uint16_t numPoint)
+{
+  if (getValue(VSD_INDEX) != numPoint) {
+    writeToDevice(VSD_INDEX, numPoint);
+  }
+  readInDevice(VSD_UF_CHARACTERISTIC_U);
+}
+
+void VsdDanfoss::writeUf_U(uint16_t numPoint, float value)
+{
+  if (getValue(VSD_INDEX) != numPoint) {
+    writeToDevice(VSD_INDEX, numPoint);
+  }
+  writeToDevice(VSD_UF_CHARACTERISTIC_U, value);
 }
 

@@ -21,6 +21,15 @@ public:
   void writeToDevice(int id, float value);
   void readInDevice(int id);
 
+  void readUfCharacterictic();
+  void readUf_F(uint16_t numPoint);
+
+
+  void writeUf_F(uint16_t numPoint, float value);
+  void readUf_U(uint16_t numPoint);
+  void writeUf_U(uint16_t numPoint, float value);
+  int start();
+
 private:
   ModbusParameter modbusParameters_[132];
   DeviceModbus *dm_;

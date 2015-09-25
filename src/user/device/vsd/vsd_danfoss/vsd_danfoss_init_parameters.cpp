@@ -2190,7 +2190,7 @@ void VsdDanfoss::initModbusParameters()
                             0               // Значение
                            };
   modbusParameters_[127] = {// Слово предупреждения расширенное
-                            VSD_INVERTOR_STATUS4,
+                            VSD_STATUS_WORD_4,
                             16929,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
                             PHYSIC_NUMERIC, // Физическая величина параметра

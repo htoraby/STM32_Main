@@ -519,17 +519,17 @@ void Vsd::initParameters()
   parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].discret                      = 1;
   parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].code                         = 0;
   // Статус платы выпрямителя.
-  parameters_[VSD_THYR_STATUS - VSD_BEGIN].id                                    = VSD_THYR_STATUS;
-  parameters_[VSD_THYR_STATUS - VSD_BEGIN].access                                = ACCESS_OPERATOR;
-  parameters_[VSD_THYR_STATUS - VSD_BEGIN].operation                             = 0;
-  parameters_[VSD_THYR_STATUS - VSD_BEGIN].physic                                = 0;
-  parameters_[VSD_THYR_STATUS - VSD_BEGIN].validity                              = VALIDITY_ERROR;
-  parameters_[VSD_THYR_STATUS - VSD_BEGIN].value.float_t                         = 0;
-  parameters_[VSD_THYR_STATUS - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_THYR_STATUS - VSD_BEGIN].max                                   = 999999.0;
-  parameters_[VSD_THYR_STATUS - VSD_BEGIN].def                                   = 0;
-  parameters_[VSD_THYR_STATUS - VSD_BEGIN].discret                               = 1;
-  parameters_[VSD_THYR_STATUS - VSD_BEGIN].code                                  = 0;
+  parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].id                                  = VSD_STATUS_WORD_5;
+  parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].access                              = ACCESS_OPERATOR;
+  parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].operation                           = 0;
+  parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].physic                              = 0;
+  parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].validity                            = VALIDITY_ERROR;
+  parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].value.float_t                       = 0;
+  parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].min                                 = 0.0;
+  parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].max                                 = 999999.0;
+  parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].def                                 = 0;
+  parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].discret                             = 1;
+  parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].code                                = 0;
   // Регистр управления тиристорами;
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].id                                   = VSD_THYR_CONTROL;
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].access                               = ACCESS_OPERATOR;
@@ -555,17 +555,17 @@ void Vsd::initParameters()
   parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].discret                     = 1;
   parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].code                        = 0;
   // Статус индикатора
-  parameters_[VSD_INDICATOR_STATUS - VSD_BEGIN].id                               = VSD_INDICATOR_STATUS;
-  parameters_[VSD_INDICATOR_STATUS - VSD_BEGIN].access                           = ACCESS_OPERATOR;
-  parameters_[VSD_INDICATOR_STATUS - VSD_BEGIN].operation                        = 0;
-  parameters_[VSD_INDICATOR_STATUS - VSD_BEGIN].physic                           = 0;
-  parameters_[VSD_INDICATOR_STATUS - VSD_BEGIN].validity                         = VALIDITY_ERROR;
-  parameters_[VSD_INDICATOR_STATUS - VSD_BEGIN].value.float_t                    = 0;
-  parameters_[VSD_INDICATOR_STATUS - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_INDICATOR_STATUS - VSD_BEGIN].max                              = 999999.0;
-  parameters_[VSD_INDICATOR_STATUS - VSD_BEGIN].def                              = 0;
-  parameters_[VSD_INDICATOR_STATUS - VSD_BEGIN].discret                          = 1;
-  parameters_[VSD_INDICATOR_STATUS - VSD_BEGIN].code                             = 0;
+  parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].id                                  = VSD_STATUS_WORD_6;
+  parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].access                              = ACCESS_OPERATOR;
+  parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].operation                           = 0;
+  parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].physic                              = 0;
+  parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].validity                            = VALIDITY_ERROR;
+  parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].value.float_t                       = 0;
+  parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].min                                 = 0.0;
+  parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].max                                 = 999999.0;
+  parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].def                                 = 0;
+  parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].discret                             = 1;
+  parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].code                                = 0;
   // Маска состояния цифровых выходов.
   parameters_[VSD_DOUTPUTS - VSD_BEGIN].id                                       = VSD_DOUTPUTS;
   parameters_[VSD_DOUTPUTS - VSD_BEGIN].access                                   = ACCESS_OPERATOR;
@@ -675,17 +675,17 @@ void Vsd::initParameters()
   parameters_[VSD_INVERTOR_CONTROL - VSD_BEGIN].discret                          = 1;
   parameters_[VSD_INVERTOR_CONTROL - VSD_BEGIN].code                             = 0;
   // Регистр состояния инвертора
-  parameters_[VSD_INVERTOR_STATUS - VSD_BEGIN].id                                = VSD_INVERTOR_STATUS;
-  parameters_[VSD_INVERTOR_STATUS - VSD_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[VSD_INVERTOR_STATUS - VSD_BEGIN].operation                         = 0;
-  parameters_[VSD_INVERTOR_STATUS - VSD_BEGIN].physic                            = 0;
-  parameters_[VSD_INVERTOR_STATUS - VSD_BEGIN].validity                          = VALIDITY_ERROR;
-  parameters_[VSD_INVERTOR_STATUS - VSD_BEGIN].value.float_t                     = 0;
-  parameters_[VSD_INVERTOR_STATUS - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_INVERTOR_STATUS - VSD_BEGIN].max                               = 999999.0;
-  parameters_[VSD_INVERTOR_STATUS - VSD_BEGIN].def                               = 0;
-  parameters_[VSD_INVERTOR_STATUS - VSD_BEGIN].discret                           = 1;
-  parameters_[VSD_INVERTOR_STATUS - VSD_BEGIN].code                              = 0;
+  parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].id                                  = VSD_STATUS_WORD_1;
+  parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].access                              = ACCESS_OPERATOR;
+  parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].operation                           = 0;
+  parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].physic                              = 0;
+  parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].validity                            = VALIDITY_ERROR;
+  parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].value.float_t                       = 0;
+  parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].min                                 = 0.0;
+  parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].max                                 = 999999.0;
+  parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].def                                 = 0;
+  parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].discret                             = 1;
+  parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].code                                = 0;
   // Уставка частоты "тревожного" режима
   parameters_[VSD_FREQUENCY_ERROR - VSD_BEGIN].id                                = VSD_FREQUENCY_ERROR;
   parameters_[VSD_FREQUENCY_ERROR - VSD_BEGIN].access                            = ACCESS_OPERATOR;
@@ -1311,17 +1311,17 @@ void Vsd::initParameters()
   parameters_[VSD_AST_STANDING - VSD_BEGIN].discret                              = 1;
   parameters_[VSD_AST_STANDING - VSD_BEGIN].code                                 = 0;
   // Расширенный регистр состояния инвертора
-  parameters_[VSD_INVERTOR_STATUS2 - VSD_BEGIN].id                               = VSD_INVERTOR_STATUS2;
-  parameters_[VSD_INVERTOR_STATUS2 - VSD_BEGIN].access                           = ACCESS_OPERATOR;
-  parameters_[VSD_INVERTOR_STATUS2 - VSD_BEGIN].operation                        = 0;
-  parameters_[VSD_INVERTOR_STATUS2 - VSD_BEGIN].physic                           = 0;
-  parameters_[VSD_INVERTOR_STATUS2 - VSD_BEGIN].validity                         = VALIDITY_ERROR;
-  parameters_[VSD_INVERTOR_STATUS2 - VSD_BEGIN].value.float_t                    = 0;
-  parameters_[VSD_INVERTOR_STATUS2 - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_INVERTOR_STATUS2 - VSD_BEGIN].max                              = 999999.0;
-  parameters_[VSD_INVERTOR_STATUS2 - VSD_BEGIN].def                              = 0;
-  parameters_[VSD_INVERTOR_STATUS2 - VSD_BEGIN].discret                          = 1;
-  parameters_[VSD_INVERTOR_STATUS2 - VSD_BEGIN].code                             = 0;
+  parameters_[VSD_STATUS_WORD_2 - VSD_BEGIN].id                                  = VSD_STATUS_WORD_2;
+  parameters_[VSD_STATUS_WORD_2 - VSD_BEGIN].access                              = ACCESS_OPERATOR;
+  parameters_[VSD_STATUS_WORD_2 - VSD_BEGIN].operation                           = 0;
+  parameters_[VSD_STATUS_WORD_2 - VSD_BEGIN].physic                              = 0;
+  parameters_[VSD_STATUS_WORD_2 - VSD_BEGIN].validity                            = VALIDITY_ERROR;
+  parameters_[VSD_STATUS_WORD_2 - VSD_BEGIN].value.float_t                       = 0;
+  parameters_[VSD_STATUS_WORD_2 - VSD_BEGIN].min                                 = 0.0;
+  parameters_[VSD_STATUS_WORD_2 - VSD_BEGIN].max                                 = 999999.0;
+  parameters_[VSD_STATUS_WORD_2 - VSD_BEGIN].def                                 = 0;
+  parameters_[VSD_STATUS_WORD_2 - VSD_BEGIN].discret                             = 1;
+  parameters_[VSD_STATUS_WORD_2 - VSD_BEGIN].code                                = 0;
   // Период экскурсий частоты режима встряхивания.
   parameters_[VSD_JARRING_PERIOD - VSD_BEGIN].id                                 = VSD_JARRING_PERIOD;
   parameters_[VSD_JARRING_PERIOD - VSD_BEGIN].access                             = ACCESS_OPERATOR;
@@ -1575,17 +1575,17 @@ void Vsd::initParameters()
   parameters_[VSD_IOUT - VSD_BEGIN].discret                                      = 1;
   parameters_[VSD_IOUT - VSD_BEGIN].code                                         = 0;
   // Регистр ошибок инвертора
-  parameters_[VSD_INV_FAULT - VSD_BEGIN].id                                      = VSD_INV_FAULT;
-  parameters_[VSD_INV_FAULT - VSD_BEGIN].access                                  = ACCESS_OPERATOR;
-  parameters_[VSD_INV_FAULT - VSD_BEGIN].operation                               = 0;
-  parameters_[VSD_INV_FAULT - VSD_BEGIN].physic                                  = 0;
-  parameters_[VSD_INV_FAULT - VSD_BEGIN].validity                                = VALIDITY_ERROR;
-  parameters_[VSD_INV_FAULT - VSD_BEGIN].value.float_t                           = 0;
-  parameters_[VSD_INV_FAULT - VSD_BEGIN].min                                     = 0.0;
-  parameters_[VSD_INV_FAULT - VSD_BEGIN].max                                     = 999999.0;
-  parameters_[VSD_INV_FAULT - VSD_BEGIN].def                                     = 0;
-  parameters_[VSD_INV_FAULT - VSD_BEGIN].discret                                 = 1;
-  parameters_[VSD_INV_FAULT - VSD_BEGIN].code                                    = 0;
+  parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].id                                  = VSD_STATUS_WORD_7;
+  parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].access                              = ACCESS_OPERATOR;
+  parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].operation                           = 0;
+  parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].physic                              = 0;
+  parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].validity                            = VALIDITY_ERROR;
+  parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].value.float_t                       = 0;
+  parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].min                                 = 0.0;
+  parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].max                                 = 999999.0;
+  parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].def                                 = 0;
+  parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].discret                             = 1;
+  parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].code                                = 0;
   // Текущая выходная полная мощность ПЧ
   parameters_[VSD_SOUT - VSD_BEGIN].id                                           = VSD_SOUT;
   parameters_[VSD_SOUT - VSD_BEGIN].access                                       = ACCESS_OPERATOR;
@@ -1791,17 +1791,17 @@ void Vsd::initParameters()
   parameters_[VSD_PID_T_REG_1 - VSD_BEGIN].discret                               = 1;
   parameters_[VSD_PID_T_REG_1 - VSD_BEGIN].code                                  = 0;
   // Расширенный регистр состояния инвертора 3
-  parameters_[VSD_INVERTOR_STATUS3 - VSD_BEGIN].id                               = VSD_INVERTOR_STATUS3;
-  parameters_[VSD_INVERTOR_STATUS3 - VSD_BEGIN].access                           = ACCESS_OPERATOR;
-  parameters_[VSD_INVERTOR_STATUS3 - VSD_BEGIN].operation                        = 0;
-  parameters_[VSD_INVERTOR_STATUS3 - VSD_BEGIN].physic                           = 0;
-  parameters_[VSD_INVERTOR_STATUS3 - VSD_BEGIN].validity                         = VALIDITY_ERROR;
-  parameters_[VSD_INVERTOR_STATUS3 - VSD_BEGIN].value.float_t                    = 0;
-  parameters_[VSD_INVERTOR_STATUS3 - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_INVERTOR_STATUS3 - VSD_BEGIN].max                              = 999999.0;
-  parameters_[VSD_INVERTOR_STATUS3 - VSD_BEGIN].def                              = 0;
-  parameters_[VSD_INVERTOR_STATUS3 - VSD_BEGIN].discret                          = 1;
-  parameters_[VSD_INVERTOR_STATUS3 - VSD_BEGIN].code                             = 0;
+  parameters_[VSD_STATUS_WORD_3 - VSD_BEGIN].id                                  = VSD_STATUS_WORD_3;
+  parameters_[VSD_STATUS_WORD_3 - VSD_BEGIN].access                              = ACCESS_OPERATOR;
+  parameters_[VSD_STATUS_WORD_3 - VSD_BEGIN].operation                           = 0;
+  parameters_[VSD_STATUS_WORD_3 - VSD_BEGIN].physic                              = 0;
+  parameters_[VSD_STATUS_WORD_3 - VSD_BEGIN].validity                            = VALIDITY_ERROR;
+  parameters_[VSD_STATUS_WORD_3 - VSD_BEGIN].value.float_t                       = 0;
+  parameters_[VSD_STATUS_WORD_3 - VSD_BEGIN].min                                 = 0.0;
+  parameters_[VSD_STATUS_WORD_3 - VSD_BEGIN].max                                 = 999999.0;
+  parameters_[VSD_STATUS_WORD_3 - VSD_BEGIN].def                                 = 0;
+  parameters_[VSD_STATUS_WORD_3 - VSD_BEGIN].discret                             = 1;
+  parameters_[VSD_STATUS_WORD_3 - VSD_BEGIN].code                                = 0;
   // Режим конфигурирования Danfoss 1-00 Не используется в проекте, только при конфигурировании
   parameters_[VSD_CONFIG_MODE - VSD_BEGIN].id                                    = VSD_CONFIG_MODE;
   parameters_[VSD_CONFIG_MODE - VSD_BEGIN].access                                = ACCESS_OPERATOR;
@@ -3735,17 +3735,17 @@ void Vsd::initParameters()
   parameters_[VSD_BLDC_MAX_UP - VSD_BEGIN].discret                               = 1;
   parameters_[VSD_BLDC_MAX_UP - VSD_BEGIN].code                                  = 0;
   // 
-  parameters_[VSD_INVERTOR_STATUS4 - VSD_BEGIN].id                               = VSD_INVERTOR_STATUS4;
-  parameters_[VSD_INVERTOR_STATUS4 - VSD_BEGIN].access                           = ACCESS_OPERATOR;
-  parameters_[VSD_INVERTOR_STATUS4 - VSD_BEGIN].operation                        = OPERATION_WRITE;
-  parameters_[VSD_INVERTOR_STATUS4 - VSD_BEGIN].physic                           = PHYSIC_NUMERIC;
-  parameters_[VSD_INVERTOR_STATUS4 - VSD_BEGIN].validity                         = VALIDITY_ERROR;
-  parameters_[VSD_INVERTOR_STATUS4 - VSD_BEGIN].value.float_t                    = 0.0;
-  parameters_[VSD_INVERTOR_STATUS4 - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_INVERTOR_STATUS4 - VSD_BEGIN].max                              = 65535.0;
-  parameters_[VSD_INVERTOR_STATUS4 - VSD_BEGIN].def                              = 0.0;
-  parameters_[VSD_INVERTOR_STATUS4 - VSD_BEGIN].discret                          = 1;
-  parameters_[VSD_INVERTOR_STATUS4 - VSD_BEGIN].code                             = 0;
+  parameters_[VSD_STATUS_WORD_4 - VSD_BEGIN].id                                  = VSD_STATUS_WORD_4;
+  parameters_[VSD_STATUS_WORD_4 - VSD_BEGIN].access                              = ACCESS_OPERATOR;
+  parameters_[VSD_STATUS_WORD_4 - VSD_BEGIN].operation                           = OPERATION_WRITE;
+  parameters_[VSD_STATUS_WORD_4 - VSD_BEGIN].physic                              = PHYSIC_NUMERIC;
+  parameters_[VSD_STATUS_WORD_4 - VSD_BEGIN].validity                            = VALIDITY_ERROR;
+  parameters_[VSD_STATUS_WORD_4 - VSD_BEGIN].value.float_t                       = 0.0;
+  parameters_[VSD_STATUS_WORD_4 - VSD_BEGIN].min                                 = 0.0;
+  parameters_[VSD_STATUS_WORD_4 - VSD_BEGIN].max                                 = 65535.0;
+  parameters_[VSD_STATUS_WORD_4 - VSD_BEGIN].def                                 = 0.0;
+  parameters_[VSD_STATUS_WORD_4 - VSD_BEGIN].discret                             = 1;
+  parameters_[VSD_STATUS_WORD_4 - VSD_BEGIN].code                                = 0;
   // 
   parameters_[VSD_SYNC_FREQ - VSD_BEGIN].id                                      = VSD_SYNC_FREQ;
   parameters_[VSD_SYNC_FREQ - VSD_BEGIN].access                                  = ACCESS_OPERATOR;
