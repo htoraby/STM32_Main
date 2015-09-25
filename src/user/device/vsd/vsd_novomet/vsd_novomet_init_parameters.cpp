@@ -37,7 +37,7 @@ void VsdNovomet::initModbusParameters()
                          0                  // Значение
   };
   modbusParameters_[2] = {// Статус платы выпрямителя. Регистр для внутреннего использования в ПЧ
-                         VSD_THYR_STATUS,   // Уникальный идентификатор
+                         VSD_STATUS_WORD_5, // Уникальный идентификатор
                          11,                // Адрес регистра в устройстве
                          OPERATION_READ,    // Операции с параметром
                          PHYSIC_NUMERIC,    // Физическая величина параметра
@@ -88,7 +88,7 @@ void VsdNovomet::initModbusParameters()
                          0                  // Значение
   };
   modbusParameters_[5] = {// Статус индикатора
-                         VSD_INDICATOR_STATUS,
+                         VSD_STATUS_WORD_6,
                          20,                // Адрес регистра в устройстве
                          OPERATION_READ,    // Операции с параметром
                          PHYSIC_NUMERIC,    // Физическая величина параметра
@@ -258,7 +258,7 @@ void VsdNovomet::initModbusParameters()
                           0                 // Значение
   };
   modbusParameters_[15] = {// Регистр статуса инвертора
-                          VSD_INVERTOR_STATUS,
+                          VSD_STATUS_WORD_1,
                           91,               // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
                           PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -1499,7 +1499,7 @@ void VsdNovomet::initModbusParameters()
                           0                 // Значение
   };
   modbusParameters_[88] = {// Регистр ошибок инвертора
-                          VSD_INV_FAULT,    // Уникальный идентификатор параметра
+                          VSD_STATUS_WORD_7,// Уникальный идентификатор параметра
                           164,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
                           PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -1516,7 +1516,7 @@ void VsdNovomet::initModbusParameters()
                           0                 // Значение
   };
   modbusParameters_[89] = {// Расширенный регистр состояния инвертора
-                          VSD_INVERTOR_STATUS2,
+                          VSD_STATUS_WORD_2,
                           165,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
                           PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -2281,7 +2281,7 @@ void VsdNovomet::initModbusParameters()
                           0                 // Значение
   };
   modbusParameters_[134] = {// Расширенные слово состояния 3
-                          VSD_INVERTOR_STATUS3,
+                          VSD_STATUS_WORD_3,
                           210,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
                           PHYSIC_NUMERIC,   // Физическая величина параметра

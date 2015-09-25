@@ -139,31 +139,31 @@ void VsdNovomet::getNewValue(uint16_t id)
   case VSD_CURRENT_OUT_PHASE_3:             // Выходной ток ЧРП Фаза 3
     setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_3) * value);
     break;
-  case VSD_INVERTOR_STATUS:
+  case VSD_STATUS_WORD_1:
     setValue(id, value);
     calcRotation();
-    parameters.set(CCS_VSD_INVERTOR_STATUS_1, value);
+    parameters.set(CCS_VSD_STATUS_WORD_1, value);
     break;
-  case VSD_INVERTOR_STATUS2:
+  case VSD_STATUS_WORD_2:
     setValue(id, value);
     calcMotorType();
-    parameters.set(CCS_VSD_INVERTOR_STATUS_2, value);
+    parameters.set(CCS_VSD_STATUS_WORD_2, value);
     break;
-  case VSD_INVERTOR_STATUS3:
+  case VSD_STATUS_WORD_3:
     setValue(id, value);
-    parameters.set(CCS_VSD_INVERTOR_STATUS_3, value);
+    parameters.set(CCS_VSD_STATUS_WORD_3, value);
     break;
-  case VSD_INVERTOR_STATUS4:
+  case VSD_STATUS_WORD_4:
     setValue(id, value);
-    parameters.set(CCS_VSD_INVERTOR_STATUS_4, value);
+    parameters.set(CCS_VSD_STATUS_WORD_4, value);
     break;
-  case VSD_INV_FAULT:
+  case VSD_STATUS_WORD_7:
     setValue(id, value);
-    parameters.set(CCS_VSD_INV_FAULT, value);
+    parameters.set(CCS_VSD_STATUS_WORD_7, value);
     break;
-  case VSD_THYR_STATUS:
+  case VSD_STATUS_WORD_5:
     setValue(id, value);
-    parameters.set(CCS_VSD_THYR_STATUS, value);
+    parameters.set(CCS_VSD_STATUS_WORD_5, value);
     break;
   case VSD_T_SPEEDUP:
     setValue(id, value);
@@ -175,7 +175,6 @@ void VsdNovomet::getNewValue(uint16_t id)
     calcTempSpeedDown();
     calcTimeSpeedDown();
     break;
-
   case VSD_VOLTAGE_DC:
     setValue(id, value);
     calcCurrentDC();

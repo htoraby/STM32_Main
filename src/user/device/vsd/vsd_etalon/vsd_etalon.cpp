@@ -143,20 +143,20 @@ void VsdEtalon::getNewValue(uint16_t id)
     // Преобразования для параметров требующих особой обработки по id
     switch (id) {
     case VSD_ETALON_ON_STATE:                 // Получили подтверждение запуска
-      vsdInvertorStatus = (uint32_t)parameters.get(CCS_VSD_INVERTOR_STATUS_1) & 0xFFFE;
+      vsdInvertorStatus = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_1) & 0xFFFE;
       if (value)
         vsdInvertorStatus = setBit(vsdInvertorStatus, VSD_STATUS_READY, true);
-      parameters.set(CCS_VSD_INVERTOR_STATUS_2,  (float)vsdInvertorStatus);
+      parameters.set(CCS_VSD_STATUS_WORD_2,  (float)vsdInvertorStatus);
       setValue(id, value);
       break;
     case VSD_ETALON_OFF_STATE:                // Получили подтверждение останова
-      vsdInvertorStatus = (uint32_t)parameters.get(CCS_VSD_INVERTOR_STATUS_1) & 0xFFF7;
+      vsdInvertorStatus = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_1) & 0xFFF7;
       if (value)
         vsdInvertorStatus = setBit(vsdInvertorStatus, VSD_STATUS_STOPPED_EXTERNAL, true);
-      parameters.set(CCS_VSD_INVERTOR_STATUS_1,  (float)vsdInvertorStatus);
+      parameters.set(CCS_VSD_STATUS_WORD_1,  (float)vsdInvertorStatus);
       setValue(id, value);
       break;
-    case VSD_INVERTOR_STATUS:                 // Получили слово состояния
+    case VSD_STATUS_WORD_1:                 // Получили слово состояния
       convertBitVsdStatus(value);
       setValue(id, value);
       break;
@@ -371,7 +371,7 @@ int VsdEtalon::start()
   return ok_r;
 #endif
 
-  if (getValue(VSD_ETALON_ON_STATE) == 1)
+  if (checkVsdStatus(VSD_STATUS_STARTED))
     return ok_r;
 
   int timeMs = VSD_CMD_TIMEOUT;
@@ -396,7 +396,7 @@ int VsdEtalon::start()
 
     osDelay(100);
 
-    if (getValue(VSD_ETALON_ON_STATE) == 1)
+    if (checkVsdStatus(VSD_STATUS_STARTED))
       return ok_r;
     }
 }
@@ -777,105 +777,105 @@ void VsdEtalon::convertBitVsdStatus(float value)
 {
   // Получаем значение из регистры и сбрасываем в 0, только те биты,
   // которыми мы управляем, остальные не изменяем
-  uint32_t vsdInvertorStatus1 = (uint32_t)parameters.get(CCS_VSD_INVERTOR_STATUS_1) & 0xD1DF;
-  uint32_t vsdInvertorStatus2 = (uint32_t)parameters.get(CCS_VSD_INVERTOR_STATUS_2) & 0xDFFE;
-  uint32_t vsdInvFault = (uint32_t)parameters.get(CCS_VSD_INV_FAULT) & 0xFF81;
-  uint32_t vsdThyrStatus = (uint32_t)parameters.get(VSD_THYR_STATUS) & 0xFFF1;
-  uint32_t vsdInvertorStatus4 = (uint32_t)parameters.get(CCS_VSD_INVERTOR_STATUS_4) & 0x8000;
+  uint32_t vsdStatusWord1 = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_1) & 0xD1DF;
+  uint32_t vsdStatusWord2 = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_2) & 0xDFFE;
+  uint32_t vsdStatusWord4 = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_4) & 0x8000;
+  uint32_t vsdStatusWord5 = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_5) & 0xFFF1;
+  uint32_t vsdStatusWord7 = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_7) & 0xFF81;
 
   switch ((uint32_t)value) {
   case VSD_ETALON_INFO_READY:             // VSD_STATUS_READY
-    vsdInvertorStatus4 = setBit(vsdInvertorStatus4, VSD_STATUS_READY, true);
+    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_READY, true);
     break;
   case VSD_ETALON_INFO_UNDERLOAD:         // VSD_STATUS_UNDERLOAD
-    vsdInvertorStatus4 = setBit(vsdInvertorStatus4, VSD_STATUS_UNDERLOAD, true);
+    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_UNDERLOAD, true);
     break;
   case VSD_ETALON_INFO_OVERLOAD:          // VSD_STATUS_M_I2T_ERR
-    vsdInvertorStatus2 = setBit(vsdInvertorStatus2, VSD_STATUS_M_I2T_ERR, true);
+    vsdStatusWord2 = setBit(vsdStatusWord2, VSD_STATUS_M_I2T_ERR, true);
     break;
   case VSD_ETALON_INFO_RESISTANCE:        // VSD_STATUS_RESISTANCE
-    vsdInvertorStatus4 = setBit(vsdInvertorStatus4, VSD_STATUS_RESISTANCE, true);
+    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_RESISTANCE, true);
     break;
   case VSD_ETALON_INFO_UNDERVOLTAGE:      // VSD_STATUS_UNDERVOLTAGE
-    vsdInvertorStatus4 = setBit(vsdInvertorStatus4, VSD_STATUS_UNDERVOLTAGE, true);
+    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_UNDERVOLTAGE, true);
     break;
   case VSD_ETALON_INFO_OVERVOLTAGE:       // VSD_STATUS_OVERVOLTAGE
-    vsdInvertorStatus4 = setBit(vsdInvertorStatus4, VSD_STATUS_OVERVOLTAGE, true);
+    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_OVERVOLTAGE, true);
     break;
   case VSD_ETALON_INFO_UNDERVOLTAGE_DC:    // VSD_STATUS_UD_LOW_FAULT
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_UD_LOW_FAULT, true);
+    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_UD_LOW_FAULT, true);
     break;
   case VSD_ETALON_INFO_OVERVOLTAGE_DC:    // VSD_STATUS_UD_HIGH_FAULT
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_UD_HIGH_FAULT, true);
+    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_UD_HIGH_FAULT, true);
     break;
   case VSD_ETALON_INFO_RUN_COUNT:         // VSD_STATUS_RUN_COUNT
-    vsdInvertorStatus4 = setBit(vsdInvertorStatus4, VSD_STATUS_RUN_COUNT, true);
+    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_RUN_COUNT, true);
     break;
   case VSD_ETALON_INFO_OVERHEAT_IGBT:     // VSD_STATUS_FC_I2T_ERR
-    vsdInvertorStatus2 = setBit(vsdInvertorStatus2, VSD_STATUS_FC_I2T_ERR, true);
+    vsdStatusWord2 = setBit(vsdStatusWord2, VSD_STATUS_FC_I2T_ERR, true);
     break;
   case VSD_ETALON_INFO_OVERHEAT_FILTER:   // VSD_STATUS_OVERHEAT_FILTER
-    vsdInvertorStatus4 = setBit(vsdInvertorStatus4, VSD_STATUS_OVERHEAT_FILTER, true);
+    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_OVERHEAT_FILTER, true);
     break;
   case VSD_ETALON_INFO_PROT:              // VSD_STATUS_STOPPED_ALARM
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_STOPPED_ALARM, true);
+    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
     break;
   case VSD_ETALON_INFO_SUPPLY_DRIVERS:    // VSD_FLT_DRV0
-    vsdInvFault = setBit(vsdInvFault, VSD_STATUS_DRV0, true);
+    vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_DRV0, true);
     break;
   case VSD_ETALON_INFO_MONOMETR:          // VSD_STATUS_MONOMETR
-    vsdInvertorStatus4 = setBit(vsdInvertorStatus4, VSD_STATUS_MONOMETR, true);
+    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_MONOMETR, true);
     break;
   case VSD_ETALON_INFO_AI_0:              // VSD_STATUS_AI_0
-    vsdInvertorStatus4 = setBit(vsdInvertorStatus4, VSD_STATUS_AI_0, true);
+    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_AI_0, true);
     break;
   case VSD_ETALON_INFO_SEQUENCE_PHASE:    // VSD_THYR_ABC_STATE
-    vsdThyrStatus = setBit(vsdThyrStatus, VSD_THYR_ABC_STATE, true);
+    vsdStatusWord5 = setBit(vsdStatusWord5, VSD_STATUS_ABC_STATE, true);
     break;
   case VSD_ETALON_INFO_OVERHEAT_MOTOR:    // VSD_STATUS_OVERHEAT_MOTOR
-    vsdInvertorStatus4 = setBit(vsdInvertorStatus4, VSD_STATUS_OVERHEAT_MOTOR, true);
+    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_OVERHEAT_MOTOR, true);
     break;
   case VSD_ETALON_INFO_OVERVIBRATION:     // VSD_STATUS_OVERVIBRATION
-    vsdInvertorStatus4 = setBit(vsdInvertorStatus4, VSD_STATUS_OVERVIBRATION, true);
+    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_OVERVIBRATION, true);
     break;
   case VSD_ETALON_INFO_PRESSURE:          // VSD_STATUS_PRESSURE
-    vsdInvertorStatus4 = setBit(vsdInvertorStatus4, VSD_STATUS_PRESSURE, true);
+    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_PRESSURE, true);
     break;
   case VSD_ETALON_INFO_19:                // VSD_STATUS_ERR_19
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_ERR_19, true);
+    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_ERR_19, true);
     break;
   case VSD_ETALON_INFO_IMBALANCE_CURRENT: // VSD_FLT_IZ
-    vsdInvFault = setBit(vsdInvFault, VSD_STATUS_IZ, true);
+    vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_IZ, true);
     break;
   case VSD_ETALON_INFO_IMBALANCE_VOLTAGE: // VSD_STATUS_UIN_ASYM
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_UIN_ASYM, true);
+    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_UIN_ASYM, true);
     break;
   case VSD_ETALON_INFO_TURBINE:           // VSD_STATUS_TURBINE
-    vsdInvertorStatus4 = setBit(vsdInvertorStatus4, VSD_STATUS_TURBINE, true);
+    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_TURBINE, true);
     break;
   case VSD_ETALON_INFO_24:                // VSD_STATUS_STOPPED_ALARM
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_STOPPED_ALARM, true);
+    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
     break;
   case VSD_ETALON_INFO_FAILURE_SUPPLY:    // VSD_STATUS_STOPPED_ALARM
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_STOPPED_ALARM, true);
+    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
     break;
   case VSD_ETALON_INFO_DOOR:              // VSD_STATUS_STOPPED_ALARM
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_STOPPED_ALARM, true);
+    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
     break;
   case VSD_ETALON_INFO_LOST_SUPPLY:       // VSD_STATUS_STOPPED_ALARM
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_STOPPED_ALARM, true);
+    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
     break;
   case VSD_ETALON_INFO_CONDENSATOR:       // VSD_THYR_CHARGE_STATE
-    vsdInvertorStatus1 = setBit(vsdThyrStatus, VSD_THYR_CHARGE_STATE, true);
+    vsdStatusWord1 = setBit(vsdStatusWord5, VSD_STATUS_CHARGE_STATE, true);
     break;
   case VSD_ETALON_INFO_TERISTORS:         // VSD_STATUS_STOPPED_ALARM
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_STOPPED_ALARM, true);
+    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
     break;
   case VSD_ETALON_INFO_CURRENT_LIMIT:     // VSD_STATUS_I_LIMIT
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_I_LIMIT, true);
+    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_I_LIMIT, true);
     break;
   case VSD_ETALON_INFO_31:                // VSD_STATUS_ERR_31
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_ERR_31, true);
+    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_ERR_31, true);
     break;
   case VSD_ETALON_INFO_32:
     break;
@@ -894,40 +894,40 @@ void VsdEtalon::convertBitVsdStatus(float value)
   case VSD_ETALON_INFO_RESTART_COUNT:
     break;
   case VSD_ETALON_INFO_MEMORY:            // VSD_STATUS_CLK_MON
-    vsdInvFault = setBit(vsdInvFault, VSD_STATUS_CLK_MON, true);
+    vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_CLK_MON, true);
     break;
   case VSD_ETALON_INFO_41:
     break;
   case VSD_ETALON_INFO_DI:                // VSD_STATUS_CTR_MON
-    vsdInvFault = setBit(vsdInvFault, VSD_STATUS_CTR_MON, true);
+    vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_CTR_MON, true);
     break;
   case VSD_ETALON_INFO_ADC:               // VSD_STATUS_AN_MON
-    vsdInvFault = setBit(vsdInvFault, VSD_STATUS_AN_MON, true);
+    vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_AN_MON, true);
     break;
   case VSD_ETALON_INFO_ANALOG_SUPPLY:     // VSD_STATUS_AN_MON
-    vsdInvFault = setBit(vsdInvFault, VSD_STATUS_AN_MON, true);
+    vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_AN_MON, true);
     break;
   case VSD_ETALON_INFO_SENSOR_SUPPLY:     // VSD_STATUS_MB_MON
-    vsdInvFault = setBit(vsdInvFault, VSD_STATUS_MB_MON, true);
+    vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_MB_MON, true);
     break;
   case VSD_ETALON_INFO_EEPROM:            // VSD_STATUS_CLK_MON
-    vsdInvFault = setBit(vsdInvFault, VSD_STATUS_CLK_MON, true);
+    vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_CLK_MON, true);
     break;
   case VSD_ETALON_INFO_NOT_READY:
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_STOPPED_ALARM, true);
+    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
     break;
   case VSD_ETALON_INFO_SETPOINT:
     break;
   case VSD_ETALON_INFO_BLOCK_RUN:
-    vsdInvertorStatus1 = setBit(vsdInvertorStatus1, VSD_STATUS_STOPPED_ALARM, true);
+    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
     break;
   default:
     break;
   }
 
-  parameters.set(CCS_VSD_INVERTOR_STATUS_1, (float)vsdInvertorStatus1);
-  parameters.set(CCS_VSD_INVERTOR_STATUS_2, (float)vsdInvertorStatus2);
-  parameters.set(CCS_VSD_INV_FAULT, (float)vsdInvFault);
-  parameters.set(CCS_VSD_THYR_STATUS, (float)vsdThyrStatus);
-  parameters.set(CCS_VSD_INVERTOR_STATUS_4, (float)vsdInvertorStatus4);
+  parameters.set(CCS_VSD_STATUS_WORD_1, (float)vsdStatusWord1);
+  parameters.set(CCS_VSD_STATUS_WORD_2, (float)vsdStatusWord2);
+  parameters.set(CCS_VSD_STATUS_WORD_4, (float)vsdStatusWord4);
+  parameters.set(CCS_VSD_STATUS_WORD_5, (float)vsdStatusWord5);
+  parameters.set(CCS_VSD_STATUS_WORD_7, (float)vsdStatusWord7);
 }

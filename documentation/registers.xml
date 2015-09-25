@@ -13438,7 +13438,7 @@
 	</param>
 	<param>
 		<id>766</id>
-		<name>CCS_VSD_INVERTOR_STATUS_1</name>
+		<name>CCS_VSD_STATUS_WORD_1</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -13459,7 +13459,7 @@
 	</param>
 	<param>
 		<id>767</id>
-		<name>CCS_VSD_INVERTOR_STATUS_2</name>
+		<name>CCS_VSD_STATUS_WORD_2</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -13480,7 +13480,7 @@
 	</param>
 	<param>
 		<id>768</id>
-		<name>CCS_VSD_INVERTOR_STATUS_3</name>
+		<name>CCS_VSD_STATUS_WORD_3</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -13501,7 +13501,7 @@
 	</param>
 	<param>
 		<id>769</id>
-		<name>CCS_VSD_INVERTOR_STATUS_4</name>
+		<name>CCS_VSD_STATUS_WORD_4</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -13522,7 +13522,7 @@
 	</param>
 	<param>
 		<id>770</id>
-		<name>CCS_VSD_INV_FAULT</name>
+		<name>CCS_VSD_STATUS_WORD_7</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -13543,7 +13543,7 @@
 	</param>
 	<param>
 		<id>771</id>
-		<name>CCS_VSD_THYR_STATUS</name>
+		<name>CCS_VSD_STATUS_WORD_5</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -14505,7 +14505,7 @@
 	</param>
 	<param>
 		<id>10043</id>
-		<name>VSD_THYR_STATUS</name>
+		<name>VSD_STATUS_WORD_5</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
 		<max>999999.0</max>
@@ -14538,7 +14538,7 @@
 	</param>
 	<param>
 		<id>10046</id>
-		<name>VSD_INDICATOR_STATUS</name>
+		<name>VSD_STATUS_WORD_6</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
 		<max>999999.0</max>
@@ -14658,7 +14658,7 @@
 	</param>
 	<param>
 		<id>10056</id>
-		<name>VSD_INVERTOR_STATUS</name>
+		<name>VSD_STATUS_WORD_1</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
 		<max>999999.0</max>
@@ -15277,7 +15277,7 @@
 	</param>
 	<param>
 		<id>10109</id>
-		<name>VSD_INVERTOR_STATUS2</name>
+		<name>VSD_STATUS_WORD_2</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
 		<max>999999.0</max>
@@ -15540,7 +15540,7 @@
 	</param>
 	<param>
 		<id>10131</id>
-		<name>VSD_INV_FAULT</name>
+		<name>VSD_STATUS_WORD_7</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
 		<max>999999.0</max>
@@ -15750,7 +15750,7 @@
 	</param>
 	<param>
 		<id>10149</id>
-		<name>VSD_INVERTOR_STATUS3</name>
+		<name>VSD_STATUS_WORD_3</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
 		<max>999999.0</max>
@@ -18163,7 +18163,7 @@
 	</param>
 	<param>
 		<id>10311</id>
-		<name>VSD_INVERTOR_STATUS4</name>
+		<name>VSD_STATUS_WORD_4</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
