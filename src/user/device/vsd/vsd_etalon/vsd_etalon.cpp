@@ -139,7 +139,7 @@ void VsdEtalon::getNewValue(uint16_t id)
   value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
 
   // Если получено новое значение параметра
-//  if ((getValue(id) != value) || (param->validity != getValidity(id))) {
+  if ((getValue(id) != value) || (param->validity != getValidity(id))) {
     // Преобразования для параметров требующих особой обработки по id
     switch (id) {
     case VSD_ETALON_ON_STATE:                 // Получили подтверждение запуска
@@ -308,7 +308,7 @@ void VsdEtalon::getNewValue(uint16_t id)
       setValue(id, value);
       break;
     }
-//  }
+  }
 }
 
 uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
