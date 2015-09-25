@@ -47,28 +47,33 @@ void VsdEtalon::init()
 void VsdEtalon::initParameters()
 {
   int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
-  for (int indexModbus = 0; indexModbus < count; indexModbus++) {        // Цикл по карте регистров
-    int id = dm_->getFieldID(indexModbus);
+  for (int i = 0; i < count; i++) {        // Цикл по карте регистров
+    if (modbusParameters_[i].freqExchange != EVERY_TIME) {
+      modbusParameters_[i].freqExchange = modbusParameters_[i].freqExchange + i;
+      modbusParameters_[i].cntExchange = modbusParameters_[i].freqExchange;
+    }
+
+    int id = dm_->getFieldID(i);
     if (id <= 0)
       continue;
     int indexArray = getIndexAtId(id);                                   // Получаем индекс параметра в банке параметров
     if (indexArray) {                                                    // Если нашли параметр
       setFieldAccess(indexArray, ACCESS_OPERATOR);                       // Уровень доступа оператор
-      setFieldOperation(indexArray, dm_->getFieldOperation(indexModbus));// Операции над параметром
-      setFieldPhysic(indexArray, dm_->getFieldPhysic(indexModbus));      // Физический смысл
-      float tempVal = dm_->getFieldMinimum(indexModbus);                  // Получаем минимум
-      tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));// Применяем коэффициент
-      tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
+      setFieldOperation(indexArray, dm_->getFieldOperation(i));// Операции над параметром
+      setFieldPhysic(indexArray, dm_->getFieldPhysic(i));      // Физический смысл
+      float tempVal = dm_->getFieldMinimum(i);                  // Получаем минимум
+      tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(i));// Применяем коэффициент
+      tempVal = applyUnit(tempVal, dm_->getFieldPhysic(i), dm_->getFieldUnit(i));
       setMin(id, tempVal);
-      tempVal = dm_->getFieldMaximum(indexModbus);                        // Получаем мaксимум
-      tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));// Применяем коэффициент
-      tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
+      tempVal = dm_->getFieldMaximum(i);                        // Получаем мaксимум
+      tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(i));// Применяем коэффициент
+      tempVal = applyUnit(tempVal, dm_->getFieldPhysic(i), dm_->getFieldUnit(i));
       setMax(id, tempVal);
-      tempVal = dm_->getFieldDefault(indexModbus);                        // Получаем значение по умолчанию
-      tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));// Применяем коэффициент
-      tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
+      tempVal = dm_->getFieldDefault(i);                        // Получаем значение по умолчанию
+      tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(i));// Применяем коэффициент
+      tempVal = applyUnit(tempVal, dm_->getFieldPhysic(i), dm_->getFieldUnit(i));
       setFieldDef(indexArray, tempVal);
-      setFieldValidity(indexArray, dm_->getFieldValidity(indexModbus));  // Получили флаг валидности
+      setFieldValidity(indexArray, dm_->getFieldValidity(i));  // Получили флаг валидности
       setFieldValue(indexArray, getFieldDefault(indexArray));           // Присвоили значение значению по умолчанию
     }
   }
@@ -134,7 +139,7 @@ void VsdEtalon::getNewValue(uint16_t id)
   value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
 
   // Если получено новое значение параметра
-  if ((getValue(id) != value) || (param->validity != getValidity(id))) {
+//  if ((getValue(id) != value) || (param->validity != getValidity(id))) {
     // Преобразования для параметров требующих особой обработки по id
     switch (id) {
     case VSD_ETALON_ON_STATE:                 // Получили подтверждение запуска
@@ -296,11 +301,14 @@ void VsdEtalon::getNewValue(uint16_t id)
     case VSD_OUT_VOLTAGE_MOTOR:
       setValue(id, value);
       break;
+    case VSD_COEF_VOLTAGE_OUT_1:
+      setValue(id, value);
+      break;
     default:
       setValue(id, value);
       break;
     }
-  }
+//  }
 }
 
 uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
