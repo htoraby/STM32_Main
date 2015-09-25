@@ -1,9 +1,23 @@
 #include "log_main.h"
 #include "usb_host.h"
 #include "user_main.h"
+#include "update.h"
 
 #define LOG_DIR USB_DISK ":ksu_log"
 #define FILE_MASK "М-е%d куст%d скв%d(%d).%s"
+
+#pragma pack(1)
+
+typedef struct {
+  unsigned int size;
+  unsigned short codeProduction;
+  unsigned char codeEquip;
+  unsigned char subCodeEquip;
+  unsigned short version;
+  unsigned int date;
+} LOG_FILE_HEADER;
+
+#pragma pack()
 
 #if USE_EXT_MEM
 static uint8_t bufData[4096] __attribute__((section(".extmem")));
@@ -133,6 +147,7 @@ static void logSave()
   FRESULT result;
   FIL file;
   UINT bytesWritten;
+  LOG_FILE_HEADER header;
 
   bool error = false;
 
@@ -159,19 +174,48 @@ static void logSave()
     strcpy(logPath, LOG_DIR);
     getFilePath(logPath, "dlog");
 
+    // Коды изготовителя и оборудования
+    header.codeProduction = CODE_PRODUCTION;
+    header.codeEquip = CODE_EQUIP;
+    header.subCodeEquip = SUBCODE_EQUIP;
+    header.version = FIRMWARE_VERSION;
+
+    time_t time = parameters.getU32(CCS_DATE_TIME);
+    tm dateTime = *localtime(&time);
+    if (dateTime.tm_year > 100)
+      dateTime.tm_year = dateTime.tm_year - 100;
+    else
+      dateTime.tm_year = 0;
+    header.date = (toBcd(dateTime.tm_year) << 24) |
+        (toBcd(dateTime.tm_mon + 1) << 16) |
+        (toBcd(dateTime.tm_mday) << 8) |
+        (toBcd(dateTime.tm_hour) & 0xFF);
+
     if (f_open(&file, logPath, FA_CREATE_ALWAYS | FA_WRITE) == FR_OK) {
+      uint16_t calcCrc = 0xFFFF;
       uint32_t addr = 0;
       uint32_t size = 4096;
       uint32_t count = 0;
 
+      header.size = EndAddrDebugLog + sizeof(header) + 2;
+      result = f_write(&file, (uint8_t*)&header, sizeof(header), &bytesWritten);
+      if ((result != FR_OK) || (sizeof(header) != bytesWritten))
+        asm("nop");
+      calcCrc = crc16_ibm((uint8_t*)&header, bytesWritten, calcCrc);
+
       while (1) {
+        int t = HAL_GetTick();
         StatusType status = logDebugRead(addr, &bufData[0], size);
+        t = HAL_GetTick() - t;
         if (status == StatusError)
           asm("nop");
 
+        t = HAL_GetTick();
         result = f_write(&file, &bufData[0], size, &bytesWritten);
         if ((result != FR_OK) || (size != bytesWritten))
           asm("nop");
+        t = HAL_GetTick() - t;
+        calcCrc = crc16_ibm(bufData, size, calcCrc);
 
         addr = addr + size;
         count++;
@@ -183,6 +227,10 @@ static void logSave()
           break;
       }
 
+      result = f_write(&file, (uint8_t*)&calcCrc, sizeof(calcCrc), &bytesWritten);
+      if ((result != FR_OK) || (sizeof(calcCrc) != bytesWritten))
+        asm("nop");
+
       result = f_close(&file);
       if (result != FR_OK)
         asm("nop");
@@ -193,10 +241,17 @@ static void logSave()
 
     int t = f_open(&file, logPath, FA_CREATE_ALWAYS | FA_WRITE);
     if (t == FR_OK) {
+      uint16_t calcCrc = 0xFFFF;
       uint32_t addr = 0;
       uint32_t size = 4096;
-      bytesWritten = 0;
       uint32_t count = 0;
+      bytesWritten = 0;
+
+      header.size = EndAddrTmsLog + sizeof(header) + 2;
+      result = f_write(&file, (uint8_t*)&header, sizeof(header), &bytesWritten);
+      if ((result != FR_OK) || (sizeof(header) != bytesWritten))
+        asm("nop");
+      calcCrc = crc16_ibm((uint8_t*)&header, bytesWritten, calcCrc);
 
       while (1) {
         StatusType status = logRead(addr, &bufData[0], size);
@@ -206,6 +261,7 @@ static void logSave()
         result = f_write(&file, &bufData[0], size, &bytesWritten);
         if ((result != FR_OK) || (size != bytesWritten))
           asm("nop");
+        calcCrc = crc16_ibm(bufData, size, calcCrc);
 
         addr = addr + size;
         count++;
@@ -216,6 +272,10 @@ static void logSave()
         if (addr >= EndAddrTmsLog)
           break;
       }
+
+      result = f_write(&file, (uint8_t*)&calcCrc, sizeof(calcCrc), &bytesWritten);
+      if ((result != FR_OK) || (sizeof(calcCrc) != bytesWritten))
+        asm("nop");
 
       result = f_close(&file);
       if (result != FR_OK)

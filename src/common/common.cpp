@@ -270,3 +270,8 @@ NEXT_LETTER:
   windows1251[j] = 0;
   return 1;
 }
+
+unsigned char toBcd(unsigned char value)
+{
+  return ((value/10)<<4) + value%10;
+}
