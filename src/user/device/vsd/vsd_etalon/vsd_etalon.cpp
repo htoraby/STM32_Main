@@ -134,7 +134,7 @@ void VsdEtalon::getNewValue(uint16_t id)
   value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
 
   // Если получено новое значение параметра
-  if (getValue(id) != value) {
+  if ((getValue(id) != value) || (param->validity != getValidity(id))) {
     // Преобразования для параметров требующих особой обработки по id
     switch (id) {
     case VSD_ETALON_ON_STATE:                 // Получили подтверждение запуска
@@ -157,23 +157,23 @@ void VsdEtalon::getNewValue(uint16_t id)
       break;
     case VSD_UF_CHARACTERISTIC_U_1_PERCENT:           // Получили точку напряжения U/f
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_1, getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0);
+      setValue(VSD_UF_CHARACTERISTIC_U_1, (int)(getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_2_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_2, getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0);
+      setValue(VSD_UF_CHARACTERISTIC_U_2, (int)(getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_3_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_3, getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0);
+      setValue(VSD_UF_CHARACTERISTIC_U_3, (int)(getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_4_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_4, getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0);
+      setValue(VSD_UF_CHARACTERISTIC_U_4, (int)(getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_5_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_5, getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0);
+      setValue(VSD_UF_CHARACTERISTIC_U_5, (int)(getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_LOW_LIM_SPEED_MOTOR:
       setLimitsFrequence(0, value);
