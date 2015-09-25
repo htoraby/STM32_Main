@@ -73,7 +73,7 @@ float ProtectionOverloadMotor::calcValue()
 
   value = max(max(value, value2), value3);
 
-  float nominal = 1;
+  float nominal = 100;
   if (parameters.getValidity(VSD_MOTOR_CURRENT) == ok_r) {
     nominal = parameters.get(VSD_MOTOR_CURRENT);
   }
