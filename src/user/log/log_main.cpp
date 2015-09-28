@@ -204,17 +204,13 @@ static void logSave()
       calcCrc = crc16_ibm((uint8_t*)&header, bytesWritten, calcCrc);
 
       while (1) {
-        int t = HAL_GetTick();
         StatusType status = logDebugRead(addr, &bufData[0], size);
-        t = HAL_GetTick() - t;
         if (status == StatusError)
           asm("nop");
 
-        t = HAL_GetTick();
         result = f_write(&file, &bufData[0], size, &bytesWritten);
         if ((result != FR_OK) || (size != bytesWritten))
           asm("nop");
-        t = HAL_GetTick() - t;
         calcCrc = crc16_ibm(bufData, size, calcCrc);
 
         addr = addr + size;
