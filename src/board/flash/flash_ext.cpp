@@ -345,7 +345,7 @@ StatusType flashExtRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32
   if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) != osOK)
     return status;
 
-  osDelay(5);
+  osDelay(1);
 
   buf[0] = CMD_W_FAST_READ;
   buf[1] = address>>16;
