@@ -33,9 +33,15 @@ void LogTms::deInit()
 
 void LogTms::task()
 {
+  int timeCnt = 0;
   while (1) {
     osDelay(1000);
-    add();
+
+    int period = parameters.get(CCS_LOG_PERIOD_DHS);
+    if (++timeCnt >= period) {
+      timeCnt = 0;
+      add();
+    }
   }
 }
 

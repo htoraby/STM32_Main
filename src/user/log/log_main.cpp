@@ -48,10 +48,8 @@ void logInit()
   logEvent.init();
   logRunning.init();
   logAlarm.init();
-#ifndef DEBUG
   logData.init();
   logTms.init();
-#endif
 
   logDebug.init();
 
@@ -290,10 +288,8 @@ void logDeleted()
   logEvent.deInit();
   logRunning.deInit();
   logAlarm.deInit();
-  #ifndef DEBUG
   logData.deInit();
   logTms.deInit();
-  #endif
 
   uint32_t addr = 0;
   while (1) {
@@ -310,10 +306,8 @@ void logDeleted()
   logEvent.init();
   logRunning.init();
   logAlarm.init();
-#ifndef DEBUG
   logData.init();
   logTms.init();
-#endif
 
   logEvent.add(DelLogCode, eventType, DelLogId);
   parameters.set(CCS_CMD_LOG_DELETE, 0);
