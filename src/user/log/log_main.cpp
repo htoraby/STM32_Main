@@ -164,11 +164,8 @@ static void logSave()
     return;
   }
 
-  time = 0;
   result = f_mkdir(LOG_DIR);
   if ((result == FR_OK) || (result == FR_EXIST)) {
-    time = HAL_GetTick();
-
     char *logPath = new char[_MAX_LFN + 1];
 
     strcpy(logPath, LOG_DIR);

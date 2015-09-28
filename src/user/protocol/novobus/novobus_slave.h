@@ -52,6 +52,12 @@ public:
   void init();
 
   /*!
+   * \brief Функция проверки наличия связи с Master
+   * \return true - связь есть; false - связи нет
+   */
+  bool isConnect();
+
+  /*!
    * \brief Основная задача протокола
    */
   void task();
@@ -107,6 +113,8 @@ private:
   uint8_t addrsCount_;
 
   uint16_t rxSize;
+
+  bool isConnect_;
 };
 
 #endif // NOVOBUS_SLAVE_H

@@ -4,6 +4,7 @@
 #include "update.h"
 
 #define MAX_QUEUE_SIZE 500
+#define ANSWER_TIMEOUT 300000
 
 static void novobusSlaveTask(void *p)
 {
@@ -14,6 +15,7 @@ NovobusSlave::NovobusSlave()
   : oldCommand_(NoneCommand)
   , idsCount_(0)
   , addrsCount_(0)
+  , isConnect_(true)
 {
 
 }
@@ -40,6 +42,11 @@ void NovobusSlave::init()
   threadId_ = osThreadCreate(&t, this);
 }
 
+bool NovobusSlave::isConnect()
+{
+  return isConnect_;
+}
+
 void NovobusSlave::task()
 {
   osSemaphoreId semaphoreId = getHostSemaphore();
@@ -47,12 +54,17 @@ void NovobusSlave::task()
 
   while(1) {
     // Проверка семафора - если он свободен, то получен покет от хоста
-    if (osSemaphoreWait(semaphoreId, osWaitForever) != osEventTimeout) {
+    if (osSemaphoreWait(semaphoreId, ANSWER_TIMEOUT) != osEventTimeout) {
       rxSize = hostReadData(rxBuffer_);
       receivePackage(rxSize);
 
       osDelay(1);
       hostWriteData(txBuffer_, txBuffer_[1]);
+      isConnect_ = true;
+    }
+    // Нет связи
+    else {
+      isConnect_ = false;
     }
   }
 }

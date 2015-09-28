@@ -463,6 +463,12 @@ private:
    */
   void updateSoftware();
 
+  /*!
+   * \brief Проверка подключения мастера
+   *  Если нет связи - перезагрузка мастера
+   */
+  void checkConnectMaster();
+
   void setCmd(uint16_t id);
   void resetCmd(uint16_t id);
 
@@ -494,6 +500,8 @@ private:
   osSemaphoreId updateSemaphoreId_;
   //! Идентификатор семафора переинициализации скады
   osSemaphoreId scadaSemaphoreId_;
+
+  bool isConnectMaster_;
 
 };
 

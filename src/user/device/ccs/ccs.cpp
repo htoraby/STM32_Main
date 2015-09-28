@@ -48,6 +48,7 @@ Ccs::Ccs()
   , powerOffFlag_(false)
   , powerOffTimeout_(TIMEOUT_POWER_OFF)
   , checkConnectDeviceTimer_(DELAY_CHECK_CONNECT_DEVICE)
+  , isConnectMaster_(true)
 {
 
 }
@@ -123,6 +124,7 @@ void Ccs::toolsTask()
     if (osSemaphoreWait(scadaSemaphoreId_, 0) != osEventTimeout) {
       createScada();
     }
+    checkConnectMaster();
   }
 }
 
@@ -1232,6 +1234,16 @@ void Ccs::updateSoftware()
   else {
     resetCmd(CCS_CMD_UPDATE_SOFTWARE);
   }
+}
+
+void Ccs::checkConnectMaster()
+{
+  bool isConnect = novobusSlave.isConnect();
+  if (!isConnect && (isConnect != isConnectMaster_)) {
+    logDebug.add(CriticalMsg, "Master перезагрузка");
+    resetAm335x();
+  }
+  isConnectMaster_ = isConnect;
 }
 
 void Ccs::setCmd(uint16_t id)
