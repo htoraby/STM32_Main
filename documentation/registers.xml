@@ -14646,7 +14646,7 @@
 	</param>
 	<param>
 		<id>10055</id>
-		<name>VSD_INVERTOR_CONTROL</name>
+		<name>VSD_CONTROL_WORD_1</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
 		<max>999999.0</max>
@@ -16888,7 +16888,7 @@
 	</param>
 	<param>
 		<id>10243</id>
-		<name>VSD_COMMAND_WORD</name>
+		<name>VSD_DELETE_10243</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
 		<max>999999.0</max>
@@ -16899,7 +16899,7 @@
 	</param>
 	<param>
 		<id>10244</id>
-		<name>VSD_STATUS_WORD</name>
+		<name>VSD_DELETE_10244</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
 		<max>999999.0</max>

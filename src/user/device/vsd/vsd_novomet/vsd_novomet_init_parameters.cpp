@@ -241,7 +241,7 @@ void VsdNovomet::initModbusParameters()
                           0                 // Значение
   };
   modbusParameters_[14] = {// Регистр управляющий запуском
-                          VSD_INVERTOR_CONTROL,
+                          VSD_CONTROL_WORD_1,
                           90,               // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
                           PHYSIC_NUMERIC,   // Физическая величина параметра

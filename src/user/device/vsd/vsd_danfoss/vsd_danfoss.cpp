@@ -96,12 +96,96 @@ bool VsdDanfoss::isConnect()
 
 int VsdDanfoss::start()
 {
+#if USE_DEBUG
   return ok_r;
+#endif
+
+  // Если стоит бит запуска двигателя
+  if (checkStatusVsd(VSD_STATUS_STARTED))
+    return ok_r;
+
+  int timeMs = VSD_CMD_TIMEOUT;
+  int countRepeats = 0;
+
+  while (1) {
+    if (timeMs >= VSD_CMD_TIMEOUT) {
+      timeMs = 0;
+      countRepeats++;
+
+      if (countRepeats > VSD_CMD_NUMBER_REPEATS)
+        return err_r;
+
+      uint32_t controlVsd = getValue(VSD_CONTROL_WORD_1);
+      setBit(controlVsd, VSD_DANFOSS_CONTROL_RAMP, true);
+      setBit(controlVsd, VSD_DANFOSS_CONTROL_JOG, true);
+      if (setNewValue(VSD_CONTROL_WORD_1, controlVsd))
+        return err_r;
+    } else {
+      timeMs = timeMs + 100;
+    }
+
+    osDelay(100);
+
+    if (checkStatusVsd(VSD_STATUS_STARTED)) {
+      return ok_r;
+    }
+  }
 }
+
+int VsdDanfoss::stop(float type)
+{
+#if USE_DEBUG
+  return ok_r;
+#endif
+  if (!checkStatusVsd(VSD_STATUS_STARTED))
+    return ok_r;
+
+  int timeMs = VSD_CMD_TIMEOUT;
+  int countRepeats = 0;
+
+  float oldTypeStop = getValue(VSD_TYPE_STOP);
+
+  while (1) {
+    if (timeMs >= VSD_CMD_TIMEOUT) {
+      timeMs = 0;
+      countRepeats++;
+
+      if (countRepeats > VSD_CMD_NUMBER_REPEATS)
+        return err_r;
+
+      uint32_t controlVsd = getValue(VSD_CONTROL_WORD_1);
+
+      if (type != oldTypeStop) {
+        switch((uint16_t)type) {
+        case TYPE_STOP_ALARM:
+          setBit(controlVsd, VSD_DANFOSS_CONTROL_COASTING, false);
+          break;
+        default:
+          setBit(controlVsd, VSD_DANFOSS_CONTROL_RAMP, false);
+          break;
+        }
+      }
+      setBit(controlVsd, VSD_DANFOSS_CONTROL_JOG, false);
+
+      if (setNewValue(VSD_CONTROL_WORD_1, controlVsd))
+        return err_r;
+    }
+    else {
+      timeMs = timeMs + 100;
+    }
+
+    osDelay(100);
+
+    if (!checkStatusVsd(VSD_STATUS_STARTED))
+      return ok_r;
+  }
+}
+
 
 void VsdDanfoss::getNewValue(uint16_t id)
 {
   float value = 0;
+  uint32_t vsdStatus = 0x0000;
   // Преобразуем данные из полученного типа данных в float
   ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtId(id));
 
@@ -140,6 +224,12 @@ void VsdDanfoss::getNewValue(uint16_t id)
   // Если получено новое значение параметра
   if (getValue(id) != value) {
     switch (id) {
+    case VSD_STATUS_WORD_1:
+      vsdStatus = parameters.get(CCS_VSD_STATUS_WORD_1);
+      setBit(vsdStatus, VSD_STATUS_STARTED, checkBit(value, VSD_DANFOSS_STATUS_STATE));
+      parameters.set(CCS_VSD_STATUS_WORD_1, (float)vsdStatus);
+      setValue(id, value);
+      break;
     case VSD_UF_CHARACTERISTIC_F:
       switch ((uint16_t)getValue(VSD_INDEX)) {
       case 0:

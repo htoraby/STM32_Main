@@ -4,6 +4,22 @@
 #include "vsd.h"
 #include "device_modbus.h"
 
+enum enDanfossStatus_1
+{
+  VSD_DANFOSS_STATUS_STATE = 11,          //!< Запуск ПЧ
+};
+
+enum enDanfossControl
+{
+  VSD_DANFOSS_CONTROL_DC_BREAK          = 2,
+  VSD_DANFOSS_CONTROL_COASTING          = 3,
+  VSD_DANFOSS_CONTROL_QUICK_STOP        = 4,
+  VSD_DANFOSS_CONTROL_HOLD_FREQUENCY    = 5,
+  VSD_DANFOSS_CONTROL_RAMP              = 6,
+  VSD_DANFOSS_CONTROL_RESET             = 7,
+  VSD_DANFOSS_CONTROL_JOG               = 8,
+};
+
 class VsdDanfoss : public Vsd
 {
 public:
@@ -28,7 +44,9 @@ public:
   void writeUf_F(uint16_t numPoint, float value);
   void readUf_U(uint16_t numPoint);
   void writeUf_U(uint16_t numPoint, float value);
+
   int start();
+  int stop(float type);
 
 private:
   ModbusParameter modbusParameters_[132];

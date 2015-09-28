@@ -242,7 +242,7 @@ int VsdNovomet::start()
 #endif
 
   // Если стоит бит запуска двигателя
-  if (checkVsdStatus(VSD_STATUS_STARTED))
+  if (checkStatusVsd(VSD_STATUS_STARTED))
     return ok_r;
 
   resetRunQueue();
@@ -258,7 +258,7 @@ int VsdNovomet::start()
       if (countRepeats > VSD_CMD_NUMBER_REPEATS)
         return err_r;
 
-      if (setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_START))
+      if (setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_START))
         return err_r;
     } else {
       timeMs = timeMs + 100;
@@ -266,7 +266,7 @@ int VsdNovomet::start()
 
     osDelay(100);
 
-    if (checkVsdStatus(VSD_STATUS_STARTED)) {
+    if (checkStatusVsd(VSD_STATUS_STARTED)) {
       return ok_r;
     }
   }
@@ -278,8 +278,8 @@ bool VsdNovomet::checkStart()
   return true;
 #endif
 
-  if (checkVsdStatus(VSD_STATUS_STARTED)) {
-    if (!checkVsdStatus(VSD_STATUS_WAIT_RECT_START)) {
+  if (checkStatusVsd(VSD_STATUS_STARTED)) {
+    if (!checkStatusVsd(VSD_STATUS_WAIT_RECT_START)) {
       return true;
     }
   }
@@ -293,7 +293,7 @@ int VsdNovomet::stop(float type)
 #endif
 
   // Если стоит бит остановки по внешней команде
-  if (checkVsdStatus(VSD_STATUS_STOPPED_EXTERNAL))
+  if (checkStatusVsd(VSD_STATUS_STOPPED_EXTERNAL))
     return ok_r;
 
   int timeMs = VSD_CMD_TIMEOUT;
@@ -309,11 +309,11 @@ int VsdNovomet::stop(float type)
 
       switch((uint16_t)type) {
       case TYPE_STOP_ALARM:
-        if (setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_ALARM))
+        if (setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_ALARM))
           return err_r;
         break;
       default:
-        if (setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_STOP))
+        if (setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_STOP))
           return err_r;
        break;
       }
@@ -323,7 +323,7 @@ int VsdNovomet::stop(float type)
 
     osDelay(100);
 
-    if (checkVsdStatus(VSD_STATUS_STOPPED_EXTERNAL))
+    if (checkStatusVsd(VSD_STATUS_STOPPED_EXTERNAL))
       return ok_r;
   }
 }
@@ -331,7 +331,7 @@ int VsdNovomet::stop(float type)
 int VsdNovomet::alarmstop()
 {
   // Если стоит бит остановки по внешней команде
-  if (checkVsdStatus(VSD_STATUS_STOPPED_ALARM))
+  if (checkStatusVsd(VSD_STATUS_STOPPED_ALARM))
     return ok_r;
 
   int timeMs = VSD_CMD_TIMEOUT;
@@ -345,7 +345,7 @@ int VsdNovomet::alarmstop()
       if (countRepeats > VSD_CMD_NUMBER_REPEATS)
         return err_r;
 
-      if (setNewValue(VSD_INVERTOR_CONTROL, INV_CONTROL_ALARM))
+      if (setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_ALARM))
         return err_r;
     } else {
       timeMs = timeMs + 100;
@@ -353,7 +353,7 @@ int VsdNovomet::alarmstop()
 
     osDelay(100);
 
-    if (checkVsdStatus(VSD_STATUS_STOPPED_EXTERNAL))
+    if (checkStatusVsd(VSD_STATUS_STOPPED_EXTERNAL))
       return ok_r;
   }
 }
@@ -364,9 +364,9 @@ bool VsdNovomet::checkStop()
   return true;
 #endif
 
-  if (checkVsdStatus(VSD_STATUS_STOPPED_EXTERNAL)) {
-    if (!checkVsdStatus(VSD_STATUS_STARTED)) {
-      if (!checkVsdStatus(VSD_STATUS_WAIT_RECT_STOP)) {
+  if (checkStatusVsd(VSD_STATUS_STOPPED_EXTERNAL)) {
+    if (!checkStatusVsd(VSD_STATUS_STARTED)) {
+      if (!checkStatusVsd(VSD_STATUS_WAIT_RECT_STOP)) {
         return true;
       }
     }
@@ -419,10 +419,10 @@ int VsdNovomet::setMotorType(float value)
   }
   else {
     if (value == VSD_MOTOR_TYPE_ASYNC) {
-      writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_ASYN_MOTOR);
+      writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_ASYN_MOTOR);
     }
     else {
-      writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_VENT_MOTOR);
+      writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_VENT_MOTOR);
     }
     return ok_r;
   }
@@ -430,7 +430,7 @@ int VsdNovomet::setMotorType(float value)
 
 void VsdNovomet::calcMotorType()
 {
-  if (checkVsdStatus(VSD_STATUS_M_TYPE0)) {
+  if (checkStatusVsd(VSD_STATUS_M_TYPE0)) {
     setValue(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_VENT);
   }
   else {
@@ -460,7 +460,7 @@ void VsdNovomet::calcTimeSpeedDown()
 
 void VsdNovomet::calcRotation()
 {
-  if (checkVsdStatus(VSD_STATUS_RIGHT_DIRECTION)) {
+  if (checkStatusVsd(VSD_STATUS_RIGHT_DIRECTION)) {
     setValue(VSD_ROTATION, VSD_ROTATION_DIRECT);
   }
   else {
@@ -524,10 +524,10 @@ int VsdNovomet::setTempSpeedDown(float value)
 int VsdNovomet::setRotation(float value)
 {
   if (value == VSD_ROTATION_DIRECT) {
-    writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_RIGHT_DIRECTION);
+    writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_RIGHT_DIRECTION);
   }
   else {
-    writeToDevice(VSD_INVERTOR_CONTROL, INV_CONTROL_LEFT_DIRECTION);
+    writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_LEFT_DIRECTION);
   }
   return ok_r;
 }

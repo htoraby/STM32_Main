@@ -1884,7 +1884,7 @@ void VsdDanfoss::initModbusParameters()
                             0               // Значение
                            };
   modbusParameters_[109] = {// Командное слово
-                            VSD_COMMAND_WORD,
+                            VSD_CONTROL_WORD_1,
                             15999,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
                             PHYSIC_NUMERIC, // Физическая величина параметра
@@ -1901,7 +1901,7 @@ void VsdDanfoss::initModbusParameters()
                             0               // Значение
                            };
   modbusParameters_[110] = {// Cлова состояния
-                            VSD_STATUS_WORD,
+                            VSD_STATUS_WORD_1,
                             16029,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
                             PHYSIC_NUMERIC, // Физическая величина параметра
