@@ -68,13 +68,13 @@ public:
   /*!
    * \brief Функция чтения состояния катушек
    * Функция 1, считывание состояния катушек
-   * \param SlaveAddr - modbus адрес ведомого устройства (диапазон: 1 - 255)
-   * \param StartRef - первая катушка
-   * \param BitArr - массив возвращаемых значений
-   * \param RefCnt - количество считываемых катушек (Диапазон: 1-2000)
+   * \param slaveAddr - modbus адрес ведомого устройства (диапазон: 1 - 255)
+   * \param startRef - первая катушка
+   * \param bitArr - массив возвращаемых значений
+   * \param refCnt - количество считываемых катушек (Диапазон: 1-2000)
    * \return 0 - выполнено или код ошибки
    */
-  int readCoils(int SlaveAddr, int StartRef, bool BitArr[], int RefCnt);
+  uint8_t readCoils(uint8_t slaveAddr, uint16_t startRef, bool *bitArr, uint16_t refCnt);
 
   /*!
    * \brief Функция чтения состояния дискретных входов

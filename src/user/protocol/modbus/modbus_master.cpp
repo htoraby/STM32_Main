@@ -22,54 +22,52 @@ ModbusMaster::~ModbusMaster()
   // TODO Auto-generated destructor stub
 }
 
-int ModbusMaster::readCoils(int SlaveAddr, int StartRef, bool BitArr[], int RefCnt)
+uint8_t ModbusMaster::readCoils(uint8_t slaveAddr, uint16_t startRef, bool *bitArr, uint16_t refCnt)
 {
-  int result = MODBUS_ERROR_TRASH;
+  uint16_t crc;
+  uint8_t res = MODBUS_ERROR_TRASH;
+  uint8_t retry = 0;
   div_t Div;
-  int I;
-  int J;
-  uint16_t Crc = 0;
-  if (checkDeviceAddress(SlaveAddr)) {
-    if (checkCntCoils(RefCnt)) {                      // Проверяем корректность количества катушек
-      txBuffer_[0] = SlaveAddr;                       // Адрес устройства
-      txBuffer_[1] = MODBUS_READ_COILS_0x01;          // Команды
-      txBuffer_[2] = ((StartRef >> 8) & 0x00ff);      // Старший байт адреса первой катушки
-      txBuffer_[3] = StartRef & 0x00ff;               // Младший байт адреса первой катушки
-      txBuffer_[4] = ((RefCnt >> 8) & 0x00ff);        // Старший байт количества катушек
-      txBuffer_[5] = RefCnt & 0x00ff;                 // Младший байт количества катушек
-      Crc = crc16_ibm(txBuffer_, 6);                  // Вычисляем контрольную сумму
-      txBuffer_[6] = Crc & 0x00ff;                    // Младший байт контрольной суммы
-      txBuffer_[7] = ((Crc >> 8) & 0x00ff);           // Старший байт контрольной суммы
-                                                      // Вычисляем сколько байт мы ожидаем в ответе
-                                                      // Количество катушек / 8, если остаток != 0 то целое увеличиваем на 1
-                                                      // Получаем Целое и остаток от деления
-      Div = div(RefCnt,8);
-      if(Div.rem != 0)                                // Если остаток не равен 0
-        Div.quot++;                                   // Увеличиваем целую часть
-      if(txBuf(txBuffer_, 8)) {                       // Посылаем данные
-        result = rxBuf(txBuffer_, Div.quot + MODBUS_MIN_LENGHT_PACKAGE);    // Функция приёма данных
-        switch(result) {
-        case MODBUS_OK:                               // Получен корректный ответ
-          for(I = 0; I <= Div.quot; I++) {            // Цикл по байтам данных
-            for(J = 0; J <= 7; J++) {                 // Цикл по битам данных
-              BitArr[I * 8 + J] = ((txBuffer_[3 + I] >> J) & 0x01);
+  int i;
+  int j;
+  if (checkDeviceAddress(slaveAddr)) {
+    if (checkCntCoils(refCnt)) {                      // Проверяем корректность количества катушек
+      while (1) {
+        retry++;
+        txBuffer_[0] = slaveAddr;                       // Адрес устройства
+        txBuffer_[1] = MODBUS_READ_COILS_0x01;          // Команды
+        txBuffer_[2] = ((startRef >> 8) & 0x00ff);      // Старший байт адреса первой катушки
+        txBuffer_[3] = startRef & 0x00ff;               // Младший байт адреса первой катушки
+        txBuffer_[4] = ((refCnt >> 8) & 0x00ff);        // Старший байт количества катушек
+        txBuffer_[5] = refCnt & 0x00ff;                 // Младший байт количества катушек
+        crc = crc16_ibm(txBuffer_, 6);                  // Вычисляем контрольную сумму
+        txBuffer_[6] = crc & 0x00ff;                    // Младший байт контрольной суммы
+        txBuffer_[7] = ((crc >> 8) & 0x00ff);           // Старший байт контрольной суммы
+                                                        // Вычисляем сколько байт мы ожидаем в ответе
+                                                        // Количество катушек / 8, если остаток != 0 то целое увеличиваем на 1
+                                                        // Получаем Целое и остаток от деления
+        Div = div(refCnt,8);
+        if(Div.rem != 0)                                // Если остаток не равен 0
+          Div.quot++;                                   // Увеличиваем целую часть
+        if(txBuf(txBuffer_, 8) == ok_r) {                       // Посылаем данные
+          res = rxBuf(txBuffer_, Div.quot + MODBUS_MIN_LENGHT_PACKAGE);    // Функция приёма данных
+          if (res == MODBUS_OK) {
+            for(i = 0; i <= Div.quot; i++) {            // Цикл по байтам данных
+              for(j = 0; j <= 7; j++) {                 // Цикл по битам данных
+                bitArr[i * 8 + j] = ((txBuffer_[3 + i] >> j) & 0x01);
+              }
             }
+            return res;
           }
-          break;
-        case MODBUS_ERROR_TRASH:                      // Получен ответ с ошибкой
-          break;
-        case MODBUS_ERROR_CRC:                        // Ответ с ошибкой CRC
-          break;
-        case MODBUS_ERROR_TIMEOUT:                    // Ответ не получен
-          break;
-        default:
-
-          break;
         }
+        if (retry >= retryCnt_) {
+          return res;
+        }
+        osDelay(100);
       }
     }
   }
-  return result;
+  return res;
 }
 
 int ModbusMaster::readInputDiscretes(int SlaveAddr, int StartRef, bool BitArr[], int RefCnt)
@@ -374,26 +372,40 @@ int ModbusMaster::readInputFloats(int slaveAddr, int startRef, float *float32Arr
 
 int ModbusMaster::writeCoil(int slaveAddr, int bitAddr, int bitVal)
 {
-  int result = MODBUS_ERROR_TRASH;
-  unsigned short crc = 0;
+  int res = err_r;
+  uint16_t crc = 0;
+  uint8_t retry = 0;
   if (checkDeviceAddress(slaveAddr)) {
-    txBuffer_[0] = slaveAddr;                       // Адрес устройства
-    txBuffer_[1] = MODBUS_WRITE_SINGLE_COIL_0x05;   // Команды
-    txBuffer_[2] = ((bitAddr >> 8) & 0x00ff);       // Старший байт адреса катушки
-    txBuffer_[3] = bitAddr & 0x00ff;                // Младший байт адреса катушки
-    if (bitVal) {
-      txBuffer_[4] = 0xff;                          // Старший байт значения
-      txBuffer_[5] = 0x00;                          // Младший байт значения
+    while (1) {
+      retry++;
+      txBuffer_[0] = slaveAddr;                       // Адрес устройства
+      txBuffer_[1] = MODBUS_WRITE_SINGLE_COIL_0x05;   // Команды
+      txBuffer_[2] = ((bitAddr >> 8) & 0x00ff);       // Старший байт адреса катушки
+      txBuffer_[3] = bitAddr & 0x00ff;                // Младший байт адреса катушки
+      if (bitVal) {
+        txBuffer_[4] = 0xff;                          // Старший байт значения
+        txBuffer_[5] = 0x00;                          // Младший байт значения
+      }
+      else {
+        txBuffer_[4] = 0x00;                          // Старший байт значения
+        txBuffer_[5] = 0x00;                          // Младший байт значения
+      }
+      crc = crc16_ibm(txBuffer_, 6);                  // Вычисляем контрольную сумму
+      txBuffer_[6] = crc & 0x00ff;                    // Младший байт контрольной суммы
+      txBuffer_[7] = ((crc >> 8) & 0x00ff);           // Старший байт контрольной суммы
+      if (txBuf(txBuffer_, 8) == ok_r) {
+        res = rxBuf(rxBuffer_, 8);
+        if (res == MODBUS_OK) {
+          return res;                                 // Возвращаем что запись выполнена
+        }
+      }
+      if (retry >= retryCnt_) {
+        return res;                                   // Возвращаем код ошибки Modbus
+      }
+      osDelay(100);
     }
-    else {
-      txBuffer_[4] = 0x00;                          // Старший байт значения
-      txBuffer_[5] = 0x00;                          // Младший байт значения
-    }
-    crc = crc16_ibm(txBuffer_, 6);                  // Вычисляем контрольную сумму
-    txBuffer_[6] = crc & 0x00ff;                    // Младший байт контрольной суммы
-    txBuffer_[7] = ((crc >> 8) & 0x00ff);           // Старший байт контрольной суммы
   }
-  return result;
+  return res;
 }
 
 int ModbusMaster::writeSingleRegister(int slaveAddr, int regAddr, short regVal)
