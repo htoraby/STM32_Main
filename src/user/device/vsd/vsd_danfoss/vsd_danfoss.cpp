@@ -218,6 +218,50 @@ int VsdDanfoss::startCoil()
   }
 }
 
+int VsdDanfoss::stopCoil(float type)
+{
+#if USE_DEBUG
+  return ok_r;
+#endif
+  if (!checkStatusVsd(VSD_STATUS_STARTED))
+    return ok_r;
+
+  int timeMs = VSD_CMD_TIMEOUT;
+  int countRepeats = 0;
+
+  float oldTypeStop = getValue(VSD_TYPE_STOP);
+
+  while (1) {
+    if (timeMs >= VSD_CMD_TIMEOUT) {
+      timeMs = 0;
+      countRepeats++;
+
+      if (countRepeats > VSD_CMD_NUMBER_REPEATS)
+        return err_r;
+
+      uint32_t controlVsd = getValue(VSD_CONTROL_WORD_1);
+
+      if (type != oldTypeStop) {
+        switch((uint16_t)type) {
+        default:
+          if (setNewValue(VSD_FLAG, 0))
+            if (setNewValue(VSD_ON, 0))
+              return err_r;
+          break;
+        }
+      }
+    }
+    else {
+      timeMs = timeMs + 100;
+    }
+
+    osDelay(100);
+
+    if (!checkStatusVsd(VSD_STATUS_STARTED))
+      return ok_r;
+  }
+}
+
 void VsdDanfoss::getNewValue(uint16_t id)
 {
   float value = 0;
