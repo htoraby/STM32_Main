@@ -162,23 +162,23 @@ void VsdEtalon::getNewValue(uint16_t id)
       break;
     case VSD_UF_CHARACTERISTIC_U_1_PERCENT:           // Получили точку напряжения U/f
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_1, (int)(getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_1, (int)(parameters.get(CCS_TRANS_NOMINAL_VOLTAGE_INPUT) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_2_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_2, (int)(getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_2, (int)(parameters.get(CCS_TRANS_NOMINAL_VOLTAGE_INPUT) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_3_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_3, (int)(getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_3, (int)(parameters.get(CCS_TRANS_NOMINAL_VOLTAGE_INPUT) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_4_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_4, (int)(getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_4, (int)(parameters.get(CCS_TRANS_NOMINAL_VOLTAGE_INPUT) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_5_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_5, (int)(getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_5, (int)(parameters.get(CCS_TRANS_NOMINAL_VOLTAGE_INPUT) * value / 100.0));
       break;
     case VSD_LOW_LIM_SPEED_MOTOR:
       setLimitsFrequence(0, value);
