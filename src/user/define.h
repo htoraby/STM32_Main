@@ -34,6 +34,7 @@ enum enTypeData {
   TYPE_DATA_UINT16 = 4,
   TYPE_DATA_UINT32 = 5,
   TYPE_DATA_FLOAT  = 6,
+  TYPE_DATA_COIL   = 7,
   TYPE_DATA_LAST
 };
 

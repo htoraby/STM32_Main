@@ -267,6 +267,7 @@ public:
 
   bool isConnect();
 
+  bool bitArr_[125];
   uint16_t regArr_[125];
   int int32Arr_[62];
   float float32Arr_[62];
