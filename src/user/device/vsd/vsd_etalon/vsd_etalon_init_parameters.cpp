@@ -719,7 +719,7 @@ void VsdEtalon::initModbusParameters()
                           };
 
   modbusParameters_[43] = {// Запуск
-                           VSD_ETALON_ON,   // Уникальный идентификатор параметра
+                           VSD_ON,          // Уникальный идентификатор параметра
                            238 + 0x4000,    // 0x40EE Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_NUMERIC,  // Физическая величина параметра
@@ -736,7 +736,7 @@ void VsdEtalon::initModbusParameters()
                            0                // Значение
                           };
   modbusParameters_[44] = {// Останов
-                           VSD_ETALON_OFF,  // Уникальный идентификатор параметра
+                           VSD_OFF,         // Уникальный идентификатор параметра
                            239 + 0x4000,    // 0x40EF Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_NUMERIC,  // Физическая величина параметра
@@ -1968,7 +1968,7 @@ void VsdEtalon::initModbusParameters()
                           0                 // Значение
                          };
   modbusParameters_[116] = {//
-                          VSD_ETALON_FLAG,
+                          VSD_FLAG,
                           257 + 0x4000,     // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
                           PHYSIC_NUMERIC,   // Физическая величина параметра

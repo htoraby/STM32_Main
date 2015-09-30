@@ -387,7 +387,7 @@ int VsdEtalon::start()
 
     if (vsd->resetBlock())
       return err_r;
-    if (setNewValue(VSD_ETALON_ON, 1))
+    if (setNewValue(VSD_ON, 1))
       return err_r;
     }
     else {
@@ -434,7 +434,7 @@ int VsdEtalon::stop(float type)
       if (type != oldTypeStop)
         writeToDevice(VSD_TYPE_STOP, type);
 
-      if (setNewValue(VSD_ETALON_OFF, 1))
+      if (setNewValue(VSD_OFF, 1))
         return err_r;
 
       resetBlock();
@@ -466,7 +466,7 @@ bool VsdEtalon::checkStop()
 
 int VsdEtalon::resetBlock()
 {
-  setNewValue(VSD_ETALON_FLAG, 0);
+  setNewValue(VSD_FLAG, 0);
   return setNewValue(VSD_ETALON_UNLOCK, 1);
 }
 
@@ -534,7 +534,7 @@ int VsdEtalon::offRegimeSkipFreq()
 int VsdEtalon::resetSetpoints()
 {
   int result = setNewValue(VSD_ETALON_RESET, 1);
-  setNewValue(VSD_ETALON_FLAG, 0);
+  setNewValue(VSD_FLAG, 0);
   return result;
 }
 
