@@ -181,6 +181,42 @@ int VsdDanfoss::stop(float type)
   }
 }
 
+int VsdDanfoss::startCoil()
+{
+#if USE_DEBUG
+  return ok_r;
+#endif
+
+  // Если стоит бит запуска двигателя
+  if (checkStatusVsd(VSD_STATUS_STARTED))
+    return ok_r;
+
+  int timeMs = VSD_CMD_TIMEOUT;
+  int countRepeats = 0;
+
+  while (1) {
+    if (timeMs >= VSD_CMD_TIMEOUT) {
+      timeMs = 0;
+      countRepeats++;
+
+      if (countRepeats > VSD_CMD_NUMBER_REPEATS)
+        return err_r;
+
+      if (setNewValue(VSD_ON, 1))
+        if (setNewValue(VSD_FLAG, 1))
+          return err_r;
+
+    } else {
+      timeMs = timeMs + 100;
+    }
+
+    osDelay(100);
+
+    if (checkStatusVsd(VSD_STATUS_STARTED)) {
+      return ok_r;
+    }
+  }
+}
 
 void VsdDanfoss::getNewValue(uint16_t id)
 {

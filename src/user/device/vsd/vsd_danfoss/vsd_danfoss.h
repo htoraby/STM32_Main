@@ -48,8 +48,11 @@ public:
   int start();
   int stop(float type);
 
+  int startCoil();
+  int stopCoil(float type);
+
 private:
-  ModbusParameter modbusParameters_[132];
+  ModbusParameter modbusParameters_[134];
   DeviceModbus *dm_;
 
 };
