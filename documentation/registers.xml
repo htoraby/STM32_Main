@@ -17463,7 +17463,7 @@
 	</param>
 	<param>
 		<id>10278</id>
-		<name>VSD_ETALON_ON</name>
+		<name>VSD_ON</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -17484,7 +17484,7 @@
 	</param>
 	<param>
 		<id>10279</id>
-		<name>VSD_ETALON_OFF</name>
+		<name>VSD_OFF</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -18532,7 +18532,7 @@
 	</param>
 	<param>
 		<id>10329</id>
-		<name>VSD_ETALON_FLAG</name>
+		<name>VSD_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>

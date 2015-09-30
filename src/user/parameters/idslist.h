@@ -1058,8 +1058,8 @@ enum enID
   VSD_DEPTH = 10275,                                         //!< Глубина спуска
   VSD_ETALON_FAST_OFF = 10276,                               //!< Быстрый останов
   VSD_ETALON_UNLOCK = 10277,                                 //!< Сброс аварии
-  VSD_ETALON_ON = 10278,                                     //!< Запуск
-  VSD_ETALON_OFF = 10279,                                    //!< Останов
+  VSD_ON = 10278,                                            //!< Запуск
+  VSD_OFF = 10279,                                           //!< Останов
   VSD_ETALON_RESET = 10280,                                  //!< Сброс уставок по умолчанию
   VSD_BLDC_MAX_WORK_FREQ = 10281,                            //!< Предельная рабочая частота
   VSD_MOTOR_INDUCTANCE = 10282,                              //!< Индуктивность обмотки ВПЭД для ВД
@@ -1109,7 +1109,7 @@ enum enID
   VSD_UF_CHARACTERISTIC_U_5_PERCENT = 10326,                 //!< U/F точка U5 в процентах
   VSD_FILTER_TEMPERATURE_1 = 10327,                          //!< Температура выходного фильтра
   VSD_FILTER_TEMPERATURE_2 = 10328,                          //!< Температура выходного фильтра
-  VSD_ETALON_FLAG = 10329,                                   //!< Выбор источника расчёта точек U/f
+  VSD_FLAG = 10329,                                          //!< Выбор источника расчёта точек U/f
   VSD_ETALON_RESISTANCE_ISOLATION = 10330,                   //!< 
   VSD_TRANS_NEED_VOLTAGE_TAP_OFF = 10331,                    //!< Необходимое напряжение отпайки
   VSD_ETALON_BASE_FREQUENCY = 10332,                         //!< Максимальная рабочая частота
