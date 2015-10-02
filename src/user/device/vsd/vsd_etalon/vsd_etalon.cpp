@@ -145,8 +145,8 @@ void VsdEtalon::getNewValue(uint16_t id)
     case VSD_ETALON_ON_STATE:                 // Получили подтверждение запуска
       vsdInvertorStatus = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_1) & 0xFFFE;
       if (value)
-        vsdInvertorStatus = setBit(vsdInvertorStatus, VSD_STATUS_READY, true);
-      parameters.set(CCS_VSD_STATUS_WORD_2,  (float)vsdInvertorStatus);
+        vsdInvertorStatus = setBit(vsdInvertorStatus, VSD_STATUS_STARTED, true);
+      parameters.set(CCS_VSD_STATUS_WORD_1,  (float)vsdInvertorStatus);
       setValue(id, value);
       break;
     case VSD_ETALON_OFF_STATE:                // Получили подтверждение останова
@@ -403,12 +403,12 @@ int VsdEtalon::start()
 
 bool VsdEtalon::checkStart()
 {
-#if DEBUG
+#if USE_DEBUG
   return true;
 #endif
 
   if (getValue(VSD_ETALON_ON_STATE) == 1)
-    return ok_r;
+    return true;
   return false;
 }
 
@@ -454,12 +454,12 @@ int VsdEtalon::stop(float type)
 
 bool VsdEtalon::checkStop()
 {
-#if DEBUG
+#if USE_DEBUG
   return true;
 #endif
 
   if (getValue(VSD_ETALON_OFF_STATE) == 1) {
-    return ok_r;
+    return true;
   }
   return false;
 }
