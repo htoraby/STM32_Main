@@ -239,8 +239,6 @@ int VsdDanfoss::stopCoil(float type)
       if (countRepeats > VSD_CMD_NUMBER_REPEATS)
         return err_r;
 
-      uint32_t controlVsd = getValue(VSD_CONTROL_WORD_1);
-
       if (type != oldTypeStop) {
         switch((uint16_t)type) {
         default:
