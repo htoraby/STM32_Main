@@ -217,6 +217,8 @@ void DeviceModbus::writeModbusParameter(int id, float value)
   case TYPE_DATA_FLOAT:
     param->value.float_t = value;
     break;
+  case TYPE_DATA_COIL:
+    param->value.int16_t[0] = (short int)(value + 0.5);
   default:
     break;
   }
@@ -295,6 +297,14 @@ void DeviceModbus::exchangeTask()
       if (mbParams_[outOfTurn].command == OPERATION_WRITE) {    // Команда записи
         int address = mbParams_[outOfTurn].address;             // Получаем адрес параметра в устройстве
         switch (mbParams_[outOfTurn].typeData) {                // Тип данных
+        case TYPE_DATA_COIL:
+          res = mms_->writeCoil(devAdrs_, address, mbParams_[outOfTurn].value.int16_t[0]);
+          if (res != ok_r) {
+            if (isConnect()) {
+              logDebug.add(WarningMsg, "mbCmd0x05 int16 %d %d %d", devAdrs_, address,
+                           mbParams_[outOfTurn].value.int16_t[0]);
+            }
+          }
         case TYPE_DATA_INT16:
           res = mms_->writeSingleRegister(devAdrs_, address, mbParams_[outOfTurn].value.int16_t[0]);
           if (res != ok_r) {
@@ -348,6 +358,35 @@ void DeviceModbus::exchangeTask()
         if (mbParams_[outOfTurn].command == OPERATION_READ) {
           int address = mbParams_[outOfTurn].address;
           switch (mbParams_[outOfTurn].typeData) {
+          case TYPE_DATA_COIL:
+            count = 1;
+            res = mms_->readCoils(devAdrs_, address, bitArr_, count);
+            if (res == ok_r) {
+              int index = getIndexAtAddress(address);
+              for (int i = 0; i < count; i++) {
+                mbParams_[index].value.int16_t[0] = bitArr_[i];
+                uint8_t validity = checkRange(mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, true);
+                if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
+                  logDebug.add(WarningMsg, "0x01 ok_r no valid devAdr %d, index %d, value %d, valid %d", devAdrs_,
+                                index, regArr_[i], mbParams_[index].validity);
+                }
+                mbParams_[index].validity = validity;
+                putMessageUpdateId(mbParams_[index].id);
+                index++;
+              }
+            }
+            else {
+              int index = getIndexAtAddress(address);
+              for (uint8_t i = 0; i < count; i++) {
+                mbParams_[index].validity = err_r;
+                if (isConnect()) {
+                  logDebug.add(WarningMsg, "0x01 no ok_r devAdr %d, index %d, value %d, valid %d", devAdrs_, index, bitArr_[i]);
+                }
+                putMessageUpdateId(mbParams_[index].id);
+                index++;
+              }
+            }
+            break;
           case TYPE_DATA_INT16:
             count = 1;                      // Пока только одного параметра
             res = mms_->readMultipleRegisters(devAdrs_, address, regArr_, count);
@@ -361,7 +400,6 @@ void DeviceModbus::exchangeTask()
                                index, regArr_[i], mbParams_[index].validity);
                 }
                 mbParams_[index].validity = validity;
-
                 putMessageUpdateId(mbParams_[index].id);
                 index++;
               }
@@ -509,6 +547,9 @@ void DeviceModbus::exchangeTask()
       if (outOfTurn) {
         int address = mbParams_[outOfTurn].address;
         switch (mbParams_[outOfTurn].typeData) {
+        case TYPE_DATA_COIL:
+
+          break;
         case TYPE_DATA_INT16:
           count = 1;                      // Пока только одного параметра
           res = mms_->readMultipleRegisters(devAdrs_, address, regArr_, count);

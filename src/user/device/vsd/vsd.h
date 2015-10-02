@@ -17,7 +17,7 @@
 /*!
  * \brief Флаги статусных регистров инвертора
  */
-enum enVsdFlags {
+enum enStatus {
   // STATUS_WORD_1
   VSD_STATUS_STARTED              = 0,      //!< Запуск ПЧ
   VSD_STATUS_WAIT_RECT_START      = 1,      //!< Ожидаем запуска выпрямителя
@@ -93,6 +93,29 @@ enum enVsdFlags {
   VSD_STATUS_ERR_31               = 95,     //!< Ошибка 31
 
   VSD_STATUS_NO_CONNECT           = 250,     //!< Нет связи с ЧРП
+};
+
+/*!
+ * \brief The enControl enum
+ * Флаги регистра управления ПЧ
+ */
+enum enControl
+{
+  VSD_CONTROL_START           = 1,       //!< Запустить инвертор ("Старт")
+  VSD_CONTROL_STOP            = 2,       //!< Остановить инвертор ("Стоп")
+  VSD_CONTROL_LEFT_DIRECTION  = 4,       //!< Задать левое вращение (обратное)
+  VSD_CONTROL_RIGHT_DIRECTION = 8,       //!< Задать правое вращение (прямое)
+  VSD_CONTROL_ALARM           = 16,      //!< Аварийный останов
+  VSD_CONTROL_CURRENT_OPT     = 32,      //!< Задание оптимизации по току
+  VSD_CONTROL_POWER_OPT       = 64,      //!< задание оптимизации по мощности
+  VSD_CONTROL_CLEAR_OPT       = 128,     //!< Отключить оптимизацию
+  VSD_CONTROL_ASYN_MOTOR      = 256,     //!< Асинхронный
+  VSD_CONTROL_VENT_MOTOR      = 512,     //!< Вентильный
+  VSD_CONTROL_OVERPWM1_ON     = 1024,    //!< Включить режим OverPWM1
+  VSD_CONTROL_OVERPWM2_ON     = 2048,    //!< Включить режим OverPWM2
+  VSD_CONTROL_OVERPWM_OFF     = 4096,    //!< Выключить режим OverPWM
+  VSD_CONTROL_DISCHARGE_ON    = 8192,    //!< Включить предразряд шины инвертора
+  VSD_CONTROL_DISCHARGE_OFF   = 16384,   //!< Выключить предразряд шины инвертора
 };
 
 /*!
@@ -282,7 +305,7 @@ public:
    * \param bit - проверяемый бит
    * \return 0 - бит не установлен 1 - бит установлен
    */
-  virtual bool checkVsdStatus(uint8_t bit);
+  virtual bool checkStatusVsd(uint8_t bit);
 
   virtual void processingRegimeRun();
 

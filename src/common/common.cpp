@@ -113,6 +113,11 @@ uint32_t setBit(uint32_t value, uint8_t bit, bool flag)
     return setZeroToBit(value, bit);
 }
 
+void copyBit(uint32_t source, uint8_t sourceBit, uint32_t target, uint8_t targetBit)
+{
+  setBit(target, targetBit, checkBit(source, sourceBit));
+}
+
 float calcImbalance(float value1, float value2, float value3, int digit)
 {
   float max_;

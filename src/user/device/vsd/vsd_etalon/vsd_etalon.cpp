@@ -162,23 +162,23 @@ void VsdEtalon::getNewValue(uint16_t id)
       break;
     case VSD_UF_CHARACTERISTIC_U_1_PERCENT:           // Получили точку напряжения U/f
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_1, (int)(getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_1, (int)(parameters.get(CCS_TRANS_NOMINAL_VOLTAGE_INPUT) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_2_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_2, (int)(getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_2, (int)(parameters.get(CCS_TRANS_NOMINAL_VOLTAGE_INPUT) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_3_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_3, (int)(getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_3, (int)(parameters.get(CCS_TRANS_NOMINAL_VOLTAGE_INPUT) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_4_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_4, (int)(getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_4, (int)(parameters.get(CCS_TRANS_NOMINAL_VOLTAGE_INPUT) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_5_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_5, (int)(getValue(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_5, (int)(parameters.get(CCS_TRANS_NOMINAL_VOLTAGE_INPUT) * value / 100.0));
       break;
     case VSD_LOW_LIM_SPEED_MOTOR:
       setLimitsFrequence(0, value);
@@ -371,7 +371,7 @@ int VsdEtalon::start()
   return ok_r;
 #endif
 
-  if (checkVsdStatus(VSD_STATUS_STARTED))
+  if (checkStatusVsd(VSD_STATUS_STARTED))
     return ok_r;
 
   int timeMs = VSD_CMD_TIMEOUT;
@@ -387,7 +387,7 @@ int VsdEtalon::start()
 
     if (vsd->resetBlock())
       return err_r;
-    if (setNewValue(VSD_ETALON_ON, 1))
+    if (setNewValue(VSD_ON, 1))
       return err_r;
     }
     else {
@@ -396,7 +396,7 @@ int VsdEtalon::start()
 
     osDelay(100);
 
-    if (checkVsdStatus(VSD_STATUS_STARTED))
+    if (checkStatusVsd(VSD_STATUS_STARTED))
       return ok_r;
     }
 }
@@ -434,7 +434,7 @@ int VsdEtalon::stop(float type)
       if (type != oldTypeStop)
         writeToDevice(VSD_TYPE_STOP, type);
 
-      if (setNewValue(VSD_ETALON_OFF, 1))
+      if (setNewValue(VSD_OFF, 1))
         return err_r;
 
       resetBlock();
@@ -466,7 +466,7 @@ bool VsdEtalon::checkStop()
 
 int VsdEtalon::resetBlock()
 {
-  setNewValue(VSD_ETALON_FLAG, 0);
+  setNewValue(VSD_FLAG, 0);
   return setNewValue(VSD_ETALON_UNLOCK, 1);
 }
 
@@ -534,7 +534,7 @@ int VsdEtalon::offRegimeSkipFreq()
 int VsdEtalon::resetSetpoints()
 {
   int result = setNewValue(VSD_ETALON_RESET, 1);
-  setNewValue(VSD_ETALON_FLAG, 0);
+  setNewValue(VSD_FLAG, 0);
   return result;
 }
 
@@ -784,141 +784,141 @@ void VsdEtalon::convertBitVsdStatus(float value)
   uint32_t vsdStatusWord7 = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_7) & 0xFF81;
 
   switch ((uint32_t)value) {
-  case VSD_ETALON_INFO_READY:             // VSD_STATUS_READY
+  case VSD_ETALON_STATUS_READY:             // VSD_STATUS_READY
     vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_READY, true);
     break;
-  case VSD_ETALON_INFO_UNDERLOAD:         // VSD_STATUS_UNDERLOAD
+  case VSD_ETALON_STATUS_UNDERLOAD:         // VSD_STATUS_UNDERLOAD
     vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_UNDERLOAD, true);
     break;
-  case VSD_ETALON_INFO_OVERLOAD:          // VSD_STATUS_M_I2T_ERR
+  case VSD_ETALON_STATUS_OVERLOAD:          // VSD_STATUS_M_I2T_ERR
     vsdStatusWord2 = setBit(vsdStatusWord2, VSD_STATUS_M_I2T_ERR, true);
     break;
-  case VSD_ETALON_INFO_RESISTANCE:        // VSD_STATUS_RESISTANCE
+  case VSD_ETALON_STATUS_RESISTANCE:        // VSD_STATUS_RESISTANCE
     vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_RESISTANCE, true);
     break;
-  case VSD_ETALON_INFO_UNDERVOLTAGE:      // VSD_STATUS_UNDERVOLTAGE
+  case VSD_ETALON_STATUS_UNDERVOLTAGE:      // VSD_STATUS_UNDERVOLTAGE
     vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_UNDERVOLTAGE, true);
     break;
-  case VSD_ETALON_INFO_OVERVOLTAGE:       // VSD_STATUS_OVERVOLTAGE
+  case VSD_ETALON_STATUS_OVERVOLTAGE:       // VSD_STATUS_OVERVOLTAGE
     vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_OVERVOLTAGE, true);
     break;
-  case VSD_ETALON_INFO_UNDERVOLTAGE_DC:    // VSD_STATUS_UD_LOW_FAULT
+  case VSD_ETALON_STATUS_UNDERVOLTAGE_DC:    // VSD_STATUS_UD_LOW_FAULT
     vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_UD_LOW_FAULT, true);
     break;
-  case VSD_ETALON_INFO_OVERVOLTAGE_DC:    // VSD_STATUS_UD_HIGH_FAULT
+  case VSD_ETALON_STATUS_OVERVOLTAGE_DC:    // VSD_STATUS_UD_HIGH_FAULT
     vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_UD_HIGH_FAULT, true);
     break;
-  case VSD_ETALON_INFO_RUN_COUNT:         // VSD_STATUS_RUN_COUNT
+  case VSD_ETALON_STATUS_RUN_COUNT:         // VSD_STATUS_RUN_COUNT
     vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_RUN_COUNT, true);
     break;
-  case VSD_ETALON_INFO_OVERHEAT_IGBT:     // VSD_STATUS_FC_I2T_ERR
+  case VSD_ETALON_STATUS_OVERHEAT_IGBT:     // VSD_STATUS_FC_I2T_ERR
     vsdStatusWord2 = setBit(vsdStatusWord2, VSD_STATUS_FC_I2T_ERR, true);
     break;
-  case VSD_ETALON_INFO_OVERHEAT_FILTER:   // VSD_STATUS_OVERHEAT_FILTER
+  case VSD_ETALON_STATUS_OVERHEAT_FILTER:   // VSD_STATUS_OVERHEAT_FILTER
     vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_OVERHEAT_FILTER, true);
     break;
-  case VSD_ETALON_INFO_PROT:              // VSD_STATUS_STOPPED_ALARM
+  case VSD_ETALON_STATUS_PROT:              // VSD_STATUS_STOPPED_ALARM
     vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
     break;
-  case VSD_ETALON_INFO_SUPPLY_DRIVERS:    // VSD_FLT_DRV0
+  case VSD_ETALON_STATUS_SUPPLY_DRIVERS:    // VSD_FLT_DRV0
     vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_DRV0, true);
     break;
-  case VSD_ETALON_INFO_MONOMETR:          // VSD_STATUS_MONOMETR
+  case VSD_ETALON_STATUS_MONOMETR:          // VSD_STATUS_MONOMETR
     vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_MONOMETR, true);
     break;
-  case VSD_ETALON_INFO_AI_0:              // VSD_STATUS_AI_0
+  case VSD_ETALON_STATUS_AI_0:              // VSD_STATUS_AI_0
     vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_AI_0, true);
     break;
-  case VSD_ETALON_INFO_SEQUENCE_PHASE:    // VSD_THYR_ABC_STATE
+  case VSD_ETALON_STATUS_SEQUENCE_PHASE:    // VSD_THYR_ABC_STATE
     vsdStatusWord5 = setBit(vsdStatusWord5, VSD_STATUS_ABC_STATE, true);
     break;
-  case VSD_ETALON_INFO_OVERHEAT_MOTOR:    // VSD_STATUS_OVERHEAT_MOTOR
+  case VSD_ETALON_STATUS_OVERHEAT_MOTOR:    // VSD_STATUS_OVERHEAT_MOTOR
     vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_OVERHEAT_MOTOR, true);
     break;
-  case VSD_ETALON_INFO_OVERVIBRATION:     // VSD_STATUS_OVERVIBRATION
+  case VSD_ETALON_STATUS_OVERVIBRATION:     // VSD_STATUS_OVERVIBRATION
     vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_OVERVIBRATION, true);
     break;
-  case VSD_ETALON_INFO_PRESSURE:          // VSD_STATUS_PRESSURE
+  case VSD_ETALON_STATUS_PRESSURE:          // VSD_STATUS_PRESSURE
     vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_PRESSURE, true);
     break;
-  case VSD_ETALON_INFO_19:                // VSD_STATUS_ERR_19
+  case VSD_ETALON_STATUS_19:                // VSD_STATUS_ERR_19
     vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_ERR_19, true);
     break;
-  case VSD_ETALON_INFO_IMBALANCE_CURRENT: // VSD_FLT_IZ
+  case VSD_ETALON_STATUS_IMBALANCE_CURRENT: // VSD_FLT_IZ
     vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_IZ, true);
     break;
-  case VSD_ETALON_INFO_IMBALANCE_VOLTAGE: // VSD_STATUS_UIN_ASYM
+  case VSD_ETALON_STATUS_IMBALANCE_VOLTAGE: // VSD_STATUS_UIN_ASYM
     vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_UIN_ASYM, true);
     break;
-  case VSD_ETALON_INFO_TURBINE:           // VSD_STATUS_TURBINE
+  case VSD_ETALON_STATUS_TURBINE:           // VSD_STATUS_TURBINE
     vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_TURBINE, true);
     break;
-  case VSD_ETALON_INFO_24:                // VSD_STATUS_STOPPED_ALARM
+  case VSD_ETALON_STATUS_24:                // VSD_STATUS_STOPPED_ALARM
     vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
     break;
-  case VSD_ETALON_INFO_FAILURE_SUPPLY:    // VSD_STATUS_STOPPED_ALARM
+  case VSD_ETALON_STATUS_FAILURE_SUPPLY:    // VSD_STATUS_STOPPED_ALARM
     vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
     break;
-  case VSD_ETALON_INFO_DOOR:              // VSD_STATUS_STOPPED_ALARM
+  case VSD_ETALON_STATUS_DOOR:              // VSD_STATUS_STOPPED_ALARM
     vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
     break;
-  case VSD_ETALON_INFO_LOST_SUPPLY:       // VSD_STATUS_STOPPED_ALARM
+  case VSD_ETALON_STATUS_LOST_SUPPLY:       // VSD_STATUS_STOPPED_ALARM
     vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
     break;
-  case VSD_ETALON_INFO_CONDENSATOR:       // VSD_THYR_CHARGE_STATE
+  case VSD_ETALON_STATUS_CONDENSATOR:       // VSD_THYR_CHARGE_STATE
     vsdStatusWord1 = setBit(vsdStatusWord5, VSD_STATUS_CHARGE_STATE, true);
     break;
-  case VSD_ETALON_INFO_TERISTORS:         // VSD_STATUS_STOPPED_ALARM
+  case VSD_ETALON_STATUS_TERISTORS:         // VSD_STATUS_STOPPED_ALARM
     vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
     break;
-  case VSD_ETALON_INFO_CURRENT_LIMIT:     // VSD_STATUS_I_LIMIT
+  case VSD_ETALON_STATUS_CURRENT_LIMIT:     // VSD_STATUS_I_LIMIT
     vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_I_LIMIT, true);
     break;
-  case VSD_ETALON_INFO_31:                // VSD_STATUS_ERR_31
+  case VSD_ETALON_STATUS_31:                // VSD_STATUS_ERR_31
     vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_ERR_31, true);
     break;
-  case VSD_ETALON_INFO_32:
+  case VSD_ETALON_STATUS_32:
     break;
-  case VSD_ETALON_INFO_AUTO_STOP:
+  case VSD_ETALON_STATUS_AUTO_STOP:
     break;
-  case VSD_ETALON_INFO_MANUAL_STOP:
+  case VSD_ETALON_STATUS_MANUAL_STOP:
     break;
-  case VSD_ETALON_INFO_REMOTE_STOP:
+  case VSD_ETALON_STATUS_REMOTE_STOP:
     break;
-  case VSD_ETALON_INFO_AUTO_RUN:
+  case VSD_ETALON_STATUS_AUTO_RUN:
     break;
-  case VSD_ETALON_INFO_MANUAL_RUN:
+  case VSD_ETALON_STATUS_MANUAL_RUN:
     break;
-  case VSD_ETALON_INFO_REMOTE_RUN:
+  case VSD_ETALON_STATUS_REMOTE_RUN:
     break;
-  case VSD_ETALON_INFO_RESTART_COUNT:
+  case VSD_ETALON_STATUS_RESTART_COUNT:
     break;
-  case VSD_ETALON_INFO_MEMORY:            // VSD_STATUS_CLK_MON
+  case VSD_ETALON_STATUS_MEMORY:            // VSD_STATUS_CLK_MON
     vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_CLK_MON, true);
     break;
-  case VSD_ETALON_INFO_41:
+  case VSD_ETALON_STATUS_41:
     break;
-  case VSD_ETALON_INFO_DI:                // VSD_STATUS_CTR_MON
+  case VSD_ETALON_STATUS_DI:                // VSD_STATUS_CTR_MON
     vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_CTR_MON, true);
     break;
-  case VSD_ETALON_INFO_ADC:               // VSD_STATUS_AN_MON
+  case VSD_ETALON_STATUS_ADC:               // VSD_STATUS_AN_MON
     vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_AN_MON, true);
     break;
-  case VSD_ETALON_INFO_ANALOG_SUPPLY:     // VSD_STATUS_AN_MON
+  case VSD_ETALON_STATUS_ANALOG_SUPPLY:     // VSD_STATUS_AN_MON
     vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_AN_MON, true);
     break;
-  case VSD_ETALON_INFO_SENSOR_SUPPLY:     // VSD_STATUS_MB_MON
+  case VSD_ETALON_STATUS_SENSOR_SUPPLY:     // VSD_STATUS_MB_MON
     vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_MB_MON, true);
     break;
-  case VSD_ETALON_INFO_EEPROM:            // VSD_STATUS_CLK_MON
+  case VSD_ETALON_STATUS_EEPROM:            // VSD_STATUS_CLK_MON
     vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_CLK_MON, true);
     break;
-  case VSD_ETALON_INFO_NOT_READY:
+  case VSD_ETALON_STATUS_NOT_READY:
     vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
     break;
-  case VSD_ETALON_INFO_SETPOINT:
+  case VSD_ETALON_STATUS_SETPOINT:
     break;
-  case VSD_ETALON_INFO_BLOCK_RUN:
+  case VSD_ETALON_STATUS_BLOCK_RUN:
     vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
     break;
   default:

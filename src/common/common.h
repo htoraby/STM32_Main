@@ -129,6 +129,15 @@ uint32_t setZeroToBit(uint32_t value, uint8_t bit);
 uint32_t setBit(uint32_t value, uint8_t bit, bool flag);
 
 /*!
+ * \brief copyBit Функция копирования бита из одной переменной в другую
+ * \param source переменная источник из которой копируется
+ * \param sourceBit номер бит в источнике
+ * \param target переменная в которую копируется бит
+ * \param targetBit номер бита в цели
+ */
+void copyBit(uint32_t source, uint8_t sourceBit, uint32_t target, uint8_t targetBit);
+
+/*!
  * \brief Функция вычисления дисбаланса между 3 значениями по формуле СНГ
  * \param value1
  * \param value2

@@ -125,7 +125,7 @@ void LogData::add(uint8_t code)
   *(float*)(buffer+181) = parameters.get(TMS_PSW_TMS);
   *(float*)(buffer+185) = parameters.get(TMS_PSW_TMSN);
   *(float*)(buffer+189) = parameters.get(VSD_VOLTAGE_DC);
-  *(float*)(buffer+193) = parameters.get(VSD_STATUS_WORD);
+  *(float*)(buffer+193) = parameters.get(CCS_VSD_STATUS_WORD_1);
   *(float*)(buffer+197) = parameters.get(VSD_ALARM_WORD_1);
   *(float*)(buffer+201) = parameters.get(VSD_ALARM_WORD_2);
   *(float*)(buffer+205) = parameters.get(VSD_WARNING_WORD_1);
