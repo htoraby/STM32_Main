@@ -51,7 +51,7 @@ int ModbusMaster::readCoils(int SlaveAddr, int StartRef, bool BitArr[], int RefC
         switch(result) {
         case MODBUS_OK:                               // Получен корректный ответ
           for(I = 0; I <= Div.quot; I++) {            // Цикл по байтам данных
-            for(J = 0; J <= 7; J++) {                 // Цикл по битам данных
+            for(J = 0; J < 8; J++) {                  // Цикл по битам данных
               BitArr[I * 8 + J] = ((txBuffer_[3 + I] >> J) & 0x01);
             }
           }
@@ -101,7 +101,7 @@ int ModbusMaster::readInputDiscretes(int SlaveAddr, int StartRef, bool BitArr[],
         switch (result) {                             // Анализируем ответ
         case MODBUS_OK:                               // Получен корректный ответ
           for (I = 0; I <= Div.quot; I++) {           // Цикл по байтам данных
-            for(J = 0; J <= 7; J++) {                 // Цикл по битам данных
+            for(J = 0; J < 8; J++) {                  // Цикл по битам данных
               BitArr[I * 8 + J] = ((txBuffer_[3 + I] >> J) & 0x01);// Сохраняем данные в выходной буфер
             }
           }
@@ -143,13 +143,15 @@ uint8_t ModbusMaster::readMultipleRegisters(uint8_t slaveAddr, uint16_t startRef
         if (txBuf(txBuffer_, 8) == ok_r) {                  // Если отправили данные
           res = rxBuf(rxBuffer_, refCnt*2 + MODBUS_MIN_LENGHT_PACKAGE);
           if (res == MODBUS_OK) {                           // Получен корректный ответ
-            for (int i = 0; i <= refCnt; i++) {
+            for (int i = 0; i < refCnt; i++) {
               value.char_t[0] = rxBuffer_[4 + 2*i];
               value.char_t[1] = rxBuffer_[3 + 2*i];
               regArr[i] = value.uint16_t[0];
             }
             return res;
           }
+        } else {
+          asm("nop");
         }
         if (retry >= retryCnt_) {
           return res;
@@ -164,7 +166,6 @@ uint8_t ModbusMaster::readMultipleRegisters(uint8_t slaveAddr, uint16_t startRef
 int ModbusMaster::readMultipleLongInts(int slaveAddr, int startRef, int *int32Arr, int refCnt)
 {
   int res = MODBUS_ERROR_TRASH;
-  int i = 0;                                          // Счётчик, используется при формировании массива прочитанных данных
   unTypeData Value;                                   // Переменна для формирования массива прочитанных данных
   unsigned short crc = 0;                             // Переменная для проверки CRC
   uint8_t retry  = 0;
@@ -184,7 +185,7 @@ int ModbusMaster::readMultipleLongInts(int slaveAddr, int startRef, int *int32Ar
         if (txBuf(txBuffer_, 8) == ok_r) {
           res = rxBuf(rxBuffer_, refCnt*4 + MODBUS_MIN_LENGHT_PACKAGE);
           if (res == MODBUS_OK) {
-            for (i = 0; i <= refCnt; i++) {
+            for (int i = 0; i < refCnt; i++) {
               Value.char_t[0] = rxBuffer_[6 + 4*i];
               Value.char_t[1] = rxBuffer_[5 + 4*i];
               Value.char_t[2] = rxBuffer_[4 + 4*i];
@@ -226,7 +227,7 @@ int ModbusMaster::readMultipleFloats(int slaveAddr, int startRef, float *float32
         if (txBuf(txBuffer_, 8) == ok_r) {
           res = rxBuf(rxBuffer_, refCnt*4 + MODBUS_MIN_LENGHT_PACKAGE);
           if (res == MODBUS_OK) {
-            for (int i = 0; i <= refCnt; i++) {
+            for (int i = 0; i < refCnt; i++) {
               value.char_t[0] = rxBuffer_[6 + 4*i];
               value.char_t[1] = rxBuffer_[5 + 4*i];
               value.char_t[2] = rxBuffer_[4 + 4*i];
@@ -265,10 +266,10 @@ int ModbusMaster::readInputRegisters(int slaveAddr, int startRef, short regArr[]
     result = rxBuf(rxBuffer_, refCnt*2 + MODBUS_MIN_LENGHT_PACKAGE);
     switch (result) {
     case MODBUS_OK:                                   // Получен корректный ответ
-      for (int I = 0; I <= refCnt; I++) {
-        value.char_t[0] = rxBuffer_[4 + 2*I];
-        value.char_t[1] = rxBuffer_[3 + 2*I];
-        regArr[I] = value.uint16_t[0];
+      for (int i = 0; i < refCnt; i++) {
+        value.char_t[0] = rxBuffer_[4 + 2*i];
+        value.char_t[1] = rxBuffer_[3 + 2*i];
+        regArr[i] = value.uint16_t[0];
       }
       break;
     case MODBUS_ERROR_TRASH:                          // Получен ответ с ошибкой
@@ -305,7 +306,7 @@ int ModbusMaster::readInputLongInts(int slaveAddr, int startRef, int *int32Arr, 
         result = rxBuf(rxBuffer_, refCnt*4 + MODBUS_MIN_LENGHT_PACKAGE);
         switch (result) {
         case MODBUS_OK:                               // Получен корректный ответ
-          for (i = 0; i <= refCnt; i++) {
+          for (i = 0; i < refCnt; i++) {
             Value.char_t[0] = rxBuffer_[6 + 4*i];
             Value.char_t[1] = rxBuffer_[5 + 4*i];
             Value.char_t[2] = rxBuffer_[4 + 4*i];
@@ -349,7 +350,7 @@ int ModbusMaster::readInputFloats(int slaveAddr, int startRef, float *float32Arr
         result = rxBuf(rxBuffer_, refCnt*4 + MODBUS_MIN_LENGHT_PACKAGE);
         switch(result) {                              // Анализируем ответ
         case MODBUS_OK:                               // Получен корректный ответ
-          for(i = 0; i <= refCnt; i++) {
+          for(i = 0; i < refCnt; i++) {
             value.char_t[0] = rxBuffer_[6 + 4*i];
             value.char_t[1] = rxBuffer_[5 + 4*i];
             value.char_t[2] = rxBuffer_[4 + 4*i];
