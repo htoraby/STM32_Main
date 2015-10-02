@@ -12,6 +12,13 @@ public:
   bool isConnect();
 
   /*!
+   * \brief Проверка на наличие аварии в ЧРП.
+   * Чтение флага готовности архива из специального регистра
+   * \return
+   */
+  virtual bool checkAlarm();
+
+  /*!
    * \brief Чтение аварийного архива
    * \param ia
    * \param ib
@@ -32,6 +39,11 @@ public:
 
 protected:
   /*!
+   * \brief Запись в регистр значения
+   */
+  void writeReg(uint32_t addr, int16_t value);
+
+  /*!
    * \brief Чтение архива
    * \param addr
    * \param buf
@@ -44,6 +56,9 @@ private:
   uint8_t devAdrs_;
   ModbusMasterSerial *mms_;
   bool prevConnect_;
+
+  //! Идентификатор семафора захвата порта
+  osSemaphoreId semaphoreId_;
 
 };
 

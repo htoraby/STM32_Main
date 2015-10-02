@@ -39,10 +39,18 @@ void LogAlarm::start(uint32_t eventId)
 
 void LogAlarm::task()
 {
+  osDelay(10000);
+//  int t = HAL_GetTick();
+//  parameters.set(VSD_ETALON_FAST_OFF, 1);
   while (1) {
-    osSemaphoreWait(semaphoreId_, osWaitForever);
+    osDelay(1);
 
-    add();
+//    if (vsd->log()) {
+//      if (vsd->log()->checkAlarm()) {
+//        t = HAL_GetTick() - t;
+//        add();
+//      }
+//    }
   }
 }
 

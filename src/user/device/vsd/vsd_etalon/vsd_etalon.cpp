@@ -13,6 +13,7 @@
 VsdEtalon::VsdEtalon()
 {
   regimeRun_ = new RegimeRunEtalon();
+  log_ = new VsdEtalonLog();
 }
 
 VsdEtalon::~VsdEtalon()
@@ -33,8 +34,6 @@ void VsdEtalon::init()
   dm_ = new DeviceModbus(modbusParameters_, count,
                          VSD_UART, 115200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1);
   dm_->createThread("ProtocolVsd", getValueDeviceQId_);
-
-  log_ = new VsdEtalonLog();
 
   initParameters();
   readParameters();

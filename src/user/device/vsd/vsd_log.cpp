@@ -16,12 +16,16 @@ VsdLog::VsdLog(int numPort,
   mms_ = new ModbusMasterSerial();
   // Открываем порт
   mms_->openProtocol(numPort_, baudRate, dataBits, stopBits, parity);
+
+  semaphoreId_ = osSemaphoreCreate(NULL, 1);
 }
 
 VsdLog::~VsdLog()
 {
   mms_->closeProtocol(numPort_);
   delete mms_;
+
+  osSemaphoreDelete(semaphoreId_);
 }
 
 bool VsdLog::isConnect()
@@ -40,6 +44,11 @@ bool VsdLog::isConnect()
   return curConnect;
 }
 
+bool VsdLog::checkAlarm()
+{
+  return false;
+}
+
 void VsdLog::readAlarmLog(uint16_t */*ia*/, uint16_t */*ib*/, uint16_t */*ic*/,
                           uint16_t */*ud*/)
 {
@@ -52,8 +61,23 @@ void VsdLog::readRunningLog(uint16_t */*ia*/, uint16_t */*ib*/, uint16_t */*ic*/
 
 }
 
+void VsdLog::writeReg(uint32_t addr, int16_t value)
+{
+  osSemaphoreWait(semaphoreId_, osWaitForever);
+
+  uint16_t res = 1;
+  res = mms_->writeSingleRegister(devAdrs_, addr, value);
+  if (res != MODBUS_OK) {
+    asm("nop");
+  }
+
+  osSemaphoreRelease(semaphoreId_);
+}
+
 void VsdLog::readLog(uint32_t addr, uint16_t *buf, uint32_t size)
 {
+  osSemaphoreWait(semaphoreId_, osWaitForever);
+
   uint16_t res = 1;
   uint16_t address = addr;
   uint32_t count = MAX_COUNT;
@@ -70,4 +94,6 @@ void VsdLog::readLog(uint32_t addr, uint16_t *buf, uint32_t size)
     if (readAll >= size)
       break;
   }
+
+  osSemaphoreRelease(semaphoreId_);
 }

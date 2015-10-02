@@ -9,6 +9,8 @@ public:
   VsdEtalonLog();
   ~VsdEtalonLog();
 
+  bool checkAlarm();
+
   /*!
    * \brief Чтение аварийного архива
    * \param ia
