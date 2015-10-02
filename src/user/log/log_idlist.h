@@ -145,6 +145,8 @@ typedef enum {
   DelLogId,                                 //!< "Удаление архивов"
   DelDebugLogId,                            //!< "Удаление служебных архивов"
 
+  WriteAlarmLogId,                          //!< "Запись аварийного архива"
+
 } EventId;
 
 #endif // LOG_IDLIST

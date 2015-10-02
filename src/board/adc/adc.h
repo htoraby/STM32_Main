@@ -8,7 +8,7 @@
 //! Время записи одного архива (мс)
 #define ARCHIVE_TIME 2000
 //! Количество точек на период (20мс)
-#define HC_POINTS_NUM 80
+#define HC_POINTS_NUM 40
 //! Количество точек с каждого канала за время ARCHIVE_TIME
 #define ADC_POINTS_NUM ARCHIVE_TIME/20*HC_POINTS_NUM
 //! Период измерения - получение по одной точки для каждого канала: 100 - 1мс
@@ -26,7 +26,6 @@ typedef enum {
 } adcNum;
 
 extern ADC_HandleTypeDef hadc[];
-extern uint16_t adcData[ADC_CNANNELS_NUM*ADC_POINTS_NUM];
 
 #ifdef __cplusplus
 
@@ -50,9 +49,9 @@ StatusType getAnalogIn(uint32_t channel, uint32_t numSamples, uint32_t *value);
 
 /*!
  \brief Копирование значений из временного буффера (DMA) в основной
-
+ \param data - основной буффер
 */
-void copyAdcData();
+void copyAdcData(uint16_t *data);
 
 /*!
  \brief Получение температуры CPU с внутреннего датчика

@@ -8,7 +8,9 @@
 #include "vsd.h"
 #include "user_main.h"
 
-Vsd::Vsd() : Device(VSD_BEGIN, parametersArray_, VSD_END - VSD_BEGIN)
+Vsd::Vsd()
+  : Device(VSD_BEGIN, parametersArray_, VSD_END - VSD_BEGIN)
+  , log_(NULL)
 {
   initParameters();
 }

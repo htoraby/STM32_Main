@@ -20,6 +20,12 @@ public:
   void start(uint32_t eventId);
   void task();
 
+private:
+  /*!
+   * \brief Метод добавления записи в архив
+   */
+  void add();
+
 };
 
 #endif // LOGALARM_H

@@ -7,31 +7,43 @@ class VsdLog
 {
 public:
   VsdLog(int numPort, long baudRate, int dataBits, int stopBits, int parity, int address);
-  ~VsdLog();
-
-  /*!
-   * \brief Метод создания задачи
-   * \param threadName - имя задачи
-   */
-  void createThread(const char *threadName);
-
-  /*!
-   * \brief Задача чтения архивов с устройства по Modbus
-   */
-  void task();
+  virtual ~VsdLog();
 
   bool isConnect();
 
-  uint16_t regArr_[125];
+  /*!
+   * \brief Чтение аварийного архива
+   * \param ia
+   * \param ib
+   * \param ic
+   * \param ud
+   */
+  virtual void readAlarmLog(uint16_t *ia, uint16_t *ib, uint16_t *ic, uint16_t *ud);
+
+  /*!
+   * \brief Чтение пускового архива
+   * \param ia
+   * \param ib
+   * \param ic
+   * \param ud
+   * \param cos
+   */
+  virtual void readRunningLog(uint16_t *ia, uint16_t *ib, uint16_t *ic, uint16_t *ud, uint16_t *cos);
+
+protected:
+  /*!
+   * \brief Чтение архива
+   * \param addr
+   * \param buf
+   * \param size
+   */
+  void readLog(uint32_t addr, uint16_t *buf, uint32_t size);
 
 private:
   int numPort_;
   uint8_t devAdrs_;
   ModbusMasterSerial *mms_;
-  bool prevConnect;
-
-  //! Идентификатор задачи
-  osThreadId threadId_;
+  bool prevConnect_;
 
 };
 

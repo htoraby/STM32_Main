@@ -9,6 +9,7 @@
 #define VSD_H_
 
 #include "device.h"
+#include "vsd_log.h"
 
 #define VSD_CMD_NUMBER_REPEATS 10 //!< Количество повторов
 #define VSD_CMD_TIMEOUT 1000      //!< Время ожидания подтверждения команды
@@ -357,8 +358,10 @@ public:
    */
   int calcVsdCos();
 
+  VsdLog *log() const { return log_; }
 
 protected:
+  VsdLog *log_;
 
 private:
   //! Массив параметров устройства

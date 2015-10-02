@@ -26,7 +26,7 @@ public:
    * \brief Запуск формирования и записи архива
    */
   void start();
-  void task();
+  virtual void task();
 
 protected:
   /*!
@@ -34,12 +34,12 @@ protected:
    */
   void add();
 
+  uint16_t *uValue_;
+
   //! Идентификатор семафора начала записи архива
   osSemaphoreId semaphoreId_;
   //! Id события предшествующего записи аварийного архива
   uint32_t eventId_;
-
-  float *uValue_;
 
 private:
   //! Идентификатор задачи

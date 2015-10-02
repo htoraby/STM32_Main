@@ -52,6 +52,8 @@ typedef enum {
 
   ProtectCode          = 100,         //!< Событие защиты
   PowerCode,                          //!< Событие откл/вкл питания
+  AlarmCode,                          //!< Запись аварийного архива
+  OtherCode,                          //!< Другие события
 } EventCode;
 
 /*!

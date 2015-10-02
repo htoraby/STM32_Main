@@ -13,10 +13,8 @@ TIM_HandleTypeDef htim3;
 
 #if USE_EXT_MEM
 uint16_t adcData[ADC_CNANNELS_NUM*ADC_POINTS_NUM] __attribute__((section(".extmem")));
-uint16_t adcDataTmp[ADC_CNANNELS_NUM*ADC_POINTS_NUM] __attribute__((section(".extmem")));
 #else
 uint16_t adcData[ADC_CNANNELS_NUM*ADC_POINTS_NUM];
-uint16_t adcDataTmp[ADC_CNANNELS_NUM*ADC_POINTS_NUM];
 #endif
 
 /*!
@@ -129,8 +127,7 @@ static uint32_t time = 0;
 void adcStartDma()
 {
   memset(&adcData, 0, sizeof(adcData));
-  memset(&adcDataTmp, 0, sizeof(adcDataTmp));
-  HAL_ADC_Start_DMA(&hadc[adc2], (uint32_t*)&adcDataTmp, ADC_CNANNELS_NUM*ADC_POINTS_NUM);
+  HAL_ADC_Start_DMA(&hadc[adc2], (uint32_t*)&adcData, ADC_CNANNELS_NUM*ADC_POINTS_NUM);
   HAL_TIM_Base_Start(&htim3);
 
   time = HAL_GetTick();
@@ -309,10 +306,10 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* adcHandle)
   time = HAL_GetTick();
 }
 
-void copyAdcData()
+void copyAdcData(uint16_t *data)
 {
   int allPoints = ADC_CNANNELS_NUM*ADC_POINTS_NUM;
   int numDataTr = hadc[adc2].DMA_Handle->Instance->NDTR;
-  memcpy(&adcData[numDataTr], &adcDataTmp[0], (allPoints - numDataTr)*2);
-  memcpy(&adcData[0], &adcDataTmp[allPoints - numDataTr], (numDataTr)*2);
+  memcpy(&data[numDataTr], &adcData[0], (allPoints - numDataTr)*2);
+  memcpy(&data[0], &adcData[allPoints - numDataTr], (numDataTr)*2);
 }

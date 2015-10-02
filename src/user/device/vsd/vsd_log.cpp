@@ -1,10 +1,7 @@
 #include "vsd_log.h"
 #include "user_main.h"
 
-static void vsdLogTask(void *p)
-{
-  (static_cast<VsdLog*>(p))->task();
-}
+#define MAX_COUNT 120
 
 VsdLog::VsdLog(int numPort,
                long baudRate,
@@ -14,7 +11,7 @@ VsdLog::VsdLog(int numPort,
                int address)
   : numPort_(numPort)
   , devAdrs_(address)
-  , prevConnect(true)
+  , prevConnect_(true)
 {
   mms_ = new ModbusMasterSerial();
   // Открываем порт
@@ -23,44 +20,54 @@ VsdLog::VsdLog(int numPort,
 
 VsdLog::~VsdLog()
 {
-  osThreadTerminate(threadId_);
   mms_->closeProtocol(numPort_);
   delete mms_;
-}
-
-void VsdLog::createThread(const char *threadName)
-{
-  osThreadDef_t t = {threadName, vsdLogTask, osPriorityNormal, 0, 4 * configMINIMAL_STACK_SIZE};
-  threadId_ = osThreadCreate(&t, this);
 }
 
 bool VsdLog::isConnect()
 {
   bool curConnect = mms_->isConnect();
 
-  if (prevConnect && !curConnect) {
+  if (prevConnect_ && !curConnect) {
     logDebug.add(WarningMsg, "Connect lost port: %d, device: %d", numPort_, devAdrs_);
   }
 
-  if (!prevConnect && curConnect) {
+  if (!prevConnect_ && curConnect) {
     logDebug.add(WarningMsg, "Connect restored port: %d, device: %d", numPort_, devAdrs_);
   }
 
-  prevConnect = curConnect;
+  prevConnect_ = curConnect;
   return curConnect;
 }
 
-void VsdLog::task()
+void VsdLog::readAlarmLog(uint16_t */*ia*/, uint16_t */*ib*/, uint16_t */*ic*/,
+                          uint16_t */*ud*/)
 {
-  int count = 0;
+
+}
+
+void VsdLog::readRunningLog(uint16_t */*ia*/, uint16_t */*ib*/, uint16_t */*ic*/,
+                            uint16_t */*ud*/, uint16_t */*cos*/)
+{
+
+}
+
+void VsdLog::readLog(uint32_t addr, uint16_t *buf, uint32_t size)
+{
   uint16_t res = 1;
+  uint16_t address = addr;
+  uint32_t count = MAX_COUNT;
+  uint32_t readAll = 0;
   while (1) {
-    osDelay(30000);
-//    parameters.set(VSD_ETALON_FAST_OFF, 1);
-//    osDelay(30000);
-//    count = 125;
-//    int address = 0x9800;
-//    res = mms_->readMultipleRegisters(devAdrs_, address, regArr_, count);
-//    asm("nop");
+    if ((readAll + MAX_COUNT) > size)
+      count = size - readAll;
+    res = mms_->readMultipleRegisters(devAdrs_, address, &buf[readAll], count);
+    if (res != MODBUS_OK) {
+      break;
+    }
+    readAll += count;
+    address += count;
+    if (readAll >= size)
+      break;
   }
 }
