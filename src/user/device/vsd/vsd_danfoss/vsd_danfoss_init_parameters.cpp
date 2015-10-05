@@ -1697,7 +1697,7 @@ void VsdDanfoss::initModbusParameters()
                            0                // Значение
                            };
   modbusParameters_[98] = {// Напряжение сети при отказе питания
-                            VSD_MAINS_FAILURE,
+                           VSD_MAINS_VOLTAGE_FAILURE,
                            14109,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_VOLTAGE,  // Физическая величина параметра

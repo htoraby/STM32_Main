@@ -13648,6 +13648,48 @@
 	</param>
 	<param>
 		<id>776</id>
+		<name>CCS_VSD_SL_20_6</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Таймер контроллера SL. Предел тока (13-20.6)</text>
+		<short_text>Таймер контроллера SL. Предел тока (13-20.6)</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Таймер контроллера SL. Предел тока</comment>
+	</param>
+	<param>
+		<id>777</id>
+		<name>CCS_RESISTANCE_STATOR_STEP</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_RESISTANCE</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>10000</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Шаг изменения сопротивления изоляции</text>
+		<short_text>Шаг изменения сопротивления изоляции</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>RESISTANCE_OM</unit>
+		<unit_lcd>RESISTANCE_OM</unit_lcd>
+		<format>X_XXXX</format>
+		<code>13</code>
+		<comment>Шаг изменения сопротивления изоляции</comment>
+	</param>
+	<param>
+		<id>778</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
@@ -14070,17 +14112,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_INDUNCTANCE</physic>
 		<min>0.0</min>
-		<max>100.0</max>
+		<max>1000.0</max>
 		<def>0.0</def>
-		<discret>1000</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Индуктивность обмотки ПЭД</text>
-		<short_text>Индуктивность обмотки ПЭД</short_text>
-		<form>3.1 Двигатель</form>
+		<text>Индуктивность по оси d</text>
+		<short_text>Индуктивность по оси d</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>INDUNCTANCE_MH</unit>
 		<unit_lcd>INDUNCTANCE_MH</unit_lcd>
-		<format>XX_XXX</format>
+		<format>XXXX_X</format>
 		<code>13</code>
 		<comment>Индуктивности по оси D Danfoss 1-37 Используется в проекте</comment>
 	</param>
@@ -14971,7 +15013,7 @@
 	</param>
 	<param>
 		<id>10083</id>
-		<name>VSD_UD_LOW_FAULT</name>
+		<name>VSD_DELETE_10083</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
 		<max>999999.0</max>
@@ -16070,12 +16112,21 @@
 		<id>10175</id>
 		<name>VSD_PARKING_TIME</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.1</min>
+		<max>60.0</max>
+		<def>3.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
-		<code>0</code>
+		<value>3.0</value>
+		<text>Длительность действия тока (2-07)</text>
+		<short_text>Длительность действия тока (2-07)</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXXX_X</format>
+		<code>13</code>
 		<comment>Длительность действия начального ток  Danfoss 2-07 В проекте есть, но отключено, используется при конфигурировании</comment>
 	</param>
 	<param>
@@ -16188,11 +16239,21 @@
 		<id>10185</id>
 		<name>VSD_TORQUE_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<max>1000.0</max>
+		<def>160.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>160.0</value>
+		<text>Ограничение момента</text>
+		<short_text>Ограничение момента</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXX_X</format>
+		<code>13</code>
 		<comment>Ограничение момента Danfoss 4-16 % Используется в защитах ЧРП. Интерфейс</comment>
 	</param>
 	<param>
@@ -16212,14 +16273,19 @@
 		<name>VSD_CURRENT_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<min>1.0</min>
-		<max>2.0</max>
-		<def>1.0</def>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>0.0</min>
+		<max>1000.0</max>
+		<def>160.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>1.0</value>
-		<text>NULL</text>
+		<value>160.0</value>
+		<text>Предел тока двигателя (4-18)</text>
+		<short_text>Предел тока двигателя (4-18)</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Предел тока Danfoss 4-18 %</comment>
 	</param>
@@ -16763,11 +16829,20 @@
 		<id>10232</id>
 		<name>VSD_MAINS_VOLTAGE_FAILURE</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>180.0</min>
+		<max>600.0</max>
+		<def>250.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>250.0</value>
+		<text>Напряжение сети при отказе питания</text>
+		<short_text>Напряжение сети при отказе питания</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Напряжение сети при отказе питания Danfoss 14-11 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -18739,6 +18814,27 @@
 	</param>
 	<param>
 		<id>10339</id>
+		<name>VSD_CURRENT_LIMIT_COEF</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>1.0</min>
+		<max>2.5</max>
+		<def>2.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>2.0</value>
+		<text>Коэф.МТЗ мотор</text>
+		<short_text>Коэф.МТЗ мотор</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXX_X</format>
+		<code>13</code>
+		<comment>Коэф.МТЗ мотор</comment>
+	</param>
+	<param>
+		<id>10340</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>

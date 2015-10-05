@@ -9314,5 +9314,29 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_VSD_ALARM - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_PROT_OTHER_VSD_ALARM - CCS_BEGIN].def                          = 0.0;
   parameters_[CCS_PROT_OTHER_VSD_ALARM - CCS_BEGIN].code                         = 0;
+  // Таймер контроллера SL. Предел тока
+  parameters_[CCS_VSD_SL_20_6 - CCS_BEGIN].id                                    = CCS_VSD_SL_20_6;
+  parameters_[CCS_VSD_SL_20_6 - CCS_BEGIN].access                                = ACCESS_OPERATOR;
+  parameters_[CCS_VSD_SL_20_6 - CCS_BEGIN].operation                             = OPERATION_WRITE;
+  parameters_[CCS_VSD_SL_20_6 - CCS_BEGIN].physic                                = PHYSIC_TIME;
+  parameters_[CCS_VSD_SL_20_6 - CCS_BEGIN].validity                              = VALIDITY_OK;
+  parameters_[CCS_VSD_SL_20_6 - CCS_BEGIN].value.float_t                         = 0.0;
+  parameters_[CCS_VSD_SL_20_6 - CCS_BEGIN].min                                   = 0.0;
+  parameters_[CCS_VSD_SL_20_6 - CCS_BEGIN].max                                   = 65535.0;
+  parameters_[CCS_VSD_SL_20_6 - CCS_BEGIN].discret                               = 1;
+  parameters_[CCS_VSD_SL_20_6 - CCS_BEGIN].def                                   = 0.0;
+  parameters_[CCS_VSD_SL_20_6 - CCS_BEGIN].code                                  = 13;
+  // Шаг изменения сопротивления изоляции
+  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].id                         = CCS_RESISTANCE_STATOR_STEP;
+  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].access                     = ACCESS_OPERATOR;
+  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].physic                     = PHYSIC_RESISTANCE;
+  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].validity                   = VALIDITY_OK;
+  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].value.float_t              = 0.0;
+  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].min                        = 0.0;
+  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].max                        = 1.0;
+  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].discret                    = 10000;
+  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].def                        = 0.0;
+  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].code                       = 13;
 }
 

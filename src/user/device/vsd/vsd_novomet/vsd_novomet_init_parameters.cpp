@@ -1023,7 +1023,7 @@ void VsdNovomet::initModbusParameters()
                           0                 // Значение
   };
   modbusParameters_[60] = {// Порог защиты ПЧ по снижению напряжения на инверторе
-                          VSD_UD_LOW_FAULT, // Уникальный идентификатор параметра
+                          VSD_MAINS_VOLTAGE_FAILURE, // Уникальный идентификатор параметра
                           136,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
                           PHYSIC_VOLTAGE,   // Физическая величина параметра
