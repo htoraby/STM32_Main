@@ -32,7 +32,7 @@ void Tms::initParameters()
   parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].operation                         = OPERATION_READ;
   parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].physic                            = PHYSIC_PRESSURE;
   parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].validity                          = VALIDITY_ERROR;
-  parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].value.float_t                     = 0;
+  parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].value.float_t                     = NAN;
   parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].min                               = 0.0;
   parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].max                               = 999999.0;
   parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].def                               = 0;
@@ -44,7 +44,7 @@ void Tms::initParameters()
   parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].operation                     = OPERATION_READ;
   parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].physic                        = PHYSIC_TEMPERATURE;
   parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].validity                      = VALIDITY_ERROR;
-  parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].value.float_t                 = 0;
+  parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].value.float_t                 = NAN;
   parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].min                           = 0.0;
   parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].max                           = 999999.0;
   parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].def                           = 0;
@@ -56,7 +56,7 @@ void Tms::initParameters()
   parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].operation                      = OPERATION_READ;
   parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].physic                         = PHYSIC_TEMPERATURE;
   parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].validity                       = VALIDITY_ERROR;
-  parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].value.float_t                  = 0;
+  parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].value.float_t                  = NAN;
   parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].min                            = 0.0;
   parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].max                            = 999999.0;
   parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].def                            = 0;
@@ -92,7 +92,7 @@ void Tms::initParameters()
   parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].operation                   = OPERATION_READ;
   parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].physic                      = PHYSIC_ACCELERATION;
   parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].validity                    = VALIDITY_ERROR;
-  parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].value.float_t               = 0;
+  parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].value.float_t               = NAN;
   parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].min                         = 0.0;
   parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].max                         = 999999.0;
   parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].def                         = 0;
@@ -104,7 +104,7 @@ void Tms::initParameters()
   parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].operation                      = OPERATION_READ;
   parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].physic                         = PHYSIC_PRESSURE;
   parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].validity                       = VALIDITY_ERROR;
-  parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].value.float_t                  = 0;
+  parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].value.float_t                  = NAN;
   parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].min                            = 0.0;
   parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].max                            = 999999.0;
   parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].def                            = 0;
@@ -116,7 +116,7 @@ void Tms::initParameters()
   parameters_[TMS_TEMPERATURE_DISCHARGE - TMS_BEGIN].operation                   = OPERATION_READ;
   parameters_[TMS_TEMPERATURE_DISCHARGE - TMS_BEGIN].physic                      = PHYSIC_TEMPERATURE;
   parameters_[TMS_TEMPERATURE_DISCHARGE - TMS_BEGIN].validity                    = VALIDITY_ERROR;
-  parameters_[TMS_TEMPERATURE_DISCHARGE - TMS_BEGIN].value.float_t               = 0;
+  parameters_[TMS_TEMPERATURE_DISCHARGE - TMS_BEGIN].value.float_t               = NAN;
   parameters_[TMS_TEMPERATURE_DISCHARGE - TMS_BEGIN].min                         = 0.0;
   parameters_[TMS_TEMPERATURE_DISCHARGE - TMS_BEGIN].max                         = 999999.0;
   parameters_[TMS_TEMPERATURE_DISCHARGE - TMS_BEGIN].def                         = 0;
@@ -128,7 +128,7 @@ void Tms::initParameters()
   parameters_[TMS_FLOW_DISCHARGE - TMS_BEGIN].operation                          = OPERATION_READ;
   parameters_[TMS_FLOW_DISCHARGE - TMS_BEGIN].physic                             = PHYSIC_FLOW;
   parameters_[TMS_FLOW_DISCHARGE - TMS_BEGIN].validity                           = VALIDITY_ERROR;
-  parameters_[TMS_FLOW_DISCHARGE - TMS_BEGIN].value.float_t                      = 0;
+  parameters_[TMS_FLOW_DISCHARGE - TMS_BEGIN].value.float_t                      = NAN;
   parameters_[TMS_FLOW_DISCHARGE - TMS_BEGIN].min                                = 0.0;
   parameters_[TMS_FLOW_DISCHARGE - TMS_BEGIN].max                                = 999999.0;
   parameters_[TMS_FLOW_DISCHARGE - TMS_BEGIN].def                                = 0;
@@ -140,7 +140,7 @@ void Tms::initParameters()
   parameters_[TMS_ACCELERATION_XY_INTAKE - TMS_BEGIN].operation                  = OPERATION_READ;
   parameters_[TMS_ACCELERATION_XY_INTAKE - TMS_BEGIN].physic                     = PHYSIC_ACCELERATION;
   parameters_[TMS_ACCELERATION_XY_INTAKE - TMS_BEGIN].validity                   = VALIDITY_ERROR;
-  parameters_[TMS_ACCELERATION_XY_INTAKE - TMS_BEGIN].value.float_t              = 0;
+  parameters_[TMS_ACCELERATION_XY_INTAKE - TMS_BEGIN].value.float_t              = NAN;
   parameters_[TMS_ACCELERATION_XY_INTAKE - TMS_BEGIN].min                        = 0.0;
   parameters_[TMS_ACCELERATION_XY_INTAKE - TMS_BEGIN].max                        = 999999.0;
   parameters_[TMS_ACCELERATION_XY_INTAKE - TMS_BEGIN].def                        = 0;
@@ -632,7 +632,7 @@ void Tms::initParameters()
   parameters_[TMS_PSW_TMSN - TMS_BEGIN].operation                                = OPERATION_READ;
   parameters_[TMS_PSW_TMSN - TMS_BEGIN].physic                                   = PHYSIC_NUMERIC;
   parameters_[TMS_PSW_TMSN - TMS_BEGIN].validity                                 = VALIDITY_ERROR;
-  parameters_[TMS_PSW_TMSN - TMS_BEGIN].value.float_t                            = 0;
+  parameters_[TMS_PSW_TMSN - TMS_BEGIN].value.float_t                            = NAN;
   parameters_[TMS_PSW_TMSN - TMS_BEGIN].min                                      = 0.0;
   parameters_[TMS_PSW_TMSN - TMS_BEGIN].max                                      = 999999.0;
   parameters_[TMS_PSW_TMSN - TMS_BEGIN].def                                      = 0;
@@ -644,7 +644,7 @@ void Tms::initParameters()
   parameters_[TMS_PSW_TMSP_1 - TMS_BEGIN].operation                              = OPERATION_READ;
   parameters_[TMS_PSW_TMSP_1 - TMS_BEGIN].physic                                 = PHYSIC_NUMERIC;
   parameters_[TMS_PSW_TMSP_1 - TMS_BEGIN].validity                               = VALIDITY_ERROR;
-  parameters_[TMS_PSW_TMSP_1 - TMS_BEGIN].value.float_t                          = 0;
+  parameters_[TMS_PSW_TMSP_1 - TMS_BEGIN].value.float_t                          = NAN;
   parameters_[TMS_PSW_TMSP_1 - TMS_BEGIN].min                                    = 0.0;
   parameters_[TMS_PSW_TMSP_1 - TMS_BEGIN].max                                    = 999999.0;
   parameters_[TMS_PSW_TMSP_1 - TMS_BEGIN].def                                    = 0;
@@ -692,7 +692,7 @@ void Tms::initParameters()
   parameters_[TMS_SPEED_XY_DISCHARGE - TMS_BEGIN].operation                      = OPERATION_READ;
   parameters_[TMS_SPEED_XY_DISCHARGE - TMS_BEGIN].physic                         = PHYSIC_SPEED;
   parameters_[TMS_SPEED_XY_DISCHARGE - TMS_BEGIN].validity                       = VALIDITY_ERROR;
-  parameters_[TMS_SPEED_XY_DISCHARGE - TMS_BEGIN].value.float_t                  = 0.0;
+  parameters_[TMS_SPEED_XY_DISCHARGE - TMS_BEGIN].value.float_t                  = NAN;
   parameters_[TMS_SPEED_XY_DISCHARGE - TMS_BEGIN].min                            = 0.0;
   parameters_[TMS_SPEED_XY_DISCHARGE - TMS_BEGIN].max                            = 50.0;
   parameters_[TMS_SPEED_XY_DISCHARGE - TMS_BEGIN].def                            = 0.0;
@@ -704,7 +704,7 @@ void Tms::initParameters()
   parameters_[TMS_SPEED_Z_DISCHARGE - TMS_BEGIN].operation                       = OPERATION_READ;
   parameters_[TMS_SPEED_Z_DISCHARGE - TMS_BEGIN].physic                          = PHYSIC_SPEED;
   parameters_[TMS_SPEED_Z_DISCHARGE - TMS_BEGIN].validity                        = VALIDITY_ERROR;
-  parameters_[TMS_SPEED_Z_DISCHARGE - TMS_BEGIN].value.float_t                   = 0.0;
+  parameters_[TMS_SPEED_Z_DISCHARGE - TMS_BEGIN].value.float_t                   = NAN;
   parameters_[TMS_SPEED_Z_DISCHARGE - TMS_BEGIN].min                             = 0.0;
   parameters_[TMS_SPEED_Z_DISCHARGE - TMS_BEGIN].max                             = 50.0;
   parameters_[TMS_SPEED_Z_DISCHARGE - TMS_BEGIN].def                             = 0.0;
@@ -716,7 +716,7 @@ void Tms::initParameters()
   parameters_[TMS_ANGLE_DISCHARGE - TMS_BEGIN].operation                         = OPERATION_READ;
   parameters_[TMS_ANGLE_DISCHARGE - TMS_BEGIN].physic                            = PHYSIC_ANGLE;
   parameters_[TMS_ANGLE_DISCHARGE - TMS_BEGIN].validity                          = VALIDITY_ERROR;
-  parameters_[TMS_ANGLE_DISCHARGE - TMS_BEGIN].value.float_t                     = 0.0;
+  parameters_[TMS_ANGLE_DISCHARGE - TMS_BEGIN].value.float_t                     = NAN;
   parameters_[TMS_ANGLE_DISCHARGE - TMS_BEGIN].min                               = 0.0;
   parameters_[TMS_ANGLE_DISCHARGE - TMS_BEGIN].max                               = 90.0;
   parameters_[TMS_ANGLE_DISCHARGE - TMS_BEGIN].def                               = 0.0;
@@ -728,7 +728,7 @@ void Tms::initParameters()
   parameters_[TMS_VOLTAGE_TMSP_2 - TMS_BEGIN].operation                          = OPERATION_READ;
   parameters_[TMS_VOLTAGE_TMSP_2 - TMS_BEGIN].physic                             = PHYSIC_VOLTAGE;
   parameters_[TMS_VOLTAGE_TMSP_2 - TMS_BEGIN].validity                           = VALIDITY_ERROR;
-  parameters_[TMS_VOLTAGE_TMSP_2 - TMS_BEGIN].value.float_t                      = 0.0;
+  parameters_[TMS_VOLTAGE_TMSP_2 - TMS_BEGIN].value.float_t                      = NAN;
   parameters_[TMS_VOLTAGE_TMSP_2 - TMS_BEGIN].min                                = 0.0;
   parameters_[TMS_VOLTAGE_TMSP_2 - TMS_BEGIN].max                                = 15.0;
   parameters_[TMS_VOLTAGE_TMSP_2 - TMS_BEGIN].def                                = 0.0;
@@ -740,7 +740,7 @@ void Tms::initParameters()
   parameters_[TMS_FLOW_DISCHARGE_FREQ_1 - TMS_BEGIN].operation                   = OPERATION_READ;
   parameters_[TMS_FLOW_DISCHARGE_FREQ_1 - TMS_BEGIN].physic                      = PHYSIC_FREQUENCY;
   parameters_[TMS_FLOW_DISCHARGE_FREQ_1 - TMS_BEGIN].validity                    = VALIDITY_ERROR;
-  parameters_[TMS_FLOW_DISCHARGE_FREQ_1 - TMS_BEGIN].value.float_t               = 0.0;
+  parameters_[TMS_FLOW_DISCHARGE_FREQ_1 - TMS_BEGIN].value.float_t               = NAN;
   parameters_[TMS_FLOW_DISCHARGE_FREQ_1 - TMS_BEGIN].min                         = 0.0;
   parameters_[TMS_FLOW_DISCHARGE_FREQ_1 - TMS_BEGIN].max                         = 200.0;
   parameters_[TMS_FLOW_DISCHARGE_FREQ_1 - TMS_BEGIN].def                         = 0.0;
@@ -752,7 +752,7 @@ void Tms::initParameters()
   parameters_[TMS_FLOW_DISCHARGE_FREQ_2 - TMS_BEGIN].operation                   = OPERATION_READ;
   parameters_[TMS_FLOW_DISCHARGE_FREQ_2 - TMS_BEGIN].physic                      = PHYSIC_FREQUENCY;
   parameters_[TMS_FLOW_DISCHARGE_FREQ_2 - TMS_BEGIN].validity                    = VALIDITY_ERROR;
-  parameters_[TMS_FLOW_DISCHARGE_FREQ_2 - TMS_BEGIN].value.float_t               = 0.0;
+  parameters_[TMS_FLOW_DISCHARGE_FREQ_2 - TMS_BEGIN].value.float_t               = NAN;
   parameters_[TMS_FLOW_DISCHARGE_FREQ_2 - TMS_BEGIN].min                         = 0.0;
   parameters_[TMS_FLOW_DISCHARGE_FREQ_2 - TMS_BEGIN].max                         = 200.0;
   parameters_[TMS_FLOW_DISCHARGE_FREQ_2 - TMS_BEGIN].def                         = 0.0;
@@ -764,7 +764,7 @@ void Tms::initParameters()
   parameters_[TMS_SPEED_XY_INTAKE - TMS_BEGIN].operation                         = OPERATION_READ;
   parameters_[TMS_SPEED_XY_INTAKE - TMS_BEGIN].physic                            = PHYSIC_SPEED;
   parameters_[TMS_SPEED_XY_INTAKE - TMS_BEGIN].validity                          = VALIDITY_ERROR;
-  parameters_[TMS_SPEED_XY_INTAKE - TMS_BEGIN].value.float_t                     = 0.0;
+  parameters_[TMS_SPEED_XY_INTAKE - TMS_BEGIN].value.float_t                     = NAN;
   parameters_[TMS_SPEED_XY_INTAKE - TMS_BEGIN].min                               = 0.0;
   parameters_[TMS_SPEED_XY_INTAKE - TMS_BEGIN].max                               = 50.0;
   parameters_[TMS_SPEED_XY_INTAKE - TMS_BEGIN].def                               = 0.0;
@@ -776,7 +776,7 @@ void Tms::initParameters()
   parameters_[TMS_SPEED_Z_INTAKE - TMS_BEGIN].operation                          = OPERATION_READ;
   parameters_[TMS_SPEED_Z_INTAKE - TMS_BEGIN].physic                             = PHYSIC_SPEED;
   parameters_[TMS_SPEED_Z_INTAKE - TMS_BEGIN].validity                           = VALIDITY_ERROR;
-  parameters_[TMS_SPEED_Z_INTAKE - TMS_BEGIN].value.float_t                      = 0.0;
+  parameters_[TMS_SPEED_Z_INTAKE - TMS_BEGIN].value.float_t                      = NAN;
   parameters_[TMS_SPEED_Z_INTAKE - TMS_BEGIN].min                                = 0.0;
   parameters_[TMS_SPEED_Z_INTAKE - TMS_BEGIN].max                                = 50.0;
   parameters_[TMS_SPEED_Z_INTAKE - TMS_BEGIN].def                                = 0.0;
