@@ -262,9 +262,9 @@ void Vsd::initParameters()
   parameters_[VSD_D_AXIS_INDUNSTANCE - VSD_BEGIN].validity                       = VALIDITY_ERROR;
   parameters_[VSD_D_AXIS_INDUNSTANCE - VSD_BEGIN].value.float_t                  = 0.0;
   parameters_[VSD_D_AXIS_INDUNSTANCE - VSD_BEGIN].min                            = 0.0;
-  parameters_[VSD_D_AXIS_INDUNSTANCE - VSD_BEGIN].max                            = 100.0;
+  parameters_[VSD_D_AXIS_INDUNSTANCE - VSD_BEGIN].max                            = 1000.0;
   parameters_[VSD_D_AXIS_INDUNSTANCE - VSD_BEGIN].def                            = 0.0;
-  parameters_[VSD_D_AXIS_INDUNSTANCE - VSD_BEGIN].discret                        = 1000;
+  parameters_[VSD_D_AXIS_INDUNSTANCE - VSD_BEGIN].discret                        = 10;
   parameters_[VSD_D_AXIS_INDUNSTANCE - VSD_BEGIN].code                           = 13;
   // Противо эдс Danfoss 1-40 Используется в проекте
   parameters_[VSD_BACK_EMF - VSD_BEGIN].id                                       = VSD_BACK_EMF;
@@ -999,17 +999,17 @@ void Vsd::initParameters()
   parameters_[VSD_REGULATOR_QUEUE_5 - VSD_BEGIN].discret                         = 1;
   parameters_[VSD_REGULATOR_QUEUE_5 - VSD_BEGIN].code                            = 0;
   // Порог защиты ПЧ по снижению напряжения на инверторе
-  parameters_[VSD_UD_LOW_FAULT - VSD_BEGIN].id                                   = VSD_UD_LOW_FAULT;
-  parameters_[VSD_UD_LOW_FAULT - VSD_BEGIN].access                               = ACCESS_OPERATOR;
-  parameters_[VSD_UD_LOW_FAULT - VSD_BEGIN].operation                            = 0;
-  parameters_[VSD_UD_LOW_FAULT - VSD_BEGIN].physic                               = 0;
-  parameters_[VSD_UD_LOW_FAULT - VSD_BEGIN].validity                             = VALIDITY_ERROR;
-  parameters_[VSD_UD_LOW_FAULT - VSD_BEGIN].value.float_t                        = 0;
-  parameters_[VSD_UD_LOW_FAULT - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_UD_LOW_FAULT - VSD_BEGIN].max                                  = 999999.0;
-  parameters_[VSD_UD_LOW_FAULT - VSD_BEGIN].def                                  = 0;
-  parameters_[VSD_UD_LOW_FAULT - VSD_BEGIN].discret                              = 1;
-  parameters_[VSD_UD_LOW_FAULT - VSD_BEGIN].code                                 = 0;
+  parameters_[VSD_DELETE_10083 - VSD_BEGIN].id                                   = VSD_DELETE_10083;
+  parameters_[VSD_DELETE_10083 - VSD_BEGIN].access                               = ACCESS_OPERATOR;
+  parameters_[VSD_DELETE_10083 - VSD_BEGIN].operation                            = 0;
+  parameters_[VSD_DELETE_10083 - VSD_BEGIN].physic                               = 0;
+  parameters_[VSD_DELETE_10083 - VSD_BEGIN].validity                             = VALIDITY_ERROR;
+  parameters_[VSD_DELETE_10083 - VSD_BEGIN].value.float_t                        = 0;
+  parameters_[VSD_DELETE_10083 - VSD_BEGIN].min                                  = 0.0;
+  parameters_[VSD_DELETE_10083 - VSD_BEGIN].max                                  = 999999.0;
+  parameters_[VSD_DELETE_10083 - VSD_BEGIN].def                                  = 0;
+  parameters_[VSD_DELETE_10083 - VSD_BEGIN].discret                              = 1;
+  parameters_[VSD_DELETE_10083 - VSD_BEGIN].code                                 = 0;
   // Порог защиты ПЧ по превыщению напряжения на инверторе
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].id                                  = VSD_UD_HIGH_FAULT;
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].access                              = ACCESS_OPERATOR;
@@ -2105,15 +2105,15 @@ void Vsd::initParameters()
   // Длительность действия начального ток Danfoss 2-07 В проекте есть, но отключено, используется при конфигурировании
   parameters_[VSD_PARKING_TIME - VSD_BEGIN].id                                   = VSD_PARKING_TIME;
   parameters_[VSD_PARKING_TIME - VSD_BEGIN].access                               = ACCESS_OPERATOR;
-  parameters_[VSD_PARKING_TIME - VSD_BEGIN].operation                            = 0;
-  parameters_[VSD_PARKING_TIME - VSD_BEGIN].physic                               = 0;
+  parameters_[VSD_PARKING_TIME - VSD_BEGIN].operation                            = OPERATION_WRITE;
+  parameters_[VSD_PARKING_TIME - VSD_BEGIN].physic                               = PHYSIC_TIME;
   parameters_[VSD_PARKING_TIME - VSD_BEGIN].validity                             = VALIDITY_ERROR;
-  parameters_[VSD_PARKING_TIME - VSD_BEGIN].value.float_t                        = 0;
-  parameters_[VSD_PARKING_TIME - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_PARKING_TIME - VSD_BEGIN].max                                  = 999999.0;
-  parameters_[VSD_PARKING_TIME - VSD_BEGIN].def                                  = 0;
-  parameters_[VSD_PARKING_TIME - VSD_BEGIN].discret                              = 1;
-  parameters_[VSD_PARKING_TIME - VSD_BEGIN].code                                 = 0;
+  parameters_[VSD_PARKING_TIME - VSD_BEGIN].value.float_t                        = 3.0;
+  parameters_[VSD_PARKING_TIME - VSD_BEGIN].min                                  = 0.1;
+  parameters_[VSD_PARKING_TIME - VSD_BEGIN].max                                  = 60.0;
+  parameters_[VSD_PARKING_TIME - VSD_BEGIN].def                                  = 3.0;
+  parameters_[VSD_PARKING_TIME - VSD_BEGIN].discret                              = 10;
+  parameters_[VSD_PARKING_TIME - VSD_BEGIN].code                                 = 13;
   // Контроль перенапряжения Danfoss 2-17 Не используется в проекте, только при конфигурировании
   parameters_[VSD_OVERVOLTAGE_CONTROL - VSD_BEGIN].id                            = VSD_OVERVOLTAGE_CONTROL;
   parameters_[VSD_OVERVOLTAGE_CONTROL - VSD_BEGIN].access                        = ACCESS_OPERATOR;
@@ -2225,15 +2225,15 @@ void Vsd::initParameters()
   // Ограничение момента Danfoss 4-16 % Используется в защитах ЧРП. Интерфейс
   parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].id                                   = VSD_TORQUE_LIMIT;
   parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].access                               = ACCESS_OPERATOR;
-  parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].operation                            = 0;
-  parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].physic                               = 0;
+  parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].operation                            = OPERATION_WRITE;
+  parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].physic                               = PHYSIC_PERCENT;
   parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].validity                             = VALIDITY_ERROR;
-  parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].value.float_t                        = 0;
+  parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].value.float_t                        = 160.0;
   parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].max                                  = 999999.0;
-  parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].def                                  = 0;
-  parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].discret                              = 1;
-  parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].code                                 = 0;
+  parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].max                                  = 1000.0;
+  parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].def                                  = 160.0;
+  parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].discret                              = 10;
+  parameters_[VSD_TORQUE_LIMIT - VSD_BEGIN].code                                 = 13;
   // Ограничение момента в режиме генератора Danfoss 4-17 % Не используется в проекте, только при конфигурировании
   parameters_[VSD_TORQUE_LIMIT_GEN - VSD_BEGIN].id                               = VSD_TORQUE_LIMIT_GEN;
   parameters_[VSD_TORQUE_LIMIT_GEN - VSD_BEGIN].access                           = ACCESS_OPERATOR;
@@ -2250,12 +2250,12 @@ void Vsd::initParameters()
   parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].id                                  = VSD_CURRENT_LIMIT;
   parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].access                              = ACCESS_OPERATOR;
   parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].operation                           = OPERATION_WRITE;
-  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].physic                              = PHYSIC_NUMERIC;
+  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].physic                              = PHYSIC_PERCENT;
   parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].validity                            = VALIDITY_ERROR;
-  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].value.float_t                       = 1.0;
-  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].min                                 = 1.0;
-  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].max                                 = 2.0;
-  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].def                                 = 1.0;
+  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].value.float_t                       = 160.0;
+  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].min                                 = 0.0;
+  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].max                                 = 1000.0;
+  parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].def                                 = 160.0;
   parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].discret                             = 10;
   parameters_[VSD_CURRENT_LIMIT - VSD_BEGIN].code                                = 0;
   // Максимальная выходная частота Danfoss 4-19 Используется в проекте
@@ -2789,13 +2789,13 @@ void Vsd::initParameters()
   // Напряжение сети при отказе питания Danfoss 14-11 Не используется в проекте, только при конфигурировании
   parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].id                          = VSD_MAINS_VOLTAGE_FAILURE;
   parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].access                      = ACCESS_OPERATOR;
-  parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].operation                   = 0;
-  parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].physic                      = 0;
+  parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].physic                      = PHYSIC_VOLTAGE;
   parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].validity                    = VALIDITY_ERROR;
-  parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].value.float_t               = 0;
-  parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].min                         = 0.0;
-  parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].max                         = 999999.0;
-  parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].def                         = 0;
+  parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].value.float_t               = 250.0;
+  parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].min                         = 180.0;
+  parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].max                         = 600.0;
+  parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].def                         = 250.0;
   parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].discret                     = 1;
   parameters_[VSD_MAINS_VOLTAGE_FAILURE - VSD_BEGIN].code                        = 0;
   // Режим сброса Danfoss 14-20 Не используется в проекте, только при конфигурировании
@@ -4070,5 +4070,17 @@ void Vsd::initParameters()
   parameters_[VSD_CONTROL_WORD_TIMEOUT_TIME - VSD_BEGIN].def                     = 1.0;
   parameters_[VSD_CONTROL_WORD_TIMEOUT_TIME - VSD_BEGIN].discret                 = 10;
   parameters_[VSD_CONTROL_WORD_TIMEOUT_TIME - VSD_BEGIN].code                    = 0;
+  // Коэф.МТЗ мотор
+  parameters_[VSD_CURRENT_LIMIT_COEF - VSD_BEGIN].id                             = VSD_CURRENT_LIMIT_COEF;
+  parameters_[VSD_CURRENT_LIMIT_COEF - VSD_BEGIN].access                         = ACCESS_OPERATOR;
+  parameters_[VSD_CURRENT_LIMIT_COEF - VSD_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[VSD_CURRENT_LIMIT_COEF - VSD_BEGIN].physic                         = PHYSIC_NUMERIC;
+  parameters_[VSD_CURRENT_LIMIT_COEF - VSD_BEGIN].validity                       = VALIDITY_ERROR;
+  parameters_[VSD_CURRENT_LIMIT_COEF - VSD_BEGIN].value.float_t                  = 2.0;
+  parameters_[VSD_CURRENT_LIMIT_COEF - VSD_BEGIN].min                            = 1.0;
+  parameters_[VSD_CURRENT_LIMIT_COEF - VSD_BEGIN].max                            = 2.5;
+  parameters_[VSD_CURRENT_LIMIT_COEF - VSD_BEGIN].def                            = 2.0;
+  parameters_[VSD_CURRENT_LIMIT_COEF - VSD_BEGIN].discret                        = 10;
+  parameters_[VSD_CURRENT_LIMIT_COEF - VSD_BEGIN].code                           = 13;
 }
 
