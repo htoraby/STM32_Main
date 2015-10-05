@@ -65,7 +65,7 @@ void LogRunning::task()
     eventId_ = logEvent.add(RunCode, eventType, RunId);
 
     osDelay(ARCHIVE_TIME);
-    add();
+//    add();
   }
 }
 
