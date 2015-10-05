@@ -6,16 +6,10 @@ void Ccs::calcParametersTask()
 {
   while (1) {
     osDelay(100);
-//    calcMotorCurrentPhase1();
-//    calcMotorCurrentPhase2();
-//    calcMotorCurrentPhase3();
-//    calcMotorCurrentAverage();
-//    calcMotorCurrentImbalance();
     calcMotorVoltagePhase1();
     calcMotorVoltagePhase2();
     calcMotorVoltagePhase3();
     calcMotorVoltageImbalance();
-//    calcMotorSpeed();
     calcMotorCos();
     calcMotorLoad();
     calcInputVoltagePhase1();
@@ -218,7 +212,7 @@ float Ccs::calcInputVoltagePhase1()
 {
   if ((parameters.getValidity(EM_VOLTAGE_PHASE_1)) ||
       (parameters.getValidity(CCS_COEF_VOLTAGE_IN_A))) {
-    parameters.setValidity(CCS_VOLTAGE_PHASE_1, VALIDITY_ERROR);
+    setNewValue(CCS_VOLTAGE_PHASE_1, (float)NAN);
   }
   else {
     setNewValue(CCS_VOLTAGE_PHASE_1,
@@ -232,7 +226,7 @@ float Ccs::calcInputVoltagePhase2()
 {
   if ((parameters.getValidity(EM_VOLTAGE_PHASE_2)) ||
       (parameters.getValidity(CCS_COEF_VOLTAGE_IN_B))) {
-    parameters.setValidity(CCS_VOLTAGE_PHASE_2, VALIDITY_ERROR);
+    setNewValue(CCS_VOLTAGE_PHASE_2, (float)NAN);
   }
   else {
     setValue(CCS_VOLTAGE_PHASE_2,
@@ -246,7 +240,7 @@ float Ccs::calcInputVoltagePhase3()
 {
   if ((parameters.getValidity(EM_VOLTAGE_PHASE_3)) ||
       (parameters.getValidity(CCS_COEF_VOLTAGE_IN_C))) {
-    parameters.setValidity(CCS_VOLTAGE_PHASE_3, VALIDITY_ERROR);
+    setNewValue(CCS_VOLTAGE_PHASE_3, (float)NAN);
   }
   else {
     setValue(CCS_VOLTAGE_PHASE_3,
@@ -260,7 +254,7 @@ float Ccs::calcInputVoltagePhase12()
 {
   if ((parameters.getValidity(EM_VOLTAGE_PHASE_1_2)) ||
       (parameters.getValidity(CCS_COEF_VOLTAGE_IN_A))) {
-    parameters.setValidity(CCS_VOLTAGE_PHASE_1_2, VALIDITY_ERROR);
+    setNewValue(CCS_VOLTAGE_PHASE_1_2, (float)NAN);
   }
   else {
     setValue(CCS_VOLTAGE_PHASE_1_2,
@@ -274,7 +268,7 @@ float Ccs::calcInputVoltagePhase23()
 {
   if ((parameters.getValidity(EM_VOLTAGE_PHASE_2_3)) ||
       (parameters.getValidity(CCS_COEF_VOLTAGE_IN_B))) {
-    parameters.setValidity(CCS_VOLTAGE_PHASE_2_3, VALIDITY_ERROR);
+    setNewValue(CCS_VOLTAGE_PHASE_2_3, (float)NAN);
   }
   else {
     setValue(CCS_VOLTAGE_PHASE_2_3,
@@ -288,7 +282,7 @@ float Ccs::calcInputVoltagePhase31()
 {
   if ((parameters.getValidity(EM_VOLTAGE_PHASE_3_1)) ||
       (parameters.getValidity(CCS_COEF_VOLTAGE_IN_C))) {
-    parameters.setValidity(CCS_VOLTAGE_PHASE_3_1, VALIDITY_ERROR);
+    setNewValue(CCS_VOLTAGE_PHASE_3_1, (float)NAN);
   }
   else {
     setValue(CCS_VOLTAGE_PHASE_3_1,
@@ -303,7 +297,7 @@ float Ccs::calcInputVoltageImbalance()
   if (parameters.getValidity(CCS_VOLTAGE_PHASE_1) ||
       parameters.getValidity(CCS_VOLTAGE_PHASE_2) ||
       parameters.getValidity(CCS_VOLTAGE_PHASE_3)) {
-    parameters.setValidity(CCS_VOLTAGE_IMBALANCE_IN, VALIDITY_ERROR);
+    setNewValue(CCS_VOLTAGE_IMBALANCE_IN, (float)NAN);
   }
   else {
   setValue(CCS_VOLTAGE_IMBALANCE_IN,
