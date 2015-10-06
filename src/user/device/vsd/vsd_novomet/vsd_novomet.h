@@ -160,29 +160,6 @@ public:
    */
   int setMainRegimeVSD();
 
-  /*!
-   * \brief Метод задания уставки частоты двигателя
-   * При установке текущей частоты проверяется диапазон уставок
-   * минимальной и максимальной частоты
-   * \param value - частота
-   * \return
-   */
-  int setFrequency(float value);
-
-  /*!
-   * \brief Метод задания минимальной частоты
-   * \param value частота
-   * \return 0 - задали 1 - не задали
-   */
-  int setMinFrequency(float value);
-
-  /*!
-   * \brief Метод задания максимальной частоты
-   * \param value - значение максимальной частоты
-   * \return 0 - задали 1 - не задали
-   */
-  int setMaxFrequency(float value);
-
   int setMotorType(float value);
 
   void calcMotorType();
