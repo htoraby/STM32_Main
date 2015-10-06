@@ -549,28 +549,6 @@ int VsdEtalon::setMotorType(float value)
   }
 }
 
-int VsdEtalon::setTimeSpeedUp(float value)
-{
-  if (Vsd::setTimeSpeedUp(value)) {
-    return err_r;
-  }
-  else {
-    writeToDevice(VSD_TIMER_DISPERSAL, getValue(VSD_TIMER_DISPERSAL));
-    return ok_r;
-  }
-}
-
-int VsdEtalon::setTimeSpeedDown(float value)
-{
-  if (Vsd::setTimeSpeedDown(value)) {
-    return err_r;
-  }
-  else {
-    writeToDevice(VSD_TIMER_DELAY, getValue(VSD_TIMER_DELAY));
-    return ok_r;
-  }
-}
-
 int VsdEtalon::setUfU1(float value)
 {
   int result = Vsd::setUfU1(value);

@@ -452,46 +452,34 @@ void VsdNovomet::calcCurrentDC()
 
 int VsdNovomet::setTimeSpeedUp(float value)
 {
-  if (Vsd::setTimeSpeedUp(value)) {
-    return err_r;
+  // Записали время разгона (с)
+  if (!setValue(VSD_TIMER_DISPERSAL, value)) {
+    // Записали темп разгона (Гц/с)
+    if (!setValue(VSD_TEMP_SPEEDUP, getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TIMER_DISPERSAL))) {
+      // Записали время на 1Гц
+       if (!setValue(VSD_T_SPEEDUP, 1/getValue(VSD_TEMP_SPEEDUP))) {
+         writeToDevice(VSD_T_SPEEDUP, getValue(VSD_T_SPEEDUP));
+         return ok_r;
+       }
+    }
   }
-  else {
-    writeToDevice(VSD_T_SPEEDUP, getValue(VSD_T_SPEEDUP));
-    return ok_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setTimeSpeedDown(float value)
 {
-  if (Vsd::setTimeSpeedDown(value)) {
-    return err_r;
+  // Записали время торможения (с)
+  if (!setValue(VSD_TIMER_DELAY, value)) {
+    // Записали темп торможения (Гц/с)
+    if (!setValue(VSD_TEMP_SPEEDDOWN, getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TIMER_DELAY))) {
+      // Записали время на 1Гц
+      if (!setValue(VSD_T_SPEEDDOWN, 1/getValue(VSD_TEMP_SPEEDDOWN))) {
+        writeToDevice(VSD_T_SPEEDDOWN, getValue(VSD_T_SPEEDDOWN));
+        return ok_r;
+      }
+    }
   }
-  else {
-    writeToDevice(VSD_T_SPEEDDOWN, getValue(VSD_T_SPEEDDOWN));
-    return ok_r;
-  }
-}
-
-int VsdNovomet::setTempSpeedUp(float value)
-{
-  if (Vsd::setTempSpeedUp(value)) {
-    return err_r;
-  }
-  else {
-    writeToDevice(VSD_T_SPEEDUP, getValue(VSD_T_SPEEDUP));
-    return ok_r;
-  }
-}
-
-int VsdNovomet::setTempSpeedDown(float value)
-{
-  if (Vsd::setTempSpeedDown(value)) {
-    return err_r;
-  }
-  else {
-    writeToDevice(VSD_T_SPEEDDOWN, getValue(VSD_T_SPEEDDOWN));
-    return ok_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setRotation(float value)

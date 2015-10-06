@@ -199,9 +199,8 @@ public:
    * \return Код результата операции
    */
   int setTimeSpeedUp(float value);
+
   int setTimeSpeedDown(float value);
-  int setTempSpeedUp(float value);
-  int setTempSpeedDown(float value);
 
   /*!
    * \brief Метод задания точки характеристики U/f F6

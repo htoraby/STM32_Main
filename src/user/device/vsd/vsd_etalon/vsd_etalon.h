@@ -213,19 +213,6 @@ public:
    */
   int setMotorType(float value);
 
-  /*!
-   * \brief Метод задания времени набора частоты
-   * \return Код результата операции
-   */
-  int setTimeSpeedUp(float value);
-
-  /*!
-   * \brief Метод задания времени снижения частоты
-   * \param SpeedDown
-   * \return Код результата операции
-   */
-  int setTimeSpeedDown(float value);
-
   int setUfU1(float value);
   int setUfU2(float value);
   int setUfU3(float value);
