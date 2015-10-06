@@ -38,8 +38,8 @@ void VsdEtalon::init()
   initParameters();
   readParameters();
 
-  setLimitsFrequence(0, getValue(VSD_LOW_LIM_SPEED_MOTOR));
-  setLimitsFrequence(1, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+  setLimitsMinFrequence(getValue(VSD_LOW_LIM_SPEED_MOTOR));
+  setLimitsMaxFrequence(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
 }
 
 // Метод заполнения внутреннего банка параметров по карте устройства
@@ -47,7 +47,7 @@ void VsdEtalon::initParameters()
 {
   int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
   for (int i = 0; i < count; i++) {        // Цикл по карте регистров
-    if (modbusParameters_[i].freqExchange != EVERY_TIME) {
+    if ((modbusParameters_[i].freqExchange != EVERY_TIME) || (modbusParameters_[i].freqExchange != NOT_READ)) {
       modbusParameters_[i].freqExchange = modbusParameters_[i].freqExchange + i;
       modbusParameters_[i].cntExchange = modbusParameters_[i].freqExchange;
     }
@@ -180,10 +180,10 @@ void VsdEtalon::getNewValue(uint16_t id)
       setValue(VSD_UF_CHARACTERISTIC_U_5, (int)(parameters.get(CCS_TRANS_NOMINAL_VOLTAGE_INPUT) * value / 100.0));
       break;
     case VSD_LOW_LIM_SPEED_MOTOR:
-      setLimitsFrequence(0, value);
+      setLimitsMinFrequence(value);
       break;
     case VSD_HIGH_LIM_SPEED_MOTOR:
-      setLimitsFrequence(1, value);
+      setLimitsMaxFrequence(value);
       break;
     case VSD_SOFT_VERSION:
       setValue(id, value);
@@ -535,38 +535,6 @@ int VsdEtalon::resetSetpoints()
   int result = setNewValue(VSD_ETALON_RESET, 1);
   setNewValue(VSD_FLAG, 0);
   return result;
-}
-
-int VsdEtalon::setFrequency(float value)
-{
-  if (Vsd::setFrequency(value))
-    return err_r;
-  else {
-    writeToDevice(VSD_FREQUENCY, value);
-    return ok_r;
-  }
-}
-
-int VsdEtalon::setMinFrequency(float value)
-{
-  if (Vsd::setMinFrequency(value)) {
-    return err_r;
-  }
-  else {
-    writeToDevice(VSD_LOW_LIM_SPEED_MOTOR, getValue(VSD_LOW_LIM_SPEED_MOTOR));
-    return ok_r;
-  }
-}
-
-int VsdEtalon::setMaxFrequency(float value)
-{
-  if (Vsd::setMaxFrequency(value)) {
-    return err_r;
-  }
-  else {
-    writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
-    return ok_r;
-  }
 }
 
 int VsdEtalon::setMotorType(float value)
