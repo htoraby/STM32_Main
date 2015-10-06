@@ -143,27 +143,6 @@ public:
    */
   int setMotorType(float value);
 
-  /*!
-   * \brief Функция записи в регистр номинальной частоты двигателя
-   * \param freq - задаваемая частота
-   * \return 0 - задание успешно, № - ошибки
-   */
-  int setMotorNominalFreq(float freq);
-
-  /*!
-   * \brief Функция записи в регистр номинального тока двигателя
-   * \param current - задаваемый ток
-   * \return 0 - задание успешно, № - ошибки
-   */
-  int setMotorNominalCurrent(float current);
-
-  /*!
-   * \brief Функция записи в регистр номинального напряжения двигателя
-   * \param voltage - задаваемое напряжение
-   * \return 0 - задание успешно, № - ошибки
-   */
-  int setMotorNominalVoltage(float voltage);
-
   /*! Задаваемые параметры ЧРП */
   /*!
    * \brief Функция записи в регистр частоты коммутации (Частота ШИМ)
@@ -191,7 +170,7 @@ public:
    * \param value - задаваемая частота
    * \return 0 - задание успешно, № - ошибки
    */
-  virtual int setFrequency(float value);
+  int setFrequency(float value);
 
   /*!
    * \brief Функция записи в регистр минимальной частоты
@@ -205,9 +184,11 @@ public:
    * \param value - максимальная частота
    * \return 0 - задание успешно, № - ошибки
    */
-  virtual int setMaxFrequency(float value);
+  int setMaxFrequency(float value);
 
-  int setLimitsFrequence(bool Min, float value);
+  int setLimitsMinFrequence(float value);
+  int setLimitsMaxFrequence(float value);
+
 
   int setUfU(uint16_t id, float value);
 
@@ -381,7 +362,13 @@ public:
    */
   int calcVsdCos();
 
+  /*!
+   * \brief writeToDevice
+   */
+  virtual void writeToDevice(int id, float value);
+
   VsdLog *log() const { return log_; }
+
 
 protected:
   VsdLog *log_;

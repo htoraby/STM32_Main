@@ -32,21 +32,6 @@ int Vsd::setMotorType(float value)
   return err_r;
 }
 
-int Vsd::setMotorNominalFreq(float freq)
-{
-  return setValue(VSD_MOTOR_FREQUENCY, freq);
-}
-
-int Vsd::setMotorNominalCurrent(float current)
-{
-  return setValue(VSD_MOTOR_CURRENT, current);
-}
-
-int Vsd::setMotorNominalVoltage(float voltage)
-{
-  return setValue(VSD_MOTOR_VOLTAGE, voltage);
-}
-
 // Задаваемые параметры ЧРП
 int Vsd::setSwitchingFrequency(float value)
 {
@@ -71,50 +56,45 @@ int Vsd::resetBlock()
 // Задаваемые параметры работы
 int Vsd::setFrequency(float value)
 { 
-  return setValue(VSD_FREQUENCY, value);
+  if (!setValue(VSD_FREQUENCY, value)) {
+    writeToDevice(VSD_FREQUENCY, value);
+    return ok_r;
+  }
+  return err_r;
 }
 
-int Vsd::setLimitsFrequence(bool Max, float value)
+int Vsd::setLimitsMaxFrequence(float value)
 {
-  if (Max) {
-    if (!setValue(VSD_HIGH_LIM_SPEED_MOTOR, value)) {
-      // Меняем поле максимум для уставки "Минимальной частоты"
-      setMax(VSD_LOW_LIM_SPEED_MOTOR, value);
-      // Меняем поле максимум для уставки "Частота"
-      setMax(VSD_FREQUENCY, value);
-      return ok_r;
-    }
-    else {
-      return err_r;
-    }
+  if (!setValue(VSD_HIGH_LIM_SPEED_MOTOR, value)) { // Если записали максимум частоты
+    setMax(VSD_LOW_LIM_SPEED_MOTOR, value);         // Меняем поле максимум для уставки "Минимальной частоты"
+    setMax(VSD_FREQUENCY, value);                   // Меняем поле максимум для уставки "Частота"
+    return ok_r;
   }
-  else {
-    if (!setValue(VSD_LOW_LIM_SPEED_MOTOR, value)) {
-      // Меняем поле минимум для уставки "Максимальной частоты"
-      setMin(VSD_HIGH_LIM_SPEED_MOTOR, value);
-      // Меняем поле минимум для уставки "Частота"
-      setMin(VSD_FREQUENCY, value);
-      return ok_r;
-    }
-    else {
-      return err_r;
-    }
+  return err_r;
+}
+
+int Vsd::setLimitsMinFrequence(float value)
+{
+  if (!setValue(VSD_LOW_LIM_SPEED_MOTOR, value)) {  // Если записали минимум частоты
+    setMin(VSD_HIGH_LIM_SPEED_MOTOR, value);        // Меняем поле минимум для уставки "Максимальной частоты"
+    setMin(VSD_FREQUENCY, value);                   // Меняем поле минимум для уставки "Частота"
+    return ok_r;
   }
+  return err_r;
 }
 
 int Vsd::setMinFrequency(float value)
 {
-  // Если записываемое значение "Минимальной частоты" больше значения
-  // "Максимальной частоты"
-  if (value > getValue(VSD_HIGH_LIM_SPEED_MOTOR)) {
-    return err_r;                    // Возвращаем ошибку
+  if (value > getValue(VSD_HIGH_LIM_SPEED_MOTOR)) {   // Присваиваемая минимальная частота больше максимальной
+    return err_r;                                     // Возвращаем ошибку
   }
   else {
-    if (!setLimitsFrequence(0, value)) {
-      if (value > getValue(VSD_FREQUENCY))
-        setFrequency(value);
-
-      return ok_r;
+    if (!setLimitsMinFrequence(value)) {              // Записали минимум частоты
+      writeToDevice(VSD_LOW_LIM_SPEED_MOTOR, value);  // Записываем в устройство
+      if (value > getValue(VSD_FREQUENCY))            // Если минимальная частота больше уставки
+        return setFrequency(value);                   // Приравнием уставку минимальной частоте
+      else
+        return ok_r;
     }
     return err_r;
   }
@@ -122,17 +102,16 @@ int Vsd::setMinFrequency(float value)
 
 int Vsd::setMaxFrequency(float value)
 {
-  // Если записываемое значение "Максимальной частоты" меньше значения
-  // "Минимальной частоты"
   if (value < getValue(VSD_LOW_LIM_SPEED_MOTOR)) {
-    return err_r;                    // Возвращаем ошибку
+    return err_r;
   }
   else {
-    if (!setLimitsFrequence(1, value)) {
+    if (!setLimitsMaxFrequence(value)) {
+      writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR, value);
       if (value < getValue(VSD_FREQUENCY))
-        setFrequency(value);
-
-      return ok_r;
+        return setFrequency(value);
+      else
+        return ok_r;
     }
     return err_r;
   }
@@ -241,6 +220,11 @@ int Vsd::calcVsdCos()
     cos = 1;
   setValue(VSD_MOTOR_COS_PHI_NOW, cos);
   return parameters.get(VSD_MOTOR_COS_PHI_NOW);
+}
+
+void Vsd::writeToDevice(int id, float value)
+{
+  setValue(id, value);
 }
 
 int Vsd::setRotation(float value)
