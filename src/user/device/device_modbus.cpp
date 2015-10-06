@@ -191,47 +191,51 @@ int DeviceModbus::putMessageUpdateId(int id)
 void DeviceModbus::writeModbusParameter(int id, float value)
 {
   int index = getIndexAtId(id);
-  // Получаем всю структуру параметра
-  ModbusParameter *param = getFieldAll(index);
-  // Применяем преобразование единиц измерения
-  value = (value * (units[param->physic][param->unit][0])) + (units[param->physic][param->unit][1]);
-  // Применяем преобразование коэффициента
-  value = value / param->coefficient;
-  // Применяем тип данных
-  switch (param->typeData) {
-  case  TYPE_DATA_CHAR:
-    param->value.char_t[0] = (char)(value + 0.5);
-    break;
-  case  TYPE_DATA_INT16:
-    param->value.int16_t[0] = (short int)(value + 0.5);
-    break;
-  case  TYPE_DATA_INT32:
-    param->value.int32_t = (int)(value + 0.5);
-    break;
-  case TYPE_DATA_UINT16:
-    param->value.uint16_t[0] = (unsigned short int)(value + 0.5);
-    break;
-  case  TYPE_DATA_UINT32:
-    param->value.uint32_t = (unsigned int)(value + 0.5);
-    break;
-  case TYPE_DATA_FLOAT:
-    param->value.float_t = value;
-    break;
-  case TYPE_DATA_COIL:
-    param->value.int16_t[0] = (short int)(value + 0.5);
-  default:
-    break;
+  if (index) {
+    // Получаем всю структуру параметра
+    ModbusParameter *param = getFieldAll(index);
+    // Применяем преобразование единиц измерения
+    value = (value * (units[param->physic][param->unit][0])) + (units[param->physic][param->unit][1]);
+    // Применяем преобразование коэффициента
+    value = value / param->coefficient;
+    // Применяем тип данных
+    switch (param->typeData) {
+    case  TYPE_DATA_CHAR:
+      param->value.char_t[0] = (char)(value + 0.5);
+      break;
+    case  TYPE_DATA_INT16:
+      param->value.int16_t[0] = (short int)(value + 0.5);
+      break;
+    case  TYPE_DATA_INT32:
+      param->value.int32_t = (int)(value + 0.5);
+      break;
+    case TYPE_DATA_UINT16:
+      param->value.uint16_t[0] = (unsigned short int)(value + 0.5);
+      break;
+    case  TYPE_DATA_UINT32:
+      param->value.uint32_t = (unsigned int)(value + 0.5);
+      break;
+    case TYPE_DATA_FLOAT:
+      param->value.float_t = value;
+      break;
+    case TYPE_DATA_COIL:
+      param->value.int16_t[0] = (short int)(value + 0.5);
+    default:
+      break;
+    }
+    param->command = OPERATION_WRITE;
+    putMessageOutOfTurn(index);
   }
-  param->command = OPERATION_WRITE;
-  putMessageOutOfTurn(index);
 }
 
 void DeviceModbus::readModbusParameter(int id)
 {
   int index = getIndexAtId(id);
-  ModbusParameter *param = getFieldAll(index);
-  param->command = OPERATION_READ;
-  putMessageOutOfTurn(index);
+  if (index) {
+    ModbusParameter *param = getFieldAll(index);
+    param->command = OPERATION_READ;
+    putMessageOutOfTurn(index);
+  }
 }
 
 int DeviceModbus::searchExchangeParameters()
