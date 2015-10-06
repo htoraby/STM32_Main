@@ -14,43 +14,34 @@ VsdDanfoss::~VsdDanfoss()
 void VsdDanfoss::initParameters()
 {
   int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
-  // Цикл по карте регистров Modbus
-  for (int indexModbus = 0; indexModbus < count; indexModbus++) {
-    int id = dm_->getFieldID(indexModbus);
+  for (int i = 0; i < count; i++) {        // Цикл по карте регистров
+    if ((modbusParameters_[i].freqExchange != EVERY_TIME) || (modbusParameters_[i].freqExchange != NOT_READ)) {
+      modbusParameters_[i].freqExchange = modbusParameters_[i].freqExchange + i;
+      modbusParameters_[i].cntExchange = modbusParameters_[i].freqExchange;
+    }
+
+    int id = dm_->getFieldID(i);
     if (id <= 0)
       continue;
-    // Получаем индекс параметра в банке параметров
-    int indexArray = getIndexAtId(id);
-    // Если нашли параметр
-    if (indexArray) {
-      // Уровень доступа оператор
-      setFieldAccess(indexArray, ACCESS_OPERATOR);
-      // Операции над параметром
-      setFieldOperation(indexArray, dm_->getFieldOperation(indexModbus));
-      // Физический смысл
-      setFieldPhysic(indexArray, dm_->getFieldPhysic(indexModbus));
-      // Получаем минимум
-      float tempVal = dm_->getFieldMinimum(indexModbus);
-      // Применяем коэффициент
-      tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));
-      tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
+    int indexArray = getIndexAtId(id);                                   // Получаем индекс параметра в банке параметров
+    if (indexArray) {                                                    // Если нашли параметр
+      setFieldAccess(indexArray, ACCESS_OPERATOR);                       // Уровень доступа оператор
+      setFieldOperation(indexArray, dm_->getFieldOperation(i));// Операции над параметром
+      setFieldPhysic(indexArray, dm_->getFieldPhysic(i));      // Физический смысл
+      float tempVal = dm_->getFieldMinimum(i);                  // Получаем минимум
+      tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(i));// Применяем коэффициент
+      tempVal = applyUnit(tempVal, dm_->getFieldPhysic(i), dm_->getFieldUnit(i));
       setMin(id, tempVal);
-      // Получаем мaксимум
-      tempVal = dm_->getFieldMaximum(indexModbus);
-      // Применяем коэффициент
-      tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));
-      tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
+      tempVal = dm_->getFieldMaximum(i);                        // Получаем мaксимум
+      tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(i));// Применяем коэффициент
+      tempVal = applyUnit(tempVal, dm_->getFieldPhysic(i), dm_->getFieldUnit(i));
       setMax(id, tempVal);
-      // Получаем значение по умолчанию
-      tempVal = dm_->getFieldDefault(indexModbus);
-      // Применяем коэффициент
-      tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));
-      tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
+      tempVal = dm_->getFieldDefault(i);                        // Получаем значение по умолчанию
+      tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(i));// Применяем коэффициент
+      tempVal = applyUnit(tempVal, dm_->getFieldPhysic(i), dm_->getFieldUnit(i));
       setFieldDef(indexArray, tempVal);
-      // Получили флаг валидности
-      setFieldValidity(indexArray, dm_->getFieldValidity(indexModbus));
-      // Присвоили значение значению по умолчанию
-      setFieldValue(indexArray, getFieldDefault(indexArray));
+      setFieldValidity(indexArray, dm_->getFieldValidity(i));  // Получили флаг валидности
+      setFieldValue(indexArray, getFieldDefault(indexArray));           // Присвоили значение значению по умолчанию
     }
   }
 }
@@ -70,8 +61,8 @@ void VsdDanfoss::init()
   initParameters();
   readParameters();
 
-  setLimitsFrequence(0, getValue(VSD_LOW_LIM_SPEED_MOTOR));
-  setLimitsFrequence(1, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+  setLimitsMinFrequence(getValue(VSD_LOW_LIM_SPEED_MOTOR));
+  setLimitsMaxFrequence(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
 }
 
 bool VsdDanfoss::isConnect()
@@ -260,6 +251,31 @@ int VsdDanfoss::stopCoil(float type)
   }
 }
 
+int VsdDanfoss::setMotorControl(float value)
+{
+  if (Vsd::setMotorControl(value)) {
+    logDebug.add(WarningMsg, "VsdDanfoss::setTypeMotor");
+    return err_r;
+  }
+  else {
+    writeToDevice(VSD_MOTOR_CONTROL, value);
+    setMotorType(VSD_MOTOR_TYPE_VENT);
+    return ok_r;
+  }
+}
+
+int VsdDanfoss::setRotation(float value)
+{
+  if(Vsd::setRotation(value)){
+    logDebug.add(WarningMsg, "VsdDanfoss::setRotation");
+    return err_r;
+  }
+  else {
+    writeToDevice(VSD_ROTATION, parameters.get(VSD_ROTATION));
+    return ok_r;
+  }
+}
+
 void VsdDanfoss::getNewValue(uint16_t id)
 {
   float value = 0;
@@ -368,7 +384,12 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value)
 {
   int16_t result;
   switch (id) {
-
+  case VSD_MOTOR_CONTROL:
+    return setMotorControl(value);
+    break;
+  case VSD_ROTATION:
+    return setRotation(value);
+    break;
   default:
     result = setValue(id, value);
     if (!result)

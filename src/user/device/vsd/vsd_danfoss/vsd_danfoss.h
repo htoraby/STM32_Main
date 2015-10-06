@@ -51,6 +51,11 @@ public:
   int startCoil();
   int stopCoil(float type);
 
+  int setMotorControl(float value);
+  int setMinFrequency(float value);
+  int setMaxFrequency(float value);
+
+  int setRotation(float value);
 private:
   ModbusParameter modbusParameters_[134];
   DeviceModbus *dm_;
