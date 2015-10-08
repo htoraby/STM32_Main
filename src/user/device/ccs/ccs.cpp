@@ -732,10 +732,17 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (value != Regime::OffAction) {
       parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction); // Отключаем режим толчковый
       parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction); // Отключаем режим раскачки
+      parameters.set(CCS_PROT_MOTOR_ASYNC_MODE, Protection::ModeOff); // Отключаем защиту турбин. вращен.
       vsd->onRegimePickup();
     }
     else {
       vsd->offRegimePickup();
+    }
+    return err;
+  case CCS_PROT_MOTOR_ASYNC_MODE:
+    err = setValue(id, value, eventType);
+    if (value != Protection::ModeOff) {
+      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction); // Отключаем режим подхвата
     }
     return err;
   case CCS_CMD_LOG_COPY:
