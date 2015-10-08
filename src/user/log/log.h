@@ -138,7 +138,7 @@ protected:
    * \param data - указатель на записываемые данные
    * \param size - размер данных
    * \param saveId - флаг сохранения Id события, по умолчанию true
-   * \param endLog - флаг завершения архива (необходим для архива пусковых характеристик)
+   * \param endLog - флаг завершения архива (необходим для пусковых и аварийных архивов)
    */
   StatusType write(uint8_t *data, uint32_t size, bool saveId = true, bool endLog = false);
 

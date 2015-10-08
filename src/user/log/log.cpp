@@ -86,7 +86,7 @@ StatusType Log::write(uint8_t *data, uint32_t size, bool saveId, bool endLog)
   // Проверка на начало нового сектора
   uint32_t addrSector = (address_ + size - 1) / sectorSize_ * sectorSize_;
   if (endLog) {
-    addrSector = addrSector + sectorSize_;
+    addrSector = addrSector + sectorSize_*2;
     if ((addrSector + sectorSize_*64) >= endAddr_)
       addrSector = startAddr_;
   }
