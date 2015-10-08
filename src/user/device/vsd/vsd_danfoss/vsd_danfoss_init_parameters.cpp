@@ -1629,7 +1629,7 @@ void VsdDanfoss::initModbusParameters()
                            0                // Значение
                            };
   modbusParameters_[94] = {// Частота коммутации ШИМ
-                           VSD_SWITCHING_FREQUENCY,
+                           VSD_SWITCHING_FREQUENCY_CODE,
                            14009,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_NUMERIC,  // Физическая величина параметра

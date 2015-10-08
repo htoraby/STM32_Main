@@ -31,6 +31,20 @@ public:
 
   void init();
   bool isConnect();
+
+  // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
+  int setMotorType(float value);
+
+  // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
+  int setVsdControl(float value);
+  int setRotation(float value);  
+  int setMinFrequency(float value);
+  int setMaxFrequency(float value);
+  int setFrequency(float value);
+  int setTimeSpeedUp(float value); 
+  int setTimeSpeedDown(float value);
+  int setSwitchingFrequencyCode(float value);
+  
   void getNewValue(uint16_t id);
   uint8_t setNewValue(uint16_t id, float value);
 
@@ -51,11 +65,11 @@ public:
   int startCoil();
   int stopCoil(float type);
 
-  int setMotorControl(float value);
-  int setMinFrequency(float value);
-  int setMaxFrequency(float value);
 
-  int setRotation(float value);
+
+
+
+
 private:
   ModbusParameter modbusParameters_[134];
   DeviceModbus *dm_;

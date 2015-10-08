@@ -36,6 +36,19 @@ public:
 
   bool isConnect();
 
+  // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
+  int setMotorType(float value);
+
+  // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
+  int setRotation(float value);
+  int setMinFrequency(float value);
+  int setMaxFrequency(float value);
+  int setFrequency(float value);
+  int setTimeSpeedUp(float value);
+  int setTimeSpeedDown(float value);
+  int setSwitchingFrequency(float value);
+
+
   void getNewValue(uint16_t id);
   uint8_t setNewValue(uint16_t id, float value);
 
@@ -160,8 +173,6 @@ public:
    */
   int setMainRegimeVSD();
 
-  int setMotorType(float value);
-
   void calcMotorType();
 
   /*!
@@ -193,14 +204,6 @@ public:
    * \brief Функция вычисления тока звена постоянного тока
    */
   void calcCurrentDC();
-
-  /*!
-   * \brief Метод задания времени набора частоты
-   * \return Код результата операции
-   */
-  int setTimeSpeedUp(float value);
-
-  int setTimeSpeedDown(float value);
 
   /*!
    * \brief Метод задания точки характеристики U/f F6
@@ -252,16 +255,6 @@ public:
   int setUfU6(float value);
 
   /*!
-   * \brief Метод задания направления вращения
-   * \param value - направление вращения 0 прямое(правое),
-   * 1 обратное(левое)
-   * \return
-   */
-  int setRotation(float value);
-
-  int setSwitchingFrequency(float value);
-
-  /*!
    * \brief Проверка на "необходимость" работы с параметром
    * \param indexParam
    * \return
@@ -278,6 +271,7 @@ public:
    * \return
    */
   void resetRunQueue();
+
 
 private:
   ModbusParameter modbusParameters_[135];

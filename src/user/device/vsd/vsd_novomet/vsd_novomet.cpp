@@ -93,6 +93,108 @@ bool VsdNovomet::isConnect()
   return curConnect;
 }
 
+// ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
+int VsdNovomet::setMotorType(float value)
+{
+  if (!Vsd::setMotorType(value)) {
+    value = (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) ? VSD_CONTROL_ASYN_MOTOR : VSD_CONTROL_VENT_MOTOR;
+    writeToDevice(VSD_CONTROL_WORD_1, value);
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setMotorType");
+    return err_r;
+  }
+}
+
+// ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
+int VsdNovomet::setRotation(float value)
+{
+  if (!Vsd::setRotation(value)){
+    value = (getValue(VSD_ROTATION) == VSD_ROTATION_DIRECT) ? VSD_CONTROL_RIGHT_DIRECTION : VSD_CONTROL_LEFT_DIRECTION;
+    writeToDevice(VSD_CONTROL_WORD_1, value);
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setRotation");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setMinFrequency(float value)
+{
+  if (!Vsd::setMinFrequency(value)) {
+    writeToDevice(VSD_LOW_LIM_SPEED_MOTOR, getValue(VSD_LOW_LIM_SPEED_MOTOR));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setMinFrequency");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setMaxFrequency(float value)
+{
+  if (!Vsd::setMaxFrequency(value)) {
+    writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setMaxFrequency");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setFrequency(float value)
+{
+  if (!Vsd::setFrequency(value)) {
+    writeToDevice(VSD_FREQUENCY, getValue(VSD_FREQUENCY));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setFrequency");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setTimeSpeedUp(float value)
+{
+  if (!Vsd::setTimeSpeedUp(value)) {
+    writeToDevice(VSD_T_SPEEDUP, getValue(VSD_T_SPEEDUP));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setTimeSpeedUp");
+    return err_r;
+  }     
+}
+
+int VsdNovomet::setTimeSpeedDown(float value)
+{
+  if (!Vsd::setTimeSpeedDown(value)) {
+    writeToDevice(VSD_T_SPEEDDOWN, getValue(VSD_T_SPEEDDOWN));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setTimeSpeedDown");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setSwitchingFrequency(float value)
+{
+  if (!Vsd::setSwitchingFrequency(value)) {
+    writeToDevice(VSD_SWITCHING_FREQUENCY, getValue(VSD_SWITCHING_FREQUENCY));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setSwitchingFrequency");
+    return err_r;
+  }
+}
+
+
+
 // Метод проверки и обновления параметров устройства
 void VsdNovomet::getNewValue(uint16_t id)
 {
@@ -210,23 +312,51 @@ void VsdNovomet::getNewValue(uint16_t id)
 uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
 {
   switch (id) {
+
+  case VSD_MOTOR_TYPE:
+    if (!setMotorType(value)) {
+      if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) {
+        return setVsdControl(VSD_MOTOR_CONTROL_UF);
+      }
+      return ok_r;
+    }
+    return err_r;
+
   case VSD_FREQUENCY:
     return setFrequency(value);
-  case VSD_MOTOR_TYPE:
-    return setMotorType(value);
+
+  case VSD_LOW_LIM_SPEED_MOTOR:
+    if (!setMinFrequency(value)) {
+      if (getValue(VSD_LOW_LIM_SPEED_MOTOR) > getValue(VSD_FREQUENCY)) {
+        return setFrequency(getValue(VSD_LOW_LIM_SPEED_MOTOR));
+      }
+      return ok_r;
+    }
+    return err_r;
+
+  case VSD_HIGH_LIM_SPEED_MOTOR:
+    if (!setMaxFrequency(value)) {
+      if (getValue(VSD_HIGH_LIM_SPEED_MOTOR) < getValue(VSD_FREQUENCY)) {
+        return setFrequency(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+      }
+      return ok_r;
+    }
+    return err_r;
+
   case VSD_ROTATION:
     return setRotation(value);
-  case VSD_LOW_LIM_SPEED_MOTOR:
-    return setMinFrequency(value);
-  case VSD_HIGH_LIM_SPEED_MOTOR:
-    return setMaxFrequency(value);
+
   case VSD_TIMER_DISPERSAL:
     return setTimeSpeedUp(value);
+
   case VSD_TIMER_DELAY:
     return setTimeSpeedDown(value);
+
+
   case VSD_MOTOR_VOLTAGE:
     ksu.calcTransRecommendedTapOff();
     return ok_r;
+
   default:
     int result = setValue(id, value);
     if (!result)
@@ -384,22 +514,6 @@ void VsdNovomet::processingRegimeRun()
   regimeRun_->processing();
 }
 
-int VsdNovomet::setMotorType(float value)
-{
-  if (Vsd::setMotorType(value)) {           // Записываем тип двигателя в массив
-    logDebug.add(WarningMsg, "setTypeMotor");
-    return err_r;                           // Если не записали возвращаем ошибку
-  }
-  else {
-    if (value == VSD_MOTOR_TYPE_ASYNC) {
-      writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_ASYN_MOTOR);
-    }
-    else {
-      writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_VENT_MOTOR);
-    }
-    return ok_r;
-  }
-}
 
 void VsdNovomet::calcMotorType()
 {
@@ -450,48 +564,6 @@ void VsdNovomet::calcCurrentDC()
   }
 }
 
-int VsdNovomet::setTimeSpeedUp(float value)
-{
-  // Записали время разгона (с)
-  if (!setValue(VSD_TIMER_DISPERSAL, value)) {
-    // Записали темп разгона (Гц/с)
-    if (!setValue(VSD_TEMP_SPEEDUP, getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TIMER_DISPERSAL))) {
-      // Записали время на 1Гц
-       if (!setValue(VSD_T_SPEEDUP, 1/getValue(VSD_TEMP_SPEEDUP))) {
-         writeToDevice(VSD_T_SPEEDUP, getValue(VSD_T_SPEEDUP));
-         return ok_r;
-       }
-    }
-  }
-  return err_r;
-}
-
-int VsdNovomet::setTimeSpeedDown(float value)
-{
-  // Записали время торможения (с)
-  if (!setValue(VSD_TIMER_DELAY, value)) {
-    // Записали темп торможения (Гц/с)
-    if (!setValue(VSD_TEMP_SPEEDDOWN, getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TIMER_DELAY))) {
-      // Записали время на 1Гц
-      if (!setValue(VSD_T_SPEEDDOWN, 1/getValue(VSD_TEMP_SPEEDDOWN))) {
-        writeToDevice(VSD_T_SPEEDDOWN, getValue(VSD_T_SPEEDDOWN));
-        return ok_r;
-      }
-    }
-  }
-  return err_r;
-}
-
-int VsdNovomet::setRotation(float value)
-{
-  if (value == VSD_ROTATION_DIRECT) {
-    writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_RIGHT_DIRECTION);
-  }
-  else {
-    writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_LEFT_DIRECTION);
-  }
-  return ok_r;
-}
 
 int VsdNovomet::setUfU1(float value)
 {

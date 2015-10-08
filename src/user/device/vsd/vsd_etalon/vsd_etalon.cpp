@@ -97,6 +97,145 @@ bool VsdEtalon::isConnect()
   return curConnect;
 }
 
+// ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
+int VsdEtalon::setMotorType(float value)
+{
+  if (!Vsd::setMotorType(value)) {          // Записываем в массив
+    writeToDevice(VSD_MOTOR_TYPE, value);   // Записываем в ЧРП
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdEtalon::setMotorType");
+    return err_r;
+  }
+}
+
+// ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
+int VsdEtalon::setRotation(float value)
+{
+  if (!Vsd::setRotation(value)){
+    writeToDevice(VSD_ROTATION, getValue(VSD_ROTATION));  
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdEtalon::setRotation");
+    return err_r;    
+  }
+}
+
+int VsdEtalon::setMinFrequency(float value)
+{
+  if (!Vsd::setMinFrequency(value)) {
+    writeToDevice(VSD_LOW_LIM_SPEED_MOTOR, getValue(VSD_LOW_LIM_SPEED_MOTOR));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdEtalon::setMinFrequency");
+    return err_r;
+  }
+}
+
+int VsdEtalon::setMaxFrequency(float value)
+{
+  if (!Vsd::setMaxFrequency(value)) {
+    writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdEtalon::setMaxFrequency");
+    return err_r;
+  }
+}
+
+int VsdEtalon::setFrequency(float value)
+{
+  if (!Vsd::setFrequency(value)) {
+    writeToDevice(VSD_FREQUENCY, getValue(VSD_FREQUENCY));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdEtalon::setFrequency");
+    return err_r;
+  }
+}
+
+int VsdEtalon::setTimeSpeedUp(float value)
+{
+  if (!Vsd::setTimeSpeedUp(value)) {
+    writeToDevice(VSD_TIMER_DISPERSAL, getValue(VSD_TIMER_DISPERSAL));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdEtalon::setTimeSpeedUp");
+    return err_r;
+  }    
+}
+
+int VsdEtalon::setTimeSpeedDown(float value)
+{
+  if (!Vsd::setTimeSpeedDown(value)) {
+    writeToDevice(VSD_TIMER_DELAY, getValue(VSD_TIMER_DELAY));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdEtalon::setTimeSpeedUp");
+    return err_r;
+  }    
+}
+
+int VsdEtalon::setSwitchingFrequency(float value)
+{
+  if (!Vsd::setSwitchingFrequency(value)) {
+    writeToDevice(VSD_SWITCHING_FREQUENCY, getValue(VSD_SWITCHING_FREQUENCY));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setSwitchingFrequency");
+    return err_r;
+  }
+}
+
+int VsdEtalon::setCoefVoltageInAB(float value)
+{
+  if (!setValue(VSD_COEF_VOLTAGE_IN_AB, value)) {
+    writeToDevice(VSD_COEF_VOLTAGE_IN_AB, getValue(VSD_COEF_VOLTAGE_IN_AB));
+    readInDevice(VSD_VOLTAGE_PHASE_1_2);
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdEtalon::setCoefVoltageInAB");
+    return err_r;
+  }
+}
+
+int VsdEtalon::setCoefVoltageInBC(float value)
+{
+  if (!setValue(VSD_COEF_VOLTAGE_IN_BC, value)) {
+    writeToDevice(VSD_COEF_VOLTAGE_IN_BC, getValue(VSD_COEF_VOLTAGE_IN_BC));
+    readInDevice(VSD_VOLTAGE_PHASE_2_3);
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdEtalon::setCoefVoltageInBC");
+    return err_r;
+  }
+}
+
+int VsdEtalon::setCoefVoltageInCA(float value)
+{
+  if (!setValue(VSD_COEF_VOLTAGE_IN_CA, value)) {
+    writeToDevice(VSD_COEF_VOLTAGE_IN_CA, getValue(VSD_COEF_VOLTAGE_IN_CA));
+    readInDevice(VSD_VOLTAGE_PHASE_3_1);
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdEtalon::setCoefVoltageInCA");
+    return err_r;
+  }
+}
+
+
+
 // Метод проверки и обновления параметров устройства
 void VsdEtalon::getNewValue(uint16_t id)
 {
@@ -314,38 +453,82 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
 {
   int result;
   switch (id) {
-  case VSD_FREQUENCY:
-    return setFrequency(value);
+
   case VSD_MOTOR_TYPE:
-    return setMotorType(value);
-  case VSD_ROTATION:
-    return setRotation(value);
-  case VSD_LOW_LIM_SPEED_MOTOR:
-    return setMinFrequency(value);
-  case VSD_HIGH_LIM_SPEED_MOTOR:
-    return setMaxFrequency(value);
-  case  VSD_TEMP_SPEEDUP:
-    return setTimeSpeedUp(value);
-  case  VSD_TEMP_SPEEDDOWN:
-    return setTimeSpeedDown(value);
+    if (!setMotorType(value)) {
+      if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) {
+        return setVsdControl(VSD_MOTOR_CONTROL_UF);
+      }
+      return ok_r;
+    }
+    return err_r;
+    
   case  VSD_MOTOR_CONTROL:
-    return setMotorControl(value);
-  case VSD_UF_CHARACTERISTIC_U_1:
-    return setUfU1(value);
-  case VSD_UF_CHARACTERISTIC_U_2:
-    return setUfU2(value);
-  case VSD_UF_CHARACTERISTIC_U_3:
-    return setUfU3(value);
-  case VSD_UF_CHARACTERISTIC_U_4:
-    return setUfU4(value);
-  case VSD_UF_CHARACTERISTIC_U_5:
-    return setUfU5(value);
-  case VSD_ETALON_BASE_VOLTAGE:
-    return setUfU6(value);
-  case VSD_ETALON_BASE_FREQUENCY:
-    return setUfF6(value);
+    return setVsdControl(value);    
+    
+  case VSD_ROTATION:
+    return setRotation(value);    
+
+  case VSD_LOW_LIM_SPEED_MOTOR:
+    if (!setMinFrequency(value)) {
+      if (getValue(VSD_LOW_LIM_SPEED_MOTOR) > getValue(VSD_FREQUENCY)) {
+        return setFrequency(getValue(VSD_LOW_LIM_SPEED_MOTOR));
+      }
+      return ok_r;
+    }
+    return err_r;
+
+  case VSD_HIGH_LIM_SPEED_MOTOR:
+    if (!setMaxFrequency(value)) {
+      if (getValue(VSD_HIGH_LIM_SPEED_MOTOR) < getValue(VSD_FREQUENCY)) {
+        return setFrequency(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+      }
+      return ok_r;
+    }
+    return err_r;
+    
+  case VSD_FREQUENCY:
+    return setFrequency(value);    
+
+  case VSD_TEMP_SPEEDUP:
+    return setTimeSpeedUp(value);
+    
+  case VSD_TEMP_SPEEDDOWN:
+    return setTimeSpeedDown(value);
+    
+  case VSD_SWITCHING_FREQUENCY:
+    return setSwitchingFrequency(value);
+
   case VSD_COEF_VOLTAGE_IN_AB:
     return setCoefVoltageInAB(value);
+
+  case VSD_COEF_VOLTAGE_IN_BC:
+    return setCoefVoltageInBC(value);
+
+  case VSD_COEF_VOLTAGE_IN_CA:
+    return setCoefVoltageInCA(value);
+
+  case VSD_UF_CHARACTERISTIC_U_1:
+    return setUfU1(value);
+
+  case VSD_UF_CHARACTERISTIC_U_2:
+    return setUfU2(value);
+
+  case VSD_UF_CHARACTERISTIC_U_3:
+    return setUfU3(value);
+
+  case VSD_UF_CHARACTERISTIC_U_4:
+    return setUfU4(value);
+
+  case VSD_UF_CHARACTERISTIC_U_5:
+    return setUfU5(value);
+
+  case VSD_ETALON_BASE_VOLTAGE:
+    return setUfU6(value);
+
+  case VSD_ETALON_BASE_FREQUENCY:
+    return setUfF6(value);
+
   default:
     result = setValue(id, value);
     if (!result)
@@ -537,18 +720,6 @@ int VsdEtalon::resetSetpoints()
   return result;
 }
 
-int VsdEtalon::setMotorType(float value)
-{
-  if (Vsd::setMotorType(value)) {           // Записываем тип двигателя в массив
-    logDebug.add(WarningMsg, "setTypeMotor");
-    return err_r;                           // Если не записали возвращаем ошибку
-  }
-  else {                                    // Если записали
-    writeToDevice(VSD_MOTOR_TYPE, value);   // Записываем в ЧРП
-    return ok_r;
-  }
-}
-
 int VsdEtalon::setUfU1(float value)
 {
   int result = Vsd::setUfU1(value);
@@ -668,59 +839,12 @@ void VsdEtalon::readUfCharacterictic()
   readInDevice(VSD_UF_CHARACTERISTIC_U_5_PERCENT);
 }
 
-int VsdEtalon::setRotation(float value)
-{
-  if(Vsd::setRotation(value)){
-    return err_r;
-  }
-  else {
-    writeToDevice(VSD_ROTATION, value);
-    return ok_r;
-  }
-}
-
 void VsdEtalon::calcParameters(uint16_t id)
 {
   switch (id) {
   default:
 
     break;
-  }
-}
-
-int VsdEtalon::setCoefVoltageInAB(float value)
-{
-  if (Vsd::setCoefVoltageInAB(value)) {
-    return err_r;
-  }
-  else {
-    writeToDevice(VSD_COEF_VOLTAGE_IN_AB, value);
-    readInDevice(VSD_VOLTAGE_PHASE_1_2);
-  return ok_r;
-  }
-}
-
-int VsdEtalon::setCoefVoltageInBC(float value)
-{
-  if (Vsd::setCoefVoltageInBC(value)) {
-    return err_r;
-  }
-  else {
-    writeToDevice(VSD_COEF_VOLTAGE_IN_BC, value);
-    readInDevice(VSD_VOLTAGE_PHASE_2_3);
-  return ok_r;
-  }
-}
-
-int VsdEtalon::setCoefVoltageInCA(float value)
-{
-  if (Vsd::setCoefVoltageInCA(value)) {
-    return err_r;
-  }
-  else {
-    writeToDevice(VSD_COEF_VOLTAGE_IN_CA, value);
-    readInDevice(VSD_VOLTAGE_PHASE_3_1);
-  return ok_r;
   }
 }
 

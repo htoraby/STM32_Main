@@ -101,6 +101,44 @@ public:
    */
   bool isConnect();
 
+  // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
+  int setMotorType(float value);
+
+  // РЕЖИМЫ ПУСКА
+  int onRegimePush();
+  int offRegimePush();
+  int onRegimeSwing();
+  int offRegimeSwing();
+  int onRegimePickup();
+  int offRegimePickup();
+  int onRegimeSkipFreq();
+  int offRegimeSkipFreq();
+
+  // НАСТРОЙКИ ЧРП
+  int setRotation(float value);
+  int setMinFrequency(float value);
+  int setMaxFrequency(float value);
+  int setFrequency(float value);
+  int setTimeSpeedUp(float value); 
+  int setTimeSpeedDown(float value);   
+  int setSwitchingFrequency(float value);
+
+  // НАСТРОЙКИ U/f
+  int setUfU1(float value);
+  int setUfU2(float value);
+  int setUfU3(float value);
+  int setUfU4(float value);
+  int setUfU5(float value);
+
+  int setUfU6(float value);
+  int setUfF6(float value);
+
+  // СЕРВИСНОЕ МЕНЮ ЧРП
+  int setCoefVoltageInAB(float value);
+  int setCoefVoltageInBC(float value);
+  int setCoefVoltageInCA(float value);
+
+
   void getNewValue(uint16_t id);
 
   uint8_t setNewValue(uint16_t id, float value);
@@ -147,84 +185,16 @@ public:
   void processingRegimeRun();
 
   /*!
-   * \brief Функция включения толчкового режима
-   * Записывает в ЧРП настройки режима и
-   * Записывает в параметр 265 VSD_ETALON_START_TYPE - 1
-   * \return
-   */
-  int onRegimePush();
-
-  /*!
-   * \brief Функция выключения толчкового режима
-   * Записывает в параметр 265 VSD_ETALON_START_TYPE - 0
-   * \return
-   */
-  int offRegimePush();
-
-  /*!
-   * \brief Функция включения режима раскачки
-   * Записывает в ЧРП настройки режима
-   * Записывает в параметр 265 VSD_ETALON_START_TYPE - 2
-   * \return
-   */
-  int onRegimeSwing();
-
-  /*!
-   * \brief Функция выключения режима раскачки
-   * Записывает в параметр 265 VSD_ETALON_START_TYPE - 0
-   * \return
-   */
-  int offRegimeSwing();
-
-  /*!
-   * \brief onRegimePickup
-   * \return
-   */
-  int onRegimePickup();
-
-  /*!
-   * \brief offRegimePickup
-   * \return
-   */
-  int offRegimePickup();
-
-  /*!
-   * \brief onRegimeSkipFreq
-   * \return
-   */
-  int onRegimeSkipFreq();
-
-  /*!
-   * \brief offRegimeSkipFreq
-   * \return
-   */
-  int offRegimeSkipFreq();
-
-  /*!
    * \brief resetSetpoints
    * \return
    */
   int resetSetpoints();
 
-  /*!
-   * \brief Метод задания типа двигателя
-   * \param TypeMotor - Тип двигателя
-   * \return Код результата операции
-   */
-  int setMotorType(float value);
 
-  int setUfU1(float value);
-  int setUfU2(float value);
-  int setUfU3(float value);
-  int setUfU4(float value);
-  int setUfU5(float value);
 
-  /*!
-   * \brief Метод задания точки характеристики U/f F6
-   * \param value
-   * \return
-   */
-  int setUfF6(float value);
+
+
+
 
   /*!
    * \brief setUfU
@@ -235,24 +205,9 @@ public:
   int setUfU(uint16_t id, float value);
 
   /*!
-   * \brief Метод задания точки характиристики U/f U6
-   * \param value
-   * \return
-   */
-  int setUfU6(float value);
-
-  /*!
    * \brief Функция чтения U/f характеристики
    */
   void readUfCharacterictic();
-
-  /*!
-   * \brief Метод задания направления вращения
-   * \param value - направление вращения 1 прямое(правое),
-   * 2 обратное(левое)
-   * \return
-   */
-  int setRotation(float value);
 
   /*!
    * \brief Проверка на "необходимость" работы с параметром
@@ -265,10 +220,6 @@ public:
    * \brief Функция вычисления значений,
    */
   void calcParameters(uint16_t id);
-
-  int setCoefVoltageInAB(float value);
-  int setCoefVoltageInBC(float value);
-  int setCoefVoltageInCA(float value);
 
 private:
   ModbusParameter modbusParameters_[121];

@@ -20,23 +20,156 @@ Vsd::~Vsd()
   // TODO Auto-generated destructor stub
 }
 
-// Задаваемые параметры двигателя
+// ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
 int Vsd::setMotorType(float value)
 {
-  if (!setValue(VSD_MOTOR_TYPE, (float)value)) {
-    if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) {
-      return setValue(VSD_MOTOR_CONTROL, (float)VSD_MOTOR_CONTROL_UF);
-    }
+  return setValue(VSD_MOTOR_TYPE, value);
+}
+
+  // РЕЖИМЫ ПУСКА
+int Vsd::onRegimePush()
+{
+  return 0;
+}
+
+int Vsd::offRegimePush()
+{
+  return 0;
+}
+
+int Vsd::onRegimeSwing()
+{
+  return 0;
+}
+
+int Vsd::offRegimeSwing()
+{
+  return 0;
+}
+
+int Vsd::onRegimePickup()
+{
+  return 0;
+}
+
+int Vsd::offRegimePickup()
+{
+  return 0;
+}
+
+int Vsd::onRegimeSkipFreq()
+{
+  return 0;
+}
+
+int Vsd::offRegimeSkipFreq()
+{
+  return 0;
+}
+
+// ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
+int Vsd::setVsdControl(float value)
+{
+  return setValue(VSD_MOTOR_CONTROL, value);
+}
+
+int Vsd::setRotation(float value)
+{
+  return setValue(VSD_ROTATION, value);
+}
+
+int Vsd::setMinFrequency(float value)
+{
+  if (value > getValue(VSD_HIGH_LIM_SPEED_MOTOR))     // Присваиваемая минимальная частота больше максимальной
+    return err_r;                                     // Возвращаем ошибку
+  else
+    return setLimitsMinFrequence(value);              // Записали минимум частоты
+}
+
+int Vsd::setLimitsMinFrequence(float value)
+{
+  if (!setValue(VSD_LOW_LIM_SPEED_MOTOR, value)) {    // Если записали минимум частоты
+    setMin(VSD_HIGH_LIM_SPEED_MOTOR, value);          // Меняем поле минимум для уставки "Максимальной частоты"
+    setMin(VSD_FREQUENCY, value);                     // Меняем поле минимум для уставки "Частота"
     return ok_r;
   }
   return err_r;
 }
 
-// Задаваемые параметры ЧРП
+int Vsd::setMaxFrequency(float value)
+{
+  if (value < getValue(VSD_LOW_LIM_SPEED_MOTOR))
+    return err_r;
+  else
+    return setLimitsMaxFrequence(value);
+}
+
+int Vsd::setLimitsMaxFrequence(float value)
+{
+  if (!setValue(VSD_HIGH_LIM_SPEED_MOTOR, value)) {   // Если записали максимум частоты
+    setMax(VSD_LOW_LIM_SPEED_MOTOR, value);           // Меняем поле максимум для уставки "Минимальной частоты"
+    setMax(VSD_FREQUENCY, value);                     // Меняем поле максимум для уставки "Частота"
+    return ok_r;
+  }
+  return err_r;
+}
+
+int Vsd::setFrequency(float value)
+{
+  return setValue(VSD_FREQUENCY, value);
+}
+
+int Vsd::setTimeSpeedUp(float value)
+{ 
+  if (!setValue(VSD_TIMER_DISPERSAL, value)) {  
+    if (!setValue(VSD_TEMP_SPEEDUP, getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TIMER_DISPERSAL))) {
+      return setValue(VSD_T_SPEEDUP, 1/getValue(VSD_TEMP_SPEEDUP));
+    }
+  }
+  return err_r;
+}
+
+int Vsd::setTimeSpeedDown(float value)
+{
+  if (!setValue(VSD_TIMER_DELAY, value)) {
+    if (!setValue(VSD_TEMP_SPEEDDOWN, getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TIMER_DELAY))) {
+      return setValue(VSD_T_SPEEDDOWN, 1/getValue(VSD_TEMP_SPEEDDOWN));
+    }
+  }
+  return err_r;
+}
+
 int Vsd::setSwitchingFrequency(float value)
 {
   return setValue(VSD_SWITCHING_FREQUENCY, value);
 }
+
+int Vsd::setSwitchingFrequencyCode(float value)
+{
+  if (!setValue(VSD_SWITCHING_FREQUENCY_CODE, value)) {
+    switch((int)getValue(VSD_SWITCHING_FREQUENCY_CODE)) {
+    case 0:   value = 1000;   break;
+    case 1:   value = 1500;   break;
+    case 2:   value = 2000;   break;
+    case 3:   value = 2500;   break;
+    case 4:   value = 3000;   break;
+    case 5:   value = 3500;   break;
+    case 6:   value = 4000;   break;
+    case 7:   value = 5000;   break;
+    case 8:   value = 6000;   break;
+    case 9:   value = 7000;   break;
+    case 10:  value = 8000;   break;
+    case 11:  value = 10000;  break;
+    case 12:  value = 12000;  break;
+    case 13:  value = 14000;  break;
+    case 14:  value = 16000;  break;
+    default:  value = 2500;   break;
+    }
+    return setValue(VSD_SWITCHING_FREQUENCY, value);
+  }
+  return err_r;
+}
+
 
 int Vsd::setCurrentLim(float value)
 {
@@ -51,125 +184,6 @@ int Vsd::setSumInduct(float induct)
 int Vsd::resetBlock()
 {
   return 0;
-}
-
-// Задаваемые параметры работы
-int Vsd::setFrequency(float value)
-{ 
-  if (!setValue(VSD_FREQUENCY, value)) {
-    writeToDevice(VSD_FREQUENCY, value);
-    return ok_r;
-  }
-  return err_r;
-}
-
-int Vsd::setLimitsMaxFrequence(float value)
-{
-  if (!setValue(VSD_HIGH_LIM_SPEED_MOTOR, value)) { // Если записали максимум частоты
-    setMax(VSD_LOW_LIM_SPEED_MOTOR, value);         // Меняем поле максимум для уставки "Минимальной частоты"
-    setMax(VSD_FREQUENCY, value);                   // Меняем поле максимум для уставки "Частота"
-    return ok_r;
-  }
-  return err_r;
-}
-
-int Vsd::setLimitsMinFrequence(float value)
-{
-  if (!setValue(VSD_LOW_LIM_SPEED_MOTOR, value)) {  // Если записали минимум частоты
-    setMin(VSD_HIGH_LIM_SPEED_MOTOR, value);        // Меняем поле минимум для уставки "Максимальной частоты"
-    setMin(VSD_FREQUENCY, value);                   // Меняем поле минимум для уставки "Частота"
-    return ok_r;
-  }
-  return err_r;
-}
-
-int Vsd::setMinFrequency(float value)
-{
-  if (value > getValue(VSD_HIGH_LIM_SPEED_MOTOR)) {   // Присваиваемая минимальная частота больше максимальной
-    return err_r;                                     // Возвращаем ошибку
-  }
-  else {
-    if (!setLimitsMinFrequence(value)) {              // Записали минимум частоты
-      writeToDevice(VSD_LOW_LIM_SPEED_MOTOR, value);  // Записываем в устройство
-      if (value > getValue(VSD_FREQUENCY))            // Если минимальная частота больше уставки
-        return setFrequency(value);                   // Приравнием уставку минимальной частоте
-      else
-        return ok_r;
-    }
-    return err_r;
-  }
-}
-
-int Vsd::setMaxFrequency(float value)
-{
-  if (value < getValue(VSD_LOW_LIM_SPEED_MOTOR)) {
-    return err_r;
-  }
-  else {
-    if (!setLimitsMaxFrequence(value)) {
-      writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR, value);
-      if (value < getValue(VSD_FREQUENCY))
-        return setFrequency(value);
-      else
-        return ok_r;
-    }
-    return err_r;
-  }
-}
-
-int Vsd::setTimeSpeedUp(float value)
-{
-  // Записали время разгона (с)
-  if (!setValue(VSD_TIMER_DISPERSAL, value)) {
-    writeToDevice(VSD_TIMER_DISPERSAL, value);
-    // Записали темп разгона (Гц/с)
-    if (!setValue(VSD_TEMP_SPEEDUP, getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TIMER_DISPERSAL))) {
-      // Записали время на 1Гц
-      return setValue(VSD_T_SPEEDUP, 1/getValue(VSD_TEMP_SPEEDUP));
-    }
-  }
-  return err_r;
-}
-
-int Vsd::setTimeSpeedDown(float value)
-{
-  // Записали время торможения (с)
-  if (!setValue(VSD_TIMER_DELAY, value)) {
-    writeToDevice(VSD_TIMER_DELAY, value);
-    // Записали темп торможения (Гц/с)
-    if (!setValue(VSD_TEMP_SPEEDDOWN, getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TIMER_DELAY))) {
-      // Записали время на 1Гц
-      return setValue(VSD_T_SPEEDDOWN, 1/getValue(VSD_TEMP_SPEEDDOWN));
-    }
-  }
-  return err_r;
-}
-
-int Vsd::setTempSpeedUp(float value)
-{ // Записали темп разгона (Гц/с)
-  if (!setValue(VSD_TEMP_SPEEDUP, value)) {
-    writeToDevice(VSD_TEMP_SPEEDUP, value);
-    // Записали время разгона (с)
-    if (!setValue(VSD_TIMER_DISPERSAL, getValue(VSD_FREQUENCY)/getValue(VSD_TEMP_SPEEDUP))) {
-      // Записали время на 1Гц
-      return setValue(VSD_T_SPEEDUP, 1/getValue(VSD_TEMP_SPEEDUP));
-    }
-  }
-  return err_r;
-}
-
-int Vsd::setTempSpeedDown(float value)
-{
-  // Записали темп торможения (Гц/с)
-  if (!setValue(VSD_TEMP_SPEEDDOWN, value)) {
-    writeToDevice(VSD_TEMP_SPEEDDOWN, value);
-    // Записали время торможения (с)
-    if (!setValue(VSD_TIMER_DELAY, getValue(VSD_FREQUENCY)/getValue(VSD_TEMP_SPEEDDOWN))) {
-      // Записали время на 1Гц
-      return setValue(VSD_T_SPEEDDOWN, 1/getValue(VSD_TEMP_SPEEDDOWN));
-    }
-  }
-  return err_r;
 }
 
 int Vsd::setUfU(uint16_t id, float value)
@@ -202,21 +216,6 @@ int Vsd::setUfU5(float value)
   return setValue(VSD_UF_CHARACTERISTIC_U_5, value);
 }
 
-int Vsd::setCoefVoltageInAB(float value)
-{
-  return setValue(VSD_COEF_VOLTAGE_IN_AB, value);
-}
-
-int Vsd::setCoefVoltageInBC(float value)
-{
-  return setValue(VSD_COEF_VOLTAGE_IN_BC, value);
-}
-
-int Vsd::setCoefVoltageInCA(float value)
-{
-  return setValue(VSD_COEF_VOLTAGE_IN_CA, value);
-}
-
 int Vsd::calcVsdCos()
 {
   float actPwr = parameters.get(VSD_POWER_ACTIVE);
@@ -236,16 +235,6 @@ int Vsd::calcVsdCos()
 void Vsd::writeToDevice(int id, float value)
 {
   setValue(id, value);
-}
-
-int Vsd::setRotation(float value)
-{
-  return setValue(VSD_ROTATION, value);
-}
-
-int Vsd::setMotorControl(float value)
-{
-  return setValue(VSD_MOTOR_CONTROL, value);
 }
 
 // Читаемые параметры ЧРП
@@ -316,52 +305,12 @@ void Vsd::processingRegimeRun()
 
 }
 
-int Vsd::onRegimePush()
-{
-  return 0;
-}
-
-int Vsd::offRegimePush()
-{
-  return 0;
-}
-
-int Vsd::onRegimeSwing()
-{
-  return 0;
-}
-
 int Vsd::onRegimeJarring()
 {
   return 0;
 }
 
 int Vsd::offRegimeJarring()
-{
-  return 0;
-}
-
-int Vsd::onRegimePickup()
-{
-  return 0;
-}
-
-int Vsd::offRegimeSwing()
-{
-  return 0;
-}
-
-int Vsd::offRegimePickup()
-{
-  return 0;
-}
-
-int Vsd::onRegimeSkipFreq()
-{
-  return 0;
-}
-
-int Vsd::offRegimeSkipFreq()
 {
   return 0;
 }
