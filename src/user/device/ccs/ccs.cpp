@@ -695,6 +695,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
       parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction); // Отключаем режим раскачки
+      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction); // Отключаем режим подхвата
       vsd->onRegimePush();
     }
     else {
@@ -704,7 +705,8 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_RGM_RUN_SWING_MODE:
     err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction); // Отключаем режим раскачки
+      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction); // Отключаем режим толчковый
+      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction); // Отключаем режим подхвата
       vsd->onRegimeSwing();
     }
     else {
@@ -724,6 +726,17 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_RGM_RUN_SWING_FREQ: case CCS_RGM_RUN_SWING_QUANTITY:
     err = setValue(id, value, eventType);
     vsd->onRegimeSwing();
+    return err;
+  case CCS_RGM_RUN_PICKUP_MODE:
+    err = setValue(id, value, eventType);
+    if (value != Regime::OffAction) {
+      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction); // Отключаем режим толчковый
+      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction); // Отключаем режим раскачки
+      vsd->onRegimePickup();
+    }
+    else {
+      vsd->offRegimePickup();
+    }
     return err;
   case CCS_CMD_LOG_COPY:
     err = setValue(id, value, eventType);

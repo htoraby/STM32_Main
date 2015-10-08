@@ -56,7 +56,7 @@ void RegimeRunEtalon::processingStateWork()
     if (vsd->getCurrentFreq() == vsd->getSetpointFreq()) {         // Если режимы отработали
       if (parameters.get(CCS_RGM_RUN_PICKUP_MODE) == SingleAction) {
         parameters.set(CCS_RGM_RUN_PICKUP_MODE, OffAction);         // Выключаем режим
-        // TODO: Выключить подхват
+        vsd->offRegimePickup();
         logEvent.add(SetpointCode, AutoType, RegimeRunPickupOffId); // Записываем данные в лог
       }
       if (parameters.get(CCS_RGM_RUN_PUSH_MODE) == SingleAction) {
