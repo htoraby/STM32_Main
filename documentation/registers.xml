@@ -18465,7 +18465,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>100.0</max>
+		<max>1000.0</max>
 		<def>20.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -18486,7 +18486,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>100.0</max>
+		<max>1000.0</max>
 		<def>40.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -18507,7 +18507,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>100.0</max>
+		<max>1000.0</max>
 		<def>60.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -18528,7 +18528,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>100.0</max>
+		<max>1000.0</max>
 		<def>80.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -18549,7 +18549,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>100.0</max>
+		<max>1000.0</max>
 		<def>100.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>

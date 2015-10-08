@@ -161,23 +161,23 @@ void VsdEtalon::getNewValue(uint16_t id)
       break;
     case VSD_UF_CHARACTERISTIC_U_1_PERCENT:           // Получили точку напряжения U/f
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_1, (int)(parameters.get(CCS_TRANS_NOMINAL_VOLTAGE_INPUT) * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_1, (int)(parameters.get(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_2_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_2, (int)(parameters.get(CCS_TRANS_NOMINAL_VOLTAGE_INPUT) * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_2, (int)(parameters.get(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_3_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_3, (int)(parameters.get(CCS_TRANS_NOMINAL_VOLTAGE_INPUT) * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_3, (int)(parameters.get(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_4_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_4, (int)(parameters.get(CCS_TRANS_NOMINAL_VOLTAGE_INPUT) * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_4, (int)(parameters.get(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_5_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_5, (int)(parameters.get(CCS_TRANS_NOMINAL_VOLTAGE_INPUT) * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_5, (int)(parameters.get(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_LOW_LIM_SPEED_MOTOR:
       setLimitsMinFrequence(value);
@@ -638,13 +638,19 @@ int VsdEtalon::setUfU6(float value)
   int result = setValue(VSD_ETALON_BASE_VOLTAGE, value);
   if (!result)
     writeToDevice(VSD_ETALON_BASE_VOLTAGE, value);
+
   osDelay(200);
-  readUfCharacterictic();
+  readInDevice(VSD_TRANS_NEED_VOLTAGE_TAP_OFF);
+  osDelay(200);
+
+  value = value*(getValue(VSD_TRANS_NEED_VOLTAGE_TAP_OFF)/getValue(VSD_TRANS_VOLTAGE_TAP_OFF));
   setMax(VSD_UF_CHARACTERISTIC_U_1, value);
   setMax(VSD_UF_CHARACTERISTIC_U_2, value);
   setMax(VSD_UF_CHARACTERISTIC_U_3, value);
   setMax(VSD_UF_CHARACTERISTIC_U_4, value);
   setMax(VSD_UF_CHARACTERISTIC_U_5, value);
+  osDelay(200);
+  readUfCharacterictic();
   return result;
 }
 
