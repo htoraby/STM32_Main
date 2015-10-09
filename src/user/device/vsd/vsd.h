@@ -243,7 +243,7 @@ public:
    * \param value - задаваемая частота
    * \return 0 - задание успешно, № - ошибки
    */
-  int setFrequency(float value);
+  virtual int setFrequency(float value);
 
   /*!
    * \brief setTimeSpeedUp
@@ -362,14 +362,14 @@ public:
    * \brief calcUfCharacteristic
    * \return
    */
-  int calcUfCharacteristicU(float value);
+  virtual int calcUfCharacteristicU(float value);
 
   /*!
    * \brief calcUfCharacteristicF
    * \param value
    * \return
    */
-  int calcUfCharacteristicF(float value);
+  virtual int calcUfCharacteristicF(float value);
 
   /*!
    * \brief Метод задания предела тока

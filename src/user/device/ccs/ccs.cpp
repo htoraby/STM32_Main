@@ -214,7 +214,7 @@ void Ccs::vsdConditionTask()
       break;
     case VSD_CONDITION_RUN:
       if (getValue(CCS_CONDITION) != CCS_CONDITION_RUN) {
-        if (vsd->getValue(VSD_FREQUENCY) == vsd->getValue(VSD_FREQUENCY_NOW))
+        if (parameters.get(VSD_FREQUENCY) == parameters.get(VSD_FREQUENCY_NOW))
           setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
 #if USE_DEBUG
         setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
