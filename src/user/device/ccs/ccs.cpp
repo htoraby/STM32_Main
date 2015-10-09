@@ -49,6 +49,7 @@ Ccs::Ccs()
   , powerOffTimeout_(TIMEOUT_POWER_OFF)
   , checkConnectDeviceTimer_(DELAY_CHECK_CONNECT_DEVICE)
   , isConnectMaster_(true)
+  , countPhaseRotation_(0)
 {
 
 }

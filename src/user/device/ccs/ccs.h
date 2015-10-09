@@ -346,6 +346,11 @@ public:
   void calcRegimeRun();
 
   /*!
+   * \brief Функция вычисления входных напряжений с АЦП
+   */
+  void calcInputVoltageFromAdc();
+
+  /*!
    * \brief Контроль питания и отключение ИБП по таймауту
    */
   void controlPower();
@@ -502,6 +507,8 @@ private:
   osSemaphoreId scadaSemaphoreId_;
 
   bool isConnectMaster_;
+
+  int countPhaseRotation_;
 
 };
 

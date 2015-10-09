@@ -48,10 +48,16 @@ void adcStartDma();
 StatusType getAnalogIn(uint32_t channel, uint32_t numSamples, uint32_t *value);
 
 /*!
- \brief Копирование значений из временного буффера (DMA) в основной
+ \brief Копирование всех значений из временного буффера (DMA) в основной
  \param data - основной буффер
 */
 void copyAdcData(uint16_t *data);
+
+/*!
+ * \brief Копирование значений за период из временного буффера (DMA) в основной
+ * \param data
+ */
+void getAdcDataInPeriod(uint16_t *data);
 
 /*!
  \brief Получение температуры CPU с внутреннего датчика

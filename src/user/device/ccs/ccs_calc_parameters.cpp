@@ -2,6 +2,12 @@
 #include "user_main.h"
 #include "regime_main.h"
 
+#if USE_EXT_MEM
+static uint16_t uValue[ADC_CNANNELS_NUM*HC_POINTS_NUM] __attribute__((section(".extmem")));
+#else
+static uint16_t uValue[ADC_CNANNELS_NUM*HC_POINTS_NUM];
+#endif
+
 void Ccs::calcParametersTask()
 {
   while (1) {
@@ -12,12 +18,7 @@ void Ccs::calcParametersTask()
     calcMotorVoltageImbalance();
     calcMotorCos();
     calcMotorLoad();
-    calcInputVoltagePhase1();
-    calcInputVoltagePhase2();
-    calcInputVoltagePhase3();
-    calcInputVoltagePhase12();
-    calcInputVoltagePhase23();
-    calcInputVoltagePhase31();
+    calcInputVoltageFromAdc();
     calcInputVoltageImbalance();
     calcInputCurrentImbalance();
     calcResistanceIsolation();
@@ -434,4 +435,75 @@ void Ccs::calcRegimeRun()
   }
   parameters.set(CCS_RUNNING_TYPE, Regime::SmoothRegimeRun);
   return;
+}
+
+void Ccs::calcInputVoltageFromAdc()
+{
+  float uaValue;
+  float ubValue;
+  float ucValue;
+  float ubValueOld = 0;
+  bool checkPhaseRotation = false;
+
+  getAdcDataInPeriod(uValue);
+
+  for (int i = 0; i < HC_POINTS_NUM; ++i) {
+    uaValue += (uValue[0 + i*3] - 2048)*(uValue[0 + i*3] - 2048);
+    ubValue += (uValue[1 + i*3] - 2048)*(uValue[1 + i*3] - 2048);
+    ucValue += (uValue[2 + i*3] - 2048)*(uValue[2 + i*3] - 2048);
+
+    if (!checkPhaseRotation && ubValueOld) {
+      if (((uValue[1 + i*3] - 2048) > 0) && ((uValue[1 + i*3] - 2048) > ubValueOld)) {
+        if ((uValue[1 + i*3] - 2048) < (uValue[0 + i*3] - 2048)) {
+          countPhaseRotation_++;
+          checkPhaseRotation = true;
+        } else if ((uValue[1 + i*3] - 2048) > (uValue[0 + i*3] - 2048)) {
+          countPhaseRotation_--;
+          checkPhaseRotation = true;
+        }
+      }
+    }
+    ubValueOld = (uValue[1 + i*3] - 2048);
+  }
+  uaValue = (sqrt(uaValue/HC_POINTS_NUM) * 627.747 * 2.5) / 0xFFF;
+  ubValue = (sqrt(ubValue/HC_POINTS_NUM) * 627.747 * 2.5) / 0xFFF;
+  ucValue = (sqrt(ucValue/HC_POINTS_NUM) * 627.747 * 2.5) / 0xFFF;
+
+  if (parameters.getValidity(CCS_COEF_VOLTAGE_IN_A)) {
+    setValue(CCS_VOLTAGE_PHASE_1, (float)NAN);
+    setValue(CCS_VOLTAGE_PHASE_1_2, (float)NAN);
+  }
+  else {
+    uaValue = applyCoef(uaValue, parameters.get(CCS_COEF_VOLTAGE_IN_A));
+    setValue(CCS_VOLTAGE_PHASE_1, uaValue);
+    setValue(CCS_VOLTAGE_PHASE_1_2, uaValue*SQRT_3);
+  }
+
+  if (parameters.getValidity(CCS_COEF_VOLTAGE_IN_B)) {
+    setValue(CCS_VOLTAGE_PHASE_2, (float)NAN);
+    setValue(CCS_VOLTAGE_PHASE_2_3, (float)NAN);
+  }
+  else {
+    ubValue = applyCoef(ubValue, parameters.get(CCS_COEF_VOLTAGE_IN_B));
+    setValue(CCS_VOLTAGE_PHASE_2, ubValue);
+    setValue(CCS_VOLTAGE_PHASE_2_3, ubValue*SQRT_3);
+  }
+
+  if (parameters.getValidity(CCS_COEF_VOLTAGE_IN_C)) {
+    setValue(CCS_VOLTAGE_PHASE_3, (float)NAN);
+    setValue(CCS_VOLTAGE_PHASE_3_1, (float)NAN);
+  }
+  else {
+    ucValue = applyCoef(ucValue, parameters.get(CCS_COEF_VOLTAGE_IN_C));
+    setValue(CCS_VOLTAGE_PHASE_3, ucValue);
+    setValue(CCS_VOLTAGE_PHASE_3_1, ucValue*SQRT_3);
+  }
+
+  if (countPhaseRotation_ >= 10) {
+    countPhaseRotation_ = 0;
+    setValue(CCS_PHASE_ROTATION, PHASE_ABC);
+  } else if (countPhaseRotation_ <= -10) {
+    countPhaseRotation_ = 0;
+    setValue(CCS_PHASE_ROTATION, PHASE_CBA);
+  }
 }

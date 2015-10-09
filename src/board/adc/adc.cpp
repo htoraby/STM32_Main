@@ -313,3 +313,18 @@ void copyAdcData(uint16_t *data)
   memcpy(&data[numDataTr], &adcData[0], (allPoints - numDataTr)*2);
   memcpy(&data[0], &adcData[allPoints - numDataTr], (numDataTr)*2);
 }
+
+void getAdcDataInPeriod(uint16_t *data)
+{
+  int points = ADC_CNANNELS_NUM*HC_POINTS_NUM;
+  int allPoints = ADC_CNANNELS_NUM*ADC_POINTS_NUM;
+  int numDataTr = hadc[adc2].DMA_Handle->Instance->NDTR;
+  int idx = numDataTr - points;
+  if (idx >= 0) {
+    memcpy(&data[0], &adcData[idx], (points)*2);
+  } else {
+    idx = 0 - idx;
+    memcpy(&data[idx], &adcData[0], (numDataTr)*2);
+    memcpy(&data[0], &adcData[allPoints - idx], (idx)*2);
+  }
+}
