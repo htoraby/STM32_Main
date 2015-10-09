@@ -35,6 +35,8 @@ public:
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
   int setMotorType(float value);
 
+  // РЕЖИМЫ ПУСКА
+
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
   int setVsdControl(float value);
   int setRotation(float value);  
@@ -44,6 +46,27 @@ public:
   int setTimeSpeedUp(float value); 
   int setTimeSpeedDown(float value);
   int setSwitchingFrequencyCode(float value);
+
+  // НАСТРОЙКА U/f
+  int setUf_f1(float value);
+  int setUf_f2(float value);
+  int setUf_f3(float value);
+  int setUf_f4(float value);
+  int setUf_f5(float value);
+  int setUf_f6(float value);
+  int setUf_U1(float value);
+  int setUf_U2(float value);
+  int setUf_U3(float value);
+  int setUf_U4(float value);
+  int setUf_U5(float value);
+  int setUf_U6(float value);
+
+  void readUf_F(uint16_t numPoint);
+  void writeUf_F(uint16_t numPoint, float value);
+  void readUf_U(uint16_t numPoint);
+  void writeUf_U(uint16_t numPoint, float value);
+  void readUfCharacterictic();
+
   
   void getNewValue(uint16_t id);
   uint8_t setNewValue(uint16_t id, float value);
@@ -51,24 +74,11 @@ public:
   void writeToDevice(int id, float value);
   void readInDevice(int id);
 
-  void readUfCharacterictic();
-  void readUf_F(uint16_t numPoint);
-
-
-  void writeUf_F(uint16_t numPoint, float value);
-  void readUf_U(uint16_t numPoint);
-  void writeUf_U(uint16_t numPoint, float value);
-
   int start();
   int stop(float type);
 
   int startCoil();
   int stopCoil(float type);
-
-
-
-
-
 
 private:
   ModbusParameter modbusParameters_[134];

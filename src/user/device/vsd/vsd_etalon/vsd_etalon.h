@@ -124,14 +124,15 @@ public:
   int setSwitchingFrequency(float value);
 
   // НАСТРОЙКИ U/f
-  int setUfU1(float value);
-  int setUfU2(float value);
-  int setUfU3(float value);
-  int setUfU4(float value);
-  int setUfU5(float value);
+  int setUf_U1(float value);
+  int setUf_U2(float value);
+  int setUf_U3(float value);
+  int setUf_U4(float value);
+  int setUf_U5(float value);
 
-  int setUfU6(float value);
-  int setUfF6(float value);
+  void readUfCharacterictic();
+  int setBaseVoltage(float value);
+  int setBaseFrequency(float value);
 
   // СЕРВИСНОЕ МЕНЮ ЧРП
   int setCoefVoltageInAB(float value);
@@ -203,11 +204,6 @@ public:
    * \return
    */
   int setUfU(uint16_t id, float value);
-
-  /*!
-   * \brief Функция чтения U/f характеристики
-   */
-  void readUfCharacterictic();
 
   /*!
    * \brief Проверка на "необходимость" работы с параметром

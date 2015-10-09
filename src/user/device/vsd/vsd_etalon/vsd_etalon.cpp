@@ -509,25 +509,25 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
     return setCoefVoltageInCA(value);
 
   case VSD_UF_CHARACTERISTIC_U_1:
-    return setUfU1(value);
+    return setUf_U1(value);
 
   case VSD_UF_CHARACTERISTIC_U_2:
-    return setUfU2(value);
+    return setUf_U2(value);
 
   case VSD_UF_CHARACTERISTIC_U_3:
-    return setUfU3(value);
+    return setUf_U3(value);
 
   case VSD_UF_CHARACTERISTIC_U_4:
-    return setUfU4(value);
+    return setUf_U4(value);
 
   case VSD_UF_CHARACTERISTIC_U_5:
-    return setUfU5(value);
+    return setUf_U5(value);
 
   case VSD_ETALON_BASE_VOLTAGE:
-    return setUfU6(value);
+    return setBaseVoltage(value);
 
   case VSD_ETALON_BASE_FREQUENCY:
-    return setUfF6(value);
+    return setBaseFrequency(value);
 
   default:
     result = setValue(id, value);
@@ -713,116 +713,79 @@ int VsdEtalon::offRegimeSkipFreq()
   return setNewValue(VSD_FREQ_SKIP_MODE, 0);
 }
 
-int VsdEtalon::resetSetpoints()
+int VsdEtalon::setUf_U1(float value)
 {
-  int result = setNewValue(VSD_ETALON_RESET, 1);
-  setNewValue(VSD_FLAG, 0);
-  return result;
-}
-
-int VsdEtalon::setUfU1(float value)
-{
-  int result = Vsd::setUfU1(value);
-  if (result == ok_r) {
-    result = setValue(VSD_UF_CHARACTERISTIC_U_1_PERCENT, (value * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE));
-    if (result == ok_r) {
+  if (!Vsd::setUf_U1(value)) {
+    if (!setValue(VSD_UF_CHARACTERISTIC_U_1_PERCENT, (getValue(VSD_UF_CHARACTERISTIC_U_1) * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE))) {
       writeToDevice(VSD_UF_CHARACTERISTIC_U_1_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_1_PERCENT));
+      return ok_r;
     }
-  }
-  return result;
-}
-
-int VsdEtalon::setUfU2(float value)
-{
-  int result = Vsd::setUfU2(value);
-  if (result == ok_r) {
-    result = setValue(VSD_UF_CHARACTERISTIC_U_2_PERCENT, (value * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE));
-    if (result == ok_r) {
-      writeToDevice(VSD_UF_CHARACTERISTIC_U_2_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_2_PERCENT));
-    }
-  }
-  return result;
-}
-
-int VsdEtalon::setUfU3(float value)
-{
-  int result = Vsd::setUfU3(value);
-  if (result == ok_r) {
-    result = setValue(VSD_UF_CHARACTERISTIC_U_3_PERCENT, (value * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE));
-    if (result == ok_r) {
-      writeToDevice(VSD_UF_CHARACTERISTIC_U_3_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_3_PERCENT));
-    }
-  }
-  return result;
-}
-
-int VsdEtalon::setUfU4(float value)
-{
-  int result = Vsd::setUfU4(value);
-  if (result == ok_r) {
-    result = setValue(VSD_UF_CHARACTERISTIC_U_4_PERCENT, (value * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE));
-    if (result == ok_r) {
-      writeToDevice(VSD_UF_CHARACTERISTIC_U_4_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_4_PERCENT));
-    }
-  }
-  return result;
-}
-
-int VsdEtalon::setUfU5(float value)
-{
-  int result = Vsd::setUfU5(value);
-  if (result == ok_r) {
-    result = setValue(VSD_UF_CHARACTERISTIC_U_5_PERCENT, (value * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE));
-    if (result == ok_r) {
-      writeToDevice(VSD_UF_CHARACTERISTIC_U_5_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_5_PERCENT));
-    }
-  }
-  return result;
-}
-
-int VsdEtalon::setUfF6(float value)
-{
-  int result = setValue(VSD_ETALON_BASE_FREQUENCY, value);
-  if (!result)
-    writeToDevice(VSD_ETALON_BASE_FREQUENCY, value);
-  result = setValue(VSD_BLDC_MAX_WORK_FREQ, value);
-  if (!result)
-    writeToDevice(VSD_BLDC_MAX_WORK_FREQ, value);
-  osDelay(200);
-  readUfCharacterictic();
-  return result;
-}
-
-int VsdEtalon::setUfU(uint16_t id, float value)
-{
-  if (Vsd::setUfU(id, value)) {
     return err_r;
   }
   else {
-    writeToDevice(id, (getValue(id) * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE));
-  return ok_r;
+    logDebug.add(WarningMsg, "VsdEtalon::setUfU1");
+    return err_r;
   }
 }
 
-int VsdEtalon::setUfU6(float value)
+int VsdEtalon::setUf_U2(float value)
 {
-  int result = setValue(VSD_ETALON_BASE_VOLTAGE, value);
-  if (!result)
-    writeToDevice(VSD_ETALON_BASE_VOLTAGE, value);
+  if (!Vsd::setUf_U2(value)) {
+    if (!setValue(VSD_UF_CHARACTERISTIC_U_2_PERCENT, (getValue(VSD_UF_CHARACTERISTIC_U_2) * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE))) {
+      writeToDevice(VSD_UF_CHARACTERISTIC_U_2_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_2_PERCENT));
+      return ok_r;
+    }
+    return err_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdEtalon::setUfU2");
+    return err_r;
+  }
+}
 
-  osDelay(200);
-  readInDevice(VSD_TRANS_NEED_VOLTAGE_TAP_OFF);
-  osDelay(200);
+int VsdEtalon::setUf_U3(float value)
+{
+  if (!Vsd::setUf_U3(value)) {
+    if (!setValue(VSD_UF_CHARACTERISTIC_U_3_PERCENT, (getValue(VSD_UF_CHARACTERISTIC_U_3) * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE))) {
+      writeToDevice(VSD_UF_CHARACTERISTIC_U_3_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_3_PERCENT));
+      return ok_r;
+    }
+    return err_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdEtalon::setUfU3");
+    return err_r;
+  }
+}
 
-  value = value*(getValue(VSD_TRANS_NEED_VOLTAGE_TAP_OFF)/getValue(VSD_TRANS_VOLTAGE_TAP_OFF));
-  setMax(VSD_UF_CHARACTERISTIC_U_1, value);
-  setMax(VSD_UF_CHARACTERISTIC_U_2, value);
-  setMax(VSD_UF_CHARACTERISTIC_U_3, value);
-  setMax(VSD_UF_CHARACTERISTIC_U_4, value);
-  setMax(VSD_UF_CHARACTERISTIC_U_5, value);
-  osDelay(200);
-  readUfCharacterictic();
-  return result;
+int VsdEtalon::setUf_U4(float value)
+{
+  if (!Vsd::setUf_U4(value)) {
+    if (!setValue(VSD_UF_CHARACTERISTIC_U_4_PERCENT, (getValue(VSD_UF_CHARACTERISTIC_U_4) * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE))) {
+      writeToDevice(VSD_UF_CHARACTERISTIC_U_4_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_4_PERCENT));
+      return ok_r;
+    }
+    return err_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdEtalon::setUfU4");
+    return err_r;
+  }
+}
+
+int VsdEtalon::setUf_U5(float value)
+{
+  if (!Vsd::setUf_U5(value)) {
+    if (!setValue(VSD_UF_CHARACTERISTIC_U_5_PERCENT, (getValue(VSD_UF_CHARACTERISTIC_U_5) * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE))) {
+      writeToDevice(VSD_UF_CHARACTERISTIC_U_5_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_5_PERCENT));
+      return ok_r;
+    }
+    return err_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdEtalon::setUfU5");
+    return err_r;
+  }
 }
 
 void VsdEtalon::readUfCharacterictic()
@@ -837,6 +800,64 @@ void VsdEtalon::readUfCharacterictic()
   readInDevice(VSD_UF_CHARACTERISTIC_U_3_PERCENT);
   readInDevice(VSD_UF_CHARACTERISTIC_U_4_PERCENT);
   readInDevice(VSD_UF_CHARACTERISTIC_U_5_PERCENT);
+}
+
+int VsdEtalon::setBaseVoltage(float value)
+{
+  if (!setValue(VSD_ETALON_BASE_VOLTAGE, value)) {
+    writeToDevice(VSD_ETALON_BASE_VOLTAGE, value);
+    osDelay(200);
+    readInDevice(VSD_TRANS_NEED_VOLTAGE_TAP_OFF);
+    osDelay(200);
+    value = value*(getValue(VSD_TRANS_NEED_VOLTAGE_TAP_OFF)/getValue(VSD_TRANS_VOLTAGE_TAP_OFF));
+    setMax(VSD_UF_CHARACTERISTIC_U_1, value);
+    setMax(VSD_UF_CHARACTERISTIC_U_2, value);
+    setMax(VSD_UF_CHARACTERISTIC_U_3, value);
+    setMax(VSD_UF_CHARACTERISTIC_U_4, value);
+    setMax(VSD_UF_CHARACTERISTIC_U_5, value);
+    readUfCharacterictic();
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdEtalon::setBaseVoltage");
+    return err_r;
+  }
+}
+
+int VsdEtalon::setBaseFrequency(float value)
+{
+  if (!setValue(VSD_ETALON_BASE_FREQUENCY, value)) {
+    writeToDevice(VSD_ETALON_BASE_FREQUENCY, value);
+    if (!setValue(VSD_BLDC_MAX_WORK_FREQ, value)) {
+      writeToDevice(VSD_BLDC_MAX_WORK_FREQ, value);
+      osDelay(200);
+      readUfCharacterictic();
+      return ok_r;
+    }
+    return err_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdEtalon::setBaseFrequency");
+    return err_r;
+  }
+}
+
+int VsdEtalon::setUfU(uint16_t id, float value)
+{
+  if (Vsd::setUfU(id, value)) {
+    return err_r;
+  }
+  else {
+    writeToDevice(id, (getValue(id) * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE));
+  return ok_r;
+  }
+}
+
+int VsdEtalon::resetSetpoints()
+{
+  int result = setNewValue(VSD_ETALON_RESET, 1);
+  setNewValue(VSD_FLAG, 0);
+  return result;
 }
 
 void VsdEtalon::calcParameters(uint16_t id)

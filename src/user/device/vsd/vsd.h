@@ -273,8 +273,90 @@ public:
    */
   int setSwitchingFrequencyCode(float value);
 
+  // НАСТРОЙКА U/f
+  /*!
+   * \brief setUf_f1
+   * \param value
+   * \return
+   */
+  int setUf_f1(float value);
 
+  /*!
+   * \brief setUf_f2
+   * \param value
+   * \return
+   */
+  int setUf_f2(float value);
 
+  /*!
+   * \brief setUf_f3
+   * \param value
+   * \return
+   */
+  int setUf_f3(float value);
+
+  /*!
+   * \brief setUf_f4
+   * \param value
+   * \return
+   */
+  int setUf_f4(float value);
+
+  /*!
+   * \brief setUf_f5
+   * \param value
+   * \return
+   */
+  int setUf_f5(float value);
+
+  /*!
+   * \brief setUf_f6
+   * \param value
+   * \return
+   */
+  int setUf_f6(float value);
+
+  /*!
+   * \brief setUf_U1
+   * \param value
+   * \return
+   */
+  int setUf_U1(float value);
+
+  /*!
+   * \brief setUf_U2
+   * \param value
+   * \return
+   */
+  int setUf_U2(float value);
+
+  /*!
+   * \brief setUf_U3
+   * \param value
+   * \return
+   */
+  int setUf_U3(float value);
+
+  /*!
+   * \brief setUf_U4
+   * \param value
+   * \return
+   */
+  int setUf_U4(float value);
+
+  /*!
+   * \brief setUf_U5
+   * \param value
+   * \return
+   */
+  int setUf_U5(float value);
+
+  /*!
+   * \brief setUf_U6
+   * \param value
+   * \return
+   */
+  int setUf_U6(float value);
 
 
   /*!
@@ -293,11 +375,7 @@ public:
 
   int setUfU(uint16_t id, float value);
 
-  int setUfU1(float value);
-  int setUfU2(float value);
-  int setUfU3(float value);
-  int setUfU4(float value);
-  int setUfU5(float value);
+
 
   /*! Читаемые параметры ЧРП */
   /*!

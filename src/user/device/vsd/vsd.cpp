@@ -170,6 +170,68 @@ int Vsd::setSwitchingFrequencyCode(float value)
   return err_r;
 }
 
+// НАСТРОЙКА U/f
+int Vsd::setUf_f1(float value)
+{
+  return setValue(VSD_UF_CHARACTERISTIC_F_1, value);
+}
+
+int Vsd::setUf_f2(float value)
+{
+  return setValue(VSD_UF_CHARACTERISTIC_F_2, value);
+}
+
+int Vsd::setUf_f3(float value)
+{
+  return setValue(VSD_UF_CHARACTERISTIC_F_3, value);
+}
+
+int Vsd::setUf_f4(float value)
+{
+  return setValue(VSD_UF_CHARACTERISTIC_F_4, value);
+}
+
+int Vsd::setUf_f5(float value)
+{
+  return setValue(VSD_UF_CHARACTERISTIC_F_5, value);
+}
+
+int Vsd::setUf_f6(float value)
+{
+  return setValue(VSD_UF_CHARACTERISTIC_F_6, value);
+}
+
+int Vsd::setUf_U1(float value)
+{
+  return setValue(VSD_UF_CHARACTERISTIC_U_1, value);
+}
+
+int Vsd::setUf_U2(float value)
+{
+  return setValue(VSD_UF_CHARACTERISTIC_U_2, value);
+}
+
+int Vsd::setUf_U3(float value)
+{
+  return setValue(VSD_UF_CHARACTERISTIC_U_3, value);
+}
+
+int Vsd::setUf_U4(float value)
+{
+  return setValue(VSD_UF_CHARACTERISTIC_U_4, value);
+}
+
+int Vsd::setUf_U5(float value)
+{
+  return setValue(VSD_UF_CHARACTERISTIC_U_5, value);
+}
+
+int Vsd::setUf_U6(float value)
+{
+  return setValue(VSD_UF_CHARACTERISTIC_U_6, value);
+}
+
+
 
 int Vsd::setCurrentLim(float value)
 {
@@ -189,31 +251,6 @@ int Vsd::resetBlock()
 int Vsd::setUfU(uint16_t id, float value)
 {
   return setValue(id, value);
-}
-
-int Vsd::setUfU1(float value)
-{
-  return setValue(VSD_UF_CHARACTERISTIC_U_1, value);
-}
-
-int Vsd::setUfU2(float value)
-{
-  return setValue(VSD_UF_CHARACTERISTIC_U_2, value);
-}
-
-int Vsd::setUfU3(float value)
-{
-  return setValue(VSD_UF_CHARACTERISTIC_U_3, value);
-}
-
-int Vsd::setUfU4(float value)
-{
-  return setValue(VSD_UF_CHARACTERISTIC_U_4, value);
-}
-
-int Vsd::setUfU5(float value)
-{
-  return setValue(VSD_UF_CHARACTERISTIC_U_5, value);
 }
 
 int Vsd::calcVsdCos()
