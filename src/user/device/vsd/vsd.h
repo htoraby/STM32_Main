@@ -136,6 +136,7 @@ public:
    */
   void initParameters();
 
+  // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
   /*!
    * \brief Метод задания типа двигателя в массив параметров
    * \param value - тип двигателя: VSD_MOTOR_TYPE_ASYNC = 0, VSD_MOTOR_TYPE_VENT = 1
@@ -143,13 +144,220 @@ public:
    */
   int setMotorType(float value);
 
-  /*! Задаваемые параметры ЧРП */
+  // РЕЖИМЫ ПУСКА
+  /*!
+   * \brief Метод настройки толчкового режима
+   * \return
+   */
+  virtual int onRegimePush();
+
+  /*!
+   * \brief Метод выключения толчкогового режима
+   * \return
+   */
+  virtual int offRegimePush();
+
+  /*!
+   * \brief onRegimeSwing
+   * \return
+   */
+  virtual int onRegimeSwing();
+
+  /*!
+   * \brief offRegimeSwing
+   * \return
+   */
+  virtual int offRegimeSwing();
+
+  /*!
+   * \brief Метод настройки режима подхвата
+   * \return
+   */
+  virtual int onRegimePickup();
+
+  /*!
+   * \brief offRegimePickup
+   * \return
+   */
+  virtual int offRegimePickup();
+
+  /*!
+   * \brief onRegimeSkipFreq
+   * \return
+   */
+  virtual int onRegimeSkipFreq();
+
+  /*!
+   * \brief offRegimeSkipFreq
+   * \return
+   */
+  virtual int offRegimeSkipFreq();
+
+  // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
+  /*!
+   * \brief Функция записи в регистр управления двигателем
+   * \param value
+   * \return 0 - задание успешно, № - ошибки
+   */
+  int setVsdControl(float value);
+  
+  /*!
+   * \brief Функция записи в регистр направления вращения
+   * \param value - направление вращения
+   * \return 0 - задание успешно, № - ошибки
+   */
+  virtual int setRotation(float value);  
+  
+  /*!
+   * \brief Функция записи в регистр минимальной частоты
+   * \param value - минимальная частота
+   * \return 0 - задание успешно, № - ошибки
+   */
+  int setMinFrequency(float value);
+
+  /*!
+   * \brief setLimitsMinFrequence функция присвоения минимальной границы
+   * Максимальной частоты и уставки частоты минимальной частоте
+   * \param value
+   * \return
+   */
+  int setLimitsMinFrequence(float value);
+  
+  /*!
+   * \brief Функция записи в регистр максимальной частоты
+   * \param value - максимальная частота
+   * \return 0 - задание успешно, № - ошибки
+   */
+  int setMaxFrequency(float value);
+
+  /*!
+   * \brief setLimitsMaxFrequence функция присвоения максимальной границы
+   * минимальной частоты и уставки частоты максимальной частоте частоте
+   * \param value
+   * \return
+   */
+  int setLimitsMaxFrequence(float value);
+
+  /*!
+   * \brief Функция записи в регистр уставки частоты
+   * \param value - задаваемая частота
+   * \return 0 - задание успешно, № - ошибки
+   */
+  int setFrequency(float value);
+
+  /*!
+   * \brief setTimeSpeedUp
+   * \param value
+   * \return 
+   */
+  virtual int setTimeSpeedUp(float value);
+  
+  /*!
+   * \brief setTimeSpeedDown
+   * \param value
+   * \return 
+   */
+  virtual int setTimeSpeedDown(float value);
+  
   /*!
    * \brief Функция записи в регистр частоты коммутации (Частота ШИМ)
    * \param value задаваемая частота коммутации (Частота ШИМ)
    * \return 0 - задание успешно, № - ошибки
    */
   int setSwitchingFrequency(float value);
+
+  /*!
+   * \brief setSwitchingFrequencyCode
+   * \param value
+   * \return
+   */
+  int setSwitchingFrequencyCode(float value);
+
+  // НАСТРОЙКА U/f
+  /*!
+   * \brief setUf_f1
+   * \param value
+   * \return
+   */
+  int setUf_f1(float value);
+
+  /*!
+   * \brief setUf_f2
+   * \param value
+   * \return
+   */
+  int setUf_f2(float value);
+
+  /*!
+   * \brief setUf_f3
+   * \param value
+   * \return
+   */
+  int setUf_f3(float value);
+
+  /*!
+   * \brief setUf_f4
+   * \param value
+   * \return
+   */
+  int setUf_f4(float value);
+
+  /*!
+   * \brief setUf_f5
+   * \param value
+   * \return
+   */
+  int setUf_f5(float value);
+
+  /*!
+   * \brief setUf_f6
+   * \param value
+   * \return
+   */
+  int setUf_f6(float value);
+
+  /*!
+   * \brief setUf_U1
+   * \param value
+   * \return
+   */
+  int setUf_U1(float value);
+
+  /*!
+   * \brief setUf_U2
+   * \param value
+   * \return
+   */
+  int setUf_U2(float value);
+
+  /*!
+   * \brief setUf_U3
+   * \param value
+   * \return
+   */
+  int setUf_U3(float value);
+
+  /*!
+   * \brief setUf_U4
+   * \param value
+   * \return
+   */
+  int setUf_U4(float value);
+
+  /*!
+   * \brief setUf_U5
+   * \param value
+   * \return
+   */
+  int setUf_U5(float value);
+
+  /*!
+   * \brief setUf_U6
+   * \param value
+   * \return
+   */
+  int setUf_U6(float value);
+
 
   /*!
    * \brief Метод задания предела тока
@@ -164,68 +372,10 @@ public:
    */
   int setSumInduct(float induct);
 
-  /*! Задаваемые параметры работы */
-  /*!
-   * \brief Функция записи в регистр уставки частоты
-   * \param value - задаваемая частота
-   * \return 0 - задание успешно, № - ошибки
-   */
-  int setFrequency(float value);
-
-  /*!
-   * \brief Функция записи в регистр минимальной частоты
-   * \param value - минимальная частота
-   * \return 0 - задание успешно, № - ошибки
-   */
-  int setMinFrequency(float value);
-
-  /*!
-   * \brief Функция записи в регистр максимальной частоты
-   * \param value - максимальная частота
-   * \return 0 - задание успешно, № - ошибки
-   */
-  int setMaxFrequency(float value);
-
-  int setLimitsMinFrequence(float value);
-  int setLimitsMaxFrequence(float value);
-
 
   int setUfU(uint16_t id, float value);
 
-  int setUfU1(float value);
-  int setUfU2(float value);
-  int setUfU3(float value);
-  int setUfU4(float value);
-  int setUfU5(float value);
 
-  int setCoefVoltageInAB(float value);
-  int setCoefVoltageInBC(float value);
-  int setCoefVoltageInCA(float value);
-
-  /*!
-   * \brief Функция записи в регистр темпа набора частоты Гц/с
-   * и пересчитанного значения в регистр время набора частота
-   * \param value - темп
-   * \return 0 - задание успешно, № - ошибки
-   */
-  virtual int setTimeSpeedUp(float value);
-  virtual int setTimeSpeedDown(float value);
-  virtual int setTempSpeedUp(float value);
-  virtual int setTempSpeedDown(float value);
-
-  /*!
-   * \brief Функция записи в регистр направления вращения
-   * \param value - направление вращения
-   * \return 0 - задание успешно, № - ошибки
-   */
-  virtual int setRotation(float value);
-
-  /*!
-   * \brief Функция записи в регистр управления двигателем
-   * \param value
-   * \return 0 - задание успешно, № - ошибки
-   */
-  virtual int setMotorControl(float value);
 
   /*! Читаемые параметры ЧРП */
   /*!
@@ -290,29 +440,7 @@ public:
 
   virtual void processingRegimeRun();
 
-  /*!
-   * \brief Метод настройки толчкового режима
-   * \return
-   */
-  virtual int onRegimePush();
 
-  /*!
-   * \brief Метод выключения толчкогового режима
-   * \return
-   */
-  virtual int offRegimePush();
-
-  /*!
-   * \brief onRegimeSwing
-   * \return
-   */
-  virtual int onRegimeSwing();
-
-  /*!
-   * \brief offRegimeSwing
-   * \return
-   */
-  virtual int offRegimeSwing();
 
   /*!
    * \brief onRegimeJarring
@@ -325,30 +453,6 @@ public:
    * \return
    */
   virtual int offRegimeJarring();
-
-  /*!
-   * \brief Метод настройки режима подхвата
-   * \return
-   */
-  virtual int onRegimePickup();
-
-  /*!
-   * \brief offRegimePickup
-   * \return
-   */
-  virtual int offRegimePickup();
-
-  /*!
-   * \brief onRegimeSkipFreq
-   * \return
-   */
-  virtual int onRegimeSkipFreq();
-
-  /*!
-   * \brief offRegimeSkipFreq
-   * \return
-   */
-  virtual int offRegimeSkipFreq();
 
   /*!
    * \brief resetSetpoints
@@ -368,7 +472,6 @@ public:
   virtual void writeToDevice(int id, float value);
 
   VsdLog *log() const { return log_; }
-
 
 protected:
   VsdLog *log_;

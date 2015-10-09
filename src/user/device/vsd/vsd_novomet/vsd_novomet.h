@@ -36,6 +36,41 @@ public:
 
   bool isConnect();
 
+  // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
+  int setMotorType(float value);
+
+  // РЕЖИМЫ ПУСКА
+  int onRegimePush();
+  int offRegimePush();
+  int onRegimeSwing();
+  int offRegimeSwing();
+  int onRegimePickup();
+  int offRegimePickup();
+
+  // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
+  int setRotation(float value);
+  int setMinFrequency(float value);
+  int setMaxFrequency(float value);
+  int setFrequency(float value);
+  int setTimeSpeedUp(float value);
+  int setTimeSpeedDown(float value);
+  int setSwitchingFrequency(float value);
+
+  // НАСТРОЙКА U/f
+  int setUf_f1(float value);
+  int setUf_f2(float value);
+  int setUf_f3(float value);
+  int setUf_f4(float value);
+  int setUf_f5(float value);
+  int setUf_f6(float value);
+  int setUf_U1(float value);
+  int setUf_U2(float value);
+  int setUf_U3(float value);
+  int setUf_U4(float value);
+  int setUf_U5(float value);
+  int setUf_U6(float value);
+
+
   void getNewValue(uint16_t id);
   uint8_t setNewValue(uint16_t id, float value);
 
@@ -110,32 +145,9 @@ public:
    */
   void processingRegimeRun();
 
-  int onRegimePickup();
 
-  /*!
-   * \brief Функция включения толчкового режима
-   * Функция посылает в ЧРП настройки толчкового режима из КСУ
-   * \return
-   */
-  int onRegimePush();
 
-  /*!
-   * \brief Функция(пустая) выключения толчкового режима
-   * \return
-   */
-  int offRegimePush();
 
-  /*!
-   * \brief onRegimeSwing
-   * \return
-   */
-  int onRegimeSwing();
-
-  /*!
-   * \brief offRegimeSwing
-   * \return
-   */
-  int offRegimeSwing();
 
   /*!
    * \brief onRegimeJarring
@@ -159,8 +171,6 @@ public:
    * \return
    */
   int setMainRegimeVSD();
-
-  int setMotorType(float value);
 
   void calcMotorType();
 
@@ -195,73 +205,6 @@ public:
   void calcCurrentDC();
 
   /*!
-   * \brief Метод задания времени набора частоты
-   * \return Код результата операции
-   */
-  int setTimeSpeedUp(float value);
-
-  int setTimeSpeedDown(float value);
-
-  /*!
-   * \brief Метод задания точки характеристики U/f F6
-   * \param value
-   * \return
-   */
-  int setUfF6(float value);
-
-  /*!
-   * \brief Метод задания точки характиристики U/f U1
-   * \param value
-   * \return
-   */
-  int setUfU1(float value);
-
-  /*!
-   * \brief Метод задания точки характиристики U/f U2
-   * \param value
-   * \return
-   */
-  int setUfU2(float value);
-
-  /*!
-   * \brief Метод задания точки характиристики U/f U3
-   * \param value
-   * \return
-   */
-  int setUfU3(float value);
-
-  /*!
-   * \brief Метод задания точки характиристики U/f U4
-   * \param value
-   * \return
-   */
-  int setUfU4(float value);
-
-  /*!
-   * \brief Метод задания точки характиристики U/f U5
-   * \param value
-   * \return
-   */
-  int setUfU5(float value);
-
-  /*!
-   * \brief Метод задания точки характиристики U/f U6
-   * \param value
-   * \return
-   */
-  int setUfU6(float value);
-
-  /*!
-   * \brief Метод задания направления вращения
-   * \param value - направление вращения 0 прямое(правое),
-   * 1 обратное(левое)
-   * \return
-   */
-  int setRotation(float value);
-
-  int setSwitchingFrequency(float value);
-
-  /*!
    * \brief Проверка на "необходимость" работы с параметром
    * \param indexParam
    * \return
@@ -278,6 +221,7 @@ public:
    * \return
    */
   void resetRunQueue();
+
 
 private:
   ModbusParameter modbusParameters_[135];

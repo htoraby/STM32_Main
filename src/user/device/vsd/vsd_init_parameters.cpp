@@ -3874,7 +3874,7 @@ void Vsd::initParameters()
   parameters_[VSD_UF_CHARACTERISTIC_U_1_PERCENT - VSD_BEGIN].validity            = VALIDITY_ERROR;
   parameters_[VSD_UF_CHARACTERISTIC_U_1_PERCENT - VSD_BEGIN].value.float_t       = 20.0;
   parameters_[VSD_UF_CHARACTERISTIC_U_1_PERCENT - VSD_BEGIN].min                 = 0.0;
-  parameters_[VSD_UF_CHARACTERISTIC_U_1_PERCENT - VSD_BEGIN].max                 = 1000.0;
+  parameters_[VSD_UF_CHARACTERISTIC_U_1_PERCENT - VSD_BEGIN].max                 = 100.0;
   parameters_[VSD_UF_CHARACTERISTIC_U_1_PERCENT - VSD_BEGIN].def                 = 20.0;
   parameters_[VSD_UF_CHARACTERISTIC_U_1_PERCENT - VSD_BEGIN].discret             = 1;
   parameters_[VSD_UF_CHARACTERISTIC_U_1_PERCENT - VSD_BEGIN].code                = 0;
@@ -3886,7 +3886,7 @@ void Vsd::initParameters()
   parameters_[VSD_UF_CHARACTERISTIC_U_2_PERCENT - VSD_BEGIN].validity            = VALIDITY_ERROR;
   parameters_[VSD_UF_CHARACTERISTIC_U_2_PERCENT - VSD_BEGIN].value.float_t       = 40.0;
   parameters_[VSD_UF_CHARACTERISTIC_U_2_PERCENT - VSD_BEGIN].min                 = 0.0;
-  parameters_[VSD_UF_CHARACTERISTIC_U_2_PERCENT - VSD_BEGIN].max                 = 1000.0;
+  parameters_[VSD_UF_CHARACTERISTIC_U_2_PERCENT - VSD_BEGIN].max                 = 100.0;
   parameters_[VSD_UF_CHARACTERISTIC_U_2_PERCENT - VSD_BEGIN].def                 = 40.0;
   parameters_[VSD_UF_CHARACTERISTIC_U_2_PERCENT - VSD_BEGIN].discret             = 1;
   parameters_[VSD_UF_CHARACTERISTIC_U_2_PERCENT - VSD_BEGIN].code                = 0;
@@ -3898,7 +3898,7 @@ void Vsd::initParameters()
   parameters_[VSD_UF_CHARACTERISTIC_U_3_PERCENT - VSD_BEGIN].validity            = VALIDITY_ERROR;
   parameters_[VSD_UF_CHARACTERISTIC_U_3_PERCENT - VSD_BEGIN].value.float_t       = 60.0;
   parameters_[VSD_UF_CHARACTERISTIC_U_3_PERCENT - VSD_BEGIN].min                 = 0.0;
-  parameters_[VSD_UF_CHARACTERISTIC_U_3_PERCENT - VSD_BEGIN].max                 = 1000.0;
+  parameters_[VSD_UF_CHARACTERISTIC_U_3_PERCENT - VSD_BEGIN].max                 = 100.0;
   parameters_[VSD_UF_CHARACTERISTIC_U_3_PERCENT - VSD_BEGIN].def                 = 60.0;
   parameters_[VSD_UF_CHARACTERISTIC_U_3_PERCENT - VSD_BEGIN].discret             = 1;
   parameters_[VSD_UF_CHARACTERISTIC_U_3_PERCENT - VSD_BEGIN].code                = 0;
@@ -3910,7 +3910,7 @@ void Vsd::initParameters()
   parameters_[VSD_UF_CHARACTERISTIC_U_4_PERCENT - VSD_BEGIN].validity            = VALIDITY_ERROR;
   parameters_[VSD_UF_CHARACTERISTIC_U_4_PERCENT - VSD_BEGIN].value.float_t       = 80.0;
   parameters_[VSD_UF_CHARACTERISTIC_U_4_PERCENT - VSD_BEGIN].min                 = 0.0;
-  parameters_[VSD_UF_CHARACTERISTIC_U_4_PERCENT - VSD_BEGIN].max                 = 1000.0;
+  parameters_[VSD_UF_CHARACTERISTIC_U_4_PERCENT - VSD_BEGIN].max                 = 100.0;
   parameters_[VSD_UF_CHARACTERISTIC_U_4_PERCENT - VSD_BEGIN].def                 = 80.0;
   parameters_[VSD_UF_CHARACTERISTIC_U_4_PERCENT - VSD_BEGIN].discret             = 1;
   parameters_[VSD_UF_CHARACTERISTIC_U_4_PERCENT - VSD_BEGIN].code                = 0;
@@ -3922,7 +3922,7 @@ void Vsd::initParameters()
   parameters_[VSD_UF_CHARACTERISTIC_U_5_PERCENT - VSD_BEGIN].validity            = VALIDITY_ERROR;
   parameters_[VSD_UF_CHARACTERISTIC_U_5_PERCENT - VSD_BEGIN].value.float_t       = 100.0;
   parameters_[VSD_UF_CHARACTERISTIC_U_5_PERCENT - VSD_BEGIN].min                 = 0.0;
-  parameters_[VSD_UF_CHARACTERISTIC_U_5_PERCENT - VSD_BEGIN].max                 = 1000.0;
+  parameters_[VSD_UF_CHARACTERISTIC_U_5_PERCENT - VSD_BEGIN].max                 = 100.0;
   parameters_[VSD_UF_CHARACTERISTIC_U_5_PERCENT - VSD_BEGIN].def                 = 100.0;
   parameters_[VSD_UF_CHARACTERISTIC_U_5_PERCENT - VSD_BEGIN].discret             = 1;
   parameters_[VSD_UF_CHARACTERISTIC_U_5_PERCENT - VSD_BEGIN].code                = 0;
@@ -4082,5 +4082,17 @@ void Vsd::initParameters()
   parameters_[VSD_CURRENT_LIMIT_COEF - VSD_BEGIN].def                            = 2.0;
   parameters_[VSD_CURRENT_LIMIT_COEF - VSD_BEGIN].discret                        = 10;
   parameters_[VSD_CURRENT_LIMIT_COEF - VSD_BEGIN].code                           = 13;
+  // Частота коммутации ШИМ
+  parameters_[VSD_SWITCHING_FREQUENCY_CODE - VSD_BEGIN].id                       = VSD_SWITCHING_FREQUENCY_CODE;
+  parameters_[VSD_SWITCHING_FREQUENCY_CODE - VSD_BEGIN].access                   = ACCESS_OPERATOR;
+  parameters_[VSD_SWITCHING_FREQUENCY_CODE - VSD_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[VSD_SWITCHING_FREQUENCY_CODE - VSD_BEGIN].physic                   = PHYSIC_NUMERIC;
+  parameters_[VSD_SWITCHING_FREQUENCY_CODE - VSD_BEGIN].validity                 = VALIDITY_ERROR;
+  parameters_[VSD_SWITCHING_FREQUENCY_CODE - VSD_BEGIN].value.float_t            = 0.0;
+  parameters_[VSD_SWITCHING_FREQUENCY_CODE - VSD_BEGIN].min                      = 0.0;
+  parameters_[VSD_SWITCHING_FREQUENCY_CODE - VSD_BEGIN].max                      = 14.0;
+  parameters_[VSD_SWITCHING_FREQUENCY_CODE - VSD_BEGIN].def                      = 0.0;
+  parameters_[VSD_SWITCHING_FREQUENCY_CODE - VSD_BEGIN].discret                  = 1;
+  parameters_[VSD_SWITCHING_FREQUENCY_CODE - VSD_BEGIN].code                     = 13;
 }
 

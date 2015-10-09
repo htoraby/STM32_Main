@@ -93,6 +93,334 @@ bool VsdNovomet::isConnect()
   return curConnect;
 }
 
+// ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
+int VsdNovomet::setMotorType(float value)
+{
+  if (!Vsd::setMotorType(value)) {
+    value = (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) ? VSD_CONTROL_ASYN_MOTOR : VSD_CONTROL_VENT_MOTOR;
+    writeToDevice(VSD_CONTROL_WORD_1, value);
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setMotorType");
+    return err_r;
+  }
+}
+
+// РЕЖИМЫ ПУСКА
+int VsdNovomet::onRegimePush()
+{
+  if (parameters.get(CCS_RGM_RUN_PUSH_MODE) == Regime::OffAction)
+    return 1;
+
+  float freq = parameters.get(CCS_RGM_RUN_PUSH_FREQ);       // Получаем частоту толчков
+  float numPush = parameters.get(CCS_RGM_RUN_PUSH_QUANTITY);// Получаем количество толчков
+  float calcNumPush = 0;
+  uint16_t rotation = 1;
+  if (freq) {
+    calcNumPush = (8.0 / freq);                             // Количество толчков на указанной частоте
+  }                                                         // За один оборот двигателя
+  else {
+    calcNumPush = numPush;
+  }
+  rotation = (uint16_t)((numPush / calcNumPush) + 0.5);     // Вычисляем требуемое количество оборотов
+
+  float impulse = parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE); // Превышение напряжения
+  impulse = (uint16_t)((impulse - 100) / 10.0 + 0.5);       // Вычислили уставку напряжения
+  if ((impulse < 1.0) || (impulse > 10))
+    impulse = 1.0;
+
+  setNewValue(VSD_START_FREQ, freq);                        // Задаём частоту основного режима
+  setNewValue(VSD_SW_STARTUP_FREQUENCY, freq);              // Записали в ЧРП частоту
+  setNewValue(VSD_SW_STARTUP_ANGLE_OSC, 180.0);             // Угол константа
+  setNewValue(VSD_SW_STARTUP_OSC_COUNT, 1.0);               // Количество качаний константа
+  setNewValue(VSD_SW_STARTUP_ROTATIONS, rotation);          // Записали количество оборотов
+  setNewValue(VSD_SW_STARTUP_U_PULSE, impulse);             // Записали кратность импульса толчка
+  return setNewValue(VSD_SW_STARTUP_I_LIM_PULSE, 1500.0);   // Записали предел тока
+}
+
+int VsdNovomet::offRegimePush()
+{
+  return 0;
+}
+
+int VsdNovomet::onRegimeSwing()
+{
+  if (parameters.get(CCS_RGM_RUN_SWING_MODE) == Regime::OffAction)
+    return 1;
+
+  float freq = parameters.get(CCS_RGM_RUN_SWING_FREQ);       // Получаем частоту толчков
+  float numPush = parameters.get(CCS_RGM_RUN_SWING_QUANTITY);// Получаем количество толчков
+  float calcNumPush = 0;
+  uint16_t rotation = 1;
+  if (freq) {
+    calcNumPush = (8.0 / freq);                             // Количество толчков на указанной частоте
+  }                                                         // За один оборот двигателя
+  else {
+    calcNumPush = numPush;
+  }
+  rotation = (uint16_t)((numPush / calcNumPush) + 0.5);     // Вычисляем требуемое количество оборотов
+
+  float impulse = parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE); // Превышение напряжения
+  impulse = (uint16_t)((impulse - 100) / 10.0 + 0.5);       // Вычислили уставку напряжения
+  if ((impulse < 1.0) || (impulse > 10))
+    impulse = 1.0;
+
+  setNewValue(VSD_START_FREQ, freq);                        // Задаём частоту основного режима
+  setNewValue(VSD_SW_STARTUP_FREQUENCY, freq);              // Записали в ЧРП частоту
+  setNewValue(VSD_SW_STARTUP_ANGLE_OSC, 359.0);             // Угол константа
+  setNewValue(VSD_SW_STARTUP_OSC_COUNT, 2.0);               // Количество качаний константа
+  setNewValue(VSD_SW_STARTUP_ROTATIONS, rotation);          // Записали количество оборотов
+  setNewValue(VSD_SW_STARTUP_U_PULSE, impulse);             // Записали кратность импульса толчка
+  return setNewValue(VSD_SW_STARTUP_I_LIM_PULSE, 1500.0);   // Записали предел тока
+}
+
+int VsdNovomet::offRegimeSwing()
+{
+  return 0;
+}
+
+int VsdNovomet::onRegimePickup()
+{
+  return 0;
+}
+
+int VsdNovomet::offRegimePickup()
+{
+  return 0;
+}
+
+// ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
+int VsdNovomet::setRotation(float value)
+{
+  if (!Vsd::setRotation(value)){
+    value = (getValue(VSD_ROTATION) == VSD_ROTATION_DIRECT) ? VSD_CONTROL_RIGHT_DIRECTION : VSD_CONTROL_LEFT_DIRECTION;
+    writeToDevice(VSD_CONTROL_WORD_1, value);
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setRotation");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setMinFrequency(float value)
+{
+  if (!Vsd::setMinFrequency(value)) {
+    writeToDevice(VSD_LOW_LIM_SPEED_MOTOR, getValue(VSD_LOW_LIM_SPEED_MOTOR));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setMinFrequency");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setMaxFrequency(float value)
+{
+  if (!Vsd::setMaxFrequency(value)) {
+    writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setMaxFrequency");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setFrequency(float value)
+{
+  if (!Vsd::setFrequency(value)) {
+    writeToDevice(VSD_FREQUENCY, getValue(VSD_FREQUENCY));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setFrequency");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setTimeSpeedUp(float value)
+{
+  if (!Vsd::setTimeSpeedUp(value)) {
+    writeToDevice(VSD_T_SPEEDUP, getValue(VSD_T_SPEEDUP));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setTimeSpeedUp");
+    return err_r;
+  }     
+}
+
+int VsdNovomet::setTimeSpeedDown(float value)
+{
+  if (!Vsd::setTimeSpeedDown(value)) {
+    writeToDevice(VSD_T_SPEEDDOWN, getValue(VSD_T_SPEEDDOWN));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setTimeSpeedDown");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setSwitchingFrequency(float value)
+{
+  if (!Vsd::setSwitchingFrequency(value)) {
+    writeToDevice(VSD_SWITCHING_FREQUENCY, getValue(VSD_SWITCHING_FREQUENCY));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setSwitchingFrequency");
+    return err_r;
+  }
+}
+
+// НАСТРОЙКА U/f
+int VsdNovomet::setUf_f1(float value)
+{
+  if (!Vsd::setUf_f1(value)) {
+    writeToDevice(VSD_UF_CHARACTERISTIC_F_1, getValue(VSD_UF_CHARACTERISTIC_F_1));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setUf_f1");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setUf_f2(float value)
+{
+  if (!Vsd::setUf_f2(value)) {
+    writeToDevice(VSD_UF_CHARACTERISTIC_F_2, getValue(VSD_UF_CHARACTERISTIC_F_2));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setUf_f2");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setUf_f3(float value)
+{
+  if (!Vsd::setUf_f3(value)) {
+    writeToDevice(VSD_UF_CHARACTERISTIC_F_3, getValue(VSD_UF_CHARACTERISTIC_F_3));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setUf_f3");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setUf_f4(float value)
+{
+  if (!Vsd::setUf_f4(value)) {
+    writeToDevice(VSD_UF_CHARACTERISTIC_F_4, getValue(VSD_UF_CHARACTERISTIC_F_4));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setUf_f4");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setUf_f5(float value)
+{
+  if (!Vsd::setUf_f5(value)) {
+    writeToDevice(VSD_UF_CHARACTERISTIC_F_5, getValue(VSD_UF_CHARACTERISTIC_F_5));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setUf_f5");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setUf_f6(float value)
+{
+  if (!Vsd::setUf_f6(value)) {
+    writeToDevice(VSD_UF_CHARACTERISTIC_F_6, getValue(VSD_UF_CHARACTERISTIC_F_6));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setUf_f6");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setUf_U1(float value)
+{
+  if (!Vsd::setUf_U1(value)) {
+    writeToDevice(VSD_UF_CHARACTERISTIC_U_1, getValue(VSD_UF_CHARACTERISTIC_U_1));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setUf_U1");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setUf_U2(float value)
+{
+  if (!Vsd::setUf_U2(value)) {
+    writeToDevice(VSD_UF_CHARACTERISTIC_U_2, getValue(VSD_UF_CHARACTERISTIC_U_2));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setUf_U2");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setUf_U3(float value)
+{
+  if (!Vsd::setUf_U3(value)) {
+    writeToDevice(VSD_UF_CHARACTERISTIC_U_3, getValue(VSD_UF_CHARACTERISTIC_U_3));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setUf_U3");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setUf_U4(float value)
+{
+  if (!Vsd::setUf_U4(value)) {
+    writeToDevice(VSD_UF_CHARACTERISTIC_U_4, getValue(VSD_UF_CHARACTERISTIC_U_4));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setUf_U4");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setUf_U5(float value)
+{
+  if (!Vsd::setUf_U5(value)) {
+    writeToDevice(VSD_UF_CHARACTERISTIC_U_5, getValue(VSD_UF_CHARACTERISTIC_U_5));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setUf_U5");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setUf_U6(float value)
+{
+  if (!Vsd::setUf_U6(value)) {
+    writeToDevice(VSD_UF_CHARACTERISTIC_U_6, getValue(VSD_UF_CHARACTERISTIC_U_6));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setUf_U6");
+    return err_r;
+  }
+}
+
 // Метод проверки и обновления параметров устройства
 void VsdNovomet::getNewValue(uint16_t id)
 {
@@ -210,23 +538,51 @@ void VsdNovomet::getNewValue(uint16_t id)
 uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
 {
   switch (id) {
+
+  case VSD_MOTOR_TYPE:
+    if (!setMotorType(value)) {
+      if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) {
+        return setVsdControl(VSD_MOTOR_CONTROL_UF);
+      }
+      return ok_r;
+    }
+    return err_r;
+
   case VSD_FREQUENCY:
     return setFrequency(value);
-  case VSD_MOTOR_TYPE:
-    return setMotorType(value);
+
+  case VSD_LOW_LIM_SPEED_MOTOR:
+    if (!setMinFrequency(value)) {
+      if (getValue(VSD_LOW_LIM_SPEED_MOTOR) > getValue(VSD_FREQUENCY)) {
+        return setFrequency(getValue(VSD_LOW_LIM_SPEED_MOTOR));
+      }
+      return ok_r;
+    }
+    return err_r;
+
+  case VSD_HIGH_LIM_SPEED_MOTOR:
+    if (!setMaxFrequency(value)) {
+      if (getValue(VSD_HIGH_LIM_SPEED_MOTOR) < getValue(VSD_FREQUENCY)) {
+        return setFrequency(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+      }
+      return ok_r;
+    }
+    return err_r;
+
   case VSD_ROTATION:
     return setRotation(value);
-  case VSD_LOW_LIM_SPEED_MOTOR:
-    return setMinFrequency(value);
-  case VSD_HIGH_LIM_SPEED_MOTOR:
-    return setMaxFrequency(value);
+
   case VSD_TIMER_DISPERSAL:
     return setTimeSpeedUp(value);
+
   case VSD_TIMER_DELAY:
     return setTimeSpeedDown(value);
+
+
   case VSD_MOTOR_VOLTAGE:
     ksu.calcTransRecommendedTapOff();
     return ok_r;
+
   default:
     int result = setValue(id, value);
     if (!result)
@@ -384,22 +740,6 @@ void VsdNovomet::processingRegimeRun()
   regimeRun_->processing();
 }
 
-int VsdNovomet::setMotorType(float value)
-{
-  if (Vsd::setMotorType(value)) {           // Записываем тип двигателя в массив
-    logDebug.add(WarningMsg, "setTypeMotor");
-    return err_r;                           // Если не записали возвращаем ошибку
-  }
-  else {
-    if (value == VSD_MOTOR_TYPE_ASYNC) {
-      writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_ASYN_MOTOR);
-    }
-    else {
-      writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_VENT_MOTOR);
-    }
-    return ok_r;
-  }
-}
 
 void VsdNovomet::calcMotorType()
 {
@@ -450,154 +790,9 @@ void VsdNovomet::calcCurrentDC()
   }
 }
 
-int VsdNovomet::setTimeSpeedUp(float value)
-{
-  // Записали время разгона (с)
-  if (!setValue(VSD_TIMER_DISPERSAL, value)) {
-    // Записали темп разгона (Гц/с)
-    if (!setValue(VSD_TEMP_SPEEDUP, getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TIMER_DISPERSAL))) {
-      // Записали время на 1Гц
-       if (!setValue(VSD_T_SPEEDUP, 1/getValue(VSD_TEMP_SPEEDUP))) {
-         writeToDevice(VSD_T_SPEEDUP, getValue(VSD_T_SPEEDUP));
-         return ok_r;
-       }
-    }
-  }
-  return err_r;
-}
-
-int VsdNovomet::setTimeSpeedDown(float value)
-{
-  // Записали время торможения (с)
-  if (!setValue(VSD_TIMER_DELAY, value)) {
-    // Записали темп торможения (Гц/с)
-    if (!setValue(VSD_TEMP_SPEEDDOWN, getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TIMER_DELAY))) {
-      // Записали время на 1Гц
-      if (!setValue(VSD_T_SPEEDDOWN, 1/getValue(VSD_TEMP_SPEEDDOWN))) {
-        writeToDevice(VSD_T_SPEEDDOWN, getValue(VSD_T_SPEEDDOWN));
-        return ok_r;
-      }
-    }
-  }
-  return err_r;
-}
-
-int VsdNovomet::setRotation(float value)
-{
-  if (value == VSD_ROTATION_DIRECT) {
-    writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_RIGHT_DIRECTION);
-  }
-  else {
-    writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_LEFT_DIRECTION);
-  }
-  return ok_r;
-}
-
-int VsdNovomet::setUfU1(float value)
-{
-  return Vsd::setUfU1(value);
-}
-
-int VsdNovomet::setUfU2(float value)
-{
-  return Vsd::setUfU2(value);
-}
-
-int VsdNovomet::setUfU3(float value)
-{
-  return Vsd::setUfU3(value);
-}
-
-int VsdNovomet::setUfU4(float value)
-{
-  return Vsd::setUfU4(value);
-}
-
-int VsdNovomet::setUfU5(float value)
-{
-  return Vsd::setUfU5(value);
-}
-
 void VsdNovomet::calcParameters(uint16_t id)
 {
 
-}
-
-int VsdNovomet::onRegimePush()
-{
-  if (parameters.get(CCS_RGM_RUN_PUSH_MODE) == Regime::OffAction)
-    return 1;
-
-  float freq = parameters.get(CCS_RGM_RUN_PUSH_FREQ);       // Получаем частоту толчков
-  float numPush = parameters.get(CCS_RGM_RUN_PUSH_QUANTITY);// Получаем количество толчков
-  float calcNumPush = 0;
-  uint16_t rotation = 1;
-  if (freq) {
-    calcNumPush = (8.0 / freq);                             // Количество толчков на указанной частоте
-  }                                                         // За один оборот двигателя
-  else {
-    calcNumPush = numPush;
-  }
-  rotation = (uint16_t)((numPush / calcNumPush) + 0.5);     // Вычисляем требуемое количество оборотов
-
-  float impulse = parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE); // Превышение напряжения
-  impulse = (uint16_t)((impulse - 100) / 10.0 + 0.5);       // Вычислили уставку напряжения
-  if ((impulse < 1.0) || (impulse > 10))
-    impulse = 1.0;
-
-  setNewValue(VSD_START_FREQ, freq);                        // Задаём частоту основного режима
-  setNewValue(VSD_SW_STARTUP_FREQUENCY, freq);              // Записали в ЧРП частоту
-  setNewValue(VSD_SW_STARTUP_ANGLE_OSC, 180.0);             // Угол константа
-  setNewValue(VSD_SW_STARTUP_OSC_COUNT, 1.0);               // Количество качаний константа
-  setNewValue(VSD_SW_STARTUP_ROTATIONS, rotation);          // Записали количество оборотов
-  setNewValue(VSD_SW_STARTUP_U_PULSE, impulse);             // Записали кратность импульса толчка
-  return setNewValue(VSD_SW_STARTUP_I_LIM_PULSE, 1500.0);   // Записали предел тока
-}
-
-int VsdNovomet::onRegimePickup()
-{
-  return 0;
-}
-
-int VsdNovomet::offRegimePush()
-{
-  return 0;
-}
-
-int VsdNovomet::onRegimeSwing()
-{
-  if (parameters.get(CCS_RGM_RUN_SWING_MODE) == Regime::OffAction)
-    return 1;
-
-  float freq = parameters.get(CCS_RGM_RUN_SWING_FREQ);       // Получаем частоту толчков
-  float numPush = parameters.get(CCS_RGM_RUN_SWING_QUANTITY);// Получаем количество толчков
-  float calcNumPush = 0;
-  uint16_t rotation = 1;
-  if (freq) {
-    calcNumPush = (8.0 / freq);                             // Количество толчков на указанной частоте
-  }                                                         // За один оборот двигателя
-  else {
-    calcNumPush = numPush;
-  }
-  rotation = (uint16_t)((numPush / calcNumPush) + 0.5);     // Вычисляем требуемое количество оборотов
-
-  float impulse = parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE); // Превышение напряжения
-  impulse = (uint16_t)((impulse - 100) / 10.0 + 0.5);       // Вычислили уставку напряжения
-  if ((impulse < 1.0) || (impulse > 10))
-    impulse = 1.0;
-
-  setNewValue(VSD_START_FREQ, freq);                        // Задаём частоту основного режима
-  setNewValue(VSD_SW_STARTUP_FREQUENCY, freq);              // Записали в ЧРП частоту
-  setNewValue(VSD_SW_STARTUP_ANGLE_OSC, 359.0);             // Угол константа
-  setNewValue(VSD_SW_STARTUP_OSC_COUNT, 2.0);               // Количество качаний константа
-  setNewValue(VSD_SW_STARTUP_ROTATIONS, rotation);          // Записали количество оборотов
-  setNewValue(VSD_SW_STARTUP_U_PULSE, impulse);             // Записали кратность импульса толчка
-  return setNewValue(VSD_SW_STARTUP_I_LIM_PULSE, 1500.0);   // Записали предел тока
-}
-
-int VsdNovomet::offRegimeSwing()
-{
-  return 0;
 }
 
 int VsdNovomet::onRegimeJarring()

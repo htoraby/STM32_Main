@@ -85,6 +85,289 @@ bool VsdDanfoss::isConnect()
   return curConnect;
 }
 
+// ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
+int VsdDanfoss::setMotorType(float value)
+{
+  if (!Vsd::setMotorType(value)) {
+    writeToDevice(VSD_MOTOR_TYPE, getValue(VSD_MOTOR_TYPE));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdEtalon::setMotorType");
+    return err_r;
+  }
+}
+
+// ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
+int VsdDanfoss::setRotation(float value)
+{
+  if(Vsd::setRotation(value)){
+    logDebug.add(WarningMsg, "VsdDanfoss::setRotation");
+    return err_r;
+  }
+  else {
+    writeToDevice(VSD_ROTATION, parameters.get(VSD_ROTATION));
+    return ok_r;
+  }
+}
+
+int VsdDanfoss::setMinFrequency(float value)
+{
+  if (!Vsd::setMinFrequency(value)) {
+    writeToDevice(VSD_LOW_LIM_SPEED_MOTOR, getValue(VSD_LOW_LIM_SPEED_MOTOR));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setMinFrequency");
+    return err_r;
+  }
+}
+
+int VsdDanfoss::setMaxFrequency(float value)
+{
+  if (!Vsd::setMaxFrequency(value)) {
+    writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setMaxFrequency");
+    return err_r;
+  }
+}
+
+int VsdDanfoss::setFrequency(float value)
+{
+  if (!Vsd::setFrequency(value)) {
+    writeToDevice(VSD_FREQUENCY, getValue(VSD_FREQUENCY));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setFrequency");
+    return err_r;
+  }
+}
+
+int VsdDanfoss::setTimeSpeedUp(float value)
+{
+  if (!Vsd::setTimeSpeedUp(value)) {
+    writeToDevice(VSD_TIMER_DISPERSAL, getValue(VSD_TIMER_DISPERSAL));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setTimeSpeedUp");
+    return err_r;
+  }    
+}
+
+int VsdDanfoss::setTimeSpeedDown(float value)
+{
+  if (!Vsd::setTimeSpeedDown(value)) {
+    writeToDevice(VSD_TIMER_DELAY, getValue(VSD_TIMER_DELAY));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setTimeSpeedDown");
+    return err_r;
+  }
+}
+
+int VsdDanfoss::setSwitchingFrequencyCode(float value)
+{
+  if (!Vsd::setSwitchingFrequencyCode(value)) {
+    writeToDevice(VSD_SWITCHING_FREQUENCY_CODE, getValue(VSD_SWITCHING_FREQUENCY_CODE));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setSwitchingFrequencyCode");
+    return err_r;
+  }
+}
+
+// НАСТРОЙКА U/f
+int VsdDanfoss::setUf_f1(float value)
+{
+  if (!Vsd::setUf_f1(value)) {
+    writeUf_F(0, getValue(VSD_UF_CHARACTERISTIC_F_1));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setUf_f1");
+    return err_r;
+  }
+}
+
+int VsdDanfoss::setUf_f2(float value)
+{
+  if (!Vsd::setUf_f2(value)) {
+    writeUf_F(1, getValue(VSD_UF_CHARACTERISTIC_F_2));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setUf_f2");
+    return err_r;
+  }
+}
+
+int VsdDanfoss::setUf_f3(float value)
+{
+  if (!Vsd::setUf_f3(value)) {
+    writeUf_F(2, getValue(VSD_UF_CHARACTERISTIC_F_3));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setUf_f3");
+    return err_r;
+  }
+}
+
+int VsdDanfoss::setUf_f4(float value)
+{
+  if (!Vsd::setUf_f4(value)) {
+    writeUf_F(3, getValue(VSD_UF_CHARACTERISTIC_F_4));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setUf_f4");
+    return err_r;
+  }
+}
+
+int VsdDanfoss::setUf_f5(float value)
+{
+  if (!Vsd::setUf_f5(value)) {
+    writeUf_F(4, getValue(VSD_UF_CHARACTERISTIC_F_5));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setUf_f5");
+    return err_r;
+  }
+}
+
+int VsdDanfoss::setUf_f6(float value)
+{
+  if (!Vsd::setUf_f6(value)) {
+    writeUf_F(5, getValue(VSD_UF_CHARACTERISTIC_F_6));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setUf_f6");
+    return err_r;
+  }
+}
+
+int VsdDanfoss::setUf_U1(float value)
+{
+  if (!Vsd::setUf_U1(value)) {
+    writeUf_U(0, getValue(VSD_UF_CHARACTERISTIC_U_1));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setUf_U1");
+    return err_r;
+  }
+}
+
+int VsdDanfoss::setUf_U2(float value)
+{
+  if (!Vsd::setUf_U2(value)) {
+    writeUf_U(1, getValue(VSD_UF_CHARACTERISTIC_U_2));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setUf_U2");
+    return err_r;
+  }
+}
+
+int VsdDanfoss::setUf_U3(float value)
+{
+  if (!Vsd::setUf_U3(value)) {
+    writeUf_U(2, getValue(VSD_UF_CHARACTERISTIC_U_3));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setUf_U3");
+    return err_r;
+  }
+}
+
+int VsdDanfoss::setUf_U4(float value)
+{
+  if (!Vsd::setUf_U4(value)) {
+    writeUf_U(3, getValue(VSD_UF_CHARACTERISTIC_U_4));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setUf_U4");
+    return err_r;
+  }
+}
+
+int VsdDanfoss::setUf_U5(float value)
+{
+  if (!Vsd::setUf_U5(value)) {
+    writeUf_U(4, getValue(VSD_UF_CHARACTERISTIC_U_5));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setUf_U5");
+    return err_r;
+  }
+}
+
+int VsdDanfoss::setUf_U6(float value)
+{
+  if (!Vsd::setUf_U6(value)) {
+    writeUf_U(5, getValue(VSD_UF_CHARACTERISTIC_U_6));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setUf_U6");
+    return err_r;
+  }
+}
+
+void VsdDanfoss::readUf_F(uint16_t numPoint)
+{
+  if (getValue(VSD_INDEX) != numPoint) {
+    writeToDevice(VSD_INDEX, numPoint);
+  }
+  readInDevice(VSD_UF_CHARACTERISTIC_F);
+}
+
+void VsdDanfoss::writeUf_F(uint16_t numPoint, float value)
+{
+  if (getValue(VSD_INDEX) != numPoint) {
+    writeToDevice(VSD_INDEX, numPoint);
+  }
+  writeToDevice(VSD_UF_CHARACTERISTIC_F, value);
+}
+
+void VsdDanfoss::readUf_U(uint16_t numPoint)
+{
+  if (getValue(VSD_INDEX) != numPoint) {
+    writeToDevice(VSD_INDEX, numPoint);
+  }
+  readInDevice(VSD_UF_CHARACTERISTIC_U);
+}
+
+void VsdDanfoss::writeUf_U(uint16_t numPoint, float value)
+{
+  if (getValue(VSD_INDEX) != numPoint) {
+    writeToDevice(VSD_INDEX, numPoint);
+  }
+  writeToDevice(VSD_UF_CHARACTERISTIC_U, value);
+}
+
+void VsdDanfoss::readUfCharacterictic()
+{
+  for (uint8_t i = 0; i < 6; i++) {
+    readUf_F(i);
+    readUf_U(i);
+  }
+}
+
 int VsdDanfoss::start()
 {
 #if USE_DEBUG
@@ -251,31 +534,6 @@ int VsdDanfoss::stopCoil(float type)
   }
 }
 
-int VsdDanfoss::setMotorControl(float value)
-{
-  if (Vsd::setMotorControl(value)) {
-    logDebug.add(WarningMsg, "VsdDanfoss::setTypeMotor");
-    return err_r;
-  }
-  else {
-    writeToDevice(VSD_MOTOR_CONTROL, value);
-    setMotorType(VSD_MOTOR_TYPE_VENT);
-    return ok_r;
-  }
-}
-
-int VsdDanfoss::setRotation(float value)
-{
-  if(Vsd::setRotation(value)){
-    logDebug.add(WarningMsg, "VsdDanfoss::setRotation");
-    return err_r;
-  }
-  else {
-    writeToDevice(VSD_ROTATION, parameters.get(VSD_ROTATION));
-    return ok_r;
-  }
-}
-
 void VsdDanfoss::getNewValue(uint16_t id)
 {
   float value = 0;
@@ -384,9 +642,40 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value)
 {
   int16_t result;
   switch (id) {
-  case VSD_MOTOR_CONTROL:
-    return setMotorControl(value);
-    break;
+
+  case VSD_MOTOR_TYPE:
+    if (!setMotorType(value)) {
+      if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) {
+        return setVsdControl(VSD_MOTOR_CONTROL_UF);
+      }
+      return ok_r;
+    }
+    return err_r;
+
+  case VSD_FREQUENCY:
+    return setFrequency(value);
+
+  case VSD_LOW_LIM_SPEED_MOTOR:
+    if (!setMinFrequency(value)) {
+      if (getValue(VSD_LOW_LIM_SPEED_MOTOR) > getValue(VSD_FREQUENCY)) {
+        return setFrequency(getValue(VSD_LOW_LIM_SPEED_MOTOR));
+      }
+      return ok_r;
+    }
+    return err_r;
+
+  case VSD_HIGH_LIM_SPEED_MOTOR:
+    if (!setMaxFrequency(value)) {
+      if (getValue(VSD_HIGH_LIM_SPEED_MOTOR) < getValue(VSD_FREQUENCY)) {
+        return setFrequency(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+      }
+      return ok_r;
+    }
+    return err_r;
+
+  case VSD_SWITCHING_FREQUENCY_CODE:
+    return setSwitchingFrequencyCode(value);
+
   case VSD_ROTATION:
     return setRotation(value);
     break;
@@ -407,36 +696,3 @@ void VsdDanfoss::readInDevice(int id)
 {
   dm_->readModbusParameter(id);
 }
-
-void VsdDanfoss::readUf_F(uint16_t numPoint)
-{
-  if (getValue(VSD_INDEX) != numPoint) {
-    writeToDevice(VSD_INDEX, numPoint);
-  }
-  readInDevice(VSD_UF_CHARACTERISTIC_F);
-}
-
-void VsdDanfoss::writeUf_F(uint16_t numPoint, float value)
-{
-  if (getValue(VSD_INDEX) != numPoint) {
-    writeToDevice(VSD_INDEX, numPoint);
-  }
-  writeToDevice(VSD_UF_CHARACTERISTIC_F, value);
-}
-
-void VsdDanfoss::readUf_U(uint16_t numPoint)
-{
-  if (getValue(VSD_INDEX) != numPoint) {
-    writeToDevice(VSD_INDEX, numPoint);
-  }
-  readInDevice(VSD_UF_CHARACTERISTIC_U);
-}
-
-void VsdDanfoss::writeUf_U(uint16_t numPoint, float value)
-{
-  if (getValue(VSD_INDEX) != numPoint) {
-    writeToDevice(VSD_INDEX, numPoint);
-  }
-  writeToDevice(VSD_UF_CHARACTERISTIC_U, value);
-}
-

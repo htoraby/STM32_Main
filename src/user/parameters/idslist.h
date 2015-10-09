@@ -1122,7 +1122,8 @@ enum enID
   VSD_VOLTAGE_FILTER_TIME_CONST = 10337,                     //!< 
   VSD_CONTROL_WORD_TIMEOUT_TIME = 10338,                     //!< 
   VSD_CURRENT_LIMIT_COEF = 10339,                            //!< Коэф.МТЗ мотор
-  VSD_END = 10340,                                           //!< 
+  VSD_SWITCHING_FREQUENCY_CODE = 10340,                      //!< Частота коммутации ШИМ
+  VSD_END = 10341,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме

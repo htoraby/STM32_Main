@@ -18465,7 +18465,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>1000.0</max>
+		<max>100.0</max>
 		<def>20.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -18486,7 +18486,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>1000.0</max>
+		<max>100.0</max>
 		<def>40.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -18507,7 +18507,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>1000.0</max>
+		<max>100.0</max>
 		<def>60.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -18528,7 +18528,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>1000.0</max>
+		<max>100.0</max>
 		<def>80.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -18549,7 +18549,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>1000.0</max>
+		<max>100.0</max>
 		<def>100.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -18835,6 +18835,28 @@
 	</param>
 	<param>
 		<id>10340</id>
+		<name>VSD_SWITCHING_FREQUENCY_CODE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>14.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Частота коммутации ШИМ</text>
+		<short_text>Частота коммутации ШИМ</short_text>
+		<form>3.2 ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-1,0кГц;1-1,5кГц;2-2,0кГц;3-2,5кГц;4-3,0кГц;5-3,5кГц;6-4,0кГц;7-5,0кГц;8-6,0кГц;9-7,0кГц;10-8,0кГц;11-9,0кГц;12-12,0кГц;13-14,0кГц;14-16,0кГц;</values>
+		<comment>Частота коммутации ШИМ</comment>
+	</param>
+	<param>
+		<id>10341</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>
