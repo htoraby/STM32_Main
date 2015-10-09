@@ -130,6 +130,9 @@ public:
   int setUf_U4(float value);
   int setUf_U5(float value);
 
+  int calcUfCharacteristicU(float value);
+  int calcUfCharacteristicF(float value);
+
   void readUfCharacterictic();
   int setBaseVoltage(float value);
   int setBaseFrequency(float value);

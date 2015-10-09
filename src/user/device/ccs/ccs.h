@@ -377,6 +377,8 @@ public:
    * \brief setFreq
    */
   void setFreq(float value);
+
+  int calcUfCharacteristic();
 private:
   /*!
    * \brief Метод добавления в очередь событий включения/мигания LED

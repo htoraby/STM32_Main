@@ -70,7 +70,6 @@ public:
   int setUf_U5(float value);
   int setUf_U6(float value);
 
-
   void getNewValue(uint16_t id);
   uint8_t setNewValue(uint16_t id, float value);
 

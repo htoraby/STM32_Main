@@ -358,6 +358,18 @@ public:
    */
   int setUf_U6(float value);
 
+  /*!
+   * \brief calcUfCharacteristic
+   * \return
+   */
+  int calcUfCharacteristicU(float value);
+
+  /*!
+   * \brief calcUfCharacteristicF
+   * \param value
+   * \return
+   */
+  int calcUfCharacteristicF(float value);
 
   /*!
    * \brief Метод задания предела тока

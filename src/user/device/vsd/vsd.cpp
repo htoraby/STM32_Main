@@ -231,7 +231,29 @@ int Vsd::setUf_U6(float value)
   return setValue(VSD_UF_CHARACTERISTIC_U_6, value);
 }
 
+int Vsd::calcUfCharacteristicU(float value)
+{
+  float voltStep = parameters.get(CCS_VOLTAGE_HIGH_LIMIT) / 6;
+  setUf_U1(voltStep * 1);
+  setUf_U2(voltStep * 2);
+  setUf_U3(voltStep * 3);
+  setUf_U4(voltStep * 4);
+  setUf_U5(voltStep * 5);
+  setUf_U6(voltStep * 6);
+  return ok_r;
+}
 
+int Vsd::calcUfCharacteristicF(float value)
+{
+  float freqStep = parameters.get(CCS_FREQUENCY_HIGH_LIMIT) / 6;
+  setUf_f1(freqStep * 1);
+  setUf_f2(freqStep * 2);
+  setUf_f3(freqStep * 3);
+  setUf_f4(freqStep * 4);
+  setUf_f5(freqStep * 5);
+  setUf_f6(freqStep * 6);
+  return ok_r;
+}
 
 int Vsd::setCurrentLim(float value)
 {

@@ -785,15 +785,13 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_VOLTAGE_HIGH_LIMIT:              // Максимальное входное напряжение
     err = setValue(id, value, eventType);
-    calcTransRecommendedTapOff();                      // Пересчитываем рекомендуемое напряжение отпайки
-    parameters.set(VSD_UF_CHARACTERISTIC_U_6, value);
-    parameters.set(VSD_ETALON_BASE_VOLTAGE, value);
+    calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
+    vsd->calcUfCharacteristicU(value);
     return err;
   case CCS_FREQUENCY_HIGH_LIMIT:
     err = setValue(id, value, eventType);
     calcTransRecommendedTapOff();
-parameters.set(VSD_UF_CHARACTERISTIC_F_6, value);
-    parameters.set(VSD_ETALON_BASE_FREQUENCY, value);
+    vsd->calcUfCharacteristicF(value);
     return err;
   case CCS_TRANS_NOMINAL_FREQUENCY_INPUT:
     err = setValue(id, value, eventType);

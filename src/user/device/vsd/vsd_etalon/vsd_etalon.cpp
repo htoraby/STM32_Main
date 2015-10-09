@@ -788,6 +788,16 @@ int VsdEtalon::setUf_U5(float value)
   }
 }
 
+int VsdEtalon::calcUfCharacteristicU(float value)
+{
+  return setBaseVoltage(value);
+}
+
+int VsdEtalon::calcUfCharacteristicF(float value)
+{
+  return setBaseFrequency(value);
+}
+
 void VsdEtalon::readUfCharacterictic()
 {
   readInDevice(VSD_UF_CHARACTERISTIC_F_1);

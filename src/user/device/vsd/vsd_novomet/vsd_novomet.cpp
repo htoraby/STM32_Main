@@ -421,6 +421,7 @@ int VsdNovomet::setUf_U6(float value)
   }
 }
 
+
 // Метод проверки и обновления параметров устройства
 void VsdNovomet::getNewValue(uint16_t id)
 {
