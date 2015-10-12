@@ -50,6 +50,7 @@ void gpioInit()
 
   initPinInput(POWER_WARNING_PIN);
   initPinInput(POWER_ALARM_PIN);
+  initPinInput(MASTER_GPIO_PIN);
   initPinOut(OFF_REL_PIN, PinSet);
   initPinOut(LCD_ON_PIN, PinSet);
   initPinOut(USB_ON_PIN, PinSet);
