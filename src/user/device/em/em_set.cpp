@@ -298,7 +298,6 @@ void EmSet::receiveAnswer()
 
 void EmSet::setParameter()
 {
-  float coefTrans = getValue(EM_COEFFICIENT_TRANS_CURRENT);
   unTypeData value;
   value.uint32_t = 0;
 
@@ -609,7 +608,7 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 33];
       value.char_t[2] = rxBuffer_[sizePkt_ - 32];
       value.char_t[3] = rxBuffer_[sizePkt_ - 31];
-      value.float_t = value.float_t/coefTrans;
+      value.float_t = value.float_t;
       setNewValue(EM_FULL_POWER, value.float_t);
 
       // 8. Реактивная мощность по 3 фазе
@@ -617,7 +616,7 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 37];
       value.char_t[2] = rxBuffer_[sizePkt_ - 36];
       value.char_t[3] = rxBuffer_[sizePkt_ - 35];
-      value.float_t = value.float_t/coefTrans;
+      value.float_t = value.float_t;
       setNewValue(EM_REACTIVE_POWER_PHASE_3, value.float_t);
 
       // 7. Реактивная мощность по 2 фазе
@@ -625,7 +624,7 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 41];
       value.char_t[2] = rxBuffer_[sizePkt_ - 40];
       value.char_t[3] = rxBuffer_[sizePkt_ - 39];
-      value.float_t = value.float_t/coefTrans;
+      value.float_t = value.float_t;
       setNewValue(EM_REACTIVE_POWER_PHASE_2, value.float_t);
 
       // 6.  Реактивная мощность по 1 фазе
@@ -633,7 +632,7 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 45];
       value.char_t[2] = rxBuffer_[sizePkt_ - 44];
       value.char_t[3] = rxBuffer_[sizePkt_ - 43];
-      value.float_t = value.float_t/coefTrans;
+      value.float_t = value.float_t;
       setNewValue(EM_REACTIVE_POWER_PHASE_1, value.float_t);
 
       // 5. Реактивная мощность по 3-м фазам
@@ -641,7 +640,7 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 49];
       value.char_t[2] = rxBuffer_[sizePkt_ - 48];
       value.char_t[3] = rxBuffer_[sizePkt_ - 47];
-      value.float_t = value.float_t/coefTrans;
+      value.float_t = value.float_t;
       setNewValue(EM_REACTIVE_POWER, value.float_t);
 
       // 4. Активная мсщность на фазе 3
@@ -649,7 +648,7 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 53];
       value.char_t[2] = rxBuffer_[sizePkt_ - 52];
       value.char_t[3] = rxBuffer_[sizePkt_ - 51];
-      value.float_t = value.float_t/coefTrans;
+      value.float_t = value.float_t;
       setNewValue(EM_ACTIVE_POWER_PHASE_3, value.float_t);
 
       // 3. Активная мсщность на фазе 2
@@ -657,7 +656,7 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 57];
       value.char_t[2] = rxBuffer_[sizePkt_ - 56];
       value.char_t[3] = rxBuffer_[sizePkt_ - 55];
-      value.float_t = value.float_t/coefTrans;
+      value.float_t = value.float_t;
       setNewValue(EM_ACTIVE_POWER_PHASE_2, value.float_t);
 
       // 2. Активная мсщность на фазе 1
@@ -665,7 +664,7 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 61];
       value.char_t[2] = rxBuffer_[sizePkt_ - 60];
       value.char_t[3] = rxBuffer_[sizePkt_ - 59];
-      value.float_t = value.float_t/coefTrans;
+      value.float_t = value.float_t;
       setNewValue(EM_ACTIVE_POWER_PHASE_1, value.float_t);
 
       // 1. Суммарная активная мощность по 3 фазам
@@ -673,7 +672,7 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 65];
       value.char_t[2] = rxBuffer_[sizePkt_ - 64];
       value.char_t[3] = rxBuffer_[sizePkt_ - 63];
-      value.float_t = value.float_t/coefTrans;
+      value.float_t = value.float_t;
       setNewValue(EM_ACTIVE_POWER, value.float_t);
       break;
   }
@@ -703,7 +702,6 @@ void EmSet::setParamEnergy()
 
 void EmSet::setParamEnergyConsumpAll()
 {
-  float coefTrans = getValue(EM_COEFFICIENT_TRANS_CURRENT);
   unTypeData value;
   value.uint32_t = 0;
 
@@ -712,7 +710,7 @@ void EmSet::setParamEnergyConsumpAll()
   value.char_t[1] = rxBuffer_[sizePkt_ - 4];
   value.char_t[2] = rxBuffer_[sizePkt_ - 5];
   value.char_t[3] = rxBuffer_[sizePkt_ - 6];
-  value.float_t = (float)value.uint32_t*coefTrans*constCoefTrans_/(2*constEm_);
+  value.float_t = (float)value.uint32_t*constCoefTrans_/(2*constEm_);
   setNewValue(EM_REACTIVE_MINUS_ALL, value.float_t);
 
   // 1. R+
@@ -720,7 +718,7 @@ void EmSet::setParamEnergyConsumpAll()
   value.char_t[1] = rxBuffer_[sizePkt_ - 8];
   value.char_t[2] = rxBuffer_[sizePkt_ - 9];
   value.char_t[3] = rxBuffer_[sizePkt_ - 10];
-  value.float_t = (float)value.uint32_t*coefTrans*constCoefTrans_/(2*constEm_);
+  value.float_t = (float)value.uint32_t*constCoefTrans_/(2*constEm_);
   setNewValue(EM_REACTIVE_PLUS_ALL, value.float_t);
 
   // 2. A-
@@ -728,7 +726,7 @@ void EmSet::setParamEnergyConsumpAll()
   value.char_t[1] = rxBuffer_[sizePkt_ - 12];
   value.char_t[2] = rxBuffer_[sizePkt_ - 13];
   value.char_t[3] = rxBuffer_[sizePkt_ - 14];
-  value.float_t = (float)value.uint32_t*coefTrans*constCoefTrans_/(2*constEm_);
+  value.float_t = (float)value.uint32_t*constCoefTrans_/(2*constEm_);
   setNewValue(EM_ACTIVE_MINUS_ALL, value.float_t);
 
   // 2. A+
@@ -736,13 +734,12 @@ void EmSet::setParamEnergyConsumpAll()
   value.char_t[1] = rxBuffer_[sizePkt_ - 16];
   value.char_t[2] = rxBuffer_[sizePkt_ - 17];
   value.char_t[3] = rxBuffer_[sizePkt_ - 18];
-  value.float_t = (float)value.uint32_t*coefTrans*constCoefTrans_/(2*constEm_);
+  value.float_t = (float)value.uint32_t*constCoefTrans_/(2*constEm_);
   setNewValue(EM_ACTIVE_PLUS_ALL, value.float_t);
 }
 
 void EmSet::setParamEnergyConsumpCurDay()
 {
-  float coefTrans = getValue(EM_COEFFICIENT_TRANS_CURRENT);
   unTypeData value;
   value.uint32_t = 0;
 
@@ -751,7 +748,7 @@ void EmSet::setParamEnergyConsumpCurDay()
   value.char_t[1] = rxBuffer_[sizePkt_ - 4];
   value.char_t[2] = rxBuffer_[sizePkt_ - 5];
   value.char_t[3] = rxBuffer_[sizePkt_ - 6];
-  value.float_t = (float)value.uint32_t*coefTrans*constCoefTrans_/(2*constEm_);
+  value.float_t = (float)value.uint32_t*constCoefTrans_/(2*constEm_);
   setNewValue(EM_REACTIVE_MINUS_CUR_DAY, value.float_t);
 
   // 1. R+
@@ -759,7 +756,7 @@ void EmSet::setParamEnergyConsumpCurDay()
   value.char_t[1] = rxBuffer_[sizePkt_ - 8];
   value.char_t[2] = rxBuffer_[sizePkt_ - 9];
   value.char_t[3] = rxBuffer_[sizePkt_ - 10];
-  value.float_t = (float)value.uint32_t*coefTrans*constCoefTrans_/(2*constEm_);
+  value.float_t = (float)value.uint32_t*constCoefTrans_/(2*constEm_);
   setNewValue(EM_REACTIVE_PLUS_CUR_DAY, value.float_t);
 
   // 2. A-
@@ -767,7 +764,7 @@ void EmSet::setParamEnergyConsumpCurDay()
   value.char_t[1] = rxBuffer_[sizePkt_ - 12];
   value.char_t[2] = rxBuffer_[sizePkt_ - 13];
   value.char_t[3] = rxBuffer_[sizePkt_ - 14];
-  value.float_t = (float)value.uint32_t*coefTrans*constCoefTrans_/(2*constEm_);
+  value.float_t = (float)value.uint32_t*constCoefTrans_/(2*constEm_);
   setNewValue(EM_ACTIVE_MINUS_CUR_DAY, value.float_t);
 
   // 2. A+
@@ -775,13 +772,12 @@ void EmSet::setParamEnergyConsumpCurDay()
   value.char_t[1] = rxBuffer_[sizePkt_ - 16];
   value.char_t[2] = rxBuffer_[sizePkt_ - 17];
   value.char_t[3] = rxBuffer_[sizePkt_ - 18];
-  value.float_t = (float)value.uint32_t*coefTrans*constCoefTrans_/(2*constEm_);
+  value.float_t = (float)value.uint32_t*constCoefTrans_/(2*constEm_);
   setNewValue(EM_ACTIVE_PLUS_CUR_DAY, value.float_t);
 }
 
 void EmSet::setParamEnergyConsumpPrevDay()
 {
-  float coefTrans = getValue(EM_COEFFICIENT_TRANS_CURRENT);
   unTypeData value;
   value.uint32_t = 0;
 
@@ -790,7 +786,7 @@ void EmSet::setParamEnergyConsumpPrevDay()
   value.char_t[1] = rxBuffer_[sizePkt_ - 4];
   value.char_t[2] = rxBuffer_[sizePkt_ - 5];
   value.char_t[3] = rxBuffer_[sizePkt_ - 6];
-  value.float_t = (float)value.uint32_t*coefTrans*constCoefTrans_/(2*constEm_);
+  value.float_t = (float)value.uint32_t*constCoefTrans_/(2*constEm_);
   setNewValue(EM_REACTIVE_MINUS_PREV_DAY, value.float_t);
 
   // 1. R+
@@ -798,7 +794,7 @@ void EmSet::setParamEnergyConsumpPrevDay()
   value.char_t[1] = rxBuffer_[sizePkt_ - 8];
   value.char_t[2] = rxBuffer_[sizePkt_ - 9];
   value.char_t[3] = rxBuffer_[sizePkt_ - 10];
-  value.float_t = (float)value.uint32_t*coefTrans*constCoefTrans_/(2*constEm_);
+  value.float_t = (float)value.uint32_t*constCoefTrans_/(2*constEm_);
   setNewValue(EM_REACTIVE_PLUS_PREV_DAY, value.float_t);
 
   // 2. A-
@@ -806,7 +802,7 @@ void EmSet::setParamEnergyConsumpPrevDay()
   value.char_t[1] = rxBuffer_[sizePkt_ - 12];
   value.char_t[2] = rxBuffer_[sizePkt_ - 13];
   value.char_t[3] = rxBuffer_[sizePkt_ - 14];
-  value.float_t = (float)value.uint32_t*coefTrans*constCoefTrans_/(2*constEm_);
+  value.float_t = (float)value.uint32_t*constCoefTrans_/(2*constEm_);
   setNewValue(EM_ACTIVE_MINUS_PREV_DAY, value.float_t);
 
   // 2. A+
@@ -814,13 +810,12 @@ void EmSet::setParamEnergyConsumpPrevDay()
   value.char_t[1] = rxBuffer_[sizePkt_ - 16];
   value.char_t[2] = rxBuffer_[sizePkt_ - 17];
   value.char_t[3] = rxBuffer_[sizePkt_ - 18];
-  value.float_t = (float)value.uint32_t*coefTrans*constCoefTrans_/(2*constEm_);
+  value.float_t = (float)value.uint32_t*constCoefTrans_/(2*constEm_);
   setNewValue(EM_ACTIVE_PLUS_PREV_DAY, value.float_t);
 }
 
 void EmSet::setParamEnergyConsumpCurMonth()
 {
-  float coefTrans = getValue(EM_COEFFICIENT_TRANS_CURRENT);
   unTypeData value;
   value.uint32_t = 0;
 
@@ -829,7 +824,7 @@ void EmSet::setParamEnergyConsumpCurMonth()
   value.char_t[1] = rxBuffer_[sizePkt_ - 4];
   value.char_t[2] = rxBuffer_[sizePkt_ - 5];
   value.char_t[3] = rxBuffer_[sizePkt_ - 6];
-  value.float_t = (float)value.uint32_t*coefTrans*constCoefTrans_/(2*constEm_);
+  value.float_t = (float)value.uint32_t*constCoefTrans_/(2*constEm_);
   setNewValue(EM_REACTIVE_MINUS_CUR_MONTH, value.float_t);
 
   // 1. R+
@@ -837,7 +832,7 @@ void EmSet::setParamEnergyConsumpCurMonth()
   value.char_t[1] = rxBuffer_[sizePkt_ - 8];
   value.char_t[2] = rxBuffer_[sizePkt_ - 9];
   value.char_t[3] = rxBuffer_[sizePkt_ - 10];
-  value.float_t = (float)value.uint32_t*coefTrans*constCoefTrans_/(2*constEm_);
+  value.float_t = (float)value.uint32_t*constCoefTrans_/(2*constEm_);
   setNewValue(EM_REACTIVE_PLUS_CUR_MONTH, value.float_t);
 
   // 2. A-
@@ -845,7 +840,7 @@ void EmSet::setParamEnergyConsumpCurMonth()
   value.char_t[1] = rxBuffer_[sizePkt_ - 12];
   value.char_t[2] = rxBuffer_[sizePkt_ - 13];
   value.char_t[3] = rxBuffer_[sizePkt_ - 14];
-  value.float_t = (float)value.uint32_t*coefTrans*constCoefTrans_/(2*constEm_);
+  value.float_t = (float)value.uint32_t*constCoefTrans_/(2*constEm_);
   setNewValue(EM_ACTIVE_MINUS_CUR_MONTH, value.float_t);
 
   // 2. A+
@@ -853,13 +848,12 @@ void EmSet::setParamEnergyConsumpCurMonth()
   value.char_t[1] = rxBuffer_[sizePkt_ - 16];
   value.char_t[2] = rxBuffer_[sizePkt_ - 17];
   value.char_t[3] = rxBuffer_[sizePkt_ - 18];
-  value.float_t = (float)value.uint32_t*coefTrans*constCoefTrans_/(2*constEm_);
+  value.float_t = (float)value.uint32_t*constCoefTrans_/(2*constEm_);
   setNewValue(EM_ACTIVE_PLUS_CUR_MONTH, value.float_t);
 }
 
 void EmSet::setParamEnergyConsumpPrevMonth()
 {
-  float coefTrans = getValue(EM_COEFFICIENT_TRANS_CURRENT);
   unTypeData value;
   value.uint32_t = 0;
 
@@ -868,7 +862,7 @@ void EmSet::setParamEnergyConsumpPrevMonth()
   value.char_t[1] = rxBuffer_[sizePkt_ - 4];
   value.char_t[2] = rxBuffer_[sizePkt_ - 5];
   value.char_t[3] = rxBuffer_[sizePkt_ - 6];
-  value.float_t = (float)value.uint32_t*coefTrans*constCoefTrans_/(2*constEm_);
+  value.float_t = (float)value.uint32_t*constCoefTrans_/(2*constEm_);
   setNewValue(EM_REACTIVE_MINUS_PREV_MONTH, value.float_t);
 
   // 1. R+
@@ -876,7 +870,7 @@ void EmSet::setParamEnergyConsumpPrevMonth()
   value.char_t[1] = rxBuffer_[sizePkt_ - 8];
   value.char_t[2] = rxBuffer_[sizePkt_ - 9];
   value.char_t[3] = rxBuffer_[sizePkt_ - 10];
-  value.float_t = (float)value.uint32_t*coefTrans*constCoefTrans_/(2*constEm_);
+  value.float_t = (float)value.uint32_t*constCoefTrans_/(2*constEm_);
   setNewValue(EM_REACTIVE_PLUS_PREV_MONTH, value.float_t);
 
   // 2. A-
@@ -884,7 +878,7 @@ void EmSet::setParamEnergyConsumpPrevMonth()
   value.char_t[1] = rxBuffer_[sizePkt_ - 12];
   value.char_t[2] = rxBuffer_[sizePkt_ - 13];
   value.char_t[3] = rxBuffer_[sizePkt_ - 14];
-  value.float_t = (float)value.uint32_t*coefTrans*constCoefTrans_/(2*constEm_);
+  value.float_t = (float)value.uint32_t*constCoefTrans_/(2*constEm_);
   setNewValue(EM_ACTIVE_MINUS_PREV_MONTH, value.float_t);
 
   // 2. A+
@@ -892,7 +886,7 @@ void EmSet::setParamEnergyConsumpPrevMonth()
   value.char_t[1] = rxBuffer_[sizePkt_ - 16];
   value.char_t[2] = rxBuffer_[sizePkt_ - 17];
   value.char_t[3] = rxBuffer_[sizePkt_ - 18];
-  value.float_t = (float)value.uint32_t*coefTrans*constCoefTrans_/(2*constEm_);
+  value.float_t = (float)value.uint32_t*constCoefTrans_/(2*constEm_);
   setNewValue(EM_ACTIVE_PLUS_PREV_MONTH, value.float_t);
 }
 
