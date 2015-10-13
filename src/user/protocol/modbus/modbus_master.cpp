@@ -10,7 +10,7 @@
 
 
 ModbusMaster::ModbusMaster()
-  : retryCnt_(MODBUS_COUNTER_LOST_CONNECT)
+  : retryCnt_(5)
   , timeOut_(MODBUS_ANSWER_TIMEOUT)
 {
   // TODO Auto-generated constructor stub
