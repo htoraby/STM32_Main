@@ -19,14 +19,13 @@ void Ccs::calcParametersTask()
     calcMotorCos();
     calcMotorLoad();
 
-    // TODO: Данные с счётчика для вывода на экран, а данные с платы ТурбВращ. для защит
-    calcInputVoltagePhase1();
-    calcInputVoltagePhase2();
-    calcInputVoltagePhase3();
-    calcInputVoltagePhase12();
-    calcInputVoltagePhase23();
-    calcInputVoltagePhase31();
-//    calcInputVoltageFromAdc();
+//    calcInputVoltagePhase1();
+//    calcInputVoltagePhase2();
+//    calcInputVoltagePhase3();
+//    calcInputVoltagePhase12();
+//    calcInputVoltagePhase23();
+//    calcInputVoltagePhase31();
+    calcInputVoltageFromAdc();
 
     calcInputVoltageImbalance();
     calcInputCurrentImbalance();
