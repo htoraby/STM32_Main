@@ -461,7 +461,7 @@ void Ccs::calcInputVoltageFromAdc()
     ucValue += (uValue[2 + i*3] - 2048)*(uValue[2 + i*3] - 2048);
 
     if (!checkPhaseRotation && ubValueOld) {
-      if (((uValue[1 + i*3] - 2048) > 0) && ((uValue[1 + i*3] - 2048) > ubValueOld)) {
+      if (((uValue[1 + i*3] - 2048) > 0) && (ubValueOld < 0)) {
         if ((uValue[1 + i*3] - 2048) < (uValue[0 + i*3] - 2048)) {
           countPhaseRotation_++;
           checkPhaseRotation = true;
