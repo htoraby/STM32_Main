@@ -6,12 +6,8 @@
 
 #define CMD_JEDEC_ID 0x9F
 
-#if USE_EXT_MEM
-  static uint8_t bufData[4096] __attribute__((section(".extmem")));
-#else
-  static uint8_t bufData[4096];
-#endif
-  static uint8_t buf[10];
+static uint8_t bufData[4096];
+static uint8_t buf[10];
 
 /*!
  \brief Спискок возможных производителей
