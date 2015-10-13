@@ -35,8 +35,8 @@ void VsdNovomet::init()
 
   initParameters();
   readParameters();
-  setLimitsMinFrequence(getValue(VSD_LOW_LIM_SPEED_MOTOR));
-  setLimitsMaxFrequence(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+  //setLimitsMinFrequence(getValue(VSD_LOW_LIM_SPEED_MOTOR));
+  //setLimitsMaxFrequence(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
 }
 
 void VsdNovomet::initParameters()
@@ -54,8 +54,8 @@ void VsdNovomet::initParameters()
     int indexArray = getIndexAtId(id);                                   // Получаем индекс параметра в банке параметров
     if (indexArray) {                                                    // Если нашли параметр
       setFieldAccess(indexArray, ACCESS_OPERATOR);                       // Уровень доступа оператор
-      setFieldOperation(indexArray, dm_->getFieldOperation(i));// Операции над параметром
-      setFieldPhysic(indexArray, dm_->getFieldPhysic(i));      // Физический смысл
+      setFieldOperation(indexArray, dm_->getFieldOperation(i)); // Операции над параметром
+      setFieldPhysic(indexArray, dm_->getFieldPhysic(i));       // Физический смысл
       float tempVal = dm_->getFieldMinimum(i);                  // Получаем минимум
       tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(i));// Применяем коэффициент
       tempVal = applyUnit(tempVal, dm_->getFieldPhysic(i), dm_->getFieldUnit(i));
@@ -475,17 +475,17 @@ void VsdNovomet::getNewValue(uint16_t id)
     break;
   case VSD_STATUS_WORD_1:
     setValue(id, value);
-    calcRotation();
     parameters.set(CCS_VSD_STATUS_WORD_1, value);
     break;
   case VSD_STATUS_WORD_2:
     setValue(id, value);
-    calcMotorType();
     parameters.set(CCS_VSD_STATUS_WORD_2, value);
     break;
   case VSD_STATUS_WORD_3:
     setValue(id, value);
     parameters.set(CCS_VSD_STATUS_WORD_3, value);
+    calcRotation();
+    calcMotorType();
     break;
   case VSD_STATUS_WORD_4:
     setValue(id, value);
@@ -529,6 +529,12 @@ void VsdNovomet::getNewValue(uint16_t id)
   case VSD_HIGH_LIM_SPEED_MOTOR:
     setValue(id, value);
     setLimitsMaxFrequence(value);
+    break;
+  case VSD_FREQUENCY:
+    setValue(id, value);
+    break;
+  case VSD_MOTOR_CURRENT:
+    setValue(id, value);
     break;
   default:                                  // Прямая запись в массив параметров
     setValue(id, value);

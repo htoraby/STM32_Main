@@ -223,7 +223,7 @@ public:
 
 
 private:
-  ModbusParameter modbusParameters_[135];
+  ModbusParameter modbusParameters_[149];
   DeviceModbus *dm_;
 
   RegimeRunNovomet *regimeRun_;

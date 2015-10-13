@@ -18857,6 +18857,300 @@
 	</param>
 	<param>
 		<id>10341</id>
+		<name>VSD_MAX_VC_DF</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>1.0</min>
+		<max>15.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Максимально допустимое отклонение частоты векторного режима</text>
+		<short_text>Максимально допустимое отклонение частоты векторного режима</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Максимально допустимое отклонение частоты векторного режима</comment>
+	</param>
+	<param>
+		<id>10342</id>
+		<name>VSD_TEST_TYPE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>8.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Регистр настроек для отладки</text>
+		<short_text>Регистр настроек для отладки</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Регистр настроек для отладки</comment>
+	</param>
+	<param>
+		<id>10343</id>
+		<name>VSD_CONTROL_WORD_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Расширенный регистр управления</text>
+		<short_text>Расширенный регистр управления</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Расширенный регистр управления</comment>
+	</param>
+	<param>
+		<id>10344</id>
+		<name>VSD_RES_INT_GAIN</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-20.0</min>
+		<max>20.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Коэффициент усиления интегральной ОС системы подавления резонанса</text>
+		<short_text>Коэффициент усиления интегральной ОС системы подавления резонанса</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Коэффициент усиления интегральной ОС системы подавления резонанса</comment>
+	</param>
+	<param>
+		<id>10345</id>
+		<name>VSD_STARTUP_I_LIM_MAX_F</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>1.0</min>
+		<max>500.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Не используется</text>
+		<short_text>Не используется</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Не используется</comment>
+	</param>
+	<param>
+		<id>10346</id>
+		<name>VSD_POWER_ACTIVE_NOW</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_ACTIVE_POWER</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Мгновенная активная мощность</text>
+		<short_text>Мгновенная активная мощность</short_text>
+		<form>1.2 Текущие параметры ЧРП</form>
+		<unit>ACTIV_POWER_W</unit>
+		<unit_lcd>ACTIV_POWER_KW</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Мгновенная активная мощность</comment>
+	</param>
+	<param>
+		<id>10347</id>
+		<name>VSD_RATE_OUT_NOW</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_RATE</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Мгновеннный момент</text>
+		<short_text>Мгновеннный момент</short_text>
+		<form>1.2 Текущие параметры ЧРП</form>
+		<unit>RATE_NM</unit>
+		<unit_lcd>RATE_NM</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Мгновеннный момент</comment>
+	</param>
+	<param>
+		<id>10348</id>
+		<name>VSD_IF_I_0</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>0.0</min>
+		<max>3000.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Ток при частоте 0Гц</text>
+		<short_text>Ток при частоте 0Гц</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Ток при частоте 0Гц</comment>
+	</param>
+	<param>
+		<id>10349</id>
+		<name>VSD_IF_I_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>0.0</min>
+		<max>3000.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Ток в точке VSD_UF_CHARACTERISTIC_F_1</text>
+		<short_text>Ток в точке VSD_UF_CHARACTERISTIC_F_1</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Ток в точке VSD_UF_CHARACTERISTIC_F_1</comment>
+	</param>
+	<param>
+		<id>10350</id>
+		<name>VSD_IF_I_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>0.0</min>
+		<max>3000.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Ток в точке VSD_UF_CHARACTERISTIC_F_2</text>
+		<short_text>Ток в точке VSD_UF_CHARACTERISTIC_F_2</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Ток в точке VSD_UF_CHARACTERISTIC_F_2</comment>
+	</param>
+	<param>
+		<id>10351</id>
+		<name>VSD_IF_I_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>0.0</min>
+		<max>3000.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Ток в точке VSD_UF_CHARACTERISTIC_F_3</text>
+		<short_text>Ток в точке VSD_UF_CHARACTERISTIC_F_3</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Ток в точке VSD_UF_CHARACTERISTIC_F_3</comment>
+	</param>
+	<param>
+		<id>10352</id>
+		<name>VSD_IF_I_4</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>0.0</min>
+		<max>3000.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Ток в точке VSD_UF_CHARACTERISTIC_F_4</text>
+		<short_text>Ток в точке VSD_UF_CHARACTERISTIC_F_4</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Ток в точке VSD_UF_CHARACTERISTIC_F_4</comment>
+	</param>
+	<param>
+		<id>10353</id>
+		<name>VSD_IF_I_5</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>0.0</min>
+		<max>3000.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Ток в точке VSD_UF_CHARACTERISTIC_F_5</text>
+		<short_text>Ток в точке VSD_UF_CHARACTERISTIC_F_5</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Ток в точке VSD_UF_CHARACTERISTIC_F_5</comment>
+	</param>
+	<param>
+		<id>10354</id>
+		<name>VSD_IF_I_6</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>0.0</min>
+		<max>3000.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Ток в точке VSD_UF_CHARACTERISTIC_F_6</text>
+		<short_text>Ток в точке VSD_UF_CHARACTERISTIC_F_6</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Ток в точке VSD_UF_CHARACTERISTIC_F_6</comment>
+	</param>
+	<param>
+		<id>10355</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>
