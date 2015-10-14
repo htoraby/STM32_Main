@@ -19,7 +19,7 @@ private:
   float endFreq_;
   float period_one_step_;
 
-  uint32_t beginTime_;
+  uint32_t timeout_;
 
 };
 

@@ -424,9 +424,9 @@ void Ccs::calcRegimeChangeFreqPeriodOneStep()
   if ((endFreq - beginFreq) != 0)
     periodOneStep = period / (fabs(endFreq - beginFreq)) * 0.1;
 
-  // Проверка на минимум 1 сек
-  if (periodOneStep < 1) {
-    periodOneStep = 1;
+  // Проверка на минимум 0.1 сек
+  if (periodOneStep < 0.1) {
+    periodOneStep = 0.1;
   }
   setValue(CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP, periodOneStep);
 }

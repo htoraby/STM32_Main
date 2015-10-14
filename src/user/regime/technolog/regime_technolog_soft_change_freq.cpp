@@ -17,7 +17,7 @@ void RegimeTechnologSoftChangeFreq::processing()
 
   beginFreq_ = parameters.get(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ);
   endFreq_ = parameters.get(CCS_RGM_CHANGE_FREQ_END_FREQ);
-  beginTime_ = parameters.getU32(CCS_RGM_CHANGE_FREQ_BEGIN_TIME);
+  timeout_ = parameters.getU32(CCS_RGM_CHANGE_FREQ_BEGIN_TIME);
   period_one_step_ = parameters.get(CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP);
 
   if (action_ == OffAction) { // Режим - выключен
@@ -31,16 +31,16 @@ void RegimeTechnologSoftChangeFreq::processing()
             (parameters.get(VSD_FREQUENCY_NOW) >= beginFreq_)) ||
            (parameters.get(CCS_CONDITION) == CCS_CONDITION_RUN)) && ksu.isAutoMode()) {
         ksu.setFreq(beginFreq_);
-        beginTime_ = ksu.getTime();
+        timeout_ = period_one_step_*10;
         state_ = WorkState;
       }
     }
     break;
   case WorkState:
     if (ksu.isWorkMotor() && ksu.isAutoMode()) { // Двигатель - работа; Режим - авто;
-      uint32_t time = ksu.getSecFromCurTime(beginTime_);
-      if ((time >= period_one_step_) && period_one_step_) {
-        beginTime_ = ksu.getTime();
+      timeout_--;
+      if ((timeout_ <= 0) && period_one_step_) {
+        timeout_ = period_one_step_*10;
         float freq = parameters.get(VSD_FREQUENCY) + copySign(0.1, endFreq_ - beginFreq_);
         float sign = copySign(1, endFreq_ - beginFreq_);
         if (freq * sign < endFreq_ * sign + 0.05) {
@@ -68,5 +68,5 @@ void RegimeTechnologSoftChangeFreq::processing()
   }
 
   parameters.set(CCS_RGM_CHANGE_FREQ_STATE, state_);
-  parameters.set(CCS_RGM_CHANGE_FREQ_BEGIN_TIME, beginTime_);
+  parameters.set(CCS_RGM_CHANGE_FREQ_BEGIN_TIME, timeout_);
 }
