@@ -15172,33 +15172,62 @@
 		<id>10096</id>
 		<name>VSD_DECEL_SPEEDDOWN</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
-		<discret>1</discret>
+		<def>100.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>100.0</value>
+		<text>Время торможения</text>
+		<short_text>Время торможения</short_text>
+		<form>Режим подхвата</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXX_X</format>
+		<code>13</code>
 		<comment>Время снижения уставки в режиме остановки турбинного вращения</comment>
 	</param>
 	<param>
 		<id>10097</id>
 		<name>VSD_DECEL_VOLTAGE</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>10.0</min>
+		<max>100.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>10.0</value>
+		<text>Напряжение остаточного напряжения на шине в режиме остановки турбинного вращения</text>
+		<short_text>Напряжение остаточного напряжения на шине в режиме остановки турбинного вращения</short_text>
+		<form>Режим подхвата</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Напряжение остаточного напряжения на шине (окончания разряда) в режиме остановки турбинного вращения (для ВД)</comment>
 	</param>
 	<param>
 		<id>10098</id>
 		<name>VSD_DECEL_F_MAX</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>1.0</min>
+		<max>500.0</max>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>1.0</value>
+		<text>Начальная частота режима остановки турбинного вращения</text>
+		<short_text>Начальная частота режима остановки турбинного вращения</short_text>
+		<form>Режим подхвата</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<code>13</code>
 		<comment>Начальная частота режима остановки турбинного вращения (для АД)</comment>
 	</param>
 	<param>
@@ -15664,11 +15693,21 @@
 		<id>10137</id>
 		<name>VSD_DECEL_U_MAX</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>5.0</min>
+		<max>500.0</max>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>5.0</value>
+		<text>Напряжение подхвата</text>
+		<short_text>Напряжение подхвата</short_text>
+		<form>Режим подхвата</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Стартовое напряжение торможения авторотации</comment>
 	</param>
 	<param>

@@ -86,6 +86,13 @@ bool ProtectionHardwareVsd::checkAlarm()
     parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_I_LIMIT);
     return true;
   }
+
+  if (vsd->checkStatusVsd(VSD_STATUS_DISCHARGE_ERR)) {
+    protReactEventId_ = HardwareVsd32ReactId;
+    parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_DISCHARGE_ERR);
+    return true;
+  }
+
   if (vsd->checkStatusVsd(VSD_STATUS_UNDERLOAD)) {
     protReactEventId_ = HardwareVsdUndervoltageProtReactId;
     parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_UNDERLOAD);
