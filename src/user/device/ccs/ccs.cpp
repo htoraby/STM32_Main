@@ -1069,14 +1069,21 @@ void Ccs::checkConnectDevice()
       setNewValue(CCS_VSD_CONNECTION, 1);
     else
       setNewValue(CCS_VSD_CONNECTION, 0);
+
     if (tms->isConnect())
       setNewValue(CCS_DHS_CONNECTION, 1);
     else
       setNewValue(CCS_DHS_CONNECTION, 0);
+
     if (em->isConnect())
       setNewValue(CCS_EM_CONNECTION, 1);
     else
       setNewValue(CCS_EM_CONNECTION, 0);
+
+    if (vsd->log() && vsd->log()->isConnect())
+      setNewValue(CCS_VSD_LOG_CONNECTION, 1);
+    else
+      setNewValue(CCS_VSD_LOG_CONNECTION, 0);
   }
   else {
     checkConnectDeviceTimer_--;

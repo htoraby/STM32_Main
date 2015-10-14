@@ -36,11 +36,6 @@ ProtectionHardwareVsd::~ProtectionHardwareVsd()
 
 bool ProtectionHardwareVsd::checkAlarm()
 {
-  if (!vsd->isConnect()) {
-    protReactEventId_ = HardwareVsdProtReactId;
-    parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_NO_CONNECT);
-    return true;
-  }
   if (vsd->checkStatusVsd(VSD_STATUS_FAULT_STOPPED)) {
     protReactEventId_ = HardwareVsdProtReactId;
     parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_FAULT_STOPPED);

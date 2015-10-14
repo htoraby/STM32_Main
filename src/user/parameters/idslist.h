@@ -784,7 +784,8 @@ enum enID
   CCS_PROT_OTHER_VSD_NO_CONNECT_MODE = 778,                  //!< "Защита от потери связи с ЧРП"
   CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY = 779,            //!< Задержка срабатывания уставка
   CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET = 780,    //!< Команда сброса уставок защиты от потери связи с ЧРП по умолчанию
-  CCS_END = 781,                                             //!< Последний параметр
+  CCS_VSD_LOG_CONNECTION = 781,                              //!< Связь с ЧРП - быстрые архивы
+  CCS_END = 782,                                             //!< Последний параметр
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
