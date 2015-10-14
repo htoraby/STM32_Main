@@ -1137,7 +1137,8 @@ enum enID
   VSD_IF_I_4 = 10352,                                        //!< Ток в точке VSD_UF_CHARACTERISTIC_F_4
   VSD_IF_I_5 = 10353,                                        //!< Ток в точке VSD_UF_CHARACTERISTIC_F_5
   VSD_IF_I_6 = 10354,                                        //!< Ток в точке VSD_UF_CHARACTERISTIC_F_6
-  VSD_END = 10355,                                           //!< 
+  VSD_SWITCHING_FREQUENCY_MODE = 10355,                      //!< Режим ШИМ модуляции
+  VSD_END = 10356,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме

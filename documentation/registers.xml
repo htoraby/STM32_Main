@@ -19151,6 +19151,28 @@
 	</param>
 	<param>
 		<id>10355</id>
+		<name>VSD_SWITCHING_FREQUENCY_MODE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Режим ШИМ модуляции</text>
+		<short_text>Режим ШИМ модуляции</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Синусоидальная;1-OverPWM1;2-OverPWM2</values>
+		<comment>Режим ШИМ модуляции</comment>
+	</param>
+	<param>
+		<id>10356</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>

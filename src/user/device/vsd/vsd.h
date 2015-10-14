@@ -124,6 +124,13 @@ enum enControl
   VSD_CONTROL_DISCHARGE_OFF   = 16384,   //!< Выключить предразряд шины инвертора
 };
 
+enum enSwitchFreqMode
+{
+  VSD_SWITCHING_FREQUENCY_MODE_SIN = 0,
+  VSD_SWITCHING_FREQUENCY_MODE_OVERPWM_1 = 1,
+  VSD_SWITCHING_FREQUENCY_MODE_OVERPWM_2 = 2
+};
+
 /*!
  * \brief Базовый класс ЧРП
  * Наследник класса Device использующий его структуру и методы хранения банка
@@ -278,6 +285,8 @@ public:
    * \return
    */
   int setSwitchingFrequencyCode(float value);
+
+  int setSwitchingFrequencyMode(float value);
 
   // НАСТРОЙКА U/f
   /*!

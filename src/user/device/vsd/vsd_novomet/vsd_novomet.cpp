@@ -182,11 +182,15 @@ int VsdNovomet::offRegimeSwing()
 
 int VsdNovomet::onRegimePickup()
 {
+  if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_VENT) {
+    writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_DISCHARGE_ON);
+  }
   return 0;
 }
 
 int VsdNovomet::offRegimePickup()
 {
+  writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_DISCHARGE_OFF);
   return 0;
 }
 
@@ -275,6 +279,31 @@ int VsdNovomet::setSwitchingFrequency(float value)
     return err_r;
   }
 }
+
+int VsdNovomet::setSwitchingFrequencyMode(float value)
+{
+  if (!Vsd::setSwitchingFrequencyMode(value)){
+    switch ((uint16_t)getValue(VSD_SWITCHING_FREQUENCY_MODE)) {
+    case VSD_SWITCHING_FREQUENCY_MODE_SIN:
+      value = VSD_CONTROL_OVERPWM_OFF;
+      break;
+    case VSD_SWITCHING_FREQUENCY_MODE_OVERPWM_1:
+      value = VSD_CONTROL_OVERPWM1_ON;
+      break;
+    case VSD_SWITCHING_FREQUENCY_MODE_OVERPWM_2:
+      value = VSD_CONTROL_OVERPWM2_ON;
+      break;
+    }
+    writeToDevice(VSD_CONTROL_WORD_1, value);
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setSwitchingFrequencyMode");
+    return err_r;
+  }
+}
+
+
 
 // НАСТРОЙКА U/f
 int VsdNovomet::setUf_f1(float value)
@@ -486,6 +515,7 @@ void VsdNovomet::getNewValue(uint16_t id)
     parameters.set(CCS_VSD_STATUS_WORD_3, value);
     calcRotation();
     calcMotorType();
+    calcSwitchFreqMode();
     break;
   case VSD_STATUS_WORD_4:
     setValue(id, value);
@@ -747,17 +777,6 @@ void VsdNovomet::processingRegimeRun()
   regimeRun_->processing();
 }
 
-
-void VsdNovomet::calcMotorType()
-{
-  if (checkStatusVsd(VSD_STATUS_M_TYPE0)) {
-    setValue(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_VENT);
-  }
-  else {
-    setValue(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_ASYNC);
-  }
-}
-
 void VsdNovomet::calcTempSpeedUp()
 {
   setValue(VSD_TEMP_SPEEDUP, 1/getValue(VSD_T_SPEEDUP));
@@ -788,12 +807,37 @@ void VsdNovomet::calcRotation()
   }
 }
 
+void VsdNovomet::calcMotorType()
+{
+  if (checkStatusVsd(VSD_STATUS_M_TYPE0)) {
+    setValue(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_VENT);
+  }
+  else {
+    setValue(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_ASYNC);
+  }
+}
+
 void VsdNovomet::calcCurrentDC()
 {
   float pwr = getValue(VSD_POWER_ACTIVE);
   float volt = getValue(VSD_VOLTAGE_DC);
   if (volt > 0) {
     setValue(VSD_CURRENT_DC, pwr/volt);
+  }
+}
+
+void VsdNovomet::calcSwitchFreqMode()
+{
+  if (checkStatusVsd(VSD_STATUS_OWERPWM1)) {
+    setValue(VSD_SWITCHING_FREQUENCY_MODE, VSD_SWITCHING_FREQUENCY_MODE_OVERPWM_1);
+  }
+  else {
+    if (checkStatusVsd(VSD_STATUS_OWERPWM2)) {
+      setValue(VSD_SWITCHING_FREQUENCY_MODE, VSD_SWITCHING_FREQUENCY_MODE_OVERPWM_2);
+    }
+    else {
+      setValue(VSD_SWITCHING_FREQUENCY_MODE, VSD_SWITCHING_FREQUENCY_MODE_SIN);
+    }
   }
 }
 

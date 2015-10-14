@@ -46,6 +46,7 @@ void RegimeRunNovomet::processingStateIdle()
 
 void RegimeRunNovomet::processingStateRunning()
 {
+  int pickupRun = 0;
   int pushRun = 0;
   int swingRun = 0;
   int autoRun = 0;
@@ -62,14 +63,12 @@ void RegimeRunNovomet::processingStateRunning()
     }
   }
 
-  /*
-    if (parameters.get(CCS_RGM_RUN_PICKUP_MODE)) {
-      queue[pickupRun] = VSD_REQULATOR_QUEUE_PICKUP;
-      pushRun++;
-      swingRun++;
-      autoRun++;
-    }
-  */
+  if (parameters.get(CCS_RGM_RUN_PICKUP_MODE) && (parameters.get(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC)) {
+    queue[pickupRun] = VSD_REQULATOR_QUEUE_PICKUP;
+    pushRun++;
+    swingRun++;
+    autoRun++;
+  }
 
   if (parameters.get(CCS_RGM_RUN_PUSH_MODE)) {
     queue[pushRun] = VSD_REQULATOR_QUEUE_PUSH;

@@ -170,6 +170,11 @@ int Vsd::setSwitchingFrequencyCode(float value)
   return err_r;
 }
 
+int Vsd::setSwitchingFrequencyMode(float value)
+{
+  return setValue(VSD_SWITCHING_FREQUENCY_MODE, value);
+}
+
 // НАСТРОЙКА U/f
 int Vsd::setUf_f1(float value)
 {

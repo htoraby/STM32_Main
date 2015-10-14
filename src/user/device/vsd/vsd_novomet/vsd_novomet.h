@@ -55,6 +55,12 @@ public:
   int setTimeSpeedUp(float value);
   int setTimeSpeedDown(float value);
   int setSwitchingFrequency(float value);
+  /*!
+   * \brief setSwitchingFrequencyMode функция выбора типа ШИМ модуляции
+   * \param value
+   * \return
+   */
+  int setSwitchingFrequencyMode(float value);
 
   // НАСТРОЙКА U/f
   int setUf_f1(float value);
@@ -203,6 +209,8 @@ public:
    */
   void calcCurrentDC();
 
+  void calcSwitchFreqMode();
+
   /*!
    * \brief Проверка на "необходимость" работы с параметром
    * \param indexParam
@@ -220,8 +228,6 @@ public:
    * \return
    */
   void resetRunQueue();
-
-
 private:
   ModbusParameter modbusParameters_[136];
   DeviceModbus *dm_;
