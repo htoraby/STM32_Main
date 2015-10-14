@@ -2314,6 +2314,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           1                 // Значение
   };
+  /*
   modbusParameters_[136] = {// Регистр настроек для отладки
                           VSD_TEST_TYPE,
                           212,              // 0x00D4 Адрес регистра в устройстве
@@ -2535,4 +2536,5 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
+  */
 }

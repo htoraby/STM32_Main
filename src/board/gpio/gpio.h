@@ -50,6 +50,8 @@ enum DoNum {
 #define POWER_BUTTON_PIN                GPIOI, GPIO_PIN_9
 #define SYS_RESET_BUTTON_PIN            GPIOC, GPIO_PIN_13
 
+#define MASTER_GPIO_PIN                 GPIOI, GPIO_PIN_10
+
 //! Вывод детектора основного питания
 #define POWER_WARNING_PIN  GPIOI, GPIO_PIN_5
 //! Вывод детектора ИБП
