@@ -4094,5 +4094,29 @@ void Vsd::initParameters()
   parameters_[VSD_SWITCHING_FREQUENCY_CODE - VSD_BEGIN].def                      = 0.0;
   parameters_[VSD_SWITCHING_FREQUENCY_CODE - VSD_BEGIN].discret                  = 1;
   parameters_[VSD_SWITCHING_FREQUENCY_CODE - VSD_BEGIN].code                     = 13;
+  // "Защита от потери связи с ЧРП"
+  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].id                           = VSD_PROT_NO_CONNECT_MODE;
+  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].physic                       = PHYSIC_NUMERIC;
+  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].validity                     = VALIDITY_OK;
+  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].value.float_t                = 1.0;
+  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].min                          = 0.0;
+  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].max                          = 1.0;
+  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].def                          = 1.0;
+  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].discret                      = 1;
+  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].code                         = 0;
+  // Защита от потери связи с ЧРП. Задержка срабатывания уставка
+  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].id                     = VSD_PROT_NO_CONNECT_TRIP_DELAY;
+  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].access                 = ACCESS_OPERATOR;
+  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].physic                 = PHYSIC_TIME;
+  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].validity               = VALIDITY_OK;
+  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].value.float_t          = 180.0;
+  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].min                    = 0.0;
+  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].max                    = 65535.0;
+  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].def                    = 180.0;
+  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].discret                = 1;
+  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].code                   = 0;
 }
 

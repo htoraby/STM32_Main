@@ -781,7 +781,10 @@ enum enID
   CCS_PROT_OTHER_VSD_ALARM = 775,                            //!< Код аппаратной аварии ЧРП
   CCS_VSD_SL_20_6 = 776,                                     //!< Таймер контроллера SL. Предел тока
   CCS_RESISTANCE_STATOR_STEP = 777,                          //!< Шаг изменения сопротивления изоляции
-  CCS_END = 778,                                             //!< Последний параметр
+  CCS_PROT_OTHER_VSD_NO_CONNECT_MODE = 778,                  //!< "Защита от потери связи с ЧРП"
+  CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY = 779,            //!< Задержка срабатывания уставка
+  CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET = 780,    //!< Команда сброса уставок защиты от потери связи с ЧРП по умолчанию
+  CCS_END = 781,                                             //!< Последний параметр
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
@@ -1123,7 +1126,9 @@ enum enID
   VSD_CONTROL_WORD_TIMEOUT_TIME = 10338,                     //!< 
   VSD_CURRENT_LIMIT_COEF = 10339,                            //!< Коэф.МТЗ мотор
   VSD_SWITCHING_FREQUENCY_CODE = 10340,                      //!< Частота коммутации ШИМ
-  VSD_END = 10341,                                           //!< 
+  VSD_PROT_NO_CONNECT_MODE = 10341,                          //!< "Защита от потери связи с ЧРП"
+  VSD_PROT_NO_CONNECT_TRIP_DELAY = 10342,                    //!< Защита от потери связи с ЧРП. Задержка срабатывания уставка
+  VSD_END = 10343,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме

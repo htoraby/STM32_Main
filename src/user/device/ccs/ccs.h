@@ -418,6 +418,7 @@ private:
   void cmdProtDhsResistanceSetpointReset();
 
   void cmdProtOtherHardwareVsdSetpointReset();
+  void cmdProtOtherVsdNoConnectSetpointReset();
 
   /*!
    * \brief calcCounterStop
