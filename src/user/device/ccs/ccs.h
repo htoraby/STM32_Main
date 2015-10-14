@@ -412,6 +412,7 @@ private:
   void cmdProtMotorOverloadSetpointReset();
   void cmdProtMotorUnderloadSetpointReset();
   void cmdProtMotorImbalanceCurrentSetpointReset();
+  void cmdProtMotorAsyncModeSetpointReset();
 
   void cmdProtDhsPressureIntakeSetpointReset();
   void cmdProtDhsTemperatureMotorSetpointReset();

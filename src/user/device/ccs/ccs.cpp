@@ -876,6 +876,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     cmdProtMotorImbalanceCurrentSetpointReset();
     return err;
+  case CCS_CMD_PROT_MOTOR_ASYNC_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtMotorAsyncModeSetpointReset();
+    return err;
   case CCS_CMD_PROT_DHS_PRESSURE_INTAKE_SETPOINT_RESET:
     err = setValue(id, value, eventType);
     cmdProtDhsPressureIntakeSetpointReset();
@@ -1137,6 +1141,14 @@ void Ccs::cmdProtMotorImbalanceCurrentSetpointReset()
 {
   for (uint16_t i = CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE;
        i <= CCS_PROT_MOTOR_IMBALANCE_CURRENT_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtMotorAsyncModeSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_MOTOR_ASYNC_MODE;
+       i <= CCS_PROT_MOTOR_ASYNC_MODE; i++) {
     resetValue(i);
   }
 }
