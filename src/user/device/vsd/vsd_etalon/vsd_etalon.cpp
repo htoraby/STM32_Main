@@ -114,12 +114,12 @@ int VsdEtalon::setMotorType(float value)
 int VsdEtalon::setRotation(float value)
 {
   if (!Vsd::setRotation(value)){
-    writeToDevice(VSD_ROTATION, getValue(VSD_ROTATION));  
+    writeToDevice(VSD_ROTATION, getValue(VSD_ROTATION));
     return ok_r;
   }
   else {
     logDebug.add(WarningMsg, "VsdEtalon::setRotation");
-    return err_r;    
+    return err_r;
   }
 }
 
@@ -168,7 +168,7 @@ int VsdEtalon::setTimeSpeedUp(float value)
   else {
     logDebug.add(WarningMsg, "VsdEtalon::setTimeSpeedUp");
     return err_r;
-  }    
+  }
 }
 
 int VsdEtalon::setTimeSpeedDown(float value)
@@ -180,7 +180,7 @@ int VsdEtalon::setTimeSpeedDown(float value)
   else {
     logDebug.add(WarningMsg, "VsdEtalon::setTimeSpeedUp");
     return err_r;
-  }    
+  }
 }
 
 int VsdEtalon::setSwitchingFrequency(float value)
@@ -476,10 +476,10 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
     return err_r;
     
   case  VSD_MOTOR_CONTROL:
-    return setVsdControl(value);    
+    return setVsdControl(value);
     
   case VSD_ROTATION:
-    return setRotation(value);    
+    return setRotation(value);
 
   case VSD_LOW_LIM_SPEED_MOTOR:
     if (!setMinFrequency(value)) {
@@ -500,7 +500,7 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
     return err_r;
     
   case VSD_FREQUENCY:
-    return setFrequency(value);    
+    return setFrequency(value);
 
   case VSD_TEMP_SPEEDUP:
     return setTimeSpeedUp(value);
@@ -576,13 +576,13 @@ int VsdEtalon::start()
       timeMs = 0;
       countRepeats++;
 
-    if (countRepeats > VSD_CMD_NUMBER_REPEATS)
-      return err_r;
+      if (countRepeats > VSD_CMD_NUMBER_REPEATS)
+        return err_r;
 
-    if (vsd->resetBlock())
-      return err_r;
-    if (setNewValue(VSD_ON, 1))
-      return err_r;
+      if (vsd->resetBlock())
+        return err_r;
+      if (setNewValue(VSD_ON, 1))
+        return err_r;
     }
     else {
       timeMs = timeMs + 100;
@@ -592,7 +592,7 @@ int VsdEtalon::start()
 
     if (checkStatusVsd(VSD_STATUS_STARTED))
       return ok_r;
-    }
+  }
 }
 
 bool VsdEtalon::checkStart()
@@ -871,7 +871,7 @@ int VsdEtalon::setUfU(uint16_t id, float value)
   }
   else {
     writeToDevice(id, (getValue(id) * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE));
-  return ok_r;
+    return ok_r;
   }
 }
 
