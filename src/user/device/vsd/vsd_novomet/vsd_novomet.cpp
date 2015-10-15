@@ -107,6 +107,8 @@ int VsdNovomet::setMotorType(float value)
   }
 }
 
+
+
 // РЕЖИМЫ ПУСКА
 int VsdNovomet::onRegimePush()
 {
@@ -303,7 +305,17 @@ int VsdNovomet::setSwitchingFrequencyMode(float value)
   }
 }
 
-
+int VsdNovomet::setResonanceRemoveSource(float value)
+{
+  if (!Vsd::setResonanceRemoveSource(value)){
+    writeToDevice(VSD_CONTROL_WORD_2, value);
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setResonanceRemoveSource");
+    return err_r;
+  }
+}
 
 // НАСТРОЙКА U/f
 int VsdNovomet::setUf_f1(float value)
@@ -516,6 +528,7 @@ void VsdNovomet::getNewValue(uint16_t id)
     calcRotation();
     calcMotorType();
     calcSwitchFreqMode();
+    calcResonanceRemoveSource();
     break;
   case VSD_STATUS_WORD_4:
     setValue(id, value);
@@ -839,6 +852,11 @@ void VsdNovomet::calcSwitchFreqMode()
       setValue(VSD_SWITCHING_FREQUENCY_MODE, VSD_SWITCHING_FREQUENCY_MODE_SIN);
     }
   }
+}
+
+void VsdNovomet::calcResonanceRemoveSource()
+{
+  setValue(VSD_RES_MODE, ((uint16_t)getValue(VSD_STATUS_WORD_3)) & 0x0003);
 }
 
 void VsdNovomet::calcParameters(uint16_t id)

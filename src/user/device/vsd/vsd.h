@@ -124,6 +124,13 @@ enum enControl
   VSD_CONTROL_DISCHARGE_OFF   = 16384,   //!< Выключить предразряд шины инвертора
 };
 
+enum enControl2
+{
+  VSD_CONTROL_2_RES_ANGLE     = 1,       //!< Установить сигнал о колебания по углу
+  VSD_CONTROL_2_RES_TORQUE    = 2,       //!< Установить сигнал о колебания по моменту
+  VSD_CONTROL_2_RES_POWER     = 4,       //!< Установить сигнал о колебаниях по мощности
+};
+
 enum enSwitchFreqMode
 {
   VSD_SWITCHING_FREQUENCY_MODE_SIN = 0,
@@ -277,16 +284,28 @@ public:
    * \param value задаваемая частота коммутации (Частота ШИМ)
    * \return 0 - задание успешно, № - ошибки
    */
-  int setSwitchingFrequency(float value);
+  virtual int setSwitchingFrequency(float value);
 
   /*!
    * \brief setSwitchingFrequencyCode
    * \param value
    * \return
    */
-  int setSwitchingFrequencyCode(float value);
+  virtual int setSwitchingFrequencyCode(float value);
 
-  int setSwitchingFrequencyMode(float value);
+  /*!
+   * \brief setSwitchingFrequencyMode
+   * \param value
+   * \return
+   */
+  virtual int setSwitchingFrequencyMode(float value);
+
+  /*!
+   * \brief setResonanceRemoveSource
+   * \param value
+   * \return
+   */
+  virtual int setResonanceRemoveSource(float value);
 
   // НАСТРОЙКА U/f
   /*!

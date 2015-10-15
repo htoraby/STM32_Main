@@ -1071,17 +1071,17 @@ void Vsd::initParameters()
   parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].discret                                = 10000;
   parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].code                                   = 0;
   // Фазовый коэффициент усиления системы подавления резонанса
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].id                                    = VSD_VANGLE_GAIN;
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].access                                = ACCESS_OPERATOR;
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].operation                             = 0;
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].physic                                = 0;
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].validity                              = VALIDITY_ERROR;
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].value.float_t                         = 0;
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].max                                   = 999999.0;
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].def                                   = 0;
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].discret                               = 1;
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].code                                  = 0;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].id                                  = VSD_RES_PROP_GAIN;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].access                              = ACCESS_OPERATOR;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].operation                           = 0;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].physic                              = 0;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].validity                            = VALIDITY_ERROR;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].value.float_t                       = 0;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].min                                 = 0.0;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].max                                 = 999999.0;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].def                                 = 0;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].discret                             = 1;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].code                                = 0;
   // Постоянная времени системы подавления резонанса
   parameters_[VSD_RES_TIMECONST - VSD_BEGIN].id                                  = VSD_RES_TIMECONST;
   parameters_[VSD_RES_TIMECONST - VSD_BEGIN].access                              = ACCESS_OPERATOR;
@@ -4274,5 +4274,17 @@ void Vsd::initParameters()
   parameters_[VSD_SWITCHING_FREQUENCY_MODE - VSD_BEGIN].def                      = 0.0;
   parameters_[VSD_SWITCHING_FREQUENCY_MODE - VSD_BEGIN].discret                  = 1;
   parameters_[VSD_SWITCHING_FREQUENCY_MODE - VSD_BEGIN].code                     = 13;
+  // Источник сигнала о колебаниях
+  parameters_[VSD_RES_MODE - VSD_BEGIN].id                                       = VSD_RES_MODE;
+  parameters_[VSD_RES_MODE - VSD_BEGIN].access                                   = ACCESS_OPERATOR;
+  parameters_[VSD_RES_MODE - VSD_BEGIN].operation                                = OPERATION_WRITE;
+  parameters_[VSD_RES_MODE - VSD_BEGIN].physic                                   = PHYSIC_NUMERIC;
+  parameters_[VSD_RES_MODE - VSD_BEGIN].validity                                 = VALIDITY_ERROR;
+  parameters_[VSD_RES_MODE - VSD_BEGIN].value.float_t                            = 0.0;
+  parameters_[VSD_RES_MODE - VSD_BEGIN].min                                      = 0.0;
+  parameters_[VSD_RES_MODE - VSD_BEGIN].max                                      = 2.0;
+  parameters_[VSD_RES_MODE - VSD_BEGIN].def                                      = 0.0;
+  parameters_[VSD_RES_MODE - VSD_BEGIN].discret                                  = 1;
+  parameters_[VSD_RES_MODE - VSD_BEGIN].code                                     = 13;
 }
 

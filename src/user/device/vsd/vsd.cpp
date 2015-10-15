@@ -175,6 +175,11 @@ int Vsd::setSwitchingFrequencyMode(float value)
   return setValue(VSD_SWITCHING_FREQUENCY_MODE, value);
 }
 
+int Vsd::setResonanceRemoveSource(float value)
+{
+  return setValue(VSD_RES_MODE, value);
+}
+
 // НАСТРОЙКА U/f
 int Vsd::setUf_f1(float value)
 {
