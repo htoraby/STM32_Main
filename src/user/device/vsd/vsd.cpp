@@ -170,6 +170,11 @@ int Vsd::setSwitchingFrequencyCode(float value)
   return err_r;
 }
 
+int Vsd::setSwitchingFrequencyMode(float value)
+{
+  return setValue(VSD_SWITCHING_FREQUENCY_MODE, value);
+}
+
 // НАСТРОЙКА U/f
 int Vsd::setUf_f1(float value)
 {
@@ -346,14 +351,17 @@ bool Vsd::checkStatusVsd(uint8_t bit)
   if ((bit >= VSD_STATUS_FC_I2T_ERR) && (bit <= (VSD_STATUS_FC_I2T_ERR+15)))
     return checkBit(parameters.get(CCS_VSD_STATUS_WORD_2), bit - 16);
 
+  if ((bit >= VSD_STATUS_RIGHT_DIRECTION) && (bit <= (VSD_STATUS_RIGHT_DIRECTION + 15)))
+    return checkBit(parameters.get(CCS_VSD_STATUS_WORD_3), bit - 32);
+
   if ((bit >= VSD_STATUS_IMAX) && (bit <= (VSD_STATUS_IMAX + 15)))
-    return checkBit(parameters.get(CCS_VSD_STATUS_WORD_7), bit - 32);
+    return checkBit(parameters.get(CCS_VSD_STATUS_WORD_7), bit - 48);
 
   if ((bit >= VSD_STATUS_ABC_STATE) && (bit <= (VSD_STATUS_ABC_STATE + 15)))
-    return checkBit(parameters.get(CCS_VSD_STATUS_WORD_5), bit - 48);
+    return checkBit(parameters.get(CCS_VSD_STATUS_WORD_5), bit - 64);
 
   if ((bit >= VSD_STATUS_READY) && (bit <= (VSD_STATUS_READY + 15)))
-    return checkBit(parameters.get(CCS_VSD_STATUS_WORD_4), bit - 64);
+    return checkBit(parameters.get(CCS_VSD_STATUS_WORD_4), bit - 80);
 
   else
     return false;

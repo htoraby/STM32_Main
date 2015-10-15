@@ -30,13 +30,13 @@ void VsdNovomet::init()
   // Создание объекта протокола связи с утройством
   int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
   dm_ = new DeviceModbus(modbusParameters_, count,
-                         VSD_UART, 19200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1);
+                         VSD_UART, 57600, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1);
   dm_->createThread("ProtocolVsd", getValueDeviceQId_);
 
   initParameters();
   readParameters();
-  setLimitsMinFrequence(getValue(VSD_LOW_LIM_SPEED_MOTOR));
-  setLimitsMaxFrequence(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+  //setLimitsMinFrequence(getValue(VSD_LOW_LIM_SPEED_MOTOR));
+  //setLimitsMaxFrequence(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
 }
 
 void VsdNovomet::initParameters()
@@ -54,8 +54,8 @@ void VsdNovomet::initParameters()
     int indexArray = getIndexAtId(id);                                   // Получаем индекс параметра в банке параметров
     if (indexArray) {                                                    // Если нашли параметр
       setFieldAccess(indexArray, ACCESS_OPERATOR);                       // Уровень доступа оператор
-      setFieldOperation(indexArray, dm_->getFieldOperation(i));// Операции над параметром
-      setFieldPhysic(indexArray, dm_->getFieldPhysic(i));      // Физический смысл
+      setFieldOperation(indexArray, dm_->getFieldOperation(i)); // Операции над параметром
+      setFieldPhysic(indexArray, dm_->getFieldPhysic(i));       // Физический смысл
       float tempVal = dm_->getFieldMinimum(i);                  // Получаем минимум
       tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(i));// Применяем коэффициент
       tempVal = applyUnit(tempVal, dm_->getFieldPhysic(i), dm_->getFieldUnit(i));
@@ -182,11 +182,15 @@ int VsdNovomet::offRegimeSwing()
 
 int VsdNovomet::onRegimePickup()
 {
+  if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_VENT) {
+    writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_DISCHARGE_ON);
+  }
   return 0;
 }
 
 int VsdNovomet::offRegimePickup()
 {
+  writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_DISCHARGE_OFF);
   return 0;
 }
 
@@ -275,6 +279,31 @@ int VsdNovomet::setSwitchingFrequency(float value)
     return err_r;
   }
 }
+
+int VsdNovomet::setSwitchingFrequencyMode(float value)
+{
+  if (!Vsd::setSwitchingFrequencyMode(value)){
+    switch ((uint16_t)getValue(VSD_SWITCHING_FREQUENCY_MODE)) {
+    case VSD_SWITCHING_FREQUENCY_MODE_SIN:
+      value = VSD_CONTROL_OVERPWM_OFF;
+      break;
+    case VSD_SWITCHING_FREQUENCY_MODE_OVERPWM_1:
+      value = VSD_CONTROL_OVERPWM1_ON;
+      break;
+    case VSD_SWITCHING_FREQUENCY_MODE_OVERPWM_2:
+      value = VSD_CONTROL_OVERPWM2_ON;
+      break;
+    }
+    writeToDevice(VSD_CONTROL_WORD_1, value);
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setSwitchingFrequencyMode");
+    return err_r;
+  }
+}
+
+
 
 // НАСТРОЙКА U/f
 int VsdNovomet::setUf_f1(float value)
@@ -475,17 +504,18 @@ void VsdNovomet::getNewValue(uint16_t id)
     break;
   case VSD_STATUS_WORD_1:
     setValue(id, value);
-    calcRotation();
     parameters.set(CCS_VSD_STATUS_WORD_1, value);
     break;
   case VSD_STATUS_WORD_2:
     setValue(id, value);
-    calcMotorType();
     parameters.set(CCS_VSD_STATUS_WORD_2, value);
     break;
   case VSD_STATUS_WORD_3:
     setValue(id, value);
     parameters.set(CCS_VSD_STATUS_WORD_3, value);
+    calcRotation();
+    calcMotorType();
+    calcSwitchFreqMode();
     break;
   case VSD_STATUS_WORD_4:
     setValue(id, value);
@@ -529,6 +559,12 @@ void VsdNovomet::getNewValue(uint16_t id)
   case VSD_HIGH_LIM_SPEED_MOTOR:
     setValue(id, value);
     setLimitsMaxFrequence(value);
+    break;
+  case VSD_FREQUENCY:
+    setValue(id, value);
+    break;
+  case VSD_MOTOR_CURRENT:
+    setValue(id, value);
     break;
   default:                                  // Прямая запись в массив параметров
     setValue(id, value);
@@ -741,17 +777,6 @@ void VsdNovomet::processingRegimeRun()
   regimeRun_->processing();
 }
 
-
-void VsdNovomet::calcMotorType()
-{
-  if (checkStatusVsd(VSD_STATUS_M_TYPE0)) {
-    setValue(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_VENT);
-  }
-  else {
-    setValue(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_ASYNC);
-  }
-}
-
 void VsdNovomet::calcTempSpeedUp()
 {
   setValue(VSD_TEMP_SPEEDUP, 1/getValue(VSD_T_SPEEDUP));
@@ -782,12 +807,37 @@ void VsdNovomet::calcRotation()
   }
 }
 
+void VsdNovomet::calcMotorType()
+{
+  if (checkStatusVsd(VSD_STATUS_M_TYPE0)) {
+    setValue(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_VENT);
+  }
+  else {
+    setValue(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_ASYNC);
+  }
+}
+
 void VsdNovomet::calcCurrentDC()
 {
   float pwr = getValue(VSD_POWER_ACTIVE);
   float volt = getValue(VSD_VOLTAGE_DC);
   if (volt > 0) {
     setValue(VSD_CURRENT_DC, pwr/volt);
+  }
+}
+
+void VsdNovomet::calcSwitchFreqMode()
+{
+  if (checkStatusVsd(VSD_STATUS_OWERPWM1)) {
+    setValue(VSD_SWITCHING_FREQUENCY_MODE, VSD_SWITCHING_FREQUENCY_MODE_OVERPWM_1);
+  }
+  else {
+    if (checkStatusVsd(VSD_STATUS_OWERPWM2)) {
+      setValue(VSD_SWITCHING_FREQUENCY_MODE, VSD_SWITCHING_FREQUENCY_MODE_OVERPWM_2);
+    }
+    else {
+      setValue(VSD_SWITCHING_FREQUENCY_MODE, VSD_SWITCHING_FREQUENCY_MODE_SIN);
+    }
   }
 }
 

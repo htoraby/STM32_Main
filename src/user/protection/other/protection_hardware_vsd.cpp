@@ -186,11 +186,6 @@ bool ProtectionHardwareVsd::checkAlarm()
     parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_MB_MON);
     return true;
   }
-  if (vsd->checkStatusVsd(VSD_STATUS_CLK_MON)) {
-    protReactEventId_ = HardwareVsdEepromReactId;
-    parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_CLK_MON);
-    return true;
-  }
   if (vsd->checkStatusVsd(VSD_STATUS_I_FAST_ERR)) {
     protReactEventId_ = HardwareVsdIfastReactId;
     parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_I_FAST_ERR);

@@ -25,7 +25,7 @@ enum enStatus {
   VSD_STATUS_STOPPED_EXTERNAL     = 3,      //!< Инвертор остановлен по команде извне
   VSD_STATUS_WAIT_RECT_STOP       = 4,      //!< Ожидание остнова выпрямителя
   VSD_STATUS_FAULT_STOPPED        = 5,      //!< Остановлен по причине FAULT
-  VSD_STATUS_RIGHT_DIRECTION      = 6,      //!< Правое направление вращения
+  VSD_STATUS_1_RESERVED_6         = 6,      //!< Резерв
   VSD_STATUS_I_LIMIT              = 7,      //!< Токоограничение
   VSD_STATUS_ULOW                 = 8,      //!< Недостаточно напряжения
   VSD_STATUS_STOPPED_ALARM        = 9,      //!< Остановлен аварийно
@@ -42,18 +42,24 @@ enum enStatus {
   VSD_STATUS_CURRENT_OPT          = 19,     //!< Включена оптимизация по току
   VSD_STATUS_POWER_OPT            = 20,     //!< Включена оптимизация по выходной мощности
   VSD_STATUS_OPT_DONE             = 21,     //!< Оптимизация состоялась
-  VSD_STATUS_M_TYPE0              = 22,     //!< Бит типа двигателя 0
-  VSD_STATUS_M_TYPE1              = 23,     //!< Бит типа двигателя 1
+  VSD_STATUS_2_RESERVED_22        = 22,     //!< Резерв
+  VSD_STATUS_2_RESERVED_23        = 23,     //!< Резерв
   VSD_STATUS_DISCHARGE_ON         = 24,     //!< Задействован режим разряда шины
   VSD_STATUS_DISCAHRGE            = 25,     //!< Режим разряда шины работает
   VSD_STATUS_DISCHARGE_ERR        = 26,     //!< Ошибка режима разряда шины
   VSD_STATUS_VC_ERR               = 27,     //!< Ошибка векторного режима
   VSD_STATUS_I_FAST_ERR           = 28,     //!< Быстрая токовая защита двигателя
   VSD_STATUS_M_I2T_ERR            = 29,     //!< Токовая защита двигателя (перегруз)
-  VSD_STATUS_OWERPWM1             = 30,     //!< OverPWM тип 1
-  VSD_STATUS_OWERPWM2             = 31,     //!< OverPWM тип 2
+  VSD_STATUS_2_RESERVED_30        = 30,     //!< Резерв
+  VSD_STATUS_2_RESERVED_31        = 31,     //!< Резерв
   // STATUS_WORD_3
-  VSD_STATUS_3                    = 32,
+  VSD_STATUS_RIGHT_DIRECTION      = 32,     //!< Правое направление вращения
+  VSD_STATUS_OWERPWM1             = 33,     //!< OverPWM тип 1
+  VSD_STATUS_OWERPWM2             = 34,     //!< OverPWM тип 2
+  VSD_STATUS_M_TYPE0              = 35,     //!< Бит типа двигателя 0
+  VSD_STATUS_M_TYPE1              = 36,     //!< Бит типа двигателя 1
+  VSD_STATUS_RES_TYPE0            = 37,     //!< Бит типа противорезонанса
+  VSD_STATUS_RES_TYPE1            = 38,     //!< Бит типа противорезонанса
   // STATUS_WORD_7
   VSD_STATUS_IMAX                 = 48,     //!< Превышен максимальный ток инвертора
   VSD_STATUS_IZ                   = 49,     //!< Детектирован разностный ток выходных фаз (утечка)
@@ -116,6 +122,13 @@ enum enControl
   VSD_CONTROL_OVERPWM_OFF     = 4096,    //!< Выключить режим OverPWM
   VSD_CONTROL_DISCHARGE_ON    = 8192,    //!< Включить предразряд шины инвертора
   VSD_CONTROL_DISCHARGE_OFF   = 16384,   //!< Выключить предразряд шины инвертора
+};
+
+enum enSwitchFreqMode
+{
+  VSD_SWITCHING_FREQUENCY_MODE_SIN = 0,
+  VSD_SWITCHING_FREQUENCY_MODE_OVERPWM_1 = 1,
+  VSD_SWITCHING_FREQUENCY_MODE_OVERPWM_2 = 2
 };
 
 /*!
@@ -272,6 +285,8 @@ public:
    * \return
    */
   int setSwitchingFrequencyCode(float value);
+
+  int setSwitchingFrequencyMode(float value);
 
   // НАСТРОЙКА U/f
   /*!
