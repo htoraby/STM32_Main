@@ -13727,7 +13727,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XXX_XX</format>
+		<format>XX_XX</format>
 		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
