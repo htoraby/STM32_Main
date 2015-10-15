@@ -13690,6 +13690,85 @@
 	</param>
 	<param>
 		<id>778</id>
+		<name>CCS_PROT_OTHER_VSD_NO_CONNECT_MODE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>3.0</max>
+		<def>3.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>3.0</value>
+		<text>РРЗ от потери связи с ЧРП</text>
+		<short_text>РРЗ от потери связи с ЧРП</short_text>
+		<form>4.6.4 Защита от потери связи с ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;3-Вкл;</values>
+		<comment>"Защита от потери связи с ЧРП"</comment>
+	</param>
+	<param>
+		<id>779</id>
+		<name>CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY</name>
+		<access>ACCESS_SERVICE</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>60.0</min>
+		<max>3600.0</max>
+		<def>180.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>180.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
+		<comment>Задержка срабатывания уставка</comment>
+	</param>
+	<param>
+		<id>780</id>
+		<name>CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET</name>
+		<access>ACCESS_SERVICE</access>
+		<operation>OPERATION_WRITE</operation>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<code>13</code>
+		<comment>Команда сброса уставок защиты от потери связи с ЧРП по умолчанию</comment>
+	</param>
+	<param>
+		<id>781</id>
+		<name>CCS_VSD_LOG_CONNECTION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Связь с ЧРП - быстрые архивы</text>
+		<short_text>Связь с ЧРП - быстрые архивы</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>37</code>
+		<values>0-Нет;1-Да</values>
+		<comment>Связь с ЧРП - быстрые архивы</comment>
+	</param>
+	<param>
+		<id>782</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
@@ -19327,6 +19406,48 @@
 	</param>
 	<param>
 		<id>10357</id>
+		<name>VSD_PROT_NO_CONNECT_MODE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>РРЗ от потери связи с ЧРП</text>
+		<short_text>РРЗ от потери связи с ЧРП</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-Откл;1-Вкл;</values>
+		<comment>"Защита от потери связи с ЧРП"</comment>
+	</param>
+	<param>
+		<id>10358</id>
+		<name>VSD_PROT_NO_CONNECT_TRIP_DELAY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>180.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>180.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<code>0</code>
+		<comment>Защита от потери связи с ЧРП. Задержка срабатывания уставка</comment>
+	</param>
+	<param>
+		<id>10359</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>

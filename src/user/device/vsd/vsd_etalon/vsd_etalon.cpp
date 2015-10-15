@@ -442,6 +442,18 @@ void VsdEtalon::getNewValue(uint16_t id)
     case VSD_COEF_VOLTAGE_OUT_1:
       setValue(id, value);
       break;
+    case VSD_PROT_NO_CONNECT_MODE:
+      setValue(id, value);
+      if (parameters.get(VSD_PROT_NO_CONNECT_MODE) && !value)
+        parameters.set(VSD_PROT_NO_CONNECT_MODE, 0.0);
+      else if (!parameters.get(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE) && value)
+        parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE, 3.0);
+      break;
+    case VSD_PROT_NO_CONNECT_TRIP_DELAY:
+      setValue(id, value);
+      if (parameters.get(CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY) != value)
+        parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY, value);
+      break;
     default:
       setValue(id, value);
       break;

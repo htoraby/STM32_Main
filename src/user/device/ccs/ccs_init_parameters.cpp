@@ -9338,5 +9338,53 @@ void Ccs::initParameters()
   parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].discret                    = 10000;
   parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].def                        = 0.0;
   parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].code                       = 13;
+  // "Защита от потери связи с ЧРП"
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_MODE - CCS_BEGIN].id                 = CCS_PROT_OTHER_VSD_NO_CONNECT_MODE;
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_MODE - CCS_BEGIN].access             = ACCESS_OPERATOR;
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_MODE - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_MODE - CCS_BEGIN].physic             = PHYSIC_NUMERIC;
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_MODE - CCS_BEGIN].validity           = VALIDITY_OK;
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_MODE - CCS_BEGIN].value.float_t      = 3.0;
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_MODE - CCS_BEGIN].min                = 0.0;
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_MODE - CCS_BEGIN].max                = 3.0;
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_MODE - CCS_BEGIN].discret            = 1;
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_MODE - CCS_BEGIN].def                = 3.0;
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_MODE - CCS_BEGIN].code               = 13;
+  // Задержка срабатывания уставка
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY - CCS_BEGIN].id           = CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY;
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY - CCS_BEGIN].access       = ACCESS_SERVICE;
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY - CCS_BEGIN].operation    = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY - CCS_BEGIN].physic       = PHYSIC_TIME;
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY - CCS_BEGIN].validity     = VALIDITY_OK;
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY - CCS_BEGIN].value.float_t = 180.0;
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY - CCS_BEGIN].min          = 60.0;
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY - CCS_BEGIN].max          = 3600.0;
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY - CCS_BEGIN].discret      = 1;
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY - CCS_BEGIN].def          = 180.0;
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY - CCS_BEGIN].code         = 13;
+  // Команда сброса уставок защиты от потери связи с ЧРП по умолчанию
+  parameters_[CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET - CCS_BEGIN].id   = CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET - CCS_BEGIN].access = ACCESS_SERVICE;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET - CCS_BEGIN].physic = 0;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET - CCS_BEGIN].validity = VALIDITY_OK;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET - CCS_BEGIN].value.float_t = 0.0;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET - CCS_BEGIN].min  = 0.0;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET - CCS_BEGIN].max  = 1.0;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET - CCS_BEGIN].discret = 1;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET - CCS_BEGIN].def  = 0.0;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET - CCS_BEGIN].code = 13;
+  // Связь с ЧРП - быстрые архивы
+  parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].id                             = CCS_VSD_LOG_CONNECTION;
+  parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].access                         = ACCESS_OPERATOR;
+  parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].physic                         = PHYSIC_NUMERIC;
+  parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].validity                       = VALIDITY_OK;
+  parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].value.float_t                  = 0.0;
+  parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].min                            = 0.0;
+  parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].max                            = 1.0;
+  parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].discret                        = 1;
+  parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].def                            = 0.0;
+  parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].code                           = 37;
 }
 

@@ -194,12 +194,6 @@ public:
    */
   int resetSetpoints();
 
-
-
-
-
-
-
   /*!
    * \brief setUfU
    * \param id
@@ -221,7 +215,7 @@ public:
   void calcParameters(uint16_t id);
 
 private:
-  ModbusParameter modbusParameters_[121];
+  ModbusParameter modbusParameters_[123];
   DeviceModbus *dm_;
 
   RegimeRunEtalon *regimeRun_;

@@ -876,6 +876,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     cmdProtMotorImbalanceCurrentSetpointReset();
     return err;
+  case CCS_CMD_PROT_MOTOR_ASYNC_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtMotorAsyncModeSetpointReset();
+    return err;
   case CCS_CMD_PROT_DHS_PRESSURE_INTAKE_SETPOINT_RESET:
     err = setValue(id, value, eventType);
     cmdProtDhsPressureIntakeSetpointReset();
@@ -891,6 +895,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET:
     err = setValue(id, value, eventType);
     cmdProtOtherHardwareVsdSetpointReset();
+    return err;
+  case CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtOtherVsdNoConnectSetpointReset();
     return err;
   case CCS_CMD_COUNTER_ALL_RESET:
     err = setValue(id, value, eventType);
@@ -977,6 +985,17 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return ok_r;
   case CCS_CMD_VSD_RESET_SETPOINTS:
     return vsd->resetSetpoints();
+  case CCS_PROT_OTHER_VSD_NO_CONNECT_MODE:
+    err = setValue(id, value, eventType);
+    if (value)
+      parameters.set(VSD_PROT_NO_CONNECT_MODE, 1.0);
+    else
+      parameters.set(VSD_PROT_NO_CONNECT_MODE, 0.0);
+    return err;
+  case CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY:
+    err = setValue(id, value, eventType);
+    parameters.set(VSD_PROT_NO_CONNECT_TRIP_DELAY, value);
+    return err;
   default:
     return setValue(id, value, eventType);
   }
@@ -1054,14 +1073,21 @@ void Ccs::checkConnectDevice()
       setNewValue(CCS_VSD_CONNECTION, 1);
     else
       setNewValue(CCS_VSD_CONNECTION, 0);
+
     if (tms->isConnect())
       setNewValue(CCS_DHS_CONNECTION, 1);
     else
       setNewValue(CCS_DHS_CONNECTION, 0);
+
     if (em->isConnect())
       setNewValue(CCS_EM_CONNECTION, 1);
     else
       setNewValue(CCS_EM_CONNECTION, 0);
+
+    if (vsd->log() && vsd->log()->isConnect())
+      setNewValue(CCS_VSD_LOG_CONNECTION, 1);
+    else
+      setNewValue(CCS_VSD_LOG_CONNECTION, 0);
   }
   else {
     checkConnectDeviceTimer_--;
@@ -1095,7 +1121,6 @@ void Ccs::cmdProtSupplyImbalanceVoltageSetpointReset()
   resetValue(CCS_TIMER_DIFFERENT_START);
 }
 
-
 void Ccs::cmdProtMotorOverloadSetpointReset()
 {
   for (uint16_t i = CCS_PROT_MOTOR_OVERLOAD_MODE;
@@ -1116,6 +1141,14 @@ void Ccs::cmdProtMotorImbalanceCurrentSetpointReset()
 {
   for (uint16_t i = CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE;
        i <= CCS_PROT_MOTOR_IMBALANCE_CURRENT_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtMotorAsyncModeSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_MOTOR_ASYNC_MODE;
+       i <= CCS_PROT_MOTOR_ASYNC_MODE; i++) {
     resetValue(i);
   }
 }
@@ -1148,6 +1181,14 @@ void Ccs::cmdProtOtherHardwareVsdSetpointReset()
 {
   for (uint16_t i = CCS_PROT_OTHER_VSD_MODE;
        i <= CCS_PROT_OTHER_VSD_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtOtherVsdNoConnectSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_OTHER_VSD_NO_CONNECT_MODE;
+       i <= CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY; i++) {
     resetValue(i);
   }
 }

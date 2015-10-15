@@ -412,12 +412,14 @@ private:
   void cmdProtMotorOverloadSetpointReset();
   void cmdProtMotorUnderloadSetpointReset();
   void cmdProtMotorImbalanceCurrentSetpointReset();
+  void cmdProtMotorAsyncModeSetpointReset();
 
   void cmdProtDhsPressureIntakeSetpointReset();
   void cmdProtDhsTemperatureMotorSetpointReset();
   void cmdProtDhsResistanceSetpointReset();
 
   void cmdProtOtherHardwareVsdSetpointReset();
+  void cmdProtOtherVsdNoConnectSetpointReset();
 
   /*!
    * \brief calcCounterStop
