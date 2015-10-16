@@ -9386,7 +9386,7 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].discret                        = 1;
   parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].def                            = 0.0;
   parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].code                           = 37;
-  // Тип двигателя. Для внутренних нужд
+  // Тип двигателя. Используется в интерфейсе
   parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].id                                     = CCS_MOTOR_TYPE;
   parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
   parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].operation                              = OPERATION_WRITE;
@@ -9397,6 +9397,6 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].max                                    = 1.0;
   parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].discret                                = 1;
   parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].def                                    = 0.0;
-  parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].code                                   = 0;
+  parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].code                                   = 13;
 }
 

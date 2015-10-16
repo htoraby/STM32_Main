@@ -63,7 +63,7 @@ void RegimeRunNovomet::processingStateRunning()
     }
   }
 
-  if (parameters.get(CCS_RGM_RUN_PICKUP_MODE) && (parameters.get(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC)) {
+  if (parameters.get(CCS_RGM_RUN_PICKUP_MODE) && (parameters.get(CCS_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC)) {
     queue[pickupRun] = VSD_REQULATOR_QUEUE_PICKUP;
     pushRun++;
     swingRun++;

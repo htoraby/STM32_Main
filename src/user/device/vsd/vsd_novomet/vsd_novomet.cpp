@@ -820,6 +820,9 @@ void VsdNovomet::calcMotorType()
   else {
     setValue(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_ASYNC);
   }
+  float value = getValue(VSD_MOTOR_TYPE);
+  if (parameters.get(CCS_MOTOR_TYPE) != value)
+    parameters.set(CCS_MOTOR_TYPE, value);
 }
 
 void VsdNovomet::calcCurrentDC()

@@ -178,7 +178,7 @@ float Ccs::calcMotorSpeed()
 {
   float mtrSpeed = NAN;
   if (parameters.getValidity(VSD_FREQUENCY_NOW) == ok_r) {
-    float mtrType = parameters.get(VSD_MOTOR_TYPE);
+    float mtrType = parameters.get(CCS_MOTOR_TYPE);
     float freq = parameters.get(VSD_FREQUENCY_NOW);
     if (mtrType == VSD_MOTOR_TYPE_ASYNC) {
       mtrSpeed = freq * 60;

@@ -1328,7 +1328,7 @@ void Ccs::resetCmd(uint16_t id)
 void Ccs::setMaxBaseFrequency()
 {
   float maxFreq = 0;
-  if (parameters.get(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_VENT) {
+  if (parameters.get(CCS_MOTOR_TYPE) == VSD_MOTOR_TYPE_VENT) {
     maxFreq = 200;
   }
   else {

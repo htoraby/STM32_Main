@@ -13595,8 +13595,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>60.0</value>
-		<text>NULL</text>
-		<short_text>NULL</short_text>
+		<text>Максимальная рабочая частота</text>
+		<short_text>Максимальная рабочая частота</short_text>
 		<form>NULL</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -13785,9 +13785,9 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
-		<code>0</code>
+		<code>13</code>
 		<values>0-Асинхронный;1-Вентильный</values>
-		<comment>Тип двигателя. Для внутренних нужд</comment>
+		<comment>Тип двигателя. Используется в интерфейсе</comment>
 	</param>
 	<param>
 		<id>783</id>
@@ -13897,9 +13897,9 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
-		<code>13</code>
+		<code>0</code>
 		<values>0-Асинхронный;1-Вентильный</values>
-		<comment>Конструкция двигателя Danfoss 1-10 Используется в проекте, интерфейс</comment>
+		<comment>Конструкция двигателя Danfoss 1-10</comment>
 	</param>
 	<param>
 		<id>10006</id>
@@ -18786,7 +18786,7 @@
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXXXXX</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>Максимальная рабочая частота (базовая)</comment>
 	</param>
 	<param>
@@ -18807,7 +18807,7 @@
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
 		<format>XXXXXX</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>Максимальное рабочие напряжение</comment>
 	</param>
 	<param>
