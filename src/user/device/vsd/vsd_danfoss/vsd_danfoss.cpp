@@ -576,6 +576,11 @@ void VsdDanfoss::getNewValue(uint16_t id)
   // Если получено новое значение параметра
   if (getValue(id) != value) {
     switch (id) {
+    case VSD_MOTOR_TYPE:
+      setValue(id, value);
+      if (parameters.get(CCS_MOTOR_TYPE) != value)
+        parameters.set(CCS_MOTOR_TYPE, value);
+      break;
     case VSD_STATUS_WORD_1:
       vsdStatus = parameters.get(CCS_VSD_STATUS_WORD_1);
       setBit(vsdStatus, VSD_STATUS_STARTED, checkBit(value, VSD_DANFOSS_STATUS_STATE));

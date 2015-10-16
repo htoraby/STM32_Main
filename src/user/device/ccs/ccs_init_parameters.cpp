@@ -8654,18 +8654,18 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].discret               = 1;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].def                   = 380.0;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].code                  = 13;
-  // Максимальная рабочее напряжение
-  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].id                             = CCS_VOLTAGE_HIGH_LIMIT;
-  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].access                         = ACCESS_OPERATOR;
-  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].operation                      = OPERATION_WRITE;
-  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].physic                         = PHYSIC_VOLTAGE;
-  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].validity                       = VALIDITY_OK;
-  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].value.float_t                  = 380.0;
-  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].min                            = 10.0;
-  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].max                            = 400.0;
-  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].discret                        = 1;
-  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].def                            = 380.0;
-  parameters_[CCS_VOLTAGE_HIGH_LIMIT - CCS_BEGIN].code                           = 13;
+  // Максимальная рабочее напряжение (базовое)
+  parameters_[CCS_BASE_VOLTAGE - CCS_BEGIN].id                                   = CCS_BASE_VOLTAGE;
+  parameters_[CCS_BASE_VOLTAGE - CCS_BEGIN].access                               = ACCESS_OPERATOR;
+  parameters_[CCS_BASE_VOLTAGE - CCS_BEGIN].operation                            = OPERATION_WRITE;
+  parameters_[CCS_BASE_VOLTAGE - CCS_BEGIN].physic                               = PHYSIC_VOLTAGE;
+  parameters_[CCS_BASE_VOLTAGE - CCS_BEGIN].validity                             = VALIDITY_OK;
+  parameters_[CCS_BASE_VOLTAGE - CCS_BEGIN].value.float_t                        = 380.0;
+  parameters_[CCS_BASE_VOLTAGE - CCS_BEGIN].min                                  = 10.0;
+  parameters_[CCS_BASE_VOLTAGE - CCS_BEGIN].max                                  = 400.0;
+  parameters_[CCS_BASE_VOLTAGE - CCS_BEGIN].discret                              = 1;
+  parameters_[CCS_BASE_VOLTAGE - CCS_BEGIN].def                                  = 380.0;
+  parameters_[CCS_BASE_VOLTAGE - CCS_BEGIN].code                                 = 13;
   // Количество попыток ввода пароля
   parameters_[CCS_PASSWORD_COUNT_ATTEMPTS - CCS_BEGIN].id                        = CCS_PASSWORD_COUNT_ATTEMPTS;
   parameters_[CCS_PASSWORD_COUNT_ATTEMPTS - CCS_BEGIN].access                    = ACCESS_OPERATOR;
@@ -9278,18 +9278,18 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_VSD_RESET_SETPOINTS - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_CMD_VSD_RESET_SETPOINTS - CCS_BEGIN].def                       = 0.0;
   parameters_[CCS_CMD_VSD_RESET_SETPOINTS - CCS_BEGIN].code                      = 0;
-  // Максимальная рабочая частота
-  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].id                           = CCS_FREQUENCY_HIGH_LIMIT;
-  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].operation                    = OPERATION_WRITE;
-  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].physic                       = PHYSIC_FREQUENCY;
-  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].validity                     = VALIDITY_OK;
-  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].value.float_t                = 35.0;
-  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].min                          = 35.0;
-  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].max                          = 500.0;
-  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].discret                      = 1;
-  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].def                          = 35.0;
-  parameters_[CCS_FREQUENCY_HIGH_LIMIT - CCS_BEGIN].code                         = 13;
+  // Максимальная рабочая частота (базовая)
+  parameters_[CCS_BASE_FREQUENCY - CCS_BEGIN].id                                 = CCS_BASE_FREQUENCY;
+  parameters_[CCS_BASE_FREQUENCY - CCS_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[CCS_BASE_FREQUENCY - CCS_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[CCS_BASE_FREQUENCY - CCS_BEGIN].physic                             = PHYSIC_FREQUENCY;
+  parameters_[CCS_BASE_FREQUENCY - CCS_BEGIN].validity                           = VALIDITY_OK;
+  parameters_[CCS_BASE_FREQUENCY - CCS_BEGIN].value.float_t                      = 60.0;
+  parameters_[CCS_BASE_FREQUENCY - CCS_BEGIN].min                                = 35.0;
+  parameters_[CCS_BASE_FREQUENCY - CCS_BEGIN].max                                = 500.0;
+  parameters_[CCS_BASE_FREQUENCY - CCS_BEGIN].discret                            = 1;
+  parameters_[CCS_BASE_FREQUENCY - CCS_BEGIN].def                                = 60.0;
+  parameters_[CCS_BASE_FREQUENCY - CCS_BEGIN].code                               = 13;
   // Команда разблокировки СУ
   parameters_[CCS_CMD_UNBLOCK - CCS_BEGIN].id                                    = CCS_CMD_UNBLOCK;
   parameters_[CCS_CMD_UNBLOCK - CCS_BEGIN].access                                = ACCESS_OPERATOR;
@@ -9386,5 +9386,17 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].discret                        = 1;
   parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].def                            = 0.0;
   parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].code                           = 37;
+  // Тип двигателя. Для внутренних нужд
+  parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].id                                     = CCS_MOTOR_TYPE;
+  parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
+  parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].operation                              = OPERATION_WRITE;
+  parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
+  parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
+  parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].value.float_t                          = 0.0;
+  parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].min                                    = 0.0;
+  parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].max                                    = 1.0;
+  parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].discret                                = 1;
+  parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].def                                    = 0.0;
+  parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].code                                   = 0;
 }
 

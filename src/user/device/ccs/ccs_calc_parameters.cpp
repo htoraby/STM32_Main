@@ -375,12 +375,12 @@ float Ccs::calcTransRecommendedTapOff()
   float nomFreqMtr = parameters.get(VSD_MOTOR_FREQUENCY);
   if (nomFreqMtr == 0)
     nomFreqMtr = 50;
-  float baseFreq = parameters.get(CCS_FREQUENCY_HIGH_LIMIT);
+  float baseFreq = parameters.get(CCS_BASE_FREQUENCY);
   if (baseFreq == 0)
     baseFreq = nomFreqMtr;
   float baseVolt = (baseFreq / nomFreqMtr ) * nomVoltMtr;
   float dropVoltCable = calcDropVoltageCable(nomCurMtr);
-  float voltHiLim = parameters.get(CCS_VOLTAGE_HIGH_LIMIT);
+  float voltHiLim = parameters.get(CCS_BASE_VOLTAGE);
   float transCoef = (baseVolt + dropVoltCable) / (voltHiLim);
 
   // Вычисляем коэффициент трансформации с учётом потери в фильтре

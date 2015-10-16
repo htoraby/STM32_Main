@@ -379,6 +379,12 @@ public:
   void setFreq(float value);
 
   int calcUfCharacteristic();
+
+  /*!
+   * \brief Метод задания максимального значения параметра "Максимальная рабочая частота"
+   */
+  void setMaxBaseFrequency();
+
 private:
   /*!
    * \brief Метод добавления в очередь событий включения/мигания LED

@@ -1287,7 +1287,7 @@ void VsdEtalon::initModbusParameters()
                            0                // Значение
                           };
   modbusParameters_[76] = {// Базовое напряжение
-                           VSD_ETALON_BASE_VOLTAGE,
+                           VSD_BASE_VOLTAGE,
                            283 + 0x4000,    // 0x411B Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_VOLTAGE,  // Физическая величина параметра
@@ -1473,8 +1473,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[87] = {// Частота U/f двигателя, точка f6
-                           VSD_ETALON_BASE_FREQUENCY,
+  modbusParameters_[87] = {// Базовая частота
+                           VSD_BASE_FREQUENCY,
                            310 + 0x4000,    // 0x4136 Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_FREQUENCY,// Физическая величина параметра

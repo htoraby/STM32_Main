@@ -62,7 +62,7 @@ void Vsd::initParameters()
   parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].def                             = 0;
   parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].discret                         = 10;
   parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].code                            = 0;
-  // Конструкция двигателя Danfoss 1-10 Используется в интерфейсе
+  // Конструкция двигателя Danfoss 1-10 Используется в проекте, интерфейс
   parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].id                                     = VSD_MOTOR_TYPE;
   parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].access                                 = ACCESS_OPERATOR;
   parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].operation                              = OPERATION_WRITE;
@@ -3986,30 +3986,30 @@ void Vsd::initParameters()
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].def                    = 380.0;
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].discret                = 1;
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].code                   = 0;
-  // Максимальная рабочая частота
-  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].id                          = VSD_ETALON_BASE_FREQUENCY;
-  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].access                      = ACCESS_OPERATOR;
-  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].operation                   = OPERATION_WRITE;
-  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].physic                      = PHYSIC_FREQUENCY;
-  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].validity                    = VALIDITY_ERROR;
-  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].value.float_t               = 35.0;
-  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].min                         = 35.0;
-  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].max                         = 500.0;
-  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].def                         = 35.0;
-  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].discret                     = 1;
-  parameters_[VSD_ETALON_BASE_FREQUENCY - VSD_BEGIN].code                        = 13;
-  // Максимальная рабочая частота
-  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].id                            = VSD_ETALON_BASE_VOLTAGE;
-  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].operation                     = OPERATION_WRITE;
-  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].physic                        = PHYSIC_VOLTAGE;
-  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].validity                      = VALIDITY_ERROR;
-  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].value.float_t                 = 380.0;
-  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].min                           = 10.0;
-  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].max                           = 400.0;
-  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].def                           = 380.0;
-  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].discret                       = 1;
-  parameters_[VSD_ETALON_BASE_VOLTAGE - VSD_BEGIN].code                          = 13;
+  // Максимальная рабочая частота (базовая)
+  parameters_[VSD_BASE_FREQUENCY - VSD_BEGIN].id                                 = VSD_BASE_FREQUENCY;
+  parameters_[VSD_BASE_FREQUENCY - VSD_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[VSD_BASE_FREQUENCY - VSD_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[VSD_BASE_FREQUENCY - VSD_BEGIN].physic                             = PHYSIC_FREQUENCY;
+  parameters_[VSD_BASE_FREQUENCY - VSD_BEGIN].validity                           = VALIDITY_ERROR;
+  parameters_[VSD_BASE_FREQUENCY - VSD_BEGIN].value.float_t                      = 60.0;
+  parameters_[VSD_BASE_FREQUENCY - VSD_BEGIN].min                                = 35.0;
+  parameters_[VSD_BASE_FREQUENCY - VSD_BEGIN].max                                = 500.0;
+  parameters_[VSD_BASE_FREQUENCY - VSD_BEGIN].def                                = 60.0;
+  parameters_[VSD_BASE_FREQUENCY - VSD_BEGIN].discret                            = 1;
+  parameters_[VSD_BASE_FREQUENCY - VSD_BEGIN].code                               = 13;
+  // Максимальное рабочие напряжение
+  parameters_[VSD_BASE_VOLTAGE - VSD_BEGIN].id                                   = VSD_BASE_VOLTAGE;
+  parameters_[VSD_BASE_VOLTAGE - VSD_BEGIN].access                               = ACCESS_OPERATOR;
+  parameters_[VSD_BASE_VOLTAGE - VSD_BEGIN].operation                            = OPERATION_WRITE;
+  parameters_[VSD_BASE_VOLTAGE - VSD_BEGIN].physic                               = PHYSIC_VOLTAGE;
+  parameters_[VSD_BASE_VOLTAGE - VSD_BEGIN].validity                             = VALIDITY_ERROR;
+  parameters_[VSD_BASE_VOLTAGE - VSD_BEGIN].value.float_t                        = 380.0;
+  parameters_[VSD_BASE_VOLTAGE - VSD_BEGIN].min                                  = 10.0;
+  parameters_[VSD_BASE_VOLTAGE - VSD_BEGIN].max                                  = 400.0;
+  parameters_[VSD_BASE_VOLTAGE - VSD_BEGIN].def                                  = 380.0;
+  parameters_[VSD_BASE_VOLTAGE - VSD_BEGIN].discret                              = 1;
+  parameters_[VSD_BASE_VOLTAGE - VSD_BEGIN].code                                 = 13;
   // Сечение кабеля
   parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].id                              = VSD_TRANS_CABLE_CROSS;
   parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].access                          = ACCESS_OPERATOR;

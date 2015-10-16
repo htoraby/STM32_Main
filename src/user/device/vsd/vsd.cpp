@@ -238,7 +238,7 @@ int Vsd::setUf_U6(float value)
 
 int Vsd::calcUfCharacteristicU(float value)
 {
-  float voltStep = parameters.get(CCS_VOLTAGE_HIGH_LIMIT) / 6;
+  float voltStep = parameters.get(CCS_BASE_VOLTAGE) / 6;
   setUf_U1(voltStep * 1);
   setUf_U2(voltStep * 2);
   setUf_U3(voltStep * 3);
@@ -250,7 +250,7 @@ int Vsd::calcUfCharacteristicU(float value)
 
 int Vsd::calcUfCharacteristicF(float value)
 {
-  float freqStep = parameters.get(CCS_FREQUENCY_HIGH_LIMIT) / 6;
+  float freqStep = parameters.get(CCS_BASE_FREQUENCY) / 6;
   setUf_f1(freqStep * 1);
   setUf_f2(freqStep * 2);
   setUf_f3(freqStep * 3);

@@ -783,13 +783,14 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     calcSystemInduct();                     // Пересчитываем индуктивность системы
     return err;
-  case CCS_VOLTAGE_HIGH_LIMIT:              // Максимальное входное напряжение
+  case CCS_BASE_VOLTAGE:                    // Максимальное рабочее напряжение (базовое)
     err = setValue(id, value, eventType);
     calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
     vsd->calcUfCharacteristicU(value);
     return err;
-  case CCS_FREQUENCY_HIGH_LIMIT:
+  case CCS_BASE_FREQUENCY:                  // Максимальная рабочая частота (базовая)
     err = setValue(id, value, eventType);
+    parameters.set(VSD_HIGH_LIM_SPEED_MOTOR, value);
     calcTransRecommendedTapOff();
     vsd->calcUfCharacteristicF(value);
     return err;
@@ -995,6 +996,11 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY:
     err = setValue(id, value, eventType);
     parameters.set(VSD_PROT_NO_CONNECT_TRIP_DELAY, value);
+    return err;
+  case CCS_MOTOR_TYPE:
+    err = setValue(id, value, eventType);
+    parameters.set(VSD_MOTOR_TYPE, value);
+    setMaxBaseFrequency();
     return err;
   default:
     return setValue(id, value, eventType);
@@ -1317,4 +1323,17 @@ void Ccs::setCmd(uint16_t id)
 void Ccs::resetCmd(uint16_t id)
 {
   setValue(id, 0.0);
+}
+
+void Ccs::setMaxBaseFrequency()
+{
+  float maxFreq = 0;
+  if (parameters.get(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_VENT) {
+    maxFreq = 200;
+  }
+  else {
+    maxFreq = 70;
+  }
+  setMax(CCS_BASE_FREQUENCY, maxFreq);
+  vsd->setMax(VSD_BASE_FREQUENCY, maxFreq);
 }

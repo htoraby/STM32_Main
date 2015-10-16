@@ -493,6 +493,11 @@ void VsdNovomet::getNewValue(uint16_t id)
 
   // Особенная обработка некоторых параметров
   switch (id) {
+  case VSD_MOTOR_TYPE:
+    setValue(id, value);
+    if (parameters.get(CCS_MOTOR_TYPE) != value)
+      parameters.set(CCS_MOTOR_TYPE, value);
+    break;
   case VSD_CURRENT_OUT_PHASE_1:             // Выходной ток ЧРП Фаза 1
     setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_1) * value);
     break;

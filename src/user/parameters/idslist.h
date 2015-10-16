@@ -724,7 +724,7 @@ enum enID
   CCS_MOTOR_VOLTAGE_PHASE_3 = 718,                           //!< Напряжение двигателя фаза C
   CCS_MOTOR_VOLTAGE_IMBALANCE = 719,                         //!< Дисбаланс напряжений
   CCS_TRANS_NOMINAL_VOLTAGE_INPUT = 720,                     //!< Напряжение питающей сети
-  CCS_VOLTAGE_HIGH_LIMIT = 721,                              //!< Максимальная рабочее напряжение
+  CCS_BASE_VOLTAGE = 721,                                    //!< Максимальная рабочее напряжение (базовое)
   CCS_PASSWORD_COUNT_ATTEMPTS = 722,                         //!< Количество попыток ввода пароля
   CCS_PASSWORD_LAST_ATTEMPT_TIME = 723,                      //!< Время последней попытки ввода пароля
   CCS_PROGRESS_VALUE = 724,                                  //!< Текущие значение операции (например, копирование архивов)
@@ -776,7 +776,7 @@ enum enID
   CCS_VSD_STATUS_WORD_7 = 770,                               //!< Слово состояние ЧРП
   CCS_VSD_STATUS_WORD_5 = 771,                               //!< Слово состояние ЧРП
   CCS_CMD_VSD_RESET_SETPOINTS = 772,                         //!< Команда сброса уставок ЧРП по умолчанию
-  CCS_FREQUENCY_HIGH_LIMIT = 773,                            //!< Максимальная рабочая частота
+  CCS_BASE_FREQUENCY = 773,                                  //!< Максимальная рабочая частота (базовая)
   CCS_CMD_UNBLOCK = 774,                                     //!< Команда разблокировки СУ
   CCS_PROT_OTHER_VSD_ALARM = 775,                            //!< Код аппаратной аварии ЧРП
   CCS_VSD_SL_20_6 = 776,                                     //!< Таймер контроллера SL. Предел тока
@@ -785,13 +785,14 @@ enum enID
   CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY = 779,            //!< Задержка срабатывания уставка
   CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET = 780,    //!< Команда сброса уставок защиты от потери связи с ЧРП по умолчанию
   CCS_VSD_LOG_CONNECTION = 781,                              //!< Связь с ЧРП - быстрые архивы
-  CCS_END = 782,                                             //!< Последний параметр
+  CCS_MOTOR_TYPE = 782,                                      //!< Тип двигателя. Для внутренних нужд
+  CCS_END = 783,                                             //!< Последний параметр
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
   VSD_SPEED_RPM_NOW = 10003,                                 //!< Обороты двигателя
   VSD_OUT_VOLTAGE_MOTOR = 10004,                             //!< Напряжение на выходе ПЧ
-  VSD_MOTOR_TYPE = 10005,                                    //!< Конструкция двигателя Danfoss 1-10 Используется в интерфейсе
+  VSD_MOTOR_TYPE = 10005,                                    //!< Конструкция двигателя Danfoss 1-10 Используется в проекте, интерфейс
   VSD_MOTOR_CONTROL = 10006,                                 //!< Принцип управления двигателем Danfoss 1-01 Не используется в проекте, только при конфигурировании
   VSD_ROTATION = 10007,                                      //!< Направления вращения Danfoss 4-10 Не используется в проекте, только при конфигурировании
   VSD_CURRENT_OUT_PHASE_1 = 10008,                           //!< Выходной ток ПЧ фаза U
@@ -1118,8 +1119,8 @@ enum enID
   VSD_FLAG = 10329,                                          //!< Выбор источника расчёта точек U/f
   VSD_ETALON_RESISTANCE_ISOLATION = 10330,                   //!< 
   VSD_TRANS_NEED_VOLTAGE_TAP_OFF = 10331,                    //!< Необходимое напряжение отпайки
-  VSD_ETALON_BASE_FREQUENCY = 10332,                         //!< Максимальная рабочая частота
-  VSD_ETALON_BASE_VOLTAGE = 10333,                           //!< Максимальная рабочая частота
+  VSD_BASE_FREQUENCY = 10332,                                //!< Максимальная рабочая частота (базовая)
+  VSD_BASE_VOLTAGE = 10333,                                  //!< Максимальное рабочие напряжение
   VSD_TRANS_CABLE_CROSS = 10334,                             //!< Сечение кабеля
   VSD_TEMPERATURE_INTAKE = 10335,                            //!< Температура пласта
   VSD_WORK_STATE_WHEN_ON = 10336,                            //!< Рабочее состояние при включении питания
