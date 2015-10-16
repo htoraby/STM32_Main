@@ -164,6 +164,8 @@ public:
    */
   int setMotorType(float value);
 
+  virtual int setMotorFrequency(float value);
+
   // РЕЖИМЫ ПУСКА
   /*!
    * \brief Метод настройки толчкового режима

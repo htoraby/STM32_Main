@@ -26,6 +26,11 @@ int Vsd::setMotorType(float value)
   return setValue(VSD_MOTOR_TYPE, value);
 }
 
+int Vsd::setMotorFrequency(float value)
+{
+  return setValue(VSD_MOTOR_FREQUENCY, value);
+}
+
   // РЕЖИМЫ ПУСКА
 int Vsd::onRegimePush()
 {

@@ -46,6 +46,7 @@ public:
 
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
   int setMotorType(float value);
+  int setMotorFrequency(float value);
 
   // РЕЖИМЫ ПУСКА
   int onRegimePush();

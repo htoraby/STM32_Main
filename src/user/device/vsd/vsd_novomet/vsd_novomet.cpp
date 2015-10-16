@@ -107,7 +107,19 @@ int VsdNovomet::setMotorType(float value)
   }
 }
 
-
+int VsdNovomet::setMotorFrequency(float value)
+{
+  if (!Vsd::setMotorFrequency(value)) {
+    writeToDevice(VSD_MOTOR_FREQUENCY, value);
+    setMin(VSD_TIMER_DISPERSAL, value * 0.25);
+    setMax(VSD_TIMER_DELAY, value * 12.5);
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setMotorFrequency");
+    return err_r;
+  }
+}
 
 // РЕЖИМЫ ПУСКА
 int VsdNovomet::onRegimePush()
@@ -598,6 +610,9 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
     }
     return err_r;
 
+  case VSD_MOTOR_FREQUENCY:
+    return setMotorFrequency(value);
+
   case VSD_FREQUENCY:
     return setFrequency(value);
 
@@ -627,7 +642,6 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
 
   case VSD_TIMER_DELAY:
     return setTimeSpeedDown(value);
-
 
   case VSD_MOTOR_VOLTAGE:
     ksu.calcTransRecommendedTapOff();
@@ -797,7 +811,7 @@ void VsdNovomet::calcTempSpeedUp()
 
 void VsdNovomet::calcTimeSpeedUp()
 {
-  setValue(VSD_TIMER_DISPERSAL, getValue(VSD_FREQUENCY)/getValue(VSD_TEMP_SPEEDUP));
+  setValue(VSD_TIMER_DISPERSAL, getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TEMP_SPEEDUP));
 }
 
 void VsdNovomet::calcTempSpeedDown()
@@ -807,7 +821,7 @@ void VsdNovomet::calcTempSpeedDown()
 
 void VsdNovomet::calcTimeSpeedDown()
 {
-  setValue(VSD_TIMER_DELAY, getValue(VSD_FREQUENCY)/getValue(VSD_TEMP_SPEEDDOWN));
+  setValue(VSD_TIMER_DELAY, getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TEMP_SPEEDDOWN));
 }
 
 void VsdNovomet::calcRotation()
