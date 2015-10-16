@@ -14695,11 +14695,20 @@
 		<id>10047</id>
 		<name>VSD_DOUTPUTS</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Состояние дискретных выходов</text>
+		<short_text>Состояние дискретных выходов</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Маска состояния цифровых выходов.</comment>
 	</param>
@@ -14707,11 +14716,20 @@
 		<id>10048</id>
 		<name>VSD_DINPUTS</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Состояние дискретных входов</text>
+		<short_text>Состояние дискретных входов</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Маска состояния цифровых входов.</comment>
 	</param>
@@ -14719,11 +14737,20 @@
 		<id>10049</id>
 		<name>VSD_DOUTPUTS_ENABLE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Маска включения выходов</text>
+		<short_text>Маска включения выходов</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Маска включения цифровых выходов.</comment>
 	</param>
@@ -14731,11 +14758,20 @@
 		<id>10050</id>
 		<name>VSD_DOUTPUTS_DISABLE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Маска выключения выходов</text>
+		<short_text>Маска выключения выходов</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Маска выключения цифровых выходов.</comment>
 	</param>
@@ -14743,11 +14779,20 @@
 		<id>10051</id>
 		<name>VSD_VENT_ON_TEMPERATURE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>120.0</max>
+		<def>80.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>80.0</value>
+		<text>Температура включения вентилятора</text>
+		<short_text>Температура включения вентилятора</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
 		<code>13</code>
 		<comment>Температура включения главного вентилятора.</comment>
 	</param>
@@ -14755,11 +14800,20 @@
 		<id>10052</id>
 		<name>VSD_VENT_OFF_TEMPERATURE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>120.0</max>
+		<def>60.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>60.0</value>
+		<text>Температура выключения вентилятора</text>
+		<short_text>Температура выключения вентилятора</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
 		<code>13</code>
 		<comment>Температура выключения главного вентилятора.</comment>
 	</param>
@@ -14767,24 +14821,42 @@
 		<id>10053</id>
 		<name>VSD_VENT_PERIOD</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>3.0</min>
+		<max>60.0</max>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
-		<code>0</code>
+		<value>5.0</value>
+		<text>Период проверки температуры вентилятора</text>
+		<short_text>Период проверки температуры вентилятора</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Период проверки температуры радиаторов</comment>
 	</param>
 	<param>
 		<id>10054</id>
 		<name>VSD_VENT_TEMPERATURE_FAULT</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>80.0</min>
+		<max>110.0</max>
+		<def>105.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
-		<code>0</code>
+		<value>105.0</value>
+		<text>Температура срабатывания защиты по перегреву</text>
+		<short_text>Температура срабатывания защиты по перегреву</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Температура срабатывания тепловой защиты радиаторов</comment>
 	</param>
 	<param>
@@ -14815,6 +14887,7 @@
 		<id>10057</id>
 		<name>VSD_FREQUENCY_ERROR</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -15194,7 +15267,7 @@
 	</param>
 	<param>
 		<id>10089</id>
-		<name>VSD_VANGLE_GAIN</name>
+		<name>VSD_RES_PROP_GAIN</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
 		<max>999999.0</max>
@@ -15273,33 +15346,62 @@
 		<id>10096</id>
 		<name>VSD_DECEL_SPEEDDOWN</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
-		<discret>1</discret>
+		<def>100.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>100.0</value>
+		<text>Время торможения</text>
+		<short_text>Время торможения</short_text>
+		<form>Режим подхвата</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXX_X</format>
+		<code>13</code>
 		<comment>Время снижения уставки в режиме остановки турбинного вращения</comment>
 	</param>
 	<param>
 		<id>10097</id>
 		<name>VSD_DECEL_VOLTAGE</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>10.0</min>
+		<max>100.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>10.0</value>
+		<text>Напряжение остаточного напряжения на шине в режиме остановки турбинного вращения</text>
+		<short_text>Напряжение остаточного напряжения на шине в режиме остановки турбинного вращения</short_text>
+		<form>Режим подхвата</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Напряжение остаточного напряжения на шине (окончания разряда) в режиме остановки турбинного вращения (для ВД)</comment>
 	</param>
 	<param>
 		<id>10098</id>
 		<name>VSD_DECEL_F_MAX</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>1.0</min>
+		<max>500.0</max>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>1.0</value>
+		<text>Начальная частота режима остановки турбинного вращения</text>
+		<short_text>Начальная частота режима остановки турбинного вращения</short_text>
+		<form>Режим подхвата</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<code>13</code>
 		<comment>Начальная частота режима остановки турбинного вращения (для АД)</comment>
 	</param>
 	<param>
@@ -15765,11 +15867,21 @@
 		<id>10137</id>
 		<name>VSD_DECEL_U_MAX</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>5.0</min>
+		<max>500.0</max>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>5.0</value>
+		<text>Напряжение подхвата</text>
+		<short_text>Напряжение подхвата</short_text>
+		<form>Режим подхвата</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Стартовое напряжение торможения авторотации</comment>
 	</param>
 	<param>
@@ -15818,22 +15930,42 @@
 		<id>10142</id>
 		<name>VSD_U_SCALE</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>10.0</min>
+		<max>1000.0</max>
+		<def>100.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>100.0</value>
+		<text>Масштаб для измерительной цепи напряжения ПЧ</text>
+		<short_text>Масштаб для измерительной цепи напряжения ПЧ</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Масштаб измеряемого напряжения ПЧ отн. базового 250А</comment>
 	</param>
 	<param>
 		<id>10143</id>
 		<name>VSD_I_SCALE</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>10.0</min>
+		<max>1000.0</max>
+		<def>100.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>100.0</value>
+		<text>Масштаб для измерительной цепи тока ПЧ</text>
+		<short_text>Масштаб для измерительной цепи тока ПЧ</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Масштаб измеряемого тока ПЧ отн. базового 250А</comment>
 	</param>
 	<param>
@@ -19274,6 +19406,28 @@
 	</param>
 	<param>
 		<id>10356</id>
+		<name>VSD_RES_MODE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Источник сигнала о колебаниях</text>
+		<short_text>Источник сигнала о колебаниях</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Угол;1-Момент;2-Мощность;3-Нет</values>
+		<comment>Источник сигнала о колебаниях</comment>
+	</param>
+	<param>
+		<id>10357</id>
 		<name>VSD_PROT_NO_CONNECT_MODE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -19295,7 +19449,7 @@
 		<comment>"Защита от потери связи с ЧРП"</comment>
 	</param>
 	<param>
-		<id>10357</id>
+		<id>10358</id>
 		<name>VSD_PROT_NO_CONNECT_TRIP_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -19315,7 +19469,7 @@
 		<comment>Защита от потери связи с ЧРП. Задержка срабатывания уставка</comment>
 	</param>
 	<param>
-		<id>10358</id>
+		<id>10359</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>

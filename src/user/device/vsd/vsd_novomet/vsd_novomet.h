@@ -15,13 +15,21 @@ class RegimeRunNovomet;
 
 enum enRegulatorQueue
 {
-  VSD_REQULATOR_QUEUE_NULL = -1,         //!< Пустой
-  VSD_REQULATOR_QUEUE_TEST,              //!< Тестовый
-  VSD_REQULATOR_QUEUE_UF,                //!< U/f
-  VSD_REQULATOR_QUEUE_PUSH,              //!< Расклинка
-  VSD_REQULATOR_QUEUE_VECT,              //!< Векторный
-  VSD_REQULATOR_QUEUE_AUTO,              //!< Автонастройка
-  VSD_REQULATOR_QUEUE_PICKUP             //!< Турбинное вращение
+  VSD_REQULATOR_QUEUE_NULL = -1,            //!< Пустой
+  VSD_REQULATOR_QUEUE_TEST,                 //!< Тестовый
+  VSD_REQULATOR_QUEUE_UF,                   //!< U/f
+  VSD_REQULATOR_QUEUE_PUSH,                 //!< Расклинка
+  VSD_REQULATOR_QUEUE_VECT,                 //!< Векторный
+  VSD_REQULATOR_QUEUE_AUTO,                 //!< Автонастройка
+  VSD_REQULATOR_QUEUE_PICKUP                //!< Турбинное вращение
+};
+
+enum enResMode
+{
+  VSD_RES_MODE_ANGLE = 0,                   //!< Расчётный угол отклонения ротора
+  VSD_RES_MODE_TORQUE = 1,                  //!< Мгновенная величина расчетного момента
+  VSD_RES_MODE_POWER = 2,                   //!< Мгновенная мощность привода
+  VSD_RES_MODE_NONE = 3,                    //!< Не использовать
 };
 
 class VsdNovomet: public Vsd
@@ -55,12 +63,8 @@ public:
   int setTimeSpeedUp(float value);
   int setTimeSpeedDown(float value);
   int setSwitchingFrequency(float value);
-  /*!
-   * \brief setSwitchingFrequencyMode функция выбора типа ШИМ модуляции
-   * \param value
-   * \return
-   */
   int setSwitchingFrequencyMode(float value);
+  int setResonanceRemoveSource(float value);
 
   // НАСТРОЙКА U/f
   int setUf_f1(float value);
@@ -211,6 +215,8 @@ public:
 
   void calcSwitchFreqMode();
 
+  void calcResonanceRemoveSource();
+
   /*!
    * \brief Проверка на "необходимость" работы с параметром
    * \param indexParam
@@ -229,7 +235,7 @@ public:
    */
   void resetRunQueue();
 private:
-  ModbusParameter modbusParameters_[136];
+  ModbusParameter modbusParameters_[139];
   DeviceModbus *dm_;
 
   RegimeRunNovomet *regimeRun_;

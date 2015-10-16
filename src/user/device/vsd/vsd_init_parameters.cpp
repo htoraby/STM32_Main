@@ -1071,17 +1071,17 @@ void Vsd::initParameters()
   parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].discret                                = 10000;
   parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].code                                   = 0;
   // Фазовый коэффициент усиления системы подавления резонанса
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].id                                    = VSD_VANGLE_GAIN;
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].access                                = ACCESS_OPERATOR;
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].operation                             = 0;
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].physic                                = 0;
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].validity                              = VALIDITY_ERROR;
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].value.float_t                         = 0;
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].max                                   = 999999.0;
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].def                                   = 0;
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].discret                               = 1;
-  parameters_[VSD_VANGLE_GAIN - VSD_BEGIN].code                                  = 0;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].id                                  = VSD_RES_PROP_GAIN;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].access                              = ACCESS_OPERATOR;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].operation                           = 0;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].physic                              = 0;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].validity                            = VALIDITY_ERROR;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].value.float_t                       = 0;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].min                                 = 0.0;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].max                                 = 999999.0;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].def                                 = 0;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].discret                             = 1;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].code                                = 0;
   // Постоянная времени системы подавления резонанса
   parameters_[VSD_RES_TIMECONST - VSD_BEGIN].id                                  = VSD_RES_TIMECONST;
   parameters_[VSD_RES_TIMECONST - VSD_BEGIN].access                              = ACCESS_OPERATOR;
@@ -1157,39 +1157,39 @@ void Vsd::initParameters()
   // Время снижения уставки в режиме остановки турбинного вращения
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].id                                = VSD_DECEL_SPEEDDOWN;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].operation                         = 0;
-  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].physic                            = 0;
+  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].operation                         = OPERATION_WRITE;
+  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].physic                            = PHYSIC_TIME;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].validity                          = VALIDITY_ERROR;
-  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].value.float_t                     = 0;
+  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].value.float_t                     = 100.0;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].min                               = 0.0;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].max                               = 999999.0;
-  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].def                               = 0;
-  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].discret                           = 1;
-  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].code                              = 0;
+  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].def                               = 100.0;
+  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].discret                           = 10;
+  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].code                              = 13;
   // Напряжение остаточного напряжения на шине (окончания разряда) в режиме остановки турбинного вращения (для ВД)
   parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].id                                  = VSD_DECEL_VOLTAGE;
   parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].access                              = ACCESS_OPERATOR;
-  parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].operation                           = 0;
-  parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].physic                              = 0;
+  parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].operation                           = OPERATION_WRITE;
+  parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].physic                              = PHYSIC_VOLTAGE;
   parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].validity                            = VALIDITY_ERROR;
-  parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].value.float_t                       = 0;
-  parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].max                                 = 999999.0;
-  parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].def                                 = 0;
+  parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].value.float_t                       = 10.0;
+  parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].min                                 = 10.0;
+  parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].max                                 = 100.0;
+  parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].def                                 = 10.0;
   parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].discret                             = 1;
-  parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].code                                = 0;
+  parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].code                                = 13;
   // Начальная частота режима остановки турбинного вращения (для АД)
   parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].id                                    = VSD_DECEL_F_MAX;
   parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].access                                = ACCESS_OPERATOR;
-  parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].operation                             = 0;
-  parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].physic                                = 0;
+  parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].operation                             = OPERATION_WRITE;
+  parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].physic                                = PHYSIC_FREQUENCY;
   parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].validity                              = VALIDITY_ERROR;
-  parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].value.float_t                         = 0;
-  parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].max                                   = 999999.0;
-  parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].def                                   = 0;
+  parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].value.float_t                         = 1.0;
+  parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].min                                   = 1.0;
+  parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].max                                   = 500.0;
+  parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].def                                   = 1.0;
   parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].discret                               = 1;
-  parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].code                                  = 0;
+  parameters_[VSD_DECEL_F_MAX - VSD_BEGIN].code                                  = 13;
   // Время секунды
   parameters_[VSD_TIME_SECOND - VSD_BEGIN].id                                    = VSD_TIME_SECOND;
   parameters_[VSD_TIME_SECOND - VSD_BEGIN].access                                = ACCESS_OPERATOR;
@@ -1649,15 +1649,15 @@ void Vsd::initParameters()
   // Стартовое напряжение торможения авторотации
   parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].id                                    = VSD_DECEL_U_MAX;
   parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].access                                = ACCESS_OPERATOR;
-  parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].operation                             = 0;
-  parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].physic                                = 0;
+  parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].operation                             = OPERATION_WRITE;
+  parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].physic                                = PHYSIC_VOLTAGE;
   parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].validity                              = VALIDITY_ERROR;
-  parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].value.float_t                         = 0;
-  parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].max                                   = 999999.0;
-  parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].def                                   = 0;
+  parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].value.float_t                         = 5.0;
+  parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].min                                   = 5.0;
+  parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].max                                   = 500.0;
+  parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].def                                   = 5.0;
   parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].discret                               = 1;
-  parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].code                                  = 0;
+  parameters_[VSD_DECEL_U_MAX - VSD_BEGIN].code                                  = 13;
   // Ток тепловой защиты ПЧ длительный
   parameters_[VSD_FC_IRMS - VSD_BEGIN].id                                        = VSD_FC_IRMS;
   parameters_[VSD_FC_IRMS - VSD_BEGIN].access                                    = ACCESS_OPERATOR;
@@ -4274,29 +4274,17 @@ void Vsd::initParameters()
   parameters_[VSD_SWITCHING_FREQUENCY_MODE - VSD_BEGIN].def                      = 0.0;
   parameters_[VSD_SWITCHING_FREQUENCY_MODE - VSD_BEGIN].discret                  = 1;
   parameters_[VSD_SWITCHING_FREQUENCY_MODE - VSD_BEGIN].code                     = 13;
-  // "Защита от потери связи с ЧРП"
-  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].id                           = VSD_PROT_NO_CONNECT_MODE;
-  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].operation                    = OPERATION_WRITE;
-  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].physic                       = PHYSIC_NUMERIC;
-  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].validity                     = VALIDITY_OK;
-  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].value.float_t                = 1.0;
-  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].max                          = 1.0;
-  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].def                          = 1.0;
-  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].discret                      = 1;
-  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].code                         = 0;
-  // Защита от потери связи с ЧРП. Задержка срабатывания уставка
-  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].id                     = VSD_PROT_NO_CONNECT_TRIP_DELAY;
-  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].operation              = OPERATION_WRITE;
-  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].physic                 = PHYSIC_TIME;
-  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].validity               = VALIDITY_OK;
-  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].value.float_t          = 180.0;
-  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].min                    = 0.0;
-  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].max                    = 65535.0;
-  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].def                    = 180.0;
-  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].discret                = 1;
-  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].code                   = 0;
+  // Источник сигнала о колебаниях
+  parameters_[VSD_RES_MODE - VSD_BEGIN].id                                       = VSD_RES_MODE;
+  parameters_[VSD_RES_MODE - VSD_BEGIN].access                                   = ACCESS_OPERATOR;
+  parameters_[VSD_RES_MODE - VSD_BEGIN].operation                                = OPERATION_WRITE;
+  parameters_[VSD_RES_MODE - VSD_BEGIN].physic                                   = PHYSIC_NUMERIC;
+  parameters_[VSD_RES_MODE - VSD_BEGIN].validity                                 = VALIDITY_ERROR;
+  parameters_[VSD_RES_MODE - VSD_BEGIN].value.float_t                            = 0.0;
+  parameters_[VSD_RES_MODE - VSD_BEGIN].min                                      = 0.0;
+  parameters_[VSD_RES_MODE - VSD_BEGIN].max                                      = 2.0;
+  parameters_[VSD_RES_MODE - VSD_BEGIN].def                                      = 0.0;
+  parameters_[VSD_RES_MODE - VSD_BEGIN].discret                                  = 1;
+  parameters_[VSD_RES_MODE - VSD_BEGIN].code                                     = 13;
 }
 
