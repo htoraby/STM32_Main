@@ -12568,7 +12568,7 @@
 	</param>
 	<param>
 		<id>721</id>
-		<name>CCS_VOLTAGE_HIGH_LIMIT</name>
+		<name>CCS_BASE_VOLTAGE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
@@ -12585,7 +12585,7 @@
 		<unit_lcd>VOLTAGE_V</unit_lcd>
 		<format>XXXXXX</format>
 		<code>13</code>
-		<comment>Максимальная рабочее напряжение</comment>
+		<comment>Максимальная рабочее напряжение (базовое)</comment>
 	</param>
 	<param>
 		<id>722</id>
@@ -13585,24 +13585,24 @@
 	</param>
 	<param>
 		<id>773</id>
-		<name>CCS_FREQUENCY_HIGH_LIMIT</name>
+		<name>CCS_BASE_FREQUENCY</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>35.0</min>
 		<max>500.0</max>
-		<def>35.0</def>
+		<def>60.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>35.0</value>
-		<text>NULL</text>
-		<short_text>NULL</short_text>
+		<value>60.0</value>
+		<text>Максимальная рабочая частота</text>
+		<short_text>Максимальная рабочая частота</short_text>
 		<form>NULL</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXXXXX</format>
 		<code>13</code>
-		<comment>Максимальная рабочая частота</comment>
+		<comment>Максимальная рабочая частота (базовая)</comment>
 	</param>
 	<param>
 		<id>774</id>
@@ -13727,7 +13727,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XXX_XX</format>
+		<format>XX_XX</format>
 		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -13769,6 +13769,28 @@
 	</param>
 	<param>
 		<id>782</id>
+		<name>CCS_MOTOR_TYPE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Тип двигателя</text>
+		<short_text>Тип двиг.</short_text>
+		<form>1.1 Текущие параметры - сводка; 3.1 Двигатель</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Асинхронный;1-Вентильный</values>
+		<comment>Тип двигателя. Используется в интерфейсе</comment>
+	</param>
+	<param>
+		<id>783</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
@@ -13875,9 +13897,9 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
-		<code>13</code>
+		<code>0</code>
 		<values>0-Асинхронный;1-Вентильный</values>
-		<comment>Конструкция двигателя Danfoss 1-10 Используется в интерфейсе</comment>
+		<comment>Конструкция двигателя Danfoss 1-10</comment>
 	</param>
 	<param>
 		<id>10006</id>
@@ -18880,28 +18902,28 @@
 	</param>
 	<param>
 		<id>10332</id>
-		<name>VSD_ETALON_BASE_FREQUENCY</name>
+		<name>VSD_BASE_FREQUENCY</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>35.0</min>
 		<max>500.0</max>
-		<def>35.0</def>
+		<def>60.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>35.0</value>
+		<value>60.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXXXXX</format>
-		<code>13</code>
-		<comment>Максимальная рабочая частота</comment>
+		<code>0</code>
+		<comment>Максимальная рабочая частота (базовая)</comment>
 	</param>
 	<param>
 		<id>10333</id>
-		<name>VSD_ETALON_BASE_VOLTAGE</name>
+		<name>VSD_BASE_VOLTAGE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
@@ -18917,8 +18939,8 @@
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
 		<format>XXXXXX</format>
-		<code>13</code>
-		<comment>Максимальная рабочая частота</comment>
+		<code>0</code>
+		<comment>Максимальное рабочие напряжение</comment>
 	</param>
 	<param>
 		<id>10334</id>

@@ -39,7 +39,7 @@ void VsdEtalon::init()
   readParameters();
 
   setLimitsMinFrequence(getValue(VSD_LOW_LIM_SPEED_MOTOR));
-  setLimitsMaxFrequence(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+  setLimitsMaxFrequence(parameters.get(CCS_BASE_FREQUENCY));
 }
 
 // Метод заполнения внутреннего банка параметров по карте устройства
@@ -114,12 +114,12 @@ int VsdEtalon::setMotorType(float value)
 int VsdEtalon::setRotation(float value)
 {
   if (!Vsd::setRotation(value)){
-    writeToDevice(VSD_ROTATION, getValue(VSD_ROTATION));  
+    writeToDevice(VSD_ROTATION, getValue(VSD_ROTATION));
     return ok_r;
   }
   else {
     logDebug.add(WarningMsg, "VsdEtalon::setRotation");
-    return err_r;    
+    return err_r;
   }
 }
 
@@ -168,7 +168,7 @@ int VsdEtalon::setTimeSpeedUp(float value)
   else {
     logDebug.add(WarningMsg, "VsdEtalon::setTimeSpeedUp");
     return err_r;
-  }    
+  }
 }
 
 int VsdEtalon::setTimeSpeedDown(float value)
@@ -180,7 +180,7 @@ int VsdEtalon::setTimeSpeedDown(float value)
   else {
     logDebug.add(WarningMsg, "VsdEtalon::setTimeSpeedUp");
     return err_r;
-  }    
+  }
 }
 
 int VsdEtalon::setSwitchingFrequency(float value)
@@ -280,6 +280,11 @@ void VsdEtalon::getNewValue(uint16_t id)
   if ((getValue(id) != value) || (param->validity != getValidity(id))) {
     // Преобразования для параметров требующих особой обработки по id
     switch (id) {
+    case VSD_MOTOR_TYPE:
+      setValue(id, value);
+      if (parameters.get(CCS_MOTOR_TYPE) != value)
+        parameters.set(CCS_MOTOR_TYPE, value);
+      break;
     case VSD_ETALON_ON_STATE:                 // Получили подтверждение запуска
       vsdInvertorStatus = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_1) & 0xFFFE;
       if (value)
@@ -300,23 +305,23 @@ void VsdEtalon::getNewValue(uint16_t id)
       break;
     case VSD_UF_CHARACTERISTIC_U_1_PERCENT:           // Получили точку напряжения U/f
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_1, (int)(parameters.get(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_1, (int)(parameters.get(VSD_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_2_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_2, (int)(parameters.get(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_2, (int)(parameters.get(VSD_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_3_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_3, (int)(parameters.get(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_3, (int)(parameters.get(VSD_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_4_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_4, (int)(parameters.get(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_4, (int)(parameters.get(VSD_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_5_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_5, (int)(parameters.get(VSD_ETALON_BASE_VOLTAGE) * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_5, (int)(parameters.get(VSD_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_LOW_LIM_SPEED_MOTOR:
       setLimitsMinFrequence(value);
@@ -389,15 +394,15 @@ void VsdEtalon::getNewValue(uint16_t id)
       if (parameters.get(CCS_TRANS_NEED_VOLTAGE_TAP_OFF) != value)
         parameters.set(CCS_TRANS_NEED_VOLTAGE_TAP_OFF, value);
       break;
-    case VSD_ETALON_BASE_VOLTAGE:
+    case VSD_BASE_VOLTAGE:
       setValue(id, value);
-      if (parameters.get(CCS_VOLTAGE_HIGH_LIMIT) != value)
-        parameters.set(CCS_VOLTAGE_HIGH_LIMIT, value);
+      if (parameters.get(CCS_BASE_VOLTAGE) != value)
+        parameters.set(CCS_BASE_VOLTAGE, value);
       break;
-    case VSD_ETALON_BASE_FREQUENCY:
+    case VSD_BASE_FREQUENCY:
       setValue(id, value);
-      if (parameters.get(CCS_FREQUENCY_HIGH_LIMIT) != value)
-        parameters.set(CCS_FREQUENCY_HIGH_LIMIT, value);
+      if (parameters.get(CCS_BASE_FREQUENCY) != value)
+        parameters.set(CCS_BASE_FREQUENCY, value);
       break;
     case VSD_CURRENT_OUT_PHASE_1:             // Выходной ток ЧРП Фаза 1
       setValue(id, value);
@@ -476,10 +481,10 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
     return err_r;
     
   case  VSD_MOTOR_CONTROL:
-    return setVsdControl(value);    
+    return setVsdControl(value);
     
   case VSD_ROTATION:
-    return setRotation(value);    
+    return setRotation(value);
 
   case VSD_LOW_LIM_SPEED_MOTOR:
     if (!setMinFrequency(value)) {
@@ -500,7 +505,7 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
     return err_r;
     
   case VSD_FREQUENCY:
-    return setFrequency(value);    
+    return setFrequency(value);
 
   case VSD_TEMP_SPEEDUP:
     return setTimeSpeedUp(value);
@@ -535,10 +540,10 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
   case VSD_UF_CHARACTERISTIC_U_5:
     return setUf_U5(value);
 
-  case VSD_ETALON_BASE_VOLTAGE:
+  case VSD_BASE_VOLTAGE:
     return setBaseVoltage(value);
 
-  case VSD_ETALON_BASE_FREQUENCY:
+  case VSD_BASE_FREQUENCY:
     return setBaseFrequency(value);
 
   default:
@@ -576,13 +581,13 @@ int VsdEtalon::start()
       timeMs = 0;
       countRepeats++;
 
-    if (countRepeats > VSD_CMD_NUMBER_REPEATS)
-      return err_r;
+      if (countRepeats > VSD_CMD_NUMBER_REPEATS)
+        return err_r;
 
-    if (vsd->resetBlock())
-      return err_r;
-    if (setNewValue(VSD_ON, 1))
-      return err_r;
+      if (vsd->resetBlock())
+        return err_r;
+      if (setNewValue(VSD_ON, 1))
+        return err_r;
     }
     else {
       timeMs = timeMs + 100;
@@ -592,7 +597,7 @@ int VsdEtalon::start()
 
     if (checkStatusVsd(VSD_STATUS_STARTED))
       return ok_r;
-    }
+  }
 }
 
 bool VsdEtalon::checkStart()
@@ -728,7 +733,7 @@ int VsdEtalon::offRegimeSkipFreq()
 int VsdEtalon::setUf_U1(float value)
 {
   if (!Vsd::setUf_U1(value)) {
-    if (!setValue(VSD_UF_CHARACTERISTIC_U_1_PERCENT, (getValue(VSD_UF_CHARACTERISTIC_U_1) * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE))) {
+    if (!setValue(VSD_UF_CHARACTERISTIC_U_1_PERCENT, (getValue(VSD_UF_CHARACTERISTIC_U_1) * 100.0) / getValue(VSD_BASE_VOLTAGE))) {
       writeToDevice(VSD_UF_CHARACTERISTIC_U_1_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_1_PERCENT));
       return ok_r;
     }
@@ -743,7 +748,7 @@ int VsdEtalon::setUf_U1(float value)
 int VsdEtalon::setUf_U2(float value)
 {
   if (!Vsd::setUf_U2(value)) {
-    if (!setValue(VSD_UF_CHARACTERISTIC_U_2_PERCENT, (getValue(VSD_UF_CHARACTERISTIC_U_2) * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE))) {
+    if (!setValue(VSD_UF_CHARACTERISTIC_U_2_PERCENT, (getValue(VSD_UF_CHARACTERISTIC_U_2) * 100.0) / getValue(VSD_BASE_VOLTAGE))) {
       writeToDevice(VSD_UF_CHARACTERISTIC_U_2_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_2_PERCENT));
       return ok_r;
     }
@@ -758,7 +763,7 @@ int VsdEtalon::setUf_U2(float value)
 int VsdEtalon::setUf_U3(float value)
 {
   if (!Vsd::setUf_U3(value)) {
-    if (!setValue(VSD_UF_CHARACTERISTIC_U_3_PERCENT, (getValue(VSD_UF_CHARACTERISTIC_U_3) * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE))) {
+    if (!setValue(VSD_UF_CHARACTERISTIC_U_3_PERCENT, (getValue(VSD_UF_CHARACTERISTIC_U_3) * 100.0) / getValue(VSD_BASE_VOLTAGE))) {
       writeToDevice(VSD_UF_CHARACTERISTIC_U_3_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_3_PERCENT));
       return ok_r;
     }
@@ -773,7 +778,7 @@ int VsdEtalon::setUf_U3(float value)
 int VsdEtalon::setUf_U4(float value)
 {
   if (!Vsd::setUf_U4(value)) {
-    if (!setValue(VSD_UF_CHARACTERISTIC_U_4_PERCENT, (getValue(VSD_UF_CHARACTERISTIC_U_4) * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE))) {
+    if (!setValue(VSD_UF_CHARACTERISTIC_U_4_PERCENT, (getValue(VSD_UF_CHARACTERISTIC_U_4) * 100.0) / getValue(VSD_BASE_VOLTAGE))) {
       writeToDevice(VSD_UF_CHARACTERISTIC_U_4_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_4_PERCENT));
       return ok_r;
     }
@@ -788,7 +793,7 @@ int VsdEtalon::setUf_U4(float value)
 int VsdEtalon::setUf_U5(float value)
 {
   if (!Vsd::setUf_U5(value)) {
-    if (!setValue(VSD_UF_CHARACTERISTIC_U_5_PERCENT, (getValue(VSD_UF_CHARACTERISTIC_U_5) * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE))) {
+    if (!setValue(VSD_UF_CHARACTERISTIC_U_5_PERCENT, (getValue(VSD_UF_CHARACTERISTIC_U_5) * 100.0) / getValue(VSD_BASE_VOLTAGE))) {
       writeToDevice(VSD_UF_CHARACTERISTIC_U_5_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_5_PERCENT));
       return ok_r;
     }
@@ -826,8 +831,8 @@ void VsdEtalon::readUfCharacterictic()
 
 int VsdEtalon::setBaseVoltage(float value)
 {
-  if (!setValue(VSD_ETALON_BASE_VOLTAGE, value)) {
-    writeToDevice(VSD_ETALON_BASE_VOLTAGE, value);
+  if (!setValue(VSD_BASE_VOLTAGE, value)) {
+    writeToDevice(VSD_BASE_VOLTAGE, value);
     osDelay(200);
     readInDevice(VSD_TRANS_NEED_VOLTAGE_TAP_OFF);
     osDelay(200);
@@ -848,8 +853,8 @@ int VsdEtalon::setBaseVoltage(float value)
 
 int VsdEtalon::setBaseFrequency(float value)
 {
-  if (!setValue(VSD_ETALON_BASE_FREQUENCY, value)) {
-    writeToDevice(VSD_ETALON_BASE_FREQUENCY, value);
+  if (!setValue(VSD_BASE_FREQUENCY, value)) {
+    writeToDevice(VSD_BASE_FREQUENCY, value);
     if (!setValue(VSD_BLDC_MAX_WORK_FREQ, value)) {
       writeToDevice(VSD_BLDC_MAX_WORK_FREQ, value);
       osDelay(200);
@@ -870,8 +875,8 @@ int VsdEtalon::setUfU(uint16_t id, float value)
     return err_r;
   }
   else {
-    writeToDevice(id, (getValue(id) * 100.0) / getValue(VSD_ETALON_BASE_VOLTAGE));
-  return ok_r;
+    writeToDevice(id, (getValue(id) * 100.0) / getValue(VSD_BASE_VOLTAGE));
+    return ok_r;
   }
 }
 

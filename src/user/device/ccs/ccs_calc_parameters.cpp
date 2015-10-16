@@ -178,7 +178,7 @@ float Ccs::calcMotorSpeed()
 {
   float mtrSpeed = NAN;
   if (parameters.getValidity(VSD_FREQUENCY_NOW) == ok_r) {
-    float mtrType = parameters.get(VSD_MOTOR_TYPE);
+    float mtrType = parameters.get(CCS_MOTOR_TYPE);
     float freq = parameters.get(VSD_FREQUENCY_NOW);
     if (mtrType == VSD_MOTOR_TYPE_ASYNC) {
       mtrSpeed = freq * 60;
@@ -375,12 +375,12 @@ float Ccs::calcTransRecommendedTapOff()
   float nomFreqMtr = parameters.get(VSD_MOTOR_FREQUENCY);
   if (nomFreqMtr == 0)
     nomFreqMtr = 50;
-  float baseFreq = parameters.get(CCS_FREQUENCY_HIGH_LIMIT);
+  float baseFreq = parameters.get(CCS_BASE_FREQUENCY);
   if (baseFreq == 0)
     baseFreq = nomFreqMtr;
   float baseVolt = (baseFreq / nomFreqMtr ) * nomVoltMtr;
   float dropVoltCable = calcDropVoltageCable(nomCurMtr);
-  float voltHiLim = parameters.get(CCS_VOLTAGE_HIGH_LIMIT);
+  float voltHiLim = parameters.get(CCS_BASE_VOLTAGE);
   float transCoef = (baseVolt + dropVoltCable) / (voltHiLim);
 
   // Вычисляем коэффициент трансформации с учётом потери в фильтре
