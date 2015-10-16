@@ -97,6 +97,8 @@ void Ccs::initTask()
   resetCmd(CCS_CMD_UPDATE_SOFTWARE);
   resetCmd(CCS_CMD_START_UPDATE_SW_SLAVE);
   resetCmd(CCS_CMD_UPDATE_SW_MASTER);
+
+  setMaxBaseFrequency();
 }
 
 void Ccs::mainTask()
