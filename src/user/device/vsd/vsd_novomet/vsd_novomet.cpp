@@ -846,6 +846,7 @@ void VsdNovomet::calcMotorType()
   }
   else {
     setValue(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_ASYNC);
+    setValue(VSD_MOTOR_CONTROL, VSD_MOTOR_CONTROL_UF);
   }
   float value = getValue(VSD_MOTOR_TYPE);
   if (parameters.get(CCS_MOTOR_TYPE) != value)
