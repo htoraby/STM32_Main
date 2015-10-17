@@ -786,7 +786,9 @@ enum enID
   CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET = 780,    //!< Команда сброса уставок защиты от потери связи с ЧРП по умолчанию
   CCS_VSD_LOG_CONNECTION = 781,                              //!< Связь с ЧРП - быстрые архивы
   CCS_MOTOR_TYPE = 782,                                      //!< Тип двигателя. Используется в интерфейсе
-  CCS_END = 783,                                             //!< Последний параметр
+  CCS_RGM_RUN_AUTO_ADAPTATION_MODE = 783,                    //!< Действие режима пуска "Автоадаптация"
+  CCS_RGM_RUN_AUTO_ADAPTATION_STATE = 784,                   //!< Состояние автомата режима пуска "Автоадаптация"
+  CCS_END = 785,                                             //!< Последний параметр
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF

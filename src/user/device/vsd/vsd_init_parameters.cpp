@@ -1265,27 +1265,27 @@ void Vsd::initParameters()
   // Величина измерительного тока автонастройки
   parameters_[VSD_AST_IMEAS - VSD_BEGIN].id                                      = VSD_AST_IMEAS;
   parameters_[VSD_AST_IMEAS - VSD_BEGIN].access                                  = ACCESS_OPERATOR;
-  parameters_[VSD_AST_IMEAS - VSD_BEGIN].operation                               = 0;
-  parameters_[VSD_AST_IMEAS - VSD_BEGIN].physic                                  = 0;
+  parameters_[VSD_AST_IMEAS - VSD_BEGIN].operation                               = OPERATION_WRITE;
+  parameters_[VSD_AST_IMEAS - VSD_BEGIN].physic                                  = PHYSIC_PERCENT;
   parameters_[VSD_AST_IMEAS - VSD_BEGIN].validity                                = VALIDITY_ERROR;
   parameters_[VSD_AST_IMEAS - VSD_BEGIN].value.float_t                           = 0;
-  parameters_[VSD_AST_IMEAS - VSD_BEGIN].min                                     = 0.0;
-  parameters_[VSD_AST_IMEAS - VSD_BEGIN].max                                     = 999999.0;
-  parameters_[VSD_AST_IMEAS - VSD_BEGIN].def                                     = 0;
+  parameters_[VSD_AST_IMEAS - VSD_BEGIN].min                                     = 20.0;
+  parameters_[VSD_AST_IMEAS - VSD_BEGIN].max                                     = 150.0;
+  parameters_[VSD_AST_IMEAS - VSD_BEGIN].def                                     = 100.0;
   parameters_[VSD_AST_IMEAS - VSD_BEGIN].discret                                 = 1;
-  parameters_[VSD_AST_IMEAS - VSD_BEGIN].code                                    = 0;
+  parameters_[VSD_AST_IMEAS - VSD_BEGIN].code                                    = 13;
   // Величина измерительного напряжения автонастройки
   parameters_[VSD_AST_UMEAS - VSD_BEGIN].id                                      = VSD_AST_UMEAS;
   parameters_[VSD_AST_UMEAS - VSD_BEGIN].access                                  = ACCESS_OPERATOR;
-  parameters_[VSD_AST_UMEAS - VSD_BEGIN].operation                               = 0;
-  parameters_[VSD_AST_UMEAS - VSD_BEGIN].physic                                  = 0;
+  parameters_[VSD_AST_UMEAS - VSD_BEGIN].operation                               = OPERATION_WRITE;
+  parameters_[VSD_AST_UMEAS - VSD_BEGIN].physic                                  = PHYSIC_PERCENT;
   parameters_[VSD_AST_UMEAS - VSD_BEGIN].validity                                = VALIDITY_ERROR;
   parameters_[VSD_AST_UMEAS - VSD_BEGIN].value.float_t                           = 0;
-  parameters_[VSD_AST_UMEAS - VSD_BEGIN].min                                     = 0.0;
-  parameters_[VSD_AST_UMEAS - VSD_BEGIN].max                                     = 999999.0;
-  parameters_[VSD_AST_UMEAS - VSD_BEGIN].def                                     = 0;
+  parameters_[VSD_AST_UMEAS - VSD_BEGIN].min                                     = 10.0;
+  parameters_[VSD_AST_UMEAS - VSD_BEGIN].max                                     = 100.0;
+  parameters_[VSD_AST_UMEAS - VSD_BEGIN].def                                     = 25.0;
   parameters_[VSD_AST_UMEAS - VSD_BEGIN].discret                                 = 1;
-  parameters_[VSD_AST_UMEAS - VSD_BEGIN].code                                    = 0;
+  parameters_[VSD_AST_UMEAS - VSD_BEGIN].code                                    = 13;
   // Измеренная величина выходной индуктивности автонастройки
   parameters_[VSD_AST_LOUT_1_0 - VSD_BEGIN].id                                   = VSD_AST_LOUT_1_0;
   parameters_[VSD_AST_LOUT_1_0 - VSD_BEGIN].access                               = ACCESS_OPERATOR;

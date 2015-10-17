@@ -356,7 +356,7 @@ float Ccs::calcSystemInduct()
   float inductFilter = parameters.get(CCS_FILTER_INDUCTANCE) / 1000;
   float induct = (inductTrans + inductCable + inductMotor + inductFilter) * 1000;
   parameters.set(CCS_SYSTEM_INDUCTANCE, induct);
-  parameters.set(VSD_LOUT, parameters.get(CCS_SYSTEM_INDUCTANCE));
+  vsd->setSumInduct(parameters.get(CCS_SYSTEM_INDUCTANCE));
   return parameters.get(CCS_SYSTEM_INDUCTANCE);
 }
 

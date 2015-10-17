@@ -35,6 +35,7 @@ void VsdNovomet::init()
 
   initParameters();
   readParameters();
+  setLimitsMotor();
   //setLimitsMinFrequence(getValue(VSD_LOW_LIM_SPEED_MOTOR));
   //setLimitsMaxFrequence(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
 }
@@ -121,6 +122,40 @@ int VsdNovomet::setMotorFrequency(float value)
   }
 }
 
+int VsdNovomet::setMotorCurrent(float value)
+{
+  if (!Vsd::setMotorCurrent(value)) {
+    value = value * parameters.get(CCS_COEF_TRANSFORMATION);
+    writeToDevice(VSD_MOTOR_CURRENT, value);
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setMotorCurrent");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setMotorVoltage(float value)
+{
+  if (!Vsd::setMotorVoltage(value)) {
+    value = value / parameters.get(CCS_COEF_TRANSFORMATION);
+    writeToDevice(VSD_MOTOR_CURRENT, value);
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setMotorVoltage");
+    return err_r;
+  }
+}
+
+void VsdNovomet::setLimitsMotor()
+{
+  setMin(VSD_MOTOR_CURRENT, getMin(VSD_MOTOR_CURRENT) / parameters.get(CCS_COEF_TRANSFORMATION));
+  setMax(VSD_MOTOR_CURRENT, getMax(VSD_MOTOR_CURRENT) / parameters.get(CCS_COEF_TRANSFORMATION));
+  setMin(VSD_MOTOR_VOLTAGE, getMin(VSD_MOTOR_VOLTAGE) * parameters.get(CCS_COEF_TRANSFORMATION));
+  setMax(VSD_MOTOR_VOLTAGE, getMax(VSD_MOTOR_VOLTAGE) * parameters.get(CCS_COEF_TRANSFORMATION));
+}
+
 // РЕЖИМЫ ПУСКА
 int VsdNovomet::onRegimePush()
 {
@@ -205,6 +240,16 @@ int VsdNovomet::onRegimePickup()
 int VsdNovomet::offRegimePickup()
 {
   writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_DISCHARGE_OFF);
+  return 0;
+}
+
+int VsdNovomet::onRegimeAutoAdaptation()
+{
+  return 0;
+}
+
+int VsdNovomet::offRegimeAutoAdaptation()
+{
   return 0;
 }
 
@@ -325,6 +370,18 @@ int VsdNovomet::setResonanceRemoveSource(float value)
   }
   else {
     logDebug.add(WarningMsg, "VsdNovomet::setResonanceRemoveSource");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setSumInduct(float value)
+{
+  if (Vsd::setSumInduct(value)) {
+    writeToDevice(VSD_LOUT, value);
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setSumInduct");
     return err_r;
   }
 }
@@ -478,6 +535,7 @@ int VsdNovomet::setUf_U6(float value)
 // Метод проверки и обновления параметров устройства
 void VsdNovomet::getNewValue(uint16_t id)
 {
+  float temp = 0;
   float value = 0;
   ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtId(id));
 
@@ -594,7 +652,20 @@ void VsdNovomet::getNewValue(uint16_t id)
     setValue(id, value);
     break;
   case VSD_MOTOR_CURRENT:
+    temp = parameters.get(CCS_COEF_TRANSFORMATION);
+    if (temp != 0)
+      value = value / temp;
     setValue(id, value);
+    break;
+  case VSD_MOTOR_VOLTAGE:
+    temp = parameters.get(CCS_COEF_TRANSFORMATION);
+    if (temp != 0)
+      value = value * temp;
+    setValue(id, value);
+    break;
+  case VSD_LOUT:
+    setValue(id, value);
+    parameters.set(CCS_SYSTEM_INDUCTANCE, value);
     break;
   default:                                  // Прямая запись в массив параметров
     setValue(id, value);
@@ -688,8 +759,14 @@ int VsdNovomet::start()
       if (countRepeats > VSD_CMD_NUMBER_REPEATS)
         return err_r;
 
+      if (vsd->resetBlock())
+        return err_r;
+
+      //osDelay(1000);
+
       if (setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_START))
         return err_r;
+
     } else {
       timeMs = timeMs + 100;
     }
@@ -747,6 +824,7 @@ int VsdNovomet::stop(float type)
           return err_r;
        break;
       }
+      // resetBlock();
     } else {
       timeMs = timeMs + 100;
     }
@@ -802,6 +880,12 @@ bool VsdNovomet::checkStop()
     }
   }
   return false;
+}
+
+int VsdNovomet::resetBlock()
+{
+  setNewValue(VSD_FLAG, 0);
+  return setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_RESET);
 }
 
 void VsdNovomet::processingRegimeRun()
@@ -882,6 +966,13 @@ void VsdNovomet::calcResonanceRemoveSource()
   setValue(VSD_RES_MODE, ((uint16_t)getValue(VSD_STATUS_WORD_3)) & 0x0003);
 }
 
+void VsdNovomet::calcSystemInduct()
+{
+
+}
+
+
+
 void VsdNovomet::calcParameters(uint16_t id)
 {
 
@@ -906,7 +997,8 @@ void VsdNovomet::resetRunQueue()
 {
   int action = (parameters.get(CCS_RGM_RUN_PICKUP_MODE) ||
                 parameters.get(CCS_RGM_RUN_PUSH_MODE) ||
-                parameters.get(CCS_RGM_RUN_SWING_MODE));
+                parameters.get(CCS_RGM_RUN_SWING_MODE) ||
+                parameters.get(CCS_RGM_RUN_AUTO_ADAPTATION_MODE));
   if (action)
     return;
 
