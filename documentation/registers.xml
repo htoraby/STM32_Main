@@ -12126,7 +12126,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_INDUNCTANCE</physic>
 		<min>0.0</min>
-		<max>100.0</max>
+		<max>1000.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -12135,8 +12135,8 @@
 		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>INDUNCTANCE_MH</unit>
-		<unit_lcd>NULL</unit_lcd>
-		<format>NULL</format>
+		<unit_lcd>INDUNCTANCE_MH</unit_lcd>
+		<format>XXX_XX</format>
 		<code>0</code>
 		<comment>Индуктивность системы</comment>
 	</param>
@@ -13791,6 +13791,48 @@
 	</param>
 	<param>
 		<id>783</id>
+		<name>CCS_RGM_RUN_AUTO_ADAPTATION_MODE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Действие режима пуска "Автоадаптация"</text>
+		<short_text>Реакция режима</short_text>
+		<form>3.2.1.2 Толчковый</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Вкл;2-Постоянно</values>
+		<comment>Действие режима пуска "Автоадаптация"</comment>
+	</param>
+	<param>
+		<id>784</id>
+		<name>CCS_RGM_RUN_AUTO_ADAPTATION_STATE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>10.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Состояние автомата режима пуска "Автоадаптация"</comment>
+	</param>
+	<param>
+		<id>785</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
@@ -15480,22 +15522,38 @@
 		<id>10105</id>
 		<name>VSD_AST_IMEAS</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>20.0</min>
+		<max>150.0</max>
+		<def>100.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<text>Измерительный ток автонастройки</text>
+		<short_text>Измерительный ток автонастройки</short_text>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Величина измерительного тока автонастройки</comment>
 	</param>
 	<param>
 		<id>10106</id>
 		<name>VSD_AST_UMEAS</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>10.0</min>
+		<max>100.0</max>
+		<def>25.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<text>Измерительное напряжение автонастройки</text>
+		<short_text>Измерительное напряжение автонастройки</short_text>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Величина измерительного напряжения автонастройки</comment>
 	</param>
 	<param>
