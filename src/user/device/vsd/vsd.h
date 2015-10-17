@@ -122,6 +122,7 @@ enum enControl
   VSD_CONTROL_OVERPWM_OFF     = 4096,    //!< Выключить режим OverPWM
   VSD_CONTROL_DISCHARGE_ON    = 8192,    //!< Включить предразряд шины инвертора
   VSD_CONTROL_DISCHARGE_OFF   = 16384,   //!< Выключить предразряд шины инвертора
+  VSD_CONTROL_RESET           = 32768,
 };
 
 enum enControl2
@@ -164,7 +165,32 @@ public:
    */
   int setMotorType(float value);
 
+  /*!
+   * \brief setMotorFrequency
+   * \param value
+   * \return
+   */
   virtual int setMotorFrequency(float value);
+
+  /*!
+   * \brief setMotorCurrent
+   * \param value
+   * \return
+   */
+  virtual int setMotorCurrent(float value);
+
+  /*!
+   * \brief setMotorVoltage
+   * \param value
+   * \return
+   */
+  virtual int setMotorVoltage(float value);
+
+  /*!
+   * \brief setLimitsMotor
+   * \return
+   */
+  virtual void setLimitsMotor();
 
   // РЕЖИМЫ ПУСКА
   /*!
@@ -214,6 +240,18 @@ public:
    * \return
    */
   virtual int offRegimeSkipFreq();
+
+  /*!
+   * \brief onRegimeAutoAdaptation
+   * \return
+   */
+  virtual int onRegimeAutoAdaptation();
+
+  /*!
+   * \brief offRegimeAutoAdaptation
+   * \return
+   */
+  virtual int offRegimeAutoAdaptation();
 
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
   /*!
@@ -418,7 +456,7 @@ public:
    * \param induct - задаваемая суммарная индуктивности
    * \return 0 - задание успешно, № - ошибки
    */
-  int setSumInduct(float induct);
+  virtual int setSumInduct(float value);
 
 
   int setUfU(uint16_t id, float value);

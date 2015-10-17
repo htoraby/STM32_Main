@@ -31,6 +31,21 @@ int Vsd::setMotorFrequency(float value)
   return setValue(VSD_MOTOR_FREQUENCY, value);
 }
 
+int Vsd::setMotorCurrent(float value)
+{
+  return setValue(VSD_MOTOR_CURRENT, value);
+}
+
+int Vsd::setMotorVoltage(float value)
+{
+  return setValue(VSD_MOTOR_VOLTAGE, value);
+}
+
+void Vsd::setLimitsMotor()
+{
+
+}
+
   // РЕЖИМЫ ПУСКА
 int Vsd::onRegimePush()
 {
@@ -68,6 +83,16 @@ int Vsd::onRegimeSkipFreq()
 }
 
 int Vsd::offRegimeSkipFreq()
+{
+  return 0;
+}
+
+int Vsd::onRegimeAutoAdaptation()
+{
+  return 0;
+}
+
+int Vsd::offRegimeAutoAdaptation()
 {
   return 0;
 }
@@ -275,9 +300,9 @@ int Vsd::setCurrentLim(float value)
   return setValue(VSD_ILIMIT, value);
 }
 
-int Vsd::setSumInduct(float induct)
+int Vsd::setSumInduct(float value)
 {
-  return setValue(VSD_LOUT, induct);
+  return setValue(VSD_LOUT, value);
 }
 
 int Vsd::resetBlock()
