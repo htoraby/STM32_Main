@@ -27,6 +27,7 @@ public:
     SmoothRegimeRun,                        //!< Плавный
     PushRegimeRun,                          //!< Толчковый
     SwingRegimeRun,                         //!< Раскачкой
+    AutoAdaptation,                         //!< Автоадаптация
   } TypeRegimeRun;
 
   /*!
