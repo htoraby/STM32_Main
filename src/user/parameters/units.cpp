@@ -129,7 +129,7 @@ float units[PHYSIC_LAST][6][2] =
    {1.0, 0.0},
    {1.0, 0.0}},
   {{1.0, 0.0},         //PHYSIC_SPEED -> SPEED_M_SS
-   {1.0, 0.0},
+   {1000.0, 0.0},      //PHYSIC_SPEED -> SPEED_MM_SS
    {1.0, 0.0},
    {1.0, 0.0},
    {1.0, 0.0},
