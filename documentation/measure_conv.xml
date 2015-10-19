@@ -247,6 +247,12 @@
 		<b>0</b>
 	</param>
 	<param>
+		<midIn>PHYSIC_SPEED</midIn>
+		<midOut>SPEED_MM_SS</midOut>
+		<a>1000</a>
+		<b>0</b>
+	</param>
+	<param>
 		<midIn>PHYSIC_VISCOSITY</midIn>
 		<midOut>VISCOSITY_MPA_SS</midOut>
 		<a>1</a>
