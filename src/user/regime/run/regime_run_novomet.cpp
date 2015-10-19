@@ -73,7 +73,7 @@ void RegimeRunNovomet::processingStateRunning()
   }
 
   if (parameters.get(CCS_RGM_RUN_AUTO_ADAPTATION_MODE)) {
-    queue[pushRun] = VSD_REQULATOR_QUEUE_AUTO;
+    queue[autoRun] = VSD_REQULATOR_QUEUE_AUTO;
     pushRun++;
     swingRun++;
   }
