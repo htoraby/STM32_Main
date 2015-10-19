@@ -1146,7 +1146,8 @@ enum enID
   VSD_RES_MODE = 10356,                                      //!< Источник сигнала о колебаниях
   VSD_PROT_NO_CONNECT_MODE = 10357,                          //!< "Защита от потери связи с ЧРП"
   VSD_PROT_NO_CONNECT_TRIP_DELAY = 10358,                    //!< Защита от потери связи с ЧРП. Задержка срабатывания уставка
-  VSD_END = 10359,                                           //!< 
+  VSD_TURBO_ROTATION_NOW = 10359,                            //!< Текущее турбинное вращение
+  VSD_END = 10360,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме

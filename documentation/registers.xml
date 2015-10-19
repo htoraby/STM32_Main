@@ -19436,7 +19436,7 @@
 		<max>1.0</max>
 		<def>1.0</def>
 		<discret>1</discret>
-		<valid>VALIDITY_OK</valid>
+		<valid>VALIDITY_ERROR</valid>
 		<value>1.0</value>
 		<text>РРЗ от потери связи с ЧРП</text>
 		<short_text>РРЗ от потери связи с ЧРП</short_text>
@@ -19458,7 +19458,7 @@
 		<max>65535.0</max>
 		<def>180.0</def>
 		<discret>1</discret>
-		<valid>VALIDITY_OK</valid>
+		<valid>VALIDITY_ERROR</valid>
 		<value>180.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
@@ -19470,6 +19470,27 @@
 	</param>
 	<param>
 		<id>10359</id>
+		<name>VSD_TURBO_ROTATION_NOW</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>200.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Текущее турбинное вращение</comment>
+	</param>
+	<param>
+		<id>10360</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>
