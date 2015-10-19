@@ -677,7 +677,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>9999999.0</max>
 		<def>2000.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -779,7 +779,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>300.0</min>
-		<max>7000.0</max>
+		<max>9999.9</max>
 		<def>380.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -799,7 +799,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>300.0</min>
-		<max>7000.0</max>
+		<max>9999.9</max>
 		<def>380.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13833,6 +13833,321 @@
 	</param>
 	<param>
 		<id>785</id>
+		<name>CCS_DPOR_VOLTAGE_CABLE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>9999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Падение напряжения на кабеле</text>
+		<short_text>Падение напряжения на кабеле</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Падение напряжения на кабеле</comment>
+	</param>
+	<param>
+		<id>786</id>
+		<name>CCS_DROP_VOLTAGE_FILTER</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>9999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Падение напряжения на фильтре</text>
+		<short_text>Падение напряжения на фильтре</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Падение напряжения на фильтре</comment>
+	</param>
+	<param>
+		<id>787</id>
+		<name>CCS_SW_STARTUP_FREQUENCY_PUSH</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>10.0</max>
+		<def>3.0</def>
+		<discret>100</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>3.0</value>
+		<text>Частота</text>
+		<short_text>Частота</short_text>
+		<form>3.2.1.2 Толчковый</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
+		<comment>Частота толчка в режиме пуска "Толчковый"</comment>
+	</param>
+	<param>
+		<id>788</id>
+		<name>CCS_SW_STARTUP_ANGLE_OSC_PUSH</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_ANGLE</physic>
+		<min>2.0</min>
+		<max>359.0</max>
+		<def>2.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>2.0</value>
+		<text>Угол качания</text>
+		<short_text>Угол качания</short_text>
+		<form>3.2.1.2 Толчковый</form>
+		<unit>ANGLE_DEGREES</unit>
+		<unit_lcd>ANGLE_DEGREES</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Угол качания в режиме пуска "Толчковый"</comment>
+	</param>
+	<param>
+		<id>789</id>
+		<name>CCS_SW_STARTUP_ROTATIONS_PUSH</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>1.0</min>
+		<max>100.0</max>
+		<def>25.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>25.0</value>
+		<text>Количество оборотов двигателя</text>
+		<short_text>Количество оборотов двигателя</short_text>
+		<form>3.2.1.2 Толчковый</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Количество оборотов двигателя в режиме пуска "Толчковый"</comment>
+	</param>
+	<param>
+		<id>790</id>
+		<name>CCS_SW_STARTUP_U_PULSE_PUSH</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>1.0</min>
+		<max>20.0</max>
+		<def>5.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>5.0</value>
+		<text>Кратность напряжения импульса расклинки</text>
+		<short_text>Кратность напряжения импульса расклинки</short_text>
+		<form>3.2.1.2 Толчковый</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Кратность напряжения импульса расклинки в режиме пуска "Толчковый"</comment>
+	</param>
+	<param>
+		<id>791</id>
+		<name>CCS_SW_STARTUP_I_LIM_PUSH</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>10.0</min>
+		<max>1500.0</max>
+		<def>1500.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1500.0</value>
+		<text>Токоограничение в режиме</text>
+		<short_text>Токоограничение в режиме</short_text>
+		<form>3.2.1.2 Толчковый</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Токоограничение в режиме в режиме пуска "Толчковый"</comment>
+	</param>
+	<param>
+		<id>792</id>
+		<name>CCS_SW_STARTUP_I_LIM_PULSE_PUSH</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>10.0</min>
+		<max>3000.0</max>
+		<def>3000.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>3000.0</value>
+		<text>Порог токоограничения импульса</text>
+		<short_text>Порог токоограничения импульса</short_text>
+		<form>3.2.1.2 Толчковый</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Порог токоограничения импульса в режиме пуска "Толчковый"</comment>
+	</param>
+	<param>
+		<id>793</id>
+		<name>CCS_SW_STARTUP_FREQUENCY_SWING</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>10.0</max>
+		<def>3.0</def>
+		<discret>100</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>3.0</value>
+		<text>Частота</text>
+		<short_text>Частота</short_text>
+		<form>3.2.1.3 С раскачкой</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
+		<comment>Частота толчка в режиме пуска "С раскачкой"</comment>
+	</param>
+	<param>
+		<id>794</id>
+		<name>CCS_SW_STARTUP_ANGLE_OSC_SWING</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_ANGLE</physic>
+		<min>2.0</min>
+		<max>359.0</max>
+		<def>2.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>2.0</value>
+		<text>Угол качания</text>
+		<short_text>Угол качания</short_text>
+		<form>3.2.1.3 С раскачкой</form>
+		<unit>ANGLE_DEGREES</unit>
+		<unit_lcd>ANGLE_DEGREES</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Угол качания в режиме пуска "С раскачкой"</comment>
+	</param>
+	<param>
+		<id>795</id>
+		<name>CCS_SW_STARTUP_OSC_COUNT_SWING</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>1.0</min>
+		<max>100.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Количество качаний на угол</text>
+		<short_text>Количество качаний на угол</short_text>
+		<form>3.2.1.3 С раскачкой</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Количество качаний на угол в режиме пуска "С раскачкой"</comment>
+	</param>
+	<param>
+		<id>796</id>
+		<name>CCS_SW_STARTUP_ROTATIONS_SWING</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>1.0</min>
+		<max>100.0</max>
+		<def>25.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>25.0</value>
+		<text>Количество оборотов двигателя</text>
+		<short_text>Количество оборотов двигателя</short_text>
+		<form>3.2.1.3 С раскачкой</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Количество оборотов двигателя в режиме пуска "С раскачкой"</comment>
+	</param>
+	<param>
+		<id>797</id>
+		<name>CCS_SW_STARTUP_U_PULSE_SWING</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>1.0</min>
+		<max>20.0</max>
+		<def>5.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>5.0</value>
+		<text>Кратность напряжения импульса расклинки</text>
+		<short_text>Кратность напряжения импульса расклинки</short_text>
+		<form>3.2.1.3 С раскачкой</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Кратность напряжения импульса расклинки в режиме пуска "С раскачкой"</comment>
+	</param>
+	<param>
+		<id>798</id>
+		<name>CCS_SW_STARTUP_I_LIM_SWING</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>10.0</min>
+		<max>1500.0</max>
+		<def>1500.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1500.0</value>
+		<text>Токоограничение в режиме</text>
+		<short_text>Токоограничение в режиме</short_text>
+		<form>3.2.1.3 С раскачкой</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Токоограничение в режиме  в режиме пуска "С раскачкой"</comment>
+	</param>
+	<param>
+		<id>799</id>
+		<name>CCS_SW_STARTUP_I_LIM_PULSE_SWING</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>10.0</min>
+		<max>3000.0</max>
+		<def>3000.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>3000.0</value>
+		<text>Порог токоограничения импульса</text>
+		<short_text>Порог токоограничения импульса</short_text>
+		<form>3.2.1.3 С раскачкой</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Порог токоограничения импульса  в режиме пуска "С раскачкой"</comment>
+	</param>
+	<param>
+		<id>800</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
@@ -19528,6 +19843,426 @@
 	</param>
 	<param>
 		<id>10359</id>
+		<name>VSD_THYR_T_EXT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Термодатчик выпрямителя</text>
+		<short_text>Термодатчик выпрямителя</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Термодатчик выпрямителя</comment>
+	</param>
+	<param>
+		<id>10360</id>
+		<name>VSD_THYR_T_EXT_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Термодатчик выпрямителя 2</text>
+		<short_text>Термодатчик выпрямителя 2</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Термодатчик выпрямителя 2</comment>
+	</param>
+	<param>
+		<id>10361</id>
+		<name>VSD_MEASURE_T_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>T1 платы измерений</text>
+		<short_text>T1 платы измерений</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>T1 платы измерений</comment>
+	</param>
+	<param>
+		<id>10362</id>
+		<name>VSD_MEASURE_T_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>T2 платы измерений</text>
+		<short_text>T2 платы измерений</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>T2 платы измерений</comment>
+	</param>
+	<param>
+		<id>10363</id>
+		<name>VSD_MEASURE_T_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>T3 платы измерений</text>
+		<short_text>T3 платы измерений</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>T3 платы измерений</comment>
+	</param>
+	<param>
+		<id>10364</id>
+		<name>VSD_DRV_0_T_AIR</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Термодатчик воздуха драйвера 0</text>
+		<short_text>Термодатчик воздуха драйвера 0</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Термодатчик воздуха драйвера 0</comment>
+	</param>
+	<param>
+		<id>10365</id>
+		<name>VSD_DRV_0_T_EXT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Термодатчик драйвера 0</text>
+		<short_text>Термодатчик драйвера 0</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Термодатчик драйвера 0</comment>
+	</param>
+	<param>
+		<id>10366</id>
+		<name>VSD_DRV_1_T_AIR</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Термодатчик воздуха драйвера 1</text>
+		<short_text>Термодатчик воздуха драйвера 1</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Термодатчик воздуха драйвера 1</comment>
+	</param>
+	<param>
+		<id>10367</id>
+		<name>VSD_DRV_1_T_EXT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Термодатчик драйвера 1</text>
+		<short_text>Термодатчик драйвера 1</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Термодатчик драйвера 1</comment>
+	</param>
+	<param>
+		<id>10368</id>
+		<name>VSD_DRV_2_T_AIR</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Термодатчик воздуха драйвера 2</text>
+		<short_text>Термодатчик воздуха драйвера 2</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Термодатчик воздуха драйвера 2</comment>
+	</param>
+	<param>
+		<id>10369</id>
+		<name>VSD_DRV_2_T_EXT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Термодатчик драйвера 2</text>
+		<short_text>Термодатчик драйвера 2</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Термодатчик драйвера 2</comment>
+	</param>
+	<param>
+		<id>10370</id>
+		<name>VSD_DRV_0_T_EXT_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Термодатчик 2 драйвера 0</text>
+		<short_text>Термодатчик 2 драйвера 0</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Термодатчик 2 драйвера 0</comment>
+	</param>
+	<param>
+		<id>10371</id>
+		<name>VSD_DRV_1_T_EXT_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Термодатчик 2 драйвера 1</text>
+		<short_text>Термодатчик 2 драйвера 1</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Термодатчик 2 драйвера 1</comment>
+	</param>
+	<param>
+		<id>10372</id>
+		<name>VSD_DRV_2_T_EXT_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Термодатчик 2 драйвера 2</text>
+		<short_text>Термодатчик 2 драйвера 2</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Термодатчик 2 драйвера 2</comment>
+	</param>
+	<param>
+		<id>10373</id>
+		<name>VSD_DRV_0_T_EXT_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Термодатчик 3 драйвера 0</text>
+		<short_text>Термодатчик 3 драйвера 0</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Термодатчик 3 драйвера 0</comment>
+	</param>
+	<param>
+		<id>10374</id>
+		<name>VSD_DRV_1_T_EXT_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Термодатчик 3 драйвера 1</text>
+		<short_text>Термодатчик 3 драйвера 1</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Термодатчик 3 драйвера 1</comment>
+	</param>
+	<param>
+		<id>10375</id>
+		<name>VSD_DRV_2_T_EXT_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Термодатчик 3 драйвера 2</text>
+		<short_text>Термодатчик 3 драйвера 2</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Термодатчик 3 драйвера 2</comment>
+	</param>
+	<param>
+		<id>10376</id>
+		<name>VSD_DRV_0_T_EXT_4</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Термодатчик 4 драйвера 0</text>
+		<short_text>Термодатчик 4 драйвера 0</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Термодатчик 4 драйвера 0</comment>
+	</param>
+	<param>
+		<id>10377</id>
+		<name>VSD_DRV_1_T_EXT_4</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Термодатчик 4 драйвера 1</text>
+		<short_text>Термодатчик 4 драйвера 1</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Термодатчик 4 драйвера 1</comment>
+	</param>
+	<param>
+		<id>10378</id>
+		<name>VSD_DRV_2_T_EXT_4</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Термодатчик 4 драйвера 2</text>
+		<short_text>Термодатчик 4 драйвера 2</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Термодатчик 4 драйвера 2</comment>
+	</param>
+	<param>
+		<id>10379</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>
@@ -20361,7 +21096,7 @@
 		<text>Радиальная виброскорость насоса</text>
 		<short_text>Радиальная виброскорость насоса</short_text>
 		<form>NULL</form>
-		<unit>SPEED_MM_SS</unit>
+		<unit>SPEED_M_SS</unit>
 		<unit_lcd>SPEED_MM_SS</unit_lcd>
 		<format>XXXX_X</format>
 		<code>0</code>
@@ -20382,7 +21117,7 @@
 		<text>Осевая виброскорость насоса</text>
 		<short_text>Осевая виброскорость насоса</short_text>
 		<form>NULL</form>
-		<unit>SPEED_MM_SS</unit>
+		<unit>SPEED_M_SS</unit>
 		<unit_lcd>SPEED_MM_SS</unit_lcd>
 		<format>XXXX_X</format>
 		<code>0</code>
@@ -20487,7 +21222,7 @@
 		<text>Радиальная виброскорость двигателя</text>
 		<short_text>Радиальная виброскорость двигателя</short_text>
 		<form>NULL</form>
-		<unit>SPEED_MM_SS</unit>
+		<unit>SPEED_M_SS</unit>
 		<unit_lcd>SPEED_MM_SS</unit_lcd>
 		<format>XXXX_X</format>
 		<code>0</code>
@@ -20508,7 +21243,7 @@
 		<text>Осевая виброскорость двигателя</text>
 		<short_text>Осевая виброскорость двигателя</short_text>
 		<form>NULL</form>
-		<unit>SPEED_MM_SS</unit>
+		<unit>SPEED_M_SS</unit>
 		<unit_lcd>SPEED_MM_SS</unit_lcd>
 		<format>XXXX_X</format>
 		<code>0</code>
