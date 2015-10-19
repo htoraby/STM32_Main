@@ -905,7 +905,7 @@ void VsdEtalon::convertBitVsdStatus(float value)
   // Получаем значение из регистры и сбрасываем в 0, только те биты,
   // которыми мы управляем, остальные не изменяем
   uint32_t vsdStatusWord1 = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_1) & 0xD1DF;
-  uint32_t vsdStatusWord2 = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_2) & 0xDFFE;
+  uint32_t vsdStatusWord2 = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_2) & 0xDBFE;
   uint32_t vsdStatusWord4 = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_4) & 0x8000;
   uint32_t vsdStatusWord5 = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_5) & 0xFFF1;
   uint32_t vsdStatusWord7 = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_7) & 0xFF81;
