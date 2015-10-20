@@ -2,7 +2,7 @@
 
 RegimeTechnologSoftChangeFreq::RegimeTechnologSoftChangeFreq()
 {
-
+  state_ = IdleState;
 }
 
 RegimeTechnologSoftChangeFreq::~RegimeTechnologSoftChangeFreq()
@@ -13,7 +13,8 @@ RegimeTechnologSoftChangeFreq::~RegimeTechnologSoftChangeFreq()
 void RegimeTechnologSoftChangeFreq::processing()
 {
   action_ = parameters.get(CCS_RGM_CHANGE_FREQ_MODE);
-  state_ = parameters.get(CCS_RGM_CHANGE_FREQ_STATE);
+  // При перезагрузке запускаем с начальной частотой
+//  state_ = parameters.get(CCS_RGM_CHANGE_FREQ_STATE);
 
   beginFreq_ = parameters.get(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ);
   endFreq_ = parameters.get(CCS_RGM_CHANGE_FREQ_END_FREQ);
