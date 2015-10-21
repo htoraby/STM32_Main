@@ -26,7 +26,6 @@ void Ccs::calcParametersTask()
 //    calcInputVoltagePhase23();
 //    calcInputVoltagePhase31();
     calcInputVoltageFromAdc();
-
     calcInputVoltageImbalance();
     calcInputCurrentImbalance();
     calcResistanceIsolation();
@@ -435,12 +434,10 @@ void Ccs::calcRegimeChangeFreqPeriodOneStep()
 
 void Ccs::calcRegimeRun()
 {
-  /*
   if (parameters.get(CCS_RGM_RUN_AUTO_ADAPTATION_MODE) != Regime::OffAction) {
-    parameters.set(CCS_RUNNING_TYPE, Regime::AutoAdaptation);
+    parameters.set(CCS_RUNNING_TYPE, Regime::AutoAdaptationRegimeRun);
     return;
   }
-  */
   if (parameters.get(CCS_RGM_RUN_PUSH_MODE) != Regime::OffAction) {
     parameters.set(CCS_RUNNING_TYPE, Regime::PushRegimeRun);
     return;
