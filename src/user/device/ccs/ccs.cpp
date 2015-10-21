@@ -198,8 +198,17 @@ void Ccs::vsdConditionTask()
     int vsdCondition = getValue(CCS_VSD_CONDITION);
     switch (vsdCondition) {
     case VSD_CONDITION_STOP:
-      if (getValue(CCS_CONDITION) != CCS_CONDITION_STOP)
+      if (getValue(CCS_CONDITION) != CCS_CONDITION_STOP) {
         setNewValue(CCS_CONDITION, CCS_CONDITION_STOP);
+      } else if (getValue(CCS_CONDITION) == CCS_CONDITION_STOP) {
+        if (vsd->checkStart()) {
+          setNewValue(CCS_LAST_RUN_REASON, LastReasonRunApvHardwareVsd);
+          setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
+          setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
+          setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
+          calcCountersRun(LastReasonRunApvHardwareVsd);
+        }
+      }
       break;
     case VSD_CONDITION_STOPPING:
       if (vsd->checkStop()) {
@@ -221,6 +230,12 @@ void Ccs::vsdConditionTask()
 #if USE_DEBUG
         setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
 #endif
+      } else if (getValue(CCS_CONDITION) == CCS_CONDITION_RUN) {
+        if (vsd->checkStop()) {
+          setBlock();
+          setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopHardwareVsd);
+          setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
+        }
       }
       break;
     case VSD_CONDITION_RUNNING:
