@@ -245,42 +245,46 @@ int ModbusMaster::readMultipleFloats(int slaveAddr, int startRef, float *float32
   return res;
 }
 
-int ModbusMaster::readInputRegisters(int slaveAddr, int startRef, short regArr[], int refCnt)
+uint8_t ModbusMaster::readInputRegisters(uint8_t slaveAddr, uint16_t startRef, uint16_t *regArr, uint16_t refCnt)
 {
-  int result = MODBUS_ERROR_TRASH;
   unTypeData value;
   uint16_t crc;
-
-  txBuffer_[0] = slaveAddr;                           // Адрес устройства
-  txBuffer_[1] = MODBUS_READ_INPUT_REGISTERS_0x04;    // Команды
-  txBuffer_[2] = ((startRef >> 8) & 0x00ff);          // Старший байт адреса первого регистра
-  txBuffer_[3] = startRef & 0x00ff;                   // Младший байт адреса первого регистра
-  txBuffer_[4] = 0;                                   // Старший байт количества регистров
-  txBuffer_[5] = refCnt & 0x00ff;                     // Младший байт количества регистров
-  crc = crc16_ibm(txBuffer_, 6);                      // Вычисляем контрольную сумму
-  txBuffer_[6] = crc & 0x00ff;                        // Младший байт контрольной суммы
-  txBuffer_[7] = ((crc >> 8) & 0x00ff);               // Старший байт контрольной суммы
-  if (txBuf(txBuffer_, 8)) {                  // Если отправили данные
-    result = rxBuf(rxBuffer_, refCnt*2 + MODBUS_MIN_LENGHT_PACKAGE);
-    switch (result) {
-    case MODBUS_OK:                                   // Получен корректный ответ
-      for (int i = 0; i < refCnt; i++) {
-        value.char_t[0] = rxBuffer_[4 + 2*i];
-        value.char_t[1] = rxBuffer_[3 + 2*i];
-        regArr[i] = value.uint16_t[0];
+  uint8_t res = MODBUS_ERROR_TRASH;
+  uint8_t retry  = 0;
+  if (checkDeviceAddress(slaveAddr)) {
+    if (checkCntReg(refCnt)) {
+      while (1) {
+        retry++;
+        txBuffer_[0] = slaveAddr;                           // Адрес устройства
+        txBuffer_[1] = MODBUS_READ_INPUT_REGISTERS_0x04;  // Команды
+        txBuffer_[2] = ((startRef >> 8) & 0x00ff);          // Старший байт адреса первого регистра
+        txBuffer_[3] = startRef & 0x00ff;                   // Младший байт адреса первого регистра
+        txBuffer_[4] = 0;                                   // Старший байт количества регистров
+        txBuffer_[5] = refCnt & 0x00ff;                     // Младший байт количества регистров
+        crc = crc16_ibm(txBuffer_, 6);                      // Вычисляем контрольную сумму
+        txBuffer_[6] = crc & 0x00ff;                        // Младший байт контрольной суммы
+        txBuffer_[7] = ((crc >> 8) & 0x00ff);               // Старший байт контрольной суммы
+        if (txBuf(txBuffer_, 8) == ok_r) {                  // Если отправили данные
+          res = rxBuf(rxBuffer_, refCnt*2 + MODBUS_MIN_LENGHT_PACKAGE);
+          if (res == MODBUS_OK) {                           // Получен корректный ответ
+            for (int i = 0; i < refCnt; i++) {
+              value.char_t[0] = rxBuffer_[4 + 2*i];
+              value.char_t[1] = rxBuffer_[3 + 2*i];
+              regArr[i] = value.uint16_t[0];
+            }
+            return res;
+          }
+        } else {
+          asm("nop");
+        }
+        if (retry >= retryCnt_) {
+          return res;
+        }
+        osDelay(100);
       }
-      break;
-    case MODBUS_ERROR_TRASH:                          // Получен ответ с ошибкой
-      break;
-    case MODBUS_ERROR_CRC:                            // Ответ с ошибкой CRC
-      break;
-    case MODBUS_ERROR_TIMEOUT:                        // Ответ не получен
-      break;
-    default:
-      break;
     }
   }
-  return result;
+  return res;
 }
 
 int ModbusMaster::readInputLongInts(int slaveAddr, int startRef, int *int32Arr, int refCnt)

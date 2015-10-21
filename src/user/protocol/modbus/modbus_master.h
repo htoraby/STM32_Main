@@ -129,7 +129,7 @@ public:
    * \param refCnt - количество считываемых регистров
    * \return 0 - выполнено или код ошибки
    */
-  int readInputRegisters(int slaveAddr, int startRef, short regArr[], int refCnt);
+  uint8_t readInputRegisters(uint8_t slaveAddr, uint16_t startRef, uint16_t *regArr, uint16_t refCnt);
 
   /*!
    * \brief Функция чтения регистров 32 битных регистров
