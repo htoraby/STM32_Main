@@ -29,7 +29,8 @@ void RegimeRunNovomet::getOtherSetpoint()
 {
   action_ = (parameters.get(CCS_RGM_RUN_PICKUP_MODE) ||
              parameters.get(CCS_RGM_RUN_PUSH_MODE) ||
-             parameters.get(CCS_RGM_RUN_SWING_MODE));
+             parameters.get(CCS_RGM_RUN_SWING_MODE) ||
+             parameters.get(CCS_RGM_RUN_AUTO_ADAPTATION_MODE));
   state_ = parameters.get(CCS_RGM_RUN_VSD_STATE);
 }
 
@@ -47,9 +48,10 @@ void RegimeRunNovomet::processingStateIdle()
 void RegimeRunNovomet::processingStateRunning()
 {
   int pickupRun = 0;
+  int autoRun = 0;
   int pushRun = 0;
   int swingRun = 0;
-  int autoRun = 0;
+
 
   float queue[5];
   if (parameters.get(VSD_MOTOR_CONTROL) == VSD_MOTOR_CONTROL_UF) {
@@ -65,20 +67,24 @@ void RegimeRunNovomet::processingStateRunning()
 
   if (parameters.get(CCS_RGM_RUN_PICKUP_MODE) && (parameters.get(CCS_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC)) {
     queue[pickupRun] = VSD_REQULATOR_QUEUE_PICKUP;
+    autoRun++;
     pushRun++;
     swingRun++;
-    autoRun++;
+  }
+
+  if (parameters.get(CCS_RGM_RUN_AUTO_ADAPTATION_MODE)) {
+    queue[autoRun] = VSD_REQULATOR_QUEUE_AUTO;
+    pushRun++;
+    swingRun++;
   }
 
   if (parameters.get(CCS_RGM_RUN_PUSH_MODE)) {
     queue[pushRun] = VSD_REQULATOR_QUEUE_PUSH;
     swingRun++;
-    autoRun++;
   }
 
   if (parameters.get(CCS_RGM_RUN_SWING_MODE)) {
     queue[swingRun] = VSD_REQULATOR_QUEUE_PUSH;
-    autoRun++;
   }
 
   parameters.set(VSD_REGULATOR_QUEUE_1, queue[0]);
@@ -98,6 +104,10 @@ void RegimeRunNovomet::processingStateWork()
       if (parameters.get(CCS_RGM_RUN_PICKUP_MODE) == SingleAction) {
         parameters.set(CCS_RGM_RUN_PICKUP_MODE, OffAction);         // Выключаем режим
         logEvent.add(SetpointCode, AutoType, RegimeRunPickupOffId); // Записываем данные в лог
+      }
+      if (parameters.get(CCS_RGM_RUN_AUTO_ADAPTATION_MODE) == SingleAction) {
+        parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, OffAction);         // Выключаем режим
+        logEvent.add(SetpointCode, AutoType, RegimeRunAutoAdaptationOffId); // Записываем данные в лог
       }
       if (parameters.get(CCS_RGM_RUN_PUSH_MODE) == SingleAction) {
         parameters.set(CCS_RGM_RUN_PUSH_MODE, OffAction);         // Выключаем режим

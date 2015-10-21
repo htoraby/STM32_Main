@@ -131,6 +131,7 @@ typedef enum {
   RegimeRunPushOffId,                       //!< "Режим пуска толчками отключен"
   RegimeRunSwingOffId,                      //!< "Режим пуска раскачкой отключен"
   RegimeRunPickupOffId,                     //!< "Режим подхвата турбинного вращения отключен"
+  RegimeRunAutoAdaptationOffId,             //!< "Режим автоадаптации отключен"
 
   AddDeviceDhsId,                           //!< "Подключение ТМС"
   RemoveDeviceDhsId,                        //!< "Отключение ТМС"

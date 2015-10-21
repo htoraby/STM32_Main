@@ -111,6 +111,7 @@ float Ccs::calcDropVoltageFilter(float current, float freq, float coefTrans)
   if (coefTrans == 0)
     coefTrans = 380.0;
   float dUf = 2 * NUM_PI * inductFilter * freq * current * coefTrans / 1000.0;
+  parameters.set(CCS_DROP_VOLTAGE_FILTER, dUf);
   return dUf;
 }
 
@@ -123,12 +124,14 @@ float Ccs::calcDropVoltageCable(float current)
     float R80 = parameters.get(CCS_RGM_HEAT_CABLE_RESISTANCE_80);       // Сопротивление кабеля при 80°С
     current = parameters.get(VSD_MOTOR_CURRENT);                        // Номинальный ток ПЭД
     float dUcl = R80 * lenght * current;
+    parameters.set(CCS_DPOR_VOLTAGE_CABLE, dUcl);
     return dUcl;
   }
   else {
     if (!cross)
       cross = 16;
     float dUcl = 38.7 * (current * lenght) / (cross * 1000);            // Падение напряжения на кабельной линии
+    parameters.set(CCS_DPOR_VOLTAGE_CABLE, dUcl);
     return dUcl;
   }
 }
@@ -356,7 +359,7 @@ float Ccs::calcSystemInduct()
   float inductFilter = parameters.get(CCS_FILTER_INDUCTANCE) / 1000;
   float induct = (inductTrans + inductCable + inductMotor + inductFilter) * 1000;
   parameters.set(CCS_SYSTEM_INDUCTANCE, induct);
-  parameters.set(VSD_LOUT, parameters.get(CCS_SYSTEM_INDUCTANCE));
+  vsd->setSumInduct(parameters.get(CCS_SYSTEM_INDUCTANCE));
   return parameters.get(CCS_SYSTEM_INDUCTANCE);
 }
 
@@ -391,9 +394,9 @@ float Ccs::calcTransRecommendedTapOff()
   float voltNom =  parameters.get(CCS_TRANS_NOMINAL_VOLTAGE);
   float transTapOff = voltNom;
   if ((voltNom == 0) || (transCoef == 0))
-    transTapOff = transCoef / 380;
+    transTapOff = 380;
   else
-    transTapOff = transCoef / voltNom;
+    transTapOff = transCoef * voltNom;
 
   setValue(CCS_TRANS_NEED_VOLTAGE_TAP_OFF, transTapOff);
   return parameters.get(CCS_TRANS_NEED_VOLTAGE_TAP_OFF);
@@ -411,7 +414,6 @@ float Ccs::calcResistanceIsolation()
       setValue(CCS_RESISTANCE_ISOLATION, parameters.get(VSD_ETALON_RESISTANCE_ISOLATION));
     }
   }
-
   return parameters.get(CCS_RESISTANCE_ISOLATION);
 }
 
@@ -433,6 +435,12 @@ void Ccs::calcRegimeChangeFreqPeriodOneStep()
 
 void Ccs::calcRegimeRun()
 {
+  /*
+  if (parameters.get(CCS_RGM_RUN_AUTO_ADAPTATION_MODE) != Regime::OffAction) {
+    parameters.set(CCS_RUNNING_TYPE, Regime::AutoAdaptation);
+    return;
+  }
+  */
   if (parameters.get(CCS_RGM_RUN_PUSH_MODE) != Regime::OffAction) {
     parameters.set(CCS_RUNNING_TYPE, Regime::PushRegimeRun);
     return;

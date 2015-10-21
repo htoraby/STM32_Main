@@ -118,20 +118,23 @@ bool ProtectionHardwareVsd::checkAlarm()
     parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_OVERHEAT_FILTER);
     return true;
   }
-  if (vsd->checkStatusVsd(VSD_STATUS_DRV0)) {
-    protReactEventId_ = HardwareVsdSupplyDriversProtReactId;
-    parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_DRV0);
-    return true;
-  }
-  if (vsd->checkStatusVsd(VSD_STATUS_DRV1)) {
-    protReactEventId_ = HardwareVsdSupplyDriversProtReactId;
-    parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_DRV1);
-    return true;
-  }
-  if (vsd->checkStatusVsd(VSD_STATUS_DRV2)) {
-    protReactEventId_ = HardwareVsdSupplyDriversProtReactId;
-    parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_DRV2);
-    return true;
+
+  if (parameters.get(CCS_CONDITION) == CCS_CONDITION_RUN) {
+    if (vsd->checkStatusVsd(VSD_STATUS_DRV0)) {
+      protReactEventId_ = HardwareVsdSupplyDriversProtReactId;
+      parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_DRV0);
+      return true;
+    }
+    if (vsd->checkStatusVsd(VSD_STATUS_DRV1)) {
+      protReactEventId_ = HardwareVsdSupplyDriversProtReactId;
+      parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_DRV1);
+      return true;
+    }
+    if (vsd->checkStatusVsd(VSD_STATUS_DRV2)) {
+      protReactEventId_ = HardwareVsdSupplyDriversProtReactId;
+      parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_DRV2);
+      return true;
+    }
   }
   if (vsd->checkStatusVsd(VSD_STATUS_MONOMETR)) {
     protReactEventId_ = HardwareVsdMonometrProtReactId;

@@ -46,6 +46,10 @@ public:
 
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
   int setMotorType(float value);
+  int setMotorFrequency(float value);
+  int setMotorCurrent(float value);
+  int setMotorVoltage(float value);
+  void setLimitsMotor();
 
   // РЕЖИМЫ ПУСКА
   int onRegimePush();
@@ -54,6 +58,8 @@ public:
   int offRegimeSwing();
   int onRegimePickup();
   int offRegimePickup();
+  int onRegimeAutoAdaptation();
+  int offRegimeAutoAdaptation();
 
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
   int setRotation(float value);
@@ -65,6 +71,7 @@ public:
   int setSwitchingFrequency(float value);
   int setSwitchingFrequencyMode(float value);
   int setResonanceRemoveSource(float value);
+  int setSumInduct(float value);
 
   // НАСТРОЙКА U/f
   int setUf_f1(float value);
@@ -149,6 +156,8 @@ public:
    */
   bool checkStop();
 
+  int resetBlock();
+
   /*!
    * \brief Автомат режимов пуска ЧРП
    */
@@ -216,6 +225,8 @@ public:
   void calcSwitchFreqMode();
 
   void calcResonanceRemoveSource();
+
+  void calcSystemInduct();
 
   /*!
    * \brief Проверка на "необходимость" работы с параметром

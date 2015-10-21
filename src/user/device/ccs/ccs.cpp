@@ -766,6 +766,9 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_COEF_TRANSFORMATION:
     err = setValue(id, value, eventType);
     calcSystemInduct();
+    vsd->setLimitsMotor();
+    vsd->setMotorCurrent(parameters.get(VSD_MOTOR_CURRENT));
+    vsd->setMotorVoltage(parameters.get(VSD_MOTOR_VOLTAGE));
     return err;
   case CCS_TRANS_VOLTAGE_SHORT_CIRCUIT:
     err = setValue(id, value, eventType);
@@ -776,6 +779,9 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     calcTransCoef();
     calcSystemInduct();                     // Пересчитываем индуктивность системы
     calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
+    vsd->setLimitsMotor();
+    vsd->setMotorCurrent(parameters.get(VSD_MOTOR_CURRENT));
+    vsd->setMotorVoltage(parameters.get(VSD_MOTOR_VOLTAGE));
     return err;
   case CCS_TRANS_NOMINAL_VOLTAGE_INPUT:     // Номинальное напряжение питающей сети
     err = setValue(id, value, eventType);
@@ -814,6 +820,9 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     calcTransCoef();
     calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
+    vsd->setLimitsMotor();
+    vsd->setMotorCurrent(parameters.get(VSD_MOTOR_CURRENT));
+    vsd->setMotorVoltage(parameters.get(VSD_MOTOR_VOLTAGE));
     parameters.set(VSD_TRANS_VOLTAGE_TAP_OFF, value); // Задаём в ЧРП напряжение отпайки
     return err;
   case CCS_MOTOR_INDUCTANCE:

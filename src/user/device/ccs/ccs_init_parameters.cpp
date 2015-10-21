@@ -394,7 +394,7 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].value.float_t                 = 2000.0;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].max                           = 999999.0;
+  parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].max                           = 9999999.0;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].def                           = 2000.0;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].code                          = 13;
@@ -454,7 +454,7 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].value.float_t          = 380.0;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].min                    = 300.0;
-  parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].max                    = 7000.0;
+  parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].max                    = 9999.9;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].discret                = 1;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].def                    = 380.0;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].code                   = 0;
@@ -466,7 +466,7 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].value.float_t               = 380.0;
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].min                         = 300.0;
-  parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].max                         = 7000.0;
+  parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].max                         = 9999.9;
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].def                         = 380.0;
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].code                        = 13;
@@ -8410,7 +8410,7 @@ void Ccs::initParameters()
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].max                             = 100.0;
+  parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].max                             = 1000.0;
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].code                            = 0;
@@ -9398,5 +9398,209 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].discret                                = 1;
   parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].def                                    = 0.0;
   parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].code                                   = 13;
+  // Действие режима пуска "Автоадаптация"
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_MODE - CCS_BEGIN].id                   = CCS_RGM_RUN_AUTO_ADAPTATION_MODE;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_MODE - CCS_BEGIN].access               = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_MODE - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_MODE - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_MODE - CCS_BEGIN].validity             = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_MODE - CCS_BEGIN].value.float_t        = 0.0;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_MODE - CCS_BEGIN].min                  = 0.0;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_MODE - CCS_BEGIN].max                  = 2.0;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_MODE - CCS_BEGIN].discret              = 1;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_MODE - CCS_BEGIN].def                  = 0.0;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_MODE - CCS_BEGIN].code                 = 13;
+  // Состояние автомата режима пуска "Автоадаптация"
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].id                  = CCS_RGM_RUN_AUTO_ADAPTATION_STATE;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].access              = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].operation           = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].physic              = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].validity            = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].value.float_t       = 0.0;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].min                 = 0.0;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].max                 = 10.0;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].discret             = 1;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].def                 = 0.0;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].code                = 0;
+  // Падение напряжения на кабеле
+  parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].id                             = CCS_DPOR_VOLTAGE_CABLE;
+  parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].access                         = ACCESS_OPERATOR;
+  parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].physic                         = PHYSIC_VOLTAGE;
+  parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].validity                       = VALIDITY_OK;
+  parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].value.float_t                  = 0.0;
+  parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].min                            = 0.0;
+  parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].max                            = 9999999.9;
+  parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].discret                        = 1;
+  parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].def                            = 0.0;
+  parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].code                           = 0;
+  // Падение напряжения на фильтре
+  parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].id                            = CCS_DROP_VOLTAGE_FILTER;
+  parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].access                        = ACCESS_OPERATOR;
+  parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].physic                        = PHYSIC_VOLTAGE;
+  parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].validity                      = VALIDITY_OK;
+  parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].value.float_t                 = 0.0;
+  parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].min                           = 0.0;
+  parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].max                           = 9999999.9;
+  parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].discret                       = 1;
+  parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].def                           = 0.0;
+  parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].code                          = 0;
+  // Частота толчка в режиме пуска "Толчковый"
+  parameters_[CCS_SW_STARTUP_FREQUENCY_PUSH - CCS_BEGIN].id                      = CCS_SW_STARTUP_FREQUENCY_PUSH;
+  parameters_[CCS_SW_STARTUP_FREQUENCY_PUSH - CCS_BEGIN].access                  = ACCESS_OPERATOR;
+  parameters_[CCS_SW_STARTUP_FREQUENCY_PUSH - CCS_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[CCS_SW_STARTUP_FREQUENCY_PUSH - CCS_BEGIN].physic                  = PHYSIC_FREQUENCY;
+  parameters_[CCS_SW_STARTUP_FREQUENCY_PUSH - CCS_BEGIN].validity                = VALIDITY_OK;
+  parameters_[CCS_SW_STARTUP_FREQUENCY_PUSH - CCS_BEGIN].value.float_t           = 3.0;
+  parameters_[CCS_SW_STARTUP_FREQUENCY_PUSH - CCS_BEGIN].min                     = 0.0;
+  parameters_[CCS_SW_STARTUP_FREQUENCY_PUSH - CCS_BEGIN].max                     = 10.0;
+  parameters_[CCS_SW_STARTUP_FREQUENCY_PUSH - CCS_BEGIN].discret                 = 100;
+  parameters_[CCS_SW_STARTUP_FREQUENCY_PUSH - CCS_BEGIN].def                     = 3.0;
+  parameters_[CCS_SW_STARTUP_FREQUENCY_PUSH - CCS_BEGIN].code                    = 13;
+  // Угол качания в режиме пуска "Толчковый"
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_PUSH - CCS_BEGIN].id                      = CCS_SW_STARTUP_ANGLE_OSC_PUSH;
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_PUSH - CCS_BEGIN].access                  = ACCESS_OPERATOR;
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_PUSH - CCS_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_PUSH - CCS_BEGIN].physic                  = PHYSIC_ANGLE;
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_PUSH - CCS_BEGIN].validity                = VALIDITY_OK;
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_PUSH - CCS_BEGIN].value.float_t           = 2.0;
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_PUSH - CCS_BEGIN].min                     = 2.0;
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_PUSH - CCS_BEGIN].max                     = 359.0;
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_PUSH - CCS_BEGIN].discret                 = 1;
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_PUSH - CCS_BEGIN].def                     = 2.0;
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_PUSH - CCS_BEGIN].code                    = 13;
+  // Количество оборотов двигателя в режиме пуска "Толчковый"
+  parameters_[CCS_SW_STARTUP_ROTATIONS_PUSH - CCS_BEGIN].id                      = CCS_SW_STARTUP_ROTATIONS_PUSH;
+  parameters_[CCS_SW_STARTUP_ROTATIONS_PUSH - CCS_BEGIN].access                  = ACCESS_OPERATOR;
+  parameters_[CCS_SW_STARTUP_ROTATIONS_PUSH - CCS_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[CCS_SW_STARTUP_ROTATIONS_PUSH - CCS_BEGIN].physic                  = PHYSIC_NUMERIC;
+  parameters_[CCS_SW_STARTUP_ROTATIONS_PUSH - CCS_BEGIN].validity                = VALIDITY_OK;
+  parameters_[CCS_SW_STARTUP_ROTATIONS_PUSH - CCS_BEGIN].value.float_t           = 25.0;
+  parameters_[CCS_SW_STARTUP_ROTATIONS_PUSH - CCS_BEGIN].min                     = 1.0;
+  parameters_[CCS_SW_STARTUP_ROTATIONS_PUSH - CCS_BEGIN].max                     = 100.0;
+  parameters_[CCS_SW_STARTUP_ROTATIONS_PUSH - CCS_BEGIN].discret                 = 1;
+  parameters_[CCS_SW_STARTUP_ROTATIONS_PUSH - CCS_BEGIN].def                     = 25.0;
+  parameters_[CCS_SW_STARTUP_ROTATIONS_PUSH - CCS_BEGIN].code                    = 13;
+  // Кратность напряжения импульса расклинки в режиме пуска "Толчковый"
+  parameters_[CCS_SW_STARTUP_U_PULSE_PUSH - CCS_BEGIN].id                        = CCS_SW_STARTUP_U_PULSE_PUSH;
+  parameters_[CCS_SW_STARTUP_U_PULSE_PUSH - CCS_BEGIN].access                    = ACCESS_OPERATOR;
+  parameters_[CCS_SW_STARTUP_U_PULSE_PUSH - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_SW_STARTUP_U_PULSE_PUSH - CCS_BEGIN].physic                    = PHYSIC_NUMERIC;
+  parameters_[CCS_SW_STARTUP_U_PULSE_PUSH - CCS_BEGIN].validity                  = VALIDITY_OK;
+  parameters_[CCS_SW_STARTUP_U_PULSE_PUSH - CCS_BEGIN].value.float_t             = 5.0;
+  parameters_[CCS_SW_STARTUP_U_PULSE_PUSH - CCS_BEGIN].min                       = 1.0;
+  parameters_[CCS_SW_STARTUP_U_PULSE_PUSH - CCS_BEGIN].max                       = 20.0;
+  parameters_[CCS_SW_STARTUP_U_PULSE_PUSH - CCS_BEGIN].discret                   = 1;
+  parameters_[CCS_SW_STARTUP_U_PULSE_PUSH - CCS_BEGIN].def                       = 5.0;
+  parameters_[CCS_SW_STARTUP_U_PULSE_PUSH - CCS_BEGIN].code                      = 13;
+  // Токоограничение в режиме в режиме пуска "Толчковый"
+  parameters_[CCS_SW_STARTUP_I_LIM_PUSH - CCS_BEGIN].id                          = CCS_SW_STARTUP_I_LIM_PUSH;
+  parameters_[CCS_SW_STARTUP_I_LIM_PUSH - CCS_BEGIN].access                      = ACCESS_OPERATOR;
+  parameters_[CCS_SW_STARTUP_I_LIM_PUSH - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_SW_STARTUP_I_LIM_PUSH - CCS_BEGIN].physic                      = PHYSIC_CURRENT;
+  parameters_[CCS_SW_STARTUP_I_LIM_PUSH - CCS_BEGIN].validity                    = VALIDITY_OK;
+  parameters_[CCS_SW_STARTUP_I_LIM_PUSH - CCS_BEGIN].value.float_t               = 1500.0;
+  parameters_[CCS_SW_STARTUP_I_LIM_PUSH - CCS_BEGIN].min                         = 10.0;
+  parameters_[CCS_SW_STARTUP_I_LIM_PUSH - CCS_BEGIN].max                         = 1500.0;
+  parameters_[CCS_SW_STARTUP_I_LIM_PUSH - CCS_BEGIN].discret                     = 1;
+  parameters_[CCS_SW_STARTUP_I_LIM_PUSH - CCS_BEGIN].def                         = 1500.0;
+  parameters_[CCS_SW_STARTUP_I_LIM_PUSH - CCS_BEGIN].code                        = 13;
+  // Порог токоограничения импульса в режиме пуска "Толчковый"
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_PUSH - CCS_BEGIN].id                    = CCS_SW_STARTUP_I_LIM_PULSE_PUSH;
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_PUSH - CCS_BEGIN].access                = ACCESS_OPERATOR;
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_PUSH - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_PUSH - CCS_BEGIN].physic                = PHYSIC_CURRENT;
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_PUSH - CCS_BEGIN].validity              = VALIDITY_OK;
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_PUSH - CCS_BEGIN].value.float_t         = 3000.0;
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_PUSH - CCS_BEGIN].min                   = 10.0;
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_PUSH - CCS_BEGIN].max                   = 3000.0;
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_PUSH - CCS_BEGIN].discret               = 1;
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_PUSH - CCS_BEGIN].def                   = 3000.0;
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_PUSH - CCS_BEGIN].code                  = 13;
+  // Частота толчка в режиме пуска "С раскачкой"
+  parameters_[CCS_SW_STARTUP_FREQUENCY_SWING - CCS_BEGIN].id                     = CCS_SW_STARTUP_FREQUENCY_SWING;
+  parameters_[CCS_SW_STARTUP_FREQUENCY_SWING - CCS_BEGIN].access                 = ACCESS_OPERATOR;
+  parameters_[CCS_SW_STARTUP_FREQUENCY_SWING - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_SW_STARTUP_FREQUENCY_SWING - CCS_BEGIN].physic                 = PHYSIC_FREQUENCY;
+  parameters_[CCS_SW_STARTUP_FREQUENCY_SWING - CCS_BEGIN].validity               = VALIDITY_OK;
+  parameters_[CCS_SW_STARTUP_FREQUENCY_SWING - CCS_BEGIN].value.float_t          = 3.0;
+  parameters_[CCS_SW_STARTUP_FREQUENCY_SWING - CCS_BEGIN].min                    = 0.0;
+  parameters_[CCS_SW_STARTUP_FREQUENCY_SWING - CCS_BEGIN].max                    = 10.0;
+  parameters_[CCS_SW_STARTUP_FREQUENCY_SWING - CCS_BEGIN].discret                = 100;
+  parameters_[CCS_SW_STARTUP_FREQUENCY_SWING - CCS_BEGIN].def                    = 3.0;
+  parameters_[CCS_SW_STARTUP_FREQUENCY_SWING - CCS_BEGIN].code                   = 13;
+  // Угол качания в режиме пуска "С раскачкой"
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_SWING - CCS_BEGIN].id                     = CCS_SW_STARTUP_ANGLE_OSC_SWING;
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_SWING - CCS_BEGIN].access                 = ACCESS_OPERATOR;
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_SWING - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_SWING - CCS_BEGIN].physic                 = PHYSIC_ANGLE;
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_SWING - CCS_BEGIN].validity               = VALIDITY_OK;
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_SWING - CCS_BEGIN].value.float_t          = 2.0;
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_SWING - CCS_BEGIN].min                    = 2.0;
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_SWING - CCS_BEGIN].max                    = 359.0;
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_SWING - CCS_BEGIN].discret                = 1;
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_SWING - CCS_BEGIN].def                    = 2.0;
+  parameters_[CCS_SW_STARTUP_ANGLE_OSC_SWING - CCS_BEGIN].code                   = 13;
+  // Количество качаний на угол в режиме пуска "С раскачкой"
+  parameters_[CCS_SW_STARTUP_OSC_COUNT_SWING - CCS_BEGIN].id                     = CCS_SW_STARTUP_OSC_COUNT_SWING;
+  parameters_[CCS_SW_STARTUP_OSC_COUNT_SWING - CCS_BEGIN].access                 = ACCESS_OPERATOR;
+  parameters_[CCS_SW_STARTUP_OSC_COUNT_SWING - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_SW_STARTUP_OSC_COUNT_SWING - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
+  parameters_[CCS_SW_STARTUP_OSC_COUNT_SWING - CCS_BEGIN].validity               = VALIDITY_OK;
+  parameters_[CCS_SW_STARTUP_OSC_COUNT_SWING - CCS_BEGIN].value.float_t          = 1.0;
+  parameters_[CCS_SW_STARTUP_OSC_COUNT_SWING - CCS_BEGIN].min                    = 1.0;
+  parameters_[CCS_SW_STARTUP_OSC_COUNT_SWING - CCS_BEGIN].max                    = 100.0;
+  parameters_[CCS_SW_STARTUP_OSC_COUNT_SWING - CCS_BEGIN].discret                = 1;
+  parameters_[CCS_SW_STARTUP_OSC_COUNT_SWING - CCS_BEGIN].def                    = 1.0;
+  parameters_[CCS_SW_STARTUP_OSC_COUNT_SWING - CCS_BEGIN].code                   = 13;
+  // Количество оборотов двигателя в режиме пуска "С раскачкой"
+  parameters_[CCS_SW_STARTUP_ROTATIONS_SWING - CCS_BEGIN].id                     = CCS_SW_STARTUP_ROTATIONS_SWING;
+  parameters_[CCS_SW_STARTUP_ROTATIONS_SWING - CCS_BEGIN].access                 = ACCESS_OPERATOR;
+  parameters_[CCS_SW_STARTUP_ROTATIONS_SWING - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_SW_STARTUP_ROTATIONS_SWING - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
+  parameters_[CCS_SW_STARTUP_ROTATIONS_SWING - CCS_BEGIN].validity               = VALIDITY_OK;
+  parameters_[CCS_SW_STARTUP_ROTATIONS_SWING - CCS_BEGIN].value.float_t          = 25.0;
+  parameters_[CCS_SW_STARTUP_ROTATIONS_SWING - CCS_BEGIN].min                    = 1.0;
+  parameters_[CCS_SW_STARTUP_ROTATIONS_SWING - CCS_BEGIN].max                    = 100.0;
+  parameters_[CCS_SW_STARTUP_ROTATIONS_SWING - CCS_BEGIN].discret                = 1;
+  parameters_[CCS_SW_STARTUP_ROTATIONS_SWING - CCS_BEGIN].def                    = 25.0;
+  parameters_[CCS_SW_STARTUP_ROTATIONS_SWING - CCS_BEGIN].code                   = 13;
+  // Кратность напряжения импульса расклинки в режиме пуска "С раскачкой"
+  parameters_[CCS_SW_STARTUP_U_PULSE_SWING - CCS_BEGIN].id                       = CCS_SW_STARTUP_U_PULSE_SWING;
+  parameters_[CCS_SW_STARTUP_U_PULSE_SWING - CCS_BEGIN].access                   = ACCESS_OPERATOR;
+  parameters_[CCS_SW_STARTUP_U_PULSE_SWING - CCS_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[CCS_SW_STARTUP_U_PULSE_SWING - CCS_BEGIN].physic                   = PHYSIC_NUMERIC;
+  parameters_[CCS_SW_STARTUP_U_PULSE_SWING - CCS_BEGIN].validity                 = VALIDITY_OK;
+  parameters_[CCS_SW_STARTUP_U_PULSE_SWING - CCS_BEGIN].value.float_t            = 5.0;
+  parameters_[CCS_SW_STARTUP_U_PULSE_SWING - CCS_BEGIN].min                      = 1.0;
+  parameters_[CCS_SW_STARTUP_U_PULSE_SWING - CCS_BEGIN].max                      = 20.0;
+  parameters_[CCS_SW_STARTUP_U_PULSE_SWING - CCS_BEGIN].discret                  = 1;
+  parameters_[CCS_SW_STARTUP_U_PULSE_SWING - CCS_BEGIN].def                      = 5.0;
+  parameters_[CCS_SW_STARTUP_U_PULSE_SWING - CCS_BEGIN].code                     = 13;
+  // Токоограничение в режиме в режиме пуска "С раскачкой"
+  parameters_[CCS_SW_STARTUP_I_LIM_SWING - CCS_BEGIN].id                         = CCS_SW_STARTUP_I_LIM_SWING;
+  parameters_[CCS_SW_STARTUP_I_LIM_SWING - CCS_BEGIN].access                     = ACCESS_OPERATOR;
+  parameters_[CCS_SW_STARTUP_I_LIM_SWING - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_SW_STARTUP_I_LIM_SWING - CCS_BEGIN].physic                     = PHYSIC_CURRENT;
+  parameters_[CCS_SW_STARTUP_I_LIM_SWING - CCS_BEGIN].validity                   = VALIDITY_OK;
+  parameters_[CCS_SW_STARTUP_I_LIM_SWING - CCS_BEGIN].value.float_t              = 1500.0;
+  parameters_[CCS_SW_STARTUP_I_LIM_SWING - CCS_BEGIN].min                        = 10.0;
+  parameters_[CCS_SW_STARTUP_I_LIM_SWING - CCS_BEGIN].max                        = 1500.0;
+  parameters_[CCS_SW_STARTUP_I_LIM_SWING - CCS_BEGIN].discret                    = 1;
+  parameters_[CCS_SW_STARTUP_I_LIM_SWING - CCS_BEGIN].def                        = 1500.0;
+  parameters_[CCS_SW_STARTUP_I_LIM_SWING - CCS_BEGIN].code                       = 13;
+  // Порог токоограничения импульса в режиме пуска "С раскачкой"
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_SWING - CCS_BEGIN].id                   = CCS_SW_STARTUP_I_LIM_PULSE_SWING;
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_SWING - CCS_BEGIN].access               = ACCESS_OPERATOR;
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_SWING - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_SWING - CCS_BEGIN].physic               = PHYSIC_CURRENT;
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_SWING - CCS_BEGIN].validity             = VALIDITY_OK;
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_SWING - CCS_BEGIN].value.float_t        = 3000.0;
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_SWING - CCS_BEGIN].min                  = 10.0;
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_SWING - CCS_BEGIN].max                  = 3000.0;
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_SWING - CCS_BEGIN].discret              = 1;
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_SWING - CCS_BEGIN].def                  = 3000.0;
+  parameters_[CCS_SW_STARTUP_I_LIM_PULSE_SWING - CCS_BEGIN].code                 = 13;
 }
 

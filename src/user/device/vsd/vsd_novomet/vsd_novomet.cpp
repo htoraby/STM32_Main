@@ -35,6 +35,7 @@ void VsdNovomet::init()
 
   initParameters();
   readParameters();
+  setLimitsMotor();
   //setLimitsMinFrequence(getValue(VSD_LOW_LIM_SPEED_MOTOR));
   //setLimitsMaxFrequence(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
 }
@@ -107,76 +108,148 @@ int VsdNovomet::setMotorType(float value)
   }
 }
 
+int VsdNovomet::setMotorFrequency(float value)
+{
+  if (!Vsd::setMotorFrequency(value)) {
+    writeToDevice(VSD_MOTOR_FREQUENCY, value);
+    setMin(VSD_TIMER_DISPERSAL, value * 0.25);
+    setMax(VSD_TIMER_DELAY, value * 12.5);
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setMotorFrequency");
+    return err_r;
+  }
+}
 
+int VsdNovomet::setMotorCurrent(float value)
+{
+  if (!Vsd::setMotorCurrent(value)) {
+    value = value * parameters.get(CCS_COEF_TRANSFORMATION);
+    writeToDevice(VSD_MOTOR_CURRENT, value);
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setMotorCurrent");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setMotorVoltage(float value)
+{
+  if (!Vsd::setMotorVoltage(value)) {
+    value = value / parameters.get(CCS_COEF_TRANSFORMATION);
+    writeToDevice(VSD_MOTOR_VOLTAGE, value);
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setMotorVoltage");
+    return err_r;
+  }
+}
+
+void VsdNovomet::setLimitsMotor()
+{
+  setMin(VSD_MOTOR_CURRENT, getMin(VSD_MOTOR_CURRENT) / parameters.get(CCS_COEF_TRANSFORMATION));
+  setMax(VSD_MOTOR_CURRENT, getMax(VSD_MOTOR_CURRENT) / parameters.get(CCS_COEF_TRANSFORMATION));
+  setMin(VSD_MOTOR_VOLTAGE, getMin(VSD_MOTOR_VOLTAGE) * parameters.get(CCS_COEF_TRANSFORMATION));
+  setMax(VSD_MOTOR_VOLTAGE, getMax(VSD_MOTOR_VOLTAGE) * parameters.get(CCS_COEF_TRANSFORMATION));
+}
 
 // РЕЖИМЫ ПУСКА
+// Вариант с попыткой перевода общих параметров к ЧРП Новомет
+//int VsdNovomet::onRegimePush()
+//{
+//  if (parameters.get(CCS_RGM_RUN_PUSH_MODE) == Regime::OffAction)
+//    return 1;
+
+//  float freq = parameters.get(CCS_RGM_RUN_PUSH_FREQ);       // Получаем частоту толчков
+//  float numPush = parameters.get(CCS_RGM_RUN_PUSH_QUANTITY);// Получаем количество толчков
+//  float calcNumPush = 0;
+//  uint16_t rotation = 1;
+//  if (freq) {
+//    calcNumPush = (8.0 / freq);                             // Количество толчков на указанной частоте
+//  }                                                         // За один оборот двигателя
+//  else {
+//    calcNumPush = numPush;
+//  }
+//  rotation = (uint16_t)((numPush / calcNumPush) + 0.5);     // Вычисляем требуемое количество оборотов
+
+//  float impulse = parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE); // Превышение напряжения
+//  impulse = (uint16_t)((impulse - 100) / 10.0 + 0.5);       // Вычислили уставку напряжения
+//  if ((impulse < 1.0) || (impulse > 10))
+//    impulse = 1.0;
+
+//  setNewValue(VSD_START_FREQ, freq);                        // Задаём частоту основного режима
+//  setNewValue(VSD_SW_STARTUP_FREQUENCY, freq);              // Записали в ЧРП частоту
+//  setNewValue(VSD_SW_STARTUP_ANGLE_OSC, 180.0);             // Угол константа
+//  setNewValue(VSD_SW_STARTUP_OSC_COUNT, 1.0);               // Количество качаний константа
+//  setNewValue(VSD_SW_STARTUP_ROTATIONS, rotation);          // Записали количество оборотов
+//  setNewValue(VSD_SW_STARTUP_U_PULSE, impulse);             // Записали кратность импульса толчка
+//  return setNewValue(VSD_SW_STARTUP_I_LIM_PULSE, 1500.0);   // Записали предел тока
+//}
+
 int VsdNovomet::onRegimePush()
 {
   if (parameters.get(CCS_RGM_RUN_PUSH_MODE) == Regime::OffAction)
     return 1;
-
-  float freq = parameters.get(CCS_RGM_RUN_PUSH_FREQ);       // Получаем частоту толчков
-  float numPush = parameters.get(CCS_RGM_RUN_PUSH_QUANTITY);// Получаем количество толчков
-  float calcNumPush = 0;
-  uint16_t rotation = 1;
-  if (freq) {
-    calcNumPush = (8.0 / freq);                             // Количество толчков на указанной частоте
-  }                                                         // За один оборот двигателя
-  else {
-    calcNumPush = numPush;
-  }
-  rotation = (uint16_t)((numPush / calcNumPush) + 0.5);     // Вычисляем требуемое количество оборотов
-
-  float impulse = parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE); // Превышение напряжения
-  impulse = (uint16_t)((impulse - 100) / 10.0 + 0.5);       // Вычислили уставку напряжения
-  if ((impulse < 1.0) || (impulse > 10))
-    impulse = 1.0;
-
-  setNewValue(VSD_START_FREQ, freq);                        // Задаём частоту основного режима
-  setNewValue(VSD_SW_STARTUP_FREQUENCY, freq);              // Записали в ЧРП частоту
-  setNewValue(VSD_SW_STARTUP_ANGLE_OSC, 180.0);             // Угол константа
-  setNewValue(VSD_SW_STARTUP_OSC_COUNT, 1.0);               // Количество качаний константа
-  setNewValue(VSD_SW_STARTUP_ROTATIONS, rotation);          // Записали количество оборотов
-  setNewValue(VSD_SW_STARTUP_U_PULSE, impulse);             // Записали кратность импульса толчка
-  return setNewValue(VSD_SW_STARTUP_I_LIM_PULSE, 1500.0);   // Записали предел тока
+  setNewValue(VSD_SW_STARTUP_FREQUENCY, parameters.get(CCS_SW_STARTUP_FREQUENCY_PUSH));
+  setNewValue(VSD_SW_STARTUP_ANGLE_OSC, parameters.get(CCS_SW_STARTUP_ANGLE_OSC_PUSH));
+  setNewValue(VSD_SW_STARTUP_OSC_COUNT, 1.0);
+  setNewValue(VSD_SW_STARTUP_ROTATIONS, parameters.get(CCS_SW_STARTUP_ROTATIONS_PUSH));
+  setNewValue(VSD_SW_STARTUP_U_PULSE, parameters.get(CCS_SW_STARTUP_U_PULSE_PUSH));
+  setNewValue(VSD_SW_STARTUP_I_LIM, parameters.get(CCS_SW_STARTUP_I_LIM_PUSH));
+  return setNewValue(VSD_SW_STARTUP_I_LIM_PULSE, parameters.get(CCS_SW_STARTUP_I_LIM_PULSE_PUSH));
 }
 
 int VsdNovomet::offRegimePush()
 {
   return 0;
 }
+// Вариант с попыткой перевода общих параметров к ЧРП Новомет
+//int VsdNovomet::onRegimeSwing()
+//{
+//  if (parameters.get(CCS_RGM_RUN_SWING_MODE) == Regime::OffAction)
+//    return 1;
+
+//  float freq = parameters.get(CCS_RGM_RUN_SWING_FREQ);       // Получаем частоту толчков
+//  float numPush = parameters.get(CCS_RGM_RUN_SWING_QUANTITY);// Получаем количество толчков
+//  float calcNumPush = 0;
+//  uint16_t rotation = 1;
+//  if (freq) {
+//    calcNumPush = (8.0 / freq);                             // Количество толчков на указанной частоте
+//  }                                                         // За один оборот двигателя
+//  else {
+//    calcNumPush = numPush;
+//  }
+//  rotation = (uint16_t)((numPush / calcNumPush) + 0.5);     // Вычисляем требуемое количество оборотов
+
+//  float impulse = parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE); // Превышение напряжения
+//  impulse = (uint16_t)((impulse - 100) / 10.0 + 0.5);       // Вычислили уставку напряжения
+//  if ((impulse < 1.0) || (impulse > 10))
+//    impulse = 1.0;
+
+//  setNewValue(VSD_START_FREQ, freq);                        // Задаём частоту основного режима
+//  setNewValue(VSD_SW_STARTUP_FREQUENCY, freq);              // Записали в ЧРП частоту
+//  setNewValue(VSD_SW_STARTUP_ANGLE_OSC, 359.0);             // Угол константа
+//  setNewValue(VSD_SW_STARTUP_OSC_COUNT, 2.0);               // Количество качаний константа
+//  setNewValue(VSD_SW_STARTUP_ROTATIONS, rotation);          // Записали количество оборотов
+//  setNewValue(VSD_SW_STARTUP_U_PULSE, impulse);             // Записали кратность импульса толчка
+//  return setNewValue(VSD_SW_STARTUP_I_LIM_PULSE, 1500.0);   // Записали предел тока
+//}
 
 int VsdNovomet::onRegimeSwing()
 {
   if (parameters.get(CCS_RGM_RUN_SWING_MODE) == Regime::OffAction)
     return 1;
-
-  float freq = parameters.get(CCS_RGM_RUN_SWING_FREQ);       // Получаем частоту толчков
-  float numPush = parameters.get(CCS_RGM_RUN_SWING_QUANTITY);// Получаем количество толчков
-  float calcNumPush = 0;
-  uint16_t rotation = 1;
-  if (freq) {
-    calcNumPush = (8.0 / freq);                             // Количество толчков на указанной частоте
-  }                                                         // За один оборот двигателя
-  else {
-    calcNumPush = numPush;
-  }
-  rotation = (uint16_t)((numPush / calcNumPush) + 0.5);     // Вычисляем требуемое количество оборотов
-
-  float impulse = parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE); // Превышение напряжения
-  impulse = (uint16_t)((impulse - 100) / 10.0 + 0.5);       // Вычислили уставку напряжения
-  if ((impulse < 1.0) || (impulse > 10))
-    impulse = 1.0;
-
-  setNewValue(VSD_START_FREQ, freq);                        // Задаём частоту основного режима
-  setNewValue(VSD_SW_STARTUP_FREQUENCY, freq);              // Записали в ЧРП частоту
-  setNewValue(VSD_SW_STARTUP_ANGLE_OSC, 359.0);             // Угол константа
-  setNewValue(VSD_SW_STARTUP_OSC_COUNT, 2.0);               // Количество качаний константа
-  setNewValue(VSD_SW_STARTUP_ROTATIONS, rotation);          // Записали количество оборотов
-  setNewValue(VSD_SW_STARTUP_U_PULSE, impulse);             // Записали кратность импульса толчка
-  return setNewValue(VSD_SW_STARTUP_I_LIM_PULSE, 1500.0);   // Записали предел тока
+  setNewValue(VSD_SW_STARTUP_FREQUENCY, parameters.get(CCS_SW_STARTUP_FREQUENCY_SWING));
+  setNewValue(VSD_SW_STARTUP_ANGLE_OSC, parameters.get(CCS_SW_STARTUP_ANGLE_OSC_SWING));
+  setNewValue(VSD_SW_STARTUP_OSC_COUNT, parameters.get(CCS_SW_STARTUP_OSC_COUNT_SWING));
+  setNewValue(VSD_SW_STARTUP_ROTATIONS, parameters.get(CCS_SW_STARTUP_ROTATIONS_SWING));
+  setNewValue(VSD_SW_STARTUP_U_PULSE, parameters.get(CCS_SW_STARTUP_U_PULSE_SWING));
+  setNewValue(VSD_SW_STARTUP_I_LIM, parameters.get(CCS_SW_STARTUP_I_LIM_SWING));
+  return setNewValue(VSD_SW_STARTUP_I_LIM_PULSE, parameters.get(CCS_SW_STARTUP_I_LIM_PULSE_SWING));
 }
-
 int VsdNovomet::offRegimeSwing()
 {
   return 0;
@@ -193,6 +266,16 @@ int VsdNovomet::onRegimePickup()
 int VsdNovomet::offRegimePickup()
 {
   writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_DISCHARGE_OFF);
+  return 0;
+}
+
+int VsdNovomet::onRegimeAutoAdaptation()
+{
+  return 0;
+}
+
+int VsdNovomet::offRegimeAutoAdaptation()
+{
   return 0;
 }
 
@@ -313,6 +396,18 @@ int VsdNovomet::setResonanceRemoveSource(float value)
   }
   else {
     logDebug.add(WarningMsg, "VsdNovomet::setResonanceRemoveSource");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setSumInduct(float value)
+{
+  if (Vsd::setSumInduct(value)) {
+    writeToDevice(VSD_LOUT, value);
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setSumInduct");
     return err_r;
   }
 }
@@ -466,6 +561,7 @@ int VsdNovomet::setUf_U6(float value)
 // Метод проверки и обновления параметров устройства
 void VsdNovomet::getNewValue(uint16_t id)
 {
+  float temp = 0;
   float value = 0;
   ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtId(id));
 
@@ -512,12 +608,21 @@ void VsdNovomet::getNewValue(uint16_t id)
     break;
   case VSD_CURRENT_OUT_PHASE_1:             // Выходной ток ЧРП Фаза 1
     setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_1) * value);
+    ksu.calcMotorCurrentPhase1();
+    ksu.calcMotorCurrentAverage();
+    ksu.calcMotorCurrentImbalance();
     break;
   case VSD_CURRENT_OUT_PHASE_2:             // Выходной ток ЧРП Фаза 2
     setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_2) * value);
+    ksu.calcMotorCurrentPhase2();
+    ksu.calcMotorCurrentAverage();
+    ksu.calcMotorCurrentImbalance();
     break;
   case VSD_CURRENT_OUT_PHASE_3:             // Выходной ток ЧРП Фаза 3
     setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_3) * value);
+    ksu.calcMotorCurrentPhase3();
+    ksu.calcMotorCurrentAverage();
+    ksu.calcMotorCurrentImbalance();
     break;
   case VSD_STATUS_WORD_1:
     setValue(id, value);
@@ -580,9 +685,23 @@ void VsdNovomet::getNewValue(uint16_t id)
     break;
   case VSD_FREQUENCY:
     setValue(id, value);
+    ksu.calcMotorSpeed();
     break;
   case VSD_MOTOR_CURRENT:
+    temp = parameters.get(CCS_COEF_TRANSFORMATION);
+    if (temp != 0)
+      value = value / temp;
     setValue(id, value);
+    break;
+  case VSD_MOTOR_VOLTAGE:
+    temp = parameters.get(CCS_COEF_TRANSFORMATION);
+    if (temp != 0)
+      value = value * temp;
+    setValue(id, value);
+    break;
+  case VSD_LOUT:
+    setValue(id, value);
+    parameters.set(CCS_SYSTEM_INDUCTANCE, value);
     break;
   default:                                  // Прямая запись в массив параметров
     setValue(id, value);
@@ -602,6 +721,20 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
       return ok_r;
     }
     return err_r;
+
+  case VSD_MOTOR_FREQUENCY:
+    return setMotorFrequency(value);
+
+  case VSD_MOTOR_CURRENT:
+    return setMotorCurrent(value);
+
+  case VSD_MOTOR_VOLTAGE:
+    if (!setMotorVoltage(value)) {
+      ksu.calcTransRecommendedTapOff();
+      return ok_r;
+    }
+    else
+      return err_r;
 
   case VSD_FREQUENCY:
     return setFrequency(value);
@@ -632,11 +765,6 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
 
   case VSD_TIMER_DELAY:
     return setTimeSpeedDown(value);
-
-
-  case VSD_MOTOR_VOLTAGE:
-    ksu.calcTransRecommendedTapOff();
-    return ok_r;
 
   default:
     int result = setValue(id, value);
@@ -674,8 +802,14 @@ int VsdNovomet::start()
       if (countRepeats > VSD_CMD_NUMBER_REPEATS)
         return err_r;
 
+      if (vsd->resetBlock())
+        return err_r;
+
+      //osDelay(1000);
+
       if (setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_START))
         return err_r;
+
     } else {
       timeMs = timeMs + 100;
     }
@@ -733,6 +867,7 @@ int VsdNovomet::stop(float type)
           return err_r;
        break;
       }
+      // resetBlock();
     } else {
       timeMs = timeMs + 100;
     }
@@ -790,6 +925,12 @@ bool VsdNovomet::checkStop()
   return false;
 }
 
+int VsdNovomet::resetBlock()
+{
+  setNewValue(VSD_FLAG, 0);
+  return setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_RESET);
+}
+
 void VsdNovomet::processingRegimeRun()
 {
   regimeRun_->processing();
@@ -802,7 +943,7 @@ void VsdNovomet::calcTempSpeedUp()
 
 void VsdNovomet::calcTimeSpeedUp()
 {
-  setValue(VSD_TIMER_DISPERSAL, getValue(VSD_FREQUENCY)/getValue(VSD_TEMP_SPEEDUP));
+  setValue(VSD_TIMER_DISPERSAL, getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TEMP_SPEEDUP));
 }
 
 void VsdNovomet::calcTempSpeedDown()
@@ -812,7 +953,7 @@ void VsdNovomet::calcTempSpeedDown()
 
 void VsdNovomet::calcTimeSpeedDown()
 {
-  setValue(VSD_TIMER_DELAY, getValue(VSD_FREQUENCY)/getValue(VSD_TEMP_SPEEDDOWN));
+  setValue(VSD_TIMER_DELAY, getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TEMP_SPEEDDOWN));
 }
 
 void VsdNovomet::calcRotation()
@@ -832,6 +973,7 @@ void VsdNovomet::calcMotorType()
   }
   else {
     setValue(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_ASYNC);
+    setValue(VSD_MOTOR_CONTROL, VSD_MOTOR_CONTROL_UF);
   }
   float value = getValue(VSD_MOTOR_TYPE);
   if (parameters.get(CCS_MOTOR_TYPE) != value)
@@ -867,6 +1009,13 @@ void VsdNovomet::calcResonanceRemoveSource()
   setValue(VSD_RES_MODE, ((uint16_t)getValue(VSD_STATUS_WORD_3)) & 0x0003);
 }
 
+void VsdNovomet::calcSystemInduct()
+{
+
+}
+
+
+
 void VsdNovomet::calcParameters(uint16_t id)
 {
 
@@ -891,7 +1040,8 @@ void VsdNovomet::resetRunQueue()
 {
   int action = (parameters.get(CCS_RGM_RUN_PICKUP_MODE) ||
                 parameters.get(CCS_RGM_RUN_PUSH_MODE) ||
-                parameters.get(CCS_RGM_RUN_SWING_MODE));
+                parameters.get(CCS_RGM_RUN_SWING_MODE) ||
+                parameters.get(CCS_RGM_RUN_AUTO_ADAPTATION_MODE));
   if (action)
     return;
 
