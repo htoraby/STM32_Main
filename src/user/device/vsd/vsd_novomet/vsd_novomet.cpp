@@ -260,6 +260,9 @@ int VsdNovomet::onRegimePickup()
   if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_VENT) {
     writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_DISCHARGE_ON);
   }
+  else {
+    writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_DISCHARGE_OFF);
+  }
   return 0;
 }
 
@@ -765,6 +768,12 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
 
   case VSD_TIMER_DELAY:
     return setTimeSpeedDown(value);
+
+  case VSD_RES_MODE:
+    return setResonanceRemoveSource(value);
+
+  case VSD_SWITCHING_FREQUENCY_MODE:
+    return setSwitchingFrequencyMode(value);
 
   default:
     int result = setValue(id, value);

@@ -246,7 +246,7 @@ public:
    */
   void resetRunQueue();
 private:
-  ModbusParameter modbusParameters_[139];
+  ModbusParameter modbusParameters_[159];
   DeviceModbus *dm_;
 
   RegimeRunNovomet *regimeRun_;
