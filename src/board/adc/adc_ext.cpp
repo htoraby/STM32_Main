@@ -18,7 +18,7 @@ DMA_HandleTypeDef hdma_spi2_rx;
 
 int channel = 0;
 int measureCount = 0;
-AnalogInputDef analogInExt[ANALOG_IN_NUM];
+AnalogInputDef analogInExt[AnalogInputMax];
 
 static uint8_t bufferTx[3];
 static uint8_t bufferRx[3];
@@ -35,7 +35,7 @@ void testAnalogInExt();
 
 static void updateModeAnalogIn()
 {
-  for (int i = ANALOG_IN_NUM - 1; i >= 0; i--) {
+  for (int i = AnalogInputMax - 1; i >= 0; i--) {
     if (analogInExt[i].mode == AnalogInModeVoltage)
       clrPinOut(HC595DS_PIN);
     else
@@ -146,7 +146,7 @@ void adcExtThread(void *argument)
       channel = 0;
       if (++measureCount >= ADC_EXT_MEASURE_NUM) {
         measureCount = 0;
-        for (int i = 0; i < ANALOG_IN_NUM; ++i) {
+        for (int i = 0; i < AnalogInputMax; ++i) {
           analogInExt[i].value = analogInExt[i].valueTmp/ADC_EXT_MEASURE_NUM;
           analogInExt[i].valueTmp = 0;
         }

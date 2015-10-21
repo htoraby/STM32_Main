@@ -3,7 +3,13 @@
 
 #include "board.h"
 
-#define ANALOG_IN_NUM 8
+/*!
+ * \brief Список аналоговых входов
+*/
+enum AiNum {
+  AI1, AI2, AI3, AI4, AI5, AI6, AI7, AI8,
+  AnalogInputMax
+};
 
 /*!
  \brief Список режимов аналогового входа: напряжение (мВ), ток (мкА)
