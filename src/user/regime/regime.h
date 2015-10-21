@@ -27,9 +27,11 @@ public:
     SmoothRegimeRun,                        //!< Плавный
     PushRegimeRun,                          //!< Толчковый
     SwingRegimeRun,                         //!< Раскачкой
-    AutoAdaptation,                         //!< Автоадаптация
+    SyncRegimeRun,                          //!< С синхронизацией
+    PickupRegimeRun,                        //!< Подхват
+    SkipFreqRegimeRun,                      //!< Пропуск резонансных частот
+    AutoAdaptationRegimeRun,                //!< Автоадаптация
   } TypeRegimeRun;
-
   /*!
    * \brief Список состояний режима
   */

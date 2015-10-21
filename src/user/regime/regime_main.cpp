@@ -94,5 +94,20 @@ bool interceptionStartRegime()
     }
   }
 
+  if (parameters.get(CCS_RGM_RUN_AUTO_ADAPTATION_MODE) != Regime::OffAction) {
+    switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
+    case VSD_TYPE_NOVOMET:
+      if (parameters.get(CCS_RGM_RUN_VSD_STATE) == Regime::IdleState) {
+        return false;
+      }
+      break;
+    default:
+      if (parameters.get(CCS_RGM_RUN_AUTO_ADAPTATION_MODE) == Regime::IdleState) {
+        return false;
+      }
+      break;
+    }
+  }
+
   return true;
 }
