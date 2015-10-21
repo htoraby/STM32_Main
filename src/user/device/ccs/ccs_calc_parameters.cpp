@@ -18,14 +18,14 @@ void Ccs::calcParametersTask()
     calcMotorVoltageImbalance();
     calcMotorCos();
     calcMotorLoad();
-
-//    calcInputVoltagePhase1();
-//    calcInputVoltagePhase2();
-//    calcInputVoltagePhase3();
-//    calcInputVoltagePhase12();
-//    calcInputVoltagePhase23();
-//    calcInputVoltagePhase31();
-    calcInputVoltageFromAdc();
+// TODO: Возможно нужно перенести вычисления в счётчик после получения данных
+    calcInputVoltagePhase1();
+    calcInputVoltagePhase2();
+    calcInputVoltagePhase3();
+    calcInputVoltagePhase12();
+    calcInputVoltagePhase23();
+    calcInputVoltagePhase31();
+//    calcInputVoltageFromAdc();
     calcInputVoltageImbalance();
     calcInputCurrentImbalance();
     calcResistanceIsolation();
@@ -110,7 +110,6 @@ float Ccs::calcDropVoltageFilter(float current, float freq, float coefTrans)
   if (coefTrans == 0)
     coefTrans = 380.0;
   float dUf = 2 * NUM_PI * inductFilter * freq * current * coefTrans / 1000.0;
-  parameters.set(CCS_DROP_VOLTAGE_FILTER, dUf);
   return dUf;
 }
 
@@ -123,14 +122,12 @@ float Ccs::calcDropVoltageCable(float current)
     float R80 = parameters.get(CCS_RGM_HEAT_CABLE_RESISTANCE_80);       // Сопротивление кабеля при 80°С
     current = parameters.get(VSD_MOTOR_CURRENT);                        // Номинальный ток ПЭД
     float dUcl = R80 * lenght * current;
-    parameters.set(CCS_DPOR_VOLTAGE_CABLE, dUcl);
     return dUcl;
   }
   else {
     if (!cross)
       cross = 16;
     float dUcl = 38.7 * (current * lenght) / (cross * 1000);            // Падение напряжения на кабельной линии
-    parameters.set(CCS_DPOR_VOLTAGE_CABLE, dUcl);
     return dUcl;
   }
 }
@@ -397,6 +394,8 @@ float Ccs::calcTransRecommendedTapOff()
   else
     transTapOff = transCoef * voltNom;
 
+  setValue(CCS_DPOR_VOLTAGE_CABLE, dropVoltCable);
+  setValue(CCS_DROP_VOLTAGE_FILTER, dropVoltFilter);
   setValue(CCS_TRANS_NEED_VOLTAGE_TAP_OFF, transTapOff);
   return parameters.get(CCS_TRANS_NEED_VOLTAGE_TAP_OFF);
 }

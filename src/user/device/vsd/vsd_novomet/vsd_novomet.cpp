@@ -706,6 +706,16 @@ void VsdNovomet::getNewValue(uint16_t id)
     setValue(id, value);
     parameters.set(CCS_SYSTEM_INDUCTANCE, value);
     break;
+  case VSD_TIME_MINUTE:
+    setValue(id, value);
+    if (getValue(VSD_TIME_MINUTE) != parameters.get(CCS_DATE_TIME_MIN)) {
+      parameters.set(VSD_TIME_SECOND, parameters.get(CCS_DATE_TIME_SEC));
+      parameters.set(VSD_TIME_MINUTE, parameters.get(CCS_DATE_TIME_MIN));
+      parameters.set(VSD_TIME_HOUR, parameters.get(CCS_DATE_TIME_HOUR));
+      parameters.set(VSD_TIME_MONTH, parameters.get(CCS_DATE_TIME_MONTH));
+      parameters.set(VSD_TIME_YEAR, parameters.get(CCS_DATE_TIME_YEAR));
+    }
+    break;
   default:                                  // Прямая запись в массив параметров
     setValue(id, value);
     break;
