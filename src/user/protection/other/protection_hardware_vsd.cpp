@@ -146,11 +146,13 @@ bool ProtectionHardwareVsd::checkAlarm()
     parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_AI_0);
     return true;
   }
+  /*
   if (vsd->checkStatusVsd(VSD_STATUS_ABC_STATE)) {
     protReactEventId_ = HardwareVsdSequencePhaseReactId;
     parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_ABC_STATE);
     return true;
   }
+  */
   if (vsd->checkStatusVsd(VSD_STATUS_OVERHEAT_MOTOR)) {
     protReactEventId_ = HardwareVsdOverheatMotorReactId;
     parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_OVERHEAT_MOTOR);
