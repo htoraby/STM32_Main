@@ -1,6 +1,8 @@
 #include "ccs.h"
 #include "user_main.h"
 #include "regime_main.h"
+#include "gpio.h"
+#include "adc_ext.h"
 
 #if USE_EXT_MEM
 static uint16_t uValue[ADC_CNANNELS_NUM*HC_POINTS_NUM] __attribute__((section(".extmem")));
@@ -31,6 +33,9 @@ void Ccs::calcParametersTask()
     calcInputCurrentImbalance();
     calcResistanceIsolation();
     calcRegimeRun();
+
+    calcDigitalInput();
+    calcAnalogInput();
   }
 }
 
@@ -522,4 +527,20 @@ void Ccs::calcInputVoltageFromAdc()
     countPhaseRotation_ = 0;
     setValue(CCS_PHASE_ROTATION, PHASE_CBA);
   }
+}
+
+void Ccs::calcDigitalInput()
+{
+  setValue(CCS_DI_1_VALUE, getDigitalInput(DI1));
+  setValue(CCS_DI_2_VALUE, getDigitalInput(DI2));
+  setValue(CCS_DI_3_VALUE, getDigitalInput(DI3));
+  setValue(CCS_DI_4_VALUE, getDigitalInput(DI4));
+}
+
+void Ccs::calcAnalogInput()
+{
+  setValue(CCS_AI_1_VALUE, getValueAnalogInExt(AI1));
+  setValue(CCS_AI_2_VALUE, getValueAnalogInExt(AI2));
+  setValue(CCS_AI_3_VALUE, getValueAnalogInExt(AI3));
+  setValue(CCS_AI_4_VALUE, getValueAnalogInExt(AI4));
 }
