@@ -427,6 +427,11 @@ private:
   void cmdProtOtherHardwareVsdSetpointReset();
   void cmdProtOtherVsdNoConnectSetpointReset();
 
+  void cmdProtDigitalInput1SetpointReset();
+  void cmdProtDigitalInput2SetpointReset();
+  void cmdProtDigitalInput3SetpointReset();
+  void cmdProtDigitalInput4SetpointReset();
+
   /*!
    * \brief calcCounterStop
    * \param reason
