@@ -4291,7 +4291,7 @@ void Vsd::initParameters()
   parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].access                       = ACCESS_OPERATOR;
   parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].operation                    = OPERATION_WRITE;
   parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].physic                       = PHYSIC_NUMERIC;
-  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].validity                     = VALIDITY_OK;
+  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].value.float_t                = 1.0;
   parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].min                          = 0.0;
   parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].max                          = 1.0;
@@ -4303,7 +4303,7 @@ void Vsd::initParameters()
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].access                 = ACCESS_OPERATOR;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].operation              = OPERATION_WRITE;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].physic                 = PHYSIC_TIME;
-  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].validity               = VALIDITY_OK;
+  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].validity               = VALIDITY_ERROR;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].value.float_t          = 180.0;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].min                    = 0.0;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].max                    = 65535.0;
@@ -4550,5 +4550,17 @@ void Vsd::initParameters()
   parameters_[VSD_DRV_2_T_EXT_4 - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_DRV_2_T_EXT_4 - VSD_BEGIN].discret                             = 1;
   parameters_[VSD_DRV_2_T_EXT_4 - VSD_BEGIN].code                                = 0;
+  // Текущее турбинное вращение
+  parameters_[VSD_TURBO_ROTATION_NOW - VSD_BEGIN].id                             = VSD_TURBO_ROTATION_NOW;
+  parameters_[VSD_TURBO_ROTATION_NOW - VSD_BEGIN].access                         = ACCESS_OPERATOR;
+  parameters_[VSD_TURBO_ROTATION_NOW - VSD_BEGIN].operation                      = OPERATION_READ;
+  parameters_[VSD_TURBO_ROTATION_NOW - VSD_BEGIN].physic                         = PHYSIC_FREQUENCY;
+  parameters_[VSD_TURBO_ROTATION_NOW - VSD_BEGIN].validity                       = VALIDITY_ERROR;
+  parameters_[VSD_TURBO_ROTATION_NOW - VSD_BEGIN].value.float_t                  = 0.0;
+  parameters_[VSD_TURBO_ROTATION_NOW - VSD_BEGIN].min                            = 0.0;
+  parameters_[VSD_TURBO_ROTATION_NOW - VSD_BEGIN].max                            = 200.0;
+  parameters_[VSD_TURBO_ROTATION_NOW - VSD_BEGIN].def                            = 0.0;
+  parameters_[VSD_TURBO_ROTATION_NOW - VSD_BEGIN].discret                        = 1;
+  parameters_[VSD_TURBO_ROTATION_NOW - VSD_BEGIN].code                           = 0;
 }
 
