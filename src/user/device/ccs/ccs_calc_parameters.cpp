@@ -531,10 +531,10 @@ void Ccs::calcInputVoltageFromAdc()
 
 void Ccs::calcDigitalInput()
 {
-  setValue(CCS_DI_1_VALUE, getDigitalInput(DI1));
-  setValue(CCS_DI_2_VALUE, getDigitalInput(DI2));
-  setValue(CCS_DI_3_VALUE, getDigitalInput(DI3));
-  setValue(CCS_DI_4_VALUE, getDigitalInput(DI4));
+  setValue(CCS_DI_1_VALUE, !getDigitalInput(DI1));
+  setValue(CCS_DI_2_VALUE, !getDigitalInput(DI2));
+  setValue(CCS_DI_3_VALUE, !getDigitalInput(DI3));
+  setValue(CCS_DI_4_VALUE, !getDigitalInput(DI4));
 }
 
 void Ccs::calcAnalogInput()
