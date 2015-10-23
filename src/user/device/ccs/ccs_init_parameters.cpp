@@ -9614,18 +9614,6 @@ void Ccs::initParameters()
   parameters_[CCS_DI_1_TYPE - CCS_BEGIN].discret                                 = 1;
   parameters_[CCS_DI_1_TYPE - CCS_BEGIN].def                                     = 0.0;
   parameters_[CCS_DI_1_TYPE - CCS_BEGIN].code                                    = 13;
-  // Цифровой вход 1. Действие по сигналу
-  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].id                                    = CCS_DI_1_ACTION;
-  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].access                                = ACCESS_OPERATOR;
-  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].operation                             = OPERATION_WRITE;
-  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
-  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].validity                              = VALIDITY_OK;
-  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].value.float_t                         = 0.0;
-  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].min                                   = 0.0;
-  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].max                                   = 6.0;
-  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].discret                               = 1;
-  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].def                                   = 0.0;
-  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].code                                  = 13;
   // Цифровой вход 2. Тип сигнала
   parameters_[CCS_DI_2_TYPE - CCS_BEGIN].id                                      = CCS_DI_2_TYPE;
   parameters_[CCS_DI_2_TYPE - CCS_BEGIN].access                                  = ACCESS_OPERATOR;
@@ -9638,18 +9626,6 @@ void Ccs::initParameters()
   parameters_[CCS_DI_2_TYPE - CCS_BEGIN].discret                                 = 1;
   parameters_[CCS_DI_2_TYPE - CCS_BEGIN].def                                     = 0.0;
   parameters_[CCS_DI_2_TYPE - CCS_BEGIN].code                                    = 13;
-  // Цифровой вход 2. Действие по сигналу
-  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].id                                    = CCS_DI_2_ACTION;
-  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].access                                = ACCESS_OPERATOR;
-  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].operation                             = OPERATION_WRITE;
-  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
-  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].validity                              = VALIDITY_OK;
-  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].value.float_t                         = 0.0;
-  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].min                                   = 0.0;
-  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].max                                   = 6.0;
-  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].discret                               = 1;
-  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].def                                   = 0.0;
-  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].code                                  = 13;
   // Цифровой вход 3. Тип сигнала
   parameters_[CCS_DI_3_TYPE - CCS_BEGIN].id                                      = CCS_DI_3_TYPE;
   parameters_[CCS_DI_3_TYPE - CCS_BEGIN].access                                  = ACCESS_OPERATOR;
@@ -9662,18 +9638,6 @@ void Ccs::initParameters()
   parameters_[CCS_DI_3_TYPE - CCS_BEGIN].discret                                 = 1;
   parameters_[CCS_DI_3_TYPE - CCS_BEGIN].def                                     = 0.0;
   parameters_[CCS_DI_3_TYPE - CCS_BEGIN].code                                    = 13;
-  // Цифровой вход 3. Действие по сигналу
-  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].id                                    = CCS_DI_3_ACTION;
-  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].access                                = ACCESS_OPERATOR;
-  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].operation                             = OPERATION_WRITE;
-  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
-  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].validity                              = VALIDITY_OK;
-  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].value.float_t                         = 0.0;
-  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].min                                   = 0.0;
-  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].max                                   = 6.0;
-  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].discret                               = 1;
-  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].def                                   = 0.0;
-  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].code                                  = 13;
   // Цифровой вход 4. Тип сигнала
   parameters_[CCS_DI_4_TYPE - CCS_BEGIN].id                                      = CCS_DI_4_TYPE;
   parameters_[CCS_DI_4_TYPE - CCS_BEGIN].access                                  = ACCESS_OPERATOR;
@@ -9686,6 +9650,42 @@ void Ccs::initParameters()
   parameters_[CCS_DI_4_TYPE - CCS_BEGIN].discret                                 = 1;
   parameters_[CCS_DI_4_TYPE - CCS_BEGIN].def                                     = 0.0;
   parameters_[CCS_DI_4_TYPE - CCS_BEGIN].code                                    = 13;
+  // Цифровой вход 1. Действие по сигналу
+  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].id                                    = CCS_DI_1_ACTION;
+  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].access                                = ACCESS_OPERATOR;
+  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].operation                             = OPERATION_WRITE;
+  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
+  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].validity                              = VALIDITY_OK;
+  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].value.float_t                         = 0.0;
+  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].min                                   = 0.0;
+  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].max                                   = 6.0;
+  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].discret                               = 1;
+  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].def                                   = 0.0;
+  parameters_[CCS_DI_1_ACTION - CCS_BEGIN].code                                  = 13;
+  // Цифровой вход 2. Действие по сигналу
+  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].id                                    = CCS_DI_2_ACTION;
+  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].access                                = ACCESS_OPERATOR;
+  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].operation                             = OPERATION_WRITE;
+  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
+  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].validity                              = VALIDITY_OK;
+  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].value.float_t                         = 0.0;
+  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].min                                   = 0.0;
+  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].max                                   = 6.0;
+  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].discret                               = 1;
+  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].def                                   = 0.0;
+  parameters_[CCS_DI_2_ACTION - CCS_BEGIN].code                                  = 13;
+  // Цифровой вход 3. Действие по сигналу
+  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].id                                    = CCS_DI_3_ACTION;
+  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].access                                = ACCESS_OPERATOR;
+  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].operation                             = OPERATION_WRITE;
+  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
+  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].validity                              = VALIDITY_OK;
+  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].value.float_t                         = 0.0;
+  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].min                                   = 0.0;
+  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].max                                   = 6.0;
+  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].discret                               = 1;
+  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].def                                   = 0.0;
+  parameters_[CCS_DI_3_ACTION - CCS_BEGIN].code                                  = 13;
   // Цифровой вход 4. Действие по сигналу
   parameters_[CCS_DI_4_ACTION - CCS_BEGIN].id                                    = CCS_DI_4_ACTION;
   parameters_[CCS_DI_4_ACTION - CCS_BEGIN].access                                = ACCESS_OPERATOR;
