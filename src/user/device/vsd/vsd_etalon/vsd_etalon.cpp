@@ -588,7 +588,7 @@ int VsdEtalon::start()
       if (countRepeats > VSD_CMD_NUMBER_REPEATS)
         return err_r;
 
-      if (vsd->resetBlock())
+      if (resetBlock())
         return err_r;
       if (setNewValue(VSD_ON, 1))
         return err_r;
