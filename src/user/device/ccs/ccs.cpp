@@ -112,6 +112,8 @@ void Ccs::mainTask()
     calcTime();
     controlPower();
     checkConnectDevice();
+
+    calcDigitalInputs();
   }
 }
 

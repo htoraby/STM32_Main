@@ -493,14 +493,20 @@ private:
   void resetCmd(uint16_t id);
 
   /*!
-   * \brief Получение значений с дискретных входов и сохранение в параметрах
+   * \brief Получение значений с цифровых входов, сохранение и обработка
    */
-  void calcDigitalInput();
+  void calcDigitalInputs();
 
   /*!
-   * \brief Получение значений с аналоговых входов и сохранение в параметрах
+   * \brief Метод обработки значения сигнала с цифрового входа
+   * \param num - номер цифрового входа
    */
-  void calcAnalogInput();
+  void changedDigitalInput(int num);
+
+  /*!
+   * \brief Получение значений с аналоговых входов и сохранение в параметры
+   */
+  void calcAnalogInputs();
 
   //! Массив параметров устройства
   parameter parametersArray_[CCS_END - CCS_BEGIN];

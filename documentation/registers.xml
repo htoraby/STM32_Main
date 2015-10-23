@@ -14693,27 +14693,6 @@
 	</param>
 	<param>
 		<id>801</id>
-		<name>CCS_DI_1_ACTION</name>
-		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>6.0</max>
-		<def>0.0</def>
-		<discret>1</discret>
-		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
-		<text>Цифровой вход 1. Действие по сигналу</text>
-		<short_text>Цифр.вх.1. Действие</short_text>
-		<unit>NUMERIC_NUMBER</unit>
-		<unit_lcd>TEXT</unit_lcd>
-		<format>TEXT</format>
-		<code>13</code>
-		<values>0-Нет;1-Стоп;2-Пуск;3-Реверс;4-Защита;5-Кнопка оператора;6-Предупреждение;</values>
-		<comment>Цифровой вход 1. Действие по сигналу</comment>
-	</param>
-	<param>
-		<id>802</id>
 		<name>CCS_DI_2_TYPE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -14734,28 +14713,7 @@
 		<comment>Цифровой вход 2. Тип сигнала</comment>
 	</param>
 	<param>
-		<id>803</id>
-		<name>CCS_DI_2_ACTION</name>
-		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>6.0</max>
-		<def>0.0</def>
-		<discret>1</discret>
-		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
-		<text>Цифровой вход 2. Действие по сигналу</text>
-		<short_text>Цифр.вх.2. Действие</short_text>
-		<unit>NUMERIC_NUMBER</unit>
-		<unit_lcd>TEXT</unit_lcd>
-		<format>TEXT</format>
-		<code>13</code>
-		<values>0-Нет;1-Стоп;2-Пуск;3-Реверс;4-Защита;5-Кнопка оператора;6-Предупреждение;</values>
-		<comment>Цифровой вход 2. Действие по сигналу</comment>
-	</param>
-	<param>
-		<id>804</id>
+		<id>802</id>
 		<name>CCS_DI_3_TYPE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -14776,28 +14734,7 @@
 		<comment>Цифровой вход 3. Тип сигнала</comment>
 	</param>
 	<param>
-		<id>805</id>
-		<name>CCS_DI_3_ACTION</name>
-		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>6.0</max>
-		<def>0.0</def>
-		<discret>1</discret>
-		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
-		<text>Цифровой вход 3. Действие по сигналу</text>
-		<short_text>Цифр.вх.3. Действие</short_text>
-		<unit>NUMERIC_NUMBER</unit>
-		<unit_lcd>TEXT</unit_lcd>
-		<format>TEXT</format>
-		<code>13</code>
-		<values>0-Нет;1-Стоп;2-Пуск;3-Реверс;4-Защита;5-Кнопка оператора;6-Предупреждение;</values>
-		<comment>Цифровой вход 3. Действие по сигналу</comment>
-	</param>
-	<param>
-		<id>806</id>
+		<id>803</id>
 		<name>CCS_DI_4_TYPE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -14816,6 +14753,69 @@
 		<code>13</code>
 		<values>0-Замыкание;1-Размыкание</values>
 		<comment>Цифровой вход 4. Тип сигнала</comment>
+	</param>
+	<param>
+		<id>804</id>
+		<name>CCS_DI_1_ACTION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>6.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Цифровой вход 1. Действие по сигналу</text>
+		<short_text>Цифр.вх.1. Действие</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Нет;1-Стоп;2-Пуск;3-Реверс;4-Защита;5-Кнопка оператора;6-Предупреждение;</values>
+		<comment>Цифровой вход 1. Действие по сигналу</comment>
+	</param>
+	<param>
+		<id>805</id>
+		<name>CCS_DI_2_ACTION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>6.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Цифровой вход 2. Действие по сигналу</text>
+		<short_text>Цифр.вх.2. Действие</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Нет;1-Стоп;2-Пуск;3-Реверс;4-Защита;5-Кнопка оператора;6-Предупреждение;</values>
+		<comment>Цифровой вход 2. Действие по сигналу</comment>
+	</param>
+	<param>
+		<id>806</id>
+		<name>CCS_DI_3_ACTION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>6.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Цифровой вход 3. Действие по сигналу</text>
+		<short_text>Цифр.вх.3. Действие</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Нет;1-Стоп;2-Пуск;3-Реверс;4-Защита;5-Кнопка оператора;6-Предупреждение;</values>
+		<comment>Цифровой вход 3. Действие по сигналу</comment>
 	</param>
 	<param>
 		<id>807</id>

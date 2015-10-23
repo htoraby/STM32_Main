@@ -34,8 +34,7 @@ void Ccs::calcParametersTask()
     calcResistanceIsolation();
     calcRegimeRun();
 
-    calcDigitalInput();
-    calcAnalogInput();
+    calcAnalogInputs();
   }
 }
 
@@ -529,15 +528,60 @@ void Ccs::calcInputVoltageFromAdc()
   }
 }
 
-void Ccs::calcDigitalInput()
+void Ccs::calcDigitalInputs()
 {
-  setValue(CCS_DI_1_VALUE, !getDigitalInput(DI1));
-  setValue(CCS_DI_2_VALUE, !getDigitalInput(DI2));
-  setValue(CCS_DI_3_VALUE, !getDigitalInput(DI3));
-  setValue(CCS_DI_4_VALUE, !getDigitalInput(DI4));
+  uint8_t value[4];
+  static uint8_t valueOld[4];
+  static uint8_t count[4];
+
+  for (int i = 0; i <= DI4; ++i) {
+    value[i] = !getDigitalInput(i);
+    if (value[i] == valueOld[i]) {
+      count[i]++;
+      if (count[i] >= 10) {
+        count[i] = 0;
+        if (getValue(CCS_DI_1_VALUE + i) != value[i]) {
+          if (setValue(CCS_DI_1_VALUE + i, value[i]) == ok_r)
+            changedDigitalInput(i);
+        }
+      }
+    } else {
+      count[i] = 0;
+    }
+    valueOld[i] = value[i];
+  }
 }
 
-void Ccs::calcAnalogInput()
+void Ccs::changedDigitalInput(int num)
+{
+  int action = getValue(CCS_DI_1_ACTION + num);
+  if ((action == DI_ACTION_NONE) || (action == DI_ACTION_PROTECTION))
+    return;
+
+  uint8_t value = getValue(CCS_DI_1_VALUE + num);
+  if (value == getValue(CCS_DI_1_TYPE + num)) {
+    switch (action) {
+    case DI_ACTION_STOP:
+      stop(LastReasonStop(LastReasonStopDigital1 + num));
+      break;
+    case DI_ACTION_START:
+      start(LastReasonRun(LastReasonRunDigital1 + num));
+      break;
+    case DI_ACTION_REVERSE:
+      logEvent.add(OtherCode, AutoType, EventId(DigitalInput1LogId + num), !value, value);
+      vsd->setRotation(VSD_ROTATION_REVERSE);
+      break;
+    case DI_ACTION_BUTTON:
+      logEvent.add(OtherCode, OperatorType, EventId(DigitalInput1LogId + num), !value, value);
+      break;
+    case DI_ACTION_WARNING:
+      logEvent.add(OtherCode, AutoType, EventId(DigitalInput1LogId + num), !value, value);
+      break;
+    }
+  }
+}
+
+void Ccs::calcAnalogInputs()
 {
   setValue(CCS_AI_1_VALUE, getValueAnalogInExt(AI1));
   setValue(CCS_AI_2_VALUE, getValueAnalogInExt(AI2));
