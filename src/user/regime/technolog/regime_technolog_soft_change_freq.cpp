@@ -39,8 +39,9 @@ void RegimeTechnologSoftChangeFreq::processing()
     break;
   case WorkState:
     if (ksu.isWorkMotor() && ksu.isAutoMode()) { // Двигатель - работа; Режим - авто;
-      timeout_--;
-      if ((timeout_ <= 0) && period_one_step_) {
+      if (timeout_ != 0)
+        timeout_--;
+      if ((timeout_ <= 0) && period_one_step_ && vsd->isConnect()) {
         timeout_ = period_one_step_*10;
         float freq = parameters.get(VSD_FREQUENCY) + copySign(0.1, endFreq_ - beginFreq_);
         float sign = copySign(1, endFreq_ - beginFreq_);
