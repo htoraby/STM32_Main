@@ -180,6 +180,19 @@ float Parameters::getMin(uint16_t id)
   return err_r;
 }
 
+uint8_t Parameters::setMin(uint16_t id, float value)
+{
+  if ((id > CCS_BEGIN) && (id < CCS_END))
+    return ksu.setMin(id, value);
+  if ((id > VSD_BEGIN) && (id < VSD_END))
+    return vsd->setMin(id, value);
+  if ((id > TMS_BEGIN) && (id < TMS_END))
+    return tms->setMin(id, value);
+  if ((id > EM_BEGIN) && (id < EM_END))
+    return em->setMin(id, value);
+  return err_r;
+}
+
 float Parameters::getMax(uint16_t id)
 {
   if ((id > CCS_BEGIN) && (id < CCS_END))
@@ -190,6 +203,19 @@ float Parameters::getMax(uint16_t id)
     return tms->getMax(id);
   if ((id > EM_BEGIN) && (id < EM_END))
     return em->getMax(id);
+  return err_r;
+}
+
+uint8_t Parameters::setMax(uint16_t id, float value)
+{
+  if ((id > CCS_BEGIN) && (id < CCS_END))
+    return ksu.setMax(id, value);
+  if ((id > VSD_BEGIN) && (id < VSD_END))
+    return vsd->setMax(id, value);
+  if ((id > TMS_BEGIN) && (id < TMS_END))
+    return tms->setMax(id, value);
+  if ((id > EM_BEGIN) && (id < EM_END))
+    return em->setMax(id, value);
   return err_r;
 }
 
