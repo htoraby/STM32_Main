@@ -142,6 +142,8 @@ int VsdNovomet::setMotorVoltage(float value)
     value = value / parameters.get(CCS_COEF_TRANSFORMATION);
     if (!setBaseVoltage(value))
       return ok_r;
+    else
+      return err_r;
   }
   else {
     logDebug.add(WarningMsg, "VsdNovomet::setMotorVoltage");
@@ -445,6 +447,8 @@ int VsdNovomet::setBaseFrequency(float value)
     if (!setBaseVoltage(value)) {
       return ok_r;
     }
+    else
+      return err_r;
   }
   else {
     logDebug.add(WarningMsg, "VsdNovomet::setBaseFrequency");
