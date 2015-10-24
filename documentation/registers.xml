@@ -14840,6 +14840,26 @@
 	</param>
 	<param>
 		<id>808</id>
+		<name>CCS_MOTOR_VOLTAGE_CALC</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>9999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Расчётное напряжение двигателя</text>
+		<short_text>Расчётное напряжение двигателя</short_text>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Расчётное напряжение двигателя</comment>
+	</param>
+	<param>
+		<id>809</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>

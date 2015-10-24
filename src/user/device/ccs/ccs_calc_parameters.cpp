@@ -398,6 +398,7 @@ float Ccs::calcTransRecommendedTapOff()
   else
     transTapOff = transCoef * voltNom;
 
+  setValue(CCS_MOTOR_VOLTAGE_CALC, voltHiLim * transCoef - dropVoltCable - dropVoltFilter);
   setValue(CCS_DPOR_VOLTAGE_CABLE, dropVoltCable);
   setValue(CCS_DROP_VOLTAGE_FILTER, dropVoltFilter);
   setValue(CCS_TRANS_NEED_VOLTAGE_TAP_OFF, transTapOff);

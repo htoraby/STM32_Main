@@ -795,17 +795,32 @@ void VsdNovomet::getNewValue(uint16_t id)
     break;
   case VSD_THYR_T_EXT:
   case VSD_THYR_T_EXT_2:
+    value = ((value - 282)*222)/1023;
+    setValue(id, value);
+    if (value > getValue(VSD_CONTROL_TEMPERATURE))
+      setValue(VSD_CONTROL_TEMPERATURE, value);
+    break;
   case VSD_DRV_0_T_EXT:
-  case VSD_DRV_1_T_EXT:
-  case VSD_DRV_2_T_EXT:
   case VSD_DRV_0_T_EXT_2:
-  case VSD_DRV_1_T_EXT_2:
-  case VSD_DRV_2_T_EXT_2:
   case VSD_DRV_0_T_EXT_3:
-  case VSD_DRV_1_T_EXT_3:
-  case VSD_DRV_2_T_EXT_3:
   case VSD_DRV_0_T_EXT_4:
+    value = ((value - 282)*222)/1023;
+    setValue(id, value);
+    if (value > getValue(VSD_RADIATOR_TEMPERATURE))
+      setValue(VSD_RADIATOR_TEMPERATURE, value);
+    break;
+  case VSD_DRV_1_T_EXT:
+  case VSD_DRV_1_T_EXT_2:
+  case VSD_DRV_1_T_EXT_3:
   case VSD_DRV_1_T_EXT_4:
+    value = ((value - 282)*222)/1023;
+    setValue(id, value);
+    if (value > getValue(VSD_RADIATOR_TEMPERATURE_1))
+      setValue(VSD_RADIATOR_TEMPERATURE_1, value);
+    break;
+  case VSD_DRV_2_T_EXT:
+  case VSD_DRV_2_T_EXT_2:
+  case VSD_DRV_2_T_EXT_3:
   case VSD_DRV_2_T_EXT_4:
     value = ((value - 282)*222)/1023;
     setValue(id, value);
