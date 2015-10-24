@@ -678,10 +678,10 @@
 		<physic>PHYSIC_FULL_POWER</physic>
 		<min>0.0</min>
 		<max>9999999.0</max>
-		<def>2000.0</def>
+		<def>2000000.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>2000.0</value>
+		<value>2000000.0</value>
 		<text>Номинальная мощность ТМПН</text>
 		<short_text>Мощность ТМПН</short_text>
 		<form>3.3 ТМПН</form>
@@ -15256,22 +15256,42 @@
 		<id>10058</id>
 		<name>VSD_T_ILIMIT_SPEEDDOWN</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
-		<discret>1</discret>
+		<def>0.25</def>
+		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>0.25</value>
+		<text>Период снижения частоты при токоограничении</text>
+		<short_text>Период снижения частоты при токоограничении</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Период снижения частоты при токоограничении.</comment>
 	</param>
 	<param>
 		<id>10059</id>
 		<name>VSD_T_ULOW_SPEEDDOWN</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
-		<discret>1</discret>
+		<def>0.25</def>
+		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>0.25</value>
+		<text>Период снижения частоты при нехватке напряжения</text>
+		<short_text>Период снижения частоты при нехватке напряжения</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Период снижения частоты при нехватке напряжения на инверторе</comment>
 	</param>
 	<param>
@@ -15470,7 +15490,7 @@
 		<min>0.0</min>
 		<max>0.1</max>
 		<def>0.007</def>
-		<discret>10000</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.007</value>
 		<text>Коэффициент интегр.рег.угла для ВД</text>
@@ -15610,7 +15630,7 @@
 		<min>0.0</min>
 		<max>0.5</max>
 		<def>0.03</def>
-		<discret>10000</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.03</value>
 		<text>Коэффициент пропорц.рег.угла для ВД</text>
@@ -15637,11 +15657,21 @@
 		<id>10090</id>
 		<name>VSD_RES_TIMECONST</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
-		<discret>1</discret>
+		<def>0.017</def>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>0.017</value>
+		<text>Постоянная времени системы подавления резонанса</text>
+		<short_text>Постоянная времени системы подавления резонанса</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>ХХ_ХХХ</format>
+		<code>13</code>
 		<comment>Постоянная времени системы подавления резонанса</comment>
 	</param>
 	<param>
@@ -15707,8 +15737,8 @@
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
-		<def>100.0</def>
-		<discret>10</discret>
+		<def>0.25</def>
+		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>100.0</value>
 		<text>Время торможения</text>
@@ -15716,7 +15746,7 @@
 		<form>Режим подхвата</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_SS</unit_lcd>
-		<format>XXX_X</format>
+		<format>XXX_XХ</format>
 		<code>13</code>
 		<comment>Время снижения уставки в режиме остановки турбинного вращения</comment>
 	</param>
@@ -16292,11 +16322,21 @@
 		<id>10141</id>
 		<name>VSD_FC_TLIM</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
-		<discret>1</discret>
+		<def>0.004</def>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>0.004</value>
+		<text>Время импульса с общим (максимальным) токоограничением</text>
+		<short_text>Время импульса с общим (максимальным) токоограничением</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
 		<comment>Время импульса с общим (максимальным) токоограничением</comment>
 	</param>
 	<param>
@@ -19850,7 +19890,7 @@
 		<min>-32767.0</min>
 		<max>32767.0</max>
 		<def>0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Термодатчик выпрямителя</text>
@@ -19858,7 +19898,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Термодатчик выпрямителя</comment>
 	</param>
@@ -19871,7 +19911,7 @@
 		<min>-32767.0</min>
 		<max>32767.0</max>
 		<def>0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Термодатчик выпрямителя 2</text>
@@ -19879,7 +19919,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Термодатчик выпрямителя 2</comment>
 	</param>
@@ -19892,7 +19932,7 @@
 		<min>-32767.0</min>
 		<max>32767.0</max>
 		<def>0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>T1 платы измерений</text>
@@ -19900,7 +19940,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>T1 платы измерений</comment>
 	</param>
@@ -19913,7 +19953,7 @@
 		<min>-32767.0</min>
 		<max>32767.0</max>
 		<def>0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>T2 платы измерений</text>
@@ -19921,7 +19961,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>T2 платы измерений</comment>
 	</param>
@@ -19934,7 +19974,7 @@
 		<min>-32767.0</min>
 		<max>32767.0</max>
 		<def>0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>T3 платы измерений</text>
@@ -19942,7 +19982,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>T3 платы измерений</comment>
 	</param>
@@ -19955,7 +19995,7 @@
 		<min>-32767.0</min>
 		<max>32767.0</max>
 		<def>0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Термодатчик воздуха драйвера 0</text>
@@ -19963,7 +20003,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Термодатчик воздуха драйвера 0</comment>
 	</param>
@@ -19976,7 +20016,7 @@
 		<min>-32767.0</min>
 		<max>32767.0</max>
 		<def>0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Термодатчик драйвера 0</text>
@@ -19984,7 +20024,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Термодатчик драйвера 0</comment>
 	</param>
@@ -19997,7 +20037,7 @@
 		<min>-32767.0</min>
 		<max>32767.0</max>
 		<def>0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Термодатчик воздуха драйвера 1</text>
@@ -20005,7 +20045,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Термодатчик воздуха драйвера 1</comment>
 	</param>
@@ -20018,7 +20058,7 @@
 		<min>-32767.0</min>
 		<max>32767.0</max>
 		<def>0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Термодатчик драйвера 1</text>
@@ -20026,7 +20066,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Термодатчик драйвера 1</comment>
 	</param>
@@ -20039,7 +20079,7 @@
 		<min>-32767.0</min>
 		<max>32767.0</max>
 		<def>0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Термодатчик воздуха драйвера 2</text>
@@ -20047,7 +20087,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Термодатчик воздуха драйвера 2</comment>
 	</param>
@@ -20060,7 +20100,7 @@
 		<min>-32767.0</min>
 		<max>32767.0</max>
 		<def>0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Термодатчик драйвера 2</text>
@@ -20068,7 +20108,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Термодатчик драйвера 2</comment>
 	</param>
@@ -20081,7 +20121,7 @@
 		<min>-32767.0</min>
 		<max>32767.0</max>
 		<def>0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Термодатчик 2 драйвера 0</text>
@@ -20089,7 +20129,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Термодатчик 2 драйвера 0</comment>
 	</param>
@@ -20102,7 +20142,7 @@
 		<min>-32767.0</min>
 		<max>32767.0</max>
 		<def>0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Термодатчик 2 драйвера 1</text>
@@ -20110,7 +20150,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Термодатчик 2 драйвера 1</comment>
 	</param>
@@ -20123,7 +20163,7 @@
 		<min>-32767.0</min>
 		<max>32767.0</max>
 		<def>0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Термодатчик 2 драйвера 2</text>
@@ -20131,7 +20171,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Термодатчик 2 драйвера 2</comment>
 	</param>
@@ -20144,7 +20184,7 @@
 		<min>-32767.0</min>
 		<max>32767.0</max>
 		<def>0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Термодатчик 3 драйвера 0</text>
@@ -20152,7 +20192,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Термодатчик 3 драйвера 0</comment>
 	</param>
@@ -20165,7 +20205,7 @@
 		<min>-32767.0</min>
 		<max>32767.0</max>
 		<def>0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Термодатчик 3 драйвера 1</text>
@@ -20173,7 +20213,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Термодатчик 3 драйвера 1</comment>
 	</param>
@@ -20186,7 +20226,7 @@
 		<min>-32767.0</min>
 		<max>32767.0</max>
 		<def>0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Термодатчик 3 драйвера 2</text>
@@ -20194,7 +20234,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Термодатчик 3 драйвера 2</comment>
 	</param>
@@ -20207,7 +20247,7 @@
 		<min>-32767.0</min>
 		<max>32767.0</max>
 		<def>0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Термодатчик 4 драйвера 0</text>
@@ -20215,7 +20255,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Термодатчик 4 драйвера 0</comment>
 	</param>
@@ -20228,7 +20268,7 @@
 		<min>-32767.0</min>
 		<max>32767.0</max>
 		<def>0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Термодатчик 4 драйвера 1</text>
@@ -20236,7 +20276,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Термодатчик 4 драйвера 1</comment>
 	</param>
@@ -20249,7 +20289,7 @@
 		<min>-32767.0</min>
 		<max>32767.0</max>
 		<def>0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Термодатчик 4 драйвера 2</text>
@@ -20257,7 +20297,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Термодатчик 4 драйвера 2</comment>
 	</param>

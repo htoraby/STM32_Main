@@ -392,11 +392,11 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].operation                     = OPERATION_WRITE;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].physic                        = PHYSIC_FULL_POWER;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].validity                      = VALIDITY_OK;
-  parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].value.float_t                 = 2000.0;
+  parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].value.float_t                 = 2000000.0;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].min                           = 0.0;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].max                           = 9999999.0;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].discret                       = 1;
-  parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].def                           = 2000.0;
+  parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].def                           = 2000000.0;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].code                          = 13;
   // Номинальный ток ТМПН
   parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].id                          = CCS_TRANS_NOMINAL_CURRENT;

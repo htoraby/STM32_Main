@@ -701,27 +701,27 @@ void Vsd::initParameters()
   // Период снижения частоты при токоограничении.
   parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].id                             = VSD_T_ILIMIT_SPEEDDOWN;
   parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].access                         = ACCESS_OPERATOR;
-  parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].operation                      = 0;
-  parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].physic                         = 0;
+  parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].physic                         = PHYSIC_TIME;
   parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].validity                       = VALIDITY_ERROR;
-  parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].value.float_t                  = 0;
+  parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].value.float_t                  = 0.25;
   parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].min                            = 0.0;
   parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].max                            = 999999.0;
-  parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].def                            = 0;
-  parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].discret                        = 1;
-  parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].code                           = 0;
+  parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].def                            = 0.25;
+  parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].discret                        = 100;
+  parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].code                           = 13;
   // Период снижения частоты при нехватке напряжения на инверторе
   parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].id                               = VSD_T_ULOW_SPEEDDOWN;
   parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].access                           = ACCESS_OPERATOR;
-  parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].operation                        = 0;
-  parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].physic                           = 0;
+  parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].operation                        = OPERATION_WRITE;
+  parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].physic                           = PHYSIC_TIME;
   parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].validity                         = VALIDITY_ERROR;
-  parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].value.float_t                    = 0;
+  parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].value.float_t                    = 0.25;
   parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].min                              = 0.0;
   parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].max                              = 999999.0;
-  parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].def                              = 0;
-  parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].discret                          = 1;
-  parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].code                             = 0;
+  parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].def                              = 0.25;
+  parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].discret                          = 100;
+  parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].code                             = 13;
   // Тип текущего алгоритма управления (регулятора)
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].id                              = VSD_CURRENT_REGULATOR;
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].access                          = ACCESS_OPERATOR;
@@ -936,7 +936,7 @@ void Vsd::initParameters()
   parameters_[VSD_VFREQ_INTEG - VSD_BEGIN].min                                   = 0.0;
   parameters_[VSD_VFREQ_INTEG - VSD_BEGIN].max                                   = 0.1;
   parameters_[VSD_VFREQ_INTEG - VSD_BEGIN].def                                   = 0.007;
-  parameters_[VSD_VFREQ_INTEG - VSD_BEGIN].discret                               = 10000;
+  parameters_[VSD_VFREQ_INTEG - VSD_BEGIN].discret                               = 1000;
   parameters_[VSD_VFREQ_INTEG - VSD_BEGIN].code                                  = 0;
   // Регистры рабочей очереди алгоритмов управления
   parameters_[VSD_REGULATOR_QUEUE_1 - VSD_BEGIN].id                              = VSD_REGULATOR_QUEUE_1;
@@ -1068,7 +1068,7 @@ void Vsd::initParameters()
   parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].min                                    = 0.0;
   parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].max                                    = 0.5;
   parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].def                                    = 0.03;
-  parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].discret                                = 10000;
+  parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].discret                                = 1000;
   parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].code                                   = 0;
   // Фазовый коэффициент усиления системы подавления резонанса
   parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].id                                  = VSD_RES_PROP_GAIN;
@@ -1085,15 +1085,15 @@ void Vsd::initParameters()
   // Постоянная времени системы подавления резонанса
   parameters_[VSD_RES_TIMECONST - VSD_BEGIN].id                                  = VSD_RES_TIMECONST;
   parameters_[VSD_RES_TIMECONST - VSD_BEGIN].access                              = ACCESS_OPERATOR;
-  parameters_[VSD_RES_TIMECONST - VSD_BEGIN].operation                           = 0;
-  parameters_[VSD_RES_TIMECONST - VSD_BEGIN].physic                              = 0;
+  parameters_[VSD_RES_TIMECONST - VSD_BEGIN].operation                           = OPERATION_WRITE;
+  parameters_[VSD_RES_TIMECONST - VSD_BEGIN].physic                              = PHYSIC_TIME;
   parameters_[VSD_RES_TIMECONST - VSD_BEGIN].validity                            = VALIDITY_ERROR;
-  parameters_[VSD_RES_TIMECONST - VSD_BEGIN].value.float_t                       = 0;
+  parameters_[VSD_RES_TIMECONST - VSD_BEGIN].value.float_t                       = 0.017;
   parameters_[VSD_RES_TIMECONST - VSD_BEGIN].min                                 = 0.0;
   parameters_[VSD_RES_TIMECONST - VSD_BEGIN].max                                 = 999999.0;
-  parameters_[VSD_RES_TIMECONST - VSD_BEGIN].def                                 = 0;
-  parameters_[VSD_RES_TIMECONST - VSD_BEGIN].discret                             = 1;
-  parameters_[VSD_RES_TIMECONST - VSD_BEGIN].code                                = 0;
+  parameters_[VSD_RES_TIMECONST - VSD_BEGIN].def                                 = 0.017;
+  parameters_[VSD_RES_TIMECONST - VSD_BEGIN].discret                             = 1000;
+  parameters_[VSD_RES_TIMECONST - VSD_BEGIN].code                                = 13;
   // Служебный регистр для отладки алгоритмов управления
   parameters_[VSD_RES_IAMP_VALID - VSD_BEGIN].id                                 = VSD_RES_IAMP_VALID;
   parameters_[VSD_RES_IAMP_VALID - VSD_BEGIN].access                             = ACCESS_OPERATOR;
@@ -1163,8 +1163,8 @@ void Vsd::initParameters()
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].value.float_t                     = 100.0;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].min                               = 0.0;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].max                               = 999999.0;
-  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].def                               = 100.0;
-  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].discret                           = 10;
+  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].def                               = 0.25;
+  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].discret                           = 100;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].code                              = 13;
   // Напряжение остаточного напряжения на шине (окончания разряда) в режиме остановки турбинного вращения (для ВД)
   parameters_[VSD_DECEL_VOLTAGE - VSD_BEGIN].id                                  = VSD_DECEL_VOLTAGE;
@@ -1697,15 +1697,15 @@ void Vsd::initParameters()
   // Время импульса с общим (максимальным) токоограничением
   parameters_[VSD_FC_TLIM - VSD_BEGIN].id                                        = VSD_FC_TLIM;
   parameters_[VSD_FC_TLIM - VSD_BEGIN].access                                    = ACCESS_OPERATOR;
-  parameters_[VSD_FC_TLIM - VSD_BEGIN].operation                                 = 0;
-  parameters_[VSD_FC_TLIM - VSD_BEGIN].physic                                    = 0;
+  parameters_[VSD_FC_TLIM - VSD_BEGIN].operation                                 = OPERATION_WRITE;
+  parameters_[VSD_FC_TLIM - VSD_BEGIN].physic                                    = PHYSIC_TIME;
   parameters_[VSD_FC_TLIM - VSD_BEGIN].validity                                  = VALIDITY_ERROR;
-  parameters_[VSD_FC_TLIM - VSD_BEGIN].value.float_t                             = 0;
+  parameters_[VSD_FC_TLIM - VSD_BEGIN].value.float_t                             = 0.004;
   parameters_[VSD_FC_TLIM - VSD_BEGIN].min                                       = 0.0;
   parameters_[VSD_FC_TLIM - VSD_BEGIN].max                                       = 999999.0;
-  parameters_[VSD_FC_TLIM - VSD_BEGIN].def                                       = 0;
-  parameters_[VSD_FC_TLIM - VSD_BEGIN].discret                                   = 1;
-  parameters_[VSD_FC_TLIM - VSD_BEGIN].code                                      = 0;
+  parameters_[VSD_FC_TLIM - VSD_BEGIN].def                                       = 0.004;
+  parameters_[VSD_FC_TLIM - VSD_BEGIN].discret                                   = 1000;
+  parameters_[VSD_FC_TLIM - VSD_BEGIN].code                                      = 13;
   // Масштаб измеряемого напряжения ПЧ отн. базового 250А
   parameters_[VSD_U_SCALE - VSD_BEGIN].id                                        = VSD_U_SCALE;
   parameters_[VSD_U_SCALE - VSD_BEGIN].access                                    = ACCESS_OPERATOR;
@@ -4320,7 +4320,7 @@ void Vsd::initParameters()
   parameters_[VSD_THYR_T_EXT - VSD_BEGIN].min                                    = -32767.0;
   parameters_[VSD_THYR_T_EXT - VSD_BEGIN].max                                    = 32767.0;
   parameters_[VSD_THYR_T_EXT - VSD_BEGIN].def                                    = 0;
-  parameters_[VSD_THYR_T_EXT - VSD_BEGIN].discret                                = 1;
+  parameters_[VSD_THYR_T_EXT - VSD_BEGIN].discret                                = 10;
   parameters_[VSD_THYR_T_EXT - VSD_BEGIN].code                                   = 0;
   // Термодатчик выпрямителя 2
   parameters_[VSD_THYR_T_EXT_2 - VSD_BEGIN].id                                   = VSD_THYR_T_EXT_2;
@@ -4332,7 +4332,7 @@ void Vsd::initParameters()
   parameters_[VSD_THYR_T_EXT_2 - VSD_BEGIN].min                                  = -32767.0;
   parameters_[VSD_THYR_T_EXT_2 - VSD_BEGIN].max                                  = 32767.0;
   parameters_[VSD_THYR_T_EXT_2 - VSD_BEGIN].def                                  = 0;
-  parameters_[VSD_THYR_T_EXT_2 - VSD_BEGIN].discret                              = 1;
+  parameters_[VSD_THYR_T_EXT_2 - VSD_BEGIN].discret                              = 10;
   parameters_[VSD_THYR_T_EXT_2 - VSD_BEGIN].code                                 = 0;
   // T1 платы измерений
   parameters_[VSD_MEASURE_T_1 - VSD_BEGIN].id                                    = VSD_MEASURE_T_1;
@@ -4344,7 +4344,7 @@ void Vsd::initParameters()
   parameters_[VSD_MEASURE_T_1 - VSD_BEGIN].min                                   = -32767.0;
   parameters_[VSD_MEASURE_T_1 - VSD_BEGIN].max                                   = 32767.0;
   parameters_[VSD_MEASURE_T_1 - VSD_BEGIN].def                                   = 0;
-  parameters_[VSD_MEASURE_T_1 - VSD_BEGIN].discret                               = 1;
+  parameters_[VSD_MEASURE_T_1 - VSD_BEGIN].discret                               = 10;
   parameters_[VSD_MEASURE_T_1 - VSD_BEGIN].code                                  = 0;
   // T2 платы измерений
   parameters_[VSD_MEASURE_T_2 - VSD_BEGIN].id                                    = VSD_MEASURE_T_2;
@@ -4356,7 +4356,7 @@ void Vsd::initParameters()
   parameters_[VSD_MEASURE_T_2 - VSD_BEGIN].min                                   = -32767.0;
   parameters_[VSD_MEASURE_T_2 - VSD_BEGIN].max                                   = 32767.0;
   parameters_[VSD_MEASURE_T_2 - VSD_BEGIN].def                                   = 0;
-  parameters_[VSD_MEASURE_T_2 - VSD_BEGIN].discret                               = 1;
+  parameters_[VSD_MEASURE_T_2 - VSD_BEGIN].discret                               = 10;
   parameters_[VSD_MEASURE_T_2 - VSD_BEGIN].code                                  = 0;
   // T3 платы измерений
   parameters_[VSD_MEASURE_T_3 - VSD_BEGIN].id                                    = VSD_MEASURE_T_3;
@@ -4368,7 +4368,7 @@ void Vsd::initParameters()
   parameters_[VSD_MEASURE_T_3 - VSD_BEGIN].min                                   = -32767.0;
   parameters_[VSD_MEASURE_T_3 - VSD_BEGIN].max                                   = 32767.0;
   parameters_[VSD_MEASURE_T_3 - VSD_BEGIN].def                                   = 0;
-  parameters_[VSD_MEASURE_T_3 - VSD_BEGIN].discret                               = 1;
+  parameters_[VSD_MEASURE_T_3 - VSD_BEGIN].discret                               = 10;
   parameters_[VSD_MEASURE_T_3 - VSD_BEGIN].code                                  = 0;
   // Термодатчик воздуха драйвера 0
   parameters_[VSD_DRV_0_T_AIR - VSD_BEGIN].id                                    = VSD_DRV_0_T_AIR;
@@ -4380,7 +4380,7 @@ void Vsd::initParameters()
   parameters_[VSD_DRV_0_T_AIR - VSD_BEGIN].min                                   = -32767.0;
   parameters_[VSD_DRV_0_T_AIR - VSD_BEGIN].max                                   = 32767.0;
   parameters_[VSD_DRV_0_T_AIR - VSD_BEGIN].def                                   = 0;
-  parameters_[VSD_DRV_0_T_AIR - VSD_BEGIN].discret                               = 1;
+  parameters_[VSD_DRV_0_T_AIR - VSD_BEGIN].discret                               = 10;
   parameters_[VSD_DRV_0_T_AIR - VSD_BEGIN].code                                  = 0;
   // Термодатчик драйвера 0
   parameters_[VSD_DRV_0_T_EXT - VSD_BEGIN].id                                    = VSD_DRV_0_T_EXT;
@@ -4392,7 +4392,7 @@ void Vsd::initParameters()
   parameters_[VSD_DRV_0_T_EXT - VSD_BEGIN].min                                   = -32767.0;
   parameters_[VSD_DRV_0_T_EXT - VSD_BEGIN].max                                   = 32767.0;
   parameters_[VSD_DRV_0_T_EXT - VSD_BEGIN].def                                   = 0;
-  parameters_[VSD_DRV_0_T_EXT - VSD_BEGIN].discret                               = 1;
+  parameters_[VSD_DRV_0_T_EXT - VSD_BEGIN].discret                               = 10;
   parameters_[VSD_DRV_0_T_EXT - VSD_BEGIN].code                                  = 0;
   // Термодатчик воздуха драйвера 1
   parameters_[VSD_DRV_1_T_AIR - VSD_BEGIN].id                                    = VSD_DRV_1_T_AIR;
@@ -4404,7 +4404,7 @@ void Vsd::initParameters()
   parameters_[VSD_DRV_1_T_AIR - VSD_BEGIN].min                                   = -32767.0;
   parameters_[VSD_DRV_1_T_AIR - VSD_BEGIN].max                                   = 32767.0;
   parameters_[VSD_DRV_1_T_AIR - VSD_BEGIN].def                                   = 0;
-  parameters_[VSD_DRV_1_T_AIR - VSD_BEGIN].discret                               = 1;
+  parameters_[VSD_DRV_1_T_AIR - VSD_BEGIN].discret                               = 10;
   parameters_[VSD_DRV_1_T_AIR - VSD_BEGIN].code                                  = 0;
   // Термодатчик драйвера 1
   parameters_[VSD_DRV_1_T_EXT - VSD_BEGIN].id                                    = VSD_DRV_1_T_EXT;
@@ -4416,7 +4416,7 @@ void Vsd::initParameters()
   parameters_[VSD_DRV_1_T_EXT - VSD_BEGIN].min                                   = -32767.0;
   parameters_[VSD_DRV_1_T_EXT - VSD_BEGIN].max                                   = 32767.0;
   parameters_[VSD_DRV_1_T_EXT - VSD_BEGIN].def                                   = 0;
-  parameters_[VSD_DRV_1_T_EXT - VSD_BEGIN].discret                               = 1;
+  parameters_[VSD_DRV_1_T_EXT - VSD_BEGIN].discret                               = 10;
   parameters_[VSD_DRV_1_T_EXT - VSD_BEGIN].code                                  = 0;
   // Термодатчик воздуха драйвера 2
   parameters_[VSD_DRV_2_T_AIR - VSD_BEGIN].id                                    = VSD_DRV_2_T_AIR;
@@ -4428,7 +4428,7 @@ void Vsd::initParameters()
   parameters_[VSD_DRV_2_T_AIR - VSD_BEGIN].min                                   = -32767.0;
   parameters_[VSD_DRV_2_T_AIR - VSD_BEGIN].max                                   = 32767.0;
   parameters_[VSD_DRV_2_T_AIR - VSD_BEGIN].def                                   = 0;
-  parameters_[VSD_DRV_2_T_AIR - VSD_BEGIN].discret                               = 1;
+  parameters_[VSD_DRV_2_T_AIR - VSD_BEGIN].discret                               = 10;
   parameters_[VSD_DRV_2_T_AIR - VSD_BEGIN].code                                  = 0;
   // Термодатчик драйвера 2
   parameters_[VSD_DRV_2_T_EXT - VSD_BEGIN].id                                    = VSD_DRV_2_T_EXT;
@@ -4440,7 +4440,7 @@ void Vsd::initParameters()
   parameters_[VSD_DRV_2_T_EXT - VSD_BEGIN].min                                   = -32767.0;
   parameters_[VSD_DRV_2_T_EXT - VSD_BEGIN].max                                   = 32767.0;
   parameters_[VSD_DRV_2_T_EXT - VSD_BEGIN].def                                   = 0;
-  parameters_[VSD_DRV_2_T_EXT - VSD_BEGIN].discret                               = 1;
+  parameters_[VSD_DRV_2_T_EXT - VSD_BEGIN].discret                               = 10;
   parameters_[VSD_DRV_2_T_EXT - VSD_BEGIN].code                                  = 0;
   // Термодатчик 2 драйвера 0
   parameters_[VSD_DRV_0_T_EXT_2 - VSD_BEGIN].id                                  = VSD_DRV_0_T_EXT_2;
@@ -4452,7 +4452,7 @@ void Vsd::initParameters()
   parameters_[VSD_DRV_0_T_EXT_2 - VSD_BEGIN].min                                 = -32767.0;
   parameters_[VSD_DRV_0_T_EXT_2 - VSD_BEGIN].max                                 = 32767.0;
   parameters_[VSD_DRV_0_T_EXT_2 - VSD_BEGIN].def                                 = 0;
-  parameters_[VSD_DRV_0_T_EXT_2 - VSD_BEGIN].discret                             = 1;
+  parameters_[VSD_DRV_0_T_EXT_2 - VSD_BEGIN].discret                             = 10;
   parameters_[VSD_DRV_0_T_EXT_2 - VSD_BEGIN].code                                = 0;
   // Термодатчик 2 драйвера 1
   parameters_[VSD_DRV_1_T_EXT_2 - VSD_BEGIN].id                                  = VSD_DRV_1_T_EXT_2;
@@ -4464,7 +4464,7 @@ void Vsd::initParameters()
   parameters_[VSD_DRV_1_T_EXT_2 - VSD_BEGIN].min                                 = -32767.0;
   parameters_[VSD_DRV_1_T_EXT_2 - VSD_BEGIN].max                                 = 32767.0;
   parameters_[VSD_DRV_1_T_EXT_2 - VSD_BEGIN].def                                 = 0;
-  parameters_[VSD_DRV_1_T_EXT_2 - VSD_BEGIN].discret                             = 1;
+  parameters_[VSD_DRV_1_T_EXT_2 - VSD_BEGIN].discret                             = 10;
   parameters_[VSD_DRV_1_T_EXT_2 - VSD_BEGIN].code                                = 0;
   // Термодатчик 2 драйвера 2
   parameters_[VSD_DRV_2_T_EXT_2 - VSD_BEGIN].id                                  = VSD_DRV_2_T_EXT_2;
@@ -4476,7 +4476,7 @@ void Vsd::initParameters()
   parameters_[VSD_DRV_2_T_EXT_2 - VSD_BEGIN].min                                 = -32767.0;
   parameters_[VSD_DRV_2_T_EXT_2 - VSD_BEGIN].max                                 = 32767.0;
   parameters_[VSD_DRV_2_T_EXT_2 - VSD_BEGIN].def                                 = 0;
-  parameters_[VSD_DRV_2_T_EXT_2 - VSD_BEGIN].discret                             = 1;
+  parameters_[VSD_DRV_2_T_EXT_2 - VSD_BEGIN].discret                             = 10;
   parameters_[VSD_DRV_2_T_EXT_2 - VSD_BEGIN].code                                = 0;
   // Термодатчик 3 драйвера 0
   parameters_[VSD_DRV_0_T_EXT_3 - VSD_BEGIN].id                                  = VSD_DRV_0_T_EXT_3;
@@ -4488,7 +4488,7 @@ void Vsd::initParameters()
   parameters_[VSD_DRV_0_T_EXT_3 - VSD_BEGIN].min                                 = -32767.0;
   parameters_[VSD_DRV_0_T_EXT_3 - VSD_BEGIN].max                                 = 32767.0;
   parameters_[VSD_DRV_0_T_EXT_3 - VSD_BEGIN].def                                 = 0;
-  parameters_[VSD_DRV_0_T_EXT_3 - VSD_BEGIN].discret                             = 1;
+  parameters_[VSD_DRV_0_T_EXT_3 - VSD_BEGIN].discret                             = 10;
   parameters_[VSD_DRV_0_T_EXT_3 - VSD_BEGIN].code                                = 0;
   // Термодатчик 3 драйвера 1
   parameters_[VSD_DRV_1_T_EXT_3 - VSD_BEGIN].id                                  = VSD_DRV_1_T_EXT_3;
@@ -4500,7 +4500,7 @@ void Vsd::initParameters()
   parameters_[VSD_DRV_1_T_EXT_3 - VSD_BEGIN].min                                 = -32767.0;
   parameters_[VSD_DRV_1_T_EXT_3 - VSD_BEGIN].max                                 = 32767.0;
   parameters_[VSD_DRV_1_T_EXT_3 - VSD_BEGIN].def                                 = 0;
-  parameters_[VSD_DRV_1_T_EXT_3 - VSD_BEGIN].discret                             = 1;
+  parameters_[VSD_DRV_1_T_EXT_3 - VSD_BEGIN].discret                             = 10;
   parameters_[VSD_DRV_1_T_EXT_3 - VSD_BEGIN].code                                = 0;
   // Термодатчик 3 драйвера 2
   parameters_[VSD_DRV_2_T_EXT_3 - VSD_BEGIN].id                                  = VSD_DRV_2_T_EXT_3;
@@ -4512,7 +4512,7 @@ void Vsd::initParameters()
   parameters_[VSD_DRV_2_T_EXT_3 - VSD_BEGIN].min                                 = -32767.0;
   parameters_[VSD_DRV_2_T_EXT_3 - VSD_BEGIN].max                                 = 32767.0;
   parameters_[VSD_DRV_2_T_EXT_3 - VSD_BEGIN].def                                 = 0;
-  parameters_[VSD_DRV_2_T_EXT_3 - VSD_BEGIN].discret                             = 1;
+  parameters_[VSD_DRV_2_T_EXT_3 - VSD_BEGIN].discret                             = 10;
   parameters_[VSD_DRV_2_T_EXT_3 - VSD_BEGIN].code                                = 0;
   // Термодатчик 4 драйвера 0
   parameters_[VSD_DRV_0_T_EXT_4 - VSD_BEGIN].id                                  = VSD_DRV_0_T_EXT_4;
@@ -4524,7 +4524,7 @@ void Vsd::initParameters()
   parameters_[VSD_DRV_0_T_EXT_4 - VSD_BEGIN].min                                 = -32767.0;
   parameters_[VSD_DRV_0_T_EXT_4 - VSD_BEGIN].max                                 = 32767.0;
   parameters_[VSD_DRV_0_T_EXT_4 - VSD_BEGIN].def                                 = 0;
-  parameters_[VSD_DRV_0_T_EXT_4 - VSD_BEGIN].discret                             = 1;
+  parameters_[VSD_DRV_0_T_EXT_4 - VSD_BEGIN].discret                             = 10;
   parameters_[VSD_DRV_0_T_EXT_4 - VSD_BEGIN].code                                = 0;
   // Термодатчик 4 драйвера 1
   parameters_[VSD_DRV_1_T_EXT_4 - VSD_BEGIN].id                                  = VSD_DRV_1_T_EXT_4;
@@ -4536,7 +4536,7 @@ void Vsd::initParameters()
   parameters_[VSD_DRV_1_T_EXT_4 - VSD_BEGIN].min                                 = -32767.0;
   parameters_[VSD_DRV_1_T_EXT_4 - VSD_BEGIN].max                                 = 32767.0;
   parameters_[VSD_DRV_1_T_EXT_4 - VSD_BEGIN].def                                 = 0;
-  parameters_[VSD_DRV_1_T_EXT_4 - VSD_BEGIN].discret                             = 1;
+  parameters_[VSD_DRV_1_T_EXT_4 - VSD_BEGIN].discret                             = 10;
   parameters_[VSD_DRV_1_T_EXT_4 - VSD_BEGIN].code                                = 0;
   // Термодатчик 4 драйвера 2
   parameters_[VSD_DRV_2_T_EXT_4 - VSD_BEGIN].id                                  = VSD_DRV_2_T_EXT_4;
@@ -4548,7 +4548,7 @@ void Vsd::initParameters()
   parameters_[VSD_DRV_2_T_EXT_4 - VSD_BEGIN].min                                 = -32767.0;
   parameters_[VSD_DRV_2_T_EXT_4 - VSD_BEGIN].max                                 = 32767.0;
   parameters_[VSD_DRV_2_T_EXT_4 - VSD_BEGIN].def                                 = 0;
-  parameters_[VSD_DRV_2_T_EXT_4 - VSD_BEGIN].discret                             = 1;
+  parameters_[VSD_DRV_2_T_EXT_4 - VSD_BEGIN].discret                             = 10;
   parameters_[VSD_DRV_2_T_EXT_4 - VSD_BEGIN].code                                = 0;
   // Текущее турбинное вращение
   parameters_[VSD_TURBO_ROTATION_NOW - VSD_BEGIN].id                             = VSD_TURBO_ROTATION_NOW;
