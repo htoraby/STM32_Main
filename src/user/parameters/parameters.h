@@ -95,7 +95,11 @@ public:
 
   float getMin(uint16_t id);
 
+  uint8_t setMin(uint16_t id, float value);
+
   float getMax(uint16_t id);
+
+  uint8_t setMax(uint16_t id, float value);
 
   /*!
    * \brief Конвертация значения из формата STM

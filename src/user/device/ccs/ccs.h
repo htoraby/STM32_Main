@@ -427,6 +427,11 @@ private:
   void cmdProtOtherHardwareVsdSetpointReset();
   void cmdProtOtherVsdNoConnectSetpointReset();
 
+  void cmdProtDigitalInput1SetpointReset();
+  void cmdProtDigitalInput2SetpointReset();
+  void cmdProtDigitalInput3SetpointReset();
+  void cmdProtDigitalInput4SetpointReset();
+
   /*!
    * \brief calcCounterStop
    * \param reason
@@ -486,6 +491,22 @@ private:
 
   void setCmd(uint16_t id);
   void resetCmd(uint16_t id);
+
+  /*!
+   * \brief Получение значений с цифровых входов, сохранение и обработка
+   */
+  void calcDigitalInputs();
+
+  /*!
+   * \brief Метод обработки значения сигнала с цифрового входа
+   * \param num - номер цифрового входа
+   */
+  void changedDigitalInput(int num);
+
+  /*!
+   * \brief Получение значений с аналоговых входов и сохранение в параметры
+   */
+  void calcAnalogInputs();
 
   //! Массив параметров устройства
   parameter parametersArray_[CCS_END - CCS_BEGIN];

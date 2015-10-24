@@ -5868,24 +5868,40 @@
 		<id>328</id>
 		<name>CCS_PROT_DI_1_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>2.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Защиты по дискретным входам</comment>
+		<value>1.0</value>
+		<text>РРЗ по сигналу цифрового входа 1</text>
+		<short_text>Цифр.вх.1 РРЗ</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Блок;2-АПВ;</values>
+		<comment>Защита по цифровому входу 1</comment>
 	</param>
 	<param>
 		<id>329</id>
 		<name>CCS_PROT_DI_1_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>0.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Параметр запрещающий запуск</comment>
 	</param>
@@ -5893,65 +5909,125 @@
 		<id>330</id>
 		<name>CCS_PROT_DI_1_ACTIV_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>59999.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>10.0</value>
+		<text>Защита Цифровой вход 1. Задержка активации</text>
+		<short_text>Цифр.вх.1 пуск.время</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
 	<param>
 		<id>331</id>
 		<name>CCS_PROT_DI_1_TRIP_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>59999.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>10.0</value>
+		<text>Защита Цифровой вход 1. Задержка срабатывания</text>
+		<short_text>Цифр.вх.1 время</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
 	<param>
 		<id>332</id>
 		<name>CCS_PROT_DI_1_RESTART_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3599940.0</max>
+		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>600.0</value>
+		<text>Защита Цифровой вход 1. Задержка АПВ</text>
+		<short_text>Цифр.вх.1 зад.АПВ</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
 	<param>
 		<id>333</id>
 		<name>CCS_PROT_DI_1_RESTART_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>9999.0</max>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>5.0</value>
+		<text>Защита Цифровой вход 1. Количество разрешенных АПВ</text>
+		<short_text>Цифр.вх.1 раз.АПВ</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
 	<param>
 		<id>334</id>
 		<name>CCS_PROT_DI_1_RESTART_RESET</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3599940.0</max>
+		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>86400.0</value>
+		<text>Защита Цифровой вход 1. Сброс счетчиков АПВ</text>
+		<short_text>Цифр.вх.1 сброс счет</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
 	<param>
 		<id>335</id>
 		<name>CCS_PROT_DI_1_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>0.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Уставка срабатывания защиты</comment>
 	</param>
@@ -5959,10 +6035,20 @@
 		<id>336</id>
 		<name>CCS_PROT_DI_1_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>0.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Условие АПВ уставка</comment>
 	</param>
@@ -5970,10 +6056,20 @@
 		<id>337</id>
 		<name>CCS_PROT_DI_1_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>0.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Уставка параметр защиты</comment>
 	</param>
@@ -5981,13 +6077,20 @@
 		<id>338</id>
 		<name>CCS_PROT_DI_1_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Флаг что защита в АПВ</comment>
 	</param>
@@ -5995,13 +6098,20 @@
 		<id>339</id>
 		<name>CCS_PROT_DI_1_STATE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3.0</max>
+		<def>3.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>3.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр состояние автомата</comment>
 	</param>
@@ -6009,13 +6119,20 @@
 		<id>340</id>
 		<name>CCS_PROT_DI_1_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>4294967296.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Фиксированное время</comment>
 	</param>
@@ -6023,13 +6140,20 @@
 		<id>341</id>
 		<name>CCS_PROT_DI_1_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1000.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Количество АПВ</comment>
 	</param>
@@ -6037,13 +6161,20 @@
 		<id>342</id>
 		<name>CCS_PROT_DI_1_RESTART_FIRST_TIME</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
+		<min>0</min>
+		<max>4294967296</max>
+		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>DATE_TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Время первого АПВ</comment>
 	</param>
@@ -6051,24 +6182,40 @@
 		<id>343</id>
 		<name>CCS_PROT_DI_2_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>2.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Защита дискретный вход 2</comment>
+		<value>1.0</value>
+		<text>РРЗ по сигналу цифрового входа 2</text>
+		<short_text>Цифр.вх.2 РРЗ</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Блок;2-АПВ;</values>
+		<comment>Защита по цифровому входу 2</comment>
 	</param>
 	<param>
 		<id>344</id>
 		<name>CCS_PROT_DI_2_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>0.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Параметр запрещающий запуск</comment>
 	</param>
@@ -6076,65 +6223,125 @@
 		<id>345</id>
 		<name>CCS_PROT_DI_2_ACTIV_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>59999.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>10.0</value>
+		<text>Защита Цифровой вход 2. Задержка активации</text>
+		<short_text>Цифр.вх.2 пуск.время</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
 	<param>
 		<id>346</id>
 		<name>CCS_PROT_DI_2_TRIP_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>59999.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>10.0</value>
+		<text>Защита Цифровой вход 2. Задержка срабатывания</text>
+		<short_text>Цифр.вх.2 время</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
 	<param>
 		<id>347</id>
 		<name>CCS_PROT_DI_2_RESTART_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3599940.0</max>
+		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>600.0</value>
+		<text>Защита Цифровой вход 2. Задержка АПВ</text>
+		<short_text>Цифр.вх.2 зад.АПВ</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
 	<param>
 		<id>348</id>
 		<name>CCS_PROT_DI_2_RESTART_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>9999.0</max>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>5.0</value>
+		<text>Защита Цифровой вход 2. Количество разрешенных АПВ</text>
+		<short_text>Цифр.вх.2 раз.АПВ</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
 	<param>
 		<id>349</id>
 		<name>CCS_PROT_DI_2_RESTART_RESET</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3599940.0</max>
+		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>86400.0</value>
+		<text>Защита Цифровой вход 2. Сброс счетчиков АПВ</text>
+		<short_text>Цифр.вх.2 сброс счет</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
 	<param>
 		<id>350</id>
 		<name>CCS_PROT_DI_2_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>0.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Уставка срабатывания защиты</comment>
 	</param>
@@ -6142,10 +6349,20 @@
 		<id>351</id>
 		<name>CCS_PROT_DI_2_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>0.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Условие АПВ уставка</comment>
 	</param>
@@ -6153,10 +6370,20 @@
 		<id>352</id>
 		<name>CCS_PROT_DI_2_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>0.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Уставка параметр защиты</comment>
 	</param>
@@ -6164,13 +6391,20 @@
 		<id>353</id>
 		<name>CCS_PROT_DI_2_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Флаг что защита в АПВ</comment>
 	</param>
@@ -6178,13 +6412,20 @@
 		<id>354</id>
 		<name>CCS_PROT_DI_2_STATE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3.0</max>
+		<def>3.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>3.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр состояние автомата</comment>
 	</param>
@@ -6192,13 +6433,20 @@
 		<id>355</id>
 		<name>CCS_PROT_DI_2_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>4294967296.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Фиксированное время</comment>
 	</param>
@@ -6206,13 +6454,20 @@
 		<id>356</id>
 		<name>CCS_PROT_DI_2_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1000.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Количество АПВ</comment>
 	</param>
@@ -6220,13 +6475,20 @@
 		<id>357</id>
 		<name>CCS_PROT_DI_2_RESTART_FIRST_TIME</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
+		<min>0</min>
+		<max>4294967296</max>
+		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>DATE_TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Время первого АПВ</comment>
 	</param>
@@ -6234,24 +6496,40 @@
 		<id>358</id>
 		<name>CCS_PROT_DI_3_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>2.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Защита дискретный вход 3</comment>
+		<value>1.0</value>
+		<text>РРЗ по сигналу цифрового входа 3</text>
+		<short_text>Цифр.вх.3 РРЗ</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Блок;2-АПВ;</values>
+		<comment>Защита по цифровому входу 3</comment>
 	</param>
 	<param>
 		<id>359</id>
 		<name>CCS_PROT_DI_3_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>0.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Параметр запрещающий запуск</comment>
 	</param>
@@ -6259,65 +6537,125 @@
 		<id>360</id>
 		<name>CCS_PROT_DI_3_ACTIV_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>59999.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>10.0</value>
+		<text>Защита Цифровой вход 3. Задержка активации</text>
+		<short_text>Цифр.вх.3 пуск.время</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
 	<param>
 		<id>361</id>
 		<name>CCS_PROT_DI_3_TRIP_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>59999.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>10.0</value>
+		<text>Защита Цифровой вход 3. Задержка срабатывания</text>
+		<short_text>Цифр.вх.3 время</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
 	<param>
 		<id>362</id>
 		<name>CCS_PROT_DI_3_RESTART_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3599940.0</max>
+		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>600.0</value>
+		<text>Защита Цифровой вход 3. Задержка АПВ</text>
+		<short_text>Цифр.вх.3 зад.АПВ</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
 	<param>
 		<id>363</id>
 		<name>CCS_PROT_DI_3_RESTART_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>9999.0</max>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>5.0</value>
+		<text>Защита Цифровой вход 3. Количество разрешенных АПВ</text>
+		<short_text>Цифр.вх.3 раз.АПВ</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
 	<param>
 		<id>364</id>
 		<name>CCS_PROT_DI_3_RESTART_RESET</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3599940.0</max>
+		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>86400.0</value>
+		<text>Защита Цифровой вход 3. Сброс счетчиков АПВ</text>
+		<short_text>Цифр.вх.3 сброс счет</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
 	<param>
 		<id>365</id>
 		<name>CCS_PROT_DI_3_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>0.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Уставка срабатывания защиты</comment>
 	</param>
@@ -6325,10 +6663,20 @@
 		<id>366</id>
 		<name>CCS_PROT_DI_3_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>0.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Условие АПВ уставка</comment>
 	</param>
@@ -6336,10 +6684,20 @@
 		<id>367</id>
 		<name>CCS_PROT_DI_3_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>0.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Уставка параметр защиты</comment>
 	</param>
@@ -6347,13 +6705,20 @@
 		<id>368</id>
 		<name>CCS_PROT_DI_3_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Флаг что защита в АПВ</comment>
 	</param>
@@ -6361,13 +6726,20 @@
 		<id>369</id>
 		<name>CCS_PROT_DI_3_STATE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3.0</max>
+		<def>3.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>3.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр состояние автомата</comment>
 	</param>
@@ -6375,13 +6747,20 @@
 		<id>370</id>
 		<name>CCS_PROT_DI_3_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>4294967296.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Фиксированное время</comment>
 	</param>
@@ -6389,13 +6768,20 @@
 		<id>371</id>
 		<name>CCS_PROT_DI_3_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1000.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Количество АПВ</comment>
 	</param>
@@ -6403,13 +6789,20 @@
 		<id>372</id>
 		<name>CCS_PROT_DI_3_RESTART_FIRST_TIME</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
+		<min>0</min>
+		<max>4294967296</max>
+		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>DATE_TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Время первого АПВ</comment>
 	</param>
@@ -6417,24 +6810,40 @@
 		<id>373</id>
 		<name>CCS_PROT_DI_4_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>2.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Защита дискретный вход 4</comment>
+		<value>1.0</value>
+		<text>РРЗ по сигналу цифрового входа 4</text>
+		<short_text>Цифр.вх.4 РРЗ</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Блок;2-АПВ;</values>
+		<comment>Защита по цифровому входу 4</comment>
 	</param>
 	<param>
 		<id>374</id>
 		<name>CCS_PROT_DI_4_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>0.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Параметр запрещающий запуск</comment>
 	</param>
@@ -6442,65 +6851,125 @@
 		<id>375</id>
 		<name>CCS_PROT_DI_4_ACTIV_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>59999.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>10.0</value>
+		<text>Защита Цифровой вход 4. Задержка активации</text>
+		<short_text>Цифр.вх.4 пуск.время</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
 	<param>
 		<id>376</id>
 		<name>CCS_PROT_DI_4_TRIP_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>59999.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>10.0</value>
+		<text>Защита Цифровой вход 4. Задержка срабатывания</text>
+		<short_text>Цифр.вх.4 время</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
 	<param>
 		<id>377</id>
 		<name>CCS_PROT_DI_4_RESTART_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3599940.0</max>
+		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>600.0</value>
+		<text>Защита Цифровой вход 4. Задержка АПВ</text>
+		<short_text>Цифр.вх.4 зад.АПВ</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
 	<param>
 		<id>378</id>
 		<name>CCS_PROT_DI_4_RESTART_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>9999.0</max>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>5.0</value>
+		<text>Защита Цифровой вход 4. Количество разрешенных АПВ</text>
+		<short_text>Цифр.вх.4 раз.АПВ</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
 	<param>
 		<id>379</id>
 		<name>CCS_PROT_DI_4_RESTART_RESET</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3599940.0</max>
+		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>86400.0</value>
+		<text>Защита Цифровой вход 4. Сброс счетчиков АПВ</text>
+		<short_text>Цифр.вх.4 сброс счет</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
 	<param>
 		<id>380</id>
 		<name>CCS_PROT_DI_4_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>0.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Уставка срабатывания защиты</comment>
 	</param>
@@ -6508,10 +6977,20 @@
 		<id>381</id>
 		<name>CCS_PROT_DI_4_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>0.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Условие АПВ уставка</comment>
 	</param>
@@ -6519,10 +6998,20 @@
 		<id>382</id>
 		<name>CCS_PROT_DI_4_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>0.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Уставка параметр защиты</comment>
 	</param>
@@ -6530,13 +7019,20 @@
 		<id>383</id>
 		<name>CCS_PROT_DI_4_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Флаг что защита в АПВ</comment>
 	</param>
@@ -6544,13 +7040,20 @@
 		<id>384</id>
 		<name>CCS_PROT_DI_4_STATE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3.0</max>
+		<def>3.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>3.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр состояние автомата</comment>
 	</param>
@@ -6558,13 +7061,20 @@
 		<id>385</id>
 		<name>CCS_PROT_DI_4_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>4294967296.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Фиксированное время</comment>
 	</param>
@@ -6572,13 +7082,20 @@
 		<id>386</id>
 		<name>CCS_PROT_DI_4_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1000.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Количество АПВ</comment>
 	</param>
@@ -6586,13 +7103,20 @@
 		<id>387</id>
 		<name>CCS_PROT_DI_4_RESTART_FIRST_TIME</name>
 		<access>ACCESS_OPERATOR</access>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
+		<min>0</min>
+		<max>4294967296</max>
+		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>DATE_TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Время первого АПВ</comment>
 	</param>
@@ -13777,7 +14301,7 @@
 		<max>1.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Тип двигателя</text>
 		<short_text>Тип двиг.</short_text>
@@ -14148,6 +14672,174 @@
 	</param>
 	<param>
 		<id>800</id>
+		<name>CCS_DI_1_TYPE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Цифровой вход 1. Тип сигнала</text>
+		<short_text>Цифр.вх.1. Тип сигнала</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Замыкание;1-Размыкание</values>
+		<comment>Цифровой вход 1. Тип сигнала</comment>
+	</param>
+	<param>
+		<id>801</id>
+		<name>CCS_DI_2_TYPE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Цифровой вход 2. Тип сигнала</text>
+		<short_text>Цифр.вх.2. Тип сигнала</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Замыкание;1-Размыкание</values>
+		<comment>Цифровой вход 2. Тип сигнала</comment>
+	</param>
+	<param>
+		<id>802</id>
+		<name>CCS_DI_3_TYPE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Цифровой вход 3. Тип сигнала</text>
+		<short_text>Цифр.вх.3. Тип сигнала</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Замыкание;1-Размыкание</values>
+		<comment>Цифровой вход 3. Тип сигнала</comment>
+	</param>
+	<param>
+		<id>803</id>
+		<name>CCS_DI_4_TYPE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Цифровой вход 4. Тип сигнала</text>
+		<short_text>Цифр.вх.4. Тип сигнала</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Замыкание;1-Размыкание</values>
+		<comment>Цифровой вход 4. Тип сигнала</comment>
+	</param>
+	<param>
+		<id>804</id>
+		<name>CCS_DI_1_ACTION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>6.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Цифровой вход 1. Действие по сигналу</text>
+		<short_text>Цифр.вх.1. Действие</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Нет;1-Стоп;2-Пуск;3-Реверс;4-Защита;5-Кнопка оператора;6-Предупреждение;</values>
+		<comment>Цифровой вход 1. Действие по сигналу</comment>
+	</param>
+	<param>
+		<id>805</id>
+		<name>CCS_DI_2_ACTION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>6.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Цифровой вход 2. Действие по сигналу</text>
+		<short_text>Цифр.вх.2. Действие</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Нет;1-Стоп;2-Пуск;3-Реверс;4-Защита;5-Кнопка оператора;6-Предупреждение;</values>
+		<comment>Цифровой вход 2. Действие по сигналу</comment>
+	</param>
+	<param>
+		<id>806</id>
+		<name>CCS_DI_3_ACTION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>6.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Цифровой вход 3. Действие по сигналу</text>
+		<short_text>Цифр.вх.3. Действие</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Нет;1-Стоп;2-Пуск;3-Реверс;4-Защита;5-Кнопка оператора;6-Предупреждение;</values>
+		<comment>Цифровой вход 3. Действие по сигналу</comment>
+	</param>
+	<param>
+		<id>807</id>
+		<name>CCS_DI_4_ACTION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>6.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Цифровой вход 4. Действие по сигналу</text>
+		<short_text>Цифр.вх.4. Действие</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Нет;1-Стоп;2-Пуск;3-Реверс;4-Защита;5-Кнопка оператора;6-Предупреждение;</values>
+		<comment>Цифровой вход 4. Действие по сигналу</comment>
+	</param>
+	<param>
+		<id>808</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>

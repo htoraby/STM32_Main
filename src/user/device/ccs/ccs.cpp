@@ -112,6 +112,8 @@ void Ccs::mainTask()
     calcTime();
     controlPower();
     checkConnectDevice();
+
+    calcDigitalInputs();
   }
 }
 
@@ -198,8 +200,17 @@ void Ccs::vsdConditionTask()
     int vsdCondition = getValue(CCS_VSD_CONDITION);
     switch (vsdCondition) {
     case VSD_CONDITION_STOP:
-      if (getValue(CCS_CONDITION) != CCS_CONDITION_STOP)
+      if (getValue(CCS_CONDITION) != CCS_CONDITION_STOP) {
         setNewValue(CCS_CONDITION, CCS_CONDITION_STOP);
+      } else if (getValue(CCS_CONDITION) == CCS_CONDITION_STOP) {
+        if (vsd->checkStart()) {
+          setNewValue(CCS_LAST_RUN_REASON, LastReasonRunApvHardwareVsd);
+          setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
+          setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
+          setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
+          calcCountersRun(LastReasonRunApvHardwareVsd);
+        }
+      }
       break;
     case VSD_CONDITION_STOPPING:
       if (vsd->checkStop()) {
@@ -221,6 +232,12 @@ void Ccs::vsdConditionTask()
 #if USE_DEBUG
         setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
 #endif
+      } else if (getValue(CCS_CONDITION) == CCS_CONDITION_RUN) {
+        if (vsd->checkStop()) {
+          setBlock();
+          setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopHardwareVsd);
+          setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
+        }
       }
       break;
     case VSD_CONDITION_RUNNING:
@@ -912,6 +929,22 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     cmdProtOtherVsdNoConnectSetpointReset();
     return err;
+  case CCS_CMD_PROT_DI_1_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtDigitalInput1SetpointReset();
+    return err;
+  case CCS_CMD_PROT_DI_2_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtDigitalInput2SetpointReset();
+    return err;
+  case CCS_CMD_PROT_DI_3_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtDigitalInput3SetpointReset();
+    return err;
+  case CCS_CMD_PROT_DI_4_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtDigitalInput4SetpointReset();
+    return err;
   case CCS_CMD_COUNTER_ALL_RESET:
     err = setValue(id, value, eventType);
     cmdCountersAllReset();
@@ -1206,6 +1239,38 @@ void Ccs::cmdProtOtherVsdNoConnectSetpointReset()
 {
   for (uint16_t i = CCS_PROT_OTHER_VSD_NO_CONNECT_MODE;
        i <= CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtDigitalInput1SetpointReset()
+{
+  for (uint16_t i = CCS_PROT_DI_1_MODE;
+       i <= CCS_PROT_DI_1_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtDigitalInput2SetpointReset()
+{
+  for (uint16_t i = CCS_PROT_DI_2_MODE;
+       i <= CCS_PROT_DI_2_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtDigitalInput3SetpointReset()
+{
+  for (uint16_t i = CCS_PROT_DI_3_MODE;
+       i <= CCS_PROT_DI_3_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtDigitalInput4SetpointReset()
+{
+  for (uint16_t i = CCS_PROT_DI_4_MODE;
+       i <= CCS_PROT_DI_4_PARAMETER; i++) {
     resetValue(i);
   }
 }

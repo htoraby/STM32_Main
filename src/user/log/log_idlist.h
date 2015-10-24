@@ -148,6 +148,11 @@ typedef enum {
 
   WriteAlarmLogId,                          //!< "Запись аварийного архива"
 
+  DigitalInput1LogId,                       //!< "Сигнал на цифровом входе 1"
+  DigitalInput2LogId,                       //!< "Сигнал на цифровом входе 2"
+  DigitalInput3LogId,                       //!< "Сигнал на цифровом входе 3"
+  DigitalInput4LogId,                       //!< "Сигнал на цифровом входе 4"
+
 } EventId;
 
 #endif // LOG_IDLIST

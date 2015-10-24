@@ -469,7 +469,7 @@ static void testAdcExt()
 {
 #if TEST_ADC_EXT
   osDelay(500);
-  for (int i = 0; i < ANALOG_IN_NUM; ++i) {
+  for (int i = 0; i < AnalogInputMax; ++i) {
     float value = getValueAnalogInExt(i);
     if (value)
       asm("nop");

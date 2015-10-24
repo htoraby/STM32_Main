@@ -308,6 +308,11 @@ enum LastReasonRun {
   LastReasonRunApvOutOfSyncMotor        = 105,  //!< "АПВ по защите: Рассинхронизация ПВЭД"
   LastReasonRunApvResistIsolation       = 106,  //!< "АПВ по защите: Сопротивление изоляции"
   LastReasonRunApvHardwareVsd           = 107,  //!< "АПВ по защите: Аппаратные защиты ЧРП"
+  LastReasonRunDigital1                 = 108,  //!< "Сигнал цифр.вх.1"
+  LastReasonRunDigital2                 = 109,  //!< "Сигнал цифр.вх.2"
+  LastReasonRunDigital3                 = 110,  //!< "Сигнал цифр.вх.3"
+  LastReasonRunDigital4                 = 111,  //!< "Сигнал цифр.вх.4"
+
   LastReasonRunLast
 };
 
@@ -384,6 +389,21 @@ enum enEmType {
 enum enTypeStop {
   TYPE_STOP_SMOTH = 0,
   TYPE_STOP_ALARM
+};
+
+/*!
+ * \brief Список действий по сигналу с цифрового входа
+ */
+enum enDiAction
+{
+  DI_ACTION_NONE,       //!< Нет
+  DI_ACTION_STOP,       //!< Стоп
+  DI_ACTION_START,      //!< Пуск
+  DI_ACTION_REVERSE,    //!< Реверс
+  DI_ACTION_PROTECTION, //!< Защита
+  DI_ACTION_BUTTON,     //!< Кнопка оператора
+  DI_ACTION_WARNING,    //!< Предупреждение
+  DI_ACTION_LAST
 };
 
 #define NUM_PI 3.14159265358979323846
