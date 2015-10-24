@@ -87,6 +87,14 @@ public:
   int setUf_U5(float value);
   int setUf_U6(float value);
 
+  int calcUfCharacteristicU(float value);
+  int calcUfCharacteristicF(float value);
+
+  void readUfCharacterictic();
+  int setBaseVoltage(float value);
+  int setBaseFrequency(float value);
+
+
   void getNewValue(uint16_t id);
   uint8_t setNewValue(uint16_t id, float value);
 
@@ -97,6 +105,12 @@ public:
    * \return
    */
   void writeToDevice(int id, float value);
+
+  /*!
+   * \brief readInDevice
+   * \param id
+   */
+  void readInDevice(int id);
 
   /*!
    * \brief Метод запуска ЧРП Новомет

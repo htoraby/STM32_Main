@@ -111,7 +111,7 @@ int VsdNovomet::setMotorType(float value)
 int VsdNovomet::setMotorFrequency(float value)
 {
   if (!Vsd::setMotorFrequency(value)) {
-    writeToDevice(VSD_MOTOR_FREQUENCY, value);
+    if (!setBaseFrequency(value))
     setMin(VSD_TIMER_DISPERSAL, value * 0.25);
     setMax(VSD_TIMER_DELAY, value * 12.5);
     return ok_r;
@@ -125,6 +125,7 @@ int VsdNovomet::setMotorFrequency(float value)
 int VsdNovomet::setMotorCurrent(float value)
 {
   if (!Vsd::setMotorCurrent(value)) {
+
     value = value * parameters.get(CCS_COEF_TRANSFORMATION);
     writeToDevice(VSD_MOTOR_CURRENT, value);
     return ok_r;
@@ -139,8 +140,8 @@ int VsdNovomet::setMotorVoltage(float value)
 {
   if (!Vsd::setMotorVoltage(value)) {
     value = value / parameters.get(CCS_COEF_TRANSFORMATION);
-    writeToDevice(VSD_MOTOR_VOLTAGE, value);
-    return ok_r;
+    if (!setBaseVoltage(value))
+      return ok_r;
   }
   else {
     logDebug.add(WarningMsg, "VsdNovomet::setMotorVoltage");
@@ -413,6 +414,76 @@ int VsdNovomet::setSumInduct(float value)
     logDebug.add(WarningMsg, "VsdNovomet::setSumInduct");
     return err_r;
   }
+}
+
+int VsdNovomet::setBaseVoltage(float value)
+{
+  if (!setValue(VSD_BASE_VOLTAGE, value)) {
+    writeToDevice(VSD_BASE_VOLTAGE, value);
+    osDelay(1000);
+    setMax(VSD_UF_CHARACTERISTIC_U, value);
+    setMax(VSD_UF_CHARACTERISTIC_U_1, value);
+    setMax(VSD_UF_CHARACTERISTIC_U_2, value);
+    setMax(VSD_UF_CHARACTERISTIC_U_3, value);
+    setMax(VSD_UF_CHARACTERISTIC_U_4, value);
+    setMax(VSD_UF_CHARACTERISTIC_U_5, value);
+    setMax(VSD_UF_CHARACTERISTIC_U_6, value);
+    readUfCharacterictic();
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setBaseVoltage");
+    return err_r;
+  }
+}
+
+int VsdNovomet::setBaseFrequency(float value)
+{
+  if (!setValue(VSD_BASE_FREQUENCY, value)) {
+    writeToDevice(VSD_BASE_FREQUENCY, value);
+    value = (value * (parameters.get(VSD_MOTOR_VOLTAGE)/parameters.get(CCS_COEF_TRANSFORMATION)))/parameters.get(VSD_MOTOR_FREQUENCY);
+    if (!setBaseVoltage(value)) {
+      return ok_r;
+    }
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setBaseFrequency");
+    return err_r;
+  }
+}
+
+int VsdNovomet::calcUfCharacteristicU(float value)
+{
+  return setBaseVoltage(value);
+}
+
+int VsdNovomet::calcUfCharacteristicF(float value)
+{
+  return setBaseFrequency(value);
+}
+
+void VsdNovomet::readUfCharacterictic()
+{
+  readInDevice(VSD_UF_CHARACTERISTIC_F_1);
+  readInDevice(VSD_UF_CHARACTERISTIC_F_2);
+  readInDevice(VSD_UF_CHARACTERISTIC_F_3);
+  readInDevice(VSD_UF_CHARACTERISTIC_F_4);
+  readInDevice(VSD_UF_CHARACTERISTIC_F_5);
+  readInDevice(VSD_UF_CHARACTERISTIC_F_6);
+  readInDevice(VSD_UF_CHARACTERISTIC_U);
+  readInDevice(VSD_UF_CHARACTERISTIC_U_1);
+  readInDevice(VSD_UF_CHARACTERISTIC_U_2);
+  readInDevice(VSD_UF_CHARACTERISTIC_U_3);
+  readInDevice(VSD_UF_CHARACTERISTIC_U_4);
+  readInDevice(VSD_UF_CHARACTERISTIC_U_5);
+  readInDevice(VSD_UF_CHARACTERISTIC_U_6);
+  readInDevice(VSD_IF_I_0);
+  readInDevice(VSD_IF_I_1);
+  readInDevice(VSD_IF_I_2);
+  readInDevice(VSD_IF_I_3);
+  readInDevice(VSD_IF_I_4);
+  readInDevice(VSD_IF_I_5);
+  readInDevice(VSD_IF_I_6);
 }
 
 // НАСТРОЙКА U/f
@@ -696,12 +767,14 @@ void VsdNovomet::getNewValue(uint16_t id)
       value = value / temp;
     setValue(id, value);
     break;
+  /*
   case VSD_MOTOR_VOLTAGE:
     temp = parameters.get(CCS_COEF_TRANSFORMATION);
     if (temp != 0)
       value = value * temp;
     setValue(id, value);
     break;
+  */
   case VSD_LOUT:
     setValue(id, value);
     parameters.set(CCS_SYSTEM_INDUCTANCE, value);
@@ -715,6 +788,23 @@ void VsdNovomet::getNewValue(uint16_t id)
       parameters.set(VSD_TIME_MONTH, parameters.get(CCS_DATE_TIME_MONTH));
       parameters.set(VSD_TIME_YEAR, parameters.get(CCS_DATE_TIME_YEAR));
     }
+    break;
+  case VSD_THYR_T_EXT:
+  case VSD_THYR_T_EXT_2:
+  case VSD_DRV_0_T_EXT:
+  case VSD_DRV_1_T_EXT:
+  case VSD_DRV_2_T_EXT:
+  case VSD_DRV_0_T_EXT_2:
+  case VSD_DRV_1_T_EXT_2:
+  case VSD_DRV_2_T_EXT_2:
+  case VSD_DRV_0_T_EXT_3:
+  case VSD_DRV_1_T_EXT_3:
+  case VSD_DRV_2_T_EXT_3:
+  case VSD_DRV_0_T_EXT_4:
+  case VSD_DRV_1_T_EXT_4:
+  case VSD_DRV_2_T_EXT_4:
+    value = ((value - 282)*222)/1023;
+    setValue(id, value);
     break;
   default:                                  // Прямая запись в массив параметров
     setValue(id, value);
@@ -796,6 +886,11 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
 void VsdNovomet::writeToDevice(int id, float value)
 {
   dm_->writeModbusParameter(id, value);
+}
+
+void VsdNovomet::readInDevice(int id)
+{
+  dm_->readModbusParameter(id);
 }
 
 int VsdNovomet::start()
@@ -937,7 +1032,9 @@ bool VsdNovomet::checkStop()
   if (checkStatusVsd(VSD_STATUS_STOPPED_EXTERNAL)) {
     if (!checkStatusVsd(VSD_STATUS_STARTED)) {
       if (!checkStatusVsd(VSD_STATUS_WAIT_RECT_STOP)) {
-        return true;
+        if (!checkStatusVsd(VSD_STATUS_FAULT_STOPPED)) {
+          return true;
+        }
       }
     }
   }
