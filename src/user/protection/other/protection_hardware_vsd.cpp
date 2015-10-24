@@ -36,11 +36,6 @@ ProtectionHardwareVsd::~ProtectionHardwareVsd()
 
 bool ProtectionHardwareVsd::checkAlarm()
 {
-  if (vsd->checkStatusVsd(VSD_STATUS_FAULT_STOPPED)) {
-    protReactEventId_ = HardwareVsdProtReactId;
-    parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_FAULT_STOPPED);
-    return true;
-  }
   if (vsd->checkStatusVsd(VSD_STATUS_UD_LOW_FAULT)) {
     protReactEventId_ = HardwareVsdUdLowProtReactId;
     parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_UD_LOW_FAULT);
@@ -213,7 +208,11 @@ bool ProtectionHardwareVsd::checkAlarm()
     parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_ERR_31);
     return true;
   }
-
+  if (vsd->checkStatusVsd(VSD_STATUS_FAULT_STOPPED)) {
+    protReactEventId_ = HardwareVsdProtReactId;
+    parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_FAULT_STOPPED);
+    return true;
+  }
   return false;
 }
 
