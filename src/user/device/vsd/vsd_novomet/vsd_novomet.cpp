@@ -797,8 +797,7 @@ void VsdNovomet::getNewValue(uint16_t id)
   case VSD_THYR_T_EXT_2:
     value = ((value - 282)*222)/1023;
     setValue(id, value);
-    if (value > getValue(VSD_CONTROL_TEMPERATURE))
-      setValue(VSD_CONTROL_TEMPERATURE, value);
+    setValue(VSD_CONTROL_TEMPERATURE, max(getValue(VSD_THYR_T_EXT), getValue(VSD_THYR_T_EXT_2)));
     break;
   case VSD_DRV_0_T_EXT:
   case VSD_DRV_0_T_EXT_2:
@@ -806,8 +805,7 @@ void VsdNovomet::getNewValue(uint16_t id)
   case VSD_DRV_0_T_EXT_4:
     value = ((value - 282)*222)/1023;
     setValue(id, value);
-    if (value > getValue(VSD_RADIATOR_TEMPERATURE))
-      setValue(VSD_RADIATOR_TEMPERATURE, value);
+    setValue(VSD_RADIATOR_TEMPERATURE, max(getValue(VSD_DRV_0_T_EXT), max(getValue(VSD_DRV_0_T_EXT_2), max(getValue(VSD_DRV_0_T_EXT_3), getValue(VSD_DRV_0_T_EXT_4)))));
     break;
   case VSD_DRV_1_T_EXT:
   case VSD_DRV_1_T_EXT_2:
@@ -815,8 +813,7 @@ void VsdNovomet::getNewValue(uint16_t id)
   case VSD_DRV_1_T_EXT_4:
     value = ((value - 282)*222)/1023;
     setValue(id, value);
-    if (value > getValue(VSD_RADIATOR_TEMPERATURE_1))
-      setValue(VSD_RADIATOR_TEMPERATURE_1, value);
+    setValue(VSD_RADIATOR_TEMPERATURE_1, max(getValue(VSD_DRV_1_T_EXT), max(getValue(VSD_DRV_1_T_EXT_2), max(getValue(VSD_DRV_1_T_EXT_3), getValue(VSD_DRV_1_T_EXT_4)))));
     break;
   case VSD_DRV_2_T_EXT:
   case VSD_DRV_2_T_EXT_2:
@@ -824,6 +821,16 @@ void VsdNovomet::getNewValue(uint16_t id)
   case VSD_DRV_2_T_EXT_4:
     value = ((value - 282)*222)/1023;
     setValue(id, value);
+    break;
+  case VSD_BASE_VOLTAGE:
+    setValue(id, value);
+    if (parameters.get(CCS_BASE_VOLTAGE) != value)
+      parameters.set(CCS_BASE_VOLTAGE, value);
+    break;
+  case VSD_BASE_FREQUENCY:
+    setValue(id, value);
+    if (parameters.get(CCS_BASE_FREQUENCY) != value)
+      parameters.set(CCS_BASE_FREQUENCY, value);
     break;
   default:                                  // Прямая запись в массив параметров
     setValue(id, value);
