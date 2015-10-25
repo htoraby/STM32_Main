@@ -147,6 +147,8 @@ eMBErrorCode Scada::writeReg(uint8_t *buffer, uint16_t address, uint16_t numRegs
 
     unTypeData data;
     if (sizeData == 2) {
+      data.char_t[3] = 0;
+      data.char_t[2] = 0;
       data.char_t[1] = *buffer++;
       data.char_t[0] = *buffer++;
     }
@@ -166,7 +168,7 @@ eMBErrorCode Scada::writeReg(uint8_t *buffer, uint16_t address, uint16_t numRegs
         return MB_EINVAL;
     }
     else {
-      if (checkRange(data.uint32_t, param->min, param->max, true))
+      if (checkRange(lround(data.uint32_t * param->coefficient), param->min, param->max, true))
         return MB_EINVAL;
     }
 
