@@ -509,7 +509,7 @@ void Vsd::initParameters()
   // Угол управления тиристорами;
   parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].id                           = VSD_THYR_ANGLE_REFERENCE;
   parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].operation                    = 0;
+  parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].operation                    = OPERATION_WRITE;
   parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].physic                       = 0;
   parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].value.float_t                = 0;
@@ -521,7 +521,7 @@ void Vsd::initParameters()
   // Статус платы выпрямителя.
   parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].id                                  = VSD_STATUS_WORD_5;
   parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].access                              = ACCESS_OPERATOR;
-  parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].operation                           = 0;
+  parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].operation                           = OPERATION_READ;
   parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].physic                              = 0;
   parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].value.float_t                       = 0;
@@ -533,7 +533,7 @@ void Vsd::initParameters()
   // Регистр управления тиристорами;
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].id                                   = VSD_THYR_CONTROL;
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].access                               = ACCESS_OPERATOR;
-  parameters_[VSD_THYR_CONTROL - VSD_BEGIN].operation                            = 0;
+  parameters_[VSD_THYR_CONTROL - VSD_BEGIN].operation                            = OPERATION_WRITE;
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].physic                               = 0;
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].value.float_t                        = 0;
@@ -545,7 +545,7 @@ void Vsd::initParameters()
   // Напряжение защиты от КЗ инвертора.
   parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].id                          = VSD_THYR_VOLT_SHORT_CUILT;
   parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].access                      = ACCESS_OPERATOR;
-  parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].operation                   = 0;
+  parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].operation                   = OPERATION_WRITE;
   parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].physic                      = 0;
   parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].value.float_t               = 0;
@@ -557,7 +557,7 @@ void Vsd::initParameters()
   // Статус индикатора
   parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].id                                  = VSD_STATUS_WORD_6;
   parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].access                              = ACCESS_OPERATOR;
-  parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].operation                           = 0;
+  parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].operation                           = OPERATION_READ;
   parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].physic                              = 0;
   parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].value.float_t                       = 0;

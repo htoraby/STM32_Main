@@ -15707,6 +15707,7 @@
 		<id>10042</id>
 		<name>VSD_THYR_ANGLE_REFERENCE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -15719,6 +15720,7 @@
 		<id>10043</id>
 		<name>VSD_STATUS_WORD_5</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -15730,6 +15732,7 @@
 		<id>10044</id>
 		<name>VSD_THYR_CONTROL</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -15741,6 +15744,7 @@
 		<id>10045</id>
 		<name>VSD_THYR_VOLT_SHORT_CUILT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -15752,6 +15756,7 @@
 		<id>10046</id>
 		<name>VSD_STATUS_WORD_6</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
