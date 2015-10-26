@@ -7018,8 +7018,8 @@ void Ccs::initParameters()
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].validity                              = VALIDITY_OK;
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].value.float_t                         = 0;
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].min                                   = 0.0;
-  parameters_[CCS_SCADA_DELAY - CCS_BEGIN].max                                   = 999999.0;
-  parameters_[CCS_SCADA_DELAY - CCS_BEGIN].discret                               = 1;
+  parameters_[CCS_SCADA_DELAY - CCS_BEGIN].max                                   = 999.0;
+  parameters_[CCS_SCADA_DELAY - CCS_BEGIN].discret                               = 1000;
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].def                                   = 0.0;
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].code                                  = 13;
   // Единицы измерения давления

@@ -10607,9 +10607,9 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>999.0</max>
 		<def>0.0</def>
-		<discret>1</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Телемеханика. Задержка ответа</text>
 		<short_text>Задержка ответа</short_text>
