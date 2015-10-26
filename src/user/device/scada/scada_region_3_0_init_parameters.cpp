@@ -1103,7 +1103,7 @@ void ScadaRegion30::initParameters()
   scadaParameters_[91].typeData          = TYPE_DATA_UINT16;
   scadaParameters_[91].coefficient       = 0.1;
   scadaParameters_[91].min               = 0;
-  scadaParameters_[91].max               = 300;
+  scadaParameters_[91].max               = 3000;
   scadaParameters_[91].command           = OPERATION_ERROR;
   scadaParameters_[91].value.float_t     = 0;
   // Номинальный коэффициент мощности
@@ -1594,8 +1594,8 @@ void ScadaRegion30::initParameters()
   scadaParameters_[132].unit             = FREQUENCY_HZ;
   scadaParameters_[132].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[132].coefficient      = 0.01;
-  scadaParameters_[132].min              = 3.5;
-  scadaParameters_[132].max              = 70;
+  scadaParameters_[132].min              = 350;
+  scadaParameters_[132].max              = 20000;
   scadaParameters_[132].command          = OPERATION_ERROR;
   scadaParameters_[132].value.float_t    = 0;
   // Поддерживаемый ток двигателя, уставка
@@ -1630,8 +1630,8 @@ void ScadaRegion30::initParameters()
   scadaParameters_[135].unit             = TEMP_HZ_SS;
   scadaParameters_[135].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[135].coefficient      = 0.01;
-  scadaParameters_[135].min              = 0.01;
-  scadaParameters_[135].max              = 20;
+  scadaParameters_[135].min              = 1;
+  scadaParameters_[135].max              = 3600;
   scadaParameters_[135].command          = OPERATION_ERROR;
   scadaParameters_[135].value.float_t    = 0;
   // Темп разгона
@@ -1642,8 +1642,8 @@ void ScadaRegion30::initParameters()
   scadaParameters_[136].unit             = TEMP_HZ_SS;
   scadaParameters_[136].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[136].coefficient      = 0.01;
-  scadaParameters_[136].min              = 0.01;
-  scadaParameters_[136].max              = 20;
+  scadaParameters_[136].min              = 1;
+  scadaParameters_[136].max              = 3600;
   scadaParameters_[136].command          = OPERATION_ERROR;
   scadaParameters_[136].value.float_t    = 0;
   // Минимальная частота
@@ -1666,8 +1666,8 @@ void ScadaRegion30::initParameters()
   scadaParameters_[138].unit             = FREQUENCY_HZ;
   scadaParameters_[138].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[138].coefficient      = 0.01;
-  scadaParameters_[138].min              = 3.5;
-  scadaParameters_[138].max              = 70;
+  scadaParameters_[138].min              = 350;
+  scadaParameters_[138].max              = 20000;
   scadaParameters_[138].command          = OPERATION_ERROR;
   scadaParameters_[138].value.float_t    = 0;
   // Минимальная частота, задержка отключения
@@ -1726,8 +1726,8 @@ void ScadaRegion30::initParameters()
   scadaParameters_[143].unit             = FREQUENCY_HZ;
   scadaParameters_[143].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[143].coefficient      = 0.01;
-  scadaParameters_[143].min              = 3.5;
-  scadaParameters_[143].max              = 70;
+  scadaParameters_[143].min              = 350;
+  scadaParameters_[143].max              = 20000;
   scadaParameters_[143].command          = OPERATION_ERROR;
   scadaParameters_[143].value.float_t    = 0;
   // Максимальная частота, задержка отключения
@@ -1774,8 +1774,8 @@ void ScadaRegion30::initParameters()
   scadaParameters_[147].unit             = FREQUENCY_HZ;
   scadaParameters_[147].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[147].coefficient      = 0.01;
-  scadaParameters_[147].min              = 3.5;
-  scadaParameters_[147].max              = 70;
+  scadaParameters_[147].min              = 350;
+  scadaParameters_[147].max              = 20000;
   scadaParameters_[147].command          = OPERATION_ERROR;
   scadaParameters_[147].value.float_t    = 0;
   // Пуск/останов в "ручном" режиме
@@ -1955,7 +1955,7 @@ void ScadaRegion30::initParameters()
   scadaParameters_[162].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[162].coefficient      = 0.1;
   scadaParameters_[162].min              = 0;
-  scadaParameters_[162].max              = 1000;
+  scadaParameters_[162].max              = 10000;
   scadaParameters_[162].command          = OPERATION_ERROR;
   scadaParameters_[162].value.float_t    = 0;
   // Производительность насоса
