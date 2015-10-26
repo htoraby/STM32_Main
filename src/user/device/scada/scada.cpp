@@ -168,7 +168,7 @@ eMBErrorCode Scada::writeReg(uint8_t *buffer, uint16_t address, uint16_t numRegs
         return MB_EINVAL;
     }
     else {
-      if (checkRange(lround(data.uint32_t * param->coefficient), param->min, param->max, true))
+      if (checkRange(data.uint32_t, param->min, param->max, true))
         return MB_EINVAL;
     }
 

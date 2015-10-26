@@ -1165,7 +1165,7 @@
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
-		<max>300</max>
+		<max>3000</max>
 		<command>OPERATION_ERROR</command>
 		<name>Номинальный ток ПЭД</name>
 	</param>
@@ -1677,8 +1677,8 @@
 		<unit>FREQUENCY_HZ</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.01</coefficient>
-		<min>3.5</min>
-		<max>70</max>
+		<min>350</min>
+		<max>20000</max>
 		<command>OPERATION_ERROR</command>
 		<name>Уставка частоты</name>
 	</param>
@@ -1712,8 +1712,8 @@
 		<unit>TEMP_HZ_SS</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.01</coefficient>
-		<min>0.01</min>
-		<max>20</max>
+		<min>1</min>
+		<max>3600</max>
 		<command>OPERATION_ERROR</command>
 		<name>Темп замедления</name>
 	</param>
@@ -1725,8 +1725,8 @@
 		<unit>TEMP_HZ_SS</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.01</coefficient>
-		<min>0.01</min>
-		<max>20</max>
+		<min>1</min>
+		<max>3600</max>
 		<command>OPERATION_ERROR</command>
 		<name>Темп разгона</name>
 	</param>
@@ -1749,8 +1749,8 @@
 		<unit>FREQUENCY_HZ</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.01</coefficient>
-		<min>3.5</min>
-		<max>70</max>
+		<min>350</min>
+		<max>20000</max>
 		<command>OPERATION_ERROR</command>
 		<name>Уставка минимального значения частоты</name>
 	</param>
@@ -1806,8 +1806,8 @@
 		<unit>FREQUENCY_HZ</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.01</coefficient>
-		<min>3.5</min>
-		<max>70</max>
+		<min>350</min>
+		<max>20000</max>
 		<command>OPERATION_ERROR</command>
 		<name>Уставка максимального значения частоты</name>
 	</param>
@@ -1852,8 +1852,8 @@
 		<unit>FREQUENCY_HZ</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.01</coefficient>
-		<min>3.5</min>
-		<max>70</max>
+		<min>350</min>
+		<max>20000</max>
 		<command>OPERATION_ERROR</command>
 		<name>Уставка частоты</name>
 	</param>
@@ -2026,7 +2026,7 @@
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
-		<max>1000</max>
+		<max>10000</max>
 		<command>OPERATION_ERROR</command>
 		<name>Мощн. Двигателя</name>
 	</param>
