@@ -11,6 +11,10 @@ public:
 
   bool checkAlarm();
 
+  bool checkReady();
+
+  void resetReady();
+
   /*!
    * \brief Чтение аварийного архива
    * \param ia

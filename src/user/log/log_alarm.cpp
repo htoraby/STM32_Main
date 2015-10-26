@@ -1,5 +1,6 @@
 #include "log_alarm.h"
 #include "user_main.h"
+
 #include <string.h>
 
 #if USE_EXT_MEM
@@ -37,33 +38,40 @@ void LogAlarm::start(uint32_t eventId)
   LogRunning::start();
 }
 
+int timeTest;
+
 void LogAlarm::task()
 {
   osDelay(10000);
-//  int t = HAL_GetTick();
+  timeTest = HAL_GetTick();
 //  parameters.set(VSD_ETALON_FAST_OFF, 1);
+
   while (1) {
     osDelay(1);
 
-//    if (vsd->log()) {
-//      if (vsd->log()->checkAlarm()) {
-//        t = HAL_GetTick() - t;
+    if (vsd->log()) {
+      if (vsd->log()->checkAlarm()) {
 //        add();
-//      }
-//    }
+      }
+    }
   }
 }
 
 void LogAlarm::add()
 {
-  uint16_t typeVsd = parameters.get(CCS_TYPE_VSD);
   eventId_ = logEvent.add(AlarmCode, AutoType, WriteAlarmLogId);
 
   // Получение значений Ua, Ub, Uc
   copyAdcData(uValue);
+
+  while (!vsd->log()->checkReady()) {
+    osDelay(10);
+  }
+
+  uint16_t typeVsd = parameters.get(CCS_TYPE_VSD);
+
   // Получение значений с ЧРП Ia, Ib, Ic, Ud
-  if (vsd->log())
-    vsd->log()->readAlarmLog(iaValue, ibValue, icValue, udValue);
+  vsd->log()->readAlarmLog(iaValue, ibValue, icValue, udValue);
 
   memset(buffer, 0, sizeof(buffer));
   *(uint32_t*)(buffer) = eventId_;
@@ -107,4 +115,9 @@ void LogAlarm::add()
     else
       write(buffer, SIZE_BUF_LOG, false);
   }
+
+  timeTest = HAL_GetTick() - timeTest;
+
+  vsd->log()->resetReady();
+  osDelay(50);
 }

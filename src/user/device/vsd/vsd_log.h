@@ -2,6 +2,7 @@
 #define VSDFASTLOG_H
 
 #include "modbus_master_serial.h"
+#include "gpio.h"
 
 class VsdLog
 {
@@ -12,11 +13,21 @@ public:
   bool isConnect();
 
   /*!
-   * \brief Проверка на наличие аварии в ЧРП.
-   * Чтение флага готовности архива из специального регистра
+   * \brief Проверка на наличие аварии в ЧРП
    * \return
    */
   virtual bool checkAlarm();
+
+  /*!
+   * \brief Проверка на готовность архивов в ЧРП
+   * \return
+   */
+  virtual bool checkReady();
+
+  /*!
+   * \brief Сброс флага готовности архивов ЧРП
+   */
+  virtual void resetReady();
 
   /*!
    * \brief Чтение аварийного архива

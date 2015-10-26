@@ -65,7 +65,10 @@ void LogRunning::task()
     eventId_ = logEvent.add(RunCode, eventType, RunId);
 
     osDelay(ARCHIVE_TIME);
+
+    if (vsd->log()) {
 //    add();
+    }
   }
 }
 
@@ -75,9 +78,13 @@ void LogRunning::add()
 
   // Получение значений Ua, Ub, Uc
   copyAdcData(uValue);
+
+  while (!vsd->log()->checkReady()) {
+    osDelay(10);
+  }
+
   // Получение значений с ЧРП Ia, Ib, Ic, Ud, cos
-  if (vsd->log())
-    vsd->log()->readRunningLog(iaValue, ibValue, icValue, udValue, cosValue);
+  vsd->log()->readRunningLog(iaValue, ibValue, icValue, udValue, cosValue);
 
   memset(buffer, 0, sizeof(buffer));
   *(uint32_t*)(buffer) = eventId_;
@@ -118,6 +125,9 @@ void LogRunning::add()
     else
       write(buffer, SIZE_BUF_LOG, false);
   }
+
+  vsd->log()->resetReady();
+  osDelay(50);
 }
 
 

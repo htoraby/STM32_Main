@@ -13,11 +13,21 @@ VsdEtalonLog::~VsdEtalonLog()
 
 bool VsdEtalonLog::checkAlarm()
 {
+  return getDigitalInput(DI11);
+}
+
+bool VsdEtalonLog::checkReady()
+{
   uint16_t flag = 0;
   VsdLog::readLog(0x9FFF, &flag, 1);
   if (flag == 1)
     return true;
   return false;
+}
+
+void VsdEtalonLog::resetReady()
+{
+  writeReg(0x9FFF, 0);
 }
 
 void VsdEtalonLog::readAlarmLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
@@ -27,8 +37,6 @@ void VsdEtalonLog::readAlarmLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
   VsdLog::readLog(0x8830, ib, 2000);
   VsdLog::readLog(0x9030, ic, 2000);
   VsdLog::readLog(0x9800, ud, 200);
-
-  writeReg(0x9FFF, 0);
 }
 
 void VsdEtalonLog::readRunningLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
