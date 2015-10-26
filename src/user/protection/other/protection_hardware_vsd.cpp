@@ -213,6 +213,16 @@ bool ProtectionHardwareVsd::checkAlarm()
     parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_FAULT_STOPPED);
     return true;
   }
+  if (vsd->checkStatusVsd(VSD_STATUS_INV_FLT_TEMP_LINK)) {
+    protReactEventId_ = HardwareVsdInvTempLinkReactId;
+    parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_INV_FLT_TEMP_LINK);
+    return true;
+  }
+  if (vsd->checkStatusVsd(VSD_STATUS_INV_FLT_TEMP)) {
+    protReactEventId_ = HardwareVsdInvTempReactId;
+    parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_INV_FLT_TEMP);
+    return true;
+  }
   return false;
 }
 

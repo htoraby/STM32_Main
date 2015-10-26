@@ -16,6 +16,7 @@
 #include "protection_resistance_isolation.h"
 
 #include "protection_hardware_vsd.h"
+#include "protection_lock_door.h"
 
 extern ProtectionOverVoltageInput protOverVoltIn;
 extern ProtectionUnderVoltageInput protUnderVoltIn;
@@ -32,6 +33,7 @@ extern ProtectionPressureIntake protPressureIntake;
 extern ProtectionResistanceIsolation protResistanceIsolation;
 
 extern ProtectionHardwareVsd protHardwareVsd;
+extern ProtectionLockDoor protLockDoor;
 
 /*!
  * \brief Функция инициализации задачи обработки всех защит
