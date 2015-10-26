@@ -19,6 +19,10 @@ void VsdNovometLog::readAlarmLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
 {
   /*
   uint8_t txBuffer[5];
+
+  // Посылаем команду на чтение первого участка данных
+  uartWriteData(VSD_LOG_UART, txBuffer, 4);
+  uint8_t txBuffer[5];
   uint8_t rxBuffer[4096];
   uint8_t rxStr[255];
   uint8_t param[5];
