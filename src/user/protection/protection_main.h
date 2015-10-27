@@ -16,6 +16,7 @@
 #include "protection_resistance_isolation.h"
 
 #include "protection_hardware_vsd.h"
+#include "protection_lock_door.h"
 
 #include "protection_digital_input_1.h"
 #include "protection_digital_input_2.h"
@@ -37,6 +38,7 @@ extern ProtectionPressureIntake protPressureIntake;
 extern ProtectionResistanceIsolation protResistanceIsolation;
 
 extern ProtectionHardwareVsd protHardwareVsd;
+extern ProtectionLockDoor protLockDoor;
 
 /*!
  * \brief Функция инициализации задачи обработки всех защит

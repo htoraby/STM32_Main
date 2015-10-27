@@ -71,6 +71,8 @@ enum enStatus {
   VSD_STATUS_DRV1                 = 55,     //!< Ошибка драйвера 1
   VSD_STATUS_DRV2                 = 56,     //!< Ошибка драйвера 2
   VSD_STATUS_TEST                 = 57,     //!< Включен тестовый режим контроллера ПЧ
+  VSD_STATUS_INV_FLT_TEMP_LINK    = 58,     //!< Ошибка связи с термодатчиками
+  VSD_STATUS_INV_FLT_TEMP         = 59,     //!< Перегрев силовых модулей
   // STATUS_WORD_5
   VSD_STATUS_ABC_STATE            = 64,     //!< Направление чередования фаз
   VSD_STATUS_1                    = 65,

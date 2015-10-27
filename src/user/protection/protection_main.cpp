@@ -1,6 +1,6 @@
 #include "protection_main.h"
 
-#define COUNT_PROTECTIONS 15
+#define COUNT_PROTECTIONS 16
 
 Protection *protections[COUNT_PROTECTIONS];
 
@@ -18,6 +18,7 @@ ProtectionTemperatureMotor protTemperatureMotor;
 ProtectionPressureIntake protPressureIntake;
 ProtectionResistanceIsolation protResistanceIsolation;
 ProtectionHardwareVsd protHardwareVsd;
+ProtectionLockDoor protLockDoor;
 
 ProtectionDigitalInput1 protDigitalInput1;
 ProtectionDigitalInput2 protDigitalInput2;
@@ -44,11 +45,11 @@ void protectionInit()
   protections[9] = &protOverloadMotor;
 
   protections[10] = &protHardwareVsd;
-
-  protections[11] = &protDigitalInput1;
-  protections[12] = &protDigitalInput2;
-  protections[13] = &protDigitalInput3;
-  protections[14] = &protDigitalInput4;
+  protections[11] = &protLockDoor;
+  protections[12] = &protDigitalInput1;
+  protections[13] = &protDigitalInput2;
+  protections[14] = &protDigitalInput3;
+  protections[15] = &protDigitalInput4;
 
   osThreadDef(ProtectionTask, protectionTask, osPriorityNormal, 0, 4 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(ProtectionTask), NULL);

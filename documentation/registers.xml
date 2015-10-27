@@ -7275,13 +7275,16 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>РРЗ блокировки двери</text>
 		<short_text>Блок.двери РРЗ</short_text>
 		<form>4.6.2 Блокировка силового отсека</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<code>13</code>
 		<values>0-Откл;1-Вкл;</values>
@@ -7291,10 +7294,14 @@
 		<id>403</id>
 		<name>CCS_PROT_OTHER_LOCK_DOOR_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -7305,11 +7312,14 @@
 		<id>404</id>
 		<name>CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<code>0</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -7317,11 +7327,14 @@
 		<id>405</id>
 		<name>CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
 		<code>0</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -7329,11 +7342,14 @@
 		<id>406</id>
 		<name>CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<code>0</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -7341,10 +7357,14 @@
 		<id>407</id>
 		<name>CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<code>0</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -7352,10 +7372,14 @@
 		<id>408</id>
 		<name>CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<code>0</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -7363,10 +7387,14 @@
 		<id>409</id>
 		<name>CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<code>0</code>
 		<comment>Уставка срабатывания защиты</comment>
 	</param>
@@ -7374,10 +7402,14 @@
 		<id>410</id>
 		<name>CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<code>0</code>
 		<comment>Условие АПВ уставка</comment>
 	</param>
@@ -7385,10 +7417,14 @@
 		<id>411</id>
 		<name>CCS_PROT_OTHER_LOCK_DOOR_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<code>0</code>
 		<comment>Уставка параметр защиты</comment>
 	</param>
@@ -7396,10 +7432,14 @@
 		<id>412</id>
 		<name>CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -7410,10 +7450,14 @@
 		<id>413</id>
 		<name>CCS_PROT_OTHER_LOCK_DOOR_STATE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
+		<def>3.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>3.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -7424,10 +7468,14 @@
 		<id>414</id>
 		<name>CCS_PROT_OTHER_LOCK_DOOR_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -7438,10 +7486,14 @@
 		<id>415</id>
 		<name>CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -7452,10 +7504,14 @@
 		<id>416</id>
 		<name>CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -16758,7 +16814,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
 		<max>999999.0</max>
-		<discret>1</discret>
+		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
 		<comment>Стартовая частота вращения двигателя в основном режиме регулирования</comment>

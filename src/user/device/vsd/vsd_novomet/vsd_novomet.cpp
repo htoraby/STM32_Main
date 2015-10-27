@@ -794,6 +794,9 @@ void VsdNovomet::getNewValue(uint16_t id)
     }
     break;
   case VSD_THYR_T_EXT:
+    value = ((value - 282)*222)/1023;
+    setValue(id, value);
+    break;
   case VSD_THYR_T_EXT_2:
     value = ((value - 282)*222)/1023;
     setValue(id, value);
@@ -803,24 +806,40 @@ void VsdNovomet::getNewValue(uint16_t id)
   case VSD_DRV_0_T_EXT_2:
   case VSD_DRV_0_T_EXT_3:
   case VSD_DRV_0_T_EXT_4:
-    value = ((value - 282)*222)/1023;
-    setValue(id, value);
-    setValue(VSD_RADIATOR_TEMPERATURE, max(getValue(VSD_DRV_0_T_EXT), max(getValue(VSD_DRV_0_T_EXT_2), max(getValue(VSD_DRV_0_T_EXT_3), getValue(VSD_DRV_0_T_EXT_4)))));
-    break;
   case VSD_DRV_1_T_EXT:
   case VSD_DRV_1_T_EXT_2:
   case VSD_DRV_1_T_EXT_3:
   case VSD_DRV_1_T_EXT_4:
-    value = ((value - 282)*222)/1023;
-    setValue(id, value);
-    setValue(VSD_RADIATOR_TEMPERATURE_1, max(getValue(VSD_DRV_1_T_EXT), max(getValue(VSD_DRV_1_T_EXT_2), max(getValue(VSD_DRV_1_T_EXT_3), getValue(VSD_DRV_1_T_EXT_4)))));
-    break;
   case VSD_DRV_2_T_EXT:
   case VSD_DRV_2_T_EXT_2:
   case VSD_DRV_2_T_EXT_3:
+    value = ((value - 282)*222)/1023;
+    setValue(id, value);
+    break;
   case VSD_DRV_2_T_EXT_4:
     value = ((value - 282)*222)/1023;
     setValue(id, value);
+    setValue(VSD_RADIATOR_TEMPERATURE, max(getValue(VSD_DRV_0_T_EXT),
+                                           max(getValue(VSD_DRV_0_T_EXT_2),
+                                               max(getValue(VSD_DRV_0_T_EXT_3),
+                                                   max(getValue(VSD_DRV_0_T_EXT_4),
+                                                       max(getValue(VSD_DRV_1_T_EXT),
+                                                           max(getValue(VSD_DRV_1_T_EXT_2),
+                                                               max(getValue(VSD_DRV_1_T_EXT_3),
+                                                                   max(getValue(VSD_DRV_1_T_EXT_4),
+                                                                       max(getValue(VSD_DRV_2_T_EXT),
+                                                                           max(getValue(VSD_DRV_2_T_EXT_2),
+                                                                               max(getValue(VSD_DRV_2_T_EXT_3),getValue(VSD_DRV_2_T_EXT_4)))))))))))));
+    break;
+  case VSD_DRV_0_T_AIR:
+  case VSD_DRV_1_T_AIR:
+    setValue(id, value);
+    break;
+  case VSD_DRV_2_T_AIR:
+    setValue(id, value);
+    setValue(VSD_RADIATOR_TEMPERATURE_1, max(getValue(VSD_DRV_0_T_AIR),
+                                           max(getValue(VSD_DRV_1_T_AIR),
+                                               (getValue(VSD_DRV_2_T_AIR)))));
     break;
   case VSD_BASE_VOLTAGE:
     setValue(id, value);
@@ -1055,12 +1074,10 @@ bool VsdNovomet::checkStop()
   return true;
 #endif
 
-  if (checkStatusVsd(VSD_STATUS_STOPPED_EXTERNAL)) {
+  if (checkStatusVsd(VSD_STATUS_STOPPED_EXTERNAL) || checkStatusVsd(VSD_STATUS_FAULT_STOPPED) || checkStatusVsd(VSD_STATUS_STOPPED_ALARM) || checkStatusVsd(VSD_STATUS_STOPPED_REGISTER)) {
     if (!checkStatusVsd(VSD_STATUS_STARTED)) {
       if (!checkStatusVsd(VSD_STATUS_WAIT_RECT_STOP)) {
-        if (!checkStatusVsd(VSD_STATUS_FAULT_STOPPED)) {
-          return true;
-        }
+        return true;
       }
     }
   }

@@ -125,6 +125,8 @@ typedef enum {
   HardwareVsdBlockRunReactId,               //!< "Сработала защита: Аппаратная защита ЧРП, блокировка пуска"
   HardwareVsdIfastReactId,                  //!< "Сработала защита: Аппаратная защита ЧРП, быстрая токовая защита"
   HardwareVsdMI2TReactId,                   //!< "Сработала защита: Аппаратная защита ЧРП, перегруз двигателя"
+  HardwareVsdInvTempLinkReactId,            //!< "Сработала защита: Аппаратная защита ЧРП, отказ датчиков температуры"
+  HardwareVsdInvTempReactId,                //!< "Сработала защита: Аппаратная защита ЧРП, перегрев"
 
   RegimeSoftChangeFreqOffId,                //!< "Режим программного изменения частоты отключен"
   RegimeAlternationFreqOffId,               //!< "Режим чередования фаз отключен"

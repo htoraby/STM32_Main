@@ -1428,7 +1428,7 @@ void Vsd::initParameters()
   parameters_[VSD_START_FREQ - VSD_BEGIN].min                                    = 0.0;
   parameters_[VSD_START_FREQ - VSD_BEGIN].max                                    = 999999.0;
   parameters_[VSD_START_FREQ - VSD_BEGIN].def                                    = 0;
-  parameters_[VSD_START_FREQ - VSD_BEGIN].discret                                = 1;
+  parameters_[VSD_START_FREQ - VSD_BEGIN].discret                                = 100;
   parameters_[VSD_START_FREQ - VSD_BEGIN].code                                   = 0;
   // Выходной ток ПЧ по фазе A. (амплитудное значение)
   parameters_[VSD_IA - VSD_BEGIN].id                                             = VSD_IA;
