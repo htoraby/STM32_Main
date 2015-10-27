@@ -5,9 +5,9 @@
 #include "adc_ext.h"
 
 #if USE_EXT_MEM
-static uint16_t uValue[ADC_CNANNELS_NUM*HC_POINTS_NUM] __attribute__((section(".extmem")));
+static uint16_t uValue[ADC_CNANNELS_NUM*HC_POINTS_NUM*2] __attribute__((section(".extmem")));
 #else
-static uint16_t uValue[ADC_CNANNELS_NUM*HC_POINTS_NUM];
+static uint16_t uValue[ADC_CNANNELS_NUM*HC_POINTS_NUM*2];
 #endif
 
 void Ccs::calcParametersTask()
@@ -20,14 +20,16 @@ void Ccs::calcParametersTask()
     calcMotorVoltageImbalance();
     calcMotorCos();
     calcMotorLoad();
+
 // TODO: Возможно нужно перенести вычисления в счётчик после получения данных
-    calcInputVoltagePhase1();
-    calcInputVoltagePhase2();
-    calcInputVoltagePhase3();
-    calcInputVoltagePhase12();
-    calcInputVoltagePhase23();
-    calcInputVoltagePhase31();
-//    calcInputVoltageFromAdc();
+//    calcInputVoltagePhase1();
+//    calcInputVoltagePhase2();
+//    calcInputVoltagePhase3();
+//    calcInputVoltagePhase12();
+//    calcInputVoltagePhase23();
+//    calcInputVoltagePhase31();
+    calcInputVoltageFromAdc();
+
     calcInputVoltageImbalance();
     calcInputCurrentImbalance();
     calcResistanceIsolation();
@@ -459,18 +461,15 @@ void Ccs::calcInputVoltageFromAdc()
   float uaValue;
   float ubValue;
   float ucValue;
-  float ubValueOld = 0;
+  float ubValueOld = 1;
   bool checkPhaseRotation = false;
+  int count = 0;
 
   getAdcDataInPeriod(uValue);
 
-  for (int i = 0; i < HC_POINTS_NUM; ++i) {
-    uaValue += (uValue[0 + i*3] - 2048)*(uValue[0 + i*3] - 2048);
-    ubValue += (uValue[1 + i*3] - 2048)*(uValue[1 + i*3] - 2048);
-    ucValue += (uValue[2 + i*3] - 2048)*(uValue[2 + i*3] - 2048);
-
-    if (!checkPhaseRotation && ubValueOld) {
-      if (((uValue[1 + i*3] - 2048) > 0) && (ubValueOld < 0)) {
+  for (int i = 0; i < HC_POINTS_NUM*2; ++i) {
+    if (((uValue[1 + i*3] - 2048) >= 0) && (ubValueOld < 0)) {
+      if (!checkPhaseRotation) {
         if ((uValue[1 + i*3] - 2048) < (uValue[0 + i*3] - 2048)) {
           countPhaseRotation_++;
           checkPhaseRotation = true;
@@ -478,13 +477,25 @@ void Ccs::calcInputVoltageFromAdc()
           countPhaseRotation_--;
           checkPhaseRotation = true;
         }
+      } else {
+        uaValue += (uValue[0 + i*3] - 2048)*(uValue[0 + i*3] - 2048);
+        ubValue += (uValue[1 + i*3] - 2048)*(uValue[1 + i*3] - 2048);
+        ucValue += (uValue[2 + i*3] - 2048)*(uValue[2 + i*3] - 2048);
+        count++;
+        break;
       }
+    }
+    if (checkPhaseRotation) {
+      uaValue += (uValue[0 + i*3] - 2048)*(uValue[0 + i*3] - 2048);
+      ubValue += (uValue[1 + i*3] - 2048)*(uValue[1 + i*3] - 2048);
+      ucValue += (uValue[2 + i*3] - 2048)*(uValue[2 + i*3] - 2048);
+      count++;
     }
     ubValueOld = (uValue[1 + i*3] - 2048);
   }
-  uaValue = (sqrt(uaValue/HC_POINTS_NUM) * 627.747 * 2.5) / 0xFFF;
-  ubValue = (sqrt(ubValue/HC_POINTS_NUM) * 627.747 * 2.5) / 0xFFF;
-  ucValue = (sqrt(ucValue/HC_POINTS_NUM) * 627.747 * 2.5) / 0xFFF;
+  uaValue = (sqrt(uaValue/count) * 627.747 * 2.5) / 0xFFF;
+  ubValue = (sqrt(ubValue/count) * 627.747 * 2.5) / 0xFFF;
+  ucValue = (sqrt(ucValue/count) * 627.747 * 2.5) / 0xFFF;
 
   if (parameters.getValidity(CCS_COEF_VOLTAGE_IN_A)) {
     setValue(CCS_VOLTAGE_PHASE_1, (float)NAN);

@@ -316,7 +316,7 @@ void copyAdcData(uint16_t *data)
 
 void getAdcDataInPeriod(uint16_t *data)
 {
-  int points = ADC_CNANNELS_NUM*HC_POINTS_NUM;
+  int points = ADC_CNANNELS_NUM*HC_POINTS_NUM*2;
   int allPoints = ADC_CNANNELS_NUM*ADC_POINTS_NUM;
   int numDataTr = hadc[adc2].DMA_Handle->Instance->NDTR;
   int idx = numDataTr - points;
