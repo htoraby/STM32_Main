@@ -5891,7 +5891,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>0.0</max>
+		<max>1.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -6205,7 +6205,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>0.0</max>
+		<max>1.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -6519,7 +6519,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>0.0</max>
+		<max>1.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -6833,7 +6833,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>0.0</max>
+		<max>1.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -21097,6 +21097,48 @@
 	</param>
 	<param>
 		<id>10380</id>
+		<name>VSD_BLDC_COEF_REG_NOW</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>0.0</min>
+		<max>2</max>
+		<def>0</def>
+		<discret>100</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Текущий коэффициент регулирования</text>
+		<short_text>Текущий коэффициент регулирования</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>X_XX</format>
+		<code>0</code>
+		<comment>Текущий коэффициент регулирования</comment>
+	</param>
+	<param>
+		<id>10381</id>
+		<name>VSD_BLDC_ANGLE_NOW</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_ANGLE</physic>
+		<min>0.0</min>
+		<max>360.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Текущий угол дельта тета положения ротора</text>
+		<short_text>Текущий угол дельта тета положения ротора</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>ANGLE_DEGREES</unit>
+		<unit_lcd>ANGLE_DEGREES</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Текущий угол дельта тета положения ротора</comment>
+	</param>
+	<param>
+		<id>10382</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>

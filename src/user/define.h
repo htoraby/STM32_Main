@@ -312,6 +312,10 @@ enum LastReasonRun {
   LastReasonRunDigital2                 = 109,  //!< "Сигнал цифр.вх.2"
   LastReasonRunDigital3                 = 110,  //!< "Сигнал цифр.вх.3"
   LastReasonRunDigital4                 = 111,  //!< "Сигнал цифр.вх.4"
+  LastReasonRunApvDigital1,                     //!< "АПВ по защите: Цифр.вх.1"
+  LastReasonRunApvDigital2,                     //!< "АПВ по защите: Цифр.вх.2"
+  LastReasonRunApvDigital3,                     //!< "АПВ по защите: Цифр.вх.3"
+  LastReasonRunApvDigital4,                     //!< "АПВ по защите: Цифр.вх.4"
 
   LastReasonRunLast
 };
@@ -362,6 +366,7 @@ enum LastReasonStop {
   LastReasonStopCurrentMotor            = 104,  //!< "Предел тока двигателя"
   LastReasonStopOutOfSyncMotor          = 105,  //!< "Рассинхронизация ПВЭД"
   LastReasonStopHardwareVsd             = 106,  //!< "Аппаратные защиты ЧРП"
+
   LastReasonStopLast
 };
 

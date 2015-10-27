@@ -4562,5 +4562,29 @@ void Vsd::initParameters()
   parameters_[VSD_TURBO_ROTATION_NOW - VSD_BEGIN].def                            = 0.0;
   parameters_[VSD_TURBO_ROTATION_NOW - VSD_BEGIN].discret                        = 1;
   parameters_[VSD_TURBO_ROTATION_NOW - VSD_BEGIN].code                           = 0;
+  // Текущий коэффициент регулирования
+  parameters_[VSD_BLDC_COEF_REG_NOW - VSD_BEGIN].id                              = VSD_BLDC_COEF_REG_NOW;
+  parameters_[VSD_BLDC_COEF_REG_NOW - VSD_BEGIN].access                          = ACCESS_OPERATOR;
+  parameters_[VSD_BLDC_COEF_REG_NOW - VSD_BEGIN].operation                       = OPERATION_READ;
+  parameters_[VSD_BLDC_COEF_REG_NOW - VSD_BEGIN].physic                          = PHYSIC_PERCENT;
+  parameters_[VSD_BLDC_COEF_REG_NOW - VSD_BEGIN].validity                        = VALIDITY_ERROR;
+  parameters_[VSD_BLDC_COEF_REG_NOW - VSD_BEGIN].value.float_t                   = 0.0;
+  parameters_[VSD_BLDC_COEF_REG_NOW - VSD_BEGIN].min                             = 0.0;
+  parameters_[VSD_BLDC_COEF_REG_NOW - VSD_BEGIN].max                             = 2;
+  parameters_[VSD_BLDC_COEF_REG_NOW - VSD_BEGIN].def                             = 0;
+  parameters_[VSD_BLDC_COEF_REG_NOW - VSD_BEGIN].discret                         = 100;
+  parameters_[VSD_BLDC_COEF_REG_NOW - VSD_BEGIN].code                            = 0;
+  // Текущий угол дельта тета положения ротора
+  parameters_[VSD_BLDC_ANGLE_NOW - VSD_BEGIN].id                                 = VSD_BLDC_ANGLE_NOW;
+  parameters_[VSD_BLDC_ANGLE_NOW - VSD_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[VSD_BLDC_ANGLE_NOW - VSD_BEGIN].operation                          = OPERATION_READ;
+  parameters_[VSD_BLDC_ANGLE_NOW - VSD_BEGIN].physic                             = PHYSIC_ANGLE;
+  parameters_[VSD_BLDC_ANGLE_NOW - VSD_BEGIN].validity                           = VALIDITY_ERROR;
+  parameters_[VSD_BLDC_ANGLE_NOW - VSD_BEGIN].value.float_t                      = 0.0;
+  parameters_[VSD_BLDC_ANGLE_NOW - VSD_BEGIN].min                                = 0.0;
+  parameters_[VSD_BLDC_ANGLE_NOW - VSD_BEGIN].max                                = 360.0;
+  parameters_[VSD_BLDC_ANGLE_NOW - VSD_BEGIN].def                                = 0;
+  parameters_[VSD_BLDC_ANGLE_NOW - VSD_BEGIN].discret                            = 1;
+  parameters_[VSD_BLDC_ANGLE_NOW - VSD_BEGIN].code                               = 0;
 }
 

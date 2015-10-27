@@ -155,6 +155,26 @@ typedef enum {
   DigitalInput3LogId,                       //!< "Сигнал на цифровом входе 3"
   DigitalInput4LogId,                       //!< "Сигнал на цифровом входе 4"
 
+  DigitalInput1ProtReactId,        //!< "Сработала защита: Цифровой вход 1"
+  DigitalInput1ApvId,              //!< "АПВ по защите: Цифровой вход 1"
+  DigitalInput1ApvDisabledId,      //!< "АПВ запрещено: Цифровой вход 1"
+  DigitalInput1ProtBlockedId,      //!< "Блокировка по защите: Цифровой вход 1"
+
+  DigitalInput2ProtReactId,        //!< "Сработала защита: Цифровой вход 2"
+  DigitalInput2ApvId,              //!< "АПВ по защите: Цифровой вход 2"
+  DigitalInput2ApvDisabledId,      //!< "АПВ запрещено: Цифровой вход 2"
+  DigitalInput2ProtBlockedId,      //!< "Блокировка по защите: Цифровой вход 2"
+
+  DigitalInput3ProtReactId,        //!< "Сработала защита: Цифровой вход 3"
+  DigitalInput3ApvId,              //!< "АПВ по защите: Цифровой вход 3"
+  DigitalInput3ApvDisabledId,      //!< "АПВ запрещено: Цифровой вход 3"
+  DigitalInput3ProtBlockedId,      //!< "Блокировка по защите: Цифровой вход 3"
+
+  DigitalInput4ProtReactId,        //!< "Сработала защита: Цифровой вход 4"
+  DigitalInput4ApvId,              //!< "АПВ по защите: Цифровой вход 4"
+  DigitalInput4ApvDisabledId,      //!< "АПВ запрещено: Цифровой вход 4"
+  DigitalInput4ProtBlockedId,      //!< "Блокировка по защите: Цифровой вход 4"
+
 } EventId;
 
 #endif // LOG_IDLIST
