@@ -17,6 +17,11 @@
 
 #include "protection_hardware_vsd.h"
 
+#include "protection_digital_input_1.h"
+#include "protection_digital_input_2.h"
+#include "protection_digital_input_3.h"
+#include "protection_digital_input_4.h"
+
 extern ProtectionOverVoltageInput protOverVoltIn;
 extern ProtectionUnderVoltageInput protUnderVoltIn;
 extern ProtectionImbalanceVoltageInput protImbalanceVoltIn;
