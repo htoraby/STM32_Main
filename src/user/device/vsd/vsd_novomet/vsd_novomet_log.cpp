@@ -18,80 +18,44 @@ void VsdNovometLog::readAlarmLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
                                  uint16_t *ud)
 {
   /*
-  uint8_t txBuffer[5];
+  uint8_t txBuffer[8];
+  uint8_t rxBuffer[1024];
+  int cntRxByte = 0;
+  int crc = 0;
+  int i = 0;
+  int j = 0;
+  int retryCnt = 0;
+  for (cntBlock = 20; cntBlock--; cntBlock >= 1) {
+    while (retryCnt < 5) {
+      txBuffer_[0] = 1;                                   // Адрес устройства
+      txBuffer_[1] = MODBUS_READ_HOLDING_REGISTERS_0x03;  // Команды
+      txBuffer_[2] = (((cntBlock * 100) >> 8) & 0x00ff);  // Старший байт адреса первого регистра
+      txBuffer_[3] = (cntBlock * 100) & 0x00ff;           // Младший байт адреса первого регистра
+      txBuffer_[4] = 0;                                   // Старший байт количества регистров
+      txBuffer_[5] = 100 & 0x00ff;                        // Младший байт количества регистров
+      crc = crc16_ibm(txBuffer, 6);                       // Вычисляем контрольную сумму
+      txBuffer_[6] = crc & 0x00ff;                        // Младший байт контрольной суммы
+      txBuffer_[7] = ((crc >> 8) & 0x00ff);               // Старший байт контрольной суммы
 
-  // Посылаем команду на чтение первого участка данных
-  uartWriteData(VSD_LOG_UART, txBuffer, 4);
-  uint8_t txBuffer[5];
-  uint8_t rxBuffer[4096];
-  uint8_t rxStr[255];
-  uint8_t param[5];
-  int i,j,k,l,m,n;
-  char* end_ptr;
-  int16_t val;
-  txBuffer[0] = 'l';
-  txBuffer[1] = '0';
-  txBuffer[2] = 'a';
-  txBuffer[3] = 'd';
-  txBuffer[4] = '\n';
-  uartWriteData(VSD_LOG_UART, txBuffer, 5);
-  // Получить входной буфер
-  int cntRxByte = uartReadData(VSD_LOG_UART, rxBuffer);
-  // Организовать цикл по буферу выделяя строки
-  for (i = 0; i++; i <= cntRxByte) {
-    if (rxBuffer[i] != '\n') {
-      rxStr[j] = rxBuffer[i];   // Получили одну строку
-      j++;
-    }
-    else {
-      // В каждой строке, выделить подстроки со значениями Ud, Ia, Ib, Ic, Ud
-      for (k = 0; k++; k <= 5) {
-        while ((rxStr[l] != ' ') && (l <= j)) {
-          param[m] = rxStr[l];
-          l++;
-          m++;
+      uartWriteData(VSD_LOG_UART, txBuffer, 8);
+      cntRxByte = uartReadData(VSD_LOG_UART, rxBuffer);
+      if (((rxBuffer[cntRxByte - 1] << 8) + rxBuffer[cntRxByte - 2]) == crc16_ibm(rxBuffer, (cntRxByte - 2))) {
+        while (i < cntRxByte - 2) {
+          ud[j] = rxBuffer[i] << 8 + rxBuffer[i + 1];
+          ia[j] = rxBuffer[i + 2] << 8 + rxBuffer[i + 3];
+          ib[j] = rxBuffer[i + 4] << 8 + rxBuffer[i + 5];
+          ic[j] = rxBuffer[i + 6] << 8 + rxBuffer[i + 7];
+          i = i + 8;
+          j++;
         }
-        switch (k) {
-        case 2:
-          val = strtol((char*)param, &end_ptr, 10);
-          if ((*end_ptr) || ((val >= 10000) || (val < 0))) {
-            val = -1;
-          }
-          ud[n] = val;
-          break;
-          break;
-        case 3:
-          val = strtol((char*)param, &end_ptr, 10);
-          if ((*end_ptr) || ((val >= 10000) || (val < 0))) {
-            val = -1;
-          }
-          ia[n] = val;
-          break;
-        case 4:
-          val = strtol((char*)param, &end_ptr, 10);
-          if ((*end_ptr) || ((val >= 10000) || (val < 0))) {
-            val = -1;
-          }
-          ib[n] = val;
-          break;
-        case 5:
-          val = strtol((char*)param, &end_ptr, 10);
-          if ((*end_ptr) || ((val >= 10000) || (val < 0))) {
-            val = -1;
-          }
-          ic[n] = val;
-          break;
-        default:
-          break;
-        }
-        param[0] = '\0';
-        l++;
-        m = 0;
+        retryCnt = 5;
       }
-      rxStr[0] = '\0';
-      j = 0;
-      n++;
+      else {
+        // TODO: заполнение блока данных -1
+        retryCnt++;
+      }
     }
+    retryCnt = 0;
   }
   */
 }
