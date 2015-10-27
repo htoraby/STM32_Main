@@ -393,7 +393,7 @@ void DeviceModbus::exchangeTask()
             break;
           case TYPE_DATA_INT16:
             count = 1;                      // Пока только одного параметра
-            if (address < 0x3000) {
+            if ((address < 0x3000) || (address >= 0x4000)) {
               res = mms_->readMultipleRegisters(devAdrs_, address, regArr_, count);
               if (res == ok_r) {
                 int index = getIndexAtAddress(address);
@@ -452,7 +452,7 @@ void DeviceModbus::exchangeTask()
             break;
           case TYPE_DATA_UINT16:
             count = 1;                      // Пока только одного параметра
-            if (address < 0x3000) {
+            if ((address < 0x3000) || (address >= 0x4000)) {
               res = mms_->readMultipleRegisters(devAdrs_, address, regArr_, count);
               if (res == ok_r) {
                 int index = getIndexAtAddress(address);
@@ -617,7 +617,7 @@ void DeviceModbus::exchangeTask()
           break;
         case TYPE_DATA_INT16:
           count = 1;                      // Пока только одного параметра
-          if (address < 0x3000) {
+          if ((address < 0x3000) || (address >= 0x4000)) {
             res = mms_->readMultipleRegisters(devAdrs_, address, regArr_, count);
             if (res == ok_r) {
               int index = getIndexAtAddress(address);
@@ -676,7 +676,7 @@ void DeviceModbus::exchangeTask()
           break;
         case TYPE_DATA_UINT16:
           count = 1;                      // Пока только одного параметра
-          if (address < 0x3000) {
+          if ((address < 0x3000) || (address >= 0x4000)) {
             res = mms_->readMultipleRegisters(devAdrs_, address, regArr_, count);
             if (res == ok_r) {
               int index = getIndexAtAddress(address);
