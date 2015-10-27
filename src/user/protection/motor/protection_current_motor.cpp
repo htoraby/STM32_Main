@@ -46,7 +46,7 @@ bool ProtectionCurrentMotor::checkAlarm()
   // Возвращаем аварию если превышена уставка по пределу тока
   // или установлен бит в слове состояния ЧРП
   return ((Protection::isHigherLimit(tripSetpoint_)) ||
-          (vsd->checkStatusVsd(VSD_STATUS_I_FAST_ERR)));
+          (vsd->checkStatusVsd(VSD_STATUS_M_I_FAST_ERR)));
 }
 
 float ProtectionCurrentMotor::calcValue()

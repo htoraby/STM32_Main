@@ -939,7 +939,7 @@ void VsdEtalon::convertBitVsdStatus(float value)
     vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_RUN_COUNT, true);
     break;
   case VSD_ETALON_STATUS_OVERHEAT_IGBT:     // VSD_STATUS_FC_I2T_ERR
-    vsdStatusWord2 = setBit(vsdStatusWord2, VSD_STATUS_FC_I2T_ERR, true);
+    vsdStatusWord2 = setBit(vsdStatusWord2, VSD_STATUS_FC_IT_ERR, true);
     break;
   case VSD_ETALON_STATUS_OVERHEAT_FILTER:   // VSD_STATUS_OVERHEAT_FILTER
     vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_OVERHEAT_FILTER, true);

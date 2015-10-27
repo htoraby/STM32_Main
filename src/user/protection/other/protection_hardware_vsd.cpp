@@ -56,9 +56,9 @@ bool ProtectionHardwareVsd::checkAlarm()
     parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_URECT_SHORTCIRCUIT);
     return true;
   }
-  if (vsd->checkStatusVsd(VSD_STATUS_FC_I2T_ERR)) {
+  if (vsd->checkStatusVsd(VSD_STATUS_FC_IT_ERR)) {
     protReactEventId_ = HardwareVsdI2tProtReactId;
-    parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_FC_I2T_ERR);
+    parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_FC_IT_ERR);
     return true;
   }
   if (vsd->checkStatusVsd(VSD_STATUS_AST_ERR)) {
@@ -193,9 +193,9 @@ bool ProtectionHardwareVsd::checkAlarm()
     parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_MB_MON);
     return true;
   }
-  if (vsd->checkStatusVsd(VSD_STATUS_I_FAST_ERR)) {
+  if (vsd->checkStatusVsd(VSD_STATUS_M_I_FAST_ERR)) {
     protReactEventId_ = HardwareVsdIfastReactId;
-    parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_I_FAST_ERR);
+    parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_M_I_FAST_ERR);
     return true;
   }
   if (vsd->checkStatusVsd(VSD_STATUS_M_I2T_ERR)) {

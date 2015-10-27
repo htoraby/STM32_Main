@@ -36,7 +36,7 @@ enum enStatus {
   VSD_STATUS_URECT_SHORTCIRCUIT   = 14,     //!< Остановлен по КЗ от выпрямителя
   VSD_STATUS_RESERVED             = 15,     //!< Резерв
   // STATUS_WORD_2
-  VSD_STATUS_FC_I2T_ERR           = 16,     //!< Сработала токовая тепловая защита инвертора
+  VSD_STATUS_FC_IT_ERR            = 16,     //!< Сработала токовая тепловая защита инвертора
   VSD_STATUS_AST_ERR              = 17,     //!< Система автонастройки не смогла определить параметры линии
   VSD_STATUS_I_LIMIT_FAST         = 18,     //!< Превышение порога мгновенного токоограничения
   VSD_STATUS_CURRENT_OPT          = 19,     //!< Включена оптимизация по току
@@ -48,7 +48,7 @@ enum enStatus {
   VSD_STATUS_DISCAHRGE            = 25,     //!< Режим разряда шины работает
   VSD_STATUS_DISCHARGE_ERR        = 26,     //!< Ошибка режима разряда шины
   VSD_STATUS_VC_ERR               = 27,     //!< Ошибка векторного режима
-  VSD_STATUS_I_FAST_ERR           = 28,     //!< Быстрая токовая защита двигателя
+  VSD_STATUS_M_I_FAST_ERR         = 28,     //!< Быстрая токовая защита двигателя
   VSD_STATUS_M_I2T_ERR            = 29,     //!< Токовая защита двигателя (перегруз)
   VSD_STATUS_2_RESERVED_30        = 30,     //!< Резерв
   VSD_STATUS_2_RESERVED_31        = 31,     //!< Резерв

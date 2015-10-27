@@ -397,7 +397,7 @@ bool Vsd::checkStatusVsd(uint8_t bit)
   if (bit <= VSD_STATUS_RESERVED)
     return checkBit(parameters.get(CCS_VSD_STATUS_WORD_1), bit);
 
-  if ((bit >= VSD_STATUS_FC_I2T_ERR) && (bit <= (VSD_STATUS_FC_I2T_ERR+15)))
+  if ((bit >= VSD_STATUS_FC_IT_ERR) && (bit <= (VSD_STATUS_FC_IT_ERR+15)))
     return checkBit(parameters.get(CCS_VSD_STATUS_WORD_2), bit - 16);
 
   if ((bit >= VSD_STATUS_RIGHT_DIRECTION) && (bit <= (VSD_STATUS_RIGHT_DIRECTION + 15)))

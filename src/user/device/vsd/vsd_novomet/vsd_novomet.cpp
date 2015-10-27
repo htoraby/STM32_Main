@@ -961,10 +961,9 @@ int VsdNovomet::start()
       if (countRepeats > VSD_CMD_NUMBER_REPEATS)
         return err_r;
 
-      if (vsd->resetBlock())
-        return err_r;
-
-      //osDelay(1000);
+//      if (vsd->resetBlock())
+//        return err_r;
+//      osDelay(1000);
 
       if (setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_START))
         return err_r;
@@ -1026,7 +1025,6 @@ int VsdNovomet::stop(float type)
           return err_r;
        break;
       }
-      // resetBlock();
     } else {
       timeMs = timeMs + 100;
     }
@@ -1074,7 +1072,7 @@ bool VsdNovomet::checkStop()
   return true;
 #endif
 
-  if (checkStatusVsd(VSD_STATUS_STOPPED_EXTERNAL) || checkStatusVsd(VSD_STATUS_FAULT_STOPPED) || checkStatusVsd(VSD_STATUS_STOPPED_ALARM) || checkStatusVsd(VSD_STATUS_STOPPED_REGISTER)) {
+  if (checkStatusVsd(VSD_STATUS_STOPPED_EXTERNAL) || checkStatusVsd(VSD_STATUS_STOPPED_ALARM) || checkStatusVsd(VSD_STATUS_STOPPED_REGISTER)) {
     if (!checkStatusVsd(VSD_STATUS_STARTED)) {
       if (!checkStatusVsd(VSD_STATUS_WAIT_RECT_STOP)) {
         return true;
