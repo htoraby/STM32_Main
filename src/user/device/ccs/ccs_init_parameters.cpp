@@ -3958,7 +3958,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].max                             = 0.0;
+  parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].max                             = 1.0;
   parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].code                            = 0;
@@ -4138,7 +4138,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].max                             = 0.0;
+  parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].max                             = 1.0;
   parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].code                            = 0;
@@ -4318,7 +4318,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].max                             = 0.0;
+  parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].max                             = 1.0;
   parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].code                            = 0;
@@ -4498,7 +4498,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].max                             = 0.0;
+  parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].max                             = 1.0;
   parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].code                            = 0;
