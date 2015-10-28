@@ -132,7 +132,7 @@ public:
    * \param reason источник(первопричина) изменения параметра (по умолчанию авто)
    * \return 0 - значение присвоено или код ошибки
    */
-  uint8_t setValue(uint16_t id, float value, EventType eventType = AutoType);
+  uint8_t setValue(uint16_t id, float value, EventType eventType = NoneType);
 
   /*!
    * \brief Метод присвоения значения параметра типа uint32_t
