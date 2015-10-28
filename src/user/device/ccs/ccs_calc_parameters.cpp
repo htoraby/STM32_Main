@@ -478,10 +478,6 @@ void Ccs::calcInputVoltageFromAdc()
           checkPhaseRotation = true;
         }
       } else {
-        uaValue += (uValue[0 + i*3] - 2048)*(uValue[0 + i*3] - 2048);
-        ubValue += (uValue[1 + i*3] - 2048)*(uValue[1 + i*3] - 2048);
-        ucValue += (uValue[2 + i*3] - 2048)*(uValue[2 + i*3] - 2048);
-        count++;
         break;
       }
     }
