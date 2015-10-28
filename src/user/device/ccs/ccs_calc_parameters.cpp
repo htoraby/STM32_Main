@@ -461,41 +461,58 @@ void Ccs::calcInputVoltageFromAdc()
   float uaValue;
   float ubValue;
   float ucValue;
-  float ubValueOld = 1;
-  bool checkPhaseRotation = false;
-  int count = 0;
+  float valueOld[3] = { 1 };
+  int checkPhase[3] = { 0 };
+  int count[3] = { 0 };
 
   getAdcDataInPeriod(uValue);
 
   for (int i = 0; i < HC_POINTS_NUM*2; ++i) {
-    if (((uValue[1 + i*3] - 2048) >= 0) && (ubValueOld < 0)) {
-      if (!checkPhaseRotation) {
-        if ((uValue[1 + i*3] - 2048) < (uValue[0 + i*3] - 2048)) {
+    if (((uValue[0 + i*3] - 2048) >= 0) && (valueOld[0] < 0)) {
+      if (!checkPhase[0])
+        checkPhase[0] = 1;
+      else
+        checkPhase[0] = 2;
+    }
+    if (checkPhase[0] == 1) {
+      uaValue += (uValue[0 + i*3] - 2048)*(uValue[0 + i*3] - 2048);
+      count[0]++;
+    }
+
+    if (((uValue[1 + i*3] - 2048) >= 0) && (valueOld[1] < 0)) {
+      if (!checkPhase[1]) {
+        if ((uValue[1 + i*3] - 2048) < (uValue[0 + i*3] - 2048))
           countPhaseRotation_++;
-          checkPhaseRotation = true;
-        } else if ((uValue[1 + i*3] - 2048) > (uValue[0 + i*3] - 2048)) {
+        else if ((uValue[1 + i*3] - 2048) > (uValue[0 + i*3] - 2048))
           countPhaseRotation_--;
-          checkPhaseRotation = true;
-        }
+
+        checkPhase[1] = 1;
       } else {
-        uaValue += (uValue[0 + i*3] - 2048)*(uValue[0 + i*3] - 2048);
-        ubValue += (uValue[1 + i*3] - 2048)*(uValue[1 + i*3] - 2048);
-        ucValue += (uValue[2 + i*3] - 2048)*(uValue[2 + i*3] - 2048);
-        count++;
-        break;
+        checkPhase[1] = 2;
       }
     }
-    if (checkPhaseRotation) {
-      uaValue += (uValue[0 + i*3] - 2048)*(uValue[0 + i*3] - 2048);
+
+    if (checkPhase[1] == 1) {
       ubValue += (uValue[1 + i*3] - 2048)*(uValue[1 + i*3] - 2048);
-      ucValue += (uValue[2 + i*3] - 2048)*(uValue[2 + i*3] - 2048);
-      count++;
+      count[1]++;
     }
-    ubValueOld = (uValue[1 + i*3] - 2048);
+    if (((uValue[2 + i*3] - 2048) >= 0) && (valueOld[2] < 0)) {
+      if (!checkPhase[2])
+        checkPhase[2] = 1;
+      else
+        checkPhase[2] = 2;
+    }
+    if (checkPhase[2] == 1) {
+      ucValue += (uValue[2 + i*3] - 2048)*(uValue[2 + i*3] - 2048);
+      count[2]++;
+    }
+    valueOld[0] = (uValue[0 + i*3] - 2048);
+    valueOld[1] = (uValue[1 + i*3] - 2048);
+    valueOld[2] = (uValue[2 + i*3] - 2048);
   }
-  uaValue = (sqrt(uaValue/count) * 627.747 * 2.5) / 0xFFF;
-  ubValue = (sqrt(ubValue/count) * 627.747 * 2.5) / 0xFFF;
-  ucValue = (sqrt(ucValue/count) * 627.747 * 2.5) / 0xFFF;
+  uaValue = (sqrt(uaValue/count[0]) * 627.747 * 2.5) / 0xFFF;
+  ubValue = (sqrt(ubValue/count[1]) * 627.747 * 2.5) / 0xFFF;
+  ucValue = (sqrt(ucValue/count[2]) * 627.747 * 2.5) / 0xFFF;
 
   if (parameters.getValidity(CCS_COEF_VOLTAGE_IN_A)) {
     setValue(CCS_VOLTAGE_PHASE_1, (float)NAN);
