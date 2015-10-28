@@ -18,13 +18,14 @@ void VsdNovometLog::readAlarmLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
                                  uint16_t *ud)
 {
   /*
-  uint8_t txBuffer[8];
-  uint8_t rxBuffer[1024];
-  int cntRxByte = 0;
-  int crc = 0;
+  uint8_t txBuffer[8];                                    // Выходной буфер
+  uint8_t rxBuffer[1024];                                 // Входной буфер
+  int cntRxByte = 0;                                      // Количество принятых байт в ответе
+  int crc = 0;                                            // Контрольная сумма
   int i = 0;
   int j = 0;
-  int retryCnt = 0;
+  int k = 0;
+  int retryCnt = 0;                                       // Счётчиков повторов запросов данных
   for (cntBlock = 20; cntBlock--; cntBlock >= 1) {
     while (retryCnt < 5) {
       txBuffer_[0] = 1;                                   // Адрес устройства
@@ -39,6 +40,7 @@ void VsdNovometLog::readAlarmLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
 
       uartWriteData(VSD_LOG_UART, txBuffer, 8);
       cntRxByte = uartReadData(VSD_LOG_UART, rxBuffer);
+
       if (((rxBuffer[cntRxByte - 1] << 8) + rxBuffer[cntRxByte - 2]) == crc16_ibm(rxBuffer, (cntRxByte - 2))) {
         while (i < cntRxByte - 2) {
           ud[j] = rxBuffer[i] << 8 + rxBuffer[i + 1];
@@ -51,8 +53,14 @@ void VsdNovometLog::readAlarmLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
         retryCnt = 5;
       }
       else {
-        // TODO: заполнение блока данных -1
         retryCnt++;
+        if (retryCnt >= 5) {
+          k = j + 100;
+          while (j <= k) {
+            ud[j] = -1; ia[j] = -1; ib[j] = -1; ic[j] = -1;
+            j++;
+          }
+        }
       }
     }
     retryCnt = 0;
