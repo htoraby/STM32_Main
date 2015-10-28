@@ -153,10 +153,10 @@ int VsdNovomet::setMotorVoltage(float value)
 
 void VsdNovomet::setLimitsMotor()
 {
-  setMin(VSD_MOTOR_CURRENT, getMin(VSD_MOTOR_CURRENT) / parameters.get(CCS_COEF_TRANSFORMATION));
-  setMax(VSD_MOTOR_CURRENT, getMax(VSD_MOTOR_CURRENT) / parameters.get(CCS_COEF_TRANSFORMATION));
-  setMin(VSD_MOTOR_VOLTAGE, getMin(VSD_MOTOR_VOLTAGE) * parameters.get(CCS_COEF_TRANSFORMATION));
-  setMax(VSD_MOTOR_VOLTAGE, getMax(VSD_MOTOR_VOLTAGE) * parameters.get(CCS_COEF_TRANSFORMATION));
+  setMin(VSD_MOTOR_CURRENT, dm_->getFieldMinimum(dm_->getIndexAtId(VSD_MOTOR_CURRENT)) / parameters.get(CCS_COEF_TRANSFORMATION));
+  setMax(VSD_MOTOR_CURRENT, dm_->getFieldMaximum(dm_->getIndexAtId(VSD_MOTOR_CURRENT)) / parameters.get(CCS_COEF_TRANSFORMATION));
+  setMin(VSD_MOTOR_VOLTAGE, dm_->getFieldMinimum(dm_->getIndexAtId(VSD_MOTOR_VOLTAGE)) * parameters.get(CCS_COEF_TRANSFORMATION));
+  setMax(VSD_MOTOR_VOLTAGE, dm_->getFieldMaximum(dm_->getIndexAtId(VSD_MOTOR_VOLTAGE)) * parameters.get(CCS_COEF_TRANSFORMATION));
 }
 
 // РЕЖИМЫ ПУСКА
@@ -1075,6 +1075,7 @@ bool VsdNovomet::checkStop()
   if (checkStatusVsd(VSD_STATUS_STOPPED_EXTERNAL) || checkStatusVsd(VSD_STATUS_STOPPED_ALARM) || checkStatusVsd(VSD_STATUS_STOPPED_REGISTER)) {
     if (!checkStatusVsd(VSD_STATUS_STARTED)) {
       if (!checkStatusVsd(VSD_STATUS_WAIT_RECT_STOP)) {
+        resetBlock();
         return true;
       }
     }
