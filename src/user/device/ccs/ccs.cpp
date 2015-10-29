@@ -1045,6 +1045,49 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     parameters.set(VSD_MOTOR_TYPE, value);
     setMaxBaseFrequency();
     return err;
+  case CCS_PROT_DI_1_MODE:
+    err = setValue(id, value, eventType);
+    if (value != Protection::ModeOff) {
+      parameters.set(CCS_DI_1_ACTION, DI_ACTION_PROTECTION); // Вкл Действие по сигналу "Защита"
+    }
+    return err;
+  case CCS_PROT_DI_2_MODE:
+    err = setValue(id, value, eventType);
+    if (value != Protection::ModeOff) {
+      parameters.set(CCS_DI_2_ACTION, DI_ACTION_PROTECTION); // Вкл Действие по сигналу "Защита"
+    }
+    return err;
+  case CCS_PROT_DI_3_MODE:
+    err = setValue(id, value, eventType);
+    if (value != Protection::ModeOff) {
+      parameters.set(CCS_DI_3_ACTION, DI_ACTION_PROTECTION); // Вкл Действие по сигналу "Защита"
+    }
+    return err;
+  case CCS_PROT_DI_4_MODE:
+    err = setValue(id, value, eventType);
+    if (value != Protection::ModeOff)
+      parameters.set(CCS_DI_4_ACTION, DI_ACTION_PROTECTION); // Вкл Действие по сигналу "Защита"
+    return err;
+  case CCS_DI_1_ACTION:
+    err = setValue(id, value, eventType);
+    if (value != DI_ACTION_PROTECTION)
+      parameters.set(CCS_PROT_DI_1_MODE, Protection::ModeOff); // Отключаем защиту по цифромому входу
+    return err;
+  case CCS_DI_2_ACTION:
+    err = setValue(id, value, eventType);
+    if (value != DI_ACTION_PROTECTION)
+      parameters.set(CCS_PROT_DI_2_MODE, Protection::ModeOff); // Отключаем защиту по цифромому входу
+    return err;
+  case CCS_DI_3_ACTION:
+    err = setValue(id, value, eventType);
+    if (value != DI_ACTION_PROTECTION)
+      parameters.set(CCS_PROT_DI_3_MODE, Protection::ModeOff); // Отключаем защиту по цифромому входу
+    return err;
+  case CCS_DI_4_ACTION:
+    err = setValue(id, value, eventType);
+    if (value != DI_ACTION_PROTECTION)
+      parameters.set(CCS_PROT_DI_4_MODE, Protection::ModeOff); // Отключаем защиту по цифромому входу
+    return err;
   default:
     return setValue(id, value, eventType);
   }
