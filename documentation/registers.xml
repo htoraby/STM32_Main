@@ -391,7 +391,7 @@
 		<max>10000.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
-		<valid>VALIDITY_OK</valid>
+		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Сигнал с дополнительного аналогового входа 1</text>
 		<short_text>Доп.ан.вх.1</short_text>
@@ -411,7 +411,7 @@
 		<max>10000.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
-		<valid>VALIDITY_OK</valid>
+		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Сигнал с дополнительного аналогового входа 2</text>
 		<short_text>Доп.ан.вх.2</short_text>
@@ -431,7 +431,7 @@
 		<max>10000.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
-		<valid>VALIDITY_OK</valid>
+		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Сигнал с дополнительного аналогового входа 3</text>
 		<short_text>Доп.ан.вх.3</short_text>
@@ -451,7 +451,7 @@
 		<max>10000.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
-		<valid>VALIDITY_OK</valid>
+		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Сигнал с дополнительного аналогового входа 4</text>
 		<short_text>Доп.ан.вх.4</short_text>
@@ -471,7 +471,7 @@
 		<max>1.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
-		<valid>VALIDITY_OK</valid>
+		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Блокировка двери</text>
 		<short_text>Дверь</short_text>
@@ -492,7 +492,7 @@
 		<max>1.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
-		<valid>VALIDITY_OK</valid>
+		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Сигнал с контактного манометра</text>
 		<short_text>Конт.маном</short_text>
@@ -513,7 +513,7 @@
 		<max>1.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
-		<valid>VALIDITY_OK</valid>
+		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Сигнал с цифрового входа 1</text>
 		<short_text>Цифровой вход 1</short_text>
@@ -534,7 +534,7 @@
 		<max>1.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
-		<valid>VALIDITY_OK</valid>
+		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Сигнал с цифрового входа 2</text>
 		<short_text>Цифровой вход 2</short_text>
@@ -555,7 +555,7 @@
 		<max>1.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
-		<valid>VALIDITY_OK</valid>
+		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Сигнал с цифрового входа 3</text>
 		<short_text>Цифровой вход 3</short_text>
@@ -576,7 +576,7 @@
 		<max>1.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
-		<valid>VALIDITY_OK</valid>
+		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Сигнал с цифрового входа 4</text>
 		<short_text>Цифровой вход 4</short_text>
@@ -14916,6 +14916,206 @@
 	</param>
 	<param>
 		<id>809</id>
+		<name>CCS_DI_5_VALUE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Сигнал с цифрового входа 5</text>
+		<short_text>Сигнал с цифрового входа 5</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-Замкнут;1-Разомкнут</values>
+	</param>
+	<param>
+		<id>810</id>
+		<name>CCS_DI_6_VALUE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Сигнал с цифрового входа 6</text>
+		<short_text>Сигнал с цифрового входа 6</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-Замкнут;1-Разомкнут</values>
+	</param>
+	<param>
+		<id>811</id>
+		<name>CCS_DI_7_VALUE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Сигнал с цифрового входа 7</text>
+		<short_text>Сигнал с цифрового входа 7</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-Замкнут;1-Разомкнут</values>
+	</param>
+	<param>
+		<id>812</id>
+		<name>CCS_DI_8_VALUE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Сигнал с цифрового входа 8</text>
+		<short_text>Сигнал с цифрового входа 8</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-Замкнут;1-Разомкнут</values>
+	</param>
+	<param>
+		<id>813</id>
+		<name>CCS_DI_9_VALUE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Сигнал с цифрового входа 9</text>
+		<short_text>Сигнал с цифрового входа 9</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-Замкнут;1-Разомкнут</values>
+	</param>
+	<param>
+		<id>814</id>
+		<name>CCS_DI_10_VALUE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Сигнал с цифрового входа 10</text>
+		<short_text>Сигнал с цифрового входа 10</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-Замкнут;1-Разомкнут</values>
+	</param>
+	<param>
+		<id>815</id>
+		<name>CCS_DI_11_VALUE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Сигнал с цифрового входа 11</text>
+		<short_text>Сигнал с цифрового входа 11</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-Замкнут;1-Разомкнут</values>
+	</param>
+	<param>
+		<id>816</id>
+		<name>CCS_DI_12_VALUE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Сигнал с цифрового входа 12</text>
+		<short_text>Сигнал с цифрового входа 12</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-Замкнут;1-Разомкнут</values>
+	</param>
+	<param>
+		<id>817</id>
+		<name>CCS_DI_13_VALUE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Сигнал с цифрового входа 13</text>
+		<short_text>Сигнал с цифрового входа 13</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-Замкнут;1-Разомкнут</values>
+	</param>
+	<param>
+		<id>818</id>
+		<name>CCS_DI_14_VALUE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Сигнал с цифрового входа 14</text>
+		<short_text>Сигнал с цифрового входа 14</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-Замкнут;1-Разомкнут</values>
+	</param>
+	<param>
+		<id>819</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
