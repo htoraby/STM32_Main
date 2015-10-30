@@ -230,7 +230,9 @@ void Ccs::vsdConditionTask()
 #if USE_DEBUG
         setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
 #endif
-      } else if (getValue(CCS_CONDITION) == CCS_CONDITION_RUN) {
+      }
+      if ((getValue(CCS_CONDITION) == CCS_CONDITION_RUN) ||
+          (getValue(CCS_CONDITION) == CCS_CONDITION_RUNNING)) {
         if (vsd->checkStop()) {
           setBlock();
           parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_NO_CONNECT);
