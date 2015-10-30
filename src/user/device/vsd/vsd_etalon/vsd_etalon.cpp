@@ -973,7 +973,7 @@ void VsdEtalon::convertBitVsdStatus(float value)
     vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_PRESSURE, true);
     break;
   case VSD_ETALON_STATUS_19:                // VSD_STATUS_ERR_19
-    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_ERR_19, true);
+    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_ERR_19, true);
     break;
   case VSD_ETALON_STATUS_IMBALANCE_CURRENT: // VSD_FLT_IZ
     vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_IZ, true);
@@ -1006,7 +1006,7 @@ void VsdEtalon::convertBitVsdStatus(float value)
     vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_I_LIMIT, true);
     break;
   case VSD_ETALON_STATUS_31:                // VSD_STATUS_ERR_31
-    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_ERR_31, true);
+    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_ERR_31, true);
     break;
   case VSD_ETALON_STATUS_32:
     break;
