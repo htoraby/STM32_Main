@@ -233,7 +233,7 @@ void Ccs::vsdConditionTask()
       } else if (getValue(CCS_CONDITION) == CCS_CONDITION_RUN) {
         if (vsd->checkStop()) {
           setBlock();
-          parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_FAULT_STOPPED);
+          parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_NO_CONNECT);
           setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopHardwareVsd);
           setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
         }
