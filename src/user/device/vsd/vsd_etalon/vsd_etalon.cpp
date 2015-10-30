@@ -463,6 +463,10 @@ void VsdEtalon::getNewValue(uint16_t id)
       setValue(id, value);
       parameters.set(CCS_TURBO_ROTATION_NOW, value);
       break;
+    case VSD_DOOR_VALUE:
+      setValue(id, value);
+      parameters.set(CCS_DOOR_VALUE, value);
+      break;
     default:
       setValue(id, value);
       break;

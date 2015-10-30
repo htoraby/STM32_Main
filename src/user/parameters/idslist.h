@@ -25,7 +25,7 @@ enum enID
   CCS_AI_2_VALUE = 19,                                       //!< 
   CCS_AI_3_VALUE = 20,                                       //!< 
   CCS_AI_4_VALUE = 21,                                       //!< 
-  CCS_DOOR_VALUE = 22,                                       //!< 
+  CCS_DOOR_VALUE = 22,                                       //!< Состояние двери
   CCS_MONOMETR_CONTACT_VALUE = 23,                           //!< 
   CCS_DI_1_VALUE = 24,                                       //!< 
   CCS_DI_2_VALUE = 25,                                       //!< 
@@ -1205,7 +1205,8 @@ enum enID
   VSD_TURBO_ROTATION_NOW = 10379,                            //!< Текущее турбинное вращение
   VSD_BLDC_COEF_REG_NOW = 10380,                             //!< Текущий коэффициент регулирования
   VSD_BLDC_ANGLE_NOW = 10381,                                //!< Текущий угол дельта тета положения ротора
-  VSD_END = 10382,                                           //!< 
+  VSD_DOOR_VALUE = 10382,                                    //!< Состояние двери
+  VSD_END = 10383,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме

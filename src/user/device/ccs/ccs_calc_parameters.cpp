@@ -587,7 +587,8 @@ void Ccs::calcDigitalInputs()
           }
         } else if (i == DI5) {
           setValue(CCS_DI_5_VALUE, value[i]);
-          setValue(CCS_DOOR_VALUE, !value[i]);
+          if ((parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON))
+            setValue(CCS_DOOR_VALUE, !value[i]);
         }
       }
     } else {

@@ -266,7 +266,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].discret                                = 1;
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].def                                    = 0.0;
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].code                                   = 0;
-  // 
+  // Состояние двери
   parameters_[CCS_DOOR_VALUE - CCS_BEGIN].id                                     = CCS_DOOR_VALUE;
   parameters_[CCS_DOOR_VALUE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
   parameters_[CCS_DOOR_VALUE - CCS_BEGIN].operation                              = OPERATION_READ;

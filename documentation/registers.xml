@@ -481,6 +481,7 @@
 		<format>TEXT</format>
 		<code>0</code>
 		<values>0-Открыт;1-Закрыт</values>
+		<comment>Состояние двери</comment>
 	</param>
 	<param>
 		<id>23</id>
@@ -21339,6 +21340,25 @@
 	</param>
 	<param>
 		<id>10382</id>
+		<name>VSD_DOOR_VALUE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Дверь</text>
+		<short_text>Дверь</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<code>0</code>
+		<values>0-Открыт;1-Закрыт</values>
+		<comment>Состояние двери</comment>
+	</param>
+	<param>
+		<id>10383</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>
