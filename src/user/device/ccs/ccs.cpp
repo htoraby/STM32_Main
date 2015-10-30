@@ -1291,6 +1291,7 @@ void Ccs::cmdProtDigitalInput1SetpointReset()
        i <= CCS_PROT_DI_1_PARAMETER; i++) {
     resetValue(i);
   }
+  resetValue(CCS_DI_1_TYPE);
 }
 
 void Ccs::cmdProtDigitalInput2SetpointReset()
@@ -1299,6 +1300,7 @@ void Ccs::cmdProtDigitalInput2SetpointReset()
        i <= CCS_PROT_DI_2_PARAMETER; i++) {
     resetValue(i);
   }
+  resetValue(CCS_DI_2_TYPE);
 }
 
 void Ccs::cmdProtDigitalInput3SetpointReset()
@@ -1307,6 +1309,7 @@ void Ccs::cmdProtDigitalInput3SetpointReset()
        i <= CCS_PROT_DI_3_PARAMETER; i++) {
     resetValue(i);
   }
+  resetValue(CCS_DI_3_TYPE);
 }
 
 void Ccs::cmdProtDigitalInput4SetpointReset()
@@ -1315,6 +1318,7 @@ void Ccs::cmdProtDigitalInput4SetpointReset()
        i <= CCS_PROT_DI_4_PARAMETER; i++) {
     resetValue(i);
   }
+  resetValue(CCS_DI_4_TYPE);
 }
 
 void Ccs::calcCountersStop(float reason)
