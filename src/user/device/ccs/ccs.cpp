@@ -192,6 +192,7 @@ void Ccs::ledConditionTask()
 void Ccs::vsdConditionTask()
 {
   int vsdConditionOld = -1;
+  int runningTime = 0;
   while (1) {
     osDelay(10);
 
@@ -232,7 +233,7 @@ void Ccs::vsdConditionTask()
 #endif
       }
       if ((getValue(CCS_CONDITION) == CCS_CONDITION_RUN) ||
-          (getValue(CCS_CONDITION) == CCS_CONDITION_RUNNING)) {
+          ((getValue(CCS_CONDITION) == CCS_CONDITION_RUNNING) && (++runningTime >= 1500))) {
         if (vsd->checkStop()) {
           setBlock();
           parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_NO_CONNECT);
@@ -248,9 +249,18 @@ void Ccs::vsdConditionTask()
         logRunning.start();
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
       }
+      if (++runningTime >= 1500) {
+        if (vsd->checkStop()) {
+          setBlock();
+          parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_NO_CONNECT);
+          setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopHardwareVsd);
+          setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
+        }
+      }
       break;
     case VSD_CONDITION_WAIT_RUN:
       if (vsd->start() == ok_r) {
+        runningTime = 0;
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
       } else if (vsdCondition != vsdConditionOld) {
         logDebug.add(WarningMsg, "Ошибка запуска");
