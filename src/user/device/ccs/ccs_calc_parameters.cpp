@@ -634,7 +634,7 @@ void Ccs::changedDigitalInput(int num)
       break;
     case DI_ACTION_REVERSE:
       logEvent.add(OtherCode, AutoType, EventId(DigitalInput1LogId + num), !value, value);
-      vsd->setRotation(VSD_ROTATION_REVERSE);
+      vsd->setRotation(!parameters.get(VSD_ROTATION));
       break;
     case DI_ACTION_BUTTON:
       logEvent.add(OtherCode, OperatorType, EventId(DigitalInput1LogId + num), !value, value);
