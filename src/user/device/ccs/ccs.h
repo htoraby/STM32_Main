@@ -508,6 +508,10 @@ private:
    */
   void calcAnalogInputs();
 
+  void calcTemperatureSTM32();
+
+  void calcTemperatureCCS();
+
   //! Массив параметров устройства
   parameter parametersArray_[CCS_END - CCS_BEGIN];
 
