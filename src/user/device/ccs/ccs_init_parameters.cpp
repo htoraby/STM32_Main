@@ -223,7 +223,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_1_VALUE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
   parameters_[CCS_AI_1_VALUE - CCS_BEGIN].operation                              = OPERATION_READ;
   parameters_[CCS_AI_1_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
-  parameters_[CCS_AI_1_VALUE - CCS_BEGIN].validity                               = VALIDITY_OK;
+  parameters_[CCS_AI_1_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[CCS_AI_1_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
   parameters_[CCS_AI_1_VALUE - CCS_BEGIN].min                                    = 0.0;
   parameters_[CCS_AI_1_VALUE - CCS_BEGIN].max                                    = 10000.0;
@@ -235,7 +235,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_2_VALUE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
   parameters_[CCS_AI_2_VALUE - CCS_BEGIN].operation                              = OPERATION_READ;
   parameters_[CCS_AI_2_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
-  parameters_[CCS_AI_2_VALUE - CCS_BEGIN].validity                               = VALIDITY_OK;
+  parameters_[CCS_AI_2_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[CCS_AI_2_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
   parameters_[CCS_AI_2_VALUE - CCS_BEGIN].min                                    = 0.0;
   parameters_[CCS_AI_2_VALUE - CCS_BEGIN].max                                    = 10000.0;
@@ -247,7 +247,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_3_VALUE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
   parameters_[CCS_AI_3_VALUE - CCS_BEGIN].operation                              = OPERATION_READ;
   parameters_[CCS_AI_3_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
-  parameters_[CCS_AI_3_VALUE - CCS_BEGIN].validity                               = VALIDITY_OK;
+  parameters_[CCS_AI_3_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[CCS_AI_3_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
   parameters_[CCS_AI_3_VALUE - CCS_BEGIN].min                                    = 0.0;
   parameters_[CCS_AI_3_VALUE - CCS_BEGIN].max                                    = 10000.0;
@@ -259,19 +259,19 @@ void Ccs::initParameters()
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].operation                              = OPERATION_READ;
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
-  parameters_[CCS_AI_4_VALUE - CCS_BEGIN].validity                               = VALIDITY_OK;
+  parameters_[CCS_AI_4_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].min                                    = 0.0;
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].max                                    = 10000.0;
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].discret                                = 1;
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].def                                    = 0.0;
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].code                                   = 0;
-  // 
+  // Состояние двери
   parameters_[CCS_DOOR_VALUE - CCS_BEGIN].id                                     = CCS_DOOR_VALUE;
   parameters_[CCS_DOOR_VALUE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
   parameters_[CCS_DOOR_VALUE - CCS_BEGIN].operation                              = OPERATION_READ;
   parameters_[CCS_DOOR_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
-  parameters_[CCS_DOOR_VALUE - CCS_BEGIN].validity                               = VALIDITY_OK;
+  parameters_[CCS_DOOR_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[CCS_DOOR_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
   parameters_[CCS_DOOR_VALUE - CCS_BEGIN].min                                    = 0.0;
   parameters_[CCS_DOOR_VALUE - CCS_BEGIN].max                                    = 1.0;
@@ -283,7 +283,7 @@ void Ccs::initParameters()
   parameters_[CCS_MONOMETR_CONTACT_VALUE - CCS_BEGIN].access                     = ACCESS_OPERATOR;
   parameters_[CCS_MONOMETR_CONTACT_VALUE - CCS_BEGIN].operation                  = OPERATION_READ;
   parameters_[CCS_MONOMETR_CONTACT_VALUE - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
-  parameters_[CCS_MONOMETR_CONTACT_VALUE - CCS_BEGIN].validity                   = VALIDITY_OK;
+  parameters_[CCS_MONOMETR_CONTACT_VALUE - CCS_BEGIN].validity                   = VALIDITY_ERROR;
   parameters_[CCS_MONOMETR_CONTACT_VALUE - CCS_BEGIN].value.float_t              = 0.0;
   parameters_[CCS_MONOMETR_CONTACT_VALUE - CCS_BEGIN].min                        = 0.0;
   parameters_[CCS_MONOMETR_CONTACT_VALUE - CCS_BEGIN].max                        = 1.0;
@@ -295,7 +295,7 @@ void Ccs::initParameters()
   parameters_[CCS_DI_1_VALUE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
   parameters_[CCS_DI_1_VALUE - CCS_BEGIN].operation                              = OPERATION_READ;
   parameters_[CCS_DI_1_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
-  parameters_[CCS_DI_1_VALUE - CCS_BEGIN].validity                               = VALIDITY_OK;
+  parameters_[CCS_DI_1_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[CCS_DI_1_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
   parameters_[CCS_DI_1_VALUE - CCS_BEGIN].min                                    = 0.0;
   parameters_[CCS_DI_1_VALUE - CCS_BEGIN].max                                    = 1.0;
@@ -307,7 +307,7 @@ void Ccs::initParameters()
   parameters_[CCS_DI_2_VALUE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
   parameters_[CCS_DI_2_VALUE - CCS_BEGIN].operation                              = OPERATION_READ;
   parameters_[CCS_DI_2_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
-  parameters_[CCS_DI_2_VALUE - CCS_BEGIN].validity                               = VALIDITY_OK;
+  parameters_[CCS_DI_2_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[CCS_DI_2_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
   parameters_[CCS_DI_2_VALUE - CCS_BEGIN].min                                    = 0.0;
   parameters_[CCS_DI_2_VALUE - CCS_BEGIN].max                                    = 1.0;
@@ -319,7 +319,7 @@ void Ccs::initParameters()
   parameters_[CCS_DI_3_VALUE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
   parameters_[CCS_DI_3_VALUE - CCS_BEGIN].operation                              = OPERATION_READ;
   parameters_[CCS_DI_3_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
-  parameters_[CCS_DI_3_VALUE - CCS_BEGIN].validity                               = VALIDITY_OK;
+  parameters_[CCS_DI_3_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[CCS_DI_3_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
   parameters_[CCS_DI_3_VALUE - CCS_BEGIN].min                                    = 0.0;
   parameters_[CCS_DI_3_VALUE - CCS_BEGIN].max                                    = 1.0;
@@ -331,7 +331,7 @@ void Ccs::initParameters()
   parameters_[CCS_DI_4_VALUE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
   parameters_[CCS_DI_4_VALUE - CCS_BEGIN].operation                              = OPERATION_READ;
   parameters_[CCS_DI_4_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
-  parameters_[CCS_DI_4_VALUE - CCS_BEGIN].validity                               = VALIDITY_OK;
+  parameters_[CCS_DI_4_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[CCS_DI_4_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
   parameters_[CCS_DI_4_VALUE - CCS_BEGIN].min                                    = 0.0;
   parameters_[CCS_DI_4_VALUE - CCS_BEGIN].max                                    = 1.0;
@@ -9710,6 +9710,126 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_VOLTAGE_CALC - CCS_BEGIN].discret                        = 1;
   parameters_[CCS_MOTOR_VOLTAGE_CALC - CCS_BEGIN].def                            = 0.0;
   parameters_[CCS_MOTOR_VOLTAGE_CALC - CCS_BEGIN].code                           = 0;
+  // 
+  parameters_[CCS_DI_5_VALUE - CCS_BEGIN].id                                     = CCS_DI_5_VALUE;
+  parameters_[CCS_DI_5_VALUE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
+  parameters_[CCS_DI_5_VALUE - CCS_BEGIN].operation                              = OPERATION_READ;
+  parameters_[CCS_DI_5_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
+  parameters_[CCS_DI_5_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
+  parameters_[CCS_DI_5_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
+  parameters_[CCS_DI_5_VALUE - CCS_BEGIN].min                                    = 0.0;
+  parameters_[CCS_DI_5_VALUE - CCS_BEGIN].max                                    = 1.0;
+  parameters_[CCS_DI_5_VALUE - CCS_BEGIN].discret                                = 1;
+  parameters_[CCS_DI_5_VALUE - CCS_BEGIN].def                                    = 0.0;
+  parameters_[CCS_DI_5_VALUE - CCS_BEGIN].code                                   = 0;
+  // 
+  parameters_[CCS_DI_6_VALUE - CCS_BEGIN].id                                     = CCS_DI_6_VALUE;
+  parameters_[CCS_DI_6_VALUE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
+  parameters_[CCS_DI_6_VALUE - CCS_BEGIN].operation                              = OPERATION_READ;
+  parameters_[CCS_DI_6_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
+  parameters_[CCS_DI_6_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
+  parameters_[CCS_DI_6_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
+  parameters_[CCS_DI_6_VALUE - CCS_BEGIN].min                                    = 0.0;
+  parameters_[CCS_DI_6_VALUE - CCS_BEGIN].max                                    = 1.0;
+  parameters_[CCS_DI_6_VALUE - CCS_BEGIN].discret                                = 1;
+  parameters_[CCS_DI_6_VALUE - CCS_BEGIN].def                                    = 0.0;
+  parameters_[CCS_DI_6_VALUE - CCS_BEGIN].code                                   = 0;
+  // 
+  parameters_[CCS_DI_7_VALUE - CCS_BEGIN].id                                     = CCS_DI_7_VALUE;
+  parameters_[CCS_DI_7_VALUE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
+  parameters_[CCS_DI_7_VALUE - CCS_BEGIN].operation                              = OPERATION_READ;
+  parameters_[CCS_DI_7_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
+  parameters_[CCS_DI_7_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
+  parameters_[CCS_DI_7_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
+  parameters_[CCS_DI_7_VALUE - CCS_BEGIN].min                                    = 0.0;
+  parameters_[CCS_DI_7_VALUE - CCS_BEGIN].max                                    = 1.0;
+  parameters_[CCS_DI_7_VALUE - CCS_BEGIN].discret                                = 1;
+  parameters_[CCS_DI_7_VALUE - CCS_BEGIN].def                                    = 0.0;
+  parameters_[CCS_DI_7_VALUE - CCS_BEGIN].code                                   = 0;
+  // 
+  parameters_[CCS_DI_8_VALUE - CCS_BEGIN].id                                     = CCS_DI_8_VALUE;
+  parameters_[CCS_DI_8_VALUE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
+  parameters_[CCS_DI_8_VALUE - CCS_BEGIN].operation                              = OPERATION_READ;
+  parameters_[CCS_DI_8_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
+  parameters_[CCS_DI_8_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
+  parameters_[CCS_DI_8_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
+  parameters_[CCS_DI_8_VALUE - CCS_BEGIN].min                                    = 0.0;
+  parameters_[CCS_DI_8_VALUE - CCS_BEGIN].max                                    = 1.0;
+  parameters_[CCS_DI_8_VALUE - CCS_BEGIN].discret                                = 1;
+  parameters_[CCS_DI_8_VALUE - CCS_BEGIN].def                                    = 0.0;
+  parameters_[CCS_DI_8_VALUE - CCS_BEGIN].code                                   = 0;
+  // 
+  parameters_[CCS_DI_9_VALUE - CCS_BEGIN].id                                     = CCS_DI_9_VALUE;
+  parameters_[CCS_DI_9_VALUE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
+  parameters_[CCS_DI_9_VALUE - CCS_BEGIN].operation                              = OPERATION_READ;
+  parameters_[CCS_DI_9_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
+  parameters_[CCS_DI_9_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
+  parameters_[CCS_DI_9_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
+  parameters_[CCS_DI_9_VALUE - CCS_BEGIN].min                                    = 0.0;
+  parameters_[CCS_DI_9_VALUE - CCS_BEGIN].max                                    = 1.0;
+  parameters_[CCS_DI_9_VALUE - CCS_BEGIN].discret                                = 1;
+  parameters_[CCS_DI_9_VALUE - CCS_BEGIN].def                                    = 0.0;
+  parameters_[CCS_DI_9_VALUE - CCS_BEGIN].code                                   = 0;
+  // 
+  parameters_[CCS_DI_10_VALUE - CCS_BEGIN].id                                    = CCS_DI_10_VALUE;
+  parameters_[CCS_DI_10_VALUE - CCS_BEGIN].access                                = ACCESS_OPERATOR;
+  parameters_[CCS_DI_10_VALUE - CCS_BEGIN].operation                             = OPERATION_READ;
+  parameters_[CCS_DI_10_VALUE - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
+  parameters_[CCS_DI_10_VALUE - CCS_BEGIN].validity                              = VALIDITY_ERROR;
+  parameters_[CCS_DI_10_VALUE - CCS_BEGIN].value.float_t                         = 0.0;
+  parameters_[CCS_DI_10_VALUE - CCS_BEGIN].min                                   = 0.0;
+  parameters_[CCS_DI_10_VALUE - CCS_BEGIN].max                                   = 1.0;
+  parameters_[CCS_DI_10_VALUE - CCS_BEGIN].discret                               = 1;
+  parameters_[CCS_DI_10_VALUE - CCS_BEGIN].def                                   = 0.0;
+  parameters_[CCS_DI_10_VALUE - CCS_BEGIN].code                                  = 0;
+  // 
+  parameters_[CCS_DI_11_VALUE - CCS_BEGIN].id                                    = CCS_DI_11_VALUE;
+  parameters_[CCS_DI_11_VALUE - CCS_BEGIN].access                                = ACCESS_OPERATOR;
+  parameters_[CCS_DI_11_VALUE - CCS_BEGIN].operation                             = OPERATION_READ;
+  parameters_[CCS_DI_11_VALUE - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
+  parameters_[CCS_DI_11_VALUE - CCS_BEGIN].validity                              = VALIDITY_ERROR;
+  parameters_[CCS_DI_11_VALUE - CCS_BEGIN].value.float_t                         = 0.0;
+  parameters_[CCS_DI_11_VALUE - CCS_BEGIN].min                                   = 0.0;
+  parameters_[CCS_DI_11_VALUE - CCS_BEGIN].max                                   = 1.0;
+  parameters_[CCS_DI_11_VALUE - CCS_BEGIN].discret                               = 1;
+  parameters_[CCS_DI_11_VALUE - CCS_BEGIN].def                                   = 0.0;
+  parameters_[CCS_DI_11_VALUE - CCS_BEGIN].code                                  = 0;
+  // 
+  parameters_[CCS_DI_12_VALUE - CCS_BEGIN].id                                    = CCS_DI_12_VALUE;
+  parameters_[CCS_DI_12_VALUE - CCS_BEGIN].access                                = ACCESS_OPERATOR;
+  parameters_[CCS_DI_12_VALUE - CCS_BEGIN].operation                             = OPERATION_READ;
+  parameters_[CCS_DI_12_VALUE - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
+  parameters_[CCS_DI_12_VALUE - CCS_BEGIN].validity                              = VALIDITY_ERROR;
+  parameters_[CCS_DI_12_VALUE - CCS_BEGIN].value.float_t                         = 0.0;
+  parameters_[CCS_DI_12_VALUE - CCS_BEGIN].min                                   = 0.0;
+  parameters_[CCS_DI_12_VALUE - CCS_BEGIN].max                                   = 1.0;
+  parameters_[CCS_DI_12_VALUE - CCS_BEGIN].discret                               = 1;
+  parameters_[CCS_DI_12_VALUE - CCS_BEGIN].def                                   = 0.0;
+  parameters_[CCS_DI_12_VALUE - CCS_BEGIN].code                                  = 0;
+  // 
+  parameters_[CCS_DI_13_VALUE - CCS_BEGIN].id                                    = CCS_DI_13_VALUE;
+  parameters_[CCS_DI_13_VALUE - CCS_BEGIN].access                                = ACCESS_OPERATOR;
+  parameters_[CCS_DI_13_VALUE - CCS_BEGIN].operation                             = OPERATION_READ;
+  parameters_[CCS_DI_13_VALUE - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
+  parameters_[CCS_DI_13_VALUE - CCS_BEGIN].validity                              = VALIDITY_ERROR;
+  parameters_[CCS_DI_13_VALUE - CCS_BEGIN].value.float_t                         = 0.0;
+  parameters_[CCS_DI_13_VALUE - CCS_BEGIN].min                                   = 0.0;
+  parameters_[CCS_DI_13_VALUE - CCS_BEGIN].max                                   = 1.0;
+  parameters_[CCS_DI_13_VALUE - CCS_BEGIN].discret                               = 1;
+  parameters_[CCS_DI_13_VALUE - CCS_BEGIN].def                                   = 0.0;
+  parameters_[CCS_DI_13_VALUE - CCS_BEGIN].code                                  = 0;
+  // 
+  parameters_[CCS_DI_14_VALUE - CCS_BEGIN].id                                    = CCS_DI_14_VALUE;
+  parameters_[CCS_DI_14_VALUE - CCS_BEGIN].access                                = ACCESS_OPERATOR;
+  parameters_[CCS_DI_14_VALUE - CCS_BEGIN].operation                             = OPERATION_READ;
+  parameters_[CCS_DI_14_VALUE - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
+  parameters_[CCS_DI_14_VALUE - CCS_BEGIN].validity                              = VALIDITY_ERROR;
+  parameters_[CCS_DI_14_VALUE - CCS_BEGIN].value.float_t                         = 0.0;
+  parameters_[CCS_DI_14_VALUE - CCS_BEGIN].min                                   = 0.0;
+  parameters_[CCS_DI_14_VALUE - CCS_BEGIN].max                                   = 1.0;
+  parameters_[CCS_DI_14_VALUE - CCS_BEGIN].discret                               = 1;
+  parameters_[CCS_DI_14_VALUE - CCS_BEGIN].def                                   = 0.0;
+  parameters_[CCS_DI_14_VALUE - CCS_BEGIN].code                                  = 0;
   // 
   parameters_[CCS_TEMPERATURE_STM32 - CCS_BEGIN].id                              = CCS_TEMPERATURE_STM32;
   parameters_[CCS_TEMPERATURE_STM32 - CCS_BEGIN].access                          = ACCESS_OPERATOR;

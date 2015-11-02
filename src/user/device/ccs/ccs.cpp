@@ -112,8 +112,6 @@ void Ccs::mainTask()
     calcTime();
     controlPower();
     checkConnectDevice();
-
-    calcDigitalInputs();
   }
 }
 
@@ -194,6 +192,7 @@ void Ccs::ledConditionTask()
 void Ccs::vsdConditionTask()
 {
   int vsdConditionOld = -1;
+  int runningTime = 0;
   while (1) {
     osDelay(10);
 
@@ -232,9 +231,12 @@ void Ccs::vsdConditionTask()
 #if USE_DEBUG
         setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
 #endif
-      } else if (getValue(CCS_CONDITION) == CCS_CONDITION_RUN) {
+      }
+      if ((getValue(CCS_CONDITION) == CCS_CONDITION_RUN) ||
+          ((getValue(CCS_CONDITION) == CCS_CONDITION_RUNNING) && (++runningTime >= 1500))) {
         if (vsd->checkStop()) {
           setBlock();
+          parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_NO_CONNECT);
           setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopHardwareVsd);
           setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
         }
@@ -247,9 +249,18 @@ void Ccs::vsdConditionTask()
         logRunning.start();
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
       }
+      if (++runningTime >= 1500) {
+        if (vsd->checkStop()) {
+          setBlock();
+          parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_NO_CONNECT);
+          setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopHardwareVsd);
+          setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
+        }
+      }
       break;
     case VSD_CONDITION_WAIT_RUN:
       if (vsd->start() == ok_r) {
+        runningTime = 0;
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
       } else if (vsdCondition != vsdConditionOld) {
         logDebug.add(WarningMsg, "Ошибка запуска");
@@ -542,8 +553,8 @@ bool Ccs::isBlock()
 void Ccs::setFreq(float value)
 {
   if (vsd->setFrequency(value) == ok_r) {
-    parameters.set(CCS_PREVIEW_FREQUENCY, parameters.get(VSD_FREQUENCY));
-    parameters.set(CCS_PREVIEW_FREQUENCY_DATE_TIME, parameters.getU32(CCS_DATE_TIME));
+    parameters.set(CCS_PREVIEW_FREQUENCY, parameters.get(VSD_FREQUENCY), NoneType);
+    parameters.set(CCS_PREVIEW_FREQUENCY_DATE_TIME, parameters.getU32(CCS_DATE_TIME), NoneType);
   }
 }
 
@@ -1046,6 +1057,49 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     parameters.set(VSD_MOTOR_TYPE, value);
     setMaxBaseFrequency();
     return err;
+  case CCS_PROT_DI_1_MODE:
+    err = setValue(id, value, eventType);
+    if (value != Protection::ModeOff) {
+      parameters.set(CCS_DI_1_ACTION, DI_ACTION_PROTECTION); // Вкл Действие по сигналу "Защита"
+    }
+    return err;
+  case CCS_PROT_DI_2_MODE:
+    err = setValue(id, value, eventType);
+    if (value != Protection::ModeOff) {
+      parameters.set(CCS_DI_2_ACTION, DI_ACTION_PROTECTION); // Вкл Действие по сигналу "Защита"
+    }
+    return err;
+  case CCS_PROT_DI_3_MODE:
+    err = setValue(id, value, eventType);
+    if (value != Protection::ModeOff) {
+      parameters.set(CCS_DI_3_ACTION, DI_ACTION_PROTECTION); // Вкл Действие по сигналу "Защита"
+    }
+    return err;
+  case CCS_PROT_DI_4_MODE:
+    err = setValue(id, value, eventType);
+    if (value != Protection::ModeOff)
+      parameters.set(CCS_DI_4_ACTION, DI_ACTION_PROTECTION); // Вкл Действие по сигналу "Защита"
+    return err;
+  case CCS_DI_1_ACTION:
+    err = setValue(id, value, eventType);
+    if (value != DI_ACTION_PROTECTION)
+      parameters.set(CCS_PROT_DI_1_MODE, Protection::ModeOff); // Отключаем защиту по цифромому входу
+    return err;
+  case CCS_DI_2_ACTION:
+    err = setValue(id, value, eventType);
+    if (value != DI_ACTION_PROTECTION)
+      parameters.set(CCS_PROT_DI_2_MODE, Protection::ModeOff); // Отключаем защиту по цифромому входу
+    return err;
+  case CCS_DI_3_ACTION:
+    err = setValue(id, value, eventType);
+    if (value != DI_ACTION_PROTECTION)
+      parameters.set(CCS_PROT_DI_3_MODE, Protection::ModeOff); // Отключаем защиту по цифромому входу
+    return err;
+  case CCS_DI_4_ACTION:
+    err = setValue(id, value, eventType);
+    if (value != DI_ACTION_PROTECTION)
+      parameters.set(CCS_PROT_DI_4_MODE, Protection::ModeOff); // Отключаем защиту по цифромому входу
+    return err;
   default:
     return setValue(id, value, eventType);
   }
@@ -1249,6 +1303,7 @@ void Ccs::cmdProtDigitalInput1SetpointReset()
        i <= CCS_PROT_DI_1_PARAMETER; i++) {
     resetValue(i);
   }
+  resetValue(CCS_DI_1_TYPE);
 }
 
 void Ccs::cmdProtDigitalInput2SetpointReset()
@@ -1257,6 +1312,7 @@ void Ccs::cmdProtDigitalInput2SetpointReset()
        i <= CCS_PROT_DI_2_PARAMETER; i++) {
     resetValue(i);
   }
+  resetValue(CCS_DI_2_TYPE);
 }
 
 void Ccs::cmdProtDigitalInput3SetpointReset()
@@ -1265,6 +1321,7 @@ void Ccs::cmdProtDigitalInput3SetpointReset()
        i <= CCS_PROT_DI_3_PARAMETER; i++) {
     resetValue(i);
   }
+  resetValue(CCS_DI_3_TYPE);
 }
 
 void Ccs::cmdProtDigitalInput4SetpointReset()
@@ -1273,6 +1330,7 @@ void Ccs::cmdProtDigitalInput4SetpointReset()
        i <= CCS_PROT_DI_4_PARAMETER; i++) {
     resetValue(i);
   }
+  resetValue(CCS_DI_4_TYPE);
 }
 
 void Ccs::calcCountersStop(float reason)

@@ -13,11 +13,29 @@ static uint16_t uValue[ADC_CNANNELS_NUM*HC_POINTS_NUM*2];
 
 void Ccs::calcParametersTask()
 {
-  static int delay500ms = 0;
-  static int delay1000ms = 0;
-  static int delay5000ms = 0;
+  int time10ms = HAL_GetTick();
+  int time100ms = HAL_GetTick();
   while (1) {
-    osDelay(100);
+    osDelay(1);
+
+    calcDigitalInputs();
+
+    if ((HAL_GetTick() - time10ms) >= 10) {
+      time10ms = HAL_GetTick();
+
+
+    }
+
+    if ((HAL_GetTick() - time100ms) >= 100) {
+      time100ms = HAL_GetTick();
+
+      calcMotorVoltagePhase1();
+      calcMotorVoltagePhase2();
+      calcMotorVoltagePhase3();
+      calcMotorVoltageImbalance();
+      calcMotorCos();
+      calcMotorLoad();
+
 // TODO: Возможно нужно перенести вычисления в счётчик после получения данных
 //    calcInputVoltagePhase1();
 //    calcInputVoltagePhase2();
@@ -25,41 +43,14 @@ void Ccs::calcParametersTask()
 //    calcInputVoltagePhase12();
 //    calcInputVoltagePhase23();
 //    calcInputVoltagePhase31();
-    calcInputVoltageFromAdc();
-    calcInputVoltageImbalance();
-    calcInputCurrentImbalance();
-    calcResistanceIsolation();
+      calcInputVoltageFromAdc();
 
-    calcRegimeRun();
+      calcInputVoltageImbalance();
+      calcInputCurrentImbalance();
+      calcResistanceIsolation();
+      calcRegimeRun();
 
-    if (delay500ms >= 5) {
-      calcMotorVoltagePhase1();
-      calcMotorVoltagePhase2();
-      calcMotorVoltagePhase3();
-      calcMotorVoltageImbalance();
-      calcMotorCos();
-      calcMotorLoad();
-      delay500ms = 0;
-    }
-    else  {
-      delay500ms++;
-    }
-
-    if (delay1000ms >= 10) {
       calcAnalogInputs();
-      delay1000ms = 0;
-    }
-    else  {
-      delay1000ms++;
-    }
-
-    if (delay5000ms >= 50) {
-      calcTemperatureSTM32();
-      calcTemperatureCCS();
-      delay5000ms = 0;
-    }
-    else  {
-      delay5000ms++;
     }
   }
 }
@@ -580,19 +571,25 @@ void Ccs::calcInputVoltageFromAdc()
 
 void Ccs::calcDigitalInputs()
 {
-  uint8_t value[4];
-  static uint8_t valueOld[4];
-  static uint8_t count[4];
+  uint8_t value[14];
+  static uint8_t valueOld[14];
+  static uint8_t count[14];
 
-  for (int i = 0; i <= DI4; ++i) {
+  for (int i = 0; i <= DI5; ++i) {
     value[i] = !getDigitalInput(i);
     if (value[i] == valueOld[i]) {
       count[i]++;
-      if (count[i] >= 10) {
+      if (count[i] >= 100) {
         count[i] = 0;
-        if (getValue(CCS_DI_1_VALUE + i) != value[i]) {
-          if (setValue(CCS_DI_1_VALUE + i, value[i]) == ok_r)
-            changedDigitalInput(i);
+        if (i < DI5) {
+          if (getValue(CCS_DI_1_VALUE + i) != value[i]) {
+            if (setValue(CCS_DI_1_VALUE + i, value[i]) == ok_r)
+              changedDigitalInput(i);
+          }
+        } else if (i == DI5) {
+          setValue(CCS_DI_5_VALUE, value[i]);
+          if ((parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON))
+            setValue(CCS_DOOR_VALUE, !value[i]);
         }
       }
     } else {
@@ -600,6 +597,16 @@ void Ccs::calcDigitalInputs()
     }
     valueOld[i] = value[i];
   }
+
+  setValue(CCS_DI_6_VALUE, !getDigitalInput(DI6));
+  setValue(CCS_DI_7_VALUE, !getDigitalInput(DI7));
+  setValue(CCS_DI_8_VALUE, !getDigitalInput(DI8));
+  setValue(CCS_DI_9_VALUE, !getDigitalInput(DI9));
+  setValue(CCS_DI_10_VALUE, !getDigitalInput(DI10));
+  setValue(CCS_DI_11_VALUE, !getDigitalInput(DI11));
+  setValue(CCS_DI_12_VALUE, !getDigitalInput(DI12));
+  setValue(CCS_DI_13_VALUE, !getDigitalInput(DI13));
+  setValue(CCS_DI_14_VALUE, !getDigitalInput(DI14));
 }
 
 void Ccs::changedDigitalInput(int num)

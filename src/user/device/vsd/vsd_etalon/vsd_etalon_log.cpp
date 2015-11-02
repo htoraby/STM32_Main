@@ -1,4 +1,5 @@
 #include "vsd_etalon_log.h"
+#include "user_main.h"
 
 VsdEtalonLog::VsdEtalonLog()
   : VsdLog(VSD_LOG_UART, 115200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1)
@@ -13,7 +14,7 @@ VsdEtalonLog::~VsdEtalonLog()
 
 bool VsdEtalonLog::checkAlarm()
 {
-  return getDigitalInput(DI11);
+  return (!parameters.get(CCS_DI_11_VALUE) && (parameters.getValidity(CCS_DI_11_VALUE) == ok_r));
 }
 
 bool VsdEtalonLog::checkReady()

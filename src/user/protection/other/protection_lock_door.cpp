@@ -34,27 +34,7 @@ ProtectionLockDoor::~ProtectionLockDoor()
 
 bool ProtectionLockDoor::checkAlarm()
 {
-  /*
-  uint8_t i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14;
-  i1 = getDigitalInput(DI1);
-  i2 = getDigitalInput(DI2);
-  i3 = getDigitalInput(DI3);
-  i4 = getDigitalInput(DI4);
-  i5 = getDigitalInput(DI5);
-  i6 = getDigitalInput(DI6);
-  i7 = getDigitalInput(DI7);
-  i8 = getDigitalInput(DI8);
-  i9 = getDigitalInput(DI9);
-  i10 = getDigitalInput(DI10);
-  i11 = getDigitalInput(DI11);
-  i12 = getDigitalInput(DI12);
-  i13 = getDigitalInput(DI13);
-  i14 = getDigitalInput(DI14);
-  if ((i5 == 0) || (i1 == 1) || (i2 == 1) || (i3 == 1) || (i4 == 1)
-      || (i6 == 1) || (i7 == 1) || (i8 == 1) || (i9 == 1) || (i10 == 1)
-      || (i11 == 1) || (i12 == 1) || (i13 == 1) || (i14 == 1)) {
-  */
-  if (!getDigitalInput(DI5)) {
+  if (!parameters.get(CCS_DOOR_VALUE) && (parameters.getValidity(CCS_DOOR_VALUE) == ok_r)) {
     protReactEventId_ = LookDoorProtReactId;
     return true;
   }

@@ -4586,5 +4586,17 @@ void Vsd::initParameters()
   parameters_[VSD_BLDC_ANGLE_NOW - VSD_BEGIN].def                                = 0;
   parameters_[VSD_BLDC_ANGLE_NOW - VSD_BEGIN].discret                            = 1;
   parameters_[VSD_BLDC_ANGLE_NOW - VSD_BEGIN].code                               = 0;
+  // Состояние двери
+  parameters_[VSD_DOOR_VALUE - VSD_BEGIN].id                                     = VSD_DOOR_VALUE;
+  parameters_[VSD_DOOR_VALUE - VSD_BEGIN].access                                 = ACCESS_OPERATOR;
+  parameters_[VSD_DOOR_VALUE - VSD_BEGIN].operation                              = OPERATION_READ;
+  parameters_[VSD_DOOR_VALUE - VSD_BEGIN].physic                                 = PHYSIC_NUMERIC;
+  parameters_[VSD_DOOR_VALUE - VSD_BEGIN].validity                               = VALIDITY_ERROR;
+  parameters_[VSD_DOOR_VALUE - VSD_BEGIN].value.float_t                          = 0.0;
+  parameters_[VSD_DOOR_VALUE - VSD_BEGIN].min                                    = 0.0;
+  parameters_[VSD_DOOR_VALUE - VSD_BEGIN].max                                    = 1.0;
+  parameters_[VSD_DOOR_VALUE - VSD_BEGIN].def                                    = 0.0;
+  parameters_[VSD_DOOR_VALUE - VSD_BEGIN].discret                                = 1;
+  parameters_[VSD_DOOR_VALUE - VSD_BEGIN].code                                   = 0;
 }
 
