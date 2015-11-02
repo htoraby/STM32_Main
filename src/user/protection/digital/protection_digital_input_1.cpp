@@ -21,7 +21,7 @@ ProtectionDigitalInput1::ProtectionDigitalInput1()
   idRestartFirstTime_ = CCS_PROT_DI_1_RESTART_FIRST_TIME;
 
   lastReasonRun_ = LastReasonRunApvDigital1;
-  lastReasonStop_ = LastReasonStopDigital1;
+  lastReasonStop_ = LastReasonStopProtDigital1;
 
   protReactEventId_ = DigitalInput1ProtReactId;
   apvEventId_ = DigitalInput1ApvId;

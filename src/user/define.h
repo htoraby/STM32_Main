@@ -366,6 +366,10 @@ enum LastReasonStop {
   LastReasonStopCurrentMotor            = 104,  //!< "Предел тока двигателя"
   LastReasonStopOutOfSyncMotor          = 105,  //!< "Рассинхронизация ПВЭД"
   LastReasonStopHardwareVsd             = 106,  //!< "Аппаратные защиты ЧРП"
+  LastReasonStopProtDigital1,                   //!<
+  LastReasonStopProtDigital2,                   //!<
+  LastReasonStopProtDigital3,                   //!<
+  LastReasonStopProtDigital4,                   //!<
 
   LastReasonStopLast
 };

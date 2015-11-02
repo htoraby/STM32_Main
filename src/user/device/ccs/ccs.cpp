@@ -485,7 +485,11 @@ float Ccs::checkTypeStop()
   float reason = getValue(CCS_LAST_STOP_REASON_TMP);
   if ((reason == LastReasonStopOperator) ||
       (reason == LastReasonStopProgram) ||
-      (reason == LastReasonStopRemote)) {
+      (reason == LastReasonStopRemote) ||
+      (reason == LastReasonStopDigital1) ||
+      (reason == LastReasonStopDigital2) ||
+      (reason == LastReasonStopDigital3) ||
+      (reason == LastReasonStopDigital4)) {
     return parameters.get(VSD_TYPE_STOP);
   }
   else {
