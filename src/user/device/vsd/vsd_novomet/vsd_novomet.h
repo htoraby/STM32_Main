@@ -94,7 +94,6 @@ public:
   int setBaseVoltage(float value);
   int setBaseFrequency(float value);
 
-
   void getNewValue(uint16_t id);
   uint8_t setNewValue(uint16_t id, float value);
 

@@ -1857,6 +1857,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>РРЗ от дисбаланса напряжений</text>
+		<short_text>РРЗ от дисбаланса напряжений</short_text>
 		<code>13</code>
 		<comment>Защиты "Дисбаланс входных токов"</comment>
 	</param>
@@ -1891,6 +1892,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Дисбал.токов. Задержка активации</text>
+		<short_text>Дисбал.токов. Задержка активации</short_text>
 		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -1907,6 +1909,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Дисбал.токов. Задержка срабатывания</text>
+		<short_text>Дисбал.токов. Задержка срабатывания</short_text>
 		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -1923,6 +1926,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Дисбал.токов. Задержка АПВ</text>
+		<short_text>Дисбал.токов. Задержка АПВ</short_text>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -1939,6 +1943,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>9999.0</value>
 		<text>Дисбал.токов. Количество разрешенных АПВ</text>
+		<short_text>Дисбал.токов. Количество разрешенных АПВ</short_text>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -1955,6 +1960,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
 		<text>Сброс счетчиков АПВ по напряжению</text>
+		<short_text>Сброс счетчиков АПВ по напряжению</short_text>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -1970,6 +1976,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Дисбал.токов. Уставка дисбаланса напряжений</text>
+		<short_text>Дисбал.токов. Уставка дисбаланса напряжений</short_text>
 		<code>13</code>
 		<comment>Уставка срабатывания защиты</comment>
 	</param>
@@ -1985,7 +1992,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Дисбал.токов. Напряжение АПВ</text>
-		<short_text>NULL</short_text>
+		<short_text>Дисбал.токов. Напряжение АПВ</short_text>
 		<form>NULL</form>
 		<code>13</code>
 		<comment>Условие АПВ уставка</comment>
@@ -2106,6 +2113,7 @@
 		<name>CCS_PROT_SUPPLY_PHASE_ROTATION_MODE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>2.0</max>
 		<def>0.0</def>
@@ -2121,6 +2129,7 @@
 		<name>CCS_PROT_SUPPLY_PHASE_ROTATION_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
 		<def>0.0</def>
@@ -2186,6 +2195,7 @@
 		<name>CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>9999.0</max>
 		<def>9999.0</def>
@@ -2217,6 +2227,7 @@
 		<name>CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -2230,6 +2241,7 @@
 		<name>CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -2245,6 +2257,7 @@
 		<name>CCS_PROT_SUPPLY_PHASE_ROTATION_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
 		<def>0.0</def>
@@ -2265,6 +2278,7 @@
 		<name>CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
 		<def>0.0</def>
@@ -2282,6 +2296,7 @@
 		<name>CCS_PROT_SUPPLY_PHASE_ROTATION_STATE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>3.0</max>
 		<def>0.0</def>
@@ -2299,6 +2314,7 @@
 		<name>CCS_PROT_SUPPLY_PHASE_ROTATION_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>1000000.0</max>
 		<def>0.0</def>
@@ -2316,6 +2332,7 @@
 		<name>CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>9999.0</max>
 		<def>0.0</def>
@@ -2333,6 +2350,7 @@
 		<name>CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FIRST_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0</min>
 		<max>4294967296</max>
 		<def>0</def>
@@ -3633,6 +3651,8 @@
 		<id>179</id>
 		<name>CCS_PROT_MOTOR_ASYNC_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -3645,6 +3665,7 @@
 		<id>180</id>
 		<name>CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
@@ -3657,6 +3678,7 @@
 		<id>181</id>
 		<name>CCS_PROT_MOTOR_ASYNC_TRIP_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
@@ -3669,6 +3691,7 @@
 		<id>182</id>
 		<name>CCS_PROT_MOTOR_ASYNC_RESTART_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
@@ -3681,6 +3704,8 @@
 		<id>183</id>
 		<name>CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -3692,6 +3717,8 @@
 		<id>184</id>
 		<name>CCS_PROT_MOTOR_ASYNC_RESTART_RESET</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -3722,6 +3749,8 @@
 		<id>186</id>
 		<name>CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -3733,6 +3762,8 @@
 		<id>187</id>
 		<name>CCS_PROT_MOTOR_ASYNC_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -3744,6 +3775,8 @@
 		<id>188</id>
 		<name>CCS_PROT_MOTOR_ASYNC_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -3758,6 +3791,8 @@
 		<id>189</id>
 		<name>CCS_PROT_MOTOR_ASYNC_STATE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -3772,6 +3807,8 @@
 		<id>190</id>
 		<name>CCS_PROT_MOTOR_ASYNC_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -3786,6 +3823,8 @@
 		<id>191</id>
 		<name>CCS_PROT_MOTOR_ASYNC_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -3800,6 +3839,8 @@
 		<id>192</id>
 		<name>CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -3814,6 +3855,8 @@
 		<id>193</id>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -3826,6 +3869,8 @@
 		<id>194</id>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -3840,6 +3885,7 @@
 		<id>195</id>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
@@ -3852,6 +3898,7 @@
 		<id>196</id>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
@@ -3864,6 +3911,7 @@
 		<id>197</id>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
@@ -3876,6 +3924,8 @@
 		<id>198</id>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -3887,6 +3937,8 @@
 		<id>199</id>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -3898,6 +3950,8 @@
 		<id>200</id>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -3909,6 +3963,8 @@
 		<id>201</id>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -3920,6 +3976,8 @@
 		<id>202</id>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -3931,6 +3989,8 @@
 		<id>203</id>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -3945,6 +4005,8 @@
 		<id>204</id>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_STATE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -3959,6 +4021,8 @@
 		<id>205</id>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -3973,6 +4037,8 @@
 		<id>206</id>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -3987,6 +4053,8 @@
 		<id>207</id>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -4255,7 +4323,7 @@
 		<name>CCS_PROT_DHS_PRESSURE_INTAKE_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMERIC</physic>
+		<physic>PHYSIC_TIME</physic>
 		<min>0</min>
 		<max>4294967296</max>
 		<def>0</def>
@@ -4572,7 +4640,7 @@
 		<name>CCS_PROT_DHS_TEMPERATURE_MOTOR_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMERIC</physic>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>4294967296</max>
 		<def>0</def>
@@ -4947,10 +5015,13 @@
 		<id>253</id>
 		<name>CCS_PROT_DHS_VIBRATION_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<text>РР3 от высокой вибрации</text>
 		<code>0</code>
 		<comment>Защита "Вибрация двигателя"</comment>
 	</param>
@@ -4958,6 +5029,8 @@
 		<id>254</id>
 		<name>CCS_PROT_DHS_VIBRATION_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -4972,11 +5045,13 @@
 		<id>255</id>
 		<name>CCS_PROT_DHS_VIBRATION_ACTIV_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<text>Защита температура двигателя. Задержка активации</text>
 		<code>0</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -4984,11 +5059,13 @@
 		<id>256</id>
 		<name>CCS_PROT_DHS_VIBRATION_TRIP_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<text>Защита температура двигателя. Задержка срабатывания</text>
 		<code>0</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -4996,11 +5073,13 @@
 		<id>257</id>
 		<name>CCS_PROT_DHS_VIBRATION_RESTART_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<text>Защита температура двигателя. Задержка АПВ</text>
 		<code>0</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -5008,10 +5087,13 @@
 		<id>258</id>
 		<name>CCS_PROT_DHS_VIBRATION_RESTART_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<text>Защита температура двигателя. Количество разрешенных АПВ</text>
 		<code>0</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -5019,10 +5101,13 @@
 		<id>259</id>
 		<name>CCS_PROT_DHS_VIBRATION_RESTART_RESET</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<text>Защита температура двигателя. Сброс счетчиков АПВ</text>
 		<code>0</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -5031,10 +5116,12 @@
 		<name>CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_SPEED</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<text>Защита температура двигателя. Макс.температура</text>
 		<code>0</code>
 		<comment>Уставка срабатывания защиты</comment>
 	</param>
@@ -5043,10 +5130,12 @@
 		<name>CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_SPEED</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<text>Защита температура двигателя. Мин.температура</text>
 		<code>0</code>
 		<comment>Условие АПВ уставка</comment>
 	</param>
@@ -5054,6 +5143,8 @@
 		<id>262</id>
 		<name>CCS_PROT_DHS_VIBRATION_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5065,6 +5156,8 @@
 		<id>263</id>
 		<name>CCS_PROT_DHS_VIBRATION_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5079,6 +5172,8 @@
 		<id>264</id>
 		<name>CCS_PROT_DHS_VIBRATION_STATE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5093,6 +5188,8 @@
 		<id>265</id>
 		<name>CCS_PROT_DHS_VIBRATION_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5107,6 +5204,8 @@
 		<id>266</id>
 		<name>CCS_PROT_DHS_VIBRATION_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5121,6 +5220,8 @@
 		<id>267</id>
 		<name>CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5135,6 +5236,8 @@
 		<id>268</id>
 		<name>CCS_PROT_AI_1_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5146,6 +5249,8 @@
 		<id>269</id>
 		<name>CCS_PROT_AI_1_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5160,6 +5265,7 @@
 		<id>270</id>
 		<name>CCS_PROT_AI_1_ACTIV_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
@@ -5172,6 +5278,8 @@
 		<id>271</id>
 		<name>CCS_PROT_AI_1_TRIP_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5183,6 +5291,8 @@
 		<id>272</id>
 		<name>CCS_PROT_AI_1_RESTART_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5194,6 +5304,8 @@
 		<id>273</id>
 		<name>CCS_PROT_AI_1_RESTART_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5205,6 +5317,8 @@
 		<id>274</id>
 		<name>CCS_PROT_AI_1_RESTART_RESET</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5216,6 +5330,7 @@
 		<id>275</id>
 		<name>CCS_PROT_AI_1_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5227,6 +5342,7 @@
 		<id>276</id>
 		<name>CCS_PROT_AI_1_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5238,6 +5354,8 @@
 		<id>277</id>
 		<name>CCS_PROT_AI_1_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5249,6 +5367,8 @@
 		<id>278</id>
 		<name>CCS_PROT_AI_1_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5263,6 +5383,8 @@
 		<id>279</id>
 		<name>CCS_PROT_AI_1_STATE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5277,6 +5399,8 @@
 		<id>280</id>
 		<name>CCS_PROT_AI_1_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5291,6 +5415,8 @@
 		<id>281</id>
 		<name>CCS_PROT_AI_1_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5305,6 +5431,8 @@
 		<id>282</id>
 		<name>CCS_PROT_AI_1_RESTART_FIRST_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5319,6 +5447,8 @@
 		<id>283</id>
 		<name>CCS_PROT_AI_2_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5330,6 +5460,8 @@
 		<id>284</id>
 		<name>CCS_PROT_AI_2_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5344,6 +5476,8 @@
 		<id>285</id>
 		<name>CCS_PROT_AI_2_ACTIV_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5355,6 +5489,8 @@
 		<id>286</id>
 		<name>CCS_PROT_AI_2_TRIP_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5366,6 +5502,8 @@
 		<id>287</id>
 		<name>CCS_PROT_AI_2_RESTART_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5377,6 +5515,8 @@
 		<id>288</id>
 		<name>CCS_PROT_AI_2_RESTART_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5388,6 +5528,8 @@
 		<id>289</id>
 		<name>CCS_PROT_AI_2_RESTART_RESET</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5399,6 +5541,7 @@
 		<id>290</id>
 		<name>CCS_PROT_AI_2_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5410,6 +5553,7 @@
 		<id>291</id>
 		<name>CCS_PROT_AI_2_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5421,6 +5565,8 @@
 		<id>292</id>
 		<name>CCS_PROT_AI_2_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5432,6 +5578,8 @@
 		<id>293</id>
 		<name>CCS_PROT_AI_2_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5446,6 +5594,8 @@
 		<id>294</id>
 		<name>CCS_PROT_AI_2_STATE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5460,6 +5610,8 @@
 		<id>295</id>
 		<name>CCS_PROT_AI_2_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5474,6 +5626,8 @@
 		<id>296</id>
 		<name>CCS_PROT_AI_2_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5488,6 +5642,8 @@
 		<id>297</id>
 		<name>CCS_PROT_AI_2_RESTART_FIRST_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5502,6 +5658,8 @@
 		<id>298</id>
 		<name>CCS_PROT_AI_3_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5513,6 +5671,8 @@
 		<id>299</id>
 		<name>CCS_PROT_AI_3_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5527,6 +5687,8 @@
 		<id>300</id>
 		<name>CCS_PROT_AI_3_ACTIV_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5538,6 +5700,8 @@
 		<id>301</id>
 		<name>CCS_PROT_AI_3_TRIP_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5549,6 +5713,8 @@
 		<id>302</id>
 		<name>CCS_PROT_AI_3_RESTART_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5560,6 +5726,8 @@
 		<id>303</id>
 		<name>CCS_PROT_AI_3_RESTART_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5571,6 +5739,8 @@
 		<id>304</id>
 		<name>CCS_PROT_AI_3_RESTART_RESET</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5582,6 +5752,7 @@
 		<id>305</id>
 		<name>CCS_PROT_AI_3_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5593,6 +5764,7 @@
 		<id>306</id>
 		<name>CCS_PROT_AI_3_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5604,6 +5776,8 @@
 		<id>307</id>
 		<name>CCS_PROT_AI_3_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5615,6 +5789,8 @@
 		<id>308</id>
 		<name>CCS_PROT_AI_3_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5629,6 +5805,8 @@
 		<id>309</id>
 		<name>CCS_PROT_AI_3_STATE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5643,6 +5821,8 @@
 		<id>310</id>
 		<name>CCS_PROT_AI_3_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5657,6 +5837,8 @@
 		<id>311</id>
 		<name>CCS_PROT_AI_3_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5671,6 +5853,8 @@
 		<id>312</id>
 		<name>CCS_PROT_AI_3_RESTART_FIRST_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5685,6 +5869,8 @@
 		<id>313</id>
 		<name>CCS_PROT_AI_4_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5696,6 +5882,8 @@
 		<id>314</id>
 		<name>CCS_PROT_AI_4_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5710,6 +5898,8 @@
 		<id>315</id>
 		<name>CCS_PROT_AI_4_ACTIV_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5721,6 +5911,8 @@
 		<id>316</id>
 		<name>CCS_PROT_AI_4_TRIP_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5732,6 +5924,8 @@
 		<id>317</id>
 		<name>CCS_PROT_AI_4_RESTART_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5743,6 +5937,8 @@
 		<id>318</id>
 		<name>CCS_PROT_AI_4_RESTART_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5754,6 +5950,8 @@
 		<id>319</id>
 		<name>CCS_PROT_AI_4_RESTART_RESET</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5765,6 +5963,7 @@
 		<id>320</id>
 		<name>CCS_PROT_AI_4_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5776,6 +5975,7 @@
 		<id>321</id>
 		<name>CCS_PROT_AI_4_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5787,6 +5987,8 @@
 		<id>322</id>
 		<name>CCS_PROT_AI_4_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5798,6 +6000,8 @@
 		<id>323</id>
 		<name>CCS_PROT_AI_4_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5812,6 +6016,8 @@
 		<id>324</id>
 		<name>CCS_PROT_AI_4_STATE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5826,6 +6032,8 @@
 		<id>325</id>
 		<name>CCS_PROT_AI_4_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5840,6 +6048,8 @@
 		<id>326</id>
 		<name>CCS_PROT_AI_4_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -5854,6 +6064,8 @@
 		<id>327</id>
 		<name>CCS_PROT_AI_4_RESTART_FIRST_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -7124,6 +7336,8 @@
 		<id>388</id>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -7135,6 +7349,8 @@
 		<id>389</id>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -7148,6 +7364,8 @@
 		<id>390</id>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -7158,6 +7376,8 @@
 		<id>391</id>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -7168,6 +7388,8 @@
 		<id>392</id>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -7178,6 +7400,8 @@
 		<id>393</id>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -7188,6 +7412,8 @@
 		<id>394</id>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -7198,6 +7424,8 @@
 		<id>395</id>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -7208,6 +7436,7 @@
 		<id>396</id>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -7218,6 +7447,7 @@
 		<id>397</id>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -7228,6 +7458,7 @@
 		<id>398</id>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -7238,6 +7469,7 @@
 		<id>399</id>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_STATE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -7248,6 +7480,7 @@
 		<id>400</id>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -7258,6 +7491,7 @@
 		<id>401</id>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -8732,6 +8966,7 @@
 		<id>483</id>
 		<name>CCS_RGM_JARRING_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -8744,6 +8979,7 @@
 		<id>484</id>
 		<name>CCS_RGM_JARRING_PERIOD</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -8756,6 +8992,7 @@
 		<id>485</id>
 		<name>CCS_RGM_JARRING_UPDFREQ</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -8768,6 +9005,7 @@
 		<id>486</id>
 		<name>CCS_RGM_JARRING_UPTIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -8780,6 +9018,7 @@
 		<id>487</id>
 		<name>CCS_RGM_JARRING_DOWNDFREQ</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -8792,6 +9031,7 @@
 		<id>488</id>
 		<name>CCS_RGM_JARRING_DOWNTIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -10812,6 +11052,7 @@
 		<id>591</id>
 		<name>CCS_VSD_CONDITION</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -11450,6 +11691,7 @@
 		<id>634</id>
 		<name>CCS_LAST_RUN_REASON_TMP</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -12108,6 +12350,7 @@
 		<id>668</id>
 		<name>CCS_LAST_STOP_REASON_TMP</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -14916,6 +15159,40 @@
 	</param>
 	<param>
 		<id>809</id>
+		<name>CCS_TEMPERATURE_STM32</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32000.0</min>
+		<max>32000.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXX_X</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>810</id>
+		<name>CCS_TEMPERATURE_CCS</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>-32000.0</min>
+		<max>32000.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXX_X</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>811</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
@@ -15356,6 +15633,7 @@
 		<id>10022</id>
 		<name>VSD_BACK_EMF</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -15993,6 +16271,7 @@
 		<id>10055</id>
 		<name>VSD_CONTROL_WORD_1</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16005,6 +16284,7 @@
 		<id>10056</id>
 		<name>VSD_STATUS_WORD_1</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16071,6 +16351,7 @@
 		<id>10060</id>
 		<name>VSD_CURRENT_REGULATOR</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16082,6 +16363,7 @@
 		<id>10061</id>
 		<name>VSD_UF_U_FORCE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16093,6 +16375,7 @@
 		<id>10062</id>
 		<name>VSD_UF_F_FORCE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16104,6 +16387,7 @@
 		<id>10063</id>
 		<name>VSD_IFB_COMP</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16115,6 +16399,7 @@
 		<id>10064</id>
 		<name>VSD_VUOUT_PROP</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16126,6 +16411,7 @@
 		<id>10065</id>
 		<name>VSD_ILIMIT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16137,6 +16423,7 @@
 		<id>10066</id>
 		<name>VSD_VUOUT_INTEG</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16148,6 +16435,7 @@
 		<id>10067</id>
 		<name>VSD_VTOUF_INTEG</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16159,6 +16447,7 @@
 		<id>10068</id>
 		<name>VSD_LOUT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16170,6 +16459,7 @@
 		<id>10069</id>
 		<name>VSD_SW_STARTUP_FREQUENCY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16181,6 +16471,7 @@
 		<id>10070</id>
 		<name>VSD_SW_STARTUP_ANGLE_OSC</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16192,6 +16483,7 @@
 		<id>10071</id>
 		<name>VSD_SW_STARTUP_ANGLE_SHIFT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16203,6 +16495,7 @@
 		<id>10072</id>
 		<name>VSD_SW_STARTUP_OSC_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16214,6 +16507,7 @@
 		<id>10073</id>
 		<name>VSD_SW_STARTUP_ROTATIONS</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16225,6 +16519,7 @@
 		<id>10074</id>
 		<name>VSD_SW_STARTUP_U_PULSE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16236,6 +16531,7 @@
 		<id>10075</id>
 		<name>VSD_SW_STARTUP_I_LIM</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16247,6 +16543,7 @@
 		<id>10076</id>
 		<name>VSD_SW_STARTUP_I_LIM_PULSE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16279,6 +16576,7 @@
 		<id>10078</id>
 		<name>VSD_REGULATOR_QUEUE_1</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16291,6 +16589,7 @@
 		<id>10079</id>
 		<name>VSD_REGULATOR_QUEUE_2</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16303,6 +16602,7 @@
 		<id>10080</id>
 		<name>VSD_REGULATOR_QUEUE_3</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16315,6 +16615,7 @@
 		<id>10081</id>
 		<name>VSD_REGULATOR_QUEUE_4</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16327,6 +16628,7 @@
 		<id>10082</id>
 		<name>VSD_REGULATOR_QUEUE_5</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16339,6 +16641,7 @@
 		<id>10083</id>
 		<name>VSD_DELETE_10083</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16350,6 +16653,7 @@
 		<id>10084</id>
 		<name>VSD_UD_HIGH_FAULT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16361,6 +16665,7 @@
 		<id>10085</id>
 		<name>VSD_UIN_ASYM_LEVEL</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16372,6 +16677,7 @@
 		<id>10086</id>
 		<name>VSD_UIN_ASYM_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16419,6 +16725,7 @@
 		<id>10089</id>
 		<name>VSD_RES_PROP_GAIN</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16451,6 +16758,7 @@
 		<id>10091</id>
 		<name>VSD_RES_IAMP_VALID</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16462,6 +16770,7 @@
 		<id>10092</id>
 		<name>VSD_IB</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16473,6 +16782,7 @@
 		<id>10093</id>
 		<name>VSD_PHB</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16484,6 +16794,7 @@
 		<id>10094</id>
 		<name>VSD_IC</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16495,6 +16806,7 @@
 		<id>10095</id>
 		<name>VSD_PHC</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16568,6 +16880,7 @@
 		<id>10099</id>
 		<name>VSD_TIME_SECOND</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16580,6 +16893,7 @@
 		<id>10100</id>
 		<name>VSD_TIME_MINUTE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16592,6 +16906,7 @@
 		<id>10101</id>
 		<name>VSD_TIME_HOUR</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16604,6 +16919,7 @@
 		<id>10102</id>
 		<name>VSD_TIME_DAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16616,6 +16932,7 @@
 		<id>10103</id>
 		<name>VSD_TIME_MONTH</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16628,6 +16945,7 @@
 		<id>10104</id>
 		<name>VSD_TIME_YEAR</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16678,6 +16996,7 @@
 		<id>10107</id>
 		<name>VSD_AST_LOUT_1_0</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16689,6 +17008,7 @@
 		<id>10108</id>
 		<name>VSD_AST_STANDING</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16700,6 +17020,7 @@
 		<id>10109</id>
 		<name>VSD_STATUS_WORD_2</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16711,6 +17032,7 @@
 		<id>10110</id>
 		<name>VSD_JARRING_PERIOD</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16722,6 +17044,7 @@
 		<id>10111</id>
 		<name>VSD_JARRING_UPDFREQ</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16733,6 +17056,7 @@
 		<id>10112</id>
 		<name>VSD_JARRING_UPTIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16744,6 +17068,7 @@
 		<id>10113</id>
 		<name>VSD_JARRING_DOWNDFREQ</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16755,6 +17080,7 @@
 		<id>10114</id>
 		<name>VSD_JARRING_DOWNTIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16788,6 +17114,7 @@
 		<id>10116</id>
 		<name>VSD_JARRING_TICK_CNT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16800,6 +17127,7 @@
 		<id>10117</id>
 		<name>VSD_JARRING_SECOND_CNT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16812,6 +17140,7 @@
 		<id>10118</id>
 		<name>VSD_START_FREQ</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>100</discret>
@@ -16823,6 +17152,7 @@
 		<id>10119</id>
 		<name>VSD_IA</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16834,6 +17164,7 @@
 		<id>10120</id>
 		<name>VSD_PHA</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16845,6 +17176,7 @@
 		<id>10121</id>
 		<name>VSD_PHOUT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16856,6 +17188,7 @@
 		<id>10122</id>
 		<name>VSD_TEST0</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16868,6 +17201,7 @@
 		<id>10123</id>
 		<name>VSD_TEST1</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16880,6 +17214,7 @@
 		<id>10124</id>
 		<name>VSD_TEST2</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16892,6 +17227,7 @@
 		<id>10125</id>
 		<name>VSD_TEST3</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16904,6 +17240,7 @@
 		<id>10126</id>
 		<name>VSD_TEST4</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16916,6 +17253,7 @@
 		<id>10127</id>
 		<name>VSD_TEST5</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16928,6 +17266,7 @@
 		<id>10128</id>
 		<name>VSD_TEST6</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16940,6 +17279,7 @@
 		<id>10129</id>
 		<name>VSD_TEST7</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16952,6 +17292,7 @@
 		<id>10130</id>
 		<name>VSD_IOUT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16963,6 +17304,7 @@
 		<id>10131</id>
 		<name>VSD_STATUS_WORD_7</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -16974,6 +17316,7 @@
 		<id>10132</id>
 		<name>VSD_SOUT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17021,6 +17364,7 @@
 		<id>10135</id>
 		<name>VSD_OVERPWM2_ANGLE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17032,6 +17376,7 @@
 		<id>10136</id>
 		<name>VSD_OVERPWM_GAIN</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17064,6 +17409,7 @@
 		<id>10138</id>
 		<name>VSD_FC_IRMS</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17075,6 +17421,7 @@
 		<id>10139</id>
 		<name>VSD_FC_T_OVERLOAD</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17084,6 +17431,7 @@
 		<id>10140</id>
 		<name>VSD_FC_ILIM_LONG</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17158,6 +17506,7 @@
 		<id>10144</id>
 		<name>VSD_M_I_FAST</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17169,6 +17518,7 @@
 		<id>10145</id>
 		<name>VSD_T_BLANK</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17180,6 +17530,7 @@
 		<id>10146</id>
 		<name>VSD_PID_I_REF</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17191,6 +17542,7 @@
 		<id>10147</id>
 		<name>VSD_PID_T_REG</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17202,6 +17554,7 @@
 		<id>10148</id>
 		<name>VSD_PID_T_REG_1</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17213,6 +17566,7 @@
 		<id>10149</id>
 		<name>VSD_STATUS_WORD_3</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17224,6 +17578,7 @@
 		<id>10150</id>
 		<name>VSD_CONFIG_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17275,6 +17630,7 @@
 		<id>10153</id>
 		<name>VSD_INDEX</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17286,6 +17642,7 @@
 		<id>10154</id>
 		<name>VSD_UNIT_SPEED</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17298,6 +17655,7 @@
 		<id>10155</id>
 		<name>VSD_TORQUE_CHARACTERISTIC</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17310,6 +17668,7 @@
 		<id>10156</id>
 		<name>VSD_OVERLOAD_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17322,6 +17681,7 @@
 		<id>10157</id>
 		<name>VSD_DAMPING_GANE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17334,6 +17694,7 @@
 		<id>10158</id>
 		<name>VSD_LOW_SPEED_FILTER_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17345,6 +17706,7 @@
 		<id>10159</id>
 		<name>VSD_HIGH_SPEED_FILTER_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17356,6 +17718,7 @@
 		<id>10160</id>
 		<name>VSD_RATE_TORQUE_MOTOR</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17367,6 +17730,7 @@
 		<id>10161</id>
 		<name>VSD_RESISTANCE_STATOR</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17378,6 +17742,7 @@
 		<id>10162</id>
 		<name>VSD_UF_CHARACTERISTIC_U</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17389,6 +17754,7 @@
 		<id>10163</id>
 		<name>VSD_UF_CHARACTERISTIC_F</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17400,6 +17766,7 @@
 		<id>10164</id>
 		<name>VSD_RESONANCE_REMOVE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17412,6 +17779,7 @@
 		<id>10165</id>
 		<name>VSD_RESONANCE_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17424,6 +17792,7 @@
 		<id>10166</id>
 		<name>VSD_MIN_CURRENT_LOW_SPEED</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17436,6 +17805,7 @@
 		<id>10167</id>
 		<name>VSD_PM_START_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17448,6 +17818,7 @@
 		<id>10168</id>
 		<name>VSD_START_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17459,6 +17830,7 @@
 		<id>10169</id>
 		<name>VSD_START_FUNCTION</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17471,6 +17843,7 @@
 		<id>10170</id>
 		<name>VSD_STOP_FUNCTION</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17483,6 +17856,7 @@
 		<id>10171</id>
 		<name>VSD_STOP_SPEED</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17495,6 +17869,7 @@
 		<id>10172</id>
 		<name>VSD_CONTROL_TERMISTOR_MTR</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17507,6 +17882,7 @@
 		<id>10173</id>
 		<name>VSD_THERMISTOR_RESOURCE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17519,6 +17895,7 @@
 		<id>10174</id>
 		<name>VSD_PARKING_CURRENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17552,6 +17929,7 @@
 		<id>10176</id>
 		<name>VSD_OVERVOLTAGE_CONTROL</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17564,6 +17942,7 @@
 		<id>10177</id>
 		<name>VSD_MIN_REFERENCE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17576,6 +17955,7 @@
 		<id>10178</id>
 		<name>VSD_MAX_REFERENCE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17588,6 +17968,7 @@
 		<id>10179</id>
 		<name>VSD_RESOURCE_TASK_1</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17600,6 +17981,7 @@
 		<id>10180</id>
 		<name>VSD_RESOURCE_TASK_2</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17612,6 +17994,7 @@
 		<id>10181</id>
 		<name>VSD_RESOURCE_TASK_3</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17624,6 +18007,7 @@
 		<id>10182</id>
 		<name>VSD_TYPE_SPEED_CHANGE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17636,6 +18020,7 @@
 		<id>10183</id>
 		<name>VSD_TIMER_DISP_FIX_SPEED</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17647,6 +18032,7 @@
 		<id>10184</id>
 		<name>VSD_TIMER_DELAY_FIX_SPEED</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17679,6 +18065,7 @@
 		<id>10186</id>
 		<name>VSD_TORQUE_LIMIT_GEN</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17712,6 +18099,7 @@
 		<id>10188</id>
 		<name>VSD_MAX_OUTPUT_FREQUENCY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17723,6 +18111,7 @@
 		<id>10189</id>
 		<name>VSD_MTR_FEEDBACK_LOSS_FUNC</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17735,6 +18124,7 @@
 		<id>10190</id>
 		<name>VSD_TRACK_ERROR_FUNCTION</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17747,6 +18137,7 @@
 		<id>10191</id>
 		<name>VSD_TRACK_ERROR</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17759,6 +18150,7 @@
 		<id>10192</id>
 		<name>VSD_TRACK_ERROR_TIMEOUT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17771,6 +18163,7 @@
 		<id>10193</id>
 		<name>VSD_TRACK_ERROR_RAMPING</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17783,6 +18176,7 @@
 		<id>10194</id>
 		<name>VSD_TRACK_ERROR_RAMP_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17795,6 +18189,7 @@
 		<id>10195</id>
 		<name>VSD_TRACK_ERROR_AFTER_RAMP</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17807,6 +18202,7 @@
 		<id>10196</id>
 		<name>VSD_WARNING_CURRENT_LOW</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17819,6 +18215,7 @@
 		<id>10197</id>
 		<name>VSD_WARNING_CURRENT_HIGH</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17831,6 +18228,7 @@
 		<id>10198</id>
 		<name>VSD_WARNING_SPEED_LOW</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17843,6 +18241,7 @@
 		<id>10199</id>
 		<name>VSD_TERMINAL_27_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17855,6 +18254,7 @@
 		<id>10200</id>
 		<name>VSD_TERMINAL_29_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17867,6 +18267,7 @@
 		<id>10201</id>
 		<name>VSD_DI_18</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17879,6 +18280,7 @@
 		<id>10202</id>
 		<name>VSD_DI_19</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17891,6 +18293,7 @@
 		<id>10203</id>
 		<name>VSD_DI_27</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17903,6 +18306,7 @@
 		<id>10204</id>
 		<name>VSD_DI_32</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17915,6 +18319,7 @@
 		<id>10205</id>
 		<name>VSD_DI_33</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17927,6 +18332,7 @@
 		<id>10206</id>
 		<name>VSD_TERMINAL_27_DI</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17939,6 +18345,7 @@
 		<id>10207</id>
 		<name>VSD_TERMINAL_29_DI</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17951,6 +18358,7 @@
 		<id>10208</id>
 		<name>VSD_FUNCTION_RELE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17963,6 +18371,7 @@
 		<id>10209</id>
 		<name>VSD_ON_DELAY_RELAY</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17975,6 +18384,7 @@
 		<id>10210</id>
 		<name>VSD_42_AO</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17987,6 +18397,7 @@
 		<id>10211</id>
 		<name>VSD_SL_CONTROLLER_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -17999,6 +18410,7 @@
 		<id>10212</id>
 		<name>VSD_SL_START_EVENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18011,6 +18423,7 @@
 		<id>10213</id>
 		<name>VSD_SL_STOP_EVENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18023,6 +18436,7 @@
 		<id>10214</id>
 		<name>VSD_SL_RESET</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18035,6 +18449,7 @@
 		<id>10215</id>
 		<name>VSD_SL_10</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18047,6 +18462,7 @@
 		<id>10216</id>
 		<name>VSD_SL_11</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18059,6 +18475,7 @@
 		<id>10217</id>
 		<name>VSD_SL_12</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18071,6 +18488,7 @@
 		<id>10218</id>
 		<name>VSD_SL_15</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18083,6 +18501,7 @@
 		<id>10219</id>
 		<name>VSD_SL_16</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18095,6 +18514,7 @@
 		<id>10220</id>
 		<name>VSD_SL_20</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18107,6 +18527,7 @@
 		<id>10221</id>
 		<name>VSD_SL_40</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18119,6 +18540,7 @@
 		<id>10222</id>
 		<name>VSD_SL_41</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18131,6 +18553,7 @@
 		<id>10223</id>
 		<name>VSD_SL_42</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18143,6 +18566,7 @@
 		<id>10224</id>
 		<name>VSD_SL_43</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18155,6 +18579,7 @@
 		<id>10225</id>
 		<name>VSD_SL_44</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18167,6 +18592,7 @@
 		<id>10226</id>
 		<name>VSD_SL_51</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18179,6 +18605,7 @@
 		<id>10227</id>
 		<name>VSD_SL_52</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18212,6 +18639,7 @@
 		<id>10229</id>
 		<name>VSD_OVERMODULATION</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18224,6 +18652,7 @@
 		<id>10230</id>
 		<name>VSD_DEAD_TIME_COMPENSATION</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18236,6 +18665,7 @@
 		<id>10231</id>
 		<name>VSD_MAINS_FAILURE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18269,6 +18699,7 @@
 		<id>10233</id>
 		<name>VSD_RESET_MODE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18281,6 +18712,7 @@
 		<id>10234</id>
 		<name>VSD_AUTOSTART_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18293,6 +18725,7 @@
 		<id>10235</id>
 		<name>VSD_DELAY_CURRENT_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18305,6 +18738,7 @@
 		<id>10236</id>
 		<name>VSD_DELAY_TORQUE_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18317,6 +18751,7 @@
 		<id>10237</id>
 		<name>VSD_FIL_TIME_CURRENT_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18328,6 +18763,7 @@
 		<id>10238</id>
 		<name>VSD_DC_COMPENSATION</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18339,6 +18775,7 @@
 		<id>10239</id>
 		<name>VSD_FAN_CONTROL</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18350,6 +18787,7 @@
 		<id>10240</id>
 		<name>VSD_OUT_FILTER</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18361,6 +18799,7 @@
 		<id>10241</id>
 		<name>VSD_FAIL_RESET</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18373,6 +18812,7 @@
 		<id>10242</id>
 		<name>VSD_SOFT_VERSION</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18384,6 +18824,7 @@
 		<id>10243</id>
 		<name>VSD_DELETE_10243</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18395,6 +18836,7 @@
 		<id>10244</id>
 		<name>VSD_DELETE_10244</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18406,6 +18848,7 @@
 		<id>10245</id>
 		<name>VSD_OUT_CURRENT_MOTOR</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18417,6 +18860,7 @@
 		<id>10246</id>
 		<name>VSD_RADIATOR_TEMPERATURE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
@@ -18431,6 +18875,7 @@
 		<id>10247</id>
 		<name>VSD_CONTROL_TEMPERATURE</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
@@ -18445,6 +18890,8 @@
 		<id>10248</id>
 		<name>VSD_DI_VSD</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18456,6 +18903,8 @@
 		<id>10249</id>
 		<name>VSD_LAST_ALARM</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18467,6 +18916,8 @@
 		<id>10250</id>
 		<name>VSD_ALARM_WORD_1</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18478,6 +18929,8 @@
 		<id>10251</id>
 		<name>VSD_ALARM_WORD_2</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18489,6 +18942,8 @@
 		<id>10252</id>
 		<name>VSD_WARNING_WORD_1</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18500,6 +18955,8 @@
 		<id>10253</id>
 		<name>VSD_WARNING_WORD_2</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18511,6 +18968,7 @@
 		<id>10254</id>
 		<name>VSD_HIGH_START_TORQUE_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18523,6 +18981,7 @@
 		<id>10255</id>
 		<name>VSD_HIGH_START_TORQUE_CURRENT</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18535,6 +18994,7 @@
 		<id>10256</id>
 		<name>VSD_LOCK_ROTOR_PROTECTION</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -18547,6 +19007,8 @@
 		<id>10257</id>
 		<name>VSD_LOCK_ROTOR_TIME</name>
 		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
 		<discret>1</discret>
@@ -21159,6 +21621,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Сопротивление изоляции</comment>
 	</param>
@@ -21231,6 +21694,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Ускорение по оси X на приёме</comment>
 	</param>
@@ -21244,6 +21708,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Ускорение по оси Y на приёме</comment>
 	</param>
@@ -21357,6 +21822,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Ускорение по оси по трём осям</comment>
 	</param>
@@ -21370,6 +21836,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<text>Максимальное давление на приёме насоса</text>
 		<short_text>Макс.Рвх</short_text>
 		<form>1.5 Текущие параметры ТМС</form>
@@ -21389,6 +21856,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
 		<format>XXXXXX</format>
@@ -21405,6 +21873,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
 		<format>XXXXXX</format>
@@ -21421,6 +21890,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Максимальное ускорение</comment>
 	</param>
@@ -21434,6 +21904,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Обрыв связи с ТМСП</comment>
 	</param>
@@ -21447,6 +21918,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Код изготовителя ТМСП</comment>
 	</param>
@@ -21460,6 +21932,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Серийный номер ТМСП</comment>
 	</param>
@@ -21474,6 +21947,7 @@
 		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<unit>DATE_TIME_SS</unit>
 		<code>0</code>
 		<comment>Дата изготовления ТМСП</comment>
@@ -21488,6 +21962,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Код конструкции ТМСП</comment>
 	</param>
@@ -21501,6 +21976,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Код протокола ТМСП</comment>
 	</param>
@@ -21514,6 +21990,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Состав датчиков ТМСП</comment>
 	</param>
@@ -21527,6 +22004,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Версия По ТМСП</comment>
 	</param>
@@ -21540,6 +22018,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Скорости передачи бита</comment>
 	</param>
@@ -21553,6 +22032,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Код завода изготовителя ТМСН</comment>
 	</param>
@@ -21566,6 +22046,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Заводской номер ТМСН</comment>
 	</param>
@@ -21580,6 +22061,7 @@
 		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<unit>DATE_TIME_SS</unit>
 		<code>0</code>
 		<comment>Дата изготовления ТМСН</comment>
@@ -21594,6 +22076,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Код конструкции ТМСН</comment>
 	</param>
@@ -21607,6 +22090,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Версия ПО ТМСН</comment>
 	</param>
@@ -21620,6 +22104,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Код протокола ТМСН</comment>
 	</param>
@@ -21633,6 +22118,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<unit>FLOW_M3_DD</unit>
 		<code>0</code>
 		<comment>Минимальный расход на выкиде</comment>
@@ -21647,6 +22133,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<unit>FLOW_M3_DD</unit>
 		<code>0</code>
 		<comment>Максимальный расход на выкиде</comment>
@@ -21661,6 +22148,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<unit>PRESSURE_MPA</unit>
 		<code>0</code>
 		<comment>Максимальное давление на выкиде</comment>
@@ -21675,6 +22163,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<unit>TEMPERATURE_C</unit>
 		<code>0</code>
 		<comment>Максимальная температура на выкиде</comment>
@@ -21689,6 +22178,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Время измерения сопротивления изоляции</comment>
 	</param>
@@ -21702,6 +22192,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Время измерения данных и передачи</comment>
 	</param>
@@ -21715,6 +22206,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Время перехода в режим измерения сопротивления изоляции</comment>
 	</param>
@@ -21728,6 +22220,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Номер скважины</comment>
 	</param>
@@ -21741,6 +22234,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Номер куста</comment>
 	</param>
@@ -21754,6 +22248,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Номер ЦДНГ</comment>
 	</param>
@@ -21767,6 +22262,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Адрес Modbus</comment>
 	</param>
@@ -21780,6 +22276,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Скорость Modbus</comment>
 	</param>
@@ -21793,6 +22290,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Количество Стоп-бит</comment>
 	</param>
@@ -21807,6 +22305,7 @@
 		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<unit>DATE_TIME_SS</unit>
 		<code>0</code>
 		<comment>Текущее дата время</comment>
@@ -21821,6 +22320,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Команда чтения статических параметров</comment>
 	</param>
@@ -21834,6 +22334,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Количество ошибок от ТМСП</comment>
 	</param>
@@ -21847,6 +22348,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<unit>TEMPERATURE_C</unit>
 		<code>0</code>
 		<comment>Температура масла двигателя</comment>
@@ -21861,6 +22363,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Единицы измерения температуры</comment>
 	</param>
@@ -21874,6 +22377,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Единицы измерения давления</comment>
 	</param>
@@ -21887,6 +22391,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Слово состояние системы</comment>
 	</param>
@@ -21928,6 +22433,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Слово состояние погружного блока 2</comment>
 	</param>
@@ -21941,6 +22447,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Зенитный угол</comment>
 	</param>
@@ -21954,6 +22461,7 @@
 		<max>999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 		<comment>Обводненность</comment>
 	</param>
@@ -22128,153 +22636,267 @@
 	<param>
 		<id>15065</id>
 		<name>TMS_TEMPERATURE_DOWNHOLE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 	</param>
 	<param>
 		<id>15066</id>
 		<name>TMS_PRESSURE_DOWNHOLE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_PRESSURE</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 	</param>
 	<param>
 		<id>15067</id>
 		<name>TMS_SPEED_XY_DOWNHOLE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_SPEED</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 	</param>
 	<param>
 		<id>15068</id>
 		<name>TMS_SPEED_Z_DOWNHOLE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_SPEED</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 	</param>
 	<param>
 		<id>15069</id>
 		<name>TMS_ANGLE_DOWNHOLE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_ANGLE</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 	</param>
 	<param>
 		<id>15070</id>
 		<name>TMS_PSW_TMSP_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 	</param>
 	<param>
 		<id>15071</id>
 		<name>TMS_VOLTAGE_TMSP_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 	</param>
 	<param>
 		<id>15072</id>
 		<name>TMS_HOWMIDITY_DOWNHOLE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 	</param>
 	<param>
 		<id>15073</id>
 		<name>TMS_HOWMIDITY_FREQ_DISCHARGE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 	</param>
 	<param>
 		<id>15074</id>
 		<name>TMS_VOLTAGE_TMSP</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 	</param>
 	<param>
 		<id>15075</id>
 		<name>TMS_PACKAGE_LOST_TMSP</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 	</param>
 	<param>
 		<id>15076</id>
 		<name>TMS_PACKAGE_RECEIVE_TMSP</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 	</param>
 	<param>
 		<id>15077</id>
 		<name>TMS_PACKAGE_MASK_TMSP_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 	</param>
 	<param>
 		<id>15078</id>
 		<name>TMS_PACKAGE_NUMBER_TMSP</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 	</param>
 	<param>
 		<id>15079</id>
 		<name>TMS_PACKAGE_QUALITY_TMSP</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 	</param>
 	<param>
 		<id>15080</id>
 		<name>TMS_PACKAGE_TMSP</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 	</param>
 	<param>
 		<id>15081</id>
 		<name>TMS_PACKAGE_TIME_TMSP</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 	</param>
 	<param>
 		<id>15082</id>
 		<name>TMS_PACKAGE_ONLY_TMSP</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 	</param>
 	<param>
 		<id>15083</id>
 		<name>TMS_PACKAGE_ONLY_TIME_TMSP</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
 		<code>0</code>
 	</param>
 	<param>

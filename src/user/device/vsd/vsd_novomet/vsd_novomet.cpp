@@ -1075,7 +1075,7 @@ bool VsdNovomet::checkStop()
   if (checkStatusVsd(VSD_STATUS_STOPPED_EXTERNAL) || checkStatusVsd(VSD_STATUS_STOPPED_ALARM) || checkStatusVsd(VSD_STATUS_STOPPED_REGISTER)) {
     if (!checkStatusVsd(VSD_STATUS_STARTED)) {
       if (!checkStatusVsd(VSD_STATUS_WAIT_RECT_STOP)) {
-        resetBlock();
+        //resetBlock();
         return true;
       }
     }
