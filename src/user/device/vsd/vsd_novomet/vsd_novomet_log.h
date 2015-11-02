@@ -10,10 +10,12 @@ public:
   ~VsdNovometLog();
 
    bool checkAlarm();
+   bool checkReady();
+   void resetReady();
 
    void readAlarmLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
                      uint16_t *ud);
-   void readRunningLog();
+   void readRunningLog(uint16_t *ia, uint16_t *ib, uint16_t *ic, uint16_t *ud, uint16_t *cos);
 
 };
 
