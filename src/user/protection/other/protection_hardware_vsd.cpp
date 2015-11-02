@@ -36,12 +36,12 @@ ProtectionHardwareVsd::~ProtectionHardwareVsd()
 
 bool ProtectionHardwareVsd::checkAlarm()
 {
-  if (vsd->checkStatusVsd(VSD_STATUS_UD_LOW_FAULT)) {
+  if (vsd->checkStatusVsd(VSD_STATUS_UD_LOW_FAULT)) { //Нет зп
     protReactEventId_ = HardwareVsdUdLowProtReactId;
     parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_UD_LOW_FAULT);
     return true;
   }
-  if (vsd->checkStatusVsd(VSD_STATUS_UD_HIGH_FAULT)) {
+  if (vsd->checkStatusVsd(VSD_STATUS_UD_HIGH_FAULT)) {  //Нет зп
     protReactEventId_ = HardwareVsdUdHighProtReactId;
     parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_UD_HIGH_FAULT);
     return true;
@@ -114,23 +114,22 @@ bool ProtectionHardwareVsd::checkAlarm()
     return true;
   }
 
-  if (parameters.get(CCS_CONDITION) == CCS_CONDITION_RUN) {
-    if (vsd->checkStatusVsd(VSD_STATUS_DRV0)) {
-      protReactEventId_ = HardwareVsdSupplyDriversProtReactId;
-      parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_DRV0);
-      return true;
-    }
-    if (vsd->checkStatusVsd(VSD_STATUS_DRV1)) {
-      protReactEventId_ = HardwareVsdSupplyDriversProtReactId;
-      parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_DRV1);
-      return true;
-    }
-    if (vsd->checkStatusVsd(VSD_STATUS_DRV2)) {
-      protReactEventId_ = HardwareVsdSupplyDriversProtReactId;
-      parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_DRV2);
-      return true;
-    }
+  if (vsd->checkStatusVsd(VSD_STATUS_DRV0)) {
+    protReactEventId_ = HardwareVsdSupplyDriversProtReactId;
+    parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_DRV0);
+    return true;
   }
+  if (vsd->checkStatusVsd(VSD_STATUS_DRV1)) {
+    protReactEventId_ = HardwareVsdSupplyDriversProtReactId;
+    parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_DRV1);
+    return true;
+  }
+  if (vsd->checkStatusVsd(VSD_STATUS_DRV2)) {
+    protReactEventId_ = HardwareVsdSupplyDriversProtReactId;
+    parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_DRV2);
+    return true;
+  }
+
   if (vsd->checkStatusVsd(VSD_STATUS_MONOMETR)) {
     protReactEventId_ = HardwareVsdMonometrProtReactId;
     parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_MONOMETR);
@@ -208,11 +207,6 @@ bool ProtectionHardwareVsd::checkAlarm()
     parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_ERR_31);
     return true;
   }
-  if (vsd->checkStatusVsd(VSD_STATUS_FAULT_STOPPED)) {
-    protReactEventId_ = HardwareVsdProtReactId;
-    parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_FAULT_STOPPED);
-    return true;
-  }
   if (vsd->checkStatusVsd(VSD_STATUS_INV_FLT_TEMP_LINK)) {
     protReactEventId_ = HardwareVsdInvTempLinkReactId;
     parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_INV_FLT_TEMP_LINK);
@@ -223,10 +217,30 @@ bool ProtectionHardwareVsd::checkAlarm()
     parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_INV_FLT_TEMP);
     return true;
   }
+  if (vsd->checkStatusVsd(VSD_STATUS_FAULT_STOPPED)) {
+    protReactEventId_ = HardwareVsdProtReactId;
+    parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_FAULT_STOPPED);
+    return true;
+  }
   return false;
 }
 
 bool ProtectionHardwareVsd::checkPrevent()
 {
+  /*
+  switch (protReactEventId_) {
+  case HardwareVsdUdLowProtReactId:
+  case HardwareVsdI2tProtReactId:
+  case HardwareVsdUdHighProtReactId:
+  case HardwareVsdShortCirProtReactId:
+  case HardwareVsdAstProtReactId:
+  case HardwareVsdVcProtReactId:
+    return false;
+    break;
+  default:
+    return alarm_;
+    break;
+  }
+  */
   return alarm_;
 }
