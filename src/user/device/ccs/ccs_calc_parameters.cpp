@@ -3,6 +3,7 @@
 #include "regime_main.h"
 #include "gpio.h"
 #include "adc_ext.h"
+#include "temp_sensor.h"
 
 #if USE_EXT_MEM
 static uint16_t uValue[ADC_CNANNELS_NUM*HC_POINTS_NUM*2] __attribute__((section(".extmem")));
@@ -12,15 +13,11 @@ static uint16_t uValue[ADC_CNANNELS_NUM*HC_POINTS_NUM*2];
 
 void Ccs::calcParametersTask()
 {
+  static int delay500ms = 0;
+  static int delay1000ms = 0;
+  static int delay5000ms = 0;
   while (1) {
     osDelay(100);
-    calcMotorVoltagePhase1();
-    calcMotorVoltagePhase2();
-    calcMotorVoltagePhase3();
-    calcMotorVoltageImbalance();
-    calcMotorCos();
-    calcMotorLoad();
-
 // TODO: Возможно нужно перенести вычисления в счётчик после получения данных
 //    calcInputVoltagePhase1();
 //    calcInputVoltagePhase2();
@@ -29,13 +26,41 @@ void Ccs::calcParametersTask()
 //    calcInputVoltagePhase23();
 //    calcInputVoltagePhase31();
     calcInputVoltageFromAdc();
-
     calcInputVoltageImbalance();
     calcInputCurrentImbalance();
     calcResistanceIsolation();
+
     calcRegimeRun();
 
-    calcAnalogInputs();
+    if (delay500ms >= 5) {
+      calcMotorVoltagePhase1();
+      calcMotorVoltagePhase2();
+      calcMotorVoltagePhase3();
+      calcMotorVoltageImbalance();
+      calcMotorCos();
+      calcMotorLoad();
+      delay500ms = 0;
+    }
+    else  {
+      delay500ms++;
+    }
+
+    if (delay1000ms >= 10) {
+      calcAnalogInputs();
+      delay1000ms = 0;
+    }
+    else  {
+      delay1000ms++;
+    }
+
+    if (delay5000ms >= 50) {
+      calcTemperatureSTM32();
+      calcTemperatureCCS();
+      delay5000ms = 0;
+    }
+    else  {
+      delay5000ms++;
+    }
   }
 }
 
@@ -612,4 +637,19 @@ void Ccs::calcAnalogInputs()
   setValue(CCS_AI_2_VALUE, getValueAnalogInExt(AI2));
   setValue(CCS_AI_3_VALUE, getValueAnalogInExt(AI3));
   setValue(CCS_AI_4_VALUE, getValueAnalogInExt(AI4));
+}
+
+void Ccs::calcTemperatureSTM32()
+{
+  float temp = -1;
+  StatusType status;
+  status = getCoreTemperature(&temp);
+  if (status == StatusOk)
+    setValue(CCS_TEMPERATURE_STM32, temp);
+}
+
+void Ccs::calcTemperatureCCS()
+{
+  float temp = tempSensorReadData();
+  setValue(CCS_TEMPERATURE_CCS, temp);
 }
