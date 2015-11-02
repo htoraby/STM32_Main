@@ -15,6 +15,7 @@ void Ccs::calcParametersTask()
 {
   int time10ms = HAL_GetTick();
   int time100ms = HAL_GetTick();
+  int time1s = HAL_GetTick();
   while (1) {
     osDelay(1);
 
@@ -51,6 +52,13 @@ void Ccs::calcParametersTask()
       calcRegimeRun();
 
       calcAnalogInputs();
+    }
+
+    if ((HAL_GetTick() - time1s) >= 1000) {
+      time1s = HAL_GetTick();
+
+      calcTemperatureSTM32();
+      calcTemperatureCCS();
     }
   }
 }
