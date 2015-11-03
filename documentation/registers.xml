@@ -7759,12 +7759,12 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
+		<min>1.0</min>
 		<max>2.0</max>
-		<def>0.0</def>
+		<def>2.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>2.0</value>
 		<text>РРЗ аппаратных защит ЧРП</text>
 		<short_text>РРЗ аппаратных защит ЧРП</short_text>
 		<form>4.6.3 Аппаратные защиты ЧРП</form>

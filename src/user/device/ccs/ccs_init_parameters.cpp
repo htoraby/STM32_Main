@@ -5012,11 +5012,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].operation                     = OPERATION_WRITE;
   parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].validity                      = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].value.float_t                 = 1.0;
-  parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].min                           = 0.0;
+  parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].value.float_t                 = 2.0;
+  parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].min                           = 1.0;
   parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].max                           = 2.0;
   parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].discret                       = 1;
-  parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].def                           = 0.0;
+  parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].def                           = 2.0;
   parameters_[CCS_PROT_OTHER_VSD_MODE - CCS_BEGIN].code                          = 13;
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].id                         = CCS_PROT_OTHER_VSD_PREVENT;
