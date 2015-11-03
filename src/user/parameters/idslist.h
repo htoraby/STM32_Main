@@ -824,7 +824,8 @@ enum enID
   CCS_DI_14_VALUE = 818,                                     //!< 
   CCS_TEMPERATURE_STM32 = 819,                               //!< 
   CCS_TEMPERATURE_CCS = 820,                                 //!< 
-  CCS_END = 821,                                             //!< Последний параметр
+  CCS_AI_5_VALUE = 821,                                      //!< 
+  CCS_END = 822,                                             //!< Последний параметр
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
