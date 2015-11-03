@@ -614,7 +614,7 @@ bool VsdEtalon::checkStart()
   return true;
 #endif
 
-  if (getValue(VSD_ETALON_ON_STATE) == 1)
+  if ((getValue(VSD_ETALON_ON_STATE) == 1) && parameters.isValidity(VSD_ETALON_ON_STATE))
     return true;
   return false;
 }
@@ -665,7 +665,7 @@ bool VsdEtalon::checkStop()
   return true;
 #endif
 
-  if (getValue(VSD_ETALON_OFF_STATE) == 1) {
+  if ((getValue(VSD_ETALON_OFF_STATE) == 1) && parameters.isValidity(VSD_ETALON_OFF_STATE)) {
     return true;
   }
   return false;

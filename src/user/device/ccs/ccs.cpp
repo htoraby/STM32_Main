@@ -202,7 +202,7 @@ void Ccs::vsdConditionTask()
       if (getValue(CCS_CONDITION) != CCS_CONDITION_STOP) {
         setNewValue(CCS_CONDITION, CCS_CONDITION_STOP);
       } else if (getValue(CCS_CONDITION) == CCS_CONDITION_STOP) {
-        if (vsd->checkStart()) {
+        if (!vsd->checkStop()) {
           setNewValue(CCS_LAST_RUN_REASON, LastReasonRunApvHardwareVsd);
           setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
           setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
@@ -234,7 +234,7 @@ void Ccs::vsdConditionTask()
       }
       if ((getValue(CCS_CONDITION) == CCS_CONDITION_RUN) ||
           ((getValue(CCS_CONDITION) == CCS_CONDITION_RUNNING) && (++runningTime >= 1500))) {
-        if (vsd->checkStop()) {
+        if (!vsd->checkStart()) {
           setBlock();
           parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_NO_CONNECT);
           setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopHardwareVsd);
@@ -250,7 +250,7 @@ void Ccs::vsdConditionTask()
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
       }
       if (++runningTime >= 1500) {
-        if (vsd->checkStop()) {
+        if (!vsd->checkStart()) {
           setBlock();
           parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_NO_CONNECT);
           setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopHardwareVsd);
