@@ -67,7 +67,7 @@ void LogRunning::task()
     osDelay(ARCHIVE_TIME);
 
     if (vsd->log()) {
-//    add();
+      add();
     }
   }
 }

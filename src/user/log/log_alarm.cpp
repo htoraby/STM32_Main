@@ -42,16 +42,14 @@ int timeTest;
 
 void LogAlarm::task()
 {
-  osDelay(10000);
   timeTest = HAL_GetTick();
-//  parameters.set(VSD_ETALON_FAST_OFF, 1);
 
   while (1) {
     osDelay(1);
 
     if (vsd->log()) {
       if (vsd->log()->checkAlarm()) {
-//        add();
+        add();
       }
     }
   }
