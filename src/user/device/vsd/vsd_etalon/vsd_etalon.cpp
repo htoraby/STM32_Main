@@ -641,11 +641,16 @@ int VsdEtalon::stop(float type)
       if (countRepeats > VSD_CMD_NUMBER_REPEATS)
         return err_r;
 
-      if (type != oldTypeStop)
-        writeToDevice(VSD_TYPE_STOP, type);
+      if (type == TYPE_STOP_ALARM) {
+        setNewValue(VSD_ETALON_FAST_OFF, 1);
+      }
+      else {
+        if (type != oldTypeStop)
+          writeToDevice(VSD_TYPE_STOP, type);
 
-      if (setNewValue(VSD_OFF, 1))
-        return err_r;
+        if (setNewValue(VSD_OFF, 1))
+          return err_r;
+      }
 
       resetBlock();
 
