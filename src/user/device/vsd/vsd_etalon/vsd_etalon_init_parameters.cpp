@@ -2138,7 +2138,7 @@ void VsdEtalon::initModbusParameters()
                            0                // Значение
                           };
   modbusParameters_[126] = {// Состояние двери
-                          VSD_ETALON_ON_STATE,
+                          VSD_DOOR_VALUE,
                           32 + 0x4000,
                           OPERATION_READ,   // Операции с параметром
                           PHYSIC_NUMERIC,   // Физическая величина параметра
