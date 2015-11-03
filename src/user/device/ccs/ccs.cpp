@@ -192,22 +192,28 @@ void Ccs::ledConditionTask()
 void Ccs::vsdConditionTask()
 {
   int vsdConditionOld = -1;
-  int runningTime = 0;
+  int timer = 0;
+
   while (1) {
     osDelay(10);
 
     int vsdCondition = getValue(CCS_VSD_CONDITION);
+    if (vsdCondition != vsdConditionOld)
+      timer = 0;
+
     switch (vsdCondition) {
     case VSD_CONDITION_STOP:
       if (getValue(CCS_CONDITION) != CCS_CONDITION_STOP) {
         setNewValue(CCS_CONDITION, CCS_CONDITION_STOP);
       } else {
         if (vsd->checkStart()) {
-          setNewValue(CCS_LAST_RUN_REASON, LastReasonRunApvHardwareVsd);
-          setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
-          setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
-          setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
-          calcCountersRun(LastReasonRunApvHardwareVsd);
+          if (++timer >= 500) {
+            setNewValue(CCS_LAST_RUN_REASON, LastReasonRunApvHardwareVsd);
+            setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
+            setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
+            setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
+            calcCountersRun(LastReasonRunApvHardwareVsd);
+          }
         }
       }
       break;
@@ -232,9 +238,8 @@ void Ccs::vsdConditionTask()
         setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
 #endif
       }
-      if ((getValue(CCS_CONDITION) == CCS_CONDITION_RUN) ||
-          ((getValue(CCS_CONDITION) == CCS_CONDITION_RUNNING) && (++runningTime >= 1500))) {
-        if (vsd->checkStop()) {
+      if (vsd->checkStop()) {
+        if (++timer >= 500) {
           setBlock();
           parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_NO_CONNECT);
           setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopHardwareVsd);
@@ -249,8 +254,9 @@ void Ccs::vsdConditionTask()
         logRunning.start();
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
       }
-      if (++runningTime >= 1500) {
-        if (vsd->checkStop()) {
+
+      if (vsd->checkStop()) {
+        if (++timer >= 500) {
           setBlock();
           parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_NO_CONNECT);
           setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopHardwareVsd);
@@ -260,7 +266,6 @@ void Ccs::vsdConditionTask()
       break;
     case VSD_CONDITION_WAIT_RUN:
       if (vsd->start() == ok_r) {
-        runningTime = 0;
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
       } else if (vsdCondition != vsdConditionOld) {
         logDebug.add(WarningMsg, "Ошибка запуска");
