@@ -47,7 +47,7 @@ void VsdEtalon::initParameters()
 {
   int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
   for (int i = 0; i < count; i++) {        // Цикл по карте регистров
-    if ((modbusParameters_[i].freqExchange != EVERY_TIME) || (modbusParameters_[i].freqExchange != NOT_READ)) {
+    if ((modbusParameters_[i].freqExchange != EVERY_TIME) && (modbusParameters_[i].freqExchange != NOT_READ)) {
       modbusParameters_[i].freqExchange = modbusParameters_[i].freqExchange + i;
       modbusParameters_[i].cntExchange = modbusParameters_[i].freqExchange;
     }
