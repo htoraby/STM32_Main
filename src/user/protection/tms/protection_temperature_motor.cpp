@@ -56,7 +56,7 @@ bool ProtectionTemperatureMotor::isProtect()
 {
   if (parameters.get(CCS_DHS_TYPE) != TYPE_DHS_NONE)
     if (tms->isConnect())
-      if (parameters.getValidity(TMS_TEMPERATURE_WINDING) == ok_r)
+      if (parameters.isValidity(TMS_TEMPERATURE_WINDING))
         return true;
   return false;
 }

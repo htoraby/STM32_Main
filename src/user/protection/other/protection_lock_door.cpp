@@ -34,7 +34,7 @@ ProtectionLockDoor::~ProtectionLockDoor()
 
 bool ProtectionLockDoor::checkAlarm()
 {
-  if (!parameters.get(CCS_DOOR_VALUE) && (parameters.getValidity(CCS_DOOR_VALUE) == ok_r)) {
+  if (!parameters.get(CCS_DOOR_VALUE) && parameters.isValidity(CCS_DOOR_VALUE)) {
     protReactEventId_ = LookDoorProtReactId;
     return true;
   }

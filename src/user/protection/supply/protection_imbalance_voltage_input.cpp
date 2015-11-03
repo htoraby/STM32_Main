@@ -58,7 +58,7 @@ bool ProtectionImbalanceVoltageInput::checkPrevent()
 float ProtectionImbalanceVoltageInput::calcValue()
 {
   float imbalance = 0;
-  if (parameters.getValidity(CCS_VOLTAGE_IMBALANCE_IN) == ok_r)
+  if (parameters.isValidity(CCS_VOLTAGE_IMBALANCE_IN))
     imbalance = parameters.get(CCS_VOLTAGE_IMBALANCE_IN);
   return imbalance;
 }
@@ -66,17 +66,17 @@ float ProtectionImbalanceVoltageInput::calcValue()
 bool ProtectionImbalanceVoltageInput::isProtect()
 {
   if (parameters.get(CCS_EM_TYPE) == EM_TYPE_NONE) {
-    if ((parameters.getValidity(CCS_VOLTAGE_PHASE_1) == ok_r) ||
-        (parameters.getValidity(CCS_VOLTAGE_PHASE_2) == ok_r) ||
-        (parameters.getValidity(CCS_VOLTAGE_PHASE_3) == ok_r)) {
+    if (parameters.isValidity(CCS_VOLTAGE_PHASE_1) ||
+        parameters.isValidity(CCS_VOLTAGE_PHASE_2) ||
+        parameters.isValidity(CCS_VOLTAGE_PHASE_3)) {
         return true;
     }
   }
   else {
     if (em->isConnect()) {
-      if ((parameters.getValidity(CCS_VOLTAGE_PHASE_1) == ok_r) ||
-          (parameters.getValidity(CCS_VOLTAGE_PHASE_2) == ok_r) ||
-          (parameters.getValidity(CCS_VOLTAGE_PHASE_3) == ok_r)) {
+      if (parameters.isValidity(CCS_VOLTAGE_PHASE_1) ||
+          parameters.isValidity(CCS_VOLTAGE_PHASE_2) ||
+          parameters.isValidity(CCS_VOLTAGE_PHASE_3)) {
           return true;
       }
     }

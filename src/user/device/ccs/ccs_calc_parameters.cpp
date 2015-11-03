@@ -206,7 +206,7 @@ float Ccs::calcMotorVoltageImbalance()
 float Ccs::calcMotorSpeed()
 {
   float mtrSpeed = NAN;
-  if (parameters.getValidity(VSD_FREQUENCY_NOW) == ok_r) {
+  if (parameters.isValidity(VSD_FREQUENCY_NOW)) {
     float mtrType = parameters.get(CCS_MOTOR_TYPE);
     float freq = parameters.get(VSD_FREQUENCY_NOW);
     if (mtrType == VSD_MOTOR_TYPE_ASYNC) {
@@ -248,8 +248,8 @@ float Ccs::calcMotorLoad()
 
 float Ccs::calcInputVoltagePhase1()
 {
-  if ((parameters.getValidity(EM_VOLTAGE_PHASE_1)) ||
-      (parameters.getValidity(CCS_COEF_VOLTAGE_IN_A))) {
+  if ((!parameters.isValidity(EM_VOLTAGE_PHASE_1)) ||
+      (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_A))) {
     setNewValue(CCS_VOLTAGE_PHASE_1, (float)NAN);
   }
   else {
@@ -262,8 +262,8 @@ float Ccs::calcInputVoltagePhase1()
 
 float Ccs::calcInputVoltagePhase2()
 {
-  if ((parameters.getValidity(EM_VOLTAGE_PHASE_2)) ||
-      (parameters.getValidity(CCS_COEF_VOLTAGE_IN_B))) {
+  if ((!parameters.isValidity(EM_VOLTAGE_PHASE_2)) ||
+      (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_B))) {
     setNewValue(CCS_VOLTAGE_PHASE_2, (float)NAN);
   }
   else {
@@ -276,8 +276,8 @@ float Ccs::calcInputVoltagePhase2()
 
 float Ccs::calcInputVoltagePhase3()
 {
-  if ((parameters.getValidity(EM_VOLTAGE_PHASE_3)) ||
-      (parameters.getValidity(CCS_COEF_VOLTAGE_IN_C))) {
+  if ((!parameters.isValidity(EM_VOLTAGE_PHASE_3)) ||
+      (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_C))) {
     setNewValue(CCS_VOLTAGE_PHASE_3, (float)NAN);
   }
   else {
@@ -290,8 +290,8 @@ float Ccs::calcInputVoltagePhase3()
 
 float Ccs::calcInputVoltagePhase12()
 {
-  if ((parameters.getValidity(EM_VOLTAGE_PHASE_1_2)) ||
-      (parameters.getValidity(CCS_COEF_VOLTAGE_IN_A))) {
+  if ((!parameters.isValidity(EM_VOLTAGE_PHASE_1_2)) ||
+      (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_A))) {
     setNewValue(CCS_VOLTAGE_PHASE_1_2, (float)NAN);
   }
   else {
@@ -304,8 +304,8 @@ float Ccs::calcInputVoltagePhase12()
 
 float Ccs::calcInputVoltagePhase23()
 {
-  if ((parameters.getValidity(EM_VOLTAGE_PHASE_2_3)) ||
-      (parameters.getValidity(CCS_COEF_VOLTAGE_IN_B))) {
+  if ((!parameters.isValidity(EM_VOLTAGE_PHASE_2_3)) ||
+      (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_B))) {
     setNewValue(CCS_VOLTAGE_PHASE_2_3, (float)NAN);
   }
   else {
@@ -318,8 +318,8 @@ float Ccs::calcInputVoltagePhase23()
 
 float Ccs::calcInputVoltagePhase31()
 {
-  if ((parameters.getValidity(EM_VOLTAGE_PHASE_3_1)) ||
-      (parameters.getValidity(CCS_COEF_VOLTAGE_IN_C))) {
+  if ((!parameters.isValidity(EM_VOLTAGE_PHASE_3_1)) ||
+      (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_C))) {
     setNewValue(CCS_VOLTAGE_PHASE_3_1, (float)NAN);
   }
   else {
@@ -332,9 +332,9 @@ float Ccs::calcInputVoltagePhase31()
 
 float Ccs::calcInputVoltageImbalance()
 {
-  if (parameters.getValidity(CCS_VOLTAGE_PHASE_1) ||
-      parameters.getValidity(CCS_VOLTAGE_PHASE_2) ||
-      parameters.getValidity(CCS_VOLTAGE_PHASE_3)) {
+  if (!parameters.isValidity(CCS_VOLTAGE_PHASE_1) ||
+      !parameters.isValidity(CCS_VOLTAGE_PHASE_2) ||
+      !parameters.isValidity(CCS_VOLTAGE_PHASE_3)) {
     setNewValue(CCS_VOLTAGE_IMBALANCE_IN, (float)NAN);
   }
   else {
@@ -434,12 +434,12 @@ float Ccs::calcTransRecommendedTapOff()
 float Ccs::calcResistanceIsolation()
 {
   if ((parameters.get(CCS_DHS_TYPE) != TYPE_DHS_NONE) &&
-      (!parameters.getValidity(TMS_RESISTANCE_ISOLATION))) {
+      (parameters.isValidity(TMS_RESISTANCE_ISOLATION))) {
     setValue(CCS_RESISTANCE_ISOLATION, parameters.get(TMS_RESISTANCE_ISOLATION));
   }
   else {
     if ((parameters.get(CCS_TYPE_VSD) == VSD_TYPE_ETALON) &&
-        (!parameters.getValidity(VSD_ETALON_RESISTANCE_ISOLATION))) {
+        (parameters.isValidity(VSD_ETALON_RESISTANCE_ISOLATION))) {
       setValue(CCS_RESISTANCE_ISOLATION, parameters.get(VSD_ETALON_RESISTANCE_ISOLATION));
     }
   }
@@ -538,7 +538,7 @@ void Ccs::calcInputVoltageFromAdc()
   ubValue = (sqrt(ubValue/count[1]) * 627.747 * 2.5) / 0xFFF;
   ucValue = (sqrt(ucValue/count[2]) * 627.747 * 2.5) / 0xFFF;
 
-  if (parameters.getValidity(CCS_COEF_VOLTAGE_IN_A)) {
+  if (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_A)) {
     setValue(CCS_VOLTAGE_PHASE_1, (float)NAN);
     setValue(CCS_VOLTAGE_PHASE_1_2, (float)NAN);
   }
@@ -548,7 +548,7 @@ void Ccs::calcInputVoltageFromAdc()
     setValue(CCS_VOLTAGE_PHASE_1_2, uaValue*SQRT_3);
   }
 
-  if (parameters.getValidity(CCS_COEF_VOLTAGE_IN_B)) {
+  if (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_B)) {
     setValue(CCS_VOLTAGE_PHASE_2, (float)NAN);
     setValue(CCS_VOLTAGE_PHASE_2_3, (float)NAN);
   }
@@ -558,7 +558,7 @@ void Ccs::calcInputVoltageFromAdc()
     setValue(CCS_VOLTAGE_PHASE_2_3, ubValue*SQRT_3);
   }
 
-  if (parameters.getValidity(CCS_COEF_VOLTAGE_IN_C)) {
+  if (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_C)) {
     setValue(CCS_VOLTAGE_PHASE_3, (float)NAN);
     setValue(CCS_VOLTAGE_PHASE_3_1, (float)NAN);
   }

@@ -64,7 +64,7 @@ bool ProtectionPressureIntake::isProtect()
 {
   if (parameters.get(CCS_DHS_TYPE) != TYPE_DHS_NONE)
     if (tms->isConnect())
-      if (parameters.getValidity(TMS_PRESSURE_INTAKE) == ok_r)
+      if (parameters.isValidity(TMS_PRESSURE_INTAKE))
         return true;
   return false;
 }

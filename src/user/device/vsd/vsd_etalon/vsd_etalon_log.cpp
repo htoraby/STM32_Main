@@ -14,7 +14,7 @@ VsdEtalonLog::~VsdEtalonLog()
 
 bool VsdEtalonLog::checkAlarm()
 {
-  return (!parameters.get(CCS_DI_11_VALUE) && (parameters.getValidity(CCS_DI_11_VALUE) == ok_r));
+  return (!parameters.get(CCS_DI_11_VALUE) && parameters.isValidity(CCS_DI_11_VALUE));
 }
 
 bool VsdEtalonLog::checkReady()

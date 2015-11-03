@@ -58,22 +58,22 @@ bool ProtectionOverVoltageInput::checkPrevent()
 float ProtectionOverVoltageInput::calcValue()
 {
   float value = 0;
-  if (parameters.getValidity(CCS_VOLTAGE_PHASE_1) == ok_r) {
+  if (parameters.isValidity(CCS_VOLTAGE_PHASE_1)) {
     value = parameters.get(CCS_VOLTAGE_PHASE_1);
   }
   float value2 = 0;
-  if (parameters.getValidity(CCS_VOLTAGE_PHASE_2) == ok_r) {
+  if (parameters.isValidity(CCS_VOLTAGE_PHASE_2)) {
     value2 = parameters.get(CCS_VOLTAGE_PHASE_2);
   }
   float value3 = 0;
-  if (parameters.getValidity(CCS_VOLTAGE_PHASE_3) == ok_r) {
+  if (parameters.isValidity(CCS_VOLTAGE_PHASE_3)) {
     value3 = parameters.get(CCS_VOLTAGE_PHASE_3);
   }
 
   value = max(max(value, value2), value3);
 
   float nominal = NOM_VOLTAGE;
-  if  (parameters.getValidity(CCS_TRANS_NOMINAL_VOLTAGE) == ok_r) {
+  if  (parameters.isValidity(CCS_TRANS_NOMINAL_VOLTAGE)) {
     nominal = parameters.get(CCS_TRANS_NOMINAL_VOLTAGE) / SQRT_3;
   }
 
@@ -83,19 +83,19 @@ float ProtectionOverVoltageInput::calcValue()
 bool ProtectionOverVoltageInput::isProtect()
 {
   if (parameters.get(CCS_EM_TYPE) == EM_TYPE_NONE) {
-    if (((parameters.getValidity(CCS_VOLTAGE_PHASE_1) == ok_r) ||
-         (parameters.getValidity(CCS_VOLTAGE_PHASE_2) == ok_r) ||
-         (parameters.getValidity(CCS_VOLTAGE_PHASE_3) == ok_r))&&
-         (parameters.getValidity(CCS_TRANS_NOMINAL_VOLTAGE) == ok_r)) {
+    if ((parameters.isValidity(CCS_VOLTAGE_PHASE_1) ||
+         parameters.isValidity(CCS_VOLTAGE_PHASE_2) ||
+         parameters.isValidity(CCS_VOLTAGE_PHASE_3)) &&
+         parameters.isValidity(CCS_TRANS_NOMINAL_VOLTAGE)) {
          return true;
     }
   }
   else {
     if (em->isConnect()) {
-      if (((parameters.getValidity(CCS_VOLTAGE_PHASE_1) == ok_r) ||
-           (parameters.getValidity(CCS_VOLTAGE_PHASE_2) == ok_r) ||
-           (parameters.getValidity(CCS_VOLTAGE_PHASE_3) == ok_r))&&
-           (parameters.getValidity(CCS_TRANS_NOMINAL_VOLTAGE) == ok_r)) {
+      if ((parameters.isValidity(CCS_VOLTAGE_PHASE_1) ||
+           parameters.isValidity(CCS_VOLTAGE_PHASE_2) ||
+           parameters.isValidity(CCS_VOLTAGE_PHASE_3)) &&
+           parameters.isValidity(CCS_TRANS_NOMINAL_VOLTAGE)) {
            return true;
       }
     }
