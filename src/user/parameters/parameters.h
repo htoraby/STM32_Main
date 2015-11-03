@@ -91,6 +91,8 @@ public:
 
   uint8_t getValidity(unsigned short id);
 
+  bool isValidity(uint16_t id);
+
   void setValidity(uint16_t id, uint8_t validity);
 
   float getMin(uint16_t id);
