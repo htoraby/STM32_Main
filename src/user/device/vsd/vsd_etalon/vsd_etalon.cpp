@@ -614,8 +614,11 @@ bool VsdEtalon::checkStart()
   return true;
 #endif
 
-  if ((getValue(VSD_ETALON_ON_STATE) == 1) && parameters.isValidity(VSD_ETALON_ON_STATE))
-    return true;
+  if (checkStatusVsd(VSD_STATUS_STARTED)) {
+    if (!checkStatusVsd(VSD_STATUS_STOPPED_EXTERNAL)) {
+      return true;
+    }
+  }
   return false;
 }
 
@@ -665,8 +668,10 @@ bool VsdEtalon::checkStop()
   return true;
 #endif
 
-  if ((getValue(VSD_ETALON_OFF_STATE) == 1) && parameters.isValidity(VSD_ETALON_OFF_STATE)) {
-    return true;
+  if (checkStatusVsd(VSD_STATUS_STOPPED_EXTERNAL)) {
+    if (!checkStatusVsd(VSD_STATUS_STARTED)) {
+      return true;
+    }
   }
   return false;
 }
