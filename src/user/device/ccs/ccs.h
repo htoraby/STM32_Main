@@ -325,7 +325,7 @@ public:
    * \brief calcResistanceIsolation
    * \return
    */
-  float calcResistanceIsolation();
+  void calcResistanceIsolation();
 
 
   uint8_t setNewValue(uint16_t id, float value, EventType eventType = AutoType);
@@ -511,6 +511,8 @@ private:
   void calcTemperatureSTM32();
 
   void calcTemperatureCCS();
+
+  void calcTurboRotation();
 
   //! Массив параметров устройства
   parameter parametersArray_[CCS_END - CCS_BEGIN];

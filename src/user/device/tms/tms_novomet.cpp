@@ -455,8 +455,16 @@ void TmsNovomet::getNewValue(uint16_t id)
   }
   value = value * param->coefficient;
   value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
-  setValue(id, value);
-  calcParameters(id);
+
+  switch (id) {
+  case TMS_RESISTANCE_ISOLATION:
+    setValue(TMS_RESISTANCE_ISOLATION, value);
+    parameters.set(CCS_RESISTANCE_ISOLATION, value);
+    break;
+  default:
+    setValue(id, value);
+    break;
+  }
 }
 
 uint8_t TmsNovomet::setNewValue(uint16_t id, float value)
@@ -465,7 +473,7 @@ uint8_t TmsNovomet::setNewValue(uint16_t id, float value)
   case TMS_PRESSURE_UNIT:
     return setUnitPressure(value);
   case TMS_TEMPERATURE_UNIT:
-    return setUnitTemperature(value);
+    return setUnitTemperature(value);    
   default:
     int result = setValue(id, value);
     if (!result)
