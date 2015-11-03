@@ -42,8 +42,6 @@ int timeTest;
 
 void LogAlarm::task()
 {
-  timeTest = HAL_GetTick();
-
   while (1) {
     osDelay(1);
 
@@ -113,8 +111,6 @@ void LogAlarm::add()
     else
       write(buffer, SIZE_BUF_LOG, false);
   }
-
-  timeTest = HAL_GetTick() - timeTest;
 
   vsd->log()->resetReady();
   osDelay(50);

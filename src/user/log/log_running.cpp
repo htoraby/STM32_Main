@@ -79,10 +79,6 @@ void LogRunning::add()
   // Получение значений Ua, Ub, Uc
   copyAdcData(uValue);
 
-  while (!vsd->log()->checkReady()) {
-    osDelay(10);
-  }
-
   // Получение значений с ЧРП Ia, Ib, Ic, Ud, cos
   vsd->log()->readRunningLog(iaValue, ibValue, icValue, udValue, cosValue);
 
@@ -126,7 +122,6 @@ void LogRunning::add()
       write(buffer, SIZE_BUF_LOG, false);
   }
 
-  vsd->log()->resetReady();
   osDelay(50);
 }
 
