@@ -467,6 +467,10 @@ void VsdEtalon::getNewValue(uint16_t id)
       setValue(id, value);
       parameters.set(CCS_DOOR_VALUE, value);
       break;
+    case VSD_ETALON_RESISTANCE_ISOLATION:
+      setValue(id, value);
+      parameters.set(CCS_RESISTANCE_ISOLATION, value);
+      break;
     default:
       setValue(id, value);
       break;

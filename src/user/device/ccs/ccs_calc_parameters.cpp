@@ -431,19 +431,19 @@ float Ccs::calcTransRecommendedTapOff()
   return parameters.get(CCS_TRANS_NEED_VOLTAGE_TAP_OFF);
 }
 
-float Ccs::calcResistanceIsolation()
+void Ccs::calcResistanceIsolation()
 {
-  if ((parameters.get(CCS_DHS_TYPE) != TYPE_DHS_NONE) &&
-      (parameters.isValidity(TMS_RESISTANCE_ISOLATION))) {
-    setValue(CCS_RESISTANCE_ISOLATION, parameters.get(TMS_RESISTANCE_ISOLATION));
+  float resIso = 9999;
+  if (parameters.get(CCS_DHS_TYPE) != TYPE_DHS_NONE) {
+    return;
   }
-  else {
-    if ((parameters.get(CCS_TYPE_VSD) == VSD_TYPE_ETALON) &&
-        (parameters.isValidity(VSD_ETALON_RESISTANCE_ISOLATION))) {
-      setValue(CCS_RESISTANCE_ISOLATION, parameters.get(VSD_ETALON_RESISTANCE_ISOLATION));
-    }
+  if (parameters.get(CCS_TYPE_VSD) == VSD_TYPE_ETALON) {
+    return;
   }
-  return parameters.get(CCS_RESISTANCE_ISOLATION);
+  if (parameters.isValidity(CCS_AI_5_VALUE)) {
+    resIso = getValue(CCS_AI_5_VALUE);
+  }
+  setValue(CCS_RESISTANCE_ISOLATION, resIso);
 }
 
 void Ccs::calcRegimeChangeFreqPeriodOneStep()
@@ -652,6 +652,7 @@ void Ccs::calcAnalogInputs()
   setValue(CCS_AI_2_VALUE, getValueAnalogInExt(AI2));
   setValue(CCS_AI_3_VALUE, getValueAnalogInExt(AI3));
   setValue(CCS_AI_4_VALUE, getValueAnalogInExt(AI4));
+  setValue(CCS_AI_5_VALUE, getValueAnalogInExt(AI5));
 }
 
 void Ccs::calcTemperatureSTM32()
