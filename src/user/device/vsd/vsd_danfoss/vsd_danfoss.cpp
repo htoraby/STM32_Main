@@ -89,11 +89,35 @@ bool VsdDanfoss::isConnect()
 int VsdDanfoss::setMotorType(float value)
 {
   if (!Vsd::setMotorType(value)) {
-    writeToDevice(VSD_MOTOR_TYPE, getValue(VSD_MOTOR_TYPE));
+    configVsd();
     return ok_r;
   }
   else {
-    logDebug.add(WarningMsg, "VsdEtalon::setMotorType");
+    logDebug.add(WarningMsg, "VsdDanfoss::setMotorType");
+    return err_r;
+  }
+}
+
+int VsdDanfoss::setMotorSpeed(float value)
+{
+  if (!Vsd::setMotorSpeed(value)) {
+    configVsd();
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setMotorSpeed");
+    return err_r;
+  }
+}
+
+int VsdDanfoss::setVsdControl(float value)
+{
+  if (!Vsd::setVsdControl(value)) {
+    configVsd();
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setVsdControl");
     return err_r;
   }
 }
@@ -151,6 +175,7 @@ int VsdDanfoss::setTimeSpeedUp(float value)
 {
   if (!Vsd::setTimeSpeedUp(value)) {
     writeToDevice(VSD_TIMER_DISPERSAL, getValue(VSD_TIMER_DISPERSAL));
+    writeToDevice(VSD_TIMER_DISP_FIX_SPEED, getValue(VSD_TIMER_DISPERSAL));
     return ok_r;
   }
   else {
@@ -163,6 +188,7 @@ int VsdDanfoss::setTimeSpeedDown(float value)
 {
   if (!Vsd::setTimeSpeedDown(value)) {
     writeToDevice(VSD_TIMER_DELAY, getValue(VSD_TIMER_DELAY));
+    writeToDevice(VSD_TIMER_DELAY_FIX_SPEED, getValue(VSD_TIMER_DELAY));
     return ok_r;
   }
   else {
@@ -368,6 +394,480 @@ void VsdDanfoss::readUfCharacterictic()
   }
 }
 
+uint16_t VsdDanfoss::configVsd()
+{
+  uint16_t typeMotor = parameters.get(VSD_MOTOR_TYPE);
+  uint16_t typeControl = parameters.get(VSD_MOTOR_CONTROL);
+  uint16_t nomSpeed = parameters.get(VSD_MOTOR_SPEED);
+  switch (typeMotor) {
+  case VSD_MOTOR_TYPE_ASYNC:
+    return configVsdAsync();
+  case VSD_MOTOR_TYPE_VENT:
+    switch (typeControl) {
+    case VSD_MOTOR_CONTROL_UF:
+      if (nomSpeed <= 500) {
+        return configVsdVentUf500();
+      }
+      else {
+        if (nomSpeed <= 1000) {
+          return configVsdVentUf1000();
+        }
+        else {
+          if (nomSpeed <= 3000) {
+            return configVsdVentUf3000();
+          }
+          else {
+            if (nomSpeed <= 6000) {
+              return configVsdVentUf6000();
+            }
+            return err_r;
+          }
+
+        }
+      }
+    case VSD_MOTOR_CONTROL_VECT:
+      if (nomSpeed <= 500) {
+        return configVsdVentVect500();
+      }
+      else {
+        if (nomSpeed <= 1000) {
+          return configVsdVentVect1000();
+        }
+        else {
+          if (nomSpeed <= 3000) {
+            return configVsdVentVect3000();
+          }
+          else {
+            if (nomSpeed <= 6000) {
+              return configVsdVentVect6000();
+            }
+            return err_r;
+          }
+        }
+      }
+    default:
+      return err_r;
+    }
+    break;
+  default:
+    return err_r;
+  }
+}
+
+uint16_t VsdDanfoss::configVsdAsync()
+{
+  writeToDevice(VSD_MOTOR_CONTROL, VSD_MOTOR_CONTROL_UF);
+  writeToDevice(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_ASYNC);
+  writeToDevice(VSD_MOTOR_FREQUENCY, 50);
+  writeToDevice(VSD_MOTOR_SPEED, 3000);
+  writeToDevice(VSD_MOTOR_POLES, 2);
+  setUf_f1(0);
+  setUf_U1(5);
+  setUf_f2(10);
+  setUf_U2(68);
+  setUf_f3(20);
+  setUf_U3(131);
+  setUf_f4(30);
+  setUf_U4(194);
+  setUf_f5(40);
+  setUf_U5(257);
+  setUf_f6(50);
+  setUf_U6(320);
+  writeToDevice(VSD_RESONANCE_REMOVE, 0);
+  writeToDevice(VSD_RESONANCE_TIME, 2);
+  writeToDevice(VSD_MIN_CURRENT_LOW_SPEED, 100);
+  writeToDevice(VSD_PM_START_MODE, 0);
+  writeToDevice(VSD_STOP_FUNCTION, 0);
+  writeToDevice(VSD_MIN_REFERENCE, 30);
+  writeToDevice(VSD_MAX_REFERENCE, 70);
+  writeToDevice(VSD_FREQUENCY, 50);
+  writeToDevice(VSD_TIMER_DISPERSAL, 30);
+  writeToDevice(VSD_TIMER_DELAY, 30);
+  writeToDevice(VSD_TIMER_DISP_FIX_SPEED, 30);
+  writeToDevice(VSD_TIMER_DELAY_FIX_SPEED, 30);
+  writeToDevice(VSD_MAX_OUTPUT_FREQUENCY, 71);
+  writeToDevice(VSD_LOW_LIM_SPEED_MOTOR, 30);
+  writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR, 50);
+  writeToDevice(VSD_TORQUE_LIMIT, 160);
+  writeToDevice(VSD_CURRENT_LIMIT, 230);
+  writeToDevice(VSD_WARNING_SPEED_LOW, 650);
+  writeToDevice(VSD_DELAY_CURRENT_LIMIT, 5);
+  writeToDevice(VSD_DELAY_TORQUE_LIMIT, 0);
+  writeToDevice(VSD_FIL_TIME_CURRENT_LIMIT, 0.1);
+  writeToDevice(VSD_DC_COMPENSATION, 1);
+  writeToDevice(VSD_HIGH_START_TORQUE_TIME, 10);
+  writeToDevice(VSD_HIGH_START_TORQUE_CURRENT, 50);
+  return ok_r;
+}
+
+uint16_t VsdDanfoss::configVsdVentUf500()
+{
+  writeToDevice(VSD_MOTOR_CONTROL, VSD_MOTOR_CONTROL_UF);
+  writeToDevice(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_ASYNC);
+  writeToDevice(VSD_MOTOR_FREQUENCY, 117);
+  writeToDevice(VSD_MOTOR_SPEED, 1000);
+  writeToDevice(VSD_MOTOR_POLES, 14);
+  setUf_f1(0);
+  setUf_U1(13);
+  setUf_f2(23);
+  setUf_U2(74);
+  setUf_f3(46);
+  setUf_U3(136);
+  setUf_f4(70);
+  setUf_U4(197);
+  setUf_f5(93);
+  setUf_U5(259);
+  setUf_f6(117);
+  setUf_U6(320);
+  writeToDevice(VSD_RESONANCE_REMOVE, 500);
+  writeToDevice(VSD_RESONANCE_TIME, 3);
+  writeToDevice(VSD_MIN_CURRENT_LOW_SPEED, 50);
+  writeToDevice(VSD_PM_START_MODE, 0);
+  writeToDevice(VSD_STOP_FUNCTION, 0);
+  writeToDevice(VSD_MIN_REFERENCE, 80);
+  writeToDevice(VSD_MAX_REFERENCE, 117);
+  writeToDevice(VSD_FREQUENCY, 100);
+  writeToDevice(VSD_TIMER_DISPERSAL, 30);
+  writeToDevice(VSD_TIMER_DELAY, 30);
+  writeToDevice(VSD_TIMER_DISP_FIX_SPEED, 30);
+  writeToDevice(VSD_TIMER_DELAY_FIX_SPEED, 30);
+  writeToDevice(VSD_MAX_OUTPUT_FREQUENCY, 205);
+  writeToDevice(VSD_LOW_LIM_SPEED_MOTOR, 80);
+  writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR, 117);
+  writeToDevice(VSD_TORQUE_LIMIT, 160);
+  writeToDevice(VSD_CURRENT_LIMIT, 160);
+  writeToDevice(VSD_WARNING_SPEED_LOW, 110);
+  writeToDevice(VSD_DELAY_CURRENT_LIMIT, 0);
+  writeToDevice(VSD_DELAY_TORQUE_LIMIT, 0);
+  writeToDevice(VSD_FIL_TIME_CURRENT_LIMIT, 5);
+  writeToDevice(VSD_DC_COMPENSATION, 1);
+  writeToDevice(VSD_HIGH_START_TORQUE_TIME, 10);
+  writeToDevice(VSD_HIGH_START_TORQUE_CURRENT, 50);
+  return ok_r;
+}
+
+uint16_t VsdDanfoss::configVsdVentUf1000()
+{
+  writeToDevice(VSD_MOTOR_CONTROL, VSD_MOTOR_CONTROL_UF);
+  writeToDevice(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_ASYNC);
+  writeToDevice(VSD_MOTOR_FREQUENCY, 117);
+  writeToDevice(VSD_MOTOR_SPEED, 1000);
+  writeToDevice(VSD_MOTOR_POLES, 14);
+  setUf_f1(0);
+  setUf_U1(13);
+  setUf_f2(23);
+  setUf_U2(74);
+  setUf_f3(46);
+  setUf_U3(136);
+  setUf_f4(70);
+  setUf_U4(197);
+  setUf_f5(93);
+  setUf_U5(259);
+  setUf_f6(117);
+  setUf_U6(320);
+  writeToDevice(VSD_RESONANCE_REMOVE, 500);
+  writeToDevice(VSD_RESONANCE_TIME, 3);
+  writeToDevice(VSD_MIN_CURRENT_LOW_SPEED, 50);
+  writeToDevice(VSD_PM_START_MODE, 0);
+  writeToDevice(VSD_STOP_FUNCTION, 0);
+  writeToDevice(VSD_MIN_REFERENCE, 80);
+  writeToDevice(VSD_MAX_REFERENCE, 117);
+  writeToDevice(VSD_FREQUENCY, 100);
+  writeToDevice(VSD_TIMER_DISPERSAL, 30);
+  writeToDevice(VSD_TIMER_DELAY, 30);
+  writeToDevice(VSD_TIMER_DISP_FIX_SPEED, 30);
+  writeToDevice(VSD_TIMER_DELAY_FIX_SPEED, 30);
+  writeToDevice(VSD_MAX_OUTPUT_FREQUENCY, 205);
+  writeToDevice(VSD_LOW_LIM_SPEED_MOTOR, 80);
+  writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR, 117);
+  writeToDevice(VSD_TORQUE_LIMIT, 160);
+  writeToDevice(VSD_CURRENT_LIMIT, 160);
+  writeToDevice(VSD_WARNING_SPEED_LOW, 110);
+  writeToDevice(VSD_DELAY_CURRENT_LIMIT, 0);
+  writeToDevice(VSD_DELAY_TORQUE_LIMIT, 0);
+  writeToDevice(VSD_FIL_TIME_CURRENT_LIMIT, 5);
+  writeToDevice(VSD_DC_COMPENSATION, 1);
+  writeToDevice(VSD_HIGH_START_TORQUE_TIME, 10);
+  writeToDevice(VSD_HIGH_START_TORQUE_CURRENT, 50);
+  return ok_r;
+}
+
+uint16_t VsdDanfoss::configVsdVentUf3000()
+{
+  writeToDevice(VSD_MOTOR_CONTROL, VSD_MOTOR_CONTROL_UF);
+  writeToDevice(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_ASYNC);
+  writeToDevice(VSD_MOTOR_FREQUENCY, 100);
+  writeToDevice(VSD_MOTOR_SPEED, 3000);
+  writeToDevice(VSD_MOTOR_POLES, 4);
+  setUf_f1(0);
+  setUf_U1(13);
+  setUf_f2(20);
+  setUf_U2(74);
+  setUf_f3(40);
+  setUf_U3(136);
+  setUf_f4(60);
+  setUf_U4(197);
+  setUf_f5(80);
+  setUf_U5(259);
+  setUf_f6(100);
+  setUf_U6(320);
+  writeToDevice(VSD_RESONANCE_REMOVE, 100);
+  writeToDevice(VSD_RESONANCE_TIME, 3);
+  writeToDevice(VSD_MIN_CURRENT_LOW_SPEED, 50);
+  writeToDevice(VSD_PM_START_MODE, 0);
+  writeToDevice(VSD_STOP_FUNCTION, 0);
+  writeToDevice(VSD_MIN_REFERENCE, 70);
+  writeToDevice(VSD_MAX_REFERENCE, 100);
+  writeToDevice(VSD_FREQUENCY, 100);
+  writeToDevice(VSD_TIMER_DISPERSAL, 30);
+  writeToDevice(VSD_TIMER_DELAY, 30);
+  writeToDevice(VSD_TIMER_DISP_FIX_SPEED, 30);
+  writeToDevice(VSD_TIMER_DELAY_FIX_SPEED, 30);
+  writeToDevice(VSD_MAX_OUTPUT_FREQUENCY, 205);
+  writeToDevice(VSD_LOW_LIM_SPEED_MOTOR, 70);
+  writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR, 100);
+  writeToDevice(VSD_TORQUE_LIMIT, 160);
+  writeToDevice(VSD_CURRENT_LIMIT, 160);
+  writeToDevice(VSD_WARNING_SPEED_LOW, 325);
+  writeToDevice(VSD_DELAY_CURRENT_LIMIT, 0);
+  writeToDevice(VSD_DELAY_TORQUE_LIMIT, 0);
+  writeToDevice(VSD_FIL_TIME_CURRENT_LIMIT, 5);
+  writeToDevice(VSD_DC_COMPENSATION, 1);
+  writeToDevice(VSD_HIGH_START_TORQUE_TIME, 10);
+  writeToDevice(VSD_HIGH_START_TORQUE_CURRENT, 50);
+  return ok_r;
+}
+
+uint16_t VsdDanfoss::configVsdVentUf6000()
+{
+  writeToDevice(VSD_MOTOR_CONTROL, VSD_MOTOR_CONTROL_UF);
+  writeToDevice(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_ASYNC);
+  writeToDevice(VSD_MOTOR_FREQUENCY, 200);
+  writeToDevice(VSD_MOTOR_SPEED, 6000);
+  writeToDevice(VSD_MOTOR_POLES, 4);
+  setUf_f1(0);
+  setUf_U1(13);
+  setUf_f2(40);
+  setUf_U2(74);
+  setUf_f3(80);
+  setUf_U3(136);
+  setUf_f4(120);
+  setUf_U4(197);
+  setUf_f5(160);
+  setUf_U5(259);
+  setUf_f6(200);
+  setUf_U6(320);
+  writeToDevice(VSD_RESONANCE_REMOVE, 100);
+  writeToDevice(VSD_RESONANCE_TIME, 3);
+  writeToDevice(VSD_MIN_CURRENT_LOW_SPEED, 50);
+  writeToDevice(VSD_PM_START_MODE, 0);
+  writeToDevice(VSD_STOP_FUNCTION, 0);
+  writeToDevice(VSD_MIN_REFERENCE, 70);
+  writeToDevice(VSD_MAX_REFERENCE, 100);
+  writeToDevice(VSD_FREQUENCY, 100);
+  writeToDevice(VSD_TIMER_DISPERSAL, 60);
+  writeToDevice(VSD_TIMER_DELAY, 60);
+  writeToDevice(VSD_TIMER_DISP_FIX_SPEED, 60);
+  writeToDevice(VSD_TIMER_DELAY_FIX_SPEED, 60);
+  writeToDevice(VSD_MAX_OUTPUT_FREQUENCY, 205);
+  writeToDevice(VSD_LOW_LIM_SPEED_MOTOR, 70);
+  writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR, 100);
+  writeToDevice(VSD_TORQUE_LIMIT, 160);
+  writeToDevice(VSD_CURRENT_LIMIT, 160);
+  writeToDevice(VSD_WARNING_SPEED_LOW, 325);
+  writeToDevice(VSD_DELAY_CURRENT_LIMIT, 0);
+  writeToDevice(VSD_DELAY_TORQUE_LIMIT, 0);
+  writeToDevice(VSD_FIL_TIME_CURRENT_LIMIT, 5);
+  writeToDevice(VSD_DC_COMPENSATION, 1);
+  writeToDevice(VSD_HIGH_START_TORQUE_TIME, 10);
+  writeToDevice(VSD_HIGH_START_TORQUE_CURRENT, 50);
+  return ok_r;
+}
+
+uint16_t VsdDanfoss::configVsdVentVect500()
+{
+  writeToDevice(VSD_MOTOR_CONTROL, VSD_MOTOR_CONTROL_VECT);
+  writeToDevice(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_VENT);
+  writeToDevice(VSD_MOTOR_FREQUENCY, 117);
+  writeToDevice(VSD_MOTOR_SPEED, 1000);
+  writeToDevice(VSD_MOTOR_POLES, 14);
+  setUf_f1(0);
+  setUf_U1(13);
+  setUf_f2(23);
+  setUf_U2(74);
+  setUf_f3(46);
+  setUf_U3(136);
+  setUf_f4(70);
+  setUf_U4(197);
+  setUf_f5(93);
+  setUf_U5(259);
+  setUf_f6(117);
+  setUf_U6(320);
+  writeToDevice(VSD_RESONANCE_REMOVE, 500);
+  writeToDevice(VSD_RESONANCE_TIME, 3);
+  writeToDevice(VSD_MIN_CURRENT_LOW_SPEED, 50);
+  writeToDevice(VSD_PM_START_MODE, 1);
+  writeToDevice(VSD_STOP_FUNCTION, 5);
+  writeToDevice(VSD_MIN_REFERENCE, 80);
+  writeToDevice(VSD_MAX_REFERENCE, 117);
+  writeToDevice(VSD_FREQUENCY, 100);
+  writeToDevice(VSD_TIMER_DISPERSAL, 30);
+  writeToDevice(VSD_TIMER_DELAY, 30);
+  writeToDevice(VSD_TIMER_DISP_FIX_SPEED, 30);
+  writeToDevice(VSD_TIMER_DELAY_FIX_SPEED, 30);
+  writeToDevice(VSD_MAX_OUTPUT_FREQUENCY, 205);
+  writeToDevice(VSD_LOW_LIM_SPEED_MOTOR, 80);
+  writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR, 117);
+  writeToDevice(VSD_TORQUE_LIMIT, 160);
+  writeToDevice(VSD_CURRENT_LIMIT, 160);
+  writeToDevice(VSD_WARNING_SPEED_LOW, 110);
+  writeToDevice(VSD_DELAY_CURRENT_LIMIT, 0);
+  writeToDevice(VSD_DELAY_TORQUE_LIMIT, 0);
+  writeToDevice(VSD_FIL_TIME_CURRENT_LIMIT, 5);
+  writeToDevice(VSD_DC_COMPENSATION, 1);
+  writeToDevice(VSD_HIGH_START_TORQUE_TIME, 10);
+  writeToDevice(VSD_HIGH_START_TORQUE_CURRENT, 50);
+  return ok_r;
+}
+
+uint16_t VsdDanfoss::configVsdVentVect1000()
+{
+  writeToDevice(VSD_MOTOR_CONTROL, VSD_MOTOR_CONTROL_VECT);
+  writeToDevice(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_VENT);
+  writeToDevice(VSD_MOTOR_FREQUENCY, 117);
+  writeToDevice(VSD_MOTOR_SPEED, 1000);
+  writeToDevice(VSD_MOTOR_POLES, 14);
+  setUf_f1(0);
+  setUf_U1(13);
+  setUf_f2(23);
+  setUf_U2(74);
+  setUf_f3(46);
+  setUf_U3(136);
+  setUf_f4(70);
+  setUf_U4(197);
+  setUf_f5(93);
+  setUf_U5(259);
+  setUf_f6(117);
+  setUf_U6(320);
+  writeToDevice(VSD_RESONANCE_REMOVE, 500);
+  writeToDevice(VSD_RESONANCE_TIME, 3);
+  writeToDevice(VSD_MIN_CURRENT_LOW_SPEED, 50);
+  writeToDevice(VSD_PM_START_MODE, 1);
+  writeToDevice(VSD_STOP_FUNCTION, 5);
+  writeToDevice(VSD_MIN_REFERENCE, 80);
+  writeToDevice(VSD_MAX_REFERENCE, 117);
+  writeToDevice(VSD_FREQUENCY, 100);
+  writeToDevice(VSD_TIMER_DISPERSAL, 30);
+  writeToDevice(VSD_TIMER_DELAY, 30);
+  writeToDevice(VSD_TIMER_DISP_FIX_SPEED, 30);
+  writeToDevice(VSD_TIMER_DELAY_FIX_SPEED, 30);
+  writeToDevice(VSD_MAX_OUTPUT_FREQUENCY, 205);
+  writeToDevice(VSD_LOW_LIM_SPEED_MOTOR, 80);
+  writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR, 117);
+  writeToDevice(VSD_TORQUE_LIMIT, 160);
+  writeToDevice(VSD_CURRENT_LIMIT, 160);
+  writeToDevice(VSD_WARNING_SPEED_LOW, 110);
+  writeToDevice(VSD_DELAY_CURRENT_LIMIT, 0);
+  writeToDevice(VSD_DELAY_TORQUE_LIMIT, 0);
+  writeToDevice(VSD_FIL_TIME_CURRENT_LIMIT, 5);
+  writeToDevice(VSD_DC_COMPENSATION, 1);
+  writeToDevice(VSD_HIGH_START_TORQUE_TIME, 10);
+  writeToDevice(VSD_HIGH_START_TORQUE_CURRENT, 50);
+  return ok_r;
+}
+
+uint16_t VsdDanfoss::configVsdVentVect3000()
+{
+  writeToDevice(VSD_MOTOR_CONTROL, VSD_MOTOR_CONTROL_VECT);
+  writeToDevice(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_VENT);
+  writeToDevice(VSD_MOTOR_FREQUENCY, 100);
+  writeToDevice(VSD_MOTOR_SPEED, 3000);
+  writeToDevice(VSD_MOTOR_POLES, 4);
+  setUf_f1(0);
+  setUf_U1(13);
+  setUf_f2(20);
+  setUf_U2(74);
+  setUf_f3(40);
+  setUf_U3(136);
+  setUf_f4(60);
+  setUf_U4(197);
+  setUf_f5(80);
+  setUf_U5(259);
+  setUf_f6(100);
+  setUf_U6(320);
+  writeToDevice(VSD_RESONANCE_REMOVE, 500);
+  writeToDevice(VSD_RESONANCE_TIME, 3);
+  writeToDevice(VSD_MIN_CURRENT_LOW_SPEED, 50);
+  writeToDevice(VSD_PM_START_MODE, 1);
+  writeToDevice(VSD_STOP_FUNCTION, 5);
+  writeToDevice(VSD_MIN_REFERENCE, 70);
+  writeToDevice(VSD_MAX_REFERENCE, 100);
+  writeToDevice(VSD_FREQUENCY, 100);
+  writeToDevice(VSD_TIMER_DISPERSAL, 30);
+  writeToDevice(VSD_TIMER_DELAY, 30);
+  writeToDevice(VSD_TIMER_DISP_FIX_SPEED, 30);
+  writeToDevice(VSD_TIMER_DELAY_FIX_SPEED, 30);
+  writeToDevice(VSD_MAX_OUTPUT_FREQUENCY, 205);
+  writeToDevice(VSD_LOW_LIM_SPEED_MOTOR, 70);
+  writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR, 100);
+  writeToDevice(VSD_TORQUE_LIMIT, 160);
+  writeToDevice(VSD_CURRENT_LIMIT, 160);
+  writeToDevice(VSD_WARNING_SPEED_LOW, 325);
+  writeToDevice(VSD_DELAY_CURRENT_LIMIT, 0);
+  writeToDevice(VSD_DELAY_TORQUE_LIMIT, 0);
+  writeToDevice(VSD_FIL_TIME_CURRENT_LIMIT, 5);
+  writeToDevice(VSD_DC_COMPENSATION, 1);
+  writeToDevice(VSD_HIGH_START_TORQUE_TIME, 10);
+  writeToDevice(VSD_HIGH_START_TORQUE_CURRENT, 50);
+  return ok_r;
+}
+
+uint16_t VsdDanfoss::configVsdVentVect6000()
+{
+  writeToDevice(VSD_MOTOR_CONTROL, VSD_MOTOR_CONTROL_VECT);
+  writeToDevice(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_VENT);
+  writeToDevice(VSD_MOTOR_FREQUENCY, 200);
+  writeToDevice(VSD_MOTOR_SPEED, 6000);
+  writeToDevice(VSD_MOTOR_POLES, 4);
+  setUf_f1(0);
+  setUf_U1(13);
+  setUf_f2(40);
+  setUf_U2(74);
+  setUf_f3(80);
+  setUf_U3(136);
+  setUf_f4(120);
+  setUf_U4(197);
+  setUf_f5(160);
+  setUf_U5(259);
+  setUf_f6(200);
+  setUf_U6(320);
+  writeToDevice(VSD_RESONANCE_REMOVE, 500);
+  writeToDevice(VSD_RESONANCE_TIME, 3);
+  writeToDevice(VSD_MIN_CURRENT_LOW_SPEED, 50);
+  writeToDevice(VSD_PM_START_MODE, 1);
+  writeToDevice(VSD_STOP_FUNCTION, 5);
+  writeToDevice(VSD_MIN_REFERENCE, 70);
+  writeToDevice(VSD_MAX_REFERENCE, 100);
+  writeToDevice(VSD_FREQUENCY, 100);
+  writeToDevice(VSD_TIMER_DISPERSAL, 60);
+  writeToDevice(VSD_TIMER_DELAY, 60);
+  writeToDevice(VSD_TIMER_DISP_FIX_SPEED, 60);
+  writeToDevice(VSD_TIMER_DELAY_FIX_SPEED, 60);
+  writeToDevice(VSD_MAX_OUTPUT_FREQUENCY, 205);
+  writeToDevice(VSD_LOW_LIM_SPEED_MOTOR, 70);
+  writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR, 100);
+  writeToDevice(VSD_TORQUE_LIMIT, 160);
+  writeToDevice(VSD_CURRENT_LIMIT, 160);
+  writeToDevice(VSD_WARNING_SPEED_LOW, 325);
+  writeToDevice(VSD_DELAY_CURRENT_LIMIT, 0);
+  writeToDevice(VSD_DELAY_TORQUE_LIMIT, 0);
+  writeToDevice(VSD_FIL_TIME_CURRENT_LIMIT, 5);
+  writeToDevice(VSD_DC_COMPENSATION, 1);
+  writeToDevice(VSD_HIGH_START_TORQUE_TIME, 10);
+  writeToDevice(VSD_HIGH_START_TORQUE_CURRENT, 50);
+  return ok_r;
+}
+
 int VsdDanfoss::start()
 {
 #if USE_DEBUG
@@ -532,6 +1032,47 @@ int VsdDanfoss::stopCoil(float type)
     if (!checkStatusVsd(VSD_STATUS_STARTED))
       return ok_r;
   }
+}
+
+int VsdDanfoss::resetSetpoints()
+{
+  writeToDevice(VSD_WORK_STATE_WHEN_ON, 1);
+  writeToDevice(VSD_CONFIG_MODE, 0);
+  writeToDevice(VSD_TORQUE_CHARACTERISTIC, 0);
+  writeToDevice(VSD_OVERLOAD_MODE, 1);
+  writeToDevice(VSD_MOTOR_VOLTAGE, 320);
+  writeToDevice(VSD_MIN_CURRENT_LOW_SPEED, 100);
+  writeToDevice(VSD_START_DELAY, 0);
+  writeToDevice(VSD_START_FUNCTION, 2);
+  writeToDevice(VSD_STOP_SPEED, 10);
+  writeToDevice(VSD_CONTROL_TERMISTOR_MTR, 2);
+  writeToDevice(VSD_THERMISTOR_RESOURCE, 5);
+  writeToDevice(VSD_PARKING_CURRENT, 50);
+  writeToDevice(VSD_PARKING_TIME, 1);
+  writeToDevice(VSD_OVERVOLTAGE_CONTROL, 2);
+  writeToDevice(VSD_RESOURCE_TASK_1, 0);
+  writeToDevice(VSD_RESOURCE_TASK_2, 0);
+  writeToDevice(VSD_RESOURCE_TASK_3, 0);
+  writeToDevice(VSD_TYPE_SPEED_CHANGE, 0);
+  writeToDevice(VSD_ROTATION, 2);
+  writeToDevice(VSD_MTR_FEEDBACK_LOSS_FUNC, 0);
+  writeToDevice(VSD_TRACK_ERROR_FUNCTION, 2);
+  writeToDevice(VSD_TRACK_ERROR, 600);
+  writeToDevice(VSD_TRACK_ERROR_TIMEOUT, 10);
+  writeToDevice(VSD_TRACK_ERROR_RAMPING, 600);
+  writeToDevice(VSD_TRACK_ERROR_RAMP_TIME, 5);
+  writeToDevice(VSD_TRACK_ERROR_AFTER_RAMP, 10);
+  writeToDevice(VSD_TRACK_ERROR_AFTER_RAMP, 10);
+  writeToDevice(VSD_TERMINAL_27_MODE, 1);
+  writeToDevice(VSD_TERMINAL_29_MODE, 1);
+  writeToDevice(VSD_DI_18, 0);
+  writeToDevice(VSD_DI_19, 0);
+  writeToDevice(VSD_DI_27, 0);
+  writeToDevice(VSD_DI_32, 0);
+  writeToDevice(VSD_TERMINAL_27_DI, 75);
+  writeToDevice(VSD_TERMINAL_29_DI, 80);
+
+  return ok_r;
 }
 
 void VsdDanfoss::getNewValue(uint16_t id)

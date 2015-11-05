@@ -34,6 +34,7 @@ public:
 
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
   int setMotorType(float value);
+  int setMotorSpeed(float value);
 
   // РЕЖИМЫ ПУСКА
 
@@ -67,7 +68,17 @@ public:
   void writeUf_U(uint16_t numPoint, float value);
   void readUfCharacterictic();
 
-  
+  uint16_t configVsd();
+  uint16_t configVsdAsync();
+  uint16_t configVsdVentUf500();
+  uint16_t configVsdVentUf1000();
+  uint16_t configVsdVentUf3000();
+  uint16_t configVsdVentUf6000();
+  uint16_t configVsdVentVect500();
+  uint16_t configVsdVentVect1000();
+  uint16_t configVsdVentVect3000();
+  uint16_t configVsdVentVect6000();
+
   void getNewValue(uint16_t id);
   uint8_t setNewValue(uint16_t id, float value);
 
@@ -79,6 +90,8 @@ public:
 
   int startCoil();
   int stopCoil(float type);
+
+  int resetSetpoints();
 
 private:
   ModbusParameter modbusParameters_[134];
