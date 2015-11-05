@@ -679,6 +679,7 @@ bool VsdEtalon::checkStop()
 
   if (checkStatusVsd(VSD_STATUS_STOPPED_EXTERNAL)) {
     if (!checkStatusVsd(VSD_STATUS_STARTED)) {
+      resetBlock();
       return true;
     }
   }
