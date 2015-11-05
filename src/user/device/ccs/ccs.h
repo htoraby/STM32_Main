@@ -103,6 +103,16 @@ public:
   void stop(LastReasonStop reason);
 
   /*!
+   * \brief Метод перехода в состояние "Работа" при запущеном ЧРП
+   */
+  void syncStart();
+
+  /*!
+   * \brief Метод перехода в состояние "Стоп" при остановленом ЧРП
+   */
+  void syncStop();
+
+  /*!
    * \brief Проверка находится ли станция в стопе
    * \return
    */

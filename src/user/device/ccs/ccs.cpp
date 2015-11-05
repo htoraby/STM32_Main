@@ -208,11 +208,7 @@ void Ccs::vsdConditionTask()
       } else {
         if (vsd->checkStart()) {
           if (++timer >= 500) {
-            setNewValue(CCS_LAST_RUN_REASON, LastReasonRunApvHardwareVsd);
-            setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
-            setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
-            setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
-            calcCountersRun(LastReasonRunApvHardwareVsd);
+            syncStart();
           }
         }
       }
@@ -240,10 +236,7 @@ void Ccs::vsdConditionTask()
       }
       if (vsd->checkStop()) {
         if (++timer >= 500) {
-          setBlock();
-          parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_NO_CONNECT);
-          setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopHardwareVsd);
-          setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
+          syncStop();
         }
       }
       break;
@@ -257,10 +250,7 @@ void Ccs::vsdConditionTask()
 
       if (vsd->checkStop()) {
         if (++timer >= 500) {
-          setBlock();
-          parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_NO_CONNECT);
-          setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopHardwareVsd);
-          setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
+          syncStop();
         }
       }
       break;
@@ -390,6 +380,24 @@ void Ccs::stop(LastReasonStop reason)
     setNewValue(CCS_CONDITION, CCS_CONDITION_STOPPING);
     setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
   }
+}
+
+void Ccs::syncStart()
+{
+  resetBlock();
+  setNewValue(CCS_LAST_RUN_REASON, LastReasonRunApvHardwareVsd);
+  setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
+  setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
+  setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
+  calcCountersRun(LastReasonRunApvHardwareVsd);
+}
+
+void Ccs::syncStop()
+{
+  setBlock();
+  parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_NO_CONNECT);
+  setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopHardwareVsd);
+  setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
 }
 
 void Ccs::cmdStart(int value)
