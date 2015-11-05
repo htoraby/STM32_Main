@@ -15,6 +15,7 @@ void Ccs::calcParametersTask()
 {
   int time10ms = HAL_GetTick();
   int time100ms = HAL_GetTick();
+  int time500ms = HAL_GetTick();
   int time1s = HAL_GetTick();
   while (1) {
     osDelay(1);
@@ -44,7 +45,6 @@ void Ccs::calcParametersTask()
 //    calcInputVoltagePhase12();
 //    calcInputVoltagePhase23();
 //    calcInputVoltagePhase31();
-      calcInputVoltageFromAdc();
 
       calcInputVoltageImbalance();
       calcInputCurrentImbalance();
@@ -52,6 +52,12 @@ void Ccs::calcParametersTask()
       calcRegimeRun();
 
       calcAnalogInputs();
+    }
+
+    if ((HAL_GetTick() - time500ms) >= 500) {
+      time500ms = HAL_GetTick();
+
+      calcInputVoltageFromAdc();
     }
 
     if ((HAL_GetTick() - time1s) >= 1000) {
