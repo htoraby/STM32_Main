@@ -189,6 +189,13 @@ public:
   virtual int setMotorVoltage(float value);
 
   /*!
+   * \brief setMotorSpeed
+   * \param value
+   * \return
+   */
+  virtual int setMotorSpeed(float value);
+
+  /*!
    * \brief setLimitsMotor
    * \return
    */

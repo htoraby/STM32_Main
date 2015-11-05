@@ -41,6 +41,11 @@ int Vsd::setMotorVoltage(float value)
   return setValue(VSD_MOTOR_VOLTAGE, value);
 }
 
+int Vsd::setMotorSpeed(float value)
+{
+  return setValue(VSD_MOTOR_SPEED, value);
+}
+
 void Vsd::setLimitsMotor()
 {
 
