@@ -15414,6 +15414,25 @@
 	</param>
 	<param>
 		<id>822</id>
+		<name>CCS_VSD_STATUS_WORD_6</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-2147483648.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>823</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
@@ -19590,7 +19609,7 @@
 	</param>
 	<param>
 		<id>10249</id>
-		<name>VSD_LAST_ALARM</name>
+		<name>VSD_DELETE_10249</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -19603,7 +19622,7 @@
 	</param>
 	<param>
 		<id>10250</id>
-		<name>VSD_ALARM_WORD_1</name>
+		<name>VSD_DELETE_10250</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -19616,7 +19635,7 @@
 	</param>
 	<param>
 		<id>10251</id>
-		<name>VSD_ALARM_WORD_2</name>
+		<name>VSD_DELETE_10251</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -19629,7 +19648,7 @@
 	</param>
 	<param>
 		<id>10252</id>
-		<name>VSD_WARNING_WORD_1</name>
+		<name>VSD_DELETE_10252</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -19642,7 +19661,7 @@
 	</param>
 	<param>
 		<id>10253</id>
-		<name>VSD_WARNING_WORD_2</name>
+		<name>VSD_DELETE_10253</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>

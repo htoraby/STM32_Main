@@ -126,13 +126,13 @@ void LogData::add(uint8_t code)
   *(float*)(buffer+185) = parameters.get(TMS_PSW_TMSN);
   *(float*)(buffer+189) = parameters.get(VSD_VOLTAGE_DC);
   *(float*)(buffer+193) = parameters.get(CCS_VSD_STATUS_WORD_1);
-  *(float*)(buffer+197) = parameters.get(VSD_ALARM_WORD_1);
-  *(float*)(buffer+201) = parameters.get(VSD_ALARM_WORD_2);
-  *(float*)(buffer+205) = parameters.get(VSD_WARNING_WORD_1);
+  *(float*)(buffer+197) = parameters.get(CCS_VSD_STATUS_WORD_2);
+  *(float*)(buffer+201) = parameters.get(CCS_VSD_STATUS_WORD_3);
+  *(float*)(buffer+205) = parameters.get(CCS_VSD_STATUS_WORD_4);
 
-  *(float*)(buffer+209) = parameters.get(VSD_WARNING_WORD_2);
+  *(float*)(buffer+209) = parameters.get(CCS_VSD_STATUS_WORD_5);
 //  *(float*)(buffer+213) = parameters.getValue(); // WARNING_WORD_EXT|WarnEXT Слово состояния ЧРП расширенное
-  *(float*)(buffer+217) = parameters.get(VSD_LAST_ALARM);
+  *(float*)(buffer+217) = parameters.get(CCS_VSD_STATUS_WORD_6);
   *(float*)(buffer+221) = parameters.get(CCS_TURBO_ROTATION_NOW);
   *(float*)(buffer+225) = parameters.get(CCS_RGM_PERIODIC_MODE);
   *(float*)(buffer+229) = parameters.get(CCS_RGM_PERIODIC_RUN_PERIOD);

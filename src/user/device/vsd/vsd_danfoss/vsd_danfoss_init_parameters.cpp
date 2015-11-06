@@ -1901,7 +1901,7 @@ void VsdDanfoss::initModbusParameters()
                             0               // Значение
                            };
   modbusParameters_[110] = {// Cлова состояния
-                            VSD_STATUS_WORD_1,
+                            VSD_STATUS_WORD_1,  // RSTATUS_WORD
                             16029,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
                             PHYSIC_NUMERIC, // Физическая величина параметра
@@ -2105,7 +2105,7 @@ void VsdDanfoss::initModbusParameters()
                             0               // Значение
                            };
   modbusParameters_[122] = {// Номер последней аварии и предупреждения
-                            VSD_LAST_ALARM,
+                            VSD_STATUS_WORD_2,  // BUS_READOUT_ALARM
                             16869,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
                             PHYSIC_NUMERIC, // Физическая величина параметра
@@ -2121,8 +2121,8 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[123] = {// Слово Аварии 1
-                            VSD_ALARM_WORD_1,
+  modbusParameters_[123] = {//
+                            VSD_STATUS_WORD_3,  // ALARM_WORD_1
                             16899,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
                             PHYSIC_NUMERIC, // Физическая величина параметра
@@ -2138,8 +2138,8 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[124] = {// Слово Аварии 2
-                            VSD_ALARM_WORD_2,
+  modbusParameters_[124] = {//
+                            VSD_STATUS_WORD_4,  // ALARM_WORD_2
                             16909,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
                             PHYSIC_NUMERIC, // Физическая величина параметра
@@ -2156,7 +2156,7 @@ void VsdDanfoss::initModbusParameters()
                             0               // Значение
                            };
   modbusParameters_[125] = {// Слово Предупреждения 1
-                            VSD_WARNING_WORD_1,
+                            VSD_STATUS_WORD_5,  // WARNING_WORD
                             16919,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
                             PHYSIC_NUMERIC, // Физическая величина параметра
@@ -2173,7 +2173,7 @@ void VsdDanfoss::initModbusParameters()
                             0               // Значение
                            };
   modbusParameters_[126] = {// Слово Предупреждения 2
-                            VSD_WARNING_WORD_2,
+                            VSD_STATUS_WORD_6, // WARNING_WORD_2
                             16929,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
                             PHYSIC_NUMERIC, // Физическая величина параметра
@@ -2190,7 +2190,7 @@ void VsdDanfoss::initModbusParameters()
                             0               // Значение
                            };
   modbusParameters_[127] = {// Слово предупреждения расширенное
-                            VSD_STATUS_WORD_4,
+                            VSD_STATUS_WORD_7, // WARNING_WORD_EXT
                             16929,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
                             PHYSIC_NUMERIC, // Физическая величина параметра
