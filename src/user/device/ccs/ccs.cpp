@@ -1017,10 +1017,14 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
         logEvent.add(AddDeviceCode, eventType, AddDeviceFiltOutId, oldValue, value);
       else
         logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceFiltOutId, oldValue, value);
+      parameters.set(VSD_OUT_FILTER, value);
     }
     return err;
-  case CCS_SCADA_TYPE: case CCS_SCADA_ADDRESS: case CCS_SCADA_BYTERATE:
-  case CCS_SCADA_PARITY: case CCS_SCADA_DELAY:
+  case CCS_SCADA_TYPE:
+  case CCS_SCADA_ADDRESS:
+  case CCS_SCADA_BYTERATE:
+  case CCS_SCADA_PARITY:
+  case CCS_SCADA_DELAY:
     err = setValue(id, value, eventType);
     if ((value != oldValue) && !err)
       osSemaphoreRelease(scadaSemaphoreId_);

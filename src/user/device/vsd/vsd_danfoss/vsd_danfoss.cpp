@@ -209,6 +209,18 @@ int VsdDanfoss::setSwitchingFrequencyCode(float value)
   }
 }
 
+int VsdDanfoss::setOutFilter(float value)
+{
+  if (!Vsd::setOutFilter(value)) {
+    writeToDevice(VSD_OUT_FILTER, getValue(VSD_OUT_FILTER));
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setOutFilter");
+    return err_r;
+  }
+}
+
 // НАСТРОЙКА U/f
 int VsdDanfoss::setUf_f1(float value)
 {
@@ -1209,7 +1221,14 @@ void VsdDanfoss::getNewValue(uint16_t id)
         break;
       }
       break;
-
+    case VSD_OUT_FILTER:
+      setValue(VSD_OUT_FILTER, value);
+      if (value) {
+         parameters.set(CCS_FILTER_OUTPUT, 1);
+      }
+      else {
+        parameters.set(CCS_FILTER_OUTPUT, value);
+      }
     default:
       setValue(id, value);
       break;

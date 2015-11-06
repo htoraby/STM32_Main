@@ -356,6 +356,13 @@ public:
    */
   virtual int setResonanceRemoveSource(float value);
 
+  /*!
+   * \brief setOutFilter
+   * \param value
+   * \return
+   */
+  virtual int setOutFilter(float value);
+
   // НАСТРОЙКА U/f
   /*!
    * \brief setUf_f1

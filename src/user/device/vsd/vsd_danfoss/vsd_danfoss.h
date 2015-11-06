@@ -48,6 +48,8 @@ public:
   int setTimeSpeedDown(float value);
   int setSwitchingFrequencyCode(float value);
 
+  int setOutFilter(float value);
+
   // НАСТРОЙКА U/f
   int setUf_f1(float value);
   int setUf_f2(float value);
