@@ -94,7 +94,7 @@ public:
   int resetSetpoints();
 
 private:
-  ModbusParameter modbusParameters_[134];
+  ModbusParameter modbusParameters_[135];
   DeviceModbus *dm_;
 
 };

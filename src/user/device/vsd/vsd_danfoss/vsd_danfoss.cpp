@@ -1071,7 +1071,40 @@ int VsdDanfoss::resetSetpoints()
   writeToDevice(VSD_DI_32, 0);
   writeToDevice(VSD_TERMINAL_27_DI, 75);
   writeToDevice(VSD_TERMINAL_29_DI, 80);
-
+//  FUNCTION_RELE|5;70;0;0;0;0;0;0;0;|
+//  ON_DELAY_RELAY|0.01;60;|
+  writeToDevice(VSD_42_AO, 133);
+  writeToDevice(VSD_CONTROL_WORD_TIMEOUT_TIME, 600);
+  writeToDevice(VSD_SL_CONTROLLER_MODE, 1);
+  writeToDevice(VSD_SL_START_EVENT, 1);
+  writeToDevice(VSD_SL_STOP_EVENT, 0);
+  writeToDevice(VSD_SL_RESET, 0);
+//  SMART_LOGIC_10|4;4;4;8;0;0;|
+//  SMART_LOGIC_11|0;0;2;0;1;1;|
+//  SMART_LOGIC_12|32;5;100;440;0;0;|
+//  SMART_LOGIC_15|9;|
+//  SMART_LOGIC_16|22;|
+//  SMART_LOGIC_20|0;0;0;0;0;0;0.001;0.001;|
+//  SMART_LOGIC_40|11;25;25;27;29;20;|
+//  SMART_LOGIC_41|7;1;1;2;6;2;|
+//  SMART_LOGIC_42|20;23;24;28;0;29;|
+//  SMART_LOGIC_43|1;|
+//  SMART_LOGIC_44|94;|
+//  SMART_LOGIC_51|1;29;73;60;74;61;|
+//  SMART_LOGIC_52|38;73;32;74;38;1;|
+  writeToDevice(VSD_OVERMODULATION, 0);
+  writeToDevice(VSD_DEAD_TIME_COMPENSATION, 0);
+  writeToDevice(VSD_MAINS_FAILURE, 6);
+  writeToDevice(VSD_MAINS_VOLTAGE_FAILURE, 270);
+  writeToDevice(VSD_RESET_MODE, 5);
+  writeToDevice(VSD_AUTOSTART_TIME, 5);
+  writeToDevice(VSD_TRIP_DELAY_AT_INVERTER_FAULT, 1);
+  writeToDevice(VSD_DC_COMPENSATION, 1);
+  writeToDevice(VSD_FAN_CONTROL, 4);
+  writeToDevice(VSD_OUT_FILTER, 2);
+//  FAULT_LEVEL|1;3;3;1;2;2;1;2;3;2;3;2;2;3;3;|
+  writeToDevice(VSD_LOCK_ROTOR_PROTECTION, 0);
+  writeToDevice(VSD_LOCK_ROTOR_TIME, 1);
   return ok_r;
 }
 
