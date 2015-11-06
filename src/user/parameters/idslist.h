@@ -1209,7 +1209,8 @@ enum enID
   VSD_BLDC_COEF_REG_NOW = 10380,                             //!< Текущий коэффициент регулирования
   VSD_BLDC_ANGLE_NOW = 10381,                                //!< Текущий угол дельта тета положения ротора
   VSD_DOOR_VALUE = 10382,                                    //!< Состояние двери
-  VSD_END = 10383,                                           //!< 
+  VSD_TRIP_DELAY_AT_INVERTER_FAULT = 10383,                  //!< Задержка отключения при неисправности инвертера
+  VSD_END = 10384,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме
