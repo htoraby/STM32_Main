@@ -881,6 +881,8 @@ int VsdEtalon::setBaseFrequency(float value)
     if (!setValue(VSD_BLDC_MAX_WORK_FREQ, value)) {
       writeToDevice(VSD_BLDC_MAX_WORK_FREQ, value);
       osDelay(200);
+      readInDevice(VSD_TRANS_NEED_VOLTAGE_TAP_OFF);
+      osDelay(200);
       readUfCharacterictic();
       return ok_r;
     }
