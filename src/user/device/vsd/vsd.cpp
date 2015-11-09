@@ -41,6 +41,11 @@ int Vsd::setMotorVoltage(float value)
   return setValue(VSD_MOTOR_VOLTAGE, value);
 }
 
+int Vsd::setMotorSpeed(float value)
+{
+  return setValue(VSD_MOTOR_SPEED, value);
+}
+
 void Vsd::setLimitsMotor()
 {
 
@@ -223,6 +228,15 @@ int Vsd::setResonanceRemoveSource(float value)
 {
   return setValue(VSD_RES_MODE, value);
 }
+
+int Vsd::setOutFilter(float value)
+{
+  if (value)
+    value++;
+  return setValue(VSD_OUT_FILTER, value);
+}
+
+
 
 // НАСТРОЙКА U/f
 int Vsd::setUf_f1(float value)

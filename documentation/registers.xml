@@ -16229,6 +16229,25 @@
 	</param>
 	<param>
 		<id>842</id>
+		<name>CCS_VSD_STATUS_WORD_6</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-2147483648.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>843</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
@@ -16273,7 +16292,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>200.0</max>
+		<max>500.0</max>
 		<def>50.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -16346,7 +16365,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>1.0</max>
+		<max>2.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -16368,7 +16387,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>1.0</max>
+		<max>2.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -16380,7 +16399,7 @@
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<code>13</code>
-		<values>0-Прямое;1-Обратное</values>
+		<values>0-Прямое;1-Обратное;2-Оба направления</values>
 		<comment>Направления вращения Danfoss 4-10 Не используется в проекте, только при конфигурировании</comment>
 	</param>
 	<param>
@@ -16724,7 +16743,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>200.0</max>
+		<max>500.0</max>
 		<def>40.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -16745,7 +16764,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>200.0</max>
+		<max>500.0</max>
 		<def>60.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -18615,12 +18634,19 @@
 		<name>VSD_CONFIG_MODE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
-		<short_text>NULL</short_text>
+		<value>0.0</value>
+		<text>Режим конфигурирования</text>
+		<short_text>Режим конфигурирования</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Режим конфигурирования Danfoss 1-00 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -18631,16 +18657,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>1000.0</max>
+		<max>3600.0</max>
 		<def>30.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>30.0</value>
 		<text>Время разгона до номинал. Частоты</text>
 		<short_text>Время разгона до номинал. Частоты</short_text>
+		<form>3.2.3 Дополнительные настройки ЧРП</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_SS</unit_lcd>
-		<code>0</code>
+		<format>XXXX_X</format>
+		<code>13</code>
 		<comment>Время разгона Danfoss 3-41 % Активно используется в проекте</comment>
 	</param>
 	<param>
@@ -18650,16 +18678,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>1000.0</max>
+		<max>3600.0</max>
 		<def>30.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>30.0</value>
 		<text>Время торм. с номинал. Частоты</text>
 		<short_text>Время торм. с номинал. Частоты</short_text>
+		<form>3.2.3 Дополнительные настройки ЧРП</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_SS</unit_lcd>
-		<code>0</code>
+		<format>XXXX_X</format>
+		<code>13</code>
 		<comment>Время замедления Danfoss 3-42 % Активно используется в проекте</comment>
 	</param>
 	<param>
@@ -18667,10 +18697,19 @@
 		<name>VSD_INDEX</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>5.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>5.0</value>
+		<text>Индекс массива</text>
+		<short_text>Индекс массива</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Указатель индекса для массивных параметров Danfoss 0х0008 используется для массивов параметров</comment>
 	</param>
@@ -18692,11 +18731,19 @@
 		<name>VSD_TORQUE_CHARACTERISTIC</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>2.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Характеристика момента нагрузки</text>
+		<short_text>Характеристика момента нагрузки</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Характеристика момента нагрузки Danfoss 1-03 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -18705,11 +18752,19 @@
 		<name>VSD_OVERLOAD_MODE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Режим перегрузки</text>
+		<short_text>Режим перегрузки</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Режим перегрузки Danfoss 1-04 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -18803,11 +18858,19 @@
 		<name>VSD_RESONANCE_REMOVE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>500.0</max>
+		<def>100.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>100.0</value>
+		<text>Подавление резонанса</text>
+		<short_text>Подавление резонанса</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Подавление резонанса % Danfoss 1-64 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -18816,11 +18879,19 @@
 		<name>VSD_RESONANCE_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.005</min>
+		<max>0.05</max>
+		<def>0.005</def>
+		<discret>3</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.005</value>
+		<text>Постоянная времени системы подавления резонанса</text>
+		<short_text>Постоянная времени системы подавления резонанса</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MS</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Постаянная времени подавления Danfoss 1-65 Не используется в проекте, только при конфигурировании Novomet 0х0067</comment>
 	</param>
@@ -18829,11 +18900,19 @@
 		<name>VSD_MIN_CURRENT_LOW_SPEED</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>1.0</min>
+		<max>200.0</max>
+		<def>100.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>100.0</value>
+		<text>Минимальный ток при низкой скорости</text>
+		<short_text>Минимальный ток при низкой скорости</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Минимальный ток при низкой скорости Danfoss 1-66 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -18842,11 +18921,19 @@
 		<name>VSD_PM_START_MODE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Режим пуска вентильного двигателя</text>
+		<short_text>Режим пуска вентильного двигателя</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Тип запуска вентиля Danfoss 1-70 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -18855,10 +18942,19 @@
 		<name>VSD_START_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<max>25.5</max>
+		<def>0.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Задержка запуска</text>
+		<short_text>Задержка запуска</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Задержка запуска Danfoss 1-71 Используется в защите от невыхода на заданную частоту</comment>
 	</param>
@@ -18867,11 +18963,19 @@
 		<name>VSD_START_FUNCTION</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>7.0</max>
+		<def>2.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>2.0</value>
+		<text>Функция запуска</text>
+		<short_text>Функция запуска</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Функция запуска Danfoss 1-72 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -18880,11 +18984,19 @@
 		<name>VSD_STOP_FUNCTION</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>6.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Функция при остановке</text>
+		<short_text>Функция при остановке</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Функция при остановке Danfoss 1-80 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -18893,11 +19005,19 @@
 		<name>VSD_STOP_SPEED</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<max>20.0</max>
+		<def>20.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>20.0</value>
+		<text>Минимальная скорость для функции при останове</text>
+		<short_text>Минимальная скорость для функции при останове</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Минимальная скорость для функции при останове Danfoss 1-82 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -18906,11 +19026,19 @@
 		<name>VSD_CONTROL_TERMISTOR_MTR</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>20.0</max>
+		<def>2.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>2.0</value>
+		<text>Контроль термистора двигателя</text>
+		<short_text>Контроль термистора двигателя</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Контроль термистора двигателя Danfoss 1-90 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -18919,11 +19047,19 @@
 		<name>VSD_THERMISTOR_RESOURCE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>6.0</max>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>5.0</value>
+		<text>Вход термистора</text>
+		<short_text>Вход термистора</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Вход термистора Danfoss 1-93 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -18932,11 +19068,19 @@
 		<name>VSD_PARKING_CURRENT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1000.0</max>
+		<def>50.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>50.0</value>
+		<text>Начальный ток</text>
+		<short_text>Начальный ток</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Начальный ток Danfoss 2-06 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -18948,17 +19092,17 @@
 		<physic>PHYSIC_TIME</physic>
 		<min>0.1</min>
 		<max>60.0</max>
-		<def>3.0</def>
+		<def>1.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>3.0</value>
+		<value>1.0</value>
 		<text>Длительность действия тока (2-07)</text>
 		<short_text>Длительность действия тока (2-07)</short_text>
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_SS</unit_lcd>
 		<format>XXXX_X</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>Длительность действия начального ток Danfoss 2-07 В проекте есть, но отключено, используется при конфигурировании</comment>
 	</param>
 	<param>
@@ -18966,11 +19110,19 @@
 		<name>VSD_OVERVOLTAGE_CONTROL</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>2.0</max>
+		<def>2.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>2.0</value>
+		<text>Контроль перенапряжения</text>
+		<short_text>Контроль перенапряжения</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Контроль перенапряжения Danfoss 2-17 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -18979,11 +19131,19 @@
 		<name>VSD_MIN_REFERENCE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>-1999999.999</min>
+		<max>1999999.999</max>
+		<def>0.0</def>
+		<discret>3</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Минимальное задание</text>
+		<short_text>Минимальное задание</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXX_XX</format>
 		<code>0</code>
 		<comment>Минимальное задание Danfoss 3-02 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -18992,11 +19152,19 @@
 		<name>VSD_MAX_REFERENCE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>-1999999.999</min>
+		<max>1999999.999</max>
+		<def>0.0</def>
+		<discret>3</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Максимальное задание</text>
+		<short_text>Максимальное задание</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXX_XX</format>
 		<code>0</code>
 		<comment>Максимальное задани Danfoss 3-03 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19005,11 +19173,19 @@
 		<name>VSD_RESOURCE_TASK_1</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>29.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Ресурс задания 1</text>
+		<short_text>Ресурс задания 1</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Ресурс задания 1 Danfoss 3-15 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19018,11 +19194,19 @@
 		<name>VSD_RESOURCE_TASK_2</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>29.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Ресурс задания 2</text>
+		<short_text>Ресурс задания 2</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Ресурс задания 2 Danfoss 3-16 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19031,11 +19215,19 @@
 		<name>VSD_RESOURCE_TASK_3</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>29.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Ресурс задания 3</text>
+		<short_text>Ресурс задания 3</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Ресурс задания 3 Danfoss 3-17 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19044,11 +19236,19 @@
 		<name>VSD_TYPE_SPEED_CHANGE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>2.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Тип изменения скорости</text>
+		<short_text>Тип изменения скорости</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Тип изменения скорости Danfoss 3-40 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19057,10 +19257,19 @@
 		<name>VSD_TIMER_DISP_FIX_SPEED</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3600.0</max>
+		<def>30.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>30.0</value>
+		<text>Время разгона до номинал. Частоты</text>
+		<short_text>Время разгона до номинал. Частоты</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Время разгона фиксированной скорости Danfoss 3-80 Используется в проекте один раз</comment>
 	</param>
@@ -19069,10 +19278,19 @@
 		<name>VSD_TIMER_DELAY_FIX_SPEED</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3600.0</max>
+		<def>30.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>30.0</value>
+		<text>Время торм. с номинал. Частоты</text>
+		<short_text>Время торм. с номинал. Частоты</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Время замедления фиксированной скорости Danfoss 3-81 Используется в проекте один раз</comment>
 	</param>
@@ -19136,10 +19354,19 @@
 		<name>VSD_MAX_OUTPUT_FREQUENCY</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<max>590.0</max>
+		<def>132.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>132.0</value>
+		<text>Максимальная выходная частота</text>
+		<short_text>Максимальная выходная частота</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXX_XX</format>
 		<code>0</code>
 		<comment>Максимальная выходная частота Danfoss 4-19 Используется в проекте</comment>
 	</param>
@@ -19148,11 +19375,19 @@
 		<name>VSD_MTR_FEEDBACK_LOSS_FUNC</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>11.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Реакция на ошибку обратной связи</text>
+		<short_text>Реакция на ошибку обратной связи</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Реакция на ошибку обратной связи Danfoss 4-30 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19161,11 +19396,19 @@
 		<name>VSD_TRACK_ERROR_FUNCTION</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3.0</max>
+		<def>2.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>2.0</value>
+		<text>Реакция на ошибку задания частоты</text>
+		<short_text>Реакция на ошибку задания частоты</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Реакция на ошибку задания частоты Danfoss 4-34 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19174,11 +19417,19 @@
 		<name>VSD_TRACK_ERROR</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_RPM</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>600.0</max>
+		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>600.0</value>
+		<text>Величина несоответствия частота</text>
+		<short_text>Величина несоответствия частота</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>RPM_RPM</unit>
+		<unit_lcd>RPM_RPM</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Величина несоответствия частота Danfoss 4-35 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19187,11 +19438,19 @@
 		<name>VSD_TRACK_ERROR_TIMEOUT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<max>60.0</max>
+		<def>10.0</def>
+		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>10.0</value>
+		<text>Ошибка слежения таймаут</text>
+		<short_text>Ошибка слежения таймаут</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXX_XX</format>
 		<code>0</code>
 		<comment>Величина несоответствия частоты Danfoss 4-36 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19200,11 +19459,19 @@
 		<name>VSD_TRACK_ERROR_RAMPING</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_RPM</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>600.0</max>
+		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>600.0</value>
+		<text>Величина несоответствия частоты при разгоне</text>
+		<short_text>Величина несоответствия частоты при разгоне</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>RPM_RPM</unit>
+		<unit_lcd>RPM_RPM</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Величина несоответствия частоты при разгоне Danfoss 4-37 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19213,11 +19480,19 @@
 		<name>VSD_TRACK_ERROR_RAMP_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<max>60.0</max>
+		<def>5.0</def>
+		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>5.0</value>
+		<text>Задержка срабатывания при несоответствии частоты при разгоне</text>
+		<short_text>Задержка срабатывания при несоответствии частоты при разгоне</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXX_XX</format>
 		<code>0</code>
 		<comment>Задержка срабатывания при несоответствии частоты при разгоне Danfoss 4-38 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19226,11 +19501,19 @@
 		<name>VSD_TRACK_ERROR_AFTER_RAMP</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<max>60.0</max>
+		<def>10.0</def>
+		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>10.0</value>
+		<text>Tracking Error After Ramping Timeout</text>
+		<short_text>Tracking Error After Ramping Timeout</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXX_XX</format>
 		<code>0</code>
 		<comment>Tracking Error After Ramping Timeout Danfoss 4-39 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19278,11 +19561,19 @@
 		<name>VSD_TERMINAL_27_MODE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>1.0</value>
+		<text>Режим клеммы 27</text>
+		<short_text>Режим клеммы 27</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Режим клеммы 27 Danfoss 5-01 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19291,11 +19582,19 @@
 		<name>VSD_TERMINAL_29_MODE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>1.0</value>
+		<text>Режим клеммы 29</text>
+		<short_text>Режим клеммы 29</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Режим клеммы 29 Danfoss 5-02 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19304,11 +19603,19 @@
 		<name>VSD_DI_18</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>199.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Цифровой вход 18</text>
+		<short_text>Цифровой вход 18</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Цифровой вход 18 Danfoss 5-10 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19317,11 +19624,19 @@
 		<name>VSD_DI_19</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>199.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Цифровой вход 19</text>
+		<short_text>Цифровой вход 19</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Цифровой вход 19 Danfoss 5-11 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19330,11 +19645,19 @@
 		<name>VSD_DI_27</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>199.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Цифровой вход 27</text>
+		<short_text>Цифровой вход 27</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Цифровой вход 27 Danfoss 5-12 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19343,11 +19666,19 @@
 		<name>VSD_DI_32</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>199.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Цифровой вход 32</text>
+		<short_text>Цифровой вход 32</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Цифровой вход 32 Danfoss 5-14 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19356,11 +19687,19 @@
 		<name>VSD_DI_33</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>199.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Цифровой вход 33</text>
+		<short_text>Цифровой вход 33</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Цифровой вход 33 Danfoss 5-15 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19369,11 +19708,19 @@
 		<name>VSD_TERMINAL_27_DI</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>199.0</max>
+		<def>75.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>75.0</value>
+		<text>Клемма 27 Цифровой вход</text>
+		<short_text>Клемма 27 Цифровой вход</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Клемма 27 Цифровой вход Danfoss 5-30 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19382,11 +19729,19 @@
 		<name>VSD_TERMINAL_29_DI</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>199.0</max>
+		<def>80.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>80.0</value>
+		<text>Клемма 29 Цифровой вход</text>
+		<short_text>Клемма 29 Цифровой вход</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Клемма 29 Цифровой вход Danfoss 5-31 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19421,11 +19776,19 @@
 		<name>VSD_42_AO</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>150.0</max>
+		<def>133.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>133.0</value>
+		<text>Клемма 42 аналоговый вход</text>
+		<short_text>Клемма 42 аналоговый вход</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Клемма 42 аналоговый вход Danfoss 6-50 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19434,11 +19797,19 @@
 		<name>VSD_SL_CONTROLLER_MODE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>1.0</value>
+		<text>Режим контроллера SL</text>
+		<short_text>Режим контроллера SL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Режим контроллера SL Danfoss 13-00 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19447,11 +19818,19 @@
 		<name>VSD_SL_START_EVENT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>101.0</max>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>1.0</value>
+		<text>Событие запуска</text>
+		<short_text>Событие запуска</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Событие запуска Danfoss 13-01 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19460,11 +19839,19 @@
 		<name>VSD_SL_STOP_EVENT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>101.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Событие останова</text>
+		<short_text>Событие останова</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Событие останова Danfoss 13-02 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19473,11 +19860,19 @@
 		<name>VSD_SL_RESET</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Сброс настроек компараторов</text>
+		<short_text>Сброс настроек компараторов</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Сброс настроек компараторов Danfoss 13-03 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19676,11 +20071,19 @@
 		<name>VSD_OVERMODULATION</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Сверхмодуляция</text>
+		<short_text>Сверхмодуляция</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Сверхмодуляция Danfoss 14-03 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19689,11 +20092,19 @@
 		<name>VSD_DEAD_TIME_COMPENSATION</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Компенсация задержки</text>
+		<short_text>Компенсация задержки</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Компенсация задержки Danfoss 14-06 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19702,11 +20113,19 @@
 		<name>VSD_MAINS_FAILURE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>7.0</max>
+		<def>6.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>6.0</value>
+		<text>Отказ питания</text>
+		<short_text>Отказ питания</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Отказ питания Danfoss 14-10 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19718,10 +20137,10 @@
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>180.0</min>
 		<max>600.0</max>
-		<def>250.0</def>
+		<def>270.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>250.0</value>
+		<value>270.0</value>
 		<text>Напряжение сети при отказе питания</text>
 		<short_text>Напряжение сети при отказе питания</short_text>
 		<form>3.2.4 Сервисное меню ЧРП</form>
@@ -19736,11 +20155,19 @@
 		<name>VSD_RESET_MODE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>14.0</max>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>5.0</value>
+		<text>Режим сброса</text>
+		<short_text>Режим сброса</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Режим сброса Danfoss 14-20 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19749,11 +20176,19 @@
 		<name>VSD_AUTOSTART_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>600.0</max>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>5.0</value>
+		<text>Время автоматического перезапуск</text>
+		<short_text>Время автоматического перезапуск</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Время автоматического перезапуск Danfoss 14-21 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19762,11 +20197,19 @@
 		<name>VSD_DELAY_CURRENT_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>4000.0</max>
+		<def>60.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>60.0</value>
+		<text>Задержка перед выключение при пределе тока</text>
+		<short_text>Задержка перед выключение при пределе тока</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Задержка перед выключение при пределе тока Danfoss 14-24 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19775,11 +20218,19 @@
 		<name>VSD_DELAY_TORQUE_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>60.0</max>
+		<def>60.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>60.0</value>
+		<text>Задержка перед выключение при пределе моменте</text>
+		<short_text>Задержка перед выключение при пределе моменте</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Задержка перед выключение при пределе моменте Danfoss 14-25 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19788,10 +20239,19 @@
 		<name>VSD_FIL_TIME_CURRENT_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0001</min>
+		<max>0.1</max>
+		<def>0.01</def>
+		<discret>4</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>0.01</value>
+		<text>Время фильтра регулятора тока</text>
+		<short_text>Время фильтра регулятора тока</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MS</unit_lcd>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Время фильтра регулятора тока Danfoss 14-32 Используется в проекте, CalcParam()</comment>
 	</param>
@@ -19800,10 +20260,19 @@
 		<name>VSD_DC_COMPENSATION</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Компенсация напряжения постоянного тока</text>
+		<short_text>Компенсация напряжения постоянного тока</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Компенсация напряжения постоянного тока Danfoss 14-51 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19812,10 +20281,19 @@
 		<name>VSD_FAN_CONTROL</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>4.0</max>
+		<def>4.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>4.0</value>
+		<text>Управление вентилятором</text>
+		<short_text>Управление вентилятором</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Управление вентилятором Danfoss 14-52 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19824,10 +20302,19 @@
 		<name>VSD_OUT_FILTER</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>2.0</max>
+		<def>2.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>2.0</value>
+		<text>Выходной фильтр</text>
+		<short_text>Выходной фильтр</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Выходной фильтр Danfoss 14-55 Используется в проекте, интерфейс</comment>
 	</param>
@@ -19937,7 +20424,7 @@
 	</param>
 	<param>
 		<id>10249</id>
-		<name>VSD_LAST_ALARM</name>
+		<name>VSD_DELETE_10249</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -19950,7 +20437,7 @@
 	</param>
 	<param>
 		<id>10250</id>
-		<name>VSD_ALARM_WORD_1</name>
+		<name>VSD_DELETE_10250</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -19963,7 +20450,7 @@
 	</param>
 	<param>
 		<id>10251</id>
-		<name>VSD_ALARM_WORD_2</name>
+		<name>VSD_DELETE_10251</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -19976,7 +20463,7 @@
 	</param>
 	<param>
 		<id>10252</id>
-		<name>VSD_WARNING_WORD_1</name>
+		<name>VSD_DELETE_10252</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -19989,7 +20476,7 @@
 	</param>
 	<param>
 		<id>10253</id>
-		<name>VSD_WARNING_WORD_2</name>
+		<name>VSD_DELETE_10253</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -20005,11 +20492,18 @@
 		<name>VSD_HIGH_START_TORQUE_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.01</min>
+		<max>60.0</max>
+		<def>10.0</def>
+		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<text>Время применения высокого пускового момента</text>
+		<short_text>Время применения высокого пускового момента</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXX_XX</format>
 		<code>0</code>
 		<comment>Время применения высокого пускового момента Danfoss 30-20 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -20018,11 +20512,19 @@
 		<name>VSD_HIGH_START_TORQUE_CURRENT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<max>200.0</max>
+		<def>50.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>50.0</value>
+		<text>Пусковой ток в % от номинального</text>
+		<short_text>Пусковой ток в % от номинального</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Пусковой ток в % от номинального Danfoss 30-21 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -20031,12 +20533,21 @@
 		<name>VSD_LOCK_ROTOR_PROTECTION</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
-		<code>0</code>
+		<value>0.0</value>
+		<text>Защита от блокировки ротора</text>
+		<short_text>Защита от блокировки ротора</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Вкл</values>
 		<comment>Защита блокировки ротора Danfoss 30-22 Не используется в проекте, только при конфигурировании</comment>
 	</param>
 	<param>
@@ -20045,12 +20556,19 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<min>0.05</min>
+		<max>1.0</max>
+		<def>0.10</def>
+		<discret>2</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
-		<code>0</code>
+		<value>0.10</value>
+		<text>Время определения блокировки ротора</text>
+		<short_text>Время определения блокировки ротора</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Время задержки аварии блокировки ротора Danfoss 30-23 Не используется в проекте, только при конфигурировании</comment>
 	</param>
 	<param>
@@ -21676,7 +22194,7 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
-		<def>0.0</def>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
@@ -21717,13 +22235,13 @@
 		<physic>PHYSIC_TIME</physic>
 		<min>0.1</min>
 		<max>18000.0</max>
-		<def>1.0</def>
+		<def>600.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>1.0</value>
-		<text>NULL</text>
-		<short_text>NULL</short_text>
-		<form>NULL</form>
+		<value>600.0</value>
+		<text>Таймаут коммандного слова</text>
+		<short_text>Таймаут коммандного слова</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_SS</unit_lcd>
 		<format>XXXX_X</format>
@@ -22649,13 +23167,37 @@
 		<value>0.0</value>
 		<text>Дверь</text>
 		<short_text>Дверь</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
 		<code>0</code>
 		<values>0-Открыт;1-Закрыт</values>
 		<comment>Состояние двери</comment>
 	</param>
 	<param>
 		<id>10383</id>
+		<name>VSD_TRIP_DELAY_AT_INVERTER_FAULT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>35.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Задержка отключения при неисправности инвертера</text>
+		<short_text>Задержка отключения при неисправности инвертера</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Задержка отключения при неисправности инвертера</comment>
+	</param>
+	<param>
+		<id>10384</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>

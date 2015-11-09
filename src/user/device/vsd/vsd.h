@@ -189,6 +189,13 @@ public:
   virtual int setMotorVoltage(float value);
 
   /*!
+   * \brief setMotorSpeed
+   * \param value
+   * \return
+   */
+  virtual int setMotorSpeed(float value);
+
+  /*!
    * \brief setLimitsMotor
    * \return
    */
@@ -348,6 +355,13 @@ public:
    * \return
    */
   virtual int setResonanceRemoveSource(float value);
+
+  /*!
+   * \brief setOutFilter
+   * \param value
+   * \return
+   */
+  virtual int setOutFilter(float value);
 
   // НАСТРОЙКА U/f
   /*!
