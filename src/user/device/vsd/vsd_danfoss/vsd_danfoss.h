@@ -81,6 +81,11 @@ public:
   uint16_t configVsdVentVect3000();
   uint16_t configVsdVentVect6000();
 
+  void convertBitStatusWord3(float value);
+  void convertBitStatusWord4(float value);
+  void convertBitStatusWord5(float value);
+
+
   void getNewValue(uint16_t id);
   uint8_t setNewValue(uint16_t id, float value);
 
@@ -94,6 +99,7 @@ public:
   int stopCoil(float type);
 
   int resetSetpoints();
+
 
 private:
   ModbusParameter modbusParameters_[135];
