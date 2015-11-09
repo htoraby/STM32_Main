@@ -10118,5 +10118,17 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_STATUS_WORD_6 - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_VSD_STATUS_WORD_6 - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_VSD_STATUS_WORD_6 - CCS_BEGIN].code                            = 0;
+  // 
+  parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].id                                 = CCS_VSD_ALARM_CODE;
+  parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].physic                             = PHYSIC_NUMERIC;
+  parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].validity                           = VALIDITY_OK;
+  parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].value.float_t                      = 0.0;
+  parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].min                                = 0.0;
+  parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].max                                = 255.0;
+  parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].discret                            = 1;
+  parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].def                                = 0.0;
+  parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].code                               = 0;
 }
 
