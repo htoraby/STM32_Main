@@ -13259,7 +13259,7 @@
 		<min>0.0</min>
 		<max>100.0</max>
 		<def>0.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Индуктивность фильтра</text>
@@ -13267,7 +13267,7 @@
 		<form>6.4 Станция управления</form>
 		<unit>INDUNCTANCE_MH</unit>
 		<unit_lcd>INDUNCTANCE_MH</unit_lcd>
-		<format>XXX_XX</format>
+		<format>XXX_XXX</format>
 		<code>13</code>
 	</param>
 	<param>
