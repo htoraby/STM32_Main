@@ -17,6 +17,12 @@ void Ccs::calcParametersTask()
   int time100ms = HAL_GetTick();
   int time500ms = HAL_GetTick();
   int time1s = HAL_GetTick();
+
+  setModeAnalogInExt(AI1, getValue(CCS_AI_1_TYPE));
+  setModeAnalogInExt(AI2, getValue(CCS_AI_2_TYPE));
+  setModeAnalogInExt(AI3, getValue(CCS_AI_3_TYPE));
+  setModeAnalogInExt(AI4, getValue(CCS_AI_4_TYPE));
+
   while (1) {
     osDelay(1);
 
@@ -665,6 +671,51 @@ void Ccs::calcAnalogInputs()
   setValue(CCS_AI_3_VALUE, getValueAnalogInExt(AI3));
   setValue(CCS_AI_4_VALUE, getValueAnalogInExt(AI4));
   setValue(CCS_AI_5_VALUE, getValueAnalogInExt(AI5));
+
+  float value;
+  float range;
+  float minRange;
+  float maxRange;
+
+  if (getValue(CCS_AI_1_TYPE) == AnalogInModeCurrent)
+    range = 16;
+  else
+    range = 10;
+  minRange = getValue(CCS_AI_1_MINIMUM);
+  maxRange = getValue(CCS_AI_1_MAXIMUM);
+  value = getValue(CCS_AI_1_VALUE);
+  value = (minRange + (maxRange - minRange) * (value / range));
+  setValue(CCS_AI_1_VALUE_CALC, value);
+
+  if (getValue(CCS_AI_2_TYPE) == AnalogInModeCurrent)
+    range = 16;
+  else
+    range = 10;
+  minRange = getValue(CCS_AI_2_MINIMUM);
+  maxRange = getValue(CCS_AI_2_MAXIMUM);
+  value = getValue(CCS_AI_2_VALUE);
+  value = (minRange + (maxRange - minRange) * (value / range));
+  setValue(CCS_AI_2_VALUE_CALC, value);
+
+  if (getValue(CCS_AI_3_TYPE) == AnalogInModeCurrent)
+    range = 16;
+  else
+    range = 10;
+  minRange = getValue(CCS_AI_3_MINIMUM);
+  maxRange = getValue(CCS_AI_3_MAXIMUM);
+  value = getValue(CCS_AI_3_VALUE);
+  value = (minRange + (maxRange - minRange) * (value / range));
+  setValue(CCS_AI_3_VALUE_CALC, value);
+
+  if (getValue(CCS_AI_4_TYPE) == AnalogInModeCurrent)
+    range = 16;
+  else
+    range = 10;
+  minRange = getValue(CCS_AI_4_MINIMUM);
+  maxRange = getValue(CCS_AI_4_MAXIMUM);
+  value = getValue(CCS_AI_4_VALUE);
+  value = (minRange + (maxRange - minRange) * (value / range));
+  setValue(CCS_AI_4_VALUE_CALC, value);
 }
 
 void Ccs::calcTemperatureSTM32()

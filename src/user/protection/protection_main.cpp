@@ -1,6 +1,6 @@
 #include "protection_main.h"
 
-#define COUNT_PROTECTIONS 16
+#define COUNT_PROTECTIONS 20
 
 Protection *protections[COUNT_PROTECTIONS];
 
@@ -25,6 +25,11 @@ ProtectionDigitalInput2 protDigitalInput2;
 ProtectionDigitalInput3 protDigitalInput3;
 ProtectionDigitalInput4 protDigitalInput4;
 
+ProtectionAnalogInput1 protAnalogInput1;
+ProtectionAnalogInput2 protAnalogInput2;
+ProtectionAnalogInput3 protAnalogInput3;
+ProtectionAnalogInput4 protAnalogInput4;
+
 static void protectionTask(void *argument);
 static void setProtectionPrevent();
 static void setProtectionDelay();
@@ -46,10 +51,16 @@ void protectionInit()
 
   protections[10] = &protHardwareVsd;
   protections[11] = &protLockDoor;
+
   protections[12] = &protDigitalInput1;
   protections[13] = &protDigitalInput2;
   protections[14] = &protDigitalInput3;
   protections[15] = &protDigitalInput4;
+
+  protections[16] = &protAnalogInput1;
+  protections[17] = &protAnalogInput2;
+  protections[18] = &protAnalogInput3;
+  protections[19] = &protAnalogInput4;
 
   osThreadDef(ProtectionTask, protectionTask, osPriorityNormal, 0, 4 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(ProtectionTask), NULL);

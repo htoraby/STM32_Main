@@ -395,11 +395,11 @@
 		<value>0.0</value>
 		<text>Сигнал с дополнительного аналогового входа 1</text>
 		<short_text>Доп.ан.вх.1</short_text>
-		<form>1.6 Текущие параметры входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXX</format>
 		<code>0</code>
+		<comment>Сигнал с дополнительного аналогового входа 1</comment>
 	</param>
 	<param>
 		<id>19</id>
@@ -415,11 +415,11 @@
 		<value>0.0</value>
 		<text>Сигнал с дополнительного аналогового входа 2</text>
 		<short_text>Доп.ан.вх.2</short_text>
-		<form>1.6 Текущие параметры входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXX</format>
 		<code>0</code>
+		<comment>Сигнал с дополнительного аналогового входа 2</comment>
 	</param>
 	<param>
 		<id>20</id>
@@ -435,11 +435,11 @@
 		<value>0.0</value>
 		<text>Сигнал с дополнительного аналогового входа 3</text>
 		<short_text>Доп.ан.вх.3</short_text>
-		<form>1.6 Текущие параметры входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXX</format>
 		<code>0</code>
+		<comment>Сигнал с дополнительного аналогового входа 3</comment>
 	</param>
 	<param>
 		<id>21</id>
@@ -455,11 +455,11 @@
 		<value>0.0</value>
 		<text>Сигнал с дополнительного аналогового входа 4</text>
 		<short_text>Доп.ан.вх.4</short_text>
-		<form>1.6 Текущие параметры входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXX</format>
 		<code>0</code>
+		<comment>Сигнал с дополнительного аналогового входа 4</comment>
 	</param>
 	<param>
 		<id>22</id>
@@ -5240,11 +5240,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>2.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Защиты Аналоговый вход 1</comment>
+		<value>1.0</value>
+		<text>РРЗ по значению аналогового входа 1</text>
+		<short_text>Аналог.вх.1 РРЗ</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Блок;2-АПВ;</values>
+		<comment>Защита по аналоговому входу 1</comment>
 	</param>
 	<param>
 		<id>269</id>
@@ -5253,12 +5260,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Параметр запрещающий запуск</comment>
 	</param>
@@ -5269,10 +5281,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>59999.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>10.0</value>
+		<text>Защита Аналоговый вход 1. Задержка активации</text>
+		<short_text>Аналог.вх.1 пуск.время</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
 	<param>
@@ -5282,10 +5302,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>59999.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>10.0</value>
+		<text>Защита Аналоговый вход 1. Задержка срабатывания</text>
+		<short_text>Аналог.вх.1 время</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
 	<param>
@@ -5295,10 +5323,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3599940.0</max>
+		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>600.0</value>
+		<text>Защита Аналоговый вход 1. Задержка АПВ</text>
+		<short_text>Аналог.вх.1 зад.АПВ</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
 	<param>
@@ -5308,10 +5344,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>9999.0</max>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>5.0</value>
+		<text>Защита Аналоговый вход 1. Количество разрешенных АПВ</text>
+		<short_text>Аналог.вх.1 раз.АПВ</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
 	<param>
@@ -5321,10 +5365,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3599940.0</max>
+		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>86400.0</value>
+		<text>Защита Аналоговый вход 1. Сброс счетчиков АПВ</text>
+		<short_text>Аналог.вх.1 сброс счет</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
 	<param>
@@ -5332,24 +5384,42 @@
 		<name>CCS_PROT_AI_1_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<max>1000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Уставка срабатывания защиты</comment>
+		<value>0.0</value>
+		<text>Защита Аналоговый вход 1. Минимальное значение</text>
+		<short_text>Аналог.вх.1 Уставка Мин.</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXX_X</format>
+		<code>13</code>
+		<comment>Минимальное значение</comment>
 	</param>
 	<param>
 		<id>276</id>
 		<name>CCS_PROT_AI_1_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<max>1000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Условие АПВ уставка</comment>
+		<value>0.0</value>
+		<text>Защита Аналоговый вход 1. Максимальное значение</text>
+		<short_text>Аналог.вх.1 Уставка Макс.</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXX_X</format>
+		<code>13</code>
+		<comment>Максимальное значение</comment>
 	</param>
 	<param>
 		<id>277</id>
@@ -5358,11 +5428,19 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Уставка параметр защиты</comment>
+		<value>0.0</value>
+		<text>Защита Аналоговый вход 1. Номинальное значение</text>
+		<short_text>Аналог.вх.1 Уставка Ном.</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>XXXXX_X</format>
+		<code>13</code>
+		<comment>Номинальное значение</comment>
 	</param>
 	<param>
 		<id>278</id>
@@ -5371,14 +5449,19 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
-		<comment>Уставка параметр защиты</comment>
+		<comment>Текущий параметр Флаг что защита в АПВ</comment>
 	</param>
 	<param>
 		<id>279</id>
@@ -5387,12 +5470,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3.0</max>
+		<def>3.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>3.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр состояние автомата</comment>
 	</param>
@@ -5403,12 +5491,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>4294967296.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Фиксированное время</comment>
 	</param>
@@ -5419,12 +5512,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1000.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Количество АПВ</comment>
 	</param>
@@ -5434,13 +5532,18 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_DATE_TIME</physic>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<min>0</min>
+		<max>4294967296</max>
+		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>DATE_TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Время первого АПВ</comment>
 	</param>
@@ -5451,11 +5554,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>2.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Защиты Аналоговый вход 2</comment>
+		<value>1.0</value>
+		<text>РРЗ по значению аналогового входа 2</text>
+		<short_text>Аналог.вх.2 РРЗ</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Блок;2-АПВ;</values>
+		<comment>Защита по аналоговому входу 2</comment>
 	</param>
 	<param>
 		<id>284</id>
@@ -5464,12 +5574,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Параметр запрещающий запуск</comment>
 	</param>
@@ -5480,10 +5595,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>59999.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>10.0</value>
+		<text>Защита Аналоговый вход 2. Задержка активации</text>
+		<short_text>Аналог.вх.2 пуск.время</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
 	<param>
@@ -5493,10 +5616,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>59999.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>10.0</value>
+		<text>Защита Аналоговый вход 2. Задержка срабатывания</text>
+		<short_text>Аналог.вх.2 время</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
 	<param>
@@ -5506,10 +5637,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3599940.0</max>
+		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>600.0</value>
+		<text>Защита Аналоговый вход 2. Задержка АПВ</text>
+		<short_text>Аналог.вх.2 зад.АПВ</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
 	<param>
@@ -5519,10 +5658,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>9999.0</max>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>5.0</value>
+		<text>Защита Аналоговый вход 2. Количество разрешенных АПВ</text>
+		<short_text>Аналог.вх.2 раз.АПВ</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
 	<param>
@@ -5532,10 +5679,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3599940.0</max>
+		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>86400.0</value>
+		<text>Защита Аналоговый вход 2. Сброс счетчиков АПВ</text>
+		<short_text>Аналог.вх.2 сброс счет</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
 	<param>
@@ -5543,24 +5698,42 @@
 		<name>CCS_PROT_AI_2_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<max>1000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Уставка срабатывания защиты</comment>
+		<value>0.0</value>
+		<text>Защита Аналоговый вход 2. Минимальное значение</text>
+		<short_text>Аналог.вх.2 Уставка Мин.</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXX_X</format>
+		<code>13</code>
+		<comment>Минимальное значение</comment>
 	</param>
 	<param>
 		<id>291</id>
 		<name>CCS_PROT_AI_2_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<max>1000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Условие АПВ уставка</comment>
+		<value>0.0</value>
+		<text>Защита Аналоговый вход 2. Максимальное значение</text>
+		<short_text>Аналог.вх.2 Уставка Макс.</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXX_X</format>
+		<code>13</code>
+		<comment>Максимальное значение</comment>
 	</param>
 	<param>
 		<id>292</id>
@@ -5569,11 +5742,19 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Уставка параметр защиты</comment>
+		<value>0.0</value>
+		<text>Защита Аналоговый вход 2. Номинальное значение</text>
+		<short_text>Аналог.вх.2 Уставка Ном.</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>XXXXX_X</format>
+		<code>13</code>
+		<comment>Номинальное значение</comment>
 	</param>
 	<param>
 		<id>293</id>
@@ -5582,14 +5763,19 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
-		<comment>Уставка параметр защиты</comment>
+		<comment>Текущий параметр Флаг что защита в АПВ</comment>
 	</param>
 	<param>
 		<id>294</id>
@@ -5598,12 +5784,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3.0</max>
+		<def>3.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>3.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр состояние автомата</comment>
 	</param>
@@ -5614,12 +5805,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>4294967296.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Фиксированное время</comment>
 	</param>
@@ -5630,12 +5826,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1000.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Количество АПВ</comment>
 	</param>
@@ -5645,13 +5846,18 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_DATE_TIME</physic>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<min>0</min>
+		<max>4294967296</max>
+		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>DATE_TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Время первого АПВ</comment>
 	</param>
@@ -5662,11 +5868,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>2.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Защиты Аналоговый вход 3</comment>
+		<value>1.0</value>
+		<text>РРЗ по значению аналогового входа 3</text>
+		<short_text>Аналог.вх.3 РРЗ</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Блок;2-АПВ;</values>
+		<comment>Защита по аналоговому входу 3</comment>
 	</param>
 	<param>
 		<id>299</id>
@@ -5675,12 +5888,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Параметр запрещающий запуск</comment>
 	</param>
@@ -5691,10 +5909,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>59999.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>10.0</value>
+		<text>Защита Аналоговый вход 3. Задержка активации</text>
+		<short_text>Аналог.вх.3 пуск.время</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
 	<param>
@@ -5704,10 +5930,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>59999.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>10.0</value>
+		<text>Защита Аналоговый вход 3. Задержка срабатывания</text>
+		<short_text>Аналог.вх.3 время</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
 	<param>
@@ -5717,10 +5951,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3599940.0</max>
+		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>600.0</value>
+		<text>Защита Аналоговый вход 3. Задержка АПВ</text>
+		<short_text>Аналог.вх.3 зад.АПВ</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
 	<param>
@@ -5730,10 +5972,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>9999.0</max>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>5.0</value>
+		<text>Защита Аналоговый вход 3. Количество разрешенных АПВ</text>
+		<short_text>Аналог.вх.3 раз.АПВ</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
 	<param>
@@ -5743,10 +5993,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3599940.0</max>
+		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>86400.0</value>
+		<text>Защита Аналоговый вход 3. Сброс счетчиков АПВ</text>
+		<short_text>Аналог.вх.3 сброс счет</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
 	<param>
@@ -5754,24 +6012,42 @@
 		<name>CCS_PROT_AI_3_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<max>1000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Уставка срабатывания защиты</comment>
+		<value>0.0</value>
+		<text>Защита Аналоговый вход 3. Минимальное значение</text>
+		<short_text>Аналог.вх.3 Уставка Мин.</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXX_X</format>
+		<code>13</code>
+		<comment>Минимальное значение</comment>
 	</param>
 	<param>
 		<id>306</id>
 		<name>CCS_PROT_AI_3_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<max>1000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Условие АПВ уставка</comment>
+		<value>0.0</value>
+		<text>Защита Аналоговый вход 3. Максимальное значение</text>
+		<short_text>Аналог.вх.3 Уставка Макс.</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXX_X</format>
+		<code>13</code>
+		<comment>Максимальное значение</comment>
 	</param>
 	<param>
 		<id>307</id>
@@ -5780,11 +6056,19 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Уставка параметр защиты</comment>
+		<value>0.0</value>
+		<text>Защита Аналоговый вход 3. Номинальное значение</text>
+		<short_text>Аналог.вх.3 Уставка Ном.</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>XXXXX_X</format>
+		<code>13</code>
+		<comment>Номинальное значение</comment>
 	</param>
 	<param>
 		<id>308</id>
@@ -5793,12 +6077,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Флаг что защита в АПВ</comment>
 	</param>
@@ -5809,12 +6098,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3.0</max>
+		<def>3.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>3.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр состояние автомата</comment>
 	</param>
@@ -5825,12 +6119,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>4294967296.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Фиксированное время</comment>
 	</param>
@@ -5841,12 +6140,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1000.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Количество АПВ</comment>
 	</param>
@@ -5856,13 +6160,18 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_DATE_TIME</physic>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<min>0</min>
+		<max>4294967296</max>
+		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>DATE_TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Время первого АПВ</comment>
 	</param>
@@ -5873,11 +6182,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>2.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Защиты Аналоговый вход 4</comment>
+		<value>1.0</value>
+		<text>РРЗ по значению аналогового входа 4</text>
+		<short_text>Аналог.вх.4 РРЗ</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Блок;2-АПВ;</values>
+		<comment>Защита по аналоговому входу 4</comment>
 	</param>
 	<param>
 		<id>314</id>
@@ -5886,12 +6202,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Параметр запрещающий запуск</comment>
 	</param>
@@ -5902,10 +6223,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>59999.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>10.0</value>
+		<text>Защита Аналоговый вход 4. Задержка активации</text>
+		<short_text>Аналог.вх.4 пуск.время</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
 	<param>
@@ -5915,10 +6244,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>59999.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>10.0</value>
+		<text>Защита Аналоговый вход 4. Задержка срабатывания</text>
+		<short_text>Аналог.вх.4 время</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
 	<param>
@@ -5928,10 +6265,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3599940.0</max>
+		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>600.0</value>
+		<text>Защита Аналоговый вход 4. Задержка АПВ</text>
+		<short_text>Аналог.вх.4 зад.АПВ</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
 	<param>
@@ -5941,10 +6286,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>9999.0</max>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>5.0</value>
+		<text>Защита Аналоговый вход 4. Количество разрешенных АПВ</text>
+		<short_text>Аналог.вх.4 раз.АПВ</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
 	<param>
@@ -5954,10 +6307,18 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3599940.0</max>
+		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>86400.0</value>
+		<text>Защита Аналоговый вход 4. Сброс счетчиков АПВ</text>
+		<short_text>Аналог.вх.4 сброс счет</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
 	<param>
@@ -5965,24 +6326,42 @@
 		<name>CCS_PROT_AI_4_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<max>1000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Уставка срабатывания защиты</comment>
+		<value>0.0</value>
+		<text>Защита Аналоговый вход 4. Минимальное значение</text>
+		<short_text>Аналог.вх.4 Уставка Мин.</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXX_X</format>
+		<code>13</code>
+		<comment>Минимальное значение</comment>
 	</param>
 	<param>
 		<id>321</id>
 		<name>CCS_PROT_AI_4_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<max>1000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Условие АПВ уставка</comment>
+		<value>0.0</value>
+		<text>Защита Аналоговый вход 4. Максимальное значение</text>
+		<short_text>Аналог.вх.4 Уставка Макс.</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXX_X</format>
+		<code>13</code>
+		<comment>Максимальное значение</comment>
 	</param>
 	<param>
 		<id>322</id>
@@ -5991,11 +6370,19 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Уставка параметр защиты</comment>
+		<value>0.0</value>
+		<text>Защита Аналоговый вход 4. Номинальное значение</text>
+		<short_text>Аналог.вх.4 Уставка Ном.</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>XXXXX_X</format>
+		<code>13</code>
+		<comment>Номинальное значение</comment>
 	</param>
 	<param>
 		<id>323</id>
@@ -6004,12 +6391,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Флаг что защита в АПВ</comment>
 	</param>
@@ -6020,12 +6412,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3.0</max>
+		<def>3.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>3.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр состояние автомата</comment>
 	</param>
@@ -6036,12 +6433,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>4294967296.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Фиксированное время</comment>
 	</param>
@@ -6052,12 +6454,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1000.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Количество АПВ</comment>
 	</param>
@@ -6067,13 +6474,18 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_DATE_TIME</physic>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<min>0</min>
+		<max>4294967296</max>
+		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>DATE_TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Время первого АПВ</comment>
 	</param>
@@ -15406,7 +15818,6 @@
 		<value>0.0</value>
 		<text>Сигнал с дополнительного аналогового входа 5</text>
 		<short_text>Доп.ан.вх.5</short_text>
-		<form>1.6 Текущие параметры входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXX</format>
@@ -15414,6 +15825,410 @@
 	</param>
 	<param>
 		<id>822</id>
+		<name>CCS_AI_1_PARAMETER</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>12.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Аналоговой вход 1. Параметр</text>
+		<short_text>Ан.вх.1. Параметр</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<comment>Аналоговой вход 1. Параметр</comment>
+	</param>
+	<param>
+		<id>823</id>
+		<name>CCS_AI_1_TYPE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Аналоговой вход 1. Тип входа</text>
+		<short_text>Ан.вх.1. Тип</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<comment>Аналоговой вход 1. Тип входа</comment>
+	</param>
+	<param>
+		<id>824</id>
+		<name>CCS_AI_1_MINIMUM</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Аналоговой вход 1. Минимум шкалы</text>
+		<short_text>Ан.вх.1. Минимум</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXX_X</format>
+		<code>13</code>
+		<comment>Аналоговой вход 1. Минимум шкалы</comment>
+	</param>
+	<param>
+		<id>825</id>
+		<name>CCS_AI_1_MAXIMUM</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Аналоговой вход 1. Максимум шкалы</text>
+		<short_text>Ан.вх.1. Максимум</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXX_X</format>
+		<code>13</code>
+		<comment>Аналоговой вход 1. Максимум шкалы</comment>
+	</param>
+	<param>
+		<id>826</id>
+		<name>CCS_AI_2_PARAMETER</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>12.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Аналоговой вход 2. Параметр</text>
+		<short_text>Ан.вх.2. Параметр</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<comment>Аналоговой вход 2. Параметр</comment>
+	</param>
+	<param>
+		<id>827</id>
+		<name>CCS_AI_2_TYPE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Аналоговой вход 2. Тип входа</text>
+		<short_text>Ан.вх.2. Тип</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<comment>Аналоговой вход 2. Тип входа</comment>
+	</param>
+	<param>
+		<id>828</id>
+		<name>CCS_AI_2_MINIMUM</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Аналоговой вход 2. Минимум шкалы</text>
+		<short_text>Ан.вх.2. Минимум</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXX_X</format>
+		<code>13</code>
+		<comment>Аналоговой вход 2. Минимум шкалы</comment>
+	</param>
+	<param>
+		<id>829</id>
+		<name>CCS_AI_2_MAXIMUM</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Аналоговой вход 2. Максимум шкалы</text>
+		<short_text>Ан.вх.2. Максимум</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXX_X</format>
+		<code>13</code>
+		<comment>Аналоговой вход 2. Максимум шкалы</comment>
+	</param>
+	<param>
+		<id>830</id>
+		<name>CCS_AI_3_PARAMETER</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>12.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Аналоговой вход 3. Параметр</text>
+		<short_text>Ан.вх.3. Параметр</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<comment>Аналоговой вход 3. Параметр</comment>
+	</param>
+	<param>
+		<id>831</id>
+		<name>CCS_AI_3_TYPE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Аналоговой вход 3. Тип входа</text>
+		<short_text>Ан.вх.3. Тип</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<comment>Аналоговой вход 3. Тип входа</comment>
+	</param>
+	<param>
+		<id>832</id>
+		<name>CCS_AI_3_MINIMUM</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Аналоговой вход 3. Минимум шкалы</text>
+		<short_text>Ан.вх.3. Минимум</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXX_X</format>
+		<code>13</code>
+		<comment>Аналоговой вход 3. Минимум шкалы</comment>
+	</param>
+	<param>
+		<id>833</id>
+		<name>CCS_AI_3_MAXIMUM</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Аналоговой вход 3. Максимум шкалы</text>
+		<short_text>Ан.вх.3. Максимум</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXX_X</format>
+		<code>13</code>
+		<comment>Аналоговой вход 3. Максимум шкалы</comment>
+	</param>
+	<param>
+		<id>834</id>
+		<name>CCS_AI_4_PARAMETER</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>12.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Аналоговой вход 4. Параметр</text>
+		<short_text>Ан.вх.4. Параметр</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<comment>Аналоговой вход 4. Параметр</comment>
+	</param>
+	<param>
+		<id>835</id>
+		<name>CCS_AI_4_TYPE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Аналоговой вход 4. Тип входа</text>
+		<short_text>Ан.вх.4. Тип</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<comment>Аналоговой вход 4. Тип входа</comment>
+	</param>
+	<param>
+		<id>836</id>
+		<name>CCS_AI_4_MINIMUM</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Аналоговой вход 4. Минимум шкалы</text>
+		<short_text>Ан.вх.4. Минимум</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXX_X</format>
+		<code>13</code>
+		<comment>Аналоговой вход 4. Минимум шкалы</comment>
+	</param>
+	<param>
+		<id>837</id>
+		<name>CCS_AI_4_MAXIMUM</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Аналоговой вход 4. Максимум шкалы</text>
+		<short_text>Ан.вх.4. Максимум</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXX_X</format>
+		<code>13</code>
+		<comment>Аналоговой вход 4. Максимум шкалы</comment>
+	</param>
+	<param>
+		<id>838</id>
+		<name>CCS_AI_1_VALUE_CALC</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Пересчитанное значение с аналогового входа 1</text>
+		<short_text>Аналог.вх.1</short_text>
+		<form>1.6 Текущие параметры входы</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Пересчитанное значение с аналогового входа 1</comment>
+	</param>
+	<param>
+		<id>839</id>
+		<name>CCS_AI_2_VALUE_CALC</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Пересчитанное значение с аналогового входа 2</text>
+		<short_text>Аналог.вх.2</short_text>
+		<form>1.6 Текущие параметры входы</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Пересчитанное значение с аналогового входа 2</comment>
+	</param>
+	<param>
+		<id>840</id>
+		<name>CCS_AI_3_VALUE_CALC</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Пересчитанное значение с аналогового входа 3</text>
+		<short_text>Аналог.вх.3</short_text>
+		<form>1.6 Текущие параметры входы</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Пересчитанное значение с аналогового входа 3</comment>
+	</param>
+	<param>
+		<id>841</id>
+		<name>CCS_AI_4_VALUE_CALC</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Пересчитанное значение с аналогового входа 4</text>
+		<short_text>Аналог.вх.4</short_text>
+		<form>1.6 Текущие параметры входы</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Пересчитанное значение с аналогового входа 4</comment>
+	</param>
+	<param>
+		<id>842</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>

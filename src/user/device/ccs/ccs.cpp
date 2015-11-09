@@ -11,6 +11,7 @@
 #include "protection_main.h"
 #include "regime_main.h"
 #include "update.h"
+#include "adc_ext.h"
 
 #define TIMEOUT_POWER_OFF 6000 //!< 1 минута на отключение питания ИБП
 #define DELAY_CHECK_CONNECT_DEVICE 1000 //!< Задержка проверки подключения устройств - 20 сек
@@ -1117,6 +1118,27 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (value != DI_ACTION_PROTECTION)
       parameters.set(CCS_PROT_DI_4_MODE, Protection::ModeOff); // Отключаем защиту по цифромому входу
     return err;
+  case CCS_AI_1_TYPE:
+    err = setValue(id, value, eventType);
+    if (!err)
+      setModeAnalogInExt(AI1, value);
+    return err;
+  case CCS_AI_2_TYPE:
+    err = setValue(id, value, eventType);
+    if (!err)
+      setModeAnalogInExt(AI2, value);
+    return err;
+  case CCS_AI_3_TYPE:
+    err = setValue(id, value, eventType);
+    if (!err)
+      setModeAnalogInExt(AI3, value);
+    return err;
+  case CCS_AI_4_TYPE:
+    err = setValue(id, value, eventType);
+    if (!err)
+      setModeAnalogInExt(AI4, value);
+    return err;
+
   default:
     return setValue(id, value, eventType);
   }
