@@ -372,9 +372,8 @@ void Ccs::start(LastReasonRun reason)
 
 void Ccs::stop(LastReasonStop reason)
 {
-  setNewValue(CCS_LAST_STOP_REASON_TMP, reason);
-
   if (checkCanStop()) {
+    setNewValue(CCS_LAST_STOP_REASON_TMP, reason);
     if (reason == LastReasonStopRemote)
       setBlock();
 
@@ -425,18 +424,16 @@ void Ccs::cmdStart(int value)
 
 void Ccs::cmdStop(int value)
 {
-  switch (value) {
-  case CmdStopRemote:
-    setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopRemote);
-    break;
-  default:
-    setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopOperator);
-    break;
-  }
-
   resetCmd(CCS_CMD_STOP);
   if (checkCanStop()) {
-    setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
+    switch (value) {
+    case CmdStopRemote:
+      setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopRemote);
+      break;
+    default:
+      setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopOperator);
+      break;
+    }
     setBlock();
     setNewValue(CCS_CONDITION, CCS_CONDITION_STOPPING);
     setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
