@@ -10118,7 +10118,7 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_STATUS_WORD_6 - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_VSD_STATUS_WORD_6 - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_VSD_STATUS_WORD_6 - CCS_BEGIN].code                            = 0;
-  // 
+  // Код аварии ЧРП
   parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].id                                 = CCS_VSD_ALARM_CODE;
   parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].access                             = ACCESS_OPERATOR;
   parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].operation                          = OPERATION_WRITE;
@@ -10126,9 +10126,69 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].value.float_t                      = 0.0;
   parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].max                                = 255.0;
+  parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].max                                = 2147483647.0;
   parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].discret                            = 1;
   parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].def                                = 0.0;
   parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].code                               = 0;
+  // Код предупреждения ЧРП
+  parameters_[CCS_VSD_WARNING_CODE - CCS_BEGIN].id                               = CCS_VSD_WARNING_CODE;
+  parameters_[CCS_VSD_WARNING_CODE - CCS_BEGIN].access                           = ACCESS_OPERATOR;
+  parameters_[CCS_VSD_WARNING_CODE - CCS_BEGIN].operation                        = OPERATION_WRITE;
+  parameters_[CCS_VSD_WARNING_CODE - CCS_BEGIN].physic                           = PHYSIC_NUMERIC;
+  parameters_[CCS_VSD_WARNING_CODE - CCS_BEGIN].validity                         = VALIDITY_OK;
+  parameters_[CCS_VSD_WARNING_CODE - CCS_BEGIN].value.float_t                    = 0.0;
+  parameters_[CCS_VSD_WARNING_CODE - CCS_BEGIN].min                              = 0.0;
+  parameters_[CCS_VSD_WARNING_CODE - CCS_BEGIN].max                              = 2147483647.0;
+  parameters_[CCS_VSD_WARNING_CODE - CCS_BEGIN].discret                          = 1;
+  parameters_[CCS_VSD_WARNING_CODE - CCS_BEGIN].def                              = 0.0;
+  parameters_[CCS_VSD_WARNING_CODE - CCS_BEGIN].code                             = 0;
+  // Защита по аналоговому входу 1. Тип аварии - мин/макс
+  parameters_[CCS_PROT_AI_1_ALARM_TYPE - CCS_BEGIN].id                           = CCS_PROT_AI_1_ALARM_TYPE;
+  parameters_[CCS_PROT_AI_1_ALARM_TYPE - CCS_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[CCS_PROT_AI_1_ALARM_TYPE - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_1_ALARM_TYPE - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
+  parameters_[CCS_PROT_AI_1_ALARM_TYPE - CCS_BEGIN].validity                     = VALIDITY_OK;
+  parameters_[CCS_PROT_AI_1_ALARM_TYPE - CCS_BEGIN].value.float_t                = 0.0;
+  parameters_[CCS_PROT_AI_1_ALARM_TYPE - CCS_BEGIN].min                          = 0.0;
+  parameters_[CCS_PROT_AI_1_ALARM_TYPE - CCS_BEGIN].max                          = 1.0;
+  parameters_[CCS_PROT_AI_1_ALARM_TYPE - CCS_BEGIN].discret                      = 1;
+  parameters_[CCS_PROT_AI_1_ALARM_TYPE - CCS_BEGIN].def                          = 0.0;
+  parameters_[CCS_PROT_AI_1_ALARM_TYPE - CCS_BEGIN].code                         = 0;
+  // Защита по аналоговому входу 1. Тип аварии - мин/макс
+  parameters_[CCS_PROT_AI_2_ALARM_TYPE - CCS_BEGIN].id                           = CCS_PROT_AI_2_ALARM_TYPE;
+  parameters_[CCS_PROT_AI_2_ALARM_TYPE - CCS_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[CCS_PROT_AI_2_ALARM_TYPE - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_2_ALARM_TYPE - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
+  parameters_[CCS_PROT_AI_2_ALARM_TYPE - CCS_BEGIN].validity                     = VALIDITY_OK;
+  parameters_[CCS_PROT_AI_2_ALARM_TYPE - CCS_BEGIN].value.float_t                = 0.0;
+  parameters_[CCS_PROT_AI_2_ALARM_TYPE - CCS_BEGIN].min                          = 0.0;
+  parameters_[CCS_PROT_AI_2_ALARM_TYPE - CCS_BEGIN].max                          = 1.0;
+  parameters_[CCS_PROT_AI_2_ALARM_TYPE - CCS_BEGIN].discret                      = 1;
+  parameters_[CCS_PROT_AI_2_ALARM_TYPE - CCS_BEGIN].def                          = 0.0;
+  parameters_[CCS_PROT_AI_2_ALARM_TYPE - CCS_BEGIN].code                         = 0;
+  // Защита по аналоговому входу 1. Тип аварии - мин/макс
+  parameters_[CCS_PROT_AI_3_ALARM_TYPE - CCS_BEGIN].id                           = CCS_PROT_AI_3_ALARM_TYPE;
+  parameters_[CCS_PROT_AI_3_ALARM_TYPE - CCS_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[CCS_PROT_AI_3_ALARM_TYPE - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_3_ALARM_TYPE - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
+  parameters_[CCS_PROT_AI_3_ALARM_TYPE - CCS_BEGIN].validity                     = VALIDITY_OK;
+  parameters_[CCS_PROT_AI_3_ALARM_TYPE - CCS_BEGIN].value.float_t                = 0.0;
+  parameters_[CCS_PROT_AI_3_ALARM_TYPE - CCS_BEGIN].min                          = 0.0;
+  parameters_[CCS_PROT_AI_3_ALARM_TYPE - CCS_BEGIN].max                          = 1.0;
+  parameters_[CCS_PROT_AI_3_ALARM_TYPE - CCS_BEGIN].discret                      = 1;
+  parameters_[CCS_PROT_AI_3_ALARM_TYPE - CCS_BEGIN].def                          = 0.0;
+  parameters_[CCS_PROT_AI_3_ALARM_TYPE - CCS_BEGIN].code                         = 0;
+  // Защита по аналоговому входу 1. Тип аварии - мин/макс
+  parameters_[CCS_PROT_AI_4_ALARM_TYPE - CCS_BEGIN].id                           = CCS_PROT_AI_4_ALARM_TYPE;
+  parameters_[CCS_PROT_AI_4_ALARM_TYPE - CCS_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[CCS_PROT_AI_4_ALARM_TYPE - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_4_ALARM_TYPE - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
+  parameters_[CCS_PROT_AI_4_ALARM_TYPE - CCS_BEGIN].validity                     = VALIDITY_OK;
+  parameters_[CCS_PROT_AI_4_ALARM_TYPE - CCS_BEGIN].value.float_t                = 0.0;
+  parameters_[CCS_PROT_AI_4_ALARM_TYPE - CCS_BEGIN].min                          = 0.0;
+  parameters_[CCS_PROT_AI_4_ALARM_TYPE - CCS_BEGIN].max                          = 1.0;
+  parameters_[CCS_PROT_AI_4_ALARM_TYPE - CCS_BEGIN].discret                      = 1;
+  parameters_[CCS_PROT_AI_4_ALARM_TYPE - CCS_BEGIN].def                          = 0.0;
+  parameters_[CCS_PROT_AI_4_ALARM_TYPE - CCS_BEGIN].code                         = 0;
 }
 

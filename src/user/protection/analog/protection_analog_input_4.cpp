@@ -20,9 +20,6 @@ ProtectionAnalogInput4::ProtectionAnalogInput4()
   idRestartCount_ = CCS_PROT_AI_4_RESTART_COUNT;
   idRestartFirstTime_ = CCS_PROT_AI_4_RESTART_FIRST_TIME;
 
-  lastReasonRun_ = LastReasonRunApvMinAnalog4;
-  lastReasonStop_ = LastReasonStopMinAnalog4;
-
   protReactEventId_ = AnalogInput4ProtReactId;
   apvEventId_ = AnalogInput4ApvId;
   apvDisabledEventId_ = AnalogInput4ApvDisabledId;
@@ -44,8 +41,12 @@ bool ProtectionAnalogInput4::checkAlarm()
   if (valueParameter_ > nominal_ * max / 100) {
     lastReasonRun_ = LastReasonRunApvMaxAnalog4;
     lastReasonStop_ = LastReasonStopMaxAnalog4;
+    parameters.set(CCS_PROT_AI_4_ALARM_TYPE, 1);
     return true;
   } else if (valueParameter_ < nominal_ * min / 100) {
+    lastReasonRun_ = LastReasonRunApvMinAnalog4;
+    lastReasonStop_ = LastReasonStopMinAnalog4;
+    parameters.set(CCS_PROT_AI_4_ALARM_TYPE, 0);
     return true;
   } else {
     return false;
