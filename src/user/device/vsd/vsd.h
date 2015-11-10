@@ -109,7 +109,9 @@ enum enStatus {
 enum enAlarmVsd {
   VSD_ALARM_NONE                  = 0,      //!< Нет аварии
   VSD_ALARM_NO_CONNECT            = 1,      //!< Нет связи с ЧРП
-
+  // STATUS_WORD_1 ЧРП Новомет
+  VSD_ALARM_RSRV_1000             = 1000,
+  VSD_ALARM_RSRV_1001             = 1001,
   VSD_ALARM_STOPPED_REGISTER      = 1002,   //!< Инвертор остановлен по изменению важного параметра
   VSD_ALARM_STOPPED_EXTERNAL      = 1003,   //!< Инвертор остановлен по команде извне
   VSD_ALARM_FAULT_STOPPED         = 1005,   //!< Остановлен по причине FAULT
@@ -120,32 +122,110 @@ enum enAlarmVsd {
   VSD_ALARM_UD_HIGH_FAULT         = 1011,   //!< Остановлен по превышению напряжения на шине
   VSD_ALARM_UIN_ASYM              = 1013,   //!< Остановлен по несимметрии входного напряжения
   VSD_ALARM_URECT_SHORTCIRCUIT    = 1014,   //!< Остановлен по КЗ от выпрямителя
-
+  VSD_ALARM_RSRV_1015             = 1015,
+  // STATUS_WORD_2 ЧРП Новомет
   VSD_ALARM_FC_IT_ERR             = 1016,   //!< Сработала токовая тепловая защита инвертора
   VSD_ALARM_AST_ERR               = 1017,   //!< Система автонастройки не смогла определить параметры линии
   VSD_ALARM_I_LIMIT_FAST          = 1018,   //!< Превышение порога мгновенного токоограничения
+  VSD_ALARM_RSRV_1019             = 1019,
+  VSD_ALARM_RSRV_1020             = 1020,
+  VSD_ALARM_RSRV_1021             = 1021,
+  VSD_ALARM_RSRV_1022             = 1022,
+  VSD_ALARM_RSRV_1023             = 1023,
+  VSD_ALARM_RSRV_1024             = 1024,
+  VSD_ALARM_RSRV_1025             = 1025,
   VSD_ALARM_DISCHARGE_ERR         = 1026,   //!< Ошибка режима разряда шины
   VSD_ALARM_VC_ERR                = 1027,   //!< Ошибка векторного режима
   VSD_ALARM_M_I_FAST_ERR          = 1028,   //!< Быстрая токовая защита двигателя
   VSD_ALARM_M_I2T_ERR             = 1029,   //!< Токовая защита двигателя (перегруз)
-
-  VSD_ALARM_IMAX                  = 1032,   //!< Превышен максимальный ток инвертора
-  VSD_ALARM_IZ                    = 1033,   //!< Детектирован разностный ток выходных фаз (утечка)
-  VSD_ALARM_AN_MON                = 1034,   //!< Ошибка монитора питания  аналоговой цепи контроллера
-  VSD_ALARM_CTR_MON               = 1035,   //!< Ошибка монитора питания цифровой цепи контроллера
-  VSD_ALARM_CLK_MON               = 1036,   //!< Ошибка монитора питания часов контроллера
-  VSD_ALARM_MB_MON                = 1037,   //!< Ошибка монитора платы измерений
-  VSD_ALARM_DRV0                  = 1038,   //!< Ошибка драйвера 0
-  VSD_ALARM_DRV1                  = 1039,   //!< Ошибка драйвера 1
-  VSD_ALARM_DRV2                  = 1040,   //!< Ошибка драйвера 2
-  VSD_ALARM_TEST                  = 1041,   //!< Включен тестовый режим контроллера ПЧ
-  VSD_ALARM_INV_FLT_TEMP_LINK     = 1042,   //!< Ошибка связи с термодатчиками
-  VSD_ALARM_INV_FLT_TEMP          = 1043,   //!< Перегрев силовых модулей
-
-  VSD_ALARM_ABC_STATE             = 1048,   //!< Направление чередования фаз
-  VSD_ALARM_ERR_STATE             = 1049,   //!< Ошибка синхронизации с сетью
-  VSD_ALARM_ERR_SHORTCIRQUIT      = 1050,   //!< Ошибка по КЗ на инверторе
-
+  VSD_ALARM_RSRV_1030             = 1030,
+  VSD_ALARM_RSRV_1031             = 1031,
+  // STATUS_WORD_3 ЧРП Новомет
+  VSD_ALARM_RSRV_1032             = 1032,
+  VSD_ALARM_RSRV_1033             = 1033,
+  VSD_ALARM_RSRV_1034             = 1034,
+  VSD_ALARM_RSRV_1035             = 1035,
+  VSD_ALARM_RSRV_1036             = 1036,
+  VSD_ALARM_RSRV_1037             = 1037,
+  VSD_ALARM_RSRV_1038             = 1038,
+  VSD_ALARM_RSRV_1039             = 1039,
+  VSD_ALARM_RSRV_1040             = 1040,
+  VSD_ALARM_RSRV_1041             = 1041,
+  VSD_ALARM_RSRV_1042             = 1042,
+  VSD_ALARM_RSRV_1043             = 1043,
+  VSD_ALARM_RSRV_1044             = 1044,
+  VSD_ALARM_RSRV_1045             = 1045,
+  VSD_ALARM_RSRV_1046             = 1046,
+  VSD_ALARM_RSRV_1047             = 1047,
+  // STATUS_WORD_4 ЧРП Новомет
+  VSD_ALARM_RSRV_1048             = 1048,
+  VSD_ALARM_RSRV_1049             = 1049,
+  VSD_ALARM_RSRV_1050             = 1050,
+  VSD_ALARM_RSRV_1051             = 1051,
+  VSD_ALARM_RSRV_1052             = 1052,
+  VSD_ALARM_RSRV_1053             = 1053,
+  VSD_ALARM_RSRV_1054             = 1054,
+  VSD_ALARM_RSRV_1055             = 1055,
+  VSD_ALARM_RSRV_1056             = 1056,
+  VSD_ALARM_RSRV_1057             = 1057,
+  VSD_ALARM_RSRV_1058             = 1058,
+  VSD_ALARM_RSRV_1059             = 1059,
+  VSD_ALARM_RSRV_1060             = 1060,
+  VSD_ALARM_RSRV_1061             = 1061,
+  VSD_ALARM_RSRV_1062             = 1062,
+  VSD_ALARM_RSRV_1063             = 1063,
+  // STATUS_WORD_5 ЧРП Новомет
+  VSD_ALARM_ABC_STATE             = 1064,   //!< Направление чередования фаз
+  VSD_ALARM_RSRV_1065             = 1065,
+  VSD_ALARM_ERR_STATE             = 1066,   //!< Ошибка синхронизации с сетью
+  VSD_ALARM_RSRV_1067             = 1067,
+  VSD_ALARM_RSRV_1068             = 1068,
+  VSD_ALARM_RSRV_1069             = 1069,
+  VSD_ALARM_RSRV_1070             = 1070,
+  VSD_ALARM_ERR_SHORTCIRQUIT      = 1071,   //!< Ошибка по КЗ на инверторе
+  VSD_ALARM_RSRV_1072             = 1072,
+  VSD_ALARM_RSRV_1073             = 1073,
+  VSD_ALARM_RSRV_1074             = 1074,
+  VSD_ALARM_RSRV_1075             = 1075,
+  VSD_ALARM_RSRV_1076             = 1076,
+  VSD_ALARM_RSRV_1077             = 1077,
+  VSD_ALARM_RSRV_1078             = 1078,
+  VSD_ALARM_RSRV_1079             = 1079,
+  // STATUS_WORD_6 ЧРП Новомет
+  VSD_ALARM_RSRV_1080             = 1080,
+  VSD_ALARM_RSRV_1081             = 1081,
+  VSD_ALARM_RSRV_1082             = 1082,
+  VSD_ALARM_RSRV_1083             = 1083,
+  VSD_ALARM_RSRV_1084             = 1084,
+  VSD_ALARM_RSRV_1085             = 1085,
+  VSD_ALARM_RSRV_1086             = 1086,
+  VSD_ALARM_RSRV_1087             = 1087,
+  VSD_ALARM_RSRV_1088             = 1088,
+  VSD_ALARM_RSRV_1089             = 1089,
+  VSD_ALARM_RSRV_1090             = 1090,
+  VSD_ALARM_RSRV_1091             = 1091,
+  VSD_ALARM_RSRV_1092             = 1092,
+  VSD_ALARM_RSRV_1093             = 1093,
+  VSD_ALARM_RSRV_1094             = 1094,
+  VSD_ALARM_RSRV_1095             = 1095,
+  // STATUS_WORD_7 ЧРП Новомет
+  VSD_ALARM_IMAX                  = 1096,   //!< Превышен максимальный ток инвертора
+  VSD_ALARM_IZ                    = 1097,   //!< Детектирован разностный ток выходных фаз (утечка)
+  VSD_ALARM_AN_MON                = 1098,   //!< Ошибка монитора питания  аналоговой цепи контроллера
+  VSD_ALARM_CTR_MON               = 1099,   //!< Ошибка монитора питания цифровой цепи контроллера
+  VSD_ALARM_CLK_MON               = 1100,   //!< Ошибка монитора питания часов контроллера
+  VSD_ALARM_MB_MON                = 1101,   //!< Ошибка монитора платы измерений
+  VSD_ALARM_DRV0                  = 1102,   //!< Ошибка драйвера 0
+  VSD_ALARM_DRV1                  = 1103,   //!< Ошибка драйвера 1
+  VSD_ALARM_DRV2                  = 1104,   //!< Ошибка драйвера 2
+  VSD_ALARM_TEST                  = 1105,   //!< Включен тестовый режим контроллера ПЧ
+  VSD_ALARM_INV_FLT_TEMP_LINK     = 1106,   //!< Ошибка связи с термодатчиками
+  VSD_ALARM_INV_FLT_TEMP          = 1107,   //!< Перегрев силовых модулей
+  VSD_ALARM_RSRV_1108             = 1108,
+  VSD_ALARM_RSRV_1109             = 1109,
+  VSD_ALARM_RSRV_1110             = 1110,
+  VSD_ALARM_RSRV_1111             = 1111,
+  // STATUS_WORD_3 ЧРП Danfoss
   VSD_ALARM_A_28                  = 2000,   //!< Проверка тормоза A28
   VSD_ALARM_A_69                  = 2001,   //!< Темп. силовой платы A69
   VSD_ALARM_A_14                  = 2002,   //!< Пробой на землю A14
@@ -178,7 +258,7 @@ enum enAlarmVsd {
   VSD_ALARM_A_80                  = 2029,   //!< Провод иниц. А80
   VSD_ALARM_A_68                  = 2030,   //!< Безоп. останов А68
   VSD_ALARM_A_63                  = 2031,   //!< Мала эффективность механич. тормоза А63
-
+  // STATUS_WORD_4 ЧРП Danfoss
   VSD_ALARM_SERVICE_TRIP          = 2032,     //!< Сервисная защита
   VSD_ALARM_HI_TEMP_DISCHARGE     = 2041,     //!< Высокая температура разряда
   VSD_ALARM_START_ERROR           = 2042,     //!< Ошибка пуска
@@ -193,7 +273,7 @@ enum enAlarmVsd {
   VSD_ALARM_A_90                  = 2061,     //!< Отказ энкодера A90
   VSD_ALARM_A_74                  = 2062,     //!< Термистор PTC А74
   VSD_ALARM_A_72                  = 2063,     //!< Опасный отказ
-
+  // STATUS_WORD_1 ЧРП Эталон
   VSD_ALARM_UNDERLOAD             = 3001,     //!< Недогруз
   VSD_ALARM_OVERLOAD              = 3002,     //!< Перегруз
   VSD_ALARM_RESISTANCE            = 3003,     //!< Низкое Rиз
@@ -284,44 +364,6 @@ enum enWarningVsd {
   VSD_WARNING_W_62                = 2029,   //!< Пр вых. част W62
   VSD_WARNING_W_68                = 2030,   //!< Безоп. останов W68
   VSD_WARNING_EXT                 = 2031,   //!< Расширенное слово состояния
-};
-
-/*!
- * \brief The enControl enum
- * Флаги регистра управления ПЧ
- */
-enum enControl
-{
-  VSD_CONTROL_START           = 1,       //!< Запустить инвертор ("Старт")
-  VSD_CONTROL_STOP            = 2,       //!< Остановить инвертор ("Стоп")
-  VSD_CONTROL_LEFT_DIRECTION  = 4,       //!< Задать левое вращение (обратное)
-  VSD_CONTROL_RIGHT_DIRECTION = 8,       //!< Задать правое вращение (прямое)
-  VSD_CONTROL_ALARM           = 16,      //!< Аварийный останов
-  VSD_CONTROL_CURRENT_OPT     = 32,      //!< Задание оптимизации по току
-  VSD_CONTROL_POWER_OPT       = 64,      //!< задание оптимизации по мощности
-  VSD_CONTROL_CLEAR_OPT       = 128,     //!< Отключить оптимизацию
-  VSD_CONTROL_ASYN_MOTOR      = 256,     //!< Асинхронный
-  VSD_CONTROL_VENT_MOTOR      = 512,     //!< Вентильный
-  VSD_CONTROL_OVERPWM1_ON     = 1024,    //!< Включить режим OverPWM1
-  VSD_CONTROL_OVERPWM2_ON     = 2048,    //!< Включить режим OverPWM2
-  VSD_CONTROL_OVERPWM_OFF     = 4096,    //!< Выключить режим OverPWM
-  VSD_CONTROL_DISCHARGE_ON    = 8192,    //!< Включить предразряд шины инвертора
-  VSD_CONTROL_DISCHARGE_OFF   = 16384,   //!< Выключить предразряд шины инвертора
-  VSD_CONTROL_RESET           = 32768,
-};
-
-enum enControl2
-{
-  VSD_CONTROL_2_RES_ANGLE     = 1,       //!< Установить сигнал о колебания по углу
-  VSD_CONTROL_2_RES_TORQUE    = 2,       //!< Установить сигнал о колебания по моменту
-  VSD_CONTROL_2_RES_POWER     = 4,       //!< Установить сигнал о колебаниях по мощности
-};
-
-enum enSwitchFreqMode
-{
-  VSD_SWITCHING_FREQUENCY_MODE_SIN = 0,
-  VSD_SWITCHING_FREQUENCY_MODE_OVERPWM_1 = 1,
-  VSD_SWITCHING_FREQUENCY_MODE_OVERPWM_2 = 2
 };
 
 /*!

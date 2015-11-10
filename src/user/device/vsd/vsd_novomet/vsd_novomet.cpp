@@ -456,6 +456,81 @@ int VsdNovomet::setBaseFrequency(float value)
   }
 }
 
+float VsdNovomet::checkAlarmVsd()
+{
+  uint16_t i = 0;
+  float vsdStatus = parameters.get(CCS_VSD_ALARM_CODE);
+  float vsdStatus1 = getValue(VSD_STATUS_WORD_1);
+  float vsdStatus2 = getValue(VSD_STATUS_WORD_2);
+  float vsdStatus5 = getValue(VSD_STATUS_WORD_5);
+  float vsdStatus7 = getValue(VSD_STATUS_WORD_7);
+
+  if ((vsdStatus == 0) || ((vsdStatus >= VSD_ALARM_I_LIMIT) && (vsdStatus <= VSD_ALARM_UD_HIGH_FAULT))) {
+    vsdStatus = 0;
+    for (int i = VSD_ALARM_I_LIMIT; i <= VSD_ALARM_UD_HIGH_FAULT; i++) {
+      if (checkBit(vsdStatus1, i - 1000)) {
+        return i;
+      }
+    }
+  }
+
+  if ((vsdStatus == 0) || ((vsdStatus >= VSD_ALARM_UIN_ASYM) && (vsdStatus <= VSD_ALARM_URECT_SHORTCIRCUIT))) {
+    vsdStatus = 0;
+    for (int i = VSD_ALARM_UIN_ASYM; i <= VSD_ALARM_URECT_SHORTCIRCUIT; i++) {
+      if (checkBit(vsdStatus1, i - 1000)) {
+        return i;
+      }
+    }
+  }
+
+  if ((vsdStatus == 0) || ((vsdStatus >= VSD_ALARM_FC_IT_ERR) && (vsdStatus <= VSD_ALARM_I_LIMIT_FAST))) {
+    vsdStatus = 0;
+    for (int i = VSD_ALARM_FC_IT_ERR; i <= VSD_ALARM_I_LIMIT_FAST; i++) {
+      if (checkBit(vsdStatus2, i - 1016)) {
+        return i;
+      }
+    }
+  }
+
+  if ((vsdStatus == 0) || ((vsdStatus >= VSD_ALARM_DISCHARGE_ERR) && (vsdStatus <= VSD_ALARM_M_I2T_ERR))) {
+    vsdStatus = 0;
+    for (int i = VSD_ALARM_DISCHARGE_ERR; i <= VSD_ALARM_M_I2T_ERR; i++) {
+      if (checkBit(vsdStatus2, i - 1016)) {
+        return i;
+      }
+    }
+  }
+
+  if ((vsdStatus == 0) || (vsdStatus == VSD_ALARM_ABC_STATE)) {
+    if (checkBit(vsdStatus5, VSD_ALARM_ABC_STATE - 1064)) {
+      return VSD_ALARM_ABC_STATE;
+    }
+  }
+
+  if ((vsdStatus == 0) || (vsdStatus == VSD_ALARM_ERR_STATE)) {
+    if (checkBit(vsdStatus5, VSD_ALARM_ERR_STATE - 1064)) {
+      return VSD_ALARM_ERR_STATE;
+    }
+  }
+
+  if ((vsdStatus == 0) || (vsdStatus == VSD_ALARM_ERR_SHORTCIRQUIT)) {
+    if (checkBit(vsdStatus5, VSD_ALARM_ERR_SHORTCIRQUIT - 1064)) {
+      return VSD_ALARM_ERR_SHORTCIRQUIT;
+    }
+  }
+
+  if ((vsdStatus == 0) || ((vsdStatus >= VSD_ALARM_IMAX) && (vsdStatus <= VSD_ALARM_INV_FLT_TEMP))) {
+    vsdStatus = 0;
+    for (int i = VSD_ALARM_IMAX; i <= VSD_ALARM_INV_FLT_TEMP; i++) {
+      if (checkBit(vsdStatus7, i - 1096)) {
+        return i;
+      }
+    }
+  }
+
+  return vsdStatus;
+}
+
 int VsdNovomet::calcUfCharacteristicU(float value)
 {
   return setBaseVoltage(value);
@@ -704,11 +779,11 @@ void VsdNovomet::getNewValue(uint16_t id)
     break;
   case VSD_STATUS_WORD_1:
     setValue(id, value);
-    parameters.set(CCS_VSD_STATUS_WORD_1, value);
+    parameters.set(CCS_VSD_ALARM_CODE, checkAlarmVsd());
     break;
   case VSD_STATUS_WORD_2:
     setValue(id, value);
-    parameters.set(CCS_VSD_STATUS_WORD_2, value);
+    parameters.set(CCS_VSD_ALARM_CODE, checkAlarmVsd());
     break;
   case VSD_STATUS_WORD_3:
     setValue(id, value);
@@ -724,11 +799,11 @@ void VsdNovomet::getNewValue(uint16_t id)
     break;
   case VSD_STATUS_WORD_7:
     setValue(id, value);
-    parameters.set(CCS_VSD_STATUS_WORD_7, value);
+    parameters.set(CCS_VSD_ALARM_CODE, checkAlarmVsd());
     break;
   case VSD_STATUS_WORD_5:
     setValue(id, value);
-    parameters.set(CCS_VSD_STATUS_WORD_5, value);
+    parameters.set(CCS_VSD_ALARM_CODE, checkAlarmVsd());
     break;
   case VSD_T_SPEEDUP:
     setValue(id, value);
@@ -945,7 +1020,11 @@ int VsdNovomet::start()
 #endif
 
   // Если стоит бит запуска двигателя
+  /*
   if (checkStatusVsd(VSD_STATUS_STARTED))
+    return ok_r;
+  */
+  if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_STATUS_STARTED))
     return ok_r;
 
   resetRunQueue();
@@ -985,6 +1064,7 @@ bool VsdNovomet::checkStart()
 #if USE_DEBUG
   return true;
 #endif
+
 
   if (checkStatusVsd(VSD_STATUS_STARTED)) {
     if (!checkStatusVsd(VSD_STATUS_WAIT_RECT_START)) {

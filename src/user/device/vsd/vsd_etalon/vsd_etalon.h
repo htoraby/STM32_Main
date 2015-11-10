@@ -142,6 +142,8 @@ public:
   int setCoefVoltageInBC(float value);
   int setCoefVoltageInCA(float value);
 
+  float checkAlarmVsd();
+  void convertBitVsdStatus(float value);
 
   void getNewValue(uint16_t id);
 
@@ -224,7 +226,6 @@ private:
    * \brief convertBitVsdStatus
    * \param value
    */
-  void convertBitVsdStatus(float value);
 };
 
 #endif /* VSD_NOVOMET_H_ */

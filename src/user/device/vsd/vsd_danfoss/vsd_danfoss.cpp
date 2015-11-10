@@ -880,80 +880,64 @@ uint16_t VsdDanfoss::configVsdVentVect6000()
   return ok_r;
 }
 
-void VsdDanfoss::convertBitStatusWord3(float value)
-{
-  uint32_t vsdStatus = parameters.get(CCS_VSD_ALARM_CODE);
-  if ((vsdStatus == 0) || ((vsdStatus >= VSD_ALARM_A_28) && (vsdStatus <= VSD_ALARM_A_63))) {
-    vsdStatus = 0;
-    for (int i = 0; i < 32; i++) {
-      if (checkBit(value, i)) {
-        vsdStatus = VSD_ALARM_A_28 + i;
-        break;
-      }
-    }
-    parameters.set(CCS_VSD_ALARM_CODE, vsdStatus);
-  }
-}
 
-void VsdDanfoss::convertBitStatusWord4(float value)
+float VsdDanfoss::checkAlarmVsd()
 {
   uint16_t i = 0;
-  uint32_t vsdStatus = parameters.get(CCS_VSD_ALARM_CODE);
-  if ((vsdStatus == 0) || (vsdStatus == VSD_ALARM_SERVICE_TRIP)) {
-    vsdStatus = 0;
+  float vsdAlarm = parameters.get(CCS_VSD_ALARM_CODE);
+  uint32_t vsdStatus3 = getValue(VSD_STATUS_WORD_3);
+  uint32_t vsdStatus4 = getValue(VSD_STATUS_WORD_4);
+
+  if ((vsdAlarm == VSD_ALARM_NONE) || ((vsdAlarm >= VSD_ALARM_A_28) && (vsdAlarm <= VSD_ALARM_A_63))) {
+    vsdAlarm = VSD_ALARM_NONE;
+    for (i = VSD_ALARM_A_28; i <= VSD_ALARM_A_63; i++) {
+      if (checkBit(vsdStatus3, i - 2000)) {
+        return i;
+      }
+    }
+  }
+
+  if ((vsdAlarm == VSD_ALARM_NONE) || (vsdAlarm == VSD_ALARM_SERVICE_TRIP)) {
+    vsdAlarm = VSD_ALARM_NONE;
     for (i = 0; i < 5; i++) {
-      if (checkBit(value, i)) {
-        vsdStatus = VSD_ALARM_SERVICE_TRIP;
-        break;
+      if (checkBit(vsdStatus4, i)) {
+        return VSD_ALARM_SERVICE_TRIP;
       }
     }
-    parameters.set(CCS_VSD_ALARM_CODE, vsdStatus);
   }
 
-  if ((vsdStatus == 0) || ((vsdStatus >= VSD_ALARM_HI_TEMP_DISCHARGE) && (vsdStatus <= VSD_ALARM_PROT_DEVICE))) {
-    vsdStatus = 0;
-    for (i = 9; i < 15; i++) {
-      if (checkBit(value, i)) {
-        vsdStatus = VSD_ALARM_HI_TEMP_DISCHARGE + i;
-        break;
+  if ((vsdAlarm == VSD_ALARM_NONE) || ((vsdAlarm >= VSD_ALARM_HI_TEMP_DISCHARGE) && (vsdAlarm <= VSD_ALARM_PROT_DEVICE))) {
+    vsdAlarm = VSD_ALARM_NONE;
+    for (i = VSD_ALARM_HI_TEMP_DISCHARGE; i <= VSD_ALARM_PROT_DEVICE; i++) {
+      if (checkBit(vsdStatus4, i - 2032)) {
+        return i;
       }
     }
-    parameters.set(CCS_VSD_ALARM_CODE, vsdStatus);
   }
 
-  if ((vsdStatus == 0) || ((vsdStatus >= VSD_ALARM_KTY) && (vsdStatus <= VSD_ALARM_ECB))) {
-    vsdStatus = 0;
-    for (i = 17; i < 20; i++) {
-      if (checkBit(value, i)) {
-        vsdStatus = VSD_ALARM_KTY + i;
-        break;
+  if ((vsdAlarm == VSD_ALARM_NONE) || ((vsdAlarm >= VSD_ALARM_KTY) && (vsdAlarm <= VSD_ALARM_ECB))) {
+    vsdAlarm = VSD_ALARM_NONE;
+    for (i = VSD_ALARM_KTY; i <= VSD_ALARM_ECB; i++) {
+      if (checkBit(vsdStatus4, i - 2032)) {
+        return i;
       }
     }
-    parameters.set(CCS_VSD_ALARM_CODE, vsdStatus);
   }
 
-  if ((vsdStatus == 0) || (vsdStatus == VSD_ALARM_A_59)) {
-    if (checkBit(value, 25)) {
-      vsdStatus = VSD_ALARM_A_59;
+  if ((vsdAlarm == VSD_ALARM_NONE) || (vsdAlarm == VSD_ALARM_A_59)) {
+    if (checkBit(vsdStatus4, VSD_ALARM_A_59 - 2032)) {
+      return VSD_ALARM_A_59;
     }
-    parameters.set(CCS_VSD_ALARM_CODE, vsdStatus);
   }
 
-  if ((vsdStatus == 0) || ((vsdStatus == VSD_ALARM_A_90) && (vsdStatus <= VSD_ALARM_A_72))) {
-    vsdStatus = 0;
-    for (i = 29; i < 32; i++) {
-      if (checkBit(value, i)) {
-        vsdStatus = VSD_ALARM_KTY + i;
-        break;
+  if ((vsdAlarm == VSD_ALARM_NONE) || ((vsdAlarm >= VSD_ALARM_A_90) && (vsdAlarm <= VSD_ALARM_A_72))) {
+    vsdAlarm = VSD_ALARM_NONE;
+    for (i = VSD_ALARM_A_90; i <= VSD_ALARM_A_72; i++) {
+      if (checkBit(vsdStatus4, i - 2032)) {
+        return i;
       }
     }
-    parameters.set(CCS_VSD_ALARM_CODE, vsdStatus);
   }
-}
-
-void VsdDanfoss::convertBitStatusWord5(float value)
-{
-
 }
 
 int VsdDanfoss::start()
@@ -1251,13 +1235,11 @@ void VsdDanfoss::getNewValue(uint16_t id)
       break;
     case VSD_STATUS_WORD_3:
       setValue(id, value);
-      convertBitStatusWord3(value);
+      parameters.set(CCS_VSD_ALARM_CODE, checkAlarmVsd());
       break;
     case VSD_STATUS_WORD_4:
       setValue(id, value);
-      convertBitStatusWord4(value);
-
-
+      parameters.set(CCS_VSD_ALARM_CODE, checkAlarmVsd());
       break;
     case VSD_UF_CHARACTERISTIC_F:
       switch ((uint16_t)getValue(VSD_INDEX)) {

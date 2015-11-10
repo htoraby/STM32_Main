@@ -234,6 +234,27 @@ int VsdEtalon::setCoefVoltageInCA(float value)
   }
 }
 
+float VsdEtalon::checkAlarmVsd()
+{
+  uint16_t i = 0;
+  float vsdAlarm = parameters.get(CCS_VSD_ALARM_CODE);
+  float vsdStatus1 = getValue(VSD_STATUS_WORD_1);
+
+  if (vsdStatus1 == VSD_ALARM_NONE) {
+    return vsdStatus1;
+  }
+
+  if ((vsdStatus1 >= VSD_ALARM_UNDERLOAD - 3000) && (vsdStatus1 <= VSD_ALARM_32 - 3000)) {
+    return vsdStatus1 + 3000;
+  }
+
+  if((vsdStatus1 >= VSD_ALARM_RESTART_COUNT - 3000) && (vsdStatus1 <= VSD_ALARM_BLOCK_RUN - 3000)) {
+    return vsdStatus1 + 3000;
+  }
+
+  return vsdAlarm;
+}
+
 
 
 // Метод проверки и обновления параметров устройства
@@ -930,7 +951,6 @@ void VsdEtalon::convertBitVsdStatus(float value)
   uint32_t vsdStatusWord4 = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_4) & 0x8000;
   uint32_t vsdStatusWord5 = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_5) & 0xFFF1;
   uint32_t vsdStatusWord7 = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_7) & 0xFF81;
-
   switch ((uint32_t)value) {
   case VSD_ETALON_STATUS_READY:             // VSD_STATUS_READY
     vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_READY, true);
@@ -1072,7 +1092,6 @@ void VsdEtalon::convertBitVsdStatus(float value)
   default:
     break;
   }
-
   parameters.set(CCS_VSD_STATUS_WORD_1, (float)vsdStatusWord1);
   parameters.set(CCS_VSD_STATUS_WORD_2, (float)vsdStatusWord2);
   parameters.set(CCS_VSD_STATUS_WORD_4, (float)vsdStatusWord4);
