@@ -29,81 +29,120 @@ enum enResMode {
   VSD_RES_MODE_POWER = 2,                   //!< Мгновенная мощность привода
   VSD_RES_MODE_NONE = 3,                    //!< Не использовать
 };
-/*
-enum enStatus1VsdNovomet {
-  VSD_STATUS_STARTED              = 0,      //!< Запуск ПЧ
-  VSD_STATUS_WAIT_RECT_START      = 1,      //!< Ожидаем запуска выпрямителя
-  VSD_STATUS_STOPPED_REGISTER     = 2,      //!< Инвертор остановлен по изменению важного параметра
-  VSD_STATUS_STOPPED_EXTERNAL     = 3,      //!< Инвертор остановлен по команде извне
-  VSD_STATUS_WAIT_RECT_STOP       = 4,      //!< Ожидание остнова выпрямителя
-  VSD_STATUS_FAULT_STOPPED        = 5,      //!< Остановлен по причине FAULT
-  VSD_STATUS_1_RESERVED_6         = 6,      //!< Резерв
-  VSD_STATUS_I_LIMIT              = 7,      //!< Токоограничение
-  VSD_STATUS_ULOW                 = 8,      //!< Недостаточно напряжения
-  VSD_STATUS_STOPPED_ALARM        = 9,      //!< Остановлен аварийно
-  VSD_STATUS_UD_LOW_FAULT         = 10,     //!< Остановлен по снижению напряжения на шин
-  VSD_STATUS_UD_HIGH_FAULT        = 11,     //!< Остановлен по превышению напряжения на шине
-  VSD_STATUS_TO_STOP_MODE         = 12,     //!< Режим плавной остановки двигателя
-  VSD_STATUS_UIN_ASYM             = 13,     //!< Остановлен по несимметрии входного напряжения
-  VSD_STATUS_URECT_SHORTCIRCUIT   = 14,     //!< Остановлен по КЗ от выпрямителя
-  VSD_STATUS_RESERVED             = 15,     //!< Резерв
+
+enum enVsdNovometStatus1 {
+  VSD_NOVOMET_STATUS_STARTED      = 0,      //!< Запуск ПЧ
+  VSD_NOVOMET_STATUS_WAIT_START   = 1,      //!< Ожидаем запуска выпрямителя
+  VSD_NOVOMET_STATUS_STOP_REGISTER= 2,      //!< Инвертор остановлен по изменению важного параметра
+  VSD_NOVOMET_STATUS_STOP_EXTERNAL= 3,      //!< Инвертор остановлен по команде извне
+  VSD_NOVOMET_STATUS_WAIT_STOP    = 4,      //!< Ожидание остнова выпрямителя
+  VSD_NOVOMET_STATUS_FAULT_STOPPED= 5,      //!< Остановлен по причине FAULT
+  VSD_NOVOMET_STATUS_RESERVED_6   = 6,      //!< Резерв
+  VSD_NOVOMET_STATUS_I_LIMIT      = 7,      //!< Токоограничение
+  VSD_NOVOMET_STATUS_ULOW         = 8,      //!< Недостаточно напряжения
+  VSD_NOVOMET_STATUS_STOP_ALARM   = 9,      //!< Остановлен аварийно
+  VSD_NOVOMET_STATUS_UD_LOW_FAULT = 10,     //!< Остановлен по снижению напряжения на шин
+  VSD_NOVOMET_STATUS_UD_HIGH_FAULT= 11,     //!< Остановлен по превышению напряжения на шине
+  VSD_NOVOMET_STATUS_TO_STOP_MODE = 12,     //!< Режим плавной остановки двигателя
+  VSD_NOVOMET_STATUS_UIN_ASYM     = 13,     //!< Остановлен по несимметрии входного напряжения
+  VSD_NOVOMET_STATUS_URECT_SHORT  = 14,     //!< Остановлен по КЗ от выпрямителя
+  VSD_NOVOMET_STATUS_RESERVED     = 15,     //!< Резерв
 };
 
-enum enStatus2VsdNovomet {
-  VSD_STATUS_FC_IT_ERR            = 0,      //!< Сработала токовая тепловая защита инвертора
-  VSD_STATUS_AST_ERR              = 1,      //!< Система автонастройки не смогла определить параметры линии
-  VSD_STATUS_I_LIMIT_FAST         = 2,      //!< Превышение порога мгновенного токоограничения
-  VSD_STATUS_CURRENT_OPT          = 3,      //!< Включена оптимизация по току
-  VSD_STATUS_POWER_OPT            = 4,      //!< Включена оптимизация по выходной мощности
-  VSD_STATUS_OPT_DONE             = 5,      //!< Оптимизация состоялась
-  VSD_STATUS_2_RESERVED_22        = 6,      //!< Резерв
-  VSD_STATUS_2_RESERVED_23        = 7,      //!< Резерв
-  VSD_STATUS_DISCHARGE_ON         = 8,      //!< Задействован режим разряда шины
-  VSD_STATUS_DISCAHRGE            = 9,      //!< Режим разряда шины работает
-  VSD_STATUS_DISCHARGE_ERR        = 10,     //!< Ошибка режима разряда шины
-  VSD_STATUS_VC_ERR               = 11,     //!< Ошибка векторного режима
-  VSD_STATUS_M_I_FAST_ERR         = 12,     //!< Быстрая токовая защита двигателя
-  VSD_STATUS_M_I2T_ERR            = 13,     //!< Токовая защита двигателя (перегруз)
-  VSD_STATUS_2_RESERVED_30        = 14,     //!< Резерв
-  VSD_STATUS_2_RESERVED_31        = 15,     //!< Резерв
+enum enVsdNovometStatus2 {
+  VSD_NOVOMET_STATUS_FC_IT_ERR    = 0,      //!< Сработала токовая тепловая защита инвертора
+  VSD_NOVOMET_STATUS_AST_ERR      = 1,      //!< Система автонастройки не смогла определить параметры линии
+  VSD_NOVOMET_STATUS_I_LIMIT_FAST = 2,      //!< Превышение порога мгновенного токоограничения
+  VSD_NOVOMET_STATUS_CURRENT_OPT  = 3,      //!< Включена оптимизация по току
+  VSD_NOVOMET_STATUS_POWER_OPT    = 4,      //!< Включена оптимизация по выходной мощности
+  VSD_NOVOMET_STATUS_OPT_DONE     = 5,      //!< Оптимизация состоялась
+  VSD_NOVOMET_STATUS_DISCHARGE_ON = 8,      //!< Задействован режим разряда шины
+  VSD_NOVOMET_STATUS_DISCAHRGE    = 9,      //!< Режим разряда шины работает
+  VSD_NOVOMET_STATUS_DISCHARGE_ERR= 10,     //!< Ошибка режима разряда шины
+  VSD_NOVOMET_STATUS_VC_ERR       = 11,     //!< Ошибка векторного режима
+  VSD_NOVOMET_STATUS_M_I_FAST_ERR = 12,     //!< Быстрая токовая защита двигателя
+  VSD_NOVOMET_STATUS_M_I2T_ERR    = 13,     //!< Токовая защита двигателя (перегруз)
 };
 
-enum enStatus3VsdNovomet {
-  VSD_STATUS_RIGHT_DIRECTION      = 0,      //!< Правое направление вращения
-  VSD_STATUS_OWERPWM1             = 1,      //!< OverPWM тип 1
-  VSD_STATUS_OWERPWM2             = 2,      //!< OverPWM тип 2
-  VSD_STATUS_M_TYPE0              = 3,      //!< Бит типа двигателя 0
-  VSD_STATUS_M_TYPE1              = 4,      //!< Бит типа двигателя 1
-  VSD_STATUS_RES_TYPE0            = 5,      //!< Бит типа противорезонанса
-  VSD_STATUS_RES_TYPE1            = 6,      //!< Бит типа противорезонанса
+enum enVsdNovometStatus3 {
+  VSD_NOVOMET_STATUS_RIGHT_DIRECT = 0,      //!< Правое направление вращения
+  VSD_NOVOMET_STATUS_OWERPWM1     = 1,      //!< OverPWM тип 1
+  VSD_NOVOMET_STATUS_OWERPWM2     = 2,      //!< OverPWM тип 2
+  VSD_NOVOMET_STATUS_M_TYPE0      = 3,      //!< Бит типа двигателя 0
+  VSD_NOVOMET_STATUS_M_TYPE1      = 4,      //!< Бит типа двигателя 1
+  VSD_NOVOMET_STATUS_RES_TYPE0    = 5,      //!< Бит типа противорезонанса
+  VSD_NOVOMET_STATUS_RES_TYPE1    = 6,      //!< Бит типа противорезонанса
 };
 
-enum enStatus7VsdNovomet {
-  VSD_STATUS_IMAX                 = 0,      //!< Превышен максимальный ток инвертора
-  VSD_STATUS_IZ                   = 1,      //!< Детектирован разностный ток выходных фаз (утечка)
-  VSD_STATUS_AN_MON               = 2,      //!< Ошибка монитора питания  аналоговой цепи контроллера
-  VSD_STATUS_CTR_MON              = 3,      //!< Ошибка монитора питания цифровой цепи контроллера
-  VSD_STATUS_CLK_MON              = 4,      //!< Ошибка монитора питания часов контроллера
-  VSD_STATUS_MB_MON               = 5,      //!< Ошибка монитора платы измерений
-  VSD_STATUS_DRV0                 = 6,      //!< Ошибка драйвера 0
-  VSD_STATUS_DRV1                 = 7,      //!< Ошибка драйвера 1
-  VSD_STATUS_DRV2                 = 8,      //!< Ошибка драйвера 2
-  VSD_STATUS_TEST                 = 9,      //!< Включен тестовый режим контроллера ПЧ
-  VSD_STATUS_INV_FLT_TEMP_LINK    = 10,     //!< Ошибка связи с термодатчиками
-  VSD_STATUS_INV_FLT_TEMP         = 11,     //!< Перегрев силовых модулей
+enum enVsdNovometStatus5 {
+  VSD_NOVOMET_STATUS_ABC_STATE    = 0,      //!< Направление чередования фаз
+  VSD_NOVOMET_STATUS_1            = 1,
+  VSD_NOVOMET_STATUS_ERR_STATE    = 2,      //!< Ошибка синхронизации с сетью
+  VSD_NOVOMET_STATUS_CHARGE_STATE = 3,      //!< Производится заряд ёмкости инвертора
+  VSD_NOVOMET_STATUS_STARTED_STATE= 4,      //!< Ёмкость заряжена
+  VSD_NOVOMET_STATUS_SYNC_STATE   = 5,      //!< Первая попытка синхронизации
+  VSD_NOVOMET_STATUS_BOUNCE_WAIT  = 6,      //!< Ожидание времени антидребезга
+  VSD_NOVOMET_STATUS_ERR_SHORT    = 7,      //!< Ошибка по КЗ на инверторе
 };
 
-enum enStatus5VsdNovomet {
-  VSD_STATUS_ABC_STATE            = 64,     //!< Направление чередования фаз
-  VSD_STATUS_1                    = 65,
-  VSD_STATUS_ERR_STATE            = 66,     //!< Ошибка синхронизации с сетью
-  VSD_STATUS_CHARGE_STATE         = 67,     //!< Производится заряд ёмкости инвертора
-  VSD_STATUS_STARTED_STATE        = 68,     //!< Ёмкость заряжена
-  VSD_STATUS_SYNC_STATE           = 69,     //!< Первая попытка синхронизации
-  VSD_STATUS_BOUNCE_WAIT          = 70,     //!< Ожидание времени антидребезга
-  VSD_STATUS_ERR_SHORTCIRQUIT     = 71,     //!< Ошибка по КЗ на инверторе
+enum enVsdNovometStatus7 {
+  VSD_NOVOMET_STATUS_IMAX         = 0,      //!< Превышен максимальный ток инвертора
+  VSD_NOVOMET_STATUS_IZ           = 1,      //!< Детектирован разностный ток выходных фаз (утечка)
+  VSD_NOVOMET_STATUS_AN_MON       = 2,      //!< Ошибка монитора питания  аналоговой цепи контроллера
+  VSD_NOVOMET_STATUS_CTR_MON      = 3,      //!< Ошибка монитора питания цифровой цепи контроллера
+  VSD_NOVOMET_STATUS_CLK_MON      = 4,      //!< Ошибка монитора питания часов контроллера
+  VSD_NOVOMET_STATUS_MB_MON       = 5,      //!< Ошибка монитора платы измерений
+  VSD_NOVOMET_STATUS_DRV0         = 6,      //!< Ошибка драйвера 0
+  VSD_NOVOMET_STATUS_DRV1         = 7,      //!< Ошибка драйвера 1
+  VSD_NOVOMET_STATUS_DRV2         = 8,      //!< Ошибка драйвера 2
+  VSD_NOVOMET_STATUS_TEST         = 9,      //!< Включен тестовый режим контроллера ПЧ
+  VSD_NOVOMET_STATUS_TEMP_LINK    = 10,     //!< Ошибка связи с термодатчиками
+  VSD_NOVOMET_STATUS_TEMP         = 11,     //!< Перегрев силовых модулей
 };
-*/
+
+
+/*!
+ * \brief Коды аварий ЧРП
+ */
+enum enVsdNovometAlarm {
+  // STATUS_WORD_1 ЧРП Новомет
+  VSD_NOVOMET_ALARM_STOP_REGISTER = 1002,   //!< Инвертор остановлен по изменению важного параметра
+  VSD_NOVOMET_ALARM_STOP_EXTERNAL = 1003,   //!< Инвертор остановлен по команде извне
+  VSD_NOVOMET_ALARM_FAULT_STOPPED = 1005,   //!< Остановлен по причине FAULT
+  VSD_NOVOMET_ALARM_I_LIMIT       = 1007,   //!< Токоограничение
+  VSD_NOVOMET_ALARM_ULOW          = 1008,   //!< Недостаточно напряжения
+  VSD_NOVOMET_ALARM_STOPPED_ALARM = 1009,   //!< Остановлен аварийно
+  VSD_NOVOMET_ALARM_UD_LOW_FAULT  = 1010,   //!< Остановлен по снижению напряжения на шин
+  VSD_NOVOMET_ALARM_UD_HIGH_FAULT = 1011,   //!< Остановлен по превышению напряжения на шине
+  VSD_NOVOMET_ALARM_UIN_ASYM      = 1013,   //!< Остановлен по несимметрии входного напряжения
+  VSD_NOVOMET_ALARM_URECT_SHORT   = 1014,   //!< Остановлен по КЗ от выпрямителя
+  // STATUS_WORD_2 ЧРП Новомет
+  VSD_NOVOMET_ALARM_FC_IT_ERR     = 1016,   //!< Сработала токовая тепловая защита инвертора
+  VSD_NOVOMET_ALARM_AST_ERR       = 1017,   //!< Система автонастройки не смогла определить параметры линии
+  VSD_NOVOMET_ALARM_I_LIMIT_FAST  = 1018,   //!< Превышение порога мгновенного токоограничения
+  VSD_NOVOMET_ALARM_DISCHARGE_ERR = 1026,   //!< Ошибка режима разряда шины
+  VSD_NOVOMET_ALARM_VC_ERR        = 1027,   //!< Ошибка векторного режима
+  VSD_NOVOMET_ALARM_M_I_FAST_ERR  = 1028,   //!< Быстрая токовая защита двигателя
+  VSD_NOVOMET_ALARM_M_I2T_ERR     = 1029,   //!< Токовая защита двигателя (перегруз)
+  // STATUS_WORD_5 ЧРП Новомет
+  VSD_NOVOMET_ALARM_ABC_STATE     = 1064,   //!< Направление чередования фаз
+  VSD_NOVOMET_ALARM_ERR_STATE     = 1066,   //!< Ошибка синхронизации с сетью
+  VSD_NOVOMET_ALARM_ERR_SHORT     = 1071,   //!< Ошибка по КЗ на инверторе
+  // STATUS_WORD_7 ЧРП Новомет
+  VSD_NOVOMET_ALARM_IMAX          = 1096,   //!< Превышен максимальный ток инвертора
+  VSD_NOVOMET_ALARM_IZ            = 1097,   //!< Детектирован разностный ток выходных фаз (утечка)
+  VSD_NOVOMET_ALARM_AN_MON        = 1098,   //!< Ошибка монитора питания  аналоговой цепи контроллера
+  VSD_NOVOMET_ALARM_CTR_MON       = 1099,   //!< Ошибка монитора питания цифровой цепи контроллера
+  VSD_NOVOMET_ALARM_CLK_MON       = 1100,   //!< Ошибка монитора питания часов контроллера
+  VSD_NOVOMET_ALARM_MB_MON        = 1101,   //!< Ошибка монитора платы измерений
+  VSD_NOVOMET_ALARM_DRV0          = 1102,   //!< Ошибка драйвера 0
+  VSD_NOVOMET_ALARM_DRV1          = 1103,   //!< Ошибка драйвера 1
+  VSD_NOVOMET_ALARM_DRV2          = 1104,   //!< Ошибка драйвера 2
+  VSD_NOVOMET_ALARM_TEST          = 1105,   //!< Включен тестовый режим контроллера ПЧ
+  VSD_NOVOMET_ALARM_TEMP_LINK     = 1106,   //!< Ошибка связи с термодатчиками
+  VSD_NOVOMET_ALARM_TEMP          = 1107    //!< Перегрев силовых модулей
+};
+
 /*!
  * \brief The enControl enum
  * Флаги регистра управления ПЧ

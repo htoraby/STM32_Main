@@ -396,7 +396,7 @@ void Ccs::syncStart()
 void Ccs::syncStop()
 {
   setBlock();
-  parameters.set(CCS_PROT_OTHER_VSD_ALARM, VSD_STATUS_NO_CONNECT);
+  parameters.set(CCS_VSD_ALARM_CODE, VSD_ALARM_NO_CONNECT);
   setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopHardwareVsd);
   setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
 }

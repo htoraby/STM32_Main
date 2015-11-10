@@ -888,56 +888,58 @@ float VsdDanfoss::checkAlarmVsd()
   uint32_t vsdStatus3 = getValue(VSD_STATUS_WORD_3);
   uint32_t vsdStatus4 = getValue(VSD_STATUS_WORD_4);
 
-  if ((vsdAlarm == VSD_ALARM_NONE) || ((vsdAlarm >= VSD_ALARM_A_28) && (vsdAlarm <= VSD_ALARM_A_63))) {
+  if ((vsdAlarm == VSD_ALARM_NONE) || ((vsdAlarm >= VSD_DANFOSS_ALARM_A_28) && (vsdAlarm <= VSD_DANFOSS_ALARM_A_63))) {
     vsdAlarm = VSD_ALARM_NONE;
-    for (i = VSD_ALARM_A_28; i <= VSD_ALARM_A_63; i++) {
+    for (i = VSD_DANFOSS_ALARM_A_28; i <= VSD_DANFOSS_ALARM_A_63; i++) {
       if (checkBit(vsdStatus3, i - 2000)) {
         return i;
       }
     }
   }
 
-  if ((vsdAlarm == VSD_ALARM_NONE) || (vsdAlarm == VSD_ALARM_SERVICE_TRIP)) {
+  if ((vsdAlarm == VSD_ALARM_NONE) || (vsdAlarm == VSD_DANFOSS_ALARM_SERVICE_TRIP)) {
     vsdAlarm = VSD_ALARM_NONE;
     for (i = 0; i < 5; i++) {
       if (checkBit(vsdStatus4, i)) {
-        return VSD_ALARM_SERVICE_TRIP;
+        return VSD_DANFOSS_ALARM_SERVICE_TRIP;
       }
     }
   }
 
-  if ((vsdAlarm == VSD_ALARM_NONE) || ((vsdAlarm >= VSD_ALARM_HI_TEMP_DISCHARGE) && (vsdAlarm <= VSD_ALARM_PROT_DEVICE))) {
+  if ((vsdAlarm == VSD_ALARM_NONE) || ((vsdAlarm >= VSD_DANFOSS_ALARM_HI_TEMP_DISCHARGE) && (vsdAlarm <= VSD_DANFOSS_ALARM_PROT_DEVICE))) {
     vsdAlarm = VSD_ALARM_NONE;
-    for (i = VSD_ALARM_HI_TEMP_DISCHARGE; i <= VSD_ALARM_PROT_DEVICE; i++) {
+    for (i = VSD_DANFOSS_ALARM_HI_TEMP_DISCHARGE; i <= VSD_DANFOSS_ALARM_PROT_DEVICE; i++) {
       if (checkBit(vsdStatus4, i - 2032)) {
         return i;
       }
     }
   }
 
-  if ((vsdAlarm == VSD_ALARM_NONE) || ((vsdAlarm >= VSD_ALARM_KTY) && (vsdAlarm <= VSD_ALARM_ECB))) {
+  if ((vsdAlarm == VSD_ALARM_NONE) || ((vsdAlarm >= VSD_DANFOSS_ALARM_KTY) && (vsdAlarm <= VSD_DANFOSS_ALARM_ECB))) {
     vsdAlarm = VSD_ALARM_NONE;
-    for (i = VSD_ALARM_KTY; i <= VSD_ALARM_ECB; i++) {
+    for (i = VSD_DANFOSS_ALARM_KTY; i <= VSD_DANFOSS_ALARM_ECB; i++) {
       if (checkBit(vsdStatus4, i - 2032)) {
         return i;
       }
     }
   }
 
-  if ((vsdAlarm == VSD_ALARM_NONE) || (vsdAlarm == VSD_ALARM_A_59)) {
-    if (checkBit(vsdStatus4, VSD_ALARM_A_59 - 2032)) {
-      return VSD_ALARM_A_59;
+  if ((vsdAlarm == VSD_ALARM_NONE) || (vsdAlarm == VSD_DANFOSS_ALARM_A_59)) {
+    if (checkBit(vsdStatus4, VSD_DANFOSS_ALARM_A_59 - 2032)) {
+      return VSD_DANFOSS_ALARM_A_59;
     }
   }
 
-  if ((vsdAlarm == VSD_ALARM_NONE) || ((vsdAlarm >= VSD_ALARM_A_90) && (vsdAlarm <= VSD_ALARM_A_72))) {
+  if ((vsdAlarm == VSD_ALARM_NONE) || ((vsdAlarm >= VSD_DANFOSS_ALARM_A_90) && (vsdAlarm <= VSD_DANFOSS_ALARM_A_72))) {
     vsdAlarm = VSD_ALARM_NONE;
-    for (i = VSD_ALARM_A_90; i <= VSD_ALARM_A_72; i++) {
+    for (i = VSD_DANFOSS_ALARM_A_90; i <= VSD_DANFOSS_ALARM_A_72; i++) {
       if (checkBit(vsdStatus4, i - 2032)) {
         return i;
       }
     }
   }
+
+  return vsdAlarm;
 }
 
 int VsdDanfoss::start()
@@ -947,7 +949,7 @@ int VsdDanfoss::start()
 #endif
 
   // Если стоит бит запуска двигателя
-  if (checkStatusVsd(VSD_STATUS_STARTED))
+  if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_STARTED))
     return ok_r;
 
   int timeMs = VSD_CMD_TIMEOUT;
@@ -972,9 +974,8 @@ int VsdDanfoss::start()
 
     osDelay(100);
 
-    if (checkStatusVsd(VSD_STATUS_STARTED)) {
+    if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_STARTED))
       return ok_r;
-    }
   }
 }
 
@@ -983,7 +984,7 @@ int VsdDanfoss::stop(float type)
 #if USE_DEBUG
   return ok_r;
 #endif
-  if (!checkStatusVsd(VSD_STATUS_STARTED))
+  if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_STARTED))
     return ok_r;
 
   int timeMs = VSD_CMD_TIMEOUT;
@@ -1022,7 +1023,7 @@ int VsdDanfoss::stop(float type)
 
     osDelay(100);
 
-    if (!checkStatusVsd(VSD_STATUS_STARTED))
+    if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_STARTED))
       return ok_r;
   }
 }
@@ -1034,7 +1035,7 @@ int VsdDanfoss::startCoil()
 #endif
 
   // Если стоит бит запуска двигателя
-  if (checkStatusVsd(VSD_STATUS_STARTED))
+  if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_STARTED))
     return ok_r;
 
   int timeMs = VSD_CMD_TIMEOUT;
@@ -1058,9 +1059,8 @@ int VsdDanfoss::startCoil()
 
     osDelay(100);
 
-    if (checkStatusVsd(VSD_STATUS_STARTED)) {
+    if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_STARTED))
       return ok_r;
-    }
   }
 }
 
@@ -1069,7 +1069,7 @@ int VsdDanfoss::stopCoil(float type)
 #if USE_DEBUG
   return ok_r;
 #endif
-  if (!checkStatusVsd(VSD_STATUS_STARTED))
+  if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_STARTED))
     return ok_r;
 
   int timeMs = VSD_CMD_TIMEOUT;
@@ -1101,7 +1101,7 @@ int VsdDanfoss::stopCoil(float type)
 
     osDelay(100);
 
-    if (!checkStatusVsd(VSD_STATUS_STARTED))
+    if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_STARTED))
       return ok_r;
   }
 }
@@ -1183,7 +1183,6 @@ int VsdDanfoss::resetSetpoints()
 void VsdDanfoss::getNewValue(uint16_t id)
 {
   float value = 0;
-  uint32_t vsdStatus = 0x0000;
   // Преобразуем данные из полученного типа данных в float
   ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtId(id));
 
@@ -1226,20 +1225,6 @@ void VsdDanfoss::getNewValue(uint16_t id)
       setValue(id, value);
       if (parameters.get(CCS_MOTOR_TYPE) != value)
         parameters.set(CCS_MOTOR_TYPE, value);
-      break;
-    case VSD_STATUS_WORD_1:                 // RSTATUS_WORD
-      vsdStatus = parameters.get(CCS_VSD_STATUS_WORD_1);
-      setBit(vsdStatus, VSD_STATUS_STARTED, checkBit(value, VSD_DANFOSS_STATUS_STATE));
-      parameters.set(CCS_VSD_STATUS_WORD_1, (float)vsdStatus);
-      setValue(id, value);
-      break;
-    case VSD_STATUS_WORD_3:
-      setValue(id, value);
-      parameters.set(CCS_VSD_ALARM_CODE, checkAlarmVsd());
-      break;
-    case VSD_STATUS_WORD_4:
-      setValue(id, value);
-      parameters.set(CCS_VSD_ALARM_CODE, checkAlarmVsd());
       break;
     case VSD_UF_CHARACTERISTIC_F:
       switch ((uint16_t)getValue(VSD_INDEX)) {
