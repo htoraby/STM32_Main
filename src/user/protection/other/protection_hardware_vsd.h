@@ -14,6 +14,7 @@ public:
 private:
   bool checkAlarm();
   bool checkPrevent();
+  void addEventReactionProt();
 };
 
 #endif // PROTECTIONHARDWAREVSD_H

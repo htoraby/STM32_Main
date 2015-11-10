@@ -234,12 +234,31 @@ int VsdEtalon::setCoefVoltageInCA(float value)
   }
 }
 
+float VsdEtalon::checkAlarmVsd()
+{
+  float vsdAlarm = parameters.get(CCS_VSD_ALARM_CODE);
+  float vsdStatus1 = getValue(VSD_STATUS_WORD_1);
+
+  if (vsdStatus1 == VSD_ALARM_NONE) {
+    return vsdStatus1;
+  }
+
+  if ((vsdStatus1 >= VSD_ETALON_ALARM_UNDERLOAD - 3000) && (vsdStatus1 <= VSD_ETALON_ALARM_32 - 3000)) {
+    return vsdStatus1 + 3000;
+  }
+
+  if((vsdStatus1 >= VSD_ETALON_ALARM_RESTART_COUNT - 3000) && (vsdStatus1 <= VSD_ETALON_ALARM_BLOCK_RUN - 3000)) {
+    return vsdStatus1 + 3000;
+  }
+
+  return vsdAlarm;
+}
+
 
 
 // Метод проверки и обновления параметров устройства
 void VsdEtalon::getNewValue(uint16_t id)
 {
-  uint32_t vsdInvertorStatus = 0x0000;
   float value = 0;
   // Преобразуем данные из полученного типа данных в float
   ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtId(id));
@@ -286,21 +305,12 @@ void VsdEtalon::getNewValue(uint16_t id)
         parameters.set(CCS_MOTOR_TYPE, value);
       break;
     case VSD_ETALON_ON_STATE:                 // Получили подтверждение запуска
-      vsdInvertorStatus = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_1) & 0xFFFE;
-      if (value)
-        vsdInvertorStatus = setBit(vsdInvertorStatus, VSD_STATUS_STARTED, true);
-      parameters.set(CCS_VSD_STATUS_WORD_1,  (float)vsdInvertorStatus);
       setValue(id, value);
       break;
     case VSD_ETALON_OFF_STATE:                // Получили подтверждение останова
-      vsdInvertorStatus = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_1) & 0xFFF7;
-      if (value)
-        vsdInvertorStatus = setBit(vsdInvertorStatus, VSD_STATUS_STOPPED_EXTERNAL, true);
-      parameters.set(CCS_VSD_STATUS_WORD_1,  (float)vsdInvertorStatus);
       setValue(id, value);
       break;
     case VSD_STATUS_WORD_1:                 // Получили слово состояния
-      convertBitVsdStatus(value);
       setValue(id, value);
       break;
     case VSD_UF_CHARACTERISTIC_U_1_PERCENT:           // Получили точку напряжения U/f
@@ -582,7 +592,7 @@ int VsdEtalon::start()
   return ok_r;
 #endif
 
-  if (checkStatusVsd(VSD_STATUS_STARTED))
+  if (getValue(VSD_ETALON_ON_STATE))
     return ok_r;
 
   int timeMs = VSD_CMD_TIMEOUT;
@@ -607,7 +617,7 @@ int VsdEtalon::start()
 
     osDelay(100);
 
-    if (checkStatusVsd(VSD_STATUS_STARTED))
+    if (getValue(VSD_ETALON_ON_STATE))
       return ok_r;
   }
 }
@@ -618,8 +628,8 @@ bool VsdEtalon::checkStart()
   return true;
 #endif
 
-  if (checkStatusVsd(VSD_STATUS_STARTED)) {
-    if (!checkStatusVsd(VSD_STATUS_STOPPED_EXTERNAL)) {
+  if (getValue(VSD_ETALON_ON_STATE)) {
+    if (getValue(VSD_ETALON_OFF_STATE) == 0) {
       return true;
     }
   }
@@ -677,8 +687,8 @@ bool VsdEtalon::checkStop()
   return true;
 #endif
 
-  if (checkStatusVsd(VSD_STATUS_STOPPED_EXTERNAL)) {
-    if (!checkStatusVsd(VSD_STATUS_STARTED)) {
+  if (getValue(VSD_ETALON_OFF_STATE)) {
+    if (getValue(VSD_ETALON_ON_STATE) == 0) {
       resetBlock();
       return true;
     }
@@ -919,163 +929,4 @@ void VsdEtalon::calcParameters(uint16_t id)
 
     break;
   }
-}
-
-void VsdEtalon::convertBitVsdStatus(float value)
-{
-  // Получаем значение из регистры и сбрасываем в 0, только те биты,
-  // которыми мы управляем, остальные не изменяем
-  uint32_t vsdStatusWord1 = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_1) & 0xD1DF;
-  uint32_t vsdStatusWord2 = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_2) & 0xDBFE;
-  uint32_t vsdStatusWord4 = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_4) & 0x8000;
-  uint32_t vsdStatusWord5 = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_5) & 0xFFF1;
-  uint32_t vsdStatusWord7 = (uint32_t)parameters.get(CCS_VSD_STATUS_WORD_7) & 0xFF81;
-
-  switch ((uint32_t)value) {
-  case VSD_ETALON_STATUS_READY:             // VSD_STATUS_READY
-    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_READY, true);
-    break;
-  case VSD_ETALON_STATUS_UNDERLOAD:         // VSD_STATUS_UNDERLOAD
-    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_UNDERLOAD, true);
-    break;
-  case VSD_ETALON_STATUS_OVERLOAD:          // VSD_STATUS_M_I2T_ERR
-    vsdStatusWord2 = setBit(vsdStatusWord2, VSD_STATUS_M_I2T_ERR, true);
-    break;
-  case VSD_ETALON_STATUS_RESISTANCE:        // VSD_STATUS_RESISTANCE
-    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_RESISTANCE, true);
-    break;
-  case VSD_ETALON_STATUS_UNDERVOLTAGE:      // VSD_STATUS_UNDERVOLTAGE
-    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_UNDERVOLTAGE, true);
-    break;
-  case VSD_ETALON_STATUS_OVERVOLTAGE:       // VSD_STATUS_OVERVOLTAGE
-    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_OVERVOLTAGE, true);
-    break;
-  case VSD_ETALON_STATUS_UNDERVOLTAGE_DC:    // VSD_STATUS_UD_LOW_FAULT
-    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_UD_LOW_FAULT, true);
-    break;
-  case VSD_ETALON_STATUS_OVERVOLTAGE_DC:    // VSD_STATUS_UD_HIGH_FAULT
-    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_UD_HIGH_FAULT, true);
-    break;
-  case VSD_ETALON_STATUS_RUN_COUNT:         // VSD_STATUS_RUN_COUNT
-    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_RUN_COUNT, true);
-    break;
-  case VSD_ETALON_STATUS_OVERHEAT_IGBT:     // VSD_STATUS_FC_I2T_ERR
-    vsdStatusWord2 = setBit(vsdStatusWord2, VSD_STATUS_FC_IT_ERR, true);
-    break;
-  case VSD_ETALON_STATUS_OVERHEAT_FILTER:   // VSD_STATUS_OVERHEAT_FILTER
-    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_OVERHEAT_FILTER, true);
-    break;
-  case VSD_ETALON_STATUS_PROT:              // VSD_STATUS_STOPPED_ALARM
-    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
-    break;
-  case VSD_ETALON_STATUS_SUPPLY_DRIVERS:    // VSD_FLT_DRV0
-    vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_DRV0, true);
-    break;
-  case VSD_ETALON_STATUS_MONOMETR:          // VSD_STATUS_MONOMETR
-    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_MONOMETR, true);
-    break;
-  case VSD_ETALON_STATUS_AI_0:              // VSD_STATUS_AI_0
-    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_AI_0, true);
-    break;
-  case VSD_ETALON_STATUS_SEQUENCE_PHASE:    // VSD_THYR_ABC_STATE
-    vsdStatusWord5 = setBit(vsdStatusWord5, VSD_STATUS_ABC_STATE, true);
-    break;
-  case VSD_ETALON_STATUS_OVERHEAT_MOTOR:    // VSD_STATUS_OVERHEAT_MOTOR
-    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_OVERHEAT_MOTOR, true);
-    break;
-  case VSD_ETALON_STATUS_OVERVIBRATION:     // VSD_STATUS_OVERVIBRATION
-    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_OVERVIBRATION, true);
-    break;
-  case VSD_ETALON_STATUS_PRESSURE:          // VSD_STATUS_PRESSURE
-    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_PRESSURE, true);
-    break;
-  case VSD_ETALON_STATUS_19:                // VSD_STATUS_ERR_19
-    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_ERR_19, true);
-    break;
-  case VSD_ETALON_STATUS_IMBALANCE_CURRENT: // VSD_FLT_IZ
-    vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_IZ, true);
-    break;
-  case VSD_ETALON_STATUS_IMBALANCE_VOLTAGE: // VSD_STATUS_UIN_ASYM
-    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_UIN_ASYM, true);
-    break;
-  case VSD_ETALON_STATUS_TURBINE:           // VSD_STATUS_TURBINE
-    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_TURBINE, true);
-    break;
-  case VSD_ETALON_STATUS_24:                // VSD_STATUS_STOPPED_ALARM
-    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
-    break;
-  case VSD_ETALON_STATUS_FAILURE_SUPPLY:    // VSD_STATUS_STOPPED_ALARM
-    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
-    break;
-  case VSD_ETALON_STATUS_DOOR:              // VSD_STATUS_STOPPED_ALARM
-    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
-    break;
-  case VSD_ETALON_STATUS_LOST_SUPPLY:       // VSD_STATUS_STOPPED_ALARM
-    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
-    break;
-  case VSD_ETALON_STATUS_CONDENSATOR:       // VSD_THYR_CHARGE_STATE
-    vsdStatusWord1 = setBit(vsdStatusWord5, VSD_STATUS_CHARGE_STATE, true);
-    break;
-  case VSD_ETALON_STATUS_TERISTORS:         // VSD_STATUS_STOPPED_ALARM
-    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
-    break;
-  case VSD_ETALON_STATUS_CURRENT_LIMIT:     // VSD_STATUS_I_LIMIT
-    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_I_LIMIT, true);
-    break;
-  case VSD_ETALON_STATUS_31:                // VSD_STATUS_ERR_31
-    vsdStatusWord4 = setBit(vsdStatusWord4, VSD_STATUS_ERR_31, true);
-    break;
-  case VSD_ETALON_STATUS_32:
-    break;
-  case VSD_ETALON_STATUS_AUTO_STOP:
-    break;
-  case VSD_ETALON_STATUS_MANUAL_STOP:
-    break;
-  case VSD_ETALON_STATUS_REMOTE_STOP:
-    break;
-  case VSD_ETALON_STATUS_AUTO_RUN:
-    break;
-  case VSD_ETALON_STATUS_MANUAL_RUN:
-    break;
-  case VSD_ETALON_STATUS_REMOTE_RUN:
-    break;
-  case VSD_ETALON_STATUS_RESTART_COUNT:
-    break;
-  case VSD_ETALON_STATUS_MEMORY:            // VSD_STATUS_CLK_MON
-    vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_CLK_MON, true);
-    break;
-  case VSD_ETALON_STATUS_41:
-    break;
-  case VSD_ETALON_STATUS_DI:                // VSD_STATUS_CTR_MON
-    vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_CTR_MON, true);
-    break;
-  case VSD_ETALON_STATUS_ADC:               // VSD_STATUS_AN_MON
-    vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_AN_MON, true);
-    break;
-  case VSD_ETALON_STATUS_ANALOG_SUPPLY:     // VSD_STATUS_AN_MON
-    vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_AN_MON, true);
-    break;
-  case VSD_ETALON_STATUS_SENSOR_SUPPLY:     // VSD_STATUS_MB_MON
-    vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_MB_MON, true);
-    break;
-  case VSD_ETALON_STATUS_EEPROM:            // VSD_STATUS_CLK_MON
-    vsdStatusWord7 = setBit(vsdStatusWord7, VSD_STATUS_CLK_MON, true);
-    break;
-  case VSD_ETALON_STATUS_NOT_READY:
-    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
-    break;
-  case VSD_ETALON_STATUS_SETPOINT:
-    break;
-  case VSD_ETALON_STATUS_BLOCK_RUN:
-    vsdStatusWord1 = setBit(vsdStatusWord1, VSD_STATUS_STOPPED_ALARM, true);
-    break;
-  default:
-    break;
-  }
-
-  parameters.set(CCS_VSD_STATUS_WORD_1, (float)vsdStatusWord1);
-  parameters.set(CCS_VSD_STATUS_WORD_2, (float)vsdStatusWord2);
-  parameters.set(CCS_VSD_STATUS_WORD_4, (float)vsdStatusWord4);
-  parameters.set(CCS_VSD_STATUS_WORD_5, (float)vsdStatusWord5);
-  parameters.set(CCS_VSD_STATUS_WORD_7, (float)vsdStatusWord7);
 }

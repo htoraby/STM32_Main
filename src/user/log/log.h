@@ -54,6 +54,7 @@ typedef enum {
   PowerCode,                          //!< Событие откл/вкл питания
   AlarmCode,                          //!< Запись аварийного архива
   OtherCode,                          //!< Другие события
+  ProtectVsdCode,                     //!< Событие аппаратной защиты ЧРП
 
   LastCode,
 } EventCode;

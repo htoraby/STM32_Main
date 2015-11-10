@@ -53,7 +53,7 @@ bool ProtectionOverloadMotor::checkAlarm()
   // Возвращаем аварию если превышена уставка по перегрузу или установлен бит
   // в слове состояния ЧРП
   return ((Protection::isHigherLimit(tripSetpoint_)) ||
-          (vsd->checkStatusVsd(VSD_STATUS_M_I2T_ERR)));
+          (vsd->checkAlarmVsd() == VSD_NOVOMET_ALARM_M_I2T_ERR));
 }
 
 float ProtectionOverloadMotor::calcValue()

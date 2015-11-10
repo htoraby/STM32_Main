@@ -67,6 +67,58 @@ enum enEtalonStatus
   VSD_ETALON_STATUS_BLOCK_RUN = 49            //!< Блокировка пуска
 };
 
+enum enVsdEtalonAlarm {
+  VSD_ETALON_ALARM_UNDERLOAD      = 3001,   //!< Недогруз
+  VSD_ETALON_ALARM_OVERLOAD       = 3002,   //!< Перегруз
+  VSD_ETALON_ALARM_RESISTANCE     = 3003,   //!< Низкое Rиз
+  VSD_ETALON_ALARM_UNDERVOLTAGE   = 3004,   //!< Низкое напряжение
+  VSD_ETALON_ALARM_OVERVOLTAGE    = 3005,   //!< Высокое напряжение
+  VSD_ETALON_ALARM_OVERVOLTAGE_DC = 3006,   //!< Высокое U сил. Цепи
+  VSD_ETALON_ALARM_UNDERVOLTAGE_DC = 3007,  //!< Низкое U сил. цепи
+  VSD_ETALON_ALARM_RUN_COUNT      = 3008,   //!< Прев. кол-во пусков
+  VSD_ETALON_ALARM_OVERHEAT_IGBT  = 3009,   //!< Перегрев IGBT
+  VSD_ETALON_ALARM_OVERHEAT_FILTER = 3010,  //!< Перегрев фильтра
+  VSD_ETALON_ALARM_PROT           = 3011,   //!< Защита ЧРП
+  VSD_ETALON_ALARM_SUPPLY_DRIVERS = 3012,   //!< Питание драйверов
+  VSD_ETALON_ALARM_MONOMETR       = 3013,   //!< Конт манометр
+  VSD_ETALON_ALARM_AI_0           = 3014,   //!< Доп. аналог вход 0
+  VSD_ETALON_ALARM_SEQUENCE_PHASE = 3015,   //!< Чередование фаз
+  VSD_ETALON_ALARM_OVERHEAT_MOTOR = 3016,   //!< Выс. Температура
+  VSD_ETALON_ALARM_OVERVIBRATION  = 3017,   //!< Выс. Вибрация
+  VSD_ETALON_ALARM_PRESSURE       = 3018,   //!< Низ. Давление
+  VSD_ETALON_ALARM_19             = 3019,   //!< Ошибка 19
+  VSD_ETALON_ALARM_PRESSURE_Z     = 3020,   //!< Низкое Pзатр
+  VSD_ETALON_ALARM_IMBALANCE_CURRENT = 3021,//!< Дисбаланс токов
+  VSD_ETALON_ALARM_IMBALANCE_VOLTAGE = 3022,//!< Дисбаланс напряж.
+  VSD_ETALON_ALARM_TURBINE        = 3023,   //!< Турбинное вращение
+  VSD_ETALON_ALARM_24             = 3024,   //!< Прочие ошибки
+  VSD_ETALON_ALARM_FAILURE_SUPPLY = 3025,   //!< Авария питания
+  VSD_ETALON_ALARM_DOOR           = 3026,   //!< Открыта дверь
+  VSD_ETALON_ALARM_LOST_SUPPLY    = 3027,   //!< Пропало питание
+  VSD_ETALON_ALARM_CONDENSATOR    = 3028,   //!< Нет заряда конденс.
+  VSD_ETALON_ALARM_TERISTORS      = 3029,   //!< Авария тиристоров
+  VSD_ETALON_ALARM_CURRENT_LIMIT  = 3030,   //!< Токоограничение
+  VSD_ETALON_ALARM_31             = 3031,   //!< Ошибка номер 31
+  VSD_ETALON_ALARM_32             = 3032,   //!< По подхвату
+  VSD_ETALON_ALARM_AUTO_STOP      = 3033,   //!< Авто останов
+  VSD_ETALON_ALARM_MANUAL_STOP    = 3034,   //!< Ручной останов
+  VSD_ETALON_ALARM_REMOTE_STOP    = 3035,   //!< Внешний останов
+  VSD_ETALON_ALARM_AUTO_RUN       = 3036,   //!< Автоматич. пуск
+  VSD_ETALON_ALARM_MANUAL_RUN     = 3037,   //!< Ручной пуск
+  VSD_ETALON_ALARM_REMOTE_RUN     = 3038,   //!< Внешний пуск
+  VSD_ETALON_ALARM_RESTART_COUNT  = 3039,   //!< По количеству АПВ
+  VSD_ETALON_ALARM_MEMORY         = 3040,   //!< Ошибка ОЗУ
+  VSD_ETALON_ALARM_41             = 3041,   //!< Отключен
+  VSD_ETALON_ALARM_DI             = 3042,   //!< Отказ дискр. вх.
+  VSD_ETALON_ALARM_ADC            = 3043,   //!< Отказ АЦП
+  VSD_ETALON_ALARM_ANALOG_SUPPLY  = 3044,   //!< Аналог. Питание
+  VSD_ETALON_ALARM_SENSOR_SUPPLY  = 3045,   //!< Питание датчиков
+  VSD_ETALON_ALARM_EEPROM         = 3046,   //!< Ошибка EEPROM
+  VSD_ETALON_ALARM_NOT_READY      = 3047,   //!< ПЧ не готов
+  VSD_ETALON_ALARM_SETPOINT       = 3048,   //!< Сбой уставок
+  VSD_ETALON_ALARM_BLOCK_RUN      = 3049    //!< Блокировка пуска
+};
+
 class VsdEtalon: public Vsd
 {
 public:
@@ -142,6 +194,7 @@ public:
   int setCoefVoltageInBC(float value);
   int setCoefVoltageInCA(float value);
 
+  float checkAlarmVsd();
 
   void getNewValue(uint16_t id);
 
@@ -224,7 +277,6 @@ private:
    * \brief convertBitVsdStatus
    * \param value
    */
-  void convertBitVsdStatus(float value);
 };
 
 #endif /* VSD_NOVOMET_H_ */
