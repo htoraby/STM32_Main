@@ -21,7 +21,6 @@ ProtectionHardwareVsd::ProtectionHardwareVsd()
   idRestartFirstTime_ = CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME;
 
   lastReasonRun_ = LastReasonRunApvHardwareVsd;
-  lastReasonStop_ = LastReasonStopHardwareVsd;
 
   protReactEventId_ = HardwareVsdProtReactId;
   apvEventId_ = HardwareVsdApvId;
@@ -37,10 +36,13 @@ ProtectionHardwareVsd::~ProtectionHardwareVsd()
 bool ProtectionHardwareVsd::checkAlarm()
 {
   float alarm = vsd->checkAlarmVsd();
+  lastReasonStop_ = (LastReasonStop)alarm;
   protReactEventId_ = (EventId)alarm;
   parameters.set(CCS_VSD_ALARM_CODE, alarm);
-  if (alarm != VSD_ALARM_NONE)
+  if (alarm != VSD_ALARM_NONE) {
+    parameters.set(CCS_PROT_OTHER_VSD_ALARM, alarm);
     return true;
+  }
   return false;
 }
 

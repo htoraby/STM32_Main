@@ -370,6 +370,7 @@ enum LastReasonStop {
   LastReasonStopProtDigital2,                   //!<
   LastReasonStopProtDigital3,                   //!<
   LastReasonStopProtDigital4,                   //!<
+  LastReasonStopVsdNoConnect,                   //!< "ЧРП. Нет связи"
 
   LastReasonStopLast
 };
