@@ -13259,7 +13259,7 @@
 		<min>0.0</min>
 		<max>100.0</max>
 		<def>0.0</def>
-		<discret>1000</discret>
+		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Индуктивность фильтра</text>
@@ -13267,7 +13267,7 @@
 		<form>6.4 Станция управления</form>
 		<unit>INDUNCTANCE_MH</unit>
 		<unit_lcd>INDUNCTANCE_MH</unit_lcd>
-		<format>XXX_XXX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 	</param>
 	<param>
@@ -19262,8 +19262,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
-		<min>-1999999.999</min>
-		<max>1999999.999</max>
+		<min>-2147483648.0</min>
+		<max>2147483647.0</max>
 		<def>0.0</def>
 		<discret>3</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -19283,8 +19283,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
-		<min>-1999999.999</min>
-		<max>1999999.999</max>
+		<min>-2147483648.0</min>
+		<max>2147483647.0</max>
 		<def>0.0</def>
 		<discret>3</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -19880,11 +19880,17 @@
 		<name>VSD_FUNCTION_RELE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>199.0</max>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>5.0</value>
 		<text>NULL</text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Реле функций Danfoss 5-40 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -19893,11 +19899,17 @@
 		<name>VSD_ON_DELAY_RELAY</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>999999.0</max>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.01</min>
+		<max>600.0</max>
+		<def>0.01</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>0.01</value>
 		<text>NULL</text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXX_XX</format>
 		<code>0</code>
 		<comment>Нипонятно Danfoss 5-41 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -20011,11 +20023,19 @@
 		<name>VSD_SL_10</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>199.0</max>
+		<def>4.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>4.0</value>
 		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Операнд сравнения компаратора Danfoss 13-10 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -20024,11 +20044,19 @@
 		<name>VSD_SL_11</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>8.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
 		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Оператор сравнения компаратора Danfoss 13-11 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -20037,11 +20065,19 @@
 		<name>VSD_SL_12</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-2147483648.0</min>
+		<max>2147483647.0</max>
+		<def>32.0</def>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>32.0</value>
 		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Значение компаратора Danfoss 13-12 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -20050,11 +20086,19 @@
 		<name>VSD_SL_15</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
+		<def>9.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>9.0</value>
 		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>RS-FF Operand S Danfoss 13-15 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -20063,11 +20107,19 @@
 		<name>VSD_SL_16</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999.0</max>
+		<def>22.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>22.0</value>
 		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>RS-FF Operand R Danfoss 13-16 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -20076,11 +20128,19 @@
 		<name>VSD_SL_20</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>999999.0</max>
-		<discret>1</discret>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-2147483648.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
 		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
 		<code>0</code>
 		<comment>Временная задержка Danfoss 13-20 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -20089,11 +20149,19 @@
 		<name>VSD_SL_40</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>101.0</max>
+		<def>11.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>11.0</value>
 		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Булева переменная логического соотношения 1 Danfoss 13-40 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -20102,11 +20170,19 @@
 		<name>VSD_SL_41</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>8.0</max>
+		<def>7.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>7.0</value>
 		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Оператор логического соотношения 1 Danfoss 13-41 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -20115,11 +20191,19 @@
 		<name>VSD_SL_42</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>101.0</max>
+		<def>20.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>20.0</value>
 		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Булева переменная логического соотношения 2 Danfoss 13-42 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -20133,6 +20217,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
 		<code>0</code>
 		<comment>Logic Rule Operator 2 Danfoss 13-43 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -20146,6 +20232,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
 		<code>0</code>
 		<comment>Logic Rule Boolean 3 Danfoss 13-44 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -20154,11 +20242,19 @@
 		<name>VSD_SL_51</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>101.0</max>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
 		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Событие контроллера SL Danfoss 13-51 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -20167,11 +20263,19 @@
 		<name>VSD_SL_52</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>74.0</max>
+		<def>38.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>38.0</value>
 		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Действие контроллера SL Danfoss 13-52 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -20453,11 +20557,19 @@
 		<name>VSD_FAIL_RESET</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>4.0</max>
+		<def>3.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>3.0</value>
 		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Сброс аварий Danfoss 14-90 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -23328,6 +23440,1288 @@
 	</param>
 	<param>
 		<id>10384</id>
+		<name>VSD_FUNCTION_RELE_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>199.0</max>
+		<def>70.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>70.0</value>
+		<text>NULL</text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Реле функций Danfoss 5-40 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10385</id>
+		<name>VSD_ON_DELAY_RELAY_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.01</min>
+		<max>600.0</max>
+		<def>60.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>60.0</value>
+		<text>NULL</text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>0</code>
+		<comment>Нипонятно Danfoss 5-41 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10386</id>
+		<name>VSD_SL_10_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>199.0</max>
+		<def>4.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>4.0</value>
+		<text>NULL</text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10387</id>
+		<name>VSD_SL_10_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>199.0</max>
+		<def>4.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>4.0</value>
+		<text>NULL</text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10388</id>
+		<name>VSD_SL_10_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>199.0</max>
+		<def>8.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>8.0</value>
+		<text>NULL</text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10389</id>
+		<name>VSD_SL_10_4</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>199.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10390</id>
+		<name>VSD_SL_10_5</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>199.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10391</id>
+		<name>VSD_SL_11_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>8.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Оператор сравнения компаратора Danfoss 13-11 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10392</id>
+		<name>VSD_SL_11_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>8.0</max>
+		<def>2.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>2.0</value>
+		<text>NULL</text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Оператор сравнения компаратора Danfoss 13-11 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10393</id>
+		<name>VSD_SL_11_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>8.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Оператор сравнения компаратора Danfoss 13-11 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10394</id>
+		<name>VSD_SL_11_4</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>8.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>NULL</text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Оператор сравнения компаратора Danfoss 13-11 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10395</id>
+		<name>VSD_SL_11_5</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>8.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>NULL</text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Оператор сравнения компаратора Danfoss 13-11 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10396</id>
+		<name>VSD_SL_12_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-2147483648.0</min>
+		<max>2147483647.0</max>
+		<def>5.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>5.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Значение компаратора Danfoss 13-12 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10397</id>
+		<name>VSD_SL_12_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-2147483648.0</min>
+		<max>2147483647.0</max>
+		<def>100.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>100.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Значение компаратора Danfoss 13-12 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10398</id>
+		<name>VSD_SL_12_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-2147483648.0</min>
+		<max>2147483647.0</max>
+		<def>440.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>440.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Значение компаратора Danfoss 13-12 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10399</id>
+		<name>VSD_SL_12_4</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-2147483648.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Значение компаратора Danfoss 13-12 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10400</id>
+		<name>VSD_SL_12_5</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-2147483648.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Значение компаратора Danfoss 13-12 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10401</id>
+		<name>VSD_SL_20_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-2147483648.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10402</id>
+		<name>VSD_SL_20_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-2147483648.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10403</id>
+		<name>VSD_SL_20_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-2147483648.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10404</id>
+		<name>VSD_SL_20_4</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-2147483648.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10405</id>
+		<name>VSD_SL_20_5</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-2147483648.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10406</id>
+		<name>VSD_SL_20_6</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-2147483648.0</min>
+		<max>2147483647.0</max>
+		<def>0.001</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.001</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10407</id>
+		<name>VSD_SL_20_7</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-2147483648.0</min>
+		<max>2147483647.0</max>
+		<def>0.001</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.001</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10408</id>
+		<name>VSD_SL_40_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>101.0</max>
+		<def>25.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>25.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10409</id>
+		<name>VSD_SL_40_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>101.0</max>
+		<def>25.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>25.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10410</id>
+		<name>VSD_SL_40_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>101.0</max>
+		<def>27.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>27.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10411</id>
+		<name>VSD_SL_40_4</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>101.0</max>
+		<def>29.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>29.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10412</id>
+		<name>VSD_SL_40_5</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>101.0</max>
+		<def>20.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>20.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10413</id>
+		<name>VSD_SL_41_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>8.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10414</id>
+		<name>VSD_SL_41_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>8.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10415</id>
+		<name>VSD_SL_41_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>8.0</max>
+		<def>2.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>2.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10416</id>
+		<name>VSD_SL_41_4</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>8.0</max>
+		<def>6.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>6.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10417</id>
+		<name>VSD_SL_41_5</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>8.0</max>
+		<def>2.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>2.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10418</id>
+		<name>VSD_SL_42_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>101.0</max>
+		<def>23.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>23.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10419</id>
+		<name>VSD_SL_42_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>101.0</max>
+		<def>24.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>24.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10420</id>
+		<name>VSD_SL_42_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>101.0</max>
+		<def>28.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>28.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10421</id>
+		<name>VSD_SL_42_4</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>101.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10422</id>
+		<name>VSD_SL_42_5</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>101.0</max>
+		<def>29.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>29.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10423</id>
+		<name>VSD_SL_51_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>101.0</max>
+		<def>29.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>29.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Событие контроллера SL Danfoss 13-51 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10424</id>
+		<name>VSD_SL_51_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>101.0</max>
+		<def>73.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>73.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Событие контроллера SL Danfoss 13-51 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10425</id>
+		<name>VSD_SL_51_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>101.0</max>
+		<def>60.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>60.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Событие контроллера SL Danfoss 13-51 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10426</id>
+		<name>VSD_SL_51_4</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>101.0</max>
+		<def>74.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>74.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Событие контроллера SL Danfoss 13-51 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10427</id>
+		<name>VSD_SL_51_5</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>101.0</max>
+		<def>61.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>61.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Событие контроллера SL Danfoss 13-51 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10428</id>
+		<name>VSD_SL_52_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>74.0</max>
+		<def>73.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>73.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Действие контроллера SL Danfoss 13-52 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10429</id>
+		<name>VSD_SL_52_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>74.0</max>
+		<def>32.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>32.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Действие контроллера SL Danfoss 13-52 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10430</id>
+		<name>VSD_SL_52_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>74.0</max>
+		<def>74.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>74.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Действие контроллера SL Danfoss 13-52 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10431</id>
+		<name>VSD_SL_52_4</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>74.0</max>
+		<def>38.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>38.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Действие контроллера SL Danfoss 13-52 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10432</id>
+		<name>VSD_SL_52_5</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>74.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Действие контроллера SL Danfoss 13-52 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10433</id>
+		<name>VSD_FAIL_RESET_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4.0</max>
+		<def>3.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>3.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Сброс аварий Danfoss 14-90 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10434</id>
+		<name>VSD_FAIL_RESET_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4.0</max>
+		<def>3.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>3.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Сброс аварий Danfoss 14-90 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10435</id>
+		<name>VSD_FAIL_RESET_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Сброс аварий Danfoss 14-90 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10436</id>
+		<name>VSD_FAIL_RESET_4</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4.0</max>
+		<def>2.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>2.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Сброс аварий Danfoss 14-90 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10437</id>
+		<name>VSD_FAIL_RESET_5</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4.0</max>
+		<def>2.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>2.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Сброс аварий Danfoss 14-90 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10438</id>
+		<name>VSD_FAIL_RESET_6</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Сброс аварий Danfoss 14-90 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10439</id>
+		<name>VSD_FAIL_RESET_7</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4.0</max>
+		<def>2.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>2.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Сброс аварий Danfoss 14-90 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10440</id>
+		<name>VSD_FAIL_RESET_8</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4.0</max>
+		<def>3.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>3.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Сброс аварий Danfoss 14-90 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10441</id>
+		<name>VSD_FAIL_RESET_9</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4.0</max>
+		<def>2.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>2.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Сброс аварий Danfoss 14-90 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10442</id>
+		<name>VSD_FAIL_RESET_10</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4.0</max>
+		<def>3.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>3.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Сброс аварий Danfoss 14-90 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10443</id>
+		<name>VSD_FAIL_RESET_11</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4.0</max>
+		<def>2.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>2.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Сброс аварий Danfoss 14-90 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10444</id>
+		<name>VSD_FAIL_RESET_12</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4.0</max>
+		<def>2.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>2.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Сброс аварий Danfoss 14-90 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10445</id>
+		<name>VSD_FAIL_RESET_13</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4.0</max>
+		<def>3.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>3.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Сброс аварий Danfoss 14-90 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10446</id>
+		<name>VSD_FAIL_RESET_14</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4.0</max>
+		<def>3.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>3.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Сброс аварий Danfoss 14-90 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10447</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>

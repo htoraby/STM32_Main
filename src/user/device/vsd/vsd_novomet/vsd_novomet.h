@@ -244,6 +244,7 @@ public:
   int setBaseFrequency(float value);
 
   float checkAlarmVsd();
+  bool checkPreventVsd();
 
   void getNewValue(uint16_t id);
   uint8_t setNewValue(uint16_t id, float value);

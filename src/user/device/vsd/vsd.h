@@ -422,6 +422,7 @@ public:
   virtual int resetBlock();
 
   virtual float checkAlarmVsd();
+  virtual bool checkPreventVsd();
 
   virtual void processingRegimeRun();
 

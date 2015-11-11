@@ -410,6 +410,11 @@ float Vsd::checkAlarmVsd()
   return 0;
 }
 
+bool Vsd::checkPreventVsd()
+{
+  return false;
+}
+
 void Vsd::processingRegimeRun()
 {
 

@@ -6,7 +6,21 @@
 
 enum enVsdDanfosStatus1
 {
-  VSD_DANFOSS_STATUS_STARTED      = 11,     //!< Запуск ПЧ
+  VSD_DANFOSS_STATUS_CONTROL_READY= 0,
+  VSD_DANFOSS_STATUS_DRIVE_READY  = 1,
+  VSD_DANFOSS_STATUS_COASTING_STOP= 2,
+  VSD_DANFOSS_STATUS_TRIP         = 3,
+  VSD_DANFOSS_STATUS_ERROR        = 4,
+  VSD_DANFOSS_STATUS_TRIP_LOCK    = 6,
+  VSD_DANFOSS_STATUS_WARNING      = 7,
+  VSD_DANFOSS_STATUS_SPEED        = 8,
+  VSD_DANFOSS_STATUS_BUS_CONTROL  = 9,
+  VSD_DANFOSS_STATUS_OUT_LIMIT    = 10,
+  VSD_DANFOSS_STATUS_STARTED      = 11,
+  VSD_DANFOSS_STATUS_TEMPERATURE  = 12,
+  VSD_DANFOSS_STATUS_VOLTAGE      = 13,
+  VSD_DANFOSS_STATUS_TORQUE       = 14,
+  VSD_DANFOSS_STATUS_TIMER        = 15,
 };
 
 /*!
@@ -61,41 +75,42 @@ enum enVsdDanfossAlarm {
   VSD_DANFOSS_ALARM_A_90          = 2061,   //!< Отказ энкодера A90
   VSD_DANFOSS_ALARM_A_74          = 2062,   //!< Термистор PTC А74
   VSD_DANFOSS_ALARM_A_72          = 2063,   //!< Опасный отказ
+  VSD_DANFOSS_ALARM_A_78          = 2999,   //!< Ошибка слежения
 };
 
 enum enVsdDanfoss {
-  VSD_WARNING_W_28                = 2000,   //!< Проверка тормоза W28
-  VSD_WARNING_W_69                = 2001,   //!< Темп. силовой платы W69
-  VSD_WARNING_W_14                = 2002,   //!< Пробой на землю W14
-  VSD_WARNING_W_65                = 2003,   //!< Темп. платы управления W65
-  VSD_WARNING_W_17                = 2004,   //!< Упр. слово ТО W17
-  VSD_WARNING_W_13                = 2005,   //!< Превыш тока W13
-  VSD_WARNING_W_12                = 2006,   //!< Предел момента W12
-  VSD_WARNING_W_11                = 2007,   //!< Перегрев термист. двигателя W11
-  VSD_WARNING_W_10                = 2008,   //!< Превышение ETR двигателя W10
-  VSD_WARNING_W_9                 = 2009,   //!< Перегрузка инвертера W9
-  VSD_WARNING_W_8                 = 2010,   //!< Пониж. напряжение пост. тока W8
-  VSD_WARNING_W_7                 = 2011,   //!< Повыш. напряжение пост. тока W7
-  VSD_WARNING_W_6                 = 2012,   //!< Пониж. напряжение пост. тока W6
-  VSD_WARNING_W_5                 = 2013,   //!< Повыш. напряжение пост. тока W5
-  VSD_WARNING_W_4                 = 2014,   //!< Обрыв фазы питания W4
-  VSD_WARNING_W_3                 = 2015,   //!< Нет двигателя W3
-  VSD_WARNING_W_2                 = 2016,   //!< Ошибка действующего нуля W2
-  VSD_WARNING_W_1                 = 2017,   //!< Низкое напряжение источника 10В W1
-  VSD_WARNING_W_26                = 2018,   //!< Перегрузка тормоза W26
-  VSD_WARNING_W_25                = 2019,   //!< Тормозной резистор W25
-  VSD_WARNING_W_27                = 2020,   //!< Тормозной IGBT W27
-  VSD_WARNING_W_49                = 2021,   //!< Предел скорости W49
-  VSD_WARNING_W_34                = 2022,   //!< Отказ Fieldbus W34
-  VSD_WARNING_W_47                = 2023,   //!< Низкое напряжение питания 24В W47
-  VSD_WARNING_W_36                = 2024,   //!< Отказ питания W36
-  VSD_WARNING_W_59                = 2025,   //!< Предел по току W59
-  VSD_WARNING_W_66                = 2026,   //!< Низкая температура W66
-  VSD_WARNING_W_64                = 2027,   //!< Предел по напряжению W64
-  VSD_WARNING_W_90                = 2028,   //!< Отказ энкодера W90
-  VSD_WARNING_W_62                = 2029,   //!< Пр вых. част W62
-  VSD_WARNING_W_68                = 2030,   //!< Безоп. останов W68
-  VSD_WARNING_EXT                 = 2031,   //!< Расширенное слово состояния
+  VSD_DANFOSS_WARNING_W_28        = 2000,   //!< Проверка тормоза W28
+  VSD_DANFOSS_WARNING_W_69        = 2001,   //!< Темп. силовой платы W69
+  VSD_DANFOSS_WARNING_W_14        = 2002,   //!< Пробой на землю W14
+  VSD_DANFOSS_WARNING_W_65        = 2003,   //!< Темп. платы управления W65
+  VSD_DANFOSS_WARNING_W_17        = 2004,   //!< Упр. слово ТО W17
+  VSD_DANFOSS_WARNING_W_13        = 2005,   //!< Превыш тока W13
+  VSD_DANFOSS_WARNING_W_12        = 2006,   //!< Предел момента W12
+  VSD_DANFOSS_WARNING_W_11        = 2007,   //!< Перегрев термист. двигателя W11
+  VSD_DANFOSS_WARNING_W_10        = 2008,   //!< Превышение ETR двигателя W10
+  VSD_DANFOSS_WARNING_W_9         = 2009,   //!< Перегрузка инвертера W9
+  VSD_DANFOSS_WARNING_W_8         = 2010,   //!< Пониж. напряжение пост. тока W8
+  VSD_DANFOSS_WARNING_W_7         = 2011,   //!< Повыш. напряжение пост. тока W7
+  VSD_DANFOSS_WARNING_W_6         = 2012,   //!< Пониж. напряжение пост. тока W6
+  VSD_DANFOSS_WARNING_W_5         = 2013,   //!< Повыш. напряжение пост. тока W5
+  VSD_DANFOSS_WARNING_W_4         = 2014,   //!< Обрыв фазы питания W4
+  VSD_DANFOSS_WARNING_W_3         = 2015,   //!< Нет двигателя W3
+  VSD_DANFOSS_WARNING_W_2         = 2016,   //!< Ошибка действующего нуля W2
+  VSD_DANFOSS_WARNING_W_1         = 2017,   //!< Низкое напряжение источника 10В W1
+  VSD_DANFOSS_WARNING_W_26        = 2018,   //!< Перегрузка тормоза W26
+  VSD_DANFOSS_WARNING_W_25        = 2019,   //!< Тормозной резистор W25
+  VSD_DANFOSS_WARNING_W_27        = 2020,   //!< Тормозной IGBT W27
+  VSD_DANFOSS_WARNING_W_49        = 2021,   //!< Предел скорости W49
+  VSD_DANFOSS_WARNING_W_34        = 2022,   //!< Отказ Fieldbus W34
+  VSD_DANFOSS_WARNING_W_47        = 2023,   //!< Низкое напряжение питания 24В W47
+  VSD_DANFOSS_WARNING_W_36        = 2024,   //!< Отказ питания W36
+  VSD_DANFOSS_WARNING_W_59        = 2025,   //!< Предел по току W59
+  VSD_DANFOSS_WARNING_W_66        = 2026,   //!< Низкая температура W66
+  VSD_DANFOSS_WARNING_W_64        = 2027,   //!< Предел по напряжению W64
+  VSD_DANFOSS_WARNING_W_90        = 2028,   //!< Отказ энкодера W90
+  VSD_DANFOSS_WARNING_W_62        = 2029,   //!< Пр вых. част W62
+  VSD_DANFOSS_WARNING_W_68        = 2030,   //!< Безоп. останов W68
+  VSD_DANFOSS_WARNING_EXT         = 2031,   //!< Расширенное слово состояния
 };
 
 enum enDanfossControl
@@ -171,6 +186,7 @@ public:
   uint16_t configVsdVentVect6000();
 
   float checkAlarmVsd();
+  bool checkPreventVsd();
 
 
   void getNewValue(uint16_t id);
@@ -189,7 +205,7 @@ public:
 
 
 private:
-  ModbusParameter modbusParameters_[135];
+  ModbusParameter modbusParameters_[208];
   DeviceModbus *dm_;
 
 };

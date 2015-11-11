@@ -254,7 +254,12 @@ float VsdEtalon::checkAlarmVsd()
   return vsdAlarm;
 }
 
-
+bool VsdEtalon::checkPreventVsd()
+{
+  if (parameters.get(CCS_VSD_ALARM_CODE))
+    return true;
+  return false;
+}
 
 // Метод проверки и обновления параметров устройства
 void VsdEtalon::getNewValue(uint16_t id)

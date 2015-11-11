@@ -885,13 +885,33 @@ float VsdDanfoss::checkAlarmVsd()
 {
   uint16_t i = 0;
   float vsdAlarm = parameters.get(CCS_VSD_ALARM_CODE);
-  uint32_t vsdStatus3 = getValue(VSD_STATUS_WORD_3);
-  uint32_t vsdStatus4 = getValue(VSD_STATUS_WORD_4);
+  uint32_t vsdAlarm78 = getValue(VSD_STATUS_WORD_2);     // BUS_READOUT_ALARM
+  uint32_t vsdAlarmWord1 = getValue(VSD_STATUS_WORD_3);  // ALARM_WORD_1
+  uint32_t vsdAlarmWord2 = getValue(VSD_STATUS_WORD_4);  // ALARM_WORD_2
 
-  if ((vsdAlarm == VSD_ALARM_NONE) || ((vsdAlarm >= VSD_DANFOSS_ALARM_A_28) && (vsdAlarm <= VSD_DANFOSS_ALARM_A_63))) {
+
+  if ((vsdAlarm == VSD_ALARM_NONE) || ((vsdAlarm >= VSD_DANFOSS_ALARM_A_28) && (vsdAlarm <= VSD_DANFOSS_ALARM_A_12))) {
     vsdAlarm = VSD_ALARM_NONE;
-    for (i = VSD_DANFOSS_ALARM_A_28; i <= VSD_DANFOSS_ALARM_A_63; i++) {
-      if (checkBit(vsdStatus3, i - 2000)) {
+    for (i = VSD_DANFOSS_ALARM_A_28; i <= VSD_DANFOSS_ALARM_A_12; i++) {
+      if (checkBit(vsdAlarmWord1, i - 2000)) {
+        return i;
+      }
+    }
+  }
+
+  if ((vsdAlarm == VSD_ALARM_NONE) || ((vsdAlarm >= VSD_DANFOSS_ALARM_A_10) && (vsdAlarm <= VSD_DANFOSS_ALARM_A_47))) {
+    vsdAlarm = VSD_ALARM_NONE;
+    for (i = VSD_DANFOSS_ALARM_A_10; i <= VSD_DANFOSS_ALARM_A_47; i++) {
+      if (checkBit(vsdAlarmWord1, i - 2000)) {
+        return i;
+      }
+    }
+  }
+
+  if ((vsdAlarm == VSD_ALARM_NONE) || ((vsdAlarm >= VSD_DANFOSS_ALARM_A_48) && (vsdAlarm <= VSD_DANFOSS_ALARM_A_63))) {
+    vsdAlarm = VSD_ALARM_NONE;
+    for (i = VSD_DANFOSS_ALARM_A_48; i <= VSD_DANFOSS_ALARM_A_63; i++) {
+      if (checkBit(vsdAlarmWord1, i - 2000)) {
         return i;
       }
     }
@@ -900,7 +920,7 @@ float VsdDanfoss::checkAlarmVsd()
   if ((vsdAlarm == VSD_ALARM_NONE) || (vsdAlarm == VSD_DANFOSS_ALARM_SERVICE_TRIP)) {
     vsdAlarm = VSD_ALARM_NONE;
     for (i = 0; i < 5; i++) {
-      if (checkBit(vsdStatus4, i)) {
+      if (checkBit(vsdAlarmWord2, i)) {
         return VSD_DANFOSS_ALARM_SERVICE_TRIP;
       }
     }
@@ -909,7 +929,7 @@ float VsdDanfoss::checkAlarmVsd()
   if ((vsdAlarm == VSD_ALARM_NONE) || ((vsdAlarm >= VSD_DANFOSS_ALARM_HI_TEMP_DISCHARGE) && (vsdAlarm <= VSD_DANFOSS_ALARM_PROT_DEVICE))) {
     vsdAlarm = VSD_ALARM_NONE;
     for (i = VSD_DANFOSS_ALARM_HI_TEMP_DISCHARGE; i <= VSD_DANFOSS_ALARM_PROT_DEVICE; i++) {
-      if (checkBit(vsdStatus4, i - 2032)) {
+      if (checkBit(vsdAlarmWord2, i - 2032)) {
         return i;
       }
     }
@@ -918,14 +938,14 @@ float VsdDanfoss::checkAlarmVsd()
   if ((vsdAlarm == VSD_ALARM_NONE) || ((vsdAlarm >= VSD_DANFOSS_ALARM_KTY) && (vsdAlarm <= VSD_DANFOSS_ALARM_ECB))) {
     vsdAlarm = VSD_ALARM_NONE;
     for (i = VSD_DANFOSS_ALARM_KTY; i <= VSD_DANFOSS_ALARM_ECB; i++) {
-      if (checkBit(vsdStatus4, i - 2032)) {
+      if (checkBit(vsdAlarmWord2, i - 2032)) {
         return i;
       }
     }
   }
 
   if ((vsdAlarm == VSD_ALARM_NONE) || (vsdAlarm == VSD_DANFOSS_ALARM_A_59)) {
-    if (checkBit(vsdStatus4, VSD_DANFOSS_ALARM_A_59 - 2032)) {
+    if (checkBit(vsdAlarmWord2, VSD_DANFOSS_ALARM_A_59 - 2032)) {
       return VSD_DANFOSS_ALARM_A_59;
     }
   }
@@ -933,13 +953,21 @@ float VsdDanfoss::checkAlarmVsd()
   if ((vsdAlarm == VSD_ALARM_NONE) || ((vsdAlarm >= VSD_DANFOSS_ALARM_A_90) && (vsdAlarm <= VSD_DANFOSS_ALARM_A_72))) {
     vsdAlarm = VSD_ALARM_NONE;
     for (i = VSD_DANFOSS_ALARM_A_90; i <= VSD_DANFOSS_ALARM_A_72; i++) {
-      if (checkBit(vsdStatus4, i - 2032)) {
+      if (checkBit(vsdAlarmWord2, i - 2032)) {
         return i;
       }
     }
   }
 
+  if(vsdAlarm78 == 0x4E00)        // А78, т.к. её нет в словах аварии проверяем по
+    return VSD_DANFOSS_ALARM_A_78;// коду в регистре последний аварий, код от представителей Danfoss
+
   return vsdAlarm;
+}
+
+bool VsdDanfoss::checkPreventVsd()
+{
+  return checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_TRIP);
 }
 
 int VsdDanfoss::start()

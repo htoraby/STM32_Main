@@ -195,6 +195,7 @@ public:
   int setCoefVoltageInCA(float value);
 
   float checkAlarmVsd();
+  bool checkPreventVsd();
 
   void getNewValue(uint16_t id);
 

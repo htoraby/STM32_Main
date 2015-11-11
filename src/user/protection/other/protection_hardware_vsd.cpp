@@ -48,7 +48,7 @@ bool ProtectionHardwareVsd::checkAlarm()
 
 bool ProtectionHardwareVsd::checkPrevent()
 {
-  return alarm_;
+  return vsd->checkPreventVsd();
 }
 
 void ProtectionHardwareVsd::addEventReactionProt()

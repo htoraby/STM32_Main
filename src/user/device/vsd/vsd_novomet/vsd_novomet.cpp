@@ -531,6 +531,13 @@ float VsdNovomet::checkAlarmVsd()
   return vsdStatus;
 }
 
+bool VsdNovomet::checkPreventVsd()
+{
+  if (parameters.get(CCS_VSD_ALARM_CODE))
+    return true;
+  return false;
+}
+
 int VsdNovomet::calcUfCharacteristicU(float value)
 {
   return setBaseVoltage(value);
