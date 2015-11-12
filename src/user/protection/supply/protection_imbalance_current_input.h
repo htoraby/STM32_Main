@@ -8,6 +8,16 @@ class ProtectionImbalanceCurrentInput : public Protection
 public:
   ProtectionImbalanceCurrentInput();
   ~ProtectionImbalanceCurrentInput();
+
+private:
+  void getOtherSetpointProt();
+
+  bool checkAlarm();
+  bool checkPrevent();
+  float calcValue();
+
+  bool isProtect();
+
 };
 
 #endif // PROTECTIONIMBALANCECURRENTINPUT_H

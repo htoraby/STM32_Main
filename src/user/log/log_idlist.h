@@ -145,6 +145,11 @@ typedef enum {
   AnalogInput4ApvDisabledId,      //!< "АПВ запрещено: Аналоговый вход 4"
   AnalogInput4ProtBlockedId,      //!< "Блокировка по защите: Аналоговый вход 4"
 
+  ImbalanceCurInProtReactId,      //!< "Сработала защита: Дисбаланс входных токов"
+  ImbalanceCurInApvId,            //!< "АПВ по защите: Дисбаланс входных токов"
+  ImbalanceCurInApvDisabledId,    //!< "АПВ запрещено: Дисбаланс входных токов"
+  ImbalanceCurInProtBlockedId,    //!< "Блокировка по защите: Дисбаланс входных токов"
+
 } EventId;
 
 #endif // LOG_IDLIST

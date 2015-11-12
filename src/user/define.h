@@ -318,6 +318,7 @@ enum LastReasonRun {
   LastReasonRunApvDigital2,                     //!< "АПВ по защите: Цифр.вх.2"
   LastReasonRunApvDigital3,                     //!< "АПВ по защите: Цифр.вх.3"
   LastReasonRunApvDigital4,                     //!< "АПВ по защите: Цифр.вх.4"
+  LastReasonRunApvImbalanceCurIn,               //!< "АПВ по защите: Дисбаланс входных токов"
 
   LastReasonRunLast
 };
@@ -373,6 +374,7 @@ enum LastReasonStop {
   LastReasonStopProtDigital3,                   //!<
   LastReasonStopProtDigital4,                   //!<
   LastReasonStopVsdNoConnect,                   //!< "ЧРП. Нет связи"
+  LastReasonStopImbalanceCurIn,                 //!< "Дисбаланс входных токов"
 
   LastReasonStopLast
 };

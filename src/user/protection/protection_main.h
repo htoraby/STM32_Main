@@ -4,6 +4,7 @@
 #include "protection_overvoltage_input.h"
 #include "protection_undervoltage_input.h"
 #include "protection_imbalance_voltage_input.h"
+#include "protection_imbalance_current_input.h"
 
 #include "protection_overload_motor.h"
 #include "protection_underload_motor.h"
@@ -31,6 +32,7 @@
 extern ProtectionOverVoltageInput protOverVoltIn;
 extern ProtectionUnderVoltageInput protUnderVoltIn;
 extern ProtectionImbalanceVoltageInput protImbalanceVoltIn;
+extern ProtectionImbalanceCurrentInput protImbalanceCurIn;
 
 extern ProtectionOverloadMotor protOverloadMotor;
 extern ProtectionUnderloadMotor protUnderloadMotor;

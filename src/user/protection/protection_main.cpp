@@ -1,12 +1,13 @@
 #include "protection_main.h"
 
-#define COUNT_PROTECTIONS 20
+#define COUNT_PROTECTIONS 21
 
 Protection *protections[COUNT_PROTECTIONS];
 
 ProtectionOverVoltageInput protOverVoltIn;
 ProtectionUnderVoltageInput protUnderVoltIn;
 ProtectionImbalanceVoltageInput protImbalanceVoltIn;
+ProtectionImbalanceCurrentInput protImbalanceCurIn;
 
 ProtectionOverloadMotor protOverloadMotor;
 ProtectionUnderloadMotor protUnderloadMotor;
@@ -39,28 +40,29 @@ void protectionInit()
   protections[0] = &protOverVoltIn;
   protections[1] = &protUnderVoltIn;
   protections[2] = &protImbalanceVoltIn;
+  protections[3] = &protImbalanceCurIn;
 
-  protections[3] = &protImbalanceCurrentMotor;
-  protections[4] = &protTurbineRotation;
+  protections[4] = &protImbalanceCurrentMotor;
+  protections[5] = &protTurbineRotation;
 
-  protections[5] = &protResistanceIsolation;
-  protections[6] = &protPressureIntake;
-  protections[7] = &protTemperatureMotor;
-  protections[8] = &protUnderloadMotor;
-  protections[9] = &protOverloadMotor;
+  protections[6] = &protResistanceIsolation;
+  protections[7] = &protPressureIntake;
+  protections[8] = &protTemperatureMotor;
+  protections[9] = &protUnderloadMotor;
+  protections[10] = &protOverloadMotor;
 
-  protections[10] = &protHardwareVsd;
-  protections[11] = &protLockDoor;
+  protections[11] = &protHardwareVsd;
+  protections[12] = &protLockDoor;
 
-  protections[12] = &protDigitalInput1;
-  protections[13] = &protDigitalInput2;
-  protections[14] = &protDigitalInput3;
-  protections[15] = &protDigitalInput4;
+  protections[13] = &protDigitalInput1;
+  protections[14] = &protDigitalInput2;
+  protections[15] = &protDigitalInput3;
+  protections[16] = &protDigitalInput4;
 
-  protections[16] = &protAnalogInput1;
-  protections[17] = &protAnalogInput2;
-  protections[18] = &protAnalogInput3;
-  protections[19] = &protAnalogInput4;
+  protections[17] = &protAnalogInput1;
+  protections[18] = &protAnalogInput2;
+  protections[19] = &protAnalogInput3;
+  protections[20] = &protAnalogInput4;
 
   osThreadDef(ProtectionTask, protectionTask, osPriorityNormal, 0, 4 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(ProtectionTask), NULL);
