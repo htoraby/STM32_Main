@@ -213,7 +213,7 @@ public:
    * \param address - идентификатор параметра
    * \return Index
   */
-  int getIndexAtAddress(int address);
+  int getIndexAtAddress(int address, int typeData);
 
   /*!
    * \brief Метод записи параметра в устройство
