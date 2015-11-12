@@ -291,7 +291,6 @@ bool DeviceModbus::isConnect()
 void DeviceModbus::exchangeTask()
 {
   uint16_t count = 1;
-  uint16_t res = 1;
   while (1) {
     osDelay(1);
     // Проверяем очередь параметров для обработки вне очереди
@@ -299,37 +298,22 @@ void DeviceModbus::exchangeTask()
     if (outOfTurn && (mbParams_[outOfTurn].command == OPERATION_WRITE)) {
       switch (mbParams_[outOfTurn].typeData) {                // Тип данных
       case TYPE_DATA_COIL:
-        res = mms_->writeCoil(devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].value.int16_t[0]);
-        if ((res != ok_r) && isConnect())
-          logDebug.add(WarningMsg, "mbCmd0x05 int16 %d %d %d", devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].value.int16_t[0]);
+        writeCoil(devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].value.int16_t[0]);
         break;
       case TYPE_DATA_INT16:
-        res = mms_->writeSingleRegister(devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].value.int16_t[0]);
-        if ((res != ok_r) && isConnect())
-          logDebug.add(WarningMsg, "mbCmd0x06 int16 %d %d %d", devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].value.int16_t[0]);
+        writeInt16Register(devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].value.int16_t[0]);
         break;
       case TYPE_DATA_UINT16:
-        res = mms_->writeSingleRegister(devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].value.uint16_t[0]);
-        if ((res != ok_r) && isConnect())
-          logDebug.add(WarningMsg, "mbCmd0x06 uint16 %d %d %d", devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].value.uint16_t[0]);
+        writeUint16Register(devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].value.uint16_t[0]);
         break;
       case  TYPE_DATA_INT32:
-        uint32Arr_[0] = mbParams_[outOfTurn].value.int32_t;
-        res = mms_->writeMultipleLongInts(devAdrs_, mbParams_[outOfTurn].address, uint32Arr_, 1);
-        if ((res != ok_r) && isConnect())
-          logDebug.add(WarningMsg, "mbCmd0x10 int32 %d %d %d", devAdrs_, mbParams_[outOfTurn].address, uint32Arr_[0]);
+        writeInt32Register(devAdrs_, mbParams_[outOfTurn].address, &mbParams_[outOfTurn].value.int32_t, count);
         break;
       case  TYPE_DATA_UINT32:
-        uint32Arr_[0] =  mbParams_[outOfTurn].value.uint32_t;
-        res = mms_->writeMultipleLongInts(devAdrs_, mbParams_[outOfTurn].address, uint32Arr_, 1);
-        if ((res != ok_r) && isConnect())
-          logDebug.add(WarningMsg, "mbCmd0x10 uint32 %d %d %d", devAdrs_, mbParams_[outOfTurn].address, uint32Arr_[0]);
+        writeUint32Register(devAdrs_, mbParams_[outOfTurn].address, &mbParams_[outOfTurn].value.uint32_t, count);
         break;
       case  TYPE_DATA_FLOAT:
-        floatArr_[0] = mbParams_[outOfTurn].value.float_t;
-        res = mms_->writeMultipleFloats(devAdrs_ ,mbParams_[outOfTurn].address, floatArr_, 1);
-        if ((res != ok_r) && isConnect())
-          logDebug.add(WarningMsg, "mbCmd0x10 float %d %d %f", devAdrs_, mbParams_[outOfTurn].address, floatArr_[0]);
+        writeFloatRegister(devAdrs_ ,mbParams_[outOfTurn].address, &mbParams_[outOfTurn].value.float_t, count);
         break;
       default:
         break;
@@ -594,3 +578,42 @@ void DeviceModbus::readFloatsRegisters(uint8_t slaveAddr, uint16_t startRef, flo
   }
 }
 
+void DeviceModbus::writeCoil(uint8_t slaveAddr, int bitAddr, int bitVal)
+{
+  uint8_t res = mms_->writeCoil(slaveAddr, bitAddr, bitVal);
+  if ((res != ok_r) && isConnect())
+    logDebug.add(WarningMsg, "mbCmd0x05 int16 %d %d %d", slaveAddr, bitAddr, bitVal);
+}
+
+void DeviceModbus::writeInt16Register(uint8_t slaveAddr, uint16_t regAddr, uint16_t regVal)
+{
+  uint8_t res = mms_->writeSingleRegister(slaveAddr, regAddr, regVal);
+  if ((res != ok_r) && isConnect())
+    logDebug.add(WarningMsg, "mbCmd0x06 int16 %d %d %d", slaveAddr, regAddr, regVal);
+}
+
+void DeviceModbus::writeUint16Register(uint8_t slaveAddr, uint16_t regAddr, uint16_t regVal)
+{
+  uint8_t res = mms_->writeSingleRegister(slaveAddr, regAddr, regVal);
+  if ((res != ok_r) && isConnect())
+    logDebug.add(WarningMsg, "mbCmd0x06 uint16 %d %d %d", slaveAddr, regAddr, regVal);
+}
+
+void DeviceModbus::writeInt32Register(uint8_t slaveAddr, uint16_t startRef, int32_t *int32Arr, uint16_t refCnt)
+{
+  uint8_t res = mms_->writeMultipleLongInts(slaveAddr, startRef, (uint32_t*)int32Arr, 1);
+  if ((res != ok_r) && isConnect())
+    logDebug.add(WarningMsg, "mbCmd0x10 int32 %d %d %d", slaveAddr, startRef, int32Arr);
+}
+void DeviceModbus::writeUint32Register(uint8_t slaveAddr, uint16_t startRef, uint32_t *int32Arr, uint16_t refCnt)
+{
+  uint8_t res = mms_->writeMultipleLongInts(slaveAddr, startRef, int32Arr, 1);
+  if ((res != ok_r) && isConnect())
+    logDebug.add(WarningMsg, "mbCmd0x10 uint32 %d %d %d", slaveAddr, startRef, int32Arr);
+}
+void DeviceModbus::writeFloatRegister(uint8_t slaveAddr, uint16_t startRef, float *float32Arr, uint16_t refCnt)
+{
+  uint8_t res = mms_->writeMultipleFloats(slaveAddr, startRef, float32Arr, 1);
+  if ((res != ok_r) && isConnect())
+    logDebug.add(WarningMsg, "mbCmd0x10 float %d %d %f", slaveAddr, startRef, float32Arr);
+}

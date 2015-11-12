@@ -349,6 +349,57 @@ private:
    */
   void readFloatsRegisters(uint8_t slaveAddr, uint16_t startRef, float *float32Arr, uint16_t refCnt);
 
+  /*!
+   * \brief writeCoil
+   * \param slaveAddr
+   * \param bitAddr
+   * \param bitVal
+   */
+  void writeCoil(uint8_t slaveAddr, int bitAddr, int bitVal);
+
+  /*!
+   * \brief writeInt16Register
+   * \param slaveAddr
+   * \param regAddr
+   * \param regVal
+   */
+  void writeInt16Register(uint8_t slaveAddr, uint16_t regAddr, uint16_t regVal);
+
+  /*!
+   * \brief writeInt16Register
+   * \param slaveAddr
+   * \param regAddr
+   * \param regVal
+   */
+  void writeUint16Register(uint8_t slaveAddr, uint16_t regAddr, uint16_t regVal);
+
+  /*!
+   * \brief writeInt32Register
+   * \param slaveAddr
+   * \param startRef
+   * \param int32Arr
+   * \param refCnt
+   */
+  void writeInt32Register(uint8_t slaveAddr, uint16_t startRef, int32_t *int32Arr, uint16_t refCnt);
+
+  /*!
+   * \brief writeUint32Register
+   * \param slaveAddr
+   * \param startRef
+   * \param int32Arr
+   * \param refCnt
+   */
+  void writeUint32Register(uint8_t slaveAddr, uint16_t startRef, uint32_t *int32Arr, uint16_t refCnt);
+
+  /*!
+   * \brief writeFloatRegister
+   * \param slaveAddr
+   * \param startRef
+   * \param float32Arr
+   * \param refCnt
+   */
+  void writeFloatRegister(uint8_t slaveAddr, uint16_t startRef, float *float32Arr, uint16_t refCnt);
+
   //! Указатель на массив параметров устройства
   ModbusParameter *mbParams_;
   //! Количество параметров в массиве
