@@ -424,6 +424,7 @@ private:
   void cmdProtSupplyOvervoltageSetpointReset();
   void cmdProtSupplyUndervoltageSetpointReset();
   void cmdProtSupplyImbalanceVoltageSetpointReset();
+  void cmdProtSupplyImbalanceCurrentSetpointReset();
 
   void cmdProtMotorOverloadSetpointReset();
   void cmdProtMotorUnderloadSetpointReset();
@@ -441,6 +442,11 @@ private:
   void cmdProtDigitalInput2SetpointReset();
   void cmdProtDigitalInput3SetpointReset();
   void cmdProtDigitalInput4SetpointReset();
+
+  void cmdProtAnalogInput1SetpointReset();
+  void cmdProtAnalogInput2SetpointReset();
+  void cmdProtAnalogInput3SetpointReset();
+  void cmdProtAnalogInput4SetpointReset();
 
   /*!
    * \brief calcCounterStop

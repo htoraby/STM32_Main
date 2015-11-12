@@ -918,6 +918,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     cmdProtSupplyImbalanceVoltageSetpointReset();
     return err;
+  case CCS_CMD_PROT_SUPPLY_IMBALANCE_CURRENT_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtSupplyImbalanceCurrentSetpointReset();
+    return err;
   case CCS_CMD_PROT_MOTOR_OVERLOAD_SETPOINT_RESET:
     err = setValue(id, value, eventType);
     cmdProtMotorOverloadSetpointReset();
@@ -969,6 +973,22 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_CMD_PROT_DI_4_SETPOINT_RESET:
     err = setValue(id, value, eventType);
     cmdProtDigitalInput4SetpointReset();
+    return err;
+  case CCS_CMD_PROT_AI_1_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtAnalogInput1SetpointReset();
+    return err;
+  case CCS_CMD_PROT_AI_2_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtAnalogInput2SetpointReset();
+    return err;
+  case CCS_CMD_PROT_AI_3_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtAnalogInput3SetpointReset();
+    return err;
+  case CCS_CMD_PROT_AI_4_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtAnalogInput4SetpointReset();
     return err;
   case CCS_CMD_COUNTER_ALL_RESET:
     err = setValue(id, value, eventType);
@@ -1264,6 +1284,15 @@ void Ccs::cmdProtSupplyImbalanceVoltageSetpointReset()
   resetValue(CCS_TIMER_DIFFERENT_START);
 }
 
+void Ccs::cmdProtSupplyImbalanceCurrentSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_SUPPLY_IMBALANCE_CURRENT_MODE;
+       i <= CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER; i++) {
+    resetValue(i);
+  }
+  resetValue(CCS_TIMER_DIFFERENT_START);
+}
+
 void Ccs::cmdProtMotorOverloadSetpointReset()
 {
   for (uint16_t i = CCS_PROT_MOTOR_OVERLOAD_MODE;
@@ -1370,6 +1399,38 @@ void Ccs::cmdProtDigitalInput4SetpointReset()
     resetValue(i);
   }
   resetValue(CCS_DI_4_TYPE);
+}
+
+void Ccs::cmdProtAnalogInput1SetpointReset()
+{
+  for (uint16_t i = CCS_PROT_AI_1_MODE;
+       i <= CCS_PROT_AI_1_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtAnalogInput2SetpointReset()
+{
+  for (uint16_t i = CCS_PROT_AI_2_MODE;
+       i <= CCS_PROT_AI_2_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtAnalogInput3SetpointReset()
+{
+  for (uint16_t i = CCS_PROT_AI_3_MODE;
+       i <= CCS_PROT_AI_3_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtAnalogInput4SetpointReset()
+{
+  for (uint16_t i = CCS_PROT_AI_4_MODE;
+       i <= CCS_PROT_AI_4_PARAMETER; i++) {
+    resetValue(i);
+  }
 }
 
 void Ccs::calcCountersStop(float reason)
