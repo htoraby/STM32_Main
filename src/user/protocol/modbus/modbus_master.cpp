@@ -70,7 +70,7 @@ uint8_t ModbusMaster::readCoils(uint8_t slaveAddr, uint16_t startRef, bool *bitA
   return res;
 }
 
-int ModbusMaster::readInputDiscretes(int SlaveAddr, int StartRef, bool BitArr[], int RefCnt)
+int ModbusMaster::readInputDiscretes(uint8_t SlaveAddr, uint16_t StartRef, bool BitArr[], uint16_t RefCnt)
 {
   int result = MODBUS_ERROR_TRASH;
   div_t Div;                                          // Структура для вычисления байт с данными
@@ -161,7 +161,7 @@ uint8_t ModbusMaster::readMultipleRegisters(uint8_t slaveAddr, uint16_t startRef
   return res;
 }
 
-int ModbusMaster::readMultipleLongInts(int slaveAddr, int startRef, int *int32Arr, int refCnt)
+int ModbusMaster::readMultipleLongInts(uint8_t slaveAddr, uint16_t startRef, uint32_t *int32Arr, uint16_t refCnt)
 {
   int res = MODBUS_ERROR_TRASH;
   unTypeData Value;                                   // Переменна для формирования массива прочитанных данных
@@ -203,7 +203,7 @@ int ModbusMaster::readMultipleLongInts(int slaveAddr, int startRef, int *int32Ar
   return res;
 }
 
-int ModbusMaster::readMultipleFloats(int slaveAddr, int startRef, float *float32Arr, int refCnt)
+int ModbusMaster::readMultipleFloats(uint8_t slaveAddr, uint16_t startRef, float *float32Arr, uint16_t refCnt)
 {
   int res = MODBUS_ERROR_TRASH;
   unTypeData value;                                   // Переменна для формирования массива прочитанных данных
@@ -287,7 +287,7 @@ uint8_t ModbusMaster::readInputRegisters(uint8_t slaveAddr, uint16_t startRef, u
   return res;
 }
 
-int ModbusMaster::readInputLongInts(int slaveAddr, int startRef, int *int32Arr, int refCnt)
+int ModbusMaster::readInputLongInts(uint8_t slaveAddr, uint16_t startRef, uint32_t *int32Arr, uint16_t refCnt)
 {
   int result = MODBUS_ERROR_TRASH;
   int i = 0;                                          // Счётчик, используется при формировании массива прочитанных данных
@@ -331,7 +331,7 @@ int ModbusMaster::readInputLongInts(int slaveAddr, int startRef, int *int32Arr, 
   return result;
 }
 
-int ModbusMaster::readInputFloats(int slaveAddr, int startRef, float *float32Arr, int refCnt)
+int ModbusMaster::readInputFloats(uint8_t slaveAddr, uint16_t startRef, float *float32Arr, uint16_t refCnt)
 {
   int result = MODBUS_ERROR_TRASH;
   int i = 0;                                          // Счётчик, используется при формировании массива прочитанных данных
@@ -375,7 +375,7 @@ int ModbusMaster::readInputFloats(int slaveAddr, int startRef, float *float32Arr
   return result;
 }
 
-int ModbusMaster::writeCoil(int slaveAddr, int bitAddr, int bitVal)
+int ModbusMaster::writeCoil(uint8_t slaveAddr, int bitAddr, int bitVal)
 {
   int res = err_r;
   uint16_t crc = 0;
@@ -413,7 +413,7 @@ int ModbusMaster::writeCoil(int slaveAddr, int bitAddr, int bitVal)
   return res;
 }
 
-int ModbusMaster::writeSingleRegister(int slaveAddr, int regAddr, short regVal)
+int ModbusMaster::writeSingleRegister(uint8_t slaveAddr, uint16_t regAddr, uint16_t regVal)
 {
   int res = err_r;
   uint16_t crc = 0;
@@ -445,7 +445,7 @@ int ModbusMaster::writeSingleRegister(int slaveAddr, int regAddr, short regVal)
   return res;
 }
 
-int ModbusMaster::readExceptionStatus(int slaveAddr, unsigned char *statusBytePtr)
+int ModbusMaster::readExceptionStatus(uint8_t slaveAddr, unsigned char *statusBytePtr)
 {
   //TODO: Написать функцию
   return MODBUS_ERROR_TRASH;
@@ -463,25 +463,25 @@ int ModbusMaster::restartCommunicationsOption(int slaveAddr, int clearEventLog)
   return MODBUS_ERROR_TRASH;
 }
 
-int ModbusMaster::forceMultipleCoils(int slaveAddr, int startRef, const bool bitArr[], int refCnt)
+int ModbusMaster::forceMultipleCoils(uint8_t slaveAddr, uint16_t startRef, const bool bitArr[], uint16_t refCnt)
 {
   //TODO: Написать функцию
   return MODBUS_ERROR_TRASH;
 }
 
-int ModbusMaster::writeMultipleRegisters(int slaveAddr, int startRef, short *regArr, int refCnt)
+int ModbusMaster::writeMultipleRegisters(uint8_t slaveAddr, uint16_t startRef, uint16_t *regArr, uint16_t refCnt)
 {
   //TODO: Написать функцию
   return MODBUS_ERROR_TRASH;
 }
 
-int ModbusMaster::writeMultipleLongInts(int slaveAddr, int startRef, int *int32Arr, int refCnt)
+int ModbusMaster::writeMultipleLongInts(uint8_t slaveAddr, uint16_t startRef, uint32_t *int32Arr, uint16_t refCnt)
 {
   //TODO: Написать функцию
   return MODBUS_ERROR_TRASH;
 }
 
-int ModbusMaster::writeMultipleFloats(int slaveAddr, int startRef, float *float32Arr, int refCnt)
+int ModbusMaster::writeMultipleFloats(uint8_t slaveAddr, uint16_t startRef, float *float32Arr, uint16_t refCnt)
 {
   //TODO: Написать функцию
   return MODBUS_ERROR_TRASH;

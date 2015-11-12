@@ -152,12 +152,12 @@ int DeviceModbus::getIndexAtId(int id)
   return 0;
 }
 
-int DeviceModbus::getIndexAtAddress(int address)
+int DeviceModbus::getIndexAtAddress(int address, int typeData)
 {
   for (int i = 0; i < countParameter_; i++) {
-    if (getFieldAddress(i) == address) {
-      return i;
-    }
+    if (getFieldAddress(i) == address)
+      if (getFieldTypeData(i) == typeData)
+        return i;
   }
   return 0;
 }
@@ -290,543 +290,82 @@ bool DeviceModbus::isConnect()
 
 void DeviceModbus::exchangeTask()
 {
-  int count = 0;
+  uint16_t count = 1;
   uint16_t res = 1;
   while (1) {
     osDelay(1);
-
     // Проверяем очередь параметров для обработки вне очереди
     int outOfTurn = getMessageOutOfTurn();  // Проверка если параметр вне очереди
-    if (outOfTurn) {                        // Если есть параметр вне очереди
-      if (mbParams_[outOfTurn].command == OPERATION_WRITE) {    // Команда записи
-        int address = mbParams_[outOfTurn].address;             // Получаем адрес параметра в устройстве
-        switch (mbParams_[outOfTurn].typeData) {                // Тип данных
+    if (outOfTurn && (mbParams_[outOfTurn].command == OPERATION_WRITE)) {
+      switch (mbParams_[outOfTurn].typeData) {                // Тип данных
+      case TYPE_DATA_COIL:
+        res = mms_->writeCoil(devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].value.int16_t[0]);
+        if ((res != ok_r) && isConnect())
+          logDebug.add(WarningMsg, "mbCmd0x05 int16 %d %d %d", devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].value.int16_t[0]);
+        break;
+      case TYPE_DATA_INT16:
+        res = mms_->writeSingleRegister(devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].value.int16_t[0]);
+        if ((res != ok_r) && isConnect())
+          logDebug.add(WarningMsg, "mbCmd0x06 int16 %d %d %d", devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].value.int16_t[0]);
+        break;
+      case TYPE_DATA_UINT16:
+        res = mms_->writeSingleRegister(devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].value.uint16_t[0]);
+        if ((res != ok_r) && isConnect())
+          logDebug.add(WarningMsg, "mbCmd0x06 uint16 %d %d %d", devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].value.uint16_t[0]);
+        break;
+      case  TYPE_DATA_INT32:
+        uint32Arr_[0] = mbParams_[outOfTurn].value.int32_t;
+        res = mms_->writeMultipleLongInts(devAdrs_, mbParams_[outOfTurn].address, uint32Arr_, 1);
+        if ((res != ok_r) && isConnect())
+          logDebug.add(WarningMsg, "mbCmd0x10 int32 %d %d %d", devAdrs_, mbParams_[outOfTurn].address, uint32Arr_[0]);
+        break;
+      case  TYPE_DATA_UINT32:
+        uint32Arr_[0] =  mbParams_[outOfTurn].value.uint32_t;
+        res = mms_->writeMultipleLongInts(devAdrs_, mbParams_[outOfTurn].address, uint32Arr_, 1);
+        if ((res != ok_r) && isConnect())
+          logDebug.add(WarningMsg, "mbCmd0x10 uint32 %d %d %d", devAdrs_, mbParams_[outOfTurn].address, uint32Arr_[0]);
+        break;
+      case  TYPE_DATA_FLOAT:
+        floatArr_[0] = mbParams_[outOfTurn].value.float_t;
+        res = mms_->writeMultipleFloats(devAdrs_ ,mbParams_[outOfTurn].address, floatArr_, 1);
+        if ((res != ok_r) && isConnect())
+          logDebug.add(WarningMsg, "mbCmd0x10 float %d %d %f", devAdrs_, mbParams_[outOfTurn].address, floatArr_[0]);
+        break;
+      default:
+        break;
+      }
+    }
+    else {
+      if (!(outOfTurn && (mbParams_[outOfTurn].command == OPERATION_READ))) {
+        outOfTurn = searchExchangeParameters();
+      }
+      if (outOfTurn) {
+        switch (mbParams_[outOfTurn].typeData) {
         case TYPE_DATA_COIL:
-          res = mms_->writeCoil(devAdrs_, address, mbParams_[outOfTurn].value.int16_t[0]);
-          if (res != ok_r) {
-            if (isConnect()) {
-              logDebug.add(WarningMsg, "mbCmd0x05 int16 %d %d %d", devAdrs_, address,
-                           mbParams_[outOfTurn].value.int16_t[0]);
-            }
-          }
+          readCoils(devAdrs_, mbParams_[outOfTurn].address, bitArr_, count);
+          break;
         case TYPE_DATA_INT16:
-          res = mms_->writeSingleRegister(devAdrs_, address, mbParams_[outOfTurn].value.int16_t[0]);
-          if (res != ok_r) {
-            if (isConnect()) {
-              logDebug.add(WarningMsg, "mbCmd0x06 int16 %d %d %d", devAdrs_, address,
-                           mbParams_[outOfTurn].value.int16_t[0]);
-            }
-          }
+          readInt16Registers(devAdrs_, mbParams_[outOfTurn].address, uint16Arr_, count);
+          break;
+        case TYPE_DATA_INT16_4:
+          readInt16InputRegisters(devAdrs_, mbParams_[outOfTurn].address, uint16Arr_, count);
           break;
         case TYPE_DATA_UINT16:
-          res = mms_->writeSingleRegister(devAdrs_, address, mbParams_[outOfTurn].value.uint16_t[0]);
-          if (res != ok_r) {
-            if (isConnect()) {
-              logDebug.add(WarningMsg, "mbCmd0x06 uint16 %d %d %d", devAdrs_, address,
-                           mbParams_[outOfTurn].value.uint16_t[0]);
-            }
-          }
+          readUint16Registers(devAdrs_, mbParams_[outOfTurn].address, uint16Arr_, count);
           break;
-        case  TYPE_DATA_INT32:
-          int32Arr_[0] = mbParams_[outOfTurn].value.int32_t;
-          res = mms_->writeMultipleLongInts(devAdrs_, address, int32Arr_, 1);
-          if (res != ok_r) {
-            if (isConnect()) {
-              logDebug.add(WarningMsg, "mbCmd0x10 int32 %d %d %d", devAdrs_, address, int32Arr_[0]);
-            }
-          }
+        case TYPE_DATA_INT32:
+          readInt32Registers(devAdrs_, mbParams_[outOfTurn].address, uint32Arr_, count);
           break;
-        case  TYPE_DATA_UINT32:
-          int32Arr_[0] =  mbParams_[outOfTurn].value.uint32_t;
-          res = mms_->writeMultipleLongInts(devAdrs_, address, int32Arr_, 1);
-          if (res != ok_r) {
-            if (isConnect()) {
-              logDebug.add(WarningMsg, "mbCmd0x10 uint32 %d %d %d", devAdrs_, address, int32Arr_[0]);
-            }
-          }
+        case TYPE_DATA_UINT32:
+          readUint32Registers(devAdrs_, mbParams_[outOfTurn].address, uint32Arr_, count);
           break;
-        case  TYPE_DATA_FLOAT:
-          float32Arr_[0] = mbParams_[outOfTurn].value.float_t;
-          res = mms_->writeMultipleFloats(devAdrs_ ,address, float32Arr_, 1);
-          if (res != ok_r) {
-            if (isConnect()) {
-              logDebug.add(WarningMsg, "mbCmd0x10 float %d %d %f", devAdrs_, address, float32Arr_[0]);
-            }
-          }
+        case TYPE_DATA_FLOAT:
+          readFloatsRegisters(devAdrs_, mbParams_[outOfTurn].address, floatArr_, count);
           break;
         default:
           break;
         }
-      }
-      else {                                // Чтение вне очереди
-        if (mbParams_[outOfTurn].command == OPERATION_READ) {
-          int address = mbParams_[outOfTurn].address;
-          switch (mbParams_[outOfTurn].typeData) {
-          case TYPE_DATA_COIL:
-            count = 1;
-            res = mms_->readCoils(devAdrs_, address, bitArr_, count);
-            if (res == ok_r) {
-              int index = getIndexAtAddress(address);
-              for (int i = 0; i < count; i++) {
-                mbParams_[index].value.int16_t[0] = bitArr_[i];
-                uint8_t validity = checkRange(mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, true);
-                if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-                  logDebug.add(WarningMsg, "0x01 ok_r no valid devAdr %d, index %d, value %d, valid %d", devAdrs_,
-                                index, regArr_[i], mbParams_[index].validity);
-                }
-                mbParams_[index].validity = validity;
-                putMessageUpdateId(mbParams_[index].id);
-                index++;
-              }
-            }
-            else {
-              int index = getIndexAtAddress(address);
-              for (uint8_t i = 0; i < count; i++) {
-                mbParams_[index].validity = err_r;
-                if (isConnect()) {
-                  logDebug.add(WarningMsg, "0x01 no ok_r devAdr %d, index %d, value %d, valid %d", devAdrs_, index, bitArr_[i]);
-                }
-                putMessageUpdateId(mbParams_[index].id);
-                index++;
-              }
-            }
-            break;
-          case TYPE_DATA_INT16:
-            count = 1;                      // Пока только одного параметра
-            if ((address < 0x3000) || (address >= 0x4000)) {
-              res = mms_->readMultipleRegisters(devAdrs_, address, regArr_, count);
-              if (res == ok_r) {
-                int index = getIndexAtAddress(address);
-                for (int i = 0; i < count; i++) {
-                  mbParams_[index].value.int16_t[0] = regArr_[i];
-                  uint8_t validity = checkRange(mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, true);
-                  if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-                    logDebug.add(WarningMsg, "0x03 ok_r no valid devAdr %d, index %d, value %d, valid %d", devAdrs_,
-                                 index, regArr_[i], mbParams_[index].validity);
-                  }
-                  mbParams_[index].validity = validity;
-                  putMessageUpdateId(mbParams_[index].id);
-                  index++;
-                }
-              }
-              else {
-                int index = getIndexAtAddress(address);
-                for (int i = 0; i < count; i++) {
-                  mbParams_[index].validity = err_r;
-                  if (isConnect()) {
-                    logDebug.add(WarningMsg, "0x03 no ok_r devAdr %d, index %d, value %d, valid %d", devAdrs_, index, regArr_[i]);
-                  }
-                  putMessageUpdateId(mbParams_[index].id);
-                  index++;
-                }
-              }
-            }
-            else {
-              res = mms_->readInputRegisters(devAdrs_, address - 0x3000, regArr_, count);
-              if (res == ok_r) {
-                int index = getIndexAtAddress(address);
-                for (int i = 0; i < count; i++) {
-                  mbParams_[index].value.int16_t[0] = regArr_[i];
-                  uint8_t validity = checkRange(mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, true);
-                  if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-                    logDebug.add(WarningMsg, "0x04 ok_r no valid devAdr %d, index %d, value %d, valid %d", devAdrs_,
-                                 index, regArr_[i], mbParams_[index].validity);
-                  }
-                  mbParams_[index].validity = validity;
-                  putMessageUpdateId(mbParams_[index].id);
-                  index++;
-                }
-              }
-              else {
-                int index = getIndexAtAddress(address);
-                for (int i = 0; i < count; i++) {
-                  mbParams_[index].validity = err_r;
-                  if (isConnect()) {
-                    logDebug.add(WarningMsg, "0x04 no ok_r devAdr %d, index %d, value %d, valid %d", devAdrs_, index, regArr_[i]);
-                  }
-                  putMessageUpdateId(mbParams_[index].id);
-                  index++;
-                }
-              }
-            }
-            break;
-          case TYPE_DATA_UINT16:
-            count = 1;                      // Пока только одного параметра
-            if ((address < 0x3000) || (address >= 0x4000)) {
-              res = mms_->readMultipleRegisters(devAdrs_, address, regArr_, count);
-              if (res == ok_r) {
-                int index = getIndexAtAddress(address);
-                for (int i = 0; i < count; i++) {
-                  mbParams_[index].value.uint16_t[0] = regArr_[i];
-                  uint8_t validity = checkRange(mbParams_[index].value.uint16_t[0], mbParams_[index].min, mbParams_[index].max, true);
-                  if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-                    logDebug.add(WarningMsg, "mbCmd0x03 uint16 %d %d %d %d", devAdrs_,
-                                 index, regArr_[i], mbParams_[index].validity);
-                  }
-                  mbParams_[index].validity = validity;
-
-                  putMessageUpdateId(mbParams_[index].id);
-                  index++;
-                }
-              }
-              else {
-                int index = getIndexAtAddress(address);
-                for (int i = 0; i < count; i++) {
-                  mbParams_[index].validity = err_r;
-                  if (isConnect()) {
-                    logDebug.add(WarningMsg, "mbCmd0x03 uint16 %d %d %d", devAdrs_, index, regArr_[i]);
-                  }
-                  putMessageUpdateId(mbParams_[index].id);
-                  index++;
-                }
-              }
-            }
-            else {
-              res = mms_->readInputRegisters(devAdrs_, address - 0x3000, regArr_, count);
-              if (res == ok_r) {
-                int index = getIndexAtAddress(address);
-                for (int i = 0; i < count; i++) {
-                  mbParams_[index].value.uint16_t[0] = regArr_[i];
-                  uint8_t validity = checkRange(mbParams_[index].value.uint16_t[0], mbParams_[index].min, mbParams_[index].max, true);
-                  if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-                    logDebug.add(WarningMsg, "mbCmd0x04 uint16 %d %d %d %d", devAdrs_,
-                                 index, regArr_[i], mbParams_[index].validity);
-                  }
-                  mbParams_[index].validity = validity;
-
-                  putMessageUpdateId(mbParams_[index].id);
-                  index++;
-                }
-              }
-              else {
-                int index = getIndexAtAddress(address);
-                for (int i = 0; i < count; i++) {
-                  mbParams_[index].validity = err_r;
-                  if (isConnect()) {
-                    logDebug.add(WarningMsg, "mbCmd0x04 uint16 %d %d %d", devAdrs_, index, regArr_[i]);
-                  }
-                  putMessageUpdateId(mbParams_[index].id);
-                  index++;
-                }
-              }
-            }
-            break;
-          case TYPE_DATA_INT32:
-            count = 1;
-            res = mms_->readMultipleLongInts(devAdrs_, address, int32Arr_, count);
-            if (res == ok_r) {
-              int index = getIndexAtAddress(address);
-              for (int i = 0; i < count; i++) {
-                mbParams_[index].value.int32_t = int32Arr_[i];
-                uint8_t validity = checkRange(mbParams_[index].value.int32_t, mbParams_[index].min, mbParams_[index].max, true);
-                if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-                  logDebug.add(WarningMsg, "mbCmd0x03 int32 %d %d %d %d", devAdrs_,
-                               index, int32Arr_[i], mbParams_[index].validity);
-                }
-                mbParams_[index].validity = validity;
-
-                putMessageUpdateId(mbParams_[index].id);
-                index++;
-              }
-            }
-            else {
-              int index = getIndexAtAddress(address);
-              for (int i = 0; i < count; i++) {
-                mbParams_[index].validity = err_r;
-                if (isConnect()) {
-                  logDebug.add(WarningMsg, "mbCmd0x03 int32 %d %d %d", devAdrs_, index, int32Arr_[i]);
-                }
-                putMessageUpdateId(mbParams_[index].id);
-                index++;
-              }
-            }
-            break;
-          case TYPE_DATA_UINT32:
-            count = 1;
-            res = mms_->readMultipleLongInts(devAdrs_, address, int32Arr_, count);
-            if (res == ok_r) {
-              int index = getIndexAtAddress(address);
-              for (int i = 0; i < count; i++) {
-                mbParams_[index].value.uint32_t = int32Arr_[i];
-                uint8_t validity = checkRange(mbParams_[index].value.uint32_t, mbParams_[index].min, mbParams_[index].max, true);
-                if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-                  logDebug.add(WarningMsg, "mbCmd0x03 uint32 %d %d %d %d", devAdrs_, index, int32Arr_[i], mbParams_[index].validity);
-                }
-                mbParams_[index].validity = validity;
-
-                putMessageUpdateId(mbParams_[index].id);
-                index++;
-              }
-            }
-            else {
-              int index = getIndexAtAddress(address);
-              for (int i = 0; i < count; i++) {
-                mbParams_[index].validity = err_r;
-                if (isConnect()) {
-                  logDebug.add(WarningMsg, "mbCmd0x03 uint32 %d %d %d", devAdrs_, index, int32Arr_[i]);
-                }
-                putMessageUpdateId(mbParams_[index].id);
-                index++;
-              }
-            }
-            break;
-            break;
-          case TYPE_DATA_FLOAT:
-            count = 1;
-            res = mms_->readMultipleFloats(devAdrs_, address, float32Arr_, count);
-            if (res == ok_r) {
-              int index = getIndexAtAddress(address);
-              for (int i = 0; i < count; i++) {
-                mbParams_[index].value.float_t = float32Arr_[i];
-                uint8_t validity = checkRange(mbParams_[index].value.float_t, mbParams_[index].min, mbParams_[index].max, true);
-                if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-                  logDebug.add(WarningMsg, "mbCmd0x03 float %d %d %f %d", devAdrs_,
-                               index, float32Arr_[i], mbParams_[index].validity);
-                }
-                mbParams_[index].validity = validity;
-
-                putMessageUpdateId(mbParams_[index].id);
-                index++;
-              }
-            }
-            else {
-              int index = getIndexAtAddress(address);
-              for (int i = 0; i < count; i++) {
-                mbParams_[index].validity = err_r;
-                if (isConnect()) {
-                  logDebug.add(WarningMsg, "mbCmd0x03 float %d %d %f", devAdrs_,
-                               index, float32Arr_[i]);
-                }
-                putMessageUpdateId(mbParams_[index].id);
-                index++;
-              }
-            }
-            break;
-          }
-        }
-      }
-      mbParams_[outOfTurn].command = OPERATION_ERROR;
-    }
-    else {
-      outOfTurn = searchExchangeParameters();
-      if (outOfTurn) {
-        int address = mbParams_[outOfTurn].address;
-        switch (mbParams_[outOfTurn].typeData) {
-        case TYPE_DATA_COIL:
-
-          break;
-        case TYPE_DATA_INT16:
-          count = 1;                      // Пока только одного параметра
-          if ((address < 0x3000) || (address >= 0x4000)) {
-            res = mms_->readMultipleRegisters(devAdrs_, address, regArr_, count);
-            if (res == ok_r) {
-              int index = getIndexAtAddress(address);
-              for (int i = 0; i < count; i++) {
-                mbParams_[index].value.int16_t[0] = regArr_[i];
-                uint8_t validity = checkRange(mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, true);
-                if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-                  logDebug.add(WarningMsg, "0x03 ok_r no valid devAdr %d, index %d, value %d, valid %d", devAdrs_,
-                               index, regArr_[i], mbParams_[index].validity);
-                }
-                mbParams_[index].validity = validity;
-                putMessageUpdateId(mbParams_[index].id);
-                index++;
-              }
-            }
-            else {
-              int index = getIndexAtAddress(address);
-              for (int i = 0; i < count; i++) {
-                mbParams_[index].validity = err_r;
-                if (isConnect()) {
-                  logDebug.add(WarningMsg, "0x03 no ok_r devAdr %d, index %d, value %d, valid %d", devAdrs_, index, regArr_[i]);
-                }
-                putMessageUpdateId(mbParams_[index].id);
-                index++;
-              }
-            }
-          }
-          else {
-            res = mms_->readInputRegisters(devAdrs_, address - 0x3000, regArr_, count);
-            if (res == ok_r) {
-              int index = getIndexAtAddress(address);
-              for (int i = 0; i < count; i++) {
-                mbParams_[index].value.int16_t[0] = regArr_[i];
-                uint8_t validity = checkRange(mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, true);
-                if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-                  logDebug.add(WarningMsg, "0x04 ok_r no valid devAdr %d, index %d, value %d, valid %d", devAdrs_,
-                               index, regArr_[i], mbParams_[index].validity);
-                }
-                mbParams_[index].validity = validity;
-                putMessageUpdateId(mbParams_[index].id);
-                index++;
-              }
-            }
-            else {
-              int index = getIndexAtAddress(address);
-              for (int i = 0; i < count; i++) {
-                mbParams_[index].validity = err_r;
-                if (isConnect()) {
-                  logDebug.add(WarningMsg, "0x04 no ok_r devAdr %d, index %d, value %d, valid %d", devAdrs_, index, regArr_[i]);
-                }
-                putMessageUpdateId(mbParams_[index].id);
-                index++;
-              }
-            }
-          }
-          break;
-        case TYPE_DATA_UINT16:
-          count = 1;                      // Пока только одного параметра
-          if ((address < 0x3000) || (address >= 0x4000)) {
-            res = mms_->readMultipleRegisters(devAdrs_, address, regArr_, count);
-            if (res == ok_r) {
-              int index = getIndexAtAddress(address);
-              for (int i = 0; i < count; i++) {
-                mbParams_[index].value.uint16_t[0] = regArr_[i];
-                uint8_t validity = checkRange(mbParams_[index].value.uint16_t[0], mbParams_[index].min, mbParams_[index].max, true);
-                if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-                  logDebug.add(WarningMsg, "mbCmd0x03 uint16 %d %d %d %d", devAdrs_,
-                               index, regArr_[i], mbParams_[index].validity);
-                }
-                mbParams_[index].validity = validity;
-
-                putMessageUpdateId(mbParams_[index].id);
-                index++;
-              }
-            }
-            else {
-              int index = getIndexAtAddress(address);
-              for (int i = 0; i < count; i++) {
-                mbParams_[index].validity = err_r;
-                if (isConnect()) {
-                  logDebug.add(WarningMsg, "mbCmd0x03 uint16 %d %d %d", devAdrs_, index, regArr_[i]);
-                }
-                putMessageUpdateId(mbParams_[index].id);
-                index++;
-              }
-            }
-          }
-          else {
-            res = mms_->readInputRegisters(devAdrs_, address - 0x3000, regArr_, count);
-            if (res == ok_r) {
-              int index = getIndexAtAddress(address);
-              for (int i = 0; i < count; i++) {
-                mbParams_[index].value.uint16_t[0] = regArr_[i];
-                uint8_t validity = checkRange(mbParams_[index].value.uint16_t[0], mbParams_[index].min, mbParams_[index].max, true);
-                if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-                  logDebug.add(WarningMsg, "mbCmd0x04 uint16 %d %d %d %d", devAdrs_,
-                               index, regArr_[i], mbParams_[index].validity);
-                }
-                mbParams_[index].validity = validity;
-
-                putMessageUpdateId(mbParams_[index].id);
-                index++;
-              }
-            }
-            else {
-              int index = getIndexAtAddress(address);
-              for (int i = 0; i < count; i++) {
-                mbParams_[index].validity = err_r;
-                if (isConnect()) {
-                  logDebug.add(WarningMsg, "mbCmd0x04 uint16 %d %d %d", devAdrs_, index, regArr_[i]);
-                }
-                putMessageUpdateId(mbParams_[index].id);
-                index++;
-              }
-            }
-          }
-          break;
-        case TYPE_DATA_INT32:
-          count = 1;
-          res = mms_->readMultipleLongInts(devAdrs_, address, int32Arr_, count);
-          if (res == ok_r) {
-            int index = getIndexAtAddress(address);
-            for (int i = 0; i < count; i++) {
-              mbParams_[index].value.int32_t = int32Arr_[i];
-              uint8_t validity = checkRange(mbParams_[index].value.int32_t, mbParams_[index].min, mbParams_[index].max, true);
-              if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-                logDebug.add(WarningMsg, "0x03 devAdr %d, index %d, value %d, valid %d", devAdrs_,
-                             index, int32Arr_[i], mbParams_[index].validity);
-              }
-              mbParams_[index].validity = validity;
-
-              putMessageUpdateId(mbParams_[index].id);
-              index++;
-            }
-          }
-          else {
-            int index = getIndexAtAddress(address);
-            for (int i = 0; i < count; i++) {
-              mbParams_[index].validity = err_r;
-              if (isConnect()) {
-                logDebug.add(WarningMsg, "0x03 devAdr %d, index %d, value %d, valid %d", devAdrs_, index, int32Arr_[i]);
-              }
-              putMessageUpdateId(mbParams_[index].id);
-              index++;
-            }
-          }
-          break;
-        case TYPE_DATA_UINT32:
-          count = 1;
-          res = mms_->readMultipleLongInts(devAdrs_, address, int32Arr_, count);
-          if (res == ok_r) {
-            int index = getIndexAtAddress(address);
-            for (int i = 0; i < count; i++) {
-              mbParams_[index].value.uint32_t = int32Arr_[i];
-              uint8_t validity = checkRange(mbParams_[index].value.uint32_t, mbParams_[index].min, mbParams_[index].max, true);
-              if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-                logDebug.add(WarningMsg, "0x03 devAdr %d, index %d, value %d, valid %d", devAdrs_,
-                             index, int32Arr_[i], mbParams_[index].validity);
-              }
-              mbParams_[index].validity = validity;
-
-              putMessageUpdateId(mbParams_[index].id);
-              index++;
-            }
-          }
-          else {
-            int index = getIndexAtAddress(address);
-            for (int i = 0; i < count; i++) {
-              mbParams_[index].validity = err_r;
-              if (isConnect()) {
-                logDebug.add(WarningMsg, "0x03 devAdr %d, index %d, value %d, valid %d", devAdrs_, index, int32Arr_[i]);
-              }
-              putMessageUpdateId(mbParams_[index].id);
-              index++;
-            }
-          }
-          break;
-          break;
-        case TYPE_DATA_FLOAT:
-          count = 1;
-          res = mms_->readMultipleFloats(devAdrs_, address, float32Arr_, count);
-          if (res == ok_r) {
-            int index = getIndexAtAddress(address);
-            for (int i = 0; i < count; i++) {
-              mbParams_[index].value.float_t = float32Arr_[i];
-              uint8_t validity = checkRange(mbParams_[index].value.float_t, mbParams_[index].min, mbParams_[index].max, true);
-              if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-                logDebug.add(WarningMsg, "0x03 devAdr %d, index %d, value %d, valid %d", devAdrs_,
-                             index, float32Arr_[i], mbParams_[index].validity);
-              }
-              mbParams_[index].validity = validity;
-
-              putMessageUpdateId(mbParams_[index].id);
-              index++;
-            }
-          }
-          else {
-            int index = getIndexAtAddress(address);
-            for (int i = 0; i < count; i++) {
-              mbParams_[index].validity = err_r;
-              if (isConnect()) {
-                logDebug.add(WarningMsg, "0x03 devAdr %d, index %d, value %f, valid %d", devAdrs_, index, float32Arr_[i]);
-              }
-              putMessageUpdateId(mbParams_[index].id);
-              index++;
-            }
-          }
-          break;
-        }
+        mbParams_[outOfTurn].command = OPERATION_ERROR;
       }
     }
   }
@@ -841,3 +380,217 @@ void DeviceModbus::setDeviceAddress(int address)
 {
   devAdrs_ = address;
 }
+
+void DeviceModbus::readCoils(uint8_t slaveAddr, uint16_t startRef, bool *bitArr, uint16_t refCnt)
+{
+  uint8_t res = mms_->readCoils(slaveAddr, startRef, bitArr, refCnt);
+  if (res == ok_r) {
+    int index = getIndexAtAddress(startRef, TYPE_DATA_COIL);
+    for (int i = 0; i < refCnt; i++) {
+      mbParams_[index].value.int16_t[0] = bitArr_[i];
+      uint8_t validity = checkRange(mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, true);
+      if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
+        logDebug.add(WarningMsg, "0x01 ok_r no valid devAdr %d, index %d, value %d, valid %d", devAdrs_,
+                      index, uint16Arr_[i], mbParams_[index].validity);
+      }
+      mbParams_[index].validity = validity;
+      putMessageUpdateId(mbParams_[index].id);
+      index++;
+    }
+  }
+  else {
+    int index = getIndexAtAddress(startRef, TYPE_DATA_COIL);
+    for (uint8_t i = 0; i < refCnt; i++) {
+      mbParams_[index].validity = err_r;
+      if (isConnect()) {
+        logDebug.add(WarningMsg, "0x01 no ok_r devAdr %d, index %d, value %d, valid %d", slaveAddr, index, bitArr[i]);
+      }
+      putMessageUpdateId(mbParams_[index].id);
+      index++;
+    }
+  }
+}
+
+void DeviceModbus::readInt16Registers(uint8_t slaveAddr, uint16_t startRef, uint16_t *regArr, uint16_t refCnt)
+{
+  uint8_t res = mms_->readMultipleRegisters(slaveAddr, startRef, regArr, refCnt);
+  if (res == ok_r) {
+    int index = getIndexAtAddress(startRef, TYPE_DATA_INT16);
+    for (int i = 0; i < refCnt; i++) {
+      mbParams_[index].value.int16_t[0] = regArr[i];
+      uint8_t validity = checkRange(mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, true);
+      if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
+        logDebug.add(WarningMsg, "0x03 ok_r no valid devAdr %d, index %d, value %d, valid %d", slaveAddr,
+                     index, regArr[i], mbParams_[index].validity);
+      }
+      mbParams_[index].validity = validity;
+      putMessageUpdateId(mbParams_[index].id);
+      index++;
+    }
+  }
+  else {
+    int index = getIndexAtAddress(startRef, TYPE_DATA_INT16);
+    for (int i = 0; i < refCnt; i++) {
+      mbParams_[index].validity = err_r;
+      if (isConnect()) {
+        logDebug.add(WarningMsg, "0x03 no ok_r devAdr %d, index %d, value %d, valid %d", slaveAddr, index, regArr[i]);
+      }
+      putMessageUpdateId(mbParams_[index].id);
+      index++;
+    }
+  }
+}
+
+void DeviceModbus::readInt16InputRegisters(uint8_t slaveAddr, uint16_t startRef, uint16_t *regArr, uint16_t refCnt)
+{
+  uint8_t res = mms_->readInputRegisters(slaveAddr, startRef, regArr, refCnt);
+  if (res == ok_r) {
+    int index = getIndexAtAddress(startRef, TYPE_DATA_INT16_4);
+    for (int i = 0; i < refCnt; i++) {
+      mbParams_[index].value.int16_t[0] = regArr[i];
+      uint8_t validity = checkRange(mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, true);
+      if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
+        logDebug.add(WarningMsg, "0x04 ok_r no valid devAdr %d, index %d, value %d, valid %d", slaveAddr,
+                     index, regArr[i], mbParams_[index].validity);
+      }
+      mbParams_[index].validity = validity;
+      putMessageUpdateId(mbParams_[index].id);
+      index++;
+    }
+  }
+  else {
+    int index = getIndexAtAddress(startRef, TYPE_DATA_INT16_4);
+    for (int i = 0; i < refCnt; i++) {
+      mbParams_[index].validity = err_r;
+      if (isConnect()) {
+        logDebug.add(WarningMsg, "0x04 no ok_r devAdr %d, index %d, value %d, valid %d", slaveAddr, index, regArr[i]);
+      }
+      putMessageUpdateId(mbParams_[index].id);
+      index++;
+    }
+  }
+}
+
+void DeviceModbus::readUint16Registers(uint8_t slaveAddr, uint16_t startRef, uint16_t *regArr, uint16_t refCnt)
+{
+  uint8_t res = mms_->readMultipleRegisters(slaveAddr, startRef, regArr, refCnt);
+  if (res == ok_r) {
+    int index = getIndexAtAddress(startRef, TYPE_DATA_UINT16);
+    for (int i = 0; i < refCnt; i++) {
+      mbParams_[index].value.uint16_t[0] = regArr[i];
+      uint8_t validity = checkRange(mbParams_[index].value.uint16_t[0], mbParams_[index].min, mbParams_[index].max, true);
+      if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
+        logDebug.add(WarningMsg, "mbCmd0x03 uint16 %d %d %d %d", slaveAddr,
+                     index, regArr[i], mbParams_[index].validity);
+      }
+      mbParams_[index].validity = validity;
+
+      putMessageUpdateId(mbParams_[index].id);
+      index++;
+    }
+  }
+  else {
+    int index = getIndexAtAddress(startRef, TYPE_DATA_UINT16);
+    for (int i = 0; i < refCnt; i++) {
+      mbParams_[index].validity = err_r;
+      if (isConnect()) {
+        logDebug.add(WarningMsg, "mbCmd0x03 uint16 %d %d %d", slaveAddr, index, regArr[i]);
+      }
+      putMessageUpdateId(mbParams_[index].id);
+      index++;
+    }
+  }
+}
+
+void DeviceModbus::readInt32Registers(uint8_t slaveAddr, uint16_t startRef, uint32_t *int32Arr, uint16_t refCnt)
+{
+  uint8_t res = mms_->readMultipleLongInts(slaveAddr, startRef, int32Arr, refCnt);
+  if (res == ok_r) {
+    int index = getIndexAtAddress(startRef, TYPE_DATA_INT32);
+    for (int i = 0; i < refCnt; i++) {
+      mbParams_[index].value.int32_t = int32Arr[i];
+      uint8_t validity = checkRange(mbParams_[index].value.int32_t, mbParams_[index].min, mbParams_[index].max, true);
+      if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
+        logDebug.add(WarningMsg, "mbCmd0x03 int32 %d %d %d %d", slaveAddr,
+                     index, int32Arr[i], mbParams_[index].validity);
+      }
+      mbParams_[index].validity = validity;
+
+      putMessageUpdateId(mbParams_[index].id);
+      index++;
+    }
+  }
+  else {
+    int index = getIndexAtAddress(startRef, TYPE_DATA_INT32);
+    for (int i = 0; i < refCnt; i++) {
+      mbParams_[index].validity = err_r;
+      if (isConnect()) {
+        logDebug.add(WarningMsg, "mbCmd0x03 int32 %d %d %d", slaveAddr, index, int32Arr[i]);
+      }
+      putMessageUpdateId(mbParams_[index].id);
+      index++;
+    }
+  }
+}
+
+void DeviceModbus::readUint32Registers(uint8_t slaveAddr, uint16_t startRef, uint32_t *int32Arr, uint16_t refCnt)
+{
+  uint8_t res = mms_->readMultipleLongInts(slaveAddr, startRef, int32Arr, refCnt);
+  if (res == ok_r) {
+    int index = getIndexAtAddress(startRef, TYPE_DATA_UINT32);
+    for (int i = 0; i < refCnt; i++) {
+      mbParams_[index].value.uint32_t = int32Arr[i];
+      uint8_t validity = checkRange(mbParams_[index].value.uint32_t, mbParams_[index].min, mbParams_[index].max, true);
+      if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
+        logDebug.add(WarningMsg, "mbCmd0x03 uint32 %d %d %d %d", slaveAddr, index, int32Arr[i], mbParams_[index].validity);
+      }
+      mbParams_[index].validity = validity;
+      putMessageUpdateId(mbParams_[index].id);
+      index++;
+    }
+  }
+  else {
+    int index = getIndexAtAddress(startRef, TYPE_DATA_UINT32);
+    for (int i = 0; i < refCnt; i++) {
+      mbParams_[index].validity = err_r;
+      if (isConnect()) {
+        logDebug.add(WarningMsg, "mbCmd0x03 uint32 %d %d %d", slaveAddr, index, int32Arr[i]);
+      }
+      putMessageUpdateId(mbParams_[index].id);
+      index++;
+    }
+  }
+}
+
+void DeviceModbus::readFloatsRegisters(uint8_t slaveAddr, uint16_t startRef, float *float32Arr, uint16_t refCnt)
+{
+  uint8_t res = mms_->readMultipleFloats(slaveAddr, startRef, float32Arr, refCnt);
+  if (res == ok_r) {
+    int index = getIndexAtAddress(startRef, TYPE_DATA_FLOAT);
+    for (int i = 0; i < refCnt; i++) {
+      mbParams_[index].value.float_t = float32Arr[i];
+      uint8_t validity = checkRange(mbParams_[index].value.float_t, mbParams_[index].min, mbParams_[index].max, true);
+      if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
+        logDebug.add(WarningMsg, "mbCmd0x03 float %d %d %f %d", slaveAddr,
+                     index, float32Arr[i], mbParams_[index].validity);
+      }
+      mbParams_[index].validity = validity;
+
+      putMessageUpdateId(mbParams_[index].id);
+      index++;
+    }
+  }
+  else {
+    int index = getIndexAtAddress(startRef, TYPE_DATA_FLOAT);
+    for (int i = 0; i < refCnt; i++) {
+      mbParams_[index].validity = err_r;
+      if (isConnect()) {
+        logDebug.add(WarningMsg, "mbCmd0x03 float %d %d %f", slaveAddr,
+                     index, float32Arr[i]);
+      }
+      putMessageUpdateId(mbParams_[index].id);
+      index++;
+    }
+  }
+}
+

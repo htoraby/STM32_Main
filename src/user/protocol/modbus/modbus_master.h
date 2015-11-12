@@ -85,7 +85,7 @@ public:
    * \param RefCnt - количество считываемых входов (Диапазон: 1-2000)
    * \return 0 - выполнено или код ошибки
    */
-  int readInputDiscretes(int SlaveAddr, int StartRef, bool BitArr[], int RefCnt);
+  int readInputDiscretes(uint8_t SlaveAddr, uint16_t StartRef, bool BitArr[], uint16_t RefCnt);
 
   /*!
    * \brief Функция чтения регистров
@@ -107,7 +107,7 @@ public:
    * \param refCnt - количество длинных целых регистров
    * \return 0 - выполнено или код ошибки
    */
-  int readMultipleLongInts(int slaveAddr, int startRef, int *int32Arr, int refCnt);
+  int readMultipleLongInts(uint8_t slaveAddr, uint16_t startRef, uint32_t *int32Arr, uint16_t refCnt);
 
   /*!
    * \brief Функция чтения регистров 32 битных регистров
@@ -118,7 +118,7 @@ public:
    * \param refCnt - количество поплавков значений, которые будут читать (диапазон: 1-62)
    * \return 0 - выполнено или код ошибки
    */
-  int readMultipleFloats(int slaveAddr, int startRef, float *float32Arr, int refCnt);
+  int readMultipleFloats(uint8_t slaveAddr, uint16_t startRef, float *float32Arr, uint16_t refCnt);
 
   /*!
    * \brief Функция чтения регистров
@@ -140,7 +140,7 @@ public:
    * \param refCnt - количество длинных целых регистров
    * \return 0 - выполнено или код ошибки
    */
-  int readInputLongInts(int slaveAddr, int startRef, int *int32Arr, int refCnt);
+  int readInputLongInts(uint8_t slaveAddr, uint16_t startRef, uint32_t *int32Arr, uint16_t refCnt);
 
   /*!
    * \brief Функция чтения регистров 32 битных регистров
@@ -151,7 +151,7 @@ public:
    * \param refCnt - количество поплавков значений, которые будут читать (диапазон: 1-62)
    * \return 0 - выполнено или код ошибки
    */
-  int readInputFloats(int slaveAddr, int startRef, float float32Arr[], int refCnt);
+  int readInputFloats(uint8_t slaveAddr, uint16_t startRef, float float32Arr[], uint16_t refCnt);
 
   /*!
    * \brief Функция записи катушки
@@ -161,7 +161,7 @@ public:
    * \param bitVal - записываемое состояние
    * \return 0 - выполнено или код ошибки
    */
-  int writeCoil(int slaveAddr, int bitAddr, int bitVal);
+  int writeCoil(uint8_t slaveAddr, int bitAddr, int bitVal);
 
   /*!
    * \brief Функция записи значения в регистр
@@ -171,7 +171,7 @@ public:
    * \param regVal - данные для отправки
    * \return 0 - выполнено или код ошибки
    */
-  int writeSingleRegister(int slaveAddr, int regAddr, short regVal);
+  int writeSingleRegister(uint8_t slaveAddr, uint16_t regAddr, uint16_t regVal);
 
   /*!
    * \brief Функция чтения исключения
@@ -181,7 +181,7 @@ public:
    * \param statusBytePtr - указатель на буфер
    * \return 0 - выполнено или код ошибки
    */
-  int readExceptionStatus(int slaveAddr, unsigned char *statusBytePtr);
+  int readExceptionStatus(uint8_t slaveAddr, unsigned char *statusBytePtr);
 
   /*!
    * \brief Функция эхо-запроса
@@ -213,13 +213,37 @@ public:
    * \param refCnt - количество катушек, которые будут записаны (Диапазон: 1-1968)
    * \return 0 - выполнено или код ошибки
    */
-  int forceMultipleCoils(int slaveAddr, int startRef, const bool bitArr[], int refCnt);
+  int forceMultipleCoils(uint8_t slaveAddr, uint16_t startRef, const bool bitArr[], uint16_t refCnt);
 
-  int writeMultipleRegisters(int slaveAddr, int startRef, short *regArr, int refCnt);
+  /*!
+   * \brief writeMultipleRegisters
+   * \param slaveAddr
+   * \param startRef
+   * \param regArr
+   * \param refCnt
+   * \return
+   */
+  int writeMultipleRegisters(uint8_t slaveAddr, uint16_t startRef, uint16_t *regArr, uint16_t refCnt);
 
-  int writeMultipleLongInts(int slaveAddr, int startRef, int *int32Arr, int refCnt);
+  /*!
+   * \brief writeMultipleLongInts
+   * \param slaveAddr
+   * \param startRef
+   * \param int32Arr
+   * \param refCnt
+   * \return
+   */
+  int writeMultipleLongInts(uint8_t slaveAddr, uint16_t startRef, uint32_t *int32Arr, uint16_t refCnt);
 
-  int writeMultipleFloats(int slaveAddr, int startRef, float *float32Arr, int refCnt);
+  /*!
+   * \brief writeMultipleFloats
+   * \param slaveAddr
+   * \param startRef
+   * \param float32Arr
+   * \param refCnt
+   * \return
+   */
+  int writeMultipleFloats(uint8_t slaveAddr, uint16_t startRef, float *float32Arr, uint16_t refCnt);
 
   /*!
    * \brief Функция задания времени ожидания ответа на запрос

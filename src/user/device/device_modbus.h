@@ -213,7 +213,7 @@ public:
    * \param address - идентификатор параметра
    * \return Index
   */
-  int getIndexAtAddress(int address);
+  int getIndexAtAddress(int address, int typeData);
 
   /*!
    * \brief Метод записи параметра в устройство
@@ -268,10 +268,10 @@ public:
 
   bool isConnect();
 
-  bool bitArr_[125];
-  uint16_t regArr_[125];
-  int int32Arr_[62];
-  float float32Arr_[62];
+  bool bitArr_[125]; 
+  uint16_t uint16Arr_[125];
+  uint32_t uint32Arr_[62];
+  float floatArr_[62];
 
 private:
   /*!
@@ -285,6 +285,69 @@ private:
    * \param Адрес устройства
   */
   void setDeviceAddress(int address);
+
+  /*!
+   * \brief readCoils
+   * \param slaveAddr
+   * \param startRef
+   * \param bitArr
+   * \param refCnt
+   */
+  void readCoils(uint8_t slaveAddr, uint16_t startRef, bool *bitArr, uint16_t refCnt);
+
+  /*!
+   * \brief readInt16Registers
+   * \param slaveAddr
+   * \param startRef
+   * \param regArr
+   * \param refCnt
+   */
+  void readInt16Registers(uint8_t slaveAddr, uint16_t startRef, uint16_t *regArr, uint16_t refCnt);
+
+  /*!
+   * \brief readInt16InputRegisters
+   * \param slaveAddr
+   * \param startRef
+   * \param regArr
+   * \param refCnt
+   */
+  void readInt16InputRegisters(uint8_t slaveAddr, uint16_t startRef, uint16_t *regArr, uint16_t refCnt);
+
+  /*!
+   * \brief readUint16Registers
+   * \param slaveAddr
+   * \param startRef
+   * \param regArr
+   * \param refCnt
+   */
+  void readUint16Registers(uint8_t slaveAddr, uint16_t startRef, uint16_t *regArr, uint16_t refCnt);
+
+  /*!
+   * \brief readInt32Registers
+   * \param slaveAddr
+   * \param startRef
+   * \param int32Arr
+   * \param refCnt
+   */
+  void readInt32Registers(uint8_t slaveAddr, uint16_t startRef, uint32_t *int32Arr, uint16_t refCnt);
+
+  /*!
+   * \brief readUint32Registers
+   * \param slaveAddr
+   * \param startRef
+   * \param int32Arr
+   * \param refCnt
+   */
+  void readUint32Registers(uint8_t slaveAddr, uint16_t startRef, uint32_t *int32Arr, uint16_t refCnt);
+
+  /*!
+   * \brief readFloatsRegisters
+   * \param slaveAddr
+   * \param startRef
+   * \param float32Arr
+   * \param refCnt
+   */
+  void readFloatsRegisters(uint8_t slaveAddr, uint16_t startRef, float *float32Arr, uint16_t refCnt);
 
   //! Указатель на массив параметров устройства
   ModbusParameter *mbParams_;
