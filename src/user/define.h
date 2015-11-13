@@ -377,7 +377,7 @@ enum LastReasonStop {
   LastReasonStopVsdNoConnect,                   //!< "ЧРП. Нет связи"
   LastReasonStopImbalanceCurIn,                 //!< "Дисбаланс входных токов"
 
-  LastReasonStopLast
+  LastReasonStopLast                    = 65535,
 };
 
 /*!

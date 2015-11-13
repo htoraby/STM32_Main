@@ -36,7 +36,7 @@ ProtectionHardwareVsd::~ProtectionHardwareVsd()
 bool ProtectionHardwareVsd::checkAlarm()
 {
   float alarm = vsd->checkAlarmVsd();
-  lastReasonStop_ = (LastReasonStop)alarm;
+  lastReasonStop_ = (LastReasonStop)(int)alarm;
   protReactEventId_ = (EventId)alarm;
   parameters.set(CCS_VSD_ALARM_CODE, alarm);
   if (alarm != VSD_ALARM_NONE) {
