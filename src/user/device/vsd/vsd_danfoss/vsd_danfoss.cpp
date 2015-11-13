@@ -57,6 +57,7 @@ void VsdDanfoss::init()
   dm_ = new DeviceModbus(modbusParameters_, count,
                          VSD_UART, 115200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1);
   dm_->createThread("ProtocolVsd", getValueDeviceQId_);
+  dm_->setAddrIndexReg(dm_->getFieldAddress(dm_->getIndexAtId(VSD_INDEX)));
 
   initParameters();
   readParameters();
