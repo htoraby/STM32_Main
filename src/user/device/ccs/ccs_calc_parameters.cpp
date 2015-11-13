@@ -666,10 +666,10 @@ void Ccs::changedDigitalInput(int num)
 
 void Ccs::calcAnalogInputs()
 {
-  setValue(CCS_AI_1_VALUE, getValueAnalogInExt(AI1));
-  setValue(CCS_AI_2_VALUE, getValueAnalogInExt(AI2));
-  setValue(CCS_AI_3_VALUE, getValueAnalogInExt(AI3));
-  setValue(CCS_AI_4_VALUE, getValueAnalogInExt(AI4));
+  setValue(CCS_AI_1_VALUE, getValueAnalogInExt(AI1)/**getValue(CCS_COEF_AI_1)*/);
+  setValue(CCS_AI_2_VALUE, getValueAnalogInExt(AI2)/**getValue(CCS_COEF_AI_2)*/);
+  setValue(CCS_AI_3_VALUE, getValueAnalogInExt(AI3)/**getValue(CCS_COEF_AI_3)*/);
+  setValue(CCS_AI_4_VALUE, getValueAnalogInExt(AI4)/**getValue(CCS_COEF_AI_4)*/);
   setValue(CCS_AI_5_VALUE, getValueAnalogInExt(AI5));
 
   float value;

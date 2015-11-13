@@ -16378,6 +16378,90 @@
 	</param>
 	<param>
 		<id>849</id>
+		<name>CCS_COEF_AI_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.001</min>
+		<max>1.999</max>
+		<def>1.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Коэффициент коррекции аналогового входа 1</text>
+		<short_text>Коэфф.коррек.аналог.1</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>X_XXX</format>
+		<code>0</code>
+		<comment>Коэффициент коррекции аналогового входа 1</comment>
+	</param>
+	<param>
+		<id>850</id>
+		<name>CCS_COEF_AI_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.001</min>
+		<max>1.999</max>
+		<def>1.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Коэффициент коррекции аналогового входа 2</text>
+		<short_text>Коэфф.коррек.аналог.2</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>X_XXX</format>
+		<code>0</code>
+		<comment>Коэффициент коррекции аналогового входа 2</comment>
+	</param>
+	<param>
+		<id>851</id>
+		<name>CCS_COEF_AI_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.001</min>
+		<max>1.999</max>
+		<def>1.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Коэффициент коррекции аналогового входа 3</text>
+		<short_text>Коэфф.коррек.аналог.3</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>X_XXX</format>
+		<code>0</code>
+		<comment>Коэффициент коррекции аналогового входа 3</comment>
+	</param>
+	<param>
+		<id>852</id>
+		<name>CCS_COEF_AI_4</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.001</min>
+		<max>1.999</max>
+		<def>1.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Коэффициент коррекции аналогового входа 4</text>
+		<short_text>Коэфф.коррек.аналог.4</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>X_XXX</format>
+		<code>0</code>
+		<comment>Коэффициент коррекции аналогового входа 4</comment>
+	</param>
+	<param>
+		<id>853</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>

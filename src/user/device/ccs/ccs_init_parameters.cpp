@@ -10190,5 +10190,53 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_ALARM_TYPE - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_PROT_AI_4_ALARM_TYPE - CCS_BEGIN].def                          = 0.0;
   parameters_[CCS_PROT_AI_4_ALARM_TYPE - CCS_BEGIN].code                         = 0;
+  // Коэффициент коррекции аналогового входа 1
+  parameters_[CCS_COEF_AI_1 - CCS_BEGIN].id                                      = CCS_COEF_AI_1;
+  parameters_[CCS_COEF_AI_1 - CCS_BEGIN].access                                  = ACCESS_OPERATOR;
+  parameters_[CCS_COEF_AI_1 - CCS_BEGIN].operation                               = OPERATION_WRITE;
+  parameters_[CCS_COEF_AI_1 - CCS_BEGIN].physic                                  = PHYSIC_NUMERIC;
+  parameters_[CCS_COEF_AI_1 - CCS_BEGIN].validity                                = VALIDITY_OK;
+  parameters_[CCS_COEF_AI_1 - CCS_BEGIN].value.float_t                           = 1.0;
+  parameters_[CCS_COEF_AI_1 - CCS_BEGIN].min                                     = 0.001;
+  parameters_[CCS_COEF_AI_1 - CCS_BEGIN].max                                     = 1.999;
+  parameters_[CCS_COEF_AI_1 - CCS_BEGIN].discret                                 = 1000;
+  parameters_[CCS_COEF_AI_1 - CCS_BEGIN].def                                     = 1.0;
+  parameters_[CCS_COEF_AI_1 - CCS_BEGIN].code                                    = 0;
+  // Коэффициент коррекции аналогового входа 2
+  parameters_[CCS_COEF_AI_2 - CCS_BEGIN].id                                      = CCS_COEF_AI_2;
+  parameters_[CCS_COEF_AI_2 - CCS_BEGIN].access                                  = ACCESS_OPERATOR;
+  parameters_[CCS_COEF_AI_2 - CCS_BEGIN].operation                               = OPERATION_WRITE;
+  parameters_[CCS_COEF_AI_2 - CCS_BEGIN].physic                                  = PHYSIC_NUMERIC;
+  parameters_[CCS_COEF_AI_2 - CCS_BEGIN].validity                                = VALIDITY_OK;
+  parameters_[CCS_COEF_AI_2 - CCS_BEGIN].value.float_t                           = 1.0;
+  parameters_[CCS_COEF_AI_2 - CCS_BEGIN].min                                     = 0.001;
+  parameters_[CCS_COEF_AI_2 - CCS_BEGIN].max                                     = 1.999;
+  parameters_[CCS_COEF_AI_2 - CCS_BEGIN].discret                                 = 1000;
+  parameters_[CCS_COEF_AI_2 - CCS_BEGIN].def                                     = 1.0;
+  parameters_[CCS_COEF_AI_2 - CCS_BEGIN].code                                    = 0;
+  // Коэффициент коррекции аналогового входа 3
+  parameters_[CCS_COEF_AI_3 - CCS_BEGIN].id                                      = CCS_COEF_AI_3;
+  parameters_[CCS_COEF_AI_3 - CCS_BEGIN].access                                  = ACCESS_OPERATOR;
+  parameters_[CCS_COEF_AI_3 - CCS_BEGIN].operation                               = OPERATION_WRITE;
+  parameters_[CCS_COEF_AI_3 - CCS_BEGIN].physic                                  = PHYSIC_NUMERIC;
+  parameters_[CCS_COEF_AI_3 - CCS_BEGIN].validity                                = VALIDITY_OK;
+  parameters_[CCS_COEF_AI_3 - CCS_BEGIN].value.float_t                           = 1.0;
+  parameters_[CCS_COEF_AI_3 - CCS_BEGIN].min                                     = 0.001;
+  parameters_[CCS_COEF_AI_3 - CCS_BEGIN].max                                     = 1.999;
+  parameters_[CCS_COEF_AI_3 - CCS_BEGIN].discret                                 = 1000;
+  parameters_[CCS_COEF_AI_3 - CCS_BEGIN].def                                     = 1.0;
+  parameters_[CCS_COEF_AI_3 - CCS_BEGIN].code                                    = 0;
+  // Коэффициент коррекции аналогового входа 4
+  parameters_[CCS_COEF_AI_4 - CCS_BEGIN].id                                      = CCS_COEF_AI_4;
+  parameters_[CCS_COEF_AI_4 - CCS_BEGIN].access                                  = ACCESS_OPERATOR;
+  parameters_[CCS_COEF_AI_4 - CCS_BEGIN].operation                               = OPERATION_WRITE;
+  parameters_[CCS_COEF_AI_4 - CCS_BEGIN].physic                                  = PHYSIC_NUMERIC;
+  parameters_[CCS_COEF_AI_4 - CCS_BEGIN].validity                                = VALIDITY_OK;
+  parameters_[CCS_COEF_AI_4 - CCS_BEGIN].value.float_t                           = 1.0;
+  parameters_[CCS_COEF_AI_4 - CCS_BEGIN].min                                     = 0.001;
+  parameters_[CCS_COEF_AI_4 - CCS_BEGIN].max                                     = 1.999;
+  parameters_[CCS_COEF_AI_4 - CCS_BEGIN].discret                                 = 1000;
+  parameters_[CCS_COEF_AI_4 - CCS_BEGIN].def                                     = 1.0;
+  parameters_[CCS_COEF_AI_4 - CCS_BEGIN].code                                    = 0;
 }
 
