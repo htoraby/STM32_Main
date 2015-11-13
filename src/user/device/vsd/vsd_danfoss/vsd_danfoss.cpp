@@ -1171,6 +1171,8 @@ int VsdDanfoss::resetSetpoints()
   writeToDevice(VSD_DI_32, 0);
   writeToDevice(VSD_TERMINAL_27_DI, 75);
   writeToDevice(VSD_TERMINAL_29_DI, 80);
+  writeToDevice(VSD_FUNCTION_RELE, 5);
+  writeToDevice(VSD_FUNCTION_RELE_1, 70);
 //  FUNCTION_RELE|5;70;0;0;0;0;0;0;0;|
 //  ON_DELAY_RELAY|0.01;60;|
   writeToDevice(VSD_42_AO, 133);

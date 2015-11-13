@@ -70,6 +70,8 @@ public:
    */
   void createThread(const char *threadName, osMessageQId getValueDeviceQId);
 
+  void setAddrIndexReg(uint16_t addr);
+
   // Базовые методы работы со структурой ModbusParameter
   /*!
    * \brief Метод получения ID параметра по индексу в массиве параметров
@@ -112,6 +114,8 @@ public:
    * \return поле TypeData
    */
   int getFieldTypeData(int index);
+
+  int getFieldIndex(int index);
 
   /*!
    * \brief Метод получения Coefficient параметра по индексу в массиве параметров
@@ -213,7 +217,7 @@ public:
    * \param address - идентификатор параметра
    * \return Index
   */
-  int getIndexAtAddress(int address, int typeData);
+  int getIndexAtAddress(int address, int typeData, uint8_t index = 0);
 
   /*!
    * \brief Метод записи параметра в устройство
@@ -350,6 +354,26 @@ private:
   void readFloatsRegisters(uint8_t slaveAddr, uint16_t startRef, float *float32Arr, uint16_t refCnt);
 
   /*!
+   * \brief readArrayInt16Registers
+   * \param slaveAddr
+   * \param startRef
+   * \param indexArray
+   * \param regArr
+   * \param refCnt
+   */
+  void readArrayInt16Registers(uint8_t slaveAddr, uint16_t startRef, uint8_t indexArray, uint16_t *regArr, uint16_t refCnt);
+
+  /*!
+   * \brief readArrayInt32Registers
+   * \param slaveAddr
+   * \param startRef
+   * \param indexArray
+   * \param int32Arr
+   * \param refCnt
+   */
+  void readArrayInt32Registers(uint8_t slaveAddr, uint16_t startRef, uint8_t indexArray, uint32_t *int32Arr, uint16_t refCnt);
+
+  /*!
    * \brief writeCoil
    * \param slaveAddr
    * \param bitAddr
@@ -400,6 +424,24 @@ private:
    */
   void writeFloatRegister(uint8_t slaveAddr, uint16_t startRef, float *float32Arr, uint16_t refCnt);
 
+  /*!
+   * \brief writeInt16Register
+   * \param slaveAddr
+   * \param regAddr
+   * \param regVal
+   */
+  void writeArrayInt16Register(uint8_t slaveAddr, uint16_t regAddr, uint8_t indexArray, uint16_t regVal);
+
+  /*!
+   * \brief writeArrayInt32Register
+   * \param slaveAddr
+   * \param startRef
+   * \param indexArray
+   * \param int32Arr
+   * \param refCnt
+   */
+  void writeArrayInt32Register(uint8_t slaveAddr, uint16_t startRef, uint8_t indexArray, int32_t *int32Arr, uint16_t refCnt);
+
   //! Указатель на массив параметров устройства
   ModbusParameter *mbParams_;
   //! Количество параметров в массиве
@@ -408,6 +450,8 @@ private:
   int numPort_;
   uint8_t devAdrs_;
   int indexExchange_;
+
+  uint16_t addrIndexReg_;
 
   //! Идентификатор задачи
   osThreadId threadId_;

@@ -56,6 +56,11 @@ void DeviceModbus::createThread(const char *threadName, osMessageQId getValueDev
   threadId_ = osThreadCreate(&t, this);
 }
 
+void DeviceModbus::setAddrIndexReg(uint16_t addr)
+{
+  addrIndexReg_ = addr;
+}
+
 int DeviceModbus::getFieldID(int index)
 {
   return mbParams_[index].id;
@@ -89,6 +94,11 @@ int DeviceModbus::getFieldValidity(int index)
 int DeviceModbus::getFieldTypeData(int index)
 {
   return mbParams_[index].typeData;
+}
+
+int DeviceModbus::getFieldIndex(int index)
+{
+  return mbParams_[index].index;
 }
 
 int DeviceModbus::getFieldFreqExchange(int index)
@@ -152,12 +162,13 @@ int DeviceModbus::getIndexAtId(int id)
   return 0;
 }
 
-int DeviceModbus::getIndexAtAddress(int address, int typeData)
+int DeviceModbus::getIndexAtAddress(int address, int typeData, uint8_t index)
 {
   for (int i = 0; i < countParameter_; i++) {
     if (getFieldAddress(i) == address)
       if (getFieldTypeData(i) == typeData)
-        return i;
+        if (getFieldIndex(i) == index)
+          return i;
   }
   return 0;
 }
@@ -306,14 +317,20 @@ void DeviceModbus::exchangeTask()
       case TYPE_DATA_UINT16:
         writeUint16Register(devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].value.uint16_t[0]);
         break;
-      case  TYPE_DATA_INT32:
+      case TYPE_DATA_INT32:
         writeInt32Register(devAdrs_, mbParams_[outOfTurn].address, &mbParams_[outOfTurn].value.int32_t, count);
         break;
-      case  TYPE_DATA_UINT32:
+      case TYPE_DATA_UINT32:
         writeUint32Register(devAdrs_, mbParams_[outOfTurn].address, &mbParams_[outOfTurn].value.uint32_t, count);
         break;
-      case  TYPE_DATA_FLOAT:
+      case TYPE_DATA_FLOAT:
         writeFloatRegister(devAdrs_ ,mbParams_[outOfTurn].address, &mbParams_[outOfTurn].value.float_t, count);
+        break;
+      case TYPE_DATA_ARRAY_INT16:
+        writeArrayInt16Register(devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].index, mbParams_[outOfTurn].value.int16_t[0]);
+        break;
+      case TYPE_DATA_ARRAY_INT32:
+         writeArrayInt32Register(devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].index, &mbParams_[outOfTurn].value.int32_t, count);
         break;
       default:
         break;
@@ -345,6 +362,12 @@ void DeviceModbus::exchangeTask()
           break;
         case TYPE_DATA_FLOAT:
           readFloatsRegisters(devAdrs_, mbParams_[outOfTurn].address, floatArr_, count);
+          break;
+        case TYPE_DATA_ARRAY_INT16:
+          readArrayInt16Registers(devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].index, uint16Arr_, count);
+          break;
+        case TYPE_DATA_ARRAY_INT32:
+          readArrayInt32Registers(devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].index, uint32Arr_, count);
           break;
         default:
           break;
@@ -578,6 +601,88 @@ void DeviceModbus::readFloatsRegisters(uint8_t slaveAddr, uint16_t startRef, flo
   }
 }
 
+void DeviceModbus::readArrayInt16Registers(uint8_t slaveAddr, uint16_t startRef, uint8_t indexArray, uint16_t *regArr, uint16_t refCnt)
+{
+  uint8_t res = mms_->writeSingleRegister(slaveAddr, addrIndexReg_, indexArray);
+  if (res == ok_r) {
+    res = mms_->readMultipleRegisters(slaveAddr, startRef, regArr, refCnt);
+    if (res == ok_r) {
+      int index = getIndexAtAddress(startRef, TYPE_DATA_ARRAY_INT16, indexArray);
+      for (int i = 0; i < refCnt; i++) {
+        mbParams_[index].value.int16_t[0] = regArr[i];
+        uint8_t validity = checkRange(mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, true);
+        if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
+          logDebug.add(WarningMsg, "0x03 ok_r no valid devAdr %d, address%d, indexArray%d, index %d, value %d, valid %d",
+                       slaveAddr, startRef, indexArray, index, regArr[i], mbParams_[index].validity);
+        }
+        mbParams_[index].validity = validity;
+        putMessageUpdateId(mbParams_[index].id);
+        index++;
+      }
+    }
+    else {
+      int index = getIndexAtAddress(startRef, TYPE_DATA_ARRAY_INT16, indexArray);
+      for (int i = 0; i < refCnt; i++) {
+        mbParams_[index].validity = err_r;
+        if (isConnect()) {
+          logDebug.add(WarningMsg, "0x03 no ok_r devAdr %d, address %d, indexArray %d, index %d, value %d, valid %d",
+                       slaveAddr, startRef, indexArray, index, regArr[i], mbParams_[index].validity);
+        }
+        putMessageUpdateId(mbParams_[index].id);
+        index++;
+      }
+    }
+    res = mms_->writeSingleRegister(slaveAddr, addrIndexReg_, 0);
+    if ((res != ok_r) && isConnect())
+      logDebug.add(WarningMsg, "mbCmd0x06 Reset Index Array");
+  }
+  else {
+    if (isConnect())
+      logDebug.add(WarningMsg, "mbCmd0x06 Set Index Array %d", indexArray);
+  }
+}
+
+void DeviceModbus::readArrayInt32Registers(uint8_t slaveAddr, uint16_t startRef, uint8_t indexArray, uint32_t *int32Arr, uint16_t refCnt)
+{
+  uint8_t res = mms_->writeSingleRegister(slaveAddr, addrIndexReg_, indexArray);
+  if (res == ok_r) {
+    uint8_t res = mms_->readMultipleLongInts(slaveAddr, startRef, int32Arr, refCnt);
+    if (res == ok_r) {
+      int index = getIndexAtAddress(startRef, TYPE_DATA_ARRAY_INT32, indexArray);
+      for (int i = 0; i < refCnt; i++) {
+        mbParams_[index].value.int32_t = int32Arr[i];
+        uint8_t validity = checkRange(mbParams_[index].value.int32_t, mbParams_[index].min, mbParams_[index].max, true);
+        if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
+          logDebug.add(WarningMsg, "0x03 ok_r no valid devAdr %d, address%d, indexArray%d, index %d, value %d, valid %d",
+                       slaveAddr, startRef, indexArray, index, int32Arr[i], mbParams_[index].validity);
+        }
+        mbParams_[index].validity = validity;
+        putMessageUpdateId(mbParams_[index].id);
+        index++;
+      }
+    }
+    else {
+      int index = getIndexAtAddress(startRef, TYPE_DATA_ARRAY_INT32, indexArray);
+      for (int i = 0; i < refCnt; i++) {
+        mbParams_[index].validity = err_r;
+        if (isConnect()) {
+          logDebug.add(WarningMsg, "0x03 no ok_r devAdr %d, address %d, indexArray %d, index %d, value %d, valid %d",
+                       slaveAddr, startRef, indexArray, index, int32Arr[i], mbParams_[index].validity);
+        }
+        putMessageUpdateId(mbParams_[index].id);
+        index++;
+      }
+    }
+    res = mms_->writeSingleRegister(slaveAddr, addrIndexReg_, 0);
+    if ((res != ok_r) && isConnect())
+      logDebug.add(WarningMsg, "mbCmd0x06 Reset Index Array");
+  }
+  else {
+    if (isConnect())
+      logDebug.add(WarningMsg, "mbCmd0x06 Set Index Array %d", indexArray);
+  }
+}
+
 void DeviceModbus::writeCoil(uint8_t slaveAddr, int bitAddr, int bitVal)
 {
   uint8_t res = mms_->writeCoil(slaveAddr, bitAddr, bitVal);
@@ -605,15 +710,51 @@ void DeviceModbus::writeInt32Register(uint8_t slaveAddr, uint16_t startRef, int3
   if ((res != ok_r) && isConnect())
     logDebug.add(WarningMsg, "mbCmd0x10 int32 %d %d %d", slaveAddr, startRef, int32Arr);
 }
+
 void DeviceModbus::writeUint32Register(uint8_t slaveAddr, uint16_t startRef, uint32_t *int32Arr, uint16_t refCnt)
 {
   uint8_t res = mms_->writeMultipleLongInts(slaveAddr, startRef, int32Arr, 1);
   if ((res != ok_r) && isConnect())
     logDebug.add(WarningMsg, "mbCmd0x10 uint32 %d %d %d", slaveAddr, startRef, int32Arr);
 }
+
 void DeviceModbus::writeFloatRegister(uint8_t slaveAddr, uint16_t startRef, float *float32Arr, uint16_t refCnt)
 {
   uint8_t res = mms_->writeMultipleFloats(slaveAddr, startRef, float32Arr, 1);
   if ((res != ok_r) && isConnect())
     logDebug.add(WarningMsg, "mbCmd0x10 float %d %d %f", slaveAddr, startRef, float32Arr);
+}
+
+void DeviceModbus::writeArrayInt16Register(uint8_t slaveAddr, uint16_t regAddr, uint8_t indexArray, uint16_t regVal)
+{
+  uint8_t res = mms_->writeSingleRegister(slaveAddr, addrIndexReg_, indexArray);
+  if (res == ok_r) {
+    res = mms_->writeSingleRegister(slaveAddr, regAddr, regVal);
+    if ((res != ok_r) && isConnect())
+      logDebug.add(WarningMsg, "mbCmd0x06 int16 %d %d %d", slaveAddr, regAddr, regVal);
+    res = mms_->writeSingleRegister(slaveAddr, addrIndexReg_, 0);
+    if ((res != ok_r) && isConnect())
+      logDebug.add(WarningMsg, "mbCmd0x06 Reset Index Array");
+  }
+  else {
+    if (isConnect())
+      logDebug.add(WarningMsg, "mbCmd0x06 Set Index Array %d", indexArray);
+  }
+}
+
+void DeviceModbus::writeArrayInt32Register(uint8_t slaveAddr, uint16_t startRef, uint8_t indexArray, int32_t *int32Arr, uint16_t refCnt)
+{
+  uint8_t res = mms_->writeSingleRegister(slaveAddr, addrIndexReg_, indexArray);
+  if (res == ok_r) {
+    res = mms_->writeMultipleLongInts(slaveAddr, startRef, (uint32_t*)int32Arr, 1);
+    if ((res != ok_r) && isConnect())
+      logDebug.add(WarningMsg, "mbCmd0x10 int32 %d %d %d", slaveAddr, startRef, int32Arr);
+    res = mms_->writeSingleRegister(slaveAddr, addrIndexReg_, 0);
+    if ((res != ok_r) && isConnect())
+      logDebug.add(WarningMsg, "mbCmd0x06 Reset Index Array");
+  }
+  else {
+    if (isConnect())
+      logDebug.add(WarningMsg, "mbCmd0x06 Set Index Array %d", indexArray);
+  }
 }
