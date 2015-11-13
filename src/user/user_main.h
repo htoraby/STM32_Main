@@ -6,6 +6,7 @@
 #include "ccs.h"
 #include "vsd_novomet.h"
 #include "vsd_etalon.h"
+#include "vsd_danfoss.h"
 #include "tms_novomet.h"
 #include "em_set.h"
 #include "scada_region_3_0.h"

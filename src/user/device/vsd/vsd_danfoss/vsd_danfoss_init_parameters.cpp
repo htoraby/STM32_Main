@@ -279,7 +279,7 @@ void VsdDanfoss::initModbusParameters()
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_CURRENT,  // Физическая величина параметра
                            CURRENT_A,       // Единицы измерения параметра
-                           TYPE_DATA_INT16, // Тип данных
+                           TYPE_DATA_UINT32, // Тип данных
                            0,               // Индекс
                            0.01,            // Коэффициент преобразования параметра
                            1,               // Минимальное значение параметра
@@ -972,7 +972,7 @@ void VsdDanfoss::initModbusParameters()
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_PERCENT,  // Физическая величина параметра
                            PERCENT_PERCENT, // Единицы измерения параметра
-                           TYPE_DATA_UINT16,// Тип данных
+                           TYPE_DATA_UINT32,// Тип данных
                            0,               // Индекс
                            0.1,             // Коэффициент преобразования параметра
                            0,               // Минимальное значение параметра

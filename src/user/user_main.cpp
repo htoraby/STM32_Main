@@ -49,6 +49,9 @@ void createVsd(bool init)
   case VSD_TYPE_NOVOMET:
     vsd = new VsdNovomet();
     break;
+  case VSD_TYPE_DANFOSS:
+    vsd = new VsdDanfoss();
+    break;
   case VSD_TYPE_ETALON:
     vsd = new VsdEtalon();
     break;
