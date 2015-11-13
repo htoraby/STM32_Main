@@ -174,8 +174,8 @@ float getValueAnalogInExt(uint8_t num)
     value = (value * 10) / 0xFFF;
   }
   else {
-    // mA = value * 4 * 2.5 * 1000 / 0xFFF / 562Om
-    value = (value * 10000) / 0xFFF / 562;
+    // mA = value * 4 * 2.5 * 1000 / 0xFFF / 493Om
+    value = (value * 10000) / 0xFFF / 493;
   }
 
   return value;
