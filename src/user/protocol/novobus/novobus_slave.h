@@ -7,7 +7,6 @@
 
 #define MAX_IDS_BUFFER 35    //!< Максимальное количество ID во временом буффере
 #define MAX_ADDRS_BUFFER 10  //!< Максимальное количество адресов во временом буффере
-#define MAX_SIZE_SW 220      //!< Максимальный размер пакета с прошивкой
 
 /*!
  * \brief Класс протокола обмена между stm32 и контроллером визуализации
@@ -105,8 +104,8 @@ private:
   osMessageQId messageParams_;
 
   uint8_t oldCommand_;
-  uint8_t txBuffer_[HOST_BUF_SIZE];
-  uint8_t rxBuffer_[HOST_BUF_SIZE];
+  uint8_t *txBuffer_;
+  uint8_t *rxBuffer_;
   uint32_t idsBuffer_[MAX_IDS_BUFFER];
   uint32_t addrsBuffer_[MAX_ADDRS_BUFFER];
   uint8_t idsCount_;

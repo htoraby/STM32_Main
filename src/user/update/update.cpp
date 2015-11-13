@@ -128,7 +128,7 @@ static bool saveSwInFlashExt(char *fileName)
 
         lastAddress = lastAddress + readSize;
 
-        if (++count > 30) {
+        if (++count > 10) {
           count = 0;
           if (calcCrc != calcCrcRx)
             printf("Error CRC: file %s on line %d\r\n", __FILE__, __LINE__);

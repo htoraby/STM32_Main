@@ -6,6 +6,14 @@
 #define MAX_QUEUE_SIZE 500
 #define ANSWER_TIMEOUT 300000
 
+#if USE_EXT_MEM
+static uint8_t txBuffer[HOST_BUF_SIZE] __attribute__((section(".extmem")));
+static uint8_t rxBuffer[HOST_BUF_SIZE] __attribute__((section(".extmem")));
+#else
+static uint8_t txBuffer[HOST_BUF_SIZE];
+static uint8_t rxBuffer[HOST_BUF_SIZE];
+#endif
+
 static void novobusSlaveTask(void *p)
 {
   (static_cast<NovobusSlave*>(p))->task();
@@ -17,7 +25,8 @@ NovobusSlave::NovobusSlave()
   , addrsCount_(0)
   , isConnect_(true)
 {
-
+  txBuffer_ = txBuffer;
+  rxBuffer_ = rxBuffer;
 }
 
 NovobusSlave::~NovobusSlave()
