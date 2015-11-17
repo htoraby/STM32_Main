@@ -113,6 +113,7 @@ int VsdDanfoss::setMotorSpeed(float value)
 
 int VsdDanfoss::setVsdControl(float value)
 {
+
   if (!Vsd::setVsdControl(value)) {
     configVsd();
     return ok_r;
@@ -1261,7 +1262,10 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value)
 
   case VSD_ROTATION:
     return setRotation(value);
-    break;
+
+  case VSD_MOTOR_SPEED:
+    return setMotorSpeed(value);
+
   default:
     result = setValue(id, value);
     if (!result)
