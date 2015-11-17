@@ -498,19 +498,9 @@ bool ModbusMaster::checkDeviceAddress(int address)
 // МЕТОД ПРОВЕРКИ КОЛИЧЕСТВА КАТУШЕК
 bool ModbusMaster::checkCntCoils(int Cnt)
 {
-  bool Result = err_r;
-  try
-  {
-    if(Cnt <= MODBUS_MAX_FC01_COILS)
-    {
-      Result = ok_r;
-    }
-  }
-  catch(...)
-  {
-    // Упали в функции checkCntCoils
-  }
-  return Result;
+  if (Cnt <= MODBUS_MAX_FC01_COILS)
+    return true;
+  return false;
 }
 
 bool ModbusMaster::checkCntReg(int Cnt)

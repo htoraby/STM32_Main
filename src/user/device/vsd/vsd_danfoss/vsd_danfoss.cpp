@@ -55,7 +55,7 @@ void VsdDanfoss::init()
   // Создание объекта протокола связи с утройством
   int16_t count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
   dm_ = new DeviceModbus(modbusParameters_, count,
-                         VSD_UART, 115200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1);
+                         VSD_UART, 115200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 131);
   dm_->createThread("ProtocolVsd", getValueDeviceQId_);
   dm_->setAddrIndexReg(dm_->getFieldAddress(dm_->getIndexAtId(VSD_INDEX)));
 
@@ -167,7 +167,7 @@ int VsdDanfoss::setFrequency(float value)
     return ok_r;
   }
   else {
-    logDebug.add(WarningMsg, "VsdNovomet::setFrequency");
+    logDebug.add(WarningMsg, "VsdDanfoss::setFrequency");
     return err_r;
   }
 }
@@ -226,7 +226,7 @@ int VsdDanfoss::setOutFilter(float value)
 int VsdDanfoss::setUf_f1(float value)
 {
   if (!Vsd::setUf_f1(value)) {
-    writeUf_F(0, getValue(VSD_UF_CHARACTERISTIC_F_1));
+    writeToDevice(VSD_UF_CHARACTERISTIC_F_1, getValue(VSD_UF_CHARACTERISTIC_F_1));
     return ok_r;
   }
   else {
@@ -238,7 +238,7 @@ int VsdDanfoss::setUf_f1(float value)
 int VsdDanfoss::setUf_f2(float value)
 {
   if (!Vsd::setUf_f2(value)) {
-    writeUf_F(1, getValue(VSD_UF_CHARACTERISTIC_F_2));
+    writeToDevice(VSD_UF_CHARACTERISTIC_F_2, getValue(VSD_UF_CHARACTERISTIC_F_2));
     return ok_r;
   }
   else {
@@ -250,7 +250,7 @@ int VsdDanfoss::setUf_f2(float value)
 int VsdDanfoss::setUf_f3(float value)
 {
   if (!Vsd::setUf_f3(value)) {
-    writeUf_F(2, getValue(VSD_UF_CHARACTERISTIC_F_3));
+    writeToDevice(VSD_UF_CHARACTERISTIC_F_3, getValue(VSD_UF_CHARACTERISTIC_F_3));
     return ok_r;
   }
   else {
@@ -262,7 +262,7 @@ int VsdDanfoss::setUf_f3(float value)
 int VsdDanfoss::setUf_f4(float value)
 {
   if (!Vsd::setUf_f4(value)) {
-    writeUf_F(3, getValue(VSD_UF_CHARACTERISTIC_F_4));
+    writeToDevice(VSD_UF_CHARACTERISTIC_F_4, getValue(VSD_UF_CHARACTERISTIC_F_4));
     return ok_r;
   }
   else {
@@ -274,7 +274,7 @@ int VsdDanfoss::setUf_f4(float value)
 int VsdDanfoss::setUf_f5(float value)
 {
   if (!Vsd::setUf_f5(value)) {
-    writeUf_F(4, getValue(VSD_UF_CHARACTERISTIC_F_5));
+    writeToDevice(VSD_UF_CHARACTERISTIC_F_5, getValue(VSD_UF_CHARACTERISTIC_F_5));
     return ok_r;
   }
   else {
@@ -286,7 +286,7 @@ int VsdDanfoss::setUf_f5(float value)
 int VsdDanfoss::setUf_f6(float value)
 {
   if (!Vsd::setUf_f6(value)) {
-    writeUf_F(5, getValue(VSD_UF_CHARACTERISTIC_F_6));
+    writeToDevice(VSD_UF_CHARACTERISTIC_F_6, getValue(VSD_UF_CHARACTERISTIC_F_6));
     return ok_r;
   }
   else {
@@ -298,7 +298,7 @@ int VsdDanfoss::setUf_f6(float value)
 int VsdDanfoss::setUf_U1(float value)
 {
   if (!Vsd::setUf_U1(value)) {
-    writeUf_U(0, getValue(VSD_UF_CHARACTERISTIC_U_1));
+    writeToDevice(VSD_UF_CHARACTERISTIC_U_1, getValue(VSD_UF_CHARACTERISTIC_U_1));
     return ok_r;
   }
   else {
@@ -310,7 +310,7 @@ int VsdDanfoss::setUf_U1(float value)
 int VsdDanfoss::setUf_U2(float value)
 {
   if (!Vsd::setUf_U2(value)) {
-    writeUf_U(1, getValue(VSD_UF_CHARACTERISTIC_U_2));
+    writeToDevice(VSD_UF_CHARACTERISTIC_U_2, getValue(VSD_UF_CHARACTERISTIC_U_2));
     return ok_r;
   }
   else {
@@ -322,7 +322,7 @@ int VsdDanfoss::setUf_U2(float value)
 int VsdDanfoss::setUf_U3(float value)
 {
   if (!Vsd::setUf_U3(value)) {
-    writeUf_U(2, getValue(VSD_UF_CHARACTERISTIC_U_3));
+    writeToDevice(VSD_UF_CHARACTERISTIC_U_3, getValue(VSD_UF_CHARACTERISTIC_U_3));
     return ok_r;
   }
   else {
@@ -334,7 +334,7 @@ int VsdDanfoss::setUf_U3(float value)
 int VsdDanfoss::setUf_U4(float value)
 {
   if (!Vsd::setUf_U4(value)) {
-    writeUf_U(3, getValue(VSD_UF_CHARACTERISTIC_U_4));
+    writeToDevice(VSD_UF_CHARACTERISTIC_U_4, getValue(VSD_UF_CHARACTERISTIC_U_4));
     return ok_r;
   }
   else {
@@ -346,7 +346,7 @@ int VsdDanfoss::setUf_U4(float value)
 int VsdDanfoss::setUf_U5(float value)
 {
   if (!Vsd::setUf_U5(value)) {
-    writeUf_U(4, getValue(VSD_UF_CHARACTERISTIC_U_5));
+    writeToDevice(VSD_UF_CHARACTERISTIC_U_5, getValue(VSD_UF_CHARACTERISTIC_U_5));
     return ok_r;
   }
   else {
@@ -358,7 +358,7 @@ int VsdDanfoss::setUf_U5(float value)
 int VsdDanfoss::setUf_U6(float value)
 {
   if (!Vsd::setUf_U6(value)) {
-    writeUf_U(5, getValue(VSD_UF_CHARACTERISTIC_U_6));
+    writeToDevice(VSD_UF_CHARACTERISTIC_U_6, getValue(VSD_UF_CHARACTERISTIC_U_6));
     return ok_r;
   }
   else {
@@ -367,44 +367,20 @@ int VsdDanfoss::setUf_U6(float value)
   }
 }
 
-void VsdDanfoss::readUf_F(uint16_t numPoint)
-{
-  if (getValue(VSD_INDEX) != numPoint) {
-    writeToDevice(VSD_INDEX, numPoint);
-  }
-  readInDevice(VSD_UF_CHARACTERISTIC_F);
-}
-
-void VsdDanfoss::writeUf_F(uint16_t numPoint, float value)
-{
-  if (getValue(VSD_INDEX) != numPoint) {
-    writeToDevice(VSD_INDEX, numPoint);
-  }
-  writeToDevice(VSD_UF_CHARACTERISTIC_F, value);
-}
-
-void VsdDanfoss::readUf_U(uint16_t numPoint)
-{
-  if (getValue(VSD_INDEX) != numPoint) {
-    writeToDevice(VSD_INDEX, numPoint);
-  }
-  readInDevice(VSD_UF_CHARACTERISTIC_U);
-}
-
-void VsdDanfoss::writeUf_U(uint16_t numPoint, float value)
-{
-  if (getValue(VSD_INDEX) != numPoint) {
-    writeToDevice(VSD_INDEX, numPoint);
-  }
-  writeToDevice(VSD_UF_CHARACTERISTIC_U, value);
-}
-
 void VsdDanfoss::readUfCharacterictic()
 {
-  for (uint8_t i = 0; i < 6; i++) {
-    readUf_F(i);
-    readUf_U(i);
-  }
+  readInDevice(VSD_UF_CHARACTERISTIC_F_1);
+  readInDevice(VSD_UF_CHARACTERISTIC_F_2);
+  readInDevice(VSD_UF_CHARACTERISTIC_F_3);
+  readInDevice(VSD_UF_CHARACTERISTIC_F_4);
+  readInDevice(VSD_UF_CHARACTERISTIC_F_5);
+  readInDevice(VSD_UF_CHARACTERISTIC_F_6);
+  readInDevice(VSD_UF_CHARACTERISTIC_U_1);
+  readInDevice(VSD_UF_CHARACTERISTIC_U_2);
+  readInDevice(VSD_UF_CHARACTERISTIC_U_3);
+  readInDevice(VSD_UF_CHARACTERISTIC_U_4);
+  readInDevice(VSD_UF_CHARACTERISTIC_U_5);
+  readInDevice(VSD_UF_CHARACTERISTIC_U_6);
 }
 
 uint16_t VsdDanfoss::configVsd()
@@ -973,12 +949,8 @@ bool VsdDanfoss::checkPreventVsd()
 
 int VsdDanfoss::start()
 {
-#if USE_DEBUG
-  return ok_r;
-#endif
-
   // Если стоит бит запуска двигателя
-  if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_STARTED))
+  if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_OPERATION))
     return ok_r;
 
   int timeMs = VSD_CMD_TIMEOUT;
@@ -992,79 +964,25 @@ int VsdDanfoss::start()
       if (countRepeats > VSD_CMD_NUMBER_REPEATS)
         return err_r;
 
-      uint32_t controlVsd = getValue(VSD_CONTROL_WORD_1);
-      setBit(controlVsd, VSD_DANFOSS_CONTROL_RAMP, true);
-      setBit(controlVsd, VSD_DANFOSS_CONTROL_JOG, true);
-      if (setNewValue(VSD_CONTROL_WORD_1, controlVsd))
-        return err_r;
+      if (!setNewValue(VSD_ON, 1))           // VSD_DANFOSS_CONTROL_RAMP 6
+        if (!setNewValue(VSD_FLAG, 1))       // VSD_DANFOSS_CONTROL_JOG 8
+          return ok_r;
+
     } else {
       timeMs = timeMs + 100;
     }
 
     osDelay(100);
 
-    if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_STARTED))
+    if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_OPERATION))
       return ok_r;
   }
 }
 
 int VsdDanfoss::stop(float type)
 {
-#if USE_DEBUG
-  return ok_r;
-#endif
-  if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_STARTED))
-    return ok_r;
-
-  int timeMs = VSD_CMD_TIMEOUT;
-  int countRepeats = 0;
-
-  float oldTypeStop = getValue(VSD_TYPE_STOP);
-
-  while (1) {
-    if (timeMs >= VSD_CMD_TIMEOUT) {
-      timeMs = 0;
-      countRepeats++;
-
-      if (countRepeats > VSD_CMD_NUMBER_REPEATS)
-        return err_r;
-
-      uint32_t controlVsd = getValue(VSD_CONTROL_WORD_1);
-
-      if (type != oldTypeStop) {
-        switch((uint16_t)type) {
-        case TYPE_STOP_ALARM:
-          setBit(controlVsd, VSD_DANFOSS_CONTROL_COASTING, false);
-          break;
-        default:
-          setBit(controlVsd, VSD_DANFOSS_CONTROL_RAMP, false);
-          break;
-        }
-      }
-      setBit(controlVsd, VSD_DANFOSS_CONTROL_JOG, false);
-
-      if (setNewValue(VSD_CONTROL_WORD_1, controlVsd))
-        return err_r;
-    }
-    else {
-      timeMs = timeMs + 100;
-    }
-
-    osDelay(100);
-
-    if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_STARTED))
-      return ok_r;
-  }
-}
-
-int VsdDanfoss::startCoil()
-{
-#if USE_DEBUG
-  return ok_r;
-#endif
-
-  // Если стоит бит запуска двигателя
-  if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_STARTED))
+  // Если нет бита "В работе"
+  if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_OPERATION))
     return ok_r;
 
   int timeMs = VSD_CMD_TIMEOUT;
@@ -1078,51 +996,18 @@ int VsdDanfoss::startCoil()
       if (countRepeats > VSD_CMD_NUMBER_REPEATS)
         return err_r;
 
-      if (setNewValue(VSD_ON, 1))
-        if (setNewValue(VSD_FLAG, 1))
+      if (setNewValue(VSD_FLAG, 0))       // VSD_DANFOSS_CONTROL_JOG 8
+        return err_r;
+      else {
+        if(setNewValue(VSD_ON, 0))        // VSD_DANFOSS_CONTROL_RAMP 6
           return err_r;
-
-    } else {
-      timeMs = timeMs + 100;
-    }
-
-    osDelay(100);
-
-    if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_STARTED))
-      return ok_r;
-  }
-}
-
-int VsdDanfoss::stopCoil(float type)
-{
-#if USE_DEBUG
-  return ok_r;
-#endif
-  if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_STARTED))
-    return ok_r;
-
-  int timeMs = VSD_CMD_TIMEOUT;
-  int countRepeats = 0;
-
-  float oldTypeStop = getValue(VSD_TYPE_STOP);
-
-  while (1) {
-    if (timeMs >= VSD_CMD_TIMEOUT) {
-      timeMs = 0;
-      countRepeats++;
-
-      if (countRepeats > VSD_CMD_NUMBER_REPEATS)
-        return err_r;
-
-      if (type != oldTypeStop) {
-        switch((uint16_t)type) {
-        default:
-          if (setNewValue(VSD_FLAG, 0))
-            if (setNewValue(VSD_ON, 0))
-              return err_r;
-          break;
-        }
+        else
+          return ok_r;
       }
+
+//      if (!setNewValue(VSD_FLAG, 0))       // VSD_DANFOSS_CONTROL_JOG 8
+//        if(!setNewValue(VSD_ON, 0))        // VSD_DANFOSS_CONTROL_RAMP 6
+//          return ok_r;
     }
     else {
       timeMs = timeMs + 100;
@@ -1130,9 +1015,25 @@ int VsdDanfoss::stopCoil(float type)
 
     osDelay(100);
 
-    if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_STARTED))
+    if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_OPERATION)) {
       return ok_r;
+    }
   }
+}
+
+bool VsdDanfoss::checkStart()
+{
+  if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_OPERATION))
+    return true;
+  return false;
+
+}
+
+bool VsdDanfoss::checkStop()
+{
+  if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_OPERATION))
+    return true;
+  return false;
 }
 
 int VsdDanfoss::resetSetpoints()

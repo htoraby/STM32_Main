@@ -16,7 +16,7 @@ enum enVsdDanfosStatus1
   VSD_DANFOSS_STATUS_SPEED        = 8,
   VSD_DANFOSS_STATUS_BUS_CONTROL  = 9,
   VSD_DANFOSS_STATUS_OUT_LIMIT    = 10,
-  VSD_DANFOSS_STATUS_STARTED      = 11,
+  VSD_DANFOSS_STATUS_OPERATION    = 11,
   VSD_DANFOSS_STATUS_TEMPERATURE  = 12,
   VSD_DANFOSS_STATUS_VOLTAGE      = 13,
   VSD_DANFOSS_STATUS_TORQUE       = 14,
@@ -168,10 +168,6 @@ public:
   int setUf_U5(float value);
   int setUf_U6(float value);
 
-  void readUf_F(uint16_t numPoint);
-  void writeUf_F(uint16_t numPoint, float value);
-  void readUf_U(uint16_t numPoint);
-  void writeUf_U(uint16_t numPoint, float value);
   void readUfCharacterictic();
 
   uint16_t configVsd();
@@ -188,7 +184,6 @@ public:
   float checkAlarmVsd();
   bool checkPreventVsd();
 
-
   void getNewValue(uint16_t id);
   uint8_t setNewValue(uint16_t id, float value);
 
@@ -198,8 +193,8 @@ public:
   int start();
   int stop(float type);
 
-  int startCoil();
-  int stopCoil(float type);
+  bool checkStart();
+  bool checkStop();
 
   int resetSetpoints();
 

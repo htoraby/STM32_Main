@@ -410,7 +410,8 @@ void DeviceModbus::readCoils(uint8_t slaveAddr, uint16_t startRef, bool *bitArr,
     for (uint8_t i = 0; i < refCnt; i++) {
       mbParams_[index].validity = err_r;
       if (isConnect()) {
-        logDebug.add(WarningMsg, "0x01 no ok_r devAdr %d, index %d, value %d, valid %d", slaveAddr, index, bitArr[i]);
+        logDebug.add(WarningMsg, "mb 0x01 no read, index:%d, slaveAddr:%d, startRef:%d, value:%d",
+                                                   index, slaveAddr, startRef, bitArr[i]);
       }
       putMessageUpdateId(mbParams_[index].id);
       index++;
@@ -487,8 +488,8 @@ void DeviceModbus::readUint16Registers(uint8_t slaveAddr, uint16_t startRef, uin
       mbParams_[index].value.uint16_t[0] = regArr[i];
       uint8_t validity = checkRange(mbParams_[index].value.uint16_t[0], mbParams_[index].min, mbParams_[index].max, true);
       if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-        logDebug.add(WarningMsg, "mbCmd0x03 uint16 %d %d %d %d", slaveAddr,
-                     index, regArr[i], mbParams_[index].validity);
+        logDebug.add(WarningMsg, "mb 0x03 uint16 no valid, index:%d, slaveAddr:%d, startRef:%d, value:%d, validity:%d",
+                     index, slaveAddr, startRef, regArr[i], mbParams_[index].validity);
       }
       mbParams_[index].validity = validity;
 
