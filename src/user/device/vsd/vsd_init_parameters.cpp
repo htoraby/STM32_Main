@@ -178,7 +178,7 @@ void Vsd::initParameters()
   parameters_[VSD_POWER_FULL - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_POWER_FULL - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_POWER_FULL - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_POWER_FULL - VSD_BEGIN].max                                    = 999999.0;
+  parameters_[VSD_POWER_FULL - VSD_BEGIN].max                                    = 9999999.9;
   parameters_[VSD_POWER_FULL - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_POWER_FULL - VSD_BEGIN].discret                                = 10;
   parameters_[VSD_POWER_FULL - VSD_BEGIN].code                                   = 0;
@@ -190,9 +190,9 @@ void Vsd::initParameters()
   parameters_[VSD_MOTOR_POWER - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_MOTOR_POWER - VSD_BEGIN].value.float_t                         = 125000.0;
   parameters_[VSD_MOTOR_POWER - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_MOTOR_POWER - VSD_BEGIN].max                                   = 999999.0;
+  parameters_[VSD_MOTOR_POWER - VSD_BEGIN].max                                   = 9999999.9;
   parameters_[VSD_MOTOR_POWER - VSD_BEGIN].def                                   = 125000.0;
-  parameters_[VSD_MOTOR_POWER - VSD_BEGIN].discret                               = 1;
+  parameters_[VSD_MOTOR_POWER - VSD_BEGIN].discret                               = 10;
   parameters_[VSD_MOTOR_POWER - VSD_BEGIN].code                                  = 13;
   // Напряжение двигателя Danfoss 1-22 Используется в проекте, интерфейс Novomet 0х0045 IREG_MOTOR_U_MAх
   parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].id                                  = VSD_MOTOR_VOLTAGE;

@@ -16739,7 +16739,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>9999999.9</max>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>Полная мощность</text>
@@ -16758,9 +16758,9 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_POWER</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>9999999.9</max>
 		<def>125000.0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>125000.0</value>
 		<text>Номинальная мощность ПЭД</text>
@@ -16768,7 +16768,7 @@
 		<form>3.1 Двигатель</form>
 		<unit>POWER_W</unit>
 		<unit_lcd>POWER_KW</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>13</code>
 		<comment>Мощность двигателя Danfoss 1-20 Используется в проекте, интерфейс</comment>
 	</param>
