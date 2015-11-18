@@ -453,6 +453,12 @@ public:
   int calcVsdCos();
 
   /*!
+   * \brief calcVsdPowerFull Функция вычисления текущей полной мощности
+   * \return
+   */
+  virtual float calcVsdPowerFull();
+
+  /*!
    * \brief writeToDevice
    */
   virtual void writeToDevice(int id, float value);

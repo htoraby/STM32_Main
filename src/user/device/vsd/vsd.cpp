@@ -359,6 +359,11 @@ int Vsd::calcVsdCos()
   return parameters.get(VSD_MOTOR_COS_PHI_NOW);
 }
 
+float Vsd::calcVsdPowerFull()
+{
+  return 0;
+}
+
 void Vsd::writeToDevice(int id, float value)
 {
   setValue(id, value);

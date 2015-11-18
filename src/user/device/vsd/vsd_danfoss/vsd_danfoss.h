@@ -198,6 +198,8 @@ public:
 
   int resetSetpoints();
 
+  virtual float calcVsdPowerFull();
+
 
 private:
   ModbusParameter modbusParameters_[208];

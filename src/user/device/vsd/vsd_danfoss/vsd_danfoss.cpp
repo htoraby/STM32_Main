@@ -1113,6 +1113,16 @@ int VsdDanfoss::resetSetpoints()
   return ok_r;
 }
 
+float VsdDanfoss::calcVsdPowerFull()
+{
+  setValue(VSD_POWER_FULL,
+           calcAverage3Values(parameters.get(VSD_CURRENT_OUT_PHASE_1),
+                              parameters.get(VSD_CURRENT_OUT_PHASE_2),
+                              parameters.get(VSD_CURRENT_OUT_PHASE_3)) *
+           parameters.get(VSD_OUT_VOLTAGE_MOTOR) * 1.73);
+  return parameters.get(VSD_POWER_FULL);
+}
+
 void VsdDanfoss::getNewValue(uint16_t id)
 {
   float value = 0;
@@ -1127,12 +1137,14 @@ void VsdDanfoss::getNewValue(uint16_t id)
 
   switch (param->typeData) {
   case TYPE_DATA_INT16:
+  case TYPE_DATA_ARRAY_INT16:
     value = (float)param->value.int16_t[0];
     break;
   case TYPE_DATA_UINT16:
     value = (float)param->value.uint16_t[0];
     break;
-  case  TYPE_DATA_INT32:
+  case TYPE_DATA_INT32:
+  case TYPE_DATA_ARRAY_INT32:
     value = (float)param->value.int32_t;
     break;
   case  TYPE_DATA_UINT32:
@@ -1159,54 +1171,6 @@ void VsdDanfoss::getNewValue(uint16_t id)
       if (parameters.get(CCS_MOTOR_TYPE) != value)
         parameters.set(CCS_MOTOR_TYPE, value);
       break;
-    case VSD_UF_CHARACTERISTIC_F:
-      switch ((uint16_t)getValue(VSD_INDEX)) {
-      case 0:
-        setValue(VSD_UF_CHARACTERISTIC_F_1, value);
-        break;
-      case 1:
-        setValue(VSD_UF_CHARACTERISTIC_F_2, value);
-        break;
-      case 2:
-        setValue(VSD_UF_CHARACTERISTIC_F_3, value);
-        break;
-      case 3:
-        setValue(VSD_UF_CHARACTERISTIC_F_4, value);
-        break;
-      case 4:
-        setValue(VSD_UF_CHARACTERISTIC_F_5, value);
-        break;
-      case 5:
-        setValue(VSD_UF_CHARACTERISTIC_F_6, value);
-        break;
-      default:
-        break;
-      }
-      break;
-    case VSD_UF_CHARACTERISTIC_U:
-      switch ((uint16_t)getValue(VSD_INDEX)) {
-      case 0:
-        setValue(VSD_UF_CHARACTERISTIC_U_1, value);
-        break;
-      case 1:
-        setValue(VSD_UF_CHARACTERISTIC_U_2, value);
-        break;
-      case 2:
-        setValue(VSD_UF_CHARACTERISTIC_U_3, value);
-        break;
-      case 3:
-        setValue(VSD_UF_CHARACTERISTIC_U_4, value);
-        break;
-      case 4:
-        setValue(VSD_UF_CHARACTERISTIC_U_5, value);
-        break;
-      case 5:
-        setValue(VSD_UF_CHARACTERISTIC_U_6, value);
-        break;
-      default:
-        break;
-      }
-      break;
     case VSD_OUT_FILTER:
       setValue(VSD_OUT_FILTER, value);
       if (value) {
@@ -1215,6 +1179,31 @@ void VsdDanfoss::getNewValue(uint16_t id)
       else {
         parameters.set(CCS_FILTER_OUTPUT, value);
       }
+    case VSD_CURRENT_OUT_PHASE_1:             // Выходной ток ЧРП Фаза 1
+      setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_1) * value);
+      calcVsdPowerFull();
+      ksu.calcMotorCurrentPhase1();           // Вычисляем ток двигателя фаза 1
+      ksu.calcMotorCurrentAverage();          // Вычисляем средний ток двигателя
+      ksu.calcMotorCurrentImbalance();        // Вычисляем дисбаланс тока двигателя
+      break;
+    case VSD_CURRENT_OUT_PHASE_2:             // Выходной ток ЧРП Фаза 2
+      setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_2) * value);
+      calcVsdPowerFull();
+      ksu.calcMotorCurrentPhase2();
+      ksu.calcMotorCurrentAverage();
+      ksu.calcMotorCurrentImbalance();
+      break;
+    case VSD_CURRENT_OUT_PHASE_3:             // Выходной ток ЧРП Фаза 3
+      setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_3) * value);
+      calcVsdPowerFull();
+      ksu.calcMotorCurrentPhase3();
+      ksu.calcMotorCurrentAverage();
+      ksu.calcMotorCurrentImbalance();
+      break;
+    case VSD_OUT_VOLTAGE_MOTOR:
+      setValue(id, value);
+      calcVsdPowerFull();
+      break;
     default:
       setValue(id, value);
       break;
