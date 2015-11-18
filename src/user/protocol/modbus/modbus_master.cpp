@@ -514,7 +514,40 @@ int ModbusMaster::writeMultipleLongInts(uint8_t slaveAddr, uint16_t startRef, ui
 
 int ModbusMaster::writeMultipleFloats(uint8_t slaveAddr, uint16_t startRef, float *float32Arr, uint16_t refCnt)
 {
-  //TODO: Написать функцию
+  /*
+  int res = err_r;
+  uint16_t crc = 0;
+  uint8_t retry = 0;
+  if (checkDeviceAddress(slaveAddr)) {
+    while (1) {
+      retry++;
+      txBuffer_[0] = slaveAddr;                                 // Адрес устройства
+      txBuffer_[1] = MODBUS_WRITE_MULTIPLE_REGISTERS_0x10;      // Команды
+      txBuffer_[2] = ((startRef >> 8) & 0x00ff);                // Старший байт первого адреса
+      txBuffer_[3] = startRef & 0x00ff;                         // Младший байт первого адреса
+      txBuffer_[4] = ((refCnt*2 >> 8) & 0x00ff);                // Старший байт количества 16-ти битных регистров
+      txBuffer_[5] = refCnt*2 & 0x00ff;                         // Младший байт количества 16-ти битных регистров
+      txBuffer_[6] = refCnt*2*2;                                // Количество байт данных
+      txBuffer_[7] = (float32Arr[0] >> 24) & 0x000000ff;
+      txBuffer_[8] = (float32Arr[0] >> 16) & 0x000000ff;
+      txBuffer_[9] = (float32Arr[0] >> 8) & 0x000000ff;
+      txBuffer_[10] = float32Arr[0] & 0x000000ff;
+      crc = crc16_ibm(txBuffer_, 11);
+      txBuffer_[11] = crc & 0x00ff;
+      txBuffer_[12] = ((crc >> 8) & 0x00ff);
+      if (txBuf(txBuffer_, 13) == ok_r) {
+        res = rxBuf(rxBuffer_, 8);
+        if (res == MODBUS_OK) {
+          return res;                                   // Возвращаем что запись выполнена
+        }
+      }
+      if (retry >= retryCnt_) {
+        return res;                                     // Возвращаем код ошибки Modbus
+      }
+      osDelay(100);
+    }
+  }
+  */
   return MODBUS_ERROR_TRASH;
 }
 

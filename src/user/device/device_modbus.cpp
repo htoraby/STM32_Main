@@ -214,10 +214,12 @@ void DeviceModbus::writeModbusParameter(int id, float value)
     case  TYPE_DATA_CHAR:
       param->value.char_t[0] = (char)(value + 0.5);
       break;
-    case  TYPE_DATA_INT16:
+    case TYPE_DATA_INT16:
+    case TYPE_DATA_ARRAY_INT16:
       param->value.int16_t[0] = (short int)(value + 0.5);
       break;
-    case  TYPE_DATA_INT32:
+    case TYPE_DATA_INT32:
+    case TYPE_DATA_ARRAY_INT32:
       param->value.int32_t = (int)(value + 0.5);
       break;
     case TYPE_DATA_UINT16:
