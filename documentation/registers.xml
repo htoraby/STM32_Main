@@ -16483,6 +16483,132 @@
 	</param>
 	<param>
 		<id>854</id>
+		<name>CCS_COEF_CURRENT_IN_A</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.1</min>
+		<max>10.0</max>
+		<def>1.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Коэффициент коррекции входного тока Ia</text>
+		<short_text>Коэфф.коррек.вх.тока Ia</short_text>
+		<form>5.2 Корректировки</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Коэффициент корректировки входного тока фаза A</comment>
+	</param>
+	<param>
+		<id>855</id>
+		<name>CCS_COEF_CURRENT_IN_B</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.1</min>
+		<max>10.0</max>
+		<def>1.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Коэффициент коррекции входного тока Ib</text>
+		<short_text>Коэфф.коррек.вх.тока Ib</short_text>
+		<form>5.2 Корректировки</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Коэффициент корректировки входного тока фаза B</comment>
+	</param>
+	<param>
+		<id>856</id>
+		<name>CCS_COEF_CURRENT_IN_C</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.1</min>
+		<max>10.0</max>
+		<def>1.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Коэффициент коррекции входного тока Ic</text>
+		<short_text>Коэфф.коррек.вх.тока Ic</short_text>
+		<form>5.2 Корректировки</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Коэффициент корректировки входного тока фаза C</comment>
+	</param>
+	<param>
+		<id>857</id>
+		<name>CCS_CURRENT_PHASE_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>0.0</min>
+		<max>999999.0</max>
+		<def>0.0</def>
+		<discret>100</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Ток фазы А</text>
+		<short_text>Ia</short_text>
+		<form>1.3 Текущие параметры сети</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXX_XX</format>
+		<code>0</code>
+		<comment>Ток фазы А</comment>
+	</param>
+	<param>
+		<id>858</id>
+		<name>CCS_CURRENT_PHASE_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>0.0</min>
+		<max>999999.0</max>
+		<def>0.0</def>
+		<discret>100</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Ток фазы B</text>
+		<short_text>Ib</short_text>
+		<form>1.3 Текущие параметры сети</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXX_XX</format>
+		<code>0</code>
+		<comment>Ток фазы B</comment>
+	</param>
+	<param>
+		<id>859</id>
+		<name>CCS_CURRENT_PHASE_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>0.0</min>
+		<max>999999.0</max>
+		<def>0.0</def>
+		<discret>100</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Ток фазы С</text>
+		<short_text>Ic</short_text>
+		<form>1.3 Текущие параметры сети</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXX_XX</format>
+		<code>0</code>
+		<comment>Ток фазы С</comment>
+	</param>
+	<param>
+		<id>860</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
@@ -26242,7 +26368,6 @@
 		<value>NAN</value>
 		<text>Вход.напр.А</text>
 		<short_text>Напряжение Ua</short_text>
-		<form>1.3 Текущие параметры сети</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
 		<format>XXXXXX</format>
@@ -26263,7 +26388,6 @@
 		<value>NAN</value>
 		<text>Вход.напр.B</text>
 		<short_text>Напряжение Ub</short_text>
-		<form>1.3 Текущие параметры сети</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
 		<format>XXXXXX</format>
@@ -26284,7 +26408,6 @@
 		<value>NAN</value>
 		<text>Вход.напр.С</text>
 		<short_text>Напряжение Uc</short_text>
-		<form>1.3 Текущие параметры сети</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
 		<format>XXXXXX</format>
@@ -26305,7 +26428,6 @@
 		<value>NAN</value>
 		<text>Ток фазы А</text>
 		<short_text>Ia</short_text>
-		<form>1.3 Текущие параметры сети</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
 		<format>XXXX_XX</format>
@@ -26326,7 +26448,6 @@
 		<value>NAN</value>
 		<text>Ток фазы B</text>
 		<short_text>Ib</short_text>
-		<form>1.3 Текущие параметры сети</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
 		<format>XXXX_XX</format>
@@ -26347,7 +26468,6 @@
 		<value>NAN</value>
 		<text>Ток фазы С</text>
 		<short_text>Ic</short_text>
-		<form>1.3 Текущие параметры сети</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
 		<format>XXXX_XX</format>

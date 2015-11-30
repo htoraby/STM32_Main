@@ -53,6 +53,10 @@ void Ccs::calcParametersTask()
 //    calcInputVoltagePhase31();
 
       calcInputVoltageImbalance();
+
+      calcInputCurrentPhase1();
+      calcInputCurrentPhase2();
+      calcInputCurrentPhase3();
       calcInputCurrentImbalance();
       calcResistanceIsolation();
       calcRegimeRun();
@@ -359,13 +363,62 @@ float Ccs::calcInputVoltageImbalance()
   return parameters.get(CCS_VOLTAGE_IMBALANCE_IN);
 }
 
+float Ccs::calcInputCurrentPhase1()
+{
+  if ((!parameters.isValidity(EM_CURRENT_PHASE_1)) ||
+      (!parameters.isValidity(CCS_COEF_CURRENT_IN_A))) {
+    setNewValue(CCS_CURRENT_PHASE_1, (float)NAN);
+  }
+  else {
+    setValue(CCS_CURRENT_PHASE_1,
+             applyCoef(parameters.get(EM_CURRENT_PHASE_1),
+                       parameters.get(CCS_COEF_CURRENT_IN_A)));
+  }
+  return parameters.get(CCS_CURRENT_PHASE_1);
+}
+
+float Ccs::calcInputCurrentPhase2()
+{
+  if ((!parameters.isValidity(EM_CURRENT_PHASE_2)) ||
+      (!parameters.isValidity(CCS_COEF_CURRENT_IN_B))) {
+    setNewValue(CCS_CURRENT_PHASE_2, (float)NAN);
+  }
+  else {
+    setValue(CCS_CURRENT_PHASE_2,
+             applyCoef(parameters.get(EM_CURRENT_PHASE_2),
+                       parameters.get(CCS_COEF_CURRENT_IN_B)));
+  }
+  return parameters.get(CCS_CURRENT_PHASE_2);
+}
+
+float Ccs::calcInputCurrentPhase3()
+{
+  if ((!parameters.isValidity(EM_CURRENT_PHASE_3)) ||
+      (!parameters.isValidity(CCS_COEF_CURRENT_IN_C))) {
+    setNewValue(CCS_CURRENT_PHASE_3, (float)NAN);
+  }
+  else {
+    setValue(CCS_CURRENT_PHASE_3,
+             applyCoef(parameters.get(EM_CURRENT_PHASE_3),
+                       parameters.get(CCS_COEF_CURRENT_IN_C)));
+  }
+  return parameters.get(CCS_CURRENT_PHASE_3);
+}
+
 float Ccs::calcInputCurrentImbalance()
 {
+  if (!parameters.isValidity(CCS_CURRENT_PHASE_1) ||
+      !parameters.isValidity(CCS_CURRENT_PHASE_2) ||
+      !parameters.isValidity(CCS_CURRENT_PHASE_3)) {
+    setNewValue(CCS_CURRENT_IMBALANCE_IN, (float)NAN);
+  }
+  else {
   setValue(CCS_CURRENT_IMBALANCE_IN,
-           calcImbalance(parameters.get(EM_CURRENT_PHASE_1),
-                         parameters.get(EM_CURRENT_PHASE_2),
-                         parameters.get(EM_CURRENT_PHASE_3),
+           calcImbalance(parameters.get(CCS_CURRENT_PHASE_1),
+                         parameters.get(CCS_CURRENT_PHASE_2),
+                         parameters.get(CCS_CURRENT_PHASE_3),
                          1));
+  }
   return parameters.get(CCS_CURRENT_IMBALANCE_IN);
 }
 

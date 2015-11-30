@@ -91,9 +91,9 @@ void LogData::add(uint8_t code)
   *(float*)(buffer+57) = parameters.get(CCS_VOLTAGE_PHASE_2);
   *(float*)(buffer+61) = parameters.get(CCS_VOLTAGE_PHASE_3);
   *(float*)(buffer+65) = parameters.get(CCS_VOLTAGE_IMBALANCE_IN);
-  *(float*)(buffer+69) = parameters.get(EM_CURRENT_PHASE_1);
-  *(float*)(buffer+73) = parameters.get(EM_CURRENT_PHASE_2);
-  *(float*)(buffer+77) = parameters.get(EM_CURRENT_PHASE_3);
+  *(float*)(buffer+69) = parameters.get(CCS_CURRENT_PHASE_1);
+  *(float*)(buffer+73) = parameters.get(CCS_CURRENT_PHASE_2);
+  *(float*)(buffer+77) = parameters.get(CCS_CURRENT_PHASE_3);
   *(float*)(buffer+81) = parameters.get(CCS_CURRENT_IMBALANCE_IN);
   *(float*)(buffer+85) = parameters.get(CCS_RESISTANCE_ISOLATION);
 

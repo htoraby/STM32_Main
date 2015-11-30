@@ -303,9 +303,12 @@ public:
   float calcInputVoltageImbalance();
 
   /*!
-   * \brief Функция вычисления дисбаланса входных токов
+   * \brief Функция вычисления корректированного значения входного тока
    * \return
    */
+  float calcInputCurrentPhase1();
+  float calcInputCurrentPhase2();
+  float calcInputCurrentPhase3();
   float calcInputCurrentImbalance();
 
   /*!

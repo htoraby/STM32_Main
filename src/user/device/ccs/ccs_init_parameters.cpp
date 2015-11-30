@@ -10238,5 +10238,89 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_AI_4 - CCS_BEGIN].discret                                 = 1000;
   parameters_[CCS_COEF_AI_4 - CCS_BEGIN].def                                     = 1.0;
   parameters_[CCS_COEF_AI_4 - CCS_BEGIN].code                                    = 0;
+  // Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
+  parameters_[CCS_VSD_FREQUENCY - CCS_BEGIN].id                                  = CCS_VSD_FREQUENCY;
+  parameters_[CCS_VSD_FREQUENCY - CCS_BEGIN].access                              = ACCESS_OPERATOR;
+  parameters_[CCS_VSD_FREQUENCY - CCS_BEGIN].operation                           = OPERATION_WRITE;
+  parameters_[CCS_VSD_FREQUENCY - CCS_BEGIN].physic                              = PHYSIC_FREQUENCY;
+  parameters_[CCS_VSD_FREQUENCY - CCS_BEGIN].validity                            = VALIDITY_OK;
+  parameters_[CCS_VSD_FREQUENCY - CCS_BEGIN].value.float_t                       = 0.0;
+  parameters_[CCS_VSD_FREQUENCY - CCS_BEGIN].min                                 = 0.0;
+  parameters_[CCS_VSD_FREQUENCY - CCS_BEGIN].max                                 = 500.0;
+  parameters_[CCS_VSD_FREQUENCY - CCS_BEGIN].discret                             = 100;
+  parameters_[CCS_VSD_FREQUENCY - CCS_BEGIN].def                                 = 50.0;
+  parameters_[CCS_VSD_FREQUENCY - CCS_BEGIN].code                                = 13;
+  // Коэффициент корректировки входного тока фаза A
+  parameters_[CCS_COEF_CURRENT_IN_A - CCS_BEGIN].id                              = CCS_COEF_CURRENT_IN_A;
+  parameters_[CCS_COEF_CURRENT_IN_A - CCS_BEGIN].access                          = ACCESS_TECHNOLOG;
+  parameters_[CCS_COEF_CURRENT_IN_A - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_COEF_CURRENT_IN_A - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
+  parameters_[CCS_COEF_CURRENT_IN_A - CCS_BEGIN].validity                        = VALIDITY_OK;
+  parameters_[CCS_COEF_CURRENT_IN_A - CCS_BEGIN].value.float_t                   = 1.0;
+  parameters_[CCS_COEF_CURRENT_IN_A - CCS_BEGIN].min                             = 0.1;
+  parameters_[CCS_COEF_CURRENT_IN_A - CCS_BEGIN].max                             = 10.0;
+  parameters_[CCS_COEF_CURRENT_IN_A - CCS_BEGIN].discret                         = 1000;
+  parameters_[CCS_COEF_CURRENT_IN_A - CCS_BEGIN].def                             = 1.0;
+  parameters_[CCS_COEF_CURRENT_IN_A - CCS_BEGIN].code                            = 13;
+  // Коэффициент корректировки входного тока фаза B
+  parameters_[CCS_COEF_CURRENT_IN_B - CCS_BEGIN].id                              = CCS_COEF_CURRENT_IN_B;
+  parameters_[CCS_COEF_CURRENT_IN_B - CCS_BEGIN].access                          = ACCESS_TECHNOLOG;
+  parameters_[CCS_COEF_CURRENT_IN_B - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_COEF_CURRENT_IN_B - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
+  parameters_[CCS_COEF_CURRENT_IN_B - CCS_BEGIN].validity                        = VALIDITY_OK;
+  parameters_[CCS_COEF_CURRENT_IN_B - CCS_BEGIN].value.float_t                   = 1.0;
+  parameters_[CCS_COEF_CURRENT_IN_B - CCS_BEGIN].min                             = 0.1;
+  parameters_[CCS_COEF_CURRENT_IN_B - CCS_BEGIN].max                             = 10.0;
+  parameters_[CCS_COEF_CURRENT_IN_B - CCS_BEGIN].discret                         = 1000;
+  parameters_[CCS_COEF_CURRENT_IN_B - CCS_BEGIN].def                             = 1.0;
+  parameters_[CCS_COEF_CURRENT_IN_B - CCS_BEGIN].code                            = 13;
+  // Коэффициент корректировки входного тока фаза C
+  parameters_[CCS_COEF_CURRENT_IN_C - CCS_BEGIN].id                              = CCS_COEF_CURRENT_IN_C;
+  parameters_[CCS_COEF_CURRENT_IN_C - CCS_BEGIN].access                          = ACCESS_TECHNOLOG;
+  parameters_[CCS_COEF_CURRENT_IN_C - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_COEF_CURRENT_IN_C - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
+  parameters_[CCS_COEF_CURRENT_IN_C - CCS_BEGIN].validity                        = VALIDITY_OK;
+  parameters_[CCS_COEF_CURRENT_IN_C - CCS_BEGIN].value.float_t                   = 1.0;
+  parameters_[CCS_COEF_CURRENT_IN_C - CCS_BEGIN].min                             = 0.1;
+  parameters_[CCS_COEF_CURRENT_IN_C - CCS_BEGIN].max                             = 10.0;
+  parameters_[CCS_COEF_CURRENT_IN_C - CCS_BEGIN].discret                         = 1000;
+  parameters_[CCS_COEF_CURRENT_IN_C - CCS_BEGIN].def                             = 1.0;
+  parameters_[CCS_COEF_CURRENT_IN_C - CCS_BEGIN].code                            = 13;
+  // Ток фазы А
+  parameters_[CCS_CURRENT_PHASE_1 - CCS_BEGIN].id                                = CCS_CURRENT_PHASE_1;
+  parameters_[CCS_CURRENT_PHASE_1 - CCS_BEGIN].access                            = ACCESS_OPERATOR;
+  parameters_[CCS_CURRENT_PHASE_1 - CCS_BEGIN].operation                         = OPERATION_READ;
+  parameters_[CCS_CURRENT_PHASE_1 - CCS_BEGIN].physic                            = PHYSIC_CURRENT;
+  parameters_[CCS_CURRENT_PHASE_1 - CCS_BEGIN].validity                          = VALIDITY_ERROR;
+  parameters_[CCS_CURRENT_PHASE_1 - CCS_BEGIN].value.float_t                     = NAN;
+  parameters_[CCS_CURRENT_PHASE_1 - CCS_BEGIN].min                               = 0.0;
+  parameters_[CCS_CURRENT_PHASE_1 - CCS_BEGIN].max                               = 999999.0;
+  parameters_[CCS_CURRENT_PHASE_1 - CCS_BEGIN].discret                           = 100;
+  parameters_[CCS_CURRENT_PHASE_1 - CCS_BEGIN].def                               = 0.0;
+  parameters_[CCS_CURRENT_PHASE_1 - CCS_BEGIN].code                              = 0;
+  // Ток фазы B
+  parameters_[CCS_CURRENT_PHASE_2 - CCS_BEGIN].id                                = CCS_CURRENT_PHASE_2;
+  parameters_[CCS_CURRENT_PHASE_2 - CCS_BEGIN].access                            = ACCESS_OPERATOR;
+  parameters_[CCS_CURRENT_PHASE_2 - CCS_BEGIN].operation                         = OPERATION_READ;
+  parameters_[CCS_CURRENT_PHASE_2 - CCS_BEGIN].physic                            = PHYSIC_CURRENT;
+  parameters_[CCS_CURRENT_PHASE_2 - CCS_BEGIN].validity                          = VALIDITY_ERROR;
+  parameters_[CCS_CURRENT_PHASE_2 - CCS_BEGIN].value.float_t                     = NAN;
+  parameters_[CCS_CURRENT_PHASE_2 - CCS_BEGIN].min                               = 0.0;
+  parameters_[CCS_CURRENT_PHASE_2 - CCS_BEGIN].max                               = 999999.0;
+  parameters_[CCS_CURRENT_PHASE_2 - CCS_BEGIN].discret                           = 100;
+  parameters_[CCS_CURRENT_PHASE_2 - CCS_BEGIN].def                               = 0.0;
+  parameters_[CCS_CURRENT_PHASE_2 - CCS_BEGIN].code                              = 0;
+  // Ток фазы С
+  parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].id                                = CCS_CURRENT_PHASE_3;
+  parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].access                            = ACCESS_OPERATOR;
+  parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].operation                         = OPERATION_READ;
+  parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].physic                            = PHYSIC_CURRENT;
+  parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].validity                          = VALIDITY_ERROR;
+  parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].value.float_t                     = NAN;
+  parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].min                               = 0.0;
+  parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].max                               = 999999.0;
+  parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].discret                           = 100;
+  parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].def                               = 0.0;
+  parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].code                              = 0;
 }
 
