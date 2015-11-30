@@ -84,6 +84,13 @@ public:
   virtual int setMotorSpeed(float value);
 
   /*!
+   * \brief setMotorPower
+   * \param value
+   * \return
+   */
+  virtual int setMotorPower(float value);
+
+  /*!
    * \brief setLimitsMotor
    * \return
    */
@@ -340,14 +347,14 @@ public:
    * \brief calcUfCharacteristic
    * \return
    */
-  virtual int calcUfCharacteristicU(float value);
+  virtual int calcUfCharacteristicU();
 
   /*!
    * \brief calcUfCharacteristicF
    * \param value
    * \return
    */
-  virtual int calcUfCharacteristicF(float value);
+  virtual int calcUfCharacteristicF();
 
   /*!
    * \brief Метод задания предела тока
@@ -450,13 +457,18 @@ public:
    * \brief Функция вычисления текущего cos ЧРП по активной и полной мощности
    * \return
    */
-  int calcVsdCos();
+   int calcMotorCos();
 
   /*!
    * \brief calcVsdPowerFull Функция вычисления текущей полной мощности
    * \return
    */
-  virtual float calcVsdPowerFull();
+  float calcVsdPowerFull();
+
+  /*!
+   * \brief Функция вычисления тока звена постоянного тока
+   */
+  float calcCurrentDC();
 
   /*!
    * \brief writeToDevice

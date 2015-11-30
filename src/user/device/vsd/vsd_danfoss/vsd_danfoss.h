@@ -139,8 +139,12 @@ public:
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
   int setMotorType(float value);
   int setMotorSpeed(float value);
+  int setMotorPower(float value);
+  int setMotorCurrent(float value);
+  int setMotorVoltage(float value);
 
   // РЕЖИМЫ ПУСКА
+  int onRegimePush();
 
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
   int setVsdControl(float value);
@@ -151,6 +155,7 @@ public:
   int setTimeSpeedUp(float value); 
   int setTimeSpeedDown(float value);
   int setSwitchingFrequencyCode(float value);
+  int calcFiltTimeCurLim(float value);
 
   int setOutFilter(float value);
 
@@ -168,6 +173,8 @@ public:
   int setUf_U5(float value);
   int setUf_U6(float value);
 
+  int calcUfCharacteristicU();
+  int calcUfCharacteristicF();
   void readUfCharacterictic();
 
   uint16_t configVsd();
@@ -197,12 +204,10 @@ public:
   bool checkStop();
 
   int resetSetpoints();
-
-  virtual float calcVsdPowerFull();
-
+  //void processingRegimeRun();
 
 private:
-  ModbusParameter modbusParameters_[208];
+  ModbusParameter modbusParameters_[212];
   DeviceModbus *dm_;
 
 };

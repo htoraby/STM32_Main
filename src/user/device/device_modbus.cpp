@@ -48,7 +48,7 @@ void DeviceModbus::createThread(const char *threadName, osMessageQId getValueDev
   getValueDeviceQId_ = getValueDeviceQId;
 
   // Создаём очередь сообщений
-  osMessageQDef(OutOfTurn, 100, uint32_t);
+  osMessageQDef(OutOfTurn, 300, uint32_t);
   messageOutOfTurn_ = osMessageCreate (osMessageQ(OutOfTurn), NULL);
 
   // Создаём задачу цикла опроса
@@ -337,6 +337,9 @@ void DeviceModbus::exchangeTask()
       default:
         break;
       }
+      // Чтение параметра после его записи
+      mbParams_[outOfTurn].command = OPERATION_READ;
+      putMessageOutOfTurn(outOfTurn);
     }
     else {
       if (!(outOfTurn && (mbParams_[outOfTurn].command == OPERATION_READ))) {

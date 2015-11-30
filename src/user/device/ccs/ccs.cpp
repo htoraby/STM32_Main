@@ -836,13 +836,13 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_BASE_VOLTAGE:                    // Максимальное рабочее напряжение (базовое)
     err = setValue(id, value, eventType);
     calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
-    vsd->calcUfCharacteristicU(value);
+    vsd->calcUfCharacteristicU();
     return err;
   case CCS_BASE_FREQUENCY:                  // Максимальная рабочая частота (базовая)
     err = setValue(id, value, eventType);
     parameters.set(VSD_HIGH_LIM_SPEED_MOTOR, value);
     calcTransRecommendedTapOff();
-    vsd->calcUfCharacteristicF(value);
+    vsd->calcUfCharacteristicF();
     return err;
   case CCS_TRANS_NOMINAL_FREQUENCY_INPUT:
     err = setValue(id, value, eventType);

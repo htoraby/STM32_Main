@@ -46,6 +46,11 @@ int Vsd::setMotorSpeed(float value)
   return setValue(VSD_MOTOR_SPEED, value);
 }
 
+int Vsd::setMotorPower(float value)
+{
+  return setValue(VSD_MOTOR_POWER, value);
+}
+
 void Vsd::setLimitsMotor()
 {
 
@@ -165,6 +170,7 @@ int Vsd::setLimitsMaxFrequence(float value)
 
 int Vsd::setFrequency(float value)
 {
+  // parameters.set(CCS_VSD_FREQUENCY);
   return setValue(VSD_FREQUENCY, value);
 }
 
@@ -299,28 +305,15 @@ int Vsd::setUf_U6(float value)
   return setValue(VSD_UF_CHARACTERISTIC_U_6, value);
 }
 
-int Vsd::calcUfCharacteristicU(float value)
+int Vsd::calcUfCharacteristicU()
 {
-  float voltStep = parameters.get(CCS_BASE_VOLTAGE) / 6;
-  setUf_U1(voltStep * 1);
-  setUf_U2(voltStep * 2);
-  setUf_U3(voltStep * 3);
-  setUf_U4(voltStep * 4);
-  setUf_U5(voltStep * 5);
-  setUf_U6(voltStep * 6);
-  return ok_r;
+
+  return err_r;
 }
 
-int Vsd::calcUfCharacteristicF(float value)
+int Vsd::calcUfCharacteristicF()
 {
-  float freqStep = parameters.get(CCS_BASE_FREQUENCY) / 6;
-  setUf_f1(freqStep * 1);
-  setUf_f2(freqStep * 2);
-  setUf_f3(freqStep * 3);
-  setUf_f4(freqStep * 4);
-  setUf_f5(freqStep * 5);
-  setUf_f6(freqStep * 6);
-  return ok_r;
+  return err_r;
 }
 
 int Vsd::setCurrentLim(float value)
@@ -343,7 +336,7 @@ int Vsd::setUfU(uint16_t id, float value)
   return setValue(id, value);
 }
 
-int Vsd::calcVsdCos()
+int Vsd::calcMotorCos()
 {
   float actPwr = parameters.get(VSD_POWER_ACTIVE);
   float fullPwr =  parameters.get(VSD_POWER_FULL);
@@ -361,7 +354,22 @@ int Vsd::calcVsdCos()
 
 float Vsd::calcVsdPowerFull()
 {
-  return 0;
+  setValue(VSD_POWER_FULL,
+           calcAverage3Values(getValue(VSD_CURRENT_OUT_PHASE_1),
+                              getValue(VSD_CURRENT_OUT_PHASE_2),
+                              getValue(VSD_CURRENT_OUT_PHASE_3)) *
+                              getValue(VSD_OUT_VOLTAGE_MOTOR) * 1.73);
+  return getValue(VSD_POWER_FULL);
+}
+
+float Vsd::calcCurrentDC()
+{
+  float pwr = getValue(VSD_POWER_ACTIVE);
+  float volt = getValue(VSD_VOLTAGE_DC);
+  if (volt > 0) {
+    setValue(VSD_CURRENT_DC, pwr/volt);
+  }
+  return getValue(VSD_CURRENT_DC);
 }
 
 void Vsd::writeToDevice(int id, float value)

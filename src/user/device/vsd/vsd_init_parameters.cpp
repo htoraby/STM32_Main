@@ -2855,7 +2855,7 @@ void Vsd::initParameters()
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].value.float_t              = 0.01;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].min                        = 0.0001;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].max                        = 0.1;
-  parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].def                        = 0.01;
+  parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].def                        = 0.1;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].discret                    = 4;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].code                       = 0;
   // Компенсация напряжения постоянного тока Danfoss 14-51 Не используется в проекте, только при конфигурировании
@@ -5366,5 +5366,53 @@ void Vsd::initParameters()
   parameters_[VSD_FAIL_RESET_14 - VSD_BEGIN].def                                 = 3.0;
   parameters_[VSD_FAIL_RESET_14 - VSD_BEGIN].discret                             = 1;
   parameters_[VSD_FAIL_RESET_14 - VSD_BEGIN].code                                = 0;
+  // Активный набор параметров ЧРП Danfoss
+  parameters_[VSD_ACTIVE_SETUP - VSD_BEGIN].id                                   = VSD_ACTIVE_SETUP;
+  parameters_[VSD_ACTIVE_SETUP - VSD_BEGIN].access                               = ACCESS_OPERATOR;
+  parameters_[VSD_ACTIVE_SETUP - VSD_BEGIN].operation                            = OPERATION_WRITE;
+  parameters_[VSD_ACTIVE_SETUP - VSD_BEGIN].physic                               = PHYSIC_NUMERIC;
+  parameters_[VSD_ACTIVE_SETUP - VSD_BEGIN].validity                             = VALIDITY_ERROR;
+  parameters_[VSD_ACTIVE_SETUP - VSD_BEGIN].value.float_t                        = 1.0;
+  parameters_[VSD_ACTIVE_SETUP - VSD_BEGIN].min                                  = 0.0;
+  parameters_[VSD_ACTIVE_SETUP - VSD_BEGIN].max                                  = 9.0;
+  parameters_[VSD_ACTIVE_SETUP - VSD_BEGIN].def                                  = 1.0;
+  parameters_[VSD_ACTIVE_SETUP - VSD_BEGIN].discret                              = 1;
+  parameters_[VSD_ACTIVE_SETUP - VSD_BEGIN].code                                 = 0;
+  // Изменяемый набор параметров ЧРП Danfoss
+  parameters_[VSD_CHANGE_SETUP - VSD_BEGIN].id                                   = VSD_CHANGE_SETUP;
+  parameters_[VSD_CHANGE_SETUP - VSD_BEGIN].access                               = ACCESS_OPERATOR;
+  parameters_[VSD_CHANGE_SETUP - VSD_BEGIN].operation                            = OPERATION_WRITE;
+  parameters_[VSD_CHANGE_SETUP - VSD_BEGIN].physic                               = PHYSIC_NUMERIC;
+  parameters_[VSD_CHANGE_SETUP - VSD_BEGIN].validity                             = VALIDITY_ERROR;
+  parameters_[VSD_CHANGE_SETUP - VSD_BEGIN].value.float_t                        = 1.0;
+  parameters_[VSD_CHANGE_SETUP - VSD_BEGIN].min                                  = 0.0;
+  parameters_[VSD_CHANGE_SETUP - VSD_BEGIN].max                                  = 9.0;
+  parameters_[VSD_CHANGE_SETUP - VSD_BEGIN].def                                  = 1.0;
+  parameters_[VSD_CHANGE_SETUP - VSD_BEGIN].discret                              = 1;
+  parameters_[VSD_CHANGE_SETUP - VSD_BEGIN].code                                 = 0;
+  // Связанный набор параметров ЧРП Danfoss
+  parameters_[VSD_LINK_SETUP - VSD_BEGIN].id                                     = VSD_LINK_SETUP;
+  parameters_[VSD_LINK_SETUP - VSD_BEGIN].access                                 = ACCESS_OPERATOR;
+  parameters_[VSD_LINK_SETUP - VSD_BEGIN].operation                              = OPERATION_WRITE;
+  parameters_[VSD_LINK_SETUP - VSD_BEGIN].physic                                 = PHYSIC_NUMERIC;
+  parameters_[VSD_LINK_SETUP - VSD_BEGIN].validity                               = VALIDITY_ERROR;
+  parameters_[VSD_LINK_SETUP - VSD_BEGIN].value.float_t                          = 1.0;
+  parameters_[VSD_LINK_SETUP - VSD_BEGIN].min                                    = 0.0;
+  parameters_[VSD_LINK_SETUP - VSD_BEGIN].max                                    = 4.0;
+  parameters_[VSD_LINK_SETUP - VSD_BEGIN].def                                    = 0.0;
+  parameters_[VSD_LINK_SETUP - VSD_BEGIN].discret                                = 1;
+  parameters_[VSD_LINK_SETUP - VSD_BEGIN].code                                   = 0;
+  // Разрешенные направления вращения ЧРП Danfoss
+  parameters_[VSD_ROTATION_FLAG - VSD_BEGIN].id                                  = VSD_ROTATION_FLAG;
+  parameters_[VSD_ROTATION_FLAG - VSD_BEGIN].access                              = ACCESS_OPERATOR;
+  parameters_[VSD_ROTATION_FLAG - VSD_BEGIN].operation                           = OPERATION_WRITE;
+  parameters_[VSD_ROTATION_FLAG - VSD_BEGIN].physic                              = PHYSIC_NUMERIC;
+  parameters_[VSD_ROTATION_FLAG - VSD_BEGIN].validity                            = VALIDITY_ERROR;
+  parameters_[VSD_ROTATION_FLAG - VSD_BEGIN].value.float_t                       = 2.0;
+  parameters_[VSD_ROTATION_FLAG - VSD_BEGIN].min                                 = 0.0;
+  parameters_[VSD_ROTATION_FLAG - VSD_BEGIN].max                                 = 2.0;
+  parameters_[VSD_ROTATION_FLAG - VSD_BEGIN].def                                 = 2.0;
+  parameters_[VSD_ROTATION_FLAG - VSD_BEGIN].discret                             = 1;
+  parameters_[VSD_ROTATION_FLAG - VSD_BEGIN].code                                = 0;
 }
 

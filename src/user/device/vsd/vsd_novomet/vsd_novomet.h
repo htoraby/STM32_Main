@@ -382,10 +382,7 @@ public:
    */
   void calcRotation();
 
-  /*!
-   * \brief Функция вычисления тока звена постоянного тока
-   */
-  void calcCurrentDC();
+
 
   void calcSwitchFreqMode();
 

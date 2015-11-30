@@ -826,12 +826,12 @@ void VsdNovomet::getNewValue(uint16_t id)
     break;
   case VSD_POWER_ACTIVE:
     setValue(id, value);
-    calcVsdCos();
+    calcMotorCos();
     calcCurrentDC();
     break;
   case VSD_POWER_FULL:
     setValue(id, value);
-    calcVsdCos();
+    calcMotorCos();
     break;
   case VSD_LOW_LIM_SPEED_MOTOR:
     setValue(id, value);
@@ -1214,15 +1214,6 @@ void VsdNovomet::calcMotorType()
   float value = getValue(VSD_MOTOR_TYPE);
   if (parameters.get(CCS_MOTOR_TYPE) != value)
     parameters.set(CCS_MOTOR_TYPE, value);
-}
-
-void VsdNovomet::calcCurrentDC()
-{
-  float pwr = getValue(VSD_POWER_ACTIVE);
-  float volt = getValue(VSD_VOLTAGE_DC);
-  if (volt > 0) {
-    setValue(VSD_CURRENT_DC, pwr/volt);
-  }
 }
 
 void VsdNovomet::calcSwitchFreqMode()

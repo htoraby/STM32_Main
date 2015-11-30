@@ -16462,6 +16462,27 @@
 	</param>
 	<param>
 		<id>853</id>
+		<name>CCS_VSD_FREQUENCY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>500.0</max>
+		<def>50.0</def>
+		<discret>100</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Знач.поддержив.частота</text>
+		<short_text>Задание частоты ПЧ</short_text>
+		<form>1.1 Текущие параметры - сводка; 3.2 ЧРП</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
+		<comment>Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF</comment>
+	</param>
+	<param>
+		<id>854</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>
@@ -20560,7 +20581,7 @@
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0001</min>
 		<max>0.1</max>
-		<def>0.01</def>
+		<def>0.1</def>
 		<discret>4</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.01</value>
@@ -24806,6 +24827,90 @@
 	</param>
 	<param>
 		<id>10447</id>
+		<name>VSD_ACTIVE_SETUP</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>9.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Активный набор параметров ЧРП Danfoss</text>
+		<short_text>Активный набор</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Активный набор параметров ЧРП Danfoss</comment>
+	</param>
+	<param>
+		<id>10448</id>
+		<name>VSD_CHANGE_SETUP</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>9.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Изменяемый набор параметров ЧРП Danfoss</text>
+		<short_text>Изменяемый набор</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Изменяемый набор параметров ЧРП Danfoss</comment>
+	</param>
+	<param>
+		<id>10449</id>
+		<name>VSD_LINK_SETUP</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Связанный набор параметров ЧРП Danfoss</text>
+		<short_text>Связанный набор параметров</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Связанный набор параметров ЧРП Danfoss</comment>
+	</param>
+	<param>
+		<id>10450</id>
+		<name>VSD_ROTATION_FLAG</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>2.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>2.0</value>
+		<text>Разрешенные направления вращения ЧРП Danfoss</text>
+		<short_text>Разрешенные направления вращения</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Разрешенные направления вращения ЧРП Danfoss</comment>
+	</param>
+	<param>
+		<id>10451</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>
