@@ -44,15 +44,15 @@ void ProtectionImbalanceCurrentInput::getOtherSetpointProt()
 
 bool ProtectionImbalanceCurrentInput::checkAlarm()
 {
-  return Protection::isLowerLimit(tripSetpoint_);
+  return Protection::isHigherLimit(tripSetpoint_);
 }
 
 bool ProtectionImbalanceCurrentInput::checkPrevent()
 {
   if (restart_)
-    return Protection::isLowerLimit(restartSetpoint_);
+    return Protection::isHigherLimit(restartSetpoint_);
   else
-    return Protection::isLowerLimit(tripSetpoint_);
+    return Protection::isHigherLimit(tripSetpoint_);
 }
 
 float ProtectionImbalanceCurrentInput::calcValue()
@@ -70,17 +70,17 @@ bool ProtectionImbalanceCurrentInput::isProtect()
 #endif
 
   if (parameters.get(CCS_EM_TYPE) == EM_TYPE_NONE) {
-    if (parameters.isValidity(EM_CURRENT_PHASE_1) ||
-        parameters.isValidity(EM_CURRENT_PHASE_2) ||
-        parameters.isValidity(EM_CURRENT_PHASE_3)) {
+    if (parameters.isValidity(CCS_CURRENT_PHASE_1) ||
+        parameters.isValidity(CCS_CURRENT_PHASE_2) ||
+        parameters.isValidity(CCS_CURRENT_PHASE_3)) {
       return true;
     }
   }
   else {
     if (em->isConnect()) {
-      if (parameters.isValidity(EM_CURRENT_PHASE_1) ||
-          parameters.isValidity(EM_CURRENT_PHASE_2) ||
-          parameters.isValidity(EM_CURRENT_PHASE_3)) {
+      if (parameters.isValidity(CCS_CURRENT_PHASE_1) ||
+          parameters.isValidity(CCS_CURRENT_PHASE_2) ||
+          parameters.isValidity(CCS_CURRENT_PHASE_3)) {
         return true;
       }
     }
