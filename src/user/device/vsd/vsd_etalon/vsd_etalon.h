@@ -46,7 +46,7 @@ enum enEtalonStatus
   VSD_ETALON_STATUS_CONDENSATOR = 28,         //!< Нет заряда конденс.
   VSD_ETALON_STATUS_TERISTORS = 29,           //!< Авария тиристоров
   VSD_ETALON_STATUS_CURRENT_LIMIT = 30,       //!< Токоограничение
-  VSD_ETALON_STATUS_31 = 31,                  //!< Ошибка номер 31
+  VSD_ETALON_STATUS_31 = 31,                  //!< Автомат фильтра
   VSD_ETALON_STATUS_32 = 32,                  //!< По подхвату
   VSD_ETALON_STATUS_AUTO_STOP = 33,           //!< Авто останов
   VSD_ETALON_STATUS_MANUAL_STOP = 34,         //!< Ручной останов
@@ -98,7 +98,7 @@ enum enVsdEtalonAlarm {
   VSD_ETALON_ALARM_CONDENSATOR    = 3028,   //!< Нет заряда конденс.
   VSD_ETALON_ALARM_TERISTORS      = 3029,   //!< Авария тиристоров
   VSD_ETALON_ALARM_CURRENT_LIMIT  = 3030,   //!< Токоограничение
-  VSD_ETALON_ALARM_31             = 3031,   //!< Ошибка номер 31
+  VSD_ETALON_ALARM_31             = 3031,   //!< Автомат фильтра
   VSD_ETALON_ALARM_32             = 3032,   //!< По подхвату
   VSD_ETALON_ALARM_AUTO_STOP      = 3033,   //!< Авто останов
   VSD_ETALON_ALARM_MANUAL_STOP    = 3034,   //!< Ручной останов
