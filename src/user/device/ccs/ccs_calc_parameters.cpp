@@ -651,8 +651,9 @@ void Ccs::calcInputVoltageFromAdc()
 void Ccs::calcDigitalInputs()
 {
   uint8_t value[14];
-  static uint8_t valueOld[14];
-  static uint8_t count[14];
+  static uint8_t valueOld[14] = {0};
+  static uint16_t count[14] = {0};
+  static uint16_t impulse = 0;
 
   for (int i = 0; i <= DI5; ++i) {
     value[i] = !getDigitalInput(i);
@@ -677,7 +678,23 @@ void Ccs::calcDigitalInputs()
     valueOld[i] = value[i];
   }
 
-  setValue(CCS_DI_6_VALUE, !getDigitalInput(DI6));
+  if (count[DI6] < 940) {                      // Счётчик сколько раз попадём в функцию за 1 секунду
+    value[DI6] = !getDigitalInput(DI6);     // Получаем текущее состояние дискретного входа
+    if (valueOld[DI6] != value[DI6])        // Если предыдущее состояние не равно текущему
+      impulse++;                            // Увеличиваем счётчик переходов
+    valueOld[DI6] = value[DI6];             // Запоминаем текущее состояние
+    count[DI6]++;                           // Увеличиваем счётчик мс
+    setValue(CCS_DI_6_VALUE, value[DI6]);
+  }
+  else {                                     // Прошла 1 секунда
+    if (impulse > 400)
+      impulse = 400;
+    if ((parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON))
+      setValue(CCS_TURBO_ROTATION_NOW, impulse / 2);
+    impulse = 0;                            // Сбрасываем количество переходов
+    count[DI6] = 0;                         // Сбрасывам счётчик
+  }
+
   setValue(CCS_DI_7_VALUE, !getDigitalInput(DI7));
   setValue(CCS_DI_8_VALUE, !getDigitalInput(DI8));
   setValue(CCS_DI_9_VALUE, !getDigitalInput(DI9));
@@ -784,4 +801,9 @@ void Ccs::calcTemperatureCCS()
 {
   float temp = tempSensorReadData();
   setValue(CCS_TEMPERATURE_CCS, temp);
+}
+
+void Ccs::calcTurboRotation()
+{
+
 }
