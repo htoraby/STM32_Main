@@ -32,9 +32,9 @@ uint16_t crc16_ibm(uint8_t *buf, uint32_t size, uint16_t crc)
 
 int checkRangeNoInclude(double value, double min, double max, uint16_t discret)
 {
-  uint32_t valueU32 = value * discret + 0.5;
-  uint32_t minU32 = min * discret + 0.5;
-  uint32_t maxU32 = max * discret + 0.5;
+  double valueU32 = value * discret + 0.5;
+  double minU32 = min * discret + 0.5;
+  double maxU32 = max * discret + 0.5;
   // Если значение больше минимума
   if (valueU32 > minU32) {
     // Если значение меньше максимума
@@ -55,9 +55,9 @@ int checkRangeNoInclude(double value, double min, double max, uint16_t discret)
 
 int checkRangeInclude(double value, double min, double max, uint16_t discret)
 {
-  uint32_t valueU32 = value * discret + 0.5;
-  uint32_t minU32 = min * discret + 0.5;
-  uint32_t maxU32 = max * discret + 0.5;
+  double valueU32 = value * discret + 0.5;
+  double minU32 = min * discret + 0.5;
+  double maxU32 = max * discret + 0.5;
   // Если значение больше минимума
   if (valueU32 >= minU32) {
     // Если значение меньше максимума
