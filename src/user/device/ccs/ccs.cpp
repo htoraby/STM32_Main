@@ -312,7 +312,7 @@ void Ccs::changedCondition()
         float reason = getValue(CCS_LAST_STOP_REASON_TMP);
         setNewValue(CCS_LAST_STOP_REASON, reason);
         calcCountersStop(reason);
-        logEvent.add(StopCode, (EventType)reason, StopId);
+        logEvent.add(StopCode, NoneType, (EventId)reason);
       }
 
       if (flag == CCS_CONDITION_FLAG_BLOCK) {

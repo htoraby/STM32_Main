@@ -5,9 +5,7 @@
  * \brief Id события
 */
 typedef enum {
-  RunId = 25000,                  //!< "Пуск"...
-  StopId,                         //!< "Стоп"...
-  PowerOnId,                      //!< "Включение питания"
+  PowerOnId = 25002,              //!< "Включение питания"
   PowerOffId,                     //!< "Отключение питания"
   RebootSoftwareId,               //!< "Перезагрузка ПО"
   UpdateSoftwareId,               //!< "Обновление ПО"

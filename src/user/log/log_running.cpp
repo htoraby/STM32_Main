@@ -61,8 +61,8 @@ void LogRunning::task()
   while (1) {
     osSemaphoreWait(semaphoreId_, osWaitForever);
 
-    EventType eventType = (EventType)ksu.getValue(CCS_LAST_RUN_REASON);
-    eventId_ = logEvent.add(RunCode, eventType, RunId);
+    EventId eventId = (EventId)ksu.getValue(CCS_LAST_RUN_REASON);
+    eventId_ = logEvent.add(RunCode, NoneType, eventId);
 
     osDelay(ARCHIVE_TIME);
 
