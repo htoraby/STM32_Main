@@ -390,7 +390,7 @@ StatusType Device::saveParameters()
                                     countParameters_*4);
 
   if (status == StatusError)
-    logDebug.add(WarningMsg, "Error save parameters %d", startAddrParams_);
+    logDebug.add(CriticalMsg, "Error save parameters %d", startAddrParams_);
   return status;
 }
 
@@ -400,7 +400,7 @@ StatusType Device::readParameters()
                                    (uint8_t *)buffer,
                                    countParameters_*4);
   if (status == StatusError)
-    logDebug.add(WarningMsg, "Error read parameters %d", startAddrParams_);
+    logDebug.add(CriticalMsg, "Error read parameters %d", startAddrParams_);
 
   uint16_t calcCrc = 0xFFFF;
   for (int i = 0; i < countParameters_; ++i) {
@@ -417,7 +417,7 @@ StatusType Device::readParameters()
     addr = EmParamsCrcAddrFram;
   framReadData(addr, (uint8_t*)&crc, 2);
   if (crc != calcCrc) {
-    logDebug.add(WarningMsg, "Error CRC parameters %d", startAddrParams_);
+    logDebug.add(CriticalMsg, "Error CRC parameters %d", startAddrParams_);
   }
 
   return status;
