@@ -694,8 +694,8 @@ void Ccs::calcTime()
 {
   static int conditionOld = CCS_CONDITION_STOP;
   static uint32_t timer = HAL_GetTick();
-  static float generalRunTime = 0;
-  static float generalStopTime = 0;
+  static float generalRunTime = getValue(CCS_GENERAL_RUN_DATE_TIME);
+  static float generalStopTime = getValue(CCS_GENERAL_STOP_DATE_TIME);
 
   int condition = getValue(CCS_CONDITION);
 
