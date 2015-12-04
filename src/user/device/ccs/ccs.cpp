@@ -16,6 +16,9 @@
 #define TIMEOUT_POWER_OFF 6000 //!< 1 минута на отключение питания ИБП
 #define DELAY_CHECK_CONNECT_DEVICE 1000 //!< Задержка проверки подключения устройств - 20 сек
 
+//! Массив параметров устройства
+static parameter parametersArray[CCS_END - CCS_BEGIN] __attribute__((section(".extmem")));
+
 static void ccsMainTask(void *p)
 {
   (static_cast<Ccs*>(p))->mainTask();
@@ -42,7 +45,7 @@ static void ccsCalcParametersTask(void *p)
 }
 
 Ccs::Ccs()
-  : Device(CCS_BEGIN, parametersArray_, CCS_END - CCS_BEGIN)
+  : Device(CCS_BEGIN, parametersArray, CCS_END - CCS_BEGIN)
   , conditionOld_(-1)
   , flagOld_(-1)
   , workModeOld_(-1)
@@ -73,8 +76,8 @@ void Ccs::initTask()
   osThreadDef(LedCondition, ccsLedConditionTask, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(LedCondition), this);
 
-  osThreadDef(VsdConditionTask, ccsVsdConditionTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
-  osThreadCreate(osThread(VsdConditionTask), this);
+  osThreadDef(VsdCondition, ccsVsdConditionTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(VsdCondition), this);
 
   osThreadDef(CcsMain, ccsMainTask, osPriorityNormal, 0, 4*configMINIMAL_STACK_SIZE);
   ccsMainTaskId_ = osThreadCreate(osThread(CcsMain), this);
@@ -82,8 +85,8 @@ void Ccs::initTask()
   osThreadDef(CcsTools, ccsToolsTask, osPriorityNormal, 0, 7*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(CcsTools), this);
 
-  osThreadDef(CalcParametersTask, ccsCalcParametersTask, osPriorityNormal, 0 , 3*configMINIMAL_STACK_SIZE);
-  osThreadCreate(osThread(CalcParametersTask), this);
+  osThreadDef(CalcParameters, ccsCalcParametersTask, osPriorityNormal, 0 , 3*configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(CalcParameters), this);
 
   rebootSemaphoreId_ = osSemaphoreCreate(NULL, 1);
   osSemaphoreWait(rebootSemaphoreId_, 0);
@@ -107,6 +110,9 @@ void Ccs::mainTask()
   while (1) {
     osDelay(10);
 
+    if (isPowerOff())
+      osDelay(osWaitForever);
+
     changedWorkMode();
     changedCondition();
 
@@ -120,6 +126,9 @@ void Ccs::toolsTask()
 {
   while (1) {
     osDelay(50);
+
+    if (isPowerOff())
+      osDelay(osWaitForever);
 
     if (osSemaphoreWait(rebootSemaphoreId_, 0) != osEventTimeout)
       reboot();
@@ -197,6 +206,9 @@ void Ccs::vsdConditionTask()
 
   while (1) {
     osDelay(10);
+
+    if (isPowerOff())
+      osDelay(osWaitForever);
 
     int vsdCondition = getValue(CCS_VSD_CONDITION);
     if (vsdCondition != vsdConditionOld)

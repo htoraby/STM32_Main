@@ -26,6 +26,9 @@ void Ccs::calcParametersTask()
   while (1) {
     osDelay(1);
 
+    if (isPowerOff())
+      osDelay(osWaitForever);
+
     calcDigitalInputs();
 
     if ((HAL_GetTick() - time10ms) >= 10) {
