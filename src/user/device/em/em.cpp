@@ -2,8 +2,11 @@
 #include "uart.h"
 #include "user_main.h"
 
+//! Массив параметров устройства
+static parameter parametersArray[EM_END - EM_BEGIN] __attribute__((section(".extmem")));
+
 Em::Em()
-  : Device(EM_BEGIN, parametersArray_, EM_END - EM_BEGIN)
+  : Device(EM_BEGIN, parametersArray, EM_END - EM_BEGIN)
 {
   initParameters();
 }

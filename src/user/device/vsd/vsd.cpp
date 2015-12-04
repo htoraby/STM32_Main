@@ -8,8 +8,11 @@
 #include "vsd.h"
 #include "user_main.h"
 
+//! Массив параметров устройства
+static parameter parametersArray[VSD_END - VSD_BEGIN] __attribute__((section(".extmem")));
+
 Vsd::Vsd()
-  : Device(VSD_BEGIN, parametersArray_, VSD_END - VSD_BEGIN)
+  : Device(VSD_BEGIN, parametersArray, VSD_END - VSD_BEGIN)
   , log_(NULL)
 {
   initParameters();

@@ -90,9 +90,6 @@ protected:
   uint8_t rxBuffer_[EM_MAX_DATA_SIZE];
 
 private:
-  //! Массив параметров устройства
-  parameter parametersArray_[EM_END - EM_BEGIN];
-
   //! Семафор по приёму байта данных по UART
   osSemaphoreId semaphoreAnswer_;
 };
