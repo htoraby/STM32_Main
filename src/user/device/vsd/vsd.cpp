@@ -23,7 +23,14 @@ Vsd::~Vsd()
 // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
 int Vsd::setMotorType(float value)
 {
-  return setValue(VSD_MOTOR_TYPE, value);
+  if (setValue(VSD_MOTOR_TYPE, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания типа двигателя (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
 }
 
 int Vsd::setMotorFrequency(float value)

@@ -58,10 +58,10 @@ static void getFile(char *fileName)
         }
       }
     }
-    logDebug.add(WarningMsg, "Update. Файл прошивки не найден");
+    logDebug.add(WarningMsg, "Обновление: Файл прошивки не найден (getFile())");
   }
   else {
-    logDebug.add(WarningMsg, "Update. Не удалось открыть каталог");
+    logDebug.add(WarningMsg, "Обновление: Не удалось открыть каталог (f_readdir())");
   }
 }
 
@@ -143,11 +143,11 @@ static bool saveSwInFlashExt(char *fileName)
         isSaveSw = true;
       }
       else {
-        logDebug.add(WarningMsg, "Update. Ошибка CRС - %x %x %x, %x", crc, calcCrc, calcCrcRx, finish);
+        logDebug.add(WarningMsg, "Обновление: Ошибка CRС в файле прошивки (%x %x %x, %x)", crc, calcCrc, calcCrcRx, finish);
       }
     }
     else {
-      logDebug.add(WarningMsg, "Update. Ошибка в загаловке файла прошивки - %d %d %d %d %d",
+      logDebug.add(WarningMsg, "Обновление: Ошибка в загаловке файла прошивки (%d %d %d %d %d)",
                    readSize, imageHeader.size, imageHeader.codeProduction,
                    imageHeader.codeEquip, imageHeader.subCodeEquip);
     }
@@ -155,7 +155,7 @@ static bool saveSwInFlashExt(char *fileName)
     f_close(&file);
   }
   else {
-    logDebug.add(WarningMsg, "Update. Ошибка открытия файла прошивки");
+    logDebug.add(WarningMsg, "Обновление: Ошибка открытия файла прошивки (saveSwInFlashExt())");
   }
 
   return isSaveSw;
@@ -166,7 +166,7 @@ bool updateFromUsb()
   static char fileName[_MAX_LFN] = {0};
 
   if (usbState != USB_READY) {
-    logDebug.add(WarningMsg, "Update. Не подключен USB накопитель");
+    logDebug.add(WarningMsg, "Обновление: Не подключен USB накопитель (updateFromUsb())");
     return false;
   }
 

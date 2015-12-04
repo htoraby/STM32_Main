@@ -93,10 +93,7 @@ int VsdDanfoss::setMotorType(float value)
     configVsd();
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setMotorType");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdDanfoss::setMotorSpeed(float value)

@@ -195,8 +195,10 @@ unsigned short Device::getIndexAtId(unsigned short id)
     if (getFieldId(id - startAddrParams_) == id)
       return (id - startAddrParams_);
   }
-
-  logDebug.add(WarningMsg, "Не найден параметр %d", id);
+#if (USE_LOG_WARNING == 1)
+  logDebug.add(WarningMsg, "Устройства: не найден параметр (id = %d %d .. %d"),
+               id, startAddrParams_, startAddrParams_ + countParameters_);
+#endif
   return 0;
 }
 
@@ -242,7 +244,8 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
     // Формирование сообщения в архив событий об изменении параметра
     if (code && (eventType != NoneType) && !(isnan(value) || isnan(oldValue))) {
       logEvent.add(code, eventType, (EventId)id, oldValue, value, units);
-      logDebug.add(DebugMsg, "code %d, eventType %d, id %d, oldValue %f, value %f", code, eventType, (EventId)id, oldValue, value);
+      logDebug.add(DebugMsg, "Device: Change parameter %d %f -> %f",
+                   id, oldValue, value);
     }
   }
 

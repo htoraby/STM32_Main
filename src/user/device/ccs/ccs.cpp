@@ -224,7 +224,10 @@ void Ccs::vsdConditionTask()
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
       }
       else if (vsdCondition != vsdConditionOld) {
-        logDebug.add(WarningMsg, "Ошибка останова");
+#if (USE_LOG_WARNING == 1)
+        logDebug.add(WarningMsg, "Контроллер: Ошибка останова (ЧРП = %d)",
+                     getValue(CCS_TYPE_VSD));
+#endif
       }
       break;
     case VSD_CONDITION_RUN:
@@ -259,7 +262,10 @@ void Ccs::vsdConditionTask()
       if (vsd->start() == ok_r) {
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
       } else if (vsdCondition != vsdConditionOld) {
-        logDebug.add(WarningMsg, "Ошибка запуска");
+#if (USE_LOG_WARNING == 1)
+        logDebug.add(WarningMsg, "Контроллер: ошибка запуска (ЧРП = %d)",
+                     getValue(CCS_TYPE_VSD));
+#endif
       }
       break;
     }
@@ -676,6 +682,8 @@ void Ccs::calcTime()
 {
   static int conditionOld = CCS_CONDITION_STOP;
   static uint32_t timer = HAL_GetTick();
+  static float generalRunTime = 0;
+  static float generalStopTime = 0;
 
   int condition = getValue(CCS_CONDITION);
 
@@ -694,19 +702,26 @@ void Ccs::calcTime()
   }
 
   if (conditionOld != condition) {
-    if ((condition != CCS_CONDITION_STOP) && (conditionOld == CCS_CONDITION_STOP))
+    if ((condition != CCS_CONDITION_STOP) && (conditionOld == CCS_CONDITION_STOP)) {
       setNewValue(CCS_LAST_RUN_DATE_TIME, getTime());
-    if ((condition == CCS_CONDITION_STOP) && (conditionOld != CCS_CONDITION_STOP))
-      setNewValue(CCS_LAST_STOP_DATE_TIME, getTime());
+      generalStopTime = getValue(CCS_GENERAL_STOP_DATE_TIME);
+    }
+    if ((condition == CCS_CONDITION_STOP) && (conditionOld != CCS_CONDITION_STOP)) {
+      setNewValue(CCS_LAST_STOP_DATE_TIME, getTime());          // Сохранили время перехода в СТО
+      generalRunTime = getValue(CCS_GENERAL_RUN_DATE_TIME);     // Сохранили общее время наработки
+    }
     conditionOld = condition;
   }
-  if (condition == CCS_CONDITION_STOP)
+
+  if (condition == CCS_CONDITION_STOP) {
     setNewValue(CCS_STOP_TIME, (float)getSecFromCurTime(CCS_LAST_STOP_DATE_TIME));
-  else
-    setNewValue(CCS_RUN_TIME, (float)getSecFromCurTime(CCS_LAST_RUN_DATE_TIME));
+    setNewValue(CCS_GENERAL_STOP_DATE_TIME, generalStopTime + (float)getSecFromCurTime(CCS_LAST_STOP_DATE_TIME));
+  }
+  else {
+    setNewValue(CCS_RUN_TIME, (float)getSecFromCurTime(CCS_LAST_RUN_DATE_TIME)); 
+    setNewValue(CCS_GENERAL_RUN_DATE_TIME, generalRunTime + (float)getSecFromCurTime(CCS_LAST_RUN_DATE_TIME));
+  }
 }
-
-
 
 uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
 {
@@ -1512,7 +1527,9 @@ void Ccs::startReboot()
 
 void Ccs::reboot()
 {
-  logDebug.add(WarningMsg, "Перезагрузка");
+#if (USE_LOG_WARNING == 1)
+  logDebug.add(WarningMsg, "Контроллер: Перезагрузка");
+#endif
   osDelay(200);
   osThreadSuspendAll();
   HAL_NVIC_SystemReset();
@@ -1527,7 +1544,9 @@ void Ccs::startUpdateSoftware()
 
 void Ccs::updateSoftware()
 {
-  logDebug.add(WarningMsg, "Обновление ПО");
+#if (USE_LOG_WARNING == 1)
+  logDebug.add(WarningMsg, "Контроллер: обновление ПО");
+#endif
   osDelay(200);
   if (updateFromUsb()) {
     resetCmd(CCS_CMD_UPDATE_SOFTWARE);
@@ -1542,7 +1561,7 @@ void Ccs::checkConnectMaster()
 {
   bool isConnect = novobusSlave.isConnect();
   if (!isConnect && (isConnect != isConnectMaster_)) {
-    logDebug.add(CriticalMsg, "Master перезагрузка");
+    logDebug.add(CriticalMsg, "Ccs. Master reboot");
     resetAm335x();
   }
   isConnectMaster_ = isConnect;

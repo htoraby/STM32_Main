@@ -17,7 +17,8 @@ void Em::openPort(uint32_t baudRate, uint32_t parity, uint32_t stopBits)
 {
   // Инициализация UART
   if (uartInit(EM_UART, baudRate, parity, stopBits) == StatusError) {
-    logDebug.add(CriticalMsg, "Ошибка инициализации UART EM");
+    logDebug.add(CriticalMsg, "Em. Error init, UART:%d baudRate:%d parity:%d stopBits:%d",
+                 EM_UART, baudRate, parity, stopBits);
   } else {
     semaphoreAnswer_ = uartGetSemaphoreId(EM_UART);
   }
@@ -32,7 +33,10 @@ StatusType Em::sendUart(uint8_t *data, int count)
 {
   StatusType status = StatusOk;
   if (uartWriteData(EM_UART, data, count) == StatusError) {
-    logDebug.add(WarningMsg, "Ошибка отправки данных UART EM");
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "Счётчик: ошибка отправки данных (EM_UART = %d)",
+                 EM_UART);
+#endif
     status = StatusError;
   }
   return status;

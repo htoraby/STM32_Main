@@ -287,14 +287,16 @@ bool DeviceModbus::isConnect()
   bool curConnect = mms_->isConnect();
 
   if (prevConnect && !curConnect) {
-    logDebug.add(WarningMsg, "Connect lost port: %d, device: %d", numPort_, devAdrs_);
+    logDebug.add(WarningMsg, "DeviceModbus: Lost connect port %d device %d",
+                 numPort_, devAdrs_);
   }
 
   if (!prevConnect && curConnect) {
     for (int indexModbus = 0; indexModbus < countParameter_; indexModbus++) {
       mbParams_[indexModbus].cntExchange = mbParams_[indexModbus].freqExchange;
     }
-    logDebug.add(WarningMsg, "Connect restored port: %d, device: %d", numPort_, devAdrs_);
+    logDebug.add(WarningMsg, "DeviceModbus: Restored connect port %d device %d",
+                 numPort_, devAdrs_);
   }
 
   prevConnect = curConnect;
@@ -402,8 +404,8 @@ void DeviceModbus::readCoils(uint8_t slaveAddr, uint16_t startRef, bool *bitArr,
       mbParams_[index].value.int16_t[0] = bitArr_[i];
       uint8_t validity = checkRange(mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, true);
       if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-        logDebug.add(WarningMsg, "mb 0x01 ok_r no valid devAdr %d, index %d, value %d, valid %d", devAdrs_,
-                      index, uint16Arr_[i], mbParams_[index].validity);
+        logDebug.add(WarningMsg, "DeviceModbus. Error validity coils, port:%d slaveAddr:%d command:0x01 startRef:%d value:%d min:%f max:%f validity:%d",
+                     numPort_, slaveAddr, startRef, mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, mbParams_[index].validity);
       }
       mbParams_[index].validity = validity;
       putMessageUpdateId(mbParams_[index].id);
@@ -415,8 +417,8 @@ void DeviceModbus::readCoils(uint8_t slaveAddr, uint16_t startRef, bool *bitArr,
     for (uint8_t i = 0; i < refCnt; i++) {
       mbParams_[index].validity = err_r;
       if (isConnect()) {
-        logDebug.add(WarningMsg, "mb 0x01 no read, index:%d, slaveAddr:%d, startRef:%d, value:%d",
-                                                   index, slaveAddr, startRef, bitArr[i]);
+        logDebug.add(WarningMsg, "DeviceModbus. Error read coils, port:%d slaveAddr:%d command:0x01 startRef:%d",
+                     numPort_, slaveAddr, startRef);
       }
       putMessageUpdateId(mbParams_[index].id);
       index++;
@@ -432,9 +434,9 @@ void DeviceModbus::readInt16Registers(uint8_t slaveAddr, uint16_t startRef, uint
     for (int i = 0; i < refCnt; i++) {
       mbParams_[index].value.int16_t[0] = regArr[i];
       uint8_t validity = checkRange(mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, true);
-      if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-        logDebug.add(WarningMsg, "0x03 ok_r no valid devAdr %d, index %d, value %d, valid %d", slaveAddr,
-                     index, regArr[i], mbParams_[index].validity);
+      if ((validity != ok_r) && (validity != mbParams_[index].validity)) {       
+        logDebug.add(WarningMsg, "DeviceModbus. Error validity int16 register, port:%d slaveAddr:%d command:0x03 startRef:%d value:%d min:%f max:%f validity:%d",
+                     numPort_, slaveAddr, startRef, mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, mbParams_[index].validity);
       }
       mbParams_[index].validity = validity;
       putMessageUpdateId(mbParams_[index].id);
@@ -446,7 +448,8 @@ void DeviceModbus::readInt16Registers(uint8_t slaveAddr, uint16_t startRef, uint
     for (int i = 0; i < refCnt; i++) {
       mbParams_[index].validity = err_r;
       if (isConnect()) {
-        logDebug.add(WarningMsg, "0x03 no ok_r devAdr %d, index %d, value %d, valid %d", slaveAddr, index, regArr[i]);
+        logDebug.add(WarningMsg, "DeviceModbus. Error read int16 register, port:%d slaveAddr:%d command:0x03 startRef:%d",
+                     numPort_, slaveAddr, startRef);
       }
       putMessageUpdateId(mbParams_[index].id);
       index++;
@@ -463,8 +466,8 @@ void DeviceModbus::readInt16InputRegisters(uint8_t slaveAddr, uint16_t startRef,
       mbParams_[index].value.int16_t[0] = regArr[i];
       uint8_t validity = checkRange(mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, true);
       if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-        logDebug.add(WarningMsg, "0x04 ok_r no valid devAdr %d, index %d, value %d, valid %d", slaveAddr,
-                     index, regArr[i], mbParams_[index].validity);
+        logDebug.add(WarningMsg, "DeviceModbus. Error validity int16 register, port:%d slaveAddr:%d command:0x04 startRef:%d value:%d min:%f max:%f validity:%d",
+                     numPort_, slaveAddr, startRef, mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, mbParams_[index].validity);
       }
       mbParams_[index].validity = validity;
       putMessageUpdateId(mbParams_[index].id);
@@ -476,7 +479,8 @@ void DeviceModbus::readInt16InputRegisters(uint8_t slaveAddr, uint16_t startRef,
     for (int i = 0; i < refCnt; i++) {
       mbParams_[index].validity = err_r;
       if (isConnect()) {
-        logDebug.add(WarningMsg, "0x04 no ok_r devAdr %d, index %d, value %d, valid %d", slaveAddr, index, regArr[i]);
+        logDebug.add(WarningMsg, "DeviceModbus. Error read int16 register, port:%d slaveAddr:%d command:0x04 startRef:%d",
+                     numPort_, slaveAddr, startRef);
       }
       putMessageUpdateId(mbParams_[index].id);
       index++;
@@ -493,8 +497,8 @@ void DeviceModbus::readUint16Registers(uint8_t slaveAddr, uint16_t startRef, uin
       mbParams_[index].value.uint16_t[0] = regArr[i];
       uint8_t validity = checkRange(mbParams_[index].value.uint16_t[0], mbParams_[index].min, mbParams_[index].max, true);
       if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-        logDebug.add(WarningMsg, "mb 0x03 uint16 no valid, index:%d, slaveAddr:%d, startRef:%d, value:%d, validity:%d",
-                     index, slaveAddr, startRef, regArr[i], mbParams_[index].validity);
+        logDebug.add(WarningMsg, "DeviceModbus. Error validity uint16 register, port:%d slaveAddr:%d command:0x03 startRef:%d value:%d min:%f max:%f validity:%d",
+                     numPort_, slaveAddr, startRef, mbParams_[index].value.uint16_t[0], mbParams_[index].min, mbParams_[index].max, mbParams_[index].validity);
       }
       mbParams_[index].validity = validity;
 
@@ -507,7 +511,8 @@ void DeviceModbus::readUint16Registers(uint8_t slaveAddr, uint16_t startRef, uin
     for (int i = 0; i < refCnt; i++) {
       mbParams_[index].validity = err_r;
       if (isConnect()) {
-        logDebug.add(WarningMsg, "mbCmd0x03 uint16 %d %d %d", slaveAddr, index, regArr[i]);
+        logDebug.add(WarningMsg, "DeviceModbus. Error read uint16 register, port:%d slaveAddr:%d command:0x03 startRef:%d",
+                     numPort_, slaveAddr, startRef);
       }
       putMessageUpdateId(mbParams_[index].id);
       index++;
@@ -524,8 +529,8 @@ void DeviceModbus::readInt32Registers(uint8_t slaveAddr, uint16_t startRef, uint
       mbParams_[index].value.int32_t = int32Arr[i];
       uint8_t validity = checkRange(mbParams_[index].value.int32_t, mbParams_[index].min, mbParams_[index].max, true);
       if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-        logDebug.add(WarningMsg, "mbCmd0x03 int32 %d %d %d %d", slaveAddr,
-                     index, int32Arr[i], mbParams_[index].validity);
+        logDebug.add(WarningMsg, "DeviceModbus. Error validity int32 register, port:%d slaveAddr:%d command:0x03 startRef:%d value:%d min:%f max:%f validity:%d",
+                     numPort_, slaveAddr, startRef, mbParams_[index].value.int32_t, mbParams_[index].min, mbParams_[index].max, mbParams_[index].validity);
       }
       mbParams_[index].validity = validity;
 
@@ -538,7 +543,8 @@ void DeviceModbus::readInt32Registers(uint8_t slaveAddr, uint16_t startRef, uint
     for (int i = 0; i < refCnt; i++) {
       mbParams_[index].validity = err_r;
       if (isConnect()) {
-        logDebug.add(WarningMsg, "mbCmd0x03 int32 %d %d %d", slaveAddr, index, int32Arr[i]);
+        logDebug.add(WarningMsg, "DeviceModbus. Error read int32 register, port:%d slaveAddr:%d command:0x03 startRef:%d",
+                     numPort_, slaveAddr, startRef);
       }
       putMessageUpdateId(mbParams_[index].id);
       index++;
@@ -555,8 +561,8 @@ void DeviceModbus::readUint32Registers(uint8_t slaveAddr, uint16_t startRef, uin
       mbParams_[index].value.uint32_t = int32Arr[i];
       uint8_t validity = checkRange(mbParams_[index].value.uint32_t, mbParams_[index].min, mbParams_[index].max, true);
       if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-        logDebug.add(WarningMsg, "Warning: md 0x01 uint32 !validity slaveAddr:%d, startRef:%d; index:%d, value:%d, validity:%d",
-                                                           slaveAddr, startRef, index, mbParams_[index].value.uint32_t, mbParams_[index].validity);
+        logDebug.add(WarningMsg, "DeviceModbus. Error validity uint32 register, port:%d slaveAddr:%d command:0x03 startRef:%d value:%d min:%f max:%f validity:%d",
+                     numPort_, slaveAddr, startRef, mbParams_[index].value.uint32_t, mbParams_[index].min, mbParams_[index].max, mbParams_[index].validity);
       }
       mbParams_[index].validity = validity;
       putMessageUpdateId(mbParams_[index].id);
@@ -568,7 +574,8 @@ void DeviceModbus::readUint32Registers(uint8_t slaveAddr, uint16_t startRef, uin
     for (int i = 0; i < refCnt; i++) {
       mbParams_[index].validity = err_r;
       if (isConnect()) {
-        logDebug.add(WarningMsg, "Warning: md 0x01 uint32 !read slaveAddr:%d, startRef:%d; index:%d", slaveAddr, startRef, index);
+        logDebug.add(WarningMsg, "DeviceModbus. Error read uint32 register, port:%d slaveAddr:%d command:0x03 startRef:%d",
+                     numPort_, slaveAddr, startRef);
       }
       putMessageUpdateId(mbParams_[index].id);
       index++;
@@ -585,8 +592,8 @@ void DeviceModbus::readFloatsRegisters(uint8_t slaveAddr, uint16_t startRef, flo
       mbParams_[index].value.float_t = float32Arr[i];
       uint8_t validity = checkRange(mbParams_[index].value.float_t, mbParams_[index].min, mbParams_[index].max, true);
       if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-        logDebug.add(WarningMsg, "mbCmd0x03 float %d %d %f %d", slaveAddr,
-                     index, float32Arr[i], mbParams_[index].validity);
+        logDebug.add(WarningMsg, "DeviceModbus. Error validity float register, port:%d slaveAddr:%d command:0x03 startRef:%d value:%f min:%f max:%f validity:%d",
+                     numPort_, slaveAddr, startRef, mbParams_[index].value.float_t, mbParams_[index].min, mbParams_[index].max, mbParams_[index].validity);
       }
       mbParams_[index].validity = validity;
 
@@ -599,8 +606,8 @@ void DeviceModbus::readFloatsRegisters(uint8_t slaveAddr, uint16_t startRef, flo
     for (int i = 0; i < refCnt; i++) {
       mbParams_[index].validity = err_r;
       if (isConnect()) {
-        logDebug.add(WarningMsg, "mbCmd0x03 float %d %d %f", slaveAddr,
-                     index, float32Arr[i]);
+        logDebug.add(WarningMsg, "DeviceModbus. Error read float register, port:%d slaveAddr:%d command:0x03 startRef:%d",
+                     numPort_, slaveAddr, startRef);
       }
       putMessageUpdateId(mbParams_[index].id);
       index++;
@@ -618,9 +625,9 @@ void DeviceModbus::readArrayInt16Registers(uint8_t slaveAddr, uint16_t startRef,
       for (int i = 0; i < refCnt; i++) {
         mbParams_[index].value.int16_t[0] = regArr[i];
         uint8_t validity = checkRange(mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, true);
-        if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-          logDebug.add(WarningMsg, "0x03 ok_r no valid devAdr %d, address%d, indexArray%d, index %d, value %d, valid %d",
-                       slaveAddr, startRef, indexArray, index, regArr[i], mbParams_[index].validity);
+        if ((validity != ok_r) && (validity != mbParams_[index].validity)) {       
+          logDebug.add(WarningMsg, "DeviceModbus. Error validity array int16 register, port:%d slaveAddr:%d command:0x03 startRef:%d value:%d min:%f max:%f validity:%d index:%d",
+                       numPort_, slaveAddr, startRef, mbParams_[index].value.int16_t[0], mbParams_[index].min, mbParams_[index].max, mbParams_[index].validity, indexArray);
         }
         mbParams_[index].validity = validity;
         putMessageUpdateId(mbParams_[index].id);
@@ -632,8 +639,8 @@ void DeviceModbus::readArrayInt16Registers(uint8_t slaveAddr, uint16_t startRef,
       for (int i = 0; i < refCnt; i++) {
         mbParams_[index].validity = err_r;
         if (isConnect()) {
-          logDebug.add(WarningMsg, "0x03 no ok_r devAdr %d, address %d, indexArray %d, index %d, value %d, valid %d",
-                       slaveAddr, startRef, indexArray, index, regArr[i], mbParams_[index].validity);
+          logDebug.add(WarningMsg, "DeviceModbus. Error read array int16 register, port:%d slaveAddr:%d command:0x03 startRef:%d index:%d",
+                       numPort_, slaveAddr, startRef, indexArray);
         }
         putMessageUpdateId(mbParams_[index].id);
         index++;
@@ -641,7 +648,7 @@ void DeviceModbus::readArrayInt16Registers(uint8_t slaveAddr, uint16_t startRef,
     }
     res = mms_->writeSingleRegister(slaveAddr, addrIndexReg_, 0);
     if ((res != ok_r) && isConnect())
-      logDebug.add(WarningMsg, "mbCmd0x06 Reset Index Array");
+      logDebug.add(WarningMsg, "DeviceModbus. Error mbCmd0x06 Reset Index Array");
   }
   else {
     if (isConnect())
@@ -660,8 +667,8 @@ void DeviceModbus::readArrayInt32Registers(uint8_t slaveAddr, uint16_t startRef,
         mbParams_[index].value.int32_t = int32Arr[i];
         uint8_t validity = checkRange(mbParams_[index].value.int32_t, mbParams_[index].min, mbParams_[index].max, true);
         if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
-          logDebug.add(WarningMsg, "0x03 ok_r no valid devAdr %d, address%d, indexArray%d, index %d, value %d, valid %d",
-                       slaveAddr, startRef, indexArray, index, int32Arr[i], mbParams_[index].validity);
+          logDebug.add(WarningMsg, "DeviceModbus. Error validity array int32 register, port:%d slaveAddr:%d command:0x03 startRef:%d value:%d min:%f max:%f validity:%d index:%d",
+                       numPort_, slaveAddr, startRef,mbParams_[index].value.int32_t, mbParams_[index].min, mbParams_[index].max, mbParams_[index].validity, indexArray);
         }
         mbParams_[index].validity = validity;
         putMessageUpdateId(mbParams_[index].id);
@@ -673,8 +680,8 @@ void DeviceModbus::readArrayInt32Registers(uint8_t slaveAddr, uint16_t startRef,
       for (int i = 0; i < refCnt; i++) {
         mbParams_[index].validity = err_r;
         if (isConnect()) {
-          logDebug.add(WarningMsg, "0x03 no ok_r devAdr %d, address %d, indexArray %d, index %d, value %d, valid %d",
-                       slaveAddr, startRef, indexArray, index, int32Arr[i], mbParams_[index].validity);
+          logDebug.add(WarningMsg, "DeviceModbus. Error read array int32 register, port:%d slaveAddr:%d command:0x03 startRef:%d index:%d",
+                       numPort_, slaveAddr, startRef, indexArray);
         }
         putMessageUpdateId(mbParams_[index].id);
         index++;
@@ -694,42 +701,48 @@ void DeviceModbus::writeCoil(uint8_t slaveAddr, int bitAddr, int bitVal)
 {
   uint8_t res = mms_->writeCoil(slaveAddr, bitAddr, bitVal);
   if ((res != ok_r) && isConnect())
-    logDebug.add(WarningMsg, "mbCmd0x05 int16 %d %d %d", slaveAddr, bitAddr, bitVal);
+    logDebug.add(WarningMsg, "DeviceModbus. Error write coil, port:%d slaveAddr:%d command:0x05 bitAddr:%d bitVal:%d",
+                 numPort_, slaveAddr, bitAddr, bitVal);
 }
 
 void DeviceModbus::writeInt16Register(uint8_t slaveAddr, uint16_t regAddr, uint16_t regVal)
 {
   uint8_t res = mms_->writeSingleRegister(slaveAddr, regAddr, regVal);
   if ((res != ok_r) && isConnect())
-    logDebug.add(WarningMsg, "mbCmd0x06 int16 %d %d %d", slaveAddr, regAddr, regVal);
+    logDebug.add(WarningMsg, "DeviceModbus. Error write int16 register, port:%d slaveAddr:%d command:0x06 regAddr:%d regVal:%d",
+                 numPort_, slaveAddr, regAddr, regVal);
 }
 
 void DeviceModbus::writeUint16Register(uint8_t slaveAddr, uint16_t regAddr, uint16_t regVal)
 {
   uint8_t res = mms_->writeSingleRegister(slaveAddr, regAddr, regVal);
   if ((res != ok_r) && isConnect())
-    logDebug.add(WarningMsg, "mbCmd0x06 uint16 %d %d %d", slaveAddr, regAddr, regVal);
+    logDebug.add(WarningMsg, "DeviceModbus. Error write uint16 register, port:%d slaveAddr:%d command:0x06 regAddr:%d regVal:%d",
+                 numPort_, slaveAddr, regAddr, regVal);
 }
 
 void DeviceModbus::writeInt32Register(uint8_t slaveAddr, uint16_t startRef, int32_t *int32Arr, uint16_t refCnt)
 {
   uint8_t res = mms_->writeMultipleLongInts(slaveAddr, startRef, (uint32_t*)int32Arr, 1);
   if ((res != ok_r) && isConnect())
-    logDebug.add(WarningMsg, "Warning: mb 0x10 int32 !write slaveAddr:%d, startRef:%d, value:%d", slaveAddr, startRef, int32Arr[0]);
+    logDebug.add(WarningMsg, "DeviceModbus. Error write int32 register, port:%d slaveAddr:%d command:0x10 startRef:%d int32Arr:%d",
+                 numPort_, slaveAddr, startRef, int32Arr[0]);
 }
 
 void DeviceModbus::writeUint32Register(uint8_t slaveAddr, uint16_t startRef, uint32_t *int32Arr, uint16_t refCnt)
 {
   uint8_t res = mms_->writeMultipleLongInts(slaveAddr, startRef, int32Arr, 1);
   if ((res != ok_r) && isConnect())
-    logDebug.add(WarningMsg, "Warning: mb 0x10 uint32 !write slaveAddr:%d, startRef:%d, value:%d", slaveAddr, startRef, int32Arr[0]);
+    logDebug.add(WarningMsg, "DeviceModbus. Error write uint32 register, port:%d slaveAddr:%d command:0x10 startRef:%d int32Arr:%d",
+                 numPort_, slaveAddr, startRef, (uint32_t)int32Arr[0]);
 }
 
 void DeviceModbus::writeFloatRegister(uint8_t slaveAddr, uint16_t startRef, float *float32Arr, uint16_t refCnt)
 {
   uint8_t res = mms_->writeMultipleFloats(slaveAddr, startRef, float32Arr, 1);
   if ((res != ok_r) && isConnect())
-    logDebug.add(WarningMsg, "mbCmd0x10 float %d %d %f", slaveAddr, startRef, float32Arr);
+    logDebug.add(WarningMsg, "DeviceModbus. Error write float register, port:%d slaveAddr:%d command:0x10 startRef:%d float32Arr:%f",
+                 numPort_, slaveAddr, startRef, float32Arr[0]);
 }
 
 void DeviceModbus::writeArrayInt16Register(uint8_t slaveAddr, uint16_t regAddr, uint8_t indexArray, uint16_t regVal)
@@ -738,7 +751,8 @@ void DeviceModbus::writeArrayInt16Register(uint8_t slaveAddr, uint16_t regAddr, 
   if (res == ok_r) {
     res = mms_->writeSingleRegister(slaveAddr, regAddr, regVal);
     if ((res != ok_r) && isConnect())
-      logDebug.add(WarningMsg, "mbCmd0x06 int16 %d %d %d", slaveAddr, regAddr, regVal);
+      logDebug.add(WarningMsg, "DeviceModbus. Error write array int16 register, port:%d slaveAddr:%d command:0x06 regAddr:%d regVal:%d index:%d",
+                   numPort_, slaveAddr, regAddr, regVal, indexArray);
     res = mms_->writeSingleRegister(slaveAddr, addrIndexReg_, 0);
     if ((res != ok_r) && isConnect())
       logDebug.add(WarningMsg, "mbCmd0x06 Reset Index Array");
@@ -755,7 +769,8 @@ void DeviceModbus::writeArrayInt32Register(uint8_t slaveAddr, uint16_t startRef,
   if (res == ok_r) {
     res = mms_->writeMultipleLongInts(slaveAddr, startRef, (uint32_t*)int32Arr, 1);
     if ((res != ok_r) && isConnect())
-      logDebug.add(WarningMsg, "mbCmd0x10 int32 %d %d %d", slaveAddr, startRef, int32Arr);
+      logDebug.add(WarningMsg, "DeviceModbus. Error write array int32 register, port:%d slaveAddr:%d command:0x06 startRef:%d int32Arr:%d index:%d",
+                   numPort_, slaveAddr, startRef, int32Arr[0], indexArray);
     res = mms_->writeSingleRegister(slaveAddr, addrIndexReg_, 0);
     if ((res != ok_r) && isConnect())
       logDebug.add(WarningMsg, "mbCmd0x06 Reset Index Array");
