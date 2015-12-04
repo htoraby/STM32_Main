@@ -22,7 +22,7 @@
 #define FIRMWARE_TIME __TIME__
 
 
-#define USB_IRQ_PREPRIO   6
+#define USB_IRQ_PREPRIO   5
 #define FLASH_IRQ_PREPRIO 7
 #define UART_IRQ_PREPRIO  8
 #define SCADA_IRQ_PREPRIO  8
