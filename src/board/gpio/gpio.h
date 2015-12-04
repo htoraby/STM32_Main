@@ -18,7 +18,7 @@ enum LedType {
   StopLed,
   WaitLed,
   WorkLed,
-  FanLed,
+  TestLed,
   LedMax,
 };
 

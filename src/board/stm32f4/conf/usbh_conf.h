@@ -56,7 +56,7 @@
 #if (USBH_USE_OS == 1)
   #include "cmsis_os.h"
   #define   USBH_PROCESS_PRIO          osPriorityNormal
-  #define   USBH_PROCESS_STACK_SIZE    (4 * configMINIMAL_STACK_SIZE)
+  #define   USBH_PROCESS_STACK_SIZE    (8 * configMINIMAL_STACK_SIZE)
 #endif  
 
 /* Memory management macros */   

@@ -28,7 +28,7 @@ void VsdEtalon::init()
   initModbusParameters();
 
   // Создание задачи обновления параметров
-  createThread("UpdateParamsVsd");
+  createThread("UpdParamsVsd");
   // Создание объекта протокола связи с утройством
   int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
   dm_ = new DeviceModbus(modbusParameters_, count,

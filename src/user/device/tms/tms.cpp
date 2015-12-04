@@ -7,7 +7,10 @@
 
 #include "tms.h"
 
-Tms::Tms() : Device(TMS_BEGIN, parametersArray_, TMS_END - TMS_BEGIN)
+//! Массив параметров устройства
+static parameter parametersArray[TMS_END - TMS_BEGIN] __attribute__((section(".extmem")));
+
+Tms::Tms() : Device(TMS_BEGIN, parametersArray, TMS_END - TMS_BEGIN)
 {
   initParameters();
 }

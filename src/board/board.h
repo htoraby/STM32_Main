@@ -11,7 +11,7 @@
 
 #define USE_WATCHDOG 0
 #define USE_EXT_MEM  1
-#define USE_TEST     1
+#define USE_TEST     0
 #define USE_DEBUG    0
 #define USE_LOG_DEBUG 0
 #define USE_LOG_WARNING 0
@@ -25,7 +25,7 @@
 #define FIRMWARE_TIME __TIME__
 
 
-#define USB_IRQ_PREPRIO   6
+#define USB_IRQ_PREPRIO   5
 #define FLASH_IRQ_PREPRIO 7
 #define UART_IRQ_PREPRIO  8
 #define SCADA_IRQ_PREPRIO  8

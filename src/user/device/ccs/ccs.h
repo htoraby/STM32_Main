@@ -533,9 +533,6 @@ private:
 
   void calcTurboRotation();
 
-  //! Массив параметров устройства
-  parameter parametersArray_[CCS_END - CCS_BEGIN];
-
   //! Очередь событий включения/мигания LED
   osMessageQId ledMessage_;
   //! Предыдущие состояние станции

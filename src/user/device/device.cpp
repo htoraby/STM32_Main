@@ -9,11 +9,7 @@
 #include "user_main.h"
 #include "novobus_slave.h"
 
-#if USE_EXT_MEM
-static float buffer[VSD_BEGIN] __attribute__((section(".extmem")));
-#else
-static float buffer[VSD_BEGIN];
-#endif
+static float buffer[CCS_END - CCS_BEGIN];
 
 static void deviceUpdateValueTask(void *p)
 {
@@ -378,16 +374,26 @@ uint8_t Device::setNewValue(uint16_t id, int value)
 
 StatusType Device::saveParameters()
 {
+  uint16_t calcCrc = 0xFFFF;
   for (int i = 0; i < countParameters_; ++i) {
     buffer[i] = parameters_[i].value.float_t;
+    calcCrc = crc16_ibm((uint8_t*)&buffer[i], sizeof(buffer[i]), calcCrc);
   }
+  uint32_t addr = CcsParamsCrcAddrFram;
+  if (startAddrParams_ == VSD_BEGIN)
+    addr = VsdParamsCrcAddrFram;
+  if (startAddrParams_ == TMS_BEGIN)
+    addr = TmsParamsCrcAddrFram;
+  if (startAddrParams_ == EM_BEGIN)
+    addr = EmParamsCrcAddrFram;
+  framWriteData(addr, (uint8_t*)&calcCrc, 2);
 
   StatusType status = framWriteData(startAddrParams_*4,
                                     (uint8_t *)buffer,
                                     countParameters_*4);
 
   if (status == StatusError)
-    asm("nop");
+    logDebug.add(CriticalMsg, "Error save parameters %d", startAddrParams_);
   return status;
 }
 
@@ -397,10 +403,24 @@ StatusType Device::readParameters()
                                    (uint8_t *)buffer,
                                    countParameters_*4);
   if (status == StatusError)
-    asm("nop");
+    logDebug.add(CriticalMsg, "Error read parameters %d", startAddrParams_);
 
+  uint16_t calcCrc = 0xFFFF;
   for (int i = 0; i < countParameters_; ++i) {
     parameters_[i].value.float_t = buffer[i];
+    calcCrc = crc16_ibm((uint8_t*)&buffer[i], sizeof(buffer[i]), calcCrc);
+  }
+  uint16_t crc = 0;
+  uint32_t addr = CcsParamsCrcAddrFram;
+  if (startAddrParams_ == VSD_BEGIN)
+    addr = VsdParamsCrcAddrFram;
+  if (startAddrParams_ == TMS_BEGIN)
+    addr = TmsParamsCrcAddrFram;
+  if (startAddrParams_ == EM_BEGIN)
+    addr = EmParamsCrcAddrFram;
+  framReadData(addr, (uint8_t*)&crc, 2);
+  if (crc != calcCrc) {
+    logDebug.add(CriticalMsg, "Error CRC parameters %d", startAddrParams_);
   }
 
   return status;

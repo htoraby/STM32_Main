@@ -80,10 +80,6 @@ public:
    */
   int setDisablePidLoop();
 
-private:
-  //! Массив параметров устройства
-  parameter parametersArray_[TMS_END - TMS_BEGIN];
-
 };
 
 #endif /* TMS_H_ */
