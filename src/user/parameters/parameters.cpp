@@ -37,9 +37,9 @@ void Parameters::task()
     } else {
       if ((++time >= PARAMS_SAVE_TIME) || ksu.isPowerOff()) {
         time = 0;
-        if (ksu.isPowerOff())
-          logDebug.add(DebugMsg, "Сохранение параметров");
         save();
+        if (ksu.isPowerOff())
+          osDelay(osWaitForever);
       }
     }
   }
