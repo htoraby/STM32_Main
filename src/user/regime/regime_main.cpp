@@ -18,8 +18,8 @@ void regimeInit()
   regimes[2] = &regimeTechnologMaintenanceParam;
   regimes[3] = &regimeTechnologAlternationFreq;
 
-  osThreadDef(RegimeTask, regimeTask, osPriorityNormal, 0, 4 * configMINIMAL_STACK_SIZE);
-  osThreadCreate(osThread(RegimeTask), NULL);
+  osThreadDef(Regimes, regimeTask, osPriorityNormal, 0, 4 * configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(Regimes), NULL);
 }
 
 void regimeTask(void *argument)

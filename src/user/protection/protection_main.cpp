@@ -64,8 +64,8 @@ void protectionInit()
   protections[19] = &protAnalogInput3;
   protections[20] = &protAnalogInput4;
 
-  osThreadDef(ProtectionTask, protectionTask, osPriorityNormal, 0, 4 * configMINIMAL_STACK_SIZE);
-  osThreadCreate(osThread(ProtectionTask), NULL);
+  osThreadDef(Protections, protectionTask, osPriorityNormal, 0, 4 * configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(Protections), NULL);
 }
 
 void protectionTask(void *argument)

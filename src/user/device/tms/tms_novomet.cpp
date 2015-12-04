@@ -404,7 +404,7 @@ void TmsNovomet::init()
 {
   initModbusParameters();                   // Инициализация modbus карты
 
-  createThread("UpdateParamsTms");
+  createThread("UpdParamsTms");
   int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
   dm_ = new DeviceModbus(modbusParameters_, count,
                          TMS_UART, 9600, 8, UART_STOPBITS_1, UART_PARITY_NONE, 37);
