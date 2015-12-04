@@ -43,7 +43,7 @@ void gpioInit()
   initLed(StopLed);
   initLed(WaitLed);
   initLed(WorkLed);
-  initLed(FanLed);
+  initLed(TestLed);
 
   initPinOut(POWER_BUTTON_PIN, PinSet);
 //  initPinOut(SYS_RESET_BUTTON_PIN, PinSet);
@@ -94,7 +94,7 @@ void offAllLeds()
   offLed(StopLed);
   offLed(WaitLed);
   offLed(WorkLed);
-  offLed(FanLed);
+  offLed(TestLed);
 }
 
 void initPinInput(GPIO_TypeDef* port, const uint16_t pin)
