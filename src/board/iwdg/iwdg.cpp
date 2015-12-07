@@ -3,7 +3,7 @@
 IWDG_HandleTypeDef hiwdg;
 
 #if USE_WATCHDOG
-static void iwdgThread(void const * argument)
+static void iwdgThread(void* argument)
 {
   (void)argument;
 
