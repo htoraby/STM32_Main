@@ -110,7 +110,7 @@ int VsdDanfoss::setMotorSpeed(float value)
 
 int VsdDanfoss::setMotorPower(float value)
 {
-  if (Vsd::setMotorSpeed(value)) {
+  if (Vsd::setMotorPower(value)) {
     logDebug.add(WarningMsg, "VsdDanfoss::setMotorPower");
     return err_r;
   }
@@ -194,6 +194,7 @@ int VsdDanfoss::onRegimePush()
     writeToDevice(VSD_UF_CHARACTERISTIC_U_1, parameters.get(VSD_UF_CHARACTERISTIC_U_1) * (parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) / 100.0));
   }
   */
+  return err_r;
 }
 
 
@@ -317,10 +318,7 @@ int VsdDanfoss::setOutFilter(float value)
     writeToDevice(VSD_OUT_FILTER, getValue(VSD_OUT_FILTER));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setOutFilter");
-    return err_r;
-  }
+  return err_r;
 }
 
 // НАСТРОЙКА U/f
@@ -330,10 +328,7 @@ int VsdDanfoss::setUf_f1(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_F_1, getValue(VSD_UF_CHARACTERISTIC_F_1));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setUf_f1");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdDanfoss::setUf_f2(float value)
@@ -342,10 +337,7 @@ int VsdDanfoss::setUf_f2(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_F_2, getValue(VSD_UF_CHARACTERISTIC_F_2));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setUf_f2");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdDanfoss::setUf_f3(float value)
@@ -354,10 +346,7 @@ int VsdDanfoss::setUf_f3(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_F_3, getValue(VSD_UF_CHARACTERISTIC_F_3));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setUf_f3");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdDanfoss::setUf_f4(float value)
@@ -366,10 +355,7 @@ int VsdDanfoss::setUf_f4(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_F_4, getValue(VSD_UF_CHARACTERISTIC_F_4));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setUf_f4");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdDanfoss::setUf_f5(float value)
@@ -378,10 +364,7 @@ int VsdDanfoss::setUf_f5(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_F_5, getValue(VSD_UF_CHARACTERISTIC_F_5));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setUf_f5");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdDanfoss::setUf_f6(float value)
@@ -390,10 +373,7 @@ int VsdDanfoss::setUf_f6(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_F_6, getValue(VSD_UF_CHARACTERISTIC_F_6));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setUf_f6");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdDanfoss::setUf_U1(float value)
@@ -402,10 +382,7 @@ int VsdDanfoss::setUf_U1(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_U_1, getValue(VSD_UF_CHARACTERISTIC_U_1));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setUf_U1");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdDanfoss::setUf_U2(float value)
@@ -414,10 +391,7 @@ int VsdDanfoss::setUf_U2(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_U_2, getValue(VSD_UF_CHARACTERISTIC_U_2));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setUf_U2");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdDanfoss::setUf_U3(float value)
@@ -426,10 +400,7 @@ int VsdDanfoss::setUf_U3(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_U_3, getValue(VSD_UF_CHARACTERISTIC_U_3));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setUf_U3");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdDanfoss::setUf_U4(float value)
@@ -438,10 +409,7 @@ int VsdDanfoss::setUf_U4(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_U_4, getValue(VSD_UF_CHARACTERISTIC_U_4));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setUf_U4");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdDanfoss::setUf_U5(float value)
@@ -450,10 +418,7 @@ int VsdDanfoss::setUf_U5(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_U_5, getValue(VSD_UF_CHARACTERISTIC_U_5));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setUf_U5");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdDanfoss::setUf_U6(float value)
@@ -462,10 +427,7 @@ int VsdDanfoss::setUf_U6(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_U_6, getValue(VSD_UF_CHARACTERISTIC_U_6));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setUf_U6");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdDanfoss::calcUfCharacteristicU()

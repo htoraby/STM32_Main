@@ -104,10 +104,7 @@ int VsdEtalon::setMotorType(float value)
     writeToDevice(VSD_MOTOR_TYPE, value);   // Записываем в ЧРП
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdEtalon::setMotorType");
-    return err_r;
-  }
+  return err_r;
 }
 
 // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
@@ -117,10 +114,7 @@ int VsdEtalon::setRotation(float value)
     writeToDevice(VSD_ROTATION, getValue(VSD_ROTATION));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdEtalon::setRotation");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdEtalon::setMinFrequency(float value)
@@ -129,10 +123,7 @@ int VsdEtalon::setMinFrequency(float value)
     writeToDevice(VSD_LOW_LIM_SPEED_MOTOR, getValue(VSD_LOW_LIM_SPEED_MOTOR));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdEtalon::setMinFrequency");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdEtalon::setMaxFrequency(float value)
@@ -141,10 +132,7 @@ int VsdEtalon::setMaxFrequency(float value)
     writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdEtalon::setMaxFrequency");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdEtalon::setFrequency(float value)
@@ -153,10 +141,7 @@ int VsdEtalon::setFrequency(float value)
     writeToDevice(VSD_FREQUENCY, getValue(VSD_FREQUENCY));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdEtalon::setFrequency");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdEtalon::setTimeSpeedUp(float value)
@@ -165,10 +150,7 @@ int VsdEtalon::setTimeSpeedUp(float value)
     writeToDevice(VSD_TIMER_DISPERSAL, getValue(VSD_TIMER_DISPERSAL));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdEtalon::setTimeSpeedUp");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdEtalon::setTimeSpeedDown(float value)
@@ -177,10 +159,7 @@ int VsdEtalon::setTimeSpeedDown(float value)
     writeToDevice(VSD_TIMER_DELAY, getValue(VSD_TIMER_DELAY));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdEtalon::setTimeSpeedUp");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdEtalon::setSwitchingFrequency(float value)
@@ -189,10 +168,7 @@ int VsdEtalon::setSwitchingFrequency(float value)
     writeToDevice(VSD_SWITCHING_FREQUENCY, getValue(VSD_SWITCHING_FREQUENCY));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setSwitchingFrequency");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdEtalon::setCoefVoltageInAB(float value)
@@ -202,10 +178,10 @@ int VsdEtalon::setCoefVoltageInAB(float value)
     readInDevice(VSD_VOLTAGE_PHASE_1_2);
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdEtalon::setCoefVoltageInAB");
-    return err_r;
-  }
+  else
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания коэффициента входного напряжения AB (value = %d)",
+                 value);
+  return err_r;
 }
 
 int VsdEtalon::setCoefVoltageInBC(float value)
@@ -216,9 +192,10 @@ int VsdEtalon::setCoefVoltageInBC(float value)
     return ok_r;
   }
   else {
-    logDebug.add(WarningMsg, "VsdEtalon::setCoefVoltageInBC");
-    return err_r;
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания коэффициента входного напряжения BC (value = %d)",
+                 value);
   }
+  return err_r;
 }
 
 int VsdEtalon::setCoefVoltageInCA(float value)
@@ -229,9 +206,10 @@ int VsdEtalon::setCoefVoltageInCA(float value)
     return ok_r;
   }
   else {
-    logDebug.add(WarningMsg, "VsdEtalon::setCoefVoltageInCA");
-    return err_r;
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания коэффициента входного напряжения CA (value = %d)",
+                 value);
   }
+  return err_r;
 }
 
 float VsdEtalon::checkAlarmVsd()
@@ -775,12 +753,8 @@ int VsdEtalon::setUf_U1(float value)
       writeToDevice(VSD_UF_CHARACTERISTIC_U_1_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_1_PERCENT));
       return ok_r;
     }
-    return err_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdEtalon::setUfU1");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdEtalon::setUf_U2(float value)
@@ -790,12 +764,8 @@ int VsdEtalon::setUf_U2(float value)
       writeToDevice(VSD_UF_CHARACTERISTIC_U_2_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_2_PERCENT));
       return ok_r;
     }
-    return err_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdEtalon::setUfU2");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdEtalon::setUf_U3(float value)
@@ -805,12 +775,8 @@ int VsdEtalon::setUf_U3(float value)
       writeToDevice(VSD_UF_CHARACTERISTIC_U_3_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_3_PERCENT));
       return ok_r;
     }
-    return err_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdEtalon::setUfU3");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdEtalon::setUf_U4(float value)
@@ -819,13 +785,9 @@ int VsdEtalon::setUf_U4(float value)
     if (!setValue(VSD_UF_CHARACTERISTIC_U_4_PERCENT, (getValue(VSD_UF_CHARACTERISTIC_U_4) * 100.0) / getValue(VSD_BASE_VOLTAGE))) {
       writeToDevice(VSD_UF_CHARACTERISTIC_U_4_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_4_PERCENT));
       return ok_r;
-    }
-    return err_r;
+    }   
   }
-  else {
-    logDebug.add(WarningMsg, "VsdEtalon::setUfU4");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdEtalon::setUf_U5(float value)
@@ -834,13 +796,9 @@ int VsdEtalon::setUf_U5(float value)
     if (!setValue(VSD_UF_CHARACTERISTIC_U_5_PERCENT, (getValue(VSD_UF_CHARACTERISTIC_U_5) * 100.0) / getValue(VSD_BASE_VOLTAGE))) {
       writeToDevice(VSD_UF_CHARACTERISTIC_U_5_PERCENT, getValue(VSD_UF_CHARACTERISTIC_U_5_PERCENT));
       return ok_r;
-    }
-    return err_r;
+    }  
   }
-  else {
-    logDebug.add(WarningMsg, "VsdEtalon::setUfU5");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdEtalon::calcUfCharacteristicU(float value)
@@ -883,10 +841,7 @@ int VsdEtalon::setBaseVoltage(float value)
     readUfCharacterictic();
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdEtalon::setBaseVoltage");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdEtalon::setBaseFrequency(float value)
@@ -900,13 +855,9 @@ int VsdEtalon::setBaseFrequency(float value)
       osDelay(200);
       readUfCharacterictic();
       return ok_r;
-    }
-    return err_r;
+    }  
   }
-  else {
-    logDebug.add(WarningMsg, "VsdEtalon::setBaseFrequency");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdEtalon::setUfU(uint16_t id, float value)

@@ -38,17 +38,38 @@ int Vsd::setMotorType(float value)
 
 int Vsd::setMotorFrequency(float value)
 {
-  return setValue(VSD_MOTOR_FREQUENCY, value);
+  if (setValue(VSD_MOTOR_FREQUENCY, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания частоты двигателя (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
 }
 
 int Vsd::setMotorCurrent(float value)
 {
-  return setValue(VSD_MOTOR_CURRENT, value);
+  if (setValue(VSD_MOTOR_CURRENT, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания тока двигателя (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
 }
 
 int Vsd::setMotorVoltage(float value)
 {
-  return setValue(VSD_MOTOR_VOLTAGE, value);
+  if (setValue(VSD_MOTOR_VOLTAGE, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания напряжения двигателя (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
 }
 
 int Vsd::setMotorSpeed(float value)
@@ -125,13 +146,25 @@ int Vsd::setVsdControl(float value)
 
 int Vsd::setRotation(float value)
 {
-  return setValue(VSD_ROTATION, value);
+  if (setValue(VSD_ROTATION, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания направления вращения (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
 }
 
 int Vsd::setMinFrequency(float value)
 {
-  if (value > getValue(VSD_HIGH_LIM_SPEED_MOTOR))     // Присваиваемая минимальная частота больше максимальной
+  if (value > getValue(VSD_HIGH_LIM_SPEED_MOTOR)) {   // Присваиваемая минимальная частота больше максимальной
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания минимальной частоты (value = %d)",
+                 value);
+#endif
     return err_r;                                     // Возвращаем ошибку
+  }
   else
     return setLimitsMinFrequence(value);              // Записали минимум частоты
 }
@@ -155,8 +188,13 @@ int Vsd::setLimitsMinFrequence(float value)
 
 int Vsd::setMaxFrequency(float value)
 {
-  if (value < getValue(VSD_LOW_LIM_SPEED_MOTOR))
+  if (value < getValue(VSD_LOW_LIM_SPEED_MOTOR)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания минимальной частоты (value = %d)",
+                 value);
+#endif
     return err_r;
+  }
   else
     return setLimitsMaxFrequence(value);
 }
@@ -179,9 +217,15 @@ int Vsd::setLimitsMaxFrequence(float value)
 }
 
 int Vsd::setFrequency(float value)
-{
-  // parameters.set(CCS_VSD_FREQUENCY);
-  return setValue(VSD_FREQUENCY, value);
+{ 
+  if (setValue(VSD_FREQUENCY, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания минимальной частоты (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
 }
 
 int Vsd::setTimeSpeedUp(float value)
@@ -191,6 +235,10 @@ int Vsd::setTimeSpeedUp(float value)
       return setValue(VSD_T_SPEEDUP, 1/getValue(VSD_TEMP_SPEEDUP));
     }
   }
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания времени разгона (value = %d)",
+                 value);
+#endif
   return err_r;
 }
 
@@ -201,12 +249,23 @@ int Vsd::setTimeSpeedDown(float value)
       return setValue(VSD_T_SPEEDDOWN, 1/getValue(VSD_TEMP_SPEEDDOWN));
     }
   }
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания времени торможения (value = %d)",
+                 value);
+#endif
   return err_r;
 }
 
 int Vsd::setSwitchingFrequency(float value)
 {
-  return setValue(VSD_SWITCHING_FREQUENCY, value);
+  if (setValue(VSD_SWITCHING_FREQUENCY, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания частоты ШИМ (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
 }
 
 int Vsd::setSwitchingFrequencyCode(float value)
@@ -230,19 +289,37 @@ int Vsd::setSwitchingFrequencyCode(float value)
     case 14:  value = 16000;  break;
     default:  value = 2500;   break;
     }
-    return setValue(VSD_SWITCHING_FREQUENCY, value);
+    return setSwitchingFrequency(value);
   }
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания кода частоты ШИМ (value = %d)",
+                 value);
+#endif
   return err_r;
 }
 
 int Vsd::setSwitchingFrequencyMode(float value)
 {
-  return setValue(VSD_SWITCHING_FREQUENCY_MODE, value);
+  if (setValue(VSD_SWITCHING_FREQUENCY_MODE, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания режима ШИМ (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
 }
 
 int Vsd::setResonanceRemoveSource(float value)
 {
-  return setValue(VSD_RES_MODE, value);
+  if (setValue(VSD_RES_MODE, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания источника подавления резонанса (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
 }
 
 int Vsd::setOutFilter(float value)
@@ -257,67 +334,154 @@ int Vsd::setOutFilter(float value)
 // НАСТРОЙКА U/f
 int Vsd::setUf_f1(float value)
 {
-  return setValue(VSD_UF_CHARACTERISTIC_F_1, value);
+  if (setValue(VSD_UF_CHARACTERISTIC_F_1, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания f1 (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
+
 }
 
 int Vsd::setUf_f2(float value)
 {
-  return setValue(VSD_UF_CHARACTERISTIC_F_2, value);
+  if (setValue(VSD_UF_CHARACTERISTIC_F_2, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания f2 (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
+
 }
 
 int Vsd::setUf_f3(float value)
 {
-  return setValue(VSD_UF_CHARACTERISTIC_F_3, value);
+  if (setValue(VSD_UF_CHARACTERISTIC_F_3, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания f3 (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
+
 }
 
 int Vsd::setUf_f4(float value)
 {
-  return setValue(VSD_UF_CHARACTERISTIC_F_4, value);
+  if (setValue(VSD_UF_CHARACTERISTIC_F_4, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания f4 (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
 }
 
 int Vsd::setUf_f5(float value)
 {
-  return setValue(VSD_UF_CHARACTERISTIC_F_5, value);
+  if (setValue(VSD_UF_CHARACTERISTIC_F_5, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания f5 (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
+
 }
 
 int Vsd::setUf_f6(float value)
 {
-  return setValue(VSD_UF_CHARACTERISTIC_F_6, value);
+  if (setValue(VSD_UF_CHARACTERISTIC_F_6, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания f6 (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
 }
 
 int Vsd::setUf_U1(float value)
 {
-  return setValue(VSD_UF_CHARACTERISTIC_U_1, value);
+  if (setValue(VSD_UF_CHARACTERISTIC_U_1, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания U1 (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
 }
 
 int Vsd::setUf_U2(float value)
 {
-  return setValue(VSD_UF_CHARACTERISTIC_U_2, value);
+  if (setValue(VSD_UF_CHARACTERISTIC_U_2, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания U2 (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
 }
 
 int Vsd::setUf_U3(float value)
 {
-  return setValue(VSD_UF_CHARACTERISTIC_U_3, value);
+  if (setValue(VSD_UF_CHARACTERISTIC_U_3, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания U3 (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
 }
 
 int Vsd::setUf_U4(float value)
 {
-  return setValue(VSD_UF_CHARACTERISTIC_U_4, value);
+  if (setValue(VSD_UF_CHARACTERISTIC_U_4, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания U4 (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
 }
 
 int Vsd::setUf_U5(float value)
 {
-  return setValue(VSD_UF_CHARACTERISTIC_U_5, value);
+  if (setValue(VSD_UF_CHARACTERISTIC_U_5, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания U5 (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
 }
 
 int Vsd::setUf_U6(float value)
-{
-  return setValue(VSD_UF_CHARACTERISTIC_U_6, value);
+{ 
+  if (setValue(VSD_UF_CHARACTERISTIC_U_6, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания U6 (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
 }
 
 int Vsd::calcUfCharacteristicU()
 {
-
   return err_r;
 }
 
@@ -333,7 +497,14 @@ int Vsd::setCurrentLim(float value)
 
 int Vsd::setSumInduct(float value)
 {
-  return setValue(VSD_LOUT, value);
+  if (setValue(VSD_LOUT, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания суммарной индуктивности (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
 }
 
 int Vsd::resetBlock()
