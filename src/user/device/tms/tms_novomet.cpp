@@ -514,7 +514,7 @@ int TmsNovomet::setUnitPressure(float unit)
 #if (USE_LOG_WARNING == 1)
     logDebug.add(WarningMsg, "ТМС Новомет: не удалось задать ед.изм. давления (unit = %d)",
                  unit);
-#endif;
+#endif
     return err_r;
   }
   else {
@@ -523,7 +523,7 @@ int TmsNovomet::setUnitPressure(float unit)
 #if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "ТМС Новомет: задали МПа как ед.изм. давления",
                  unit);
-#endif;
+#endif
       writeToDevice(TMS_PRESSURE_UNIT, 0);
       break;
     case PRESSURE_ATM:
@@ -548,7 +548,7 @@ int TmsNovomet::setUnitTemperature(float unit)
 #if (USE_LOG_WARNING == 1)
     logDebug.add(WarningMsg, "ТМС Новомет: не удалось задать ед.изм. температуры (unit = %d)",
                  unit);
-#endif;
+#endif
     return err_r;
   }
   else {
