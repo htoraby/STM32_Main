@@ -6,9 +6,6 @@
 #define MAX_QUEUE_SIZE 500
 #define ANSWER_TIMEOUT 300000
 
-static uint8_t txBuffer[HOST_BUF_SIZE];
-static uint8_t rxBuffer[HOST_BUF_SIZE];
-
 static void novobusSlaveTask(void *p)
 {
   (static_cast<NovobusSlave*>(p))->task();
@@ -20,8 +17,7 @@ NovobusSlave::NovobusSlave()
   , addrsCount_(0)
   , isConnect_(true)
 {
-  txBuffer_ = txBuffer;
-  rxBuffer_ = rxBuffer;
+
 }
 
 NovobusSlave::~NovobusSlave()
@@ -120,7 +116,7 @@ void NovobusSlave::receivePackage(uint8_t sizePkt)
   EventType eventType;
 
   // Проверка контрольной суммы
-  if (sizePkt && (sizePkt == sizePktT)) {
+  if ((sizePkt >= 4) && (sizePkt == sizePktT) && (sizePkt <= HOST_BUF_SIZE)) {
     // Получаем контрольную сумму
     uint16_t rxCrc = (rxBuffer_[sizePktT - 2] << 8) + rxBuffer_[sizePktT - 1];
     // Вычисляем контрольную сумму
