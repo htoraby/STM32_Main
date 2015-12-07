@@ -98,7 +98,7 @@ void NovobusSlave::putMessageParams(uint16_t id, uint16_t type)
   osMessagePut(messageParams_, message, 0);
 }
 
-void NovobusSlave::receivePackage(uint8_t sizePkt)
+void NovobusSlave::receivePackage(uint16_t sizePkt)
 {
   // Заполняем заголовок пакета
   txBuffer_[0] = rxBuffer_[0];
