@@ -48,6 +48,7 @@
 
 void OTG_FS_IRQHandler(void);
 void SysTick_Handler(void);
+void HardFault_Handler(void);
 
 #ifdef __cplusplus
 }
