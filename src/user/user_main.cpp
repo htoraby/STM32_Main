@@ -1,6 +1,7 @@
 #include "user_main.h"
 #include "regime_main.h"
 #include "protection_main.h"
+#include "user_debug.h"
 
 Parameters parameters;
 NovobusSlave novobusSlave;
@@ -24,6 +25,7 @@ void userInit()
 
   // Запись в журнал "Включение питания"
   logEvent.add(PowerCode, AutoType, PowerOnId);
+  checkRegistersFromStack();
 
   vsd->init();
   tms->init();

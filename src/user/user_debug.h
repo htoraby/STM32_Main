@@ -7,7 +7,16 @@
  extern "C" {
 #endif
 
+ /*!
+ * \brief getRegistersFromStack
+ * \param pulFaultStackAddress
+ */
 void getRegistersFromStack(uint32_t *pulFaultStackAddress);
+
+/*!
+ * \brief checkRegistersFromStack
+ */
+void checkRegistersFromStack();
 
 #ifdef __cplusplus
 }
