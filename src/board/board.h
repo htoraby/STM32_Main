@@ -17,7 +17,7 @@
 #define USE_LOG_WARNING 0
 #define USE_LOG_CRITICAL 0
 
-#define WATCHDOG_TIMEOUT 5 // 5 сек
+#define WATCHDOG_TIMEOUT 10 // 10 сек
 
 
 #define FIRMWARE_VERSION 0x0001
