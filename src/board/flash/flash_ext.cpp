@@ -401,6 +401,8 @@ StatusType flashWritePage(FlashSpiNum num, uint32_t address, uint8_t *data, uint
   flashWriteDisable(num);
 
   osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
+  if (status == StatusError)
+    asm("nop");
 
   return status;
 }

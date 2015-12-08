@@ -149,11 +149,11 @@ static void logSave()
 
   bool error = false;
 
-  uint32_t time = 0;
+  uint32_t timeReady = 0;
   while(usbState != USB_READY) {
     osDelay(10);
-    time += 10;
-    if (time > 5000) {
+    timeReady += 10;
+    if (timeReady > 5000) {
       error = true;
       break;
     }
@@ -202,13 +202,15 @@ static void logSave()
         StatusType status = logDebugRead(addr, &bufData[0], size);
         if (status == StatusError)
           asm("nop");
-
-        result = f_write(&file, &bufData[0], size, &bytesWritten);
-        if ((result != FR_OK) || (size != bytesWritten))
-          asm("nop");
+        addr = addr + size;
         calcCrc = crc16_ibm(bufData, size, calcCrc);
 
-        addr = addr + size;
+        for (uint32_t i = 0; i < size/_MAX_SS; ++i) {
+          result = f_write(&file, &bufData[i*_MAX_SS], _MAX_SS, &bytesWritten);
+          if ((result != FR_OK) || (bytesWritten != _MAX_SS))
+            asm("nop");
+        }
+
         count++;
         if (count >= 20) {
           count = 0;
@@ -230,8 +232,7 @@ static void logSave()
     strcpy(logPath, LOG_DIR);
     getFilePath(logPath, "log");
 
-    int t = f_open(&file, logPath, FA_CREATE_ALWAYS | FA_WRITE);
-    if (t == FR_OK) {
+    if (f_open(&file, logPath, FA_CREATE_ALWAYS | FA_WRITE) == FR_OK) {
       uint16_t calcCrc = 0xFFFF;
       uint32_t addr = 0;
       uint32_t size = 4096;
@@ -248,13 +249,15 @@ static void logSave()
         StatusType status = logRead(addr, &bufData[0], size);
         if (status == StatusError)
           asm("nop");
-
-        result = f_write(&file, &bufData[0], size, &bytesWritten);
-        if ((result != FR_OK) || (size != bytesWritten))
-          asm("nop");
+        addr = addr + size;
         calcCrc = crc16_ibm(bufData, size, calcCrc);
 
-        addr = addr + size;
+        for (uint32_t i = 0; i < size/_MAX_SS; ++i) {
+          result = f_write(&file, &bufData[i*_MAX_SS], _MAX_SS, &bytesWritten);
+          if ((result != FR_OK) || (bytesWritten != _MAX_SS))
+            asm("nop");
+        }
+
         count++;
         if (count >= 20) {
           count = 0;
@@ -274,9 +277,6 @@ static void logSave()
     }
 
     delete[] logPath;
-
-    time = HAL_GetTick() - time;
-    asm("nop");
   }
 }
 
