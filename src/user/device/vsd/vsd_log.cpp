@@ -33,11 +33,15 @@ bool VsdLog::isConnect()
   bool curConnect = mms_->isConnect();
 
   if (prevConnect_ && !curConnect) {
-    logDebug.add(WarningMsg, "Connect lost port: %d, device: %d", numPort_, devAdrs_);
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "Архивы ЧРП: Связь потеряна (numPort = %d, devAdrs = %d)", numPort_, devAdrs_);
+#endif
   }
 
   if (!prevConnect_ && curConnect) {
-    logDebug.add(WarningMsg, "Connect restored port: %d, device: %d", numPort_, devAdrs_);
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "Архивы ЧРП: Связь восстановлена (numPort = %d, devAdrs = %d)", numPort_, devAdrs_);
+#endif
   }
 
   prevConnect_ = curConnect;

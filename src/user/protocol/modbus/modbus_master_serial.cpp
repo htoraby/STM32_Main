@@ -72,7 +72,7 @@ uint8_t ModbusMasterSerial::txBuf(uint8_t *buf, uint8_t num)
     res = ok_r;
   }
   else {
-#if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_WARNING == 1)
     logDebug.add(WarningMsg, "Modbus Serial: ошибка записи данных в порт (numberComPort_= %d)",
                  numberComPort_);
 #endif

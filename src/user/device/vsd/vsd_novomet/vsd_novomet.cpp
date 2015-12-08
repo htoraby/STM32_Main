@@ -102,10 +102,7 @@ int VsdNovomet::setMotorType(float value)
     writeToDevice(VSD_CONTROL_WORD_1, value);
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setMotorType");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setMotorFrequency(float value)
@@ -116,24 +113,17 @@ int VsdNovomet::setMotorFrequency(float value)
     setMax(VSD_TIMER_DELAY, value * 12.5);
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setMotorFrequency");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setMotorCurrent(float value)
 {
   if (!Vsd::setMotorCurrent(value)) {
-
     value = value * parameters.get(CCS_COEF_TRANSFORMATION);
     writeToDevice(VSD_MOTOR_CURRENT, value);
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setMotorCurrent");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setMotorVoltage(float value)
@@ -142,13 +132,8 @@ int VsdNovomet::setMotorVoltage(float value)
     value = value / parameters.get(CCS_COEF_TRANSFORMATION);
     if (!setBaseVoltage(value))
       return ok_r;
-    else
-      return err_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setMotorVoltage");
-    return err_r;
-  }
+  return err_r;
 }
 
 void VsdNovomet::setLimitsMotor()
@@ -293,10 +278,7 @@ int VsdNovomet::setRotation(float value)
     writeToDevice(VSD_CONTROL_WORD_1, value);
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setRotation");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setMinFrequency(float value)
@@ -305,10 +287,7 @@ int VsdNovomet::setMinFrequency(float value)
     writeToDevice(VSD_LOW_LIM_SPEED_MOTOR, getValue(VSD_LOW_LIM_SPEED_MOTOR));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setMinFrequency");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setMaxFrequency(float value)
@@ -317,10 +296,7 @@ int VsdNovomet::setMaxFrequency(float value)
     writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setMaxFrequency");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setFrequency(float value)
@@ -329,10 +305,7 @@ int VsdNovomet::setFrequency(float value)
     writeToDevice(VSD_FREQUENCY, getValue(VSD_FREQUENCY));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setFrequency");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setTimeSpeedUp(float value)
@@ -341,10 +314,7 @@ int VsdNovomet::setTimeSpeedUp(float value)
     writeToDevice(VSD_T_SPEEDUP, getValue(VSD_T_SPEEDUP));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setTimeSpeedUp");
-    return err_r;
-  }     
+  return err_r;
 }
 
 int VsdNovomet::setTimeSpeedDown(float value)
@@ -353,10 +323,7 @@ int VsdNovomet::setTimeSpeedDown(float value)
     writeToDevice(VSD_T_SPEEDDOWN, getValue(VSD_T_SPEEDDOWN));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setTimeSpeedDown");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setSwitchingFrequency(float value)
@@ -365,10 +332,7 @@ int VsdNovomet::setSwitchingFrequency(float value)
     writeToDevice(VSD_SWITCHING_FREQUENCY, getValue(VSD_SWITCHING_FREQUENCY));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setSwitchingFrequency");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setSwitchingFrequencyMode(float value)
@@ -388,10 +352,7 @@ int VsdNovomet::setSwitchingFrequencyMode(float value)
     writeToDevice(VSD_CONTROL_WORD_1, value);
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setSwitchingFrequencyMode");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setResonanceRemoveSource(float value)
@@ -400,10 +361,7 @@ int VsdNovomet::setResonanceRemoveSource(float value)
     writeToDevice(VSD_CONTROL_WORD_2, value);
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setResonanceRemoveSource");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setSumInduct(float value)
@@ -412,10 +370,7 @@ int VsdNovomet::setSumInduct(float value)
     writeToDevice(VSD_LOUT, value);
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setSumInduct");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setBaseVoltage(float value)
@@ -433,10 +388,7 @@ int VsdNovomet::setBaseVoltage(float value)
     readUfCharacterictic();
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setBaseVoltage");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setBaseFrequency(float value)
@@ -444,16 +396,10 @@ int VsdNovomet::setBaseFrequency(float value)
   if (!setValue(VSD_BASE_FREQUENCY, value)) {
     writeToDevice(VSD_BASE_FREQUENCY, value);
     value = (value * (parameters.get(VSD_MOTOR_VOLTAGE)/parameters.get(CCS_COEF_TRANSFORMATION)))/parameters.get(VSD_MOTOR_FREQUENCY);
-    if (!setBaseVoltage(value)) {
+    if (!setBaseVoltage(value))
       return ok_r;
-    }
-    else
-      return err_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setBaseFrequency");
-    return err_r;
-  }
+  return err_r;
 }
 
 float VsdNovomet::checkAlarmVsd()
@@ -588,10 +534,7 @@ int VsdNovomet::setUf_f1(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_F_1, getValue(VSD_UF_CHARACTERISTIC_F_1));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setUf_f1");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setUf_f2(float value)
@@ -600,10 +543,7 @@ int VsdNovomet::setUf_f2(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_F_2, getValue(VSD_UF_CHARACTERISTIC_F_2));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setUf_f2");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setUf_f3(float value)
@@ -612,10 +552,7 @@ int VsdNovomet::setUf_f3(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_F_3, getValue(VSD_UF_CHARACTERISTIC_F_3));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setUf_f3");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setUf_f4(float value)
@@ -624,10 +561,7 @@ int VsdNovomet::setUf_f4(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_F_4, getValue(VSD_UF_CHARACTERISTIC_F_4));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setUf_f4");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setUf_f5(float value)
@@ -636,10 +570,7 @@ int VsdNovomet::setUf_f5(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_F_5, getValue(VSD_UF_CHARACTERISTIC_F_5));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setUf_f5");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setUf_f6(float value)
@@ -648,10 +579,7 @@ int VsdNovomet::setUf_f6(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_F_6, getValue(VSD_UF_CHARACTERISTIC_F_6));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setUf_f6");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setUf_U1(float value)
@@ -660,10 +588,7 @@ int VsdNovomet::setUf_U1(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_U_1, getValue(VSD_UF_CHARACTERISTIC_U_1));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setUf_U1");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setUf_U2(float value)
@@ -672,10 +597,7 @@ int VsdNovomet::setUf_U2(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_U_2, getValue(VSD_UF_CHARACTERISTIC_U_2));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setUf_U2");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setUf_U3(float value)
@@ -684,10 +606,7 @@ int VsdNovomet::setUf_U3(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_U_3, getValue(VSD_UF_CHARACTERISTIC_U_3));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setUf_U3");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setUf_U4(float value)
@@ -696,10 +615,7 @@ int VsdNovomet::setUf_U4(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_U_4, getValue(VSD_UF_CHARACTERISTIC_U_4));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setUf_U4");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setUf_U5(float value)
@@ -708,10 +624,7 @@ int VsdNovomet::setUf_U5(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_U_5, getValue(VSD_UF_CHARACTERISTIC_U_5));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setUf_U5");
-    return err_r;
-  }
+  return err_r;
 }
 
 int VsdNovomet::setUf_U6(float value)
@@ -720,10 +633,7 @@ int VsdNovomet::setUf_U6(float value)
     writeToDevice(VSD_UF_CHARACTERISTIC_U_6, getValue(VSD_UF_CHARACTERISTIC_U_6));
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdNovomet::setUf_U6");
-    return err_r;
-  }
+  return err_r;
 }
 
 
