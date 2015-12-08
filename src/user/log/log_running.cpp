@@ -107,6 +107,12 @@ void LogRunning::add()
         }
         break;
       case VSD_TYPE_NOVOMET:
+        *(float*)(buffer + j*64) = (int16_t)iaValue[idxVsd];
+        *(float*)(buffer + 4 + j*64) = (int16_t)ibValue[idxVsd];
+        *(float*)(buffer + 8 + j*64) = (int16_t)icValue[idxVsd];
+        *(float*)(buffer + 12 + j*64) = udValue[idxVsd];
+        *(float*)(buffer + 16 + j*64) = cosValue[idxVsd];
+        idxVsd++;
         break;
       }
 
@@ -122,6 +128,7 @@ void LogRunning::add()
       write(buffer, SIZE_BUF_LOG, false);
   }
 
+  vsd->log()->resetAlarm();
   osDelay(50);
 }
 

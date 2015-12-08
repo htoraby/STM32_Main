@@ -97,6 +97,11 @@ void LogAlarm::add()
         }
         break;
       case VSD_TYPE_NOVOMET:
+        *(float*)(buffer + j*64) = (int16_t)iaValue[idxI];
+        *(float*)(buffer + 4 + j*64) = (int16_t)ibValue[idxI];
+        *(float*)(buffer + 8 + j*64) = (int16_t)icValue[idxI];
+        *(float*)(buffer + 12 + j*64) = udValue[idxI];
+        idxI++;
         break;
       }
 

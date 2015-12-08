@@ -7,18 +7,21 @@
 
 #include "vsd_novomet.h"
 #include "user_main.h"
-#include "regime_main.h"
 #include "regime_run_novomet.h"
+#include "vsd_novomet_log.h"
+#include "regime_main.h"
 
 VsdNovomet::VsdNovomet()
 {
   regimeRun_ = new RegimeRunNovomet();
+  log_ = new VsdNovometLog();
 }
 
 VsdNovomet::~VsdNovomet()
 {
   delete regimeRun_;
   delete dm_;
+  delete log_;
 }
 
 void VsdNovomet::init()
@@ -1014,6 +1017,7 @@ int VsdNovomet::stop(float type)
 
       switch((uint16_t)type) {
       case TYPE_STOP_ALARM:
+        log_->setAlarm();
         if (setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_ALARM))
           return err_r;
         break;
