@@ -14,8 +14,8 @@
 #include "ff.h"
 #include "user_main.h"
 
-// 2 Kbytes
-#define BUFFER_SIZE 512*4
+// Bytes
+#define BUFFER_SIZE 512*8
 // Таймаут обновление мастера - 30 сек
 #define UPDATE_MASTER_TIMEOUT 6000
 
