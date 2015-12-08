@@ -63,6 +63,16 @@ void VsdLog::resetReady()
 
 }
 
+void VsdLog::setAlarm()
+{
+
+}
+
+void VsdLog::resetAlarm()
+{
+
+}
+
 void VsdLog::readAlarmLog(uint16_t */*ia*/, uint16_t */*ib*/, uint16_t */*ic*/,
                           uint16_t */*ud*/)
 {

@@ -30,6 +30,16 @@ public:
   virtual void resetReady();
 
   /*!
+   * \brief setAlarm
+   */
+  virtual void setAlarm();
+
+  /*!
+   * \brief resetAlarm
+   */
+  virtual void resetAlarm();
+
+  /*!
    * \brief Чтение аварийного архива
    * \param ia
    * \param ib
