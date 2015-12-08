@@ -14,8 +14,8 @@
 #define USE_TEST     0
 #define USE_DEBUG    0
 #define USE_LOG_DEBUG 0
-#define USE_LOG_WARNING 0
-#define USE_LOG_CRITICAL 0
+#define USE_LOG_WARNING 1
+#define USE_LOG_CRITICAL 1
 
 #define WATCHDOG_TIMEOUT 10 // 10 сек
 
