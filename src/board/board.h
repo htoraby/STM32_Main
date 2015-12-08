@@ -29,7 +29,7 @@
 #define FLASH_IRQ_PREPRIO 7
 #define UART_IRQ_PREPRIO  8
 #define SCADA_IRQ_PREPRIO  8
-#define HOST_IRQ_PREPRIO  9
+#define HOST_IRQ_PREPRIO  5
 #define ADC_IRQ_PREPRIO   10
 
 
