@@ -1,5 +1,6 @@
 #include "user_debug.h"
 #include "user_main.h"
+#include "rcause.h"
 
 void getRegistersFromStack(uint32_t *pulFaultStackAddress)
 {
@@ -58,4 +59,12 @@ void checkRegistersFromStack()
     backupSaveParameter(RTC_BKP_DR6, 0);
     backupSaveParameter(RTC_BKP_DR7, 0);
   }
+}
+
+void checkRcauseCounters()
+{
+  RCAUSE_COUNTS counts = rcauseCountersGet();
+  RCAUSE_COUNTS countsOld = rcauseCountersGetOld();
+  if (counts.iwdg != countsOld.iwdg)
+    logDebug.add(FatalMsg, "Watchdog reset (%d)", counts.iwdg);
 }

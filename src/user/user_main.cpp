@@ -26,6 +26,7 @@ void userInit()
   // Запись в журнал "Включение питания"
   logEvent.add(PowerCode, AutoType, PowerOnId);
   checkRegistersFromStack();
+  checkRcauseCounters();
 
   vsd->init();
   tms->init();

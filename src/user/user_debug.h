@@ -8,15 +8,20 @@
 #endif
 
  /*!
- * \brief getRegistersFromStack
+ * \brief Получение регистров из стека
  * \param pulFaultStackAddress
  */
 void getRegistersFromStack(uint32_t *pulFaultStackAddress);
 
 /*!
- * \brief checkRegistersFromStack
+ * \brief Проверка регистров полученных из стека
  */
 void checkRegistersFromStack();
+
+/*!
+ * \brief Проверка стетчиков перезапуска СPU
+ */
+void checkRcauseCounters();
 
 #ifdef __cplusplus
 }
