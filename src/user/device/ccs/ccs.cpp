@@ -669,7 +669,7 @@ bool Ccs::isProgramMode()
 
 uint32_t Ccs::getTime()
 {
-  return getValueUint32(CCS_DATE_TIME);
+  return rtcGetTime();
 }
 
 uint32_t Ccs::getSecFromCurTime(uint32_t time)
@@ -701,7 +701,7 @@ void Ccs::calcTime()
 
   if ((HAL_GetTick() - timer) >= 100) {
     timer = HAL_GetTick();
-    time_t time = rtcGetTime();
+    time_t time = getTime();
     setValue(CCS_DATE_TIME, (uint32_t)time);
     tm dateTime = *localtime(&time);
     setValue(CCS_DATE_TIME_SEC, dateTime.tm_sec, NoneType);
