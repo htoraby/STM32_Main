@@ -192,7 +192,7 @@ unsigned short Device::getIndexAtId(unsigned short id)
       return (id - startAddrParams_);
   }
 #if (USE_LOG_WARNING == 1)
-  logDebug.add(WarningMsg, "Устройства: не найден параметр (id = %d %d .. %d"),
+  logDebug.add(WarningMsg, "Устройства: не найден параметр (id = %d %d .. %d)",
                id, startAddrParams_, startAddrParams_ + countParameters_);
 #endif
   return 0;
