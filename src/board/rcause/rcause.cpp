@@ -3,10 +3,12 @@
 #include <string.h>
 
 static RCAUSE_COUNTS rcauseCounts;
+static RCAUSE_COUNTS rcauseCountsOld;
 
 void resetCauseCheck()
 {
   framReadData(RcauseAddrFram, (uint8_t*)&rcauseCounts, sizeof(RCAUSE_COUNTS));
+  memcpy(&rcauseCountsOld, &rcauseCounts, sizeof(RCAUSE_COUNTS));
 
   if (__HAL_RCC_GET_FLAG(RCC_FLAG_BORRST) == SET) {
     rcauseCounts.bor++;
@@ -41,7 +43,13 @@ RCAUSE_COUNTS rcauseCountersGet()
   return rcauseCounts;
 }
 
+RCAUSE_COUNTS rcauseCountersGetOld()
+{
+  return rcauseCountsOld;
+}
+
 void rcauseCountersClear()
 {
   memset(&rcauseCounts, 0, sizeof(RCAUSE_COUNTS));
+  framWriteData(RcauseAddrFram, (uint8_t*)&rcauseCounts, sizeof(RCAUSE_COUNTS));
 }

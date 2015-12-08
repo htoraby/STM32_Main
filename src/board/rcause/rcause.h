@@ -32,6 +32,13 @@ void resetCauseCheck();
 RCAUSE_COUNTS rcauseCountersGet();
 
 /*!
+ \brief Получение предыдущих стетчиков перезапуска СPU
+
+ \return RCAUSE_COUNTS
+*/
+RCAUSE_COUNTS rcauseCountersGetOld();
+
+/*!
  \brief Обнуление счетчиков перезапуска СPU
 
 */
