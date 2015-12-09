@@ -146,6 +146,7 @@ static void logSave()
   FIL file;
   UINT bytesWritten;
   LOG_FILE_HEADER header;
+  char buf[_MAX_LFN + 1];
 
   bool error = false;
 
@@ -164,7 +165,7 @@ static void logSave()
 
   result = f_mkdir(LOG_DIR);
   if ((result == FR_OK) || (result == FR_EXIST)) {
-    char *logPath = new char[_MAX_LFN + 1];
+    char *logPath = buf;
 
     strcpy(logPath, LOG_DIR);
     getFilePath(logPath, "dlog");
@@ -195,7 +196,7 @@ static void logSave()
       header.size = EndAddrDebugLog + sizeof(header) + 2;
       result = f_write(&file, (uint8_t*)&header, sizeof(header), &bytesWritten);
       if ((result != FR_OK) || (sizeof(header) != bytesWritten))
-        asm("nop");
+        return;
       calcCrc = crc16_ibm((uint8_t*)&header, bytesWritten, calcCrc);
 
       while (1) {
@@ -208,7 +209,7 @@ static void logSave()
         for (uint32_t i = 0; i < size/_MAX_SS; ++i) {
           result = f_write(&file, &bufData[i*_MAX_SS], _MAX_SS, &bytesWritten);
           if ((result != FR_OK) || (bytesWritten != _MAX_SS))
-            asm("nop");
+            return;
         }
 
         count++;
@@ -222,11 +223,11 @@ static void logSave()
 
       result = f_write(&file, (uint8_t*)&calcCrc, sizeof(calcCrc), &bytesWritten);
       if ((result != FR_OK) || (sizeof(calcCrc) != bytesWritten))
-        asm("nop");
+        return;
 
       result = f_close(&file);
       if (result != FR_OK)
-        asm("nop");
+        return;
     }
 
     strcpy(logPath, LOG_DIR);
@@ -242,7 +243,7 @@ static void logSave()
       header.size = EndAddrTmsLog + sizeof(header) + 2;
       result = f_write(&file, (uint8_t*)&header, sizeof(header), &bytesWritten);
       if ((result != FR_OK) || (sizeof(header) != bytesWritten))
-        asm("nop");
+        return;
       calcCrc = crc16_ibm((uint8_t*)&header, bytesWritten, calcCrc);
 
       while (1) {
@@ -255,7 +256,7 @@ static void logSave()
         for (uint32_t i = 0; i < size/_MAX_SS; ++i) {
           result = f_write(&file, &bufData[i*_MAX_SS], _MAX_SS, &bytesWritten);
           if ((result != FR_OK) || (bytesWritten != _MAX_SS))
-            asm("nop");
+            return;
         }
 
         count++;
@@ -275,8 +276,6 @@ static void logSave()
       if (result != FR_OK)
         asm("nop");
     }
-
-    delete[] logPath;
   }
 }
 
