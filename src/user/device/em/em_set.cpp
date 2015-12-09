@@ -196,7 +196,7 @@ void EmSet::receiveAnswer()
 {
   memset(rxBuffer_, 0, sizeof(rxBuffer_));
   sizePkt_ = receiveUart(rxBuffer_);
-  if (!sizePkt_) {
+  if (sizePkt_ <= 2) {
     // TODO: Предупреждение: пустой пакет
     lostCounter_++;
     failCounter_++;
