@@ -17702,8 +17702,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>105.0</value>
-		<text>Температура срабатывания защиты по перегреву</text>
-		<short_text>Температура срабатывания защиты по перегреву</short_text>
+		<text>Температура срабатывания тепловой защиты радиаторов</text>
+		<short_text>Температура срабатывания тепловой защиты радиаторов</short_text>
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
@@ -25065,6 +25065,90 @@
 	</param>
 	<param>
 		<id>10451</id>
+		<name>VSD_INV_T_FLT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>20.0</min>
+		<max>105.0</max>
+		<def>105.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>105.0</value>
+		<text>Порог срабатывания тепловой защиты для радиатора IGBT</text>
+		<short_text>Порог срабатывания тепловой защиты для радиатора IGBT</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Порог срабатывания тепловой защиты для радиатора IGBT</comment>
+	</param>
+	<param>
+		<id>10452</id>
+		<name>VSD_INV_TT_FLT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>20.0</min>
+		<max>100.0</max>
+		<def>100.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>100.0</value>
+		<text>Порог срабатывания тепловой защиты для радиатора тиристоров</text>
+		<short_text>Порог срабатывания тепловой защиты для радиатора тиристоров</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Порог срабатывания тепловой защиты для радиатора тиристоров</comment>
+	</param>
+	<param>
+		<id>10453</id>
+		<name>VSD_INV_TAIR_FLT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>20.0</min>
+		<max>100.0</max>
+		<def>100.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>100.0</value>
+		<text>Порог срабатывания тепловой защиты для воздуха верхнего отсека СУ</text>
+		<short_text>Порог срабатывания тепловой защиты для воздуха верхнего отсека СУ</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Порог срабатывания тепловой защиты для воздуха верхнего отсека СУ</comment>
+	</param>
+	<param>
+		<id>10454</id>
+		<name>VSD_ARC_FREQ</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>500.0</min>
+		<max>5000.0</max>
+		<def>2000.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>2000.0</value>
+		<text>Частота выборок аварийного архива ПЧ</text>
+		<short_text>Частота выборок аварийного архива ПЧ</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Частота выборок аварийного архива ПЧ</comment>
+	</param>
+	<param>
+		<id>10455</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>

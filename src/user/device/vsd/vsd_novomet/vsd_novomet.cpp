@@ -471,19 +471,39 @@ float VsdNovomet::checkAlarmVsd()
     }
   }
 
-  if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_IMAX) && (vsdStatus <= VSD_NOVOMET_ALARM_TEMP))) {
+  if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_IMAX) && (vsdStatus <= VSD_NOVOMET_ALARM_CTR_MON))) {
     vsdStatus = 0;
-    for (int i = VSD_NOVOMET_ALARM_IMAX; i <= VSD_NOVOMET_ALARM_TEMP; i++) {
+    for (int i = VSD_NOVOMET_ALARM_IMAX; i <= VSD_NOVOMET_ALARM_CTR_MON; i++) {
       if (checkBit(vsdStatus7, i - 1096)) {
         return i;
       }
     }
   }
 
-  if ((vsdStatus == 0) || (vsdStatus == VSD_NOVOMET_ALARM_ABC_STATE)||(vsdStatus == VSD_NOVOMET_ALARM_STOPPED_ALARM)) {
-//    if (checkBit(vsdStatus5, VSD_NOVOMET_ALARM_ABC_STATE - 1064)) {
-      return 0;/*VSD_NOVOMET_ALARM_ABC_STATE*/;
-//    }
+  if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_CLK_MON) && (vsdStatus <= VSD_NOVOMET_ALARM_DRV2))) {
+    vsdStatus = 0;
+    for (int i = VSD_NOVOMET_ALARM_CLK_MON; i <= VSD_NOVOMET_ALARM_DRV2; i++) {
+      if (checkBit(vsdStatus7, i - 1096)) {
+        return i;
+      }
+    }
+  }
+
+  if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_TEMP_LINK) && (vsdStatus <= VSD_NOVOMET_ALARM_AIR_TEMP))) {
+    vsdStatus = 0;
+    for (int i = VSD_NOVOMET_ALARM_TEMP_LINK; i <= VSD_NOVOMET_ALARM_AIR_TEMP; i++) {
+      if (checkBit(vsdStatus7, i - 1096)) {
+        return i;
+      }
+    }
+  }
+
+  if ((vsdStatus == 0) ||
+      (vsdStatus == VSD_NOVOMET_ALARM_ABC_STATE) ||
+      (vsdStatus == VSD_NOVOMET_ALARM_STOPPED_ALARM) ||
+      (vsdStatus == VSD_NOVOMET_ALARM_CLK_MON) ||
+      (vsdStatus == VSD_NOVOMET_ALARM_TEST)) {
+    return 0;
   }
 
   return vsdStatus;

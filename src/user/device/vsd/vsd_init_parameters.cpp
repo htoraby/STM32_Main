@@ -5414,5 +5414,53 @@ void Vsd::initParameters()
   parameters_[VSD_ROTATION_FLAG - VSD_BEGIN].def                                 = 2.0;
   parameters_[VSD_ROTATION_FLAG - VSD_BEGIN].discret                             = 1;
   parameters_[VSD_ROTATION_FLAG - VSD_BEGIN].code                                = 0;
+  // Порог срабатывания тепловой защиты для радиатора IGBT
+  parameters_[VSD_INV_T_FLT - VSD_BEGIN].id                                      = VSD_INV_T_FLT;
+  parameters_[VSD_INV_T_FLT - VSD_BEGIN].access                                  = ACCESS_OPERATOR;
+  parameters_[VSD_INV_T_FLT - VSD_BEGIN].operation                               = OPERATION_WRITE;
+  parameters_[VSD_INV_T_FLT - VSD_BEGIN].physic                                  = PHYSIC_TEMPERATURE;
+  parameters_[VSD_INV_T_FLT - VSD_BEGIN].validity                                = VALIDITY_ERROR;
+  parameters_[VSD_INV_T_FLT - VSD_BEGIN].value.float_t                           = 105.0;
+  parameters_[VSD_INV_T_FLT - VSD_BEGIN].min                                     = 20.0;
+  parameters_[VSD_INV_T_FLT - VSD_BEGIN].max                                     = 105.0;
+  parameters_[VSD_INV_T_FLT - VSD_BEGIN].def                                     = 105.0;
+  parameters_[VSD_INV_T_FLT - VSD_BEGIN].discret                                 = 1;
+  parameters_[VSD_INV_T_FLT - VSD_BEGIN].code                                    = 13;
+  // Порог срабатывания тепловой защиты для радиатора тиристоров
+  parameters_[VSD_INV_TT_FLT - VSD_BEGIN].id                                     = VSD_INV_TT_FLT;
+  parameters_[VSD_INV_TT_FLT - VSD_BEGIN].access                                 = ACCESS_OPERATOR;
+  parameters_[VSD_INV_TT_FLT - VSD_BEGIN].operation                              = OPERATION_WRITE;
+  parameters_[VSD_INV_TT_FLT - VSD_BEGIN].physic                                 = PHYSIC_TEMPERATURE;
+  parameters_[VSD_INV_TT_FLT - VSD_BEGIN].validity                               = VALIDITY_ERROR;
+  parameters_[VSD_INV_TT_FLT - VSD_BEGIN].value.float_t                          = 100.0;
+  parameters_[VSD_INV_TT_FLT - VSD_BEGIN].min                                    = 20.0;
+  parameters_[VSD_INV_TT_FLT - VSD_BEGIN].max                                    = 100.0;
+  parameters_[VSD_INV_TT_FLT - VSD_BEGIN].def                                    = 100.0;
+  parameters_[VSD_INV_TT_FLT - VSD_BEGIN].discret                                = 1;
+  parameters_[VSD_INV_TT_FLT - VSD_BEGIN].code                                   = 13;
+  // Порог срабатывания тепловой защиты для воздуха верхнего отсека СУ
+  parameters_[VSD_INV_TAIR_FLT - VSD_BEGIN].id                                   = VSD_INV_TAIR_FLT;
+  parameters_[VSD_INV_TAIR_FLT - VSD_BEGIN].access                               = ACCESS_OPERATOR;
+  parameters_[VSD_INV_TAIR_FLT - VSD_BEGIN].operation                            = OPERATION_WRITE;
+  parameters_[VSD_INV_TAIR_FLT - VSD_BEGIN].physic                               = PHYSIC_TEMPERATURE;
+  parameters_[VSD_INV_TAIR_FLT - VSD_BEGIN].validity                             = VALIDITY_ERROR;
+  parameters_[VSD_INV_TAIR_FLT - VSD_BEGIN].value.float_t                        = 100.0;
+  parameters_[VSD_INV_TAIR_FLT - VSD_BEGIN].min                                  = 20.0;
+  parameters_[VSD_INV_TAIR_FLT - VSD_BEGIN].max                                  = 100.0;
+  parameters_[VSD_INV_TAIR_FLT - VSD_BEGIN].def                                  = 100.0;
+  parameters_[VSD_INV_TAIR_FLT - VSD_BEGIN].discret                              = 1;
+  parameters_[VSD_INV_TAIR_FLT - VSD_BEGIN].code                                 = 13;
+  // Частота выборок аварийного архива ПЧ
+  parameters_[VSD_ARC_FREQ - VSD_BEGIN].id                                       = VSD_ARC_FREQ;
+  parameters_[VSD_ARC_FREQ - VSD_BEGIN].access                                   = ACCESS_OPERATOR;
+  parameters_[VSD_ARC_FREQ - VSD_BEGIN].operation                                = OPERATION_WRITE;
+  parameters_[VSD_ARC_FREQ - VSD_BEGIN].physic                                   = PHYSIC_FREQUENCY;
+  parameters_[VSD_ARC_FREQ - VSD_BEGIN].validity                                 = VALIDITY_ERROR;
+  parameters_[VSD_ARC_FREQ - VSD_BEGIN].value.float_t                            = 2000.0;
+  parameters_[VSD_ARC_FREQ - VSD_BEGIN].min                                      = 500.0;
+  parameters_[VSD_ARC_FREQ - VSD_BEGIN].max                                      = 5000.0;
+  parameters_[VSD_ARC_FREQ - VSD_BEGIN].def                                      = 2000.0;
+  parameters_[VSD_ARC_FREQ - VSD_BEGIN].discret                                  = 1;
+  parameters_[VSD_ARC_FREQ - VSD_BEGIN].code                                     = 13;
 }
 
