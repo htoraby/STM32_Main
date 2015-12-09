@@ -98,7 +98,6 @@ void Ccs::initTask()
   setCmd(CCS_CMD_SYNC_ALL_PARAMS);
   resetCmd(CCS_CMD_REBOOT_MASTER);
   resetCmd(CCS_CMD_START_REBOOT_SLAVE);
-  resetCmd(CCS_CMD_UPDATE_SOFTWARE);
   resetCmd(CCS_CMD_START_UPDATE_SW_SLAVE);
   resetCmd(CCS_CMD_UPDATE_SW_MASTER);
 
@@ -819,7 +818,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_CMD_LOG_COPY:
     err = setValue(id, value, eventType);
-    if (value)
+    if (value == 1)
       logStartSave(eventType);
     return err;
   case CCS_CMD_LOG_DELETE: case CCS_CMD_SERVICE_LOG_DELETE:
@@ -1095,7 +1094,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_CMD_UPDATE_SOFTWARE:
     err = setValue(id, value, eventType);
-    if (value)
+    if (value == 1)
       startUpdateSoftware();
     return err;
   case CCS_CMD_START:
@@ -1561,7 +1560,7 @@ void Ccs::updateSoftware()
 #endif
   osDelay(200);
   if (updateFromUsb()) {
-    resetCmd(CCS_CMD_UPDATE_SOFTWARE);
+    setValue(CCS_CMD_UPDATE_SOFTWARE, 2);
     startReboot();
   }
   else {

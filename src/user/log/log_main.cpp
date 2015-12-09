@@ -106,7 +106,8 @@ static void getFilePath(char *path, const char *suffix)
   fileInfo.lfname = lfn;
   fileInfo.lfsize = sizeof(lfn);
 #endif
-  char *fileName = new char[_MAX_LFN + 1];
+  char buf[_MAX_LFN + 1];
+  char *fileName = buf;
 
   int cdng = parameters.get(CCS_NUMBER_CDNG);
   int bush = parameters.get(CCS_NUMBER_BUSH);
@@ -136,11 +137,9 @@ static void getFilePath(char *path, const char *suffix)
 
   strcat(path, "\\");
   strcat(path, fileName);
-
-  delete[] fileName;
 }
 
-static void logSave()
+static bool logSave()
 {
   FRESULT result;
   FIL file;
@@ -148,19 +147,14 @@ static void logSave()
   LOG_FILE_HEADER header;
   char buf[_MAX_LFN + 1];
 
-  bool error = false;
-
   uint32_t timeReady = 0;
   while(usbState != USB_READY) {
     osDelay(10);
     timeReady += 10;
     if (timeReady > 5000) {
-      error = true;
-      break;
+      asm("nop");
+      return false;
     }
-  }
-  if (error) {
-    return;
   }
 
   result = f_mkdir(LOG_DIR);
@@ -196,7 +190,7 @@ static void logSave()
       header.size = EndAddrDebugLog + sizeof(header) + 2;
       result = f_write(&file, (uint8_t*)&header, sizeof(header), &bytesWritten);
       if ((result != FR_OK) || (sizeof(header) != bytesWritten))
-        return;
+        return false;
       calcCrc = crc16_ibm((uint8_t*)&header, bytesWritten, calcCrc);
 
       while (1) {
@@ -209,7 +203,7 @@ static void logSave()
         for (uint32_t i = 0; i < size/_MAX_SS; ++i) {
           result = f_write(&file, &bufData[i*_MAX_SS], _MAX_SS, &bytesWritten);
           if ((result != FR_OK) || (bytesWritten != _MAX_SS))
-            return;
+            return false;
         }
 
         count++;
@@ -223,11 +217,11 @@ static void logSave()
 
       result = f_write(&file, (uint8_t*)&calcCrc, sizeof(calcCrc), &bytesWritten);
       if ((result != FR_OK) || (sizeof(calcCrc) != bytesWritten))
-        return;
+        return false;
 
       result = f_close(&file);
       if (result != FR_OK)
-        return;
+        return false;
     }
 
     strcpy(logPath, LOG_DIR);
@@ -243,7 +237,7 @@ static void logSave()
       header.size = EndAddrTmsLog + sizeof(header) + 2;
       result = f_write(&file, (uint8_t*)&header, sizeof(header), &bytesWritten);
       if ((result != FR_OK) || (sizeof(header) != bytesWritten))
-        return;
+        return false;
       calcCrc = crc16_ibm((uint8_t*)&header, bytesWritten, calcCrc);
 
       while (1) {
@@ -256,7 +250,7 @@ static void logSave()
         for (uint32_t i = 0; i < size/_MAX_SS; ++i) {
           result = f_write(&file, &bufData[i*_MAX_SS], _MAX_SS, &bytesWritten);
           if ((result != FR_OK) || (bytesWritten != _MAX_SS))
-            return;
+            return false;
         }
 
         count++;
@@ -270,13 +264,17 @@ static void logSave()
 
       result = f_write(&file, (uint8_t*)&calcCrc, sizeof(calcCrc), &bytesWritten);
       if ((result != FR_OK) || (sizeof(calcCrc) != bytesWritten))
-        asm("nop");
+        return false;
 
       result = f_close(&file);
       if (result != FR_OK)
-        asm("nop");
+        return false;
     }
+  } else {
+    return false;
   }
+
+  return true;
 }
 
 void logDeleted()
@@ -343,9 +341,12 @@ void logSaveTask(void *argument)
 
   while (1) {
     if (osSemaphoreWait(saveSemaphoreId_, 10) == osOK) {
-      logSave();
-      logEvent.add(CopyLogCode, eventType, CopyLogId);
-      parameters.set(CCS_CMD_LOG_COPY, 0);
+      if (logSave()) {
+        logEvent.add(CopyLogCode, eventType, CopyLogId);
+        parameters.set(CCS_CMD_LOG_COPY, 2);
+      } else {
+        parameters.set(CCS_CMD_LOG_COPY, 0);
+      }
     }
 
     if (osSemaphoreWait(deleteSemaphoreId_, 10) == osOK) {
