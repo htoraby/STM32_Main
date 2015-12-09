@@ -49,8 +49,8 @@ void checkRegistersFromStack()
   volatile uint32_t pc = backupRestoreParameter(RTC_BKP_DR7);
 
   if (pc != 0) {
-    logDebug.add(FatalMsg, "HardFault: r0 = %x, r1 = %x, r2 = %x, r3 = %x, lr = %x, pc = %x",
-                 r0, r1, r2, r3, lr, pc);
+    logDebug.add(FatalMsg, "HardFault: ver. %x, r0 = %x, r1 = %x, r2 = %x, r3 = %x, lr = %x, pc = %x",
+                 FIRMWARE_VERSION, r0, r1, r2, r3, lr, pc);
 
     backupSaveParameter(RTC_BKP_DR2, 0);
     backupSaveParameter(RTC_BKP_DR3, 0);
