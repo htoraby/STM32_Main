@@ -1347,7 +1347,7 @@ void Ccs::cmdProtMotorImbalanceCurrentSetpointReset()
 void Ccs::cmdProtMotorAsyncModeSetpointReset()
 {
   for (uint16_t i = CCS_PROT_MOTOR_ASYNC_MODE;
-       i <= CCS_PROT_MOTOR_ASYNC_MODE; i++) {
+       i <= CCS_PROT_MOTOR_ASYNC_PARAMETER; i++) {
     resetValue(i);
   }
 }

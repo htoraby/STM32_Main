@@ -3635,7 +3635,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>РРЗ от турбинного вращения</text>
@@ -3655,9 +3655,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<code>0</code>
 		<comment>Параметр запрещающий запуск</comment>
@@ -3669,9 +3671,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>60.0</max>
+		<def>60.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>60.0</value>
 		<code>0</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -3682,9 +3686,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>60.0</max>
+		<def>30.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>30.0</value>
 		<code>0</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -3695,9 +3701,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>86400.0</max>
+		<def>3600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>3600.0</value>
 		<code>0</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -3708,9 +3716,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>9999.0</max>
+		<def>9999.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>9999.0</value>
 		<code>0</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -3721,9 +3731,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>86400.0</max>
+		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>86400.0</value>
 		<code>0</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -3734,12 +3746,14 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>200.0</max>
+		<def>20.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>20.0</value>
 		<text>Турбин.вращение уст.</text>
 		<short_text>Турбин.вращение уст.</short_text>
-		<form>4.2.4 Турбинное вращение</form>
+		<form>4.2.4 Турбин.вращение уст.</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXXXXX</format>
@@ -3753,9 +3767,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>20.0</max>
+		<def>20.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>20.0</value>
 		<code>0</code>
 		<comment>Условие АПВ уставка</comment>
 	</param>
@@ -3766,9 +3782,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<code>0</code>
 		<comment>Уставка параметр защиты</comment>
 	</param>
@@ -3779,9 +3797,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -3795,9 +3815,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>3.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -3811,9 +3833,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>1000000.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -3827,9 +3851,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>9999.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -3843,9 +3869,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>4294967296</max>
+		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>

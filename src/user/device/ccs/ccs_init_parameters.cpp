@@ -2146,7 +2146,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].max                         = 999999.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].max                         = 1.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].def                         = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].code                        = 13;
@@ -2156,11 +2156,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].operation                = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].physic                   = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].validity                 = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].value.float_t            = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].value.float_t            = 0.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].min                      = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].max                      = 999999.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].max                      = 1.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].discret                  = 1;
-  parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].def                      = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].def                      = 0.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].code                     = 0;
   // Задержка активации уставка
   parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].id                   = CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY;
@@ -2168,11 +2168,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].operation            = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].physic               = PHYSIC_TIME;
   parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].validity             = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].value.float_t        = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].value.float_t        = 60.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].max                  = 999999.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].max                  = 60.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].discret              = 1;
-  parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].def                  = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].def                  = 60.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].code                 = 0;
   // Задержка срабатывания уставка
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].id                    = CCS_PROT_MOTOR_ASYNC_TRIP_DELAY;
@@ -2180,11 +2180,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].operation             = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].physic                = PHYSIC_TIME;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].validity              = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].value.float_t         = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].value.float_t         = 30.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].max                   = 999999.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].max                   = 60.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].discret               = 1;
-  parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].def                   = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].def                   = 30.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].code                  = 0;
   // Задержка АПВ уставка
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].id                 = CCS_PROT_MOTOR_ASYNC_RESTART_DELAY;
@@ -2192,11 +2192,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].operation          = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].physic             = PHYSIC_TIME;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].validity           = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].value.float_t      = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].value.float_t      = 3600.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].max                = 999999.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].max                = 86400.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].discret            = 1;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].def                = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].def                = 3600.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].code               = 0;
   // Количество АПВ уставка
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].id                 = CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT;
@@ -2204,11 +2204,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].operation          = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].physic             = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].validity           = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].value.float_t      = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].value.float_t      = 9999.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].max                = 999999.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].max                = 9999.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].discret            = 1;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].def                = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].def                = 9999.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].code               = 0;
   // Автосброс счетчика АПВ
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].id                 = CCS_PROT_MOTOR_ASYNC_RESTART_RESET;
@@ -2216,11 +2216,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].operation          = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].physic             = PHYSIC_TIME;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].validity           = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].value.float_t      = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].value.float_t      = 86400.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].max                = 999999.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].max                = 86400.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].discret            = 1;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].def                = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].def                = 86400.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].code               = 0;
   // Уставка срабатывания защиты
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT - CCS_BEGIN].id                 = CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT;
@@ -2228,11 +2228,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT - CCS_BEGIN].operation          = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT - CCS_BEGIN].physic             = PHYSIC_FREQUENCY;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT - CCS_BEGIN].validity           = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT - CCS_BEGIN].value.float_t      = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT - CCS_BEGIN].value.float_t      = 20.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT - CCS_BEGIN].max                = 999999.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT - CCS_BEGIN].max                = 200.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT - CCS_BEGIN].discret            = 1;
-  parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT - CCS_BEGIN].def                = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT - CCS_BEGIN].def                = 20.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT - CCS_BEGIN].code               = 13;
   // Условие АПВ уставка
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].id              = CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT;
@@ -2240,11 +2240,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].operation       = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].physic          = PHYSIC_FREQUENCY;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].validity        = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].value.float_t   = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].value.float_t   = 20.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].min             = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].max             = 999999.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].max             = 20.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].discret         = 1;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].def             = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].def             = 20.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].code            = 0;
   // Уставка параметр защиты
   parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].id                     = CCS_PROT_MOTOR_ASYNC_PARAMETER;
@@ -2252,11 +2252,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].operation              = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].validity               = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].value.float_t          = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].value.float_t          = 0.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].max                    = 999999.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].max                    = 1.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].discret                = 1;
-  parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].def                    = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].def                    = 0.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].code                   = 0;
   // Текущий параметр Флаг что защита в АПВ
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].id                  = CCS_PROT_MOTOR_ASYNC_RESTART_FLAG;
@@ -2264,11 +2264,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].operation           = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].physic              = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].validity            = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].value.float_t       = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].value.float_t       = 0.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].min                 = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].max                 = 999999.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].max                 = 1.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].discret             = 1;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].def                 = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].def                 = 0.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].code                = 0;
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].id                         = CCS_PROT_MOTOR_ASYNC_STATE;
@@ -2276,11 +2276,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].operation                  = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].validity                   = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].value.float_t              = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].value.float_t              = 0.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].max                        = 999999.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].max                        = 3.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].discret                    = 1;
-  parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].def                        = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].def                        = 0.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].code                       = 0;
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].id                          = CCS_PROT_MOTOR_ASYNC_TIME;
@@ -2288,11 +2288,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].operation                   = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].physic                      = PHYSIC_TIME;
   parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].validity                    = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].value.float_t               = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].max                         = 999999.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].max                         = 1000000.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].discret                     = 1;
-  parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].def                         = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].code                        = 0;
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].id                 = CCS_PROT_MOTOR_ASYNC_RESTART_COUNT;
@@ -2300,11 +2300,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].operation          = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].physic             = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].validity           = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].value.float_t      = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].value.float_t      = 0.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].max                = 999999.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].max                = 9999.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].discret            = 1;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].def                = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].def                = 0.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].code               = 0;
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].id            = CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME;
@@ -2314,7 +2314,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].validity      = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].min           = 0.0;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].max           = 999999.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].max           = 4294967296;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].discret       = 1;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].def           = 0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].code          = 0;
