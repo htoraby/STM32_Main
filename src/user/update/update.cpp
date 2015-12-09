@@ -58,14 +58,10 @@ static void getFile(char *fileName)
         }
       }
     }
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Обновление: Файл прошивки не найден (getFile())");
-#endif
+    logDebug.add(WarningMsg, "Обновление: Файл прошивки не найден");
   }
   else {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Обновление: Не удалось открыть каталог (f_readdir())");
-#endif
+    logDebug.add(WarningMsg, "Обновление: Не удалось открыть каталог");
   }
 }
 
@@ -80,6 +76,8 @@ static bool saveSwInFlashExt(char *fileName)
   uint16_t calcCrcRx = 0xFFFF;
   uint32_t startAddress;
   uint32_t lastAddress;
+  int size = 0;
+  uint32_t allSize = 0;
 
   if (updateHeader.numRegion == 0) {
     updateHeader.numRegion = 1;
@@ -104,18 +102,32 @@ static bool saveSwInFlashExt(char *fileName)
       parameters.set(CCS_PROGRESS_MAX, 0);
       parameters.set(CCS_PROGRESS_MAX, (float)(imageHeader.size + imageHeader.swGuiSize)/1024);
 
-      calcCrc = crc16_ibm((uint8_t*)&imageHeader, readSize, calcCrc);
+      calcCrc = crc16_ibm((uint8_t*)&imageHeader, readSize);
       flashExtWriteEx(FlashSpi1, lastAddress, (uint8_t*)&imageHeader, readSize);
       flashExtRead(FlashSpi1, lastAddress, buffer, readSize);
       calcCrcRx = crc16_ibm(buffer, readSize, calcCrcRx);
-      lastAddress = lastAddress + readSize;
+      lastAddress += readSize;
+      allSize += readSize;
 
       int count = 0;
       while ((readflag == 1) && (usbState == USB_READY)) {
         osDelay(1);
-        f_read(&file, buffer, BUFFER_SIZE, &readSize);
-        if (readSize < BUFFER_SIZE)
+
+        size = file.fsize - allSize - BUFFER_SIZE;
+        if ((size > 0) && (size < 6)) {
+          size = BUFFER_SIZE-6;
+        } else if (size < 0) {
+          size = file.fsize - allSize;
           readflag = 0;
+        } else {
+          size = BUFFER_SIZE;
+        }
+        f_read(&file, buffer, size, &readSize);
+
+        if (readSize < 6) {
+          logDebug.add(WarningMsg, "Обновление: Ошибка чтения файла прошивки");
+          break;
+        }
 
         if (readflag)
           calcCrc = crc16_ibm(buffer, readSize, calcCrc);
@@ -130,14 +142,19 @@ static bool saveSwInFlashExt(char *fileName)
         else
           calcCrcRx = crc16_ibm(buffer, readSize-6, calcCrcRx);
 
-        lastAddress = lastAddress + readSize;
+        lastAddress += readSize;
+        allSize += readSize;
 
         if (++count > 10) {
           count = 0;
-          if (calcCrc != calcCrcRx)
-            printf("Error CRC: file %s on line %d\r\n", __FILE__, __LINE__);
+          if (calcCrc != calcCrcRx) {
+            break;
+          }
           parameters.set(CCS_PROGRESS_VALUE, (float)(lastAddress - startAddress)/1024);
         }
+
+        if (allSize >= file.fsize)
+          break;
       }
 
       uint16_t crc = (buffer[readSize - 1 - 4] << 8) + buffer[readSize - 2 - 4];
@@ -147,24 +164,18 @@ static bool saveSwInFlashExt(char *fileName)
         isSaveSw = true;
       }
       else {
-#if (USE_LOG_WARNING == 1)
         logDebug.add(WarningMsg, "Обновление: Ошибка CRС в файле прошивки (%x %x %x, %x)", crc, calcCrc, calcCrcRx, finish);
-#endif
       }
     }
     else {
-#if (USE_LOG_WARNING == 1)
       logDebug.add(WarningMsg, "Обновление: Ошибка в загаловке файла прошивки (%d %d %d %d %d)",
                    readSize, imageHeader.size, imageHeader.codeProduction,
                    imageHeader.codeEquip, imageHeader.subCodeEquip);
-#endif
     }
     f_close(&file);
   }
   else {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Обновление: Ошибка открытия файла прошивки (saveSwInFlashExt())");
-#endif
+    logDebug.add(WarningMsg, "Обновление: Ошибка открытия файла прошивки");
   }
 
   return isSaveSw;
@@ -175,9 +186,7 @@ bool updateFromUsb()
   static char fileName[_MAX_LFN] = {0};
 
   if (usbState != USB_READY) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Обновление: Не подключен USB накопитель (updateFromUsb())");
-#endif
+    logDebug.add(WarningMsg, "Обновление: Не подключен USB накопитель");
     return false;
   }
 
