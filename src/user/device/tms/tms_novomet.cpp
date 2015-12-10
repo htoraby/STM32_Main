@@ -512,7 +512,7 @@ int TmsNovomet::setUnitPressure(float unit)
 {
   if (Tms::setUnitPressure(unit)) {
 #if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "ТМС Новомет: не удалось задать ед.изм. давления (unit = %d)",
+    logDebug.add(WarningMsg, "ТМС Нвмет: Не удалось задать ед.изм. давления (unit = %d)",
                  unit);
 #endif
     return err_r;
@@ -521,7 +521,7 @@ int TmsNovomet::setUnitPressure(float unit)
     switch ((uint16_t)getValue(TMS_PRESSURE_UNIT)) {
     case PRESSURE_MPA:
 #if (USE_LOG_DEBUG == 1)
-    logDebug.add(DebugMsg, "ТМС Новомет: задали МПа как ед.изм. давления",
+    logDebug.add(DebugMsg, "ТМС Нвмет: Задали МПа как ед.изм. давления (unit = %d)",
                  unit);
 #endif
       writeToDevice(TMS_PRESSURE_UNIT, 0);
@@ -546,7 +546,7 @@ int TmsNovomet::setUnitTemperature(float unit)
 {
   if (Tms::setUnitTemperature(unit)) {
 #if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "ТМС Новомет: не удалось задать ед.изм. температуры (unit = %d)",
+    logDebug.add(WarningMsg, "ТМС Нвмет: Не удалось задать ед.изм. температуры (unit = %d)",
                  unit);
 #endif
     return err_r;

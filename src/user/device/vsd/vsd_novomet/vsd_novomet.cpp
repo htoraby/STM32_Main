@@ -816,11 +816,13 @@ void VsdNovomet::getNewValue(uint16_t id)
     }
     break;
   case VSD_THYR_T_EXT:
-    value = ((value - 282)*222)/1023;
+  // TODO: Уточнить какие температуры с коэффициентом 0.1
+  //  value = ((value - 282)*222)/1023;
     setValue(id, value);
     break;
   case VSD_THYR_T_EXT_2:
-    value = ((value - 282)*222)/1023;
+  // TODO: Уточнить какие температуры с коэффициентом 0.1
+  //  value = ((value - 282)*222)/1023;
     setValue(id, value);
     setValue(VSD_CONTROL_TEMPERATURE, max(getValue(VSD_THYR_T_EXT), getValue(VSD_THYR_T_EXT_2)));
     break;
@@ -835,11 +837,13 @@ void VsdNovomet::getNewValue(uint16_t id)
   case VSD_DRV_2_T_EXT:
   case VSD_DRV_2_T_EXT_2:
   case VSD_DRV_2_T_EXT_3:
-    value = ((value - 282)*222)/1023;
+  // TODO: Уточнить какие температуры с коэффициентом 0.1
+  //  value = ((value - 282)*222)/1023;
     setValue(id, value);
     break;
   case VSD_DRV_2_T_EXT_4:
-    value = ((value - 282)*222)/1023;
+  // TODO: Уточнить какие температуры с коэффициентом 0.1
+  //  value = ((value - 282)*222)/1023;
     setValue(id, value);
     setValue(VSD_RADIATOR_TEMPERATURE, max(getValue(VSD_DRV_0_T_EXT),
                                            max(getValue(VSD_DRV_0_T_EXT_2),

@@ -47,7 +47,7 @@ void RegimeTechnologPeriodic::processing()
       if (ksu.isWorkMotor() && ksu.isProgramMode()) { // Двигатель - работа; Режим - программа;
         state_ = WorkState;
 #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Периодический режим: запуск режима (state = %d)",
+        logDebug.add(DebugMsg, "Периодика: Запуск режима (state = %d)",
                      state_);
 #endif
       }
@@ -63,7 +63,7 @@ void RegimeTechnologPeriodic::processing()
           ksu.stop(LastReasonStopProgram);
           state_ = WaitPauseState;
 #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Периодический режим: переход в паузу из работы (workPeriod = %d, time = %d, state = %d,)",
+        logDebug.add(DebugMsg, "Периодика: Переход в паузу из работы (workPeriod = %d, time = %d, state = %d,)",
                      workPeriod_, time, state_);
 #endif
         }
@@ -89,7 +89,7 @@ void RegimeTechnologPeriodic::processing()
               parameters.set(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
               state_ = PauseState;
 #if (USE_LOG_DEBUG == 1)
-              logDebug.add(DebugMsg, "Периодический режим: во время работы останов пользователя или сети и время доработки меньше получаса (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
+              logDebug.add(DebugMsg, "Периодика: Останов пользователя или сети и время доработки < получаса (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
                             workPeriod_, workTimeToEnd, stopReason, state_);
 #endif
             }
@@ -97,19 +97,19 @@ void RegimeTechnologPeriodic::processing()
               if (workTimeToEnd < workPeriod_) {
                 workBeginTime_ = ksu.getSecFromCurTime(workPeriod_ - workTimeToEnd);
 #if (USE_LOG_DEBUG == 1)
-                logDebug.add(DebugMsg, "Периодический режим: во время работы останов пользователя или сети время доработки меньше уставки (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
+                logDebug.add(DebugMsg, "Периодика: Останов пользователя или сети и время доработки < уставки (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
                              workPeriod_, workTimeToEnd, stopReason, state_);
 #endif
               } else {
                 workBeginTime_ = ksu.getTime();
 #if (USE_LOG_DEBUG == 1)
-                logDebug.add(DebugMsg, "Периодический режим: во время работы останов пользователя или сети время доработки больше уставки (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
+                logDebug.add(DebugMsg, "Периодика: Останов пользователя или сети и время доработки > уставки (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
                              workPeriod_, workTimeToEnd, stopReason, state_);
 #endif
               }
               state_ = RunningState;
 #if (USE_LOG_DEBUG == 1)
-              logDebug.add(DebugMsg, "Периодический режим: во время работы останов пользователя или сети переход в работу (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
+              logDebug.add(DebugMsg, "Периодика: Останов пользователя или сети и переход в работу (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
                            workPeriod_, workTimeToEnd, stopReason, state_);
 #endif
             }
@@ -118,7 +118,7 @@ void RegimeTechnologPeriodic::processing()
             ksu.start(runReason);
             state_ = IdleState;
 #if (USE_LOG_DEBUG == 1)
-            logDebug.add(DebugMsg, "Периодический режим: во время работы останов пользователя или сети и выключили программу (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
+            logDebug.add(DebugMsg, "Периодика: Останов пользователя или сети и выключили программу (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
                          workPeriod_, workTimeToEnd, stopReason, state_);
 #endif
           }
@@ -128,7 +128,7 @@ void RegimeTechnologPeriodic::processing()
             workBeginTime_ = ksu.getTime();
             state_ = RunningState;
 #if (USE_LOG_DEBUG == 1)
-            logDebug.add(DebugMsg, "Периодический режим: во время работы останов (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
+            logDebug.add(DebugMsg, "Периодика: Останов во время работы (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
                          workPeriod_, workTimeToEnd, stopReason, state_);
 #endif
           }
@@ -136,7 +136,7 @@ void RegimeTechnologPeriodic::processing()
             ksu.start(runReason);
             state_ = IdleState;
 #if (USE_LOG_DEBUG == 1)
-            logDebug.add(DebugMsg, "Периодический режим: во время работы останов и выключили программу (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
+            logDebug.add(DebugMsg, "Периодика: Останов во время работы и выключили программу (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
                          workPeriod_, workTimeToEnd, stopReason, state_);
 #endif
           }
@@ -163,14 +163,14 @@ void RegimeTechnologPeriodic::processing()
           workBeginTime_ = ksu.getTime();
           state_ = RunningState;
 #if (USE_LOG_DEBUG == 1)
-            logDebug.add(DebugMsg, "Периодический режим: во время паузы запуск оператором (stopPeriod_ = %d, stopTimeToEnd_ = %d, runReason = %d, state = %d)",
+            logDebug.add(DebugMsg, "Периодика: Во время паузы запуск оператором (stopPeriod_ = %d, stopTimeToEnd_ = %d, runReason = %d, state = %d)",
                          stopPeriod_, stopTimeToEnd_, runReason, state_);
 #endif
         } else {
           if (stopTimeToEnd_ == 0) { // Время паузы истекло
             state_ = RestartState;
 #if (USE_LOG_DEBUG == 1)
-            logDebug.add(DebugMsg, "Периодический режим: время паузы истекло (stopPeriod_ = %d, stopTimeToEnd_ = %d, state = %d)",
+            logDebug.add(DebugMsg, "Периодика: Время паузы истекло (stopPeriod_ = %d, stopTimeToEnd_ = %d, state = %d)",
                          stopPeriod_, stopTimeToEnd_, state_);
 #endif
           }
@@ -179,13 +179,13 @@ void RegimeTechnologPeriodic::processing()
       else { // Режим программы отключен
         state_ = StopState;
 #if (USE_LOG_DEBUG == 1)
-            logDebug.add(DebugMsg, "Периодический режим: во время паузы отключили режим (state = %d))", state_);
+            logDebug.add(DebugMsg, "Периодика: во время паузы отключили режим (state = %d))", state_);
 #endif
       }
     } else {
       state_ = IdleState;
 #if (USE_LOG_DEBUG == 1)
-            logDebug.add(DebugMsg, "Периодический режим: во время паузы оказались в работе (state = %d))", state_);
+            logDebug.add(DebugMsg, "Периодика: во время паузы оказались в работе (state = %d))", state_);
 #endif
     }
     break;
@@ -203,14 +203,14 @@ void RegimeTechnologPeriodic::processing()
           ksu.start(LastReasonRunProgram);         
           state_ = RestartState;
 #if (USE_LOG_DEBUG == 1)
-            logDebug.add(DebugMsg, "Периодический режим: не удачная попытка запуска из паузы (state = %d))", state_);
+            logDebug.add(DebugMsg, "Периодика: не удачная попытка запуска из паузы (state = %d))", state_);
 #endif
         }
       } else {
         workBeginTime_ = ksu.getTime();
         state_ = WorkState;
 #if (USE_LOG_DEBUG == 1)
-            logDebug.add(DebugMsg, "Периодический режим: Переход в работу из паузы (state = %d))", state_);
+            logDebug.add(DebugMsg, "Периодика: Переход в работу из паузы (state = %d))", state_);
 #endif
       }
     }

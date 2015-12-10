@@ -32,7 +32,9 @@ void Parameters::task()
   while (1) {  
     if (osSemaphoreWait(semaphoreId_, 1) != osEventTimeout) {
       time = 0;
-      logDebug.add(DebugMsg, "Сохранение параметров");
+#if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "Parameter: Сохранение параметров");
+#endif
       save();
     } else {
       if ((++time >= PARAMS_SAVE_TIME) || ksu.isPowerOff()) {

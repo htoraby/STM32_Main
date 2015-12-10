@@ -37,7 +37,7 @@ void RegimeTechnologAlternationFreq::processing()
         beginTime_ = ksu.getTime();                   // Запоминаем время когда перешли на частоту
         state_ = RunningState;                        // Переходим на работу на первой частоте
 #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Чередование частот: запуск режима на частоте 1 (firstFreq = %6.2f state = %d)",
+        logDebug.add(DebugMsg, "Ч. частот: запуск режима на частоте 1 (firstFreq = %6.2f state = %d)",
                      firstFreq_, state_);
 #endif
       }
@@ -54,7 +54,7 @@ void RegimeTechnologAlternationFreq::processing()
         beginTime_ = ksu.getTime();
         state_ = RunningState + 1;
 #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Чередование частот: переход с частоты 1 на частоту 2 (firstFreq = %6.2f, secondFreq = %6.2f, state = %d)",
+        logDebug.add(DebugMsg, "Ч. частот: переход с частоты 1 на частоту 2 (firstFreq = %6.2f, secondFreq = %6.2f, state = %d)",
                      firstFreq_, secondFreq_, state_);
 #endif
       }
@@ -62,7 +62,7 @@ void RegimeTechnologAlternationFreq::processing()
     else {
       state_ = IdleState;
 #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Чередование частот: выключение режима с частоты 1 (firstFreq = %6.2f, state = %d)",
+      logDebug.add(DebugMsg, "Ч. частот: выключение режима с частоты 1 (firstFreq = %6.2f, state = %d)",
                    firstFreq_, state_);
 #endif
     }
@@ -78,7 +78,7 @@ void RegimeTechnologAlternationFreq::processing()
         beginTime_ = ksu.getTime();
         state_ = RunningState;
 #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Чередование частот: переход с частоты 2 на частоту 1 (firstFreq = %6.2f, secondFreq = %6.2f, state = %d)",
+        logDebug.add(DebugMsg, "Ч. частот: переход с частоты 2 на частоту 1 (firstFreq = %6.2f, secondFreq = %6.2f, state = %d)",
                      firstFreq_, secondFreq_, state_);
 #endif
       }
@@ -86,7 +86,7 @@ void RegimeTechnologAlternationFreq::processing()
     else {
       state_ = IdleState;
 #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Чередование частот: выключение режима с частоты 2 (secondFreq = %6.2f, state = %d)",
+      logDebug.add(DebugMsg, "Ч. частот: выключение режима с частоты 2 (secondFreq = %6.2f, state = %d)",
                    secondFreq_, state_);
 #endif
     }

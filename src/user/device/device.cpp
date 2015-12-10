@@ -240,8 +240,10 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
     // Формирование сообщения в архив событий об изменении параметра
     if (code && (eventType != NoneType) && !(isnan(value) || isnan(oldValue))) {
       logEvent.add(code, eventType, (EventId)id, oldValue, value, units);
-      logDebug.add(DebugMsg, "Device: Change parameter %d %f -> %f",
+#if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "Device: Изменено значение (id = %d, oldValue = %f, value = %f)",
                    id, oldValue, value);
+#endif
     }
   }
 

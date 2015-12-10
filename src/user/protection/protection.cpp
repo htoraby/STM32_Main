@@ -186,7 +186,10 @@ void Protection::processingStateRunning()
         setStateStop();
       }
       else if (ksu.getValue(CCS_RUN_TIME) >= activDelay_) {
-        logDebug.add(DebugMsg, "prot: activ %d", idMode_);
+#if (USE_LOG_DEBUG == 1)
+        logDebug.add(DebugMsg, "Защиты: Активация (idMode = %d)",
+                     idMode_);
+#endif
         setStateRun();
       }
     }
@@ -210,12 +213,18 @@ void Protection::processingStateRun()       // Состояние работа
         if (alarm_) {                       // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме
           if ((timer_ == 0) && tripDelay_) {// Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - начало;
             timer_ = ksu.getTime();         // Зафиксировали время начала задержки срабатывания
-            logDebug.add(DebugMsg, "prot: react %d", idMode_);
+#if (USE_LOG_DEBUG == 1)
+            logDebug.add(DebugMsg, "Защиты: Начало срабатывания (idMode = %d, alarm = %d, tripDelay = %d, isModeBlock = %d)",
+                         idMode_, alarm_, tripDelay_, isModeBlock());
+#endif
             delay_ = true;
           }
           else {
             if (ksu.getSecFromCurTime(timer_) >= tripDelay_) {   // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - конец;
-              logDebug.add(DebugMsg, "prot: react->block %d", idMode_);
+#if (USE_LOG_DEBUG == 1)
+              logDebug.add(DebugMsg, "Защиты: Срабатывание --> блок (idMode = %d, alarm = %d, tripDelay = %d, isModeBlock = %d)",
+                         idMode_, alarm_, tripDelay_, isModeBlock());
+#endif
               addEventReactionProt();
               logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
               ksu.setBlock();
@@ -233,12 +242,18 @@ void Protection::processingStateRun()       // Состояние работа
         if (alarm_) {                       // Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме
           if ((timer_ == 0) && tripDelay_) {// Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме; Срабатывание - начало;
             timer_ = ksu.getTime();         // Зафиксировали время начала задержки срабатывания
-            logDebug.add(DebugMsg, "prot: react %d", idMode_);
+#if (USE_LOG_DEBUG == 1)
+              logDebug.add(DebugMsg, "Защиты: Начало срабатывания (idMode = %d, alarm = %d, tripDelay = %d, isModeRestart = %d)",
+                         idMode_, alarm_, tripDelay_, isModeRestart());
+#endif
             delay_ = true;
           }
           else if (ksu.getSecFromCurTime(timer_) >= tripDelay_) { // Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме; Срабатывание - конец;
             if (restartCount_ >= restartLimit_) {
-              logDebug.add(DebugMsg, "prot: react->block %d", idMode_);
+#if (USE_LOG_DEBUG == 1)
+              logDebug.add(DebugMsg, "Защиты: Блокировка по числу АПВ (idMode = %d, tripDelay = %d, restartCount = %d, restartLimit = %d)",
+                         idMode_, tripDelay_, restartCount_, restartLimit_);
+#endif
               addEventReactionProt();
               logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
               ksu.setBlock();
@@ -247,7 +262,10 @@ void Protection::processingStateRun()       // Состояние работа
               setStateStop();
             }
             else {
-              logDebug.add(DebugMsg, "prot: react->restart %d", idMode_);
+#if (USE_LOG_DEBUG == 1)
+              logDebug.add(DebugMsg, "Защиты: Срабатывание --> АПВ (idMode = %d, alarm = %d, tripDelay = %d, isModeRestart = %d)",
+                         idMode_, alarm_, tripDelay_, isModeRestart());
+#endif
               addEventReactionProt();
               parameters.set(CCS_RESTART_COUNT, restartCount_);
               ksu.setRestart();
@@ -265,11 +283,17 @@ void Protection::processingStateRun()       // Состояние работа
         if (alarm_ && !workWithAlarmFlag_) { // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме
           if ((timer_ == 0) && tripDelay_) { // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме; Срабатывание - начало;
             timer_ = ksu.getTime();          // Зафиксировали время начала задержки срабатывания
-            logDebug.add(DebugMsg, "prot: react %d", idMode_);
+#if (USE_LOG_DEBUG == 1)
+              logDebug.add(DebugMsg, "Защиты: Начало срабатывания (idMode = %d, alarm = %d, tripDelay = %d, isModeOn = %d)",
+                         idMode_, alarm_, tripDelay_, isModeOn());
+#endif
             delay_ = true;
           }
           else if (timer_ >= tripDelay_) {  // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме; Срабатывание - конец;
-            logDebug.add(DebugMsg, "prot: react->stop %d", idMode_);
+#if (USE_LOG_DEBUG == 1)
+              logDebug.add(DebugMsg, "Защиты: Срабатывание --> Стоп (idMode = %d, alarm = %d, tripDelay = %d)",
+                         idMode_, alarm_, tripDelay_);
+#endif
             addEventReactionProt();
             ksu.resetDelay();
             ksu.stop(lastReasonStop_);
@@ -289,11 +313,17 @@ void Protection::processingStateRun()       // Состояние работа
         if (alarm_ && !workWithAlarmFlag_) {// Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме
           if ((timer_ == 0) && tripDelay_) {// Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - начало;
             timer_ = ksu.getTime();         // Зафиксировали время начала задержки срабатывания
-            logDebug.add(DebugMsg, "prot: react %d", idMode_);
+#if (USE_LOG_DEBUG == 1)
+              logDebug.add(DebugMsg, "Защиты: Начало срабатывания (idMode = %d, alarm = %d, tripDelay = %d, isManualMode = %d)",
+                         idMode_, alarm_, tripDelay_, ksu.isManualMode());
+#endif
             delay_ = true;
           }
           else if (ksu.getSecFromCurTime(timer_) >= tripDelay_) {   // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - конец;
-            logDebug.add(DebugMsg, "prot: react->block  %d", idMode_);
+#if (USE_LOG_DEBUG == 1)
+              logDebug.add(DebugMsg, "Защиты: Срабатывание --> Стоп ручной(idMode = %d, alarm = %d, tripDelay = %d)",
+                         idMode_, alarm_, tripDelay_);
+#endif
             addEventReactionProt();
             logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
             ksu.setBlock();
