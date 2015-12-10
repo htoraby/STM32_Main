@@ -58,7 +58,7 @@ void logInit()
   deleteSemaphoreId_ = osSemaphoreCreate(NULL, 1);
   osSemaphoreWait(deleteSemaphoreId_, 0);
 
-  osThreadDef(LogSaveUsb, logSaveTask, osPriorityNormal, 0, 6 * configMINIMAL_STACK_SIZE);
+  osThreadDef(LogSaveUsb, logSaveTask, osPriorityNormal, 0, 8 * configMINIMAL_STACK_SIZE);
   logSaveThreadId = osThreadCreate(osThread(LogSaveUsb), NULL);
 }
 
@@ -134,6 +134,7 @@ static void getFilePath(char *path, const char *suffix)
       }
     }
   }
+  f_closedir(&dir);
 
   strcat(path, "\\");
   strcat(path, fileName);
@@ -189,11 +190,13 @@ static bool logSave()
 
       header.size = EndAddrDebugLog + sizeof(header) + 2;
       result = f_write(&file, (uint8_t*)&header, sizeof(header), &bytesWritten);
-      if ((result != FR_OK) || (sizeof(header) != bytesWritten))
+      if ((result != FR_OK) || (sizeof(header) != bytesWritten)) {
+        f_close(&file);
         return false;
+      }
       calcCrc = crc16_ibm((uint8_t*)&header, bytesWritten, calcCrc);
 
-      while (1) {
+      while (usbState == USB_READY) {
         StatusType status = logDebugRead(addr, &bufData[0], size);
         if (status == StatusError)
           asm("nop");
@@ -202,8 +205,10 @@ static bool logSave()
 
         for (uint32_t i = 0; i < size/_MAX_SS; ++i) {
           result = f_write(&file, &bufData[i*_MAX_SS], _MAX_SS, &bytesWritten);
-          if ((result != FR_OK) || (bytesWritten != _MAX_SS))
+          if ((result != FR_OK) || (bytesWritten != _MAX_SS)) {
+            f_close(&file);
             return false;
+          }
         }
 
         count++;
@@ -216,12 +221,16 @@ static bool logSave()
       }
 
       result = f_write(&file, (uint8_t*)&calcCrc, sizeof(calcCrc), &bytesWritten);
-      if ((result != FR_OK) || (sizeof(calcCrc) != bytesWritten))
+      if ((result != FR_OK) || (sizeof(calcCrc) != bytesWritten)) {
+        f_close(&file);
         return false;
+      }
 
       result = f_close(&file);
       if (result != FR_OK)
         return false;
+    } else {
+      return false;
     }
 
     strcpy(logPath, LOG_DIR);
@@ -236,11 +245,13 @@ static bool logSave()
 
       header.size = EndAddrTmsLog + sizeof(header) + 2;
       result = f_write(&file, (uint8_t*)&header, sizeof(header), &bytesWritten);
-      if ((result != FR_OK) || (sizeof(header) != bytesWritten))
+      if ((result != FR_OK) || (sizeof(header) != bytesWritten)) {
+        f_close(&file);
         return false;
+      }
       calcCrc = crc16_ibm((uint8_t*)&header, bytesWritten, calcCrc);
 
-      while (1) {
+      while (usbState == USB_READY) {
         StatusType status = logRead(addr, &bufData[0], size);
         if (status == StatusError)
           asm("nop");
@@ -249,8 +260,10 @@ static bool logSave()
 
         for (uint32_t i = 0; i < size/_MAX_SS; ++i) {
           result = f_write(&file, &bufData[i*_MAX_SS], _MAX_SS, &bytesWritten);
-          if ((result != FR_OK) || (bytesWritten != _MAX_SS))
+          if ((result != FR_OK) || (bytesWritten != _MAX_SS)) {
+            f_close(&file);
             return false;
+          }
         }
 
         count++;
@@ -263,8 +276,10 @@ static bool logSave()
       }
 
       result = f_write(&file, (uint8_t*)&calcCrc, sizeof(calcCrc), &bytesWritten);
-      if ((result != FR_OK) || (sizeof(calcCrc) != bytesWritten))
+      if ((result != FR_OK) || (sizeof(calcCrc) != bytesWritten)) {
+        f_close(&file);
         return false;
+      }
 
       result = f_close(&file);
       if (result != FR_OK)
