@@ -793,6 +793,8 @@ void VsdNovomet::getNewValue(uint16_t id)
     calcMotorType();
     calcSwitchFreqMode();
     calcResonanceRemoveSource();
+    calcTemperatureHtsnkMode();
+    calcTemperatureAirMode();
     break;
   case VSD_STATUS_WORD_4:
     setValue(id, value);
@@ -1257,12 +1259,22 @@ void VsdNovomet::calcSystemInduct()
 
 void VsdNovomet::calcTemperatureHtsnkMode()
 {
-
+  if (checkBit(getValue(VSD_STATUS_WORD_3), VSD_NOVOMET_STATUS_HTSNK_MODE)) {
+    setValue(VSD_TEMPERATURE_HTSNK_MODE, VSD_TEMPERATURE_MODE_1);
+  }
+  else {
+    setValue(VSD_TEMPERATURE_HTSNK_MODE, VSD_TEMPERATURE_MODE_ALL);
+  }
 }
 
 void VsdNovomet::calcTemperatureAirMode()
 {
-
+  if (checkBit(getValue(VSD_STATUS_WORD_3), VSD_NOVOMET_STATUS_AIR_MODE)) {
+    setValue(VSD_TEMPERATURE_AIR_MODE, VSD_TEMPERATURE_MODE_1);
+  }
+  else {
+    setValue(VSD_TEMPERATURE_AIR_MODE, VSD_TEMPERATURE_MODE_ALL);
+  }
 }
 
 void VsdNovomet::calcParameters(uint16_t id)
