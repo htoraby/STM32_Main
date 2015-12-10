@@ -25149,6 +25149,50 @@
 	</param>
 	<param>
 		<id>10455</id>
+		<name>VSD_TEMPERATURE_HTSNK_MODE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Режим контроля температур радиаторов</text>
+		<short_text>Режим контроля температур радиаторов</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Только все;1-До последнего</values>
+		<comment>Режим контроля температур радиаторов</comment>
+	</param>
+	<param>
+		<id>10456</id>
+		<name>VSD_TEMPERATURE_AIR_MODE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Режим контроля температуры воздуха</text>
+		<short_text>Режим контроля температуры воздуха</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Только все;1-До последнего</values>
+		<comment>Режим контроля температуры воздуха</comment>
+	</param>
+	<param>
+		<id>10457</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>

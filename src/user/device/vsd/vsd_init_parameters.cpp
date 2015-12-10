@@ -5462,5 +5462,29 @@ void Vsd::initParameters()
   parameters_[VSD_ARC_FREQ - VSD_BEGIN].def                                      = 2000.0;
   parameters_[VSD_ARC_FREQ - VSD_BEGIN].discret                                  = 1;
   parameters_[VSD_ARC_FREQ - VSD_BEGIN].code                                     = 13;
+  // Режим контроля температур радиаторов
+  parameters_[VSD_TEMPERATURE_HTSNK_MODE - VSD_BEGIN].id                         = VSD_TEMPERATURE_HTSNK_MODE;
+  parameters_[VSD_TEMPERATURE_HTSNK_MODE - VSD_BEGIN].access                     = ACCESS_OPERATOR;
+  parameters_[VSD_TEMPERATURE_HTSNK_MODE - VSD_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[VSD_TEMPERATURE_HTSNK_MODE - VSD_BEGIN].physic                     = PHYSIC_NUMERIC;
+  parameters_[VSD_TEMPERATURE_HTSNK_MODE - VSD_BEGIN].validity                   = VALIDITY_ERROR;
+  parameters_[VSD_TEMPERATURE_HTSNK_MODE - VSD_BEGIN].value.float_t              = 0.0;
+  parameters_[VSD_TEMPERATURE_HTSNK_MODE - VSD_BEGIN].min                        = 0.0;
+  parameters_[VSD_TEMPERATURE_HTSNK_MODE - VSD_BEGIN].max                        = 1.0;
+  parameters_[VSD_TEMPERATURE_HTSNK_MODE - VSD_BEGIN].def                        = 0.0;
+  parameters_[VSD_TEMPERATURE_HTSNK_MODE - VSD_BEGIN].discret                    = 1;
+  parameters_[VSD_TEMPERATURE_HTSNK_MODE - VSD_BEGIN].code                       = 13;
+  // Режим контроля температуры воздуха
+  parameters_[VSD_TEMPERATURE_AIR_MODE - VSD_BEGIN].id                           = VSD_TEMPERATURE_AIR_MODE;
+  parameters_[VSD_TEMPERATURE_AIR_MODE - VSD_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[VSD_TEMPERATURE_AIR_MODE - VSD_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[VSD_TEMPERATURE_AIR_MODE - VSD_BEGIN].physic                       = PHYSIC_NUMERIC;
+  parameters_[VSD_TEMPERATURE_AIR_MODE - VSD_BEGIN].validity                     = VALIDITY_ERROR;
+  parameters_[VSD_TEMPERATURE_AIR_MODE - VSD_BEGIN].value.float_t                = 0.0;
+  parameters_[VSD_TEMPERATURE_AIR_MODE - VSD_BEGIN].min                          = 0.0;
+  parameters_[VSD_TEMPERATURE_AIR_MODE - VSD_BEGIN].max                          = 1.0;
+  parameters_[VSD_TEMPERATURE_AIR_MODE - VSD_BEGIN].def                          = 0.0;
+  parameters_[VSD_TEMPERATURE_AIR_MODE - VSD_BEGIN].discret                      = 1;
+  parameters_[VSD_TEMPERATURE_AIR_MODE - VSD_BEGIN].code                         = 13;
 }
 

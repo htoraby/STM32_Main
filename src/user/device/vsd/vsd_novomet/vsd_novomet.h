@@ -13,6 +13,9 @@
 
 class RegimeRunNovomet;
 
+/*!
+ * \brief The enRegulatorQueue enum
+ */
 enum enRegulatorQueue {
   VSD_REQULATOR_QUEUE_NULL = -1,            //!< Пустой
   VSD_REQULATOR_QUEUE_TEST,                 //!< Тестовый
@@ -23,11 +26,33 @@ enum enRegulatorQueue {
   VSD_REQULATOR_QUEUE_PICKUP                //!< Турбинное вращение
 };
 
+/*!
+ * \brief The enResMode enum
+ */
 enum enResMode {
   VSD_RES_MODE_ANGLE = 0,                   //!< Расчётный угол отклонения ротора
   VSD_RES_MODE_TORQUE = 1,                  //!< Мгновенная величина расчетного момента
   VSD_RES_MODE_POWER = 2,                   //!< Мгновенная мощность привода
   VSD_RES_MODE_NONE = 3,                    //!< Не использовать
+};
+
+/*!
+ * \brief The enSwitchFreqMode enum
+ */
+enum enSwitchFreqMode
+{
+  VSD_SWITCHING_FREQUENCY_MODE_SIN = 0,
+  VSD_SWITCHING_FREQUENCY_MODE_OVERPWM_1 = 1,
+  VSD_SWITCHING_FREQUENCY_MODE_OVERPWM_2 = 2
+};
+
+/*!
+ * \brief The emTemperatureMode enum
+ */
+enum emTemperatureMode
+{
+  VSD_TEMPERATURE_MODE_ALL = 0,             //!< Только все
+  VSD_TEMPERATURE_MODE_1 = 1,               //!< До последнего
 };
 
 enum enVsdNovometStatus1 {
@@ -72,6 +97,8 @@ enum enVsdNovometStatus3 {
   VSD_NOVOMET_STATUS_M_TYPE1      = 4,      //!< Бит типа двигателя 1
   VSD_NOVOMET_STATUS_RES_TYPE0    = 5,      //!< Бит типа противорезонанса
   VSD_NOVOMET_STATUS_RES_TYPE1    = 6,      //!< Бит типа противорезонанса
+  VSD_NOVOMET_STATUS_HTSNK_MODE   = 7,      //!< Бит режима контроля температуры радиаторов
+  VSD_NOVOMET_STATUS_AIR_MODE	    = 8       //!< Бит режима контроля температуры воздуха
 };
 
 enum enVsdNovometStatus5 {
@@ -173,13 +200,9 @@ enum enControl2
   VSD_CONTROL_2_RES_ANGLE     = 1,       //!< Установить сигнал о колебания по углу
   VSD_CONTROL_2_RES_TORQUE    = 2,       //!< Установить сигнал о колебания по моменту
   VSD_CONTROL_2_RES_POWER     = 4,       //!< Установить сигнал о колебаниях по мощности
-};
-
-enum enSwitchFreqMode
-{
-  VSD_SWITCHING_FREQUENCY_MODE_SIN = 0,
-  VSD_SWITCHING_FREQUENCY_MODE_OVERPWM_1 = 1,
-  VSD_SWITCHING_FREQUENCY_MODE_OVERPWM_2 = 2
+  VSD_CONTROL_2_HTSNK_1_MODE  = 8,       //!< Установить режим контроля температур радиаторов ("До последнего")
+  VSD_CONTROL_2_AIR_1_MODE    = 16,      //!< Установить режим контроля температуры воздуха ("До последнего")
+  VSD_CONTROL_2_TEMP_ALL_MODE = 32,      //!< Установить режимы контроля всех температур ("Только все")
 };
 
 class VsdNovomet: public Vsd
@@ -222,6 +245,8 @@ public:
   int setSwitchingFrequencyMode(float value);
   int setResonanceRemoveSource(float value);
   int setSumInduct(float value);
+  int setTemperatureHtsnkMode(float value);
+  int setTemperatureAirMode(float value);
 
   // НАСТРОЙКА U/f
   int setUf_f1(float value);
@@ -383,13 +408,16 @@ public:
    */
   void calcRotation();
 
-
-
   void calcSwitchFreqMode();
 
   void calcResonanceRemoveSource();
 
   void calcSystemInduct();
+
+  void calcTemperatureHtsnkMode();
+
+  void calcTemperatureAirMode();
+
 
   /*!
    * \brief Проверка на "необходимость" работы с параметром
