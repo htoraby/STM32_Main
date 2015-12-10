@@ -361,6 +361,22 @@ int VsdNovomet::setSwitchingFrequencyMode(float value)
 int VsdNovomet::setResonanceRemoveSource(float value)
 {
   if (!Vsd::setResonanceRemoveSource(value)){
+    switch ((uint16_t)getValue(VSD_RES_MODE)) {
+    case VSD_RES_MODE_ANGLE:
+      value = VSD_CONTROL_2_RES_ANGLE;
+      break;
+    case VSD_RES_MODE_TORQUE:
+      value = VSD_CONTROL_2_RES_TORQUE;
+      break;
+    case VSD_RES_MODE_POWER:
+      value = VSD_CONTROL_2_RES_POWER;
+      break;
+    case VSD_RES_MODE_NONE:
+      value = 0;
+      break;
+    default:
+      break;
+    }
     writeToDevice(VSD_CONTROL_WORD_2, value);
     return ok_r;
   }
@@ -369,9 +385,45 @@ int VsdNovomet::setResonanceRemoveSource(float value)
 
 int VsdNovomet::setSumInduct(float value)
 {
-  if (Vsd::setSumInduct(value)) {
+  if (!Vsd::setSumInduct(value)) {
     writeToDevice(VSD_LOUT, value);
     return ok_r;
+  }
+  return err_r;
+}
+
+int VsdNovomet::setTemperatureHtsnkMode(float value)
+{
+  if (!setValue(VSD_TEMPERATURE_HTSNK_MODE, value)) {
+    if (value == VSD_TEMPERATURE_MODE_1) {
+      writeToDevice(VSD_CONTROL_WORD_2, VSD_CONTROL_2_HTSNK_1_MODE);
+      return ok_r;
+    }
+    else {
+      writeToDevice(VSD_CONTROL_WORD_2, VSD_CONTROL_2_TEMP_ALL_MODE);
+      if (getValue(VSD_TEMPERATURE_AIR_MODE) == VSD_TEMPERATURE_MODE_1) {
+        writeToDevice(VSD_CONTROL_WORD_2, VSD_CONTROL_2_AIR_1_MODE);
+      }
+      return ok_r;
+    }
+  }
+  return err_r;
+}
+
+int VsdNovomet::setTemperatureAirMode(float value)
+{
+  if (!setValue(VSD_TEMPERATURE_AIR_MODE, value)) {
+    if (value == VSD_TEMPERATURE_MODE_1) {
+      writeToDevice(VSD_CONTROL_WORD_2, VSD_CONTROL_2_AIR_1_MODE);
+      return ok_r;
+    }
+    else {
+      writeToDevice(VSD_CONTROL_WORD_2, VSD_CONTROL_2_TEMP_ALL_MODE);
+      if (getValue(VSD_TEMPERATURE_HTSNK_MODE) == VSD_TEMPERATURE_MODE_1) {
+        writeToDevice(VSD_CONTROL_WORD_2, VSD_CONTROL_2_HTSNK_1_MODE);
+      }
+      return ok_r;
+    }
   }
   return err_r;
 }
@@ -946,6 +998,12 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
   case VSD_SWITCHING_FREQUENCY_MODE:
     return setSwitchingFrequencyMode(value);
 
+  case VSD_TEMPERATURE_HTSNK_MODE:
+    return setTemperatureHtsnkMode(value);
+
+  case VSD_TEMPERATURE_AIR_MODE:
+    return setTemperatureAirMode(value);
+
   default:
     int result = setValue(id, value);
     if (!result)
@@ -1193,6 +1251,16 @@ void VsdNovomet::calcResonanceRemoveSource()
 }
 
 void VsdNovomet::calcSystemInduct()
+{
+
+}
+
+void VsdNovomet::calcTemperatureHtsnkMode()
+{
+
+}
+
+void VsdNovomet::calcTemperatureAirMode()
 {
 
 }
