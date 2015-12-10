@@ -132,7 +132,6 @@ void DMA2_Stream3_IRQHandler(void)
 */
 void OTG_FS_IRQHandler(void)
 {
-  HAL_NVIC_ClearPendingIRQ(OTG_FS_IRQn);
   HAL_HCD_IRQHandler(&hhcd_USB_OTG_FS);
 }
 
