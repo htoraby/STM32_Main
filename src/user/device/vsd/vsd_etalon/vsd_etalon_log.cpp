@@ -43,6 +43,7 @@ void VsdEtalonLog::readAlarmLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
 void VsdEtalonLog::readRunningLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
                                   uint16_t *ud, uint16_t *cos)
 {
+  osDelay(1000);
   VsdLog::readLog(0xA000, ia, 400);
   VsdLog::readLog(0xA190, ib, 400);
   VsdLog::readLog(0xA320, ic, 400);
