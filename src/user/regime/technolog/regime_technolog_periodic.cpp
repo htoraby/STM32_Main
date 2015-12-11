@@ -57,6 +57,7 @@ void RegimeTechnologPeriodic::processing()
     if (ksu.getValue(CCS_CONDITION) != CCS_CONDITION_STOP) { // Станция в работе;
       uint32_t time = ksu.getSecFromCurTime(workBeginTime_);
       workTimeToEnd_ = getTimeToEnd(workPeriod_, time);
+      stopTimeToEnd_ = 0;
       if (workTimeToEnd_ == 0) {   // Время работы истекло
         if (ksu.isProgramMode()) { // Режим - программа;
           ksu.setRestart();
@@ -85,6 +86,7 @@ void RegimeTechnologPeriodic::processing()
             uint32_t stopTime = ksu.getSecFromCurTime(stopBeginTime);                    // Время от останова до пуска
             workTimeToEnd = workTimeToEnd + stopTime;                                    // Время доработки
             if (workTimeToEnd < (30 * 60)) { // Если время доработки меньше 30 минут
+              ksu.setRestart();
               stopBeginTime_ = parameters.getU32(CCS_LAST_STOP_DATE_TIME); // Время перехода в паузу фиксируем как время остановки двигателя
               parameters.set(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
               state_ = PauseState;
@@ -158,6 +160,7 @@ void RegimeTechnologPeriodic::processing()
     if (ksu.isStopMotor()) {       // Двигатель - останов;
       uint32_t time = ksu.getSecFromCurTime(stopBeginTime_); // Прошедшее время с начала останова
       stopTimeToEnd_ = getTimeToEnd(stopPeriod_ + addTime_, time);
+      workTimeToEnd_ = 0;
       if (ksu.isProgramMode()) {   // Режим - программа;
         if (runReason == LastReasonRunOperator) { // Попытка пуска оператором
           workBeginTime_ = ksu.getTime();
@@ -222,6 +225,7 @@ void RegimeTechnologPeriodic::processing()
     if (ksu.isStopMotor()) {     // Двигатель - останов;
       uint32_t time = ksu.getSecFromCurTime(stopBeginTime_);
       stopTimeToEnd_ = getTimeToEnd(stopPeriod_, time);
+      workTimeToEnd_ = 0;
       if (ksu.isProgramMode()) { // Режим - программа;
         addTime_ = parameters.get(CCS_TIMER_DIFFERENT_START) - stopTimeToEnd_;
         if (addTime_ < 0) {
