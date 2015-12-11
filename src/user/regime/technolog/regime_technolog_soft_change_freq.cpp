@@ -13,8 +13,7 @@ RegimeTechnologSoftChangeFreq::~RegimeTechnologSoftChangeFreq()
 void RegimeTechnologSoftChangeFreq::processing()
 {
   action_ = parameters.get(CCS_RGM_CHANGE_FREQ_MODE);
-  // При перезагрузке запускаем с начальной частотой
-//  state_ = parameters.get(CCS_RGM_CHANGE_FREQ_STATE);
+  state_ = parameters.get(CCS_RGM_CHANGE_FREQ_STATE);
 
   beginFreq_ = parameters.get(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ);
   endFreq_ = parameters.get(CCS_RGM_CHANGE_FREQ_END_FREQ);
@@ -51,7 +50,7 @@ void RegimeTechnologSoftChangeFreq::processing()
         else {
           if (action_ == SingleAction) {
             parameters.set(CCS_RGM_CHANGE_FREQ_MODE, OffAction);
-           logEvent.add(SetpointCode, AutoType, RegimeSoftChangeFreqOffId);
+            logEvent.add(SetpointCode, AutoType, RegimeSoftChangeFreqOffId);
           }
         }
       }
