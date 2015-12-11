@@ -370,7 +370,11 @@ void Protection::proccessingStateStopping()
     }
   }
   else {
-    logDebug.add(CriticalMsg, "prot: unknown state motor %d", idMode_);
+    uint32_t state = parameters.get(CCS_CONDITION);
+    if (state > CCS_CONDITION_RUN) {
+      logDebug.add(CriticalMsg, "prot: unknown state motor %d, idMode = %d, line = %d",
+                   state, idMode_, __LINE__);
+    }
   }
 }
 
@@ -404,7 +408,11 @@ void Protection::proccessingStateStop()
       }
     }
     else {                                  // Двигатель - работа; Режим - неизвестный
-      logDebug.add(CriticalMsg, "prot: unknown control mode %d", idMode_);
+      uint32_t controlMode = parameters.get(CCS_WORKING_MODE);
+      if (controlMode > CCS_WORKING_MODE_PROGRAM) {
+        logDebug.add(CriticalMsg, "prot: unknown control mode %d, idMode = %d, line = %d",
+                     controlMode, idMode_, __LINE__);
+      }
     }
   }
   else if (ksu.isStopMotor()) {             // Двигатель - стоп;
@@ -469,7 +477,11 @@ void Protection::proccessingStateStop()
     }
   }
   else {
-    logDebug.add(CriticalMsg, "prot: unknown state motor %d", idMode_);
+    uint32_t state = parameters.get(CCS_CONDITION);
+    if (state > CCS_CONDITION_RUN) {
+      logDebug.add(CriticalMsg, "prot: unknown state motor %d, idMode = %d, line = %d",
+                   state, idMode_, __LINE__);
+    }
   }
 
   if (block_ && !ksu.isBlock()) {
