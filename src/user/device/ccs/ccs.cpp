@@ -691,7 +691,7 @@ uint32_t Ccs::getSecFromCurTime(enID timeId)
 
 void Ccs::calcTime()
 {
-  static int conditionOld = CCS_CONDITION_STOP;
+  static int conditionOld = getValue(CCS_CONDITION);
   static uint32_t timer = HAL_GetTick();
   static float generalRunTime = getValue(CCS_GENERAL_RUN_DATE_TIME);
   static float generalStopTime = getValue(CCS_GENERAL_STOP_DATE_TIME);
