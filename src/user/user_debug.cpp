@@ -2,6 +2,8 @@
 #include "user_main.h"
 #include "rcause.h"
 
+static int irqCount[2] = { 0 };
+
 void getRegistersFromStack(uint32_t *pulFaultStackAddress)
 {
   volatile uint32_t r0;
@@ -67,4 +69,29 @@ void checkRcauseCounters()
   RCAUSE_COUNTS countsOld = rcauseCountersGetOld();
   if (counts.iwdg != countsOld.iwdg)
     logDebug.add(FatalMsg, "Watchdog reset (%d)", counts.iwdg);
+}
+
+void calcIrqError(uint8_t type)
+{
+  if (++irqCount[type] == 10000) {
+    volatile uint32_t typeOld = backupRestoreParameter(RTC_BKP_DR8);
+    if (typeOld == 0)
+      backupSaveParameter(RTC_BKP_DR8, type+1);
+  }
+}
+
+void resetIrqError()
+{
+  irqCount[0] = 0;
+  irqCount[1] = 0;
+}
+
+void checkIrqError()
+{
+  volatile uint32_t type = backupRestoreParameter(RTC_BKP_DR8);
+
+  if (type != 0) {
+    logDebug.add(FatalMsg, "Irq Fault: ver. %x, type = %d", FIRMWARE_VERSION, type);
+    backupSaveParameter(RTC_BKP_DR8, 0);
+  }
 }

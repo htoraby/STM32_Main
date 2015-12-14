@@ -1727,6 +1727,8 @@ static HAL_StatusTypeDef UART_Transmit_IT(UART_HandleTypeDef *huart)
   }
 }
 
+extern void calcIrqError(uint8_t type);
+
 /**
   * @brief  Receives an amount of data in non blocking mode 
   * @param  huart: pointer to a UART_HandleTypeDef structure that contains
@@ -1737,6 +1739,8 @@ static HAL_StatusTypeDef UART_Receive_IT(UART_HandleTypeDef *huart)
 {
   uint16_t* tmp;
   uint32_t tmp1 = 0;
+
+  calcIrqError(1);
   
   if (huart->RxXferCount >= huart->RxXferSize) {
     tmp1 = huart->Instance->DR;
