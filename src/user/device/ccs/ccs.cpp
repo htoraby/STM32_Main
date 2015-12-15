@@ -236,7 +236,7 @@ void Ccs::vsdConditionTask()
       }
       else if (vsdCondition != vsdConditionOld) {
 #if (USE_LOG_WARNING == 1)
-        logDebug.add(WarningMsg, "Контроллер: Ошибка останова (ЧРП = %d)",
+        logDebug.add(WarningMsg, "Контроллер: Ошибка останова (Тип ЧРП = %1.0f)",
                      getValue(CCS_TYPE_VSD));
 #endif
       }
