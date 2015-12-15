@@ -27,6 +27,7 @@ void userInit()
   logEvent.add(PowerCode, AutoType, PowerOnId);
   logDebug.add(WarningMsg, "*** Power On ***");
   checkRegistersFromStack();
+  checkIrqError();
   checkRcauseCounters();
 
   vsd->init();

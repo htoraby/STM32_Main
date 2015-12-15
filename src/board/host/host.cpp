@@ -2,6 +2,7 @@
 #include "gpio.h"
 #include "string.h"
 #include "user_main.h"
+#include "user_debug.h"
 
 //! Время таймаута запроса от мастера для сброса SPI (n*10 мс)
 #define TIMEOUT_RX 1500
@@ -76,6 +77,8 @@ static void hostTimer(const void * argument)
 {
   (void)argument;
 
+  resetIrqError();
+
   if (rxActive) {
     if (rxTimeout) {
       rxTimeout--;
@@ -98,6 +101,8 @@ void hostRxIRQHandler(void)
 {
   static uint32_t tmp1 = 0, tmp2 = 0, tmp3 = 0;
   static uint8_t data = 0;
+
+  calcIrqError(0);
 
   tmp1 = __HAL_SPI_GET_FLAG(&hspi4, SPI_FLAG_RXNE);
   tmp2 = __HAL_SPI_GET_IT_SOURCE(&hspi4, SPI_IT_RXNE);
