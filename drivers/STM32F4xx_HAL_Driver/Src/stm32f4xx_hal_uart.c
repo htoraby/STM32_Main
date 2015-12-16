@@ -1727,6 +1727,7 @@ static HAL_StatusTypeDef UART_Transmit_IT(UART_HandleTypeDef *huart)
   }
 }
 
+extern uint8_t uartGetNum(UART_HandleTypeDef *huart);
 extern void calcIrqError(uint8_t type);
 
 /**
@@ -1740,7 +1741,7 @@ static HAL_StatusTypeDef UART_Receive_IT(UART_HandleTypeDef *huart)
   uint16_t* tmp;
   uint32_t tmp1 = 0;
 
-  calcIrqError(1);
+  calcIrqError(uartGetNum(huart) + 1);
   
   if (huart->RxXferCount >= huart->RxXferSize) {
     tmp1 = huart->Instance->DR;

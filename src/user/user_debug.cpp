@@ -2,7 +2,9 @@
 #include "user_main.h"
 #include "rcause.h"
 
-static int irqCount[2] = { 0 };
+#include <string.h>
+
+static int irqCount[10] = { 0 };
 
 void getRegistersFromStack(uint32_t *pulFaultStackAddress)
 {
@@ -82,8 +84,7 @@ void calcIrqError(uint8_t type)
 
 void resetIrqError()
 {
-  irqCount[0] = 0;
-  irqCount[1] = 0;
+  memset(irqCount, 0, sizeof(irqCount));
 }
 
 void checkIrqError()
