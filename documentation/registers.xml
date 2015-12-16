@@ -10195,7 +10195,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>99999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Общее время работы ПЭД</text>
@@ -10214,7 +10214,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>99999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Общее время простоя ПЭД</text>
@@ -10233,7 +10233,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>99999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Наработка с момента последнего пуска ПЭД</text>
@@ -10252,7 +10252,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>99999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Время простоя ПЭД с момента последнего останова</text>
@@ -10271,7 +10271,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>99999999.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Время до изменения режима работы ПЭД по программе</text>

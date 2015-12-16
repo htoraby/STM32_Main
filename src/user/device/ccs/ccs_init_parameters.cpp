@@ -6322,7 +6322,7 @@ void Ccs::initParameters()
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].max                         = 999999.0;
+  parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].max                         = 99999999.0;
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].def                         = 0;
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].code                        = 0;
@@ -6334,7 +6334,7 @@ void Ccs::initParameters()
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].max                        = 999999.0;
+  parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].max                        = 99999999.0;
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].discret                    = 1;
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].def                        = 0;
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].code                       = 0;
@@ -6346,7 +6346,7 @@ void Ccs::initParameters()
   parameters_[CCS_RUN_TIME - CCS_BEGIN].validity                                 = VALIDITY_OK;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].value.float_t                            = 0;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].min                                      = 0.0;
-  parameters_[CCS_RUN_TIME - CCS_BEGIN].max                                      = 999999.0;
+  parameters_[CCS_RUN_TIME - CCS_BEGIN].max                                      = 99999999.0;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].discret                                  = 1;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].def                                      = 0;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].code                                     = 0;
@@ -6358,7 +6358,7 @@ void Ccs::initParameters()
   parameters_[CCS_STOP_TIME - CCS_BEGIN].validity                                = VALIDITY_OK;
   parameters_[CCS_STOP_TIME - CCS_BEGIN].value.float_t                           = 0;
   parameters_[CCS_STOP_TIME - CCS_BEGIN].min                                     = 0.0;
-  parameters_[CCS_STOP_TIME - CCS_BEGIN].max                                     = 999999.0;
+  parameters_[CCS_STOP_TIME - CCS_BEGIN].max                                     = 99999999.0;
   parameters_[CCS_STOP_TIME - CCS_BEGIN].discret                                 = 1;
   parameters_[CCS_STOP_TIME - CCS_BEGIN].def                                     = 0;
   parameters_[CCS_STOP_TIME - CCS_BEGIN].code                                    = 0;
@@ -6370,7 +6370,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].validity                                = VALIDITY_OK;
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].value.float_t                           = 0;
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].min                                     = 0.0;
-  parameters_[CCS_RGM_TIMER - CCS_BEGIN].max                                     = 999999.0;
+  parameters_[CCS_RGM_TIMER - CCS_BEGIN].max                                     = 99999999.0;
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].discret                                 = 1;
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].def                                     = 0;
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].code                                    = 0;
