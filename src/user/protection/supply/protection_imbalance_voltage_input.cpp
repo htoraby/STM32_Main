@@ -65,21 +65,10 @@ float ProtectionImbalanceVoltageInput::calcValue()
 
 bool ProtectionImbalanceVoltageInput::isProtect()
 {
-  if (parameters.get(CCS_EM_TYPE) == EM_TYPE_NONE) {
-    if (parameters.isValidity(CCS_VOLTAGE_PHASE_1) ||
-        parameters.isValidity(CCS_VOLTAGE_PHASE_2) ||
-        parameters.isValidity(CCS_VOLTAGE_PHASE_3)) {
-        return true;
-    }
-  }
-  else {
-    if (em->isConnect()) {
-      if (parameters.isValidity(CCS_VOLTAGE_PHASE_1) ||
-          parameters.isValidity(CCS_VOLTAGE_PHASE_2) ||
-          parameters.isValidity(CCS_VOLTAGE_PHASE_3)) {
-          return true;
-      }
-    }
+  if (parameters.isValidity(CCS_VOLTAGE_PHASE_1) ||
+      parameters.isValidity(CCS_VOLTAGE_PHASE_2) ||
+      parameters.isValidity(CCS_VOLTAGE_PHASE_3)) {
+    return true;
   }
   return false;
 }

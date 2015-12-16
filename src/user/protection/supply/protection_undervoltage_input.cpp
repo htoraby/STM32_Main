@@ -83,26 +83,14 @@ float ProtectionUnderVoltageInput::calcValue()
 bool ProtectionUnderVoltageInput::isProtect()
 {
 #if USE_DEBUG
-    return true;
+  return true;
 #endif
 
-  if (parameters.get(CCS_EM_TYPE) == EM_TYPE_NONE) {
-    if ((parameters.isValidity(CCS_VOLTAGE_PHASE_1) ||
-         parameters.isValidity(CCS_VOLTAGE_PHASE_2) ||
-         parameters.isValidity(CCS_VOLTAGE_PHASE_3)) &&
-         parameters.isValidity(CCS_TRANS_NOMINAL_VOLTAGE)) {
-         return true;
-    }
-  }
-  else {
-    if (em->isConnect()) {
-      if ((parameters.isValidity(CCS_VOLTAGE_PHASE_1) ||
-           parameters.isValidity(CCS_VOLTAGE_PHASE_2) ||
-           parameters.isValidity(CCS_VOLTAGE_PHASE_3)) &&
-           parameters.isValidity(CCS_TRANS_NOMINAL_VOLTAGE)) {
-           return true;
-      }
-    }
+  if ((parameters.isValidity(CCS_VOLTAGE_PHASE_1) ||
+       parameters.isValidity(CCS_VOLTAGE_PHASE_2) ||
+       parameters.isValidity(CCS_VOLTAGE_PHASE_3)) &&
+      parameters.isValidity(CCS_TRANS_NOMINAL_VOLTAGE)) {
+    return true;
   }
   return false;
 }
