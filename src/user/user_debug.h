@@ -23,7 +23,7 @@ void checkRegistersFromStack();
  */
 void checkRcauseCounters();
 
-void calcIrqError(uint8_t type);
+void calcIrqError(uint8_t type, uint8_t state);
 void resetIrqError();
 void checkIrqError();
 

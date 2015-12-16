@@ -73,12 +73,14 @@ void checkRcauseCounters()
     logDebug.add(FatalMsg, "Watchdog reset (%d)", counts.iwdg);
 }
 
-void calcIrqError(uint8_t type)
+void calcIrqError(uint8_t type, uint8_t state)
 {
   if (++irqCount[type] == 10000) {
     volatile uint32_t typeOld = backupRestoreParameter(RTC_BKP_DR8);
-    if (typeOld == 0)
+    if (typeOld == 0) {
       backupSaveParameter(RTC_BKP_DR8, type+1);
+      backupSaveParameter(RTC_BKP_DR9, state);
+    }
   }
 }
 
@@ -90,9 +92,12 @@ void resetIrqError()
 void checkIrqError()
 {
   volatile uint32_t type = backupRestoreParameter(RTC_BKP_DR8);
+  volatile uint32_t state = backupRestoreParameter(RTC_BKP_DR9);
 
   if (type != 0) {
-    logDebug.add(FatalMsg, "Irq Fault: ver. %x, type = %d", FIRMWARE_VERSION, type);
+    logDebug.add(FatalMsg, "Irq Fault: ver. %x, type = %d, state = %d",
+                 FIRMWARE_VERSION, type, state);
     backupSaveParameter(RTC_BKP_DR8, 0);
+    backupSaveParameter(RTC_BKP_DR9, 0);
   }
 }
