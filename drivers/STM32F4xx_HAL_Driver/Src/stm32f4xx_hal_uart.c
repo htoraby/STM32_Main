@@ -610,14 +610,14 @@ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, u
     
     huart->ErrorCode = HAL_UART_ERROR_NONE;
     /* Check if a non-blocking receive process is ongoing or not */
-    if(huart->State == HAL_UART_STATE_BUSY_RX) 
-    {
+//    if(huart->State == HAL_UART_STATE_BUSY_RX)
+//    {
       huart->State = HAL_UART_STATE_BUSY_TX_RX;
-    }
-    else
-    {
-      huart->State = HAL_UART_STATE_BUSY_TX;
-    }
+//    }
+//    else
+//    {
+//      huart->State = HAL_UART_STATE_BUSY_TX;
+//    }
 
     huart->TxXferSize = Size;
     huart->TxXferCount = Size;
@@ -628,6 +628,7 @@ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, u
       {
         if(UART_WaitOnFlagUntilTimeout(huart, UART_FLAG_TXE, RESET, Timeout) != HAL_OK)
         { 
+          huart->State = HAL_UART_STATE_BUSY_RX;
           return HAL_TIMEOUT;
         }
         tmp = (uint16_t*) pData;
@@ -645,6 +646,7 @@ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, u
       {
         if(UART_WaitOnFlagUntilTimeout(huart, UART_FLAG_TXE, RESET, Timeout) != HAL_OK)
         {
+          huart->State = HAL_UART_STATE_BUSY_RX;
           return HAL_TIMEOUT;
         }
         huart->Instance->DR = (*pData++ & (uint8_t)0xFF);
@@ -653,18 +655,19 @@ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, u
     
     if(UART_WaitOnFlagUntilTimeout(huart, UART_FLAG_TC, RESET, Timeout) != HAL_OK)
     { 
+      huart->State = HAL_UART_STATE_BUSY_RX;
       return HAL_TIMEOUT;
     }
     
     /* Check if a non-blocking receive process is ongoing or not */
-    if(huart->State == HAL_UART_STATE_BUSY_TX_RX) 
-    {
+//    if(huart->State == HAL_UART_STATE_BUSY_TX_RX)
+//    {
       huart->State = HAL_UART_STATE_BUSY_RX;
-    }
-    else
-    {
-      huart->State = HAL_UART_STATE_READY;
-    }
+//    }
+//    else
+//    {
+//      huart->State = HAL_UART_STATE_BUSY_RX;
+//    }
     
     /* Process Unlocked */
     __HAL_UNLOCK(huart);
@@ -1213,7 +1216,7 @@ void HAL_UART_IRQHandler(UART_HandleTypeDef *huart)
   if(huart->ErrorCode != HAL_UART_ERROR_NONE)
   {
     /* Set the UART state ready to be able to start again the process */
-    huart->State = HAL_UART_STATE_READY;
+    huart->State = HAL_UART_STATE_BUSY_RX;
     
     HAL_UART_ErrorCallback(huart);
   }  
@@ -1745,7 +1748,7 @@ static HAL_StatusTypeDef UART_EndTransmit_IT(UART_HandleTypeDef *huart)
     /* Disable the UART Error Interrupt: (Frame error, noise error, overrun error) */
     __HAL_UART_DISABLE_IT(huart, UART_IT_ERR);
 
-    huart->State = HAL_UART_STATE_READY;
+    huart->State = HAL_UART_STATE_BUSY_RX;
   }
   
   HAL_UART_TxCpltCallback(huart);
@@ -1776,8 +1779,7 @@ static HAL_StatusTypeDef UART_Receive_IT(UART_HandleTypeDef *huart)
   }
 
   tmp1 = huart->State; 
-  if((tmp1 == HAL_UART_STATE_BUSY_RX) || (tmp1 == HAL_UART_STATE_BUSY_TX_RX) ||
-     (tmp1 == HAL_UART_STATE_READY))
+  if((tmp1 == HAL_UART_STATE_BUSY_RX) || (tmp1 == HAL_UART_STATE_BUSY_TX_RX))
   {
     if(huart->Init.WordLength == UART_WORDLENGTH_9B)
     {
