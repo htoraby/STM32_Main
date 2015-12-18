@@ -1321,7 +1321,9 @@ enum enID
   VSD_ARC_FREQ = 10454,                                      //!< Частота выборок аварийного архива ПЧ
   VSD_TEMPERATURE_HTSNK_MODE = 10455,                        //!< Режим контроля температур радиаторов
   VSD_TEMPERATURE_AIR_MODE = 10456,                          //!< Режим контроля температуры воздуха
-  VSD_END = 10457,                                           //!< 
+  VSD_M_KU_START = 10457,                                    //!< Кратность стартового напряжения
+  VSD_I_LIM_MAX_T = 10458,                                   //!< 
+  VSD_END = 10459,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме

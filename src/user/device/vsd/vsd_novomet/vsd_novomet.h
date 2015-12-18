@@ -87,6 +87,7 @@ enum enVsdNovometStatus2 {
   VSD_NOVOMET_STATUS_VC_ERR       = 11,     //!< Ошибка векторного режима
   VSD_NOVOMET_STATUS_M_I_FAST_ERR = 12,     //!< Быстрая токовая защита двигателя
   VSD_NOVOMET_STATUS_M_I2T_ERR    = 13,     //!< Токовая защита двигателя (перегруз)
+  VSD_NOVOMET_STATUS_I_LIM_ERR    = 14      //!< Защиту от длительного нахождения в токоограничении
 };
 
 enum enVsdNovometStatus3 {
@@ -151,6 +152,7 @@ enum enVsdNovometAlarm {
   VSD_NOVOMET_ALARM_VC_ERR        = 1027,   //!< Ошибка векторного режима
   VSD_NOVOMET_ALARM_M_I_FAST_ERR  = 1028,   //!< Быстрая токовая защита двигателя
   VSD_NOVOMET_ALARM_M_I2T_ERR     = 1029,   //!< Токовая защита двигателя (перегруз)
+  VSD_NOVOMET_ALARM_I_LIM_ERR     = 1030,   //!< Защиту от длительного нахождения в токоограничении
   // STATUS_WORD_5 ЧРП Новомет
   VSD_NOVOMET_ALARM_ABC_STATE     = 1064,   //!< Направление чередования фаз
   VSD_NOVOMET_ALARM_ERR_STATE     = 1066,   //!< Ошибка синхронизации с сетью

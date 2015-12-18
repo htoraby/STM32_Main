@@ -25193,6 +25193,47 @@
 	</param>
 	<param>
 		<id>10457</id>
+		<name>VSD_M_KU_START</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>5.0</min>
+		<max>25.0</max>
+		<def>15.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>15.0</value>
+		<text>Кратность стартового напряжения</text>
+		<short_text>Кратность стартового напряжения</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Кратность стартового напряжения</comment>
+	</param>
+	<param>
+		<id>10458</id>
+		<name>VSD_I_LIM_MAX_T</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>1.0</min>
+		<max>20.0</max>
+		<def>7.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>7.0</value>
+		<text>Длительного нахождения в токоограничении</text>
+		<short_text>Длительного нахождения в токоограничении</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+	</param>
+	<param>
+		<id>10459</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>
