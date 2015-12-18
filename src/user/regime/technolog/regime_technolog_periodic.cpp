@@ -2,7 +2,8 @@
 #include "protection_main.h"
 
 RegimeTechnologPeriodic::RegimeTechnologPeriodic()
-  : attempt_(false)
+  : isInit_(false)
+  , attempt_(false)
   , addTime_(0)
 {
 
@@ -34,6 +35,12 @@ void RegimeTechnologPeriodic::processing()
       ksu.resetRestart();
     }
     state_ = IdleState;
+  }
+
+  if (!isInit_) {
+    isInit_ = true;
+    if (state_ == PauseState)
+      state_ = StopState;
   }
 
   switch (state_) {
@@ -235,6 +242,7 @@ void RegimeTechnologPeriodic::processing()
           if (int(time - stopPeriod_) > 0)
             addTime_ = addTime_ + (time - stopPeriod_);
         }
+        ksu.setRestart();
         state_ = PauseState;
       }
     } else {

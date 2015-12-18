@@ -22,6 +22,7 @@ private:
   float workTimeToEnd_;       //!< Время до конца работы
   float stopTimeToEnd_;       //!< Время до конца останова
 
+  bool isInit_;               //!< Флаг инициализации
   bool attempt_;              //!< Флаг первой попытки запуска
   int addTime_;               //!< Добавочное время к паузе
 
