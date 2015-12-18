@@ -502,9 +502,9 @@ float VsdNovomet::checkAlarmVsd()
     }
   }
 
-  if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_DISCHARGE_ERR) && (vsdStatus <= VSD_NOVOMET_ALARM_M_I2T_ERR))) {
+  if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_DISCHARGE_ERR) && (vsdStatus <= VSD_NOVOMET_ALARM_I_LIM_ERR))) {
     vsdStatus = 0;
-    for (i = VSD_NOVOMET_ALARM_DISCHARGE_ERR; i <= VSD_NOVOMET_ALARM_M_I2T_ERR; i++) {
+    for (i = VSD_NOVOMET_ALARM_DISCHARGE_ERR; i <= VSD_NOVOMET_ALARM_I_LIM_ERR; i++) {
       if (checkBit(vsdStatus2, i - 1016)) {
         return i;
       }

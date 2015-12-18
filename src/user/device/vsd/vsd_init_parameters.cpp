@@ -5486,5 +5486,29 @@ void Vsd::initParameters()
   parameters_[VSD_TEMPERATURE_AIR_MODE - VSD_BEGIN].def                          = 0.0;
   parameters_[VSD_TEMPERATURE_AIR_MODE - VSD_BEGIN].discret                      = 1;
   parameters_[VSD_TEMPERATURE_AIR_MODE - VSD_BEGIN].code                         = 13;
+  // Кратность стартового напряжения
+  parameters_[VSD_M_KU_START - VSD_BEGIN].id                                     = VSD_M_KU_START;
+  parameters_[VSD_M_KU_START - VSD_BEGIN].access                                 = ACCESS_OPERATOR;
+  parameters_[VSD_M_KU_START - VSD_BEGIN].operation                              = OPERATION_WRITE;
+  parameters_[VSD_M_KU_START - VSD_BEGIN].physic                                 = PHYSIC_NUMERIC;
+  parameters_[VSD_M_KU_START - VSD_BEGIN].validity                               = VALIDITY_ERROR;
+  parameters_[VSD_M_KU_START - VSD_BEGIN].value.float_t                          = 15.0;
+  parameters_[VSD_M_KU_START - VSD_BEGIN].min                                    = 5.0;
+  parameters_[VSD_M_KU_START - VSD_BEGIN].max                                    = 25.0;
+  parameters_[VSD_M_KU_START - VSD_BEGIN].def                                    = 15.0;
+  parameters_[VSD_M_KU_START - VSD_BEGIN].discret                                = 1;
+  parameters_[VSD_M_KU_START - VSD_BEGIN].code                                   = 13;
+  // 
+  parameters_[VSD_I_LIM_MAX_T - VSD_BEGIN].id                                    = VSD_I_LIM_MAX_T;
+  parameters_[VSD_I_LIM_MAX_T - VSD_BEGIN].access                                = ACCESS_OPERATOR;
+  parameters_[VSD_I_LIM_MAX_T - VSD_BEGIN].operation                             = OPERATION_WRITE;
+  parameters_[VSD_I_LIM_MAX_T - VSD_BEGIN].physic                                = PHYSIC_NUMERIC;
+  parameters_[VSD_I_LIM_MAX_T - VSD_BEGIN].validity                              = VALIDITY_ERROR;
+  parameters_[VSD_I_LIM_MAX_T - VSD_BEGIN].value.float_t                         = 7.0;
+  parameters_[VSD_I_LIM_MAX_T - VSD_BEGIN].min                                   = 1.0;
+  parameters_[VSD_I_LIM_MAX_T - VSD_BEGIN].max                                   = 20.0;
+  parameters_[VSD_I_LIM_MAX_T - VSD_BEGIN].def                                   = 7.0;
+  parameters_[VSD_I_LIM_MAX_T - VSD_BEGIN].discret                               = 1;
+  parameters_[VSD_I_LIM_MAX_T - VSD_BEGIN].code                                  = 13;
 }
 
