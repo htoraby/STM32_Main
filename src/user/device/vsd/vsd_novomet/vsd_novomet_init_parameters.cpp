@@ -2885,7 +2885,7 @@ void VsdNovomet::initModbusParameters()
                           0                 // Значение
   };
   modbusParameters_[160] = {// Ток фазы A инвертора, масштаб
-                          VSD_MAX_CAN_INV_UD,// Уникальный идентификатор параметра
+                          VSD_SCALE_CAN_INV_UD,// Уникальный идентификатор параметра
                           4346,             // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
                           PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -2974,7 +2974,6 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
-
 }
   /*
   modbusParameters_[] = {// Резерв

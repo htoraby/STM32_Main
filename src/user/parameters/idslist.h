@@ -1323,7 +1323,13 @@ enum enID
   VSD_TEMPERATURE_AIR_MODE = 10456,                          //!< Режим контроля температуры воздуха
   VSD_M_KU_START = 10457,                                    //!< Кратность стартового напряжения
   VSD_I_LIM_MAX_T = 10458,                                   //!< 
-  VSD_END = 10459,                                           //!< 
+  VSD_MAX_CAN_INV_UD = 10459,                                //!< Напряжение на инверторе, максимум
+  VSD_SCALE_CAN_INV_UD = 10460,                              //!< Напряжение на инверторе, масштаб
+  VSD_MAXVAL_CAN_INV_UD = 10461,                             //!< Напряжение на инверторе, смещение нуля
+  VSD_MAX_CAN_INV_IA = 10462,                                //!< Ток фазы А, максимум
+  VSD_SCALE_CAN_INV_IA = 10463,                              //!< Ток фазы А, масштаб
+  VSD_MAXVAL_CAN_INV_IA = 10464,                             //!< Ток фазы А, смещение нуля
+  VSD_END = 10465,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме
