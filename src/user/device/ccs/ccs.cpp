@@ -1468,24 +1468,8 @@ void Ccs::calcCountersStop(float reason)
   case LastReasonStopUnderloadMotor:
     setValue(CCS_PROT_UNDERLOAD_COUNT_STOP, getValue(CCS_PROT_UNDERLOAD_COUNT_STOP) + 1);
     break;
-  case LastReasonStopResistIsolation:       // "Сопротивление изоляции"
-  case LastReasonStopUnderVoltIn:           // "Снижение питания сети"
-  case LastReasonStopOverVoltIn:            // "Превышение питания сети"
-  case LastReasonStopHackSu:                // "Взлом СУ"
-  case LastReasonStopManometr:              // "Контактный манометр"
-  case LastReasonStopPressureIntake:        // "Pmin на приёме насоса"
-  case LastReasonStopTemperatureMotor:      // "Перегрев двигателя"
-  case LastReasonStopVibrationMotor:        // "Превышение вибрации"
-  case LastReasonStopImbalanceCurMotor:     // "Дисбаланс токов ПЭД"
-  case LastReasonStopImbalanceVoltIn:       // "Дисбаланс напряжения"
-  case LastReasonStopMaxAnalog1:            // "Ан.вх.№1 max"
-  case LastReasonStopMaxAnalog2:            // "Ан.вх.№2 max"
-  case LastReasonStopCurrentMotor:          // "Предел тока двигателя"
-  case LastReasonStopOutOfSyncMotor:        // "Рассинхронизация ПВЭД"
-  case LastReasonStopHardwareVsd:           // "Аппаратные защиты ЧРП"
-    setValue(CCS_PROT_OTHER_COUNT_STOP, getValue(CCS_PROT_OTHER_COUNT_STOP) + 1);
-    break;
   default:
+    setValue(CCS_PROT_OTHER_COUNT_STOP, getValue(CCS_PROT_OTHER_COUNT_STOP) + 1);
     break;
   }
 }
