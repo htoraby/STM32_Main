@@ -1859,7 +1859,11 @@
 		<value>0.0</value>
 		<text>РРЗ от дисбаланса напряжений</text>
 		<short_text>РРЗ от дисбаланса напряжений</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
 		<code>13</code>
+		<values>0-Откл;1-Блок;2-АПВ;</values>
 		<comment>Защиты "Дисбаланс входных токов"</comment>
 	</param>
 	<param>
@@ -1877,6 +1881,9 @@
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Параметр запрещающий запуск</comment>
 	</param>
@@ -1894,6 +1901,9 @@
 		<value>0.0</value>
 		<text>Дисбал.токов. Задержка активации</text>
 		<short_text>Дисбал.токов. Задержка активации</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -1911,6 +1921,9 @@
 		<value>0.0</value>
 		<text>Дисбал.токов. Задержка срабатывания</text>
 		<short_text>Дисбал.токов. Задержка срабатывания</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -1928,6 +1941,9 @@
 		<value>0.0</value>
 		<text>Дисбал.токов. Задержка АПВ</text>
 		<short_text>Дисбал.токов. Задержка АПВ</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -1945,6 +1961,9 @@
 		<value>9999.0</value>
 		<text>Дисбал.токов. Количество разрешенных АПВ</text>
 		<short_text>Дисбал.токов. Количество разрешенных АПВ</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -1962,6 +1981,9 @@
 		<value>86400.0</value>
 		<text>Сброс счетчиков АПВ по напряжению</text>
 		<short_text>Сброс счетчиков АПВ по напряжению</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -1978,6 +2000,9 @@
 		<valid>VALIDITY_OK</valid>
 		<text>Дисбал.токов. Уставка дисбаланса напряжений</text>
 		<short_text>Дисбал.токов. Уставка дисбаланса напряжений</short_text>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXXXX</format>
 		<code>13</code>
 		<comment>Уставка срабатывания защиты</comment>
 	</param>
@@ -1995,6 +2020,9 @@
 		<text>Дисбал.токов. Напряжение АПВ</text>
 		<short_text>Дисбал.токов. Напряжение АПВ</short_text>
 		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>13</code>
 		<comment>Условие АПВ уставка</comment>
 	</param>
@@ -2034,6 +2062,9 @@
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Флаг что защита в АПВ</comment>
 	</param>
@@ -2052,6 +2083,9 @@
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр состояние автомата</comment>
 	</param>
@@ -2070,6 +2104,9 @@
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Фиксированное время</comment>
 	</param>
@@ -2088,6 +2125,9 @@
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Количество АПВ</comment>
 	</param>
@@ -2106,6 +2146,9 @@
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
+		<unit>DATE_TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Время первого АПВ</comment>
 	</param>
