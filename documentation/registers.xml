@@ -25277,6 +25277,132 @@
 	</param>
 	<param>
 		<id>10459</id>
+		<name>VSD_MAX_CAN_INV_UD</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Напряжение на инверторе, максимум</text>
+		<short_text>Напряжение на инверторе, максимум</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Напряжение на инверторе, максимум</comment>
+	</param>
+	<param>
+		<id>10460</id>
+		<name>VSD_SCALE_CAN_INV_UD</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Напряжение на инверторе, масштаб</text>
+		<short_text>Напряжение на инверторе, маcштаб</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Напряжение на инверторе, масштаб</comment>
+	</param>
+	<param>
+		<id>10461</id>
+		<name>VSD_MAXVAL_CAN_INV_UD</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Напряжение на инверторе, смещение нуля</text>
+		<short_text>Напряжение на инверторе, смещение нуля</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Напряжение на инверторе, смещение нуля</comment>
+	</param>
+	<param>
+		<id>10462</id>
+		<name>VSD_MAX_CAN_INV_IA</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Ток фазы А, максимум</text>
+		<short_text>Ток фазы А, максимум</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Ток фазы А, максимум</comment>
+	</param>
+	<param>
+		<id>10463</id>
+		<name>VSD_SCALE_CAN_INV_IA</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Ток фазы А, масштаб</text>
+		<short_text>Ток фазы А, масштаб</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Ток фазы А, масштаб</comment>
+	</param>
+	<param>
+		<id>10464</id>
+		<name>VSD_MAXVAL_CAN_INV_IA</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Ток фазы А, смещение нуля</text>
+		<short_text>Ток фазы А, смещение нуля</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Ток фазы А, смещение нуля</comment>
+	</param>
+	<param>
+		<id>10465</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>

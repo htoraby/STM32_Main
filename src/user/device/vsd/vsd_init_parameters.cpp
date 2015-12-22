@@ -5510,5 +5510,77 @@ void Vsd::initParameters()
   parameters_[VSD_I_LIM_MAX_T - VSD_BEGIN].def                                   = 7.0;
   parameters_[VSD_I_LIM_MAX_T - VSD_BEGIN].discret                               = 1;
   parameters_[VSD_I_LIM_MAX_T - VSD_BEGIN].code                                  = 13;
+  // Напряжение на инверторе, максимум
+  parameters_[VSD_MAX_CAN_INV_UD - VSD_BEGIN].id                                 = VSD_MAX_CAN_INV_UD;
+  parameters_[VSD_MAX_CAN_INV_UD - VSD_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[VSD_MAX_CAN_INV_UD - VSD_BEGIN].operation                          = OPERATION_READ;
+  parameters_[VSD_MAX_CAN_INV_UD - VSD_BEGIN].physic                             = PHYSIC_NUMERIC;
+  parameters_[VSD_MAX_CAN_INV_UD - VSD_BEGIN].validity                           = VALIDITY_ERROR;
+  parameters_[VSD_MAX_CAN_INV_UD - VSD_BEGIN].value.float_t                      = 1.0;
+  parameters_[VSD_MAX_CAN_INV_UD - VSD_BEGIN].min                                = -32767.0;
+  parameters_[VSD_MAX_CAN_INV_UD - VSD_BEGIN].max                                = 32767.0;
+  parameters_[VSD_MAX_CAN_INV_UD - VSD_BEGIN].def                                = 1.0;
+  parameters_[VSD_MAX_CAN_INV_UD - VSD_BEGIN].discret                            = 1;
+  parameters_[VSD_MAX_CAN_INV_UD - VSD_BEGIN].code                               = 0;
+  // Напряжение на инверторе, масштаб
+  parameters_[VSD_SCALE_CAN_INV_UD - VSD_BEGIN].id                               = VSD_SCALE_CAN_INV_UD;
+  parameters_[VSD_SCALE_CAN_INV_UD - VSD_BEGIN].access                           = ACCESS_OPERATOR;
+  parameters_[VSD_SCALE_CAN_INV_UD - VSD_BEGIN].operation                        = OPERATION_READ;
+  parameters_[VSD_SCALE_CAN_INV_UD - VSD_BEGIN].physic                           = PHYSIC_NUMERIC;
+  parameters_[VSD_SCALE_CAN_INV_UD - VSD_BEGIN].validity                         = VALIDITY_ERROR;
+  parameters_[VSD_SCALE_CAN_INV_UD - VSD_BEGIN].value.float_t                    = 1.0;
+  parameters_[VSD_SCALE_CAN_INV_UD - VSD_BEGIN].min                              = -32767.0;
+  parameters_[VSD_SCALE_CAN_INV_UD - VSD_BEGIN].max                              = 32767.0;
+  parameters_[VSD_SCALE_CAN_INV_UD - VSD_BEGIN].def                              = 1.0;
+  parameters_[VSD_SCALE_CAN_INV_UD - VSD_BEGIN].discret                          = 1;
+  parameters_[VSD_SCALE_CAN_INV_UD - VSD_BEGIN].code                             = 0;
+  // Напряжение на инверторе, смещение нуля
+  parameters_[VSD_MAXVAL_CAN_INV_UD - VSD_BEGIN].id                              = VSD_MAXVAL_CAN_INV_UD;
+  parameters_[VSD_MAXVAL_CAN_INV_UD - VSD_BEGIN].access                          = ACCESS_OPERATOR;
+  parameters_[VSD_MAXVAL_CAN_INV_UD - VSD_BEGIN].operation                       = OPERATION_READ;
+  parameters_[VSD_MAXVAL_CAN_INV_UD - VSD_BEGIN].physic                          = PHYSIC_NUMERIC;
+  parameters_[VSD_MAXVAL_CAN_INV_UD - VSD_BEGIN].validity                        = VALIDITY_ERROR;
+  parameters_[VSD_MAXVAL_CAN_INV_UD - VSD_BEGIN].value.float_t                   = 0.0;
+  parameters_[VSD_MAXVAL_CAN_INV_UD - VSD_BEGIN].min                             = -32767.0;
+  parameters_[VSD_MAXVAL_CAN_INV_UD - VSD_BEGIN].max                             = 32767.0;
+  parameters_[VSD_MAXVAL_CAN_INV_UD - VSD_BEGIN].def                             = 0.0;
+  parameters_[VSD_MAXVAL_CAN_INV_UD - VSD_BEGIN].discret                         = 1;
+  parameters_[VSD_MAXVAL_CAN_INV_UD - VSD_BEGIN].code                            = 0;
+  // Ток фазы А, максимум
+  parameters_[VSD_MAX_CAN_INV_IA - VSD_BEGIN].id                                 = VSD_MAX_CAN_INV_IA;
+  parameters_[VSD_MAX_CAN_INV_IA - VSD_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[VSD_MAX_CAN_INV_IA - VSD_BEGIN].operation                          = OPERATION_READ;
+  parameters_[VSD_MAX_CAN_INV_IA - VSD_BEGIN].physic                             = PHYSIC_NUMERIC;
+  parameters_[VSD_MAX_CAN_INV_IA - VSD_BEGIN].validity                           = VALIDITY_ERROR;
+  parameters_[VSD_MAX_CAN_INV_IA - VSD_BEGIN].value.float_t                      = 1.0;
+  parameters_[VSD_MAX_CAN_INV_IA - VSD_BEGIN].min                                = -32767.0;
+  parameters_[VSD_MAX_CAN_INV_IA - VSD_BEGIN].max                                = 32767.0;
+  parameters_[VSD_MAX_CAN_INV_IA - VSD_BEGIN].def                                = 1.0;
+  parameters_[VSD_MAX_CAN_INV_IA - VSD_BEGIN].discret                            = 1;
+  parameters_[VSD_MAX_CAN_INV_IA - VSD_BEGIN].code                               = 0;
+  // Ток фазы А, масштаб
+  parameters_[VSD_SCALE_CAN_INV_IA - VSD_BEGIN].id                               = VSD_SCALE_CAN_INV_IA;
+  parameters_[VSD_SCALE_CAN_INV_IA - VSD_BEGIN].access                           = ACCESS_OPERATOR;
+  parameters_[VSD_SCALE_CAN_INV_IA - VSD_BEGIN].operation                        = OPERATION_READ;
+  parameters_[VSD_SCALE_CAN_INV_IA - VSD_BEGIN].physic                           = PHYSIC_NUMERIC;
+  parameters_[VSD_SCALE_CAN_INV_IA - VSD_BEGIN].validity                         = VALIDITY_ERROR;
+  parameters_[VSD_SCALE_CAN_INV_IA - VSD_BEGIN].value.float_t                    = 1.0;
+  parameters_[VSD_SCALE_CAN_INV_IA - VSD_BEGIN].min                              = -32767.0;
+  parameters_[VSD_SCALE_CAN_INV_IA - VSD_BEGIN].max                              = 32767.0;
+  parameters_[VSD_SCALE_CAN_INV_IA - VSD_BEGIN].def                              = 1.0;
+  parameters_[VSD_SCALE_CAN_INV_IA - VSD_BEGIN].discret                          = 1;
+  parameters_[VSD_SCALE_CAN_INV_IA - VSD_BEGIN].code                             = 0;
+  // Ток фазы А, смещение нуля
+  parameters_[VSD_MAXVAL_CAN_INV_IA - VSD_BEGIN].id                              = VSD_MAXVAL_CAN_INV_IA;
+  parameters_[VSD_MAXVAL_CAN_INV_IA - VSD_BEGIN].access                          = ACCESS_OPERATOR;
+  parameters_[VSD_MAXVAL_CAN_INV_IA - VSD_BEGIN].operation                       = OPERATION_READ;
+  parameters_[VSD_MAXVAL_CAN_INV_IA - VSD_BEGIN].physic                          = PHYSIC_NUMERIC;
+  parameters_[VSD_MAXVAL_CAN_INV_IA - VSD_BEGIN].validity                        = VALIDITY_ERROR;
+  parameters_[VSD_MAXVAL_CAN_INV_IA - VSD_BEGIN].value.float_t                   = 0.0;
+  parameters_[VSD_MAXVAL_CAN_INV_IA - VSD_BEGIN].min                             = -32767.0;
+  parameters_[VSD_MAXVAL_CAN_INV_IA - VSD_BEGIN].max                             = 32767.0;
+  parameters_[VSD_MAXVAL_CAN_INV_IA - VSD_BEGIN].def                             = 0.0;
+  parameters_[VSD_MAXVAL_CAN_INV_IA - VSD_BEGIN].discret                         = 1;
+  parameters_[VSD_MAXVAL_CAN_INV_IA - VSD_BEGIN].code                            = 0;
 }
 
