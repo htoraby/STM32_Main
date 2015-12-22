@@ -109,15 +109,15 @@ void Ccs::mainTask()
   while (1) {
     osDelay(10);
 
-    if (isPowerOff())
-      osDelay(osWaitForever);
-
-    changedWorkMode();
-    changedCondition();
-
-    calcTime();
     controlPower();
-    checkConnectDevice();
+
+    if (!isPowerOff()) {
+      changedWorkMode();
+      changedCondition();
+
+      calcTime();
+      checkConnectDevice();
+    }
   }
 }
 
