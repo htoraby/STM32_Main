@@ -121,3 +121,84 @@ void VsdLog::readLog(uint32_t addr, uint16_t *buf, uint32_t size)
 
   osSemaphoreRelease(semaphoreId_);
 }
+
+void VsdLog::readNovometLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
+                                 uint16_t *ud)
+{
+  osSemaphoreWait(semaphoreId_, osWaitForever);
+
+  uint16_t buffer[110] = {0};                             // Буфер с запросом данных
+  int16_t field = 1999;                                   // Количество не готовых записей
+  uint16_t fieldShift = 25;                               // Смещение от конца архива
+  uint16_t fieldCnt = 25;                                 // Количество читаемых записей
+  int16_t i = 0;
+  int16_t res = 0;
+
+  float difCoefCur = parameters.get(VSD_MAXVAL_CAN_INV_IA);     // Смещение нуля тока
+  float propCoefCur = parameters.get(VSD_MAX_CAN_INV_IA);       // Максимум тока
+  if (propCoefCur == 0)
+    propCoefCur = 1;
+  propCoefCur = (parameters.get(VSD_SCALE_CAN_INV_IA) / propCoefCur) * (parameters.get(VSD_I_SCALE) / 100.0);
+
+  float difCoefVolt = parameters.get(VSD_MAXVAL_CAN_INV_UD);     // Смещение нуля напряжения
+  float propCoefVolt = parameters.get(VSD_MAX_CAN_INV_UD);
+  if (propCoefVolt == 0)
+    propCoefVolt = 1;
+  propCoefVolt = (parameters.get(VSD_SCALE_CAN_INV_UD) / propCoefVolt) * (parameters.get(VSD_U_SCALE) / 100.0);
+
+  while (field >= 0) {                            // Пока не все записи
+    res = mms_->readLogNovomet(devAdrs_, fieldShift, buffer, fieldCnt);
+
+    if (res == 0) {                                       // Нет ответа зануляем то что опрашивали
+      while (fieldCnt > 0) {                              // От 10 до 1
+        ic[field] = 0;
+        ib[field] = 0;
+        ia[field] = 0;
+        ud[field] = 0;
+        fieldCnt--;
+        field--;
+      }
+      fieldCnt = 25;
+      fieldShift = fieldShift + fieldCnt;
+    }
+    else {
+      if (res == 1) {                                     // Получили сообщение что больше нет данных
+        while (field >= 0) {                    // Все последующие данные зануляем
+          ic[field] = 0;
+          ib[field] = 0;
+          ia[field] = 0;
+          ud[field] = 0;
+          field--;
+        }
+      }
+      else {
+        i = res - 1;
+        while (i >= 3) {
+          /*
+          ic[field] = buffer[i];
+          ib[field] = buffer[i - 1];
+          ia[field] = buffer[i - 2];
+          ud[field] = buffer[i - 3];
+          */
+          ic[field] = (int)(((float)buffer[i] - difCoefCur) * propCoefCur);
+          ib[field] = (int)(((float)buffer[i - 1] - difCoefCur) * propCoefCur);
+          ia[field] = (int)(((float)buffer[i - 2] - difCoefCur) * propCoefCur);
+          ud[field] = (int)(((float)buffer[i - 3] - difCoefVolt) * propCoefVolt);
+          i = i - 4;
+          field--;
+        }
+        if ((res / 4) == fieldCnt) {
+          fieldCnt = 25;
+          fieldShift = fieldShift + fieldCnt;
+        }
+        else {
+          fieldShift = fieldShift + res / 4;
+          fieldCnt = fieldCnt - res / 4;
+        }
+      }
+    }
+    i = 0;
+  }
+
+  osSemaphoreRelease(semaphoreId_);
+}

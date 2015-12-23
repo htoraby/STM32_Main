@@ -7,7 +7,7 @@
 
 #include "modbus_master_serial.h"
 #include "user_main.h"
-
+//#include "stdlib.h"
 
 ModbusMasterSerial::ModbusMasterSerial()
 {
@@ -123,4 +123,74 @@ uint8_t ModbusMasterSerial::rxBuf(uint8_t *buf, uint8_t num)
     }
   }
   return res;
+}
+
+uint8_t ModbusMasterSerial::rxLogNovomet(uint8_t *buf)
+{
+  // Если истек таймаут ожидания ответа
+  if (osSemaphoreWait(semaphoreAnswer_, timeOut_) == osEventTimeout) {
+    incLostCounter();
+    return 0;                                       // Возвращаем ошибку что нет ответа от устройства
+  }
+  else {                                              // Получили первый байт
+    while (1) {                                       // Крутимся пока время между байтами не станет больше MODBUS_TIME_END_PACKAGE
+      if (osSemaphoreWait(semaphoreAnswer_, MODBUS_TIME_END_PACKAGE) == osEventTimeout) {
+        return uartReadData((uartNum)numberComPort_, buf);
+      }
+    }
+  }
+  return 0;
+}
+
+uint8_t ModbusMasterSerial::readLogNovomet(uint8_t slaveAddr, uint16_t startRef, uint16_t *regArr, uint16_t refCnt)
+{
+  unTypeData value;
+  uint16_t crc;
+  uint8_t res = 0;
+  uint8_t retry  = 0;
+  int i = 0;
+  div_t fieldRead;                                        // Количество целых записей
+  if (checkDeviceAddress(slaveAddr)) {
+    if (checkCntReg(refCnt)) {
+      while (1) {
+        retry++;
+        txBuffer_[0] = slaveAddr;                           // Адрес устройства
+        txBuffer_[1] = MODBUS_READ_HOLDING_REGISTERS_0x03;  // Команды
+        txBuffer_[2] = ((startRef >> 8) & 0x00ff);          // Старший байт адреса первого регистра
+        txBuffer_[3] = startRef & 0x00ff;                   // Младший байт адреса первого регистра
+        txBuffer_[4] = 0;                                   // Старший байт количества регистров
+        txBuffer_[5] = refCnt & 0x00ff;                     // Младший байт количества регистров
+        crc = crc16_ibm(txBuffer_, 6);                      // Вычисляем контрольную сумму
+        txBuffer_[6] = crc & 0x00ff;                        // Младший байт контрольной суммы
+        txBuffer_[7] = ((crc >> 8) & 0x00ff);               // Старший байт контрольной суммы
+        if (txBuf(txBuffer_, 8) == ok_r) {                  // Если отправили данные
+          res = rxLogNovomet(rxBuffer_);
+          if ((res == 2) && (rxBuffer_[0] == 0xff) && (rxBuffer_[1] == 0xff)) {
+            return 1;
+          }
+          else {
+            if (res >= 10) {
+              fieldRead = div(res - 2,8);
+              if ((fieldRead.rem == 0) && (((rxBuffer_[res - 1] << 8) + rxBuffer_[res - 2]) == crc16_ibm(rxBuffer_, (res - 2)))) {
+                for (i = 0; i < (res - 2) / 2; i++) {
+                  value.char_t[0] = rxBuffer_[1 + 2*i];
+                  value.char_t[1] = rxBuffer_[0 + 2*i];
+                  regArr[i] = value.uint16_t[0];
+                }
+                return i;
+              }
+            }
+          }
+        }
+        else {
+          asm("nop");
+        }
+        if (retry >= retryCnt_) {
+          return 0;
+        }
+        osDelay(100);
+      }
+    }
+  }
+  return 0;
 }

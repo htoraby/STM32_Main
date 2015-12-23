@@ -64,6 +64,24 @@ public:
    */
   uint8_t rxBuf(uint8_t *buf, uint8_t num);
 
+  /*!
+   * \brief rxLogNovomet
+   * \param buf
+   * \return
+   */
+  uint8_t rxLogNovomet(uint8_t *buf);
+
+  /*!
+   * \brief readLogNovomet
+   * \param slaveAddr
+   * \param startRef
+   * \param regArr
+   * \param refCnt
+   * \return
+   */
+  uint8_t readLogNovomet(uint8_t slaveAddr, uint16_t startRef, uint16_t *regArr, uint16_t refCnt);
+
+
 	private:
     int numberComPort_;
 

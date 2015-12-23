@@ -72,6 +72,16 @@ protected:
    */
   void readLog(uint32_t addr, uint16_t *buf, uint32_t size);
 
+  /*!
+   * \brief readNovometLog
+   * \param ia
+   * \param ib
+   * \param ic
+   * \param ud
+   */
+  void readNovometLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
+                                   uint16_t *ud);
+
 private:
   int numPort_;
   uint8_t devAdrs_;

@@ -729,6 +729,7 @@ void VsdNovomet::getNewValue(uint16_t id)
   // Преобразование типа данных устройства -> float
   switch (param->typeData) {
   case TYPE_DATA_INT16:
+  case TYPE_DATA_INT16_4:
     value = (float)param->value.int16_t[0];
     break;
   case TYPE_DATA_UINT16:
@@ -930,6 +931,14 @@ void VsdNovomet::getNewValue(uint16_t id)
     setValue(id, value);
     if (parameters.get(CCS_BASE_FREQUENCY) != value)
       parameters.set(CCS_BASE_FREQUENCY, value);
+    break;
+  case VSD_MAX_CAN_INV_UD:
+  case VSD_SCALE_CAN_INV_UD:
+  case VSD_MAXVAL_CAN_INV_UD:
+  case VSD_MAX_CAN_INV_IA:
+  case VSD_SCALE_CAN_INV_IA:
+  case VSD_MAXVAL_CAN_INV_IA:
+    setValue(id, value);
     break;
   default:                                  // Прямая запись в массив параметров
     setValue(id, value);
