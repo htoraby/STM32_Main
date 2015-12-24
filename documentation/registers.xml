@@ -16680,6 +16680,48 @@
 	</param>
 	<param>
 		<id>860</id>
+		<name>CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>50.0</min>
+		<max>150.0</max>
+		<def>110.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>110.0</value>
+		<text>Перегруз (ЗП). Текущая перегрузка</text>
+		<short_text>Текущая перегрузка</short_text>
+		<form>4.2.1 Перегруз (ЗП)</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Текущая перегрузка</comment>
+	</param>
+	<param>
+		<id>861</id>
+		<name>CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>600.0</max>
+		<def>30.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>30.0</value>
+		<text>Перегруз (ЗП). Текущая задержка срабатывания</text>
+		<short_text>Текущая задержка срабатывания</short_text>
+		<form>4.2.1 Перегруз (ЗП)</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>0</code>
+		<comment>Текущая задержка срабатывания</comment>
+	</param>
+	<param>
+		<id>862</id>
 		<name>CCS_END</name>
 		<access>ACCESS_OPERATOR</access>
 		<min>0.0</min>

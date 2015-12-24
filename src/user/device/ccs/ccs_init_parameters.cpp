@@ -10322,5 +10322,29 @@ void Ccs::initParameters()
   parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].discret                           = 100;
   parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].def                               = 0.0;
   parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].code                              = 0;
+  // Текущая перегрузка
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].id                  = CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].access              = ACCESS_OPERATOR;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].operation           = OPERATION_READ;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].physic              = PHYSIC_PERCENT;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].validity            = VALIDITY_OK;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].value.float_t       = 110.0;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].min                 = 50.0;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].max                 = 150.0;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].discret             = 1;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].def                 = 110.0;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].code                = 0;
+  // Текущая задержка срабатывания
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY - CCS_BEGIN].id            = CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY - CCS_BEGIN].access        = ACCESS_OPERATOR;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY - CCS_BEGIN].operation     = OPERATION_READ;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY - CCS_BEGIN].physic        = PHYSIC_TIME;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY - CCS_BEGIN].validity      = VALIDITY_OK;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY - CCS_BEGIN].value.float_t = 30.0;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY - CCS_BEGIN].min           = 0.0;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY - CCS_BEGIN].max           = 600.0;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY - CCS_BEGIN].discret       = 1;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY - CCS_BEGIN].def           = 30.0;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY - CCS_BEGIN].code          = 0;
 }
 

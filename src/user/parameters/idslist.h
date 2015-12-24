@@ -863,7 +863,9 @@ enum enID
   CCS_CURRENT_PHASE_1 = 857,                                 //!< Ток фазы А
   CCS_CURRENT_PHASE_2 = 858,                                 //!< Ток фазы B
   CCS_CURRENT_PHASE_3 = 859,                                 //!< Ток фазы С
-  CCS_END = 860,                                             //!< Последний параметр
+  CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD = 860,                   //!< Текущая перегрузка
+  CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY = 861,             //!< Текущая задержка срабатывания
+  CCS_END = 862,                                             //!< Последний параметр
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
