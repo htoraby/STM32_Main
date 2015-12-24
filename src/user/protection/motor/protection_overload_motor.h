@@ -17,7 +17,6 @@ private:
 
   bool checkAlarm();
   float calcValue();
-
 };
 
 #endif // PROTECTIONOVERLOADMOTOR_H
