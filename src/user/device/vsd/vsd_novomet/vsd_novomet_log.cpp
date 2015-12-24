@@ -42,122 +42,13 @@ void VsdNovometLog::setAlarm()
 void VsdNovometLog::readAlarmLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
                                  uint16_t *ud)
 {
-  setAlarm();
   VsdLog::readNovometLog(ia, ib, ic, ud);
 }
 
 void VsdNovometLog::readRunningLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
                                   uint16_t *ud, uint16_t *cos)
 {
-  /*
-  setAlarm();
 
-  uint8_t txBuffer[8] = {0};                              // Буфер с запросом данных
-  uint8_t rxBuffer[253] = {0};                            // Входной буфер
-  int16_t fieldInComplete = 2000;                         // Количество не готовых записей
-  uint16_t retryCnt = 0;                                  // Количество повторов
-  uint16_t fieldShift = 10;                               // Смещение от конца архива
-  uint16_t fieldCnt = 10;                                 // Количество читаемых записей
-  uint16_t crc = 0xffff;                                  // Контрольная сумма
-  uint16_t rxByteCnt = 0;                                 // Количество принятых байт
-  int16_t i = 0;
-  div_t fieldRead;                                        // Количество целых записей
-  float tempValue = 0;                                    // Временная переменная для вычислений
-  int16_t tempIntValue = 0;
-
-  float difCoefCur = parameters.get(VSD_MAXVAL_CAN_INV_IA);     // Смещение нуля тока
-  float propCoefCur = parameters.get(VSD_MAX_CAN_INV_IA);       // Максимум тока
-  if (propCoefCur == 0)
-    propCoefCur = 1;
-  propCoefCur = (parameters.get(VSD_SCALE_CAN_INV_IA) / propCoefCur) * (parameters.get(VSD_I_SCALE) / 100.0);
-
-  float difCoefVolt = parameters.get(VSD_MAXVAL_CAN_INV_UD);     // Смещение нуля напряжения
-  float propCoefVolt = parameters.get(VSD_MAX_CAN_INV_UD);
-  if (propCoefVolt == 0)
-    propCoefVolt = 1;
-  propCoefVolt = (parameters.get(VSD_SCALE_CAN_INV_UD) / propCoefVolt) * (parameters.get(VSD_U_SCALE) / 100.0);
-
-  while (fieldInComplete >= 0) {                          // Пока не все записи
-    while (retryCnt < 5) {
-      txBuffer[0] = 1;                                    // Адрес устройства
-      txBuffer[1] = MODBUS_READ_HOLDING_REGISTERS_0x03;   // Команды
-      txBuffer[2] = ((fieldShift >> 8) & 0x00ff);         // Старший байт адреса первого регистра
-      txBuffer[3] = (fieldShift) & 0x00ff;                // Младший байт адреса первого регистра
-      txBuffer[4] = ((fieldCnt >> 8) & 0x00ff);           // Старший байт количества регистров
-      txBuffer[5] = (fieldCnt) & 0x00ff;                  // Младший байт количества регистров
-      crc = crc16_ibm(txBuffer, 6);                       // Вычисляем контрольную сумму
-      txBuffer[6] = crc & 0x00ff;                         // Младший байт контрольной суммы
-      txBuffer[7] = ((crc >> 8) & 0x00ff);                // Старший байт контрольной суммы
-      uartWriteData(VSD_LOG_UART, txBuffer, 8);           // Посылка запроса
-
-      rxByteCnt = uartReadData(VSD_LOG_UART, rxBuffer);   // Приём данных
-                                                          // Записей больше нет
-      if ((rxByteCnt == 2) && (rxBuffer[rxByteCnt-1] == 0xff) && (rxBuffer[rxByteCnt-2] == 0xff)) {
-        while (fieldInComplete >= 0) {                    // Все последующие данные зануляем
-          ic[fieldInComplete] = 0;
-          ib[fieldInComplete] = 0;
-          ia[fieldInComplete] = 0;
-          ud[fieldInComplete] = 0;
-          cos[fieldInComplete] = 0;
-          fieldInComplete--;
-        }
-      }
-      else {
-        fieldRead = div(rxByteCnt - 2,8);                 // Проверяем сколько у нас записей
-        if ((fieldRead.rem == 0) && (((rxBuffer[rxByteCnt - 1] << 8) + rxBuffer[rxByteCnt - 2]) == crc16_ibm(rxBuffer, (rxByteCnt - 2)))) {
-          i = rxByteCnt - 3;
-          while (i >= 7) {
-            tempIntValue = (rxBuffer[i - 1] << 8) + rxBuffer[i];
-            tempValue = (tempIntValue - difCoefCur) * propCoefCur;
-            ic[fieldInComplete] = tempValue;
-
-            tempIntValue = (rxBuffer[i - 3] << 8) + rxBuffer[i - 2];
-            tempValue = (tempIntValue - difCoefCur) * propCoefCur;
-            ib[fieldInComplete] = tempValue;
-
-            tempIntValue = (rxBuffer[i - 5] << 8) + rxBuffer[i - 4];
-            tempValue = (tempIntValue - difCoefCur) * propCoefCur;
-            ia[fieldInComplete] = tempValue;
-
-            tempIntValue = (rxBuffer[i - 7] << 8) + rxBuffer[i - 6];
-            tempValue = (tempIntValue - difCoefVolt) * propCoefVolt;
-            ud[fieldInComplete] = tempValue;
-
-            cos[fieldInComplete] = 0;
-            i = i - 8;
-            fieldInComplete--;
-          }
-          if (fieldRead.quot == fieldCnt) {
-            fieldCnt = 10;
-            fieldShift = fieldShift + fieldCnt;
-          }
-          else {
-            fieldShift = fieldShift + fieldRead.quot;
-            fieldCnt = fieldCnt - fieldRead.quot;
-          }
-          i = 0;
-          retryCnt = 5;
-        }
-        else {
-          retryCnt++;
-          if (retryCnt >= 5) {
-            i = fieldCnt;
-            while (i >= 0) {
-              ic[fieldInComplete] = 0;
-              ib[fieldInComplete] = 0;
-              ia[fieldInComplete] = 0;
-              ud[fieldInComplete] = 0;
-              cos[fieldInComplete] = 0;
-              i--;
-              fieldInComplete--;
-            }
-            fieldCnt = 10;
-            fieldShift = fieldShift + fieldCnt;
-          }
-        }
-      }
-    }
-    retryCnt = 0;
-  }
-  */
+//  memset(cos, 0x0, sizeof(cos));  TODO: Очищение массива cos в 0, т.к. не получаем данные от ПЧ
+  VsdLog::readNovometLog(ia, ib, ic, ud);
 }
