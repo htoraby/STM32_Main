@@ -10330,7 +10330,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].value.float_t       = 110.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].min                 = 50.0;
-  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].max                 = 150.0;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].max                 = 1000.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].discret             = 1;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].def                 = 110.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].code                = 0;
