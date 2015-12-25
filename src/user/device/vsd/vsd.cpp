@@ -480,6 +480,11 @@ int Vsd::setUf_U6(float value)
   return ok_r;
 }
 
+int Vsd::setDischarge(float value)
+{
+  return err_r;
+}
+
 int Vsd::calcUfCharacteristicU()
 {
   return err_r;

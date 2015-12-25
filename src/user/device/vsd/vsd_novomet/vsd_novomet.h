@@ -249,6 +249,7 @@ public:
   int setSumInduct(float value);
   int setTemperatureHtsnkMode(float value);
   int setTemperatureAirMode(float value);
+  int setDischarge(float value);
 
   // НАСТРОЙКА U/f
   int setUf_f1(float value);
@@ -356,10 +357,6 @@ public:
    */
   void processingRegimeRun();
 
-
-
-
-
   /*!
    * \brief onRegimeJarring
    * \return
@@ -412,6 +409,8 @@ public:
 
   void calcSwitchFreqMode();
 
+  void calcDischarge();
+
   void calcResonanceRemoveSource();
 
   void calcSystemInduct();
@@ -438,6 +437,7 @@ public:
    * \return
    */
   void resetRunQueue();
+
 private:
   ModbusParameter modbusParameters_[165];
   DeviceModbus *dm_;

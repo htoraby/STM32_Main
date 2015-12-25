@@ -344,6 +344,13 @@ public:
   int setUf_U6(float value);
 
   /*!
+   * \brief setDischarge
+   * \param value
+   * \return
+   */
+  int setDischarge(float value);
+
+  /*!
    * \brief calcUfCharacteristic
    * \return
    */

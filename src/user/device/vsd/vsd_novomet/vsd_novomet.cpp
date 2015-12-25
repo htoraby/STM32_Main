@@ -248,18 +248,11 @@ int VsdNovomet::offRegimeSwing()
 
 int VsdNovomet::onRegimePickup()
 {
-  if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_VENT) {
-    writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_DISCHARGE_ON);
-  }
-  else {
-    writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_DISCHARGE_OFF);
-  }
   return 0;
 }
 
 int VsdNovomet::offRegimePickup()
 {
-  writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_DISCHARGE_OFF);
   return 0;
 }
 
@@ -426,6 +419,16 @@ int VsdNovomet::setTemperatureAirMode(float value)
     }
   }
   return err_r;
+}
+
+int VsdNovomet::setDischarge(float value)
+{
+  if (value) {
+    writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_DISCHARGE_ON);
+  }
+  else {
+    writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_DISCHARGE_OFF);
+  }
 }
 
 int VsdNovomet::setBaseVoltage(float value)
@@ -761,23 +764,56 @@ void VsdNovomet::getNewValue(uint16_t id)
     if (parameters.get(CCS_MOTOR_TYPE) != value)
       parameters.set(CCS_MOTOR_TYPE, value);
     break;
-  case VSD_CURRENT_OUT_PHASE_1:             // Выходной ток ЧРП Фаза 1
-    setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_1) * value);
-    ksu.calcMotorCurrentPhase1();
-    ksu.calcMotorCurrentAverage();
-    ksu.calcMotorCurrentImbalance();
+  case VSD_CURRENT_OUT_PHASE_1:             // Выходной ток ЧРП (гармоника) Фаза 1
+    if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 0) {
+      setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_1) * value);
+      ksu.calcMotorCurrentPhase1();
+      ksu.calcMotorCurrentAverage();
+      ksu.calcMotorCurrentImbalance();
+    };
     break;
-  case VSD_CURRENT_OUT_PHASE_2:             // Выходной ток ЧРП Фаза 2
-    setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_2) * value);
-    ksu.calcMotorCurrentPhase2();
-    ksu.calcMotorCurrentAverage();
-    ksu.calcMotorCurrentImbalance();
+  case VSD_CURRENT_OUT_PHASE_2:             // Выходной ток (гармоника) ЧРП Фаза 2
+    if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 0) {
+      setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_2) * value);
+      ksu.calcMotorCurrentPhase2();
+      ksu.calcMotorCurrentAverage();
+      ksu.calcMotorCurrentImbalance();
+    };
     break;
-  case VSD_CURRENT_OUT_PHASE_3:             // Выходной ток ЧРП Фаза 3
-    setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_3) * value);
-    ksu.calcMotorCurrentPhase3();
-    ksu.calcMotorCurrentAverage();
-    ksu.calcMotorCurrentImbalance();
+  case VSD_CURRENT_OUT_PHASE_3:             // Выходной ток (гармоника) ЧРП Фаза 3
+    if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 0) {
+      setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_3) * value);
+      ksu.calcMotorCurrentPhase3();
+      ksu.calcMotorCurrentAverage();
+      ksu.calcMotorCurrentImbalance();
+    };
+    break;
+  case VSD_IA_RMS:
+    setValue(id, value);
+    if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 1) {
+      setValue(VSD_CURRENT_OUT_PHASE_1, parameters.get(CCS_COEF_OUT_CURRENT_1) * value);
+      ksu.calcMotorCurrentPhase1();
+      ksu.calcMotorCurrentAverage();
+      ksu.calcMotorCurrentImbalance();
+    };
+    break;
+  case VSD_IB_RMS:
+    setValue(id, value);
+    if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 1) {
+      setValue(VSD_CURRENT_OUT_PHASE_2, parameters.get(CCS_COEF_OUT_CURRENT_2) * value);
+      ksu.calcMotorCurrentPhase2();
+      ksu.calcMotorCurrentAverage();
+      ksu.calcMotorCurrentImbalance();
+    };
+    break;
+  case VSD_IC_RMS:
+    setValue(id, value);
+    if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 1) {
+      setValue(VSD_CURRENT_OUT_PHASE_3, parameters.get(CCS_COEF_OUT_CURRENT_3) * value);
+      ksu.calcMotorCurrentPhase3();
+      ksu.calcMotorCurrentAverage();
+      ksu.calcMotorCurrentImbalance();
+    };
     break;
   case VSD_STATUS_WORD_1:
     setValue(id, value);
@@ -786,6 +822,7 @@ void VsdNovomet::getNewValue(uint16_t id)
   case VSD_STATUS_WORD_2:
     setValue(id, value);
     parameters.set(CCS_VSD_ALARM_CODE, checkAlarmVsd());
+    calcDischarge();
     break;
   case VSD_STATUS_WORD_3:
     setValue(id, value);
@@ -1253,6 +1290,16 @@ void VsdNovomet::calcSwitchFreqMode()
     else {
       setValue(VSD_SWITCHING_FREQUENCY_MODE, VSD_SWITCHING_FREQUENCY_MODE_SIN);
     }
+  }
+}
+
+void VsdNovomet::calcDischarge()
+{
+  if (checkBit(getValue(VSD_STATUS_WORD_2), VSD_NOVOMET_STATUS_DISCHARGE_ON)) {
+    parameters.set(CCS_VSD_DECEL, 1);
+  }
+  else {
+    parameters.set(CCS_VSD_DECEL, 0);
   }
 }
 

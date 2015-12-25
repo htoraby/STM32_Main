@@ -810,6 +810,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       vsd->offRegimePickup();
     }
     return err;
+  case CCS_VSD_DECEL:
+    err = setValue(id, value, eventType);
+    vsd->setDischarge(value);
+    return err;
   case CCS_PROT_MOTOR_ASYNC_MODE:
     err = setValue(id, value, eventType);
     if (value != Protection::ModeOff) {
