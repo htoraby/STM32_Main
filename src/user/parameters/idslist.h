@@ -865,7 +865,9 @@ enum enID
   CCS_CURRENT_PHASE_3 = 859,                                 //!< Ток фазы С
   CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD = 860,                   //!< Текущая перегрузка
   CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY = 861,             //!< Текущая задержка срабатывания
-  CCS_END = 862,                                             //!< Последний параметр
+  CCS_SRC_CURRENT_OUT_PHASE = 862,                           //!< Измерение токов ЧРП
+  CCS_VSD_DECEL = 863,                                       //!< Предварительный разряд шины
+  CCS_END = 864,                                             //!< Последний параметр
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
@@ -1331,7 +1333,10 @@ enum enID
   VSD_MAX_CAN_INV_IA = 10462,                                //!< Ток фазы А, максимум
   VSD_SCALE_CAN_INV_IA = 10463,                              //!< Ток фазы А, масштаб
   VSD_MAXVAL_CAN_INV_IA = 10464,                             //!< Ток фазы А, смещение нуля
-  VSD_END = 10465,                                           //!< 
+  VSD_IA_RMS = 10465,                                        //!< Выходной ток ПЧ фаза U
+  VSD_IB_RMS = 10466,                                        //!< Выходной ток ПЧ фаза V
+  VSD_IC_RMS = 10467,                                        //!< Выходной ток ПЧ фаза W
+  VSD_END = 10468,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме
