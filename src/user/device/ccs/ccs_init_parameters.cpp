@@ -22,7 +22,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_SPEED_NOW - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_MOTOR_SPEED_NOW - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_MOTOR_SPEED_NOW - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_MOTOR_SPEED_NOW - CCS_BEGIN].max                               = 6000.0;
+  parameters_[CCS_MOTOR_SPEED_NOW - CCS_BEGIN].max                               = 20000.0;
   parameters_[CCS_MOTOR_SPEED_NOW - CCS_BEGIN].discret                           = 1;
   parameters_[CCS_MOTOR_SPEED_NOW - CCS_BEGIN].def                               = 0.0;
   parameters_[CCS_MOTOR_SPEED_NOW - CCS_BEGIN].code                              = 0;
@@ -34,7 +34,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_CURRENT_PHASE_1 - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_MOTOR_CURRENT_PHASE_1 - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_MOTOR_CURRENT_PHASE_1 - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_MOTOR_CURRENT_PHASE_1 - CCS_BEGIN].max                         = 2500.0;
+  parameters_[CCS_MOTOR_CURRENT_PHASE_1 - CCS_BEGIN].max                         = 5000.0;
   parameters_[CCS_MOTOR_CURRENT_PHASE_1 - CCS_BEGIN].discret                     = 10;
   parameters_[CCS_MOTOR_CURRENT_PHASE_1 - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_MOTOR_CURRENT_PHASE_1 - CCS_BEGIN].code                        = 0;
@@ -46,7 +46,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_CURRENT_PHASE_2 - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_MOTOR_CURRENT_PHASE_2 - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_MOTOR_CURRENT_PHASE_2 - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_MOTOR_CURRENT_PHASE_2 - CCS_BEGIN].max                         = 2500.0;
+  parameters_[CCS_MOTOR_CURRENT_PHASE_2 - CCS_BEGIN].max                         = 5000.0;
   parameters_[CCS_MOTOR_CURRENT_PHASE_2 - CCS_BEGIN].discret                     = 10;
   parameters_[CCS_MOTOR_CURRENT_PHASE_2 - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_MOTOR_CURRENT_PHASE_2 - CCS_BEGIN].code                        = 0;
@@ -58,7 +58,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_CURRENT_PHASE_3 - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_MOTOR_CURRENT_PHASE_3 - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_MOTOR_CURRENT_PHASE_3 - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_MOTOR_CURRENT_PHASE_3 - CCS_BEGIN].max                         = 2500.0;
+  parameters_[CCS_MOTOR_CURRENT_PHASE_3 - CCS_BEGIN].max                         = 5000.0;
   parameters_[CCS_MOTOR_CURRENT_PHASE_3 - CCS_BEGIN].discret                     = 10;
   parameters_[CCS_MOTOR_CURRENT_PHASE_3 - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_MOTOR_CURRENT_PHASE_3 - CCS_BEGIN].code                        = 0;
@@ -70,7 +70,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_CURRENT_IMBALANCE - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_MOTOR_CURRENT_IMBALANCE - CCS_BEGIN].value.float_t             = 0.0;
   parameters_[CCS_MOTOR_CURRENT_IMBALANCE - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_MOTOR_CURRENT_IMBALANCE - CCS_BEGIN].max                       = 100.0;
+  parameters_[CCS_MOTOR_CURRENT_IMBALANCE - CCS_BEGIN].max                       = 1000.0;
   parameters_[CCS_MOTOR_CURRENT_IMBALANCE - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_MOTOR_CURRENT_IMBALANCE - CCS_BEGIN].def                       = 0.0;
   parameters_[CCS_MOTOR_CURRENT_IMBALANCE - CCS_BEGIN].code                      = 0;
@@ -82,7 +82,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_CURRENT_AVARAGE - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_MOTOR_CURRENT_AVARAGE - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_MOTOR_CURRENT_AVARAGE - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_MOTOR_CURRENT_AVARAGE - CCS_BEGIN].max                         = 2500.0;
+  parameters_[CCS_MOTOR_CURRENT_AVARAGE - CCS_BEGIN].max                         = 5000.0;
   parameters_[CCS_MOTOR_CURRENT_AVARAGE - CCS_BEGIN].discret                     = 10;
   parameters_[CCS_MOTOR_CURRENT_AVARAGE - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_MOTOR_CURRENT_AVARAGE - CCS_BEGIN].code                        = 0;
@@ -94,7 +94,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_LOAD_NOW - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_MOTOR_LOAD_NOW - CCS_BEGIN].value.float_t                      = 0.0;
   parameters_[CCS_MOTOR_LOAD_NOW - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_MOTOR_LOAD_NOW - CCS_BEGIN].max                                = 2500.0;
+  parameters_[CCS_MOTOR_LOAD_NOW - CCS_BEGIN].max                                = 5000.0;
   parameters_[CCS_MOTOR_LOAD_NOW - CCS_BEGIN].discret                            = 1;
   parameters_[CCS_MOTOR_LOAD_NOW - CCS_BEGIN].def                                = 0.0;
   parameters_[CCS_MOTOR_LOAD_NOW - CCS_BEGIN].code                               = 0;
@@ -202,7 +202,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_IMBALANCE_IN - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_IMBALANCE_IN - CCS_BEGIN].value.float_t                = 0.0;
   parameters_[CCS_VOLTAGE_IMBALANCE_IN - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_VOLTAGE_IMBALANCE_IN - CCS_BEGIN].max                          = 100.0;
+  parameters_[CCS_VOLTAGE_IMBALANCE_IN - CCS_BEGIN].max                          = 1000.0;
   parameters_[CCS_VOLTAGE_IMBALANCE_IN - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_VOLTAGE_IMBALANCE_IN - CCS_BEGIN].def                          = 0.0;
   parameters_[CCS_VOLTAGE_IMBALANCE_IN - CCS_BEGIN].code                         = 0;
@@ -214,7 +214,7 @@ void Ccs::initParameters()
   parameters_[CCS_CURRENT_IMBALANCE_IN - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_CURRENT_IMBALANCE_IN - CCS_BEGIN].value.float_t                = 100.0;
   parameters_[CCS_CURRENT_IMBALANCE_IN - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_CURRENT_IMBALANCE_IN - CCS_BEGIN].max                          = 100.0;
+  parameters_[CCS_CURRENT_IMBALANCE_IN - CCS_BEGIN].max                          = 1000.0;
   parameters_[CCS_CURRENT_IMBALANCE_IN - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_CURRENT_IMBALANCE_IN - CCS_BEGIN].def                          = 0.0;
   parameters_[CCS_CURRENT_IMBALANCE_IN - CCS_BEGIN].code                         = 0;
@@ -1330,7 +1330,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].min      = 0.0;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].max      = 999999.0;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].max      = 999999999.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].discret  = 1;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].def      = 0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].code     = 13;
@@ -1342,7 +1342,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].min   = 0.0;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].max   = 999999.0;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].max   = 999999999.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].discret = 1;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].def   = 0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].code  = 13;
@@ -2326,7 +2326,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].value.float_t         = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].max                   = 999999.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].max                   = 999999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].discret               = 1;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].def                   = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].code                  = 13;
@@ -2338,7 +2338,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].value.float_t      = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].max                = 999999.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].max                = 999999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].discret            = 1;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].def                = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].code               = 0;
@@ -2350,7 +2350,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY - CCS_BEGIN].value.float_t  = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY - CCS_BEGIN].min            = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY - CCS_BEGIN].max            = 999999.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY - CCS_BEGIN].max            = 999999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY - CCS_BEGIN].discret        = 1;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY - CCS_BEGIN].def            = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY - CCS_BEGIN].code           = 0;
@@ -2362,7 +2362,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY - CCS_BEGIN].value.float_t   = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY - CCS_BEGIN].min             = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY - CCS_BEGIN].max             = 999999.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY - CCS_BEGIN].max             = 999999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY - CCS_BEGIN].discret         = 1;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY - CCS_BEGIN].def             = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY - CCS_BEGIN].code            = 0;
@@ -2374,7 +2374,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY - CCS_BEGIN].validity     = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY - CCS_BEGIN].min          = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY - CCS_BEGIN].max          = 999999.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY - CCS_BEGIN].max          = 999999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY - CCS_BEGIN].discret      = 1;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY - CCS_BEGIN].def          = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY - CCS_BEGIN].code         = 0;
@@ -2386,7 +2386,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT - CCS_BEGIN].validity     = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT - CCS_BEGIN].min          = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT - CCS_BEGIN].max          = 999999.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT - CCS_BEGIN].max          = 999999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT - CCS_BEGIN].discret      = 1;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT - CCS_BEGIN].def          = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT - CCS_BEGIN].code         = 0;
@@ -2398,7 +2398,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET - CCS_BEGIN].validity     = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET - CCS_BEGIN].min          = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET - CCS_BEGIN].max          = 999999.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET - CCS_BEGIN].max          = 999999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET - CCS_BEGIN].discret      = 1;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET - CCS_BEGIN].def          = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET - CCS_BEGIN].code         = 0;
@@ -2410,7 +2410,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT - CCS_BEGIN].validity     = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT - CCS_BEGIN].min          = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT - CCS_BEGIN].max          = 999999.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT - CCS_BEGIN].max          = 999999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT - CCS_BEGIN].discret      = 1;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT - CCS_BEGIN].def          = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT - CCS_BEGIN].code         = 0;
@@ -2422,7 +2422,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT - CCS_BEGIN].validity  = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT - CCS_BEGIN].min       = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT - CCS_BEGIN].max       = 999999.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT - CCS_BEGIN].max       = 999999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT - CCS_BEGIN].discret   = 1;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT - CCS_BEGIN].def       = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT - CCS_BEGIN].code      = 0;
@@ -2434,7 +2434,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].value.float_t    = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].max              = 999999.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].max              = 999999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].discret          = 1;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].def              = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].code             = 0;
@@ -2446,7 +2446,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].validity      = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].min           = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].max           = 999999.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].max           = 999999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].discret       = 1;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].def           = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].code          = 0;
@@ -2458,7 +2458,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].max                  = 999999.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].max                  = 999999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].discret              = 1;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].code                 = 0;
@@ -2470,7 +2470,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].value.float_t         = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].max                   = 999999.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].max                   = 999999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].discret               = 1;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].def                   = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].code                  = 0;
@@ -2482,7 +2482,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].validity     = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].min          = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].max          = 999999.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].max          = 999999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].discret      = 1;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].def          = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].code         = 0;
@@ -2494,7 +2494,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].min     = 0.0;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].max     = 999999.0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].max     = 999999999.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].discret = 1;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].def     = 0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].code    = 0;
@@ -3046,7 +3046,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].max                       = 999999.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].max                       = 999999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].code                      = 0;
@@ -3058,7 +3058,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].max                    = 999999.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].max                    = 999999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].discret                = 1;
   parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].def                    = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].code                   = 0;
@@ -3070,7 +3070,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].value.float_t      = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].max                = 999999.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].max                = 999999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].discret            = 1;
   parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].def                = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].code               = 0;
@@ -3082,7 +3082,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].value.float_t       = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].min                 = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].max                 = 999999.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].max                 = 999999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].discret             = 1;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].def                 = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].code                = 0;
@@ -3094,7 +3094,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].value.float_t    = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].max              = 999999.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].max              = 999999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].discret          = 1;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].def              = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].code             = 0;
@@ -3106,7 +3106,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_LIMIT - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_LIMIT - CCS_BEGIN].value.float_t    = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_LIMIT - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_LIMIT - CCS_BEGIN].max              = 999999.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_LIMIT - CCS_BEGIN].max              = 999999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_LIMIT - CCS_BEGIN].discret          = 1;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_LIMIT - CCS_BEGIN].def              = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_LIMIT - CCS_BEGIN].code             = 0;
@@ -3118,7 +3118,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].value.float_t    = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].max              = 999999.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].max              = 999999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].discret          = 1;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].def              = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].code             = 0;
@@ -3130,7 +3130,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT - CCS_BEGIN].value.float_t    = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT - CCS_BEGIN].max              = 999999.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT - CCS_BEGIN].max              = 999999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT - CCS_BEGIN].discret          = 1;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT - CCS_BEGIN].def              = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT - CCS_BEGIN].code             = 0;
@@ -3142,7 +3142,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].validity      = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].min           = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].max           = 999999.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].max           = 999999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].discret       = 1;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].def           = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].code          = 0;
@@ -3154,7 +3154,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].max                  = 999999.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].max                  = 999999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].discret              = 1;
   parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].code                 = 0;
@@ -3166,7 +3166,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].value.float_t     = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].min               = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].max               = 999999.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].max               = 999999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].discret           = 1;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].def               = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].code              = 0;
@@ -3178,7 +3178,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].validity                 = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].value.float_t            = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].min                      = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].max                      = 999999.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].max                      = 999999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].discret                  = 1;
   parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].def                      = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].code                     = 0;
@@ -3190,7 +3190,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].max                       = 999999.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].max                       = 999999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].def                       = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].code                      = 0;
@@ -3202,7 +3202,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].value.float_t    = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].max              = 999999.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].max              = 999999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].discret          = 1;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].def              = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].code             = 0;
@@ -3214,7 +3214,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].min         = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].max         = 999999.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].max         = 999999999.0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].discret     = 1;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].def         = 0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].code        = 0;
@@ -4666,7 +4666,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].value.float_t       = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].min                 = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].max                 = 999999.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].max                 = 999999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].discret             = 1;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].def                 = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].code                = 0;
@@ -4678,7 +4678,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].value.float_t    = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].max              = 999999.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].max              = 999999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].discret          = 1;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].def              = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].code             = 0;
@@ -4690,7 +4690,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].validity     = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].min          = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].max          = 999999.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].max          = 999999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].discret      = 1;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].def          = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].code         = 0;
@@ -4702,7 +4702,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].validity      = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].min           = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].max           = 999999.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].max           = 999999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].discret       = 1;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].def           = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].code          = 0;
@@ -4714,7 +4714,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].validity   = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].min        = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].max        = 999999.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].max        = 999999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].discret    = 1;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].def        = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].code       = 0;
@@ -4726,7 +4726,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].validity   = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].min        = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].max        = 999999.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].max        = 999999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].discret    = 1;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].def        = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].code       = 0;
@@ -4738,7 +4738,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].validity   = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].min        = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].max        = 999999.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].max        = 999999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].discret    = 1;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].def        = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].code       = 0;
@@ -4750,7 +4750,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT - CCS_BEGIN].validity   = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT - CCS_BEGIN].min        = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT - CCS_BEGIN].max        = 999999.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT - CCS_BEGIN].max        = 999999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT - CCS_BEGIN].discret    = 1;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT - CCS_BEGIN].def        = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT - CCS_BEGIN].code       = 0;
@@ -4762,7 +4762,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].min     = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].max     = 999999.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].max     = 999999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].discret = 1;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].def     = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].code    = 0;
@@ -4774,7 +4774,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER - CCS_BEGIN].value.float_t  = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER - CCS_BEGIN].min            = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER - CCS_BEGIN].max            = 999999.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER - CCS_BEGIN].max            = 999999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER - CCS_BEGIN].discret        = 1;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER - CCS_BEGIN].def            = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER - CCS_BEGIN].code           = 0;
@@ -4786,7 +4786,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].min         = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].max         = 999999.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].max         = 999999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].discret     = 1;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].def         = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].code        = 0;
@@ -4798,7 +4798,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].value.float_t      = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].max                = 999999.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].max                = 999999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].discret            = 1;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].def                = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].code               = 0;
@@ -4810,7 +4810,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].value.float_t       = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].min                 = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].max                 = 999999.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].max                 = 999999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].discret             = 1;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].def                 = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].code                = 0;
@@ -4822,7 +4822,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].validity   = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].min        = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].max        = 999999.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].max        = 999999999.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].discret    = 1;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].def        = 0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].code       = 0;
@@ -4858,7 +4858,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].value.float_t    = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].max              = 999999.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].max              = 999999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].discret          = 1;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].def              = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].code             = 0;
@@ -4870,7 +4870,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].value.float_t     = 1.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].min               = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].max               = 999999.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].max               = 999999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].discret           = 1;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].def               = 1.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].code              = 0;
@@ -4882,7 +4882,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].value.float_t  = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].min            = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].max            = 999999.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].max            = 999999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].discret        = 1;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].def            = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].code           = 0;
@@ -4894,7 +4894,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].value.float_t  = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].min            = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].max            = 999999.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].max            = 999999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].discret        = 1;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].def            = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].code           = 0;
@@ -4906,7 +4906,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].value.float_t  = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].min            = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].max            = 999999.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].max            = 999999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].discret        = 1;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].def            = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].code           = 0;
@@ -4918,7 +4918,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].value.float_t  = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].min            = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].max            = 999999.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].max            = 999999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].discret        = 1;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].def            = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].code           = 0;
@@ -4930,7 +4930,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].min         = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].max         = 999999.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].max         = 999999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].discret     = 1;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].def         = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].code        = 0;
@@ -4942,7 +4942,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].value.float_t      = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].max                = 999999.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].max                = 999999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].discret            = 1;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].def                = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].code               = 0;
@@ -4954,7 +4954,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].value.float_t   = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].min             = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].max             = 999999.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].max             = 999999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].discret         = 1;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].def             = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].code            = 0;
@@ -4966,7 +4966,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].value.float_t          = 3.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].max                    = 999999.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].max                    = 999999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].discret                = 1;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].def                    = 3.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].code                   = 0;
@@ -4978,7 +4978,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].value.float_t           = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].min                     = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].max                     = 999999.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].max                     = 999999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].discret                 = 1;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].def                     = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].code                    = 0;
@@ -4990,7 +4990,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].value.float_t  = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].min            = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].max            = 999999.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].max            = 999999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].discret        = 1;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].def            = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].code           = 0;
@@ -5002,7 +5002,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].validity  = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].min       = 0.0;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].max       = 999999.0;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].max       = 999999999.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].discret   = 1;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].def       = 0.0;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].code      = 0;
@@ -5194,7 +5194,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].max                           = 999999.0;
+  parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].max                           = 999999999.0;
   parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].def                           = 0;
   parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].code                          = 13;
@@ -5206,7 +5206,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].max                        = 999999.0;
+  parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].max                        = 999999999.0;
   parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].discret                    = 1;
   parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].def                        = 0;
   parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].code                       = 0;
@@ -5218,7 +5218,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].max                    = 999999.0;
+  parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].max                    = 999999999.0;
   parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].discret                = 1;
   parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].def                    = 0;
   parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].code                   = 0;
@@ -5230,7 +5230,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].value.float_t           = 0;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].min                     = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].max                     = 999999.0;
+  parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].max                     = 999999999.0;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].discret                 = 1;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].def                     = 0;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].code                    = 0;
@@ -5242,7 +5242,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].max                  = 999999.0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].max                  = 999999999.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].discret              = 1;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].code                 = 0;
@@ -5254,7 +5254,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].max                  = 999999.0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].max                  = 999999999.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].discret              = 1;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].code                 = 0;
@@ -5266,7 +5266,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].max                  = 999999.0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].max                  = 999999999.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].discret              = 1;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].code                 = 0;
@@ -5278,7 +5278,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].max                  = 999999.0;
+  parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].max                  = 999999999.0;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].discret              = 1;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].code                 = 0;
@@ -5290,7 +5290,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].value.float_t     = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].min               = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].max               = 999999.0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].max               = 999999999.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].discret           = 1;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].def               = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].code              = 0;
@@ -5302,7 +5302,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].validity                 = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].value.float_t            = 0;
   parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].min                      = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].max                      = 999999.0;
+  parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].max                      = 999999999.0;
   parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].discret                  = 1;
   parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].def                      = 0;
   parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].code                     = 0;
@@ -5314,7 +5314,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].value.float_t         = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].max                   = 999999.0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].max                   = 999999999.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].discret               = 1;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].def                   = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].code                  = 0;
@@ -5326,7 +5326,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].value.float_t                = 0;
   parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].max                          = 999999.0;
+  parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].max                          = 999999999.0;
   parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].def                          = 0;
   parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].code                         = 0;
@@ -5338,7 +5338,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].max                           = 999999.0;
+  parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].max                           = 999999999.0;
   parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].def                           = 0;
   parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].code                          = 0;
@@ -5350,7 +5350,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].max                  = 999999.0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].max                  = 999999999.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].discret              = 1;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].code                 = 0;
@@ -5362,7 +5362,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t   = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].min             = 0.0;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].max             = 999999.0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].max             = 999999999.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].discret         = 1;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].def             = 0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].code            = 0;
@@ -5374,7 +5374,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].max                             = 999999.0;
+  parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].max                             = 999999999.0;
   parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].def                             = 0;
   parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].code                            = 13;
@@ -5386,7 +5386,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].value.float_t                  = 0.0;
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].max                            = 999999.0;
+  parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].max                            = 999999999.0;
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].discret                        = 1;
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].def                            = 0.0;
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].code                           = 0;
@@ -5662,7 +5662,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].validity                         = VALIDITY_OK;
   parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].value.float_t                    = 0;
   parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].min                              = 0.0;
-  parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].max                              = 999999.0;
+  parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].max                              = 999999999.0;
   parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].discret                          = 10;
   parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].def                              = 0;
   parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].code                             = 0;
@@ -5674,7 +5674,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].validity                         = VALIDITY_OK;
   parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].value.float_t                    = 0;
   parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].min                              = 0.0;
-  parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].max                              = 999999.0;
+  parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].max                              = 999999999.0;
   parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].discret                          = 1;
   parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].def                              = 0;
   parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].code                             = 0;
@@ -5686,7 +5686,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].validity                            = VALIDITY_OK;
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].value.float_t                       = 0;
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].min                                 = 0.0;
-  parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].max                                 = 999999.0;
+  parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].max                                 = 999999999.0;
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].discret                             = 1;
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].def                                 = 0;
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].code                                = 0;
@@ -5758,7 +5758,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].max                    = 999999.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].max                    = 999999999.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].discret                = 1;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].def                    = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].code                   = 13;
@@ -5770,7 +5770,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].value.float_t           = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].min                     = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].max                     = 999999.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].max                     = 999999999.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].discret                 = 1;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].def                     = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_INT - CCS_BEGIN].code                    = 13;
@@ -5782,7 +5782,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].value.float_t      = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].max                = 999999.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].max                = 999999999.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].discret            = 1;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].def                = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].code               = 13;
@@ -5806,7 +5806,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].validity                         = VALIDITY_OK;
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].value.float_t                    = 0;
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].min                              = 0.0;
-  parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].max                              = 999999.0;
+  parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].max                              = 999999999.0;
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].discret                          = 1;
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].def                              = 0;
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].code                             = 13;
@@ -5818,7 +5818,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].value.float_t                  = 0;
   parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].max                            = 999999.0;
+  parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].max                            = 999999999.0;
   parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].discret                        = 1;
   parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].def                            = 0;
   parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].code                           = 13;
@@ -5830,7 +5830,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_JARRING_UPDFREQ - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_RGM_JARRING_UPDFREQ - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_RGM_JARRING_UPDFREQ - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_RGM_JARRING_UPDFREQ - CCS_BEGIN].max                           = 999999.0;
+  parameters_[CCS_RGM_JARRING_UPDFREQ - CCS_BEGIN].max                           = 999999999.0;
   parameters_[CCS_RGM_JARRING_UPDFREQ - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_RGM_JARRING_UPDFREQ - CCS_BEGIN].def                           = 0;
   parameters_[CCS_RGM_JARRING_UPDFREQ - CCS_BEGIN].code                          = 13;
@@ -5842,7 +5842,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_JARRING_UPTIME - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_RGM_JARRING_UPTIME - CCS_BEGIN].value.float_t                  = 0;
   parameters_[CCS_RGM_JARRING_UPTIME - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_RGM_JARRING_UPTIME - CCS_BEGIN].max                            = 999999.0;
+  parameters_[CCS_RGM_JARRING_UPTIME - CCS_BEGIN].max                            = 999999999.0;
   parameters_[CCS_RGM_JARRING_UPTIME - CCS_BEGIN].discret                        = 1;
   parameters_[CCS_RGM_JARRING_UPTIME - CCS_BEGIN].def                            = 0;
   parameters_[CCS_RGM_JARRING_UPTIME - CCS_BEGIN].code                           = 13;
@@ -5854,7 +5854,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_JARRING_DOWNDFREQ - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_RGM_JARRING_DOWNDFREQ - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_RGM_JARRING_DOWNDFREQ - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_RGM_JARRING_DOWNDFREQ - CCS_BEGIN].max                         = 999999.0;
+  parameters_[CCS_RGM_JARRING_DOWNDFREQ - CCS_BEGIN].max                         = 999999999.0;
   parameters_[CCS_RGM_JARRING_DOWNDFREQ - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_RGM_JARRING_DOWNDFREQ - CCS_BEGIN].def                         = 0;
   parameters_[CCS_RGM_JARRING_DOWNDFREQ - CCS_BEGIN].code                        = 13;
@@ -5866,7 +5866,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_JARRING_DOWNTIME - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_RGM_JARRING_DOWNTIME - CCS_BEGIN].value.float_t                = 0;
   parameters_[CCS_RGM_JARRING_DOWNTIME - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_RGM_JARRING_DOWNTIME - CCS_BEGIN].max                          = 999999.0;
+  parameters_[CCS_RGM_JARRING_DOWNTIME - CCS_BEGIN].max                          = 999999999.0;
   parameters_[CCS_RGM_JARRING_DOWNTIME - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_RGM_JARRING_DOWNTIME - CCS_BEGIN].def                          = 0;
   parameters_[CCS_RGM_JARRING_DOWNTIME - CCS_BEGIN].code                         = 13;
@@ -5878,7 +5878,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].max                           = 999999.0;
+  parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].max                           = 999999999.0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].def                           = 0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].code                          = 13;
@@ -5890,7 +5890,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].max                  = 999999.0;
+  parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].max                  = 999999999.0;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].discret              = 1;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].def                  = 0;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].code                 = 13;
@@ -5902,7 +5902,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].max                  = 999999.0;
+  parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].max                  = 999999999.0;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].discret              = 1;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].def                  = 0;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].code                 = 13;
@@ -5914,7 +5914,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].value.float_t         = 0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].max                   = 999999.0;
+  parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].max                   = 999999999.0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].discret               = 1;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].def                   = 0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].code                  = 13;
@@ -5926,7 +5926,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].value.float_t  = 0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].min            = 0.0;
-  parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].max            = 999999.0;
+  parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].max            = 999999999.0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].discret        = 1;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].def            = 0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].code           = 13;
@@ -5938,7 +5938,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].max                        = 999999.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].max                        = 999999999.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].discret                    = 1;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].def                        = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].code                       = 13;
@@ -5950,7 +5950,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_OPTIM_VOLTAGE_SCALE - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_SCALE - CCS_BEGIN].value.float_t             = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_SCALE - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_RGM_OPTIM_VOLTAGE_SCALE - CCS_BEGIN].max                       = 999999.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_SCALE - CCS_BEGIN].max                       = 999999999.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_SCALE - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_SCALE - CCS_BEGIN].def                       = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_SCALE - CCS_BEGIN].code                      = 13;
@@ -5962,7 +5962,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_OPTIM_VOLTAGE_STEP - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_STEP - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_STEP - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_RGM_OPTIM_VOLTAGE_STEP - CCS_BEGIN].max                        = 999999.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_STEP - CCS_BEGIN].max                        = 999999999.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_STEP - CCS_BEGIN].discret                    = 1;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_STEP - CCS_BEGIN].def                        = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_STEP - CCS_BEGIN].code                       = 13;
@@ -5974,7 +5974,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_REACTION - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_REACTION - CCS_BEGIN].value.float_t    = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_REACTION - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_REACTION - CCS_BEGIN].max              = 999999.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_REACTION - CCS_BEGIN].max              = 999999999.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_REACTION - CCS_BEGIN].discret          = 1;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_REACTION - CCS_BEGIN].def              = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_REACTION - CCS_BEGIN].code             = 13;
@@ -5986,7 +5986,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].value.float_t     = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].min               = 0.0;
-  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].max               = 999999.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].max               = 999999999.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].discret           = 1;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].def               = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].code              = 13;
@@ -5998,7 +5998,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].max                             = 999999.0;
+  parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].max                             = 999999999.0;
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].def                             = 0;
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].code                            = 13;
@@ -6010,7 +6010,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].max                         = 999999.0;
+  parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].max                         = 999999999.0;
   parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].discret                     = 100;
   parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].def                         = 0;
   parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].code                        = 13;
@@ -6022,7 +6022,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].value.float_t         = 0;
   parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].max                   = 999999.0;
+  parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].max                   = 999999999.0;
   parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].discret               = 1;
   parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].def                   = 0;
   parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].code                  = 13;
@@ -6034,7 +6034,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].max                    = 999999.0;
+  parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].max                    = 999999999.0;
   parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].discret                = 1;
   parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].def                    = 0;
   parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].code                   = 13;
@@ -6046,7 +6046,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].max                        = 999999.0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].max                        = 999999999.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].discret                    = 1;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].def                        = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].code                       = 13;
@@ -6058,7 +6058,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].max                    = 999999.0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].max                    = 999999999.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].discret                = 1;
   parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].def                    = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].code                   = 13;
@@ -6070,7 +6070,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].max                    = 999999.0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].max                    = 999999999.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].discret                = 100;
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].def                    = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].code                   = 13;
@@ -6082,7 +6082,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].value.float_t    = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].max              = 999999.0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].max              = 999999999.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].discret          = 1;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].def              = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].code             = 13;
@@ -6094,7 +6094,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].value.float_t     = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].min               = 0.0;
-  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].max               = 999999.0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].max               = 999999999.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].discret           = 1;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].def               = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].code              = 13;
@@ -6106,7 +6106,7 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].max                             = 999999.0;
+  parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].max                             = 999999999.0;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].discret                         = 1000;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].def                             = 0;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].code                            = 13;
@@ -6118,7 +6118,7 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].max                             = 999999.0;
+  parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].max                             = 999999999.0;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].discret                         = 1000;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].def                             = 0;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].code                            = 13;
@@ -6130,7 +6130,7 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].max                             = 999999.0;
+  parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].max                             = 999999999.0;
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].discret                         = 1000;
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].def                             = 0;
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].code                            = 13;
@@ -6178,7 +6178,7 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].value.float_t           = 0;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].min                     = 0.0;
-  parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].max                     = 999999.0;
+  parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].max                     = 999999999.0;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].discret                 = 1;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].def                     = 0;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].code                    = 13;
@@ -6190,7 +6190,7 @@ void Ccs::initParameters()
   parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].validity                              = VALIDITY_OK;
   parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].value.float_t                         = 0;
   parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].min                                   = 0.0;
-  parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].max                                   = 999999.0;
+  parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].max                                   = 999999999.0;
   parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].discret                               = 1;
   parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].def                                   = 0;
   parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].code                                  = 13;
@@ -6202,7 +6202,7 @@ void Ccs::initParameters()
   parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].validity                              = VALIDITY_OK;
   parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].value.float_t                         = 0;
   parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].min                                   = 0.0;
-  parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].max                                   = 999999.0;
+  parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].max                                   = 999999999.0;
   parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].discret                               = 1;
   parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].def                                   = 0;
   parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].code                                  = 13;
@@ -6214,7 +6214,7 @@ void Ccs::initParameters()
   parameters_[CCS_NUMBER_WELL - CCS_BEGIN].validity                              = VALIDITY_OK;
   parameters_[CCS_NUMBER_WELL - CCS_BEGIN].value.float_t                         = 0;
   parameters_[CCS_NUMBER_WELL - CCS_BEGIN].min                                   = 0.0;
-  parameters_[CCS_NUMBER_WELL - CCS_BEGIN].max                                   = 999999.0;
+  parameters_[CCS_NUMBER_WELL - CCS_BEGIN].max                                   = 999999999.0;
   parameters_[CCS_NUMBER_WELL - CCS_BEGIN].discret                               = 1;
   parameters_[CCS_NUMBER_WELL - CCS_BEGIN].def                                   = 0;
   parameters_[CCS_NUMBER_WELL - CCS_BEGIN].code                                  = 13;
@@ -6226,7 +6226,7 @@ void Ccs::initParameters()
   parameters_[CCS_COUNT_START - CCS_BEGIN].validity                              = VALIDITY_OK;
   parameters_[CCS_COUNT_START - CCS_BEGIN].value.float_t                         = 0;
   parameters_[CCS_COUNT_START - CCS_BEGIN].min                                   = 0.0;
-  parameters_[CCS_COUNT_START - CCS_BEGIN].max                                   = 999999.0;
+  parameters_[CCS_COUNT_START - CCS_BEGIN].max                                   = 999999999.0;
   parameters_[CCS_COUNT_START - CCS_BEGIN].discret                               = 1;
   parameters_[CCS_COUNT_START - CCS_BEGIN].def                                   = 0;
   parameters_[CCS_COUNT_START - CCS_BEGIN].code                                  = 0;
@@ -6238,7 +6238,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].validity                 = VALIDITY_OK;
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].value.float_t            = 0;
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].min                      = 0.0;
-  parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].max                      = 999999.0;
+  parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].max                      = 999999999.0;
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].discret                  = 1;
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].def                      = 0;
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].code                     = 0;
@@ -6250,7 +6250,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].value.float_t           = 0;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].min                     = 0.0;
-  parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].max                     = 999999.0;
+  parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].max                     = 999999999.0;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].discret                 = 1;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].def                     = 0;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].code                    = 0;
@@ -6262,7 +6262,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].max                         = 999999.0;
+  parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].max                         = 999999999.0;
   parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].def                         = 0;
   parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].code                        = 0;
@@ -6274,7 +6274,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].value.float_t          = 0;
   parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].max                    = 999999.0;
+  parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].max                    = 999999999.0;
   parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].discret                = 1;
   parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].def                    = 0;
   parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].code                   = 0;
@@ -6286,7 +6286,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].value.float_t         = 0;
   parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].max                   = 999999.0;
+  parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].max                   = 999999999.0;
   parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].discret               = 1;
   parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].def                   = 0;
   parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].code                  = 0;
@@ -6298,7 +6298,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].value.float_t        = 0;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].max                  = 999999.0;
+  parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].max                  = 999999999.0;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].discret              = 1;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].def                  = 0;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].code                 = 0;
@@ -6310,7 +6310,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].min    = 0.0;
-  parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].max    = 999999.0;
+  parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].max    = 999999999.0;
   parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].discret = 1;
   parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].def    = 0;
   parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].code   = 0;
@@ -6322,7 +6322,7 @@ void Ccs::initParameters()
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].max                         = 99999999.0;
+  parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].max                         = 999999999.0;
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].def                         = 0;
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].code                        = 0;
@@ -6334,7 +6334,7 @@ void Ccs::initParameters()
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].max                        = 99999999.0;
+  parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].max                        = 999999999.0;
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].discret                    = 1;
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].def                        = 0;
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].code                       = 0;
@@ -6346,7 +6346,7 @@ void Ccs::initParameters()
   parameters_[CCS_RUN_TIME - CCS_BEGIN].validity                                 = VALIDITY_OK;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].value.float_t                            = 0;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].min                                      = 0.0;
-  parameters_[CCS_RUN_TIME - CCS_BEGIN].max                                      = 99999999.0;
+  parameters_[CCS_RUN_TIME - CCS_BEGIN].max                                      = 999999999.0;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].discret                                  = 1;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].def                                      = 0;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].code                                     = 0;
@@ -6358,7 +6358,7 @@ void Ccs::initParameters()
   parameters_[CCS_STOP_TIME - CCS_BEGIN].validity                                = VALIDITY_OK;
   parameters_[CCS_STOP_TIME - CCS_BEGIN].value.float_t                           = 0;
   parameters_[CCS_STOP_TIME - CCS_BEGIN].min                                     = 0.0;
-  parameters_[CCS_STOP_TIME - CCS_BEGIN].max                                     = 99999999.0;
+  parameters_[CCS_STOP_TIME - CCS_BEGIN].max                                     = 999999999.0;
   parameters_[CCS_STOP_TIME - CCS_BEGIN].discret                                 = 1;
   parameters_[CCS_STOP_TIME - CCS_BEGIN].def                                     = 0;
   parameters_[CCS_STOP_TIME - CCS_BEGIN].code                                    = 0;
@@ -6370,7 +6370,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].validity                                = VALIDITY_OK;
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].value.float_t                           = 0;
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].min                                     = 0.0;
-  parameters_[CCS_RGM_TIMER - CCS_BEGIN].max                                     = 99999999.0;
+  parameters_[CCS_RGM_TIMER - CCS_BEGIN].max                                     = 999999999.0;
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].discret                                 = 1;
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].def                                     = 0;
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].code                                    = 0;
@@ -6382,7 +6382,7 @@ void Ccs::initParameters()
   parameters_[CCS_RESTART_TIMER - CCS_BEGIN].validity                            = VALIDITY_OK;
   parameters_[CCS_RESTART_TIMER - CCS_BEGIN].value.float_t                       = 0;
   parameters_[CCS_RESTART_TIMER - CCS_BEGIN].min                                 = 0.0;
-  parameters_[CCS_RESTART_TIMER - CCS_BEGIN].max                                 = 999999.0;
+  parameters_[CCS_RESTART_TIMER - CCS_BEGIN].max                                 = 999999999.0;
   parameters_[CCS_RESTART_TIMER - CCS_BEGIN].discret                             = 1;
   parameters_[CCS_RESTART_TIMER - CCS_BEGIN].def                                 = 0;
   parameters_[CCS_RESTART_TIMER - CCS_BEGIN].code                                = 0;
@@ -6406,7 +6406,7 @@ void Ccs::initParameters()
   parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].value.float_t                     = 0;
   parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].max                               = 999999.0;
+  parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].max                               = 999999999.0;
   parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].discret                           = 1;
   parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].def                               = 0;
   parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].code                              = 0;
@@ -6430,7 +6430,7 @@ void Ccs::initParameters()
   parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].validity                         = VALIDITY_OK;
   parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].value.float_t                    = 0;
   parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].min                              = 0.0;
-  parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].max                              = 999999.0;
+  parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].max                              = 999999999.0;
   parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].discret                          = 1;
   parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].def                              = 0;
   parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].code                             = 0;
@@ -6454,7 +6454,7 @@ void Ccs::initParameters()
   parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].max                             = 999999.0;
+  parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].max                             = 999999999.0;
   parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].def                             = 0;
   parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].code                            = 0;
@@ -6466,7 +6466,7 @@ void Ccs::initParameters()
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].validity                                 = VALIDITY_OK;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].value.float_t                            = 2.0;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].min                                      = 0.0;
-  parameters_[CCS_TYPE_CCS - CCS_BEGIN].max                                      = 9999.0;
+  parameters_[CCS_TYPE_CCS - CCS_BEGIN].max                                      = 999999999.0;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].discret                                  = 1;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].def                                      = 2.0;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].code                                     = 0;
@@ -6478,7 +6478,7 @@ void Ccs::initParameters()
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].value.float_t                 = 3.0;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].max                           = 9999.0;
+  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].max                           = 999999999.0;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].def                           = 3.0;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].code                          = 0;
@@ -6490,7 +6490,7 @@ void Ccs::initParameters()
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].value.float_t                  = 0;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].max                            = 999999.0;
+  parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].max                            = 999999999.0;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].discret                        = 1;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].def                            = 0;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].code                           = 0;
@@ -6502,7 +6502,7 @@ void Ccs::initParameters()
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].max                                = 999999.0;
+  parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].max                                = 999999999.0;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].discret                            = 100;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].def                                = 0;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].code                               = 0;
@@ -6514,7 +6514,7 @@ void Ccs::initParameters()
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].validity                            = VALIDITY_OK;
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].value.float_t                       = 0;
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].min                                 = 0.0;
-  parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].max                                 = 999999.0;
+  parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].max                                 = 999999999.0;
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].discret                             = 100;
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].def                                 = 0;
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].code                                = 0;
@@ -6526,7 +6526,7 @@ void Ccs::initParameters()
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].max                                = 999999.0;
+  parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].max                                = 999999999.0;
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].discret                            = 100;
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].def                                = 0;
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].code                               = 0;
@@ -6586,7 +6586,7 @@ void Ccs::initParameters()
   parameters_[CCS_TYPE_SU - CCS_BEGIN].validity                                  = VALIDITY_OK;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].value.float_t                             = 0;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].min                                       = 0.0;
-  parameters_[CCS_TYPE_SU - CCS_BEGIN].max                                       = 999999.0;
+  parameters_[CCS_TYPE_SU - CCS_BEGIN].max                                       = 999999999.0;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].discret                                   = 1;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].def                                       = 0;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].code                                      = 13;
@@ -6598,7 +6598,7 @@ void Ccs::initParameters()
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].value.float_t                  = 0;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].max                            = 999999.0;
+  parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].max                            = 999999999.0;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].discret                        = 1;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].def                            = 0;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].code                           = 13;
@@ -6610,7 +6610,7 @@ void Ccs::initParameters()
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].max                             = 999999.0;
+  parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].max                             = 999999999.0;
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].def                             = 0;
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].code                            = 13;
@@ -6634,7 +6634,7 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_1 - CCS_BEGIN].validity                                   = VALIDITY_OK;
   parameters_[CCS_NOTE_1 - CCS_BEGIN].value.float_t                              = 0;
   parameters_[CCS_NOTE_1 - CCS_BEGIN].min                                        = 0.0;
-  parameters_[CCS_NOTE_1 - CCS_BEGIN].max                                        = 999999.0;
+  parameters_[CCS_NOTE_1 - CCS_BEGIN].max                                        = 999999999.0;
   parameters_[CCS_NOTE_1 - CCS_BEGIN].discret                                    = 1;
   parameters_[CCS_NOTE_1 - CCS_BEGIN].def                                        = 0;
   parameters_[CCS_NOTE_1 - CCS_BEGIN].code                                       = 13;
@@ -6646,7 +6646,7 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_2 - CCS_BEGIN].validity                                   = VALIDITY_OK;
   parameters_[CCS_NOTE_2 - CCS_BEGIN].value.float_t                              = 0;
   parameters_[CCS_NOTE_2 - CCS_BEGIN].min                                        = 0.0;
-  parameters_[CCS_NOTE_2 - CCS_BEGIN].max                                        = 999999.0;
+  parameters_[CCS_NOTE_2 - CCS_BEGIN].max                                        = 999999999.0;
   parameters_[CCS_NOTE_2 - CCS_BEGIN].discret                                    = 1;
   parameters_[CCS_NOTE_2 - CCS_BEGIN].def                                        = 0;
   parameters_[CCS_NOTE_2 - CCS_BEGIN].code                                       = 13;
@@ -6658,7 +6658,7 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_3 - CCS_BEGIN].validity                                   = VALIDITY_OK;
   parameters_[CCS_NOTE_3 - CCS_BEGIN].value.float_t                              = 0;
   parameters_[CCS_NOTE_3 - CCS_BEGIN].min                                        = 0.0;
-  parameters_[CCS_NOTE_3 - CCS_BEGIN].max                                        = 999999.0;
+  parameters_[CCS_NOTE_3 - CCS_BEGIN].max                                        = 999999999.0;
   parameters_[CCS_NOTE_3 - CCS_BEGIN].discret                                    = 1;
   parameters_[CCS_NOTE_3 - CCS_BEGIN].def                                        = 0;
   parameters_[CCS_NOTE_3 - CCS_BEGIN].code                                       = 13;
@@ -6670,7 +6670,7 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_4 - CCS_BEGIN].validity                                   = VALIDITY_OK;
   parameters_[CCS_NOTE_4 - CCS_BEGIN].value.float_t                              = 0;
   parameters_[CCS_NOTE_4 - CCS_BEGIN].min                                        = 0.0;
-  parameters_[CCS_NOTE_4 - CCS_BEGIN].max                                        = 999999.0;
+  parameters_[CCS_NOTE_4 - CCS_BEGIN].max                                        = 999999999.0;
   parameters_[CCS_NOTE_4 - CCS_BEGIN].discret                                    = 1;
   parameters_[CCS_NOTE_4 - CCS_BEGIN].def                                        = 0;
   parameters_[CCS_NOTE_4 - CCS_BEGIN].code                                       = 13;
@@ -6682,7 +6682,7 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_5 - CCS_BEGIN].validity                                   = VALIDITY_OK;
   parameters_[CCS_NOTE_5 - CCS_BEGIN].value.float_t                              = 0;
   parameters_[CCS_NOTE_5 - CCS_BEGIN].min                                        = 0.0;
-  parameters_[CCS_NOTE_5 - CCS_BEGIN].max                                        = 999999.0;
+  parameters_[CCS_NOTE_5 - CCS_BEGIN].max                                        = 999999999.0;
   parameters_[CCS_NOTE_5 - CCS_BEGIN].discret                                    = 1;
   parameters_[CCS_NOTE_5 - CCS_BEGIN].def                                        = 0;
   parameters_[CCS_NOTE_5 - CCS_BEGIN].code                                       = 13;
@@ -6694,7 +6694,7 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_6 - CCS_BEGIN].validity                                   = VALIDITY_OK;
   parameters_[CCS_NOTE_6 - CCS_BEGIN].value.float_t                              = 0;
   parameters_[CCS_NOTE_6 - CCS_BEGIN].min                                        = 0.0;
-  parameters_[CCS_NOTE_6 - CCS_BEGIN].max                                        = 999999.0;
+  parameters_[CCS_NOTE_6 - CCS_BEGIN].max                                        = 999999999.0;
   parameters_[CCS_NOTE_6 - CCS_BEGIN].discret                                    = 1;
   parameters_[CCS_NOTE_6 - CCS_BEGIN].def                                        = 0;
   parameters_[CCS_NOTE_6 - CCS_BEGIN].code                                       = 13;
@@ -6706,7 +6706,7 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_7 - CCS_BEGIN].validity                                   = VALIDITY_OK;
   parameters_[CCS_NOTE_7 - CCS_BEGIN].value.float_t                              = 0;
   parameters_[CCS_NOTE_7 - CCS_BEGIN].min                                        = 0.0;
-  parameters_[CCS_NOTE_7 - CCS_BEGIN].max                                        = 999999.0;
+  parameters_[CCS_NOTE_7 - CCS_BEGIN].max                                        = 999999999.0;
   parameters_[CCS_NOTE_7 - CCS_BEGIN].discret                                    = 1;
   parameters_[CCS_NOTE_7 - CCS_BEGIN].def                                        = 0;
   parameters_[CCS_NOTE_7 - CCS_BEGIN].code                                       = 13;
@@ -6718,7 +6718,7 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_8 - CCS_BEGIN].validity                                   = VALIDITY_OK;
   parameters_[CCS_NOTE_8 - CCS_BEGIN].value.float_t                              = 0;
   parameters_[CCS_NOTE_8 - CCS_BEGIN].min                                        = 0.0;
-  parameters_[CCS_NOTE_8 - CCS_BEGIN].max                                        = 999999.0;
+  parameters_[CCS_NOTE_8 - CCS_BEGIN].max                                        = 999999999.0;
   parameters_[CCS_NOTE_8 - CCS_BEGIN].discret                                    = 1;
   parameters_[CCS_NOTE_8 - CCS_BEGIN].def                                        = 0;
   parameters_[CCS_NOTE_8 - CCS_BEGIN].code                                       = 13;
@@ -6730,7 +6730,7 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_9 - CCS_BEGIN].validity                                   = VALIDITY_OK;
   parameters_[CCS_NOTE_9 - CCS_BEGIN].value.float_t                              = 0;
   parameters_[CCS_NOTE_9 - CCS_BEGIN].min                                        = 0.0;
-  parameters_[CCS_NOTE_9 - CCS_BEGIN].max                                        = 999999.0;
+  parameters_[CCS_NOTE_9 - CCS_BEGIN].max                                        = 999999999.0;
   parameters_[CCS_NOTE_9 - CCS_BEGIN].discret                                    = 1;
   parameters_[CCS_NOTE_9 - CCS_BEGIN].def                                        = 0;
   parameters_[CCS_NOTE_9 - CCS_BEGIN].code                                       = 13;
@@ -6742,7 +6742,7 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_10 - CCS_BEGIN].validity                                  = VALIDITY_OK;
   parameters_[CCS_NOTE_10 - CCS_BEGIN].value.float_t                             = 0;
   parameters_[CCS_NOTE_10 - CCS_BEGIN].min                                       = 0.0;
-  parameters_[CCS_NOTE_10 - CCS_BEGIN].max                                       = 999999.0;
+  parameters_[CCS_NOTE_10 - CCS_BEGIN].max                                       = 999999999.0;
   parameters_[CCS_NOTE_10 - CCS_BEGIN].discret                                   = 1;
   parameters_[CCS_NOTE_10 - CCS_BEGIN].def                                       = 0;
   parameters_[CCS_NOTE_10 - CCS_BEGIN].code                                      = 13;
@@ -6850,7 +6850,7 @@ void Ccs::initParameters()
   parameters_[CCS_LANGUAGE - CCS_BEGIN].validity                                 = VALIDITY_OK;
   parameters_[CCS_LANGUAGE - CCS_BEGIN].value.float_t                            = 0;
   parameters_[CCS_LANGUAGE - CCS_BEGIN].min                                      = 0.0;
-  parameters_[CCS_LANGUAGE - CCS_BEGIN].max                                      = 999999.0;
+  parameters_[CCS_LANGUAGE - CCS_BEGIN].max                                      = 999999999.0;
   parameters_[CCS_LANGUAGE - CCS_BEGIN].discret                                  = 1;
   parameters_[CCS_LANGUAGE - CCS_BEGIN].def                                      = 0;
   parameters_[CCS_LANGUAGE - CCS_BEGIN].code                                     = 13;
@@ -6970,7 +6970,7 @@ void Ccs::initParameters()
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].validity                            = VALIDITY_OK;
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].value.float_t                       = 0;
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].min                                 = 0.0;
-  parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].max                                 = 999999.0;
+  parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].max                                 = 999999999.0;
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].discret                             = 1;
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].def                                 = 0;
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].code                                = 13;
@@ -7102,7 +7102,7 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].validity                            = VALIDITY_OK;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].value.float_t                       = 0;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].min                                 = 0.0;
-  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].max                                 = 999999.0;
+  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].max                                 = 999999999.0;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].discret                             = 1;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].def                                 = 0;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].code                                = 0;
@@ -7594,7 +7594,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].max                             = 999999.0;
+  parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].max                             = 999999999.0;
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].def                             = 0;
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].code                            = 13;
@@ -7606,7 +7606,7 @@ void Ccs::initParameters()
   parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].value.float_t                      = 0;
   parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].max                                = 999999.0;
+  parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].max                                = 999999999.0;
   parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].discret                            = 1;
   parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].def                                = 0;
   parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].code                               = 0;
@@ -7618,7 +7618,7 @@ void Ccs::initParameters()
   parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].max                           = 999999.0;
+  parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].max                           = 999999999.0;
   parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].def                           = 0;
   parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].code                          = 0;
@@ -7630,7 +7630,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].validity                             = VALIDITY_OK;
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].value.float_t                        = 0;
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].min                                  = 0.0;
-  parameters_[CCS_PROT_PREVENT - CCS_BEGIN].max                                  = 999999.0;
+  parameters_[CCS_PROT_PREVENT - CCS_BEGIN].max                                  = 999999999.0;
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].discret                              = 1;
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].def                                  = 0;
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].code                                 = 0;
@@ -7642,7 +7642,7 @@ void Ccs::initParameters()
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].value.float_t               = 0;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].max                         = 999999.0;
+  parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].max                         = 999999999.0;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].discret                     = 100;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].def                         = 0;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].code                        = 13;
@@ -8002,7 +8002,7 @@ void Ccs::initParameters()
   parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].max                             = 999999.0;
+  parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].max                             = 999999999.0;
   parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].def                             = 0;
   parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].code                            = 0;
@@ -8026,7 +8026,7 @@ void Ccs::initParameters()
   parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].value.float_t                = 0;
   parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].max                          = 999999.0;
+  parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].max                          = 999999999.0;
   parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].def                          = 0;
   parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].code                         = 0;
@@ -8062,7 +8062,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].max                         = 999999.0;
+  parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].max                         = 999999999.0;
   parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].code                        = 0;
@@ -8242,7 +8242,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].value.float_t         = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].max                   = 999999.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].max                   = 999999999.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].discret               = 1;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].def                   = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].code                  = 0;
@@ -8254,7 +8254,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].value.float_t          = 0.0;
   parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].max                    = 999999.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].max                    = 999999999.0;
   parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].discret                = 1;
   parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].def                    = 0.0;
   parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].code                   = 0;
@@ -8266,7 +8266,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_PRESSURE - CCS_BEGIN].validity  = VALIDITY_OK;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_PRESSURE - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_PRESSURE - CCS_BEGIN].min       = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_PRESSURE - CCS_BEGIN].max       = 999999.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_PRESSURE - CCS_BEGIN].max       = 999999999.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_PRESSURE - CCS_BEGIN].discret   = 1;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_PRESSURE - CCS_BEGIN].def       = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_PRESSURE - CCS_BEGIN].code      = 13;
@@ -8278,7 +8278,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_TEMPERATURE - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_TEMPERATURE - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_TEMPERATURE - CCS_BEGIN].min    = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_TEMPERATURE - CCS_BEGIN].max    = 999999.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_TEMPERATURE - CCS_BEGIN].max    = 999999999.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_TEMPERATURE - CCS_BEGIN].discret = 1;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_TEMPERATURE - CCS_BEGIN].def    = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_TEMPERATURE - CCS_BEGIN].code   = 13;
@@ -8290,7 +8290,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].min      = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].max      = 999999.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].max      = 999999999.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].discret  = 1;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].def      = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].code     = 13;
@@ -8302,7 +8302,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].validity                      = 0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].max                           = 999999.0;
+  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].max                           = 999999999.0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].def                           = 0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].code                          = 13;
@@ -8314,7 +8314,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].validity                     = 0;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].value.float_t                = 0;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].max                          = 999999.0;
+  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].max                          = 999999999.0;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].def                          = 0;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].code                         = 0;
@@ -8326,7 +8326,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].validity                        = 0;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].max                             = 999999.0;
+  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].max                             = 999999999.0;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].def                             = 0;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].code                            = 0;
@@ -8338,7 +8338,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].validity                      = 0;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].max                           = 999999.0;
+  parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].max                           = 999999999.0;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].def                           = 0;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].code                          = 0;
@@ -8482,7 +8482,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].max                               = 999999.0;
+  parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].max                               = 999999999.0;
   parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].discret                           = 1;
   parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].def                               = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].code                              = 0;
@@ -8494,7 +8494,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].max                               = 999999.0;
+  parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].max                               = 999999999.0;
   parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].discret                           = 1;
   parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].def                               = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_2 - CCS_BEGIN].code                              = 0;
@@ -8506,7 +8506,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].max                               = 999999.0;
+  parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].max                               = 999999999.0;
   parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].discret                           = 1;
   parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].def                               = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_3 - CCS_BEGIN].code                              = 0;
@@ -8518,7 +8518,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].max                             = 999999.0;
+  parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].max                             = 999999999.0;
   parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_1_2 - CCS_BEGIN].code                            = 0;
@@ -8530,7 +8530,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].max                             = 999999.0;
+  parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].max                             = 999999999.0;
   parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_2_3 - CCS_BEGIN].code                            = 0;
@@ -8542,7 +8542,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].max                             = 999999.0;
+  parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].max                             = 999999999.0;
   parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_VOLTAGE_PHASE_3_1 - CCS_BEGIN].code                            = 0;
@@ -8590,7 +8590,7 @@ void Ccs::initParameters()
   parameters_[CCS_RESTART_COUNT - CCS_BEGIN].validity                            = VALIDITY_OK;
   parameters_[CCS_RESTART_COUNT - CCS_BEGIN].value.float_t                       = 0.0;
   parameters_[CCS_RESTART_COUNT - CCS_BEGIN].min                                 = 0.0;
-  parameters_[CCS_RESTART_COUNT - CCS_BEGIN].max                                 = 999999.0;
+  parameters_[CCS_RESTART_COUNT - CCS_BEGIN].max                                 = 999999999.0;
   parameters_[CCS_RESTART_COUNT - CCS_BEGIN].discret                             = 1;
   parameters_[CCS_RESTART_COUNT - CCS_BEGIN].def                                 = 0.0;
   parameters_[CCS_RESTART_COUNT - CCS_BEGIN].code                                = 0;
@@ -8602,7 +8602,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].max                         = 999999.0;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].max                         = 999999999.0;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].code                        = 0;
@@ -8614,7 +8614,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].max                         = 999999.0;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].max                         = 999999999.0;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].code                        = 0;
@@ -8626,7 +8626,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].max                         = 999999.0;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].max                         = 999999999.0;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].code                        = 0;
@@ -8638,7 +8638,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].value.float_t             = 0.0;
   parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].max                       = 999999.0;
+  parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].max                       = 999999999.0;
   parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].def                       = 0.0;
   parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].code                      = 0;
@@ -8698,7 +8698,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].value.float_t                      = 0.0;
   parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].min                                = 0.0;
-  parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].max                                = 999999.0;
+  parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].max                                = 999999999.0;
   parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].discret                            = 1;
   parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].def                                = 0.0;
   parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].code                               = 0;
@@ -8710,7 +8710,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].validity                             = VALIDITY_OK;
   parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].value.float_t                        = 0.0;
   parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].min                                  = 0.0;
-  parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].max                                  = 999999.0;
+  parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].max                                  = 999999999.0;
   parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].discret                              = 1;
   parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].def                                  = 0.0;
   parameters_[CCS_PROGRESS_MAX - CCS_BEGIN].code                                 = 0;
@@ -8734,7 +8734,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].max                             = 999999.0;
+  parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].max                             = 999999999.0;
   parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].def                             = 0;
   parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].code                            = 13;
@@ -9190,7 +9190,7 @@ void Ccs::initParameters()
   parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].validity                              = VALIDITY_OK;
   parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].value.float_t                         = 0.0;
   parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].min                                   = 0.0;
-  parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].max                                   = 9999999.0;
+  parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].max                                   = 999999999.0;
   parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].discret                               = 1;
   parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].def                                   = 0.0;
   parameters_[CCS_ERROR_SLAVE - CCS_BEGIN].code                                  = 0;
@@ -9430,7 +9430,7 @@ void Ccs::initParameters()
   parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].value.float_t                  = 0.0;
   parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].max                            = 9999999.9;
+  parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].max                            = 999999999.0;
   parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].discret                        = 1;
   parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].def                            = 0.0;
   parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].code                           = 0;
@@ -9442,7 +9442,7 @@ void Ccs::initParameters()
   parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].value.float_t                 = 0.0;
   parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].max                           = 9999999.9;
+  parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].max                           = 999999999.0;
   parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].def                           = 0.0;
   parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].code                          = 0;
@@ -9706,7 +9706,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_VOLTAGE_CALC - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_MOTOR_VOLTAGE_CALC - CCS_BEGIN].value.float_t                  = 0.0;
   parameters_[CCS_MOTOR_VOLTAGE_CALC - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_MOTOR_VOLTAGE_CALC - CCS_BEGIN].max                            = 9999999.9;
+  parameters_[CCS_MOTOR_VOLTAGE_CALC - CCS_BEGIN].max                            = 999999999.0;
   parameters_[CCS_MOTOR_VOLTAGE_CALC - CCS_BEGIN].discret                        = 1;
   parameters_[CCS_MOTOR_VOLTAGE_CALC - CCS_BEGIN].def                            = 0.0;
   parameters_[CCS_MOTOR_VOLTAGE_CALC - CCS_BEGIN].code                           = 0;
@@ -10294,7 +10294,7 @@ void Ccs::initParameters()
   parameters_[CCS_CURRENT_PHASE_1 - CCS_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[CCS_CURRENT_PHASE_1 - CCS_BEGIN].value.float_t                     = NAN;
   parameters_[CCS_CURRENT_PHASE_1 - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_CURRENT_PHASE_1 - CCS_BEGIN].max                               = 999999.0;
+  parameters_[CCS_CURRENT_PHASE_1 - CCS_BEGIN].max                               = 999999999.0;
   parameters_[CCS_CURRENT_PHASE_1 - CCS_BEGIN].discret                           = 100;
   parameters_[CCS_CURRENT_PHASE_1 - CCS_BEGIN].def                               = 0.0;
   parameters_[CCS_CURRENT_PHASE_1 - CCS_BEGIN].code                              = 0;
@@ -10306,7 +10306,7 @@ void Ccs::initParameters()
   parameters_[CCS_CURRENT_PHASE_2 - CCS_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[CCS_CURRENT_PHASE_2 - CCS_BEGIN].value.float_t                     = NAN;
   parameters_[CCS_CURRENT_PHASE_2 - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_CURRENT_PHASE_2 - CCS_BEGIN].max                               = 999999.0;
+  parameters_[CCS_CURRENT_PHASE_2 - CCS_BEGIN].max                               = 999999999.0;
   parameters_[CCS_CURRENT_PHASE_2 - CCS_BEGIN].discret                           = 100;
   parameters_[CCS_CURRENT_PHASE_2 - CCS_BEGIN].def                               = 0.0;
   parameters_[CCS_CURRENT_PHASE_2 - CCS_BEGIN].code                              = 0;
@@ -10318,7 +10318,7 @@ void Ccs::initParameters()
   parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].value.float_t                     = NAN;
   parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].max                               = 999999.0;
+  parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].max                               = 999999999.0;
   parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].discret                           = 100;
   parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].def                               = 0.0;
   parameters_[CCS_CURRENT_PHASE_3 - CCS_BEGIN].code                              = 0;
@@ -10330,7 +10330,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].value.float_t       = 110.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].min                 = 50.0;
-  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].max                 = 1000.0;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].max                 = 150.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].discret             = 1;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].def                 = 110.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD - CCS_BEGIN].code                = 0;
@@ -10346,5 +10346,29 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY - CCS_BEGIN].discret       = 1;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY - CCS_BEGIN].def           = 30.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY - CCS_BEGIN].code          = 0;
+  // Измерение токов ЧРП
+  parameters_[CCS_SRC_CURRENT_OUT_PHASE - CCS_BEGIN].id                          = CCS_SRC_CURRENT_OUT_PHASE;
+  parameters_[CCS_SRC_CURRENT_OUT_PHASE - CCS_BEGIN].access                      = ACCESS_OPERATOR;
+  parameters_[CCS_SRC_CURRENT_OUT_PHASE - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_SRC_CURRENT_OUT_PHASE - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
+  parameters_[CCS_SRC_CURRENT_OUT_PHASE - CCS_BEGIN].validity                    = VALIDITY_OK;
+  parameters_[CCS_SRC_CURRENT_OUT_PHASE - CCS_BEGIN].value.float_t               = 0.0;
+  parameters_[CCS_SRC_CURRENT_OUT_PHASE - CCS_BEGIN].min                         = 0.0;
+  parameters_[CCS_SRC_CURRENT_OUT_PHASE - CCS_BEGIN].max                         = 1.0;
+  parameters_[CCS_SRC_CURRENT_OUT_PHASE - CCS_BEGIN].discret                     = 1;
+  parameters_[CCS_SRC_CURRENT_OUT_PHASE - CCS_BEGIN].def                         = 0.0;
+  parameters_[CCS_SRC_CURRENT_OUT_PHASE - CCS_BEGIN].code                        = 13;
+  // Предварительный разряд шины
+  parameters_[CCS_VSD_DECEL - CCS_BEGIN].id                                      = CCS_VSD_DECEL;
+  parameters_[CCS_VSD_DECEL - CCS_BEGIN].access                                  = ACCESS_OPERATOR;
+  parameters_[CCS_VSD_DECEL - CCS_BEGIN].operation                               = OPERATION_WRITE;
+  parameters_[CCS_VSD_DECEL - CCS_BEGIN].physic                                  = PHYSIC_NUMERIC;
+  parameters_[CCS_VSD_DECEL - CCS_BEGIN].validity                                = VALIDITY_OK;
+  parameters_[CCS_VSD_DECEL - CCS_BEGIN].value.float_t                           = 0.0;
+  parameters_[CCS_VSD_DECEL - CCS_BEGIN].min                                     = 0.0;
+  parameters_[CCS_VSD_DECEL - CCS_BEGIN].max                                     = 1.0;
+  parameters_[CCS_VSD_DECEL - CCS_BEGIN].discret                                 = 1;
+  parameters_[CCS_VSD_DECEL - CCS_BEGIN].def                                     = 0.0;
+  parameters_[CCS_VSD_DECEL - CCS_BEGIN].code                                    = 13;
 }
 
