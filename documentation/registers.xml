@@ -238,8 +238,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_RESISTANCE</physic>
-		<min>20000.0</min>
-		<max>9999999.0</max>
+		<min>0.0</min>
+		<max>999999999.9</max>
 		<def>9999000.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -678,7 +678,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
 		<min>0.0</min>
-		<max>9999999.0</max>
+		<max>999999999.9</max>
 		<def>2000000.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -2273,7 +2273,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Чередования фаз. Уставка дисбаланса напряжений</text>
@@ -2287,7 +2287,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -3930,7 +3930,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Действие защиты "Рассинхронизация ПВЭД"</text>
@@ -3944,7 +3944,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -3960,7 +3960,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -3973,7 +3973,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -3986,7 +3986,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -3999,7 +3999,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -4012,7 +4012,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -4025,7 +4025,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -4038,7 +4038,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -4051,7 +4051,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -4064,7 +4064,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -4080,7 +4080,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -4096,7 +4096,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -4112,7 +4112,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -4128,7 +4128,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -5090,7 +5090,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>РР3 от высокой вибрации</text>
@@ -5104,7 +5104,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -5120,7 +5120,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Защита температура двигателя. Задержка активации</text>
@@ -5134,7 +5134,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Защита температура двигателя. Задержка срабатывания</text>
@@ -5148,7 +5148,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Защита температура двигателя. Задержка АПВ</text>
@@ -5162,7 +5162,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Защита температура двигателя. Количество разрешенных АПВ</text>
@@ -5176,7 +5176,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Защита температура двигателя. Сброс счетчиков АПВ</text>
@@ -5190,7 +5190,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_SPEED</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Защита температура двигателя. Макс.температура</text>
@@ -5204,7 +5204,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_SPEED</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Защита температура двигателя. Мин.температура</text>
@@ -5218,7 +5218,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -5231,7 +5231,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -5247,7 +5247,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -5263,7 +5263,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -5279,7 +5279,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -5295,7 +5295,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -7823,7 +7823,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -7836,7 +7836,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -7851,7 +7851,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -7863,7 +7863,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -7875,7 +7875,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -7887,7 +7887,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -7899,7 +7899,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -7911,7 +7911,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -7922,7 +7922,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -7933,7 +7933,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -7944,7 +7944,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -7955,7 +7955,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -7966,7 +7966,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -7977,7 +7977,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -8033,7 +8033,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -8048,7 +8048,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -8063,7 +8063,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -8078,7 +8078,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -8093,7 +8093,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -8108,7 +8108,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -8123,7 +8123,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -8138,7 +8138,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -8153,7 +8153,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -8171,7 +8171,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>3.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -8189,7 +8189,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -8207,7 +8207,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -8225,7 +8225,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -8517,7 +8517,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>РРЗ контроль УКИ</text>
@@ -8536,7 +8536,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -8552,7 +8552,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -8568,7 +8568,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -8584,7 +8584,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -8600,7 +8600,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -8615,7 +8615,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -8630,7 +8630,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -8645,7 +8645,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -8660,7 +8660,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -8675,7 +8675,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -8691,7 +8691,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -8706,7 +8706,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -8722,7 +8722,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -8737,7 +8737,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -8753,7 +8753,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Задание режима работы ПЭД по программе</text>
@@ -8773,7 +8773,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -9255,7 +9255,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Рабочий ток</text>
@@ -9273,7 +9273,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Рабочее напряжение</text>
@@ -9291,7 +9291,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Загрузка</text>
@@ -9391,7 +9391,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим поддержания параметра. Пропорциональный коэффициент</text>
@@ -9406,7 +9406,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим поддержания параметра. Интегральный коэффициент</text>
@@ -9421,7 +9421,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим поддержания параметра. Мин рабочая частота</text>
@@ -9452,7 +9452,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим встряхивания. Состояние</text>
@@ -9465,7 +9465,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Период экскурсий частоты режима встряхивания</text>
@@ -9478,7 +9478,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Величина прибавки частоты вращения выше уставки в режиме встряхивания</text>
@@ -9491,7 +9491,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Время прибавки частоты вращения выше уставки в режиме встряхивания</text>
@@ -9504,7 +9504,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Величина уменьшения частоты вращения ниже уставки в режиме встряхивания</text>
@@ -9517,7 +9517,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Время уменьшения частоты вращения ниже уставки в режиме встряхивания</text>
@@ -9531,7 +9531,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим учёт нагрева кабеля. Состояние</text>
@@ -9550,7 +9550,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_RESIST_CABLE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим учёт нагрева кабеля. Сопротивление при 20С</text>
@@ -9569,7 +9569,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_RESIST_CABLE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим учёт нагрева кабеля. Сопротивление при 80С</text>
@@ -9588,7 +9588,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим учёт нагрева кабеля. Номинальный ток кабеля</text>
@@ -9607,7 +9607,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим учёт нагрева кабеля. Время нагрева</text>
@@ -9626,7 +9626,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим оптимизации напряжения. Состояние</text>
@@ -9645,7 +9645,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим оптимизации напряжения. Диапазон оптимизации</text>
@@ -9664,7 +9664,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим оптимизации напряжения. Шаг изменения напряжения</text>
@@ -9683,7 +9683,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим оптимизации напряжения. Первый цикл после запуска</text>
@@ -9702,7 +9702,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим оптимизации напряжения. Периодичность оптимизации</text>
@@ -9721,7 +9721,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим прокачки газа. Состояние</text>
@@ -9740,7 +9740,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим прокачки газа. Нижняя частота дегазации</text>
@@ -9759,7 +9759,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим прокачки газа. Время работы на частоте дегазации</text>
@@ -9778,7 +9778,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим прокачки газа. Количество повторений</text>
@@ -9797,7 +9797,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим ограничения тока. Состояние</text>
@@ -9816,7 +9816,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим ограничения тока. Ограничение тока от Iном</text>
@@ -9835,7 +9835,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим ограничения тока. Шаг снижения частоты</text>
@@ -9854,7 +9854,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим ограничения тока. Задержка срабатывания</text>
@@ -9873,7 +9873,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим ограничения тока. Задержка АПВ</text>
@@ -9892,7 +9892,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Коэффициент коррекции напряжения Ua</text>
@@ -9911,7 +9911,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Коэффициент коррекции напряжения Ub</text>
@@ -9929,7 +9929,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Коэффициент коррекции напряжения Uc</text>
@@ -10010,7 +10010,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Коэффициент коррекции сопротивления изоляции</text>
@@ -10029,7 +10029,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Номер ЦДНГ</text>
@@ -10048,7 +10048,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Номер куста</text>
@@ -10067,7 +10067,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Номер скважины</text>
@@ -10086,7 +10086,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Счетчик общего количество включений ПЭД</text>
@@ -10105,7 +10105,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Счетчик количество отключений ПЭД по ЗСП</text>
@@ -10124,7 +10124,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Счётчик количество отключений ПЭД по ЗП</text>
@@ -10143,7 +10143,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Счётчик количество отключений ПЭД по др.защ.</text>
@@ -10162,7 +10162,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Счётчик АПВ после остановов по напряжению</text>
@@ -10181,7 +10181,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Счётчик АПВ после остановов по перегрузу</text>
@@ -10200,7 +10200,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Счётчик АПВ после остановов по недогрузу</text>
@@ -10219,7 +10219,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Счётчик АПВ после остановов по дисб.тока</text>
@@ -10238,7 +10238,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Общее время работы ПЭД</text>
@@ -10257,7 +10257,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Общее время простоя ПЭД</text>
@@ -10276,7 +10276,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Наработка с момента последнего пуска ПЭД</text>
@@ -10295,7 +10295,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Время простоя ПЭД с момента последнего останова</text>
@@ -10314,7 +10314,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Время до изменения режима работы ПЭД по программе</text>
@@ -10333,7 +10333,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Время до запуска ПЭД по АПВ</text>
@@ -10372,7 +10372,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Причина попытки последнего пуска</text>
@@ -10410,7 +10410,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Причина последнего отключения</text>
@@ -10448,7 +10448,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Предпоследнее значение частоты</text>
@@ -10467,7 +10467,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>2.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -10488,7 +10488,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>3.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -10509,7 +10509,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Заводской номер КСУ</text>
@@ -10528,7 +10528,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Версия программы КСУ</text>
@@ -10547,7 +10547,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Версия программы МС</text>
@@ -10566,7 +10566,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Версия программы КПЧ</text>
@@ -10665,7 +10665,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Тип СУ</text>
@@ -10684,7 +10684,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Код предприятия изготовителя СУ</text>
@@ -10703,7 +10703,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Заводской номер СУ</text>
@@ -10742,7 +10742,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Примечание</text>
@@ -10761,7 +10761,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Примечание</text>
@@ -10780,7 +10780,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Примечание</text>
@@ -10799,7 +10799,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Примечание</text>
@@ -10818,7 +10818,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Примечание</text>
@@ -10837,7 +10837,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Примечание</text>
@@ -10856,7 +10856,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Примечание</text>
@@ -10875,7 +10875,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Примечание</text>
@@ -10894,7 +10894,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Примечание</text>
@@ -10913,7 +10913,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Примечание</text>
@@ -11099,7 +11099,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Язык интерфейса</text>
@@ -11307,7 +11307,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Телемеханика. Адрес СУ в системе телеметрии</text>
@@ -11538,7 +11538,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<form>Null</form>
@@ -12148,7 +12148,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Выходное напряжение ТМПН</text>
@@ -12166,7 +12166,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -12177,7 +12177,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -12190,7 +12190,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -12203,7 +12203,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Уставка ВРП (время разновременного пуска)</text>
@@ -12802,7 +12802,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Состояние КСУ</text>
@@ -12836,7 +12836,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -12891,7 +12891,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13207,7 +13207,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
@@ -13220,7 +13220,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13240,7 +13240,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим поддержания параметра. Поддержка значения - Давление</text>
@@ -13254,7 +13254,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим поддержания параметра. Поддержка значения - Температура</text>
@@ -13268,7 +13268,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим поддержания параметра. Поддержка значения - Аналоговый вход</text>
@@ -13282,7 +13282,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<text>Действие режима пуска "Подхват"</text>
 		<code>13</code>
@@ -13294,7 +13294,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<code>0</code>
 	</param>
@@ -13305,7 +13305,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<code>0</code>
 	</param>
@@ -13316,7 +13316,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<code>0</code>
 		<comment>Команда отключения модуля AM335x</comment>
@@ -13564,7 +13564,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13585,7 +13585,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13606,7 +13606,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13627,7 +13627,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13648,7 +13648,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13669,7 +13669,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13755,7 +13755,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13775,7 +13775,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13796,7 +13796,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13817,7 +13817,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13838,7 +13838,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13927,7 +13927,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13942,7 +13942,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13971,7 +13971,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Количество встряхиваний</text>
@@ -14729,7 +14729,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -15145,7 +15145,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -15166,7 +15166,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -15628,7 +15628,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -16622,7 +16622,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -16643,7 +16643,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -16664,7 +16664,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -16684,8 +16684,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PERCENT</physic>
-		<min>50.0</min>
-		<max>150.0</max>
+		<min>0.0</min>
+		<max>999999999.9</max>
 		<def>110.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -16780,7 +16780,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>Выходная частота ПЧ</text>
@@ -16818,7 +16818,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -16831,7 +16831,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>Напряжение ПЧ/ТМПН</text>
@@ -16992,7 +16992,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>Напряжение Ud</text>
@@ -17011,7 +17011,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_POWER</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -17032,7 +17032,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>Полная мощность</text>
@@ -17051,7 +17051,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_POWER</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>125000.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -17197,7 +17197,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -17231,7 +17231,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>Количество пар полюсов ПЭД</text>
@@ -17292,7 +17292,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>100.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -17312,7 +17312,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -17605,7 +17605,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -17618,7 +17618,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -17630,7 +17630,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -17642,7 +17642,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -17654,7 +17654,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -17835,7 +17835,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -17848,7 +17848,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -17861,7 +17861,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -17874,7 +17874,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.25</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -17895,7 +17895,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.25</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -17915,7 +17915,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -17927,7 +17927,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -17939,7 +17939,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -17951,7 +17951,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -17963,7 +17963,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -17975,7 +17975,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -17987,7 +17987,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -17999,7 +17999,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18011,7 +18011,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18023,7 +18023,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18035,7 +18035,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18047,7 +18047,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18059,7 +18059,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18071,7 +18071,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18083,7 +18083,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18095,7 +18095,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18107,7 +18107,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18140,7 +18140,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -18153,7 +18153,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -18166,7 +18166,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -18179,7 +18179,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -18192,7 +18192,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -18205,7 +18205,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18217,7 +18217,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18229,7 +18229,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18241,7 +18241,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18289,7 +18289,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18302,7 +18302,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.017</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -18322,7 +18322,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18334,7 +18334,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18346,7 +18346,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18358,7 +18358,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18370,7 +18370,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18383,7 +18383,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.25</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -18444,7 +18444,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -18457,7 +18457,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -18470,7 +18470,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -18483,7 +18483,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -18496,7 +18496,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -18509,7 +18509,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -18560,7 +18560,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18572,7 +18572,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18584,7 +18584,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18596,7 +18596,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18608,7 +18608,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18620,7 +18620,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18632,7 +18632,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18644,7 +18644,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18678,7 +18678,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -18691,7 +18691,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -18704,7 +18704,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18716,7 +18716,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18728,7 +18728,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18740,7 +18740,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18752,7 +18752,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -18765,7 +18765,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -18778,7 +18778,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -18791,7 +18791,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -18804,7 +18804,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -18817,7 +18817,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -18830,7 +18830,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -18843,7 +18843,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -18856,7 +18856,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18868,7 +18868,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18880,7 +18880,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18928,7 +18928,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18940,7 +18940,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18973,7 +18973,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -18985,7 +18985,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<code>0</code>
 	</param>
@@ -18995,7 +18995,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -19008,7 +19008,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.004</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -19070,7 +19070,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -19082,7 +19082,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -19094,7 +19094,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -19106,7 +19106,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -19118,7 +19118,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -19130,7 +19130,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -19226,7 +19226,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -19281,7 +19281,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -19294,7 +19294,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -19306,7 +19306,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -19318,7 +19318,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -19330,7 +19330,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -19342,7 +19342,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -19354,7 +19354,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -19828,7 +19828,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -20030,7 +20030,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -20043,7 +20043,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -20056,7 +20056,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -20465,7 +20465,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>9.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -20486,7 +20486,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>22.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -20590,7 +20590,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -20605,7 +20605,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<text>NULL</text>
@@ -20663,7 +20663,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>1.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -20956,7 +20956,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -20968,7 +20968,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -20980,7 +20980,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -20992,7 +20992,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -21005,7 +21005,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<unit>TEMPERATURE_C</unit>
@@ -21020,7 +21020,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<unit>TEMPERATURE_C</unit>
@@ -21035,7 +21035,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -21048,7 +21048,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -21061,7 +21061,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -21074,7 +21074,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -21087,7 +21087,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -21100,7 +21100,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -21237,7 +21237,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -21249,7 +21249,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -22624,7 +22624,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -22645,7 +22645,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -25558,7 +25558,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_RESISTANCE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25572,7 +25572,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PRESSURE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25592,7 +25592,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25612,7 +25612,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25631,7 +25631,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACCELERATION</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25645,7 +25645,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACCELERATION</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25659,7 +25659,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACCELERATION</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25679,7 +25679,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PRESSURE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25699,7 +25699,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25719,7 +25719,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FLOW</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25739,7 +25739,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACCELERATION</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25759,7 +25759,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACCELERATION</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25773,7 +25773,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PRESSURE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25793,7 +25793,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25810,7 +25810,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25827,7 +25827,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACCELERATION</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25841,7 +25841,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25855,7 +25855,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25869,7 +25869,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25899,7 +25899,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25913,7 +25913,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25927,7 +25927,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25941,7 +25941,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25955,7 +25955,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25969,7 +25969,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -25983,7 +25983,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26013,7 +26013,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26027,7 +26027,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26041,7 +26041,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26055,7 +26055,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FLOW</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26070,7 +26070,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FLOW</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26085,7 +26085,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PRESSURE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26100,7 +26100,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26115,7 +26115,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26129,7 +26129,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26143,7 +26143,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26157,7 +26157,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26171,7 +26171,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26185,7 +26185,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26199,7 +26199,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26213,7 +26213,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26227,7 +26227,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26257,7 +26257,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26271,7 +26271,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26285,7 +26285,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26300,7 +26300,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26314,7 +26314,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26328,7 +26328,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26342,7 +26342,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26356,7 +26356,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26370,7 +26370,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26384,7 +26384,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ANGLE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26398,7 +26398,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -26843,7 +26843,7 @@
 		<id>15084</id>
 		<name>TMS_END</name>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -26852,7 +26852,7 @@
 		<id>20000</id>
 		<name>EM_BEGIN</name>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
@@ -26865,7 +26865,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -26885,7 +26885,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -26905,7 +26905,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -26925,7 +26925,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -26945,7 +26945,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -26965,7 +26965,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -26985,7 +26985,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_POWER</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27004,7 +27004,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27022,7 +27022,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27040,7 +27040,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27061,7 +27061,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27079,7 +27079,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27097,7 +27097,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27115,7 +27115,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27132,7 +27132,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27150,7 +27150,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27168,7 +27168,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27186,7 +27186,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27203,7 +27203,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27220,7 +27220,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27237,7 +27237,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_POWER</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27254,7 +27254,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_POWER</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27271,7 +27271,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_POWER</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27288,7 +27288,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_POWER</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27308,7 +27308,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_POWER</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27325,7 +27325,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_POWER</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27342,7 +27342,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_POWER</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27359,7 +27359,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27377,7 +27377,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27395,7 +27395,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27413,7 +27413,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27431,7 +27431,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27449,7 +27449,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27467,7 +27467,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27485,7 +27485,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27503,7 +27503,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27521,7 +27521,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27539,7 +27539,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27560,7 +27560,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27578,7 +27578,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27596,7 +27596,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27614,7 +27614,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27632,7 +27632,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27650,7 +27650,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27668,7 +27668,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27686,7 +27686,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27704,7 +27704,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -27722,7 +27722,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>

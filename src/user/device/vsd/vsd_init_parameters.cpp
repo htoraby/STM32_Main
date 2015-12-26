@@ -22,7 +22,7 @@ void Vsd::initParameters()
   parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].max                                 = 999999999.0;
+  parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].max                                 = 999999999.9;
   parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].discret                             = 100;
   parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].code                                = 0;
@@ -46,7 +46,7 @@ void Vsd::initParameters()
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].max                                 = 999999999.0;
+  parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].max                                 = 999999999.9;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].discret                             = 1;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].code                                = 0;
@@ -58,7 +58,7 @@ void Vsd::initParameters()
   parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].max                             = 999999999.0;
+  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].max                             = 999999999.9;
   parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].def                             = 0;
   parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].discret                         = 10;
   parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].code                            = 0;
@@ -154,7 +154,7 @@ void Vsd::initParameters()
   parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].max                                    = 999999.0;
+  parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].max                                    = 999999999.9;
   parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].discret                                = 1;
   parameters_[VSD_VOLTAGE_DC - VSD_BEGIN].code                                   = 0;
@@ -166,7 +166,7 @@ void Vsd::initParameters()
   parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].value.float_t                        = 0.0;
   parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].max                                  = 999999999.0;
+  parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].max                                  = 999999999.9;
   parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].def                                  = 0.0;
   parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].discret                              = 10;
   parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].code                                 = 0;
@@ -178,7 +178,7 @@ void Vsd::initParameters()
   parameters_[VSD_POWER_FULL - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_POWER_FULL - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_POWER_FULL - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_POWER_FULL - VSD_BEGIN].max                                    = 999999999.0;
+  parameters_[VSD_POWER_FULL - VSD_BEGIN].max                                    = 999999999.9;
   parameters_[VSD_POWER_FULL - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_POWER_FULL - VSD_BEGIN].discret                                = 10;
   parameters_[VSD_POWER_FULL - VSD_BEGIN].code                                   = 0;
@@ -190,7 +190,7 @@ void Vsd::initParameters()
   parameters_[VSD_MOTOR_POWER - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_MOTOR_POWER - VSD_BEGIN].value.float_t                         = 125000.0;
   parameters_[VSD_MOTOR_POWER - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_MOTOR_POWER - VSD_BEGIN].max                                   = 999999999.0;
+  parameters_[VSD_MOTOR_POWER - VSD_BEGIN].max                                   = 999999999.9;
   parameters_[VSD_MOTOR_POWER - VSD_BEGIN].def                                   = 125000.0;
   parameters_[VSD_MOTOR_POWER - VSD_BEGIN].discret                               = 10;
   parameters_[VSD_MOTOR_POWER - VSD_BEGIN].code                                  = 13;
@@ -274,7 +274,7 @@ void Vsd::initParameters()
   parameters_[VSD_BACK_EMF - VSD_BEGIN].validity                                 = VALIDITY_ERROR;
   parameters_[VSD_BACK_EMF - VSD_BEGIN].value.float_t                            = 0;
   parameters_[VSD_BACK_EMF - VSD_BEGIN].min                                      = 0.0;
-  parameters_[VSD_BACK_EMF - VSD_BEGIN].max                                      = 999999999.0;
+  parameters_[VSD_BACK_EMF - VSD_BEGIN].max                                      = 999999999.9;
   parameters_[VSD_BACK_EMF - VSD_BEGIN].def                                      = 0;
   parameters_[VSD_BACK_EMF - VSD_BEGIN].discret                                  = 1;
   parameters_[VSD_BACK_EMF - VSD_BEGIN].code                                     = 0;
@@ -298,7 +298,7 @@ void Vsd::initParameters()
   parameters_[VSD_MOTOR_POLES - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_MOTOR_POLES - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_MOTOR_POLES - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_MOTOR_POLES - VSD_BEGIN].max                                   = 999999999.0;
+  parameters_[VSD_MOTOR_POLES - VSD_BEGIN].max                                   = 999999999.9;
   parameters_[VSD_MOTOR_POLES - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_MOTOR_POLES - VSD_BEGIN].discret                               = 1;
   parameters_[VSD_MOTOR_POLES - VSD_BEGIN].code                                  = 13;
@@ -334,7 +334,7 @@ void Vsd::initParameters()
   parameters_[VSD_T_SPEEDUP - VSD_BEGIN].validity                                = VALIDITY_ERROR;
   parameters_[VSD_T_SPEEDUP - VSD_BEGIN].value.float_t                           = 100.0;
   parameters_[VSD_T_SPEEDUP - VSD_BEGIN].min                                     = 0.0;
-  parameters_[VSD_T_SPEEDUP - VSD_BEGIN].max                                     = 999999999.0;
+  parameters_[VSD_T_SPEEDUP - VSD_BEGIN].max                                     = 999999999.9;
   parameters_[VSD_T_SPEEDUP - VSD_BEGIN].def                                     = 100.0;
   parameters_[VSD_T_SPEEDUP - VSD_BEGIN].discret                                 = 10;
   parameters_[VSD_T_SPEEDUP - VSD_BEGIN].code                                    = 13;
@@ -346,7 +346,7 @@ void Vsd::initParameters()
   parameters_[VSD_T_SPEEDDOWN - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_T_SPEEDDOWN - VSD_BEGIN].value.float_t                         = 0.0;
   parameters_[VSD_T_SPEEDDOWN - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_T_SPEEDDOWN - VSD_BEGIN].max                                   = 999999999.0;
+  parameters_[VSD_T_SPEEDDOWN - VSD_BEGIN].max                                   = 999999999.9;
   parameters_[VSD_T_SPEEDDOWN - VSD_BEGIN].def                                   = 0.0;
   parameters_[VSD_T_SPEEDDOWN - VSD_BEGIN].discret                               = 10;
   parameters_[VSD_T_SPEEDDOWN - VSD_BEGIN].code                                  = 13;
@@ -514,7 +514,7 @@ void Vsd::initParameters()
   parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].value.float_t                = 0;
   parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].max                          = 999999999.0;
+  parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].max                          = 999999999.9;
   parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].def                          = 0;
   parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].discret                      = 1;
   parameters_[VSD_THYR_ANGLE_REFERENCE - VSD_BEGIN].code                         = 0;
@@ -526,7 +526,7 @@ void Vsd::initParameters()
   parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].max                                 = 999999999.0;
+  parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].max                                 = 999999999.9;
   parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].discret                             = 1;
   parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].code                                = 0;
@@ -538,7 +538,7 @@ void Vsd::initParameters()
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_THYR_CONTROL - VSD_BEGIN].max                                  = 999999999.0;
+  parameters_[VSD_THYR_CONTROL - VSD_BEGIN].max                                  = 999999999.9;
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].discret                              = 1;
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].code                                 = 0;
@@ -550,7 +550,7 @@ void Vsd::initParameters()
   parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].value.float_t               = 0;
   parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].min                         = 0.0;
-  parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].max                         = 999999999.0;
+  parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].max                         = 999999999.9;
   parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].def                         = 0;
   parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].discret                     = 1;
   parameters_[VSD_THYR_VOLT_SHORT_CUILT - VSD_BEGIN].code                        = 0;
@@ -562,7 +562,7 @@ void Vsd::initParameters()
   parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].max                                 = 999999999.0;
+  parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].max                                 = 999999999.9;
   parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].discret                             = 1;
   parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].code                                = 0;
@@ -670,7 +670,7 @@ void Vsd::initParameters()
   parameters_[VSD_CONTROL_WORD_1 - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_CONTROL_WORD_1 - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_CONTROL_WORD_1 - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_CONTROL_WORD_1 - VSD_BEGIN].max                                = 999999999.0;
+  parameters_[VSD_CONTROL_WORD_1 - VSD_BEGIN].max                                = 999999999.9;
   parameters_[VSD_CONTROL_WORD_1 - VSD_BEGIN].def                                = 0;
   parameters_[VSD_CONTROL_WORD_1 - VSD_BEGIN].discret                            = 1;
   parameters_[VSD_CONTROL_WORD_1 - VSD_BEGIN].code                               = 0;
@@ -682,7 +682,7 @@ void Vsd::initParameters()
   parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].max                                 = 999999999.0;
+  parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].max                                 = 999999999.9;
   parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].discret                             = 1;
   parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].code                                = 0;
@@ -694,7 +694,7 @@ void Vsd::initParameters()
   parameters_[VSD_FREQUENCY_ERROR - VSD_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[VSD_FREQUENCY_ERROR - VSD_BEGIN].value.float_t                     = 0;
   parameters_[VSD_FREQUENCY_ERROR - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_FREQUENCY_ERROR - VSD_BEGIN].max                               = 999999999.0;
+  parameters_[VSD_FREQUENCY_ERROR - VSD_BEGIN].max                               = 999999999.9;
   parameters_[VSD_FREQUENCY_ERROR - VSD_BEGIN].def                               = 0;
   parameters_[VSD_FREQUENCY_ERROR - VSD_BEGIN].discret                           = 1;
   parameters_[VSD_FREQUENCY_ERROR - VSD_BEGIN].code                              = 0;
@@ -706,7 +706,7 @@ void Vsd::initParameters()
   parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].validity                       = VALIDITY_ERROR;
   parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].value.float_t                  = 0.25;
   parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].min                            = 0.0;
-  parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].max                            = 999999999.0;
+  parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].max                            = 999999999.9;
   parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].def                            = 0.25;
   parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].discret                        = 100;
   parameters_[VSD_T_ILIMIT_SPEEDDOWN - VSD_BEGIN].code                           = 13;
@@ -718,7 +718,7 @@ void Vsd::initParameters()
   parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].value.float_t                    = 0.25;
   parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].max                              = 999999999.0;
+  parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].max                              = 999999999.9;
   parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].def                              = 0.25;
   parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].discret                          = 100;
   parameters_[VSD_T_ULOW_SPEEDDOWN - VSD_BEGIN].code                             = 13;
@@ -730,7 +730,7 @@ void Vsd::initParameters()
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].max                             = 999999999.0;
+  parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].max                             = 999999999.9;
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].def                             = 0;
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].discret                         = 1;
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].code                            = 0;
@@ -742,7 +742,7 @@ void Vsd::initParameters()
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_UF_U_FORCE - VSD_BEGIN].max                                    = 999999999.0;
+  parameters_[VSD_UF_U_FORCE - VSD_BEGIN].max                                    = 999999999.9;
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].discret                                = 1;
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].code                                   = 0;
@@ -754,7 +754,7 @@ void Vsd::initParameters()
   parameters_[VSD_UF_F_FORCE - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_UF_F_FORCE - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_UF_F_FORCE - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_UF_F_FORCE - VSD_BEGIN].max                                    = 999999999.0;
+  parameters_[VSD_UF_F_FORCE - VSD_BEGIN].max                                    = 999999999.9;
   parameters_[VSD_UF_F_FORCE - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_UF_F_FORCE - VSD_BEGIN].discret                                = 1;
   parameters_[VSD_UF_F_FORCE - VSD_BEGIN].code                                   = 0;
@@ -766,7 +766,7 @@ void Vsd::initParameters()
   parameters_[VSD_IFB_COMP - VSD_BEGIN].validity                                 = VALIDITY_ERROR;
   parameters_[VSD_IFB_COMP - VSD_BEGIN].value.float_t                            = 0;
   parameters_[VSD_IFB_COMP - VSD_BEGIN].min                                      = 0.0;
-  parameters_[VSD_IFB_COMP - VSD_BEGIN].max                                      = 999999999.0;
+  parameters_[VSD_IFB_COMP - VSD_BEGIN].max                                      = 999999999.9;
   parameters_[VSD_IFB_COMP - VSD_BEGIN].def                                      = 0;
   parameters_[VSD_IFB_COMP - VSD_BEGIN].discret                                  = 1;
   parameters_[VSD_IFB_COMP - VSD_BEGIN].code                                     = 0;
@@ -778,7 +778,7 @@ void Vsd::initParameters()
   parameters_[VSD_VUOUT_PROP - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_VUOUT_PROP - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_VUOUT_PROP - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_VUOUT_PROP - VSD_BEGIN].max                                    = 999999999.0;
+  parameters_[VSD_VUOUT_PROP - VSD_BEGIN].max                                    = 999999999.9;
   parameters_[VSD_VUOUT_PROP - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_VUOUT_PROP - VSD_BEGIN].discret                                = 1;
   parameters_[VSD_VUOUT_PROP - VSD_BEGIN].code                                   = 0;
@@ -790,7 +790,7 @@ void Vsd::initParameters()
   parameters_[VSD_ILIMIT - VSD_BEGIN].validity                                   = VALIDITY_ERROR;
   parameters_[VSD_ILIMIT - VSD_BEGIN].value.float_t                              = 0;
   parameters_[VSD_ILIMIT - VSD_BEGIN].min                                        = 0.0;
-  parameters_[VSD_ILIMIT - VSD_BEGIN].max                                        = 999999999.0;
+  parameters_[VSD_ILIMIT - VSD_BEGIN].max                                        = 999999999.9;
   parameters_[VSD_ILIMIT - VSD_BEGIN].def                                        = 0;
   parameters_[VSD_ILIMIT - VSD_BEGIN].discret                                    = 1;
   parameters_[VSD_ILIMIT - VSD_BEGIN].code                                       = 0;
@@ -802,7 +802,7 @@ void Vsd::initParameters()
   parameters_[VSD_VUOUT_INTEG - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_VUOUT_INTEG - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_VUOUT_INTEG - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_VUOUT_INTEG - VSD_BEGIN].max                                   = 999999999.0;
+  parameters_[VSD_VUOUT_INTEG - VSD_BEGIN].max                                   = 999999999.9;
   parameters_[VSD_VUOUT_INTEG - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_VUOUT_INTEG - VSD_BEGIN].discret                               = 1;
   parameters_[VSD_VUOUT_INTEG - VSD_BEGIN].code                                  = 0;
@@ -814,7 +814,7 @@ void Vsd::initParameters()
   parameters_[VSD_VTOUF_INTEG - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_VTOUF_INTEG - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_VTOUF_INTEG - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_VTOUF_INTEG - VSD_BEGIN].max                                   = 999999999.0;
+  parameters_[VSD_VTOUF_INTEG - VSD_BEGIN].max                                   = 999999999.9;
   parameters_[VSD_VTOUF_INTEG - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_VTOUF_INTEG - VSD_BEGIN].discret                               = 1;
   parameters_[VSD_VTOUF_INTEG - VSD_BEGIN].code                                  = 0;
@@ -826,7 +826,7 @@ void Vsd::initParameters()
   parameters_[VSD_LOUT - VSD_BEGIN].validity                                     = VALIDITY_ERROR;
   parameters_[VSD_LOUT - VSD_BEGIN].value.float_t                                = 0;
   parameters_[VSD_LOUT - VSD_BEGIN].min                                          = 0.0;
-  parameters_[VSD_LOUT - VSD_BEGIN].max                                          = 999999999.0;
+  parameters_[VSD_LOUT - VSD_BEGIN].max                                          = 999999999.9;
   parameters_[VSD_LOUT - VSD_BEGIN].def                                          = 0;
   parameters_[VSD_LOUT - VSD_BEGIN].discret                                      = 1;
   parameters_[VSD_LOUT - VSD_BEGIN].code                                         = 0;
@@ -838,7 +838,7 @@ void Vsd::initParameters()
   parameters_[VSD_SW_STARTUP_FREQUENCY - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_SW_STARTUP_FREQUENCY - VSD_BEGIN].value.float_t                = 0;
   parameters_[VSD_SW_STARTUP_FREQUENCY - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_SW_STARTUP_FREQUENCY - VSD_BEGIN].max                          = 999999999.0;
+  parameters_[VSD_SW_STARTUP_FREQUENCY - VSD_BEGIN].max                          = 999999999.9;
   parameters_[VSD_SW_STARTUP_FREQUENCY - VSD_BEGIN].def                          = 0;
   parameters_[VSD_SW_STARTUP_FREQUENCY - VSD_BEGIN].discret                      = 1;
   parameters_[VSD_SW_STARTUP_FREQUENCY - VSD_BEGIN].code                         = 0;
@@ -850,7 +850,7 @@ void Vsd::initParameters()
   parameters_[VSD_SW_STARTUP_ANGLE_OSC - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_SW_STARTUP_ANGLE_OSC - VSD_BEGIN].value.float_t                = 0;
   parameters_[VSD_SW_STARTUP_ANGLE_OSC - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_SW_STARTUP_ANGLE_OSC - VSD_BEGIN].max                          = 999999999.0;
+  parameters_[VSD_SW_STARTUP_ANGLE_OSC - VSD_BEGIN].max                          = 999999999.9;
   parameters_[VSD_SW_STARTUP_ANGLE_OSC - VSD_BEGIN].def                          = 0;
   parameters_[VSD_SW_STARTUP_ANGLE_OSC - VSD_BEGIN].discret                      = 1;
   parameters_[VSD_SW_STARTUP_ANGLE_OSC - VSD_BEGIN].code                         = 0;
@@ -862,7 +862,7 @@ void Vsd::initParameters()
   parameters_[VSD_SW_STARTUP_ANGLE_SHIFT - VSD_BEGIN].validity                   = VALIDITY_ERROR;
   parameters_[VSD_SW_STARTUP_ANGLE_SHIFT - VSD_BEGIN].value.float_t              = 0;
   parameters_[VSD_SW_STARTUP_ANGLE_SHIFT - VSD_BEGIN].min                        = 0.0;
-  parameters_[VSD_SW_STARTUP_ANGLE_SHIFT - VSD_BEGIN].max                        = 999999999.0;
+  parameters_[VSD_SW_STARTUP_ANGLE_SHIFT - VSD_BEGIN].max                        = 999999999.9;
   parameters_[VSD_SW_STARTUP_ANGLE_SHIFT - VSD_BEGIN].def                        = 0;
   parameters_[VSD_SW_STARTUP_ANGLE_SHIFT - VSD_BEGIN].discret                    = 1;
   parameters_[VSD_SW_STARTUP_ANGLE_SHIFT - VSD_BEGIN].code                       = 0;
@@ -874,7 +874,7 @@ void Vsd::initParameters()
   parameters_[VSD_SW_STARTUP_OSC_COUNT - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_SW_STARTUP_OSC_COUNT - VSD_BEGIN].value.float_t                = 0;
   parameters_[VSD_SW_STARTUP_OSC_COUNT - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_SW_STARTUP_OSC_COUNT - VSD_BEGIN].max                          = 999999999.0;
+  parameters_[VSD_SW_STARTUP_OSC_COUNT - VSD_BEGIN].max                          = 999999999.9;
   parameters_[VSD_SW_STARTUP_OSC_COUNT - VSD_BEGIN].def                          = 0;
   parameters_[VSD_SW_STARTUP_OSC_COUNT - VSD_BEGIN].discret                      = 1;
   parameters_[VSD_SW_STARTUP_OSC_COUNT - VSD_BEGIN].code                         = 0;
@@ -886,7 +886,7 @@ void Vsd::initParameters()
   parameters_[VSD_SW_STARTUP_ROTATIONS - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_SW_STARTUP_ROTATIONS - VSD_BEGIN].value.float_t                = 0;
   parameters_[VSD_SW_STARTUP_ROTATIONS - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_SW_STARTUP_ROTATIONS - VSD_BEGIN].max                          = 999999999.0;
+  parameters_[VSD_SW_STARTUP_ROTATIONS - VSD_BEGIN].max                          = 999999999.9;
   parameters_[VSD_SW_STARTUP_ROTATIONS - VSD_BEGIN].def                          = 0;
   parameters_[VSD_SW_STARTUP_ROTATIONS - VSD_BEGIN].discret                      = 1;
   parameters_[VSD_SW_STARTUP_ROTATIONS - VSD_BEGIN].code                         = 0;
@@ -898,7 +898,7 @@ void Vsd::initParameters()
   parameters_[VSD_SW_STARTUP_U_PULSE - VSD_BEGIN].validity                       = VALIDITY_ERROR;
   parameters_[VSD_SW_STARTUP_U_PULSE - VSD_BEGIN].value.float_t                  = 0;
   parameters_[VSD_SW_STARTUP_U_PULSE - VSD_BEGIN].min                            = 0.0;
-  parameters_[VSD_SW_STARTUP_U_PULSE - VSD_BEGIN].max                            = 999999999.0;
+  parameters_[VSD_SW_STARTUP_U_PULSE - VSD_BEGIN].max                            = 999999999.9;
   parameters_[VSD_SW_STARTUP_U_PULSE - VSD_BEGIN].def                            = 0;
   parameters_[VSD_SW_STARTUP_U_PULSE - VSD_BEGIN].discret                        = 1;
   parameters_[VSD_SW_STARTUP_U_PULSE - VSD_BEGIN].code                           = 0;
@@ -910,7 +910,7 @@ void Vsd::initParameters()
   parameters_[VSD_SW_STARTUP_I_LIM - VSD_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[VSD_SW_STARTUP_I_LIM - VSD_BEGIN].value.float_t                    = 0;
   parameters_[VSD_SW_STARTUP_I_LIM - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_SW_STARTUP_I_LIM - VSD_BEGIN].max                              = 999999999.0;
+  parameters_[VSD_SW_STARTUP_I_LIM - VSD_BEGIN].max                              = 999999999.9;
   parameters_[VSD_SW_STARTUP_I_LIM - VSD_BEGIN].def                              = 0;
   parameters_[VSD_SW_STARTUP_I_LIM - VSD_BEGIN].discret                          = 1;
   parameters_[VSD_SW_STARTUP_I_LIM - VSD_BEGIN].code                             = 0;
@@ -922,7 +922,7 @@ void Vsd::initParameters()
   parameters_[VSD_SW_STARTUP_I_LIM_PULSE - VSD_BEGIN].validity                   = VALIDITY_ERROR;
   parameters_[VSD_SW_STARTUP_I_LIM_PULSE - VSD_BEGIN].value.float_t              = 0;
   parameters_[VSD_SW_STARTUP_I_LIM_PULSE - VSD_BEGIN].min                        = 0.0;
-  parameters_[VSD_SW_STARTUP_I_LIM_PULSE - VSD_BEGIN].max                        = 999999999.0;
+  parameters_[VSD_SW_STARTUP_I_LIM_PULSE - VSD_BEGIN].max                        = 999999999.9;
   parameters_[VSD_SW_STARTUP_I_LIM_PULSE - VSD_BEGIN].def                        = 0;
   parameters_[VSD_SW_STARTUP_I_LIM_PULSE - VSD_BEGIN].discret                    = 1;
   parameters_[VSD_SW_STARTUP_I_LIM_PULSE - VSD_BEGIN].code                       = 0;
@@ -946,7 +946,7 @@ void Vsd::initParameters()
   parameters_[VSD_REGULATOR_QUEUE_1 - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_REGULATOR_QUEUE_1 - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_REGULATOR_QUEUE_1 - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_REGULATOR_QUEUE_1 - VSD_BEGIN].max                             = 999999999.0;
+  parameters_[VSD_REGULATOR_QUEUE_1 - VSD_BEGIN].max                             = 999999999.9;
   parameters_[VSD_REGULATOR_QUEUE_1 - VSD_BEGIN].def                             = 0;
   parameters_[VSD_REGULATOR_QUEUE_1 - VSD_BEGIN].discret                         = 1;
   parameters_[VSD_REGULATOR_QUEUE_1 - VSD_BEGIN].code                            = 0;
@@ -958,7 +958,7 @@ void Vsd::initParameters()
   parameters_[VSD_REGULATOR_QUEUE_2 - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_REGULATOR_QUEUE_2 - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_REGULATOR_QUEUE_2 - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_REGULATOR_QUEUE_2 - VSD_BEGIN].max                             = 999999999.0;
+  parameters_[VSD_REGULATOR_QUEUE_2 - VSD_BEGIN].max                             = 999999999.9;
   parameters_[VSD_REGULATOR_QUEUE_2 - VSD_BEGIN].def                             = 0;
   parameters_[VSD_REGULATOR_QUEUE_2 - VSD_BEGIN].discret                         = 1;
   parameters_[VSD_REGULATOR_QUEUE_2 - VSD_BEGIN].code                            = 0;
@@ -970,7 +970,7 @@ void Vsd::initParameters()
   parameters_[VSD_REGULATOR_QUEUE_3 - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_REGULATOR_QUEUE_3 - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_REGULATOR_QUEUE_3 - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_REGULATOR_QUEUE_3 - VSD_BEGIN].max                             = 999999999.0;
+  parameters_[VSD_REGULATOR_QUEUE_3 - VSD_BEGIN].max                             = 999999999.9;
   parameters_[VSD_REGULATOR_QUEUE_3 - VSD_BEGIN].def                             = 0;
   parameters_[VSD_REGULATOR_QUEUE_3 - VSD_BEGIN].discret                         = 1;
   parameters_[VSD_REGULATOR_QUEUE_3 - VSD_BEGIN].code                            = 0;
@@ -982,7 +982,7 @@ void Vsd::initParameters()
   parameters_[VSD_REGULATOR_QUEUE_4 - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_REGULATOR_QUEUE_4 - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_REGULATOR_QUEUE_4 - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_REGULATOR_QUEUE_4 - VSD_BEGIN].max                             = 999999999.0;
+  parameters_[VSD_REGULATOR_QUEUE_4 - VSD_BEGIN].max                             = 999999999.9;
   parameters_[VSD_REGULATOR_QUEUE_4 - VSD_BEGIN].def                             = 0;
   parameters_[VSD_REGULATOR_QUEUE_4 - VSD_BEGIN].discret                         = 1;
   parameters_[VSD_REGULATOR_QUEUE_4 - VSD_BEGIN].code                            = 0;
@@ -994,7 +994,7 @@ void Vsd::initParameters()
   parameters_[VSD_REGULATOR_QUEUE_5 - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_REGULATOR_QUEUE_5 - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_REGULATOR_QUEUE_5 - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_REGULATOR_QUEUE_5 - VSD_BEGIN].max                             = 999999999.0;
+  parameters_[VSD_REGULATOR_QUEUE_5 - VSD_BEGIN].max                             = 999999999.9;
   parameters_[VSD_REGULATOR_QUEUE_5 - VSD_BEGIN].def                             = 0;
   parameters_[VSD_REGULATOR_QUEUE_5 - VSD_BEGIN].discret                         = 1;
   parameters_[VSD_REGULATOR_QUEUE_5 - VSD_BEGIN].code                            = 0;
@@ -1006,7 +1006,7 @@ void Vsd::initParameters()
   parameters_[VSD_DELETE_10083 - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_DELETE_10083 - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_DELETE_10083 - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_DELETE_10083 - VSD_BEGIN].max                                  = 999999999.0;
+  parameters_[VSD_DELETE_10083 - VSD_BEGIN].max                                  = 999999999.9;
   parameters_[VSD_DELETE_10083 - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_DELETE_10083 - VSD_BEGIN].discret                              = 1;
   parameters_[VSD_DELETE_10083 - VSD_BEGIN].code                                 = 0;
@@ -1018,7 +1018,7 @@ void Vsd::initParameters()
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].max                                 = 999999999.0;
+  parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].max                                 = 999999999.9;
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].discret                             = 1;
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].code                                = 0;
@@ -1030,7 +1030,7 @@ void Vsd::initParameters()
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].max                                = 999999999.0;
+  parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].max                                = 999999999.9;
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].def                                = 0;
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].discret                            = 1;
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].code                               = 0;
@@ -1042,7 +1042,7 @@ void Vsd::initParameters()
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].max                                = 999999999.0;
+  parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].max                                = 999999999.9;
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].def                                = 0;
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].discret                            = 1;
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].code                               = 0;
@@ -1078,7 +1078,7 @@ void Vsd::initParameters()
   parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].max                                 = 999999999.0;
+  parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].max                                 = 999999999.9;
   parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].discret                             = 1;
   parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].code                                = 0;
@@ -1090,7 +1090,7 @@ void Vsd::initParameters()
   parameters_[VSD_RES_TIMECONST - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_RES_TIMECONST - VSD_BEGIN].value.float_t                       = 0.017;
   parameters_[VSD_RES_TIMECONST - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_RES_TIMECONST - VSD_BEGIN].max                                 = 999999999.0;
+  parameters_[VSD_RES_TIMECONST - VSD_BEGIN].max                                 = 999999999.9;
   parameters_[VSD_RES_TIMECONST - VSD_BEGIN].def                                 = 0.017;
   parameters_[VSD_RES_TIMECONST - VSD_BEGIN].discret                             = 1000;
   parameters_[VSD_RES_TIMECONST - VSD_BEGIN].code                                = 13;
@@ -1102,7 +1102,7 @@ void Vsd::initParameters()
   parameters_[VSD_RES_IAMP_VALID - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_RES_IAMP_VALID - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_RES_IAMP_VALID - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_RES_IAMP_VALID - VSD_BEGIN].max                                = 999999999.0;
+  parameters_[VSD_RES_IAMP_VALID - VSD_BEGIN].max                                = 999999999.9;
   parameters_[VSD_RES_IAMP_VALID - VSD_BEGIN].def                                = 0;
   parameters_[VSD_RES_IAMP_VALID - VSD_BEGIN].discret                            = 1;
   parameters_[VSD_RES_IAMP_VALID - VSD_BEGIN].code                               = 0;
@@ -1114,7 +1114,7 @@ void Vsd::initParameters()
   parameters_[VSD_IB - VSD_BEGIN].validity                                       = VALIDITY_ERROR;
   parameters_[VSD_IB - VSD_BEGIN].value.float_t                                  = 0;
   parameters_[VSD_IB - VSD_BEGIN].min                                            = 0.0;
-  parameters_[VSD_IB - VSD_BEGIN].max                                            = 999999999.0;
+  parameters_[VSD_IB - VSD_BEGIN].max                                            = 999999999.9;
   parameters_[VSD_IB - VSD_BEGIN].def                                            = 0;
   parameters_[VSD_IB - VSD_BEGIN].discret                                        = 1;
   parameters_[VSD_IB - VSD_BEGIN].code                                           = 0;
@@ -1126,7 +1126,7 @@ void Vsd::initParameters()
   parameters_[VSD_PHB - VSD_BEGIN].validity                                      = VALIDITY_ERROR;
   parameters_[VSD_PHB - VSD_BEGIN].value.float_t                                 = 0;
   parameters_[VSD_PHB - VSD_BEGIN].min                                           = 0.0;
-  parameters_[VSD_PHB - VSD_BEGIN].max                                           = 999999999.0;
+  parameters_[VSD_PHB - VSD_BEGIN].max                                           = 999999999.9;
   parameters_[VSD_PHB - VSD_BEGIN].def                                           = 0;
   parameters_[VSD_PHB - VSD_BEGIN].discret                                       = 1;
   parameters_[VSD_PHB - VSD_BEGIN].code                                          = 0;
@@ -1138,7 +1138,7 @@ void Vsd::initParameters()
   parameters_[VSD_IC - VSD_BEGIN].validity                                       = VALIDITY_ERROR;
   parameters_[VSD_IC - VSD_BEGIN].value.float_t                                  = 0;
   parameters_[VSD_IC - VSD_BEGIN].min                                            = 0.0;
-  parameters_[VSD_IC - VSD_BEGIN].max                                            = 999999999.0;
+  parameters_[VSD_IC - VSD_BEGIN].max                                            = 999999999.9;
   parameters_[VSD_IC - VSD_BEGIN].def                                            = 0;
   parameters_[VSD_IC - VSD_BEGIN].discret                                        = 1;
   parameters_[VSD_IC - VSD_BEGIN].code                                           = 0;
@@ -1150,7 +1150,7 @@ void Vsd::initParameters()
   parameters_[VSD_PHC - VSD_BEGIN].validity                                      = VALIDITY_ERROR;
   parameters_[VSD_PHC - VSD_BEGIN].value.float_t                                 = 0;
   parameters_[VSD_PHC - VSD_BEGIN].min                                           = 0.0;
-  parameters_[VSD_PHC - VSD_BEGIN].max                                           = 999999999.0;
+  parameters_[VSD_PHC - VSD_BEGIN].max                                           = 999999999.9;
   parameters_[VSD_PHC - VSD_BEGIN].def                                           = 0;
   parameters_[VSD_PHC - VSD_BEGIN].discret                                       = 1;
   parameters_[VSD_PHC - VSD_BEGIN].code                                          = 0;
@@ -1162,7 +1162,7 @@ void Vsd::initParameters()
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].value.float_t                     = 100.0;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].max                               = 999999999.0;
+  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].max                               = 999999999.9;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].def                               = 0.25;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].discret                           = 100;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].code                              = 13;
@@ -1198,7 +1198,7 @@ void Vsd::initParameters()
   parameters_[VSD_TIME_SECOND - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_TIME_SECOND - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_TIME_SECOND - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_TIME_SECOND - VSD_BEGIN].max                                   = 999999999.0;
+  parameters_[VSD_TIME_SECOND - VSD_BEGIN].max                                   = 999999999.9;
   parameters_[VSD_TIME_SECOND - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_TIME_SECOND - VSD_BEGIN].discret                               = 1;
   parameters_[VSD_TIME_SECOND - VSD_BEGIN].code                                  = 0;
@@ -1210,7 +1210,7 @@ void Vsd::initParameters()
   parameters_[VSD_TIME_MINUTE - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_TIME_MINUTE - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_TIME_MINUTE - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_TIME_MINUTE - VSD_BEGIN].max                                   = 999999999.0;
+  parameters_[VSD_TIME_MINUTE - VSD_BEGIN].max                                   = 999999999.9;
   parameters_[VSD_TIME_MINUTE - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_TIME_MINUTE - VSD_BEGIN].discret                               = 1;
   parameters_[VSD_TIME_MINUTE - VSD_BEGIN].code                                  = 0;
@@ -1222,7 +1222,7 @@ void Vsd::initParameters()
   parameters_[VSD_TIME_HOUR - VSD_BEGIN].validity                                = VALIDITY_ERROR;
   parameters_[VSD_TIME_HOUR - VSD_BEGIN].value.float_t                           = 0;
   parameters_[VSD_TIME_HOUR - VSD_BEGIN].min                                     = 0.0;
-  parameters_[VSD_TIME_HOUR - VSD_BEGIN].max                                     = 999999999.0;
+  parameters_[VSD_TIME_HOUR - VSD_BEGIN].max                                     = 999999999.9;
   parameters_[VSD_TIME_HOUR - VSD_BEGIN].def                                     = 0;
   parameters_[VSD_TIME_HOUR - VSD_BEGIN].discret                                 = 1;
   parameters_[VSD_TIME_HOUR - VSD_BEGIN].code                                    = 0;
@@ -1234,7 +1234,7 @@ void Vsd::initParameters()
   parameters_[VSD_TIME_DAY - VSD_BEGIN].validity                                 = VALIDITY_ERROR;
   parameters_[VSD_TIME_DAY - VSD_BEGIN].value.float_t                            = 0;
   parameters_[VSD_TIME_DAY - VSD_BEGIN].min                                      = 0.0;
-  parameters_[VSD_TIME_DAY - VSD_BEGIN].max                                      = 999999999.0;
+  parameters_[VSD_TIME_DAY - VSD_BEGIN].max                                      = 999999999.9;
   parameters_[VSD_TIME_DAY - VSD_BEGIN].def                                      = 0;
   parameters_[VSD_TIME_DAY - VSD_BEGIN].discret                                  = 1;
   parameters_[VSD_TIME_DAY - VSD_BEGIN].code                                     = 0;
@@ -1246,7 +1246,7 @@ void Vsd::initParameters()
   parameters_[VSD_TIME_MONTH - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_TIME_MONTH - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_TIME_MONTH - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_TIME_MONTH - VSD_BEGIN].max                                    = 999999999.0;
+  parameters_[VSD_TIME_MONTH - VSD_BEGIN].max                                    = 999999999.9;
   parameters_[VSD_TIME_MONTH - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_TIME_MONTH - VSD_BEGIN].discret                                = 1;
   parameters_[VSD_TIME_MONTH - VSD_BEGIN].code                                   = 0;
@@ -1258,7 +1258,7 @@ void Vsd::initParameters()
   parameters_[VSD_TIME_YEAR - VSD_BEGIN].validity                                = VALIDITY_ERROR;
   parameters_[VSD_TIME_YEAR - VSD_BEGIN].value.float_t                           = 0;
   parameters_[VSD_TIME_YEAR - VSD_BEGIN].min                                     = 0.0;
-  parameters_[VSD_TIME_YEAR - VSD_BEGIN].max                                     = 999999999.0;
+  parameters_[VSD_TIME_YEAR - VSD_BEGIN].max                                     = 999999999.9;
   parameters_[VSD_TIME_YEAR - VSD_BEGIN].def                                     = 0;
   parameters_[VSD_TIME_YEAR - VSD_BEGIN].discret                                 = 1;
   parameters_[VSD_TIME_YEAR - VSD_BEGIN].code                                    = 0;
@@ -1294,7 +1294,7 @@ void Vsd::initParameters()
   parameters_[VSD_AST_LOUT_1_0 - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_AST_LOUT_1_0 - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_AST_LOUT_1_0 - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_AST_LOUT_1_0 - VSD_BEGIN].max                                  = 999999999.0;
+  parameters_[VSD_AST_LOUT_1_0 - VSD_BEGIN].max                                  = 999999999.9;
   parameters_[VSD_AST_LOUT_1_0 - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_AST_LOUT_1_0 - VSD_BEGIN].discret                              = 1;
   parameters_[VSD_AST_LOUT_1_0 - VSD_BEGIN].code                                 = 0;
@@ -1306,7 +1306,7 @@ void Vsd::initParameters()
   parameters_[VSD_AST_STANDING - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_AST_STANDING - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_AST_STANDING - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_AST_STANDING - VSD_BEGIN].max                                  = 999999999.0;
+  parameters_[VSD_AST_STANDING - VSD_BEGIN].max                                  = 999999999.9;
   parameters_[VSD_AST_STANDING - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_AST_STANDING - VSD_BEGIN].discret                              = 1;
   parameters_[VSD_AST_STANDING - VSD_BEGIN].code                                 = 0;
@@ -1318,7 +1318,7 @@ void Vsd::initParameters()
   parameters_[VSD_STATUS_WORD_2 - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_STATUS_WORD_2 - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_STATUS_WORD_2 - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_STATUS_WORD_2 - VSD_BEGIN].max                                 = 999999999.0;
+  parameters_[VSD_STATUS_WORD_2 - VSD_BEGIN].max                                 = 999999999.9;
   parameters_[VSD_STATUS_WORD_2 - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_STATUS_WORD_2 - VSD_BEGIN].discret                             = 1;
   parameters_[VSD_STATUS_WORD_2 - VSD_BEGIN].code                                = 0;
@@ -1330,7 +1330,7 @@ void Vsd::initParameters()
   parameters_[VSD_JARRING_PERIOD - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_JARRING_PERIOD - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_JARRING_PERIOD - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_JARRING_PERIOD - VSD_BEGIN].max                                = 999999999.0;
+  parameters_[VSD_JARRING_PERIOD - VSD_BEGIN].max                                = 999999999.9;
   parameters_[VSD_JARRING_PERIOD - VSD_BEGIN].def                                = 0;
   parameters_[VSD_JARRING_PERIOD - VSD_BEGIN].discret                            = 1;
   parameters_[VSD_JARRING_PERIOD - VSD_BEGIN].code                               = 0;
@@ -1342,7 +1342,7 @@ void Vsd::initParameters()
   parameters_[VSD_JARRING_UPDFREQ - VSD_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[VSD_JARRING_UPDFREQ - VSD_BEGIN].value.float_t                     = 0;
   parameters_[VSD_JARRING_UPDFREQ - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_JARRING_UPDFREQ - VSD_BEGIN].max                               = 999999999.0;
+  parameters_[VSD_JARRING_UPDFREQ - VSD_BEGIN].max                               = 999999999.9;
   parameters_[VSD_JARRING_UPDFREQ - VSD_BEGIN].def                               = 0;
   parameters_[VSD_JARRING_UPDFREQ - VSD_BEGIN].discret                           = 1;
   parameters_[VSD_JARRING_UPDFREQ - VSD_BEGIN].code                              = 0;
@@ -1354,7 +1354,7 @@ void Vsd::initParameters()
   parameters_[VSD_JARRING_UPTIME - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_JARRING_UPTIME - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_JARRING_UPTIME - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_JARRING_UPTIME - VSD_BEGIN].max                                = 999999999.0;
+  parameters_[VSD_JARRING_UPTIME - VSD_BEGIN].max                                = 999999999.9;
   parameters_[VSD_JARRING_UPTIME - VSD_BEGIN].def                                = 0;
   parameters_[VSD_JARRING_UPTIME - VSD_BEGIN].discret                            = 1;
   parameters_[VSD_JARRING_UPTIME - VSD_BEGIN].code                               = 0;
@@ -1366,7 +1366,7 @@ void Vsd::initParameters()
   parameters_[VSD_JARRING_DOWNDFREQ - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_JARRING_DOWNDFREQ - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_JARRING_DOWNDFREQ - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_JARRING_DOWNDFREQ - VSD_BEGIN].max                             = 999999999.0;
+  parameters_[VSD_JARRING_DOWNDFREQ - VSD_BEGIN].max                             = 999999999.9;
   parameters_[VSD_JARRING_DOWNDFREQ - VSD_BEGIN].def                             = 0;
   parameters_[VSD_JARRING_DOWNDFREQ - VSD_BEGIN].discret                         = 1;
   parameters_[VSD_JARRING_DOWNDFREQ - VSD_BEGIN].code                            = 0;
@@ -1378,7 +1378,7 @@ void Vsd::initParameters()
   parameters_[VSD_JARRING_DOWNTIME - VSD_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[VSD_JARRING_DOWNTIME - VSD_BEGIN].value.float_t                    = 0;
   parameters_[VSD_JARRING_DOWNTIME - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_JARRING_DOWNTIME - VSD_BEGIN].max                              = 999999999.0;
+  parameters_[VSD_JARRING_DOWNTIME - VSD_BEGIN].max                              = 999999999.9;
   parameters_[VSD_JARRING_DOWNTIME - VSD_BEGIN].def                              = 0;
   parameters_[VSD_JARRING_DOWNTIME - VSD_BEGIN].discret                          = 1;
   parameters_[VSD_JARRING_DOWNTIME - VSD_BEGIN].code                             = 0;
@@ -1402,7 +1402,7 @@ void Vsd::initParameters()
   parameters_[VSD_JARRING_TICK_CNT - VSD_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[VSD_JARRING_TICK_CNT - VSD_BEGIN].value.float_t                    = 0;
   parameters_[VSD_JARRING_TICK_CNT - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_JARRING_TICK_CNT - VSD_BEGIN].max                              = 999999999.0;
+  parameters_[VSD_JARRING_TICK_CNT - VSD_BEGIN].max                              = 999999999.9;
   parameters_[VSD_JARRING_TICK_CNT - VSD_BEGIN].def                              = 0;
   parameters_[VSD_JARRING_TICK_CNT - VSD_BEGIN].discret                          = 1;
   parameters_[VSD_JARRING_TICK_CNT - VSD_BEGIN].code                             = 0;
@@ -1414,7 +1414,7 @@ void Vsd::initParameters()
   parameters_[VSD_JARRING_SECOND_CNT - VSD_BEGIN].validity                       = VALIDITY_ERROR;
   parameters_[VSD_JARRING_SECOND_CNT - VSD_BEGIN].value.float_t                  = 0;
   parameters_[VSD_JARRING_SECOND_CNT - VSD_BEGIN].min                            = 0.0;
-  parameters_[VSD_JARRING_SECOND_CNT - VSD_BEGIN].max                            = 999999999.0;
+  parameters_[VSD_JARRING_SECOND_CNT - VSD_BEGIN].max                            = 999999999.9;
   parameters_[VSD_JARRING_SECOND_CNT - VSD_BEGIN].def                            = 0;
   parameters_[VSD_JARRING_SECOND_CNT - VSD_BEGIN].discret                        = 1;
   parameters_[VSD_JARRING_SECOND_CNT - VSD_BEGIN].code                           = 0;
@@ -1426,7 +1426,7 @@ void Vsd::initParameters()
   parameters_[VSD_START_FREQ - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_START_FREQ - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_START_FREQ - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_START_FREQ - VSD_BEGIN].max                                    = 999999999.0;
+  parameters_[VSD_START_FREQ - VSD_BEGIN].max                                    = 999999999.9;
   parameters_[VSD_START_FREQ - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_START_FREQ - VSD_BEGIN].discret                                = 100;
   parameters_[VSD_START_FREQ - VSD_BEGIN].code                                   = 0;
@@ -1438,7 +1438,7 @@ void Vsd::initParameters()
   parameters_[VSD_IA - VSD_BEGIN].validity                                       = VALIDITY_ERROR;
   parameters_[VSD_IA - VSD_BEGIN].value.float_t                                  = 0;
   parameters_[VSD_IA - VSD_BEGIN].min                                            = 0.0;
-  parameters_[VSD_IA - VSD_BEGIN].max                                            = 999999999.0;
+  parameters_[VSD_IA - VSD_BEGIN].max                                            = 999999999.9;
   parameters_[VSD_IA - VSD_BEGIN].def                                            = 0;
   parameters_[VSD_IA - VSD_BEGIN].discret                                        = 1;
   parameters_[VSD_IA - VSD_BEGIN].code                                           = 0;
@@ -1450,7 +1450,7 @@ void Vsd::initParameters()
   parameters_[VSD_PHA - VSD_BEGIN].validity                                      = VALIDITY_ERROR;
   parameters_[VSD_PHA - VSD_BEGIN].value.float_t                                 = 0;
   parameters_[VSD_PHA - VSD_BEGIN].min                                           = 0.0;
-  parameters_[VSD_PHA - VSD_BEGIN].max                                           = 999999999.0;
+  parameters_[VSD_PHA - VSD_BEGIN].max                                           = 999999999.9;
   parameters_[VSD_PHA - VSD_BEGIN].def                                           = 0;
   parameters_[VSD_PHA - VSD_BEGIN].discret                                       = 1;
   parameters_[VSD_PHA - VSD_BEGIN].code                                          = 0;
@@ -1462,7 +1462,7 @@ void Vsd::initParameters()
   parameters_[VSD_PHOUT - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_PHOUT - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_PHOUT - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_PHOUT - VSD_BEGIN].max                                         = 999999999.0;
+  parameters_[VSD_PHOUT - VSD_BEGIN].max                                         = 999999999.9;
   parameters_[VSD_PHOUT - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_PHOUT - VSD_BEGIN].discret                                     = 1;
   parameters_[VSD_PHOUT - VSD_BEGIN].code                                        = 0;
@@ -1474,7 +1474,7 @@ void Vsd::initParameters()
   parameters_[VSD_TEST0 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_TEST0 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_TEST0 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_TEST0 - VSD_BEGIN].max                                         = 999999999.0;
+  parameters_[VSD_TEST0 - VSD_BEGIN].max                                         = 999999999.9;
   parameters_[VSD_TEST0 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_TEST0 - VSD_BEGIN].discret                                     = 1;
   parameters_[VSD_TEST0 - VSD_BEGIN].code                                        = 0;
@@ -1486,7 +1486,7 @@ void Vsd::initParameters()
   parameters_[VSD_TEST1 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_TEST1 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_TEST1 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_TEST1 - VSD_BEGIN].max                                         = 999999999.0;
+  parameters_[VSD_TEST1 - VSD_BEGIN].max                                         = 999999999.9;
   parameters_[VSD_TEST1 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_TEST1 - VSD_BEGIN].discret                                     = 1;
   parameters_[VSD_TEST1 - VSD_BEGIN].code                                        = 0;
@@ -1498,7 +1498,7 @@ void Vsd::initParameters()
   parameters_[VSD_TEST2 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_TEST2 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_TEST2 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_TEST2 - VSD_BEGIN].max                                         = 999999999.0;
+  parameters_[VSD_TEST2 - VSD_BEGIN].max                                         = 999999999.9;
   parameters_[VSD_TEST2 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_TEST2 - VSD_BEGIN].discret                                     = 1;
   parameters_[VSD_TEST2 - VSD_BEGIN].code                                        = 0;
@@ -1510,7 +1510,7 @@ void Vsd::initParameters()
   parameters_[VSD_TEST3 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_TEST3 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_TEST3 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_TEST3 - VSD_BEGIN].max                                         = 999999999.0;
+  parameters_[VSD_TEST3 - VSD_BEGIN].max                                         = 999999999.9;
   parameters_[VSD_TEST3 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_TEST3 - VSD_BEGIN].discret                                     = 1;
   parameters_[VSD_TEST3 - VSD_BEGIN].code                                        = 0;
@@ -1522,7 +1522,7 @@ void Vsd::initParameters()
   parameters_[VSD_TEST4 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_TEST4 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_TEST4 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_TEST4 - VSD_BEGIN].max                                         = 999999999.0;
+  parameters_[VSD_TEST4 - VSD_BEGIN].max                                         = 999999999.9;
   parameters_[VSD_TEST4 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_TEST4 - VSD_BEGIN].discret                                     = 1;
   parameters_[VSD_TEST4 - VSD_BEGIN].code                                        = 0;
@@ -1534,7 +1534,7 @@ void Vsd::initParameters()
   parameters_[VSD_TEST5 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_TEST5 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_TEST5 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_TEST5 - VSD_BEGIN].max                                         = 999999999.0;
+  parameters_[VSD_TEST5 - VSD_BEGIN].max                                         = 999999999.9;
   parameters_[VSD_TEST5 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_TEST5 - VSD_BEGIN].discret                                     = 1;
   parameters_[VSD_TEST5 - VSD_BEGIN].code                                        = 0;
@@ -1546,7 +1546,7 @@ void Vsd::initParameters()
   parameters_[VSD_TEST6 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_TEST6 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_TEST6 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_TEST6 - VSD_BEGIN].max                                         = 999999999.0;
+  parameters_[VSD_TEST6 - VSD_BEGIN].max                                         = 999999999.9;
   parameters_[VSD_TEST6 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_TEST6 - VSD_BEGIN].discret                                     = 1;
   parameters_[VSD_TEST6 - VSD_BEGIN].code                                        = 0;
@@ -1558,7 +1558,7 @@ void Vsd::initParameters()
   parameters_[VSD_TEST7 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_TEST7 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_TEST7 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_TEST7 - VSD_BEGIN].max                                         = 999999999.0;
+  parameters_[VSD_TEST7 - VSD_BEGIN].max                                         = 999999999.9;
   parameters_[VSD_TEST7 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_TEST7 - VSD_BEGIN].discret                                     = 1;
   parameters_[VSD_TEST7 - VSD_BEGIN].code                                        = 0;
@@ -1570,7 +1570,7 @@ void Vsd::initParameters()
   parameters_[VSD_IOUT - VSD_BEGIN].validity                                     = VALIDITY_ERROR;
   parameters_[VSD_IOUT - VSD_BEGIN].value.float_t                                = 0;
   parameters_[VSD_IOUT - VSD_BEGIN].min                                          = 0.0;
-  parameters_[VSD_IOUT - VSD_BEGIN].max                                          = 999999999.0;
+  parameters_[VSD_IOUT - VSD_BEGIN].max                                          = 999999999.9;
   parameters_[VSD_IOUT - VSD_BEGIN].def                                          = 0;
   parameters_[VSD_IOUT - VSD_BEGIN].discret                                      = 1;
   parameters_[VSD_IOUT - VSD_BEGIN].code                                         = 0;
@@ -1582,7 +1582,7 @@ void Vsd::initParameters()
   parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].max                                 = 999999999.0;
+  parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].max                                 = 999999999.9;
   parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].discret                             = 1;
   parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].code                                = 0;
@@ -1594,7 +1594,7 @@ void Vsd::initParameters()
   parameters_[VSD_SOUT - VSD_BEGIN].validity                                     = VALIDITY_ERROR;
   parameters_[VSD_SOUT - VSD_BEGIN].value.float_t                                = 0;
   parameters_[VSD_SOUT - VSD_BEGIN].min                                          = 0.0;
-  parameters_[VSD_SOUT - VSD_BEGIN].max                                          = 999999999.0;
+  parameters_[VSD_SOUT - VSD_BEGIN].max                                          = 999999999.9;
   parameters_[VSD_SOUT - VSD_BEGIN].def                                          = 0;
   parameters_[VSD_SOUT - VSD_BEGIN].discret                                      = 1;
   parameters_[VSD_SOUT - VSD_BEGIN].code                                         = 0;
@@ -1630,7 +1630,7 @@ void Vsd::initParameters()
   parameters_[VSD_OVERPWM2_ANGLE - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_OVERPWM2_ANGLE - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_OVERPWM2_ANGLE - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_OVERPWM2_ANGLE - VSD_BEGIN].max                                = 999999999.0;
+  parameters_[VSD_OVERPWM2_ANGLE - VSD_BEGIN].max                                = 999999999.9;
   parameters_[VSD_OVERPWM2_ANGLE - VSD_BEGIN].def                                = 0;
   parameters_[VSD_OVERPWM2_ANGLE - VSD_BEGIN].discret                            = 1;
   parameters_[VSD_OVERPWM2_ANGLE - VSD_BEGIN].code                               = 0;
@@ -1642,7 +1642,7 @@ void Vsd::initParameters()
   parameters_[VSD_OVERPWM_GAIN - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_OVERPWM_GAIN - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_OVERPWM_GAIN - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_OVERPWM_GAIN - VSD_BEGIN].max                                  = 999999999.0;
+  parameters_[VSD_OVERPWM_GAIN - VSD_BEGIN].max                                  = 999999999.9;
   parameters_[VSD_OVERPWM_GAIN - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_OVERPWM_GAIN - VSD_BEGIN].discret                              = 1;
   parameters_[VSD_OVERPWM_GAIN - VSD_BEGIN].code                                 = 0;
@@ -1666,7 +1666,7 @@ void Vsd::initParameters()
   parameters_[VSD_FC_IRMS - VSD_BEGIN].validity                                  = VALIDITY_ERROR;
   parameters_[VSD_FC_IRMS - VSD_BEGIN].value.float_t                             = 0;
   parameters_[VSD_FC_IRMS - VSD_BEGIN].min                                       = 0.0;
-  parameters_[VSD_FC_IRMS - VSD_BEGIN].max                                       = 999999999.0;
+  parameters_[VSD_FC_IRMS - VSD_BEGIN].max                                       = 999999999.9;
   parameters_[VSD_FC_IRMS - VSD_BEGIN].def                                       = 0;
   parameters_[VSD_FC_IRMS - VSD_BEGIN].discret                                   = 1;
   parameters_[VSD_FC_IRMS - VSD_BEGIN].code                                      = 0;
@@ -1678,7 +1678,7 @@ void Vsd::initParameters()
   parameters_[VSD_FC_T_OVERLOAD - VSD_BEGIN].validity                            = 0;
   parameters_[VSD_FC_T_OVERLOAD - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_FC_T_OVERLOAD - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_FC_T_OVERLOAD - VSD_BEGIN].max                                 = 999999999.0;
+  parameters_[VSD_FC_T_OVERLOAD - VSD_BEGIN].max                                 = 999999999.9;
   parameters_[VSD_FC_T_OVERLOAD - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_FC_T_OVERLOAD - VSD_BEGIN].discret                             = 1;
   parameters_[VSD_FC_T_OVERLOAD - VSD_BEGIN].code                                = 0;
@@ -1690,7 +1690,7 @@ void Vsd::initParameters()
   parameters_[VSD_FC_ILIM_LONG - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_FC_ILIM_LONG - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_FC_ILIM_LONG - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_FC_ILIM_LONG - VSD_BEGIN].max                                  = 999999999.0;
+  parameters_[VSD_FC_ILIM_LONG - VSD_BEGIN].max                                  = 999999999.9;
   parameters_[VSD_FC_ILIM_LONG - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_FC_ILIM_LONG - VSD_BEGIN].discret                              = 1;
   parameters_[VSD_FC_ILIM_LONG - VSD_BEGIN].code                                 = 0;
@@ -1702,7 +1702,7 @@ void Vsd::initParameters()
   parameters_[VSD_FC_TLIM - VSD_BEGIN].validity                                  = VALIDITY_ERROR;
   parameters_[VSD_FC_TLIM - VSD_BEGIN].value.float_t                             = 0.004;
   parameters_[VSD_FC_TLIM - VSD_BEGIN].min                                       = 0.0;
-  parameters_[VSD_FC_TLIM - VSD_BEGIN].max                                       = 999999999.0;
+  parameters_[VSD_FC_TLIM - VSD_BEGIN].max                                       = 999999999.9;
   parameters_[VSD_FC_TLIM - VSD_BEGIN].def                                       = 0.004;
   parameters_[VSD_FC_TLIM - VSD_BEGIN].discret                                   = 1000;
   parameters_[VSD_FC_TLIM - VSD_BEGIN].code                                      = 13;
@@ -1738,7 +1738,7 @@ void Vsd::initParameters()
   parameters_[VSD_M_I_FAST - VSD_BEGIN].validity                                 = VALIDITY_ERROR;
   parameters_[VSD_M_I_FAST - VSD_BEGIN].value.float_t                            = 0;
   parameters_[VSD_M_I_FAST - VSD_BEGIN].min                                      = 0.0;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].max                                      = 999999999.0;
+  parameters_[VSD_M_I_FAST - VSD_BEGIN].max                                      = 999999999.9;
   parameters_[VSD_M_I_FAST - VSD_BEGIN].def                                      = 0;
   parameters_[VSD_M_I_FAST - VSD_BEGIN].discret                                  = 1;
   parameters_[VSD_M_I_FAST - VSD_BEGIN].code                                     = 0;
@@ -1750,7 +1750,7 @@ void Vsd::initParameters()
   parameters_[VSD_T_BLANK - VSD_BEGIN].validity                                  = VALIDITY_ERROR;
   parameters_[VSD_T_BLANK - VSD_BEGIN].value.float_t                             = 0;
   parameters_[VSD_T_BLANK - VSD_BEGIN].min                                       = 0.0;
-  parameters_[VSD_T_BLANK - VSD_BEGIN].max                                       = 999999999.0;
+  parameters_[VSD_T_BLANK - VSD_BEGIN].max                                       = 999999999.9;
   parameters_[VSD_T_BLANK - VSD_BEGIN].def                                       = 0;
   parameters_[VSD_T_BLANK - VSD_BEGIN].discret                                   = 1;
   parameters_[VSD_T_BLANK - VSD_BEGIN].code                                      = 0;
@@ -1762,7 +1762,7 @@ void Vsd::initParameters()
   parameters_[VSD_PID_I_REF - VSD_BEGIN].validity                                = VALIDITY_ERROR;
   parameters_[VSD_PID_I_REF - VSD_BEGIN].value.float_t                           = 0;
   parameters_[VSD_PID_I_REF - VSD_BEGIN].min                                     = 0.0;
-  parameters_[VSD_PID_I_REF - VSD_BEGIN].max                                     = 999999999.0;
+  parameters_[VSD_PID_I_REF - VSD_BEGIN].max                                     = 999999999.9;
   parameters_[VSD_PID_I_REF - VSD_BEGIN].def                                     = 0;
   parameters_[VSD_PID_I_REF - VSD_BEGIN].discret                                 = 1;
   parameters_[VSD_PID_I_REF - VSD_BEGIN].code                                    = 0;
@@ -1774,7 +1774,7 @@ void Vsd::initParameters()
   parameters_[VSD_PID_T_REG - VSD_BEGIN].validity                                = VALIDITY_ERROR;
   parameters_[VSD_PID_T_REG - VSD_BEGIN].value.float_t                           = 0;
   parameters_[VSD_PID_T_REG - VSD_BEGIN].min                                     = 0.0;
-  parameters_[VSD_PID_T_REG - VSD_BEGIN].max                                     = 999999999.0;
+  parameters_[VSD_PID_T_REG - VSD_BEGIN].max                                     = 999999999.9;
   parameters_[VSD_PID_T_REG - VSD_BEGIN].def                                     = 0;
   parameters_[VSD_PID_T_REG - VSD_BEGIN].discret                                 = 1;
   parameters_[VSD_PID_T_REG - VSD_BEGIN].code                                    = 0;
@@ -1786,7 +1786,7 @@ void Vsd::initParameters()
   parameters_[VSD_PID_T_REG_1 - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_PID_T_REG_1 - VSD_BEGIN].value.float_t                         = 0;
   parameters_[VSD_PID_T_REG_1 - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_PID_T_REG_1 - VSD_BEGIN].max                                   = 999999999.0;
+  parameters_[VSD_PID_T_REG_1 - VSD_BEGIN].max                                   = 999999999.9;
   parameters_[VSD_PID_T_REG_1 - VSD_BEGIN].def                                   = 0;
   parameters_[VSD_PID_T_REG_1 - VSD_BEGIN].discret                               = 1;
   parameters_[VSD_PID_T_REG_1 - VSD_BEGIN].code                                  = 0;
@@ -1798,7 +1798,7 @@ void Vsd::initParameters()
   parameters_[VSD_STATUS_WORD_3 - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_STATUS_WORD_3 - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_STATUS_WORD_3 - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_STATUS_WORD_3 - VSD_BEGIN].max                                 = 999999999.0;
+  parameters_[VSD_STATUS_WORD_3 - VSD_BEGIN].max                                 = 999999999.9;
   parameters_[VSD_STATUS_WORD_3 - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_STATUS_WORD_3 - VSD_BEGIN].discret                             = 1;
   parameters_[VSD_STATUS_WORD_3 - VSD_BEGIN].code                                = 0;
@@ -1858,7 +1858,7 @@ void Vsd::initParameters()
   parameters_[VSD_UNIT_SPEED - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_UNIT_SPEED - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_UNIT_SPEED - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_UNIT_SPEED - VSD_BEGIN].max                                    = 999999999.0;
+  parameters_[VSD_UNIT_SPEED - VSD_BEGIN].max                                    = 999999999.9;
   parameters_[VSD_UNIT_SPEED - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_UNIT_SPEED - VSD_BEGIN].discret                                = 1;
   parameters_[VSD_UNIT_SPEED - VSD_BEGIN].code                                   = 0;
@@ -1894,7 +1894,7 @@ void Vsd::initParameters()
   parameters_[VSD_DAMPING_GANE - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_DAMPING_GANE - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_DAMPING_GANE - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_DAMPING_GANE - VSD_BEGIN].max                                  = 999999999.0;
+  parameters_[VSD_DAMPING_GANE - VSD_BEGIN].max                                  = 999999999.9;
   parameters_[VSD_DAMPING_GANE - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_DAMPING_GANE - VSD_BEGIN].discret                              = 1;
   parameters_[VSD_DAMPING_GANE - VSD_BEGIN].code                                 = 0;
@@ -1906,7 +1906,7 @@ void Vsd::initParameters()
   parameters_[VSD_LOW_SPEED_FILTER_TIME - VSD_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[VSD_LOW_SPEED_FILTER_TIME - VSD_BEGIN].value.float_t               = 0;
   parameters_[VSD_LOW_SPEED_FILTER_TIME - VSD_BEGIN].min                         = 0.0;
-  parameters_[VSD_LOW_SPEED_FILTER_TIME - VSD_BEGIN].max                         = 999999999.0;
+  parameters_[VSD_LOW_SPEED_FILTER_TIME - VSD_BEGIN].max                         = 999999999.9;
   parameters_[VSD_LOW_SPEED_FILTER_TIME - VSD_BEGIN].def                         = 0;
   parameters_[VSD_LOW_SPEED_FILTER_TIME - VSD_BEGIN].discret                     = 1;
   parameters_[VSD_LOW_SPEED_FILTER_TIME - VSD_BEGIN].code                        = 0;
@@ -1918,7 +1918,7 @@ void Vsd::initParameters()
   parameters_[VSD_HIGH_SPEED_FILTER_TIME - VSD_BEGIN].validity                   = VALIDITY_ERROR;
   parameters_[VSD_HIGH_SPEED_FILTER_TIME - VSD_BEGIN].value.float_t              = 0;
   parameters_[VSD_HIGH_SPEED_FILTER_TIME - VSD_BEGIN].min                        = 0.0;
-  parameters_[VSD_HIGH_SPEED_FILTER_TIME - VSD_BEGIN].max                        = 999999999.0;
+  parameters_[VSD_HIGH_SPEED_FILTER_TIME - VSD_BEGIN].max                        = 999999999.9;
   parameters_[VSD_HIGH_SPEED_FILTER_TIME - VSD_BEGIN].def                        = 0;
   parameters_[VSD_HIGH_SPEED_FILTER_TIME - VSD_BEGIN].discret                    = 1;
   parameters_[VSD_HIGH_SPEED_FILTER_TIME - VSD_BEGIN].code                       = 0;
@@ -1930,7 +1930,7 @@ void Vsd::initParameters()
   parameters_[VSD_RATE_TORQUE_MOTOR - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_RATE_TORQUE_MOTOR - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_RATE_TORQUE_MOTOR - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_RATE_TORQUE_MOTOR - VSD_BEGIN].max                             = 999999999.0;
+  parameters_[VSD_RATE_TORQUE_MOTOR - VSD_BEGIN].max                             = 999999999.9;
   parameters_[VSD_RATE_TORQUE_MOTOR - VSD_BEGIN].def                             = 0;
   parameters_[VSD_RATE_TORQUE_MOTOR - VSD_BEGIN].discret                         = 1;
   parameters_[VSD_RATE_TORQUE_MOTOR - VSD_BEGIN].code                            = 0;
@@ -1942,7 +1942,7 @@ void Vsd::initParameters()
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].max                             = 999999999.0;
+  parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].max                             = 999999999.9;
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].def                             = 0;
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].discret                         = 1;
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].code                            = 0;
@@ -1954,7 +1954,7 @@ void Vsd::initParameters()
   parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].value.float_t                 = 0;
   parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].max                           = 999999999.0;
+  parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].max                           = 999999999.9;
   parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].def                           = 0;
   parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].discret                       = 1;
   parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].code                          = 0;
@@ -1966,7 +1966,7 @@ void Vsd::initParameters()
   parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].value.float_t                 = 0;
   parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].max                           = 999999999.0;
+  parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].max                           = 999999999.9;
   parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].def                           = 0;
   parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].discret                       = 1;
   parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].code                          = 0;
@@ -2242,7 +2242,7 @@ void Vsd::initParameters()
   parameters_[VSD_TORQUE_LIMIT_GEN - VSD_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[VSD_TORQUE_LIMIT_GEN - VSD_BEGIN].value.float_t                    = 0;
   parameters_[VSD_TORQUE_LIMIT_GEN - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_TORQUE_LIMIT_GEN - VSD_BEGIN].max                              = 999999999.0;
+  parameters_[VSD_TORQUE_LIMIT_GEN - VSD_BEGIN].max                              = 999999999.9;
   parameters_[VSD_TORQUE_LIMIT_GEN - VSD_BEGIN].def                              = 0;
   parameters_[VSD_TORQUE_LIMIT_GEN - VSD_BEGIN].discret                          = 1;
   parameters_[VSD_TORQUE_LIMIT_GEN - VSD_BEGIN].code                             = 0;
@@ -2362,7 +2362,7 @@ void Vsd::initParameters()
   parameters_[VSD_WARNING_CURRENT_LOW - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_WARNING_CURRENT_LOW - VSD_BEGIN].value.float_t                 = 0;
   parameters_[VSD_WARNING_CURRENT_LOW - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_WARNING_CURRENT_LOW - VSD_BEGIN].max                           = 999999999.0;
+  parameters_[VSD_WARNING_CURRENT_LOW - VSD_BEGIN].max                           = 999999999.9;
   parameters_[VSD_WARNING_CURRENT_LOW - VSD_BEGIN].def                           = 0;
   parameters_[VSD_WARNING_CURRENT_LOW - VSD_BEGIN].discret                       = 1;
   parameters_[VSD_WARNING_CURRENT_LOW - VSD_BEGIN].code                          = 0;
@@ -2374,7 +2374,7 @@ void Vsd::initParameters()
   parameters_[VSD_WARNING_CURRENT_HIGH - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_WARNING_CURRENT_HIGH - VSD_BEGIN].value.float_t                = 0;
   parameters_[VSD_WARNING_CURRENT_HIGH - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_WARNING_CURRENT_HIGH - VSD_BEGIN].max                          = 999999999.0;
+  parameters_[VSD_WARNING_CURRENT_HIGH - VSD_BEGIN].max                          = 999999999.9;
   parameters_[VSD_WARNING_CURRENT_HIGH - VSD_BEGIN].def                          = 0;
   parameters_[VSD_WARNING_CURRENT_HIGH - VSD_BEGIN].discret                      = 1;
   parameters_[VSD_WARNING_CURRENT_HIGH - VSD_BEGIN].code                         = 0;
@@ -2386,7 +2386,7 @@ void Vsd::initParameters()
   parameters_[VSD_WARNING_SPEED_LOW - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_WARNING_SPEED_LOW - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_WARNING_SPEED_LOW - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_WARNING_SPEED_LOW - VSD_BEGIN].max                             = 999999999.0;
+  parameters_[VSD_WARNING_SPEED_LOW - VSD_BEGIN].max                             = 999999999.9;
   parameters_[VSD_WARNING_SPEED_LOW - VSD_BEGIN].def                             = 0;
   parameters_[VSD_WARNING_SPEED_LOW - VSD_BEGIN].discret                         = 1;
   parameters_[VSD_WARNING_SPEED_LOW - VSD_BEGIN].code                            = 0;
@@ -2626,7 +2626,7 @@ void Vsd::initParameters()
   parameters_[VSD_SL_15 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_SL_15 - VSD_BEGIN].value.float_t                               = 9.0;
   parameters_[VSD_SL_15 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_SL_15 - VSD_BEGIN].max                                         = 999999999.0;
+  parameters_[VSD_SL_15 - VSD_BEGIN].max                                         = 999999999.9;
   parameters_[VSD_SL_15 - VSD_BEGIN].def                                         = 9.0;
   parameters_[VSD_SL_15 - VSD_BEGIN].discret                                     = 1;
   parameters_[VSD_SL_15 - VSD_BEGIN].code                                        = 0;
@@ -2638,7 +2638,7 @@ void Vsd::initParameters()
   parameters_[VSD_SL_16 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_SL_16 - VSD_BEGIN].value.float_t                               = 22.0;
   parameters_[VSD_SL_16 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_SL_16 - VSD_BEGIN].max                                         = 999999999.0;
+  parameters_[VSD_SL_16 - VSD_BEGIN].max                                         = 999999999.9;
   parameters_[VSD_SL_16 - VSD_BEGIN].def                                         = 22.0;
   parameters_[VSD_SL_16 - VSD_BEGIN].discret                                     = 1;
   parameters_[VSD_SL_16 - VSD_BEGIN].code                                        = 0;
@@ -2698,7 +2698,7 @@ void Vsd::initParameters()
   parameters_[VSD_SL_43 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_SL_43 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_SL_43 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_SL_43 - VSD_BEGIN].max                                         = 999999999.0;
+  parameters_[VSD_SL_43 - VSD_BEGIN].max                                         = 999999999.9;
   parameters_[VSD_SL_43 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_SL_43 - VSD_BEGIN].discret                                     = 1;
   parameters_[VSD_SL_43 - VSD_BEGIN].code                                        = 0;
@@ -2710,7 +2710,7 @@ void Vsd::initParameters()
   parameters_[VSD_SL_44 - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
   parameters_[VSD_SL_44 - VSD_BEGIN].value.float_t                               = 0;
   parameters_[VSD_SL_44 - VSD_BEGIN].min                                         = 0.0;
-  parameters_[VSD_SL_44 - VSD_BEGIN].max                                         = 999999999.0;
+  parameters_[VSD_SL_44 - VSD_BEGIN].max                                         = 999999999.9;
   parameters_[VSD_SL_44 - VSD_BEGIN].def                                         = 0;
   parameters_[VSD_SL_44 - VSD_BEGIN].discret                                     = 1;
   parameters_[VSD_SL_44 - VSD_BEGIN].code                                        = 0;
@@ -2746,7 +2746,7 @@ void Vsd::initParameters()
   parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].value.float_t                 = 1.0;
   parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].max                           = 999999999.0;
+  parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].max                           = 999999999.9;
   parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].def                           = 1.0;
   parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].discret                       = 10;
   parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].code                          = 0;
@@ -2914,7 +2914,7 @@ void Vsd::initParameters()
   parameters_[VSD_SOFT_VERSION - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_SOFT_VERSION - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_SOFT_VERSION - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_SOFT_VERSION - VSD_BEGIN].max                                  = 999999999.0;
+  parameters_[VSD_SOFT_VERSION - VSD_BEGIN].max                                  = 999999999.9;
   parameters_[VSD_SOFT_VERSION - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_SOFT_VERSION - VSD_BEGIN].discret                              = 1;
   parameters_[VSD_SOFT_VERSION - VSD_BEGIN].code                                 = 0;
@@ -2926,7 +2926,7 @@ void Vsd::initParameters()
   parameters_[VSD_DELETE_10243 - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_DELETE_10243 - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_DELETE_10243 - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_DELETE_10243 - VSD_BEGIN].max                                  = 999999999.0;
+  parameters_[VSD_DELETE_10243 - VSD_BEGIN].max                                  = 999999999.9;
   parameters_[VSD_DELETE_10243 - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_DELETE_10243 - VSD_BEGIN].discret                              = 1;
   parameters_[VSD_DELETE_10243 - VSD_BEGIN].code                                 = 0;
@@ -2938,7 +2938,7 @@ void Vsd::initParameters()
   parameters_[VSD_DELETE_10244 - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_DELETE_10244 - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_DELETE_10244 - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_DELETE_10244 - VSD_BEGIN].max                                  = 999999999.0;
+  parameters_[VSD_DELETE_10244 - VSD_BEGIN].max                                  = 999999999.9;
   parameters_[VSD_DELETE_10244 - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_DELETE_10244 - VSD_BEGIN].discret                              = 1;
   parameters_[VSD_DELETE_10244 - VSD_BEGIN].code                                 = 0;
@@ -2950,7 +2950,7 @@ void Vsd::initParameters()
   parameters_[VSD_OUT_CURRENT_MOTOR - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_OUT_CURRENT_MOTOR - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_OUT_CURRENT_MOTOR - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_OUT_CURRENT_MOTOR - VSD_BEGIN].max                             = 999999999.0;
+  parameters_[VSD_OUT_CURRENT_MOTOR - VSD_BEGIN].max                             = 999999999.9;
   parameters_[VSD_OUT_CURRENT_MOTOR - VSD_BEGIN].def                             = 0;
   parameters_[VSD_OUT_CURRENT_MOTOR - VSD_BEGIN].discret                         = 1;
   parameters_[VSD_OUT_CURRENT_MOTOR - VSD_BEGIN].code                            = 0;
@@ -2962,7 +2962,7 @@ void Vsd::initParameters()
   parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].value.float_t                = 0;
   parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].max                          = 999999999.0;
+  parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].max                          = 999999999.9;
   parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].def                          = 0;
   parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].discret                      = 1;
   parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].code                         = 0;
@@ -2974,7 +2974,7 @@ void Vsd::initParameters()
   parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].value.float_t                 = 0;
   parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].min                           = 0.0;
-  parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].max                           = 999999999.0;
+  parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].max                           = 999999999.9;
   parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].def                           = 0;
   parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].discret                       = 1;
   parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].code                          = 0;
@@ -2986,7 +2986,7 @@ void Vsd::initParameters()
   parameters_[VSD_DI_VSD - VSD_BEGIN].validity                                   = VALIDITY_ERROR;
   parameters_[VSD_DI_VSD - VSD_BEGIN].value.float_t                              = 0;
   parameters_[VSD_DI_VSD - VSD_BEGIN].min                                        = 0.0;
-  parameters_[VSD_DI_VSD - VSD_BEGIN].max                                        = 999999999.0;
+  parameters_[VSD_DI_VSD - VSD_BEGIN].max                                        = 999999999.9;
   parameters_[VSD_DI_VSD - VSD_BEGIN].def                                        = 0;
   parameters_[VSD_DI_VSD - VSD_BEGIN].discret                                    = 1;
   parameters_[VSD_DI_VSD - VSD_BEGIN].code                                       = 0;
@@ -2998,7 +2998,7 @@ void Vsd::initParameters()
   parameters_[VSD_DELETE_10249 - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_DELETE_10249 - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_DELETE_10249 - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_DELETE_10249 - VSD_BEGIN].max                                  = 999999999.0;
+  parameters_[VSD_DELETE_10249 - VSD_BEGIN].max                                  = 999999999.9;
   parameters_[VSD_DELETE_10249 - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_DELETE_10249 - VSD_BEGIN].discret                              = 1;
   parameters_[VSD_DELETE_10249 - VSD_BEGIN].code                                 = 0;
@@ -3010,7 +3010,7 @@ void Vsd::initParameters()
   parameters_[VSD_DELETE_10250 - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_DELETE_10250 - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_DELETE_10250 - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_DELETE_10250 - VSD_BEGIN].max                                  = 999999999.0;
+  parameters_[VSD_DELETE_10250 - VSD_BEGIN].max                                  = 999999999.9;
   parameters_[VSD_DELETE_10250 - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_DELETE_10250 - VSD_BEGIN].discret                              = 1;
   parameters_[VSD_DELETE_10250 - VSD_BEGIN].code                                 = 0;
@@ -3022,7 +3022,7 @@ void Vsd::initParameters()
   parameters_[VSD_DELETE_10251 - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_DELETE_10251 - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_DELETE_10251 - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_DELETE_10251 - VSD_BEGIN].max                                  = 999999999.0;
+  parameters_[VSD_DELETE_10251 - VSD_BEGIN].max                                  = 999999999.9;
   parameters_[VSD_DELETE_10251 - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_DELETE_10251 - VSD_BEGIN].discret                              = 1;
   parameters_[VSD_DELETE_10251 - VSD_BEGIN].code                                 = 0;
@@ -3034,7 +3034,7 @@ void Vsd::initParameters()
   parameters_[VSD_DELETE_10252 - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_DELETE_10252 - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_DELETE_10252 - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_DELETE_10252 - VSD_BEGIN].max                                  = 999999999.0;
+  parameters_[VSD_DELETE_10252 - VSD_BEGIN].max                                  = 999999999.9;
   parameters_[VSD_DELETE_10252 - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_DELETE_10252 - VSD_BEGIN].discret                              = 1;
   parameters_[VSD_DELETE_10252 - VSD_BEGIN].code                                 = 0;
@@ -3046,7 +3046,7 @@ void Vsd::initParameters()
   parameters_[VSD_DELETE_10253 - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_DELETE_10253 - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_DELETE_10253 - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_DELETE_10253 - VSD_BEGIN].max                                  = 999999999.0;
+  parameters_[VSD_DELETE_10253 - VSD_BEGIN].max                                  = 999999999.9;
   parameters_[VSD_DELETE_10253 - VSD_BEGIN].def                                  = 0;
   parameters_[VSD_DELETE_10253 - VSD_BEGIN].discret                              = 1;
   parameters_[VSD_DELETE_10253 - VSD_BEGIN].code                                 = 0;
@@ -3130,7 +3130,7 @@ void Vsd::initParameters()
   parameters_[VSD_RADIATOR_TEMPERATURE_1 - VSD_BEGIN].validity                   = VALIDITY_ERROR;
   parameters_[VSD_RADIATOR_TEMPERATURE_1 - VSD_BEGIN].value.float_t              = 0;
   parameters_[VSD_RADIATOR_TEMPERATURE_1 - VSD_BEGIN].min                        = 0.0;
-  parameters_[VSD_RADIATOR_TEMPERATURE_1 - VSD_BEGIN].max                        = 999999999.0;
+  parameters_[VSD_RADIATOR_TEMPERATURE_1 - VSD_BEGIN].max                        = 999999999.9;
   parameters_[VSD_RADIATOR_TEMPERATURE_1 - VSD_BEGIN].def                        = 0;
   parameters_[VSD_RADIATOR_TEMPERATURE_1 - VSD_BEGIN].discret                    = 1;
   parameters_[VSD_RADIATOR_TEMPERATURE_1 - VSD_BEGIN].code                       = 0;
@@ -3142,7 +3142,7 @@ void Vsd::initParameters()
   parameters_[VSD_CONTROL_TEMPERATURE_1 - VSD_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[VSD_CONTROL_TEMPERATURE_1 - VSD_BEGIN].value.float_t               = 0;
   parameters_[VSD_CONTROL_TEMPERATURE_1 - VSD_BEGIN].min                         = 0.0;
-  parameters_[VSD_CONTROL_TEMPERATURE_1 - VSD_BEGIN].max                         = 999999999.0;
+  parameters_[VSD_CONTROL_TEMPERATURE_1 - VSD_BEGIN].max                         = 999999999.9;
   parameters_[VSD_CONTROL_TEMPERATURE_1 - VSD_BEGIN].def                         = 0;
   parameters_[VSD_CONTROL_TEMPERATURE_1 - VSD_BEGIN].discret                     = 1;
   parameters_[VSD_CONTROL_TEMPERATURE_1 - VSD_BEGIN].code                        = 0;
@@ -3934,7 +3934,7 @@ void Vsd::initParameters()
   parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].value.float_t                = 0.0;
   parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].max                          = 999999999.0;
+  parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].max                          = 999999999.9;
   parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].def                          = 0.0;
   parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].discret                      = 1;
   parameters_[VSD_FILTER_TEMPERATURE_1 - VSD_BEGIN].code                         = 0;
@@ -3946,7 +3946,7 @@ void Vsd::initParameters()
   parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].value.float_t                = 0.0;
   parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].max                          = 999999999.0;
+  parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].max                          = 999999999.9;
   parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].def                          = 0.0;
   parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].discret                      = 1;
   parameters_[VSD_FILTER_TEMPERATURE_2 - VSD_BEGIN].code                         = 0;
