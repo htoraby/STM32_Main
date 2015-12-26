@@ -398,6 +398,11 @@ public:
    */
   void setMaxBaseFrequency();
 
+  /*!
+   * \brief calcTest
+   */
+  void calcTest();
+
 private:
   /*!
    * \brief Метод добавления в очередь событий включения/мигания LED

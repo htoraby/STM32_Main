@@ -31,6 +31,8 @@ void Ccs::calcParametersTask()
 
     calcDigitalInputs();
 
+//    calcTest();                           // Тестовая функция для проверки
+
     if ((HAL_GetTick() - time10ms) >= 10) {
       time10ms = HAL_GetTick();
 
@@ -706,6 +708,14 @@ void Ccs::calcDigitalInputs()
   setValue(CCS_DI_12_VALUE, !getDigitalInput(DI12));
   setValue(CCS_DI_13_VALUE, !getDigitalInput(DI13));
   setValue(CCS_DI_14_VALUE, !getDigitalInput(DI14));
+}
+
+void Ccs::calcTest()
+{
+  float a = 70.0;
+  float b = 9.8692;
+  float c = a/b;
+  float d = c * b;
 }
 
 void Ccs::changedDigitalInput(int num)
