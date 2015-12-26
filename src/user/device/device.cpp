@@ -226,8 +226,20 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
   float min = getFieldMinimum(index);
   float max = getFieldMaximum(index);
   uint8_t check = checkRange(value, min, max, true, discret);
-  if((check != 0) && !isnan(value)) {
+  if((check != 0) && !isnan(value) && !isinf(value)) {
     novobusSlave.putMessageParams(id);
+    if (check == err_min_r) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "Device: Значение меньше минимума (id = %d, value = %f, min = %f)",
+                   id, value, min);
+#endif
+    }
+    if (check == err_max_r) {
+#if (USE_LOG_WARNING == 1)
+      logDebug.add(WarningMsg, "Device: Значение больше максимума (id = %d, value = %f, max = %f)",
+                   id, value, max);
+#endif
+    }
     return check;
   }
 

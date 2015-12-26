@@ -427,8 +427,9 @@ int VsdNovomet::setDischarge(float value)
     writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_DISCHARGE_ON);
   }
   else {
-    writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_DISCHARGE_OFF);
+    writeToDevice(VSD_CONTROL_WORD_1, VSD_CONTROL_DISCHARGE_OFF);  
   }
+  return ok_r;
 }
 
 int VsdNovomet::setBaseVoltage(float value)
