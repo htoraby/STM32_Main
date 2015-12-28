@@ -38,9 +38,20 @@ void ProtectionOverloadMotor::getOtherSetpointProt()
 {
   // Пересчёт задержки срабатывания в зависимости от загрузки двигателя
   static uint8_t delayCalc = 0;
-  float load = calcValue();
+  float checkLoad = calcValue();
+  float load = checkLoad;
+
+  float checkTripDelay = tripDelay_;
+
+  if (load == 0) {
+    load = tripSetpoint_;
+  }
 
   tripDelay_ = tripDelay_ * pow((tripSetpoint_ / load), 2);
+
+  if (tripDelay_ < checkTripDelay) {
+    checkTripDelay = tripDelay_;
+  }
 
   // Если включен режим работы с пониженным сопротивлением изоляции
   // и изоляция ниже уставки, сбрасываем в 0 задержки активации и срабатывания
@@ -55,8 +66,8 @@ void ProtectionOverloadMotor::getOtherSetpointProt()
   }
   else {
     delayCalc = 0;
-    parameters.set(CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY, tripDelay_);
-    parameters.set(CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD, load);
+    parameters.set(CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY, checkTripDelay);
+    parameters.set(CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD, checkLoad);
   }
 }
 
