@@ -226,7 +226,7 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
   float min = getFieldMinimum(index);
   float max = getFieldMaximum(index);
   uint8_t check = checkRange(value, min, max, true, discret);
-  if((check != 0) && !isnan(value) && !isinf(value)) {
+  if((check != 0) && !isnan(value) && !isinf(value) && (value != -1)) {
     novobusSlave.putMessageParams(id);
     if (check == err_min_r) {
 #if (USE_LOG_WARNING == 1)
