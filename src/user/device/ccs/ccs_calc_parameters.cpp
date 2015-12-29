@@ -716,6 +716,9 @@ void Ccs::calcTest()
   float b = 9.869232667;
   float c = a/b;
   float d = c * b;
+  float e;
+  e = 2 * d;
+  e = e * e;
 }
 
 void Ccs::changedDigitalInput(int num)

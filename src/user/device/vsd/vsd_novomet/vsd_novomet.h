@@ -434,9 +434,11 @@ public:
 
   /*!
    * \brief Сброс очереди запуска ЧРП
+   * В функции если нет активных пусковых режимов вся очередь заполняется
+   * основным алгоритмом работы U/f или векторным в зависимости от настроек.
    * \return
    */
-  void resetRunQueue();
+  void setMainMode();
 
 private:
   ModbusParameter modbusParameters_[165];

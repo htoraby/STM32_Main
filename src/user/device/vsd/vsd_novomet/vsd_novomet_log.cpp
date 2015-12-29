@@ -16,7 +16,11 @@ VsdNovometLog::~VsdNovometLog()
 
 bool VsdNovometLog::checkAlarm()
 {
-  return (!parameters.get(CCS_DI_11_VALUE) && parameters.isValidity(CCS_DI_11_VALUE));
+  bool x = (!parameters.get(CCS_DI_11_VALUE) && parameters.isValidity(CCS_DI_11_VALUE));
+  if (x == 0)
+    asm("nop");
+  return x;
+  // return (!parameters.get(CCS_DI_11_VALUE) && parameters.isValidity(CCS_DI_11_VALUE));
 }
 
 bool VsdNovometLog::checkReady()

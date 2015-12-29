@@ -1081,7 +1081,7 @@ int VsdNovomet::start()
   if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STARTED))
     return ok_r;
 
-  resetRunQueue();
+  setMainMode();
 
   int timeMs = VSD_CMD_TIMEOUT;
   int countRepeats = 0;
@@ -1354,7 +1354,7 @@ int VsdNovomet::setMainRegimeVSD()
   return setNewValue(VSD_REGULATOR_QUEUE_3, 0);             // Убираем режим из очереди алгоритмов
 }
 
-void VsdNovomet::resetRunQueue()
+void VsdNovomet::setMainMode()
 {
   int action = (parameters.get(CCS_RGM_RUN_PICKUP_MODE) ||
                 parameters.get(CCS_RGM_RUN_PUSH_MODE) ||
