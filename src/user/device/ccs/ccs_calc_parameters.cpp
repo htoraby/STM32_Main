@@ -127,6 +127,12 @@ float Ccs::calcMotorCurrentPhase3()
   return parameters.get(CCS_MOTOR_CURRENT_PHASE_3);
 }
 
+void Ccs::calcMotorCurrent()
+{
+  calcMotorCurrentAverage();
+  calcMotorCurrentImbalance();
+}
+
 float Ccs::calcMotorCurrentAverage()
 {
   setValue(CCS_MOTOR_CURRENT_AVARAGE,
@@ -719,6 +725,12 @@ void Ccs::calcTest()
   float e;
   e = 2 * d;
   e = e * e;
+  /*
+  setDigitalOutput(DO1, PinReset);
+  osDelay(100);
+  setDigitalOutput(DO1, PinSet);
+  osDelay(100);
+  */
 }
 
 void Ccs::changedDigitalInput(int num)

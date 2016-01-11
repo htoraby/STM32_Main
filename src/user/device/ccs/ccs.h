@@ -238,6 +238,7 @@ public:
   float calcMotorCurrentPhase1();
   float calcMotorCurrentPhase2();
   float calcMotorCurrentPhase3();
+  void calcMotorCurrent();
   float calcMotorCurrentAverage();
   float calcMotorCurrentImbalance();
 

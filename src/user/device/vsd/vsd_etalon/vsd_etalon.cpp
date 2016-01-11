@@ -400,20 +400,17 @@ void VsdEtalon::getNewValue(uint16_t id)
     case VSD_CURRENT_OUT_PHASE_1:             // Выходной ток ЧРП Фаза 1
       setValue(id, value);
       ksu.calcMotorCurrentPhase1();
-      ksu.calcMotorCurrentAverage();
-      ksu.calcMotorCurrentImbalance();
+      ksu.calcMotorCurrent();
       break;
     case VSD_CURRENT_OUT_PHASE_2:             // Выходной ток ЧРП Фаза 2
       setValue(id, value);
       ksu.calcMotorCurrentPhase2();
-      ksu.calcMotorCurrentAverage();
-      ksu.calcMotorCurrentImbalance();
+      ksu.calcMotorCurrent();
       break;
     case VSD_CURRENT_OUT_PHASE_3:             // Выходной ток ЧРП Фаза 3
       setValue(id, value);
       ksu.calcMotorCurrentPhase3();
-      ksu.calcMotorCurrentAverage();
-      ksu.calcMotorCurrentImbalance();
+      ksu.calcMotorCurrent();
       break;
     case VSD_FREQUENCY_NOW:
       setValue(id, value);

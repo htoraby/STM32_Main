@@ -769,24 +769,21 @@ void VsdNovomet::getNewValue(uint16_t id)
     if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 0) {
       setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_1) * value);
       ksu.calcMotorCurrentPhase1();
-      ksu.calcMotorCurrentAverage();
-      ksu.calcMotorCurrentImbalance();
+      ksu.calcMotorCurrent();
     };
     break;
   case VSD_CURRENT_OUT_PHASE_2:             // Выходной ток (гармоника) ЧРП Фаза 2
     if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 0) {
       setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_2) * value);
       ksu.calcMotorCurrentPhase2();
-      ksu.calcMotorCurrentAverage();
-      ksu.calcMotorCurrentImbalance();
+      ksu.calcMotorCurrent();
     };
     break;
   case VSD_CURRENT_OUT_PHASE_3:             // Выходной ток (гармоника) ЧРП Фаза 3
     if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 0) {
       setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_3) * value);
       ksu.calcMotorCurrentPhase3();
-      ksu.calcMotorCurrentAverage();
-      ksu.calcMotorCurrentImbalance();
+      ksu.calcMotorCurrent();
     };
     break;
   case VSD_IA_RMS:
@@ -794,8 +791,7 @@ void VsdNovomet::getNewValue(uint16_t id)
     if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 1) {
       setValue(VSD_CURRENT_OUT_PHASE_1, parameters.get(CCS_COEF_OUT_CURRENT_1) * value);
       ksu.calcMotorCurrentPhase1();
-      ksu.calcMotorCurrentAverage();
-      ksu.calcMotorCurrentImbalance();
+      ksu.calcMotorCurrent();
     };
     break;
   case VSD_IB_RMS:
@@ -803,8 +799,7 @@ void VsdNovomet::getNewValue(uint16_t id)
     if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 1) {
       setValue(VSD_CURRENT_OUT_PHASE_2, parameters.get(CCS_COEF_OUT_CURRENT_2) * value);
       ksu.calcMotorCurrentPhase2();
-      ksu.calcMotorCurrentAverage();
-      ksu.calcMotorCurrentImbalance();
+      ksu.calcMotorCurrent();
     };
     break;
   case VSD_IC_RMS:
@@ -812,8 +807,7 @@ void VsdNovomet::getNewValue(uint16_t id)
     if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 1) {
       setValue(VSD_CURRENT_OUT_PHASE_3, parameters.get(CCS_COEF_OUT_CURRENT_3) * value);
       ksu.calcMotorCurrentPhase3();
-      ksu.calcMotorCurrentAverage();
-      ksu.calcMotorCurrentImbalance();
+      ksu.calcMotorCurrent();
     };
     break;
   case VSD_STATUS_WORD_1:
@@ -950,6 +944,9 @@ void VsdNovomet::getNewValue(uint16_t id)
                                                                            max(getValue(VSD_DRV_2_T_EXT_2),
                                                                                max(getValue(VSD_DRV_2_T_EXT_3),getValue(VSD_DRV_2_T_EXT_4)))))))))))));
     break;
+  case VSD_MEASURE_T_1:
+  case VSD_MEASURE_T_2:
+  case VSD_MEASURE_T_3:
   case VSD_DRV_0_T_AIR:
   case VSD_DRV_1_T_AIR:
     setValue(id, value);
@@ -1148,7 +1145,7 @@ int VsdNovomet::stop(float type)
 
       switch((uint16_t)type) {
       case TYPE_STOP_ALARM:
-        log_->setAlarm();
+        //log_->setAlarm();
         if (setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_ALARM))
           return err_r;
         break;

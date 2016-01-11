@@ -1382,24 +1382,21 @@ void VsdDanfoss::getNewValue(uint16_t id)
       calcVsdPowerFull();
       calcMotorCos();
       ksu.calcMotorCurrentPhase1();           // Вычисляем ток двигателя фаза 1
-      ksu.calcMotorCurrentAverage();          // Вычисляем средний ток двигателя
-      ksu.calcMotorCurrentImbalance();        // Вычисляем дисбаланс тока двигателя
+      ksu.calcMotorCurrent();
       break;
     case VSD_CURRENT_OUT_PHASE_2:             // Выходной ток ЧРП Фаза 2
       setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_2) * value);
       calcVsdPowerFull();
       calcMotorCos();
       ksu.calcMotorCurrentPhase2();
-      ksu.calcMotorCurrentAverage();
-      ksu.calcMotorCurrentImbalance();
+      ksu.calcMotorCurrent();
       break;
     case VSD_CURRENT_OUT_PHASE_3:             // Выходной ток ЧРП Фаза 3
       setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_3) * value);
       calcVsdPowerFull();
       calcMotorCos();
       ksu.calcMotorCurrentPhase3();
-      ksu.calcMotorCurrentAverage();
-      ksu.calcMotorCurrentImbalance();
+      ksu.calcMotorCurrent();
       break;
     case VSD_OUT_VOLTAGE_MOTOR:
       setValue(id, value);
