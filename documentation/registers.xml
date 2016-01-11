@@ -17604,11 +17604,19 @@
 		<name>VSD_THYR_ANGLE_REFERENCE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_ANGLE</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>180.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>NULL</text>
+		<value>0.0</value>
+		<text>Угол управления тиристорами</text>
+		<short_text>Угол управления тиристорами</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>ANGLE_DEGREES</unit>
+		<unit_lcd>ANGLE_DEGREES</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Угол управления тиристорами;</comment>
 	</param>
@@ -17641,11 +17649,20 @@
 		<name>VSD_THYR_VOLT_SHORT_CUILT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>999999999.9</max>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>15.0</min>
+		<max>609.0</max>
+		<def>76.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>76.0</value>
+		<text>Напряжение защиты от КЗ инвертора</text>
+		<short_text>Напряжение защиты от КЗ инвертора</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Напряжение защиты от КЗ инвертора.</comment>
 	</param>
 	<param>
@@ -17860,11 +17877,20 @@
 		<name>VSD_FREQUENCY_ERROR</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>999999999.9</max>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>1.0</min>
+		<max>500.0</max>
+		<def>25.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>25.0</value>
+		<text>Частота тревожного режима</text>
+		<short_text>Частота тревожного режима</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Уставка частоты "тревожного" режима</comment>
 	</param>
 	<param>
@@ -18216,11 +18242,20 @@
 		<name>VSD_UD_HIGH_FAULT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>999999999.9</max>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>400.0</min>
+		<max>800.9</max>
+		<def>700.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>700.0</value>
+		<text>Порог защиты ПЧ по превыщению напряжения на инверторе</text>
+		<short_text>Порог защиты ПЧ по превыщению напряжения на инверторе</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>ХХXХХХ</format>
+		<code>13</code>
 		<comment>Порог защиты ПЧ по превыщению напряжения на инверторе</comment>
 	</param>
 	<param>
@@ -18228,11 +18263,20 @@
 		<name>VSD_UIN_ASYM_LEVEL</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>999999999.9</max>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>10.0</min>
+		<max>90.9</max>
+		<def>30.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>30.0</value>
+		<text>Порог защиты ПЧ по несимметрии входного напряжения на инверторе</text>
+		<short_text>Порог защиты ПЧ по несимметрии входного напряжения на инверторе</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>ХХXХХХ</format>
+		<code>13</code>
 		<comment>Порог защиты ПЧ по несимметрии входного напряжения на инверторе</comment>
 	</param>
 	<param>
@@ -18240,11 +18284,20 @@
 		<name>VSD_UIN_ASYM_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>999999999.9</max>
+		<physic>PHYSIC_TIME</physic>
+		<min>1.0</min>
+		<max>90.9</max>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>5.0</value>
+		<text>Время срабатывания защиты ПЧ по несимметрии входного напряжения на инверторе</text>
+		<short_text>Время срабатывания защиты ПЧ по несимметрии входного напряжения на инверторе</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>ХХXХХХ</format>
+		<code>13</code>
 		<comment>Время срабатывания защиты ПЧ по несимметрии входного напряжения на инверторе</comment>
 	</param>
 	<param>
@@ -18300,19 +18353,19 @@
 		<name>VSD_RES_TIMECONST</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_TIME</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
-		<def>0.017</def>
-		<discret>1000</discret>
+		<max>250.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>0.017</value>
+		<value>1.0</value>
 		<text>Постоянная времени системы подавления резонанса</text>
 		<short_text>Постоянная времени системы подавления резонанса</short_text>
 		<form>3.2.4 Сервисное меню ЧРП</form>
-		<unit>TIME_SS</unit>
-		<unit_lcd>TIME_SS</unit_lcd>
-		<format>ХХ_ХХХ</format>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>ХХXХХХ</format>
 		<code>13</code>
 		<comment>Постоянная времени системы подавления резонанса</comment>
 	</param>
@@ -18703,11 +18756,19 @@
 		<name>VSD_START_FREQ</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>500.0</max>
+		<def>1.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<text>Стартовая частота</text>
+		<short_text>Стартовая частота</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Стартовая частота вращения двигателя в основном режиме регулирования</comment>
 	</param>
 	<param>
@@ -18738,11 +18799,19 @@
 		<id>10121</id>
 		<name>VSD_PHOUT</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>999999999.9</max>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_ANGLE</physic>
+		<min>-360.0</min>
+		<max>360.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<text>Фаза тока</text>
+		<short_text>Фаза тока</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>ANGLE_DEGREES</unit>
+		<unit_lcd>ANGLE_DEGREES</unit_lcd>
+		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Усредненная фаза выходного тока ПЧ</comment>
 	</param>
@@ -18972,11 +19041,20 @@
 		<name>VSD_FC_IRMS</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>5000.0</max>
+		<def>1000.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>1000.0</value>
+		<text>Номинальный ток ПЧ</text>
+		<short_text>Номинальный ток ПЧ</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Ток тепловой защиты ПЧ длительный</comment>
 	</param>
 	<param>
@@ -18994,11 +19072,20 @@
 		<name>VSD_FC_ILIM_LONG</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>5000.0</max>
+		<def>2000.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
+		<value>2000.0</value>
+		<text>Ограничение тока для импульсов</text>
+		<short_text>Ограничение тока для импульсов</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
 		<comment>Ограничение тока для импульсов</comment>
 	</param>
 	<param>
@@ -26864,7 +26951,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -26884,7 +26971,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -26904,7 +26991,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -26924,7 +27011,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -26944,7 +27031,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -26964,7 +27051,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -26984,7 +27071,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_POWER</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27003,7 +27090,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27021,7 +27108,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27039,7 +27126,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27060,7 +27147,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -27078,7 +27165,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -27096,7 +27183,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -27114,7 +27201,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -27131,7 +27218,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -27149,7 +27236,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -27167,7 +27254,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -27185,7 +27272,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -27202,7 +27289,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -27219,7 +27306,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -27236,7 +27323,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_POWER</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -27253,7 +27340,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_POWER</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -27270,7 +27357,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_POWER</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -27287,7 +27374,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_POWER</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27307,7 +27394,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_POWER</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -27324,7 +27411,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_POWER</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -27341,7 +27428,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_POWER</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -27358,7 +27445,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27376,7 +27463,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27394,7 +27481,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27412,7 +27499,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27430,7 +27517,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27448,7 +27535,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27466,7 +27553,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27484,7 +27571,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27502,7 +27589,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27520,7 +27607,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27538,7 +27625,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27559,7 +27646,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27577,7 +27664,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27595,7 +27682,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27613,7 +27700,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27631,7 +27718,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27649,7 +27736,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27667,7 +27754,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27685,7 +27772,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27703,7 +27790,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
@@ -27721,7 +27808,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_REACTIVE_ENERGY</physic>
-		<min>0.0</min>
+		<min>-999999999.9</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>100</discret>
