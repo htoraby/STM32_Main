@@ -1587,5 +1587,5 @@ void Ccs::setMaxBaseFrequency()
     maxFreq = 70;
   }
   setMax(CCS_BASE_FREQUENCY, maxFreq);
-  vsd->setMax(VSD_BASE_FREQUENCY, maxFreq);
+//  vsd->setMax(VSD_BASE_FREQUENCY, maxFreq);
 }
