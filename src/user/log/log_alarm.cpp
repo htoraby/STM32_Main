@@ -118,5 +118,5 @@ void LogAlarm::add()
   }
 
   vsd->log()->resetReady();
-  osDelay(50);
+  osDelay(10000);
 }

@@ -16,11 +16,16 @@ VsdNovometLog::~VsdNovometLog()
 
 bool VsdNovometLog::checkAlarm()
 {
-  bool x = (!parameters.get(CCS_DI_11_VALUE) && parameters.isValidity(CCS_DI_11_VALUE));
-  if (x == 0)
-    asm("nop");
-  return x;
-  // return (!parameters.get(CCS_DI_11_VALUE) && parameters.isValidity(CCS_DI_11_VALUE));
+  static bool old = true;                       // Изначально низкий
+  bool result = false;
+  bool now = parameters.get(CCS_DI_11_VALUE);   // Текущий
+  if (parameters.isValidity(CCS_DI_11_VALUE)) { // Валиден
+    if ((old == false) && (now == true)) {  // Переход с высокого на низкий
+      result = true;                            // Авария
+    }
+    old = now;
+  }
+  return result;
 }
 
 bool VsdNovometLog::checkReady()
@@ -30,17 +35,18 @@ bool VsdNovometLog::checkReady()
 
 void VsdNovometLog::resetReady()
 {
-  setDigitalOutput(DO1, PinReset);
+  setDigitalOutput(DO1, PinSet);
+
 }
 
 void VsdNovometLog::resetAlarm()
 {
-  setDigitalOutput(DO1, PinReset);
+  setDigitalOutput(DO1, PinSet);
 }
 
 void VsdNovometLog::setAlarm()
 {
-  setDigitalOutput(DO1, PinSet);
+  setDigitalOutput(DO1, PinReset);
 }
 
 void VsdNovometLog::readAlarmLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
@@ -54,5 +60,6 @@ void VsdNovometLog::readRunningLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
 {
 
 //  memset(cos, 0x0, sizeof(cos));  TODO: Очищение массива cos в 0, т.к. не получаем данные от ПЧ
-  VsdLog::readNovometLog(ia, ib, ic, ud);
+//  VsdLog::readNovometLog(ia, ib, ic, ud);
+return;
 }
