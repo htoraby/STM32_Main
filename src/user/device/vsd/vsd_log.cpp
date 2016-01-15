@@ -126,9 +126,6 @@ void VsdLog::readNovometLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
                                  uint16_t *ud)
 {
   osSemaphoreWait(semaphoreId_, osWaitForever);
-
-  setAlarm();
-
   uint16_t buffer[110] = {0};                             // Буфер с запросом данных
   int16_t field = 1999;                                   // Количество не готовых записей
   uint16_t fieldShift = 25;                               // Смещение от конца архива
