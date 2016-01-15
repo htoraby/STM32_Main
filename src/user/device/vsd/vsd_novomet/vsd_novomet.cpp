@@ -474,6 +474,7 @@ float VsdNovomet::checkAlarmVsd()
     vsdStatus = 0;
     for (i = VSD_NOVOMET_ALARM_I_LIMIT; i <= VSD_NOVOMET_ALARM_ULOW; i++) {
       if (checkBit(vsdStatus1, i - 1000)) {
+        resetBlock();
         return i;
       }
     }
@@ -483,6 +484,7 @@ float VsdNovomet::checkAlarmVsd()
     vsdStatus = 0;
     for (i = VSD_NOVOMET_ALARM_UD_LOW_FAULT; i <= VSD_NOVOMET_ALARM_UD_HIGH_FAULT; i++) {
       if (checkBit(vsdStatus1, i - 1000)) {
+        resetBlock();
         return i;
       }
     }
@@ -492,6 +494,7 @@ float VsdNovomet::checkAlarmVsd()
     vsdStatus = 0;
     for (i = VSD_NOVOMET_ALARM_UIN_ASYM; i <= VSD_NOVOMET_ALARM_URECT_SHORT; i++) {
       if (checkBit(vsdStatus1, i - 1000)) {
+        resetBlock();
         return i;
       }
     }
@@ -501,6 +504,7 @@ float VsdNovomet::checkAlarmVsd()
     vsdStatus = 0;
     for (i = VSD_NOVOMET_ALARM_FC_IT_ERR; i <= VSD_NOVOMET_ALARM_I_LIMIT_FAST; i++) {
       if (checkBit(vsdStatus2, i - 1016)) {
+        resetBlock();
         return i;
       }
     }
@@ -510,6 +514,7 @@ float VsdNovomet::checkAlarmVsd()
     vsdStatus = 0;
     for (i = VSD_NOVOMET_ALARM_DISCHARGE_ERR; i <= VSD_NOVOMET_ALARM_I_LIM_ERR; i++) {
       if (checkBit(vsdStatus2, i - 1016)) {
+        resetBlock();
         return i;
       }
     }
@@ -517,12 +522,14 @@ float VsdNovomet::checkAlarmVsd()
 
   if ((vsdStatus == 0) || (vsdStatus == VSD_NOVOMET_ALARM_ERR_STATE)) {
     if (checkBit(vsdStatus5, VSD_NOVOMET_ALARM_ERR_STATE - 1064)) {
+      resetBlock();
       return VSD_NOVOMET_ALARM_ERR_STATE;
     }
   }
 
   if ((vsdStatus == 0) || (vsdStatus == VSD_NOVOMET_ALARM_ERR_SHORT)) {
     if (checkBit(vsdStatus5, VSD_NOVOMET_ALARM_ERR_SHORT - 1064)) {
+      resetBlock();
       return VSD_NOVOMET_ALARM_ERR_SHORT;
     }
   }
@@ -531,6 +538,7 @@ float VsdNovomet::checkAlarmVsd()
     vsdStatus = 0;
     for (int i = VSD_NOVOMET_ALARM_IMAX; i <= VSD_NOVOMET_ALARM_CTR_MON; i++) {
       if (checkBit(vsdStatus7, i - 1096)) {
+        resetBlock();
         return i;
       }
     }
@@ -540,6 +548,7 @@ float VsdNovomet::checkAlarmVsd()
     vsdStatus = 0;
     for (int i = VSD_NOVOMET_ALARM_CLK_MON; i <= VSD_NOVOMET_ALARM_DRV2; i++) {
       if (checkBit(vsdStatus7, i - 1096)) {
+        resetBlock();
         return i;
       }
     }
@@ -549,6 +558,7 @@ float VsdNovomet::checkAlarmVsd()
     vsdStatus = 0;
     for (int i = VSD_NOVOMET_ALARM_TEMP_LINK; i <= VSD_NOVOMET_ALARM_AIR_TEMP; i++) {
       if (checkBit(vsdStatus7, i - 1096)) {
+        resetBlock();
         return i;
       }
     }
@@ -559,7 +569,7 @@ float VsdNovomet::checkAlarmVsd()
       (vsdStatus == VSD_NOVOMET_ALARM_STOPPED_ALARM) ||
       (vsdStatus == VSD_NOVOMET_ALARM_CLK_MON) ||
       (vsdStatus == VSD_NOVOMET_ALARM_TEST)) {
-    return 0;
+    return VSD_ALARM_NONE;
   }
 
   return vsdStatus;
