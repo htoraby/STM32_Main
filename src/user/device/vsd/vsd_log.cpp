@@ -150,18 +150,25 @@ void VsdLog::readNovometLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
 
   while (field >= 0) {                            // Пока не все записи
     res = mms_->readLogNovomet(devAdrs_, fieldShift, buffer, fieldCnt);
-
     if (res == 0) {                                       // Нет ответа зануляем то что опрашивали
-      while (fieldCnt > 0) {                              // От 10 до 1
+      while (field >= 0) {                    // Все последующие данные зануляем
         ic[field] = 0;
         ib[field] = 0;
         ia[field] = 0;
         ud[field] = 0;
-        fieldCnt--;
         field--;
       }
-      fieldCnt = 25;
-      fieldShift = fieldShift + fieldCnt;
+//      while (fieldCnt > 0) {                              // От 10 до 1
+//        ic[field] = 0;
+//        ib[field] = 0;
+//        ia[field] = 0;
+//        ud[field] = 0;
+//        fieldCnt--;
+//        field--;
+//      }
+//      fieldCnt = 25;
+//      fieldShift = fieldShift + fieldCnt;
+
     }
     else {
       if (res == 1) {                                     // Получили сообщение что больше нет данных
