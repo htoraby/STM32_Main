@@ -16765,6 +16765,160 @@
 	</param>
 	<param>
 		<id>864</id>
+		<name>CCS_IP_ADDRESS_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>255.0</max>
+		<def>192.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>192.0</value>
+		<text>IP-адрес</text>
+		<short_text>IP-адрес</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXX</format>
+		<code>13</code>
+		<comment>IP-адрес (1)</comment>
+	</param>
+	<param>
+		<id>865</id>
+		<name>CCS_IP_ADDRESS_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>255.0</max>
+		<def>168.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>168.0</value>
+		<text>IP-адрес</text>
+		<short_text>IP-адрес</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXX</format>
+		<comment>IP-адрес (2)</comment>
+	</param>
+	<param>
+		<id>866</id>
+		<name>CCS_IP_ADDRESS_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>255.0</max>
+		<def>100.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>100.0</value>
+		<text>IP-адрес</text>
+		<short_text>IP-адрес</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXX</format>
+		<comment>IP-адрес (3)</comment>
+	</param>
+	<param>
+		<id>867</id>
+		<name>CCS_IP_ADDRESS_4</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>255.0</max>
+		<def>2.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>2.0</value>
+		<text>IP-адрес</text>
+		<short_text>IP-адрес</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXX</format>
+		<comment>IP-адрес (4)</comment>
+	</param>
+	<param>
+		<id>868</id>
+		<name>CCS_NETMASK_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>255.0</max>
+		<def>255.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>255.0</value>
+		<text>Маска подсети</text>
+		<short_text>Маска подсети</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXX</format>
+		<code>13</code>
+		<comment>Маска подсети (1)</comment>
+	</param>
+	<param>
+		<id>869</id>
+		<name>CCS_NETMASK_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>255.0</max>
+		<def>255.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>255.0</value>
+		<text>Маска подсети</text>
+		<short_text>Маска подсети</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXX</format>
+		<comment>Маска подсети (2)</comment>
+	</param>
+	<param>
+		<id>870</id>
+		<name>CCS_NETMASK_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>255.0</max>
+		<def>255.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>255.0</value>
+		<text>Маска подсети</text>
+		<short_text>Маска подсети</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXX</format>
+		<comment>Маска подсети (3)</comment>
+	</param>
+	<param>
+		<id>871</id>
+		<name>CCS_NETMASK_4</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>255.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Маска подсети</text>
+		<short_text>Маска подсети</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXX</format>
+		<comment>Маска подсети (4)</comment>
+	</param>
+	<param>
+		<id>872</id>
 		<name>CCS_END</name>
 		<comment>Последний параметр</comment>
 	</param>

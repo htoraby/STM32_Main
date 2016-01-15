@@ -10370,5 +10370,101 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_DECEL - CCS_BEGIN].discret                                 = 1;
   parameters_[CCS_VSD_DECEL - CCS_BEGIN].def                                     = 0.0;
   parameters_[CCS_VSD_DECEL - CCS_BEGIN].code                                    = 13;
+  // IP-адрес (1)
+  parameters_[CCS_IP_ADDRESS_1 - CCS_BEGIN].id                                   = CCS_IP_ADDRESS_1;
+  parameters_[CCS_IP_ADDRESS_1 - CCS_BEGIN].access                               = ACCESS_OPERATOR;
+  parameters_[CCS_IP_ADDRESS_1 - CCS_BEGIN].operation                            = OPERATION_WRITE;
+  parameters_[CCS_IP_ADDRESS_1 - CCS_BEGIN].physic                               = PHYSIC_NUMERIC;
+  parameters_[CCS_IP_ADDRESS_1 - CCS_BEGIN].validity                             = VALIDITY_OK;
+  parameters_[CCS_IP_ADDRESS_1 - CCS_BEGIN].value.float_t                        = 192.0;
+  parameters_[CCS_IP_ADDRESS_1 - CCS_BEGIN].min                                  = 0.0;
+  parameters_[CCS_IP_ADDRESS_1 - CCS_BEGIN].max                                  = 255.0;
+  parameters_[CCS_IP_ADDRESS_1 - CCS_BEGIN].discret                              = 1;
+  parameters_[CCS_IP_ADDRESS_1 - CCS_BEGIN].def                                  = 192.0;
+  parameters_[CCS_IP_ADDRESS_1 - CCS_BEGIN].code                                 = 13;
+  // IP-адрес (2)
+  parameters_[CCS_IP_ADDRESS_2 - CCS_BEGIN].id                                   = CCS_IP_ADDRESS_2;
+  parameters_[CCS_IP_ADDRESS_2 - CCS_BEGIN].access                               = ACCESS_OPERATOR;
+  parameters_[CCS_IP_ADDRESS_2 - CCS_BEGIN].operation                            = OPERATION_WRITE;
+  parameters_[CCS_IP_ADDRESS_2 - CCS_BEGIN].physic                               = PHYSIC_NUMERIC;
+  parameters_[CCS_IP_ADDRESS_2 - CCS_BEGIN].validity                             = VALIDITY_OK;
+  parameters_[CCS_IP_ADDRESS_2 - CCS_BEGIN].value.float_t                        = 168.0;
+  parameters_[CCS_IP_ADDRESS_2 - CCS_BEGIN].min                                  = 0.0;
+  parameters_[CCS_IP_ADDRESS_2 - CCS_BEGIN].max                                  = 255.0;
+  parameters_[CCS_IP_ADDRESS_2 - CCS_BEGIN].discret                              = 1;
+  parameters_[CCS_IP_ADDRESS_2 - CCS_BEGIN].def                                  = 168.0;
+  parameters_[CCS_IP_ADDRESS_2 - CCS_BEGIN].code                                 = 0;
+  // IP-адрес (3)
+  parameters_[CCS_IP_ADDRESS_3 - CCS_BEGIN].id                                   = CCS_IP_ADDRESS_3;
+  parameters_[CCS_IP_ADDRESS_3 - CCS_BEGIN].access                               = ACCESS_OPERATOR;
+  parameters_[CCS_IP_ADDRESS_3 - CCS_BEGIN].operation                            = OPERATION_WRITE;
+  parameters_[CCS_IP_ADDRESS_3 - CCS_BEGIN].physic                               = PHYSIC_NUMERIC;
+  parameters_[CCS_IP_ADDRESS_3 - CCS_BEGIN].validity                             = VALIDITY_OK;
+  parameters_[CCS_IP_ADDRESS_3 - CCS_BEGIN].value.float_t                        = 100.0;
+  parameters_[CCS_IP_ADDRESS_3 - CCS_BEGIN].min                                  = 0.0;
+  parameters_[CCS_IP_ADDRESS_3 - CCS_BEGIN].max                                  = 255.0;
+  parameters_[CCS_IP_ADDRESS_3 - CCS_BEGIN].discret                              = 1;
+  parameters_[CCS_IP_ADDRESS_3 - CCS_BEGIN].def                                  = 100.0;
+  parameters_[CCS_IP_ADDRESS_3 - CCS_BEGIN].code                                 = 0;
+  // IP-адрес (4)
+  parameters_[CCS_IP_ADDRESS_4 - CCS_BEGIN].id                                   = CCS_IP_ADDRESS_4;
+  parameters_[CCS_IP_ADDRESS_4 - CCS_BEGIN].access                               = ACCESS_OPERATOR;
+  parameters_[CCS_IP_ADDRESS_4 - CCS_BEGIN].operation                            = OPERATION_WRITE;
+  parameters_[CCS_IP_ADDRESS_4 - CCS_BEGIN].physic                               = PHYSIC_NUMERIC;
+  parameters_[CCS_IP_ADDRESS_4 - CCS_BEGIN].validity                             = VALIDITY_OK;
+  parameters_[CCS_IP_ADDRESS_4 - CCS_BEGIN].value.float_t                        = 2.0;
+  parameters_[CCS_IP_ADDRESS_4 - CCS_BEGIN].min                                  = 0.0;
+  parameters_[CCS_IP_ADDRESS_4 - CCS_BEGIN].max                                  = 255.0;
+  parameters_[CCS_IP_ADDRESS_4 - CCS_BEGIN].discret                              = 1;
+  parameters_[CCS_IP_ADDRESS_4 - CCS_BEGIN].def                                  = 2.0;
+  parameters_[CCS_IP_ADDRESS_4 - CCS_BEGIN].code                                 = 0;
+  // Маска подсети (1)
+  parameters_[CCS_NETMASK_1 - CCS_BEGIN].id                                      = CCS_NETMASK_1;
+  parameters_[CCS_NETMASK_1 - CCS_BEGIN].access                                  = ACCESS_OPERATOR;
+  parameters_[CCS_NETMASK_1 - CCS_BEGIN].operation                               = OPERATION_WRITE;
+  parameters_[CCS_NETMASK_1 - CCS_BEGIN].physic                                  = PHYSIC_NUMERIC;
+  parameters_[CCS_NETMASK_1 - CCS_BEGIN].validity                                = VALIDITY_OK;
+  parameters_[CCS_NETMASK_1 - CCS_BEGIN].value.float_t                           = 255.0;
+  parameters_[CCS_NETMASK_1 - CCS_BEGIN].min                                     = 0.0;
+  parameters_[CCS_NETMASK_1 - CCS_BEGIN].max                                     = 255.0;
+  parameters_[CCS_NETMASK_1 - CCS_BEGIN].discret                                 = 1;
+  parameters_[CCS_NETMASK_1 - CCS_BEGIN].def                                     = 255.0;
+  parameters_[CCS_NETMASK_1 - CCS_BEGIN].code                                    = 13;
+  // Маска подсети (2)
+  parameters_[CCS_NETMASK_2 - CCS_BEGIN].id                                      = CCS_NETMASK_2;
+  parameters_[CCS_NETMASK_2 - CCS_BEGIN].access                                  = ACCESS_OPERATOR;
+  parameters_[CCS_NETMASK_2 - CCS_BEGIN].operation                               = OPERATION_WRITE;
+  parameters_[CCS_NETMASK_2 - CCS_BEGIN].physic                                  = PHYSIC_NUMERIC;
+  parameters_[CCS_NETMASK_2 - CCS_BEGIN].validity                                = VALIDITY_OK;
+  parameters_[CCS_NETMASK_2 - CCS_BEGIN].value.float_t                           = 255.0;
+  parameters_[CCS_NETMASK_2 - CCS_BEGIN].min                                     = 0.0;
+  parameters_[CCS_NETMASK_2 - CCS_BEGIN].max                                     = 255.0;
+  parameters_[CCS_NETMASK_2 - CCS_BEGIN].discret                                 = 1;
+  parameters_[CCS_NETMASK_2 - CCS_BEGIN].def                                     = 255.0;
+  parameters_[CCS_NETMASK_2 - CCS_BEGIN].code                                    = 0;
+  // Маска подсети (3)
+  parameters_[CCS_NETMASK_3 - CCS_BEGIN].id                                      = CCS_NETMASK_3;
+  parameters_[CCS_NETMASK_3 - CCS_BEGIN].access                                  = ACCESS_OPERATOR;
+  parameters_[CCS_NETMASK_3 - CCS_BEGIN].operation                               = OPERATION_WRITE;
+  parameters_[CCS_NETMASK_3 - CCS_BEGIN].physic                                  = PHYSIC_NUMERIC;
+  parameters_[CCS_NETMASK_3 - CCS_BEGIN].validity                                = VALIDITY_OK;
+  parameters_[CCS_NETMASK_3 - CCS_BEGIN].value.float_t                           = 255.0;
+  parameters_[CCS_NETMASK_3 - CCS_BEGIN].min                                     = 0.0;
+  parameters_[CCS_NETMASK_3 - CCS_BEGIN].max                                     = 255.0;
+  parameters_[CCS_NETMASK_3 - CCS_BEGIN].discret                                 = 1;
+  parameters_[CCS_NETMASK_3 - CCS_BEGIN].def                                     = 255.0;
+  parameters_[CCS_NETMASK_3 - CCS_BEGIN].code                                    = 0;
+  // Маска подсети (4)
+  parameters_[CCS_NETMASK_4 - CCS_BEGIN].id                                      = CCS_NETMASK_4;
+  parameters_[CCS_NETMASK_4 - CCS_BEGIN].access                                  = ACCESS_OPERATOR;
+  parameters_[CCS_NETMASK_4 - CCS_BEGIN].operation                               = OPERATION_WRITE;
+  parameters_[CCS_NETMASK_4 - CCS_BEGIN].physic                                  = PHYSIC_NUMERIC;
+  parameters_[CCS_NETMASK_4 - CCS_BEGIN].validity                                = VALIDITY_OK;
+  parameters_[CCS_NETMASK_4 - CCS_BEGIN].value.float_t                           = 0.0;
+  parameters_[CCS_NETMASK_4 - CCS_BEGIN].min                                     = 0.0;
+  parameters_[CCS_NETMASK_4 - CCS_BEGIN].max                                     = 255.0;
+  parameters_[CCS_NETMASK_4 - CCS_BEGIN].discret                                 = 1;
+  parameters_[CCS_NETMASK_4 - CCS_BEGIN].def                                     = 0.0;
+  parameters_[CCS_NETMASK_4 - CCS_BEGIN].code                                    = 0;
 }
 
