@@ -1101,11 +1101,11 @@ int VsdNovomet::start()
       if (countRepeats > VSD_CMD_NUMBER_REPEATS)
         return err_r;
 
-      if (setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_START))
+      if (resetBlock())
         return err_r;
 
-//      if (resetBlock())
-//        return err_r;
+      if (setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_START))
+        return err_r;
 
     } else {
       timeMs = timeMs + 100;
@@ -1138,8 +1138,15 @@ int VsdNovomet::stop(float type)
   return ok_r;
 #endif
 
-  // Если стоит бит остановки по внешней команде
-  if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STOP_EXTERNAL))
+  // Если стоит бит любой останова
+//  if ((checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STOP_REGISTER)) ||
+//      (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STOP_EXTERNAL)) ||
+//      (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_FAULT_STOPPED)) ||
+//      (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STOP_ALARM)) ||
+//      (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_TO_STOP_MODE)) ||
+//      (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_WAIT_STOP)))
+// NOTE: Заменил проверку кучи битов на проверку на "неработу"
+  if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STARTED))
     return ok_r;
 
   int timeMs = VSD_CMD_TIMEOUT;
@@ -1155,14 +1162,11 @@ int VsdNovomet::stop(float type)
 
       switch((uint16_t)type) {
       case TYPE_STOP_ALARM:
-        //log_->setAlarm();
-        if (setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_ALARM))
-          return err_r;
+        setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_ALARM);
         break;
       default:
-        if (setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_STOP))
-          return err_r;
-       break;
+        setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_STOP);
+        break;
 
        resetBlock();
 
@@ -1173,7 +1177,7 @@ int VsdNovomet::stop(float type)
 
     osDelay(100);
 
-    if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STOP_EXTERNAL))
+    if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STARTED))
       return ok_r;
   }
 }
@@ -1217,17 +1221,12 @@ bool VsdNovomet::checkStop()
 #if USE_DEBUG
   return true;
 #endif
-
-  if ((checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STOP_EXTERNAL)) ||
-      (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STOP_ALARM)) ||
-      (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STOP_REGISTER))) {
     if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STARTED)) {
       if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_WAIT_STOP)) {
         resetBlock();
         return true;
       }
     }
-  }
   return false;
 }
 
