@@ -3,19 +3,19 @@
 #include <string.h>
 
 #if USE_EXT_MEM
-static uint16_t uValue[ADC_CNANNELS_NUM*ADC_POINTS_NUM] __attribute__((section(".extmem")));
-static uint16_t iaValue[ADC_POINTS_NUM] __attribute__((section(".extmem")));
-static uint16_t ibValue[ADC_POINTS_NUM] __attribute__((section(".extmem")));
-static uint16_t icValue[ADC_POINTS_NUM] __attribute__((section(".extmem")));
-static uint16_t udValue[ADC_POINTS_NUM] __attribute__((section(".extmem")));
-static uint16_t cosValue[ADC_POINTS_NUM] __attribute__((section(".extmem")));
+static int16_t uValue[ADC_CNANNELS_NUM*ADC_POINTS_NUM] __attribute__((section(".extmem")));
+static int16_t iaValue[ADC_POINTS_NUM] __attribute__((section(".extmem")));
+static int16_t ibValue[ADC_POINTS_NUM] __attribute__((section(".extmem")));
+static int16_t icValue[ADC_POINTS_NUM] __attribute__((section(".extmem")));
+static int16_t udValue[ADC_POINTS_NUM] __attribute__((section(".extmem")));
+static int16_t cosValue[ADC_POINTS_NUM] __attribute__((section(".extmem")));
 #else
-static uint16_t uValue[ADC_CNANNELS_NUM*ADC_POINTS_NUM];
-static uint16_t iaValue[ADC_POINTS_NUM];
-static uint16_t ibValue[ADC_POINTS_NUM];
-static uint16_t icValue[ADC_POINTS_NUM];
-static uint16_t udValue[ADC_POINTS_NUM];
-static uint16_t cosValue[ADC_POINTS_NUM];
+static int16_t uValue[ADC_CNANNELS_NUM*ADC_POINTS_NUM];
+static int16_t iaValue[ADC_POINTS_NUM];
+static int16_t ibValue[ADC_POINTS_NUM];
+static int16_t icValue[ADC_POINTS_NUM];
+static int16_t udValue[ADC_POINTS_NUM];
+static int16_t cosValue[ADC_POINTS_NUM];
 #endif
 
 LogRunning::LogRunning(TypeLog type) : Log(type)

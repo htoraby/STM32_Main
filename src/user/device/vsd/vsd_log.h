@@ -46,7 +46,7 @@ public:
    * \param ic
    * \param ud
    */
-  virtual void readAlarmLog(uint16_t *ia, uint16_t *ib, uint16_t *ic, uint16_t *ud);
+  virtual void readAlarmLog(int16_t *ia, int16_t *ib, int16_t *ic, int16_t *ud);
 
   /*!
    * \brief Чтение пускового архива
@@ -56,7 +56,7 @@ public:
    * \param ud
    * \param cos
    */
-  virtual void readRunningLog(uint16_t *ia, uint16_t *ib, uint16_t *ic, uint16_t *ud, uint16_t *cos);
+  virtual void readRunningLog(int16_t *ia, int16_t *ib, int16_t *ic, int16_t *ud, int16_t *cos);
 
 protected:
   /*!
@@ -79,8 +79,8 @@ protected:
    * \param ic
    * \param ud
    */
-  void readNovometLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
-                                   uint16_t *ud);
+  void readNovometLog(int16_t *ia, int16_t *ib, int16_t *ic,
+                                   int16_t *ud);
 
 private:
   int numPort_;

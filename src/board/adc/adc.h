@@ -51,7 +51,7 @@ StatusType getAnalogIn(uint32_t channel, uint32_t numSamples, uint32_t *value);
  \brief Копирование всех значений из временного буффера (DMA) в основной
  \param data - основной буффер
 */
-void copyAdcData(uint16_t *data);
+void copyAdcData(int16_t *data);
 
 /*!
  * \brief Копирование значений за 40 мс из временного буффера (DMA) в основной

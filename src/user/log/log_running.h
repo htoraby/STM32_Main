@@ -34,7 +34,7 @@ protected:
    */
   void add();
 
-  uint16_t *uValue_;
+  int16_t *uValue_;
 
   //! Идентификатор семафора начала записи архива
   osSemaphoreId semaphoreId_;

@@ -73,14 +73,14 @@ void VsdLog::resetAlarm()
 
 }
 
-void VsdLog::readAlarmLog(uint16_t */*ia*/, uint16_t */*ib*/, uint16_t */*ic*/,
-                          uint16_t */*ud*/)
+void VsdLog::readAlarmLog(int16_t */*ia*/, int16_t */*ib*/, int16_t */*ic*/,
+                          int16_t */*ud*/)
 {
 
 }
 
-void VsdLog::readRunningLog(uint16_t */*ia*/, uint16_t */*ib*/, uint16_t */*ic*/,
-                            uint16_t */*ud*/, uint16_t */*cos*/)
+void VsdLog::readRunningLog(int16_t */*ia*/, int16_t */*ib*/, int16_t */*ic*/,
+                            int16_t */*ud*/, int16_t */*cos*/)
 {
 
 }
@@ -122,16 +122,18 @@ void VsdLog::readLog(uint32_t addr, uint16_t *buf, uint32_t size)
   osSemaphoreRelease(semaphoreId_);
 }
 
-void VsdLog::readNovometLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
-                                 uint16_t *ud)
+void VsdLog::readNovometLog(int16_t *ia, int16_t *ib, int16_t *ic,
+                                 int16_t *ud)
 {
   osSemaphoreWait(semaphoreId_, osWaitForever);
-  uint16_t buffer[110] = {0};                             // Буфер с запросом данных
+
+  uint16_t buffer[210] = {0};                             // Буфер с запросом данных
   int16_t field = 1999;                                   // Количество не готовых записей
   uint16_t fieldShift = 25;                               // Смещение от конца архива
   uint16_t fieldCnt = 25;                                 // Количество читаемых записей
   int16_t i = 0;
   int16_t res = 0;
+  int16_t val = 0;
 
   float difCoefCur = parameters.get(VSD_MAXVAL_CAN_INV_IA);     // Смещение нуля тока
   float propCoefCur = parameters.get(VSD_MAX_CAN_INV_IA);       // Максимум тока
@@ -178,13 +180,28 @@ void VsdLog::readNovometLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
         }
       }
       else {
-        i = res - 1;
-        while (i >= 3) {
-          ic[field] = (int)(((float)buffer[i] - difCoefCur) * propCoefCur);
-          ib[field] = (int)(((float)buffer[i - 1] - difCoefCur) * propCoefCur);
-          ia[field] = (int)(((float)buffer[i - 2] - difCoefCur) * propCoefCur);
-          ud[field] = (int)(((float)buffer[i - 3] - difCoefVolt) * propCoefVolt);
-          i = i - 4;
+//        i = res - 1;
+//        while (i >= 3) {
+//          ic[field] = (int)(((float)((int)buffer[i]) - difCoefCur) * propCoefCur);
+//          ib[field] = (int)(((float)((int)buffer[i - 1])- difCoefCur) * propCoefCur);
+//          ia[field] = (int)(((float)((int)buffer[i - 2]) - difCoefCur) * propCoefCur);
+//          ud[field] = (int)(((float)((int)buffer[i - 3]) - difCoefVolt) * propCoefVolt);
+//          i = i - 4;
+//          field--;
+//        }
+        while (i <= res - 1) {
+          val = (int)buffer[i];
+          ud[field] = (int)(((float)val - difCoefVolt) * propCoefVolt);
+          i++;
+          val = (int)buffer[i];
+          ia[field] = (int)(((float)val - difCoefCur) * propCoefCur);
+          i++;
+          val = (int)buffer[i];
+          ib[field] = (int)(((float)val - difCoefCur) * propCoefCur);
+          i++;
+          val = (int)buffer[i];
+          ic[field] = (int)(((float)val - difCoefCur) * propCoefCur);
+          i++;
           field--;
         }
         if ((res / 4) == fieldCnt) {
