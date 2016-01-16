@@ -157,17 +157,6 @@ void VsdLog::readNovometLog(int16_t *ia, int16_t *ib, int16_t *ic,
         ud[field] = 0;
         field--;
       }
-//      while (fieldCnt > 0) {                              // От 10 до 1
-//        ic[field] = 0;
-//        ib[field] = 0;
-//        ia[field] = 0;
-//        ud[field] = 0;
-//        fieldCnt--;
-//        field--;
-//      }
-//      fieldCnt = 25;
-//      fieldShift = fieldShift + fieldCnt;
-
     }
     else {
       if (res == 1) {                                     // Получили сообщение что больше нет данных
