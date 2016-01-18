@@ -48,6 +48,7 @@ void LogAlarm::task()
     if (vsd->log()) {
       if (vsd->log()->checkAlarm()) {
         add();
+
       }
     }
   }
@@ -55,6 +56,7 @@ void LogAlarm::task()
 
 void LogAlarm::add()
 {
+  int t = HAL_GetTick();
   eventId_ = logEvent.add(AlarmCode, AutoType, WriteAlarmLogId);
 
   // Получение значений Ua, Ub, Uc
@@ -65,7 +67,7 @@ void LogAlarm::add()
   }
 
   uint16_t typeVsd = parameters.get(CCS_TYPE_VSD);
-
+  t = HAL_GetTick() - t;
   // Получение значений с ЧРП Ia, Ib, Ic, Ud
   vsd->log()->readAlarmLog(iaValue, ibValue, icValue, udValue);
 
@@ -118,5 +120,5 @@ void LogAlarm::add()
   }
 
   vsd->log()->resetReady();
-  osDelay(10000);
+  osDelay(1000);
 }

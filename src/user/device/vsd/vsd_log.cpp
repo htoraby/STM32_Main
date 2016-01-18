@@ -127,14 +127,13 @@ void VsdLog::readNovometLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
 {
   osSemaphoreWait(semaphoreId_, osWaitForever);
 
-  setAlarm();
-
-  uint16_t buffer[110] = {0};                             // Буфер с запросом данных
+  uint16_t buffer[210] = {0};                             // Буфер с запросом данных
   int16_t field = 1999;                                   // Количество не готовых записей
   uint16_t fieldShift = 25;                               // Смещение от конца архива
   uint16_t fieldCnt = 25;                                 // Количество читаемых записей
   int16_t i = 0;
   int16_t res = 0;
+  int16_t val = 0;
 
   float difCoefCur = parameters.get(VSD_MAXVAL_CAN_INV_IA);     // Смещение нуля тока
   float propCoefCur = parameters.get(VSD_MAX_CAN_INV_IA);       // Максимум тока
@@ -150,18 +149,14 @@ void VsdLog::readNovometLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
 
   while (field >= 0) {                            // Пока не все записи
     res = mms_->readLogNovomet(devAdrs_, fieldShift, buffer, fieldCnt);
-
     if (res == 0) {                                       // Нет ответа зануляем то что опрашивали
-      while (fieldCnt > 0) {                              // От 10 до 1
+      while (field >= 0) {                    // Все последующие данные зануляем
         ic[field] = 0;
         ib[field] = 0;
         ia[field] = 0;
         ud[field] = 0;
-        fieldCnt--;
         field--;
       }
-      fieldCnt = 25;
-      fieldShift = fieldShift + fieldCnt;
     }
     else {
       if (res == 1) {                                     // Получили сообщение что больше нет данных
@@ -174,13 +169,28 @@ void VsdLog::readNovometLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
         }
       }
       else {
-        i = res - 1;
-        while (i >= 3) {
-          ic[field] = (int)(((float)buffer[i] - difCoefCur) * propCoefCur);
-          ib[field] = (int)(((float)buffer[i - 1] - difCoefCur) * propCoefCur);
-          ia[field] = (int)(((float)buffer[i - 2] - difCoefCur) * propCoefCur);
-          ud[field] = (int)(((float)buffer[i - 3] - difCoefVolt) * propCoefVolt);
-          i = i - 4;
+//        i = res - 1;
+//        while (i >= 3) {
+//          ic[field] = (int)(((float)((int)buffer[i]) - difCoefCur) * propCoefCur);
+//          ib[field] = (int)(((float)((int)buffer[i - 1])- difCoefCur) * propCoefCur);
+//          ia[field] = (int)(((float)((int)buffer[i - 2]) - difCoefCur) * propCoefCur);
+//          ud[field] = (int)(((float)((int)buffer[i - 3]) - difCoefVolt) * propCoefVolt);
+//          i = i - 4;
+//          field--;
+//        }
+        while (i <= res - 1) {
+          val = (int)buffer[i];
+          ud[field] = (((float)val - difCoefVolt) * propCoefVolt);
+          i++;
+          val = (int)buffer[i];
+          ia[field] = (((float)val - difCoefCur) * propCoefCur);
+          i++;
+          val = (int)buffer[i];
+          ib[field] = (((float)val - difCoefCur) * propCoefCur);
+          i++;
+          val = (int)buffer[i];
+          ic[field] = (((float)val - difCoefCur) * propCoefCur);
+          i++;
           field--;
         }
         if ((res / 4) == fieldCnt) {
