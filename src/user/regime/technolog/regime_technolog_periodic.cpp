@@ -3,6 +3,7 @@
 
 RegimeTechnologPeriodic::RegimeTechnologPeriodic()
   : isInit_(false)
+  , isPowerGood_(true)
   , attempt_(false)
   , addTime_(0)
 {
@@ -36,6 +37,10 @@ void RegimeTechnologPeriodic::processing()
     }
     state_ = IdleState;
   }
+
+  if (!isPowerGood() && isPowerGood_)
+    isInit_ = false;
+  isPowerGood_ = isPowerGood();
 
   if (!isInit_) {
     isInit_ = true;
