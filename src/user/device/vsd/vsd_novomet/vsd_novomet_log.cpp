@@ -56,14 +56,14 @@ void VsdNovometLog::setAlarm()
   setDigitalOutput(DO1, PinReset);
 }
 
-void VsdNovometLog::readAlarmLog(int16_t *ia, int16_t *ib, int16_t *ic,
-                                 int16_t *ud)
+void VsdNovometLog::readAlarmLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
+                                 uint16_t *ud)
 {
   VsdLog::readNovometLog(ia, ib, ic, ud);
 }
 
-void VsdNovometLog::readRunningLog(int16_t *ia, int16_t *ib, int16_t *ic,
-                                  int16_t *ud, int16_t *cos)
+void VsdNovometLog::readRunningLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
+                                  uint16_t *ud, uint16_t *cos)
 {
 
 //  memset(cos, 0x0, sizeof(cos));  TODO: Очищение массива cos в 0, т.к. не получаем данные от ПЧ

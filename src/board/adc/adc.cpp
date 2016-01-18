@@ -306,7 +306,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* adcHandle)
   time = HAL_GetTick();
 }
 
-void copyAdcData(int16_t *data)
+void copyAdcData(uint16_t *data)
 {
   int allPoints = ADC_CNANNELS_NUM*ADC_POINTS_NUM;
   int numDataTr = hadc[adc2].DMA_Handle->Instance->NDTR;

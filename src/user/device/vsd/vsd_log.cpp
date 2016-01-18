@@ -73,14 +73,14 @@ void VsdLog::resetAlarm()
 
 }
 
-void VsdLog::readAlarmLog(int16_t */*ia*/, int16_t */*ib*/, int16_t */*ic*/,
-                          int16_t */*ud*/)
+void VsdLog::readAlarmLog(uint16_t */*ia*/, uint16_t */*ib*/, uint16_t */*ic*/,
+                          uint16_t */*ud*/)
 {
 
 }
 
-void VsdLog::readRunningLog(int16_t */*ia*/, int16_t */*ib*/, int16_t */*ic*/,
-                            int16_t */*ud*/, int16_t */*cos*/)
+void VsdLog::readRunningLog(uint16_t */*ia*/, uint16_t */*ib*/, uint16_t */*ic*/,
+                            uint16_t */*ud*/, uint16_t */*cos*/)
 {
 
 }
@@ -122,8 +122,8 @@ void VsdLog::readLog(uint32_t addr, uint16_t *buf, uint32_t size)
   osSemaphoreRelease(semaphoreId_);
 }
 
-void VsdLog::readNovometLog(int16_t *ia, int16_t *ib, int16_t *ic,
-                                 int16_t *ud)
+void VsdLog::readNovometLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
+                                 uint16_t *ud)
 {
   osSemaphoreWait(semaphoreId_, osWaitForever);
 
@@ -180,16 +180,16 @@ void VsdLog::readNovometLog(int16_t *ia, int16_t *ib, int16_t *ic,
 //        }
         while (i <= res - 1) {
           val = (int)buffer[i];
-          ud[field] = (int)(((float)val - difCoefVolt) * propCoefVolt);
+          ud[field] = (((float)val - difCoefVolt) * propCoefVolt);
           i++;
           val = (int)buffer[i];
-          ia[field] = (int)(((float)val - difCoefCur) * propCoefCur);
+          ia[field] = (((float)val - difCoefCur) * propCoefCur);
           i++;
           val = (int)buffer[i];
-          ib[field] = (int)(((float)val - difCoefCur) * propCoefCur);
+          ib[field] = (((float)val - difCoefCur) * propCoefCur);
           i++;
           val = (int)buffer[i];
-          ic[field] = (int)(((float)val - difCoefCur) * propCoefCur);
+          ic[field] = (((float)val - difCoefCur) * propCoefCur);
           i++;
           field--;
         }
