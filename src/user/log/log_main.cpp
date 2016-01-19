@@ -160,7 +160,7 @@ static bool logSave()
     osDelay(10);
     timeReady += 10;
     if (timeReady > 5000) {
-      asm("nop");
+      ksu.setError(NoConnectionUsbErr);
       return false;
     }
   }
@@ -204,6 +204,7 @@ static bool logSave()
       result = f_write(&file, (uint8_t*)&header, sizeof(header), &bytesWritten);
       if ((result != FR_OK) || (sizeof(header) != bytesWritten)) {
         f_close(&file);
+        ksu.setError(WriteFileUsbErr);
         return false;
       }
       calcCrc = crc16_ibm((uint8_t*)&header, bytesWritten, calcCrc);
@@ -219,6 +220,7 @@ static bool logSave()
           result = f_write(&file, &bufData[i*_MAX_SS], _MAX_SS, &bytesWritten);
           if ((result != FR_OK) || (bytesWritten != _MAX_SS)) {
             f_close(&file);
+            ksu.setError(WriteFileUsbErr);
             return false;
           }
         }
@@ -246,6 +248,7 @@ static bool logSave()
           result = f_write(&file, &bufData[i*_MAX_SS], _MAX_SS, &bytesWritten);
           if ((result != FR_OK) || (bytesWritten != _MAX_SS)) {
             f_close(&file);
+            ksu.setError(WriteFileUsbErr);
             return false;
           }
         }
@@ -273,6 +276,7 @@ static bool logSave()
           result = f_write(&file, &bufData[i*_MAX_SS], _MAX_SS, &bytesWritten);
           if ((result != FR_OK) || (bytesWritten != _MAX_SS)) {
             f_close(&file);
+            ksu.setError(WriteFileUsbErr);
             return false;
           }
         }
@@ -291,16 +295,21 @@ static bool logSave()
       result = f_write(&file, (uint8_t*)&calcCrc, sizeof(calcCrc), &bytesWritten);
       if ((result != FR_OK) || (sizeof(calcCrc) != bytesWritten)) {
         f_close(&file);
+        ksu.setError(WriteFileUsbErr);
         return false;
       }
 
       result = f_close(&file);
-      if (result != FR_OK)
+      if (result != FR_OK) {
+        ksu.setError(CloseFileUsbErr);
         return false;
+      }
     } else {
+      ksu.setError(OpenFileUsbErr);
       return false;
     }
   } else {
+    ksu.setError(MkDirUsbErr);
     return false;
   }
 
