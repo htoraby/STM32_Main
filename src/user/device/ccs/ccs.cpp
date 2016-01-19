@@ -229,6 +229,11 @@ void Ccs::vsdConditionTask()
       if (vsd->checkStop()) {
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
       }
+      if (vsd->checkStart()) {
+        if (++timer >= 18000) {
+          syncStart();
+        }
+      }
       break;
     case VSD_CONDITION_WAIT_STOP:
       if (vsd->stop(checkTypeStop()) == ok_r) {
