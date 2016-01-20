@@ -10,7 +10,23 @@ enum StatusType {
   StatusError,
 };
 
-
+/*!
+ * \brief Список ошибок Slave для отображения в GUI
+ */
+enum ErrorSlave {
+  NoErr,                       //!< Нет ошибки
+  NoConnectionUsbErr,          //!< Не подключен USB накопитель
+  WriteFileUsbErr,             //!< Ошибка записи файла
+  CloseFileUsbErr,             //!< Ошибка закрытия файла
+  MkDirUsbErr,                 //!< Ошибка создания каталога
+  OpenFileUsbErr,              //!< Ошибка открытия файла
+  OpenDirUsbErr,               //!< Ошибка открытия каталога
+  NotFoundFwUpdateErr,         //!< Файл прошивки не найден
+  CrcFwUpdateErr,              //!< Ошибка CRC файла прошивки
+  HeaderFwUpdateErr,           //!< Ошибка в заголовке файла прошивки
+  SaveFwMasterUpdateErr,       //!< Ошибка сохранения файла прошивки GUI
+  TimeoutMasterUpdateErr,      //!< Тайм-аут сохранения файла прошивки GUI
+};
 
 #ifdef __cplusplus
 

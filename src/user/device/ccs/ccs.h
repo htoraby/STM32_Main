@@ -404,6 +404,12 @@ public:
    */
   void calcTest();
 
+  /*!
+   * \brief Функция записи кода ошибки Slave в параметр для передачи в Master
+   * \param error - код ошибки
+   */
+  void setError(int error);
+
 private:
   /*!
    * \brief Метод добавления в очередь событий включения/мигания LED

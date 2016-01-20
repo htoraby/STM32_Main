@@ -59,9 +59,11 @@ static void getFile(char *fileName)
       }
     }
     logDebug.add(WarningMsg, "Обновление: Файл прошивки не найден");
+    ksu.setError(NotFoundFwUpdateErr);
   }
   else {
     logDebug.add(WarningMsg, "Обновление: Не удалось открыть каталог");
+    ksu.setError(OpenDirUsbErr);
   }
 }
 
@@ -165,17 +167,20 @@ static bool saveSwInFlashExt(char *fileName)
       }
       else {
         logDebug.add(WarningMsg, "Обновление: Ошибка CRС в файле прошивки (%x %x %x, %x)", crc, calcCrc, calcCrcRx, finish);
+        ksu.setError(CrcFwUpdateErr);
       }
     }
     else {
       logDebug.add(WarningMsg, "Обновление: Ошибка в загаловке файла прошивки (%d %d %d %d %d)",
                    readSize, imageHeader.size, imageHeader.codeProduction,
                    imageHeader.codeEquip, imageHeader.subCodeEquip);
+      ksu.setError(HeaderFwUpdateErr);
     }
     f_close(&file);
   }
   else {
     logDebug.add(WarningMsg, "Обновление: Ошибка открытия файла прошивки");
+    ksu.setError(OpenFileUsbErr);
   }
 
   return isSaveSw;
@@ -187,6 +192,7 @@ bool updateFromUsb()
 
   if (usbState != USB_READY) {
     logDebug.add(WarningMsg, "Обновление: Не подключен USB накопитель");
+    ksu.setError(NoConnectionUsbErr);
     return false;
   }
 
@@ -212,11 +218,13 @@ bool updateFromUsb()
       if (parameters.get(CCS_CMD_UPDATE_SW_MASTER) == 2) {
         parameters.set(CCS_CMD_UPDATE_SW_MASTER, 0.0);
         flashExtWriteEx(FlashSpi1, AddrUpdateHeader, (uint8_t*)&updateHeaderOld, sizeof(UPDATE_HEADER));
+        ksu.setError(SaveFwMasterUpdateErr);
         return false;
       }
       if (--timeOut <= 0) {
         parameters.set(CCS_CMD_UPDATE_SW_MASTER, 0.0);
         flashExtWriteEx(FlashSpi1, AddrUpdateHeader, (uint8_t*)&updateHeaderOld, sizeof(UPDATE_HEADER));
+        ksu.setError(TimeoutMasterUpdateErr);
         return false;
       }
       if (parameters.get(CCS_PROGRESS_VALUE) != oldValue)

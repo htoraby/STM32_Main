@@ -30,40 +30,17 @@
 
 UART_HandleTypeDef *uart;
 
-static HAL_StatusTypeDef waitOnFlagUntilTimeout(UART_HandleTypeDef *huart,
-                                                uint32_t Flag, FlagStatus Status,
-                                                uint32_t Timeout)
-{
-  uint32_t tickstart = HAL_GetTick();
-  if(Status == RESET) {
-    while(__HAL_UART_GET_FLAG(huart, Flag) == RESET) {
-      if(Timeout != HAL_MAX_DELAY) {
-        if((Timeout == 0) || ((HAL_GetTick() - tickstart) > Timeout)) {
-          return HAL_TIMEOUT;
-        }
-      }
-    }
-  }
-  else {
-    while(__HAL_UART_GET_FLAG(huart, Flag) != RESET) {
-      if(Timeout != HAL_MAX_DELAY) {
-        if((Timeout == 0) || ((HAL_GetTick() - tickstart) > Timeout)) {
-          return HAL_TIMEOUT;
-        }
-      }
-    }
-  }
-  return HAL_OK;
-}
-
 /* If xRXEnable enable serial receive interrupts. If xTxENable enable
  * transmitter empty interrupts.
  */
 void vMBPortSerialEnable(BOOL xRxEnable, BOOL xTxEnable)
 {
+  static BOOL xTxEnableTmp = FALSE;
   if(xRxEnable) {
-    uartSetRts(uartGetNum(uart), GPIO_PIN_RESET);
-    __HAL_UART_ENABLE_IT(uart, UART_IT_RXNE);
+    if (!xTxEnableTmp && !xTxEnable) {
+      uartSetRts(uartGetNum(uart), GPIO_PIN_RESET);
+      __HAL_UART_ENABLE_IT(uart, UART_IT_RXNE);
+    }
   }
   else {
     __HAL_UART_DISABLE_IT(uart, UART_IT_RXNE);
@@ -71,16 +48,20 @@ void vMBPortSerialEnable(BOOL xRxEnable, BOOL xTxEnable)
   }
 
   if (xTxEnable) {
+    __HAL_UART_ENABLE_IT(uart, UART_IT_PE);
+    __HAL_UART_ENABLE_IT(uart, UART_IT_ERR);
     __HAL_UART_ENABLE_IT(uart, UART_IT_TXE);
   }
   else {
     __HAL_UART_DISABLE_IT(uart, UART_IT_TXE);
-
+    __HAL_UART_ENABLE_IT(uart, UART_IT_TC);
   }
+
+  xTxEnableTmp = xTxEnable;
 }
 
 BOOL xMBPortSerialInit(UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits,
-                  eMBParity eParity)
+                       eMBParity eParity)
 {
   UNUSED(ucDataBits);
 
@@ -174,16 +155,64 @@ BOOL xMBPortSerialGetByte(CHAR *pucByte)
   return TRUE;
 }
 
+extern void calcIrqError(uint8_t type, uint8_t state);
+
 void vMBPort_USART_IRQHandler(void)
 {
-  if ((__HAL_UART_GET_FLAG(uart, UART_FLAG_RXNE)) &&
-      (__HAL_UART_GET_IT_SOURCE(uart, UART_IT_RXNE) != RESET)) {
+  uint32_t tmp1 = 0, tmp2 = 0;
+
+  calcIrqError(uartGetNum(uart) + 1, uart->State);
+
+  tmp1 = __HAL_UART_GET_FLAG(uart, UART_FLAG_PE);
+  tmp2 = __HAL_UART_GET_IT_SOURCE(uart, UART_IT_PE);
+  /* UART parity error interrupt occurred ------------------------------------*/
+  if((tmp1 != RESET) && (tmp2 != RESET))
+  {
+    __HAL_UART_CLEAR_PEFLAG(uart);
+  }
+
+  tmp1 = __HAL_UART_GET_FLAG(uart, UART_FLAG_FE);
+  tmp2 = __HAL_UART_GET_IT_SOURCE(uart, UART_IT_ERR);
+  /* UART frame error interrupt occurred -------------------------------------*/
+  if((tmp1 != RESET) && (tmp2 != RESET))
+  {
+    __HAL_UART_CLEAR_FEFLAG(uart);
+  }
+
+  tmp1 = __HAL_UART_GET_FLAG(uart, UART_FLAG_NE);
+  tmp2 = __HAL_UART_GET_IT_SOURCE(uart, UART_IT_ERR);
+  /* UART noise error interrupt occurred -------------------------------------*/
+  if((tmp1 != RESET) && (tmp2 != RESET))
+  {
+    __HAL_UART_CLEAR_NEFLAG(uart);
+  }
+
+  tmp1 = __HAL_UART_GET_FLAG(uart, UART_FLAG_ORE);
+  tmp2 = __HAL_UART_GET_IT_SOURCE(uart, UART_IT_ERR);
+  /* UART Over-Run interrupt occurred ----------------------------------------*/
+  if((tmp1 != RESET) && (tmp2 != RESET))
+  {
+    __HAL_UART_CLEAR_OREFLAG(uart);
+  }
+
+  tmp1 = __HAL_UART_GET_FLAG(uart, UART_FLAG_RXNE);
+  tmp2 = __HAL_UART_GET_IT_SOURCE(uart, UART_IT_RXNE);
+  if((tmp1 != RESET) && (tmp2 != RESET)) {
     pxMBFrameCBByteReceived();
   }
 
-  if ((__HAL_UART_GET_FLAG(uart, UART_FLAG_TXE)) &&
-      (__HAL_UART_GET_IT_SOURCE(uart, UART_IT_TXE) != RESET)) {
-    waitOnFlagUntilTimeout(uart, UART_FLAG_TC, RESET, 1000);
+  tmp1 = __HAL_UART_GET_FLAG(uart, UART_FLAG_TXE);
+  tmp2 = __HAL_UART_GET_IT_SOURCE(uart, UART_IT_TXE);
+  if((tmp1 != RESET) && (tmp2 != RESET)) {
     pxMBFrameCBTransmitterEmpty();
+  }
+
+  tmp1 = __HAL_UART_GET_FLAG(uart, UART_FLAG_TC);
+  tmp2 = __HAL_UART_GET_IT_SOURCE(uart, UART_IT_TC);
+  if((tmp1 != RESET) && (tmp2 != RESET)) {
+    __HAL_UART_DISABLE_IT(uart, UART_IT_TC);
+
+    uartSetRts(uartGetNum(uart), GPIO_PIN_RESET);
+    __HAL_UART_ENABLE_IT(uart, UART_IT_RXNE);
   }
 }
