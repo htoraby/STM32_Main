@@ -354,7 +354,7 @@ public:
    * \brief calcUfCharacteristic
    * \return
    */
-  virtual int calcUfCharacteristicU();
+  virtual int calcUfCharacteristicU(float value);
 
   /*!
    * \brief calcUfCharacteristicF

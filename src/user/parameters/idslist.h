@@ -867,7 +867,15 @@ enum enID
   CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY = 861,             //!< Текущая задержка срабатывания
   CCS_SRC_CURRENT_OUT_PHASE = 862,                           //!< Измерение токов ЧРП
   CCS_VSD_DECEL = 863,                                       //!< Предварительный разряд шины
-  CCS_END = 864,                                             //!< Последний параметр
+  CCS_IP_ADDRESS_1 = 864,                                    //!< IP-адрес (1)
+  CCS_IP_ADDRESS_2 = 865,                                    //!< IP-адрес (2)
+  CCS_IP_ADDRESS_3 = 866,                                    //!< IP-адрес (3)
+  CCS_IP_ADDRESS_4 = 867,                                    //!< IP-адрес (4)
+  CCS_NETMASK_1 = 868,                                       //!< Маска подсети (1)
+  CCS_NETMASK_2 = 869,                                       //!< Маска подсети (2)
+  CCS_NETMASK_3 = 870,                                       //!< Маска подсети (3)
+  CCS_NETMASK_4 = 871,                                       //!< Маска подсети (4)
+  CCS_END = 872,                                             //!< Последний параметр
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF

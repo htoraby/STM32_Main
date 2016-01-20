@@ -474,6 +474,7 @@ float VsdNovomet::checkAlarmVsd()
     vsdStatus = 0;
     for (i = VSD_NOVOMET_ALARM_I_LIMIT; i <= VSD_NOVOMET_ALARM_ULOW; i++) {
       if (checkBit(vsdStatus1, i - 1000)) {
+        resetBlock();
         return i;
       }
     }
@@ -483,6 +484,7 @@ float VsdNovomet::checkAlarmVsd()
     vsdStatus = 0;
     for (i = VSD_NOVOMET_ALARM_UD_LOW_FAULT; i <= VSD_NOVOMET_ALARM_UD_HIGH_FAULT; i++) {
       if (checkBit(vsdStatus1, i - 1000)) {
+        resetBlock();
         return i;
       }
     }
@@ -492,6 +494,7 @@ float VsdNovomet::checkAlarmVsd()
     vsdStatus = 0;
     for (i = VSD_NOVOMET_ALARM_UIN_ASYM; i <= VSD_NOVOMET_ALARM_URECT_SHORT; i++) {
       if (checkBit(vsdStatus1, i - 1000)) {
+        resetBlock();
         return i;
       }
     }
@@ -501,6 +504,7 @@ float VsdNovomet::checkAlarmVsd()
     vsdStatus = 0;
     for (i = VSD_NOVOMET_ALARM_FC_IT_ERR; i <= VSD_NOVOMET_ALARM_I_LIMIT_FAST; i++) {
       if (checkBit(vsdStatus2, i - 1016)) {
+        resetBlock();
         return i;
       }
     }
@@ -510,19 +514,26 @@ float VsdNovomet::checkAlarmVsd()
     vsdStatus = 0;
     for (i = VSD_NOVOMET_ALARM_DISCHARGE_ERR; i <= VSD_NOVOMET_ALARM_I_LIM_ERR; i++) {
       if (checkBit(vsdStatus2, i - 1016)) {
+        resetBlock();
         return i;
       }
     }
   }
 
+  /*
   if ((vsdStatus == 0) || (vsdStatus == VSD_NOVOMET_ALARM_ERR_STATE)) {
+    vsdStatus = 0;
     if (checkBit(vsdStatus5, VSD_NOVOMET_ALARM_ERR_STATE - 1064)) {
+      resetBlock();
       return VSD_NOVOMET_ALARM_ERR_STATE;
     }
   }
+  */
 
   if ((vsdStatus == 0) || (vsdStatus == VSD_NOVOMET_ALARM_ERR_SHORT)) {
+    vsdStatus = 0;
     if (checkBit(vsdStatus5, VSD_NOVOMET_ALARM_ERR_SHORT - 1064)) {
+      resetBlock();
       return VSD_NOVOMET_ALARM_ERR_SHORT;
     }
   }
@@ -531,6 +542,7 @@ float VsdNovomet::checkAlarmVsd()
     vsdStatus = 0;
     for (int i = VSD_NOVOMET_ALARM_IMAX; i <= VSD_NOVOMET_ALARM_CTR_MON; i++) {
       if (checkBit(vsdStatus7, i - 1096)) {
+        resetBlock();
         return i;
       }
     }
@@ -540,6 +552,7 @@ float VsdNovomet::checkAlarmVsd()
     vsdStatus = 0;
     for (int i = VSD_NOVOMET_ALARM_CLK_MON; i <= VSD_NOVOMET_ALARM_DRV2; i++) {
       if (checkBit(vsdStatus7, i - 1096)) {
+        resetBlock();
         return i;
       }
     }
@@ -549,6 +562,7 @@ float VsdNovomet::checkAlarmVsd()
     vsdStatus = 0;
     for (int i = VSD_NOVOMET_ALARM_TEMP_LINK; i <= VSD_NOVOMET_ALARM_AIR_TEMP; i++) {
       if (checkBit(vsdStatus7, i - 1096)) {
+        resetBlock();
         return i;
       }
     }
@@ -558,8 +572,9 @@ float VsdNovomet::checkAlarmVsd()
       (vsdStatus == VSD_NOVOMET_ALARM_ABC_STATE) ||
       (vsdStatus == VSD_NOVOMET_ALARM_STOPPED_ALARM) ||
       (vsdStatus == VSD_NOVOMET_ALARM_CLK_MON) ||
-      (vsdStatus == VSD_NOVOMET_ALARM_TEST)) {
-    return 0;
+      (vsdStatus == VSD_NOVOMET_ALARM_TEST) ||
+      (vsdStatus == VSD_NOVOMET_ALARM_ERR_STATE)) {
+    return VSD_ALARM_NONE;
   }
 
   return vsdStatus;
@@ -570,6 +585,142 @@ bool VsdNovomet::checkPreventVsd()
   if (parameters.get(CCS_VSD_ALARM_CODE))
     return true;
   return false;
+}
+
+void VsdNovomet::getNewVsdMtrType(float value)
+{
+  setValue(VSD_MOTOR_TYPE, value);
+  if (parameters.get(CCS_MOTOR_TYPE) != value)
+    parameters.set(CCS_MOTOR_TYPE, value);
+}
+
+void VsdNovomet::getNewCurOutPhase1(float value)
+{
+  if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 0) {
+    setValue(VSD_CURRENT_OUT_PHASE_1, parameters.get(CCS_COEF_OUT_CURRENT_1) * value);
+    ksu.calcMotorCurrentPhase1();
+    ksu.calcMotorCurrent();
+  }
+}
+
+void VsdNovomet::getNewCurOutPhase2(float value)
+{
+  if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 0) {
+    setValue(VSD_CURRENT_OUT_PHASE_2, parameters.get(CCS_COEF_OUT_CURRENT_2) * value);
+    ksu.calcMotorCurrentPhase2();
+    ksu.calcMotorCurrent();
+  }
+}
+
+void VsdNovomet::getNewCurOutPhase3(float value)
+{
+  if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 0) {
+    setValue(VSD_CURRENT_OUT_PHASE_3, parameters.get(CCS_COEF_OUT_CURRENT_3) * value);
+    ksu.calcMotorCurrentPhase3();
+    ksu.calcMotorCurrent();
+  };
+}
+
+void VsdNovomet::getNewIaRms(float value)
+{
+  setValue(VSD_IA_RMS, value);
+  if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 1) {
+    setValue(VSD_CURRENT_OUT_PHASE_1, parameters.get(CCS_COEF_OUT_CURRENT_1) * value);
+    ksu.calcMotorCurrentPhase1();
+    ksu.calcMotorCurrent();
+  }
+}
+
+void VsdNovomet::getNewIbRms(float value)
+{
+  setValue(VSD_IB_RMS, value);
+  if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 1) {
+    setValue(VSD_CURRENT_OUT_PHASE_2, parameters.get(CCS_COEF_OUT_CURRENT_2) * value);
+    ksu.calcMotorCurrentPhase2();
+    ksu.calcMotorCurrent();
+  }
+}
+
+void VsdNovomet::getNewIcRms(float value)
+{
+  setValue(VSD_IC_RMS, value);
+  if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 1) {
+    setValue(VSD_CURRENT_OUT_PHASE_3, parameters.get(CCS_COEF_OUT_CURRENT_3) * value);
+    ksu.calcMotorCurrentPhase3();
+    ksu.calcMotorCurrent();
+  }
+}
+
+void VsdNovomet::getNewStatusWord1(float value)
+{
+  setValue(VSD_STATUS_WORD_1, value);
+  parameters.set(CCS_VSD_STATUS_WORD_1, value);
+//  parameters.set(CCS_VSD_ALARM_CODE, checkAlarmVsd());
+}
+
+void VsdNovomet::getNewStatusWord2(float value)
+{
+  setValue(VSD_STATUS_WORD_2, value);
+  parameters.set(CCS_VSD_STATUS_WORD_2, value);
+//  parameters.set(CCS_VSD_ALARM_CODE, checkAlarmVsd());
+  calcDischarge();
+}
+
+void VsdNovomet::getNewStatusWord3(float value)
+{
+  setValue(VSD_STATUS_WORD_3, value);
+  parameters.set(CCS_VSD_STATUS_WORD_3, value);
+  calcRotation();
+  calcMotorType();
+  calcSwitchFreqMode();
+  calcResonanceRemoveSource();
+  calcTemperatureHtsnkMode();
+  calcTemperatureAirMode();
+}
+
+void VsdNovomet::getNewStatusWord4(float value)
+{
+  setValue(VSD_STATUS_WORD_4, value);
+  parameters.set(CCS_VSD_STATUS_WORD_4, value);
+}
+
+void VsdNovomet::getNewTimeSpeedUp(float value)
+{
+  setValue(VSD_T_SPEEDUP, value);
+  calcTempSpeedUp();
+  calcTimeSpeedUp();
+}
+
+void VsdNovomet::getNewTimeSpeedDown(float value)
+{
+  setValue(VSD_T_SPEEDDOWN, value);
+  calcTempSpeedDown();
+  calcTimeSpeedDown();
+}
+
+void VsdNovomet::getNewVoltageDC(float value)
+{
+  setValue(VSD_VOLTAGE_DC, value);
+  calcCurrentDC();
+}
+
+void VsdNovomet::getNewPowerActive(float value)
+{
+  setValue(VSD_POWER_ACTIVE, value);
+  calcMotorCos();
+  calcCurrentDC();
+}
+
+void VsdNovomet::getNewPowerFull(float value)
+{
+  setValue(VSD_POWER_FULL, value);
+  calcMotorCos();
+}
+
+void VsdNovomet::getNewLowLimitSpeedMotor(float value)
+{
+  setValue(VSD_LOW_LIM_SPEED_MOTOR, value);
+  setLimitsMinFrequence(value);
 }
 
 int VsdNovomet::calcUfCharacteristicU(float value)
@@ -761,110 +912,55 @@ void VsdNovomet::getNewValue(uint16_t id)
   // Особенная обработка некоторых параметров
   switch (id) {
   case VSD_MOTOR_TYPE:
-    setValue(id, value);
-    if (parameters.get(CCS_MOTOR_TYPE) != value)
-      parameters.set(CCS_MOTOR_TYPE, value);
+    getNewVsdMtrType(value);
     break;
   case VSD_CURRENT_OUT_PHASE_1:             // Выходной ток ЧРП (гармоника) Фаза 1
-    if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 0) {
-      setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_1) * value);
-      ksu.calcMotorCurrentPhase1();
-      ksu.calcMotorCurrent();
-    };
-    break;
+    getNewCurOutPhase1(value);
+    break;   
   case VSD_CURRENT_OUT_PHASE_2:             // Выходной ток (гармоника) ЧРП Фаза 2
-    if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 0) {
-      setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_2) * value);
-      ksu.calcMotorCurrentPhase2();
-      ksu.calcMotorCurrent();
-    };
+    getNewCurOutPhase2(value);
     break;
   case VSD_CURRENT_OUT_PHASE_3:             // Выходной ток (гармоника) ЧРП Фаза 3
-    if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 0) {
-      setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_3) * value);
-      ksu.calcMotorCurrentPhase3();
-      ksu.calcMotorCurrent();
-    };
+    getNewCurOutPhase3(value);
     break;
   case VSD_IA_RMS:
-    setValue(id, value);
-    if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 1) {
-      setValue(VSD_CURRENT_OUT_PHASE_1, parameters.get(CCS_COEF_OUT_CURRENT_1) * value);
-      ksu.calcMotorCurrentPhase1();
-      ksu.calcMotorCurrent();
-    };
+    getNewIaRms(value);
     break;
   case VSD_IB_RMS:
-    setValue(id, value);
-    if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 1) {
-      setValue(VSD_CURRENT_OUT_PHASE_2, parameters.get(CCS_COEF_OUT_CURRENT_2) * value);
-      ksu.calcMotorCurrentPhase2();
-      ksu.calcMotorCurrent();
-    };
+    getNewIbRms(value);
     break;
   case VSD_IC_RMS:
-    setValue(id, value);
-    if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 1) {
-      setValue(VSD_CURRENT_OUT_PHASE_3, parameters.get(CCS_COEF_OUT_CURRENT_3) * value);
-      ksu.calcMotorCurrentPhase3();
-      ksu.calcMotorCurrent();
-    };
-    break;
+    getNewIcRms(value);
+    break; 
   case VSD_STATUS_WORD_1:
-    setValue(id, value);
-    parameters.set(CCS_VSD_ALARM_CODE, checkAlarmVsd());
+    getNewStatusWord1(value);
     break;
   case VSD_STATUS_WORD_2:
-    setValue(id, value);
-    parameters.set(CCS_VSD_ALARM_CODE, checkAlarmVsd());
-    calcDischarge();
+    getNewStatusWord2(value);
     break;
   case VSD_STATUS_WORD_3:
-    setValue(id, value);
-    parameters.set(CCS_VSD_STATUS_WORD_3, value);
-    calcRotation();
-    calcMotorType();
-    calcSwitchFreqMode();
-    calcResonanceRemoveSource();
-    calcTemperatureHtsnkMode();
-    calcTemperatureAirMode();
+    getNewStatusWord3(value);
     break;
   case VSD_STATUS_WORD_4:
-    setValue(id, value);
-    parameters.set(CCS_VSD_STATUS_WORD_4, value);
-    break;
-  case VSD_STATUS_WORD_7:
-    setValue(id, value);
-    break;
-  case VSD_STATUS_WORD_5:
-    setValue(id, value);
+    getNewStatusWord4(value);
     break;
   case VSD_T_SPEEDUP:
-    setValue(id, value);
-    calcTempSpeedUp();
-    calcTimeSpeedUp();
+    getNewTimeSpeedUp(value);
     break;
   case VSD_T_SPEEDDOWN:
-    setValue(id, value);
-    calcTempSpeedDown();
-    calcTimeSpeedDown();
+    getNewTimeSpeedDown(value);
     break;
   case VSD_VOLTAGE_DC:
-    setValue(id, value);
-    calcCurrentDC();
+    getNewVoltageDC(value);
     break;
   case VSD_POWER_ACTIVE:
-    setValue(id, value);
-    calcMotorCos();
-    calcCurrentDC();
+    getNewPowerActive(value);
     break;
   case VSD_POWER_FULL:
-    setValue(id, value);
-    calcMotorCos();
+    getNewPowerFull(value);
     break;
   case VSD_LOW_LIM_SPEED_MOTOR:
-    setValue(id, value);
-    setLimitsMinFrequence(value);
+    getNewLowLimitSpeedMotor(value);
     break;
   case VSD_HIGH_LIM_SPEED_MOTOR:
     setValue(id, value);
@@ -893,14 +989,7 @@ void VsdNovomet::getNewValue(uint16_t id)
     parameters.set(CCS_SYSTEM_INDUCTANCE, value);
     break;
   case VSD_TIME_MINUTE:
-    setValue(id, value);
-    if (getValue(VSD_TIME_MINUTE) != parameters.get(CCS_DATE_TIME_MIN)) {
-      parameters.set(VSD_TIME_SECOND, parameters.get(CCS_DATE_TIME_SEC));
-      parameters.set(VSD_TIME_MINUTE, parameters.get(CCS_DATE_TIME_MIN));
-      parameters.set(VSD_TIME_HOUR, parameters.get(CCS_DATE_TIME_HOUR));
-      parameters.set(VSD_TIME_MONTH, parameters.get(CCS_DATE_TIME_MONTH));
-      parameters.set(VSD_TIME_YEAR, parameters.get(CCS_DATE_TIME_YEAR));
-    }
+    getNewVsdTimeMinute(value);
     break;
   case VSD_THYR_T_EXT:
   // TODO: Уточнить какие температуры с коэффициентом 0.1
@@ -975,9 +1064,25 @@ void VsdNovomet::getNewValue(uint16_t id)
   case VSD_MAXVAL_CAN_INV_IA:
     setValue(id, value);
     break;
+  case VSD_M_KU_START:
+    setValue(id, value);
+    break;
   default:                                  // Прямая запись в массив параметров
     setValue(id, value);
     break;
+  }
+}
+
+
+void VsdNovomet::getNewVsdTimeMinute(float value)
+{
+  setValue(VSD_TIME_MINUTE, value);
+  if (getValue(VSD_TIME_MINUTE) != parameters.get(CCS_DATE_TIME_MIN)) {
+    parameters.set(VSD_TIME_SECOND, parameters.get(CCS_DATE_TIME_SEC));
+    parameters.set(VSD_TIME_MINUTE, parameters.get(CCS_DATE_TIME_MIN));
+    parameters.set(VSD_TIME_HOUR, parameters.get(CCS_DATE_TIME_HOUR));
+    parameters.set(VSD_TIME_MONTH, parameters.get(CCS_DATE_TIME_MONTH));
+    parameters.set(VSD_TIME_YEAR, parameters.get(CCS_DATE_TIME_YEAR));
   }
 }
 
@@ -1091,11 +1196,11 @@ int VsdNovomet::start()
       if (countRepeats > VSD_CMD_NUMBER_REPEATS)
         return err_r;
 
-      if (setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_START))
+      if (resetBlock())
         return err_r;
 
-//      if (resetBlock())
-//        return err_r;
+      if (setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_START))
+        return err_r;
 
     } else {
       timeMs = timeMs + 100;
@@ -1128,8 +1233,15 @@ int VsdNovomet::stop(float type)
   return ok_r;
 #endif
 
-  // Если стоит бит остановки по внешней команде
-  if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STOP_EXTERNAL))
+  // Если стоит бит любой останова
+//  if ((checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STOP_REGISTER)) ||
+//      (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STOP_EXTERNAL)) ||
+//      (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_FAULT_STOPPED)) ||
+//      (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STOP_ALARM)) ||
+//      (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_TO_STOP_MODE)) ||
+//      (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_WAIT_STOP)))
+// NOTE: Заменил проверку кучи битов на проверку на "неработу"
+  if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STARTED))
     return ok_r;
 
   int timeMs = VSD_CMD_TIMEOUT;
@@ -1145,14 +1257,11 @@ int VsdNovomet::stop(float type)
 
       switch((uint16_t)type) {
       case TYPE_STOP_ALARM:
-        //log_->setAlarm();
-        if (setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_ALARM))
-          return err_r;
+        setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_ALARM);
         break;
       default:
-        if (setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_STOP))
-          return err_r;
-       break;
+        setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_STOP);
+        break;
 
        resetBlock();
 
@@ -1163,7 +1272,7 @@ int VsdNovomet::stop(float type)
 
     osDelay(100);
 
-    if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STOP_EXTERNAL))
+    if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STARTED))
       return ok_r;
   }
 }
@@ -1207,17 +1316,12 @@ bool VsdNovomet::checkStop()
 #if USE_DEBUG
   return true;
 #endif
-
-  if ((checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STOP_EXTERNAL)) ||
-      (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STOP_ALARM)) ||
-      (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STOP_REGISTER))) {
     if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STARTED)) {
       if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_WAIT_STOP)) {
         resetBlock();
         return true;
       }
     }
-  }
   return false;
 }
 

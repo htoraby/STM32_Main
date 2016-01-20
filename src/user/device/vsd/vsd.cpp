@@ -485,7 +485,7 @@ int Vsd::setDischarge(float value)
   return err_r;
 }
 
-int Vsd::calcUfCharacteristicU()
+int Vsd::calcUfCharacteristicU(float value)
 {
   return err_r;
 }

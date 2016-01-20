@@ -275,7 +275,26 @@ public:
   float checkAlarmVsd();
   bool checkPreventVsd();
 
+  void getNewVsdMtrType(float value);
+  void getNewCurOutPhase1(float value);
+  void getNewCurOutPhase2(float value);
+  void getNewCurOutPhase3(float value);
+  void getNewIaRms(float value);
+  void getNewIbRms(float value);
+  void getNewIcRms(float value);
+  void getNewStatusWord1(float value);
+  void getNewStatusWord2(float value);
+  void getNewStatusWord3(float value);
+  void getNewStatusWord4(float value);
+  void getNewTimeSpeedUp(float value);
+  void getNewTimeSpeedDown(float value);
+  void getNewVoltageDC(float value);
+  void getNewPowerActive(float value);
+  void getNewPowerFull(float value);
+  void getNewLowLimitSpeedMotor(float value);
+
   void getNewValue(uint16_t id);
+  void getNewVsdTimeMinute(float value);
   uint8_t setNewValue(uint16_t id, float value);
 
   /*!

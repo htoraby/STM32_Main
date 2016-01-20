@@ -14,14 +14,21 @@ VsdNovometLog::~VsdNovometLog()
 
 }
 
-bool VsdNovometLog::checkAlarm()
+bool VsdNovometLog::checkAlarm()                // Функция отсле
 {
   static bool old = true;                       // Изначально низкий
+  static bool alarm = false;
   bool result = false;
   bool now = parameters.get(CCS_DI_11_VALUE);   // Текущий
   if (parameters.isValidity(CCS_DI_11_VALUE)) { // Валиден
-    if ((old == false) && (now == true)) {  // Переход с высокого на низкий
+    if ((old == false) && (now == true)) {      // Переход с высокого на низкий
+      alarm = true;
+      setAlarm();
       result = true;                            // Авария
+    }
+    else if ((alarm == true) && (now == false)) {
+      alarm = false;
+      resetAlarm();
     }
     old = now;
   }
@@ -35,8 +42,8 @@ bool VsdNovometLog::checkReady()
 
 void VsdNovometLog::resetReady()
 {
-  setDigitalOutput(DO1, PinSet);
-
+//  setDigitalOutput(DO1, PinSet);
+  return;
 }
 
 void VsdNovometLog::resetAlarm()
