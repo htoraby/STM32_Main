@@ -16925,6 +16925,28 @@
 	</param>
 	<param>
 		<id>872</id>
+		<name>CCS_USB_CONNECTION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Подключение flashdisk к USB</text>
+		<short_text>Подключение flashdisk к USB</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<values>0-Нет;1-Да</values>
+		<comment>Подключение flashdisk к USB</comment>
+	</param>
+	<param>
+		<id>873</id>
 		<name>CCS_END</name>
 		<comment>Последний параметр</comment>
 	</param>
