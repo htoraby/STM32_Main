@@ -340,8 +340,8 @@ void DeviceModbus::exchangeTask()
         break;
       }
       // Чтение параметра после его записи
-      mbParams_[outOfTurn].command = OPERATION_READ;
-      putMessageOutOfTurn(outOfTurn);
+      //mbParams_[outOfTurn].command = OPERATION_READ;
+      //putMessageOutOfTurn(outOfTurn);
     }
     else {
       if (!(outOfTurn && (mbParams_[outOfTurn].command == OPERATION_READ))) {
