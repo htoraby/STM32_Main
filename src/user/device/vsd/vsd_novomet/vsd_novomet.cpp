@@ -520,14 +520,18 @@ float VsdNovomet::checkAlarmVsd()
     }
   }
 
+  /*
   if ((vsdStatus == 0) || (vsdStatus == VSD_NOVOMET_ALARM_ERR_STATE)) {
+    vsdStatus = 0;
     if (checkBit(vsdStatus5, VSD_NOVOMET_ALARM_ERR_STATE - 1064)) {
       resetBlock();
       return VSD_NOVOMET_ALARM_ERR_STATE;
     }
   }
+  */
 
   if ((vsdStatus == 0) || (vsdStatus == VSD_NOVOMET_ALARM_ERR_SHORT)) {
+    vsdStatus = 0;
     if (checkBit(vsdStatus5, VSD_NOVOMET_ALARM_ERR_SHORT - 1064)) {
       resetBlock();
       return VSD_NOVOMET_ALARM_ERR_SHORT;
@@ -568,7 +572,8 @@ float VsdNovomet::checkAlarmVsd()
       (vsdStatus == VSD_NOVOMET_ALARM_ABC_STATE) ||
       (vsdStatus == VSD_NOVOMET_ALARM_STOPPED_ALARM) ||
       (vsdStatus == VSD_NOVOMET_ALARM_CLK_MON) ||
-      (vsdStatus == VSD_NOVOMET_ALARM_TEST)) {
+      (vsdStatus == VSD_NOVOMET_ALARM_TEST) ||
+      (vsdStatus == VSD_NOVOMET_ALARM_ERR_STATE)) {
     return VSD_ALARM_NONE;
   }
 
