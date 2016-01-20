@@ -866,7 +866,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_BASE_VOLTAGE:                    // Максимальное рабочее напряжение (базовое)
     err = setValue(id, value, eventType);
     calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
-    vsd->calcUfCharacteristicU();
+    vsd->calcUfCharacteristicU(value);
     return err;
   case CCS_BASE_FREQUENCY:                  // Максимальная рабочая частота (базовая)
     err = setValue(id, value, eventType);
