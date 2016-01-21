@@ -40,6 +40,7 @@ bool ProtectionHardwareVsd::checkAlarm()
   protReactEventId_ = (EventId)alarm;
   parameters.set(CCS_VSD_ALARM_CODE, alarm);
   if (alarm != VSD_ALARM_NONE) {
+    logDebug.add(WarningMsg, "ЧРП: ошибка (%d)", (int)alarm);
     parameters.set(CCS_PROT_OTHER_VSD_ALARM, alarm);
     return true;
   }
