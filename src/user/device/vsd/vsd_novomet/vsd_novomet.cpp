@@ -520,24 +520,6 @@ float VsdNovomet::checkAlarmVsd()
     }
   }
 
-  /*
-  if ((vsdStatus == 0) || (vsdStatus == VSD_NOVOMET_ALARM_ERR_STATE)) {
-    vsdStatus = 0;
-    if (checkBit(vsdStatus5, VSD_NOVOMET_ALARM_ERR_STATE - 1064)) {
-      resetBlock();
-      return VSD_NOVOMET_ALARM_ERR_STATE;
-    }
-  }
-  */
-
-  if ((vsdStatus == 0) || (vsdStatus == VSD_NOVOMET_ALARM_ERR_SHORT)) {
-    vsdStatus = 0;
-    if (checkBit(vsdStatus5, VSD_NOVOMET_ALARM_ERR_SHORT - 1064)) {
-      resetBlock();
-      return VSD_NOVOMET_ALARM_ERR_SHORT;
-    }
-  }
-
   if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_IMAX) && (vsdStatus <= VSD_NOVOMET_ALARM_CTR_MON))) {
     vsdStatus = 0;
     for (int i = VSD_NOVOMET_ALARM_IMAX; i <= VSD_NOVOMET_ALARM_CTR_MON; i++) {
