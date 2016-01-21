@@ -376,6 +376,7 @@ enum LastReasonStop {
   LastReasonStopProtDigital4,                   //!<
   LastReasonStopVsdNoConnect,                   //!< "ЧРП. Нет связи"
   LastReasonStopImbalanceCurIn,                 //!< "Дисбаланс входных токов"
+  LastReasonStopVsdErrControl,                  //!< "ЧРП. Ошибка управления"
 
   LastReasonStopLast                    = 65535,
 };
