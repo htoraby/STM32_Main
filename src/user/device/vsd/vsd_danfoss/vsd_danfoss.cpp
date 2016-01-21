@@ -1115,11 +1115,11 @@ int VsdDanfoss::start()
   }
 }
 
-int VsdDanfoss::stop(float type)
+int VsdDanfoss::stop(float /*type*/)
 {
   // Если нет бита "В работе"
-  if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_OPERATION))
-    return ok_r;
+//  if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_OPERATION))
+//    return ok_r;
 
   int timeMs = VSD_CMD_TIMEOUT;
   int countRepeats = 0;

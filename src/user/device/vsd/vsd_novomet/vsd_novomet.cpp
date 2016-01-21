@@ -1243,8 +1243,8 @@ int VsdNovomet::stop(float type)
 //      (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_TO_STOP_MODE)) ||
 //      (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_WAIT_STOP)))
 // NOTE: Заменил проверку кучи битов на проверку на "неработу"
-  if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STARTED))
-    return ok_r;
+//  if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STARTED))
+//    return ok_r;
 
   int timeMs = VSD_CMD_TIMEOUT;
   int countRepeats = 0;
