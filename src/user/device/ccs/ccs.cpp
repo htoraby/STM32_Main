@@ -408,6 +408,8 @@ void Ccs::stop(LastReasonStop reason)
 
 void Ccs::syncStart()
 {
+  logDebug.add(WarningMsg, "ЧРП. Ошибка управления (синхронизация - работа)");
+
   resetBlock();
   setNewValue(CCS_LAST_RUN_REASON, LastReasonRunApvHardwareVsd);
   setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
@@ -418,8 +420,10 @@ void Ccs::syncStart()
 
 void Ccs::syncStop()
 {
+  logDebug.add(WarningMsg, "ЧРП. Ошибка управления (синхронизация - стоп)");
+
   setBlock();
-  setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopVsdNoConnect);
+  setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopVsdErrControl);
   setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
 }
 
