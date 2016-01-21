@@ -61,6 +61,7 @@ void ProtectionOverloadMotor::getOtherSetpointProt()
     tripDelay_ = 0.0;
   }
 
+  // Вывод текущего перегруза и текущей задержки срабатывания на экран
   if (delayCalc < 5) {
     delayCalc++;
   }

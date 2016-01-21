@@ -3930,7 +3930,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Действие защиты "Рассинхронизация ПВЭД"</text>
@@ -3944,7 +3944,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>NULL</text>
@@ -9391,11 +9391,14 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
+		<max>99.999</max>
+		<def>1.0</def>
+		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
 		<text>Режим поддержания параметра. Пропорциональный коэффициент</text>
 		<short_text>Пропорциональный коэф-т</short_text>
+		<format>XX_XXX</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Пропорциональный коэффициент</comment>
 	</param>
@@ -9406,11 +9409,14 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
+		<max>99.999</max>
+		<def>1.0</def>
+		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
 		<text>Режим поддержания параметра. Интегральный коэффициент</text>
 		<short_text>Интегральный коэф-т</short_text>
+		<format>XX_XXX</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Интегральный коэффициент</comment>
 	</param>
@@ -16919,6 +16925,28 @@
 	</param>
 	<param>
 		<id>872</id>
+		<name>CCS_USB_CONNECTION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Подключение flashdisk к USB</text>
+		<short_text>Подключение flashdisk к USB</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<values>0-Нет;1-Да</values>
+		<comment>Подключение flashdisk к USB</comment>
+	</param>
+	<param>
+		<id>873</id>
 		<name>CCS_END</name>
 		<comment>Последний параметр</comment>
 	</param>

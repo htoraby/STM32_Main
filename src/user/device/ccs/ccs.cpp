@@ -12,6 +12,7 @@
 #include "regime_main.h"
 #include "update.h"
 #include "adc_ext.h"
+#include "usb_host.h"
 
 #define TIMEOUT_POWER_OFF 6000 //!< 1 минута на отключение питания ИБП
 #define DELAY_CHECK_CONNECT_DEVICE 1000 //!< Задержка проверки подключения устройств - 20 сек
@@ -1287,6 +1288,11 @@ void Ccs::checkConnectDevice()
       setNewValue(CCS_VSD_LOG_CONNECTION, 1);
     else
       setNewValue(CCS_VSD_LOG_CONNECTION, 0);
+
+    if (usbState == USB_READY)
+      setNewValue(CCS_USB_CONNECTION, 1);
+    else
+      setNewValue(CCS_USB_CONNECTION, 0);
   }
   else {
     checkConnectDeviceTimer_--;
