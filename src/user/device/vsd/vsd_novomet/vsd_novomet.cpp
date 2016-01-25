@@ -475,7 +475,6 @@ float VsdNovomet::checkAlarmVsd()
   float vsdStatus = parameters.get(CCS_VSD_ALARM_CODE);
   float vsdStatus1 = getValue(VSD_STATUS_WORD_1);
   float vsdStatus2 = getValue(VSD_STATUS_WORD_2);
-  float vsdStatus5 = getValue(VSD_STATUS_WORD_5);
   float vsdStatus7 = getValue(VSD_STATUS_WORD_7);
 
   if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_ULOW) && (vsdStatus <= VSD_NOVOMET_ALARM_ULOW))) {
