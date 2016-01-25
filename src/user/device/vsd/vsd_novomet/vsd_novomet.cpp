@@ -100,9 +100,17 @@ bool VsdNovomet::isConnect()
 // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
 int VsdNovomet::setMotorType(float value)
 {
+  float freq = 70;
   if (!Vsd::setMotorType(value)) {
-    value = (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) ? VSD_CONTROL_ASYN_MOTOR : VSD_CONTROL_VENT_MOTOR;
+    if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) {
+      value = VSD_CONTROL_ASYN_MOTOR;
+    }
+    else {
+      value = VSD_CONTROL_VENT_MOTOR;
+      freq = 200;
+    }
     writeToDevice(VSD_CONTROL_WORD_1, value);
+    setMotorFrequency(freq);
     return ok_r;
   }
   return err_r;
