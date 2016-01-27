@@ -594,8 +594,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>60.0</min>
-		<max>86400.0</max>
+		<min>1.0</min>
+		<max>59999.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -604,8 +604,8 @@
 		<short_text>Период записи</short_text>
 		<form>2.0 Архивы</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>TIME_HH_MM_SS</unit_lcd>
-		<format>XX_XX_XX</format>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Период записи</comment>
 	</param>
@@ -616,17 +616,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>1.0</min>
-		<max>60.0</max>
-		<def>1.0</def>
+		<max>59999.0</max>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>5.0</value>
 		<text>Период записи хронологии в ускоренном режиме</text>
 		<short_text>Экстрен.запись</short_text>
 		<form>2.0 Архивы</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Период экстренной записи</comment>
 	</param>
@@ -636,18 +636,18 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>60.0</min>
-		<max>86400.0</max>
-		<def>600.0</def>
+		<min>1.0</min>
+		<max>59999.0</max>
+		<def>300.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>600.0</value>
+		<value>300.0</value>
 		<text>Период записи параметров ТМС</text>
 		<short_text>Период записи ТМС</short_text>
 		<form>2.0 Архивы</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>TIME_HH_MM_SS</unit_lcd>
-		<format>XX_XX_XX</format>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Период записи ТМС</comment>
 	</param>
@@ -949,17 +949,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>60.0</max>
-		<def>60.0</def>
+		<max>59999.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>60.0</value>
+		<value>0.0</value>
 		<text>Повышен.напряж.пуск.время</text>
 		<short_text>Повышен.напряж.пуск.время</short_text>
 		<form>4.1.1 Повышенное напряжение сети</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>X_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -970,17 +970,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>60.0</max>
-		<def>30.0</def>
+		<max>600.0</max>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>30.0</value>
+		<value>5.0</value>
 		<text>Повышен.напряж.время</text>
 		<short_text>Повышен.напряж.время</short_text>
 		<form>4.1.1 Повышенное напряжение сети</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>X_XX</format>
+		<format>XX_XX</format>
 		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -990,18 +990,18 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
-		<max>86400.0</max>
-		<def>3600.0</def>
+		<min>1.0</min>
+		<max>59999.0</max>
+		<def>60.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>3600.0</value>
+		<value>60.0</value>
 		<text>Повышен.напряж. Задержка АПВ</text>
 		<short_text>Задержка АПВ</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -1032,8 +1032,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
-		<max>86400.0</max>
+		<min>60.0</min>
+		<max>3599940.0</max>
 		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -1043,7 +1043,7 @@
 		<form>4.1.1 Повышенное напряжение сети</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -1159,7 +1159,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>1000000.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -1168,7 +1168,7 @@
 		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>NULL</unit_lcd>
+		<unit_lcd>TIME_SS</unit_lcd>
 		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Фиксированное время</comment>
@@ -1265,17 +1265,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>60.0</max>
-		<def>60.0</def>
+		<max>59999.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>60.0</value>
+		<value>0.0</value>
 		<text>Понижен.напряж. Задержка активации</text>
 		<short_text>Понижен.напряж.пуск.время</short_text>
 		<form>4.1.2 Пониженное напряжение сети</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>X_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -1286,17 +1286,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>60.0</max>
-		<def>30.0</def>
+		<max>600.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>30.0</value>
+		<value>0.0</value>
 		<text>Понижен.напряж. Задержка срабатывания</text>
 		<short_text>Понижен.напряж.время</short_text>
 		<form>4.1.2 Пониженное напряжение сети</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>X_XX</format>
+		<format>XX_XX</format>
 		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -1306,18 +1306,18 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
-		<max>86400.0</max>
-		<def>3600.0</def>
+		<min>1.0</min>
+		<max>59999.0</max>
+		<def>60.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>3600.0</value>
+		<value>60.0</value>
 		<text>Понижен.напряж. Задержка АПВ</text>
 		<short_text>Задержка АПВ</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -1347,8 +1347,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
-		<max>86400.0</max>
+		<min>60.0</min>
+		<max>3599940.0</max>
 		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -1358,7 +1358,7 @@
 		<form>4.1.2 Пониженное напряжение сети</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -1474,7 +1474,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>1000000.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -1483,7 +1483,7 @@
 		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>NULL</unit_lcd>
+		<unit_lcd>TIME_SS</unit_lcd>
 		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Фиксированное время</comment>
@@ -1580,17 +1580,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>60.0</max>
-		<def>60.0</def>
+		<max>59999.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>60.0</value>
+		<value>10.0</value>
 		<text>Дисбал.напряж. Задержка активации</text>
 		<short_text>Дисбал.напряж.пуск.время</short_text>
 		<form>4.1.3 Дисбаланс напряжения сети</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>X_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -1601,17 +1601,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>60.0</max>
-		<def>30.0</def>
+		<max>600.0</max>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>30.0</value>
+		<value>5.0</value>
 		<text>Дисбал.напряж. Задержка срабатывания</text>
 		<short_text>Дисбал.напряж.время</short_text>
 		<form>4.1.3 Дисбаланс напряжения сети</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>X_XX</format>
+		<format>XX_XX</format>
 		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -1621,18 +1621,18 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
-		<max>86400.0</max>
-		<def>3600.0</def>
+		<min>1.0</min>
+		<max>59999.0</max>
+		<def>60.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>3600.0</value>
+		<value>60.0</value>
 		<text>Дисбал.напряж. Задержка АПВ</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -1663,8 +1663,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
-		<max>86400.0</max>
+		<min>60.0</min>
+		<max>3599940.0</max>
 		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -1674,7 +1674,7 @@
 		<form>4.1.3 Дисбаланс напряжения сети</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -1790,7 +1790,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>1000000.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -1799,7 +1799,7 @@
 		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>NULL</unit_lcd>
+		<unit_lcd>TIME_SS</unit_lcd>
 		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Фиксированное время</comment>
@@ -1895,16 +1895,16 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>60.0</max>
-		<def>60.0</def>
+		<max>59999.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>60.0</value>
+		<value>10.0</value>
 		<text>Дисбал.токов. Задержка активации</text>
 		<short_text>Дисбал.токов. Задержка активации</short_text>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>X_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -1915,16 +1915,16 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>60.0</max>
-		<def>30.0</def>
+		<max>600.0</max>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>30.0</value>
+		<value>5.0</value>
 		<text>Дисбал.токов. Задержка срабатывания</text>
 		<short_text>Дисбал.токов. Задержка срабатывания</short_text>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>X_XX</format>
+		<format>XX_XX</format>
 		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -1934,17 +1934,17 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
-		<max>86400.0</max>
-		<def>3600.0</def>
+		<min>1.0</min>
+		<max>59999.0</max>
+		<def>60.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>3600.0</value>
+		<value>60.0</value>
 		<text>Дисбал.токов. Задержка АПВ</text>
 		<short_text>Дисбал.токов. Задержка АПВ</short_text>
 		<unit>TIME_SS</unit>
-		<unit_lcd>NULL</unit_lcd>
-		<format>XX_XX</format>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -1974,8 +1974,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
-		<max>86400.0</max>
+		<min>60.0</min>
+		<max>3599940.0</max>
 		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -1984,7 +1984,7 @@
 		<short_text>Сброс счетчиков АПВ по напряжению</short_text>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -1995,16 +1995,15 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>30.0</max>
+		<max>20.0</max>
 		<def>20.0</def>
-		<discret>10</discret>
+		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>20.0</value>
 		<text>Дисбал.токов. Уставка дисбаланса напряжений</text>
 		<short_text>Дисбал.токов. Уставка дисбаланса напряжений</short_text>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXX_X</format>
+		<format>XXXXXX</format>
 		<code>13</code>
 		<comment>Уставка срабатывания защиты</comment>
 	</param>
@@ -2015,17 +2014,16 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>30.0</max>
+		<max>20.0</max>
 		<def>20.0</def>
-		<discret>10</discret>
+		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>20.0</value>
 		<text>Дисбал.токов. Напряжение АПВ</text>
 		<short_text>Дисбал.токов. Напряжение АПВ</short_text>
 		<form>NULL</form>
 		<unit>PERCENT_PERCENT</unit>
-		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXX_X</format>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>13</code>
 		<comment>Условие АПВ уставка</comment>
 	</param>
@@ -2099,7 +2097,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>1000000.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -2108,7 +2106,7 @@
 		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>NULL</unit_lcd>
+		<unit_lcd>TIME_SS</unit_lcd>
 		<format>NULL</format>
 		<code>0</code>
 		<comment>Текущий параметр Фиксированное время</comment>
@@ -2200,10 +2198,8 @@
 		<def>60.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>60.0</value>
+		<value>0.0</value>
 		<text>Чередования фаз. Задержка активации</text>
-		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>X_XX</format>
 		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -2218,10 +2214,8 @@
 		<def>30.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>30.0</value>
+		<value>0.0</value>
 		<text>Чередования фаз. Задержка срабатывания</text>
-		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>X_XX</format>
 		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -2231,15 +2225,13 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
+		<min>1.0</min>
 		<max>86400.0</max>
 		<def>3600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>3600.0</value>
+		<value>0.0</value>
 		<text>Чередования фаз. Задержка АПВ</text>
-		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -2265,15 +2257,13 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
-		<max>86400.0</max>
+		<min>60.0</min>
+		<max>3599940.0</max>
 		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
 		<text>Сброс счетчиков АПВ по напряжению</text>
-		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -2467,7 +2457,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>60.0</max>
+		<max>59999.0</max>
 		<def>20.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -2477,7 +2467,7 @@
 		<form>4.2.1 Перегруз (ЗП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>X_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -2509,7 +2499,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>60.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>3600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -2519,7 +2509,7 @@
 		<form>4.2.1 Перегруз (ЗП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -2551,7 +2541,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>60.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -2561,7 +2551,7 @@
 		<form>4.2.1 Перегруз (ЗП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -2677,7 +2667,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>4294967296.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -2783,7 +2773,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>600.0</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -2793,7 +2783,7 @@
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -2825,7 +2815,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>60.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>7200.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -2835,7 +2825,7 @@
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -2867,7 +2857,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>60.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -2877,7 +2867,7 @@
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -3100,17 +3090,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>0.0</max>
-		<def>0.0</def>
+		<max>59999.0</max>
+		<def>20.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>20.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>NULL</unit_lcd>
-		<format>NULL</format>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
 		<code>0</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -3121,17 +3111,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>0.0</max>
-		<def>0.0</def>
+		<max>600.0</max>
+		<def>30.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>30.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>NULL</unit_lcd>
-		<format>NULL</format>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XX_XX</format>
 		<code>0</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -3142,7 +3132,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>60.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>3600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -3152,7 +3142,7 @@
 		<form>4.2.6 Предел тока</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -3184,7 +3174,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>60.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -3194,7 +3184,7 @@
 		<form>4.2.6 Предел тока</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -3416,17 +3406,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>60.0</max>
-		<def>60.0</def>
+		<max>59999.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>60.0</value>
+		<value>10.0</value>
 		<text>Защита Дисбаланс токов двиг. Задержка активации</text>
 		<short_text>Дисб.тока.двиг.пуск.время</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>X_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -3437,7 +3427,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>60.0</max>
+		<max>600.0</max>
 		<def>30.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -3447,7 +3437,7 @@
 		<form>4.2.3 Дисбаланс токов двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>X_XX</format>
+		<format>XX_XX</format>
 		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -3457,9 +3447,9 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
-		<max>86400.0</max>
-		<def>3600.0</def>
+		<min>60.0</min>
+		<max>3599940.0</max>
+		<def>1800.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>3600.0</value>
@@ -3468,7 +3458,7 @@
 		<form>4.2.3 Дисбаланс токов двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -3500,7 +3490,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -3510,7 +3500,7 @@
 		<form>4.2.3 Дисбаланс токов двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -4197,17 +4187,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>600.0</max>
-		<def>5.0</def>
+		<max>59999.9</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>5.0</value>
+		<value>10.0</value>
 		<text>Защита Давление на приёме насоса. Задержка активации</text>
 		<short_text>Задержка активации</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -4218,17 +4208,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>60.0</max>
-		<def>5.0</def>
+		<max>59999.9</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>5.0</value>
+		<value>10.0</value>
 		<text>Защита Давление на приёме насоса. Задержка срабатывания</text>
 		<short_text>Задержка срабатывания</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>TIME_SS</unit_lcd>
-		<format>XXXXXX</format>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -4239,17 +4229,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
-		<def>3600.0</def>
+		<max>3599940.0</max>
+		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>3600.0</value>
+		<value>600.0</value>
 		<text>Защита Давление на приёме насоса. Задержка АПВ</text>
 		<short_text>Задержка АПВ</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -4281,17 +4271,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
-		<def>600</def>
+		<max>3599940.0</max>
+		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>600</value>
+		<value>86400.0</value>
 		<text>Защита Давление на приёме насоса. Сброс счетчиков АПВ</text>
 		<short_text>Сброс счетчиков АПВ</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -4407,12 +4397,12 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0</min>
-		<max>4294967296</max>
-		<def>0</def>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0</value>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -4515,17 +4505,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>600.0</max>
-		<def>5.0</def>
+		<max>59999.9</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>5.0</value>
+		<value>10.0</value>
 		<text>Защита температура двигателя. Задержка активации</text>
 		<short_text>Задержка активации</short_text>
 		<form>4.3.2 Температура двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -4536,17 +4526,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>60.0</max>
-		<def>5.0</def>
+		<max>59999.9</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>5.0</value>
+		<value>10.0</value>
 		<text>Защита температура двигателя. Задержка срабатывания</text>
 		<short_text>Задержка срабатывания</short_text>
 		<form>4.3.2 Температура двигателя</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>TIME_SS</unit_lcd>
-		<format>XXXXXX</format>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -4557,17 +4547,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
-		<def>3600.0</def>
+		<max>3599940.0</max>
+		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>3600.0</value>
+		<value>600.0</value>
 		<text>Защита температура двигателя. Задержка АПВ</text>
 		<short_text>Задержка АПВ</short_text>
 		<form>4.3.2 Температура двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -4599,17 +4589,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
-		<def>600</def>
+		<max>3599940.0</max>
+		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>600</value>
+		<value>86400.0</value>
 		<text>Защита температура двигателя. Сброс счетчиков АПВ</text>
 		<short_text>Сброс счетчиков АПВ</short_text>
 		<form>4.3.2 Температура двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -4725,7 +4715,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>4294967296</max>
+		<max>999999999.9</max>
 		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -5131,11 +5121,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>59999.9</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>10.0</value>
 		<text>Защита температура двигателя. Задержка активации</text>
-		<code>0</code>
+		<short_text>Задержка активации</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
 	<param>
@@ -5145,11 +5141,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>59999.9</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>10.0</value>
 		<text>Защита температура двигателя. Задержка срабатывания</text>
-		<code>0</code>
+		<short_text>Задержка срабатывания</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
 	<param>
@@ -5159,11 +5161,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>3599940.0</max>
+		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>600.0</value>
 		<text>Защита температура двигателя. Задержка АПВ</text>
-		<code>0</code>
+		<short_text>Задержка АПВ</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
 	<param>
@@ -5187,11 +5195,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>3599940.0</max>
+		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>86400.0</value>
 		<text>Защита температура двигателя. Сброс счетчиков АПВ</text>
-		<code>0</code>
+		<short_text>Сброс счетчиков АПВ</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
 	<param>
@@ -5363,7 +5377,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>600.0</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -5373,7 +5387,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -5384,7 +5398,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>600.0</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -5394,7 +5408,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -5405,7 +5419,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -5415,7 +5429,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -5447,7 +5461,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -5457,7 +5471,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -5677,7 +5691,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>600.0</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -5687,7 +5701,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -5698,7 +5712,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>600.0</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -5708,7 +5722,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -5719,7 +5733,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -5729,7 +5743,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -5761,7 +5775,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -5771,7 +5785,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -5991,7 +6005,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>600.0</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -6001,7 +6015,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -6012,7 +6026,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>600.0</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -6022,7 +6036,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -6033,7 +6047,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -6043,7 +6057,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -6075,7 +6089,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -6085,7 +6099,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -6305,7 +6319,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>600.0</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -6315,7 +6329,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -6326,7 +6340,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>600.0</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -6336,7 +6350,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -6347,7 +6361,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -6357,7 +6371,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -6389,7 +6403,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -6399,7 +6413,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -6619,7 +6633,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>600.0</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -6629,7 +6643,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -6640,7 +6654,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>600.0</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -6650,7 +6664,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -6661,7 +6675,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -6671,7 +6685,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -6703,7 +6717,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -6713,7 +6727,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -6933,7 +6947,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>600.0</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -6943,7 +6957,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -6954,7 +6968,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>600.0</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -6964,7 +6978,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -6975,7 +6989,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -6985,7 +6999,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -7017,7 +7031,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -7027,7 +7041,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -7247,7 +7261,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>600.0</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -7257,7 +7271,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -7268,7 +7282,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>600.0</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -7278,7 +7292,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -7289,7 +7303,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -7299,7 +7313,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -7331,7 +7345,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -7341,7 +7355,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -7561,7 +7575,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>600.0</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -7571,7 +7585,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
@@ -7582,7 +7596,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>3600.0</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -7603,7 +7617,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -7613,7 +7627,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -7645,7 +7659,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -7655,7 +7669,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -9624,7 +9638,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим учёт нагрева кабеля. Время нагрева</text>
@@ -9719,7 +9733,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим оптимизации напряжения. Периодичность оптимизации</text>
@@ -9890,7 +9904,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400.0</max>
+		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Режим ограничения тока. Задержка АПВ</text>
@@ -12237,7 +12251,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>60.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>7200.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
@@ -12247,7 +12261,7 @@
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Защита ЗСП: Прогрессивная задержка АПВ</comment>
 	</param>
