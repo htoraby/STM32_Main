@@ -154,6 +154,7 @@ static bool logSave()
   UINT bytesWritten;
   LOG_FILE_HEADER header;
   char buf[_MAX_LFN + 1];
+  uint32_t maxSize = _MAX_SS;
 
   uint32_t timeReady = 0;
   while(usbState != USB_READY) {
@@ -196,7 +197,7 @@ static bool logSave()
     if (f_open(&file, logPath, FA_CREATE_ALWAYS | FA_WRITE) == FR_OK) {
       uint16_t calcCrc = 0xFFFF;
       uint32_t addr = 0;
-      uint32_t size = 4096;
+      uint32_t size = sizeof(bufData);
       uint32_t count = 0;
 
       header.size = header.mainLogSize + header.debugLogSize +
@@ -216,9 +217,9 @@ static bool logSave()
         addr = addr + size;
         calcCrc = crc16_ibm(bufData, size, calcCrc);
 
-        for (uint32_t i = 0; i < size/_MAX_SS; ++i) {
-          result = f_write(&file, &bufData[i*_MAX_SS], _MAX_SS, &bytesWritten);
-          if ((result != FR_OK) || (bytesWritten != _MAX_SS)) {
+        for (uint32_t i = 0; i < size/maxSize; ++i) {
+          result = f_write(&file, &bufData[i*maxSize], maxSize, &bytesWritten);
+          if ((result != FR_OK) || (bytesWritten != maxSize)) {
             f_close(&file);
             ksu.setError(WriteFileUsbErr);
             return false;
@@ -235,7 +236,7 @@ static bool logSave()
       }
 
       addr = 0;
-      size = 4096;
+      size = sizeof(bufData);
       count = 0;
       while (usbState == USB_READY) {
         StatusType status = logDebugRead(addr, &bufData[0], size);
@@ -244,9 +245,9 @@ static bool logSave()
         addr = addr + size;
         calcCrc = crc16_ibm(bufData, size, calcCrc);
 
-        for (uint32_t i = 0; i < size/_MAX_SS; ++i) {
-          result = f_write(&file, &bufData[i*_MAX_SS], _MAX_SS, &bytesWritten);
-          if ((result != FR_OK) || (bytesWritten != _MAX_SS)) {
+        for (uint32_t i = 0; i < size/maxSize; ++i) {
+          result = f_write(&file, &bufData[i*maxSize], maxSize, &bytesWritten);
+          if ((result != FR_OK) || (bytesWritten != maxSize)) {
             f_close(&file);
             ksu.setError(WriteFileUsbErr);
             return false;
@@ -263,7 +264,7 @@ static bool logSave()
       }
 
       addr = 0;
-      size = 4096;
+      size = sizeof(bufData);
       count = 0;
       while (usbState == USB_READY) {
         StatusType status = framReadData(addr, bufData, size);
@@ -272,9 +273,9 @@ static bool logSave()
         addr = addr + size;
         calcCrc = crc16_ibm(bufData, size, calcCrc);
 
-        for (uint32_t i = 0; i < size/_MAX_SS; ++i) {
-          result = f_write(&file, &bufData[i*_MAX_SS], _MAX_SS, &bytesWritten);
-          if ((result != FR_OK) || (bytesWritten != _MAX_SS)) {
+        for (uint32_t i = 0; i < size/maxSize; ++i) {
+          result = f_write(&file, &bufData[i*maxSize], maxSize, &bytesWritten);
+          if ((result != FR_OK) || (bytesWritten != maxSize)) {
             f_close(&file);
             ksu.setError(WriteFileUsbErr);
             return false;
@@ -289,8 +290,6 @@ static bool logSave()
         if (addr >= PARAMETERS_SIZE)
           break;
       }
-
-
 
       result = f_write(&file, (uint8_t*)&calcCrc, sizeof(calcCrc), &bytesWritten);
       if ((result != FR_OK) || (sizeof(calcCrc) != bytesWritten)) {
