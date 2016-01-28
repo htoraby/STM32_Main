@@ -80,6 +80,14 @@ void Ccs::calcParametersTask()
 
       calcTemperatureSTM32();
       calcTemperatureCCS();
+
+#if (USE_LOG_DEBUG == 1)
+#ifdef USE_RTT
+      float value = statHost.rxGood/100.0;
+      value = statHost.sizeError/value;
+      SEGGER_RTT_printf(0, "Host rx good - %d, error - %d, *%d\n", statHost.rxGood, statHost.sizeError, (int)value);
+#endif
+#endif
     }
   }
 }
