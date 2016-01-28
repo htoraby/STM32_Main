@@ -60,15 +60,15 @@ typedef enum {
 } EventCode;
 
 /*!
- * \brief Вид события
+ * \brief Вид(тип) события
 */
 typedef enum {
   NoneType,
-  OperatorType,
-  AutoType,
-  RemoteType,
-  ProtType,
-  LatchType,
+  OperatorType, //!< Оператор
+  AutoType,     //!< Автоматический
+  RemoteType,   //!< Дистанционный
+  ProtType,     //!< Защита
+  LatchType,    //!< Защёлка
 } EventType;
 
 /*!
