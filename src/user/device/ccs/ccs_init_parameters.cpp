@@ -345,8 +345,8 @@ void Ccs::initParameters()
   parameters_[CCS_LOG_PERIOD_NORMAL - CCS_BEGIN].physic                          = PHYSIC_TIME;
   parameters_[CCS_LOG_PERIOD_NORMAL - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_LOG_PERIOD_NORMAL - CCS_BEGIN].value.float_t                   = 600.0;
-  parameters_[CCS_LOG_PERIOD_NORMAL - CCS_BEGIN].min                             = 60.0;
-  parameters_[CCS_LOG_PERIOD_NORMAL - CCS_BEGIN].max                             = 86400.0;
+  parameters_[CCS_LOG_PERIOD_NORMAL - CCS_BEGIN].min                             = 1.0;
+  parameters_[CCS_LOG_PERIOD_NORMAL - CCS_BEGIN].max                             = 59999.0;
   parameters_[CCS_LOG_PERIOD_NORMAL - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_LOG_PERIOD_NORMAL - CCS_BEGIN].def                             = 600.0;
   parameters_[CCS_LOG_PERIOD_NORMAL - CCS_BEGIN].code                            = 13;
@@ -356,11 +356,11 @@ void Ccs::initParameters()
   parameters_[CCS_LOG_PERIOD_FAST - CCS_BEGIN].operation                         = OPERATION_WRITE;
   parameters_[CCS_LOG_PERIOD_FAST - CCS_BEGIN].physic                            = PHYSIC_TIME;
   parameters_[CCS_LOG_PERIOD_FAST - CCS_BEGIN].validity                          = VALIDITY_OK;
-  parameters_[CCS_LOG_PERIOD_FAST - CCS_BEGIN].value.float_t                     = 1.0;
+  parameters_[CCS_LOG_PERIOD_FAST - CCS_BEGIN].value.float_t                     = 5.0;
   parameters_[CCS_LOG_PERIOD_FAST - CCS_BEGIN].min                               = 1.0;
-  parameters_[CCS_LOG_PERIOD_FAST - CCS_BEGIN].max                               = 60.0;
+  parameters_[CCS_LOG_PERIOD_FAST - CCS_BEGIN].max                               = 59999.0;
   parameters_[CCS_LOG_PERIOD_FAST - CCS_BEGIN].discret                           = 1;
-  parameters_[CCS_LOG_PERIOD_FAST - CCS_BEGIN].def                               = 1.0;
+  parameters_[CCS_LOG_PERIOD_FAST - CCS_BEGIN].def                               = 5.0;
   parameters_[CCS_LOG_PERIOD_FAST - CCS_BEGIN].code                              = 13;
   // Период записи ТМС
   parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].id                                 = CCS_LOG_PERIOD_DHS;
@@ -368,11 +368,11 @@ void Ccs::initParameters()
   parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].operation                          = OPERATION_WRITE;
   parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].physic                             = PHYSIC_TIME;
   parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].validity                           = VALIDITY_OK;
-  parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].value.float_t                      = 600.0;
-  parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].min                                = 60.0;
-  parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].max                                = 86400.0;
+  parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].value.float_t                      = 300.0;
+  parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].min                                = 1.0;
+  parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].max                                = 59999.0;
   parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].discret                            = 1;
-  parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].def                                = 600.0;
+  parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].def                                = 300.0;
   parameters_[CCS_LOG_PERIOD_DHS - CCS_BEGIN].code                               = 13;
   // Ток холостого хода
   parameters_[CCS_MOTOR_CURRENT_HH - CCS_BEGIN].id                               = CCS_MOTOR_CURRENT_HH;
@@ -548,11 +548,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].operation     = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].physic        = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].validity      = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].value.float_t = 60.0;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].value.float_t = 0.0;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].min           = 0.0;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].max           = 60.0;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].max           = 59999.0;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].discret       = 1;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].def           = 60.0;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].def           = 0.0;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].code          = 13;
   // Задержка срабатывания уставка
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY - CCS_BEGIN].id             = CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY;
@@ -560,11 +560,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY - CCS_BEGIN].operation      = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY - CCS_BEGIN].physic         = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY - CCS_BEGIN].validity       = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY - CCS_BEGIN].value.float_t  = 30.0;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY - CCS_BEGIN].value.float_t  = 5.0;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY - CCS_BEGIN].min            = 0.0;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY - CCS_BEGIN].max            = 60.0;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY - CCS_BEGIN].max            = 600.0;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY - CCS_BEGIN].discret        = 1;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY - CCS_BEGIN].def            = 30.0;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY - CCS_BEGIN].def            = 5.0;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY - CCS_BEGIN].code           = 13;
   // Задержка АПВ уставка
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY - CCS_BEGIN].id          = CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY;
@@ -572,11 +572,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY - CCS_BEGIN].operation   = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY - CCS_BEGIN].physic      = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY - CCS_BEGIN].validity    = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY - CCS_BEGIN].value.float_t = 3600.0;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY - CCS_BEGIN].min         = 0.0;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY - CCS_BEGIN].max         = 86400.0;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY - CCS_BEGIN].value.float_t = 60.0;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY - CCS_BEGIN].min         = 1.0;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY - CCS_BEGIN].max         = 59999.0;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY - CCS_BEGIN].discret     = 1;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY - CCS_BEGIN].def         = 3600.0;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY - CCS_BEGIN].def         = 60.0;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY - CCS_BEGIN].code        = 13;
   // Количество АПВ уставка
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_LIMIT - CCS_BEGIN].id          = CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_LIMIT;
@@ -597,8 +597,8 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET - CCS_BEGIN].physic      = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET - CCS_BEGIN].value.float_t = 86400.0;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET - CCS_BEGIN].min         = 0.0;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET - CCS_BEGIN].max         = 86400.0;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET - CCS_BEGIN].min         = 60.0;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET - CCS_BEGIN].max         = 3599940.0;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET - CCS_BEGIN].discret     = 1;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET - CCS_BEGIN].def         = 86400.0;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET - CCS_BEGIN].code        = 13;
@@ -670,7 +670,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TIME - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TIME - CCS_BEGIN].value.float_t        = 0.0;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TIME - CCS_BEGIN].min                  = 0.0;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TIME - CCS_BEGIN].max                  = 1000000.0;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TIME - CCS_BEGIN].max                  = 999999999.9;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TIME - CCS_BEGIN].discret              = 1;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TIME - CCS_BEGIN].def                  = 0.0;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TIME - CCS_BEGIN].code                 = 0;
@@ -728,11 +728,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].operation    = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].physic       = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].validity     = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].value.float_t = 60.0;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].value.float_t = 0.0;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].min          = 0.0;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].max          = 60.0;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].max          = 59999.0;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].discret      = 1;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].def          = 60.0;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].def          = 0.0;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY - CCS_BEGIN].code         = 13;
   // Задержка срабатывания уставка
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY - CCS_BEGIN].id            = CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY;
@@ -740,11 +740,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY - CCS_BEGIN].operation     = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY - CCS_BEGIN].physic        = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY - CCS_BEGIN].validity      = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY - CCS_BEGIN].value.float_t = 30.0;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY - CCS_BEGIN].value.float_t = 0.0;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY - CCS_BEGIN].min           = 0.0;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY - CCS_BEGIN].max           = 60.0;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY - CCS_BEGIN].max           = 600.0;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY - CCS_BEGIN].discret       = 1;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY - CCS_BEGIN].def           = 30.0;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY - CCS_BEGIN].def           = 0.0;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY - CCS_BEGIN].code          = 13;
   // Задержка АПВ уставка
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY - CCS_BEGIN].id         = CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY;
@@ -752,11 +752,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY - CCS_BEGIN].operation  = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY - CCS_BEGIN].physic     = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY - CCS_BEGIN].validity   = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY - CCS_BEGIN].value.float_t = 3600.0;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY - CCS_BEGIN].min        = 0.0;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY - CCS_BEGIN].max        = 86400.0;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY - CCS_BEGIN].value.float_t = 60.0;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY - CCS_BEGIN].min        = 1.0;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY - CCS_BEGIN].max        = 59999.0;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY - CCS_BEGIN].discret    = 1;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY - CCS_BEGIN].def        = 3600.0;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY - CCS_BEGIN].def        = 60.0;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY - CCS_BEGIN].code       = 13;
   // Количество АПВ уставка
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_LIMIT - CCS_BEGIN].id         = CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_LIMIT;
@@ -777,8 +777,8 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET - CCS_BEGIN].physic     = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET - CCS_BEGIN].validity   = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET - CCS_BEGIN].value.float_t = 86400.0;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET - CCS_BEGIN].min        = 0.0;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET - CCS_BEGIN].max        = 86400.0;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET - CCS_BEGIN].min        = 60.0;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET - CCS_BEGIN].max        = 3599940.0;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET - CCS_BEGIN].discret    = 1;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET - CCS_BEGIN].def        = 86400.0;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET - CCS_BEGIN].code       = 13;
@@ -850,7 +850,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME - CCS_BEGIN].value.float_t       = 0.0;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME - CCS_BEGIN].min                 = 0.0;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME - CCS_BEGIN].max                 = 1000000.0;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME - CCS_BEGIN].max                 = 999999999.9;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME - CCS_BEGIN].discret             = 1;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME - CCS_BEGIN].def                 = 0.0;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME - CCS_BEGIN].code                = 0;
@@ -908,11 +908,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY - CCS_BEGIN].operation = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY - CCS_BEGIN].physic  = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY - CCS_BEGIN].validity = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY - CCS_BEGIN].value.float_t = 60.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY - CCS_BEGIN].value.float_t = 10.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY - CCS_BEGIN].min     = 0.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY - CCS_BEGIN].max     = 60.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY - CCS_BEGIN].max     = 59999.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY - CCS_BEGIN].discret = 1;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY - CCS_BEGIN].def     = 60.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY - CCS_BEGIN].def     = 10.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY - CCS_BEGIN].code    = 13;
   // Задержка срабатывания уставка
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY - CCS_BEGIN].id       = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY;
@@ -920,11 +920,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY - CCS_BEGIN].operation = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY - CCS_BEGIN].physic   = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY - CCS_BEGIN].validity = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY - CCS_BEGIN].value.float_t = 30.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY - CCS_BEGIN].value.float_t = 5.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY - CCS_BEGIN].min      = 0.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY - CCS_BEGIN].max      = 60.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY - CCS_BEGIN].max      = 600.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY - CCS_BEGIN].discret  = 1;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY - CCS_BEGIN].def      = 30.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY - CCS_BEGIN].def      = 5.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY - CCS_BEGIN].code     = 13;
   // Задержка АПВ уставка
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY - CCS_BEGIN].id    = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY;
@@ -932,11 +932,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY - CCS_BEGIN].operation = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY - CCS_BEGIN].physic = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY - CCS_BEGIN].validity = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY - CCS_BEGIN].value.float_t = 3600.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY - CCS_BEGIN].min   = 0.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY - CCS_BEGIN].max   = 86400.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY - CCS_BEGIN].value.float_t = 60.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY - CCS_BEGIN].min   = 1.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY - CCS_BEGIN].max   = 59999.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY - CCS_BEGIN].discret = 1;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY - CCS_BEGIN].def   = 3600.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY - CCS_BEGIN].def   = 60.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY - CCS_BEGIN].code  = 13;
   // Количество АПВ уставка
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_LIMIT - CCS_BEGIN].id    = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_LIMIT;
@@ -957,8 +957,8 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_RESET - CCS_BEGIN].physic = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_RESET - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_RESET - CCS_BEGIN].value.float_t = 86400.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_RESET - CCS_BEGIN].min   = 0.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_RESET - CCS_BEGIN].max   = 86400.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_RESET - CCS_BEGIN].min   = 60.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_RESET - CCS_BEGIN].max   = 3599940.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_RESET - CCS_BEGIN].discret = 1;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_RESET - CCS_BEGIN].def   = 86400.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_RESET - CCS_BEGIN].code  = 13;
@@ -1030,7 +1030,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME - CCS_BEGIN].value.float_t  = 0.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME - CCS_BEGIN].min            = 0.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME - CCS_BEGIN].max            = 1000000.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME - CCS_BEGIN].max            = 999999999.9;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME - CCS_BEGIN].discret        = 1;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME - CCS_BEGIN].def            = 0.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME - CCS_BEGIN].code           = 0;
@@ -1088,11 +1088,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].operation = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].physic  = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].validity = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].value.float_t = 60.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].value.float_t = 10.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].min     = 0.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].max     = 60.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].max     = 59999.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].discret = 1;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].def     = 60.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].def     = 10.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].code    = 13;
   // Задержка срабатывания уставка
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].id       = CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY;
@@ -1100,11 +1100,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].operation = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].physic   = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].validity = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].value.float_t = 30.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].value.float_t = 5.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].min      = 0.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].max      = 60.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].max      = 600.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].discret  = 1;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].def      = 30.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].def      = 5.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].code     = 13;
   // Задержка АПВ уставка
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].id    = CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY;
@@ -1112,11 +1112,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].operation = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].physic = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].validity = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].value.float_t = 3600.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].min   = 0.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].max   = 86400.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].value.float_t = 60.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].min   = 1.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].max   = 59999.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].discret = 1;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].def   = 3600.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].def   = 60.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].code  = 13;
   // Количество АПВ уставка
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_LIMIT - CCS_BEGIN].id    = CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_LIMIT;
@@ -1137,8 +1137,8 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_RESET - CCS_BEGIN].physic = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_RESET - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_RESET - CCS_BEGIN].value.float_t = 86400.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_RESET - CCS_BEGIN].min   = 0.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_RESET - CCS_BEGIN].max   = 86400.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_RESET - CCS_BEGIN].min   = 60.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_RESET - CCS_BEGIN].max   = 3599940.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_RESET - CCS_BEGIN].discret = 1;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_RESET - CCS_BEGIN].def   = 86400.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_RESET - CCS_BEGIN].code  = 13;
@@ -1148,10 +1148,10 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_SETPOINT - CCS_BEGIN].operation = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_SETPOINT - CCS_BEGIN].physic = PHYSIC_PERCENT;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_SETPOINT - CCS_BEGIN].validity = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_SETPOINT - CCS_BEGIN].value.float_t = 20.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_SETPOINT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_SETPOINT - CCS_BEGIN].min   = 0.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_SETPOINT - CCS_BEGIN].max   = 30.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_SETPOINT - CCS_BEGIN].discret = 10;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_SETPOINT - CCS_BEGIN].max   = 20.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_SETPOINT - CCS_BEGIN].discret = 1;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_SETPOINT - CCS_BEGIN].def   = 20.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_SETPOINT - CCS_BEGIN].code  = 13;
   // Условие АПВ уставка
@@ -1160,10 +1160,10 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].operation = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].physic = PHYSIC_PERCENT;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].validity = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 20.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].min = 0.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].max = 30.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].discret = 10;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].max = 20.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].discret = 1;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].def = 20.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].code = 13;
   // Уставка параметр защиты
@@ -1210,7 +1210,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME - CCS_BEGIN].value.float_t  = 0.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME - CCS_BEGIN].min            = 0.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME - CCS_BEGIN].max            = 1000000.0;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME - CCS_BEGIN].max            = 999999999.9;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME - CCS_BEGIN].discret        = 1;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME - CCS_BEGIN].def            = 0.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME - CCS_BEGIN].code           = 0;
@@ -1268,7 +1268,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_ACTIV_DELAY - CCS_BEGIN].operation  = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_ACTIV_DELAY - CCS_BEGIN].physic     = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_ACTIV_DELAY - CCS_BEGIN].validity   = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_ACTIV_DELAY - CCS_BEGIN].value.float_t = 60.0;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_ACTIV_DELAY - CCS_BEGIN].value.float_t = 0.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_ACTIV_DELAY - CCS_BEGIN].min        = 0.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_ACTIV_DELAY - CCS_BEGIN].max        = 60.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_ACTIV_DELAY - CCS_BEGIN].discret    = 1;
@@ -1280,7 +1280,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY - CCS_BEGIN].operation   = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY - CCS_BEGIN].physic      = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY - CCS_BEGIN].validity    = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY - CCS_BEGIN].value.float_t = 30.0;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY - CCS_BEGIN].value.float_t = 0.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY - CCS_BEGIN].min         = 0.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY - CCS_BEGIN].max         = 60.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY - CCS_BEGIN].discret     = 1;
@@ -1292,8 +1292,8 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY - CCS_BEGIN].operation = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY - CCS_BEGIN].physic   = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY - CCS_BEGIN].validity = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY - CCS_BEGIN].value.float_t = 3600.0;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY - CCS_BEGIN].min      = 0.0;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY - CCS_BEGIN].value.float_t = 0.0;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY - CCS_BEGIN].min      = 1.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY - CCS_BEGIN].max      = 86400.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY - CCS_BEGIN].discret  = 1;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY - CCS_BEGIN].def      = 3600.0;
@@ -1317,8 +1317,8 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_RESET - CCS_BEGIN].physic   = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_RESET - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_RESET - CCS_BEGIN].value.float_t = 86400.0;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_RESET - CCS_BEGIN].min      = 0.0;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_RESET - CCS_BEGIN].max      = 86400.0;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_RESET - CCS_BEGIN].min      = 60.0;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_RESET - CCS_BEGIN].max      = 3599940.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_RESET - CCS_BEGIN].discret  = 1;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_RESET - CCS_BEGIN].def      = 86400.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_RESET - CCS_BEGIN].code     = 13;
@@ -1450,7 +1450,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY - CCS_BEGIN].value.float_t     = 20.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY - CCS_BEGIN].min               = 0.0;
-  parameters_[CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY - CCS_BEGIN].max               = 60.0;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY - CCS_BEGIN].max               = 59999.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY - CCS_BEGIN].discret           = 1;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY - CCS_BEGIN].def               = 20.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY - CCS_BEGIN].code              = 13;
@@ -1474,7 +1474,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_DELAY - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_DELAY - CCS_BEGIN].value.float_t   = 3600.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_DELAY - CCS_BEGIN].min             = 60.0;
-  parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_DELAY - CCS_BEGIN].max             = 86400.0;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_DELAY - CCS_BEGIN].max             = 3599940.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_DELAY - CCS_BEGIN].discret         = 1;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_DELAY - CCS_BEGIN].def             = 3600.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_DELAY - CCS_BEGIN].code            = 13;
@@ -1498,7 +1498,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_RESET - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_RESET - CCS_BEGIN].value.float_t   = 86400.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_RESET - CCS_BEGIN].min             = 60.0;
-  parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_RESET - CCS_BEGIN].max             = 86400.0;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_RESET - CCS_BEGIN].max             = 3599940.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_RESET - CCS_BEGIN].discret         = 1;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_RESET - CCS_BEGIN].def             = 86400.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_RESET - CCS_BEGIN].code            = 13;
@@ -1570,7 +1570,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OVERLOAD_TIME - CCS_BEGIN].validity                 = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_TIME - CCS_BEGIN].value.float_t            = 0.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_TIME - CCS_BEGIN].min                      = 0.0;
-  parameters_[CCS_PROT_MOTOR_OVERLOAD_TIME - CCS_BEGIN].max                      = 4294967296.0;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_TIME - CCS_BEGIN].max                      = 999999999.9;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_TIME - CCS_BEGIN].discret                  = 1;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_TIME - CCS_BEGIN].def                      = 0.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_TIME - CCS_BEGIN].code                     = 0;
@@ -1630,7 +1630,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY - CCS_BEGIN].value.float_t    = 10.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY - CCS_BEGIN].max              = 600.0;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY - CCS_BEGIN].max              = 59999.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY - CCS_BEGIN].discret          = 1;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY - CCS_BEGIN].def              = 10.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY - CCS_BEGIN].code             = 13;
@@ -1654,7 +1654,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY - CCS_BEGIN].value.float_t  = 7200.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY - CCS_BEGIN].min            = 60.0;
-  parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY - CCS_BEGIN].max            = 86400.0;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY - CCS_BEGIN].max            = 3599940.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY - CCS_BEGIN].discret        = 1;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY - CCS_BEGIN].def            = 7200.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY - CCS_BEGIN].code           = 13;
@@ -1678,7 +1678,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET - CCS_BEGIN].value.float_t  = 86400.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET - CCS_BEGIN].min            = 60.0;
-  parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET - CCS_BEGIN].max            = 86400.0;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET - CCS_BEGIN].max            = 3599940.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET - CCS_BEGIN].discret        = 1;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET - CCS_BEGIN].def            = 86400.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET - CCS_BEGIN].code           = 13;
@@ -1808,11 +1808,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY - CCS_BEGIN].operation          = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY - CCS_BEGIN].physic             = PHYSIC_TIME;
   parameters_[CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY - CCS_BEGIN].validity           = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY - CCS_BEGIN].value.float_t      = 0.0;
+  parameters_[CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY - CCS_BEGIN].value.float_t      = 20.0;
   parameters_[CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY - CCS_BEGIN].max                = 0.0;
+  parameters_[CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY - CCS_BEGIN].max                = 59999.0;
   parameters_[CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY - CCS_BEGIN].discret            = 1;
-  parameters_[CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY - CCS_BEGIN].def                = 0.0;
+  parameters_[CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY - CCS_BEGIN].def                = 20.0;
   parameters_[CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY - CCS_BEGIN].code               = 0;
   // Задержка срабатывания уставка
   parameters_[CCS_PROT_MOTOR_CURRENT_TRIP_DELAY - CCS_BEGIN].id                  = CCS_PROT_MOTOR_CURRENT_TRIP_DELAY;
@@ -1820,11 +1820,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_CURRENT_TRIP_DELAY - CCS_BEGIN].operation           = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_CURRENT_TRIP_DELAY - CCS_BEGIN].physic              = PHYSIC_TIME;
   parameters_[CCS_PROT_MOTOR_CURRENT_TRIP_DELAY - CCS_BEGIN].validity            = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_CURRENT_TRIP_DELAY - CCS_BEGIN].value.float_t       = 0.0;
+  parameters_[CCS_PROT_MOTOR_CURRENT_TRIP_DELAY - CCS_BEGIN].value.float_t       = 30.0;
   parameters_[CCS_PROT_MOTOR_CURRENT_TRIP_DELAY - CCS_BEGIN].min                 = 0.0;
-  parameters_[CCS_PROT_MOTOR_CURRENT_TRIP_DELAY - CCS_BEGIN].max                 = 0.0;
+  parameters_[CCS_PROT_MOTOR_CURRENT_TRIP_DELAY - CCS_BEGIN].max                 = 600.0;
   parameters_[CCS_PROT_MOTOR_CURRENT_TRIP_DELAY - CCS_BEGIN].discret             = 1;
-  parameters_[CCS_PROT_MOTOR_CURRENT_TRIP_DELAY - CCS_BEGIN].def                 = 0.0;
+  parameters_[CCS_PROT_MOTOR_CURRENT_TRIP_DELAY - CCS_BEGIN].def                 = 30.0;
   parameters_[CCS_PROT_MOTOR_CURRENT_TRIP_DELAY - CCS_BEGIN].code                = 0;
   // Задержка АПВ уставка
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_DELAY - CCS_BEGIN].id               = CCS_PROT_MOTOR_CURRENT_RESTART_DELAY;
@@ -1834,7 +1834,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_DELAY - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_DELAY - CCS_BEGIN].value.float_t    = 3600.0;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_DELAY - CCS_BEGIN].min              = 60.0;
-  parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_DELAY - CCS_BEGIN].max              = 86400.0;
+  parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_DELAY - CCS_BEGIN].max              = 3599940.0;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_DELAY - CCS_BEGIN].discret          = 1;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_DELAY - CCS_BEGIN].def              = 3600.0;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_DELAY - CCS_BEGIN].code             = 13;
@@ -1858,7 +1858,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_RESET - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_RESET - CCS_BEGIN].value.float_t    = 86400.0;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_RESET - CCS_BEGIN].min              = 60.0;
-  parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_RESET - CCS_BEGIN].max              = 86400.0;
+  parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_RESET - CCS_BEGIN].max              = 3599940.0;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_RESET - CCS_BEGIN].discret          = 1;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_RESET - CCS_BEGIN].def              = 86400.0;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_RESET - CCS_BEGIN].code             = 13;
@@ -1988,11 +1988,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].operation = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].physic   = PHYSIC_TIME;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].validity = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].value.float_t = 60.0;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].value.float_t = 10.0;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].min      = 0.0;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].max      = 60.0;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].max      = 59999.0;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].discret  = 1;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].def      = 60.0;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].def      = 10.0;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY - CCS_BEGIN].code     = 13;
   // Задержка срабатывания уставка
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].id        = CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY;
@@ -2002,7 +2002,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].validity  = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].value.float_t = 30.0;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].min       = 0.0;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].max       = 60.0;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].max       = 600.0;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].discret   = 1;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].def       = 30.0;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY - CCS_BEGIN].code      = 13;
@@ -2013,10 +2013,10 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].physic = PHYSIC_TIME;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].value.float_t = 3600.0;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].min    = 0.0;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].max    = 86400.0;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].min    = 60.0;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].max    = 3599940.0;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].discret = 1;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].def    = 3600.0;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].def    = 1800.0;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].code   = 13;
   // Количество АПВ уставка
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_LIMIT - CCS_BEGIN].id     = CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_LIMIT;
@@ -2038,7 +2038,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_RESET - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_RESET - CCS_BEGIN].value.float_t = 86400.0;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_RESET - CCS_BEGIN].min    = 0.0;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_RESET - CCS_BEGIN].max    = 86400.0;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_RESET - CCS_BEGIN].max    = 3599940.0;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_RESET - CCS_BEGIN].discret = 1;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_RESET - CCS_BEGIN].def    = 86400.0;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_RESET - CCS_BEGIN].code   = 13;
@@ -2528,11 +2528,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY - CCS_BEGIN].operation    = OPERATION_WRITE;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY - CCS_BEGIN].physic       = PHYSIC_TIME;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY - CCS_BEGIN].validity     = VALIDITY_OK;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY - CCS_BEGIN].value.float_t = 5.0;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY - CCS_BEGIN].value.float_t = 10.0;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY - CCS_BEGIN].min          = 0.0;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY - CCS_BEGIN].max          = 600.0;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY - CCS_BEGIN].max          = 59999.9;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY - CCS_BEGIN].discret      = 1;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY - CCS_BEGIN].def          = 5.0;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY - CCS_BEGIN].def          = 10.0;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY - CCS_BEGIN].code         = 13;
   // Задержка срабатывания уставка
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY - CCS_BEGIN].id            = CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY;
@@ -2540,11 +2540,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY - CCS_BEGIN].operation     = OPERATION_WRITE;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY - CCS_BEGIN].physic        = PHYSIC_TIME;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY - CCS_BEGIN].validity      = VALIDITY_OK;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY - CCS_BEGIN].value.float_t = 5.0;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY - CCS_BEGIN].value.float_t = 10.0;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY - CCS_BEGIN].min           = 0.0;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY - CCS_BEGIN].max           = 60.0;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY - CCS_BEGIN].max           = 59999.9;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY - CCS_BEGIN].discret       = 1;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY - CCS_BEGIN].def           = 5.0;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY - CCS_BEGIN].def           = 10.0;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY - CCS_BEGIN].code          = 13;
   // Задержка АПВ уставка
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY - CCS_BEGIN].id         = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY;
@@ -2552,11 +2552,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY - CCS_BEGIN].operation  = OPERATION_WRITE;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY - CCS_BEGIN].physic     = PHYSIC_TIME;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY - CCS_BEGIN].validity   = VALIDITY_OK;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY - CCS_BEGIN].value.float_t = 3600.0;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY - CCS_BEGIN].value.float_t = 600.0;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY - CCS_BEGIN].min        = 0.0;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY - CCS_BEGIN].max        = 86400.0;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY - CCS_BEGIN].max        = 3599940.0;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY - CCS_BEGIN].discret    = 1;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY - CCS_BEGIN].def        = 3600.0;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY - CCS_BEGIN].def        = 600.0;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY - CCS_BEGIN].code       = 13;
   // Количество АПВ уставка
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT - CCS_BEGIN].id         = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT;
@@ -2576,11 +2576,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET - CCS_BEGIN].operation  = OPERATION_WRITE;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET - CCS_BEGIN].physic     = PHYSIC_TIME;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET - CCS_BEGIN].validity   = VALIDITY_OK;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET - CCS_BEGIN].value.float_t = 600;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET - CCS_BEGIN].value.float_t = 86400.0;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET - CCS_BEGIN].min        = 0.0;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET - CCS_BEGIN].max        = 86400.0;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET - CCS_BEGIN].max        = 3599940.0;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET - CCS_BEGIN].discret    = 1;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET - CCS_BEGIN].def        = 600;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET - CCS_BEGIN].def        = 86400.0;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET - CCS_BEGIN].code       = 13;
   // Уставка срабатывания защиты
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT - CCS_BEGIN].id         = CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT;
@@ -2648,11 +2648,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TIME - CCS_BEGIN].operation           = OPERATION_READ;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TIME - CCS_BEGIN].physic              = PHYSIC_TIME;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TIME - CCS_BEGIN].validity            = VALIDITY_OK;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TIME - CCS_BEGIN].value.float_t       = 0;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TIME - CCS_BEGIN].min                 = 0;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TIME - CCS_BEGIN].max                 = 4294967296;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TIME - CCS_BEGIN].value.float_t       = 0.0;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TIME - CCS_BEGIN].min                 = 0.0;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TIME - CCS_BEGIN].max                 = 999999999.9;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TIME - CCS_BEGIN].discret             = 1;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TIME - CCS_BEGIN].def                 = 0;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TIME - CCS_BEGIN].def                 = 0.0;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TIME - CCS_BEGIN].code                = 0;
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_COUNT - CCS_BEGIN].id         = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_COUNT;
@@ -2708,11 +2708,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY - CCS_BEGIN].operation  = OPERATION_WRITE;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY - CCS_BEGIN].physic     = PHYSIC_TIME;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY - CCS_BEGIN].validity   = VALIDITY_OK;
-  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY - CCS_BEGIN].value.float_t = 5.0;
+  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY - CCS_BEGIN].value.float_t = 10.0;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY - CCS_BEGIN].min        = 0.0;
-  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY - CCS_BEGIN].max        = 600.0;
+  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY - CCS_BEGIN].max        = 59999.9;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY - CCS_BEGIN].discret    = 1;
-  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY - CCS_BEGIN].def        = 5.0;
+  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY - CCS_BEGIN].def        = 10.0;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY - CCS_BEGIN].code       = 13;
   // Задержка срабатывания уставка
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY - CCS_BEGIN].id          = CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY;
@@ -2720,11 +2720,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY - CCS_BEGIN].operation   = OPERATION_WRITE;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY - CCS_BEGIN].physic      = PHYSIC_TIME;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY - CCS_BEGIN].validity    = VALIDITY_OK;
-  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY - CCS_BEGIN].value.float_t = 5.0;
+  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY - CCS_BEGIN].value.float_t = 10.0;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY - CCS_BEGIN].min         = 0.0;
-  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY - CCS_BEGIN].max         = 60.0;
+  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY - CCS_BEGIN].max         = 59999.9;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY - CCS_BEGIN].discret     = 1;
-  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY - CCS_BEGIN].def         = 5.0;
+  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY - CCS_BEGIN].def         = 10.0;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY - CCS_BEGIN].code        = 13;
   // Задержка АПВ уставка
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY - CCS_BEGIN].id       = CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY;
@@ -2732,11 +2732,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY - CCS_BEGIN].operation = OPERATION_WRITE;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY - CCS_BEGIN].physic   = PHYSIC_TIME;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY - CCS_BEGIN].validity = VALIDITY_OK;
-  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY - CCS_BEGIN].value.float_t = 3600.0;
+  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY - CCS_BEGIN].value.float_t = 600.0;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY - CCS_BEGIN].min      = 0.0;
-  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY - CCS_BEGIN].max      = 86400.0;
+  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY - CCS_BEGIN].max      = 3599940.0;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY - CCS_BEGIN].discret  = 1;
-  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY - CCS_BEGIN].def      = 3600.0;
+  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY - CCS_BEGIN].def      = 600.0;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY - CCS_BEGIN].code     = 13;
   // Количество АПВ уставка
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_LIMIT - CCS_BEGIN].id       = CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_LIMIT;
@@ -2756,11 +2756,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_RESET - CCS_BEGIN].operation = OPERATION_WRITE;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_RESET - CCS_BEGIN].physic   = PHYSIC_TIME;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_RESET - CCS_BEGIN].validity = VALIDITY_OK;
-  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_RESET - CCS_BEGIN].value.float_t = 600;
+  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_RESET - CCS_BEGIN].value.float_t = 86400.0;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_RESET - CCS_BEGIN].min      = 0.0;
-  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_RESET - CCS_BEGIN].max      = 86400.0;
+  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_RESET - CCS_BEGIN].max      = 3599940.0;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_RESET - CCS_BEGIN].discret  = 1;
-  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_RESET - CCS_BEGIN].def      = 600;
+  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_RESET - CCS_BEGIN].def      = 86400.0;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_RESET - CCS_BEGIN].code     = 13;
   // Уставка срабатывания защиты
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_SETPOINT - CCS_BEGIN].id       = CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_SETPOINT;
@@ -2830,7 +2830,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TIME - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TIME - CCS_BEGIN].value.float_t     = 0;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TIME - CCS_BEGIN].min               = 0.0;
-  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TIME - CCS_BEGIN].max               = 4294967296;
+  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TIME - CCS_BEGIN].max               = 999999999.9;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TIME - CCS_BEGIN].discret           = 1;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TIME - CCS_BEGIN].def               = 0;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_TIME - CCS_BEGIN].code              = 0;
@@ -3068,36 +3068,36 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].operation          = OPERATION_WRITE;
   parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].physic             = PHYSIC_TIME;
   parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].validity           = VALIDITY_OK;
-  parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].value.float_t      = 0;
+  parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].value.float_t      = 10.0;
   parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].min                = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].max                = 999999999.9;
+  parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].max                = 59999.9;
   parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].discret            = 1;
-  parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].def                = 0;
-  parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].code               = 0;
+  parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].def                = 10.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_ACTIV_DELAY - CCS_BEGIN].code               = 13;
   // Задержка срабатывания уставка
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].id                  = CCS_PROT_DHS_VIBRATION_TRIP_DELAY;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].access              = ACCESS_OPERATOR;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].operation           = OPERATION_WRITE;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].physic              = PHYSIC_TIME;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].validity            = VALIDITY_OK;
-  parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].value.float_t       = 0;
+  parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].value.float_t       = 10.0;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].min                 = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].max                 = 999999999.9;
+  parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].max                 = 59999.9;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].discret             = 1;
-  parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].def                 = 0;
-  parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].code                = 0;
+  parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].def                 = 10.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_TRIP_DELAY - CCS_BEGIN].code                = 13;
   // Задержка АПВ уставка
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].id               = CCS_PROT_DHS_VIBRATION_RESTART_DELAY;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].access           = ACCESS_OPERATOR;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].operation        = OPERATION_WRITE;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].physic           = PHYSIC_TIME;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].validity         = VALIDITY_OK;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].value.float_t    = 0;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].value.float_t    = 600.0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].max              = 999999999.9;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].max              = 3599940.0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].discret          = 1;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].def              = 0;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].code             = 0;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].def              = 600.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_DELAY - CCS_BEGIN].code             = 13;
   // Количество АПВ уставка
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_LIMIT - CCS_BEGIN].id               = CCS_PROT_DHS_VIBRATION_RESTART_LIMIT;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_LIMIT - CCS_BEGIN].access           = ACCESS_OPERATOR;
@@ -3116,12 +3116,12 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].operation        = OPERATION_WRITE;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].physic           = PHYSIC_TIME;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].validity         = VALIDITY_OK;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].value.float_t    = 0;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].value.float_t    = 86400.0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].max              = 999999999.9;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].max              = 3599940.0;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].discret          = 1;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].def              = 0;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].code             = 0;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].def              = 86400.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_RESET - CCS_BEGIN].code             = 13;
   // Уставка срабатывания защиты
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT - CCS_BEGIN].id               = CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT;
   parameters_[CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT - CCS_BEGIN].access           = ACCESS_OPERATOR;
@@ -3250,7 +3250,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_1_ACTIV_DELAY - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_ACTIV_DELAY - CCS_BEGIN].value.float_t               = 10.0;
   parameters_[CCS_PROT_AI_1_ACTIV_DELAY - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_AI_1_ACTIV_DELAY - CCS_BEGIN].max                         = 600.0;
+  parameters_[CCS_PROT_AI_1_ACTIV_DELAY - CCS_BEGIN].max                         = 59999.0;
   parameters_[CCS_PROT_AI_1_ACTIV_DELAY - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_PROT_AI_1_ACTIV_DELAY - CCS_BEGIN].def                         = 10.0;
   parameters_[CCS_PROT_AI_1_ACTIV_DELAY - CCS_BEGIN].code                        = 13;
@@ -3262,7 +3262,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_1_TRIP_DELAY - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_TRIP_DELAY - CCS_BEGIN].value.float_t                = 10.0;
   parameters_[CCS_PROT_AI_1_TRIP_DELAY - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_PROT_AI_1_TRIP_DELAY - CCS_BEGIN].max                          = 600.0;
+  parameters_[CCS_PROT_AI_1_TRIP_DELAY - CCS_BEGIN].max                          = 59999.0;
   parameters_[CCS_PROT_AI_1_TRIP_DELAY - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_PROT_AI_1_TRIP_DELAY - CCS_BEGIN].def                          = 10.0;
   parameters_[CCS_PROT_AI_1_TRIP_DELAY - CCS_BEGIN].code                         = 13;
@@ -3274,7 +3274,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_1_RESTART_DELAY - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_RESTART_DELAY - CCS_BEGIN].value.float_t             = 600.0;
   parameters_[CCS_PROT_AI_1_RESTART_DELAY - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_1_RESTART_DELAY - CCS_BEGIN].max                       = 86400.0;
+  parameters_[CCS_PROT_AI_1_RESTART_DELAY - CCS_BEGIN].max                       = 3599940.0;
   parameters_[CCS_PROT_AI_1_RESTART_DELAY - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_PROT_AI_1_RESTART_DELAY - CCS_BEGIN].def                       = 600.0;
   parameters_[CCS_PROT_AI_1_RESTART_DELAY - CCS_BEGIN].code                      = 13;
@@ -3298,7 +3298,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_1_RESTART_RESET - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_RESTART_RESET - CCS_BEGIN].value.float_t             = 86400.0;
   parameters_[CCS_PROT_AI_1_RESTART_RESET - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_1_RESTART_RESET - CCS_BEGIN].max                       = 86400.0;
+  parameters_[CCS_PROT_AI_1_RESTART_RESET - CCS_BEGIN].max                       = 3599940.0;
   parameters_[CCS_PROT_AI_1_RESTART_RESET - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_PROT_AI_1_RESTART_RESET - CCS_BEGIN].def                       = 86400.0;
   parameters_[CCS_PROT_AI_1_RESTART_RESET - CCS_BEGIN].code                      = 13;
@@ -3430,7 +3430,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_2_ACTIV_DELAY - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_ACTIV_DELAY - CCS_BEGIN].value.float_t               = 10.0;
   parameters_[CCS_PROT_AI_2_ACTIV_DELAY - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_AI_2_ACTIV_DELAY - CCS_BEGIN].max                         = 600.0;
+  parameters_[CCS_PROT_AI_2_ACTIV_DELAY - CCS_BEGIN].max                         = 59999.0;
   parameters_[CCS_PROT_AI_2_ACTIV_DELAY - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_PROT_AI_2_ACTIV_DELAY - CCS_BEGIN].def                         = 10.0;
   parameters_[CCS_PROT_AI_2_ACTIV_DELAY - CCS_BEGIN].code                        = 13;
@@ -3442,7 +3442,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_2_TRIP_DELAY - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_TRIP_DELAY - CCS_BEGIN].value.float_t                = 10.0;
   parameters_[CCS_PROT_AI_2_TRIP_DELAY - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_PROT_AI_2_TRIP_DELAY - CCS_BEGIN].max                          = 600.0;
+  parameters_[CCS_PROT_AI_2_TRIP_DELAY - CCS_BEGIN].max                          = 59999.0;
   parameters_[CCS_PROT_AI_2_TRIP_DELAY - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_PROT_AI_2_TRIP_DELAY - CCS_BEGIN].def                          = 10.0;
   parameters_[CCS_PROT_AI_2_TRIP_DELAY - CCS_BEGIN].code                         = 13;
@@ -3454,7 +3454,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_2_RESTART_DELAY - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_RESTART_DELAY - CCS_BEGIN].value.float_t             = 600.0;
   parameters_[CCS_PROT_AI_2_RESTART_DELAY - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_2_RESTART_DELAY - CCS_BEGIN].max                       = 86400.0;
+  parameters_[CCS_PROT_AI_2_RESTART_DELAY - CCS_BEGIN].max                       = 3599940.0;
   parameters_[CCS_PROT_AI_2_RESTART_DELAY - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_PROT_AI_2_RESTART_DELAY - CCS_BEGIN].def                       = 600.0;
   parameters_[CCS_PROT_AI_2_RESTART_DELAY - CCS_BEGIN].code                      = 13;
@@ -3478,7 +3478,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_2_RESTART_RESET - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_RESTART_RESET - CCS_BEGIN].value.float_t             = 86400.0;
   parameters_[CCS_PROT_AI_2_RESTART_RESET - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_2_RESTART_RESET - CCS_BEGIN].max                       = 86400.0;
+  parameters_[CCS_PROT_AI_2_RESTART_RESET - CCS_BEGIN].max                       = 3599940.0;
   parameters_[CCS_PROT_AI_2_RESTART_RESET - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_PROT_AI_2_RESTART_RESET - CCS_BEGIN].def                       = 86400.0;
   parameters_[CCS_PROT_AI_2_RESTART_RESET - CCS_BEGIN].code                      = 13;
@@ -3610,7 +3610,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_3_ACTIV_DELAY - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_ACTIV_DELAY - CCS_BEGIN].value.float_t               = 10.0;
   parameters_[CCS_PROT_AI_3_ACTIV_DELAY - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_AI_3_ACTIV_DELAY - CCS_BEGIN].max                         = 600.0;
+  parameters_[CCS_PROT_AI_3_ACTIV_DELAY - CCS_BEGIN].max                         = 59999.0;
   parameters_[CCS_PROT_AI_3_ACTIV_DELAY - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_PROT_AI_3_ACTIV_DELAY - CCS_BEGIN].def                         = 10.0;
   parameters_[CCS_PROT_AI_3_ACTIV_DELAY - CCS_BEGIN].code                        = 13;
@@ -3622,7 +3622,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_3_TRIP_DELAY - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_TRIP_DELAY - CCS_BEGIN].value.float_t                = 10.0;
   parameters_[CCS_PROT_AI_3_TRIP_DELAY - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_PROT_AI_3_TRIP_DELAY - CCS_BEGIN].max                          = 600.0;
+  parameters_[CCS_PROT_AI_3_TRIP_DELAY - CCS_BEGIN].max                          = 59999.0;
   parameters_[CCS_PROT_AI_3_TRIP_DELAY - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_PROT_AI_3_TRIP_DELAY - CCS_BEGIN].def                          = 10.0;
   parameters_[CCS_PROT_AI_3_TRIP_DELAY - CCS_BEGIN].code                         = 13;
@@ -3634,7 +3634,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_3_RESTART_DELAY - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_RESTART_DELAY - CCS_BEGIN].value.float_t             = 600.0;
   parameters_[CCS_PROT_AI_3_RESTART_DELAY - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_3_RESTART_DELAY - CCS_BEGIN].max                       = 86400.0;
+  parameters_[CCS_PROT_AI_3_RESTART_DELAY - CCS_BEGIN].max                       = 3599940.0;
   parameters_[CCS_PROT_AI_3_RESTART_DELAY - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_PROT_AI_3_RESTART_DELAY - CCS_BEGIN].def                       = 600.0;
   parameters_[CCS_PROT_AI_3_RESTART_DELAY - CCS_BEGIN].code                      = 13;
@@ -3658,7 +3658,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_3_RESTART_RESET - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_RESTART_RESET - CCS_BEGIN].value.float_t             = 86400.0;
   parameters_[CCS_PROT_AI_3_RESTART_RESET - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_3_RESTART_RESET - CCS_BEGIN].max                       = 86400.0;
+  parameters_[CCS_PROT_AI_3_RESTART_RESET - CCS_BEGIN].max                       = 3599940.0;
   parameters_[CCS_PROT_AI_3_RESTART_RESET - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_PROT_AI_3_RESTART_RESET - CCS_BEGIN].def                       = 86400.0;
   parameters_[CCS_PROT_AI_3_RESTART_RESET - CCS_BEGIN].code                      = 13;
@@ -3790,7 +3790,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_ACTIV_DELAY - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_ACTIV_DELAY - CCS_BEGIN].value.float_t               = 10.0;
   parameters_[CCS_PROT_AI_4_ACTIV_DELAY - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_AI_4_ACTIV_DELAY - CCS_BEGIN].max                         = 600.0;
+  parameters_[CCS_PROT_AI_4_ACTIV_DELAY - CCS_BEGIN].max                         = 59999.0;
   parameters_[CCS_PROT_AI_4_ACTIV_DELAY - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_PROT_AI_4_ACTIV_DELAY - CCS_BEGIN].def                         = 10.0;
   parameters_[CCS_PROT_AI_4_ACTIV_DELAY - CCS_BEGIN].code                        = 13;
@@ -3802,7 +3802,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_TRIP_DELAY - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_TRIP_DELAY - CCS_BEGIN].value.float_t                = 10.0;
   parameters_[CCS_PROT_AI_4_TRIP_DELAY - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_PROT_AI_4_TRIP_DELAY - CCS_BEGIN].max                          = 600.0;
+  parameters_[CCS_PROT_AI_4_TRIP_DELAY - CCS_BEGIN].max                          = 59999.0;
   parameters_[CCS_PROT_AI_4_TRIP_DELAY - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_PROT_AI_4_TRIP_DELAY - CCS_BEGIN].def                          = 10.0;
   parameters_[CCS_PROT_AI_4_TRIP_DELAY - CCS_BEGIN].code                         = 13;
@@ -3814,7 +3814,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_RESTART_DELAY - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_RESTART_DELAY - CCS_BEGIN].value.float_t             = 600.0;
   parameters_[CCS_PROT_AI_4_RESTART_DELAY - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_4_RESTART_DELAY - CCS_BEGIN].max                       = 86400.0;
+  parameters_[CCS_PROT_AI_4_RESTART_DELAY - CCS_BEGIN].max                       = 3599940.0;
   parameters_[CCS_PROT_AI_4_RESTART_DELAY - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_PROT_AI_4_RESTART_DELAY - CCS_BEGIN].def                       = 600.0;
   parameters_[CCS_PROT_AI_4_RESTART_DELAY - CCS_BEGIN].code                      = 13;
@@ -3838,7 +3838,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_RESTART_RESET - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_RESTART_RESET - CCS_BEGIN].value.float_t             = 86400.0;
   parameters_[CCS_PROT_AI_4_RESTART_RESET - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_AI_4_RESTART_RESET - CCS_BEGIN].max                       = 86400.0;
+  parameters_[CCS_PROT_AI_4_RESTART_RESET - CCS_BEGIN].max                       = 3599940.0;
   parameters_[CCS_PROT_AI_4_RESTART_RESET - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_PROT_AI_4_RESTART_RESET - CCS_BEGIN].def                       = 86400.0;
   parameters_[CCS_PROT_AI_4_RESTART_RESET - CCS_BEGIN].code                      = 13;
@@ -3970,7 +3970,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_1_ACTIV_DELAY - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_ACTIV_DELAY - CCS_BEGIN].value.float_t               = 10.0;
   parameters_[CCS_PROT_DI_1_ACTIV_DELAY - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_DI_1_ACTIV_DELAY - CCS_BEGIN].max                         = 600.0;
+  parameters_[CCS_PROT_DI_1_ACTIV_DELAY - CCS_BEGIN].max                         = 59999.0;
   parameters_[CCS_PROT_DI_1_ACTIV_DELAY - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_PROT_DI_1_ACTIV_DELAY - CCS_BEGIN].def                         = 10.0;
   parameters_[CCS_PROT_DI_1_ACTIV_DELAY - CCS_BEGIN].code                        = 13;
@@ -3982,7 +3982,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_1_TRIP_DELAY - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_TRIP_DELAY - CCS_BEGIN].value.float_t                = 10.0;
   parameters_[CCS_PROT_DI_1_TRIP_DELAY - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_PROT_DI_1_TRIP_DELAY - CCS_BEGIN].max                          = 600.0;
+  parameters_[CCS_PROT_DI_1_TRIP_DELAY - CCS_BEGIN].max                          = 59999.0;
   parameters_[CCS_PROT_DI_1_TRIP_DELAY - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_PROT_DI_1_TRIP_DELAY - CCS_BEGIN].def                          = 10.0;
   parameters_[CCS_PROT_DI_1_TRIP_DELAY - CCS_BEGIN].code                         = 13;
@@ -3994,7 +3994,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_1_RESTART_DELAY - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_RESTART_DELAY - CCS_BEGIN].value.float_t             = 600.0;
   parameters_[CCS_PROT_DI_1_RESTART_DELAY - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_1_RESTART_DELAY - CCS_BEGIN].max                       = 86400.0;
+  parameters_[CCS_PROT_DI_1_RESTART_DELAY - CCS_BEGIN].max                       = 3599940.0;
   parameters_[CCS_PROT_DI_1_RESTART_DELAY - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_PROT_DI_1_RESTART_DELAY - CCS_BEGIN].def                       = 600.0;
   parameters_[CCS_PROT_DI_1_RESTART_DELAY - CCS_BEGIN].code                      = 13;
@@ -4018,7 +4018,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_1_RESTART_RESET - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_RESTART_RESET - CCS_BEGIN].value.float_t             = 86400.0;
   parameters_[CCS_PROT_DI_1_RESTART_RESET - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_1_RESTART_RESET - CCS_BEGIN].max                       = 86400.0;
+  parameters_[CCS_PROT_DI_1_RESTART_RESET - CCS_BEGIN].max                       = 3599940.0;
   parameters_[CCS_PROT_DI_1_RESTART_RESET - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_PROT_DI_1_RESTART_RESET - CCS_BEGIN].def                       = 86400.0;
   parameters_[CCS_PROT_DI_1_RESTART_RESET - CCS_BEGIN].code                      = 13;
@@ -4150,7 +4150,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_2_ACTIV_DELAY - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_ACTIV_DELAY - CCS_BEGIN].value.float_t               = 10.0;
   parameters_[CCS_PROT_DI_2_ACTIV_DELAY - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_DI_2_ACTIV_DELAY - CCS_BEGIN].max                         = 600.0;
+  parameters_[CCS_PROT_DI_2_ACTIV_DELAY - CCS_BEGIN].max                         = 59999.0;
   parameters_[CCS_PROT_DI_2_ACTIV_DELAY - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_PROT_DI_2_ACTIV_DELAY - CCS_BEGIN].def                         = 10.0;
   parameters_[CCS_PROT_DI_2_ACTIV_DELAY - CCS_BEGIN].code                        = 13;
@@ -4162,7 +4162,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_2_TRIP_DELAY - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_TRIP_DELAY - CCS_BEGIN].value.float_t                = 10.0;
   parameters_[CCS_PROT_DI_2_TRIP_DELAY - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_PROT_DI_2_TRIP_DELAY - CCS_BEGIN].max                          = 600.0;
+  parameters_[CCS_PROT_DI_2_TRIP_DELAY - CCS_BEGIN].max                          = 59999.0;
   parameters_[CCS_PROT_DI_2_TRIP_DELAY - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_PROT_DI_2_TRIP_DELAY - CCS_BEGIN].def                          = 10.0;
   parameters_[CCS_PROT_DI_2_TRIP_DELAY - CCS_BEGIN].code                         = 13;
@@ -4174,7 +4174,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_2_RESTART_DELAY - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_RESTART_DELAY - CCS_BEGIN].value.float_t             = 600.0;
   parameters_[CCS_PROT_DI_2_RESTART_DELAY - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_2_RESTART_DELAY - CCS_BEGIN].max                       = 86400.0;
+  parameters_[CCS_PROT_DI_2_RESTART_DELAY - CCS_BEGIN].max                       = 3599940.0;
   parameters_[CCS_PROT_DI_2_RESTART_DELAY - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_PROT_DI_2_RESTART_DELAY - CCS_BEGIN].def                       = 600.0;
   parameters_[CCS_PROT_DI_2_RESTART_DELAY - CCS_BEGIN].code                      = 13;
@@ -4198,7 +4198,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_2_RESTART_RESET - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_RESTART_RESET - CCS_BEGIN].value.float_t             = 86400.0;
   parameters_[CCS_PROT_DI_2_RESTART_RESET - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_2_RESTART_RESET - CCS_BEGIN].max                       = 86400.0;
+  parameters_[CCS_PROT_DI_2_RESTART_RESET - CCS_BEGIN].max                       = 3599940.0;
   parameters_[CCS_PROT_DI_2_RESTART_RESET - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_PROT_DI_2_RESTART_RESET - CCS_BEGIN].def                       = 86400.0;
   parameters_[CCS_PROT_DI_2_RESTART_RESET - CCS_BEGIN].code                      = 13;
@@ -4330,7 +4330,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_3_ACTIV_DELAY - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_ACTIV_DELAY - CCS_BEGIN].value.float_t               = 10.0;
   parameters_[CCS_PROT_DI_3_ACTIV_DELAY - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_DI_3_ACTIV_DELAY - CCS_BEGIN].max                         = 600.0;
+  parameters_[CCS_PROT_DI_3_ACTIV_DELAY - CCS_BEGIN].max                         = 59999.0;
   parameters_[CCS_PROT_DI_3_ACTIV_DELAY - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_PROT_DI_3_ACTIV_DELAY - CCS_BEGIN].def                         = 10.0;
   parameters_[CCS_PROT_DI_3_ACTIV_DELAY - CCS_BEGIN].code                        = 13;
@@ -4342,7 +4342,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_3_TRIP_DELAY - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_TRIP_DELAY - CCS_BEGIN].value.float_t                = 10.0;
   parameters_[CCS_PROT_DI_3_TRIP_DELAY - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_PROT_DI_3_TRIP_DELAY - CCS_BEGIN].max                          = 600.0;
+  parameters_[CCS_PROT_DI_3_TRIP_DELAY - CCS_BEGIN].max                          = 59999.0;
   parameters_[CCS_PROT_DI_3_TRIP_DELAY - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_PROT_DI_3_TRIP_DELAY - CCS_BEGIN].def                          = 10.0;
   parameters_[CCS_PROT_DI_3_TRIP_DELAY - CCS_BEGIN].code                         = 13;
@@ -4354,7 +4354,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_3_RESTART_DELAY - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_RESTART_DELAY - CCS_BEGIN].value.float_t             = 600.0;
   parameters_[CCS_PROT_DI_3_RESTART_DELAY - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_3_RESTART_DELAY - CCS_BEGIN].max                       = 86400.0;
+  parameters_[CCS_PROT_DI_3_RESTART_DELAY - CCS_BEGIN].max                       = 3599940.0;
   parameters_[CCS_PROT_DI_3_RESTART_DELAY - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_PROT_DI_3_RESTART_DELAY - CCS_BEGIN].def                       = 600.0;
   parameters_[CCS_PROT_DI_3_RESTART_DELAY - CCS_BEGIN].code                      = 13;
@@ -4378,7 +4378,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_3_RESTART_RESET - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_RESTART_RESET - CCS_BEGIN].value.float_t             = 86400.0;
   parameters_[CCS_PROT_DI_3_RESTART_RESET - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_3_RESTART_RESET - CCS_BEGIN].max                       = 86400.0;
+  parameters_[CCS_PROT_DI_3_RESTART_RESET - CCS_BEGIN].max                       = 3599940.0;
   parameters_[CCS_PROT_DI_3_RESTART_RESET - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_PROT_DI_3_RESTART_RESET - CCS_BEGIN].def                       = 86400.0;
   parameters_[CCS_PROT_DI_3_RESTART_RESET - CCS_BEGIN].code                      = 13;
@@ -4510,7 +4510,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_4_ACTIV_DELAY - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_ACTIV_DELAY - CCS_BEGIN].value.float_t               = 10.0;
   parameters_[CCS_PROT_DI_4_ACTIV_DELAY - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_PROT_DI_4_ACTIV_DELAY - CCS_BEGIN].max                         = 600.0;
+  parameters_[CCS_PROT_DI_4_ACTIV_DELAY - CCS_BEGIN].max                         = 59999.0;
   parameters_[CCS_PROT_DI_4_ACTIV_DELAY - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_PROT_DI_4_ACTIV_DELAY - CCS_BEGIN].def                         = 10.0;
   parameters_[CCS_PROT_DI_4_ACTIV_DELAY - CCS_BEGIN].code                        = 13;
@@ -4522,7 +4522,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_4_TRIP_DELAY - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_TRIP_DELAY - CCS_BEGIN].value.float_t                = 10.0;
   parameters_[CCS_PROT_DI_4_TRIP_DELAY - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_PROT_DI_4_TRIP_DELAY - CCS_BEGIN].max                          = 3600.0;
+  parameters_[CCS_PROT_DI_4_TRIP_DELAY - CCS_BEGIN].max                          = 59999.0;
   parameters_[CCS_PROT_DI_4_TRIP_DELAY - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_PROT_DI_4_TRIP_DELAY - CCS_BEGIN].def                          = 10.0;
   parameters_[CCS_PROT_DI_4_TRIP_DELAY - CCS_BEGIN].code                         = 13;
@@ -4534,7 +4534,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_4_RESTART_DELAY - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_RESTART_DELAY - CCS_BEGIN].value.float_t             = 600.0;
   parameters_[CCS_PROT_DI_4_RESTART_DELAY - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_4_RESTART_DELAY - CCS_BEGIN].max                       = 86400.0;
+  parameters_[CCS_PROT_DI_4_RESTART_DELAY - CCS_BEGIN].max                       = 3599940.0;
   parameters_[CCS_PROT_DI_4_RESTART_DELAY - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_PROT_DI_4_RESTART_DELAY - CCS_BEGIN].def                       = 600.0;
   parameters_[CCS_PROT_DI_4_RESTART_DELAY - CCS_BEGIN].code                      = 13;
@@ -4558,7 +4558,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DI_4_RESTART_RESET - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_RESTART_RESET - CCS_BEGIN].value.float_t             = 86400.0;
   parameters_[CCS_PROT_DI_4_RESTART_RESET - CCS_BEGIN].min                       = 0.0;
-  parameters_[CCS_PROT_DI_4_RESTART_RESET - CCS_BEGIN].max                       = 86400.0;
+  parameters_[CCS_PROT_DI_4_RESTART_RESET - CCS_BEGIN].max                       = 3599940.0;
   parameters_[CCS_PROT_DI_4_RESTART_RESET - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_PROT_DI_4_RESTART_RESET - CCS_BEGIN].def                       = 86400.0;
   parameters_[CCS_PROT_DI_4_RESTART_RESET - CCS_BEGIN].code                      = 13;
@@ -5926,7 +5926,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].value.float_t  = 0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].min            = 0.0;
-  parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].max            = 86400.0;
+  parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].max            = 999999999.9;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].discret        = 1;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].def            = 0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].code           = 13;
@@ -5986,7 +5986,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].value.float_t     = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].min               = 0.0;
-  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].max               = 86400.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].max               = 999999999.9;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].discret           = 1;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].def               = 0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART - CCS_BEGIN].code              = 13;
@@ -6094,7 +6094,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].value.float_t     = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].min               = 0.0;
-  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].max               = 86400.0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].max               = 999999999.9;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].discret           = 1;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].def               = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].code              = 13;
@@ -7654,7 +7654,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY - CCS_BEGIN].value.float_t = 7200.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY - CCS_BEGIN].min    = 60.0;
-  parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY - CCS_BEGIN].max    = 86400.0;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY - CCS_BEGIN].max    = 3599940.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY - CCS_BEGIN].discret = 100;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY - CCS_BEGIN].def    = 7200.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY - CCS_BEGIN].code   = 13;
