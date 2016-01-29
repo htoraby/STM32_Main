@@ -38,7 +38,7 @@ void RegimeTechnologPeriodic::processing()
     state_ = IdleState;
   }
 
-  if (!isPowerGood() && isPowerGood_)
+  if (isPowerGood() && !isPowerGood_)
     isInit_ = false;
   isPowerGood_ = isPowerGood();
 
