@@ -278,7 +278,8 @@ void Ccs::vsdConditionTask()
       break;
     case VSD_CONDITION_WAIT_RUN:
       if (vsd->start() == ok_r) {
-        setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
+        if ((int)getValue(CCS_VSD_CONDITION) == VSD_CONDITION_WAIT_RUN)
+          setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
       } else if (vsdCondition != vsdConditionOld) {
 #if (USE_LOG_WARNING == 1)
         logDebug.add(WarningMsg, "Контроллер: ошибка запуска (ЧРП = %d)",
@@ -511,7 +512,7 @@ bool Ccs::checkCanStop()
   return true;
 #endif
 
-  if (getValue(CCS_VSD_CONDITION) == VSD_CONDITION_STOP) {
+  if ((int)getValue(CCS_VSD_CONDITION) == VSD_CONDITION_STOP) {
     setBlock();
     return false;
   }
