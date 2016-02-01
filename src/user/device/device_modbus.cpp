@@ -339,9 +339,19 @@ void DeviceModbus::exchangeTask()
       default:
         break;
       }
-      // Чтение параметра после его записи
-      //mbParams_[outOfTurn].command = OPERATION_READ;
-      //putMessageOutOfTurn(outOfTurn);
+// NOTE: Т.к. ПЧ Новомет, работает не по modbus, и меняет значение регистров
+// через некоторое время после получения команды на запись, а отвечает корректным
+// ответом сразу. Для него в случае записи параметра по modbus, проверяем если параметр
+// читается достаточно редко, настраиваем счётчик циклов чтения параметра, на частота опроса - 10 циклов.
+      if (parameters.get(CCS_TYPE_VSD) == VSD_TYPE_NOVOMET) {   // Тип
+        if (mbParams_[outOfTurn].freqExchange > VERY_OFTEN) {
+          mbParams_[outOfTurn].cntExchange = mbParams_[outOfTurn].freqExchange - VERY_OFTEN;
+        }
+      }
+      else {
+        mbParams_[outOfTurn].command = OPERATION_READ;
+        putMessageOutOfTurn(outOfTurn);
+      }
     }
     else {
       if (!(outOfTurn && (mbParams_[outOfTurn].command == OPERATION_READ))) {

@@ -220,7 +220,7 @@ int Vsd::setFrequency(float value)
 { 
   if (setValue(VSD_FREQUENCY, value)) {
 #if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "ЧРП: Ошибка задания минимальной частоты (value = %d)",
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания частоты (value = %d)",
                  value);
 #endif
     return err_r;
