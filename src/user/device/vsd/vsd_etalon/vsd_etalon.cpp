@@ -566,40 +566,39 @@ void VsdEtalon::readInDevice(int id)
   dm_->readModbusParameter(id);
 }
 
-int VsdEtalon::start()
+int VsdEtalon::start(bool init)
 {
 #if USE_DEBUG
   return ok_r;
 #endif
 
-  if (getValue(VSD_ETALON_ON_STATE))
-    return ok_r;
-
-  int timeMs = VSD_CMD_TIMEOUT;
-  int countRepeats = 0;
-
-  while (1) {
-    if (timeMs >= VSD_CMD_TIMEOUT) {
-      timeMs = 0;
-      countRepeats++;
-
-      if (countRepeats > VSD_CMD_NUMBER_REPEATS)
-        return err_r;
-
-      if (resetBlock())
-        return err_r;
-      if (setNewValue(VSD_ON, 1))
-        return err_r;
-    }
-    else {
-      timeMs = timeMs + 100;
-    }
-
-    osDelay(100);
-
+  if (init) {
     if (getValue(VSD_ETALON_ON_STATE))
       return ok_r;
+
+    startTimeMs_ = VSD_CMD_TIMEOUT;
+    startCountRepeats_ = 0;
   }
+
+  if (startTimeMs_ >= VSD_CMD_TIMEOUT) {
+    startTimeMs_ = 0;
+    startCountRepeats_++;
+
+    if (startCountRepeats_ > VSD_CMD_NUMBER_REPEATS)
+      return err_r;
+
+    if (resetBlock())
+      return err_r;
+    if (setNewValue(VSD_ON, 1))
+      return err_r;
+  }
+  else {
+    startTimeMs_ += 10;
+  }
+
+  if (getValue(VSD_ETALON_ON_STATE))
+    return ok_r;
+  return -1;
 }
 
 bool VsdEtalon::checkStart()

@@ -412,7 +412,7 @@ public:
    * \brief Метод запуска ЧРП
    * \return Код результата операции
    */
-  virtual int start();
+  virtual int start(bool init);
 
   /*!
    * \brief Метод останова ЧРП
@@ -486,6 +486,9 @@ public:
 
 protected:
   VsdLog *log_;
+
+  int startTimeMs_;
+  int startCountRepeats_;
 
 };
 

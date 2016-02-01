@@ -203,6 +203,7 @@ void Ccs::ledConditionTask()
 void Ccs::vsdConditionTask()
 {
   int vsdConditionOld = -1;
+  int statusOld = 0;
   int timer = 0;
 
   while (1) {
@@ -243,14 +244,14 @@ void Ccs::vsdConditionTask()
       }
       else if (vsdCondition != vsdConditionOld) {
 #if (USE_LOG_WARNING == 1)
-        logDebug.add(WarningMsg, "Контроллер: Ошибка останова (Тип ЧРП = %1.0f)",
-                     getValue(CCS_TYPE_VSD));
+        logDebug.add(WarningMsg, "Контроллер: Ошибка останова (Тип ЧРП = %d)",
+                     (int)getValue(CCS_TYPE_VSD));
 #endif
       }
       break;
     case VSD_CONDITION_RUN:
       if (getValue(CCS_CONDITION) != CCS_CONDITION_RUN) {
-        if (parameters.get(VSD_FREQUENCY) == parameters.get(VSD_FREQUENCY_NOW))
+        if (parameters.get(VSD_FREQUENCY_NOW) >= parameters.get(VSD_FREQUENCY))
           setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
 #if USE_DEBUG
         setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
@@ -277,15 +278,18 @@ void Ccs::vsdConditionTask()
       }
       break;
     case VSD_CONDITION_WAIT_RUN:
-      if (vsd->start() == ok_r) {
+      int init = (vsdCondition != vsdConditionOld);
+      int status = vsd->start(init);
+      if (status == ok_r) {
         if ((int)getValue(CCS_VSD_CONDITION) == VSD_CONDITION_WAIT_RUN)
           setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
-      } else if (vsdCondition != vsdConditionOld) {
+      } else if ((status == err_r) && (init || (status != statusOld))) {
 #if (USE_LOG_WARNING == 1)
         logDebug.add(WarningMsg, "Контроллер: ошибка запуска (ЧРП = %d)",
-                     getValue(CCS_TYPE_VSD));
+                     (int)getValue(CCS_TYPE_VSD));
 #endif
       }
+      statusOld = status;
       break;
     }
 

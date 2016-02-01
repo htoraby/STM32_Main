@@ -197,7 +197,7 @@ public:
   void writeToDevice(int id, float value);
   void readInDevice(int id);
 
-  int start();
+  int start(bool init);
   int stop(float type);
 
   bool checkStart();

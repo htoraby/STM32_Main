@@ -584,12 +584,12 @@ float Vsd::getTypeStop()
   return getValue(VSD_TYPE_STOP);
 }
 
-int Vsd::start()
+int Vsd::start(bool /*init*/)
 {
   return 0;
 }
 
-int Vsd::stop(float type)
+int Vsd::stop(float /*type*/)
 {
   return 0;
 }

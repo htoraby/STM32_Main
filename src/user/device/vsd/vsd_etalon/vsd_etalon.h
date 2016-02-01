@@ -219,7 +219,7 @@ public:
    * \brief Метод запуска
    * \return Код выполнения операции
    */
-  int start();
+  int start(bool init);
 
   /*!
    * \brief Метод останова

@@ -1164,44 +1164,42 @@ void VsdNovomet::readInDevice(int id)
   dm_->readModbusParameter(id);
 }
 
-int VsdNovomet::start()
+int VsdNovomet::start(bool init)
 {
 #if USE_DEBUG
   return ok_r;
 #endif
 
-  // Если стоит бит запуска двигателя
-  if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STARTED))
-    return ok_r;
-
-  setMainMode();
-
-  int timeMs = VSD_CMD_TIMEOUT;
-  int countRepeats = 0;
-
-  while (1) {
-    if (timeMs >= VSD_CMD_TIMEOUT) {
-      timeMs = 0;
-      countRepeats++;
-
-      if (countRepeats > VSD_CMD_NUMBER_REPEATS)
-        return err_r;
-
-      if (resetBlock())
-        return err_r;
-
-      if (setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_START))
-        return err_r;
-
-    } else {
-      timeMs = timeMs + 100;
-    }
-
-    osDelay(100);
-
+  if (init) {
+    // Если стоит бит запуска двигателя
     if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STARTED))
       return ok_r;
+
+    setMainMode();
+
+    startTimeMs_ = VSD_CMD_TIMEOUT;
+    startCountRepeats_ = 0;
   }
+
+  if (startTimeMs_ >= VSD_CMD_TIMEOUT) {
+    startTimeMs_ = 0;
+    startCountRepeats_++;
+
+    if (startCountRepeats_ > VSD_CMD_NUMBER_REPEATS)
+      return err_r;
+
+    if (resetBlock())
+      return err_r;
+
+    if (setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_START))
+      return err_r;
+  } else {
+    startTimeMs_ += 10;
+  }
+
+  if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STARTED))
+    return ok_r;
+  return -1;
 }
 
 bool VsdNovomet::checkStart()
