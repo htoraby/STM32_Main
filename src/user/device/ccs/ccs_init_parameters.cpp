@@ -5585,7 +5585,7 @@ void Ccs::initParameters()
   // Начальная частота
   parameters_[CCS_RGM_CHANGE_FREQ_BEGIN_FREQ - CCS_BEGIN].id                     = CCS_RGM_CHANGE_FREQ_BEGIN_FREQ;
   parameters_[CCS_RGM_CHANGE_FREQ_BEGIN_FREQ - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_CHANGE_FREQ_BEGIN_FREQ - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_RGM_CHANGE_FREQ_BEGIN_FREQ - CCS_BEGIN].operation              = OPERATION_LIMITED;
   parameters_[CCS_RGM_CHANGE_FREQ_BEGIN_FREQ - CCS_BEGIN].physic                 = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_CHANGE_FREQ_BEGIN_FREQ - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_RGM_CHANGE_FREQ_BEGIN_FREQ - CCS_BEGIN].value.float_t          = 35.0;
@@ -5597,7 +5597,7 @@ void Ccs::initParameters()
   // Конечная частота
   parameters_[CCS_RGM_CHANGE_FREQ_END_FREQ - CCS_BEGIN].id                       = CCS_RGM_CHANGE_FREQ_END_FREQ;
   parameters_[CCS_RGM_CHANGE_FREQ_END_FREQ - CCS_BEGIN].access                   = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_CHANGE_FREQ_END_FREQ - CCS_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[CCS_RGM_CHANGE_FREQ_END_FREQ - CCS_BEGIN].operation                = OPERATION_LIMITED;
   parameters_[CCS_RGM_CHANGE_FREQ_END_FREQ - CCS_BEGIN].physic                   = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_CHANGE_FREQ_END_FREQ - CCS_BEGIN].validity                 = VALIDITY_OK;
   parameters_[CCS_RGM_CHANGE_FREQ_END_FREQ - CCS_BEGIN].value.float_t            = 35.0;
@@ -5609,7 +5609,7 @@ void Ccs::initParameters()
   // Время вывода на режим
   parameters_[CCS_RGM_CHANGE_FREQ_PERIOD - CCS_BEGIN].id                         = CCS_RGM_CHANGE_FREQ_PERIOD;
   parameters_[CCS_RGM_CHANGE_FREQ_PERIOD - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_CHANGE_FREQ_PERIOD - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_RGM_CHANGE_FREQ_PERIOD - CCS_BEGIN].operation                  = OPERATION_LIMITED;
   parameters_[CCS_RGM_CHANGE_FREQ_PERIOD - CCS_BEGIN].physic                     = PHYSIC_TIME;
   parameters_[CCS_RGM_CHANGE_FREQ_PERIOD - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_RGM_CHANGE_FREQ_PERIOD - CCS_BEGIN].value.float_t              = 60.0;

@@ -9152,7 +9152,7 @@
 		<id>465</id>
 		<name>CCS_RGM_CHANGE_FREQ_BEGIN_FREQ</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>35.0</min>
 		<max>500.0</max>
@@ -9173,7 +9173,7 @@
 		<id>466</id>
 		<name>CCS_RGM_CHANGE_FREQ_END_FREQ</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>35.0</min>
 		<max>500.0</max>
@@ -9194,7 +9194,7 @@
 		<id>467</id>
 		<name>CCS_RGM_CHANGE_FREQ_PERIOD</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>60.0</min>
 		<max>86400.0</max>
