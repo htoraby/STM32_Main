@@ -30,16 +30,13 @@ ProtectionUnderVoltageInput::ProtectionUnderVoltageInput()
   apvEventId_ = UnderVoltInApvId;
   apvDisabledEventId_ = UnderVoltInApvDisabledId;
   protBlockedEventId_ = UnderVoltInProtBlockedId;
+
+  difStartFlag_ = true;
 }
 
 ProtectionUnderVoltageInput::~ProtectionUnderVoltageInput()
 {
 
-}
-
-void ProtectionUnderVoltageInput::getOtherSetpointProt()
-{
-  timerDifStartFlag_ = ksu.getValue(idParam_);
 }
 
 bool ProtectionUnderVoltageInput::checkAlarm()
