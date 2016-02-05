@@ -391,6 +391,7 @@ void Ccs::start(LastReasonRun reason)
   setNewValue(CCS_LAST_RUN_REASON_TMP, reason);
 
   if (checkCanStart()) {
+    initStart();
     setNewValue(CCS_LAST_RUN_REASON, reason);
     setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
     setNewValue(CCS_CONDITION, CCS_CONDITION_RUNNING);
@@ -509,6 +510,24 @@ bool Ccs::checkCanStart()
 
   return true;
 }
+
+void Ccs::initStart()
+{ 
+  float freqSetpoint = parameters.get(VSD_FREQUENCY);
+  float freq = freqSetpoint;
+  if (parameters.get(CCS_RGM_ALTERNATION_FREQ_MODE)) {
+    freq = min(freq, parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_1));
+    freq = min(freq, parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_2));
+  }
+  if (parameters.get(CCS_RGM_CHANGE_FREQ_MODE)) {
+    freq = min(freq, parameters.get(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ));
+    freq = min(freq, parameters.get(CCS_RGM_CHANGE_FREQ_END_FREQ));
+  }
+  if (freq != freqSetpoint) {
+    parameters.set(VSD_FREQUENCY, freq);
+  }
+}
+
 
 bool Ccs::checkCanStop()
 {
