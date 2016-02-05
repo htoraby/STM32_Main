@@ -791,9 +791,19 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     parameters.set(VSD_M_I_FAST, value);
     return err;
   case CCS_RGM_CHANGE_FREQ_PERIOD:
+    err = setValue(id, value, eventType);
+    calcRegimeChangeFreqPeriodOneStep();
+    return err;
   case CCS_RGM_CHANGE_FREQ_BEGIN_FREQ:
+    err = setValue(id, value, eventType);
+    if (!err)
+      setMin(CCS_RGM_CHANGE_FREQ_END_FREQ, value);
+    calcRegimeChangeFreqPeriodOneStep();
+    return err;
   case CCS_RGM_CHANGE_FREQ_END_FREQ:
     err = setValue(id, value, eventType);
+    if (!err)
+      setMax(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ, value);
     calcRegimeChangeFreqPeriodOneStep();
     return err;
   case CCS_RGM_RUN_PUSH_MODE:
