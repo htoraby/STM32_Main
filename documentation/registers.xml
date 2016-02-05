@@ -675,7 +675,7 @@
 		<id>32</id>
 		<name>CCS_TRANS_NOMINAL_POWER</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
@@ -696,7 +696,7 @@
 		<id>33</id>
 		<name>CCS_TRANS_NOMINAL_CURRENT</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
 		<max>9999.9</max>
@@ -716,7 +716,7 @@
 		<id>34</id>
 		<name>CCS_TRANS_NOMINAL_VOLTAGE</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
 		<max>10000.0</max>
@@ -737,7 +737,7 @@
 		<id>35</id>
 		<name>CCS_TRANS_CABLE_LENGHT</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_LENGHT</physic>
 		<min>0.0</min>
 		<max>10000.0</max>
@@ -757,7 +757,7 @@
 		<id>36</id>
 		<name>CCS_TRANS_CABLE_CROSS</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_SPACE</physic>
 		<min>0.0</min>
 		<max>100.0</max>
@@ -797,7 +797,7 @@
 		<id>38</id>
 		<name>CCS_TRANS_VOLTAGE_TAP_OFF</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>300.0</min>
 		<max>9999.9</max>
@@ -15109,7 +15109,7 @@
 		<id>782</id>
 		<name>CCS_MOTOR_TYPE</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
@@ -17054,7 +17054,7 @@
 		<id>10005</id>
 		<name>VSD_MOTOR_TYPE</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
@@ -17076,7 +17076,7 @@
 		<id>10006</id>
 		<name>VSD_MOTOR_CONTROL</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>2.0</max>
@@ -17098,7 +17098,7 @@
 		<id>10007</id>
 		<name>VSD_ROTATION</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>2.0</max>
@@ -17255,7 +17255,7 @@
 		<id>10015</id>
 		<name>VSD_MOTOR_POWER</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_POWER</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
@@ -17276,7 +17276,7 @@
 		<id>10016</id>
 		<name>VSD_MOTOR_VOLTAGE</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
 		<max>5000.0</max>
@@ -17297,7 +17297,7 @@
 		<id>10017</id>
 		<name>VSD_MOTOR_CURRENT</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
 		<max>9999.0</max>
@@ -17318,7 +17318,7 @@
 		<id>10018</id>
 		<name>VSD_MOTOR_SPEED</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_RPM</physic>
 		<min>0.0</min>
 		<max>10000.0</max>
@@ -17339,7 +17339,7 @@
 		<id>10019</id>
 		<name>VSD_MOTOR_FREQUENCY</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
 		<max>200.0</max>
@@ -17360,7 +17360,7 @@
 		<id>10020</id>
 		<name>VSD_MOTOR_COS_PHI</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
@@ -17381,7 +17381,7 @@
 		<id>10021</id>
 		<name>VSD_D_AXIS_INDUNSTANCE</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_INDUNCTANCE</physic>
 		<min>0.0</min>
 		<max>1000.0</max>
@@ -17402,7 +17402,7 @@
 		<id>10022</id>
 		<name>VSD_BACK_EMF</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<min>0.0</min>
 		<max>999999999.9</max>
 		<discret>1</discret>
@@ -17414,7 +17414,7 @@
 		<id>10023</id>
 		<name>VSD_UF_UHH</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
 		<max>1000.0</max>
@@ -17435,7 +17435,7 @@
 		<id>10024</id>
 		<name>VSD_MOTOR_POLES</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
@@ -20954,7 +20954,7 @@
 		<id>10228</id>
 		<name>VSD_SWITCHING_FREQUENCY</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>

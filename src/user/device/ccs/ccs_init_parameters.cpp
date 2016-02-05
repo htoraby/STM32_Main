@@ -389,7 +389,7 @@ void Ccs::initParameters()
   // Мощность ТМПН
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].id                            = CCS_TRANS_NOMINAL_POWER;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].operation                     = OPERATION_LIMITED;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].physic                        = PHYSIC_FULL_POWER;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].value.float_t                 = 2000000.0;
@@ -401,7 +401,7 @@ void Ccs::initParameters()
   // Номинальный ток ТМПН
   parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].id                          = CCS_TRANS_NOMINAL_CURRENT;
   parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].access                      = ACCESS_OPERATOR;
-  parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].operation                   = OPERATION_LIMITED;
   parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].physic                      = PHYSIC_CURRENT;
   parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_TRANS_NOMINAL_CURRENT - CCS_BEGIN].value.float_t               = 0.0;
@@ -413,7 +413,7 @@ void Ccs::initParameters()
   // Номинальное напряжение ТМПН
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].id                          = CCS_TRANS_NOMINAL_VOLTAGE;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].access                      = ACCESS_OPERATOR;
-  parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].operation                   = OPERATION_LIMITED;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].physic                      = PHYSIC_VOLTAGE;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].value.float_t               = 380.0;
@@ -425,7 +425,7 @@ void Ccs::initParameters()
   // Длина кабеля
   parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].id                             = CCS_TRANS_CABLE_LENGHT;
   parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].access                         = ACCESS_OPERATOR;
-  parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].operation                      = OPERATION_LIMITED;
   parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].physic                         = PHYSIC_LENGHT;
   parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].value.float_t                  = 2000.0;
@@ -437,7 +437,7 @@ void Ccs::initParameters()
   // Сечение кабеля
   parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].id                              = CCS_TRANS_CABLE_CROSS;
   parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].operation                       = OPERATION_READ;
+  parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].operation                       = OPERATION_LIMITED;
   parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].physic                          = PHYSIC_SPACE;
   parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].value.float_t                   = 0.0;
@@ -461,7 +461,7 @@ void Ccs::initParameters()
   // Напряжение отпайки
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].id                          = CCS_TRANS_VOLTAGE_TAP_OFF;
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].access                      = ACCESS_OPERATOR;
-  parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].operation                   = OPERATION_LIMITED;
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].physic                      = PHYSIC_VOLTAGE;
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].value.float_t               = 380.0;
@@ -9389,7 +9389,7 @@ void Ccs::initParameters()
   // Тип двигателя. Используется в интерфейсе
   parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].id                                     = CCS_MOTOR_TYPE;
   parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
-  parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].operation                              = OPERATION_WRITE;
+  parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].operation                              = OPERATION_LIMITED;
   parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
   parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].validity                               = VALIDITY_OK;
   parameters_[CCS_MOTOR_TYPE - CCS_BEGIN].value.float_t                          = 0.0;
