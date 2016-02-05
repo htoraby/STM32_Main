@@ -30,16 +30,13 @@ ProtectionImbalanceVoltageInput::ProtectionImbalanceVoltageInput()
   apvEventId_ = ImbalanceVoltInApvId;
   apvDisabledEventId_ = ImbalanceVoltInApvDisabledId;
   protBlockedEventId_ = ImbalanceVoltInProtBlockedId;
+
+  difStartFlag_ = true;
 }
 
 ProtectionImbalanceVoltageInput::~ProtectionImbalanceVoltageInput()
 {
 
-}
-
-void ProtectionImbalanceVoltageInput::getOtherSetpointProt()
-{
-  timerDifStartFlag_ = ksu.getValue(idParam_);
 }
 
 bool ProtectionImbalanceVoltageInput::checkAlarm()

@@ -10,8 +10,6 @@ public:
   ~ProtectionImbalanceCurrentInput();
 
 private:
-  void getOtherSetpointProt();
-
   bool checkAlarm();
   bool checkPrevent();
   float calcValue();
