@@ -446,6 +446,7 @@ void Ccs::cmdStart(int value)
 
   resetCmd(CCS_CMD_START);
   if (checkCanStart()) {
+    initStart();
     float reason = getValue(CCS_LAST_RUN_REASON_TMP);
     setNewValue(CCS_LAST_RUN_REASON, reason);
     setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
@@ -517,11 +518,9 @@ void Ccs::initStart()
   float freq = freqSetpoint;
   if (parameters.get(CCS_RGM_ALTERNATION_FREQ_MODE)) {
     freq = min(freq, parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_1));
-    freq = min(freq, parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_2));
   }
   if (parameters.get(CCS_RGM_CHANGE_FREQ_MODE)) {
     freq = min(freq, parameters.get(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ));
-    freq = min(freq, parameters.get(CCS_RGM_CHANGE_FREQ_END_FREQ));
   }
   if (freq != freqSetpoint) {
     parameters.set(VSD_FREQUENCY, freq);
