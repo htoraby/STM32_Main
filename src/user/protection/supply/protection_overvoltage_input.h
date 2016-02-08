@@ -13,8 +13,6 @@ public:
   ~ProtectionOverVoltageInput();
 
 private:
-  void getOtherSetpointProt();
-
   bool checkAlarm();
   bool checkPrevent();
   float calcValue();

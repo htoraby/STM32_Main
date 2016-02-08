@@ -2,11 +2,11 @@
 #include "protection_main.h"
 
 Protection::Protection()
-  : timerDifStartFlag_(false)
-  , workWithAlarmFlag_(false)
+  : workWithAlarmFlag_(false)
   , resetRestartDelayFlag_(false)
   , attempt_(false)
   , delay_(false)
+  , difStartFlag_(false)
 {
 
 }
@@ -418,38 +418,38 @@ void Protection::proccessingStateStop()
   else if (ksu.isStopMotor()) {             // Двигатель - стоп;
     if (ksu.isAutoMode() && !ksu.isBlock()) { // Двигатель - стоп; Режим - авто; Нет блокировки;
       if (restart_) {                         // Двигатель - стоп; Режим - авто; Флаг - АПВ;
-        float restartTimer = restartDelay_ - ksu.getValue(CCS_STOP_TIME);
-        if (restartTimer <= 0) {
-          if (timerDifStartFlag_) {               // Защита с отсчётом АПВ после нормализации параметра (ВРП)
-            restartTimer = parameters.get(CCS_TIMER_DIFFERENT_START);
-            if (!prevent_) {                  // Параметр защиты в норме
-              if (timer_ == 0) {              //
-                timer_ = ksu.getTime();       // Зафиксировали время начала отсёта АПВ
-                logDebug.add(DebugMsg, "prot: time restart %d", idMode_);
-                ksu.setRestart();
-              }
-              else {
-                restartTimer = parameters.get(CCS_TIMER_DIFFERENT_START) - ksu.getSecFromCurTime(timer_);
-                if (restartTimer <= 0) {
-                  if (ksu.isPrevent()) {
-                    if (!attempt_) {                // Первая попытка запуска по АПВ
-                      attempt_ = true;
-                      ksu.start(lastReasonRun_);
-                    }
-                  }
-                  else {
-                    incRestartCount();
+        float restartTimer;
+        if (difStartFlag_) {                // Защита с отсчётом АПВ после нормализации параметра (ВРП)
+          if (!prevent_) {                  // Параметр защиты в норме
+            if (timer_ == 0) {              //
+              timer_ = ksu.getTime();       // Зафиксировали время начала отсёта АПВ
+              logDebug.add(DebugMsg, "prot: time restart %d", idMode_);
+              ksu.setRestart();
+            }
+            else {
+              restartTimer = restartDelay_ - ksu.getSecFromCurTime(timer_);
+              if (restartTimer <= 0) {
+                if (ksu.isPrevent()) {
+                  if (!attempt_) {                // Первая попытка запуска по АПВ
+                    attempt_ = true;
                     ksu.start(lastReasonRun_);
-                    state_ = StateRunning;
                   }
+                }
+                else {
+                  incRestartCount();
+                  ksu.start(lastReasonRun_);
+                  state_ = StateRunning;
                 }
               }
             }
-            else {
-              timer_ = 0;
-            }
           }
           else {
+            timer_ = 0;
+          }
+        }
+        else {
+          restartTimer = restartDelay_ - ksu.getValue(CCS_STOP_TIME);
+          if (restartTimer <= 0) {
             if (ksu.isPrevent() || prevent_) {// Есть запрещающий параметр
               if (!attempt_ && !resetRestartDelayFlag_) {                // Первая попытка АПВ
                 attempt_ = true;

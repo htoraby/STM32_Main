@@ -221,6 +221,12 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
   EventCode code = getFieldCode(index);
   uint8_t units = getFieldPhysic(index);
   uint16_t discret = getFieldDiscret(index);
+  uint8_t operation = getFieldOperation(index);
+
+  if ((operation == OPERATION_LIMITED) && ksu.isWorkMotor()) {
+    novobusSlave.putMessageParams(id);
+    return RETURN_ERROR_OPERATION;
+  }
 
   // Проверка на диапазон
   float min = getFieldMinimum(index);
@@ -271,6 +277,12 @@ uint8_t Device::setValue(uint16_t id, uint32_t value, EventType eventType)
   uint32_t oldValue = getFieldValueUint32(index);
   EventCode code = getFieldCode(index);
   uint8_t units = getFieldPhysic(index);
+  uint8_t operation = getFieldOperation(index);
+
+  if ((operation == OPERATION_LIMITED) && ksu.isWorkMotor()) {
+    novobusSlave.putMessageParams(id);
+    return RETURN_ERROR_OPERATION;
+  }
 
   setFieldValue(index, value);
   setFieldValidity(index, (value == 0xFFFFFFFF) ? VALIDITY_ERROR : VALIDITY_OK);

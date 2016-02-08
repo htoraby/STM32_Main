@@ -30,16 +30,13 @@ ProtectionOverVoltageInput::ProtectionOverVoltageInput()
   apvEventId_ = OverVoltInApvId;
   apvDisabledEventId_ = OverVoltInApvDisabledId;
   protBlockedEventId_ = OverVoltInProtBlockedId;
+
+  difStartFlag_ = true;
 }
 
 ProtectionOverVoltageInput::~ProtectionOverVoltageInput()
 {
 
-}
-
-void ProtectionOverVoltageInput::getOtherSetpointProt()
-{
-  timerDifStartFlag_ = ksu.getValue(idParam_);
 }
 
 bool ProtectionOverVoltageInput::checkAlarm()

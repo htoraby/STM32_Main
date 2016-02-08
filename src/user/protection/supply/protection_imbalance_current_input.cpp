@@ -30,16 +30,13 @@ ProtectionImbalanceCurrentInput::ProtectionImbalanceCurrentInput()
   apvEventId_ = ImbalanceCurInApvId;
   apvDisabledEventId_ = ImbalanceCurInApvDisabledId;
   protBlockedEventId_ = ImbalanceCurInProtBlockedId;
+
+  difStartFlag_ = true;
 }
 
 ProtectionImbalanceCurrentInput::~ProtectionImbalanceCurrentInput()
 {
 
-}
-
-void ProtectionImbalanceCurrentInput::getOtherSetpointProt()
-{
-  timerDifStartFlag_ = ksu.getValue(idParam_);
 }
 
 bool ProtectionImbalanceCurrentInput::checkAlarm()

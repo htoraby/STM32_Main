@@ -256,7 +256,6 @@ protected:
   float restartResetTime_;                  //!< Уставка: Время сброса количества АПВ
   float tripSetpoint_;                      //!< Уставка: граница срабатывания защиты
   float restartSetpoint_;                   //!< Уставка: граница АПВ
-  float timerDifStartFlag_;                 //!< Уставка: Параметр 1
   float workWithAlarmFlag_;                 //!< Уставка: Флаг разрешения работы при аварии
   float resetRestartDelayFlag_;             //!< Уставка: Флаг критерий АПВ
   int state_;                               //!< Состояние автомата защиты
@@ -270,6 +269,7 @@ protected:
   float restart_;                           //!< Флаг что защита в состоянии АПВ
   bool attempt_;                            //!< Флаг первой попытки запуска
   bool delay_;                              //!< Флаг задержки срабатывания
+  bool difStartFlag_;                       //!< Флаг учёта ВРП
 
   float progressiveRestartCount_;           //!< Текущее количество АПВ без учёта сброса для вычисления прогрессивной задержки
 

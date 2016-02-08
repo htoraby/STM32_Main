@@ -391,6 +391,7 @@ void Ccs::start(LastReasonRun reason)
   setNewValue(CCS_LAST_RUN_REASON_TMP, reason);
 
   if (checkCanStart()) {
+    initStart();
     setNewValue(CCS_LAST_RUN_REASON, reason);
     setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
     setNewValue(CCS_CONDITION, CCS_CONDITION_RUNNING);
@@ -445,6 +446,7 @@ void Ccs::cmdStart(int value)
 
   resetCmd(CCS_CMD_START);
   if (checkCanStart()) {
+    initStart();
     float reason = getValue(CCS_LAST_RUN_REASON_TMP);
     setNewValue(CCS_LAST_RUN_REASON, reason);
     setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
@@ -509,6 +511,22 @@ bool Ccs::checkCanStart()
 
   return true;
 }
+
+void Ccs::initStart()
+{ 
+  float freqSetpoint = parameters.get(VSD_FREQUENCY);
+  float freq = freqSetpoint;
+  if (parameters.get(CCS_RGM_ALTERNATION_FREQ_MODE)) {
+    freq = min(freq, parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_1));
+  }
+  if (parameters.get(CCS_RGM_CHANGE_FREQ_MODE)) {
+    freq = min(freq, parameters.get(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ));
+  }
+  if (freq != freqSetpoint) {
+    parameters.set(VSD_FREQUENCY, freq);
+  }
+}
+
 
 bool Ccs::checkCanStop()
 {
@@ -773,9 +791,19 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     parameters.set(VSD_M_I_FAST, value);
     return err;
   case CCS_RGM_CHANGE_FREQ_PERIOD:
+    err = setValue(id, value, eventType);
+    calcRegimeChangeFreqPeriodOneStep();
+    return err;
   case CCS_RGM_CHANGE_FREQ_BEGIN_FREQ:
+    err = setValue(id, value, eventType);
+    if (!err)
+      setMin(CCS_RGM_CHANGE_FREQ_END_FREQ, value);
+    calcRegimeChangeFreqPeriodOneStep();
+    return err;
   case CCS_RGM_CHANGE_FREQ_END_FREQ:
     err = setValue(id, value, eventType);
+    if (!err)
+      setMax(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ, value);
     calcRegimeChangeFreqPeriodOneStep();
     return err;
   case CCS_RGM_RUN_PUSH_MODE:
@@ -1203,6 +1231,17 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     if (!err)
       setModeAnalogInExt(AI4, value);
+    return err;
+  case CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY:
+  case CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY:
+  case CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY:
+  case CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY:
+    err = setValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY, value, eventType);
+    if (!err) {
+      setValue(CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY, value, eventType);
+      setValue(CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY, value, eventType);
+      setValue(CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY, value, eventType);
+    }
     return err;
 
   default:
