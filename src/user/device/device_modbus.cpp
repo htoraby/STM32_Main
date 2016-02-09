@@ -344,8 +344,8 @@ void DeviceModbus::exchangeTask()
 // ответом сразу. Для него в случае записи параметра по modbus, проверяем если параметр
 // читается достаточно редко, настраиваем счётчик циклов чтения параметра, на частота опроса - 10 циклов.
       if (parameters.get(CCS_TYPE_VSD) == VSD_TYPE_NOVOMET) {   // Тип
-        if (mbParams_[outOfTurn].freqExchange > VERY_OFTEN) {
-          mbParams_[outOfTurn].cntExchange = mbParams_[outOfTurn].freqExchange - VERY_OFTEN;
+        if (mbParams_[outOfTurn].freqExchange > 20/*VERY_OFTEN*/) {
+          mbParams_[outOfTurn].cntExchange = mbParams_[outOfTurn].freqExchange - 20/*VERY_OFTEN*/;
         }
       }
       else {
