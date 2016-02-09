@@ -148,6 +148,10 @@ typedef enum {
   ImbalanceCurInApvDisabledId,    //!< "АПВ запрещено: Дисбаланс входных токов"
   ImbalanceCurInProtBlockedId,    //!< "Блокировка по защите: Дисбаланс входных токов"
 
+  PowerOffProtReactId,         //!< "Сработала защита: Нет питания сети"
+  PowerOffApvId,               //!< "АПВ по защите: Нет питания сети"
+  PowerOffApvDisabledId,       //!< "АПВ запрещено: Нет питания сети"
+
 } EventId;
 
 #endif // LOG_IDLIST

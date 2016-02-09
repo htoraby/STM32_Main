@@ -35,7 +35,7 @@ public:
   /*!
    * \brief Метод обработки защиты
    */
-  void processing();
+  virtual void processing();
 
   /*!
    * \brief Метод получения основных уставок защиты.

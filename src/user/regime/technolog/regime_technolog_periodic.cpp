@@ -2,9 +2,7 @@
 #include "protection_main.h"
 
 RegimeTechnologPeriodic::RegimeTechnologPeriodic()
-  : isInit_(false)
-  , isPowerGood_(true)
-  , attempt_(false)
+  : attempt_(false)
   , addTime_(0)
 {
 
@@ -38,16 +36,6 @@ void RegimeTechnologPeriodic::processing()
     state_ = IdleState;
   }
 
-  if (isPowerGood() && !isPowerGood_)
-    isInit_ = false;
-  isPowerGood_ = isPowerGood();
-
-  if (!isInit_) {
-    isInit_ = true;
-    if (state_ == PauseState)
-      state_ = StopState;
-  }
-
   switch (state_) {
   case IdleState:
     workBeginTime_ = ksu.getTime();
@@ -76,8 +64,8 @@ void RegimeTechnologPeriodic::processing()
           ksu.stop(LastReasonStopProgram);
           state_ = WaitPauseState;
 #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Периодика: Переход в паузу из работы (workPeriod = %d, time = %d, state = %d,)",
-                     workPeriod_, time, state_);
+          logDebug.add(DebugMsg, "Периодика: Переход в паузу из работы (workPeriod = %d, time = %d, state = %d,)",
+                       workPeriod_, time, state_);
 #endif
         }
       }
@@ -104,7 +92,7 @@ void RegimeTechnologPeriodic::processing()
               state_ = PauseState;
 #if (USE_LOG_DEBUG == 1)
               logDebug.add(DebugMsg, "Периодика: Останов пользователя или сети и время доработки < получаса (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
-                            workPeriod_, workTimeToEnd, stopReason, state_);
+                           workPeriod_, workTimeToEnd, stopReason, state_);
 #endif
             }
             else {
@@ -173,35 +161,49 @@ void RegimeTechnologPeriodic::processing()
       uint32_t time = ksu.getSecFromCurTime(stopBeginTime_); // Прошедшее время с начала останова
       stopTimeToEnd_ = getTimeToEnd(stopPeriod_ + addTime_, time);
       workTimeToEnd_ = 0;
-      if (ksu.isProgramMode()) {   // Режим - программа;
-        if (runReason == LastReasonRunOperator) { // Попытка пуска оператором
-          workBeginTime_ = ksu.getTime();
-          state_ = RunningState;
+      if (!protPowerOff.isRestart()) {
+        parameters.set(CCS_RESTART_TIMER, stopTimeToEnd_);
+        if (ksu.isProgramMode()) {   // Режим - программа;
+          if (runReason == LastReasonRunOperator) { // Попытка пуска оператором
+            workBeginTime_ = ksu.getTime();
+            state_ = RunningState;
 #if (USE_LOG_DEBUG == 1)
             logDebug.add(DebugMsg, "Периодика: Во время паузы запуск оператором (stopPeriod_ = %d, stopTimeToEnd_ = %d, runReason = %d, state = %d)",
                          stopPeriod_, stopTimeToEnd_, runReason, state_);
 #endif
-        } else {
-          if (stopTimeToEnd_ == 0) { // Время паузы истекло
-            state_ = RestartState;
+          } else {
+            if (stopTimeToEnd_ == 0) { // Время паузы истекло
+              state_ = RestartState;
 #if (USE_LOG_DEBUG == 1)
-            logDebug.add(DebugMsg, "Периодика: Время паузы истекло (stopPeriod_ = %d, stopTimeToEnd_ = %d, state = %d)",
-                         stopPeriod_, stopTimeToEnd_, state_);
+              logDebug.add(DebugMsg, "Периодика: Время паузы истекло (stopPeriod_ = %d, stopTimeToEnd_ = %d, state = %d)",
+                           stopPeriod_, stopTimeToEnd_, state_);
 #endif
+            }
           }
         }
-      }
-      else { // Режим программы отключен
-        state_ = StopState;
+        else { // Режим программы отключен
+          state_ = StopState;
 #if (USE_LOG_DEBUG == 1)
-            logDebug.add(DebugMsg, "Периодика: во время паузы отключили режим (state = %d))", state_);
+          logDebug.add(DebugMsg, "Периодика: во время паузы отключили режим (state = %d))", state_);
 #endif
+        }
+      }
+      else {
+        state_ = PauseState + 1;
       }
     } else {
       state_ = IdleState;
 #if (USE_LOG_DEBUG == 1)
-            logDebug.add(DebugMsg, "Периодика: во время паузы оказались в работе (state = %d))", state_);
+      logDebug.add(DebugMsg, "Периодика: во время паузы оказались в работе (state = %d))", state_);
 #endif
+    }
+    break;
+  case PauseState + 1:
+    if (ksu.isStopMotor()) {     // Двигатель - останов;
+      if (!protPowerOff.isRestart())
+        state_ = PauseState;
+    } else {
+      state_ = IdleState;
     }
     break;
   case RestartState:
@@ -215,17 +217,17 @@ void RegimeTechnologPeriodic::processing()
         } else {
           addTime_ = 0;
           attempt_ = false;
-          ksu.start(LastReasonRunProgram);         
+          ksu.start(LastReasonRunProgram);
           state_ = RestartState;
 #if (USE_LOG_DEBUG == 1)
-            logDebug.add(DebugMsg, "Периодика: не удачная попытка запуска из паузы (state = %d))", state_);
+          logDebug.add(DebugMsg, "Периодика: не удачная попытка запуска из паузы (state = %d))", state_);
 #endif
         }
       } else {
         workBeginTime_ = ksu.getTime();
         state_ = WorkState;
 #if (USE_LOG_DEBUG == 1)
-            logDebug.add(DebugMsg, "Периодика: Переход в работу из паузы (state = %d))", state_);
+        logDebug.add(DebugMsg, "Периодика: Переход в работу из паузы (state = %d))", state_);
 #endif
       }
     }
@@ -237,9 +239,10 @@ void RegimeTechnologPeriodic::processing()
     if (ksu.isStopMotor()) {     // Двигатель - останов;
       uint32_t time = ksu.getSecFromCurTime(stopBeginTime_);
       stopTimeToEnd_ = getTimeToEnd(stopPeriod_, time);
+      parameters.set(CCS_RESTART_TIMER, stopTimeToEnd_);
       workTimeToEnd_ = 0;
       if (ksu.isProgramMode()) { // Режим - программа;
-        addTime_ = parameters.get(CCS_TIMER_DIFFERENT_START) - stopTimeToEnd_;
+        addTime_ = parameters.get(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY) - stopTimeToEnd_;
         if (addTime_ < 0) {
           addTime_ = 0;
         }
@@ -254,14 +257,10 @@ void RegimeTechnologPeriodic::processing()
       state_ = IdleState;
     }
     break;
+
   default:
     state_ = IdleState;
     break;
-  }
-
-  if ((state_ == PauseState) || (state_ == RestartState) ||
-      (state_ == WaitPauseState)) {
-    parameters.set(CCS_RESTART_TIMER, stopTimeToEnd_);
   }
 
   parameters.set(CCS_RGM_PERIODIC_STATE, state_);
