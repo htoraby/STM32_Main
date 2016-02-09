@@ -117,8 +117,10 @@ void ProtectionPowerOff::processingStateRun()       // Состояние раб
       timer_ = 0;
       restart_ = true;
       state_ = StateStop;
+      return;
     }
   }
+  restart_ = false;
 }
 
 void ProtectionPowerOff::proccessingStateStop()
