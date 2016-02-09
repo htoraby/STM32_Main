@@ -65,7 +65,7 @@ void Vsd::initParameters()
   // Конструкция двигателя Danfoss 1-10
   parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].id                                     = VSD_MOTOR_TYPE;
   parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].access                                 = ACCESS_OPERATOR;
-  parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].operation                              = OPERATION_WRITE;
+  parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].operation                              = OPERATION_LIMITED;
   parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].physic                                 = PHYSIC_NUMERIC;
   parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].value.float_t                          = 0.0;
@@ -77,7 +77,7 @@ void Vsd::initParameters()
   // Принцип управления двигателем Danfoss 1-01 Не используется в проекте, только при конфигурировании
   parameters_[VSD_MOTOR_CONTROL - VSD_BEGIN].id                                  = VSD_MOTOR_CONTROL;
   parameters_[VSD_MOTOR_CONTROL - VSD_BEGIN].access                              = ACCESS_OPERATOR;
-  parameters_[VSD_MOTOR_CONTROL - VSD_BEGIN].operation                           = OPERATION_WRITE;
+  parameters_[VSD_MOTOR_CONTROL - VSD_BEGIN].operation                           = OPERATION_LIMITED;
   parameters_[VSD_MOTOR_CONTROL - VSD_BEGIN].physic                              = PHYSIC_NUMERIC;
   parameters_[VSD_MOTOR_CONTROL - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_MOTOR_CONTROL - VSD_BEGIN].value.float_t                       = 0.0;
@@ -89,7 +89,7 @@ void Vsd::initParameters()
   // Направления вращения Danfoss 4-10 Не используется в проекте, только при конфигурировании
   parameters_[VSD_ROTATION - VSD_BEGIN].id                                       = VSD_ROTATION;
   parameters_[VSD_ROTATION - VSD_BEGIN].access                                   = ACCESS_OPERATOR;
-  parameters_[VSD_ROTATION - VSD_BEGIN].operation                                = OPERATION_READ;
+  parameters_[VSD_ROTATION - VSD_BEGIN].operation                                = OPERATION_LIMITED;
   parameters_[VSD_ROTATION - VSD_BEGIN].physic                                   = PHYSIC_NUMERIC;
   parameters_[VSD_ROTATION - VSD_BEGIN].validity                                 = VALIDITY_ERROR;
   parameters_[VSD_ROTATION - VSD_BEGIN].value.float_t                            = 0.0;
@@ -185,7 +185,7 @@ void Vsd::initParameters()
   // Мощность двигателя Danfoss 1-20 Используется в проекте, интерфейс
   parameters_[VSD_MOTOR_POWER - VSD_BEGIN].id                                    = VSD_MOTOR_POWER;
   parameters_[VSD_MOTOR_POWER - VSD_BEGIN].access                                = ACCESS_OPERATOR;
-  parameters_[VSD_MOTOR_POWER - VSD_BEGIN].operation                             = OPERATION_WRITE;
+  parameters_[VSD_MOTOR_POWER - VSD_BEGIN].operation                             = OPERATION_LIMITED;
   parameters_[VSD_MOTOR_POWER - VSD_BEGIN].physic                                = PHYSIC_POWER;
   parameters_[VSD_MOTOR_POWER - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_MOTOR_POWER - VSD_BEGIN].value.float_t                         = 125000.0;
@@ -197,7 +197,7 @@ void Vsd::initParameters()
   // Напряжение двигателя Danfoss 1-22 Используется в проекте, интерфейс Novomet 0х0045 IREG_MOTOR_U_MAх
   parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].id                                  = VSD_MOTOR_VOLTAGE;
   parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].access                              = ACCESS_OPERATOR;
-  parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].operation                           = OPERATION_WRITE;
+  parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].operation                           = OPERATION_LIMITED;
   parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].physic                              = PHYSIC_VOLTAGE;
   parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].value.float_t                       = 380.0;
@@ -209,7 +209,7 @@ void Vsd::initParameters()
   // Номинальный ток двигателя Danfoss 1-24 Используется в проекте, интерфейс Novomet 0х0044 IREG_MOTOR_I_MAх
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].id                                  = VSD_MOTOR_CURRENT;
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].access                              = ACCESS_OPERATOR;
-  parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].operation                           = OPERATION_WRITE;
+  parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].operation                           = OPERATION_LIMITED;
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].physic                              = PHYSIC_CURRENT;
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].value.float_t                       = 26.5;
@@ -221,7 +221,7 @@ void Vsd::initParameters()
   // Скорость двигателя Danfoss 1-25 Используется в проекте, интерфейс
   parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].id                                    = VSD_MOTOR_SPEED;
   parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].access                                = ACCESS_OPERATOR;
-  parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].operation                             = OPERATION_WRITE;
+  parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].operation                             = OPERATION_LIMITED;
   parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].physic                                = PHYSIC_RPM;
   parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].value.float_t                         = 2895.0;
@@ -233,7 +233,7 @@ void Vsd::initParameters()
   // Частота двигателя Danfoss 1-23 Используется в проекте, интерфейс Novomet 0х0043 IREG_MOTOR_F_MAх
   parameters_[VSD_MOTOR_FREQUENCY - VSD_BEGIN].id                                = VSD_MOTOR_FREQUENCY;
   parameters_[VSD_MOTOR_FREQUENCY - VSD_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[VSD_MOTOR_FREQUENCY - VSD_BEGIN].operation                         = OPERATION_WRITE;
+  parameters_[VSD_MOTOR_FREQUENCY - VSD_BEGIN].operation                         = OPERATION_LIMITED;
   parameters_[VSD_MOTOR_FREQUENCY - VSD_BEGIN].physic                            = PHYSIC_FREQUENCY;
   parameters_[VSD_MOTOR_FREQUENCY - VSD_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[VSD_MOTOR_FREQUENCY - VSD_BEGIN].value.float_t                     = 50.0;
@@ -245,7 +245,7 @@ void Vsd::initParameters()
   // Номинальный косинус Фи Danfoss 14-43 Используется в проекте
   parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].id                                  = VSD_MOTOR_COS_PHI;
   parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].access                              = ACCESS_OPERATOR;
-  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].operation                           = OPERATION_WRITE;
+  parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].operation                           = OPERATION_LIMITED;
   parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].physic                              = PHYSIC_NUMERIC;
   parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_MOTOR_COS_PHI - VSD_BEGIN].value.float_t                       = 0.85;
@@ -257,7 +257,7 @@ void Vsd::initParameters()
   // Индуктивности по оси D Danfoss 1-37 Используется в проекте
   parameters_[VSD_D_AXIS_INDUNSTANCE - VSD_BEGIN].id                             = VSD_D_AXIS_INDUNSTANCE;
   parameters_[VSD_D_AXIS_INDUNSTANCE - VSD_BEGIN].access                         = ACCESS_OPERATOR;
-  parameters_[VSD_D_AXIS_INDUNSTANCE - VSD_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[VSD_D_AXIS_INDUNSTANCE - VSD_BEGIN].operation                      = OPERATION_LIMITED;
   parameters_[VSD_D_AXIS_INDUNSTANCE - VSD_BEGIN].physic                         = PHYSIC_INDUNCTANCE;
   parameters_[VSD_D_AXIS_INDUNSTANCE - VSD_BEGIN].validity                       = VALIDITY_ERROR;
   parameters_[VSD_D_AXIS_INDUNSTANCE - VSD_BEGIN].value.float_t                  = 0.0;
@@ -269,7 +269,7 @@ void Vsd::initParameters()
   // Противо эдс Danfoss 1-40 Используется в проекте
   parameters_[VSD_BACK_EMF - VSD_BEGIN].id                                       = VSD_BACK_EMF;
   parameters_[VSD_BACK_EMF - VSD_BEGIN].access                                   = ACCESS_OPERATOR;
-  parameters_[VSD_BACK_EMF - VSD_BEGIN].operation                                = OPERATION_WRITE;
+  parameters_[VSD_BACK_EMF - VSD_BEGIN].operation                                = OPERATION_LIMITED;
   parameters_[VSD_BACK_EMF - VSD_BEGIN].physic                                   = 0;
   parameters_[VSD_BACK_EMF - VSD_BEGIN].validity                                 = VALIDITY_ERROR;
   parameters_[VSD_BACK_EMF - VSD_BEGIN].value.float_t                            = 0;
@@ -281,7 +281,7 @@ void Vsd::initParameters()
   // Ток холостого хода
   parameters_[VSD_UF_UHH - VSD_BEGIN].id                                         = VSD_UF_UHH;
   parameters_[VSD_UF_UHH - VSD_BEGIN].access                                     = ACCESS_OPERATOR;
-  parameters_[VSD_UF_UHH - VSD_BEGIN].operation                                  = OPERATION_WRITE;
+  parameters_[VSD_UF_UHH - VSD_BEGIN].operation                                  = OPERATION_LIMITED;
   parameters_[VSD_UF_UHH - VSD_BEGIN].physic                                     = PHYSIC_CURRENT;
   parameters_[VSD_UF_UHH - VSD_BEGIN].validity                                   = VALIDITY_ERROR;
   parameters_[VSD_UF_UHH - VSD_BEGIN].value.float_t                              = 0.0;
@@ -293,7 +293,7 @@ void Vsd::initParameters()
   // Число полюсов двигателя Danfoss 1-39 Используется в проекте
   parameters_[VSD_MOTOR_POLES - VSD_BEGIN].id                                    = VSD_MOTOR_POLES;
   parameters_[VSD_MOTOR_POLES - VSD_BEGIN].access                                = ACCESS_OPERATOR;
-  parameters_[VSD_MOTOR_POLES - VSD_BEGIN].operation                             = OPERATION_WRITE;
+  parameters_[VSD_MOTOR_POLES - VSD_BEGIN].operation                             = OPERATION_LIMITED;
   parameters_[VSD_MOTOR_POLES - VSD_BEGIN].physic                                = PHYSIC_NUMERIC;
   parameters_[VSD_MOTOR_POLES - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_MOTOR_POLES - VSD_BEGIN].value.float_t                         = 0;
@@ -2741,7 +2741,7 @@ void Vsd::initParameters()
   // Частота коммутации Danfoss 14-01 Используется в проекте Novomet 0х003C IREG_FREQ_PWM
   parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].id                            = VSD_SWITCHING_FREQUENCY;
   parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].operation                     = OPERATION_LIMITED;
   parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].physic                        = PHYSIC_FREQUENCY;
   parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_SWITCHING_FREQUENCY - VSD_BEGIN].value.float_t                 = 1.0;

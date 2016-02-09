@@ -487,6 +487,11 @@ private:
   bool checkCanStart();
 
   /*!
+   * \brief initStart
+   */
+  void initStart();
+
+  /*!
    * \brief Метод проверки возможности останова
    * \return
    */

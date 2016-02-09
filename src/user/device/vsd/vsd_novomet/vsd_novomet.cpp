@@ -479,7 +479,7 @@ float VsdNovomet::checkAlarmVsd()
 
   if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_ULOW) && (vsdStatus <= VSD_NOVOMET_ALARM_ULOW))) {
     vsdStatus = 0;
-    for (i = VSD_NOVOMET_ALARM_I_LIMIT; i <= VSD_NOVOMET_ALARM_ULOW; i++) {
+    for (i = VSD_NOVOMET_ALARM_ULOW; i <= VSD_NOVOMET_ALARM_ULOW; i++) {
       if (checkBit(vsdStatus1, i - 1000)) {
         resetBlock();
         return i;
