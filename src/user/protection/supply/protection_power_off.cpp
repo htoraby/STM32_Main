@@ -48,10 +48,7 @@ void ProtectionPowerOff::setCurrentParamProt()
 bool ProtectionPowerOff::checkAlarm()
 {
   bool alarm = false;
-  if (parameters.get(CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE) == ModeOff)
-    alarm = Protection::isLowerLimit(50);
-  else
-    alarm = Protection::isLowerLimit(1);
+  alarm = Protection::isLowerLimit(1);
 
   if (!isInit_) {
     isInit_ = true;
@@ -97,7 +94,8 @@ void ProtectionPowerOff::addEventReactionProt()
 
 void ProtectionPowerOff::processingStateRun()       // Состояние работа
 {
-  if (ksu.isProgramMode() && (parameters.get(CCS_RGM_PERIODIC_MODE) != Regime::OffAction)) {
+  if ((ksu.isProgramMode() && (parameters.get(CCS_RGM_PERIODIC_MODE) != Regime::OffAction)) ||
+      (ksu.isAutoMode() && ksu.isWorkMotor() && (parameters.get(CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE) == Protection::ModeRestart))) {
     if (alarm_ && !protUnderVoltIn.isRestart()) {
 #if (USE_LOG_DEBUG == 1)
       logDebug.add(DebugMsg, "Защиты: Срабатывание --> АПВ (PowerOff)");
@@ -108,7 +106,7 @@ void ProtectionPowerOff::processingStateRun()       // Состояние раб
       if (ksu.isWorkMotor()) {
         ksu.stop(lastReasonStop_);
       }
-      else if (ksu.isStopMotor()) {
+      else if (ksu.isStopMotor() && (parameters.get(CCS_LAST_STOP_REASON_TMP) == LastReasonStopProgram)) {
         parameters.set(CCS_LAST_STOP_REASON_TMP, lastReasonStop_);
       }
       timer_ = 0;
