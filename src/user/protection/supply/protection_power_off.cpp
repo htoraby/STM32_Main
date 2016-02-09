@@ -2,7 +2,6 @@
 #include "regime_main.h"
 #include "protection_main.h"
 
-int timer;
 ProtectionPowerOff::ProtectionPowerOff()
   : isInit_(false)
 {
@@ -16,8 +15,6 @@ ProtectionPowerOff::ProtectionPowerOff()
   protReactEventId_ = PowerOffProtReactId;
   apvEventId_ = PowerOffApvId;
   apvDisabledEventId_ = PowerOffApvDisabledId;
-
-  timer = -1;
 }
 
 ProtectionPowerOff::~ProtectionPowerOff()
@@ -27,8 +24,6 @@ ProtectionPowerOff::~ProtectionPowerOff()
 
 void ProtectionPowerOff::processing()
 {
-  if (timer == -1)
-    timer = HAL_GetTick();
   getCurrentParamProt();
   alarm_ = checkAlarm();    // Определяем выполняется ли условие срабатывания защиты
   prevent_ = alarm_;
@@ -62,7 +57,9 @@ bool ProtectionPowerOff::checkAlarm()
     isInit_ = true;
     alarm = true;
   } else {
+#if (USE_POWER_OFF == 1)
     alarm = false;
+#endif
   }
 
   return alarm;
