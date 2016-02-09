@@ -9505,7 +9505,7 @@
 	</param>
 	<param>
 		<id>485</id>
-		<name>CCS_RGM_JARRING_UPDFREQ</name>
+		<name>CCS_RGM_JARRING_FREQ_1</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
@@ -9518,7 +9518,7 @@
 	</param>
 	<param>
 		<id>486</id>
-		<name>CCS_RGM_JARRING_UPTIME</name>
+		<name>CCS_RGM_JARRING_UPTEMP</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
@@ -9531,7 +9531,7 @@
 	</param>
 	<param>
 		<id>487</id>
-		<name>CCS_RGM_JARRING_DOWNDFREQ</name>
+		<name>CCS_RGM_JARRING_FREQ_2</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
@@ -9544,7 +9544,7 @@
 	</param>
 	<param>
 		<id>488</id>
-		<name>CCS_RGM_JARRING_DOWNTIME</name>
+		<name>CCS_RGM_JARRING_DOWNTEMP</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
@@ -16972,6 +16972,20 @@
 	</param>
 	<param>
 		<id>873</id>
+		<name>CCS_RGM_JARRING_STATE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_LIMITED</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+	</param>
+	<param>
+		<id>874</id>
+		<name>CCS_RGM_JARRING_TIMER</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_LIMITED</operation>
+		<physic>PHYSIC_TIME</physic>
+	</param>
+	<param>
+		<id>875</id>
 		<name>CCS_END</name>
 		<comment>Последний параметр</comment>
 	</param>
