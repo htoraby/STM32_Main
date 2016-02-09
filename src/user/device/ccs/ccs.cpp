@@ -796,13 +796,13 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_RGM_CHANGE_FREQ_BEGIN_FREQ:
     err = setValue(id, value, eventType);
-    if (!err)
+    if ((!err) && (value > getMin(CCS_RGM_CHANGE_FREQ_END_FREQ)))
       setMin(CCS_RGM_CHANGE_FREQ_END_FREQ, value);
     calcRegimeChangeFreqPeriodOneStep();
     return err;
   case CCS_RGM_CHANGE_FREQ_END_FREQ:
     err = setValue(id, value, eventType);
-    if (!err)
+    if ((!err) && (value < getMax(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ)))
       setMax(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ, value);
     calcRegimeChangeFreqPeriodOneStep();
     return err;

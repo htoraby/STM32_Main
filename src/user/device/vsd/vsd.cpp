@@ -174,13 +174,20 @@ int Vsd::setLimitsMinFrequence(float value)
   if (!setValue(VSD_LOW_LIM_SPEED_MOTOR, value)) {    // Если записали минимум частоты
     setMin(VSD_HIGH_LIM_SPEED_MOTOR, value);          // Меняем поле минимум для уставки "Максимальной частоты"
     setMin(VSD_FREQUENCY, value);                     // Меняем поле минимум для уставки "Частота"
-    parameters.setMin(CCS_RGM_ALTERNATION_FREQ_FREQ_1, value);
-    parameters.setMin(CCS_RGM_ALTERNATION_FREQ_FREQ_2, value);
-    parameters.setMin(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ, value);
-    parameters.setMin(CCS_RGM_CHANGE_FREQ_END_FREQ, value);
-    parameters.setMin(CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ, value);
-    parameters.setMin(CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ, value);
-    parameters.setMin(CCS_RGM_PUMP_GAS_SETPOINT, value);
+    if (value > parameters.getMax(CCS_RGM_ALTERNATION_FREQ_FREQ_1))
+      parameters.setMin(CCS_RGM_ALTERNATION_FREQ_FREQ_1, value);
+    if (value > parameters.getMax(CCS_RGM_ALTERNATION_FREQ_FREQ_2))
+      parameters.setMin(CCS_RGM_ALTERNATION_FREQ_FREQ_2, value);
+    if (value > parameters.getMax(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ))
+      parameters.setMin(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ, value);
+    if (value > parameters.getMax(CCS_RGM_CHANGE_FREQ_END_FREQ))
+      parameters.setMin(CCS_RGM_CHANGE_FREQ_END_FREQ, value);
+    if (value > parameters.getMax(CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ))
+      parameters.setMin(CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ, value);
+    if (value > parameters.getMax(CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ))
+      parameters.setMin(CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ, value);
+    if (value > parameters.getMax(CCS_RGM_PUMP_GAS_SETPOINT))
+      parameters.setMin(CCS_RGM_PUMP_GAS_SETPOINT, value);
     return ok_r;
   }
   return err_r;
@@ -203,14 +210,21 @@ int Vsd::setLimitsMaxFrequence(float value)
 {
   if (!setValue(VSD_HIGH_LIM_SPEED_MOTOR, value)) {   // Если записали максимум частоты
     setMax(VSD_LOW_LIM_SPEED_MOTOR, value);           // Меняем поле максимум для уставки "Минимальной частоты"
-    setMax(VSD_FREQUENCY, value);                     // Меняем поле максимум для уставки "Частота"
-    parameters.setMax(CCS_RGM_ALTERNATION_FREQ_FREQ_1, value);
-    parameters.setMax(CCS_RGM_ALTERNATION_FREQ_FREQ_2, value);
-    parameters.setMax(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ, value);
-    parameters.setMax(CCS_RGM_CHANGE_FREQ_END_FREQ, value);
-    parameters.setMax(CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ, value);
-    parameters.setMax(CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ, value);
-    parameters.setMax(CCS_RGM_PUMP_GAS_SETPOINT, value);
+    setMax(VSD_FREQUENCY, value);                     // Меняем поле максимум для уставки "Частота" 
+    if (value < parameters.getMax(CCS_RGM_ALTERNATION_FREQ_FREQ_1))
+      parameters.setMax(CCS_RGM_ALTERNATION_FREQ_FREQ_1, value);
+    if (value < parameters.getMax(CCS_RGM_ALTERNATION_FREQ_FREQ_2))
+      parameters.setMax(CCS_RGM_ALTERNATION_FREQ_FREQ_2, value);
+    if (value < parameters.getMax(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ))
+      parameters.setMax(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ, value);
+    if (value < parameters.getMax(CCS_RGM_CHANGE_FREQ_END_FREQ))
+      parameters.setMax(CCS_RGM_CHANGE_FREQ_END_FREQ, value);
+    if (value < parameters.getMax(CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ))
+      parameters.setMax(CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ, value);
+    if (value < parameters.getMax(CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ))
+      parameters.setMax(CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ, value);
+    if (value < parameters.getMax(CCS_RGM_PUMP_GAS_SETPOINT))
+      parameters.setMax(CCS_RGM_PUMP_GAS_SETPOINT, value);
     return ok_r;
   }
   return err_r;
