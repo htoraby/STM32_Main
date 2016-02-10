@@ -878,7 +878,10 @@ enum enID
   CCS_USB_CONNECTION = 872,                                  //!< Подключение flashdisk к USB
   CCS_RGM_JARRING_STATE = 873,                               //!< 
   CCS_RGM_JARRING_TIMER = 874,                               //!< 
-  CCS_END = 875,                                             //!< Последний параметр
+  CCS_PROT_SUPPLY_POWEROFF_PREVENT = 875,                    //!< Защита Отключение питания. Параметр запрещающий запуск
+  CCS_PROT_SUPPLY_POWEROFF_RESTART_FLAG = 876,               //!< Защита Отключение питания. Текущий параметр Флаг что защита в АПВ
+  CCS_PROT_SUPPLY_POWEROFF_STATE = 877,                      //!< Защита Отключение питания. Текущий параметр состояние автомата
+  CCS_END = 878,                                             //!< Последний параметр
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF

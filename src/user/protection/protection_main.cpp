@@ -1,6 +1,6 @@
 #include "protection_main.h"
 
-#define COUNT_PROTECTIONS 21
+#define COUNT_PROTECTIONS 22
 
 Protection *protections[COUNT_PROTECTIONS];
 
@@ -8,6 +8,7 @@ ProtectionOverVoltageInput protOverVoltIn;
 ProtectionUnderVoltageInput protUnderVoltIn;
 ProtectionImbalanceVoltageInput protImbalanceVoltIn;
 ProtectionImbalanceCurrentInput protImbalanceCurIn;
+ProtectionPowerOff protPowerOff;
 
 ProtectionOverloadMotor protOverloadMotor;
 ProtectionUnderloadMotor protUnderloadMotor;
@@ -18,6 +19,7 @@ ProtectionTurbineRotation protTurbineRotation;
 ProtectionTemperatureMotor protTemperatureMotor;
 ProtectionPressureIntake protPressureIntake;
 ProtectionResistanceIsolation protResistanceIsolation;
+
 ProtectionHardwareVsd protHardwareVsd;
 ProtectionLockDoor protLockDoor;
 
@@ -41,28 +43,29 @@ void protectionInit()
   protections[1] = &protUnderVoltIn;
   protections[2] = &protImbalanceVoltIn;
   protections[3] = &protImbalanceCurIn;
+  protections[4] = &protPowerOff;
 
-  protections[4] = &protImbalanceCurrentMotor;
-  protections[5] = &protTurbineRotation;
+  protections[5] = &protImbalanceCurrentMotor;
+  protections[6] = &protTurbineRotation;
 
-  protections[6] = &protResistanceIsolation;
-  protections[7] = &protPressureIntake;
-  protections[8] = &protTemperatureMotor;
-  protections[9] = &protUnderloadMotor;
-  protections[10] = &protOverloadMotor;
+  protections[7] = &protResistanceIsolation;
+  protections[8] = &protPressureIntake;
+  protections[9] = &protTemperatureMotor;
+  protections[10] = &protUnderloadMotor;
+  protections[11] = &protOverloadMotor;
 
-  protections[11] = &protHardwareVsd;
-  protections[12] = &protLockDoor;
+  protections[12] = &protHardwareVsd;
+  protections[13] = &protLockDoor;
 
-  protections[13] = &protDigitalInput1;
-  protections[14] = &protDigitalInput2;
-  protections[15] = &protDigitalInput3;
-  protections[16] = &protDigitalInput4;
+  protections[14] = &protDigitalInput1;
+  protections[15] = &protDigitalInput2;
+  protections[16] = &protDigitalInput3;
+  protections[17] = &protDigitalInput4;
 
-  protections[17] = &protAnalogInput1;
-  protections[18] = &protAnalogInput2;
-  protections[19] = &protAnalogInput3;
-  protections[20] = &protAnalogInput4;
+  protections[18] = &protAnalogInput1;
+  protections[19] = &protAnalogInput2;
+  protections[20] = &protAnalogInput3;
+  protections[21] = &protAnalogInput4;
 
   osThreadDef(Protections, protectionTask, osPriorityNormal, 0, 4 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(Protections), NULL);

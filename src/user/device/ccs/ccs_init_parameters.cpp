@@ -10502,5 +10502,41 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_JARRING_TIMER - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_RGM_JARRING_TIMER - CCS_BEGIN].def                             = 0;
   parameters_[CCS_RGM_JARRING_TIMER - CCS_BEGIN].code                            = 0;
+  // Защита Отключение питания. Параметр запрещающий запуск
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_PREVENT - CCS_BEGIN].id                   = CCS_PROT_SUPPLY_POWEROFF_PREVENT;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_PREVENT - CCS_BEGIN].access               = ACCESS_OPERATOR;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_PREVENT - CCS_BEGIN].operation            = OPERATION_READ;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_PREVENT - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_PREVENT - CCS_BEGIN].validity             = VALIDITY_OK;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_PREVENT - CCS_BEGIN].value.float_t        = 0.0;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_PREVENT - CCS_BEGIN].min                  = 0.0;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_PREVENT - CCS_BEGIN].max                  = 1.0;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_PREVENT - CCS_BEGIN].discret              = 1;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_PREVENT - CCS_BEGIN].def                  = 0.0;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_PREVENT - CCS_BEGIN].code                 = 0;
+  // Защита Отключение питания. Текущий параметр Флаг что защита в АПВ
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_RESTART_FLAG - CCS_BEGIN].id              = CCS_PROT_SUPPLY_POWEROFF_RESTART_FLAG;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_RESTART_FLAG - CCS_BEGIN].access          = ACCESS_OPERATOR;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_RESTART_FLAG - CCS_BEGIN].operation       = OPERATION_READ;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_RESTART_FLAG - CCS_BEGIN].physic          = PHYSIC_NUMERIC;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_RESTART_FLAG - CCS_BEGIN].validity        = VALIDITY_OK;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_RESTART_FLAG - CCS_BEGIN].value.float_t   = 0.0;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_RESTART_FLAG - CCS_BEGIN].min             = 0.0;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_RESTART_FLAG - CCS_BEGIN].max             = 1.0;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_RESTART_FLAG - CCS_BEGIN].discret         = 1;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_RESTART_FLAG - CCS_BEGIN].def             = 0.0;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_RESTART_FLAG - CCS_BEGIN].code            = 0;
+  // Защита Отключение питания. Текущий параметр состояние автомата
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_STATE - CCS_BEGIN].id                     = CCS_PROT_SUPPLY_POWEROFF_STATE;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_STATE - CCS_BEGIN].access                 = ACCESS_OPERATOR;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_STATE - CCS_BEGIN].operation              = OPERATION_READ;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_STATE - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_STATE - CCS_BEGIN].validity               = VALIDITY_OK;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_STATE - CCS_BEGIN].value.float_t          = 0.0;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_STATE - CCS_BEGIN].min                    = 0.0;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_STATE - CCS_BEGIN].max                    = 3.0;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_STATE - CCS_BEGIN].discret                = 1;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_STATE - CCS_BEGIN].def                    = 0.0;
+  parameters_[CCS_PROT_SUPPLY_POWEROFF_STATE - CCS_BEGIN].code                   = 0;
 }
 

@@ -57,6 +57,7 @@ void Ccs::calcParametersTask()
 //    calcInputVoltagePhase23();
 //    calcInputVoltagePhase31();
 
+      calcInputVoltageFromAdc();
       calcInputVoltageImbalance();
 
       calcInputCurrentPhase1();
@@ -72,7 +73,6 @@ void Ccs::calcParametersTask()
     if ((HAL_GetTick() - time500ms) >= 500) {
       time500ms = HAL_GetTick();
 
-      calcInputVoltageFromAdc();
     }
 
     if ((HAL_GetTick() - time1s) >= 1000) {
@@ -628,7 +628,7 @@ void Ccs::calcInputVoltageFromAdc()
   ubValue = (sqrt(ubValue/count[1]) * 627.747 * 2.5) / 0xFFF;
   ucValue = (sqrt(ucValue/count[2]) * 627.747 * 2.5) / 0xFFF;
 
-  if (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_A)) {
+  if (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_A) || isinf(uaValue)) {
     setValue(CCS_VOLTAGE_PHASE_1, (float)NAN);
     setValue(CCS_VOLTAGE_PHASE_1_2, (float)NAN);
   }
@@ -638,7 +638,7 @@ void Ccs::calcInputVoltageFromAdc()
     setValue(CCS_VOLTAGE_PHASE_1_2, uaValue*SQRT_3);
   }
 
-  if (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_B)) {
+  if (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_B) || isinf(ubValue)) {
     setValue(CCS_VOLTAGE_PHASE_2, (float)NAN);
     setValue(CCS_VOLTAGE_PHASE_2_3, (float)NAN);
   }
@@ -648,7 +648,7 @@ void Ccs::calcInputVoltageFromAdc()
     setValue(CCS_VOLTAGE_PHASE_2_3, ubValue*SQRT_3);
   }
 
-  if (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_C)) {
+  if (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_C) || isinf(ucValue)) {
     setValue(CCS_VOLTAGE_PHASE_3, (float)NAN);
     setValue(CCS_VOLTAGE_PHASE_3_1, (float)NAN);
   }

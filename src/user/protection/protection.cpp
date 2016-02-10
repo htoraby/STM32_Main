@@ -4,6 +4,7 @@
 Protection::Protection()
   : workWithAlarmFlag_(false)
   , resetRestartDelayFlag_(false)
+  , alarm_(false)
   , attempt_(false)
   , delay_(false)
   , difStartFlag_(false)

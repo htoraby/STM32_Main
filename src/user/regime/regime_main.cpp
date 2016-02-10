@@ -40,7 +40,8 @@ bool interceptionStartRegime()
 {
   if (ksu.isProgramMode() && (parameters.get(CCS_RGM_PERIODIC_MODE) != Regime::OffAction)) {
     if ((parameters.get(CCS_RGM_PERIODIC_STATE) == Regime::WorkState) ||
-        (parameters.get(CCS_RGM_PERIODIC_STATE) == Regime::PauseState)) {
+        (parameters.get(CCS_RGM_PERIODIC_STATE) == Regime::PauseState) ||
+        (parameters.get(CCS_RGM_PERIODIC_STATE) == Regime::PauseState + 1)) {
       return false;
     }
   }
