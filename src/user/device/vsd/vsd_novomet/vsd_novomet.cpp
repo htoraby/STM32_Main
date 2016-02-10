@@ -957,7 +957,7 @@ void VsdNovomet::getNewValue(uint16_t id)
     setValue(id, value);
     setLimitsMaxFrequence(value);
     break;
-  case VSD_FREQUENCY:
+  case VSD_FREQUENCY_NOW:
     setValue(id, value);
     ksu.calcMotorSpeed();
     break;
