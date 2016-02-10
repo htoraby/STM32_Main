@@ -57,6 +57,7 @@ void Ccs::calcParametersTask()
 //    calcInputVoltagePhase23();
 //    calcInputVoltagePhase31();
 
+      calcInputVoltageFromAdc();
       calcInputVoltageImbalance();
 
       calcInputCurrentPhase1();
@@ -72,7 +73,6 @@ void Ccs::calcParametersTask()
     if ((HAL_GetTick() - time500ms) >= 500) {
       time500ms = HAL_GetTick();
 
-      calcInputVoltageFromAdc();
     }
 
     if ((HAL_GetTick() - time1s) >= 1000) {
