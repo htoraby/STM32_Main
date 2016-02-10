@@ -50,14 +50,9 @@ bool ProtectionPowerOff::checkAlarm()
   bool alarm = false;
   alarm = Protection::isLowerLimit(1);
 
-  if (!isInit_) {
-    isInit_ = true;
-    alarm = true;
-  } else {
 #if (USE_POWER_OFF == 1)
-    alarm = false;
+  alarm = false;
 #endif
-  }
 
   return alarm;
 }
