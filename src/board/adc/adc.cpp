@@ -309,7 +309,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* adcHandle)
 void copyAdcData(uint16_t *data)
 {
   int allPoints = ADC_CNANNELS_NUM*ADC_POINTS_NUM;
-  int numDataTr = hadc[adc2].DMA_Handle->Instance->NDTR;
+  int numDataTr = allPoints - hadc[adc2].DMA_Handle->Instance->NDTR;
   memcpy(&data[numDataTr], &adcData[0], (allPoints - numDataTr)*2);
   memcpy(&data[0], &adcData[allPoints - numDataTr], (numDataTr)*2);
 }
@@ -318,7 +318,7 @@ void getAdcDataInPeriod(uint16_t *data)
 {
   int points = ADC_CNANNELS_NUM*HC_POINTS_NUM*2;
   int allPoints = ADC_CNANNELS_NUM*ADC_POINTS_NUM;
-  int numDataTr = hadc[adc2].DMA_Handle->Instance->NDTR;
+  volatile uint32_t numDataTr = allPoints - hadc[adc2].DMA_Handle->Instance->NDTR;
   int idx = numDataTr - points;
   if (idx >= 0) {
     memcpy(&data[0], &adcData[idx], (points)*2);
@@ -327,4 +327,5 @@ void getAdcDataInPeriod(uint16_t *data)
     memcpy(&data[idx], &adcData[0], (numDataTr)*2);
     memcpy(&data[0], &adcData[allPoints - idx], (idx)*2);
   }
+  asm("nop");
 }

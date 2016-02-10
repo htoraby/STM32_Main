@@ -605,11 +605,11 @@ void Ccs::calcInputVoltageFromAdc()
         checkPhase[1] = 2;
       }
     }
-
     if (checkPhase[1] == 1) {
       ubValue += (uValue[1 + i*3] - 2048)*(uValue[1 + i*3] - 2048);
       count[1]++;
     }
+
     if (((uValue[2 + i*3] - 2048) >= 0) && (valueOld[2] < 0)) {
       if (!checkPhase[2])
         checkPhase[2] = 1;
@@ -620,15 +620,25 @@ void Ccs::calcInputVoltageFromAdc()
       ucValue += (uValue[2 + i*3] - 2048)*(uValue[2 + i*3] - 2048);
       count[2]++;
     }
+
     valueOld[0] = (uValue[0 + i*3] - 2048);
     valueOld[1] = (uValue[1 + i*3] - 2048);
     valueOld[2] = (uValue[2 + i*3] - 2048);
   }
-  uaValue = (sqrt(uaValue/count[0]) * 627.747 * 2.5) / 0xFFF;
-  ubValue = (sqrt(ubValue/count[1]) * 627.747 * 2.5) / 0xFFF;
-  ucValue = (sqrt(ucValue/count[2]) * 627.747 * 2.5) / 0xFFF;
+  if (count[0])
+    uaValue = (sqrt(uaValue/count[0]) * 627.747 * 2.5) / 0xFFF;
+  else
+    uaValue = 0;
+  if (count[1])
+    ubValue = (sqrt(ubValue/count[1]) * 627.747 * 2.5) / 0xFFF;
+  else
+    ubValue = 0;
+  if (count[2])
+    ucValue = (sqrt(ucValue/count[2]) * 627.747 * 2.5) / 0xFFF;
+  else
+    ucValue = 0;
 
-  if (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_A) || isinf(uaValue)) {
+  if (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_A)) {
     setValue(CCS_VOLTAGE_PHASE_1, (float)NAN);
     setValue(CCS_VOLTAGE_PHASE_1_2, (float)NAN);
   }
@@ -638,7 +648,7 @@ void Ccs::calcInputVoltageFromAdc()
     setValue(CCS_VOLTAGE_PHASE_1_2, uaValue*SQRT_3);
   }
 
-  if (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_B) || isinf(ubValue)) {
+  if (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_B)) {
     setValue(CCS_VOLTAGE_PHASE_2, (float)NAN);
     setValue(CCS_VOLTAGE_PHASE_2_3, (float)NAN);
   }
@@ -648,7 +658,7 @@ void Ccs::calcInputVoltageFromAdc()
     setValue(CCS_VOLTAGE_PHASE_2_3, ubValue*SQRT_3);
   }
 
-  if (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_C) || isinf(ucValue)) {
+  if (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_C)) {
     setValue(CCS_VOLTAGE_PHASE_3, (float)NAN);
     setValue(CCS_VOLTAGE_PHASE_3_1, (float)NAN);
   }

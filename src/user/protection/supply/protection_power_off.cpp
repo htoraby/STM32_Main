@@ -59,15 +59,15 @@ bool ProtectionPowerOff::checkAlarm()
 
 float ProtectionPowerOff::calcValue()
 {
-  float value = 0;
+  float value = NOM_VOLTAGE;
   if (parameters.isValidity(CCS_VOLTAGE_PHASE_1)) {
     value = parameters.get(CCS_VOLTAGE_PHASE_1);
   }
-  float value2 = 0;
+  float value2 = NOM_VOLTAGE;
   if (parameters.isValidity(CCS_VOLTAGE_PHASE_2)) {
     value2 = parameters.get(CCS_VOLTAGE_PHASE_2);
   }
-  float value3 = 0;
+  float value3 = NOM_VOLTAGE;
   if (parameters.isValidity(CCS_VOLTAGE_PHASE_3)) {
     value3 = parameters.get(CCS_VOLTAGE_PHASE_3);
   }
