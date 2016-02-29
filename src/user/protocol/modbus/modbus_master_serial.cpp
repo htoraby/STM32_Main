@@ -51,7 +51,7 @@ int ModbusMasterSerial::openProtocol(int portName,
 
 int ModbusMasterSerial::closeProtocol(int PortName)
 {
-  int Result = err_r;
+  int Result = ok_r;
   uartClose((uartNum)PortName);
   resetTotalCounter();
   resetSuccessCounter();
@@ -60,7 +60,6 @@ int ModbusMasterSerial::closeProtocol(int PortName)
   resetFailCounter();
   resetLostCounter();
   resetTrashCounter();
-  Result = ok_r;
   return Result;
 }
 
