@@ -433,6 +433,12 @@ public:
    */
   virtual bool checkStop();
 
+  /*!
+   * \brief Метод проверки что выходная частота равна частоте уставки
+   * \return
+   */
+  virtual bool checkFreq();
+
   virtual int resetBlock();
 
   virtual float checkAlarmVsd();
