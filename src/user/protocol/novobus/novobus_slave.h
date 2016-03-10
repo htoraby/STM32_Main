@@ -112,6 +112,7 @@ private:
   uint8_t addrsCount_;
 
   uint16_t rxSize;
+  uint16_t txSize;
 
   bool isConnect_;
 };

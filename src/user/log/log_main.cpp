@@ -3,9 +3,13 @@
 #include "user_main.h"
 #include "update.h"
 
+#include "minilzo.h"
+
 #define LOG_DIR USB_DISK ":ksu_log"
 #define FILE_MASK "М-е%d куст%d скв%d(%d).log"
 
+#define IN_BUF_SIZE 4096
+#define OUT_BUF_SIZE (IN_BUF_SIZE + IN_BUF_SIZE / 16 + 64 + 3 + 8)
 #define PARAMETERS_SIZE 21504*4
 
 #pragma pack(1)
@@ -24,10 +28,17 @@ typedef struct {
 
 #pragma pack()
 
+#define HEAP_ALLOC(var,size) \
+  lzo_align_t __LZO_MMODEL var [((size) + (sizeof(lzo_align_t) - 1)) / sizeof(lzo_align_t)]
+
 #if USE_EXT_MEM
-static uint8_t bufData[4096] __attribute__((section(".extmem")));
+static uint8_t __LZO_MMODEL inBufData[IN_BUF_SIZE] __attribute__((section(".extmem")));
+static uint8_t __LZO_MMODEL outBufData[OUT_BUF_SIZE] __attribute__((section(".extmem")));
+static HEAP_ALLOC(wrkmem, LZO1X_1_MEM_COMPRESS) __attribute__((section(".extmem")));
 #else
-static uint8_t bufData[4096];
+static uint8_t inBufData[IN_BUF_SIZE];
+static uint8_t outBufData[OUT_BUF_SIZE];
+static HEAP_ALLOC(wrkmem, LZO1X_1_MEM_COMPRESS);
 #endif
 
 LogEvent logEvent;
@@ -154,7 +165,6 @@ static bool logSave()
   UINT bytesWritten;
   LOG_FILE_HEADER header;
   char buf[_MAX_LFN + 1];
-  uint32_t maxSize = _MAX_SS;
 
   uint32_t timeReady = 0;
   while(usbState != USB_READY) {
@@ -169,7 +179,6 @@ static bool logSave()
   result = f_mkdir(LOG_DIR);
   if ((result == FR_OK) || (result == FR_EXIST)) {
     char *logPath = buf;
-
     strcpy(logPath, LOG_DIR);
     getFilePath(logPath);
 
@@ -197,11 +206,21 @@ static bool logSave()
     if (f_open(&file, logPath, FA_CREATE_ALWAYS | FA_WRITE) == FR_OK) {
       uint16_t calcCrc = 0xFFFF;
       uint32_t addr = 0;
-      uint32_t size = sizeof(bufData);
+      uint32_t inLen = IN_BUF_SIZE;
+      lzo_uint outLen = 0;
+      uint32_t size = 0;
       uint32_t count = 0;
+      int resCompress = 0;
+
+      if (lzo_init() != LZO_E_OK) {
+        printf("lzo_init() failed!\n");
+        ksu.setError(MiniLzoInitUsbErr);
+        return false;
+      }
 
       header.size = header.mainLogSize + header.debugLogSize +
           header.parametersSize + sizeof(header) + 2;
+
       result = f_write(&file, (uint8_t*)&header, sizeof(header), &bytesWritten);
       if ((result != FR_OK) || (sizeof(header) != bytesWritten)) {
         f_close(&file);
@@ -211,23 +230,37 @@ static bool logSave()
       calcCrc = crc16_ibm((uint8_t*)&header, bytesWritten, calcCrc);
 
       while (usbState == USB_READY) {
-        StatusType status = logRead(addr, &bufData[0], size);
+        StatusType status = logRead(addr, inBufData, inLen);
         if (status == StatusError)
           asm("nop");
-        addr = addr + size;
-        calcCrc = crc16_ibm(bufData, size, calcCrc);
+        addr = addr + inLen;
+        calcCrc = crc16_ibm(inBufData, inLen, calcCrc);
 
-        for (uint32_t i = 0; i < size/maxSize; ++i) {
-          result = f_write(&file, &bufData[i*maxSize], maxSize, &bytesWritten);
-          if ((result != FR_OK) || (bytesWritten != maxSize)) {
-            f_close(&file);
-            ksu.setError(WriteFileUsbErr);
-            return false;
-          }
+        resCompress = lzo1x_1_compress(inBufData, inLen, &outBufData[8], &outLen, wrkmem);
+        if (resCompress != LZO_E_OK) {
+          f_close(&file);
+          ksu.setError(MiniLzoUsbErr);
+          return false;
+        }
+        *(uint32_t*)(outBufData) = inLen;
+        if (outLen < inLen) {
+          *(uint32_t*)(outBufData+4) = outLen;
+          size = outLen + 8;
+          result = f_write(&file, outBufData, size, &bytesWritten);
+        } else {
+          *(uint32_t*)(outBufData+4) = inLen;
+          result = f_write(&file, outBufData, 8, &bytesWritten);
+          size = inLen;
+          result = f_write(&file, inBufData, inLen, &bytesWritten);
+        }
+        if ((result != FR_OK) || (bytesWritten != size)) {
+          f_close(&file);
+          ksu.setError(WriteFileUsbErr);
+          return false;
         }
 
         count++;
-        if (count >= 20) {
+        if (count >= 60) {
           count = 0;
           parameters.set(CCS_PROGRESS_VALUE, (float)(addr)/1024);
         }
@@ -236,26 +269,40 @@ static bool logSave()
       }
 
       addr = 0;
-      size = sizeof(bufData);
+      inLen = IN_BUF_SIZE;
       count = 0;
       while (usbState == USB_READY) {
-        StatusType status = logDebugRead(addr, &bufData[0], size);
+        StatusType status = logDebugRead(addr, inBufData, inLen);
         if (status == StatusError)
           asm("nop");
-        addr = addr + size;
-        calcCrc = crc16_ibm(bufData, size, calcCrc);
+        addr = addr + inLen;
+        calcCrc = crc16_ibm(inBufData, inLen, calcCrc);
 
-        for (uint32_t i = 0; i < size/maxSize; ++i) {
-          result = f_write(&file, &bufData[i*maxSize], maxSize, &bytesWritten);
-          if ((result != FR_OK) || (bytesWritten != maxSize)) {
-            f_close(&file);
-            ksu.setError(WriteFileUsbErr);
-            return false;
-          }
+        resCompress = lzo1x_1_compress(inBufData, inLen, &outBufData[8], &outLen, wrkmem);
+        if (resCompress != LZO_E_OK) {
+          f_close(&file);
+          ksu.setError(MiniLzoUsbErr);
+          return false;
+        }
+        *(uint32_t*)(outBufData) = inLen;
+        if (outLen < inLen) {
+          *(uint32_t*)(outBufData+4) = outLen;
+          size = outLen + 8;
+          result = f_write(&file, outBufData, size, &bytesWritten);
+        } else {
+          *(uint32_t*)(outBufData+4) = inLen;
+          result = f_write(&file, outBufData, 8, &bytesWritten);
+          size = inLen;
+          result = f_write(&file, inBufData, inLen, &bytesWritten);
+        }
+        if ((result != FR_OK) || (bytesWritten != size)) {
+          f_close(&file);
+          ksu.setError(WriteFileUsbErr);
+          return false;
         }
 
         count++;
-        if (count >= 20) {
+        if (count >= 60) {
           count = 0;
           parameters.set(CCS_PROGRESS_VALUE, (float)(addr + EndAddrTmsLog)/1024);
         }
@@ -264,26 +311,40 @@ static bool logSave()
       }
 
       addr = 0;
-      size = sizeof(bufData);
+      inLen = IN_BUF_SIZE;
       count = 0;
       while (usbState == USB_READY) {
-        StatusType status = framReadData(addr, bufData, size);
+        StatusType status = framReadData(addr, inBufData, inLen);
         if (status == StatusError)
           asm("nop");
-        addr = addr + size;
-        calcCrc = crc16_ibm(bufData, size, calcCrc);
+        addr = addr + inLen;
+        calcCrc = crc16_ibm(inBufData, inLen, calcCrc);
 
-        for (uint32_t i = 0; i < size/maxSize; ++i) {
-          result = f_write(&file, &bufData[i*maxSize], maxSize, &bytesWritten);
-          if ((result != FR_OK) || (bytesWritten != maxSize)) {
-            f_close(&file);
-            ksu.setError(WriteFileUsbErr);
-            return false;
-          }
+        resCompress = lzo1x_1_compress(inBufData, inLen, &outBufData[8], &outLen, wrkmem);
+        if (resCompress != LZO_E_OK) {
+          f_close(&file);
+          ksu.setError(MiniLzoUsbErr);
+          return false;
+        }
+        *(uint32_t*)(outBufData) = inLen;
+        if (outLen < inLen) {
+          *(uint32_t*)(outBufData+4) = outLen;
+          size = outLen + 8;
+          result = f_write(&file, outBufData, size, &bytesWritten);
+        } else {
+          *(uint32_t*)(outBufData+4) = inLen;
+          result = f_write(&file, outBufData, 8, &bytesWritten);
+          size = inLen;
+          result = f_write(&file, inBufData, inLen, &bytesWritten);
+        }
+        if ((result != FR_OK) || (bytesWritten != size)) {
+          f_close(&file);
+          ksu.setError(WriteFileUsbErr);
+          return false;
         }
 
         count++;
-        if (count >= 20) {
+        if (count >= 60) {
           count = 0;
           parameters.set(CCS_PROGRESS_VALUE, (float)(addr + EndAddrTmsLog + EndAddrDebugLog)/1024);
         }

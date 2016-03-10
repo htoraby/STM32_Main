@@ -57,9 +57,7 @@ void NovobusSlave::task()
     if (osSemaphoreWait(semaphoreId, ANSWER_TIMEOUT) != osEventTimeout) {
       rxSize = hostReadData(rxBuffer_);
       receivePackage(rxSize);
-
-      osDelay(1);
-      hostWriteData(txBuffer_, txBuffer_[1]);
+      hostWriteData(txBuffer_, txSize);
       isConnect_ = true;
     }
     // Нет связи
@@ -392,9 +390,10 @@ void NovobusSlave::receivePackage(uint16_t sizePkt)
     sizePkt = 7;
   }
 
-  txBuffer_[1] = sizePkt;
+  txBuffer_[1] = sizePkt & 0xFF;
+  txSize = sizePkt;
   // Вычисляем и добавляем контрольную сумму
-  calcCrc = crc16_ibm(txBuffer_, txBuffer_[1] - 2);
+  calcCrc = crc16_ibm(txBuffer_, sizePkt - 2);
   txBuffer_[sizePkt-2] = calcCrc >> 8;
   txBuffer_[sizePkt-1] = calcCrc;
 }
