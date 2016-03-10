@@ -44,6 +44,7 @@ Product {
         "3rdParty/FreeModbus/include/",
         "3rdParty/FreeModbus/rtu/",
         "3rdParty/RTT/",
+        "3rdParty/minilzo/",
         "drivers/CMSIS/Include/",
         "drivers/CMSIS/STM32F4xx/",
         "drivers/STM32_USB_Host_Library/Class/MSC/Inc/",

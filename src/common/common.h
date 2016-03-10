@@ -26,6 +26,8 @@ enum ErrorSlave {
   HeaderFwUpdateErr,           //!< Ошибка в заголовке файла прошивки
   SaveFwMasterUpdateErr,       //!< Ошибка сохранения файла прошивки GUI
   TimeoutMasterUpdateErr,      //!< Тайм-аут сохранения файла прошивки GUI
+  MiniLzoInitUsbErr,           //!< Ошибка инициализации архиватора MiniLZO
+  MiniLzoUsbErr,               //!< Ошибка архиватора MiniLZO
 };
 
 #ifdef __cplusplus
