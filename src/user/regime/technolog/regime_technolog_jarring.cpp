@@ -25,7 +25,7 @@ void RegimeTechnologJarring::processing()
   state_ = parameters.get(CCS_RGM_JARRING_STATE);
   beginTime_ = parameters.get(CCS_RGM_JARRING_TIMER);
 
-  if (action_ == offAction) {
+  if (action_ == OffAction) {
     state_ = IdleState;
   }
 
@@ -36,7 +36,7 @@ void RegimeTechnologJarring::processing()
            (parameters.get(CCS_CONDITION) == CCS_CONDITION_RUN)) &&
           ksu.isAutoMode()) {               // Мы в работе
         beginTime_ = ksu.getTime();         // Запоминаем время перехода в работу
-        state = RunningState;               // Переходим в состояние отсчёта периода встряхивания
+        state_ = RunningState;               // Переходим в состояние отсчёта периода встряхивания
 #if (USE_LOG_DEBUG == 1)
         logDebug.add((DebugMsg, "Встряхив.: запуск таймера периода встряхивания");
 #endif
@@ -51,7 +51,7 @@ void RegimeTechnologJarring::processing()
       }
     }
     else {
-      state = IdleState;
+      state_ = IdleState;
 #if (USE_LOG_DEBUG == 1)
       logDebug.add(DebugMsg, "Встряхив.: выключение режима в ожидании");
 #endif
@@ -64,7 +64,7 @@ void RegimeTechnologJarring::processing()
       state_ = WorkState + 1;
     }
     else {
-      state = IdleState;
+      state_ = IdleState;
 #if (USE_LOG_DEBUG == 1)
       logDebug.add(DebugMsg, "Встряхив.: выключение режима в работе ");
 #endif
@@ -77,6 +77,7 @@ void RegimeTechnologJarring::processing()
 
     break;
   case WorkState + 3:
+    break;
   }
 }
 

@@ -1169,7 +1169,7 @@ bool VsdDanfoss::checkStop()
 
 bool VsdDanfoss::checkFreq()
 {
-  if(checkBit(getvalue(VSD_STATUS_WORF_1), VSD_DANFOSS_STATUS_SPEED))
+  if(checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_SPEED))
     return true;
   return false;
 }
