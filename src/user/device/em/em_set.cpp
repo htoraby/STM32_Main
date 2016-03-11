@@ -160,7 +160,7 @@ void EmSet::sendRequest()
         memcpy(txBuffer_, buf, sizePktTx);
         time_t time = ksu.getTime();
         tm dateTime = *localtime(&time);
-        txBuffer_[3] = dateTime.tm_mon;
+        txBuffer_[3] = dateTime.tm_mon+1;
       }
       break;
     // Запрос чтения данных энергии за предыдущий месяц
@@ -171,6 +171,7 @@ void EmSet::sendRequest()
         memcpy(txBuffer_, buf, sizePktTx);
         time_t time = ksu.getTime();
         tm dateTime = *localtime(&time);
+        dateTime.tm_mon += 1;
         txBuffer_[3] = (dateTime.tm_mon == 1) ? 12 : (dateTime.tm_mon - 1);
       }
       break;
@@ -919,12 +920,11 @@ void EmSet::setConstantEm()
 
 int EmSet::prepareSendConstantCoefTrans()
 {
-  constCoefTrans_ = rxBuffer_[sizePkt_ - 12] * 256 + rxBuffer_[sizePkt_ - 11];
+  constCoefTrans_ = rxBuffer_[sizePkt_ - 10] * 256 + rxBuffer_[sizePkt_ - 9];
   int coefTrans = getValue(EM_COEFFICIENT_TRANS_CURRENT);
 
-  if((rxBuffer_[sizePkt_ - 9] == (coefTrans & 0x00FF))
-     && (rxBuffer_[sizePkt_ - 10] == (coefTrans >> 8)))
-    return 8;
-  else
+  if(constCoefTrans_ != coefTrans)
     return 7;
+  else
+    return 8;
 }
