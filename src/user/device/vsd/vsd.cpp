@@ -618,6 +618,11 @@ bool Vsd::checkStop()
   return 0;
 }
 
+bool Vsd::checkFreq()
+{
+  return false;
+}
+
 float Vsd::checkAlarmVsd()
 {
   return 0;

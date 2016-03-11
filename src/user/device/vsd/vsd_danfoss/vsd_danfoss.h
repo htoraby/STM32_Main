@@ -202,6 +202,7 @@ public:
 
   bool checkStart();
   bool checkStop();
+  bool checkFreq();
 
   int resetSetpoints();
   //void processingRegimeRun();
