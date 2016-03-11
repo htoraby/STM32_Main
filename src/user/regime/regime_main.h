@@ -5,6 +5,7 @@
 #include "regime_technolog_soft_change_freq.h"
 #include "regime_technolog_maintenance_param.h"
 #include "regime_technolog_alternation_freq.h"
+#include "regime_technolog_jarring.h"
 
 /*!
  * \brief Функция инициализации задачи обработки всех режимов
