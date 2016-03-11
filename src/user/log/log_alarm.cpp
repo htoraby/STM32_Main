@@ -48,7 +48,6 @@ void LogAlarm::task()
     if (vsd->log()) {
       if (vsd->log()->checkAlarm()) {
         add();
-
       }
     }
   }
