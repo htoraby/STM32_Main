@@ -207,13 +207,11 @@ eMBErrorCode Scada::writeCoils(uint8_t *buffer, uint16_t address, uint16_t numCo
       }
       else {
         ksu.stop(LastReasonStopRemote);
-        ksu.resetBlock();
       }
       return MB_ENOERR;
     case 0x0041:
       if (value) {
         ksu.stop(LastReasonStopRemote);
-        ksu.resetBlock();
       }
       return MB_ENOERR;
     default:
