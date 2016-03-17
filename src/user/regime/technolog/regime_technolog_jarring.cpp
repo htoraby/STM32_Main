@@ -25,59 +25,84 @@ void RegimeTechnologJarring::processing()
   state_ = parameters.get(CCS_RGM_JARRING_STATE);
   beginTime_ = parameters.get(CCS_RGM_JARRING_TIMER);
 
-  if (action_ == OffAction) {
+  uint32_t time = 0;
+
+  static float count_ = 0;
+//  count_ = parameters.get(CCS_RGM_JARRING_CURRENT_COUNT);
+
+  // Режим выключен
+  if (action_ == OffAction)  {
     state_ = IdleState;
   }
 
   switch (state_) {
-  case IdleState:                           // Состояние Idle
-    if (action_ != OffAction) {             // Режим включен
-      if (((parameters.get(CCS_CONDITION) == CCS_CONDITION_RUNNING) ||
-           (parameters.get(CCS_CONDITION) == CCS_CONDITION_RUN)) &&
-          ksu.isAutoMode()) {               // Мы в работе
-        beginTime_ = ksu.getTime();         // Запоминаем время перехода в работу
-        state_ = RunningState;               // Переходим в состояние отсчёта периода встряхивания
-#if (USE_LOG_DEBUG == 1)
-        logDebug.add((DebugMsg, "Встряхив.: запуск таймера периода встряхивания");
-#endif
-      }
-    }
-    break;
-  case RunningState:                        // Состояние отсчёта периода встряхивания
-    if (ksu.isWorkMotor() && ksu.isAutoMode()) {
-      uint32_t time = ksu.getSecFromCurTime(beginTime_);
-      if ((time > periodJar_) && periodJar_) {
-        state_ = WorkState;
-      }
-    }
-    else {
-      state_ = IdleState;
-#if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Встряхив.: выключение режима в ожидании");
-#endif
-    }
-    break;
-  case WorkState:
-    if (ksu.isWorkMotor() && ksu.isAutoMode()) {
-      // Задать темп
-      // Задать частоту
-      state_ = WorkState + 1;
-    }
-    else {
-      state_ = IdleState;
-#if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Встряхив.: выключение режима в работе ");
-#endif
-    }
-    break;
-  case WorkState + 1:
+  case IdleState:                           // Режим не активен
 
     break;
-  case WorkState + 2:
-
+  case RunningState:                        // Активация таймера
+    beginTime_ = ksu.getTime();             // Запоминаем время когда начался отсчёт периода встряхивания
     break;
-  case WorkState + 3:
+  case WorkState:                           // Отсчёт таймера
+    time = ksu.getSecFromCurTime(beginTime_);
+    if ((time > periodJar_) && periodJar_) {// Время паузы истекло
+      state_ = WorkState + 1;               // Переход в состояние задания частоты 1
+    }
+    break;
+  case WorkState + 1:                       // Задание настроек режима встряхивания
+    // Задание минимума частоты
+    vsd->setMinFrequency(max(parameters.get(VSD_HIGH_LIM_SPEED_MOTOR), max(firstFreq_, secondFreq_)));
+    // Задание максимума частоты
+    vsd->setMaxFrequency(max(parameters.get(VSD_LOW_LIM_SPEED_MOTOR), max(firstFreq_, secondFreq_)));
+    // Задание темпа набора частоты
+    if (upTemp_)
+      vsd->setTimeSpeedUp(parameters.get(CCS_BASE_FREQUENCY) / upTemp_);
+    // Задание темпа снижения частот
+    if (downTemp_)
+      vsd->setTimeSpeedDown(parameters.get(CCS_BASE_FREQUENCY) / downTemp_);
+    // Переход к изменению частоты
+    state_ = WorkState + 2;
+    break;
+  case WorkState + 2:                       // Задание частоты 1
+    ksu.setFreq(firstFreq_);
+    state_ = WorkState + 3;
+    break;
+  case WorkState + 3:                       // Ожидание перехода на частоту
+    if (vsd->checkFreq())
+      state_ = WorkState + 4;
+    break;
+  case WorkState + 4:                       // Выход на частоту 2
+    ksu.setFreq(secondFreq_);
+    state_ = WorkState + 5;
+    break;
+  case WorkState + 5:                       // Ожидание перехода на частоту 2
+    if (vsd->checkFreq())
+      state_ = WorkState + 6;
+    break;
+  case WorkState + 6:                       // Проверка что выполнено нужное количество встряхиваний
+    count_++;
+    if (count_ >= countJar_) {
+      state_ = WorkState + 7;               // Выход из цикла встряхивания
+    }
+    else {
+      state_ = WorkState + 2;
+    }
+    break;
+  case WorkState + 7:                       // Возвращение настроек и запуск таймера
+
+    state_ = RunningState;
+    break;
+  default:
     break;
   }
+}
+
+void RegimeTechnologJarring::saveBeforeJarring()
+{
+
+}
+
+void RegimeTechnologJarring::loadAfterJarring()
+{
+
 }
 
