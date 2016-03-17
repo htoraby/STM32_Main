@@ -916,7 +916,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     parameters.set(VSD_HIGH_LIM_SPEED_MOTOR, value);
     calcTransRecommendedTapOff();
-    vsd->calcUfCharacteristicF();
+    vsd->calcUfCharacteristicF(value);
     return err;
   case CCS_TRANS_NOMINAL_FREQUENCY_INPUT:
     err = setValue(id, value, eventType);

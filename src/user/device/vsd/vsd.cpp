@@ -504,7 +504,7 @@ int Vsd::calcUfCharacteristicU(float value)
   return err_r;
 }
 
-int Vsd::calcUfCharacteristicF()
+int Vsd::calcUfCharacteristicF(float value)
 {
   return err_r;
 }

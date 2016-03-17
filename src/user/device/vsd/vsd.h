@@ -361,7 +361,7 @@ public:
    * \param value
    * \return
    */
-  virtual int calcUfCharacteristicF();
+  virtual int calcUfCharacteristicF(float value);
 
   /*!
    * \brief Метод задания предела тока
