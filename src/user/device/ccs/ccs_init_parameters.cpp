@@ -10538,5 +10538,65 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_POWEROFF_STATE - CCS_BEGIN].discret                = 1;
   parameters_[CCS_PROT_SUPPLY_POWEROFF_STATE - CCS_BEGIN].def                    = 0.0;
   parameters_[CCS_PROT_SUPPLY_POWEROFF_STATE - CCS_BEGIN].code                   = 0;
+  // Сохраняемое значение уставки частоты
+  parameters_[CCS_SAVE_VSD_FREQUENCY - CCS_BEGIN].id                             = CCS_SAVE_VSD_FREQUENCY;
+  parameters_[CCS_SAVE_VSD_FREQUENCY - CCS_BEGIN].access                         = ACCESS_OPERATOR;
+  parameters_[CCS_SAVE_VSD_FREQUENCY - CCS_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[CCS_SAVE_VSD_FREQUENCY - CCS_BEGIN].physic                         = PHYSIC_FREQUENCY;
+  parameters_[CCS_SAVE_VSD_FREQUENCY - CCS_BEGIN].validity                       = VALIDITY_ERROR;
+  parameters_[CCS_SAVE_VSD_FREQUENCY - CCS_BEGIN].value.float_t                  = 0;
+  parameters_[CCS_SAVE_VSD_FREQUENCY - CCS_BEGIN].min                            = 0.0;
+  parameters_[CCS_SAVE_VSD_FREQUENCY - CCS_BEGIN].max                            = 500.0;
+  parameters_[CCS_SAVE_VSD_FREQUENCY - CCS_BEGIN].discret                        = 100;
+  parameters_[CCS_SAVE_VSD_FREQUENCY - CCS_BEGIN].def                            = 50.0;
+  parameters_[CCS_SAVE_VSD_FREQUENCY - CCS_BEGIN].code                           = 0;
+  // Сохраняемое значение Время разгона до номинал. Частоты
+  parameters_[CCS_SAVE_VSD_TIMER_DISPERSAL - CCS_BEGIN].id                       = CCS_SAVE_VSD_TIMER_DISPERSAL;
+  parameters_[CCS_SAVE_VSD_TIMER_DISPERSAL - CCS_BEGIN].access                   = ACCESS_OPERATOR;
+  parameters_[CCS_SAVE_VSD_TIMER_DISPERSAL - CCS_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[CCS_SAVE_VSD_TIMER_DISPERSAL - CCS_BEGIN].physic                   = PHYSIC_TIME;
+  parameters_[CCS_SAVE_VSD_TIMER_DISPERSAL - CCS_BEGIN].validity                 = VALIDITY_ERROR;
+  parameters_[CCS_SAVE_VSD_TIMER_DISPERSAL - CCS_BEGIN].value.float_t            = 30.0;
+  parameters_[CCS_SAVE_VSD_TIMER_DISPERSAL - CCS_BEGIN].min                      = 0.0;
+  parameters_[CCS_SAVE_VSD_TIMER_DISPERSAL - CCS_BEGIN].max                      = 3600.0;
+  parameters_[CCS_SAVE_VSD_TIMER_DISPERSAL - CCS_BEGIN].discret                  = 1;
+  parameters_[CCS_SAVE_VSD_TIMER_DISPERSAL - CCS_BEGIN].def                      = 30.0;
+  parameters_[CCS_SAVE_VSD_TIMER_DISPERSAL - CCS_BEGIN].code                     = 0;
+  // Сохраняемое значение Время торм. с номинал. Частоты
+  parameters_[CCS_SAVE_VSD_TIMER_DELAY - CCS_BEGIN].id                           = CCS_SAVE_VSD_TIMER_DELAY;
+  parameters_[CCS_SAVE_VSD_TIMER_DELAY - CCS_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[CCS_SAVE_VSD_TIMER_DELAY - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_SAVE_VSD_TIMER_DELAY - CCS_BEGIN].physic                       = PHYSIC_TIME;
+  parameters_[CCS_SAVE_VSD_TIMER_DELAY - CCS_BEGIN].validity                     = VALIDITY_ERROR;
+  parameters_[CCS_SAVE_VSD_TIMER_DELAY - CCS_BEGIN].value.float_t                = 30.0;
+  parameters_[CCS_SAVE_VSD_TIMER_DELAY - CCS_BEGIN].min                          = 0.0;
+  parameters_[CCS_SAVE_VSD_TIMER_DELAY - CCS_BEGIN].max                          = 3600.0;
+  parameters_[CCS_SAVE_VSD_TIMER_DELAY - CCS_BEGIN].discret                      = 1;
+  parameters_[CCS_SAVE_VSD_TIMER_DELAY - CCS_BEGIN].def                          = 30.0;
+  parameters_[CCS_SAVE_VSD_TIMER_DELAY - CCS_BEGIN].code                         = 0;
+  // Сохраняемое значение уставка минимального значения частоты
+  parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].id                   = CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR;
+  parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].access               = ACCESS_OPERATOR;
+  parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].physic               = PHYSIC_FREQUENCY;
+  parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].validity             = VALIDITY_ERROR;
+  parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].value.float_t        = 40.0;
+  parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].min                  = 0.0;
+  parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].max                  = 500.0;
+  parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].discret              = 100;
+  parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].def                  = 40.0;
+  parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].code                 = 13;
+  // Сохраняемое значение уставка максимального значения частоты
+  parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].id                  = CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR;
+  parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].access              = ACCESS_OPERATOR;
+  parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].operation           = OPERATION_WRITE;
+  parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].physic              = PHYSIC_FREQUENCY;
+  parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].validity            = VALIDITY_ERROR;
+  parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].value.float_t       = 60.0;
+  parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].min                 = 0.0;
+  parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].max                 = 500.0;
+  parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].discret             = 100;
+  parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].def                 = 60.0;
+  parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].code                = 13;
 }
 
