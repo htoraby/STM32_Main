@@ -1528,6 +1528,8 @@ void Ccs::calcCountersStop(float reason)
   case LastReasonStopUnderloadMotor:
     setValue(CCS_PROT_UNDERLOAD_COUNT_STOP, getValue(CCS_PROT_UNDERLOAD_COUNT_STOP) + 1);
     break;
+  case LastReasonStopOperator: case LastReasonStopRemote:
+    break;
   default:
     setValue(CCS_PROT_OTHER_COUNT_STOP, getValue(CCS_PROT_OTHER_COUNT_STOP) + 1);
     break;
