@@ -17047,9 +17047,112 @@
 		<code>0</code>
 		<comment>Защита Отключение питания. Текущий параметр состояние автомата</comment>
 	</param>
-
 	<param>
 		<id>878</id>
+		<name>CCS_SAVE_VSD_FREQUENCY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>500.0</max>
+		<def>50.0</def>
+		<discret>100</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<text>Сохраняемое значение уставки частоты</text>
+		<short_text>Сохраняемое значение уставки частоты</short_text>
+		<form>NULL</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXX_XX</format>
+		<code>0</code>
+		<comment>Сохраняемое значение уставки частоты</comment>
+	</param>
+	<param>
+		<id>879</id>
+		<name>CCS_SAVE_VSD_TIMER_DISPERSAL</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>3600.0</max>
+		<def>30.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>30.0</value>
+		<text>Сохраняемое значение время разгона до номинал. Частоты</text>
+		<short_text>Сохраняемое значение Время разгона до номинал. Частоты</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXXX_X</format>
+		<code>0</code>
+		<comment>Сохраняемое значение Время разгона до номинал. Частоты</comment>
+	</param>
+	<param>
+		<id>880</id>
+		<name>CCS_SAVE_VSD_TIMER_DELAY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>3600.0</max>
+		<def>30.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>30.0</value>
+		<text>Сохраняемое значение время торм. с номинал. Частоты</text>
+		<short_text>Сохраняемое значение Время торм. с номинал. Частоты</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXXX_X</format>
+		<code>0</code>
+		<comment>Сохраняемое значение Время торм. с номинал. Частоты</comment>
+	</param>
+	<param>
+		<id>881</id>
+		<name>CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>500.0</max>
+		<def>40.0</def>
+		<discret>100</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>40.0</value>
+		<text>Сохраняемое значение уставка минимального значения частоты</text>
+		<short_text>Миним.частота регул.</short_text>
+		<form>NULL</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
+		<comment>Сохраняемое значение уставка минимального значения частоты</comment>
+	</param>
+	<param>
+		<id>882</id>
+		<name>CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>500.0</max>
+		<def>60.0</def>
+		<discret>100</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>60.0</value>
+		<text>Сохраняемое значение уставка максимального значения частоты</text>
+		<short_text>Максим.частота регул.</short_text>
+		<form>NULL</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
+		<comment>Сохраняемое значение уставка максимального значения частоты</comment>
+	</param>
+	<param>
+		<id>883</id>
 		<name>CCS_END</name>
 		<comment>Последний параметр</comment>
 	</param>
