@@ -17153,6 +17153,27 @@
 	</param>
 	<param>
 		<id>883</id>
+		<name>CCS_PROT_MOTOR_UNDERLOAD_CALC_LOAD</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>110.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>110.0</value>
+		<text>Недогруз (ЗСП). Текущий недогруз</text>
+		<short_text>Текущий недогруз</short_text>
+		<form>4.2.2 Недогруз (ЗСП)</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Текущий недогруз</comment>
+	</param>
+	<param>
+		<id>884</id>
 		<name>CCS_END</name>
 		<comment>Последний параметр</comment>
 	</param>

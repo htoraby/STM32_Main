@@ -37,6 +37,9 @@ ProtectionUnderloadMotor::~ProtectionUnderloadMotor()
 
 void ProtectionUnderloadMotor::getOtherSetpointProt()
 { 
+  static uint8_t delayCalc = 0;
+  float checkLoad = calcValue();
+
   if (ksu.getValue(CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_FLAG)) {
     float progressiveRestartDelay = ksu.getValue(CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY);
     progressiveRestartCount_ = ksu.getValue(CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_COUNT);
@@ -68,6 +71,15 @@ void ProtectionUnderloadMotor::getOtherSetpointProt()
     if (vsd->getCurrentFreq() == parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_2)) {
       tripSetpoint_ = parameters.get(CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2);
     }
+  }
+
+  // Вывод текущего перегруза и текущей задержки срабатывания на экран
+  if (delayCalc < 5) {
+    delayCalc++;
+  }
+  else {
+    delayCalc = 0;
+    parameters.set(CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD, checkLoad);
   }
 }
 
