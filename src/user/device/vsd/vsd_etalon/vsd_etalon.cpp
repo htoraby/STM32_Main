@@ -40,6 +40,7 @@ void VsdEtalon::init()
   initParameters();
   readParameters();
 
+  setLimitsMaxParameters();
   setLimitsMinFrequence(getValue(VSD_LOW_LIM_SPEED_MOTOR));
   setLimitsMaxFrequence(parameters.get(CCS_BASE_FREQUENCY));
 }
@@ -828,4 +829,11 @@ void VsdEtalon::calcParameters(uint16_t id)
 
     break;
   }
+}
+
+void VsdEtalon::setLimitsMaxParameters()
+{
+  parameters.setMax(CCS_COEF_OUT_CURRENT_1, getMax(VSD_COEF_OUT_CURRENT_1));
+  parameters.setMax(CCS_COEF_OUT_CURRENT_2, getMax(VSD_COEF_OUT_CURRENT_3));
+  parameters.setMax(CCS_COEF_OUT_CURRENT_3, getMax(VSD_COEF_OUT_CURRENT_3));
 }

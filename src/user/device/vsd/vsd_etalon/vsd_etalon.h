@@ -263,6 +263,8 @@ public:
   void calcParameters(uint16_t id);
 
 private:
+  void setLimitsMaxParameters();
+
   ModbusParameter modbusParameters_[127];
   DeviceModbus *dm_;
 

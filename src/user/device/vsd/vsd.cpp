@@ -659,3 +659,8 @@ int Vsd::resetSetpoints()
 {
   return 0;
 }
+
+void Vsd::setLimitsMaxParameters()
+{
+
+}
