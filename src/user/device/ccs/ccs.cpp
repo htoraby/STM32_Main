@@ -1560,6 +1560,18 @@ void Ccs::calcCountersRun(float reason)
   default:
     break;
   }
+
+  if ((reason == LastReasonRunOperator) || (reason == LastReasonRunRemote)) {
+    if (protImbalanceVoltIn.isRestart() || protOverVoltIn.isRestart() ||
+        protUnderVoltIn.isRestart())
+      setValue(CCS_PROT_VOLTAGE_COUNT_RESTART, getValue(CCS_PROT_VOLTAGE_COUNT_RESTART) + 1);
+    if (protOverloadMotor.isRestart())
+      setValue(CCS_PROT_OVERLOAD_COUNT_RESTART, getValue(CCS_PROT_OVERLOAD_COUNT_RESTART) + 1);
+    if (protUnderloadMotor.isRestart())
+      setValue(CCS_PROT_UNDERLOAD_COUNT_RESTART, getValue(CCS_PROT_UNDERLOAD_COUNT_RESTART) + 1);
+    if (protImbalanceCurrentMotor.isRestart())
+      setValue(CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART, getValue(CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART) + 1);
+  }
 }
 
 void Ccs::cmdCountersAllReset()
