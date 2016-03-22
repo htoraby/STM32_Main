@@ -49,9 +49,33 @@ void ScadaRegion30::calcParamsTask()
         value |= (1 << 6);
       if (parameters.get(CCS_PROT_SUPPLY_PHASE_ROTATION_PREVENT))
         value |= (1 << 7);
+      if (parameters.get(CCS_PROT_AI_1_PREVENT)) {
+        if (parameters.get(CCS_PROT_AI_1_ALARM_TYPE) == 0)
+          value |= (1 << 8);
+      }
+      if (parameters.get(CCS_PROT_AI_2_PREVENT)) {
+        if (parameters.get(CCS_PROT_AI_2_ALARM_TYPE) == 0)
+          value |= (1 << 9);
+      }
+      if (parameters.get(CCS_PROT_AI_3_PREVENT)) {
+        if (parameters.get(CCS_PROT_AI_3_ALARM_TYPE) == 0)
+          value |= (1 << 10);
+      }
+      if (parameters.get(CCS_PROT_AI_4_PREVENT)) {
+        if (parameters.get(CCS_PROT_AI_4_ALARM_TYPE) == 0)
+          value |= (1 << 11);
+      }
       scadaParameters_[1].value.float_t = value;
 
       value = 0;
+      if (parameters.get(CCS_PROT_AI_1_PREVENT) && parameters.get(CCS_PROT_AI_1_ALARM_TYPE))
+        value |= (1 << 3);
+      if (parameters.get(CCS_PROT_AI_2_PREVENT) && parameters.get(CCS_PROT_AI_2_ALARM_TYPE))
+        value |= (1 << 4);
+      if (parameters.get(CCS_PROT_AI_3_PREVENT) && parameters.get(CCS_PROT_AI_3_ALARM_TYPE))
+        value |= (1 << 5);
+      if (parameters.get(CCS_PROT_AI_4_PREVENT) && parameters.get(CCS_PROT_AI_4_ALARM_TYPE))
+        value |= (1 << 6);
       if (parameters.get(CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PREVENT) ||
           parameters.get(CCS_PROT_MOTOR_OVERLOAD_PREVENT) ||
           parameters.get(CCS_PROT_MOTOR_UNDERLOAD_PREVENT) ||
@@ -68,55 +92,77 @@ void ScadaRegion30::calcParamsTask()
           parameters.get(CCS_PROT_OTHER_VSD_PREVENT) ||
           parameters.get(CCS_PROT_OTHER_IMB_PREVENT))
         value |= (1 << 15);
-      if (!scadaParameters_[1].value.float_t && !value)
-        value |= (1 << 15);
       scadaParameters_[2].value.float_t = value;
     }
 
     // 259
     value = 0;
-    int reason = parameters.get(CCS_LAST_STOP_REASON);
-    switch (reason) {
-    case LastReasonStopOperator:
-      value = 12; break;
-    case LastReasonStopResistIsolation:
-      value = 7; break;
-    case LastReasonStopUnderloadMotor:
-      value = 5; break;
-    case LastReasonStopOverloadMotor:
-      value = 4; break;
-    case LastReasonStopUnderVoltIn:
-      value = 2; break;
-    case LastReasonStopOverVoltIn:
-      value = 1; break;
-    case LastReasonStopHackSu:
-      value = 8; break;
-    case LastReasonStopManometr:
-      value = 9; break;
-    case LastReasonStopImbalanceCurMotor:
-      value = 6; break;
-    case LastReasonStopImbalanceVoltIn:
-      value = 3; break;
-    case LastReasonStopProgram:
-      value = 13; break;
-    case LastReasonStopMinAnalog1:
-      value = 23; break;
-    case LastReasonStopMinAnalog2:
-      value = 24; break;
-    case LastReasonStopMaxAnalog1:
-      value = 34; break;
-    case LastReasonStopMaxAnalog2:
-      value = 35; break;
-    case LastReasonStopRemote:
-      value = 14; break;
-    case LastReasonStopCurrentMotor:
-      value = 10; break;
-    case LastReasonStopHardwareVsd:
-      value = 45; break;
-    default:
-      if (reason)
-        value = 46;
-      break;
+    if (ksu.isStopMotor()) {
+      int reason = parameters.get(CCS_LAST_STOP_REASON);
+      int reasonVsd = parameters.get(CCS_VSD_ALARM_CODE);
+      switch (reason) {
+      case LastReasonStopOperator:
+        value = 12; break;
+      case LastReasonStopResistIsolation:
+        value = 7; break;
+      case LastReasonStopUnderloadMotor:
+        value = 5; break;
+      case LastReasonStopOverloadMotor:
+        value = 4; break;
+      case LastReasonStopUnderVoltIn:
+        value = 2; break;
+      case LastReasonStopOverVoltIn:
+        value = 1; break;
+      case LastReasonStopHackSu:
+        value = 8; break;
+      case LastReasonStopManometr:
+        value = 9; break;
+      case LastReasonStopImbalanceCurMotor:
+        value = 6; break;
+      case LastReasonStopImbalanceVoltIn:
+        value = 3; break;
+      case LastReasonStopProgram:
+        value = 13; break;
+      case LastReasonStopMinAnalog1:
+        value = 23; break;
+      case LastReasonStopMinAnalog2:
+        value = 24; break;
+      case LastReasonStopMinAnalog3:
+        value = 25; break;
+      case LastReasonStopMinAnalog4:
+        value = 26; break;
+      case LastReasonStopMaxAnalog1:
+        value = 34; break;
+      case LastReasonStopMaxAnalog2:
+        value = 35; break;
+      case LastReasonStopMaxAnalog3:
+        value = 36; break;
+      case LastReasonStopMaxAnalog4:
+        value = 37; break;
+      case LastReasonStopRemote:
+        value = 14; break;
+      case LastReasonStopCurrentMotor:
+        value = 10; break;
+      case LastReasonStopHardwareVsd:
+        switch (reasonVsd) {
+        case VSD_NOVOMET_ALARM_I_LIMIT_FAST:
+        case VSD_ETALON_ALARM_CURRENT_LIMIT:
+          value = 10; break;
+        case VSD_NOVOMET_ALARM_TEMP_LINK:
+        case VSD_NOVOMET_ALARM_TEMP:
+        case VSD_NOVOMET_ALARM_AIR_TEMP:
+        case VSD_ETALON_ALARM_OVERHEAT_IGBT:
+        case VSD_ETALON_ALARM_OVERHEAT_FILTER:
+          value = 17; break;
+        default:
+          value = 45; break;
+        }
+        break;
+      default:
+        if (reason)
+          value = 46;
+        break;
+      }
     }
     scadaParameters_[3].value.float_t = value;
 

@@ -4794,7 +4794,7 @@
 		<id>239</id>
 		<name>CCS_PROT_DHS_RESISTANCE_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
