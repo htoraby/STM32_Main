@@ -618,9 +618,9 @@ bool Vsd::checkStop()
   return 0;
 }
 
-bool Vsd::checkFreq()
+bool Vsd::isSetPointFreq()
 {
-  return false;
+  return true;
 }
 
 float Vsd::checkAlarmVsd()

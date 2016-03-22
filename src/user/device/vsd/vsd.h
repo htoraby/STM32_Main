@@ -437,7 +437,7 @@ public:
    * \brief Метод проверки что выходная частота равна частоте уставки
    * \return
    */
-  virtual bool checkFreq();
+  virtual bool isSetPointFreq();
 
   virtual int resetBlock();
 

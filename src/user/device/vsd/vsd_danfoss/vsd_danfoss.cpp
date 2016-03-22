@@ -1166,7 +1166,7 @@ bool VsdDanfoss::checkStop()
   return false;
 }
 
-bool VsdDanfoss::checkFreq()
+bool VsdDanfoss::isSetPointFreq()
 {
   if(checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_SPEED))
     return true;
