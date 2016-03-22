@@ -175,13 +175,6 @@ public:
   int setTimeSpeedDown(float value);   
   int setSwitchingFrequency(float value);
 
-  // НАСТРОЙКИ U/f
-  int setUf_U1(float value);
-  int setUf_U2(float value);
-  int setUf_U3(float value);
-  int setUf_U4(float value);
-  int setUf_U5(float value);
-
   int calcUfCharacteristicU(float value);
   int calcUfCharacteristicF(float value);
 
@@ -250,11 +243,12 @@ public:
 
   /*!
    * \brief setUfU
-   * \param id
+   * \param idU
+   * \param idUPercent
    * \param value
    * \return
    */
-  int setUfU(uint16_t id, float value);
+  int setUfU(uint16_t idU, uint16_t idUPercent, float value);
 
   /*!
    * \brief Проверка на "необходимость" работы с параметром

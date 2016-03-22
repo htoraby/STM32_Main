@@ -533,7 +533,14 @@ int Vsd::resetBlock()
 
 int Vsd::setUfU(uint16_t id, float value)
 {
-  return setValue(id, value);
+  if (setValue(id, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания U (id = %d, value = %d)",
+                 id, value);
+#endif
+    return err_r;
+  }
+  return ok_r;
 }
 
 int Vsd::calcMotorCos()
