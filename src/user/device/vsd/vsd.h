@@ -484,6 +484,11 @@ public:
   float calcCurrentDC();
 
   /*!
+   * \brief Функция присвоения максимальной границы параметрам
+   */
+  virtual void setLimitsMaxParameters();
+
+  /*!
    * \brief writeToDevice
    */
   virtual void writeToDevice(int id, float value);

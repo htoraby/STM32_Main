@@ -1528,6 +1528,8 @@ void Ccs::calcCountersStop(float reason)
   case LastReasonStopUnderloadMotor:
     setValue(CCS_PROT_UNDERLOAD_COUNT_STOP, getValue(CCS_PROT_UNDERLOAD_COUNT_STOP) + 1);
     break;
+  case LastReasonStopOperator: case LastReasonStopRemote: case LastReasonStopProgram:
+    break;
   default:
     setValue(CCS_PROT_OTHER_COUNT_STOP, getValue(CCS_PROT_OTHER_COUNT_STOP) + 1);
     break;
@@ -1557,6 +1559,18 @@ void Ccs::calcCountersRun(float reason)
              getValue(CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART) + 1);
   default:
     break;
+  }
+
+  if ((reason == LastReasonRunOperator) || (reason == LastReasonRunRemote)) {
+    if (protImbalanceVoltIn.isRestart() || protOverVoltIn.isRestart() ||
+        protUnderVoltIn.isRestart())
+      setValue(CCS_PROT_VOLTAGE_COUNT_RESTART, getValue(CCS_PROT_VOLTAGE_COUNT_RESTART) + 1);
+    if (protOverloadMotor.isRestart())
+      setValue(CCS_PROT_OVERLOAD_COUNT_RESTART, getValue(CCS_PROT_OVERLOAD_COUNT_RESTART) + 1);
+    if (protUnderloadMotor.isRestart())
+      setValue(CCS_PROT_UNDERLOAD_COUNT_RESTART, getValue(CCS_PROT_UNDERLOAD_COUNT_RESTART) + 1);
+    if (protImbalanceCurrentMotor.isRestart())
+      setValue(CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART, getValue(CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART) + 1);
   }
 }
 

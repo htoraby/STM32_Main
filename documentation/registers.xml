@@ -17153,6 +17153,27 @@
 	</param>
 	<param>
 		<id>883</id>
+		<name>CCS_PROT_MOTOR_UNDERLOAD_CALC_LOAD</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>110.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>110.0</value>
+		<text>Недогруз (ЗСП). Текущий недогруз</text>
+		<short_text>Текущий недогруз</short_text>
+		<form>4.2.2 Недогруз (ЗСП)</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Текущий недогруз</comment>
+	</param>
+	<param>
+		<id>884</id>
 		<name>CCS_END</name>
 		<comment>Последний параметр</comment>
 	</param>
@@ -21843,7 +21864,7 @@
 		<min>0.5</min>
 		<max>1.5</max>
 		<def>1.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>1.0</value>
 		<text>Коэффициент коррекции напряжения Uab</text>
@@ -21864,7 +21885,7 @@
 		<min>0.5</min>
 		<max>1.5</max>
 		<def>1.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>1.0</value>
 		<text>Коэффициент коррекции напряжения Ubс</text>
@@ -21885,7 +21906,7 @@
 		<min>0.5</min>
 		<max>1.5</max>
 		<def>1.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>1.0</value>
 		<text>Коэффициент коррекции напряжения Uсa</text>
@@ -21906,7 +21927,7 @@
 		<min>0.5</min>
 		<max>2.0</max>
 		<def>1.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>1.0</value>
 		<text>Коэффициент коррекции напряжения Udc</text>
@@ -21927,7 +21948,7 @@
 		<min>0.5</min>
 		<max>1.5</max>
 		<def>1.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>1.0</value>
 		<text>Коэффициент коррекции тока Idc</text>
@@ -21948,7 +21969,7 @@
 		<min>0.5</min>
 		<max>1.5</max>
 		<def>1.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>1.0</value>
 		<text>Коэф. корр. показ.напряжения Uвых</text>
@@ -21969,7 +21990,7 @@
 		<min>0.5</min>
 		<max>1.05</max>
 		<def>1.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>1.0</value>
 		<text>Коэффициент корр.напряжения Uвых</text>
