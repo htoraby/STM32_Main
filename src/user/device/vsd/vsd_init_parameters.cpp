@@ -3216,7 +3216,7 @@ void Vsd::initParameters()
   parameters_[VSD_COEF_VOLTAGE_IN_AB - VSD_BEGIN].min                            = 0.5;
   parameters_[VSD_COEF_VOLTAGE_IN_AB - VSD_BEGIN].max                            = 1.5;
   parameters_[VSD_COEF_VOLTAGE_IN_AB - VSD_BEGIN].def                            = 1.0;
-  parameters_[VSD_COEF_VOLTAGE_IN_AB - VSD_BEGIN].discret                        = 100;
+  parameters_[VSD_COEF_VOLTAGE_IN_AB - VSD_BEGIN].discret                        = 1000;
   parameters_[VSD_COEF_VOLTAGE_IN_AB - VSD_BEGIN].code                           = 0;
   // Коэффициент коррекции напряжения Ubс
   parameters_[VSD_COEF_VOLTAGE_IN_BC - VSD_BEGIN].id                             = VSD_COEF_VOLTAGE_IN_BC;
@@ -3228,7 +3228,7 @@ void Vsd::initParameters()
   parameters_[VSD_COEF_VOLTAGE_IN_BC - VSD_BEGIN].min                            = 0.5;
   parameters_[VSD_COEF_VOLTAGE_IN_BC - VSD_BEGIN].max                            = 1.5;
   parameters_[VSD_COEF_VOLTAGE_IN_BC - VSD_BEGIN].def                            = 1.0;
-  parameters_[VSD_COEF_VOLTAGE_IN_BC - VSD_BEGIN].discret                        = 100;
+  parameters_[VSD_COEF_VOLTAGE_IN_BC - VSD_BEGIN].discret                        = 1000;
   parameters_[VSD_COEF_VOLTAGE_IN_BC - VSD_BEGIN].code                           = 0;
   // Коэффициент коррекции напряжения Uсa
   parameters_[VSD_COEF_VOLTAGE_IN_CA - VSD_BEGIN].id                             = VSD_COEF_VOLTAGE_IN_CA;
@@ -3240,7 +3240,7 @@ void Vsd::initParameters()
   parameters_[VSD_COEF_VOLTAGE_IN_CA - VSD_BEGIN].min                            = 0.5;
   parameters_[VSD_COEF_VOLTAGE_IN_CA - VSD_BEGIN].max                            = 1.5;
   parameters_[VSD_COEF_VOLTAGE_IN_CA - VSD_BEGIN].def                            = 1.0;
-  parameters_[VSD_COEF_VOLTAGE_IN_CA - VSD_BEGIN].discret                        = 100;
+  parameters_[VSD_COEF_VOLTAGE_IN_CA - VSD_BEGIN].discret                        = 1000;
   parameters_[VSD_COEF_VOLTAGE_IN_CA - VSD_BEGIN].code                           = 0;
   // Коэффициент коррекции напряжения Udc
   parameters_[VSD_COEF_VOLTAGE_IN_DC - VSD_BEGIN].id                             = VSD_COEF_VOLTAGE_IN_DC;
@@ -3252,7 +3252,7 @@ void Vsd::initParameters()
   parameters_[VSD_COEF_VOLTAGE_IN_DC - VSD_BEGIN].min                            = 0.5;
   parameters_[VSD_COEF_VOLTAGE_IN_DC - VSD_BEGIN].max                            = 2.0;
   parameters_[VSD_COEF_VOLTAGE_IN_DC - VSD_BEGIN].def                            = 1.0;
-  parameters_[VSD_COEF_VOLTAGE_IN_DC - VSD_BEGIN].discret                        = 100;
+  parameters_[VSD_COEF_VOLTAGE_IN_DC - VSD_BEGIN].discret                        = 1000;
   parameters_[VSD_COEF_VOLTAGE_IN_DC - VSD_BEGIN].code                           = 0;
   // Коэффициент коррекции тока Idc
   parameters_[VSD_COEF_CURRENT_IN_DC - VSD_BEGIN].id                             = VSD_COEF_CURRENT_IN_DC;
@@ -3264,7 +3264,7 @@ void Vsd::initParameters()
   parameters_[VSD_COEF_CURRENT_IN_DC - VSD_BEGIN].min                            = 0.5;
   parameters_[VSD_COEF_CURRENT_IN_DC - VSD_BEGIN].max                            = 1.5;
   parameters_[VSD_COEF_CURRENT_IN_DC - VSD_BEGIN].def                            = 1.0;
-  parameters_[VSD_COEF_CURRENT_IN_DC - VSD_BEGIN].discret                        = 100;
+  parameters_[VSD_COEF_CURRENT_IN_DC - VSD_BEGIN].discret                        = 1000;
   parameters_[VSD_COEF_CURRENT_IN_DC - VSD_BEGIN].code                           = 0;
   // Коэф. корр. показ.напряжения Uвых
   parameters_[VSD_COEF_VOLTAGE_OUT_1 - VSD_BEGIN].id                             = VSD_COEF_VOLTAGE_OUT_1;
@@ -3276,7 +3276,7 @@ void Vsd::initParameters()
   parameters_[VSD_COEF_VOLTAGE_OUT_1 - VSD_BEGIN].min                            = 0.5;
   parameters_[VSD_COEF_VOLTAGE_OUT_1 - VSD_BEGIN].max                            = 1.5;
   parameters_[VSD_COEF_VOLTAGE_OUT_1 - VSD_BEGIN].def                            = 1.0;
-  parameters_[VSD_COEF_VOLTAGE_OUT_1 - VSD_BEGIN].discret                        = 100;
+  parameters_[VSD_COEF_VOLTAGE_OUT_1 - VSD_BEGIN].discret                        = 1000;
   parameters_[VSD_COEF_VOLTAGE_OUT_1 - VSD_BEGIN].code                           = 0;
   // Коэффициент корр.напряжения Uвых
   parameters_[VSD_COEF_VOLTAGE_OUT_2 - VSD_BEGIN].id                             = VSD_COEF_VOLTAGE_OUT_2;
@@ -3288,7 +3288,7 @@ void Vsd::initParameters()
   parameters_[VSD_COEF_VOLTAGE_OUT_2 - VSD_BEGIN].min                            = 0.5;
   parameters_[VSD_COEF_VOLTAGE_OUT_2 - VSD_BEGIN].max                            = 1.05;
   parameters_[VSD_COEF_VOLTAGE_OUT_2 - VSD_BEGIN].def                            = 1.0;
-  parameters_[VSD_COEF_VOLTAGE_OUT_2 - VSD_BEGIN].discret                        = 100;
+  parameters_[VSD_COEF_VOLTAGE_OUT_2 - VSD_BEGIN].discret                        = 1000;
   parameters_[VSD_COEF_VOLTAGE_OUT_2 - VSD_BEGIN].code                           = 0;
   // Напряжение отпайки
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].id                          = VSD_TRANS_VOLTAGE_TAP_OFF;

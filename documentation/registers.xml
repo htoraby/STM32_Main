@@ -21864,7 +21864,7 @@
 		<min>0.5</min>
 		<max>1.5</max>
 		<def>1.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>1.0</value>
 		<text>Коэффициент коррекции напряжения Uab</text>
@@ -21885,7 +21885,7 @@
 		<min>0.5</min>
 		<max>1.5</max>
 		<def>1.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>1.0</value>
 		<text>Коэффициент коррекции напряжения Ubс</text>
@@ -21906,7 +21906,7 @@
 		<min>0.5</min>
 		<max>1.5</max>
 		<def>1.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>1.0</value>
 		<text>Коэффициент коррекции напряжения Uсa</text>
@@ -21927,7 +21927,7 @@
 		<min>0.5</min>
 		<max>2.0</max>
 		<def>1.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>1.0</value>
 		<text>Коэффициент коррекции напряжения Udc</text>
@@ -21948,7 +21948,7 @@
 		<min>0.5</min>
 		<max>1.5</max>
 		<def>1.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>1.0</value>
 		<text>Коэффициент коррекции тока Idc</text>
@@ -21969,7 +21969,7 @@
 		<min>0.5</min>
 		<max>1.5</max>
 		<def>1.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>1.0</value>
 		<text>Коэф. корр. показ.напряжения Uвых</text>
@@ -21990,7 +21990,7 @@
 		<min>0.5</min>
 		<max>1.05</max>
 		<def>1.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>1.0</value>
 		<text>Коэффициент корр.напряжения Uвых</text>
