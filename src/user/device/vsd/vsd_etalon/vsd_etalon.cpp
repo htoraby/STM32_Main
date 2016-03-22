@@ -834,6 +834,6 @@ void VsdEtalon::calcParameters(uint16_t id)
 void VsdEtalon::setLimitsMaxParameters()
 {
   parameters.setMax(CCS_COEF_OUT_CURRENT_1, getMax(VSD_COEF_OUT_CURRENT_1));
-  parameters.setMax(CCS_COEF_OUT_CURRENT_2, getMax(VSD_COEF_OUT_CURRENT_3));
+  parameters.setMax(CCS_COEF_OUT_CURRENT_2, getMax(VSD_COEF_OUT_CURRENT_2));
   parameters.setMax(CCS_COEF_OUT_CURRENT_3, getMax(VSD_COEF_OUT_CURRENT_3));
 }
