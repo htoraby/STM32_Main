@@ -175,6 +175,7 @@ float Ccs::calcDropVoltageFilter(float current, float freq, float coefTrans)
   if (coefTrans == 0)
     coefTrans = 380.0;
   float dUf = 2 * NUM_PI * inductFilter * freq * current * coefTrans / 1000.0;
+  setValue(CCS_DROP_VOLTAGE_FILTER, dUf);
   return dUf;
 }
 
@@ -510,7 +511,6 @@ float Ccs::calcTransRecommendedTapOff()
 
   setValue(CCS_MOTOR_VOLTAGE_CALC, voltHiLim * getValue(CCS_COEF_TRANSFORMATION) - dropVoltCable - dropVoltFilter);
   setValue(CCS_DPOR_VOLTAGE_CABLE, dropVoltCable);
-  setValue(CCS_DROP_VOLTAGE_FILTER, dropVoltFilter);
   setValue(CCS_TRANS_NEED_VOLTAGE_TAP_OFF, transTapOff);
   return parameters.get(CCS_TRANS_NEED_VOLTAGE_TAP_OFF);
 }
