@@ -88,11 +88,11 @@ float ProtectionOverloadMotor::calcValue()
   }
   float value2 = 0;
   if (parameters.isValidity(CCS_MOTOR_CURRENT_PHASE_2)) {
-    value = parameters.get(CCS_MOTOR_CURRENT_PHASE_2);
+    value2 = parameters.get(CCS_MOTOR_CURRENT_PHASE_2);
   }
   float value3 = 0;
   if (parameters.isValidity(CCS_MOTOR_CURRENT_PHASE_3)) {
-    value = parameters.get(CCS_MOTOR_CURRENT_PHASE_3);
+    value3 = parameters.get(CCS_MOTOR_CURRENT_PHASE_3);
   }
 
   value = max(max(value, value2), value3);
