@@ -79,7 +79,7 @@ void ProtectionUnderloadMotor::getOtherSetpointProt()
   }
   else {
     delayCalc = 0;
-    parameters.set(CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD, checkLoad);
+    parameters.set(CCS_PROT_MOTOR_UNDERLOAD_CALC_LOAD, checkLoad);
   }
 }
 
