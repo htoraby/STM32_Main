@@ -211,6 +211,7 @@ int Vsd::setLimitsMaxFrequence(float value)
   if (!setValue(VSD_HIGH_LIM_SPEED_MOTOR, value)) {   // Если записали максимум частоты
     setMax(VSD_LOW_LIM_SPEED_MOTOR, value);           // Меняем поле максимум для уставки "Минимальной частоты"
     setMax(VSD_FREQUENCY, value);                     // Меняем поле максимум для уставки "Частота" 
+    setMax(VSD_MOTOR_FREQUENCY, value);
     if (value < parameters.getMax(CCS_RGM_ALTERNATION_FREQ_FREQ_1))
       parameters.setMax(CCS_RGM_ALTERNATION_FREQ_FREQ_1, value);
     if (value < parameters.getMax(CCS_RGM_ALTERNATION_FREQ_FREQ_2))
