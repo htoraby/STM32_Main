@@ -33,6 +33,12 @@ ProtectionHardwareVsd::~ProtectionHardwareVsd()
 
 }
 
+void ProtectionHardwareVsd::getOtherSetpointProt()
+{
+  activDelay_ = 0.0;
+  tripDelay_ = 0.0;
+}
+
 bool ProtectionHardwareVsd::checkAlarm()
 {
   float alarm = vsd->checkAlarmVsd();

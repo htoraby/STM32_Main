@@ -12,6 +12,7 @@ public:
   ProtectionHardwareVsd();
   ~ProtectionHardwareVsd();
 private:
+  void getOtherSetpointProt();
   bool checkAlarm();
   bool checkPrevent();
   void addEventReactionProt();
