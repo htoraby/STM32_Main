@@ -9,7 +9,7 @@
 #include "SEGGER_RTT.h"
 #endif
 
-#define USE_WATCHDOG 0
+#define USE_WATCHDOG 1
 #define USE_EXT_MEM  1
 #define USE_TEST     0
 #define USE_DEBUG    0
@@ -21,7 +21,7 @@
 #define WATCHDOG_TIMEOUT 10 // 10 сек
 
 
-#define FIRMWARE_VERSION 0x0001
+#define FIRMWARE_VERSION 0x0100
 #define FIRMWARE_DATE __DATE__
 #define FIRMWARE_TIME __TIME__
 
