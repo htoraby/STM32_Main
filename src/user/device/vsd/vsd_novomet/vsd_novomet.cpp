@@ -471,15 +471,13 @@ int VsdNovomet::setBaseFrequency(float value)
 
 float VsdNovomet::checkAlarmVsd()
 {
-  float i = 0;
   float vsdStatus = parameters.get(CCS_VSD_ALARM_CODE);
   float vsdStatus1 = getValue(VSD_STATUS_WORD_1);
   float vsdStatus2 = getValue(VSD_STATUS_WORD_2);
   float vsdStatus7 = getValue(VSD_STATUS_WORD_7);
 
   if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_ULOW) && (vsdStatus <= VSD_NOVOMET_ALARM_ULOW))) {
-    vsdStatus = 0;
-    for (i = VSD_NOVOMET_ALARM_ULOW; i <= VSD_NOVOMET_ALARM_ULOW; i++) {
+    for (int i = VSD_NOVOMET_ALARM_ULOW; i <= VSD_NOVOMET_ALARM_ULOW; i++) {
       if (checkBit(vsdStatus1, i - 1000)) {
         resetBlock();
         return i;
@@ -488,8 +486,7 @@ float VsdNovomet::checkAlarmVsd()
   }
 
   if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_UD_LOW_FAULT) && (vsdStatus <= VSD_NOVOMET_ALARM_UD_HIGH_FAULT))) {
-    vsdStatus = 0;
-    for (i = VSD_NOVOMET_ALARM_UD_LOW_FAULT; i <= VSD_NOVOMET_ALARM_UD_HIGH_FAULT; i++) {
+    for (int i = VSD_NOVOMET_ALARM_UD_LOW_FAULT; i <= VSD_NOVOMET_ALARM_UD_HIGH_FAULT; i++) {
       if (checkBit(vsdStatus1, i - 1000)) {
         resetBlock();
         return i;
@@ -498,8 +495,7 @@ float VsdNovomet::checkAlarmVsd()
   }
 
   if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_UIN_ASYM) && (vsdStatus <= VSD_NOVOMET_ALARM_URECT_SHORT))) {
-    vsdStatus = 0;
-    for (i = VSD_NOVOMET_ALARM_UIN_ASYM; i <= VSD_NOVOMET_ALARM_URECT_SHORT; i++) {
+    for (int i = VSD_NOVOMET_ALARM_UIN_ASYM; i <= VSD_NOVOMET_ALARM_URECT_SHORT; i++) {
       if (checkBit(vsdStatus1, i - 1000)) {
         resetBlock();
         return i;
@@ -508,8 +504,7 @@ float VsdNovomet::checkAlarmVsd()
   }
 
   if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_FC_IT_ERR) && (vsdStatus <= VSD_NOVOMET_ALARM_AST_ERR))) {
-    vsdStatus = 0;
-    for (i = VSD_NOVOMET_ALARM_FC_IT_ERR; i <= VSD_NOVOMET_ALARM_AST_ERR; i++) {
+    for (int i = VSD_NOVOMET_ALARM_FC_IT_ERR; i <= VSD_NOVOMET_ALARM_AST_ERR; i++) {
       if (checkBit(vsdStatus2, i - 1016)) {
         resetBlock();
         return i;
@@ -518,8 +513,7 @@ float VsdNovomet::checkAlarmVsd()
   }
 
   if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_DISCHARGE_ERR) && (vsdStatus <= VSD_NOVOMET_ALARM_I_LIM_ERR))) {
-    vsdStatus = 0;
-    for (i = VSD_NOVOMET_ALARM_DISCHARGE_ERR; i <= VSD_NOVOMET_ALARM_I_LIM_ERR; i++) {
+    for (int i = VSD_NOVOMET_ALARM_DISCHARGE_ERR; i <= VSD_NOVOMET_ALARM_I_LIM_ERR; i++) {
       if (checkBit(vsdStatus2, i - 1016)) {
         resetBlock();
         return i;
@@ -528,7 +522,6 @@ float VsdNovomet::checkAlarmVsd()
   }
 
   if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_IMAX) && (vsdStatus <= VSD_NOVOMET_ALARM_CTR_MON))) {
-    vsdStatus = 0;
     for (int i = VSD_NOVOMET_ALARM_IMAX; i <= VSD_NOVOMET_ALARM_CTR_MON; i++) {
       if (checkBit(vsdStatus7, i - 1096)) {
         resetBlock();
@@ -538,7 +531,6 @@ float VsdNovomet::checkAlarmVsd()
   }
 
   if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_CLK_MON) && (vsdStatus <= VSD_NOVOMET_ALARM_DRV2))) {
-    vsdStatus = 0;
     for (int i = VSD_NOVOMET_ALARM_CLK_MON; i <= VSD_NOVOMET_ALARM_DRV2; i++) {
       if (checkBit(vsdStatus7, i - 1096)) {
         resetBlock();
@@ -548,7 +540,6 @@ float VsdNovomet::checkAlarmVsd()
   }
 
   if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_TEMP_LINK) && (vsdStatus <= VSD_NOVOMET_ALARM_AIR_TEMP))) {
-    vsdStatus = 0;
     for (int i = VSD_NOVOMET_ALARM_TEMP_LINK; i <= VSD_NOVOMET_ALARM_AIR_TEMP; i++) {
       if (checkBit(vsdStatus7, i - 1096)) {
         resetBlock();
@@ -557,18 +548,7 @@ float VsdNovomet::checkAlarmVsd()
     }
   }
 
-  if ((vsdStatus == 0) ||
-      (vsdStatus == VSD_NOVOMET_ALARM_I_LIMIT) ||
-      (vsdStatus == VSD_NOVOMET_ALARM_ABC_STATE) ||
-      (vsdStatus == VSD_NOVOMET_ALARM_STOPPED_ALARM) ||
-      (vsdStatus == VSD_NOVOMET_ALARM_CLK_MON) ||
-      (vsdStatus == VSD_NOVOMET_ALARM_TEST) ||
-      (vsdStatus == VSD_NOVOMET_ALARM_I_LIMIT_FAST) ||
-      (vsdStatus == VSD_NOVOMET_ALARM_ERR_STATE)) {
-    return VSD_ALARM_NONE;
-  }
-
-  return vsdStatus;
+  return VSD_ALARM_NONE;
 }
 
 bool VsdNovomet::checkPreventVsd()
