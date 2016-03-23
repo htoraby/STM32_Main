@@ -394,7 +394,7 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].value.float_t                 = 2000000.0;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].max                           = 999999999.9;
+  parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].max                           = 999999999.0;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].def                           = 2000000.0;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].code                          = 13;
@@ -2873,7 +2873,7 @@ void Ccs::initParameters()
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_DHS_RESISTANCE_PREVENT - CCS_BEGIN].id                    = CCS_PROT_DHS_RESISTANCE_PREVENT;
   parameters_[CCS_PROT_DHS_RESISTANCE_PREVENT - CCS_BEGIN].access                = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_RESISTANCE_PREVENT - CCS_BEGIN].operation             = OPERATION_READ;
+  parameters_[CCS_PROT_DHS_RESISTANCE_PREVENT - CCS_BEGIN].operation             = OPERATION_WRITE;
   parameters_[CCS_PROT_DHS_RESISTANCE_PREVENT - CCS_BEGIN].physic                = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_RESISTANCE_PREVENT - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_RESISTANCE_PREVENT - CCS_BEGIN].value.float_t         = 0.0;
@@ -6176,10 +6176,10 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].operation               = OPERATION_WRITE;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].physic                  = PHYSIC_NUMERIC;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].validity                = VALIDITY_OK;
-  parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].value.float_t           = 0;
+  parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].value.float_t           = 1.0;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].min                     = 0.0;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].max                     = 999999999.9;
-  parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].discret                 = 1;
+  parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].discret                 = 1000;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].def                     = 0;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].code                    = 13;
   // Номер ЦДНГ
@@ -6466,7 +6466,7 @@ void Ccs::initParameters()
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].validity                                 = VALIDITY_OK;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].value.float_t                            = 2.0;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].min                                      = 0.0;
-  parameters_[CCS_TYPE_CCS - CCS_BEGIN].max                                      = 999999999.9;
+  parameters_[CCS_TYPE_CCS - CCS_BEGIN].max                                      = 9999.9;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].discret                                  = 1;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].def                                      = 2.0;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].code                                     = 0;
@@ -6478,7 +6478,7 @@ void Ccs::initParameters()
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].value.float_t                 = 3.0;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].max                           = 999999999.9;
+  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].max                           = 9999.9;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].def                           = 3.0;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].code                          = 0;

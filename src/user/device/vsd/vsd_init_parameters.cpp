@@ -3730,7 +3730,7 @@ void Vsd::initParameters()
   parameters_[VSD_BLDC_MAX_UP - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_BLDC_MAX_UP - VSD_BEGIN].value.float_t                         = 15.0;
   parameters_[VSD_BLDC_MAX_UP - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_BLDC_MAX_UP - VSD_BEGIN].max                                   = 35.0;
+  parameters_[VSD_BLDC_MAX_UP - VSD_BEGIN].max                                   = 25.0;
   parameters_[VSD_BLDC_MAX_UP - VSD_BEGIN].def                                   = 15.0;
   parameters_[VSD_BLDC_MAX_UP - VSD_BEGIN].discret                               = 1;
   parameters_[VSD_BLDC_MAX_UP - VSD_BEGIN].code                                  = 0;

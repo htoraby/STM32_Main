@@ -678,7 +678,7 @@
 		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>999999999.0</max>
 		<def>2000000.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -10042,14 +10042,15 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
-		<discret>1</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
 		<text>Коэффициент коррекции сопротивления изоляции</text>
 		<short_text>Сопр.изоляции коэф.кор.</short_text>
 		<form>5.2 Корректировки</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XX_XXX</format>
 		<code>13</code>
 		<comment>Коэффициент корректировки сопротивления изоляции</comment>
 	</param>
@@ -10498,7 +10499,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>9999.9</max>
 		<def>2.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -10519,7 +10520,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>9999.9</max>
 		<def>3.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -10548,7 +10549,7 @@
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXXXXXX</format>
 		<code>0</code>
 		<comment>Заводской номер КСУ</comment>
 	</param>
@@ -18565,7 +18566,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>X_XXXX</format>
+		<format>X_XXX</format>
 		<code>0</code>
 		<comment>Интегральный коэффициент ОС фазового контура регулирования</comment>
 	</param>
@@ -22772,7 +22773,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>35.0</max>
+		<max>25.0</max>
 		<def>15.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
