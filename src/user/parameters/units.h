@@ -1,6 +1,9 @@
 #ifndef UNITS
 #define UNITS
 
+//! Число ячеек массива для ковертора
+#define MAX_CONV_ELEMS 9
+
 /*!
  * \brief The enPhysic enum
  * Типы физических величин
@@ -228,7 +231,7 @@ enum enPhysicCapacity {
 /*!
  * \brief Коэффициенты преобразования единиц измерения
  */
-extern float units[PHYSIC_LAST][6][2];
+extern float units[PHYSIC_LAST][MAX_CONV_ELEMS][2];
 
 #endif // UNITS
 
