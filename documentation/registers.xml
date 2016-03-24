@@ -9923,7 +9923,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>10.0</max>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Коэффициент коррекции напряжения Ua</text>
@@ -9942,7 +9942,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>10.0</max>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Коэффициент коррекции напряжения Ub</text>
@@ -9960,7 +9960,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>10.0</max>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Коэффициент коррекции напряжения Uc</text>
@@ -10041,7 +10041,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>10.0</max>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
