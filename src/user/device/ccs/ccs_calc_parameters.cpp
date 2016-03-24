@@ -533,7 +533,7 @@ void Ccs::calcResistanceIsolation()
       }
     }
   }
-  setValue(CCS_RESISTANCE_ISOLATION, resIso);
+  setValue(CCS_RESISTANCE_ISOLATION, applyCoef(resIso, parameters.get(CCS_COEF_RESISTANCE_ISOLATION)));
 }
 
 void Ccs::calcRegimeChangeFreqPeriodOneStep()
