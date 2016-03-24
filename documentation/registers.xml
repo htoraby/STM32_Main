@@ -3679,9 +3679,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>1.0</max>
+		<max>3.0</max>
+		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>РРЗ от турбинного вращения</text>
 		<short_text>Турбин.вращение РРЗ</short_text>
 		<form>4.2.4 Турбинное вращение</form>
