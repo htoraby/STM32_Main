@@ -678,7 +678,7 @@
 		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
 		<min>0.0</min>
-		<max>999999999.0</max>
+		<max>100000000.0</max>
 		<def>2000000.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -10499,7 +10499,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>9999.9</max>
+		<max>9999.0</max>
 		<def>2.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -10520,7 +10520,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>9999.9</max>
+		<max>9999.0</max>
 		<def>3.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -11217,7 +11217,7 @@
 		<def>1111.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>1111.0</value>
 		<text>Пароль второго уровня</text>
 		<short_text>Мастер пароль</short_text>
 		<form>7.2 Пароли</form>
@@ -11238,7 +11238,7 @@
 		<def>3141.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>6666.0</value>
+		<value>3141.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -11259,7 +11259,7 @@
 		<def>1991.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>1991.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -11280,7 +11280,7 @@
 		<def>2304.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>2304.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -15030,7 +15030,7 @@
 	<param>
 		<id>778</id>
 		<name>CCS_PROT_OTHER_VSD_NO_CONNECT_MODE</name>
-		<access>ACCESS_OPERATOR</access>
+		<access>ACCESS_SERVICE</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>

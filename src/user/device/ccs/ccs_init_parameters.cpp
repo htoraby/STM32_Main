@@ -394,7 +394,7 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].value.float_t                 = 2000000.0;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].max                           = 999999999.0;
+  parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].max                           = 100000000.0;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].def                           = 2000000.0;
   parameters_[CCS_TRANS_NOMINAL_POWER - CCS_BEGIN].code                          = 13;
@@ -6466,7 +6466,7 @@ void Ccs::initParameters()
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].validity                                 = VALIDITY_OK;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].value.float_t                            = 2.0;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].min                                      = 0.0;
-  parameters_[CCS_TYPE_CCS - CCS_BEGIN].max                                      = 9999.9;
+  parameters_[CCS_TYPE_CCS - CCS_BEGIN].max                                      = 9999.0;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].discret                                  = 1;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].def                                      = 2.0;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].code                                     = 0;
@@ -6478,7 +6478,7 @@ void Ccs::initParameters()
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].value.float_t                 = 3.0;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].max                           = 9999.9;
+  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].max                           = 9999.0;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].def                           = 3.0;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].code                          = 0;
@@ -6896,7 +6896,7 @@ void Ccs::initParameters()
   parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].operation                        = OPERATION_WRITE;
   parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].physic                           = PHYSIC_NUMERIC;
   parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].validity                         = VALIDITY_OK;
-  parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].value.float_t                    = 0.0;
+  parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].value.float_t                    = 1111.0;
   parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].min                              = 0.0;
   parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].max                              = 9999.0;
   parameters_[CCS_PASSWORD_LEVEL_2 - CCS_BEGIN].discret                          = 1;
@@ -6908,7 +6908,7 @@ void Ccs::initParameters()
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].operation                        = OPERATION_WRITE;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].physic                           = PHYSIC_NUMERIC;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].validity                         = VALIDITY_OK;
-  parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].value.float_t                    = 6666.0;
+  parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].value.float_t                    = 3141.0;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].min                              = 0.0;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].max                              = 9999.0;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].discret                          = 1;
@@ -6920,7 +6920,7 @@ void Ccs::initParameters()
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].operation                        = OPERATION_WRITE;
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].physic                           = PHYSIC_NUMERIC;
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].validity                         = VALIDITY_OK;
-  parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].value.float_t                    = 0.0;
+  parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].value.float_t                    = 1991.0;
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].min                              = 0.0;
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].max                              = 9999.0;
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].discret                          = 1;
@@ -6932,7 +6932,7 @@ void Ccs::initParameters()
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].operation                        = OPERATION_WRITE;
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].physic                           = PHYSIC_NUMERIC;
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].validity                         = VALIDITY_OK;
-  parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].value.float_t                    = 0.0;
+  parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].value.float_t                    = 2304.0;
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].min                              = 0.0;
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].max                              = 9999.0;
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].discret                          = 1;
@@ -9340,7 +9340,7 @@ void Ccs::initParameters()
   parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].code                       = 13;
   // "Защита от потери связи с ЧРП"
   parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_MODE - CCS_BEGIN].id                 = CCS_PROT_OTHER_VSD_NO_CONNECT_MODE;
-  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_MODE - CCS_BEGIN].access             = ACCESS_OPERATOR;
+  parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_MODE - CCS_BEGIN].access             = ACCESS_SERVICE;
   parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_MODE - CCS_BEGIN].operation          = OPERATION_WRITE;
   parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_MODE - CCS_BEGIN].physic             = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_MODE - CCS_BEGIN].validity           = VALIDITY_OK;
