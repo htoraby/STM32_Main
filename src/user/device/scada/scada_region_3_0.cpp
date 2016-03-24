@@ -94,6 +94,10 @@ void ScadaRegion30::calcParamsTask()
         value |= (1 << 15);
       scadaParameters_[2].value.float_t = value;
     }
+    else {
+      scadaParameters_[1].value.float_t = value;
+      scadaParameters_[2].value.float_t = value;
+    }
 
     // 259
     value = 0;
