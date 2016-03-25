@@ -1441,7 +1441,9 @@ enum enID
   TMS_PACKAGE_TIME_TMSP = 15081,                             //!< 
   TMS_PACKAGE_ONLY_TMSP = 15082,                             //!< 
   TMS_PACKAGE_ONLY_TIME_TMSP = 15083,                        //!< 
-  TMS_END = 15084,                                           //!< 
+  TMS_CONSTRUCTION_TMSP_ELEKTON = 15084,                     //!< Конфигурация погружного блока ТМС Электон
+  TMS_SENSOR_TMSP_ELEKTON = 15085,                           //!< Состав датчиков ТМСП
+  TMS_END = 15086,                                           //!< 
   EM_BEGIN = 20000,                                          //!< Первый параметр группы счётчиков электроэнергии
   EM_VOLTAGE_PHASE_1 = 20001,                                //!< Напряжение первой фазы
   EM_VOLTAGE_PHASE_2 = 20002,                                //!< Напряжение второй фазы

@@ -1010,5 +1010,29 @@ void Tms::initParameters()
   parameters_[TMS_PACKAGE_ONLY_TIME_TMSP - TMS_BEGIN].def                        = 0.0;
   parameters_[TMS_PACKAGE_ONLY_TIME_TMSP - TMS_BEGIN].discret                    = 1;
   parameters_[TMS_PACKAGE_ONLY_TIME_TMSP - TMS_BEGIN].code                       = 0;
+  // Конфигурация погружного блока ТМС Электон
+  parameters_[TMS_CONSTRUCTION_TMSP_ELEKTON - TMS_BEGIN].id                      = TMS_CONSTRUCTION_TMSP_ELEKTON;
+  parameters_[TMS_CONSTRUCTION_TMSP_ELEKTON - TMS_BEGIN].access                  = ACCESS_OPERATOR;
+  parameters_[TMS_CONSTRUCTION_TMSP_ELEKTON - TMS_BEGIN].operation               = OPERATION_READ;
+  parameters_[TMS_CONSTRUCTION_TMSP_ELEKTON - TMS_BEGIN].physic                  = PHYSIC_NUMERIC;
+  parameters_[TMS_CONSTRUCTION_TMSP_ELEKTON - TMS_BEGIN].validity                = VALIDITY_ERROR;
+  parameters_[TMS_CONSTRUCTION_TMSP_ELEKTON - TMS_BEGIN].value.float_t           = NAN;
+  parameters_[TMS_CONSTRUCTION_TMSP_ELEKTON - TMS_BEGIN].min                     = 0.0;
+  parameters_[TMS_CONSTRUCTION_TMSP_ELEKTON - TMS_BEGIN].max                     = 65535.0;
+  parameters_[TMS_CONSTRUCTION_TMSP_ELEKTON - TMS_BEGIN].def                     = 0.0;
+  parameters_[TMS_CONSTRUCTION_TMSP_ELEKTON - TMS_BEGIN].discret                 = 1;
+  parameters_[TMS_CONSTRUCTION_TMSP_ELEKTON - TMS_BEGIN].code                    = 0;
+  // Состав датчиков ТМСП
+  parameters_[TMS_SENSOR_TMSP_ELEKTON - TMS_BEGIN].id                            = TMS_SENSOR_TMSP_ELEKTON;
+  parameters_[TMS_SENSOR_TMSP_ELEKTON - TMS_BEGIN].access                        = ACCESS_OPERATOR;
+  parameters_[TMS_SENSOR_TMSP_ELEKTON - TMS_BEGIN].operation                     = OPERATION_READ;
+  parameters_[TMS_SENSOR_TMSP_ELEKTON - TMS_BEGIN].physic                        = PHYSIC_NUMERIC;
+  parameters_[TMS_SENSOR_TMSP_ELEKTON - TMS_BEGIN].validity                      = VALIDITY_ERROR;
+  parameters_[TMS_SENSOR_TMSP_ELEKTON - TMS_BEGIN].value.float_t                 = NAN;
+  parameters_[TMS_SENSOR_TMSP_ELEKTON - TMS_BEGIN].min                           = 0.0;
+  parameters_[TMS_SENSOR_TMSP_ELEKTON - TMS_BEGIN].max                           = 65535.0;
+  parameters_[TMS_SENSOR_TMSP_ELEKTON - TMS_BEGIN].def                           = 0.0;
+  parameters_[TMS_SENSOR_TMSP_ELEKTON - TMS_BEGIN].discret                       = 1;
+  parameters_[TMS_SENSOR_TMSP_ELEKTON - TMS_BEGIN].code                          = 0;
 }
 

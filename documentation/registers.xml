@@ -27340,6 +27340,46 @@
 	</param>
 	<param>
 		<id>15084</id>
+		<name>TMS_CONSTRUCTION_TMSP_ELEKTON</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Конфигурация погружного блока ТМС Электон</text>
+		<short_text>Конфигурация погружного блока ТМС Электон</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Конфигурация погружного блока ТМС Электон</comment>
+	</param>
+	<param>
+		<id>15085</id>
+		<name>TMS_SENSOR_TMSP_ELEKTON</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Состав датчиков ТМСП</text>
+		<short_text>Состав датчиков ТМСП</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Состав датчиков ТМСП</comment>
+	</param>
+	<param>
+		<id>15086</id>
 		<name>TMS_END</name>
 		<min>0.0</min>
 		<max>999999999.9</max>
