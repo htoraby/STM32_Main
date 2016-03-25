@@ -81,22 +81,25 @@ public:
    * \brief setNewValue
    * \param id
    * \param value
+   * \param eventType - тип события для фиксирования изменений в журнале
    */
-  virtual uint8_t setNewValue(uint16_t id, float value);
+  virtual uint8_t setNewValue(uint16_t id, float value, EventType eventType = AutoType);
 
   /*!
    * \brief setNewValue
    * \param id
    * \param value
+   * \param eventType - тип события для фиксирования изменений в журнале
    */
-  virtual uint8_t setNewValue(uint16_t id, uint32_t value);
+  virtual uint8_t setNewValue(uint16_t id, uint32_t value, EventType eventType = AutoType);
 
   /*!
    * \brief setNewValue
    * \param id
    * \param value
+   * \param eventType - тип события для фиксирования изменений в журнале
    */
-  virtual uint8_t setNewValue(uint16_t id, int value);
+  virtual uint8_t setNewValue(uint16_t id, int value, EventType eventType = AutoType);
 
   /*!
    * \brief Метод поиска и получения индекса по ID параметра

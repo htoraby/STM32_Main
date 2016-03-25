@@ -101,13 +101,12 @@ int Parameters::set(unsigned short id, float value, EventType eventType)
 {
   if ((id > CCS_BEGIN) && (id < CCS_END))
     return ksu.setNewValue(id, value, eventType);
-  // TODO: После проверки что формирование события работает для CCS, добавить для остальных устройств
   if ((id > VSD_BEGIN) && (id < VSD_END))
-    return vsd->setNewValue(id, value);
+    return vsd->setNewValue(id, value, eventType);
   if ((id > TMS_BEGIN) && (id < TMS_END))
-    return tms->setNewValue(id, value);
+    return tms->setNewValue(id, value, eventType);
   if ((id > EM_BEGIN) && (id < EM_END))
-    return em->setNewValue(id, value);
+    return em->setNewValue(id, value, eventType);
   return 0;
 }
 
@@ -116,11 +115,11 @@ int Parameters::set(unsigned short id, uint32_t value, EventType eventType)
   if ((id > CCS_BEGIN) && (id < CCS_END))
     return ksu.setNewValue(id, value, eventType);
   if ((id > VSD_BEGIN) && (id < VSD_END))
-    return vsd->setNewValue(id, value);
+    return vsd->setNewValue(id, value, eventType);
   if ((id > TMS_BEGIN) && (id < TMS_END))
-    return tms->setNewValue(id, value);
+    return tms->setNewValue(id, value, eventType);
   if ((id > EM_BEGIN) && (id < EM_END))
-    return em->setNewValue(id, value);
+    return em->setNewValue(id, value, eventType);
   return 0;
 }
 
@@ -238,14 +237,14 @@ uint8_t Parameters::setMax(uint16_t id, float value)
 
 float Parameters::convertFrom(float value, int physic, int unit)
 {
-  if (unit >= 6)
+  if (unit >= MAX_CONV_ELEMS)
     unit = 0;
   return (value * units[physic][unit][0] + units[physic][unit][1]);
 }
 
 float Parameters::convertTo(float value, int physic, int unit)
 {
-  if (unit >= 6)
+  if (unit >= MAX_CONV_ELEMS)
     unit = 0;
   return (value - (units[physic][unit][1]))/(units[physic][unit][0]);
 }

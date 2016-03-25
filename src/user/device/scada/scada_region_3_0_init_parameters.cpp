@@ -483,11 +483,11 @@ void ScadaRegion30::initParameters()
   scadaParameters_[39].command           = OPERATION_ERROR;
   scadaParameters_[39].value.float_t     = 0;
   // Вибрация насоса радиальная Vradial
-  scadaParameters_[40].id                = TMS_SPEED_XY_DISCHARGE;
+  scadaParameters_[40].id                = TMS_ACCELERATION_XY_INTAKE;
   scadaParameters_[40].address           = 296;
   scadaParameters_[40].operation         = OPERATION_READ;
-  scadaParameters_[40].physic            = PHYSIC_SPEED;
-  scadaParameters_[40].unit              = SPEED_MM_SS;
+  scadaParameters_[40].physic            = PHYSIC_ACCELERATION;
+  scadaParameters_[40].unit              = ACCELERATION_MSS2;
   scadaParameters_[40].typeData          = TYPE_DATA_UINT16;
   scadaParameters_[40].coefficient       = 1;
   scadaParameters_[40].min               = 0;
@@ -495,11 +495,11 @@ void ScadaRegion30::initParameters()
   scadaParameters_[40].command           = OPERATION_ERROR;
   scadaParameters_[40].value.float_t     = 0;
   // Вибрация насоса осевая Vaxial
-  scadaParameters_[41].id                = TMS_SPEED_Z_DISCHARGE;
+  scadaParameters_[41].id                = TMS_ACCELERATION_Z_INTAKE;
   scadaParameters_[41].address           = 297;
   scadaParameters_[41].operation         = OPERATION_READ;
-  scadaParameters_[41].physic            = PHYSIC_SPEED;
-  scadaParameters_[41].unit              = SPEED_MM_SS;
+  scadaParameters_[41].physic            = PHYSIC_ACCELERATION;
+  scadaParameters_[41].unit              = ACCELERATION_MSS2;
   scadaParameters_[41].typeData          = TYPE_DATA_UINT16;
   scadaParameters_[41].coefficient       = 1;
   scadaParameters_[41].min               = 0;

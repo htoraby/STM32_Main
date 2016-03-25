@@ -32,8 +32,38 @@
 	</param>
 	<param>
 		<midIn>PHYSIC_TIME</midIn>
+		<midOut>TIME_SS_MS</midOut>
+		<a>1000</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_TIME</midIn>
 		<midOut>TIME_MM</midOut>
 		<a>0.016667</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_TIME</midIn>
+		<midOut>TIME_MM_SS</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_TIME</midIn>
+		<midOut>TIME_HH</midOut>
+		<a>0.000277</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_TIME</midIn>
+		<midOut>TIME_HH_MM</midOut>
+		<a>0.016667</a>
+		<b>0</b>
+	</param>
+	<param>
+		<midIn>PHYSIC_TIME</midIn>
+		<midOut>TIME_HH_MM_SS</midOut>
+		<a>1</a>
 		<b>0</b>
 	</param>
 	<param>

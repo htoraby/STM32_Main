@@ -518,11 +518,11 @@
 		<name>Температура на выкиде насоса</name>
 	</param>
 	<param>
-		<id>TMS_SPEED_XY_DISCHARGE</id>
+		<id>TMS_ACCELERATION_XY_INTAKE</id>
 		<address>296</address>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_SPEED</physic>
-		<unit>SPEED_MM_SS</unit>
+		<physic>PHYSIC_ACCELERATION</physic>
+		<unit>ACCELERATION_MSS2</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
@@ -531,11 +531,11 @@
 		<name>Вибрация насоса радиальная Vradial</name>
 	</param>
 	<param>
-		<id>TMS_SPEED_Z_DISCHARGE</id>
+		<id>TMS_ACCELERATION_Z_INTAKE</id>
 		<address>297</address>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_SPEED</physic>
-		<unit>SPEED_MM_SS</unit>
+		<physic>PHYSIC_ACCELERATION</physic>
+		<unit>ACCELERATION_MSS2</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>

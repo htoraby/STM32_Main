@@ -303,9 +303,9 @@ int VsdNovomet::setMaxFrequency(float value)
   return err_r;
 }
 
-int VsdNovomet::setFrequency(float value)
+int VsdNovomet::setFrequency(float value, EventType eventType)
 {
-  if (!Vsd::setFrequency(value)) {
+  if (!Vsd::setFrequency(value, eventType)) {
     writeToDevice(VSD_FREQUENCY, getValue(VSD_FREQUENCY));
     return ok_r;
   }
@@ -1057,7 +1057,7 @@ void VsdNovomet::getNewVsdTimeMinute(float value)
   }
 }
 
-uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
+uint8_t VsdNovomet::setNewValue(uint16_t id, float value, EventType eventType)
 {
   switch (id) {
 
@@ -1085,12 +1085,12 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
       return err_r;
 
   case VSD_FREQUENCY:
-    return setFrequency(value);
+    return ksu.setFreq(value, eventType);
 
   case VSD_LOW_LIM_SPEED_MOTOR:
     if (!setMinFrequency(value)) {
       if (getValue(VSD_LOW_LIM_SPEED_MOTOR) > getValue(VSD_FREQUENCY)) {
-        return setFrequency(getValue(VSD_LOW_LIM_SPEED_MOTOR));
+        return ksu.setFreq(getValue(VSD_LOW_LIM_SPEED_MOTOR), AutoType);
       }
       return ok_r;
     }
@@ -1099,7 +1099,7 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
   case VSD_HIGH_LIM_SPEED_MOTOR:
     if (!setMaxFrequency(value)) {
       if (getValue(VSD_HIGH_LIM_SPEED_MOTOR) < getValue(VSD_FREQUENCY)) {
-        return setFrequency(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+        return ksu.setFreq(getValue(VSD_HIGH_LIM_SPEED_MOTOR), AutoType);
       }
       return ok_r;
     }
@@ -1127,7 +1127,7 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value)
     return setTemperatureAirMode(value);
 
   default:
-    int result = setValue(id, value);
+    int result = setValue(id, value, eventType);
     if (!result)
       writeToDevice(id, value);
     return result;

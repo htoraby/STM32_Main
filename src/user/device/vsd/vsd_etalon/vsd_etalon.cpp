@@ -138,9 +138,9 @@ int VsdEtalon::setMaxFrequency(float value)
   return err_r;
 }
 
-int VsdEtalon::setFrequency(float value)
+int VsdEtalon::setFrequency(float value, EventType eventType)
 {
-  if (!Vsd::setFrequency(value)) {
+  if (!Vsd::setFrequency(value, eventType)) {
     writeToDevice(VSD_FREQUENCY, getValue(VSD_FREQUENCY));
     return ok_r;
   }
@@ -462,7 +462,6 @@ void VsdEtalon::getNewValue(uint16_t id)
       break;
     case VSD_ETALON_RESISTANCE_ISOLATION:
       setValue(id, value);
-      parameters.set(CCS_RESISTANCE_ISOLATION, value);
       break;
     default:
       setValue(id, value);
@@ -471,7 +470,7 @@ void VsdEtalon::getNewValue(uint16_t id)
   }
 }
 
-uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
+uint8_t VsdEtalon::setNewValue(uint16_t id, float value, EventType eventType)
 {
   int result;
   switch (id) {
@@ -494,7 +493,7 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
   case VSD_LOW_LIM_SPEED_MOTOR:
     if (!setMinFrequency(value)) {
       if (getValue(VSD_LOW_LIM_SPEED_MOTOR) > getValue(VSD_FREQUENCY)) {
-        return setFrequency(getValue(VSD_LOW_LIM_SPEED_MOTOR));
+        return ksu.setFreq(getValue(VSD_LOW_LIM_SPEED_MOTOR), AutoType);
       }
       return ok_r;
     }
@@ -503,14 +502,14 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
   case VSD_HIGH_LIM_SPEED_MOTOR:
     if (!setMaxFrequency(value)) {
       if (getValue(VSD_HIGH_LIM_SPEED_MOTOR) < getValue(VSD_FREQUENCY)) {
-        return setFrequency(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+        return ksu.setFreq(getValue(VSD_HIGH_LIM_SPEED_MOTOR), AutoType);
       }
       return ok_r;
     }
     return err_r;
     
   case VSD_FREQUENCY:
-    return setFrequency(value);
+    return ksu.setFreq(value, eventType);
 
   case VSD_TEMP_SPEEDUP:
     return setTimeSpeedUp(value);
@@ -551,8 +550,17 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
   case VSD_BASE_FREQUENCY:
     return setBaseFrequency(value);
 
+  case VSD_DEPTH: case VSD_TRANS_CABLE_CROSS:
+  case VSD_MOTOR_VOLTAGE: case VSD_MOTOR_CURRENT:
+    result = setValue(id, value, eventType);
+    if (!result) {
+      writeToDevice(id, value);
+      readTransNeedVoltageTapOff();
+    }
+    return result;
+
   default:
-    result = setValue(id, value);
+    result = setValue(id, value, eventType);
     if (!result)
       writeToDevice(id, value);
     return result;
@@ -773,16 +781,7 @@ int VsdEtalon::setBaseVoltage(float value)
 {
   if (!setValue(VSD_BASE_VOLTAGE, value)) {
     writeToDevice(VSD_BASE_VOLTAGE, value);
-    osDelay(200);
-    readInDevice(VSD_TRANS_NEED_VOLTAGE_TAP_OFF);
-    osDelay(200);
-    value = value*(getValue(VSD_TRANS_NEED_VOLTAGE_TAP_OFF)/getValue(VSD_TRANS_VOLTAGE_TAP_OFF));
-    setMax(VSD_UF_CHARACTERISTIC_U_1, value);
-    setMax(VSD_UF_CHARACTERISTIC_U_2, value);
-    setMax(VSD_UF_CHARACTERISTIC_U_3, value);
-    setMax(VSD_UF_CHARACTERISTIC_U_4, value);
-    setMax(VSD_UF_CHARACTERISTIC_U_5, value);
-    readUfCharacterictic();
+    readTransNeedVoltageTapOff();
     return ok_r;
   }
   return err_r;
@@ -794,14 +793,25 @@ int VsdEtalon::setBaseFrequency(float value)
     writeToDevice(VSD_BASE_FREQUENCY, value);
     if (!setValue(VSD_BLDC_MAX_WORK_FREQ, value)) {
       writeToDevice(VSD_BLDC_MAX_WORK_FREQ, value);
-      osDelay(200);
-      readInDevice(VSD_TRANS_NEED_VOLTAGE_TAP_OFF);
-      osDelay(200);
-      readUfCharacterictic();
+      readTransNeedVoltageTapOff();
       return ok_r;
     }  
   }
   return err_r;
+}
+
+void VsdEtalon::readTransNeedVoltageTapOff()
+{
+  osDelay(500);
+  readInDevice(VSD_TRANS_NEED_VOLTAGE_TAP_OFF);
+  osDelay(200);
+  float value = BASE_VOLTAGE*(getValue(VSD_TRANS_NEED_VOLTAGE_TAP_OFF)/getValue(VSD_TRANS_VOLTAGE_TAP_OFF)) + 10;
+  setMax(VSD_UF_CHARACTERISTIC_U_1, value);
+  setMax(VSD_UF_CHARACTERISTIC_U_2, value);
+  setMax(VSD_UF_CHARACTERISTIC_U_3, value);
+  setMax(VSD_UF_CHARACTERISTIC_U_4, value);
+  setMax(VSD_UF_CHARACTERISTIC_U_5, value);
+  readUfCharacterictic();
 }
 
 int VsdEtalon::setUfU(uint16_t idU, uint16_t idUPercent, float value)
