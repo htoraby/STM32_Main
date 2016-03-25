@@ -230,9 +230,9 @@ int Vsd::setLimitsMaxFrequence(float value)
   return err_r;
 }
 
-int Vsd::setFrequency(float value)
+int Vsd::setFrequency(float value, EventType eventType)
 { 
-  if (setValue(VSD_FREQUENCY, value)) {
+  if (setValue(VSD_FREQUENCY, value, eventType)) {
 #if (USE_LOG_WARNING == 1)
     logDebug.add(WarningMsg, "ЧРП: Ошибка задания частоты (value = %d)",
                  value);

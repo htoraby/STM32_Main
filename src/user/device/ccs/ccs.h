@@ -389,8 +389,10 @@ public:
 
   /*!
    * \brief setFreq
+   * \param value присваемое значение
+   * \param eventType - тип события для фиксирования изменений в журнале
    */
-  void setFreq(float value);
+  int setFreq(float value, EventType eventType = NoneType);
 
   int calcUfCharacteristic();
 

@@ -170,7 +170,7 @@ public:
   int setRotation(float value);
   int setMinFrequency(float value);
   int setMaxFrequency(float value);
-  int setFrequency(float value);
+  int setFrequency(float value, EventType eventType = NoneType);
   int setTimeSpeedUp(float value); 
   int setTimeSpeedDown(float value);   
   int setSwitchingFrequency(float value);
@@ -192,7 +192,7 @@ public:
 
   void getNewValue(uint16_t id);
 
-  uint8_t setNewValue(uint16_t id, float value);
+  uint8_t setNewValue(uint16_t id, float value, EventType eventType = AutoType);
 
   /*!
    * \brief Метод записи параметра в устройство

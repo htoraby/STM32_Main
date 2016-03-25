@@ -204,10 +204,11 @@ public:
 
   /*!
    * \brief Функция записи в регистр уставки частоты
-   * \param value - задаваемая частота
+   * \param value присваемое значение
+   * \param eventType - тип события для фиксирования изменений в журнале
    * \return 0 - задание успешно, № - ошибки
    */
-  virtual int setFrequency(float value);
+  virtual int setFrequency(float value, EventType eventType = NoneType);
 
   /*!
    * \brief setTimeSpeedUp

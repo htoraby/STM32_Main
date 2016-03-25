@@ -248,9 +248,9 @@ int VsdDanfoss::setMaxFrequency(float value)
   }
 }
 
-int VsdDanfoss::setFrequency(float value)
+int VsdDanfoss::setFrequency(float value, EventType eventType)
 {
-  if (!Vsd::setFrequency(value)) {
+  if (!Vsd::setFrequency(value, eventType)) {
     writeToDevice(VSD_FREQUENCY, getValue(VSD_FREQUENCY));
     return ok_r;
   }
@@ -540,42 +540,42 @@ uint16_t VsdDanfoss::configVsdAsync()
   writeToDevice(VSD_MOTOR_SPEED, 3000);                         // 1-25
   writeToDevice(VSD_MOTOR_POLES, 2);                            // 1-39
 
-  parameters.set(VSD_UF_CHARACTERISTIC_F_1, 0);                  // 1-56.0
-  parameters.set(VSD_UF_CHARACTERISTIC_U_1, 5);                  // 1-55.0
-  parameters.set(VSD_UF_CHARACTERISTIC_F_2, 10);                 // 1-56.1
-  parameters.set(VSD_UF_CHARACTERISTIC_U_2, 68);                 // 1-55.1
-  parameters.set(VSD_UF_CHARACTERISTIC_F_3, 20);                 // 1-56.2
-  parameters.set(VSD_UF_CHARACTERISTIC_U_3, 131);                // 1-55.2
-  parameters.set(VSD_UF_CHARACTERISTIC_F_4, 30);                 // 1-56.3
-  parameters.set(VSD_UF_CHARACTERISTIC_U_4, 194);                // 1-55.3
-  parameters.set(VSD_UF_CHARACTERISTIC_F_5, 40);                 // 1-56.4
-  parameters.set(VSD_UF_CHARACTERISTIC_U_5, 257);                // 1-55.4
-  parameters.set(VSD_UF_CHARACTERISTIC_F_6, 50);                 // 1-56.5
-  parameters.set(VSD_UF_CHARACTERISTIC_U_6, 320);                // 1-55.5
-  parameters.set(VSD_RESONANCE_REMOVE, 0);                       // 1-64
-  parameters.set(VSD_RESONANCE_TIME, 2);                         // 1-65
-  parameters.set(VSD_MIN_CURRENT_LOW_SPEED, 100);                // 1-66
-  parameters.set(VSD_PM_START_MODE, 0);                          // 1-70
-  parameters.set(VSD_STOP_FUNCTION, 0);                          // 1-80
-  parameters.set(VSD_MIN_REFERENCE, 30);                         // 3-02
-  parameters.set(VSD_MAX_REFERENCE, 70);                         // 3-03
-  parameters.set(VSD_FREQUENCY, 50);                             // 3-11
-  parameters.set(VSD_TIMER_DISPERSAL, 30);                       // 3-41
-  parameters.set(VSD_TIMER_DELAY, 30);                           // 3-42
-  parameters.set(VSD_TIMER_DISP_FIX_SPEED, 30);                  // 3-80
-  parameters.set(VSD_TIMER_DELAY_FIX_SPEED, 30);                 // 3-81
-  parameters.set(VSD_MAX_OUTPUT_FREQUENCY, 71);                  // 4-19
-  parameters.set(VSD_LOW_LIM_SPEED_MOTOR, 30);                   // 4-12
-  parameters.set(VSD_HIGH_LIM_SPEED_MOTOR, 50);                  // 4-14
-  parameters.set(VSD_TORQUE_LIMIT, 160);                         // 4-16
-  parameters.set(VSD_CURRENT_LIMIT, 230);                        // 4-18
-  parameters.set(VSD_WARNING_SPEED_LOW, 650);                    // 4-52
-  parameters.set(VSD_DELAY_CURRENT_LIMIT, 5);                    // 14-24
-  parameters.set(VSD_DELAY_TORQUE_LIMIT, 0);                     // 14-25
-  parameters.set(VSD_FIL_TIME_CURRENT_LIMIT, 0.1);               // 14-32
-  parameters.set(VSD_DC_COMPENSATION, 1);                        // 14-51
-  parameters.set(VSD_HIGH_START_TORQUE_TIME, 10);                // 30-20
-  parameters.set(VSD_HIGH_START_TORQUE_CURRENT, 50);             // 30-21
+  parameters.set(VSD_UF_CHARACTERISTIC_F_1, 0, NoneType);                  // 1-56.0
+  parameters.set(VSD_UF_CHARACTERISTIC_U_1, 5, NoneType);                  // 1-55.0
+  parameters.set(VSD_UF_CHARACTERISTIC_F_2, 10, NoneType);                 // 1-56.1
+  parameters.set(VSD_UF_CHARACTERISTIC_U_2, 68, NoneType);                 // 1-55.1
+  parameters.set(VSD_UF_CHARACTERISTIC_F_3, 20, NoneType);                 // 1-56.2
+  parameters.set(VSD_UF_CHARACTERISTIC_U_3, 131, NoneType);                // 1-55.2
+  parameters.set(VSD_UF_CHARACTERISTIC_F_4, 30, NoneType);                 // 1-56.3
+  parameters.set(VSD_UF_CHARACTERISTIC_U_4, 194, NoneType);                // 1-55.3
+  parameters.set(VSD_UF_CHARACTERISTIC_F_5, 40, NoneType);                 // 1-56.4
+  parameters.set(VSD_UF_CHARACTERISTIC_U_5, 257, NoneType);                // 1-55.4
+  parameters.set(VSD_UF_CHARACTERISTIC_F_6, 50, NoneType);                 // 1-56.5
+  parameters.set(VSD_UF_CHARACTERISTIC_U_6, 320, NoneType);                // 1-55.5
+  parameters.set(VSD_RESONANCE_REMOVE, 0, NoneType);                       // 1-64
+  parameters.set(VSD_RESONANCE_TIME, 2, NoneType);                         // 1-65
+  parameters.set(VSD_MIN_CURRENT_LOW_SPEED, 100, NoneType);                // 1-66
+  parameters.set(VSD_PM_START_MODE, 0, NoneType);                          // 1-70
+  parameters.set(VSD_STOP_FUNCTION, 0, NoneType);                          // 1-80
+  parameters.set(VSD_MIN_REFERENCE, 30, NoneType);                         // 3-02
+  parameters.set(VSD_MAX_REFERENCE, 70, NoneType);                         // 3-03
+  parameters.set(VSD_FREQUENCY, 50, NoneType);                             // 3-11
+  parameters.set(VSD_TIMER_DISPERSAL, 30, NoneType);                       // 3-41
+  parameters.set(VSD_TIMER_DELAY, 30, NoneType);                           // 3-42
+  parameters.set(VSD_TIMER_DISP_FIX_SPEED, 30, NoneType);                  // 3-80
+  parameters.set(VSD_TIMER_DELAY_FIX_SPEED, 30, NoneType);                 // 3-81
+  parameters.set(VSD_MAX_OUTPUT_FREQUENCY, 71, NoneType);                  // 4-19
+  parameters.set(VSD_LOW_LIM_SPEED_MOTOR, 30, NoneType);                   // 4-12
+  parameters.set(VSD_HIGH_LIM_SPEED_MOTOR, 50, NoneType);                  // 4-14
+  parameters.set(VSD_TORQUE_LIMIT, 160, NoneType);                         // 4-16
+  parameters.set(VSD_CURRENT_LIMIT, 230, NoneType);                        // 4-18
+  parameters.set(VSD_WARNING_SPEED_LOW, 650, NoneType);                    // 4-52
+  parameters.set(VSD_DELAY_CURRENT_LIMIT, 5, NoneType);                    // 14-24
+  parameters.set(VSD_DELAY_TORQUE_LIMIT, 0, NoneType);                     // 14-25
+  parameters.set(VSD_FIL_TIME_CURRENT_LIMIT, 0.1, NoneType);               // 14-32
+  parameters.set(VSD_DC_COMPENSATION, 1, NoneType);                        // 14-51
+  parameters.set(VSD_HIGH_START_TORQUE_TIME, 10, NoneType);                // 30-20
+  parameters.set(VSD_HIGH_START_TORQUE_CURRENT, 50, NoneType);             // 30-21
 
 //  writeToDevice(VSD_MOTOR_CONTROL, VSD_MOTOR_CONTROL_UF);       // 1-01
 //  writeToDevice(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_ASYNC);          // 1-10
@@ -1430,7 +1430,7 @@ void VsdDanfoss::getNewValue(uint16_t id)
   }
 }
 
-uint8_t VsdDanfoss::setNewValue(uint16_t id, float value)
+uint8_t VsdDanfoss::setNewValue(uint16_t id, float value, EventType eventType)
 {
   int16_t result;
   switch (id) {
@@ -1457,12 +1457,12 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value)
       return err_r;
 
   case VSD_FREQUENCY:
-    return setFrequency(value);
+    return ksu.setFreq(value, eventType);
 
   case VSD_LOW_LIM_SPEED_MOTOR:
     if (!setMinFrequency(value)) {
       if (getValue(VSD_LOW_LIM_SPEED_MOTOR) > getValue(VSD_FREQUENCY)) {
-        return setFrequency(getValue(VSD_LOW_LIM_SPEED_MOTOR));
+        return ksu.setFreq(getValue(VSD_LOW_LIM_SPEED_MOTOR), AutoType);
       }
       return ok_r;
     }
@@ -1471,7 +1471,7 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value)
   case VSD_HIGH_LIM_SPEED_MOTOR:
     if (!setMaxFrequency(value)) {
       if (getValue(VSD_HIGH_LIM_SPEED_MOTOR) < getValue(VSD_FREQUENCY)) {
-        return setFrequency(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+        return ksu.setFreq(getValue(VSD_HIGH_LIM_SPEED_MOTOR), AutoType);
       }
       return ok_r;
     }
@@ -1487,7 +1487,7 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value)
     return setMotorSpeed(value);
 
   default:
-    result = setValue(id, value);
+    result = setValue(id, value, eventType);
     if (!result)
       writeToDevice(id, value);
     return result;

@@ -138,9 +138,9 @@ int VsdEtalon::setMaxFrequency(float value)
   return err_r;
 }
 
-int VsdEtalon::setFrequency(float value)
+int VsdEtalon::setFrequency(float value, EventType eventType)
 {
-  if (!Vsd::setFrequency(value)) {
+  if (!Vsd::setFrequency(value, eventType)) {
     writeToDevice(VSD_FREQUENCY, getValue(VSD_FREQUENCY));
     return ok_r;
   }
@@ -471,7 +471,7 @@ void VsdEtalon::getNewValue(uint16_t id)
   }
 }
 
-uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
+uint8_t VsdEtalon::setNewValue(uint16_t id, float value, EventType eventType)
 {
   int result;
   switch (id) {
@@ -494,7 +494,7 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
   case VSD_LOW_LIM_SPEED_MOTOR:
     if (!setMinFrequency(value)) {
       if (getValue(VSD_LOW_LIM_SPEED_MOTOR) > getValue(VSD_FREQUENCY)) {
-        return setFrequency(getValue(VSD_LOW_LIM_SPEED_MOTOR));
+        return ksu.setFreq(getValue(VSD_LOW_LIM_SPEED_MOTOR), AutoType);
       }
       return ok_r;
     }
@@ -503,14 +503,14 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
   case VSD_HIGH_LIM_SPEED_MOTOR:
     if (!setMaxFrequency(value)) {
       if (getValue(VSD_HIGH_LIM_SPEED_MOTOR) < getValue(VSD_FREQUENCY)) {
-        return setFrequency(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+        return ksu.setFreq(getValue(VSD_HIGH_LIM_SPEED_MOTOR), AutoType);
       }
       return ok_r;
     }
     return err_r;
     
   case VSD_FREQUENCY:
-    return setFrequency(value);
+    return ksu.setFreq(value, eventType);
 
   case VSD_TEMP_SPEEDUP:
     return setTimeSpeedUp(value);
@@ -552,7 +552,7 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value)
     return setBaseFrequency(value);
 
   default:
-    result = setValue(id, value);
+    result = setValue(id, value, eventType);
     if (!result)
       writeToDevice(id, value);
     return result;

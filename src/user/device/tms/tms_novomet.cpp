@@ -452,7 +452,7 @@ void TmsNovomet::getNewValue(uint16_t id)
   }
 }
 
-uint8_t TmsNovomet::setNewValue(uint16_t id, float value)
+uint8_t TmsNovomet::setNewValue(uint16_t id, float value, EventType eventType)
 {
   switch (id) {
   case TMS_PRESSURE_UNIT:
@@ -460,7 +460,7 @@ uint8_t TmsNovomet::setNewValue(uint16_t id, float value)
   case TMS_TEMPERATURE_UNIT:
     return setUnitTemperature(value);    
   default:
-    int result = setValue(id, value);
+    int result = setValue(id, value, eventType);
     if (!result)
       writeToDevice(id, value);
     return result;

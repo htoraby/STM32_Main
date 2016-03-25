@@ -49,7 +49,7 @@ public:
    * \param value - значение параметра
    * \return 0 - выполнено, код ошибки
    */
-  uint8_t setNewValue(uint16_t id, float value);
+  uint8_t setNewValue(uint16_t id, float value, EventType eventType = AutoType);
 
   /*!
    * \brief Метод записи параметра в устройство

@@ -145,7 +145,7 @@ void RegimeTechnologJarring::loadAfterJarring()
   vsd->setMaxFrequency(parameters.get(CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR));
   vsd->setTimeSpeedUp(parameters.get(CCS_SAVE_VSD_TIMER_DISPERSAL));
   vsd->setTimeSpeedDown(parameters.get(CCS_SAVE_VSD_TIMER_DELAY));
-  vsd->setFrequency(parameters.get(CCS_SAVE_VSD_FREQUENCY));
+  ksu.setFreq(parameters.get(CCS_SAVE_VSD_FREQUENCY), AutoType);
 }
 
 void RegimeTechnologJarring::configJarring()

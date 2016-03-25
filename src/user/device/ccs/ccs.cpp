@@ -523,7 +523,7 @@ void Ccs::initStart()
     freq = min(freq, parameters.get(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ));
   }
   if (freq != freqSetpoint) {
-    parameters.set(VSD_FREQUENCY, freq);
+    parameters.set(VSD_FREQUENCY, freq, NoneType);
   }
 }
 
@@ -615,12 +615,15 @@ bool Ccs::isBlock()
   }
 }
 
-void Ccs::setFreq(float value)
+int Ccs::setFreq(float value, EventType eventType)
 {
-  if (vsd->setFrequency(value) == ok_r) {
-    parameters.set(CCS_PREVIEW_FREQUENCY, parameters.get(VSD_FREQUENCY), NoneType);
+  float valueOld = parameters.get(VSD_FREQUENCY);
+  if (vsd->setFrequency(value, eventType) == ok_r) {
+    parameters.set(CCS_PREVIEW_FREQUENCY, valueOld, NoneType);
     parameters.set(CCS_PREVIEW_FREQUENCY_DATE_TIME, parameters.getU32(CCS_DATE_TIME), NoneType);
+    return ok_r;
   }
+  return err_r;
 }
 
 void Ccs::setDelay()
@@ -776,19 +779,19 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   switch (id) {
   case CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_M_IRMS, value);
+    parameters.set(VSD_M_IRMS, value, eventType);
     return err;
   case CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_T_BLANK, value);
+    parameters.set(VSD_T_BLANK, value, eventType);
     break;
   case CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_M_TRMS, value);
+    parameters.set(VSD_M_TRMS, value, eventType);
     return err;
   case CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_M_I_FAST, value);
+    parameters.set(VSD_M_I_FAST, value, eventType);
     return err;
   case CCS_RGM_CHANGE_FREQ_PERIOD:
     err = setValue(id, value, eventType);
@@ -914,7 +917,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_BASE_FREQUENCY:                  // Максимальная рабочая частота (базовая)
     err = setValue(id, value, eventType);
-    parameters.set(VSD_HIGH_LIM_SPEED_MOTOR, value);
+    parameters.set(VSD_HIGH_LIM_SPEED_MOTOR, value, eventType);
     calcTransRecommendedTapOff();
     vsd->calcUfCharacteristicF(value);
     return err;
@@ -925,12 +928,12 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_TRANS_CABLE_LENGHT:              // Длина кабеля
     err = setValue(id, value, eventType);
     calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
-    parameters.set(VSD_DEPTH, value);       // Записываем в ЧРП
+    parameters.set(VSD_DEPTH, value, eventType);       // Записываем в ЧРП
     return err;
   case CCS_TRANS_CABLE_CROSS:               // Сечение кабеля
     err = setValue(id, value, eventType);
     calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
-    parameters.set(VSD_TRANS_CABLE_CROSS, value);
+    parameters.set(VSD_TRANS_CABLE_CROSS, value, eventType);
     return err;
   case CCS_TRANS_VOLTAGE_TAP_OFF:           // Напряжение отпайки
     err = setValue(id, value, eventType);
@@ -939,18 +942,18 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     vsd->setLimitsMotor();
     vsd->setMotorCurrent(parameters.get(VSD_MOTOR_CURRENT));
     vsd->setMotorVoltage(parameters.get(VSD_MOTOR_VOLTAGE));
-    parameters.set(VSD_TRANS_VOLTAGE_TAP_OFF, value); // Задаём в ЧРП напряжение отпайки
+    parameters.set(VSD_TRANS_VOLTAGE_TAP_OFF, value, eventType); // Задаём в ЧРП напряжение отпайки
     return err;
   case CCS_MOTOR_INDUCTANCE:
     err = setValue(id, value, eventType);
     calcSystemInduct();
-    parameters.set(VSD_MOTOR_INDUCTANCE, value);      // Задаём индуктивность в ЧРП
+    parameters.set(VSD_MOTOR_INDUCTANCE, value, eventType);      // Задаём индуктивность в ЧРП
     return err;
   case CCS_MOTOR_INDUCTANCE_RESIST_PHASE:
     err = setValue(id, value, eventType);
     calcMotorInductFromResistPhase();
     calcSystemInduct();
-    parameters.set(VSD_MOTOR_INDUCTANCE_RESIST_PHASE, value);   // Задаём сопротивление в ЧРП
+    parameters.set(VSD_MOTOR_INDUCTANCE_RESIST_PHASE, value, eventType);   // Задаём сопротивление в ЧРП
     return err;
   case CCS_FILTER_INDUCTANCE:
     err = setValue(id, value, eventType);
@@ -958,19 +961,19 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_DATE_TIME_SEC:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_TIME_SECOND, value);
+    parameters.set(VSD_TIME_SECOND, value, eventType);
     return err;
   case CCS_DATE_TIME_MIN:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_TIME_MINUTE, value);
+    parameters.set(VSD_TIME_MINUTE, value, eventType);
     return err;
   case CCS_DATE_TIME_HOUR:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_TIME_HOUR, value);
+    parameters.set(VSD_TIME_HOUR, value, eventType);
     return err;
   case CCS_DATE_TIME_DAY:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_TIME_DAY, value);
+    parameters.set(VSD_TIME_DAY, value, eventType);
     return err;
   case CCS_DATE_TIME_MONTH:
     err = setValue(id, value, eventType);
@@ -1108,7 +1111,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
         logEvent.add(AddDeviceCode, eventType, AddDeviceFiltOutId, oldValue, value);
       else
         logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceFiltOutId, oldValue, value);
-      parameters.set(VSD_OUT_FILTER, value);
+      parameters.set(VSD_OUT_FILTER, value, eventType);
     }
     return err;
   case CCS_SCADA_TYPE:
@@ -1122,15 +1125,15 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_COEF_OUT_CURRENT_1:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_COEF_OUT_CURRENT_1, value);
+    parameters.set(VSD_COEF_OUT_CURRENT_1, value, eventType);
     return err;
   case CCS_COEF_OUT_CURRENT_2:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_COEF_OUT_CURRENT_2, value);
+    parameters.set(VSD_COEF_OUT_CURRENT_2, value, eventType);
     return err;
   case CCS_COEF_OUT_CURRENT_3:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_COEF_OUT_CURRENT_3, value);
+    parameters.set(VSD_COEF_OUT_CURRENT_3, value, eventType);
     return err;
   case CCS_CMD_REBOOT_SOFTWARE:
     err = setValue(id, 0.0, eventType);
@@ -1166,7 +1169,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_MOTOR_TYPE:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_MOTOR_TYPE, value);
+    parameters.set(VSD_MOTOR_TYPE, value, eventType);
     setMaxBaseFrequency();
     return err;
   case CCS_PROT_DI_1_MODE:

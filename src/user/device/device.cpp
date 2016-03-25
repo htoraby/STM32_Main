@@ -251,7 +251,8 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
 
   setFieldValue(index, value);
   setFieldValidity(index, isnan(value) ? VALIDITY_ERROR : VALIDITY_OK);
-
+if (id == VSD_FREQUENCY)
+  asm("nop");
   if ((value != oldValue) && !(isnan(value) && isnan(oldValue))) {
     // Сообщить контроллеру визуализации об обновлении параметра
     novobusSlave.putMessageParams(id);
@@ -383,19 +384,19 @@ void Device::calcParameters(uint16_t id)
 
 }
 
-uint8_t Device::setNewValue(uint16_t id, float value)
+uint8_t Device::setNewValue(uint16_t id, float value, EventType eventType)
 {
-  return setValue(id, value);
+  return setValue(id, value, eventType);
 }
 
-uint8_t Device::setNewValue(uint16_t id, uint32_t value)
+uint8_t Device::setNewValue(uint16_t id, uint32_t value, EventType eventType)
 {
-  return setValue(id, value);
+  return setValue(id, value, eventType);
 }
 
-uint8_t Device::setNewValue(uint16_t id, int value)
+uint8_t Device::setNewValue(uint16_t id, int value, EventType eventType)
 {
-  return setValue(id, value);
+  return setValue(id, value, eventType);
 }
 
 StatusType Device::saveParameters()
