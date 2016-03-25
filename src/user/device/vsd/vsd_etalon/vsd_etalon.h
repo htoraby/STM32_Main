@@ -181,6 +181,7 @@ public:
   void readUfCharacterictic();
   int setBaseVoltage(float value);
   int setBaseFrequency(float value);
+  void readTransNeedVoltageTapOff();
 
   // СЕРВИСНОЕ МЕНЮ ЧРП
   int setCoefVoltageInAB(float value);

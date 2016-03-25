@@ -550,6 +550,15 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value, EventType eventType)
   case VSD_BASE_FREQUENCY:
     return setBaseFrequency(value);
 
+  case VSD_DEPTH: case VSD_TRANS_CABLE_CROSS:
+  case VSD_MOTOR_VOLTAGE: case VSD_MOTOR_CURRENT:
+    result = setValue(id, value, eventType);
+    if (!result) {
+      writeToDevice(id, value);
+      readTransNeedVoltageTapOff();
+    }
+    return result;
+
   default:
     result = setValue(id, value, eventType);
     if (!result)
@@ -772,16 +781,7 @@ int VsdEtalon::setBaseVoltage(float value)
 {
   if (!setValue(VSD_BASE_VOLTAGE, value)) {
     writeToDevice(VSD_BASE_VOLTAGE, value);
-    osDelay(200);
-    readInDevice(VSD_TRANS_NEED_VOLTAGE_TAP_OFF);
-    osDelay(200);
-    value = value*(getValue(VSD_TRANS_NEED_VOLTAGE_TAP_OFF)/getValue(VSD_TRANS_VOLTAGE_TAP_OFF));
-    setMax(VSD_UF_CHARACTERISTIC_U_1, value);
-    setMax(VSD_UF_CHARACTERISTIC_U_2, value);
-    setMax(VSD_UF_CHARACTERISTIC_U_3, value);
-    setMax(VSD_UF_CHARACTERISTIC_U_4, value);
-    setMax(VSD_UF_CHARACTERISTIC_U_5, value);
-    readUfCharacterictic();
+    readTransNeedVoltageTapOff();
     return ok_r;
   }
   return err_r;
@@ -793,14 +793,25 @@ int VsdEtalon::setBaseFrequency(float value)
     writeToDevice(VSD_BASE_FREQUENCY, value);
     if (!setValue(VSD_BLDC_MAX_WORK_FREQ, value)) {
       writeToDevice(VSD_BLDC_MAX_WORK_FREQ, value);
-      osDelay(200);
-      readInDevice(VSD_TRANS_NEED_VOLTAGE_TAP_OFF);
-      osDelay(200);
-      readUfCharacterictic();
+      readTransNeedVoltageTapOff();
       return ok_r;
     }  
   }
   return err_r;
+}
+
+void VsdEtalon::readTransNeedVoltageTapOff()
+{
+  osDelay(500);
+  readInDevice(VSD_TRANS_NEED_VOLTAGE_TAP_OFF);
+  osDelay(200);
+  float value = BASE_VOLTAGE*(getValue(VSD_TRANS_NEED_VOLTAGE_TAP_OFF)/getValue(VSD_TRANS_VOLTAGE_TAP_OFF)) + 10;
+  setMax(VSD_UF_CHARACTERISTIC_U_1, value);
+  setMax(VSD_UF_CHARACTERISTIC_U_2, value);
+  setMax(VSD_UF_CHARACTERISTIC_U_3, value);
+  setMax(VSD_UF_CHARACTERISTIC_U_4, value);
+  setMax(VSD_UF_CHARACTERISTIC_U_5, value);
+  readUfCharacterictic();
 }
 
 int VsdEtalon::setUfU(uint16_t idU, uint16_t idUPercent, float value)
