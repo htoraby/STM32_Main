@@ -8363,7 +8363,7 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_INDUCTANCE - CCS_BEGIN].value.float_t                    = 0.0;
   parameters_[CCS_MOTOR_INDUCTANCE - CCS_BEGIN].min                              = 0.0;
   parameters_[CCS_MOTOR_INDUCTANCE - CCS_BEGIN].max                              = 100.0;
-  parameters_[CCS_MOTOR_INDUCTANCE - CCS_BEGIN].discret                          = 100;
+  parameters_[CCS_MOTOR_INDUCTANCE - CCS_BEGIN].discret                          = 1;
   parameters_[CCS_MOTOR_INDUCTANCE - CCS_BEGIN].def                              = 0.0;
   parameters_[CCS_MOTOR_INDUCTANCE - CCS_BEGIN].code                             = 13;
   // Полн.инд.сопр.фазы
