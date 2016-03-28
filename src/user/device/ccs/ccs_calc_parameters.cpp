@@ -511,7 +511,8 @@ float Ccs::calcTransRecommendedTapOff()
 
   setValue(CCS_MOTOR_VOLTAGE_CALC, voltHiLim * getValue(CCS_COEF_TRANSFORMATION) - dropVoltCable - dropVoltFilter);
   setValue(CCS_DPOR_VOLTAGE_CABLE, dropVoltCable);
-  setValue(CCS_TRANS_NEED_VOLTAGE_TAP_OFF, transTapOff);
+  if ((parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON))
+    setValue(CCS_TRANS_NEED_VOLTAGE_TAP_OFF, transTapOff);
   return parameters.get(CCS_TRANS_NEED_VOLTAGE_TAP_OFF);
 }
 
