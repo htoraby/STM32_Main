@@ -946,6 +946,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_MOTOR_INDUCTANCE:
     err = setValue(id, value, eventType);
+    calcMotorResistPhaseFromInduct();
     calcSystemInduct();
     parameters.set(VSD_MOTOR_INDUCTANCE, value, eventType);      // Задаём индуктивность в ЧРП
     return err;
