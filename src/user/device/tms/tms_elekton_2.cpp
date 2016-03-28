@@ -240,17 +240,131 @@ void TmsElekton2::initModbusParameters()
 
 }
 
+void TmsElekton2::initParameters()
+{
+  int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
+  for (int indexModbus = 0; indexModbus < count; indexModbus++) {
+    int id = dm_->getFieldID(indexModbus);
+    if (id <= 0)
+      continue;
+    int indexArray = getIndexAtId(id);                                   // Получаем индекс параметра в банке параметров
+    if (indexArray) {
+      setFieldAccess(indexArray, ACCESS_OPERATOR);
+      setFieldOperation(indexArray, dm_->getFieldOperation(indexModbus));
+      setFieldPhysic(indexArray, dm_->getFieldPhysic(indexModbus));
+      float tempVal = dm_->getFieldMinimum(indexModbus);
+      tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));
+      tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
+      setMin(id, tempVal);
+      tempVal = dm_->getFieldMaximum(indexModbus);
+      tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));
+      tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
+      setMax(id, tempVal);
+      tempVal = dm_->getFieldDefault(indexModbus);
+      tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(indexModbus));
+      tempVal = applyUnit(tempVal, dm_->getFieldPhysic(indexModbus), dm_->getFieldUnit(indexModbus));
+      setFieldDef(indexArray, tempVal);
+      setFieldValidity(indexArray, dm_->getFieldValidity(indexModbus));
+      setFieldValue(indexArray, getFieldDefault(indexArray));
+    }
+  }
+}
+
 void TmsElekton2::init()
 {
-  initModbusParameters();
+  initModbusParameters();                             // Инициализация modbus карты
   createThread("UpdParamsTms");
   int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
   dm_ = new DeviceModbus(modbusParameters_, count,
                          TMS_UART, 9600, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1);
   dm_->createThread("ProtocolTms", getValueDeviceQId_);
-
   initParameters();                         // Инициализация параметров
   readParameters();                         // Чтение параметров из памяти
+}
+
+void TmsElekton2::getNewValue(uint16_t id)
+{
+  float value = 0;
+  ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtId(id));
+
+  if (param->validity != ok_r) {
+    value = NAN;
+    setValue(id, value);
+    return;
+  }
+
+  switch (param->typeData) {
+  case TYPE_DATA_INT16:
+    value = (float)param->value.int16_t[0];
+    break;
+  case TYPE_DATA_UINT16:
+    value = (float)param->value.uint16_t[0];
+    break;
+  case  TYPE_DATA_INT32:
+    value = (float)param->value.int32_t;
+    break;
+  case  TYPE_DATA_UINT32:
+    value = (float)param->value.uint32_t;
+    break;
+  case  TYPE_DATA_FLOAT:
+    value = (float)param->value.float_t;
+    break;
+  default:
+    break;
+  }
+  value = value * param->coefficient;
+  value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
+
+  switch (id) {
+  default:
+    setValue(id, value);
+    break;
+  }
+}
+
+uint8_t TmsElekton2::setNewValue(uint16_t id, float value, EventType eventType)
+{
+  switch (id) {
+  default:
+    int result = setValue(id, value, eventType);
+    if (!result)
+      writeToDevice(id, value);
+    return result;
+  }
+}
+
+void TmsElekton2::writeToDevice(int id, float value)
+{
+  dm_->writeModbusParameter(id, value);
+}
+
+int TmsElekton2::setUnitPressure(float unit)
+{
+  return 0;
+}
+
+int TmsElekton2::setUnitTemperature(float unit)
+{
+  return 0;
+}
+
+bool TmsElekton2::isConnect()
+{
+  bool curConnect = dm_->isConnect();
+
+  if (prevConnect_ && !curConnect) {
+    int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
+    for (int indexModbus = 0; indexModbus < count; indexModbus++) {         // Цикл по карте регистров
+      int id = dm_->getFieldID(indexModbus);
+      if (id <= 0)
+        continue;
+      float value = NAN;
+      setValue(id, value);
+    }
+  }
+  prevConnect_ = curConnect;
+
+  return curConnect;
 }
 
 
