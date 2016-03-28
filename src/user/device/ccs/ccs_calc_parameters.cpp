@@ -720,8 +720,12 @@ void Ccs::calcDigitalInputs()
   else {                                     // Прошла 1 секунда
     if (impulse > 400)
       impulse = 400;
-    if ((parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON))
-      setValue(CCS_TURBO_ROTATION_NOW, impulse / 2);
+    if ((parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON)) {
+      if (!isWorkMotor())
+        setValue(CCS_TURBO_ROTATION_NOW, impulse / 2);
+      else
+        setValue(CCS_TURBO_ROTATION_NOW, 0);
+    }
     impulse = 0;                            // Сбрасываем количество переходов
     count[DI6] = 0;                         // Сбрасывам счётчик
   }
