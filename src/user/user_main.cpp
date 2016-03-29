@@ -81,6 +81,9 @@ void createDhs(bool init)
   case TYPE_DHS_NOVOMET:
     tms = new TmsNovomet();
     break;
+  case TYPE_DHS_ELEKTON_2:
+    tms = new TmsElekton2();
+    break;
   default:
     tms = new Tms();
     break;
