@@ -190,8 +190,9 @@ enum enTypeDHS {
   TYPE_DHS_NOVOMET,                         //!< Новомет
   TYPE_DHS_ALMAZ,                           //!< Алмаз
   TYPE_DHS_BORETS,                          //!< Борец
-  TYPE_DHS_ELEKTON,                         //!< Электон
-  TYPE_DHS_ETALON,                          //!< Эталон
+  TYPE_DHS_ELEKTON_2,                       //!< Электон
+  TYPE_DHS_ELEKTON_3,                       //!< Эталон ТМСН-2
+  TYPE_DHS_ETALON,                          //!< Эталон ТМСН-3
   TYPE_DHS_IRZ,                             //!< Ирз
   TYPE_DHS_ORION,                           //!< Орион
   TYPE_DHS_PIC_V2,                          //!< Шлюмберже
