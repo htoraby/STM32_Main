@@ -926,8 +926,8 @@ void ScadaRegion30::initParameters()
   scadaParameters_[76].max               = 0;
   scadaParameters_[76].command           = OPERATION_ERROR;
   scadaParameters_[76].value.float_t     = 0;
-  // Номинальное напряжение ТМПН
-  scadaParameters_[77].id                = CCS_TRANS_NOMINAL_VOLTAGE;
+  // Номинальное напряжение сети
+  scadaParameters_[77].id                = CCS_TRANS_NOMINAL_VOLTAGE_INPUT;
   scadaParameters_[77].address           = 544;
   scadaParameters_[77].operation         = OPERATION_WRITE;
   scadaParameters_[77].physic            = PHYSIC_VOLTAGE;
