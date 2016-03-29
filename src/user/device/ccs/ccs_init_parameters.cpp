@@ -10610,5 +10610,17 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_CALC_LOAD - CCS_BEGIN].discret            = 1;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_CALC_LOAD - CCS_BEGIN].def                = 110.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_CALC_LOAD - CCS_BEGIN].code               = 0;
+  // Номинальный ток СУ
+  parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].id                             = CCS_SU_NOMINAL_CURRENT;
+  parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].access                         = ACCESS_SERVICE;
+  parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].physic                         = PHYSIC_NUMERIC;
+  parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].validity                       = VALIDITY_OK;
+  parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].value.float_t                  = 0;
+  parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].min                            = 0.0;
+  parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].max                            = 999999999.9;
+  parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].discret                        = 1;
+  parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].def                            = 0;
+  parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].code                           = 13;
 }
 

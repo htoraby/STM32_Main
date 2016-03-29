@@ -17177,6 +17177,26 @@
 	</param>
 	<param>
 		<id>884</id>
+		<name>CCS_SU_NOMINAL_CURRENT</name>
+		<access>ACCESS_SERVICE</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<text>Номинальный ток СУ</text>
+		<short_text>Номинальный ток СУ</short_text>
+		<form>6.4 Станция управления</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>160;250;400;630;800;1000</values>
+		<comment>Номинальный ток СУ</comment>
+	</param>
+	<param>
+		<id>885</id>
 		<name>CCS_END</name>
 		<comment>Последний параметр</comment>
 	</param>
