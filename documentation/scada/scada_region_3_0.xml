@@ -978,7 +978,7 @@
 		<name>Адрес последнего регистра архива</name>
 	</param>
 	<param>
-		<id>CCS_TRANS_NOMINAL_VOLTAGE</id>
+		<id>CCS_TRANS_NOMINAL_VOLTAGE_INPUT</id>
 		<address>544</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
@@ -988,7 +988,7 @@
 		<min>100</min>
 		<max>600</max>
 		<command>OPERATION_ERROR</command>
-		<name>Номинальное напряжение ТМПН</name>
+		<name>Номинальное напряжение сети</name>
 	</param>
 	<param>
 		<id>CCS_PROT_SUPPLY_OVERVOLTAGE_MODE</id>

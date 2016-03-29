@@ -454,7 +454,10 @@ void VsdEtalon::getNewValue(uint16_t id)
       break;
     case VSD_TURBO_ROTATION_NOW:
       setValue(id, value);
-      parameters.set(CCS_TURBO_ROTATION_NOW, value);
+      if (!ksu.isWorkMotor())
+        parameters.set(CCS_TURBO_ROTATION_NOW, value);
+      else
+        parameters.set(CCS_TURBO_ROTATION_NOW, 0);
       break;
     case VSD_DOOR_VALUE:
       setValue(id, value);
@@ -552,6 +555,7 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value, EventType eventType)
 
   case VSD_DEPTH: case VSD_TRANS_CABLE_CROSS:
   case VSD_MOTOR_VOLTAGE: case VSD_MOTOR_CURRENT:
+  case VSD_TRANS_VOLTAGE_TAP_OFF:
     result = setValue(id, value, eventType);
     if (!result) {
       writeToDevice(id, value);

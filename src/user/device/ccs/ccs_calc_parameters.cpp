@@ -511,7 +511,8 @@ float Ccs::calcTransRecommendedTapOff()
 
   setValue(CCS_MOTOR_VOLTAGE_CALC, voltHiLim * getValue(CCS_COEF_TRANSFORMATION) - dropVoltCable - dropVoltFilter);
   setValue(CCS_DPOR_VOLTAGE_CABLE, dropVoltCable);
-  setValue(CCS_TRANS_NEED_VOLTAGE_TAP_OFF, transTapOff);
+  if ((parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON))
+    setValue(CCS_TRANS_NEED_VOLTAGE_TAP_OFF, transTapOff);
   return parameters.get(CCS_TRANS_NEED_VOLTAGE_TAP_OFF);
 }
 
@@ -720,8 +721,12 @@ void Ccs::calcDigitalInputs()
   else {                                     // Прошла 1 секунда
     if (impulse > 400)
       impulse = 400;
-    if ((parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON))
-      setValue(CCS_TURBO_ROTATION_NOW, impulse / 2);
+    if ((parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON)) {
+      if (!isWorkMotor())
+        setValue(CCS_TURBO_ROTATION_NOW, impulse / 2);
+      else
+        setValue(CCS_TURBO_ROTATION_NOW, 0);
+    }
     impulse = 0;                            // Сбрасываем количество переходов
     count[DI6] = 0;                         // Сбрасывам счётчик
   }

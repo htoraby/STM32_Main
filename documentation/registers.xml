@@ -13384,7 +13384,7 @@
 		<min>0.0</min>
 		<max>100.0</max>
 		<def>0.0</def>
-		<discret>100</discret>
+		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Индуктивность</text>
@@ -13392,7 +13392,7 @@
 		<form>3.1 Двигатель</form>
 		<unit>INDUNCTANCE_MH</unit>
 		<unit_lcd>INDUNCTANCE_MH</unit_lcd>
-		<format>XXX_XX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Индуктивность</comment>
 	</param>

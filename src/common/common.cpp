@@ -55,7 +55,7 @@ int checkRangeNoInclude(double value, double min, double max, uint16_t discret)
 
 int checkRangeInclude(double value, double min, double max, uint16_t discret)
 {
-  double valueU32 = value * discret + 0.5;
+  double valueU32 = value * discret;
   double minU32 = min * discret - 0.5;
   double maxU32 = max * discret + 0.5;
   // Если значение больше минимума

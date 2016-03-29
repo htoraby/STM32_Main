@@ -185,10 +185,6 @@ void ScadaRegion30::calcParamsTask()
     value = (dateTime.tm_min << 8) + dateTime.tm_sec;
     scadaParameters_[6].value.float_t = value;
 
-    //277
-    if (ksu.isWorkMotor())
-      scadaParameters_[21].value.float_t = 0;
-
     //280
     scadaParameters_[24].value.float_t = parameters.get(VSD_OUT_VOLTAGE_MOTOR) - parameters.get(CCS_DROP_VOLTAGE_FILTER);
 

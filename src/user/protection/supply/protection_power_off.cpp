@@ -75,8 +75,8 @@ float ProtectionPowerOff::calcValue()
   value = min(min(value, value2), value3);
 
   float nominal = NOM_VOLTAGE;
-  if  (parameters.isValidity(CCS_TRANS_NOMINAL_VOLTAGE)) {
-    nominal = parameters.get(CCS_TRANS_NOMINAL_VOLTAGE) / SQRT_3;
+  if  (parameters.isValidity(CCS_TRANS_NOMINAL_VOLTAGE_INPUT)) {
+    nominal = parameters.get(CCS_TRANS_NOMINAL_VOLTAGE_INPUT) / SQRT_3;
   }
 
   return (value / (nominal / 100.0));
