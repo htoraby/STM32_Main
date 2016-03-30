@@ -10551,7 +10551,7 @@
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXXXXX</format>
+		<format>XXXXXXXXXXX</format>
 		<code>0</code>
 		<comment>Заводской номер КСУ</comment>
 	</param>
@@ -17197,6 +17197,25 @@
 	</param>
 	<param>
 		<id>885</id>
+		<name>CCS_NUM_PRODUCTION_CCS_2</name>
+		<access>ACCESS_SERVICE</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<text>Заводской номер КСУ</text>
+		<short_text>N контроллера</short_text>
+		<form>6.4 Станция управления</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXXXXX</format>
+		<code>0</code>
+		<comment>Заводской номер КСУ (2 часть)</comment>
+	</param>
+	<param>
+		<id>886</id>
 		<name>CCS_END</name>
 		<comment>Последний параметр</comment>
 	</param>
