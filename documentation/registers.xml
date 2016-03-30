@@ -13362,17 +13362,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_INDUNCTANCE</physic>
 		<min>0.0</min>
-		<max>100.0</max>
+		<max>1.0</max>
 		<def>0.0</def>
-		<discret>100</discret>
+		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Индуктивность фильтра</text>
 		<short_text>Индуктивность фильтра</short_text>
-		<form>6.4 Станция управления</form>
+		<form>3.7 Фильтры</form>
 		<unit>INDUNCTANCE_MH</unit>
-		<unit_lcd>INDUNCTANCE_MH</unit_lcd>
-		<format>XXX_XX</format>
+		<unit_lcd>INDUNCTANCE_MKH</unit_lcd>
+		<format>XXXX</format>
 		<code>13</code>
 	</param>
 	<param>
