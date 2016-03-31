@@ -1358,7 +1358,8 @@ enum enID
   VSD_IA_RMS = 10465,                                        //!< Выходной ток ПЧ фаза U
   VSD_IB_RMS = 10466,                                        //!< Выходной ток ПЧ фаза V
   VSD_IC_RMS = 10467,                                        //!< Выходной ток ПЧ фаза W
-  VSD_END = 10468,                                           //!< 
+  VSD_BLDC_COEF_NORM_UF = 10468,                             //!< Коэффициент нормиров. хар-ки
+  VSD_END = 10469,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме

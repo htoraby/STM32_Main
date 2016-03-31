@@ -26079,6 +26079,27 @@
 	</param>
 	<param>
 		<id>10468</id>
+		<name>VSD_BLDC_COEF_NORM_UF</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>0.0</min>
+		<max>60.0</max>
+		<def>5.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>5.0</value>
+		<text>Коэффициент нормиров. хар-ки</text>
+		<short_text>Коэффициент нормиров. хар-ки</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XX</format>
+		<code>13</code>
+		<comment>Коэффициент нормиров. хар-ки</comment>
+	</param>
+	<param>
+		<id>10469</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>
