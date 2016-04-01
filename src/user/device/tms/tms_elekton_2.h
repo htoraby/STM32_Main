@@ -35,7 +35,7 @@ public:
   bool isConnect();
 
 private:
-  ModbusParameter modbusParameters_[15];
+  ModbusParameter modbusParameters_[12];
   DeviceModbus *dm_;
 };
 

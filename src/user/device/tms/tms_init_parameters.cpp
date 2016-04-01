@@ -1034,5 +1034,17 @@ void Tms::initParameters()
   parameters_[TMS_SENSOR_TMSP_ELEKTON - TMS_BEGIN].def                           = 0.0;
   parameters_[TMS_SENSOR_TMSP_ELEKTON - TMS_BEGIN].discret                       = 1;
   parameters_[TMS_SENSOR_TMSP_ELEKTON - TMS_BEGIN].code                          = 0;
+  // Статус состояния ТМСН
+  parameters_[TMS_PSW_TMSN_ELEKTON - TMS_BEGIN].id                               = TMS_PSW_TMSN_ELEKTON;
+  parameters_[TMS_PSW_TMSN_ELEKTON - TMS_BEGIN].access                           = ACCESS_OPERATOR;
+  parameters_[TMS_PSW_TMSN_ELEKTON - TMS_BEGIN].operation                        = OPERATION_READ;
+  parameters_[TMS_PSW_TMSN_ELEKTON - TMS_BEGIN].physic                           = PHYSIC_NUMERIC;
+  parameters_[TMS_PSW_TMSN_ELEKTON - TMS_BEGIN].validity                         = VALIDITY_ERROR;
+  parameters_[TMS_PSW_TMSN_ELEKTON - TMS_BEGIN].value.float_t                    = NAN;
+  parameters_[TMS_PSW_TMSN_ELEKTON - TMS_BEGIN].min                              = 0.0;
+  parameters_[TMS_PSW_TMSN_ELEKTON - TMS_BEGIN].max                              = 65535.0;
+  parameters_[TMS_PSW_TMSN_ELEKTON - TMS_BEGIN].def                              = 0.0;
+  parameters_[TMS_PSW_TMSN_ELEKTON - TMS_BEGIN].discret                          = 1;
+  parameters_[TMS_PSW_TMSN_ELEKTON - TMS_BEGIN].code                             = 0;
 }
 

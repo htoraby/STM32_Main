@@ -27380,6 +27380,25 @@
 	</param>
 	<param>
 		<id>15086</id>
+		<name>TMS_PSW_TMSN_ELEKTON</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Статус состояния ТМСН</text>
+		<short_text>Статус состояния ТМСН</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<comment>Статус состояния ТМСН</comment>
+	</param>
+	<param>
+		<id>15087</id>
 		<name>TMS_END</name>
 		<min>0.0</min>
 		<max>999999999.9</max>
