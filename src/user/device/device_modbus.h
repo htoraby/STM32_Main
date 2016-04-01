@@ -273,6 +273,8 @@ public:
 
   bool isConnect();
 
+  ModbusMasterSerial * getMms() const { return mms_; }
+
   bool bitArr_[125]; 
   uint16_t uint16Arr_[125];
   uint32_t uint32Arr_[62];

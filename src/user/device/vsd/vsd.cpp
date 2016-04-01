@@ -664,3 +664,8 @@ void Vsd::setLimitsMaxParameters()
 {
 
 }
+
+void Vsd::outStatistic()
+{
+
+}

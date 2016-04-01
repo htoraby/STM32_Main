@@ -459,6 +459,8 @@ public:
    */
   void setMainMode();
 
+  void outStatistic();
+
 private:
   ModbusParameter modbusParameters_[165];
   DeviceModbus *dm_;

@@ -489,6 +489,8 @@ public:
    */
   virtual void setLimitsMaxParameters();
 
+  virtual void outStatistic();
+
   /*!
    * \brief writeToDevice
    */
