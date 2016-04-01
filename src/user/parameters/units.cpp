@@ -265,7 +265,7 @@ float units[PHYSIC_LAST][MAX_CONV_ELEMS][2] =
    {1.0, 0.0},
    {1.0, 0.0}},
   {{1.0, 0.0},         //PHYSIC_INDUNCTANCE -> INDUNCTANCE_MH
-   {1.0, 0.0},
+   {1000.0, 0.0},      //PHYSIC_INDUNCTANCE -> INDUNCTANCE_MKH
    {1.0, 0.0},
    {1.0, 0.0},
    {1.0, 0.0},

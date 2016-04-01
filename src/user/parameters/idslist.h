@@ -887,7 +887,9 @@ enum enID
   CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR = 881,                    //!< Сохраняемое значение уставка минимального значения частоты
   CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR = 882,                   //!< Сохраняемое значение уставка максимального значения частоты
   CCS_PROT_MOTOR_UNDERLOAD_CALC_LOAD = 883,                  //!< Текущий недогруз
-  CCS_END = 884,                                             //!< Последний параметр
+  CCS_SU_NOMINAL_CURRENT = 884,                              //!< Номинальный ток СУ
+  CCS_NUM_PRODUCTION_CCS_2 = 885,                            //!< Заводской номер КСУ (2 часть)
+  CCS_END = 886,                                             //!< Последний параметр
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
@@ -1356,7 +1358,9 @@ enum enID
   VSD_IA_RMS = 10465,                                        //!< Выходной ток ПЧ фаза U
   VSD_IB_RMS = 10466,                                        //!< Выходной ток ПЧ фаза V
   VSD_IC_RMS = 10467,                                        //!< Выходной ток ПЧ фаза W
-  VSD_END = 10468,                                           //!< 
+  VSD_BLDC_COEF_NORM_UF = 10468,                             //!< Коэффициент нормиров. хар-ки
+  VSD_VOLTAGE_IN_AVARAGE = 10469,                            //!< Среднее значение вх. напряжения
+  VSD_END = 10470,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме

@@ -5618,5 +5618,29 @@ void Vsd::initParameters()
   parameters_[VSD_IC_RMS - VSD_BEGIN].def                                        = 0.0;
   parameters_[VSD_IC_RMS - VSD_BEGIN].discret                                    = 10;
   parameters_[VSD_IC_RMS - VSD_BEGIN].code                                       = 0;
+  // Коэффициент нормиров. хар-ки
+  parameters_[VSD_BLDC_COEF_NORM_UF - VSD_BEGIN].id                              = VSD_BLDC_COEF_NORM_UF;
+  parameters_[VSD_BLDC_COEF_NORM_UF - VSD_BEGIN].access                          = ACCESS_OPERATOR;
+  parameters_[VSD_BLDC_COEF_NORM_UF - VSD_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[VSD_BLDC_COEF_NORM_UF - VSD_BEGIN].physic                          = PHYSIC_PERCENT;
+  parameters_[VSD_BLDC_COEF_NORM_UF - VSD_BEGIN].validity                        = VALIDITY_ERROR;
+  parameters_[VSD_BLDC_COEF_NORM_UF - VSD_BEGIN].value.float_t                   = 5.0;
+  parameters_[VSD_BLDC_COEF_NORM_UF - VSD_BEGIN].min                             = 0.0;
+  parameters_[VSD_BLDC_COEF_NORM_UF - VSD_BEGIN].max                             = 60.0;
+  parameters_[VSD_BLDC_COEF_NORM_UF - VSD_BEGIN].def                             = 5.0;
+  parameters_[VSD_BLDC_COEF_NORM_UF - VSD_BEGIN].discret                         = 1;
+  parameters_[VSD_BLDC_COEF_NORM_UF - VSD_BEGIN].code                            = 13;
+  // Среднее значение вх. напряжения
+  parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].id                             = VSD_VOLTAGE_IN_AVARAGE;
+  parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].access                         = ACCESS_OPERATOR;
+  parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].operation                      = OPERATION_READ;
+  parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].physic                         = PHYSIC_VOLTAGE;
+  parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].validity                       = VALIDITY_ERROR;
+  parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].value.float_t                  = 0;
+  parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].min                            = 0;
+  parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].max                            = 500.0;
+  parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].def                            = 0;
+  parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].discret                        = 1;
+  parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].code                           = 0;
 }
 

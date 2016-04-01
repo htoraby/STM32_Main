@@ -220,6 +220,7 @@ enum enPhysicRate {
 
 enum enPhysicIndunctance {
   INDUNCTANCE_MH,
+  INDUNCTANCE_MKH,
   INDUNCTANCE_LAST
 };
 
