@@ -26100,6 +26100,27 @@
 	</param>
 	<param>
 		<id>10469</id>
+		<name>VSD_VOLTAGE_IN_AVARAGE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0</min>
+		<max>500.0</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Среднее значение вх. напряжения</comment>
+	</param>
+	<param>
+		<id>10470</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>

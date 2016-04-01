@@ -266,7 +266,7 @@ public:
 private:
   void setLimitsMaxParameters();
 
-  ModbusParameter modbusParameters_[128];
+  ModbusParameter modbusParameters_[129];
   DeviceModbus *dm_;
 
   RegimeRunEtalon *regimeRun_;
