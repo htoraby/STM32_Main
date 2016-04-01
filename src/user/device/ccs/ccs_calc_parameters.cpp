@@ -576,9 +576,9 @@ void Ccs::calcRegimeRun()
 
 void Ccs::calcInputVoltageFromAdc()
 {
-  float uaValue;
-  float ubValue;
-  float ucValue;
+  float uaValue = 0;
+  float ubValue = 0;
+  float ucValue = 0;
   float valueOld[3] = { 1 };
   int checkPhase[3] = { 0 };
   int count[3] = { 0 };
