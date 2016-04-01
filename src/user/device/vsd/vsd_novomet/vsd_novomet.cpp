@@ -476,15 +476,6 @@ float VsdNovomet::checkAlarmVsd()
   float vsdStatus2 = getValue(VSD_STATUS_WORD_2);
   float vsdStatus7 = getValue(VSD_STATUS_WORD_7);
 
-  if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_ULOW) && (vsdStatus <= VSD_NOVOMET_ALARM_ULOW))) {
-    for (int i = VSD_NOVOMET_ALARM_ULOW; i <= VSD_NOVOMET_ALARM_ULOW; i++) {
-      if (checkBit(vsdStatus1, i - 1000)) {
-        resetBlock();
-        return i;
-      }
-    }
-  }
-
   if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_UD_LOW_FAULT) && (vsdStatus <= VSD_NOVOMET_ALARM_UD_HIGH_FAULT))) {
     for (int i = VSD_NOVOMET_ALARM_UD_LOW_FAULT; i <= VSD_NOVOMET_ALARM_UD_HIGH_FAULT; i++) {
       if (checkBit(vsdStatus1, i - 1000)) {
@@ -626,14 +617,12 @@ void VsdNovomet::getNewStatusWord1(float value)
 {
   setValue(VSD_STATUS_WORD_1, value);
   parameters.set(CCS_VSD_STATUS_WORD_1, value);
-//  parameters.set(CCS_VSD_ALARM_CODE, checkAlarmVsd());
 }
 
 void VsdNovomet::getNewStatusWord2(float value)
 {
   setValue(VSD_STATUS_WORD_2, value);
   parameters.set(CCS_VSD_STATUS_WORD_2, value);
-//  parameters.set(CCS_VSD_ALARM_CODE, checkAlarmVsd());
   calcDischarge();
 }
 
@@ -947,14 +936,6 @@ void VsdNovomet::getNewValue(uint16_t id)
       value = value / temp;
     setValue(id, value);
     break;
-  /*
-  case VSD_MOTOR_VOLTAGE:
-    temp = parameters.get(CCS_COEF_TRANSFORMATION);
-    if (temp != 0)
-      value = value * temp;
-    setValue(id, value);
-    break;
-  */
   case VSD_LOUT:
     setValue(id, value);
     parameters.set(CCS_SYSTEM_INDUCTANCE, value);
@@ -1285,12 +1266,14 @@ bool VsdNovomet::checkStop()
 #if USE_DEBUG
   return true;
 #endif
-    if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STARTED)) {
-      if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_WAIT_STOP)) {
-        resetBlock();
-        return true;
-      }
+  if (getValidity(VSD_STATUS_WORD_1) == VALIDITY_ERROR)
+    return false;
+
+  if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STARTED)) {
+    if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_WAIT_STOP)) {
+      return true;
     }
+  }
   return false;
 }
 
