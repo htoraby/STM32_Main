@@ -91,8 +91,10 @@ bool VsdEtalon::isConnect()
       int id = dm_->getFieldID(indexModbus);
       if (id <= 0)
         continue;
-      float value = NAN;
-      setValue(id, value);
+//      float value = NAN;
+      dm_->setFieldValidity(indexModbus, err_r);
+      getNewValue(id);
+//      setValue(id, value);
     }
   }
   prevConnect_ = curConnect;
@@ -251,8 +253,8 @@ void VsdEtalon::getNewValue(uint16_t id)
 
   if (param->validity != ok_r) {
     value = NAN;
-    setValue(id, value);
-    return;
+//    setValue(id, value);
+//    return;
   }
 
   switch (param->typeData) {
@@ -684,7 +686,6 @@ bool VsdEtalon::checkStop()
 
   if (getValue(VSD_ETALON_OFF_STATE)) {
     if (getValue(VSD_ETALON_ON_STATE) == 0) {
-      resetBlock();
       return true;
     }
   }
