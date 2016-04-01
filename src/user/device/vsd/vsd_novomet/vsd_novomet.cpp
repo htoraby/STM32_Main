@@ -33,7 +33,7 @@ void VsdNovomet::init()
   // Создание объекта протокола связи с утройством
   int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
   dm_ = new DeviceModbus(modbusParameters_, count,
-                         VSD_UART, 38400, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1);
+                         VSD_UART, 57600, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1);
   dm_->createThread("ProtocolVsd", getValueDeviceQId_);
 
   initParameters();
