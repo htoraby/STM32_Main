@@ -6493,7 +6493,7 @@ void Ccs::initParameters()
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].max                            = 999999999.9;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].discret                        = 1;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].def                            = 0;
-  parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].code                           = 0;
+  parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].code                           = 13;
   // Версия ПО КСУ
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].id                                 = CCS_VERSION_SW_CCS;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].access                             = ACCESS_SERVICE;
@@ -10634,5 +10634,17 @@ void Ccs::initParameters()
   parameters_[CCS_NUM_PRODUCTION_CCS_2 - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_NUM_PRODUCTION_CCS_2 - CCS_BEGIN].def                          = 0;
   parameters_[CCS_NUM_PRODUCTION_CCS_2 - CCS_BEGIN].code                         = 0;
+  // Заводской номер СУ (2 часть)
+  parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].id                            = CCS_NUM_PRODUCTION_SU_2;
+  parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].access                        = ACCESS_SERVICE;
+  parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].operation                     = OPERATION_READ;
+  parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
+  parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].validity                      = VALIDITY_OK;
+  parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].value.float_t                 = 0;
+  parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].min                           = 0.0;
+  parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].max                           = 999999999.9;
+  parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].discret                       = 1;
+  parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].def                           = 0;
+  parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].code                          = 0;
 }
 
