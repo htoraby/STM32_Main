@@ -10552,7 +10552,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXXXXXXX</format>
-		<code>0</code>
+		<code>13</code>
 		<comment>Заводской номер КСУ</comment>
 	</param>
 	<param>
@@ -10745,7 +10745,7 @@
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXXXXXXXX</format>
 		<code>13</code>
 		<comment>Заводской номер СУ</comment>
 	</param>
@@ -17216,6 +17216,25 @@
 	</param>
 	<param>
 		<id>886</id>
+		<name>CCS_NUM_PRODUCTION_SU_2</name>
+		<access>ACCESS_SERVICE</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<text>Заводской номер СУ</text>
+		<short_text>Зав.№ СУ</short_text>
+		<form>6.4 Станция управления</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXXXXX</format>
+		<code>0</code>
+		<comment>Заводской номер СУ (2 часть)</comment>
+	</param>
+	<param>
+		<id>887</id>
 		<name>CCS_VSD_STATUS_WORD_1_LOG</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
@@ -17228,7 +17247,7 @@
 		<comment>Регистр состояния инвертора</comment>
 	</param>
 	<param>
-		<id>887</id>
+		<id>888</id>
 		<name>CCS_VSD_STATUS_WORD_2_LOG</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
@@ -17241,7 +17260,7 @@
 		<comment>Регистр состояния инвертора</comment>
 	</param>
 	<param>
-		<id>888</id>
+		<id>889</id>
 		<name>CCS_VSD_STATUS_WORD_7_LOG</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
@@ -17254,7 +17273,7 @@
 		<comment>Регистр состояния инвертора</comment>
 	</param>
 	<param>
-		<id>889</id>
+		<id>890</id>
 		<name>CCS_VSD_CONNECTION_PERCENT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -17272,7 +17291,7 @@
 		<comment>Последний параметр</comment>
 	</param>
 	<param>
-		<id>890</id>
+		<id>891</id>
 		<name>CCS_VSD_CONNECTION_PACKAGE_TOTAL</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -17285,7 +17304,7 @@
 		<value>0.0</value>
 	</param>
 	<param>
-		<id>891</id>
+		<id>892</id>
 		<name>CCS_VSD_CONNECTION_PACKAGE_SUCCESS</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -17298,7 +17317,7 @@
 		<value>0.0</value>
 	</param>
 	<param>
-		<id>892</id>
+		<id>893</id>
 		<name>CCS_VSD_CONNECTION_PACKAGE_TRASH</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -17311,7 +17330,7 @@
 		<value>0.0</value>
 	</param>
 	<param>
-		<id>893</id>
+		<id>894</id>
 		<name>CCS_VSD_CONNECTION_PACKAGE_CRC</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -17323,7 +17342,7 @@
 		<valid>VALIDITY_ERROR</valid>
 	</param>
 	<param>
-		<id>894</id>
+		<id>895</id>
 		<name>CCS_VSD_CONNECTION_PACKAGE_ERR</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -17335,7 +17354,7 @@
 		<valid>VALIDITY_ERROR</valid>
 	</param>
 	<param>
-		<id>895</id>
+		<id>896</id>
 		<name>CCS_VSD_CONNECTION_PACKAGE_LOST</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -17347,7 +17366,7 @@
 		<valid>VALIDITY_ERROR</valid>
 	</param>
 	<param>
-		<id>896</id>
+		<id>897</id>
 		<name>CCS_VSD_CONNECTION_SPEED</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -17359,7 +17378,7 @@
 		<valid>VALIDITY_ERROR</valid>
 	</param>
 	<param>
-		<id>897</id>
+		<id>898</id>
 		<name>CCS_VSD_CONNECTION_ADDRESS</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -17371,7 +17390,7 @@
 		<valid>VALIDITY_ERROR</valid>
 	</param>
 	<param>
-		<id>898</id>
+		<id>899</id>
 		<name>CCS_VSD_CONNECTION_PARITY</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -17383,7 +17402,7 @@
 		<valid>VALIDITY_ERROR</valid>
 	</param>
 	<param>
-		<id>899</id>
+		<id>900</id>
 		<name>CCS_VSD_CONNECTION_STOP_BIT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -17395,7 +17414,7 @@
 		<valid>VALIDITY_ERROR</valid>
 	</param>
 	<param>
-		<id>900</id>
+		<id>901</id>
 		<name>CCS_END</name>
 		<comment>Последний параметр</comment>
 	</param>
