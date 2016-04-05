@@ -475,6 +475,19 @@ float VsdNovomet::checkAlarmVsd()
   float vsdStatus1 = getValue(VSD_STATUS_WORD_1);
   float vsdStatus2 = getValue(VSD_STATUS_WORD_2);
   float vsdStatus7 = getValue(VSD_STATUS_WORD_7);
+  static float vsdStatusOld1 = 0;
+  static float vsdStatusOld2 = 0;
+  static float vsdStatusOld7 = 0;
+
+  if (vsdStatus1 && !vsdStatusOld1)
+    parameters.set(CCS_VSD_STATUS_WORD_1_LOG, vsdStatus1);
+  vsdStatusOld1 = vsdStatus1;
+  if (vsdStatus2 && !vsdStatusOld2)
+    parameters.set(CCS_VSD_STATUS_WORD_2_LOG, vsdStatus2);
+  vsdStatusOld2 = vsdStatus2;
+  if (vsdStatus7 && !vsdStatusOld7)
+    parameters.set(CCS_VSD_STATUS_WORD_7_LOG, vsdStatus7);
+  vsdStatusOld7 = vsdStatus7;
 
   if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_UD_LOW_FAULT) && (vsdStatus <= VSD_NOVOMET_ALARM_UD_HIGH_FAULT))) {
     for (int i = VSD_NOVOMET_ALARM_UD_LOW_FAULT; i <= VSD_NOVOMET_ALARM_UD_HIGH_FAULT; i++) {
