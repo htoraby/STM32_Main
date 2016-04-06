@@ -1046,5 +1046,29 @@ void Tms::initParameters()
   parameters_[TMS_PSW_TMSN_ELEKTON - TMS_BEGIN].def                              = 0.0;
   parameters_[TMS_PSW_TMSN_ELEKTON - TMS_BEGIN].discret                          = 1;
   parameters_[TMS_PSW_TMSN_ELEKTON - TMS_BEGIN].code                             = 0;
+  // Тип датчика давления для ТМСН-2
+  parameters_[TMS_TYPE_SENSOR_PRESSURE_ELEKTON_2 - TMS_BEGIN].id                 = TMS_TYPE_SENSOR_PRESSURE_ELEKTON_2;
+  parameters_[TMS_TYPE_SENSOR_PRESSURE_ELEKTON_2 - TMS_BEGIN].access             = ACCESS_OPERATOR;
+  parameters_[TMS_TYPE_SENSOR_PRESSURE_ELEKTON_2 - TMS_BEGIN].operation          = OPERATION_READ;
+  parameters_[TMS_TYPE_SENSOR_PRESSURE_ELEKTON_2 - TMS_BEGIN].physic             = PHYSIC_NUMERIC;
+  parameters_[TMS_TYPE_SENSOR_PRESSURE_ELEKTON_2 - TMS_BEGIN].validity           = VALIDITY_ERROR;
+  parameters_[TMS_TYPE_SENSOR_PRESSURE_ELEKTON_2 - TMS_BEGIN].value.float_t      = NAN;
+  parameters_[TMS_TYPE_SENSOR_PRESSURE_ELEKTON_2 - TMS_BEGIN].min                = 0.0;
+  parameters_[TMS_TYPE_SENSOR_PRESSURE_ELEKTON_2 - TMS_BEGIN].max                = 65535.0;
+  parameters_[TMS_TYPE_SENSOR_PRESSURE_ELEKTON_2 - TMS_BEGIN].def                = 0.0;
+  parameters_[TMS_TYPE_SENSOR_PRESSURE_ELEKTON_2 - TMS_BEGIN].discret            = 1;
+  parameters_[TMS_TYPE_SENSOR_PRESSURE_ELEKTON_2 - TMS_BEGIN].code               = 0;
+  // Единицы измерения для давления ТМСН-3
+  parameters_[TMS_UNIT_PRESSURE_ELEKTON_3 - TMS_BEGIN].id                        = TMS_UNIT_PRESSURE_ELEKTON_3;
+  parameters_[TMS_UNIT_PRESSURE_ELEKTON_3 - TMS_BEGIN].access                    = ACCESS_OPERATOR;
+  parameters_[TMS_UNIT_PRESSURE_ELEKTON_3 - TMS_BEGIN].operation                 = OPERATION_READ;
+  parameters_[TMS_UNIT_PRESSURE_ELEKTON_3 - TMS_BEGIN].physic                    = PHYSIC_NUMERIC;
+  parameters_[TMS_UNIT_PRESSURE_ELEKTON_3 - TMS_BEGIN].validity                  = VALIDITY_ERROR;
+  parameters_[TMS_UNIT_PRESSURE_ELEKTON_3 - TMS_BEGIN].value.float_t             = NAN;
+  parameters_[TMS_UNIT_PRESSURE_ELEKTON_3 - TMS_BEGIN].min                       = 0.0;
+  parameters_[TMS_UNIT_PRESSURE_ELEKTON_3 - TMS_BEGIN].max                       = 5.0;
+  parameters_[TMS_UNIT_PRESSURE_ELEKTON_3 - TMS_BEGIN].def                       = 0.0;
+  parameters_[TMS_UNIT_PRESSURE_ELEKTON_3 - TMS_BEGIN].discret                   = 1;
+  parameters_[TMS_UNIT_PRESSURE_ELEKTON_3 - TMS_BEGIN].code                      = 0;
 }
 

@@ -1448,7 +1448,9 @@ enum enID
   TMS_CONSTRUCTION_TMSP_ELEKTON = 15084,                     //!< Конфигурация погружного блока ТМС Электон
   TMS_SENSOR_TMSP_ELEKTON = 15085,                           //!< Состав датчиков ТМСП
   TMS_PSW_TMSN_ELEKTON = 15086,                              //!< Статус состояния ТМСН
-  TMS_END = 15087,                                           //!< 
+  TMS_TYPE_SENSOR_PRESSURE_ELEKTON_2 = 15087,                //!< Тип датчика давления для ТМСН-2
+  TMS_UNIT_PRESSURE_ELEKTON_3 = 15088,                       //!< Единицы измерения для давления ТМСН-3
+  TMS_END = 15089,                                           //!< 
   EM_BEGIN = 20000,                                          //!< Первый параметр группы счётчиков электроэнергии
   EM_VOLTAGE_PHASE_1 = 20001,                                //!< Напряжение первой фазы
   EM_VOLTAGE_PHASE_2 = 20002,                                //!< Напряжение второй фазы

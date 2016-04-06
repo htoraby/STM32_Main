@@ -9,9 +9,9 @@
 #include "user_main.h"
 
 TmsElekton3::TmsElekton3()
+  : isConfigurated_(false)
 {
 	// TODO Auto-generated constructor stub
-
 }
 
 TmsElekton3::~TmsElekton3()
@@ -93,17 +93,17 @@ void TmsElekton3::initModbusParameters()
                            VALIDITY_ERROR,            // Поле состояния параметра
                            0                          // Значение
                           };
-  modbusParameters_[4] = { // 02Eh Pпласта - давление пласта
+  modbusParameters_[4] = { // 037h Pпласта - давление пласта
                            TMS_PRESSURE_INTAKE,       // Идентификатор параметра
-                           46,                        // Адрес регистра в устройстве
+                           55,                        // Адрес регистра в устройстве
                            OPERATION_READ,            // Операции с параметром
                            PHYSIC_PRESSURE,           // Физическая величина параметра
                            PRESSURE_ATM,              // Единицы измерения параметра
                            TYPE_DATA_UINT16,          // Тип данных
                            0,                         // Индекс
-                           1.0,                       // Коэффициент преобразования параметра
+                           0.1,                       // Коэффициент преобразования параметра
                            0.0,                       // Минимальное значение параметра
-                           65535.0,                   // Максимально значение параметра
+                           65535.0,                   // Максимальное значение параметра
                            0.0,                       // Считываемое значение "по умолчанию"
                            EVERY_TIME,                // Частота опроса параметра
                            EVERY_TIME,                // Количество запросов к параметру
@@ -165,15 +165,15 @@ void TmsElekton3::initModbusParameters()
                            VALIDITY_ERROR,            // Поле состояния параметра
                            0                          // Значение
                           };
-  modbusParameters_[8] = { // 032h Рвык.насоса - давление на выкиде насоса
+  modbusParameters_[8] = { // 039h Рвык.насоса - давление на выкиде насоса
                            TMS_PRESSURE_DISCHARGE,    // Идентификатор параметра
-                           50,                        // Адрес регистра в устройстве
+                           57,                        // Адрес регистра в устройстве
                            OPERATION_READ,            // Операции с параметром
                            PHYSIC_PRESSURE,           // Физическая величина параметра
                            PRESSURE_ATM,              // Единицы измерения параметра
                            TYPE_DATA_UINT16,          // Тип данных
                            0,                         // Индекс
-                           1.0,                       // Коэффициент преобразования параметра
+                           0.1,                       // Коэффициент преобразования параметра
                            0.0,                       // Минимальное значение параметра
                            65535.0,                   // Максимально значение параметра
                            0.0,                       // Считываемое значение "по умолчанию"
@@ -273,6 +273,43 @@ void TmsElekton3::initModbusParameters()
                            VALIDITY_ERROR,            // Поле состояния параметра
                            0                          // Значение
                           };
+  modbusParameters_[14] = { // 126h Тип датчика давления для ТМСН-2
+                           TMS_TYPE_SENSOR_PRESSURE_ELEKTON_2,   // Идентификатор параметра
+                           294,                       // Адрес регистра в устройстве
+                           OPERATION_READ,            // Операции с параметром
+                           PHYSIC_NUMERIC,            // Физическая величина параметра
+                           NUMERIC_NUMBER,            // Единицы измерения параметра
+                           TYPE_DATA_UINT16,          // Тип данных
+                           0,                         // Индекс
+                           1,                         // Коэффициент преобразования параметра
+                           0.0,                       // Минимальное значение параметра
+                           65535.0,                   // Максимально значение параметра
+                           0.0,                       // Считываемое значение "по умолчанию"
+                           EVERY_TIME,                // Частота опроса параметра
+                           EVERY_TIME,                // Количество запросов к параметру
+                           OPERATION_ERROR,           // Команда
+                           VALIDITY_ERROR,            // Поле состояния параметра
+                           0                          // Значение
+                          };
+  modbusParameters_[15] = { // 128h Единицы измерения для давления ТМСН-3
+                           TMS_UNIT_PRESSURE_ELEKTON_3,   // Идентификатор параметра
+                           296,                       // Адрес регистра в устройстве
+                           OPERATION_READ,            // Операции с параметром
+                           PHYSIC_NUMERIC,            // Физическая величина параметра
+                           NUMERIC_NUMBER,            // Единицы измерения параметра
+                           TYPE_DATA_UINT16,          // Тип данных
+                           0,                         // Индекс
+                           1,                         // Коэффициент преобразования параметра
+                           0.0,                       // Минимальное значение параметра
+                           65535.0,                   // Максимально значение параметра
+                           0.0,                       // Считываемое значение "по умолчанию"
+                           EVERY_TIME,                // Частота опроса параметра
+                           EVERY_TIME,                // Количество запросов к параметру
+                           OPERATION_ERROR,           // Команда
+                           VALIDITY_ERROR,            // Поле состояния параметра
+                           0                          // Значение
+                          };
+
 
 }
 
@@ -306,8 +343,19 @@ void TmsElekton3::initParameters()
   }
 }
 
+void TmsElekton3::initUnitsElekton()
+{
+  unitPressure_[0] = {DHS_ELEKTON_UNIT_PRESSURE_ATM, PRESSURE_ATM};
+  unitPressure_[1] = {DHS_ELEKTON_UNIT_PRESSURE_BAR, PRESSURE_BAR};
+  unitPressure_[2] = {DHS_ELEKTON_UNIT_PRESSURE_AT,  PRESSURE_AT};
+  unitPressure_[3] = {DHS_ELEKTON_UNIT_PRESSURE_kPA, PRESSURE_BAR};
+  unitPressure_[4] = {DHS_ELEKTON_UNIT_PRESSURE_PSI, PRESSURE_PSI};
+  unitPressure_[5] = {DHS_ELEKTON_UNIT_PRESSURE_KGS, PRESSURE_AT};
+}
+
 void TmsElekton3::init()
 {
+  initUnitsElekton();
   initModbusParameters();                             // Инициализация modbus карты
   createThread("UpdParamsTms");
   int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
@@ -352,6 +400,13 @@ void TmsElekton3::getNewValue(uint16_t id)
   value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
 
   switch (id) {
+  case TMS_PRESSURE_INTAKE:
+  case TMS_PRESSURE_DISCHARGE:
+    if (config())
+      setValue(id, value);
+    else
+      setValue(id, NAN);
+    break;
   default:
     setValue(id, value);
     break;
@@ -374,21 +429,69 @@ void TmsElekton3::writeToDevice(int id, float value)
   dm_->writeModbusParameter(id, value);
 }
 
-void TmsElekton3::checkTypeTMSP(int id)
+bool TmsElekton3::config()
 {
+  if (isConfigurated_)
+    return true;
+
   if (parameters.isValidity(TMS_PSW_TMSN_ELEKTON)) {
-    if (checkBit(parameters.get(TMS_PSW_TMSN_ELEKTON), DHS_ELEKTON_3_STATUS_A12)) {
-      ElektonTypeTMSP_ = DHS_ELEKTON_TMSP_3;
+    if (checkBit(parameters.get(TMS_PSW_TMSN_ELEKTON), DHS_ELEKTON_3_STATUS_A12)) { // ТМСН-3
+      if (parameters.isValidity(TMS_UNIT_PRESSURE_ELEKTON_3)) {
+        if ((parameters.get(TMS_UNIT_PRESSURE_ELEKTON_3) == DHS_ELEKTON_UNIT_PRESSURE_kPA) ||
+            (parameters.get(TMS_UNIT_PRESSURE_ELEKTON_3) == DHS_ELEKTON_UNIT_PRESSURE_PSI)) {
+          // 037h Pпласта - давление пласта
+          modbusParameters_[4].address = 55;
+          modbusParameters_[4].coefficient = 1.0;
+          // 039h Рвык.насоса - давление на выкиде насоса
+          modbusParameters_[8].address = 57;
+          modbusParameters_[8].coefficient = 1.0;
+        }
+        else {
+          if (parameters.isValidity(TMS_SENSOR_TMSP_ELEKTON)) {
+            if (checkBit(parameters.get(TMS_SENSOR_TMSP_ELEKTON), DHS_ELEKTON_3_SENSOR_PRESSURE_HI_RES)) {
+              modbusParameters_[4].address = 59;            // 03Bh Pпласта - давление пласта повышенной точности
+              modbusParameters_[4].coefficient = 0.01;      // Давление пласта повышенной точности
+            }
+            else {
+              modbusParameters_[4].address = 55;            // 037h Pпласта - давление пласта повышенной точности
+              modbusParameters_[4].coefficient = 0.1;       // Давление пласта обычной точности
+            }
+            // 039h Рвык.насоса - давление на выкиде насоса
+            modbusParameters_[8].address = 57;
+            modbusParameters_[8].coefficient = 0.1;
+          }
+          else {
+            isConfigurated_ = false;
+            return false;
+          }
+        }
+        for (uint16_t i = 0; i++; i < DHS_ELEKTON_UNIT_PRESSURE_LAST) {
+          if (parameters.get(TMS_UNIT_PRESSURE_ELEKTON_3) == unitPressure_[i].unitElekton) {
+            modbusParameters_[4].unit = unitPressure_[i].unitCCS;
+            modbusParameters_[8].unit = unitPressure_[i].unitCCS;
+          }
+        }
+        isConfigurated_ = true;
+        return true;
+      }
+      else {
+        isConfigurated_ = false;
+        return false;
+      }
     }
-    else {
-      ElektonTypeTMSP_ = DHS_ELEKTON_TMSP_2;
+    else {                                                                          // ТМСН-2
+      modbusParameters_[4].address = 46;
+      modbusParameters_[4].coefficient = 1.0;
+      modbusParameters_[4].unit = PRESSURE_ATM;
+      modbusParameters_[8].address = 50;
+      modbusParameters_[8].coefficient = 1.0;
+      modbusParameters_[8].unit = PRESSURE_ATM;
     }
   }
-}
-
-void TmsElekton3::checkDiscretePressure(int id)
-{
-
+  else {
+    isConfigurated_ = false;
+    return false;
+  }
 }
 
 int TmsElekton3::setUnitPressure(float unit)

@@ -27480,20 +27480,54 @@
 	</param>
 	<param>
 		<id>15087</id>
-		<name>TMS_END</name>
+		<name>TMS_TYPE_SENSOR_PRESSURE_ELEKTON_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>65535.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Тип датчика давления для ТМСН-2</text>
+		<short_text>Тип датчика давления для ТМСН-2</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Тип датчика давления для ТМСН-2</comment>
+	</param>
+	<param>
+		<id>15088</id>
+		<name>TMS_UNIT_PRESSURE_ELEKTON_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>5.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Единицы измерения для давления ТМСН-3</text>
+		<short_text>Единицы измерения для давления ТМСН-3</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-Атм;1-Бар;2-Ат;3-кПа;4-PSI;5-кгс/см2</values>
+		<comment>Единицы измерения для давления ТМСН-3</comment>
+	</param>
+	<param>
+		<id>15089</id>
+		<name>TMS_END</name>
 		<code>0</code>
 	</param>
 	<param>
 		<id>20000</id>
 		<name>EM_BEGIN</name>
-		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
-		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
 		<comment>Первый параметр группы счётчиков электроэнергии</comment>
 	</param>
