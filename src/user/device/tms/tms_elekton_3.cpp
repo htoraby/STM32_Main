@@ -465,7 +465,7 @@ bool TmsElekton3::config()
             return false;
           }
         }
-        for (uint16_t i = 0; i++; i < DHS_ELEKTON_UNIT_PRESSURE_LAST) {
+        for (uint16_t i = 0; i < DHS_ELEKTON_UNIT_PRESSURE_LAST; i++) {
           if (parameters.get(TMS_UNIT_PRESSURE_ELEKTON_3) == unitPressure_[i].unitElekton) {
             modbusParameters_[4].unit = unitPressure_[i].unitCCS;
             modbusParameters_[8].unit = unitPressure_[i].unitCCS;
@@ -486,6 +486,8 @@ bool TmsElekton3::config()
       modbusParameters_[8].address = 50;
       modbusParameters_[8].coefficient = 1.0;
       modbusParameters_[8].unit = PRESSURE_ATM;
+      isConfigurated_ = true;
+      return true;
     }
   }
   else {
