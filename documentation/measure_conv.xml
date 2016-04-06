@@ -253,6 +253,12 @@
 		<b>0</b>
 	</param>
 	<param>
+		<midIn>PHYSIC_PRESSURE</midIn>
+		<midOut>PRESSURE_KPA</midOut>
+		<a>1000</a>
+		<b>0</b>
+	</param>
+	<param>
 		<midIn>PHYSIC_TEMPERATURE</midIn>
 		<midOut>TEMPERATURE_C</midOut>
 		<a>1</a>

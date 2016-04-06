@@ -170,7 +170,7 @@ float units[PHYSIC_LAST][MAX_CONV_ELEMS][2] =
    {10.197, 0.0},      //PHYSIC_PRESSURE -> PRESSURE_AT
    {10.0, 0.0},        //PHYSIC_PRESSURE -> PRESSURE_BAR
    {145.04, 0.0},      //PHYSIC_PRESSURE -> PRESSURE_PSI
-   {1.0, 0.0},
+   {1000.0, 0.0},      //PHYSIC_PRESSURE -> PRESSURE_KPA
    {1.0, 0.0},
    {1.0, 0.0},
    {1.0, 0.0}},

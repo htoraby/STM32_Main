@@ -161,6 +161,7 @@ enum enPhysicPressure {
   PRESSURE_AT,
   PRESSURE_BAR,
   PRESSURE_PSI,
+  PRESSURE_KPA,
   PRESSURE_LAST
 };
 
