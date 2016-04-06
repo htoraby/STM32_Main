@@ -91,8 +91,8 @@ bool VsdEtalon::isConnect()
       int id = dm_->getFieldID(indexModbus);
       if (id <= 0)
         continue;
-      float value = NAN;
-      setValue(id, value);
+      dm_->setFieldValidity(indexModbus, err_r);
+      getNewValue(id);
     }
   }
   prevConnect_ = curConnect;
@@ -249,37 +249,36 @@ void VsdEtalon::getNewValue(uint16_t id)
   // Преобразуем данные из полученного типа данных в float
   ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtId(id));
 
-  if (param->validity != ok_r) {
+  if (param->validity == ok_r) {
+    switch (param->typeData) {
+    case TYPE_DATA_INT16:
+      value = (float)param->value.int16_t[0];
+      break;
+    case TYPE_DATA_UINT16:
+      value = (float)param->value.uint16_t[0];
+      break;
+    case  TYPE_DATA_INT32:
+      value = (float)param->value.int32_t;
+      break;
+    case  TYPE_DATA_UINT32:
+      value = (float)param->value.uint32_t;
+      break;
+    case  TYPE_DATA_FLOAT:
+      value = (float)param->value.float_t;
+      break;
+    default:
+      break;
+    }
+
+    // Применяем коэффициент преобразования
+    value = value * param->coefficient;
+
+    // Применяем единицы измерения
+    value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
+  }
+  else {
     value = NAN;
-    setValue(id, value);
-    return;
   }
-
-  switch (param->typeData) {
-  case TYPE_DATA_INT16:
-    value = (float)param->value.int16_t[0];
-    break;
-  case TYPE_DATA_UINT16:
-    value = (float)param->value.uint16_t[0];
-    break;
-  case  TYPE_DATA_INT32:
-    value = (float)param->value.int32_t;
-    break;
-  case  TYPE_DATA_UINT32:
-    value = (float)param->value.uint32_t;
-    break;
-  case  TYPE_DATA_FLOAT:
-    value = (float)param->value.float_t;
-    break;
-  default:
-    break;
-  }
-
-  // Применяем коэффициент преобразования
-  value = value * param->coefficient;
-
-  // Применяем единицы измерения
-  value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
 
   // Если получено новое значение параметра
   if ((getValue(id) != value) || (param->validity != getValidity(id))) {
@@ -684,7 +683,6 @@ bool VsdEtalon::checkStop()
 
   if (getValue(VSD_ETALON_OFF_STATE)) {
     if (getValue(VSD_ETALON_ON_STATE) == 0) {
-      resetBlock();
       return true;
     }
   }
@@ -851,4 +849,13 @@ void VsdEtalon::setLimitsMaxParameters()
   parameters.setMax(CCS_COEF_OUT_CURRENT_1, getMax(VSD_COEF_OUT_CURRENT_1));
   parameters.setMax(CCS_COEF_OUT_CURRENT_2, getMax(VSD_COEF_OUT_CURRENT_2));
   parameters.setMax(CCS_COEF_OUT_CURRENT_3, getMax(VSD_COEF_OUT_CURRENT_3));
+}
+
+void VsdEtalon::outStatistic()
+{
+  ModbusMasterSerial *mms = dm_->getMms();
+  SEGGER_RTT_printf(0, "MB VSD: total - %d, success - %d, lost - %d, crc - %d, err - %d, trash - %d\n",
+                    mms->getTotalCounter(), mms->getSuccessCounter(),
+                    mms->getLostCounter(), mms->getCrcCounter(),
+                    mms->getErrCounter(), mms->getTrashCounter());
 }

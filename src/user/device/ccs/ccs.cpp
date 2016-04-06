@@ -230,6 +230,7 @@ void Ccs::vsdConditionTask()
       break;
     case VSD_CONDITION_STOPPING:
       if (vsd->checkStop()) {
+        vsd->resetBlock();
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
       }
       if (vsd->checkStart()) {

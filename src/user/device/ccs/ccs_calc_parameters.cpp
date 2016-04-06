@@ -83,6 +83,7 @@ void Ccs::calcParametersTask()
 
 #if (USE_LOG_DEBUG == 1)
 #ifdef USE_RTT
+      vsd->outStatistic();
       float value = statHost.rxGood/100.0;
       value = statHost.sizeError/value;
       SEGGER_RTT_printf(0, "Host rx good - %d, error - %d, *%d\n", statHost.rxGood, statHost.sizeError, (int)value);
@@ -575,9 +576,9 @@ void Ccs::calcRegimeRun()
 
 void Ccs::calcInputVoltageFromAdc()
 {
-  float uaValue;
-  float ubValue;
-  float ucValue;
+  float uaValue = 0;
+  float ubValue = 0;
+  float ucValue = 0;
   float valueOld[3] = { 1 };
   int checkPhase[3] = { 0 };
   int count[3] = { 0 };

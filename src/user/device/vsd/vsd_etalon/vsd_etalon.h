@@ -263,6 +263,8 @@ public:
    */
   void calcParameters(uint16_t id);
 
+  void outStatistic();
+
 private:
   void setLimitsMaxParameters();
 

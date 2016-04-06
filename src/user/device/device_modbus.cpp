@@ -91,6 +91,12 @@ int DeviceModbus::getFieldValidity(int index)
   return mbParams_[index].validity;
 }
 
+int DeviceModbus::setFieldValidity(int index, int validity)
+{
+  mbParams_[index].validity = validity;
+  return ok_r;
+}
+
 int DeviceModbus::getFieldTypeData(int index)
 {
   return mbParams_[index].typeData;

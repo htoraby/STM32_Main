@@ -33,7 +33,7 @@ void VsdNovomet::init()
   // Создание объекта протокола связи с утройством
   int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
   dm_ = new DeviceModbus(modbusParameters_, count,
-                         VSD_UART, 38400, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1);
+                         VSD_UART, 57600, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1);
   dm_->createThread("ProtocolVsd", getValueDeviceQId_);
 
   initParameters();
@@ -475,15 +475,19 @@ float VsdNovomet::checkAlarmVsd()
   float vsdStatus1 = getValue(VSD_STATUS_WORD_1);
   float vsdStatus2 = getValue(VSD_STATUS_WORD_2);
   float vsdStatus7 = getValue(VSD_STATUS_WORD_7);
+  static float vsdStatusOld1 = 0;
+  static float vsdStatusOld2 = 0;
+  static float vsdStatusOld7 = 0;
 
-  if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_ULOW) && (vsdStatus <= VSD_NOVOMET_ALARM_ULOW))) {
-    for (int i = VSD_NOVOMET_ALARM_ULOW; i <= VSD_NOVOMET_ALARM_ULOW; i++) {
-      if (checkBit(vsdStatus1, i - 1000)) {
-        resetBlock();
-        return i;
-      }
-    }
-  }
+  if (vsdStatus1 && !vsdStatusOld1)
+    parameters.set(CCS_VSD_STATUS_WORD_1_LOG, vsdStatus1);
+  vsdStatusOld1 = vsdStatus1;
+  if (vsdStatus2 && !vsdStatusOld2)
+    parameters.set(CCS_VSD_STATUS_WORD_2_LOG, vsdStatus2);
+  vsdStatusOld2 = vsdStatus2;
+  if (vsdStatus7 && !vsdStatusOld7)
+    parameters.set(CCS_VSD_STATUS_WORD_7_LOG, vsdStatus7);
+  vsdStatusOld7 = vsdStatus7;
 
   if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_UD_LOW_FAULT) && (vsdStatus <= VSD_NOVOMET_ALARM_UD_HIGH_FAULT))) {
     for (int i = VSD_NOVOMET_ALARM_UD_LOW_FAULT; i <= VSD_NOVOMET_ALARM_UD_HIGH_FAULT; i++) {
@@ -626,14 +630,12 @@ void VsdNovomet::getNewStatusWord1(float value)
 {
   setValue(VSD_STATUS_WORD_1, value);
   parameters.set(CCS_VSD_STATUS_WORD_1, value);
-//  parameters.set(CCS_VSD_ALARM_CODE, checkAlarmVsd());
 }
 
 void VsdNovomet::getNewStatusWord2(float value)
 {
   setValue(VSD_STATUS_WORD_2, value);
   parameters.set(CCS_VSD_STATUS_WORD_2, value);
-//  parameters.set(CCS_VSD_ALARM_CODE, checkAlarmVsd());
   calcDischarge();
 }
 
@@ -947,14 +949,6 @@ void VsdNovomet::getNewValue(uint16_t id)
       value = value / temp;
     setValue(id, value);
     break;
-  /*
-  case VSD_MOTOR_VOLTAGE:
-    temp = parameters.get(CCS_COEF_TRANSFORMATION);
-    if (temp != 0)
-      value = value * temp;
-    setValue(id, value);
-    break;
-  */
   case VSD_LOUT:
     setValue(id, value);
     parameters.set(CCS_SYSTEM_INDUCTANCE, value);
@@ -1285,12 +1279,14 @@ bool VsdNovomet::checkStop()
 #if USE_DEBUG
   return true;
 #endif
-    if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STARTED)) {
-      if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_WAIT_STOP)) {
-        resetBlock();
-        return true;
-      }
+  if (getValidity(VSD_STATUS_WORD_1) == VALIDITY_ERROR)
+    return false;
+
+  if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_STARTED)) {
+    if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_NOVOMET_STATUS_WAIT_STOP)) {
+      return true;
     }
+  }
   return false;
 }
 
@@ -1450,4 +1446,13 @@ void VsdNovomet::setMainMode()
   parameters.set(VSD_REGULATOR_QUEUE_3, queue[2]);
   parameters.set(VSD_REGULATOR_QUEUE_4, queue[3]);
   parameters.set(VSD_REGULATOR_QUEUE_5, queue[4]);
+}
+
+void VsdNovomet::outStatistic()
+{
+  ModbusMasterSerial *mms = dm_->getMms();
+  SEGGER_RTT_printf(0, "MB VSD: total - %d, success - %d, lost - %d, crc - %d, err - %d, trash - %d\n",
+                    mms->getTotalCounter(), mms->getSuccessCounter(),
+                    mms->getLostCounter(), mms->getCrcCounter(),
+                    mms->getErrCounter(), mms->getTrashCounter());
 }

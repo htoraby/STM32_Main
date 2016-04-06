@@ -186,10 +186,10 @@ public:
   /*!
    * \brief Метод задания Validity параметра по индексу в массиве
    * \param index - индекс параметра в массиве
-   * \param значение Validity
+   * \param значение validity
    * \return
    */
-  int setFieldValidity(int Index, int Validity);
+  int setFieldValidity(int index, int validity);
 
   /*!
    * \brief Метод получения Value параметра по индексу в массиве параметров
@@ -272,6 +272,8 @@ public:
   int searchExchangeParameters();
 
   bool isConnect();
+
+  ModbusMasterSerial * getMms() const { return mms_; }
 
   bool bitArr_[125]; 
   uint16_t uint16Arr_[125];
