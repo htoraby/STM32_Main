@@ -854,8 +854,8 @@ void VsdEtalon::setLimitsMaxParameters()
 void VsdEtalon::outStatistic()
 {
   ModbusMasterSerial *mms = dm_->getMms();
-  SEGGER_RTT_printf(0, "MB VSD: total - %d, success - %d, lost - %d, crc - %d, err - %d, trash - %d\n",
-                    mms->getTotalCounter(), mms->getSuccessCounter(),
-                    mms->getLostCounter(), mms->getCrcCounter(),
-                    mms->getErrCounter(), mms->getTrashCounter());
+//  SEGGER_RTT_printf(0, "MB VSD: total - %d, success - %d, lost - %d, crc - %d, err - %d, trash - %d\n",
+//                    mms->getTotalCounter(), mms->getSuccessCounter(),
+//                    mms->getLostCounter(), mms->getCrcCounter(),
+//                    mms->getErrCounter(), mms->getTrashCounter());
 }
