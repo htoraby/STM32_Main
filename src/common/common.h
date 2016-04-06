@@ -30,6 +30,20 @@ enum ErrorSlave {
   MiniLzoUsbErr,               //!< Ошибка архиватора MiniLZO
 };
 
+/*!
+ * \brief The stConnectQuality struct
+ */
+struct stConnectQuality {
+  float quality;
+  float transmite;
+  float resive;
+  float trash;
+  float crc;
+  float error;
+  float lost;
+  float failure;
+};
+
 #ifdef __cplusplus
 
 /*!

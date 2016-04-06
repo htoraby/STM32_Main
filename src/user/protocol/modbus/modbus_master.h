@@ -53,6 +53,8 @@
 
 #define MODBUS_COUNTER_LOST_CONNECT           50
 
+
+
 /*!
  * \brief Класс Modbus master
  * Релизует функции Modbus и некоторые другие функции
@@ -271,70 +273,8 @@ public:
    */
   int getRetryCnt();
 
-  /*!
-   * \brief Метод увеличения счётчика запросов
-   * увеличивает количество запросов
-   */
-  void incTotalCounter();
-
-  /*!
-   * \brief Метод возвращает текущее значение счётчика запросов
-   * \return текущее значение
-   */
-  uint32_t getTotalCounter();
-
-  /*!
-   * \brief Метод сброса количества запросов
-   */
-  void resetTotalCounter();
-
-  /*!
-   * \brief Метод увеличения счётчика принятых ответов
-   */
-  void incSuccessCounter();
-
-  /*!
-   * \brief Функция получения количества корректных ответов
-   * \return текущее значение
-   */
-  uint32_t getSuccessCounter();
-
-  /*!
-   * \brief Функция сброса количество корректных ответов
-   */
-  void resetSuccessCounter();
-
-  /*!
-   * \brief Метод увеличения счётчика потерянных пакетов
-   */
-  void incLostCounter();
-
-  /*!
-   * \brief Функция получения количества потерянных пакетов
-   * \return текущее значение
-   */
-  uint32_t getLostCounter();
-
-  /*!
-   * \brief Метод сброса счётчика потерянных пакетов
-   */
-  void resetLostCounter();
-
-  void incCrcCounter();
-  uint32_t getCrcCounter();
-  void resetCrcCounter();
-
-  void incErrCounter();
-  uint32_t getErrCounter();
-  void resetErrCounter();
-
-  void incTrashCounter();
-  uint32_t getTrashCounter();
-  void resetTrashCounter();
-
-  void incFailCounter();
-  uint32_t getFailCounter();
-  void resetFailCounter();
+  stConnectQuality *getCounters();
+  void resetCounters();
 
   void configureBigEndianInts();
 
@@ -376,14 +316,7 @@ public:
   // ЗАЩИЩЕННЫЕ ЧЛЕНЫ КЛАССА
   ///////////////////////////////////////////////////////////////////////////
 protected:
-  uint32_t totalCounter_;                   //!< общий счётчик запросов
-  uint32_t successCounter_;                 //!< общий счётчик корректных ответов
-  uint32_t lostCounter_;                    //!< счётчик потерянных пакетов,
-  uint32_t crcCounter_;                     //!< счётчик пакетов с некорректной CRC
-  uint32_t errCounter_;                     //!< счётчик пакетов с документированны ошибками
-  uint32_t trashCounter_;                   //!< счётчик пакетов с мусором
-  uint32_t failCounter_;                    //!< счётчик ошибочных пакетов подряд
-  float calcConnect_;                       //!< качество связи в %
+  stConnectQuality counters_;
 
   int retryCnt_;                            //!< Число автоматических повторений запроса
   uint32_t timeOut_;                        //!< Время ожидания ответа

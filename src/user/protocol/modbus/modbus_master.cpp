@@ -592,7 +592,7 @@ int ModbusMaster:: isOpen()
 
 bool ModbusMaster::isConnect()
 {
-  if (getFailCounter() > MODBUS_COUNTER_LOST_CONNECT)
+  if (counters_.failure > MODBUS_COUNTER_LOST_CONNECT)
     return false;
   else
     return true;
@@ -616,126 +616,14 @@ int ModbusMaster::setRetryCnt(int retry)
   return res;
 }
 
-void ModbusMaster::resetTotalCounter()
-{
-  totalCounter_ = 0;
-}
-
-void ModbusMaster::incTotalCounter()
-{
-  calcConnect();
-  totalCounter_++;
-}
-
-void ModbusMaster::resetSuccessCounter()
-{
-  successCounter_ = 0;
-}
-
-void ModbusMaster::incSuccessCounter()
-{
-  successCounter_++;
-  resetFailCounter();
-}
-
-uint32_t ModbusMaster::getTotalCounter()
-{
-  return (totalCounter_);
-}
-
-void ModbusMaster::incLostCounter()
-{
-  lostCounter_++;
-  incFailCounter();
-}
-
-void ModbusMaster::resetLostCounter()
-{
-  lostCounter_ = 0;
-}
-
-void ModbusMaster::incCrcCounter()
-{
-  crcCounter_++;
-  incFailCounter();
-}
-
-uint32_t ModbusMaster::getCrcCounter()
-{
-  return crcCounter_;
-}
-
-void ModbusMaster::resetCrcCounter()
-{
-  crcCounter_ = 0;
-}
-
-void ModbusMaster::incErrCounter()
-{
-  errCounter_++;
-  incFailCounter();
-}
-
-uint32_t ModbusMaster::getErrCounter()
-{
-  return errCounter_;
-}
-
-void ModbusMaster::resetErrCounter()
-{
-  errCounter_ = 0;
-}
-
-void ModbusMaster::incTrashCounter()
-{
-  trashCounter_++;
-  incFailCounter();
-}
-
-uint32_t ModbusMaster::getTrashCounter()
-{
-  return trashCounter_;
-}
-
-void ModbusMaster::resetTrashCounter()
-{
-  trashCounter_ = 0;
-}
-
-void ModbusMaster::incFailCounter()
-{
-  failCounter_++;
-}
-
-uint32_t ModbusMaster::getFailCounter()
-{
-  return failCounter_;
-}
-
-void ModbusMaster::resetFailCounter()
-{
-  failCounter_ = 0;
-}
-
 void ModbusMaster::calcConnect()
 {
-  uint32_t total = getTotalCounter();
-  uint32_t success = getSuccessCounter();
-  if (total > 100) {
-    resetTotalCounter();
-    resetSuccessCounter();
-    resetLostCounter();
-    resetCrcCounter();
-    resetErrCounter();
-    resetTrashCounter();
+  if (counters_.transmite > 100) {
+    counters_.quality = counters_.resive / counters_.transmite * 100;
   }
-  if (total)
-    calcConnect_ = (success * 100) / total;
-}
-
-uint32_t ModbusMaster::getLostCounter()
-{
-  return (lostCounter_);
+  if (counters_.transmite > 1000000.0) {
+    counters_ = {counters_.quality,0,0,0,0,0,0,0};
+  }
 }
 
 uint32_t ModbusMaster::getTimeout()
@@ -743,14 +631,19 @@ uint32_t ModbusMaster::getTimeout()
   return timeOut_;
 }
 
-uint32_t ModbusMaster::getSuccessCounter()
-{
-  return (successCounter_);
-}
-
 int ModbusMaster::getRetryCnt()
 {
   return (retryCnt_);
+}
+
+stConnectQuality* ModbusMaster::getCounters()
+{
+  return &counters_;
+}
+
+void ModbusMaster::resetCounters()
+{
+  counters_ = {0,0,0,0,0,0,0,0};
 }
 
 void ModbusMaster::configureBigEndianInts()
