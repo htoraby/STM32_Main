@@ -57,25 +57,7 @@ void TmsElekton3::initModbusParameters()
                            VALIDITY_ERROR,            // Поле состояния параметра
                            0                          // Значение
                           };
-  modbusParameters_[2] = { // 00Fh Статус состояния ТМСН
-                           TMS_PSW_TMSN_ELEKTON,      // Идентификатор параметра
-                           15,                        // Адрес регистра в устройстве
-                           OPERATION_READ,            // Операции с параметром
-                           PHYSIC_NUMERIC,            // Физическая величина параметра
-                           NUMERIC_NUMBER,            // Единицы измерения параметра
-                           TYPE_DATA_UINT16,          // Тип данных
-                           0,                         // Индекс
-                           1.0,                       // Коэффициент преобразования параметра
-                           0.0,                       // Минимальное значение параметра
-                           65535.0,                   // Максимально значение параметра
-                           0.0,                       // Считываемое значение "по умолчанию"
-                           EVERY_TIME,                // Частота опроса параметра
-                           EVERY_TIME,                // Количество запросов к параметру
-                           OPERATION_ERROR,           // Команда
-                           VALIDITY_ERROR,            // Поле состояния параметра
-                           0                          // Значение
-                          };
-  modbusParameters_[3] = { // 02Dh Rиз. - сопротивление изоляции, КОм
+  modbusParameters_[2] = { // 02Dh Rиз. - сопротивление изоляции, КОм
                            TMS_RESISTANCE_ISOLATION,  // Идентификатор параметра
                            45,                        // Адрес регистра в устройстве
                            OPERATION_READ,            // Операции с параметром
@@ -93,7 +75,7 @@ void TmsElekton3::initModbusParameters()
                            VALIDITY_ERROR,            // Поле состояния параметра
                            0                          // Значение
                           };
-  modbusParameters_[4] = { // 037h Pпласта - давление пласта
+  modbusParameters_[3] = { // 037h Pпласта - давление пласта
                            TMS_PRESSURE_INTAKE,       // Идентификатор параметра
                            55,                        // Адрес регистра в устройстве
                            OPERATION_READ,            // Операции с параметром
@@ -111,7 +93,7 @@ void TmsElekton3::initModbusParameters()
                            VALIDITY_ERROR,            // Поле состояния параметра
                            0                          // Значение
                           };
-  modbusParameters_[5] = { // 02Fh Q - расход
+  modbusParameters_[4] = { // 02Fh Q - расход
                            TMS_FLOW_DISCHARGE,        // Идентификатор параметра
                            47,                        // Адрес регистра в устройстве
                            OPERATION_READ,            // Операции с параметром
@@ -129,7 +111,7 @@ void TmsElekton3::initModbusParameters()
                            VALIDITY_ERROR,            // Поле состояния параметра
                            0                          // Значение
                           };
-  modbusParameters_[6] = { // 030h Тдвигателя - температура масла ПЭД
+  modbusParameters_[5] = { // 030h Тдвигателя - температура масла ПЭД
                            TMS_TEMPERATURE_MOTOR,     // Идентификатор параметра
                            48,                        // Адрес регистра в устройстве
                            OPERATION_READ,            // Операции с параметром
@@ -147,7 +129,7 @@ void TmsElekton3::initModbusParameters()
                            VALIDITY_ERROR,            // Поле состояния параметра
                            0                          // Значение
                           };
-  modbusParameters_[7] = { // 031h Тпласта - температура пласта
+  modbusParameters_[6] = { // 031h Тпласта - температура пласта
                            TMS_TEMPERATURE_INTAKE,    // Идентификатор параметра
                            49,                        // Адрес регистра в устройстве
                            OPERATION_READ,            // Операции с параметром
@@ -165,7 +147,7 @@ void TmsElekton3::initModbusParameters()
                            VALIDITY_ERROR,            // Поле состояния параметра
                            0                          // Значение
                           };
-  modbusParameters_[8] = { // 039h Рвык.насоса - давление на выкиде насоса
+  modbusParameters_[7] = { // 039h Рвык.насоса - давление на выкиде насоса
                            TMS_PRESSURE_DISCHARGE,    // Идентификатор параметра
                            57,                        // Адрес регистра в устройстве
                            OPERATION_READ,            // Операции с параметром
@@ -183,7 +165,7 @@ void TmsElekton3::initModbusParameters()
                            VALIDITY_ERROR,            // Поле состояния параметра
                            0                          // Значение
                           };
-  modbusParameters_[9] = { // 033h Твык.насоса - температура на выкиде насоса
+  modbusParameters_[8] = { // 033h Твык.насоса - температура на выкиде насоса
                            TMS_TEMPERATURE_DISCHARGE, // Идентификатор параметра
                            51,                        // Адрес регистра в устройстве
                            OPERATION_READ,            // Операции с параметром
@@ -201,7 +183,7 @@ void TmsElekton3::initModbusParameters()
                            VALIDITY_ERROR,            // Поле состояния параметра
                            0                          // Значение
                           };
-  modbusParameters_[10] = { // 034h Gху - вибрация в поперечной плоскости(ху)
+  modbusParameters_[9] = { // 034h Gху - вибрация в поперечной плоскости(ху)
                            TMS_ACCELERATION_XY_INTAKE,// Идентификатор параметра
                            52,                        // Адрес регистра в устройстве
                            OPERATION_READ,            // Операции с параметром
@@ -219,7 +201,7 @@ void TmsElekton3::initModbusParameters()
                            VALIDITY_ERROR,            // Поле состояния параметра
                            0                          // Значение
                           };
-  modbusParameters_[11] = { // 035h Gz - вибрация в продольной плоскости(z)
+  modbusParameters_[10] = { // 035h Gz - вибрация в продольной плоскости(z)
                            TMS_ACCELERATION_Z_INTAKE,// Идентификатор параметра
                            53,                        // Адрес регистра в устройстве
                            OPERATION_READ,            // Операции с параметром
@@ -237,7 +219,7 @@ void TmsElekton3::initModbusParameters()
                            VALIDITY_ERROR,            // Поле состояния параметра
                            0                          // Значение
                           };
-  modbusParameters_[12] = { // 036h ID1, ID2 - конфигурация погружного блока
+  modbusParameters_[11] = { // 036h ID1, ID2 - конфигурация погружного блока
                            TMS_CONSTRUCTION_TMSP_ELEKTON,// Идентификатор параметра
                            54,                        // Адрес регистра в устройстве
                            OPERATION_READ,            // Операции с параметром
@@ -255,7 +237,7 @@ void TmsElekton3::initModbusParameters()
                            VALIDITY_ERROR,            // Поле состояния параметра
                            0                          // Значение
                           };
-  modbusParameters_[13] = { // 037h Состав датчиков в ТМСП
+  modbusParameters_[12] = { // 037h Состав датчиков в ТМСП
                            TMS_SENSOR_TMSP_ELEKTON,   // Идентификатор параметра
                            75,                        // Адрес регистра в устройстве
                            OPERATION_READ,            // Операции с параметром
@@ -273,25 +255,7 @@ void TmsElekton3::initModbusParameters()
                            VALIDITY_ERROR,            // Поле состояния параметра
                            0                          // Значение
                           };
-  modbusParameters_[14] = { // 126h Тип датчика давления для ТМСН-2
-                           TMS_TYPE_SENSOR_PRESSURE_ELEKTON_2,   // Идентификатор параметра
-                           294,                       // Адрес регистра в устройстве
-                           OPERATION_READ,            // Операции с параметром
-                           PHYSIC_NUMERIC,            // Физическая величина параметра
-                           NUMERIC_NUMBER,            // Единицы измерения параметра
-                           TYPE_DATA_UINT16,          // Тип данных
-                           0,                         // Индекс
-                           1,                         // Коэффициент преобразования параметра
-                           0.0,                       // Минимальное значение параметра
-                           65535.0,                   // Максимально значение параметра
-                           0.0,                       // Считываемое значение "по умолчанию"
-                           EVERY_TIME,                // Частота опроса параметра
-                           EVERY_TIME,                // Количество запросов к параметру
-                           OPERATION_ERROR,           // Команда
-                           VALIDITY_ERROR,            // Поле состояния параметра
-                           0                          // Значение
-                          };
-  modbusParameters_[15] = { // 128h Единицы измерения для давления ТМСН-3
+  modbusParameters_[13] = { // 128h Единицы измерения для давления ТМСН-3
                            TMS_UNIT_PRESSURE_ELEKTON_3,   // Идентификатор параметра
                            296,                       // Адрес регистра в устройстве
                            OPERATION_READ,            // Операции с параметром
@@ -406,6 +370,10 @@ void TmsElekton3::getNewValue(uint16_t id)
       setValue(id, value);
     else
       setValue(id, NAN);
+    break;
+  case TMS_TEMPERATURE_MOTOR:
+    setValue(TMS_TEMPERATURE_WINDING, value);
+    setValue(id, value);
     break;
   default:
     setValue(id, value);
@@ -523,5 +491,10 @@ bool TmsElekton3::isConnect()
   prevConnect_ = curConnect;
 
   return curConnect;
+}
+
+void TmsElekton3::getConnect()
+{
+  Tms::setConnect(dm_->getMms()->getCounters());
 }
 

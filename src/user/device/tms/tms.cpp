@@ -6,6 +6,7 @@
  */
 
 #include "tms.h"
+#include "user_main.h"
 
 //! Массив параметров устройства
 static parameter parametersArray[TMS_END - TMS_BEGIN] __attribute__((section(".extmem")));
@@ -28,4 +29,20 @@ int Tms::setUnitPressure(float unit)
 int Tms::setUnitTemperature(float unit)
 {
   return setValue(TMS_TEMPERATURE_UNIT, unit);
+}
+
+void Tms::getConnect()
+{
+
+}
+
+void Tms::setConnect(stConnectQuality *counters)
+{
+  parameters.set(CCS_DHS_CONNECTION_PERCENT, counters->quality);
+  parameters.set(CCS_DHS_CONNECTION_PACKAGE_TOTAL, counters->transmite);
+  parameters.set(CCS_DHS_CONNECTION_PACKAGE_SUCCESS, counters->resive);
+  parameters.set(CCS_DHS_CONNECTION_PACKAGE_TRASH, counters->trash);
+  parameters.set(CCS_DHS_CONNECTION_PACKAGE_CRC, counters->crc);
+  parameters.set(CCS_DHS_CONNECTION_PACKAGE_ERR, counters->error);
+  parameters.set(CCS_DHS_CONNECTION_PACKAGE_LOST, counters->lost);
 }

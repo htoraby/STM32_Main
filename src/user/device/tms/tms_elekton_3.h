@@ -73,8 +73,10 @@ public:
 
   bool isConnect();
 
+  void getConnect();
+
 private:
-  ModbusParameter modbusParameters_[15];
+  ModbusParameter modbusParameters_[14];
   DeviceModbus *dm_;
   stUnitsPressure unitPressure_[6];
   bool isConfigurated_;

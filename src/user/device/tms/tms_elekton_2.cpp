@@ -237,6 +237,24 @@ void TmsElekton2::initModbusParameters()
                            VALIDITY_ERROR,            // Поле состояния параметра
                            0                          // Значение
                           };
+  modbusParameters_[12] = { // 126h Тип датчика давления для ТМСН-2
+                           TMS_TYPE_SENSOR_PRESSURE_ELEKTON_2,   // Идентификатор параметра
+                           294,                       // Адрес регистра в устройстве
+                           OPERATION_READ,            // Операции с параметром
+                           PHYSIC_NUMERIC,            // Физическая величина параметра
+                           NUMERIC_NUMBER,            // Единицы измерения параметра
+                           TYPE_DATA_UINT16,          // Тип данных
+                           0,                         // Индекс
+                           1,                         // Коэффициент преобразования параметра
+                           0.0,                       // Минимальное значение параметра
+                           65535.0,                   // Максимально значение параметра
+                           0.0,                       // Считываемое значение "по умолчанию"
+                           EVERY_TIME,                // Частота опроса параметра
+                           EVERY_TIME,                // Количество запросов к параметру
+                           OPERATION_ERROR,           // Команда
+                           VALIDITY_ERROR,            // Поле состояния параметра
+                           0                          // Значение
+                          };
 
 }
 
@@ -316,6 +334,10 @@ void TmsElekton2::getNewValue(uint16_t id)
   value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
 
   switch (id) {
+  case TMS_TEMPERATURE_MOTOR:
+    setValue(TMS_TEMPERATURE_WINDING, value);
+    setValue(id, value);
+    break;
   default:
     setValue(id, value);
     break;

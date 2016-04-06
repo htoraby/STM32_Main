@@ -28,7 +28,7 @@ public:
    */
   void initParameters();
 
-  /*!
+    /*!
    * \brief Функция задания единиц измерения давления
    * \param unit - код единиц измерения
    * \return
@@ -80,6 +80,18 @@ public:
    */
   int setDisablePidLoop();
 
+  /*!
+   * \brief getConnect
+   */
+  virtual void getConnect();
+
+  /*!
+   * \brief setConnect
+   * \param counters
+   */
+  void setConnect(stConnectQuality *counters);
+
 };
+
 
 #endif /* TMS_H_ */
