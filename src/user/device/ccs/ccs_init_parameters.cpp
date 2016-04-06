@@ -10682,7 +10682,7 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_STATUS_WORD_7_LOG - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_VSD_STATUS_WORD_7_LOG - CCS_BEGIN].def                         = 0;
   parameters_[CCS_VSD_STATUS_WORD_7_LOG - CCS_BEGIN].code                        = 0;
-  // Последний параметр
+  // 
   parameters_[CCS_VSD_CONNECTION_PERCENT - CCS_BEGIN].id                         = CCS_VSD_CONNECTION_PERCENT;
   parameters_[CCS_VSD_CONNECTION_PERCENT - CCS_BEGIN].access                     = ACCESS_OPERATOR;
   parameters_[CCS_VSD_CONNECTION_PERCENT - CCS_BEGIN].operation                  = OPERATION_WRITE;
@@ -10814,5 +10814,137 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_CONNECTION_STOP_BIT - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_VSD_CONNECTION_STOP_BIT - CCS_BEGIN].def                       = 1.0;
   parameters_[CCS_VSD_CONNECTION_STOP_BIT - CCS_BEGIN].code                      = 0;
+  // 
+  parameters_[CCS_DHS_CONNECTION_PERCENT - CCS_BEGIN].id                         = CCS_DHS_CONNECTION_PERCENT;
+  parameters_[CCS_DHS_CONNECTION_PERCENT - CCS_BEGIN].access                     = ACCESS_OPERATOR;
+  parameters_[CCS_DHS_CONNECTION_PERCENT - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_DHS_CONNECTION_PERCENT - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
+  parameters_[CCS_DHS_CONNECTION_PERCENT - CCS_BEGIN].validity                   = VALIDITY_ERROR;
+  parameters_[CCS_DHS_CONNECTION_PERCENT - CCS_BEGIN].value.float_t              = 100.0;
+  parameters_[CCS_DHS_CONNECTION_PERCENT - CCS_BEGIN].min                        = 0.0;
+  parameters_[CCS_DHS_CONNECTION_PERCENT - CCS_BEGIN].max                        = 100.0;
+  parameters_[CCS_DHS_CONNECTION_PERCENT - CCS_BEGIN].discret                    = 10;
+  parameters_[CCS_DHS_CONNECTION_PERCENT - CCS_BEGIN].def                        = 0.0;
+  parameters_[CCS_DHS_CONNECTION_PERCENT - CCS_BEGIN].code                       = 0;
+  // 
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TOTAL - CCS_BEGIN].id                   = CCS_DHS_CONNECTION_PACKAGE_TOTAL;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TOTAL - CCS_BEGIN].access               = ACCESS_OPERATOR;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TOTAL - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TOTAL - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TOTAL - CCS_BEGIN].validity             = VALIDITY_ERROR;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TOTAL - CCS_BEGIN].value.float_t        = 0.0;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TOTAL - CCS_BEGIN].min                  = 0.0;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TOTAL - CCS_BEGIN].max                  = 999999999.9;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TOTAL - CCS_BEGIN].discret              = 1;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TOTAL - CCS_BEGIN].def                  = 0.0;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TOTAL - CCS_BEGIN].code                 = 0;
+  // 
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_SUCCESS - CCS_BEGIN].id                 = CCS_DHS_CONNECTION_PACKAGE_SUCCESS;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_SUCCESS - CCS_BEGIN].access             = ACCESS_OPERATOR;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_SUCCESS - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_SUCCESS - CCS_BEGIN].physic             = PHYSIC_NUMERIC;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_SUCCESS - CCS_BEGIN].validity           = VALIDITY_ERROR;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_SUCCESS - CCS_BEGIN].value.float_t      = 0.0;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_SUCCESS - CCS_BEGIN].min                = 0.0;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_SUCCESS - CCS_BEGIN].max                = 999999999.9;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_SUCCESS - CCS_BEGIN].discret            = 1;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_SUCCESS - CCS_BEGIN].def                = 0.0;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_SUCCESS - CCS_BEGIN].code               = 0;
+  // 
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TRASH - CCS_BEGIN].id                   = CCS_DHS_CONNECTION_PACKAGE_TRASH;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TRASH - CCS_BEGIN].access               = ACCESS_OPERATOR;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TRASH - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TRASH - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TRASH - CCS_BEGIN].validity             = VALIDITY_ERROR;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TRASH - CCS_BEGIN].value.float_t        = 0.0;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TRASH - CCS_BEGIN].min                  = 0.0;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TRASH - CCS_BEGIN].max                  = 999999999.9;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TRASH - CCS_BEGIN].discret              = 1;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TRASH - CCS_BEGIN].def                  = 0.0;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_TRASH - CCS_BEGIN].code                 = 0;
+  // 
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_CRC - CCS_BEGIN].id                     = CCS_DHS_CONNECTION_PACKAGE_CRC;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_CRC - CCS_BEGIN].access                 = ACCESS_OPERATOR;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_CRC - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_CRC - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_CRC - CCS_BEGIN].validity               = VALIDITY_ERROR;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_CRC - CCS_BEGIN].value.float_t          = 0;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_CRC - CCS_BEGIN].min                    = 0.0;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_CRC - CCS_BEGIN].max                    = 999999999.9;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_CRC - CCS_BEGIN].discret                = 1;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_CRC - CCS_BEGIN].def                    = 0.0;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_CRC - CCS_BEGIN].code                   = 0;
+  // 
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_ERR - CCS_BEGIN].id                     = CCS_DHS_CONNECTION_PACKAGE_ERR;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_ERR - CCS_BEGIN].access                 = ACCESS_OPERATOR;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_ERR - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_ERR - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_ERR - CCS_BEGIN].validity               = VALIDITY_ERROR;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_ERR - CCS_BEGIN].value.float_t          = 0;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_ERR - CCS_BEGIN].min                    = 0.0;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_ERR - CCS_BEGIN].max                    = 999999999.9;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_ERR - CCS_BEGIN].discret                = 1;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_ERR - CCS_BEGIN].def                    = 0.0;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_ERR - CCS_BEGIN].code                   = 0;
+  // 
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_LOST - CCS_BEGIN].id                    = CCS_DHS_CONNECTION_PACKAGE_LOST;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_LOST - CCS_BEGIN].access                = ACCESS_OPERATOR;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_LOST - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_LOST - CCS_BEGIN].physic                = PHYSIC_NUMERIC;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_LOST - CCS_BEGIN].validity              = VALIDITY_ERROR;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_LOST - CCS_BEGIN].value.float_t         = 0;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_LOST - CCS_BEGIN].min                   = 0.0;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_LOST - CCS_BEGIN].max                   = 999999999.9;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_LOST - CCS_BEGIN].discret               = 1;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_LOST - CCS_BEGIN].def                   = 0.0;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_LOST - CCS_BEGIN].code                  = 0;
+  // 
+  parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].id                           = CCS_DHS_CONNECTION_SPEED;
+  parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
+  parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].validity                     = VALIDITY_ERROR;
+  parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].value.float_t                = 0;
+  parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].min                          = 9600.0;
+  parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].max                          = 115200.0;
+  parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].discret                      = 1;
+  parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].def                          = 115200.0;
+  parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].code                         = 0;
+  // 
+  parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].id                         = CCS_DHS_CONNECTION_ADDRESS;
+  parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].access                     = ACCESS_OPERATOR;
+  parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
+  parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].validity                   = VALIDITY_ERROR;
+  parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].value.float_t              = 0;
+  parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].min                        = 1.0;
+  parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].max                        = 253.0;
+  parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].discret                    = 1;
+  parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].def                        = 1.0;
+  parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].code                       = 0;
+  // 
+  parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].id                          = CCS_DHS_CONNECTION_PARITY;
+  parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].access                      = ACCESS_OPERATOR;
+  parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
+  parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].validity                    = VALIDITY_ERROR;
+  parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].value.float_t               = 0;
+  parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].min                         = 0.0;
+  parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].max                         = 5.0;
+  parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].discret                     = 1;
+  parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].def                         = 0.0;
+  parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].code                        = 0;
+  // 
+  parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].id                        = CCS_DHS_CONNECTION_STOP_BIT;
+  parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].access                    = ACCESS_OPERATOR;
+  parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].physic                    = PHYSIC_NUMERIC;
+  parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].validity                  = VALIDITY_ERROR;
+  parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].value.float_t             = 0;
+  parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].min                       = 0.0;
+  parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].max                       = 2.0;
+  parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].discret                   = 1;
+  parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].def                       = 1.0;
+  parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].code                      = 0;
 }
 

@@ -17288,7 +17288,6 @@
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXXX_X</format>
 		<code>0</code>
-		<comment>Последний параметр</comment>
 	</param>
 	<param>
 		<id>891</id>
@@ -17415,8 +17414,147 @@
 	</param>
 	<param>
 		<id>901</id>
+		<name>CCS_DHS_CONNECTION_PERCENT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>100.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>100.0</value>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXX_X</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>902</id>
+		<name>CCS_DHS_CONNECTION_PACKAGE_TOTAL</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+	</param>
+	<param>
+		<id>903</id>
+		<name>CCS_DHS_CONNECTION_PACKAGE_SUCCESS</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+	</param>
+	<param>
+		<id>904</id>
+		<name>CCS_DHS_CONNECTION_PACKAGE_TRASH</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+	</param>
+	<param>
+		<id>905</id>
+		<name>CCS_DHS_CONNECTION_PACKAGE_CRC</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+	</param>
+	<param>
+		<id>906</id>
+		<name>CCS_DHS_CONNECTION_PACKAGE_ERR</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+	</param>
+	<param>
+		<id>907</id>
+		<name>CCS_DHS_CONNECTION_PACKAGE_LOST</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+	</param>
+	<param>
+		<id>908</id>
+		<name>CCS_DHS_CONNECTION_SPEED</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>9600.0</min>
+		<max>115200.0</max>
+		<def>115200.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+	</param>
+	<param>
+		<id>909</id>
+		<name>CCS_DHS_CONNECTION_ADDRESS</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>1.0</min>
+		<max>253.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+	</param>
+	<param>
+		<id>910</id>
+		<name>CCS_DHS_CONNECTION_PARITY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>5.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+	</param>
+	<param>
+		<id>911</id>
+		<name>CCS_DHS_CONNECTION_STOP_BIT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+	</param>
+	<param>
+		<id>912</id>
 		<name>CCS_END</name>
-		<comment>Последний параметр</comment>
 	</param>
 	<param>
 		<id>10000</id>
