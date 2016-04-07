@@ -1316,6 +1316,11 @@ int VsdDanfoss::resetSetpoints()
   return ok_r;
 }
 
+void VsdDanfoss::getConnect()
+{
+  Vsd::setConnect(dm_->getMms()->getCounters());
+}
+
 void VsdDanfoss::getNewValue(uint16_t id)
 {
   float value = 0;

@@ -263,7 +263,10 @@ public:
    */
   void calcParameters(uint16_t id);
 
-  void outStatistic();
+  /*!
+   * \brief getConnect
+   */
+  void getConnect();
 
 private:
   void setLimitsMaxParameters();

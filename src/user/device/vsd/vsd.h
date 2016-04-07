@@ -489,7 +489,16 @@ public:
    */
   virtual void setLimitsMaxParameters();
 
-  virtual void outStatistic();
+  /*!
+   * \brief getConnect
+   */
+  virtual void getConnect();
+
+  /*!
+   * \brief setConnect
+   * \param counters
+   */
+  void setConnect(stConnectQuality *counters);
 
   /*!
    * \brief writeToDevice
