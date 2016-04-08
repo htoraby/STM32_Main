@@ -547,5 +547,6 @@ void TmsNovomet::getConnect()
 
 void TmsNovomet::resetConnect()
 {
+  Tms::resetConnect();
   dm_->getMms()->resetCounters();
 }

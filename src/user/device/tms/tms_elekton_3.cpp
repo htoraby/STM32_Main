@@ -500,6 +500,7 @@ void TmsElekton3::getConnect()
 
 void TmsElekton3::resetConnect()
 {
+  Tms::resetConnect();
   dm_->getMms()->resetCounters();
 }
 

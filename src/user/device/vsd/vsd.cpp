@@ -683,5 +683,11 @@ void Vsd::setConnect(stConnectQuality *counters)
 
 void Vsd::resetConnect()
 {
-
+  parameters.set(CCS_VSD_CONNECTION_PERCENT, 0);
+  parameters.set(CCS_VSD_CONNECTION_PACKAGE_TOTAL, 0);
+  parameters.set(CCS_VSD_CONNECTION_PACKAGE_SUCCESS, 0);
+  parameters.set(CCS_VSD_CONNECTION_PACKAGE_TRASH, 0);
+  parameters.set(CCS_VSD_CONNECTION_PACKAGE_CRC, 0);
+  parameters.set(CCS_VSD_CONNECTION_PACKAGE_ERR, 0);
+  parameters.set(CCS_VSD_CONNECTION_PACKAGE_LOST, 0);
 }

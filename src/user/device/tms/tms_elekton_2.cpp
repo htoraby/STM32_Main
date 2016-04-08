@@ -396,6 +396,7 @@ void TmsElekton2::getConnect()
 
 void TmsElekton2::resetConnect()
 {
+  Tms::resetConnect();
   dm_->getMms()->resetCounters();
 }
 
