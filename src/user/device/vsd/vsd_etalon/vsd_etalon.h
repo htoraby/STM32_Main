@@ -267,6 +267,7 @@ public:
    * \brief getConnect
    */
   void getConnect();
+  void resetConnect();
 
 private:
   void setLimitsMaxParameters();

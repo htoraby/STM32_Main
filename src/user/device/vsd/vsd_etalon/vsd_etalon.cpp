@@ -849,6 +849,11 @@ void VsdEtalon::getConnect()
   Vsd::setConnect(dm_->getMms()->getCounters());
 }
 
+void VsdEtalon::resetConnect()
+{
+  dm_->getMms()->resetCounters();
+}
+
 void VsdEtalon::setLimitsMaxParameters()
 {
   parameters.setMax(CCS_COEF_OUT_CURRENT_1, getMax(VSD_COEF_OUT_CURRENT_1));

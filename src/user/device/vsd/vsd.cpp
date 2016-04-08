@@ -680,3 +680,8 @@ void Vsd::setConnect(stConnectQuality *counters)
   parameters.set(CCS_VSD_CONNECTION_PACKAGE_ERR, counters->error);
   parameters.set(CCS_VSD_CONNECTION_PACKAGE_LOST, counters->lost);
 }
+
+void Vsd::resetConnect()
+{
+
+}

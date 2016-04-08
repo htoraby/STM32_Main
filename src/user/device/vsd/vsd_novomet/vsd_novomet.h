@@ -464,6 +464,8 @@ public:
    */
   void getConnect();
 
+  void resetConnct();
+
 private:
   ModbusParameter modbusParameters_[165];
   DeviceModbus *dm_;

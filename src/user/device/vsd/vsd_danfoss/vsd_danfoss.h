@@ -208,6 +208,7 @@ public:
   //void processingRegimeRun();
 
   void getConnect();
+  void resetConnect();
 
 private:
   ModbusParameter modbusParameters_[212];

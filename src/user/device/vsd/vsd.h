@@ -501,6 +501,11 @@ public:
   void setConnect(stConnectQuality *counters);
 
   /*!
+   * \brief resetConnect
+   */
+  virtual void resetConnect();
+
+  /*!
    * \brief writeToDevice
    */
   virtual void writeToDevice(int id, float value);
