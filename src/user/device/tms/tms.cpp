@@ -46,3 +46,8 @@ void Tms::setConnect(stConnectQuality *counters)
   parameters.set(CCS_DHS_CONNECTION_PACKAGE_ERR, counters->error);
   parameters.set(CCS_DHS_CONNECTION_PACKAGE_LOST, counters->lost);
 }
+
+void Tms::resetConnect()
+{
+
+}

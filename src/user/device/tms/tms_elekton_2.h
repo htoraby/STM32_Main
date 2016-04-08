@@ -33,6 +33,8 @@ public:
   int setUnitTemperature(float unit);
 
   bool isConnect();
+  void getConnect();
+  void resetConnect();
 
 private:
   ModbusParameter modbusParameters_[13];

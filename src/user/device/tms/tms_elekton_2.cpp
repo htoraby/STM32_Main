@@ -389,5 +389,15 @@ bool TmsElekton2::isConnect()
   return curConnect;
 }
 
+void TmsElekton2::getConnect()
+{
+  Tms::setConnect(dm_->getMms()->getCounters());
+}
+
+void TmsElekton2::resetConnect()
+{
+  dm_->getMms()->resetCounters();
+}
+
 
 
