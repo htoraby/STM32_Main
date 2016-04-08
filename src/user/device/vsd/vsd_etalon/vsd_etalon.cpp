@@ -851,6 +851,7 @@ void VsdEtalon::getConnect()
 
 void VsdEtalon::resetConnect()
 {
+  Vsd::resetConnect();
   dm_->getMms()->resetCounters();
 }
 

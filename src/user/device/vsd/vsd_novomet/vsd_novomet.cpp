@@ -1455,6 +1455,7 @@ void VsdNovomet::getConnect()
 
 void VsdNovomet::resetConnct()
 {
+  Vsd::resetConnect();
   dm_->getMms()->resetCounters();
 }
 

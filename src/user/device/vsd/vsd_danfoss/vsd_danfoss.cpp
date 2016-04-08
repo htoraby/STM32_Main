@@ -1323,6 +1323,7 @@ void VsdDanfoss::getConnect()
 
 void VsdDanfoss::resetConnect()
 {
+  Vsd::resetConnect();
   dm_->getMms()->resetCounters();
 }
 
