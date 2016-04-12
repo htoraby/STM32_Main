@@ -1448,11 +1448,14 @@ void VsdNovomet::setMainMode()
   parameters.set(VSD_REGULATOR_QUEUE_5, queue[4]);
 }
 
-void VsdNovomet::outStatistic()
+void VsdNovomet::getConnect()
 {
-  ModbusMasterSerial *mms = dm_->getMms();
-//  SEGGER_RTT_printf(0, "MB VSD: total - %d, success - %d, lost - %d, crc - %d, err - %d, trash - %d\n",
-//                    mms->getTotalCounter(), mms->getSuccessCounter(),
-//                    mms->getLostCounter(), mms->getCrcCounter(),
-//                    mms->getErrCounter(), mms->getTrashCounter());
+  Vsd::setConnect(dm_->getMms()->getCounters());
 }
+
+void VsdNovomet::resetConnct()
+{
+  Vsd::resetConnect();
+  dm_->getMms()->resetCounters();
+}
+

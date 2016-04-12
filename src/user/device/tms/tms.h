@@ -91,6 +91,11 @@ public:
    */
   void setConnect(stConnectQuality *counters);
 
+  /*!
+   * \brief resetConnect
+   */
+  virtual void resetConnect();
+
 };
 
 

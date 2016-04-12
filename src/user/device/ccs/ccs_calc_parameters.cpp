@@ -81,6 +81,7 @@ void Ccs::calcParametersTask()
       calcTemperatureSTM32();
       calcTemperatureCCS();
       tms->getConnect();
+      vsd->getConnect();
 
 #if (USE_LOG_DEBUG == 1)
 #ifdef USE_RTT

@@ -1248,7 +1248,14 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       setValue(CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY, value, eventType);
     }
     return err;
-
+  case CCS_CMD_DHS_CONNECTION_RESET:
+    err = setValue(id, value, eventType);
+    tms->resetConnect();
+    return err;
+  case CCS_CMD_VSD_CONNECTION_RESET:
+    err = setValue(id, value, eventType);
+    vsd->resetConnect();
+    return err;
   default:
     return setValue(id, value, eventType);
   }

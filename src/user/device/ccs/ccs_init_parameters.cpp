@@ -10946,5 +10946,29 @@ void Ccs::initParameters()
   parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].def                       = 1.0;
   parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].code                      = 0;
+  // Команда сброса статистики связи с ТМС
+  parameters_[CCS_CMD_DHS_CONNECTION_RESET - CCS_BEGIN].id                       = CCS_CMD_DHS_CONNECTION_RESET;
+  parameters_[CCS_CMD_DHS_CONNECTION_RESET - CCS_BEGIN].access                   = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_DHS_CONNECTION_RESET - CCS_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[CCS_CMD_DHS_CONNECTION_RESET - CCS_BEGIN].physic                   = PHYSIC_NUMERIC;
+  parameters_[CCS_CMD_DHS_CONNECTION_RESET - CCS_BEGIN].validity                 = VALIDITY_ERROR;
+  parameters_[CCS_CMD_DHS_CONNECTION_RESET - CCS_BEGIN].value.float_t            = 0.0;
+  parameters_[CCS_CMD_DHS_CONNECTION_RESET - CCS_BEGIN].min                      = 0.0;
+  parameters_[CCS_CMD_DHS_CONNECTION_RESET - CCS_BEGIN].max                      = 1.0;
+  parameters_[CCS_CMD_DHS_CONNECTION_RESET - CCS_BEGIN].discret                  = 1;
+  parameters_[CCS_CMD_DHS_CONNECTION_RESET - CCS_BEGIN].def                      = 0.0;
+  parameters_[CCS_CMD_DHS_CONNECTION_RESET - CCS_BEGIN].code                     = 0;
+  // Команда сброса статистики связи с ЧРП
+  parameters_[CCS_CMD_VSD_CONNECTION_RESET - CCS_BEGIN].id                       = CCS_CMD_VSD_CONNECTION_RESET;
+  parameters_[CCS_CMD_VSD_CONNECTION_RESET - CCS_BEGIN].access                   = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_VSD_CONNECTION_RESET - CCS_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[CCS_CMD_VSD_CONNECTION_RESET - CCS_BEGIN].physic                   = PHYSIC_NUMERIC;
+  parameters_[CCS_CMD_VSD_CONNECTION_RESET - CCS_BEGIN].validity                 = VALIDITY_ERROR;
+  parameters_[CCS_CMD_VSD_CONNECTION_RESET - CCS_BEGIN].value.float_t            = 0.0;
+  parameters_[CCS_CMD_VSD_CONNECTION_RESET - CCS_BEGIN].min                      = 0.0;
+  parameters_[CCS_CMD_VSD_CONNECTION_RESET - CCS_BEGIN].max                      = 1.0;
+  parameters_[CCS_CMD_VSD_CONNECTION_RESET - CCS_BEGIN].discret                  = 1;
+  parameters_[CCS_CMD_VSD_CONNECTION_RESET - CCS_BEGIN].def                      = 0.0;
+  parameters_[CCS_CMD_VSD_CONNECTION_RESET - CCS_BEGIN].code                     = 0;
 }
 

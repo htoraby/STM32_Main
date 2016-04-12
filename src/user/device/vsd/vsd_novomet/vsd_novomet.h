@@ -459,7 +459,12 @@ public:
    */
   void setMainMode();
 
-  void outStatistic();
+  /*!
+   * \brief getConnect
+   */
+  void getConnect();
+
+  void resetConnct();
 
 private:
   ModbusParameter modbusParameters_[165];

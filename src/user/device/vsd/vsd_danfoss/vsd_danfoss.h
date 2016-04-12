@@ -207,6 +207,9 @@ public:
   int resetSetpoints();
   //void processingRegimeRun();
 
+  void getConnect();
+  void resetConnect();
+
 private:
   ModbusParameter modbusParameters_[212];
   DeviceModbus *dm_;

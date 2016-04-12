@@ -618,10 +618,8 @@ int ModbusMaster::setRetryCnt(int retry)
 
 void ModbusMaster::calcConnect()
 {
-  if (counters_.transmite > 100) {
-    counters_.quality = counters_.resive / counters_.transmite * 100;
-  }
-  if (counters_.transmite > 1000000.0) {
+  counters_.quality = counters_.resive / counters_.transmite * 100;
+  if (counters_.transmite > 999999.0) {
     counters_ = {counters_.quality,0,0,0,0,0,0,0};
   }
 }

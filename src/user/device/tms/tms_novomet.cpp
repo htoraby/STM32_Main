@@ -539,3 +539,14 @@ bool TmsNovomet::isConnect()
 
   return curConnect;
 }
+
+void TmsNovomet::getConnect()
+{
+  Tms::setConnect(dm_->getMms()->getCounters());
+}
+
+void TmsNovomet::resetConnect()
+{
+  Tms::resetConnect();
+  dm_->getMms()->resetCounters();
+}

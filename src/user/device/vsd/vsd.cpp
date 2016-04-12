@@ -665,7 +665,29 @@ void Vsd::setLimitsMaxParameters()
 
 }
 
-void Vsd::outStatistic()
+void Vsd::getConnect()
 {
 
+}
+
+void Vsd::setConnect(stConnectQuality *counters)
+{
+  parameters.set(CCS_VSD_CONNECTION_PERCENT, counters->quality);
+  parameters.set(CCS_VSD_CONNECTION_PACKAGE_TOTAL, counters->transmite);
+  parameters.set(CCS_VSD_CONNECTION_PACKAGE_SUCCESS, counters->resive);
+  parameters.set(CCS_VSD_CONNECTION_PACKAGE_TRASH, counters->trash);
+  parameters.set(CCS_VSD_CONNECTION_PACKAGE_CRC, counters->crc);
+  parameters.set(CCS_VSD_CONNECTION_PACKAGE_ERR, counters->error);
+  parameters.set(CCS_VSD_CONNECTION_PACKAGE_LOST, counters->lost);
+}
+
+void Vsd::resetConnect()
+{
+  parameters.set(CCS_VSD_CONNECTION_PERCENT, 0);
+  parameters.set(CCS_VSD_CONNECTION_PACKAGE_TOTAL, 0);
+  parameters.set(CCS_VSD_CONNECTION_PACKAGE_SUCCESS, 0);
+  parameters.set(CCS_VSD_CONNECTION_PACKAGE_TRASH, 0);
+  parameters.set(CCS_VSD_CONNECTION_PACKAGE_CRC, 0);
+  parameters.set(CCS_VSD_CONNECTION_PACKAGE_ERR, 0);
+  parameters.set(CCS_VSD_CONNECTION_PACKAGE_LOST, 0);
 }

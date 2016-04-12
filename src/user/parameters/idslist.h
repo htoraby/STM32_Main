@@ -915,7 +915,9 @@ enum enID
   CCS_DHS_CONNECTION_ADDRESS = 909,                          //!< 
   CCS_DHS_CONNECTION_PARITY = 910,                           //!< 
   CCS_DHS_CONNECTION_STOP_BIT = 911,                         //!< 
-  CCS_END = 912,                                             //!< 
+  CCS_CMD_DHS_CONNECTION_RESET = 912,                        //!< Команда сброса статистики связи с ТМС
+  CCS_CMD_VSD_CONNECTION_RESET = 913,                        //!< Команда сброса статистики связи с ЧРП
+  CCS_END = 914,                                             //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF

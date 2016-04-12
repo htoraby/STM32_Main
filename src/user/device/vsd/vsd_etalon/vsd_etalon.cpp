@@ -844,18 +844,20 @@ void VsdEtalon::calcParameters(uint16_t id)
   }
 }
 
+void VsdEtalon::getConnect()
+{
+  Vsd::setConnect(dm_->getMms()->getCounters());
+}
+
+void VsdEtalon::resetConnect()
+{
+  Vsd::resetConnect();
+  dm_->getMms()->resetCounters();
+}
+
 void VsdEtalon::setLimitsMaxParameters()
 {
   parameters.setMax(CCS_COEF_OUT_CURRENT_1, getMax(VSD_COEF_OUT_CURRENT_1));
   parameters.setMax(CCS_COEF_OUT_CURRENT_2, getMax(VSD_COEF_OUT_CURRENT_2));
   parameters.setMax(CCS_COEF_OUT_CURRENT_3, getMax(VSD_COEF_OUT_CURRENT_3));
-}
-
-void VsdEtalon::outStatistic()
-{
-  ModbusMasterSerial *mms = dm_->getMms();
-//  SEGGER_RTT_printf(0, "MB VSD: total - %d, success - %d, lost - %d, crc - %d, err - %d, trash - %d\n",
-//                    mms->getTotalCounter(), mms->getSuccessCounter(),
-//                    mms->getLostCounter(), mms->getCrcCounter(),
-//                    mms->getErrCounter(), mms->getTrashCounter());
 }
