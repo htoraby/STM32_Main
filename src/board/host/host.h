@@ -3,7 +3,7 @@
 
 #include "board.h"
 
-#define HOST_BUF_SIZE	1024
+#define HOST_BUF_SIZE	4096+25
 
 typedef struct {
   uint32_t txGood;

@@ -12,22 +12,6 @@
 #define OUT_BUF_SIZE (IN_BUF_SIZE + IN_BUF_SIZE / 16 + 64 + 3 + 8)
 #define PARAMETERS_SIZE 21504*4
 
-#pragma pack(1)
-
-typedef struct {
-  unsigned int size;
-  unsigned short codeProduction;
-  unsigned char codeEquip;
-  unsigned char subCodeEquip;
-  unsigned short version;
-  unsigned int date;
-  unsigned int mainLogSize;
-  unsigned int debugLogSize;
-  unsigned int parametersSize;
-} LOG_FILE_HEADER;
-
-#pragma pack()
-
 #define HEAP_ALLOC(var,size) \
   lzo_align_t __LZO_MMODEL var [((size) + (sizeof(lzo_align_t) - 1)) / sizeof(lzo_align_t)]
 
@@ -101,6 +85,32 @@ void logStartDelete(EventType type)
   osSemaphoreRelease(deleteSemaphoreId_);
 }
 
+void logHeader(LOG_FILE_HEADER *header)
+{
+  // Коды изготовителя и оборудования
+  header->codeProduction = CODE_PRODUCTION;
+  header->codeEquip = CODE_EQUIP;
+  header->subCodeEquip = SUBCODE_EQUIP;
+  header->version = FIRMWARE_VERSION;
+
+  time_t time = parameters.getU32(CCS_DATE_TIME);
+  tm dateTime = *localtime(&time);
+  if (dateTime.tm_year > 100)
+    dateTime.tm_year = dateTime.tm_year - 100;
+  else
+    dateTime.tm_year = 0;
+  header->date = (toBcd(dateTime.tm_year) << 24) |
+      (toBcd(dateTime.tm_mon + 1) << 16) |
+      (toBcd(dateTime.tm_mday) << 8) |
+      (toBcd(dateTime.tm_hour) & 0xFF);
+
+  header->mainLogSize = EndAddrTmsLog;
+  header->debugLogSize = EndAddrDebugLog;
+  header->parametersSize = PARAMETERS_SIZE;
+  header->size = header->mainLogSize + header->debugLogSize +
+      header->parametersSize + sizeof(header) + 2;
+}
+
 StatusType logRead(uint32_t address, uint8_t *data, uint32_t size)
 {
   StatusType status = flashExtRead(FlashSpi5, address, data, size);
@@ -111,6 +121,49 @@ StatusType logDebugRead(uint32_t address, uint8_t *data, uint32_t size)
 {
   StatusType status = flashExtRead(FlashSpi1, address, data, size);
   return status;
+}
+
+StatusType logParamsRead(uint32_t address, uint8_t *data, uint32_t size)
+{
+  StatusType status = framReadData(address, data, size);
+  return status;
+}
+
+bool logCompressRead(uint8_t *data)
+{
+  LOG_HEADER_PKT *pkt = (LOG_HEADER_PKT *)data;
+  StatusType status = StatusError;
+  int resCompress = 0;
+  lzo_uint outLen = 0;
+
+  if (pkt->type == HeaderLogType) {
+    logHeader((LOG_FILE_HEADER*)&data[20]);
+    return true;
+  }
+  if (pkt->type == MainLogType)
+    status = logRead(pkt->addr, inBufData, pkt->inLen);
+  else if (pkt->type == DebugLogType)
+    status = logDebugRead(pkt->addr, inBufData, pkt->inLen);
+  else if (pkt->type == ParamsLogType)
+    status = logParamsRead(pkt->addr, inBufData, pkt->inLen);
+
+  if (status == StatusError)
+    asm("nop");
+  pkt->crc = crc16_ibm(inBufData, pkt->inLen, pkt->crc);
+
+  resCompress = lzo1x_1_compress(inBufData, pkt->inLen, outBufData, &outLen, wrkmem);
+  if (resCompress != LZO_E_OK) {
+    return false;
+  }
+
+  if (outLen < pkt->inLen) {
+    pkt->outLen = outLen;
+    memcpy(&data[20], outBufData, outLen);
+  } else {
+    pkt->outLen = pkt->inLen;
+    memcpy(&data[20], inBufData, pkt->inLen);
+  }
+  return true;
 }
 
 static void getFilePath(char *path)
@@ -182,26 +235,7 @@ static bool logSave()
     strcpy(logPath, LOG_DIR);
     getFilePath(logPath);
 
-    // Коды изготовителя и оборудования
-    header.codeProduction = CODE_PRODUCTION;
-    header.codeEquip = CODE_EQUIP;
-    header.subCodeEquip = SUBCODE_EQUIP;
-    header.version = FIRMWARE_VERSION;
-
-    time_t time = parameters.getU32(CCS_DATE_TIME);
-    tm dateTime = *localtime(&time);
-    if (dateTime.tm_year > 100)
-      dateTime.tm_year = dateTime.tm_year - 100;
-    else
-      dateTime.tm_year = 0;
-    header.date = (toBcd(dateTime.tm_year) << 24) |
-        (toBcd(dateTime.tm_mon + 1) << 16) |
-        (toBcd(dateTime.tm_mday) << 8) |
-        (toBcd(dateTime.tm_hour) & 0xFF);
-
-    header.mainLogSize = EndAddrTmsLog;
-    header.debugLogSize = EndAddrDebugLog;
-    header.parametersSize = PARAMETERS_SIZE;
+    logHeader(&header);
 
     if (f_open(&file, logPath, FA_CREATE_ALWAYS | FA_WRITE) == FR_OK) {
       uint16_t calcCrc = 0xFFFF;
@@ -217,9 +251,6 @@ static bool logSave()
         ksu.setError(MiniLzoInitUsbErr);
         return false;
       }
-
-      header.size = header.mainLogSize + header.debugLogSize +
-          header.parametersSize + sizeof(header) + 2;
 
       result = f_write(&file, (uint8_t*)&header, sizeof(header), &bytesWritten);
       if ((result != FR_OK) || (sizeof(header) != bytesWritten)) {
@@ -314,7 +345,7 @@ static bool logSave()
       inLen = IN_BUF_SIZE;
       count = 0;
       while (usbState == USB_READY) {
-        StatusType status = framReadData(addr, inBufData, inLen);
+        StatusType status = logParamsRead(addr, inBufData, inLen);
         if (status == StatusError)
           asm("nop");
         addr = addr + inLen;

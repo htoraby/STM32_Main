@@ -14,7 +14,6 @@
  */
 class NovobusSlave
 {
-
 public:
   /*!
    * \brief Комманды протокола "Novobus"
@@ -31,6 +30,7 @@ public:
     ReadMaxCommand,
     ReadSoftwareCommand,
     WriteSoftwareCommand,
+    ReadLogCommand,
   } NovobusCommand;
 
   /*!
@@ -104,8 +104,8 @@ private:
   osMessageQId messageParams_;
 
   uint8_t oldCommand_;
-  uint8_t txBuffer_[HOST_BUF_SIZE];
-  uint8_t rxBuffer_[HOST_BUF_SIZE];
+  uint8_t *txBuffer_;
+  uint8_t *rxBuffer_;
   uint32_t idsBuffer_[MAX_IDS_BUFFER];
   uint32_t addrsBuffer_[MAX_ADDRS_BUFFER];
   uint8_t idsCount_;
