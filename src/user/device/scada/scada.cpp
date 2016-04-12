@@ -43,7 +43,6 @@ void Scada::task()
   uint32_t baudRate = parameters.get(CCS_SCADA_BYTERATE);
   eMBParity parity = (eMBParity)parameters.get(CCS_SCADA_PARITY);
   delay_ = parameters.get(CCS_SCADA_DELAY);
-  delay_ = parameters.convertFrom(delay_, PHYSIC_TIME, TIME_MS);
 
   eMBInit(MB_RTU, address, SCADA_UART, baudRate,  parity);
   eMBEnable();
