@@ -36,7 +36,7 @@ typedef struct {
   uint32_t addr;
   uint32_t inLen;
   uint32_t outLen;
-} LOG_HEADER_PKT;
+} LOG_PKT_HEADER;
 
 #pragma pack()
 

@@ -131,7 +131,7 @@ StatusType logParamsRead(uint32_t address, uint8_t *data, uint32_t size)
 
 bool logCompressRead(uint8_t *data)
 {
-  LOG_HEADER_PKT *pkt = (LOG_HEADER_PKT *)data;
+  LOG_PKT_HEADER *pkt = (LOG_PKT_HEADER *)data;
   StatusType status = StatusError;
   int resCompress = 0;
   lzo_uint outLen = 0;

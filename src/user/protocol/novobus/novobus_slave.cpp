@@ -371,7 +371,7 @@ void NovobusSlave::receivePackage(uint16_t sizePkt)
 
         // Команда чтения архивов
       case ReadLogCommand:
-        memcpy(&txBuffer_[5], &rxBuffer_[2], sizeof(LOG_HEADER_PKT));
+        memcpy(&txBuffer_[5], &rxBuffer_[2], sizeof(LOG_PKT_HEADER));
         logCompressRead(&txBuffer_[5]);
 
         value.char_t[3] = txBuffer_[16];
@@ -381,7 +381,7 @@ void NovobusSlave::receivePackage(uint16_t sizePkt)
 
         checkMessage();
 
-        sizePkt = 7 + sizeof(LOG_HEADER_PKT) + value.uint32_t;
+        sizePkt = 7 + sizeof(LOG_PKT_HEADER) + value.uint32_t;
         break;
 
       default:
