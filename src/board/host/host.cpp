@@ -169,7 +169,6 @@ int hostReadData(uint8_t *data)
 {
   const int count = rxCount;
   memcpy(data, rxBuffer, count);
-  memset(rxBuffer, 0, sizeof(rxBuffer));
 
   return count;
 }

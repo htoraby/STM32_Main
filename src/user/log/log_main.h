@@ -16,6 +16,40 @@ extern LogTms logTms;
 
 extern LogDebug logDebug;
 
+#pragma pack(1)
+
+typedef struct {
+  unsigned int size;
+  unsigned short codeProduction;
+  unsigned char codeEquip;
+  unsigned char subCodeEquip;
+  unsigned short version;
+  unsigned int date;
+  unsigned int mainLogSize;
+  unsigned int debugLogSize;
+  unsigned int parametersSize;
+} LOG_FILE_HEADER;
+
+typedef struct {
+  uint8_t type;
+  uint16_t crc;
+  uint32_t addr;
+  uint32_t inLen;
+  uint32_t outLen;
+} LOG_PKT_HEADER;
+
+#pragma pack()
+
+/*!
+ * \brief Тип области архива
+*/
+typedef enum {
+  HeaderLogType,
+  MainLogType,
+  DebugLogType,
+  ParamsLogType,
+} MapLogType;
+
 /*!
  * \brief Инициализация архивов
 */
@@ -31,6 +65,12 @@ void logStartSave(EventType type);
  * type - Тип события
 */
 void logStartDelete(EventType type);
+
+/*!
+ * \brief Метод получения заголовка
+ * \param header
+ */
+void logHeader(LOG_FILE_HEADER *header);
 
 /*!
  * \brief Чтение архивов
@@ -49,5 +89,16 @@ StatusType logRead(uint32_t address, uint8_t *data, uint32_t size);
  * \return StatusType - ошибка или ок
 */
 StatusType logDebugRead(uint32_t address, uint8_t *data, uint32_t size);
+
+/*!
+ * \brief Чтение параметров
+ * \param address - адрес данных
+ * \param data - указатель на данные
+ * \param size - размер данных
+ * \return StatusType - ошибка или ок
+ */
+StatusType logParamsRead(uint32_t address, uint8_t *data, uint32_t size);
+
+bool logCompressRead(uint8_t *data);
 
 #endif // LOG_MAIN_H

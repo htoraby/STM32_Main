@@ -6,6 +6,9 @@
 #define MAX_QUEUE_SIZE 500
 #define ANSWER_TIMEOUT 300000
 
+static uint8_t txBuffer[HOST_BUF_SIZE] __attribute__((section(".extmem")));
+static uint8_t rxBuffer[HOST_BUF_SIZE] __attribute__((section(".extmem")));
+
 static void novobusSlaveTask(void *p)
 {
   (static_cast<NovobusSlave*>(p))->task();
@@ -13,6 +16,8 @@ static void novobusSlaveTask(void *p)
 
 NovobusSlave::NovobusSlave()
   : oldCommand_(NoneCommand)
+  , txBuffer_(txBuffer)
+  , rxBuffer_(rxBuffer)
   , idsCount_(0)
   , addrsCount_(0)
   , isConnect_(true)
@@ -362,6 +367,21 @@ void NovobusSlave::receivePackage(uint16_t sizePkt)
         checkMessage();
 
         sizePkt = 7;
+        break;
+
+        // Команда чтения архивов
+      case ReadLogCommand:
+        memcpy(&txBuffer_[5], &rxBuffer_[2], sizeof(LOG_PKT_HEADER));
+        logCompressRead(&txBuffer_[5]);
+
+        value.char_t[3] = txBuffer_[16];
+        value.char_t[2] = txBuffer_[17];
+        value.char_t[1] = txBuffer_[18];
+        value.char_t[0] = txBuffer_[19];
+
+        checkMessage();
+
+        sizePkt = 7 + sizeof(LOG_PKT_HEADER) + value.uint32_t;
         break;
 
       default:
