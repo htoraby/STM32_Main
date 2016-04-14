@@ -137,7 +137,7 @@ bool logCompressRead(uint8_t *data)
   lzo_uint outLen = 0;
 
   if (pkt->type == HeaderLogType) {
-    logHeader((LOG_FILE_HEADER*)&data[20]);
+    logHeader((LOG_FILE_HEADER*)&data[sizeof(LOG_PKT_HEADER)]);
     return true;
   }
   if (pkt->type == MainLogType)
@@ -158,10 +158,10 @@ bool logCompressRead(uint8_t *data)
 
   if (outLen < pkt->inLen) {
     pkt->outLen = outLen;
-    memcpy(&data[20], outBufData, outLen);
+    memcpy(&data[sizeof(LOG_PKT_HEADER)], outBufData, outLen);
   } else {
     pkt->outLen = pkt->inLen;
-    memcpy(&data[20], inBufData, pkt->inLen);
+    memcpy(&data[sizeof(LOG_PKT_HEADER)], inBufData, pkt->inLen);
   }
   return true;
 }

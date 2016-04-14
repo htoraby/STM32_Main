@@ -1023,7 +1023,7 @@ void ScadaRegion30::initParameters()
   scadaParameters_[84].command           = OPERATION_ERROR;
   scadaParameters_[84].value.float_t     = 0;
   // Задержка активации уставка
-  scadaParameters_[85].id                = CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY;
+  scadaParameters_[85].id                = CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY;
   scadaParameters_[85].address           = 552;
   scadaParameters_[85].operation         = OPERATION_WRITE;
   scadaParameters_[85].physic            = PHYSIC_TIME;
@@ -1071,7 +1071,7 @@ void ScadaRegion30::initParameters()
   scadaParameters_[88].command           = OPERATION_ERROR;
   scadaParameters_[88].value.float_t     = 0;
   // Задержка активации уставка
-  scadaParameters_[89].id                = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY;
+  scadaParameters_[89].id                = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY;
   scadaParameters_[89].address           = 556;
   scadaParameters_[89].operation         = OPERATION_WRITE;
   scadaParameters_[89].physic            = PHYSIC_TIME;
