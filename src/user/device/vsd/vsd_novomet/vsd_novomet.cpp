@@ -489,6 +489,8 @@ float VsdNovomet::checkAlarmVsd()
     parameters.set(CCS_VSD_STATUS_WORD_7_LOG, vsdStatus7);
   vsdStatusOld7 = vsdStatus7;
 
+  parameters.set(CCS_PROT_OTHER_VSD_TRIP_DELAY, 0);
+
   if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_UD_LOW_FAULT) && (vsdStatus <= VSD_NOVOMET_ALARM_UD_HIGH_FAULT))) {
     for (int i = VSD_NOVOMET_ALARM_UD_LOW_FAULT; i <= VSD_NOVOMET_ALARM_UD_HIGH_FAULT; i++) {
       if (checkBit(vsdStatus1, i - 1000)) {
@@ -547,6 +549,16 @@ float VsdNovomet::checkAlarmVsd()
     for (int i = VSD_NOVOMET_ALARM_TEMP_LINK; i <= VSD_NOVOMET_ALARM_AIR_TEMP; i++) {
       if (checkBit(vsdStatus7, i - 1096)) {
         resetBlock();
+        return i;
+      }
+    }
+  }
+
+  if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_I_LIMIT) && (vsdStatus <= VSD_NOVOMET_ALARM_ULOW))) {
+    for (int i = VSD_NOVOMET_ALARM_I_LIMIT; i <= VSD_NOVOMET_ALARM_ULOW; i++) {
+      if (checkBit(vsdStatus1, i - 1000)) {
+        parameters.set(CCS_PROT_OTHER_VSD_TRIP_DELAY, 3);
+        parameters.set(CCS_PROT_OTHER_VSD_TIME, ksu.getTime());
         return i;
       }
     }
