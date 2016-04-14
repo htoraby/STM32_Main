@@ -4021,7 +4021,7 @@ void Vsd::initParameters()
   parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].max                             = 100.0;
   parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].def                             = 16.0;
   parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].discret                         = 1;
-  parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].code                            = 13;
+  parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].code                            = 0;
   // Температура пласта
   parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].id                             = VSD_TEMPERATURE_INTAKE;
   parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].access                         = ACCESS_OPERATOR;
