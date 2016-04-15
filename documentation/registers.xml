@@ -743,6 +743,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>2000.0</value>
+		<text>Длина кабеля</text>
+		<short_text>Длина кабеля</short_text>
 		<form>3.3 ТМПН</form>
 		<unit>LENGTH_M</unit>
 		<unit_lcd>LENGTH_M</unit_lcd>
@@ -762,6 +764,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>Сечение кабеля</text>
+		<short_text>Сечение кабеля</short_text>
 		<form>3.3 ТМПН</form>
 		<unit>SPACE_MM2</unit>
 		<unit_lcd>SPACE_MM2</unit_lcd>
@@ -1622,8 +1626,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>60.0</value>
-		<text>NULL</text>
-		<short_text>NULL</short_text>
+		<text>Дисбал.напряж. Задержка АПВ</text>
+		<short_text>Дисбал.напряж. Задержка АПВ</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -17558,7 +17562,7 @@
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
 		<code>0</code>
-		<comment>Команда сброса статистики связи с ЧРП </comment>
+		<comment>Команда сброса статистики связи с ЧРП</comment>
 	</param>
 	<param>
 		<id>914</id>
@@ -23634,7 +23638,7 @@
 		<unit>SPACE_MM2</unit>
 		<unit_lcd>SPACE_MM2</unit_lcd>
 		<format>XXXXXX</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>Сечение кабеля</comment>
 	</param>
 	<param>

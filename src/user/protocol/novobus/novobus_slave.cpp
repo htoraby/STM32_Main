@@ -374,10 +374,10 @@ void NovobusSlave::receivePackage(uint16_t sizePkt)
         memcpy(&txBuffer_[5], &rxBuffer_[2], sizeof(LOG_PKT_HEADER));
         logCompressRead(&txBuffer_[5]);
 
-        value.char_t[3] = txBuffer_[16];
-        value.char_t[2] = txBuffer_[17];
-        value.char_t[1] = txBuffer_[18];
-        value.char_t[0] = txBuffer_[19];
+        value.char_t[0] = txBuffer_[16];
+        value.char_t[1] = txBuffer_[17];
+        value.char_t[2] = txBuffer_[18];
+        value.char_t[3] = txBuffer_[19];
 
         checkMessage();
 
