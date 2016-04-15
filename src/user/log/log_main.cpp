@@ -133,36 +133,20 @@ bool logCompressRead(uint8_t *data)
 {
   LOG_PKT_HEADER *pkt = (LOG_PKT_HEADER *)data;
   StatusType status = StatusError;
-  int resCompress = 0;
-  lzo_uint outLen = 0;
 
   if (pkt->type == HeaderLogType) {
     logHeader((LOG_FILE_HEADER*)&data[sizeof(LOG_PKT_HEADER)]);
     return true;
   }
   if (pkt->type == MainLogType)
-    status = logRead(pkt->addr, inBufData, pkt->inLen);
+    status = logRead(pkt->addr, &data[sizeof(LOG_PKT_HEADER)], pkt->inLen);
   else if (pkt->type == DebugLogType)
-    status = logDebugRead(pkt->addr, inBufData, pkt->inLen);
+    status = logDebugRead(pkt->addr, &data[sizeof(LOG_PKT_HEADER)], pkt->inLen);
   else if (pkt->type == ParamsLogType)
-    status = logParamsRead(pkt->addr, inBufData, pkt->inLen);
+    status = logParamsRead(pkt->addr, &data[sizeof(LOG_PKT_HEADER)], pkt->inLen);
 
   if (status == StatusError)
     asm("nop");
-  pkt->crc = crc16_ibm(inBufData, pkt->inLen, pkt->crc);
-
-  resCompress = lzo1x_1_compress(inBufData, pkt->inLen, outBufData, &outLen, wrkmem);
-  if (resCompress != LZO_E_OK) {
-    return false;
-  }
-
-  if (outLen < pkt->inLen) {
-    pkt->outLen = outLen;
-    memcpy(&data[sizeof(LOG_PKT_HEADER)], outBufData, outLen);
-  } else {
-    pkt->outLen = pkt->inLen;
-    memcpy(&data[sizeof(LOG_PKT_HEADER)], inBufData, pkt->inLen);
-  }
   return true;
 }
 
