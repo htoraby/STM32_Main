@@ -1950,7 +1950,7 @@ void ScadaRegion30::initParameters()
   scadaParameters_[162].id               = VSD_MOTOR_POWER;
   scadaParameters_[162].address          = 629;
   scadaParameters_[162].operation        = OPERATION_WRITE;
-  scadaParameters_[162].physic           = POWER_W;
+  scadaParameters_[162].physic           = PHYSIC_POWER;
   scadaParameters_[162].unit             = POWER_KW;
   scadaParameters_[162].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[162].coefficient      = 0.1;
