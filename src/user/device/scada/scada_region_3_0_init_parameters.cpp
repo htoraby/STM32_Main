@@ -1115,7 +1115,7 @@ void ScadaRegion30::initParameters()
   scadaParameters_[92].typeData          = TYPE_DATA_UINT16;
   scadaParameters_[92].coefficient       = 0.01;
   scadaParameters_[92].min               = 0;
-  scadaParameters_[92].max               = 1;
+  scadaParameters_[92].max               = 100;
   scadaParameters_[92].command           = OPERATION_ERROR;
   scadaParameters_[92].value.float_t     = 0;
   // Напряж. Отпайки ТМПН
@@ -2003,7 +2003,7 @@ void ScadaRegion30::initParameters()
   scadaParameters_[166].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[166].coefficient      = 0.001;
   scadaParameters_[166].min              = 0;
-  scadaParameters_[166].max              = 9999;
+  scadaParameters_[166].max              = 9999000;
   scadaParameters_[166].command          = OPERATION_ERROR;
   scadaParameters_[166].value.float_t    = 0;
   // Дата

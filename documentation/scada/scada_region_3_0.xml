@@ -1177,7 +1177,7 @@
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.01</coefficient>
 		<min>0</min>
-		<max>1</max>
+		<max>100</max>
 		<command>OPERATION_ERROR</command>
 		<name>Номинальный коэффициент мощности</name>
 	</param>
@@ -2078,7 +2078,7 @@
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.001</coefficient>
 		<min>0</min>
-		<max>9999</max>
+		<max>9999000</max>
 		<command>OPERATION_ERROR</command>
 		<name>Диаметр НКТ</name>
 	</param>
