@@ -1382,8 +1382,8 @@ void ScadaRegion30::initParameters()
   scadaParameters_[114].max              = 2;
   scadaParameters_[114].command          = OPERATION_ERROR;
   scadaParameters_[114].value.float_t    = 0;
-  // Минимальное давление
-  scadaParameters_[115].id               = CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT;
+  // Максимальное давление
+  scadaParameters_[115].id               = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT;
   scadaParameters_[115].address          = 582;
   scadaParameters_[115].operation        = OPERATION_WRITE;
   scadaParameters_[115].physic           = PHYSIC_PRESSURE;
@@ -1394,8 +1394,8 @@ void ScadaRegion30::initParameters()
   scadaParameters_[115].max              = 9999;
   scadaParameters_[115].command          = OPERATION_ERROR;
   scadaParameters_[115].value.float_t    = 0;
-  // Максимальное давление
-  scadaParameters_[116].id               = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT;
+  // Минимальное давление
+  scadaParameters_[116].id               = CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT;
   scadaParameters_[116].address          = 583;
   scadaParameters_[116].operation        = OPERATION_WRITE;
   scadaParameters_[116].physic           = PHYSIC_PRESSURE;
