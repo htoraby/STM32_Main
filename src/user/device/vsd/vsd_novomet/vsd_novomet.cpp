@@ -1313,25 +1313,7 @@ void VsdNovomet::processingRegimeRun()
   regimeRun_->processing();
 }
 
-void VsdNovomet::calcTempSpeedUp()
-{
-  setValue(VSD_TEMP_SPEEDUP, 1/getValue(VSD_T_SPEEDUP));
-}
 
-void VsdNovomet::calcTimeSpeedUp()
-{
-  setValue(VSD_TIMER_DISPERSAL, getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TEMP_SPEEDUP));
-}
-
-void VsdNovomet::calcTempSpeedDown()
-{
-  setValue(VSD_TEMP_SPEEDDOWN, 1/getValue(VSD_T_SPEEDDOWN));
-}
-
-void VsdNovomet::calcTimeSpeedDown()
-{
-  setValue(VSD_TIMER_DELAY, getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TEMP_SPEEDDOWN));
-}
 
 void VsdNovomet::calcRotation()
 {

@@ -401,25 +401,7 @@ public:
 
   void calcMotorType();
 
-  /*!
-   * \brief calcSpeedUp
-   */
-  void calcTempSpeedUp();
 
-  /*!
-   * \brief calcTimeSpeedUp
-   */
-  void calcTimeSpeedUp();
-
-  /*!
-   * \brief calcSpeedDown
-   */
-  void calcTempSpeedDown();
-
-  /*!
-   * \brief calcTimeSpeedDown
-   */
-  void calcTimeSpeedDown();
 
   /*!
    * \brief calcRotation

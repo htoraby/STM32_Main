@@ -579,6 +579,26 @@ float Vsd::calcCurrentDC()
   return getValue(VSD_CURRENT_DC);
 }
 
+void Vsd::calcTempSpeedUp()
+{
+  setValue(VSD_TEMP_SPEEDUP, 1/getValue(VSD_T_SPEEDUP));
+}
+
+void Vsd::calcTempSpeedDown()
+{
+  setValue(VSD_TEMP_SPEEDDOWN, 1/getValue(VSD_T_SPEEDDOWN));
+}
+
+void Vsd::calcTimeSpeedUp()
+{
+  setValue(VSD_TIMER_DISPERSAL, getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TEMP_SPEEDUP));
+}
+
+void Vsd::calcTimeSpeedDown()
+{
+  setValue(VSD_TIMER_DELAY, getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TEMP_SPEEDDOWN));
+}
+
 void Vsd::writeToDevice(int id, float value)
 {
   setValue(id, value);

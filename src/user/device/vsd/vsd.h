@@ -485,6 +485,26 @@ public:
   float calcCurrentDC();
 
   /*!
+   * \brief calcTempSpeedUp
+   */
+  void calcTempSpeedUp();
+
+  /*!
+   * \brief calcTempSpeedDown
+   */
+  void calcTempSpeedDown();
+
+  /*!
+   * \brief calcTimeSpeedUp
+   */
+  void calcTimeSpeedUp();
+
+  /*!
+   * \brief calcTimeSpeedDown
+   */
+  void calcTimeSpeedDown();
+
+  /*!
    * \brief Функция присвоения максимальной границы параметрам
    */
   virtual void setLimitsMaxParameters();
