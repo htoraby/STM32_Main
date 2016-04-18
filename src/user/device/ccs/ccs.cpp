@@ -858,6 +858,14 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       vsd->offRegimePickup();
     }
     return err;
+  case CCS_RGM_AUTO_OPTIM_CURRENT_MODE:
+    err = setValue(id, value, eventType);
+    if (value != Regime::OffAction) {
+      vsd->onRegimeAutoOptimCurrent();
+    }
+    else {
+      vsd->offRegimeAutoOptimCurrent();
+    }
   case CCS_VSD_DECEL:
     err = setValue(id, value, eventType);
     vsd->setDischarge(value);
