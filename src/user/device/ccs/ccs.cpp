@@ -439,6 +439,7 @@ void Ccs::cmdStart(int value)
   switch (value) {
   case CmdStartRemote:
     setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunRemote);
+    resetBlock();
     break;
   default:
     setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunOperator);
