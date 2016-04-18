@@ -675,6 +675,16 @@ int Vsd::offRegimeJarring()
   return 0;
 }
 
+int Vsd::onRegimeAutoOptimCurrent()
+{
+  return 0;
+}
+
+int Vsd::offRegimeAutoOptimCurrent()
+{
+  return 0;
+}
+
 int Vsd::resetSetpoints()
 {
   return 0;
