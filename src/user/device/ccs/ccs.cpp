@@ -1238,6 +1238,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (!err)
       setModeAnalogInExt(AI4, value);
     return err;
+  case CCS_PROT_SUPPLY_RESTART_DELAY:
   case CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY:
   case CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY:
   case CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY:
