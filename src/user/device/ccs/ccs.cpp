@@ -439,6 +439,7 @@ void Ccs::cmdStart(int value)
   switch (value) {
   case CmdStartRemote:
     setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunRemote);
+    resetBlock();
     break;
   default:
     setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunOperator);
@@ -1245,12 +1246,14 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (!err)
       setModeAnalogInExt(AI4, value);
     return err;
+  case CCS_PROT_SUPPLY_RESTART_DELAY:
   case CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY:
   case CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY:
   case CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY:
   case CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY:
-    err = setValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY, value, eventType);
+    err = setValue(CCS_PROT_SUPPLY_RESTART_DELAY, value, eventType);
     if (!err) {
+      setValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY, value, eventType);
       setValue(CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY, value, eventType);
       setValue(CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY, value, eventType);
       setValue(CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY, value, eventType);
