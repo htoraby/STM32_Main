@@ -337,6 +337,10 @@ void VsdEtalon::getNewValue(uint16_t id)
           parameters.get(CCS_RGM_RUN_SWING_MODE))
         parameters.set(CCS_RGM_RUN_SWING_FREQ, value);
       break;
+    case VSD_ETALON_AUTO_OPTIM_MODE:
+      setValue(id, value);
+      parameters.set(CCS_RGM_AUTO_OPTIM_CURRENT_MODE, value);
+      break;
     case VSD_SW_STARTUP_U_PULSE:
       setValue(id, value);
       if ((parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) != (value + 100.0)) &&
@@ -754,6 +758,16 @@ int VsdEtalon::onRegimeSkipFreq()
 int VsdEtalon::offRegimeSkipFreq()
 {
   return setNewValue(VSD_FREQ_SKIP_MODE, 0);
+}
+
+int VsdEtalon::onRegimeAutoOptimCurrent()
+{
+  return setNewValue(VSD_ETALON_AUTO_OPTIM_MODE, 1);
+}
+
+int VsdEtalon::offRegimeAutoOptimCurrent()
+{
+  return setNewValue(VSD_ETALON_AUTO_OPTIM_MODE, 0);
 }
 
 int VsdEtalon::calcUfCharacteristicU(float value)
