@@ -4021,7 +4021,7 @@ void Vsd::initParameters()
   parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].max                             = 100.0;
   parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].def                             = 16.0;
   parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].discret                         = 1;
-  parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].code                            = 0;
+  parameters_[VSD_TRANS_CABLE_CROSS - VSD_BEGIN].code                            = 13;
   // Температура пласта
   parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].id                             = VSD_TEMPERATURE_INTAKE;
   parameters_[VSD_TEMPERATURE_INTAKE - VSD_BEGIN].access                         = ACCESS_OPERATOR;
@@ -5637,10 +5637,70 @@ void Vsd::initParameters()
   parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].physic                         = PHYSIC_VOLTAGE;
   parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].validity                       = VALIDITY_ERROR;
   parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].value.float_t                  = 0;
-  parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].min                            = 0;
+  parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].min                            = 0.0;
   parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].max                            = 500.0;
   parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].def                            = 0;
   parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].discret                        = 1;
   parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].code                           = 0;
+  // Автооптимизация
+  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].id                         = VSD_ETALON_AUTO_OPTIM_MODE;
+  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].access                     = ACCESS_OPERATOR;
+  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].physic                     = PHYSIC_NUMERIC;
+  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].validity                   = VALIDITY_ERROR;
+  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].value.float_t              = 0.0;
+  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].min                        = 0.0;
+  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].max                        = 2.0;
+  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].def                        = 0.0;
+  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].discret                    = 1;
+  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].code                       = 13;
+  // Дельта напряжения оптимизации
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].id                      = VSD_ETALON_AUTO_OPTIM_DELTA_U;
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].access                  = ACCESS_OPERATOR;
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].physic                  = PHYSIC_PERCENT;
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].validity                = VALIDITY_ERROR;
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].value.float_t           = 50.0;
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].min                     = 50.0;
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].max                     = 110.0;
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].def                     = 50.0;
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].discret                 = 10;
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].code                    = 13;
+  // Шаг изменения напряжения за 1 мин
+  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].id                         = VSD_ETALON_AUTO_OPTIM_STEP;
+  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].access                     = ACCESS_OPERATOR;
+  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].physic                     = PHYSIC_VOLTAGE;
+  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].validity                   = VALIDITY_ERROR;
+  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].value.float_t              = 1.0;
+  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].min                        = 1.0;
+  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].max                        = 10.0;
+  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].def                        = 1.0;
+  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].discret                    = 1;
+  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].code                       = 13;
+  // Период оптимизации
+  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].id                       = VSD_ETALON_AUTO_OPTIM_PERIOD;
+  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].access                   = ACCESS_OPERATOR;
+  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].physic                   = PHYSIC_TIME;
+  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].validity                 = VALIDITY_ERROR;
+  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].value.float_t            = 3600.0;
+  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].min                      = 3600.0;
+  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].max                      = 26784000.0;
+  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].def                      = 3600.0;
+  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].discret                  = 10;
+  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].code                     = 13;
+  // Задержка запуска оптимизации
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].id                        = VSD_ETALON_AUTO_OPTIM_DELAY;
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].access                    = ACCESS_OPERATOR;
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].physic                    = PHYSIC_TIME;
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].validity                  = VALIDITY_ERROR;
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].value.float_t             = 120.0;
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].min                       = 120.0;
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].max                       = 86400.0;
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].def                       = 120.0;
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].discret                   = 1;
+  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].code                      = 13;
 }
 

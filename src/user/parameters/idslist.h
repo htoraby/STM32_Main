@@ -917,7 +917,8 @@ enum enID
   CCS_DHS_CONNECTION_STOP_BIT = 911,                         //!< 
   CCS_CMD_DHS_CONNECTION_RESET = 912,                        //!< Команда сброса статистики связи с ТМС
   CCS_CMD_VSD_CONNECTION_RESET = 913,                        //!< Команда сброса статистики связи с ЧРП
-  CCS_END = 914,                                             //!< 
+  CCS_RGM_AUTO_OPTIM_CURRENT_MODE = 914,                     //!< Автооптимизация по току
+  CCS_END = 915,                                             //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
@@ -1388,7 +1389,12 @@ enum enID
   VSD_IC_RMS = 10467,                                        //!< Выходной ток ПЧ фаза W
   VSD_BLDC_COEF_NORM_UF = 10468,                             //!< Коэффициент нормиров. хар-ки
   VSD_VOLTAGE_IN_AVARAGE = 10469,                            //!< Среднее значение вх. напряжения
-  VSD_END = 10470,                                           //!< 
+  VSD_ETALON_AUTO_OPTIM_MODE = 10470,                        //!< Автооптимизация
+  VSD_ETALON_AUTO_OPTIM_DELTA_U = 10471,                     //!< Дельта напряжения оптимизации
+  VSD_ETALON_AUTO_OPTIM_STEP = 10472,                        //!< Шаг изменения напряжения за 1 мин
+  VSD_ETALON_AUTO_OPTIM_PERIOD = 10473,                      //!< Период оптимизации
+  VSD_ETALON_AUTO_OPTIM_DELAY = 10474,                       //!< Задержка запуска оптимизации
+  VSD_END = 10475,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме
