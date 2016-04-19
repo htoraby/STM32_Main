@@ -462,6 +462,18 @@ public:
   virtual int offRegimeJarring();
 
   /*!
+   * \brief onRegimeAutoOptimCurrent
+   * \return
+   */
+  virtual int onRegimeAutoOptimCurrent();
+
+  /*!
+   * \brief offRegimeAutoOptimCurrent
+   * \return
+   */
+  virtual int offRegimeAutoOptimCurrent();
+
+  /*!
    * \brief resetSetpoints
    * \return
    */
