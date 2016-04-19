@@ -163,11 +163,11 @@ eMBErrorCode Scada::writeReg(uint8_t *buffer, uint16_t address, uint16_t numRegs
     }
 
     if (param->typeData == TYPE_DATA_FLOAT) {
-      if (checkRange(data.float_t, param->min, param->max, true))
+      if (checkRange(data.float_t, param->min, param->max, true) != ok_r)
         return MB_EINVAL;
     }
     else {
-      if (checkRange(data.uint32_t, param->min, param->max, true))
+      if (checkRange(data.uint32_t, param->min, param->max, true) != ok_r)
         return MB_EINVAL;
     }
 
