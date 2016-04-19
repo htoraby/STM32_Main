@@ -274,6 +274,11 @@ public:
   float calcMotorVoltageImbalance();
 
   /*!
+   * \brief Функция вычисления напряжения на выходе ТМПН
+   */
+  void calcVoltageTransOut();
+
+  /*!
    * \brief Функция вычисления текущей скорости вращения двигателя
    * \return Скорость вращения
    */
