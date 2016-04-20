@@ -918,7 +918,8 @@ enum enID
   CCS_CMD_DHS_CONNECTION_RESET = 912,                        //!< Команда сброса статистики связи с ТМС
   CCS_CMD_VSD_CONNECTION_RESET = 913,                        //!< Команда сброса статистики связи с ЧРП
   CCS_RGM_AUTO_OPTIM_CURRENT_MODE = 914,                     //!< Автооптимизация по току
-  CCS_END = 915,                                             //!< 
+  CCS_RGM_CURRENT_LIMITATION_MODE = 915,                     //!< Режим токоограничения
+  CCS_END = 916,                                             //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
@@ -1394,7 +1395,10 @@ enum enID
   VSD_ETALON_AUTO_OPTIM_STEP = 10472,                        //!< Шаг изменения напряжения за 1 мин
   VSD_ETALON_AUTO_OPTIM_PERIOD = 10473,                      //!< Период оптимизации
   VSD_ETALON_AUTO_OPTIM_DELAY = 10474,                       //!< Задержка запуска оптимизации
-  VSD_END = 10475,                                           //!< 
+  VSD_ETALON_CURRENT_LIMITATION_MODE = 10475,                //!< Режим токоограничения
+  VSD_ETALON_CURRENT_LIMITATION_LIMIT = 10476,               //!< Порог токоограничения
+  VSD_ETALON_CURRENT_LIMITATION_DELAY = 10477,               //!< Задержка отключения при токоограничении
+  VSD_END = 10479,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме

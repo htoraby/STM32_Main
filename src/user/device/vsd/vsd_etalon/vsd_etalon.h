@@ -167,9 +167,10 @@ public:
   int offRegimeSkipFreq();
 
   // ТЕХНОЛОГИЧЕСКИЕ РЕЖИМЫ
-
   int onRegimeAutoOptimCurrent();
   int offRegimeAutoOptimCurrent();
+  int onRegimeCurrentLimitation();
+  int offRegimeCurrentLimitation();
 
   // НАСТРОЙКИ ЧРП
   int setRotation(float value);
