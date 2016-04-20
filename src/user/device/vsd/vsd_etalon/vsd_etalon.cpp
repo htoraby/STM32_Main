@@ -770,6 +770,16 @@ int VsdEtalon::offRegimeAutoOptimCurrent()
   return setNewValue(VSD_ETALON_AUTO_OPTIM_MODE, 0);
 }
 
+int VsdEtalon::onRegimeCurrentLimitation()
+{
+  return setNewValue(VSD_ETALON_CURRENT_LIMITATION_MODE, 1);
+}
+
+int VsdEtalon::offRegimeCurrentLimitation()
+{
+  return setNewValue(VSD_ETALON_CURRENT_LIMITATION_MODE, 0);
+}
+
 int VsdEtalon::calcUfCharacteristicU(float value)
 {
   return setBaseVoltage(value);
