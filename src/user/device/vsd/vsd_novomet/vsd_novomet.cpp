@@ -289,6 +289,7 @@ int VsdNovomet::setMinFrequency(float value)
 {
   if (!Vsd::setMinFrequency(value)) {
     writeToDevice(VSD_LOW_LIM_SPEED_MOTOR, getValue(VSD_LOW_LIM_SPEED_MOTOR));
+    writeToDevice(VSD_FREQUENCY_ERROR, getValue(VSD_LOW_LIM_SPEED_MOTOR));
     return ok_r;
   }
   return err_r;

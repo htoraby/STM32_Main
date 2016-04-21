@@ -5720,10 +5720,10 @@ void Vsd::initParameters()
   parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].operation         = OPERATION_WRITE;
   parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].physic            = PHYSIC_CURRENT;
   parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].validity          = VALIDITY_ERROR;
-  parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].value.float_t     = 20.0;
-  parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].min               = 20.0;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].value.float_t     = 2.0;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].min               = 2.0;
   parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].max               = 999.9;
-  parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].def               = 20.0;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].def               = 2.0;
   parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].discret           = 10;
   parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].code              = 13;
   // Задержка отключения при токоограничении

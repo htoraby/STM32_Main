@@ -341,6 +341,10 @@ void VsdEtalon::getNewValue(uint16_t id)
       setValue(id, value);
       parameters.set(CCS_RGM_AUTO_OPTIM_CURRENT_MODE, value);
       break;
+    case VSD_ETALON_CURRENT_LIMITATION_MODE:
+      setValue(id, value);
+      parameters.set(CCS_RGM_CURRENT_LIMIT_MODE, value);
+      break;
     case VSD_SW_STARTUP_U_PULSE:
       setValue(id, value);
       if ((parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) != (value + 100.0)) &&
