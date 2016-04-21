@@ -1397,10 +1397,7 @@ enum enID
   VSD_ETALON_AUTO_OPTIM_STEP = 10472,                        //!< Шаг изменения напряжения за 1 мин
   VSD_ETALON_AUTO_OPTIM_PERIOD = 10473,                      //!< Период оптимизации
   VSD_ETALON_AUTO_OPTIM_DELAY = 10474,                       //!< Задержка запуска оптимизации
-  VSD_ETALON_CURRENT_LIMITATION_MODE = 10475,                //!< Режим токоограничения
-  VSD_ETALON_CURRENT_LIMITATION_LIMIT = 10476,               //!< Порог токоограничения
-  VSD_ETALON_CURRENT_LIMITATION_DELAY = 10477,               //!< Задержка отключения при токоограничении
-  VSD_END = 10479,                                           //!< 
+  VSD_END = 10475,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме
