@@ -6046,9 +6046,9 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].max                        = 999999999.9;
+  parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].max                        = 1.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].discret                    = 1;
-  parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].def                        = 0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].def                        = 0.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].code                       = 13;
   // Режим ограничения тока уставка
   parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].id                     = CCS_RGM_CURRENT_LIMIT_SETPOINT;
@@ -10982,17 +10982,5 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_AUTO_OPTIM_CURRENT_MODE - CCS_BEGIN].discret               = 1;
   parameters_[CCS_RGM_AUTO_OPTIM_CURRENT_MODE - CCS_BEGIN].def                   = 0.0;
   parameters_[CCS_RGM_AUTO_OPTIM_CURRENT_MODE - CCS_BEGIN].code                  = 0;
-  // Режим токоограничения
-  parameters_[CCS_RGM_CURRENT_LIMITATION_MODE - CCS_BEGIN].id                    = CCS_RGM_CURRENT_LIMITATION_MODE;
-  parameters_[CCS_RGM_CURRENT_LIMITATION_MODE - CCS_BEGIN].access                = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_CURRENT_LIMITATION_MODE - CCS_BEGIN].operation             = OPERATION_WRITE;
-  parameters_[CCS_RGM_CURRENT_LIMITATION_MODE - CCS_BEGIN].physic                = PHYSIC_NUMERIC;
-  parameters_[CCS_RGM_CURRENT_LIMITATION_MODE - CCS_BEGIN].validity              = VALIDITY_ERROR;
-  parameters_[CCS_RGM_CURRENT_LIMITATION_MODE - CCS_BEGIN].value.float_t         = 0.0;
-  parameters_[CCS_RGM_CURRENT_LIMITATION_MODE - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_RGM_CURRENT_LIMITATION_MODE - CCS_BEGIN].max                   = 1.0;
-  parameters_[CCS_RGM_CURRENT_LIMITATION_MODE - CCS_BEGIN].discret               = 1;
-  parameters_[CCS_RGM_CURRENT_LIMITATION_MODE - CCS_BEGIN].def                   = 0.0;
-  parameters_[CCS_RGM_CURRENT_LIMITATION_MODE - CCS_BEGIN].code                  = 0;
 }
 

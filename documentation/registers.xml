@@ -9806,7 +9806,8 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Реакция режима</text>
@@ -17584,28 +17585,6 @@
 	</param>
 	<param>
 		<id>915</id>
-		<name>CCS_RGM_CURRENT_LIMITATION_MODE</name>
-		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>1.0</max>
-		<def>0.0</def>
-		<discret>1</discret>
-		<valid>VALIDITY_ERROR</valid>
-		<value>0.0</value>
-		<text>Режим токоограничения</text>
-		<short_text>Токоограничение</short_text>
-		<form>NULL</form>
-		<unit>NUMERIC_NUMBER</unit>
-		<unit_lcd>TEXT</unit_lcd>
-		<format>TEXT</format>
-		<code>0</code>
-		<values>0-Откл;1-Вкл;</values>
-		<comment>Режим токоограничения</comment>
-	</param>
-	<param>
-		<id>916</id>
 		<name>CCS_END</name>
 	</param>
 	<param>
@@ -26600,12 +26579,12 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_CURRENT</physic>
-		<min>20.0</min>
+		<min>2.0</min>
 		<max>999.9</max>
-		<def>20.0</def>
+		<def>2.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>20.0</value>
+		<value>2.0</value>
 		<text>Порог токоограничения</text>
 		<short_text>Порог токоограничения</short_text>
 		<form>NULL</form>
