@@ -157,6 +157,18 @@ public:
    */
   virtual int offRegimeAutoAdaptation();
 
+  /*!
+   * \brief onRegimeCurrentLimit
+   * \return
+   */
+  virtual int onRegimeCurrentLimitation();
+
+  /*!
+   * \brief offRegimeCurrentLimit
+   * \return
+   */
+  virtual int offRegimeCurrentLimitation();
+
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
   /*!
    * \brief Функция записи в регистр управления двигателем

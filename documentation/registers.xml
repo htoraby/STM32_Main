@@ -9865,7 +9865,8 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Реакция режима</text>
@@ -26666,6 +26667,70 @@
 	</param>
 	<param>
 		<id>10475</id>
+		<name>VSD_ETALON_CURRENT_LIMITATION_MODE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Токоограничение</text>
+		<short_text>Токоограничение</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Блок;2-АПВ</values>
+		<comment>Режим токоограничения</comment>
+	</param>
+	<param>
+		<id>10476</id>
+		<name>VSD_ETALON_CURRENT_LIMITATION_LIMIT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>2.0</min>
+		<max>999.9</max>
+		<def>2.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>2.0</value>
+		<text>Порог токоограничения</text>
+		<short_text>Порог токоограничения</short_text>
+		<form>NULL</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXX_X</format>
+		<code>13</code>
+		<comment>Порог токоограничения</comment>
+	</param>
+	<param>
+		<id>10477</id>
+		<name>VSD_ETALON_CURRENT_LIMITATION_DELAY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>1.0</min>
+		<max>300.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Задержка отключения при токоограничении</text>
+		<short_text>Задержка отключения</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXX</format>
+		<code>13</code>
+		<comment>Задержка отключения при токоограничении</comment>
+	</param>
+	<param>
+		<id>10479</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>

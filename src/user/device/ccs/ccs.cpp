@@ -870,6 +870,16 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     else {
       vsd->offRegimeAutoOptimCurrent();
     }
+    return err;
+  case CCS_RGM_CURRENT_LIMIT_MODE:
+    err = setValue(id, value, eventType);
+    if (value != Regime::OffAction) {
+      vsd->onRegimeCurrentLimitation();
+    }
+    else {
+      vsd->offRegimeCurrentLimitation();
+    }
+    return err;
   case CCS_VSD_DECEL:
     err = setValue(id, value, eventType);
     vsd->setDischarge(value);

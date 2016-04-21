@@ -5702,5 +5702,41 @@ void Vsd::initParameters()
   parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].def                       = 120.0;
   parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].discret                   = 1;
   parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].code                      = 13;
+  // Режим токоограничения
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_MODE - VSD_BEGIN].id                 = VSD_ETALON_CURRENT_LIMITATION_MODE;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_MODE - VSD_BEGIN].access             = ACCESS_OPERATOR;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_MODE - VSD_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_MODE - VSD_BEGIN].physic             = PHYSIC_NUMERIC;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_MODE - VSD_BEGIN].validity           = VALIDITY_ERROR;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_MODE - VSD_BEGIN].value.float_t      = 0.0;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_MODE - VSD_BEGIN].min                = 0.0;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_MODE - VSD_BEGIN].max                = 2.0;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_MODE - VSD_BEGIN].def                = 0.0;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_MODE - VSD_BEGIN].discret            = 1;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_MODE - VSD_BEGIN].code               = 13;
+  // Порог токоограничения
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].id                = VSD_ETALON_CURRENT_LIMITATION_LIMIT;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].access            = ACCESS_OPERATOR;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].physic            = PHYSIC_CURRENT;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].validity          = VALIDITY_ERROR;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].value.float_t     = 2.0;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].min               = 2.0;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].max               = 999.9;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].def               = 2.0;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].discret           = 10;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_LIMIT - VSD_BEGIN].code              = 13;
+  // Задержка отключения при токоограничении
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_DELAY - VSD_BEGIN].id                = VSD_ETALON_CURRENT_LIMITATION_DELAY;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_DELAY - VSD_BEGIN].access            = ACCESS_OPERATOR;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_DELAY - VSD_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_DELAY - VSD_BEGIN].physic            = PHYSIC_TIME;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_DELAY - VSD_BEGIN].validity          = VALIDITY_ERROR;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_DELAY - VSD_BEGIN].value.float_t     = 1.0;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_DELAY - VSD_BEGIN].min               = 1.0;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_DELAY - VSD_BEGIN].max               = 300.0;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_DELAY - VSD_BEGIN].def               = 1.0;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_DELAY - VSD_BEGIN].discret           = 1;
+  parameters_[VSD_ETALON_CURRENT_LIMITATION_DELAY - VSD_BEGIN].code              = 13;
 }
 

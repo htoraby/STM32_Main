@@ -167,9 +167,10 @@ public:
   int offRegimeSkipFreq();
 
   // ТЕХНОЛОГИЧЕСКИЕ РЕЖИМЫ
-
   int onRegimeAutoOptimCurrent();
   int offRegimeAutoOptimCurrent();
+  int onRegimeCurrentLimitation();
+  int offRegimeCurrentLimitation();
 
   // НАСТРОЙКИ ЧРП
   int setRotation(float value);
@@ -277,7 +278,7 @@ public:
 private:
   void setLimitsMaxParameters();
 
-  ModbusParameter modbusParameters_[134];
+  ModbusParameter modbusParameters_[137];
   DeviceModbus *dm_;
 
   RegimeRunEtalon *regimeRun_;

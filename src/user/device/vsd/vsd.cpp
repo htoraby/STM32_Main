@@ -138,6 +138,16 @@ int Vsd::offRegimeAutoAdaptation()
   return 0;
 }
 
+int Vsd::onRegimeCurrentLimitation()
+{
+  return 0;
+}
+
+int Vsd::offRegimeCurrentLimitation()
+{
+  return 0;
+}
+
 // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
 int Vsd::setVsdControl(float value)
 {
