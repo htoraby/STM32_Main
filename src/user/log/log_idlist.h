@@ -152,6 +152,10 @@ typedef enum {
   PowerOffApvId,               //!< "АПВ по защите: Нет питания сети"
   PowerOffApvDisabledId,       //!< "АПВ запрещено: Нет питания сети"
 
+  OvernumberOfStartProtReactId,   //!< "Сработала защита: Превышение числа пусков"
+  OvernumberOfStartProtBlockedId, //!< "Блокировка по защите: Превышение числа пусков"
+
+
 } EventId;
 
 #endif // LOG_IDLIST

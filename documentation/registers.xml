@@ -7835,8 +7835,14 @@
 		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Защита "Превышения числа пусков"</comment>
+		<text>Превыш.пусков.РР3</text>
+		<short_text>Превыш.пусков.РР3</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Блок</values>
+		<comment>Защита "Превышение числа пусков"</comment>
 	</param>
 	<param>
 		<id>389</id>
@@ -7852,6 +7858,7 @@
 		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
+		<comment>Параметр запрещающий запуск</comment>
 	</param>
 	<param>
 		<id>390</id>
@@ -7863,7 +7870,10 @@
 		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<text>Превыш.пусков пуск.время</text>
+		<short_text>Превыш.пусков пуск.время</short_text>
 		<code>0</code>
+		<comment>Задержка активации уставка</comment>
 	</param>
 	<param>
 		<id>391</id>
@@ -7875,7 +7885,10 @@
 		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<text>Превыш.пусков время</text>
+		<short_text>Превыш.пусков время</short_text>
 		<code>0</code>
+		<comment>Задержка срабатывания уставка</comment>
 	</param>
 	<param>
 		<id>392</id>
@@ -7887,7 +7900,10 @@
 		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<text>Превыш.пусков зад.АПВ</text>
+		<short_text>Превыш.пусков зад.АПВ</short_text>
 		<code>0</code>
+		<comment>Задержка АПВ уставка</comment>
 	</param>
 	<param>
 		<id>393</id>
@@ -7899,7 +7915,10 @@
 		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<text>Превыш.пусков раз.АПВ</text>
+		<short_text>Превыш.пусков раз.АПВ</short_text>
 		<code>0</code>
+		<comment>Количество АПВ уставка</comment>
 	</param>
 	<param>
 		<id>394</id>
@@ -7911,7 +7930,10 @@
 		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<text>Превыш.пусков сброс счет</text>
+		<short_text>Превыш.пусков сброс счет</short_text>
 		<code>0</code>
+		<comment>Автосброс счетчика АПВ</comment>
 	</param>
 	<param>
 		<id>395</id>
@@ -7920,71 +7942,99 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>40</max>
+		<def>5</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>5</value>
+		<text>Превыш.пусков уст.</text>
+		<short_text>Превыш.пусков уст.</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX</format>
+		<code>13</code>
+		<comment>Макс. число пусков</comment>
 	</param>
 	<param>
 		<id>396</id>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<code>0</code>
+		<comment>Условие АПВ уставка</comment>
 	</param>
 	<param>
 		<id>397</id>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>24</max>
+		<def>10</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>10</value>
+		<text>Превыш.пусков период врем.</text>
+		<short_text>Превыш.пусков период врем.</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH</unit_lcd>
+		<format>XX</format>
+		<code>13</code>
+		<comment>Период времени</comment>
 	</param>
 	<param>
 		<id>398</id>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
+		<comment>Текущий параметр Флаг что защита в АПВ</comment>
 	</param>
 	<param>
 		<id>399</id>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_STATE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
+		<comment>Текущий параметр состояние автомата</comment>
 	</param>
 	<param>
 		<id>400</id>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<code>0</code>
+		<comment>Текущий параметр Фиксированное время</comment>
 	</param>
 	<param>
 		<id>401</id>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
 		<discret>1</discret>
@@ -7993,7 +8043,7 @@
 		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
-		<comment>Текущий параметр Время первого АПВ</comment>
+		<comment>Текущий параметр Количество АПВ</comment>
 	</param>
 	<param>
 		<id>402</id>
@@ -8062,6 +8112,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Задержка срабатывания уставка</comment>
 	</param>
@@ -8122,6 +8175,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Уставка срабатывания защиты</comment>
 	</param>
@@ -8152,6 +8208,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
 		<comment>Уставка параметр защиты</comment>
 	</param>
@@ -17584,6 +17643,61 @@
 	</param>
 	<param>
 		<id>915</id>
+		<name>CCS_RESTART_COUNT_ALL</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Количество АПВ всех защит</text>
+		<short_text>Количество АПВ всех защит</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Количество АПВ всех защит</comment>
+	</param>
+	<param>
+		<id>916</id>
+		<name>CCS_RESTART_COUNT_FIRST_TIME</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
+		<min>0</min>
+		<max>4294967296</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>DATE_TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Текущий параметр Время первого АПВ</comment>
+	</param>
+	<param>
+		<id>917</id>
+		<name>CCS_PROT_OTHER_LIMIT_RESTART_SETPOINT_RESET</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<code>13</code>
+		<comment>Команда сброса уставок защиты Превышение числа пусков по умолчанию</comment>
+	</param>
+	<param>
+		<id>918</id>
 		<name>CCS_END</name>
 	</param>
 	<param>

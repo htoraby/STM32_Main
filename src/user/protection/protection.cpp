@@ -501,6 +501,7 @@ void Protection::incRestartCount()
   if (restartCount_ == 1) {           // Первое АПВ
     restartFirstTime_ = ksu.getTime();   // Запоминаем время первого АПВ по защите
   }
+  ksu.incRestartCount();
   attempt_ = false;
   restart_ = false;
 }

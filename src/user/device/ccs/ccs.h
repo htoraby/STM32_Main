@@ -13,6 +13,8 @@
 #include "device.h"
 #include "log.h"
 
+#define RESTART_TIME_MAX 100
+
 class Ccs: public Device
 {
 public:
@@ -417,6 +419,13 @@ public:
    */
   void setError(int error);
 
+  void intRestartCount();
+  int getRestartCount();
+  uint32_t getRestartTime();
+  void incRestartCount();
+  void decRestartCount();
+  void resetRestartCount();
+
 private:
   /*!
    * \brief Метод добавления в очередь событий включения/мигания LED
@@ -457,6 +466,7 @@ private:
   void cmdProtDhsTemperatureMotorSetpointReset();
   void cmdProtDhsResistanceSetpointReset();
 
+  void cmdProtOvernumberOfStartSetpointReset();
   void cmdProtOtherHardwareVsdSetpointReset();
   void cmdProtOtherVsdNoConnectSetpointReset();
 
@@ -586,6 +596,8 @@ private:
   bool isConnectMaster_;
 
   int countPhaseRotation_;
+
+  uint32_t restartTime_[RESTART_TIME_MAX+1];
 
 };
 

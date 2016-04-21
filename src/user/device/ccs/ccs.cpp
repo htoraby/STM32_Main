@@ -104,6 +104,8 @@ void Ccs::initTask()
   resetCmd(CCS_ERROR_SLAVE);
 
   setMaxBaseFrequency();
+
+  intRestartCount();
 }
 
 void Ccs::mainTask()
@@ -661,6 +663,7 @@ void Ccs::resetRestart()
 void Ccs::resetBlock()
 {
   if (getValue(CCS_CONDITION_FLAG) == CCS_CONDITION_FLAG_BLOCK) {
+    resetRestartCount();
     setNewValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_NULL);
     vsd->resetBlock();
   }
@@ -1037,6 +1040,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_CMD_PROT_DHS_RESISTANCE_SETPOINT_RESET:
     err = setValue(id, value, eventType);
     cmdProtDhsResistanceSetpointReset();
+    return err;
+  case CCS_PROT_OTHER_LIMIT_RESTART_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtOvernumberOfStartSetpointReset();
     return err;
   case CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET:
     err = setValue(id, value, eventType);
@@ -1458,6 +1465,14 @@ void Ccs::cmdProtDhsResistanceSetpointReset()
   }
 }
 
+void Ccs::cmdProtOvernumberOfStartSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_OTHER_LIMIT_RESTART_MODE;
+       i <= CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
 void Ccs::cmdProtOtherHardwareVsdSetpointReset()
 {
   for (uint16_t i = CCS_PROT_OTHER_VSD_MODE;
@@ -1691,4 +1706,63 @@ void Ccs::setMaxBaseFrequency()
 void Ccs::setError(int error)
 {
   setValue(CCS_ERROR_SLAVE, error);
+}
+
+void Ccs::intRestartCount()
+{
+  for (int i = 0; i < RESTART_TIME_MAX+1; ++i) {
+    restartTime_[i] = 0;
+  }
+  int restartCount = getValue(CCS_RESTART_COUNT_ALL);
+  for (int i = 0; i < restartCount; ++i) {
+    restartTime_[i] = getValueUint32(CCS_RESTART_COUNT_FIRST_TIME);
+  }
+}
+
+int Ccs::getRestartCount()
+{
+  return getValue(CCS_RESTART_COUNT_ALL);
+}
+
+uint32_t Ccs::getRestartTime()
+{
+  return restartTime_[0];
+}
+
+void Ccs::incRestartCount()
+{
+  int restartCount = getValue(CCS_RESTART_COUNT_ALL);
+  if (restartCount < RESTART_TIME_MAX) {
+    restartTime_[restartCount] = getTime();
+    restartCount++;
+    setValue(CCS_RESTART_COUNT_ALL, restartCount);
+  } else {
+    for (int i = 0; i < RESTART_TIME_MAX; ++i) {
+      restartTime_[i] = restartTime_[i+1];
+    }
+    restartTime_[RESTART_TIME_MAX] = 0;
+  }
+}
+
+void Ccs::decRestartCount()
+{
+  int restartCount = getValue(CCS_RESTART_COUNT_ALL);
+  if (restartCount) {
+    restartCount--;
+    setValue(CCS_RESTART_COUNT_ALL, restartCount);
+    for (int i = 0; i < restartCount; ++i) {
+      restartTime_[i] = restartTime_[i+1];
+    }
+  }
+  restartTime_[RESTART_TIME_MAX] = 0;
+}
+
+void Ccs::resetRestartCount()
+{
+  int restartCount = getValue(CCS_RESTART_COUNT_ALL);
+  restartCount = 0;
+  setValue(CCS_RESTART_COUNT_ALL, restartCount);
+  for (int i = 0; i < (RESTART_TIME_MAX + 1); ++i) {
+    restartTime_[i] = 0;
+  }
 }
