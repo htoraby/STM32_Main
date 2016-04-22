@@ -40,7 +40,7 @@ void VsdEtalon::init()
   initParameters();
   readParameters();
 
-  setLimitsMaxParameters();
+  setLimitsCcsParameters();
   setLimitsMinFrequence(getValue(VSD_LOW_LIM_SPEED_MOTOR));
   setLimitsMaxFrequence(parameters.get(CCS_BASE_FREQUENCY));
 }
@@ -344,6 +344,14 @@ void VsdEtalon::getNewValue(uint16_t id)
     case VSD_I_LIMIT_MODE:
       setValue(id, value);
       parameters.set(CCS_RGM_CURRENT_LIMIT_MODE, value);
+      break;
+    case VSD_ILIMIT:
+      setValue(id, value);
+      parameters.set(CCS_RGM_CURRENT_LIMIT_SETPOINT, value);
+      break;
+    case VSD_I_LIMIT_TM:
+      setValue(id, value);
+      parameters.set(CCS_RGM_CURRENT_LIMIT_DELAY_REACTION, value);
       break;
     case VSD_SW_STARTUP_U_PULSE:
       setValue(id, value);
@@ -784,6 +792,13 @@ int VsdEtalon::offRegimeCurrentLimitation()
   return setNewValue(VSD_I_LIMIT_MODE, 0);
 }
 
+int VsdEtalon::configRegimeCurrentLimitation()
+{
+  writeToDevice(VSD_ILIMIT, parameters.get(CCS_RGM_CURRENT_LIMIT_SETPOINT));
+  writeToDevice(VSD_I_LIMIT_TM, parameters.get(CCS_RGM_CURRENT_LIMIT_DELAY_REACTION));
+  return true;
+}
+
 int VsdEtalon::calcUfCharacteristicU(float value)
 {
   return setBaseVoltage(value);
@@ -883,9 +898,15 @@ void VsdEtalon::resetConnect()
   dm_->getMms()->resetCounters();
 }
 
-void VsdEtalon::setLimitsMaxParameters()
+void VsdEtalon::setLimitsCcsParameters()
 {
   parameters.setMax(CCS_COEF_OUT_CURRENT_1, getMax(VSD_COEF_OUT_CURRENT_1));
   parameters.setMax(CCS_COEF_OUT_CURRENT_2, getMax(VSD_COEF_OUT_CURRENT_2));
   parameters.setMax(CCS_COEF_OUT_CURRENT_3, getMax(VSD_COEF_OUT_CURRENT_3));
+  // Задание пределов для "Режим ограничения тока уставка"
+  parameters.setMin(CCS_RGM_CURRENT_LIMIT_SETPOINT, getMin(VSD_ILIMIT));
+  parameters.setMax(CCS_RGM_CURRENT_LIMIT_SETPOINT, getMax(VSD_ILIMIT));
+  // Задание пределов для Режим ограничения тока задержка срабатывания
+  parameters.setMin(CCS_RGM_CURRENT_LIMIT_DELAY_REACTION, getMin(VSD_I_LIMIT_TM));
+  parameters.setMax(CCS_RGM_CURRENT_LIMIT_DELAY_REACTION, getMax(VSD_I_LIMIT_TM));
 }
