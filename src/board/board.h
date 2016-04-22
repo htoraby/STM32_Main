@@ -21,7 +21,7 @@
 #define WATCHDOG_TIMEOUT 10 // 10 сек
 
 
-#define FIRMWARE_VERSION 0x0100
+#define FIRMWARE_VERSION 0x0101 // 1.1
 #define FIRMWARE_DATE __DATE__
 #define FIRMWARE_TIME __TIME__
 
