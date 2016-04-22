@@ -165,12 +165,14 @@ public:
 
   /*!
    * \brief offRegimeCurrentLimit
+   * Виртуальная функция задания
    * \return
    */
   virtual int offRegimeCurrentLimitation();
 
   /*!
    * \brief configRegimeCurrentLimitation
+   * Виртуальная функция задания настроек "Режима ограничения тока"
    * \return
    */
   virtual int configRegimeCurrentLimitation();

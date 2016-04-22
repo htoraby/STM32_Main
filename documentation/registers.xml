@@ -9865,13 +9865,13 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>1.0</max>
+		<max>2.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Реакция режима</text>
 		<short_text>Реакция режима</short_text>
-		<form>5.1.9 Режим ограничения тока</form>
+		<form>5.1.9 Режим токоограничения</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -9883,19 +9883,21 @@
 		<name>CCS_RGM_CURRENT_LIMIT_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_PERCENT</physic>
+		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
+		<max>9999.9</max>
+		<def>100.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
-		<text>Ограничение тока от Iном</text>
-		<short_text>Ограничение тока от Iном</short_text>
-		<form>5.1.9 Режим ограничения тока</form>
-		<unit>PERCENT_PERCENT</unit>
-		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXXXX</format>
+		<value>100.0</value>
+		<text>Порог токоограничения</text>
+		<short_text>Порог токоограничения</short_text>
+		<form>5.1.9 Режим токоограничения</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXX_X</format>
 		<code>13</code>
-		<comment>Режим ограничения тока уставка</comment>
+		<comment>Порог токоограничения</comment>
 	</param>
 	<param>
 		<id>505</id>
@@ -9909,7 +9911,7 @@
 		<valid>VALIDITY_OK</valid>
 		<text>Шаг снижения частоты</text>
 		<short_text>Шаг снижения частоты</short_text>
-		<form>5.1.9 Режим ограничения тока</form>
+		<form>5.1.9 Режим токоограничения</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXX_XX</format>
@@ -9923,17 +9925,19 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>600.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<text>Задержка срабатывания</text>
-		<short_text>Задержка срабатывания</short_text>
-		<form>5.1.9 Режим ограничения тока</form>
+		<value>10.0</value>
+		<text>Задержка отключения</text>
+		<short_text>Задержка отключения</short_text>
+		<form>5.1.9 Режим токоограничения</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XX_XX</format>
 		<code>13</code>
-		<comment>Режим ограничения тока задержка срабатывания</comment>
+		<comment>Режим ограничения тока задержка отключения</comment>
 	</param>
 	<param>
 		<id>507</id>
@@ -9947,7 +9951,7 @@
 		<valid>VALIDITY_OK</valid>
 		<text>Задержка АПВ</text>
 		<short_text>Задержка АПВ</short_text>
-		<form>5.1.9 Режим ограничения тока</form>
+		<form>5.1.9 Режим токоограничения</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XX_XX</format>
