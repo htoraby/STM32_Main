@@ -6046,21 +6046,21 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].max                        = 1.0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].max                        = 2.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].discret                    = 1;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].def                        = 0.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].code                       = 13;
-  // Режим ограничения тока уставка
+  // Порог токоограничения
   parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].id                     = CCS_RGM_CURRENT_LIMIT_SETPOINT;
   parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].access                 = ACCESS_OPERATOR;
   parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].operation              = OPERATION_WRITE;
-  parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].physic                 = PHYSIC_PERCENT;
+  parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].physic                 = PHYSIC_CURRENT;
   parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].validity               = VALIDITY_OK;
-  parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].value.float_t          = 0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].value.float_t          = 100.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].max                    = 999999999.9;
-  parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].discret                = 1;
-  parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].def                    = 0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].max                    = 9999.9;
+  parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].discret                = 10;
+  parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].def                    = 100.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_SETPOINT - CCS_BEGIN].code                   = 13;
   // Режим ограничения тока шаг снижения частоты
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].id                     = CCS_RGM_CURRENT_LIMIT_STEPDOWN;
@@ -6074,17 +6074,17 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].discret                = 100;
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].def                    = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].code                   = 13;
-  // Режим ограничения тока задержка срабатывания
+  // Режим ограничения тока задержка отключения
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].id               = CCS_RGM_CURRENT_LIMIT_DELAY_REACTION;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].access           = ACCESS_OPERATOR;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].operation        = OPERATION_WRITE;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].physic           = PHYSIC_TIME;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].validity         = VALIDITY_OK;
-  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].value.float_t    = 0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].value.float_t    = 10.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].max              = 999999999.9;
+  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].max              = 600.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].discret          = 1;
-  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].def              = 0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].def              = 10.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].code             = 13;
   // Режим ограничения тока задержка АПВ
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].id                = CCS_RGM_CURRENT_LIMIT_DELAY_RESTART;

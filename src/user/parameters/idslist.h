@@ -507,9 +507,9 @@ enum enID
   CCS_RGM_PUMP_GAS_DELAY_REACTION = 501,                     //!< Режим прокачки газа
   CCS_RGM_PUMP_GAS_LIMIT_RESTART = 502,                      //!< Режим прокачки газа
   CCS_RGM_CURRENT_LIMIT_MODE = 503,                          //!< Режим ограничения тока
-  CCS_RGM_CURRENT_LIMIT_SETPOINT = 504,                      //!< Режим ограничения тока уставка
+  CCS_RGM_CURRENT_LIMIT_SETPOINT = 504,                      //!< Порог токоограничения
   CCS_RGM_CURRENT_LIMIT_STEPDOWN = 505,                      //!< Режим ограничения тока шаг снижения частоты
-  CCS_RGM_CURRENT_LIMIT_DELAY_REACTION = 506,                //!< Режим ограничения тока задержка срабатывания
+  CCS_RGM_CURRENT_LIMIT_DELAY_REACTION = 506,                //!< Режим ограничения тока задержка отключения
   CCS_RGM_CURRENT_LIMIT_DELAY_RESTART = 507,                 //!< Режим ограничения тока задержка АПВ
   CCS_COEF_VOLTAGE_IN_A = 508,                               //!< Коэффициент корректировки входного напряжения
   CCS_COEF_VOLTAGE_IN_B = 509,                               //!< 
