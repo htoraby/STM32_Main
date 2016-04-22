@@ -169,8 +169,10 @@ public:
   // ТЕХНОЛОГИЧЕСКИЕ РЕЖИМЫ
   int onRegimeAutoOptimCurrent();
   int offRegimeAutoOptimCurrent();
+  // Режим токоограничения
   int onRegimeCurrentLimitation();
   int offRegimeCurrentLimitation();
+  int configRegimeCurrentLimitation();
 
   // НАСТРОЙКИ ЧРП
   int setRotation(float value);
@@ -275,8 +277,8 @@ public:
   void getConnect();
   void resetConnect();
 
-private:
-  void setLimitsMaxParameters();
+private: 
+  void setLimitsCcsParameters();
 
   ModbusParameter modbusParameters_[134];
   DeviceModbus *dm_;

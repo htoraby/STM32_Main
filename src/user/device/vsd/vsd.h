@@ -169,6 +169,12 @@ public:
    */
   virtual int offRegimeCurrentLimitation();
 
+  /*!
+   * \brief configRegimeCurrentLimitation
+   * \return
+   */
+  virtual int configRegimeCurrentLimitation();
+
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
   /*!
    * \brief Функция записи в регистр управления двигателем
@@ -529,9 +535,10 @@ public:
   void calcTimeSpeedDown();
 
   /*!
-   * \brief Функция присвоения максимальной границы параметрам
+   * \brief setLimitsCcsParameters
+   * Функция задания границ для параметров КСУ связанных с параметрами ЧРП
    */
-  virtual void setLimitsMaxParameters();
+  virtual void setLimitsCcsParameters();
 
   /*!
    * \brief getConnect

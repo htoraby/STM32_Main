@@ -148,6 +148,11 @@ int Vsd::offRegimeCurrentLimitation()
   return 0;
 }
 
+int Vsd::configRegimeCurrentLimitation()
+{
+  return 0;
+}
+
 // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
 int Vsd::setVsdControl(float value)
 {
@@ -609,6 +614,11 @@ void Vsd::calcTimeSpeedDown()
   setValue(VSD_TIMER_DELAY, getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TEMP_SPEEDDOWN));
 }
 
+void Vsd::setLimitsCcsParameters()
+{
+
+}
+
 void Vsd::writeToDevice(int id, float value)
 {
   setValue(id, value);
@@ -700,15 +710,7 @@ int Vsd::resetSetpoints()
   return 0;
 }
 
-void Vsd::setLimitsMaxParameters()
-{
-
-}
-
-void Vsd::getConnect()
-{
-
-}
+void Vsd::getConnect() {}
 
 void Vsd::setConnect(stConnectQuality *counters)
 {
