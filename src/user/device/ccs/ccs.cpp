@@ -1627,6 +1627,10 @@ void Ccs::calcCountersRun(float reason)
     if (protImbalanceCurrentMotor.isRestart())
       setValue(CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART, getValue(CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART) + 1);
   }
+  if ((reason != LastReasonRunOperator) && (reason != LastReasonRunRemote) &&
+      (reason != LastReasonRunProgram)) {
+    incRestartCount();
+  }
 }
 
 void Ccs::cmdCountersAllReset()
@@ -1770,8 +1774,8 @@ void Ccs::decRestartCount()
     for (int i = 0; i < restartCount; ++i) {
       restartTime_[i] = restartTime_[i+1];
     }
+    restartTime_[restartCount] = 0;
   }
-  restartTime_[RESTART_TIME_MAX] = 0;
 }
 
 void Ccs::resetRestartCount()

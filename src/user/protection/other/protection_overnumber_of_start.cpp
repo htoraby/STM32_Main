@@ -43,7 +43,7 @@ void ProtectionOvernumberOfStart::setOtherParamProt()
 bool ProtectionOvernumberOfStart::checkAlarm()
 {
   if (ksu.getSecFromCurTime(ksu.getRestartTime()) < parameters.get(idParam_)) {
-    if (ksu.getRestartCount() > tripSetpoint_)
+    if (ksu.getRestartCount() >= tripSetpoint_)
       return true;
   } else {
     ksu.decRestartCount();
@@ -59,7 +59,7 @@ void ProtectionOvernumberOfStart::addEventReactionProt()
 void ProtectionOvernumberOfStart::processingStateRun()
 {
   if (isModeBlock()) {
-    if (alarm_ && ksu.isRestart()) {
+    if (alarm_&& !restart_ && ksu.isRestart()) {
 #if (USE_LOG_DEBUG == 1)
       logDebug.add(DebugMsg, "Защиты: Срабатывание --> блок (idMode = %d, alarm = %d, tripDelay = %d, isModeBlock = %d)",
                    idMode_, alarm_, tripDelay_, isModeBlock());
@@ -74,6 +74,7 @@ void ProtectionOvernumberOfStart::processingStateRun()
   } else {
     setStateStop();
   }
+  restart_ = ksu.isRestart();
 }
 
 void ProtectionOvernumberOfStart::proccessingStateStop()

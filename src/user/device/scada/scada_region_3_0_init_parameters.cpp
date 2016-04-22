@@ -1359,10 +1359,10 @@ void ScadaRegion30::initParameters()
   scadaParameters_[112].command          = OPERATION_ERROR;
   scadaParameters_[112].value.float_t    = 0;
   // Ввод единиц измерения давления
-  scadaParameters_[113].id               = -1;
+  scadaParameters_[113].id               = CCS_UNIT_PRESSURE;
   scadaParameters_[113].address          = 580;
   scadaParameters_[113].operation        = OPERATION_WRITE;
-  scadaParameters_[113].physic           = 0;
+  scadaParameters_[113].physic           = PHYSIC_NUMERIC;
   scadaParameters_[113].unit             = 0;
   scadaParameters_[113].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[113].coefficient      = 1;
@@ -1419,10 +1419,10 @@ void ScadaRegion30::initParameters()
   scadaParameters_[117].command          = OPERATION_ERROR;
   scadaParameters_[117].value.float_t    = 0;
   // Ввод единиц измерения температуры
-  scadaParameters_[118].id               = -1;
+  scadaParameters_[118].id               = CCS_UNIT_TEMPERATURE;
   scadaParameters_[118].address          = 585;
   scadaParameters_[118].operation        = OPERATION_WRITE;
-  scadaParameters_[118].physic           = 0;
+  scadaParameters_[118].physic           = PHYSIC_NUMERIC;
   scadaParameters_[118].unit             = 0;
   scadaParameters_[118].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[118].coefficient      = 1;

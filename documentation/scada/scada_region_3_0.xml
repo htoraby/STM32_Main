@@ -1437,9 +1437,10 @@
 		<name>Турбин.вращение уст.</name>
 	</param>
 	<param>
-		<id>-1</id>
+		<id>CCS_UNIT_PRESSURE</id>
 		<address>580</address>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
@@ -1499,9 +1500,10 @@
 		<name>Задержка АПВ уставка</name>
 	</param>
 	<param>
-		<id>-1</id>
+		<id>CCS_UNIT_TEMPERATURE</id>
 		<address>585</address>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
