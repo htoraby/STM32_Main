@@ -880,6 +880,11 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       vsd->offRegimeCurrentLimitation();
     }
     return err;
+  case CCS_RGM_CURRENT_LIMIT_SETPOINT:
+  case CCS_RGM_CURRENT_LIMIT_DELAY_REACTION:
+    err = setValue(id, value, eventType);
+    vsd->configRegimeCurrentLimitation();
+    return err;
   case CCS_VSD_DECEL:
     err = setValue(id, value, eventType);
     vsd->setDischarge(value);
