@@ -7975,10 +7975,10 @@
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_NUMERIC</physic>
+		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>24</max>
-		<def>10</def>
+		<max>86400</max>
+		<def>36000</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>10</value>
