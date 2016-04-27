@@ -155,6 +155,9 @@ typedef enum {
   OvernumberOfStartProtReactId,   //!< "Сработала защита: Превышение числа пусков"
   OvernumberOfStartProtBlockedId, //!< "Блокировка по защите: Превышение числа пусков"
 
+  ModeCodeManualId,               //!< "Режим работы: Ручной"
+  ModeCodeAutoId,                 //!< "Режим работы: Автоматический"
+  ModeCodeProgramId,              //!< "Режим работы: По программе"
 
 } EventId;
 
