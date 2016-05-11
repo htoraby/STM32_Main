@@ -148,9 +148,9 @@ typedef enum {
   ImbalanceCurInApvDisabledId,    //!< "АПВ запрещено: Дисбаланс входных токов"
   ImbalanceCurInProtBlockedId,    //!< "Блокировка по защите: Дисбаланс входных токов"
 
-  PowerOffProtReactId,         //!< "Сработала защита: Нет питания сети"
-  PowerOffApvId,               //!< "АПВ по защите: Нет питания сети"
-  PowerOffApvDisabledId,       //!< "АПВ запрещено: Нет питания сети"
+  PowerOffProtReactId,            //!< "Сработала защита: Нет питания сети"
+  PowerOffApvId,                  //!< "АПВ по защите: Нет питания сети"
+  PowerOffApvDisabledId,          //!< "АПВ запрещено: Нет питания сети"
 
   OvernumberOfStartProtReactId,   //!< "Сработала защита: Превышение числа пусков"
   OvernumberOfStartProtBlockedId, //!< "Блокировка по защите: Превышение числа пусков"
@@ -158,6 +158,11 @@ typedef enum {
   ModeCodeManualId,               //!< "Режим работы: Ручной"
   ModeCodeAutoId,                 //!< "Режим работы: Автоматический"
   ModeCodeProgramId,              //!< "Режим работы: По программе"
+
+  VibrationMotorProtReactId,      //!< "Сработала защита: Вибрация двигателя"
+  VibrationMotorApvId,            //!< "АПВ по защите: Вибрация двигателя"
+  VibrationMotorApvDisabledId,    //!< "АПВ запрещено: Вибрация двигателя"
+  VibrationMotorProtBlockedId,    //!< "Блокировка по защите: Вибрация двигателя"
 
 } EventId;
 
