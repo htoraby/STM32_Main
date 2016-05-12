@@ -1072,6 +1072,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     cmdProtDhsResistanceSetpointReset();
     return err;
+  case CCS_CMD_PROT_DHS_VIBRATION_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtDhsVibrationSetpointReset();
+    return err;
   case CCS_PROT_OTHER_LIMIT_RESTART_SETPOINT_RESET:
     err = setValue(id, value, eventType);
     cmdProtOvernumberOfStartSetpointReset();
@@ -1492,6 +1496,14 @@ void Ccs::cmdProtDhsResistanceSetpointReset()
 {
   for (uint16_t i = CCS_PROT_DHS_RESISTANCE_MODE;
        i <= CCS_PROT_DHS_RESISTANCE_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtDhsVibrationSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_DHS_VIBRATION_MODE;
+       i <= CCS_PROT_DHS_VIBRATION_PARAMETER; i++) {
     resetValue(i);
   }
 }
