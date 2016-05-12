@@ -2,7 +2,6 @@
 
 ProtectionPressureIntake::ProtectionPressureIntake()
 {
-
   idMode_= CCS_PROT_DHS_PRESSURE_INTAKE_MODE;
   idPrevent_= CCS_PROT_DHS_PRESSURE_INTAKE_PREVENT;
   idActivDelay_ = CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY;
