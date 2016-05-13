@@ -938,7 +938,8 @@ enum enID
   CCS_PROT_DHS_FLOW_DISCHARGE_RESTART_FIRST_TIME = 932,      //!< Текущий параметр Время первого АПВ
   CCS_PROT_DHS_FLOW_DISCHARGE_DELAY_FLAG = 933,              //!< 
   CCS_PROT_DHS_FLOW_DISCHARGE_BLOCK_FLAG = 934,              //!< 
-  CCS_END = 935,                                             //!< 
+  CCS_CMD_PROT_DHS_FLOW_DISCHARGE_SETPOINT_RESET = 935,      //!< 
+  CCS_END = 936,                                             //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF

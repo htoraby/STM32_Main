@@ -321,6 +321,7 @@ enum LastReasonRun {
   LastReasonRunApvDigital3,                     //!< "АПВ по защите: Цифр.вх.3"
   LastReasonRunApvDigital4,                     //!< "АПВ по защите: Цифр.вх.4"
   LastReasonRunApvImbalanceCurIn,               //!< "АПВ по защите: Дисбаланс входных токов"
+  LastReasonRunApvFlowDischarge,                //!< "АПВ по защите: Минимальный расход"
 
   LastReasonRunLast
 };
@@ -379,6 +380,7 @@ enum LastReasonStop {
   LastReasonStopImbalanceCurIn,                 //!< "Дисбаланс входных токов"
   LastReasonStopVsdErrControl,                  //!< "ЧРП. Ошибка управления"
   LastReasonStopOvernumberOfStart,              //!< "Превышение числа пусков"
+  LastReasonStopFlowDischarge,                  //!< "Минимальный расход"
 
   LastReasonStopLast                    = 65535,
 };

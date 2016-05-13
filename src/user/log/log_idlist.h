@@ -164,6 +164,11 @@ typedef enum {
   VibrationMotorApvDisabledId,    //!< "АПВ запрещено: Вибрация двигателя"
   VibrationMotorProtBlockedId,    //!< "Блокировка по защите: Вибрация двигателя"
 
+  FlowDischargeProtReactId,       //!< "Сработала защита: Минимальный расход"
+  FlowDischargeApvId,             //!< "АПВ по защите: Минимальный расход"
+  FlowDischargeApvDisabledId,     //!< "АПВ запрещено: Минимальный расход"
+  FlowDischargeProtBlockedId,     //!< "Блокировка по защите: Минимальный расход"
+
 } EventId;
 
 #endif // LOG_IDLIST
