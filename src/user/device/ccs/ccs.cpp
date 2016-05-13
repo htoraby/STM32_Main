@@ -782,6 +782,20 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   float oldValue = getValue(id);
 
   switch (id) {
+  case CCS_WORKING_MODE:
+    err = setValue(id, value, eventType);
+    if ((value != oldValue) && !err) {
+      if (value == CCS_WORKING_MODE_MANUAL) {
+        logEvent.add(ModeCode, eventType, ModeCodeManualId, oldValue, value);
+      }
+      if (value == CCS_WORKING_MODE_AUTO) {
+        logEvent.add(ModeCode, eventType, ModeCodeAutoId, oldValue, value);
+      }
+      if (value == CCS_WORKING_MODE_PROGRAM) {
+        logEvent.add(ModeCode, eventType, ModeCodeProgramId, oldValue, value);
+      }
+    }
+    return err;
   case CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT:
     err = setValue(id, value, eventType);
     parameters.set(VSD_M_IRMS, value, eventType);
@@ -1057,6 +1071,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_CMD_PROT_DHS_RESISTANCE_SETPOINT_RESET:
     err = setValue(id, value, eventType);
     cmdProtDhsResistanceSetpointReset();
+    return err;
+  case CCS_CMD_PROT_DHS_VIBRATION_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtDhsVibrationSetpointReset();
     return err;
   case CCS_PROT_OTHER_LIMIT_RESTART_SETPOINT_RESET:
     err = setValue(id, value, eventType);
@@ -1478,6 +1496,14 @@ void Ccs::cmdProtDhsResistanceSetpointReset()
 {
   for (uint16_t i = CCS_PROT_DHS_RESISTANCE_MODE;
        i <= CCS_PROT_DHS_RESISTANCE_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtDhsVibrationSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_DHS_VIBRATION_MODE;
+       i <= CCS_PROT_DHS_VIBRATION_PARAMETER; i++) {
     resetValue(i);
   }
 }

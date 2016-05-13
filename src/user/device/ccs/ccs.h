@@ -465,6 +465,7 @@ private:
   void cmdProtDhsPressureIntakeSetpointReset();
   void cmdProtDhsTemperatureMotorSetpointReset();
   void cmdProtDhsResistanceSetpointReset();
+  void cmdProtDhsVibrationSetpointReset();
 
   void cmdProtOvernumberOfStartSetpointReset();
   void cmdProtOtherHardwareVsdSetpointReset();

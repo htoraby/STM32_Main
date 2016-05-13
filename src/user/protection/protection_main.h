@@ -16,6 +16,7 @@
 #include "protection_temperature_motor.h"
 #include "protection_pressure_intake.h"
 #include "protection_resistance_isolation.h"
+#include "protection_vibration_motor.h"
 
 #include "protection_overnumber_of_start.h"
 #include "protection_hardware_vsd.h"
@@ -46,6 +47,7 @@ extern ProtectionTurbineRotation protTurbineRotation;
 extern ProtectionTemperatureMotor protTemperatureMotor;
 extern ProtectionPressureIntake protPressureIntake;
 extern ProtectionResistanceIsolation protResistanceIsolation;
+extern ProtectionVibrationMotor protVibrationMotor;
 
 extern ProtectionOvernumberOfStart protOvernumberOfStart;
 extern ProtectionHardwareVsd protHardwareVsd;

@@ -5079,10 +5079,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>2.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>1.0</value>
+		<text>Вибрация двиг.РР3</text>
+		<short_text>Вибрация двиг.РР3</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Блок;2-АПВ;</values>
 		<comment>Защита "Вибрация двигателя"</comment>
 	</param>
 	<param>
@@ -5092,9 +5099,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -5113,8 +5122,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
-		<text>Задержка активации</text>
-		<short_text>Задержка активации</short_text>
+		<text>Вибрация двиг.пуск.время</text>
+		<short_text>Вибрация двиг.пуск.время</short_text>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -5133,8 +5142,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
-		<text>Задержка срабатывания</text>
-		<short_text>Задержка срабатывания</short_text>
+		<text>Вибрация двиг.время</text>
+		<short_text>Вибрация двиг.время</short_text>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -5153,8 +5162,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
-		<text>Задержка АПВ</text>
-		<short_text>Задержка АПВ</short_text>
+		<text>Вибрация двиг.зад.АПВ</text>
+		<short_text>Вибрация двиг.зад.АПВ</short_text>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -5168,10 +5177,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>9999.0</max>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>5.0</value>
+		<text>Вибрация двиг.раз.АПВ</text>
+		<short_text>Вибрация двиг.раз.АПВ</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXX</format>
+		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
 	<param>
@@ -5186,8 +5202,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Сброс счетчиков АПВ</short_text>
+		<text>Вибрация двиг.сброс счет</text>
+		<short_text>Вибрация двиг.сброс счет</short_text>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -5199,12 +5215,19 @@
 		<name>CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_SPEED</physic>
+		<physic>PHYSIC_ACCELERATION</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
+		<max>10</max>
+		<def>0.2</def>
+		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>0.2</value>
+		<text>Вибрация двиг.уст.</text>
+		<short_text>Вибрация двиг.уст.</short_text>
+		<unit>ACCELERATION_G</unit>
+		<unit_lcd>ACCELERATION_G</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
 		<comment>Уставка срабатывания защиты</comment>
 	</param>
 	<param>
@@ -5212,11 +5235,13 @@
 		<name>CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_SPEED</physic>
+		<physic>PHYSIC_ACCELERATION</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
+		<max>10</max>
+		<def>0.2</def>
+		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.2</value>
 		<code>0</code>
 		<comment>Условие АПВ уставка</comment>
 	</param>
@@ -5227,9 +5252,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<code>0</code>
 		<comment>Уставка параметр защиты</comment>
 	</param>
@@ -5240,9 +5267,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -5256,9 +5285,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>3.0</max>
+		<def>3.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>3.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -5273,8 +5304,10 @@
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
+		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -5288,9 +5321,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>9999.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -5304,9 +5339,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>4294967296</max>
+		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -17703,6 +17740,327 @@
 	</param>
 	<param>
 		<id>918</id>
+		<name>CCS_PROT_DHS_FLOW_DISCHARGE_MODE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Мин.расход РР3</text>
+		<short_text>Мин.расход РР3</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Блок;2-АПВ;</values>
+		<comment>Защита "Минимальный расход"</comment>
+	</param>
+	<param>
+		<id>919</id>
+		<name>CCS_PROT_DHS_FLOW_DISCHARGE_PREVENT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<code>0</code>
+		<comment>Параметр запрещающий запуск</comment>
+	</param>
+	<param>
+		<id>920</id>
+		<name>CCS_PROT_DHS_FLOW_DISCHARGE_ACTIV_DELAY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>59999.9</max>
+		<def>10.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>10.0</value>
+		<text>Мин.расход пуск.время</text>
+		<short_text>Мин.расход пуск.время</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
+		<comment>Задержка активации уставка</comment>
+	</param>
+	<param>
+		<id>921</id>
+		<name>CCS_PROT_DHS_FLOW_DISCHARGE_TRIP_DELAY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>59999.9</max>
+		<def>10.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>10.0</value>
+		<text>Мин.расход время</text>
+		<short_text>Мин.расход время</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
+		<comment>Задержка срабатывания уставка</comment>
+	</param>
+	<param>
+		<id>922</id>
+		<name>CCS_PROT_DHS_FLOW_DISCHARGE_RESTART_DELAY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>3599940.0</max>
+		<def>600.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>600.0</value>
+		<text>Мин.расход зад.АПВ</text>
+		<short_text>Мин.расход зад.АПВ</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
+		<comment>Задержка АПВ уставка</comment>
+	</param>
+	<param>
+		<id>923</id>
+		<name>CCS_PROT_DHS_FLOW_DISCHARGE_RESTART_LIMIT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>9999.0</max>
+		<def>5.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>5.0</value>
+		<text>Мин.расход раз.АПВ</text>
+		<short_text>Мин.расход раз.АПВ</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXX</format>
+		<code>13</code>
+		<comment>Количество АПВ уставка</comment>
+	</param>
+	<param>
+		<id>924</id>
+		<name>CCS_PROT_DHS_FLOW_DISCHARGE_RESTART_RESET</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>3599940.0</max>
+		<def>86400.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>86400.0</value>
+		<text>Мин.расход сброс счет</text>
+		<short_text>Мин.расход сброс счет</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
+		<comment>Автосброс счетчика АПВ</comment>
+	</param>
+	<param>
+		<id>925</id>
+		<name>CCS_PROT_DHS_FLOW_DISCHARGE_TRIP_SETPOINT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FLOW</physic>
+		<min>0.0</min>
+		<max>40.0</max>
+		<def>30.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>30.0</value>
+		<text>Мин.расход уст.</text>
+		<short_text>Мин.расход уст.</short_text>
+		<unit>FLOW_M3_DD</unit>
+		<unit_lcd>FLOW_M3_DD</unit_lcd>
+		<format>XX_X</format>
+		<code>13</code>
+		<comment>Уставка срабатывания защиты</comment>
+	</param>
+	<param>
+		<id>926</id>
+		<name>CCS_PROT_DHS_FLOW_DISCHARGE_RESTART_SETPOINT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FLOW</physic>
+		<min>0.0</min>
+		<max>40.0</max>
+		<def>30.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>30.0</value>
+		<unit>FLOW_M3_DD</unit>
+		<unit_lcd>FLOW_M3_DD</unit_lcd>
+		<format>XX_X</format>
+		<code>0</code>
+		<comment>Условие АПВ уставка</comment>
+	</param>
+	<param>
+		<id>927</id>
+		<name>CCS_PROT_DHS_FLOW_DISCHARGE_PARAMETER</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<code>0</code>
+		<comment>Уставка параметр защиты</comment>
+	</param>
+	<param>
+		<id>928</id>
+		<name>CCS_PROT_DHS_FLOW_DISCHARGE_RESTART_FLAG</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<code>0</code>
+		<comment>Уставка параметр защиты</comment>
+	</param>
+	<param>
+		<id>929</id>
+		<name>CCS_PROT_DHS_FLOW_DISCHARGE_STATE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>3.0</max>
+		<def>3.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>3.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<code>0</code>
+		<comment>Текущий параметр состояние автомата</comment>
+	</param>
+	<param>
+		<id>930</id>
+		<name>CCS_PROT_DHS_FLOW_DISCHARGE_TIME</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<code>0</code>
+		<comment>Текущий параметр Фиксированное время</comment>
+	</param>
+	<param>
+		<id>931</id>
+		<name>CCS_PROT_DHS_FLOW_DISCHARGE_RESTART_COUNT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>9999.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<code>0</code>
+		<comment>Текущий параметр Количество АПВ</comment>
+	</param>
+	<param>
+		<id>932</id>
+		<name>CCS_PROT_DHS_FLOW_DISCHARGE_RESTART_FIRST_TIME</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
+		<min>0.0</min>
+		<max>4294967296</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<code>0</code>
+		<comment>Текущий параметр Время первого АПВ</comment>
+	</param>
+	<param>
+		<id>933</id>
+		<name>CCS_PROT_DHS_FLOW_DISCHARGE_DELAY_FLAG</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>934</id>
+		<name>CCS_PROT_DHS_FLOW_DISCHARGE_BLOCK_FLAG</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>935</id>
 		<name>CCS_END</name>
 	</param>
 	<param>
