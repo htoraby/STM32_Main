@@ -1,6 +1,6 @@
 #include "protection_main.h"
 
-#define COUNT_PROTECTIONS 24
+#define COUNT_PROTECTIONS 25
 
 Protection *protections[COUNT_PROTECTIONS];
 
@@ -20,6 +20,7 @@ ProtectionTemperatureMotor protTemperatureMotor;
 ProtectionPressureIntake protPressureIntake;
 ProtectionResistanceIsolation protResistanceIsolation;
 ProtectionVibrationMotor protVibrationMotor;
+ProtectionFlowDischarge protFlowDischarge;
 
 ProtectionOvernumberOfStart protOvernumberOfStart;
 ProtectionHardwareVsd protHardwareVsd;
@@ -57,6 +58,7 @@ void protectionInit()
   protections[i++] = &protUnderloadMotor;
   protections[i++] = &protOverloadMotor;
   protections[i++] = &protVibrationMotor;
+  protections[i++] = &protFlowDischarge;
 
   protections[i++] = &protOvernumberOfStart;
   protections[i++] = &protHardwareVsd;
