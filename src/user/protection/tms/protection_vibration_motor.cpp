@@ -47,12 +47,12 @@ bool ProtectionVibrationMotor::checkPrevent()
 float ProtectionVibrationMotor::calcValue()
 {
   float value = 0;
-  if (parameters.isValidity(TMS_SPEED_XY_INTAKE)) {
-    value = parameters.get(TMS_SPEED_XY_INTAKE);
+  if (parameters.isValidity(TMS_ACCELERATION_XY_INTAKE)) {
+    value = parameters.get(TMS_ACCELERATION_XY_INTAKE);
   }
   float value2 = 0;
-  if (parameters.isValidity(TMS_SPEED_Z_INTAKE)) {
-    value2 = parameters.get(TMS_SPEED_Z_INTAKE);
+  if (parameters.isValidity(TMS_ACCELERATION_Z_INTAKE)) {
+    value2 = parameters.get(TMS_ACCELERATION_Z_INTAKE);
   }
 
   value = max(value, value2);
@@ -64,8 +64,8 @@ bool ProtectionVibrationMotor::isProtect()
 {
   if (parameters.get(CCS_DHS_TYPE) != TYPE_DHS_NONE)
     if (tms->isConnect()) {
-      if (parameters.isValidity(TMS_SPEED_XY_INTAKE) ||
-          parameters.isValidity(TMS_SPEED_Z_INTAKE))
+      if (parameters.isValidity(TMS_ACCELERATION_XY_INTAKE) ||
+          parameters.isValidity(TMS_ACCELERATION_Z_INTAKE))
         return true;
     }
   return false;
