@@ -174,6 +174,7 @@ enum enPhysicTemperature {
 enum enPhysicAcceleration {
   ACCELERATION_G,
   ACCELERATION_MSS2,
+  ACCELERATION_MMSS2,
   ACCELERATION_LAST
 };
 

@@ -185,7 +185,7 @@ float units[PHYSIC_LAST][MAX_CONV_ELEMS][2] =
    {1.0, 0.0}},
   {{1.0, 0.0},         //PHYSIC_ACCELERATION -> ACCELERATION_G
    {9.80665, 0.0},     //PHYSIC_ACCELERATION -> ACCELERATION_MSS2
-   {1.0, 0.0},
+   {9806.65, 0.0},     //PHYSIC_ACCELERATION -> ACCELERATION_MMSS2
    {1.0, 0.0},
    {1.0, 0.0},
    {1.0, 0.0},

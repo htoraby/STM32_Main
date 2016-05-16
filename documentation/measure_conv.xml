@@ -277,6 +277,12 @@
 		<b>0</b>
 	</param>
 	<param>
+		<midIn>PHYSIC_ACCELERATION</midIn>
+		<midOut>ACCELERATION_MMSS2</midOut>
+		<a>9806.65</a>
+		<b>0</b>
+	</param>
+	<param>
 		<midIn>PHYSIC_SPEED</midIn>
 		<midOut>SPEED_M_SS</midOut>
 		<a>1</a>
