@@ -12267,7 +12267,7 @@
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
 		<format>XXXXXX</format>
-		<code>13</code>
+		<code>0</code>
 	</param>
 	<param>
 		<id>633</id>

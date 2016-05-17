@@ -7597,7 +7597,7 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].max                             = 999999999.9;
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].def                             = 0;
-  parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].code                            = 13;
+  parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].code                            = 0;
   // 
   parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].id                                 = CCS_CONDITION_FLAG;
   parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].access                             = ACCESS_OPERATOR;
