@@ -657,7 +657,7 @@ void Vsd::initParameters()
   parameters_[VSD_VENT_TEMPERATURE_FAULT - VSD_BEGIN].physic                     = PHYSIC_TEMPERATURE;
   parameters_[VSD_VENT_TEMPERATURE_FAULT - VSD_BEGIN].validity                   = VALIDITY_ERROR;
   parameters_[VSD_VENT_TEMPERATURE_FAULT - VSD_BEGIN].value.float_t              = 105.0;
-  parameters_[VSD_VENT_TEMPERATURE_FAULT - VSD_BEGIN].min                        = 80.0;
+  parameters_[VSD_VENT_TEMPERATURE_FAULT - VSD_BEGIN].min                        = 0.0;
   parameters_[VSD_VENT_TEMPERATURE_FAULT - VSD_BEGIN].max                        = 110.0;
   parameters_[VSD_VENT_TEMPERATURE_FAULT - VSD_BEGIN].def                        = 105.0;
   parameters_[VSD_VENT_TEMPERATURE_FAULT - VSD_BEGIN].discret                    = 1;

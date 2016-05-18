@@ -19145,7 +19145,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
-		<min>80.0</min>
+		<min>0.0</min>
 		<max>110.0</max>
 		<def>105.0</def>
 		<discret>1</discret>
