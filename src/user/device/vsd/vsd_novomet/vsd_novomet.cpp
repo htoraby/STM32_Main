@@ -449,13 +449,13 @@ int VsdNovomet::setBaseVoltage(float value)
   if (!setValue(VSD_BASE_VOLTAGE, value)) {
     writeToDevice(VSD_BASE_VOLTAGE, value);
     osDelay(1000);
-    setMax(VSD_UF_CHARACTERISTIC_U, value);
-    setMax(VSD_UF_CHARACTERISTIC_U_1, value);
-    setMax(VSD_UF_CHARACTERISTIC_U_2, value);
-    setMax(VSD_UF_CHARACTERISTIC_U_3, value);
-    setMax(VSD_UF_CHARACTERISTIC_U_4, value);
-    setMax(VSD_UF_CHARACTERISTIC_U_5, value);
-    setMax(VSD_UF_CHARACTERISTIC_U_6, value);
+    setMax(VSD_UF_CHARACTERISTIC_U, value + 0.5);
+    setMax(VSD_UF_CHARACTERISTIC_U_1, value + 0.5);
+    setMax(VSD_UF_CHARACTERISTIC_U_2, value + 0.5);
+    setMax(VSD_UF_CHARACTERISTIC_U_3, value + 0.5);
+    setMax(VSD_UF_CHARACTERISTIC_U_4, value + 0.5);
+    setMax(VSD_UF_CHARACTERISTIC_U_5, value + 0.5);
+    setMax(VSD_UF_CHARACTERISTIC_U_6, value + 0.5);
     readUfCharacterictic();
     return ok_r;
   }
