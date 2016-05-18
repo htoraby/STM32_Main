@@ -15,6 +15,7 @@
 
 #include "protection_temperature_motor.h"
 #include "protection_pressure_intake.h"
+#include "protection_pressure_discharge.h"
 #include "protection_resistance_isolation.h"
 #include "protection_vibration_motor.h"
 #include "protection_flow_discharge.h"
@@ -47,6 +48,7 @@ extern ProtectionTurbineRotation protTurbineRotation;
 
 extern ProtectionTemperatureMotor protTemperatureMotor;
 extern ProtectionPressureIntake protPressureIntake;
+extern ProtectionPressureDischarge protPressureDischarge;
 extern ProtectionResistanceIsolation protResistanceIsolation;
 extern ProtectionVibrationMotor protVibrationMotor;
 extern ProtectionFlowDischarge protFlowDischarge;

@@ -1064,6 +1064,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     cmdProtDhsPressureIntakeSetpointReset();
     return err;
+  case CCS_CMD_PROT_DHS_PRESSURE_DISCHARGE_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtDhsPressureDischargeSetpointReset();
+    return err;
   case CCS_CMD_PROT_DHS_TEMPERATURE_MOTOR_SETPOINT_RESET:
     err = setValue(id, value, eventType);
     cmdProtDhsTemperatureMotorSetpointReset();
@@ -1484,6 +1488,14 @@ void Ccs::cmdProtDhsPressureIntakeSetpointReset()
 {
   for (uint16_t i = CCS_PROT_DHS_PRESSURE_INTAKE_MODE;
        i <= CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtDhsPressureDischargeSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_DHS_PRESSURE_DISCHARGE_MODE;
+       i <= CCS_PROT_DHS_PRESSURE_DISCHARGE_PARAMETER; i++) {
     resetValue(i);
   }
 }

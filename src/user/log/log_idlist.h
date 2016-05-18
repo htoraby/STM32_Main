@@ -169,6 +169,11 @@ typedef enum {
   FlowDischargeApvDisabledId,     //!< "АПВ запрещено: Минимальный расход"
   FlowDischargeProtBlockedId,     //!< "Блокировка по защите: Минимальный расход"
 
+  PressureDischargeProtReactId,   //!< "Сработала защита: Давление на выкиде насоса"
+  PressureDischargeApvId,         //!< "АПВ по защите: Давление на выкиде насоса"
+  PressureDischargeApvDisabledId, //!< "АПВ запрещено: Давление на выкиде насоса"
+  PressureDischargeProtBlockedId, //!< "Блокировка по защите: Давление на выкиде насоса"
+
 } EventId;
 
 #endif // LOG_IDLIST
