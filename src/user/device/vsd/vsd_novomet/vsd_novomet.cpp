@@ -119,10 +119,13 @@ int VsdNovomet::setMotorType(float value)
 int VsdNovomet::setMotorFrequency(float value)
 {
   if (!Vsd::setMotorFrequency(value)) {
-    if (!setBaseFrequency(value))
-    setMin(VSD_TIMER_DISPERSAL, value * 0.25);
-    setMax(VSD_TIMER_DELAY, value * 12.5);
-    return ok_r;
+    if (!setBaseFrequency(value)) {
+      setMin(VSD_TIMER_DISPERSAL, value * 0.064);
+      setMax(VSD_TIMER_DISPERSAL, value * 3.2);
+      setMin(VSD_TIMER_DELAY, value * 0.064);
+      setMax(VSD_TIMER_DELAY, value * 3.2);
+      return ok_r;
+    }
   }
   return err_r;
 }
