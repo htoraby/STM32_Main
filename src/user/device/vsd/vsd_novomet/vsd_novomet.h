@@ -449,7 +449,7 @@ public:
   void resetConnct();
 
 private:
-  ModbusParameter modbusParameters_[165];
+  ModbusParameter modbusParameters_[162];
   DeviceModbus *dm_;
 
   RegimeRunNovomet *regimeRun_;

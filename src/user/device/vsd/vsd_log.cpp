@@ -135,11 +135,11 @@ void VsdLog::readNovometLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
   int16_t res = 0;
   int16_t val = 0;
 
-  float difCoefCur = parameters.get(VSD_MAXVAL_CAN_INV_IA);     // Смещение нуля тока
-  float propCoefCur = parameters.get(VSD_MAX_CAN_INV_IA);       // Максимум тока
+  float difCoefCur = 0; //parameters.get(VSD_MAXVAL_CAN_INV_IA);     // Смещение нуля тока
+  float propCoefCur = 2047.0; //parameters.get(VSD_MAX_CAN_INV_IA);       // Максимум тока
   if (propCoefCur == 0)
     propCoefCur = 1;
-  propCoefCur = (parameters.get(VSD_SCALE_CAN_INV_IA) / propCoefCur) * (parameters.get(VSD_I_SCALE) / 100.0);
+  propCoefCur = (/*parameters.get(VSD_SCALE_CAN_INV_IA)*/545.0 / propCoefCur) * (parameters.get(VSD_I_SCALE) / 100.0);
 
   float difCoefVolt = parameters.get(VSD_MAXVAL_CAN_INV_UD);     // Смещение нуля напряжения
   float propCoefVolt = parameters.get(VSD_MAX_CAN_INV_UD);

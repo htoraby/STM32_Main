@@ -2921,6 +2921,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
+  /*
   modbusParameters_[162] = {// Ток фазы A инвертора, максимум
                           VSD_MAX_CAN_INV_IA,// Уникальный идентификатор параметра
                           2299,             // Адрес регистра в устройстве
@@ -2975,6 +2976,7 @@ void VsdNovomet::initModbusParameters()
                           VALIDITY_ERROR,   // Поле состояния параметра
                           0                 // Значение
   };
+  */
 }
   /*
   modbusParameters_[] = {// Резерв
