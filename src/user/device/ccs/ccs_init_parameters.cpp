@@ -8410,7 +8410,7 @@ void Ccs::initParameters()
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].max                             = 1000.0;
+  parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].max                             = 10000.0;
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].code                            = 0;
