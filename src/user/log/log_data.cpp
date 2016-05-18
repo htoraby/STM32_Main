@@ -21,7 +21,7 @@ void LogData::init()
 {
   Log::init();
 
-  osThreadDef_t t = {"LogData", logDataTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
+  osThreadDef_t t = {"LogData", logDataTask, osPriorityNormal, 0, 3 * configMINIMAL_STACK_SIZE};
   threadId_ = osThreadCreate(&t, this);
 }
 
@@ -68,7 +68,7 @@ void LogData::task()
 void LogData::add(uint8_t code)
 {
   memset(buffer, 0, sizeof(buffer));
-
+  float tempVal = 0.0;
   time_t time = ksu.getTime();
 
   *(uint32_t*)(buffer) = ++id_;
@@ -84,8 +84,12 @@ void LogData::add(uint8_t code)
   *(float*)(buffer+33) = parameters.get(VSD_CURRENT_DC);                            // Электон
   *(float*)(buffer+37) = parameters.get(VSD_VOLTAGE_DC);                            // Электон
   *(float*)(buffer+41) = parameters.get(VSD_OUT_VOLTAGE_MOTOR);                     // Электон
-  *(float*)(buffer+45) = parameters.get(VSD_POWER_ACTIVE);                          // Электон
-  *(float*)(buffer+49) = parameters.get(VSD_POWER_FULL);                            // Электон
+  tempVal = parameters.get(VSD_POWER_ACTIVE) / 1000.0;
+  *(float*)(buffer+45) = tempVal;
+  //*(float*)(buffer+45) = parameters.get(VSD_POWER_ACTIVE);                          // Электон
+  tempVal = parameters.get(VSD_POWER_FULL) / 1000.0;
+  *(float*)(buffer+49) = tempVal;
+  //*(float*)(buffer+49) = parameters.get(VSD_POWER_FULL);                            // Электон
   *(float*)(buffer+53) = parameters.get(CCS_MOTOR_COS_PHI_NOW);                     // Электон
   *(float*)(buffer+57) = parameters.get(CCS_MOTOR_LOAD_NOW);                        // Электон
   *(float*)(buffer+61) = parameters.get(CCS_VOLTAGE_PHASE_1);                       // У Электона AB
@@ -103,13 +107,19 @@ void LogData::add(uint8_t code)
   *(float*)(buffer+109) = parameters.get(CCS_TEMPERATURE_CCS);                      // Электон
   *(float*)(buffer+113) = parameters.get(VSD_RADIATOR_TEMPERATURE);                 // Электон
   *(float*)(buffer+117) = parameters.get(VSD_CONTROL_TEMPERATURE);                  // Электон
-  *(float*)(buffer+121) = parameters.get(EM_ACTIVE_POWER);                          // Электон
-  *(float*)(buffer+125) = parameters.get(EM_REACTIVE_POWER);                        // Электон
+  tempVal = parameters.get(EM_ACTIVE_POWER) / 1000.0;
+  *(float*)(buffer+121) = tempVal;
+  //*(float*)(buffer+121) = parameters.get(EM_ACTIVE_POWER);                          // Электон
+  tempVal = parameters.get(EM_REACTIVE_POWER) / 1000.0;
+  *(float*)(buffer+125) = tempVal;
+  //*(float*)(buffer+125) = parameters.get(EM_REACTIVE_POWER);                        // Электон
   *(float*)(buffer+129) = parameters.get(EM_COS_PHI);                               // Электон
   *(float*)(buffer+133) = parameters.get(CCS_CURRENT_PHASE_1);
   *(float*)(buffer+137) = parameters.get(CCS_CURRENT_PHASE_2);
   *(float*)(buffer+141) = parameters.get(CCS_CURRENT_PHASE_3);
-  *(float*)(buffer+145) = parameters.get(EM_FULL_POWER);
+  tempVal = parameters.get(EM_FULL_POWER) / 1000.0;
+  *(float*)(buffer+145) = tempVal;
+  //*(float*)(buffer+145) = parameters.get(EM_FULL_POWER);
   *(float*)(buffer+149) = parameters.get(CCS_AI_1_VALUE);
   *(float*)(buffer+153) = parameters.get(CCS_AI_2_VALUE);
   *(float*)(buffer+157) = parameters.get(CCS_AI_3_VALUE);
