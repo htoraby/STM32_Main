@@ -5798,77 +5798,77 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].discret            = 1;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].def                = 200.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].code               = 13;
-  // Режим встряхивания
+  // Режим встряхивания. Включение
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].id                               = CCS_RGM_JARRING_MODE;
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].access                           = ACCESS_OPERATOR;
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].operation                        = OPERATION_WRITE;
-  parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].physic                           = 0;
+  parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].physic                           = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].validity                         = VALIDITY_OK;
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].value.float_t                    = 0;
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].min                              = 0.0;
-  parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].max                              = 999999999.9;
+  parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].max                              = 1;
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].discret                          = 1;
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].def                              = 0;
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].code                             = 13;
   // Период экскурсий частоты режима встряхивания.
   parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].id                             = CCS_RGM_JARRING_PERIOD;
   parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].access                         = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].operation                      = OPERATION_WRITE;
-  parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].physic                         = 0;
+  parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].operation                      = OPERATION_LIMITED;
+  parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].physic                         = PHYSIC_TIME;
   parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].validity                       = VALIDITY_OK;
-  parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].value.float_t                  = 0;
-  parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].max                            = 999999999.9;
+  parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].value.float_t                  = 10.0;
+  parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].min                            = 10.0;
+  parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].max                            = 3600.0;
   parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].discret                        = 1;
-  parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].def                            = 0;
+  parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].def                            = 10.0;
   parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].code                           = 13;
   // Величина прибавки частоты вращения выше уставки в режиме встряхивания
   parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].id                             = CCS_RGM_JARRING_FREQ_1;
   parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].access                         = ACCESS_OPERATOR;
   parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].operation                      = OPERATION_WRITE;
-  parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].physic                         = 0;
+  parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].physic                         = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].validity                       = VALIDITY_OK;
-  parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].value.float_t                  = 0;
+  parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].value.float_t                  = 0.0;
   parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].max                            = 999999999.9;
+  parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].max                            = 3.0;
   parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].discret                        = 1;
-  parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].def                            = 0;
+  parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].def                            = 0.0;
   parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].code                           = 13;
   // Время прибавки частоты вращения выше уставки в режиме встряхивания
   parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].id                             = CCS_RGM_JARRING_UPTEMP;
   parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].access                         = ACCESS_OPERATOR;
   parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].operation                      = OPERATION_WRITE;
-  parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].physic                         = 0;
+  parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].physic                         = PHYSIC_TEMP;
   parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].validity                       = VALIDITY_OK;
-  parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].value.float_t                  = 0;
+  parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].value.float_t                  = 0.0;
   parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].max                            = 999999999.9;
+  parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].max                            = 20.0;
   parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].discret                        = 1;
-  parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].def                            = 0;
+  parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].def                            = 0.0;
   parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].code                           = 13;
   // Величина уменьшения частоты вращения ниже уставки в режиме встряхивания
   parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].id                             = CCS_RGM_JARRING_FREQ_2;
   parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].access                         = ACCESS_OPERATOR;
   parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].operation                      = OPERATION_WRITE;
-  parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].physic                         = 0;
+  parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].physic                         = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].validity                       = VALIDITY_OK;
-  parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].value.float_t                  = 0;
+  parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].value.float_t                  = 0.0;
   parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].max                            = 999999999.9;
+  parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].max                            = 3.0;
   parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].discret                        = 1;
-  parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].def                            = 0;
+  parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].def                            = 0.0;
   parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].code                           = 13;
   // Время уменьшения частоты вращения ниже уставки в режиме встряхивания
   parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].id                           = CCS_RGM_JARRING_DOWNTEMP;
   parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].access                       = ACCESS_OPERATOR;
   parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].operation                    = OPERATION_WRITE;
-  parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].physic                       = 0;
+  parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].physic                       = PHYSIC_TEMP;
   parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].validity                     = VALIDITY_OK;
-  parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].value.float_t                = 0;
+  parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].value.float_t                = 0.0;
   parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].max                          = 999999999.9;
+  parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].max                          = 20.0;
   parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].discret                      = 1;
-  parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].def                          = 0;
+  parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].def                          = 0.0;
   parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].code                         = 13;
   // Режим Учёт нагрева кабеля
   parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].id                            = CCS_RGM_HEAT_CABLE_MODE;
@@ -8732,11 +8732,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].operation                       = OPERATION_WRITE;
   parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].validity                        = VALIDITY_OK;
-  parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].value.float_t                   = 0;
+  parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].max                             = 999999999.9;
+  parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].max                             = 99.0;
   parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].discret                         = 1;
-  parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].def                             = 0;
+  parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].code                            = 13;
   // Кол-во разрешенных АПВ после других защит
   parameters_[CCS_PROT_OTHER_RESTART_LIMIT - CCS_BEGIN].id                       = CCS_PROT_OTHER_RESTART_LIMIT;

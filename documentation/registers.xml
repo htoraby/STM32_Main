@@ -9562,22 +9562,41 @@
 		<name>CCS_RGM_JARRING_MODE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>1</max>
+		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
+		<text>Режим встрях. Действие</text>
+		<short_text>Режим встрях. Действие</short_text>
+		<form>5.1.7 Режим встряхивания</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
 		<code>13</code>
-		<comment>Режим встряхивания</comment>
+		<values>0-Откл;1-Вкл</values>
+		<comment>Режим встряхивания. Включение</comment>
 	</param>
 	<param>
 		<id>484</id>
 		<name>CCS_RGM_JARRING_PERIOD</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>999999999.9</max>
+		<operation>OPERATION_LIMITED</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>10.0</min>
+		<max>3600.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>10.0</value>
+		<text>Режим встрях. Период</text>
+		<short_text>Режим встрях. Период</short_text>
+		<form>5.1.7 Режим встряхивания</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Период экскурсий частоты режима встряхивания.</comment>
 	</param>
@@ -9586,10 +9605,19 @@
 		<name>CCS_RGM_JARRING_FREQ_1</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>3.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Режим встрях. Частота 1</text>
+		<short_text>Режим встрях. Частота 1</short_text>
+		<form>5.1.7 Режим встряхивания</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>X</format>
 		<code>13</code>
 		<comment>Величина прибавки частоты вращения выше уставки в режиме встряхивания</comment>
 	</param>
@@ -9598,10 +9626,19 @@
 		<name>CCS_RGM_JARRING_UPTEMP</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TEMP</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>20.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Режим встрях. Темп разгона</text>
+		<short_text>Режим встрях. Темп разгона</short_text>
+		<form>5.1.7 Режим встряхивания</form>
+		<unit>TEMP_HZ_SS</unit>
+		<unit_lcd>TEMP_HZ_SS</unit_lcd>
+		<format>XX_X</format>
 		<code>13</code>
 		<comment>Время прибавки частоты вращения выше уставки в режиме встряхивания</comment>
 	</param>
@@ -9610,10 +9647,19 @@
 		<name>CCS_RGM_JARRING_FREQ_2</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>3.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Режим встрях. Частота 2</text>
+		<short_text>Режим встрях. Частота 2</short_text>
+		<form>5.1.7 Режим встряхивания</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>X</format>
 		<code>13</code>
 		<comment>Величина уменьшения частоты вращения ниже уставки в режиме встряхивания</comment>
 	</param>
@@ -9622,10 +9668,19 @@
 		<name>CCS_RGM_JARRING_DOWNTEMP</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TEMP</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>20.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Режим встрях. Темп тормож.</text>
+		<short_text>Режим встрях. Темп тормож.</short_text>
+		<form>5.1.7 Режим встряхивания</form>
+		<unit>TEMP_HZ_SS</unit>
+		<unit_lcd>TEMP_HZ_SS</unit_lcd>
+		<format>XX_X</format>
 		<code>13</code>
 		<comment>Время уменьшения частоты вращения ниже уставки в режиме встряхивания</comment>
 	</param>
@@ -14075,9 +14130,16 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>99.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Режим встрях. Раз</text>
+		<short_text>Режим встрях. Раз</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX</format>
 		<code>13</code>
 		<comment>Количество встряхиваний</comment>
 	</param>
