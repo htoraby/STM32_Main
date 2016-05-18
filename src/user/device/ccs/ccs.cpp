@@ -1758,7 +1758,7 @@ void Ccs::setMaxBaseFrequency()
   }
   setMax(CCS_BASE_FREQUENCY, maxFreq);
   parameters.setMax(VSD_MOTOR_FREQUENCY, maxFreq);
-  parameters.set(VSD_MOTOR_FREQUENCY, nomFreq);
+//  parameters.set(VSD_MOTOR_FREQUENCY, nomFreq);
 //  parameters.setMax(VSD_BASE_FREQUENCY, maxFreq);
 }
 
