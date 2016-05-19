@@ -18534,7 +18534,7 @@
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXX_XX</format>
-		<code>0</code>
+		<code>13</code>
 		<comment>Выходная частота ПЧ</comment>
 	</param>
 	<param>

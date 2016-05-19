@@ -25,7 +25,7 @@ void Vsd::initParameters()
   parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].max                                 = 999999999.9;
   parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].discret                             = 100;
-  parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].code                                = 0;
+  parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].code                                = 13;
   // Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
   parameters_[VSD_FREQUENCY - VSD_BEGIN].id                                      = VSD_FREQUENCY;
   parameters_[VSD_FREQUENCY - VSD_BEGIN].access                                  = ACCESS_OPERATOR;
