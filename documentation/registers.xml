@@ -9562,22 +9562,41 @@
 		<name>CCS_RGM_JARRING_MODE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>1</max>
+		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
+		<text>Режим встрях. Действие</text>
+		<short_text>Режим встрях. Действие</short_text>
+		<form>5.1.7 Режим встряхивания</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
 		<code>13</code>
-		<comment>Режим встряхивания</comment>
+		<values>0-Откл;1-Вкл</values>
+		<comment>Режим встряхивания. Включение</comment>
 	</param>
 	<param>
 		<id>484</id>
 		<name>CCS_RGM_JARRING_PERIOD</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>999999999.9</max>
+		<operation>OPERATION_LIMITED</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>10.0</min>
+		<max>3600.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>10.0</value>
+		<text>Режим встрях. Период</text>
+		<short_text>Режим встрях. Период</short_text>
+		<form>5.1.7 Режим встряхивания</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Период экскурсий частоты режима встряхивания.</comment>
 	</param>
@@ -9586,10 +9605,19 @@
 		<name>CCS_RGM_JARRING_FREQ_1</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>3.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Режим встрях. Частота 1</text>
+		<short_text>Режим встрях. Частота 1</short_text>
+		<form>5.1.7 Режим встряхивания</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>X</format>
 		<code>13</code>
 		<comment>Величина прибавки частоты вращения выше уставки в режиме встряхивания</comment>
 	</param>
@@ -9598,10 +9626,19 @@
 		<name>CCS_RGM_JARRING_UPTEMP</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TEMP</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>20.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Режим встрях. Темп разгона</text>
+		<short_text>Режим встрях. Темп разгона</short_text>
+		<form>5.1.7 Режим встряхивания</form>
+		<unit>TEMP_HZ_SS</unit>
+		<unit_lcd>TEMP_HZ_SS</unit_lcd>
+		<format>XX_X</format>
 		<code>13</code>
 		<comment>Время прибавки частоты вращения выше уставки в режиме встряхивания</comment>
 	</param>
@@ -9610,10 +9647,19 @@
 		<name>CCS_RGM_JARRING_FREQ_2</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>3.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Режим встрях. Частота 2</text>
+		<short_text>Режим встрях. Частота 2</short_text>
+		<form>5.1.7 Режим встряхивания</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>X</format>
 		<code>13</code>
 		<comment>Величина уменьшения частоты вращения ниже уставки в режиме встряхивания</comment>
 	</param>
@@ -9622,10 +9668,19 @@
 		<name>CCS_RGM_JARRING_DOWNTEMP</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TEMP</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>20.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Режим встрях. Темп тормож.</text>
+		<short_text>Режим встрях. Темп тормож.</short_text>
+		<form>5.1.7 Режим встряхивания</form>
+		<unit>TEMP_HZ_SS</unit>
+		<unit_lcd>TEMP_HZ_SS</unit_lcd>
+		<format>XX_X</format>
 		<code>13</code>
 		<comment>Время уменьшения частоты вращения ниже уставки в режиме встряхивания</comment>
 	</param>
@@ -14075,9 +14130,16 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>99.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Режим встрях. Раз</text>
+		<short_text>Режим встрях. Раз</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX</format>
 		<code>13</code>
 		<comment>Количество встряхиваний</comment>
 	</param>
@@ -17762,7 +17824,7 @@
 		<id>919</id>
 		<name>CCS_PROT_DHS_FLOW_DISCHARGE_PREVENT</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
@@ -17933,7 +17995,7 @@
 		<id>928</id>
 		<name>CCS_PROT_DHS_FLOW_DISCHARGE_RESTART_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
@@ -17951,7 +18013,7 @@
 		<id>929</id>
 		<name>CCS_PROT_DHS_FLOW_DISCHARGE_STATE</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>3.0</max>
@@ -17969,7 +18031,7 @@
 		<id>930</id>
 		<name>CCS_PROT_DHS_FLOW_DISCHARGE_TIME</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
@@ -17987,7 +18049,7 @@
 		<id>931</id>
 		<name>CCS_PROT_DHS_FLOW_DISCHARGE_RESTART_COUNT</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>9999.0</max>
@@ -18005,7 +18067,7 @@
 		<id>932</id>
 		<name>CCS_PROT_DHS_FLOW_DISCHARGE_RESTART_FIRST_TIME</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0.0</min>
 		<max>4294967296</max>
@@ -18023,7 +18085,7 @@
 		<id>933</id>
 		<name>CCS_PROT_DHS_FLOW_DISCHARGE_DELAY_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
@@ -18043,7 +18105,7 @@
 		<id>934</id>
 		<name>CCS_PROT_DHS_FLOW_DISCHARGE_BLOCK_FLAG</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
@@ -18073,7 +18135,6 @@
 		<value>0.0</value>
 		<text>Уста.по.умол.?</text>
 		<short_text>Уста.по.умол.?</short_text>
-		<form>4.1 Защиты по сети</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -18081,6 +18142,375 @@
 	</param>
 	<param>
 		<id>936</id>
+		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_MODE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Рвых.нас.РРЗ</text>
+		<short_text>Рвых.нас.РРЗ</short_text>
+		<form>4.3.2 Давление на выкиде насоса</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Блок;2-АПВ;</values>
+		<comment>Защита "Давление на выкиде насоса"</comment>
+	</param>
+	<param>
+		<id>937</id>
+		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_PREVENT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-NULL;1-Низкое давление на приёме насоса</values>
+		<comment>Параметр запрещающий запуск</comment>
+	</param>
+	<param>
+		<id>938</id>
+		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_ACTIV_DELAY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>59999.9</max>
+		<def>10.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>10.0</value>
+		<text>Рmax.вых.нас.пуск.время</text>
+		<short_text>Рmax.вых.нас.пуск.время</short_text>
+		<form>4.3.2 Давление на выкиде насоса</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
+		<comment>Задержка активации уставка</comment>
+	</param>
+	<param>
+		<id>939</id>
+		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_TRIP_DELAY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>59999.9</max>
+		<def>10.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>10.0</value>
+		<text>Рmax.вых.нас.время</text>
+		<short_text>Рmax.вых.нас.время</short_text>
+		<form>4.3.2 Давление на выкиде насоса</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
+		<comment>Задержка срабатывания уставка</comment>
+	</param>
+	<param>
+		<id>940</id>
+		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_RESTART_DELAY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>3599940.0</max>
+		<def>600.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>600.0</value>
+		<text>Рmax.вых.нас.зад.АПВ</text>
+		<short_text>Рmax.вых.нас.зад.АПВ</short_text>
+		<form>4.3.2 Давление на выкиде насоса</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
+		<comment>Задержка АПВ уставка</comment>
+	</param>
+	<param>
+		<id>941</id>
+		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_RESTART_LIMIT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>9999.0</max>
+		<def>5.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>5.0</value>
+		<text>Рmax.вых.нас.раз.АПВ</text>
+		<short_text>Рmax.вых.нас.раз.АПВ</short_text>
+		<form>4.3.2 Давление на выкиде насоса</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Количество АПВ уставка</comment>
+	</param>
+	<param>
+		<id>942</id>
+		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_RESTART_RESET</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>3599940.0</max>
+		<def>86400.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>86400.0</value>
+		<text>Рmax.вых.нас.сброс счет</text>
+		<short_text>Рmax.вых.нас.сброс счет</short_text>
+		<form>4.3.2 Давление на выкиде насоса</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
+		<comment>Автосброс счетчика АПВ</comment>
+	</param>
+	<param>
+		<id>943</id>
+		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_TRIP_SETPOINT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PRESSURE</physic>
+		<min>0.0</min>
+		<max>99.99</max>
+		<def>50.0</def>
+		<discret>100</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>50.0</value>
+		<text>Рmax.вых.нас.Уст.давления</text>
+		<short_text>Рmax.вых.нас.Уст.давления</short_text>
+		<form>4.3.2 Давление на выкиде насоса</form>
+		<unit>PRESSURE_MPA</unit>
+		<unit_lcd>PRESSURE_MPA</unit_lcd>
+		<format>XX_XX</format>
+		<code>13</code>
+		<comment>Уставка срабатывания защиты</comment>
+	</param>
+	<param>
+		<id>944</id>
+		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_RESTART_SETPOINT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PRESSURE</physic>
+		<min>0.0</min>
+		<max>99.99</max>
+		<def>50.0</def>
+		<discret>100</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>50.0</value>
+		<text>Рmax.вых.нас.Давление АПВ</text>
+		<short_text>Рmax.вых.нас.Давление АПВ</short_text>
+		<form>4.3.2 Давление на выкиде насоса</form>
+		<unit>PRESSURE_MPA</unit>
+		<unit_lcd>PRESSURE_MPA</unit_lcd>
+		<format>XX_XX</format>
+		<code>13</code>
+		<comment>Условие АПВ уставка</comment>
+	</param>
+	<param>
+		<id>945</id>
+		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_PARAMETER</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<code>0</code>
+		<comment>Уставка параметр защиты</comment>
+	</param>
+	<param>
+		<id>946</id>
+		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_RESTART_FLAG</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Уставка параметр защиты</comment>
+	</param>
+	<param>
+		<id>947</id>
+		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_STATE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>3.0</max>
+		<def>3.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>3.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Текущий параметр состояние автомата</comment>
+	</param>
+	<param>
+		<id>948</id>
+		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_TIME</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Текущий параметр Фиксированное время</comment>
+	</param>
+	<param>
+		<id>949</id>
+		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_RESTART_COUNT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>9999.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Текущий параметр Количество АПВ</comment>
+	</param>
+	<param>
+		<id>950</id>
+		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_RESTART_FIRST_TIME</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
+		<min>0</min>
+		<max>4294967296</max>
+		<def>0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>DATE_TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Текущий параметр Время первого АПВ</comment>
+	</param>
+	<param>
+		<id>951</id>
+		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_DELAY_FLAG</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>952</id>
+		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_BLOCK_FLAG</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>953</id>
+		<name>CCS_CMD_PROT_DHS_PRESSURE_DISCHARGE_SETPOINT_RESET</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Уста.по.умол.?</text>
+		<short_text>Уста.по.умол.?</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Нет;1-Да</values>
+		<comment>Защита "Давление на выкиде насоса". Уставки по умолчанию</comment>
+	</param>
+	<param>
+		<id>954</id>
 		<name>CCS_END</name>
 	</param>
 	<param>
@@ -18104,7 +18534,7 @@
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXX_XX</format>
-		<code>0</code>
+		<code>13</code>
 		<comment>Выходная частота ПЧ</comment>
 	</param>
 	<param>

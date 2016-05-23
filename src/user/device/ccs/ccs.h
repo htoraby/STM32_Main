@@ -463,6 +463,7 @@ private:
   void cmdProtMotorAsyncModeSetpointReset();
 
   void cmdProtDhsPressureIntakeSetpointReset();
+  void cmdProtDhsPressureDischargeSetpointReset();
   void cmdProtDhsTemperatureMotorSetpointReset();
   void cmdProtDhsResistanceSetpointReset();
   void cmdProtDhsVibrationSetpointReset();
