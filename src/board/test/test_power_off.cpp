@@ -11,7 +11,7 @@ static void powerOffTimer(const void *argument)
 {
   (void)argument;
 
-  if (!isUpsGood()) {
+  if (!isPowerGood()) {
     backupSaveParameter(RTC_BKP_DR1, ++timeMs);
   }
 }
