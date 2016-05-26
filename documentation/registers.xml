@@ -11285,10 +11285,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
-		<def>0.0</def>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>1.0</value>
 		<text>Уровни доступа</text>
 		<short_text>Уровни доступа</short_text>
 		<form>7.2 Пароли</form>
