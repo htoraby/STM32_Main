@@ -92,6 +92,8 @@ public:
 
   void initParameters();
 
+  bool isParametersControl() { return isParametersControl_; }
+
   /*!
    * \brief Метод запуска двигателя
    * \param reason - Причина запуска
@@ -601,6 +603,8 @@ private:
   int countPhaseRotation_;
 
   uint32_t restartTime_[RESTART_TIME_MAX+1];
+
+  bool isParametersControl_;
 
 };
 

@@ -18511,6 +18511,20 @@
 	</param>
 	<param>
 		<id>954</id>
+		<name>CCS_PARAMETERS_CONTROL</name>
+		<access>ACCESS_SERVICE</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>21930.0</min>
+		<max>21930.0</max>
+		<def>21930.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>21930.0</value>
+		<comment>Проверка параметров на корректность при инициализации</comment>
+	</param>
+	<param>
+		<id>955</id>
 		<name>CCS_END</name>
 	</param>
 	<param>

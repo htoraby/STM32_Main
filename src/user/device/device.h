@@ -175,6 +175,13 @@ public:
   float getMax(uint16_t id);
 
   /*!
+   * \brief Метод получения значения параметра по умолчанию
+   * \param id
+   * \return
+   */
+  float getValueDef(uint16_t id);
+
+  /*!
    * \brief Метод получения типа физической величины по id
    * \param id уникальный идентификатор параметра
    * \return типа физической величины

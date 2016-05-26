@@ -362,6 +362,12 @@ float Device::getMax(uint16_t id)
   return getFieldMaximum(getIndexAtId(id));
 }
 
+float Device::getValueDef(uint16_t id)
+{
+  uint16_t index = getIndexAtId(id);
+  return getFieldDefault(index);
+}
+
 void Device::updateValueTask()
 {
   osEvent event;

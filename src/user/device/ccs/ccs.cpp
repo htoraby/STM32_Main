@@ -55,6 +55,7 @@ Ccs::Ccs()
   , checkConnectDeviceTimer_(DELAY_CHECK_CONNECT_DEVICE)
   , isConnectMaster_(true)
   , countPhaseRotation_(0)
+  , isParametersControl_(true)
 {
 
 }
@@ -68,6 +69,12 @@ void Ccs::init()
 {  
   initParameters();
   readParameters();
+
+  if (getValue(CCS_PARAMETERS_CONTROL) != getValueDef(CCS_PARAMETERS_CONTROL)) {
+    initParameters();
+    isParametersControl_ = false;
+    setValue(CCS_PARAMETERS_CONTROL, getValueDef(CCS_PARAMETERS_CONTROL));
+  }
 }
 
 void Ccs::initTask()

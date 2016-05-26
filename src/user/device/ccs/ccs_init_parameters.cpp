@@ -11450,5 +11450,17 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_DHS_PRESSURE_DISCHARGE_SETPOINT_RESET - CCS_BEGIN].discret = 1;
   parameters_[CCS_CMD_PROT_DHS_PRESSURE_DISCHARGE_SETPOINT_RESET - CCS_BEGIN].def = 0.0;
   parameters_[CCS_CMD_PROT_DHS_PRESSURE_DISCHARGE_SETPOINT_RESET - CCS_BEGIN].code = 13;
+  // Проверка параметров на корректность при инициализации
+  parameters_[CCS_PARAMETERS_CONTROL - CCS_BEGIN].id                             = CCS_PARAMETERS_CONTROL;
+  parameters_[CCS_PARAMETERS_CONTROL - CCS_BEGIN].access                         = ACCESS_SERVICE;
+  parameters_[CCS_PARAMETERS_CONTROL - CCS_BEGIN].operation                      = OPERATION_READ;
+  parameters_[CCS_PARAMETERS_CONTROL - CCS_BEGIN].physic                         = PHYSIC_NUMERIC;
+  parameters_[CCS_PARAMETERS_CONTROL - CCS_BEGIN].validity                       = VALIDITY_OK;
+  parameters_[CCS_PARAMETERS_CONTROL - CCS_BEGIN].value.float_t                  = 21930.0;
+  parameters_[CCS_PARAMETERS_CONTROL - CCS_BEGIN].min                            = 21930.0;
+  parameters_[CCS_PARAMETERS_CONTROL - CCS_BEGIN].max                            = 21930.0;
+  parameters_[CCS_PARAMETERS_CONTROL - CCS_BEGIN].discret                        = 1;
+  parameters_[CCS_PARAMETERS_CONTROL - CCS_BEGIN].def                            = 21930.0;
+  parameters_[CCS_PARAMETERS_CONTROL - CCS_BEGIN].code                           = 0;
 }
 
