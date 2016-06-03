@@ -18525,6 +18525,26 @@
 	</param>
 	<param>
 		<id>955</id>
+		<name>CCS_VSD_CURRENT_LIMIT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>1.0</min>
+		<max>1000.0</max>
+		<def>100.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>100.0</value>
+		<text>Уставка предел тока</text>
+		<short_text>Уставка предел тока</short_text>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Уставка предел тока</comment>
+	</param>
+	<param>
+		<id>956</id>
 		<name>CCS_END</name>
 	</param>
 	<param>
