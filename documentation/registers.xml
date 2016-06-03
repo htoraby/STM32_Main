@@ -18525,6 +18525,26 @@
 	</param>
 	<param>
 		<id>955</id>
+		<name>CCS_VSD_CURRENT_LIMIT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>1.0</min>
+		<max>1000.0</max>
+		<def>100.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>100.0</value>
+		<text>Уставка предел тока</text>
+		<short_text>Уставка предел тока</short_text>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Уставка предел тока</comment>
+	</param>
+	<param>
+		<id>956</id>
 		<name>CCS_END</name>
 	</param>
 	<param>
@@ -22766,16 +22786,15 @@
 	</param>
 	<param>
 		<id>10242</id>
-		<name>VSD_SOFT_VERSION_1</name>
+		<name>VSD_SOFT_VERSION</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMERIC</physic>
+		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>
 		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<code>0</code>
-		<comment>Версия ПО ЧРП Danfoss 15-43 Используется в проекте (1)</comment>
+		<comment>Версия ПО ЧРП Danfoss 15-43 Используется в проекте</comment>
 	</param>
 	<param>
 		<id>10243</id>
@@ -27494,188 +27513,6 @@
 	</param>
 	<param>
 		<id>10475</id>
-		<name>VSD_SOFT_VERSION_2</name>
-		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
-		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
-		<comment>Версия ПО ЧРП Danfoss 15-43 Используется в проекте (2)</comment>
-	</param>
-	<param>
-		<id>10476</id>
-		<name>VSD_SOFT_VERSION_3</name>
-		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
-		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
-		<comment>Версия ПО ЧРП Danfoss 15-43 Используется в проекте (3)</comment>
-	</param>
-	<param>
-		<id>10477</id>
-		<name>VSD_SOFT_VERSION_4</name>
-		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
-		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
-		<comment>Версия ПО ЧРП Danfoss 15-43 Используется в проекте (4)</comment>
-	</param>
-	<param>
-		<id>10478</id>
-		<name>VSD_SOFT_VERSION_5</name>
-		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
-		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
-		<comment>Версия ПО ЧРП Danfoss 15-43 Используется в проекте (5)</comment>
-	</param>
-	<param>
-		<id>10479</id>
-		<name>VSD_POWER_SECTION_1</name>
-		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
-		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
-		<comment>Силовая часть ЧРП Danfoss 15-41 (1)</comment>
-	</param>
-	<param>
-		<id>10480</id>
-		<name>VSD_POWER_SECTION_2</name>
-		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
-		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
-		<comment>Силовая часть ЧРП Danfoss 15-41 (2)</comment>
-	</param>
-	<param>
-		<id>10481</id>
-		<name>VSD_POWER_SECTION_3</name>
-		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
-		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
-		<comment>Силовая часть ЧРП Danfoss 15-41 (3)</comment>
-	</param>
-	<param>
-		<id>10482</id>
-		<name>VSD_POWER_SECTION_4</name>
-		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
-		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
-		<comment>Силовая часть ЧРП Danfoss 15-41 (4)</comment>
-	</param>
-	<param>
-		<id>10483</id>
-		<name>VSD_POWER_SECTION_5</name>
-		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
-		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
-		<comment>Силовая часть ЧРП Danfoss 15-41 (5)</comment>
-	</param>
-	<param>
-		<id>10484</id>
-		<name>VSD_POWER_SECTION_6</name>
-		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
-		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
-		<comment>Силовая часть ЧРП Danfoss 15-41 (6)</comment>
-	</param>
-	<param>
-		<id>10485</id>
-		<name>VSD_POWER_SECTION_7</name>
-		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
-		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
-		<comment>Силовая часть ЧРП Danfoss 15-41 (7)</comment>
-	</param>
-	<param>
-		<id>10486</id>
-		<name>VSD_POWER_SECTION_8</name>
-		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
-		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
-		<comment>Силовая часть ЧРП Danfoss 15-41 (8)</comment>
-	</param>
-	<param>
-		<id>10487</id>
-		<name>VSD_POWER_SECTION_9</name>
-		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
-		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
-		<comment>Силовая часть ЧРП Danfoss 15-41 (9)</comment>
-	</param>
-	<param>
-		<id>10488</id>
-		<name>VSD_POWER_SECTION_10</name>
-		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
-		<valid>VALIDITY_ERROR</valid>
-		<code>0</code>
-		<comment>Силовая часть ЧРП Danfoss 15-41 (10)</comment>
-	</param>
-	<param>
-		<id>10489</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>

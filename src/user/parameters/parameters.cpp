@@ -221,6 +221,19 @@ float Parameters::getMax(uint16_t id)
   return err_r;
 }
 
+float Parameters::getValueDef(uint16_t id)
+{
+  if ((id > CCS_BEGIN) && (id < CCS_END))
+    return ksu.getValueDef(id);
+  if ((id > VSD_BEGIN) && (id < VSD_END))
+    return vsd->getValueDef(id);
+  if ((id > TMS_BEGIN) && (id < TMS_END))
+    return tms->getValueDef(id);
+  if ((id > EM_BEGIN) && (id < EM_END))
+    return em->getValueDef(id);
+  return err_r;
+}
+
 uint8_t Parameters::setMax(uint16_t id, float value)
 {
   if ((id > CCS_BEGIN) && (id < CCS_END))
@@ -232,6 +245,42 @@ uint8_t Parameters::setMax(uint16_t id, float value)
   if ((id > EM_BEGIN) && (id < EM_END))
     return em->setMax(id, value);
   return err_r;
+}
+
+float Parameters::checkZero(unsigned short id, bool reset, float value)
+{
+  if (parameters.get(id) == 0) {
+    if (reset) {
+      if (value == 0) {
+        if (parameters.getValueDef(id) == 0) {
+          if (parameters.getMin(id) == 0) {
+#if (USE_LOG_DEBUG == 1)
+              logDebug.add(DebugMsg, "Параметры: Параметр не прошел проверку на 0 (id = %d)");
+#endif
+            return 1;
+          }
+          else {
+            parameters.set(id, parameters.getMin(id));
+          }
+        }
+        else {
+          parameters.set(id, parameters.getValueDef(id));
+        }
+      }
+      else {
+        parameters.set(id, value);
+      }
+    }
+    else {
+      if (value == 0) {
+        return 1;
+      }
+      else {
+        return value;
+      }
+    }
+  }
+  return parameters.get(id);
 }
 
 

@@ -11462,5 +11462,17 @@ void Ccs::initParameters()
   parameters_[CCS_PARAMETERS_CONTROL - CCS_BEGIN].discret                        = 1;
   parameters_[CCS_PARAMETERS_CONTROL - CCS_BEGIN].def                            = 21930.0;
   parameters_[CCS_PARAMETERS_CONTROL - CCS_BEGIN].code                           = 0;
+  // Уставка предел тока
+  parameters_[CCS_VSD_CURRENT_LIMIT - CCS_BEGIN].id                              = CCS_VSD_CURRENT_LIMIT;
+  parameters_[CCS_VSD_CURRENT_LIMIT - CCS_BEGIN].access                          = ACCESS_OPERATOR;
+  parameters_[CCS_VSD_CURRENT_LIMIT - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_VSD_CURRENT_LIMIT - CCS_BEGIN].physic                          = PHYSIC_PERCENT;
+  parameters_[CCS_VSD_CURRENT_LIMIT - CCS_BEGIN].validity                        = VALIDITY_OK;
+  parameters_[CCS_VSD_CURRENT_LIMIT - CCS_BEGIN].value.float_t                   = 100.0;
+  parameters_[CCS_VSD_CURRENT_LIMIT - CCS_BEGIN].min                             = 1.0;
+  parameters_[CCS_VSD_CURRENT_LIMIT - CCS_BEGIN].max                             = 1000.0;
+  parameters_[CCS_VSD_CURRENT_LIMIT - CCS_BEGIN].discret                         = 1;
+  parameters_[CCS_VSD_CURRENT_LIMIT - CCS_BEGIN].def                             = 100.0;
+  parameters_[CCS_VSD_CURRENT_LIMIT - CCS_BEGIN].code                            = 0;
 }
 

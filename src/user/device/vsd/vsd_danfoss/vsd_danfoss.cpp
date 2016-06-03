@@ -147,6 +147,89 @@ int VsdDanfoss::setMotorVoltage(float value)
   }
 }
 
+int VsdDanfoss::setCurrentLim(float value)
+{
+  //! Номинальный ток станции или мощность ЧРП
+  float nomCurVsd = 160;
+  float maxCurrent = 194;
+  float curLimit = nomCurVsd;
+  float nomCurMtr = parameters.checkZero(VSD_MOTOR_CURRENT, false);
+  float coefTrans = parameters.checkZero(CCS_COEF_TRANSFORMATION, false);
+  switch ((int)nomCurVsd) {
+  case 160: maxCurrent = 194; break;
+  case 250: maxCurrent = 285; break;
+  case 400: maxCurrent = 434; break;
+  case 630: maxCurrent = 630; break;
+  case 800: maxCurrent = 879; break;
+  default:  maxCurrent = 194; break;
+  }
+  curLimit = (maxCurrent / (nomCurMtr * coefTrans)) * 100;
+  if (curLimit > value) {
+    curLimit = value;
+  }
+  if (!Vsd::setCurrentLim(curLimit)) {
+    writeToDevice(VSD_CURRENT_LIMIT, curLimit);
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setMotorCurrent");
+    return err_r;
+  }
+}
+
+void VsdDanfoss::setMotorConfig()
+{
+  /*! Запись основных настроек в ЧРП Danfoss изменение которых ведет к изменению
+   * других настроек самим ЧРП.
+   * Запись настроек должна вестись в строгом опредленном порядке
+   */
+  //! Номинальный ток станции
+  //! 1-20 Номинальная мощность двигателя
+  writeToDevice(VSD_MOTOR_POWER, parameters.get(VSD_MOTOR_POWER));
+  //! 1-23 Номинальная частота двигателя
+  writeToDevice(VSD_MOTOR_FREQUENCY, parameters.get(VSD_MOTOR_FREQUENCY));
+  //! 1-24 Номинальный ток двигателя
+  writeToDevice(VSD_MOTOR_CURRENT, parameters.get(VSD_MOTOR_CURRENT) * parameters.get(CCS_COEF_TRANSFORMATION));
+  //! 1-25 Номинальная скорость
+  writeToDevice(VSD_MOTOR_SPEED, parameters.get(VSD_MOTOR_SPEED));
+  //! 1-39 Количество пар полюсов
+  writeToDevice(VSD_MOTOR_POLES, parameters.get(VSD_MOTOR_POLES));
+  //! 4-18 Предел тока двигателя
+  setCurrentLim(parameters.get(CCS_VSD_CURRENT_LIMIT));
+  //! 13-12.2
+  writeToDevice(VSD_SL_12, parameters.get(VSD_MOTOR_CURRENT)
+                         * parameters.get(CCS_COEF_TRANSFORMATION)
+                         * parameters.get(VSD_MOTOR_POLES)
+                         * 0.95 / 100);
+  //! 12-60
+  writeToDevice(VSD_RATE_TORQUE_MOTOR, parameters.get(VSD_MOTOR_POWER)
+                                     / parameters.checkZero(VSD_MOTOR_SPEED, false)
+                                     * 9550);
+  //! 14-00
+  writeToDevice(VSD_BACK_EMF, parameters.get(VSD_BACK_EMF)
+                            / parameters.checkZero(CCS_COEF_TRANSFORMATION, false)
+                            * 1000);
+  //! 4-14
+  setMaxFrequency(parameters.get(VSD_HIGH_LIM_SPEED_MOTOR));
+  //! Настройка u/f
+  setUf();
+  //! 30-80 Индуктивность по оси d
+  ksu.calcSystemInduct();
+}
+
+int VsdDanfoss::setSumInduct(float value)
+{
+  if (parameters.get(VSD_MOTOR_CONTROL)) {
+    if (parameters.get(VSD_D_AXIS_INDUNSTANCE) != 0) {
+      writeToDevice(VSD_D_AXIS_INDUNSTANCE, parameters.get(VSD_D_AXIS_INDUNSTANCE));
+    }
+    else {
+      writeToDevice(VSD_D_AXIS_INDUNSTANCE, value);
+    }
+  }
+  return ok_r;
+}
+
 int VsdDanfoss::onRegimePush()
 {
   /*
@@ -469,6 +552,22 @@ void VsdDanfoss::readUfCharacterictic()
   readInDevice(VSD_UF_CHARACTERISTIC_U_4);
   readInDevice(VSD_UF_CHARACTERISTIC_U_5);
   readInDevice(VSD_UF_CHARACTERISTIC_U_6);
+}
+
+void VsdDanfoss::setUf()
+{
+  setUf_f1(parameters.get(VSD_UF_CHARACTERISTIC_F_1));
+  setUf_f2(parameters.get(VSD_UF_CHARACTERISTIC_F_2));
+  setUf_f3(parameters.get(VSD_UF_CHARACTERISTIC_F_3));
+  setUf_f4(parameters.get(VSD_UF_CHARACTERISTIC_F_4));
+  setUf_f5(parameters.get(VSD_UF_CHARACTERISTIC_F_5));
+  setUf_f6(parameters.get(VSD_UF_CHARACTERISTIC_F_6));
+  setUf_U1(parameters.get(VSD_UF_CHARACTERISTIC_U_1));
+  setUf_U2(parameters.get(VSD_UF_CHARACTERISTIC_U_2));
+  setUf_U3(parameters.get(VSD_UF_CHARACTERISTIC_U_3));
+  setUf_U4(parameters.get(VSD_UF_CHARACTERISTIC_U_4));
+  setUf_U5(parameters.get(VSD_UF_CHARACTERISTIC_U_5));
+  setUf_U6(parameters.get(VSD_UF_CHARACTERISTIC_U_6));
 }
 
 uint16_t VsdDanfoss::configVsd()
@@ -1346,7 +1445,6 @@ void VsdDanfoss::getNewValue(uint16_t id)
     value = (float)param->value.int16_t[0];
     break;
   case TYPE_DATA_UINT16:
-  case TYPE_DATA_STR:
     value = (float)param->value.uint16_t[0];
     break;
   case TYPE_DATA_INT32:

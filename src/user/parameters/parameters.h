@@ -101,7 +101,18 @@ public:
 
   float getMax(uint16_t id);
 
+  float getValueDef(uint16_t id);
+
   uint8_t setMax(uint16_t id, float value);
+
+  /*!
+   * \brief checkZero Функция проверки на ноль
+   * \param id уникальный идентификатор параметра
+   * \param reset надо ли сбрасывать параметр
+   * \param value значение отличное от значения по умолчанию на которое надо сбросить
+   * \return
+   */
+  float checkZero(unsigned short id, bool reset, float value = 0);
 
   /*!
    * \brief Конвертация значения из формата STM

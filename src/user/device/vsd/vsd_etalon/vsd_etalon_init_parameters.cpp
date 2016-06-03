@@ -328,7 +328,7 @@ void VsdEtalon::initModbusParameters()
                            0                // Значение
                           };
   modbusParameters_[18] = {// Версия программного обеспечения
-                           VSD_SOFT_VERSION_1,// Уникальный идентификатор параметра
+                           VSD_SOFT_VERSION,// Уникальный идентификатор параметра
                            38 + 0x4000,     // 0x4026 Адрес регистра в устройстве
                            OPERATION_READ,  // Операции с параметром
                            PHYSIC_NUMERIC,  // Физическая величина параметра

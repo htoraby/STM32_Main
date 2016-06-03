@@ -2906,18 +2906,18 @@ void Vsd::initParameters()
   parameters_[VSD_FAIL_RESET - VSD_BEGIN].def                                    = 3.0;
   parameters_[VSD_FAIL_RESET - VSD_BEGIN].discret                                = 1;
   parameters_[VSD_FAIL_RESET - VSD_BEGIN].code                                   = 0;
-  // Версия ПО ЧРП Danfoss 15-43 Используется в проекте (1)
-  parameters_[VSD_SOFT_VERSION_1 - VSD_BEGIN].id                                 = VSD_SOFT_VERSION_1;
-  parameters_[VSD_SOFT_VERSION_1 - VSD_BEGIN].access                             = ACCESS_OPERATOR;
-  parameters_[VSD_SOFT_VERSION_1 - VSD_BEGIN].operation                          = OPERATION_READ;
-  parameters_[VSD_SOFT_VERSION_1 - VSD_BEGIN].physic                             = PHYSIC_NUMERIC;
-  parameters_[VSD_SOFT_VERSION_1 - VSD_BEGIN].validity                           = VALIDITY_ERROR;
-  parameters_[VSD_SOFT_VERSION_1 - VSD_BEGIN].value.float_t                      = 0;
-  parameters_[VSD_SOFT_VERSION_1 - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_SOFT_VERSION_1 - VSD_BEGIN].max                                = 999999999.9;
-  parameters_[VSD_SOFT_VERSION_1 - VSD_BEGIN].def                                = 0;
-  parameters_[VSD_SOFT_VERSION_1 - VSD_BEGIN].discret                            = 1;
-  parameters_[VSD_SOFT_VERSION_1 - VSD_BEGIN].code                               = 0;
+  // Версия ПО ЧРП Danfoss 15-43 Используется в проекте
+  parameters_[VSD_SOFT_VERSION - VSD_BEGIN].id                                   = VSD_SOFT_VERSION;
+  parameters_[VSD_SOFT_VERSION - VSD_BEGIN].access                               = ACCESS_OPERATOR;
+  parameters_[VSD_SOFT_VERSION - VSD_BEGIN].operation                            = OPERATION_WRITE;
+  parameters_[VSD_SOFT_VERSION - VSD_BEGIN].physic                               = 0;
+  parameters_[VSD_SOFT_VERSION - VSD_BEGIN].validity                             = VALIDITY_ERROR;
+  parameters_[VSD_SOFT_VERSION - VSD_BEGIN].value.float_t                        = 0;
+  parameters_[VSD_SOFT_VERSION - VSD_BEGIN].min                                  = 0.0;
+  parameters_[VSD_SOFT_VERSION - VSD_BEGIN].max                                  = 999999999.9;
+  parameters_[VSD_SOFT_VERSION - VSD_BEGIN].def                                  = 0;
+  parameters_[VSD_SOFT_VERSION - VSD_BEGIN].discret                              = 1;
+  parameters_[VSD_SOFT_VERSION - VSD_BEGIN].code                                 = 0;
   // Командное слово Danfoss 16-00 Используется в проекте
   parameters_[VSD_DELETE_10243 - VSD_BEGIN].id                                   = VSD_DELETE_10243;
   parameters_[VSD_DELETE_10243 - VSD_BEGIN].access                               = ACCESS_OPERATOR;
@@ -5702,173 +5702,5 @@ void Vsd::initParameters()
   parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].def                       = 120.0;
   parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].discret                   = 1;
   parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].code                      = 13;
-  // Версия ПО ЧРП Danfoss 15-43 Используется в проекте (2)
-  parameters_[VSD_SOFT_VERSION_2 - VSD_BEGIN].id                                 = VSD_SOFT_VERSION_2;
-  parameters_[VSD_SOFT_VERSION_2 - VSD_BEGIN].access                             = ACCESS_OPERATOR;
-  parameters_[VSD_SOFT_VERSION_2 - VSD_BEGIN].operation                          = OPERATION_READ;
-  parameters_[VSD_SOFT_VERSION_2 - VSD_BEGIN].physic                             = PHYSIC_NUMERIC;
-  parameters_[VSD_SOFT_VERSION_2 - VSD_BEGIN].validity                           = VALIDITY_ERROR;
-  parameters_[VSD_SOFT_VERSION_2 - VSD_BEGIN].value.float_t                      = 0;
-  parameters_[VSD_SOFT_VERSION_2 - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_SOFT_VERSION_2 - VSD_BEGIN].max                                = 999999999.9;
-  parameters_[VSD_SOFT_VERSION_2 - VSD_BEGIN].def                                = 0;
-  parameters_[VSD_SOFT_VERSION_2 - VSD_BEGIN].discret                            = 1;
-  parameters_[VSD_SOFT_VERSION_2 - VSD_BEGIN].code                               = 0;
-  // Версия ПО ЧРП Danfoss 15-43 Используется в проекте (3)
-  parameters_[VSD_SOFT_VERSION_3 - VSD_BEGIN].id                                 = VSD_SOFT_VERSION_3;
-  parameters_[VSD_SOFT_VERSION_3 - VSD_BEGIN].access                             = ACCESS_OPERATOR;
-  parameters_[VSD_SOFT_VERSION_3 - VSD_BEGIN].operation                          = OPERATION_READ;
-  parameters_[VSD_SOFT_VERSION_3 - VSD_BEGIN].physic                             = PHYSIC_NUMERIC;
-  parameters_[VSD_SOFT_VERSION_3 - VSD_BEGIN].validity                           = VALIDITY_ERROR;
-  parameters_[VSD_SOFT_VERSION_3 - VSD_BEGIN].value.float_t                      = 0;
-  parameters_[VSD_SOFT_VERSION_3 - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_SOFT_VERSION_3 - VSD_BEGIN].max                                = 999999999.9;
-  parameters_[VSD_SOFT_VERSION_3 - VSD_BEGIN].def                                = 0;
-  parameters_[VSD_SOFT_VERSION_3 - VSD_BEGIN].discret                            = 1;
-  parameters_[VSD_SOFT_VERSION_3 - VSD_BEGIN].code                               = 0;
-  // Версия ПО ЧРП Danfoss 15-43 Используется в проекте (4)
-  parameters_[VSD_SOFT_VERSION_4 - VSD_BEGIN].id                                 = VSD_SOFT_VERSION_4;
-  parameters_[VSD_SOFT_VERSION_4 - VSD_BEGIN].access                             = ACCESS_OPERATOR;
-  parameters_[VSD_SOFT_VERSION_4 - VSD_BEGIN].operation                          = OPERATION_READ;
-  parameters_[VSD_SOFT_VERSION_4 - VSD_BEGIN].physic                             = PHYSIC_NUMERIC;
-  parameters_[VSD_SOFT_VERSION_4 - VSD_BEGIN].validity                           = VALIDITY_ERROR;
-  parameters_[VSD_SOFT_VERSION_4 - VSD_BEGIN].value.float_t                      = 0;
-  parameters_[VSD_SOFT_VERSION_4 - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_SOFT_VERSION_4 - VSD_BEGIN].max                                = 999999999.9;
-  parameters_[VSD_SOFT_VERSION_4 - VSD_BEGIN].def                                = 0;
-  parameters_[VSD_SOFT_VERSION_4 - VSD_BEGIN].discret                            = 1;
-  parameters_[VSD_SOFT_VERSION_4 - VSD_BEGIN].code                               = 0;
-  // Версия ПО ЧРП Danfoss 15-43 Используется в проекте (5)
-  parameters_[VSD_SOFT_VERSION_5 - VSD_BEGIN].id                                 = VSD_SOFT_VERSION_5;
-  parameters_[VSD_SOFT_VERSION_5 - VSD_BEGIN].access                             = ACCESS_OPERATOR;
-  parameters_[VSD_SOFT_VERSION_5 - VSD_BEGIN].operation                          = OPERATION_READ;
-  parameters_[VSD_SOFT_VERSION_5 - VSD_BEGIN].physic                             = PHYSIC_NUMERIC;
-  parameters_[VSD_SOFT_VERSION_5 - VSD_BEGIN].validity                           = VALIDITY_ERROR;
-  parameters_[VSD_SOFT_VERSION_5 - VSD_BEGIN].value.float_t                      = 0;
-  parameters_[VSD_SOFT_VERSION_5 - VSD_BEGIN].min                                = 0.0;
-  parameters_[VSD_SOFT_VERSION_5 - VSD_BEGIN].max                                = 999999999.9;
-  parameters_[VSD_SOFT_VERSION_5 - VSD_BEGIN].def                                = 0;
-  parameters_[VSD_SOFT_VERSION_5 - VSD_BEGIN].discret                            = 1;
-  parameters_[VSD_SOFT_VERSION_5 - VSD_BEGIN].code                               = 0;
-  // Силовая часть ЧРП Danfoss 15-41 (1)
-  parameters_[VSD_POWER_SECTION_1 - VSD_BEGIN].id                                = VSD_POWER_SECTION_1;
-  parameters_[VSD_POWER_SECTION_1 - VSD_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[VSD_POWER_SECTION_1 - VSD_BEGIN].operation                         = OPERATION_READ;
-  parameters_[VSD_POWER_SECTION_1 - VSD_BEGIN].physic                            = PHYSIC_NUMERIC;
-  parameters_[VSD_POWER_SECTION_1 - VSD_BEGIN].validity                          = VALIDITY_ERROR;
-  parameters_[VSD_POWER_SECTION_1 - VSD_BEGIN].value.float_t                     = 0;
-  parameters_[VSD_POWER_SECTION_1 - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_POWER_SECTION_1 - VSD_BEGIN].max                               = 999999999.9;
-  parameters_[VSD_POWER_SECTION_1 - VSD_BEGIN].def                               = 0;
-  parameters_[VSD_POWER_SECTION_1 - VSD_BEGIN].discret                           = 1;
-  parameters_[VSD_POWER_SECTION_1 - VSD_BEGIN].code                              = 0;
-  // Силовая часть ЧРП Danfoss 15-41 (2)
-  parameters_[VSD_POWER_SECTION_2 - VSD_BEGIN].id                                = VSD_POWER_SECTION_2;
-  parameters_[VSD_POWER_SECTION_2 - VSD_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[VSD_POWER_SECTION_2 - VSD_BEGIN].operation                         = OPERATION_READ;
-  parameters_[VSD_POWER_SECTION_2 - VSD_BEGIN].physic                            = PHYSIC_NUMERIC;
-  parameters_[VSD_POWER_SECTION_2 - VSD_BEGIN].validity                          = VALIDITY_ERROR;
-  parameters_[VSD_POWER_SECTION_2 - VSD_BEGIN].value.float_t                     = 0;
-  parameters_[VSD_POWER_SECTION_2 - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_POWER_SECTION_2 - VSD_BEGIN].max                               = 999999999.9;
-  parameters_[VSD_POWER_SECTION_2 - VSD_BEGIN].def                               = 0;
-  parameters_[VSD_POWER_SECTION_2 - VSD_BEGIN].discret                           = 1;
-  parameters_[VSD_POWER_SECTION_2 - VSD_BEGIN].code                              = 0;
-  // Силовая часть ЧРП Danfoss 15-41 (3)
-  parameters_[VSD_POWER_SECTION_3 - VSD_BEGIN].id                                = VSD_POWER_SECTION_3;
-  parameters_[VSD_POWER_SECTION_3 - VSD_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[VSD_POWER_SECTION_3 - VSD_BEGIN].operation                         = OPERATION_READ;
-  parameters_[VSD_POWER_SECTION_3 - VSD_BEGIN].physic                            = PHYSIC_NUMERIC;
-  parameters_[VSD_POWER_SECTION_3 - VSD_BEGIN].validity                          = VALIDITY_ERROR;
-  parameters_[VSD_POWER_SECTION_3 - VSD_BEGIN].value.float_t                     = 0;
-  parameters_[VSD_POWER_SECTION_3 - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_POWER_SECTION_3 - VSD_BEGIN].max                               = 999999999.9;
-  parameters_[VSD_POWER_SECTION_3 - VSD_BEGIN].def                               = 0;
-  parameters_[VSD_POWER_SECTION_3 - VSD_BEGIN].discret                           = 1;
-  parameters_[VSD_POWER_SECTION_3 - VSD_BEGIN].code                              = 0;
-  // Силовая часть ЧРП Danfoss 15-41 (4)
-  parameters_[VSD_POWER_SECTION_4 - VSD_BEGIN].id                                = VSD_POWER_SECTION_4;
-  parameters_[VSD_POWER_SECTION_4 - VSD_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[VSD_POWER_SECTION_4 - VSD_BEGIN].operation                         = OPERATION_READ;
-  parameters_[VSD_POWER_SECTION_4 - VSD_BEGIN].physic                            = PHYSIC_NUMERIC;
-  parameters_[VSD_POWER_SECTION_4 - VSD_BEGIN].validity                          = VALIDITY_ERROR;
-  parameters_[VSD_POWER_SECTION_4 - VSD_BEGIN].value.float_t                     = 0;
-  parameters_[VSD_POWER_SECTION_4 - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_POWER_SECTION_4 - VSD_BEGIN].max                               = 999999999.9;
-  parameters_[VSD_POWER_SECTION_4 - VSD_BEGIN].def                               = 0;
-  parameters_[VSD_POWER_SECTION_4 - VSD_BEGIN].discret                           = 1;
-  parameters_[VSD_POWER_SECTION_4 - VSD_BEGIN].code                              = 0;
-  // Силовая часть ЧРП Danfoss 15-41 (5)
-  parameters_[VSD_POWER_SECTION_5 - VSD_BEGIN].id                                = VSD_POWER_SECTION_5;
-  parameters_[VSD_POWER_SECTION_5 - VSD_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[VSD_POWER_SECTION_5 - VSD_BEGIN].operation                         = OPERATION_READ;
-  parameters_[VSD_POWER_SECTION_5 - VSD_BEGIN].physic                            = PHYSIC_NUMERIC;
-  parameters_[VSD_POWER_SECTION_5 - VSD_BEGIN].validity                          = VALIDITY_ERROR;
-  parameters_[VSD_POWER_SECTION_5 - VSD_BEGIN].value.float_t                     = 0;
-  parameters_[VSD_POWER_SECTION_5 - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_POWER_SECTION_5 - VSD_BEGIN].max                               = 999999999.9;
-  parameters_[VSD_POWER_SECTION_5 - VSD_BEGIN].def                               = 0;
-  parameters_[VSD_POWER_SECTION_5 - VSD_BEGIN].discret                           = 1;
-  parameters_[VSD_POWER_SECTION_5 - VSD_BEGIN].code                              = 0;
-  // Силовая часть ЧРП Danfoss 15-41 (6)
-  parameters_[VSD_POWER_SECTION_6 - VSD_BEGIN].id                                = VSD_POWER_SECTION_6;
-  parameters_[VSD_POWER_SECTION_6 - VSD_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[VSD_POWER_SECTION_6 - VSD_BEGIN].operation                         = OPERATION_READ;
-  parameters_[VSD_POWER_SECTION_6 - VSD_BEGIN].physic                            = PHYSIC_NUMERIC;
-  parameters_[VSD_POWER_SECTION_6 - VSD_BEGIN].validity                          = VALIDITY_ERROR;
-  parameters_[VSD_POWER_SECTION_6 - VSD_BEGIN].value.float_t                     = 0;
-  parameters_[VSD_POWER_SECTION_6 - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_POWER_SECTION_6 - VSD_BEGIN].max                               = 999999999.9;
-  parameters_[VSD_POWER_SECTION_6 - VSD_BEGIN].def                               = 0;
-  parameters_[VSD_POWER_SECTION_6 - VSD_BEGIN].discret                           = 1;
-  parameters_[VSD_POWER_SECTION_6 - VSD_BEGIN].code                              = 0;
-  // Силовая часть ЧРП Danfoss 15-41 (7)
-  parameters_[VSD_POWER_SECTION_7 - VSD_BEGIN].id                                = VSD_POWER_SECTION_7;
-  parameters_[VSD_POWER_SECTION_7 - VSD_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[VSD_POWER_SECTION_7 - VSD_BEGIN].operation                         = OPERATION_READ;
-  parameters_[VSD_POWER_SECTION_7 - VSD_BEGIN].physic                            = PHYSIC_NUMERIC;
-  parameters_[VSD_POWER_SECTION_7 - VSD_BEGIN].validity                          = VALIDITY_ERROR;
-  parameters_[VSD_POWER_SECTION_7 - VSD_BEGIN].value.float_t                     = 0;
-  parameters_[VSD_POWER_SECTION_7 - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_POWER_SECTION_7 - VSD_BEGIN].max                               = 999999999.9;
-  parameters_[VSD_POWER_SECTION_7 - VSD_BEGIN].def                               = 0;
-  parameters_[VSD_POWER_SECTION_7 - VSD_BEGIN].discret                           = 1;
-  parameters_[VSD_POWER_SECTION_7 - VSD_BEGIN].code                              = 0;
-  // Силовая часть ЧРП Danfoss 15-41 (8)
-  parameters_[VSD_POWER_SECTION_8 - VSD_BEGIN].id                                = VSD_POWER_SECTION_8;
-  parameters_[VSD_POWER_SECTION_8 - VSD_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[VSD_POWER_SECTION_8 - VSD_BEGIN].operation                         = OPERATION_READ;
-  parameters_[VSD_POWER_SECTION_8 - VSD_BEGIN].physic                            = PHYSIC_NUMERIC;
-  parameters_[VSD_POWER_SECTION_8 - VSD_BEGIN].validity                          = VALIDITY_ERROR;
-  parameters_[VSD_POWER_SECTION_8 - VSD_BEGIN].value.float_t                     = 0;
-  parameters_[VSD_POWER_SECTION_8 - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_POWER_SECTION_8 - VSD_BEGIN].max                               = 999999999.9;
-  parameters_[VSD_POWER_SECTION_8 - VSD_BEGIN].def                               = 0;
-  parameters_[VSD_POWER_SECTION_8 - VSD_BEGIN].discret                           = 1;
-  parameters_[VSD_POWER_SECTION_8 - VSD_BEGIN].code                              = 0;
-  // Силовая часть ЧРП Danfoss 15-41 (9)
-  parameters_[VSD_POWER_SECTION_9 - VSD_BEGIN].id                                = VSD_POWER_SECTION_9;
-  parameters_[VSD_POWER_SECTION_9 - VSD_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[VSD_POWER_SECTION_9 - VSD_BEGIN].operation                         = OPERATION_READ;
-  parameters_[VSD_POWER_SECTION_9 - VSD_BEGIN].physic                            = PHYSIC_NUMERIC;
-  parameters_[VSD_POWER_SECTION_9 - VSD_BEGIN].validity                          = VALIDITY_ERROR;
-  parameters_[VSD_POWER_SECTION_9 - VSD_BEGIN].value.float_t                     = 0;
-  parameters_[VSD_POWER_SECTION_9 - VSD_BEGIN].min                               = 0.0;
-  parameters_[VSD_POWER_SECTION_9 - VSD_BEGIN].max                               = 999999999.9;
-  parameters_[VSD_POWER_SECTION_9 - VSD_BEGIN].def                               = 0;
-  parameters_[VSD_POWER_SECTION_9 - VSD_BEGIN].discret                           = 1;
-  parameters_[VSD_POWER_SECTION_9 - VSD_BEGIN].code                              = 0;
-  // Силовая часть ЧРП Danfoss 15-41 (10)
-  parameters_[VSD_POWER_SECTION_10 - VSD_BEGIN].id                               = VSD_POWER_SECTION_10;
-  parameters_[VSD_POWER_SECTION_10 - VSD_BEGIN].access                           = ACCESS_OPERATOR;
-  parameters_[VSD_POWER_SECTION_10 - VSD_BEGIN].operation                        = OPERATION_READ;
-  parameters_[VSD_POWER_SECTION_10 - VSD_BEGIN].physic                           = PHYSIC_NUMERIC;
-  parameters_[VSD_POWER_SECTION_10 - VSD_BEGIN].validity                         = VALIDITY_ERROR;
-  parameters_[VSD_POWER_SECTION_10 - VSD_BEGIN].value.float_t                    = 0;
-  parameters_[VSD_POWER_SECTION_10 - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_POWER_SECTION_10 - VSD_BEGIN].max                              = 999999999.9;
-  parameters_[VSD_POWER_SECTION_10 - VSD_BEGIN].def                              = 0;
-  parameters_[VSD_POWER_SECTION_10 - VSD_BEGIN].discret                          = 1;
-  parameters_[VSD_POWER_SECTION_10 - VSD_BEGIN].code                             = 0;
 }
 
