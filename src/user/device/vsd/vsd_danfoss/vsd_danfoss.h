@@ -142,9 +142,6 @@ public:
   int setMotorPower(float value);
   int setMotorCurrent(float value);
   int setMotorVoltage(float value);
-  int setCurrentLim(float value);
-  void setMotorConfig();
-  int setSumInduct(float value);
 
   // РЕЖИМЫ ПУСКА
   int onRegimePush();
@@ -175,7 +172,6 @@ public:
   int setUf_U4(float value);
   int setUf_U5(float value);
   int setUf_U6(float value);
-  void setUf();
 
   int calcUfCharacteristicU();
   int calcUfCharacteristicF(float value);
@@ -215,7 +211,7 @@ public:
   void resetConnect();
 
 private:
-  ModbusParameter modbusParameters_[212];
+  ModbusParameter modbusParameters_[226];
   DeviceModbus *dm_;
 
 };

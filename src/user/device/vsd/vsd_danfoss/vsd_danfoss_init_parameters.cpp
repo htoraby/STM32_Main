@@ -1531,7 +1531,7 @@ void VsdDanfoss::initModbusParameters()
                            PHYSIC_NUMERIC,  // Физическая величина параметра
                            NUMERIC_NUMBER,  // Единицы измерения параметра
                            TYPE_DATA_ARRAY_INT32, // Тип данных
-                           2,               // Индекс
+                           0,               // Индекс
                            0.001,           // Коэффициент преобразования параметра
                            -100000000,      // Минимальное значение параметра
                            100000000,       // Максимально значение параметра
@@ -1974,25 +1974,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[108] = {// Версия ПО ЧРП
-                            VSD_SOFT_VERSION,
-                            15429,          // Адрес регистра в устройстве
-                            OPERATION_WRITE,// Операции с параметром
-                            PHYSIC_NUMERIC, // Физическая величина параметра
-                            NUMERIC_NUMBER, // Единицы измерения параметра
-                            TYPE_DATA_INT16,// Тип данных
-                            0,              // Индекс
-                            1,              // Коэффициент преобразования параметра
-                            0,              // Минимальное значение параметра
-                            65535,          // Максимально значение параметра
-                            0,              // Считываемое значение "по умолчанию"
-                            OFTEN,    // Частота опроса параметра
-                            OFTEN,    // Количество запросов к параметру
-                            OPERATION_ERROR,// Команда
-                            VALIDITY_ERROR, // Поле состояния параметра
-                            0               // Значение
-                           };
-  modbusParameters_[109] = {// Командное слово
+  modbusParameters_[108] = {// Командное слово
                             VSD_CONTROL_WORD_1,
                             15999,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -2010,7 +1992,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[110] = {// Cлова состояния
+  modbusParameters_[109] = {// Cлова состояния
                             VSD_STATUS_WORD_1,  // RSTATUS_WORD
                             16029,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -2028,7 +2010,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[111] = {// Активная мощность
+  modbusParameters_[110] = {// Активная мощность
                             VSD_POWER_ACTIVE,
                             16099,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
@@ -2046,7 +2028,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[112] = {// Напряжение на выходе ЧРП
+  modbusParameters_[111] = {// Напряжение на выходе ЧРП
                             VSD_OUT_VOLTAGE_MOTOR,
                             16119,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
@@ -2064,7 +2046,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[113] = {// Текущая частота
+  modbusParameters_[112] = {// Текущая частота
                             VSD_FREQUENCY_NOW,
                             16129,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
@@ -2082,7 +2064,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[114] = {// Cкорость
+  modbusParameters_[113] = {// Cкорость
                             VSD_SPEED_RPM_NOW,
                             16169,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
@@ -2100,7 +2082,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[115] = {// Напряжение цепи пост.тока
+  modbusParameters_[114] = {// Напряжение цепи пост.тока
                             VSD_VOLTAGE_DC,
                             16299,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
@@ -2118,7 +2100,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[116] = {// Темп.радиатора
+  modbusParameters_[115] = {// Темп.радиатора
                             VSD_RADIATOR_TEMPERATURE,
                             16339,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
@@ -2136,7 +2118,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[117] = {// Темп.платы управления
+  modbusParameters_[116] = {// Темп.платы управления
                             VSD_CONTROL_TEMPERATURE,
                             16389,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
@@ -2154,7 +2136,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[118] = {// Ток на выходе ЧРП 1
+  modbusParameters_[117] = {// Ток на выходе ЧРП 1
                             VSD_CURRENT_OUT_PHASE_1,
                             16449,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
@@ -2172,7 +2154,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[119] = {// Ток на выходе ЧРП 2
+  modbusParameters_[118] = {// Ток на выходе ЧРП 2
                             VSD_CURRENT_OUT_PHASE_2,
                             16459,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
@@ -2190,7 +2172,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[120] = {// Ток на выходе ЧРП 3
+  modbusParameters_[119] = {// Ток на выходе ЧРП 3
                             VSD_CURRENT_OUT_PHASE_3,
                             16469,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
@@ -2208,7 +2190,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[121] = {// Цифровые входы
+  modbusParameters_[120] = {// Цифровые входы
                             VSD_DINPUTS,
                             16599,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
@@ -2226,7 +2208,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[122] = {// Номер последней аварии и предупреждения
+  modbusParameters_[121] = {// Номер последней аварии и предупреждения
                             VSD_STATUS_WORD_2,  // BUS_READOUT_ALARM
                             16869,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
@@ -2244,7 +2226,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[123] = {//
+  modbusParameters_[122] = {//
                             VSD_STATUS_WORD_3,  // ALARM_WORD_1
                             16899,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
@@ -2262,7 +2244,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[124] = {//
+  modbusParameters_[123] = {//
                             VSD_STATUS_WORD_4,  // ALARM_WORD_2
                             16909,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
@@ -2280,7 +2262,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[125] = {// Слово Предупреждения 1
+  modbusParameters_[124] = {// Слово Предупреждения 1
                             VSD_STATUS_WORD_5,  // WARNING_WORD
                             16919,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
@@ -2298,7 +2280,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[126] = {// Слово Предупреждения 2
+  modbusParameters_[125] = {// Слово Предупреждения 2
                             VSD_STATUS_WORD_6, // WARNING_WORD_2
                             16929,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
@@ -2316,7 +2298,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[127] = {// Слово предупреждения расширенное
+  modbusParameters_[126] = {// Слово предупреждения расширенное
                             VSD_STATUS_WORD_7, // WARNING_WORD_EXT
                             16929,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
@@ -2334,7 +2316,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[128] = {// Время применения высокого пускового момента
+  modbusParameters_[127] = {// Время применения высокого пускового момента
                             VSD_HIGH_START_TORQUE_TIME,
                             30199,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -2352,7 +2334,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[129] = {// Пусковой ток в % от номинального
+  modbusParameters_[128] = {// Пусковой ток в % от номинального
                             VSD_HIGH_START_TORQUE_CURRENT,
                             30209,          // Адрес регистра в устройстве
                             OPERATION_WRITE, // Операции с параметром
@@ -2370,7 +2352,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[130] = {// Защита от блокировки ротора
+  modbusParameters_[129] = {// Защита от блокировки ротора
                             VSD_LOCK_ROTOR_PROTECTION,
                             30219,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -2388,7 +2370,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[131] = {// Время задержки аварии блокировки ротора
+  modbusParameters_[130] = {// Время задержки аварии блокировки ротора
                             VSD_LOCK_ROTOR_TIME,
                             30229,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -2406,7 +2388,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[132] = {// Катушка: 0-Ramp stop; 1-Ramp start
+  modbusParameters_[131] = {// Катушка: 0-Ramp stop; 1-Ramp start
                             VSD_ON,
                             6,              // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -2424,7 +2406,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[133] = {// Катушка: Jog
+  modbusParameters_[132] = {// Катушка: Jog
                             VSD_FLAG,
                             8,              // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -2442,7 +2424,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[134] = {// Задержка отключения при неисправности инвертера
+  modbusParameters_[133] = {// Задержка отключения при неисправности инвертера
                             VSD_TRIP_DELAY_AT_INVERTER_FAULT,
                             14259,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -2460,7 +2442,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[135] = {// Фиктивный регистр
+  modbusParameters_[134] = {// Фиктивный регистр
                            VSD_UF_CHARACTERISTIC_U_2, // Уникальный идентификатор параметра
                            1549,            // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2478,7 +2460,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[136] = {// Фиктивный регистр
+  modbusParameters_[135] = {// Фиктивный регистр
                            VSD_UF_CHARACTERISTIC_U_3, // Уникальный идентификатор параметра
                            1549,            // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2496,7 +2478,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[137] = {// Фиктивный регистр
+  modbusParameters_[136] = {// Фиктивный регистр
                            VSD_UF_CHARACTERISTIC_U_4, // Уникальный идентификатор параметра
                            1549,            // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2514,7 +2496,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[138] = {// Фиктивный регистр
+  modbusParameters_[137] = {// Фиктивный регистр
                            VSD_UF_CHARACTERISTIC_U_5, // Уникальный идентификатор параметра
                            1549,            // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2532,7 +2514,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[139] = {// Фиктивный регистр
+  modbusParameters_[138] = {// Фиктивный регистр
                            VSD_UF_CHARACTERISTIC_U_6, // Уникальный идентификатор параметра
                            1549,            // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2550,7 +2532,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[140] = {// Фиктивный регистр
+  modbusParameters_[139] = {// Фиктивный регистр
                            VSD_UF_CHARACTERISTIC_F_2,// Уникальный идентификатор параметра
                            1559,            // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2568,7 +2550,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[141] = {// Фиктивный регистр
+  modbusParameters_[140] = {// Фиктивный регистр
                            VSD_UF_CHARACTERISTIC_F_3,// Уникальный идентификатор параметра
                            1559,            // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2586,7 +2568,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[142] = {// Фиктивный регистр
+  modbusParameters_[141] = {// Фиктивный регистр
                            VSD_UF_CHARACTERISTIC_F_4,// Уникальный идентификатор параметра
                            1559,            // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2604,7 +2586,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[143] = {// Фиктивный регистр
+  modbusParameters_[142] = {// Фиктивный регистр
                            VSD_UF_CHARACTERISTIC_F_5,// Уникальный идентификатор параметра
                            1559,            // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2622,7 +2604,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[144] = {// Фиктивный регистр
+  modbusParameters_[143] = {// Фиктивный регистр
                            VSD_UF_CHARACTERISTIC_F_6,// Уникальный идентификатор параметра
                            1559,            // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2640,7 +2622,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[145] = {// Фиктивный реле функций
+  modbusParameters_[144] = {// Фиктивный реле функций
                            VSD_FUNCTION_RELE_1, // Уникальный идентификатор параметра
                            5399,            // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2658,7 +2640,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[146] = {// Фиктивный задержка включения реле
+  modbusParameters_[145] = {// Фиктивный задержка включения реле
                            VSD_ON_DELAY_RELAY_1,// Уникальный идентификатор параметра
                            5409,            // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2676,7 +2658,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            100              // Значение
                           };
-  modbusParameters_[147] = {// Фиктивный операнд сравнения компаратора
+  modbusParameters_[146] = {// Фиктивный операнд сравнения компаратора
                            VSD_SL_10_1,
                            13099,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2694,7 +2676,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[148] = {// Фиктивный операнд сравнения компаратора
+  modbusParameters_[147] = {// Фиктивный операнд сравнения компаратора
                            VSD_SL_10_2,
                            13099,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2712,7 +2694,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[149] = {// Фиктивный операнд сравнения компаратора
+  modbusParameters_[148] = {// Фиктивный операнд сравнения компаратора
                            VSD_SL_10_3,
                            13099,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2730,7 +2712,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[150] = {// Фиктивный операнд сравнения компаратора
+  modbusParameters_[149] = {// Фиктивный операнд сравнения компаратора
                            VSD_SL_10_4,
                            13099,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2748,7 +2730,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[151] = {// Фиктивный операнд сравнения компаратора
+  modbusParameters_[150] = {// Фиктивный операнд сравнения компаратора
                            VSD_SL_10_5,
                            13099,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2766,7 +2748,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[152] = {// Фиктивный оператор сравнения компаратора
+  modbusParameters_[151] = {// Фиктивный оператор сравнения компаратора
                            VSD_SL_11_1,
                            13109,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2784,7 +2766,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[153] = {// Фиктивный оператор сравнения компаратора
+  modbusParameters_[152] = {// Фиктивный оператор сравнения компаратора
                            VSD_SL_11_2,
                            13109,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2802,7 +2784,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[154] = {// Фиктивный оператор сравнения компаратора
+  modbusParameters_[153] = {// Фиктивный оператор сравнения компаратора
                            VSD_SL_11_3,
                            13109,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2820,7 +2802,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[155] = {// Фиктивный оператор сравнения компаратора
+  modbusParameters_[154] = {// Фиктивный оператор сравнения компаратора
                            VSD_SL_11_4,
                            13109,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2838,7 +2820,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[156] = {// Фиктивный оператор сравнения компаратора
+  modbusParameters_[155] = {// Фиктивный оператор сравнения компаратора
                            VSD_SL_11_5,
                            13109,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2856,7 +2838,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[157] = {// Фиктивный Значение компаратора
+  modbusParameters_[156] = {// Фиктивный Значение компаратора
                            VSD_SL_12_1,
                            13119,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2874,7 +2856,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[158] = {// Фиктивный Значение компаратора
+  modbusParameters_[157] = {// Фиктивный Значение компаратора
                            VSD_SL_12_2,
                            13119,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2892,7 +2874,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[159] = {// Фиктивный Значение компаратора
+  modbusParameters_[158] = {// Фиктивный Значение компаратора
                            VSD_SL_12_3,
                            13119,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2910,7 +2892,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[160] = {// Фиктивный Значение компаратора
+  modbusParameters_[159] = {// Фиктивный Значение компаратора
                            VSD_SL_12_4,
                            13119,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2928,7 +2910,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[161] = {// Фиктивный Значение компаратора
+  modbusParameters_[160] = {// Фиктивный Значение компаратора
                            VSD_SL_12_5,
                            13119,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2946,7 +2928,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[162] = {// Фиктивный Временная задержка
+  modbusParameters_[161] = {// Фиктивный Временная задержка
                            VSD_SL_20_1,
                            13199,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2964,7 +2946,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[163] = {// Фиктивный Временная задержка
+  modbusParameters_[162] = {// Фиктивный Временная задержка
                            VSD_SL_20_2,
                            13199,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -2982,7 +2964,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[164] = {// Фиктивный Временная задержка
+  modbusParameters_[163] = {// Фиктивный Временная задержка
                            VSD_SL_20_3,
                            13199,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3000,7 +2982,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[165] = {// Фиктивный Временная задержка
+  modbusParameters_[164] = {// Фиктивный Временная задержка
                            VSD_SL_20_4,
                            13199,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3018,7 +3000,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[166] = {// Фиктивный Временная задержка
+  modbusParameters_[165] = {// Фиктивный Временная задержка
                            VSD_SL_20_5,
                            13199,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3036,7 +3018,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[167] = {// Фиктивный Временная задержка
+  modbusParameters_[166] = {// Фиктивный Временная задержка
                            VSD_SL_20_6,
                            13199,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3054,7 +3036,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[168] = {// Фиктивный Временная задержка
+  modbusParameters_[167] = {// Фиктивный Временная задержка
                            VSD_SL_20_7,
                            13199,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3072,7 +3054,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[169] = {// Фиктивный булева переменная логического соотношения 1
+  modbusParameters_[168] = {// Фиктивный булева переменная логического соотношения 1
                            VSD_SL_40_1,
                            13399,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3090,7 +3072,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[170] = {// Фиктивный булева переменная логического соотношения 1
+  modbusParameters_[169] = {// Фиктивный булева переменная логического соотношения 1
                            VSD_SL_40_2,
                            13399,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3108,7 +3090,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[171] = {// Фиктивный булева переменная логического соотношения 1
+  modbusParameters_[170] = {// Фиктивный булева переменная логического соотношения 1
                            VSD_SL_40_3,
                            13399,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3126,7 +3108,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[172] = {// Фиктивный булева переменная логического соотношения 1
+  modbusParameters_[171] = {// Фиктивный булева переменная логического соотношения 1
                            VSD_SL_40_4,
                            13399,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3144,7 +3126,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[173] = {// Фиктивный булева переменная логического соотношения 1
+  modbusParameters_[172] = {// Фиктивный булева переменная логического соотношения 1
                            VSD_SL_40_5,
                            13399,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3162,7 +3144,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[174] = {// Фиктивный Оператор логического соотношения 1
+  modbusParameters_[173] = {// Фиктивный Оператор логического соотношения 1
                            VSD_SL_41_1,
                            13409,          // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3180,7 +3162,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[175] = {// Фиктивный Оператор логического соотношения 1
+  modbusParameters_[174] = {// Фиктивный Оператор логического соотношения 1
                            VSD_SL_41_2,
                            13409,          // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3198,7 +3180,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[176] = {// Фиктивный Оператор логического соотношения 1
+  modbusParameters_[175] = {// Фиктивный Оператор логического соотношения 1
                            VSD_SL_41_3,
                            13409,          // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3216,7 +3198,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[177] = {// Фиктивный Оператор логического соотношения 1
+  modbusParameters_[176] = {// Фиктивный Оператор логического соотношения 1
                            VSD_SL_41_4,
                            13409,          // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3234,7 +3216,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[178] = {// Фиктивный Оператор логического соотношения 1
+  modbusParameters_[177] = {// Фиктивный Оператор логического соотношения 1
                            VSD_SL_41_5,
                            13409,          // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3252,7 +3234,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[179] = {// Фиктивный Булева переменная логического соотношения 2
+  modbusParameters_[178] = {// Фиктивный Булева переменная логического соотношения 2
                            VSD_SL_42_1,
                            13419,          // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3270,7 +3252,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[180] = {// Фиктивный Булева переменная логического соотношения 2
+  modbusParameters_[179] = {// Фиктивный Булева переменная логического соотношения 2
                            VSD_SL_42_2,
                            13419,          // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3288,7 +3270,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[181] = {// Фиктивный Булева переменная логического соотношения 2
+  modbusParameters_[180] = {// Фиктивный Булева переменная логического соотношения 2
                            VSD_SL_42_3,
                            13419,          // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3306,7 +3288,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[182] = {// Фиктивный Булева переменная логического соотношения 2
+  modbusParameters_[181] = {// Фиктивный Булева переменная логического соотношения 2
                            VSD_SL_42_4,
                            13419,          // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3324,7 +3306,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[183] = {// Фиктивный Булева переменная логического соотношения 2
+  modbusParameters_[182] = {// Фиктивный Булева переменная логического соотношения 2
                            VSD_SL_42_5,
                            13419,          // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3342,7 +3324,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[184] = {// Фиктивный Событие контроллера SL
+  modbusParameters_[183] = {// Фиктивный Событие контроллера SL
                            VSD_SL_51_1,
                            13509,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3360,7 +3342,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                            };
-  modbusParameters_[185] = {// Фиктивный Событие контроллера SL
+  modbusParameters_[184] = {// Фиктивный Событие контроллера SL
                            VSD_SL_51_2,
                            13509,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3378,7 +3360,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                            };
-  modbusParameters_[186] = {// Фиктивный Событие контроллера SL
+  modbusParameters_[185] = {// Фиктивный Событие контроллера SL
                            VSD_SL_51_3,
                            13509,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3396,7 +3378,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                            };
-  modbusParameters_[187] = {// Фиктивный Событие контроллера SL
+  modbusParameters_[186] = {// Фиктивный Событие контроллера SL
                            VSD_SL_51_4,
                            13509,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3414,7 +3396,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                            };
-  modbusParameters_[188] = {// Фиктивный Событие контроллера SL
+  modbusParameters_[187] = {// Фиктивный Событие контроллера SL
                            VSD_SL_51_5,
                            13509,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3432,7 +3414,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                            };
-  modbusParameters_[189] = {// Фиктивный Действие контроллера SL
+  modbusParameters_[188] = {// Фиктивный Действие контроллера SL
                            VSD_SL_52_1,
                            13519,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3450,7 +3432,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                            };
-  modbusParameters_[190] = {// Фиктивный Действие контроллера SL
+  modbusParameters_[189] = {// Фиктивный Действие контроллера SL
                            VSD_SL_52_2,
                            13519,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3468,7 +3450,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                            };
-  modbusParameters_[191] = {// Фиктивный Действие контроллера SL
+  modbusParameters_[190] = {// Фиктивный Действие контроллера SL
                            VSD_SL_52_3,
                            13519,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3486,7 +3468,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                            };
-  modbusParameters_[192] = {// Фиктивный Действие контроллера SL
+  modbusParameters_[191] = {// Фиктивный Действие контроллера SL
                            VSD_SL_52_4,
                            13519,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3504,7 +3486,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                            };
-  modbusParameters_[193] = {// Фиктивный Действие контроллера SL
+  modbusParameters_[192] = {// Фиктивный Действие контроллера SL
                            VSD_SL_52_5,
                            13519,           // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
@@ -3522,7 +3504,7 @@ void VsdDanfoss::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                            };
-  modbusParameters_[194] = {// Фиктивный Сброс аварий
+  modbusParameters_[193] = {// Фиктивный Сброс аварий
                             VSD_FAIL_RESET_1,
                             14899,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -3540,7 +3522,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[195] = {// Фиктивный Сброс аварий
+  modbusParameters_[194] = {// Фиктивный Сброс аварий
                             VSD_FAIL_RESET_2,
                             14899,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -3558,7 +3540,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[196] = {// Фиктивный Сброс аварий
+  modbusParameters_[195] = {// Фиктивный Сброс аварий
                             VSD_FAIL_RESET_3,
                             14899,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -3576,7 +3558,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[197] = {// Фиктивный Сброс аварий
+  modbusParameters_[196] = {// Фиктивный Сброс аварий
                             VSD_FAIL_RESET_4,
                             14899,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -3594,7 +3576,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[198] = {// Фиктивный Сброс аварий
+  modbusParameters_[197] = {// Фиктивный Сброс аварий
                             VSD_FAIL_RESET_5,
                             14899,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -3612,7 +3594,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[199] = {// Фиктивный Сброс аварий
+  modbusParameters_[198] = {// Фиктивный Сброс аварий
                             VSD_FAIL_RESET_6,
                             14899,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -3630,7 +3612,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[200] = {// Фиктивный Сброс аварий
+  modbusParameters_[199] = {// Фиктивный Сброс аварий
                             VSD_FAIL_RESET_7,
                             14899,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -3648,7 +3630,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[201] = {// Фиктивный Сброс аварий
+  modbusParameters_[200] = {// Фиктивный Сброс аварий
                             VSD_FAIL_RESET_8,
                             14899,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -3666,7 +3648,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[202] = {// Фиктивный Сброс аварий
+  modbusParameters_[201] = {// Фиктивный Сброс аварий
                             VSD_FAIL_RESET_9,
                             14899,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -3684,7 +3666,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[203] = {// Фиктивный Сброс аварий
+  modbusParameters_[202] = {// Фиктивный Сброс аварий
                             VSD_FAIL_RESET_10,
                             14899,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -3702,7 +3684,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[204] = {// Фиктивный Сброс аварий
+  modbusParameters_[203] = {// Фиктивный Сброс аварий
                             VSD_FAIL_RESET_11,
                             14899,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -3720,7 +3702,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[205] = {// Фиктивный Сброс аварий
+  modbusParameters_[204] = {// Фиктивный Сброс аварий
                             VSD_FAIL_RESET_12,
                             14899,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -3738,7 +3720,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[206] = {// Фиктивный Сброс аварий
+  modbusParameters_[205] = {// Фиктивный Сброс аварий
                             VSD_FAIL_RESET_13,
                             14899,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -3756,7 +3738,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[207] = {// Фиктивный Сброс аварий
+  modbusParameters_[206] = {// Фиктивный Сброс аварий
                             VSD_FAIL_RESET_14,
                             14899,          // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -3774,7 +3756,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[208] = {// Активный набор
+  modbusParameters_[207] = {// Активный набор
                             VSD_ACTIVE_SETUP,
                             99,             // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -3792,7 +3774,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[209] = {// Изменяемый набор
+  modbusParameters_[208] = {// Изменяемый набор
                             VSD_CHANGE_SETUP,
                             109,             // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -3810,7 +3792,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[210] = {// Связанный набор
+  modbusParameters_[209] = {// Связанный набор
                             VSD_LINK_SETUP,
                             119,            // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -3828,7 +3810,7 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
-  modbusParameters_[211] = {// Разрешенные направления вращения двигателя
+  modbusParameters_[210] = {// Разрешенные направления вращения двигателя
                             VSD_ROTATION_FLAG,
                             4099,           // Адрес регистра в устройстве
                             OPERATION_WRITE,// Операции с параметром
@@ -3842,6 +3824,276 @@ void VsdDanfoss::initModbusParameters()
                             2,              // Считываемое значение "по умолчанию"
                             OFTEN,          // Частота опроса параметра
                             OFTEN,          // Количество запросов к параметру
+                            OPERATION_ERROR,// Команда
+                            VALIDITY_ERROR, // Поле состояния параметра
+                            0               // Значение
+                           };
+  modbusParameters_[211] = {// Версия ПО ЧРП Danfoss 15-43 (1)
+                            VSD_SOFT_VERSION_1,
+                            15429,          // Адрес регистра в устройстве
+                            OPERATION_READ, // Операции с параметром
+                            PHYSIC_NUMERIC, // Физическая величина параметра
+                            NUMERIC_NUMBER, // Единицы измерения параметра
+                            TYPE_DATA_STR,  // Тип данных
+                            5,              // Индекс
+                            1,              // Коэффициент преобразования параметра
+                            0,              // Минимальное значение параметра
+                            65535,          // Максимально значение параметра
+                            0,              // Считываемое значение "по умолчанию"
+                            OFTEN,          // Частота опроса параметра
+                            OFTEN,          // Количество запросов к параметру
+                            OPERATION_ERROR,// Команда
+                            VALIDITY_ERROR, // Поле состояния параметра
+                            0               // Значение
+                           };
+  modbusParameters_[212] = {// Версия ПО ЧРП Danfoss 15-43 (2)
+                            VSD_SOFT_VERSION_2,
+                            15429,          // Адрес регистра в устройстве
+                            OPERATION_READ, // Операции с параметром
+                            PHYSIC_NUMERIC, // Физическая величина параметра
+                            NUMERIC_NUMBER, // Единицы измерения параметра
+                            TYPE_DATA_STR,  // Тип данных
+                            5,              // Индекс
+                            1,              // Коэффициент преобразования параметра
+                            0,              // Минимальное значение параметра
+                            65535,          // Максимально значение параметра
+                            0,              // Считываемое значение "по умолчанию"
+                            NOT_READ,       // Частота опроса параметра
+                            NOT_READ,       // Количество запросов к параметру
+                            OPERATION_ERROR,// Команда
+                            VALIDITY_ERROR, // Поле состояния параметра
+                            0               // Значение
+                           };
+  modbusParameters_[213] = {// Версия ПО ЧРП Danfoss 15-43 (3)
+                            VSD_SOFT_VERSION_3,
+                            15429,          // Адрес регистра в устройстве
+                            OPERATION_READ, // Операции с параметром
+                            PHYSIC_NUMERIC, // Физическая величина параметра
+                            NUMERIC_NUMBER, // Единицы измерения параметра
+                            TYPE_DATA_STR,  // Тип данных
+                            5,              // Индекс
+                            1,              // Коэффициент преобразования параметра
+                            0,              // Минимальное значение параметра
+                            65535,          // Максимально значение параметра
+                            0,              // Считываемое значение "по умолчанию"
+                            NOT_READ,       // Частота опроса параметра
+                            NOT_READ,       // Количество запросов к параметру
+                            OPERATION_ERROR,// Команда
+                            VALIDITY_ERROR, // Поле состояния параметра
+                            0               // Значение
+                           };
+  modbusParameters_[214] = {// Версия ПО ЧРП Danfoss 15-43 (4)
+                            VSD_SOFT_VERSION_4,
+                            15429,          // Адрес регистра в устройстве
+                            OPERATION_READ, // Операции с параметром
+                            PHYSIC_NUMERIC, // Физическая величина параметра
+                            NUMERIC_NUMBER, // Единицы измерения параметра
+                            TYPE_DATA_STR,  // Тип данных
+                            5,              // Индекс
+                            1,              // Коэффициент преобразования параметра
+                            0,              // Минимальное значение параметра
+                            65535,          // Максимально значение параметра
+                            0,              // Считываемое значение "по умолчанию"
+                            NOT_READ,       // Частота опроса параметра
+                            NOT_READ,       // Количество запросов к параметру
+                            OPERATION_ERROR,// Команда
+                            VALIDITY_ERROR, // Поле состояния параметра
+                            0               // Значение
+                           };
+  modbusParameters_[215] = {// Версия ПО ЧРП Danfoss 15-43 (5)
+                            VSD_SOFT_VERSION_5,
+                            15429,          // Адрес регистра в устройстве
+                            OPERATION_READ, // Операции с параметром
+                            PHYSIC_NUMERIC, // Физическая величина параметра
+                            NUMERIC_NUMBER, // Единицы измерения параметра
+                            TYPE_DATA_STR,  // Тип данных
+                            5,              // Индекс
+                            1,              // Коэффициент преобразования параметра
+                            0,              // Минимальное значение параметра
+                            65535,          // Максимально значение параметра
+                            0,              // Считываемое значение "по умолчанию"
+                            NOT_READ,       // Частота опроса параметра
+                            NOT_READ,       // Количество запросов к параметру
+                            OPERATION_ERROR,// Команда
+                            VALIDITY_ERROR, // Поле состояния параметра
+                            0               // Значение
+                           };
+  modbusParameters_[216] = {// Силовая часть ЧРП Danfoss 15-41 (1)
+                            VSD_POWER_SECTION_1,
+                            15409,          // Адрес регистра в устройстве
+                            OPERATION_READ, // Операции с параметром
+                            PHYSIC_NUMERIC, // Физическая величина параметра
+                            NUMERIC_NUMBER, // Единицы измерения параметра
+                            TYPE_DATA_STR,  // Тип данных
+                            10,             // Индекс
+                            1,              // Коэффициент преобразования параметра
+                            0,              // Минимальное значение параметра
+                            65535,          // Максимально значение параметра
+                            0,              // Считываемое значение "по умолчанию"
+                            OFTEN,          // Частота опроса параметра
+                            OFTEN,          // Количество запросов к параметру
+                            OPERATION_ERROR,// Команда
+                            VALIDITY_ERROR, // Поле состояния параметра
+                            0               // Значение
+                           };
+  modbusParameters_[217] = {// Силовая часть ЧРП Danfoss 15-41 (2)
+                            VSD_POWER_SECTION_2,
+                            15409,          // Адрес регистра в устройстве
+                            OPERATION_READ, // Операции с параметром
+                            PHYSIC_NUMERIC, // Физическая величина параметра
+                            NUMERIC_NUMBER, // Единицы измерения параметра
+                            TYPE_DATA_STR,  // Тип данных
+                            10,             // Индекс
+                            1,              // Коэффициент преобразования параметра
+                            0,              // Минимальное значение параметра
+                            65535,          // Максимально значение параметра
+                            0,              // Считываемое значение "по умолчанию"
+                            NOT_READ,       // Частота опроса параметра
+                            NOT_READ,       // Количество запросов к параметру
+                            OPERATION_ERROR,// Команда
+                            VALIDITY_ERROR, // Поле состояния параметра
+                            0               // Значение
+                           };
+  modbusParameters_[218] = {// Силовая часть ЧРП Danfoss 15-41 (3)
+                            VSD_POWER_SECTION_3,
+                            15409,          // Адрес регистра в устройстве
+                            OPERATION_READ, // Операции с параметром
+                            PHYSIC_NUMERIC, // Физическая величина параметра
+                            NUMERIC_NUMBER, // Единицы измерения параметра
+                            TYPE_DATA_STR,  // Тип данных
+                            10,             // Индекс
+                            1,              // Коэффициент преобразования параметра
+                            0,              // Минимальное значение параметра
+                            65535,          // Максимально значение параметра
+                            0,              // Считываемое значение "по умолчанию"
+                            NOT_READ,       // Частота опроса параметра
+                            NOT_READ,       // Количество запросов к параметру
+                            OPERATION_ERROR,// Команда
+                            VALIDITY_ERROR, // Поле состояния параметра
+                            0               // Значение
+                           };
+  modbusParameters_[219] = {// Силовая часть ЧРП Danfoss 15-41 (4)
+                            VSD_POWER_SECTION_4,
+                            15409,          // Адрес регистра в устройстве
+                            OPERATION_READ, // Операции с параметром
+                            PHYSIC_NUMERIC, // Физическая величина параметра
+                            NUMERIC_NUMBER, // Единицы измерения параметра
+                            TYPE_DATA_STR,  // Тип данных
+                            10,             // Индекс
+                            1,              // Коэффициент преобразования параметра
+                            0,              // Минимальное значение параметра
+                            65535,          // Максимально значение параметра
+                            0,              // Считываемое значение "по умолчанию"
+                            NOT_READ,       // Частота опроса параметра
+                            NOT_READ,       // Количество запросов к параметру
+                            OPERATION_ERROR,// Команда
+                            VALIDITY_ERROR, // Поле состояния параметра
+                            0               // Значение
+                           };
+  modbusParameters_[220] = {// Силовая часть ЧРП Danfoss 15-41 (5)
+                            VSD_POWER_SECTION_5,
+                            15409,          // Адрес регистра в устройстве
+                            OPERATION_READ, // Операции с параметром
+                            PHYSIC_NUMERIC, // Физическая величина параметра
+                            NUMERIC_NUMBER, // Единицы измерения параметра
+                            TYPE_DATA_STR,  // Тип данных
+                            10,             // Индекс
+                            1,              // Коэффициент преобразования параметра
+                            0,              // Минимальное значение параметра
+                            65535,          // Максимально значение параметра
+                            0,              // Считываемое значение "по умолчанию"
+                            NOT_READ,       // Частота опроса параметра
+                            NOT_READ,       // Количество запросов к параметру
+                            OPERATION_ERROR,// Команда
+                            VALIDITY_ERROR, // Поле состояния параметра
+                            0               // Значение
+                           };
+  modbusParameters_[221] = {// Силовая часть ЧРП Danfoss 15-41 (6)
+                            VSD_POWER_SECTION_6,
+                            15409,          // Адрес регистра в устройстве
+                            OPERATION_READ, // Операции с параметром
+                            PHYSIC_NUMERIC, // Физическая величина параметра
+                            NUMERIC_NUMBER, // Единицы измерения параметра
+                            TYPE_DATA_STR,  // Тип данных
+                            10,             // Индекс
+                            1,              // Коэффициент преобразования параметра
+                            0,              // Минимальное значение параметра
+                            65535,          // Максимально значение параметра
+                            0,              // Считываемое значение "по умолчанию"
+                            NOT_READ,       // Частота опроса параметра
+                            NOT_READ,       // Количество запросов к параметру
+                            OPERATION_ERROR,// Команда
+                            VALIDITY_ERROR, // Поле состояния параметра
+                            0               // Значение
+                           };
+  modbusParameters_[222] = {// Силовая часть ЧРП Danfoss 15-41 (7)
+                            VSD_POWER_SECTION_7,
+                            15409,          // Адрес регистра в устройстве
+                            OPERATION_READ, // Операции с параметром
+                            PHYSIC_NUMERIC, // Физическая величина параметра
+                            NUMERIC_NUMBER, // Единицы измерения параметра
+                            TYPE_DATA_STR,  // Тип данных
+                            10,             // Индекс
+                            1,              // Коэффициент преобразования параметра
+                            0,              // Минимальное значение параметра
+                            65535,          // Максимально значение параметра
+                            0,              // Считываемое значение "по умолчанию"
+                            NOT_READ,       // Частота опроса параметра
+                            NOT_READ,       // Количество запросов к параметру
+                            OPERATION_ERROR,// Команда
+                            VALIDITY_ERROR, // Поле состояния параметра
+                            0               // Значение
+                           };
+  modbusParameters_[223] = {// Силовая часть ЧРП Danfoss 15-41 (8)
+                            VSD_POWER_SECTION_8,
+                            15409,          // Адрес регистра в устройстве
+                            OPERATION_READ, // Операции с параметром
+                            PHYSIC_NUMERIC, // Физическая величина параметра
+                            NUMERIC_NUMBER, // Единицы измерения параметра
+                            TYPE_DATA_STR,  // Тип данных
+                            10,             // Индекс
+                            1,              // Коэффициент преобразования параметра
+                            0,              // Минимальное значение параметра
+                            65535,          // Максимально значение параметра
+                            0,              // Считываемое значение "по умолчанию"
+                            NOT_READ,       // Частота опроса параметра
+                            NOT_READ,       // Количество запросов к параметру
+                            OPERATION_ERROR,// Команда
+                            VALIDITY_ERROR, // Поле состояния параметра
+                            0               // Значение
+                           };
+  modbusParameters_[224] = {// Силовая часть ЧРП Danfoss 15-41 (9)
+                            VSD_POWER_SECTION_9,
+                            15409,          // Адрес регистра в устройстве
+                            OPERATION_READ, // Операции с параметром
+                            PHYSIC_NUMERIC, // Физическая величина параметра
+                            NUMERIC_NUMBER, // Единицы измерения параметра
+                            TYPE_DATA_STR,  // Тип данных
+                            10,             // Индекс
+                            1,              // Коэффициент преобразования параметра
+                            0,              // Минимальное значение параметра
+                            65535,          // Максимально значение параметра
+                            0,              // Считываемое значение "по умолчанию"
+                            NOT_READ,       // Частота опроса параметра
+                            NOT_READ,       // Количество запросов к параметру
+                            OPERATION_ERROR,// Команда
+                            VALIDITY_ERROR, // Поле состояния параметра
+                            0               // Значение
+                           };
+  modbusParameters_[225] = {// Силовая часть ЧРП Danfoss 15-41 (10)
+                            VSD_POWER_SECTION_10,
+                            15409,          // Адрес регистра в устройстве
+                            OPERATION_READ, // Операции с параметром
+                            PHYSIC_NUMERIC, // Физическая величина параметра
+                            NUMERIC_NUMBER, // Единицы измерения параметра
+                            TYPE_DATA_STR,  // Тип данных
+                            10,             // Индекс
+                            1,              // Коэффициент преобразования параметра
+                            0,              // Минимальное значение параметра
+                            65535,          // Максимально значение параметра
+                            0,              // Считываемое значение "по умолчанию"
+                            NOT_READ,       // Частота опроса параметра
+                            NOT_READ,       // Количество запросов к параметру
                             OPERATION_ERROR,// Команда
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение

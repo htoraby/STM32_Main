@@ -392,6 +392,9 @@ void DeviceModbus::exchangeTask()
         case TYPE_DATA_ARRAY_INT32:
           readArrayInt32Registers(devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].index, uint32Arr_, count);
           break;
+        case TYPE_DATA_STR:
+          readStrRegisters(devAdrs_, mbParams_[outOfTurn].address, uint16Arr_, mbParams_[outOfTurn].index);
+          break;
         default:
           break;
         }
@@ -710,6 +713,37 @@ void DeviceModbus::readArrayInt32Registers(uint8_t slaveAddr, uint16_t startRef,
   else {
     if (isConnect())
       logDebug.add(WarningMsg, "mbCmd0x06 Set Index Array %d", indexArray);
+  }
+}
+
+void DeviceModbus::readStrRegisters(uint8_t slaveAddr, uint16_t startRef, uint16_t *regArr, uint16_t refCnt)
+{
+  uint8_t res = mms_->readMultipleRegisters(slaveAddr, startRef, regArr, refCnt);
+  int index = getIndexAtAddress(startRef, TYPE_DATA_STR, refCnt);
+  if (res == ok_r) {
+    for (int i = 0; i < refCnt; i++) {
+      mbParams_[index].value.uint16_t[0] = regArr[i];
+      uint8_t validity = checkRange(mbParams_[index].value.uint16_t[0], mbParams_[index].min, mbParams_[index].max, true);
+      if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
+        logDebug.add(WarningMsg, "DeviceModbus. Error validity str, port:%d slaveAddr:%d command:0x03 startRef:%d value:%d min:%f max:%f validity:%d",
+                     numPort_, slaveAddr, startRef, mbParams_[index].value.uint16_t[0], mbParams_[index].min, mbParams_[index].max, mbParams_[index].validity);
+      }
+      mbParams_[index].validity = validity;
+
+      putMessageUpdateId(mbParams_[index].id);
+      index++;
+    }
+  }
+  else {
+    for (int i = 0; i < refCnt; i++) {
+      mbParams_[index].validity = err_r;
+      if (isConnect()) {
+        logDebug.add(WarningMsg, "DeviceModbus. Error read str register, port:%d slaveAddr:%d command:0x03 startRef:%d",
+                     numPort_, slaveAddr, startRef);
+      }
+      putMessageUpdateId(mbParams_[index].id);
+      index++;
+    }
   }
 }
 
