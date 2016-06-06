@@ -1448,6 +1448,7 @@ void VsdDanfoss::getNewValue(uint16_t id)
     value = (float)param->value.int16_t[0];
     break;
   case TYPE_DATA_UINT16:
+  case TYPE_DATA_STR:
     value = (float)param->value.uint16_t[0];
     break;
   case TYPE_DATA_INT32:

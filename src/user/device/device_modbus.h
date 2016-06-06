@@ -377,6 +377,15 @@ private:
   void readArrayInt32Registers(uint8_t slaveAddr, uint16_t startRef, uint8_t indexArray, uint32_t *int32Arr, uint16_t refCnt);
 
   /*!
+   * \brief readStrRegisters
+   * \param slaveAddr
+   * \param startRef
+   * \param regArr
+   * \param refCnt
+   */
+  void readStrRegisters(uint8_t slaveAddr, uint16_t startRef, uint16_t *regArr, uint16_t refCnt);
+
+  /*!
    * \brief writeCoil
    * \param slaveAddr
    * \param bitAddr
