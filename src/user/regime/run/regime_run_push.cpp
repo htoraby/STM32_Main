@@ -10,6 +10,18 @@ RegimeRunPush::~RegimeRunPush()
 
 }
 
+void RegimeRunPush::processing()
+{
+
+}
+
+void RegimeRunPush::processingStateIdle()
+{
+  if (action_) {
+    if (ksu.getValue(CCS_CONDITION) == CCS_)
+  }
+}
+
 void RegimeRunPush::processingStateRunning()
 {
 

@@ -142,7 +142,7 @@ public:
   int setMotorPower(float value);
   int setMotorCurrent(float value);
   int setMotorVoltage(float value);
-  int setCurrentLim(float value);
+  int setCurrentLim(float curLimit, float nomCurMtr, float coefTrans);
   void setMotorConfig();
   int setSumInduct(float value);
 
