@@ -531,6 +531,13 @@ float Ccs::calcTransRecommendedTapOff()
 void Ccs::calcResistanceIsolation()
 {
   float resIso = 9999;
+  if ((parameters.get(CCS_DHS_TYPE) != TYPE_DHS_NONE) &&
+      parameters.isValidity(TMS_RESISTANCE_ISOLATION)) {
+    resIso = parameters.get(TMS_RESISTANCE_ISOLATION);
+    parameters.set(CCS_RESISTANCE_ISOLATION, applyCoef(resIso, parameters.get(CCS_COEF_RESISTANCE_ISOLATION)));
+    return;
+  }
+
   if (parameters.get(CCS_TYPE_VSD) == VSD_TYPE_ETALON) {
     resIso = parameters.get(VSD_ETALON_RESISTANCE_ISOLATION);
     parameters.set(CCS_RESISTANCE_ISOLATION, applyCoef(resIso, parameters.get(CCS_COEF_RESISTANCE_ISOLATION)));
