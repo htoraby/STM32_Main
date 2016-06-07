@@ -400,8 +400,6 @@ public:
 
   int setUfU(uint16_t id, float value);
 
-
-
   /*! Читаемые параметры ЧРП */
   /*!
    * \brief Метод получения текущего значения частоты из массива параметров
@@ -461,6 +459,8 @@ public:
   virtual bool isSetPointFreq();
 
   virtual int resetBlock();
+
+  virtual bool isControl();
 
   virtual float checkAlarmVsd();
   virtual bool checkPreventVsd();
@@ -564,6 +564,7 @@ public:
   virtual void writeToDevice(int id, float value);
 
   VsdLog *log() const { return log_; }
+
 
 protected:
   VsdLog *log_;

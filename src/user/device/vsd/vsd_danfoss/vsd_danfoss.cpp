@@ -233,57 +233,6 @@ int VsdDanfoss::setSumInduct(float value)
   return ok_r;
 }
 
-int VsdDanfoss::onRegimePush()
-{
-  /*
-  if (parameters.get(CCS_RGM_RUN_PUSH_MODE) == Regime::OffAction)
-    return 1;
-  float freqPush = parameters.get(CCS_RGM_RUN_PUSH_FREQ);
-
-  // Задание Набора 2
-  writeToDevice(VSD_CHANGE_SETUP, 2);
-  writeToDevice(VSD_FREQUENCY, freqPush);
-
-  // Задание Набора 3
-  writeToDevice(VSD_CHANGE_SETUP, 3);
-  writeToDevice(VSD_FREQUENCY, freqPush);
-
-  if (freqPush > parameters.get(VSD_UF_CHARACTERISTIC_F_1)) {
-    if (freqPush > parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
-      if (freqPush > parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
-        if (freqPush > parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
-          if (freqPush > parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
-            writeToDevice(VSD_UF_CHARACTERISTIC_U_5, parameters.get(VSD_UF_CHARACTERISTIC_U_5) * (parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) / 100.0));
-            writeToDevice(VSD_UF_CHARACTERISTIC_U_6, parameters.get(VSD_UF_CHARACTERISTIC_U_6) * (parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) / 100.0));
-          }
-          else {
-            writeToDevice(VSD_UF_CHARACTERISTIC_U_4, parameters.get(VSD_UF_CHARACTERISTIC_U_4) * (parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) / 100.0));
-            writeToDevice(VSD_UF_CHARACTERISTIC_U_5, parameters.get(VSD_UF_CHARACTERISTIC_U_5) * (parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) / 100.0));
-          }
-        }
-        else {
-          writeToDevice(VSD_UF_CHARACTERISTIC_U_3, parameters.get(VSD_UF_CHARACTERISTIC_U_3) * (parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) / 100.0));
-          writeToDevice(VSD_UF_CHARACTERISTIC_U_4, parameters.get(VSD_UF_CHARACTERISTIC_U_4) * (parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) / 100.0));
-        }
-      }
-      else {
-        writeToDevice(VSD_UF_CHARACTERISTIC_U_2, parameters.get(VSD_UF_CHARACTERISTIC_U_2) * (parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) / 100.0));
-        writeToDevice(VSD_UF_CHARACTERISTIC_U_3, parameters.get(VSD_UF_CHARACTERISTIC_U_3) * (parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) / 100.0));
-      }
-    }
-    else {
-      writeToDevice(VSD_UF_CHARACTERISTIC_U_1, parameters.get(VSD_UF_CHARACTERISTIC_U_1) * (parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) / 100.0));
-      writeToDevice(VSD_UF_CHARACTERISTIC_U_2, parameters.get(VSD_UF_CHARACTERISTIC_U_2) * (parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) / 100.0));
-    }
-  }
-  else {
-    writeToDevice(VSD_UF_CHARACTERISTIC_U_1, parameters.get(VSD_UF_CHARACTERISTIC_U_1) * (parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) / 100.0));
-  }
-  */
-  return err_r;
-}
-
-
 int VsdDanfoss::setVsdControl(float value)
 {
 
@@ -1270,7 +1219,14 @@ bool VsdDanfoss::checkStop()
 
 bool VsdDanfoss::isSetPointFreq()
 {
-  if(checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_SPEED))
+  if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_SPEED))
+    return true;
+  return false;
+}
+
+bool VsdDanfoss::isControl()
+{
+  if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_BUS_CONTROL))
     return true;
   return false;
 }

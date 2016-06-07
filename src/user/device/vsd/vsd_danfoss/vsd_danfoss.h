@@ -146,9 +146,6 @@ public:
   void setMotorConfig();
   int setSumInduct(float value);
 
-  // РЕЖИМЫ ПУСКА
-  int onRegimePush();
-
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
   int setVsdControl(float value);
   int setRotation(float value);  
@@ -214,6 +211,7 @@ public:
   void getConnect();
   void resetConnect();
 
+  bool isControl();
 private:
   ModbusParameter modbusParameters_[226];
   DeviceModbus *dm_;

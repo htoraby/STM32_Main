@@ -665,6 +665,11 @@ bool Vsd::checkStop()
   return 0;
 }
 
+bool Vsd::isControl()
+{
+  return false;
+}
+
 bool Vsd::isSetPointFreq()
 {
   return true;
