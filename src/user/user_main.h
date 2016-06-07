@@ -12,6 +12,7 @@
 #include "tms_elekton_3.h"
 #include "em_set.h"
 #include "scada_region_3_0.h"
+#include "scada_novomet.h"
 #include "parameters.h"
 #include "novobus_slave.h"
 

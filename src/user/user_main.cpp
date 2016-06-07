@@ -129,6 +129,9 @@ void createScada()
   case Scada::Region30Type:
     scada = new ScadaRegion30();
     break;
+  case Scada::NovometType:
+    scada = new ScadaNovomet();
+    break;
   default:
     break;
   }
