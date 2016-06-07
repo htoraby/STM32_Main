@@ -442,10 +442,6 @@ void TmsNovomet::getNewValue(uint16_t id)
   value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
 
   switch (id) {
-  case TMS_RESISTANCE_ISOLATION:
-    setValue(TMS_RESISTANCE_ISOLATION, value);
-    parameters.set(CCS_RESISTANCE_ISOLATION, value);
-    break;
   default:
     setValue(id, value);
     break;

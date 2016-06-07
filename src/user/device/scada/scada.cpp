@@ -3,9 +3,9 @@
 #include "string.h"
 
 #if USE_EXT_MEM
-static ScadaParameter scadaParameters[1000] __attribute__((section(".extmem")));
+static ScadaParameter scadaParameters[1500] __attribute__((section(".extmem")));
 #else
-static ScadaParameter scadaParameters[1000];
+static ScadaParameter scadaParameters[1500];
 #endif
 
 static void scadaTask(void *p)
