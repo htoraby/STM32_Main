@@ -110,14 +110,15 @@ int VsdDanfoss::setMotorSpeed(float value)
 
 int VsdDanfoss::setMotorPower(float value)
 {
-  if (Vsd::setMotorPower(value)) {
-    logDebug.add(WarningMsg, "VsdDanfoss::setMotorPower");
-    return err_r;
+  if (!Vsd::setMotorPower(value)) {
+    // writeToDevice(VSD_MOTOR_POWER, parameters.get(VSD_MOTOR_POWER));
+    // TODO: Автоадаптация
+    setMotorConfig();
+    return ok_r;
   }
   else {
-    writeToDevice(VSD_MOTOR_POWER, parameters.get(VSD_MOTOR_POWER));
-    // TODO: Автоадаптация
-    return ok_r;
+    logDebug.add(WarningMsg, "VsdDanfoss::setMotorPower");
+    return err_r;
   }
 }
 
@@ -125,7 +126,8 @@ int VsdDanfoss::setMotorCurrent(float value)
 {
   if (!Vsd::setMotorCurrent(value)) {
     value = value * parameters.get(CCS_COEF_TRANSFORMATION);
-    writeToDevice(VSD_MOTOR_CURRENT, value);
+    // writeToDevice(VSD_MOTOR_CURRENT, value);
+    setMotorConfig();
     return ok_r;
   }
   else {
@@ -139,6 +141,7 @@ int VsdDanfoss::setMotorVoltage(float value)
   if (!Vsd::setMotorVoltage(value)) {
     value = value / parameters.get(CCS_COEF_TRANSFORMATION);
     writeToDevice(VSD_MOTOR_VOLTAGE, value);
+    setMotorConfig();
     return ok_r;
   }
   else {
@@ -147,14 +150,12 @@ int VsdDanfoss::setMotorVoltage(float value)
   }
 }
 
-int VsdDanfoss::setCurrentLim(float value)
+int VsdDanfoss::setCurrentLim(float curLimit, float nomCurMtr, float coefTrans)
 {
   //! Номинальный ток станции или мощность ЧРП
   float nomCurVsd = 160;
   float maxCurrent = 194;
-  float curLimit = nomCurVsd;
-  float nomCurMtr = parameters.checkZero(VSD_MOTOR_CURRENT, false);
-  float coefTrans = parameters.checkZero(CCS_COEF_TRANSFORMATION, false);
+  float value;
   switch ((int)nomCurVsd) {
   case 160: maxCurrent = 194; break;
   case 250: maxCurrent = 285; break;
@@ -163,12 +164,12 @@ int VsdDanfoss::setCurrentLim(float value)
   case 800: maxCurrent = 879; break;
   default:  maxCurrent = 194; break;
   }
-  curLimit = (maxCurrent / (nomCurMtr * coefTrans)) * 100;
-  if (curLimit > value) {
-    curLimit = value;
+  value = (maxCurrent / (nomCurMtr * coefTrans)) * 100;
+  if (value > curLimit) {
+    value = curLimit;
   }
-  if (!Vsd::setCurrentLim(curLimit)) {
-    writeToDevice(VSD_CURRENT_LIMIT, curLimit);
+  if (!Vsd::setCurrentLim(value)) {
+    writeToDevice(VSD_CURRENT_LIMIT, value);
     return ok_r;
   }
   else {
@@ -183,34 +184,36 @@ void VsdDanfoss::setMotorConfig()
    * других настроек самим ЧРП.
    * Запись настроек должна вестись в строгом опредленном порядке
    */
+  float pwrMtr = parameters.get(VSD_MOTOR_POWER);
+  float freqMtr = parameters.get(VSD_MOTOR_FREQUENCY);
+  float curMtr = parameters.get(VSD_MOTOR_CURRENT);
+  float coefTrans = parameters.get(CCS_COEF_TRANSFORMATION);
+  float rpmMtr = parameters.get(VSD_MOTOR_SPEED);
+  float plsMtr = parameters.get(VSD_MOTOR_POLES);
+  float limMtr = parameters.get(CCS_VSD_CURRENT_LIMIT);
+  float emfMtr = parameters.get(VSD_BACK_EMF);
+  float highMtr = parameters.get(VSD_HIGH_LIM_SPEED_MOTOR);
   //! Номинальный ток станции
   //! 1-20 Номинальная мощность двигателя
-  writeToDevice(VSD_MOTOR_POWER, parameters.get(VSD_MOTOR_POWER));
+  writeToDevice(VSD_MOTOR_POWER, pwrMtr);
   //! 1-23 Номинальная частота двигателя
-  writeToDevice(VSD_MOTOR_FREQUENCY, parameters.get(VSD_MOTOR_FREQUENCY));
+  writeToDevice(VSD_MOTOR_FREQUENCY, freqMtr);
   //! 1-24 Номинальный ток двигателя
-  writeToDevice(VSD_MOTOR_CURRENT, parameters.get(VSD_MOTOR_CURRENT) * parameters.get(CCS_COEF_TRANSFORMATION));
+  writeToDevice(VSD_MOTOR_CURRENT, curMtr * coefTrans);
   //! 1-25 Номинальная скорость
-  writeToDevice(VSD_MOTOR_SPEED, parameters.get(VSD_MOTOR_SPEED));
+  writeToDevice(VSD_MOTOR_SPEED, rpmMtr);
   //! 1-39 Количество пар полюсов
   writeToDevice(VSD_MOTOR_POLES, parameters.get(VSD_MOTOR_POLES));
   //! 4-18 Предел тока двигателя
-  setCurrentLim(parameters.get(CCS_VSD_CURRENT_LIMIT));
+  setCurrentLim(limMtr, curMtr, coefTrans);
   //! 13-12.2
-  writeToDevice(VSD_SL_12, parameters.get(VSD_MOTOR_CURRENT)
-                         * parameters.get(CCS_COEF_TRANSFORMATION)
-                         * parameters.get(VSD_MOTOR_POLES)
-                         * 0.95 / 100);
+  writeToDevice(VSD_SL_12, curMtr * coefTrans * plsMtr * 0.95 / 100);
   //! 12-60
-  writeToDevice(VSD_RATE_TORQUE_MOTOR, parameters.get(VSD_MOTOR_POWER)
-                                     / parameters.checkZero(VSD_MOTOR_SPEED, false)
-                                     * 9550);
+  writeToDevice(VSD_RATE_TORQUE_MOTOR, pwrMtr / rpmMtr * 9550);
   //! 14-00
-  writeToDevice(VSD_BACK_EMF, parameters.get(VSD_BACK_EMF)
-                            / parameters.checkZero(CCS_COEF_TRANSFORMATION, false)
-                            * 1000);
+  writeToDevice(VSD_BACK_EMF, emfMtr / coefTrans * 1000);
   //! 4-14
-  setMaxFrequency(parameters.get(VSD_HIGH_LIM_SPEED_MOTOR));
+  setMaxFrequency(highMtr);
   //! Настройка u/f
   setUf();
   //! 30-80 Индуктивность по оси d
@@ -1554,9 +1557,8 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value, EventType eventType)
       return ok_r;
     }
     return err_r;
-
-  case VSD_MOTOR_CURRENT:
-    return setMotorCurrent(value);
+  case VSD_MOTOR_POWER:
+    return setMotorPower(value);
 
   case VSD_MOTOR_VOLTAGE:
     if (!setMotorVoltage(value)) {
@@ -1566,6 +1568,9 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value, EventType eventType)
     }
     else
       return err_r;
+
+  case VSD_MOTOR_CURRENT:
+    return setMotorCurrent(value);
 
   case VSD_FREQUENCY:
     return ksu.setFreq(value, eventType);
@@ -1596,6 +1601,8 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value, EventType eventType)
 
   case VSD_MOTOR_SPEED:
     return setMotorSpeed(value);
+
+
 
   default:
     result = setValue(id, value, eventType);

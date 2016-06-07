@@ -13,6 +13,8 @@ public:
   ~RegimeRunPush();
 
 private:
+  void processing();
+  void processingStateIdle();
   void processingStateRunning();
   void processingStateWork();
 
