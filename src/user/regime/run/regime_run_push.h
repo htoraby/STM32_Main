@@ -12,9 +12,18 @@ public:
   RegimeRunPush();
   ~RegimeRunPush();
 
-private:
   void processing();
-  bool checkOffRegime();
+  void automatRegime();
+  void processingStateWork();
+  void processingStateRunning();
+  void processingStateIdle();
+  void getOtherSetpoint();
+  void getGeneralSetpoint();
+  void setOtherSetpoint();
+
+  LastReasonRun runReason_;
+
+private:
   void offRegime();
   bool checkOnRegime();
   void onRegime();

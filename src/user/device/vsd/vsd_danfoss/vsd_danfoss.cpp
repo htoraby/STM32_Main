@@ -1,14 +1,15 @@
 #include "vsd_danfoss.h"
 #include "user_main.h"
+#include "regime_run_push.h"
 
 VsdDanfoss::VsdDanfoss()
 {
-
+  regimeRun_ = new RegimeRunPush();
 }
 
 VsdDanfoss::~VsdDanfoss()
 {
-
+  delete regimeRun_;
 }
 
 void VsdDanfoss::initParameters()
@@ -1372,6 +1373,11 @@ int VsdDanfoss::resetSetpoints()
   writeToDevice(VSD_LOCK_ROTOR_PROTECTION, 0);      // 30-22
   writeToDevice(VSD_LOCK_ROTOR_TIME, 1);            // 30-23
   return ok_r;
+}
+
+void VsdDanfoss::processingRegimeRun()
+{
+  regimeRun_->processing();
 }
 
 void VsdDanfoss::getConnect()

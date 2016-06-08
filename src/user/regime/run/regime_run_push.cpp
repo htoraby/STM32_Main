@@ -10,7 +10,19 @@ RegimeRunPush::~RegimeRunPush()
 
 }
 
-void RegimeRunPush::processing()
+void RegimeRunPush::getGeneralSetpoint()
+{
+  runReason_= (LastReasonRun)parameters.get(CCS_LAST_RUN_REASON_TMP);
+}
+
+void RegimeRunPush::setOtherSetpoint()
+{
+  parameters.set(CCS_RGM_RUN_PUSH_STATE, state_);
+}
+
+
+
+void RegimeRunPush::getOtherSetpoint()
 {
   action_ = parameters.get(CCS_RGM_RUN_PUSH_MODE);    // Активность режима
   state_ = parameters.get(CCS_RGM_RUN_PUSH_STATE);    // Состояние автомата режима
@@ -18,9 +30,19 @@ void RegimeRunPush::processing()
   quantity_ = parameters.get(CCS_RGM_RUN_PUSH_QUANTITY);  // Количество толчков
   voltage_ = parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE);// Напряжение толчка
   time_ = (1 / freq_) * 100;                          // Время толчка (счетчик * 100мс)
+}
+
+void RegimeRunPush::processing()
+{
+  getGeneralSetpoint();
+  getOtherSetpoint();
+  automatRegime();
+  setGeneralSetPoint();
+  setOtherSetpoint();
+}
 
   //! TODO: Возможно здесь потребуется добавить блок чтения текущей частоты, тока и слова состояния ЧРП
-
+/*
   switch (state_) {
   case IdleState:
     if (!checkOffRegime())
@@ -163,15 +185,111 @@ void RegimeRunPush::processing()
   default:
     state_ = IdleState;
   }
-  parameters.set(CCS_RGM_RUN_PUSH_STATE, state_);
+}
+*/
+
+void RegimeRunPush::processingStateIdle()
+{
+  if (action_) {
+    if (ksu.getValue(CCS_CONDITION) == CCS_CONDITION_STOP) {  // Станция в останове
+      if (runReason_ != LastReasonRunNone) {                  // Попытка пуска
+        state_ = RunningState;
+      }
+    }
+  }
 }
 
-bool RegimeRunPush::checkOffRegime()
+void RegimeRunPush::processingStateRunning()
 {
-  if (setPointLowLimFreq_ == parameters.get(VSD_LOW_LIM_SPEED_MOTOR)) {
-    return true;
+  if ((parameters.get(VSD_LOW_LIM_SPEED_MOTOR) == 1)
+   &&(parameters.get(VSD_FREQUENCY) == parameters.get(CCS_RGM_RUN_PUSH_FREQ))) {
+    ksu.start(runReason_);
+    state_ = WorkState;
   }
-  return false;
+  else {
+    setPointLowLimFreq_ = parameters.get(VSD_LOW_LIM_SPEED_MOTOR);
+    setPointFreq_ = parameters.get(VSD_FREQUENCY);
+  }
+}
+
+void RegimeRunPush::processingStateWork()
+{
+  switch (state_) {
+  case WorkState:
+    if (vsd->isSetPointFreq()) {
+      timer_ = time_;
+      state_ = WorkState + 1;
+      #if (USE_LOG_DEBUG == 1)
+              logDebug.add(DebugMsg, "Толчковый: WorkState-2 --> WorkState - 1");
+      #endif
+    }
+    break;
+  case WorkState + 1:
+    if (timer_ <= 0) {
+      makePush(true);
+      timer_ = 0;
+      state_ = WorkState + 2;
+      #if (USE_LOG_DEBUG == 1)
+        logDebug.add(DebugMsg, "Толчковый: WorkState-1 --> WorkState");
+      #endif
+    }
+    else {
+      timer_--;
+    }
+    break;
+  case WorkState + 2:
+    if (timer_ >= time_) {
+      makePush(false);
+      cntPush_++;
+      if (cntPush_ >= quantity_) {
+        state_ = WorkState + 3;
+        #if (USE_LOG_DEBUG == 1)
+          logDebug.add(DebugMsg, "Толчковый: WorkState --> WorkState+1");
+        #endif
+      }
+      else {
+        timer_ = time_;
+        state_ = WorkState + 1;
+        #if (USE_LOG_DEBUG == 1)
+          logDebug.add(DebugMsg, "Толчковый: WorkState --> WorkState-1");
+        #endif
+      }
+    }
+    else {
+      timer_++;
+    }
+    break;
+  case WorkState + 3:
+    if ((parameters.get(VSD_LOW_LIM_SPEED_MOTOR) == setPointLowLimFreq_)
+      &&(parameters.get(VSD_FREQUENCY) == setPointFreq_)) {
+      state_ = IdleState;
+    }
+    else {
+      parameters.set(VSD_LOW_LIM_SPEED_MOTOR, setPointLowLimFreq_);
+      parameters.set(VSD_FREQUENCY, setPointFreq_);
+    }
+    break;
+  }
+}
+
+void RegimeRunPush::automatRegime()
+{
+  if (action_ == OffAction) {
+    state_ = IdleState;
+  }
+  switch (state_) {
+  case IdleState:
+    processingStateIdle();
+    break;
+  case RunningState:
+    processingStateRunning();
+    break;
+  case WorkState:
+    processingStateWork();
+    break;
+  default:
+    break;
+  }
 }
 
 void RegimeRunPush::offRegime()
@@ -179,11 +297,9 @@ void RegimeRunPush::offRegime()
   makePush(false);
   parameters.set(VSD_FREQUENCY, setPointFreq_);
   parameters.set(VSD_LOW_LIM_SPEED_MOTOR, setPointLowLimFreq_);
-}
-
-bool RegimeRunPush::checkOnRegime()
-{
-  return true;
+  freq_ = 0;
+  cntPush_ = 0;                                       // Счётчик толчков
+  timer_ = 0;                                         // Счётчик времени
 }
 
 void RegimeRunPush::makePush(bool push)
