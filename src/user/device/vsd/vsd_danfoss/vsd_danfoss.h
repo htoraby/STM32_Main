@@ -4,6 +4,8 @@
 #include "vsd.h"
 #include "device_modbus.h"
 
+class RegimeRunPush;
+
 enum enVsdDanfosStatus1
 {
   VSD_DANFOSS_STATUS_CONTROL_READY= 0,
@@ -206,7 +208,7 @@ public:
   bool isSetPointFreq();
 
   int resetSetpoints();
-  //void processingRegimeRun();
+  void processingRegimeRun();
 
   void getConnect();
   void resetConnect();
@@ -215,6 +217,8 @@ public:
 private:
   ModbusParameter modbusParameters_[226];
   DeviceModbus *dm_;
+
+  RegimeRunPush *regimeRun_;
 
 };
 
