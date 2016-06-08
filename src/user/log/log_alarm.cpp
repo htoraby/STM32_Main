@@ -17,7 +17,9 @@ static uint16_t icValue[ADC_POINTS_NUM];
 static uint16_t udValue[ADC_POINTS_NUM];
 #endif
 
-LogAlarm::LogAlarm() : LogRunning(AlarmTypeLog)
+LogAlarm::LogAlarm()
+  : LogRunning(AlarmTypeLog)
+  , protPoweroff_(false)
 {
 
 }
@@ -46,10 +48,12 @@ void LogAlarm::task()
     osDelay(1);
 
     if (vsd->log()) {
-      if (vsd->log()->checkAlarm()) {
+      if (vsd->log()->checkAlarm() ||
+          (!protPoweroff_ && parameters.get(CCS_PROT_SUPPLY_POWEROFF_PREVENT))) {
         add();
       }
     }
+    protPoweroff_ = parameters.get(CCS_PROT_SUPPLY_POWEROFF_PREVENT);
   }
 }
 
@@ -61,14 +65,16 @@ void LogAlarm::add()
   // Получение значений Ua, Ub, Uc
   copyAdcData(uValue);
 
-  while (!vsd->log()->checkReady()) {
+  while (!(protPoweroff_ || vsd->log()->checkReady())) {
+    protPoweroff_ = parameters.get(CCS_PROT_SUPPLY_POWEROFF_PREVENT);
     osDelay(10);
   }
 
   uint16_t typeVsd = parameters.get(CCS_TYPE_VSD);
   t = HAL_GetTick() - t;
   // Получение значений с ЧРП Ia, Ib, Ic, Ud
-  vsd->log()->readAlarmLog(iaValue, ibValue, icValue, udValue);
+  if (!protPoweroff_)
+    vsd->log()->readAlarmLog(iaValue, ibValue, icValue, udValue);
 
   memset(buffer, 0, sizeof(buffer));
   *(uint32_t*)(buffer) = eventId_;
@@ -85,24 +91,28 @@ void LogAlarm::add()
       switch (typeVsd) {
       case VSD_TYPE_ETALON:
         if (i >= ADC_POINTS_NUM/2) {
-          *(float*)(buffer + j*64) = (int16_t)iaValue[idxI];
-          *(float*)(buffer + 4 + j*64) = (int16_t)ibValue[idxI];
-          *(float*)(buffer + 8 + j*64) = (int16_t)icValue[idxI];
-          *(float*)(buffer + 12 + j*64) = udValue[idxUd];
-          shiftUd++;
-          if (shiftUd >= 10) {
-            shiftUd = 0;
-            idxUd++;
+          if (!protPoweroff_) {
+            *(float*)(buffer + j*64) = (int16_t)iaValue[idxI];
+            *(float*)(buffer + 4 + j*64) = (int16_t)ibValue[idxI];
+            *(float*)(buffer + 8 + j*64) = (int16_t)icValue[idxI];
+            *(float*)(buffer + 12 + j*64) = udValue[idxUd];
+            shiftUd++;
+            if (shiftUd >= 10) {
+              shiftUd = 0;
+              idxUd++;
+            }
+            idxI++;
           }
-          idxI++;
         }
         break;
       case VSD_TYPE_NOVOMET:
-        *(float*)(buffer + j*64) = (int16_t)iaValue[idxI];
-        *(float*)(buffer + 4 + j*64) = (int16_t)ibValue[idxI];
-        *(float*)(buffer + 8 + j*64) = (int16_t)icValue[idxI];
-        *(float*)(buffer + 12 + j*64) = udValue[idxI];
-        idxI++;
+        if (!protPoweroff_) {
+          *(float*)(buffer + j*64) = (int16_t)iaValue[idxI];
+          *(float*)(buffer + 4 + j*64) = (int16_t)ibValue[idxI];
+          *(float*)(buffer + 8 + j*64) = (int16_t)icValue[idxI];
+          *(float*)(buffer + 12 + j*64) = udValue[idxI];
+          idxI++;
+        }
         break;
       }
 
