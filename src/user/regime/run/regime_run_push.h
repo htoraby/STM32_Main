@@ -10,7 +10,7 @@ class RegimeRunPush: public RegimeRun
 {
 public:
   RegimeRunPush();
-  ~RegimeRunPush();
+  virtual ~RegimeRunPush();
 
   void processing();
   void automatRegime();
