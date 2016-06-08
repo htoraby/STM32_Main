@@ -10,18 +10,6 @@ RegimeRunPush::~RegimeRunPush()
 
 }
 
-void RegimeRunPush::getGeneralSetpoint()
-{
-  runReason_= (LastReasonRun)parameters.get(CCS_LAST_RUN_REASON_TMP);
-}
-
-void RegimeRunPush::setOtherSetpoint()
-{
-  parameters.set(CCS_RGM_RUN_PUSH_STATE, state_);
-}
-
-
-
 void RegimeRunPush::getOtherSetpoint()
 {
   action_ = parameters.get(CCS_RGM_RUN_PUSH_MODE);    // Активность режима
@@ -30,163 +18,21 @@ void RegimeRunPush::getOtherSetpoint()
   quantity_ = parameters.get(CCS_RGM_RUN_PUSH_QUANTITY);  // Количество толчков
   voltage_ = parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE);// Напряжение толчка
   time_ = (1 / freq_) * 100;                          // Время толчка (счетчик * 100мс)
+
+  setPointFreq_ = parameters.get(CCS_RGM_RUN_PUSH_SETPOINT_FREQ);
+  setPointLowLimFreq_ = parameters.get(CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ);
+  setPointU1_ = parameters.get(CCS_RGM_RUN_PUSH_SETPOINT_U1);
+  setPointU2_ = parameters.get(CCS_RGM_RUN_PUSH_SETPOINT_U2);
 }
 
-void RegimeRunPush::processing()
+void RegimeRunPush::setOtherSetpoint()
 {
-  getGeneralSetpoint();
-  getOtherSetpoint();
-  automatRegime();
-  setGeneralSetPoint();
-  setOtherSetpoint();
+  parameters.set(CCS_RGM_RUN_PUSH_STATE, state_);
+  parameters.set(CCS_RGM_RUN_PUSH_SETPOINT_FREQ, setPointFreq_);
+  parameters.set(CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ, setPointLowLimFreq_);
+  parameters.set(CCS_RGM_RUN_PUSH_SETPOINT_U1, setPointU1_);
+  parameters.set(CCS_RGM_RUN_PUSH_SETPOINT_U2, setPointU2_);
 }
-
-  //! TODO: Возможно здесь потребуется добавить блок чтения текущей частоты, тока и слова состояния ЧРП
-/*
-  switch (state_) {
-  case IdleState:
-    if (!checkOffRegime())
-      offRegime();
-    if (ksu.isBlock()) {                              // Если блокировка
-      state_ = IdleState;
-    }
-    else {
-      if (ksu.isWorkMotor()) {                        // Если можем работать
-        if (!ksu.isPrevent()) {                       // Если нет запрещающих параметров
-          flag_ = true;
-          setPointLowLimFreq_ = parameters.get(VSD_LOW_LIM_SPEED_MOTOR);
-          parameters.set(VSD_LOW_LIM_SPEED_MOTOR, 1);
-          state_ = WorkState - 3;
-          #if (USE_LOG_DEBUG == 1)
-            logDebug.add(DebugMsg, "Толчковый: Idle --> WorkState-3 ");
-          #endif
-        }
-      }
-    }
-    break;
-  case WorkState - 3:
-    if (!ksu.isWorkMotor()) {
-      state_ = IdleState;
-      #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Толчковый: WorkState-3 --> Idle");
-      #endif
-    }
-    else {
-      if (checkOnRegime()) {
-        flag_ = true;
-        cntPush_ = 0;
-        setPointFreq_ = parameters.get(VSD_FREQUENCY);
-        parameters.set(VSD_FREQUENCY, freq_);
-        state_ = WorkState - 2;
-        #if (USE_LOG_DEBUG == 1)
-          logDebug.add(DebugMsg, "Толчковый: WorkState-3 --> WorkState-2 (freq = %f5.2)",
-                                 freq_);
-        #endif
-      }
-    }
-    break;
-  case WorkState - 2:
-    if (!ksu.isWorkMotor()) {
-      state_ = IdleState;
-      #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Толчковый: WorkState-2 --> Idle");
-      #endif
-    }
-    else {
-      flag_ = true;
-      if (vsd->isControl()) {
-        timer_ = time_;
-        state_ = WorkState - 1;
-        #if (USE_LOG_DEBUG == 1)
-                logDebug.add(DebugMsg, "Толчковый: WorkState-2 --> WorkState - 1");
-        #endif
-      }
-    }
-    break;
-  case WorkState - 1:
-    if (!ksu.isWorkMotor()) {
-      state_ = IdleState;
-      #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Толчковый: WorkState-2 --> Idle");
-      #endif
-    }
-    else {
-      flag_ = true;
-      if (timer_ < 1) {
-        makePush(true);
-        timer_ = 0;
-        state_ = WorkState;
-        #if (USE_LOG_DEBUG == 1)
-          logDebug.add(DebugMsg, "Толчковый: WorkState-1 --> WorkState");
-        #endif
-      }
-      else {
-        timer_--;
-      }
-    }
-    break;
-  case WorkState:
-    if (!ksu.isWorkMotor()) {
-      state_ = IdleState;
-      #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Толчковый: WorkState --> Idle");
-      #endif
-    }
-    else {
-      flag_ = true;
-      if (timer_ > time_) {
-        makePush(false);
-        cntPush_++;
-        if (cntPush_ >= quantity_) {
-          if (!checkOffRegime()) {
-            offRegime();
-          }
-          state_ = WorkState + 1;
-          #if (USE_LOG_DEBUG == 1)
-            logDebug.add(DebugMsg, "Толчковый: WorkState --> WorkState+1");
-          #endif
-        }
-        else {
-          timer_ = time_;
-          state_ = WorkState - 1;
-          #if (USE_LOG_DEBUG == 1)
-            logDebug.add(DebugMsg, "Толчковый: WorkState --> WorkState-1");
-          #endif
-        }
-      }
-      else {
-        timer_++;
-      }
-    }
-    break;
-  case WorkState + 1:
-    if (!ksu.isWorkMotor()) {
-      state_ = IdleState;
-      #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Толчковый: WorkState+1 --> Idle");
-      #endif
-    }
-    else {
-      flag_ = true;
-      state_ = WorkState + 2;
-      #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Толчковый: WorkState+1 --> WorkState+2");
-      #endif
-    }
-    break;
-  case WorkState + 2:
-    if (ksu.isStopMotor()) {
-      state_ = IdleState;
-    }
-    if (!checkOffRegime()) {
-      parameters.set(VSD_LOW_LIM_SPEED_MOTOR, setPointLowLimFreq_);
-    }
-    break;
-  default:
-    state_ = IdleState;
-  }
-}
-*/
 
 void RegimeRunPush::processingStateIdle()
 {
@@ -196,6 +42,11 @@ void RegimeRunPush::processingStateIdle()
         state_ = RunningState;
       }
     }
+  }
+
+  if ((parameters.get(VSD_LOW_LIM_SPEED_MOTOR) != setPointLowLimFreq_)
+    &&(parameters.get(VSD_FREQUENCY) != setPointFreq_)) {
+    offRegime();
   }
 }
 
@@ -209,6 +60,8 @@ void RegimeRunPush::processingStateRunning()
   else {
     setPointLowLimFreq_ = parameters.get(VSD_LOW_LIM_SPEED_MOTOR);
     setPointFreq_ = parameters.get(VSD_FREQUENCY);
+    parameters.set(VSD_LOW_LIM_SPEED_MOTOR, 1);
+    parameters.set(VSD_FREQUENCY, freq_);
   }
 }
 
@@ -220,7 +73,7 @@ void RegimeRunPush::processingStateWork()
       timer_ = time_;
       state_ = WorkState + 1;
       #if (USE_LOG_DEBUG == 1)
-              logDebug.add(DebugMsg, "Толчковый: WorkState-2 --> WorkState - 1");
+        logDebug.add(DebugMsg, "Толчковый: WorkState-2 --> WorkState - 1");
       #endif
     }
     break;
@@ -265,8 +118,7 @@ void RegimeRunPush::processingStateWork()
       state_ = IdleState;
     }
     else {
-      parameters.set(VSD_LOW_LIM_SPEED_MOTOR, setPointLowLimFreq_);
-      parameters.set(VSD_FREQUENCY, setPointFreq_);
+      offRegime();
     }
     break;
   }
@@ -285,6 +137,9 @@ void RegimeRunPush::automatRegime()
     processingStateRunning();
     break;
   case WorkState:
+  case WorkState + 1:
+  case WorkState + 2:
+  case WorkState + 3:
     processingStateWork();
     break;
   default:
@@ -300,6 +155,10 @@ void RegimeRunPush::offRegime()
   freq_ = 0;
   cntPush_ = 0;                                       // Счётчик толчков
   timer_ = 0;                                         // Счётчик времени
+  if (parameters.get(CCS_RGM_RUN_PUSH_MODE) == SingleAction) {
+    parameters.set(CCS_RGM_RUN_PUSH_MODE, OffAction);         // Выключаем режим
+    logEvent.add(SetpointCode, AutoType, RegimeRunPushOffId); // Записываем данные в лог
+  }
 }
 
 void RegimeRunPush::makePush(bool push)

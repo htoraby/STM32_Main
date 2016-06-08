@@ -8098,7 +8098,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_PUSH_STATE - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PUSH_STATE - CCS_BEGIN].value.float_t                  = 0.0;
   parameters_[CCS_RGM_RUN_PUSH_STATE - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_RGM_RUN_PUSH_STATE - CCS_BEGIN].max                            = 10.0;
+  parameters_[CCS_RGM_RUN_PUSH_STATE - CCS_BEGIN].max                            = 999999999.9;
   parameters_[CCS_RGM_RUN_PUSH_STATE - CCS_BEGIN].discret                        = 1;
   parameters_[CCS_RGM_RUN_PUSH_STATE - CCS_BEGIN].def                            = 0.0;
   parameters_[CCS_RGM_RUN_PUSH_STATE - CCS_BEGIN].code                           = 0;
@@ -8182,7 +8182,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_SWING_STATE - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_SWING_STATE - CCS_BEGIN].value.float_t                 = 0.0;
   parameters_[CCS_RGM_RUN_SWING_STATE - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_RGM_RUN_SWING_STATE - CCS_BEGIN].max                           = 10.0;
+  parameters_[CCS_RGM_RUN_SWING_STATE - CCS_BEGIN].max                           = 999999999.9;
   parameters_[CCS_RGM_RUN_SWING_STATE - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_RGM_RUN_SWING_STATE - CCS_BEGIN].def                           = 0.0;
   parameters_[CCS_RGM_RUN_SWING_STATE - CCS_BEGIN].code                          = 0;
@@ -11474,5 +11474,53 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_CURRENT_LIMIT - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_VSD_CURRENT_LIMIT - CCS_BEGIN].def                             = 100.0;
   parameters_[CCS_VSD_CURRENT_LIMIT - CCS_BEGIN].code                            = 0;
+  // Уставка частоты сохраняемая в режиме пуска толчками
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_FREQ - CCS_BEGIN].id                     = CCS_RGM_RUN_PUSH_SETPOINT_FREQ;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_FREQ - CCS_BEGIN].access                 = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_FREQ - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_FREQ - CCS_BEGIN].physic                 = PHYSIC_FREQUENCY;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_FREQ - CCS_BEGIN].validity               = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_FREQ - CCS_BEGIN].value.float_t          = 0.0;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_FREQ - CCS_BEGIN].min                    = 0.0;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_FREQ - CCS_BEGIN].max                    = 999999999.9;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_FREQ - CCS_BEGIN].discret                = 1;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_FREQ - CCS_BEGIN].def                    = 0.0;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_FREQ - CCS_BEGIN].code                   = 0;
+  // Уставка минимальной частоты сохраняемая в режиме пуска толчками
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].id             = CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].access         = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].operation      = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].physic         = PHYSIC_FREQUENCY;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].validity       = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].value.float_t  = 0.0;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].min            = 0.0;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].max            = 999999999.9;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].discret        = 1;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].def            = 0.0;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].code           = 0;
+  // Уставка точки 1 напряжения для задания толчка
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].id                       = CCS_RGM_RUN_PUSH_SETPOINT_U1;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].access                   = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].physic                   = PHYSIC_VOLTAGE;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].validity                 = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].value.float_t            = 0.0;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].min                      = 0.0;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].max                      = 999999999.9;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].discret                  = 1;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].def                      = 0.0;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].code                     = 0;
+  // Уставка точки 2 напряжения для задания толчка
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].id                       = CCS_RGM_RUN_PUSH_SETPOINT_U2;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].access                   = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].physic                   = PHYSIC_VOLTAGE;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].validity                 = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].value.float_t            = 0.0;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].min                      = 0.0;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].max                      = 999999999.9;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].discret                  = 1;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].def                      = 0.0;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].code                     = 0;
 }
 
