@@ -466,16 +466,15 @@ int VsdDanfoss::setUf_U6(float value)
   return err_r;
 }
 
-int VsdDanfoss::calcUfCharacteristicU()
+int VsdDanfoss::calcUfCharacteristicU(float value)
 {
   float point1 = getValue(VSD_UF_CHARACTERISTIC_U_1);
-  float point6 = parameters.get(CCS_BASE_VOLTAGE);
-  setUf_U1((point6 * 0 + point1 * 5) / 5);
-  setUf_U2((point6 * 1 + point1 * 4) / 5);
-  setUf_U3((point6 * 2 + point1 * 3) / 5);
-  setUf_U4((point6 * 3 + point1 * 2) / 5);
-  setUf_U5((point6 * 4 + point1 * 1) / 5);
-  setUf_U6((point6 * 5 + point1 * 0) / 5);
+  setUf_U1((value * 0 + point1 * 5) / 5);
+  setUf_U2((value * 1 + point1 * 4) / 5);
+  setUf_U3((value * 2 + point1 * 3) / 5);
+  setUf_U4((value * 3 + point1 * 2) / 5);
+  setUf_U5((value * 4 + point1 * 1) / 5);
+  setUf_U6((value * 5 + point1 * 0) / 5);
   return ok_r;
 }
 

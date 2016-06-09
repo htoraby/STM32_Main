@@ -959,7 +959,11 @@ enum enID
   CCS_CMD_PROT_DHS_PRESSURE_DISCHARGE_SETPOINT_RESET = 953,  //!< Защита "Давление на выкиде насоса". Уставки по умолчанию
   CCS_PARAMETERS_CONTROL = 954,                              //!< Проверка параметров на корректность при инициализации
   CCS_VSD_CURRENT_LIMIT = 955,                               //!< Уставка предел тока
-  CCS_END = 956,                                             //!< 
+  CCS_RGM_RUN_PUSH_SETPOINT_FREQ = 956,                      //!< Уставка частоты сохраняемая в режиме пуска толчками
+  CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ = 957,              //!< Уставка минимальной частоты сохраняемая в режиме пуска толчками
+  CCS_RGM_RUN_PUSH_SETPOINT_U1 = 958,                        //!< Уставка точки 1 напряжения для задания толчка
+  CCS_RGM_RUN_PUSH_SETPOINT_U2 = 959,                        //!< Уставка точки 2 напряжения для задания толчка
+  CCS_END = 960,                                             //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF

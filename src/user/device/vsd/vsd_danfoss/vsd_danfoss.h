@@ -176,7 +176,7 @@ public:
   int setUf_U6(float value);
   void setUf();
 
-  int calcUfCharacteristicU();
+  int calcUfCharacteristicU(float value);
   int calcUfCharacteristicF(float value);
   void readUfCharacterictic();
 

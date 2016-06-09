@@ -13117,7 +13117,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13264,7 +13264,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10.0</max>
+		<max>999999999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -18545,6 +18545,90 @@
 	</param>
 	<param>
 		<id>956</id>
+		<name>CCS_RGM_RUN_PUSH_SETPOINT_FREQ</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Уставка частоты сохраняемая в режиме пуска толчками</text>
+		<short_text>Уставка частоты сохраняемая в режиме пуска толчками</short_text>
+		<form>NULL</form>
+		<unit>PHYSIC_FREQUENCY</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Уставка частоты сохраняемая в режиме пуска толчками</comment>
+	</param>
+	<param>
+		<id>957</id>
+		<name>CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Уставка минимальной частоты сохраняемая в режиме пуска толчками</text>
+		<short_text>Уставка минимальной частоты сохраняемая в режиме пуска толчками</short_text>
+		<form>NULL</form>
+		<unit>PHYSIC_FREQUENCY</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Уставка минимальной частоты сохраняемая в режиме пуска толчками</comment>
+	</param>
+	<param>
+		<id>958</id>
+		<name>CCS_RGM_RUN_PUSH_SETPOINT_U1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Уставка точки 1 напряжения для задания толчка</text>
+		<short_text>Уставка точки 1 напряжения для задания толчка</short_text>
+		<form>NULL</form>
+		<unit>PHYSIC_VOLTAGE</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Уставка точки 1 напряжения для задания толчка</comment>
+	</param>
+	<param>
+		<id>959</id>
+		<name>CCS_RGM_RUN_PUSH_SETPOINT_U2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Уставка точки 2 напряжения для задания толчка </text>
+		<short_text>Уставка точки 2 напряжения для задания толчка </short_text>
+		<form>NULL</form>
+		<unit>PHYSIC_VOLTAGE</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Уставка точки 2 напряжения для задания толчка </comment>
+	</param>
+	<param>
+		<id>960</id>
 		<name>CCS_END</name>
 	</param>
 	<param>
