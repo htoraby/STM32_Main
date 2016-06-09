@@ -18,4 +18,18 @@ void regimeInit();
  */
 bool interceptionStartRegime();
 
+/*!
+ * \brief Метод проверки работы пускового режима
+ * \return
+ */
+void checkWorkingRunMode();
+
+/*!
+ * \brief isWorkingRunMode
+ * \param id
+ * \return
+ */
+bool isWorkingRunMode(uint16_t id);
+
+
 #endif // REGIMEMAIN_H

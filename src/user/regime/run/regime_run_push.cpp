@@ -43,10 +43,6 @@ void RegimeRunPush::processingStateIdle()
       }
     }
   }
-//  if ((parameters.get(VSD_LOW_LIM_SPEED_MOTOR) != setPointLowLimFreq_)
-//    &&(parameters.get(VSD_FREQUENCY) != setPointFreq_)) {
-//    offRegime();
-//  }
 }
 
 void RegimeRunPush::processingStateRunning()
@@ -125,10 +121,8 @@ void RegimeRunPush::processingStateWork()
 
 void RegimeRunPush::automatRegime()
 {
-  if (action_ == OffAction) {
-    if (state_ != IdleState) {
-      state_ = WorkState + 3;
-    }
+  if ((action_ == OffAction) && (state_ != IdleState)) {
+    state_ = WorkState + 3;
   }
   switch (state_) {
   case IdleState:
@@ -141,6 +135,9 @@ void RegimeRunPush::automatRegime()
   case WorkState + 1:
   case WorkState + 2:
   case WorkState + 3:
+    if (ksu.isStopMotor()) {
+      state_ = WorkState + 3;
+    }
     processingStateWork();
     break;
   default:

@@ -261,7 +261,8 @@ void Ccs::vsdConditionTask()
       break;
     case VSD_CONDITION_RUN:
       if (getValue(CCS_CONDITION) != CCS_CONDITION_RUN) {
-        if (parameters.get(VSD_FREQUENCY_NOW) >= /*parameters.get(VSD_FREQUENCY)*/parameters.get(CCS_SETPOINT_FREQUENCY))
+        if ((parameters.get(VSD_FREQUENCY_NOW) >= parameters.get(CCS_SETPOINT_FREQUENCY))
+         && (parameters.get(CCS_RGM_RUN_VSD_STATE) == Regime::IdleState))
           setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
 #if USE_DEBUG
         setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
