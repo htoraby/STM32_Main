@@ -83,7 +83,7 @@ void Ccs::calcParametersTask()
       calcTemperatureCCS();
       tms->getConnect();
       vsd->getConnect();
-
+/*
 #if (USE_LOG_DEBUG == 1)
 #ifdef USE_RTT
       vsd->outStatistic();
@@ -92,6 +92,7 @@ void Ccs::calcParametersTask()
       SEGGER_RTT_printf(0, "Host rx good - %d, error - %d, *%d\n", statHost.rxGood, statHost.sizeError, (int)value);
 #endif
 #endif
+*/
     }
   }
 }

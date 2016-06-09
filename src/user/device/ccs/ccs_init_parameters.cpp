@@ -11522,5 +11522,17 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].discret                  = 1;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].def                      = 0.0;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].code                     = 0;
+  // Уставка частоты для не пусковых режимов работы
+  parameters_[CCS_SETPOINT_FREQUENCY - CCS_BEGIN].id                             = CCS_SETPOINT_FREQUENCY;
+  parameters_[CCS_SETPOINT_FREQUENCY - CCS_BEGIN].access                         = ACCESS_OPERATOR;
+  parameters_[CCS_SETPOINT_FREQUENCY - CCS_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[CCS_SETPOINT_FREQUENCY - CCS_BEGIN].physic                         = PHYSIC_FREQUENCY;
+  parameters_[CCS_SETPOINT_FREQUENCY - CCS_BEGIN].validity                       = VALIDITY_OK;
+  parameters_[CCS_SETPOINT_FREQUENCY - CCS_BEGIN].value.float_t                  = 0.0;
+  parameters_[CCS_SETPOINT_FREQUENCY - CCS_BEGIN].min                            = 0.0;
+  parameters_[CCS_SETPOINT_FREQUENCY - CCS_BEGIN].max                            = 999999999.9;
+  parameters_[CCS_SETPOINT_FREQUENCY - CCS_BEGIN].discret                        = 1;
+  parameters_[CCS_SETPOINT_FREQUENCY - CCS_BEGIN].def                            = 0.0;
+  parameters_[CCS_SETPOINT_FREQUENCY - CCS_BEGIN].code                           = 0;
 }
 

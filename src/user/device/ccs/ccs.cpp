@@ -261,7 +261,7 @@ void Ccs::vsdConditionTask()
       break;
     case VSD_CONDITION_RUN:
       if (getValue(CCS_CONDITION) != CCS_CONDITION_RUN) {
-        if (parameters.get(VSD_FREQUENCY_NOW) >= parameters.get(VSD_FREQUENCY))
+        if (parameters.get(VSD_FREQUENCY_NOW) >= /*parameters.get(VSD_FREQUENCY)*/parameters.get(CCS_SETPOINT_FREQUENCY))
           setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
 #if USE_DEBUG
         setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
@@ -534,7 +534,7 @@ void Ccs::initStart()
     freq = min(freq, parameters.get(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ));
   }
   if (freq != freqSetpoint) {
-    parameters.set(VSD_FREQUENCY, freq, NoneType);
+    setFreq(freq, NoneType);
   }
 }
 
@@ -626,10 +626,13 @@ bool Ccs::isBlock()
   }
 }
 
-int Ccs::setFreq(float value, EventType eventType)
+int Ccs::setFreq(float value, EventType eventType, bool setPoint)
 {
   float valueOld = parameters.get(VSD_FREQUENCY);
   if (vsd->setFrequency(value, eventType) == ok_r) {
+    if (setPoint) {
+      parameters.set(CCS_SETPOINT_FREQUENCY, value);
+    }
     parameters.set(CCS_PREVIEW_FREQUENCY, valueOld, NoneType);
     parameters.set(CCS_PREVIEW_FREQUENCY_DATE_TIME, parameters.getU32(CCS_DATE_TIME), NoneType);
     return ok_r;
