@@ -106,13 +106,13 @@ void RegimeTechnologPeriodic::processing()
                 workBeginTime_ = ksu.getTime();
 #if (USE_LOG_DEBUG == 1)
                 logDebug.add(DebugMsg, "Периодика: Останов пользователя или сети и время доработки > уставки (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
-                             workPeriod_, workTimeToEnd, stopReason, state_);
+                             workPeriod_, workTimeToEnd_, stopReason, state_);
 #endif
               }
               state_ = RunningState;
 #if (USE_LOG_DEBUG == 1)
               logDebug.add(DebugMsg, "Периодика: Останов пользователя или сети и переход в работу (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
-                           workPeriod_, workTimeToEnd, stopReason, state_);
+                           workPeriod_, workTimeToEnd_, stopReason, state_);
 #endif
             }
           }
@@ -121,7 +121,7 @@ void RegimeTechnologPeriodic::processing()
             state_ = IdleState;
 #if (USE_LOG_DEBUG == 1)
             logDebug.add(DebugMsg, "Периодика: Останов пользователя или сети и выключили программу (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
-                         workPeriod_, workTimeToEnd, stopReason, state_);
+                         workPeriod_, workTimeToEnd_, stopReason, state_);
 #endif
           }
         }
@@ -131,7 +131,7 @@ void RegimeTechnologPeriodic::processing()
             state_ = RunningState;
 #if (USE_LOG_DEBUG == 1)
             logDebug.add(DebugMsg, "Периодика: Останов во время работы (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
-                         workPeriod_, workTimeToEnd, stopReason, state_);
+                         workPeriod_, workTimeToEnd_, stopReason, state_);
 #endif
           }
           else {
@@ -139,7 +139,7 @@ void RegimeTechnologPeriodic::processing()
             state_ = IdleState;
 #if (USE_LOG_DEBUG == 1)
             logDebug.add(DebugMsg, "Периодика: Останов во время работы и выключили программу (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
-                         workPeriod_, workTimeToEnd, stopReason, state_);
+                         workPeriod_, workTimeToEnd_, stopReason, state_);
 #endif
           }
         }
