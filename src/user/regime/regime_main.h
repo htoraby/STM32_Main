@@ -6,6 +6,7 @@
 #include "regime_technolog_maintenance_param.h"
 #include "regime_technolog_alternation_freq.h"
 #include "regime_technolog_jarring.h"
+#include "regime_technolog_optimization_voltage.h"
 
 /*!
  * \brief Функция инициализации задачи обработки всех режимов
