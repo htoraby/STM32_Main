@@ -33,6 +33,7 @@ void regimeTask(void *argument)
       regimes[i]->processing();
     }  
     vsd->processingRegimeRun();
+    checkWorkingRunMode();
   }
 }
 
@@ -111,4 +112,29 @@ bool interceptionStartRegime()
   }
 
   return true;
+}
+
+
+void checkWorkingRunMode()
+{
+  if (isWorkingRunMode(CCS_RGM_RUN_PUSH_STATE))
+    return;
+  if (isWorkingRunMode(CCS_RGM_RUN_SWING_STATE))
+    return;
+  if (isWorkingRunMode(CCS_RGM_RUN_AUTO_ADAPTATION_STATE))
+    return;
+  if (isWorkingRunMode(CCS_RGM_RUN_PICKUP_STATE))
+    return;
+
+  parameters.set(CCS_RGM_RUN_VSD_STATE, Regime::IdleState);
+}
+
+bool isWorkingRunMode(uint16_t id)
+{
+  float state = parameters.get(id);
+  if (state != Regime::IdleState) {
+    parameters.set(CCS_RGM_RUN_VSD_STATE, state);
+    return true;
+  }
+  return false;
 }

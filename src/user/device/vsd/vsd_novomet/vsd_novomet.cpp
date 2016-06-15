@@ -1095,7 +1095,7 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value, EventType eventType)
       return err_r;
 
   case VSD_FREQUENCY:
-    return ksu.setFreq(value, eventType);
+    return ksu.setFreq(value, eventType, false);
 
   case VSD_LOW_LIM_SPEED_MOTOR:
     if (!setMinFrequency(value)) {

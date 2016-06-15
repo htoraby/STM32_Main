@@ -610,7 +610,7 @@ uint16_t VsdDanfoss::configVsdAsync()
   parameters.set(VSD_STOP_FUNCTION, 0, NoneType);                          // 1-80
   parameters.set(VSD_MIN_REFERENCE, 30, NoneType);                         // 3-02
   parameters.set(VSD_MAX_REFERENCE, 70, NoneType);                         // 3-03
-  parameters.set(VSD_FREQUENCY, 50, NoneType);                             // 3-11
+  ksu.setFreq(50, NoneType, true);                                         // 3-11
   parameters.set(VSD_TIMER_DISPERSAL, 30, NoneType);                       // 3-41
   parameters.set(VSD_TIMER_DELAY, 30, NoneType);                           // 3-42
   parameters.set(VSD_TIMER_DISP_FIX_SPEED, 30, NoneType);                  // 3-80
@@ -1534,7 +1534,7 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value, EventType eventType)
     return setMotorCurrent(value);
 
   case VSD_FREQUENCY:
-    return ksu.setFreq(value, eventType);
+    return ksu.setFreq(value, eventType, false);
 
   case VSD_LOW_LIM_SPEED_MOTOR:
     if (!setMinFrequency(value)) {

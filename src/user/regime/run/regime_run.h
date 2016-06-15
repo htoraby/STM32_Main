@@ -16,6 +16,7 @@ public:
    */
   void processing();
 
+
 protected:
   /*!
    * \brief Функция получения индивидуальный параметров режима

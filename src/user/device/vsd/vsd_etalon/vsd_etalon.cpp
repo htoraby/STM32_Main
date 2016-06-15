@@ -528,7 +528,7 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value, EventType eventType)
     return err_r;
     
   case VSD_FREQUENCY:
-    return ksu.setFreq(value, eventType);
+    return ksu.setFreq(value, eventType, false);
 
   case VSD_TEMP_SPEEDUP:
     return setTimeSpeedUp(value);

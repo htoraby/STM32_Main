@@ -18618,17 +18618,38 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Уставка точки 2 напряжения для задания толчка </text>
-		<short_text>Уставка точки 2 напряжения для задания толчка </short_text>
+		<text>Уставка точки 2 напряжения для задания толчка</text>
+		<short_text>Уставка точки 2 напряжения для задания толчка</short_text>
 		<form>NULL</form>
 		<unit>PHYSIC_VOLTAGE</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
 		<code>0</code>
-		<comment>Уставка точки 2 напряжения для задания толчка </comment>
+		<comment>Уставка точки 2 напряжения для задания толчка</comment>
 	</param>
 	<param>
 		<id>960</id>
+		<name>CCS_SETPOINT_FREQUENCY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Уставка частоты для не пусковых режимов работы</text>
+		<short_text>Уставка частоты для не пусковых режимов работы</short_text>
+		<form>NULL</form>
+		<unit>PHYSIC_FREQUENCY</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Уставка частоты для не пусковых режимов работы</comment>
+	</param>
+	<param>
+		<id>961</id>
 		<name>CCS_END</name>
 	</param>
 	<param>

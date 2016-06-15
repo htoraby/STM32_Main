@@ -401,7 +401,7 @@ public:
    * \param value присваемое значение
    * \param eventType - тип события для фиксирования изменений в журнале
    */
-  int setFreq(float value, EventType eventType = NoneType);
+  int setFreq(float value, EventType eventType = NoneType, bool setPoint = true);
 
   int calcUfCharacteristic();
 

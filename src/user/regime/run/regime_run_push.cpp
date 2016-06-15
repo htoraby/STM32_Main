@@ -43,11 +43,6 @@ void RegimeRunPush::processingStateIdle()
       }
     }
   }
-
-  if ((parameters.get(VSD_LOW_LIM_SPEED_MOTOR) != setPointLowLimFreq_)
-    &&(parameters.get(VSD_FREQUENCY) != setPointFreq_)) {
-    offRegime();
-  }
 }
 
 void RegimeRunPush::processingStateRunning()
@@ -61,7 +56,7 @@ void RegimeRunPush::processingStateRunning()
     setPointLowLimFreq_ = parameters.get(VSD_LOW_LIM_SPEED_MOTOR);
     setPointFreq_ = parameters.get(VSD_FREQUENCY);
     parameters.set(VSD_LOW_LIM_SPEED_MOTOR, 1);
-    parameters.set(VSD_FREQUENCY, freq_);
+    ksu.setFreq(freq_, NoneType, false);
   }
 }
 
@@ -126,8 +121,8 @@ void RegimeRunPush::processingStateWork()
 
 void RegimeRunPush::automatRegime()
 {
-  if (action_ == OffAction) {
-    state_ = IdleState;
+  if ((action_ == OffAction) && (state_ != IdleState)) {
+    state_ = WorkState + 3;
   }
   switch (state_) {
   case IdleState:
@@ -140,6 +135,9 @@ void RegimeRunPush::automatRegime()
   case WorkState + 1:
   case WorkState + 2:
   case WorkState + 3:
+    if (ksu.isStopMotor()) {
+      state_ = WorkState + 3;
+    }
     processingStateWork();
     break;
   default:
@@ -150,7 +148,7 @@ void RegimeRunPush::automatRegime()
 void RegimeRunPush::offRegime()
 {
   makePush(false);
-  parameters.set(VSD_FREQUENCY, setPointFreq_);
+  ksu.setFreq(setPointFreq_, NoneType);
   parameters.set(VSD_LOW_LIM_SPEED_MOTOR, setPointLowLimFreq_);
   freq_ = 0;
   cntPush_ = 0;                                       // Счётчик толчков
