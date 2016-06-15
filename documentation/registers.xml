@@ -9838,7 +9838,7 @@
 	</param>
 	<param>
 		<id>497</id>
-		<name>CCS_RGM_OPTIM_VOLTAGE_DELAY_REACTION</name>
+		<name>CCS_RGM_OPTIM_VOLTAGE_DELAY</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
@@ -9857,7 +9857,7 @@
 	</param>
 	<param>
 		<id>498</id>
-		<name>CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART</name>
+		<name>CCS_RGM_OPTIM_VOLTAGE_PERIOD</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
@@ -17725,7 +17725,7 @@
 	</param>
 	<param>
 		<id>914</id>
-		<name>CCS_RGM_AUTO_OPTIM_CURRENT_MODE</name>
+		<name>CCS_RESERVED_914</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -18650,6 +18650,27 @@
 	</param>
 	<param>
 		<id>961</id>
+		<name>CCS_RGM_OPTIM_VOLTAGE_STATE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Состояние режима оптимизация напряжения</text>
+		<short_text>Состояние режима оптимизация напряжения</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Состояние режима оптимизация напряжения</comment>
+	</param>
+	<param>
+		<id>962</id>
 		<name>CCS_END</name>
 	</param>
 	<param>
