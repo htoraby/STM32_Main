@@ -385,6 +385,14 @@ public:
   virtual int calcUfCharacteristicF(float value);
 
   /*!
+   * \brief Функция поиска верхней точки отрезка характеристики Uf которой
+   * принадлежит частота указанная в параметре
+   * \param freq
+   * \return
+   */
+  uint16_t findUfHiPoint(float freq);
+
+  /*!
    * \brief Метод задания предела тока
    * \return Код результата операции
    */
@@ -566,6 +574,7 @@ public:
   VsdLog *log() const { return log_; }
 
 
+  uint16_t findUfLowPoint(uint16_t hiPoint);
 protected:
   VsdLog *log_;
 
