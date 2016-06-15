@@ -339,7 +339,7 @@ void VsdEtalon::getNewValue(uint16_t id)
       break;
     case VSD_ETALON_AUTO_OPTIM_MODE:
       setValue(id, value);
-      parameters.set(CCS_RGM_AUTO_OPTIM_CURRENT_MODE, value);
+      parameters.set(CCS_RGM_OPTIM_VOLTAGE_MODE, value);
       break;
     case VSD_I_LIMIT_MODE:
       setValue(id, value);
