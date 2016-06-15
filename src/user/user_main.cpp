@@ -108,7 +108,7 @@ void createEm(bool init)
 
   uint8_t type = parameters.get(CCS_EM_TYPE);
   switch (type) {
-  case 1:
+  case EM_TYPE_SET4TM:
     em = new EmSet();
     break;
   default:
