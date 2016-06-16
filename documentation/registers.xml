@@ -9803,16 +9803,18 @@
 		<name>CCS_RGM_OPTIM_VOLTAGE_SCALE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_VOLTAGE</physic>
+		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>50.0</max>
+		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>10.0</value>
 		<text>Диапазон оптимизации</text>
 		<short_text>Диапазон оптимизации</short_text>
 		<form>5.1.7 Режим оптимизации напряжения</form>
-		<unit>VOLTAGE_V</unit>
-		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXXXXX</format>
 		<code>13</code>
 		<comment>Режим оптимизации напряжения диапазон</comment>
@@ -9824,9 +9826,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>10.0</max>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
 		<text>Шаг изменения напряжения</text>
 		<short_text>Шаг изменения напряжения</short_text>
 		<form>5.1.7 Режим оптимизации напряжения</form>
@@ -9843,14 +9847,16 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>86400.0</max>
+		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>600.0</value>
 		<text>Первый цикл после запуска</text>
 		<short_text>Первый цикл после запуска</short_text>
 		<form>5.1.7 Режим оптимизации напряжения</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XX_XX</format>
 		<code>13</code>
 		<comment>Режим оптимизации напряжения первый цикл после запуска</comment>
@@ -9862,9 +9868,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>86400.0</max>
+		<def>3600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>3600.0</value>
 		<text>Периодичность оптимизации</text>
 		<short_text>Периодичность оптимизации</short_text>
 		<form>5.1.7 Режим оптимизации напряжения</form>
