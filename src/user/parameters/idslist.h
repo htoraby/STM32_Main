@@ -500,8 +500,8 @@ enum enID
   CCS_RGM_OPTIM_VOLTAGE_MODE = 494,                          //!< Режим оптимизации напряжения вкл
   CCS_RGM_OPTIM_VOLTAGE_SCALE = 495,                         //!< Режим оптимизации напряжения диапазон
   CCS_RGM_OPTIM_VOLTAGE_STEP = 496,                          //!< Режим оптимизации напряжения шаг
-  CCS_RGM_OPTIM_VOLTAGE_DELAY_REACTION = 497,                //!< Режим оптимизации напряжения первый цикл после запуска
-  CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTART = 498,                 //!< Режим оптимизации напряжения периодичность оптимизации
+  CCS_RGM_OPTIM_VOLTAGE_DELAY = 497,                         //!< Режим оптимизации напряжения первый цикл после запуска
+  CCS_RGM_OPTIM_VOLTAGE_PERIOD = 498,                        //!< Режим оптимизации напряжения периодичность оптимизации
   CCS_RGM_PUMP_GAS_MODE = 499,                               //!< Режим прокачки газа
   CCS_RGM_PUMP_GAS_SETPOINT = 500,                           //!< Режим прокачки газа
   CCS_RGM_PUMP_GAS_DELAY_REACTION = 501,                     //!< Режим прокачки газа
@@ -917,7 +917,7 @@ enum enID
   CCS_DHS_CONNECTION_STOP_BIT = 911,                         //!< 
   CCS_CMD_DHS_CONNECTION_RESET = 912,                        //!< Команда сброса статистики связи с ТМС
   CCS_CMD_VSD_CONNECTION_RESET = 913,                        //!< Команда сброса статистики связи с ЧРП
-  CCS_RGM_AUTO_OPTIM_CURRENT_MODE = 914,                     //!< Автооптимизация по току
+  CCS_RESERVED_914 = 914,                                    //!< Автооптимизация по току
   CCS_RESTART_COUNT_ALL = 915,                               //!< Количество АПВ всех защит
   CCS_RESTART_COUNT_FIRST_TIME = 916,                        //!< Текущий параметр Время первого АПВ
   CCS_PROT_OTHER_LIMIT_RESTART_SETPOINT_RESET = 917,         //!< Команда сброса уставок защиты Превышение числа пусков по умолчанию
@@ -964,7 +964,8 @@ enum enID
   CCS_RGM_RUN_PUSH_SETPOINT_U1 = 958,                        //!< Уставка точки 1 напряжения для задания толчка
   CCS_RGM_RUN_PUSH_SETPOINT_U2 = 959,                        //!< Уставка точки 2 напряжения для задания толчка
   CCS_SETPOINT_FREQUENCY = 960,                              //!< Уставка частоты для не пусковых режимов работы
-  CCS_END = 961,                                             //!< 
+  CCS_RGM_OPTIM_VOLTAGE_STATE = 961,                         //!< Состояние режима оптимизация напряжения
+  CCS_END = 962,                                             //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
