@@ -527,30 +527,30 @@ int Vsd::calcUfCharacteristicF(float value)
 uint16_t Vsd::findUfHiPoint(float freq)
 {
   if (freq <= parameters.get(VSD_UF_CHARACTERISTIC_F_2))
-    return VSD_UF_CHARACTERISTIC_F_2;
+    return VSD_UF_CHARACTERISTIC_U_2;
   if (freq <= parameters.get(VSD_UF_CHARACTERISTIC_F_3))
-    return VSD_UF_CHARACTERISTIC_F_3;
+    return VSD_UF_CHARACTERISTIC_U_3;
   if (freq <= parameters.get(VSD_UF_CHARACTERISTIC_F_4))
-    return VSD_UF_CHARACTERISTIC_F_4;
+    return VSD_UF_CHARACTERISTIC_U_4;
   if (freq <= parameters.get(VSD_UF_CHARACTERISTIC_F_5))
-    return VSD_UF_CHARACTERISTIC_F_5;
+    return VSD_UF_CHARACTERISTIC_U_5;
   if (freq <= parameters.get(VSD_UF_CHARACTERISTIC_F_6))
-    return VSD_UF_CHARACTERISTIC_F_6;
+    return VSD_UF_CHARACTERISTIC_U_6;
   return 0;
 }
 
 uint16_t Vsd::findUfLowPoint(uint16_t hiPoint)
 {
-  if (hiPoint == VSD_UF_CHARACTERISTIC_F_2)
-    return VSD_UF_CHARACTERISTIC_F_1;
-  if (hiPoint == VSD_UF_CHARACTERISTIC_F_3)
-    return VSD_UF_CHARACTERISTIC_F_2;
-  if (hiPoint == VSD_UF_CHARACTERISTIC_F_4)
-    return VSD_UF_CHARACTERISTIC_F_3;
-  if (hiPoint == VSD_UF_CHARACTERISTIC_F_5)
-    return VSD_UF_CHARACTERISTIC_F_4;
-  if (hiPoint == VSD_UF_CHARACTERISTIC_F_6)
-    return VSD_UF_CHARACTERISTIC_F_5;
+  if (hiPoint == VSD_UF_CHARACTERISTIC_U_2)
+    return VSD_UF_CHARACTERISTIC_U_1;
+  if (hiPoint == VSD_UF_CHARACTERISTIC_U_3)
+    return VSD_UF_CHARACTERISTIC_U_2;
+  if (hiPoint == VSD_UF_CHARACTERISTIC_U_4)
+    return VSD_UF_CHARACTERISTIC_U_3;
+  if (hiPoint == VSD_UF_CHARACTERISTIC_U_5)
+    return VSD_UF_CHARACTERISTIC_U_4;
+  if (hiPoint == VSD_UF_CHARACTERISTIC_U_6)
+    return VSD_UF_CHARACTERISTIC_U_5;
   return 0;
 }
 
