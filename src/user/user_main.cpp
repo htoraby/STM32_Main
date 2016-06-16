@@ -87,6 +87,12 @@ void createDhs(bool init)
   case TYPE_DHS_ELEKTON_3:
     tms = new TmsElekton3();
     break;
+  case TYPE_DHS_BORETS:
+    tms = new TmsBorets();
+    break;
+  case TYPE_DHS_IRZ:
+    tms = new TmsIrz();
+    break;
   default:
     tms = new Tms();
     break;
@@ -105,7 +111,7 @@ void createEm(bool init)
 
   uint8_t type = parameters.get(CCS_EM_TYPE);
   switch (type) {
-  case 1:
+  case EM_TYPE_SET4TM:
     em = new EmSet();
     break;
   default:

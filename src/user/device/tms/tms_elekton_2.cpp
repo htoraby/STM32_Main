@@ -338,9 +338,6 @@ void TmsElekton2::getNewValue(uint16_t id)
     setValue(TMS_TEMPERATURE_WINDING, value);
     setValue(id, value);
     break;
-  case TMS_RESISTANCE_ISOLATION:
-    parameters.set(CCS_RESISTANCE_ISOLATION, value);
-    setValue(id, value);
   default:
     setValue(id, value);
     break;
