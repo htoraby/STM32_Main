@@ -39,7 +39,7 @@ void RegimeTechnologOptimizationVoltage::processing()
   //! Состояние в котором ожидается время после запуска
   case RunningState:
     //! Если задержка после запуска истекла
-    if ((ksu.getSecFromCurTime(parameters.get(CCS_LAST_RUN_DATE_TIME)) > delay_)
+    if ((ksu.getSecFromCurTime(CCS_LAST_RUN_DATE_TIME) > delay_)
       && (parameters.get(VSD_FREQUENCY) == parameters.get(VSD_FREQUENCY_NOW))) {
       //! Находим верхную точку отрезка U/f которой принадлежит текущая частота
       idUfHiPoint_ = vsd->findUfHiPoint(parameters.get(VSD_FREQUENCY_NOW));
@@ -91,7 +91,7 @@ void RegimeTechnologOptimizationVoltage::processing()
     state_ = WorkState + 2;
     break;
   case WorkState + 2:
-    if (cntCurrent_ < 10) {
+    if (cntCurrent_ < 30) {
       newCurrent_ = newCurrent_ + parameters.get(CCS_MOTOR_CURRENT_AVARAGE);
       cntCurrent_++;
     }
