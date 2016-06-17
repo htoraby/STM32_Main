@@ -9789,8 +9789,8 @@
 		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<text>Реакция режима</text>
-		<short_text>Реакция режима</short_text>
+		<text>Оптимизации напряжения</text>
+		<short_text>Оптимизация напряжения</short_text>
 		<form>5.1.7 Режим оптимизации напряжения</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
