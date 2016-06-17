@@ -28,6 +28,10 @@ void RegimeTechnologOptimizationVoltage::processing()
     state_ = IdleState;
   }
 
+  if (state_ != IdleState) {
+
+  }
+
   switch (state_) {
   //! Состояние в котором ничего не происходит
   case IdleState:
@@ -68,21 +72,26 @@ void RegimeTechnologOptimizationVoltage::processing()
     break;
   //! Состояние понижения напряжения
   case WorkState:
-    if (((valueUfLowPoint_ - step_) >= limDownUfLowPoint_)
-      && ((valueUfHiPoint_ - step_) >= limDownUfHiPoint_)) {
-      //! Запомнить ток
+    if ((valueUfHiPoint_ <= limDownUfHiPoint_) && (valueUfLowPoint_ <= limDownUfLowPoint_))
+    {
+      state_ = PauseState;
+      beginPeriod_ = ksu.getTime();
+    }
+    else {
       oldCurrent_ = parameters.get(CCS_MOTOR_CURRENT_AVARAGE);
       //! Задаём новую верхнию точку напряжения
       valueUfHiPoint_ = valueUfHiPoint_ - step_;
+      if (valueUfHiPoint_ < limDownUfHiPoint_) {
+        valueUfHiPoint_ = limDownUfHiPoint_;
+      }
       parameters.set(idUfHiPoint_, valueUfHiPoint_);
       //! Задаём новую нижнию точку напряжения
       valueUfLowPoint_ = valueUfLowPoint_ - step_;
+      if (valueUfLowPoint_ < limDownUfLowPoint_) {
+        valueUfLowPoint_ = limDownUfLowPoint_;
+      }
       parameters.set(idUfLowPoint_, valueUfLowPoint_);
       state_ = WorkState + 1;
-    }
-    else {
-      state_ = PauseState;
-      beginPeriod_ = ksu.getTime();
     }
     break;
   case WorkState + 1:
@@ -107,19 +116,18 @@ void RegimeTechnologOptimizationVoltage::processing()
     }
     break;
   case WorkState + 3:
-    if (((valueUfLowPoint_ + step_) <= limUpUfLowPoint_)
-      && ((valueUfHiPoint_ + step_) <= limUpUfHiPoint_)) {
-      //! Запомнить ток
-      oldCurrent_ = parameters.get(CCS_MOTOR_CURRENT_AVARAGE);
-      //! Задаём новую верхнию точку напряжения
-      valueUfHiPoint_ = valueUfHiPoint_ + step_;
-      parameters.set(idUfHiPoint_, valueUfHiPoint_);
-      //! Задаём новую нижнию точку напряжения
-      valueUfLowPoint_ = valueUfLowPoint_ + step_;
-      parameters.set(idUfLowPoint_, valueUfLowPoint_);
-      state_ = PauseState;
-      beginPeriod_ = ksu.getTime();
+    valueUfHiPoint_ = valueUfHiPoint_ + step_;
+    if (valueUfHiPoint_ > limUpUfHiPoint_) {
+      valueUfHiPoint_ = limUpUfHiPoint_;
     }
+    parameters.set(idUfHiPoint_, valueUfHiPoint_);
+    valueUfLowPoint_ = valueUfLowPoint_ + step_;
+    if (valueUfLowPoint_ > limUpUfLowPoint_) {
+      valueUfLowPoint_ = limUpUfLowPoint_;
+    }
+    parameters.set(idUfLowPoint_, valueUfLowPoint_);
+    state_ = PauseState;
+    beginPeriod_ = ksu.getTime();
     break;
   case PauseState:
     if (ksu.getSecFromCurTime(beginPeriod_) > period_) {
