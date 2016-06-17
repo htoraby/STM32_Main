@@ -201,7 +201,7 @@ void TmsEtalon::init()
   createThread("UpdParamsTms");
   int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
   dm_ = new DeviceModbus(modbusParameters_, count,
-                         TMS_UART, 19200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 0x33);
+                         TMS_UART, 19200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1);
   dm_->createThread("ProtocolTms", getValueDeviceQId_);
 
   initParameters();
