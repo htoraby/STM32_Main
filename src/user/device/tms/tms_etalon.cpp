@@ -26,7 +26,7 @@ void TmsEtalon::initModbusParameters()
                            OPERATION_READ,  // Операции с параметром
                            PHYSIC_RESISTANCE,
                            RESISTANCE_KOM,  // Единицы измерения параметра
-                           TYPE_DATA_INT16, // Тип данных
+                           TYPE_DATA_INT16_4, // Тип данных
                            0,               // Индекс
                            1.0,             // Коэффициент преобразования параметра
                            0.0,             // Минимальное значение параметра
@@ -44,7 +44,7 @@ void TmsEtalon::initModbusParameters()
                            OPERATION_READ,  // Операции с параметром
                            PHYSIC_TEMPERATURE,
                            TEMPERATURE_C,   // Единицы измерения параметра
-                           TYPE_DATA_INT16, // Тип данных
+                           TYPE_DATA_INT16_4, // Тип данных
                            0,               // Индекс
                            1.0,             // Коэффициент преобразования параметра
                            0.0,             // Минимальное значение параметра
@@ -62,7 +62,7 @@ void TmsEtalon::initModbusParameters()
                            OPERATION_READ,  // Операции с параметром
                            PHYSIC_TEMPERATURE,
                            TEMPERATURE_C,   // Единицы измерения параметра
-                           TYPE_DATA_INT16, // Тип данных
+                           TYPE_DATA_INT16_4, // Тип данных
                            0,               // Индекс
                            1.0,             // Коэффициент преобразования параметра
                            0.0,             // Минимальное значение параметра
@@ -80,7 +80,7 @@ void TmsEtalon::initModbusParameters()
                            OPERATION_READ,            // Операции с параметром
                            PHYSIC_ACCELERATION,       // Физическая величина параметра
                            ACCELERATION_MMSS2,        // Единицы измерения параметра
-                           TYPE_DATA_INT16,           // Тип данных
+                           TYPE_DATA_INT16_4,           // Тип данных
                            0,                         // Индекс
                            0.1,                       // Коэффициент преобразования параметра
                            0.0,                       // Минимальное значение параметра
@@ -98,7 +98,7 @@ void TmsEtalon::initModbusParameters()
                            OPERATION_READ,            // Операции с параметром
                            PHYSIC_ACCELERATION,       // Физическая величина параметра
                            ACCELERATION_MMSS2,        // Единицы измерения параметра
-                           TYPE_DATA_INT16,           // Тип данных
+                           TYPE_DATA_INT16_4,           // Тип данных
                            0,                         // Индекс
                            0.1,                       // Коэффициент преобразования параметра
                            0.0,                       // Минимальное значение параметра
@@ -116,7 +116,7 @@ void TmsEtalon::initModbusParameters()
                            OPERATION_READ,  // Операции с параметром
                            PHYSIC_PRESSURE, // Физическая величина параметра
                            PRESSURE_ATM,    // Единицы измерения параметра
-                           TYPE_DATA_INT16, // Тип данных
+                           TYPE_DATA_INT16_4, // Тип данных
                            0,               // Индекс
                            1,               // Коэффициент преобразования параметра
                            0.0,             // Минимальное значение параметра
@@ -134,7 +134,7 @@ void TmsEtalon::initModbusParameters()
                            OPERATION_READ,            // Операции с параметром
                            PHYSIC_ACCELERATION,       // Физическая величина параметра
                            ACCELERATION_MMSS2,        // Единицы измерения параметра
-                           TYPE_DATA_INT16,           // Тип данных
+                           TYPE_DATA_INT16_4,           // Тип данных
                            0,                         // Индекс
                            0.1,                       // Коэффициент преобразования параметра
                            0.0,                       // Минимальное значение параметра
@@ -152,7 +152,7 @@ void TmsEtalon::initModbusParameters()
                            OPERATION_READ,  // Операции с параметром
                            PHYSIC_NUMERIC,  // Физическая величина параметра
                            NUMERIC_NUMBER,  // Единицы измерения параметра
-                           TYPE_DATA_INT16, // Тип данных
+                           TYPE_DATA_INT16_4, // Тип данных
                            0,               // Индекс
                            0.01,            // Коэффициент преобразования параметра
                            0.0,             // Минимальное значение параметра
@@ -170,7 +170,7 @@ void TmsEtalon::initModbusParameters()
                            OPERATION_READ,  // Операции с параметром
                            PHYSIC_NUMERIC,  // Физическая величина параметра
                            NUMERIC_NUMBER,  // Единицы измерения параметра
-                           TYPE_DATA_INT16, // Тип данных
+                           TYPE_DATA_INT16_4, // Тип данных
                            0,               // Индекс
                            1,               // Коэффициент преобразования параметра
                            0.0,             // Минимальное значение параметра
