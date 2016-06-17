@@ -93,6 +93,9 @@ void createDhs(bool init)
   case TYPE_DHS_IRZ:
     tms = new TmsIrz();
     break;
+  case TYPE_DHS_ETALON:
+    tms = new TmsEtalon();
+    break;
   default:
     tms = new Tms();
     break;
