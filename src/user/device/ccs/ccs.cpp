@@ -880,7 +880,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (value != Regime::OffAction) {
       parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction); // Отключаем режим толчковый
       parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction); // Отключаем режим раскачки
-      parameters.set(CCS_PROT_MOTOR_ASYNC_MODE, Protection::ModeOff); // Отключаем защиту турбин. вращен.
+      parameters.set(CCS_PROT_MOTOR_ASYNC_MODE, Protection::ProtModeOff); // Отключаем защиту турбин. вращен.
       vsd->onRegimePickup();
     }
     else {
@@ -918,7 +918,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_PROT_MOTOR_ASYNC_MODE:
     err = setValue(id, value, eventType);
-    if (value != Protection::ModeOff) {
+    if (value != Protection::ProtModeOff) {
       parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction); // Отключаем режим подхвата
     }
     return err;
@@ -1246,46 +1246,46 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_PROT_DI_1_MODE:
     err = setValue(id, value, eventType);
-    if (value != Protection::ModeOff) {
+    if (value != Protection::ProtModeOff) {
       parameters.set(CCS_DI_1_ACTION, DI_ACTION_PROTECTION); // Вкл Действие по сигналу "Защита"
     }
     return err;
   case CCS_PROT_DI_2_MODE:
     err = setValue(id, value, eventType);
-    if (value != Protection::ModeOff) {
+    if (value != Protection::ProtModeOff) {
       parameters.set(CCS_DI_2_ACTION, DI_ACTION_PROTECTION); // Вкл Действие по сигналу "Защита"
     }
     return err;
   case CCS_PROT_DI_3_MODE:
     err = setValue(id, value, eventType);
-    if (value != Protection::ModeOff) {
+    if (value != Protection::ProtModeOff) {
       parameters.set(CCS_DI_3_ACTION, DI_ACTION_PROTECTION); // Вкл Действие по сигналу "Защита"
     }
     return err;
   case CCS_PROT_DI_4_MODE:
     err = setValue(id, value, eventType);
-    if (value != Protection::ModeOff)
+    if (value != Protection::ProtModeOff)
       parameters.set(CCS_DI_4_ACTION, DI_ACTION_PROTECTION); // Вкл Действие по сигналу "Защита"
     return err;
   case CCS_DI_1_ACTION:
     err = setValue(id, value, eventType);
     if (value != DI_ACTION_PROTECTION)
-      parameters.set(CCS_PROT_DI_1_MODE, Protection::ModeOff); // Отключаем защиту по цифромому входу
+      parameters.set(CCS_PROT_DI_1_MODE, Protection::ProtModeOff); // Отключаем защиту по цифромому входу
     return err;
   case CCS_DI_2_ACTION:
     err = setValue(id, value, eventType);
     if (value != DI_ACTION_PROTECTION)
-      parameters.set(CCS_PROT_DI_2_MODE, Protection::ModeOff); // Отключаем защиту по цифромому входу
+      parameters.set(CCS_PROT_DI_2_MODE, Protection::ProtModeOff); // Отключаем защиту по цифромому входу
     return err;
   case CCS_DI_3_ACTION:
     err = setValue(id, value, eventType);
     if (value != DI_ACTION_PROTECTION)
-      parameters.set(CCS_PROT_DI_3_MODE, Protection::ModeOff); // Отключаем защиту по цифромому входу
+      parameters.set(CCS_PROT_DI_3_MODE, Protection::ProtModeOff); // Отключаем защиту по цифромому входу
     return err;
   case CCS_DI_4_ACTION:
     err = setValue(id, value, eventType);
     if (value != DI_ACTION_PROTECTION)
-      parameters.set(CCS_PROT_DI_4_MODE, Protection::ModeOff); // Отключаем защиту по цифромому входу
+      parameters.set(CCS_PROT_DI_4_MODE, Protection::ProtModeOff); // Отключаем защиту по цифромому входу
     return err;
   case CCS_AI_1_TYPE:
     err = setValue(id, value, eventType);

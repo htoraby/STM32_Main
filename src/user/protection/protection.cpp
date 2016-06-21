@@ -132,7 +132,7 @@ void Protection::addEventReactionProt()
 
 bool Protection::isModeOff()
 {
-  if (parameters.get(idMode_) == ModeOff)
+  if (parameters.get(idMode_) == ProtModeOff)
     return true;
   else
     return false;
@@ -145,7 +145,7 @@ bool Protection::isProtect()
 
 bool Protection::isModeBlock()
 {
-  if (parameters.get(idMode_) == ModeBlock)
+  if (parameters.get(idMode_) == ProtModeBlock)
     return true;
   else
     return false;
@@ -153,7 +153,7 @@ bool Protection::isModeBlock()
 
 bool Protection::isModeRestart()
 {
-  if (parameters.get(idMode_) == ModeRestart)
+  if (parameters.get(idMode_) == ProtModeRestart)
     return true;
   else
     return false;
@@ -161,7 +161,7 @@ bool Protection::isModeRestart()
 
 bool Protection::isModeOn()
 {
-  if (parameters.get(idMode_) == ModeOn)
+  if (parameters.get(idMode_) == ProtModeOn)
     return true;
   else
     return false;

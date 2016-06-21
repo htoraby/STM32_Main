@@ -5372,11 +5372,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].operation                       = OPERATION_WRITE;
   parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].validity                        = VALIDITY_OK;
-  parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].value.float_t                   = 0;
+  parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].max                             = 999999999.9;
+  parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].max                             = 3.0;
   parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].discret                         = 1;
-  parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].def                             = 0;
+  parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].code                            = 13;
   // Состояние автомата периодического режима
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].id                             = CCS_RGM_PERIODIC_STATE;
@@ -5470,7 +5470,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].value.float_t           = 0.0;
   parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].min                     = 0.0;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].max                     = 1.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].max                     = 3.0;
   parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].discret                 = 1;
   parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].def                     = 0.0;
   parameters_[CCS_RGM_ALTERNATION_FREQ_MODE - CCS_BEGIN].code                    = 13;
@@ -5578,7 +5578,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CHANGE_FREQ_MODE - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_RGM_CHANGE_FREQ_MODE - CCS_BEGIN].value.float_t                = 0.0;
   parameters_[CCS_RGM_CHANGE_FREQ_MODE - CCS_BEGIN].min                          = 0.0;
-  parameters_[CCS_RGM_CHANGE_FREQ_MODE - CCS_BEGIN].max                          = 2.0;
+  parameters_[CCS_RGM_CHANGE_FREQ_MODE - CCS_BEGIN].max                          = 3.0;
   parameters_[CCS_RGM_CHANGE_FREQ_MODE - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_RGM_CHANGE_FREQ_MODE - CCS_BEGIN].def                          = 0.0;
   parameters_[CCS_RGM_CHANGE_FREQ_MODE - CCS_BEGIN].code                         = 13;
@@ -5698,7 +5698,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].value.float_t          = 0.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].max                    = 10.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].max                    = 3.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].discret                = 1;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].def                    = 0.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].code                   = 13;
@@ -5936,13 +5936,13 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].operation                  = OPERATION_WRITE;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].validity                   = VALIDITY_OK;
-  parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].value.float_t              = 0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].value.float_t              = 0.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].max                        = 999999999.9;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].max                        = 3.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].discret                    = 1;
-  parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].def                        = 0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].def                        = 0.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].code                       = 13;
-  // Режим оптимизации напряжения диапазон
+  // Режим оптимизации напряжения Максимальное отклонение от U/f
   parameters_[CCS_RGM_OPTIM_VOLTAGE_SCALE - CCS_BEGIN].id                        = CCS_RGM_OPTIM_VOLTAGE_SCALE;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_SCALE - CCS_BEGIN].access                    = ACCESS_OPERATOR;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_SCALE - CCS_BEGIN].operation                 = OPERATION_WRITE;
@@ -5998,9 +5998,9 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].max                             = 999999999.9;
+  parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].max                             = 3.0;
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].discret                         = 1;
-  parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].def                             = 0;
+  parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].code                            = 13;
   // Режим прокачки газа
   parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].id                          = CCS_RGM_PUMP_GAS_SETPOINT;
@@ -6046,7 +6046,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].value.float_t              = 0;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].max                        = 2.0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].max                        = 3.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].discret                    = 1;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].def                        = 0.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].code                       = 13;
@@ -8302,7 +8302,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].validity                      = 0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].max                           = 999999999.9;
+  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].max                           = 2.0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].def                           = 0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].code                          = 13;
