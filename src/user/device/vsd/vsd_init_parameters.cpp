@@ -1390,7 +1390,7 @@ void Vsd::initParameters()
   parameters_[VSD_JARRING_MODE - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_JARRING_MODE - VSD_BEGIN].value.float_t                        = 0.0;
   parameters_[VSD_JARRING_MODE - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_JARRING_MODE - VSD_BEGIN].max                                  = 1.0;
+  parameters_[VSD_JARRING_MODE - VSD_BEGIN].max                                  = 3.0;
   parameters_[VSD_JARRING_MODE - VSD_BEGIN].def                                  = 0.0;
   parameters_[VSD_JARRING_MODE - VSD_BEGIN].discret                              = 1;
   parameters_[VSD_JARRING_MODE - VSD_BEGIN].code                                 = 0;
@@ -3634,7 +3634,7 @@ void Vsd::initParameters()
   parameters_[VSD_I_LIMIT_MODE - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_I_LIMIT_MODE - VSD_BEGIN].value.float_t                        = 0.0;
   parameters_[VSD_I_LIMIT_MODE - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_I_LIMIT_MODE - VSD_BEGIN].max                                  = 2.0;
+  parameters_[VSD_I_LIMIT_MODE - VSD_BEGIN].max                                  = 3.0;
   parameters_[VSD_I_LIMIT_MODE - VSD_BEGIN].def                                  = 0.0;
   parameters_[VSD_I_LIMIT_MODE - VSD_BEGIN].discret                              = 1;
   parameters_[VSD_I_LIMIT_MODE - VSD_BEGIN].code                                 = 0;

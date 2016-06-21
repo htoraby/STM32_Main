@@ -8858,9 +8858,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>3.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Работа по прог.</text>
 		<short_text>Работа по прог.</short_text>
 		<form>5.1.1 Периодический режим</form>
@@ -9024,7 +9026,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>1.0</max>
+		<max>3.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -9214,7 +9216,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>2.0</max>
+		<max>3.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -9414,7 +9416,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10.0</max>
+		<max>3.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -9569,8 +9571,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0</value>
-		<text>Режим встрях. Действие</text>
-		<short_text>Режим встрях. Действие</short_text>
+		<text>Встряхивание. Действие</text>
+		<short_text>Встряхивание. Действие</short_text>
 		<form>5.1.7 Режим встряхивания</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -9591,8 +9593,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
-		<text>Режим встрях. Период</text>
-		<short_text>Режим встрях. Период</short_text>
+		<text>Встряхивание. Период</text>
+		<short_text>Встряхивание. Период</short_text>
 		<form>5.1.7 Режим встряхивания</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_SS</unit_lcd>
@@ -9612,8 +9614,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Режим встрях. Частота 1</text>
-		<short_text>Режим встрях. Частота 1</short_text>
+		<text>Встряхивание. Частота 1</text>
+		<short_text>Встряхивание. Частота 1</short_text>
 		<form>5.1.7 Режим встряхивания</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -9633,8 +9635,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Режим встрях. Темп разгона</text>
-		<short_text>Режим встрях. Темп разгона</short_text>
+		<text>Встряхивание. Темп разгона</text>
+		<short_text>Встряхивание. Темп разгона</short_text>
 		<form>5.1.7 Режим встряхивания</form>
 		<unit>TEMP_HZ_SS</unit>
 		<unit_lcd>TEMP_HZ_SS</unit_lcd>
@@ -9654,8 +9656,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Режим встрях. Частота 2</text>
-		<short_text>Режим встрях. Частота 2</short_text>
+		<text>Встряхивание. Частота 2</text>
+		<short_text>Встряхивание. Частота 2</short_text>
 		<form>5.1.7 Режим встряхивания</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -9675,8 +9677,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Режим встрях. Темп тормож.</text>
-		<short_text>Режим встрях. Темп тормож.</short_text>
+		<text>Встряхивание. Темп тормож.</text>
+		<short_text>Встряхивание. Темп тормож.</short_text>
 		<form>5.1.7 Режим встряхивания</form>
 		<unit>TEMP_HZ_SS</unit>
 		<unit_lcd>TEMP_HZ_SS</unit_lcd>
@@ -9786,11 +9788,13 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>3.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<text>Оптимизации напряжения</text>
-		<short_text>Оптимизация напряжения</short_text>
+		<value>0.0</value>
+		<text>Состояние</text>
+		<short_text>Опт.U. Состояние</short_text>
 		<form>5.1.7 Режим оптимизации напряжения</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
@@ -9810,14 +9814,14 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
-		<text>Диапазон оптимизации</text>
-		<short_text>Диапазон оптимизации</short_text>
+		<text>Максимальное отклонение от U/f</text>
+		<short_text>Отп.U. Максимальное отклонение от U/f</short_text>
 		<form>5.1.7 Режим оптимизации напряжения</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXXXXX</format>
 		<code>13</code>
-		<comment>Режим оптимизации напряжения диапазон</comment>
+		<comment>Режим оптимизации напряжения Максимальное отклонение от U/f</comment>
 	</param>
 	<param>
 		<id>496</id>
@@ -9832,7 +9836,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Шаг изменения напряжения</text>
-		<short_text>Шаг изменения напряжения</short_text>
+		<short_text>Отп.U. Шаг изменения напряжения</short_text>
 		<form>5.1.7 Режим оптимизации напряжения</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -9852,8 +9856,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
-		<text>Первый цикл после запуска</text>
-		<short_text>Первый цикл после запуска</short_text>
+		<text>Первый цикл после пуска</text>
+		<short_text>Отп.U. Первый цикл после пуска</short_text>
 		<form>5.1.7 Режим оптимизации напряжения</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -9874,7 +9878,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>3600.0</value>
 		<text>Периодичность оптимизации</text>
-		<short_text>Периодичность оптимизации</short_text>
+		<short_text>Отп.U. Периодичность оптимизации</short_text>
 		<form>5.1.7 Режим оптимизации напряжения</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -9889,7 +9893,8 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>3.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Реакция режима</text>
@@ -9965,7 +9970,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>2.0</max>
+		<max>3.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13450,7 +13455,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>2.0</max>
 		<discret>1</discret>
 		<code>13</code>
 	</param>
@@ -18668,12 +18673,12 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние режима оптимизация напряжения</text>
-		<short_text>Состояние режима оптимизация напряжения</short_text>
+		<text>Состояние оптимизации</text>
+		<short_text>Опт.U. Состояние оптимизации</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
-		<unit_lcd>NULL</unit_lcd>
-		<format>NULL</format>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
 		<code>0</code>
 		<comment>Состояние режима оптимизация напряжения</comment>
 	</param>
@@ -19272,8 +19277,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>10.0</value>
-		<text>U/F точка U1</text>
-		<short_text>U/F точка U1</short_text>
+		<text>U/F точка U 1</text>
+		<short_text>U/F точка U 1</short_text>
 		<form>3.2.2 Настройка U/f</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -19293,8 +19298,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>U/F точка F1</text>
-		<short_text>U/F точка F1</short_text>
+		<text>U/F точка F 1</text>
+		<short_text>U/F точка F 1</short_text>
 		<form>3.2.2 Настройка U/f</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -19314,8 +19319,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>380.0</value>
-		<text>U/F точка U2</text>
-		<short_text>U/F точка U2</short_text>
+		<text>U/F точка U 2</text>
+		<short_text>U/F точка U 2</short_text>
 		<form>3.2.2 Настройка U/f</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -19335,8 +19340,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>50.0</value>
-		<text>U/F точка F2</text>
-		<short_text>U/F точка F2</short_text>
+		<text>U/F точка F 2</text>
+		<short_text>U/F точка F 2</short_text>
 		<form>3.2.2 Настройка U/f</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -19356,8 +19361,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>380.0</value>
-		<text>U/F точка U3</text>
-		<short_text>U/F точка U3</short_text>
+		<text>U/F точка U 3</text>
+		<short_text>U/F точка U 3</short_text>
 		<form>3.2.2 Настройка U/f</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -19377,8 +19382,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>50.0</value>
-		<text>U/F точка F3</text>
-		<short_text>U/F точка F3</short_text>
+		<text>U/F точка F 3</text>
+		<short_text>U/F точка F 3</short_text>
 		<form>3.2.2 Настройка U/f</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -19398,8 +19403,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>380.0</value>
-		<text>U/F точка U4</text>
-		<short_text>U/F точка U4</short_text>
+		<text>U/F точка U 4</text>
+		<short_text>U/F точка U 4</short_text>
 		<form>3.2.2 Настройка U/f</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -19419,8 +19424,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>50.0</value>
-		<text>U/F точка F4</text>
-		<short_text>U/F точка F4</short_text>
+		<text>U/F точка F 4</text>
+		<short_text>U/F точка F 4</short_text>
 		<form>3.2.2 Настройка U/f</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -19440,8 +19445,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>380.0</value>
-		<text>U/F точка U5</text>
-		<short_text>U/F точка U5</short_text>
+		<text>U/F точка U 5</text>
+		<short_text>U/F точка U 5</short_text>
 		<form>3.2.2 Настройка U/f</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -19461,8 +19466,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>50.0</value>
-		<text>U/F точка F5</text>
-		<short_text>U/F точка F5</short_text>
+		<text>U/F точка F 5</text>
+		<short_text>U/F точка F 5</short_text>
 		<form>3.2.2 Настройка U/f</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -19482,8 +19487,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>380.0</value>
-		<text>U/F точка U6</text>
-		<short_text>U/F точка U6</short_text>
+		<text>U/F точка U 6</text>
+		<short_text>U/F точка U 6</short_text>
 		<form>3.2.2 Настройка U/f</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -19503,8 +19508,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>50.0</value>
-		<text>U/F точка F6</text>
-		<short_text>U/F точка F6</short_text>
+		<text>U/F точка F 6</text>
+		<short_text>U/F точка F 6</short_text>
 		<form>3.2.2 Настройка U/f</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -20609,7 +20614,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>1.0</max>
+		<max>3.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -24077,7 +24082,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>2.0</max>
+		<max>3.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
