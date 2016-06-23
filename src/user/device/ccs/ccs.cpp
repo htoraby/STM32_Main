@@ -1009,7 +1009,6 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     calcMotorInductFromResistPhase();
     calcSystemInduct();
-    parameters.set(VSD_MOTOR_INDUCTANCE_RESIST_PHASE, value, eventType);   // Задаём сопротивление в ЧРП
     return err;
   case CCS_FILTER_INDUCTANCE:
     err = setValue(id, value, eventType);

@@ -8294,12 +8294,12 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].discret  = 1;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].def      = 0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN - CCS_BEGIN].code     = 13;
-  // 
+  // Подхват. Состояние
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].id                            = CCS_RGM_RUN_PICKUP_MODE;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].access                        = ACCESS_OPERATOR;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].operation                     = OPERATION_WRITE;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
-  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].validity                      = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].min                           = 0.0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].max                           = 2.0;
@@ -8311,7 +8311,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].access                       = ACCESS_OPERATOR;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].operation                    = OPERATION_WRITE;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
-  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].validity                     = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].value.float_t                = 0;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].min                          = 0.0;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].max                          = 999999999.9;
@@ -8323,7 +8323,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].access                          = ACCESS_OPERATOR;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].operation                       = OPERATION_WRITE;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
-  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].validity                        = 0;
+  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].value.float_t                   = 0;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].min                             = 0.0;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].max                             = 999999999.9;
@@ -8335,7 +8335,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].access                        = ACCESS_OPERATOR;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].operation                     = OPERATION_WRITE;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
-  parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].validity                      = 0;
+  parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].value.float_t                 = 0;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].min                           = 0.0;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].max                           = 999999999.9;
@@ -9277,7 +9277,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_VSD_RESET_SETPOINTS - CCS_BEGIN].max                       = 1.0;
   parameters_[CCS_CMD_VSD_RESET_SETPOINTS - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_CMD_VSD_RESET_SETPOINTS - CCS_BEGIN].def                       = 0.0;
-  parameters_[CCS_CMD_VSD_RESET_SETPOINTS - CCS_BEGIN].code                      = 0;
+  parameters_[CCS_CMD_VSD_RESET_SETPOINTS - CCS_BEGIN].code                      = 13;
   // Максимальная рабочая частота (базовая)
   parameters_[CCS_BASE_FREQUENCY - CCS_BEGIN].id                                 = CCS_BASE_FREQUENCY;
   parameters_[CCS_BASE_FREQUENCY - CCS_BEGIN].access                             = ACCESS_OPERATOR;
