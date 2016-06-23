@@ -352,6 +352,16 @@ void Device::setValidity(uint16_t id, uint8_t validity)
   setFieldValidity(getIndexAtId(id), validity);
 }
 
+void Device::setAccess(uint16_t id, uint8_t access)
+{
+  setFieldAccess(getIndexAtId(id), access);
+}
+
+void Device::setOperation(uint16_t id, uint8_t operation)
+{
+  setFieldOperation(getIndexAtId(id), operation);
+}
+
 float Device::getMin(uint16_t id)
 {
   return getFieldMinimum(getIndexAtId(id));

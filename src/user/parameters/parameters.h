@@ -105,6 +105,10 @@ public:
 
   uint8_t setMax(uint16_t id, float value);
 
+  void setAccess(uint16_t id, uint8_t access);
+
+  void setOperation(uint16_t id, uint8_t operation);
+
   /*!
    * \brief checkZero Функция проверки на ноль
    * \param id уникальный идентификатор параметра

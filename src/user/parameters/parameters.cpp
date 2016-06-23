@@ -247,6 +247,30 @@ uint8_t Parameters::setMax(uint16_t id, float value)
   return err_r;
 }
 
+void Parameters::setAccess(uint16_t id, uint8_t access)
+{
+  if ((id > CCS_BEGIN) && (id < CCS_END))
+    ksu.setAccess(id, access);
+  if ((id > VSD_BEGIN) && (id < VSD_END))
+    vsd->setAccess(id, access);
+  if ((id > TMS_BEGIN) && (id < TMS_END))
+    tms->setAccess(id, access);
+  if ((id > EM_BEGIN) && (id < EM_END))
+    em->setAccess(id, access);
+}
+
+void Parameters::setOperation(uint16_t id, uint8_t operation)
+{
+  if ((id > CCS_BEGIN) && (id < CCS_END))
+    ksu.setOperation(id, operation);
+  if ((id > VSD_BEGIN) && (id < VSD_END))
+    vsd->setOperation(id, operation);
+  if ((id > TMS_BEGIN) && (id < TMS_END))
+    tms->setOperation(id, operation);
+  if ((id > EM_BEGIN) && (id < EM_END))
+    em->setOperation(id, operation);
+}
+
 float Parameters::checkZero(unsigned short id, bool reset, float value)
 {
   if (parameters.get(id) == 0) {
