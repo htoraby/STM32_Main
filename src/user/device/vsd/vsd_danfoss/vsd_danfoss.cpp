@@ -1498,6 +1498,11 @@ void VsdDanfoss::getNewValue(uint16_t id)
     case VSD_STATUS_WORD_1:
       setValue(id, value);
       calcFiltTimeCurLim(value);
+      break;
+    case VSD_FREQUENCY_NOW:
+      setValue(id, value);
+      ksu.calcMotorSpeed();
+      break;
     default:
       setValue(id, value);
       break;
