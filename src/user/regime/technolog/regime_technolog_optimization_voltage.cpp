@@ -28,10 +28,6 @@ void RegimeTechnologOptimizationVoltage::processing()
     state_ = IdleState;
   }
 
-  if (state_ != IdleState) {
-
-  }
-
   switch (state_) {
   //! Состояние в котором ничего не происходит
   case IdleState:
