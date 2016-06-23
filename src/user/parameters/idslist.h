@@ -498,7 +498,7 @@ enum enID
   CCS_RGM_HEAT_CABLE_MODE_CURRENT = 492,                     //!< Режим Учёт нагрева кабеля номинальный ток кабеля
   CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION = 493,              //!< Режим Учёт нагрева кабеля время нагрева
   CCS_RGM_OPTIM_VOLTAGE_MODE = 494,                          //!< Режим оптимизации напряжения вкл
-  CCS_RGM_OPTIM_VOLTAGE_SCALE = 495,                         //!< Режим оптимизации напряжения диапазон
+  CCS_RGM_OPTIM_VOLTAGE_SCALE = 495,                         //!< Режим оптимизации напряжения Максимальное отклонение от U/f
   CCS_RGM_OPTIM_VOLTAGE_STEP = 496,                          //!< Режим оптимизации напряжения шаг
   CCS_RGM_OPTIM_VOLTAGE_DELAY = 497,                         //!< Режим оптимизации напряжения первый цикл после запуска
   CCS_RGM_OPTIM_VOLTAGE_PERIOD = 498,                        //!< Режим оптимизации напряжения периодичность оптимизации

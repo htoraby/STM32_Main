@@ -90,7 +90,7 @@ void ProtectionPowerOff::addEventReactionProt()
 void ProtectionPowerOff::processingStateRun()       // Состояние работа
 {
   if ((ksu.isProgramMode() && (parameters.get(CCS_RGM_PERIODIC_MODE) != Regime::OffAction)) ||
-      (ksu.isAutoMode() && ksu.isWorkMotor() && (parameters.get(CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE) == Protection::ModeRestart))) {
+      (ksu.isAutoMode() && ksu.isWorkMotor() && (parameters.get(CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE) == Protection::ProtModeRestart))) {
     if (alarm_ && !protUnderVoltIn.isRestart()) {
 #if (USE_LOG_DEBUG == 1)
       logDebug.add(DebugMsg, "Защиты: Срабатывание --> АПВ (PowerOff)");

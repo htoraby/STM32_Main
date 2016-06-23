@@ -13,10 +13,10 @@ public:
    * \brief Список действий защиты
   */
   typedef enum {
-    ModeOff         = 0,                    //!< Защиты выключена
-    ModeBlock,                              //!< Реакция защиты блокировка
-    ModeRestart,                            //!< Реакция защиты АПВ
-    ModeOn,                                 //!< Защита включена
+    ProtModeOff         = 0,                    //!< Защиты выключена
+    ProtModeBlock,                              //!< Реакция защиты блокировка
+    ProtModeRestart,                            //!< Реакция защиты АПВ
+    ProtModeOn,                                 //!< Защита включена
   } ProtMode;
 
   /*!
