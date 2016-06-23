@@ -734,7 +734,7 @@ void Vsd::initParameters()
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].def                             = 0;
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].discret                         = 1;
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].code                            = 0;
-  // Напряжение форсировки
+  // Подхват. Напряжение форсировки
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].id                                     = VSD_UF_U_FORCE;
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].access                                 = ACCESS_OPERATOR;
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].operation                              = OPERATION_WRITE;
@@ -746,7 +746,7 @@ void Vsd::initParameters()
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].def                                    = 0;
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].discret                                = 1;
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].code                                   = 0;
-  // Частота форсировки
+  // Подхват. Частота форсировки
   parameters_[VSD_UF_F_FORCE - VSD_BEGIN].id                                     = VSD_UF_F_FORCE;
   parameters_[VSD_UF_F_FORCE - VSD_BEGIN].access                                 = ACCESS_OPERATOR;
   parameters_[VSD_UF_F_FORCE - VSD_BEGIN].operation                              = OPERATION_WRITE;
@@ -1946,7 +1946,7 @@ void Vsd::initParameters()
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].def                             = 0;
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].discret                         = 1;
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].code                            = 0;
-  // Характеристика Uf - U Danfoss 1-55
+  // 0я точка напряжения U/f характеристика
   parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].id                            = VSD_UF_CHARACTERISTIC_U;
   parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].access                        = ACCESS_OPERATOR;
   parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].operation                     = OPERATION_WRITE;
@@ -1957,8 +1957,8 @@ void Vsd::initParameters()
   parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].max                           = 999999999.9;
   parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].def                           = 0;
   parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].discret                       = 1;
-  parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].code                          = 0;
-  // Характеристика Uf - f Danfoss 1-56
+  parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].code                          = 13;
+  // 0я точка частоты U/f характеристика
   parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].id                            = VSD_UF_CHARACTERISTIC_F;
   parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].access                        = ACCESS_OPERATOR;
   parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].operation                     = OPERATION_WRITE;
@@ -1969,7 +1969,7 @@ void Vsd::initParameters()
   parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].max                           = 999999999.9;
   parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].def                           = 0;
   parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].discret                       = 1;
-  parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].code                          = 0;
+  parameters_[VSD_UF_CHARACTERISTIC_F - VSD_BEGIN].code                          = 13;
   // Подавление резонанса % Danfoss 1-64 Не используется в проекте, только при конфигурировании
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].id                               = VSD_RESONANCE_REMOVE;
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].access                           = ACCESS_OPERATOR;
