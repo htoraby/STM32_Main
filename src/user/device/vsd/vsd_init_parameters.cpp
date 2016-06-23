@@ -3399,17 +3399,17 @@ void Vsd::initParameters()
   parameters_[VSD_MOTOR_INDUCTANCE - VSD_BEGIN].discret                          = 1;
   parameters_[VSD_MOTOR_INDUCTANCE - VSD_BEGIN].code                             = 0;
   // Активное сопротивление обмотки ВПЭД для ВД
-  parameters_[VSD_MOTOR_INDUCTANCE_RESIST_PHASE - VSD_BEGIN].id                  = VSD_MOTOR_INDUCTANCE_RESIST_PHASE;
-  parameters_[VSD_MOTOR_INDUCTANCE_RESIST_PHASE - VSD_BEGIN].access              = ACCESS_OPERATOR;
-  parameters_[VSD_MOTOR_INDUCTANCE_RESIST_PHASE - VSD_BEGIN].operation           = OPERATION_WRITE;
-  parameters_[VSD_MOTOR_INDUCTANCE_RESIST_PHASE - VSD_BEGIN].physic              = PHYSIC_RESISTANCE;
-  parameters_[VSD_MOTOR_INDUCTANCE_RESIST_PHASE - VSD_BEGIN].validity            = VALIDITY_ERROR;
-  parameters_[VSD_MOTOR_INDUCTANCE_RESIST_PHASE - VSD_BEGIN].value.float_t       = 1500.0;
-  parameters_[VSD_MOTOR_INDUCTANCE_RESIST_PHASE - VSD_BEGIN].min                 = 0.0;
-  parameters_[VSD_MOTOR_INDUCTANCE_RESIST_PHASE - VSD_BEGIN].max                 = 10000.0;
-  parameters_[VSD_MOTOR_INDUCTANCE_RESIST_PHASE - VSD_BEGIN].def                 = 1500.0;
-  parameters_[VSD_MOTOR_INDUCTANCE_RESIST_PHASE - VSD_BEGIN].discret             = 1;
-  parameters_[VSD_MOTOR_INDUCTANCE_RESIST_PHASE - VSD_BEGIN].code                = 0;
+  parameters_[VSD_MOTOR_ACTIVE_RESIST - VSD_BEGIN].id                            = VSD_MOTOR_ACTIVE_RESIST;
+  parameters_[VSD_MOTOR_ACTIVE_RESIST - VSD_BEGIN].access                        = ACCESS_OPERATOR;
+  parameters_[VSD_MOTOR_ACTIVE_RESIST - VSD_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[VSD_MOTOR_ACTIVE_RESIST - VSD_BEGIN].physic                        = PHYSIC_RESISTANCE;
+  parameters_[VSD_MOTOR_ACTIVE_RESIST - VSD_BEGIN].validity                      = VALIDITY_ERROR;
+  parameters_[VSD_MOTOR_ACTIVE_RESIST - VSD_BEGIN].value.float_t                 = 1500.0;
+  parameters_[VSD_MOTOR_ACTIVE_RESIST - VSD_BEGIN].min                           = 0.0;
+  parameters_[VSD_MOTOR_ACTIVE_RESIST - VSD_BEGIN].max                           = 10000.0;
+  parameters_[VSD_MOTOR_ACTIVE_RESIST - VSD_BEGIN].def                           = 1500.0;
+  parameters_[VSD_MOTOR_ACTIVE_RESIST - VSD_BEGIN].discret                       = 1;
+  parameters_[VSD_MOTOR_ACTIVE_RESIST - VSD_BEGIN].code                          = 0;
   // Нижний предел регулирования для ВД
   parameters_[VSD_BLDC_DOWN_REG - VSD_BEGIN].id                                  = VSD_BLDC_DOWN_REG;
   parameters_[VSD_BLDC_DOWN_REG - VSD_BEGIN].access                              = ACCESS_OPERATOR;

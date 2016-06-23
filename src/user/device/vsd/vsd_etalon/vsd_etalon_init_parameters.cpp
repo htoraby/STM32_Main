@@ -851,7 +851,7 @@ void VsdEtalon::initModbusParameters()
                            0                // Значение
                           };
   modbusParameters_[48] = {//Активное сопротивление обмотки ВПЭД для ВД
-                           VSD_MOTOR_INDUCTANCE_RESIST_PHASE, // Уникальный идентификатор параметра
+                           VSD_MOTOR_ACTIVE_RESIST, // Уникальный идентификатор параметра
                            252 + 0x4000,    // 0x40FC Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_RESISTANCE, // Физическая величина параметра

@@ -19977,8 +19977,8 @@
 		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>Пропорциональный коэф. ОС частотного контура регулирования </text>
-		<short_text>Пропорциональный коэф. ОС частотного контура регулирования </short_text>
+		<text>Пропорциональный коэф. ОС частотного контура регулирования</text>
+		<short_text>Пропорциональный коэф. ОС частотного контура регулирования</short_text>
 		<code>0</code>
 		<comment>Пропорциональный коэффициент ОС частотного контура регулирования</comment>
 	</param>
@@ -23795,7 +23795,7 @@
 	</param>
 	<param>
 		<id>10283</id>
-		<name>VSD_MOTOR_INDUCTANCE_RESIST_PHASE</name>
+		<name>VSD_MOTOR_ACTIVE_RESIST</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_RESISTANCE</physic>
@@ -23805,8 +23805,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>1500.0</value>
-		<text>Cопротивление обмотки двигателя</text>
-		<short_text>Cопротивление обмотки двигателя</short_text>
+		<text>Активное сопротивление</text>
+		<short_text>Активное сопротивление обмотки ВПЭД</short_text>
 		<form>NULL</form>
 		<unit>RESISTANCE_OM</unit>
 		<unit_lcd>RESISTANCE_MILIOM</unit_lcd>
