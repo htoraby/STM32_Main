@@ -9566,14 +9566,14 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>1</max>
-		<def>0</def>
+		<max>3.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0</value>
-		<text>Встряхивание. Действие</text>
-		<short_text>Встряхивание. Действие</short_text>
-		<form>5.1.7 Режим встряхивания</form>
+		<value>0.0</value>
+		<text>Режим встряхивания</text>
+		<short_text>Режим встряхивания</short_text>
+		<form>Встряхивание</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -9587,18 +9587,18 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>10.0</min>
-		<max>3600.0</max>
-		<def>10.0</def>
+		<min>60.0</min>
+		<max>86400.0</max>
+		<def>60.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>10.0</value>
-		<text>Встряхивание. Период</text>
-		<short_text>Встряхивание. Период</short_text>
-		<form>5.1.7 Режим встряхивания</form>
+		<value>60.0</value>
+		<text>Периодичность встряхивания</text>
+		<short_text>Периодичность встряхивания</short_text>
+		<form>Встряхивание</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>TIME_SS</unit_lcd>
-		<format>XXXX</format>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XX_XX</format>
 		<code>13</code>
 		<comment>Период экскурсий частоты режима встряхивания.</comment>
 	</param>
@@ -9608,20 +9608,20 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
-		<min>0.0</min>
-		<max>3.0</max>
-		<def>0.0</def>
-		<discret>1</discret>
+		<min>0.01</min>
+		<max>200.0</max>
+		<def>45.0</def>
+		<discret>2</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
-		<text>Встряхивание. Частота 1</text>
-		<short_text>Встряхивание. Частота 1</short_text>
-		<form>5.1.7 Режим встряхивания</form>
+		<value>45.0</value>
+		<text>Частота F1</text>
+		<short_text>Частота встряхивания F1</short_text>
+		<form>Встряхивание</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
-		<format>X</format>
+		<format>XXX_XX</format>
 		<code>13</code>
-		<comment>Величина прибавки частоты вращения выше уставки в режиме встряхивания</comment>
+		<comment>Частота F1</comment>
 	</param>
 	<param>
 		<id>486</id>
@@ -9629,18 +9629,18 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TEMP</physic>
-		<min>0.0</min>
+		<min>0.01</min>
 		<max>20.0</max>
-		<def>0.0</def>
-		<discret>1</discret>
+		<def>10.0</def>
+		<discret>2</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
-		<text>Встряхивание. Темп разгона</text>
-		<short_text>Встряхивание. Темп разгона</short_text>
-		<form>5.1.7 Режим встряхивания</form>
+		<value>10.0</value>
+		<text>Темп увеличения частоты</text>
+		<short_text>Темп увеличения частоты встряхивания</short_text>
+		<form>Встряхивание</form>
 		<unit>TEMP_HZ_SS</unit>
 		<unit_lcd>TEMP_HZ_SS</unit_lcd>
-		<format>XX_X</format>
+		<format>XX_XХ</format>
 		<code>13</code>
 		<comment>Время прибавки частоты вращения выше уставки в режиме встряхивания</comment>
 	</param>
@@ -9650,20 +9650,20 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
-		<min>0.0</min>
-		<max>3.0</max>
-		<def>0.0</def>
-		<discret>1</discret>
+		<min>0.01</min>
+		<max>200.0</max>
+		<def>55.0</def>
+		<discret>2</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
-		<text>Встряхивание. Частота 2</text>
-		<short_text>Встряхивание. Частота 2</short_text>
-		<form>5.1.7 Режим встряхивания</form>
+		<value>55.0</value>
+		<text>Частота F2</text>
+		<short_text>Частота встряхивания F2</short_text>
+		<form>Встряхивание</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
-		<format>X</format>
+		<format>XXX_XX</format>
 		<code>13</code>
-		<comment>Величина уменьшения частоты вращения ниже уставки в режиме встряхивания</comment>
+		<comment>Частота F2</comment>
 	</param>
 	<param>
 		<id>488</id>
@@ -9671,18 +9671,18 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TEMP</physic>
-		<min>0.0</min>
+		<min>0.01</min>
 		<max>20.0</max>
-		<def>0.0</def>
-		<discret>1</discret>
+		<def>10.0</def>
+		<discret>2</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
-		<text>Встряхивание. Темп тормож.</text>
-		<short_text>Встряхивание. Темп тормож.</short_text>
-		<form>5.1.7 Режим встряхивания</form>
+		<value>10.0</value>
+		<text>Темп уменьшения частоты</text>
+		<short_text>Темп уменьшения частоты встряхивания</short_text>
+		<form>Встряхивание</form>
 		<unit>TEMP_HZ_SS</unit>
 		<unit_lcd>TEMP_HZ_SS</unit_lcd>
-		<format>XX_X</format>
+		<format>XX_XХ</format>
 		<code>13</code>
 		<comment>Время уменьшения частоты вращения ниже уставки в режиме встряхивания</comment>
 	</param>
@@ -14142,14 +14142,15 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
+		<min>1.0</min>
 		<max>99.0</max>
-		<def>0.0</def>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
-		<text>Режим встрях. Раз</text>
-		<short_text>Режим встрях. Раз</short_text>
+		<value>1.0</value>
+		<text>Количество встряхиваний</text>
+		<short_text>Количество встряхиваний</short_text>
+		<form>Встряхивание</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XX</format>
@@ -17122,15 +17123,43 @@
 		<id>873</id>
 		<name>CCS_RGM_JARRING_STATE</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_LIMITED</operation>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1000.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Текущее состояние режима встряхивания</text>
+		<short_text>Текущее состояние режима встряхивания</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Текущее состояние режима встряхивания</comment>
 	</param>
 	<param>
 		<id>874</id>
 		<name>CCS_RGM_JARRING_TIMER</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_LIMITED</operation>
-		<physic>PHYSIC_TIME</physic>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
+		<min>0.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Время начала периода встряхивания</text>
+		<short_text>Время начала периода встряхивания</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Время начала периода встряхивания</comment>
 	</param>
 	<param>
 		<id>875</id>
@@ -17197,7 +17226,7 @@
 	</param>
 	<param>
 		<id>878</id>
-		<name>CCS_SAVE_VSD_FREQUENCY</name>
+		<name>CCS_RESERVED_878</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
