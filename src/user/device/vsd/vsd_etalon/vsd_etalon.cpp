@@ -385,11 +385,6 @@ void VsdEtalon::getNewValue(uint16_t id)
       if (parameters.get(CCS_MOTOR_INDUCTANCE) != value)
         parameters.set(CCS_MOTOR_INDUCTANCE, value);
       break;
-    case VSD_MOTOR_INDUCTANCE_RESIST_PHASE:
-      setValue(id, value);
-      if (parameters.get(CCS_MOTOR_INDUCTANCE_RESIST_PHASE) != value)
-        parameters.set(CCS_MOTOR_INDUCTANCE_RESIST_PHASE, value);
-      break;
     case VSD_TRANS_CABLE_CROSS:
       setValue(id, value);
       if (parameters.get(CCS_TRANS_CABLE_CROSS) != value)

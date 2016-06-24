@@ -39,7 +39,7 @@ void RegimeTechnologOptimizationVoltage::processing()
   //! Состояние в котором ожидается время после запуска
   case RunningState:
     //! Если задержка после запуска истекла
-    if ((ksu.getSecFromCurTime(parameters.get(CCS_LAST_RUN_DATE_TIME)) > delay_)
+    if ((ksu.getSecFromCurTime(CCS_LAST_RUN_DATE_TIME) > delay_)
       && (parameters.get(VSD_FREQUENCY) == parameters.get(VSD_FREQUENCY_NOW))) {
       //! Находим верхную точку отрезка U/f которой принадлежит текущая частота
       idUfHiPoint_ = vsd->findUfHiPoint(parameters.get(VSD_FREQUENCY_NOW));
@@ -68,21 +68,26 @@ void RegimeTechnologOptimizationVoltage::processing()
     break;
   //! Состояние понижения напряжения
   case WorkState:
-    if (((valueUfLowPoint_ - step_) >= limDownUfLowPoint_)
-      && ((valueUfHiPoint_ - step_) >= limDownUfHiPoint_)) {
-      //! Запомнить ток
+    if ((valueUfHiPoint_ <= limDownUfHiPoint_) && (valueUfLowPoint_ <= limDownUfLowPoint_))
+    {
+      state_ = PauseState;
+      beginPeriod_ = ksu.getTime();
+    }
+    else {
       oldCurrent_ = parameters.get(CCS_MOTOR_CURRENT_AVARAGE);
       //! Задаём новую верхнию точку напряжения
       valueUfHiPoint_ = valueUfHiPoint_ - step_;
+      if (valueUfHiPoint_ < limDownUfHiPoint_) {
+        valueUfHiPoint_ = limDownUfHiPoint_;
+      }
       parameters.set(idUfHiPoint_, valueUfHiPoint_);
       //! Задаём новую нижнию точку напряжения
       valueUfLowPoint_ = valueUfLowPoint_ - step_;
+      if (valueUfLowPoint_ < limDownUfLowPoint_) {
+        valueUfLowPoint_ = limDownUfLowPoint_;
+      }
       parameters.set(idUfLowPoint_, valueUfLowPoint_);
       state_ = WorkState + 1;
-    }
-    else {
-      state_ = PauseState;
-      beginPeriod_ = ksu.getTime();
     }
     break;
   case WorkState + 1:
@@ -91,7 +96,7 @@ void RegimeTechnologOptimizationVoltage::processing()
     state_ = WorkState + 2;
     break;
   case WorkState + 2:
-    if (cntCurrent_ < 10) {
+    if (cntCurrent_ < 30) {
       newCurrent_ = newCurrent_ + parameters.get(CCS_MOTOR_CURRENT_AVARAGE);
       cntCurrent_++;
     }
@@ -107,19 +112,18 @@ void RegimeTechnologOptimizationVoltage::processing()
     }
     break;
   case WorkState + 3:
-    if (((valueUfLowPoint_ + step_) <= limUpUfLowPoint_)
-      && ((valueUfHiPoint_ + step_) <= limUpUfHiPoint_)) {
-      //! Запомнить ток
-      oldCurrent_ = parameters.get(CCS_MOTOR_CURRENT_AVARAGE);
-      //! Задаём новую верхнию точку напряжения
-      valueUfHiPoint_ = valueUfHiPoint_ + step_;
-      parameters.set(idUfHiPoint_, valueUfHiPoint_);
-      //! Задаём новую нижнию точку напряжения
-      valueUfLowPoint_ = valueUfLowPoint_ + step_;
-      parameters.set(idUfLowPoint_, valueUfLowPoint_);
-      state_ = PauseState;
-      beginPeriod_ = ksu.getTime();
+    valueUfHiPoint_ = valueUfHiPoint_ + step_;
+    if (valueUfHiPoint_ > limUpUfHiPoint_) {
+      valueUfHiPoint_ = limUpUfHiPoint_;
     }
+    parameters.set(idUfHiPoint_, valueUfHiPoint_);
+    valueUfLowPoint_ = valueUfLowPoint_ + step_;
+    if (valueUfLowPoint_ > limUpUfLowPoint_) {
+      valueUfLowPoint_ = limUpUfLowPoint_;
+    }
+    parameters.set(idUfLowPoint_, valueUfLowPoint_);
+    state_ = PauseState;
+    beginPeriod_ = ksu.getTime();
     break;
   case PauseState:
     if (ksu.getSecFromCurTime(beginPeriod_) > period_) {

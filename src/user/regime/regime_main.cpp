@@ -1,6 +1,6 @@
 #include "regime_main.h"
 
-#define COUNT_REGIMES 5                     //!< Количество режимов, увеличивать при добавлении нового
+#define COUNT_REGIMES 6                     //!< Количество режимов, увеличивать при добавлении нового
 
 Regime *regimes[COUNT_REGIMES];
 
@@ -9,6 +9,8 @@ RegimeTechnologSoftChangeFreq regimeTechnologSoftChangeFreq;
 RegimeTechnologMaintenanceParam regimeTechnologMaintenanceParam;
 RegimeTechnologAlternationFreq regimeTechnologAlternationFreq;
 RegimeTechnologOptimizationVoltage regimeTechnologOptimizationVoltage;
+RegimeTechnologJarring regimeTechnologJarring;
+
 
 static void regimeTask(void *argument);
 
@@ -19,6 +21,7 @@ void regimeInit()
   regimes[2] = &regimeTechnologMaintenanceParam;
   regimes[3] = &regimeTechnologAlternationFreq;
   regimes[4] = &regimeTechnologOptimizationVoltage;
+  regimes[5] = &regimeTechnologJarring;
 
   osThreadDef(Regimes, regimeTask, osPriorityNormal, 0, 4 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(Regimes), NULL);

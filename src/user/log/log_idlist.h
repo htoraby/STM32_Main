@@ -174,6 +174,9 @@ typedef enum {
   PressureDischargeApvDisabledId, //!< "АПВ запрещено: Давление на выкиде насоса"
   PressureDischargeProtBlockedId, //!< "Блокировка по защите: Давление на выкиде насоса"
 
+  RgmJarringF1Id,                 //!< Режим встряхивания частота F1
+  RgmJarringF2Id                  //!< Режим встряхивания частота F2
+
 } EventId;
 
 #endif // LOG_IDLIST

@@ -193,6 +193,20 @@ public:
   void setValidity(uint16_t id, uint8_t validity);
 
   /*!
+   * \brief setAccess
+   * \param id
+   * \param access
+   */
+  void setAccess(uint16_t id, uint8_t access);
+
+  /*!
+   * \brief setOperation
+   * \param id
+   * \param operation
+   */
+  void setOperation(uint16_t id, uint8_t operation);
+
+  /*!
    * \brief Сохранение массива параметров на Flash
    */
   StatusType saveParameters();
@@ -215,6 +229,7 @@ public:
   uint16_t getFieldDiscret(uint16_t index);
 
   void reactionToConnect(bool curConnect);
+
 protected:
 
   /*!
