@@ -5813,7 +5813,7 @@ void Ccs::initParameters()
   // Период экскурсий частоты режима встряхивания.
   parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].id                             = CCS_RGM_JARRING_PERIOD;
   parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].access                         = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].operation                      = OPERATION_LIMITED;
+  parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].operation                      = OPERATION_WRITE;
   parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].physic                         = PHYSIC_TIME;
   parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_RGM_JARRING_PERIOD - CCS_BEGIN].value.float_t                  = 60.0;

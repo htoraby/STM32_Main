@@ -9593,7 +9593,7 @@
 		<id>484</id>
 		<name>CCS_RGM_JARRING_PERIOD</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_LIMITED</operation>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>60.0</min>
 		<max>86400.0</max>
