@@ -203,6 +203,11 @@ int Vsd::setLimitsMinFrequence(float value)
       parameters.setMin(CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ, value);
     if (value > parameters.getMax(CCS_RGM_PUMP_GAS_SETPOINT))
       parameters.setMin(CCS_RGM_PUMP_GAS_SETPOINT, value);
+    if (value > parameters.getMax(CCS_RGM_JARRING_FREQ_1));
+      parameters.setMin(CCS_RGM_JARRING_FREQ_1, value);
+    if (value > parameters.getMax(CCS_RGM_JARRING_FREQ_2));
+      parameters.setMin(CCS_RGM_JARRING_FREQ_2, value);
+
     return ok_r;
   }
   return err_r;
@@ -240,6 +245,10 @@ int Vsd::setLimitsMaxFrequence(float value)
       parameters.setMax(CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ, value);
     if (value < parameters.getMax(CCS_RGM_PUMP_GAS_SETPOINT))
       parameters.setMax(CCS_RGM_PUMP_GAS_SETPOINT, value);
+    if (value < parameters.getMax(CCS_RGM_JARRING_FREQ_1));
+      parameters.setMax(CCS_RGM_JARRING_FREQ_1, value);
+    if (value < parameters.getMax(CCS_RGM_JARRING_FREQ_2));
+      parameters.setMax(CCS_RGM_JARRING_FREQ_2, value);
     return ok_r;
   }
   return err_r;
