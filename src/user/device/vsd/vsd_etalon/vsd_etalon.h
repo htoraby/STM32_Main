@@ -276,6 +276,8 @@ public:
    */
   void getConnect();
   void resetConnect();
+  int onProtConnect();
+  int offProtConnect();
 
 private: 
   void setLimitsCcsParameters();

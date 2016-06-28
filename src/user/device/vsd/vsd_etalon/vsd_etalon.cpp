@@ -452,8 +452,8 @@ void VsdEtalon::getNewValue(uint16_t id)
       break;
     case VSD_PROT_NO_CONNECT_MODE:
       setValue(id, value);
-      if (parameters.get(VSD_PROT_NO_CONNECT_MODE) && !value)
-        parameters.set(VSD_PROT_NO_CONNECT_MODE, 0.0);
+      if (parameters.get(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE) && !value)
+        parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE, 0.0);
       else if (!parameters.get(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE) && value)
         parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE, 3.0);
       break;
@@ -564,8 +564,10 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value, EventType eventType)
   case VSD_BASE_FREQUENCY:
     return setBaseFrequency(value);
 
-  case VSD_DEPTH: case VSD_TRANS_CABLE_CROSS:
-  case VSD_MOTOR_VOLTAGE: case VSD_MOTOR_CURRENT:
+  case VSD_DEPTH:
+  case VSD_TRANS_CABLE_CROSS:
+  case VSD_MOTOR_VOLTAGE:
+  case VSD_MOTOR_CURRENT:
   case VSD_TRANS_VOLTAGE_TAP_OFF:
     result = setValue(id, value, eventType);
     if (!result) {
@@ -891,6 +893,16 @@ void VsdEtalon::resetConnect()
 {
   Vsd::resetConnect();
   dm_->getMms()->resetCounters();
+}
+
+int VsdEtalon::onProtConnect()
+{
+  return setNewValue(VSD_PROT_NO_CONNECT_MODE, 1.0);
+}
+
+int VsdEtalon::offProtConnect()
+{
+  return setNewValue(VSD_PROT_NO_CONNECT_MODE, 0.0);
 }
 
 void VsdEtalon::setLimitsCcsParameters()

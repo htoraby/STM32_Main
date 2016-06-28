@@ -4294,7 +4294,7 @@ void Vsd::initParameters()
   parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].value.float_t                = 1.0;
   parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].max                          = 1.0;
+  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].max                          = 26.0;
   parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].def                          = 1.0;
   parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].discret                      = 1;
   parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].code                         = 0;
@@ -4306,7 +4306,7 @@ void Vsd::initParameters()
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].validity               = VALIDITY_ERROR;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].value.float_t          = 180.0;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].min                    = 0.0;
-  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].max                    = 65535.0;
+  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].max                    = 18000.0;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].def                    = 180.0;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].discret                = 1;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].code                   = 0;
