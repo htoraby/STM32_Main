@@ -38,6 +38,14 @@ enum DoNum {
   DigitalOutputMax
 };
 
+/*!
+ * \brief Список релейных выходов
+*/
+enum RoNum {
+  RO1, RO2, RO3, RO4, RO5,
+  RelayOutputMax
+};
+
 #define STOP_LED_PIN                    GPIO_PIN_6
 #define STOP_LED_PORT                   GPIOB
 #define WAIT_LED_PIN                    GPIO_PIN_7
@@ -166,6 +174,14 @@ PinState getDigitalInput(const uint16_t num);
  \param value: значение на выходе 0 или 1. По умолчанию 0
 */
 void setDigitalOutput(const uint16_t num, PinState value = PinReset);
+
+/*!
+ \brief Установка значения на релейном выходе
+
+ \param num: номер выхода
+ \param value: значение на выходе 0 или 1. По умолчанию 0
+*/
+void setRelayOutput(const uint16_t num, PinState value = PinReset);
 
 /*!
  * \brief Получение состояния питания платы от детектора
