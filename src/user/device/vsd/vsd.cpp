@@ -777,3 +777,13 @@ void Vsd::resetConnect()
   parameters.set(CCS_VSD_CONNECTION_PACKAGE_ERR, 0);
   parameters.set(CCS_VSD_CONNECTION_PACKAGE_LOST, 0);
 }
+
+int Vsd::onProtConnect()
+{
+  return 0;
+}
+
+int Vsd::offProtConnect()
+{
+  return 0;
+}

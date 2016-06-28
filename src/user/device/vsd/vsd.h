@@ -567,6 +567,18 @@ public:
   virtual void resetConnect();
 
   /*!
+   * \brief onProtConnect
+   * \return
+   */
+  virtual int onProtConnect();
+
+  /*!
+   * \brief offProtConnect
+   * \return
+   */
+  virtual int offProtConnect();
+
+  /*!
    * \brief writeToDevice
    */
   virtual void writeToDevice(int id, float value);
