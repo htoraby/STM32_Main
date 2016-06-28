@@ -212,10 +212,12 @@ public:
 
   void getConnect();
   void resetConnect();
+  int onProtConnect();
+  int offProtConnect();
 
   bool isControl();
 private:
-  ModbusParameter modbusParameters_[226];
+  ModbusParameter modbusParameters_[227];
   DeviceModbus *dm_;
 
   RegimeRunPush *regimeRun_;

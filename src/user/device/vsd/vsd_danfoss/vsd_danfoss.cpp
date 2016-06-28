@@ -1390,6 +1390,16 @@ void VsdDanfoss::resetConnect()
   dm_->getMms()->resetCounters();
 }
 
+int VsdDanfoss::onProtConnect()
+{
+  return setNewValue(VSD_PROT_NO_CONNECT_MODE, 2.0);
+}
+
+int VsdDanfoss::offProtConnect()
+{
+  return setNewValue(VSD_PROT_NO_CONNECT_MODE, 0.0);
+}
+
 void VsdDanfoss::getNewValue(uint16_t id)
 {
   float value = 0;
@@ -1502,6 +1512,18 @@ void VsdDanfoss::getNewValue(uint16_t id)
     case VSD_FREQUENCY_NOW:
       setValue(id, value);
       ksu.calcMotorSpeed();
+      break;
+    case VSD_PROT_NO_CONNECT_MODE:
+      setValue(id, value);
+      if (parameters.get(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE) && !value)
+        parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE, 0.0);
+      else if (!parameters.get(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE) && value)
+        parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE, 3.0);
+      break;
+    case VSD_PROT_NO_CONNECT_TRIP_DELAY:
+      setValue(id, value);
+      if (parameters.get(CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY) != value)
+        parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY, value);
       break;
     default:
       setValue(id, value);

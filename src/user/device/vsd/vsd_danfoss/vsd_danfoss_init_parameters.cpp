@@ -1399,7 +1399,7 @@ void VsdDanfoss::initModbusParameters()
                            0                // Значение
                           };
   modbusParameters_[76] = {// Время тайм-аута командного слова
-                           VSD_CONTROL_WORD_TIMEOUT_TIME,
+                           VSD_PROT_NO_CONNECT_TRIP_DELAY,
                            8029,            // Адрес регистра в устройстве
                            OPERATION_WRITE, // Операции с параметром
                            PHYSIC_TIME,     // Физическая величина параметра
@@ -4098,4 +4098,22 @@ void VsdDanfoss::initModbusParameters()
                             VALIDITY_ERROR, // Поле состояния параметра
                             0               // Значение
                            };
+  modbusParameters_[226] = {// Функция тайм-аута командного слова
+                           VSD_PROT_NO_CONNECT_MODE,
+                           8039,            // Адрес регистра в устройстве
+                           OPERATION_WRITE, // Операции с параметром
+                           PHYSIC_NUMERIC,  // Физическая величина параметра
+                           NUMERIC_NUMBER,  // Единицы измерения параметра
+                           TYPE_DATA_UINT16,// Тип данных
+                           0,               // Индекс
+                           1,               // Коэффициент преобразования параметра
+                           0,               // Минимальное значение параметра
+                           26,              // Максимально значение параметра
+                           0,               // Считываемое значение "по умолчанию"
+                           OFTEN,           // Частота опроса параметра
+                           OFTEN,           // Количество запросов к параметру
+                           OPERATION_ERROR, // Команда
+                           VALIDITY_ERROR,  // Поле состояния параметра
+                           0                // Значение
+                          };
 }
