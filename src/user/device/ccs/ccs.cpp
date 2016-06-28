@@ -1229,10 +1229,12 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return vsd->resetSetpoints();
   case CCS_PROT_OTHER_VSD_NO_CONNECT_MODE:
     err = setValue(id, value, eventType);
-    if (value)
-      parameters.set(VSD_PROT_NO_CONNECT_MODE, 1.0);
-    else
-      parameters.set(VSD_PROT_NO_CONNECT_MODE, 0.0);
+    if (!err) {
+      if (value)
+        return vsd->onProtConnect();
+      else
+        return vsd->offProtConnect();
+    }
     return err;
   case CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY:
     err = setValue(id, value, eventType);
