@@ -128,6 +128,7 @@ void Ccs::mainTask()
 
       calcTime();
       checkConnectDevice();
+      setRelayOutputs();
     }
   }
 }
@@ -1847,5 +1848,26 @@ void Ccs::resetRestartCount()
   setValue(CCS_RESTART_COUNT_ALL, restartCount);
   for (int i = 0; i < (RESTART_TIME_MAX + 1); ++i) {
     restartTime_[i] = 0;
+  }
+}
+
+void Ccs::setRelayOutputs()
+{
+  static PinState valueOld[4] = {PinReset};
+  PinState value;
+
+  for (int i = 0; i < 4; ++i) {
+    int action = getValue(CCS_RO_1_ACTION + i);
+    if (((action == DO_ACTION_STOP) && isStopMotor()) ||
+        ((action == DO_ACTION_RUN) && isWorkMotor()) ||
+        ((action == DO_ACTION_RESTART) && isRestart()) ||
+        ((action == DO_ACTION_BLOCK) && isBlock())) {
+      value = PinSet;
+    } else {
+      value = PinReset;
+    }
+    if (value != valueOld[i])
+      setRelayOutput(DO1 + i, value);
+    valueOld[i] = value;
   }
 }

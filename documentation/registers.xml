@@ -18814,6 +18814,90 @@
 	</param>
 	<param>
 		<id>962</id>
+		<name>CCS_RO_1_ACTION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Релейный выход 1</text>
+		<short_text>Релейный вых.1 уст.</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Нет;1-Стоп;2-Работа;3-АПВ;4-Блок;</values>
+		<comment>Релейный вых.1 уст.</comment>
+	</param>
+	<param>
+		<id>963</id>
+		<name>CCS_RO_2_ACTION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Релейный выход 2</text>
+		<short_text>Релейный вых.2 уст.</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Нет;1-Стоп;2-Работа;3-АПВ;4-Блок;</values>
+		<comment>Релейный вых.2 уст.</comment>
+	</param>
+	<param>
+		<id>964</id>
+		<name>CCS_RO_3_ACTION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Релейный выход 3</text>
+		<short_text>Релейный вых.3 уст.</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Нет;1-Стоп;2-Работа;3-АПВ;4-Блок;</values>
+		<comment>Релейный вых.3 уст.</comment>
+	</param>
+	<param>
+		<id>965</id>
+		<name>CCS_RO_4_ACTION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Релейный выход 4</text>
+		<short_text>Релейный вых.4 уст.</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Нет;1-Стоп;2-Работа;3-АПВ;4-Блок;</values>
+		<comment>Релейный вых.4 уст.</comment>
+	</param>
+	<param>
+		<id>966</id>
 		<name>CCS_END</name>
 	</param>
 	<param>
