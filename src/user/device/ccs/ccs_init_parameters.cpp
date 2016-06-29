@@ -11546,5 +11546,53 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_OPTIM_VOLTAGE_STATE - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_STATE - CCS_BEGIN].def                       = 0.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_STATE - CCS_BEGIN].code                      = 0;
+  // Релейный вых.1 уст.
+  parameters_[CCS_RO_1_ACTION - CCS_BEGIN].id                                    = CCS_RO_1_ACTION;
+  parameters_[CCS_RO_1_ACTION - CCS_BEGIN].access                                = ACCESS_OPERATOR;
+  parameters_[CCS_RO_1_ACTION - CCS_BEGIN].operation                             = OPERATION_WRITE;
+  parameters_[CCS_RO_1_ACTION - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
+  parameters_[CCS_RO_1_ACTION - CCS_BEGIN].validity                              = VALIDITY_OK;
+  parameters_[CCS_RO_1_ACTION - CCS_BEGIN].value.float_t                         = 0.0;
+  parameters_[CCS_RO_1_ACTION - CCS_BEGIN].min                                   = 0.0;
+  parameters_[CCS_RO_1_ACTION - CCS_BEGIN].max                                   = 4.0;
+  parameters_[CCS_RO_1_ACTION - CCS_BEGIN].discret                               = 1;
+  parameters_[CCS_RO_1_ACTION - CCS_BEGIN].def                                   = 0.0;
+  parameters_[CCS_RO_1_ACTION - CCS_BEGIN].code                                  = 13;
+  // Релейный вых.2 уст.
+  parameters_[CCS_RO_2_ACTION - CCS_BEGIN].id                                    = CCS_RO_2_ACTION;
+  parameters_[CCS_RO_2_ACTION - CCS_BEGIN].access                                = ACCESS_OPERATOR;
+  parameters_[CCS_RO_2_ACTION - CCS_BEGIN].operation                             = OPERATION_WRITE;
+  parameters_[CCS_RO_2_ACTION - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
+  parameters_[CCS_RO_2_ACTION - CCS_BEGIN].validity                              = VALIDITY_OK;
+  parameters_[CCS_RO_2_ACTION - CCS_BEGIN].value.float_t                         = 0.0;
+  parameters_[CCS_RO_2_ACTION - CCS_BEGIN].min                                   = 0.0;
+  parameters_[CCS_RO_2_ACTION - CCS_BEGIN].max                                   = 4.0;
+  parameters_[CCS_RO_2_ACTION - CCS_BEGIN].discret                               = 1;
+  parameters_[CCS_RO_2_ACTION - CCS_BEGIN].def                                   = 0.0;
+  parameters_[CCS_RO_2_ACTION - CCS_BEGIN].code                                  = 13;
+  // Релейный вых.3 уст.
+  parameters_[CCS_RO_3_ACTION - CCS_BEGIN].id                                    = CCS_RO_3_ACTION;
+  parameters_[CCS_RO_3_ACTION - CCS_BEGIN].access                                = ACCESS_OPERATOR;
+  parameters_[CCS_RO_3_ACTION - CCS_BEGIN].operation                             = OPERATION_WRITE;
+  parameters_[CCS_RO_3_ACTION - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
+  parameters_[CCS_RO_3_ACTION - CCS_BEGIN].validity                              = VALIDITY_OK;
+  parameters_[CCS_RO_3_ACTION - CCS_BEGIN].value.float_t                         = 0.0;
+  parameters_[CCS_RO_3_ACTION - CCS_BEGIN].min                                   = 0.0;
+  parameters_[CCS_RO_3_ACTION - CCS_BEGIN].max                                   = 4.0;
+  parameters_[CCS_RO_3_ACTION - CCS_BEGIN].discret                               = 1;
+  parameters_[CCS_RO_3_ACTION - CCS_BEGIN].def                                   = 0.0;
+  parameters_[CCS_RO_3_ACTION - CCS_BEGIN].code                                  = 13;
+  // Релейный вых.4 уст.
+  parameters_[CCS_RO_4_ACTION - CCS_BEGIN].id                                    = CCS_RO_4_ACTION;
+  parameters_[CCS_RO_4_ACTION - CCS_BEGIN].access                                = ACCESS_OPERATOR;
+  parameters_[CCS_RO_4_ACTION - CCS_BEGIN].operation                             = OPERATION_WRITE;
+  parameters_[CCS_RO_4_ACTION - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
+  parameters_[CCS_RO_4_ACTION - CCS_BEGIN].validity                              = VALIDITY_OK;
+  parameters_[CCS_RO_4_ACTION - CCS_BEGIN].value.float_t                         = 0.0;
+  parameters_[CCS_RO_4_ACTION - CCS_BEGIN].min                                   = 0.0;
+  parameters_[CCS_RO_4_ACTION - CCS_BEGIN].max                                   = 4.0;
+  parameters_[CCS_RO_4_ACTION - CCS_BEGIN].discret                               = 1;
+  parameters_[CCS_RO_4_ACTION - CCS_BEGIN].def                                   = 0.0;
+  parameters_[CCS_RO_4_ACTION - CCS_BEGIN].code                                  = 13;
 }
 
