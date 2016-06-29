@@ -206,6 +206,9 @@ float Ccs::calcDropVoltageCable(float current)
 float Ccs::calcMotorVoltagePhase(float dropVoltFilter, float dropVoltCable)
 {
   float vsdVoltOut = parameters.get(VSD_OUT_VOLTAGE_MOTOR);
+  if (vsdVoltOut == 0)
+    return 0;
+
   float coefTrans = parameters.get(CCS_COEF_TRANSFORMATION);
   return (vsdVoltOut * coefTrans - (dropVoltFilter + dropVoltCable) * sqrt(3));
 }
