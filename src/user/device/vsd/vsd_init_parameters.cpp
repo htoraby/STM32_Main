@@ -4305,7 +4305,7 @@ void Vsd::initParameters()
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].physic                 = PHYSIC_TIME;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].validity               = VALIDITY_ERROR;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].value.float_t          = 180.0;
-  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].min                    = 0.0;
+  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].min                    = 60.0;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].max                    = 18000.0;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].def                    = 180.0;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].discret                = 1;
