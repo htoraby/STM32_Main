@@ -30,7 +30,7 @@ void RegimeTechnologJarring::processing()
 
   // Режим выключен
   if ((action_ == OffAction) || ksu.isStopMotor()) {              // Выключен режим
-    if (state_ != IdleState)                // Режим выключили во время работы
+    if ((state_ != IdleState) && (state_ != RunningState) && (state_ != PauseState))             // Режим выключили во время работы
       state_ = WorkState + 6;               // Возвращаем настройки работы установки
       #if (USE_LOG_DEBUG == 1)
         logDebug.add(DebugMsg, "Встряхив.: выключили режим во время работы (state_=%5.0f, action_=%5.0f)",
