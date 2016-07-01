@@ -429,6 +429,19 @@ enum enDiAction
   DI_ACTION_LAST
 };
 
+/*!
+ * \brief Список состояний СУ для включения релейного выхода
+ */
+enum enDoAction
+{
+  DO_ACTION_NONE,       //!< Нет
+  DO_ACTION_STOP,       //!< Стоп
+  DO_ACTION_RUN,        //!< Работа
+  DO_ACTION_RESTART,    //!< АПВ
+  DO_ACTION_BLOCK,      //!< Блок
+  DO_ACTION_LAST
+};
+
 #define NUM_PI 3.14159265358979323846
 #define SQRT_3 1.732050807568877
 #define NOM_VOLTAGE 220

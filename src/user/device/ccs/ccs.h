@@ -572,6 +572,8 @@ private:
 
   void calcTurboRotation();
 
+  void setRelayOutputs();
+
   //! Очередь событий включения/мигания LED
   osMessageQId ledMessage_;
   //! Предыдущие состояние станции
