@@ -12,10 +12,16 @@ public:
   ProtectionHardwareVsd();
   ~ProtectionHardwareVsd();
 private:
+  void processing();
   void getOtherSetpointProt();
   bool checkAlarm();
   bool checkPrevent();
+  bool checkWarning();
   void addEventReactionProt();
+
+  void processingStateRun();
+
+  bool warning_;
 };
 
 #endif // PROTECTIONHARDWAREVSD_H

@@ -471,7 +471,21 @@ public:
   virtual bool isControl();
 
   virtual float checkAlarmVsd();
+
+  /*!
+   * \brief Функция проверки аварии ЧРП по снижению напряжения питания
+   * \return
+   */
+  virtual float checkAlarmVsdUnderVoltage();
+
+  /*!
+   * \brief Функция проверки аварии ЧРП по превышению напряжения питания
+   * \return
+   */
+  virtual float checkAlarmVsdOverVoltage();
+
   virtual bool checkPreventVsd();
+  virtual float checkWarningVsd();
 
   virtual void processingRegimeRun();
 
