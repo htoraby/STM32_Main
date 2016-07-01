@@ -41,15 +41,27 @@ ProtectionUnderVoltageInput::~ProtectionUnderVoltageInput()
 
 bool ProtectionUnderVoltageInput::checkAlarm()
 {
-  return Protection::isLowerLimit(tripSetpoint_);
+  if (vsd->checkAlarmVsdUnderVoltage()) {
+    lastReasonStop_ = LastReasonStopHardwareVsd;
+    activDelay_ = 0;
+    tripDelay_ = 0;
+    return true;
+  }
+  else if (Protection::isLowerLimit(tripSetpoint_)) {
+    lastReasonStop_ = LastReasonStopUnderVoltIn;
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 bool ProtectionUnderVoltageInput::checkPrevent()
 {
   if (restart_)
-    return Protection::isLowerLimit(restartSetpoint_);
+    return (Protection::isLowerLimit(restartSetpoint_) || vsd->checkAlarmVsdUnderVoltage());
   else
-    return Protection::isLowerLimit(tripSetpoint_);
+    return (Protection::isLowerLimit(tripSetpoint_) || vsd->checkAlarmVsdUnderVoltage());
 }
 
 float ProtectionUnderVoltageInput::calcValue()
