@@ -719,9 +719,24 @@ float Vsd::checkAlarmVsd()
   return 0;
 }
 
+float Vsd::checkAlarmVsdUnderVoltage()
+{
+  return VSD_ALARM_NONE;
+}
+
+float Vsd::checkAlarmVsdOverVoltage()
+{
+  return VSD_ALARM_NONE;
+}
+
 bool Vsd::checkPreventVsd()
 {
   return false;
+}
+
+float Vsd::checkWarningVsd()
+{
+  return 0;
 }
 
 void Vsd::processingRegimeRun()

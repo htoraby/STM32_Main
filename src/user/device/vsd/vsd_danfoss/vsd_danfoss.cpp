@@ -1059,11 +1059,29 @@ float VsdDanfoss::checkAlarmVsd()
     }
   }
 
+  if ((vsdAlarm == VSD_ALARM_NONE) || (vsdAlarm >= VSD_DANFOSS_ALARM_A_11)) {
+    vsdAlarm = VSD_ALARM_NONE;
+    if (checkBit(vsdAlarmWord1, VSD_DANFOSS_ALARM_A_11 - 2000)) {
+      if (!parameters.get(CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE)) {
+        return VSD_DANFOSS_ALARM_A_11;
+      }
+    }
+  }
+
   if ((vsdAlarm == VSD_ALARM_NONE) || ((vsdAlarm >= VSD_DANFOSS_ALARM_A_10) && (vsdAlarm <= VSD_DANFOSS_ALARM_A_47))) {
     vsdAlarm = VSD_ALARM_NONE;
     for (i = VSD_DANFOSS_ALARM_A_10; i <= VSD_DANFOSS_ALARM_A_47; i++) {
       if (checkBit(vsdAlarmWord1, i - 2000)) {
         return i;
+      }
+    }
+  }
+
+  if ((vsdAlarm == VSD_ALARM_NONE) || (vsdAlarm >= VSD_DANFOSS_ALARM_A_36)) {
+    vsdAlarm = VSD_ALARM_NONE;
+    if (checkBit(vsdAlarmWord1, VSD_DANFOSS_ALARM_A_36 - 2000)) {
+      if (!parameters.get(CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE)) {
+        return VSD_DANFOSS_ALARM_A_36;
       }
     }
   }
@@ -1105,6 +1123,7 @@ float VsdDanfoss::checkAlarmVsd()
   }
 
   if ((vsdAlarm == VSD_ALARM_NONE) || (vsdAlarm == VSD_DANFOSS_ALARM_A_59)) {
+    vsdAlarm = VSD_ALARM_NONE;
     if (checkBit(vsdAlarmWord2, VSD_DANFOSS_ALARM_A_59 - 2032)) {
       return VSD_DANFOSS_ALARM_A_59;
     }
@@ -1128,9 +1147,59 @@ float VsdDanfoss::checkAlarmVsd()
   return vsdAlarm;
 }
 
+float VsdDanfoss::checkAlarmVsdUnderVoltage()
+{
+  uint32_t vsdAlarmWord1 = getValue(VSD_STATUS_WORD_3);  // ALARM_WORD_1
+  if (checkBit(vsdAlarmWord1, VSD_DANFOSS_ALARM_A_11 - 2000))
+    return VSD_DANFOSS_ALARM_A_11;
+  if (checkBit(vsdAlarmWord1, VSD_DANFOSS_ALARM_A_36 - 2000))
+    return VSD_DANFOSS_ALARM_A_36;
+
+  return VSD_ALARM_NONE;
+}
+
 bool VsdDanfoss::checkPreventVsd()
 {
-  return checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_TRIP);
+  if ((checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_TRIP))
+    && (parameters.get(CCS_VSD_ALARM_CODE) != VSD_ALARM_NONE)) {
+    return true;
+  }
+  return false;
+}
+
+float VsdDanfoss::checkWarningVsd()
+{
+  uint16_t i = 0;
+  float vsdWarning = parameters.get(CCS_VSD_WARNING_CODE);
+  uint32_t vsdWarningWord = getValue(VSD_STATUS_WORD_5);
+
+  if ((vsdWarning == VSD_WARNING_NONE) || (vsdWarning == VSD_DANFOSS_WARNING_W_28)) {
+    vsdWarning = VSD_WARNING_NONE;
+    if (checkBit(vsdWarningWord, VSD_DANFOSS_WARNING_W_28 - 2000))
+      return VSD_DANFOSS_WARNING_W_28;
+  }
+
+  if ((vsdWarning == VSD_WARNING_NONE) || ((vsdWarning >= VSD_DANFOSS_WARNING_W_14) && (vsdWarning <= VSD_DANFOSS_WARNING_W_68))) {
+    vsdWarning = VSD_WARNING_NONE;
+    for (i = VSD_DANFOSS_WARNING_W_14; i <= VSD_DANFOSS_WARNING_W_68; i++) {
+      if (checkBit(vsdWarningWord, i - 2000)) {
+        return i;
+      }
+    }
+  }
+
+  /*
+  uint32_t vsdRstatusWord = getValue(VSD_STATUS_WORD_1);
+  if ((vsdWarning == VSD_WARNING_NONE) || (vsdWarning == VSD_DANFOSS_WARNING_W)) {
+    vsdWarning = VSD_WARNING_NONE;
+    if ((checkBit(vsdRstatusWord, VSD_DANFOSS_STATUS_WARNING))
+            && (vsdWarningWord != 0x8000)) {
+      return VSD_DANFOSS_WARNING_W;
+    }
+  }
+  */
+
+  return VSD_WARNING_NONE;
 }
 
 int VsdDanfoss::start(bool init)
@@ -1524,6 +1593,9 @@ void VsdDanfoss::getNewValue(uint16_t id)
       setValue(id, value);
       if (parameters.get(CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY) != value)
         parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY, value);
+      break;
+    case VSD_STATUS_WORD_5:
+      setValue(id, value);
       break;
     default:
       setValue(id, value);
