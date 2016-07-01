@@ -8998,8 +8998,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Время до конца паузы по программе</text>
-		<short_text>Периодика. Время до конца паузы по прогр.</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>DATE_TIME_SS</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -9018,8 +9018,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>NULL</text>
-		<short_text>NULL</short_text>
+		<text>Время до конца паузы по программе</text>
+		<short_text>Периодика. Время до конца паузы по прогр.</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM_SS</unit_lcd>
@@ -18935,8 +18935,8 @@
 		<def>50.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<text>Задание частоты ПЧ</text>
-		<short_text>Задание частоты ПЧ</short_text>
+		<text>Уставка частоты</text>
+		<short_text>Уставка частоты</short_text>
 		<form>1.1 Текущие параметры - сводка; 3.2 ЧРП</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
