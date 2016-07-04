@@ -22,7 +22,6 @@ ProtectionCurrentMotor::ProtectionCurrentMotor()
   idRestartFirstTime_ = CCS_PROT_MOTOR_CURRENT_RESTART_FIRST_TIME;
 
   lastReasonRun_ = LastReasonRunApvCurrentMotor;
-  lastReasonStop_ = LastReasonStopCurrentMotor;
 
   protReactEventId_ = CurrentMotorProtReactId;
   apvEventId_ = CurrentMotorApvId;
@@ -43,10 +42,17 @@ void ProtectionCurrentMotor::getOtherSetpointProt()
 
 bool ProtectionCurrentMotor::checkAlarm()
 { 
-  // Возвращаем аварию если превышена уставка по пределу тока
-  // или установлен бит в слове состояния ЧРП
-  return ((Protection::isHigherLimit(tripSetpoint_)) ||
-          (vsd->checkAlarmVsd() == VSD_NOVOMET_ALARM_M_I_FAST_ERR));
+  if (vsd->checkAlarmVsdCurrentMotor()) {
+    lastReasonStop_ = LastReasonStopHardwareVsd;
+    return true;
+  }
+  else if (Protection::isHigherLimit(tripSetpoint_)) {
+    lastReasonStop_ = LastReasonStopCurrentMotor;
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 float ProtectionCurrentMotor::calcValue()
