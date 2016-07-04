@@ -63,6 +63,7 @@ void VsdDanfoss::init()
   initParameters();
   readParameters();
 
+  setLimitsCcsParameters();
   setLimitsMinFrequence(getValue(VSD_LOW_LIM_SPEED_MOTOR));
   setLimitsMaxFrequence(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
 }
@@ -85,6 +86,12 @@ bool VsdDanfoss::isConnect()
   prevConnect_ = curConnect;
 
   return curConnect;
+}
+
+void VsdDanfoss::setLimitsCcsParameters()
+{
+  parameters.setMin(CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT , getMax(VSD_CURRENT_LIMIT));
+  parameters.setMax(CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT , getMax(VSD_CURRENT_LIMIT));
 }
 
 // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
@@ -520,6 +527,15 @@ void VsdDanfoss::setUf()
   setUf_U4(parameters.get(VSD_UF_CHARACTERISTIC_U_4));
   setUf_U5(parameters.get(VSD_UF_CHARACTERISTIC_U_5));
   setUf_U6(parameters.get(VSD_UF_CHARACTERISTIC_U_6));
+}
+
+int VsdDanfoss::setProtCurrentMotorTripSetpoint(float value)
+{
+  if (!Vsd::setProtCurrentMotorTripSetpoint(value)) {
+    writeToDevice(VSD_CURRENT_LIMIT, getValue(VSD_CURRENT_LIMIT));
+    return ok_r;
+  }
+  return err_r;
 }
 
 uint16_t VsdDanfoss::configVsd()
@@ -1155,6 +1171,14 @@ float VsdDanfoss::checkAlarmVsdUnderVoltage()
   if (checkBit(vsdAlarmWord1, VSD_DANFOSS_ALARM_A_36 - 2000))
     return VSD_DANFOSS_ALARM_A_36;
 
+  return VSD_ALARM_NONE;
+}
+
+float VsdDanfoss::checkAlarmVsdCurrentMotor()
+{
+  uint32_t vsdAlarmWord2 = getValue(VSD_STATUS_WORD_4);  // ALARM_WORD_2
+  if (checkBit(vsdAlarmWord2, VSD_DANFOSS_ALARM_A_59 - 2032))
+    return VSD_DANFOSS_ALARM_A_59;
   return VSD_ALARM_NONE;
 }
 

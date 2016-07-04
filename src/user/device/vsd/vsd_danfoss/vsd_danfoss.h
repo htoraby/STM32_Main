@@ -137,6 +137,7 @@ public:
 
   void init();
   bool isConnect();
+  void setLimitsCcsParameters();
 
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
   int setMotorType(float value);
@@ -176,6 +177,8 @@ public:
   int setUf_U6(float value);
   void setUf();
 
+  int setProtCurrentMotorTripSetpoint(float value);
+
   int calcUfCharacteristicU(float value);
   int calcUfCharacteristicF(float value);
   void readUfCharacterictic();
@@ -193,6 +196,7 @@ public:
 
   float checkAlarmVsd();
   float checkAlarmVsdUnderVoltage();
+  float checkAlarmVsdCurrentMotor();
 
   bool checkPreventVsd();
   float checkWarningVsd();
