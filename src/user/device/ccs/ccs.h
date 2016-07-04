@@ -460,6 +460,7 @@ private:
   void cmdProtSupplyImbalanceCurrentSetpointReset();
 
   void cmdProtMotorOverloadSetpointReset();
+  void cmdProtMotorCurrentSetpointReset();
   void cmdProtMotorUnderloadSetpointReset();
   void cmdProtMotorImbalanceCurrentSetpointReset();
   void cmdProtMotorAsyncModeSetpointReset();

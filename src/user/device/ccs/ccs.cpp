@@ -810,19 +810,19 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_M_IRMS, value, eventType);
+    vsd->setProtOverloadMotorTripSetpoint(value);
     return err;
   case CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_T_BLANK, value, eventType);
+    vsd->setProtOverloadMotorActivDelay(value);
     break;
   case CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_M_TRMS, value, eventType);
+    vsd->setProtOverloadMotorTripDelay(value);
     return err;
   case CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_M_I_FAST, value, eventType);
+    vsd->setProtCurrentMotorTripSetpoint(value);
     return err;
   case CCS_RGM_CHANGE_FREQ_PERIOD:
     err = setValue(id, value, eventType);
@@ -1058,6 +1058,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_CMD_PROT_MOTOR_OVERLOAD_SETPOINT_RESET:
     err = setValue(id, value, eventType);
     cmdProtMotorOverloadSetpointReset();
+    return err;
+  case CCS_CMD_PROT_MOTOR_CURRENT_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtMotorCurrentSetpointReset();
     return err;
   case CCS_CMD_PROT_MOTOR_UNDERLOAD_SETPOINT_RESET:
     err = setValue(id, value, eventType);
@@ -1469,6 +1473,14 @@ void Ccs::cmdProtMotorOverloadSetpointReset()
 {
   for (uint16_t i = CCS_PROT_MOTOR_OVERLOAD_MODE;
        i <=  CCS_PROT_MOTOR_OVERLOAD_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtMotorCurrentSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_MOTOR_CURRENT_MODE;
+       i <=  CCS_PROT_MOTOR_CURRENT_PARAMETER; i++) {
     resetValue(i);
   }
 }
