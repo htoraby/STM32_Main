@@ -993,7 +993,7 @@ void VsdNovomet::initModbusParameters()
                           0                 // Значение
   };
   modbusParameters_[55] = {// Уровень быстрой токовой защиты двигателя
-                          VSD_M_I_FAST,
+                          VSD_CURRENT_LIMIT,
                           131,              // Адрес регистра в устройстве
                           OPERATION_WRITE,  // Операции с параметром
                           PHYSIC_NUMERIC,   // Физическая величина параметра
