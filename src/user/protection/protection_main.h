@@ -34,6 +34,8 @@
 #include "protection_analog_input_3.h"
 #include "protection_analog_input_4.h"
 
+#include "protection_current_motor.h"
+
 extern ProtectionOverVoltageInput protOverVoltIn;
 extern ProtectionUnderVoltageInput protUnderVoltIn;
 extern ProtectionImbalanceVoltageInput protImbalanceVoltIn;
@@ -66,6 +68,8 @@ extern ProtectionAnalogInput1 protAnalogInput1;
 extern ProtectionAnalogInput2 protAnalogInput2;
 extern ProtectionAnalogInput3 protAnalogInput3;
 extern ProtectionAnalogInput4 protAnalogInput4;
+
+extern ProtectionCurrentMotor protCurrentMotor;
 
 /*!
  * \brief Функция инициализации задачи обработки всех защит
