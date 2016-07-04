@@ -684,6 +684,54 @@ float Vsd::getTypeStop()
   return getValue(VSD_TYPE_STOP);
 }
 
+int Vsd::setProtOverloadMotorTripSetpoint(float value)
+{
+  if (setValue(VSD_M_IRMS, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания перегруза двигателя (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
+}
+
+int Vsd::setProtOverloadMotorActivDelay(float value)
+{
+  if (setValue(VSD_T_BLANK, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания пускового времени перегруза двигателя (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
+}
+
+int Vsd::setProtOverloadMotorTripDelay(float value)
+{
+  if (setValue(VSD_M_TRMS, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания задержки срабатывания перегруза двигателя (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
+}
+
+int Vsd::setProtCurrentMotorTripSetpoint(float value)
+{
+  if (setValue(VSD_CURRENT_LIMIT, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания уставки максимального тока двигателя (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
+}
+
 int Vsd::start(bool /*init*/)
 {
   return 0;
@@ -725,6 +773,16 @@ float Vsd::checkAlarmVsdUnderVoltage()
 }
 
 float Vsd::checkAlarmVsdOverVoltage()
+{
+  return VSD_ALARM_NONE;
+}
+
+float Vsd::checkAlarmVsdCurrentMotor()
+{
+  return VSD_ALARM_NONE;
+}
+
+float Vsd::checkAlarmVsdOverloadMotor()
 {
   return VSD_ALARM_NONE;
 }
