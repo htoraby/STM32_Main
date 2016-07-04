@@ -18898,6 +18898,26 @@
 	</param>
 	<param>
 		<id>966</id>
+		<name>CCS_CMD_PROT_MOTOR_CURRENT_SETPOINT_RESET</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Сбросить значения уставок по умолчанию?</text>
+		<short_text>Макс.ток двиг. Сброс уставок</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Нет;1-Да</values>
+		<comment>Защита "Максимальный ток двигателя". Уставки по умолчанию</comment>
+	</param>
+	<param>
+		<id>967</id>
 		<name>CCS_END</name>
 	</param>
 	<param>
@@ -21311,7 +21331,7 @@
 	</param>
 	<param>
 		<id>10144</id>
-		<name>VSD_M_I_FAST</name>
+		<name>VSD_RESERVED_10144</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<min>0.0</min>

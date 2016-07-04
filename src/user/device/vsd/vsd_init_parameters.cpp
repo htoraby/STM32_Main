@@ -1731,17 +1731,17 @@ void Vsd::initParameters()
   parameters_[VSD_I_SCALE - VSD_BEGIN].discret                                   = 1;
   parameters_[VSD_I_SCALE - VSD_BEGIN].code                                      = 13;
   // Уровень быстрой токовой защиты двигателя
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].id                                       = VSD_M_I_FAST;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].access                                   = ACCESS_OPERATOR;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].operation                                = OPERATION_WRITE;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].physic                                   = 0;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].validity                                 = VALIDITY_ERROR;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].value.float_t                            = 0;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].min                                      = 0.0;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].max                                      = 999999999.9;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].def                                      = 0;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].discret                                  = 1;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].code                                     = 0;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].id                                 = VSD_RESERVED_10144;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].physic                             = 0;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].validity                           = VALIDITY_ERROR;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].value.float_t                      = 0;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].min                                = 0.0;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].max                                = 999999999.9;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].def                                = 0;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].discret                            = 1;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].code                               = 0;
   // Время отключения защиты двигателя после старта
   parameters_[VSD_T_BLANK - VSD_BEGIN].id                                        = VSD_T_BLANK;
   parameters_[VSD_T_BLANK - VSD_BEGIN].access                                    = ACCESS_OPERATOR;
