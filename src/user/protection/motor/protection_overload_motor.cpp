@@ -74,10 +74,19 @@ void ProtectionOverloadMotor::getOtherSetpointProt()
 
 bool ProtectionOverloadMotor::checkAlarm()
 {
-  // Возвращаем аварию если превышена уставка по перегрузу или установлен бит
-  // в слове состояния ЧРП
-  return ((Protection::isHigherLimit(tripSetpoint_)) ||
-          (vsd->checkAlarmVsd() == VSD_NOVOMET_ALARM_M_I2T_ERR));
+  if (vsd->checkAlarmVsdOverloadMotor()) {
+    lastReasonStop_ = LastReasonStopHardwareVsd;
+    activDelay_ = 0;
+    tripDelay_ = 0;
+    return true;
+  }
+  else if (Protection::isHigherLimit(tripSetpoint_)) {
+    lastReasonStop_ = LastReasonStopOverloadMotor;
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 float ProtectionOverloadMotor::calcValue()
