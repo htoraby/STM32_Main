@@ -36,6 +36,8 @@
 
 #include "protection_current_motor.h"
 
+#include "protection_overheat_input_filter.h"
+
 extern ProtectionOverVoltageInput protOverVoltIn;
 extern ProtectionUnderVoltageInput protUnderVoltIn;
 extern ProtectionImbalanceVoltageInput protImbalanceVoltIn;
@@ -70,6 +72,8 @@ extern ProtectionAnalogInput3 protAnalogInput3;
 extern ProtectionAnalogInput4 protAnalogInput4;
 
 extern ProtectionCurrentMotor protCurrentMotor;
+
+extern ProtectionOverheatInputFilter protOverheatInputFilter;
 
 /*!
  * \brief Функция инициализации задачи обработки всех защит
