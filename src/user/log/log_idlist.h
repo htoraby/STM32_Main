@@ -175,7 +175,10 @@ typedef enum {
   PressureDischargeProtBlockedId, //!< "Блокировка по защите: Давление на выкиде насоса"
 
   RgmJarringF1Id,                 //!< Режим встряхивания частота F1
-  RgmJarringF2Id                  //!< Режим встряхивания частота F2
+  RgmJarringF2Id,                 //!< Режим встряхивания частота F2
+
+  OverheatInputFilterProtReactId, //!< "Сработала защита: Перегрев вх.фильтра"
+  OverheatInputFilterProtBlockedId,//!< "Блокировка по защите: Перегрев вх.фильтра"
 
 } EventId;
 
