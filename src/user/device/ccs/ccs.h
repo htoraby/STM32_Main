@@ -460,6 +460,7 @@ private:
   void cmdProtSupplyImbalanceCurrentSetpointReset();
 
   void cmdProtMotorOverloadSetpointReset();
+  void cmdProtMotorCurrentSetpointReset();
   void cmdProtMotorUnderloadSetpointReset();
   void cmdProtMotorImbalanceCurrentSetpointReset();
   void cmdProtMotorAsyncModeSetpointReset();
@@ -571,6 +572,8 @@ private:
   void calcTemperatureCCS();
 
   void calcTurboRotation();
+
+  void setRelayOutputs();
 
   //! Очередь событий включения/мигания LED
   osMessageQId ledMessage_;

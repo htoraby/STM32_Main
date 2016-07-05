@@ -197,6 +197,8 @@ public:
   int setCoefVoltageInCA(float value);
 
   float checkAlarmVsd();
+  float checkAlarmVsdUnderVoltage();
+  float checkAlarmVsdOverVoltage();
   bool checkPreventVsd();
 
   void getNewValue(uint16_t id);
@@ -276,6 +278,8 @@ public:
    */
   void getConnect();
   void resetConnect();
+  int onProtConnect();
+  int offProtConnect();
 
 private: 
   void setLimitsCcsParameters();

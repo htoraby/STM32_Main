@@ -224,7 +224,19 @@ float VsdEtalon::checkAlarmVsd()
     return vsdStatus1;
   }
 
-  if ((vsdStatus1 >= VSD_ETALON_ALARM_UNDERLOAD - 3000) && (vsdStatus1 <= VSD_ETALON_ALARM_32 - 3000)) {
+  if ((vsdStatus1 >= VSD_ETALON_ALARM_UNDERLOAD - 3000) && (vsdStatus1 <= VSD_ETALON_ALARM_RESISTANCE - 3000)) {
+    return vsdStatus1 + 3000;
+  }
+
+  if ((vsdStatus1 == VSD_ETALON_ALARM_UNDERVOLTAGE - 3000) && (!parameters.get(CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE))) {
+    return vsdStatus1 + 3000;
+  }
+
+  if ((vsdStatus1 == VSD_ETALON_ALARM_OVERVOLTAGE - 3000) && (!parameters.get(CCS_PROT_SUPPLY_OVERVOLTAGE_MODE))) {
+    return vsdStatus1 + 3000;
+  }
+
+  if ((vsdStatus1 >= VSD_ETALON_ALARM_OVERVOLTAGE_DC - 3000) && (vsdStatus1 <= VSD_ETALON_ALARM_32 - 3000)) {
     return vsdStatus1 + 3000;
   }
 
@@ -234,6 +246,26 @@ float VsdEtalon::checkAlarmVsd()
 
   return vsdAlarm;
 }
+
+float VsdEtalon::checkAlarmVsdUnderVoltage()
+{
+  float vsdStatus1 = getValue(VSD_STATUS_WORD_1);
+  if (vsdStatus1 == VSD_ETALON_ALARM_UNDERVOLTAGE - 3000) {
+    return VSD_ETALON_ALARM_UNDERVOLTAGE;
+  }
+  return VSD_ALARM_NONE;
+}
+
+float VsdEtalon::checkAlarmVsdOverVoltage()
+{
+  float vsdStatus1 = getValue(VSD_STATUS_WORD_1);
+  if (vsdStatus1 == VSD_ETALON_ALARM_OVERVOLTAGE - 3000) {
+    return VSD_ETALON_ALARM_OVERVOLTAGE;
+  }
+  return VSD_ALARM_NONE;
+}
+
+
 
 bool VsdEtalon::checkPreventVsd()
 {
@@ -452,8 +484,8 @@ void VsdEtalon::getNewValue(uint16_t id)
       break;
     case VSD_PROT_NO_CONNECT_MODE:
       setValue(id, value);
-      if (parameters.get(VSD_PROT_NO_CONNECT_MODE) && !value)
-        parameters.set(VSD_PROT_NO_CONNECT_MODE, 0.0);
+      if (parameters.get(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE) && !value)
+        parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE, 0.0);
       else if (!parameters.get(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE) && value)
         parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE, 3.0);
       break;
@@ -564,8 +596,10 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value, EventType eventType)
   case VSD_BASE_FREQUENCY:
     return setBaseFrequency(value);
 
-  case VSD_DEPTH: case VSD_TRANS_CABLE_CROSS:
-  case VSD_MOTOR_VOLTAGE: case VSD_MOTOR_CURRENT:
+  case VSD_DEPTH:
+  case VSD_TRANS_CABLE_CROSS:
+  case VSD_MOTOR_VOLTAGE:
+  case VSD_MOTOR_CURRENT:
   case VSD_TRANS_VOLTAGE_TAP_OFF:
     result = setValue(id, value, eventType);
     if (!result) {
@@ -891,6 +925,16 @@ void VsdEtalon::resetConnect()
 {
   Vsd::resetConnect();
   dm_->getMms()->resetCounters();
+}
+
+int VsdEtalon::onProtConnect()
+{
+  return setNewValue(VSD_PROT_NO_CONNECT_MODE, 1.0);
+}
+
+int VsdEtalon::offProtConnect()
+{
+  return setNewValue(VSD_PROT_NO_CONNECT_MODE, 0.0);
 }
 
 void VsdEtalon::setLimitsCcsParameters()

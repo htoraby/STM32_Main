@@ -433,6 +433,33 @@ public:
    */
   float getTypeStop();
 
+  /*!
+   * \brief setProtOverloadMotor
+   * \param value
+   */
+  virtual int setProtOverloadMotorTripSetpoint(float value);
+
+  /*!
+   * \brief setProtOverloadMotorActivDelay
+   * \param value
+   * \return
+   */
+  virtual int setProtOverloadMotorActivDelay(float value);
+
+  /*!
+   * \brief setProtOverloadMotorTripDelay
+   * \param value
+   * \return
+   */
+  virtual int setProtOverloadMotorTripDelay(float value);
+
+  /*!
+   * \brief setProtCurrentMotorTripSetpoint
+   * \param value
+   * \return
+   */
+  virtual int setProtCurrentMotorTripSetpoint(float value);
+
   /*! Команды и операции */
 
   /*!
@@ -471,7 +498,42 @@ public:
   virtual bool isControl();
 
   virtual float checkAlarmVsd();
+
+  /*!
+   * \brief Функция проверки аварии ЧРП по снижению напряжения питания
+   * \return Возвращает 0 если нет такой аварии или код аварии если есть
+   */
+  virtual float checkAlarmVsdUnderVoltage();
+
+  /*!
+   * \brief Функция проверки аварии ЧРП по превышению напряжения питания
+   * \return Возвращает 0 если нет такой аварии или код аварии если есть
+   */
+  virtual float checkAlarmVsdOverVoltage();
+
+  /*!
+   * \brief Функция проверки аварии ЧРП по превышению максимального тока двигателя
+   * \return Возвращает 0 если нет такой аварии или код аварии если есть
+   */
+  virtual float checkAlarmVsdCurrentMotor();
+
+  /*!
+   * \brief Функция проверки аварии ЧРП по перегрузу
+   * \return Возвращает 0 если нет такой аварии или код аварии если есть
+   */
+  virtual float checkAlarmVsdOverloadMotor();
+
+  /*!
+   * \brief Метод проверки наличия запрещающего параметра от ЧРП
+   * \return true - если есть и false - если нет
+   */
   virtual bool checkPreventVsd();
+
+  /*!
+   * \brief Метод проверки предупреждения от ЧРП
+   * \return Код предупреждения если есть и 0 если нет
+   */
+  virtual float checkWarningVsd();
 
   virtual void processingRegimeRun();
 
@@ -565,6 +627,18 @@ public:
    * \brief resetConnect
    */
   virtual void resetConnect();
+
+  /*!
+   * \brief onProtConnect
+   * \return
+   */
+  virtual int onProtConnect();
+
+  /*!
+   * \brief offProtConnect
+   * \return
+   */
+  virtual int offProtConnect();
 
   /*!
    * \brief writeToDevice

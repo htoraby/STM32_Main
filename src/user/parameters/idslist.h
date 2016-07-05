@@ -40,7 +40,7 @@ enum enID
   CCS_TRANS_NOMINAL_VOLTAGE = 34,                            //!< Номинальное напряжение ТМПН
   CCS_TRANS_CABLE_LENGHT = 35,                               //!< Длина кабеля
   CCS_TRANS_CABLE_CROSS = 36,                                //!< Сечение кабеля
-  CCS_TRANS_NEED_VOLTAGE_TAP_OFF = 37,                       //!< Необходимое напряжение отпайки
+  CCS_TRANS_NEED_VOLTAGE_TAP_OFF = 37,                       //!< Рекомендуемое напряжение отпайки
   CCS_TRANS_VOLTAGE_TAP_OFF = 38,                            //!< Напряжение отпайки
   CCS_DHS_TYPE = 39,                                         //!< Тип ТМС
   CCS_PUMP_CAPACITY = 40,                                    //!< Производительность насоса
@@ -49,7 +49,7 @@ enum enID
   CCS_PROT_SUPPLY_OVERVOLTAGE_MODE = 43,                     //!< Режим работа защиты
   CCS_PROT_SUPPLY_OVERVOLTAGE_PREVENT = 44,                  //!< Параметр запрещающий запуск
   CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY = 45,              //!< Задержка активации уставка
-  CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY = 46,               //!< Задержка срабатывания уставка
+  CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY = 46,               //!< Время уставка
   CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY = 47,            //!< Задержка АПВ уставка
   CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_LIMIT = 48,            //!< Количество АПВ уставка
   CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET = 49,            //!< Автосброс счетчика АПВ
@@ -64,7 +64,7 @@ enum enID
   CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE = 58,                    //!< Защита "Пониженное напряжение сети"
   CCS_PROT_SUPPLY_UNDERVOLTAGE_PREVENT = 59,                 //!< Параметр запрещающий запуск
   CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY = 60,             //!< Задержка активации уставка
-  CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY = 61,              //!< Задержка срабатывания уставка
+  CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY = 61,              //!< Время уставка
   CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY = 62,           //!< Задержка АПВ уставка
   CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_LIMIT = 63,           //!< Количество АПВ уставка
   CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET = 64,           //!< Автосброс счетчика АПВ
@@ -79,7 +79,7 @@ enum enID
   CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_MODE = 73,               //!< Защита "Дисбаланс напряжения"
   CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PREVENT = 74,            //!< Параметр запрещающий запуск
   CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY = 75,        //!< Задержка активации уставка
-  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY = 76,         //!< Задержка срабатывания уставка
+  CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY = 76,         //!< Время уставка
   CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY = 77,      //!< Задержка АПВ уставка
   CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_LIMIT = 78,      //!< Количество АПВ уставка
   CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_RESET = 79,      //!< Автосброс счетчика АПВ
@@ -94,7 +94,7 @@ enum enID
   CCS_PROT_SUPPLY_IMBALANCE_CURRENT_MODE = 88,               //!< Защиты "Дисбаланс входных токов"
   CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PREVENT = 89,            //!< Параметр запрещающий запуск
   CCS_PROT_SUPPLY_IMBALANCE_CURRENT_ACTIV_DELAY = 90,        //!< Задержка активации уставка
-  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY = 91,         //!< Задержка срабатывания уставка
+  CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY = 91,         //!< Время уставка
   CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY = 92,      //!< Задержка АПВ уставка
   CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_LIMIT = 93,      //!< Количество АПВ уставка
   CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_RESET = 94,      //!< Автосброс счетчика АПВ
@@ -109,7 +109,7 @@ enum enID
   CCS_PROT_SUPPLY_PHASE_ROTATION_MODE = 103,                 //!< Защиты "Чередование фаз"
   CCS_PROT_SUPPLY_PHASE_ROTATION_PREVENT = 104,              //!< Параметр запрещающий запуск
   CCS_PROT_SUPPLY_PHASE_ROTATION_ACTIV_DELAY = 105,          //!< Задержка активации уставка
-  CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY = 106,           //!< Задержка срабатывания уставка
+  CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY = 106,           //!< Время уставка
   CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY = 107,        //!< Задержка АПВ уставка
   CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_LIMIT = 108,        //!< Количество АПВ уставка
   CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_RESET = 109,        //!< Автосброс счетчика АПВ
@@ -124,7 +124,7 @@ enum enID
   CCS_PROT_MOTOR_OVERLOAD_MODE = 118,                        //!< Защита "Перегруз" (ЗП)
   CCS_PROT_MOTOR_OVERLOAD_PREVENT = 119,                     //!< Параметр запрещающий запуск
   CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY = 120,                 //!< Задержка активации уставка
-  CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY = 121,                  //!< Задержка срабатывания уставка
+  CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY = 121,                  //!< Время уставка
   CCS_PROT_MOTOR_OVERLOAD_RESTART_DELAY = 122,               //!< Задержка АПВ уставка
   CCS_PROT_MOTOR_OVERLOAD_RESTART_LIMIT = 123,               //!< Количество АПВ уставка
   CCS_PROT_MOTOR_OVERLOAD_RESTART_RESET = 124,               //!< Автосброс счетчика АПВ
@@ -139,7 +139,7 @@ enum enID
   CCS_PROT_MOTOR_UNDERLOAD_MODE = 133,                       //!< Защита "Недогруз" (ЗП)
   CCS_PROT_MOTOR_UNDERLOAD_PREVENT = 134,                    //!< Параметр запрещающий запуск
   CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY = 135,                //!< Задержка активации уставка
-  CCS_PROT_MOTOR_UNDERLOAD_TRIP_DELAY = 136,                 //!< Задержка срабатывания уставка
+  CCS_PROT_MOTOR_UNDERLOAD_TRIP_DELAY = 136,                 //!< Время уставка
   CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY = 137,              //!< Задержка АПВ уставка
   CCS_PROT_MOTOR_UNDERLOAD_RESTART_LIMIT = 138,              //!< Количество АПВ уставка
   CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET = 139,              //!< Автосброс счетчика АПВ
@@ -154,7 +154,7 @@ enum enID
   CCS_PROT_MOTOR_CURRENT_MODE = 148,                         //!< Защита "Предел тока двигателя"
   CCS_PROT_MOTOR_CURRENT_PREVENT = 149,                      //!< Параметр запрещающий запуск
   CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY = 150,                  //!< Задержка активации уставка
-  CCS_PROT_MOTOR_CURRENT_TRIP_DELAY = 151,                   //!< Задержка срабатывания уставка
+  CCS_PROT_MOTOR_CURRENT_TRIP_DELAY = 151,                   //!< Время уставка
   CCS_PROT_MOTOR_CURRENT_RESTART_DELAY = 152,                //!< Задержка АПВ уставка
   CCS_PROT_MOTOR_CURRENT_RESTART_LIMIT = 153,                //!< Количество АПВ уставка
   CCS_PROT_MOTOR_CURRENT_RESTART_RESET = 154,                //!< Автосброс счетчика АПВ
@@ -169,7 +169,7 @@ enum enID
   CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE = 163,               //!< Защита "Дисбаланс токов двигателя"
   CCS_PROT_MOTOR_IMBALANCE_CURRENT_PREVENT = 164,            //!< Параметр запрещающий запуск
   CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY = 165,        //!< Задержка активации уставка
-  CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY = 166,         //!< Задержка срабатывания уставка
+  CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY = 166,         //!< Время уставка
   CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY = 167,      //!< Задержка АПВ уставка
   CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_LIMIT = 168,      //!< Количество АПВ уставка
   CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_RESET = 169,      //!< Автосброс счетчика АПВ
@@ -184,7 +184,7 @@ enum enID
   CCS_PROT_MOTOR_ASYNC_MODE = 178,                           //!< Защита "Турбинное вращение"
   CCS_PROT_MOTOR_ASYNC_PREVENT = 179,                        //!< Параметр запрещающий запуск
   CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY = 180,                    //!< Задержка активации уставка
-  CCS_PROT_MOTOR_ASYNC_TRIP_DELAY = 181,                     //!< Задержка срабатывания уставка
+  CCS_PROT_MOTOR_ASYNC_TRIP_DELAY = 181,                     //!< Время уставка
   CCS_PROT_MOTOR_ASYNC_RESTART_DELAY = 182,                  //!< Задержка АПВ уставка
   CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT = 183,                  //!< Количество АПВ уставка
   CCS_PROT_MOTOR_ASYNC_RESTART_RESET = 184,                  //!< Автосброс счетчика АПВ
@@ -199,7 +199,7 @@ enum enID
   CCS_PROT_MOTOR_OUT_OF_SYNC_MODE = 193,                     //!< Защита "Рассинхронизация ПВЭД"
   CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT = 194,                  //!< Параметр запрещающий запуск
   CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY = 195,              //!< Задержка активации уставка
-  CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY = 196,               //!< Задержка срабатывания уставка
+  CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY = 196,               //!< Время уставка
   CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY = 197,            //!< Задержка АПВ уставка
   CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT = 198,            //!< Количество АПВ уставка
   CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET = 199,            //!< Автосброс счетчика АПВ
@@ -214,7 +214,7 @@ enum enID
   CCS_PROT_DHS_PRESSURE_INTAKE_MODE = 208,                   //!< Защита "Давление на приёме насоса"
   CCS_PROT_DHS_PRESSURE_INTAKE_PREVENT = 209,                //!< Параметр запрещающий запуск
   CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY = 210,            //!< Задержка активации уставка
-  CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY = 211,             //!< Задержка срабатывания уставка
+  CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY = 211,             //!< Время уставка
   CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY = 212,          //!< Задержка АПВ уставка
   CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT = 213,          //!< Количество АПВ уставка
   CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET = 214,          //!< Автосброс счетчика АПВ
@@ -229,7 +229,7 @@ enum enID
   CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE = 223,                 //!< Защита "Температура двигателя"
   CCS_PROT_DHS_TEMPERATURE_MOTOR_PREVENT = 224,              //!< Параметр запрещающий запуск
   CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY = 225,          //!< Задержка активации уставка
-  CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY = 226,           //!< Задержка срабатывания уставка
+  CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY = 226,           //!< Время уставка
   CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY = 227,        //!< Задержка АПВ уставка
   CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_LIMIT = 228,        //!< Количество АПВ уставка
   CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_RESET = 229,        //!< Автосброс счетчика АПВ
@@ -244,7 +244,7 @@ enum enID
   CCS_PROT_DHS_RESISTANCE_MODE = 238,                        //!< Защита "Сопротивление изоляции"
   CCS_PROT_DHS_RESISTANCE_PREVENT = 239,                     //!< Параметр запрещающий запуск
   CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY = 240,                 //!< Задержка активации уставка
-  CCS_PROT_DHS_RESISTANCE_TRIP_DELAY = 241,                  //!< Задержка срабатывания уставка
+  CCS_PROT_DHS_RESISTANCE_TRIP_DELAY = 241,                  //!< Время уставка
   CCS_PROT_DHS_RESISTANCE_RESTART_DELAY = 242,               //!< Задержка АПВ уставка
   CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT = 243,               //!< Количество АПВ уставка
   CCS_PROT_DHS_RESISTANCE_RESTART_RESET = 244,               //!< Автосброс счетчика АПВ
@@ -259,7 +259,7 @@ enum enID
   CCS_PROT_DHS_VIBRATION_MODE = 253,                         //!< Защита "Вибрация двигателя"
   CCS_PROT_DHS_VIBRATION_PREVENT = 254,                      //!< Параметр запрещающий запуск
   CCS_PROT_DHS_VIBRATION_ACTIV_DELAY = 255,                  //!< Задержка активации уставка
-  CCS_PROT_DHS_VIBRATION_TRIP_DELAY = 256,                   //!< Задержка срабатывания уставка
+  CCS_PROT_DHS_VIBRATION_TRIP_DELAY = 256,                   //!< Время уставка
   CCS_PROT_DHS_VIBRATION_RESTART_DELAY = 257,                //!< Задержка АПВ уставка
   CCS_PROT_DHS_VIBRATION_RESTART_LIMIT = 258,                //!< Количество АПВ уставка
   CCS_PROT_DHS_VIBRATION_RESTART_RESET = 259,                //!< Автосброс счетчика АПВ
@@ -274,7 +274,7 @@ enum enID
   CCS_PROT_AI_1_MODE = 268,                                  //!< Защита по аналоговому входу 1
   CCS_PROT_AI_1_PREVENT = 269,                               //!< Параметр запрещающий запуск
   CCS_PROT_AI_1_ACTIV_DELAY = 270,                           //!< Задержка активации уставка
-  CCS_PROT_AI_1_TRIP_DELAY = 271,                            //!< Задержка срабатывания уставка
+  CCS_PROT_AI_1_TRIP_DELAY = 271,                            //!< Время уставка
   CCS_PROT_AI_1_RESTART_DELAY = 272,                         //!< Задержка АПВ уставка
   CCS_PROT_AI_1_RESTART_LIMIT = 273,                         //!< Количество АПВ уставка
   CCS_PROT_AI_1_RESTART_RESET = 274,                         //!< Автосброс счетчика АПВ
@@ -289,7 +289,7 @@ enum enID
   CCS_PROT_AI_2_MODE = 283,                                  //!< Защита по аналоговому входу 2
   CCS_PROT_AI_2_PREVENT = 284,                               //!< Параметр запрещающий запуск
   CCS_PROT_AI_2_ACTIV_DELAY = 285,                           //!< Задержка активации уставка
-  CCS_PROT_AI_2_TRIP_DELAY = 286,                            //!< Задержка срабатывания уставка
+  CCS_PROT_AI_2_TRIP_DELAY = 286,                            //!< Время уставка
   CCS_PROT_AI_2_RESTART_DELAY = 287,                         //!< Задержка АПВ уставка
   CCS_PROT_AI_2_RESTART_LIMIT = 288,                         //!< Количество АПВ уставка
   CCS_PROT_AI_2_RESTART_RESET = 289,                         //!< Автосброс счетчика АПВ
@@ -304,7 +304,7 @@ enum enID
   CCS_PROT_AI_3_MODE = 298,                                  //!< Защита по аналоговому входу 3
   CCS_PROT_AI_3_PREVENT = 299,                               //!< Параметр запрещающий запуск
   CCS_PROT_AI_3_ACTIV_DELAY = 300,                           //!< Задержка активации уставка
-  CCS_PROT_AI_3_TRIP_DELAY = 301,                            //!< Задержка срабатывания уставка
+  CCS_PROT_AI_3_TRIP_DELAY = 301,                            //!< Время уставка
   CCS_PROT_AI_3_RESTART_DELAY = 302,                         //!< Задержка АПВ уставка
   CCS_PROT_AI_3_RESTART_LIMIT = 303,                         //!< Количество АПВ уставка
   CCS_PROT_AI_3_RESTART_RESET = 304,                         //!< Автосброс счетчика АПВ
@@ -319,7 +319,7 @@ enum enID
   CCS_PROT_AI_4_MODE = 313,                                  //!< Защита по аналоговому входу 4
   CCS_PROT_AI_4_PREVENT = 314,                               //!< Параметр запрещающий запуск
   CCS_PROT_AI_4_ACTIV_DELAY = 315,                           //!< Задержка активации уставка
-  CCS_PROT_AI_4_TRIP_DELAY = 316,                            //!< Задержка срабатывания уставка
+  CCS_PROT_AI_4_TRIP_DELAY = 316,                            //!< Время уставка
   CCS_PROT_AI_4_RESTART_DELAY = 317,                         //!< Задержка АПВ уставка
   CCS_PROT_AI_4_RESTART_LIMIT = 318,                         //!< Количество АПВ уставка
   CCS_PROT_AI_4_RESTART_RESET = 319,                         //!< Автосброс счетчика АПВ
@@ -334,7 +334,7 @@ enum enID
   CCS_PROT_DI_1_MODE = 328,                                  //!< Защита по цифровому входу 1
   CCS_PROT_DI_1_PREVENT = 329,                               //!< Параметр запрещающий запуск
   CCS_PROT_DI_1_ACTIV_DELAY = 330,                           //!< Задержка активации уставка
-  CCS_PROT_DI_1_TRIP_DELAY = 331,                            //!< Задержка срабатывания уставка
+  CCS_PROT_DI_1_TRIP_DELAY = 331,                            //!< Время уставка
   CCS_PROT_DI_1_RESTART_DELAY = 332,                         //!< Задержка АПВ уставка
   CCS_PROT_DI_1_RESTART_LIMIT = 333,                         //!< Количество АПВ уставка
   CCS_PROT_DI_1_RESTART_RESET = 334,                         //!< Автосброс счетчика АПВ
@@ -349,7 +349,7 @@ enum enID
   CCS_PROT_DI_2_MODE = 343,                                  //!< Защита по цифровому входу 2
   CCS_PROT_DI_2_PREVENT = 344,                               //!< Параметр запрещающий запуск
   CCS_PROT_DI_2_ACTIV_DELAY = 345,                           //!< Задержка активации уставка
-  CCS_PROT_DI_2_TRIP_DELAY = 346,                            //!< Задержка срабатывания уставка
+  CCS_PROT_DI_2_TRIP_DELAY = 346,                            //!< Время уставка
   CCS_PROT_DI_2_RESTART_DELAY = 347,                         //!< Задержка АПВ уставка
   CCS_PROT_DI_2_RESTART_LIMIT = 348,                         //!< Количество АПВ уставка
   CCS_PROT_DI_2_RESTART_RESET = 349,                         //!< Автосброс счетчика АПВ
@@ -364,7 +364,7 @@ enum enID
   CCS_PROT_DI_3_MODE = 358,                                  //!< Защита по цифровому входу 3
   CCS_PROT_DI_3_PREVENT = 359,                               //!< Параметр запрещающий запуск
   CCS_PROT_DI_3_ACTIV_DELAY = 360,                           //!< Задержка активации уставка
-  CCS_PROT_DI_3_TRIP_DELAY = 361,                            //!< Задержка срабатывания уставка
+  CCS_PROT_DI_3_TRIP_DELAY = 361,                            //!< Время уставка
   CCS_PROT_DI_3_RESTART_DELAY = 362,                         //!< Задержка АПВ уставка
   CCS_PROT_DI_3_RESTART_LIMIT = 363,                         //!< Количество АПВ уставка
   CCS_PROT_DI_3_RESTART_RESET = 364,                         //!< Автосброс счетчика АПВ
@@ -379,7 +379,7 @@ enum enID
   CCS_PROT_DI_4_MODE = 373,                                  //!< Защита по цифровому входу 4
   CCS_PROT_DI_4_PREVENT = 374,                               //!< Параметр запрещающий запуск
   CCS_PROT_DI_4_ACTIV_DELAY = 375,                           //!< Задержка активации уставка
-  CCS_PROT_DI_4_TRIP_DELAY = 376,                            //!< Задержка срабатывания уставка
+  CCS_PROT_DI_4_TRIP_DELAY = 376,                            //!< Время уставка
   CCS_PROT_DI_4_RESTART_DELAY = 377,                         //!< Задержка АПВ уставка
   CCS_PROT_DI_4_RESTART_LIMIT = 378,                         //!< Количество АПВ уставка
   CCS_PROT_DI_4_RESTART_RESET = 379,                         //!< Автосброс счетчика АПВ
@@ -394,7 +394,7 @@ enum enID
   CCS_PROT_OTHER_LIMIT_RESTART_MODE = 388,                   //!< Защита "Превышение числа пусков"
   CCS_PROT_OTHER_LIMIT_RESTART_PREVENT = 389,                //!< Параметр запрещающий запуск
   CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY = 390,            //!< Задержка активации уставка
-  CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY = 391,             //!< Задержка срабатывания уставка
+  CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY = 391,             //!< Время уставка
   CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY = 392,          //!< Задержка АПВ уставка
   CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT = 393,          //!< Количество АПВ уставка
   CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET = 394,          //!< Автосброс счетчика АПВ
@@ -408,7 +408,7 @@ enum enID
   CCS_PROT_OTHER_LOCK_DOOR_MODE = 402,                       //!< Защита "Блокировка силового отсека"
   CCS_PROT_OTHER_LOCK_DOOR_PREVENT = 403,                    //!< Параметр запрещающий запуск
   CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY = 404,                //!< Задержка активации уставка
-  CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY = 405,                 //!< Задержка срабатывания уставка
+  CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY = 405,                 //!< Время уставка
   CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY = 406,              //!< Задержка АПВ уставка
   CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT = 407,              //!< Количество АПВ уставка
   CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET = 408,              //!< Автосброс счетчика АПВ
@@ -423,7 +423,7 @@ enum enID
   CCS_PROT_OTHER_VSD_MODE = 417,                             //!< Защита "Аппаратные защиты ЧРП"
   CCS_PROT_OTHER_VSD_PREVENT = 418,                          //!< Параметр запрещающий запуск
   CCS_PROT_OTHER_VSD_ACTIV_DELAY = 419,                      //!< Задержка активации уставка
-  CCS_PROT_OTHER_VSD_TRIP_DELAY = 420,                       //!< Задержка срабатывания уставка
+  CCS_PROT_OTHER_VSD_TRIP_DELAY = 420,                       //!< Время уставка
   CCS_PROT_OTHER_VSD_RESTART_DELAY = 421,                    //!< Задержка АПВ уставка
   CCS_PROT_OTHER_VSD_RESTART_LIMIT = 422,                    //!< Количество АПВ уставка
   CCS_PROT_OTHER_VSD_RESTART_RESET = 423,                    //!< Автосброс счетчика АПВ
@@ -438,7 +438,7 @@ enum enID
   CCS_PROT_OTHER_IMB_MODE = 432,                             //!< Защита "Контроль УКИ"
   CCS_PROT_OTHER_IMB_PREVENT = 433,                          //!< Параметр запрещающий запуск
   CCS_PROT_OTHER_IMB_ACTIV_DELAY = 434,                      //!< Задержка активации уставка
-  CCS_PROT_OTHER_IMB_TRIP_DELAY = 435,                       //!< Задержка срабатывания уставка
+  CCS_PROT_OTHER_IMB_TRIP_DELAY = 435,                       //!< Время уставка
   CCS_PROT_OTHER_IMB_RESTART_DELAY = 436,                    //!< Задержка АПВ уставка
   CCS_PROT_OTHER_IMB_RESTART_LIMIT = 437,                    //!< Количество АПВ уставка
   CCS_PROT_OTHER_IMB_RESTART_RESET = 438,                    //!< Автосброс счетчика АПВ
@@ -782,7 +782,7 @@ enum enID
   CCS_VSD_SL_20_6 = 776,                                     //!< Таймер контроллера SL. Предел тока
   CCS_RESISTANCE_STATOR_STEP = 777,                          //!< Шаг изменения сопротивления изоляции
   CCS_PROT_OTHER_VSD_NO_CONNECT_MODE = 778,                  //!< "Защита от потери связи с ЧРП"
-  CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY = 779,            //!< Задержка срабатывания уставка
+  CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY = 779,            //!< Время уставка
   CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET = 780,    //!< Команда сброса уставок защиты от потери связи с ЧРП по умолчанию
   CCS_VSD_LOG_CONNECTION = 781,                              //!< Связь с ЧРП - быстрые архивы
   CCS_MOTOR_TYPE = 782,                                      //!< Тип двигателя. Используется в интерфейсе
@@ -864,7 +864,7 @@ enum enID
   CCS_CURRENT_PHASE_2 = 858,                                 //!< Ток фазы B
   CCS_CURRENT_PHASE_3 = 859,                                 //!< Ток фазы С
   CCS_PROT_MOTOR_OVERLOAD_CALC_LOAD = 860,                   //!< Текущая перегрузка
-  CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY = 861,             //!< Текущая задержка срабатывания
+  CCS_PROT_MOTOR_OVERLOAD_CALC_TRIP_DELAY = 861,             //!< Текущая Время
   CCS_SRC_CURRENT_OUT_PHASE = 862,                           //!< Измерение токов ЧРП
   CCS_VSD_DECEL = 863,                                       //!< Предварительный разряд шины
   CCS_IP_ADDRESS_1 = 864,                                    //!< IP-адрес (1)
@@ -924,7 +924,7 @@ enum enID
   CCS_PROT_DHS_FLOW_DISCHARGE_MODE = 918,                    //!< Защита "Минимальный расход"
   CCS_PROT_DHS_FLOW_DISCHARGE_PREVENT = 919,                 //!< Параметр запрещающий запуск
   CCS_PROT_DHS_FLOW_DISCHARGE_ACTIV_DELAY = 920,             //!< Задержка активации уставка
-  CCS_PROT_DHS_FLOW_DISCHARGE_TRIP_DELAY = 921,              //!< Задержка срабатывания уставка
+  CCS_PROT_DHS_FLOW_DISCHARGE_TRIP_DELAY = 921,              //!< Время уставка
   CCS_PROT_DHS_FLOW_DISCHARGE_RESTART_DELAY = 922,           //!< Задержка АПВ уставка
   CCS_PROT_DHS_FLOW_DISCHARGE_RESTART_LIMIT = 923,           //!< Количество АПВ уставка
   CCS_PROT_DHS_FLOW_DISCHARGE_RESTART_RESET = 924,           //!< Автосброс счетчика АПВ
@@ -942,7 +942,7 @@ enum enID
   CCS_PROT_DHS_PRESSURE_DISCHARGE_MODE = 936,                //!< Защита "Давление на выкиде насоса"
   CCS_PROT_DHS_PRESSURE_DISCHARGE_PREVENT = 937,             //!< Параметр запрещающий запуск
   CCS_PROT_DHS_PRESSURE_DISCHARGE_ACTIV_DELAY = 938,         //!< Задержка активации уставка
-  CCS_PROT_DHS_PRESSURE_DISCHARGE_TRIP_DELAY = 939,          //!< Задержка срабатывания уставка
+  CCS_PROT_DHS_PRESSURE_DISCHARGE_TRIP_DELAY = 939,          //!< Время уставка
   CCS_PROT_DHS_PRESSURE_DISCHARGE_RESTART_DELAY = 940,       //!< Задержка АПВ уставка
   CCS_PROT_DHS_PRESSURE_DISCHARGE_RESTART_LIMIT = 941,       //!< Количество АПВ уставка
   CCS_PROT_DHS_PRESSURE_DISCHARGE_RESTART_RESET = 942,       //!< Автосброс счетчика АПВ
@@ -965,7 +965,30 @@ enum enID
   CCS_RGM_RUN_PUSH_SETPOINT_U2 = 959,                        //!< Уставка точки 2 напряжения для задания толчка
   CCS_SETPOINT_FREQUENCY = 960,                              //!< Уставка частоты для не пусковых режимов работы
   CCS_RGM_OPTIM_VOLTAGE_STATE = 961,                         //!< Состояние режима оптимизация напряжения
-  CCS_END = 962,                                             //!< 
+  CCS_RO_1_ACTION = 962,                                     //!< Релейный вых.1 уст.
+  CCS_RO_2_ACTION = 963,                                     //!< Релейный вых.2 уст.
+  CCS_RO_3_ACTION = 964,                                     //!< Релейный вых.3 уст.
+  CCS_RO_4_ACTION = 965,                                     //!< Релейный вых.4 уст.
+  CCS_CMD_PROT_MOTOR_CURRENT_SETPOINT_RESET = 966,           //!< Защита "Максимальный ток двигателя". Уставки по умолчанию
+  CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_MODE = 967,           //!< Перегрев вх.фильтра
+  CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PREVENT = 968,        //!< Перегрев вх.фильтра.Запрещ.парам.
+  CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_ACTIV_DELAY = 969,    //!< Перегрев вх.фильтра. Пуск.время
+  CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_DELAY = 970,     //!< Перегрев вх.фильтра. Время
+  CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_DELAY = 971,  //!< Перегрев вх.фильтра. Зад.АПВ
+  CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_LIMIT = 972,  //!< Перегрев вх.фильтра. Раз.АПВ
+  CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_RESET = 973,  //!< Перегрев вх.фильтра. Сброс счёт.
+  CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_SETPOINT = 974,  //!< Перегрев вх.фильтра. Уст.остан.
+  CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_SETPOINT = 975, //!< Перегрев вх.фильтра. Уст.пуска
+  CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PARAMETER = 976,      //!< Перегрев вх.фильтра. Параметр
+  CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_FLAG = 977,   //!< Перегрев вх.фильтра. Флаг АПВ
+  CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_STATE = 978,          //!< Перегрев вх.фильтра Состояние
+  CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TIME = 979,           //!< Перегрев вх.фильтра Таймер
+  CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_COUNT = 980,  //!< Перегрев вх.фильтра Время АПВ
+  CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_FIRST_TIME = 981, //!< Перегрев вх.фильтра Счёт. АПВ
+  CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_DELAY_FLAG = 982,     //!< Перегрев вх.фильтра. Флаг срабатывания
+  CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_BLOCK_FLAG = 983,     //!< Перегрев вх.фильтра. Флаг блок.
+  CCS_CMD_PROT_OTHER_OVERHEAT_INPUT_FILTER_SETPOINT_RESET = 984, //!< Перегрев вх.фильтра. Сброс уставок
+  CCS_END = 985,                                             //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
@@ -1110,7 +1133,7 @@ enum enID
   VSD_FC_TLIM = 10141,                                       //!< Время импульса с общим (максимальным) токоограничением
   VSD_U_SCALE = 10142,                                       //!< Масштаб измеряемого напряжения ПЧ отн. базового 250А
   VSD_I_SCALE = 10143,                                       //!< Масштаб измеряемого тока ПЧ отн. базового 250А
-  VSD_M_I_FAST = 10144,                                      //!< Уровень быстрой токовой защиты двигателя
+  VSD_RESERVED_10144 = 10144,                                //!< Уровень быстрой токовой защиты двигателя
   VSD_T_BLANK = 10145,                                       //!< Время отключения защиты двигателя после старта
   VSD_PID_I_REF = 10146,                                     //!< Уровень уставки тока для ПИД-регулятора
   VSD_PID_T_REG = 10147,                                     //!< Постоянная времени для ПИД-регулятора
@@ -1160,7 +1183,7 @@ enum enID
   VSD_TRACK_ERROR = 10191,                                   //!< Величина несоответствия частота Danfoss 4-35 Не используется в проекте, только при конфигурировании
   VSD_TRACK_ERROR_TIMEOUT = 10192,                           //!< Величина несоответствия частоты Danfoss 4-36 Не используется в проекте, только при конфигурировании
   VSD_TRACK_ERROR_RAMPING = 10193,                           //!< Величина несоответствия частоты при разгоне Danfoss 4-37 Не используется в проекте, только при конфигурировании
-  VSD_TRACK_ERROR_RAMP_TIME = 10194,                         //!< Задержка срабатывания при несоответствии частоты при разгоне Danfoss 4-38 Не используется в проекте, только при конфигурировании
+  VSD_TRACK_ERROR_RAMP_TIME = 10194,                         //!< Время при несоответствии частоты при разгоне Danfoss 4-38 Не используется в проекте, только при конфигурировании
   VSD_TRACK_ERROR_AFTER_RAMP = 10195,                        //!< Tracking Error After Ramping Timeout Danfoss 4-39 Не используется в проекте, только при конфигурировании
   VSD_WARNING_CURRENT_LOW = 10196,                           //!< Danfoss 4-50 Не используется в проекте, только при конфигурировании
   VSD_WARNING_CURRENT_HIGH = 10197,                          //!< Danfoss 4-51 Не используется в проекте, только при конфигурировании
@@ -1324,7 +1347,7 @@ enum enID
   VSD_SWITCHING_FREQUENCY_MODE = 10355,                      //!< Режим ШИМ модуляции
   VSD_RES_MODE = 10356,                                      //!< Источник сигнала о колебаниях
   VSD_PROT_NO_CONNECT_MODE = 10357,                          //!< "Защита от потери связи с ЧРП"
-  VSD_PROT_NO_CONNECT_TRIP_DELAY = 10358,                    //!< Защита от потери связи с ЧРП. Задержка срабатывания уставка
+  VSD_PROT_NO_CONNECT_TRIP_DELAY = 10358,                    //!< Защита от потери связи с ЧРП. Время уставка
   VSD_THYR_T_EXT = 10359,                                    //!< Термодатчик выпрямителя
   VSD_THYR_T_EXT_2 = 10360,                                  //!< Термодатчик выпрямителя 2
   VSD_MEASURE_T_1 = 10361,                                   //!< T1 платы измерений

@@ -128,6 +128,7 @@ void Ccs::mainTask()
 
       calcTime();
       checkConnectDevice();
+      setRelayOutputs();
     }
   }
 }
@@ -809,19 +810,19 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_M_IRMS, value, eventType);
+    vsd->setProtOverloadMotorTripSetpoint(value);
     return err;
   case CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_T_BLANK, value, eventType);
+    vsd->setProtOverloadMotorActivDelay(value);
     break;
   case CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_M_TRMS, value, eventType);
+    vsd->setProtOverloadMotorTripDelay(value);
     return err;
   case CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_M_I_FAST, value, eventType);
+    vsd->setProtCurrentMotorTripSetpoint(value);
     return err;
   case CCS_RGM_CHANGE_FREQ_PERIOD:
     err = setValue(id, value, eventType);
@@ -1058,6 +1059,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     cmdProtMotorOverloadSetpointReset();
     return err;
+  case CCS_CMD_PROT_MOTOR_CURRENT_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtMotorCurrentSetpointReset();
+    return err;
   case CCS_CMD_PROT_MOTOR_UNDERLOAD_SETPOINT_RESET:
     err = setValue(id, value, eventType);
     cmdProtMotorUnderloadSetpointReset();
@@ -1229,10 +1234,12 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return vsd->resetSetpoints();
   case CCS_PROT_OTHER_VSD_NO_CONNECT_MODE:
     err = setValue(id, value, eventType);
-    if (value)
-      parameters.set(VSD_PROT_NO_CONNECT_MODE, 1.0);
-    else
-      parameters.set(VSD_PROT_NO_CONNECT_MODE, 0.0);
+    if (!err) {
+      if (value)
+        return vsd->onProtConnect();
+      else
+        return vsd->offProtConnect();
+    }
     return err;
   case CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY:
     err = setValue(id, value, eventType);
@@ -1466,6 +1473,14 @@ void Ccs::cmdProtMotorOverloadSetpointReset()
 {
   for (uint16_t i = CCS_PROT_MOTOR_OVERLOAD_MODE;
        i <=  CCS_PROT_MOTOR_OVERLOAD_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtMotorCurrentSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_MOTOR_CURRENT_MODE;
+       i <=  CCS_PROT_MOTOR_CURRENT_PARAMETER; i++) {
     resetValue(i);
   }
 }
@@ -1845,5 +1860,26 @@ void Ccs::resetRestartCount()
   setValue(CCS_RESTART_COUNT_ALL, restartCount);
   for (int i = 0; i < (RESTART_TIME_MAX + 1); ++i) {
     restartTime_[i] = 0;
+  }
+}
+
+void Ccs::setRelayOutputs()
+{
+  static PinState valueOld[4] = {PinReset};
+  PinState value;
+
+  for (int i = 0; i < 4; ++i) {
+    int action = getValue(CCS_RO_1_ACTION + i);
+    if (((action == DO_ACTION_STOP) && isStopMotor()) ||
+        ((action == DO_ACTION_RUN) && isWorkMotor()) ||
+        ((action == DO_ACTION_RESTART) && isRestart()) ||
+        ((action == DO_ACTION_BLOCK) && isBlock())) {
+      value = PinSet;
+    } else {
+      value = PinReset;
+    }
+    if (value != valueOld[i])
+      setRelayOutput(DO1 + i, value);
+    valueOld[i] = value;
   }
 }

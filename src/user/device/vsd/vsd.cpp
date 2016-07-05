@@ -203,6 +203,11 @@ int Vsd::setLimitsMinFrequence(float value)
       parameters.setMin(CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ, value);
     if (value > parameters.getMax(CCS_RGM_PUMP_GAS_SETPOINT))
       parameters.setMin(CCS_RGM_PUMP_GAS_SETPOINT, value);
+    if (value > parameters.getMax(CCS_RGM_JARRING_FREQ_1))
+      parameters.setMin(CCS_RGM_JARRING_FREQ_1, value);
+    if (value > parameters.getMax(CCS_RGM_JARRING_FREQ_2))
+      parameters.setMin(CCS_RGM_JARRING_FREQ_2, value);
+
     return ok_r;
   }
   return err_r;
@@ -240,6 +245,10 @@ int Vsd::setLimitsMaxFrequence(float value)
       parameters.setMax(CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ, value);
     if (value < parameters.getMax(CCS_RGM_PUMP_GAS_SETPOINT))
       parameters.setMax(CCS_RGM_PUMP_GAS_SETPOINT, value);
+    if (value < parameters.getMax(CCS_RGM_JARRING_FREQ_1))
+      parameters.setMax(CCS_RGM_JARRING_FREQ_1, value);
+    if (value < parameters.getMax(CCS_RGM_JARRING_FREQ_2))
+      parameters.setMax(CCS_RGM_JARRING_FREQ_2, value);
     return ok_r;
   }
   return err_r;
@@ -675,6 +684,54 @@ float Vsd::getTypeStop()
   return getValue(VSD_TYPE_STOP);
 }
 
+int Vsd::setProtOverloadMotorTripSetpoint(float value)
+{
+  if (setValue(VSD_M_IRMS, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания перегруза двигателя (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
+}
+
+int Vsd::setProtOverloadMotorActivDelay(float value)
+{
+  if (setValue(VSD_T_BLANK, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания пускового времени перегруза двигателя (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
+}
+
+int Vsd::setProtOverloadMotorTripDelay(float value)
+{
+  if (setValue(VSD_M_TRMS, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания задержки срабатывания перегруза двигателя (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
+}
+
+int Vsd::setProtCurrentMotorTripSetpoint(float value)
+{
+  if (setValue(VSD_CURRENT_LIMIT, value)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "ЧРП: Ошибка задания уставки максимального тока двигателя (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
+}
+
 int Vsd::start(bool /*init*/)
 {
   return 0;
@@ -710,9 +767,34 @@ float Vsd::checkAlarmVsd()
   return 0;
 }
 
+float Vsd::checkAlarmVsdUnderVoltage()
+{
+  return VSD_ALARM_NONE;
+}
+
+float Vsd::checkAlarmVsdOverVoltage()
+{
+  return VSD_ALARM_NONE;
+}
+
+float Vsd::checkAlarmVsdCurrentMotor()
+{
+  return VSD_ALARM_NONE;
+}
+
+float Vsd::checkAlarmVsdOverloadMotor()
+{
+  return VSD_ALARM_NONE;
+}
+
 bool Vsd::checkPreventVsd()
 {
   return false;
+}
+
+float Vsd::checkWarningVsd()
+{
+  return 0;
 }
 
 void Vsd::processingRegimeRun()
@@ -767,4 +849,14 @@ void Vsd::resetConnect()
   parameters.set(CCS_VSD_CONNECTION_PACKAGE_CRC, 0);
   parameters.set(CCS_VSD_CONNECTION_PACKAGE_ERR, 0);
   parameters.set(CCS_VSD_CONNECTION_PACKAGE_LOST, 0);
+}
+
+int Vsd::onProtConnect()
+{
+  return 0;
+}
+
+int Vsd::offProtConnect()
+{
+  return 0;
 }

@@ -42,7 +42,7 @@ void Vsd::initParameters()
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].id                                  = VSD_SPEED_RPM_NOW;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].access                              = ACCESS_OPERATOR;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].operation                           = OPERATION_READ;
-  parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].physic                              = 0;
+  parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].physic                              = PHYSIC_RPM;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].min                                 = 0.0;
@@ -522,7 +522,7 @@ void Vsd::initParameters()
   parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].id                                  = VSD_STATUS_WORD_5;
   parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].access                              = ACCESS_OPERATOR;
   parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].operation                           = OPERATION_READ;
-  parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].physic                              = 0;
+  parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].physic                              = PHYSIC_NUMERIC;
   parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_STATUS_WORD_5 - VSD_BEGIN].min                                 = 0.0;
@@ -534,7 +534,7 @@ void Vsd::initParameters()
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].id                                   = VSD_THYR_CONTROL;
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].access                               = ACCESS_OPERATOR;
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].operation                            = OPERATION_WRITE;
-  parameters_[VSD_THYR_CONTROL - VSD_BEGIN].physic                               = 0;
+  parameters_[VSD_THYR_CONTROL - VSD_BEGIN].physic                               = PHYSIC_NUMERIC;
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].value.float_t                        = 0;
   parameters_[VSD_THYR_CONTROL - VSD_BEGIN].min                                  = 0.0;
@@ -558,7 +558,7 @@ void Vsd::initParameters()
   parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].id                                  = VSD_STATUS_WORD_6;
   parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].access                              = ACCESS_OPERATOR;
   parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].operation                           = OPERATION_READ;
-  parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].physic                              = 0;
+  parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].physic                              = PHYSIC_NUMERIC;
   parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_STATUS_WORD_6 - VSD_BEGIN].min                                 = 0.0;
@@ -666,7 +666,7 @@ void Vsd::initParameters()
   parameters_[VSD_CONTROL_WORD_1 - VSD_BEGIN].id                                 = VSD_CONTROL_WORD_1;
   parameters_[VSD_CONTROL_WORD_1 - VSD_BEGIN].access                             = ACCESS_OPERATOR;
   parameters_[VSD_CONTROL_WORD_1 - VSD_BEGIN].operation                          = OPERATION_WRITE;
-  parameters_[VSD_CONTROL_WORD_1 - VSD_BEGIN].physic                             = 0;
+  parameters_[VSD_CONTROL_WORD_1 - VSD_BEGIN].physic                             = PHYSIC_NUMERIC;
   parameters_[VSD_CONTROL_WORD_1 - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_CONTROL_WORD_1 - VSD_BEGIN].value.float_t                      = 0;
   parameters_[VSD_CONTROL_WORD_1 - VSD_BEGIN].min                                = 0.0;
@@ -678,7 +678,7 @@ void Vsd::initParameters()
   parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].id                                  = VSD_STATUS_WORD_1;
   parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].access                              = ACCESS_OPERATOR;
   parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].operation                           = OPERATION_READ;
-  parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].physic                              = 0;
+  parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].physic                              = PHYSIC_NUMERIC;
   parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_STATUS_WORD_1 - VSD_BEGIN].min                                 = 0.0;
@@ -726,7 +726,7 @@ void Vsd::initParameters()
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].id                              = VSD_CURRENT_REGULATOR;
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].access                          = ACCESS_OPERATOR;
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].operation                       = OPERATION_READ;
-  parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].physic                          = 0;
+  parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].value.float_t                   = 0;
   parameters_[VSD_CURRENT_REGULATOR - VSD_BEGIN].min                             = 0.0;
@@ -738,7 +738,7 @@ void Vsd::initParameters()
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].id                                     = VSD_UF_U_FORCE;
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].access                                 = ACCESS_OPERATOR;
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].operation                              = OPERATION_WRITE;
-  parameters_[VSD_UF_U_FORCE - VSD_BEGIN].physic                                 = 0;
+  parameters_[VSD_UF_U_FORCE - VSD_BEGIN].physic                                 = PHYSIC_VOLTAGE;
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_UF_U_FORCE - VSD_BEGIN].min                                    = 0.0;
@@ -750,7 +750,7 @@ void Vsd::initParameters()
   parameters_[VSD_UF_F_FORCE - VSD_BEGIN].id                                     = VSD_UF_F_FORCE;
   parameters_[VSD_UF_F_FORCE - VSD_BEGIN].access                                 = ACCESS_OPERATOR;
   parameters_[VSD_UF_F_FORCE - VSD_BEGIN].operation                              = OPERATION_WRITE;
-  parameters_[VSD_UF_F_FORCE - VSD_BEGIN].physic                                 = 0;
+  parameters_[VSD_UF_F_FORCE - VSD_BEGIN].physic                                 = PHYSIC_FREQUENCY;
   parameters_[VSD_UF_F_FORCE - VSD_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[VSD_UF_F_FORCE - VSD_BEGIN].value.float_t                          = 0;
   parameters_[VSD_UF_F_FORCE - VSD_BEGIN].min                                    = 0.0;
@@ -1731,17 +1731,17 @@ void Vsd::initParameters()
   parameters_[VSD_I_SCALE - VSD_BEGIN].discret                                   = 1;
   parameters_[VSD_I_SCALE - VSD_BEGIN].code                                      = 13;
   // Уровень быстрой токовой защиты двигателя
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].id                                       = VSD_M_I_FAST;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].access                                   = ACCESS_OPERATOR;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].operation                                = OPERATION_WRITE;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].physic                                   = 0;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].validity                                 = VALIDITY_ERROR;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].value.float_t                            = 0;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].min                                      = 0.0;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].max                                      = 999999999.9;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].def                                      = 0;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].discret                                  = 1;
-  parameters_[VSD_M_I_FAST - VSD_BEGIN].code                                     = 0;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].id                                 = VSD_RESERVED_10144;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].physic                             = 0;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].validity                           = VALIDITY_ERROR;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].value.float_t                      = 0;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].min                                = 0.0;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].max                                = 999999999.9;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].def                                = 0;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].discret                            = 1;
+  parameters_[VSD_RESERVED_10144 - VSD_BEGIN].code                               = 0;
   // Время отключения защиты двигателя после старта
   parameters_[VSD_T_BLANK - VSD_BEGIN].id                                        = VSD_T_BLANK;
   parameters_[VSD_T_BLANK - VSD_BEGIN].access                                    = ACCESS_OPERATOR;
@@ -2330,7 +2330,7 @@ void Vsd::initParameters()
   parameters_[VSD_TRACK_ERROR_RAMPING - VSD_BEGIN].def                           = 600.0;
   parameters_[VSD_TRACK_ERROR_RAMPING - VSD_BEGIN].discret                       = 1;
   parameters_[VSD_TRACK_ERROR_RAMPING - VSD_BEGIN].code                          = 0;
-  // Задержка срабатывания при несоответствии частоты при разгоне Danfoss 4-38 Не используется в проекте, только при конфигурировании
+  // Время при несоответствии частоты при разгоне Danfoss 4-38 Не используется в проекте, только при конфигурировании
   parameters_[VSD_TRACK_ERROR_RAMP_TIME - VSD_BEGIN].id                          = VSD_TRACK_ERROR_RAMP_TIME;
   parameters_[VSD_TRACK_ERROR_RAMP_TIME - VSD_BEGIN].access                      = ACCESS_OPERATOR;
   parameters_[VSD_TRACK_ERROR_RAMP_TIME - VSD_BEGIN].operation                   = OPERATION_WRITE;
@@ -4294,19 +4294,19 @@ void Vsd::initParameters()
   parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].value.float_t                = 1.0;
   parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].min                          = 0.0;
-  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].max                          = 1.0;
+  parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].max                          = 26.0;
   parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].def                          = 1.0;
   parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].discret                      = 1;
   parameters_[VSD_PROT_NO_CONNECT_MODE - VSD_BEGIN].code                         = 0;
-  // Защита от потери связи с ЧРП. Задержка срабатывания уставка
+  // Защита от потери связи с ЧРП. Время уставка
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].id                     = VSD_PROT_NO_CONNECT_TRIP_DELAY;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].access                 = ACCESS_OPERATOR;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].operation              = OPERATION_WRITE;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].physic                 = PHYSIC_TIME;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].validity               = VALIDITY_ERROR;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].value.float_t          = 180.0;
-  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].min                    = 0.0;
-  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].max                    = 65535.0;
+  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].min                    = 60.0;
+  parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].max                    = 18000.0;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].def                    = 180.0;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].discret                = 1;
   parameters_[VSD_PROT_NO_CONNECT_TRIP_DELAY - VSD_BEGIN].code                   = 0;

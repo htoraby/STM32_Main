@@ -24,6 +24,10 @@ void RegimeTechnologOptimizationVoltage::processing()
 
   maxUfPoint_ = parameters.get(CCS_BASE_VOLTAGE);
 
+  if (action_ == OffAction) { // Режим - выключен
+    state_ = IdleState;
+  }
+
   if (ksu.isStopMotor()) {
     state_ = IdleState;
   }

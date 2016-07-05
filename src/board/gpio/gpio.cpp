@@ -25,6 +25,13 @@ const uint16_t pinDO[DigitalOutputMax] = {
   GPIO_PIN_12, GPIO_PIN_12, GPIO_PIN_11, GPIO_PIN_10,
 };
 
+GPIO_TypeDef* portRO[RelayOutputMax] = {
+  GPIOG, GPIOG, GPIOG, GPIOG, GPIOG,
+};
+const uint16_t pinRO[RelayOutputMax] = {
+  GPIO_PIN_14, GPIO_PIN_13, GPIO_PIN_12, GPIO_PIN_11, GPIO_PIN_10,
+};
+
 static void initLed(LedType led, PinState value = PinReset);
 
 void gpioInit()
@@ -60,6 +67,9 @@ void gpioInit()
   }
   for (int i = 0; i < DigitalOutputMax; ++i) {
     initPinOut(portDO[i], pinDO[i]);
+  }
+  for (int i = 0; i < RelayOutputMax; ++i) {
+    initPinOut(portRO[i], pinRO[i]);
   }
 }
 
@@ -146,6 +156,11 @@ PinState getDigitalInput(const uint16_t num)
 void setDigitalOutput(const uint16_t num, PinState value)
 {
   HAL_GPIO_WritePin(portDO[num], pinDO[num], (GPIO_PinState)value);
+}
+
+void setRelayOutput(const uint16_t num, PinState value)
+{
+  HAL_GPIO_WritePin(portRO[num], pinRO[num], (GPIO_PinState)value);
 }
 
 bool isPowerGood()

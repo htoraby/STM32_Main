@@ -78,6 +78,19 @@ void VsdNovomet::initParameters()
   }
 }
 
+void VsdNovomet::setLimitsCcsParameters()
+{
+  parameters.setMin(CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT , getMax(VSD_CURRENT_LIMIT));
+  parameters.setMax(CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT , getMax(VSD_CURRENT_LIMIT));
+
+  parameters.setMin(CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT , getMax(VSD_M_IRMS));
+  parameters.setMax(CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT , getMax(VSD_M_IRMS));
+  parameters.setMin(CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY , getMax(VSD_T_BLANK));
+  parameters.setMax(CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY , getMax(VSD_T_BLANK));
+  parameters.setMin(CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY , getMax(VSD_M_TRMS));
+  parameters.setMax(CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY , getMax(VSD_M_TRMS));
+}
+
 bool VsdNovomet::isConnect()
 {
   bool curConnect = dm_->isConnect();
@@ -493,9 +506,7 @@ float VsdNovomet::checkAlarmVsd()
     parameters.set(CCS_VSD_STATUS_WORD_7_LOG, vsdStatus7);
   vsdStatusOld7 = vsdStatus7;
 
-  parameters.set(CCS_PROT_OTHER_VSD_TRIP_DELAY, 0);
-
-  if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_UD_LOW_FAULT) && (vsdStatus <= VSD_NOVOMET_ALARM_UD_HIGH_FAULT))) {
+  if ((vsdStatus == VSD_ALARM_NONE) || ((vsdStatus >= VSD_NOVOMET_ALARM_UD_LOW_FAULT) && (vsdStatus <= VSD_NOVOMET_ALARM_UD_HIGH_FAULT))) {
     for (int i = VSD_NOVOMET_ALARM_UD_LOW_FAULT; i <= VSD_NOVOMET_ALARM_UD_HIGH_FAULT; i++) {
       if (checkBit(vsdStatus1, i - 1000)) {
         resetBlock();
@@ -504,7 +515,7 @@ float VsdNovomet::checkAlarmVsd()
     }
   }
 
-  if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_UIN_ASYM) && (vsdStatus <= VSD_NOVOMET_ALARM_URECT_SHORT))) {
+  if ((vsdStatus == VSD_ALARM_NONE) || ((vsdStatus >= VSD_NOVOMET_ALARM_UIN_ASYM) && (vsdStatus <= VSD_NOVOMET_ALARM_URECT_SHORT))) {
     for (int i = VSD_NOVOMET_ALARM_UIN_ASYM; i <= VSD_NOVOMET_ALARM_URECT_SHORT; i++) {
       if (checkBit(vsdStatus1, i - 1000)) {
         resetBlock();
@@ -513,7 +524,7 @@ float VsdNovomet::checkAlarmVsd()
     }
   }
 
-  if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_FC_IT_ERR) && (vsdStatus <= VSD_NOVOMET_ALARM_AST_ERR))) {
+  if ((vsdStatus == VSD_ALARM_NONE) || ((vsdStatus >= VSD_NOVOMET_ALARM_FC_IT_ERR) && (vsdStatus <= VSD_NOVOMET_ALARM_AST_ERR))) {
     for (int i = VSD_NOVOMET_ALARM_FC_IT_ERR; i <= VSD_NOVOMET_ALARM_AST_ERR; i++) {
       if (checkBit(vsdStatus2, i - 1016)) {
         resetBlock();
@@ -522,16 +533,34 @@ float VsdNovomet::checkAlarmVsd()
     }
   }
 
-  if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_DISCHARGE_ERR) && (vsdStatus <= VSD_NOVOMET_ALARM_I_LIM_ERR))) {
-    for (int i = VSD_NOVOMET_ALARM_DISCHARGE_ERR; i <= VSD_NOVOMET_ALARM_I_LIM_ERR; i++) {
+  if ((vsdStatus == VSD_ALARM_NONE) || ((vsdStatus >= VSD_NOVOMET_ALARM_DISCHARGE_ERR) && (vsdStatus <= VSD_NOVOMET_ALARM_VC_ERR))) {
+    for (int i = VSD_NOVOMET_ALARM_DISCHARGE_ERR; i <= VSD_NOVOMET_ALARM_VC_ERR; i++) {
       if (checkBit(vsdStatus2, i - 1016)) {
         resetBlock();
         return i;
       }
+    }  
+  }
+
+  if ((vsdStatus == VSD_ALARM_NONE) || (vsdStatus == VSD_NOVOMET_ALARM_M_I2T_ERR)) {
+    if (checkBit(vsdStatus2, VSD_NOVOMET_ALARM_M_I2T_ERR - 1016)) {
+      resetBlock();
+      if (!parameters.get(CCS_PROT_MOTOR_OVERLOAD_MODE)) {
+        return VSD_NOVOMET_ALARM_M_I2T_ERR;
+      }
     }
   }
 
-  if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_IMAX) && (vsdStatus <= VSD_NOVOMET_ALARM_CTR_MON))) {
+  if ((vsdStatus == VSD_ALARM_NONE) || (vsdStatus == VSD_NOVOMET_ALARM_M_I_FAST_ERR)) {
+    if (checkBit(vsdStatus2, VSD_NOVOMET_ALARM_M_I_FAST_ERR - 1016)) {
+      resetBlock();
+      if (!parameters.get(CCS_PROT_MOTOR_CURRENT_MODE)) {
+        return VSD_NOVOMET_ALARM_M_I_FAST_ERR;
+      }
+    }
+  }
+
+  if ((vsdStatus == VSD_ALARM_NONE) || ((vsdStatus >= VSD_NOVOMET_ALARM_IMAX) && (vsdStatus <= VSD_NOVOMET_ALARM_CTR_MON))) {
     for (int i = VSD_NOVOMET_ALARM_IMAX; i <= VSD_NOVOMET_ALARM_CTR_MON; i++) {
       if (checkBit(vsdStatus7, i - 1096)) {
         resetBlock();
@@ -540,7 +569,7 @@ float VsdNovomet::checkAlarmVsd()
     }
   }
 
-  if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_CLK_MON) && (vsdStatus <= VSD_NOVOMET_ALARM_DRV2))) {
+  if ((vsdStatus == VSD_ALARM_NONE) || ((vsdStatus >= VSD_NOVOMET_ALARM_CLK_MON) && (vsdStatus <= VSD_NOVOMET_ALARM_DRV2))) {
     for (int i = VSD_NOVOMET_ALARM_CLK_MON; i <= VSD_NOVOMET_ALARM_DRV2; i++) {
       if (checkBit(vsdStatus7, i - 1096)) {
         resetBlock();
@@ -549,7 +578,7 @@ float VsdNovomet::checkAlarmVsd()
     }
   }
 
-  if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_TEMP_LINK) && (vsdStatus <= VSD_NOVOMET_ALARM_AIR_TEMP))) {
+  if ((vsdStatus == VSD_ALARM_NONE) || ((vsdStatus >= VSD_NOVOMET_ALARM_TEMP_LINK) && (vsdStatus <= VSD_NOVOMET_ALARM_AIR_TEMP))) {
     for (int i = VSD_NOVOMET_ALARM_TEMP_LINK; i <= VSD_NOVOMET_ALARM_AIR_TEMP; i++) {
       if (checkBit(vsdStatus7, i - 1096)) {
         resetBlock();
@@ -557,25 +586,60 @@ float VsdNovomet::checkAlarmVsd()
       }
     }
   }
+  return VSD_ALARM_NONE;
+}
 
-  if ((vsdStatus == 0) || ((vsdStatus >= VSD_NOVOMET_ALARM_I_LIMIT) && (vsdStatus <= VSD_NOVOMET_ALARM_ULOW))) {
-    for (int i = VSD_NOVOMET_ALARM_I_LIMIT; i <= VSD_NOVOMET_ALARM_ULOW; i++) {
-      if (checkBit(vsdStatus1, i - 1000)) {
-        parameters.set(CCS_PROT_OTHER_VSD_TRIP_DELAY, 3);
-        parameters.set(CCS_PROT_OTHER_VSD_TIME, ksu.getTime());
-        return i;
-      }
-    }
-  }
+float VsdNovomet::checkAlarmVsdCurrentMotor()
+{
+  float vsdStatus2 = getValue(VSD_STATUS_WORD_2);
+  static float vsdStatusOld2 = VSD_ALARM_NONE;
+  if (vsdStatus2 && !vsdStatusOld2)
+    parameters.set(CCS_VSD_STATUS_WORD_2_LOG, vsdStatus2);
+  vsdStatusOld2 = vsdStatus2;
+
+  if (checkBit(vsdStatus2, VSD_NOVOMET_ALARM_M_I_FAST_ERR - 1016))
+     return VSD_NOVOMET_ALARM_M_I_FAST_ERR;
 
   return VSD_ALARM_NONE;
 }
+
+float VsdNovomet::checkAlarmVsdOverloadMotor()
+{
+  float vsdStatus2 = getValue(VSD_STATUS_WORD_2);
+  static float vsdStatusOld2 = VSD_ALARM_NONE;
+  if (vsdStatus2 && !vsdStatusOld2)
+    parameters.set(CCS_VSD_STATUS_WORD_2_LOG, vsdStatus2);
+  vsdStatusOld2 = vsdStatus2;
+
+  if (checkBit(vsdStatus2, VSD_NOVOMET_ALARM_M_I2T_ERR - 1016))
+     return VSD_NOVOMET_ALARM_M_I2T_ERR;
+
+  return VSD_ALARM_NONE;
+}
+
+
 
 bool VsdNovomet::checkPreventVsd()
 {
   if (parameters.get(CCS_VSD_ALARM_CODE))
     return true;
   return false;
+}
+
+float VsdNovomet::checkWarningVsd()
+{
+  float vsdWarning = parameters.get(CCS_VSD_WARNING_CODE);
+  float vsdStatus1 = getValue(VSD_STATUS_WORD_1);
+
+  if ((vsdWarning == VSD_WARNING_NONE) || ((vsdStatus1 >= VSD_NOVOMET_ALARM_I_LIMIT) && (vsdStatus1 <= VSD_NOVOMET_ALARM_ULOW))) {
+    for (int i = VSD_NOVOMET_ALARM_I_LIMIT; i <= VSD_NOVOMET_ALARM_ULOW; i++) {
+      if (checkBit(vsdStatus1, i - 1000)) {
+        return i;
+      }
+    }
+  }
+
+  return VSD_WARNING_NONE;
 }
 
 void VsdNovomet::getNewVsdMtrType(float value)
@@ -850,6 +914,42 @@ int VsdNovomet::setUf_U6(float value)
 {
   if (!Vsd::setUf_U6(value)) {
     writeToDevice(VSD_UF_CHARACTERISTIC_U_6, getValue(VSD_UF_CHARACTERISTIC_U_6));
+    return ok_r;
+  }
+  return err_r;
+}
+
+int VsdNovomet::setProtOverloadMotorTripSetpoint(float value)
+{
+  if (!Vsd::setProtOverloadMotorTripSetpoint(value)) {
+    writeToDevice(VSD_M_IRMS, getValue(VSD_M_IRMS));
+    return ok_r;
+  }
+  return err_r;
+}
+
+int VsdNovomet::setProtOverloadMotorActivDelay(float value)
+{
+  if (!Vsd::setProtOverloadMotorActivDelay(value)) {
+    writeToDevice(VSD_T_BLANK, getValue(VSD_T_BLANK));
+    return ok_r;
+  }
+  return err_r;
+}
+
+int VsdNovomet::setProtOverloadMotorTripDelay(float value)
+{
+  if (!Vsd::setProtOverloadMotorTripDelay(value)) {
+    writeToDevice(VSD_M_TRMS, getValue(VSD_M_TRMS));
+    return ok_r;
+  }
+  return err_r;
+}
+
+int VsdNovomet::setProtCurrentMotorTripSetpoint(float value)
+{
+  if (!Vsd::setProtCurrentMotorTripSetpoint(value)) {
+    writeToDevice(VSD_CURRENT_LIMIT, getValue(VSD_CURRENT_LIMIT));
     return ok_r;
   }
   return err_r;

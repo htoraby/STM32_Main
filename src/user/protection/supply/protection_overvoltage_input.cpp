@@ -24,7 +24,7 @@ ProtectionOverVoltageInput::ProtectionOverVoltageInput()
   idRestartFirstTime_ = CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME;
 
   lastReasonRun_ = LastReasonRunApvOverVoltIn;
-  lastReasonStop_ = LastReasonStopOverVoltIn;
+
 
   protReactEventId_ = OverVoltInProtReactId;
   apvEventId_ = OverVoltInApvId;
@@ -41,15 +41,27 @@ ProtectionOverVoltageInput::~ProtectionOverVoltageInput()
 
 bool ProtectionOverVoltageInput::checkAlarm()
 {
-  return Protection::isHigherLimit(tripSetpoint_);
+  if (vsd->checkAlarmVsdOverVoltage()) {
+    lastReasonStop_ = LastReasonStopHardwareVsd;
+    activDelay_ = 0;
+    tripDelay_ = 0;
+    return true;
+  }
+  else if (Protection::isHigherLimit(tripSetpoint_)) {
+    lastReasonStop_ = LastReasonStopOverVoltIn;
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 bool ProtectionOverVoltageInput::checkPrevent()
 {
   if (restart_)
-    return Protection::isHigherLimit(restartSetpoint_);
+    return (Protection::isHigherLimit(restartSetpoint_) || vsd->checkAlarmVsdOverVoltage());
   else
-    return Protection::isHigherLimit(tripSetpoint_);
+    return (Protection::isHigherLimit(tripSetpoint_) || vsd->checkAlarmVsdOverVoltage());
 }
 
 float ProtectionOverVoltageInput::calcValue()

@@ -82,7 +82,7 @@ enum enVsdDanfossAlarm {
 
 enum enVsdDanfoss {
   VSD_DANFOSS_WARNING_W_28        = 2000,   //!< Проверка тормоза W28
-  VSD_DANFOSS_WARNING_W_69        = 2001,   //!< Темп. силовой платы W69
+  VSD_DANFOSS_WARNING_W           = 2001,   //!< Недиагностированное предупреждение
   VSD_DANFOSS_WARNING_W_14        = 2002,   //!< Пробой на землю W14
   VSD_DANFOSS_WARNING_W_65        = 2003,   //!< Темп. платы управления W65
   VSD_DANFOSS_WARNING_W_17        = 2004,   //!< Упр. слово ТО W17
@@ -137,6 +137,7 @@ public:
 
   void init();
   bool isConnect();
+  void setLimitsCcsParameters();
 
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
   int setMotorType(float value);
@@ -176,6 +177,8 @@ public:
   int setUf_U6(float value);
   void setUf();
 
+  int setProtCurrentMotorTripSetpoint(float value);
+
   int calcUfCharacteristicU(float value);
   int calcUfCharacteristicF(float value);
   void readUfCharacterictic();
@@ -192,7 +195,11 @@ public:
   uint16_t configVsdVentVect6000();
 
   float checkAlarmVsd();
+  float checkAlarmVsdUnderVoltage();
+  float checkAlarmVsdCurrentMotor();
+
   bool checkPreventVsd();
+  float checkWarningVsd();
 
   void getNewValue(uint16_t id);
   uint8_t setNewValue(uint16_t id, float value, EventType eventType = AutoType);
@@ -212,10 +219,12 @@ public:
 
   void getConnect();
   void resetConnect();
+  int onProtConnect();
+  int offProtConnect();
 
   bool isControl();
 private:
-  ModbusParameter modbusParameters_[226];
+  ModbusParameter modbusParameters_[227];
   DeviceModbus *dm_;
 
   RegimeRunPush *regimeRun_;

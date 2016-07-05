@@ -216,6 +216,7 @@ public:
   void init();
   void initModbusParameters();
   void initParameters();
+  void setLimitsCcsParameters();
 
   bool isConnect();
 
@@ -265,6 +266,11 @@ public:
   int setUf_U5(float value);
   int setUf_U6(float value);
 
+  int setProtOverloadMotorTripSetpoint(float value);
+  int setProtOverloadMotorActivDelay(float value);
+  int setProtOverloadMotorTripDelay(float value);
+  int setProtCurrentMotorTripSetpoint(float value);
+
   int calcUfCharacteristicU(float value);
   int calcUfCharacteristicF(float value);
 
@@ -273,7 +279,10 @@ public:
   int setBaseFrequency(float value);
 
   float checkAlarmVsd();
+  float checkAlarmVsdCurrentMotor();
+  float checkAlarmVsdOverloadMotor();
   bool checkPreventVsd();
+  float checkWarningVsd();
 
   void getNewVsdMtrType(float value);
   void getNewCurOutPhase1(float value);

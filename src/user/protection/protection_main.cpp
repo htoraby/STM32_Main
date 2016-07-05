@@ -1,6 +1,6 @@
 #include "protection_main.h"
 
-#define COUNT_PROTECTIONS 26
+#define COUNT_PROTECTIONS 28
 
 Protection *protections[COUNT_PROTECTIONS];
 
@@ -36,6 +36,10 @@ ProtectionAnalogInput1 protAnalogInput1;
 ProtectionAnalogInput2 protAnalogInput2;
 ProtectionAnalogInput3 protAnalogInput3;
 ProtectionAnalogInput4 protAnalogInput4;
+
+ProtectionCurrentMotor protCurrentMotor;
+
+ProtectionOverheatInputFilter protOverheatInputFilter;
 
 static void protectionTask(void *argument);
 static void setProtectionPrevent();
@@ -75,6 +79,10 @@ void protectionInit()
   protections[i++] = &protAnalogInput2;
   protections[i++] = &protAnalogInput3;
   protections[i++] = &protAnalogInput4;
+
+  protections[i++] = &protCurrentMotor;
+
+  protections[i++] = &protOverheatInputFilter;
 
   osThreadDef(Protections, protectionTask, osPriorityNormal, 0, 4 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(Protections), NULL);
