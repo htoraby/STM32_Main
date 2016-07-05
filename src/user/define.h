@@ -317,13 +317,14 @@ enum LastReasonRun {
   LastReasonRunDigital2                 = 109,  //!< "Сигнал цифр.вх.2"
   LastReasonRunDigital3                 = 110,  //!< "Сигнал цифр.вх.3"
   LastReasonRunDigital4                 = 111,  //!< "Сигнал цифр.вх.4"
-  LastReasonRunApvDigital1,                     //!< "АПВ по защите: Цифр.вх.1"
-  LastReasonRunApvDigital2,                     //!< "АПВ по защите: Цифр.вх.2"
-  LastReasonRunApvDigital3,                     //!< "АПВ по защите: Цифр.вх.3"
-  LastReasonRunApvDigital4,                     //!< "АПВ по защите: Цифр.вх.4"
-  LastReasonRunApvImbalanceCurIn,               //!< "АПВ по защите: Дисбаланс входных токов"
-  LastReasonRunApvFlowDischarge,                //!< "АПВ по защите: Минимальный расход"
-  LastReasonRunApvPressureDischarge,            //!< "АПВ по защите: Pmax на выкиде насоса"
+  LastReasonRunApvDigital1              = 112,  //!< "АПВ по защите: Цифр.вх.1"
+  LastReasonRunApvDigital2              = 113,  //!< "АПВ по защите: Цифр.вх.2"
+  LastReasonRunApvDigital3              = 114,  //!< "АПВ по защите: Цифр.вх.3"
+  LastReasonRunApvDigital4              = 115,  //!< "АПВ по защите: Цифр.вх.4"
+  LastReasonRunApvImbalanceCurIn        = 116,  //!< "АПВ по защите: Дисбаланс входных токов"
+  LastReasonRunApvFlowDischarge         = 117,  //!< "АПВ по защите: Минимальный расход"
+  LastReasonRunApvPressureDischarge     = 118,  //!< "АПВ по защите: Pmax на выкиде насоса"
+  LastReasonRunApvOverheatInputFilter   = 119,  //!< "АПВ по защите: Перегрев вх.фильтра"
 
   LastReasonRunLast
 };
@@ -384,7 +385,7 @@ enum LastReasonStop {
   LastReasonStopOvernumberOfStart,              //!< "Превышение числа пусков"
   LastReasonStopFlowDischarge,                  //!< "Минимальный расход"
   LastReasonStopPressureDischarge,              //!< "Pmax на выкиде насоса"
-
+  LastReasonStopOverheatInputFilter,            //!< "Пререгрев вх.фильтра"
   LastReasonStopLast                    = 65535,
 };
 
