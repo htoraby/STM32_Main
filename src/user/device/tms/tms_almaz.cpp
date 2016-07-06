@@ -1,7 +1,6 @@
-#include "tms_borets.h"
-#include "user_main.h"
+#include "tms_almaz.h"
 
-void TmsBorets::initModbusParameters()
+void TmsAlmaz::initModbusParameters()
 {
   modbusParameters_[0] = { // Пустой регистр
                           TMS_BEGIN,
@@ -131,17 +130,17 @@ void TmsBorets::initModbusParameters()
                           };
 }
 
-TmsBorets::TmsBorets()
+TmsAlmaz::TmsAlmaz()
 {
 
 }
 
-TmsBorets::~TmsBorets()
+TmsAlmaz::~TmsAlmaz()
 {
   delete dm_;
 }
 
-void TmsBorets::init()
+void TmsAlmaz::init()
 {
   initModbusParameters();                   // Инициализация modbus карты
 
@@ -155,7 +154,7 @@ void TmsBorets::init()
   readParameters();                         // Чтение параметров из памяти
 }
 
-void TmsBorets::initParameters()
+void TmsAlmaz::initParameters()
 {
   int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
   for (int indexModbus = 0; indexModbus < count; indexModbus++) {
@@ -185,7 +184,7 @@ void TmsBorets::initParameters()
   }
 }
 
-void TmsBorets::getNewValue(uint16_t id)
+void TmsAlmaz::getNewValue(uint16_t id)
 {
   float value = 0;
   ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtId(id));
@@ -225,7 +224,7 @@ void TmsBorets::getNewValue(uint16_t id)
   }
 }
 
-uint8_t TmsBorets::setNewValue(uint16_t id, float value, EventType eventType)
+uint8_t TmsAlmaz::setNewValue(uint16_t id, float value, EventType eventType)
 {
   switch (id) {
   default:
@@ -236,12 +235,12 @@ uint8_t TmsBorets::setNewValue(uint16_t id, float value, EventType eventType)
   }
 }
 
-void TmsBorets::writeToDevice(int id, float value)
+void TmsAlmaz::writeToDevice(int id, float value)
 {
   dm_->writeModbusParameter(id, value);
 }
 
-bool TmsBorets::isConnect()
+bool TmsAlmaz::isConnect()
 {
   bool curConnect = dm_->isConnect();
 
@@ -260,12 +259,12 @@ bool TmsBorets::isConnect()
   return curConnect;
 }
 
-void TmsBorets::getConnect()
+void TmsAlmaz::getConnect()
 {
   Tms::setConnect(dm_->getMms()->getCounters());
 }
 
-void TmsBorets::resetConnect()
+void TmsAlmaz::resetConnect()
 {
   Tms::resetConnect();
   dm_->getMms()->resetCounters();

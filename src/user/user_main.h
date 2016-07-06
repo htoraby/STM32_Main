@@ -13,6 +13,8 @@
 #include "tms_borets.h"
 #include "tms_irz.h"
 #include "tms_etalon.h"
+#include "tms_almaz.h"
+#include "tms_scad.h"
 #include "em_set.h"
 #include "scada_region_3_0.h"
 #include "scada_novomet.h"

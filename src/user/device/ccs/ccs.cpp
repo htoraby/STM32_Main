@@ -1111,6 +1111,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     cmdProtOtherVsdNoConnectSetpointReset();
     return err;
+  case CCS_CMD_PROT_OTHER_OVERHEAT_INPUT_FILTER_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtOtherOverheatInputFilterSetpointReset();
+    return err;
   case CCS_CMD_PROT_DI_1_SETPOINT_RESET:
     err = setValue(id, value, eventType);
     cmdProtDigitalInput1SetpointReset();
@@ -1577,6 +1581,14 @@ void Ccs::cmdProtOtherVsdNoConnectSetpointReset()
 {
   for (uint16_t i = CCS_PROT_OTHER_VSD_NO_CONNECT_MODE;
        i <= CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtOtherOverheatInputFilterSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_MODE;
+       i <= CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PARAMETER; i++) {
     resetValue(i);
   }
 }

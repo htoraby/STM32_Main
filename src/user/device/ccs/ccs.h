@@ -475,6 +475,7 @@ private:
   void cmdProtOvernumberOfStartSetpointReset();
   void cmdProtOtherHardwareVsdSetpointReset();
   void cmdProtOtherVsdNoConnectSetpointReset();
+  void cmdProtOtherOverheatInputFilterSetpointReset();
 
   void cmdProtDigitalInput1SetpointReset();
   void cmdProtDigitalInput2SetpointReset();
