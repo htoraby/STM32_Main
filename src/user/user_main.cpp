@@ -99,6 +99,9 @@ void createDhs(bool init)
   case TYPE_DHS_ALMAZ:
     tms = new TmsAlmaz();
     break;
+  case TYPE_DHS_SCAD:
+    tms = new TmsScad();
+    break;
   default:
     tms = new Tms();
     break;
