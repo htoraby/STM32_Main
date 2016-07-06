@@ -80,7 +80,7 @@ void TmsBorets::initModbusParameters()
                            0x243,                     // Адрес регистра в устройстве
                            OPERATION_READ,            // Операции с параметром
                            PHYSIC_ACCELERATION,       // Физическая величина параметра
-                           ACCELERATION_MSS2,         // Единицы измерения параметра
+                           ACCELERATION_G,            // Единицы измерения параметра
                            TYPE_DATA_INT16_4,           // Тип данных
                            0,                         // Индекс
                            0.1,                       // Коэффициент преобразования параметра
