@@ -31,6 +31,15 @@ enum ErrorSlave {
 };
 
 /*!
+ * \brief Список языков интерфейса
+ */
+enum LanguageList {
+  RuLanguage,
+  EnLanguage,
+  EsLanguage,
+};
+
+/*!
  * \brief The stConnectQuality struct
  */
 struct stConnectQuality {
