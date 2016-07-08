@@ -180,6 +180,9 @@ typedef enum {
   OverheatInputFilterProtReactId, //!< "Сработала защита: Перегрев вх.фильтра"
   OverheatInputFilterProtBlockedId,//!< "Блокировка по защите: Перегрев вх.фильтра"
 
+  RgmAdaptationVectorStartId,     //!< Запущена автоадаптация векторного режима
+
+
 } EventId;
 
 #endif // LOG_IDLIST
