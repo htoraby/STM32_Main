@@ -4,7 +4,7 @@
 
 ScadaNovomet::ScadaNovomet()
 {
-  countParameters_ = 172;
+  countParameters_ = 927;
   initParameters();
 }
 
