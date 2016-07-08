@@ -988,7 +988,9 @@ enum enID
   CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_DELAY_FLAG = 982,     //!< Перегрев вх.фильтра. Флаг срабатывания
   CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_BLOCK_FLAG = 983,     //!< Перегрев вх.фильтра. Флаг блок.
   CCS_CMD_PROT_OTHER_OVERHEAT_INPUT_FILTER_SETPOINT_RESET = 984, //!< Перегрев вх.фильтра. Сброс уставок
-  CCS_END = 985,                                             //!< 
+  CCS_RGM_RUN_AUTO_ADAPTATION_TYPE = 985,                    //!< 
+  CCS_RGM_RUN_AUTO_ADAPTATION_STATOR_RESISTANCE_DELTA = 986, //!< Приращение сопротивления статора
+  CCS_END = 987,                                             //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
@@ -1478,7 +1480,8 @@ enum enID
   VSD_POWER_SECTION_8 = 10486,                               //!< Силовая часть ЧРП Danfoss 15-41 (8)
   VSD_POWER_SECTION_9 = 10487,                               //!< Силовая часть ЧРП Danfoss 15-41 (9)
   VSD_POWER_SECTION_10 = 10488,                              //!< Силовая часть ЧРП Danfoss 15-41 (10)
-  VSD_END = 10489,                                           //!< 
+  VSD_FLYING_START = 10489,                                  //!< Запуск с хода ЧРП Danfoss 1-73
+  VSD_END = 10490,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме
