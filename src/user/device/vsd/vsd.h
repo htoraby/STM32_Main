@@ -96,6 +96,13 @@ public:
    */
   virtual void setLimitsMotor();
 
+  /*!
+   * \brief setMotorResistanceStator
+   * \param value
+   * \return
+   */
+  virtual int setMotorResistanceStator(float value);
+
   // РЕЖИМЫ ПУСКА
   /*!
    * \brief Метод настройки толчкового режима
@@ -278,6 +285,17 @@ public:
    * \return
    */
   virtual int setOutFilter(float value);
+
+  /*!
+   * \brief resetAdaptation
+   * \return
+   */
+  virtual void resetAdaptationVector(uint16_t type);
+
+  /*!
+   * \brief setAdaptationVector
+   */
+  virtual void setAdaptationVector();
 
   // НАСТРОЙКА U/f
   /*!

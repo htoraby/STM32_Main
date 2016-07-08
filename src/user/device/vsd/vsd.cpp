@@ -87,6 +87,11 @@ void Vsd::setLimitsMotor()
 
 }
 
+int Vsd::setMotorResistanceStator(float value)
+{
+  return setValue(VSD_RESISTANCE_STATOR, value);
+}
+
   // РЕЖИМЫ ПУСКА
 int Vsd::onRegimePush()
 {
@@ -367,7 +372,16 @@ int Vsd::setOutFilter(float value)
   return setValue(VSD_OUT_FILTER, value);
 }
 
+void Vsd::resetAdaptationVector(uint16_t type)
+{
+  parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_TYPE, type);
+  ksu.calcSystemInduct();
+}
 
+void Vsd::setAdaptationVector()
+{
+  return;
+}
 
 // НАСТРОЙКА U/f
 int Vsd::setUf_f1(float value)
