@@ -5870,5 +5870,17 @@ void Vsd::initParameters()
   parameters_[VSD_POWER_SECTION_10 - VSD_BEGIN].def                              = 0;
   parameters_[VSD_POWER_SECTION_10 - VSD_BEGIN].discret                          = 1;
   parameters_[VSD_POWER_SECTION_10 - VSD_BEGIN].code                             = 0;
+  // Запуск с хода ЧРП Danfoss 1-73
+  parameters_[VSD_FLYING_START - VSD_BEGIN].id                                   = VSD_FLYING_START;
+  parameters_[VSD_FLYING_START - VSD_BEGIN].access                               = ACCESS_OPERATOR;
+  parameters_[VSD_FLYING_START - VSD_BEGIN].operation                            = OPERATION_WRITE;
+  parameters_[VSD_FLYING_START - VSD_BEGIN].physic                               = PHYSIC_NUMERIC;
+  parameters_[VSD_FLYING_START - VSD_BEGIN].validity                             = VALIDITY_ERROR;
+  parameters_[VSD_FLYING_START - VSD_BEGIN].value.float_t                        = NAN;
+  parameters_[VSD_FLYING_START - VSD_BEGIN].min                                  = 0.0;
+  parameters_[VSD_FLYING_START - VSD_BEGIN].max                                  = 4.0;
+  parameters_[VSD_FLYING_START - VSD_BEGIN].def                                  = 0.0;
+  parameters_[VSD_FLYING_START - VSD_BEGIN].discret                              = 1;
+  parameters_[VSD_FLYING_START - VSD_BEGIN].code                                 = 0;
 }
 
