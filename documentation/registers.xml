@@ -29956,6 +29956,25 @@
 	</param>
 	<param>
 		<id>15089</id>
+		<name>TMS_PRESSURE_INTAKE_HD</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_PRESSURE</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<discret>100</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>P на приёме точное</text>
+		<short_text>P на приёме точное</short_text>
+		<unit>PRESSURE_MPA</unit>
+		<unit_lcd>PRESSURE_MPA</unit_lcd>
+		<format>XX_XXX</format>
+		<code>0</code>
+		<comment>Давление на приёме точное</comment>
+	</param>
+	<param>
+		<id>15090</id>
 		<name>TMS_END</name>
 		<code>0</code>
 	</param>

@@ -102,6 +102,9 @@ void createDhs(bool init)
   case TYPE_DHS_SCAD:
     tms = new TmsScad();
     break;
+  case TYPE_DHS_TRIOL:
+    tms = new TmsTriol();
+    break;
   default:
     tms = new Tms();
     break;
