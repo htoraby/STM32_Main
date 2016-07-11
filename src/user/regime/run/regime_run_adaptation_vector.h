@@ -24,6 +24,8 @@ public:
   void processingStateWork();
   void automatRegime();
 
+  void resetAdaptationVector(uint16_t type);
+
 private:
   float type_;
   float dR_;

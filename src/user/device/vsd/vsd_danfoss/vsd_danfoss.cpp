@@ -1492,12 +1492,6 @@ void VsdDanfoss::resetAdaptationVector(uint16_t type)
 {
   parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_TYPE, type);
   parameters.set(VSD_PARKING_TIME, 1);
-  if (type) {
-    //! TODO: Событие автоадаптация не закончена
-  }
-  else {
-    //! TODO: Событие автоадаптация закончена
-  }
   ksu.calcSystemInduct();
   parameters.set(VSD_DAMPING_GANE, 40);
   parameters.set(VSD_LOW_SPEED_FILTER_TIME, 0.01);

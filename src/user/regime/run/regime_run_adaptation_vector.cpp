@@ -39,11 +39,17 @@ void RegimeRunAdaptationVector::processingStateIdle()
     if (ksu.getValue(CCS_CONDITION) == CCS_CONDITION_STOP) {  // Станция в останове
       if (runReason_ != LastReasonRunNone) {                  // Попытка пуска
         if (type_ == typeInWork) {                            // Если режим в работе
+          #if (USE_LOG_DEBUG == 1)
+            logDebug.add(DebugMsg, "Адаптация: Idle -> WorkState");
+          #endif
           state_ = WorkState;                                 // Переход в состояние работа
         }
         else {
           type_ = typeInWork;                                 // Говорим что в работе и переходим
-          logEvent.add(OtherCode, AutoType, RgmAdaptationVectorStartId);
+          logEvent.add(OtherCode, AutoType, RegimeRunAutoAdaptationStartId);
+          #if (USE_LOG_DEBUG == 1)
+            logDebug.add(DebugMsg, "Адаптация: Idle -> WorkState+3");
+          #endif
           state_ = WorkState + 3;                             // Переходим на состояние задания параметров автоадаптации
         }
       }
@@ -54,14 +60,21 @@ void RegimeRunAdaptationVector::processingStateIdle()
 void RegimeRunAdaptationVector::processingStateWork()
 {
   if (ksu.isStopMotor()) {                  // Если двигатель стоит
-    vsd->resetAdaptationVector(typeErr);    // Сброс адаптации
+    resetAdaptationVector(typeErr);         // Сброс адаптации
+    #if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "Адаптация: WorkState -> IdleState isStopMotor");
+    #endif
     state_ = IdleState;
   }
   switch (state_) {
   case WorkState:                           //
     if (timer_ > 30) {                      // Задержка на чтение текущего тока
       timer_ = 0;
-      if (dR_ == 0) {                       //
+      if (dR_ == 0) {                       // Сбой, шаг изменения сопротивления
+        #if (USE_LOG_DEBUG == 1)
+          logDebug.add(DebugMsg, "Адаптация: WorkState -> WorkState + 3 (dr = %5.4f)",
+                       dR_);
+        #endif
         state_ = WorkState + 3;
       }
       else {
@@ -69,9 +82,17 @@ void RegimeRunAdaptationVector::processingStateWork()
           strR_ = strR_ + dR_;
           if (strR_ > 0.3) {
             strR_ = 0.3;
+            #if (USE_LOG_DEBUG == 1)
+              logDebug.add(DebugMsg, "Адаптация: WorkState -> WorkState + 6 (strR_ = %5.4f)",
+                           strR_);
+            #endif
             state_ = WorkState + 6;
           }
           else {
+            #if (USE_LOG_DEBUG == 1)
+              logDebug.add(DebugMsg, "Адаптация: WorkState -> WorkState + 1 (strR_ = %5.4f)",
+                           strR_);
+            #endif
             state_ = WorkState + 1;
           }
         }
@@ -79,9 +100,17 @@ void RegimeRunAdaptationVector::processingStateWork()
           if (nowCurMtr_ > 0.52 * nomCurMtr_) {
             strR_ = strR_ - dR_;            // Уменьшаем сопротивление на шаг
             dR_ = dR_ / 5;                  // Уменьшаем шаг
+            #if (USE_LOG_DEBUG == 1)
+              logDebug.add(DebugMsg, "Адаптация: WorkState -> WorkState + 1 (strR_ = %5.4f, dR_ = %5.4f)",
+                           strR_, dR_);
+            #endif
             state_ = WorkState + 1;         // Задаём новое сопротивление
           }
           else {
+            #if (USE_LOG_DEBUG == 1)
+              logDebug.add(DebugMsg, "Адаптация: WorkState -> WorkState + 4 (strR_ = %5.4f, dR_ = %5.4f)",
+                           strR_, dR_);
+            #endif
             state_ =  WorkState + 4;        // Сбрасываем режим автоадаптации
           }
         }
@@ -100,12 +129,20 @@ void RegimeRunAdaptationVector::processingStateWork()
     if (vsd->checkStop()) {
       timer_ = 0;
       vsd->setMotorResistanceStator(strR_);
+      #if (USE_LOG_DEBUG == 1)
+        logDebug.add(DebugMsg, "Адаптация: WorkState + 1 -> WorkState + 2 (strR_ = %5.4f, dR_ = %5.4f)",
+                     strR_, dR_);
+      #endif
       state_ = WorkState + 2;
     }
     else {
       if (repeat_ > 5) {
         repeat_ = 0;
-        vsd->resetAdaptationVector(typeErr);
+        resetAdaptationVector(typeErr);
+        #if (USE_LOG_DEBUG == 1)
+          logDebug.add(DebugMsg, "Адаптация: WorkState + 1 -> IdleState (strR_ = %5.4f, dR_ = %5.4f)",
+                       strR_, dR_);
+        #endif
         state_ = IdleState;
       }
       else {
@@ -118,22 +155,34 @@ void RegimeRunAdaptationVector::processingStateWork()
     if (timer_ > 10) {
       timer_ = 0;
       ksu.start((LastReasonRun)parameters.get(CCS_LAST_RUN_REASON));
+      #if (USE_LOG_DEBUG == 1)
+        logDebug.add(DebugMsg, "Адаптация: WorkState + 2 -> WorkState (strR_ = %5.4f, dR_ = %5.4f)",
+                     strR_, dR_);
+      #endif
       state_ = WorkState;
     }
     break;
   case WorkState + 3:
     if (timer_ > 10) {
       timer_ = 0;
-      vsd->setAdaptationVector();
+      resetAdaptationVector(typeErr);
       ksu.start((LastReasonRun)parameters.get(CCS_LAST_RUN_REASON_TMP));
+      #if (USE_LOG_DEBUG == 1)
+        logDebug.add(DebugMsg, "Адаптация: WorkState + 3 -> WorkState + 5 (strR_ = %5.4f, dR_ = %5.4f)",
+                     strR_, dR_);
+      #endif
       state_ = WorkState + 5;
     }
     break;
   case WorkState + 4:
     if (timer_ > 50) {
       timer_ = 0;
-      vsd->resetAdaptationVector(0);
+      resetAdaptationVector(typeOff);
       ksu.start((LastReasonRun)parameters.get(CCS_LAST_RUN_REASON_TMP));
+      #if (USE_LOG_DEBUG == 1)
+        logDebug.add(DebugMsg, "Адаптация: WorkState + 4 -> IdleState (strR_ = %5.4f, dR_ = %5.4f)",
+                     strR_, dR_);
+      #endif
       state_ = IdleState;
     }
     break;
@@ -141,13 +190,21 @@ void RegimeRunAdaptationVector::processingStateWork()
     if (timer_ > 10) {
       timer_ = 0;
       ksu.start((LastReasonRun)parameters.get(CCS_LAST_RUN_REASON_TMP));
+      #if (USE_LOG_DEBUG == 1)
+        logDebug.add(DebugMsg, "Адаптация: WorkState + 5 -> IdleState (strR_ = %5.4f, dR_ = %5.4f)",
+                     strR_, dR_);
+      #endif
       state_ = IdleState;
     }
     break;
   case WorkState + 6:
     if (timer_ > 10) {
       timer_ = 0;
-      vsd->resetAdaptationVector(typeErr);
+      resetAdaptationVector(typeErr);
+      #if (USE_LOG_DEBUG == 1)
+        logDebug.add(DebugMsg, "Адаптация: WorkState + 6 -> IdleState (strR_ = %5.4f, dR_ = %5.4f)",
+                     strR_, dR_);
+      #endif
       state_ = IdleState;
     }
     break;
@@ -164,7 +221,10 @@ void RegimeRunAdaptationVector::automatRegime()
     return;                       // Выходим если режим выключен или не векторный режим
 
   if ((state_ != IdleState) && (!vsd->isConnect() || vsd->checkAlarmVsd())) {
-    vsd->resetAdaptationVector(typeErr);
+    resetAdaptationVector(typeErr);
+    #if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "Адаптация: ");
+    #endif
     state_ = IdleState;           // Выходим из режима с ошибкой, если пропала связь с ЧРП или авария
   }
 
@@ -197,5 +257,16 @@ void RegimeRunAdaptationVector::automatRegime()
     break;
   }
 
+}
+
+void RegimeRunAdaptationVector::resetAdaptationVector(uint16_t type)
+{
+  if (type) {
+    logEvent.add(OtherCode, AutoType, RegimeRunAutoAdaptationIncompleteId);
+  }
+  else {
+    logEvent.add(OtherCode, AutoType, RegimeRunAutoAdaptationCompleteId);
+  }
+  vsd->resetAdaptationVector(type);
 }
 
