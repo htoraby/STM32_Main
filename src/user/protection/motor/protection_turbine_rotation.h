@@ -16,8 +16,6 @@ private:
   bool checkPrevent();
   void automatProtection();
 
-  bool isStartProtect_;
-
 };
 
 #endif // PROTECTIONTURBINEROTATION_H

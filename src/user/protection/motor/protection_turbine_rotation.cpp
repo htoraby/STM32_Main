@@ -1,7 +1,6 @@
 #include "protection_turbine_rotation.h"
 
 ProtectionTurbineRotation::ProtectionTurbineRotation()
-  : isStartProtect_(false)
 {
   idMode_= CCS_PROT_MOTOR_ASYNC_MODE;
   idPrevent_= CCS_PROT_MOTOR_ASYNC_PREVENT;
@@ -29,9 +28,9 @@ ProtectionTurbineRotation::~ProtectionTurbineRotation()
 
 bool ProtectionTurbineRotation::checkPrevent()
 {
-  float value = parameters.get(CCS_TURBO_ROTATION_NOW);
+  valueParameter_ = parameters.get(CCS_TURBO_ROTATION_NOW);
   if ((parameters.get(CCS_CONDITION) == CCS_CONDITION_STOP) &&
-      value > tripSetpoint_) {
+      (valueParameter_ > tripSetpoint_)) {
     return true;
   }
   return false;
@@ -40,19 +39,25 @@ bool ProtectionTurbineRotation::checkPrevent()
 void ProtectionTurbineRotation::automatProtection()
 {
   if (isModeOff()) {
-    isStartProtect_ = false;
+    state_ = StateStop;
     return;
+  }
+  if (parameters.get(CCS_CONDITION) == CCS_CONDITION_STOP) {
+    if (state_ == StateStop)
+      state_ = StateRunning;
+  } else {
+    state_ = StateStop;
   }
 
   if (prevent_) {
-    if (!isStartProtect_) {
-      isStartProtect_ = true;
-      logEvent.add(ProtectCode, AutoType, TurbineRotationBeginId);
+    if (state_ == StateRunning) {
+      state_ = StateRun;
+      logEvent.add(ProtectCode, AutoType, TurbineRotationBeginId, tripSetpoint_, valueParameter_);
     }
   } else {
-    if (isStartProtect_) {
-      isStartProtect_ = false;
-      logEvent.add(ProtectCode, AutoType, TurbineRotationEndId);
+    if (state_ == StateRun) {
+      state_ = StateStopping;
+      logEvent.add(ProtectCode, AutoType, TurbineRotationEndId, tripSetpoint_, valueParameter_);
     }
   }
 }
