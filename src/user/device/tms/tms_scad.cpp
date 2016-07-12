@@ -202,13 +202,13 @@ void TmsScad::getNewValue(uint16_t id)
   case TYPE_DATA_UINT16:
     value = (float)param->value.uint16_t[0];
     break;
-  case  TYPE_DATA_INT32:
+  case TYPE_DATA_INT32:
     value = (float)param->value.int32_t;
     break;
-  case  TYPE_DATA_UINT32:
+  case TYPE_DATA_UINT32:
     value = (float)param->value.uint32_t;
     break;
-  case  TYPE_DATA_FLOAT:
+  case TYPE_DATA_FLOAT:
     value = (float)param->value.float_t;
     break;
   default:

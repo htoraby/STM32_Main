@@ -23847,7 +23847,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>TEXT</format>
-		<code>13</code>
+		<code>0</code>
 		<values>0-Откл;1-Вкл</values>
 		<comment>Защита блокировки ротора Danfoss 30-22 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -23869,7 +23869,7 @@
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_SS</unit_lcd>
 		<format>XXX_XX</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>Время задержки аварии блокировки ротора Danfoss 30-23 Не используется в проекте, только при конфигурировании</comment>
 	</param>
 	<param>
@@ -27938,7 +27938,7 @@
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXXXXX</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>Частота выборок аварийного архива ПЧ</comment>
 	</param>
 	<param>
@@ -29962,6 +29962,7 @@
 		<physic>PHYSIC_PRESSURE</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
+		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -29975,6 +29976,211 @@
 	</param>
 	<param>
 		<id>15090</id>
+		<name>TMS_BOOT_STATUS</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Статус загрузки</text>
+		<short_text>Статус загрузки</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<comment>Статус загрузки</comment>
+	</param>
+	<param>
+		<id>15091</id>
+		<name>TMS_TOOL_TYPE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Тип погружного оборудования</text>
+		<short_text>Тип погружного оборудования</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<comment>Тип погружного оборудования</comment>
+	</param>
+	<param>
+		<id>15092</id>
+		<name>TMS_ACTIVE_CURRENT_LEAKAGE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Активные утечки тока</text>
+		<short_text>Активные утечки тока</short_text>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXX_XX</format>
+		<code>0</code>
+		<comment>Активные утечки тока</comment>
+	</param>
+	<param>
+		<id>15093</id>
+		<name>TMS_PASSIVE_CURRENT_LEAKAGE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Пассивные утечки тока</text>
+		<short_text>Пассивные утечки тока</short_text>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXX_XX</format>
+		<code>0</code>
+		<comment>Пассивные утечки тока</comment>
+	</param>
+	<param>
+		<id>15094</id>
+		<name>TMS_CZ</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Cz</text>
+		<short_text>Cz</short_text>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXX_XX</format>
+		<code>0</code>
+		<comment>Cz</comment>
+	</param>
+	<param>
+		<id>15095</id>
+		<name>TMS_CF</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Cf</text>
+		<short_text>Cf</short_text>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXX_XX</format>
+		<code>0</code>
+		<comment>Cf</comment>
+	</param>
+	<param>
+		<id>15096</id>
+		<name>TMS_RESTART_PIC_V2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Сброс PIC V2</text>
+		<short_text>Сброс PIC V2</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<comment>Сброс PIC V2</comment>
+	</param>
+	<param>
+		<id>15097</id>
+		<name>TMS_PASSIVE_CURRENT_LEAKAGE_CONTROL</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Сброс пассивных утечек тока</text>
+		<short_text>Сброс пассивных утечек тока</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<comment>Сброс пассивных утечек тока</comment>
+	</param>
+	<param>
+		<id>15098</id>
+		<name>TMS_RSR_TIME</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Время режима RSR</text>
+		<short_text>Время режима RSR</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM</unit_lcd>
+		<format>XXXXX</format>
+		<comment>Время режима RSR</comment>
+	</param>
+	<param>
+		<id>15099</id>
+		<name>TMS_RSR_CONTROL</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Включение режима RSR</text>
+		<short_text>Включение режима RSR</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<comment>Включение режима RSR</comment>
+	</param>
+	<param>
+		<id>15100</id>
+		<name>TMS_UNITS_MEASURE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Единицы измерения</text>
+		<short_text>Единицы измерения</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<comment>Единицы измерения</comment>
+	</param>
+	<param>
+		<id>15101</id>
 		<name>TMS_END</name>
 		<code>0</code>
 	</param>

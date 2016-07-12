@@ -105,6 +105,9 @@ void createDhs(bool init)
   case TYPE_DHS_TRIOL:
     tms = new TmsTriol();
     break;
+  case TYPE_DHS_PIC_V2:
+    tms = new TmsPicV2();
+    break;
   default:
     tms = new Tms();
     break;

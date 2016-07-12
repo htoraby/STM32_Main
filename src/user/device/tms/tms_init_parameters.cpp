@@ -1079,8 +1079,140 @@ void Tms::initParameters()
   parameters_[TMS_PRESSURE_INTAKE_HD - TMS_BEGIN].value.float_t                  = NAN;
   parameters_[TMS_PRESSURE_INTAKE_HD - TMS_BEGIN].min                            = 0.0;
   parameters_[TMS_PRESSURE_INTAKE_HD - TMS_BEGIN].max                            = 999999999.9;
-  parameters_[TMS_PRESSURE_INTAKE_HD - TMS_BEGIN].def                            = 0;
+  parameters_[TMS_PRESSURE_INTAKE_HD - TMS_BEGIN].def                            = 0.0;
   parameters_[TMS_PRESSURE_INTAKE_HD - TMS_BEGIN].discret                        = 100;
   parameters_[TMS_PRESSURE_INTAKE_HD - TMS_BEGIN].code                           = 0;
+  // Статус загрузки
+  parameters_[TMS_BOOT_STATUS - TMS_BEGIN].id                                    = TMS_BOOT_STATUS;
+  parameters_[TMS_BOOT_STATUS - TMS_BEGIN].access                                = ACCESS_OPERATOR;
+  parameters_[TMS_BOOT_STATUS - TMS_BEGIN].operation                             = OPERATION_READ;
+  parameters_[TMS_BOOT_STATUS - TMS_BEGIN].physic                                = PHYSIC_NUMERIC;
+  parameters_[TMS_BOOT_STATUS - TMS_BEGIN].validity                              = VALIDITY_ERROR;
+  parameters_[TMS_BOOT_STATUS - TMS_BEGIN].value.float_t                         = NAN;
+  parameters_[TMS_BOOT_STATUS - TMS_BEGIN].min                                   = 0.0;
+  parameters_[TMS_BOOT_STATUS - TMS_BEGIN].max                                   = 65535.0;
+  parameters_[TMS_BOOT_STATUS - TMS_BEGIN].def                                   = 0.0;
+  parameters_[TMS_BOOT_STATUS - TMS_BEGIN].discret                               = 1;
+  parameters_[TMS_BOOT_STATUS - TMS_BEGIN].code                                  = 0;
+  // Тип погружного оборудования
+  parameters_[TMS_TOOL_TYPE - TMS_BEGIN].id                                      = TMS_TOOL_TYPE;
+  parameters_[TMS_TOOL_TYPE - TMS_BEGIN].access                                  = ACCESS_OPERATOR;
+  parameters_[TMS_TOOL_TYPE - TMS_BEGIN].operation                               = OPERATION_READ;
+  parameters_[TMS_TOOL_TYPE - TMS_BEGIN].physic                                  = PHYSIC_NUMERIC;
+  parameters_[TMS_TOOL_TYPE - TMS_BEGIN].validity                                = VALIDITY_ERROR;
+  parameters_[TMS_TOOL_TYPE - TMS_BEGIN].value.float_t                           = NAN;
+  parameters_[TMS_TOOL_TYPE - TMS_BEGIN].min                                     = 0.0;
+  parameters_[TMS_TOOL_TYPE - TMS_BEGIN].max                                     = 65535.0;
+  parameters_[TMS_TOOL_TYPE - TMS_BEGIN].def                                     = 0.0;
+  parameters_[TMS_TOOL_TYPE - TMS_BEGIN].discret                                 = 1;
+  parameters_[TMS_TOOL_TYPE - TMS_BEGIN].code                                    = 0;
+  // Активные утечки тока
+  parameters_[TMS_ACTIVE_CURRENT_LEAKAGE - TMS_BEGIN].id                         = TMS_ACTIVE_CURRENT_LEAKAGE;
+  parameters_[TMS_ACTIVE_CURRENT_LEAKAGE - TMS_BEGIN].access                     = ACCESS_OPERATOR;
+  parameters_[TMS_ACTIVE_CURRENT_LEAKAGE - TMS_BEGIN].operation                  = OPERATION_READ;
+  parameters_[TMS_ACTIVE_CURRENT_LEAKAGE - TMS_BEGIN].physic                     = PHYSIC_CURRENT;
+  parameters_[TMS_ACTIVE_CURRENT_LEAKAGE - TMS_BEGIN].validity                   = VALIDITY_ERROR;
+  parameters_[TMS_ACTIVE_CURRENT_LEAKAGE - TMS_BEGIN].value.float_t              = NAN;
+  parameters_[TMS_ACTIVE_CURRENT_LEAKAGE - TMS_BEGIN].min                        = 0.0;
+  parameters_[TMS_ACTIVE_CURRENT_LEAKAGE - TMS_BEGIN].max                        = 65535.0;
+  parameters_[TMS_ACTIVE_CURRENT_LEAKAGE - TMS_BEGIN].def                        = 0.0;
+  parameters_[TMS_ACTIVE_CURRENT_LEAKAGE - TMS_BEGIN].discret                    = 1;
+  parameters_[TMS_ACTIVE_CURRENT_LEAKAGE - TMS_BEGIN].code                       = 0;
+  // Пассивные утечки тока
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE - TMS_BEGIN].id                        = TMS_PASSIVE_CURRENT_LEAKAGE;
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE - TMS_BEGIN].access                    = ACCESS_OPERATOR;
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE - TMS_BEGIN].operation                 = OPERATION_READ;
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE - TMS_BEGIN].physic                    = PHYSIC_CURRENT;
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE - TMS_BEGIN].validity                  = VALIDITY_ERROR;
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE - TMS_BEGIN].value.float_t             = NAN;
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE - TMS_BEGIN].min                       = 0.0;
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE - TMS_BEGIN].max                       = 65535.0;
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE - TMS_BEGIN].def                       = 0.0;
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE - TMS_BEGIN].discret                   = 1;
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE - TMS_BEGIN].code                      = 0;
+  // Cz
+  parameters_[TMS_CZ - TMS_BEGIN].id                                             = TMS_CZ;
+  parameters_[TMS_CZ - TMS_BEGIN].access                                         = ACCESS_OPERATOR;
+  parameters_[TMS_CZ - TMS_BEGIN].operation                                      = OPERATION_READ;
+  parameters_[TMS_CZ - TMS_BEGIN].physic                                         = PHYSIC_CURRENT;
+  parameters_[TMS_CZ - TMS_BEGIN].validity                                       = VALIDITY_ERROR;
+  parameters_[TMS_CZ - TMS_BEGIN].value.float_t                                  = NAN;
+  parameters_[TMS_CZ - TMS_BEGIN].min                                            = 0.0;
+  parameters_[TMS_CZ - TMS_BEGIN].max                                            = 65535.0;
+  parameters_[TMS_CZ - TMS_BEGIN].def                                            = 0.0;
+  parameters_[TMS_CZ - TMS_BEGIN].discret                                        = 1;
+  parameters_[TMS_CZ - TMS_BEGIN].code                                           = 0;
+  // Cf
+  parameters_[TMS_CF - TMS_BEGIN].id                                             = TMS_CF;
+  parameters_[TMS_CF - TMS_BEGIN].access                                         = ACCESS_OPERATOR;
+  parameters_[TMS_CF - TMS_BEGIN].operation                                      = OPERATION_READ;
+  parameters_[TMS_CF - TMS_BEGIN].physic                                         = PHYSIC_CURRENT;
+  parameters_[TMS_CF - TMS_BEGIN].validity                                       = VALIDITY_ERROR;
+  parameters_[TMS_CF - TMS_BEGIN].value.float_t                                  = NAN;
+  parameters_[TMS_CF - TMS_BEGIN].min                                            = 0.0;
+  parameters_[TMS_CF - TMS_BEGIN].max                                            = 65535.0;
+  parameters_[TMS_CF - TMS_BEGIN].def                                            = 0.0;
+  parameters_[TMS_CF - TMS_BEGIN].discret                                        = 1;
+  parameters_[TMS_CF - TMS_BEGIN].code                                           = 0;
+  // Сброс PIC V2
+  parameters_[TMS_RESTART_PIC_V2 - TMS_BEGIN].id                                 = TMS_RESTART_PIC_V2;
+  parameters_[TMS_RESTART_PIC_V2 - TMS_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[TMS_RESTART_PIC_V2 - TMS_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[TMS_RESTART_PIC_V2 - TMS_BEGIN].physic                             = PHYSIC_NUMERIC;
+  parameters_[TMS_RESTART_PIC_V2 - TMS_BEGIN].validity                           = VALIDITY_ERROR;
+  parameters_[TMS_RESTART_PIC_V2 - TMS_BEGIN].value.float_t                      = NAN;
+  parameters_[TMS_RESTART_PIC_V2 - TMS_BEGIN].min                                = 0.0;
+  parameters_[TMS_RESTART_PIC_V2 - TMS_BEGIN].max                                = 65535.0;
+  parameters_[TMS_RESTART_PIC_V2 - TMS_BEGIN].def                                = 0.0;
+  parameters_[TMS_RESTART_PIC_V2 - TMS_BEGIN].discret                            = 1;
+  parameters_[TMS_RESTART_PIC_V2 - TMS_BEGIN].code                               = 0;
+  // Сброс пассивных утечек тока
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE_CONTROL - TMS_BEGIN].id                = TMS_PASSIVE_CURRENT_LEAKAGE_CONTROL;
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE_CONTROL - TMS_BEGIN].access            = ACCESS_OPERATOR;
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE_CONTROL - TMS_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE_CONTROL - TMS_BEGIN].physic            = PHYSIC_NUMERIC;
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE_CONTROL - TMS_BEGIN].validity          = VALIDITY_ERROR;
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE_CONTROL - TMS_BEGIN].value.float_t     = NAN;
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE_CONTROL - TMS_BEGIN].min               = 0.0;
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE_CONTROL - TMS_BEGIN].max               = 1.0;
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE_CONTROL - TMS_BEGIN].def               = 0.0;
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE_CONTROL - TMS_BEGIN].discret           = 1;
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE_CONTROL - TMS_BEGIN].code              = 0;
+  // Время режима RSR
+  parameters_[TMS_RSR_TIME - TMS_BEGIN].id                                       = TMS_RSR_TIME;
+  parameters_[TMS_RSR_TIME - TMS_BEGIN].access                                   = ACCESS_OPERATOR;
+  parameters_[TMS_RSR_TIME - TMS_BEGIN].operation                                = OPERATION_WRITE;
+  parameters_[TMS_RSR_TIME - TMS_BEGIN].physic                                   = PHYSIC_TIME;
+  parameters_[TMS_RSR_TIME - TMS_BEGIN].validity                                 = VALIDITY_ERROR;
+  parameters_[TMS_RSR_TIME - TMS_BEGIN].value.float_t                            = NAN;
+  parameters_[TMS_RSR_TIME - TMS_BEGIN].min                                      = 0.0;
+  parameters_[TMS_RSR_TIME - TMS_BEGIN].max                                      = 65535.0;
+  parameters_[TMS_RSR_TIME - TMS_BEGIN].def                                      = 0.0;
+  parameters_[TMS_RSR_TIME - TMS_BEGIN].discret                                  = 1;
+  parameters_[TMS_RSR_TIME - TMS_BEGIN].code                                     = 0;
+  // Включение режима RSR
+  parameters_[TMS_RSR_CONTROL - TMS_BEGIN].id                                    = TMS_RSR_CONTROL;
+  parameters_[TMS_RSR_CONTROL - TMS_BEGIN].access                                = ACCESS_OPERATOR;
+  parameters_[TMS_RSR_CONTROL - TMS_BEGIN].operation                             = OPERATION_WRITE;
+  parameters_[TMS_RSR_CONTROL - TMS_BEGIN].physic                                = PHYSIC_NUMERIC;
+  parameters_[TMS_RSR_CONTROL - TMS_BEGIN].validity                              = VALIDITY_ERROR;
+  parameters_[TMS_RSR_CONTROL - TMS_BEGIN].value.float_t                         = NAN;
+  parameters_[TMS_RSR_CONTROL - TMS_BEGIN].min                                   = 0.0;
+  parameters_[TMS_RSR_CONTROL - TMS_BEGIN].max                                   = 1.0;
+  parameters_[TMS_RSR_CONTROL - TMS_BEGIN].def                                   = 0.0;
+  parameters_[TMS_RSR_CONTROL - TMS_BEGIN].discret                               = 1;
+  parameters_[TMS_RSR_CONTROL - TMS_BEGIN].code                                  = 0;
+  // Единицы измерения
+  parameters_[TMS_UNITS_MEASURE - TMS_BEGIN].id                                  = TMS_UNITS_MEASURE;
+  parameters_[TMS_UNITS_MEASURE - TMS_BEGIN].access                              = ACCESS_OPERATOR;
+  parameters_[TMS_UNITS_MEASURE - TMS_BEGIN].operation                           = OPERATION_WRITE;
+  parameters_[TMS_UNITS_MEASURE - TMS_BEGIN].physic                              = PHYSIC_NUMERIC;
+  parameters_[TMS_UNITS_MEASURE - TMS_BEGIN].validity                            = VALIDITY_ERROR;
+  parameters_[TMS_UNITS_MEASURE - TMS_BEGIN].value.float_t                       = NAN;
+  parameters_[TMS_UNITS_MEASURE - TMS_BEGIN].min                                 = 0.0;
+  parameters_[TMS_UNITS_MEASURE - TMS_BEGIN].max                                 = 65535.0;
+  parameters_[TMS_UNITS_MEASURE - TMS_BEGIN].def                                 = 0.0;
+  parameters_[TMS_UNITS_MEASURE - TMS_BEGIN].discret                             = 1;
+  parameters_[TMS_UNITS_MEASURE - TMS_BEGIN].code                                = 0;
 }
 
