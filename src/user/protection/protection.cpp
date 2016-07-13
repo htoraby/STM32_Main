@@ -419,7 +419,7 @@ void Protection::proccessingStateStop()
   else if (ksu.isStopMotor()) {             // Двигатель - стоп;
     if (ksu.isAutoMode() && !ksu.isBlock()) { // Двигатель - стоп; Режим - авто; Нет блокировки;
       if (restart_) {                         // Двигатель - стоп; Режим - авто; Флаг - АПВ;
-        float restartTimer;
+        float restartTimer = 0;
         if (difStartFlag_) {                // Защита с отсчётом АПВ после нормализации параметра (ВРП)
           if (!prevent_) {                  // Параметр защиты в норме
             if (timer_ == 0) {              //
