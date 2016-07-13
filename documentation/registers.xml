@@ -29910,6 +29910,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXX</format>
+		<code>0</code>
 		<comment>Статус состояния ТМСН</comment>
 	</param>
 	<param>
@@ -29989,6 +29990,7 @@
 		<text>Статус загрузки</text>
 		<short_text>Статус загрузки</short_text>
 		<unit>NUMERIC_NUMBER</unit>
+		<code>0</code>
 		<comment>Статус загрузки</comment>
 	</param>
 	<param>
@@ -30006,6 +30008,7 @@
 		<text>Тип погружного оборудования</text>
 		<short_text>Тип погружного оборудования</short_text>
 		<unit>NUMERIC_NUMBER</unit>
+		<code>0</code>
 		<comment>Тип погружного оборудования</comment>
 	</param>
 	<param>
@@ -30104,6 +30107,7 @@
 		<short_text>Сброс PIC V2</short_text>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<code>13</code>
 		<comment>Сброс PIC V2</comment>
 	</param>
 	<param>
@@ -30122,6 +30126,7 @@
 		<short_text>Сброс пассивных утечек тока</short_text>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<code>13</code>
 		<comment>Сброс пассивных утечек тока</comment>
 	</param>
 	<param>
@@ -30141,6 +30146,7 @@
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM</unit_lcd>
 		<format>XXXXX</format>
+		<code>13</code>
 		<comment>Время режима RSR</comment>
 	</param>
 	<param>
@@ -30159,6 +30165,7 @@
 		<short_text>Включение режима RSR</short_text>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<code>13</code>
 		<comment>Включение режима RSR</comment>
 	</param>
 	<param>
@@ -30177,6 +30184,7 @@
 		<short_text>Единицы измерения</short_text>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<code>0</code>
 		<comment>Единицы измерения</comment>
 	</param>
 	<param>

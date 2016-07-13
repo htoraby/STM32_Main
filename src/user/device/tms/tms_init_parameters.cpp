@@ -1165,7 +1165,7 @@ void Tms::initParameters()
   parameters_[TMS_RESTART_PIC_V2 - TMS_BEGIN].max                                = 65535.0;
   parameters_[TMS_RESTART_PIC_V2 - TMS_BEGIN].def                                = 0.0;
   parameters_[TMS_RESTART_PIC_V2 - TMS_BEGIN].discret                            = 1;
-  parameters_[TMS_RESTART_PIC_V2 - TMS_BEGIN].code                               = 0;
+  parameters_[TMS_RESTART_PIC_V2 - TMS_BEGIN].code                               = 13;
   // Сброс пассивных утечек тока
   parameters_[TMS_PASSIVE_CURRENT_LEAKAGE_CONTROL - TMS_BEGIN].id                = TMS_PASSIVE_CURRENT_LEAKAGE_CONTROL;
   parameters_[TMS_PASSIVE_CURRENT_LEAKAGE_CONTROL - TMS_BEGIN].access            = ACCESS_OPERATOR;
@@ -1177,7 +1177,7 @@ void Tms::initParameters()
   parameters_[TMS_PASSIVE_CURRENT_LEAKAGE_CONTROL - TMS_BEGIN].max               = 1.0;
   parameters_[TMS_PASSIVE_CURRENT_LEAKAGE_CONTROL - TMS_BEGIN].def               = 0.0;
   parameters_[TMS_PASSIVE_CURRENT_LEAKAGE_CONTROL - TMS_BEGIN].discret           = 1;
-  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE_CONTROL - TMS_BEGIN].code              = 0;
+  parameters_[TMS_PASSIVE_CURRENT_LEAKAGE_CONTROL - TMS_BEGIN].code              = 13;
   // Время режима RSR
   parameters_[TMS_RSR_TIME - TMS_BEGIN].id                                       = TMS_RSR_TIME;
   parameters_[TMS_RSR_TIME - TMS_BEGIN].access                                   = ACCESS_OPERATOR;
@@ -1189,7 +1189,7 @@ void Tms::initParameters()
   parameters_[TMS_RSR_TIME - TMS_BEGIN].max                                      = 65535.0;
   parameters_[TMS_RSR_TIME - TMS_BEGIN].def                                      = 0.0;
   parameters_[TMS_RSR_TIME - TMS_BEGIN].discret                                  = 1;
-  parameters_[TMS_RSR_TIME - TMS_BEGIN].code                                     = 0;
+  parameters_[TMS_RSR_TIME - TMS_BEGIN].code                                     = 13;
   // Включение режима RSR
   parameters_[TMS_RSR_CONTROL - TMS_BEGIN].id                                    = TMS_RSR_CONTROL;
   parameters_[TMS_RSR_CONTROL - TMS_BEGIN].access                                = ACCESS_OPERATOR;
@@ -1201,7 +1201,7 @@ void Tms::initParameters()
   parameters_[TMS_RSR_CONTROL - TMS_BEGIN].max                                   = 1.0;
   parameters_[TMS_RSR_CONTROL - TMS_BEGIN].def                                   = 0.0;
   parameters_[TMS_RSR_CONTROL - TMS_BEGIN].discret                               = 1;
-  parameters_[TMS_RSR_CONTROL - TMS_BEGIN].code                                  = 0;
+  parameters_[TMS_RSR_CONTROL - TMS_BEGIN].code                                  = 13;
   // Единицы измерения
   parameters_[TMS_UNITS_MEASURE - TMS_BEGIN].id                                  = TMS_UNITS_MEASURE;
   parameters_[TMS_UNITS_MEASURE - TMS_BEGIN].access                              = ACCESS_OPERATOR;
