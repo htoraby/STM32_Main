@@ -12,7 +12,7 @@ Product {
     cpp.commonCompilerFlags: [
         "-mcpu=cortex-m4",
         "-mthumb",
-        "-mfloat-abi=softfp",
+        "-mfloat-abi=hard",
         "-mfpu=fpv4-sp-d16",
         "-fsingle-precision-constant",
         "-Wall",
@@ -20,18 +20,17 @@ Product {
         "-Wno-unused-parameter",
         "-fno-exceptions",
         "-fexceptions",
+        "-fkeep-inline-functions",
         (qbs.debugInformation ? "-O0" : "-Os"),
     ]
     cpp.linkerFlags: [
         "-mcpu=cortex-m4",
         "-mthumb",
-        "-mfloat-abi=softfp",
+        "-mfloat-abi=hard",
         "-mfpu=fpv4-sp-d16",
         "-fsingle-precision-constant",
         "-Wl,--gc-sections",
         "-Wl,--start-group",
-        //        "-nostartfiles",
-        //        "-fexceptions",
         "-Xlinker",
         "-Map=" + product.buildDirectory + "/" + product.name + ".map",
     ]
@@ -110,6 +109,7 @@ Product {
         (qbs.debugInformation ? "DEBUG" : "RELEASE"),
         "STM32F427xx",
         "__FPU_USED",
+        "ARM_MATH_CM4",
         "USE_HAL_DRIVER",
         "HSE_VALUE=12000000",
         "USE_FULL_ASSERT",
