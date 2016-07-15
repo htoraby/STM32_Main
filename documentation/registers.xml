@@ -29431,8 +29431,8 @@
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<text>Радиальная виброскорость насоса</text>
-		<short_text>Радиальная виброскорость насоса</short_text>
+		<text>Vxy насоса</text>
+		<short_text>Vxy насоса</short_text>
 		<form>NULL</form>
 		<unit>SPEED_M_SS</unit>
 		<unit_lcd>SPEED_MM_SS</unit_lcd>
@@ -29452,8 +29452,8 @@
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<text>Осевая виброскорость насоса</text>
-		<short_text>Осевая виброскорость насоса</short_text>
+		<text>Vz насоса</text>
+		<short_text>Vz насоса</short_text>
 		<form>NULL</form>
 		<unit>SPEED_M_SS</unit>
 		<unit_lcd>SPEED_MM_SS</unit_lcd>
