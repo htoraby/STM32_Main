@@ -79,6 +79,9 @@ void Ccs::init()
 
 void Ccs::initTask()
 {
+  conditionOld_ = getValue(CCS_CONDITION);
+  flagOld_ = getValue(CCS_CONDITION_FLAG);
+
   osMessageQDef(LedMessageQ, 5, uint8_t);
   ledMessage_ = osMessageCreate(osMessageQ(LedMessageQ), NULL);
   osThreadDef(LedCondition, ccsLedConditionTask, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
