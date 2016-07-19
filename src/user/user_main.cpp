@@ -108,6 +108,9 @@ void createDhs(bool init)
   case TYPE_DHS_PIC_V2:
     tms = new TmsPicV2();
     break;
+  case TYPE_DHS_SNG:
+    tms = new TmsSng();
+    break;
   default:
     tms = new Tms();
     break;

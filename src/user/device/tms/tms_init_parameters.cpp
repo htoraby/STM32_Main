@@ -171,17 +171,17 @@ void Tms::initParameters()
   parameters_[TMS_MAX_PRESSURE_INTAKE - TMS_BEGIN].discret                       = 1;
   parameters_[TMS_MAX_PRESSURE_INTAKE - TMS_BEGIN].code                          = 0;
   // Максимальная температура обмоток
-  parameters_[TMS_MAX_TEMPERATUR_WINDING - TMS_BEGIN].id                         = TMS_MAX_TEMPERATUR_WINDING;
-  parameters_[TMS_MAX_TEMPERATUR_WINDING - TMS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[TMS_MAX_TEMPERATUR_WINDING - TMS_BEGIN].operation                  = OPERATION_READ;
-  parameters_[TMS_MAX_TEMPERATUR_WINDING - TMS_BEGIN].physic                     = PHYSIC_TEMPERATURE;
-  parameters_[TMS_MAX_TEMPERATUR_WINDING - TMS_BEGIN].validity                   = VALIDITY_ERROR;
-  parameters_[TMS_MAX_TEMPERATUR_WINDING - TMS_BEGIN].value.float_t              = NAN;
-  parameters_[TMS_MAX_TEMPERATUR_WINDING - TMS_BEGIN].min                        = 0.0;
-  parameters_[TMS_MAX_TEMPERATUR_WINDING - TMS_BEGIN].max                        = 999999999.9;
-  parameters_[TMS_MAX_TEMPERATUR_WINDING - TMS_BEGIN].def                        = 0;
-  parameters_[TMS_MAX_TEMPERATUR_WINDING - TMS_BEGIN].discret                    = 1;
-  parameters_[TMS_MAX_TEMPERATUR_WINDING - TMS_BEGIN].code                       = 0;
+  parameters_[TMS_MAX_TEMPERATURE_WINDING - TMS_BEGIN].id                        = TMS_MAX_TEMPERATURE_WINDING;
+  parameters_[TMS_MAX_TEMPERATURE_WINDING - TMS_BEGIN].access                    = ACCESS_OPERATOR;
+  parameters_[TMS_MAX_TEMPERATURE_WINDING - TMS_BEGIN].operation                 = OPERATION_READ;
+  parameters_[TMS_MAX_TEMPERATURE_WINDING - TMS_BEGIN].physic                    = PHYSIC_TEMPERATURE;
+  parameters_[TMS_MAX_TEMPERATURE_WINDING - TMS_BEGIN].validity                  = VALIDITY_ERROR;
+  parameters_[TMS_MAX_TEMPERATURE_WINDING - TMS_BEGIN].value.float_t             = NAN;
+  parameters_[TMS_MAX_TEMPERATURE_WINDING - TMS_BEGIN].min                       = 0.0;
+  parameters_[TMS_MAX_TEMPERATURE_WINDING - TMS_BEGIN].max                       = 999999999.9;
+  parameters_[TMS_MAX_TEMPERATURE_WINDING - TMS_BEGIN].def                       = 0;
+  parameters_[TMS_MAX_TEMPERATURE_WINDING - TMS_BEGIN].discret                   = 1;
+  parameters_[TMS_MAX_TEMPERATURE_WINDING - TMS_BEGIN].code                      = 0;
   // Максимальная температура на приёме
   parameters_[TMS_MAX_TEMPERATURE_INTAKE - TMS_BEGIN].id                         = TMS_MAX_TEMPERATURE_INTAKE;
   parameters_[TMS_MAX_TEMPERATURE_INTAKE - TMS_BEGIN].access                     = ACCESS_OPERATOR;
@@ -246,13 +246,13 @@ void Tms::initParameters()
   parameters_[TMS_DATE_TMSP - TMS_BEGIN].id                                      = TMS_DATE_TMSP;
   parameters_[TMS_DATE_TMSP - TMS_BEGIN].access                                  = ACCESS_OPERATOR;
   parameters_[TMS_DATE_TMSP - TMS_BEGIN].operation                               = OPERATION_READ;
-  parameters_[TMS_DATE_TMSP - TMS_BEGIN].physic                                  = PHYSIC_DATE_TIME;
+  parameters_[TMS_DATE_TMSP - TMS_BEGIN].physic                                  = PHYSIC_NUMERIC;
   parameters_[TMS_DATE_TMSP - TMS_BEGIN].validity                                = VALIDITY_ERROR;
   parameters_[TMS_DATE_TMSP - TMS_BEGIN].value.float_t                           = NAN;
-  parameters_[TMS_DATE_TMSP - TMS_BEGIN].min                                     = 0;
-  parameters_[TMS_DATE_TMSP - TMS_BEGIN].max                                     = 4294967296;
+  parameters_[TMS_DATE_TMSP - TMS_BEGIN].min                                     = 0.0;
+  parameters_[TMS_DATE_TMSP - TMS_BEGIN].max                                     = 999999999.9;
   parameters_[TMS_DATE_TMSP - TMS_BEGIN].def                                     = 0;
-  parameters_[TMS_DATE_TMSP - TMS_BEGIN].discret                                 = 1;
+  parameters_[TMS_DATE_TMSP - TMS_BEGIN].discret                                 = 100;
   parameters_[TMS_DATE_TMSP - TMS_BEGIN].code                                    = 0;
   // Код конструкции ТМСП
   parameters_[TMS_CONSTRUCTION_TMSP - TMS_BEGIN].id                              = TMS_CONSTRUCTION_TMSP;
@@ -342,13 +342,13 @@ void Tms::initParameters()
   parameters_[TMS_DATE_TMSN - TMS_BEGIN].id                                      = TMS_DATE_TMSN;
   parameters_[TMS_DATE_TMSN - TMS_BEGIN].access                                  = ACCESS_OPERATOR;
   parameters_[TMS_DATE_TMSN - TMS_BEGIN].operation                               = OPERATION_READ;
-  parameters_[TMS_DATE_TMSN - TMS_BEGIN].physic                                  = PHYSIC_DATE_TIME;
+  parameters_[TMS_DATE_TMSN - TMS_BEGIN].physic                                  = PHYSIC_NUMERIC;
   parameters_[TMS_DATE_TMSN - TMS_BEGIN].validity                                = VALIDITY_ERROR;
   parameters_[TMS_DATE_TMSN - TMS_BEGIN].value.float_t                           = NAN;
-  parameters_[TMS_DATE_TMSN - TMS_BEGIN].min                                     = 0;
-  parameters_[TMS_DATE_TMSN - TMS_BEGIN].max                                     = 4294967296;
+  parameters_[TMS_DATE_TMSN - TMS_BEGIN].min                                     = 0.0;
+  parameters_[TMS_DATE_TMSN - TMS_BEGIN].max                                     = 999999999.9;
   parameters_[TMS_DATE_TMSN - TMS_BEGIN].def                                     = 0;
-  parameters_[TMS_DATE_TMSN - TMS_BEGIN].discret                                 = 1;
+  parameters_[TMS_DATE_TMSN - TMS_BEGIN].discret                                 = 100;
   parameters_[TMS_DATE_TMSN - TMS_BEGIN].code                                    = 0;
   // Код конструкции ТМСН
   parameters_[TMS_CONSTRUCTION_TMSN - TMS_BEGIN].id                              = TMS_CONSTRUCTION_TMSN;
@@ -543,17 +543,17 @@ void Tms::initParameters()
   parameters_[TMS_MODBUS_STOP_BIT - TMS_BEGIN].discret                           = 1;
   parameters_[TMS_MODBUS_STOP_BIT - TMS_BEGIN].code                              = 0;
   // Текущее дата время
-  parameters_[TMS_DATA_TIME - TMS_BEGIN].id                                      = TMS_DATA_TIME;
-  parameters_[TMS_DATA_TIME - TMS_BEGIN].access                                  = ACCESS_OPERATOR;
-  parameters_[TMS_DATA_TIME - TMS_BEGIN].operation                               = OPERATION_READ;
-  parameters_[TMS_DATA_TIME - TMS_BEGIN].physic                                  = PHYSIC_DATE_TIME;
-  parameters_[TMS_DATA_TIME - TMS_BEGIN].validity                                = VALIDITY_ERROR;
-  parameters_[TMS_DATA_TIME - TMS_BEGIN].value.float_t                           = NAN;
-  parameters_[TMS_DATA_TIME - TMS_BEGIN].min                                     = 0;
-  parameters_[TMS_DATA_TIME - TMS_BEGIN].max                                     = 4294967296;
-  parameters_[TMS_DATA_TIME - TMS_BEGIN].def                                     = 0;
-  parameters_[TMS_DATA_TIME - TMS_BEGIN].discret                                 = 1;
-  parameters_[TMS_DATA_TIME - TMS_BEGIN].code                                    = 0;
+  parameters_[TMS_DATE_TIME - TMS_BEGIN].id                                      = TMS_DATE_TIME;
+  parameters_[TMS_DATE_TIME - TMS_BEGIN].access                                  = ACCESS_OPERATOR;
+  parameters_[TMS_DATE_TIME - TMS_BEGIN].operation                               = OPERATION_READ;
+  parameters_[TMS_DATE_TIME - TMS_BEGIN].physic                                  = PHYSIC_DATE_TIME;
+  parameters_[TMS_DATE_TIME - TMS_BEGIN].validity                                = VALIDITY_ERROR;
+  parameters_[TMS_DATE_TIME - TMS_BEGIN].value.float_t                           = NAN;
+  parameters_[TMS_DATE_TIME - TMS_BEGIN].min                                     = 0;
+  parameters_[TMS_DATE_TIME - TMS_BEGIN].max                                     = 4294967296;
+  parameters_[TMS_DATE_TIME - TMS_BEGIN].def                                     = 0;
+  parameters_[TMS_DATE_TIME - TMS_BEGIN].discret                                 = 1;
+  parameters_[TMS_DATE_TIME - TMS_BEGIN].code                                    = 0;
   // Команда чтения статических параметров
   parameters_[TMS_READ_STATIC_PARAM - TMS_BEGIN].id                              = TMS_READ_STATIC_PARAM;
   parameters_[TMS_READ_STATIC_PARAM - TMS_BEGIN].access                          = ACCESS_OPERATOR;
@@ -1214,5 +1214,53 @@ void Tms::initParameters()
   parameters_[TMS_UNITS_MEASURE - TMS_BEGIN].def                                 = 0.0;
   parameters_[TMS_UNITS_MEASURE - TMS_BEGIN].discret                             = 1;
   parameters_[TMS_UNITS_MEASURE - TMS_BEGIN].code                                = 0;
+  // Скорость Modbus RS-485
+  parameters_[TMS_MODBUS_SPEED_2 - TMS_BEGIN].id                                 = TMS_MODBUS_SPEED_2;
+  parameters_[TMS_MODBUS_SPEED_2 - TMS_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[TMS_MODBUS_SPEED_2 - TMS_BEGIN].operation                          = OPERATION_READ;
+  parameters_[TMS_MODBUS_SPEED_2 - TMS_BEGIN].physic                             = PHYSIC_NUMERIC;
+  parameters_[TMS_MODBUS_SPEED_2 - TMS_BEGIN].validity                           = VALIDITY_ERROR;
+  parameters_[TMS_MODBUS_SPEED_2 - TMS_BEGIN].value.float_t                      = NAN;
+  parameters_[TMS_MODBUS_SPEED_2 - TMS_BEGIN].min                                = 0.0;
+  parameters_[TMS_MODBUS_SPEED_2 - TMS_BEGIN].max                                = 999999999.9;
+  parameters_[TMS_MODBUS_SPEED_2 - TMS_BEGIN].def                                = 0;
+  parameters_[TMS_MODBUS_SPEED_2 - TMS_BEGIN].discret                            = 1;
+  parameters_[TMS_MODBUS_SPEED_2 - TMS_BEGIN].code                               = 0;
+  // Дата время, BDC(ГГММ)
+  parameters_[TMS_DATE_TIME_YYMM - TMS_BEGIN].id                                 = TMS_DATE_TIME_YYMM;
+  parameters_[TMS_DATE_TIME_YYMM - TMS_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[TMS_DATE_TIME_YYMM - TMS_BEGIN].operation                          = OPERATION_READ;
+  parameters_[TMS_DATE_TIME_YYMM - TMS_BEGIN].physic                             = PHYSIC_NUMERIC;
+  parameters_[TMS_DATE_TIME_YYMM - TMS_BEGIN].validity                           = VALIDITY_ERROR;
+  parameters_[TMS_DATE_TIME_YYMM - TMS_BEGIN].value.float_t                      = NAN;
+  parameters_[TMS_DATE_TIME_YYMM - TMS_BEGIN].min                                = 0.0;
+  parameters_[TMS_DATE_TIME_YYMM - TMS_BEGIN].max                                = 65535.0;
+  parameters_[TMS_DATE_TIME_YYMM - TMS_BEGIN].def                                = 0.0;
+  parameters_[TMS_DATE_TIME_YYMM - TMS_BEGIN].discret                            = 1;
+  parameters_[TMS_DATE_TIME_YYMM - TMS_BEGIN].code                               = 0;
+  // Дата время, BDC(ДДЧЧ)
+  parameters_[TMS_DATE_TIME_DDHH - TMS_BEGIN].id                                 = TMS_DATE_TIME_DDHH;
+  parameters_[TMS_DATE_TIME_DDHH - TMS_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[TMS_DATE_TIME_DDHH - TMS_BEGIN].operation                          = OPERATION_READ;
+  parameters_[TMS_DATE_TIME_DDHH - TMS_BEGIN].physic                             = PHYSIC_NUMERIC;
+  parameters_[TMS_DATE_TIME_DDHH - TMS_BEGIN].validity                           = VALIDITY_ERROR;
+  parameters_[TMS_DATE_TIME_DDHH - TMS_BEGIN].value.float_t                      = NAN;
+  parameters_[TMS_DATE_TIME_DDHH - TMS_BEGIN].min                                = 0.0;
+  parameters_[TMS_DATE_TIME_DDHH - TMS_BEGIN].max                                = 65535.0;
+  parameters_[TMS_DATE_TIME_DDHH - TMS_BEGIN].def                                = 0.0;
+  parameters_[TMS_DATE_TIME_DDHH - TMS_BEGIN].discret                            = 1;
+  parameters_[TMS_DATE_TIME_DDHH - TMS_BEGIN].code                               = 0;
+  // Дата время, BDC(ММСС)
+  parameters_[TMS_DATE_TIME_MMSS - TMS_BEGIN].id                                 = TMS_DATE_TIME_MMSS;
+  parameters_[TMS_DATE_TIME_MMSS - TMS_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[TMS_DATE_TIME_MMSS - TMS_BEGIN].operation                          = OPERATION_READ;
+  parameters_[TMS_DATE_TIME_MMSS - TMS_BEGIN].physic                             = PHYSIC_NUMERIC;
+  parameters_[TMS_DATE_TIME_MMSS - TMS_BEGIN].validity                           = VALIDITY_ERROR;
+  parameters_[TMS_DATE_TIME_MMSS - TMS_BEGIN].value.float_t                      = NAN;
+  parameters_[TMS_DATE_TIME_MMSS - TMS_BEGIN].min                                = 0.0;
+  parameters_[TMS_DATE_TIME_MMSS - TMS_BEGIN].max                                = 65535.0;
+  parameters_[TMS_DATE_TIME_MMSS - TMS_BEGIN].def                                = 0.0;
+  parameters_[TMS_DATE_TIME_MMSS - TMS_BEGIN].discret                            = 1;
+  parameters_[TMS_DATE_TIME_MMSS - TMS_BEGIN].code                               = 0;
 }
 

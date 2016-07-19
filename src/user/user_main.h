@@ -17,6 +17,7 @@
 #include "tms_scad.h"
 #include "tms_triol.h"
 #include "tms_pic_v2.h"
+#include "tms_sng.h"
 #include "em_set.h"
 #include "scada_region_3_0.h"
 #include "scada_novomet.h"

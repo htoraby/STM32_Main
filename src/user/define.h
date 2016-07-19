@@ -200,7 +200,8 @@ enum enTypeDHS {
   TYPE_DHS_SCAD,                            //!< Скад
   TYPE_DHS_SCAN,                            //!< Скан
   TYPE_DHS_TRIOL,                           //!< Триол
-  TYPE_DHS_ZENIT                            //!< Зенит
+  TYPE_DHS_ZENIT,                           //!< Зенит
+  TYPE_DHS_SNG,                             //!< СНГ
 };
 
 /*!

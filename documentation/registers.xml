@@ -824,7 +824,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>13.0</max>
+		<max>14.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -28794,7 +28794,7 @@
 	</param>
 	<param>
 		<id>15014</id>
-		<name>TMS_MAX_TEMPERATUR_WINDING</name>
+		<name>TMS_MAX_TEMPERATURE_WINDING</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
@@ -28851,6 +28851,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>Отказ связи ТМСП</text>
+		<short_text>Отказ связи ТМСП</short_text>
 		<code>0</code>
 		<comment>Обрыв связи с ТМСП</comment>
 	</param>
@@ -28887,14 +28889,13 @@
 		<name>TMS_DATE_TMSP</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_DATE_TIME</physic>
-		<min>0</min>
-		<max>4294967296</max>
-		<def>0</def>
-		<discret>1</discret>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<unit>DATE_TIME_SS</unit>
+		<format>XX_XX</format>
 		<code>0</code>
 		<comment>Дата изготовления ТМСП</comment>
 	</param>
@@ -29001,14 +29002,13 @@
 		<name>TMS_DATE_TMSN</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_DATE_TIME</physic>
-		<min>0</min>
-		<max>4294967296</max>
-		<def>0</def>
-		<discret>1</discret>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<unit>DATE_TIME_SS</unit>
+		<format>XX_XX</format>
 		<code>0</code>
 		<comment>Дата изготовления ТМСН</comment>
 	</param>
@@ -29242,7 +29242,7 @@
 	</param>
 	<param>
 		<id>15045</id>
-		<name>TMS_DATA_TIME</name>
+		<name>TMS_DATE_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_DATE_TIME</physic>
@@ -29253,6 +29253,8 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
 		<unit>DATE_TIME_SS</unit>
+		<unit_lcd>DATE_TIME_YY_MM_DD_HH_MM_SS</unit_lcd>
+		<format>XX_XX_XX_XX_XX_XX</format>
 		<code>0</code>
 		<comment>Текущее дата время</comment>
 	</param>
@@ -30189,6 +30191,65 @@
 	</param>
 	<param>
 		<id>15101</id>
+		<name>TMS_MODBUS_SPEED_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<code>0</code>
+		<comment>Скорость Modbus RS-485</comment>
+	</param>
+	<param>
+		<id>15102</id>
+		<name>TMS_DATE_TIME_YYMM</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<code>0</code>
+		<comment>Дата время, BDC(ГГММ)</comment>
+	</param>
+	<param>
+		<id>15103</id>
+		<name>TMS_DATE_TIME_DDHH</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<code>0</code>
+		<comment>Дата время, BDC(ДДЧЧ)</comment>
+	</param>
+	<param>
+		<id>15104</id>
+		<name>TMS_DATE_TIME_MMSS</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<code>0</code>
+		<comment>Дата время, BDC(ММСС)</comment>
+	</param>
+	<param>
+		<id>15105</id>
 		<name>TMS_END</name>
 		<code>0</code>
 	</param>
