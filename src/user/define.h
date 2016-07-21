@@ -325,6 +325,7 @@ enum LastReasonRun {
   LastReasonRunApvFlowDischarge         = 117,  //!< "АПВ по защите: Минимальный расход"
   LastReasonRunApvPressureDischarge     = 118,  //!< "АПВ по защите: Pmax на выкиде насоса"
   LastReasonRunApvOverheatInputFilter   = 119,  //!< "АПВ по защите: Перегрев вх.фильтра"
+  LastReasonRunAdaptationVector         = 120,  //!<
 
   LastReasonRunLast
 };
@@ -386,6 +387,7 @@ enum LastReasonStop {
   LastReasonStopFlowDischarge,                  //!< "Минимальный расход"
   LastReasonStopPressureDischarge,              //!< "Pmax на выкиде насоса"
   LastReasonStopOverheatInputFilter,            //!< "Пререгрев вх.фильтра"
+  LastReasonStopAdaptationVector,               //!< "Режим автоадаптации"
   LastReasonStopLast                    = 65535,
 };
 
