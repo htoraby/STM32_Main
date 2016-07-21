@@ -66,7 +66,6 @@ bool interceptionStartRegime()
       }
       break;
     }
-
   }
 
   if (parameters.get(CCS_RGM_RUN_PUSH_MODE) != Regime::OffAction) {
@@ -109,7 +108,7 @@ bool interceptionStartRegime()
       }
       break;
     default:
-      if (parameters.get(CCS_RGM_RUN_AUTO_ADAPTATION_MODE) == Regime::IdleState) {
+      if (parameters.get(CCS_RGM_RUN_AUTO_ADAPTATION_STATE) == Regime::IdleState) {
         return false;
       }
       break;
