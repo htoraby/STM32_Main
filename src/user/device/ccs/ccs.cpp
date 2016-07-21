@@ -235,6 +235,8 @@ void Ccs::vsdConditionTask()
           if (++timer >= 500) {
             syncStart();
           }
+        } else {
+          timer = 0;
         }
       }
       break;
@@ -273,6 +275,8 @@ void Ccs::vsdConditionTask()
         if (++timer >= 500) {
           syncStop();
         }
+      } else {
+        timer = 0;
       }
       break;
     case VSD_CONDITION_RUNNING:
