@@ -592,6 +592,9 @@ void Ccs::calcRegimeRun()
     parameters.set(CCS_RUNNING_TYPE, Regime::SwingRegimeRun);
     return;
   }
+  if (parameters.get(CCS_RGM_RUN_PICKUP_MODE) != Regime::OffAction) {
+     parameters.set(CCS_RUNNING_TYPE, Regime::PickupRegimeRun);
+  }
   parameters.set(CCS_RUNNING_TYPE, Regime::SmoothRegimeRun);
   return;
 }
