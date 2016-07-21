@@ -21,7 +21,12 @@ public:
   void getOtherSetpoint();
   void setOtherSetpoint();
   void processingStateIdle();
+  void processingStateRunning();
+  void processingState();
   void processingStateWork();
+  void processingStatePause();
+  void processingStateStop();
+  void processingStateRestart();
   void automatRegime();
 
   void resetAdaptationVector(uint16_t type);
