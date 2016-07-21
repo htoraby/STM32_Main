@@ -1938,14 +1938,14 @@ void Vsd::initParameters()
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].id                              = VSD_RESISTANCE_STATOR;
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].access                          = ACCESS_OPERATOR;
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].operation                       = OPERATION_WRITE;
-  parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].physic                          = 0;
+  parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].physic                          = PHYSIC_RESISTANCE;
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].validity                        = VALIDITY_ERROR;
-  parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].value.float_t                   = 0;
-  parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].max                             = 999999999.9;
-  parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].def                             = 0;
-  parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].discret                         = 1;
-  parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].code                            = 0;
+  parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].value.float_t                   = 0.0140;
+  parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].min                             = 0.0140;
+  parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].max                             = 140.0;
+  parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].def                             = 0.0140;
+  parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].discret                         = 10000;
+  parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].code                            = 13;
   // 0я точка напряжения U/f характеристика
   parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].id                            = VSD_UF_CHARACTERISTIC_U;
   parameters_[VSD_UF_CHARACTERISTIC_U - VSD_BEGIN].access                        = ACCESS_OPERATOR;
@@ -5882,5 +5882,17 @@ void Vsd::initParameters()
   parameters_[VSD_FLYING_START - VSD_BEGIN].def                                  = 0.0;
   parameters_[VSD_FLYING_START - VSD_BEGIN].discret                              = 1;
   parameters_[VSD_FLYING_START - VSD_BEGIN].code                                 = 0;
+  // Катушка: Jog Danfoss
+  parameters_[VSD_JOG - VSD_BEGIN].id                                            = VSD_JOG;
+  parameters_[VSD_JOG - VSD_BEGIN].access                                        = ACCESS_OPERATOR;
+  parameters_[VSD_JOG - VSD_BEGIN].operation                                     = OPERATION_WRITE;
+  parameters_[VSD_JOG - VSD_BEGIN].physic                                        = PHYSIC_NUMERIC;
+  parameters_[VSD_JOG - VSD_BEGIN].validity                                      = VALIDITY_ERROR;
+  parameters_[VSD_JOG - VSD_BEGIN].value.float_t                                 = NAN;
+  parameters_[VSD_JOG - VSD_BEGIN].min                                           = 0.0;
+  parameters_[VSD_JOG - VSD_BEGIN].max                                           = 255.0;
+  parameters_[VSD_JOG - VSD_BEGIN].def                                           = 0.0;
+  parameters_[VSD_JOG - VSD_BEGIN].discret                                       = 1;
+  parameters_[VSD_JOG - VSD_BEGIN].code                                          = 0;
 }
 

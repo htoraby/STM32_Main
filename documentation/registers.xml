@@ -15229,7 +15229,7 @@
 	</param>
 	<param>
 		<id>777</id>
-		<name>CCS_RESISTANCE_STATOR_STEP</name>
+		<name>CCS_RESERVED_777</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_RESISTANCE</physic>
@@ -15380,7 +15380,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10.0</max>
+		<max>1000.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -19341,18 +19341,18 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_RESISTANCE</physic>
-		<min>0.0</min>
-		<max>1.0</max>
+		<min>0.0001</min>
+		<max>0.3</max>
 		<def>0.0</def>
-		<discret>1</discret>
+		<discret>10000</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>0.0001</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
-		<unit>NULL</unit>
-		<unit_lcd>NULL</unit_lcd>
-		<format>NULL</format>
+		<unit>RESISTANCE_OM</unit>
+		<unit_lcd>RESISTANCE_OM</unit_lcd>
+		<format>XX_XXXX</format>
 		<code>0</code>
 		<comment>Приращение сопротивления статора</comment>
 	</param>
@@ -22047,13 +22047,19 @@
 		<name>VSD_RESISTANCE_STATOR</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
+		<physic>PHYSIC_RESISTANCE</physic>
+		<min>0.0140</min>
+		<max>140.0</max>
+		<def>0.0140</def>
+		<discret>10000</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>0.0140</value>
 		<text>Сопротивление статора</text>
 		<short_text>Сопротивление статора</short_text>
-		<code>0</code>
+		<unit>RESISTANCE_OM</unit>
+		<unit_lcd>RESISTANCE_OM</unit_lcd>
+		<format>XXX_XXX</format>
+		<code>13</code>
 		<comment>Сопротивление статора Danfoss 1-30 Используется в режиме автоадаптации</comment>
 	</param>
 	<param>
@@ -28609,6 +28615,27 @@
 	</param>
 	<param>
 		<id>10490</id>
+		<name>VSD_JOG</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>255.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Катушка: Jog Danfoss</comment>
+	</param>
+	<param>
+		<id>10491</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>

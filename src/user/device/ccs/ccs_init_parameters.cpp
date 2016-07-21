@@ -9327,17 +9327,17 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_SL_20_6 - CCS_BEGIN].def                                   = 0.0;
   parameters_[CCS_VSD_SL_20_6 - CCS_BEGIN].code                                  = 13;
   // Шаг изменения сопротивления изоляции
-  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].id                         = CCS_RESISTANCE_STATOR_STEP;
-  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].operation                  = OPERATION_WRITE;
-  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].physic                     = PHYSIC_RESISTANCE;
-  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].validity                   = VALIDITY_OK;
-  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].value.float_t              = 0.0;
-  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].min                        = 0.0;
-  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].max                        = 1.0;
-  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].discret                    = 10000;
-  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].def                        = 0.0;
-  parameters_[CCS_RESISTANCE_STATOR_STEP - CCS_BEGIN].code                       = 13;
+  parameters_[CCS_RESERVED_777 - CCS_BEGIN].id                                   = CCS_RESERVED_777;
+  parameters_[CCS_RESERVED_777 - CCS_BEGIN].access                               = ACCESS_OPERATOR;
+  parameters_[CCS_RESERVED_777 - CCS_BEGIN].operation                            = OPERATION_WRITE;
+  parameters_[CCS_RESERVED_777 - CCS_BEGIN].physic                               = PHYSIC_RESISTANCE;
+  parameters_[CCS_RESERVED_777 - CCS_BEGIN].validity                             = VALIDITY_OK;
+  parameters_[CCS_RESERVED_777 - CCS_BEGIN].value.float_t                        = 0.0;
+  parameters_[CCS_RESERVED_777 - CCS_BEGIN].min                                  = 0.0;
+  parameters_[CCS_RESERVED_777 - CCS_BEGIN].max                                  = 1.0;
+  parameters_[CCS_RESERVED_777 - CCS_BEGIN].discret                              = 10000;
+  parameters_[CCS_RESERVED_777 - CCS_BEGIN].def                                  = 0.0;
+  parameters_[CCS_RESERVED_777 - CCS_BEGIN].code                                 = 13;
   // "Защита от потери связи с ЧРП"
   parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_MODE - CCS_BEGIN].id                 = CCS_PROT_OTHER_VSD_NO_CONNECT_MODE;
   parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_MODE - CCS_BEGIN].access             = ACCESS_SERVICE;
@@ -9418,7 +9418,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].value.float_t       = 0.0;
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].min                 = 0.0;
-  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].max                 = 10.0;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].max                 = 1000.0;
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].discret             = 1;
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].def                 = 0.0;
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].code                = 0;
@@ -11840,10 +11840,10 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATOR_RESISTANCE_DELTA - CCS_BEGIN].operation = OPERATION_WRITE;
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATOR_RESISTANCE_DELTA - CCS_BEGIN].physic = PHYSIC_RESISTANCE;
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATOR_RESISTANCE_DELTA - CCS_BEGIN].validity = VALIDITY_OK;
-  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATOR_RESISTANCE_DELTA - CCS_BEGIN].value.float_t = 0.0;
-  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATOR_RESISTANCE_DELTA - CCS_BEGIN].min = 0.0;
-  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATOR_RESISTANCE_DELTA - CCS_BEGIN].max = 1.0;
-  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATOR_RESISTANCE_DELTA - CCS_BEGIN].discret = 1;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATOR_RESISTANCE_DELTA - CCS_BEGIN].value.float_t = 0.0001;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATOR_RESISTANCE_DELTA - CCS_BEGIN].min = 0.0001;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATOR_RESISTANCE_DELTA - CCS_BEGIN].max = 0.3;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATOR_RESISTANCE_DELTA - CCS_BEGIN].discret = 10000;
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATOR_RESISTANCE_DELTA - CCS_BEGIN].def = 0.0;
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATOR_RESISTANCE_DELTA - CCS_BEGIN].code = 0;
 }
