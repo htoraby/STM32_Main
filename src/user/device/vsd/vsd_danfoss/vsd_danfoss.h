@@ -221,6 +221,8 @@ public:
 
   void resetAdaptationVector(uint16_t type);
   void setAdaptationVector();
+  bool checkSetAdaptationVector();
+  bool checkResetAdaptationVector();
 
   void getConnect();
   void resetConnect();

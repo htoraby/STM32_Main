@@ -297,6 +297,18 @@ public:
    */
   virtual void setAdaptationVector();
 
+  /*!
+   * \brief Функция проверки настройки ЧРП для автоадаптации
+   * \return true - настроен; false - не настроен
+   */
+  virtual bool checkSetAdaptationVector();
+
+  /*!
+   * \brief Функция проверки настройки ЧРП для выхода автоадаптации
+   * \return true - настроен; false - не настроен
+   */
+  virtual bool checkResetAdaptationVector();
+
   // НАСТРОЙКА U/f
   /*!
    * \brief setUf_f1

@@ -383,6 +383,16 @@ void Vsd::setAdaptationVector()
   return;
 }
 
+bool Vsd::checkSetAdaptationVector()
+{
+  return false;
+}
+
+bool Vsd::checkResetAdaptationVector()
+{
+  return false;
+}
+
 // НАСТРОЙКА U/f
 int Vsd::setUf_f1(float value)
 {
