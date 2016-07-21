@@ -1,7 +1,6 @@
-#include "tms_borets.h"
-#include "user_main.h"
+#include "tms_scad.h"
 
-void TmsBorets::initModbusParameters()
+void TmsScad::initModbusParameters()
 {
   modbusParameters_[0] = { // Пустой регистр
                           TMS_BEGIN,
@@ -21,13 +20,103 @@ void TmsBorets::initModbusParameters()
                           0,
                           0
                          };
-  modbusParameters_[1] = { // 240h Rиз. - сопротивление изоляции, КОм
+  modbusParameters_[1] = { // 151h Тпласта - температура жидкости на приеме
+                           TMS_TEMPERATURE_INTAKE,
+                           0x151,           // Адрес регистра в устройстве
+                           OPERATION_READ,  // Операции с параметром
+                           PHYSIC_TEMPERATURE,
+                           TEMPERATURE_C,   // Единицы измерения параметра
+                           TYPE_DATA_UINT16,// Тип данных
+                           0,               // Индекс
+                           0.1,             // Коэффициент преобразования параметра
+                           0.0,             // Минимальное значение параметра
+                           65535.0,         // Максимально значение параметра
+                           0.0,             // Считываемое значение "по умолчанию"
+                           EVERY_TIME,      // Частота опроса параметра
+                           EVERY_TIME,      // Количество запросов к параметру
+                           OPERATION_ERROR, // Команда
+                           VALIDITY_ERROR,  // Поле состояния параметра
+                           0                // Значение
+                          };
+  modbusParameters_[2] = { // 152h Тдвигателя - температура обмодки ПЭД
+                           TMS_TEMPERATURE_WINDING,
+                           0x152,           // Адрес регистра в устройстве
+                           OPERATION_READ,  // Операции с параметром
+                           PHYSIC_TEMPERATURE,
+                           TEMPERATURE_C,   // Единицы измерения параметра
+                           TYPE_DATA_UINT16,// Тип данных
+                           0,               // Индекс
+                           0.1,             // Коэффициент преобразования параметра
+                           0.0,             // Минимальное значение параметра
+                           65535.0,         // Максимально значение параметра
+                           0.0,             // Считываемое значение "по умолчанию"
+                           EVERY_TIME,      // Частота опроса параметра
+                           EVERY_TIME,      // Количество запросов к параметру
+                           OPERATION_ERROR, // Команда
+                           VALIDITY_ERROR,  // Поле состояния параметра
+                           0                // Значение
+                          };
+  modbusParameters_[3] = { // 153h Давление жидкости на приёме
+                           TMS_PRESSURE_INTAKE,
+                           0x153,           // Адрес регистра в устройстве
+                           OPERATION_READ,  // Операции с параметром
+                           PHYSIC_PRESSURE, // Физическая величина параметра
+                           PRESSURE_ATM,    // Единицы измерения параметра
+                           TYPE_DATA_UINT16,// Тип данных
+                           0,               // Индекс
+                           0.1,             // Коэффициент преобразования параметра
+                           0.0,             // Минимальное значение параметра
+                           65535.0,         // Максимально значение параметра
+                           0.0,             // Считываемое значение "по умолчанию"
+                           EVERY_TIME,      // Частота опроса параметра
+                           EVERY_TIME,      // Количество запросов к параметру
+                           OPERATION_ERROR, // Команда
+                           VALIDITY_ERROR,  // Поле состояния параметра
+                           0                // Значение
+                          };
+  modbusParameters_[4] = { // 154h Gху - радиальная вибрация ПЭД
+                           TMS_ACCELERATION_XY_INTAKE,// Идентификатор параметра
+                           0x154,                     // Адрес регистра в устройстве
+                           OPERATION_READ,            // Операции с параметром
+                           PHYSIC_ACCELERATION,       // Физическая величина параметра
+                           ACCELERATION_G,            // Единицы измерения параметра
+                           TYPE_DATA_UINT16,          // Тип данных
+                           0,                         // Индекс
+                           0.1,                       // Коэффициент преобразования параметра
+                           0.0,                       // Минимальное значение параметра
+                           65535.0,                   // Максимально значение параметра
+                           0.0,                       // Считываемое значение "по умолчанию"
+                           EVERY_TIME,                // Частота опроса параметра
+                           EVERY_TIME,                // Количество запросов к параметру
+                           OPERATION_ERROR,           // Команда
+                           VALIDITY_ERROR,            // Поле состояния параметра
+                           0                          // Значение
+                          };
+  modbusParameters_[5] = { // 155h Gz - осевая вибрация ПЭД
+                           TMS_ACCELERATION_Z_INTAKE, // Идентификатор параметра
+                           0x155,                     // Адрес регистра в устройстве
+                           OPERATION_READ,            // Операции с параметром
+                           PHYSIC_ACCELERATION,       // Физическая величина параметра
+                           ACCELERATION_G,            // Единицы измерения параметра
+                           TYPE_DATA_UINT16,          // Тип данных
+                           0,                         // Индекс
+                           0.1,                       // Коэффициент преобразования параметра
+                           0.0,                       // Минимальное значение параметра
+                           65535.0,                   // Максимально значение параметра
+                           0.0,                       // Считываемое значение "по умолчанию"
+                           EVERY_TIME,                // Частота опроса параметра
+                           EVERY_TIME,                // Количество запросов к параметру
+                           OPERATION_ERROR,           // Команда
+                           VALIDITY_ERROR,            // Поле состояния параметра
+                           0                          // Значение
+                          };
+  modbusParameters_[6] = { // 156h Rиз. - сопротивление изоляции, КОм
                            TMS_RESISTANCE_ISOLATION,
-                           0x240,           // Адрес регистра в устройстве
+                           0x156,           // Адрес регистра в устройстве
                            OPERATION_READ,  // Операции с параметром
                            PHYSIC_RESISTANCE,
                            RESISTANCE_KOM,  // Единицы измерения параметра
-                           TYPE_DATA_INT16_4, // Тип данных
+                           TYPE_DATA_UINT16,// Тип данных
                            0,               // Индекс
                            1.0,             // Коэффициент преобразования параметра
                            0.0,             // Минимальное значение параметра
@@ -39,123 +128,33 @@ void TmsBorets::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[2] = { // 241h Тпласта - температура пласта
-                           TMS_TEMPERATURE_INTAKE,
-                           0x241,           // Адрес регистра в устройстве
-                           OPERATION_READ,  // Операции с параметром
-                           PHYSIC_TEMPERATURE,
-                           TEMPERATURE_C,   // Единицы измерения параметра
-                           TYPE_DATA_INT16_4, // Тип данных
-                           0,               // Индекс
-                           1.0,             // Коэффициент преобразования параметра
-                           0.0,             // Минимальное значение параметра
-                           255.0,           // Максимально значение параметра
-                           0.0,             // Считываемое значение "по умолчанию"
-                           EVERY_TIME,      // Частота опроса параметра
-                           EVERY_TIME,      // Количество запросов к параметру
-                           OPERATION_ERROR, // Команда
-                           VALIDITY_ERROR,  // Поле состояния параметра
-                           0                // Значение
-                          };
-  modbusParameters_[3] = { // 242h Тдвигателя - температура обмодки ПЭД
-                           TMS_TEMPERATURE_WINDING,
-                           0x242,           // Адрес регистра в устройстве
-                           OPERATION_READ,  // Операции с параметром
-                           PHYSIC_TEMPERATURE,
-                           TEMPERATURE_C,   // Единицы измерения параметра
-                           TYPE_DATA_INT16_4, // Тип данных
-                           0,               // Индекс
-                           1.0,             // Коэффициент преобразования параметра
-                           0.0,             // Минимальное значение параметра
-                           255.0,           // Максимально значение параметра
-                           0.0,             // Считываемое значение "по умолчанию"
-                           EVERY_TIME,      // Частота опроса параметра
-                           EVERY_TIME,      // Количество запросов к параметру
-                           OPERATION_ERROR, // Команда
-                           VALIDITY_ERROR,  // Поле состояния параметра
-                           0                // Значение
-                          };
-  modbusParameters_[4] = { // 243h Gху - вибрация в поперечной плоскости(ху)
-                           TMS_ACCELERATION_XY_INTAKE,// Идентификатор параметра
-                           0x243,                     // Адрес регистра в устройстве
-                           OPERATION_READ,            // Операции с параметром
-                           PHYSIC_ACCELERATION,       // Физическая величина параметра
-                           ACCELERATION_G,            // Единицы измерения параметра
-                           TYPE_DATA_INT16_4,           // Тип данных
-                           0,                         // Индекс
-                           0.1,                       // Коэффициент преобразования параметра
-                           0.0,                       // Минимальное значение параметра
-                           10.0,                      // Максимально значение параметра
-                           0.0,                       // Считываемое значение "по умолчанию"
-                           EVERY_TIME,                // Частота опроса параметра
-                           EVERY_TIME,                // Количество запросов к параметру
-                           OPERATION_ERROR,           // Команда
-                           VALIDITY_ERROR,            // Поле состояния параметра
-                           0                          // Значение
-                          };
-  modbusParameters_[5] = { // 244h Gz - вибрация в продольной плоскости(z)
-                           TMS_ACCELERATION_Z_INTAKE, // Идентификатор параметра
-                           0x244,                     // Адрес регистра в устройстве
-                           OPERATION_READ,            // Операции с параметром
-                           PHYSIC_ACCELERATION,       // Физическая величина параметра
-                           ACCELERATION_G,            // Единицы измерения параметра
-                           TYPE_DATA_INT16_4,           // Тип данных
-                           0,                         // Индекс
-                           0.1,                       // Коэффициент преобразования параметра
-                           0.0,                       // Минимальное значение параметра
-                           10.0,                      // Максимально значение параметра
-                           0.0,                       // Считываемое значение "по умолчанию"
-                           EVERY_TIME,                // Частота опроса параметра
-                           EVERY_TIME,                // Количество запросов к параметру
-                           OPERATION_ERROR,           // Команда
-                           VALIDITY_ERROR,            // Поле состояния параметра
-                           0                          // Значение
-                          };
-  modbusParameters_[6] = { // 245h Давление жидкости на приёме
-                           TMS_PRESSURE_INTAKE,
-                           0x245,           // Адрес регистра в устройстве
-                           OPERATION_READ,  // Операции с параметром
-                           PHYSIC_PRESSURE, // Физическая величина параметра
-                           PRESSURE_MPA,    // Единицы измерения параметра
-                           TYPE_DATA_INT16_4, // Тип данных
-                           0,               // Индекс
-                           0.1,             // Коэффициент преобразования параметра
-                           0.0,             // Минимальное значение параметра
-                           1023.0,          // Максимально значение параметра
-                           0.0,             // Считываемое значение "по умолчанию"
-                           EVERY_TIME,      // Частота опроса параметра
-                           EVERY_TIME,      // Количество запросов к параметру
-                           OPERATION_ERROR, // Команда
-                           VALIDITY_ERROR,  // Поле состояния параметра
-                           0                // Значение
-                          };
 }
 
-TmsBorets::TmsBorets()
+TmsScad::TmsScad()
 {
 
 }
 
-TmsBorets::~TmsBorets()
+TmsScad::~TmsScad()
 {
   delete dm_;
 }
 
-void TmsBorets::init()
+void TmsScad::init()
 {
   initModbusParameters();                   // Инициализация modbus карты
 
   createThread("UpdParamsTms");
   int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
   dm_ = new DeviceModbus(modbusParameters_, count,
-                         TMS_UART, 19200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 0x33);
+                         TMS_UART, 19200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 0x01);
   dm_->createThread("ProtocolTms", getValueDeviceQId_);
 
   initParameters();
   readParameters();                         // Чтение параметров из памяти
 }
 
-void TmsBorets::initParameters()
+void TmsScad::initParameters()
 {
   int count = sizeof(modbusParameters_)/sizeof(ModbusParameter);
   for (int indexModbus = 0; indexModbus < count; indexModbus++) {
@@ -185,7 +184,7 @@ void TmsBorets::initParameters()
   }
 }
 
-void TmsBorets::getNewValue(uint16_t id)
+void TmsScad::getNewValue(uint16_t id)
 {
   float value = 0;
   ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtId(id));
@@ -203,13 +202,13 @@ void TmsBorets::getNewValue(uint16_t id)
   case TYPE_DATA_UINT16:
     value = (float)param->value.uint16_t[0];
     break;
-  case  TYPE_DATA_INT32:
+  case TYPE_DATA_INT32:
     value = (float)param->value.int32_t;
     break;
-  case  TYPE_DATA_UINT32:
+  case TYPE_DATA_UINT32:
     value = (float)param->value.uint32_t;
     break;
-  case  TYPE_DATA_FLOAT:
+  case TYPE_DATA_FLOAT:
     value = (float)param->value.float_t;
     break;
   default:
@@ -225,7 +224,7 @@ void TmsBorets::getNewValue(uint16_t id)
   }
 }
 
-uint8_t TmsBorets::setNewValue(uint16_t id, float value, EventType eventType)
+uint8_t TmsScad::setNewValue(uint16_t id, float value, EventType eventType)
 {
   switch (id) {
   default:
@@ -236,12 +235,12 @@ uint8_t TmsBorets::setNewValue(uint16_t id, float value, EventType eventType)
   }
 }
 
-void TmsBorets::writeToDevice(int id, float value)
+void TmsScad::writeToDevice(int id, float value)
 {
   dm_->writeModbusParameter(id, value);
 }
 
-bool TmsBorets::isConnect()
+bool TmsScad::isConnect()
 {
   bool curConnect = dm_->isConnect();
 
@@ -260,12 +259,12 @@ bool TmsBorets::isConnect()
   return curConnect;
 }
 
-void TmsBorets::getConnect()
+void TmsScad::getConnect()
 {
   Tms::setConnect(dm_->getMms()->getCounters());
 }
 
-void TmsBorets::resetConnect()
+void TmsScad::resetConnect()
 {
   Tms::resetConnect();
   dm_->getMms()->resetCounters();

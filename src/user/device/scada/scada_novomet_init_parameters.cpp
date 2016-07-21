@@ -1479,7 +1479,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[122].command          = OPERATION_ERROR;
   scadaParameters_[122].value.float_t    = 0;
   // Единицы измерения давления
-  scadaParameters_[123].id               = CCS_UNIT_PRESSURE;
+  scadaParameters_[123].id               = 0;
   scadaParameters_[123].address          = 133;
   scadaParameters_[123].operation        = OPERATION_READ;
   scadaParameters_[123].physic           = PHYSIC_NUMERIC;
@@ -1503,7 +1503,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[124].command          = OPERATION_ERROR;
   scadaParameters_[124].value.float_t    = 0;
   // Единицы измерения температуры
-  scadaParameters_[125].id               = CCS_UNIT_TEMPERATURE;
+  scadaParameters_[125].id               = 0;
   scadaParameters_[125].address          = 135;
   scadaParameters_[125].operation        = OPERATION_READ;
   scadaParameters_[125].physic           = PHYSIC_NUMERIC;
@@ -1527,7 +1527,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[126].command          = OPERATION_ERROR;
   scadaParameters_[126].value.float_t    = 0;
   // Единицы измерения вибрации
-  scadaParameters_[127].id               = CCS_UNIT_VIBRATION;
+  scadaParameters_[127].id               = 0;
   scadaParameters_[127].address          = 137;
   scadaParameters_[127].operation        = OPERATION_READ;
   scadaParameters_[127].physic           = PHYSIC_NUMERIC;
@@ -2019,7 +2019,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[167].command          = OPERATION_ERROR;
   scadaParameters_[167].value.float_t    = 0;
   // Направление вращения
-  scadaParameters_[168].id               = VSD_ROTATION;
+  scadaParameters_[168].id               = 0;
   scadaParameters_[168].address          = 179;
   scadaParameters_[168].operation        = OPERATION_WRITE;
   scadaParameters_[168].physic           = PHYSIC_NUMERIC;

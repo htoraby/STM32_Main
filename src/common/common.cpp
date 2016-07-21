@@ -280,3 +280,20 @@ unsigned char toBcd(unsigned char value)
 {
   return ((value/10)<<4) + value%10;
 }
+
+unsigned short bcdToDec(unsigned short value)
+{
+  return ((value >> 12) & 0x000F) * 1000 + ((value >> 8) & 0x000F) * 100 +
+      ((value >> 4) & 0x000F) * 10 + (value & 0x000F) * 1;
+}
+
+unsigned short decToBCD(unsigned short value)
+{
+  unsigned short result = 0;
+  for (int i = 0; i < 4; i++) {
+    div_t x = div(value, 10);
+    result = result + (x.rem << (i * 4));
+    value = value / 10;
+  }
+  return result;
+}

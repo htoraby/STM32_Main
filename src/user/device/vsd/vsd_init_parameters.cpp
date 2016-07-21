@@ -3085,7 +3085,7 @@ void Vsd::initParameters()
   parameters_[VSD_LOCK_ROTOR_PROTECTION - VSD_BEGIN].max                         = 1.0;
   parameters_[VSD_LOCK_ROTOR_PROTECTION - VSD_BEGIN].def                         = 0.0;
   parameters_[VSD_LOCK_ROTOR_PROTECTION - VSD_BEGIN].discret                     = 1;
-  parameters_[VSD_LOCK_ROTOR_PROTECTION - VSD_BEGIN].code                        = 13;
+  parameters_[VSD_LOCK_ROTOR_PROTECTION - VSD_BEGIN].code                        = 0;
   // Время задержки аварии блокировки ротора Danfoss 30-23 Не используется в проекте, только при конфигурировании
   parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].id                                = VSD_LOCK_ROTOR_TIME;
   parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].access                            = ACCESS_OPERATOR;
@@ -3097,7 +3097,7 @@ void Vsd::initParameters()
   parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].max                               = 1.0;
   parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].def                               = 0.10;
   parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].discret                           = 2;
-  parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].code                              = 13;
+  parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].code                              = 0;
   // Темп набора частоты
   parameters_[VSD_TEMP_SPEEDUP - VSD_BEGIN].id                                   = VSD_TEMP_SPEEDUP;
   parameters_[VSD_TEMP_SPEEDUP - VSD_BEGIN].access                               = ACCESS_OPERATOR;
@@ -5461,7 +5461,7 @@ void Vsd::initParameters()
   parameters_[VSD_ARC_FREQ - VSD_BEGIN].max                                      = 5000.0;
   parameters_[VSD_ARC_FREQ - VSD_BEGIN].def                                      = 2000.0;
   parameters_[VSD_ARC_FREQ - VSD_BEGIN].discret                                  = 1;
-  parameters_[VSD_ARC_FREQ - VSD_BEGIN].code                                     = 13;
+  parameters_[VSD_ARC_FREQ - VSD_BEGIN].code                                     = 0;
   // Режим контроля температур радиаторов
   parameters_[VSD_TEMPERATURE_HTSNK_MODE - VSD_BEGIN].id                         = VSD_TEMPERATURE_HTSNK_MODE;
   parameters_[VSD_TEMPERATURE_HTSNK_MODE - VSD_BEGIN].access                     = ACCESS_OPERATOR;

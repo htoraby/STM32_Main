@@ -1476,7 +1476,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>CCS_UNIT_PRESSURE</id>
+		<id>0</id>
 		<address>133</address>
 		<operation>OPERATION_READ</operation>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -1499,7 +1499,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>CCS_UNIT_TEMPERATURE</id>
+		<id>0</id>
 		<address>135</address>
 		<operation>OPERATION_READ</operation>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -1522,7 +1522,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>CCS_UNIT_VIBRATION</id>
+		<id>0</id>
 		<address>137</address>
 		<operation>OPERATION_READ</operation>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -2008,7 +2008,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>VSD_ROTATION</id>
+		<id>0</id>
 		<address>179</address>
 		<operation>OPERATION_WRITE</operation>
 		<typeData>TYPE_DATA_UINT16</typeData>

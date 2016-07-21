@@ -31,6 +31,15 @@ enum ErrorSlave {
 };
 
 /*!
+ * \brief Список языков интерфейса
+ */
+enum LanguageList {
+  RuLanguage,
+  EnLanguage,
+  EsLanguage,
+};
+
+/*!
  * \brief The stConnectQuality struct
  */
 struct stConnectQuality {
@@ -207,6 +216,9 @@ float copySign(float value, float sign);
 int convert_utf8_to_windows1251(const char* utf8, char* windows1251, size_t n);
 
 unsigned char toBcd(unsigned char value);
+
+unsigned short bcdToDec(unsigned short value);
+unsigned short decToBCD(unsigned short value);
 
 #endif
 

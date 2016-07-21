@@ -1,13 +1,18 @@
 import qbs
 
 Product {
-    type: "application"
     Depends { name: "cpp" }
+
+    type: ["application","elf","hex","bin","size"]
+    name: "firmware"
+
+    property string hexExtractor: cpp.toolchainInstallPath + "/" + "arm-none-eabi-objcopy"
+    property string sizeCalculator: cpp.toolchainInstallPath + "/" + "arm-none-eabi-size"
 
     cpp.commonCompilerFlags: [
         "-mcpu=cortex-m4",
         "-mthumb",
-        "-mfloat-abi=softfp",
+        "-mfloat-abi=hard",
         "-mfpu=fpv4-sp-d16",
         "-fsingle-precision-constant",
         "-Wall",
@@ -15,18 +20,17 @@ Product {
         "-Wno-unused-parameter",
         "-fno-exceptions",
         "-fexceptions",
+        "-fkeep-inline-functions",
         (qbs.debugInformation ? "-O0" : "-Os"),
     ]
     cpp.linkerFlags: [
         "-mcpu=cortex-m4",
         "-mthumb",
-        "-mfloat-abi=softfp",
+        "-mfloat-abi=hard",
         "-mfpu=fpv4-sp-d16",
         "-fsingle-precision-constant",
         "-Wl,--gc-sections",
         "-Wl,--start-group",
-//        "-nostartfiles",
-//        "-fexceptions",
         "-Xlinker",
         "-Map=" + product.buildDirectory + "/" + product.name + ".map",
     ]
@@ -105,16 +109,12 @@ Product {
         (qbs.debugInformation ? "DEBUG" : "RELEASE"),
         "STM32F427xx",
         "__FPU_USED",
+        "ARM_MATH_CM4",
         "USE_HAL_DRIVER",
         "HSE_VALUE=12000000",
         "USE_FULL_ASSERT",
         "USE_RTT",
     ]
-
-//    Properties {
-//        condition: cpp.debugInformation
-//        cpp.defines: outer.concat("DEBUG")
-//    }
 
     cpp.linkerScripts: [
         "Ldscripts/STM32F427II_FLASH.ld",
@@ -164,5 +164,74 @@ Product {
     consoleApplication: true
     cpp.positionIndependentCode: false
     cpp.executableSuffix: ".elf"
+
+    //    Properties {
+    //        condition: cpp.debugInformation
+    //        cpp.defines: outer.concat("DEBUG")
+    //    }
+
+    Group {
+        qbs.install: true
+        fileTagsFilter: ["application", "hex", "bin"]
+    }
+
+    Rule {
+        id: hex
+        inputs: ["application"]
+        Artifact {
+            fileTags: ['hex']
+            filePath: product.name + '.hex'
+        }
+        prepare: {
+            var args = [];
+            args.push("-O")
+            args.push("ihex")
+            args.push(input.filePath);
+            args.push(output.filePath);
+            var extractorPath = product.hexExtractor;
+            var cmd = new Command(extractorPath, args);
+            cmd.description = 'linking ' + output.fileName;
+            return cmd;
+        }
+    }
+
+    Rule {
+        id: bin
+        inputs: ["application"]
+        Artifact {
+            fileTags: ['bin']
+            filePath: product.name + '.bin'
+        }
+        prepare: {
+            var args = [];
+            args.push("-O")
+            args.push("binary")
+            args.push(input.filePath);
+            args.push(output.filePath);
+            var extractorPath = product.hexExtractor;
+            var cmd = new Command(extractorPath, args);
+            cmd.description = 'linking ' + output.fileName;
+            return cmd;
+        }
+    }
+
+    Rule {
+        id: size
+        inputs: ["application"]
+        Artifact {
+            fileTags: ['size']
+        }
+        prepare: {
+            var args = [];
+            args.push("-A")
+            args.push("-t")
+            args.push("-x")
+            args.push(input.filePath);
+            var calculatorPath = product.sizeCalculator;
+            var cmd = new Command(calculatorPath, args);
+            cmd.description = 'calculating:';
+            return cmd;
+        }
+    }
 }
 
