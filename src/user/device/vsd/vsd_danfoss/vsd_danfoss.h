@@ -5,6 +5,7 @@
 #include "device_modbus.h"
 
 class RegimeRunPush;
+class RegimeRunAdaptationVector;
 
 enum enVsdDanfosStatus1
 {
@@ -145,6 +146,7 @@ public:
   int setMotorPower(float value);
   int setMotorCurrent(float value);
   int setMotorVoltage(float value);
+  int setMotorResistanceStator(float value);
   int setCurrentLim(float curLimit, float nomCurMtr, float coefTrans);
   void setMotorConfig();
   int setSumInduct(float value);
@@ -217,6 +219,11 @@ public:
   int resetSetpoints();
   void processingRegimeRun();
 
+  void resetAdaptationVector(uint16_t type);
+  void setAdaptationVector();
+  bool checkSetAdaptationVector();
+  bool checkResetAdaptationVector();
+
   void getConnect();
   void resetConnect();
   int onProtConnect();
@@ -224,10 +231,11 @@ public:
 
   bool isControl();
 private:
-  ModbusParameter modbusParameters_[227];
+  ModbusParameter modbusParameters_[228];
   DeviceModbus *dm_;
 
-  RegimeRunPush *regimeRun_;
+  RegimeRunPush *regimeRunPush_;
+  RegimeRunAdaptationVector *regimeRunAdaptationVector_;
 
 };
 

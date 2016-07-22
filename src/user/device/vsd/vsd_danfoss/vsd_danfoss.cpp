@@ -1,15 +1,18 @@
 #include "vsd_danfoss.h"
 #include "user_main.h"
 #include "regime_run_push.h"
+#include "regime_run_adaptation_vector.h"
 
 VsdDanfoss::VsdDanfoss()
 {
-  regimeRun_ = new RegimeRunPush();
+  regimeRunPush_ = new RegimeRunPush();
+  regimeRunAdaptationVector_ = new RegimeRunAdaptationVector();
 }
 
 VsdDanfoss::~VsdDanfoss()
 {
-  delete regimeRun_;
+  delete regimeRunPush_;
+  delete regimeRunAdaptationVector_;
 }
 
 void VsdDanfoss::initParameters()
@@ -154,6 +157,18 @@ int VsdDanfoss::setMotorVoltage(float value)
   }
   else {
     logDebug.add(WarningMsg, "VsdDanfoss::setMotorVoltage");
+    return err_r;
+  }
+}
+
+int VsdDanfoss::setMotorResistanceStator(float value)
+{
+  if (!Vsd::setMotorResistanceStator(value)) {
+    writeToDevice(VSD_RESISTANCE_STATOR, value);
+    return ok_r;
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdDanfoss::setMotorResistanceStator");
     return err_r;
   }
 }
@@ -540,7 +555,7 @@ int VsdDanfoss::setProtCurrentMotorTripSetpoint(float value)
 
 uint16_t VsdDanfoss::configVsd()
 {
-  uint16_t typeMotor = parameters.get(VSD_MOTOR_TYPE);
+  uint16_t typeMotor = parameters.get(CCS_MOTOR_TYPE);
   uint16_t typeControl = parameters.get(VSD_MOTOR_CONTROL);
   uint16_t nomSpeed = parameters.get(VSD_MOTOR_SPEED);
   switch (typeMotor) {
@@ -569,6 +584,7 @@ uint16_t VsdDanfoss::configVsd()
 
         }
       }
+      break;
     case VSD_MOTOR_CONTROL_VECT:
       if (nomSpeed <= 500) {
         return configVsdVentVect500();
@@ -589,6 +605,7 @@ uint16_t VsdDanfoss::configVsd()
           }
         }
       }
+      break;
     default:
       return err_r;
     }
@@ -1250,7 +1267,7 @@ int VsdDanfoss::start(bool init)
 
     if (setNewValue(VSD_ON, 1))         // VSD_DANFOSS_CONTROL_RAMP 6
       return err_r;
-    if (setNewValue(VSD_FLAG, 1))       // VSD_DANFOSS_CONTROL_JOG 8
+    if (setNewValue(VSD_JOG, 1))       // VSD_DANFOSS_CONTROL_JOG 8
       return err_r;
   } else {
     startTimeMs_ += 10;
@@ -1278,7 +1295,7 @@ int VsdDanfoss::stop(float /*type*/)
       if (countRepeats > VSD_CMD_NUMBER_REPEATS)
         return err_r;
 
-      if (setNewValue(VSD_FLAG, 0))  // VSD_DANFOSS_CONTROL_JOG 8
+      if (setNewValue(VSD_JOG, 0))  // VSD_DANFOSS_CONTROL_JOG 8
         return err_r;
       if (setNewValue(VSD_ON, 0))    // VSD_DANFOSS_CONTROL_RAMP 6
         return err_r;
@@ -1469,7 +1486,49 @@ int VsdDanfoss::resetSetpoints()
 
 void VsdDanfoss::processingRegimeRun()
 {
-  regimeRun_->processing();
+  regimeRunPush_->processing();
+  regimeRunAdaptationVector_->processing();
+}
+
+void VsdDanfoss::resetAdaptationVector(uint16_t type)
+{
+  parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_TYPE, type);
+  parameters.set(VSD_PARKING_TIME, 1);
+  ksu.calcSystemInduct();
+  parameters.set(VSD_DAMPING_GANE, 40);
+  parameters.set(VSD_LOW_SPEED_FILTER_TIME, 0.01);
+  parameters.set(VSD_HIGH_SPEED_FILTER_TIME, 0.1);
+  parameters.set(VSD_FLYING_START, 0);
+  setCurrentLim(parameters.get(VSD_CURRENT_LIMIT),
+                parameters.get(VSD_MOTOR_CURRENT),
+                parameters.get(CCS_COEF_TRANSFORMATION));
+}
+
+void VsdDanfoss::setAdaptationVector()
+{
+  parameters.set(VSD_PARKING_TIME, 60);
+  parameters.set(VSD_RESISTANCE_STATOR, 0.014);
+  parameters.set(VSD_CURRENT_LIMIT, 100);
+  parameters.set(VSD_D_AXIS_INDUNSTANCE, 1);
+  parameters.set(VSD_LOW_SPEED_FILTER_TIME, 0.01);
+  parameters.set(VSD_HIGH_SPEED_FILTER_TIME, 0.1);
+  parameters.set(VSD_FLYING_START, 2);
+}
+
+bool VsdDanfoss::checkSetAdaptationVector()
+{
+  if (parameters.get(VSD_PARKING_TIME) == 60) {
+    return true;
+  }
+  return false;
+}
+
+bool VsdDanfoss::checkResetAdaptationVector()
+{
+  if (parameters.get(VSD_PARKING_TIME) == 1) {
+    return true;
+  }
+  return false;
 }
 
 void VsdDanfoss::getConnect()
@@ -1641,6 +1700,10 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value, EventType eventType)
       return ok_r;
     }
     return err_r;
+
+  case VSD_MOTOR_CONTROL:
+    return setVsdControl(value);
+
   case VSD_MOTOR_POWER:
     return setMotorPower(value);
 
