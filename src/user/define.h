@@ -406,6 +406,8 @@ enum enVsdType {
 enum enEmType {
   EM_TYPE_NONE = 0,                         //!< Неизвестный или отсутствует
   EM_TYPE_SET4TM,                           //!< СЭТ-4ТМ03
+  EM_TYPE_ABB,                              //!< ABB
+  EM_TYPE_ABB_A44,                          //!< ABB A44
 };
 
 /*!

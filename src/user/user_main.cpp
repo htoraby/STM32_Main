@@ -132,6 +132,9 @@ void createEm(bool init)
   case EM_TYPE_SET4TM:
     em = new EmSet();
     break;
+  case EM_TYPE_ABB: case EM_TYPE_ABB_A44:
+    em = new EmAbb();
+    break;
   default:
     em = new Em();
     break;
