@@ -1,8 +1,7 @@
 ﻿#include "em_set.h"
 #include "user_main.h"
+
 #include <string.h>
-
-
 
 static void emSetTask(void *p)
 {
@@ -45,9 +44,7 @@ void EmSet::task()
 
 bool EmSet::isConnect()
 {
-  bool curConnect = true;
-  if (failCounter_ > EM_COUNTER_LOST_CONNECT)
-    curConnect = false;
+  bool curConnect = Em::isConnect();
 
   if (prevConnect_ && !curConnect) {
     for (int i = 0; i < countParameters_; ++i) {
@@ -69,120 +66,120 @@ void EmSet::sendRequest()
 
   switch (numberRequest_)
   {
-    // Запрос чтения данных 1
-    case 1:
-      {
-        uint8_t buf[] = {0x84,0x08,0x23,0x01,0x00,0x00,0x00,0xFF,0xFF,0x00,0x00,0x00,0x00,0x00,0x00};
-        sizePktTx = sizeof(buf);
-        memcpy(txBuffer_, buf, sizePktTx);
-      }
-      break;
-    // Запрос чтения данных 2
-    case 2:
-      {
-        uint8_t buf[] = {0x84,0x08,0x23,0x02,0x00,0x00,0x00,0x00,0x00,0xFF,0xFF,0x00,0x00,0x00,0x00};
-        sizePktTx = sizeof(buf);
-        memcpy(txBuffer_, buf, sizePktTx);
-      }
-      break;
-    // Запрос чтения данных 3
-    case 3:
-      {
-        uint8_t buf[] = {0x84,0x08,0x23,0x03,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0xFF,0xFF,0x00,0x00};
-        sizePktTx = sizeof(buf);
-        memcpy(txBuffer_, buf, sizePktTx);
-      }
-      break;
-    // Запрос чтения данных константы счётчика
-    case 4:
-      {
-        uint8_t buf[] = {0x84,0x08,0x12,0x00,0x00};
-        sizePktTx = sizeof(buf);
-        memcpy(txBuffer_, buf, sizePktTx);
-      }
-      break;
-    // Запрос чтения данных энергии
-    case 5:
-      {
-        uint8_t buf[] = {0x84,0x0A,0x00,0x00,0x00,0x05,0x00,0x00,0x00};
-        sizePktTx = sizeof(buf);
-        memcpy(txBuffer_, buf, sizePktTx);
-      }
-      break;
-    // Запрос чтения коэффициента трансформации тока
-    case 6:
-      {
-        uint8_t buf[] = {0x84,0x08,0x02,0x00,0x00};
-        sizePktTx = sizeof(buf);
-        memcpy(txBuffer_, buf, sizePktTx);
-      }
-      break;
-    // Запись коэффициента трансформации тока
-    case 7:
-      {
-        uint8_t buf[] = {0x84,0x03,0x1C,0x00,0x00,0x00,0x00};
-        sizePktTx = sizeof(buf);
-        memcpy(txBuffer_, buf, sizePktTx);
-        int coefTrans = getValue(EM_COEFFICIENT_TRANS_CURRENT);
-        txBuffer_[3] = coefTrans >> 8;
-        txBuffer_[4] = coefTrans & 0x00FF;
-      }
-      break;
-    // Запрос чтения данных энергии за весь период
-    case 8:
-      {
-        uint8_t buf[] = {0x84,0x0A,0x00,0x00,0x00,0x0F,0x00,0x00,0x00};
-        sizePktTx = sizeof(buf);
-        memcpy(txBuffer_, buf, sizePktTx);
-      }
-      break;
-    // Запрос чтения данных энергии за текущие сутки
-    case 9:
-      {
-        uint8_t buf[] = {0x84,0x0A,0x04,0x00,0x00,0x0F,0x00,0x00,0x00};
-        sizePktTx = sizeof(buf);
-        memcpy(txBuffer_, buf, sizePktTx);
-      }
-      break;
-    // Запрос чтения данных энергии за предыдущие сутки
-    case 10:
-      {
-        uint8_t buf[] = {0x84,0x0A,0x05,0x00,0x00,0x0F,0x00,0x00,0x00};
-        sizePktTx = sizeof(buf);
-        memcpy(txBuffer_, buf, sizePktTx);
-      }
-      break;
-    // Запрос чтения данных энергии за текущий месяц
-    case 11:
-      {
-        uint8_t buf[] = {0x84,0x0A,0x03,0x00,0x00,0x0F,0x00,0x00,0x00};
-        sizePktTx = sizeof(buf);
-        memcpy(txBuffer_, buf, sizePktTx);
-        time_t time = ksu.getTime();
-        tm dateTime = *localtime(&time);
-        txBuffer_[3] = dateTime.tm_mon+1;
-      }
-      break;
-    // Запрос чтения данных энергии за предыдущий месяц
-    case 12:
-      {
-        uint8_t buf[] = {0x84,0x0A,0x03,0x00,0x00,0x0F,0x00,0x00,0x00};
-        sizePktTx = sizeof(buf);
-        memcpy(txBuffer_, buf, sizePktTx);
-        time_t time = ksu.getTime();
-        tm dateTime = *localtime(&time);
-        dateTime.tm_mon += 1;
-        txBuffer_[3] = (dateTime.tm_mon == 1) ? 12 : (dateTime.tm_mon - 1);
-      }
-      break;
-    // Запрос открытия канала данных
-    default:
-      {
-        uint8_t buf[] = {0x84,0x01,0x30,0x30,0x30,0x30,0x30,0x30,0x00,0x00};
-        sizePktTx = sizeof(buf);
-        memcpy(txBuffer_, buf, sizePktTx);
-      }
-      break;
+  // Запрос чтения данных 1
+  case 1:
+    {
+      uint8_t buf[] = {0x84,0x08,0x23,0x01,0x00,0x00,0x00,0xFF,0xFF,0x00,0x00,0x00,0x00,0x00,0x00};
+      sizePktTx = sizeof(buf);
+      memcpy(txBuffer_, buf, sizePktTx);
+    }
+    break;
+  // Запрос чтения данных 2
+  case 2:
+    {
+      uint8_t buf[] = {0x84,0x08,0x23,0x02,0x00,0x00,0x00,0x00,0x00,0xFF,0xFF,0x00,0x00,0x00,0x00};
+      sizePktTx = sizeof(buf);
+      memcpy(txBuffer_, buf, sizePktTx);
+    }
+    break;
+  // Запрос чтения данных 3
+  case 3:
+    {
+      uint8_t buf[] = {0x84,0x08,0x23,0x03,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0xFF,0xFF,0x00,0x00};
+      sizePktTx = sizeof(buf);
+      memcpy(txBuffer_, buf, sizePktTx);
+    }
+    break;
+  // Запрос чтения данных константы счётчика
+  case 4:
+    {
+      uint8_t buf[] = {0x84,0x08,0x12,0x00,0x00};
+      sizePktTx = sizeof(buf);
+      memcpy(txBuffer_, buf, sizePktTx);
+    }
+    break;
+  // Запрос чтения данных энергии
+  case 5:
+    {
+      uint8_t buf[] = {0x84,0x0A,0x00,0x00,0x00,0x05,0x00,0x00,0x00};
+      sizePktTx = sizeof(buf);
+      memcpy(txBuffer_, buf, sizePktTx);
+    }
+    break;
+  // Запрос чтения коэффициента трансформации тока
+  case 6:
+    {
+      uint8_t buf[] = {0x84,0x08,0x02,0x00,0x00};
+      sizePktTx = sizeof(buf);
+      memcpy(txBuffer_, buf, sizePktTx);
+    }
+    break;
+  // Запись коэффициента трансформации тока
+  case 7:
+    {
+      uint8_t buf[] = {0x84,0x03,0x1C,0x00,0x00,0x00,0x00};
+      sizePktTx = sizeof(buf);
+      memcpy(txBuffer_, buf, sizePktTx);
+      int coefTrans = getValue(EM_COEFFICIENT_TRANS_CURRENT);
+      txBuffer_[3] = coefTrans >> 8;
+      txBuffer_[4] = coefTrans & 0x00FF;
+    }
+    break;
+  // Запрос чтения данных энергии за весь период
+  case 8:
+    {
+      uint8_t buf[] = {0x84,0x0A,0x00,0x00,0x00,0x0F,0x00,0x00,0x00};
+      sizePktTx = sizeof(buf);
+      memcpy(txBuffer_, buf, sizePktTx);
+    }
+    break;
+  // Запрос чтения данных энергии за текущие сутки
+  case 9:
+    {
+      uint8_t buf[] = {0x84,0x0A,0x04,0x00,0x00,0x0F,0x00,0x00,0x00};
+      sizePktTx = sizeof(buf);
+      memcpy(txBuffer_, buf, sizePktTx);
+    }
+    break;
+  // Запрос чтения данных энергии за предыдущие сутки
+  case 10:
+    {
+      uint8_t buf[] = {0x84,0x0A,0x05,0x00,0x00,0x0F,0x00,0x00,0x00};
+      sizePktTx = sizeof(buf);
+      memcpy(txBuffer_, buf, sizePktTx);
+    }
+    break;
+  // Запрос чтения данных энергии за текущий месяц
+  case 11:
+    {
+      uint8_t buf[] = {0x84,0x0A,0x03,0x00,0x00,0x0F,0x00,0x00,0x00};
+      sizePktTx = sizeof(buf);
+      memcpy(txBuffer_, buf, sizePktTx);
+      time_t time = ksu.getTime();
+      tm dateTime = *localtime(&time);
+      txBuffer_[3] = dateTime.tm_mon+1;
+    }
+    break;
+  // Запрос чтения данных энергии за предыдущий месяц
+  case 12:
+    {
+      uint8_t buf[] = {0x84,0x0A,0x03,0x00,0x00,0x0F,0x00,0x00,0x00};
+      sizePktTx = sizeof(buf);
+      memcpy(txBuffer_, buf, sizePktTx);
+      time_t time = ksu.getTime();
+      tm dateTime = *localtime(&time);
+      dateTime.tm_mon += 1;
+      txBuffer_[3] = (dateTime.tm_mon == 1) ? 12 : (dateTime.tm_mon - 1);
+    }
+    break;
+  // Запрос открытия канала данных
+  default:
+    {
+      uint8_t buf[] = {0x84,0x01,0x30,0x30,0x30,0x30,0x30,0x30,0x00,0x00};
+      sizePktTx = sizeof(buf);
+      memcpy(txBuffer_, buf, sizePktTx);
+    }
+    break;
   }
 
   uint16_t calcCrc = crc16_ibm(txBuffer_, sizePktTx-2);
@@ -190,7 +187,7 @@ void EmSet::sendRequest()
   txBuffer_[sizePktTx - 1] = calcCrc >> 8;
 
   sendUart(txBuffer_, sizePktTx);
-  totalCounter_++;
+  counters_.transmite++;
 }
 
 void EmSet::receiveAnswer()
@@ -199,8 +196,8 @@ void EmSet::receiveAnswer()
   sizePkt_ = receiveUart(rxBuffer_);
   if (sizePkt_ <= 2) {
     // TODO: Предупреждение: пустой пакет
-    lostCounter_++;
-    failCounter_++;
+    counters_.lost++;
+    counters_.failure++;
     return;
   }
 
@@ -209,8 +206,8 @@ void EmSet::receiveAnswer()
 
   if (rxCrc != calcCrc) {
     // TODO: Предупреждение: Ошибка CRC
-    crcCounter_++;
-    failCounter_++;
+    counters_.crc++;
+    counters_.failure++;
     return;
   }
 
@@ -221,79 +218,79 @@ void EmSet::receiveAnswer()
 
   switch (numberRequest_)
   {
-    // Ответ на запрос открытия канала данных
-    case 0:
-      // Проверка на открытие канала
-      if (rxBuffer_[1] == 0) {
-        numberRequest_++;
-      }
-      // Канал не открыт - повторяем запрос
-      else {
-        numberRequest_ = 0;
-      }
-      break;
-    // Ответ на запрос чтения данных 1
-    case 1:
-      setParameter();
+  // Ответ на запрос открытия канала данных
+  case 0:
+    // Проверка на открытие канала
+    if (rxBuffer_[1] == 0) {
       numberRequest_++;
-      break;
-    // Ответ на запрос чтения данных 2
-    case 2:
-      setParameter();
-      numberRequest_++;
-      break;
-    // Ответ на запрос чтения данных 3
-    case 3:
-      setParameter();
-      numberRequest_++;
-      break;
-    // Ответ на запрос чтения данных константы счётчика
-    case 4:
-      setConstantEm();
-      numberRequest_++;
-      break;
-    // Ответ на запрос чтения данных энергии
-    case 5:
-      setParamEnergy();
-      numberRequest_++;
-      break;
-    // Ответ на запрос чтения коэффициента трансформации тока
-    case 6:
-      prepareSendConstantCoefTrans();
-      numberRequest_++;
-      break;
-    // Запись коэффициента трансформации тока
-    case 7:
-      numberRequest_++;
-      break;
-    // Ответ на запрос чтения данных энергии за весь период
-    case 8:
-      setParamEnergyConsumpAll();
-      numberRequest_++;
-      break;
-    // Ответ на запрос чтения данных энергии за текущие сутки
-    case 9:
-      setParamEnergyConsumpCurDay();
-      numberRequest_++;
-      break;
-    // Ответ на запрос чтения данных энергии за предыдущие сутки
-    case 10:
-      setParamEnergyConsumpPrevDay();
-      numberRequest_++;
-      break;
-    // Ответ на запрос чтения данных энергии за текущий месяц
-    case 11:
-      setParamEnergyConsumpCurMonth();
-      numberRequest_++;
-      break;
-    // Ответ на запрос чтения данных энергии за предыдущий месяц
-    case 12:
-      setParamEnergyConsumpPrevMonth();
-      numberRequest_ = 1;
-      break;
+    }
+    // Канал не открыт - повторяем запрос
+    else {
+      numberRequest_ = 0;
+    }
+    break;
+  // Ответ на запрос чтения данных 1
+  case 1:
+    setParameter();
+    numberRequest_++;
+    break;
+  // Ответ на запрос чтения данных 2
+  case 2:
+    setParameter();
+    numberRequest_++;
+    break;
+  // Ответ на запрос чтения данных 3
+  case 3:
+    setParameter();
+    numberRequest_++;
+    break;
+  // Ответ на запрос чтения данных константы счётчика
+  case 4:
+    setConstantEm();
+    numberRequest_++;
+    break;
+  // Ответ на запрос чтения данных энергии
+  case 5:
+    setParamEnergy();
+    numberRequest_++;
+    break;
+  // Ответ на запрос чтения коэффициента трансформации тока
+  case 6:
+    prepareSendConstantCoefTrans();
+    numberRequest_++;
+    break;
+  // Запись коэффициента трансформации тока
+  case 7:
+    numberRequest_++;
+    break;
+  // Ответ на запрос чтения данных энергии за весь период
+  case 8:
+    setParamEnergyConsumpAll();
+    numberRequest_++;
+    break;
+  // Ответ на запрос чтения данных энергии за текущие сутки
+  case 9:
+    setParamEnergyConsumpCurDay();
+    numberRequest_++;
+    break;
+  // Ответ на запрос чтения данных энергии за предыдущие сутки
+  case 10:
+    setParamEnergyConsumpPrevDay();
+    numberRequest_++;
+    break;
+  // Ответ на запрос чтения данных энергии за текущий месяц
+  case 11:
+    setParamEnergyConsumpCurMonth();
+    numberRequest_++;
+    break;
+  // Ответ на запрос чтения данных энергии за предыдущий месяц
+  case 12:
+    setParamEnergyConsumpPrevMonth();
+    numberRequest_ = 1;
+    break;
   }
-  successCounter_++;
-  failCounter_ = 0;
+  counters_.resive++;
+  counters_.failure = 0;
   asm("nop");
 }
 
@@ -310,29 +307,27 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 5];
       value.char_t[2] = rxBuffer_[sizePkt_ - 4];
       value.char_t[3] = rxBuffer_[sizePkt_ - 3];
-//      setNewValue(EM_, value.tdFloat);
+//      setNewValue(EM_, value.float_t);
 
       // 15. Резерв
       value.char_t[0] = rxBuffer_[sizePkt_ - 10];
       value.char_t[1] = rxBuffer_[sizePkt_ - 9];
       value.char_t[2] = rxBuffer_[sizePkt_ - 8];
       value.char_t[3] = rxBuffer_[sizePkt_ - 7];
-//      setNewValue(EM_, value.tdFloat);
+//      setNewValue(EM_, value.float_t);
 
       // 14. Температура внутри счётчика
       value.char_t[0] = rxBuffer_[sizePkt_ - 14];
       value.char_t[1] = rxBuffer_[sizePkt_ - 13];
       value.char_t[2] = rxBuffer_[sizePkt_ - 12];
       value.char_t[3] = rxBuffer_[sizePkt_ - 11];
-      value.float_t = value.float_t;
-//      setNewValue(EM_, value.tdFloat);
+//      setNewValue(EM_, value.float_t);
 
       // 13. Частота
       value.char_t[0] = rxBuffer_[sizePkt_ - 18];
       value.char_t[1] = rxBuffer_[sizePkt_ - 17];
       value.char_t[2] = rxBuffer_[sizePkt_ - 16];
       value.char_t[3] = rxBuffer_[sizePkt_ - 15];
-      value.float_t = value.float_t;
       setNewValue(EM_FREQUENCY, value.float_t);
 
       // 12. Активная мощность потерь Фаза 3
@@ -340,79 +335,76 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 21];
       value.char_t[2] = rxBuffer_[sizePkt_ - 20];
       value.char_t[3] = rxBuffer_[sizePkt_ - 19];
-//      setNewValue(EM_, value.tdFloat);
+//      setNewValue(EM_, value.float_t);
 
       // 11. Активная мощность потерь Фаза 2
       value.char_t[0] = rxBuffer_[sizePkt_ - 26];
       value.char_t[1] = rxBuffer_[sizePkt_ - 25];
       value.char_t[2] = rxBuffer_[sizePkt_ - 24];
       value.char_t[3] = rxBuffer_[sizePkt_ - 23];
-//      setNewValue(EM_, value.tdFloat);
+//      setNewValue(EM_, value.float_t);
 
       // 10. Активная мощность потерь Фаза 1
       value.char_t[0] = rxBuffer_[sizePkt_ - 30];
       value.char_t[1] = rxBuffer_[sizePkt_ - 29];
       value.char_t[2] = rxBuffer_[sizePkt_ - 28];
       value.char_t[3] = rxBuffer_[sizePkt_ - 27];
-//      setNewValue(EM_, value.tdFloat);
+//      setNewValue(EM_, value.float_t);
 
       // 9. Активная мошность потерь по трём фазам
       value.char_t[0] = rxBuffer_[sizePkt_ - 34];
       value.char_t[1] = rxBuffer_[sizePkt_ - 33];
       value.char_t[2] = rxBuffer_[sizePkt_ - 32];
       value.char_t[3] = rxBuffer_[sizePkt_ - 31];
-//      setNewValue(EM_, value.tdFloat);
+//      setNewValue(EM_, value.float_t);
 
       // 8. THD между фазами 3 и 1
       value.char_t[0] = rxBuffer_[sizePkt_ - 38];
       value.char_t[1] = rxBuffer_[sizePkt_ - 37];
       value.char_t[2] = rxBuffer_[sizePkt_ - 36];
       value.char_t[3] = rxBuffer_[sizePkt_ - 35];
-//      setNewValue(EM_, value.tdFloat);
+//      setNewValue(EM_, value.float_t);
 
       // 7. THD между фазами 2 и 3
       value.char_t[0] = rxBuffer_[sizePkt_ - 42];
       value.char_t[1] = rxBuffer_[sizePkt_ - 41];
       value.char_t[2] = rxBuffer_[sizePkt_ - 40];
       value.char_t[3] = rxBuffer_[sizePkt_ - 39];
-//      setNewValue(EM_, value.tdFloat);
+//      setNewValue(EM_, value.float_t);
 
       // 6. THD между фазами 1 и 2
       value.char_t[0] = rxBuffer_[sizePkt_ - 46];
       value.char_t[1] = rxBuffer_[sizePkt_ - 45];
       value.char_t[2] = rxBuffer_[sizePkt_ - 44];
       value.char_t[3] = rxBuffer_[sizePkt_ - 43];
-//      setNewValue(EM_, value.tdFloat);
+//      setNewValue(EM_, value.float_t);
 
       // 5. Коэффициент несимметрии напряжённости
       value.char_t[0] = rxBuffer_[sizePkt_ - 50];
       value.char_t[1] = rxBuffer_[sizePkt_ - 49];
       value.char_t[2] = rxBuffer_[sizePkt_ - 48];
       value.char_t[3] = rxBuffer_[sizePkt_ - 47];
-//      setNewValue(EM_, value.tdFloat);
+//      setNewValue(EM_, value.float_t);
 
       // 4. THD Напряжения на фазе 3
       value.char_t[0] = rxBuffer_[sizePkt_ - 54];
       value.char_t[1] = rxBuffer_[sizePkt_ - 53];
       value.char_t[2] = rxBuffer_[sizePkt_ - 52];
       value.char_t[3] = rxBuffer_[sizePkt_ - 51];
-      value.float_t = value.float_t;
-//      setNewValue(EM_, value.tdFloat);
+//      setNewValue(EM_, value.float_t);
 
       // 3. THD Напряжения на фазе 2
       value.char_t[0] = rxBuffer_[sizePkt_ - 58];
       value.char_t[1] = rxBuffer_[sizePkt_ - 57];
       value.char_t[2] = rxBuffer_[sizePkt_ - 56];
       value.char_t[3] = rxBuffer_[sizePkt_ - 55];
-      value.float_t = value.float_t;
-//      setNewValue(EM_, value.tdFloat);
+//      setNewValue(EM_, value.float_t);
 
       // 2. THD Напряжения на фазе 1
       value.char_t[0] = rxBuffer_[sizePkt_ - 62];
       value.char_t[1] = rxBuffer_[sizePkt_ - 61];
       value.char_t[2] = rxBuffer_[sizePkt_ - 60];
       value.char_t[3] = rxBuffer_[sizePkt_ - 59];
-      value.float_t = value.float_t;
 //      setNewValue(EM_, value.tdFloat);
 
       // 1. Коэффициент несимметрии напряжённости
@@ -420,7 +412,7 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 65];
       value.char_t[2] = rxBuffer_[sizePkt_ - 64];
       value.char_t[3] = rxBuffer_[sizePkt_ - 63];
-//      setNewValue(EM_, value.tdFloat);
+//      setNewValue(EM_, value.float_t);
       break;
     case  2:
       // 16. THD тока по фазе 3
@@ -428,38 +420,34 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 5];
       value.char_t[2] = rxBuffer_[sizePkt_ - 4];
       value.char_t[3] = rxBuffer_[sizePkt_ - 3];
-      value.float_t = value.float_t;
-//      setNewValue(EM_, value.tdFloat);
+//      setNewValue(EM_, value.float_t);
 
       // 15. THD тока по фазе 2
       value.char_t[0] = rxBuffer_[sizePkt_ - 10];
       value.char_t[1] = rxBuffer_[sizePkt_ - 9];
       value.char_t[2] = rxBuffer_[sizePkt_ - 8];
       value.char_t[3] = rxBuffer_[sizePkt_ - 7];
-      value.float_t = value.float_t;
-//      setNewValue(EM_, value.tdFloat);
+//      setNewValue(EM_, value.float_t);
 
       // 14. THD тока по фазе 1
       value.char_t[0] = rxBuffer_[sizePkt_ - 14];
       value.char_t[1] = rxBuffer_[sizePkt_ - 13];
       value.char_t[2] = rxBuffer_[sizePkt_ - 12];
       value.char_t[3] = rxBuffer_[sizePkt_ - 11];
-      value.float_t = value.float_t;
-//      setNewValue(EM_, value.tdFloat);
+//      setNewValue(EM_, value.float_t);
 
       // 13. Коэффициент несиметрии тока в обратной последовательности
       value.char_t[0] = rxBuffer_[sizePkt_ - 18];
       value.char_t[1] = rxBuffer_[sizePkt_ - 17];
       value.char_t[2] = rxBuffer_[sizePkt_ - 16];
       value.char_t[3] = rxBuffer_[sizePkt_ - 15];
-//      setNewValue(EM_, value.tdFloat);
+//      setNewValue(EM_, value.float_t);
 
       // 12. Ток фазы 3
       value.char_t[0] = rxBuffer_[sizePkt_ - 22];
       value.char_t[1] = rxBuffer_[sizePkt_ - 21];
       value.char_t[2] = rxBuffer_[sizePkt_ - 20];
       value.char_t[3] = rxBuffer_[sizePkt_ - 19];
-      value.float_t = value.float_t;
       setNewValue(EM_CURRENT_PHASE_3, value.float_t);
 
       // 11. Ток фазы 2
@@ -467,7 +455,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 25];
       value.char_t[2] = rxBuffer_[sizePkt_ - 24];
       value.char_t[3] = rxBuffer_[sizePkt_ - 23];
-      value.float_t = value.float_t;
       setNewValue(EM_CURRENT_PHASE_2, value.float_t);
 
       // 10. Ток фазы 1
@@ -475,7 +462,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 29];
       value.char_t[2] = rxBuffer_[sizePkt_ - 28];
       value.char_t[3] = rxBuffer_[sizePkt_ - 27];
-      value.float_t = value.float_t;
       setNewValue(EM_CURRENT_PHASE_1, value.float_t);
 
       // 9. Коэффициент несиметрии тока в прямой последовательности
@@ -483,14 +469,13 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 33];
       value.char_t[2] = rxBuffer_[sizePkt_ - 32];
       value.char_t[3] = rxBuffer_[sizePkt_ - 31];
-//      setNewValue(EM_, value.tdFloat);
+//      setNewValue(EM_, value.float_t);
 
       // 8. Межфазное напряжение 3 и 1
       value.char_t[0] = rxBuffer_[sizePkt_ - 38];
       value.char_t[1] = rxBuffer_[sizePkt_ - 37];
       value.char_t[2] = rxBuffer_[sizePkt_ - 36];
       value.char_t[3] = rxBuffer_[sizePkt_ - 35];
-      value.float_t = value.float_t;
       setNewValue(EM_VOLTAGE_PHASE_3_1, value.float_t);
 
       // 7. Межфазное напряжение 2 и 3
@@ -498,7 +483,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 41];
       value.char_t[2] = rxBuffer_[sizePkt_ - 40];
       value.char_t[3] = rxBuffer_[sizePkt_ - 39];
-      value.float_t = value.float_t;
       setNewValue(EM_VOLTAGE_PHASE_2_3, value.float_t);
 
       // 6. Межфазное напряжение 1 и 2
@@ -506,7 +490,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 45];
       value.char_t[2] = rxBuffer_[sizePkt_ - 44];
       value.char_t[3] = rxBuffer_[sizePkt_ - 43];
-      value.float_t = value.float_t;
       setNewValue(EM_VOLTAGE_PHASE_1_2, value.float_t);
 
       // 5. Напряжение прямой последовательности
@@ -514,14 +497,13 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 49];
       value.char_t[2] = rxBuffer_[sizePkt_ - 48];
       value.char_t[3] = rxBuffer_[sizePkt_ - 47];
-//      setNewValue(EM_, value.tdFloat);
+//      setNewValue(EM_, value.float_t);
 
       // 4. Напряжение на 3 фазе
       value.char_t[0] = rxBuffer_[sizePkt_ - 54];
       value.char_t[1] = rxBuffer_[sizePkt_ - 53];
       value.char_t[2] = rxBuffer_[sizePkt_ - 52];
       value.char_t[3] = rxBuffer_[sizePkt_ - 51];
-      value.float_t = value.float_t;
       setNewValue(EM_VOLTAGE_PHASE_3, value.float_t);
 
       // 3. Напряжение на 2 фазе
@@ -529,7 +511,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 57];
       value.char_t[2] = rxBuffer_[sizePkt_ - 56];
       value.char_t[3] = rxBuffer_[sizePkt_ - 55];
-      value.float_t = value.float_t;
       setNewValue(EM_VOLTAGE_PHASE_2, value.float_t);
 
       // 2. Напряжение на 1 фазе
@@ -537,7 +518,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 61];
       value.char_t[2] = rxBuffer_[sizePkt_ - 60];
       value.char_t[3] = rxBuffer_[sizePkt_ - 59];
-      value.float_t = value.float_t;
       setNewValue(EM_VOLTAGE_PHASE_1, value.float_t);
 
       // 1. Батарея питания
@@ -545,7 +525,7 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 65];
       value.char_t[2] = rxBuffer_[sizePkt_ - 64];
       value.char_t[3] = rxBuffer_[sizePkt_ - 63];
-//      setNewValue(EM_, value.tdFloat);
+//      setNewValue(EM_, value.float_t);
       break;
     case  3:
       // 16. Коэффициент мощности по 3 фазе
@@ -553,7 +533,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 5];
       value.char_t[2] = rxBuffer_[sizePkt_ - 4];
       value.char_t[3] = rxBuffer_[sizePkt_ - 3];
-      value.float_t = value.float_t;
       setNewValue(EM_COS_PHI_PHASE_3, value.float_t);
 
       // 15. Коэффициент мощности по 2 фазе
@@ -561,7 +540,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 9];
       value.char_t[2] = rxBuffer_[sizePkt_ - 8];
       value.char_t[3] = rxBuffer_[sizePkt_ - 7];
-      value.float_t = value.float_t;
       setNewValue(EM_COS_PHI_PHASE_2, value.float_t);
 
       // 14. Коэффициент мощности по 1 фазе
@@ -569,7 +547,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 13];
       value.char_t[2] = rxBuffer_[sizePkt_ - 12];
       value.char_t[3] = rxBuffer_[sizePkt_ - 11];
-      value.float_t = value.float_t;
       setNewValue(EM_COS_PHI_PHASE_1, value.float_t);
 
       // 13. Коэффициент мощности по всем фазам
@@ -577,7 +554,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 17];
       value.char_t[2] = rxBuffer_[sizePkt_ - 16];
       value.char_t[3] = rxBuffer_[sizePkt_ - 15];
-      value.float_t = value.float_t;
       setNewValue(EM_COS_PHI, value.float_t);
 
       // 12. Полная мсщность по 3 фазе
@@ -585,7 +561,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 21];
       value.char_t[2] = rxBuffer_[sizePkt_ - 20];
       value.char_t[3] = rxBuffer_[sizePkt_ - 19];
-      value.float_t = value.float_t;
       setNewValue(EM_FULL_POWER_PHASE_3, value.float_t);
 
       // 11. Полная мощность по 2 фазе
@@ -593,7 +568,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 25];
       value.char_t[2] = rxBuffer_[sizePkt_ - 24];
       value.char_t[3] = rxBuffer_[sizePkt_ - 23];
-      value.float_t = value.float_t;
       setNewValue(EM_FULL_POWER_PHASE_2, value.float_t);
 
       // 10. Полная мощность по 1 фазе
@@ -601,7 +575,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 29];
       value.char_t[2] = rxBuffer_[sizePkt_ - 28];
       value.char_t[3] = rxBuffer_[sizePkt_ - 27];
-      value.float_t = value.float_t;
       setNewValue(EM_FULL_POWER_PHASE_1, value.float_t);
 
       // 9. Полная мощность по 3-м фазам
@@ -609,7 +582,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 33];
       value.char_t[2] = rxBuffer_[sizePkt_ - 32];
       value.char_t[3] = rxBuffer_[sizePkt_ - 31];
-      value.float_t = value.float_t;
       setNewValue(EM_FULL_POWER, value.float_t);
 
       // 8. Реактивная мощность по 3 фазе
@@ -617,7 +589,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 37];
       value.char_t[2] = rxBuffer_[sizePkt_ - 36];
       value.char_t[3] = rxBuffer_[sizePkt_ - 35];
-      value.float_t = value.float_t;
       setNewValue(EM_REACTIVE_POWER_PHASE_3, value.float_t);
 
       // 7. Реактивная мощность по 2 фазе
@@ -625,7 +596,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 41];
       value.char_t[2] = rxBuffer_[sizePkt_ - 40];
       value.char_t[3] = rxBuffer_[sizePkt_ - 39];
-      value.float_t = value.float_t;
       setNewValue(EM_REACTIVE_POWER_PHASE_2, value.float_t);
 
       // 6.  Реактивная мощность по 1 фазе
@@ -633,7 +603,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 45];
       value.char_t[2] = rxBuffer_[sizePkt_ - 44];
       value.char_t[3] = rxBuffer_[sizePkt_ - 43];
-      value.float_t = value.float_t;
       setNewValue(EM_REACTIVE_POWER_PHASE_1, value.float_t);
 
       // 5. Реактивная мощность по 3-м фазам
@@ -641,7 +610,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 49];
       value.char_t[2] = rxBuffer_[sizePkt_ - 48];
       value.char_t[3] = rxBuffer_[sizePkt_ - 47];
-      value.float_t = value.float_t;
       setNewValue(EM_REACTIVE_POWER, value.float_t);
 
       // 4. Активная мсщность на фазе 3
@@ -649,7 +617,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 53];
       value.char_t[2] = rxBuffer_[sizePkt_ - 52];
       value.char_t[3] = rxBuffer_[sizePkt_ - 51];
-      value.float_t = value.float_t;
       setNewValue(EM_ACTIVE_POWER_PHASE_3, value.float_t);
 
       // 3. Активная мсщность на фазе 2
@@ -657,7 +624,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 57];
       value.char_t[2] = rxBuffer_[sizePkt_ - 56];
       value.char_t[3] = rxBuffer_[sizePkt_ - 55];
-      value.float_t = value.float_t;
       setNewValue(EM_ACTIVE_POWER_PHASE_2, value.float_t);
 
       // 2. Активная мсщность на фазе 1
@@ -665,7 +631,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 61];
       value.char_t[2] = rxBuffer_[sizePkt_ - 60];
       value.char_t[3] = rxBuffer_[sizePkt_ - 59];
-      value.float_t = value.float_t;
       setNewValue(EM_ACTIVE_POWER_PHASE_1, value.float_t);
 
       // 1. Суммарная активная мощность по 3 фазам
@@ -673,7 +638,6 @@ void EmSet::setParameter()
       value.char_t[1] = rxBuffer_[sizePkt_ - 65];
       value.char_t[2] = rxBuffer_[sizePkt_ - 64];
       value.char_t[3] = rxBuffer_[sizePkt_ - 63];
-      value.float_t = value.float_t;
       setNewValue(EM_ACTIVE_POWER, value.float_t);
       break;
   }

@@ -13785,7 +13785,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>1.0</max>
+		<max>3.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -13797,7 +13797,7 @@
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<code>0</code>
-		<values>0-Нет;1-СЭТ-4ТМ</values>
+		<values>0-Нет;1-СЭТ-4ТМ;2-ABB;3-ABB A44</values>
 		<comment>Тип счётчика электоэнергии</comment>
 	</param>
 	<param>
@@ -17536,7 +17536,7 @@
 		<id>890</id>
 		<name>CCS_VSD_CONNECTION_PERCENT</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>100.0</max>
@@ -17555,7 +17555,7 @@
 		<id>891</id>
 		<name>CCS_VSD_CONNECTION_PACKAGE_TOTAL</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
@@ -17570,7 +17570,7 @@
 		<id>892</id>
 		<name>CCS_VSD_CONNECTION_PACKAGE_SUCCESS</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
@@ -17585,7 +17585,7 @@
 		<id>893</id>
 		<name>CCS_VSD_CONNECTION_PACKAGE_TRASH</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
@@ -17600,7 +17600,7 @@
 		<id>894</id>
 		<name>CCS_VSD_CONNECTION_PACKAGE_CRC</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
@@ -17614,7 +17614,7 @@
 		<id>895</id>
 		<name>CCS_VSD_CONNECTION_PACKAGE_ERR</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
@@ -17628,7 +17628,7 @@
 		<id>896</id>
 		<name>CCS_VSD_CONNECTION_PACKAGE_LOST</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
@@ -17690,7 +17690,7 @@
 		<id>901</id>
 		<name>CCS_DHS_CONNECTION_PERCENT</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>100.0</max>
@@ -17709,7 +17709,7 @@
 		<id>902</id>
 		<name>CCS_DHS_CONNECTION_PACKAGE_TOTAL</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
@@ -17724,7 +17724,7 @@
 		<id>903</id>
 		<name>CCS_DHS_CONNECTION_PACKAGE_SUCCESS</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
@@ -17739,7 +17739,7 @@
 		<id>904</id>
 		<name>CCS_DHS_CONNECTION_PACKAGE_TRASH</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
@@ -17754,7 +17754,7 @@
 		<id>905</id>
 		<name>CCS_DHS_CONNECTION_PACKAGE_CRC</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
@@ -17768,7 +17768,7 @@
 		<id>906</id>
 		<name>CCS_DHS_CONNECTION_PACKAGE_ERR</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
@@ -17782,7 +17782,7 @@
 		<id>907</id>
 		<name>CCS_DHS_CONNECTION_PACKAGE_LOST</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
@@ -19358,6 +19358,198 @@
 	</param>
 	<param>
 		<id>987</id>
+		<name>CCS_EM_CONNECTION_PERCENT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>100.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>100.0</value>
+		<text>Качество связи</text>
+		<short_text>Качество связи</short_text>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXX_X</format>
+		<code>0</code>
+		<comment>СЭ. Качество связи</comment>
+	</param>
+	<param>
+		<id>988</id>
+		<name>CCS_EM_CONNECTION_PACKAGE_TOTAL</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Счётчик запросов</text>
+		<short_text>Счётчик запросов</short_text>
+		<code>0</code>
+		<comment>СЭ. Счётчик запросов</comment>
+	</param>
+	<param>
+		<id>989</id>
+		<name>CCS_EM_CONNECTION_PACKAGE_SUCCESS</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Счетчик ответов</text>
+		<short_text>Счетчик ответов</short_text>
+		<code>0</code>
+		<comment>СЭ. Счетчик ответов</comment>
+	</param>
+	<param>
+		<id>990</id>
+		<name>CCS_EM_CONNECTION_PACKAGE_TRASH</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Счетчик некорректных ответов</text>
+		<short_text>Счетчик некорректных ответов</short_text>
+		<code>0</code>
+		<comment>СЭ. Счетчик некорректных ответов</comment>
+	</param>
+	<param>
+		<id>991</id>
+		<name>CCS_EM_CONNECTION_PACKAGE_CRC</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<text>Счётчик ошибок контрольной суммы</text>
+		<short_text>Счётчик ошибок контрольной суммы</short_text>
+		<code>0</code>
+		<comment>СЭ. Счётчик ошибок контрольной суммы</comment>
+	</param>
+	<param>
+		<id>992</id>
+		<name>CCS_EM_CONNECTION_PACKAGE_ERR</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<text>Счётчик ошибок устройства</text>
+		<short_text>Счётчик ошибок устройства</short_text>
+		<code>0</code>
+		<comment>СЭ. Счётчик ошибок устройства</comment>
+	</param>
+	<param>
+		<id>993</id>
+		<name>CCS_EM_CONNECTION_PACKAGE_LOST</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<text>Счётчик потерянных ответов</text>
+		<short_text>Счётчик потерянных ответов</short_text>
+		<code>0</code>
+		<comment>СЭ. Счётчик потерянных ответов</comment>
+	</param>
+	<param>
+		<id>994</id>
+		<name>CCS_EM_CONNECTION_SPEED</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>9600.0</min>
+		<max>115200.0</max>
+		<def>115200.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<code>0</code>
+	</param>
+	<param>
+		<id>995</id>
+		<name>CCS_EM_CONNECTION_ADDRESS</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>1.0</min>
+		<max>253.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<code>0</code>
+	</param>
+	<param>
+		<id>996</id>
+		<name>CCS_EM_CONNECTION_PARITY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>5.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<code>0</code>
+	</param>
+	<param>
+		<id>997</id>
+		<name>CCS_EM_CONNECTION_STOP_BIT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<code>0</code>
+	</param>
+	<param>
+		<id>998</id>
+		<name>CCS_CMD_EM_CONNECTION_RESET</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Сбросить счётчики качества связи</text>
+		<short_text>СЭ. Сброс счётчиков качества связи</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>СЭ. Сброс счётчиков качества связи</comment>
+	</param>
+	<param>
+		<id>999</id>
 		<name>CCS_END</name>
 	</param>
 	<param>

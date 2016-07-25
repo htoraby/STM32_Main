@@ -1345,6 +1345,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     vsd->resetConnect();
     return err;
+  case CCS_CMD_EM_CONNECTION_RESET:
+    err = setValue(id, value, eventType);
+    em->resetConnect();
+    return err;
   default:
     return setValue(id, value, eventType);
   }
