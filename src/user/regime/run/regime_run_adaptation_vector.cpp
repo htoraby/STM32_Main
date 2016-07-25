@@ -156,6 +156,13 @@ void RegimeRunAdaptationVector::processingStateWork()           // Состоя�
             strR_ = strR_ - dR_;                                // Уменьшаем сопротивление на шаг
             dR_ = dR_ / 5;                                      // Уменьшаем шаг
             state_ = PauseState;                                // Задаём новое сопротивление
+            if (dR_ < 0.0001) {
+              state_ = StopState;                                 // Выходим из алгоритма с ошибкой
+              #if (USE_LOG_DEBUG == 1)
+                logDebug.add(DebugMsg, "Adaptation: WorkState -> StopState (strR_ = %5.4f)",
+                             strR_);
+              #endif
+            }
             #if (USE_LOG_DEBUG == 1)
               logDebug.add(DebugMsg, "Adaptation: WorkState -> PauseState (strR_ = %5.4f, dR_ = %5.4f)",
                            strR_, dR_);
