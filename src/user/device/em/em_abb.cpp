@@ -48,9 +48,7 @@ void EmAbb::task()
 
 bool EmAbb::isConnect()
 {
-  bool curConnect = true;
-  if (failCounter_ > EM_COUNTER_LOST_CONNECT)
-    curConnect = false;
+  bool curConnect = Em::isConnect();
 
   if (prevConnect_ && !curConnect) {
     for (int i = 0; i < countParameters_; ++i) {
@@ -122,7 +120,7 @@ void EmAbb::sendRequest()
   txBuffer_[sizePktTx - 1] = calcCrc >> 8;
 
   sendUart(txBuffer_, sizePktTx);
-  totalCounter_++;
+  counters_.transmite++;
 }
 
 void EmAbb::receiveAnswer()
@@ -130,8 +128,8 @@ void EmAbb::receiveAnswer()
   memset(rxBuffer_, 0, sizeof(rxBuffer_));
   int size = receiveUart(rxBuffer_);
   if (size < sizePkt_) {
-    lostCounter_++;
-    failCounter_++;
+    counters_.lost++;
+    counters_.failure++;
     return;
   }
   sizePkt_ = size;
@@ -140,13 +138,13 @@ void EmAbb::receiveAnswer()
   uint16_t calcCrc = crc16_ibm(rxBuffer_, sizePkt_ - 2);
 
   if (rxCrc != calcCrc) {
-    crcCounter_++;
-    failCounter_++;
+    counters_.crc++;
+    counters_.failure++;
     return;
   }
   if ((rxBuffer_[0] != txBuffer_[0]) || (rxBuffer_[1] != txBuffer_[1])) {
-    errCounter_++;
-    failCounter_++;
+    counters_.error++;
+    counters_.failure++;
     return;
   }
 
@@ -307,8 +305,8 @@ void EmAbb::receiveAnswer()
   if (numberRequest_ > AbbRequestPowerFactor)
     numberRequest_ = AbbRequestCoefTransform;
 
-  successCounter_++;
-  failCounter_ = 0;
+  counters_.resive++;
+  counters_.failure = 0;
 }
 
 float EmAbb::getUint64(uint8_t *buf, float coef)

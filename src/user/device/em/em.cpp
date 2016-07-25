@@ -79,17 +79,41 @@ int Em::setCoefficientTransforamationVoltage()
   return err_r;
 }
 
+bool Em::isConnect()
+{
+  if (counters_.failure > EM_COUNTER_LOST_CONNECT)
+    return false;
+  else
+    return true;
+}
+
+void Em::getConnect()
+{
+  parameters.set(CCS_EM_CONNECTION_PERCENT, counters_.quality);
+  parameters.set(CCS_EM_CONNECTION_PACKAGE_TOTAL, counters_.transmite);
+  parameters.set(CCS_EM_CONNECTION_PACKAGE_SUCCESS, counters_.resive);
+  parameters.set(CCS_EM_CONNECTION_PACKAGE_TRASH, counters_.trash);
+  parameters.set(CCS_EM_CONNECTION_PACKAGE_CRC, counters_.crc);
+  parameters.set(CCS_EM_CONNECTION_PACKAGE_ERR, counters_.error);
+  parameters.set(CCS_EM_CONNECTION_PACKAGE_LOST, counters_.lost);
+}
+
+void Em::resetConnect()
+{
+  counters_ = {0,0,0,0,0,0,0,0};
+  parameters.set(CCS_EM_CONNECTION_PERCENT, 0);
+  parameters.set(CCS_EM_CONNECTION_PACKAGE_TOTAL, 0);
+  parameters.set(CCS_EM_CONNECTION_PACKAGE_SUCCESS, 0);
+  parameters.set(CCS_EM_CONNECTION_PACKAGE_TRASH, 0);
+  parameters.set(CCS_EM_CONNECTION_PACKAGE_CRC, 0);
+  parameters.set(CCS_EM_CONNECTION_PACKAGE_ERR, 0);
+  parameters.set(CCS_EM_CONNECTION_PACKAGE_LOST, 0);
+}
+
 void Em::calcConnect()
 {
-  if (totalCounter_ > 1000000) {
-    totalCounter_ = 0;
-    successCounter_ = 0;
-    lostCounter_ = 0;
-    crcCounter_ = 0;
-    errCounter_ = 0;
-    trashCounter_ = 0;
-  }
-  if (totalCounter_) {
-    calcConnect_ = (successCounter_ * 100) / totalCounter_;
+  counters_.quality = counters_.resive / counters_.transmite * 100;
+  if (counters_.transmite > 999999.0) {
+    counters_ = {counters_.quality,0,0,0,0,0,0,0};
   }
 }
