@@ -3930,9 +3930,14 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.9</max>
+		<max>3.0</max>
+		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
+		<text>Действие защиты</text>
+		<short_text>Рассинх.двиг.РРЗ</short_text>
+		<format>TEXT</format>
 		<code>13</code>
 		<comment>Защита "Рассинхронизация ПВЭД"</comment>
 	</param>
@@ -3943,9 +3948,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999.9</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -3959,10 +3966,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>120.0</max>
+		<def>30.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>30.0</value>
+		<text>Пусковое время</text>
+		<short_text>Рассинх.двиг.пуск.время</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XX_XX</format>
+		<code>13</code>
 		<comment>Задержка активации уставка</comment>
 	</param>
 	<param>
@@ -3972,10 +3986,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>10.0</max>
+		<def>2.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>2.0</value>
+		<text>Время</text>
+		<short_text>Рассинх.двиг.время</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XX_XX</format>
+		<code>13</code>
 		<comment>Время уставка</comment>
 	</param>
 	<param>
@@ -3985,10 +4006,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>86400.0</max>
+		<def>3600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>3600.0</value>
+		<text>Задержка АПВ</text>
+		<short_text>Рассинх.двиг.зад.АПВ</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XX_XX</format>
+		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
 	<param>
@@ -3998,10 +4026,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>9999.0</max>
+		<def>3.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>3.0</value>
+		<text>Разрешенно АПВ</text>
+		<short_text>Рассинх.двиг.раз.АПВ</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
 	<param>
@@ -4011,10 +4046,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>86400.0</max>
+		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
+		<value>86400.0</value>
+		<text>Сброс счетчиков АПВ</text>
+		<short_text>Рассинх.двиг.сброс счет</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XX_XX</format>
+		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
 	<param>
@@ -4022,27 +4064,41 @@
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_FREQUENCY</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.3</min>
+		<max>0.6</max>
+		<def>0.5</def>
+		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
-		<text>Уставка останова</text>
-		<code>0</code>
-		<comment>Уставка срабатывания защиты</comment>
+		<value>0.5</value>
+		<text>Минимальный коэффициент мощности</text>
+		<short_text>Рассинх.двиг.мин.коэф.мощн.</short_text>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>X_X</format>
+		<code>13</code>
+		<comment>Минимальный коэффициент мощности</comment>
 	</param>
 	<param>
 		<id>201</id>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_FREQUENCY</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>70.0</min>
+		<max>120.0</max>
+		<def>100.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<code>0</code>
-		<comment>Условие АПВ уставка</comment>
+		<value>100.0</value>
+		<text>Максимальный ток</text>
+		<short_text>Рассинх.двиг.макс.ток</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXX</format>
+		<code>13</code>
+		<comment>Максимальный ток</comment>
 	</param>
 	<param>
 		<id>202</id>
@@ -4051,9 +4107,14 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
 		<code>0</code>
 		<comment>Уставка параметр защиты</comment>
 	</param>
@@ -4064,9 +4125,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>1.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -4080,9 +4143,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>3.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -4096,9 +4161,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>1000000.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -4112,9 +4179,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>9999.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -4128,9 +4197,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_DATE_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>4294967296</max>
+		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -9658,7 +9729,7 @@
 		<form>Встряхивание</form>
 		<unit>TEMP_HZ_SS</unit>
 		<unit_lcd>TEMP_HZ_SS</unit_lcd>
-		<format>XX_XХ</format>
+		<format>XX_XX</format>
 		<code>13</code>
 		<comment>Время прибавки частоты вращения выше уставки в режиме встряхивания</comment>
 	</param>
@@ -9700,7 +9771,7 @@
 		<form>Встряхивание</form>
 		<unit>TEMP_HZ_SS</unit>
 		<unit_lcd>TEMP_HZ_SS</unit_lcd>
-		<format>XX_XХ</format>
+		<format>XX_XX</format>
 		<code>13</code>
 		<comment>Время уменьшения частоты вращения ниже уставки в режиме встряхивания</comment>
 	</param>
@@ -21073,7 +21144,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>ХХXХХХ</format>
+		<format>XXXXXX</format>
 		<code>13</code>
 		<comment>Порог защиты ПЧ по превыщению напряжения на инверторе</comment>
 	</param>
@@ -21094,7 +21165,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>ХХXХХХ</format>
+		<format>XXXXXX</format>
 		<code>13</code>
 		<comment>Порог защиты ПЧ по несимметрии входного напряжения на инверторе</comment>
 	</param>
@@ -21115,7 +21186,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_SS</unit_lcd>
-		<format>ХХXХХХ</format>
+		<format>XXXXXX</format>
 		<code>13</code>
 		<comment>Время срабатывания защиты ПЧ по несимметрии входного напряжения на инверторе</comment>
 	</param>
@@ -21188,7 +21259,7 @@
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>ХХXХХХ</format>
+		<format>XXXXXX</format>
 		<code>13</code>
 		<comment>Постоянная времени системы подавления резонанса</comment>
 	</param>
@@ -21273,7 +21344,7 @@
 		<form>Режим подхвата</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_SS</unit_lcd>
-		<format>XXX_XХ</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Время снижения уставки в режиме остановки турбинного вращения</comment>
 	</param>

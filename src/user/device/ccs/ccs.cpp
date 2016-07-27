@@ -1082,6 +1082,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     cmdProtMotorAsyncModeSetpointReset();
     return err;
+  case CCS_CMD_PROT_MOTOR_OUT_OF_SYNC_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtMotorOutOfSyncSetpointReset();
+    return err;
   case CCS_CMD_PROT_DHS_PRESSURE_INTAKE_SETPOINT_RESET:
     err = setValue(id, value, eventType);
     cmdProtDhsPressureIntakeSetpointReset();
@@ -1520,6 +1524,14 @@ void Ccs::cmdProtMotorAsyncModeSetpointReset()
 {
   for (uint16_t i = CCS_PROT_MOTOR_ASYNC_MODE;
        i <= CCS_PROT_MOTOR_ASYNC_PARAMETER; i++) {
+    resetValue(i);
+  }
+}
+
+void Ccs::cmdProtMotorOutOfSyncSetpointReset()
+{
+  for (uint16_t i = CCS_PROT_MOTOR_OUT_OF_SYNC_MODE;
+       i <= CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER; i++) {
     resetValue(i);
   }
 }

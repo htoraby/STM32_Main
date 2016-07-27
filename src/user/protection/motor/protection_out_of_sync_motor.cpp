@@ -40,7 +40,8 @@ bool ProtectionOutOfSyncMotor::checkAlarm()
   valueParameter2_ = parameters.get(CCS_MOTOR_CURRENT_AVARAGE);
   valueParameter_ = parameters.get(CCS_MOTOR_COS_PHI_NOW);
 
-  if ((valueParameter2_ > nominal) && (valueParameter_ < tripSetpoint_))
+  float maxCurrent = nominal * restartSetpoint_ / 100;
+  if ((valueParameter2_ > maxCurrent) && (valueParameter_ < tripSetpoint_))
     return true;
   else
     return false;

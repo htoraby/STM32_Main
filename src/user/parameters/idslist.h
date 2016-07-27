@@ -203,8 +203,8 @@ enum enID
   CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY = 197,            //!< Задержка АПВ уставка
   CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT = 198,            //!< Количество АПВ уставка
   CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET = 199,            //!< Автосброс счетчика АПВ
-  CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT = 200,            //!< Уставка срабатывания защиты
-  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT = 201,         //!< Условие АПВ уставка
+  CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT = 200,            //!< Минимальный коэффициент мощности
+  CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT = 201,         //!< Максимальный ток
   CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER = 202,                //!< Уставка параметр защиты
   CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG = 203,             //!< Уставка параметр защиты
   CCS_PROT_MOTOR_OUT_OF_SYNC_STATE = 204,                    //!< Текущий параметр состояние автомата
