@@ -30,6 +30,9 @@ void RegimeRunSwing::processingStateIdle()
     if (ksu.getValue(CCS_CONDITION) == CCS_CONDITION_STOP) {  // Станция в останове
       if (runReason_ != LastReasonRunNone) {                  // Попытка пуска
         state_ = RunningState;
+        #if (USE_LOG_DEBUG == 1)
+          logDebug.add(DebugMsg, "Run swing: IdleState --> RunningState");
+        #endif
       }
     }
   }
@@ -40,10 +43,16 @@ void RegimeRunSwing::processingStateRunning()
   if (checkOnRegime()) {
     ksu.start(runReason_);
     state_ = WorkState;
+    #if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "Run swing: RunningState --> WorkState");
+    #endif
   }
   else {
     onRegime();
     ksu.setFreq(freq_, NoneType, false);
+    #if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "Run swing: RunningState onRegime()");
+    #endif
   }
 }
 
@@ -54,6 +63,10 @@ void RegimeRunSwing::processingStateWork()
     if (vsd->isSetPointFreq()) {
       rotation_ = parameters.get(VSD_ROTATION);
       state_ = WorkState + 1;
+      #if (USE_LOG_DEBUG == 1)
+        logDebug.add(DebugMsg, "Run swing: WorkState --> WorkState + 1 (rotation_ = %1.0f)",
+                     rotation_);
+      #endif
     }
     break;
   case WorkState + 1:
@@ -61,13 +74,24 @@ void RegimeRunSwing::processingStateWork()
       cntReverse_++;
       if (cntReverse_ >= quantity_ * 2) {
         state_ = StopState;
+        #if (USE_LOG_DEBUG == 1)
+          logDebug.add(DebugMsg, "Run swing: WorkState + 1 --> StopState (rotation_ = %1.0f, cntReverse_ = %2.0f, quantity_ = %2.0f)",
+                       rotation_, cntReverse_, quantity_);
+        #endif
       }
       else {
         state_ = WorkState;
+        #if (USE_LOG_DEBUG == 1)
+          logDebug.add(DebugMsg, "Run swing: WorkState + 1 --> WorkState (rotation_ = %1.0f, cntReverse_ = %2.0f, quantity_ = %2.0f)",
+                       rotation_, cntReverse_, quantity_);
+        #endif
       }
     }
     else {
       vsd->reverseRotation();
+      #if (USE_LOG_DEBUG == 1)
+        logDebug.add(DebugMsg, "Run swing: WorkState + 1 reverseRotation()");
+      #endif
     }
     break;
   }
@@ -77,10 +101,17 @@ void RegimeRunSwing::processingStateStop()
 {
   if (parameters.get(CCS_RGM_RUN_SWING_SETPOINT_ROTATION) == parameters.get(VSD_ROTATION)) {
     offRegime();
+    cntReverse_ = 0;
     state_ = IdleState;
+    #if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "Run swing: StopState --> IdleState");
+    #endif
   }
   else {
     vsd->reverseRotation();
+    #if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "Run swing: StopState reverseRotation()");
+    #endif
   }
 }
 
