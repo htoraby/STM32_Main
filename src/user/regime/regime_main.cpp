@@ -93,7 +93,7 @@ bool interceptionStartRegime()
       }
       break;
     default:
-      if (parameters.get(CCS_RGM_RUN_SWING_MODE) == Regime::IdleState) {
+      if (parameters.get(CCS_RGM_RUN_SWING_STATE) == Regime::IdleState) {
         return false;
       }
       break;
