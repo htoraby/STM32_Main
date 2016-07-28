@@ -54,7 +54,7 @@ uint8_t ModbusMaster::readCoils(uint8_t slaveAddr, uint16_t startRef, bool *bitA
           if (res == MODBUS_OK) {
             for(i = 0; i < Div.quot; i++) {            // Цикл по байтам данных
               for(j = 0; j < 8; j++) {                 // Цикл по битам данных
-                bitArr[i * 8 + j] = ((txBuffer_[3 + i] >> j) & 0x01);
+                bitArr[i * 8 + j] = ((rxBuffer_[3 + i] >> j) & 0x01);
               }
             }
             return res;
@@ -100,7 +100,7 @@ int ModbusMaster::readInputDiscretes(uint8_t SlaveAddr, uint16_t StartRef, bool 
         case MODBUS_OK:                               // Получен корректный ответ
           for (I = 0; I < Div.quot; I++) {           // Цикл по байтам данных
             for(J = 0; J < 8; J++) {                  // Цикл по битам данных
-              BitArr[I * 8 + J] = ((txBuffer_[3 + I] >> J) & 0x01);// Сохраняем данные в выходной буфер
+              BitArr[I * 8 + J] = ((rxBuffer_[3 + I] >> J) & 0x01);// Сохраняем данные в выходной буфер
             }
           }
           break;
