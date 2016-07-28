@@ -12,7 +12,7 @@ Product {
     cpp.commonCompilerFlags: [
         "-mcpu=cortex-m4",
         "-mthumb",
-        "-mfloat-abi=hard",
+        "-mfloat-abi=softfp",
         "-mfpu=fpv4-sp-d16",
         "-fsingle-precision-constant",
         "-Wall",
@@ -26,7 +26,7 @@ Product {
     cpp.linkerFlags: [
         "-mcpu=cortex-m4",
         "-mthumb",
-        "-mfloat-abi=hard",
+        "-mfloat-abi=softfp",
         "-mfpu=fpv4-sp-d16",
         "-fsingle-precision-constant",
         "-Wl,--gc-sections",

@@ -464,6 +464,7 @@ private:
   void cmdProtMotorUnderloadSetpointReset();
   void cmdProtMotorImbalanceCurrentSetpointReset();
   void cmdProtMotorAsyncModeSetpointReset();
+  void cmdProtMotorOutOfSyncSetpointReset();
 
   void cmdProtDhsPressureIntakeSetpointReset();
   void cmdProtDhsPressureDischargeSetpointReset();
