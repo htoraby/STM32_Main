@@ -5,6 +5,7 @@
 #include "device_modbus.h"
 
 class RegimeRunPush;
+class RegimeRunSwing;
 class RegimeRunAdaptationVector;
 
 enum enVsdDanfosStatus1
@@ -153,7 +154,8 @@ public:
 
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
   int setVsdControl(float value);
-  int setRotation(float value);  
+  int setRotation(float value);
+  int reverseRotation();
   int setMinFrequency(float value);
   int setMaxFrequency(float value);
   int setFrequency(float value, EventType eventType = NoneType);
@@ -235,6 +237,7 @@ private:
   DeviceModbus *dm_;
 
   RegimeRunPush *regimeRunPush_;
+  RegimeRunSwing *regimeRunSwing_;
   RegimeRunAdaptationVector *regimeRunAdaptationVector_;
 
 };
