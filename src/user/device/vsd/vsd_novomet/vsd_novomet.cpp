@@ -293,7 +293,7 @@ int VsdNovomet::offRegimeAutoAdaptation()
 // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
 int VsdNovomet::setRotation(float value)
 {
-  if (!Vsd::setRotation(value)){
+  if (!setValue(VSD_ROTATION, value)){
     value = (getValue(VSD_ROTATION) == VSD_ROTATION_DIRECT) ? VSD_CONTROL_RIGHT_DIRECTION : VSD_CONTROL_LEFT_DIRECTION;
     writeToDevice(VSD_CONTROL_WORD_1, value);
     return ok_r;

@@ -154,8 +154,6 @@ public:
 
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
   int setVsdControl(float value);
-  int setRotation(float value);
-  int reverseRotation();
   int setMinFrequency(float value);
   int setMaxFrequency(float value);
   int setFrequency(float value, EventType eventType = NoneType);

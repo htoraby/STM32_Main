@@ -164,29 +164,6 @@ int Vsd::setVsdControl(float value)
   return setValue(VSD_MOTOR_CONTROL, value);
 }
 
-int Vsd::setRotation(float value)
-{
-  if (setValue(VSD_ROTATION, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "ЧРП: Ошибка задания направления вращения (value = %d)",
-                 value);
-#endif
-    return err_r;
-  }
-  return ok_r;
-}
-
-int Vsd::reverseRotation()
-{
-  if (setValue(VSD_ROTATION, !parameters.get(VSD_ROTATION))) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "ЧРП: Ошибка реверса");
-#endif
-    return err_r;
-  }
-  return ok_r;
-}
-
 int Vsd::setMinFrequency(float value)
 {
   if (value > getValue(VSD_HIGH_LIM_SPEED_MOTOR)) {   // Присваиваемая минимальная частота больше максимальной

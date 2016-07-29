@@ -272,31 +272,6 @@ int VsdDanfoss::setVsdControl(float value)
   }
 }
 
-// ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
-int VsdDanfoss::setRotation(float value)
-{
-  if(Vsd::setRotation(value)){
-    logDebug.add(WarningMsg, "VsdDanfoss::setRotation");
-    return err_r;
-  }
-  else {
-    writeToDevice(VSD_ROTATION, parameters.get(VSD_ROTATION));
-    return ok_r;
-  }
-}
-
-int VsdDanfoss::reverseRotation()
-{
-  if(Vsd::reverseRotation()){
-    logDebug.add(WarningMsg, "VsdDanfoss::setRotation");
-    return err_r;
-  }
-  else {
-    writeToDevice(VSD_ROTATION, parameters.get(VSD_ROTATION));
-    return ok_r;
-  }
-}
-
 int VsdDanfoss::setMinFrequency(float value)
 {
   if (!Vsd::setMinFrequency(value)) {
@@ -1768,13 +1743,14 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value, EventType eventType)
   case VSD_SWITCHING_FREQUENCY_CODE:
     return setSwitchingFrequencyCode(value);
 
-  case VSD_ROTATION:
-    return setRotation(value);
-
   case VSD_MOTOR_SPEED:
     return setMotorSpeed(value);
 
+  case VSD_TIMER_DISPERSAL:
+    return setTimeSpeedUp(value);
 
+  case VSD_TIMER_DELAY:
+    return setTimeSpeedDown(value);
 
   default:
     result = setValue(id, value, eventType);

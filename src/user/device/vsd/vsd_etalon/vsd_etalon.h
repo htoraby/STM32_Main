@@ -175,7 +175,6 @@ public:
   int configRegimeCurrentLimitation();
 
   // НАСТРОЙКИ ЧРП
-  int setRotation(float value);
   int setMinFrequency(float value);
   int setMaxFrequency(float value);
   int setFrequency(float value, EventType eventType = NoneType);

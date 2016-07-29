@@ -110,16 +110,6 @@ int VsdEtalon::setMotorType(float value)
   return err_r;
 }
 
-// ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ЧРП
-int VsdEtalon::setRotation(float value)
-{
-  if (!Vsd::setRotation(value)){
-    writeToDevice(VSD_ROTATION, getValue(VSD_ROTATION));
-    return ok_r;
-  }
-  return err_r;
-}
-
 int VsdEtalon::setMinFrequency(float value)
 {
   if (!Vsd::setMinFrequency(value)) {
@@ -533,9 +523,6 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value, EventType eventType)
   case  VSD_MOTOR_CONTROL:
     return setVsdControl(value);
     
-  case VSD_ROTATION:
-    return setRotation(value);
-
   case VSD_LOW_LIM_SPEED_MOTOR:
     if (!setMinFrequency(value)) {
       if (getValue(VSD_LOW_LIM_SPEED_MOTOR) > getValue(VSD_FREQUENCY)) {

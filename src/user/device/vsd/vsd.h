@@ -191,20 +191,7 @@ public:
    * \return 0 - задание успешно, № - ошибки
    */
   int setVsdControl(float value);
-  
-  /*!
-   * \brief Функция записи в регистр направления вращения
-   * \param value - направление вращения
-   * \return 0 - задание успешно, № - ошибки
-   */
-  virtual int setRotation(float value);
-
-  /*!
-   * \brief reverseRotation
-   * \return
-   */
-  virtual int reverseRotation();
-  
+    
   /*!
    * \brief Функция записи в регистр минимальной частоты
    * \param value - минимальная частота
