@@ -40,6 +40,7 @@ void RegimeRunPush::processingStateIdle()
     if (ksu.getValue(CCS_CONDITION) == CCS_CONDITION_STOP) {  // Станция в останове
       if (runReason_ != LastReasonRunNone) {                  // Попытка пуска
         state_ = RunningState;
+        logEvent.add(OtherCode, AutoType, RegimeRunPushStartId);
       }
     }
   }
@@ -114,6 +115,7 @@ void RegimeRunPush::processingStateWork()
     }
     else {
       offRegime();
+      logEvent.add(OtherCode, AutoType, RegimeRunPushFinishId);
     }
     break;
   }

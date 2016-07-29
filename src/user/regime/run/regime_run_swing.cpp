@@ -30,6 +30,7 @@ void RegimeRunSwing::processingStateIdle()
     if (ksu.getValue(CCS_CONDITION) == CCS_CONDITION_STOP) {  // Станция в останове
       if (runReason_ != LastReasonRunNone) {                  // Попытка пуска
         state_ = RunningState;
+        logEvent.add(OtherCode, AutoType, RegimeRunSwingStartId);
         #if (USE_LOG_DEBUG == 1)
           logDebug.add(DebugMsg, "Run swing: IdleState --> RunningState");
         #endif
@@ -80,17 +81,28 @@ void RegimeRunSwing::processingStateWork()
         #endif
       }
       else {
-        state_ = WorkState;
+        state_ = WorkState + 2;
         #if (USE_LOG_DEBUG == 1)
-          logDebug.add(DebugMsg, "Run swing: WorkState + 1 --> WorkState (rotation_ = %1.0f, cntReverse_ = %2.0f, quantity_ = %2.0f)",
+          logDebug.add(DebugMsg, "Run swing: WorkState + 1 --> WorkState  + 2(rotation_ = %1.0f, cntReverse_ = %2.0f, quantity_ = %2.0f)",
                        rotation_, cntReverse_, quantity_);
         #endif
       }
     }
     else {
-      vsd->reverseRotation();
+      parameters.set(VSD_ROTATION, !parameters.get(VSD_ROTATION), NoneType);
       #if (USE_LOG_DEBUG == 1)
         logDebug.add(DebugMsg, "Run swing: WorkState + 1 reverseRotation()");
+      #endif
+    }
+    break;
+  case WorkState + 2:
+    delay_ ++;
+    if (delay_ >= 10) {
+      delay_ = 0;
+      state_ = WorkState;
+      #if (USE_LOG_DEBUG == 1)
+        logDebug.add(DebugMsg, "Run swing: WorkState + 2 --> WorkState (rotation_ = %1.0f, cntReverse_ = %2.0f, quantity_ = %2.0f)",
+                     rotation_, cntReverse_, quantity_);
       #endif
     }
     break;
@@ -103,12 +115,13 @@ void RegimeRunSwing::processingStateStop()
     offRegime();
     cntReverse_ = 0;
     state_ = IdleState;
+    logEvent.add(OtherCode, AutoType, RegimeRunSwingFinishId);
     #if (USE_LOG_DEBUG == 1)
       logDebug.add(DebugMsg, "Run swing: StopState --> IdleState");
     #endif
   }
   else {
-    vsd->reverseRotation();
+    parameters.set(VSD_ROTATION, !parameters.get(VSD_ROTATION), NoneType);
     #if (USE_LOG_DEBUG == 1)
       logDebug.add(DebugMsg, "Run swing: StopState reverseRotation()");
     #endif
@@ -120,6 +133,7 @@ void RegimeRunSwing::automatRegime()
   if ((action_ == OffAction) && (state_ != IdleState)) {
     state_ = StopState;
   }
+
   switch (state_) {
   case IdleState:
     processingStateIdle();
@@ -129,6 +143,7 @@ void RegimeRunSwing::automatRegime()
     break;
   case WorkState:
   case WorkState + 1:
+  case WorkState + 2:
     if (ksu.isStopMotor()) {
       state_ = StopState;
     }
@@ -153,44 +168,44 @@ void RegimeRunSwing::onRegime()
   parameters.set(CCS_RGM_RUN_SWING_SETPOINT_TIME_DOWN, parameters.get(VSD_TIMER_DELAY));
   parameters.set(CCS_RGM_RUN_SWING_SETPOINT_ROTATION, parameters.get(VSD_ROTATION));
 
-  parameters.set(VSD_LOW_LIM_SPEED_MOTOR, 1);
+  parameters.set(VSD_LOW_LIM_SPEED_MOTOR, 1, NoneType);
   float nomFreq = parameters.get(VSD_MOTOR_FREQUENCY);
   float time = ((1 / freq_) * 10 * nomFreq) / freq_;
-  parameters.set(VSD_TIMER_DISPERSAL, time);
-  parameters.set(VSD_TIMER_DELAY, time);
+  parameters.set(VSD_TIMER_DISPERSAL, time, NoneType);
+  parameters.set(VSD_TIMER_DELAY, time, NoneType);
 
   if (freq_ > parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
     parameters.set(CCS_RGM_RUN_SWING_SETPOINT_U2, parameters.get(VSD_UF_CHARACTERISTIC_U_6));
-    parameters.set(VSD_UF_CHARACTERISTIC_U_6, parameters.get(VSD_UF_CHARACTERISTIC_U_6) * voltage_ / 100);
+    parameters.set(VSD_UF_CHARACTERISTIC_U_6, parameters.get(VSD_UF_CHARACTERISTIC_U_6) * voltage_ / 100, NoneType);
     parameters.set(CCS_RGM_RUN_SWING_SETPOINT_U1, parameters.get(VSD_UF_CHARACTERISTIC_U_5));
-    parameters.set(VSD_UF_CHARACTERISTIC_U_5, parameters.get(VSD_UF_CHARACTERISTIC_U_5) * voltage_ / 100);
+    parameters.set(VSD_UF_CHARACTERISTIC_U_5, parameters.get(VSD_UF_CHARACTERISTIC_U_5) * voltage_ / 100, NoneType);
   }
   else {
     if (freq_ > parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
       parameters.set(CCS_RGM_RUN_SWING_SETPOINT_U2, parameters.get(VSD_UF_CHARACTERISTIC_U_5));
-      parameters.set(VSD_UF_CHARACTERISTIC_U_5, parameters.get(VSD_UF_CHARACTERISTIC_U_5) * voltage_ / 100);
+      parameters.set(VSD_UF_CHARACTERISTIC_U_5, parameters.get(VSD_UF_CHARACTERISTIC_U_5) * voltage_ / 100, NoneType);
       parameters.set(CCS_RGM_RUN_SWING_SETPOINT_U1, parameters.get(VSD_UF_CHARACTERISTIC_U_4));
-      parameters.set(VSD_UF_CHARACTERISTIC_U_4, parameters.get(VSD_UF_CHARACTERISTIC_U_4) * voltage_ / 100);
+      parameters.set(VSD_UF_CHARACTERISTIC_U_4, parameters.get(VSD_UF_CHARACTERISTIC_U_4) * voltage_ / 100, NoneType);
     }
     else {
       if (freq_ > parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
         parameters.set(CCS_RGM_RUN_SWING_SETPOINT_U2, parameters.get(VSD_UF_CHARACTERISTIC_U_4));
-        parameters.set(VSD_UF_CHARACTERISTIC_U_4, parameters.get(VSD_UF_CHARACTERISTIC_U_4) * voltage_ / 100);
+        parameters.set(VSD_UF_CHARACTERISTIC_U_4, parameters.get(VSD_UF_CHARACTERISTIC_U_4) * voltage_ / 100, NoneType);
         parameters.set(CCS_RGM_RUN_SWING_SETPOINT_U1, parameters.get(VSD_UF_CHARACTERISTIC_U_3));
-        parameters.set(VSD_UF_CHARACTERISTIC_U_3, parameters.get(VSD_UF_CHARACTERISTIC_U_3) * voltage_ / 100);
+        parameters.set(VSD_UF_CHARACTERISTIC_U_3, parameters.get(VSD_UF_CHARACTERISTIC_U_3) * voltage_ / 100, NoneType);
       }
       else {
         if (freq_ > parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
           parameters.set(CCS_RGM_RUN_SWING_SETPOINT_U2, parameters.get(VSD_UF_CHARACTERISTIC_U_3));
-          parameters.set(VSD_UF_CHARACTERISTIC_U_3, parameters.get(VSD_UF_CHARACTERISTIC_U_3) * voltage_ / 100);
+          parameters.set(VSD_UF_CHARACTERISTIC_U_3, parameters.get(VSD_UF_CHARACTERISTIC_U_3) * voltage_ / 100, NoneType);
           parameters.set(CCS_RGM_RUN_SWING_SETPOINT_U1, parameters.get(VSD_UF_CHARACTERISTIC_U_2));
-          parameters.set(VSD_UF_CHARACTERISTIC_U_2, parameters.get(VSD_UF_CHARACTERISTIC_U_2) * voltage_ / 100);
+          parameters.set(VSD_UF_CHARACTERISTIC_U_2, parameters.get(VSD_UF_CHARACTERISTIC_U_2) * voltage_ / 100, NoneType);
         }
         else {
           parameters.set(CCS_RGM_RUN_SWING_SETPOINT_U2, parameters.get(VSD_UF_CHARACTERISTIC_U_2));
-          parameters.set(VSD_UF_CHARACTERISTIC_U_2, parameters.get(VSD_UF_CHARACTERISTIC_U_2) * voltage_ / 100);
+          parameters.set(VSD_UF_CHARACTERISTIC_U_2, parameters.get(VSD_UF_CHARACTERISTIC_U_2) * voltage_ / 100, NoneType);
           parameters.set(CCS_RGM_RUN_SWING_SETPOINT_U1, parameters.get(VSD_UF_CHARACTERISTIC_U_1));
-          parameters.set(VSD_UF_CHARACTERISTIC_U_1, parameters.get(VSD_UF_CHARACTERISTIC_U_1) * voltage_ / 100);
+          parameters.set(VSD_UF_CHARACTERISTIC_U_1, parameters.get(VSD_UF_CHARACTERISTIC_U_1) * voltage_ / 100, NoneType);
         }
       }
     }
@@ -209,35 +224,40 @@ bool RegimeRunSwing::checkOnRegime()
 void RegimeRunSwing::offRegime()
 {
   if (freq_ > parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
-    parameters.set(VSD_UF_CHARACTERISTIC_U_6, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U2));
-    parameters.set(VSD_UF_CHARACTERISTIC_U_5, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U1));
+    parameters.set(VSD_UF_CHARACTERISTIC_U_6, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U2), NoneType);
+    parameters.set(VSD_UF_CHARACTERISTIC_U_5, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U1), NoneType);
   }
   else {
     if (freq_ > parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
-      parameters.set(VSD_UF_CHARACTERISTIC_U_5, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U2));
-      parameters.set(VSD_UF_CHARACTERISTIC_U_4, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U1));
+      parameters.set(VSD_UF_CHARACTERISTIC_U_5, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U2), NoneType);
+      parameters.set(VSD_UF_CHARACTERISTIC_U_4, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U1), NoneType);
     }
     else {
       if (freq_ > parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
-        parameters.set(VSD_UF_CHARACTERISTIC_U_4, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U2));
-        parameters.set(VSD_UF_CHARACTERISTIC_U_3, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U1));
+        parameters.set(VSD_UF_CHARACTERISTIC_U_4, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U2), NoneType);
+        parameters.set(VSD_UF_CHARACTERISTIC_U_3, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U1), NoneType );
       }
       else {
         if (freq_ > parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
-          parameters.set(VSD_UF_CHARACTERISTIC_U_3, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U2));
-          parameters.set(VSD_UF_CHARACTERISTIC_U_2, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U1));
+          parameters.set(VSD_UF_CHARACTERISTIC_U_3, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U2), NoneType);
+          parameters.set(VSD_UF_CHARACTERISTIC_U_2, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U1), NoneType);
         }
         else {
-          parameters.set(VSD_UF_CHARACTERISTIC_U_2, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U2));
-          parameters.set(VSD_UF_CHARACTERISTIC_U_1, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U1));
+          parameters.set(VSD_UF_CHARACTERISTIC_U_2, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U2), NoneType);
+          parameters.set(VSD_UF_CHARACTERISTIC_U_1, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U1), NoneType);
         }
       }
     }
   }
-  parameters.set(VSD_TIMER_DISPERSAL, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_TIME_UP));
-  parameters.set(VSD_TIMER_DELAY, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_TIME_DOWN));
-  parameters.set(VSD_LOW_LIM_SPEED_MOTOR, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_LOW_LIM_FREQ));
-  parameters.set(VSD_FREQUENCY, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_FREQ));
+  parameters.set(VSD_TIMER_DISPERSAL, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_TIME_UP), NoneType);
+  parameters.set(VSD_TIMER_DELAY, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_TIME_DOWN), NoneType);
+  parameters.set(VSD_LOW_LIM_SPEED_MOTOR, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_LOW_LIM_FREQ), NoneType);
+  parameters.set(VSD_FREQUENCY, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_FREQ), NoneType);
+
+  if (parameters.get(CCS_RGM_RUN_SWING_MODE) == SingleAction) {
+    parameters.set(CCS_RGM_RUN_SWING_MODE, OffAction);         // Выключаем режим
+    logEvent.add(SetpointCode, AutoType, RegimeRunSwingOffId); // Записываем данные в лог
+  }
 }
 
 
