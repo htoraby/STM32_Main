@@ -238,7 +238,12 @@ void DeviceModbus::writeModbusParameter(int id, float value)
       param->value.float_t = value;
       break;
     case TYPE_DATA_COIL:
-      param->value.int16_t[0] = (short int)(value + 0.5);
+      if (value != 0) {
+         param->value.int16_t[0] = 255;
+      }
+      else {
+        param->value.int16_t[0] = 0;
+      }
     default:
       break;
     }

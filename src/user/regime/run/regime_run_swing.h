@@ -7,14 +7,26 @@ class RegimeRunSwing : public RegimeRun
 {
 public:
   RegimeRunSwing();
-  ~RegimeRunSwing();
-private:
+  virtual ~RegimeRunSwing();
+
   void getOtherSetpoint();
   void setOtherSetpoint();
+  void processingStateIdle();
+  void processingStateRunning();
+  void processingStateWork();
+  void processingStateStop();
+  void automatRegime();
 
-  float freq_;
-  float quantity_;
-  float voltage_;
+private:
+  void onRegime();
+  bool checkOnRegime();
+  void offRegime();
+
+  float freq_;                                        // Частота качка
+  float quantity_;                                    // Количество качков
+  float voltage_;                                     // Напряжение качков
+  float rotation_;                                    // Направление вращения
+  float cntReverse_;
 };
 
 #endif // REGIMERUNSWING_H

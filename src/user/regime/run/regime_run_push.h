@@ -22,7 +22,6 @@ public:
 private:
   void offRegime();
   bool checkOnRegime();
-  void onRegime();
 
   void makePush(bool push);
 

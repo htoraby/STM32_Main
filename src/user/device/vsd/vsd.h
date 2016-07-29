@@ -197,7 +197,13 @@ public:
    * \param value - направление вращения
    * \return 0 - задание успешно, № - ошибки
    */
-  virtual int setRotation(float value);  
+  virtual int setRotation(float value);
+
+  /*!
+   * \brief reverseRotation
+   * \return
+   */
+  virtual int reverseRotation();
   
   /*!
    * \brief Функция записи в регистр минимальной частоты

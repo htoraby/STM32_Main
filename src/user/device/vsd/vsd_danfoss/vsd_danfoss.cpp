@@ -1,17 +1,20 @@
 #include "vsd_danfoss.h"
 #include "user_main.h"
 #include "regime_run_push.h"
+#include "regime_run_swing.h"
 #include "regime_run_adaptation_vector.h"
 
 VsdDanfoss::VsdDanfoss()
 {
   regimeRunPush_ = new RegimeRunPush();
+  regimeRunSwing_ = new RegimeRunSwing();
   regimeRunAdaptationVector_ = new RegimeRunAdaptationVector();
 }
 
 VsdDanfoss::~VsdDanfoss()
 {
   delete regimeRunPush_;
+  delete regimeRunSwing_;
   delete regimeRunAdaptationVector_;
 }
 
@@ -273,6 +276,18 @@ int VsdDanfoss::setVsdControl(float value)
 int VsdDanfoss::setRotation(float value)
 {
   if(Vsd::setRotation(value)){
+    logDebug.add(WarningMsg, "VsdDanfoss::setRotation");
+    return err_r;
+  }
+  else {
+    writeToDevice(VSD_ROTATION, parameters.get(VSD_ROTATION));
+    return ok_r;
+  }
+}
+
+int VsdDanfoss::reverseRotation()
+{
+  if(Vsd::reverseRotation()){
     logDebug.add(WarningMsg, "VsdDanfoss::setRotation");
     return err_r;
   }
@@ -1487,6 +1502,7 @@ int VsdDanfoss::resetSetpoints()
 void VsdDanfoss::processingRegimeRun()
 {
   regimeRunPush_->processing();
+  regimeRunSwing_->processing();
   regimeRunAdaptationVector_->processing();
 }
 
@@ -1566,6 +1582,9 @@ void VsdDanfoss::getNewValue(uint16_t id)
   }
 
   switch (param->typeData) {
+  case TYPE_DATA_COIL:
+    value = (float)param->value.int16_t[0];
+    break;
   case TYPE_DATA_INT16:
   case TYPE_DATA_ARRAY_INT16:
     value = (float)param->value.int16_t[0];
@@ -1678,6 +1697,12 @@ void VsdDanfoss::getNewValue(uint16_t id)
         parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY, value);
       break;
     case VSD_STATUS_WORD_5:
+      setValue(id, value);
+      break;
+    case VSD_CONTROL_WORD_1:
+      setValue(id, value);
+      break;
+    case VSD_ROTATION:
       setValue(id, value);
       break;
     default:
