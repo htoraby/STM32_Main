@@ -91,7 +91,7 @@ void EmAbb::sendRequest()
     break;
   // Запрос чтения реактивной энергии
   case AbbRequestEnergyReact:
-    addr = 0x4FBC;
+    addr = 0x500C;
     count = 8;
     break;
   // Запрос чтения напряжений, токов, мощностей, частоты, фаз
@@ -189,16 +189,16 @@ void EmAbb::receiveAnswer()
     break;
   // Ответ на запрос чтения активной энергии
   case AbbRequestEnergyAct:
-    value.float_t = getUint64(&rxBuffer_[3], 0.01)*1000/coefTransI_/coefTransU_;
+    value.float_t = getUint64(&rxBuffer_[3], 0.01)/coefTransI_/coefTransU_;
     setNewValue(EM_ACTIVE_PLUS_ALL, value.float_t);
-    value.float_t = getUint64(&rxBuffer_[11], 0.01)*1000/coefTransI_/coefTransU_;
+    value.float_t = getUint64(&rxBuffer_[11], 0.01)/coefTransI_/coefTransU_;
     setNewValue(EM_ACTIVE_MINUS_ALL, value.float_t);
     break;
   // Ответ на запрос чтения реактивной энергии
   case AbbRequestEnergyReact:
-    value.float_t = getUint64(&rxBuffer_[3], 0.01)*1000/coefTransI_/coefTransU_;
+    value.float_t = getUint64(&rxBuffer_[3], 0.01)/coefTransI_/coefTransU_;
     setNewValue(EM_REACTIVE_PLUS_ALL, value.float_t);
-    value.float_t = getUint64(&rxBuffer_[11], 0.01)*1000/coefTransI_/coefTransU_;
+    value.float_t = getUint64(&rxBuffer_[11], 0.01)/coefTransI_/coefTransU_;
     setNewValue(EM_REACTIVE_MINUS_ALL, value.float_t);
     break;
   // Ответ на запрос чтения напряжений, токов, мощностей, частоты, фаз
