@@ -251,8 +251,8 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
 
   setFieldValue(index, value);
   setFieldValidity(index, isnan(value) ? VALIDITY_ERROR : VALIDITY_OK);
-if (id == VSD_FREQUENCY)
-  asm("nop");
+  if (id == VSD_ROTATION)
+    asm("nop");
   if ((value != oldValue) && !(isnan(value) && isnan(oldValue))) {
     // Сообщить контроллеру визуализации об обновлении параметра
     novobusSlave.putMessageParams(id);

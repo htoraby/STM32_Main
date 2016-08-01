@@ -184,6 +184,10 @@ typedef enum {
   RegimeRunAutoAdaptationCompleteId,  //!< Автоадаптация к ТМПН векторного управления успешно завершена. Подобранное сопротивление - %1 Ом
   RegimeRunAutoAdaptationIncompleteId,//!< Автоадаптация к ТМПН векторного управления не завершена
 
+  RegimeRunSwingStartId,              //!< Пуск с раскачкой
+  RegimeRunSwingFinishId,             //!< Пуск с раскачкой завершен
+  RegimeRunPushStartId,               //!< Пуск толчками
+  RegimeRunPushFinishId,              //!< Пуск толчками завершен
 
 } EventId;
 
