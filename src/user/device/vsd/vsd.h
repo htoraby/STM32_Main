@@ -668,6 +668,12 @@ public:
    */
   virtual void writeToDevice(int id, float value);
 
+  /*!
+   * \brief readInDevice
+   * \param id
+   */
+  virtual void readInDevice(int id);
+
   VsdLog *log() const { return log_; }
 
 

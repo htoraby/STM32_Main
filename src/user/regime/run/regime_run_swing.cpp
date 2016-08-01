@@ -30,7 +30,6 @@ void RegimeRunSwing::processingStateIdle()
     if (ksu.getValue(CCS_CONDITION) == CCS_CONDITION_STOP) {  // Станция в останове
       if (runReason_ != LastReasonRunNone) {                  // Попытка пуска
         state_ = RunningState;
-        logEvent.add(OtherCode, AutoType, RegimeRunSwingStartId);
         #if (USE_LOG_DEBUG == 1)
           logDebug.add(DebugMsg, "Run swing: IdleState --> RunningState");
         #endif
@@ -43,6 +42,7 @@ void RegimeRunSwing::processingStateRunning()
 {
   if (checkOnRegime()) {
     ksu.start(runReason_);
+    logEvent.add(OtherCode, AutoType, RegimeRunSwingStartId);
     state_ = WorkState;
     #if (USE_LOG_DEBUG == 1)
       logDebug.add(DebugMsg, "Run swing: RunningState --> WorkState");
@@ -132,6 +132,12 @@ void RegimeRunSwing::automatRegime()
 {
   if ((action_ == OffAction) && (state_ != IdleState)) {
     state_ = StopState;
+  }
+
+  update_ ++;
+  if (update_ >= 3) {
+    vsd->readInDevice(VSD_ROTATION);
+    update_ = 0;
   }
 
   switch (state_) {

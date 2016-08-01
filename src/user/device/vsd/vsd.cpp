@@ -675,6 +675,11 @@ void Vsd::writeToDevice(int id, float value)
   setValue(id, value);
 }
 
+void Vsd::readInDevice(int id)
+{
+  return;
+}
+
 // Читаемые параметры ЧРП
 float Vsd::getCurrentFreq()
 {
