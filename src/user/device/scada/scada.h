@@ -36,6 +36,7 @@ public:
     NoneType,         //!< Откл
     NovometType,      //!< Новомет
     Region30Type,     //!< Регион 3.0
+    TelescopType,     //!< Телескоп
   };
 
   Scada();

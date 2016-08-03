@@ -159,6 +159,9 @@ void createScada()
   case Scada::NovometType:
     scada = new ScadaNovomet();
     break;
+  case Scada::TelescopType:
+    scada = new ScadaTelescop();
+    break;
   default:
     break;
   }
