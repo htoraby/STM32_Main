@@ -7,6 +7,7 @@
 class RegimeRunPush;
 class RegimeRunSwing;
 class RegimeRunAdaptationVector;
+class RegimeRunPickup;
 
 enum enVsdDanfosStatus1
 {
@@ -237,6 +238,7 @@ private:
   RegimeRunPush *regimeRunPush_;
   RegimeRunSwing *regimeRunSwing_;
   RegimeRunAdaptationVector *regimeRunAdaptationVector_;
+  RegimeRunPickup *regimeRunPickup_;
 
 };
 

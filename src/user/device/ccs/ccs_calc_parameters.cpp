@@ -595,6 +595,7 @@ void Ccs::calcRegimeRun()
   }
   if (parameters.get(CCS_RGM_RUN_PICKUP_MODE) != Regime::OffAction) {
      parameters.set(CCS_RUNNING_TYPE, Regime::PickupRegimeRun);
+     return;
   }
   parameters.set(CCS_RUNNING_TYPE, Regime::SmoothRegimeRun);
   return;
@@ -749,8 +750,9 @@ void Ccs::calcDigitalInputs()
     if (impulse > 400)
       impulse = 400;
     if ((parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON)) {
-      if (!isWorkMotor())
+      if (!isWorkMotor() || (parameters.get(CCS_RGM_RUN_PICKUP_STATE) != Regime::IdleState))
         setValue(CCS_TURBO_ROTATION_NOW, impulse / 2);
+
       else
         setValue(CCS_TURBO_ROTATION_NOW, 0);
     }

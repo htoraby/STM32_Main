@@ -188,6 +188,8 @@ typedef enum {
   RegimeRunSwingFinishId,             //!< Пуск с раскачкой завершен
   RegimeRunPushStartId,               //!< Пуск толчками
   RegimeRunPushFinishId,              //!< Пуск толчками завершен
+  RegimeRunPickupStartId,             //!< Подхват
+  RegimeRunPickupFinishId,            //!< Подхват завершен
 
 } EventId;
 

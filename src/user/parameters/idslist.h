@@ -1009,7 +1009,12 @@ enum enID
   CCS_RGM_RUN_SWING_SETPOINT_ROTATION = 1003,                //!< Раскачка. Сохранённая уставка направления вращения
   CCS_RGM_RUN_SWING_SETPOINT_U1 = 1004,                      //!< Раскачка. Сохранённая уставка характеристики U/F 1
   CCS_RGM_RUN_SWING_SETPOINT_U2 = 1005,                      //!< Раскачка. Сохранённая уставка характеристики U/F 1
-  CCS_END = 1006,                                            //!< 
+  CCS_RGM_RUN_PICKUP_SETPOINT_FREQ = 1006,                   //!< Подхват. Сохраненная уставка частоты до подхвата
+  CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ = 1007,           //!< Подхват. Сохранённая уставка минимальной частоты
+  CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP = 1008,                //!< Подхват. Сохранённая уставка времени разгона
+  CCS_RGM_RUN_PICKUP_SETPOINT_TIME_DOWN = 1009,              //!< Подхват. Сохранённая уставка времени торможения
+  CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION = 1010,               //!< Подхват. Сохранённая уставка направления вращения
+  CCS_END = 1011,                                            //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
