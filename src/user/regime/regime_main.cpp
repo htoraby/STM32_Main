@@ -61,7 +61,7 @@ bool interceptionStartRegime()
       }
       break;
     default:
-      if (parameters.get(CCS_RGM_RUN_PICKUP_MODE) == Regime::IdleState) {
+      if (parameters.get(CCS_RGM_RUN_PICKUP_STATE) == Regime::IdleState) {
         return false;
       }
       break;
