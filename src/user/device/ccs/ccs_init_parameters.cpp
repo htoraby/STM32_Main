@@ -12074,5 +12074,65 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_U2 - CCS_BEGIN].discret                 = 1;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_U2 - CCS_BEGIN].def                     = 0.0;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_U2 - CCS_BEGIN].code                    = 0;
+  // Подхват. Сохраненная уставка частоты до подхвата
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_FREQ - CCS_BEGIN].id                   = CCS_RGM_RUN_PICKUP_SETPOINT_FREQ;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_FREQ - CCS_BEGIN].access               = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_FREQ - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_FREQ - CCS_BEGIN].physic               = PHYSIC_FREQUENCY;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_FREQ - CCS_BEGIN].validity             = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_FREQ - CCS_BEGIN].value.float_t        = 0.0;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_FREQ - CCS_BEGIN].min                  = 0.0;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_FREQ - CCS_BEGIN].max                  = 4294967296.0;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_FREQ - CCS_BEGIN].discret              = 1;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_FREQ - CCS_BEGIN].def                  = 0.0;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_FREQ - CCS_BEGIN].code                 = 0;
+  // Подхват. Сохранённая уставка минимальной частоты
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].id           = CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].access       = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].operation    = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].physic       = PHYSIC_FREQUENCY;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].validity     = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].value.float_t = 0.0;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].min          = 0.0;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].max          = 4294967296.0;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].discret      = 1;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].def          = 0.0;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].code         = 0;
+  // Подхват. Сохранённая уставка времени разгона
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP - CCS_BEGIN].id                = CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP - CCS_BEGIN].access            = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP - CCS_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP - CCS_BEGIN].physic            = PHYSIC_TIME;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP - CCS_BEGIN].validity          = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP - CCS_BEGIN].value.float_t     = 0.0;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP - CCS_BEGIN].min               = 0.0;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP - CCS_BEGIN].max               = 4294967296.0;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP - CCS_BEGIN].discret           = 1;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP - CCS_BEGIN].def               = 0.0;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP - CCS_BEGIN].code              = 0;
+  // Подхват. Сохранённая уставка времени торможения
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_DOWN - CCS_BEGIN].id              = CCS_RGM_RUN_PICKUP_SETPOINT_TIME_DOWN;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_DOWN - CCS_BEGIN].access          = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_DOWN - CCS_BEGIN].operation       = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_DOWN - CCS_BEGIN].physic          = PHYSIC_TIME;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_DOWN - CCS_BEGIN].validity        = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_DOWN - CCS_BEGIN].value.float_t   = 0.0;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_DOWN - CCS_BEGIN].min             = 0.0;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_DOWN - CCS_BEGIN].max             = 4294967296.0;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_DOWN - CCS_BEGIN].discret         = 1;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_DOWN - CCS_BEGIN].def             = 0.0;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_DOWN - CCS_BEGIN].code            = 0;
+  // Подхват. Сохранённая уставка направления вращения
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION - CCS_BEGIN].id               = CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION - CCS_BEGIN].access           = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION - CCS_BEGIN].operation        = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION - CCS_BEGIN].physic           = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION - CCS_BEGIN].validity         = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION - CCS_BEGIN].value.float_t    = 0.0;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION - CCS_BEGIN].min              = 0.0;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION - CCS_BEGIN].max              = 1.0;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION - CCS_BEGIN].discret          = 1;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION - CCS_BEGIN].def              = 0.0;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION - CCS_BEGIN].code             = 0;
 }
 

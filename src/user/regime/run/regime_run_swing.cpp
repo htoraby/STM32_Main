@@ -258,7 +258,7 @@ void RegimeRunSwing::offRegime()
   parameters.set(VSD_TIMER_DISPERSAL, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_TIME_UP), NoneType);
   parameters.set(VSD_TIMER_DELAY, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_TIME_DOWN), NoneType);
   parameters.set(VSD_LOW_LIM_SPEED_MOTOR, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_LOW_LIM_FREQ), NoneType);
-  parameters.set(VSD_FREQUENCY, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_FREQ), NoneType);
+  ksu.setFreq(parameters.get(CCS_RGM_RUN_SWING_SETPOINT_FREQ), NoneType);
 
   if (parameters.get(CCS_RGM_RUN_SWING_MODE) == SingleAction) {
     parameters.set(CCS_RGM_RUN_SWING_MODE, OffAction);         // Выключаем режим

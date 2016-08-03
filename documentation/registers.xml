@@ -19768,6 +19768,111 @@
 	</param>
 	<param>
 		<id>1006</id>
+		<name>CCS_RGM_RUN_PICKUP_SETPOINT_FREQ</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>4294967296.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Подхват. Сохраненная уставка частоты до подхвата</comment>
+	</param>
+	<param>
+		<id>1007</id>
+		<name>CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>4294967296.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Подхват. Сохранённая уставка минимальной частоты</comment>
+	</param>
+	<param>
+		<id>1008</id>
+		<name>CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>4294967296.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Подхват. Сохранённая уставка времени разгона</comment>
+	</param>
+	<param>
+		<id>1009</id>
+		<name>CCS_RGM_RUN_PICKUP_SETPOINT_TIME_DOWN</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>4294967296.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Подхват. Сохранённая уставка времени торможения</comment>
+	</param>
+	<param>
+		<id>1010</id>
+		<name>CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Подхват. Сохранённая уставка направления вращения</comment>
+	</param>
+	<param>
+		<id>1011</id>
 		<name>CCS_END</name>
 	</param>
 	<param>

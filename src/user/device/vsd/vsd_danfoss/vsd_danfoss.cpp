@@ -3,12 +3,14 @@
 #include "regime_run_push.h"
 #include "regime_run_swing.h"
 #include "regime_run_adaptation_vector.h"
+#include "regime_run_pickup.h"
 
 VsdDanfoss::VsdDanfoss()
 {
   regimeRunPush_ = new RegimeRunPush();
   regimeRunSwing_ = new RegimeRunSwing();
   regimeRunAdaptationVector_ = new RegimeRunAdaptationVector();
+  regimeRunPickup_ = new RegimeRunPickup();
 }
 
 VsdDanfoss::~VsdDanfoss()
@@ -16,6 +18,7 @@ VsdDanfoss::~VsdDanfoss()
   delete regimeRunPush_;
   delete regimeRunSwing_;
   delete regimeRunAdaptationVector_;
+  delete regimeRunPickup_;
 }
 
 void VsdDanfoss::initParameters()
@@ -1479,6 +1482,7 @@ void VsdDanfoss::processingRegimeRun()
   regimeRunPush_->processing();
   regimeRunSwing_->processing();
   regimeRunAdaptationVector_->processing();
+  regimeRunPickup_->processing();
 }
 
 void VsdDanfoss::resetAdaptationVector(uint16_t type)
