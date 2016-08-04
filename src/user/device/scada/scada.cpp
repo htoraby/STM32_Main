@@ -278,6 +278,9 @@ eMBErrorCode eMBRegInputCB(UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNReg
 {
   eMBErrorCode status = MB_ENOERR;
 
+  if (parameters.get(CCS_SCADA_TYPE) == Scada::TelescopType)
+    usAddress = usAddress + 40000;
+
   status = scada->readReg(pucRegBuffer, usAddress, usNRegs);
 
   osDelay(scada->delay());
@@ -288,6 +291,9 @@ eMBErrorCode eMBRegHoldingCB(UCHAR * pucRegBuffer, USHORT usAddress,
                              USHORT usNRegs, eMBRegisterMode eMode)
 {
   eMBErrorCode status = MB_ENOERR;
+
+  if (parameters.get(CCS_SCADA_TYPE) == Scada::TelescopType)
+    usAddress = usAddress + 30000;
 
   switch (eMode) {
   case MB_REG_READ:
