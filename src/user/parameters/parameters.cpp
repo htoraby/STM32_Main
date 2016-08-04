@@ -159,13 +159,13 @@ uint8_t Parameters::getValidity(unsigned short id)
 bool Parameters::isValidity(uint16_t id)
 {
   if ((id > CCS_BEGIN) && (id < CCS_END))
-    return (ksu.getValidity(id) == VALIDITY_OK);
+    return !(ksu.getValidity(id) == VALIDITY_ERROR);
   if ((id > VSD_BEGIN) && (id < VSD_END))
-    return (vsd->getValidity(id) == VALIDITY_OK);
+    return !(vsd->getValidity(id) == VALIDITY_ERROR);
   if ((id > TMS_BEGIN) && (id < TMS_END))
-    return (tms->getValidity(id) == VALIDITY_OK);
+    return !(tms->getValidity(id) == VALIDITY_ERROR);
   if ((id > EM_BEGIN) && (id < EM_END))
-    return (em->getValidity(id) == VALIDITY_OK);
+    return !(em->getValidity(id) == VALIDITY_ERROR);
 
   return false;
 }

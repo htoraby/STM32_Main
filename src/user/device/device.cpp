@@ -202,7 +202,7 @@ float Device::getValue(unsigned short id, bool *ok)
 {
   uint16_t index = getIndexAtId(id);
   if (ok)
-    *ok = (getFieldValidity(index) == VALIDITY_OK) ? true : false;
+    *ok = (getFieldValidity(index) == VALIDITY_ERROR) ? false : true;
   return getFieldValue(index);
 }
 
@@ -210,7 +210,7 @@ uint32_t Device::getValueUint32(unsigned short id, bool *ok)
 {
   uint16_t index = getIndexAtId(id);
   if (ok)
-    *ok = (getFieldValidity(index) == VALIDITY_OK) ? true : false;
+    *ok = (getFieldValidity(index) == VALIDITY_ERROR) ? false : true;
   return getFieldValueUint32(index);
 }
 
@@ -234,13 +234,15 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
   uint8_t check = checkRange(value, min, max, true, discret);
   if((check != 0) && !isnan(value) && !isinf(value) && (value != -1)) {
     novobusSlave.putMessageParams(id);
-    if (check == err_min_r) {
+    if ((check == err_min_r) && (getValidity(index) != VALIDITY_MIN)) {
+      setFieldValidity(index, VALIDITY_MIN);
 #if (USE_LOG_WARNING == 1)
     logDebug.add(WarningMsg, "Device: Значение меньше минимума (id = %d, value = %f, min = %f)",
                    id, value, min);
 #endif
     }
-    if (check == err_max_r) {
+    if ((check == err_max_r) && (getValidity(index) != VALIDITY_MAX)) {
+      setFieldValidity(index, VALIDITY_MAX);
 #if (USE_LOG_WARNING == 1)
       logDebug.add(WarningMsg, "Device: Значение больше максимума (id = %d, value = %f, max = %f)",
                    id, value, max);
