@@ -33,10 +33,14 @@ public:
    * \brief Список протоколов телемеханики
    */
   enum ScadaType {
-    NoneType,         //!< Откл
-    NovometType,      //!< Новомет
-    Region30Type,     //!< Регион 3.0
-    TelescopType,     //!< Телескоп
+    NoneType,           //!< Откл
+    NovometType,        //!< Новомет
+    Region30Type,       //!< Регион 3.0
+    Region2000Type,     //!< Регион 2000
+    TelescopType,       //!< Телескоп
+    LukoilType,         //!< Лукойл
+    KarakudukType,      //!< Каракудукмунай
+    SurgutneftegasType, //!< Сургутнефтегаз
   };
 
   Scada();
