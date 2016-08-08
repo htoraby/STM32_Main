@@ -90,7 +90,11 @@ void ScadaRegion30::calcParamsTask()
           parameters.get(CCS_PROT_DI_3_PREVENT) ||
           parameters.get(CCS_PROT_DI_4_PREVENT) ||
           parameters.get(CCS_PROT_OTHER_VSD_PREVENT) ||
-          parameters.get(CCS_PROT_OTHER_IMB_PREVENT))
+          parameters.get(CCS_PROT_OTHER_IMB_PREVENT) ||
+          parameters.get(CCS_PROT_OTHER_LIMIT_RESTART_PREVENT) ||
+          parameters.get(CCS_PROT_DHS_FLOW_DISCHARGE_PREVENT) ||
+          parameters.get(CCS_PROT_DHS_PRESSURE_DISCHARGE_PREVENT) ||
+          parameters.get(CCS_PROT_SUPPLY_POWEROFF_PREVENT))
         value |= (1 << 15);
       scadaParameters_[2].value.float_t = value;
     }
