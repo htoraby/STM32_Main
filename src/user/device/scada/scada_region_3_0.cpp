@@ -105,7 +105,7 @@ void ScadaRegion30::calcParamsTask()
 
     // 259
     value = 0;
-    if (ksu.isStopMotor()) {
+//    if (ksu.isStopMotor()) {
       int reason = parameters.get(CCS_LAST_STOP_REASON);
       int reasonVsd = parameters.get(CCS_VSD_ALARM_CODE);
       switch (reason) {
@@ -171,7 +171,7 @@ void ScadaRegion30::calcParamsTask()
           value = 46;
         break;
       }
-    }
+//    }
     scadaParameters_[3].value.float_t = value;
 
     //260-262
