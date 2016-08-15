@@ -3,7 +3,7 @@
 
 ScadaRegion30::ScadaRegion30()
 {
-  countParameters_ = 172;
+  countParameters_ = 173;
   initParameters();
 }
 

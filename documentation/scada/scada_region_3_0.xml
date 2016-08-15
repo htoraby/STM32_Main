@@ -2144,4 +2144,17 @@
 		<command>OPERATION_ERROR</command>
 		<name>Мастер пароль</name>
 	</param>
+	<param>
+		<id>CCS_RUN_TIME</id>
+		<address>353</address>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TIME</physic>
+		<unit>TIME_HH</unit>
+		<typeData>TYPE_DATA_UINT16</typeData>
+		<coefficient>1</coefficient>
+		<min>0</min>
+		<max>65535</max>
+		<command>OPERATION_ERROR</command>
+		<name>Время работы с момента последнего пуска</name>
+	</param>
 </SCADA>

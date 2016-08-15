@@ -2066,5 +2066,17 @@ void ScadaRegion30::initParameters()
   scadaParameters_[171].max              = 9999;
   scadaParameters_[171].command          = OPERATION_ERROR;
   scadaParameters_[171].value.float_t    = 0;
+  // Время работы с момента последнего пуска
+  scadaParameters_[172].id               = CCS_RUN_TIME;
+  scadaParameters_[172].address          = 353;
+  scadaParameters_[172].operation        = OPERATION_READ;
+  scadaParameters_[172].physic           = PHYSIC_TIME;
+  scadaParameters_[172].unit             = TIME_HH;
+  scadaParameters_[172].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[172].coefficient      = 1;
+  scadaParameters_[172].min              = 0;
+  scadaParameters_[172].max              = 65535;
+  scadaParameters_[172].command          = OPERATION_ERROR;
+  scadaParameters_[172].value.float_t    = 0;
 }
 
