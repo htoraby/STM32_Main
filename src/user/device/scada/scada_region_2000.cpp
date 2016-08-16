@@ -25,44 +25,42 @@ void ScadaRegion2000::calcParamsTask()
 
     // 256
     uint16_t value = 0;
-    if (ksu.isStopMotor()) {
-      int reason = parameters.get(CCS_LAST_STOP_REASON);
-      switch (reason) {
-      case LastReasonStopOverVoltIn:
-        value = 1; break;
-      case LastReasonStopUnderVoltIn:
-        value = 2; break;
-      case LastReasonStopImbalanceVoltIn:
-        value = 3; break;
-      case LastReasonStopOverloadMotor:
-        value = 4; break;
-      case LastReasonStopUnderloadMotor:
-        value = 5; break;
-      case LastReasonStopImbalanceCurMotor:
-        value = 6; break;
-      case LastReasonStopPressureIntake:
-        value = 7; break;
-      case LastReasonStopResistIsolation:
-        value = 8; break;
-      case LastReasonStopManometr:
-        value = 9; break;
-      case LastReasonStopNoVoltage:
-        value = 12; break;
-      case LastReasonStopHackSu:
-        value = 13; break;
-      case LastReasonStopOperator:
-        value = 14; break;
-      case LastReasonStopProgram:
-        value = 15; break;
-      case LastReasonStopRemote:
-        value = 21; break;
-      case LastReasonStopHardwareVsd:
-        value = 23; break;
-      default:
-        if (reason)
-          value = 255;
-        break;
-      }
+    int reason = parameters.get(CCS_LAST_STOP_REASON);
+    switch (reason) {
+    case LastReasonStopOverVoltIn:
+      value = 1; break;
+    case LastReasonStopUnderVoltIn:
+      value = 2; break;
+    case LastReasonStopImbalanceVoltIn:
+      value = 3; break;
+    case LastReasonStopOverloadMotor:
+      value = 4; break;
+    case LastReasonStopUnderloadMotor:
+      value = 5; break;
+    case LastReasonStopImbalanceCurMotor:
+      value = 6; break;
+    case LastReasonStopPressureIntake:
+      value = 7; break;
+    case LastReasonStopResistIsolation:
+      value = 8; break;
+    case LastReasonStopManometr:
+      value = 9; break;
+    case LastReasonStopNoVoltage:
+      value = 12; break;
+    case LastReasonStopHackSu:
+      value = 13; break;
+    case LastReasonStopOperator:
+      value = 14; break;
+    case LastReasonStopProgram:
+      value = 15; break;
+    case LastReasonStopRemote:
+      value = 21; break;
+    case LastReasonStopHardwareVsd:
+      value = 23; break;
+    default:
+      if (reason)
+        value = 255;
+      break;
     }
     scadaParameters_[0].value.float_t = value;
 

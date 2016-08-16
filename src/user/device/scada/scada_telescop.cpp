@@ -101,72 +101,70 @@ void ScadaTelescop::calcParamsTask()
 
     // 40003
     value = 0;
-    if (ksu.isStopMotor()) {
-      int reason = parameters.get(CCS_LAST_STOP_REASON);
-      int reasonVsd = parameters.get(CCS_VSD_ALARM_CODE);
-      switch (reason) {
-      case LastReasonStopOperator:
-        value = 12; break;
-      case LastReasonStopResistIsolation:
-        value = 7; break;
-      case LastReasonStopUnderloadMotor:
-        value = 5; break;
-      case LastReasonStopOverloadMotor:
-        value = 4; break;
-      case LastReasonStopUnderVoltIn:
-        value = 2; break;
-      case LastReasonStopOverVoltIn:
-        value = 1; break;
-      case LastReasonStopHackSu:
-        value = 8; break;
-      case LastReasonStopManometr:
-        value = 9; break;
-      case LastReasonStopImbalanceCurMotor:
-        value = 6; break;
-      case LastReasonStopImbalanceVoltIn:
-        value = 3; break;
-      case LastReasonStopProgram:
-        value = 13; break;
-      case LastReasonStopMinAnalog1:
-        value = 23; break;
-      case LastReasonStopMinAnalog2:
-        value = 24; break;
-      case LastReasonStopMinAnalog3:
-        value = 25; break;
-      case LastReasonStopMinAnalog4:
-        value = 26; break;
-      case LastReasonStopMaxAnalog1:
-        value = 34; break;
-      case LastReasonStopMaxAnalog2:
-        value = 35; break;
-      case LastReasonStopMaxAnalog3:
-        value = 36; break;
-      case LastReasonStopMaxAnalog4:
-        value = 37; break;
-      case LastReasonStopRemote:
-        value = 14; break;
-      case LastReasonStopCurrentMotor:
+    int reason = parameters.get(CCS_LAST_STOP_REASON);
+    int reasonVsd = parameters.get(CCS_VSD_ALARM_CODE);
+    switch (reason) {
+    case LastReasonStopOperator:
+      value = 12; break;
+    case LastReasonStopResistIsolation:
+      value = 7; break;
+    case LastReasonStopUnderloadMotor:
+      value = 5; break;
+    case LastReasonStopOverloadMotor:
+      value = 4; break;
+    case LastReasonStopUnderVoltIn:
+      value = 2; break;
+    case LastReasonStopOverVoltIn:
+      value = 1; break;
+    case LastReasonStopHackSu:
+      value = 8; break;
+    case LastReasonStopManometr:
+      value = 9; break;
+    case LastReasonStopImbalanceCurMotor:
+      value = 6; break;
+    case LastReasonStopImbalanceVoltIn:
+      value = 3; break;
+    case LastReasonStopProgram:
+      value = 13; break;
+    case LastReasonStopMinAnalog1:
+      value = 23; break;
+    case LastReasonStopMinAnalog2:
+      value = 24; break;
+    case LastReasonStopMinAnalog3:
+      value = 25; break;
+    case LastReasonStopMinAnalog4:
+      value = 26; break;
+    case LastReasonStopMaxAnalog1:
+      value = 34; break;
+    case LastReasonStopMaxAnalog2:
+      value = 35; break;
+    case LastReasonStopMaxAnalog3:
+      value = 36; break;
+    case LastReasonStopMaxAnalog4:
+      value = 37; break;
+    case LastReasonStopRemote:
+      value = 14; break;
+    case LastReasonStopCurrentMotor:
+      value = 10; break;
+    case LastReasonStopHardwareVsd:
+      switch (reasonVsd) {
+      case VSD_NOVOMET_ALARM_I_LIMIT_FAST:
+      case VSD_ETALON_ALARM_CURRENT_LIMIT:
         value = 10; break;
-      case LastReasonStopHardwareVsd:
-        switch (reasonVsd) {
-        case VSD_NOVOMET_ALARM_I_LIMIT_FAST:
-        case VSD_ETALON_ALARM_CURRENT_LIMIT:
-          value = 10; break;
-        case VSD_NOVOMET_ALARM_TEMP_LINK:
-        case VSD_NOVOMET_ALARM_TEMP:
-        case VSD_NOVOMET_ALARM_AIR_TEMP:
-        case VSD_ETALON_ALARM_OVERHEAT_IGBT:
-        case VSD_ETALON_ALARM_OVERHEAT_FILTER:
-          value = 17; break;
-        default:
-          value = 45; break;
-        }
-        break;
+      case VSD_NOVOMET_ALARM_TEMP_LINK:
+      case VSD_NOVOMET_ALARM_TEMP:
+      case VSD_NOVOMET_ALARM_AIR_TEMP:
+      case VSD_ETALON_ALARM_OVERHEAT_IGBT:
+      case VSD_ETALON_ALARM_OVERHEAT_FILTER:
+        value = 17; break;
       default:
-        if (reason)
-          value = 46;
-        break;
+        value = 45; break;
       }
+      break;
+    default:
+      if (reason)
+        value = 46;
+      break;
     }
     scadaParameters_[3].value.float_t = value;
 
