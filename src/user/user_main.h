@@ -22,7 +22,9 @@
 #include "em_abb.h"
 #include "scada_region_3_0.h"
 #include "scada_novomet.h"
+#include "scada_region_2000.h"
 #include "scada_telescop.h"
+#include "scada_lukoil.h"
 #include "parameters.h"
 #include "novobus_slave.h"
 

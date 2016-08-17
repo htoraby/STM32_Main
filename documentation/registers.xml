@@ -11533,7 +11533,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>3.0</max>
+		<max>5.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -11545,7 +11545,7 @@
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>TEXT</format>
 		<code>13</code>
-		<values>0-Откл;1-Новомет;2-Регион 3.0;3-Телескоп</values>
+		<values>0-Откл;1-Новомет;2-Регион 3.0;3-Регион 2000;4-Телескоп;5-Лукойл</values>
 		<comment>Протокол телемеханики</comment>
 	</param>
 	<param>

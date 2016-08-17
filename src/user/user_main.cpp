@@ -153,14 +153,20 @@ void createScada()
 
   uint8_t type = parameters.get(CCS_SCADA_TYPE);
   switch (type) {
-  case Scada::Region30Type:
-    scada = new ScadaRegion30();
-    break;
   case Scada::NovometType:
     scada = new ScadaNovomet();
     break;
+  case Scada::Region30Type:
+    scada = new ScadaRegion30();
+    break;
+  case Scada::Region2000Type:
+    scada = new ScadaRegion2000();
+    break;
   case Scada::TelescopType:
     scada = new ScadaTelescop();
+    break;
+  case Scada::LukoilType:
+    scada = new ScadaLukoil();
     break;
   default:
     break;
