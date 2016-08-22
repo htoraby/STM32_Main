@@ -168,6 +168,9 @@ void createScada()
   case Scada::LukoilType:
     scada = new ScadaLukoil();
     break;
+  case Scada::KarakudukType:
+    scada = new ScadaKarakuduk();
+    break;
   default:
     break;
   }
