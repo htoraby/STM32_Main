@@ -171,6 +171,9 @@ void createScada()
   case Scada::KarakudukType:
     scada = new ScadaKarakuduk();
     break;
+  case Scada::SurgutneftegasType:
+    scada = new ScadaSurgutneftegas();
+    break;
   default:
     break;
   }

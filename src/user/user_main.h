@@ -26,6 +26,7 @@
 #include "scada_telescop.h"
 #include "scada_lukoil.h"
 #include "scada_karakuduk.h"
+#include "scada_surgutneftegas.h"
 #include "parameters.h"
 #include "novobus_slave.h"
 
