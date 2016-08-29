@@ -243,7 +243,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[19].command           = OPERATION_ERROR;
   scadaParameters_[19].value.float_t     = 0;
   // Режим работы СУ (СНГ)
-  scadaParameters_[20].id                = 0;
+  scadaParameters_[20].id                = CCS_WORKING_MODE;
   scadaParameters_[20].address           = 20;
   scadaParameters_[20].operation         = OPERATION_READ;
   scadaParameters_[20].physic            = PHYSIC_NUMERIC;
@@ -891,7 +891,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[73].command           = OPERATION_ERROR;
   scadaParameters_[73].value.float_t     = 0;
   // Защита по сигналу контактного манометра
-  scadaParameters_[74].id                = 0;
+  scadaParameters_[74].id                = CCS_PROT_DI_1_MODE;
   scadaParameters_[74].address           = 74;
   scadaParameters_[74].operation         = OPERATION_WRITE;
   scadaParameters_[74].physic            = 0;
@@ -929,10 +929,10 @@ void ScadaSurgutneftegas::initParameters()
   // Активная энергия (ст)
   scadaParameters_[77].id                = 0;
   scadaParameters_[77].address           = 77;
-  scadaParameters_[77].operation         = OPERATION_WRITE;
+  scadaParameters_[77].operation         = OPERATION_READ;
   scadaParameters_[77].physic            = PHYSIC_NUMERIC;
   scadaParameters_[77].unit              = 0;
-  scadaParameters_[77].typeData          = TYPE_DATA_UINT16;
+  scadaParameters_[77].typeData          = TYPE_DATA_UINT16_B;
   scadaParameters_[77].coefficient       = 1;
   scadaParameters_[77].min               = 0;
   scadaParameters_[77].max               = 9999;
@@ -941,10 +941,10 @@ void ScadaSurgutneftegas::initParameters()
   // Активная энергия (мл)
   scadaParameters_[78].id                = 0;
   scadaParameters_[78].address           = 78;
-  scadaParameters_[78].operation         = OPERATION_WRITE;
+  scadaParameters_[78].operation         = OPERATION_READ;
   scadaParameters_[78].physic            = PHYSIC_NUMERIC;
   scadaParameters_[78].unit              = 0;
-  scadaParameters_[78].typeData          = TYPE_DATA_UINT16;
+  scadaParameters_[78].typeData          = TYPE_DATA_UINT16_B;
   scadaParameters_[78].coefficient       = 1;
   scadaParameters_[78].min               = 0;
   scadaParameters_[78].max               = 9999;
@@ -1011,7 +1011,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[83].command           = OPERATION_ERROR;
   scadaParameters_[83].value.float_t     = 0;
   // Задержка активации защиты по сигналу контактного манометра
-  scadaParameters_[84].id                = 0;
+  scadaParameters_[84].id                = CCS_PROT_DI_1_ACTIV_DELAY;
   scadaParameters_[84].address           = 84;
   scadaParameters_[84].operation         = OPERATION_WRITE;
   scadaParameters_[84].physic            = PHYSIC_TIME;
@@ -1097,10 +1097,10 @@ void ScadaSurgutneftegas::initParameters()
   // Реактивная энергия (ст)
   scadaParameters_[91].id                = 0;
   scadaParameters_[91].address           = 91;
-  scadaParameters_[91].operation         = OPERATION_WRITE;
+  scadaParameters_[91].operation         = OPERATION_READ;
   scadaParameters_[91].physic            = PHYSIC_NUMERIC;
   scadaParameters_[91].unit              = 0;
-  scadaParameters_[91].typeData          = TYPE_DATA_UINT16;
+  scadaParameters_[91].typeData          = TYPE_DATA_UINT16_B;
   scadaParameters_[91].coefficient       = 1;
   scadaParameters_[91].min               = 0;
   scadaParameters_[91].max               = 9999;
@@ -1109,10 +1109,10 @@ void ScadaSurgutneftegas::initParameters()
   // Реактивная энергия (мл)
   scadaParameters_[92].id                = 0;
   scadaParameters_[92].address           = 92;
-  scadaParameters_[92].operation         = OPERATION_WRITE;
+  scadaParameters_[92].operation         = OPERATION_READ;
   scadaParameters_[92].physic            = PHYSIC_NUMERIC;
   scadaParameters_[92].unit              = 0;
-  scadaParameters_[92].typeData          = TYPE_DATA_UINT16;
+  scadaParameters_[92].typeData          = TYPE_DATA_UINT16_B;
   scadaParameters_[92].coefficient       = 1;
   scadaParameters_[92].min               = 0;
   scadaParameters_[92].max               = 9999;
@@ -1191,7 +1191,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[98].command           = OPERATION_ERROR;
   scadaParameters_[98].value.float_t     = 0;
   // Задержка срабатывания защиты по сигналу контактного манометра
-  scadaParameters_[99].id                = 0;
+  scadaParameters_[99].id                = CCS_PROT_DI_1_TRIP_DELAY;
   scadaParameters_[99].address           = 99;
   scadaParameters_[99].operation         = OPERATION_WRITE;
   scadaParameters_[99].physic            = PHYSIC_TIME;
@@ -1407,7 +1407,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[116].command          = OPERATION_ERROR;
   scadaParameters_[116].value.float_t    = 0;
   // Задержка АПВ после срабатывания защиты по сигналу контактного манометра
-  scadaParameters_[117].id               = 0;
+  scadaParameters_[117].id               = CCS_PROT_DI_1_RESTART_DELAY;
   scadaParameters_[117].address          = 117;
   scadaParameters_[117].operation        = OPERATION_WRITE;
   scadaParameters_[117].physic           = PHYSIC_TIME;
@@ -1682,8 +1682,8 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[139].max              = 9999;
   scadaParameters_[139].command          = OPERATION_ERROR;
   scadaParameters_[139].value.float_t    = 0;
-  // Версия программы ТМС
-  scadaParameters_[140].id               = 0;
+  // Версия программы ТМСН
+  scadaParameters_[140].id               = TMS_SOFT_TMSN;
   scadaParameters_[140].address          = 140;
   scadaParameters_[140].operation        = OPERATION_READ;
   scadaParameters_[140].physic           = 0;
@@ -1724,7 +1724,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[143].operation        = OPERATION_READ;
   scadaParameters_[143].physic           = 0;
   scadaParameters_[143].unit             = 0;
-  scadaParameters_[143].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[143].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[143].coefficient      = 1;
   scadaParameters_[143].min              = 0;
   scadaParameters_[143].max              = 9999;
@@ -1736,7 +1736,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[144].operation        = OPERATION_READ;
   scadaParameters_[144].physic           = 0;
   scadaParameters_[144].unit             = 0;
-  scadaParameters_[144].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[144].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[144].coefficient      = 1;
   scadaParameters_[144].min              = 0;
   scadaParameters_[144].max              = 9999;
@@ -1748,7 +1748,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[145].operation        = OPERATION_READ;
   scadaParameters_[145].physic           = 0;
   scadaParameters_[145].unit             = 0;
-  scadaParameters_[145].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[145].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[145].coefficient      = 1;
   scadaParameters_[145].min              = 0;
   scadaParameters_[145].max              = 9999;
@@ -1760,7 +1760,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[146].operation        = OPERATION_READ;
   scadaParameters_[146].physic           = 0;
   scadaParameters_[146].unit             = 0;
-  scadaParameters_[146].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[146].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[146].coefficient      = 1;
   scadaParameters_[146].min              = 0;
   scadaParameters_[146].max              = 9999;
@@ -1772,7 +1772,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[147].operation        = OPERATION_READ;
   scadaParameters_[147].physic           = 0;
   scadaParameters_[147].unit             = 0;
-  scadaParameters_[147].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[147].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[147].coefficient      = 1;
   scadaParameters_[147].min              = 0;
   scadaParameters_[147].max              = 9999;
@@ -1784,7 +1784,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[148].operation        = OPERATION_READ;
   scadaParameters_[148].physic           = 0;
   scadaParameters_[148].unit             = 0;
-  scadaParameters_[148].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[148].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[148].coefficient      = 1;
   scadaParameters_[148].min              = 0;
   scadaParameters_[148].max              = 9999;
@@ -1796,7 +1796,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[149].operation        = OPERATION_READ;
   scadaParameters_[149].physic           = 0;
   scadaParameters_[149].unit             = 0;
-  scadaParameters_[149].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[149].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[149].coefficient      = 1;
   scadaParameters_[149].min              = 0;
   scadaParameters_[149].max              = 9999;
@@ -1808,7 +1808,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[150].operation        = OPERATION_READ;
   scadaParameters_[150].physic           = 0;
   scadaParameters_[150].unit             = 0;
-  scadaParameters_[150].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[150].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[150].coefficient      = 1;
   scadaParameters_[150].min              = 0;
   scadaParameters_[150].max              = 9999;
@@ -1832,7 +1832,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[152].operation        = OPERATION_READ;
   scadaParameters_[152].physic           = 0;
   scadaParameters_[152].unit             = 0;
-  scadaParameters_[152].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[152].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[152].coefficient      = 1;
   scadaParameters_[152].min              = 0;
   scadaParameters_[152].max              = 9999;
@@ -1844,7 +1844,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[153].operation        = OPERATION_READ;
   scadaParameters_[153].physic           = 0;
   scadaParameters_[153].unit             = 0;
-  scadaParameters_[153].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[153].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[153].coefficient      = 1;
   scadaParameters_[153].min              = 0;
   scadaParameters_[153].max              = 9999;
@@ -1902,9 +1902,9 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[158].id               = 0;
   scadaParameters_[158].address          = 158;
   scadaParameters_[158].operation        = OPERATION_WRITE;
-  scadaParameters_[158].physic           = 0;
+  scadaParameters_[158].physic           = PHYSIC_NUMERIC;
   scadaParameters_[158].unit             = 0;
-  scadaParameters_[158].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[158].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[158].coefficient      = 1;
   scadaParameters_[158].min              = 1;
   scadaParameters_[158].max              = 9999;
@@ -1914,9 +1914,9 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[159].id               = 0;
   scadaParameters_[159].address          = 159;
   scadaParameters_[159].operation        = OPERATION_WRITE;
-  scadaParameters_[159].physic           = 0;
+  scadaParameters_[159].physic           = PHYSIC_NUMERIC;
   scadaParameters_[159].unit             = 0;
-  scadaParameters_[159].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[159].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[159].coefficient      = 1;
   scadaParameters_[159].min              = 1;
   scadaParameters_[159].max              = 9999;
@@ -1926,9 +1926,9 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[160].id               = 0;
   scadaParameters_[160].address          = 160;
   scadaParameters_[160].operation        = OPERATION_WRITE;
-  scadaParameters_[160].physic           = 0;
+  scadaParameters_[160].physic           = PHYSIC_NUMERIC;
   scadaParameters_[160].unit             = 0;
-  scadaParameters_[160].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[160].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[160].coefficient      = 1;
   scadaParameters_[160].min              = 1;
   scadaParameters_[160].max              = 9999;
@@ -1938,9 +1938,9 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[161].id               = 0;
   scadaParameters_[161].address          = 161;
   scadaParameters_[161].operation        = OPERATION_WRITE;
-  scadaParameters_[161].physic           = 0;
+  scadaParameters_[161].physic           = PHYSIC_NUMERIC;
   scadaParameters_[161].unit             = 0;
-  scadaParameters_[161].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[161].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[161].coefficient      = 1;
   scadaParameters_[161].min              = 1;
   scadaParameters_[161].max              = 9999;
@@ -1950,9 +1950,9 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[162].id               = 0;
   scadaParameters_[162].address          = 162;
   scadaParameters_[162].operation        = OPERATION_WRITE;
-  scadaParameters_[162].physic           = 0;
+  scadaParameters_[162].physic           = PHYSIC_NUMERIC;
   scadaParameters_[162].unit             = 0;
-  scadaParameters_[162].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[162].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[162].coefficient      = 1;
   scadaParameters_[162].min              = 0;
   scadaParameters_[162].max              = 9999;
@@ -1962,9 +1962,9 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[163].id               = 0;
   scadaParameters_[163].address          = 163;
   scadaParameters_[163].operation        = OPERATION_WRITE;
-  scadaParameters_[163].physic           = 0;
+  scadaParameters_[163].physic           = PHYSIC_NUMERIC;
   scadaParameters_[163].unit             = 0;
-  scadaParameters_[163].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[163].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[163].coefficient      = 1;
   scadaParameters_[163].min              = 0;
   scadaParameters_[163].max              = 9999;
@@ -2022,7 +2022,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[168].id               = 0;
   scadaParameters_[168].address          = 168;
   scadaParameters_[168].operation        = OPERATION_WRITE;
-  scadaParameters_[168].physic           = 0;
+  scadaParameters_[168].physic           = PHYSIC_NUMERIC;
   scadaParameters_[168].unit             = 0;
   scadaParameters_[168].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[168].coefficient      = 1;
@@ -2034,7 +2034,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[169].id               = 0;
   scadaParameters_[169].address          = 169;
   scadaParameters_[169].operation        = OPERATION_WRITE;
-  scadaParameters_[169].physic           = 0;
+  scadaParameters_[169].physic           = PHYSIC_NUMERIC;
   scadaParameters_[169].unit             = 0;
   scadaParameters_[169].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[169].coefficient      = 1;
@@ -2300,7 +2300,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[191].operation        = OPERATION_READ;
   scadaParameters_[191].physic           = 0;
   scadaParameters_[191].unit             = 0;
-  scadaParameters_[191].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[191].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[191].coefficient      = 1;
   scadaParameters_[191].min              = 0;
   scadaParameters_[191].max              = 9999;
@@ -2312,7 +2312,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[192].operation        = OPERATION_READ;
   scadaParameters_[192].physic           = 0;
   scadaParameters_[192].unit             = 0;
-  scadaParameters_[192].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[192].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[192].coefficient      = 1;
   scadaParameters_[192].min              = 0;
   scadaParameters_[192].max              = 9999;
@@ -2324,7 +2324,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[193].operation        = OPERATION_READ;
   scadaParameters_[193].physic           = 0;
   scadaParameters_[193].unit             = 0;
-  scadaParameters_[193].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[193].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[193].coefficient      = 1;
   scadaParameters_[193].min              = 0;
   scadaParameters_[193].max              = 9999;
@@ -2336,7 +2336,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[194].operation        = OPERATION_READ;
   scadaParameters_[194].physic           = 0;
   scadaParameters_[194].unit             = 0;
-  scadaParameters_[194].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[194].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[194].coefficient      = 1;
   scadaParameters_[194].min              = 0;
   scadaParameters_[194].max              = 9999;
@@ -2348,7 +2348,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[195].operation        = OPERATION_READ;
   scadaParameters_[195].physic           = 0;
   scadaParameters_[195].unit             = 0;
-  scadaParameters_[195].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[195].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[195].coefficient      = 1;
   scadaParameters_[195].min              = 0;
   scadaParameters_[195].max              = 9999;
@@ -2360,7 +2360,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[196].operation        = OPERATION_READ;
   scadaParameters_[196].physic           = 0;
   scadaParameters_[196].unit             = 0;
-  scadaParameters_[196].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[196].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[196].coefficient      = 1;
   scadaParameters_[196].min              = 0;
   scadaParameters_[196].max              = 9999;
@@ -2430,7 +2430,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[202].id               = 0;
   scadaParameters_[202].address          = 202;
   scadaParameters_[202].operation        = OPERATION_WRITE;
-  scadaParameters_[202].physic           = 0;
+  scadaParameters_[202].physic           = PHYSIC_NUMERIC;
   scadaParameters_[202].unit             = 0;
   scadaParameters_[202].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[202].coefficient      = 1;
@@ -2574,9 +2574,9 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[214].id               = 0;
   scadaParameters_[214].address          = 214;
   scadaParameters_[214].operation        = OPERATION_WRITE;
-  scadaParameters_[214].physic           = 0;
+  scadaParameters_[214].physic           = PHYSIC_NUMERIC;
   scadaParameters_[214].unit             = 0;
-  scadaParameters_[214].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[214].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[214].coefficient      = 1;
   scadaParameters_[214].min              = 0;
   scadaParameters_[214].max              = 9999;
@@ -2586,9 +2586,9 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[215].id               = 0;
   scadaParameters_[215].address          = 215;
   scadaParameters_[215].operation        = OPERATION_WRITE;
-  scadaParameters_[215].physic           = 0;
+  scadaParameters_[215].physic           = PHYSIC_NUMERIC;
   scadaParameters_[215].unit             = 0;
-  scadaParameters_[215].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[215].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[215].coefficient      = 1;
   scadaParameters_[215].min              = 0;
   scadaParameters_[215].max              = 9999;
@@ -2598,9 +2598,9 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[216].id               = 0;
   scadaParameters_[216].address          = 216;
   scadaParameters_[216].operation        = OPERATION_WRITE;
-  scadaParameters_[216].physic           = 0;
+  scadaParameters_[216].physic           = PHYSIC_NUMERIC;
   scadaParameters_[216].unit             = 0;
-  scadaParameters_[216].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[216].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[216].coefficient      = 1;
   scadaParameters_[216].min              = 0;
   scadaParameters_[216].max              = 9999;
@@ -3005,10 +3005,10 @@ void ScadaSurgutneftegas::initParameters()
   // Маска флагов состояния КСУ
   scadaParameters_[250].id               = 0;
   scadaParameters_[250].address          = 250;
-  scadaParameters_[250].operation        = OPERATION_WRITE;
+  scadaParameters_[250].operation        = OPERATION_READ;
   scadaParameters_[250].physic           = 0;
   scadaParameters_[250].unit             = 0;
-  scadaParameters_[250].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[250].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[250].coefficient      = 1;
   scadaParameters_[250].min              = 0;
   scadaParameters_[250].max              = 65535;
@@ -3053,10 +3053,10 @@ void ScadaSurgutneftegas::initParameters()
   // Слово состояния оборудования
   scadaParameters_[254].id               = 0;
   scadaParameters_[254].address          = 254;
-  scadaParameters_[254].operation        = OPERATION_WRITE;
+  scadaParameters_[254].operation        = OPERATION_READ;
   scadaParameters_[254].physic           = 0;
   scadaParameters_[254].unit             = 0;
-  scadaParameters_[254].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[254].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[254].coefficient      = 1;
   scadaParameters_[254].min              = 0;
   scadaParameters_[254].max              = 65535;

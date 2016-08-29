@@ -258,7 +258,7 @@
 		<name>Расход жидкости</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_WORKING_MODE</id>
 		<address>20</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -900,7 +900,7 @@
 		<name>Зарезервирован</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_DI_1_MODE</id>
 		<address>74</address>
 		<operation>OPERATION_WRITE</operation>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -935,9 +935,9 @@
 	<param>
 		<id>0</id>
 		<address>77</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -947,9 +947,9 @@
 	<param>
 		<id>0</id>
 		<address>78</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -1020,7 +1020,7 @@
 		<name>Задержка активации защиты по сигналу с дополнительного аналогового входа 2</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_DI_1_ACTIV_DELAY</id>
 		<address>84</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
@@ -1113,9 +1113,9 @@
 	<param>
 		<id>0</id>
 		<address>91</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -1125,9 +1125,9 @@
 	<param>
 		<id>0</id>
 		<address>92</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -1207,7 +1207,7 @@
 		<name>Задержка срабатывания защиты по дисбалансу напряжения</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_DI_1_TRIP_DELAY</id>
 		<address>99</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
@@ -1423,7 +1423,7 @@
 		<name>Зарезервирован</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_DI_1_RESTART_DELAY</id>
 		<address>117</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
@@ -1684,7 +1684,7 @@
 		<name>Версия программы КПЧ</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>TMS_SOFT_TMSN</id>
 		<address>140</address>
 		<operation>OPERATION_READ</operation>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -1692,7 +1692,7 @@
 		<min>0</min>
 		<max>9999</max>
 		<command>OPERATION_ERROR</command>
-		<name>Версия программы ТМС</name>
+		<name>Версия программы ТМСН</name>
 	</param>
 	<param>
 		<id>CCS_TYPE_CCS</id>
@@ -1720,7 +1720,7 @@
 		<id>0</id>
 		<address>143</address>
 		<operation>OPERATION_READ</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -1731,7 +1731,7 @@
 		<id>0</id>
 		<address>144</address>
 		<operation>OPERATION_READ</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -1742,7 +1742,7 @@
 		<id>0</id>
 		<address>145</address>
 		<operation>OPERATION_READ</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -1753,7 +1753,7 @@
 		<id>0</id>
 		<address>146</address>
 		<operation>OPERATION_READ</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -1764,7 +1764,7 @@
 		<id>0</id>
 		<address>147</address>
 		<operation>OPERATION_READ</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -1775,7 +1775,7 @@
 		<id>0</id>
 		<address>148</address>
 		<operation>OPERATION_READ</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -1786,7 +1786,7 @@
 		<id>0</id>
 		<address>149</address>
 		<operation>OPERATION_READ</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -1797,7 +1797,7 @@
 		<id>0</id>
 		<address>150</address>
 		<operation>OPERATION_READ</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -1819,7 +1819,7 @@
 		<id>0</id>
 		<address>152</address>
 		<operation>OPERATION_READ</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -1830,7 +1830,7 @@
 		<id>0</id>
 		<address>153</address>
 		<operation>OPERATION_READ</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -1885,7 +1885,8 @@
 		<id>0</id>
 		<address>158</address>
 		<operation>OPERATION_WRITE</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<physic>PHYSIC_NUMERIC</physic>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>9999</max>
@@ -1896,7 +1897,8 @@
 		<id>0</id>
 		<address>159</address>
 		<operation>OPERATION_WRITE</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<physic>PHYSIC_NUMERIC</physic>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>9999</max>
@@ -1907,7 +1909,8 @@
 		<id>0</id>
 		<address>160</address>
 		<operation>OPERATION_WRITE</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<physic>PHYSIC_NUMERIC</physic>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>9999</max>
@@ -1918,7 +1921,8 @@
 		<id>0</id>
 		<address>161</address>
 		<operation>OPERATION_WRITE</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<physic>PHYSIC_NUMERIC</physic>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>9999</max>
@@ -1929,7 +1933,8 @@
 		<id>0</id>
 		<address>162</address>
 		<operation>OPERATION_WRITE</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<physic>PHYSIC_NUMERIC</physic>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -1940,7 +1945,8 @@
 		<id>0</id>
 		<address>163</address>
 		<operation>OPERATION_WRITE</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<physic>PHYSIC_NUMERIC</physic>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -1995,6 +2001,7 @@
 		<id>0</id>
 		<address>168</address>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
@@ -2006,6 +2013,7 @@
 		<id>0</id>
 		<address>169</address>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
@@ -2262,7 +2270,7 @@
 		<id>0</id>
 		<address>191</address>
 		<operation>OPERATION_READ</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -2273,7 +2281,7 @@
 		<id>0</id>
 		<address>192</address>
 		<operation>OPERATION_READ</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -2284,7 +2292,7 @@
 		<id>0</id>
 		<address>193</address>
 		<operation>OPERATION_READ</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -2295,7 +2303,7 @@
 		<id>0</id>
 		<address>194</address>
 		<operation>OPERATION_READ</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -2306,7 +2314,7 @@
 		<id>0</id>
 		<address>195</address>
 		<operation>OPERATION_READ</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -2317,7 +2325,7 @@
 		<id>0</id>
 		<address>196</address>
 		<operation>OPERATION_READ</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -2385,6 +2393,7 @@
 		<id>0</id>
 		<address>202</address>
 		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
@@ -2531,7 +2540,8 @@
 		<id>0</id>
 		<address>214</address>
 		<operation>OPERATION_WRITE</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<physic>PHYSIC_NUMERIC</physic>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -2542,7 +2552,8 @@
 		<id>0</id>
 		<address>215</address>
 		<operation>OPERATION_WRITE</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<physic>PHYSIC_NUMERIC</physic>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -2553,7 +2564,8 @@
 		<id>0</id>
 		<address>216</address>
 		<operation>OPERATION_WRITE</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<physic>PHYSIC_NUMERIC</physic>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
@@ -2964,8 +2976,8 @@
 	<param>
 		<id>0</id>
 		<address>250</address>
-		<operation>OPERATION_WRITE</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<operation>OPERATION_READ</operation>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
@@ -3010,8 +3022,8 @@
 	<param>
 		<id>0</id>
 		<address>254</address>
-		<operation>OPERATION_WRITE</operation>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<operation>OPERATION_READ</operation>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
