@@ -93,87 +93,93 @@ static bool saveSwInFlashExt(char *fileName)
 
   // Открытие файла прошивки и сохранение на внешнию flash
   if (f_open(&file, fileName, FA_READ) == FR_OK) {
-    f_read(&file, &imageHeader, sizeof(imageHeader), &readSize);
+    if (file.fsize <= (AddrUpdateFile2 - AddrUpdateFile1)) {
+      f_read(&file, &imageHeader, sizeof(imageHeader), &readSize);
 
-    if ((readSize == sizeof(imageHeader)) &&
-        (imageHeader.size == file.fsize) &&
-        (imageHeader.codeProduction == CODE_PRODUCTION) &&
-        (imageHeader.codeEquip == CODE_EQUIP) &&
-        (imageHeader.subCodeEquip == SUBCODE_EQUIP)) {
-      parameters.set(CCS_PROGRESS_VALUE, 0);
-      parameters.set(CCS_PROGRESS_MAX, 0);
-      parameters.set(CCS_PROGRESS_MAX, (float)(imageHeader.size + imageHeader.swGuiSize)/1024);
+      if ((readSize == sizeof(imageHeader)) &&
+          (imageHeader.size == file.fsize) &&
+          (imageHeader.codeProduction == CODE_PRODUCTION) &&
+          (imageHeader.codeEquip == CODE_EQUIP) &&
+          (imageHeader.subCodeEquip == SUBCODE_EQUIP)) {
+        parameters.set(CCS_PROGRESS_VALUE, 0);
+        parameters.set(CCS_PROGRESS_MAX, 0);
+        parameters.set(CCS_PROGRESS_MAX, (float)(imageHeader.size + imageHeader.swGuiSize)/1024);
 
-      calcCrc = crc16_ibm((uint8_t*)&imageHeader, readSize);
-      flashExtWriteEx(FlashSpi1, lastAddress, (uint8_t*)&imageHeader, readSize);
-      flashExtRead(FlashSpi1, lastAddress, buffer, readSize);
-      calcCrcRx = crc16_ibm(buffer, readSize, calcCrcRx);
-      lastAddress += readSize;
-      allSize += readSize;
-
-      int count = 0;
-      while ((readflag == 1) && (usbState == USB_READY)) {
-        osDelay(1);
-
-        size = file.fsize - allSize - BUFFER_SIZE;
-        if ((size > 0) && (size < 6)) {
-          size = BUFFER_SIZE-6;
-        } else if (size < 0) {
-          size = file.fsize - allSize;
-          readflag = 0;
-        } else {
-          size = BUFFER_SIZE;
-        }
-        f_read(&file, buffer, size, &readSize);
-
-        if (readSize < 6) {
-          logDebug.add(WarningMsg, "Обновление: Ошибка чтения файла прошивки");
-          break;
-        }
-
-        if (readflag)
-          calcCrc = crc16_ibm(buffer, readSize, calcCrc);
-        else
-          calcCrc = crc16_ibm(buffer, readSize-6, calcCrc);
-        if (flashExtWriteEx(FlashSpi1, lastAddress, buffer, readSize))
-          printf("Error: file %s on line %d\r\n", __FILE__, __LINE__);
-        if (flashExtRead(FlashSpi1, lastAddress, buffer, readSize))
-          printf("Error: file %s on line %d\r\n", __FILE__, __LINE__);
-        if (readflag)
-          calcCrcRx = crc16_ibm(buffer, readSize, calcCrcRx);
-        else
-          calcCrcRx = crc16_ibm(buffer, readSize-6, calcCrcRx);
-
+        calcCrc = crc16_ibm((uint8_t*)&imageHeader, readSize);
+        flashExtWriteEx(FlashSpi1, lastAddress, (uint8_t*)&imageHeader, readSize);
+        flashExtRead(FlashSpi1, lastAddress, buffer, readSize);
+        calcCrcRx = crc16_ibm(buffer, readSize, calcCrcRx);
         lastAddress += readSize;
         allSize += readSize;
 
-        if (++count > 10) {
-          count = 0;
-          if (calcCrc != calcCrcRx) {
+        int count = 0;
+        while ((readflag == 1) && (usbState == USB_READY)) {
+          osDelay(1);
+
+          size = file.fsize - allSize - BUFFER_SIZE;
+          if ((size > 0) && (size < 6)) {
+            size = BUFFER_SIZE-6;
+          } else if (size < 0) {
+            size = file.fsize - allSize;
+            readflag = 0;
+          } else {
+            size = BUFFER_SIZE;
+          }
+          f_read(&file, buffer, size, &readSize);
+
+          if (readSize < 6) {
+            logDebug.add(WarningMsg, "Обновление: Ошибка чтения файла прошивки");
             break;
           }
-          parameters.set(CCS_PROGRESS_VALUE, (float)(lastAddress - startAddress)/1024);
+
+          if (readflag)
+            calcCrc = crc16_ibm(buffer, readSize, calcCrc);
+          else
+            calcCrc = crc16_ibm(buffer, readSize-6, calcCrc);
+          if (flashExtWriteEx(FlashSpi1, lastAddress, buffer, readSize))
+            printf("Error: file %s on line %d\r\n", __FILE__, __LINE__);
+          if (flashExtRead(FlashSpi1, lastAddress, buffer, readSize))
+            printf("Error: file %s on line %d\r\n", __FILE__, __LINE__);
+          if (readflag)
+            calcCrcRx = crc16_ibm(buffer, readSize, calcCrcRx);
+          else
+            calcCrcRx = crc16_ibm(buffer, readSize-6, calcCrcRx);
+
+          lastAddress += readSize;
+          allSize += readSize;
+
+          if (++count > 10) {
+            count = 0;
+            if (calcCrc != calcCrcRx) {
+              break;
+            }
+            parameters.set(CCS_PROGRESS_VALUE, (float)(lastAddress - startAddress)/1024);
+          }
+
+          if (allSize >= file.fsize)
+            break;
         }
 
-        if (allSize >= file.fsize)
-          break;
-      }
-
-      uint16_t crc = (buffer[readSize - 1 - 4] << 8) + buffer[readSize - 2 - 4];
-      uint32_t finish = (buffer[readSize - 1] << 24) + (buffer[readSize - 2] << 16) +
-          (buffer[readSize - 3] << 8) + (buffer[readSize - 4]);
-      if ((calcCrc == crc) && (calcCrcRx == crc) && (finish == 0xFFFFFFFF)) {
-        isSaveSw = true;
+        uint16_t crc = (buffer[readSize - 1 - 4] << 8) + buffer[readSize - 2 - 4];
+        uint32_t finish = (buffer[readSize - 1] << 24) + (buffer[readSize - 2] << 16) +
+            (buffer[readSize - 3] << 8) + (buffer[readSize - 4]);
+        if ((calcCrc == crc) && (calcCrcRx == crc) && (finish == 0xFFFFFFFF)) {
+          isSaveSw = true;
+        }
+        else {
+          logDebug.add(WarningMsg, "Обновление: Ошибка CRС в файле прошивки (%x %x %x, %x)", crc, calcCrc, calcCrcRx, finish);
+          ksu.setError(CrcFwUpdateErr);
+        }
       }
       else {
-        logDebug.add(WarningMsg, "Обновление: Ошибка CRС в файле прошивки (%x %x %x, %x)", crc, calcCrc, calcCrcRx, finish);
-        ksu.setError(CrcFwUpdateErr);
+        logDebug.add(WarningMsg, "Обновление: Ошибка в загаловке файла прошивки (%d %d %d %d %d)",
+                     readSize, imageHeader.size, imageHeader.codeProduction,
+                     imageHeader.codeEquip, imageHeader.subCodeEquip);
+        ksu.setError(HeaderFwUpdateErr);
       }
-    }
-    else {
-      logDebug.add(WarningMsg, "Обновление: Ошибка в загаловке файла прошивки (%d %d %d %d %d)",
-                   readSize, imageHeader.size, imageHeader.codeProduction,
-                   imageHeader.codeEquip, imageHeader.subCodeEquip);
+    } else {
+      logDebug.add(WarningMsg, "Обновление: Ошибка размера файла прошивки (%d)",
+                   file.fsize);
       ksu.setError(HeaderFwUpdateErr);
     }
     f_close(&file);
