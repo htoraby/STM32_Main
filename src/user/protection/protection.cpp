@@ -130,6 +130,11 @@ void Protection::addEventReactionProt()
                parameters.getPhysic(idTripSetpoint_));
 }
 
+void Protection::saveValueParameter()
+{
+  parameters.set(CCS_PROT_VALUE_PARAMETER, valueParameter_);
+}
+
 bool Protection::isModeOff()
 {
   if (parameters.get(idMode_) == ProtModeOff)
@@ -227,6 +232,7 @@ void Protection::processingStateRun()       // Состояние работа
                          idMode_, alarm_, tripDelay_, isModeBlock());
 #endif
               addEventReactionProt();
+              saveValueParameter();
               logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
               ksu.setBlock();
               ksu.stop(lastReasonStop_);
@@ -256,6 +262,7 @@ void Protection::processingStateRun()       // Состояние работа
                          idMode_, tripDelay_, restartCount_, restartLimit_);
 #endif
               addEventReactionProt();
+              saveValueParameter();
               logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
               ksu.setBlock();
               ksu.stop(lastReasonStop_);
@@ -268,6 +275,7 @@ void Protection::processingStateRun()       // Состояние работа
                          idMode_, alarm_, tripDelay_, isModeRestart());
 #endif
               addEventReactionProt();
+              saveValueParameter();
               parameters.set(CCS_RESTART_COUNT, restartCount_);
               ksu.setRestart();
               ksu.stop(lastReasonStop_);
@@ -296,6 +304,7 @@ void Protection::processingStateRun()       // Состояние работа
                          idMode_, alarm_, tripDelay_);
 #endif
             addEventReactionProt();
+            saveValueParameter();
             ksu.resetDelay();
             ksu.stop(lastReasonStop_);
             setStateStop();
@@ -326,6 +335,7 @@ void Protection::processingStateRun()       // Состояние работа
                          idMode_, alarm_, tripDelay_);
 #endif
             addEventReactionProt();
+            saveValueParameter();
             logEvent.add(ProtectCode, AutoType, protBlockedEventId_);
             ksu.setBlock();
             ksu.stop(lastReasonStop_);

@@ -19873,6 +19873,27 @@
 	</param>
 	<param>
 		<id>1011</id>
+		<name>CCS_PROT_VALUE_PARAMETER</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Значение по которому активирована защита</comment>
+	</param>
+	<param>
+		<id>1012</id>
 		<name>CCS_END</name>
 	</param>
 	<param>

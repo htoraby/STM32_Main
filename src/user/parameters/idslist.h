@@ -1014,7 +1014,8 @@ enum enID
   CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP = 1008,                //!< Подхват. Сохранённая уставка времени разгона
   CCS_RGM_RUN_PICKUP_SETPOINT_TIME_DOWN = 1009,              //!< Подхват. Сохранённая уставка времени торможения
   CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION = 1010,               //!< Подхват. Сохранённая уставка направления вращения
-  CCS_END = 1011,                                            //!< 
+  CCS_PROT_VALUE_PARAMETER = 1011,                           //!< Значение по которому активирована защита
+  CCS_END = 1012,                                            //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
