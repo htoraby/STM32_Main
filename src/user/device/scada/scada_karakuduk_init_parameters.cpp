@@ -8,7 +8,7 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[0].operation          = OPERATION_READ;
   scadaParameters_[0].physic             = PHYSIC_NUMERIC;
   scadaParameters_[0].unit               = 0;
-  scadaParameters_[0].typeData           = TYPE_DATA_UINT16;
+  scadaParameters_[0].typeData           = TYPE_DATA_UINT16_B;
   scadaParameters_[0].coefficient        = 1;
   scadaParameters_[0].min                = 0;
   scadaParameters_[0].max                = 65535;
@@ -81,7 +81,7 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[6].physic             = PHYSIC_NUMERIC;
   scadaParameters_[6].unit               = 0;
   scadaParameters_[6].typeData           = TYPE_DATA_UINT16;
-  scadaParameters_[6].coefficient        = 0.01;
+  scadaParameters_[6].coefficient        = 0.1;
   scadaParameters_[6].min                = 0;
   scadaParameters_[6].max                = 65535;
   scadaParameters_[6].command            = OPERATION_ERROR;
@@ -177,7 +177,7 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[14].physic            = PHYSIC_ACCELERATION;
   scadaParameters_[14].unit              = ACCELERATION_G;
   scadaParameters_[14].typeData          = TYPE_DATA_UINT16;
-  scadaParameters_[14].coefficient       = 1;
+  scadaParameters_[14].coefficient       = 0.1;
   scadaParameters_[14].min               = 0;
   scadaParameters_[14].max               = 40;
   scadaParameters_[14].command           = OPERATION_ERROR;
@@ -189,7 +189,7 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[15].physic            = PHYSIC_ACCELERATION;
   scadaParameters_[15].unit              = ACCELERATION_G;
   scadaParameters_[15].typeData          = TYPE_DATA_UINT16;
-  scadaParameters_[15].coefficient       = 1;
+  scadaParameters_[15].coefficient       = 0.1;
   scadaParameters_[15].min               = 0;
   scadaParameters_[15].max               = 40;
   scadaParameters_[15].command           = OPERATION_ERROR;
@@ -260,7 +260,7 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[21].operation         = OPERATION_READ;
   scadaParameters_[21].physic            = PHYSIC_NUMERIC;
   scadaParameters_[21].unit              = 0;
-  scadaParameters_[21].typeData          = TYPE_DATA_UINT16;
+  scadaParameters_[21].typeData          = TYPE_DATA_UINT16_B;
   scadaParameters_[21].coefficient       = 1;
   scadaParameters_[21].min               = 0;
   scadaParameters_[21].max               = 65535;
@@ -404,7 +404,7 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[33].operation         = OPERATION_READ;
   scadaParameters_[33].physic            = PHYSIC_NUMERIC;
   scadaParameters_[33].unit              = 0;
-  scadaParameters_[33].typeData          = TYPE_DATA_UINT16;
+  scadaParameters_[33].typeData          = TYPE_DATA_UINT16_B;
   scadaParameters_[33].coefficient       = 1;
   scadaParameters_[33].min               = 0;
   scadaParameters_[33].max               = 65535;
@@ -416,7 +416,7 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[34].operation         = OPERATION_READ;
   scadaParameters_[34].physic            = PHYSIC_NUMERIC;
   scadaParameters_[34].unit              = 0;
-  scadaParameters_[34].typeData          = TYPE_DATA_UINT16;
+  scadaParameters_[34].typeData          = TYPE_DATA_UINT16_B;
   scadaParameters_[34].coefficient       = 1;
   scadaParameters_[34].min               = 0;
   scadaParameters_[34].max               = 65535;
@@ -476,7 +476,7 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[39].operation         = OPERATION_READ;
   scadaParameters_[39].physic            = PHYSIC_NUMERIC;
   scadaParameters_[39].unit              = 0;
-  scadaParameters_[39].typeData          = TYPE_DATA_UINT16;
+  scadaParameters_[39].typeData          = TYPE_DATA_UINT16_B;
   scadaParameters_[39].coefficient       = 1;
   scadaParameters_[39].min               = 0;
   scadaParameters_[39].max               = 65535;
@@ -488,7 +488,7 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[40].operation         = OPERATION_READ;
   scadaParameters_[40].physic            = PHYSIC_NUMERIC;
   scadaParameters_[40].unit              = 0;
-  scadaParameters_[40].typeData          = TYPE_DATA_UINT16;
+  scadaParameters_[40].typeData          = TYPE_DATA_UINT16_B;
   scadaParameters_[40].coefficient       = 1;
   scadaParameters_[40].min               = 0;
   scadaParameters_[40].max               = 65535;
@@ -512,7 +512,7 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[42].operation         = OPERATION_READ;
   scadaParameters_[42].physic            = PHYSIC_NUMERIC;
   scadaParameters_[42].unit              = 0;
-  scadaParameters_[42].typeData          = TYPE_DATA_UINT16;
+  scadaParameters_[42].typeData          = TYPE_DATA_UINT16_B;
   scadaParameters_[42].coefficient       = 1;
   scadaParameters_[42].min               = 0;
   scadaParameters_[42].max               = 65535;
@@ -524,7 +524,7 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[43].operation         = OPERATION_READ;
   scadaParameters_[43].physic            = PHYSIC_NUMERIC;
   scadaParameters_[43].unit              = 0;
-  scadaParameters_[43].typeData          = TYPE_DATA_UINT16;
+  scadaParameters_[43].typeData          = TYPE_DATA_UINT16_B;
   scadaParameters_[43].coefficient       = 1;
   scadaParameters_[43].min               = 0;
   scadaParameters_[43].max               = 65535;

@@ -6,7 +6,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<unit>NULL</unit>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
@@ -84,7 +84,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
-		<coefficient>0.01</coefficient>
+		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>65535</max>
 		<command>OPERATION_ERROR</command>
@@ -186,7 +186,7 @@
 		<physic>PHYSIC_ACCELERATION</physic>
 		<unit>ACCELERATION_G</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
-		<coefficient>1</coefficient>
+		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>40</max>
 		<command>OPERATION_ERROR</command>
@@ -199,7 +199,7 @@
 		<physic>PHYSIC_ACCELERATION</physic>
 		<unit>ACCELERATION_G</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
-		<coefficient>1</coefficient>
+		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>40</max>
 		<command>OPERATION_ERROR</command>
@@ -265,7 +265,7 @@
 		<address>277</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
@@ -413,7 +413,7 @@
 		<address>289</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
@@ -425,7 +425,7 @@
 		<address>290</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
@@ -485,7 +485,7 @@
 		<address>295</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
@@ -497,7 +497,7 @@
 		<address>296</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
@@ -521,7 +521,7 @@
 		<address>298</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
@@ -533,7 +533,7 @@
 		<address>299</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
