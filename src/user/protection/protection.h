@@ -106,6 +106,11 @@ public:
   virtual void addEventReactionProt();
 
   /*!
+   * \brief Метод сохранения значения по которому активирована защита
+   */
+  virtual void saveValueParameter();
+
+  /*!
    * \brief isReactionOff
    * \return
    */

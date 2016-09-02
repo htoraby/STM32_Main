@@ -6,8 +6,8 @@ void ScadaNovomet::initParameters()
   scadaParameters_[0].id                 = -1;
   scadaParameters_[0].address            = 0;
   scadaParameters_[0].operation          = OPERATION_READ;
-  scadaParameters_[0].physic             = 0;
-  scadaParameters_[0].unit               = 0;
+  scadaParameters_[0].physic             = PHYSIC_NUMERIC;
+  scadaParameters_[0].unit               = NUMERIC_NUMBER;
   scadaParameters_[0].typeData           = TYPE_DATA_UINT16;
   scadaParameters_[0].coefficient        = 1;
   scadaParameters_[0].min                = 0;
@@ -19,7 +19,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[1].address            = 1;
   scadaParameters_[1].operation          = OPERATION_WRITE;
   scadaParameters_[1].physic             = PHYSIC_NUMERIC;
-  scadaParameters_[1].unit               = 0;
+  scadaParameters_[1].unit               = NUMERIC_NUMBER;
   scadaParameters_[1].typeData           = TYPE_DATA_UINT16;
   scadaParameters_[1].coefficient        = 1;
   scadaParameters_[1].min                = 1;
@@ -30,8 +30,8 @@ void ScadaNovomet::initParameters()
   scadaParameters_[2].id                 = -1;
   scadaParameters_[2].address            = 2;
   scadaParameters_[2].operation          = OPERATION_READ;
-  scadaParameters_[2].physic             = 0;
-  scadaParameters_[2].unit               = 0;
+  scadaParameters_[2].physic             = PHYSIC_NUMERIC;
+  scadaParameters_[2].unit               = NUMERIC_NUMBER;
   scadaParameters_[2].typeData           = TYPE_DATA_UINT16;
   scadaParameters_[2].coefficient        = 1;
   scadaParameters_[2].min                = 0;

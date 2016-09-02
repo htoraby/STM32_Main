@@ -237,7 +237,7 @@ void TmsElekton3::initModbusParameters()
                            VALIDITY_ERROR,            // Поле состояния параметра
                            0                          // Значение
                           };
-  modbusParameters_[12] = { // 037h Состав датчиков в ТМСП
+  modbusParameters_[12] = { // 04Bh Состав датчиков в ТМСП
                            TMS_SENSOR_TMSP_ELEKTON,   // Идентификатор параметра
                            75,                        // Адрес регистра в устройстве
                            OPERATION_READ,            // Операции с параметром
@@ -408,25 +408,25 @@ bool TmsElekton3::config()
         if ((parameters.get(TMS_UNIT_PRESSURE_ELEKTON_3) == DHS_ELEKTON_UNIT_PRESSURE_kPA) ||
             (parameters.get(TMS_UNIT_PRESSURE_ELEKTON_3) == DHS_ELEKTON_UNIT_PRESSURE_PSI)) {
           // 037h Pпласта - давление пласта
-          modbusParameters_[4].address = 55;
-          modbusParameters_[4].coefficient = 1.0;
+          modbusParameters_[3].address = 55;
+          modbusParameters_[3].coefficient = 1.0;
           // 039h Рвык.насоса - давление на выкиде насоса
-          modbusParameters_[8].address = 57;
-          modbusParameters_[8].coefficient = 1.0;
+          modbusParameters_[7].address = 57;
+          modbusParameters_[7].coefficient = 1.0;
         }
         else {
           if (parameters.isValidity(TMS_SENSOR_TMSP_ELEKTON)) {
             if (checkBit(parameters.get(TMS_SENSOR_TMSP_ELEKTON), DHS_ELEKTON_3_SENSOR_PRESSURE_HI_RES)) {
-              modbusParameters_[4].address = 59;            // 03Bh Pпласта - давление пласта повышенной точности
-              modbusParameters_[4].coefficient = 0.01;      // Давление пласта повышенной точности
+              modbusParameters_[3].address = 59;            // 03Bh Pпласта - давление пласта повышенной точности
+              modbusParameters_[3].coefficient = 0.01;      // Давление пласта повышенной точности
             }
             else {
-              modbusParameters_[4].address = 55;            // 037h Pпласта - давление пласта повышенной точности
-              modbusParameters_[4].coefficient = 0.1;       // Давление пласта обычной точности
+              modbusParameters_[3].address = 55;            // 037h Pпласта - давление пласта повышенной точности
+              modbusParameters_[3].coefficient = 0.1;       // Давление пласта обычной точности
             }
             // 039h Рвык.насоса - давление на выкиде насоса
-            modbusParameters_[8].address = 57;
-            modbusParameters_[8].coefficient = 0.1;
+            modbusParameters_[7].address = 57;
+            modbusParameters_[7].coefficient = 0.1;
           }
           else {
             isConfigurated_ = false;
@@ -435,8 +435,8 @@ bool TmsElekton3::config()
         }
         for (uint16_t i = 0; i < DHS_ELEKTON_UNIT_PRESSURE_LAST; i++) {
           if (parameters.get(TMS_UNIT_PRESSURE_ELEKTON_3) == unitPressure_[i].unitElekton) {
-            modbusParameters_[4].unit = unitPressure_[i].unitCCS;
-            modbusParameters_[8].unit = unitPressure_[i].unitCCS;
+            modbusParameters_[3].unit = unitPressure_[i].unitCCS;
+            modbusParameters_[7].unit = unitPressure_[i].unitCCS;
           }
         }
         isConfigurated_ = true;
@@ -448,12 +448,12 @@ bool TmsElekton3::config()
       }
     }
     else {                                                                          // ТМСН-2
-      modbusParameters_[4].address = 46;
-      modbusParameters_[4].coefficient = 1.0;
-      modbusParameters_[4].unit = PRESSURE_ATM;
-      modbusParameters_[8].address = 50;
-      modbusParameters_[8].coefficient = 1.0;
-      modbusParameters_[8].unit = PRESSURE_ATM;
+      modbusParameters_[3].address = 46;
+      modbusParameters_[3].coefficient = 1.0;
+      modbusParameters_[3].unit = PRESSURE_ATM;
+      modbusParameters_[7].address = 50;
+      modbusParameters_[7].coefficient = 1.0;
+      modbusParameters_[7].unit = PRESSURE_ATM;
       isConfigurated_ = true;
       return true;
     }

@@ -40,81 +40,79 @@ void ScadaNovomet::calcParamsTask()
 
     // 4
     value = 0;
-    if (ksu.isStopMotor()) {
-      int reason = parameters.get(CCS_LAST_STOP_REASON);
-      switch (reason) {
-      case LastReasonStopOperator:
-        value = 0; break;
-      case LastReasonStopProgram:
-        value = 1; break;
-      case LastReasonStopRemote:
-        value = 2; break;
-      case LastReasonStopOverVoltIn:
-        value = 3; break;
-      case LastReasonStopUnderVoltIn:
-        value = 4; break;
-      case LastReasonStopImbalanceVoltIn:
-        value = 5; break;
-      case LastReasonStopOverloadMotor:
-        value = 7; break;
-      case LastReasonStopUnderloadMotor:
-        value = 8; break;
-      case LastReasonStopImbalanceCurMotor:
-        value = 9; break;
-        //      TODO:
-        //      case LastReasonStopHackSu:
-        //        value = 10; break;
-      case LastReasonStopResistIsolation:
-        value = 11; break;
-      case LastReasonStopPressureIntake:
-        value = 12; break;
-      case LastReasonStopFlowDischarge:
-        value = 13; break;
-      case LastReasonStopPressureDischarge:
-        value = 14; break;
-      case LastReasonStopTemperatureMotor:
-        value = 15; break;
-      case LastReasonStopVibrationMotor:
-        value = 16; break;
-      case LastReasonStopOvernumberOfStart:
-        value = 17; break;
-      case LastReasonStopHackSu:
-        value = 18; break;
-      case LastReasonStopProtDigital1:
-        value = 20; break;
-      case LastReasonStopProtDigital2:
-        value = 21; break;
-      case LastReasonStopProtDigital3:
-        value = 22; break;
-      case LastReasonStopProtDigital4:
-        value = 23; break;
-      case LastReasonStopImbalanceCurIn:
-        value = 24; break;
-      case LastReasonStopOutOfSyncMotor:
-        value = 25; break;
-      case LastReasonStopMaxAnalog1: case LastReasonStopMinAnalog1:
-        value = 26; break;
-      case LastReasonStopMaxAnalog2: case LastReasonStopMinAnalog2:
-        value = 27; break;
-      case LastReasonStopMaxAnalog3: case LastReasonStopMinAnalog3:
-        value = 28; break;
-      case LastReasonStopMaxAnalog4: case LastReasonStopMinAnalog4:
-        value = 29; break;
-      case LastReasonStopCurrentMotor:
-        value = 30; break;
-//    TODO:
-//    case LastReasonStopPressureIntake:
-//      value = 31; break;
-//    TODO:
-//    case LastReasonStopPressureIntake:
-//      value = 32; break;
-      case LastReasonStopVsdNoConnect:
-        value = 33; break;
-      default:
-        if (reason)
-          value = 46;
-        break;
-      }
+    int reason = parameters.get(CCS_LAST_STOP_REASON);
+    switch (reason) {
+    case LastReasonStopOperator:
+      value = 0; break;
+    case LastReasonStopProgram:
+      value = 1; break;
+    case LastReasonStopRemote:
+      value = 2; break;
+    case LastReasonStopOverVoltIn:
+      value = 3; break;
+    case LastReasonStopUnderVoltIn:
+      value = 4; break;
+    case LastReasonStopImbalanceVoltIn:
+      value = 5; break;
+    case LastReasonStopOverloadMotor:
+      value = 7; break;
+    case LastReasonStopUnderloadMotor:
+      value = 8; break;
+    case LastReasonStopImbalanceCurMotor:
+      value = 9; break;
+      //      TODO:
+      //      case LastReasonStopHackSu:
+      //        value = 10; break;
+    case LastReasonStopResistIsolation:
+      value = 11; break;
+    case LastReasonStopPressureIntake:
+      value = 12; break;
+    case LastReasonStopFlowDischarge:
+      value = 13; break;
+    case LastReasonStopPressureDischarge:
+      value = 14; break;
+    case LastReasonStopTemperatureMotor:
+      value = 15; break;
+    case LastReasonStopVibrationMotor:
+      value = 16; break;
+    case LastReasonStopOvernumberOfStart:
+      value = 17; break;
+    case LastReasonStopHackSu:
+      value = 18; break;
+    case LastReasonStopProtDigital1:
+      value = 20; break;
+    case LastReasonStopProtDigital2:
+      value = 21; break;
+    case LastReasonStopProtDigital3:
+      value = 22; break;
+    case LastReasonStopProtDigital4:
+      value = 23; break;
+    case LastReasonStopImbalanceCurIn:
+      value = 24; break;
+    case LastReasonStopOutOfSyncMotor:
+      value = 25; break;
+    case LastReasonStopMaxAnalog1: case LastReasonStopMinAnalog1:
+      value = 26; break;
+    case LastReasonStopMaxAnalog2: case LastReasonStopMinAnalog2:
+      value = 27; break;
+    case LastReasonStopMaxAnalog3: case LastReasonStopMinAnalog3:
+      value = 28; break;
+    case LastReasonStopMaxAnalog4: case LastReasonStopMinAnalog4:
+      value = 29; break;
+    case LastReasonStopCurrentMotor:
+      value = 30; break;
+      //    TODO:
+      //    case LastReasonStopPressureIntake:
+      //      value = 31; break;
+      //    TODO:
+      //    case LastReasonStopPressureIntake:
+      //      value = 32; break;
+    case LastReasonStopVsdNoConnect:
+      value = 33; break;
+    default:
+      if (reason)
+        value = 46;
+      break;
     }
     scadaParameters_[4].value.float_t = value;
 
@@ -227,7 +225,7 @@ void ScadaNovomet::calcParamsTask()
 
     //97
     value = 0;
-    int reason = parameters.get(CCS_LAST_STOP_REASON);
+    reason = parameters.get(CCS_LAST_STOP_REASON);
     switch (reason) {
     case LastReasonStopOperator:
       value = 0; break;

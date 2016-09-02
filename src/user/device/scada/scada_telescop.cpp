@@ -1,18 +1,18 @@
-#include "scada_region_3_0.h"
+#include "scada_telescop.h"
 #include "user_main.h"
 
-ScadaRegion30::ScadaRegion30()
+ScadaTelescop::ScadaTelescop()
 {
-  countParameters_ = 173;
+  countParameters_ = 183;
   initParameters();
 }
 
-ScadaRegion30::~ScadaRegion30()
+ScadaTelescop::~ScadaTelescop()
 {
 
 }
 
-void ScadaRegion30::calcParamsTask()
+void ScadaTelescop::calcParamsTask()
 {
   while (1) {
     osDelay(100);
@@ -23,7 +23,7 @@ void ScadaRegion30::calcParamsTask()
       }
     }
 
-    // 256
+    // 40000
     uint16_t value = 0;
     value |= (ksu.isWorkMotor() << 0);
     value |= (ksu.isBlock() << 1);
@@ -32,7 +32,7 @@ void ScadaRegion30::calcParamsTask()
     value |= (ksu.isManualMode() << 5);
     scadaParameters_[0].value.float_t = value;
 
-    // 257-258
+    // 40001-40002
     value = 0;
     if (parameters.get(CCS_PROT_PREVENT)) {
       if (parameters.get(CCS_PROT_SUPPLY_OVERVOLTAGE_PREVENT))
@@ -90,11 +90,7 @@ void ScadaRegion30::calcParamsTask()
           parameters.get(CCS_PROT_DI_3_PREVENT) ||
           parameters.get(CCS_PROT_DI_4_PREVENT) ||
           parameters.get(CCS_PROT_OTHER_VSD_PREVENT) ||
-          parameters.get(CCS_PROT_OTHER_IMB_PREVENT) ||
-          parameters.get(CCS_PROT_OTHER_LIMIT_RESTART_PREVENT) ||
-          parameters.get(CCS_PROT_DHS_FLOW_DISCHARGE_PREVENT) ||
-          parameters.get(CCS_PROT_DHS_PRESSURE_DISCHARGE_PREVENT) ||
-          parameters.get(CCS_PROT_SUPPLY_POWEROFF_PREVENT))
+          parameters.get(CCS_PROT_OTHER_IMB_PREVENT))
         value |= (1 << 15);
       scadaParameters_[2].value.float_t = value;
     }
@@ -103,7 +99,7 @@ void ScadaRegion30::calcParamsTask()
       scadaParameters_[2].value.float_t = value;
     }
 
-    // 259
+    // 40003
     value = 0;
     int reason = parameters.get(CCS_LAST_STOP_REASON);
     int reasonVsd = parameters.get(CCS_VSD_ALARM_CODE);
@@ -172,7 +168,7 @@ void ScadaRegion30::calcParamsTask()
     }
     scadaParameters_[3].value.float_t = value;
 
-    //260-262
+    // 40004-40006
     value = 0;
     time_t time = parameters.getU32(CCS_LAST_STOP_DATE_TIME);
     tm dateTime = *localtime(&time);
@@ -187,39 +183,7 @@ void ScadaRegion30::calcParamsTask()
     value = (dateTime.tm_min << 8) + dateTime.tm_sec;
     scadaParameters_[6].value.float_t = value;
 
-    //301
-    value = 0;
-    uint8_t type = parameters.get(CCS_DHS_TYPE);
-    switch (type) {
-    case TYPE_DHS_NOVOMET:
-      value = 9; break;
-    case TYPE_DHS_ALMAZ:
-      value = 2; break;
-    case TYPE_DHS_BORETS:
-      value = 3; break;
-    case TYPE_DHS_ELEKTON_2:
-    case TYPE_DHS_ELEKTON_3:
-      value = 1; break;
-    case TYPE_DHS_ETALON:
-      value = 12; break;
-    case TYPE_DHS_IRZ:
-      value = 6; break;
-    case TYPE_DHS_ORION:
-      value = 11; break;
-    case TYPE_DHS_PIC_V2:
-      value = 9; break;
-    case TYPE_DHS_SCAD:
-      value = 13; break;
-    case TYPE_DHS_SCAN:
-      value = 13; break;
-    case TYPE_DHS_TRIOL:
-      value = 10; break;
-    case TYPE_DHS_ZENIT:
-      value = 4; break;
-    }
-    scadaParameters_[45].value.float_t = value;
-
-    //346-348, 634-636
+    // 30075-30077
     value = 0;
     time = parameters.getU32(CCS_DATE_TIME);
     dateTime = *localtime(&time);
@@ -228,44 +192,40 @@ void ScadaRegion30::calcParamsTask()
     else
       dateTime.tm_year = 0;
     value = (dateTime.tm_year << 8) + (dateTime.tm_mon + 1);
-    scadaParameters_[70].value.float_t = value;
-    scadaParameters_[167].value.float_t = value;
+    scadaParameters_[173].value.float_t = value;
     value = (dateTime.tm_mday << 8) + dateTime.tm_hour;
-    scadaParameters_[71].value.float_t = value;
-    scadaParameters_[168].value.float_t = value;
+    scadaParameters_[174].value.float_t = value;
     value = (dateTime.tm_min << 8) + dateTime.tm_sec;
-    scadaParameters_[72].value.float_t = value;
-    scadaParameters_[169].value.float_t = value;
+    scadaParameters_[175].value.float_t = value;
   }
 }
 
-int ScadaRegion30::setNewValue(ScadaParameter *param)
+int ScadaTelescop::setNewValue(ScadaParameter *param)
 {
   if (param->id > 0) {
     return parameters.set(param->id, param->value.float_t, RemoteType);
   }
 
-  //346-348, 634-636
-  if (((param->address >= 346) && (param->address <= 348)) ||
-      ((param->address >= 634) && (param->address <= 636))) {
+  // 30075-30077
+  if ((param->address >= 30075) && (param->address <= 30077)) {
     unTypeData value;
     value.uint32_t = param->value.float_t;
     time_t time = parameters.getU32(CCS_DATE_TIME);
     tm dateTime = *localtime(&time);
 
     switch (param->address) {
-    case 634: case 346:
+    case 30075:
       dateTime.tm_year = value.char_t[1] + 100;
       if (value.uint16_t[0] > 0)
         dateTime.tm_mon = value.char_t[0] - 1;
       break;
-    case 635: case 347:
+    case 30076:
       dateTime.tm_mday = value.char_t[1];
       if(dateTime.tm_mday == 0)
         dateTime.tm_mday = 1;
       dateTime.tm_hour = value.char_t[0];
       break;
-    case 636: case 348:
+    case 30077:
       dateTime.tm_min = value.char_t[1];
       dateTime.tm_sec = value.char_t[0];
       break;

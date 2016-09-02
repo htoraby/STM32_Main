@@ -65,7 +65,7 @@ int Scada::setNewValue(ScadaParameter */*param*/)
 inline int Scada::sizeDataFromTypeData(uint8_t typeData)
 {
   switch (typeData) {
-  case TYPE_DATA_CHAR: case TYPE_DATA_INT16: case TYPE_DATA_UINT16:
+  case TYPE_DATA_CHAR: case TYPE_DATA_INT16: case TYPE_DATA_UINT16: case TYPE_DATA_UINT16_B:
     return 2;
   case TYPE_DATA_INT32: case TYPE_DATA_UINT32: case TYPE_DATA_FLOAT:
     return 4;
@@ -105,7 +105,7 @@ eMBErrorCode Scada::readReg(uint8_t *buffer, uint16_t address, uint16_t numRegs)
     value = parameters.convertFrom(value, param->physic, param->unit);
     value = value / param->coefficient;
     unTypeData data;
-    if (param->typeData == TYPE_DATA_FLOAT)
+    if ((param->typeData == TYPE_DATA_FLOAT) || (param->typeData == TYPE_DATA_UINT16_B))
       data.float_t = value;
     else
       data.uint32_t = lround(value);
@@ -278,6 +278,9 @@ eMBErrorCode eMBRegInputCB(UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNReg
 {
   eMBErrorCode status = MB_ENOERR;
 
+  if (parameters.get(CCS_SCADA_TYPE) == Scada::TelescopType)
+    usAddress = usAddress + 40000;
+
   status = scada->readReg(pucRegBuffer, usAddress, usNRegs);
 
   osDelay(scada->delay());
@@ -288,6 +291,9 @@ eMBErrorCode eMBRegHoldingCB(UCHAR * pucRegBuffer, USHORT usAddress,
                              USHORT usNRegs, eMBRegisterMode eMode)
 {
   eMBErrorCode status = MB_ENOERR;
+
+  if (parameters.get(CCS_SCADA_TYPE) == Scada::TelescopType)
+    usAddress = usAddress + 30000;
 
   switch (eMode) {
   case MB_REG_READ:
