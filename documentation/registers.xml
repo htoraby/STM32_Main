@@ -600,8 +600,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
-		<text>Период архивов СУ</text>
-		<short_text>Период архивов СУ</short_text>
+		<text>Период записи в работе</text>
+		<short_text>Период записи в работе</short_text>
 		<form>2.0 Архивы</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -621,8 +621,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
-		<text>Период ускоренных архивов СУ</text>
-		<short_text>Период ускоренных архивов СУ</short_text>
+		<text>Экстрен. запись в работе</text>
+		<short_text>Экстрен. запись в работе</short_text>
 		<form>2.0 Архивы</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -642,8 +642,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>300.0</value>
-		<text>Период архивов ТМС</text>
-		<short_text>Период архивов ТМС</short_text>
+		<text>Период записи в останове</text>
+		<short_text>Период записи в останове</short_text>
 		<form>2.0 Архивы</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -4263,7 +4263,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Рвх.нас.двиг.пуск.время</short_text>
+		<short_text>Рвх.Пуск.время</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -4284,7 +4284,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Время</text>
-		<short_text>Рвх.нас.двиг.время</short_text>
+		<short_text>Рвх.Время</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -4305,7 +4305,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Рвх.нас.двиг.зад.АПВ</short_text>
+		<short_text>Рвх.Зад.АПВ</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -4326,7 +4326,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Разрешенно АПВ</text>
-		<short_text>Рвх.нас.раз.АПВ</short_text>
+		<short_text>Рвх.Раз.АПВ</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -4347,7 +4347,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
 		<text>Сброс счетчиков АПВ</text>
-		<short_text>Рвх.нас.сброс счет</short_text>
+		<short_text>Рвх.сброс счет</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -4368,7 +4368,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>4.0</value>
 		<text>Уставка останова</text>
-		<short_text>Рвх.нас.мин. давление</short_text>
+		<short_text>Рвх.Уставка останова </short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>PRESSURE_MPA</unit>
 		<unit_lcd>PRESSURE_MPA</unit_lcd>
@@ -4388,8 +4388,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>25.0</value>
-		<text>Максимальное давление</text>
-		<short_text>Рвх.нас.макс. давление</short_text>
+		<text>Уставка пуска</text>
+		<short_text>Рвх.Уставка пуска</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>PRESSURE_MPA</unit>
 		<unit_lcd>PRESSURE_MPA</unit_lcd>
@@ -4409,8 +4409,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Рвх.нас.нормал.</text>
-		<short_text>Рвх.нас.нормал.</short_text>
+		<text>Нормализация</text>
+		<short_text>Рвх.Нормализация</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -11857,6 +11857,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>Считать архив</text>
+		<short_text>Считать архив</short_text>
 		<code>0</code>
 	</param>
 	<param>
@@ -11871,8 +11873,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Удаление архивов</text>
-		<short_text>Удаление архивов</short_text>
+		<text>Очистить архив</text>
+		<short_text>Очистить архив</short_text>
 		<form>2.0 Архивы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
@@ -11891,8 +11893,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Удаление служебных архивов</text>
-		<short_text>Удаление служебных архивов</short_text>
+		<text>Очистить сервисный архив</text>
+		<short_text>Очистить сервисный архив</short_text>
 		<code>0</code>
 	</param>
 	<param>
