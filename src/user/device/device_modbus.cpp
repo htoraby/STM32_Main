@@ -322,6 +322,7 @@ void DeviceModbus::exchangeTask()
     // Проверяем очередь параметров для обработки вне очереди
     int outOfTurn = getMessageOutOfTurn();  // Проверка если параметр вне очереди
     if (outOfTurn && (mbParams_[outOfTurn].command == OPERATION_WRITE)) {
+      mbParams_[outOfTurn].validity = err_r;
       switch (mbParams_[outOfTurn].typeData) {                // Тип данных
       case TYPE_DATA_COIL:
         writeCoil(devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].value.int16_t[0]);
@@ -369,6 +370,7 @@ void DeviceModbus::exchangeTask()
         outOfTurn = searchExchangeParameters();
       }
       if (outOfTurn) {
+        mbParams_[outOfTurn].validity = err_r;
         switch (mbParams_[outOfTurn].typeData) {
         case TYPE_DATA_COIL:
           readCoils(devAdrs_, mbParams_[outOfTurn].address, bitArr_, count);
