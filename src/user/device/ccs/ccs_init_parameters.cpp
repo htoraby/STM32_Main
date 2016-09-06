@@ -12146,5 +12146,101 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_VALUE_PARAMETER - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_PROT_VALUE_PARAMETER - CCS_BEGIN].def                          = 0.0;
   parameters_[CCS_PROT_VALUE_PARAMETER - CCS_BEGIN].code                         = 0;
+  // Действие режима пуска "Пропуск резонансных частот"
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_MODE - CCS_BEGIN].id                     = CCS_RGM_RUN_SKIP_RESONANT_MODE;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_MODE - CCS_BEGIN].access                 = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_MODE - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_MODE - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_MODE - CCS_BEGIN].validity               = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_MODE - CCS_BEGIN].value.float_t          = 0.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_MODE - CCS_BEGIN].min                    = 0.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_MODE - CCS_BEGIN].max                    = 2.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_MODE - CCS_BEGIN].discret                = 1;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_MODE - CCS_BEGIN].def                    = 0.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_MODE - CCS_BEGIN].code                   = 13;
+  // Состояние автомата режима пуска "Пропуск резонансных частот"
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_STATE - CCS_BEGIN].id                    = CCS_RGM_RUN_SKIP_RESONANT_STATE;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_STATE - CCS_BEGIN].access                = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_STATE - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_STATE - CCS_BEGIN].physic                = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_STATE - CCS_BEGIN].validity              = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_STATE - CCS_BEGIN].value.float_t         = 0.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_STATE - CCS_BEGIN].min                   = 0.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_STATE - CCS_BEGIN].max                   = 4294967296.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_STATE - CCS_BEGIN].discret               = 1;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_STATE - CCS_BEGIN].def                   = 0.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_STATE - CCS_BEGIN].code                  = 0;
+  // Начальная частота режима пуска "Пропуск резонансных частот"
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ - CCS_BEGIN].id               = CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ - CCS_BEGIN].access           = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ - CCS_BEGIN].operation        = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ - CCS_BEGIN].physic           = PHYSIC_FREQUENCY;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ - CCS_BEGIN].validity         = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ - CCS_BEGIN].value.float_t    = 20.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ - CCS_BEGIN].min              = 0.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ - CCS_BEGIN].max              = 500.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ - CCS_BEGIN].discret          = 100;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ - CCS_BEGIN].def              = 20.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ - CCS_BEGIN].code             = 13;
+  // Конечная частота режима пуска "Пропуск резонансных частот"
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_END_FREQ - CCS_BEGIN].id                 = CCS_RGM_RUN_SKIP_RESONANT_END_FREQ;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_END_FREQ - CCS_BEGIN].access             = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_END_FREQ - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_END_FREQ - CCS_BEGIN].physic             = PHYSIC_FREQUENCY;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_END_FREQ - CCS_BEGIN].validity           = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_END_FREQ - CCS_BEGIN].value.float_t      = 20.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_END_FREQ - CCS_BEGIN].min                = 0.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_END_FREQ - CCS_BEGIN].max                = 500.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_END_FREQ - CCS_BEGIN].discret            = 100;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_END_FREQ - CCS_BEGIN].def                = 25.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_END_FREQ - CCS_BEGIN].code               = 13;
+  // Скорость изменения частоты режима пуска "Пропуск резонансных частот"
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_TEMP - CCS_BEGIN].id                     = CCS_RGM_RUN_SKIP_RESONANT_TEMP;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_TEMP - CCS_BEGIN].access                 = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_TEMP - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_TEMP - CCS_BEGIN].physic                 = PHYSIC_TEMP;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_TEMP - CCS_BEGIN].validity               = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_TEMP - CCS_BEGIN].value.float_t          = 10.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_TEMP - CCS_BEGIN].min                    = 1.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_TEMP - CCS_BEGIN].max                    = 15.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_TEMP - CCS_BEGIN].discret                = 10;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_TEMP - CCS_BEGIN].def                    = 10.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_TEMP - CCS_BEGIN].code                   = 0;
+  // Сохраненная уставка частоты до "Пропуск резонансных частот"
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ - CCS_BEGIN].id            = CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ - CCS_BEGIN].access        = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ - CCS_BEGIN].operation     = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ - CCS_BEGIN].physic        = PHYSIC_FREQUENCY;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ - CCS_BEGIN].validity      = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ - CCS_BEGIN].value.float_t = 0.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ - CCS_BEGIN].min           = 0.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ - CCS_BEGIN].max           = 4294967296.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ - CCS_BEGIN].discret       = 1;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ - CCS_BEGIN].def           = 0.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ - CCS_BEGIN].code          = 0;
+  // Сохранённая уставка времени разгона до "Пропуск резонансных частот"
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP - CCS_BEGIN].id         = CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP - CCS_BEGIN].access     = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP - CCS_BEGIN].operation  = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP - CCS_BEGIN].physic     = PHYSIC_TIME;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP - CCS_BEGIN].validity   = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP - CCS_BEGIN].value.float_t = 0.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP - CCS_BEGIN].min        = 0.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP - CCS_BEGIN].max        = 4294967296.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP - CCS_BEGIN].discret    = 1;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP - CCS_BEGIN].def        = 0.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP - CCS_BEGIN].code       = 0;
+  // Сохраненная уставка частоты до "Пропуск резонансных частот"
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ - CCS_BEGIN].id        = CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ - CCS_BEGIN].access    = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ - CCS_BEGIN].physic    = PHYSIC_FREQUENCY;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ - CCS_BEGIN].validity  = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ - CCS_BEGIN].value.float_t = 0.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ - CCS_BEGIN].min       = 0.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ - CCS_BEGIN].max       = 4294967296.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ - CCS_BEGIN].discret   = 1;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ - CCS_BEGIN].def       = 0.0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ - CCS_BEGIN].code      = 0;
 }
 

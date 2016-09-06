@@ -100,6 +100,22 @@ bool interceptionStartRegime()
     }
   }
 
+  if (parameters.get(CCS_RGM_RUN_SKIP_RESONANT_MODE) != Regime::OffAction) {
+    switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
+    case VSD_TYPE_NOVOMET:
+    case VSD_TYPE_ETALON:
+      if (parameters.get(CCS_RGM_RUN_VSD_STATE) == Regime::IdleState) {
+        return false;
+      }
+      break;
+    default:
+      if (parameters.get(CCS_RGM_RUN_SKIP_RESONANT_STATE) == Regime::IdleState) {
+        return false;
+      }
+      break;
+    }
+  }
+
   if (parameters.get(CCS_RGM_RUN_AUTO_ADAPTATION_MODE) != Regime::OffAction) {
     switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
     case VSD_TYPE_NOVOMET:
@@ -114,6 +130,8 @@ bool interceptionStartRegime()
       break;
     }
   }
+
+
 
   return true;
 }
