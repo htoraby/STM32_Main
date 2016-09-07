@@ -39,6 +39,8 @@ private:
   float freq_;
   float setpointFreq_;
   float rememberFreq_;
+  float tempBeginFreq_;
+  float tempEndFreq_;
 
 };
 

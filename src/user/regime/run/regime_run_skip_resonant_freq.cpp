@@ -51,15 +51,32 @@ void RegimeRunSkipResonantFreq::processingStateWork()
   switch (state_) {
   // Состояние анализа, прохода через диапазон пропуска частот
   case WorkState:
-    // Проход снизу вверх
-    if ((freq_ < beginFreq_) && (setpointFreq_ > endFreq_)) {
-      saveBeforeRegimeRun();                                // Сохраняем настройки ЧРП
-      state_ = WorkState + 1;
-    }
-    // Проход сверху вниз
-    else if ((freq_ > endFreq_) && (setpointFreq_ < beginFreq_)) {
-      saveBeforeRegimeRun();                                // Сохраняем настройки ЧРП
-      state_ = WorkState + 6;
+    tempBeginFreq_ = beginFreq_;
+    tempEndFreq_ = endFreq_;
+    // Изменение частоты при котором попадаем в диапазон пропуска частот
+    if (!(((freq_ <= beginFreq_) && (setpointFreq_ <= beginFreq_))
+      ||((freq_ >= endFreq_) && (setpointFreq_ >= endFreq_)))) {
+      // Набор частоты
+      if (freq_ < setpointFreq_) {
+        if ((freq_ >= beginFreq_) && (freq_ <= endFreq_)) {
+          tempBeginFreq_ = freq_;
+        }
+        if (setpointFreq_ < endFreq_) {
+          tempEndFreq_ = setpointFreq_;
+        }
+        saveBeforeRegimeRun();                                // Сохраняем настройки ЧРП
+        state_ = WorkState + 1;
+      }
+      else if (freq_ > setpointFreq_) {
+        if ((freq_ >= beginFreq_) && (freq_ <= endFreq_)) {
+          tempEndFreq_ = freq_;
+        }
+        if (setpointFreq_ > beginFreq_) {
+          tempBeginFreq_ = setpointFreq_;
+        }
+        saveBeforeRegimeRun();                                // Сохраняем настройки ЧРП
+        state_ = WorkState + 6;
+      }
     }
     break;
   // Проход снизу вверх, задаём начальную частоту пропуска резонансных частот
@@ -74,7 +91,7 @@ void RegimeRunSkipResonantFreq::processingStateWork()
     break;
   // Проход снизу вверх, ждём набора начальной частоты
   case WorkState + 2:
-    if (setpointFreq_ != beginFreq_) {      // Изменена уставка частоты из вне
+    if (setpointFreq_ != tempBeginFreq_) {      // Изменена уставка частоты из вне
       state_ = WorkState + 11;
     }
     else {
@@ -101,7 +118,7 @@ void RegimeRunSkipResonantFreq::processingStateWork()
     break;
   // Проход снизу вверх, ждём набора конечной частоты
   case WorkState + 4:
-    if (setpointFreq_ != endFreq_) {      // Изменена уставка частоты из вне
+    if (setpointFreq_ != tempEndFreq_) {      // Изменена уставка частоты из вне
       state_ = WorkState + 11;
     }
     else {
@@ -118,7 +135,7 @@ void RegimeRunSkipResonantFreq::processingStateWork()
     break;
   // Проход снизу вверх, возвращение частоты уставки
   case WorkState + 5:
-    if (setpointFreq_ != endFreq_) {      // Изменена уставка частоты из вне
+    if (setpointFreq_ != tempEndFreq_) {      // Изменена уставка частоты из вне
       state_ = WorkState + 11;
     }
     else {
@@ -143,7 +160,7 @@ void RegimeRunSkipResonantFreq::processingStateWork()
     break;
   // Проход сверху вниз, ждём снижения до конечной частоты
   case WorkState + 7:
-    if (setpointFreq_ != endFreq_) {        // Изменена уставка частоты из вне
+    if (setpointFreq_ != tempEndFreq_) {        // Изменена уставка частоты из вне
       state_ = WorkState + 11;
     }
     else {
@@ -170,7 +187,7 @@ void RegimeRunSkipResonantFreq::processingStateWork()
     break;
   // Проход сверху вниз, ждем снижения до начальной частоты
   case WorkState + 9:
-    if (setpointFreq_ != beginFreq_) {      // Изменена уставка частоты из вне
+    if (setpointFreq_ != tempBeginFreq_) {      // Изменена уставка частоты из вне
       state_ = WorkState + 11;
     }
     else {
@@ -187,7 +204,7 @@ void RegimeRunSkipResonantFreq::processingStateWork()
     break;
   // Проход сверху вниз, возвращение частоты уставки
   case WorkState + 10:
-    if (setpointFreq_ != beginFreq_) {      // Изменена уставка частоты из вне
+    if (setpointFreq_ != tempBeginFreq_) {      // Изменена уставка частоты из вне
       state_ = WorkState + 11;
     }
     else {
@@ -204,6 +221,8 @@ void RegimeRunSkipResonantFreq::processingStateWork()
   case WorkState + 11:
     err = returnTemp();
     if (!err) {
+      tempBeginFreq_ = beginFreq_;
+      tempEndFreq_ = endFreq_;
       state_ = WorkState;
     }
     break;
@@ -289,7 +308,7 @@ int16_t RegimeRunSkipResonantFreq::setMinFreq()
 
 int16_t RegimeRunSkipResonantFreq::setBeginFreq()
 {
-  int16_t err = setConfirmation(VSD_FREQUENCY, beginFreq_);
+  int16_t err = setConfirmation(VSD_FREQUENCY, tempBeginFreq_);
   if (err == 1) {
     #if (USE_LOG_DEBUG == 1)
       logDebug.add(DebugMsg, "Run skip: setBeginFreq");
@@ -311,7 +330,7 @@ int16_t RegimeRunSkipResonantFreq::setTempSkip()
 
 int16_t RegimeRunSkipResonantFreq::setEndFreq()
 {
-  int16_t err = setConfirmation(VSD_FREQUENCY, endFreq_);
+  int16_t err = setConfirmation(VSD_FREQUENCY, tempEndFreq_);
   if (err == 1) {
     #if (USE_LOG_DEBUG == 1)
       logDebug.add(DebugMsg, "Run skip: setEndFreq");
