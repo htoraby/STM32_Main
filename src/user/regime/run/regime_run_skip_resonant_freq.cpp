@@ -17,6 +17,9 @@ void RegimeRunSkipResonantFreq::getOtherSetpoint()
   beginFreq_ = parameters.get(CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ);
   endFreq_ = parameters.get(CCS_RGM_RUN_SKIP_RESONANT_END_FREQ);
   time_ = parameters.get(VSD_MOTOR_FREQUENCY) / parameters.get(CCS_RGM_RUN_SKIP_RESONANT_TEMP);
+  freq_ = parameters.get(VSD_FREQUENCY_NOW);
+  setpointFreq_ = parameters.get(VSD_FREQUENCY);
+  rememberFreq_ = parameters.get(CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ);
 }
 
 void RegimeRunSkipResonantFreq::setOtherSetpoint()
@@ -29,7 +32,6 @@ void RegimeRunSkipResonantFreq::processingStateIdle()
   if (action_) {
     if (ksu.getValue(CCS_CONDITION) == CCS_CONDITION_STOP) {  // Станция в останове
       if (runReason_ != LastReasonRunNone) {                  // Попытка пуска
-        saveBeforeRegimeRun();                                // Сохраняем настройки ЧРП
         state_ = RunningState;
       }
     }
@@ -38,64 +40,174 @@ void RegimeRunSkipResonantFreq::processingStateIdle()
 
 void RegimeRunSkipResonantFreq::processingStateRunning()
 {
-  int16_t err = -1;
-  err = setMinFreq();
-  if (!err) {                     // нет ошибок, включили режим
-    err = setBeginFreq();
-    if (!err) {                   // нет ошибок, включили режим
-      ksu.start(runReason_);
-      logEvent.add(OtherCode, AutoType, RegimeRunSkipResonantStartId);
-      state_ = WorkState;
-    }
-    else if (err > 0) {           // Есть ошибка задания настроек режима
-      state_ = WorkState + 2;     // Попытаться вернуть настройки и выйти из режим
-    }
-  }
-  else if (err > 0) {             // Есть ошибка задания настроек режима
-    state_ = WorkState + 2;       // Попытаться вернуть настройки и выйти из режим
-  }
+  ksu.start(runReason_);
+  logEvent.add(OtherCode, AutoType, RegimeRunSkipResonantStartId);
+  state_ = WorkState;
 }
 
 void RegimeRunSkipResonantFreq::processingStateWork()
 {
   int16_t err = -1;
   switch (state_) {
+  // Состояние анализа, прохода через диапазон пропуска частот
   case WorkState:
-    if (vsd->isSetPointFreq()) {  // Разогнались до частоты начала пропуска резонансных частот
-      err = setTempSkip();        // Задаём новый темп разгона
-      if (!err) {                 // Задали новый темп разгона
-        err = setEndFreq();       // Задаём новую частоту, конца участка резонанса
-        if (!err) {               // Задали новую частоту
-          state_ = WorkState + 1; // Переходим на состояние ожидания ожидания набора частоты
+    // Проход снизу вверх
+    if ((freq_ < beginFreq_) && (setpointFreq_ > endFreq_)) {
+      saveBeforeRegimeRun();                                // Сохраняем настройки ЧРП
+      state_ = WorkState + 1;
+    }
+    // Проход сверху вниз
+    else if ((freq_ > endFreq_) && (setpointFreq_ < beginFreq_)) {
+      saveBeforeRegimeRun();                                // Сохраняем настройки ЧРП
+      state_ = WorkState + 6;
+    }
+    break;
+  // Проход снизу вверх, задаём начальную частоту пропуска резонансных частот
+  case WorkState + 1:
+    err = setBeginFreq();
+    if (!err) {
+      state_ = WorkState + 2;
+    }
+    else if (err > 0) {
+      state_ = WorkState + 12;              // Попытаться вернуть настройки и выйти из режим
+    }
+    break;
+  // Проход снизу вверх, ждём набора начальной частоты
+  case WorkState + 2:
+    if (setpointFreq_ != beginFreq_) {      // Изменена уставка частоты из вне
+      state_ = WorkState + 11;
+    }
+    else {
+      if (vsd->isSetPointFreq()) {          // Достигли начальной частоты
+        err = setTempSkip();                // Задаём новый темп разгона
+        if (!err) {
+          state_ = WorkState + 3;           // Переход на состояние задания конечной частоты
         }
-        else if (err > 0) {       // Есть ошибка задания настроек режима
-          state_ = WorkState + 2; // Попытаться вернуть настройки и выйти из режима
+        else if (err > 0) {
+          state_ = WorkState + 12;          // Попытаться вернуть настройки и выйти из режим
         }
+      }
+    }
+    break;
+  // Проход снизу вверх, задание конечной частоты
+  case WorkState + 3:
+    err = setEndFreq();
+    if (!err) {
+      state_ = WorkState + 4;
+    }
+    else if (err > 0) {
+      state_ = WorkState + 12;              // Попытаться вернуть настройки и выйти из режим
+    }
+    break;
+  // Проход снизу вверх, ждём набора конечной частоты
+  case WorkState + 4:
+    if (setpointFreq_ != endFreq_) {      // Изменена уставка частоты из вне
+      state_ = WorkState + 11;
+    }
+    else {
+      if (vsd->isSetPointFreq()) {        // Достигли конечной частоты
+        err = returnTemp();
+        if (!err) {
+          state_ = WorkState + 5;
+        }
+        else if (err > 0) {
+          state_ = WorkState + 12;        // Попытаться вернуть настройки и выйти из режим
+        }
+      }
+    }
+    break;
+  // Проход снизу вверх, возвращение частоты уставки
+  case WorkState + 5:
+    if (setpointFreq_ != endFreq_) {      // Изменена уставка частоты из вне
+      state_ = WorkState + 11;
+    }
+    else {
+      err = returnFreq();
+      if (!err) {
+         state_ = WorkState;
       }
       else if (err > 0) {
-        state_ = WorkState + 2;   // Попытаться вернуть настройки и выйти из режим
+        state_ = WorkState + 12;          // Попытаться вернуть настройки и выйти из режима
       }
     }
     break;
-  case WorkState + 1:
-    if (vsd->isSetPointFreq()) {
-      err = returnTemp();         // Возвращаем темп разгона
-      if (!err) {                 // Вернули темп разгона
-        err = returnFreq();       // Возвращаем частоту уставки
-        if (!err) {               // Вернули частоту уставки
-          logEvent.add(OtherCode, AutoType, RegimeRunSkipResonantFinishId);
-          state_ = IdleState;     // Переходим в состояние Idle
+  // Проход сверху вниз, задаём конечную частоту пропуска резонансных частот
+  case WorkState + 6:
+    err = setEndFreq();
+    if (!err) {
+      state_ = WorkState + 7;
+    }
+    else if (err > 0) {
+      state_ = WorkState + 15;              // Попытаться вернуть настройки и выйти из режим
+    }
+    break;
+  // Проход сверху вниз, ждём снижения до конечной частоты
+  case WorkState + 7:
+    if (setpointFreq_ != endFreq_) {        // Изменена уставка частоты из вне
+      state_ = WorkState + 11;
+    }
+    else {
+      if (vsd->isSetPointFreq()) {          // Достигли начальной частоты
+        err = setTempSkip();                // Задаём новый темп разгона
+        if (!err) {
+          state_ = WorkState + 8;           // Переход на состояние задания конечной частоты
         }
-        else if (err > 0) {       // Ошибка задания частоты уставки
-          state_ = WorkState + 2; // Попытаться вернуть настройки и выйти из режим
+        else if (err > 0) {
+          state_ = WorkState + 12;          // Попытаться вернуть настройки и выйти из режим
         }
-      }
-      else if (err > 0) {         // Ошибка задания темпа разгона
-        state_ = WorkState + 2;   // Попытаться вернуть настройки и выйти из режим
       }
     }
     break;
-  case WorkState + 2:
+  // Проход сверху вниз, задание начальной частоты
+  case WorkState + 8:
+    err = setBeginFreq();
+    if (!err) {
+      state_ = WorkState + 9;
+    }
+    else if (err > 0) {
+      state_ = WorkState + 12;              // Попытаться вернуть настройки и выйти из режим
+    }
+    break;
+  // Проход сверху вниз, ждем снижения до начальной частоты
+  case WorkState + 9:
+    if (setpointFreq_ != beginFreq_) {      // Изменена уставка частоты из вне
+      state_ = WorkState + 11;
+    }
+    else {
+      if (vsd->isSetPointFreq()) {          // Достигли конечной частоты
+        err = returnTemp();
+        if (!err) {
+          state_ = WorkState + 10;
+        }
+        else if (err > 0) {
+          state_ = WorkState + 12;          // Попытаться вернуть настройки и выйти из режим
+        }
+      }
+    }
+    break;
+  // Проход сверху вниз, возвращение частоты уставки
+  case WorkState + 10:
+    if (setpointFreq_ != beginFreq_) {      // Изменена уставка частоты из вне
+      state_ = WorkState + 11;
+    }
+    else {
+      err = returnFreq();
+      if (!err) {
+        state_ = WorkState;
+      }
+      else if (err > 0) {
+        state_ = WorkState + 12;            // Попытаться вернуть настройки и выйти из режима
+      }
+    }
+    break;
+  // Возвращаем темп разгона и переходим к анализу текущей частоты и уставки
+  case WorkState + 11:
+    err = returnTemp();
+    if (!err) {
+      state_ = WorkState;
+    }
+    break;
+  case WorkState + 12:
     logEvent.add(OtherCode, AutoType, RegimeRunSkipResonantFailId);
     state_ = IdleState;           // Переходим в состояние Idle
     break;
@@ -107,14 +219,11 @@ void RegimeRunSkipResonantFreq::processingStateStop()
   int16_t err = -1;
   err = returnTemp();         // Возвращаем темп разгона
   if (!err) {                 // Вернули темп разгона
-    err = returnFreq();       // Возвращаем частоту уставки
-    if (!err) {               // Вернули частоту уставки
-      logEvent.add(OtherCode, AutoType, RegimeRunSkipResonantAbortId);
-      state_ = IdleState;     // Переходим в состояние Idle
-    }
-    else if (err > 0) {       // Ошибка задания частоты уставки
-      state_ = WorkState + 2; // Попытаться вернуть настройки и выйти из режима
-    }
+    logEvent.add(OtherCode, AutoType, RegimeRunSkipResonantAbortId);
+    state_ = IdleState;     // Переходим в состояние Idle
+  }
+  else if (err > 0) {       // Ошибка задания частоты уставки
+    state_ = WorkState + 2; // Попытаться вернуть настройки и выйти из режима
   }
 }
 
@@ -134,7 +243,17 @@ void RegimeRunSkipResonantFreq::automatRegime()
   case WorkState:
   case WorkState + 1:
   case WorkState + 2:
-    if (ksu.isStopMotor()) {
+  case WorkState + 3:
+  case WorkState + 4:
+  case WorkState + 5:
+  case WorkState + 6:
+  case WorkState + 7:
+  case WorkState + 8:
+  case WorkState + 9:
+  case WorkState + 10:
+  case WorkState + 11:
+  case WorkState + 12:
+    if (parameters.get(CCS_CONDITION) == CCS_CONDITION_STOP) {
       state_ = StopState;
     }
     else {
