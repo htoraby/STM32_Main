@@ -197,6 +197,7 @@ void TmsIrz::getNewValue(uint16_t id)
 
   switch (param->typeData) {
   case TYPE_DATA_INT16:
+  case TYPE_DATA_INT16_4:
     value = (float)param->value.int16_t[0];
     break;
   case TYPE_DATA_UINT16:
