@@ -29193,6 +29193,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<unit>RESISTANCE_OM</unit>
+		<unit_lcd>RESISTANCE_KOM</unit_lcd>
 		<code>0</code>
 		<comment>Сопротивление изоляции</comment>
 	</param>
