@@ -20,6 +20,12 @@ void regimeInit();
 bool interceptionStartRegime();
 
 /*!
+ * \brief Метод перехвата останова режимом
+ * \return false - стоп запрещён, true - стоп разрещён
+ */
+bool interceptionStopRegime();
+
+/*!
  * \brief Метод проверки работы пускового режима
  * \return
  */

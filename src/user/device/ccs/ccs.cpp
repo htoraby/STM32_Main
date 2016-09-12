@@ -558,6 +558,10 @@ bool Ccs::checkCanStop()
     setBlock();
     return false;
   }
+
+//  if (!interceptionStopRegime())
+//    return false;
+
   return true;
 }
 

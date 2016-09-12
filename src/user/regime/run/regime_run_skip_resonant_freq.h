@@ -25,6 +25,8 @@ private:
   int16_t setBeginFreq();
   int16_t setMinFreq();
   int16_t setTempSkip();
+  int16_t setTempDownSkip();
+  int16_t returnTempDown();
   int16_t setEndFreq();
   int16_t returnTemp();
   int16_t returnFreq();
