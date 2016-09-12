@@ -16,6 +16,7 @@ private:
   void initParameters();
   void calcParamsTask();
   int setNewValue(ScadaParameter *param);
+  void calcDateTime(time_t time, ScadaParameter *params);
 
 };
 

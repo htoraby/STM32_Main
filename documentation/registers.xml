@@ -30877,6 +30877,25 @@
 	</param>
 	<param>
 		<id>15105</id>
+		<name>TMS_PRESSURE_MOTOR</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_PRESSURE</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<discret>100</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>P масла двигателя</text>
+		<short_text>P масла ПЭД</short_text>
+		<unit>PRESSURE_MPA</unit>
+		<unit_lcd>PRESSURE_MPA</unit_lcd>
+		<format>XX_XXX</format>
+		<code>0</code>
+		<comment>Давление масла двигателя</comment>
+	</param>
+	<param>
+		<id>15106</id>
 		<name>TMS_END</name>
 		<code>0</code>
 	</param>

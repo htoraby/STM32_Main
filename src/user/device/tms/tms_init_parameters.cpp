@@ -1262,5 +1262,17 @@ void Tms::initParameters()
   parameters_[TMS_DATE_TIME_MMSS - TMS_BEGIN].def                                = 0.0;
   parameters_[TMS_DATE_TIME_MMSS - TMS_BEGIN].discret                            = 1;
   parameters_[TMS_DATE_TIME_MMSS - TMS_BEGIN].code                               = 0;
+  // Давление масла двигателя
+  parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].id                                 = TMS_PRESSURE_MOTOR;
+  parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].operation                          = OPERATION_READ;
+  parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].physic                             = PHYSIC_PRESSURE;
+  parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].validity                           = VALIDITY_ERROR;
+  parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].value.float_t                      = NAN;
+  parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].min                                = 0.0;
+  parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].max                                = 999999999.9;
+  parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].def                                = 0;
+  parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].discret                            = 100;
+  parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].code                               = 0;
 }
 
