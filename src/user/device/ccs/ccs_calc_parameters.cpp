@@ -46,6 +46,7 @@ void Ccs::calcParametersTask()
       calcMotorVoltagePhase2();
       calcMotorVoltagePhase3();
       calcMotorVoltageImbalance();
+      calcMotorVoltageAverage();
       calcVoltageTransOut();
       calcMotorCos();
       calcMotorLoad();
@@ -246,6 +247,14 @@ float Ccs::calcMotorVoltageImbalance()
                          parameters.get(CCS_MOTOR_VOLTAGE_PHASE_3),
                          0));
   return parameters.get(CCS_MOTOR_VOLTAGE_IMBALANCE);
+}
+
+void Ccs::calcMotorVoltageAverage()
+{
+  setValue(CCS_MOTOR_VOLTAGE_NOW,
+           calcAverage3Values(parameters.get(CCS_MOTOR_VOLTAGE_PHASE_1),
+                              parameters.get(CCS_MOTOR_VOLTAGE_PHASE_2),
+                              parameters.get(CCS_MOTOR_VOLTAGE_PHASE_3)));
 }
 
 void Ccs::calcVoltageTransOut()

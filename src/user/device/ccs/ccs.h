@@ -277,6 +277,8 @@ public:
    */
   float calcMotorVoltageImbalance();
 
+  void calcMotorVoltageAverage();
+
   /*!
    * \brief Функция вычисления напряжения на выходе ТМПН
    */
