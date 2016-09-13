@@ -126,7 +126,7 @@ void ScadaLukoil::calcParamsTask()
     calcDateTime(parameters.getU32(CCS_DATE_TIME), &scadaParameters_[1]);
 
     // 253-254
-    int time = 0;
+    time_t time = 0;
     if (isStopMotor) {
       if (isRestart)
         time = parameters.get(CCS_RESTART_TIMER);
@@ -323,9 +323,94 @@ void ScadaLukoil::calcParamsTask()
     // 961
     scadaParameters_[324].value.float_t = parameters.get(CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT);
 
+    // 969
+    value = 0;
+    if (parameters.get(CCS_RGM_PUMP_GAS_MODE) != Regime::OffAction)
+      value = 1;
+    scadaParameters_[332].value.float_t = value;
 
+    // 987
+    value = 0;
+    if (parameters.get(CCS_RGM_CURRENT_LIMIT_MODE) != Regime::OffAction)
+      value = 1;
+    scadaParameters_[350].value.float_t = value;
 
+    // 1025
+    unTypeData data;
+    data.uint32_t = parameters.get(CCS_SCADA_BYTERATE);
+    switch (data.uint32_t) {
+    case 2400: value = 1; break;
+    case 4800: value = 2; break;
+    case 9600: value = 3; break;
+    case 14400: value = 4; break;
+    case 19200: value = 5; break;
+    case 28800: value = 6; break;
+    case 38400: value = 7; break;
+    case 57600: value = 8; break;
+    case 76800: value = 9; break;
+    case 115200: value = 10; break;
+    default: value = 11; break;
+    }
+    scadaParameters_[388].value.float_t = value;
 
+    // 1026
+    scadaParameters_[389].value.float_t = 4;
+
+    // 1051-1052
+    data.uint32_t = parameters.getU32(CCS_NUM_PRODUCTION_CCS);
+    scadaParameters_[414].value.uint32_t = data.uint16_t[1];
+    scadaParameters_[415].value.uint32_t = data.uint16_t[0];
+
+    // 1054-1056
+    time = parameters.getU32(CCS_DATE_PRODUCTION_CCS);
+    tm dateTime = *localtime(&time);
+    if (dateTime.tm_year > 100)
+      dateTime.tm_year = dateTime.tm_year - 100;
+    else
+      dateTime.tm_year = 0;
+    scadaParameters_[417].value.uint32_t = dateTime.tm_mday;
+    scadaParameters_[418].value.uint32_t = dateTime.tm_mon + 1;
+    scadaParameters_[419].value.uint32_t = dateTime.tm_year;
+
+    // 1058-1060
+    time = parameters.getU32(CCS_DATE_INSTALL_SW_CCS);
+    dateTime = *localtime(&time);
+    if (dateTime.tm_year > 100)
+      dateTime.tm_year = dateTime.tm_year - 100;
+    else
+      dateTime.tm_year = 0;
+    scadaParameters_[421].value.uint32_t = dateTime.tm_mday;
+    scadaParameters_[422].value.uint32_t = dateTime.tm_mon + 1;
+    scadaParameters_[423].value.uint32_t = dateTime.tm_year;
+
+    // 1062-1064
+    time = parameters.getU32(CCS_DATE_PRODUCTION_SU);
+    dateTime = *localtime(&time);
+    if (dateTime.tm_year > 100)
+      dateTime.tm_year = dateTime.tm_year - 100;
+    else
+      dateTime.tm_year = 0;
+    scadaParameters_[425].value.uint32_t = dateTime.tm_mday;
+    scadaParameters_[426].value.uint32_t = dateTime.tm_mon + 1;
+    scadaParameters_[427].value.uint32_t = dateTime.tm_year;
+
+    // 1065-1066
+    data.uint32_t = parameters.getU32(CCS_NUM_PRODUCTION_SU);
+    scadaParameters_[428].value.uint32_t = data.uint16_t[1];
+    scadaParameters_[429].value.uint32_t = data.uint16_t[0];
+
+    // 1069
+    switch ((int)parameters.get(CCS_EM_TYPE)) {
+    case EM_TYPE_NONE: value = 0; break;
+    case EM_TYPE_SET4TM: value = 2; break;
+    default: value = 3; break;
+    }
+    scadaParameters_[432].value.float_t = value;
+
+    // 1072-1073
+    data.uint32_t = parameters.get(CCS_VERSION_SW_CCS);
+    scadaParameters_[435].value.uint32_t = data.uint16_t[1];
+    scadaParameters_[436].value.uint32_t = data.uint16_t[0];
   }
 }
 

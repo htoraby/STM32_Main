@@ -4083,7 +4083,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[339].command          = OPERATION_ERROR;
   scadaParameters_[339].value.float_t    = 0;
   // Ограничение тока при плавном изменении частоты
-  scadaParameters_[340].id               = 0;
+  scadaParameters_[340].id               = -1;
   scadaParameters_[340].address          = 977;
   scadaParameters_[340].operation        = OPERATION_WRITE;
   scadaParameters_[340].physic           = PHYSIC_NUMERIC;
@@ -5080,7 +5080,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[422].value.float_t    = 0;
   // Дата установки ПО контроллера (год)
   scadaParameters_[423].id               = 0;
-  scadaParameters_[423].address          = 1041;
+  scadaParameters_[423].address          = 1060;
   scadaParameters_[423].operation        = OPERATION_READ;
   scadaParameters_[423].physic           = PHYSIC_NUMERIC;
   scadaParameters_[423].unit             = 0;

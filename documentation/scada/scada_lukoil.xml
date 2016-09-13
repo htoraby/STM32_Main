@@ -4153,7 +4153,7 @@
 		<name>Время торможения при прокачке газа</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>977</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -5174,7 +5174,7 @@
 	</param>
 	<param>
 		<id>0</id>
-		<address>1041</address>
+		<address>1060</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
