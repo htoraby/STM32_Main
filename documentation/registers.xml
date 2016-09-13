@@ -4368,7 +4368,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>4.0</value>
 		<text>Уставка останова</text>
-		<short_text>Рвх.Уставка останова </short_text>
+		<short_text>Рвх.Уставка останова</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>PRESSURE_MPA</unit>
 		<unit_lcd>PRESSURE_MPA</unit_lcd>
@@ -11719,7 +11719,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>1.0</max>
+		<max>2.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
