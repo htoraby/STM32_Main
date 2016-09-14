@@ -4,6 +4,7 @@
 #include "regime_run_swing.h"
 #include "regime_run_adaptation_vector.h"
 #include "regime_run_pickup.h"
+#include "regime_run_skip_resonant_freq.h"
 
 VsdDanfoss::VsdDanfoss()
 {
@@ -11,6 +12,7 @@ VsdDanfoss::VsdDanfoss()
   regimeRunSwing_ = new RegimeRunSwing();
   regimeRunAdaptationVector_ = new RegimeRunAdaptationVector();
   regimeRunPickup_ = new RegimeRunPickup();
+  regimeRunSkipResonantFreq_ = new RegimeRunSkipResonantFreq();
 }
 
 VsdDanfoss::~VsdDanfoss()
@@ -19,6 +21,7 @@ VsdDanfoss::~VsdDanfoss()
   delete regimeRunSwing_;
   delete regimeRunAdaptationVector_;
   delete regimeRunPickup_;
+  delete regimeRunSkipResonantFreq_;
 }
 
 void VsdDanfoss::initParameters()
@@ -1322,7 +1325,8 @@ bool VsdDanfoss::checkStop()
 
 bool VsdDanfoss::isSetPointFreq()
 {
-  if (checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_SPEED))
+  if ((checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_SPEED))
+    && (parameters.get(VSD_FREQUENCY_NOW) == parameters.get(VSD_FREQUENCY)))
     return true;
   return false;
 }
@@ -1483,6 +1487,8 @@ void VsdDanfoss::processingRegimeRun()
   regimeRunSwing_->processing();
   regimeRunAdaptationVector_->processing();
   regimeRunPickup_->processing();
+  regimeRunSkipResonantFreq_->processing();
+
 }
 
 void VsdDanfoss::resetAdaptationVector(uint16_t type)

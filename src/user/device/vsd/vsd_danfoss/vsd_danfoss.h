@@ -8,6 +8,7 @@ class RegimeRunPush;
 class RegimeRunSwing;
 class RegimeRunAdaptationVector;
 class RegimeRunPickup;
+class RegimeRunSkipResonantFreq;
 
 enum enVsdDanfosStatus1
 {
@@ -239,6 +240,7 @@ private:
   RegimeRunSwing *regimeRunSwing_;
   RegimeRunAdaptationVector *regimeRunAdaptationVector_;
   RegimeRunPickup *regimeRunPickup_;
+  RegimeRunSkipResonantFreq *regimeRunSkipResonantFreq_;
 
 };
 

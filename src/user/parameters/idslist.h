@@ -1015,7 +1015,15 @@ enum enID
   CCS_RGM_RUN_PICKUP_SETPOINT_TIME_DOWN = 1009,              //!< Подхват. Сохранённая уставка времени торможения
   CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION = 1010,               //!< Подхват. Сохранённая уставка направления вращения
   CCS_PROT_VALUE_PARAMETER = 1011,                           //!< Значение по которому активирована защита
-  CCS_END = 1012,                                            //!< 
+  CCS_RGM_RUN_SKIP_RESONANT_MODE = 1012,                     //!< Действие режима пуска "Пропуск резонансных частот"
+  CCS_RGM_RUN_SKIP_RESONANT_STATE = 1013,                    //!< Состояние автомата режима пуска "Пропуск резонансных частот"
+  CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ = 1014,               //!< Начальная частота режима пуска "Пропуск резонансных частот"
+  CCS_RGM_RUN_SKIP_RESONANT_END_FREQ = 1015,                 //!< Конечная частота режима пуска "Пропуск резонансных частот"
+  CCS_RGM_RUN_SKIP_RESONANT_TEMP = 1016,                     //!< Скорость изменения частоты режима пуска "Пропуск резонансных частот"
+  CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ = 1017,            //!< Сохраненная уставка частоты до "Пропуск резонансных частот"
+  CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP = 1018,         //!< Сохранённая уставка времени разгона до "Пропуск резонансных частот"
+  CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ = 1019,        //!< Сохраненная уставка частоты до "Пропуск резонансных частот"
+  CCS_END = 1020,                                            //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF

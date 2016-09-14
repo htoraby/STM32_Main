@@ -558,6 +558,10 @@ bool Ccs::checkCanStop()
     setBlock();
     return false;
   }
+
+//  if (!interceptionStopRegime())
+//    return false;
+
   return true;
 }
 
@@ -1352,6 +1356,24 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_CMD_EM_CONNECTION_RESET:
     err = setValue(id, value, eventType);
     em->resetConnect();
+    return err;
+  case CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ:
+    err = setValue(id, value, eventType);
+    if (!err) {
+      parameters.setMin(CCS_RGM_RUN_SKIP_RESONANT_END_FREQ, value);
+      if (parameters.get(CCS_RGM_RUN_SKIP_RESONANT_END_FREQ) < value) {
+        parameters.set(CCS_RGM_RUN_SKIP_RESONANT_END_FREQ, value);
+      }
+    }
+    return err;
+  case CCS_RGM_RUN_SKIP_RESONANT_END_FREQ:
+    err = setValue(id, value, eventType);
+    if (!err) {
+      parameters.setMax(CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ, value);
+      if (parameters.get(CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ) > value) {
+        parameters.set(CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ, value);
+      }
+    }
     return err;
   default:
     return setValue(id, value, eventType);
