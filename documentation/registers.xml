@@ -19896,6 +19896,174 @@
 	</param>
 	<param>
 		<id>1012</id>
+		<name>CCS_RGM_RUN_SKIP_RESONANT_MODE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Пропуск резонансных частот</text>
+		<short_text>Пропуск F</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Вкл;2-Постоянно</values>
+		<comment>Действие режима пуска "Пропуск резонансных частот"</comment>
+	</param>
+	<param>
+		<id>1013</id>
+		<name>CCS_RGM_RUN_SKIP_RESONANT_STATE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4294967296.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Состояние автомата режима пуска "Пропуск резонансных частот"</comment>
+	</param>
+	<param>
+		<id>1014</id>
+		<name>CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>500.0</max>
+		<def>20.0</def>
+		<discret>100</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>20.0</value>
+		<text>Начальная частота</text>
+		<short_text>Пропуск F. Начальная F</short_text>
+		<form>NULL</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
+		<comment>Начальная частота  режима пуска "Пропуск резонансных частот"</comment>
+	</param>
+	<param>
+		<id>1015</id>
+		<name>CCS_RGM_RUN_SKIP_RESONANT_END_FREQ</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>500.0</max>
+		<def>25.0</def>
+		<discret>100</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>20.0</value>
+		<text>Конечная частота</text>
+		<short_text>Пропуск F. Конечная F</short_text>
+		<form>NULL</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
+		<comment>Конечная частота  режима пуска "Пропуск резонансных частот"</comment>
+	</param>
+	<param>
+		<id>1016</id>
+		<name>CCS_RGM_RUN_SKIP_RESONANT_TEMP</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TEMP</physic>
+		<min>1.0</min>
+		<max>15.0</max>
+		<def>10.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>10.0</value>
+		<text>Скорость изменения частоты</text>
+		<short_text>Пропуск F. Скорость изм. F</short_text>
+		<form>NULL</form>
+		<unit>TEMP_HZ_SS</unit>
+		<unit_lcd>TEMP_HZ_SS</unit_lcd>
+		<format>XXXX_X</format>
+		<code>0</code>
+		<comment>Скорость изменения частоты режима пуска "Пропуск резонансных частот"</comment>
+	</param>
+	<param>
+		<id>1017</id>
+		<name>CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>4294967296.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Сохраненная уставка частоты до "Пропуск резонансных частот"</comment>
+	</param>
+	<param>
+		<id>1018</id>
+		<name>CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>4294967296.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Сохранённая уставка времени разгона до "Пропуск резонансных частот"</comment>
+	</param>
+	<param>
+		<id>1019</id>
+		<name>CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>4294967296.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Сохраненная уставка частоты до "Пропуск резонансных частот"</comment>
+	</param>
+	<param>
+		<id>1020</id>
 		<name>CCS_END</name>
 	</param>
 	<param>

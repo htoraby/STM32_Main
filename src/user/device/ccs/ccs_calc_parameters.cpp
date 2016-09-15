@@ -606,6 +606,10 @@ void Ccs::calcRegimeRun()
      parameters.set(CCS_RUNNING_TYPE, Regime::PickupRegimeRun);
      return;
   }
+  if (parameters.get(CCS_RGM_RUN_SKIP_RESONANT_MODE) != Regime::OffAction) {
+     parameters.set(CCS_RUNNING_TYPE, Regime::SkipFreqRegimeRun);
+     return;
+  }
   parameters.set(CCS_RUNNING_TYPE, Regime::SmoothRegimeRun);
   return;
 }
