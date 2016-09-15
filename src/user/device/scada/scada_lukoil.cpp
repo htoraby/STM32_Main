@@ -136,9 +136,9 @@ void ScadaLukoil::calcParamsTask()
       time = parameters.get(CCS_RUN_TIME);
     }
     value = time/3600;
-    scadaParameters_[4].value.float_t = value;
-    value = (time/60%60)*100 + time%60;
-    scadaParameters_[5].value.float_t = value;
+    scadaParameters_[4].value.uint32_t = value;
+    value = (time/60%60)*256 + time%60;
+    scadaParameters_[5].value.uint32_t = value;
 
     // 255
     scadaParameters_[6].value.float_t = value;
@@ -416,9 +416,48 @@ void ScadaLukoil::calcParamsTask()
 
 int ScadaLukoil::setNewValue(ScadaParameter *param)
 {
+  unTypeData value;
+
   if (param->id > 0) {
     return parameters.set(param->id, param->value.float_t, RemoteType);
   }
+
+  // 764-766
+  if ((param->address >= 764) && (param->address <= 766)) {
+    time_t time = parameters.getU32(CCS_DATE_TIME);
+    tm dateTime = *localtime(&time);
+
+    switch (param->address) {
+    case 764:
+      dateTime.tm_mon = param->value.uint32_t/256 - 1;
+      dateTime.tm_mday = param->value.uint32_t%256;
+      break;
+    case 765:
+      dateTime.tm_hour = param->value.uint32_t/256;
+      dateTime.tm_year = param->value.uint32_t%256 + 100;
+      break;
+    case 766:
+      dateTime.tm_min = param->value.uint32_t%256;
+      dateTime.tm_sec = param->value.uint32_t/256;
+      break;
+    }
+
+    time = mktime(&dateTime);
+    parameters.set(CCS_DATE_TIME, (uint32_t)time, RemoteType);
+    return ok_r;
+  }
+
+  // 824
+  if (param->address == 824) {
+    if (param->value.float_t)
+      parameters.set(CCS_RGM_PERIODIC_MODE, Regime::OnAction, RemoteType);
+    else
+      parameters.set(CCS_RGM_PERIODIC_MODE, Regime::OffAction, RemoteType);
+    return ok_r;
+  }
+
+
+
   return err_r;
 }
 
@@ -430,10 +469,10 @@ void ScadaLukoil::calcDateTime(time_t time, ScadaParameter *params)
     dateTime.tm_year = dateTime.tm_year - 100;
   else
     dateTime.tm_year = 0;
-  value = (dateTime.tm_mon + 1)*100 + dateTime.tm_mday;
-  params[0].value.float_t = value;
-  value = dateTime.tm_hour*100 + dateTime.tm_year;
-  params[1].value.float_t = value;
-  value = dateTime.tm_sec*100 + dateTime.tm_min;
-  params[2].value.float_t = value;
+  value = (dateTime.tm_mon + 1)*256 + dateTime.tm_mday;
+  params[0].value.uint32_t = value;
+  value = dateTime.tm_hour*256 + dateTime.tm_year;
+  params[1].value.uint32_t = value;
+  value = dateTime.tm_sec*256 + dateTime.tm_min;
+  params[2].value.uint32_t = value;
 }
