@@ -131,6 +131,22 @@ bool interceptionStartRegime()
     }
   }
 
+  if (parameters.get(CCS_RGM_RUN_SYNCHRON_MODE) != Regime::OffAction) {
+    switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
+    case VSD_TYPE_NOVOMET:
+    case VSD_TYPE_ETALON:
+      if (parameters.get(CCS_RGM_RUN_VSD_STATE) == Regime::IdleState) {
+        return false;
+      }
+      break;
+    default:
+      if (parameters.get(CCS_RGM_RUN_SYNCHRON_STATE) == Regime::IdleState) {
+        return false;
+      }
+      break;
+    }
+  }
+
   return true;
 }
 

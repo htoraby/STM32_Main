@@ -5,6 +5,7 @@
 #include "regime_run_adaptation_vector.h"
 #include "regime_run_pickup.h"
 #include "regime_run_skip_resonant_freq.h"
+#include "regime_run_synchron.h"
 
 VsdDanfoss::VsdDanfoss()
 {
@@ -13,6 +14,7 @@ VsdDanfoss::VsdDanfoss()
   regimeRunAdaptationVector_ = new RegimeRunAdaptationVector();
   regimeRunPickup_ = new RegimeRunPickup();
   regimeRunSkipResonantFreq_ = new RegimeRunSkipResonantFreq();
+  regimeRunSynchron_ = new RegimeRunSynchron();
 }
 
 VsdDanfoss::~VsdDanfoss()
@@ -22,6 +24,7 @@ VsdDanfoss::~VsdDanfoss()
   delete regimeRunAdaptationVector_;
   delete regimeRunPickup_;
   delete regimeRunSkipResonantFreq_;
+  delete regimeRunSynchron_;
 }
 
 void VsdDanfoss::initParameters()
@@ -1488,6 +1491,7 @@ void VsdDanfoss::processingRegimeRun()
   regimeRunAdaptationVector_->processing();
   regimeRunPickup_->processing();
   regimeRunSkipResonantFreq_->processing();
+  regimeRunSynchron_->processing();
 
 }
 

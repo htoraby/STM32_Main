@@ -12242,5 +12242,77 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ - CCS_BEGIN].discret   = 1;
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ - CCS_BEGIN].def       = 0.0;
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ - CCS_BEGIN].code      = 0;
+  // Действие режима пуска "Пуск с синхронизацией"
+  parameters_[CCS_RGM_RUN_SYNCHRON_MODE - CCS_BEGIN].id                          = CCS_RGM_RUN_SYNCHRON_MODE;
+  parameters_[CCS_RGM_RUN_SYNCHRON_MODE - CCS_BEGIN].access                      = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_SYNCHRON_MODE - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SYNCHRON_MODE - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_RUN_SYNCHRON_MODE - CCS_BEGIN].validity                    = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_SYNCHRON_MODE - CCS_BEGIN].value.float_t               = 0.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_MODE - CCS_BEGIN].min                         = 0.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_MODE - CCS_BEGIN].max                         = 2.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_MODE - CCS_BEGIN].discret                     = 1;
+  parameters_[CCS_RGM_RUN_SYNCHRON_MODE - CCS_BEGIN].def                         = 0.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_MODE - CCS_BEGIN].code                        = 13;
+  // Состояние автомата режима пуска "Пуск с синхронизацией"
+  parameters_[CCS_RGM_RUN_SYNCHRON_STATE - CCS_BEGIN].id                         = CCS_RGM_RUN_SYNCHRON_STATE;
+  parameters_[CCS_RGM_RUN_SYNCHRON_STATE - CCS_BEGIN].access                     = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_SYNCHRON_STATE - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SYNCHRON_STATE - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_RUN_SYNCHRON_STATE - CCS_BEGIN].validity                   = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_SYNCHRON_STATE - CCS_BEGIN].value.float_t              = 0.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_STATE - CCS_BEGIN].min                        = 0.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_STATE - CCS_BEGIN].max                        = 4294967296.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_STATE - CCS_BEGIN].discret                    = 1;
+  parameters_[CCS_RGM_RUN_SYNCHRON_STATE - CCS_BEGIN].def                        = 0.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_STATE - CCS_BEGIN].code                       = 0;
+  // Частота синхронизации режима пуска "Пуск с синхронизацией"
+  parameters_[CCS_RGM_RUN_SYNCHRON_FREQ - CCS_BEGIN].id                          = CCS_RGM_RUN_SYNCHRON_FREQ;
+  parameters_[CCS_RGM_RUN_SYNCHRON_FREQ - CCS_BEGIN].access                      = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_SYNCHRON_FREQ - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SYNCHRON_FREQ - CCS_BEGIN].physic                      = PHYSIC_FREQUENCY;
+  parameters_[CCS_RGM_RUN_SYNCHRON_FREQ - CCS_BEGIN].validity                    = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_SYNCHRON_FREQ - CCS_BEGIN].value.float_t               = 20.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_FREQ - CCS_BEGIN].min                         = 0.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_FREQ - CCS_BEGIN].max                         = 500.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_FREQ - CCS_BEGIN].discret                     = 100;
+  parameters_[CCS_RGM_RUN_SYNCHRON_FREQ - CCS_BEGIN].def                         = 20.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_FREQ - CCS_BEGIN].code                        = 13;
+  // Время синхронизации режима пуска "Пуск с синхронизацией"
+  parameters_[CCS_RGM_RUN_SYNCHRON_TIME - CCS_BEGIN].id                          = CCS_RGM_RUN_SYNCHRON_TIME;
+  parameters_[CCS_RGM_RUN_SYNCHRON_TIME - CCS_BEGIN].access                      = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_SYNCHRON_TIME - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SYNCHRON_TIME - CCS_BEGIN].physic                      = PHYSIC_TIME;
+  parameters_[CCS_RGM_RUN_SYNCHRON_TIME - CCS_BEGIN].validity                    = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_SYNCHRON_TIME - CCS_BEGIN].value.float_t               = 10.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_TIME - CCS_BEGIN].min                         = 0.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_TIME - CCS_BEGIN].max                         = 200.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_TIME - CCS_BEGIN].discret                     = 1;
+  parameters_[CCS_RGM_RUN_SYNCHRON_TIME - CCS_BEGIN].def                         = 10.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_TIME - CCS_BEGIN].code                        = 13;
+  // Сохраненная уставка частоты "Пуска с синхронизацией"
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ - CCS_BEGIN].id                 = CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ - CCS_BEGIN].access             = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ - CCS_BEGIN].physic             = PHYSIC_FREQUENCY;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ - CCS_BEGIN].validity           = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ - CCS_BEGIN].value.float_t      = 0.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ - CCS_BEGIN].min                = 0.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ - CCS_BEGIN].max                = 4294967296.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ - CCS_BEGIN].discret            = 1;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ - CCS_BEGIN].def                = 0.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ - CCS_BEGIN].code               = 0;
+  // Сохраненная уставка минимальной частоты "Пуска с синхронизацией"
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ - CCS_BEGIN].id             = CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ - CCS_BEGIN].access         = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ - CCS_BEGIN].operation      = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ - CCS_BEGIN].physic         = PHYSIC_FREQUENCY;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ - CCS_BEGIN].validity       = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ - CCS_BEGIN].value.float_t  = 0.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ - CCS_BEGIN].min            = 0.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ - CCS_BEGIN].max            = 4294967296.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ - CCS_BEGIN].discret        = 1;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ - CCS_BEGIN].def            = 0.0;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ - CCS_BEGIN].code           = 0;
 }
 

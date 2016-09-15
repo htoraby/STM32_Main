@@ -20064,6 +20064,132 @@
 	</param>
 	<param>
 		<id>1020</id>
+		<name>CCS_RGM_RUN_SYNCHRON_MODE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Пуск с синхронизацией</text>
+		<short_text>Пуск с синхронизацией</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Вкл;2-Постоянно</values>
+		<comment>Действие режима пуска "Пуск с синхронизацией"</comment>
+	</param>
+	<param>
+		<id>1021</id>
+		<name>CCS_RGM_RUN_SYNCHRON_STATE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4294967296.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Состояние автомата режима пуска "Пуск с синхронизацией"</comment>
+	</param>
+	<param>
+		<id>1022</id>
+		<name>CCS_RGM_RUN_SYNCHRON_FREQ</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>500.0</max>
+		<def>20.0</def>
+		<discret>100</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>20.0</value>
+		<text>Частота синхронизации</text>
+		<short_text>Частота синхронизации</short_text>
+		<form>NULL</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
+		<comment>Частота синхронизации режима пуска "Пуск с синхронизацией"</comment>
+	</param>
+	<param>
+		<id>1023</id>
+		<name>CCS_RGM_RUN_SYNCHRON_TIME</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>200.0</max>
+		<def>10.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>10.0</value>
+		<text>Время синхронизации</text>
+		<short_text>Время синхронизации</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXX</format>
+		<code>13</code>
+		<comment>Время синхронизации режима пуска "Пуск с синхронизацией"</comment>
+	</param>
+	<param>
+		<id>1024</id>
+		<name>CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>4294967296.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Сохраненная уставка частоты "Пуска с синхронизацией"</comment>
+	</param>
+	<param>
+		<id>1025</id>
+		<name>CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>4294967296.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Сохраненная уставка минимальной частоты  "Пуска с синхронизацией"</comment>
+	</param>
+	<param>
+		<id>1026</id>
 		<name>CCS_END</name>
 	</param>
 	<param>

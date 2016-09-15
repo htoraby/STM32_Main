@@ -199,6 +199,11 @@ typedef enum {
   RegimeRunSkipResonantAbortId,       //!< Пропуск F прерван
   RegimeRunSkipResonantOffId,
 
+  RegimeRunSynchronStartId,           //!< Пуск с синхронизацией
+  RegimeRunSynchronFinishId,          //!< Пуск с синхронизацией завершен
+  RegimeRunSynchronFailId,            //!< Пуск с синхронизацией ошибка
+  RegimeRunSynchronOffId,             //!< Пуск с синхронизацией отключен
+
 } EventId;
 
 #endif // LOG_IDLIST
