@@ -5486,7 +5486,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Аналог.вх.1 пуск.время</short_text>
+		<short_text>Ан.вх.1 пуск.время</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -5507,7 +5507,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Время</text>
-		<short_text>Аналог.вх.1 время</short_text>
+		<short_text>Ан.вх.1 время</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -5759,7 +5759,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Действие защиты</text>
-		<short_text>Аналог.вх.2 РРЗ</short_text>
+		<short_text>Ан.вх.2 РРЗ</short_text>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -14201,8 +14201,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>380.0</value>
-		<text>Максимальная рабочее напряжение</text>
-		<short_text>Максимальная рабочее напряжение</short_text>
+		<text>Максимальное рабочее напряжение</text>
+		<short_text>Макс. рабочее напряжение</short_text>
 		<form>3.3 ТМПН</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>

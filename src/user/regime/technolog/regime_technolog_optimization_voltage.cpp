@@ -84,13 +84,13 @@ void RegimeTechnologOptimizationVoltage::processing()
       if (valueUfHiPoint_ < limDownUfHiPoint_) {
         valueUfHiPoint_ = limDownUfHiPoint_;
       }
-      parameters.set(idUfHiPoint_, valueUfHiPoint_);
+      parameters.set(idUfHiPoint_, valueUfHiPoint_, NoneType);
       //! Задаём новую нижнию точку напряжения
       valueUfLowPoint_ = valueUfLowPoint_ - step_;
       if (valueUfLowPoint_ < limDownUfLowPoint_) {
         valueUfLowPoint_ = limDownUfLowPoint_;
       }
-      parameters.set(idUfLowPoint_, valueUfLowPoint_);
+      parameters.set(idUfLowPoint_, valueUfLowPoint_, NoneType);
       state_ = WorkState + 1;
     }
     break;
@@ -120,12 +120,12 @@ void RegimeTechnologOptimizationVoltage::processing()
     if (valueUfHiPoint_ > limUpUfHiPoint_) {
       valueUfHiPoint_ = limUpUfHiPoint_;
     }
-    parameters.set(idUfHiPoint_, valueUfHiPoint_);
+    parameters.set(idUfHiPoint_, valueUfHiPoint_, NoneType);
     valueUfLowPoint_ = valueUfLowPoint_ + step_;
     if (valueUfLowPoint_ > limUpUfLowPoint_) {
       valueUfLowPoint_ = limUpUfLowPoint_;
     }
-    parameters.set(idUfLowPoint_, valueUfLowPoint_);
+    parameters.set(idUfLowPoint_, valueUfLowPoint_, NoneType);
     state_ = PauseState;
     beginPeriod_ = ksu.getTime();
     break;

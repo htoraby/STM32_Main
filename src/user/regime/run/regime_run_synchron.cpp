@@ -59,11 +59,13 @@ void RegimeRunSynchron::processingStateWork()
     if (vsd->isSetPointFreq()) {                      // Если достигли частоты синхронизации
       beginSync_ = ksu.getTime();                     // Запоминаем время выхода на частоту синхронизации
       state_ = WorkState + 1;                         // Переход на состояние отсчёта времени синхронизации
+      logEvent.add(OtherCode, AutoType, RegimeRunSynchronStartId);
     }
     break;
   case WorkState + 1:                                 // Состояние времени синхронизации
     uint32_t time = ksu.getSecFromCurTime(beginSync_);// Вычисляем время с
     if (time >= parameters.get(CCS_RGM_RUN_SYNCHRON_TIME)) {                          // Если время работы на частоте синхронизаци истекло
+      logEvent.add(OtherCode, AutoType, RegimeRunSynchronFinishId);
       state_ = StopState;                             // Возвращаем настройки
     }
     break;
@@ -86,6 +88,7 @@ void RegimeRunSynchron::processingStateStop()
 void RegimeRunSynchron::automatRegime()
 {
   if ((action_ == OffAction) && (state_ != IdleState)) {
+    logEvent.add(OtherCode, AutoType, RegimeRunSynchronFailId);
     state_ = StopState;
   }
 
