@@ -22880,7 +22880,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_RESISTANCE</physic>
-		<min>0.0140</min>
+		<min>0.0001</min>
 		<max>140.0</max>
 		<def>0.0140</def>
 		<discret>10000</discret>
@@ -22947,7 +22947,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.005</min>
+		<min>0.001</min>
 		<max>0.05</max>
 		<def>0.005</def>
 		<discret>3</discret>
