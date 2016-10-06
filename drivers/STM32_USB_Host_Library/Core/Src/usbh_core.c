@@ -405,10 +405,17 @@ USBH_StatusTypeDef  USBH_Process(USBH_HandleTypeDef *phost)
     
     if (phost->device.is_connected)  
     {
+      if(phost->pUser != NULL)
+      {
+        phost->pUser(phost, HOST_USER_CONNECTION);
+      }
+
+      USBH_UsrLog("USB Device Reset");
       /* Wait for 200 ms after connection */
-      phost->gState = HOST_DEV_WAIT_FOR_ATTACHMENT; 
-      USBH_Delay(200); 
+      phost->gState = HOST_DEV_WAIT_FOR_ATTACHMENT;
+      USBH_Delay(200);
       USBH_LL_ResetPort(phost);
+
 #if (USBH_USE_OS == 1)
       osMessagePut ( phost->os_event, USBH_PORT_EVENT, 0);
 #endif
@@ -450,14 +457,12 @@ USBH_StatusTypeDef  USBH_Process(USBH_HandleTypeDef *phost)
                    phost->device.speed,
                    USBH_EP_CONTROL,
                    phost->Control.pipe_size);
-    
 #if (USBH_USE_OS == 1)
     osMessagePut ( phost->os_event, USBH_PORT_EVENT, 0);
 #endif    
-    
     break;
     
-  case HOST_ENUMERATION:     
+  case HOST_ENUMERATION:
     /* Check for enumeration status */  
     if ( USBH_HandleEnum(phost) == USBH_OK)
     { 
@@ -581,7 +586,17 @@ USBH_StatusTypeDef  USBH_Process(USBH_HandleTypeDef *phost)
     break;       
 
   case HOST_DEV_DISCONNECTED :
-    
+    USBH_UsrLog("USB Device disconnected");
+    if(phost->pUser != NULL)
+    {
+      phost->pUser(phost, HOST_USER_DISCONNECTION);
+    }
+
+    USBH_Delay(200);
+
+    /* Start the low level driver  */
+    USBH_LL_Start(phost);
+
     DeInitStateMachine(phost);  
     
     /* Re-Initilaize Host for new Enumeration */
@@ -589,7 +604,12 @@ USBH_StatusTypeDef  USBH_Process(USBH_HandleTypeDef *phost)
     {
       phost->pActiveClass->DeInit(phost); 
       phost->pActiveClass = NULL;
-    }     
+    }
+    break;
+
+  case HOST_REENUMERATION:
+    USBH_UsrLog("USB new Enumeration");
+    USBH_ReEnumerate(phost);
     break;
     
   case HOST_ABORT_STATE:
@@ -828,16 +848,17 @@ USBH_StatusTypeDef  USBH_LL_Connect  (USBH_HandleTypeDef *phost)
   if(phost->gState == HOST_IDLE )
   {
     phost->device.is_connected = 1;
-    
-    if(phost->pUser != NULL)
-    {    
-      phost->pUser(phost, HOST_USER_CONNECTION);
-    }
+
   } 
   else if(phost->gState == HOST_DEV_WAIT_FOR_ATTACHMENT )
   {
     phost->gState = HOST_DEV_ATTACHED ;
   }
+  else if(phost->gState == HOST_ENUMERATION )
+  {
+    phost->gState = HOST_REENUMERATION ;
+  }
+
 #if (USBH_USE_OS == 1)
   osMessagePut ( phost->os_event, USBH_PORT_EVENT, 0);
 #endif 
@@ -860,17 +881,7 @@ USBH_StatusTypeDef  USBH_LL_Disconnect  (USBH_HandleTypeDef *phost)
   USBH_FreePipe  (phost, phost->Control.pipe_in);
   USBH_FreePipe  (phost, phost->Control.pipe_out);  
    
-  phost->device.is_connected = 0; 
-   
-  if(phost->pUser != NULL)
-  {    
-    phost->pUser(phost, HOST_USER_DISCONNECTION);
-  }
-  USBH_UsrLog("USB Device disconnected"); 
-  
-  /* Start the low level driver  */
-  USBH_LL_Start(phost);
-  
+  phost->device.is_connected = 0;
   phost->gState = HOST_DEV_DISCONNECTED;
   
 #if (USBH_USE_OS == 1)
