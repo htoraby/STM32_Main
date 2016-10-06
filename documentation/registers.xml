@@ -17026,8 +17026,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>110.0</value>
-		<text>Текущий перегруз</text>
-		<short_text>Перегруз двиг. Текущий перегруз</short_text>
+		<text>Полная загрузка</text>
+		<short_text>Перегруз Загрузка</short_text>
 		<form>4.2.1 Перегруз (ЗП)</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -17047,8 +17047,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>30.0</value>
-		<text>Текущая задержка</text>
-		<short_text>Перегруз двиг. Текущая задержка</short_text>
+		<text>Расчётное время</text>
+		<short_text>Перегруз Рас.время</short_text>
 		<form>4.2.1 Перегруз (ЗП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -17496,8 +17496,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>110.0</value>
-		<text>Текущий недогруз</text>
-		<short_text>Текущий недогруз</short_text>
+		<text>Загрузка</text>
+		<short_text>Загрузка</short_text>
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -20193,6 +20193,27 @@
 	</param>
 	<param>
 		<id>1026</id>
+		<name>CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>0.0</min>
+		<max>100.0</max>
+		<def>60.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>60.0</value>
+		<text>Текущая уставка останова</text>
+		<short_text>Недогруз. Тек.уст.останова</short_text>
+		<form>4.2.2 Недогруз (ЗСП)</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Вычисленная уставка недогруза</comment>
+	</param>
+	<param>
+		<id>1027</id>
 		<name>CCS_END</name>
 	</param>
 	<param>

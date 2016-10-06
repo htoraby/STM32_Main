@@ -12314,5 +12314,17 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ - CCS_BEGIN].discret        = 1;
   parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ - CCS_BEGIN].def            = 0.0;
   parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ - CCS_BEGIN].code           = 0;
+  // Вычисленная уставка недогруза
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC - CCS_BEGIN].id                 = CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC - CCS_BEGIN].access             = ACCESS_OPERATOR;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC - CCS_BEGIN].physic             = PHYSIC_PERCENT;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC - CCS_BEGIN].validity           = VALIDITY_OK;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC - CCS_BEGIN].value.float_t      = 60.0;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC - CCS_BEGIN].min                = 0.0;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC - CCS_BEGIN].max                = 100.0;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC - CCS_BEGIN].discret            = 1;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC - CCS_BEGIN].def                = 60.0;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC - CCS_BEGIN].code               = 0;
 }
 

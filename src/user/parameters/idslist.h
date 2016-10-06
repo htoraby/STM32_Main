@@ -1029,7 +1029,8 @@ enum enID
   CCS_RGM_RUN_SYNCHRON_TIME = 1023,                          //!< Время синхронизации режима пуска "Пуск с синхронизацией"
   CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ = 1024,                 //!< Сохраненная уставка частоты "Пуска с синхронизацией"
   CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ = 1025,             //!< Сохраненная уставка минимальной частоты "Пуска с синхронизацией"
-  CCS_END = 1026,                                            //!< 
+  CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC = 1026,                 //!< Вычисленная уставка недогруза
+  CCS_END = 1027,                                            //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
