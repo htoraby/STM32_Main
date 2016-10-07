@@ -2734,8 +2734,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
-		<text>Действие защиты</text>
-		<short_text>Недогруз двиг.РР3</short_text>
+		<text>Недогруз</text>
+		<short_text>Недогруз</short_text>
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -2778,7 +2778,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Недогруз двиг.пуск.время</short_text>
+		<short_text>Недогруз Пуск.время</short_text>
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -2799,7 +2799,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>30.0</value>
 		<text>Время</text>
-		<short_text>Недогруз двиг.время</short_text>
+		<short_text>Недогруз Время</short_text>
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -2820,7 +2820,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>7200.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Недогруз двиг.зад.АПВ</short_text>
+		<short_text>Недогруз Зад.АПВ</short_text>
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -2841,7 +2841,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2.0</value>
 		<text>Разрешенно АПВ</text>
-		<short_text>Недогруз двиг.раз.АПВ</short_text>
+		<short_text>Недогруз Раз.АПВ</short_text>
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -2862,7 +2862,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
 		<text>Сброс счетчиков АПВ</text>
-		<short_text>Недогруз двиг.сброс счет</short_text>
+		<short_text>Недогруз Сброс счет.</short_text>
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -2883,7 +2883,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>60.0</value>
 		<text>Уставка останова</text>
-		<short_text>Недогруз двиг.уст.</short_text>
+		<short_text>Недогруз Уст.остан.</short_text>
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -12541,8 +12541,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>7200.0</value>
-		<text>Недогруз двиг.прогрес.зад.АПВ</text>
-		<short_text>Недогруз двиг.прогрес.зад.АПВ</short_text>
+		<text>Прогрессивная задержка АПВ</text>
+		<short_text>Недогруз Пргс.зад.АПВ</short_text>
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -13191,8 +13191,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Недогруз двиг.прогрес.АПВ</text>
-		<short_text>Недогруз двиг.прогрес.АПВ</short_text>
+		<text>Прогрессивная задержка</text>
+		<short_text>Недогруз Пргс.зад.</short_text>
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>

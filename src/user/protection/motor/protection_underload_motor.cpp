@@ -73,13 +73,13 @@ void ProtectionUnderloadMotor::getOtherSetpointProt()
     }
   }
 
-  // Вывод текущего перегруза и текущей задержки срабатывания на экран
   if (delayCalc < 5) {
     delayCalc++;
   }
   else {
     delayCalc = 0;
     parameters.set(CCS_PROT_MOTOR_UNDERLOAD_CALC_LOAD, checkLoad);
+    parameters.set(CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC, tripSetpoint_);
   }
 }
 
