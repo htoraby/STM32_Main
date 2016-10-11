@@ -1578,7 +1578,7 @@ void Vsd::initParameters()
   parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].id                                  = VSD_STATUS_WORD_7;
   parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].access                              = ACCESS_OPERATOR;
   parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].operation                           = OPERATION_WRITE;
-  parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].physic                              = 0;
+  parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].physic                              = PHYSIC_NUMERIC;
   parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].value.float_t                       = 0;
   parameters_[VSD_STATUS_WORD_7 - VSD_BEGIN].min                                 = 0.0;
@@ -1941,7 +1941,7 @@ void Vsd::initParameters()
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].physic                          = PHYSIC_RESISTANCE;
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].validity                        = VALIDITY_ERROR;
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].value.float_t                   = 0.0140;
-  parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].min                             = 0.0140;
+  parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].min                             = 0.0001;
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].max                             = 140.0;
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].def                             = 0.0140;
   parameters_[VSD_RESISTANCE_STATOR - VSD_BEGIN].discret                         = 10000;
@@ -1989,7 +1989,7 @@ void Vsd::initParameters()
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].physic                             = PHYSIC_TIME;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].value.float_t                      = 0.005;
-  parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].min                                = 0.005;
+  parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].min                                = 0.001;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].max                                = 0.05;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].def                                = 0.005;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].discret                            = 3;

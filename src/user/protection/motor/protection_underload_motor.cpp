@@ -49,7 +49,7 @@ void ProtectionUnderloadMotor::getOtherSetpointProt()
     progressiveRestartCount_ = 0;
   }
 
-  // Если включен режим "Периодический"
+  // Если включен режим "Ппрограммного изменения частоты"
   if (parameters.get(CCS_RGM_CHANGE_FREQ_MODE) != Regime::OffAction) {
     float beginFreq_ = parameters.get(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ);
     float endFreq_ = parameters.get(CCS_RGM_CHANGE_FREQ_END_FREQ);
@@ -73,13 +73,13 @@ void ProtectionUnderloadMotor::getOtherSetpointProt()
     }
   }
 
-  // Вывод текущего перегруза и текущей задержки срабатывания на экран
   if (delayCalc < 5) {
     delayCalc++;
   }
   else {
     delayCalc = 0;
     parameters.set(CCS_PROT_MOTOR_UNDERLOAD_CALC_LOAD, checkLoad);
+    parameters.set(CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC, tripSetpoint_);
   }
 }
 
