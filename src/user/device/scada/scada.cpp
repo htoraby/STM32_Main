@@ -175,7 +175,6 @@ eMBErrorCode Scada::writeReg(uint8_t *buffer, uint16_t address, uint16_t numRegs
     if ((param->typeData == TYPE_DATA_FLOAT) || (param->typeData == TYPE_DATA_UINT16_B))
       value = data.float_t;
     else
-      //TODO: проверить корректность при записи типов дата/время
       value = (float)data.uint32_t;
     value = value * param->coefficient;
     value = parameters.convertTo(value, param->physic, param->unit);

@@ -1,6 +1,7 @@
 #include "scada_lukoil.h"
 #include "user_main.h"
 #include "regime.h"
+#include "protection.h"
 
 ScadaLukoil::ScadaLukoil()
 {
@@ -25,8 +26,10 @@ void ScadaLukoil::calcParamsTask()
     }
 
     // 249
+    unTypeData data;
     uint16_t value = 0;
     uint32_t state = parameters.get(CCS_CONDITION);
+    int reason = parameters.get(CCS_LAST_STOP_REASON);
     bool isWorkMotor = false;
     if ((state == CCS_CONDITION_RUNNING) || (state == CCS_CONDITION_RUN))
       isWorkMotor = true;
@@ -108,7 +111,7 @@ void ScadaLukoil::calcParamsTask()
       if (parameters.get(CCS_RGM_PERIODIC_STATE) == Regime::PauseState)
         value = 0x21;
       else if (isRestart) {
-        if (parameters.get(CCS_LAST_STOP_REASON) == LastReasonStopNoVoltage)
+        if (reason == LastReasonStopNoVoltage)
           value = 0x23;
         else
           value = 0x22;
@@ -116,11 +119,13 @@ void ScadaLukoil::calcParamsTask()
           value = 0x27;
       } else if (isBlock) {
         value = 0x24;
-        if (parameters.get(CCS_LAST_STOP_REASON) == LastReasonStopRemote)
+        if (reason == LastReasonStopRemote)
           value = 0x29;
+      } else {
+        value = 0x20;
       }
     }
-    scadaParameters_[0].value.float_t = value;
+    scadaParameters_[0].value.uint32_t = value;
 
     // 250-252
     calcDateTime(parameters.getU32(CCS_DATE_TIME), &scadaParameters_[1]);
@@ -141,7 +146,121 @@ void ScadaLukoil::calcParamsTask()
     scadaParameters_[5].value.uint32_t = value;
 
     // 255
-    scadaParameters_[6].value.float_t = value;
+    data.uint32_t = 0;
+    value = 0;
+    int reasonVsd = parameters.get(CCS_VSD_ALARM_CODE);
+    switch (reason) {
+    case LastReasonStopResistIsolation:
+      value = 1; break;
+    case LastReasonStopUnderVoltIn:
+      value = 2; break;
+    case LastReasonStopOverVoltIn:
+      value = 5; break;
+    case LastReasonStopImbalanceVoltIn:
+      value = 8; break;
+    case LastReasonStopUnderloadMotor:
+      value = 11; break;
+    case LastReasonStopOverloadMotor:
+      value = 12; break;
+    case LastReasonStopImbalanceCurMotor:
+      value = 13; break;
+    case LastReasonStopHackSu:
+      value = 18; break;
+    case LastReasonStopProtDigital2:
+      value = 23; break;
+    case LastReasonStopProtDigital1:
+      value = 24; break;
+    case LastReasonStopTemperatureMotor:
+      value = 26; break;
+    case LastReasonStopPressureIntake:
+      value = 29; break;
+    case LastReasonStopOvernumberOfStart:
+      value = 31; break;
+    case LastReasonStopVibrationMotor:
+      value = 35; break;
+    case LastReasonStopHardwareVsd:
+      switch (reasonVsd) {
+      case VSD_NOVOMET_ALARM_TEMP_LINK:
+      case VSD_NOVOMET_ALARM_TEMP:
+      case VSD_NOVOMET_ALARM_AIR_TEMP:
+      case VSD_ETALON_ALARM_OVERHEAT_IGBT:
+      case VSD_ETALON_ALARM_OVERHEAT_FILTER:
+        value = 40; break;
+      default:
+        value = 62; break;
+      }
+      break;
+    case LastReasonStopVsdNoConnect:
+      value = 63; break;
+    case LastReasonStopDigital1:
+      value = 94; break;
+    case LastReasonStopDigital2:
+      value = 95; break;
+    case LastReasonStopDigital3:
+      value = 96; break;
+    case LastReasonStopDigital4:
+      value = 97; break;
+    case LastReasonStopOperator:
+      value = 103; break;
+    case LastReasonStopProgram:
+      value = 106; break;
+    case LastReasonStopNoVoltage:
+      value = 107; break;
+    case LastReasonStopRemote:
+      value = 112; break;
+    case LastReasonStopMaxAnalog1:
+      value = 128; break;
+    case LastReasonStopMinAnalog1:
+      value = 129; break;
+    case LastReasonStopMaxAnalog2:
+      value = 130; break;
+    case LastReasonStopMinAnalog2:
+      value = 131; break;
+    default:
+      if (reason)
+        value = 115;
+      break;
+    }
+    data.uint16_t[0] = value;
+
+    value = 0;
+    int reasonRun = parameters.get(CCS_LAST_RUN_REASON);
+    switch (reasonRun) {
+    case LastReasonRunOperator:
+      value = 0x00; break;
+    case LastReasonRunProgram:
+      value = 0x01; break;
+    case LastReasonRunApvPower:
+      value = 0x02; break;
+    case LastReasonRunRemote:
+      value = 0x04; break;
+    case LastReasonRunDigital1:
+      value = 0x05; break;
+    case LastReasonRunDigital2:
+      value = 0x06; break;
+    case LastReasonRunDigital3:
+      value = 0x07; break;
+    case LastReasonRunDigital4:
+      value = 0x08; break;
+    default:
+      value = 0x03; break;
+    }
+    data.uint16_t[0] |= (value << 8);
+
+    value = 0;
+    int workingMode = parameters.get(CCS_WORKING_MODE);
+    switch (workingMode) {
+    case CCS_WORKING_MODE_MANUAL:
+      value = 1; break;
+    case CCS_WORKING_MODE_AUTO: case CCS_WORKING_MODE_PROGRAM:
+      value = 2; break;
+    }
+    data.uint32_t |= (value << 12);
+
+    data.uint32_t |= (isBlock << 14);
+    data.uint32_t |= (isWorkMotor << 15);
+
+    scadaParameters_[6].value.uint32_t = data.uint32_t;
 
     // 277
     value = !parameters.get(CCS_DOOR_VALUE);
@@ -153,20 +272,28 @@ void ScadaLukoil::calcParamsTask()
       value = 0x01;
     else if (parameters.get(TMS_FAIL_LINK_TMSP))
       value = 0x02;
-    scadaParameters_[51].value.float_t = value;
+    scadaParameters_[51].value.uint32_t = value;
 
     // 2312-2313
     time = parameters.get(CCS_RUN_TIME);
     value = time/3600;
-    scadaParameters_[66].value.float_t = value;
+    scadaParameters_[66].value.uint32_t = value;
     value = time/60%60;
-    scadaParameters_[67].value.float_t = value;
+    scadaParameters_[67].value.uint32_t = value;
 
     // 2314-2316
     calcDateTime(parameters.getU32(CCS_LAST_RUN_DATE_TIME), &scadaParameters_[68]);
 
     // 764-766
     calcDateTime(parameters.getU32(CCS_DATE_TIME), &scadaParameters_[127]);
+
+    // 812
+    value = parameters.get(CCS_PROT_MOTOR_ASYNC_MODE) ? 1 : 0;
+    scadaParameters_[175].value.float_t = value;
+
+    // 816
+    value = parameters.get(CCS_PROT_OTHER_LOCK_DOOR_MODE) ? 1 : 0;
+    scadaParameters_[179].value.float_t = value;
 
     // 824
     value = parameters.get(CCS_RGM_PERIODIC_MODE) ? 1 : 0;
@@ -254,17 +381,17 @@ void ScadaLukoil::calcParamsTask()
     scadaParameters_[253].value.float_t = value;
 
     // 895
-    value = parameters.get(CCS_PROT_AI_1_PARAMETER) * parameters.get(CCS_PROT_AI_1_RESTART_SETPOINT) / 100;
+    value = parameters.get(CCS_PROT_AI_1_RESTART_SETPOINT) * parameters.get(CCS_PROT_AI_1_PARAMETER) / 100;
     scadaParameters_[258].value.float_t = value;
     // 896
-    value = parameters.get(CCS_PROT_AI_1_PARAMETER) * parameters.get(CCS_PROT_AI_1_TRIP_SETPOINT) / 100;
+    value = parameters.get(CCS_PROT_AI_1_TRIP_SETPOINT) * parameters.get(CCS_PROT_AI_1_PARAMETER) / 100;
     scadaParameters_[259].value.float_t = value;
 
     // 909
-    value = parameters.get(CCS_PROT_AI_2_PARAMETER) * parameters.get(CCS_PROT_AI_2_RESTART_SETPOINT) / 100;
+    value = parameters.get(CCS_PROT_AI_2_RESTART_SETPOINT) * parameters.get(CCS_PROT_AI_2_PARAMETER) / 100;
     scadaParameters_[272].value.float_t = value;
     // 910
-    value = parameters.get(CCS_PROT_AI_2_PARAMETER) * parameters.get(CCS_PROT_AI_2_TRIP_SETPOINT) / 100;
+    value = parameters.get(CCS_PROT_AI_2_TRIP_SETPOINT) * parameters.get(CCS_PROT_AI_2_PARAMETER) / 100;
     scadaParameters_[273].value.float_t = value;
 
     // 904
@@ -292,17 +419,17 @@ void ScadaLukoil::calcParamsTask()
 
     // 937
     value = 0;
-    if (parameters.get(CCS_RGM_RUN_PICKUP_STATE) != Regime::IdleState)
+    if (parameters.get(CCS_RGM_RUN_PUSH_MODE) != Regime::OffAction)
       value = 0x01;
-    else if (parameters.get(CCS_RGM_RUN_PUSH_STATE) != Regime::IdleState)
+    else if (parameters.get(CCS_RGM_RUN_SWING_MODE) != Regime::OffAction)
       value = 0x02;
     scadaParameters_[300].value.float_t = value;
 
-    // 931
+    // 951
     value = 0;
-    if (parameters.get(CCS_RGM_RUN_PICKUP_MODE) != Regime::OffAction)
-      value = 1;
-    scadaParameters_[294].value.float_t = value;
+    if (parameters.get(CCS_RGM_JARRING_MODE) != Regime::OffAction)
+      value = 2;
+    scadaParameters_[314].value.float_t = value;
 
     // 959
     value = 0;
@@ -335,8 +462,23 @@ void ScadaLukoil::calcParamsTask()
       value = 1;
     scadaParameters_[350].value.float_t = value;
 
+    // 1007
+    scadaParameters_[370].value.float_t  = parameters.get(VSD_UF_CHARACTERISTIC_U_1) * 100 /
+        parameters.get(CCS_BASE_VOLTAGE);
+    // 1009
+    scadaParameters_[372].value.float_t  = parameters.get(VSD_UF_CHARACTERISTIC_U_2) * 100 /
+        parameters.get(CCS_BASE_VOLTAGE);
+    // 1011
+    scadaParameters_[374].value.float_t  = parameters.get(VSD_UF_CHARACTERISTIC_U_3) * 100 /
+        parameters.get(CCS_BASE_VOLTAGE);
+    // 1013
+    scadaParameters_[376].value.float_t  = parameters.get(VSD_UF_CHARACTERISTIC_U_4) * 100 /
+        parameters.get(CCS_BASE_VOLTAGE);
+    // 1015
+    scadaParameters_[378].value.float_t  = parameters.get(VSD_UF_CHARACTERISTIC_U_5) * 100 /
+        parameters.get(CCS_BASE_VOLTAGE);
+
     // 1025
-    unTypeData data;
     data.uint32_t = parameters.get(CCS_SCADA_BYTERATE);
     switch (data.uint32_t) {
     case 2400: value = 1; break;
@@ -368,9 +510,9 @@ void ScadaLukoil::calcParamsTask()
       dateTime.tm_year = dateTime.tm_year - 100;
     else
       dateTime.tm_year = 0;
-    scadaParameters_[417].value.uint32_t = dateTime.tm_mday;
-    scadaParameters_[418].value.uint32_t = dateTime.tm_mon + 1;
-    scadaParameters_[419].value.uint32_t = dateTime.tm_year;
+    scadaParameters_[417].value.float_t = dateTime.tm_mday;
+    scadaParameters_[418].value.float_t = dateTime.tm_mon + 1;
+    scadaParameters_[419].value.float_t = dateTime.tm_year;
 
     // 1058-1060
     time = parameters.getU32(CCS_DATE_INSTALL_SW_CCS);
@@ -379,9 +521,9 @@ void ScadaLukoil::calcParamsTask()
       dateTime.tm_year = dateTime.tm_year - 100;
     else
       dateTime.tm_year = 0;
-    scadaParameters_[421].value.uint32_t = dateTime.tm_mday;
-    scadaParameters_[422].value.uint32_t = dateTime.tm_mon + 1;
-    scadaParameters_[423].value.uint32_t = dateTime.tm_year;
+    scadaParameters_[421].value.float_t = dateTime.tm_mday;
+    scadaParameters_[422].value.float_t = dateTime.tm_mon + 1;
+    scadaParameters_[423].value.float_t = dateTime.tm_year;
 
     // 1062-1064
     time = parameters.getU32(CCS_DATE_PRODUCTION_SU);
@@ -390,9 +532,9 @@ void ScadaLukoil::calcParamsTask()
       dateTime.tm_year = dateTime.tm_year - 100;
     else
       dateTime.tm_year = 0;
-    scadaParameters_[425].value.uint32_t = dateTime.tm_mday;
-    scadaParameters_[426].value.uint32_t = dateTime.tm_mon + 1;
-    scadaParameters_[427].value.uint32_t = dateTime.tm_year;
+    scadaParameters_[425].value.float_t = dateTime.tm_mday;
+    scadaParameters_[426].value.float_t = dateTime.tm_mon + 1;
+    scadaParameters_[427].value.float_t = dateTime.tm_year;
 
     // 1065-1066
     data.uint32_t = parameters.getU32(CCS_NUM_PRODUCTION_SU);
@@ -417,6 +559,7 @@ void ScadaLukoil::calcParamsTask()
 int ScadaLukoil::setNewValue(ScadaParameter *param)
 {
   unTypeData value;
+  time_t time;
 
   if (param->id > 0) {
     return parameters.set(param->id, param->value.float_t, RemoteType);
@@ -424,7 +567,7 @@ int ScadaLukoil::setNewValue(ScadaParameter *param)
 
   // 764-766
   if ((param->address >= 764) && (param->address <= 766)) {
-    time_t time = parameters.getU32(CCS_DATE_TIME);
+    time = parameters.getU32(CCS_DATE_TIME);
     tm dateTime = *localtime(&time);
 
     switch (param->address) {
@@ -447,6 +590,24 @@ int ScadaLukoil::setNewValue(ScadaParameter *param)
     return ok_r;
   }
 
+  // 812
+  if (param->address == 812) {
+    if (param->value.float_t)
+      parameters.set(CCS_PROT_MOTOR_ASYNC_MODE, Protection::ProtModeOn, RemoteType);
+    else
+      parameters.set(CCS_PROT_MOTOR_ASYNC_MODE, Protection::ProtModeOff, RemoteType);
+    return ok_r;
+  }
+
+  // 816
+  if (param->address == 816) {
+    if (param->value.float_t)
+      parameters.set(CCS_PROT_OTHER_LOCK_DOOR_MODE, Protection::ProtModeOn, RemoteType);
+    else
+      parameters.set(CCS_PROT_OTHER_LOCK_DOOR_MODE, Protection::ProtModeOff, RemoteType);
+    return ok_r;
+  }
+
   // 824
   if (param->address == 824) {
     if (param->value.float_t)
@@ -456,7 +617,341 @@ int ScadaLukoil::setNewValue(ScadaParameter *param)
     return ok_r;
   }
 
+  // 825
+  if (param->address == 825) {
+    time = parameters.get(CCS_RGM_PERIODIC_RUN_PERIOD);
+    value.float_t = param->value.float_t*3600 + time/60%60*60;
+    parameters.set(CCS_RGM_PERIODIC_RUN_PERIOD, value.float_t, RemoteType);
+    return ok_r;
+  }
+  // 826
+  if (param->address == 826) {
+    time = parameters.get(CCS_RGM_PERIODIC_RUN_PERIOD);
+    value.float_t = time/3600*3600 + param->value.float_t*60 + time%60;
+    parameters.set(CCS_RGM_PERIODIC_RUN_PERIOD, value.float_t, RemoteType);
+    return ok_r;
+  }
 
+  // 827
+  if (param->address == 827) {
+    time = parameters.get(CCS_RGM_PERIODIC_STOP_PERIOD);
+    value.float_t = param->value.float_t*3600 + time/60%60*60;
+    parameters.set(CCS_RGM_PERIODIC_STOP_PERIOD, value.float_t, RemoteType);
+    return ok_r;
+  }
+  // 828
+  if (param->address == 828) {
+    time = parameters.get(CCS_RGM_PERIODIC_STOP_PERIOD);
+    value.float_t = time/3600*3600 + param->value.float_t*60 + time%60;
+    parameters.set(CCS_RGM_PERIODIC_STOP_PERIOD, value.float_t, RemoteType);
+    return ok_r;
+  }
+
+  // 849
+  if (param->address == 849) {
+    value.float_t = -1;
+    switch (int(param->value.float_t)) {
+    case 0:
+      value.float_t = TYPE_DHS_NONE; break;
+    case 2:
+      value.float_t = TYPE_DHS_ELEKTON_3; break;
+    case 3:
+      value.float_t = TYPE_DHS_BORETS; break;
+    case 6:
+      value.float_t = TYPE_DHS_SCAD; break;
+    case 8:
+      value.float_t = TYPE_DHS_IRZ; break;
+    case 9:
+      value.float_t = TYPE_DHS_NOVOMET; break;
+    case 10:
+      value.float_t = TYPE_DHS_SNG; break;
+    case 11:
+      value.float_t = TYPE_DHS_PIC_V2; break;
+    }
+    if (value.float_t != -1) {
+      parameters.set(CCS_DHS_TYPE, value.float_t, RemoteType);
+      return ok_r;
+    }
+    return err_r;
+  }
+
+  // 866
+  if (param->address == 866) {
+    if (param->value.float_t == 8) {
+      parameters.set(CCS_UNIT_TEMPERATURE, TEMPERATURE_F, RemoteType);
+      return ok_r;
+    }
+    if (param->value.float_t == 7) {
+      parameters.set(CCS_UNIT_TEMPERATURE, TEMPERATURE_C, RemoteType);
+      return ok_r;
+    }
+    return err_r;
+  }
+
+  // 871
+  if (param->address == 871) {
+    if (param->value.float_t == 10) {
+      parameters.set(CCS_UNIT_VIBRATION, ACCELERATION_MSS2, RemoteType);
+      return ok_r;
+    }
+    if (param->value.float_t == 9) {
+      parameters.set(CCS_UNIT_VIBRATION, ACCELERATION_G, RemoteType);
+      return ok_r;
+    }
+    return err_r;
+  }
+
+  // 879
+  if (param->address == 879) {
+    value.float_t = -1;
+    switch (int(param->value.float_t)) {
+    case 4:
+      value.float_t = PRESSURE_MPA; break;
+    case 3:
+      value.float_t = PRESSURE_AT; break;
+    case 2:
+      value.float_t = PRESSURE_ATM; break;
+    case 5:
+      value.float_t = PRESSURE_PSI; break;
+    case 6:
+      value.float_t = PRESSURE_BAR; break;
+    }
+    if (value.float_t != -1) {
+      parameters.set(CCS_UNIT_PRESSURE, value.float_t, RemoteType);
+      return ok_r;
+    }
+    return err_r;
+  }
+
+  // 890
+  if (param->address == 890) {
+    value.float_t = -1;
+    switch (int(param->value.float_t)) {
+    case 0: value.float_t = 0; break;
+    case 2: value.float_t = 1; break;
+    case 4: value.float_t = 2; break;
+    case 5: value.float_t = 3; break;
+    case 7: value.float_t = 4; break;
+    case 8: value.float_t = 5; break;
+    case 9: value.float_t = 6; break;
+    case 10: value.float_t = 7; break;
+    case 11: value.float_t = 9; break;
+    case 12: value.float_t = 10; break;
+    case 13: value.float_t = 11; break;
+    case 14: value.float_t = 12; break;
+    }
+    if (value.float_t != -1) {
+      parameters.set(CCS_AI_1_PARAMETER, value.float_t, RemoteType);
+      return ok_r;
+    }
+    return err_r;
+  }
+  // 895
+  if (param->address == 895) {
+    value.float_t  = param->value.float_t * 100 / parameters.get(CCS_PROT_AI_1_PARAMETER);
+    parameters.set(CCS_PROT_AI_1_RESTART_SETPOINT, value.float_t, RemoteType);
+    return ok_r;
+  }
+  // 896
+  if (param->address == 896) {
+    value.float_t  = param->value.float_t * 100 / parameters.get(CCS_PROT_AI_1_PARAMETER);
+    parameters.set(CCS_PROT_AI_1_TRIP_SETPOINT, value.float_t, RemoteType);
+    return ok_r;
+  }
+
+  // 904
+  if (param->address == 904) {
+    value.float_t = -1;
+    switch (int(param->value.float_t)) {
+    case 0: value.float_t = 0; break;
+    case 2: value.float_t = 1; break;
+    case 4: value.float_t = 2; break;
+    case 5: value.float_t = 3; break;
+    case 7: value.float_t = 4; break;
+    case 8: value.float_t = 5; break;
+    case 9: value.float_t = 6; break;
+    case 10: value.float_t = 7; break;
+    case 11: value.float_t = 9; break;
+    case 12: value.float_t = 10; break;
+    case 13: value.float_t = 11; break;
+    case 14: value.float_t = 12; break;
+    }
+    if (value.float_t != -1) {
+      parameters.set(CCS_AI_2_PARAMETER, value.float_t, RemoteType);
+      return ok_r;
+    }
+    return err_r;
+  }
+  // 909
+  if (param->address == 909) {
+    value.float_t  = param->value.float_t * 100 / parameters.get(CCS_PROT_AI_2_PARAMETER);
+    parameters.set(CCS_PROT_AI_2_RESTART_SETPOINT, value.float_t, RemoteType);
+    return ok_r;
+  }
+  // 910
+  if (param->address == 910) {
+    value.float_t  = param->value.float_t * 100 / parameters.get(CCS_PROT_AI_2_PARAMETER);
+    parameters.set(CCS_PROT_AI_2_TRIP_SETPOINT, value.float_t, RemoteType);
+    return ok_r;
+  }
+
+  // 931
+  if (param->address == 931) {
+    if (param->value.float_t)
+      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::EachRunAction, RemoteType);
+    else
+      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction, RemoteType);
+    return ok_r;
+  }
+
+  // 937
+  if (param->address == 937) {
+    if (param->value.float_t == 0x01)
+      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::EachRunAction, RemoteType);
+    else if (param->value.float_t == 0x02)
+      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::EachRunAction, RemoteType);
+    else if (param->value.float_t == 0x00) {
+      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction, RemoteType);
+      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction, RemoteType);
+      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction, RemoteType);
+    } else {
+      return err_r;
+    }
+    return ok_r;
+  }
+
+  // 951
+  if (param->address == 951) {
+    if (param->value.float_t)
+      parameters.set(CCS_RGM_JARRING_MODE, Regime::OnAction, RemoteType);
+    else
+      parameters.set(CCS_RGM_JARRING_MODE, Regime::OffAction, RemoteType);
+    return ok_r;
+  }
+
+  // 959
+  if (param->address == 959) {
+    if (param->value.float_t)
+      parameters.set(CCS_RGM_MAINTENANCE_PARAM_MODE, Regime::OnAction, RemoteType);
+    else
+      parameters.set(CCS_RGM_MAINTENANCE_PARAM_MODE, Regime::OffAction, RemoteType);
+    return ok_r;
+  }
+
+  // 960
+  if (param->address == 960) {
+    value.float_t = -1;
+    switch (int(param->value.float_t)) {
+    case 4: value.float_t = 0; break;
+    case 2: value.float_t = 1; break;
+    case 5: value.float_t = 3; break;
+    case 6: value.float_t = 4; break;
+    }
+    if (value.float_t != -1) {
+      parameters.set(CCS_RGM_MAINTENANCE_PARAM_TYPE, value.float_t, RemoteType);
+      return ok_r;
+    }
+    return err_r;
+  }
+
+  // 961
+  if (param->address == 961) {
+    parameters.set(CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT, param->value.float_t, RemoteType);
+    return ok_r;
+  }
+
+  // 969
+  if (param->address == 969) {
+    if (param->value.float_t)
+      parameters.set(CCS_RGM_PUMP_GAS_MODE, Regime::OnAction, RemoteType);
+    else
+      parameters.set(CCS_RGM_PUMP_GAS_MODE, Regime::OffAction, RemoteType);
+    return ok_r;
+  }
+
+  // 987
+  if (param->address == 987) {
+    if (param->value.float_t)
+      parameters.set(CCS_RGM_CURRENT_LIMIT_MODE, Regime::OnAction, RemoteType);
+    else
+      parameters.set(CCS_RGM_CURRENT_LIMIT_MODE, Regime::OffAction, RemoteType);
+    return ok_r;
+  }
+
+  // 1007
+  if (param->address == 1007) {
+    value.float_t  = param->value.float_t * parameters.get(CCS_BASE_VOLTAGE) / 100;
+    parameters.set(VSD_UF_CHARACTERISTIC_U_1, value.float_t, RemoteType);
+    return ok_r;
+  }
+  // 1009
+  if (param->address == 1009) {
+    value.float_t  = param->value.float_t * parameters.get(CCS_BASE_VOLTAGE) / 100;
+    parameters.set(VSD_UF_CHARACTERISTIC_U_2, value.float_t, RemoteType);
+    return ok_r;
+  }
+  // 1011
+  if (param->address == 1011) {
+    value.float_t  = param->value.float_t * parameters.get(CCS_BASE_VOLTAGE) / 100;
+    parameters.set(VSD_UF_CHARACTERISTIC_U_3, value.float_t, RemoteType);
+    return ok_r;
+  }
+  // 1013
+  if (param->address == 1013) {
+    value.float_t  = param->value.float_t * parameters.get(CCS_BASE_VOLTAGE) / 100;
+    parameters.set(VSD_UF_CHARACTERISTIC_U_4, value.float_t, RemoteType);
+    return ok_r;
+  }
+  // 1015
+  if (param->address == 1015) {
+    value.float_t  = param->value.float_t * parameters.get(CCS_BASE_VOLTAGE) / 100;
+    parameters.set(VSD_UF_CHARACTERISTIC_U_5, value.float_t, RemoteType);
+    return ok_r;
+  }
+
+  // 1025
+  if (param->address == 1025) {
+    value.float_t = -1;
+    switch (int(param->value.float_t)) {
+    case 1: value.float_t = 2400; break;
+    case 2: value.float_t = 4800; break;
+    case 3: value.float_t = 9600; break;
+    case 4: value.float_t = 14400; break;
+    case 5: value.float_t = 19200; break;
+    case 6: value.float_t = 28800; break;
+    case 7: value.float_t = 38400; break;
+    case 8: value.float_t = 57600; break;
+    case 9: value.float_t = 76800; break;
+    case 10: value.float_t = 115200; break;
+    }
+    if (value.float_t != -1) {
+      parameters.set(CCS_SCADA_BYTERATE, value.float_t, RemoteType);
+      return ok_r;
+    }
+    return err_r;
+  }
+
+  // 1026
+  if (param->address == 1026) {
+    if (param->value.float_t == 4)
+      return ok_r;
+    return err_r;
+  }
+
+  // 1069
+  if (param->address == 1069) {
+    value.float_t = -1;
+    switch (int(param->value.float_t)) {
+    case 0: value.float_t = EM_TYPE_NONE; break;
+    case 2: value.float_t = EM_TYPE_SET4TM; break;
+    case 3: value.float_t = EM_TYPE_ABB_A44; break;
+    }
+    if (value.float_t != -1) {
+      parameters.set(CCS_EM_TYPE, value.float_t, RemoteType);
+      return ok_r;
+    }
+    return err_r;
+  }
 
   return err_r;
 }
