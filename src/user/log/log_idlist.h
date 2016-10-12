@@ -204,6 +204,9 @@ typedef enum {
   RegimeRunSynchronFailId,            //!< Пуск с синхронизацией ошибка
   RegimeRunSynchronOffId,             //!< Пуск с синхронизацией отключен
 
+  RegimeRunPushFailId,                //!< Пуск толчками ошибка
+  RegimeRunPushAbortId,               //!< Пуск толчками прерван
+
 } EventId;
 
 #endif // LOG_IDLIST
