@@ -154,7 +154,7 @@ void TmsNovomet::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[8] = {// Осевая вибрация двигателя
+  modbusParameters_[8] = {// Зенитный угол двигателя
                            TMS_ANGLE_INTAKE,
                            1549,            // Адрес регистра в устройстве
                            OPERATION_READ,  // Операции с параметром
