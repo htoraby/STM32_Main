@@ -2110,7 +2110,7 @@
 		<name>Коэффициент коррекции сопротивления изоляции</name>
 	</param>
 	<param>
-		<id>CCS_PROT_MOTOR_ASYNC_MODE</id>
+		<id>0</id>
 		<address>812</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -2159,7 +2159,7 @@
 		<name>Уставка чередования фаз (0 - ABC)</name>
 	</param>
 	<param>
-		<id>CCS_PROT_OTHER_LOCK_DOOR_MODE</id>
+		<id>0</id>
 		<address>816</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -2272,7 +2272,7 @@
 		<address>825</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16_B</typeData>
+		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>999</max>
@@ -2284,7 +2284,7 @@
 		<address>826</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16_B</typeData>
+		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>59</max>
@@ -2296,7 +2296,7 @@
 		<address>827</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16_B</typeData>
+		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>999</max>
@@ -2308,7 +2308,7 @@
 		<address>828</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16_B</typeData>
+		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>59</max>
@@ -3485,7 +3485,7 @@
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.1</coefficient>
 		<min>0</min>
-		<max>100</max>
+		<max>2000</max>
 		<command>OPERATION_ERROR</command>
 		<name>Заданная частота ПЧ</name>
 	</param>
@@ -3770,7 +3770,7 @@
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
-		<max>100</max>
+		<max>150</max>
 		<command>OPERATION_ERROR</command>
 		<name>Усиление пускового момента при раскачке, %</name>
 	</param>
@@ -3827,7 +3827,7 @@
 		<name>Темп торможения раскачки</name>
 	</param>
 	<param>
-		<id>CCS_RGM_JARRING_MODE</id>
+		<id>0</id>
 		<address>951</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -4792,7 +4792,7 @@
 		<name>Задержка выдачи ответа на запрос, мс (RS485)</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>1028</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -5071,7 +5071,7 @@
 		<address>1051</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
@@ -5083,7 +5083,7 @@
 		<address>1052</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
@@ -5236,24 +5236,24 @@
 		<address>1065</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
 		<command>OPERATION_ERROR</command>
-		<name>Заводской номер контроллера (ст.часть)</name>
+		<name>Заводской номер СУ (ст.часть)</name>
 	</param>
 	<param>
 		<id>0</id>
 		<address>1066</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
 		<command>OPERATION_ERROR</command>
-		<name>Заводской номер контроллера (мл.часть)</name>
+		<name>Заводской номер СУ (мл.часть)</name>
 	</param>
 	<param>
 		<id>CCS_SU_NOMINAL_CURRENT</id>
@@ -5322,7 +5322,7 @@
 		<address>1072</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
@@ -5334,7 +5334,7 @@
 		<address>1073</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16</typeData>
+		<typeData>TYPE_DATA_UINT16_B</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>

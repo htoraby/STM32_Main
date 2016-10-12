@@ -305,7 +305,7 @@ enum LastReasonRun {
   LastReasonRunApvMinAnalog2            = 20,   //!< "АПВ по защите: Ан.вх.№2 min"
   LastReasonRunApvMaxAnalog2            = 21,   //!< "АПВ по защите: Ан.вх.№2 max"
   LastReasonRunApvFreqPower             = 22,   //!< "АПВ по защите: "
-  LastReasonRunApvPower                 = 23,   //!< "АПВ по защите: "
+  LastReasonRunApvPower                 = 23,   //!< "АПВ по защите: Отключение питания сети"
   // Дополнительные причины пуска
   LastReasonRunApvMinAnalog3            = 100,  //!< "АПВ по защите: Ан.вх.№3 min"
   LastReasonRunApvMinAnalog4            = 101,  //!< "АПВ по защите: Ан.вх.№4 min"
@@ -354,7 +354,7 @@ enum LastReasonStop {
   LastReasonStopMaxAnalog1              = 26,   //!< "Ан.вх.№1 max"
   LastReasonStopMaxAnalog2              = 27,   //!< "Ан.вх.№2 max"
   LastReasonStopRemote                  = 28,   //!< "Телеуправление"
-  LastReasonStopNoVoltage               = 30,   //!<
+  LastReasonStopNoVoltage               = 30,   //!< "Отключение питания сети"
   LastReasonStopOverloadNoMinVolt       = 35,   //!<
   LastReasonStopUnderloadNoMinVolt      = 36,   //!<
   LastReasonStopOverloadNoMaxVolt       = 37,   //!<

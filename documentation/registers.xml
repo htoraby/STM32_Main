@@ -335,7 +335,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
-		<code>3</code>
+		<code>0</code>
 		<values>1-Ручной;2-Автоматический;3-По программе</values>
 		<comment>Режим работы</comment>
 	</param>

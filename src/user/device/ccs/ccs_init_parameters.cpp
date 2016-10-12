@@ -193,7 +193,7 @@ void Ccs::initParameters()
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].max                                  = 2.0;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].discret                              = 1;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].def                                  = 0.0;
-  parameters_[CCS_WORKING_MODE - CCS_BEGIN].code                                 = 3;
+  parameters_[CCS_WORKING_MODE - CCS_BEGIN].code                                 = 0;
   // Дисбаланс входного напряжения
   parameters_[CCS_VOLTAGE_IMBALANCE_IN - CCS_BEGIN].id                           = CCS_VOLTAGE_IMBALANCE_IN;
   parameters_[CCS_VOLTAGE_IMBALANCE_IN - CCS_BEGIN].access                       = ACCESS_OPERATOR;

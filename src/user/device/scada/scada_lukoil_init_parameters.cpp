@@ -2103,7 +2103,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[174].command          = OPERATION_ERROR;
   scadaParameters_[174].value.float_t    = 0;
   // Контроль турбинного вращения
-  scadaParameters_[175].id               = CCS_PROT_MOTOR_ASYNC_MODE;
+  scadaParameters_[175].id               = 0;
   scadaParameters_[175].address          = 812;
   scadaParameters_[175].operation        = OPERATION_WRITE;
   scadaParameters_[175].physic           = PHYSIC_NUMERIC;
@@ -2151,7 +2151,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[178].command          = OPERATION_ERROR;
   scadaParameters_[178].value.float_t    = 0;
   // Контроль двери шкафа
-  scadaParameters_[179].id               = CCS_PROT_OTHER_LOCK_DOOR_MODE;
+  scadaParameters_[179].id               = 0;
   scadaParameters_[179].address          = 816;
   scadaParameters_[179].operation        = OPERATION_WRITE;
   scadaParameters_[179].physic           = PHYSIC_NUMERIC;
@@ -2264,7 +2264,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[188].operation        = OPERATION_WRITE;
   scadaParameters_[188].physic           = PHYSIC_NUMERIC;
   scadaParameters_[188].unit             = 0;
-  scadaParameters_[188].typeData         = TYPE_DATA_UINT16_B;
+  scadaParameters_[188].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[188].coefficient      = 1;
   scadaParameters_[188].min              = 0;
   scadaParameters_[188].max              = 999;
@@ -2276,7 +2276,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[189].operation        = OPERATION_WRITE;
   scadaParameters_[189].physic           = PHYSIC_NUMERIC;
   scadaParameters_[189].unit             = 0;
-  scadaParameters_[189].typeData         = TYPE_DATA_UINT16_B;
+  scadaParameters_[189].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[189].coefficient      = 1;
   scadaParameters_[189].min              = 0;
   scadaParameters_[189].max              = 59;
@@ -2288,7 +2288,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[190].operation        = OPERATION_WRITE;
   scadaParameters_[190].physic           = PHYSIC_NUMERIC;
   scadaParameters_[190].unit             = 0;
-  scadaParameters_[190].typeData         = TYPE_DATA_UINT16_B;
+  scadaParameters_[190].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[190].coefficient      = 1;
   scadaParameters_[190].min              = 0;
   scadaParameters_[190].max              = 999;
@@ -2300,7 +2300,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[191].operation        = OPERATION_WRITE;
   scadaParameters_[191].physic           = PHYSIC_NUMERIC;
   scadaParameters_[191].unit             = 0;
-  scadaParameters_[191].typeData         = TYPE_DATA_UINT16_B;
+  scadaParameters_[191].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[191].coefficient      = 1;
   scadaParameters_[191].min              = 0;
   scadaParameters_[191].max              = 59;
@@ -3443,7 +3443,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[286].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[286].coefficient      = 0.1;
   scadaParameters_[286].min              = 0;
-  scadaParameters_[286].max              = 100;
+  scadaParameters_[286].max              = 2000;
   scadaParameters_[286].command          = OPERATION_ERROR;
   scadaParameters_[286].value.float_t    = 0;
   // Время разгона
@@ -3719,7 +3719,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[309].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[309].coefficient      = 1;
   scadaParameters_[309].min              = 0;
-  scadaParameters_[309].max              = 100;
+  scadaParameters_[309].max              = 150;
   scadaParameters_[309].command          = OPERATION_ERROR;
   scadaParameters_[309].value.float_t    = 0;
   // Время торможения при раскачке
@@ -3771,7 +3771,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[313].command          = OPERATION_ERROR;
   scadaParameters_[313].value.float_t    = 0;
   // Режим встряхивания
-  scadaParameters_[314].id               = CCS_RGM_JARRING_MODE;
+  scadaParameters_[314].id               = 0;
   scadaParameters_[314].address          = 951;
   scadaParameters_[314].operation        = OPERATION_WRITE;
   scadaParameters_[314].physic           = PHYSIC_NUMERIC;
@@ -4695,7 +4695,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[390].command          = OPERATION_ERROR;
   scadaParameters_[390].value.float_t    = 0;
   // Дистанционный запуск ПЭД в ручном режиме (0-запрещен;1-разрешен)
-  scadaParameters_[391].id               = 0;
+  scadaParameters_[391].id               = -1;
   scadaParameters_[391].address          = 1028;
   scadaParameters_[391].operation        = OPERATION_WRITE;
   scadaParameters_[391].physic           = PHYSIC_NUMERIC;
@@ -4976,7 +4976,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[414].operation        = OPERATION_READ;
   scadaParameters_[414].physic           = PHYSIC_NUMERIC;
   scadaParameters_[414].unit             = 0;
-  scadaParameters_[414].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[414].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[414].coefficient      = 1;
   scadaParameters_[414].min              = 0;
   scadaParameters_[414].max              = 65535;
@@ -4988,7 +4988,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[415].operation        = OPERATION_READ;
   scadaParameters_[415].physic           = PHYSIC_NUMERIC;
   scadaParameters_[415].unit             = 0;
-  scadaParameters_[415].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[415].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[415].coefficient      = 1;
   scadaParameters_[415].min              = 0;
   scadaParameters_[415].max              = 65535;
@@ -5138,25 +5138,25 @@ void ScadaLukoil::initParameters()
   scadaParameters_[427].max              = 99;
   scadaParameters_[427].command          = OPERATION_ERROR;
   scadaParameters_[427].value.float_t    = 0;
-  // Заводской номер контроллера (ст.часть)
+  // Заводской номер СУ (ст.часть)
   scadaParameters_[428].id               = 0;
   scadaParameters_[428].address          = 1065;
   scadaParameters_[428].operation        = OPERATION_READ;
   scadaParameters_[428].physic           = PHYSIC_NUMERIC;
   scadaParameters_[428].unit             = 0;
-  scadaParameters_[428].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[428].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[428].coefficient      = 1;
   scadaParameters_[428].min              = 0;
   scadaParameters_[428].max              = 65535;
   scadaParameters_[428].command          = OPERATION_ERROR;
   scadaParameters_[428].value.float_t    = 0;
-  // Заводской номер контроллера (мл.часть)
+  // Заводской номер СУ (мл.часть)
   scadaParameters_[429].id               = 0;
   scadaParameters_[429].address          = 1066;
   scadaParameters_[429].operation        = OPERATION_READ;
   scadaParameters_[429].physic           = PHYSIC_NUMERIC;
   scadaParameters_[429].unit             = 0;
-  scadaParameters_[429].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[429].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[429].coefficient      = 1;
   scadaParameters_[429].min              = 0;
   scadaParameters_[429].max              = 65535;
@@ -5228,7 +5228,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[435].operation        = OPERATION_READ;
   scadaParameters_[435].physic           = PHYSIC_NUMERIC;
   scadaParameters_[435].unit             = 0;
-  scadaParameters_[435].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[435].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[435].coefficient      = 1;
   scadaParameters_[435].min              = 0;
   scadaParameters_[435].max              = 65535;
@@ -5240,7 +5240,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[436].operation        = OPERATION_READ;
   scadaParameters_[436].physic           = PHYSIC_NUMERIC;
   scadaParameters_[436].unit             = 0;
-  scadaParameters_[436].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[436].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[436].coefficient      = 1;
   scadaParameters_[436].min              = 0;
   scadaParameters_[436].max              = 65535;
