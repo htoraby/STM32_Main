@@ -1066,6 +1066,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     cmdProtSupplyImbalanceCurrentSetpointReset();
     return err;
+  case CCS_CMD_PROT_SUPPLY_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtSupplySetpointReset();
+    return err;
   case CCS_CMD_PROT_MOTOR_OVERLOAD_SETPOINT_RESET:
     err = setValue(id, value, eventType);
     cmdProtMotorOverloadSetpointReset();
@@ -1161,6 +1165,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_CMD_PROT_AI_4_SETPOINT_RESET:
     err = setValue(id, value, eventType);
     cmdProtAnalogInput4SetpointReset();
+    return err;
+  case CCS_CMD_PROT_ALL_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    cmdProtSetpointReset();
     return err;
   case CCS_CMD_COUNTER_ALL_RESET:
     err = setValue(id, value, eventType);
@@ -1510,6 +1518,14 @@ void Ccs::cmdProtSupplyImbalanceCurrentSetpointReset()
   }
 }
 
+void Ccs::cmdProtSupplySetpointReset()
+{
+  cmdProtSupplyOvervoltageSetpointReset();
+  cmdProtSupplyUndervoltageSetpointReset();
+  cmdProtSupplyImbalanceVoltageSetpointReset();
+  cmdProtSupplyImbalanceCurrentSetpointReset();
+}
+
 void Ccs::cmdProtMotorOverloadSetpointReset()
 {
   for (uint16_t i = CCS_PROT_MOTOR_OVERLOAD_MODE;
@@ -1532,6 +1548,9 @@ void Ccs::cmdProtMotorUnderloadSetpointReset()
        i <= CCS_PROT_MOTOR_UNDERLOAD_PARAMETER; i++) {
     resetValue(i);
   }
+  resetValue(CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY);
+  resetValue(CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_FLAG);
+
 }
 
 void Ccs::cmdProtMotorImbalanceCurrentSetpointReset()
@@ -1556,6 +1575,16 @@ void Ccs::cmdProtMotorOutOfSyncSetpointReset()
        i <= CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER; i++) {
     resetValue(i);
   }
+}
+
+void Ccs::cmdProtMotorSetpointReset()
+{
+  cmdProtMotorOverloadSetpointReset();
+  cmdProtMotorCurrentSetpointReset();
+  cmdProtMotorUnderloadSetpointReset();
+  cmdProtMotorImbalanceCurrentSetpointReset();
+  cmdProtMotorAsyncModeSetpointReset();
+  cmdProtMotorOutOfSyncSetpointReset();
 }
 
 void Ccs::cmdProtDhsPressureIntakeSetpointReset()
@@ -1606,6 +1635,16 @@ void Ccs::cmdProtDhsFlowDischargeSetpointReset()
   }
 }
 
+void Ccs::cmdProtDhsSetpointReset()
+{
+  cmdProtDhsPressureIntakeSetpointReset();
+  cmdProtDhsPressureDischargeSetpointReset();
+  cmdProtDhsTemperatureMotorSetpointReset();
+  cmdProtDhsResistanceSetpointReset();
+  cmdProtDhsVibrationSetpointReset();
+  cmdProtDhsFlowDischargeSetpointReset();
+}
+
 void Ccs::cmdProtOvernumberOfStartSetpointReset()
 {
   for (uint16_t i = CCS_PROT_OTHER_LIMIT_RESTART_MODE;
@@ -1636,6 +1675,14 @@ void Ccs::cmdProtOtherOverheatInputFilterSetpointReset()
        i <= CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PARAMETER; i++) {
     resetValue(i);
   }
+}
+
+void Ccs::cmdProtOtherSetpointReset()
+{
+  cmdProtOvernumberOfStartSetpointReset();
+  cmdProtOtherHardwareVsdSetpointReset();
+  cmdProtOtherVsdNoConnectSetpointReset();
+  cmdProtOtherOverheatInputFilterSetpointReset();
 }
 
 void Ccs::cmdProtDigitalInput1SetpointReset()
@@ -1674,6 +1721,14 @@ void Ccs::cmdProtDigitalInput4SetpointReset()
   resetValue(CCS_DI_4_TYPE);
 }
 
+void Ccs::cmdProtDigitalSetpointReset()
+{
+  cmdProtDigitalInput1SetpointReset();
+  cmdProtDigitalInput2SetpointReset();
+  cmdProtDigitalInput3SetpointReset();
+  cmdProtDigitalInput4SetpointReset();
+}
+
 void Ccs::cmdProtAnalogInput1SetpointReset()
 {
   for (uint16_t i = CCS_PROT_AI_1_MODE;
@@ -1704,6 +1759,24 @@ void Ccs::cmdProtAnalogInput4SetpointReset()
        i <= CCS_PROT_AI_4_PARAMETER; i++) {
     resetValue(i);
   }
+}
+
+void Ccs::cmdProtAnalogSetpointReset()
+{
+  cmdProtAnalogInput1SetpointReset();
+  cmdProtAnalogInput2SetpointReset();
+  cmdProtAnalogInput3SetpointReset();
+  cmdProtAnalogInput4SetpointReset();
+}
+
+void Ccs::cmdProtSetpointReset()
+{
+  cmdProtSupplySetpointReset();
+  cmdProtMotorSetpointReset();
+  cmdProtDhsSetpointReset();
+  cmdProtOtherSetpointReset();
+  cmdProtDigitalSetpointReset();
+  cmdProtAnalogSetpointReset();
 }
 
 void Ccs::calcCountersStop(float reason)

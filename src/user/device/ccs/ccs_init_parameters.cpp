@@ -8105,7 +8105,7 @@ void Ccs::initParameters()
   // Частота толчка в режиме пуска "Толчковый"
   parameters_[CCS_RGM_RUN_PUSH_FREQ - CCS_BEGIN].id                              = CCS_RGM_RUN_PUSH_FREQ;
   parameters_[CCS_RGM_RUN_PUSH_FREQ - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_PUSH_FREQ - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PUSH_FREQ - CCS_BEGIN].operation                       = OPERATION_LIMITED;
   parameters_[CCS_RGM_RUN_PUSH_FREQ - CCS_BEGIN].physic                          = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_RUN_PUSH_FREQ - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PUSH_FREQ - CCS_BEGIN].value.float_t                   = 5.0;
@@ -8117,7 +8117,7 @@ void Ccs::initParameters()
   // Время толчка в режиме пуска "Толчковый"
   parameters_[CCS_RGM_RUN_PUSH_TIME - CCS_BEGIN].id                              = CCS_RGM_RUN_PUSH_TIME;
   parameters_[CCS_RGM_RUN_PUSH_TIME - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_PUSH_TIME - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PUSH_TIME - CCS_BEGIN].operation                       = OPERATION_LIMITED;
   parameters_[CCS_RGM_RUN_PUSH_TIME - CCS_BEGIN].physic                          = PHYSIC_TIME;
   parameters_[CCS_RGM_RUN_PUSH_TIME - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PUSH_TIME - CCS_BEGIN].value.float_t                   = 5.0;
@@ -8129,7 +8129,7 @@ void Ccs::initParameters()
   // Время между толчками в режиме пуска "Толчковый"
   parameters_[CCS_RGM_RUN_PUSH_PERIOD - CCS_BEGIN].id                            = CCS_RGM_RUN_PUSH_PERIOD;
   parameters_[CCS_RGM_RUN_PUSH_PERIOD - CCS_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_PUSH_PERIOD - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PUSH_PERIOD - CCS_BEGIN].operation                     = OPERATION_LIMITED;
   parameters_[CCS_RGM_RUN_PUSH_PERIOD - CCS_BEGIN].physic                        = PHYSIC_TIME;
   parameters_[CCS_RGM_RUN_PUSH_PERIOD - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PUSH_PERIOD - CCS_BEGIN].value.float_t                 = 5.0;
@@ -8141,7 +8141,7 @@ void Ccs::initParameters()
   // Напряжение толчка в режиме пуска "Толчковый"
   parameters_[CCS_RGM_RUN_PUSH_VOLTAGE - CCS_BEGIN].id                           = CCS_RGM_RUN_PUSH_VOLTAGE;
   parameters_[CCS_RGM_RUN_PUSH_VOLTAGE - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_PUSH_VOLTAGE - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PUSH_VOLTAGE - CCS_BEGIN].operation                    = OPERATION_LIMITED;
   parameters_[CCS_RGM_RUN_PUSH_VOLTAGE - CCS_BEGIN].physic                       = PHYSIC_PERCENT;
   parameters_[CCS_RGM_RUN_PUSH_VOLTAGE - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PUSH_VOLTAGE - CCS_BEGIN].value.float_t                = 100.0;
@@ -8153,7 +8153,7 @@ void Ccs::initParameters()
   // Количество толчков в режиме пуска "Толчковый"
   parameters_[CCS_RGM_RUN_PUSH_QUANTITY - CCS_BEGIN].id                          = CCS_RGM_RUN_PUSH_QUANTITY;
   parameters_[CCS_RGM_RUN_PUSH_QUANTITY - CCS_BEGIN].access                      = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_PUSH_QUANTITY - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PUSH_QUANTITY - CCS_BEGIN].operation                   = OPERATION_LIMITED;
   parameters_[CCS_RGM_RUN_PUSH_QUANTITY - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_PUSH_QUANTITY - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PUSH_QUANTITY - CCS_BEGIN].value.float_t               = 0.0;
@@ -11506,7 +11506,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].validity                 = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].value.float_t            = 0.0;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].min                      = 0.0;
-  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].max                      = 999999999.9;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].max                      = 4294967296.0;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].discret                  = 1;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].def                      = 0.0;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].code                     = 0;
@@ -11518,7 +11518,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].validity                 = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].value.float_t            = 0.0;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].min                      = 0.0;
-  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].max                      = 999999999.9;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].max                      = 4294967296.0;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].discret                  = 1;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].def                      = 0.0;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].code                     = 0;
@@ -12326,5 +12326,29 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC - CCS_BEGIN].discret            = 1;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC - CCS_BEGIN].def                = 60.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC - CCS_BEGIN].code               = 0;
+  // Текущее количество толчков
+  parameters_[CCS_RGM_RUN_PUSH_COUNTER - CCS_BEGIN].id                           = CCS_RGM_RUN_PUSH_COUNTER;
+  parameters_[CCS_RGM_RUN_PUSH_COUNTER - CCS_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_PUSH_COUNTER - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PUSH_COUNTER - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_RUN_PUSH_COUNTER - CCS_BEGIN].validity                     = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_PUSH_COUNTER - CCS_BEGIN].value.float_t                = 0.0;
+  parameters_[CCS_RGM_RUN_PUSH_COUNTER - CCS_BEGIN].min                          = 0.0;
+  parameters_[CCS_RGM_RUN_PUSH_COUNTER - CCS_BEGIN].max                          = 20.0;
+  parameters_[CCS_RGM_RUN_PUSH_COUNTER - CCS_BEGIN].discret                      = 1;
+  parameters_[CCS_RGM_RUN_PUSH_COUNTER - CCS_BEGIN].def                          = 0.0;
+  parameters_[CCS_RGM_RUN_PUSH_COUNTER - CCS_BEGIN].code                         = 0;
+  // Текущее значение таймера-счётчика
+  parameters_[CCS_RGM_RUN_PUSH_TIMER - CCS_BEGIN].id                             = CCS_RGM_RUN_PUSH_TIMER;
+  parameters_[CCS_RGM_RUN_PUSH_TIMER - CCS_BEGIN].access                         = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_PUSH_TIMER - CCS_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PUSH_TIMER - CCS_BEGIN].physic                         = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_RUN_PUSH_TIMER - CCS_BEGIN].validity                       = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_PUSH_TIMER - CCS_BEGIN].value.float_t                  = 20.0;
+  parameters_[CCS_RGM_RUN_PUSH_TIMER - CCS_BEGIN].min                            = 0.0;
+  parameters_[CCS_RGM_RUN_PUSH_TIMER - CCS_BEGIN].max                            = 4294967296.0;
+  parameters_[CCS_RGM_RUN_PUSH_TIMER - CCS_BEGIN].discret                        = 1;
+  parameters_[CCS_RGM_RUN_PUSH_TIMER - CCS_BEGIN].def                            = 20.0;
+  parameters_[CCS_RGM_RUN_PUSH_TIMER - CCS_BEGIN].code                           = 0;
 }
 

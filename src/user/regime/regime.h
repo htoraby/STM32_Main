@@ -42,7 +42,7 @@ public:
     WaitPauseState = 300,
     PauseState = 400,
     RestartState = 500,
-    StopState = 600
+    StopState = 600,
   } RegimeState;
 
   Regime();

@@ -17,26 +17,86 @@ public:
   void processingStateIdle();
   void processingStateRunning();
   void processingStateWork();
+  void processingStateStop();
+  void processingStateError();
   void automatRegime();
 
 private:
-  void offRegime();
-  bool checkOnRegime();
+  /*!
+   * \brief saveBeforeRegimeRun
+   * Функция сохранения настроек работы ЧРП перед запуском режима
+   */
+  void saveBeforeRegimeRun();
 
-  void makePush(bool push);
+  /*!
+   * \brief setMinFreq функция задания минимальной границы уставки частоты для
+   * обеспечения возможности задания частоты синхронизации как уставки частоты
+   * даже если она меньше обычной уставки минимальной частоты
+   * \return 0 - нет ошибок; 1 - ошибка задания
+   */
+  int16_t setMinFreq();
 
-  float freq_;                                        // Частота толчка
-  float time_;                                        // Время толчка и между толчками
-  float quantity_;                                    // Количество толчков
-  float voltage_;                                     // Напряжение толчка
+  /*!
+   * \brief returnMinFreq функция возвращения минимальной уставки частоты
+   * \return 0 - нет ошибок; 1 - ошибка задания
+   */
+  int16_t returnMinFreq();
 
-  bool flag_;                                         // Флаг
+  /*!
+   * \brief setFreqPush функция задания частоты толчков
+   * \return 0 - нет ошибок; 1 - ошибка задания
+   */
+  int16_t setFreqPush();
+
+  /*!
+   * \brief returnFreq функция возвращения уставки частоты
+   * \return 0 - нет ошибок; 1 - ошибка задания
+   */
+  int16_t returnFreq();
+
+  /*!
+   * \brief setU1
+   * \return
+   */
+  int16_t setU1();
+
+  /*!
+   * \brief returnU1
+   */
+  int16_t returnU1();
+
+  /*!
+   * \brief setU2
+   * \return
+   */
+  int16_t setU2();
+
+  /*!
+   * \brief returnU2
+   * \return
+   */
+  int16_t returnU2();
+
+  /*!
+   * \brief setConfirmation
+   * \param id
+   * \param value
+   * \return
+   */
+  int16_t setConfirmation(uint16_t id, float value);
+
+  // Уставки режима
+  float freqPush_;                                    // Частота толчка
+  float quantityPush_;                                // Количество толчков
+  float voltagePush_;                                 // Напряжение толчка
+  float timePush_;                                    // Время толчка и между толчками
+
   uint16_t cntPush_;                                  // Счётчик толчков
   float timer_;                                       // Счётчик времени
-  float setPointFreq_;                                // Уставка частоты
-  float setPointLowLimFreq_;                          // Уставка минимальной частоты
-  float setPointU1_;                                  // Уставка напряжения в нижней точке Uf
-  float setPointU2_;                                  // Уставка напряжения в верхней точке Uf
+
+  // Запись параметров в ЧРП
+  float delay_;                                       // Задержка между попытками записать настройки режима в ЧРП
+  float repeat_;                                      // Количество попыток записать настройки режима в ЧРП
 };
 
 #endif // REGIMERUNPUSH_H

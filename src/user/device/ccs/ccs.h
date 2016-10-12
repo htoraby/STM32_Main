@@ -460,6 +460,7 @@ private:
   void cmdProtSupplyUndervoltageSetpointReset();
   void cmdProtSupplyImbalanceVoltageSetpointReset();
   void cmdProtSupplyImbalanceCurrentSetpointReset();
+  void cmdProtSupplySetpointReset();
 
   void cmdProtMotorOverloadSetpointReset();
   void cmdProtMotorCurrentSetpointReset();
@@ -467,6 +468,7 @@ private:
   void cmdProtMotorImbalanceCurrentSetpointReset();
   void cmdProtMotorAsyncModeSetpointReset();
   void cmdProtMotorOutOfSyncSetpointReset();
+  void cmdProtMotorSetpointReset();
 
   void cmdProtDhsPressureIntakeSetpointReset();
   void cmdProtDhsPressureDischargeSetpointReset();
@@ -474,21 +476,27 @@ private:
   void cmdProtDhsResistanceSetpointReset();
   void cmdProtDhsVibrationSetpointReset();
   void cmdProtDhsFlowDischargeSetpointReset();
+  void cmdProtDhsSetpointReset();
 
   void cmdProtOvernumberOfStartSetpointReset();
   void cmdProtOtherHardwareVsdSetpointReset();
   void cmdProtOtherVsdNoConnectSetpointReset();
   void cmdProtOtherOverheatInputFilterSetpointReset();
+  void cmdProtOtherSetpointReset();
 
   void cmdProtDigitalInput1SetpointReset();
   void cmdProtDigitalInput2SetpointReset();
   void cmdProtDigitalInput3SetpointReset();
   void cmdProtDigitalInput4SetpointReset();
+  void cmdProtDigitalSetpointReset();
 
   void cmdProtAnalogInput1SetpointReset();
   void cmdProtAnalogInput2SetpointReset();
   void cmdProtAnalogInput3SetpointReset();
   void cmdProtAnalogInput4SetpointReset();
+  void cmdProtAnalogSetpointReset();
+
+  void cmdProtSetpointReset();
 
   /*!
    * \brief calcCounterStop

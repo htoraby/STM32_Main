@@ -3683,8 +3683,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0</value>
-		<text>Действие защиты</text>
-		<short_text>Турбин.вращение РРЗ</short_text>
+		<text>Турбинное вращение</text>
+		<short_text>Турб. вращение</short_text>
 		<form>4.2.4 Турбинное вращение</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -3797,7 +3797,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>20.0</value>
 		<text>Уставка останова</text>
-		<short_text>Турбин.вращение уст.</short_text>
+		<short_text>Турб.вращение Уст.останова</short_text>
 		<form>4.2.4 Турбин.вращение уст.</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -11972,8 +11972,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Уста.по.умол.?</text>
-		<short_text>Уста.по.умол.?</short_text>
+		<text>Сбросить значения уставок по умолчанию?</text>
+		<short_text>Защиты по сети. Сброс уставок</short_text>
 		<form>4.1 Защиты по сети</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
@@ -13288,7 +13288,7 @@
 		<id>675</id>
 		<name>CCS_RGM_RUN_PUSH_FREQ</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
 		<max>20.0</max>
@@ -13309,7 +13309,7 @@
 		<id>676</id>
 		<name>CCS_RGM_RUN_PUSH_TIME</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>1.0</min>
 		<max>100.0</max>
@@ -13330,7 +13330,7 @@
 		<id>677</id>
 		<name>CCS_RGM_RUN_PUSH_PERIOD</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>1.0</min>
 		<max>100.0</max>
@@ -13351,7 +13351,7 @@
 		<id>678</id>
 		<name>CCS_RGM_RUN_PUSH_VOLTAGE</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>100.0</min>
 		<max>150.0</max>
@@ -13372,7 +13372,7 @@
 		<id>679</id>
 		<name>CCS_RGM_RUN_PUSH_QUANTITY</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>20.0</max>
@@ -18830,7 +18830,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>4294967296.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -18851,7 +18851,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>4294967296.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -20214,6 +20214,48 @@
 	</param>
 	<param>
 		<id>1027</id>
+		<name>CCS_RGM_RUN_PUSH_COUNTER</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>20.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Текущее количество толчков</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Текущее количество толчков</comment>
+	</param>
+	<param>
+		<id>1028</id>
+		<name>CCS_RGM_RUN_PUSH_TIMER</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4294967296.0</max>
+		<def>20.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>20.0</value>
+		<text>Текущее значение таймер-счётчиков</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Текущее значение таймера-счётчика</comment>
+	</param>
+	<param>
+		<id>1029</id>
 		<name>CCS_END</name>
 	</param>
 	<param>
