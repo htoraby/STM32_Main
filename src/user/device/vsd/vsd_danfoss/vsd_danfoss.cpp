@@ -1694,6 +1694,12 @@ void VsdDanfoss::getNewValue(uint16_t id)
     case VSD_ROTATION:
       setValue(id, value);
       break;
+    case VSD_PARAMETER_WRITE_CONTROL:
+      if (value == 0) {
+        parameters.set(VSD_PARAMETER_WRITE_CONTROL, 1);
+      }
+      setValue(id, value);
+      break;
     default:
       setValue(id, value);
       break;

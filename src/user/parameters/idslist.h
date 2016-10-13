@@ -1524,7 +1524,8 @@ enum enID
   VSD_POWER_SECTION_10 = 10488,                              //!< Силовая часть ЧРП Danfoss 15-41 (10)
   VSD_FLYING_START = 10489,                                  //!< Запуск с хода ЧРП Danfoss 1-73
   VSD_JOG = 10490,                                           //!< Катушка: Jog Danfoss
-  VSD_END = 10491,                                           //!< 
+  VSD_PARAMETER_WRITE_CONTROL = 10491,                       //!< Катушка: Parameter write control
+  VSD_END = 10492,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме

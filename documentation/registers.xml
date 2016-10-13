@@ -29537,6 +29537,27 @@
 	</param>
 	<param>
 		<id>10491</id>
+		<name>VSD_PARAMETER_WRITE_CONTROL</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>255.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Катушка: Parameter write control</comment>
+	</param>
+	<param>
+		<id>10492</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>
