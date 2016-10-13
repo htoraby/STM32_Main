@@ -234,7 +234,7 @@ public:
 
   bool isControl();
 private:
-  ModbusParameter modbusParameters_[228];
+  ModbusParameter modbusParameters_[229];
   DeviceModbus *dm_;
 
   RegimeRunPush *regimeRunPush_;
