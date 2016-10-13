@@ -1550,7 +1550,7 @@ enum enID
   TMS_CONSTRUCTION_TMSP = 15021,                             //!< Код конструкции ТМСП
   TMS_PROTOCOL_TMSP = 15022,                                 //!< Код протокола ТМСП
   TMS_SENSOR_TMSP = 15023,                                   //!< Состав датчиков ТМСП
-  TMS_SOFT_TMSP = 15024,                                     //!< Версия По ТМСП
+  TMS_SOFT_TMSP = 15024,                                     //!< Версия ПО ТМСП
   TMS_TIME_BIT = 15025,                                      //!< Скорости передачи бита
   TMS_MANUFACTURE_TMSN = 15026,                              //!< Код завода изготовителя ТМСН
   TMS_NUMBER_TMSN = 15027,                                   //!< Заводской номер ТМСН
