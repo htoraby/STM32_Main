@@ -8109,7 +8109,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_PUSH_FREQ - CCS_BEGIN].physic                          = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_RUN_PUSH_FREQ - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PUSH_FREQ - CCS_BEGIN].value.float_t                   = 5.0;
-  parameters_[CCS_RGM_RUN_PUSH_FREQ - CCS_BEGIN].min                             = 0.0;
+  parameters_[CCS_RGM_RUN_PUSH_FREQ - CCS_BEGIN].min                             = 1.0;
   parameters_[CCS_RGM_RUN_PUSH_FREQ - CCS_BEGIN].max                             = 20.0;
   parameters_[CCS_RGM_RUN_PUSH_FREQ - CCS_BEGIN].discret                         = 100;
   parameters_[CCS_RGM_RUN_PUSH_FREQ - CCS_BEGIN].def                             = 5.0;
@@ -8144,11 +8144,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_PUSH_VOLTAGE - CCS_BEGIN].operation                    = OPERATION_LIMITED;
   parameters_[CCS_RGM_RUN_PUSH_VOLTAGE - CCS_BEGIN].physic                       = PHYSIC_PERCENT;
   parameters_[CCS_RGM_RUN_PUSH_VOLTAGE - CCS_BEGIN].validity                     = VALIDITY_OK;
-  parameters_[CCS_RGM_RUN_PUSH_VOLTAGE - CCS_BEGIN].value.float_t                = 100.0;
+  parameters_[CCS_RGM_RUN_PUSH_VOLTAGE - CCS_BEGIN].value.float_t                = 125.0;
   parameters_[CCS_RGM_RUN_PUSH_VOLTAGE - CCS_BEGIN].min                          = 100.0;
   parameters_[CCS_RGM_RUN_PUSH_VOLTAGE - CCS_BEGIN].max                          = 150.0;
   parameters_[CCS_RGM_RUN_PUSH_VOLTAGE - CCS_BEGIN].discret                      = 10;
-  parameters_[CCS_RGM_RUN_PUSH_VOLTAGE - CCS_BEGIN].def                          = 100.0;
+  parameters_[CCS_RGM_RUN_PUSH_VOLTAGE - CCS_BEGIN].def                          = 125.0;
   parameters_[CCS_RGM_RUN_PUSH_VOLTAGE - CCS_BEGIN].code                         = 13;
   // Количество толчков в режиме пуска "Толчковый"
   parameters_[CCS_RGM_RUN_PUSH_QUANTITY - CCS_BEGIN].id                          = CCS_RGM_RUN_PUSH_QUANTITY;
@@ -8156,11 +8156,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_PUSH_QUANTITY - CCS_BEGIN].operation                   = OPERATION_LIMITED;
   parameters_[CCS_RGM_RUN_PUSH_QUANTITY - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_PUSH_QUANTITY - CCS_BEGIN].validity                    = VALIDITY_OK;
-  parameters_[CCS_RGM_RUN_PUSH_QUANTITY - CCS_BEGIN].value.float_t               = 0.0;
-  parameters_[CCS_RGM_RUN_PUSH_QUANTITY - CCS_BEGIN].min                         = 0.0;
+  parameters_[CCS_RGM_RUN_PUSH_QUANTITY - CCS_BEGIN].value.float_t               = 5.0;
+  parameters_[CCS_RGM_RUN_PUSH_QUANTITY - CCS_BEGIN].min                         = 1.0;
   parameters_[CCS_RGM_RUN_PUSH_QUANTITY - CCS_BEGIN].max                         = 20.0;
   parameters_[CCS_RGM_RUN_PUSH_QUANTITY - CCS_BEGIN].discret                     = 1;
-  parameters_[CCS_RGM_RUN_PUSH_QUANTITY - CCS_BEGIN].def                         = 0.0;
+  parameters_[CCS_RGM_RUN_PUSH_QUANTITY - CCS_BEGIN].def                         = 5.0;
   parameters_[CCS_RGM_RUN_PUSH_QUANTITY - CCS_BEGIN].code                        = 13;
   // Действие режима пуска "Раскачка"
   parameters_[CCS_RGM_RUN_SWING_MODE - CCS_BEGIN].id                             = CCS_RGM_RUN_SWING_MODE;

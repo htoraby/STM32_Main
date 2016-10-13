@@ -13254,8 +13254,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние</text>
-		<short_text>Толчковый. Состояние</short_text>
+		<text>Толчковый</text>
+		<short_text>Толчковый</short_text>
 		<form>3.2.1.2 Толчковый</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
@@ -13290,14 +13290,14 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
-		<min>0.0</min>
+		<min>1.0</min>
 		<max>20.0</max>
 		<def>5.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Частота толчка</text>
-		<short_text>Толчковый. Частота толчка</short_text>
+		<short_text>Толчковый. Частота</short_text>
 		<form>3.2.1.2 Толчковый</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -13318,7 +13318,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Время толчка</text>
-		<short_text>Время толчка</short_text>
+		<short_text>Толчковый. Время </short_text>
 		<form>3.2.1.2 Толчковый</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_SS</unit_lcd>
@@ -13339,7 +13339,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Время между толчками</text>
-		<short_text>Время между толчками</short_text>
+		<short_text>Толчковый. Время </short_text>
 		<form>3.2.1.2 Толчковый</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_SS</unit_lcd>
@@ -13355,12 +13355,12 @@
 		<physic>PHYSIC_PERCENT</physic>
 		<min>100.0</min>
 		<max>150.0</max>
-		<def>100.0</def>
+		<def>125.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>100.0</value>
+		<value>125.0</value>
 		<text>Напряжение толчка</text>
-		<short_text>Толчковый. Напряжение толчка</short_text>
+		<short_text>Толчковый. Напряжение</short_text>
 		<form>3.2.1.2 Толчковый</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -13374,14 +13374,14 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
+		<min>1.0</min>
 		<max>20.0</max>
-		<def>0.0</def>
+		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>5.0</value>
 		<text>Количество толчков</text>
-		<short_text>Толчковый. Количество толчков</short_text>
+		<short_text>Толчковый. Количество</short_text>
 		<form>3.2.1.2 Толчковый</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
