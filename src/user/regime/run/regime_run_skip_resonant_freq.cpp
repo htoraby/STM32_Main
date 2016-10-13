@@ -489,7 +489,6 @@ void RegimeRunSkipResonantFreq::saveBeforeRegimeRun()
 {
   parameters.set(CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ, parameters.get(VSD_FREQUENCY));
   parameters.set(CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP, parameters.get(VSD_TIMER_DISPERSAL));
-  float minfreq = parameters.get(VSD_LOW_LIM_SPEED_MOTOR);
   parameters.set(CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ, parameters.get(VSD_LOW_LIM_SPEED_MOTOR));
 }
 
