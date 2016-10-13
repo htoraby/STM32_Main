@@ -290,7 +290,7 @@ void Tms::initParameters()
   parameters_[TMS_SENSOR_TMSP - TMS_BEGIN].def                                   = 0;
   parameters_[TMS_SENSOR_TMSP - TMS_BEGIN].discret                               = 1;
   parameters_[TMS_SENSOR_TMSP - TMS_BEGIN].code                                  = 0;
-  // Версия По ТМСП
+  // Версия ПО ТМСП
   parameters_[TMS_SOFT_TMSP - TMS_BEGIN].id                                      = TMS_SOFT_TMSP;
   parameters_[TMS_SOFT_TMSP - TMS_BEGIN].access                                  = ACCESS_OPERATOR;
   parameters_[TMS_SOFT_TMSP - TMS_BEGIN].operation                               = OPERATION_READ;
@@ -300,7 +300,7 @@ void Tms::initParameters()
   parameters_[TMS_SOFT_TMSP - TMS_BEGIN].min                                     = 0.0;
   parameters_[TMS_SOFT_TMSP - TMS_BEGIN].max                                     = 999999999.9;
   parameters_[TMS_SOFT_TMSP - TMS_BEGIN].def                                     = 0;
-  parameters_[TMS_SOFT_TMSP - TMS_BEGIN].discret                                 = 1;
+  parameters_[TMS_SOFT_TMSP - TMS_BEGIN].discret                                 = 10;
   parameters_[TMS_SOFT_TMSP - TMS_BEGIN].code                                    = 0;
   // Скорости передачи бита
   parameters_[TMS_TIME_BIT - TMS_BEGIN].id                                       = TMS_TIME_BIT;
@@ -372,7 +372,7 @@ void Tms::initParameters()
   parameters_[TMS_SOFT_TMSN - TMS_BEGIN].min                                     = 0.0;
   parameters_[TMS_SOFT_TMSN - TMS_BEGIN].max                                     = 999999999.9;
   parameters_[TMS_SOFT_TMSN - TMS_BEGIN].def                                     = 0;
-  parameters_[TMS_SOFT_TMSN - TMS_BEGIN].discret                                 = 1;
+  parameters_[TMS_SOFT_TMSN - TMS_BEGIN].discret                                 = 10;
   parameters_[TMS_SOFT_TMSN - TMS_BEGIN].code                                    = 0;
   // Код протокола ТМСН
   parameters_[TMS_PROTOCOL_TMSN - TMS_BEGIN].id                                  = TMS_PROTOCOL_TMSN;

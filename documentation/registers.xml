@@ -13318,7 +13318,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Время толчка</text>
-		<short_text>Толчковый. Время </short_text>
+		<short_text>Толчковый. Время</short_text>
 		<form>3.2.1.2 Толчковый</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_SS</unit_lcd>
@@ -13339,7 +13339,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Время между толчками</text>
-		<short_text>Толчковый. Время </short_text>
+		<short_text>Толчковый. Время</short_text>
 		<form>3.2.1.2 Толчковый</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_SS</unit_lcd>
@@ -29941,11 +29941,13 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>XXX_X</format>
 		<code>0</code>
-		<comment>Версия По ТМСП</comment>
+		<comment>Версия ПО ТМСП</comment>
 	</param>
 	<param>
 		<id>15025</id>
@@ -30026,9 +30028,11 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>XXX_X</format>
 		<code>0</code>
 		<comment>Версия ПО ТМСН</comment>
 	</param>
