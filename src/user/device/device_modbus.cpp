@@ -370,7 +370,6 @@ void DeviceModbus::exchangeTask()
         outOfTurn = searchExchangeParameters();
       }
       if (outOfTurn) {
-        mbParams_[outOfTurn].validity = err_r;
         switch (mbParams_[outOfTurn].typeData) {
         case TYPE_DATA_COIL:
           readCoils(devAdrs_, mbParams_[outOfTurn].address, bitArr_, count);
