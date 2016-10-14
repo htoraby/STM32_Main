@@ -8189,11 +8189,11 @@ void Ccs::initParameters()
   // Частота толчка в режиме пуска "Раскачка"
   parameters_[CCS_RGM_RUN_SWING_FREQ - CCS_BEGIN].id                             = CCS_RGM_RUN_SWING_FREQ;
   parameters_[CCS_RGM_RUN_SWING_FREQ - CCS_BEGIN].access                         = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_SWING_FREQ - CCS_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SWING_FREQ - CCS_BEGIN].operation                      = OPERATION_LIMITED;
   parameters_[CCS_RGM_RUN_SWING_FREQ - CCS_BEGIN].physic                         = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_RUN_SWING_FREQ - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_SWING_FREQ - CCS_BEGIN].value.float_t                  = 5.0;
-  parameters_[CCS_RGM_RUN_SWING_FREQ - CCS_BEGIN].min                            = 0.0;
+  parameters_[CCS_RGM_RUN_SWING_FREQ - CCS_BEGIN].min                            = 1.0;
   parameters_[CCS_RGM_RUN_SWING_FREQ - CCS_BEGIN].max                            = 20.0;
   parameters_[CCS_RGM_RUN_SWING_FREQ - CCS_BEGIN].discret                        = 100;
   parameters_[CCS_RGM_RUN_SWING_FREQ - CCS_BEGIN].def                            = 5.0;
@@ -8201,7 +8201,7 @@ void Ccs::initParameters()
   // Напряжение толчка в режиме пуска "Раскачка"
   parameters_[CCS_RGM_RUN_SWING_VOLTAGE - CCS_BEGIN].id                          = CCS_RGM_RUN_SWING_VOLTAGE;
   parameters_[CCS_RGM_RUN_SWING_VOLTAGE - CCS_BEGIN].access                      = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_SWING_VOLTAGE - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SWING_VOLTAGE - CCS_BEGIN].operation                   = OPERATION_LIMITED;
   parameters_[CCS_RGM_RUN_SWING_VOLTAGE - CCS_BEGIN].physic                      = PHYSIC_PERCENT;
   parameters_[CCS_RGM_RUN_SWING_VOLTAGE - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_SWING_VOLTAGE - CCS_BEGIN].value.float_t               = 100.0;
@@ -8213,11 +8213,11 @@ void Ccs::initParameters()
   // Количество толчков в режиме пуска "Раскачка"
   parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].id                         = CCS_RGM_RUN_SWING_QUANTITY;
   parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].operation                  = OPERATION_LIMITED;
   parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].value.float_t              = 0.0;
-  parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].min                        = 0.0;
+  parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].min                        = 1.0;
   parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].max                        = 20.0;
   parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].discret                    = 1;
   parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].def                        = 0.0;
@@ -12350,5 +12350,17 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_PUSH_TIMER - CCS_BEGIN].discret                        = 1;
   parameters_[CCS_RGM_RUN_PUSH_TIMER - CCS_BEGIN].def                            = 20.0;
   parameters_[CCS_RGM_RUN_PUSH_TIMER - CCS_BEGIN].code                           = 0;
+  // Количество текущих толчков в режиме пуска "Раскачка"
+  parameters_[CCS_RGM_RUN_SWING_COUNTER - CCS_BEGIN].id                          = CCS_RGM_RUN_SWING_COUNTER;
+  parameters_[CCS_RGM_RUN_SWING_COUNTER - CCS_BEGIN].access                      = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_SWING_COUNTER - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SWING_COUNTER - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_RUN_SWING_COUNTER - CCS_BEGIN].validity                    = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_SWING_COUNTER - CCS_BEGIN].value.float_t               = 0.0;
+  parameters_[CCS_RGM_RUN_SWING_COUNTER - CCS_BEGIN].min                         = 0.0;
+  parameters_[CCS_RGM_RUN_SWING_COUNTER - CCS_BEGIN].max                         = 4294967296.0;
+  parameters_[CCS_RGM_RUN_SWING_COUNTER - CCS_BEGIN].discret                     = 1;
+  parameters_[CCS_RGM_RUN_SWING_COUNTER - CCS_BEGIN].def                         = 0.0;
+  parameters_[CCS_RGM_RUN_SWING_COUNTER - CCS_BEGIN].code                        = 0;
 }
 

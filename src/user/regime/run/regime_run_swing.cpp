@@ -22,13 +22,15 @@ void RegimeRunSwing::getOtherSetpoint()
   state_ = parameters.get(CCS_RGM_RUN_SWING_STATE);
   rotationNow_ = parameters.get(VSD_ROTATION);        // Текущее направления вращения
   rotationSave_ = parameters.get(CCS_RGM_RUN_SWING_ROTATION_SAVE);
+  cntReverse_ = parameters.get(CCS_RGM_RUN_SWING_COUNTER);
+
 }
 
 void RegimeRunSwing::setOtherSetpoint()
 {
   parameters.set(CCS_RGM_RUN_SWING_STATE, state_);
   parameters.set(CCS_RGM_RUN_SWING_ROTATION_SAVE, rotationSave_);
-
+  parameters.set(CCS_RGM_RUN_SWING_COUNTER, cntReverse_);
 }
 
 void RegimeRunSwing::processingStateIdle()
@@ -36,6 +38,7 @@ void RegimeRunSwing::processingStateIdle()
   if (action_) {
     if (ksu.getValue(CCS_CONDITION) == CCS_CONDITION_STOP) {  // Станция в останове
       if (runReason_ != LastReasonRunNone) {                  // Попытка пуска
+        cntReverse_ = 0;
         saveBeforeRegimeRun();
         state_ = RunningState;
       }
@@ -108,7 +111,7 @@ void RegimeRunSwing::processingStateRunning()
     break;
   case RunningState + 5:
     ksu.start(runReason_);                            // Подаём команду на пуск
-    state_ = WorkState + 8;                           // Состояние формирования ошибки режима
+    state_ = WorkState + 9;                           // Состояние формирования ошибки режима
     break;
   }
 }
@@ -127,10 +130,15 @@ void RegimeRunSwing::processingStateWork()
     if (rotationNow_ != rotationSave_) {              // Если направления вращения не равно сохранённому, т.е. изменилось
       cntReverse_++;                                  // Увеличиваем счётчик изменений направлений вращения
       if (cntReverse_ >= quantitySwing_ * 2) {        // Если сделали все качки
+        cntReverse_ = 0;
         state_ = WorkState + 2;                       // Переходим к состоянию возврата настроек
       }
       else {
-        // TODO Секундная задержка
+        delayRotation_ ++;
+        if (delayRotation_ >= 10) {
+          delayRotation_ = 0;
+          state_ = WorkState;
+        }
       }
     }
     else {                                            // Меняем направление вращения на противоположное
@@ -153,67 +161,74 @@ void RegimeRunSwing::processingStateWork()
             if (!err) {                               // Если вернули уставку частоты
               err = returnMinFreq();                  // Возвращаем минимальную частоту
               if (!err) {                             // Вернули минимальную частоту
-                state_ = WorkState + 9;               // Ожидание выхода на частоту уставки
+                state_ = WorkState + 10;              // Ожидание выхода на частоту уставки
               }
               else if (err > 0) {                     // Не смогли вернуть минимальную частоту
-                state_ = WorkState + 8;               // Переход на состояние формирования ошибки
+                state_ = WorkState + 9;               // Переход на состояние формирования ошибки
               }
             }
             else if (err > 0) {                       // Не смогли вернуть уставку частоты
-              state_ = WorkState + 7;
+              state_ = WorkState + 8;
             }
           }
           else if (err > 0) {                         // Не смогли вернуть время изменения частоты
-            state_ = WorkState + 6;
+            state_ = WorkState + 7;
           }
         }
         else if (err > 0) {                           // Не смогли вернуть напряжение в нижней точке
-          state_ = WorkState + 5;
+          state_ = WorkState + 6;
         }
       }
       else if (err > 0) {                             // Не смогли вернуть напряжение в верхней точке
-        state_ = WorkState + 4;
+        state_ = WorkState + 5;
       }
     }
     else if (err > 0) {                               // Не смогли вернуть направления вращения
-      state_ = WorkState + 3;
+      state_ = WorkState + 4;
     }
     break;
   case WorkState + 3:
-    err = returnU2();                                 // Возвращаем напряжение верхней точки
+    err = returnRotation();                           // Возвращаем направление вращения
     if ((!err) || (err > 0)) {                        // Вернули или использовали все попытки
       state_ = WorkState + 4;                         // Переходим на состояние возврата напряжения нижней точки
     }
     break;
+    break;
   case WorkState + 4:
-    err = returnU1();                                 // Возвращаем напряжение нижней точки
+    err = returnU2();                                 // Возвращаем напряжение верхней точки
     if ((!err) || (err > 0)) {                        // Вернули или использовали все попытки
-      state_ = WorkState + 5;                         // Переходим на состояние возврата времени изменения частоты
+      state_ = WorkState + 5;                         // Переходим на состояние возврата напряжения нижней точки
     }
     break;
   case WorkState + 5:
-    err = returnTimeDispersal();                      // Возвращаем времени изменения частоты
+    err = returnU1();                                 // Возвращаем напряжение нижней точки
     if ((!err) || (err > 0)) {                        // Вернули или использовали все попытки
-      state_ = WorkState + 6;                         // Переходим на состояние возврата уставки частоты
+      state_ = WorkState + 6;                         // Переходим на состояние возврата времени изменения частоты
     }
     break;
   case WorkState + 6:
-    err = returnFreq();                               // Возвращаем уставки частоты
+    err = returnTimeDispersal();                      // Возвращаем времени изменения частоты
     if ((!err) || (err > 0)) {                        // Вернули или использовали все попытки
-      state_ = WorkState + 7;                         // Переходим на состояние возврата минимальной частоты
+      state_ = WorkState + 7;                         // Переходим на состояние возврата уставки частоты
     }
     break;
   case WorkState + 7:
-    err = returnMinFreq();                            // Возвращаем минимальную частоты
+    err = returnFreq();                               // Возвращаем уставки частоты
     if ((!err) || (err > 0)) {                        // Вернули или использовали все попытки
-      state_ = WorkState + 8;                         // Переходим на состояние формирования ошибки
+      state_ = WorkState + 8;                         // Переходим на состояние возврата минимальной частоты
     }
     break;
   case WorkState + 8:
-    logEvent.add(OtherCode, AutoType, RegimeRunSwingFailId);
-    state_ = WorkState + 9;
+    err = returnMinFreq();                            // Возвращаем минимальную частоты
+    if ((!err) || (err > 0)) {                        // Вернули или использовали все попытки
+      state_ = WorkState + 9;                         // Переходим на состояние формирования ошибки
+    }
     break;
-  case WorkState + 9:                                 // Состояние ожидания выхода на частоту работы
+  case WorkState + 9:
+    logEvent.add(OtherCode, AutoType, RegimeRunSwingFailId);
+    state_ = WorkState + 10;
+    break;
+  case WorkState + 10:                                // Состояние ожидания выхода на частоту работы
     if (vsd->isSetPointFreq()) {                      // Вышли на заданную частоту
       logEvent.add(OtherCode, AutoType, RegimeRunSwingFinishId);
       if (parameters.get(CCS_RGM_RUN_SWING_MODE) == SingleAction) {
@@ -308,6 +323,7 @@ void RegimeRunSwing::automatRegime()
   case WorkState + 7:
   case WorkState + 8:
   case WorkState + 9:
+  case WorkState + 10:
     if (ksu.isStopMotor()) {
       state_ = StopState;
       break;
@@ -320,6 +336,7 @@ void RegimeRunSwing::automatRegime()
   case StopState + 3:
   case StopState + 4:
   case StopState + 5:
+  case StopState + 6:
     processingStateStop();
     break;
   default:

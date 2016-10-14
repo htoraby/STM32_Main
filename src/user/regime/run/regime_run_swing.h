@@ -87,6 +87,12 @@ private:
   int16_t returnU2();
 
   /*!
+   * \brief setRotation
+   * \return
+   */
+  int16_t setRotation();
+
+  /*!
    * \brief returnRotation
    * \return
    */
@@ -112,7 +118,7 @@ private:
 
   // Cчётчики
   float update_;                                      // Таймер счётчик обновления параметров
-
+  float delayRotation_;                               // Таймер на изменение направления вращения
   // Сохраненное направление вращения
   // Запись параметров в ЧРП
   float delay_;                                       // Задержка между попытками записать настройки режима в ЧРП
