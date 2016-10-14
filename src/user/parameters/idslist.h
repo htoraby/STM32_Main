@@ -1005,7 +1005,7 @@ enum enID
   CCS_RGM_RUN_SWING_SETPOINT_FREQ = 999,                     //!< Раскачка. Сохраненная уставка частоты до раскачки
   CCS_RGM_RUN_SWING_SETPOINT_LOW_LIM_FREQ = 1000,            //!< Раскачка. Сохранённая уставка минимальной частоты
   CCS_RGM_RUN_SWING_SETPOINT_TIME_UP = 1001,                 //!< Раскачка. Сохранённая уставка времени разгона
-  CCS_RGM_RUN_SWING_SETPOINT_TIME_DOWN = 1002,               //!< Раскачка. Сохранённая уставка времени торможения
+  CCS_RGM_RUN_SWING_ROTATION_SAVE = 1002,                    //!< Раскачка. Сохранённое направления вращения
   CCS_RGM_RUN_SWING_SETPOINT_ROTATION = 1003,                //!< Раскачка. Сохранённая уставка направления вращения
   CCS_RGM_RUN_SWING_SETPOINT_U1 = 1004,                      //!< Раскачка. Сохранённая уставка характеристики U/F 1
   CCS_RGM_RUN_SWING_SETPOINT_U2 = 1005,                      //!< Раскачка. Сохранённая уставка характеристики U/F 1

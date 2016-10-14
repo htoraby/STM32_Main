@@ -78,8 +78,7 @@ void RegimeRunPush::processingStateRunning()
 
   case RunningState + 2:
     ksu.start(runReason_);                            // Подаём команду на пуск
-    logEvent.add(OtherCode, AutoType, RegimeRunPushStartId);
-    state_ = WorkState + 9;                           // Переходим на состояние формирования ошибки задания параметров режима
+    state_ = WorkState + 7;                           // Переходим на состояние формирования ошибки задания параметров режима
     break;
   }
 }
@@ -274,6 +273,7 @@ void RegimeRunPush::automatRegime()
     processingStateStop();
     break;
   default:
+    state_ = StopState;
     break;
   }
 }
@@ -345,7 +345,7 @@ int16_t RegimeRunPush::returnFreq()
   int16_t err = setConfirmation(VSD_FREQUENCY, parameters.get(CCS_RGM_RUN_PUSH_SETPOINT_FREQ));
   if (err == err_r) {
     #if (USE_LOG_DEBUG == 1)
-    logDebug.add(DebugMsg, "Run push: returnMinFreq");
+    logDebug.add(DebugMsg, "Run push: returnFreq");
     #endif
   }
   return err;

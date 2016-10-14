@@ -207,6 +207,9 @@ typedef enum {
   RegimeRunPushFailId,                //!< Пуск толчками ошибка
   RegimeRunPushAbortId,               //!< Пуск толчками прерван
 
+  RegimeRunSwingFailId,               //!< Пуск с раскачкой ошибка
+  RegimeRunSwingAbortId               //!< Пуск с раскачкой прерван
+
 } EventId;
 
 #endif // LOG_IDLIST

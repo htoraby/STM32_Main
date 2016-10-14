@@ -12026,18 +12026,18 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_TIME_UP - CCS_BEGIN].discret            = 1;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_TIME_UP - CCS_BEGIN].def                = 0.0;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_TIME_UP - CCS_BEGIN].code               = 0;
-  // Раскачка. Сохранённая уставка времени торможения
-  parameters_[CCS_RGM_RUN_SWING_SETPOINT_TIME_DOWN - CCS_BEGIN].id               = CCS_RGM_RUN_SWING_SETPOINT_TIME_DOWN;
-  parameters_[CCS_RGM_RUN_SWING_SETPOINT_TIME_DOWN - CCS_BEGIN].access           = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_SWING_SETPOINT_TIME_DOWN - CCS_BEGIN].operation        = OPERATION_WRITE;
-  parameters_[CCS_RGM_RUN_SWING_SETPOINT_TIME_DOWN - CCS_BEGIN].physic           = PHYSIC_TIME;
-  parameters_[CCS_RGM_RUN_SWING_SETPOINT_TIME_DOWN - CCS_BEGIN].validity         = VALIDITY_OK;
-  parameters_[CCS_RGM_RUN_SWING_SETPOINT_TIME_DOWN - CCS_BEGIN].value.float_t    = 0.0;
-  parameters_[CCS_RGM_RUN_SWING_SETPOINT_TIME_DOWN - CCS_BEGIN].min              = 0.0;
-  parameters_[CCS_RGM_RUN_SWING_SETPOINT_TIME_DOWN - CCS_BEGIN].max              = 4294967296.0;
-  parameters_[CCS_RGM_RUN_SWING_SETPOINT_TIME_DOWN - CCS_BEGIN].discret          = 1;
-  parameters_[CCS_RGM_RUN_SWING_SETPOINT_TIME_DOWN - CCS_BEGIN].def              = 0.0;
-  parameters_[CCS_RGM_RUN_SWING_SETPOINT_TIME_DOWN - CCS_BEGIN].code             = 0;
+  // Раскачка. Сохранённое направления вращения
+  parameters_[CCS_RGM_RUN_SWING_ROTATION_SAVE - CCS_BEGIN].id                    = CCS_RGM_RUN_SWING_ROTATION_SAVE;
+  parameters_[CCS_RGM_RUN_SWING_ROTATION_SAVE - CCS_BEGIN].access                = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_SWING_ROTATION_SAVE - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SWING_ROTATION_SAVE - CCS_BEGIN].physic                = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_RUN_SWING_ROTATION_SAVE - CCS_BEGIN].validity              = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_SWING_ROTATION_SAVE - CCS_BEGIN].value.float_t         = 0.0;
+  parameters_[CCS_RGM_RUN_SWING_ROTATION_SAVE - CCS_BEGIN].min                   = 0.0;
+  parameters_[CCS_RGM_RUN_SWING_ROTATION_SAVE - CCS_BEGIN].max                   = 1.0;
+  parameters_[CCS_RGM_RUN_SWING_ROTATION_SAVE - CCS_BEGIN].discret               = 1;
+  parameters_[CCS_RGM_RUN_SWING_ROTATION_SAVE - CCS_BEGIN].def                   = 0.0;
+  parameters_[CCS_RGM_RUN_SWING_ROTATION_SAVE - CCS_BEGIN].code                  = 0;
   // Раскачка. Сохранённая уставка направления вращения
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_ROTATION - CCS_BEGIN].id                = CCS_RGM_RUN_SWING_SETPOINT_ROTATION;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_ROTATION - CCS_BEGIN].access            = ACCESS_OPERATOR;
