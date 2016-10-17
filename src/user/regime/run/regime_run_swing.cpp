@@ -23,7 +23,6 @@ void RegimeRunSwing::getOtherSetpoint()
   rotationNow_ = parameters.get(VSD_ROTATION);        // Текущее направления вращения
   rotationSave_ = parameters.get(CCS_RGM_RUN_SWING_ROTATION_SAVE);
   cntReverse_ = parameters.get(CCS_RGM_RUN_SWING_COUNTER);
-
 }
 
 void RegimeRunSwing::setOtherSetpoint()
@@ -356,19 +355,19 @@ void RegimeRunSwing::saveBeforeRegimeRun()
   // Сохраняем уставка направления вращения
   parameters.set(CCS_RGM_RUN_SWING_SETPOINT_ROTATION, parameters.get(VSD_ROTATION));
   // Сохраняем точки характеристики U/f по частоте
-  if (freqSwing_ > parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
+  if (freqSwing_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
     parameters.set(CCS_RGM_RUN_SWING_SETPOINT_U1, parameters.get(VSD_UF_CHARACTERISTIC_U_5));
     parameters.set(CCS_RGM_RUN_SWING_SETPOINT_U2, parameters.get(VSD_UF_CHARACTERISTIC_U_6));
   }
-  else if (freqSwing_ > parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
+  else if (freqSwing_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
     parameters.set(CCS_RGM_RUN_SWING_SETPOINT_U1, parameters.get(VSD_UF_CHARACTERISTIC_U_4));
     parameters.set(CCS_RGM_RUN_SWING_SETPOINT_U2, parameters.get(VSD_UF_CHARACTERISTIC_U_5));
   }
-  else if (freqSwing_ > parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
+  else if (freqSwing_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
     parameters.set(CCS_RGM_RUN_SWING_SETPOINT_U1, parameters.get(VSD_UF_CHARACTERISTIC_U_3));
     parameters.set(CCS_RGM_RUN_SWING_SETPOINT_U2, parameters.get(VSD_UF_CHARACTERISTIC_U_4));
   }
-  else if (freqSwing_ > parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
+  else if (freqSwing_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
     parameters.set(CCS_RGM_RUN_SWING_SETPOINT_U1, parameters.get(VSD_UF_CHARACTERISTIC_U_2));
     parameters.set(CCS_RGM_RUN_SWING_SETPOINT_U2, parameters.get(VSD_UF_CHARACTERISTIC_U_3));
   }
@@ -454,16 +453,16 @@ int16_t RegimeRunSwing::setU1()
     voltageSwing = voltageMax;
   }
 
-  if (freqSwing_ > parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
+  if (freqSwing_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
     point = VSD_UF_CHARACTERISTIC_U_5;
   }
-  else if (freqSwing_ > parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
+  else if (freqSwing_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
     point = VSD_UF_CHARACTERISTIC_U_4;
   }
-  else if (freqSwing_ > parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
+  else if (freqSwing_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
     point = VSD_UF_CHARACTERISTIC_U_3;
   }
-  else if (freqSwing_ > parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
+  else if (freqSwing_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
     point = VSD_UF_CHARACTERISTIC_U_2;
   }
   else {
@@ -484,16 +483,16 @@ int16_t RegimeRunSwing::returnU1()
   int16_t err = 0;
   uint16_t point = 0;
 
-  if (freqSwing_ > parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
+  if (freqSwing_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
     point = VSD_UF_CHARACTERISTIC_U_5;
   }
-  else if (freqSwing_ > parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
+  else if (freqSwing_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
     point = VSD_UF_CHARACTERISTIC_U_4;
   }
-  else if (freqSwing_ > parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
+  else if (freqSwing_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
     point = VSD_UF_CHARACTERISTIC_U_3;
   }
-  else if (freqSwing_ > parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
+  else if (freqSwing_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
     point = VSD_UF_CHARACTERISTIC_U_2;
   }
   else {
@@ -519,16 +518,16 @@ int16_t RegimeRunSwing::setU2()
     voltageSwing = voltageMax;
   }
 
-  if (freqSwing_ > parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
+  if (freqSwing_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
     point = VSD_UF_CHARACTERISTIC_U_6;
   }
-  else if (freqSwing_ > parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
+  else if (freqSwing_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
     point = VSD_UF_CHARACTERISTIC_U_5;
   }
-  else if (freqSwing_ > parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
+  else if (freqSwing_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
     point = VSD_UF_CHARACTERISTIC_U_4;
   }
-  else if (freqSwing_ > parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
+  else if (freqSwing_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
     point = VSD_UF_CHARACTERISTIC_U_3;
   }
   else {
@@ -549,16 +548,16 @@ int16_t RegimeRunSwing::returnU2()
   int16_t err = 0;
   uint16_t point = 0;
 
-  if (freqSwing_ > parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
+  if (freqSwing_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
     point = VSD_UF_CHARACTERISTIC_U_6;
   }
-  else if (freqSwing_ > parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
+  else if (freqSwing_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
     point = VSD_UF_CHARACTERISTIC_U_5;
   }
-  else if (freqSwing_ > parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
+  else if (freqSwing_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
     point = VSD_UF_CHARACTERISTIC_U_4;
   }
-  else if (freqSwing_ > parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
+  else if (freqSwing_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
     point = VSD_UF_CHARACTERISTIC_U_3;
   }
   else {
