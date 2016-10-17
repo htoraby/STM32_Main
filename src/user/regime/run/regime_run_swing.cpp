@@ -128,16 +128,13 @@ void RegimeRunSwing::processingStateWork()
   case WorkState + 1:
     if (rotationNow_ != rotationSave_) {              // Если направления вращения не равно сохранённому, т.е. изменилось
       cntReverse_++;                                  // Увеличиваем счётчик изменений направлений вращения
+      repeat_ = 0;
       if (cntReverse_ >= quantitySwing_ * 2) {        // Если сделали все качки
         cntReverse_ = 0;
         state_ = WorkState + 2;                       // Переходим к состоянию возврата настроек
       }
       else {
-        delayRotation_ ++;
-        if (delayRotation_ >= 10) {
-          delayRotation_ = 0;
-          state_ = WorkState;
-        }
+        state_ = WorkState + 11;
       }
     }
     else {                                            // Меняем направление вращения на противоположное
@@ -237,6 +234,13 @@ void RegimeRunSwing::processingStateWork()
       state_ = IdleState;
     }
     break;
+  case WorkState + 11:
+    delayRotation_ ++;
+    if (delayRotation_ >= 10) {
+      delayRotation_ = 0;
+      state_ = WorkState;
+    }
+    break;
   }
 }
 
@@ -323,6 +327,7 @@ void RegimeRunSwing::automatRegime()
   case WorkState + 8:
   case WorkState + 9:
   case WorkState + 10:
+  case WorkState + 11:
     if (ksu.isStopMotor()) {
       state_ = StopState;
       break;
