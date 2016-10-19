@@ -1005,7 +1005,7 @@ enum enID
   CCS_RGM_RUN_SWING_SETPOINT_FREQ = 999,                     //!< Раскачка. Сохраненная уставка частоты до раскачки
   CCS_RGM_RUN_SWING_SETPOINT_LOW_LIM_FREQ = 1000,            //!< Раскачка. Сохранённая уставка минимальной частоты
   CCS_RGM_RUN_SWING_SETPOINT_TIME_UP = 1001,                 //!< Раскачка. Сохранённая уставка времени разгона
-  CCS_RGM_RUN_SWING_SETPOINT_TIME_DOWN = 1002,               //!< Раскачка. Сохранённая уставка времени торможения
+  CCS_RGM_RUN_SWING_ROTATION_SAVE = 1002,                    //!< Раскачка. Сохранённое направления вращения
   CCS_RGM_RUN_SWING_SETPOINT_ROTATION = 1003,                //!< Раскачка. Сохранённая уставка направления вращения
   CCS_RGM_RUN_SWING_SETPOINT_U1 = 1004,                      //!< Раскачка. Сохранённая уставка характеристики U/F 1
   CCS_RGM_RUN_SWING_SETPOINT_U2 = 1005,                      //!< Раскачка. Сохранённая уставка характеристики U/F 1
@@ -1032,7 +1032,8 @@ enum enID
   CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC = 1026,                 //!< Вычисленная уставка недогруза
   CCS_RGM_RUN_PUSH_COUNTER = 1027,                           //!< Текущее количество толчков
   CCS_RGM_RUN_PUSH_TIMER = 1028,                             //!< Текущее значение таймера-счётчика
-  CCS_END = 1029,                                            //!< 
+  CCS_RGM_RUN_SWING_COUNTER = 1029,                          //!< Количество текущих толчков в режиме пуска "Раскачка"
+  CCS_END = 1030,                                            //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF

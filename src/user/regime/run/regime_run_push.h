@@ -91,6 +91,7 @@ private:
   float voltagePush_;                                 // Напряжение толчка
   float timePush_;                                    // Время толчка и между толчками
 
+  // Текущие параметры
   uint16_t cntPush_;                                  // Счётчик толчков
   float timer_;                                       // Счётчик времени
 

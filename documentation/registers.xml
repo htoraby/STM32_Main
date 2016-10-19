@@ -13435,16 +13435,16 @@
 		<id>682</id>
 		<name>CCS_RGM_RUN_SWING_FREQ</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
-		<min>0.0</min>
+		<min>1.0</min>
 		<max>20.0</max>
 		<def>5.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Частота качков</text>
-		<short_text>Раскачка. Частота качков</short_text>
+		<short_text>Раскачка. Частота</short_text>
 		<form>3.2.1.3 Раскачка</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -13456,7 +13456,7 @@
 		<id>683</id>
 		<name>CCS_RGM_RUN_SWING_VOLTAGE</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>100.0</min>
 		<max>150.0</max>
@@ -13465,7 +13465,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>100.0</value>
 		<text>Напряжение качков</text>
-		<short_text>Раскачка. Напряжение качков</short_text>
+		<short_text>Раскачка. Напряжение</short_text>
 		<form>3.2.1.3 Раскачка</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -13477,16 +13477,16 @@
 		<id>684</id>
 		<name>CCS_RGM_RUN_SWING_QUANTITY</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
+		<min>1.0</min>
 		<max>20.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Количество качков</text>
-		<short_text>Раскачка. Количество качков</short_text>
+		<short_text>Раскачка. Количество</short_text>
 		<form>3.2.1.3 Раскачка</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -19689,12 +19689,12 @@
 	</param>
 	<param>
 		<id>1002</id>
-		<name>CCS_RGM_RUN_SWING_SETPOINT_TIME_DOWN</name>
+		<name>CCS_RGM_RUN_SWING_ROTATION_SAVE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_TIME</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>4294967296.0</max>
+		<max>1.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -19706,7 +19706,7 @@
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
 		<code>0</code>
-		<comment>Раскачка. Сохранённая уставка времени торможения</comment>
+		<comment>Раскачка. Сохранённое направления вращения</comment>
 	</param>
 	<param>
 		<id>1003</id>
@@ -20256,6 +20256,27 @@
 	</param>
 	<param>
 		<id>1029</id>
+		<name>CCS_RGM_RUN_SWING_COUNTER</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4294967296.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Количество текущих толчков в режиме пуска "Раскачка"</comment>
+	</param>
+	<param>
+		<id>1030</id>
 		<name>CCS_END</name>
 	</param>
 	<param>

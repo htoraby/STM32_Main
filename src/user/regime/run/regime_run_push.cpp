@@ -78,8 +78,7 @@ void RegimeRunPush::processingStateRunning()
 
   case RunningState + 2:
     ksu.start(runReason_);                            // Подаём команду на пуск
-    logEvent.add(OtherCode, AutoType, RegimeRunPushStartId);
-    state_ = WorkState + 9;                           // Переходим на состояние формирования ошибки задания параметров режима
+    state_ = WorkState + 7;                           // Переходим на состояние формирования ошибки задания параметров режима
     break;
   }
 }
@@ -274,6 +273,7 @@ void RegimeRunPush::automatRegime()
     processingStateStop();
     break;
   default:
+    state_ = StopState;
     break;
   }
 }
@@ -285,19 +285,19 @@ void RegimeRunPush::saveBeforeRegimeRun()
   // Сохраняем уставку частоты
   parameters.set(CCS_RGM_RUN_PUSH_SETPOINT_FREQ, parameters.get(VSD_FREQUENCY));
   // Сохраняем точки характеристики U/f по частоте
-  if (freqPush_ > parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
+  if (freqPush_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
     parameters.set(CCS_RGM_RUN_PUSH_SETPOINT_U1, parameters.get(VSD_UF_CHARACTERISTIC_U_5));
     parameters.set(CCS_RGM_RUN_PUSH_SETPOINT_U2, parameters.get(VSD_UF_CHARACTERISTIC_U_6));
   }
-  else if (freqPush_ > parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
+  else if (freqPush_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
     parameters.set(CCS_RGM_RUN_PUSH_SETPOINT_U1, parameters.get(VSD_UF_CHARACTERISTIC_U_4));
     parameters.set(CCS_RGM_RUN_PUSH_SETPOINT_U2, parameters.get(VSD_UF_CHARACTERISTIC_U_5));
   }
-  else if (freqPush_ > parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
+  else if (freqPush_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
     parameters.set(CCS_RGM_RUN_PUSH_SETPOINT_U1, parameters.get(VSD_UF_CHARACTERISTIC_U_3));
     parameters.set(CCS_RGM_RUN_PUSH_SETPOINT_U2, parameters.get(VSD_UF_CHARACTERISTIC_U_4));
   }
-  else if (freqPush_ > parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
+  else if (freqPush_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
     parameters.set(CCS_RGM_RUN_PUSH_SETPOINT_U1, parameters.get(VSD_UF_CHARACTERISTIC_U_2));
     parameters.set(CCS_RGM_RUN_PUSH_SETPOINT_U2, parameters.get(VSD_UF_CHARACTERISTIC_U_3));
   }
@@ -345,7 +345,7 @@ int16_t RegimeRunPush::returnFreq()
   int16_t err = setConfirmation(VSD_FREQUENCY, parameters.get(CCS_RGM_RUN_PUSH_SETPOINT_FREQ));
   if (err == err_r) {
     #if (USE_LOG_DEBUG == 1)
-    logDebug.add(DebugMsg, "Run push: returnMinFreq");
+    logDebug.add(DebugMsg, "Run push: returnFreq");
     #endif
   }
   return err;
@@ -361,16 +361,16 @@ int16_t RegimeRunPush::setU1()
     voltagePush = voltageMax;
   }
 
-  if (freqPush_ > parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
+  if (freqPush_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
     point = VSD_UF_CHARACTERISTIC_U_5;
   }
-  else if (freqPush_ > parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
+  else if (freqPush_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
     point = VSD_UF_CHARACTERISTIC_U_4;
   }
-  else if (freqPush_ > parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
+  else if (freqPush_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
     point = VSD_UF_CHARACTERISTIC_U_3;
   }
-  else if (freqPush_ > parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
+  else if (freqPush_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
     point = VSD_UF_CHARACTERISTIC_U_2;
   }
   else {
@@ -392,16 +392,16 @@ int16_t RegimeRunPush::returnU1()
   uint16_t point = 0;
   float voltagePush = parameters.get(CCS_RGM_RUN_PUSH_SETPOINT_U1);
 
-  if (freqPush_ > parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
+  if (freqPush_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
     point = VSD_UF_CHARACTERISTIC_U_5;
   }
-  else if (freqPush_ > parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
+  else if (freqPush_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
     point = VSD_UF_CHARACTERISTIC_U_4;
   }
-  else if (freqPush_ > parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
+  else if (freqPush_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
     point = VSD_UF_CHARACTERISTIC_U_3;
   }
-  else if (freqPush_ > parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
+  else if (freqPush_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
     point = VSD_UF_CHARACTERISTIC_U_2;
   }
   else {
@@ -427,16 +427,16 @@ int16_t RegimeRunPush::setU2()
     voltagePush = voltageMax;
   }
 
-  if (freqPush_ > parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
+  if (freqPush_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
     point = VSD_UF_CHARACTERISTIC_U_6;
   }
-  else if (freqPush_ > parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
+  else if (freqPush_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
     point = VSD_UF_CHARACTERISTIC_U_5;
   }
-  else if (freqPush_ > parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
+  else if (freqPush_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
     point = VSD_UF_CHARACTERISTIC_U_4;
   }
-  else if (freqPush_ > parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
+  else if (freqPush_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
     point = VSD_UF_CHARACTERISTIC_U_3;
   }
   else {
@@ -458,16 +458,16 @@ int16_t RegimeRunPush::returnU2()
   uint16_t point = 0;
   float voltagePush = parameters.get(CCS_RGM_RUN_PUSH_SETPOINT_U2);
 
-  if (freqPush_ > parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
+  if (freqPush_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_5)) {
     point = VSD_UF_CHARACTERISTIC_U_6;
   }
-  else if (freqPush_ > parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
+  else if (freqPush_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_4)) {
     point = VSD_UF_CHARACTERISTIC_U_5;
   }
-  else if (freqPush_ > parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
+  else if (freqPush_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_3)) {
     point = VSD_UF_CHARACTERISTIC_U_4;
   }
-  else if (freqPush_ > parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
+  else if (freqPush_ >= parameters.get(VSD_UF_CHARACTERISTIC_F_2)) {
     point = VSD_UF_CHARACTERISTIC_U_3;
   }
   else {
