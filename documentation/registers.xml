@@ -13867,14 +13867,14 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Тип счётчика</text>
-		<short_text>Тип счётчика электоэнергии</short_text>
+		<short_text>Тип счётчика электроэнергии</short_text>
 		<form>3.5 Счётчик</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<code>0</code>
 		<values>0-Нет;1-СЭТ-4ТМ;2-ABB;3-ABB A44</values>
-		<comment>Тип счётчика электоэнергии</comment>
+		<comment>Тип счётчика электроэнергии</comment>
 	</param>
 	<param>
 		<id>706</id>
@@ -27000,8 +27000,8 @@
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Tемпература 1 платы измерений</text>
-		<short_text>Tемпература 1 платы измерений</short_text>
+		<text>Температура 1 платы измерений</text>
+		<short_text>Температура 1 платы измерений</short_text>
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
@@ -27021,8 +27021,8 @@
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Tемпература 2 платы измерений</text>
-		<short_text>Tемпература 2 платы измерений</short_text>
+		<text>Температура 2 платы измерений</text>
+		<short_text>Температура 2 платы измерений</short_text>
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
@@ -27042,8 +27042,8 @@
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Tемпература 3 платы измерений</text>
-		<short_text>Tемпература 3 платы измерений</short_text>
+		<text>Температура 3 платы измерений</text>
+		<short_text>Температура 3 платы измерений</short_text>
 		<form>3.2.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>

@@ -8462,7 +8462,7 @@ void Ccs::initParameters()
   parameters_[CCS_EM_CONNECTION - CCS_BEGIN].discret                             = 1;
   parameters_[CCS_EM_CONNECTION - CCS_BEGIN].def                                 = 0.0;
   parameters_[CCS_EM_CONNECTION - CCS_BEGIN].code                                = 38;
-  // Тип счётчика электоэнергии
+  // Тип счётчика электроэнергии
   parameters_[CCS_EM_TYPE - CCS_BEGIN].id                                        = CCS_EM_TYPE;
   parameters_[CCS_EM_TYPE - CCS_BEGIN].access                                    = ACCESS_OPERATOR;
   parameters_[CCS_EM_TYPE - CCS_BEGIN].operation                                 = OPERATION_WRITE;
