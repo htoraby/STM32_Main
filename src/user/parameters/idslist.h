@@ -708,7 +708,7 @@ enum enID
   CCS_VSD_CONNECTION = 702,                                  //!< Связь с ЧРП
   CCS_DHS_CONNECTION = 703,                                  //!< Связь с ТМС
   CCS_EM_CONNECTION = 704,                                   //!< Связь со счётчиком электроэнергии
-  CCS_EM_TYPE = 705,                                         //!< Тип счётчика электоэнергии
+  CCS_EM_TYPE = 705,                                         //!< Тип счётчика электроэнергии
   CCS_VOLTAGE_PHASE_1 = 706,                                 //!< Напряжение первой фазы
   CCS_VOLTAGE_PHASE_2 = 707,                                 //!< Напряжение второй фазы
   CCS_VOLTAGE_PHASE_3 = 708,                                 //!< Напряжение третей фазы
