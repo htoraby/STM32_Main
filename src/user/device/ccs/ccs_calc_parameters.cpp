@@ -761,7 +761,6 @@ void Ccs::calcDigitalInputs()
       impulse++;                            // Увеличиваем счётчик переходов
     valueOld[DI6] = value[DI6];             // Запоминаем текущее состояние
     count[DI6]++;                           // Увеличиваем счётчик мс
-    setValue(CCS_DI_6_VALUE, value[DI6]);
   }
   else {                                     // Прошла 1 секунда
     if (impulse > 400)
@@ -773,6 +772,7 @@ void Ccs::calcDigitalInputs()
       else
         setValue(CCS_TURBO_ROTATION_NOW, 0);
     }
+    setValue(CCS_DI_6_VALUE, value[DI6]);
     impulse = 0;                            // Сбрасываем количество переходов
     count[DI6] = 0;                         // Сбрасывам счётчик
   }
