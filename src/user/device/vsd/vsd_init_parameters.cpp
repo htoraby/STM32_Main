@@ -165,8 +165,8 @@ void Vsd::initParameters()
   parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].physic                               = PHYSIC_ACTIVE_POWER;
   parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].value.float_t                        = 0.0;
-  parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].min                                  = 0.0;
-  parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].max                                  = 999999999.9;
+  parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].min                                  = -2147483647.0;
+  parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].max                                  = 2147483647.0;
   parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].def                                  = 0.0;
   parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].discret                              = 10;
   parameters_[VSD_POWER_ACTIVE - VSD_BEGIN].code                                 = 0;
@@ -176,10 +176,10 @@ void Vsd::initParameters()
   parameters_[VSD_POWER_FULL - VSD_BEGIN].operation                              = OPERATION_READ;
   parameters_[VSD_POWER_FULL - VSD_BEGIN].physic                                 = PHYSIC_FULL_POWER;
   parameters_[VSD_POWER_FULL - VSD_BEGIN].validity                               = VALIDITY_ERROR;
-  parameters_[VSD_POWER_FULL - VSD_BEGIN].value.float_t                          = 0;
-  parameters_[VSD_POWER_FULL - VSD_BEGIN].min                                    = 0.0;
-  parameters_[VSD_POWER_FULL - VSD_BEGIN].max                                    = 999999999.9;
-  parameters_[VSD_POWER_FULL - VSD_BEGIN].def                                    = 0;
+  parameters_[VSD_POWER_FULL - VSD_BEGIN].value.float_t                          = 0.0;
+  parameters_[VSD_POWER_FULL - VSD_BEGIN].min                                    = -2147483647.0;
+  parameters_[VSD_POWER_FULL - VSD_BEGIN].max                                    = 2147483647.0;
+  parameters_[VSD_POWER_FULL - VSD_BEGIN].def                                    = 0.0;
   parameters_[VSD_POWER_FULL - VSD_BEGIN].discret                                = 10;
   parameters_[VSD_POWER_FULL - VSD_BEGIN].code                                   = 0;
   // Мощность двигателя Danfoss 1-20 Используется в проекте, интерфейс

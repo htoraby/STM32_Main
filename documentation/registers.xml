@@ -20522,8 +20522,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_POWER</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
 		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -20543,10 +20543,12 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
 		<text>Полная мощн.</text>
 		<short_text>P, кВА</short_text>
 		<form>1.2 Текущие параметры ЧРП</form>
