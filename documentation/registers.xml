@@ -9512,8 +9512,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние</text>
-		<short_text>Поддерж.параметра. Состояние</short_text>
+		<text>Поддержание параметра</text>
+		<short_text>Поддержание</short_text>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Включение</comment>
 	</param>
@@ -9530,7 +9530,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Параметр</text>
-		<short_text>Поддерж.параметра. Параметр</short_text>
+		<short_text>Поддержание. Параметр</short_text>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Тип параметра</comment>
 	</param>
@@ -9547,7 +9547,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Зависимость</text>
-		<short_text>Поддерж.параметра. Зависимость</short_text>
+		<short_text>Поддержание. Зависимость</short_text>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Зависимость</comment>
 	</param>
@@ -9563,7 +9563,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Поддерживаемое значение</text>
-		<short_text>Поддерж.параметра. Поддерживаемое значение</short_text>
+		<short_text>Поддержание. Значение</short_text>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Поддержка значения - Ток</comment>
 	</param>
@@ -9578,7 +9578,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Период регулирования</text>
-		<short_text>Поддерж.параметра. Период регулирования</short_text>
+		<short_text>Поддержание. Период</short_text>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Период регулирования</comment>
 	</param>
@@ -9595,7 +9595,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Пропорциональный коэф-т</text>
-		<short_text>Поддерж.параметра. Пропорц.коэф.</short_text>
+		<short_text>Поддержание. Пропорц.коэф.</short_text>
 		<format>XX_XXX</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Пропорциональный коэффициент</comment>
@@ -9613,7 +9613,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Интегральный коэф-т</text>
-		<short_text>Поддерж.параметра. Интеграл.коэф.</short_text>
+		<short_text>Поддержание. Интеграл.коэф.</short_text>
 		<format>XX_XXX</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Интегральный коэффициент</comment>
@@ -9629,7 +9629,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Минимальная частота</text>
-		<short_text>Поддерж.параметра. Мин.частота</short_text>
+		<short_text>Поддержание. Мин. F</short_text>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Мин рабочая частота</comment>
 	</param>
@@ -9646,7 +9646,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>200.0</value>
 		<text>Максимальная частота</text>
-		<short_text>Поддерж.параметра. Макс.частота</short_text>
+		<short_text>Поддержание. Макс. F</short_text>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Макс рабочая частота</comment>
 	</param>
