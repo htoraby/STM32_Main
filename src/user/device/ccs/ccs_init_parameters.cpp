@@ -449,7 +449,7 @@ void Ccs::initParameters()
   // Рекомендуемое напряжение отпайки
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].id                     = CCS_TRANS_NEED_VOLTAGE_TAP_OFF;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].physic                 = PHYSIC_VOLTAGE;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].value.float_t          = 380.0;
