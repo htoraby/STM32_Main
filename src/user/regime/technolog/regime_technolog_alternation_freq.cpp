@@ -36,10 +36,9 @@ void RegimeTechnologAlternationFreq::processing()
         ksu.setFreq(firstFreq_);                      // Устанавливаем первую частоту
         beginTime_ = ksu.getTime();                   // Запоминаем время когда перешли на частоту
         state_ = RunningState;                        // Переходим на работу на первой частоте
-#if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Ч. частот: запуск режима на частоте 1 (firstFreq = %6.2f state = %d)",
-                     firstFreq_, state_);
-#endif
+        #if (USE_LOG_DEBUG == 1)
+        logDebug.add(DebugMsg, "Alter Freq: Idle -> F1 (firstFreq = %6.2f state = %d)", firstFreq_, state_);
+        #endif
       }
     }
     break;
@@ -53,18 +52,16 @@ void RegimeTechnologAlternationFreq::processing()
         ksu.setFreq(secondFreq_);               // Посылаем команду на изменение частоты
         beginTime_ = ksu.getTime();
         state_ = RunningState + 1;
-#if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Ч. частот: переход с частоты 1 на частоту 2 (firstFreq = %6.2f, secondFreq = %6.2f, state = %d)",
-                     firstFreq_, secondFreq_, state_);
-#endif
+        #if (USE_LOG_DEBUG == 1)
+        logDebug.add(DebugMsg, "Alter Freq: F1 -> F2 (firstFreq = %6.2f, secondFreq = %6.2f, state = %d)", firstFreq_, secondFreq_, state_);
+        #endif
       }
     }
     else {
       state_ = IdleState;
-#if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Ч. частот: выключение режима с частоты 1 (firstFreq = %6.2f, state = %d)",
-                   firstFreq_, state_);
-#endif
+      #if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "Alter Freq: F1 -> Idle (firstFreq = %6.2f, state = %d)", firstFreq_, state_);
+      #endif
     }
     break;
   case RunningState + 1: 
@@ -77,18 +74,16 @@ void RegimeTechnologAlternationFreq::processing()
         ksu.setFreq(firstFreq_);
         beginTime_ = ksu.getTime();
         state_ = RunningState;
-#if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Ч. частот: переход с частоты 2 на частоту 1 (firstFreq = %6.2f, secondFreq = %6.2f, state = %d)",
-                     firstFreq_, secondFreq_, state_);
-#endif
+        #if (USE_LOG_DEBUG == 1)
+        logDebug.add(DebugMsg, "Alter Freq: F2 -> F1 (firstFreq = %6.2f, secondFreq = %6.2f, state = %d)", firstFreq_, secondFreq_, state_);
+        #endif
       }
     }
     else {
       state_ = IdleState;
-#if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Ч. частот: выключение режима с частоты 2 (secondFreq = %6.2f, state = %d)",
-                   secondFreq_, state_);
-#endif
+      #if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "Alter Freq: F2 -> Idle (secondFreq = %6.2f, state = %d)", secondFreq_, state_);
+      #endif
     }
     break;
   default:

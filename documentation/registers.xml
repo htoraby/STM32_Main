@@ -8960,8 +8960,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние</text>
-		<short_text>Периодика. Состояние</short_text>
+		<text>Периодика</text>
+		<short_text>Периодика</short_text>
 		<form>5.1.1 Периодический режим</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -9128,8 +9128,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние</text>
-		<short_text>Черед.частот Состояние</short_text>
+		<text>Чередование частот</text>
+		<short_text>Черед. F.</short_text>
 		<form>5.1.2 Чередование частот</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -9151,7 +9151,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Рабочая частота f1</text>
-		<short_text>Черед.частот Раб.частота 1</short_text>
+		<short_text>Черед. F. F1</short_text>
 		<form>5.1.2 Чередование частот</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -9172,7 +9172,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Время работы на частоте f1</text>
-		<short_text>Черед.частот Время раб.частота 1</short_text>
+		<short_text>Черед. F. Время F1</short_text>
 		<form>5.1.2 Чередование частот</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -9214,7 +9214,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>60.0</value>
 		<text>Недогруз на частоте f1</text>
-		<short_text>Черед.частот Уставка ЗСП частота 1</short_text>
+		<short_text>Черед. F. Недогруз F1</short_text>
 		<form>5.1.2 Чередование частот</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -9235,7 +9235,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Рабочая частота f2</text>
-		<short_text>Черед.частот Раб.частота 2</short_text>
+		<short_text>Черед. F. F2</short_text>
 		<form>5.1.2 Чередование частот</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -9256,7 +9256,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Время работы на частоте f2</text>
-		<short_text>Черед.частот Время раб.частота 2</short_text>
+		<short_text>Черед. F. Время F2</short_text>
 		<form>5.1.2 Чередование частот</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -9298,7 +9298,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>60.0</value>
 		<text>Недогруз на частоте f2</text>
-		<short_text>Уставка ЗСП частота 2</short_text>
+		<short_text>Черед. F. Недогруз F2</short_text>
 		<form>5.1.2 Чередование частот</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -9318,8 +9318,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние</text>
-		<short_text>ВНР. Состояние</short_text>
+		<text>Программное изменение частоты</text>
+		<short_text>ВНР</short_text>
 		<form>5.1.3 Программного изменения частоты</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
@@ -9518,8 +9518,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние</text>
-		<short_text>Поддерж.параметра. Состояние</short_text>
+		<text>Поддержание параметра</text>
+		<short_text>Поддержание</short_text>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Включение</comment>
 	</param>
@@ -9536,7 +9536,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Параметр</text>
-		<short_text>Поддерж.параметра. Параметр</short_text>
+		<short_text>Поддержание. Параметр</short_text>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Тип параметра</comment>
 	</param>
@@ -9553,7 +9553,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Зависимость</text>
-		<short_text>Поддерж.параметра. Зависимость</short_text>
+		<short_text>Поддержание. Зависимость</short_text>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Зависимость</comment>
 	</param>
@@ -9569,7 +9569,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Поддерживаемое значение</text>
-		<short_text>Поддерж.параметра. Поддерживаемое значение</short_text>
+		<short_text>Поддержание. Значение</short_text>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Поддержка значения - Ток</comment>
 	</param>
@@ -9584,7 +9584,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Период регулирования</text>
-		<short_text>Поддерж.параметра. Период регулирования</short_text>
+		<short_text>Поддержание. Период</short_text>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Период регулирования</comment>
 	</param>
@@ -9601,7 +9601,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Пропорциональный коэф-т</text>
-		<short_text>Поддерж.параметра. Пропорц.коэф.</short_text>
+		<short_text>Поддержание. Пропорц.коэф.</short_text>
 		<format>XX_XXX</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Пропорциональный коэффициент</comment>
@@ -9619,7 +9619,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Интегральный коэф-т</text>
-		<short_text>Поддерж.параметра. Интеграл.коэф.</short_text>
+		<short_text>Поддержание. Интеграл.коэф.</short_text>
 		<format>XX_XXX</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Интегральный коэффициент</comment>
@@ -9635,7 +9635,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Минимальная частота</text>
-		<short_text>Поддерж.параметра. Мин.частота</short_text>
+		<short_text>Поддержание. Мин. F</short_text>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Мин рабочая частота</comment>
 	</param>
@@ -9652,7 +9652,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>200.0</value>
 		<text>Максимальная частота</text>
-		<short_text>Поддерж.параметра. Макс.частота</short_text>
+		<short_text>Поддержание. Макс. F</short_text>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Макс рабочая частота</comment>
 	</param>
@@ -20528,8 +20528,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_POWER</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
 		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -20549,10 +20549,12 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
 		<text>Полная мощн.</text>
 		<short_text>P, кВА</short_text>
 		<form>1.2 Текущие параметры ЧРП</form>

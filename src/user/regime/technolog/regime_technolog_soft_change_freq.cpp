@@ -56,10 +56,6 @@ void RegimeTechnologSoftChangeFreq::processing()
       }
     }
     else { // Станция в останове
-      if (action_ == SingleAction) {
-        parameters.set(CCS_RGM_CHANGE_FREQ_MODE, OffAction);
-        logEvent.add(SetpointCode, AutoType, RegimeSoftChangeFreqOffId);
-      }
       state_ = IdleState;
     }
     break;
