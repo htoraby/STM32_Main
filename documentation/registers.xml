@@ -8960,7 +8960,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Периодика</text>
+		<text>Состояние</text>
 		<short_text>Периодика</short_text>
 		<form>5.1.1 Периодический режим</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -9128,7 +9128,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Чередование частот</text>
+		<text>Состояние</text>
 		<short_text>Черед. F.</short_text>
 		<form>5.1.2 Чередование частот</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -9318,7 +9318,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Программное изменение частоты</text>
+		<text>Состояние</text>
 		<short_text>ВНР</short_text>
 		<form>5.1.3 Программного изменения частоты</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -9518,7 +9518,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Поддержание параметра</text>
+		<text>Состояние</text>
 		<short_text>Поддержание</short_text>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Включение</comment>
@@ -9793,7 +9793,7 @@
 		<max>999999999.9</max>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<text>Действие режима</text>
+		<text>Состояние</text>
 		<short_text>Действие режима</short_text>
 		<form>5.1.6 Режим учёт нагрева кабеля</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -9994,7 +9994,7 @@
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<text>Реакция режима</text>
+		<text>Состояние</text>
 		<short_text>Реакция режима</short_text>
 		<form>5.1.8 Режим прокачки газа</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -13260,7 +13260,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Толчковый</text>
+		<text>Состояние</text>
 		<short_text>Толчковый</short_text>
 		<form>3.2.1.2 Толчковый</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -13407,7 +13407,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Раскачка</text>
+		<text>Состояние</text>
 		<short_text>Раскачка</short_text>
 		<form>3.2.1.3 Раскачка</form>
 		<unit>NUMERIC_NUMBER</unit>
