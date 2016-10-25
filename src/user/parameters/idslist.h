@@ -522,7 +522,7 @@ enum enID
   CCS_NUMBER_BUSH = 516,                                     //!< Номер куста
   CCS_NUMBER_WELL = 517,                                     //!< Номер скважины
   CCS_COUNT_START = 518,                                     //!< Количество пусков
-  CCS_PROT_OVERLOAD_COUNT_STOP = 519,                        //!< Количество отключений по перезрузу
+  CCS_PROT_OVERLOAD_COUNT_STOP = 519,                        //!< Количество отключений по перегрузу
   CCS_PROT_UNDERLOAD_COUNT_STOP = 520,                       //!< Количество отключений по недогрузу
   CCS_PROT_OTHER_COUNT_STOP = 521,                           //!< Количество отключений по другим защитам
   CCS_PROT_VOLTAGE_COUNT_RESTART = 522,                      //!< Количество АПВ после остановов по напряжению
@@ -1372,7 +1372,7 @@ enum enID
   VSD_TEMPERATURE_INTAKE = 10335,                            //!< Температура пласта
   VSD_WORK_STATE_WHEN_ON = 10336,                            //!< Рабочее состояние при включении питания
   VSD_VOLTAGE_FILTER_TIME_CONST = 10337,                     //!< 
-  VSD_CONTROL_WORD_TIMEOUT_TIME = 10338,                     //!< 
+  VSD_CONTROL_WORD_TIMEOUT_TIME = 10338,                     //!< Таймаут командного слова
   VSD_CURRENT_LIMIT_COEF = 10339,                            //!< Коэф.МТЗ мотор
   VSD_SWITCHING_FREQUENCY_CODE = 10340,                      //!< Частота коммутации ШИМ
   VSD_MAX_VC_DF = 10341,                                     //!< Максимально допустимое отклонение частоты векторного режима
