@@ -449,7 +449,7 @@ void Ccs::initParameters()
   // Рекомендуемое напряжение отпайки
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].id                     = CCS_TRANS_NEED_VOLTAGE_TAP_OFF;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].physic                 = PHYSIC_VOLTAGE;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].value.float_t          = 380.0;
@@ -6230,7 +6230,7 @@ void Ccs::initParameters()
   parameters_[CCS_COUNT_START - CCS_BEGIN].discret                               = 1;
   parameters_[CCS_COUNT_START - CCS_BEGIN].def                                   = 0;
   parameters_[CCS_COUNT_START - CCS_BEGIN].code                                  = 0;
-  // Количество отключений по перезрузу
+  // Количество отключений по перегрузу
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].id                       = CCS_PROT_OVERLOAD_COUNT_STOP;
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].access                   = ACCESS_OPERATOR;
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].operation                = OPERATION_READ;
@@ -10585,7 +10585,7 @@ void Ccs::initParameters()
   parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].max                  = 500.0;
   parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].discret              = 100;
   parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].def                  = 40.0;
-  parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].code                 = 13;
+  parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].code                 = 0;
   // Сохраняемое значение уставка максимального значения частоты
   parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].id                  = CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR;
   parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].access              = ACCESS_OPERATOR;
@@ -10597,7 +10597,7 @@ void Ccs::initParameters()
   parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].max                 = 500.0;
   parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].discret             = 100;
   parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].def                 = 60.0;
-  parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].code                = 13;
+  parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].code                = 0;
   // Текущий недогруз
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_CALC_LOAD - CCS_BEGIN].id                 = CCS_PROT_MOTOR_UNDERLOAD_CALC_LOAD;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_CALC_LOAD - CCS_BEGIN].access             = ACCESS_OPERATOR;

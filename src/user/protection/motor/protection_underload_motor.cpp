@@ -49,7 +49,7 @@ void ProtectionUnderloadMotor::getOtherSetpointProt()
     progressiveRestartCount_ = 0;
   }
 
-  // Если включен режим "Ппрограммного изменения частоты"
+  // Если включен режим "Программного изменения частоты"
   if (parameters.get(CCS_RGM_CHANGE_FREQ_MODE) != Regime::OffAction) {
     float beginFreq_ = parameters.get(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ);
     float endFreq_ = parameters.get(CCS_RGM_CHANGE_FREQ_END_FREQ);

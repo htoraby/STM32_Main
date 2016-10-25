@@ -4058,7 +4058,7 @@ void Vsd::initParameters()
   parameters_[VSD_VOLTAGE_FILTER_TIME_CONST - VSD_BEGIN].def                     = 0.0;
   parameters_[VSD_VOLTAGE_FILTER_TIME_CONST - VSD_BEGIN].discret                 = 1000;
   parameters_[VSD_VOLTAGE_FILTER_TIME_CONST - VSD_BEGIN].code                    = 0;
-  // 
+  // Таймаут командного слова
   parameters_[VSD_CONTROL_WORD_TIMEOUT_TIME - VSD_BEGIN].id                      = VSD_CONTROL_WORD_TIMEOUT_TIME;
   parameters_[VSD_CONTROL_WORD_TIMEOUT_TIME - VSD_BEGIN].access                  = ACCESS_OPERATOR;
   parameters_[VSD_CONTROL_WORD_TIMEOUT_TIME - VSD_BEGIN].operation               = OPERATION_WRITE;
