@@ -33,62 +33,58 @@ void RegimeTechnologJarring::processing()
     if ((state_ != IdleState) && (state_ != RunningState) && (state_ != PauseState)) {             // Режим выключили во время работы
       state_ = WorkState + 6;               // Возвращаем настройки работы установки
       #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Встряхив.: выключили режим во время работы (state_=%5.0f, action_=%5.0f)",
-                     state_, action_);
+      logDebug.add(DebugMsg, "Jarring: off in work (state_=%5.0f, action_=%5.0f)", state_, action_);
       #endif
     }
   }
 
   switch (state_) {
-  case IdleState:                           // Режим не активен
+  case IdleState:                                     // Режим не активен
     if ((action_ != OffAction) && ksu.isWorkMotor() ) {
       state_ = RunningState;
       #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Встряхив.: включение режима (state_=%5.0f, action_=%5.0f)",
-                     state_, action_);
+      logDebug.add(DebugMsg, "Jarring: On Idle -> Running (state_=%5.0f, action_=%5.0f)", state_, action_);
       #endif
     }
     break;
-  case RunningState:                        // Активация таймера
-    beginPeriod_ = ksu.getTime();             // Запоминаем время когда начался отсчёт периода встряхивания
+
+  case RunningState:                                  // Активация таймера
+    beginPeriod_ = ksu.getTime();                     // Запоминаем время когда начался отсчёт периода встряхивания
     state_ = PauseState;
     #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Встряхив.: начало отсчета периода встряхивания (state_=%5.0f, beginPeriod_=%d)",
-                   state_, beginPeriod_);
+    logDebug.add(DebugMsg, "Jarring: Running -> Pause (state_=%5.0f, beginPeriod_=%d)", state_, beginPeriod_);
     #endif
     break;
+
   case PauseState:
     if (ksu.getSecFromCurTime(beginPeriod_) > period_) {
-      state_ = WorkState;                   // Переход в состояние задания частоты 1
+      state_ = WorkState;                             // Переход в состояние задания частоты 1
       #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Встряхив.: конец отсчета периода встряхивания (state_=%5.0f, period_=%d)",
-                     state_, period_);
+      logDebug.add(DebugMsg, "Jarring: Pause -> Work (state_=%5.0f, period_=%d)", state_, period_);
       #endif
     }
     break;
-  case WorkState:                       // Задание настроек режима встряхивания
-    saveBeforeJarring();                    // Сохраняем настройки перед включением режима
-    configJarring();                        // Задаём настройки режима
+  case WorkState:                                     // Задание настроек режима встряхивания
+    saveBeforeJarring();                              // Сохраняем настройки перед включением режима
+    configJarring();                                  // Задаём настройки режима
     state_ = WorkState + 1;
     #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Встряхив.: cохранение уставок работы (state_=%5.0f)",
-                   state_);
+    logDebug.add(DebugMsg, "Jarring: Work -> Work + 1 (state_=%5.0f)", state_);
     #endif
     break;
-  case WorkState + 1:                       // Задание частоты 1
+  case WorkState + 1:                                 // Задание частоты 1
     ksu.setFreq(firstFreq_, NoneType, false);
     state_ = WorkState + 2;
     #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Встряхив.: установили частоту F1 (firstFreq_ = %5.0f)",
-                   firstFreq_);
+    logDebug.add(DebugMsg, "Jarring: Work + 1 -> Work + 2 (firstFreq_ = %5.0f)", firstFreq_);
     #endif
     break;
-  case WorkState + 2:                       // Ожидание перехода на частоту
+  case WorkState + 2:                                 // Ожидание перехода на частоту
     if ((vsd->isSetPointFreq()) && (parameters.get(VSD_FREQUENCY_NOW) == firstFreq_)) {
       state_ = WorkState + 3;
       logEvent.add(OtherCode, AutoType, RgmJarringF1Id);
       #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Встряхив.: достигли частоты f1");
+      logDebug.add(DebugMsg, "Jarring: Work + 2 -> Work + 3");
       #endif
     }
     else {
@@ -99,20 +95,19 @@ void RegimeTechnologJarring::processing()
       }
     }
     break;
-  case WorkState + 3:                       // Выход на частоту 2
+  case WorkState + 3:                                 // Выход на частоту 2
     ksu.setFreq(secondFreq_, NoneType, false);
     state_ = WorkState + 4;
     #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Встряхив.: установили частоту f2 (secondFreq_ = %5.0f)",
-                   secondFreq_);
+    logDebug.add(DebugMsg, "Jarring: Work + 3 -> Work + 4 (secondFreq_ = %5.0f)", secondFreq_);
     #endif
     break;
-  case WorkState + 4:                       // Ожидание перехода на частоту 2
+  case WorkState + 4:                                 // Ожидание перехода на частоту 2
     if ((vsd->isSetPointFreq()) && (parameters.get(VSD_FREQUENCY_NOW) == secondFreq_)) {
       state_ = WorkState + 5;
       logEvent.add(OtherCode, AutoType, RgmJarringF2Id);
       #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Встряхив.: достигли частоты f2");
+      logDebug.add(DebugMsg, "Jarring: Work + 4 -> Work + 5");
       #endif
     }
     else {
@@ -123,29 +118,28 @@ void RegimeTechnologJarring::processing()
       }
     }
     break;
-  case WorkState + 5:                       // Проверка что выполнено нужное количество встряхиваний
+  case WorkState + 5:                                 // Проверка что выполнено нужное количество встряхиваний
     count_++;
     if (count_ >= countJar_) {
-      state_ = WorkState + 6;               // Выход из цикла встряхивания
+      state_ = WorkState + 6;                         // Выход из цикла встряхивания
       #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Встряхив.: конец циклов встряхивания (count_ = %5.0f, countJar_ = %5.0f)",
-                     count_, countJar_);
+      logDebug.add(DebugMsg, "Jarring: Work + 5 -> Work + 6 (count_ = %5.0f, countJar_ = %5.0f)", count_, countJar_);
       #endif
       count_ = 0;
     }
     else {
       state_ = WorkState + 1;
       #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Встряхив.: конец одного цикла встряхивания (count_ = %5.0f, countJar_ = %5.0f)",
+        logDebug.add(DebugMsg, "Jarring: Work + 5 -> Work + 1 (count_ = %5.0f, countJar_ = %5.0f)",
                      count_, countJar_);
       #endif
     }
     break;
-  case WorkState + 6:                       // Возвращение настроек
+  case WorkState + 6:                                 // Возвращение настроек
     loadAfterJarring();
     state_ = IdleState;
     #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Встряхив.: конец встряхивания");
+      logDebug.add(DebugMsg, "Jarring: Work + 6 -> Idle");
     #endif
     break;
   default:
