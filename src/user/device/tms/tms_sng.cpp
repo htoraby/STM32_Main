@@ -977,26 +977,30 @@ void TmsSng::getNewValue(uint16_t id)
   switch (id) {
   case TMS_DATE_TMSP: case TMS_DATE_TMSN:
     {
-      div_t x = div(param->value.uint16_t[0], 100);
+      unTypeData data;
+      data.uint16_t[0] = bcdToDec(param->value.uint16_t[0]);
+      div_t x = div(data.uint16_t[0], 100);
       if ((x.quot > 99) || (x.rem < 1) || (x.rem > 12))
         value = 0.0;
       else
-        value = param->value.uint16_t[0]/100.0;
+        value = (float)data.uint16_t[0]/100.0;
       setValue(id, value);
     }
     break;
   case TMS_DATE_TIME_YYMM: case TMS_DATE_TIME_DDHH:
-    setValue(id, (uint32_t)param->value.uint32_t);
+    unTypeData data;
+    data.uint16_t[0] = bcdToDec(param->value.uint16_t[0]);
+    setValue(id, data.uint16_t[0]);
     break;
   case TMS_DATE_TIME_MMSS:
     {
-      setValue(id, (uint32_t)param->value.uint32_t);
-
       unTypeData data;
+      data.uint16_t[0] = bcdToDec(param->value.uint16_t[0]);
+      setValue(id, data.uint16_t[0]);
+
       tm dateTime;
       div_t x;
-      data.uint32_t = getValueUint32(TMS_DATE_TIME_YYMM);
-      data.uint16_t[0] = bcdToDec(data.uint16_t[0]);
+      data.uint16_t[0] = getValue(TMS_DATE_TIME_YYMM);
       x = div(data.uint16_t[0], 100);
       if ((x.quot > 99) || (x.rem < 1) || (x.rem > 12)) {
         setValue(TMS_DATE_TIME, parameters.getU32(CCS_DATE_TIME));
@@ -1007,8 +1011,7 @@ void TmsSng::getNewValue(uint16_t id)
         dateTime.tm_mon = x.rem - 1;
       }
 
-      data.uint32_t = getValueUint32(TMS_DATE_TIME_DDHH);
-      data.uint16_t[0] = bcdToDec(data.uint16_t[0]);
+      data.uint16_t[0] = getValue(TMS_DATE_TIME_DDHH);
       x = div(data.uint16_t[0], 100);
       if ((x.quot < 1) || (x.quot > 31) || (x.rem > 23)) {
         setValue(TMS_DATE_TIME, parameters.getU32(CCS_DATE_TIME));
@@ -1019,8 +1022,7 @@ void TmsSng::getNewValue(uint16_t id)
         dateTime.tm_hour = x.rem;
       }
 
-      data.uint32_t = getValueUint32(TMS_DATE_TIME_MMSS);
-      data.uint16_t[0] = bcdToDec(data.uint16_t[0]);
+      data.uint16_t[0] = getValue(TMS_DATE_TIME_MMSS);
       x = div(data.uint16_t[0], 100);
       if ((x.quot > 59) || (x.rem > 59)) {
         setValue(TMS_DATE_TIME, parameters.getU32(CCS_DATE_TIME));
@@ -1034,7 +1036,7 @@ void TmsSng::getNewValue(uint16_t id)
       time_t time = mktime(&dateTime);
       setValue(TMS_DATE_TIME, (uint32_t)time);
 
-      setDateTime();
+      syncDateTime();
     }
     break;
   default:
@@ -1089,7 +1091,7 @@ void TmsSng::resetConnect()
   dm_->getMms()->resetCounters();
 }
 
-void TmsSng::setDateTime()
+void TmsSng::syncDateTime()
 {
   if (ksu.getSecFromCurTime(TMS_DATE_TIME) > 120) {
     time_t time = ksu.getTime();
@@ -1097,17 +1099,17 @@ void TmsSng::setDateTime()
     unTypeData data;
     data.uint32_t = 0;
 
-    data.char_t[0] = decToBCD(dateTime->tm_year - 100);
-    data.char_t[1] = decToBCD(dateTime->tm_mon + 1);
-    writeToDevice(TMS_DATE_TIME_YYMM, data.float_t);
+    data.char_t[1] = decToBCD(dateTime->tm_year - 100);
+    data.char_t[0] = decToBCD(dateTime->tm_mon + 1);
+    writeToDevice(TMS_DATE_TIME_YYMM, data.uint32_t);
 
-    data.char_t[0] = decToBCD(dateTime->tm_mday);
-    data.char_t[1] = decToBCD(dateTime->tm_hour);
-    writeToDevice(TMS_DATE_TIME_DDHH, data.float_t);
+    data.char_t[1] = decToBCD(dateTime->tm_mday);
+    data.char_t[0] = decToBCD(dateTime->tm_hour);
+    writeToDevice(TMS_DATE_TIME_DDHH, data.uint32_t);
 
-    data.char_t[0] = decToBCD(dateTime->tm_min);
-    data.char_t[1] = decToBCD(dateTime->tm_sec);
-    writeToDevice(TMS_DATE_TIME_MMSS, data.float_t);
+    data.char_t[1] = decToBCD(dateTime->tm_min);
+    data.char_t[0] = decToBCD(dateTime->tm_sec);
+    writeToDevice(TMS_DATE_TIME_MMSS, data.uint32_t);
 
     osDelay(1000);
   }
