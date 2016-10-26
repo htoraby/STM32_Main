@@ -59,7 +59,7 @@ private:
   /*!
    * \brief Синхронизация времени в ТМС
    */
-  void setDateTime();
+  void syncDateTime();
 
   ModbusParameter modbusParameters_[49];
   DeviceModbus *dm_;

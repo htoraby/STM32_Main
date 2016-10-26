@@ -191,7 +191,7 @@ enum enTypeDHS {
   TYPE_DHS_NONE,                            //!< Не подключен
   TYPE_DHS_NOVOMET,                         //!< Новомет
   TYPE_DHS_ALMAZ,                           //!< Алмаз
-  TYPE_DHS_BORETS,                          //!< Борец
+  TYPE_DHS_BORETS_1,                        //!< Борец
   TYPE_DHS_ELEKTON_2,                       //!< Электон
   TYPE_DHS_ELEKTON_3,                       //!< Эталон ТМСН-2
   TYPE_DHS_ETALON,                          //!< Эталон ТМСН-3
@@ -203,6 +203,7 @@ enum enTypeDHS {
   TYPE_DHS_TRIOL,                           //!< Триол
   TYPE_DHS_ZENIT,                           //!< Зенит
   TYPE_DHS_SNG,                             //!< СНГ
+  TYPE_DHS_BORETS_2,                        //!< Борец СПТ-2
 };
 
 /*!
