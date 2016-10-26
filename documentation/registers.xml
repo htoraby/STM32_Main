@@ -9668,8 +9668,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние</text>
-		<short_text>Встряхивание. Состояние</short_text>
+		<text>Встряхивание</text>
+		<short_text>Встряхивание</short_text>
 		<form>Встряхивание</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -9691,7 +9691,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>60.0</value>
 		<text>Периодичность встряхивания</text>
-		<short_text>Встряхивание. Периодичность встряхивания</short_text>
+		<short_text>Встряхивание. Период</short_text>
 		<form>Встряхивание</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -9711,8 +9711,8 @@
 		<discret>2</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>45.0</value>
-		<text>Частота F1</text>
-		<short_text>Встряхивание. Частота встряхивания F1</short_text>
+		<text>Частота встряхивания F1</text>
+		<short_text>Встряхивание. Частота F1</short_text>
 		<form>Встряхивание</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -9733,7 +9733,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Темп увеличения частоты</text>
-		<short_text>Встряхивание. Темп увеличения частоты</short_text>
+		<short_text>Встряхивание. Темп увелич. F</short_text>
 		<form>Встряхивание</form>
 		<unit>TEMP_HZ_SS</unit>
 		<unit_lcd>TEMP_HZ_SS</unit_lcd>
@@ -9753,8 +9753,8 @@
 		<discret>2</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>55.0</value>
-		<text>Частота F2</text>
-		<short_text>Встряхивание. Частота встряхивания F2</short_text>
+		<text>Частота встряхивания F2</text>
+		<short_text>Встряхивание. Частота F2</short_text>
 		<form>Встряхивание</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -9775,7 +9775,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Темп уменьшения частоты</text>
-		<short_text>Встряхивание. Темп уменьшения частоты</short_text>
+		<short_text>Встряхивание. Темп уменьш. F</short_text>
 		<form>Встряхивание</form>
 		<unit>TEMP_HZ_SS</unit>
 		<unit_lcd>TEMP_HZ_SS</unit_lcd>
@@ -14312,7 +14312,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Количество встряхиваний</text>
-		<short_text>Количество встряхиваний</short_text>
+		<short_text>Встряхивание. Количество</short_text>
 		<form>Встряхивание</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
