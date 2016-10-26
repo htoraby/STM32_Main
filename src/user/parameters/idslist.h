@@ -1526,7 +1526,13 @@ enum enID
   VSD_FLYING_START = 10489,                                  //!< Запуск с хода ЧРП Danfoss 1-73
   VSD_JOG = 10490,                                           //!< Катушка: Jog Danfoss
   VSD_PARAMETER_WRITE_CONTROL = 10491,                       //!< Катушка: Parameter write control
-  VSD_END = 10492,                                           //!< 
+  VSD_LF = 10492,                                            //!< Индуктивности по оси D Danfoss 1-37 Используется в проекте
+  VSD_CF = 10493,                                            //!< Ёмкость выходного фильтра
+  VSD_I_LIM_ADD = 10494,                                     //!< 
+  VSD_DECEL_I_LIM = 10495,                                   //!< 
+  VSD_ROUT = 10496,                                          //!< 
+  VSD_LOUT_X = 10497,                                        //!< Суммарная индуктивность на выходе ПЧ, фазное значение
+  VSD_END = 10498,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме

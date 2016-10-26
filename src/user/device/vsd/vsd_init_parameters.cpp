@@ -5906,5 +5906,77 @@ void Vsd::initParameters()
   parameters_[VSD_PARAMETER_WRITE_CONTROL - VSD_BEGIN].def                       = 0.0;
   parameters_[VSD_PARAMETER_WRITE_CONTROL - VSD_BEGIN].discret                   = 1;
   parameters_[VSD_PARAMETER_WRITE_CONTROL - VSD_BEGIN].code                      = 0;
+  // Индуктивности по оси D Danfoss 1-37 Используется в проекте
+  parameters_[VSD_LF - VSD_BEGIN].id                                             = VSD_LF;
+  parameters_[VSD_LF - VSD_BEGIN].access                                         = ACCESS_OPERATOR;
+  parameters_[VSD_LF - VSD_BEGIN].operation                                      = OPERATION_LIMITED;
+  parameters_[VSD_LF - VSD_BEGIN].physic                                         = PHYSIC_INDUNCTANCE;
+  parameters_[VSD_LF - VSD_BEGIN].validity                                       = VALIDITY_ERROR;
+  parameters_[VSD_LF - VSD_BEGIN].value.float_t                                  = NAN;
+  parameters_[VSD_LF - VSD_BEGIN].min                                            = 0.0;
+  parameters_[VSD_LF - VSD_BEGIN].max                                            = 2500.0;
+  parameters_[VSD_LF - VSD_BEGIN].def                                            = 200.0;
+  parameters_[VSD_LF - VSD_BEGIN].discret                                        = 10;
+  parameters_[VSD_LF - VSD_BEGIN].code                                           = 0;
+  // Ёмкость выходного фильтра
+  parameters_[VSD_CF - VSD_BEGIN].id                                             = VSD_CF;
+  parameters_[VSD_CF - VSD_BEGIN].access                                         = ACCESS_OPERATOR;
+  parameters_[VSD_CF - VSD_BEGIN].operation                                      = OPERATION_WRITE;
+  parameters_[VSD_CF - VSD_BEGIN].physic                                         = PHYSIC_CAPACITY;
+  parameters_[VSD_CF - VSD_BEGIN].validity                                       = VALIDITY_ERROR;
+  parameters_[VSD_CF - VSD_BEGIN].value.float_t                                  = NAN;
+  parameters_[VSD_CF - VSD_BEGIN].min                                            = 0.0;
+  parameters_[VSD_CF - VSD_BEGIN].max                                            = 1000.0;
+  parameters_[VSD_CF - VSD_BEGIN].def                                            = 4.0;
+  parameters_[VSD_CF - VSD_BEGIN].discret                                        = 1;
+  parameters_[VSD_CF - VSD_BEGIN].code                                           = 0;
+  // 
+  parameters_[VSD_I_LIM_ADD - VSD_BEGIN].id                                      = VSD_I_LIM_ADD;
+  parameters_[VSD_I_LIM_ADD - VSD_BEGIN].access                                  = ACCESS_OPERATOR;
+  parameters_[VSD_I_LIM_ADD - VSD_BEGIN].operation                               = OPERATION_WRITE;
+  parameters_[VSD_I_LIM_ADD - VSD_BEGIN].physic                                  = PHYSIC_NUMERIC;
+  parameters_[VSD_I_LIM_ADD - VSD_BEGIN].validity                                = VALIDITY_ERROR;
+  parameters_[VSD_I_LIM_ADD - VSD_BEGIN].value.float_t                           = NAN;
+  parameters_[VSD_I_LIM_ADD - VSD_BEGIN].min                                     = 2.0;
+  parameters_[VSD_I_LIM_ADD - VSD_BEGIN].max                                     = 4000.0;
+  parameters_[VSD_I_LIM_ADD - VSD_BEGIN].def                                     = 150.0;
+  parameters_[VSD_I_LIM_ADD - VSD_BEGIN].discret                                 = 1;
+  parameters_[VSD_I_LIM_ADD - VSD_BEGIN].code                                    = 0;
+  // 
+  parameters_[VSD_DECEL_I_LIM - VSD_BEGIN].id                                    = VSD_DECEL_I_LIM;
+  parameters_[VSD_DECEL_I_LIM - VSD_BEGIN].access                                = ACCESS_OPERATOR;
+  parameters_[VSD_DECEL_I_LIM - VSD_BEGIN].operation                             = OPERATION_WRITE;
+  parameters_[VSD_DECEL_I_LIM - VSD_BEGIN].physic                                = PHYSIC_PERCENT;
+  parameters_[VSD_DECEL_I_LIM - VSD_BEGIN].validity                              = VALIDITY_ERROR;
+  parameters_[VSD_DECEL_I_LIM - VSD_BEGIN].value.float_t                         = NAN;
+  parameters_[VSD_DECEL_I_LIM - VSD_BEGIN].min                                   = 5.0;
+  parameters_[VSD_DECEL_I_LIM - VSD_BEGIN].max                                   = 100.0;
+  parameters_[VSD_DECEL_I_LIM - VSD_BEGIN].def                                   = 25.0;
+  parameters_[VSD_DECEL_I_LIM - VSD_BEGIN].discret                               = 1;
+  parameters_[VSD_DECEL_I_LIM - VSD_BEGIN].code                                  = 0;
+  // 
+  parameters_[VSD_ROUT - VSD_BEGIN].id                                           = VSD_ROUT;
+  parameters_[VSD_ROUT - VSD_BEGIN].access                                       = ACCESS_OPERATOR;
+  parameters_[VSD_ROUT - VSD_BEGIN].operation                                    = OPERATION_WRITE;
+  parameters_[VSD_ROUT - VSD_BEGIN].physic                                       = PHYSIC_RESISTANCE;
+  parameters_[VSD_ROUT - VSD_BEGIN].validity                                     = VALIDITY_ERROR;
+  parameters_[VSD_ROUT - VSD_BEGIN].value.float_t                                = NAN;
+  parameters_[VSD_ROUT - VSD_BEGIN].min                                          = -32767.0;
+  parameters_[VSD_ROUT - VSD_BEGIN].max                                          = 32767.0;
+  parameters_[VSD_ROUT - VSD_BEGIN].def                                          = 0.0;
+  parameters_[VSD_ROUT - VSD_BEGIN].discret                                      = 1;
+  parameters_[VSD_ROUT - VSD_BEGIN].code                                         = 0;
+  // Суммарная индуктивность на выходе ПЧ, фазное значение
+  parameters_[VSD_LOUT_X - VSD_BEGIN].id                                         = VSD_LOUT_X;
+  parameters_[VSD_LOUT_X - VSD_BEGIN].access                                     = ACCESS_OPERATOR;
+  parameters_[VSD_LOUT_X - VSD_BEGIN].operation                                  = OPERATION_WRITE;
+  parameters_[VSD_LOUT_X - VSD_BEGIN].physic                                     = PHYSIC_INDUNCTANCE;
+  parameters_[VSD_LOUT_X - VSD_BEGIN].validity                                   = VALIDITY_ERROR;
+  parameters_[VSD_LOUT_X - VSD_BEGIN].value.float_t                              = NAN;
+  parameters_[VSD_LOUT_X - VSD_BEGIN].min                                        = -2147483648.0;
+  parameters_[VSD_LOUT_X - VSD_BEGIN].max                                        = 2147483647.0;
+  parameters_[VSD_LOUT_X - VSD_BEGIN].def                                        = 0.0;
+  parameters_[VSD_LOUT_X - VSD_BEGIN].discret                                    = 1;
+  parameters_[VSD_LOUT_X - VSD_BEGIN].code                                       = 0;
 }
 
