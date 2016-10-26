@@ -10168,8 +10168,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>10.0</max>
+		<def>1.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
 		<text>Коэф. входного напряжения A</text>
 		<short_text>Коэфф.коррек.напряж.Ua</short_text>
 		<form>5.2 Корректировки</form>
@@ -10187,8 +10189,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>10.0</max>
+		<def>1.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
 		<text>Коэф. входного напряжения B</text>
 		<short_text>Коэфф.коррек.напряж.Ub</short_text>
 		<form>5.2 Корректировки</form>
@@ -10205,8 +10209,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>10.0</max>
+		<def>1.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
 		<text>Коэф. входного напряжения C</text>
 		<short_text>Коэфф.коррек.напряж.Uc</short_text>
 		<form>5.2 Корректировки</form>
@@ -10286,6 +10292,7 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>10.0</max>
+		<def>1.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>

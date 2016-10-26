@@ -6104,11 +6104,11 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].operation                       = OPERATION_WRITE;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].validity                        = VALIDITY_OK;
-  parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].value.float_t                   = 0;
+  parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].value.float_t                   = 1.0;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].min                             = 0.0;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].max                             = 10.0;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].discret                         = 1000;
-  parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].def                             = 0;
+  parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].def                             = 1.0;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].code                            = 13;
   // 
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].id                              = CCS_COEF_VOLTAGE_IN_B;
@@ -6116,11 +6116,11 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].operation                       = OPERATION_WRITE;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].validity                        = VALIDITY_OK;
-  parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].value.float_t                   = 0;
+  parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].value.float_t                   = 1.0;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].min                             = 0.0;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].max                             = 10.0;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].discret                         = 1000;
-  parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].def                             = 0;
+  parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].def                             = 1.0;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].code                            = 13;
   // 
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].id                              = CCS_COEF_VOLTAGE_IN_C;
@@ -6128,11 +6128,11 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].operation                       = OPERATION_WRITE;
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].validity                        = VALIDITY_OK;
-  parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].value.float_t                   = 0;
+  parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].value.float_t                   = 1.0;
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].min                             = 0.0;
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].max                             = 10.0;
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].discret                         = 1000;
-  parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].def                             = 0;
+  parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].def                             = 1.0;
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].code                            = 13;
   // Коэффициент корректировки выходного тока фаза U
   parameters_[CCS_COEF_OUT_CURRENT_1 - CCS_BEGIN].id                             = CCS_COEF_OUT_CURRENT_1;
@@ -6180,7 +6180,7 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].min                     = 0.0;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].max                     = 10.0;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].discret                 = 1000;
-  parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].def                     = 0;
+  parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].def                     = 1.0;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].code                    = 13;
   // Номер ЦДНГ
   parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].id                                    = CCS_NUMBER_CDNG;
