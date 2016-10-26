@@ -560,6 +560,13 @@ float VsdNovomet::checkAlarmVsd()
     }
   }
 
+  if ((vsdStatus == VSD_ALARM_NONE) || (vsdStatus == VSD_NOVOMET_ALARM_I_LIM_ERR)) {
+    if (checkBit(vsdStatus2, VSD_NOVOMET_ALARM_I_LIM_ERR - 1016)) {
+      resetBlock();
+      return VSD_NOVOMET_ALARM_I_LIM_ERR;
+    }
+  }
+
   if ((vsdStatus == VSD_ALARM_NONE) || ((vsdStatus >= VSD_NOVOMET_ALARM_IMAX) && (vsdStatus <= VSD_NOVOMET_ALARM_CTR_MON))) {
     for (int i = VSD_NOVOMET_ALARM_IMAX; i <= VSD_NOVOMET_ALARM_CTR_MON; i++) {
       if (checkBit(vsdStatus7, i - 1096)) {
@@ -631,14 +638,13 @@ float VsdNovomet::checkWarningVsd()
   float vsdWarning = parameters.get(CCS_VSD_WARNING_CODE);
   float vsdStatus1 = getValue(VSD_STATUS_WORD_1);
 
-  if ((vsdWarning == VSD_WARNING_NONE) || ((vsdStatus1 >= VSD_NOVOMET_ALARM_I_LIMIT) && (vsdStatus1 <= VSD_NOVOMET_ALARM_ULOW))) {
+  if ((vsdWarning == VSD_WARNING_NONE) || ((vsdWarning >= VSD_NOVOMET_ALARM_I_LIMIT) && (vsdWarning <= VSD_NOVOMET_ALARM_ULOW))) {
     for (int i = VSD_NOVOMET_ALARM_I_LIMIT; i <= VSD_NOVOMET_ALARM_ULOW; i++) {
       if (checkBit(vsdStatus1, i - 1000)) {
         return i;
       }
     }
   }
-
   return VSD_WARNING_NONE;
 }
 
@@ -1461,16 +1467,21 @@ void VsdNovomet::calcSwitchFreqMode()
 void VsdNovomet::calcDischarge()
 {
   if (checkBit(getValue(VSD_STATUS_WORD_2), VSD_NOVOMET_STATUS_DISCHARGE_ON)) {
-    parameters.set(CCS_VSD_DECEL, 1);
+    if (!parameters.get(CCS_VSD_DECEL))
+      parameters.set(CCS_VSD_DECEL, 1);
   }
   else {
-    parameters.set(CCS_VSD_DECEL, 0);
+    if (parameters.get(CCS_VSD_DECEL))
+      parameters.set(CCS_VSD_DECEL, 0);
   }
 }
 
 void VsdNovomet::calcResonanceRemoveSource()
 {
-  setValue(VSD_RES_MODE, ((uint16_t)getValue(VSD_STATUS_WORD_3)) & 0x0003);
+  float flVal = getValue(VSD_STATUS_WORD_3);
+  uint16_t uiVal = (uint16_t)flVal;
+  uiVal = (uiVal & 0x0060) >> 5;
+  setValue(VSD_RES_MODE, (((uint16_t)getValue(VSD_STATUS_WORD_3)) & 0x0060) >> 5);
 }
 
 void VsdNovomet::calcSystemInduct()
