@@ -195,7 +195,7 @@ void ScadaRegion30::calcParamsTask()
       value = 9; break;
     case TYPE_DHS_ALMAZ:
       value = 2; break;
-    case TYPE_DHS_BORETS:
+    case TYPE_DHS_BORETS_1:
       value = 3; break;
     case TYPE_DHS_ELEKTON_2:
     case TYPE_DHS_ELEKTON_3:

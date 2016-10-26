@@ -56,7 +56,7 @@ public:
   void resetConnect();
 
 private:
-  ModbusParameter modbusParameters_[7];
+  ModbusParameter modbusParameters_[9];
   DeviceModbus *dm_;
 
 };

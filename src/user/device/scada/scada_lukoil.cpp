@@ -320,7 +320,7 @@ void ScadaLukoil::calcParamsTask()
     case TYPE_DHS_ELEKTON_2:
     case TYPE_DHS_ELEKTON_3:
       value = 2; break;
-    case TYPE_DHS_BORETS:
+    case TYPE_DHS_BORETS_1:
       value = 3; break;
     case TYPE_DHS_SCAD:
       value = 6; break;
@@ -656,7 +656,7 @@ int ScadaLukoil::setNewValue(ScadaParameter *param)
     case 2:
       value.float_t = TYPE_DHS_ELEKTON_3; break;
     case 3:
-      value.float_t = TYPE_DHS_BORETS; break;
+      value.float_t = TYPE_DHS_BORETS_1; break;
     case 6:
       value.float_t = TYPE_DHS_SCAD; break;
     case 8:

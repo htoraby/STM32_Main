@@ -87,7 +87,7 @@ void createDhs(bool init)
   case TYPE_DHS_ELEKTON_3:
     tms = new TmsElekton3();
     break;
-  case TYPE_DHS_BORETS:
+  case TYPE_DHS_BORETS_1:
     tms = new TmsBorets();
     break;
   case TYPE_DHS_IRZ:

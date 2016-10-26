@@ -31266,6 +31266,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXX</format>
 		<code>0</code>
 		<comment>Дата время, BDC(ГГММ)</comment>
 	</param>
@@ -31281,6 +31283,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXX</format>
 		<code>0</code>
 		<comment>Дата время, BDC(ДДЧЧ)</comment>
 	</param>
@@ -31296,6 +31300,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXX</format>
 		<code>0</code>
 		<comment>Дата время, BDC(ММСС)</comment>
 	</param>
