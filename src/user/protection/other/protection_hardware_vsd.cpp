@@ -70,7 +70,7 @@ bool ProtectionHardwareVsd::checkAlarm()
   parameters.set(CCS_VSD_ALARM_CODE, alarm);
   if (alarm != VSD_ALARM_NONE) {
     if (alarm != alarmOld)
-      logDebug.add(WarningMsg, "ЧРП: ошибка (%d)", (int)alarm);
+      logDebug.add(WarningMsg, "VSD: Error № (%d)", (int)alarm);
     return true;
   }
   return false;
@@ -89,7 +89,7 @@ bool ProtectionHardwareVsd::checkWarning()
   if (warning != VSD_WARNING_NONE) {
     if (warning != warningOld) {
       logEvent.add(ProtectVsdCode, AutoType, (EventId)warning);
-      logDebug.add(WarningMsg, "ЧРП: Предупреждение (%d)", (int)warning);
+      logDebug.add(WarningMsg, "VSD: Warning № (%d)", (int)warning);
     }
     return true;
   }
