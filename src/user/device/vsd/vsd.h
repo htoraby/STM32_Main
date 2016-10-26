@@ -392,7 +392,7 @@ public:
    * \param value
    * \return
    */
-  int setDischarge(float value);
+  virtual int setDischarge(float value);
 
   /*!
    * \brief calcUfCharacteristic
