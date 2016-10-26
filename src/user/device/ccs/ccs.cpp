@@ -1024,7 +1024,12 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_FILTER_INDUCTANCE:
     err = setValue(id, value, eventType);
+    parameters.set(VSD_LF, value, eventType);
     calcSystemInduct();
+    return err;
+  case CCS_FILTER_CAPACITY:
+    err = setValue(id, value, eventType);
+    parameters.set(VSD_CF, value, eventType);
     return err;
   case CCS_DATE_TIME_SEC:
     err = setValue(id, value, eventType);
