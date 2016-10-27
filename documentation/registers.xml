@@ -29706,6 +29706,26 @@
 	</param>
 	<param>
 		<id>10498</id>
+		<name>VSD_FC_OVERLOAD</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>10.0</min>
+		<max>125.0</max>
+		<def>100.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Величина перегрузки по току ПЧ (112)</text>
+		<short_text>Величина перегрузки по току ПЧ (112)</short_text>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>ХХХ</format>
+		<code>0</code>
+		<comment>Величина перегрузки по току ПЧ (112)</comment>
+	</param>
+	<param>
+		<id>10499</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>

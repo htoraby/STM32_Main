@@ -42,8 +42,9 @@ void ProtectionCurrentMotor::getOtherSetpointProt()
 
 bool ProtectionCurrentMotor::checkAlarm()
 { 
-  if (vsd->checkAlarmVsdCurrentMotor()) {
-    lastReasonStop_ = LastReasonStopHardwareVsd;
+  float alarm = vsd->checkAlarmVsdCurrentMotor();
+  if (alarm) {
+    lastReasonStop_ = (LastReasonStop)(int)alarm;
     return true;
   }
   else if (Protection::isHigherLimit(tripSetpoint_)) {
