@@ -58,11 +58,11 @@ static void getFile(char *fileName)
         }
       }
     }
-    logDebug.add(WarningMsg, "Обновление: Файл прошивки не найден");
+    logDebug.add(WarningMsg, "update.getFile()  Firmware file not found");
     ksu.setError(NotFoundFwUpdateErr);
   }
   else {
-    logDebug.add(WarningMsg, "Обновление: Не удалось открыть каталог");
+    logDebug.add(WarningMsg, "update.getFile() Failed to open directory");
     ksu.setError(OpenDirUsbErr);
   }
 }
@@ -128,7 +128,7 @@ static bool saveSwInFlashExt(char *fileName)
           f_read(&file, buffer, size, &readSize);
 
           if (readSize < 6) {
-            logDebug.add(WarningMsg, "Обновление: Ошибка чтения файла прошивки");
+            logDebug.add(WarningMsg, "update.saveSwInFlashExt() Error reading firmware file");
             break;
           }
 
@@ -167,7 +167,7 @@ static bool saveSwInFlashExt(char *fileName)
           isSaveSw = true;
         }
         else {
-          logDebug.add(WarningMsg, "Обновление: Ошибка CRС в файле прошивки (%x %x %x, %x)", crc, calcCrc, calcCrcRx, finish);
+          logDebug.add(WarningMsg, "update.saveSwInFlashExt() CRC error in the firmware file (crc = %x; calcCrc = %x; calcCrcRx = %x; finish = %x)", crc, calcCrc, calcCrcRx, finish);
           ksu.setError(CrcFwUpdateErr);
         }
       }
