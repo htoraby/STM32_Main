@@ -5978,5 +5978,17 @@ void Vsd::initParameters()
   parameters_[VSD_LOUT_X - VSD_BEGIN].def                                        = 0.0;
   parameters_[VSD_LOUT_X - VSD_BEGIN].discret                                    = 1;
   parameters_[VSD_LOUT_X - VSD_BEGIN].code                                       = 0;
+  // Величина перегрузки по току ПЧ (112)
+  parameters_[VSD_FC_OVERLOAD - VSD_BEGIN].id                                    = VSD_FC_OVERLOAD;
+  parameters_[VSD_FC_OVERLOAD - VSD_BEGIN].access                                = ACCESS_OPERATOR;
+  parameters_[VSD_FC_OVERLOAD - VSD_BEGIN].operation                             = OPERATION_WRITE;
+  parameters_[VSD_FC_OVERLOAD - VSD_BEGIN].physic                                = PHYSIC_PERCENT;
+  parameters_[VSD_FC_OVERLOAD - VSD_BEGIN].validity                              = VALIDITY_ERROR;
+  parameters_[VSD_FC_OVERLOAD - VSD_BEGIN].value.float_t                         = NAN;
+  parameters_[VSD_FC_OVERLOAD - VSD_BEGIN].min                                   = 10.0;
+  parameters_[VSD_FC_OVERLOAD - VSD_BEGIN].max                                   = 125.0;
+  parameters_[VSD_FC_OVERLOAD - VSD_BEGIN].def                                   = 100.0;
+  parameters_[VSD_FC_OVERLOAD - VSD_BEGIN].discret                               = 1;
+  parameters_[VSD_FC_OVERLOAD - VSD_BEGIN].code                                  = 0;
 }
 
