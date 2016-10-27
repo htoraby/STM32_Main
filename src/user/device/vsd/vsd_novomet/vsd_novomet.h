@@ -170,7 +170,8 @@ enum enVsdNovometAlarm {
   VSD_NOVOMET_ALARM_TEST          = 1105,   //!< Включен тестовый режим контроллера ПЧ
   VSD_NOVOMET_ALARM_TEMP_LINK     = 1106,   //!< Ошибка связи с термодатчиками
   VSD_NOVOMET_ALARM_TEMP          = 1107,   //!< Тепловая защита радиаторов
-  VSD_NOVOMET_ALARM_AIR_TEMP      = 1108    //!< Тепловая защита по воздуху
+  VSD_NOVOMET_ALARM_AIR_TEMP      = 1108,   //!< Тепловая защита по воздуху
+  VSD_NOVOMET_ALARM_FAULT_BUTTON  = 1109    //!< Кнопка "Авария"
 };
 
 /*!
