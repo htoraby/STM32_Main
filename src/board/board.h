@@ -18,7 +18,7 @@
 #define USE_LOG_CRITICAL 1
 #define USE_POWER_OFF 1
 
-#define WATCHDOG_TIMEOUT 10 // 10 сек
+#define WATCHDOG_TIMEOUT 30 // сек
 
 
 #define FIRMWARE_VERSION 0x0101 // 1.1
