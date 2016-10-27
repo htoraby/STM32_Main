@@ -1562,7 +1562,7 @@ void VsdNovomet::getConnect()
   Vsd::setConnect(dm_->getMms()->getCounters());
 }
 
-void VsdNovomet::resetConnct()
+void VsdNovomet::resetConnect()
 {
   Vsd::resetConnect();
   dm_->getMms()->resetCounters();

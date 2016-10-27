@@ -455,7 +455,7 @@ public:
    */
   void getConnect();
 
-  void resetConnct();
+  void resetConnect();
 
 private:
   ModbusParameter modbusParameters_[162];
