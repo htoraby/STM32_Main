@@ -336,6 +336,7 @@ void Ccs::changedCondition()
       }
       break;
     case CCS_CONDITION_RUN:
+      resetRestart();
       if (flag == CCS_CONDITION_FLAG_DELAY) {
         setNewValue(CCS_GENERAL_CONDITION, GeneralConditionDelay);
         setLedCondition(OnGreenToogleYellowLed);
