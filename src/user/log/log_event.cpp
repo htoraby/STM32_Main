@@ -20,7 +20,8 @@ uint32_t LogEvent::add(EventCode code, EventType type, EventId id,
   const uint32_t addr = address();
   time_t time = ksu.getTime();
 
-  *(uint32_t*)(buffer) = ++id_;
+  ++id_;
+  *(uint32_t*)(buffer) = id_;
   *(uint32_t*)(buffer+4) = time;
   *(uint8_t*)(buffer+8) = code;
   *(uint8_t*)(buffer+9) = type;

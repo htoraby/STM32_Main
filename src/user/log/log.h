@@ -124,12 +124,12 @@ public:
    * \brief Глобальный индекс записей всех журналов,
    * кроме отладочного
    */
-  static uint32_t id_;
+  static volatile uint32_t id_;
 
   /*!
    * \brief Глобальный индекс записей отладочного архива
    */
-  static uint32_t idDebug_;
+  static volatile uint32_t idDebug_;
 
   uint32_t address() const {
     return address_;
